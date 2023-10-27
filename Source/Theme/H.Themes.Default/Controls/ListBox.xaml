@@ -16,10 +16,10 @@
                 <ControlTemplate TargetType="ListBox">
                     <Border Name="Border" BorderThickness="1" CornerRadius="2">
                         <Border.Background>
-                            <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Background}}" />
+                            <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Background}}" />
                         </Border.Background>
                         <Border.BorderBrush>
-                            <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                            <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                         </Border.BorderBrush>
                         <ScrollViewer Margin="0" Focusable="false">
                             <StackPanel Margin="2" IsItemsHost="True" />
@@ -29,12 +29,12 @@
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter TargetName="Border" Property="Background">
                                 <Setter.Value>
-                                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BackgroundDisabled}}" />
+                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BackgroundDisabled}}" />
                                 </Setter.Value>
                             </Setter>
                             <Setter TargetName="Border" Property="BorderBrush">
                                 <Setter.Value>
-                                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrushDisabled}}" />
+                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrushDisabled}}" />
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
@@ -50,7 +50,7 @@
     <Style x:Key="{x:Type ListBoxItem}" BasedOn="{StaticResource S.Control.Base}" TargetType="ListBoxItem">
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="OverridesDefaultStyle" Value="true" />
-        <Setter Property="MinHeight" Value="{StaticResource {x:Static local:LayoutKeys.ItemHeight}}" />
+        <Setter Property="MinHeight" Value="{DynamicResource {x:Static local:LayoutKeys.ItemHeight}}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListBoxItem">
@@ -64,7 +64,7 @@
                                 <VisualState x:Name="MouseOver">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.MouseOver}}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.MouseOver}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -74,17 +74,17 @@
                                 <VisualState x:Name="Selected">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.Selected}}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.Selected}}" />
                                         </ColorAnimationUsingKeyFrames>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Control.Foreground).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.ForegroundTitle}}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.ForegroundTitle}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="SelectedUnfocused">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.Selected}}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.Selected}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>

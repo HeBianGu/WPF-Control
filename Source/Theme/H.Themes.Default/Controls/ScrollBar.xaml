@@ -15,10 +15,10 @@
                             BorderThickness="1"
                             CornerRadius="2">
                         <Border.BorderBrush>
-                            <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                            <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                         </Border.BorderBrush>
                         <Border.Background>
-                            <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Background}}" />
+                            <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Background}}" />
                         </Border.Background>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
@@ -26,21 +26,21 @@
                                 <VisualState x:Name="MouseOver">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.BorderBrushTitle}}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.BorderBrushTitle}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Pressed">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.BorderBrushAssist}}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.BorderBrushAssist}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Disabled">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Arrow" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.BackgroundDisabled}}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.BackgroundDisabled}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -51,7 +51,7 @@
                               VerticalAlignment="Center"
                               Data="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}">
                             <Path.Fill>
-                                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Foreground}}" />
+                                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Foreground}}" />
                             </Path.Fill>
                         </Path>
                     </Border>
@@ -93,7 +93,7 @@
                                 <VisualState x:Name="MouseOver">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.ForegroundAssist}}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.ForegroundAssist}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -114,7 +114,7 @@
             </Grid.RowDefinitions>
             <Border x:Name="Border" Grid.RowSpan="3" CornerRadius="2">
                 <Border.Background>
-                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Dark0_1}}" />
+                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Dark0_1}}" />
                 </Border.Background>
             </Border>
             <RepeatButton Grid.Row="0"
@@ -129,10 +129,10 @@
                 <Track.Thumb>
                     <Thumb Margin="1,0,1,0" Style="{StaticResource ScrollBarThumb}">
                         <Thumb.BorderBrush>
-                            <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                            <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                         </Thumb.BorderBrush>
                         <Thumb.Background>
-                            <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                            <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                         </Thumb.Background>
                     </Thumb>
                 </Track.Thumb>
@@ -157,7 +157,7 @@
             </Grid.ColumnDefinitions>
             <Border Grid.ColumnSpan="3" CornerRadius="2">
                 <Border.Background>
-                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Background}}" />
+                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Background}}" />
                 </Border.Background>
             </Border>
             <RepeatButton Grid.Column="0"
@@ -172,10 +172,10 @@
                 <Track.Thumb>
                     <Thumb Margin="0,1,0,1" Style="{StaticResource ScrollBarThumb}">
                         <Thumb.BorderBrush>
-                            <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                            <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                         </Thumb.BorderBrush>
                         <Thumb.Background>
-                            <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                            <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                         </Thumb.Background>
                     </Thumb>
                 </Track.Thumb>

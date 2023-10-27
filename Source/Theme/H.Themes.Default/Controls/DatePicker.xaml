@@ -23,12 +23,12 @@
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="CaretBrush">
             <Setter.Value>
-                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Foreground}}" />
+                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Foreground}}" />
             </Setter.Value>
         </Setter>
         <Setter Property="SelectionBrush">
             <Setter.Value>
-                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Foreground}}" />
+                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Foreground}}" />
             </Setter.Value>
         </Setter>
         <Setter Property="Template">
@@ -39,10 +39,10 @@
                             BorderThickness="0"
                             CornerRadius="2">
                         <Border.Background>
-                            <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Background}}" />
+                            <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Background}}" />
                         </Border.Background>
                         <Border.BorderBrush>
-                            <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                            <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                         </Border.BorderBrush>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
@@ -50,21 +50,21 @@
                                 <VisualState x:Name="Disabled">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.BackgroundDisabled}}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.BackgroundDisabled}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="ReadOnly">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.Dark0_3}}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.Dark0_3}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="MouseOver">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.MouseOver}}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.MouseOver}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -74,7 +74,7 @@
                                 <VisualState x:Name="Focused">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.Selected}}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.Selected}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -106,13 +106,13 @@
                                                                       Storyboard.TargetName="BackgroundGradient"
                                                                       Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
                                                                       Duration="00:00:00.001">
-                                            <SplineColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.ForegroundTitle}}" />
+                                            <SplineColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.ForegroundTitle}}" />
                                         </ColorAnimationUsingKeyFrames>
                                         <ColorAnimationUsingKeyFrames BeginTime="0"
                                                                       Storyboard.TargetName="BackgroundGradient"
                                                                       Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
                                                                       Duration="00:00:00.001">
-                                            <SplineColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.ForegroundTitle}}" />
+                                            <SplineColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.ForegroundTitle}}" />
                                         </ColorAnimationUsingKeyFrames>
                                         <ColorAnimation Storyboard.TargetName="Background"
                                                         Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
@@ -122,7 +122,7 @@
                                                                       Storyboard.TargetName="BackgroundGradient"
                                                                       Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
                                                                       Duration="00:00:00.001">
-                                            <SplineColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.ForegroundTitle}}" />
+                                            <SplineColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.ForegroundTitle}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -132,7 +132,7 @@
                                                                       Storyboard.TargetName="Background"
                                                                       Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
                                                                       Duration="00:00:00.001">
-                                            <SplineColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.ForegroundAssist}}" />
+                                            <SplineColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.ForegroundAssist}}" />
                                         </ColorAnimationUsingKeyFrames>
                                         <DoubleAnimationUsingKeyFrames BeginTime="0"
                                                                        Storyboard.TargetName="Highlight"
@@ -144,25 +144,25 @@
                                                                       Storyboard.TargetName="BackgroundGradient"
                                                                       Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
                                                                       Duration="00:00:00.001">
-                                            <SplineColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.ForegroundAssist}}" />
+                                            <SplineColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.ForegroundAssist}}" />
                                         </ColorAnimationUsingKeyFrames>
                                         <ColorAnimationUsingKeyFrames BeginTime="0"
                                                                       Storyboard.TargetName="BackgroundGradient"
                                                                       Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
                                                                       Duration="00:00:00.001">
-                                            <SplineColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.ForegroundAssist}}" />
+                                            <SplineColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.ForegroundAssist}}" />
                                         </ColorAnimationUsingKeyFrames>
                                         <ColorAnimationUsingKeyFrames BeginTime="0"
                                                                       Storyboard.TargetName="BackgroundGradient"
                                                                       Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
                                                                       Duration="00:00:00.001">
-                                            <SplineColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.ForegroundAssist}}" />
+                                            <SplineColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.ForegroundAssist}}" />
                                         </ColorAnimationUsingKeyFrames>
                                         <ColorAnimationUsingKeyFrames BeginTime="0"
                                                                       Storyboard.TargetName="BackgroundGradient"
                                                                       Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
                                                                       Duration="00:00:00.001">
-                                            <SplineColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.ForegroundAssist}}" />
+                                            <SplineColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.ForegroundAssist}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -197,10 +197,10 @@
                                     CornerRadius="0,0,1,1"
                                     Opacity="1">
                                 <Border.Background>
-                                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Foreground}}" />
+                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Foreground}}" />
                                 </Border.Background>
                                 <Border.BorderBrush>
-                                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrushTitle}}" />
+                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrushTitle}}" />
                                 </Border.BorderBrush>
                             </Border>
                             <Border x:Name="Background"
@@ -212,10 +212,10 @@
                                     CornerRadius=".5"
                                     Opacity="1">
                                 <Border.Background>
-                                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Foreground}}" />
+                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Foreground}}" />
                                 </Border.Background>
                                 <Border.BorderBrush>
-                                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrushTitle}}" />
+                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrushTitle}}" />
                                 </Border.BorderBrush>
                             </Border>
                             <Border x:Name="BackgroundGradient"
@@ -227,18 +227,18 @@
                                     CornerRadius=".5"
                                     Opacity="1">
                                 <Border.Background>
-                                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Foreground}}" />
+                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Foreground}}" />
                                 </Border.Background>
                                 <Border.BorderBrush>
-                                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrushTitle}}" />
+                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrushTitle}}" />
                                 </Border.BorderBrush>
                             </Border>
                             <Rectangle Grid.RowSpan="1" Grid.ColumnSpan="4" StrokeThickness="1">
                                 <Rectangle.Fill>
-                                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Background}}" />
+                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Background}}" />
                                 </Rectangle.Fill>
                                 <Rectangle.Stroke>
-                                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                                 </Rectangle.Stroke>
                             </Rectangle>
                             <Path Grid.Row="1"
@@ -252,7 +252,7 @@
                                   RenderTransformOrigin="0.5,0.5"
                                   Stretch="Fill">
                                 <Path.Fill>
-                                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Background}}" />
+                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Background}}" />
                                 </Path.Fill>
                             </Path>
                             <Ellipse Grid.ColumnSpan="4"
@@ -261,7 +261,7 @@
                                      VerticalAlignment="Center"
                                      StrokeThickness="0">
                                 <Ellipse.Fill>
-                                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Foreground}}" />
+                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Foreground}}" />
                                 </Ellipse.Fill>
                             </Ellipse>
                             <Border x:Name="DisabledVisual"
@@ -272,7 +272,7 @@
                                     CornerRadius="0,0,.5,.5"
                                     Opacity="0">
                                 <Border.Background>
-                                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Background}}" />
+                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Background}}" />
                                 </Border.Background>
                             </Border>
                         </Grid>
@@ -296,10 +296,10 @@
                 <ControlTemplate TargetType="{x:Type DatePicker}">
                     <Border Padding="{TemplateBinding Padding}" BorderThickness="{TemplateBinding BorderThickness}">
                         <Border.BorderBrush>
-                            <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                            <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                         </Border.BorderBrush>
                         <Border.Background>
-                            <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Background}}" />
+                            <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Background}}" />
                         </Border.Background>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
@@ -348,7 +348,7 @@
                                            RadiusX="1"
                                            RadiusY="1">
                                     <Rectangle.Fill>
-                                        <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                                        <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                                     </Rectangle.Fill>
                                 </Rectangle>
                                 <Rectangle Grid.Row="0"
@@ -359,7 +359,7 @@
                                            RadiusX="1"
                                            RadiusY="1">
                                     <Rectangle.Fill>
-                                        <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Foreground}}" />
+                                        <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Foreground}}" />
                                     </Rectangle.Fill>
                                 </Rectangle>
                                 <Popup x:Name="PART_Popup"

@@ -14,7 +14,7 @@
                             Height="{TemplateBinding Height}"
                             BorderThickness="1">
                         <Border.Background>
-                            <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Background}}"/>
+                            <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Background}}"/>
                         </Border.Background>
                         <Border.BorderBrush>
                             <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />

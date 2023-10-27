@@ -19,24 +19,24 @@
                                 <VisualState x:Name="MouseOver">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Ellipse" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.MouseOver}}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.MouseOver}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Pressed">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Ellipse" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.ForegroundDisabled}}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.ForegroundDisabled}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Disabled">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Ellipse" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.ForegroundDisabled}}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.ForegroundDisabled}}" />
                                         </ColorAnimationUsingKeyFrames>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Arrow" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.ForegroundDisabled}}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.ForegroundDisabled}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -50,7 +50,7 @@
                                 <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                             </Ellipse.Stroke>
                             <Ellipse.Fill>
-                                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Background}}"/>
+                                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Background}}"/>
                             </Ellipse.Fill>
                         </Ellipse>
 
@@ -60,7 +60,7 @@
                               VerticalAlignment="Center"
                               Data="M 4 0 L 0 4 L 4 8 Z">
                             <Path.Fill>
-                                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Background}}" />
+                                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Background}}" />
                             </Path.Fill>
                         </Path>
                     </Grid>
@@ -107,10 +107,10 @@
                                VerticalOffset="2">
                             <Border x:Name="SubMenuBorder" BorderThickness="1">
                                 <Border.Background>
-                                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Background}}" />
+                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Background}}" />
                                 </Border.Background>
                                 <Border.BorderBrush>
-                                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                                 </Border.BorderBrush>
                                 <StackPanel Margin="2"
                                             IsItemsHost="true"
@@ -129,10 +129,10 @@
                                     CornerRadius="2"
                                     Visibility="Hidden">
                                 <Border.BorderBrush>
-                                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrushTitle}}" />
+                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrushTitle}}" />
                                 </Border.BorderBrush>
                                 <Border.Background>
-                                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                                 </Border.Background>
                             </Border>
                             <Path x:Name="Arrow"
@@ -143,7 +143,7 @@
                                   SnapsToDevicePixels="false"
                                   StrokeLineJoin="Round">
                                 <Path.Stroke>
-                                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Background}}" />
+                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Background}}" />
                                 </Path.Stroke>
                             </Path>
                         </Grid>
@@ -155,12 +155,12 @@
                         <Trigger Property="IsSubmenuOpen" Value="true">
                             <Setter TargetName="HighlightBorder" Property="BorderBrush">
                                 <Setter.Value>
-                                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrushTitle}}" />
+                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrushTitle}}" />
                                 </Setter.Value>
                             </Setter>
                             <Setter TargetName="HighlightBorder" Property="Background">
                                 <Setter.Value>
-                                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
 
                                 </Setter.Value>
                             </Setter>
@@ -168,7 +168,7 @@
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter TargetName="Arrow" Property="Fill">
                                 <Setter.Value>
-                                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.ForegroundDisabled}}" />
+                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.ForegroundDisabled}}" />
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
@@ -206,7 +206,7 @@
                                   StrokeStartLineCap="Triangle"
                                   StrokeThickness="2">
                                 <Path.Stroke>
-                                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Background}}" />
+                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Background}}" />
                                 </Path.Stroke>
                             </Path>
 
@@ -220,12 +220,12 @@
                         <Trigger Property="IsHighlighted" Value="true">
                             <Setter TargetName="Border" Property="Background">
                                 <Setter.Value>
-                                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                                 </Setter.Value>
                             </Setter>
                             <Setter TargetName="Border" Property="BorderBrush">
                                 <Setter.Value>
-                                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrushTitle}}" />
+                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrushTitle}}" />
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
@@ -238,7 +238,7 @@
                             <Setter TargetName="Glyph" Property="Stroke" Value="{x:Null}" />
                             <Setter TargetName="Glyph" Property="Fill">
                                 <Setter.Value>
-                                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Background}}" />
+                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Background}}" />
                                 </Setter.Value>
                             </Setter>
                         </MultiTrigger>
@@ -251,7 +251,7 @@
                             <Setter TargetName="Glyph" Property="Stroke" Value="{x:Null}" />
                             <Setter TargetName="Glyph" Property="Fill">
                                 <Setter.Value>
-                                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Background}}" />
+                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Background}}" />
                                 </Setter.Value>
                             </Setter>
                         </MultiTrigger>
@@ -275,11 +275,11 @@
                     <DockPanel>
                         <Border Height="22" BorderThickness="1" DockPanel.Dock="Top">
                             <Border.BorderBrush>
-                                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}"/>
+                                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}"/>
                             </Border.BorderBrush>
                             <Grid>
                                 <Grid.Background>
-                                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Background}}"/>
+                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Background}}"/>
                                 </Grid.Background>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
@@ -315,7 +315,7 @@
                                       Stroke="{x:Null}"
                                       StrokeThickness="1">
                                     <Path.Fill>
-                                        <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Background}}"/>
+                                        <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Background}}"/>
                                     </Path.Fill>
                                 </Path>
                                 <Button Grid.Column="0"

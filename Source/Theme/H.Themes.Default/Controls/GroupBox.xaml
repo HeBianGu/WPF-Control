@@ -13,14 +13,14 @@
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                         <Border Grid.Row="0"
-                                Height="{StaticResource {x:Static local:LayoutKeys.ItemHeight}}"
+                                Height="{DynamicResource {x:Static local:LayoutKeys.ItemHeight}}"
                                 BorderThickness="1"
                                 CornerRadius="2,2,0,0">
                             <Border.BorderBrush>
-                                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                             </Border.BorderBrush>
                             <Border.Background>
-                                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Background}}" />
+                                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Background}}" />
                             </Border.Background>
                             <ContentPresenter Margin="4"
                                               VerticalAlignment="Center"
@@ -30,10 +30,10 @@
 
                         <Border Grid.Row="1" BorderThickness="1,0,1,1" CornerRadius="0,0,2,2">
                             <Border.BorderBrush>
-                                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                             </Border.BorderBrush>
                             <Border.Background>
-                                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Background}}" />
+                                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Background}}" />
                             </Border.Background>
                             <ContentPresenter Margin="{TemplateBinding Padding}" />
                         </Border>

@@ -6,11 +6,11 @@
     <Style x:Key="ToolBarButtonBaseStyle" BasedOn="{StaticResource S.Control.Base}" TargetType="{x:Type ButtonBase}">
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="OverridesDefaultStyle" Value="true" />
-        <Setter Property="Width" Value="{StaticResource {x:Static local:LayoutKeys.ItemHeight}}" />
+        <Setter Property="Width" Value="{DynamicResource {x:Static local:LayoutKeys.ItemHeight}}" />
         <Setter Property="Padding" Value="7" />
         <Setter Property="Foreground">
             <Setter.Value>
-                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Foreground}}" />
+                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Foreground}}" />
             </Setter.Value>
         </Setter>
         <Setter Property="Template">
@@ -26,24 +26,24 @@
                                 <VisualState x:Name="Pressed">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.Background}}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.Background}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="MouseOver">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.Selected}}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.Selected}}" />
                                         </ColorAnimationUsingKeyFrames>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.ForegroundAssist}}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.ForegroundAssist}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Disabled">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.BackgroundDisabled}}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.BackgroundDisabled}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -52,7 +52,7 @@
                                 <VisualState x:Name="Checked">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.Dark0_6}}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.Dark0_6}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -85,7 +85,7 @@
                 <ControlTemplate TargetType="{x:Type Separator}">
                     <Rectangle Width="1" Margin="3">
                         <Rectangle.Fill>
-                            <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                            <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                         </Rectangle.Fill>
                     </Rectangle>
                 </ControlTemplate>
@@ -102,12 +102,12 @@
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="CaretBrush">
             <Setter.Value>
-                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Foreground}}" />
+                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Foreground}}" />
             </Setter.Value>
         </Setter>
         <Setter Property="SelectionBrush">
             <Setter.Value>
-                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Foreground}}" />
+                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Foreground}}" />
             </Setter.Value>
         </Setter>
         <Setter Property="Template">
@@ -115,10 +115,10 @@
                 <ControlTemplate TargetType="{x:Type TextBox}">
                     <Border x:Name="Border" Padding="2" BorderThickness="1">
                         <Border.Background>
-                            <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Dark0_1}}" />
+                            <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Dark0_1}}" />
                         </Border.Background>
                         <Border.BorderBrush>
-                            <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                            <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                         </Border.BorderBrush>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
@@ -126,10 +126,10 @@
                                 <VisualState x:Name="Disabled">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                                         </ColorAnimationUsingKeyFrames>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -162,7 +162,7 @@
                                         <DrawingGroup>
                                             <GeometryDrawing Geometry="M 4 4 L 4 8 L 8 8 L 8 4 z">
                                                 <GeometryDrawing.Brush>
-                                                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                                                 </GeometryDrawing.Brush>
                                             </GeometryDrawing>
                                         </DrawingGroup>
@@ -183,7 +183,7 @@
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
                     <Border x:Name="Border" CornerRadius="0,3,3,0" SnapsToDevicePixels="true">
                         <Border.Background>
-                            <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Background}}" />
+                            <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Background}}" />
                         </Border.Background>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
@@ -191,21 +191,21 @@
                                 <VisualState x:Name="Pressed">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.Selected}}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.Selected}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="MouseOver">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.MouseOver}}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.MouseOver}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Disabled">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.BackgroundDisabled}}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.BackgroundDisabled}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -217,7 +217,7 @@
                                   VerticalAlignment="Bottom"
                                   Data="M -0.5 3 L 5.5 3 L 2.5 6 Z">
                                 <Path.Fill>
-                                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Foreground}}" />
+                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Foreground}}" />
                                 </Path.Fill>
                             </Path>
                             <ContentPresenter />
@@ -229,7 +229,7 @@
     </Style>
 
     <Style x:Key="{x:Type ToolBar}" TargetType="{x:Type ToolBar}">
-        <Setter Property="Height" Value="{StaticResource {x:Static local:LayoutKeys.RowHeight}}"/>
+        <Setter Property="Height" Value="{DynamicResource {x:Static local:LayoutKeys.RowHeight}}"/>
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="Template">
@@ -237,10 +237,10 @@
                 <ControlTemplate TargetType="{x:Type ToolBar}">
                     <Border x:Name="Border" BorderThickness="1" CornerRadius="2">
                         <Border.BorderBrush>
-                            <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                            <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                         </Border.BorderBrush>
                         <Border.Background>
-                            <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Background}}" />
+                            <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Background}}" />
                         </Border.Background>
                         <DockPanel>
                             <ToggleButton ClickMode="Press"
@@ -257,10 +257,10 @@
                                        StaysOpen="false">
                                     <Border x:Name="DropDownBorder" BorderThickness="1">
                                         <Border.BorderBrush>
-                                            <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                                            <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                                         </Border.BorderBrush>
                                         <Border.Background>
-                                            <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Background}}" />
+                                            <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Background}}" />
                                         </Border.Background>
                                         <ToolBarOverflowPanel x:Name="PART_ToolBarOverflowPanel"
                                                               Margin="2"
@@ -297,7 +297,7 @@
                     <LinearGradientBrush.GradientStops>
                         <GradientStopCollection>
                             <GradientStop Offset="0.0" Color="#FFF" />
-                            <GradientStop Offset="1.0" Color="{StaticResource {x:Static local:ColorKeys.Background}}" />
+                            <GradientStop Offset="1.0" Color="{DynamicResource {x:Static local:ColorKeys.Background}}" />
                         </GradientStopCollection>
                     </LinearGradientBrush.GradientStops>
                 </LinearGradientBrush>

@@ -20,7 +20,7 @@
                                             <DrawingGroup.Children>
                                                 <GeometryDrawing Geometry="M 4 4 L 4 8 L                                                   8 8 L 8 4 z">
                                                     <GeometryDrawing.Brush>
-                                                        <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                                                        <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                                                     </GeometryDrawing.Brush>
                                                 </GeometryDrawing>
                                             </DrawingGroup.Children>

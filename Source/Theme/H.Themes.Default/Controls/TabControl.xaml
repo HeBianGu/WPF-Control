@@ -40,10 +40,10 @@
                                 KeyboardNavigation.TabIndex="2"
                                 KeyboardNavigation.TabNavigation="Local">
                             <Border.Background>
-                                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Background}}" />
+                                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Background}}" />
                             </Border.Background>
                             <Border.BorderBrush>
-                                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                             </Border.BorderBrush>
                             <ContentPresenter x:Name="PART_SelectedContentHost" Margin="4" ContentSource="SelectedContent" />
                         </Border>
@@ -54,7 +54,7 @@
     </Style>
 
     <Style BasedOn="{StaticResource S.Control.Base}" TargetType="{x:Type TabItem}">
-        <Setter Property="Height" Value="{StaticResource {x:Static local:LayoutKeys.ItemHeight}}" />
+        <Setter Property="Height" Value="{DynamicResource {x:Static local:LayoutKeys.ItemHeight}}" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="Template">
             <Setter.Value>
@@ -66,13 +66,13 @@
                                 <VisualState x:Name="Selected">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.Selected}}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.Selected}}" />
                                         </ColorAnimationUsingKeyFrames>
                                         <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Border.BorderThickness)">
                                             <EasingThicknessKeyFrame KeyTime="0" Value="1,1,1,0" />
                                         </ThicknessAnimationUsingKeyFrames>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="ContentSite" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.ForegroundTitle}}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.ForegroundTitle}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -82,17 +82,17 @@
                                 <!--<VisualState x:Name="MouseOver">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.MouseOver}}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.MouseOver}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>-->
                                 <VisualState x:Name="Disabled">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.BackgroundDisabled}}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.BackgroundDisabled}}" />
                                         </ColorAnimationUsingKeyFrames>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.BorderBrushDisabled}}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.BorderBrushDisabled}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -103,10 +103,10 @@
                                 BorderThickness="1,1,1,1"
                                 CornerRadius="2,12,0,0">
                             <Border.BorderBrush>
-                                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                             </Border.BorderBrush>
                             <Border.Background>
-                                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Background}}" />
+                                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Background}}" />
                             </Border.Background>
                             <ContentPresenter x:Name="ContentSite"
                                               Margin="12,2,12,2"
@@ -118,14 +118,14 @@
                                 <Style TargetType="Border">
                                     <Setter Property="Background">
                                         <Setter.Value>
-                                            <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Background}}" />
+                                            <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Background}}" />
                                         </Setter.Value>
                                     </Setter>
                                     <Style.Triggers>
                                         <Trigger Property="IsMouseOver" Value="True">
                                             <Setter Property="Background">
                                                 <Setter.Value>
-                                                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.MouseOver}}" />
+                                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.MouseOver}}" />
                                                 </Setter.Value>
                                             </Setter>
                                         </Trigger>

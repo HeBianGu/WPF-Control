@@ -2,29 +2,12 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:H.Themes.Default"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
-
-    <system:Double x:Key="{ComponentResourceKey ResourceId=S.Layout.ItemHeight, TypeInTargetAssembly={x:Type local:LayoutKeys}}">35</system:Double>
-    <system:Double x:Key="{ComponentResourceKey ResourceId=S.Layout.RowHeight, TypeInTargetAssembly={x:Type local:LayoutKeys}}">40</system:Double>
-    <system:Double x:Key="{ComponentResourceKey ResourceId=S.Layout.CornerRadius, TypeInTargetAssembly={x:Type local:LayoutKeys}}">2</system:Double>
-    
-    <system:Double x:Key="{ComponentResourceKey ResourceId=S.FontSize.Default, TypeInTargetAssembly={x:Type local:FontSizeKeys}}">12</system:Double>
-    <system:Double x:Key="{ComponentResourceKey ResourceId=S.FontSize.Header, TypeInTargetAssembly={x:Type local:FontSizeKeys}}">14</system:Double>
-    <system:Double x:Key="{ComponentResourceKey ResourceId=S.FontSize.Header.1, TypeInTargetAssembly={x:Type local:FontSizeKeys}}">22</system:Double>
-    <system:Double x:Key="{ComponentResourceKey ResourceId=S.FontSize.Header.2, TypeInTargetAssembly={x:Type local:FontSizeKeys}}">20</system:Double>
-    <system:Double x:Key="{ComponentResourceKey ResourceId=S.FontSize.Header.3, TypeInTargetAssembly={x:Type local:FontSizeKeys}}">18</system:Double>
-    <system:Double x:Key="{ComponentResourceKey ResourceId=S.FontSize.Header.4, TypeInTargetAssembly={x:Type local:FontSizeKeys}}">16</system:Double>
-    <system:Double x:Key="{ComponentResourceKey ResourceId=S.FontSize.Header.5, TypeInTargetAssembly={x:Type local:FontSizeKeys}}">14</system:Double>
-    <system:Double x:Key="{ComponentResourceKey ResourceId=S.FontSize.Header.6, TypeInTargetAssembly={x:Type local:FontSizeKeys}}">12</system:Double>
-    <system:Double x:Key="{ComponentResourceKey ResourceId=S.FontSize.Header.7, TypeInTargetAssembly={x:Type local:FontSizeKeys}}">10</system:Double>
-    <system:Double x:Key="{ComponentResourceKey ResourceId=S.FontSize.Header.8, TypeInTargetAssembly={x:Type local:FontSizeKeys}}">8</system:Double>
-    <system:Double x:Key="{ComponentResourceKey ResourceId=S.FontSize.Header.9, TypeInTargetAssembly={x:Type local:FontSizeKeys}}">6</system:Double>
-
     <Style x:Key="S.Control.Base" TargetType="Control">
-        <Setter Property="Height" Value="{StaticResource {x:Static local:LayoutKeys.ItemHeight}}" />
+        <Setter Property="Height" Value="{DynamicResource {x:Static local:LayoutKeys.ItemHeight}}" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Foreground">
             <Setter.Value>
-                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Foreground}}" />
+                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Foreground}}" />
             </Setter.Value>
         </Setter>
     </Style>

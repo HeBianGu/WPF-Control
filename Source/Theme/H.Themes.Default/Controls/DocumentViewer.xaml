@@ -13,7 +13,7 @@
                     <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Focusable="False">
                         <Grid KeyboardNavigation.TabNavigation="Local">
                             <Grid.Background>
-                                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Background}}" />
+                                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Background}}" />
                             </Grid.Background>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
@@ -48,7 +48,7 @@
                                           HorizontalScrollBarVisibility="Auto"
                                           IsTabStop="true">
                                 <ScrollViewer.Background>
-                                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Background}}"/>
+                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Background}}"/>
                                 </ScrollViewer.Background>
                             </ScrollViewer>
 

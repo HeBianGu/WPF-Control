@@ -4,8 +4,8 @@
     </ResourceDictionary.MergedDictionaries>
     <!--  Style for the days of a month.  -->
     <Style x:Key="CalendarDayButtonStyle" TargetType="CalendarDayButton">
-        <Setter Property="MinWidth" Value="{StaticResource {x:Static local:LayoutKeys.ItemHeight}}" />
-        <Setter Property="MinHeight" Value="{StaticResource {x:Static local:LayoutKeys.ItemHeight}}" />
+        <Setter Property="MinWidth" Value="{DynamicResource {x:Static local:LayoutKeys.ItemHeight}}" />
+        <Setter Property="MinHeight" Value="{DynamicResource {x:Static local:LayoutKeys.ItemHeight}}" />
         <Setter Property="FontSize" Value="10" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -60,7 +60,7 @@
                                                          Duration="0" />
                                         <ColorAnimation Storyboard.TargetName="NormalText"
                                                         Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
-                                                        To="{StaticResource {x:Static local:ColorKeys.ForegroundTitle}}"
+                                                        To="{DynamicResource {x:Static local:ColorKeys.ForegroundTitle}}"
                                                         Duration="0" />
                                     </Storyboard>
                                 </VisualState>
@@ -101,7 +101,7 @@
                                     <Storyboard>
                                         <ColorAnimation Storyboard.TargetName="NormalText"
                                                         Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
-                                                        To="{StaticResource {x:Static local:ColorKeys.Foreground}}"
+                                                        To="{DynamicResource {x:Static local:ColorKeys.Foreground}}"
                                                         Duration="0" />
                                     </Storyboard>
                                 </VisualState>
@@ -118,7 +118,7 @@
                                                          To="1" Duration="0" />
                                         <ColorAnimation Storyboard.TargetName="NormalText"
                                                         Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
-                                                        To="{StaticResource {x:Static local:ColorKeys.Foreground}}"
+                                                        To="{DynamicResource {x:Static local:ColorKeys.Foreground}}"
                                                         Duration="0" />
                                     </Storyboard>
                                 </VisualState>
@@ -142,7 +142,7 @@
                                    RadiusX="1"
                                    RadiusY="1">
                             <Rectangle.Fill>
-                                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.MouseOver}}" />
+                                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.MouseOver}}" />
                             </Rectangle.Fill>
                         </Rectangle>
                         <Rectangle x:Name="SelectedBackground"
@@ -150,7 +150,7 @@
                                    RadiusX="1"
                                    RadiusY="1">
                             <Rectangle.Fill>
-                                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Selected}}" />
+                                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Selected}}" />
                             </Rectangle.Fill>
                         </Rectangle>
                         <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" />
@@ -159,7 +159,7 @@
                                    RadiusX="1"
                                    RadiusY="1">
                             <Rectangle.Fill>
-                                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Selected}}" />
+                                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Selected}}" />
                             </Rectangle.Fill>
                         </Rectangle>
                         <ContentPresenter x:Name="NormalText"
@@ -167,7 +167,7 @@
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                             <TextElement.Foreground>
-                                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Foreground}}" />
+                                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Foreground}}" />
                             </TextElement.Foreground>
                         </ContentPresenter>
                         <Path x:Name="Blackout"
@@ -179,7 +179,7 @@
                               RenderTransformOrigin="0.5,0.5"
                               Stretch="Fill">
                             <Path.Fill>
-                                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Foreground}}" />
+                                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Foreground}}" />
                             </Path.Fill>
                         </Path>
                         <Rectangle x:Name="DayButtonFocusVisual"
@@ -188,7 +188,7 @@
                                    RadiusY="1"
                                    Visibility="Collapsed">
                             <Rectangle.Stroke>
-                                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Selected}}" />
+                                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Selected}}" />
                             </Rectangle.Stroke>
                         </Rectangle>
                     </Grid>
@@ -252,7 +252,7 @@
                                     <Storyboard>
                                         <ColorAnimation Storyboard.TargetName="NormalText"
                                                         Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
-                                                        To="{StaticResource {x:Static local:ColorKeys.Foreground}}"
+                                                        To="{DynamicResource {x:Static local:ColorKeys.Foreground}}"
                                                         Duration="0" />
                                     </Storyboard>
                                 </VisualState>
@@ -280,7 +280,7 @@
                                    RadiusX="1"
                                    RadiusY="1">
                             <Rectangle.Fill>
-                                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Selected}}" />
+                                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Selected}}" />
                             </Rectangle.Fill>
                         </Rectangle>
                         <Rectangle x:Name="Background"
@@ -288,7 +288,7 @@
                                    RadiusX="1"
                                    RadiusY="1">
                             <Rectangle.Fill>
-                                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Selected}}" />
+                                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Selected}}" />
                             </Rectangle.Fill>
                         </Rectangle>
                         <ContentPresenter x:Name="NormalText"
@@ -296,7 +296,7 @@
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                             <TextElement.Foreground>
-                                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.ForegroundAssist}}" />
+                                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.ForegroundAssist}}" />
                             </TextElement.Foreground>
                         </ContentPresenter>
                         <Rectangle x:Name="CalendarButtonFocusVisual"
@@ -305,7 +305,7 @@
                                    RadiusY="1"
                                    Visibility="Collapsed">
                             <Rectangle.Stroke>
-                                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Selected}}" />
+                                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Selected}}" />
                             </Rectangle.Stroke>
                         </Rectangle>
                     </Grid>
@@ -314,7 +314,7 @@
         </Setter>
         <Setter Property="Background">
             <Setter.Value>
-                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Selected}}" />
+                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Selected}}" />
             </Setter.Value>
         </Setter>
     </Style>
@@ -329,7 +329,7 @@
                         <Storyboard>
                             <ColorAnimation Storyboard.TargetName="path"
                                             Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)"
-                                            To="{StaticResource {x:Static local:ColorKeys.ForegroundTitle}}"
+                                            To="{DynamicResource {x:Static local:ColorKeys.ForegroundTitle}}"
                                             Duration="0" />
                         </Storyboard>
                     </VisualState>
@@ -353,7 +353,7 @@
                       Data="M288.75,232.25 L288.75,240.625 L283,236.625 z"
                       Stretch="Fill">
                     <Path.Fill>
-                        <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Foreground}}" />
+                        <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Foreground}}" />
                     </Path.Fill>
                 </Path>
             </Grid>
@@ -370,7 +370,7 @@
                         <Storyboard>
                             <ColorAnimation Storyboard.TargetName="path"
                                             Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)"
-                                            To="{StaticResource {x:Static local:ColorKeys.ForegroundTitle}}"
+                                            To="{DynamicResource {x:Static local:ColorKeys.ForegroundTitle}}"
                                             Duration="0" />
                         </Storyboard>
                     </VisualState>
@@ -394,7 +394,7 @@
                       Data="M282.875,231.875 L282.875,240.375 L288.625,236 z"
                       Stretch="Fill">
                     <Path.Fill>
-                        <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Foreground}}" />
+                        <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Foreground}}" />
                     </Path.Fill>
                 </Path>
             </Grid>
@@ -411,7 +411,7 @@
                         <Storyboard>
                             <ColorAnimation Storyboard.TargetName="buttonContent"
                                             Storyboard.TargetProperty="(TextElement.Foreground).                 (SolidColorBrush.Color)"
-                                            To="{StaticResource {x:Static local:ColorKeys.ForegroundTitle}}"
+                                            To="{DynamicResource {x:Static local:ColorKeys.ForegroundTitle}}"
                                             Duration="0" />
                         </Storyboard>
                     </VisualState>
@@ -431,7 +431,7 @@
                               Content="{TemplateBinding Content}"
                               ContentTemplate="{TemplateBinding ContentTemplate}">
                 <TextElement.Foreground>
-                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Foreground}}" />
+                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Foreground}}" />
                 </TextElement.Foreground>
             </ContentPresenter>
         </Grid>
@@ -452,14 +452,14 @@
                                        FontWeight="Bold"
                                        Text="{Binding}">
                                 <TextBlock.Foreground>
-                                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Foreground}}" />
+                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Foreground}}" />
                                 </TextBlock.Foreground>
                             </TextBlock>
                         </DataTemplate>
                     </ControlTemplate.Resources>
                     <Grid x:Name="PART_Root">
                         <Grid.Resources>
-                            <SolidColorBrush x:Key="DisabledColor" Color="{StaticResource {x:Static local:ColorKeys.BackgroundDisabled}}" />
+                            <SolidColorBrush x:Key="DisabledColor" Color="{DynamicResource {x:Static local:ColorKeys.BackgroundDisabled}}" />
                         </Grid.Resources>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
@@ -479,7 +479,7 @@
                                 CornerRadius="1">
                             <Border BorderThickness="1" CornerRadius="1">
                                 <Border.BorderBrush>
-                                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                                 </Border.BorderBrush>
                                 <Grid>
                                     <Grid.Resources />
@@ -494,14 +494,14 @@
                                     </Grid.RowDefinitions>
                                     <Border Grid.ColumnSpan="3">
                                         <Border.Background>
-                                            <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Background}}" />
+                                            <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Background}}" />
                                         </Border.Background>
                                     </Border>
                                     <Button x:Name="PART_PreviousButton"
                                             Grid.Row="0"
                                             Grid.Column="0"
-                                            Width="{StaticResource {x:Static local:LayoutKeys.ItemHeight}}"
-                                            Height="{StaticResource {x:Static local:LayoutKeys.ItemHeight}}"
+                                            Width="{DynamicResource {x:Static local:LayoutKeys.ItemHeight}}"
+                                            Height="{DynamicResource {x:Static local:LayoutKeys.ItemHeight}}"
                                             HorizontalAlignment="Left"
                                             Focusable="False"
                                             Template="{StaticResource PreviousButtonTemplate}" />
@@ -517,8 +517,8 @@
                                     <Button x:Name="PART_NextButton"
                                             Grid.Row="0"
                                             Grid.Column="2"
-                                            Width="{StaticResource {x:Static local:LayoutKeys.ItemHeight}}"
-                                            Height="{StaticResource {x:Static local:LayoutKeys.ItemHeight}}"
+                                            Width="{DynamicResource {x:Static local:LayoutKeys.ItemHeight}}"
+                                            Height="{DynamicResource {x:Static local:LayoutKeys.ItemHeight}}"
                                             HorizontalAlignment="Right"
                                             Focusable="False"
                                             Template="{StaticResource NextButtonTemplate}" />
@@ -602,17 +602,17 @@
         <Setter Property="CalendarItemStyle" Value="{StaticResource CalendarItemStyle}" />
         <Setter Property="Background">
             <Setter.Value>
-                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Background}}" />
+                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Background}}" />
             </Setter.Value>
         </Setter>
         <Setter Property="Foreground">
             <Setter.Value>
-                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Foreground}}" />
+                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Foreground}}" />
             </Setter.Value>
         </Setter>
         <Setter Property="BorderBrush">
             <Setter.Value>
-                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
             </Setter.Value>
         </Setter>
         <Setter Property="BorderThickness" Value="1" />

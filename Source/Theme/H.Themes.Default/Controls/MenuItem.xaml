@@ -92,7 +92,7 @@
                 <ControlTemplate TargetType="{x:Type Separator}">
                     <Border BorderThickness="1">
                         <Border.BorderBrush>
-                            <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                            <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                         </Border.BorderBrush>
                     </Border>
                 </ControlTemplate>
@@ -116,10 +116,10 @@
                        PopupAnimation="Fade">
                     <Border x:Name="SubmenuBorder" BorderThickness="1" SnapsToDevicePixels="True">
                         <Border.Background>
-                            <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Background}}" />
+                            <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Background}}" />
                         </Border.Background>
                         <Border.BorderBrush>
-                            <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                            <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                         </Border.BorderBrush>
                         <ScrollViewer CanContentScroll="True" Style="{StaticResource MenuScrollViewer}">
                             <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
@@ -136,7 +136,7 @@
                 <Setter TargetName="Border" Property="BorderBrush" Value="Transparent" />
                 <Setter TargetName="Border" Property="Background">
                     <Setter.Value>
-                        <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Selected}}" />
+                        <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Selected}}" />
                     </Setter.Value>
                 </Setter>
             </Trigger>
@@ -147,7 +147,7 @@
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Foreground">
                     <Setter.Value>
-                        <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.ForegroundDisabled}}" />
+                        <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.ForegroundDisabled}}" />
                     </Setter.Value>
                 </Setter>
             </Trigger>
@@ -168,14 +168,14 @@
             <Trigger Property="IsHighlighted" Value="true">
                 <Setter TargetName="Border" Property="Background">
                     <Setter.Value>
-                        <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Selected}}" />
+                        <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Selected}}" />
                     </Setter.Value>
                 </Setter>
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Foreground">
                     <Setter.Value>
-                        <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.ForegroundDisabled}}" />
+                        <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.ForegroundDisabled}}" />
                     </Setter.Value>
                 </Setter>
             </Trigger>
@@ -203,10 +203,10 @@
                         BorderThickness="1"
                         Visibility="Collapsed">
                     <Border.BorderBrush>
-                        <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                        <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                     </Border.BorderBrush>
                     <Border.Background>
-                        <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Background}}" />
+                        <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Background}}" />
                     </Border.Background>
                     <Path x:Name="CheckMark"
                           Width="7" Height="7"
@@ -215,7 +215,7 @@
                           StrokeThickness="2"
                           Visibility="Hidden">
                         <Path.Stroke>
-                            <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Foreground}}" />
+                            <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Foreground}}" />
                         </Path.Stroke>
                     </Path>
                 </Border>
@@ -246,19 +246,19 @@
             <Trigger Property="IsHighlighted" Value="true">
                 <Setter TargetName="Border" Property="Background">
                     <Setter.Value>
-                        <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Selected}}" />
+                        <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Selected}}" />
                     </Setter.Value>
                 </Setter>
                 <Setter TargetName="Border" Property="BorderBrush">
                     <Setter.Value>
-                        <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrushTitle}}" />
+                        <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrushTitle}}" />
                     </Setter.Value>
                 </Setter>
             </Trigger>
             <Trigger Property="IsEnabled" Value="false">
                 <Setter Property="Foreground">
                     <Setter.Value>
-                        <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.ForegroundDisabled}}" />
+                        <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.ForegroundDisabled}}" />
                     </Setter.Value>
                 </Setter>
             </Trigger>
@@ -293,10 +293,10 @@
                       VerticalAlignment="Center"
                       Data="M 0 0 L 0 7 L 4 3.5 Z">
                     <Path.Fill>
-                        <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Foreground}}" />
+                        <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Foreground}}" />
                     </Path.Fill>
                     <Path.Stroke>
-                        <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Foreground}}" />
+                        <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Foreground}}" />
                     </Path.Stroke>
                 </Path>
                 <Popup x:Name="Popup"
@@ -308,10 +308,10 @@
                        PopupAnimation="Fade">
                     <Border x:Name="SubmenuBorder" BorderThickness="1" SnapsToDevicePixels="True">
                         <Border.Background>
-                            <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Background}}" />
+                            <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Background}}" />
                         </Border.Background>
                         <Border.BorderBrush>
-                            <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                            <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                         </Border.BorderBrush>
                         <ScrollViewer CanContentScroll="True" Style="{StaticResource MenuScrollViewer}">
                             <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
@@ -327,12 +327,12 @@
             <Trigger Property="IsHighlighted" Value="true">
                 <Setter TargetName="Border" Property="Background">
                     <Setter.Value>
-                        <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Selected}}" />
+                        <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Selected}}" />
                     </Setter.Value>
                 </Setter>
                 <Setter TargetName="Border" Property="BorderBrush">
                     <Setter.Value>
-                        <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrushTitle}}" />
+                        <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrushTitle}}" />
                     </Setter.Value>
                 </Setter>
             </Trigger>
@@ -343,7 +343,7 @@
             <Trigger Property="IsEnabled" Value="false">
                 <Setter Property="Foreground">
                     <Setter.Value>
-                        <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.ForegroundDisabled}}" />
+                        <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.ForegroundDisabled}}" />
                     </Setter.Value>
                 </Setter>
             </Trigger>

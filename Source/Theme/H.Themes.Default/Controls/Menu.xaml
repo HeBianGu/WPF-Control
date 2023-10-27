@@ -11,10 +11,10 @@
                 <ControlTemplate TargetType="{x:Type Menu}">
                     <Border BorderThickness="1">
                         <Border.BorderBrush>
-                            <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                            <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                         </Border.BorderBrush>
                         <Border.Background>
-                            <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Background}}" />
+                            <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Background}}" />
                         </Border.Background>
                         <StackPanel ClipToBounds="True" IsItemsHost="True" Orientation="Horizontal" />
                     </Border>

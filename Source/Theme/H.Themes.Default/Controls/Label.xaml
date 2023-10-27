@@ -8,7 +8,7 @@
         <Setter Property="VerticalContentAlignment" Value="Top" />
         <Setter Property="Foreground">
             <Setter.Value>
-                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Foreground}}" />
+                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Foreground}}" />
             </Setter.Value>
         </Setter>
         <Setter Property="Template">
@@ -21,7 +21,7 @@
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Foreground">
                                 <Setter.Value>
-                                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.ForegroundDisabled}}" />
+                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.ForegroundDisabled}}" />
                                 </Setter.Value>
                             </Setter>
                         </Trigger>

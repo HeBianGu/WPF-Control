@@ -27,10 +27,10 @@
                 <ControlTemplate TargetType="{x:Type Thumb}">
                     <Ellipse x:Name="Ellipse" StrokeThickness="1">
                         <Ellipse.Stroke>
-                            <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                            <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                         </Ellipse.Stroke>
                         <Ellipse.Fill>
-                            <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.ForegroundAssist}}" />
+                            <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.ForegroundAssist}}" />
                         </Ellipse.Fill>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
@@ -38,21 +38,21 @@
                                 <VisualState x:Name="MouseOver">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Ellipse" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.Foreground}}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.Foreground}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Pressed">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Ellipse" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.ForegroundTitle}}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.ForegroundTitle}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Disabled">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Ellipse" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource {x:Static local:ColorKeys.ForegroundDisabled}}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.ForegroundDisabled}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -78,7 +78,7 @@
                      SnapsToDevicePixels="True"
                      Visibility="Collapsed">
                 <TickBar.Fill>
-                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                 </TickBar.Fill>
             </TickBar>
             <Border x:Name="TrackBackground"
@@ -88,10 +88,10 @@
                     BorderThickness="1"
                     CornerRadius="2">
                 <Border.BorderBrush>
-                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                 </Border.BorderBrush>
                 <Border.Background>
-                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                 </Border.Background>
             </Border>
             <Track x:Name="PART_Track" Grid.Row="1">
@@ -101,14 +101,14 @@
                             <Style BasedOn="{StaticResource SliderButtonStyle}" TargetType="RepeatButton">
                                 <Setter Property="Background">
                                     <Setter.Value>
-                                        <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.ForegroundAssist}}" />
+                                        <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.ForegroundAssist}}" />
                                     </Setter.Value>
                                 </Setter>
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
                                         <Setter Property="Background">
                                             <Setter.Value>
-                                                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Foreground}}" />
+                                                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Foreground}}" />
                                             </Setter.Value>
                                         </Setter>
                                     </Trigger>
@@ -129,7 +129,7 @@
                                     <Trigger Property="IsMouseOver" Value="True">
                                         <Setter Property="Background">
                                             <Setter.Value>
-                                                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrushTitle}}" />
+                                                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrushTitle}}" />
                                             </Setter.Value>
                                         </Setter>
                                     </Trigger>
@@ -175,7 +175,7 @@
                      SnapsToDevicePixels="True"
                      Visibility="Collapsed">
                 <TickBar.Fill>
-                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                 </TickBar.Fill>
             </TickBar>
 
@@ -185,10 +185,10 @@
                     BorderThickness="1"
                     CornerRadius="2">
                 <Border.BorderBrush>
-                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                 </Border.BorderBrush>
                 <Border.Background>
-                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Background}}" />
+                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Background}}" />
                 </Border.Background>
             </Border>
             <Track x:Name="PART_Track" Grid.Column="1">

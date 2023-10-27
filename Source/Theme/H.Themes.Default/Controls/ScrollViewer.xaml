@@ -19,7 +19,7 @@
                         </Grid.RowDefinitions>
                         <Border Grid.Column="1" BorderThickness="0,1,1,1">
                             <Border.BorderBrush>
-                                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                             </Border.BorderBrush>
                             <ScrollContentPresenter />
                         </Border>

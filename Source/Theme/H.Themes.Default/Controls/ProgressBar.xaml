@@ -27,7 +27,7 @@
                         </VisualStateManager.VisualStateGroups>
                         <Border x:Name="PART_Track" BorderThickness="1" CornerRadius="2">
                             <Border.BorderBrush>
-                                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                             </Border.BorderBrush>
                         </Border>
                         <Border x:Name="PART_Indicator"
@@ -37,7 +37,7 @@
                                 BorderThickness="1"
                                 CornerRadius="2">
                             <Border.BorderBrush>
-                                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                             </Border.BorderBrush>
                             <Grid x:Name="Animation" ClipToBounds="True">
                                 <Rectangle x:Name="PART_GlowRect"
@@ -48,10 +48,10 @@
                                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,0" Opacity="0.5">
                                             <LinearGradientBrush.GradientStops>
                                                 <GradientStopCollection>
-                                                    <GradientStop Offset="0" Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
-                                                    <GradientStop Offset="0.4" Color="{StaticResource {x:Static local:ColorKeys.ForegroundAssist}}" />
-                                                    <GradientStop Offset="0.6" Color="{StaticResource {x:Static local:ColorKeys.ForegroundAssist}}" />
-                                                    <GradientStop Offset="1" Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                                                    <GradientStop Offset="0" Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
+                                                    <GradientStop Offset="0.4" Color="{DynamicResource {x:Static local:ColorKeys.ForegroundAssist}}" />
+                                                    <GradientStop Offset="0.6" Color="{DynamicResource {x:Static local:ColorKeys.ForegroundAssist}}" />
+                                                    <GradientStop Offset="1" Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                                                 </GradientStopCollection>
                                             </LinearGradientBrush.GradientStops>
                                         </LinearGradientBrush>
@@ -65,12 +65,12 @@
         </Setter>
         <Setter Property="Background">
             <Setter.Value>
-                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.MouseOver}}" />
+                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.MouseOver}}" />
             </Setter.Value>
         </Setter>
         <Setter Property="Foreground">
             <Setter.Value>
-                <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
 
             </Setter.Value>
         </Setter>

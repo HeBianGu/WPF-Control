@@ -4,7 +4,7 @@
         <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
     <Style x:Key="{x:Type StatusBar}" BasedOn="{StaticResource S.Control.Base}" TargetType="{x:Type StatusBar}">
-        <Setter Property="Height" Value="{StaticResource {x:Static local:LayoutKeys.RowHeight}}"/>
+        <Setter Property="Height" Value="{DynamicResource {x:Static local:LayoutKeys.RowHeight}}"/>
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="Template">
@@ -12,10 +12,10 @@
                 <ControlTemplate TargetType="{x:Type StatusBar}">
                     <Border Padding="1">
                         <Border.BorderBrush>
-                            <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                            <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                         </Border.BorderBrush>
                         <Border.Background>
-                            <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Background}}" />
+                            <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Background}}" />
                         </Border.Background>
                         <ItemsPresenter />
                     </Border>
@@ -32,7 +32,7 @@
                 <ControlTemplate TargetType="{x:Type Separator}">
                     <Rectangle Width="1" Margin="3">
                         <Rectangle.Fill>
-                            <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.BorderBrush}}" />
+                            <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
                         </Rectangle.Fill>
                     </Rectangle>
                 </ControlTemplate>
@@ -51,7 +51,7 @@
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Foreground">
                                 <Setter.Value>
-                                    <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.ForegroundDisabled}}" />
+                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.ForegroundDisabled}}" />
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
