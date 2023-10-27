@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Window.Main", "..\Source\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Test.Window.Main", "..\Source\Test\H.Test.Window.Main\H.Test.Window.Main.csproj", "{97AC1E92-BF00-4BA6-AADE-E34EC577F689}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Window.Dialog", "..\Source\Window\H.Window.Dialog\H.Window.Dialog.csproj", "{9A7B0826-78D8-4611-A465-E339F3FF4CF8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{97AC1E92-BF00-4BA6-AADE-E34EC577F689}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97AC1E92-BF00-4BA6-AADE-E34EC577F689}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97AC1E92-BF00-4BA6-AADE-E34EC577F689}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A7B0826-78D8-4611-A465-E339F3FF4CF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A7B0826-78D8-4611-A465-E339F3FF4CF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A7B0826-78D8-4611-A465-E339F3FF4CF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A7B0826-78D8-4611-A465-E339F3FF4CF8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +54,7 @@ Global
 		{F9B9BD4A-3BEA-49A0-BBB1-5DF79855E645} = {64C710EF-95D0-4811-A72E-58B2AC79E2B8}
 		{1E6F4F31-46F1-4101-9979-84D145464EA4} = {1AB0D62B-DCA9-4607-B3CC-7522CE1EF8C7}
 		{97AC1E92-BF00-4BA6-AADE-E34EC577F689} = {E2C0B11D-5ED5-4F22-8E56-F68982B6E59B}
+		{9A7B0826-78D8-4611-A465-E339F3FF4CF8} = {1AB0D62B-DCA9-4607-B3CC-7522CE1EF8C7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF825C3D-F4F4-4E62-BBFF-B42A5E81112F}

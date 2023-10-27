@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
     <TargetFramework>net7.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
@@ -9,8 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Theme\H.Themes.Default\H.Themes.Default.csproj" />
-    <ProjectReference Include="..\..\Window\H.Window.Dialog\H.Window.Dialog.csproj" />
-    <ProjectReference Include="..\..\Window\H.Window.Main\H.Window.Main.csproj" />
   </ItemGroup>
 
 </Project>

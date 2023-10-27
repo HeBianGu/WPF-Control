@@ -1,4 +1,5 @@
-﻿using System;
+﻿using H.Window.Dialog;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,12 @@ namespace H.Test.Window.Main
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new DialogWindow();
+            dialog.ShowDialog();
         }
     }
 }
