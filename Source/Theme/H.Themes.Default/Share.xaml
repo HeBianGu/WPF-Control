@@ -3,53 +3,28 @@
                     xmlns:local="clr-namespace:H.Themes.Default"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-    <system:Double x:Key="S.Double.ItemHeight">35</system:Double>
-    <system:Double x:Key="S.Double.RowHeight">40</system:Double>
-    <system:Double x:Key="S.Double.ItemCornerRadius">2</system:Double>
-    <system:Double x:Key="S.Double.FontSize">15</system:Double>
+    <system:Double x:Key="{ComponentResourceKey ResourceId=S.Layout.ItemHeight, TypeInTargetAssembly={x:Type local:LayoutKeys}}">35</system:Double>
+    <system:Double x:Key="{ComponentResourceKey ResourceId=S.Layout.RowHeight, TypeInTargetAssembly={x:Type local:LayoutKeys}}">40</system:Double>
+    <system:Double x:Key="{ComponentResourceKey ResourceId=S.Layout.CornerRadius, TypeInTargetAssembly={x:Type local:LayoutKeys}}">2</system:Double>
+    
+    <system:Double x:Key="{ComponentResourceKey ResourceId=S.FontSize.Default, TypeInTargetAssembly={x:Type local:FontSizeKeys}}">12</system:Double>
+    <system:Double x:Key="{ComponentResourceKey ResourceId=S.FontSize.Header, TypeInTargetAssembly={x:Type local:FontSizeKeys}}">14</system:Double>
+    <system:Double x:Key="{ComponentResourceKey ResourceId=S.FontSize.Header.1, TypeInTargetAssembly={x:Type local:FontSizeKeys}}">22</system:Double>
+    <system:Double x:Key="{ComponentResourceKey ResourceId=S.FontSize.Header.2, TypeInTargetAssembly={x:Type local:FontSizeKeys}}">20</system:Double>
+    <system:Double x:Key="{ComponentResourceKey ResourceId=S.FontSize.Header.3, TypeInTargetAssembly={x:Type local:FontSizeKeys}}">18</system:Double>
+    <system:Double x:Key="{ComponentResourceKey ResourceId=S.FontSize.Header.4, TypeInTargetAssembly={x:Type local:FontSizeKeys}}">16</system:Double>
+    <system:Double x:Key="{ComponentResourceKey ResourceId=S.FontSize.Header.5, TypeInTargetAssembly={x:Type local:FontSizeKeys}}">14</system:Double>
+    <system:Double x:Key="{ComponentResourceKey ResourceId=S.FontSize.Header.6, TypeInTargetAssembly={x:Type local:FontSizeKeys}}">12</system:Double>
+    <system:Double x:Key="{ComponentResourceKey ResourceId=S.FontSize.Header.7, TypeInTargetAssembly={x:Type local:FontSizeKeys}}">10</system:Double>
+    <system:Double x:Key="{ComponentResourceKey ResourceId=S.FontSize.Header.8, TypeInTargetAssembly={x:Type local:FontSizeKeys}}">8</system:Double>
+    <system:Double x:Key="{ComponentResourceKey ResourceId=S.FontSize.Header.9, TypeInTargetAssembly={x:Type local:FontSizeKeys}}">6</system:Double>
 
-    <!--<Style x:Key="S.Control.Font" TargetType="Control">
-        <Setter Property="FontSize" Value="{StaticResource S.Double.FontSize}" />
-    </Style>-->
     <Style x:Key="S.Control.Base" TargetType="Control">
-        <Setter Property="Height" Value="{StaticResource S.Double.ItemHeight}" />
+        <Setter Property="Height" Value="{StaticResource {x:Static local:LayoutKeys.ItemHeight}}" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Foreground">
             <Setter.Value>
                 <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Foreground}}" />
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-
-    <Style x:Key="{x:Type ResizeGrip}" TargetType="{x:Type ResizeGrip}">
-        <Setter Property="OverridesDefaultStyle" Value="true" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type ResizeGrip}">
-                    <Border Width="16"
-                            Height="16"
-                            Background="Transparent"
-                            SnapsToDevicePixels="True">
-                        <Rectangle Margin="2">
-                            <Rectangle.Fill>
-                                <DrawingBrush TileMode="Tile"
-                                              Viewbox="0,0,8,8"
-                                              ViewboxUnits="Absolute"
-                                              Viewport="0,0,4,4"
-                                              ViewportUnits="Absolute">
-                                    <DrawingBrush.Drawing>
-                                        <DrawingGroup>
-                                            <DrawingGroup.Children>
-                                                <GeometryDrawing Brush="#FFE8EDF9" Geometry="M 4 4 L 4 8 L                                                   8 8 L 8 4 z" />
-                                            </DrawingGroup.Children>
-                                        </DrawingGroup>
-                                    </DrawingBrush.Drawing>
-                                </DrawingBrush>
-                            </Rectangle.Fill>
-                        </Rectangle>
-                    </Border>
-                </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>

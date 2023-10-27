@@ -54,7 +54,7 @@
     </Style>
 
     <Style BasedOn="{StaticResource S.Control.Base}" TargetType="{x:Type TabItem}">
-        <Setter Property="Height" Value="{StaticResource S.Double.ItemHeight}" />
+        <Setter Property="Height" Value="{StaticResource {x:Static local:LayoutKeys.ItemHeight}}" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="Template">
             <Setter.Value>

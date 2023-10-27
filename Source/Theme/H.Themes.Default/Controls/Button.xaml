@@ -93,7 +93,7 @@
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}" />
         <Setter Property="Padding" Value="10" />
-        <Setter Property="Width" Value="{StaticResource S.Double.ItemHeight}" />
+        <Setter Property="Width" Value="{StaticResource {x:Static local:LayoutKeys.ItemHeight}}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -160,7 +160,7 @@
     </Style>
 
     <Style x:Key="S.Button.Geometry" BasedOn="{StaticResource S.Control.Base}" TargetType="Button">
-        <Setter Property="Width" Value="{StaticResource S.Double.ItemHeight}" />
+        <Setter Property="Width" Value="{StaticResource {x:Static local:LayoutKeys.ItemHeight}}" />
         <Setter Property="Padding" Value="5" />
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="1"/>

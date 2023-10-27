@@ -168,7 +168,7 @@
                                       IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}"
                                       Style="{StaticResource ExpandCollapseToggleStyle}" />
 
-                        <Border Grid.Column="1" Height="{StaticResource S.Double.ItemHeight}" Padding="{TemplateBinding Padding}">
+                        <Border Grid.Column="1" Height="{StaticResource {x:Static local:LayoutKeys.ItemHeight}}" Padding="{TemplateBinding Padding}">
                             <ContentPresenter x:Name="PART_Header"
                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                               VerticalAlignment="Center"

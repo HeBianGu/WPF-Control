@@ -4,8 +4,8 @@
     </ResourceDictionary.MergedDictionaries>
     <!--  Style for the days of a month.  -->
     <Style x:Key="CalendarDayButtonStyle" TargetType="CalendarDayButton">
-        <Setter Property="MinWidth" Value="{StaticResource S.Double.ItemHeight}" />
-        <Setter Property="MinHeight" Value="{StaticResource S.Double.ItemHeight}" />
+        <Setter Property="MinWidth" Value="{StaticResource {x:Static local:LayoutKeys.ItemHeight}}" />
+        <Setter Property="MinHeight" Value="{StaticResource {x:Static local:LayoutKeys.ItemHeight}}" />
         <Setter Property="FontSize" Value="10" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -500,8 +500,8 @@
                                     <Button x:Name="PART_PreviousButton"
                                             Grid.Row="0"
                                             Grid.Column="0"
-                                            Width="{StaticResource S.Double.ItemHeight}"
-                                            Height="{StaticResource S.Double.ItemHeight}"
+                                            Width="{StaticResource {x:Static local:LayoutKeys.ItemHeight}}"
+                                            Height="{StaticResource {x:Static local:LayoutKeys.ItemHeight}}"
                                             HorizontalAlignment="Left"
                                             Focusable="False"
                                             Template="{StaticResource PreviousButtonTemplate}" />
@@ -517,8 +517,8 @@
                                     <Button x:Name="PART_NextButton"
                                             Grid.Row="0"
                                             Grid.Column="2"
-                                            Width="{StaticResource S.Double.ItemHeight}"
-                                            Height="{StaticResource S.Double.ItemHeight}"
+                                            Width="{StaticResource {x:Static local:LayoutKeys.ItemHeight}}"
+                                            Height="{StaticResource {x:Static local:LayoutKeys.ItemHeight}}"
                                             HorizontalAlignment="Right"
                                             Focusable="False"
                                             Template="{StaticResource NextButtonTemplate}" />

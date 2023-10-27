@@ -8,7 +8,6 @@
         Title="MainWindow"
         Width="1100"
         Height="650"
-        FontSize="14"
         Style="{StaticResource {x:Type Window}}"
         mc:Ignorable="d">
     <DockPanel>

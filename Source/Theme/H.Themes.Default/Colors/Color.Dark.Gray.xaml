@@ -26,7 +26,7 @@
     <Color x:Key="{ComponentResourceKey ResourceId=S.Brush.TextSelected, TypeInTargetAssembly={x:Type local:ColorKeys}}">#404957</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Brush.TextForeground.Assist, TypeInTargetAssembly={x:Type local:ColorKeys}}">#737f94</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Brush.TextForeground.Link, TypeInTargetAssembly={x:Type local:ColorKeys}}">#6296d8</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Brush.TextForeground.Disabled, TypeInTargetAssembly={x:Type local:ColorKeys}}">#AAc3cbd9</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Brush.TextForeground.Disabled, TypeInTargetAssembly={x:Type local:ColorKeys}}">Red</Color>
 
     <!--  BorderBrush  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Brush.TextBorderBrush, TypeInTargetAssembly={x:Type local:ColorKeys}}">#404957</Color>

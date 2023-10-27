@@ -64,8 +64,8 @@
 
     <!--  Style and template for the DataGrid.  -->
     <Style TargetType="{x:Type DataGrid}">
-        <Setter Property="MinRowHeight" Value="{StaticResource S.Double.ItemHeight}" />
-        <Setter Property="ColumnHeaderHeight" Value="{StaticResource S.Double.ItemHeight}" />
+        <Setter Property="MinRowHeight" Value="{StaticResource {x:Static local:LayoutKeys.ItemHeight}}" />
+        <Setter Property="ColumnHeaderHeight" Value="{StaticResource {x:Static local:LayoutKeys.ItemHeight}}" />
         <Setter Property="Foreground">
             <Setter.Value>
                 <SolidColorBrush Color="{StaticResource {x:Static local:ColorKeys.Foreground}}" />

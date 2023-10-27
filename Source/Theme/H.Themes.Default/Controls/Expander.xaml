@@ -105,7 +105,7 @@
                         </VisualStateManager.VisualStateGroups>
                         <Border x:Name="Border"
                                 Grid.Row="0"
-                                Height="{StaticResource S.Double.ItemHeight}"
+                                Height="{StaticResource {x:Static local:LayoutKeys.ItemHeight}}"
                                 BorderThickness="1"
                                 CornerRadius="2,2,0,0">
                             <Border.BorderBrush>

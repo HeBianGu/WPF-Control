@@ -8,7 +8,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <!--<ResourceDictionary Source="pack://application:,,,/HeBianGu.LightStyle;component/Themes/Dark.Gray.xaml" />-->
                 <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/Colors/Color.Dark.Gray.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/Controls/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/Controls.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
