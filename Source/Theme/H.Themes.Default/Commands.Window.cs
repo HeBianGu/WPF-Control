@@ -68,4 +68,16 @@ namespace H.Themes.Default
                 SystemCommands.MinimizeWindow(window);
         }
     }
+
+    public class SumitWindowCommand : WindowCommandBase
+    {
+        public override void Execute(object? parameter)
+        {
+            if (parameter is Window window)
+            {
+                window.DialogResult = true;
+                SystemCommands.CloseWindow(window);
+            }
+        }
+    }
 }

@@ -1,0 +1,19 @@
+﻿<Window x:Class="H.Test.Mvvm.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:H.Test.Mvvm"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Title="MainWindow"
+        Width="800"
+        Height="450"
+        mc:Ignorable="d">
+    <Window.DataContext>
+        <local:MyViewModel x:Name="vm" />
+    </Window.DataContext>
+
+    <StackPanel>
+        <TextBlock Text="{Binding ElementName=vm, Path=Counter, Mode=OneWay}" />
+        <Button Command="{Binding ElementName=vm, Path=IncrementCounterCommand}" Content="Click me!" />
+    </StackPanel>
+</Window>

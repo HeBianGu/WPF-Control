@@ -50,7 +50,9 @@
     <Style x:Key="{x:Type ListBoxItem}" BasedOn="{StaticResource S.Control.Base}" TargetType="ListBoxItem">
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="Height" Value="Auto"/>
         <Setter Property="MinHeight" Value="{DynamicResource {x:Static local:LayoutKeys.ItemHeight}}" />
+        <Setter Property="Padding" Value="10 6"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListBoxItem">

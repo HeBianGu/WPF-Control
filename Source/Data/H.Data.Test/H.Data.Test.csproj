@@ -1,15 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
     <TargetFramework>net7.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Data\H.Data.Test\H.Data.Test.csproj" />
-    <ProjectReference Include="..\..\Theme\H.Themes.Default\H.Themes.Default.csproj" />
+    <None Remove="Themes\Generic.xaml~RF126a91a0.TMP" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,51 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:H.Data.Test">
+    <DataTemplate DataType="{x:Type local:Students}">
+        <ListBox ItemsSource="{Binding}" />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type local:Student}">
+        <StackPanel>
+            <StackPanel.Resources>
+                <Style x:Key="S.TextBlock.Title" TargetType="TextBlock">
+                    <Setter Property="Width" Value="60"/>
+                </Style>
+            </StackPanel.Resources>
+            <BulletDecorator>
+                <BulletDecorator.Bullet>
+                    <TextBlock Style="{StaticResource S.TextBlock.Title}" Text="Name" />
+                </BulletDecorator.Bullet>
+                <TextBlock Text="{Binding Name}" />
+            </BulletDecorator>
+            <BulletDecorator>
+                <BulletDecorator.Bullet>
+                    <TextBlock Style="{StaticResource S.TextBlock.Title}" Text="Age" />
+                </BulletDecorator.Bullet>
+                <TextBlock Text="{Binding Age}" />
+            </BulletDecorator>
+            <BulletDecorator>
+                <BulletDecorator.Bullet>
+                    <TextBlock Style="{StaticResource S.TextBlock.Title}" Text="Email" />
+                </BulletDecorator.Bullet>
+                <TextBlock Text="{Binding Emall}" />
+            </BulletDecorator>
+            <BulletDecorator>
+                <BulletDecorator.Bullet>
+                    <TextBlock Style="{StaticResource S.TextBlock.Title}" Text="Address" />
+                </BulletDecorator.Bullet>
+                <TextBlock Text="{Binding Address}" />
+            </BulletDecorator>
+            <BulletDecorator>
+                <BulletDecorator.Bullet>
+                    <TextBlock Style="{StaticResource S.TextBlock.Title}" Text="Class" />
+                </BulletDecorator.Bullet>
+                <TextBlock Text="{Binding Class}" />
+            </BulletDecorator>
+            <BulletDecorator>
+                <BulletDecorator.Bullet>
+                    <TextBlock Style="{StaticResource S.TextBlock.Title}" Text="Score" />
+                </BulletDecorator.Bullet>
+                <TextBlock Text="{Binding Score}" />
+            </BulletDecorator>
+        </StackPanel>
+    </DataTemplate>
+</ResourceDictionary>

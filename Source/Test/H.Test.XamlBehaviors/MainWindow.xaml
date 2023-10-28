@@ -1,0 +1,29 @@
+﻿<Window x:Class="H.Test.XamlBehaviors.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:H.Test.XamlBehaviors"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Title="MainWindow"
+        Width="800"
+        Height="450"
+        mc:Ignorable="d">
+    <Grid>
+        <Button x:Name="YellowButton"
+                Grid.Column="0"
+                Margin="0,10,5,10"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Background="DarkGray"
+                BorderBrush="LightYellow"
+                Content="Yellow"
+                d:LayoutOverrides="Width, Height">
+            <Behaviors:Interaction.Triggers>
+                <Behaviors:EventTrigger EventName="Click" SourceObject="{Binding ElementName=YellowButton}">
+                    <Behaviors:ChangePropertyAction PropertyName="Background" TargetObject="{Binding ElementName=YellowButton}" Value="LightYellow" />
+                </Behaviors:EventTrigger>
+            </Behaviors:Interaction.Triggers>
+        </Button>
+    </Grid>
+</Window>

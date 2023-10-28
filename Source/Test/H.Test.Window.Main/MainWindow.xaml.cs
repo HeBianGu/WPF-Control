@@ -1,4 +1,5 @@
-﻿using H.Window.Dialog;
+﻿using H.Data.Test;
+using H.Window.Dialog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,8 +29,27 @@ namespace H.Test.Window.Main
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new DialogWindow();
-            dialog.ShowDialog();
+            DialogWindow.ShowMessage("这是一个提示消息");
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            DialogWindow.ShowData(Student.Random(), x =>
+            {
+                x.Width = 500;
+                x.Height = 300;
+                x.SizeToContent = SizeToContent.Height;
+            });
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            DialogWindow.ShowData(Student.Randoms(), x =>
+            {
+                x.Width = 500;
+                x.Height = 300;
+            });
+
         }
     }
 }

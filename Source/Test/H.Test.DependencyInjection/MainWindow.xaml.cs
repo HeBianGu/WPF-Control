@@ -1,7 +1,6 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,13 +9,12 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace H.Test.Controls
+namespace H.Test.DependencyInjection
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -27,5 +25,18 @@ namespace H.Test.Controls
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var test = Ioc.Services.GetService<ITest>();
+        }
+    }
+
+    public interface ITest
+    {
+    }
+
+    public class Test : ITest
+    {
     }
 }

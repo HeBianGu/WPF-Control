@@ -8,11 +8,25 @@ using System.Windows.Controls;
 
 namespace H.Window.Main
 {
-    public class MainWindow : System.Windows.Window
+    public interface IMainWindow
     {
+        void CloseOver();
+        void ShowOver();
+    }
+
+    [TemplatePart(Name = "PART_Over")]
+    public class MainWindow : System.Windows.Window, IMainWindow
+    {
+        private Border _boderOver = null;
         static MainWindow()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(MainWindow), new FrameworkPropertyMetadata(typeof(MainWindow)));
+        }
+
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+            this._boderOver = this.Template.FindName("PART_Over", this) as Border;
         }
 
 
@@ -96,6 +110,17 @@ namespace H.Window.Main
                 }
 
             }));
+
+
+        public void ShowOver()
+        {
+            this._boderOver.Visibility = Visibility.Visible;
+        }
+
+        public void CloseOver()
+        {
+            this._boderOver.Visibility = Visibility.Collapsed;
+        }
 
 
     }

@@ -8,6 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="MainWindow.xaml~RF127390aa.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\H.Data.Test\H.Data.Test.csproj" />
     <ProjectReference Include="..\..\Theme\H.Themes.Default\H.Themes.Default.csproj" />
     <ProjectReference Include="..\..\Window\H.Window.Dialog\H.Window.Dialog.csproj" />
     <ProjectReference Include="..\..\Window\H.Window.Main\H.Window.Main.csproj" />

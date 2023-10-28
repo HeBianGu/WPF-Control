@@ -5,6 +5,7 @@
         xmlns:local="clr-namespace:H.Test.Controls"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:system="clr-namespace:System;assembly=mscorlib"
+        xmlns:h="https://github.com/HeBianGu"
         Title="MainWindow"
         Width="1100"
         Height="650"
@@ -246,16 +247,16 @@
                 </ComboBox>
             </TabItem>
             <TabItem Header="DataGrid">
-                <DataGrid ItemsSource="{local:GetStudents Count=1000}" SelectedIndex="0" />
+                <DataGrid ItemsSource="{h:GetStudents Count=1000}" SelectedIndex="0" />
             </TabItem>
             <TabItem Header="TextBox">
                 <TextBox Text="12345566" />
             </TabItem>
             <TabItem Header="ListBox">
-                <ListBox ItemsSource="{local:GetStudents Count=1000}" SelectedIndex="0" />
+                <ListBox ItemsSource="{h:GetStudents Count=1000}" SelectedIndex="0" />
             </TabItem>
             <TabItem Header="ListView">
-                <ListView ItemsSource="{local:GetStudents Count=1000}" SelectedIndex="0">
+                <ListView ItemsSource="{h:GetStudents Count=1000}" SelectedIndex="0">
                     <ListView.View>
                         <GridView>
                             <GridView.Columns>
@@ -270,7 +271,7 @@
             </TabItem>
             <TabItem Header="GroupBox">
                 <GroupBox Header="GroupBox">
-                    <ListBox ItemsSource="{local:GetStudents Count=1000}" />
+                    <ListBox ItemsSource="{h:GetStudents Count=1000}" />
                 </GroupBox>
             </TabItem>
             <TabItem Header="Label">
@@ -278,11 +279,11 @@
             </TabItem>
             <TabItem Header="Expander">
                 <Expander Header="Expander">
-                    <ListBox ItemsSource="{local:GetStudents Count=1000}" />
+                    <ListBox ItemsSource="{h:GetStudents Count=1000}" />
                 </Expander>
             </TabItem>
             <TabItem Header="ListBox">
-                <ListBox ItemsSource="{local:GetStudents Count=1000}" SelectedIndex="0" />
+                <ListBox ItemsSource="{h:GetStudents Count=1000}" SelectedIndex="0" />
             </TabItem>
             <TabItem Header="PasswordBox">
                 <PasswordBox />

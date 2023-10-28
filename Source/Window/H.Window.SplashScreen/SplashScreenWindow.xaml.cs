@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace H.Window.Dialog
+namespace H.Window.SplashScreen
 {
-    public class DialogWindow : System.Windows.Window
+    public class SplashScreenWindow : System.Windows.Window
     {
-        static DialogWindow()
+        static SplashScreenWindow()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(DialogWindow), new FrameworkPropertyMetadata(typeof(DialogWindow)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(SplashScreenWindow), new FrameworkPropertyMetadata(typeof(SplashScreenWindow)));
         }
 
         public ControlTemplate BottomTemplate
@@ -24,9 +24,9 @@ namespace H.Window.Dialog
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty BottomTemplateProperty =
-            DependencyProperty.Register("BottomTemplate", typeof(ControlTemplate), typeof(DialogWindow), new FrameworkPropertyMetadata(default(ControlTemplate), (d, e) =>
+            DependencyProperty.Register("BottomTemplate", typeof(ControlTemplate), typeof(SplashScreenWindow), new FrameworkPropertyMetadata(default(ControlTemplate), (d, e) =>
             {
-                DialogWindow control = d as DialogWindow;
+                SplashScreenWindow control = d as SplashScreenWindow;
 
                 if (control == null) return;
 
@@ -50,7 +50,7 @@ namespace H.Window.Dialog
             {
                 x.Width = 400;
                 x.Height = 200;
-                x.HorizontalContentAlignment= HorizontalAlignment.Center;
+                x.HorizontalContentAlignment = HorizontalAlignment.Center;
                 x.Padding = new Thickness(10, 6, 10, 6);
                 action?.Invoke(x);
             };
@@ -60,7 +60,7 @@ namespace H.Window.Dialog
 
         public static bool? ShowData(object data, Action<System.Windows.Window> action = null, string title = "提示", bool ownerMainWindow = true)
         {
-            DialogWindow dialog = new DialogWindow();
+            SplashScreenWindow dialog = new SplashScreenWindow();
             dialog.Title = title;
             dialog.Content = data;
             if (ownerMainWindow)
@@ -86,7 +86,7 @@ namespace H.Window.Dialog
 
     public class DialogKeys
     {
-        public static ComponentResourceKey ShowMessage => new ComponentResourceKey(typeof(DialogKeys), "S.DialogWindow.ShowMessage");
+        public static ComponentResourceKey ShowMessage => new ComponentResourceKey(typeof(DialogKeys), "S.SplashScreenWindow.ShowMessage");
 
     }
 }
