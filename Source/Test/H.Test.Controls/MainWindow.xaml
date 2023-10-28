@@ -303,7 +303,7 @@
             </TabItem>
             <TabItem Header="ScrollViewer">
                 <ScrollViewer>
-                    <ListBox ItemsSource="{local:GetStudents Count=1000}" SelectedIndex="0" />
+                    <ListBox ItemsSource="{h:GetStudents Count=1000}" SelectedIndex="0" />
                 </ScrollViewer>
             </TabItem>
             <TabItem Header="Slider">
