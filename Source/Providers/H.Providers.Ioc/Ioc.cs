@@ -33,4 +33,9 @@ namespace System
     {
         public static Setting Instance => Ioc.Services.GetService(typeof(Interface)) as Setting;
     }
+
+    public abstract class IocInstance<Interface>
+    {
+        public static Interface Instance => (Interface)Ioc.Services.GetService(typeof(Interface));
+    }
 }

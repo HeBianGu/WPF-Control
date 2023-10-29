@@ -14,7 +14,10 @@ namespace H.Extensions.ApplicationBase
         /// 依赖注入注册服务
         /// </summary>
         /// <param name="services"></param>
-        protected abstract void ConfigureServices(IServiceCollection services);
+        protected virtual void ConfigureServices(IServiceCollection services)
+        {
+
+        }
 
 
         /// <summary>

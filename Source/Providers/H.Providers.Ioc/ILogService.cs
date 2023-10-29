@@ -11,4 +11,9 @@
         void Trace(params string[] messages);
         void Warn(params string[] messages);
     }
+
+    public class Logger : IocInstance<ILogService>
+    {
+
+    }
 }
