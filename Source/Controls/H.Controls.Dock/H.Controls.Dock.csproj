@@ -5,7 +5,7 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Theme\H.Themes.Default\H.Themes.Default.csproj" />
+    <ProjectReference Include="..\..\Themes\H.Themes.Default\H.Themes.Default.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -17,9 +17,13 @@
 	xmlns:avalonDockConverters="clr-namespace:H.Controls.Dock.Converters"
 	xmlns:avalonDockLayout="clr-namespace:H.Controls.Dock.Layout"
 	xmlns:avalonDockProperties="clr-namespace:H.Controls.Dock.Properties"
+    xmlns:h="https://github.com/HeBianGu"
 	xmlns:shell="clr-namespace:Microsoft.Windows.Shell">
 
-	<!--  DocumentPaneControlStyle  -->
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/Controls/TabControl.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    <!--  DocumentPaneControlStyle  -->
 	<Style x:Key="DocumentPaneControlStyle" TargetType="{x:Type avalonDockControls:LayoutDocumentPaneControl}">
 		<Setter Property="Template">
 			<Setter.Value>
@@ -100,19 +104,18 @@
 		</Setter>
 		<Setter Property="ItemContainerStyle">
 			<Setter.Value>
-				<Style TargetType="{x:Type TabItem}">
+				<Style TargetType="{x:Type TabItem}" BasedOn="{StaticResource {x:Type TabItem}}">
 					<Setter Property="Visibility" Value="{Binding IsVisible, Converter={avalonDockConverters:BoolToVisibilityConverter}}" />
 					<Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
 					<Setter Property="IsEnabled" Value="{Binding IsEnabled}" />
 					<Setter Property="ToolTip" Value="{Binding ToolTip}" />
 					<Setter Property="Padding" Value="2,0,2,0" />
-					<Setter Property="Margin" Value="0,2,0,0" />
-					<Setter Property="Template">
+                    <Setter Property="Margin" Value="0,2,0,0" />
+                    <!--<Setter Property="Template">
 						<Setter.Value>
 							<ControlTemplate TargetType="{x:Type TabItem}">
-								<Grid SnapsToDevicePixels="true">
-
-									<Border
+                                <Grid SnapsToDevicePixels="true">
+                                    <Border
 										x:Name="Bd"
 										Padding="{TemplateBinding Padding}"
 										Background="{TemplateBinding Background}"
@@ -149,7 +152,7 @@
 								</ControlTemplate.Triggers>
 							</ControlTemplate>
 						</Setter.Value>
-					</Setter>
+					</Setter>-->
 				</Style>
 			</Setter.Value>
 		</Setter>
@@ -389,7 +392,7 @@
 	</ControlTemplate>
 
 	<ControlTemplate x:Key="AnchorGroupTemplate" TargetType="{x:Type avalonDockControls:LayoutAnchorGroupControl}">
-		<ItemsControl ItemsSource="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Children}">
+		<ItemsControl Height="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}" ItemsSource="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Children}">
 			<ItemsControl.ItemsPanel>
 				<ItemsPanelTemplate>
 					<StackPanel Orientation="Horizontal" />
@@ -876,7 +879,7 @@
 								<RowDefinition Height="Auto" />
 								<RowDefinition Height="*" />
 							</Grid.RowDefinitions>
-							<Border x:Name="Header">
+							<Border x:Name="Header" Height="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}">
 								<avalonDockControls:AnchorablePaneTitle Model="{Binding Model, RelativeSource={RelativeSource TemplatedParent}}" />
 							</Border>
 

@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="MainWindow.xaml~RF127390aa.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Datas\H.Data.Test\H.Data.Test.csproj" />
+    <ProjectReference Include="..\..\Themes\H.Themes.Default\H.Themes.Default.csproj" />
+    <ProjectReference Include="..\..\Windows\H.Windows.Dialog\H.Windows.Dialog.csproj" />
+    <ProjectReference Include="..\..\Windows\H.Windows.Main\H.Windows.Main.csproj" />
+  </ItemGroup>
+
+</Project>

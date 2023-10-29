@@ -10,12 +10,11 @@ using System.Windows.Markup;
                                               // app, or any theme specific resource dictionaries)
 )]
 
-
-[assembly: XmlnsDefinition("QQ:908293466", "H.Extensions.ApplicationBase")]
+[assembly: XmlnsDefinition("QQ:908293466", "H.Modules.SplashScreen")]
 [assembly: XmlnsPrefix("QQ:908293466", "h")]
 
-[assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Extensions.ApplicationBase")]
+[assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Modules.SplashScreen")]
 [assembly: XmlnsPrefix("https://github.com/HeBianGu", "h")]
 
-[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Extensions.ApplicationBase")]
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Modules.SplashScreen")]
 [assembly: XmlnsPrefix("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "h")]
