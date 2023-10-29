@@ -58,7 +58,7 @@
                                     <TextBlock Margin="5,0" Text="{TemplateBinding Title}" />
                                 </StackPanel>
 
-                                <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
+                                <StackPanel Grid.Column="1" Margin="2 0" HorizontalAlignment="Right" Orientation="Horizontal">
                                     <Button x:Name="Btn_Minimize"
                                             Command="{h:MinimizeWindowCommand}"
                                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"

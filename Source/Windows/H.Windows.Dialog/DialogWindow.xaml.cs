@@ -1,11 +1,11 @@
 ﻿using H.Themes.Default;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Markup;
 
 namespace H.Windows.Dialog
 {
@@ -58,11 +58,11 @@ namespace H.Windows.Dialog
             return ShowData(message, build, title, ownerMainWindow);
         }
 
-        public static bool? ShowData(object data, Action<System.Windows.Window> action = null, string title = "提示", bool ownerMainWindow = true)
+        public static bool? ShowData(object data, Action<Window> action = null, string title = null, bool ownerMainWindow = true)
         {
             DialogWindow dialog = new DialogWindow();
-            dialog.Title = title;
             dialog.Content = data;
+            dialog.Title = title ?? data.GetType().GetCustomAttribute<DisplayAttribute>()?.Name ?? "提示";
             if (ownerMainWindow)
             {
                 dialog.Owner = Application.Current.MainWindow;
@@ -77,16 +77,25 @@ namespace H.Windows.Dialog
             return r;
         }
 
-
         public static bool? ShowData(object data, string title)
         {
             return ShowData(data, null, title);
         }
-    }
 
-    public class DialogKeys
-    {
-        public static ComponentResourceKey ShowMessage => new ComponentResourceKey(typeof(DialogKeys), "S.DialogWindow.ShowMessage");
+        public static bool? ShowIoc<T>(Action<Window> action = null, string title = null, bool ownerMainWindow = true)
+        {
+            var about = Ioc.Services.GetService(typeof(T));
+            return DialogWindow.ShowIoc(typeof(T), action, title, ownerMainWindow);
+        }
 
+        public static bool? ShowIoc(Type type, Action<Window> action = null, string title = null, bool ownerMainWindow = true)
+        {
+            var about = Ioc.Services.GetService(type);
+            return DialogWindow.ShowData(about, x =>
+            {
+                x.Width = 500;
+                x.Height = 300;
+            });
+        }
     }
 }

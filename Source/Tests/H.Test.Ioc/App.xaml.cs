@@ -9,7 +9,7 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace H.Test.DependencyInjection
+namespace H.Test.Ioc
 {
     /// <summary>
     /// Interaction logic for App.xaml
@@ -19,6 +19,7 @@ namespace H.Test.DependencyInjection
         protected override void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<ITest, Test>();
+            services.AddAbout();
         }
 
         protected override Window CreateMainWindow(StartupEventArgs e)

@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using H.Modules.About;
+using H.Windows.Dialog;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace H.Test.DependencyInjection
+namespace H.Test.Ioc
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
