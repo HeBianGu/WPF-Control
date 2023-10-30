@@ -7,17 +7,11 @@ namespace H.Controls.Form
     public interface IPropertyItem
     {
         string Name { get; set; }
-
         int Order { get; set; }
-
         string TabGroup { get; set; }
-
         string GroupName { get; set; }
-
         PropertyInfo PropertyInfo { get; set; }
-
         object Obj { get; set; }
-
     }
 
     public interface IPropertyViewItem : IPropertyItem

@@ -18,13 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="ListBox.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="PropertyGrid.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="PropertyTabControl.xaml">
+    <Page Update="Form.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Themes\Generic.xaml">

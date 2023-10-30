@@ -7,7 +7,6 @@ using System.ComponentModel;
 
 namespace H.Controls.Form
 {
-    /// <summary> 说明</summary>
     public class StringHost : NotifyPropertyChanged, IDataErrorInfo
     {
         public StringHost(string value, Type type)

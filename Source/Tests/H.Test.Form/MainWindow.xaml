@@ -10,11 +10,37 @@
         Height="450"
         Style="{StaticResource {x:Type Window}}"
         mc:Ignorable="d">
-    <Grid>
-        <h:PropertyGrid>
-            <h:PropertyGrid.SelectObject>
-                <h:Student/>
-            </h:PropertyGrid.SelectObject>
-        </h:PropertyGrid>
-    </Grid>
+    <TabControl>
+        <TabItem Header="Student">
+            <h:Form>
+                <h:Form.SelectObject>
+                    <h:Student/>
+                </h:Form.SelectObject>
+            </h:Form>
+        </TabItem>
+        <TabItem Header="TypeCTestModel">
+            <h:Form>
+                <h:Form.SelectObject>
+                    <h:TypeCTestModel/>
+                </h:Form.SelectObject>
+                <h:Form.ItemHeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" VerticalAlignment="Center" Width="Auto"/>
+                    </DataTemplate>
+                </h:Form.ItemHeaderTemplate>
+            </h:Form>
+        </TabItem>
+        <TabItem Header="ControlTypeConverterModel">
+            <h:Form>
+                <h:Form.SelectObject>
+                    <h:ControlTypeConverterModel/>
+                </h:Form.SelectObject>
+                <h:Form.ItemHeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}"  VerticalAlignment="Center" Width="Auto"/>
+                    </DataTemplate>
+                </h:Form.ItemHeaderTemplate>
+            </h:Form>
+        </TabItem>
+    </TabControl>
 </Window>

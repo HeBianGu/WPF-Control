@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace System
 {
-    public static class PropertyGridExtention
+    public static class Extention
     {
         /// <summary>
         /// 注册

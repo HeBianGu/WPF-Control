@@ -12,7 +12,6 @@ using System.Windows;
 
 namespace H.Controls.Form
 {
-    /// <summary> 泛型类型基类 </summary>
     public class ObjectPropertyItem<T> : ObjectPropertyItem, IDataErrorInfo
     {
         public ObjectPropertyItem(PropertyInfo property, object obj) : base(property, obj)

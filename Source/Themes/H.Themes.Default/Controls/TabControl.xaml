@@ -19,7 +19,7 @@
                                 <VisualState x:Name="Disabled">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Border.BorderBrush).                     (SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="#FFAAAAAA" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static local:ColorKeys.BackgroundDisabled}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>

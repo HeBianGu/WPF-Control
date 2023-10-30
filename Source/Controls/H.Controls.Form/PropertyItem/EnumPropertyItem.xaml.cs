@@ -5,7 +5,6 @@ using System.Reflection;
 
 namespace H.Controls.Form
 {
-    /// <summary> 枚举类型 </summary>
     public class EnumPropertyItem : ObjectPropertyItem<Enum>
     {
         public EnumPropertyItem(PropertyInfo property, object obj)

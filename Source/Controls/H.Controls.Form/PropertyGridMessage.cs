@@ -18,7 +18,7 @@ namespace H.Controls.Form
 {
     public interface IPropertyGridMessageOption
     {
-        Action<PropertyGrid> Builder { get; set; }
+        Action<Form> Builder { get; set; }
     }
 
     //[Display(Name = "属性消息")]

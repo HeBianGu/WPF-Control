@@ -2,9 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.Form">
-    <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form;component/Themes/TextBlock.xaml" />
-    </ResourceDictionary.MergedDictionaries>
     <DataTemplate DataType="{x:Type local:IEnumerablePropertyItem}">
         <Grid Visibility="{Binding Visibility}">
             <Expander Padding="0" Background="Transparent">
@@ -16,7 +13,7 @@
                             <Run Text="{Binding Value.Count, Mode=OneWay}" />
                             <Run Text="]" />
                         </TextBlock>
-                        <TextBlock Grid.Column="3" DockPanel.Dock="Right" Style="{StaticResource S.TextBlock.Error}" />
+                        <!--<TextBlock Grid.Column="3" DockPanel.Dock="Right" Style="{StaticResource S.TextBlock.Error}" />-->
                     </DockPanel>
                 </Expander.Header>
                 <!--<h:Cattach.CaptionRightTemplate>
@@ -63,15 +60,14 @@
                                         </Button>
                                     </ControlTemplate>
                                 </h:Cattach.CaptionRightTemplate>-->
-                                <local:PropertyGrid Margin="20,0,0,0"
-                                                    Padding="0"
-                                                    BorderThickness="1,0,0,0"
-                                                    SelectObject="{Binding}"
-                                                    Style="{DynamicResource {x:Static h:PropertyGrid.ClearlyKey}}">
+                                <local:Form Margin="20,0,0,0"
+                                            Padding="0"
+                                            BorderThickness="1,0,0,0"
+                                            SelectObject="{Binding}">
                                     <Control.BorderBrush>
                                         <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.BorderBrush}}" />
                                     </Control.BorderBrush>
-                                </local:PropertyGrid>
+                                </local:Form>
                             </Expander>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
@@ -102,7 +98,7 @@
                             <Run Text="{Binding Value.Count, Mode=OneWay}" />
                             <Run Text="]" />
                         </TextBlock>
-                        <TextBlock Grid.Column="3" DockPanel.Dock="Right" Style="{StaticResource S.TextBlock.Error}" />
+                        <!--<TextBlock Grid.Column="3" DockPanel.Dock="Right" Style="{StaticResource S.TextBlock.Error}" />-->
                     </DockPanel>
                 </Expander.Header>
                 <!--<h:Cattach.CaptionRightTemplate>
@@ -122,7 +118,7 @@
                               BorderThickness="0,0,0,0"
                               ItemsSource="{Binding Value}">
                     <Control.BorderBrush>
-                        <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.BorderBrush}}"/>
+                        <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.BorderBrush}}" />
                     </Control.BorderBrush>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
@@ -130,11 +126,13 @@
                                 <!--<Button Width="Auto"
                                         DockPanel.Dock="Right"
                                         Visibility="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl}, Path=DataContext.ReadOnly, Converter={x:Static h:Converter.GetTrueToCollapsed}}">
-                                    --><!--<h:Interaction.Triggers>
+                                -->
+                                <!--<h:Interaction.Triggers>
                                         <h:EventTrigger EventName="Click">
                                             <h:CloseItemsAction Item="{Binding RelativeSource={RelativeSource AncestorType=ContentPresenter}}" ItemsControl="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl}}" />
                                         </h:EventTrigger>-->
-                                    <!--</h:Interaction.Triggers>--><!--
+                                <!--</h:Interaction.Triggers>-->
+                                <!--
                                 </Button>-->
                                 <ContentPresenter Content="{Binding}" />
                             </DockPanel>

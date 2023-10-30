@@ -4,8 +4,8 @@ using System;
 
 namespace H.Controls.Form
 {
-    public class StyleAttribute : Attribute
-    {
-        public string Icon { get; set; }
-    }
+    //public class StyleAttribute : Attribute
+    //{
+    //    public string Icon { get; set; }
+    //}
 }

@@ -23,30 +23,14 @@ using System.Windows.Threading;
 
 namespace H.Controls.Form
 {
-    /// <summary> 自定义导航框架 </summary> 
-    public partial class PropertyGrid : ItemsControl
+    public partial class Form : ItemsControl
     {
-        public static ComponentResourceKey LightKey => new ComponentResourceKey(typeof(PropertyGrid), "S.PropertyGrid.Light");
-        public static ComponentResourceKey DefaultKey => new ComponentResourceKey(typeof(PropertyGrid), "S.PropertyGrid.Default");
-        public static ComponentResourceKey ClearlyKey => new ComponentResourceKey(typeof(PropertyGrid), "S.PropertyGrid.Clearly");
-        public static ComponentResourceKey SingleKey => new ComponentResourceKey(typeof(PropertyGrid), "S.PropertyGrid.Single");
-        public static ComponentResourceKey SumitKey => new ComponentResourceKey(typeof(PropertyGrid), "S.PropertyGrid.Default.WithSumit");
-        public static ComponentResourceKey SumitCloseKey => new ComponentResourceKey(typeof(PropertyGrid), "S.PropertyGrid.Default.WithSumitClose");
-        public static ComponentResourceKey SettingKey => new ComponentResourceKey(typeof(PropertyGrid), "S.PropertyGrid.SettingDefault");
-        public static ComponentResourceKey ControlKey => new ComponentResourceKey(typeof(PropertyGrid), "S.PropertyGrid.Control");
-        public static ComponentResourceKey DialogKey => new ComponentResourceKey(typeof(PropertyGrid), "S.PropertyGrid.Dialog");
-        public static ComponentResourceKey TransitionKey => new ComponentResourceKey(typeof(PropertyGrid), "S.PropertyGrid.Transition");
-        public static ComponentResourceKey CommandKey => new ComponentResourceKey(typeof(PropertyGrid), "S.PropertyGrid.Command");
-        public static ComponentResourceKey CommandIconKey => new ComponentResourceKey(typeof(PropertyGrid), "S.PropertyGrid.CommandIcon");
-        public static ComponentResourceKey CommandMouseOverKey => new ComponentResourceKey(typeof(PropertyGrid), "S.PropertyGrid.CommandMouseOver");
-        public static ComponentResourceKey PreviewIconKey => new ComponentResourceKey(typeof(PropertyGrid), "S.PropertyGrid.PreviewIcon");
-
-        static PropertyGrid()
+        static Form()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(PropertyGrid), new FrameworkPropertyMetadata(typeof(PropertyGrid)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(Form), new FrameworkPropertyMetadata(typeof(Form)));
         }
 
-        public PropertyGrid()
+        public Form()
         {
             //this.BindCommand(Commander.Sure, (l, k) =>
             // {
@@ -112,7 +96,7 @@ namespace H.Controls.Form
         public bool Result { get; set; }
 
         public static readonly RoutedEvent SumitRoutedEvent =
-            EventManager.RegisterRoutedEvent("Sumit", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(PropertyGrid));
+            EventManager.RegisterRoutedEvent("Sumit", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(Form));
 
         public event RoutedEventHandler Sumit
         {
@@ -125,7 +109,7 @@ namespace H.Controls.Form
             this.RaiseEvent(args);
         }
         public static readonly RoutedEvent CloseRoutedEvent =
-            EventManager.RegisterRoutedEvent("Close", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(PropertyGrid));
+            EventManager.RegisterRoutedEvent("Close", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(Form));
         public event RoutedEventHandler Close
         {
             add { this.AddHandler(CloseRoutedEvent, value); }
@@ -137,6 +121,33 @@ namespace H.Controls.Form
             this.RaiseEvent(args);
         }
 
+
+        public DataTemplate ItemHeaderTemplate
+        {
+            get { return (DataTemplate)GetValue(ItemHeaderTemplateProperty); }
+            set { SetValue(ItemHeaderTemplateProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ItemHeaderTemplateProperty =
+            DependencyProperty.Register("ItemHeaderTemplate", typeof(DataTemplate), typeof(Form), new FrameworkPropertyMetadata(default(DataTemplate), (d, e) =>
+            {
+                Form control = d as Form;
+
+                if (control == null) return;
+
+                if (e.OldValue is DataTemplate o)
+                {
+
+                }
+
+                if (e.NewValue is DataTemplate n)
+                {
+
+                }
+
+            }));
+
         public string Title
         {
             get { return (string)GetValue(TitleProperty); }
@@ -144,9 +155,9 @@ namespace H.Controls.Form
         }
 
         public static readonly DependencyProperty TitleProperty =
-            DependencyProperty.Register("Title", typeof(string), typeof(PropertyGrid), new PropertyMetadata(default(string), (d, e) =>
+            DependencyProperty.Register("Title", typeof(string), typeof(Form), new PropertyMetadata(default(string), (d, e) =>
              {
-                 PropertyGrid control = d as PropertyGrid;
+                 Form control = d as Form;
 
                  if (control == null) return;
 
@@ -163,9 +174,9 @@ namespace H.Controls.Form
         }
 
         public static readonly DependencyProperty SelectObjectProperty =
-            DependencyProperty.Register("SelectObject", typeof(object), typeof(PropertyGrid), new PropertyMetadata(default(object), (d, e) =>
+            DependencyProperty.Register("SelectObject", typeof(object), typeof(Form), new PropertyMetadata(default(object), (d, e) =>
              {
-                 PropertyGrid control = d as PropertyGrid;
+                 Form control = d as Form;
                  if (control == null) return;
                  object config = e.NewValue;
                  control.RefreshObject();
@@ -178,9 +189,9 @@ namespace H.Controls.Form
         }
 
         public static readonly DependencyProperty BottomContentProperty =
-            DependencyProperty.Register("BottomContent", typeof(object), typeof(PropertyGrid), new PropertyMetadata(default(object), (d, e) =>
+            DependencyProperty.Register("BottomContent", typeof(object), typeof(Form), new PropertyMetadata(default(object), (d, e) =>
              {
-                 PropertyGrid control = d as PropertyGrid;
+                 Form control = d as Form;
 
                  if (control == null) return;
 
@@ -195,9 +206,9 @@ namespace H.Controls.Form
         }
 
         public static readonly DependencyProperty FilterProperty =
-            DependencyProperty.Register("Filter", typeof(Predicate<PropertyInfo>), typeof(PropertyGrid), new PropertyMetadata(default(Predicate<PropertyInfo>), (d, e) =>
+            DependencyProperty.Register("Filter", typeof(Predicate<PropertyInfo>), typeof(Form), new PropertyMetadata(default(Predicate<PropertyInfo>), (d, e) =>
              {
-                 PropertyGrid control = d as PropertyGrid;
+                 Form control = d as Form;
                  if (control == null) return;
                  Predicate<PropertyInfo> config = e.NewValue as Predicate<PropertyInfo>;
 
@@ -212,9 +223,9 @@ namespace H.Controls.Form
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty UseDeclaredOnlyProperty =
-            DependencyProperty.Register("UseDeclaredOnly", typeof(bool), typeof(PropertyGrid), new FrameworkPropertyMetadata(default(bool), (d, e) =>
+            DependencyProperty.Register("UseDeclaredOnly", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(default(bool), (d, e) =>
              {
-                 PropertyGrid control = d as PropertyGrid;
+                 Form control = d as Form;
 
                  if (control == null) return;
 
@@ -239,9 +250,9 @@ namespace H.Controls.Form
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ExceptPropertyNamesProperty =
-            DependencyProperty.Register("ExceptPropertyNames", typeof(string), typeof(PropertyGrid), new FrameworkPropertyMetadata(default(string), (d, e) =>
+            DependencyProperty.Register("ExceptPropertyNames", typeof(string), typeof(Form), new FrameworkPropertyMetadata(default(string), (d, e) =>
              {
-                 PropertyGrid control = d as PropertyGrid;
+                 Form control = d as Form;
 
                  if (control == null) return;
 
@@ -267,9 +278,9 @@ namespace H.Controls.Form
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty UsePropertyNamesProperty =
-            DependencyProperty.Register("UsePropertyNames", typeof(string), typeof(PropertyGrid), new FrameworkPropertyMetadata(default(string), (d, e) =>
+            DependencyProperty.Register("UsePropertyNames", typeof(string), typeof(Form), new FrameworkPropertyMetadata(default(string), (d, e) =>
              {
-                 PropertyGrid control = d as PropertyGrid;
+                 Form control = d as Form;
 
                  if (control == null) return;
 
@@ -295,9 +306,9 @@ namespace H.Controls.Form
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty UsePropertyViewProperty =
-            DependencyProperty.Register("UsePropertyView", typeof(bool), typeof(PropertyGrid), new FrameworkPropertyMetadata(default(bool), FrameworkPropertyMetadataOptions.Inherits, (d, e) =>
+            DependencyProperty.Register("UsePropertyView", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(default(bool), FrameworkPropertyMetadataOptions.Inherits, (d, e) =>
               {
-                  PropertyGrid control = d as PropertyGrid;
+                  Form control = d as Form;
 
                   if (control == null) return;
 
@@ -325,9 +336,9 @@ namespace H.Controls.Form
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty UsePresenterProperty =
-            DependencyProperty.Register("UsePresenter", typeof(bool), typeof(PropertyGrid), new FrameworkPropertyMetadata(default(bool), (d, e) =>
+            DependencyProperty.Register("UsePresenter", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(default(bool), (d, e) =>
              {
-                 PropertyGrid control = d as PropertyGrid;
+                 Form control = d as Form;
 
                  if (control == null) return;
 
@@ -352,9 +363,9 @@ namespace H.Controls.Form
         }
 
         public static readonly DependencyProperty UseEnumeratorProperty =
-            DependencyProperty.Register("UseEnumerator", typeof(bool), typeof(PropertyGrid), new FrameworkPropertyMetadata(true, (d, e) =>
+            DependencyProperty.Register("UseEnumerator", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(true, (d, e) =>
              {
-                 PropertyGrid control = d as PropertyGrid;
+                 Form control = d as Form;
 
                  if (control == null) return;
 
@@ -379,9 +390,9 @@ namespace H.Controls.Form
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty UseTypeConverterOnlyProperty =
-            DependencyProperty.Register("UseTypeConverterOnly", typeof(bool), typeof(PropertyGrid), new FrameworkPropertyMetadata(default(bool), (d, e) =>
+            DependencyProperty.Register("UseTypeConverterOnly", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(default(bool), (d, e) =>
              {
-                 PropertyGrid control = d as PropertyGrid;
+                 Form control = d as Form;
 
                  if (control == null) return;
 
@@ -404,9 +415,9 @@ namespace H.Controls.Form
         }
 
         public static readonly DependencyProperty UseTypeConverterProperty =
-            DependencyProperty.Register("UseTypeConverter", typeof(bool), typeof(PropertyGrid), new FrameworkPropertyMetadata(true, (d, e) =>
+            DependencyProperty.Register("UseTypeConverter", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(true, (d, e) =>
              {
-                 PropertyGrid control = d as PropertyGrid;
+                 Form control = d as Form;
 
                  if (control == null) return;
 
@@ -429,9 +440,9 @@ namespace H.Controls.Form
         }
 
         public static readonly DependencyProperty UseNullProperty =
-            DependencyProperty.Register("UseNull", typeof(bool), typeof(PropertyGrid), new FrameworkPropertyMetadata(true, (d, e) =>
+            DependencyProperty.Register("UseNull", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(true, (d, e) =>
              {
-                 PropertyGrid control = d as PropertyGrid;
+                 Form control = d as Form;
 
                  if (control == null) return;
 
@@ -457,9 +468,9 @@ namespace H.Controls.Form
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty UseBoolenProperty =
-            DependencyProperty.Register("UseBoolen", typeof(bool), typeof(PropertyGrid), new FrameworkPropertyMetadata(true, (d, e) =>
+            DependencyProperty.Register("UseBoolen", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(true, (d, e) =>
              {
-                 PropertyGrid control = d as PropertyGrid;
+                 Form control = d as Form;
 
                  if (control == null) return;
 
@@ -485,9 +496,9 @@ namespace H.Controls.Form
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty UseOrderByTypeProperty =
-            DependencyProperty.Register("UseOrderByType", typeof(bool), typeof(PropertyGrid), new FrameworkPropertyMetadata(default(bool), (d, e) =>
+            DependencyProperty.Register("UseOrderByType", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(default(bool), (d, e) =>
              {
-                 PropertyGrid control = d as PropertyGrid;
+                 Form control = d as Form;
 
                  if (control == null) return;
 
@@ -512,9 +523,9 @@ namespace H.Controls.Form
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty UseOrderByNameProperty =
-            DependencyProperty.Register("UseOrderByName", typeof(bool), typeof(PropertyGrid), new FrameworkPropertyMetadata(default(bool), (d, e) =>
+            DependencyProperty.Register("UseOrderByName", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(default(bool), (d, e) =>
              {
-                 PropertyGrid control = d as PropertyGrid;
+                 Form control = d as Form;
 
                  if (control == null) return;
 
@@ -540,9 +551,9 @@ namespace H.Controls.Form
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty UseOrderProperty =
-            DependencyProperty.Register("UseOrder", typeof(bool), typeof(PropertyGrid), new FrameworkPropertyMetadata(true, (d, e) =>
+            DependencyProperty.Register("UseOrder", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(true, (d, e) =>
              {
-                 PropertyGrid control = d as PropertyGrid;
+                 Form control = d as Form;
 
                  if (control == null) return;
 
@@ -566,9 +577,9 @@ namespace H.Controls.Form
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty UseEnumProperty =
-            DependencyProperty.Register("UseEnum", typeof(bool), typeof(PropertyGrid), new FrameworkPropertyMetadata(true, (d, e) =>
+            DependencyProperty.Register("UseEnum", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(true, (d, e) =>
              {
-                 PropertyGrid control = d as PropertyGrid;
+                 Form control = d as Form;
 
                  if (control == null) return;
 
@@ -592,9 +603,9 @@ namespace H.Controls.Form
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty UseStringProperty =
-            DependencyProperty.Register("UseString", typeof(bool), typeof(PropertyGrid), new FrameworkPropertyMetadata(true, (d, e) =>
+            DependencyProperty.Register("UseString", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(true, (d, e) =>
              {
-                 PropertyGrid control = d as PropertyGrid;
+                 Form control = d as Form;
 
                  if (control == null) return;
 
@@ -618,9 +629,9 @@ namespace H.Controls.Form
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty UseDateTimeProperty =
-            DependencyProperty.Register("UseDateTime", typeof(bool), typeof(PropertyGrid), new FrameworkPropertyMetadata(true, (d, e) =>
+            DependencyProperty.Register("UseDateTime", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(true, (d, e) =>
              {
-                 PropertyGrid control = d as PropertyGrid;
+                 Form control = d as Form;
 
                  if (control == null) return;
 
@@ -645,9 +656,9 @@ namespace H.Controls.Form
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty UseDisplayerProperty =
-            DependencyProperty.Register("UseDisplayer", typeof(bool), typeof(PropertyGrid), new FrameworkPropertyMetadata(default(bool), (d, e) =>
+            DependencyProperty.Register("UseDisplayer", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(default(bool), (d, e) =>
              {
-                 PropertyGrid control = d as PropertyGrid;
+                 Form control = d as Form;
 
                  if (control == null) return;
 
@@ -681,9 +692,9 @@ namespace H.Controls.Form
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty UseCommandOnlyProperty =
-            DependencyProperty.Register("UseCommandOnly", typeof(bool), typeof(PropertyGrid), new FrameworkPropertyMetadata(default(bool), (d, e) =>
+            DependencyProperty.Register("UseCommandOnly", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(default(bool), (d, e) =>
             {
-                PropertyGrid control = d as PropertyGrid;
+                Form control = d as Form;
 
                 if (control == null) return;
 
@@ -708,9 +719,9 @@ namespace H.Controls.Form
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty UseCommandProperty =
-            DependencyProperty.Register("UseCommand", typeof(bool), typeof(PropertyGrid), new FrameworkPropertyMetadata(true, (d, e) =>
+            DependencyProperty.Register("UseCommand", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(true, (d, e) =>
              {
-                 PropertyGrid control = d as PropertyGrid;
+                 Form control = d as Form;
 
                  if (control == null) return;
 
@@ -735,9 +746,9 @@ namespace H.Controls.Form
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty UseClassProperty =
-            DependencyProperty.Register("UseClass", typeof(bool), typeof(PropertyGrid), new FrameworkPropertyMetadata(true, (d, e) =>
+            DependencyProperty.Register("UseClass", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(true, (d, e) =>
              {
-                 PropertyGrid control = d as PropertyGrid;
+                 Form control = d as Form;
 
                  if (control == null) return;
 
@@ -762,9 +773,9 @@ namespace H.Controls.Form
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty UseArrayProperty =
-            DependencyProperty.Register("UseArray", typeof(bool), typeof(PropertyGrid), new FrameworkPropertyMetadata(true, (d, e) =>
+            DependencyProperty.Register("UseArray", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(true, (d, e) =>
              {
-                 PropertyGrid control = d as PropertyGrid;
+                 Form control = d as Form;
 
                  if (control == null) return;
 
@@ -789,9 +800,9 @@ namespace H.Controls.Form
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty UseInterfaceProperty =
-            DependencyProperty.Register("UseInterface", typeof(bool), typeof(PropertyGrid), new FrameworkPropertyMetadata(true, (d, e) =>
+            DependencyProperty.Register("UseInterface", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(true, (d, e) =>
              {
-                 PropertyGrid control = d as PropertyGrid;
+                 Form control = d as Form;
 
                  if (control == null) return;
 
@@ -817,9 +828,9 @@ namespace H.Controls.Form
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty UsePrimitiveProperty =
-            DependencyProperty.Register("UsePrimitive", typeof(bool), typeof(PropertyGrid), new FrameworkPropertyMetadata(true, (d, e) =>
+            DependencyProperty.Register("UsePrimitive", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(true, (d, e) =>
              {
-                 PropertyGrid control = d as PropertyGrid;
+                 Form control = d as Form;
 
                  if (control == null) return;
 
@@ -843,9 +854,9 @@ namespace H.Controls.Form
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MapperProperty =
-            DependencyProperty.Register("Mapper", typeof(Func<PropertyInfo, object, IPropertyItem>), typeof(PropertyGrid), new FrameworkPropertyMetadata(default(Func<PropertyInfo, object, IPropertyItem>), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, (d, e) =>
+            DependencyProperty.Register("Mapper", typeof(Func<PropertyInfo, object, IPropertyItem>), typeof(Form), new FrameworkPropertyMetadata(default(Func<PropertyInfo, object, IPropertyItem>), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, (d, e) =>
                  {
-                     PropertyGrid control = d as PropertyGrid;
+                     Form control = d as Form;
 
                      if (control == null) return;
 
@@ -895,9 +906,9 @@ namespace H.Controls.Form
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty UseGroupProperty =
-            DependencyProperty.Register("UseGroup", typeof(bool), typeof(PropertyGrid), new FrameworkPropertyMetadata(default(bool), (d, e) =>
+            DependencyProperty.Register("UseGroup", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(default(bool), (d, e) =>
              {
-                 PropertyGrid control = d as PropertyGrid;
+                 Form control = d as Form;
 
                  if (control == null) return;
 
@@ -924,9 +935,9 @@ namespace H.Controls.Form
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty UseGroupNamesProperty =
-            DependencyProperty.Register("UseGroupNames", typeof(string), typeof(PropertyGrid), new FrameworkPropertyMetadata(default(string), (d, e) =>
+            DependencyProperty.Register("UseGroupNames", typeof(string), typeof(Form), new FrameworkPropertyMetadata(default(string), (d, e) =>
              {
-                 PropertyGrid control = d as PropertyGrid;
+                 Form control = d as Form;
 
                  if (control == null) return;
 
@@ -951,7 +962,7 @@ namespace H.Controls.Form
 
         //声明和注册路由事件
         public static readonly RoutedEvent ValueChangedRoutedEvent =
-            EventManager.RegisterRoutedEvent("ValueChanged", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(PropertyGrid));
+            EventManager.RegisterRoutedEvent("ValueChanged", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(Form));
         //CLR事件包装
         public event RoutedEventHandler ValueChanged
         {
@@ -1035,9 +1046,9 @@ namespace H.Controls.Form
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MessageWidthProperty =
-            DependencyProperty.Register("MessageWidth", typeof(double), typeof(PropertyGrid), new PropertyMetadata(default(double), (d, e) =>
+            DependencyProperty.Register("MessageWidth", typeof(double), typeof(Form), new PropertyMetadata(default(double), (d, e) =>
              {
-                 PropertyGrid control = d as PropertyGrid;
+                 Form control = d as Form;
 
                  if (control == null) return;
 
@@ -1048,7 +1059,7 @@ namespace H.Controls.Form
 
     }
 
-    public partial class PropertyGrid
+    public partial class Form
     {
         private static ManualResetEvent _asyncShowWaitHandle = new ManualResetEvent(false);
 
@@ -1144,9 +1155,9 @@ namespace H.Controls.Form
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty UseAsyncProperty =
-            DependencyProperty.Register("UseAsync", typeof(bool), typeof(PropertyGrid), new FrameworkPropertyMetadata(default(bool), (d, e) =>
+            DependencyProperty.Register("UseAsync", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(default(bool), (d, e) =>
             {
-                PropertyGrid control = d as PropertyGrid;
+                Form control = d as Form;
 
                 if (control == null) return;
 
@@ -1377,7 +1388,7 @@ namespace H.Controls.Form
         }
     }
 
-    public class StaticPropertyGrid : PropertyGrid
+    public class StaticPropertyGrid : Form
     {
         public override void RefreshObject()
         {

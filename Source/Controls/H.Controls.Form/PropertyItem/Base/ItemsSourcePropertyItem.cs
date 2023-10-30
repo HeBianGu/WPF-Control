@@ -14,7 +14,6 @@ namespace H.Controls.Form
         }
 
         private ObservableCollection<T> _collection = new ObservableCollection<T>();
-        /// <summary> 说明  </summary>
         public ObservableCollection<T> Collection
         {
             get { return _collection; }

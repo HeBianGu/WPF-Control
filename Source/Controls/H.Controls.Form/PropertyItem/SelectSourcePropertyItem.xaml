@@ -2,9 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.Form">
-    <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form;component/Themes/TextBlock.xaml" />
-    </ResourceDictionary.MergedDictionaries>
 
     <DataTemplate DataType="{x:Type local:SelectSourcePropertyItem}">
         <Expander Padding="0" Header="{Binding Name}" Visibility="{Binding Visibility}">
@@ -19,7 +16,7 @@
                               SelectedItem="{Binding Value}"
                               ToolTip="{Binding Name}" />
 
-                    <local:PropertyGrid Padding="0" SelectObject="{Binding ElementName=cbx, Path=SelectedItem}" Style="{DynamicResource {x:Static h:PropertyGrid.ClearlyKey}}" />
+                    <local:Form Padding="0" SelectObject="{Binding ElementName=cbx, Path=SelectedItem}" />
                 </DockPanel>
             </Border>
         </Expander>
@@ -59,13 +56,13 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>-->
             </ListBox>
-            <TextBlock Grid.Column="3" Style="{StaticResource S.TextBlock.Error}" />
+            <!--<TextBlock Grid.Column="3" Style="{StaticResource S.TextBlock.Error}" />-->
         </Grid>
         <DataTemplate.Triggers>
             <DataTrigger Binding="{Binding Message}" Value="{x:Null}">
                 <Setter TargetName="cb" Property="BorderBrush">
                     <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.BorderBrush}}"/>
+                        <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.BorderBrush}}" />
                     </Setter.Value>
                 </Setter>
                 <Setter TargetName="cb" Property="ToolTip" Value="{x:Null}" />
@@ -90,9 +87,9 @@
                           DockPanel.Dock="Top"
                           ItemsSource="{Binding Collection}"
                           SelectedItem="{Binding Value}" />
-                <TextBlock Grid.Column="3" Style="{StaticResource S.TextBlock.Error}" />
+                <!--<TextBlock Grid.Column="3" Style="{StaticResource S.TextBlock.Error}" />-->
             </Grid>
-            <local:PropertyGrid Padding="0" SelectObject="{Binding Value}" Style="{DynamicResource {x:Static h:PropertyGrid.ClearlyKey}}" />
+            <local:Form Padding="0" SelectObject="{Binding Value}" />
         </DockPanel>
     </DataTemplate>
 
@@ -113,7 +110,7 @@
                           DockPanel.Dock="Top"
                           ItemsSource="{Binding Collection}"
                           SelectedItem="{Binding Value}" />
-                <TextBlock Grid.Column="3" Style="{StaticResource S.TextBlock.Error}" />
+                <!--<TextBlock Grid.Column="3" Style="{StaticResource S.TextBlock.Error}" />-->
             </Grid>
         </DockPanel>
     </DataTemplate>

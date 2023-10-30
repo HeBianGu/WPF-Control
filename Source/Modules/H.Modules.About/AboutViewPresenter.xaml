@@ -1,13 +1,15 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:H.Modules.About">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Modules.About">
     <DataTemplate DataType="{x:Type local:AboutViewPresenter}">
         <Grid>
-            <!--<h:PropertyGrid SelectObject="{Binding}"
-                            Style="{DynamicResource {x:Static h:PropertyGrid.ClearlyKey}}"
-                            UseBoolen="False"
-                            UseEnum="False"
-                            UseNull="False"
-                            UsePropertyView="True" />-->
-            <TextBlock Text="关于页面" />
+            <h:Form SelectObject="{Binding}"
+                    UseBoolen="False"
+                    UseEnum="False"
+                    UseNull="False"
+                    UsePropertyView="True" />
+            <!--<TextBlock Text="关于页面" />-->
         </Grid>
         <DataTemplate.Triggers>
             <DataTrigger Binding="{Binding IsVisible}" Value="False">
