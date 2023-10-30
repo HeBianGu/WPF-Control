@@ -78,7 +78,7 @@
         <Border x:Name="PART_ContentHost" Background="{TemplateBinding Background}" Focusable="False" />
     </ControlTemplate>
 
-    <Style x:Key="{x:Type ComboBox}" BasedOn="{StaticResource S.Control.Base}" TargetType="{x:Type ComboBox}">
+    <Style BasedOn="{StaticResource S.Control.Base}" TargetType="{x:Type ComboBox}">
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />

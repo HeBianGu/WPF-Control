@@ -1,0 +1,23 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Controls.PropertyGrid">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.PropertyGrid;component/ButtonSpinner/Themes/Generic.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.PropertyGrid;component/Calculator/Themes/Generic.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.PropertyGrid;component/CalculatorUpDown/Themes/Generic.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.PropertyGrid;component/CheckComboBox/Themes/Generic.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.PropertyGrid;component/Chromes/Themes/Generic.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.PropertyGrid;component/CollectionControl/Themes/Generic.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.PropertyGrid;component/ColorCanvas/Themes/Generic.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.PropertyGrid;component/ColorPicker/Themes/Generic.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.PropertyGrid;component/DateTimeUpDown/Themes/Generic.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.PropertyGrid;component/MultiLineTextEditor/Themes/Generic.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.PropertyGrid;component/NumericUpDown/Themes/Generic.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.PropertyGrid;component/PropertyGrid.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.PropertyGrid;component/TimeSpanUpDown/Themes/Generic.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.PropertyGrid;component/WatermarkComboBox/Themes/Generic.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.PropertyGrid;component/WatermarkTextBox/Themes/Generic.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

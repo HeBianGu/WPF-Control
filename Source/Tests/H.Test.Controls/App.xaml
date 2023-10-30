@@ -4,15 +4,12 @@
              xmlns:local="clr-namespace:H.Test.Controls"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <!--<ResourceDictionary>
+       <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                --><!--<ResourceDictionary Source="pack://application:,,,/HeBianGu.LightStyle;component/Themes/Dark.Gray.xaml" />-->
-                <!--<ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/ResourceKeys/FontSizeKeys.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/ResourceKeys/LayoutKeys.xaml" />--><!--
+                <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/ResourceKeys/LayoutKeys.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/ResourceKeys/Color.Dark.Gray.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/ConciseControls.xaml" />
-                --><!--<ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/Themes/Dark.Gray.xaml" />--><!--
             </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>-->
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

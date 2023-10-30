@@ -1,0 +1,117 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+	  <PackageIcon>logo.jpg</PackageIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="PropertyGrid\Images\AdvancedProperties11.png" />
+    <None Remove="PropertyGrid\Images\Categorize16.png" />
+    <None Remove="PropertyGrid\Images\ClearFilter16.png" />
+    <None Remove="PropertyGrid\Images\Database11.png" />
+    <None Remove="PropertyGrid\Images\Inheritance11.png" />
+    <None Remove="PropertyGrid\Images\Local11.png" />
+    <None Remove="PropertyGrid\Images\Resource11.png" />
+    <None Remove="PropertyGrid\Images\SortAscending16.png" />
+    <None Remove="PropertyGrid\Images\Style11.png" />
+    <None Remove="Themes\Generic\Images\close_hover.png" />
+    <None Remove="Themes\Generic\Images\close_inactive.png" />
+    <None Remove="Themes\Generic\Images\close_normal.png" />
+    <None Remove="Themes\Generic\Images\close_pressed.png" />
+    <None Remove="Themes\Generic\Images\close_rounded_hover.png" />
+    <None Remove="Themes\Generic\Images\close_rounded_inactive.png" />
+    <None Remove="Themes\Generic\Images\close_rounded_normal.png" />
+    <None Remove="Themes\Generic\Images\close_rounded_pressed.png" />
+    <None Remove="Themes\Generic\Images\close_toolwindow_hover.png" />
+    <None Remove="Themes\Generic\Images\close_toolwindow_inactive.png" />
+    <None Remove="Themes\Generic\Images\close_toolwindow_normal.png" />
+    <None Remove="Themes\Generic\Images\close_toolwindow_pressed.png" />
+    <None Remove="Themes\Generic\Images\maximize_disabled.png" />
+    <None Remove="Themes\Generic\Images\maximize_hover.png" />
+    <None Remove="Themes\Generic\Images\maximize_inactive.png" />
+    <None Remove="Themes\Generic\Images\maximize_normal.png" />
+    <None Remove="Themes\Generic\Images\maximize_pressed.png" />
+    <None Remove="Themes\Generic\Images\minimize_hover.png" />
+    <None Remove="Themes\Generic\Images\minimize_inactive.png" />
+    <None Remove="Themes\Generic\Images\minimize_normal.png" />
+    <None Remove="Themes\Generic\Images\minimize_pressed.png" />
+    <None Remove="Themes\Generic\Images\resize_grip.png" />
+    <None Remove="Themes\Generic\Images\restore_disabled.png" />
+    <None Remove="Themes\Generic\Images\restore_hover.png" />
+    <None Remove="Themes\Generic\Images\restore_inactive.png" />
+    <None Remove="Themes\Generic\Images\restore_normal.png" />
+    <None Remove="Themes\Generic\Images\restore_pressed.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Extensions\H.Extensions.Common\H.Extensions.Common.csproj" />
+    <ProjectReference Include="..\..\Themes\H.Themes.Default\H.Themes.Default.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Resource Include="PropertyGrid\Images\AdvancedProperties11.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="PropertyGrid\Images\Categorize16.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="PropertyGrid\Images\ClearFilter16.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="PropertyGrid\Images\Database11.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="PropertyGrid\Images\Inheritance11.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="PropertyGrid\Images\Local11.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="PropertyGrid\Images\Resource11.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="PropertyGrid\Images\SortAscending16.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="PropertyGrid\Images\Style11.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Themes\Generic\Images\close_hover.png" />
+    <Resource Include="Themes\Generic\Images\close_inactive.png" />
+    <Resource Include="Themes\Generic\Images\close_normal.png" />
+    <Resource Include="Themes\Generic\Images\close_pressed.png" />
+    <Resource Include="Themes\Generic\Images\close_rounded_hover.png" />
+    <Resource Include="Themes\Generic\Images\close_rounded_inactive.png" />
+    <Resource Include="Themes\Generic\Images\close_rounded_normal.png" />
+    <Resource Include="Themes\Generic\Images\close_rounded_pressed.png" />
+    <Resource Include="Themes\Generic\Images\close_toolwindow_hover.png" />
+    <Resource Include="Themes\Generic\Images\close_toolwindow_inactive.png" />
+    <Resource Include="Themes\Generic\Images\close_toolwindow_normal.png" />
+    <Resource Include="Themes\Generic\Images\close_toolwindow_pressed.png" />
+    <Resource Include="Themes\Generic\Images\maximize_disabled.png" />
+    <Resource Include="Themes\Generic\Images\maximize_hover.png" />
+    <Resource Include="Themes\Generic\Images\maximize_inactive.png" />
+    <Resource Include="Themes\Generic\Images\maximize_normal.png" />
+    <Resource Include="Themes\Generic\Images\maximize_pressed.png" />
+    <Resource Include="Themes\Generic\Images\minimize_hover.png" />
+    <Resource Include="Themes\Generic\Images\minimize_inactive.png" />
+    <Resource Include="Themes\Generic\Images\minimize_normal.png" />
+    <Resource Include="Themes\Generic\Images\minimize_pressed.png" />
+    <Resource Include="Themes\Generic\Images\resize_grip.png" />
+    <Resource Include="Themes\Generic\Images\restore_disabled.png" />
+    <Resource Include="Themes\Generic\Images\restore_hover.png" />
+    <Resource Include="Themes\Generic\Images\restore_inactive.png" />
+    <Resource Include="Themes\Generic\Images\restore_normal.png" />
+    <Resource Include="Themes\Generic\Images\restore_pressed.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+</Project>

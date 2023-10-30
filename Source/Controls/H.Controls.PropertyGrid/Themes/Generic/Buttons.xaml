@@ -1,0 +1,30 @@
+﻿
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Controls.PropertyGrid">
+
+    <Style x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:ResourceKeys}, ResourceId=SpinnerButtonStyleKey}" TargetType="RepeatButton">
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="2,2" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RepeatButton">
+                    <Grid>
+                        <local:ButtonChrome x:Name="Chrome"
+                                            Background="{TemplateBinding Background}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            RenderEnabled="{TemplateBinding IsEnabled}"
+                                            RenderMouseOver="{TemplateBinding IsMouseOver}"
+                                            RenderNormal="True"
+                                            RenderPressed="{TemplateBinding IsPressed}"
+                                            SnapsToDevicePixels="true" />
+
+                        <ContentPresenter Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
