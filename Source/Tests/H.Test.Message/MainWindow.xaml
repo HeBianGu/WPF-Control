@@ -12,10 +12,13 @@
         mc:Ignorable="d">
     <UniformGrid>
         <Button Command="{ShowIocCommand Type={x:Type IAboutViewPresenter}}" Content="ShowIocCommand" />
-        <Button Command="{ShowMessageCommand Message=我是消息, Title=我是标题, Height=150,Width=300}" Content="ShowMessageCommand" />
+        <Button Command="{ShowMessageCommand Message=我是消息, Title=我是标题, Height=150, Width=300}" Content="ShowMessageCommand" />
         <Button Command="{ShowCommand Presnter={h:GetStudent}}" Content="ShowCommand" />
         <Button Command="{ShowPercentCommand}" Content="ShowPercentCommand" />
         <Button Command="{ShowStringCommand}" Content="ShowStringCommand" />
         <Button Command="{ShowWaitCommand}" Content="ShowWaitCommand" />
+        <Button Command="{ShowEditCommand Value={h:GetStudent}}" Content="ShowEditCommand" />
+        <Button Command="{ShowViewCommand Value={h:GetStudent}}" Content="ShowViewCommand" />
+        <Button Click="Button_Click" Content="Predicate"/>
     </UniformGrid>
 </Window>

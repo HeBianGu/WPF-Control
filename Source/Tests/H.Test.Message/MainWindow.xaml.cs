@@ -1,4 +1,5 @@
 ﻿
+using H.Data.Test;
 using H.Providers.Ioc;
 using H.Windows.Dialog;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,7 +32,18 @@ namespace H.Test.Message
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            IocMessage.Dialog.ShowMessage("测试消息");
+            var student = new Student();
+            student.Age = 200;
+            Predicate<Student> match = x =>
+                {
+                    if (x.Age > 100)
+                    {
+                        IocMessage.Dialog.Show("年龄输入不合法");
+                        return false;
+                    }
+                    return true;
+                };
+            IocMessage.Form.ShowEdit(student, match);
         }
     }
 }

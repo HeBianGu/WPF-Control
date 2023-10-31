@@ -16,19 +16,19 @@ namespace H.Modules.Message
 {
     public class DialogMessage : IDialogMessage
     {
-        public async Task<bool?> Show(object presenter, Action<Control> action = null, string title = null, bool ownerMainWindow = true)
+        public async Task<bool?> Show(object presenter, Action<Control> action = null, string title = null, Func<bool> canSumit = null, bool ownerMainWindow = true)
         {
-            var r = DialogWindow.ShowPresenter(presenter, action, title, ownerMainWindow);
+            var r = DialogWindow.ShowPresenter(presenter, action, title, canSumit, ownerMainWindow);
             return await Task.FromResult(r);
         }
 
-        public async Task<bool?> ShowIoc(Type type, Action<Control> action = null, string title = null, bool ownerMainWindow = true)
+        public async Task<bool?> ShowIoc(Type type, Action<Control> action = null, string title = null, Func<bool> canSumit = null, bool ownerMainWindow = true)
         {
             var r = DialogWindow.ShowIoc(type, action, title, ownerMainWindow);
             return await Task.FromResult(r);
         }
 
-        public async Task<bool?> ShowIoc<T>(Action<Control> action = null, string title = null, bool ownerMainWindow = true)
+        public async Task<bool?> ShowIoc<T>(Action<Control> action = null, string title = null, Func<bool> canSumit = null, bool ownerMainWindow = true)
         {
             var r = DialogWindow.ShowIoc<T>(action, title, ownerMainWindow);
             return await Task.FromResult(r);
@@ -43,9 +43,9 @@ namespace H.Modules.Message
         public async Task<T> ShowPercent<T>(Func<IPercentPresenter, ICancelable, T> action, Action<Control> build = null, string title = null, bool ownerMainWindow = true)
         {
             var p = new PercentPresenter();
-            var r = DialogWindow.ShowPresenter(p, cancel => action.Invoke(p, cancel), x =>
+            var r = DialogWindow.ShowAction(p, cancel => action.Invoke(p, cancel), x =>
             {
-               
+
             }, title, ownerMainWindow);
             return await Task.FromResult(r);
         }
@@ -53,7 +53,7 @@ namespace H.Modules.Message
         public async Task<T> ShowString<T>(Func<IStringPresenter, ICancelable, T> action, Action<Control> build = null, string title = null, bool ownerMainWindow = true)
         {
             var p = new StringPresenter();
-            var r = DialogWindow.ShowPresenter(p, cancel => action.Invoke(p, cancel), x =>
+            var r = DialogWindow.ShowAction(p, cancel => action.Invoke(p, cancel), x =>
             {
                 x.HorizontalContentAlignment = HorizontalAlignment.Center;
             }, title, ownerMainWindow);
@@ -63,7 +63,7 @@ namespace H.Modules.Message
         public async Task<T> ShowWait<T>(Func<ICancelable, T> action, Action<Control> build = null, string title = null, bool ownerMainWindow = true)
         {
             var p = new WaitPresenter();
-            var r = DialogWindow.ShowPresenter(p, cancel => action.Invoke(cancel), x =>
+            var r = DialogWindow.ShowAction(p, cancel => action.Invoke(cancel), x =>
             {
 
             }, title, ownerMainWindow);

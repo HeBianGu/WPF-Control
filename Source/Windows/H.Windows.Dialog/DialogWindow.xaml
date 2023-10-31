@@ -23,7 +23,7 @@
                 <ControlTemplate TargetType="{x:Type local:DialogWindow}">
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="45" />
+                            <RowDefinition Height="40" />
                             <RowDefinition />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>

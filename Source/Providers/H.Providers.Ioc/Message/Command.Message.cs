@@ -137,4 +137,22 @@ namespace H.Providers.Ioc
             IocMessage.Dialog.ShowWait(func);
         }
     }
+
+    public class ShowEditCommand : MessageCommandBase
+    {
+        public object Value { get; set; }
+        public override void Execute(object parameter)
+        {
+            IocMessage.Form.ShowEdit(this.Value);
+        }
+    }
+
+    public class ShowViewCommand : MessageCommandBase
+    {
+        public object Value { get; set; }
+        public override void Execute(object parameter)
+        {
+            IocMessage.Form.ShowView(this.Value);
+        }
+    }
 }

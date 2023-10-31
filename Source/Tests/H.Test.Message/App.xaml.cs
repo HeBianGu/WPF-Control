@@ -21,6 +21,7 @@ namespace H.Test.Message
         protected override void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IDialogMessage, DialogMessage>();
+            services.AddSingleton<IFormMessage, FormMessage>();
             services.AddAbout();
         }
 

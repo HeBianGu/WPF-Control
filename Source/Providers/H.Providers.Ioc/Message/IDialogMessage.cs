@@ -12,9 +12,9 @@ namespace H.Providers.Ioc
     public interface IDialogMessage
     {
         Task<bool?> ShowMessage(string message, string title = "提示", Action<Control> action = null, bool ownerMainWindow = true);
-        Task<bool?> Show(object presenter, Action<Control> action = null, string title = null, bool ownerMainWindow = true);
-        Task<bool?> ShowIoc(Type type, Action<Control> action = null, string title = null, bool ownerMainWindow = true);
-        Task<bool?> ShowIoc<T>(Action<Control> action = null, string title = null, bool ownerMainWindow = true);
+        Task<bool?> Show(object presenter, Action<Control> action = null, string title = null, Func<bool> canSumit = null, bool ownerMainWindow = true);
+        Task<bool?> ShowIoc(Type type, Action<Control> action = null, string title = null, Func<bool> canSumit = null, bool ownerMainWindow = true);
+        Task<bool?> ShowIoc<T>(Action<Control> action = null, string title = null, Func<bool> canSumit = null, bool ownerMainWindow = true);
 
         Task<T> ShowPercent<T>(Func<IPercentPresenter, ICancelable, T> action, Action<Control> build = null, string title = null, bool ownerMainWindow = true);
         Task<T> ShowString<T>(Func<IStringPresenter, ICancelable, T> action, Action<Control> build = null, string title = null, bool ownerMainWindow = true);

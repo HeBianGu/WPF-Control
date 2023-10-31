@@ -43,6 +43,7 @@ namespace H.Data.Test
         public int Age { get; set; }
 
         [Display(Name = "分数", GroupName = "成绩信息")]
+        [Range(0.0, 150.0)]
         public double Score { get; set; }
 
         [Display(Name = "电话号码", GroupName = "基础信息")]
@@ -89,7 +90,7 @@ namespace H.Data.Test
 
         public static Students Randoms(int c = 100)
         {
-            var ss= Enumerable.Range(0, c).Select(x => Student.Random()).ToList();
+            var ss = Enumerable.Range(0, c).Select(x => Student.Random()).ToList();
             return new Students(ss);
         }
     }
@@ -100,7 +101,7 @@ namespace H.Data.Test
         {
 
         }
-        public Students(IEnumerable<Student> collection):base(collection)
+        public Students(IEnumerable<Student> collection) : base(collection)
         {
 
         }

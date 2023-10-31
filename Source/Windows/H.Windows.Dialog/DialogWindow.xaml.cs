@@ -1,6 +1,7 @@
 ﻿using H.Providers.Ioc;
 using H.Themes.Default;
 using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -18,14 +19,25 @@ namespace H.Windows.Dialog
             DefaultStyleKeyProperty.OverrideMetadata(typeof(DialogWindow), new FrameworkPropertyMetadata(typeof(DialogWindow)));
         }
 
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            if (this.CanSumit?.Invoke() == false)
+            {
+                e.Cancel = true;
+                return;
+            }
+            base.OnClosing(e);
+        }
+
+        public Func<bool> CanSumit { get; set; }
+
+        public bool IsCancel => this.Dispatcher.Invoke(() => this.DialogResult == false);
+
         public ControlTemplate BottomTemplate
         {
             get { return (ControlTemplate)GetValue(BottomTemplateProperty); }
             set { SetValue(BottomTemplateProperty, value); }
         }
-
-        public bool IsCancel => this.Dispatcher.Invoke(() => this.DialogResult == false);
-
 
         public static readonly DependencyProperty BottomTemplateProperty =
             DependencyProperty.Register("BottomTemplate", typeof(ControlTemplate), typeof(DialogWindow), new FrameworkPropertyMetadata(default(ControlTemplate), (d, e) =>
@@ -55,19 +67,23 @@ namespace H.Windows.Dialog
             {
                 x.Width = 400;
                 x.Height = 200;
+                x.MinHeight = 150;
                 x.HorizontalContentAlignment = HorizontalAlignment.Center;
                 x.Padding = new Thickness(10, 6, 10, 6);
                 action?.Invoke(x);
             };
 
-            return ShowPresenter(message, build, title, ownerMainWindow);
+            return ShowPresenter(message, build, title, null, ownerMainWindow);
         }
 
-        public static bool? ShowPresenter(object data, Action<DialogWindow> action = null, string title = null, bool ownerMainWindow = true)
+        public static bool? ShowPresenter(object data, Action<DialogWindow> action = null, string title = null, Func<bool> canSumit = null, bool ownerMainWindow = true)
         {
             DialogWindow dialog = new DialogWindow();
             dialog.Content = data;
             dialog.Title = title ?? data.GetType().GetCustomAttribute<DisplayAttribute>()?.Name ?? "提示";
+            dialog.Width = 500;
+            dialog.SizeToContent = SizeToContent.Height;
+            dialog.CanSumit = canSumit;
             if (ownerMainWindow)
             {
                 dialog.Owner = Application.Current.MainWindow;
@@ -82,7 +98,7 @@ namespace H.Windows.Dialog
             return r;
         }
 
-        public static T ShowPresenter<T>(object data, Func<ICancelable, T> func, Action<DialogWindow> action = null, string title = null, bool ownerMainWindow = true)
+        public static T ShowAction<T>(object data, Func<ICancelable, T> func, Action<DialogWindow> action = null, string title = null, bool ownerMainWindow = true)
         {
             DialogWindow dialog = new DialogWindow();
             dialog.Content = data;
