@@ -4,6 +4,7 @@
         <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/ResourceKeys/FontSizeKeys.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/ResourceKeys/LayoutKeys.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/ResourceKeys/Color.Dark.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/ResourceKeys/BrushKeys.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/ConciseControls.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
