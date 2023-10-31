@@ -30,7 +30,7 @@ namespace H.Test.Ioc
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var test = Ioc.Services.GetService<ITest>();
+            var test = System.Ioc.Services.GetService<ITest>();
         }
     }
 

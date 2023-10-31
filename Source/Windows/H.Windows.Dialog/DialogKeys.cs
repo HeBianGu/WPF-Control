@@ -8,6 +8,5 @@ namespace H.Windows.Dialog
         public static ComponentResourceKey Sumit => new ComponentResourceKey(typeof(DialogKeys), "S.DialogWindow.Sumit");
         public static ComponentResourceKey Cancel => new ComponentResourceKey(typeof(DialogKeys), "S.DialogWindow.Cancel");
         public static ComponentResourceKey SumitAndCancel => new ComponentResourceKey(typeof(DialogKeys), "S.DialogWindow.SumitAndCancel");
-
     }
 }

@@ -93,7 +93,7 @@
                                 <SolidColorBrush Color="{StaticResource {x:Static h:ColorKeys.BorderBrushAssist}}" />
                             </Border.BorderBrush>
                         </Border>-->
-                        <Control Grid.Row="2"  Template="{TemplateBinding BottomTemplate}" />
+                        <Control Grid.Row="2" MinHeight="10" Template="{TemplateBinding BottomTemplate}" />
                         <ResizeGrip x:Name="WindowResizeGrip"
                                     Grid.RowSpan="3"
                                     Grid.ColumnSpan="3"

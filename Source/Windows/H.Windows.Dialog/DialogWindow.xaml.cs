@@ -63,20 +63,38 @@ namespace H.Windows.Dialog
     {
         public static bool? ShowMessage(string message, string title = "提示", bool ownerMainWindow = true, Action<System.Windows.Window> action = null)
         {
-            Action<System.Windows.Window> build = x =>
+            Action<Window> build = x =>
             {
                 x.Width = 400;
                 x.Height = 200;
                 x.MinHeight = 150;
                 x.HorizontalContentAlignment = HorizontalAlignment.Center;
                 x.Padding = new Thickness(10, 6, 10, 6);
+                x.Style = Application.Current.FindResource(DialogKeys.Sumit) as Style;
                 action?.Invoke(x);
             };
 
-            return ShowPresenter(message, build, title, null, ownerMainWindow);
+            return ShowPresenter(message, build,DialogButton.Sumit, title, null, ownerMainWindow);
         }
 
-        public static bool? ShowPresenter(object data, Action<DialogWindow> action = null, string title = null, Func<bool> canSumit = null, bool ownerMainWindow = true)
+        public static ResourceKey GetResourceKey(DialogButton dialogButton)
+        {
+            switch(dialogButton)
+            {
+                case DialogButton.Sumit:
+                    return DialogKeys.Sumit;
+                case DialogButton.None:
+                    return DialogKeys.None;
+                case DialogButton.Cancel:
+                    return DialogKeys.Cancel;
+                case DialogButton.SumitAndCancel:
+                    return DialogKeys.SumitAndCancel;
+                default:
+                    return DialogKeys.Sumit;
+            }
+        }
+
+        public static bool? ShowPresenter(object data, Action<DialogWindow> action = null, DialogButton dialogButton = DialogButton.Sumit, string title = null, Func<bool> canSumit = null, bool ownerMainWindow = true)
         {
             DialogWindow dialog = new DialogWindow();
             dialog.Content = data;
@@ -84,6 +102,8 @@ namespace H.Windows.Dialog
             dialog.Width = 500;
             dialog.SizeToContent = SizeToContent.Height;
             dialog.CanSumit = canSumit;
+            var key = GetResourceKey(dialogButton);
+            dialog.Style = Application.Current.FindResource(key) as Style;
             if (ownerMainWindow)
             {
                 dialog.Owner = Application.Current.MainWindow;
@@ -135,7 +155,7 @@ namespace H.Windows.Dialog
 
         public static bool? ShowPresenter(object data, string title)
         {
-            return ShowPresenter(data, null, title);
+            return ShowPresenter(data, null, DialogButton.Sumit, title);
         }
 
         public static bool? ShowIoc<T>(Action<DialogWindow> action = null, string title = null, bool ownerMainWindow = true)

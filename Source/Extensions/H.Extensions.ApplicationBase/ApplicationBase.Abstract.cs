@@ -19,6 +19,10 @@ namespace H.Extensions.ApplicationBase
 
         }
 
+        protected virtual void Configure(IApplicationBuilder app)
+        {
+           
+        }
 
         /// <summary>
         /// 加载启动页面

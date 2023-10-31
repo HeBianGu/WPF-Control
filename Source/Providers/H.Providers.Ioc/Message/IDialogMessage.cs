@@ -12,7 +12,7 @@ namespace H.Providers.Ioc
     public interface IDialogMessage
     {
         Task<bool?> ShowMessage(string message, string title = "提示", Action<Control> action = null, bool ownerMainWindow = true);
-        Task<bool?> Show(object presenter, Action<Control> action = null, string title = null, Func<bool> canSumit = null, bool ownerMainWindow = true);
+        Task<bool?> Show(object presenter, Action<Control> action = null, DialogButton dialogButton = DialogButton.Sumit, string title = null, Func<bool> canSumit = null, bool ownerMainWindow = true);
         Task<bool?> ShowIoc(Type type, Action<Control> action = null, string title = null, Func<bool> canSumit = null, bool ownerMainWindow = true);
         Task<bool?> ShowIoc<T>(Action<Control> action = null, string title = null, Func<bool> canSumit = null, bool ownerMainWindow = true);
 
@@ -39,5 +39,10 @@ namespace H.Providers.Ioc
     public interface IStringPresenter
     {
         string Value { set; }
+    }
+
+    public enum DialogButton
+    {
+        Sumit, Cancel, None, SumitAndCancel
     }
 }

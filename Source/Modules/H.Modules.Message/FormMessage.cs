@@ -14,7 +14,7 @@ namespace H.Modules.Message
         {
             Func<bool> canSumit = () =>
             {
-                if(value.ModelStateDeep(out string error)==false)
+                if (value.ModelStateDeep(out string error) == false)
                 {
                     IocMessage.Dialog.ShowMessage(error);
                     return false;
@@ -22,7 +22,7 @@ namespace H.Modules.Message
                 return match?.Invoke(value) != false;
             };
             var presenter = new FormPresenter(value);
-            var r = DialogWindow.ShowPresenter(presenter, action, title, canSumit, ownerMainWindow);
+            var r = DialogWindow.ShowPresenter(presenter, action, DialogButton.Sumit, title, canSumit, ownerMainWindow);
             return await Task.FromResult(r);
         }
         public async Task<bool?> ShowView<T>(T value, Predicate<T> match = null, Action<Control> action = null, string title = null, bool ownerMainWindow = true)
@@ -33,7 +33,7 @@ namespace H.Modules.Message
             };
             var presenter = new FormPresenter(value);
             presenter.UsePropertyView = true;
-            var r = DialogWindow.ShowPresenter(presenter, action, title, canSumit, ownerMainWindow);
+            var r = DialogWindow.ShowPresenter(presenter, action, DialogButton.Sumit, title, canSumit, ownerMainWindow);
             return await Task.FromResult(r);
         }
     }

@@ -16,9 +16,9 @@ namespace H.Modules.Message
 {
     public class DialogMessage : IDialogMessage
     {
-        public async Task<bool?> Show(object presenter, Action<Control> action = null, string title = null, Func<bool> canSumit = null, bool ownerMainWindow = true)
+        public async Task<bool?> Show(object presenter, Action<Control> action = null,DialogButton dialogButton = DialogButton.Sumit, string title = null, Func<bool> canSumit = null, bool ownerMainWindow = true)
         {
-            var r = DialogWindow.ShowPresenter(presenter, action, title, canSumit, ownerMainWindow);
+            var r = DialogWindow.ShowPresenter(presenter, action, dialogButton, title, canSumit, ownerMainWindow);
             return await Task.FromResult(r);
         }
 

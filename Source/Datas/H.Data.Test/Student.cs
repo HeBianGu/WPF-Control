@@ -109,7 +109,7 @@ namespace H.Data.Test
 
     public class GetStudentsExtension : MarkupExtension
     {
-        public int Count { get; set; }
+        public int Count { get; set; } = 10;
 
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
