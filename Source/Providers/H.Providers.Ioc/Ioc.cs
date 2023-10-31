@@ -9,7 +9,7 @@ using System.Windows.Markup;
 
 namespace System
 {
-    public class Ioc
+    public static class Ioc
     {
         private static IServiceProvider _services = null;
         public static IServiceProvider Services => _services;
@@ -22,7 +22,10 @@ namespace System
         {
             var r = (T)_services.GetService(typeof(T));
             if (r == null)
-                Throw<T>();
+            {
+                System.Diagnostics.Debug.WriteLine(typeof(T));
+                throw new ArgumentNullException($"请先注册<{typeof(T)}>接口");
+            }
             return r;
         }
 
@@ -30,24 +33,21 @@ namespace System
         {
             var r = (T)_services.GetService(type);
             if (r == null)
-                Throw<T>();
+            {
+                System.Diagnostics.Debug.WriteLine(type);
+                throw new ArgumentNullException($"请先注册<{type}>接口");
+            }
             return r;
-        }
-
-        static void Throw<T>()
-        {
-            throw new ArgumentNullException($"请先注册<{nameof(T)}>接口");
-
         }
     }
 
     public abstract class IocInstance<Setting, Interface> where Setting : class, Interface, new()
     {
-        public static Setting Instance => Ioc.Services.GetService(typeof(Interface)) as Setting;
+        public static Setting Instance => Ioc.GetService<Interface>() as Setting;
     }
 
     public abstract class IocInstance<Interface>
     {
-        public static Interface Instance => (Interface)Ioc.Services.GetService(typeof(Interface));
+        public static Interface Instance => Ioc.GetService<Interface>();
     }
 }

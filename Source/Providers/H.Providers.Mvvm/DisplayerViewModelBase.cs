@@ -33,16 +33,31 @@ namespace H.Providers.Mvvm
             this.ID = this.GetType().Name;
             this.Name = this.GetType().Name;
             {
-                var display = this.GetType().GetCustomAttribute<DisplayerAttribute>(true);
-                if (display != null)
+
                 {
-                    this.ID = display.ID ?? this.ID;
-                    this.Name = display.Name ?? this.Name;
-                    this.GroupName = display.GroupName;
-                    this.Description = display.Description;
-                    this.Order = display.Order;
-                    this.Icon = display.Icon;
-                    this.TabName = display.TabName;
+                    var display = this.GetType().GetCustomAttribute<DisplayerAttribute>(true);
+                    if (display != null)
+                    {
+                        this.ID = display.ID ?? this.ID;
+                        this.Name = display.Name ?? this.Name;
+                        this.GroupName = display.GroupName;
+                        this.Description = display.Description;
+                        this.Order = display.Order;
+                        this.Icon = display.Icon;
+                        this.TabName = display.TabName;
+                    }
+                }
+                {
+                    var display = this.GetType().GetCustomAttribute<DisplayAttribute>(true);
+                    if (display != null)
+                    {
+                        this.Name = display.Name ?? this.Name;
+                        this.GroupName = display.GroupName;
+                        this.Description = display.Description;
+                        var od = display.GetOrder();
+                        if (od.HasValue)
+                            this.Order = od.Value;
+                    }
                 }
             }
 

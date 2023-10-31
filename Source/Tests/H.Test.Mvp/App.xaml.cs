@@ -21,6 +21,14 @@ namespace H.Test.Mvp
             services.AddAbout();
         }
 
+        protected override void Configure(IApplicationBuilder app)
+        {
+            app.UseAbout(x=>
+            {
+                x.Title = "设置标题";
+            });
+        }
+
         protected override Window CreateMainWindow(StartupEventArgs e)
         {
             return new MainWindow();

@@ -23,6 +23,8 @@ namespace H.Extensions.ApplicationBase
 
         protected override void OnStartup(StartupEventArgs e)
         {
+            var bulder = new ApplicationBuilder();
+            this.Configure(bulder);
             this.OnSingleton(e);
             base.OnStartup(e);
             this.CreateMainWindow(e);
@@ -143,9 +145,7 @@ namespace H.Extensions.ApplicationBase
         #endregion
 
 
-        public ILogService? ILogger => Ioc.Services.GetService<ILogService>();
-
-
+        public ILogService ILogger => Ioc.Services.GetService<ILogService>();
         protected virtual void ShowMessage(string message, string title = "提示")
         {
             MessageBox.Show(message);
@@ -161,8 +161,5 @@ namespace H.Extensions.ApplicationBase
             //}
 
         }
-
-
     }
-
 }

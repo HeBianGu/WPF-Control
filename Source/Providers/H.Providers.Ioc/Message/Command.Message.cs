@@ -60,9 +60,10 @@ namespace H.Providers.Ioc
     public class ShowCommand : MessageCommandBase
     {
         public object Presnter { get; set; }
+        public DialogButton DialogButton { get; set; }
         public override void Execute(object parameter)
         {
-            IocMessage.Dialog.Show(this.Presnter, this.Build, this.Title);
+            IocMessage.Dialog.Show(this.Presnter, this.Build, this.DialogButton, this.Title);
         }
         public override bool CanExecute(object parameter)
         {

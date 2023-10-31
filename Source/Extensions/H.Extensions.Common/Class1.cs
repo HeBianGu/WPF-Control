@@ -13,4 +13,5 @@ namespace H.Extensions.Common
     {
         public static T Instance = new Lazy<T>(() => new T()).Value;
     }
+
 }
