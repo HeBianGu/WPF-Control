@@ -1,0 +1,21 @@
+﻿<Window x:Class="H.Test.Message.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:h="https://github.com/HeBianGu"
+        xmlns:local="clr-namespace:H.Test.Message"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Title="MainWindow"
+        Width="800"
+        Height="450"
+        Style="{StaticResource {x:Type Window}}"
+        mc:Ignorable="d">
+    <UniformGrid>
+        <Button Command="{ShowIocCommand Type={x:Type IAboutViewPresenter}}" Content="ShowIocCommand" />
+        <Button Command="{ShowMessageCommand Message=我是消息, Title=我是标题, Height=150,Width=300}" Content="ShowMessageCommand" />
+        <Button Command="{ShowCommand Presnter={h:GetStudent}}" Content="ShowCommand" />
+        <Button Command="{ShowPercentCommand}" Content="ShowPercentCommand" />
+        <Button Command="{ShowStringCommand}" Content="ShowStringCommand" />
+        <Button Command="{ShowWaitCommand}" Content="ShowWaitCommand" />
+    </UniformGrid>
+</Window>

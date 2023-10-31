@@ -116,6 +116,14 @@ namespace H.Data.Test
         }
     }
 
+    public class GetStudentExtension : MarkupExtension
+    {
+        public override object ProvideValue(IServiceProvider serviceProvider)
+        {
+            return Student.Random();
+        }
+    }
+
     public class StudentValidationRule : ValidationRule
     {
         public override System.Windows.Controls.ValidationResult Validate(object value, CultureInfo cultureInfo)

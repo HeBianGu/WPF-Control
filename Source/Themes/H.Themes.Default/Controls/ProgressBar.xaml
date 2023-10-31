@@ -48,10 +48,10 @@
                                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,0" Opacity="0.5">
                                             <LinearGradientBrush.GradientStops>
                                                 <GradientStopCollection>
-                                                    <GradientStop Offset="0" Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
+                                                    <GradientStop Offset="0" Color="{DynamicResource {x:Static local:ColorKeys.ForegroundAssist}}" />
                                                     <GradientStop Offset="0.4" Color="{DynamicResource {x:Static local:ColorKeys.ForegroundAssist}}" />
                                                     <GradientStop Offset="0.6" Color="{DynamicResource {x:Static local:ColorKeys.ForegroundAssist}}" />
-                                                    <GradientStop Offset="1" Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
+                                                    <GradientStop Offset="1" Color="{DynamicResource {x:Static local:ColorKeys.ForegroundAssist}}" />
                                                 </GradientStopCollection>
                                             </LinearGradientBrush.GradientStops>
                                         </LinearGradientBrush>
@@ -70,8 +70,7 @@
         </Setter>
         <Setter Property="Foreground">
             <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
-
+                <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.BorderBrushTitle}}" />
             </Setter.Value>
         </Setter>
     </Style>

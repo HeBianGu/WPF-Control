@@ -88,11 +88,11 @@
                         <AdornerDecorator Grid.Row="1" Grid.ColumnSpan="3">
                             <ContentPresenter Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="Center" />
                         </AdornerDecorator>
-                        <Border Grid.Row="2" BorderThickness="0,1,0,0">
+                        <!--<Border Grid.Row="2" BorderThickness="0,1,0,0">
                             <Border.BorderBrush>
-                                <SolidColorBrush Color="{StaticResource {x:Static h:ColorKeys.Dark0_1}}" />
+                                <SolidColorBrush Color="{StaticResource {x:Static h:ColorKeys.BorderBrushAssist}}" />
                             </Border.BorderBrush>
-                        </Border>
+                        </Border>-->
                         <Control Grid.Row="2"  Template="{TemplateBinding BottomTemplate}" />
                         <ResizeGrip x:Name="WindowResizeGrip"
                                     Grid.RowSpan="3"
@@ -127,7 +127,7 @@
             <Setter.Value>
                 <ControlTemplate>
                     <Button Width="100"
-                            Margin="10"
+                            Margin="0 0 0 10"
                             HorizontalAlignment="Center"
                             Command="{h:SumitWindowCommand}"
                             CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
@@ -137,5 +137,57 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.DialogWindow.ShowMessage, TypeInTargetAssembly={x:Type local:DialogKeys}}" TargetType="{x:Type local:DialogWindow}" />
+    <Style x:Key="{ComponentResourceKey ResourceId=S.DialogWindow.None, TypeInTargetAssembly={x:Type local:DialogKeys}}" TargetType="{x:Type local:DialogWindow}" >
+        <Setter Property="BottomTemplate" Value="{x:Null}"/>
+    </Style>
+    <Style x:Key="{ComponentResourceKey ResourceId=S.DialogWindow.Sumit, TypeInTargetAssembly={x:Type local:DialogKeys}}" TargetType="{x:Type local:DialogWindow}">
+        <Setter Property="BottomTemplate">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Button Width="100"
+                            Margin="0 0 0 10"
+                            HorizontalAlignment="Center"
+                            Command="{h:SumitWindowCommand}"
+                            CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                            Content="确定" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="{ComponentResourceKey ResourceId=S.DialogWindow.Cancel, TypeInTargetAssembly={x:Type local:DialogKeys}}" TargetType="{x:Type local:DialogWindow}" >
+        <Setter Property="BottomTemplate">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Button Width="100"
+                            Margin="0 0 0 10"
+                            HorizontalAlignment="Center"
+                            Command="{h:CloseWindowCommand}"
+                            CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                            Content="取消" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="{ComponentResourceKey ResourceId=S.DialogWindow.SumitAndCancel, TypeInTargetAssembly={x:Type local:DialogKeys}}" TargetType="{x:Type local:DialogWindow}">
+        <Setter Property="BottomTemplate">
+            <Setter.Value>
+                <ControlTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Width="100"
+                           Margin="6 0 6 10"
+                            HorizontalAlignment="Center"
+                            Command="{h:SumitWindowCommand}"
+                            CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                            Content="确定" />
+                        <Button Width="100"
+                           Margin="6 0 6 10"
+                            HorizontalAlignment="Center"
+                            Command="{h:CloseWindowCommand}"
+                            CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                            Content="取消" />
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>
