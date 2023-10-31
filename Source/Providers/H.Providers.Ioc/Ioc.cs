@@ -20,12 +20,24 @@ namespace System
 
         public static T GetService<T>()
         {
-            return (T)_services.GetService(typeof(T));
+            var r = (T)_services.GetService(typeof(T));
+            if (r == null)
+                Throw<T>();
+            return r;
         }
 
         public static T GetService<T>(Type type)
         {
-            return (T)_services.GetService(type);
+            var r = (T)_services.GetService(type);
+            if (r == null)
+                Throw<T>();
+            return r;
+        }
+
+        static void Throw<T>()
+        {
+            throw new ArgumentNullException($"请先注册<{nameof(T)}>接口");
+
         }
     }
 

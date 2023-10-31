@@ -12,7 +12,7 @@
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form;component/PropertyItem/DateTimePropertyItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form;component/PropertyItem/BoolPropertyItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form;component/PropertyItem/CommandPropertyItem.xaml" />
-
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form;component/FormPresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
   
@@ -233,30 +233,6 @@
 
     <DataTemplate DataType="{x:Type local:PresenterPropertyItem}">
         <ContentPresenter VerticalAlignment="Center" Content="{Binding Value}" />
-    </DataTemplate>
-
-    <DataTemplate DataType="{x:Type local:ItemsPropertyGridPresenter}">
-        <ScrollViewer>
-            <ItemsControl MinWidth="600" ItemsSource="{Binding Objs}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Expander Header="{Binding ., Converter={x:Static h:Converter.GetDiaplayName}}" IsExpanded="True">
-                            <local:Form SelectObject="{Binding}" />
-                        </Expander>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <DockPanel />
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemContainerStyle>
-                    <Style TargetType="ContentPresenter">
-                        <Setter Property="DockPanel.Dock" Value="Top" />
-                    </Style>
-                </ItemsControl.ItemContainerStyle>
-            </ItemsControl>
-        </ScrollViewer>
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type local:DictionaryPropertyViewItem}">
