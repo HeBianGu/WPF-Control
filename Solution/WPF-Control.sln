@@ -93,9 +93,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Controls.ProgressButton",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Test.Sqlite", "..\Source\Tests\H.Test.Sqlite\H.Test.Sqlite.csproj", "{72619BBE-9EA9-4D20-8C6E-4D1EA56D971F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.DataBases.SqlServer", "..\Source\DataBases\H.DataBases.SqlServer\H.DataBases.SqlServer.csproj", "{77D32129-E4AA-48FC-8896-E2EAD9BF96F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.DataBases.SqlServer", "..\Source\DataBases\H.DataBases.SqlServer\H.DataBases.SqlServer.csproj", "{77D32129-E4AA-48FC-8896-E2EAD9BF96F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Test.SqlServer", "..\Source\Tests\H.Test.SqlServer\H.Test.SqlServer.csproj", "{309D9EF9-A1F2-45CD-AE17-D53CB54B7485}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Test.SqlServer", "..\Source\Tests\H.Test.SqlServer\H.Test.SqlServer.csproj", "{309D9EF9-A1F2-45CD-AE17-D53CB54B7485}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
