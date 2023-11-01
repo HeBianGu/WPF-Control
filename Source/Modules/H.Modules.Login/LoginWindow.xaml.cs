@@ -44,7 +44,7 @@ namespace H.Modules.Login
 
 
 
-        public static bool? ShowMessage(string message, string title = "提示", bool ownerMainWindow = true, Action<System.Windows.Window> action = null)
+        public static bool? ShowMessage(string message, string title = "提示", Window owner = null, Action<System.Windows.Window> action = null)
         {
             Action<System.Windows.Window> build = x =>
             {
@@ -55,15 +55,15 @@ namespace H.Modules.Login
                 action?.Invoke(x);
             };
 
-            return ShowData(message, build, title, ownerMainWindow);
+            return ShowData(message, build, title, owner);
         }
 
-        public static bool? ShowData(object data, Action<System.Windows.Window> action = null, string title = "提示", bool ownerMainWindow = true)
+        public static bool? ShowData(object data, Action<System.Windows.Window> action = null, string title = "提示", Window owner = null)
         {
             LoginWindow dialog = new LoginWindow();
             dialog.Title = title;
             dialog.Content = data;
-            if (ownerMainWindow)
+            if (owner?.IsLoaded==true)
             {
                 dialog.Owner = Application.Current.MainWindow;
                 dialog.WindowStartupLocation = WindowStartupLocation.CenterOwner;

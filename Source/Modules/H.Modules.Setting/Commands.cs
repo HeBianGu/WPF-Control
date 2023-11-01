@@ -3,6 +3,7 @@
 
 using H.Providers.Ioc;
 using H.Providers.Mvvm;
+using System.Windows;
 
 namespace H.Modules.Setting
 {
@@ -15,6 +16,14 @@ namespace H.Modules.Setting
             {
                 x.Width = 800;
                 x.Height = 500;
+                if (x is Window window)
+                {
+                    window.SizeToContent = SizeToContent.Manual;
+                    window.ResizeMode = ResizeMode.CanResize;
+                    window.ShowInTaskbar = true;
+                    window.VerticalContentAlignment = VerticalAlignment.Stretch;
+                }
+                  
             }, DialogButton.None);
             if (r != true)
                 return;

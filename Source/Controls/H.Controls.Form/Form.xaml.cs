@@ -1061,78 +1061,6 @@ namespace H.Controls.Form
 
     public partial class Form
     {
-        private static ManualResetEvent _asyncShowWaitHandle = new ManualResetEvent(false);
-
-        ///// <summary> 显示蒙版 </summary>
-        //public static async Task<bool> Show<T>(T value, Predicate<T> match = null, string title = null, Action<PropertyGrid> builder = null, ComponentResourceKey key = null)
-        //{
-        //    bool result = false;
-
-        //    await Application.Current.Dispatcher.Invoke(async () =>
-        //    {
-        //        if (Application.Current.MainWindow is IMainWindow window)
-        //        {
-        //            PropertyGrid form = new PropertyGrid();
-        //            form.Title = title;
-        //            form.Style = Application.Current.FindResource(key ?? PropertyGrid.DialogKey) as Style;
-        //            form.SelectObject = value;
-        //            builder?.Invoke(form);
-
-        //            form.Close += (l, k) =>
-        //            {
-        //                MessageProxy.Container.Close();
-        //                _asyncShowWaitHandle.Set();
-        //                result = false;
-        //            };
-
-        //            form.Sumit += (l, k) =>
-        //            {
-        //                bool check = form.ModelState(out List<string> errors);
-
-        //                if (!check)
-        //                {
-        //                    MessageProxy.Snacker.ShowTime(errors.FirstOrDefault());
-        //                    return;
-        //                }
-
-        //                if (match != null && !match(value))
-        //                {
-        //                    return;
-        //                }
-
-        //                MessageProxy.Container.Close();
-        //                _asyncShowWaitHandle.Set();
-        //                result = true;
-
-        //            };
-
-        //            window.ShowContainer(form);
-        //            _asyncShowWaitHandle.Reset();
-
-        //            Task task = new Task(() =>
-        //            {
-        //                _asyncShowWaitHandle.WaitOne();
-        //            });
-
-        //            task.Start();
-        //            await task;
-        //        }
-        //    });
-
-        //    return result;
-
-        //}
-
-        //public static async Task<bool> Show<T>(T value, Action<PropertyGrid> builder)
-        //{
-        //    return await Show(value, null, null, builder);
-        //}
-
-        //public static async Task<bool> Show<T>(T value, string title, Action<PropertyGrid> builder)
-        //{
-        //    return await Show(value, null, title, builder);
-        //}
-
         private bool _isRefreshing;
         public virtual void RefreshObject()
         {
@@ -1176,9 +1104,6 @@ namespace H.Controls.Form
 
         protected void RefreshObjectinternal()
         {
-
-            System.Diagnostics.Debug.WriteLine("PropertyGrid.RefreshObjectinternal:" + this.SelectObject?.ToString() + DateTime.Now);
-
             object o = this.SelectObject;
             if (o == null)
             {
@@ -1223,10 +1148,6 @@ namespace H.Controls.Form
             {
                 action.Invoke(type);
             }
-
-
-            //var propertys = type.GetProperties().OrderBy(l => l.DeclaringType).ToList();
-
             List<IPropertyItem> items = new List<IPropertyItem>();
             foreach (PropertyInfo item in propertys)
             {
@@ -1388,7 +1309,7 @@ namespace H.Controls.Form
         }
     }
 
-    public class StaticPropertyGrid : Form
+    public class StaticForm : Form
     {
         public override void RefreshObject()
         {

@@ -10,7 +10,7 @@ namespace H.Modules.Message
 {
     public class FormMessage : IFormMessage
     {
-        public async Task<bool?> ShowEdit<T>(T value, Predicate<T> match = null, Action<Control> action = null, string title = null, bool ownerMainWindow = true)
+        public async Task<bool?> ShowEdit<T>(T value, Predicate<T> match = null, Action<Control> action = null, string title = null, Window owner = null)
         {
             Func<bool> canSumit = () =>
             {
@@ -21,19 +21,19 @@ namespace H.Modules.Message
                 }
                 return match?.Invoke(value) != false;
             };
-            var presenter = new FormPresenter(value);
-            var r = DialogWindow.ShowPresenter(presenter, action, DialogButton.Sumit, title, canSumit, ownerMainWindow);
+            var presenter = new StaticFormPresenter(value);
+            var r = DialogWindow.ShowPresenter(presenter, action, DialogButton.Sumit, title, canSumit, owner);
             return await Task.FromResult(r);
         }
-        public async Task<bool?> ShowView<T>(T value, Predicate<T> match = null, Action<Control> action = null, string title = null, bool ownerMainWindow = true)
+        public async Task<bool?> ShowView<T>(T value, Predicate<T> match = null, Action<Control> action = null, string title = null, Window owner = null)
         {
             Func<bool> canSumit = () =>
             {
                 return match?.Invoke(value) != false;
             };
-            var presenter = new FormPresenter(value);
+            var presenter = new StaticFormPresenter(value);
             presenter.UsePropertyView = true;
-            var r = DialogWindow.ShowPresenter(presenter, action, DialogButton.Sumit, title, canSumit, ownerMainWindow);
+            var r = DialogWindow.ShowPresenter(presenter, action, DialogButton.Sumit, title, canSumit, owner);
             return await Task.FromResult(r);
         }
     }

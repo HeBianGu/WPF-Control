@@ -3,5 +3,6 @@
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/StringPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/PercentPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/WaitPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/MessagePresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

@@ -6,6 +6,11 @@
         <local:Form SelectObject="{Binding Value}" UseAsync="False" UsePropertyView="{Binding UsePropertyView}" />
     </DataTemplate>
 
+    <DataTemplate DataType="{x:Type local:StaticFormPresenter}">
+        <local:StaticForm SelectObject="{Binding Value}" UseAsync="False" UsePropertyView="{Binding UsePropertyView}" />
+    </DataTemplate>
+
+
     <DataTemplate DataType="{x:Type local:ItemsFormPresenter}">
         <ScrollViewer>
             <ItemsControl MinWidth="600" ItemsSource="{Binding Objs}">

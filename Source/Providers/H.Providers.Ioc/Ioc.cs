@@ -46,8 +46,20 @@ namespace System
         public static Setting Instance => Ioc.GetService<Interface>() as Setting;
     }
 
-    public abstract class IocInstance<Interface>
+    public abstract class IocInstanceThrowIfNone<Interface>
     {
         public static Interface Instance => Ioc.GetService<Interface>();
+    }
+
+    public abstract class IocInstance<Interface>
+    {
+        public static Interface Instance
+        {
+            get
+            {
+                var r = Ioc.Services.GetService(typeof(Interface));
+                return r == null ? default : (Interface)r;
+            }
+        }
     }
 }

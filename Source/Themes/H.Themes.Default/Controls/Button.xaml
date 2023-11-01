@@ -78,7 +78,7 @@
                         <Trigger Property="IsDefault" Value="true">
                             <Setter TargetName="Border" Property="BorderBrush">
                                 <Setter.Value>
-                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Accent}}" />
+                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.ForegroundAssist}}" />
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
@@ -149,7 +149,7 @@
                         <Trigger Property="IsDefault" Value="true">
                             <Setter TargetName="Border" Property="BorderBrush">
                                 <Setter.Value>
-                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Accent}}" />
+                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.ForegroundAssist}}" />
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
@@ -210,6 +210,15 @@
                               Stretch="Uniform"
                               Stroke="{TemplateBinding Foreground}" />
                     </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsDefault" Value="true">
+                            <Setter TargetName="Border" Property="BorderBrush">
+                                <Setter.Value>
+                                    <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.ForegroundAssist}}" />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
