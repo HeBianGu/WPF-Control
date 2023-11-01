@@ -87,11 +87,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - DataBases", "2 - DataBa
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "H.DataBases.Share", "..\Source\DataBases\H.DataBases.Share\H.DataBases.Share.shproj", "{57A367B1-94F1-4131-B593-46BE2CD7C1C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.DataBases.Sqlite", "..\Source\DataBases\H.DataBases.Sqlite\H.DataBases.Sqlite.csproj", "{B985A54F-BCDF-48B9-9526-A0209673CB10}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.DataBases.Sqlite", "..\Source\DataBases\H.DataBases.Sqlite\H.DataBases.Sqlite.csproj", "{B985A54F-BCDF-48B9-9526-A0209673CB10}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Controls.ProgressButton", "..\Source\Controls\H.Controls.ProgressButton\H.Controls.ProgressButton.csproj", "{438B1CE6-596A-4165-BFCE-00228CCF5709}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Controls.ProgressButton", "..\Source\Controls\H.Controls.ProgressButton\H.Controls.ProgressButton.csproj", "{438B1CE6-596A-4165-BFCE-00228CCF5709}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Test.Sqlite", "..\Source\Tests\H.Test.Sqlite\H.Test.Sqlite.csproj", "{72619BBE-9EA9-4D20-8C6E-4D1EA56D971F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Test.Sqlite", "..\Source\Tests\H.Test.Sqlite\H.Test.Sqlite.csproj", "{72619BBE-9EA9-4D20-8C6E-4D1EA56D971F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.DataBases.SqlServer", "..\Source\DataBases\H.DataBases.SqlServer\H.DataBases.SqlServer.csproj", "{77D32129-E4AA-48FC-8896-E2EAD9BF96F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Test.SqlServer", "..\Source\Tests\H.Test.SqlServer\H.Test.SqlServer.csproj", "{309D9EF9-A1F2-45CD-AE17-D53CB54B7485}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -235,6 +239,14 @@ Global
 		{72619BBE-9EA9-4D20-8C6E-4D1EA56D971F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72619BBE-9EA9-4D20-8C6E-4D1EA56D971F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72619BBE-9EA9-4D20-8C6E-4D1EA56D971F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77D32129-E4AA-48FC-8896-E2EAD9BF96F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77D32129-E4AA-48FC-8896-E2EAD9BF96F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77D32129-E4AA-48FC-8896-E2EAD9BF96F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77D32129-E4AA-48FC-8896-E2EAD9BF96F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{309D9EF9-A1F2-45CD-AE17-D53CB54B7485}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{309D9EF9-A1F2-45CD-AE17-D53CB54B7485}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{309D9EF9-A1F2-45CD-AE17-D53CB54B7485}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{309D9EF9-A1F2-45CD-AE17-D53CB54B7485}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -275,12 +287,15 @@ Global
 		{B985A54F-BCDF-48B9-9526-A0209673CB10} = {9B3B0248-156A-4E40-AF67-7537BBD5BF13}
 		{438B1CE6-596A-4165-BFCE-00228CCF5709} = {9E63ED70-6F96-4CB2-8B9D-EAEC77D0548E}
 		{72619BBE-9EA9-4D20-8C6E-4D1EA56D971F} = {E2C0B11D-5ED5-4F22-8E56-F68982B6E59B}
+		{77D32129-E4AA-48FC-8896-E2EAD9BF96F1} = {9B3B0248-156A-4E40-AF67-7537BBD5BF13}
+		{309D9EF9-A1F2-45CD-AE17-D53CB54B7485} = {E2C0B11D-5ED5-4F22-8E56-F68982B6E59B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF825C3D-F4F4-4E62-BBFF-B42A5E81112F}
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		..\Source\DataBases\H.DataBases.Share\H.DataBases.Share.projitems*{57a367b1-94f1-4131-b593-46be2cd7c1c0}*SharedItemsImports = 13
+		..\Source\DataBases\H.DataBases.Share\H.DataBases.Share.projitems*{77d32129-e4aa-48fc-8896-e2ead9bf96f1}*SharedItemsImports = 5
 		..\Source\DataBases\H.DataBases.Share\H.DataBases.Share.projitems*{b985a54f-bcdf-48b9-9526-a0209673cb10}*SharedItemsImports = 5
 	EndGlobalSection
 EndGlobal

@@ -9,6 +9,8 @@
     <Import_RootNamespace>H.DataBases.Share</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)DbConnectServiceBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DbDisconnectService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IDbSetting.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DbSettingBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extention.cs" />
