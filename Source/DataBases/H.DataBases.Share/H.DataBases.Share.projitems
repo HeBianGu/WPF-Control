@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>57a367b1-94f1-4131-b593-46be2cd7c1c0</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>H.DataBases.Share</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)IDbSetting.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DbSettingBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extention.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Provider\DbContextRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Provider\RepositoryBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Provider\StringRepositoryBase.cs" />
+  </ItemGroup>
+</Project>

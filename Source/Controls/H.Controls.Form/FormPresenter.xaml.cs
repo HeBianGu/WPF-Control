@@ -10,9 +10,9 @@ namespace H.Controls.Form
 {
     public class FormPresenter : DisplayerViewModelBase
     {
-        public FormPresenter(object obj)
+        public FormPresenter(object value)
         {
-            this._value = obj;
+            this._value = value;
         }
 
         private object _value;
@@ -36,7 +36,14 @@ namespace H.Controls.Form
                 RaisePropertyChanged();
             }
         }
+    }
 
+    public class StaticFormPresenter : FormPresenter
+    {
+        public StaticFormPresenter(object value) : base(value)
+        {
+
+        }
     }
 
     public class ItemsFormPresenter : DisplayerViewModelBase

@@ -63,25 +63,35 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Test.Form", "..\Source\Te
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Controls.Form", "..\Source\Controls\H.Controls.Form\H.Controls.Form.csproj", "{D34B214A-3946-4A4E-83C4-57501CABB8BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Controls.PropertyGrid", "..\Source\Controls\H.Controls.PropertyGrid\H.Controls.PropertyGrid.csproj", "{5EF118A3-1FDD-48DF-AF0E-16F1470C9011}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Controls.PropertyGrid", "..\Source\Controls\H.Controls.PropertyGrid\H.Controls.PropertyGrid.csproj", "{5EF118A3-1FDD-48DF-AF0E-16F1470C9011}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Test.PropertyGrid", "..\Source\Tests\H.Test.PropertyGrid\H.Test.PropertyGrid.csproj", "{A6EFD1C8-7B9A-4B59-BE40-0F7393654A88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Test.PropertyGrid", "..\Source\Tests\H.Test.PropertyGrid\H.Test.PropertyGrid.csproj", "{A6EFD1C8-7B9A-4B59-BE40-0F7393654A88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Modules.Message", "..\Source\Modules\H.Modules.Message\H.Modules.Message.csproj", "{24D4F4B1-3971-4C73-B516-C8EBEA5A2375}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Modules.Message", "..\Source\Modules\H.Modules.Message\H.Modules.Message.csproj", "{24D4F4B1-3971-4C73-B516-C8EBEA5A2375}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Test.Message", "..\Source\Tests\H.Test.Message\H.Test.Message.csproj", "{B962486B-F32C-4CAE-A919-622C5A5CDBB1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Test.Message", "..\Source\Tests\H.Test.Message\H.Test.Message.csproj", "{B962486B-F32C-4CAE-A919-622C5A5CDBB1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Presenters", "3 - Presenters", "{B5FE7036-B316-4FC3-81E8-00BD6C76784D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Presenters.Common", "..\Source\Presenters\H.Presenters.Common\H.Presenters.Common.csproj", "{23A60556-25A8-40A1-8E51-6124CD1E1D91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Presenters.Common", "..\Source\Presenters\H.Presenters.Common\H.Presenters.Common.csproj", "{23A60556-25A8-40A1-8E51-6124CD1E1D91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Controls.NavigationBox", "..\Source\Controls\H.Controls.NavigationBox\H.Controls.NavigationBox.csproj", "{357FE1B4-44A1-4C70-8343-FB2E7A01B375}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Controls.NavigationBox", "..\Source\Controls\H.Controls.NavigationBox\H.Controls.NavigationBox.csproj", "{357FE1B4-44A1-4C70-8343-FB2E7A01B375}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Test.Setting", "..\Source\Tests\H.Test.Setting\H.Test.Setting.csproj", "{C6A3F153-1BFC-4B1F-B83B-6513610F9573}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Test.Setting", "..\Source\Tests\H.Test.Setting\H.Test.Setting.csproj", "{C6A3F153-1BFC-4B1F-B83B-6513610F9573}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Modules.Setting", "..\Source\Modules\H.Modules.Setting\H.Modules.Setting.csproj", "{AAF5285C-F9B7-497D-9DDC-127BB1F35823}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Modules.Setting", "..\Source\Modules\H.Modules.Setting\H.Modules.Setting.csproj", "{AAF5285C-F9B7-497D-9DDC-127BB1F35823}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Extensions.Setting", "..\Source\Extensions\H.Extensions.Setting\H.Extensions.Setting.csproj", "{C53C2218-717F-4E4E-9F14-0F5690149909}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Extensions.Setting", "..\Source\Extensions\H.Extensions.Setting\H.Extensions.Setting.csproj", "{C53C2218-717F-4E4E-9F14-0F5690149909}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - DataBases", "2 - DataBases", "{9B3B0248-156A-4E40-AF67-7537BBD5BF13}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "H.DataBases.Share", "..\Source\DataBases\H.DataBases.Share\H.DataBases.Share.shproj", "{57A367B1-94F1-4131-B593-46BE2CD7C1C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.DataBases.Sqlite", "..\Source\DataBases\H.DataBases.Sqlite\H.DataBases.Sqlite.csproj", "{B985A54F-BCDF-48B9-9526-A0209673CB10}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Controls.ProgressButton", "..\Source\Controls\H.Controls.ProgressButton\H.Controls.ProgressButton.csproj", "{438B1CE6-596A-4165-BFCE-00228CCF5709}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Test.Sqlite", "..\Source\Tests\H.Test.Sqlite\H.Test.Sqlite.csproj", "{72619BBE-9EA9-4D20-8C6E-4D1EA56D971F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -213,6 +223,18 @@ Global
 		{C53C2218-717F-4E4E-9F14-0F5690149909}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C53C2218-717F-4E4E-9F14-0F5690149909}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C53C2218-717F-4E4E-9F14-0F5690149909}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B985A54F-BCDF-48B9-9526-A0209673CB10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B985A54F-BCDF-48B9-9526-A0209673CB10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B985A54F-BCDF-48B9-9526-A0209673CB10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B985A54F-BCDF-48B9-9526-A0209673CB10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{438B1CE6-596A-4165-BFCE-00228CCF5709}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{438B1CE6-596A-4165-BFCE-00228CCF5709}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{438B1CE6-596A-4165-BFCE-00228CCF5709}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{438B1CE6-596A-4165-BFCE-00228CCF5709}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72619BBE-9EA9-4D20-8C6E-4D1EA56D971F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72619BBE-9EA9-4D20-8C6E-4D1EA56D971F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72619BBE-9EA9-4D20-8C6E-4D1EA56D971F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72619BBE-9EA9-4D20-8C6E-4D1EA56D971F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -249,8 +271,16 @@ Global
 		{C6A3F153-1BFC-4B1F-B83B-6513610F9573} = {E2C0B11D-5ED5-4F22-8E56-F68982B6E59B}
 		{AAF5285C-F9B7-497D-9DDC-127BB1F35823} = {27F6EA0F-3811-4403-9599-3B436A5EC502}
 		{C53C2218-717F-4E4E-9F14-0F5690149909} = {09F8FD00-E76A-4D72-AAB4-7FA06DBE12D4}
+		{57A367B1-94F1-4131-B593-46BE2CD7C1C0} = {9B3B0248-156A-4E40-AF67-7537BBD5BF13}
+		{B985A54F-BCDF-48B9-9526-A0209673CB10} = {9B3B0248-156A-4E40-AF67-7537BBD5BF13}
+		{438B1CE6-596A-4165-BFCE-00228CCF5709} = {9E63ED70-6F96-4CB2-8B9D-EAEC77D0548E}
+		{72619BBE-9EA9-4D20-8C6E-4D1EA56D971F} = {E2C0B11D-5ED5-4F22-8E56-F68982B6E59B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF825C3D-F4F4-4E62-BBFF-B42A5E81112F}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		..\Source\DataBases\H.DataBases.Share\H.DataBases.Share.projitems*{57a367b1-94f1-4131-b593-46be2cd7c1c0}*SharedItemsImports = 13
+		..\Source\DataBases\H.DataBases.Share\H.DataBases.Share.projitems*{b985a54f-bcdf-48b9-9526-a0209673cb10}*SharedItemsImports = 5
 	EndGlobalSection
 EndGlobal

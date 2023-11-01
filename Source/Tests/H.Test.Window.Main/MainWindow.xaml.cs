@@ -34,7 +34,7 @@ namespace H.Test.Window.Main
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            DialogWindow.ShowData(Student.Random(), x =>
+            DialogWindow.ShowPresenter(Student.Random(), x =>
             {
                 x.Width = 500;
                 x.Height = 300;
@@ -44,7 +44,7 @@ namespace H.Test.Window.Main
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            DialogWindow.ShowData(Student.Randoms(), x =>
+            DialogWindow.ShowPresenter(Student.Randoms(), x =>
             {
                 x.Width = 500;
                 x.Height = 300;

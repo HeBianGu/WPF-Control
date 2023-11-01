@@ -5,7 +5,7 @@
                     xmlns:system="clr-namespace:System;assembly=netstandard">
 
     <DataTemplate DataType="{x:Type local:SettingViewPresenter}">
-        <Grid MaxHeight="400">
+        <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition Height="Auto" />
