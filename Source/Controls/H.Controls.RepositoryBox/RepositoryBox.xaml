@@ -1,0 +1,127 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:h="https://github.com/HeBianGu"
+    xmlns:local="clr-namespace:H.Controls.RepositoryBox">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.RepositoryBox.ItemsControl, TypeInTargetAssembly={x:Type local:RepositoryBoxKeys}}" TargetType="{x:Type local:RepositoryBox}">
+        <Setter Property="ItemsSource" Value="{Binding Collection.Source}"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:RepositoryBox}">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid>
+                            <Behaviors:Interaction.Triggers>
+                                <Behaviors:EventTrigger EventName="Loaded">
+                                    <Behaviors:InvokeCommandAction Command="{Binding LoadedCommand}" />
+                                </Behaviors:EventTrigger>
+                            </Behaviors:Interaction.Triggers>
+                            <DockPanel>
+                                <DockPanel
+                                    Margin="0,5"
+                                    DockPanel.Dock="Top"
+                                    LastChildFill="False">
+                                    <!--<DockPanel.Resources>
+                        <Style BasedOn="{x:Null}" TargetType="Button">
+                            <Setter Property="MinWidth" Value="60" />
+                            <Setter Property="Margin" Value="2,0" />
+                        </Style>
+                    </DockPanel.Resources>-->
+                                    <Button Command="{Binding AddCommand}" Content="新增" />
+                                    <Button Command="{Binding ClearCommand}" Content="清空" />
+                                    <Button Command="{Binding EditCommand}" Content="编辑" />
+                                    <Button Command="{Binding DeleteCommand}" Content="删除" />
+                                    <Button Command="{Binding ExportCommand}" Content="导出" />
+                                    <Button Command="{Binding ViewCommand}" Content="查看" />
+                                    <Button Command="{Binding CheckedAllCommand}" Content="全选" />
+                                    <Button Command="{Binding DeleteCheckedCommand}" Content="删除选中" />
+                                    <Button Command="{Binding NextCommand}" Content="下一页" />
+                                    <Button Command="{Binding PreviousCommand}" Content="上一页" />
+                                    <Button Command="{Binding SaveCommand}" Content="保存" />
+                                    <CheckBox Content="全选" IsChecked="{Binding CheckedAll}" />
+                                    <BulletDecorator DockPanel.Dock="Right">
+                                        <BulletDecorator.Bullet>
+                                            <TextBlock Text="搜索" />
+                                        </BulletDecorator.Bullet>
+                                        <TextBox Width="200" Margin="5,0" />
+                                    </BulletDecorator>
+                                </DockPanel>
+                                <ScrollViewer VerticalScrollBarVisibility="Visible">
+                                    <ItemsPresenter/>
+                                </ScrollViewer>
+                            </DockPanel>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="{ComponentResourceKey ResourceId=S.RepositoryBox.DataGrid, TypeInTargetAssembly={x:Type local:RepositoryBoxKeys}}" TargetType="{x:Type local:RepositoryBox}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:RepositoryBox}">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid>
+                            <Behaviors:Interaction.Triggers>
+                                <Behaviors:EventTrigger EventName="Loaded">
+                                    <Behaviors:InvokeCommandAction Command="{Binding LoadedCommand}" />
+                                </Behaviors:EventTrigger>
+                            </Behaviors:Interaction.Triggers>
+                            <DockPanel>
+                                <DockPanel
+                                    Margin="0,5"
+                                    DockPanel.Dock="Top"
+                                    LastChildFill="False">
+                                    <!--<DockPanel.Resources>
+                        <Style BasedOn="{x:Null}" TargetType="Button">
+                            <Setter Property="MinWidth" Value="60" />
+                            <Setter Property="Margin" Value="2,0" />
+                        </Style>
+                    </DockPanel.Resources>-->
+                                    <Button Command="{Binding AddCommand}" Content="新增" />
+                                    <Button Command="{Binding ClearCommand}" Content="清空" />
+                                    <Button Command="{Binding EditCommand}" Content="编辑" />
+                                    <Button Command="{Binding DeleteCommand}" Content="删除" />
+                                    <Button Command="{Binding ExportCommand}" Content="导出" />
+                                    <Button Command="{Binding ViewCommand}" Content="查看" />
+                                    <Button Command="{Binding CheckedAllCommand}" Content="全选" />
+                                    <Button Command="{Binding DeleteCheckedCommand}" Content="删除选中" />
+                                    <Button Command="{Binding NextCommand}" Content="下一页" />
+                                    <Button Command="{Binding PreviousCommand}" Content="上一页" />
+                                    <Button Command="{Binding SaveCommand}" Content="保存" />
+                                    <CheckBox Content="全选" IsChecked="{Binding CheckedAll}" />
+                                    <BulletDecorator DockPanel.Dock="Right">
+                                        <BulletDecorator.Bullet>
+                                            <TextBlock Text="搜索" />
+                                        </BulletDecorator.Bullet>
+                                        <TextBox Width="200" Margin="5,0" />
+                                    </BulletDecorator>
+                                </DockPanel>
+                                <DataGrid ItemsSource="{Binding Collection.Source}">
+                                    <Behaviors:Interaction.Behaviors>
+                                        <h:AutoColumnDataGridBehavior
+                                            BindingPath="Model.{0}"
+                                            DataGridLength="*"
+                                            Type="{Binding ModelType}">
+                                            <h:AutoColumnDataGridBehavior.HomeColumns>
+                                                <DataGridCheckBoxColumn Binding="{Binding IsSelected}" Header="全选" />
+                                            </h:AutoColumnDataGridBehavior.HomeColumns>
+                                        </h:AutoColumnDataGridBehavior>
+                                    </Behaviors:Interaction.Behaviors>
+                                </DataGrid>
+                            </DockPanel>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type local:RepositoryBox}" BasedOn="{StaticResource {x:Static local:RepositoryBoxKeys.ItemsControl}}"/>
+</ResourceDictionary>

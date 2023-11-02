@@ -52,6 +52,7 @@
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="Height" Value="Auto"/>
         <Setter Property="MinHeight" Value="{DynamicResource {x:Static local:LayoutKeys.ItemHeight}}" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="Padding" Value="10 6"/>
         <Setter Property="Template">
             <Setter.Value>

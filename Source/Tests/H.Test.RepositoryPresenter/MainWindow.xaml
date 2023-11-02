@@ -11,5 +11,29 @@
     Height="450"
     Style="{StaticResource {x:Type Window}}"
     mc:Ignorable="d">
-    <ContentPresenter Content="{RepositoryPresenter Type={x:Type local:mbc_dv_image}}" />
+    <TabControl>
+        <TabItem Header="RepositoryPresenter">
+            <ContentPresenter Content="{RepositoryPresenter Type={x:Type local:mbc_dv_image}}" />
+        </TabItem>
+        <TabItem Header="RepositoryBox - DataGrid">
+            <RepositoryBox Style="{DynamicResource {x:Static RepositoryBoxKeys.DataGrid}}" Type="{x:Type local:mbc_dv_image}" />
+        </TabItem>
+        <TabItem Header="RepositoryBox">
+            <RepositoryBox Type="{x:Type local:mbc_dv_image}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Form
+                            SelectObject="{Binding Model}"
+                            UsePropertyNames="Name,Url"
+                            UsePropertyView="True" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="2" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </RepositoryBox>
+        </TabItem>
+    </TabControl>
 </Window>
