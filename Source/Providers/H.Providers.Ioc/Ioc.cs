@@ -41,17 +41,17 @@ namespace System
         }
     }
 
-    public abstract class IocInstance<Setting, Interface> where Setting : class, Interface, new()
+    public abstract class Ioc<Setting, Interface> where Setting : class, Interface, new()
     {
         public static Setting Instance => Ioc.GetService<Interface>() as Setting;
     }
 
-    public abstract class IocInstanceThrowIfNone<Interface>
+    public abstract class IocThrowIfNone<Interface>
     {
         public static Interface Instance => Ioc.GetService<Interface>();
     }
 
-    public abstract class IocInstance<Interface>
+    public abstract class Ioc<Interface>
     {
         public static Interface Instance
         {

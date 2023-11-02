@@ -12,7 +12,7 @@
         void Warn(params string[] messages);
     }
 
-    public class Logger : IocInstance<ILogService>
+    public class Logger : Ioc<ILogService>
     {
 
     }

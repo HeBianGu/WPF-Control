@@ -13,7 +13,7 @@ namespace H.Providers.Ioc
         object CloneXml(object o);
     }
 
-    public class XmlSerialize : IocInstance<ISerializerService>
+    public class XmlSerialize : Ioc<ISerializerService>
     {
 
     }
@@ -23,7 +23,7 @@ namespace H.Providers.Ioc
         T Load<T>(string uri, out string message);
     }
 
-    public class XmlWebSerializer : IocInstance<IWebSerializerService>
+    public class XmlWebSerializer : Ioc<IWebSerializerService>
     {
 
     }

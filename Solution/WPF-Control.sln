@@ -93,9 +93,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Controls.ProgressButton",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Test.Sqlite", "..\Source\Tests\H.Test.Sqlite\H.Test.Sqlite.csproj", "{72619BBE-9EA9-4D20-8C6E-4D1EA56D971F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.DataBases.SqlServer", "..\Source\DataBases\H.DataBases.SqlServer\H.DataBases.SqlServer.csproj", "{77D32129-E4AA-48FC-8896-E2EAD9BF96F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.DataBases.SqlServer", "..\Source\DataBases\H.DataBases.SqlServer\H.DataBases.SqlServer.csproj", "{77D32129-E4AA-48FC-8896-E2EAD9BF96F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Test.SqlServer", "..\Source\Tests\H.Test.SqlServer\H.Test.SqlServer.csproj", "{309D9EF9-A1F2-45CD-AE17-D53CB54B7485}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Test.SqlServer", "..\Source\Tests\H.Test.SqlServer\H.Test.SqlServer.csproj", "{309D9EF9-A1F2-45CD-AE17-D53CB54B7485}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Extensions.ViewModel", "..\Source\Extensions\H.Extensions.ViewModel\H.Extensions.ViewModel.csproj", "{9199E209-D3CA-4231-A969-B5E98C60AA08}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -247,6 +249,10 @@ Global
 		{309D9EF9-A1F2-45CD-AE17-D53CB54B7485}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{309D9EF9-A1F2-45CD-AE17-D53CB54B7485}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{309D9EF9-A1F2-45CD-AE17-D53CB54B7485}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9199E209-D3CA-4231-A969-B5E98C60AA08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9199E209-D3CA-4231-A969-B5E98C60AA08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9199E209-D3CA-4231-A969-B5E98C60AA08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9199E209-D3CA-4231-A969-B5E98C60AA08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -289,6 +295,7 @@ Global
 		{72619BBE-9EA9-4D20-8C6E-4D1EA56D971F} = {E2C0B11D-5ED5-4F22-8E56-F68982B6E59B}
 		{77D32129-E4AA-48FC-8896-E2EAD9BF96F1} = {9B3B0248-156A-4E40-AF67-7537BBD5BF13}
 		{309D9EF9-A1F2-45CD-AE17-D53CB54B7485} = {E2C0B11D-5ED5-4F22-8E56-F68982B6E59B}
+		{9199E209-D3CA-4231-A969-B5E98C60AA08} = {09F8FD00-E76A-4D72-AAB4-7FA06DBE12D4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF825C3D-F4F4-4E62-BBFF-B42A5E81112F}

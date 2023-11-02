@@ -30,38 +30,38 @@ namespace H.Providers.Mvvm
     {
         public DisplayerViewModelBase()
         {
-            this.ID = this.GetType().Name;
-            this.Name = this.GetType().Name;
+            ID = GetType().Name;
+            Name = GetType().Name;
             {
 
                 {
-                    var display = this.GetType().GetCustomAttribute<DisplayerAttribute>(true);
+                    var display = GetType().GetCustomAttribute<DisplayerAttribute>(true);
                     if (display != null)
                     {
-                        this.ID = display.ID ?? this.ID;
-                        this.Name = display.Name ?? this.Name;
-                        this.GroupName = display.GroupName;
-                        this.Description = display.Description;
-                        this.Order = display.Order;
-                        this.Icon = display.Icon;
-                        this.TabName = display.TabName;
+                        ID = display.ID ?? ID;
+                        Name = display.Name ?? Name;
+                        GroupName = display.GroupName;
+                        Description = display.Description;
+                        Order = display.Order;
+                        Icon = display.Icon;
+                        TabName = display.TabName;
                     }
                 }
                 {
-                    var display = this.GetType().GetCustomAttribute<DisplayAttribute>(true);
+                    var display = GetType().GetCustomAttribute<DisplayAttribute>(true);
                     if (display != null)
                     {
-                        this.Name = display.Name ?? this.Name;
-                        this.GroupName = display.GroupName;
-                        this.Description = display.Description;
+                        Name = display.Name ?? Name;
+                        GroupName = display.GroupName;
+                        Description = display.Description;
                         var od = display.GetOrder();
                         if (od.HasValue)
-                            this.Order = od.Value;
+                            Order = od.Value;
                     }
                 }
             }
 
-            var cmdps = this.GetType().GetProperties().Where(x => typeof(ICommand).IsAssignableFrom(x.PropertyType));
+            var cmdps = GetType().GetProperties().Where(x => typeof(ICommand).IsAssignableFrom(x.PropertyType));
             foreach (var cmdp in cmdps)
             {
                 if (cmdp.CanRead == false)
@@ -69,10 +69,10 @@ namespace H.Providers.Mvvm
                 if (cmdp.GetCustomAttribute<BrowsableAttribute>()?.Browsable == false)
                     continue;
                 ICommand command = cmdp.GetValue(this) as ICommand;
-                this.Commands.Add(command);
+                Commands.Add(command);
             }
 
-            this.LoadDefault();
+            LoadDefault();
         }
         [Browsable(false)]
         [XmlIgnore]
@@ -204,7 +204,7 @@ namespace H.Providers.Mvvm
         [Browsable(false)]
         public virtual RelayCommand LoadDefaultCommand => new RelayCommand((s, e) =>
         {
-            this.LoadDefault();
+            LoadDefault();
         });
 
         public virtual void LoadDefault()
@@ -212,7 +212,7 @@ namespace H.Providers.Mvvm
 
             System.Diagnostics.Debug.WriteLine("DisplayerViewModelBase.LoadDefault");
 
-            PropertyInfo[] ps = this.GetType().GetProperties();
+            PropertyInfo[] ps = GetType().GetProperties();
 
             foreach (PropertyInfo p in ps)
             {

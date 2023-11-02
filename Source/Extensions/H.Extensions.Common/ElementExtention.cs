@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Xml.Linq;
 
-namespace H.Extensions.Common
+namespace System.Windows
 {
     public static class ElementExtention
     {

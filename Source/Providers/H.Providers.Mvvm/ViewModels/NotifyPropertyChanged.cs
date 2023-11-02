@@ -48,7 +48,7 @@ namespace H.Providers.Mvvm
         {
             string methodName = obj?.ToString();
 
-            System.Reflection.MethodInfo method = this.GetType().GetMethod(methodName);
+            System.Reflection.MethodInfo method = GetType().GetMethod(methodName);
 
             if (method == null)
             {

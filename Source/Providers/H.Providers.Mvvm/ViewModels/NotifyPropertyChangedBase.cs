@@ -9,7 +9,7 @@ namespace H.Providers.Mvvm
     {
         public NotifyPropertyChangedBase()
         {
-            this.Init();
+            Init();
         }
 
         protected virtual void Init()
@@ -26,14 +26,14 @@ namespace H.Providers.Mvvm
         public virtual void RaisePropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = "")
         {
             if (PropertyChanged != null)
-                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 
         }
 
         public virtual void DispatcherRaisePropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = "")
         {
             if (PropertyChanged != null)
-                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 
             if (_isRefreshing)
                 return;
@@ -41,7 +41,7 @@ namespace H.Providers.Mvvm
             Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Input, new Action(() =>
             {
                 _isRefreshing = false;
-                this.OnDispatcherPropertyChanged();
+                OnDispatcherPropertyChanged();
             }));
         }
 

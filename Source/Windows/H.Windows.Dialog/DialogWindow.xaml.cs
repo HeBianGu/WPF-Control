@@ -62,7 +62,7 @@ namespace H.Windows.Dialog
 
     partial class DialogWindow : Window
     {
-        public static bool? ShowMessage(string message, string title = "提示", Window owner = null, Action<System.Windows.Window> action = null)
+        public static bool? ShowMessage(string message, string title = "提示", DialogButton dialogButton = DialogButton.Sumit, Window owner = null, Action<System.Windows.Window> action = null)
         {
             Action<Window> build = x =>
             {
@@ -70,7 +70,7 @@ namespace H.Windows.Dialog
                 x.Height = 200;
                 x.MinHeight = 150;
                 x.HorizontalContentAlignment = HorizontalAlignment.Center;
-                x.Style = Application.Current.FindResource(DialogKeys.Sumit) as Style;
+                x.Style = Application.Current.FindResource(GetResourceKey(dialogButton)) as Style;
                 action?.Invoke(x);
             };
 

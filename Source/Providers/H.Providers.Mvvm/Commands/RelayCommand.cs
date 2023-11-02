@@ -24,8 +24,8 @@ namespace H.Providers.Mvvm
 
         public RelayCommand(Action<T> executeCommand, Predicate<T> canExecuteCommand)
         {
-            this.ExecuteCommand = executeCommand;
-            this.CanExecuteCommand = canExecuteCommand;
+            ExecuteCommand = executeCommand;
+            CanExecuteCommand = canExecuteCommand;
         }
 
         public RelayCommand(Action<T> executeCommand)
@@ -33,7 +33,7 @@ namespace H.Providers.Mvvm
 
         public void Execute(object parameter)
         {
-            if (this.ExecuteCommand != null) this.ExecuteCommand((T)parameter);
+            if (ExecuteCommand != null) ExecuteCommand((T)parameter);
         }
 
         public bool CanExecute(object parameter)
@@ -44,8 +44,8 @@ namespace H.Providers.Mvvm
 
         public event EventHandler CanExecuteChanged
         {
-            add { if (this.CanExecuteCommand != null) CommandManager.RequerySuggested += value; }
-            remove { if (this.CanExecuteCommand != null) CommandManager.RequerySuggested -= value; }
+            add { if (CanExecuteCommand != null) CommandManager.RequerySuggested += value; }
+            remove { if (CanExecuteCommand != null) CommandManager.RequerySuggested -= value; }
         }
     }
 
@@ -102,10 +102,10 @@ namespace H.Providers.Mvvm
         /// <summary> 执行命令 </summary>
         public virtual void Execute(object parameter)
         {
-//#if DEBUG
-//            if (!string.IsNullOrEmpty(this.Name))
-//                this.Logger?.Debug(this.Name);
-//#endif
+            //#if DEBUG
+            //            if (!string.IsNullOrEmpty(this.Name))
+            //                this.Logger?.Debug(this.Name);
+            //#endif
             if (_action != null)
                 _action(parameter);
 
@@ -215,7 +215,7 @@ namespace H.Providers.Mvvm
         public void RaisePropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = "")
         {
             if (PropertyChanged != null)
-                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
         #endregion
