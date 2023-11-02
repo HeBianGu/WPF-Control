@@ -22,6 +22,7 @@ namespace H.Extensions.ViewModel
 
     public interface IRepositoryViewModelBase<TEntity> : IRepositoryViewModel where TEntity : StringEntityBase, new()
     {
+        RelayCommand LoadedCommand { get; }
         RelayCommand AddCommand { get; }
         bool CheckedAll { get; set; }
         RelayCommand CheckedAllCommand { get; }
@@ -72,7 +73,8 @@ namespace H.Extensions.ViewModel
 
         protected override void Loaded(object obj)
         {
-            if (this.Repository == null) return;
+            if (this.Repository == null)
+                return;
             Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Input, new Action(() =>
             {
                 IocMessage.Dialog.ShowWait(x =>
@@ -144,7 +146,7 @@ namespace H.Extensions.ViewModel
         public RelayCommand AddCommand => new RelayCommand(async l => await Add(l)) { Name = "新增" };
 
         [Displayer(Name = "编辑", GroupName = "操作")]
-        public RelayCommand EditCommand => new RelayCommand(async l => await Edit(l), l => l is TEntity || l is SelectViewModel<TEntity>) { Name = $"编辑" };
+        public RelayCommand EditCommand => new RelayCommand(async l => await Edit(l), l => this.GetEntity(l) != null) { Name = $"编辑" };
 
         public TransactionCommand EditTransactionCommand => new TransactionCommand(async (s, e) =>
         {
@@ -155,7 +157,7 @@ namespace H.Extensions.ViewModel
                 {
                     if (project.ModelState(out List<string> message) == false)
                     {
-                        IocMessage.Snack.Show(message?.FirstOrDefault());
+                        IocMessage.Snack?.Show(message?.FirstOrDefault());
                         return false;
                     }
                     return true;
@@ -173,10 +175,10 @@ namespace H.Extensions.ViewModel
         });
 
         [Displayer(Name = "删除", GroupName = "操作")]
-        public RelayCommand DeleteCommand => new RelayCommand(async l => await Delete(l), l => l is TEntity || l is SelectViewModel<TEntity>) { Name = $"删除" };
+        public RelayCommand DeleteCommand => new RelayCommand(async l => await Delete(l), l => this.GetEntity(l) != null) { Name = $"删除" };
 
         [Displayer(Name = "查看", GroupName = "操作")]
-        public RelayCommand ViewCommand => new RelayCommand(async l => await View(l), l => l is TEntity || l is SelectViewModel<TEntity>) { Name = $"查看" };
+        public RelayCommand ViewCommand => new RelayCommand(async l => await View(l), l => this.GetEntity(l) != null) { Name = $"查看" };
 
         [Displayer(Name = "清空", GroupName = "操作")]
         public RelayCommand ClearCommand => new RelayCommand(async l => await Clear(l), l => this.Collection != null && this.Collection.Count > 0) { Name = $"清除" };
@@ -378,7 +380,7 @@ namespace H.Extensions.ViewModel
             bool? dialog = await IocMessage.Form.ShowEdit(this.GetAddModel(m), null, null, "新增");
             if (dialog != true)
             {
-                IocMessage.Snack.ShowTime("取消操作");
+                IocMessage.Snack?.ShowTime("取消操作");
                 return;
             }
             await this.Add(m);
@@ -387,15 +389,28 @@ namespace H.Extensions.ViewModel
 
         public abstract Task Add(params TEntity[] ms);
 
+        TEntity GetEntity(object obj)
+        {
+            if (obj is SelectViewModel<TEntity> svm)
+                return svm.Model;
+            if (obj is TEntity entity)
+                return entity;
+            if (this.Collection.SelectedItem is SelectViewModel<TEntity> ssvm)
+                return ssvm.Model;
+            if (this.Collection.SelectedItem is TEntity sentity)
+                return sentity;
+            return null;
+        }
+
         public virtual async Task Edit(object obj)
         {
-            TEntity entity = obj is SelectViewModel<TEntity> vm ? vm.Model : obj as TEntity;
+            TEntity entity = this.GetEntity(obj);
             if (entity == null)
                 return;
             bool? r = await IocMessage.Form.ShowEdit(this.GetEditModel(entity));
             if (r != true)
             {
-                IocMessage.Snack.ShowTime("取消操作");
+                IocMessage.Snack?.ShowTime("取消操作");
                 return;
             }
 
@@ -404,17 +419,17 @@ namespace H.Extensions.ViewModel
             if (rs > 0)
             {
                 if (this.UseMessage)
-                    IocMessage.Snack.ShowTime("保存成功");
+                    IocMessage.Snack?.ShowTime("保存成功");
             }
             else
             {
-                IocMessage.Snack.ShowTime("保存失败，数据库保存错误");
+                IocMessage.Snack?.ShowTime("保存失败，数据库保存错误");
             }
         }
 
         public virtual async Task Delete(object obj)
         {
-            TEntity entity = obj is SelectViewModel<TEntity> vm ? vm.Model : obj as TEntity;
+            TEntity entity = this.GetEntity(obj);
             if (entity == null)
                 return;
 
@@ -430,14 +445,14 @@ namespace H.Extensions.ViewModel
             if (r > 0)
             {
                 if (this.UseMessage)
-                    IocMessage.Snack.ShowTime("删除成功");
+                    IocMessage.Snack?.ShowTime("删除成功");
                 var m = this.Collection.FirstOrDefault(x => x.Model == entity);
                 this.Collection.Remove(m);
                 this.Collection.SelectedItem = this.Collection.FirstOrDefault(x => true);
             }
             else
             {
-                IocMessage.Snack.ShowTime("删除失败,数据库保存错误");
+                IocMessage.Snack?.ShowTime("删除失败,数据库保存错误");
             }
 
             this.OnCollectionChanged(obj);
@@ -458,12 +473,12 @@ namespace H.Extensions.ViewModel
             if (r > 0)
             {
                 if (this.UseMessage)
-                    IocMessage.Snack.ShowTime("清空成功");
+                    IocMessage.Snack?.ShowTime("清空成功");
                 this.Collection.Clear();
             }
             else
             {
-                IocMessage.Snack.ShowTime("清空失败,数据库保存错误");
+                IocMessage.Snack?.ShowTime("清空失败,数据库保存错误");
             }
 
             this.OnCollectionChanged(obj);
@@ -471,7 +486,7 @@ namespace H.Extensions.ViewModel
 
         public virtual async Task View(object obj)
         {
-            TEntity entity = obj is SelectViewModel<TEntity> vm ? vm.Model : obj as TEntity;
+            TEntity entity = this.GetEntity(obj);
             if (entity == null)
                 return;
             await IocMessage.Form.ShowView(this.GetViewModel(entity));
@@ -484,11 +499,11 @@ namespace H.Extensions.ViewModel
             if (r > 0)
             {
                 if (this.UseMessage)
-                    IocMessage.Snack.ShowTime("保存成功");
+                    IocMessage.Snack?.ShowTime("保存成功");
             }
             else
             {
-                IocMessage.Snack.ShowTime("保存失败,数据库保存错误");
+                IocMessage.Snack?.ShowTime("保存失败,数据库保存错误");
             }
             return r;
         }
@@ -509,12 +524,12 @@ namespace H.Extensions.ViewModel
             var r = this.Repository == null ? 1 : await this.Repository.DeleteAsync(x => checks.Contains(x));
             if (r > 0)
             {
-                IocMessage.Snack.ShowTime($"删除成功,共计{checks.Count()}条");
+                IocMessage.Snack?.ShowTime($"删除成功,共计{checks.Count()}条");
                 this.Collection.RemoveAll(x => checks.Contains(x.Model));
             }
             else
             {
-                IocMessage.Snack.ShowTime("删除失败,数据库保存错误");
+                IocMessage.Snack?.ShowTime("删除失败,数据库保存错误");
             }
 
             this.OnCollectionChanged(obj);

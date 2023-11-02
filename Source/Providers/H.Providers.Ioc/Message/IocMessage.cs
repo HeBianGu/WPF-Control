@@ -7,7 +7,7 @@ namespace H.Providers.Ioc
     public static class IocMessage
     {
         public static IDialogMessage Dialog => System.Ioc.GetService<IDialogMessage>();
-        public static ISnackMessage Snack => System.Ioc.GetService<ISnackMessage>();
+        public static ISnackMessage Snack => System.Ioc.GetService<ISnackMessage>(throwIfNone: false);
         public static ITaskBarMessage TaskBar => System.Ioc.GetService<ITaskBarMessage>();
         public static ISystemNotifyMessage SystemNotify => System.Ioc.GetService<ISystemNotifyMessage>();
         public static INotifyMessage Notify => System.Ioc.GetService<INotifyMessage>();

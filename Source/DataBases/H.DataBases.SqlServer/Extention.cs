@@ -34,7 +34,7 @@ namespace System
         public static void AddDbContextBySetting<TDbContext>(this IServiceCollection services, Action<ISqlServerOption> action = null) where TDbContext : DbContext
         {
             action?.Invoke(SqlServerSetting.Instance);
-            //SqliteSetting.Instance.Load();
+            SqlServerSetting.Instance.Load();
             string connect = SqlServerSetting.Instance.GetConnect();
             services.AddDbContext<TDbContext>(x => x.UseSqlServer(connect));
             SettingDataManager.Instance.Add(SqlServerSetting.Instance);

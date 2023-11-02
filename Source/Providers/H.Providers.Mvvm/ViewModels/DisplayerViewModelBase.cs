@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
+using System.Text.Json.Serialization;
 using System.Windows.Input;
 using System.Xml.Serialization;
 
@@ -75,14 +76,17 @@ namespace H.Providers.Mvvm
             LoadDefault();
         }
         [Browsable(false)]
+        [JsonIgnore]
         [XmlIgnore]
         public ObservableCollection<ICommand> Commands { get; } = new ObservableCollection<ICommand>();
 
         [Browsable(false)]
+        [JsonIgnore]
         [XmlIgnore]
         public RelayCommand LoadedCommand => new RelayCommand(Loaded);
 
         [Browsable(false)]
+        [JsonIgnore]
         [XmlIgnore]
         public bool IsLoaded { get; set; }
         protected virtual void Loaded(object obj)
@@ -94,6 +98,7 @@ namespace H.Providers.Mvvm
         //public virtual string ID { get; set; }
 
         private string _id;
+        [JsonIgnore]
         [Browsable(false)]
         public virtual string ID
         {
@@ -106,6 +111,7 @@ namespace H.Providers.Mvvm
         }
 
         private string _name;
+        [JsonIgnore]
         [XmlIgnore]
         [Browsable(false)]
         public virtual string Name
@@ -120,6 +126,7 @@ namespace H.Providers.Mvvm
 
 
         private string _icon;
+        [JsonIgnore]
         [XmlIgnore]
         [Browsable(false)]
         public virtual string Icon
@@ -133,6 +140,7 @@ namespace H.Providers.Mvvm
         }
 
         private string _shortName;
+        [JsonIgnore]
         [XmlIgnore]
         [Browsable(false)]
         public virtual string ShortName
@@ -146,6 +154,7 @@ namespace H.Providers.Mvvm
         }
 
         private string _groupName;
+        [JsonIgnore]
         [XmlIgnore]
         [Browsable(false)]
         public virtual string GroupName
@@ -159,6 +168,7 @@ namespace H.Providers.Mvvm
         }
 
         private string _description;
+        [JsonIgnore]
         [XmlIgnore]
         [Browsable(false)]
         public virtual string Description
@@ -173,6 +183,7 @@ namespace H.Providers.Mvvm
 
 
         private int _order;
+        [JsonIgnore]
         [XmlIgnore]
         [Browsable(false)]
         public virtual int Order
@@ -187,6 +198,7 @@ namespace H.Providers.Mvvm
 
 
         private string _tabName;
+        [JsonIgnore]
         [XmlIgnore]
         [Browsable(false)]
         public virtual string TabName
@@ -198,7 +210,7 @@ namespace H.Providers.Mvvm
                 RaisePropertyChanged();
             }
         }
-
+        [JsonIgnore]
         [XmlIgnore]
         [Display(Name = "恢复默认")]
         [Browsable(false)]

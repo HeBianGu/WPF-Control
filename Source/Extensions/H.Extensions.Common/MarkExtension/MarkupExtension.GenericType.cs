@@ -16,7 +16,6 @@ namespace H.Extensions.Common
         {
             if (TypeArgument == null)
                 return this.GenericType.MakeGenericType(this.TypeArguments);
-
             return this.GenericType.MakeGenericType(this.TypeArgument);
         }
     }

@@ -21,14 +21,10 @@ namespace H.Extensions.ViewModel
         int PageIndex { get; set; }
         int SelectedIndex { get; set; }
         T SelectedItem { get; set; }
-
         ObservableCollection<T> Source { get; set; }
-
         ObservableCollection<T> FilterSource { get; set; }
-
         int Total { get; set; }
         int TotalPage { get; set; }
-
         void Add(params T[] value);
         void Clear();
         void Load(IEnumerable<T> source);

@@ -1,0 +1,15 @@
+﻿<Window
+    x:Class="H.Test.RepositoryPresenter.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:H.Test.RepositoryPresenter"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    Style="{StaticResource {x:Type Window}}"
+    mc:Ignorable="d">
+    <ContentPresenter Content="{RepositoryPresenter Type={x:Type local:mbc_dv_image}}" />
+</Window>

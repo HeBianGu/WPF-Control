@@ -18,10 +18,10 @@ namespace System
             _services = services;
         }
 
-        public static T GetService<T>()
+        public static T GetService<T>(bool throwIfNone = true)
         {
             var r = (T)_services.GetService(typeof(T));
-            if (r == null)
+            if (r == null && throwIfNone)
             {
                 System.Diagnostics.Debug.WriteLine(typeof(T));
                 throw new ArgumentNullException($"请先注册<{typeof(T)}>接口");
@@ -29,10 +29,10 @@ namespace System
             return r;
         }
 
-        public static T GetService<T>(Type type)
+        public static T GetService<T>(Type type, bool throwIfNone = true)
         {
             var r = (T)_services.GetService(type);
-            if (r == null)
+            if (r == null && throwIfNone)
             {
                 System.Diagnostics.Debug.WriteLine(type);
                 throw new ArgumentNullException($"请先注册<{type}>接口");

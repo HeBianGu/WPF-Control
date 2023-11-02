@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
@@ -14,6 +15,8 @@ namespace H.Extensions.Setting
 {
     public abstract class SettingBase : DisplayerViewModelBase, ISetting
     {
+        [XmlIgnore]
+        [JsonIgnore]
         [Browsable(false)]
         public bool IsVisibleInSetting { get; set; } = true;
 
@@ -24,7 +27,7 @@ namespace H.Extensions.Setting
 
         protected virtual string GetDefaultPath()
         {
-            return System.IO.Path.Combine(this.GetDefaultFolder(), this.ID + SystemPathSetting.Instance.ConfigExtention);
+            return System.IO.Path.Combine(this.GetDefaultFolder(), this.ID + ".json");
         }
 
         protected virtual string GetDefaultFolder()
@@ -45,7 +48,8 @@ namespace H.Extensions.Setting
 
         protected virtual ISerializerService GetSerializerService()
         {
-            return XmlSerialize.Instance;
+            return new JsonSerializerService();
+            //return XmlSerialize.Instance;
         }
 
         public virtual void Load()
@@ -55,8 +59,11 @@ namespace H.Extensions.Setting
 
         protected virtual void Load(string path)
         {
+            if (!File.Exists(path))
+                return;
             object load = this.GetSerializerService()?.Load(path, this.GetType());
-            if (load == null) return;
+            if (load == null)
+                return;
             PropertyInfo[] ps = this.GetType().GetProperties();
             foreach (PropertyInfo p in ps)
             {

@@ -52,18 +52,18 @@ namespace H.Extensions.ViewModel
                 {
                     this.Collection.Add(new SelectViewModel<TEntity>(m));
                 }
-                IocMessage.Snack.ShowTime("新增成功");
+                IocMessage.Snack?.ShowTime("新增成功");
                 return;
             }
             var r = await this.Repository?.InsertRangeAsync(ms);
             if (r > 0)
             {
                 this.Collection.Add(ms.Select(x => new SelectViewModel<TEntity>(x)).ToArray());
-                IocMessage.Snack.ShowTime("新增成功");
+                IocMessage.Snack?.ShowTime("新增成功");
             }
             else
             {
-                IocMessage.Snack.ShowTime("新增失败,数据库保存错误");
+                IocMessage.Snack?.ShowTime("新增失败,数据库保存错误");
             }
         }
     }
