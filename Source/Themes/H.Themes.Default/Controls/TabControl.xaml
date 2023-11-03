@@ -3,7 +3,8 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style TargetType="{x:Type TabControl}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.TabControl.Default,
+                                     TypeInTargetAssembly={x:Type local:TabControlKeys}}" TargetType="{x:Type TabControl}">
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template">
@@ -53,7 +54,8 @@
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource S.Control.Base}" TargetType="{x:Type TabItem}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.TabItem.Default,
+                                     TypeInTargetAssembly={x:Type local:TabItemKeys}}" BasedOn="{StaticResource S.Control.Base}" TargetType="{x:Type TabItem}">
         <Setter Property="Height" Value="{DynamicResource {x:Static local:LayoutKeys.ItemHeight}}" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="Template">
@@ -143,4 +145,8 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style TargetType="TabControl" BasedOn="{StaticResource {x:Static local:TabControlKeys.Default}}"/>
+    <Style TargetType="TabItem" BasedOn="{StaticResource {x:Static local:TabItemKeys.Default}}"/>
+
 </ResourceDictionary>

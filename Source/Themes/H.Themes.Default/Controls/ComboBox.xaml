@@ -78,7 +78,8 @@
         <Border x:Name="PART_ContentHost" Background="{TemplateBinding Background}" Focusable="False" />
     </ControlTemplate>
 
-    <Style BasedOn="{StaticResource S.Control.Base}" TargetType="{x:Type ComboBox}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.ComboBox.Default,
+                                     TypeInTargetAssembly={x:Type local:ComboBoxKeys}}" BasedOn="{StaticResource S.Control.Base}" TargetType="{x:Type ComboBox}">
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
@@ -182,7 +183,8 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{x:Type ComboBoxItem}" BasedOn="{StaticResource S.Control.Base}" TargetType="{x:Type ComboBoxItem}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.ComboBoxItem.Default,
+                                     TypeInTargetAssembly={x:Type local:ComboBoxItemKeys}}" BasedOn="{StaticResource S.Control.Base}" TargetType="{x:Type ComboBoxItem}">
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="Padding" Value="2" />
@@ -231,4 +233,7 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="ComboBox" BasedOn="{StaticResource {x:Static local:ComboBoxKeys.Default}}"/>
+    <Style TargetType="ComboBoxItem" BasedOn="{StaticResource {x:Static local:ComboBoxItemKeys.Default}}"/>
+
 </ResourceDictionary>

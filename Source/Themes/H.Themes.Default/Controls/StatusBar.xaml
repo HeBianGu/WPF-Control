@@ -3,7 +3,8 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style x:Key="{x:Type StatusBar}" BasedOn="{StaticResource S.Control.Base}" TargetType="{x:Type StatusBar}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.StatusBar.Default,
+                                     TypeInTargetAssembly={x:Type local:StatusBarKeys}}" BasedOn="{StaticResource S.Control.Base}" TargetType="{x:Type StatusBar}">
         <Setter Property="Height" Value="{DynamicResource {x:Static local:LayoutKeys.RowHeight}}"/>
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="true" />
@@ -40,7 +41,8 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{x:Type StatusBarItem}" TargetType="{x:Type StatusBarItem}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.StatusBarItem.Default,
+                                     TypeInTargetAssembly={x:Type local:StatusBarItemKeys}}" TargetType="{x:Type StatusBarItem}">
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="Template">
@@ -60,4 +62,8 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style TargetType="StatusBar" BasedOn="{StaticResource {x:Static local:StatusBarKeys.Default}}"/>
+    <Style TargetType="StatusBarItem" BasedOn="{StaticResource {x:Static local:StatusBarItemKeys.Default}}"/>
+
 </ResourceDictionary>

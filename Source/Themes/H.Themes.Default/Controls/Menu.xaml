@@ -3,7 +3,8 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style x:Key="{x:Type Menu}" TargetType="{x:Type Menu}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Menu.Default,
+                                     TypeInTargetAssembly={x:Type local:MenuKeys}}" TargetType="{x:Type Menu}">
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template">
@@ -22,4 +23,6 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="Menu" BasedOn="{StaticResource {x:Static local:MenuKeys.Default}}"/>
+
 </ResourceDictionary>

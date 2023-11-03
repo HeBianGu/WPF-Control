@@ -282,7 +282,8 @@
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource S.Control.Base}" TargetType="{x:Type DatePicker}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.DatePicker.Default,
+                                     TypeInTargetAssembly={x:Type local:DatePickerKeys}}" BasedOn="{StaticResource S.Control.Base}" TargetType="{x:Type DatePicker}">
         <Setter Property="IsTodayHighlighted" Value="True" />
         <Setter Property="SelectedDateFormat" Value="Short" />
         <Setter Property="Padding" Value="2" />
@@ -374,4 +375,6 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="DatePicker" BasedOn="{StaticResource {x:Static local:DatePickerKeys.Default}}"/>
+
 </ResourceDictionary>

@@ -257,7 +257,8 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{x:Type ToolBar}" TargetType="{x:Type ToolBar}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.ToolBar.Default,
+                                     TypeInTargetAssembly={x:Type local:ToolBarKeys}}" TargetType="{x:Type ToolBar}">
         <Setter Property="Height" Value="Auto" />
         <!--<Setter Property="Height" Value="{DynamicResource {x:Static local:LayoutKeys.RowHeight}}"/>-->
         <Setter Property="SnapsToDevicePixels" Value="true" />
@@ -346,4 +347,7 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style TargetType="ToolBar" BasedOn="{StaticResource {x:Static local:ToolBarKeys.Default}}"/>
+
 </ResourceDictionary>

@@ -165,7 +165,8 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="{x:Type ListView}" TargetType="ListView">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.ListView.Default,
+                                     TypeInTargetAssembly={x:Type local:ListViewKeys}}" TargetType="ListView">
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
@@ -204,7 +205,8 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{x:Type ListViewItem}" BasedOn="{StaticResource S.Control.Base}" TargetType="ListViewItem">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.ListViewItem.Default,
+                                     TypeInTargetAssembly={x:Type local:ListViewItemKeys}}" BasedOn="{StaticResource S.Control.Base}" TargetType="ListViewItem">
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="MinHeight" Value="{DynamicResource {x:Static local:LayoutKeys.ItemHeight}}" />
@@ -254,4 +256,7 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="ListView" BasedOn="{StaticResource {x:Static local:ListViewKeys.Default}}"/>
+    <Style TargetType="ListViewItem" BasedOn="{StaticResource {x:Static local:ListViewItemKeys.Default}}"/>
+
 </ResourceDictionary>

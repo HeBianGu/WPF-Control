@@ -80,11 +80,11 @@
                                     DockPanel.Dock="Top"
                                     LastChildFill="False">
                                     <!--<DockPanel.Resources>
-                        <Style BasedOn="{x:Null}" TargetType="Button">
-                            <Setter Property="MinWidth" Value="60" />
-                            <Setter Property="Margin" Value="2,0" />
-                        </Style>
-                    </DockPanel.Resources>-->
+                                        <Style BasedOn="{StaticResource {x:Static h:ButtonKeys.Default}}" TargetType="Button">
+                                            <Setter Property="MinWidth" Value="60" />
+                                            <Setter Property="Margin" Value="2,0" />
+                                        </Style>
+                                    </DockPanel.Resources>-->
                                     <Button Command="{Binding AddCommand}" Content="新增" />
                                     <Button Command="{Binding ClearCommand}" Content="清空" />
                                     <Button Command="{Binding EditCommand}" Content="编辑" />

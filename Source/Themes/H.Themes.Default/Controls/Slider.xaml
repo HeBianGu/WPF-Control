@@ -224,7 +224,8 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <Style BasedOn="{StaticResource S.Control.Base}" TargetType="{x:Type Slider}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Slider.Default,
+                                     TypeInTargetAssembly={x:Type local:SliderKeys}}" BasedOn="{StaticResource S.Control.Base}" TargetType="{x:Type Slider}">
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Style.Triggers>
@@ -240,4 +241,6 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    <Style TargetType="Slider" BasedOn="{StaticResource {x:Static local:SliderKeys.Default}}"/>
+
 </ResourceDictionary>

@@ -3,7 +3,8 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style TargetType="GroupBox">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.GroupBox.Default,
+                                     TypeInTargetAssembly={x:Type local:GroupBoxKeys}}" TargetType="GroupBox">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="GroupBox">
@@ -42,4 +43,6 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="GroupBox" BasedOn="{StaticResource {x:Static local:GroupBoxKeys.Default}}"/>
+
 </ResourceDictionary>

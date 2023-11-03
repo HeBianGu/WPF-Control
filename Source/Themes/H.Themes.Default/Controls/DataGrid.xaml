@@ -63,7 +63,8 @@
     </Style>
 
     <!--  Style and template for the DataGrid.  -->
-    <Style TargetType="{x:Type DataGrid}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.DataGrid.Default,
+                                     TypeInTargetAssembly={x:Type local:DataGridKeys}}" TargetType="{x:Type DataGrid}">
         <Setter Property="MinRowHeight" Value="{DynamicResource {x:Static local:LayoutKeys.ItemHeight}}" />
         <Setter Property="ColumnHeaderHeight" Value="{DynamicResource {x:Static local:LayoutKeys.ItemHeight}}" />
         <Setter Property="Foreground">
@@ -495,4 +496,6 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="DataGrid" BasedOn="{StaticResource {x:Static local:DataGridKeys.Default}}"/>
+
 </ResourceDictionary>

@@ -73,7 +73,8 @@
         </Border>
     </ControlTemplate>
 
-    <Style TargetType="{x:Type Expander}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Expander.Default,
+                                     TypeInTargetAssembly={x:Type local:ExpanderKeys}}" TargetType="{x:Type Expander}">
         <Setter Property="Foreground">
             <Setter.Value>
                 <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Foreground}}" />
@@ -153,4 +154,6 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="Expander" BasedOn="{StaticResource {x:Static local:ExpanderKeys.Default}}"/>
+
 </ResourceDictionary>

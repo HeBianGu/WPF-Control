@@ -253,7 +253,8 @@
 
     <!--  SimpleStyles: NavigationWindow  -->
 
-    <Style x:Key="{x:Type NavigationWindow}" TargetType="{x:Type NavigationWindow}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.NavigationWindow.Default,
+                                     TypeInTargetAssembly={x:Type local:NavigationWindowKeys}}" TargetType="{x:Type NavigationWindow}">
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="Template">
             <Setter.Value>
@@ -347,4 +348,6 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="NavigationWindow" BasedOn="{StaticResource {x:Static local:NavigationWindowKeys.Default}}"/>
+
 </ResourceDictionary>

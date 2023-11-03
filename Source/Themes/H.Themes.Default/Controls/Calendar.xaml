@@ -596,7 +596,8 @@
         </Setter>
     </Style>
 
-    <Style TargetType="{x:Type Calendar}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Calendar.Default,
+                                     TypeInTargetAssembly={x:Type local:CalendarKeys}}" TargetType="{x:Type Calendar}">
         <Setter Property="CalendarButtonStyle" Value="{StaticResource CalendarButtonStyle}" />
         <Setter Property="CalendarDayButtonStyle" Value="{StaticResource CalendarDayButtonStyle}" />
         <Setter Property="CalendarItemStyle" Value="{StaticResource CalendarItemStyle}" />
@@ -630,4 +631,7 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style TargetType="Calendar" BasedOn="{StaticResource {x:Static local:CalendarKeys.Default}}"/>
+
 </ResourceDictionary>

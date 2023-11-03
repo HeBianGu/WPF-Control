@@ -3,7 +3,8 @@
         <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style BasedOn="{StaticResource S.Control.Base}" TargetType="{x:Type RepeatButton}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.RepeatButton.Default,
+                                     TypeInTargetAssembly={x:Type local:RepeatButtonKeys}}" BasedOn="{StaticResource S.Control.Base}" TargetType="{x:Type RepeatButton}">
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="Focusable" Value="false" />
@@ -59,4 +60,6 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="RepeatButton" BasedOn="{StaticResource {x:Static local:RepeatButtonKeys.Default}}"/>
+
 </ResourceDictionary>

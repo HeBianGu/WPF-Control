@@ -267,7 +267,8 @@
 
     <!--  SimpleStyles: Frame  -->
 
-    <Style x:Key="{x:Type Frame}" TargetType="{x:Type Frame}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Frame.Default,
+                                     TypeInTargetAssembly={x:Type local:FrameKeys}}" TargetType="{x:Type Frame}">
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="Template">
             <Setter.Value>
@@ -350,4 +351,6 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="Frame" BasedOn="{StaticResource {x:Static local:FrameKeys.Default}}"/>
+
 </ResourceDictionary>

@@ -3,6 +3,6 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Presenters.Common" >
     <DataTemplate DataType="{x:Type local:PercentPresenter}">
-        <ProgressBar Value="{Binding Value}"/>
+        <ProgressBar Value="{Binding Value}" Height="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}"/>
     </DataTemplate>
 </ResourceDictionary>

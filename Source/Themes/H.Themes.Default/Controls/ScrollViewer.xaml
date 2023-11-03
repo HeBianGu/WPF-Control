@@ -3,7 +3,8 @@
         <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="LeftScrollViewer" TargetType="{x:Type ScrollViewer}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.ScrollViewer.Left,
+                                     TypeInTargetAssembly={x:Type local:ScrollViewerKeys}}" TargetType="{x:Type ScrollViewer}">
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="Template">
             <Setter.Value>

@@ -191,7 +191,8 @@
         </Grid>
     </ControlTemplate>
 
-    <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.ScrollBar.Default,
+                                     TypeInTargetAssembly={x:Type local:ScrollBarKeys}}" TargetType="{x:Type ScrollBar}">
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Style.Triggers>
@@ -207,4 +208,6 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    <Style TargetType="ScrollBar" BasedOn="{StaticResource {x:Static local:ScrollBarKeys.Default}}"/>
+
 </ResourceDictionary>

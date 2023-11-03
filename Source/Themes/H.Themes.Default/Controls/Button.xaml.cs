@@ -9,6 +9,7 @@ namespace H.Themes.Default
 {
     public class ButtonKeys
     {
+        public static ComponentResourceKey Default => new ComponentResourceKey(typeof(ButtonKeys), "S.Button.Default");
         public static ComponentResourceKey Drawing => new ComponentResourceKey(typeof(ButtonKeys), "S.Button.Drawing");
         public static ComponentResourceKey Geometry => new ComponentResourceKey(typeof(ButtonKeys), "S.Button.Geometry");
 

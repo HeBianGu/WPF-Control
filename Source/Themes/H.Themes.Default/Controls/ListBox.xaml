@@ -3,7 +3,8 @@
         <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{x:Type ListBox}" TargetType="ListBox">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.ListBox.Default,
+                                     TypeInTargetAssembly={x:Type local:ListBoxKeys}}" TargetType="ListBox">
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
@@ -47,7 +48,8 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{x:Type ListBoxItem}" BasedOn="{StaticResource S.Control.Base}" TargetType="ListBoxItem">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.ListBoxItem.Default,
+                                     TypeInTargetAssembly={x:Type local:ListBoxItemKeys}}" BasedOn="{StaticResource S.Control.Base}" TargetType="ListBoxItem">
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="Height" Value="Auto"/>
@@ -99,4 +101,7 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="ListBox" BasedOn="{StaticResource {x:Static local:ListBoxKeys.Default}}"/>
+    <Style TargetType="ListBoxItem" BasedOn="{StaticResource {x:Static local:ListBoxItemKeys.Default}}"/>
+
 </ResourceDictionary>

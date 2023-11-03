@@ -25,7 +25,8 @@
     </Style>
 
     <!--  Button  -->
-    <Style BasedOn="{StaticResource S.Control.Base}" TargetType="Button">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Button.Default,
+                                     TypeInTargetAssembly={x:Type local:ButtonKeys}}" BasedOn="{StaticResource S.Control.Base}" TargetType="Button">
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}" />
@@ -241,4 +242,6 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style TargetType="Button" BasedOn="{StaticResource {x:Static local:ButtonKeys.Default}}"/>
 </ResourceDictionary>

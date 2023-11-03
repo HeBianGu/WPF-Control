@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:local="clr-namespace:H.Themes.Default" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Style x:Key="SliderThumbStyle" TargetType="{x:Type Thumb}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Thumb.Default,
+                                     TypeInTargetAssembly={x:Type local:ThumbKeys}}" TargetType="{x:Type Thumb}">
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="Height" Value="14" />
@@ -45,4 +46,6 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="Thumb" BasedOn="{StaticResource {x:Static local:ThumbKeys.Default}}"/>
+
 </ResourceDictionary>

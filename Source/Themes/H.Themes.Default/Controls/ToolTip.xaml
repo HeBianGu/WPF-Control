@@ -3,7 +3,8 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style x:Key="{x:Type ToolTip}" BasedOn="{StaticResource S.Control.Base}" TargetType="ToolTip">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.ToolTip.Default,
+                                     TypeInTargetAssembly={x:Type local:ToolTipKeys}}" BasedOn="{StaticResource S.Control.Base}" TargetType="ToolTip">
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="HasDropShadow" Value="True" />
         <Setter Property="Template">
@@ -31,4 +32,6 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="ToolTip" BasedOn="{StaticResource {x:Static local:ToolTipKeys.Default}}"/>
+
 </ResourceDictionary>

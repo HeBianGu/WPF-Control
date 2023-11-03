@@ -4,7 +4,7 @@
     xmlns:h="https://github.com/HeBianGu"
     xmlns:local="clr-namespace:H.Controls.Form">
     <DataTemplate DataType="{x:Type local:DateTimePropertyItem}">
-        <DatePicker
+        <DatePicker VerticalAlignment="Stretch" VerticalContentAlignment="Center"
             Height="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}"
             IsEnabled="{Binding ReadOnly, Converter={x:Static h:Converter.GetTrueToFalse}}"
             SelectedDate="{Binding Value}" />

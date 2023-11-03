@@ -3,7 +3,8 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style x:Key="{x:Type DocumentViewer}" TargetType="{x:Type DocumentViewer}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.DocumentViewer.Default,
+                                     TypeInTargetAssembly={x:Type local:DocumentViewerKeys}}" TargetType="{x:Type DocumentViewer}">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
         <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
@@ -59,4 +60,6 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="DocumentViewer" BasedOn="{StaticResource {x:Static local:DocumentViewerKeys.Default}}"/>
+
 </ResourceDictionary>

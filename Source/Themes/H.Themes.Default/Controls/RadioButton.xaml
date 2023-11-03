@@ -3,7 +3,8 @@
         <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{x:Type RadioButton}" BasedOn="{StaticResource S.Control.Base}" TargetType="{x:Type RadioButton}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.RadioButton.Default,
+                                     TypeInTargetAssembly={x:Type local:RadioButtonKeys}}" BasedOn="{StaticResource S.Control.Base}" TargetType="{x:Type RadioButton}">
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="FocusVisualStyle" Value="{DynamicResource RadioButtonFocusVisual}" />
@@ -77,4 +78,6 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="RadioButton" BasedOn="{StaticResource {x:Static local:RadioButtonKeys.Default}}"/>
+
 </ResourceDictionary>

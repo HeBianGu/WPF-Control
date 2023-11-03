@@ -124,6 +124,7 @@ namespace H.Windows.Dialog
             dialog.Content = data;
             dialog.Title = title ?? data.GetType().GetCustomAttribute<DisplayAttribute>()?.Name ?? "提示";
             dialog.Width = 500;
+            dialog.MinHeight = 150;
             dialog.SizeToContent = SizeToContent.Height;
             dialog.Style = Application.Current.FindResource(DialogKeys.Cancel) as Style;
             if (owner?.IsLoaded == true)
