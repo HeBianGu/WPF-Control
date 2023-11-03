@@ -5,6 +5,7 @@
 
     <Style TargetType="{x:Type local:MainWindow}">
         <Setter Property="SnapsToDevicePixels" Value="true" />
+        <Setter Property="CaptionHeight" Value="{DynamicResource {x:Static local:LayoutKeys.WindowCaptionHeight}}"/>
         <Setter Property="WindowChrome.WindowChrome">
             <Setter.Value>
                 <WindowChrome CaptionHeight="{Binding RelativeSource={RelativeSource AncestorType=local:MainWindow}, Path=CaptionHeight}"

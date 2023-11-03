@@ -4,10 +4,17 @@
              xmlns:local="clr-namespace:H.Test.Controls"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-       <ResourceDictionary>
+        <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/ResourceKeys/LayoutKeys.xaml" />
+                <FontSizeTheme Type="Small"/>
+                <LayoutTheme Type="Default"/>
+                <ColorTheme Type="Dark"/>
+
+                <!--<Theme FontSize="Large" Color="Default" Layout="Large"/>-->
+                <!--<ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/ResourceKeys/FontSize.Large.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/ResourceKeys/Layout.Large.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/ResourceKeys/Color.Dark.Gray.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/ConciseControls.xaml" />-->
                 <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/ConciseControls.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

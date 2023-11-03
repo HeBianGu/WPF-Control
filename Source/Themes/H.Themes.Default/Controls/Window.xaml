@@ -34,16 +34,16 @@
 
     <WindowChrome x:Key="{ComponentResourceKey ResourceId=S.Window.WindowChrome,
                                                TypeInTargetAssembly={x:Type local:WindowKeys}}"
-                  CaptionHeight="40"
+                  CaptionHeight="35"
                   GlassFrameThickness="-1"
                   ResizeBorderThickness="8"
                   UseAeroCaptionButtons="False" />
 
     <Style x:Key="{ComponentResourceKey ResourceId=S.Window.Button, TypeInTargetAssembly={x:Type local:WindowKeys}}" BasedOn="{StaticResource {x:Static local:ButtonKeys.Geometry}}" TargetType="Button">
-        <Setter Property="Width" Value="40" />
-        <Setter Property="Height" Value="40" />
+        <Setter Property="Width" Value="35" />
+        <Setter Property="Height" Value="35" />
         <Setter Property="Margin" Value="0" />
-        <Setter Property="Padding" Value="13" />
+        <Setter Property="Padding" Value="10" />
         <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
     </Style>
 
@@ -63,7 +63,7 @@
                 <ControlTemplate TargetType="{x:Type Window}">
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="45" />
+                            <RowDefinition Height="Auto" />
                             <RowDefinition />
                         </Grid.RowDefinitions>
                         <Grid.Background>
@@ -73,7 +73,7 @@
                             <Border.Background>
                                 <SolidColorBrush Color="{DynamicResource {x:Static local:ColorKeys.Background}}" />
                             </Border.Background>
-                            <Grid>
+                            <Grid Height="35">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition />
                                     <ColumnDefinition />
@@ -110,7 +110,6 @@
                                             Style="{DynamicResource {x:Static local:WindowKeys.Button}}"
                                             ToolTip="最大化" />
                                     <Button x:Name="Btn_Restore"
-                                            Margin="2"
                                             Command="{local:RestoreWindowCommand}"
                                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                             Content="F1M11.999,10.002L10.998,10.002 10.998,5.002 5.998,5.002 5.998,4.001 11.999,4.001z M10.002,11.999L4.001,11.999 4.001,5.998 10.002,5.998z M5.002,3L5.002,5.002 3,5.002 3,13 10.998,13 10.998,10.998 13,10.998 13,3z"

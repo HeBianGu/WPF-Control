@@ -23,6 +23,12 @@ namespace H.Test.Message
             services.AddSingleton<IDialogMessage, DialogMessage>();
             services.AddSingleton<IFormMessage, FormMessage>();
             services.AddAbout();
+
+
+            //var sss= SystemColors.ControlDarkColor.ToString();
+            // System.Diagnostics.Debug.WriteLine(sss);
+         var ss=   SystemParameters.WindowCaptionButtonHeight;
+
         }
 
         protected override Window CreateMainWindow(StartupEventArgs e)

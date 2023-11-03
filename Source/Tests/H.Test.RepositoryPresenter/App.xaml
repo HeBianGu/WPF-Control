@@ -6,8 +6,8 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/ResourceKeys/LayoutKeys.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/ResourceKeys/Color.Dark.Gray.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/ResourceKeys/Layouts/Default.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/ResourceKeys/Colors/Darks/Gray.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/ConciseControls.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

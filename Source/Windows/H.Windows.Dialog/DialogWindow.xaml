@@ -25,7 +25,7 @@
                 <ControlTemplate TargetType="{x:Type local:DialogWindow}">
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="40" />
+                            <RowDefinition Height="Auto" />
                             <RowDefinition />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
@@ -34,7 +34,7 @@
                         </Grid.Background>
                         <Border Grid.Row="0">
                             <Border.Background>
-                                <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.Dark0_2}}" />
+                                <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.Background}}" />
                             </Border.Background>
                             <Grid>
                                 <Grid.ColumnDefinitions>
