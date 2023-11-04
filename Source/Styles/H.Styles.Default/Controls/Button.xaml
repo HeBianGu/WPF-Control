@@ -98,17 +98,19 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
     <Style
-        x:Key="{ComponentResourceKey ResourceId=S.Button.ToolBar,
+        x:Key="{ComponentResourceKey ResourceId=S.Button.Tool,
                                      TypeInTargetAssembly={x:Type local:ButtonKeys}}"
         BasedOn="{StaticResource S.Control.Base}"
         TargetType="Button">
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <!--<Setter Property="OverridesDefaultStyle" Value="true" />-->
         <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}" />
-        <Setter Property="Padding" Value="5" />
+        <Setter Property="Padding" Value="10" />
         <Setter Property="Width" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -121,9 +123,16 @@
                         TextBlock.Foreground="{TemplateBinding Foreground}">
                         <ContentPresenter
                             Margin="{TemplateBinding Padding}"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Stretch"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                             RecognizesAccessKey="True" />
+                        <!--<Border Margin="{TemplateBinding Padding}" Background="{TemplateBinding Background}" />-->
+                        <!--<Border.BorderBrush>
+                                    <SolidColorBrush Color="{StaticResource {x:Static lightstyle:ColorKeys.BorderBrush}}" />
+                                </Border.BorderBrush>-->
+                        <!--<Border.Background>
+                                    <SolidColorBrush Color="{StaticResource {x:Static lightstyle:ColorKeys.BorderBrush}}" />
+                                </Border.Background>-->
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <!--<VisualStateGroup.Transitions>
