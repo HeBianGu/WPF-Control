@@ -29,9 +29,9 @@
     </DataTemplate>
 
     <Style x:Key="WatermarkTextBox" TargetType="{x:Type local:WatermarkTextBox}">
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
-        <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" />
-        <Setter Property="BorderBrush" Value="{StaticResource TextBoxBorder}" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Background}}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Padding" Value="3" />
         <Setter Property="AllowDrop" Value="true" />
@@ -62,12 +62,12 @@
                             </Grid>
                         </Border>
                         <Border x:Name="MouseOverVisual"
-                                BorderBrush="{StaticResource TextBox_MouseOver}"
+                                BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrushTitle}}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 CornerRadius="1"
                                 Opacity="0" />
                         <Border x:Name="FocusVisual"
-                                BorderBrush="{StaticResource TextBox_Focused}"
+                                BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrushTitle}}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 CornerRadius="1"
                                 Opacity="0" />
@@ -100,7 +100,7 @@
                             <Setter TargetName="FocusVisual" Property="Opacity" Value="1" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.ForegroundDisabled}}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

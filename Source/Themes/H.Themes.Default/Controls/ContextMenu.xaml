@@ -5,7 +5,7 @@
     <Style x:Key="{ComponentResourceKey ResourceId=S.ContextMenu.Default,
                                      TypeInTargetAssembly={x:Type local:ContextMenuKeys}}" TargetType="{x:Type ContextMenu}">
         <Setter Property="SnapsToDevicePixels" Value="True" />
-        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <!--<Setter Property="OverridesDefaultStyle" Value="True" />-->
         <Setter Property="Grid.IsSharedSizeScope" Value="true" />
         <Setter Property="HasDropShadow" Value="True" />
         <Setter Property="Template">

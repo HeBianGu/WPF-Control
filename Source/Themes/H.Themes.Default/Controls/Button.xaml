@@ -28,7 +28,7 @@
     <Style x:Key="{ComponentResourceKey ResourceId=S.Button.Default,
                                      TypeInTargetAssembly={x:Type local:ButtonKeys}}" BasedOn="{StaticResource S.Control.Base}" TargetType="Button">
         <Setter Property="SnapsToDevicePixels" Value="true" />
-        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <!--<Setter Property="OverridesDefaultStyle" Value="true" />-->
         <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}" />
         <Setter Property="Padding" Value="10,6" />
         <Setter Property="Margin" Value="2" />
@@ -102,7 +102,7 @@
         BasedOn="{StaticResource S.Control.Base}"
         TargetType="Button">
         <Setter Property="SnapsToDevicePixels" Value="true" />
-        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <!--<Setter Property="OverridesDefaultStyle" Value="true" />-->
         <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}" />
         <Setter Property="Padding" Value="10" />
         <Setter Property="Width" Value="{DynamicResource {x:Static local:LayoutKeys.ItemHeight}}" />

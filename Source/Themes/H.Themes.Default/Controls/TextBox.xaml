@@ -6,7 +6,7 @@
     <Style x:Key="{ComponentResourceKey ResourceId=S.TextBox.Default,
                                      TypeInTargetAssembly={x:Type local:TextBoxKeys}}" BasedOn="{StaticResource S.Control.Base}" TargetType="{x:Type TextBox}">
         <Setter Property="SnapsToDevicePixels" Value="True" />
-        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <!--<Setter Property="OverridesDefaultStyle" Value="True" />-->
         <Setter Property="KeyboardNavigation.TabNavigation" Value="None" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="MinWidth" Value="120" />

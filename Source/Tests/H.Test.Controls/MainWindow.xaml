@@ -247,16 +247,16 @@
                 </ComboBox>
             </TabItem>
             <TabItem Header="DataGrid">
-                <DataGrid ItemsSource="{h:GetStudents Count=1000}" SelectedIndex="0" />
+                <DataGrid ItemsSource="{h:GetStudents Count=50}" SelectedIndex="0" />
             </TabItem>
             <TabItem Header="TextBox">
                 <TextBox Text="12345566" />
             </TabItem>
             <TabItem Header="ListBox">
-                <ListBox ItemsSource="{h:GetStudents Count=1000}" SelectedIndex="0" />
+                <ListBox ItemsSource="{h:GetStudents Count=50}" SelectedIndex="0" />
             </TabItem>
             <TabItem Header="ListView">
-                <ListView ItemsSource="{h:GetStudents Count=1000}" SelectedIndex="0">
+                <ListView ItemsSource="{h:GetStudents Count=50}" SelectedIndex="0">
                     <ListView.View>
                         <GridView>
                             <GridView.Columns>
@@ -271,7 +271,7 @@
             </TabItem>
             <TabItem Header="GroupBox">
                 <GroupBox Header="GroupBox">
-                    <ListBox ItemsSource="{h:GetStudents Count=1000}" />
+                    <ListBox ItemsSource="{h:GetStudents Count=50}" />
                 </GroupBox>
             </TabItem>
             <TabItem Header="Label">
@@ -279,11 +279,11 @@
             </TabItem>
             <TabItem Header="Expander">
                 <Expander Header="Expander">
-                    <ListBox ItemsSource="{h:GetStudents Count=1000}" />
+                    <ListBox ItemsSource="{h:GetStudents Count=50}" />
                 </Expander>
             </TabItem>
             <TabItem Header="ListBox">
-                <ListBox ItemsSource="{h:GetStudents Count=1000}" SelectedIndex="0" />
+                <ListBox ItemsSource="{h:GetStudents Count=50}" SelectedIndex="0" />
             </TabItem>
             <TabItem Header="PasswordBox">
                 <PasswordBox />
@@ -303,7 +303,7 @@
             </TabItem>
             <TabItem Header="ScrollViewer">
                 <ScrollViewer>
-                    <ListBox ItemsSource="{h:GetStudents Count=1000}" SelectedIndex="0" />
+                    <ListBox ItemsSource="{h:GetStudents Count=50}" SelectedIndex="0" />
                 </ScrollViewer>
             </TabItem>
             <TabItem Header="Slider">

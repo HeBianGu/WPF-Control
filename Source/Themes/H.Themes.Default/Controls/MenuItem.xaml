@@ -353,7 +353,7 @@
     <!--  MenuItem Style  -->
     <Style x:Key="{ComponentResourceKey ResourceId=S.MenuItem.Default,
                                      TypeInTargetAssembly={x:Type local:MenuItemKeys}}" BasedOn="{StaticResource S.Control.Base}" TargetType="{x:Type MenuItem}">
-        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <!--<Setter Property="OverridesDefaultStyle" Value="True" />-->
         <Style.Triggers>
             <Trigger Property="Role" Value="TopLevelHeader">
                 <Setter Property="Template" Value="{StaticResource {x:Static MenuItem.TopLevelHeaderTemplateKey}}" />

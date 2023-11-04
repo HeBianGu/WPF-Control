@@ -5,14 +5,13 @@
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Accent, TypeInTargetAssembly={x:Type local:ColorKeys}}">#FF0093FF</Color>
     <!--  Background  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBackground, TypeInTargetAssembly={x:Type local:ColorKeys}}">#121317</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBackground.Disabled, TypeInTargetAssembly={x:Type local:ColorKeys}}">#AA121317</Color>
-
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBackground.Disabled, TypeInTargetAssembly={x:Type local:ColorKeys}}">#363844</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.RowIndex.BackGround, TypeInTargetAssembly={x:Type local:ColorKeys}}">#191a20</Color>
 
     <!--  Foreground  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Title, TypeInTargetAssembly={x:Type local:ColorKeys}}">#ffffff</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground, TypeInTargetAssembly={x:Type local:ColorKeys}}">#8F939C</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Disabled, TypeInTargetAssembly={x:Type local:ColorKeys}}">#AA8F939C</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Disabled, TypeInTargetAssembly={x:Type local:ColorKeys}}">#7c8194</Color>
 
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextMouseOver, TypeInTargetAssembly={x:Type local:ColorKeys}}">#202229</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextSelected, TypeInTargetAssembly={x:Type local:ColorKeys}}">#272932</Color>
@@ -36,7 +35,7 @@
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush, TypeInTargetAssembly={x:Type local:ColorKeys}}">#2e313b</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush.Title, TypeInTargetAssembly={x:Type local:ColorKeys}}">#363844</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush.Assist, TypeInTargetAssembly={x:Type local:ColorKeys}}">#272932</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush.Disabled, TypeInTargetAssembly={x:Type local:ColorKeys}}">#AA272932</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush.Disabled, TypeInTargetAssembly={x:Type local:ColorKeys}}">#202229</Color>
 
     <!--  Accent  -->
     <!--<Color x:Key="{ComponentResourceKey ResourceId=S.Color.Accent.MouseOver.Background, TypeInTargetAssembly={x:Type local:ColorKeys}}" Opacity="0.2" Color="{DynamicResource {x:Static local:SystemKeys.ColorAccent}}" />

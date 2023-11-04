@@ -7,8 +7,8 @@
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="Background" Value="{DynamicResource {x:Static local:ResourceKeys.ButtonNormalBackgroundKey}}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static local:ResourceKeys.ButtonNormalOuterBorderKey}}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Background}}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Template">
             <Setter.Value>
@@ -21,45 +21,45 @@
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 CornerRadius="{TemplateBinding CornerRadius}">
                             <Border x:Name="InnerBorder"
-                                    BorderBrush="{DynamicResource {x:Static local:ResourceKeys.ButtonNormalInnerBorderKey}}"
+                                    BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
                                     BorderThickness="{TemplateBinding BorderThickness}"
                                     CornerRadius="{TemplateBinding InnerCornerRadius}" />
                         </Border>
 
                         <Border x:Name="MouseOverVisual"
-                                Background="{DynamicResource {x:Static local:ResourceKeys.ButtonMouseOverBackgroundKey}}"
-                                BorderBrush="{DynamicResource {x:Static local:ResourceKeys.ButtonMouseOverOuterBorderKey}}"
+                                Background="{DynamicResource {x:Static h:BrushKeys.MouseOver}}"
+                                BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrushTitle}}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 CornerRadius="{TemplateBinding CornerRadius}"
                                 Opacity="0"
                                 Visibility="Collapsed">
                             <Border x:Name="MouseOverInnerVisual"
-                                    BorderBrush="{DynamicResource {x:Static local:ResourceKeys.ButtonMouseOverInnerBorderKey}}"
+                                    BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
                                     BorderThickness="{TemplateBinding BorderThickness}"
                                     CornerRadius="{TemplateBinding InnerCornerRadius}" />
                         </Border>
                         <Border x:Name="PressedVisual"
-                                Background="{DynamicResource {x:Static local:ResourceKeys.ButtonPressedBackgroundKey}}"
-                                BorderBrush="{DynamicResource {x:Static local:ResourceKeys.ButtonPressedOuterBorderKey}}"
+                                Background="{DynamicResource {x:Static h:BrushKeys.BackgroundDisabled}}"
+                                BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrushDisabled}}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 CornerRadius="{TemplateBinding CornerRadius}"
                                 Opacity="0"
                                 Visibility="Collapsed">
                             <Border x:Name="PressedInnerVisual"
-                                    BorderBrush="{DynamicResource {x:Static local:ResourceKeys.ButtonPressedInnerBorderKey}}"
+                                    BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrushAssist}}"
                                     BorderThickness="{TemplateBinding BorderThickness}"
                                     CornerRadius="{TemplateBinding InnerCornerRadius}" />
                         </Border>
 
                         <Border x:Name="FocusVisual"
-                                Background="{DynamicResource {x:Static local:ResourceKeys.ButtonFocusedBackgroundKey}}"
-                                BorderBrush="{DynamicResource {x:Static local:ResourceKeys.ButtonFocusedOuterBorderKey}}"
+                                Background="{DynamicResource {x:Static h:BrushKeys.Selected}}"
+                                BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrushTitle}}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 CornerRadius="{TemplateBinding CornerRadius}"
                                 Opacity="0"
                                 Visibility="Collapsed">
                             <Border x:Name="FocusInnerVisual"
-                                    BorderBrush="{DynamicResource {x:Static local:ResourceKeys.ButtonFocusedInnerBorderKey}}"
+                                    BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
                                     BorderThickness="1"
                                     CornerRadius="{TemplateBinding InnerCornerRadius}" />
                         </Border>
@@ -80,9 +80,9 @@
                                 <Condition Property="RenderEnabled" Value="False" />
                                 <Condition Property="RenderChecked" Value="False" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="OuterBorder" Property="BorderBrush" Value="{DynamicResource {x:Static local:ResourceKeys.ButtonDisabledOuterBorderKey}}" />
-                            <Setter TargetName="InnerBorder" Property="BorderBrush" Value="{DynamicResource {x:Static local:ResourceKeys.ButtonInnerBorderDisabledKey}}" />
-                            <Setter TargetName="OuterBorder" Property="Background" Value="{DynamicResource {x:Static local:ResourceKeys.ControlDisabledBackgroundKey}}" />
+                            <Setter TargetName="OuterBorder" Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrushAssist}}" />
+                            <Setter TargetName="InnerBorder" Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrushDisabled}}" />
+                            <Setter TargetName="OuterBorder" Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.BackgroundDisabled}}" />
                         </MultiTrigger>
 
                         <!--  if button is enabled and pressed  -->
@@ -175,9 +175,9 @@
                                 <Condition Property="RenderMouseOver" Value="False" />
                                 <Condition Property="RenderPressed" Value="False" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="OuterBorder" Property="BorderBrush" Value="{DynamicResource {x:Static local:ResourceKeys.ButtonPressedOuterBorderKey}}" />
-                            <Setter TargetName="InnerBorder" Property="BorderBrush" Value="{DynamicResource {x:Static local:ResourceKeys.ButtonPressedInnerBorderKey}}" />
-                            <Setter TargetName="OuterBorder" Property="Background" Value="{DynamicResource {x:Static local:ResourceKeys.ButtonPressedBackgroundKey}}" />
+                            <Setter TargetName="OuterBorder" Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
+                            <Setter TargetName="InnerBorder" Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrushTitle}}" />
+                            <Setter TargetName="OuterBorder" Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Background}}" />
                         </MultiTrigger>
 
                         <!--  if button is focused, is enabled, not pressed, and the mouse is not over  -->

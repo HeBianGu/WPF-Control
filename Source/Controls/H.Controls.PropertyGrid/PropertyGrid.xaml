@@ -153,7 +153,7 @@
     </Style>
 
     <!--  PropertyGrid ComboBox Editors  -->
-    <Style BasedOn="{StaticResource {x:Type ComboBox}}" TargetType="{x:Type local:PropertyGridEditorComboBox}">
+    <Style TargetType="{x:Type local:PropertyGridEditorComboBox}" BasedOn="{StaticResource {x:Static h:ComboBoxKeys.Default}}">
         <Setter Property="Height" Value="Auto" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Style.Triggers>
@@ -166,13 +166,13 @@
                 <Setter Property="Background" Value="Transparent" />
             </MultiTrigger>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.ForegroundDisabled}}" />
             </Trigger>
         </Style.Triggers>
     </Style>
 
     <!--  PropertyGrid CheckBox Editors  -->
-    <Style BasedOn="{StaticResource {x:Type CheckBox}}" TargetType="{x:Type local:PropertyGridEditorCheckBox}">
+    <Style BasedOn="{StaticResource {x:Static h:CheckBoxKeys.Default}}" TargetType="{x:Type local:PropertyGridEditorCheckBox}">
         <Setter Property="Margin" Value="5,0,0,0" />
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
@@ -198,12 +198,12 @@
 
     <!--  PropertyGrid TextBlock Editors  -->
     <Style BasedOn="{StaticResource {x:Type TextBlock}}" TargetType="{x:Type local:PropertyGridEditorTextBlock}">
-        <Setter Property="Foreground" Value="Gray" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 
     <!--  PropertyGrid MaskedTextBox Editors  -->
-    <Style BasedOn="{StaticResource {x:Type TextBox}}" TargetType="{x:Type local:PropertyGridEditorMaskedTextBox}" />
+    <Style BasedOn="{StaticResource {x:Static h:TextBoxKeys.Default}}" TargetType="{x:Type local:PropertyGridEditorMaskedTextBox}" />
 
     <!--  PropertyGrid ColorPicker Editors  -->
     <Style BasedOn="{StaticResource {x:Type local:ColorPicker}}" TargetType="{x:Type local:PropertyGridEditorColorPicker}">
@@ -292,33 +292,43 @@
 
 
 
-    <SolidColorBrush x:Key="MouseOverBorderBrush" Color="#FFFFB700" />
-    <LinearGradientBrush x:Key="MouseOverBackgroundBrush" StartPoint="0,0" EndPoint="0,1">
+    <SolidColorBrush x:Key="MouseOverBorderBrush" Color="{DynamicResource {x:Static h:ColorKeys.BorderBrushTitle}}" />
+    <!--<LinearGradientBrush x:Key="MouseOverBackgroundBrush" StartPoint="0,0" EndPoint="0,1">
         <GradientStop Offset="0" Color="#FFFEFBF4" />
         <GradientStop Offset="0.19" Color="#FFFDE7CE" />
         <GradientStop Offset="0.39" Color="#FFFDDEB8" />
         <GradientStop Offset="0.39" Color="#FFFFCE6B" />
         <GradientStop Offset="0.79" Color="#FFFFDE9A" />
         <GradientStop Offset="1" Color="#FFFFEBAA" />
-    </LinearGradientBrush>
+    </LinearGradientBrush>-->
 
-    <SolidColorBrush x:Key="CheckedBorderBrush" Color="#FFC29B29" />
-    <LinearGradientBrush x:Key="CheckedBackgroundBrush" StartPoint="0,0" EndPoint="0,1">
+    <SolidColorBrush x:Key="MouseOverBackgroundBrush" Color="{DynamicResource {x:Static h:ColorKeys.MouseOver}}">
+    </SolidColorBrush>
+
+    <SolidColorBrush x:Key="CheckedBorderBrush" Color="{DynamicResource {x:Static h:ColorKeys.BorderBrushTitle}}" />
+
+    <SolidColorBrush x:Key="CheckedBackgroundBrush" Color="{DynamicResource {x:Static h:ColorKeys.Selected}}">
+    </SolidColorBrush>
+    <!--<LinearGradientBrush x:Key="CheckedBackgroundBrush" StartPoint="0,0" EndPoint="0,1">
         <GradientStop Offset="0" Color="#FFFFDCA0" />
         <GradientStop Offset="0.18" Color="#FFFFD692" />
         <GradientStop Offset="0.39" Color="#FFFFC45D" />
         <GradientStop Offset="1" Color="#FFFFD178" />
-    </LinearGradientBrush>
+    </LinearGradientBrush>-->
 
-    <SolidColorBrush x:Key="PressedBorderBrush" Color="#FFC29B29" />
-    <LinearGradientBrush x:Key="PressedBackgroundBrush" StartPoint="0,0" EndPoint="0,1">
+    <SolidColorBrush x:Key="PressedBorderBrush" Color="{DynamicResource {x:Static h:ColorKeys.BorderBrushAssist}}" />
+
+    <SolidColorBrush x:Key="PressedBackgroundBrush" Color="{DynamicResource {x:Static h:ColorKeys.BackgroundDisabled}}">
+    </SolidColorBrush>
+    
+    <!--<LinearGradientBrush x:Key="PressedBackgroundBrush" StartPoint="0,0" EndPoint="0,1">
         <GradientStop Offset="0" Color="#FFE3C085" />
         <GradientStop Offset="0.19" Color="#FFF4CC89" />
         <GradientStop Offset="0.36" Color="#FFF5C777" />
         <GradientStop Offset="0.36" Color="#FFF5BB56" />
         <GradientStop Offset="0.79" Color="#FFF4CE9A" />
         <GradientStop Offset="1" Color="#FFF3E28D" />
-    </LinearGradientBrush>
+    </LinearGradientBrush>-->
 
     <Style x:Key="OptionsToggleButtonStyle" TargetType="{x:Type RadioButton}">
         <Setter Property="Background" Value="Transparent" />
@@ -365,28 +375,18 @@
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="OuterBorder" Property="Background" Value="{StaticResource MouseOverBackgroundBrush}" />
                             <Setter TargetName="OuterBorder" Property="BorderBrush" Value="{StaticResource MouseOverBorderBrush}" />
-                            <Setter TargetName="InnerBorder" Property="BorderBrush" Value="#80FFFFFF" />
+                            <Setter TargetName="InnerBorder" Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
                         </Trigger>
 
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="Content" Property="Opacity" Value="0.5" />
-                            <Setter TargetName="OuterBorder" Property="TextElement.Foreground" Value="#FF9E9E9E" />
+                            <Setter TargetName="OuterBorder" Property="TextElement.Foreground" Value="{DynamicResource {x:Static h:BrushKeys.ForegroundDisabled}}" />
                         </Trigger>
 
                         <Trigger Property="IsChecked" Value="True">
                             <Setter TargetName="OuterBorder" Property="Background" Value="{StaticResource CheckedBackgroundBrush}" />
                             <Setter TargetName="OuterBorder" Property="BorderBrush" Value="{StaticResource CheckedBorderBrush}" />
-                            <Setter TargetName="InnerBorder" Property="BorderBrush">
-                                <Setter.Value>
-                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                        <GradientStop Offset="0" Color="#FFE7CBAD" />
-                                        <GradientStop Offset="0.1" Color="#FFF7D7B5" />
-                                        <GradientStop Offset="0.36" Color="#FFFFD38C" />
-                                        <GradientStop Offset="0.36" Color="#FFFFC75A" />
-                                        <GradientStop Offset="1" Color="#FFFFEFA5" />
-                                    </LinearGradientBrush>
-                                </Setter.Value>
-                            </Setter>
+                            <Setter TargetName="InnerBorder" Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrushTitle}}" />
                         </Trigger>
 
                         <Trigger Property="IsPressed" Value="True">
@@ -462,12 +462,14 @@
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="OuterBorder" Property="Background" Value="{StaticResource MouseOverBackgroundBrush}" />
                             <Setter TargetName="OuterBorder" Property="BorderBrush" Value="{StaticResource MouseOverBorderBrush}" />
-                            <Setter TargetName="InnerBorder" Property="BorderBrush" Value="#80FFFFFF" />
+                            <!--<Setter TargetName="InnerBorder" Property="BorderBrush" Value="#80FFFFFF" />-->
+                            <Setter TargetName="InnerBorder" Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
+
                         </Trigger>
 
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="Content" Property="Opacity" Value="0.5" />
-                            <Setter TargetName="OuterBorder" Property="TextElement.Foreground" Value="#FF9E9E9E" />
+                            <Setter TargetName="OuterBorder" Property="TextElement.Foreground" Value="{DynamicResource {x:Static h:BrushKeys.ForegroundDisabled}}" />
                         </Trigger>
 
                         <Trigger Property="IsPressed" Value="True">
@@ -481,7 +483,9 @@
         </Setter>
     </Style>
 
-    <SolidColorBrush x:Key="GlyphBrush" Color="#FF31347C" />
+    <!--<SolidColorBrush x:Key="GlyphBrush" Color="#FF31347C" />-->
+    <SolidColorBrush x:Key="GlyphBrush" Color="{DynamicResource {x:Static h:ColorKeys.Foreground}}" />
+
 
     <ControlTemplate x:Key="ExpanderToggleButton" TargetType="{x:Type ToggleButton}">
         <Grid>
@@ -536,7 +540,8 @@
 
     <Style x:Key="ExpanderStyle" TargetType="{x:Type Expander}">
         <Setter Property="Padding" Value="0" />
-        <Setter Property="Background" Value="#FFF0F0F0" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Background}}" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Expander}">
@@ -548,7 +553,7 @@
                         <Border x:Name="Border"
                                 Height="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}"
                                 Background="{TemplateBinding Background}"
-                                BorderBrush="#FFF0F0F0">
+                                BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}">
                             <ToggleButton VerticalAlignment="Center"
                                           IsChecked="{Binding Path=IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
                                           OverridesDefaultStyle="True"
@@ -562,7 +567,7 @@
                         <Border x:Name="ExpandSite"
                                 Grid.Row="1"
                                 Padding="10,0,0,0"
-                                Background="{x:Static SystemColors.ControlBrush}"
+                                Background="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
                                 Visibility="Collapsed">
                             <Border Margin="0"
                                     Padding="0"
@@ -669,7 +674,7 @@
 
     <Style TargetType="{x:Type local:PropertyItemBase}">
 
-        <Setter Property="Background" Value="{x:Static SystemColors.WindowBrush}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Background}}" />
         <!--  Set the margin at 1 pixel bottom to let the horizontal "line" effect appear.  -->
         <Setter Property="Margin" Value="0,0,0,1" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -807,15 +812,15 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="PART_Name" Property="Background" Value="#CED4DF" />
+                            <Setter TargetName="PART_Name" Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.MouseOver}}" />
                         </Trigger>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter TargetName="PART_Name" Property="Background" Value="#43577B" />
-                            <Setter TargetName="PART_Name" Property="TextElement.Foreground" Value="White" />
+                            <Setter TargetName="PART_Name" Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Selected}}" />
+                            <Setter TargetName="PART_Name" Property="TextElement.Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter TargetName="PART_ValueContainer" Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
-                            <Setter TargetName="_text" Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+                            <Setter TargetName="PART_ValueContainer" Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.ForegroundDisabled}}" />
+                            <Setter TargetName="_text" Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.ForegroundDisabled}}" />
                         </Trigger>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
@@ -859,6 +864,9 @@
         <Setter Property="AdvancedOptionsMenu" Value="{StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type local:PropertyGrid}, ResourceId=SelectedObjectAdvancedOptionsMenu}}" />
         <Setter Property="Background" Value="#BCC7D8" />
         <Setter Property="BorderBrush" Value="#43577B" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
+        <!--<Setter Property="Foreground" Value="Red" />-->
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="SelectedObjectType" Value="{Binding RelativeSource={RelativeSource Self}, Path=SelectedObject, Converter={StaticResource objectConverter}, ConverterParameter=Type}" />
         <Setter Property="SelectedObjectTypeName" Value="{Binding RelativeSource={RelativeSource Self}, Path=SelectedObject, Converter={StaticResource objectConverter}, ConverterParameter=TypeName}" />
@@ -881,8 +889,8 @@
                                         Height="44"
                                         Margin="6,4,0,4"
                                         Padding="2"
-                                        Background="White"
-                                        BorderBrush="Black"
+                                        Background="{DynamicResource {x:Static h:BrushKeys.Background}}"
+                                        BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
                                         BorderThickness="1"
                                         Visibility="{Binding ShowPreview, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}">
                                     <Rectangle>
@@ -931,8 +939,8 @@
                                 </Grid>
                                 <Border x:Name="searchBoxContainer"
                                         Grid.Column="1"
-                                        Background="White"
-                                        BorderBrush="Gray"
+                                        Background="{DynamicResource {x:Static h:BrushKeys.Background}}"
+                                        BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
                                         BorderThickness="1"
                                         Visibility="{Binding ShowSearchBox, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}">
                                     <Grid>
@@ -969,10 +977,10 @@
                                 </Border>
                             </Grid>
 
-                            <Grid Grid.Row="2" Background="{x:Static SystemColors.WindowBrush}">
+                            <Grid Grid.Row="2" Background="{DynamicResource {x:Static h:BrushKeys.Background}}">
                                 <local:PropertyItemsControl x:Name="PART_PropertyItemsControl"
                                                             VerticalAlignment="Top"
-                                                            Background="{x:Static SystemColors.ControlBrush}"
+                                                            Background="{DynamicResource {x:Static h:BrushKeys.Background}}"
                                                             Focusable="False"
                                                             IsTabStop="False"
                                                             ItemContainerStyle="{Binding PropertyContainerStyle, RelativeSource={RelativeSource TemplatedParent}}"

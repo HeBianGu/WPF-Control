@@ -6,7 +6,7 @@
     <Style x:Key="{ComponentResourceKey ResourceId=S.RadioButton.Default,
                                      TypeInTargetAssembly={x:Type local:RadioButtonKeys}}" BasedOn="{StaticResource S.Control.Base}" TargetType="{x:Type RadioButton}">
         <Setter Property="SnapsToDevicePixels" Value="true" />
-        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <!--<Setter Property="OverridesDefaultStyle" Value="true" />-->
         <Setter Property="FocusVisualStyle" Value="{DynamicResource RadioButtonFocusVisual}" />
         <Setter Property="Template">
             <Setter.Value>

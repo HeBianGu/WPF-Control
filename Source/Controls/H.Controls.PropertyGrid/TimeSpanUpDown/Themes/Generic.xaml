@@ -8,7 +8,7 @@
         <ContentControl Margin="0,0,3,0"
                         Content="{Binding}"
                         Focusable="False"
-                        Foreground="Gray" />
+                        Foreground="{DynamicResource {x:Static h:BrushKeys.ForegroundDisabled}}" />
     </DataTemplate>
 
     <!--  ===============================================================================  -->
@@ -16,10 +16,10 @@
     <!--  ===============================================================================  -->
 
     <Style x:Key="TimeSpanUpDown" TargetType="{x:Type local:TimeSpanUpDown}">
-        <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static local:ResourceKeys.ControlNormalBorderKey}}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Background}}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
         <Setter Property="HorizontalContentAlignment" Value="Right" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="TextAlignment" Value="Right" />

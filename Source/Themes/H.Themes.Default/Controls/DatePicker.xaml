@@ -13,7 +13,7 @@
 
     <Style BasedOn="{StaticResource S.Control.Base}" TargetType="{x:Type DatePickerTextBox}">
         <Setter Property="SnapsToDevicePixels" Value="True" />
-        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <!--<Setter Property="OverridesDefaultStyle" Value="True" />-->
         <Setter Property="KeyboardNavigation.TabNavigation" Value="None" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="MinWidth" Value="120" />

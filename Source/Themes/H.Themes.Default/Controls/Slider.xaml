@@ -5,7 +5,7 @@
     </ResourceDictionary.MergedDictionaries>
     <Style x:Key="SliderButtonStyle" TargetType="{x:Type RepeatButton}">
         <Setter Property="SnapsToDevicePixels" Value="true" />
-        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <!--<Setter Property="OverridesDefaultStyle" Value="true" />-->
         <Setter Property="IsTabStop" Value="false" />
         <Setter Property="Focusable" Value="false" />
         <Setter Property="Template">
@@ -19,7 +19,7 @@
 
     <Style x:Key="SliderThumbStyle" TargetType="{x:Type Thumb}">
         <Setter Property="SnapsToDevicePixels" Value="true" />
-        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <!--<Setter Property="OverridesDefaultStyle" Value="true" />-->
         <Setter Property="Height" Value="14" />
         <Setter Property="Width" Value="14" />
         <Setter Property="Template">
@@ -227,7 +227,7 @@
     <Style x:Key="{ComponentResourceKey ResourceId=S.Slider.Default,
                                      TypeInTargetAssembly={x:Type local:SliderKeys}}" BasedOn="{StaticResource S.Control.Base}" TargetType="{x:Type Slider}">
         <Setter Property="SnapsToDevicePixels" Value="true" />
-        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <!--<Setter Property="OverridesDefaultStyle" Value="true" />-->
         <Style.Triggers>
             <Trigger Property="Orientation" Value="Horizontal">
                 <Setter Property="MinWidth" Value="104" />

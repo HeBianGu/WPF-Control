@@ -15,7 +15,7 @@
             <GradientStop Offset="1" Color="#292f39" />
         </LinearGradientBrush.GradientStops>
     </LinearGradientBrush>-->
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBackground.Disabled, TypeInTargetAssembly={x:Type local:ColorKeys}}">#AA292f39</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBackground.Disabled, TypeInTargetAssembly={x:Type local:ColorKeys}}">#464f5f</Color>
 
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.RowIndex.BackGround, TypeInTargetAssembly={x:Type local:ColorKeys}}">#2f3541</Color>
 

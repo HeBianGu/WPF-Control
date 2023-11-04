@@ -9,7 +9,7 @@
               HorizontalAlignment="Center"
               VerticalAlignment="Center"
               Data="{StaticResource UpArrowGeometry}"
-              Fill="Orange"
+              Fill="{DynamicResource {x:Static h:BrushKeys.Foreground}}"
               Focusable="False"
               SnapsToDevicePixels="True" />
     </DataTemplate>
@@ -18,7 +18,7 @@
               HorizontalAlignment="Center"
               VerticalAlignment="Center"
               Data="{StaticResource UpArrowGeometry}"
-              Fill="Orange"
+              Fill="{DynamicResource {x:Static h:BrushKeys.Foreground}}"
               Focusable="False"
               SnapsToDevicePixels="True" />
     </DataTemplate>
@@ -28,7 +28,7 @@
               HorizontalAlignment="Center"
               VerticalAlignment="Center"
               Data="{StaticResource DownArrowGeometry}"
-              Fill="Orange"
+              Fill="{DynamicResource {x:Static h:BrushKeys.Foreground}}"
               Focusable="False"
               SnapsToDevicePixels="True" />
     </DataTemplate>
@@ -38,7 +38,7 @@
               HorizontalAlignment="Center"
               VerticalAlignment="Center"
               Data="{StaticResource DownArrowGeometry}"
-              Fill="Orange"
+              Fill="{DynamicResource {x:Static h:BrushKeys.Foreground}}"
               Focusable="False"
               SnapsToDevicePixels="True" />
     </DataTemplate>

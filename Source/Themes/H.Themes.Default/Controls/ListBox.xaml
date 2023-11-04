@@ -6,7 +6,7 @@
     <Style x:Key="{ComponentResourceKey ResourceId=S.ListBox.Default,
                                      TypeInTargetAssembly={x:Type local:ListBoxKeys}}" TargetType="ListBox">
         <Setter Property="SnapsToDevicePixels" Value="true" />
-        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <!--<Setter Property="OverridesDefaultStyle" Value="true" />-->
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
         <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
@@ -51,7 +51,7 @@
     <Style x:Key="{ComponentResourceKey ResourceId=S.ListBoxItem.Default,
                                      TypeInTargetAssembly={x:Type local:ListBoxItemKeys}}" BasedOn="{StaticResource S.Control.Base}" TargetType="ListBoxItem">
         <Setter Property="SnapsToDevicePixels" Value="true" />
-        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <!--<Setter Property="OverridesDefaultStyle" Value="true" />-->
         <Setter Property="Height" Value="Auto"/>
         <Setter Property="MinHeight" Value="{DynamicResource {x:Static local:LayoutKeys.ItemHeight}}" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>

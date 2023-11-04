@@ -10,14 +10,14 @@
         <ContentControl Margin="0,0,3,0"
                         Content="{Binding}"
                         Focusable="False"
-                        Foreground="Gray" />
+                        Foreground="{DynamicResource {x:Static h:BrushKeys.ForegroundDisabled}}" />
     </DataTemplate>
 
     <Style x:Key="NumericUpDown" TargetType="{x:Type local:InputBase}">
-        <Setter Property="Background" Value="{DynamicResource {x:Static local:ResourceKeys.ControlNormalBackgroundKey}}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static local:ResourceKeys.ControlNormalBorderKey}}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Background}}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
         <Setter Property="HorizontalContentAlignment" Value="Right" />
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="VerticalContentAlignment" Value="Center" />

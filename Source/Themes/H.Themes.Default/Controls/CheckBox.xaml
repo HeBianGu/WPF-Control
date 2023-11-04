@@ -6,7 +6,7 @@
     <Style x:Key="{ComponentResourceKey ResourceId=S.CheckBox.Default,
                                      TypeInTargetAssembly={x:Type local:CheckBoxKeys}}" BasedOn="{StaticResource S.Control.Base}" TargetType="{x:Type CheckBox}">
         <Setter Property="SnapsToDevicePixels" Value="true" />
-        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <!--<Setter Property="OverridesDefaultStyle" Value="true" />-->
         <Setter Property="FocusVisualStyle" Value="{DynamicResource CheckBoxFocusVisual}" />
         <Setter Property="Template">
             <Setter.Value>
