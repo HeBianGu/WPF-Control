@@ -1,0 +1,20 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:local="clr-namespace:H.Styles.Default"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/ConciseControls.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!--<Style x:Key="{ComponentResourceKey ResourceId=S.Button.Default,
+                                     TypeInTargetAssembly={x:Type local:ButtonKeys}}" BasedOn="{StaticResource {x:Type Button}}" TargetType="Button"/>
+    <Style x:Key="{ComponentResourceKey ResourceId=S.ComboBox.Default,
+                                     TypeInTargetAssembly={x:Type local:ComboBoxKeys}}" BasedOn="{StaticResource {x:Type ComboBox}}" TargetType="ComboBox">
+      
+    </Style>
+    <Style x:Key="{ComponentResourceKey ResourceId=S.CheckBox.Default,
+                                     TypeInTargetAssembly={x:Type local:CheckBoxKeys}}" BasedOn="{StaticResource {x:Type CheckBox}}" TargetType="CheckBox"/>
+    <Style x:Key="{ComponentResourceKey ResourceId=S.TextBox.Default,
+                                     TypeInTargetAssembly={x:Type local:TextBoxKeys}}" BasedOn="{StaticResource {x:Type TextBox}}" TargetType="TextBox"/>-->
+
+  
+</ResourceDictionary>

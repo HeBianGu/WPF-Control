@@ -5,7 +5,7 @@
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Accent, TypeInTargetAssembly={x:Type local:ColorKeys}}">#FF0093FF</Color>
     <!--  Background  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBackground, TypeInTargetAssembly={x:Type local:ColorKeys}}">#121317</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBackground.Disabled, TypeInTargetAssembly={x:Type local:ColorKeys}}">#363844</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBackground.Disabled, TypeInTargetAssembly={x:Type local:ColorKeys}}">#191a20</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.RowIndex.BackGround, TypeInTargetAssembly={x:Type local:ColorKeys}}">#191a20</Color>
 
     <!--  Foreground  -->

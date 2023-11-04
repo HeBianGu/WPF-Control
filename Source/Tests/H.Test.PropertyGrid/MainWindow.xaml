@@ -11,11 +11,11 @@
         Style="{StaticResource {x:Type Window}}"
         mc:Ignorable="d">
     <DockPanel>
-        <h:PropertyGrid SelectedObject="{Binding ElementName=btn}" DockPanel.Dock="Right" Width="350">
+        <h:PropertyGrid ShowPreview="True" FilterWatermark="搜索" ShowAdvancedOptions="True" ShowSummary="True" ShowTitle="True" ShowDescriptionByTooltip="True"   SelectedObject="{Binding ElementName=btn}" DockPanel.Dock="Right" Width="350">
             <!--<h:SystemPropertyGrid.SelectedObject>
                 <h:Student/>
             </h:SystemPropertyGrid.SelectedObject>-->
         </h:PropertyGrid>
-        <Button x:Name="btn"/>
+        <Button x:Name="btn" Content="我是按钮" FontSize="100"/>
     </DockPanel>
 </Window>

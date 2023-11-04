@@ -105,7 +105,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Extensions.Behvaiors", ".
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Presenters.Repository", "..\Source\Presenters\H.Presenters.Repository\H.Presenters.Repository.csproj", "{323EF8C2-1B1F-4887-BF16-47C08B3AB614}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Controls.RepositoryBox", "..\Source\Controls\H.Controls.RepositoryBox\H.Controls.RepositoryBox.csproj", "{6D046609-E0F5-42B6-B46F-55134FCD5934}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Controls.RepositoryBox", "..\Source\Controls\H.Controls.RepositoryBox\H.Controls.RepositoryBox.csproj", "{6D046609-E0F5-42B6-B46F-55134FCD5934}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Styles", "3 - Styles", "{E7DACF41-3711-495C-A159-B30213B3CA3D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Styles.Default", "..\Source\Styles\H.Styles.Default\H.Styles.Default.csproj", "{2BC59AD9-EBFC-4D1A-AF8C-C1516E903760}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -277,6 +281,10 @@ Global
 		{6D046609-E0F5-42B6-B46F-55134FCD5934}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D046609-E0F5-42B6-B46F-55134FCD5934}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D046609-E0F5-42B6-B46F-55134FCD5934}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BC59AD9-EBFC-4D1A-AF8C-C1516E903760}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BC59AD9-EBFC-4D1A-AF8C-C1516E903760}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BC59AD9-EBFC-4D1A-AF8C-C1516E903760}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BC59AD9-EBFC-4D1A-AF8C-C1516E903760}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -324,6 +332,7 @@ Global
 		{BC789E6F-F6E3-4940-88F7-B604D483AFB1} = {09F8FD00-E76A-4D72-AAB4-7FA06DBE12D4}
 		{323EF8C2-1B1F-4887-BF16-47C08B3AB614} = {B5FE7036-B316-4FC3-81E8-00BD6C76784D}
 		{6D046609-E0F5-42B6-B46F-55134FCD5934} = {9E63ED70-6F96-4CB2-8B9D-EAEC77D0548E}
+		{2BC59AD9-EBFC-4D1A-AF8C-C1516E903760} = {E7DACF41-3711-495C-A159-B30213B3CA3D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF825C3D-F4F4-4E62-BBFF-B42A5E81112F}

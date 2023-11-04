@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:H.Test.ApplicationBase"
                    xmlns:h="https://github.com/HeBianGu">
     <Application.Resources>
-        <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/ConciseControls.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/ConciseControls.xaml" />
     </Application.Resources>
 </h:ApplicationBase>

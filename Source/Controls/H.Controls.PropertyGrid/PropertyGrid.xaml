@@ -1,5 +1,4 @@
-﻿
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.PropertyGrid"
@@ -320,7 +319,7 @@
 
     <SolidColorBrush x:Key="PressedBackgroundBrush" Color="{DynamicResource {x:Static h:ColorKeys.BackgroundDisabled}}">
     </SolidColorBrush>
-    
+
     <!--<LinearGradientBrush x:Key="PressedBackgroundBrush" StartPoint="0,0" EndPoint="0,1">
         <GradientStop Offset="0" Color="#FFE3C085" />
         <GradientStop Offset="0.19" Color="#FFF4CC89" />
@@ -567,7 +566,7 @@
                         <Border x:Name="ExpandSite"
                                 Grid.Row="1"
                                 Padding="10,0,0,0"
-                                Background="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
+                                Background="{DynamicResource {x:Static h:BrushKeys.Dark0_1}}"
                                 Visibility="Collapsed">
                             <Border Margin="0"
                                     Padding="0"
@@ -676,7 +675,7 @@
 
         <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Background}}" />
         <!--  Set the margin at 1 pixel bottom to let the horizontal "line" effect appear.  -->
-        <Setter Property="Margin" Value="0,0,0,1" />
+        <Setter Property="Margin" Value="0,0,0,2" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="IsTabStop" Value="False" />
@@ -700,7 +699,7 @@
                             <Border x:Name="PART_Name"
                                     Margin="0,0,1,0"
                                     HorizontalAlignment="Stretch"
-                                    VerticalAlignment="Stretch"
+                                    VerticalAlignment="Stretch" CornerRadius="2"
                                     Background="{TemplateBinding Background}"
                                     BorderBrush="{TemplateBinding BorderBrush}"
                                     BorderThickness="{TemplateBinding BorderThickness}">
@@ -864,8 +863,9 @@
         <Setter Property="AdvancedOptionsMenu" Value="{StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type local:PropertyGrid}, ResourceId=SelectedObjectAdvancedOptionsMenu}}" />
         <Setter Property="Background" Value="#BCC7D8" />
         <Setter Property="BorderBrush" Value="#43577B" />
-        <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Dark0_1}}" />
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
         <!--<Setter Property="Foreground" Value="Red" />-->
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="SelectedObjectType" Value="{Binding RelativeSource={RelativeSource Self}, Path=SelectedObject, Converter={StaticResource objectConverter}, ConverterParameter=Type}" />
@@ -950,7 +950,7 @@
                                         </Grid.ColumnDefinitions>
                                         <local:WatermarkTextBox x:Name="_txtFilter"
                                                                 Background="Transparent"
-                                                                BorderThickness="1"
+                                                                BorderThickness="0"
                                                                 Text="{Binding Filter, RelativeSource={RelativeSource TemplatedParent}, UpdateSourceTrigger=PropertyChanged}"
                                                                 Watermark="{TemplateBinding FilterWatermark}">
                                             <local:WatermarkTextBox.Style>
@@ -970,8 +970,11 @@
                                         <Button Grid.Column="1"
                                                 HorizontalAlignment="Left"
                                                 Command="local:PropertyGridCommands.ClearFilter"
-                                                Style="{StaticResource ClearFilterButtonStyle}">
-                                            <Image Width="16" Height="16" Source="./PropertyGrid/Images/ClearFilter16.png" />
+                                                Style="{StaticResource {x:Static h:ButtonKeys.Drawing}}">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="./PropertyGrid/Images/ClearFilter16.png"/>
+                                            </Button.Background>
+                                            <!--<Image Width="16" Height="16" Source="./PropertyGrid/Images/ClearFilter16.png" />-->
                                         </Button>
                                     </Grid>
                                 </Border>
@@ -1040,6 +1043,7 @@
                             <GridSplitter Grid.Row="3"
                                           Height="3"
                                           HorizontalAlignment="Stretch"
+                                          Background="{DynamicResource {x:Static h:BrushKeys.BorderBrush} }"
                                           Visibility="{Binding ShowSummary, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}" />
                             <StackPanel Grid.Row="4" Margin="0,0,0,5" Visibility="{Binding ShowSummary, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}">
                                 <TextBlock Padding="2,2,2,0" FontWeight="Bold" Text="{Binding SelectedPropertyItem.DisplayName, RelativeSource={RelativeSource TemplatedParent}}" />

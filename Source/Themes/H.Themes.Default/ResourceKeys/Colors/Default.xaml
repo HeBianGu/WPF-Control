@@ -4,7 +4,7 @@
                     xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Accent, TypeInTargetAssembly={x:Type local:ColorKeys}}">#FF3399FF</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBackground, TypeInTargetAssembly={x:Type local:ColorKeys}}">#FFFFFF</Color><!--使用0.0-->
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBackground.Disabled, TypeInTargetAssembly={x:Type local:ColorKeys}}">#E5E5E5</Color><!--使用0.5-->
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBackground.Disabled, TypeInTargetAssembly={x:Type local:ColorKeys}}">#FAFAFA</Color><!--使用0.1-->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.RowIndex.BackGround, TypeInTargetAssembly={x:Type local:ColorKeys}}">#FAFAFA</Color><!--使用0.2-->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Title, TypeInTargetAssembly={x:Type local:ColorKeys}}">#FF000000</Color><!--使用10-->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground, TypeInTargetAssembly={x:Type local:ColorKeys}}">#FF000000</Color><!--使用9-->
