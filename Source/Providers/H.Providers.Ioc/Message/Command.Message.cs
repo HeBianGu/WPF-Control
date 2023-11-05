@@ -77,7 +77,7 @@ namespace H.Providers.Ioc
         public Type Type { get; set; }
         public override void Execute(object parameter)
         {
-            IocMessage.Dialog.ShowIoc(this.Type, this.Build, this.Title);
+            IocMessage.Dialog.ShowIoc(this.Type, null, this.Build, this.Title);
         }
 
         public override bool CanExecute(object parameter)

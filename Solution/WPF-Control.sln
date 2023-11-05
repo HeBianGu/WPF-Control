@@ -113,6 +113,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Styles.Default", "..\Sour
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Test.Login", "..\Source\Tests\H.Test.Login\H.Test.Login.csproj", "{DBFE3F46-8236-4CD7-B102-35161A4827CA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Test.SplashScreen", "..\Source\Tests\H.Test.SplashScreen\H.Test.SplashScreen.csproj", "{17ED69C9-F61F-4E5F-B190-0F1ABE1B479A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -291,6 +293,10 @@ Global
 		{DBFE3F46-8236-4CD7-B102-35161A4827CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBFE3F46-8236-4CD7-B102-35161A4827CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBFE3F46-8236-4CD7-B102-35161A4827CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17ED69C9-F61F-4E5F-B190-0F1ABE1B479A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17ED69C9-F61F-4E5F-B190-0F1ABE1B479A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17ED69C9-F61F-4E5F-B190-0F1ABE1B479A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17ED69C9-F61F-4E5F-B190-0F1ABE1B479A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -340,6 +346,7 @@ Global
 		{6D046609-E0F5-42B6-B46F-55134FCD5934} = {9E63ED70-6F96-4CB2-8B9D-EAEC77D0548E}
 		{2BC59AD9-EBFC-4D1A-AF8C-C1516E903760} = {E7DACF41-3711-495C-A159-B30213B3CA3D}
 		{DBFE3F46-8236-4CD7-B102-35161A4827CA} = {E2C0B11D-5ED5-4F22-8E56-F68982B6E59B}
+		{17ED69C9-F61F-4E5F-B190-0F1ABE1B479A} = {E2C0B11D-5ED5-4F22-8E56-F68982B6E59B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF825C3D-F4F4-4E62-BBFF-B42A5E81112F}

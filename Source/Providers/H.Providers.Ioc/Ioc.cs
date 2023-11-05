@@ -39,11 +39,16 @@ namespace System
             }
             return r;
         }
+
+        public static bool Exist<T>()
+        {
+            return GetService<T>(throwIfNone: false) != null;
+        }
     }
 
-    public abstract class Ioc<Setting, Interface> where Setting : class, Interface, new()
+    public abstract class Ioc<T, Interface> where T : class, Interface, new()
     {
-        public static Setting Instance => Ioc.GetService<Interface>() as Setting;
+        public static T Instance => Ioc.GetService<Interface>() as T;
     }
 
     public abstract class IocThrowIfNone<Interface>

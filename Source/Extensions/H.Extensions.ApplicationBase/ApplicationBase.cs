@@ -19,6 +19,7 @@ namespace H.Extensions.ApplicationBase
             this.ConfigureServices(sc);
             var sp = sc.BuildServiceProvider();
             Ioc.Build(sp);
+            this.OnSetting();
         }
 
         protected override void OnStartup(StartupEventArgs e)
@@ -122,8 +123,6 @@ namespace H.Extensions.ApplicationBase
 
         #endregion
 
-
-
         #region - Instance -
 
         private Mutex mutex;
@@ -138,7 +137,7 @@ namespace H.Extensions.ApplicationBase
             if (!createdNew)
             {
                 this.ShowMessage("当前程序已经运行！");
-                Application.Current.Shutdown();
+                this.Shutdown();
             }
         }
 

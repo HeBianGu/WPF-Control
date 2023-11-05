@@ -1,4 +1,4 @@
-﻿using H.Modules.Login;
+﻿using H.Modules.SplashScreen;
 using H.Providers.Ioc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -13,19 +13,19 @@ namespace System
 {
     public static class Extension
     {
-        public static  IServiceCollection AddLogin(this IServiceCollection services, Action<LoginOptions> setupAction = null)
+        public static  IServiceCollection AddSplashScreen(this IServiceCollection services, Action<SplashScreenOption> setupAction = null)
         {
             services.AddOptions();
-            services.TryAdd(ServiceDescriptor.Singleton<ILoginViewPresenter, LoginViewPresenter>());
+            services.TryAdd(ServiceDescriptor.Singleton<ISplashScreenViewPresenter, SplashScreenViewPresenter>());
             if (setupAction != null)
                 services.Configure(setupAction);
             return services;
         }
 
-        public static IApplicationBuilder UseLoginSetting(this IApplicationBuilder builder, Action<LoginOptions> option = null)
+        public static IApplicationBuilder UseSplashScreen(this IApplicationBuilder builder, Action<SplashScreenOption> option = null)
         {
-            SettingDataManager.Instance.Add(LoginOptions.Instance);
-            option?.Invoke(LoginOptions.Instance);
+            SettingDataManager.Instance.Add(SplashScreenOption.Instance);
+            option?.Invoke(SplashScreenOption.Instance);
             return builder;
         }
     }

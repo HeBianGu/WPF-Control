@@ -20,8 +20,9 @@ namespace H.Test.Login
     {
         protected override void ConfigureServices(IServiceCollection services)
         {
+            services.AddSetting();
             services.AddMessage();
-            services.AddLogin(x => x.Name = "你好配置的名称");
+            services.AddLogin(x => x.MyName = "你好配置的名称");
         }
 
         protected override Window CreateMainWindow(StartupEventArgs e)
@@ -29,15 +30,22 @@ namespace H.Test.Login
             return new MainWindow();
         }
 
+        protected override void Configure(IApplicationBuilder app)
+        {
+            base.Configure(app);
+
+            app.UseLoginSetting();
+        }
+
         protected override void OnSplashScreen(StartupEventArgs e)
         {
-
-
+            base.OnSplashScreen(e);
         }
 
         protected override void OnLogin(StartupEventArgs e)
         {
-            IocMessage.Dialog.ShowIoc<ILoginViewPresenter>();
+            base.OnLogin(e);
+
         }
     }
 }

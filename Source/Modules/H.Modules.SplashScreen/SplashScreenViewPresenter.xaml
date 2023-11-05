@@ -1,0 +1,9 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:local="clr-namespace:H.Modules.SplashScreen"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DataTemplate DataType="{x:Type local:SplashScreenViewPresenter}">
+        <UniformGrid>
+            <TextBlock Text="{Binding Message}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+        </UniformGrid>
+    </DataTemplate>
+</ResourceDictionary>

@@ -22,16 +22,35 @@ namespace H.Modules.Message
             return await Task.FromResult(r);
         }
 
-        public async Task<bool?> ShowIoc(Type type, Action<Control> action = null, string title = null, Func<bool> canSumit = null, Window owner = null)
+        public async Task<bool?> ShowIoc(Type type, Func<ICancelable, bool?> action = null, Action<Control> build = null, string title = null, Func<bool> canSumit = null, Window owner = null)
         {
-            var r = DialogWindow.ShowIoc(type, action, title, owner);
-            return await Task.FromResult(r);
+            if (action == null)
+            {
+                var r = DialogWindow.ShowIoc(type, build, title, owner);
+                return await Task.FromResult(r);
+            }
+            else
+            {
+                var instance = Ioc.Services.GetService(type);
+                var r = DialogWindow.ShowAction(instance, action, build, title, owner);
+                return await Task.FromResult(r);
+            }
         }
 
-        public async Task<bool?> ShowIoc<T>(Action<Control> action = null, string title = null, Func<bool> canSumit = null, Window owner = null)
+        public async Task<bool?> ShowIoc<T>(Func<ICancelable, T, bool?> action = null, Action<Control> build = null, string title = null, Func<bool> canSumit = null, Window owner = null)
         {
-            var r = DialogWindow.ShowIoc<T>(action, title, owner);
-            return await Task.FromResult(r);
+            if (action == null)
+            {
+                var r = DialogWindow.ShowIoc<T>(build, title, owner);
+                return await Task.FromResult(r);
+            }
+            else
+            {
+                var instance = (T)Ioc.Services.GetService(typeof(T));
+                var r = DialogWindow.ShowAction<bool?>(instance, x => action?.Invoke(x, instance), build, title, owner);
+                return await Task.FromResult(r);
+            }
+
         }
 
         public async Task<bool?> ShowMessage(string message, string title = "提示", DialogButton dialogButton = DialogButton.Sumit, Action<Control> action = null, Window owner = null)
