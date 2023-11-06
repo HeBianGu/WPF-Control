@@ -411,7 +411,7 @@
                 </ScrollViewer>
             </TabItem>
             <TabItem Header="Slider">
-                <Slider Value="50" />
+                <Slider Value="50" Maximum="100" />
             </TabItem>
             <TabItem Header="ToolTip">
                 <TextBlock Text="ToolTip"

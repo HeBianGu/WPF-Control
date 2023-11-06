@@ -94,19 +94,21 @@
                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
                 </TickBar.Fill>
             </TickBar>
-            <Border x:Name="TrackBackground"
+            <!--<Border x:Name="TrackBackground"
                     Grid.Row="1"
                     Height="4"
                     Margin="0"
-                    BorderThickness="1"
+                    BorderThickness="0"
                     CornerRadius="2">
-                <Border.BorderBrush>
+            -->
+            <!--<Border.BorderBrush>
                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-                </Border.BorderBrush>
-                <Border.Background>
-                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-                </Border.Background>
-            </Border>
+                </Border.BorderBrush>-->
+            <!--<Border.Background>
+                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Red}}" />
+                </Border.Background>-->
+            <!--
+            </Border>-->
             <Track x:Name="PART_Track"
                    Grid.Row="1">
                 <Track.DecreaseRepeatButton>

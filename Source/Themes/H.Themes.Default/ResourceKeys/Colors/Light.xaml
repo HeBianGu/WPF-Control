@@ -6,6 +6,7 @@
     <!--  Background  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.CaptionBackground, TypeInTargetAssembly={x:Type local:ColorKeys}}">#f5f5f5</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBackground, TypeInTargetAssembly={x:Type local:ColorKeys}}">#FFFFFF</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBackground.Disabled, TypeInTargetAssembly={x:Type local:ColorKeys}}">#FFFFFF</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.RowIndex.BackGround, TypeInTargetAssembly={x:Type local:ColorKeys}}">#fafafa</Color>
 
     <!--  Foreground  -->

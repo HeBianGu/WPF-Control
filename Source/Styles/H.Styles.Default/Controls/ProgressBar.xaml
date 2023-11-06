@@ -32,10 +32,10 @@
                             </Border.BorderBrush>
                         </Border>
                         <Border x:Name="PART_Indicator"
-                                Margin="0,-1,0,1"
+                                Margin="0,0,0,0"
                                 HorizontalAlignment="Left"
                                 Background="{TemplateBinding Foreground}"
-                                BorderThickness="1"
+                                BorderThickness="0"
                                 CornerRadius="2">
                             <Border.BorderBrush>
                                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
@@ -49,10 +49,10 @@
                                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,0" Opacity="0.5">
                                             <LinearGradientBrush.GradientStops>
                                                 <GradientStopCollection>
-                                                    <GradientStop Offset="0" Color="{DynamicResource {x:Static ColorKeys.ForegroundAssist}}" />
-                                                    <GradientStop Offset="0.4" Color="{DynamicResource {x:Static ColorKeys.ForegroundAssist}}" />
-                                                    <GradientStop Offset="0.6" Color="{DynamicResource {x:Static ColorKeys.ForegroundAssist}}" />
-                                                    <GradientStop Offset="1" Color="{DynamicResource {x:Static ColorKeys.ForegroundAssist}}" />
+                                                    <GradientStop Offset="0" Color="{DynamicResource {x:Static ColorKeys.CaptionForeground}}" />
+                                                    <GradientStop Offset="0.4" Color="{DynamicResource {x:Static ColorKeys.CaptionForeground}}" />
+                                                    <GradientStop Offset="0.6" Color="{DynamicResource {x:Static ColorKeys.CaptionForeground}}" />
+                                                    <GradientStop Offset="1" Color="{DynamicResource {x:Static ColorKeys.CaptionForeground}}" />
                                                 </GradientStopCollection>
                                             </LinearGradientBrush.GradientStops>
                                         </LinearGradientBrush>
