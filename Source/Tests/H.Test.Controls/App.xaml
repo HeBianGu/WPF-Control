@@ -8,7 +8,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <FontSizeTheme Type="Small" />
                 <LayoutTheme Type="Default" />
-                <ColorTheme Type="DarkGray" />
+                <ColorTheme Type="LightAccent" />
                 <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/ConciseControls.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

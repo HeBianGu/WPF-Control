@@ -52,22 +52,16 @@
                         </VisualStateManager.VisualStateGroups>
                         <Path x:Name="Collapsed"
                               Margin="1,1,1,1"
-                              HorizontalAlignment="Left"
+                              HorizontalAlignment="Left" Fill="{TemplateBinding Foreground}"
                               VerticalAlignment="Center"
                               Data="M 4 0 L 8 4 L 4 8 Z">
-                            <Path.Fill>
-                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
-                            </Path.Fill>
                         </Path>
                         <Path x:Name="Expanded"
                               Margin="1,1,1,1"
                               HorizontalAlignment="Left"
-                              VerticalAlignment="Center"
+                              VerticalAlignment="Center"  Fill="{TemplateBinding Foreground}"
                               Data="M 0 4 L 8 4 L 4 8 Z"
                               Visibility="Hidden">
-                            <Path.Fill>
-                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
-                            </Path.Fill>
                         </Path>
                     </Grid>
                 </ControlTemplate>
@@ -167,6 +161,7 @@
 
                         <ToggleButton x:Name="Expander"
                                       ClickMode="Press"
+                                      Foreground="{TemplateBinding Foreground}"
                                       IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}"
                                       Style="{StaticResource ExpandCollapseToggleStyle}" />
 

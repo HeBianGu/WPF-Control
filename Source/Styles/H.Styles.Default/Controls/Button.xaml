@@ -62,7 +62,7 @@
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
                                                                       Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
                                             <EasingColorKeyFrame KeyTime="0"
-                                                                 Value="{DynamicResource {x:Static ColorKeys.BorderBrushAssist}}" />
+                                                                 Value="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -148,7 +148,7 @@
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
                                                                       Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
                                             <EasingColorKeyFrame KeyTime="0"
-                                                                 Value="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
+                                                                 Value="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -157,7 +157,7 @@
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
                                                                       Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
                                             <EasingColorKeyFrame KeyTime="0"
-                                                                 Value="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
+                                                                 Value="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -227,7 +227,7 @@
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
                                                                       Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
                                             <EasingColorKeyFrame KeyTime="0"
-                                                                 Value="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
+                                                                 Value="{DynamicResource {x:Static ColorKeys.Selected}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>

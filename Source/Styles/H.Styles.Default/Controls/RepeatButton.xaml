@@ -23,10 +23,10 @@
                         BorderThickness="1"
                         CornerRadius="2">
                         <Border.BorderBrush>
-                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
+                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />
                         </Border.BorderBrush>
                         <Border.Background>
-                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
+                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />
                         </Border.Background>
                         <Path
                             x:Name="Arrow"
@@ -34,7 +34,7 @@
                             VerticalAlignment="Center"
                             Data="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}">
                             <Path.Fill>
-                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
+                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionForeground}}" />
                             </Path.Fill>
                         </Path>
                         <VisualStateManager.VisualStateGroups>
@@ -43,14 +43,14 @@
                                 <VisualState x:Name="MouseOver">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.Dark0_8}}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Pressed">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.BorderBrushAssist}}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
