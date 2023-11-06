@@ -45,6 +45,7 @@
         <Setter Property="Margin" Value="0" />
         <Setter Property="Padding" Value="10" />
         <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.CaptionForeground}}"/>
     </Style>
 
     <Style TargetType="{x:Type Window}">
@@ -69,9 +70,9 @@
                         <Grid.Background>
                             <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
                         </Grid.Background>
-                        <Border Grid.Row="0">
+                        <Border Grid.Row="0" TextElement.Foreground="{DynamicResource {x:Static BrushKeys.CaptionForeground}}">
                             <Border.Background>
-                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
+                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />
                             </Border.Background>
                             <Grid Height="35">
                                 <Grid.ColumnDefinitions>

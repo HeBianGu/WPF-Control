@@ -22,6 +22,10 @@ namespace H.Themes.Default
                 return this.GetResource("Colors", Type.ToString());
             else if (Type == ColorThemeType.DarkGray)
                 return this.GetResource("Colors", "Darks", "Gray");
+            else if (Type == ColorThemeType.Light)
+                return this.GetResource("Colors", Type.ToString());
+            else if (Type == ColorThemeType.LightAccent)
+                return this.GetResource("Colors", "Lights", "Accent");
             else
                 return this.GetResource("Colors", "Default");
 

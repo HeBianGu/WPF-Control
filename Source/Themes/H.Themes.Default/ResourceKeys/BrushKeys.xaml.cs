@@ -7,11 +7,14 @@ namespace H.Themes.Default
     public static class BrushKeys
     {
         #region - Background -
+        public static ComponentResourceKey CaptionBackground => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.CaptionBackground");
+
         public static ComponentResourceKey Background => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.TextBackground");
         public static ComponentResourceKey BackgroundDisabled => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.TextBackground.Disabled");
         public static ComponentResourceKey AlternatingRowBackground => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.RowIndex.BackGround");
         #endregion
 
+        public static ComponentResourceKey CaptionForeground => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.CaptionForeground");
         public static ComponentResourceKey Foreground => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.TextForeground");
         public static ComponentResourceKey ForegroundTitle => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.TextForeground.Title");
         public static ComponentResourceKey ForegroundDisabled => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.TextForeground.Disabled");

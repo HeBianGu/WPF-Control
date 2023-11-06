@@ -4,6 +4,6 @@ namespace H.Themes.Default
 {
     public enum ColorThemeType
     {
-        Default = 0, Dark, DarkGray
+        Default = 0, Dark, DarkGray, Light,LightAccent
     }
 }

@@ -4,12 +4,14 @@
                     xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Accent, TypeInTargetAssembly={x:Type local:BrushKeys}}" Color="{DynamicResource {x:Static local:ColorKeys.Accent}}" />
     <!--  Background  -->
+    <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.CaptionBackground, TypeInTargetAssembly={x:Type local:BrushKeys}}" Color="{DynamicResource {x:Static local:ColorKeys.CaptionBackground}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.TextBackground, TypeInTargetAssembly={x:Type local:BrushKeys}}" Color="{DynamicResource {x:Static local:ColorKeys.Background}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.TextBackground.Disabled, TypeInTargetAssembly={x:Type local:BrushKeys}}" Color="{DynamicResource {x:Static local:ColorKeys.BackgroundDisabled}}" />
 
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.RowIndex.BackGround, TypeInTargetAssembly={x:Type local:BrushKeys}}" Color="{DynamicResource {x:Static local:ColorKeys.AlternatingRowBackground}}" />
 
     <!--  Foreground  -->
+    <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.CaptionForeground, TypeInTargetAssembly={x:Type local:BrushKeys}}" Color="{DynamicResource {x:Static local:ColorKeys.CaptionForeground}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.TextForeground.Title, TypeInTargetAssembly={x:Type local:BrushKeys}}" Color="{DynamicResource {x:Static local:ColorKeys.ForegroundTitle}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.TextForeground, TypeInTargetAssembly={x:Type local:BrushKeys}}" Color="{DynamicResource {x:Static local:ColorKeys.Foreground}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.TextForeground.Disabled, TypeInTargetAssembly={x:Type local:BrushKeys}}" Color="{DynamicResource {x:Static local:ColorKeys.ForegroundDisabled}}" />

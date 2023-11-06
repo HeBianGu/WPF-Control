@@ -6,7 +6,7 @@
     <ControlTemplate x:Key="ExpanderToggleButton" TargetType="{x:Type ToggleButton}">
         <Border x:Name="Border" BorderThickness="0,0,1,0" CornerRadius="2,0,0,0">
             <Border.Background>
-                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
+                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />
             </Border.Background>
             <Border.BorderBrush>
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
@@ -57,7 +57,7 @@
                       VerticalAlignment="Center"
                       Data="M 0 0 L 4 4 L 8 0 Z">
                     <Path.Fill>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionForeground}}" />
                     </Path.Fill>
                 </Path>
                 <Path x:Name="ExpandededArrow"
@@ -66,7 +66,7 @@
                       Data="M 0 4 L 4 0 L 8 4 Z"
                       Visibility="Collapsed">
                     <Path.Fill>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionForeground}}" />
                     </Path.Fill>
                 </Path>
             </Grid>
@@ -113,7 +113,7 @@
                                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
                             </Border.BorderBrush>
                             <Border.Background>
-                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
+                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />
                             </Border.Background>
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -122,11 +122,12 @@
                                 </Grid.ColumnDefinitions>
                                 <ToggleButton IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" OverridesDefaultStyle="True" Template="{StaticResource ExpanderToggleButton}">
                                     <ToggleButton.Background>
-                                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
+                                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionForeground}}" />
                                     </ToggleButton.Background>
                                 </ToggleButton>
                                 <ContentPresenter Grid.Column="1"
                                                   Margin="4"
+                                                  TextElement.Foreground="{DynamicResource {x:Static BrushKeys.CaptionForeground}}"
                                                   VerticalAlignment="Center"
                                                   ContentSource="Header"
                                                   RecognizesAccessKey="True" />

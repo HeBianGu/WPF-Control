@@ -7,11 +7,13 @@ namespace H.Themes.Default
     public static class ColorKeys
     {
         #region - Background -
+        public static ComponentResourceKey CaptionBackground => new ComponentResourceKey(typeof(ColorKeys), "S.Color.CaptionBackground");
         public static ComponentResourceKey Background => new ComponentResourceKey(typeof(ColorKeys), "S.Color.TextBackground");
         public static ComponentResourceKey BackgroundDisabled => new ComponentResourceKey(typeof(ColorKeys), "S.Color.TextBackground.Disabled");
         public static ComponentResourceKey AlternatingRowBackground => new ComponentResourceKey(typeof(ColorKeys), "S.Color.RowIndex.BackGround");
         #endregion
 
+        public static ComponentResourceKey CaptionForeground => new ComponentResourceKey(typeof(ColorKeys), "S.Color.CaptionForeground");
         public static ComponentResourceKey Foreground => new ComponentResourceKey(typeof(ColorKeys), "S.Color.TextForeground");
         public static ComponentResourceKey ForegroundTitle => new ComponentResourceKey(typeof(ColorKeys), "S.Color.TextForeground.Title");
         public static ComponentResourceKey ForegroundDisabled => new ComponentResourceKey(typeof(ColorKeys), "S.Color.TextForeground.Disabled");
