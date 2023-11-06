@@ -201,6 +201,26 @@
                             </MultiTrigger.Conditions>
                             <Setter TargetName="PART_Header" Property="MinHeight" Value="19" />
                         </MultiTrigger>
+           
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="true"/>
+                                <Condition Property="IsSelectionActive" Value="false"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" TargetName="Bd" Value="{DynamicResource {x:Static BrushKeys.Selected}}"/>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="true"/>
+                                <Condition Property="IsSelectionActive" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" TargetName="Bd" Value="{DynamicResource {x:Static BrushKeys.Selected}}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundTitle}}"/>
+                        </MultiTrigger>
+                        
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundDisabled}}"/>
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

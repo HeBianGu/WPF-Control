@@ -28,15 +28,5 @@ namespace H.Test.ApplicationBase
             return new MainWindow();
         }
 
-        protected override void OnSplashScreen(StartupEventArgs e)
-        {
-            new SplashScreenWindow().ShowDialog();
-
-        }
-
-        protected override void OnLogin(StartupEventArgs e)
-        {
-            new LoginWindow().ShowDialog();
-        }
     }
 }

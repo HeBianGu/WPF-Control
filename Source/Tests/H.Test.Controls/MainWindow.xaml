@@ -311,9 +311,12 @@
                            Content="状态" />
             <Separator Style="{StaticResource {x:Static StatusBar.SeparatorStyleKey}}" />
         </StatusBar>
-        <TabControl TabStripPlacement="Top">
+        <TabControl TabStripPlacement="Left">
             <TabItem Header="Button">
                 <Button Content="Button" />
+            </TabItem>
+            <TabItem Header="TextBlock">
+                <TextBlock Text="TextBlock" />
             </TabItem>
             <TabItem Header="CheckBox">
                 <CheckBox Content="CheckBox" />
