@@ -1,17 +1,16 @@
 ﻿<Application x:Class="H.Test.Window.Main.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:h="https://github.com/HeBianGu"
              xmlns:local="clr-namespace:H.Test.Window.Main"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <!--<ResourceDictionary Source="pack://application:,,,/HeBianGu.LightStyle;component/Themes/Dark.Gray.xaml" />-->
-                <!--<ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/ResourceKeys/FontSizeKeys.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/ResourceKeys/LayoutKeys.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/ResourceKeys/Color.Dark.Gray.xaml" />-->
-                <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/ConciseControls.xaml" />
-                <!--<ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/Themes/Dark.Gray.xaml" />-->
+                <FontSizeTheme Type="{x:Static h:FontSizeThemeType.Default}" />
+                <LayoutTheme Type="{x:Static h:LayoutThemeType.Default}" />
+                <ColorTheme Type="{x:Static h:ColorThemeType.Dark}" />
+                <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/ConciseControls.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

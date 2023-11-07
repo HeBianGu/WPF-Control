@@ -1,0 +1,15 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:H.Styles.Default"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <Style x:Key="S.Control.Base"
+           TargetType="Control">
+        <Setter Property="Height" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Foreground">
+            <Setter.Value>
+                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

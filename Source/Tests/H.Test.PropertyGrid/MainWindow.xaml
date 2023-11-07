@@ -2,20 +2,30 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:h="https://github.com/HeBianGu"
         xmlns:local="clr-namespace:H.Test.PropertyGrid"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         Title="MainWindow"
         Width="800"
         Height="450"
-        xmlns:h="https://github.com/HeBianGu"
         Style="{StaticResource {x:Type Window}}"
         mc:Ignorable="d">
     <DockPanel>
-        <h:PropertyGrid SelectedObject="{Binding ElementName=btn}" DockPanel.Dock="Right" Width="350">
+        <h:PropertyGrid Width="350"
+                        DockPanel.Dock="Right"
+                        FilterWatermark="搜索"
+                        SelectedObject="{Binding ElementName=btn}"
+                        ShowAdvancedOptions="True"
+                        ShowDescriptionByTooltip="True"
+                        ShowPreview="True"
+                        ShowSummary="True"
+                        ShowTitle="True">
             <!--<h:SystemPropertyGrid.SelectedObject>
                 <h:Student/>
             </h:SystemPropertyGrid.SelectedObject>-->
         </h:PropertyGrid>
-        <Button x:Name="btn"/>
+        <Button x:Name="btn"
+                Content="我是按钮"
+                FontSize="100" />
     </DockPanel>
 </Window>

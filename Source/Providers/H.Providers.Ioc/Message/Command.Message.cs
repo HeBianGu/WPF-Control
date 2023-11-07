@@ -5,6 +5,7 @@ using System.Windows.Markup;
 using System;
 using System.Windows.Controls;
 using System.Threading;
+using System.Windows;
 
 namespace H.Providers.Ioc
 {
@@ -13,6 +14,7 @@ namespace H.Providers.Ioc
         public string Title { get; set; }
         public int Width { get; set; } = 500;
         public int Height { get; set; } = 300;
+        public DialogButton DialogButton { get; set; }
 
         public event EventHandler? CanExecuteChanged
         {
@@ -49,7 +51,7 @@ namespace H.Providers.Ioc
         public string Message { get; set; }
         public override void Execute(object parameter)
         {
-            IocMessage.Dialog.ShowMessage(this.Message, this.Title, this.Build);
+            IocMessage.Dialog.ShowMessage(this.Message, this.Title, this.DialogButton, this.Build);
         }
         public override bool CanExecute(object parameter)
         {
@@ -60,7 +62,6 @@ namespace H.Providers.Ioc
     public class ShowCommand : MessageCommandBase
     {
         public object Presnter { get; set; }
-        public DialogButton DialogButton { get; set; }
         public override void Execute(object parameter)
         {
             IocMessage.Dialog.Show(this.Presnter, this.Build, this.DialogButton, this.Title);
@@ -76,7 +77,7 @@ namespace H.Providers.Ioc
         public Type Type { get; set; }
         public override void Execute(object parameter)
         {
-            IocMessage.Dialog.ShowIoc(this.Type, this.Build, this.Title);
+            IocMessage.Dialog.ShowIoc(this.Type, null, this.Build, this.Title);
         }
 
         public override bool CanExecute(object parameter)

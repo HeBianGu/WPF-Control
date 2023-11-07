@@ -18,10 +18,10 @@ namespace System
             _services = services;
         }
 
-        public static T GetService<T>()
+        public static T GetService<T>(bool throwIfNone = true)
         {
             var r = (T)_services.GetService(typeof(T));
-            if (r == null)
+            if (r == null && throwIfNone)
             {
                 System.Diagnostics.Debug.WriteLine(typeof(T));
                 throw new ArgumentNullException($"请先注册<{typeof(T)}>接口");
@@ -29,29 +29,34 @@ namespace System
             return r;
         }
 
-        public static T GetService<T>(Type type)
+        public static T GetService<T>(Type type, bool throwIfNone = true)
         {
             var r = (T)_services.GetService(type);
-            if (r == null)
+            if (r == null && throwIfNone)
             {
                 System.Diagnostics.Debug.WriteLine(type);
                 throw new ArgumentNullException($"请先注册<{type}>接口");
             }
             return r;
         }
+
+        public static bool Exist<T>()
+        {
+            return GetService<T>(throwIfNone: false) != null;
+        }
     }
 
-    public abstract class IocInstance<Setting, Interface> where Setting : class, Interface, new()
+    public abstract class Ioc<T, Interface> where T : class, Interface, new()
     {
-        public static Setting Instance => Ioc.GetService<Interface>() as Setting;
+        public static T Instance => Ioc.GetService<Interface>() as T;
     }
 
-    public abstract class IocInstanceThrowIfNone<Interface>
+    public abstract class IocThrowIfNone<Interface>
     {
         public static Interface Instance => Ioc.GetService<Interface>();
     }
 
-    public abstract class IocInstance<Interface>
+    public abstract class Ioc<Interface>
     {
         public static Interface Instance
         {

@@ -1,0 +1,58 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:H.Styles.Default">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Share.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    <Style x:Key="{ComponentResourceKey ResourceId=S.GroupBox.Default,
+                                        TypeInTargetAssembly={x:Type local:GroupBoxKeys}}"
+           TargetType="GroupBox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="GroupBox">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Border Grid.Row="0"
+                                Height="{DynamicResource {x:Static LayoutKeys.ItemHeight}}"
+                                BorderThickness="1"
+                                CornerRadius="2,2,0,0">
+                            <Border.BorderBrush>
+                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
+                            </Border.BorderBrush>
+                            <Border.Background>
+                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />
+                            </Border.Background>
+                            <ContentPresenter Margin="4"
+                                              VerticalAlignment="Center"
+                                              ContentSource="Header"
+                                              RecognizesAccessKey="True">
+                                <TextElement.Foreground>
+                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionForeground}}" />
+                                </TextElement.Foreground>
+                            </ContentPresenter>
+                        </Border>
+
+                        <Border Grid.Row="1"
+                                BorderThickness="1,0,1,1"
+                                CornerRadius="0,0,2,2">
+                            <Border.BorderBrush>
+                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
+                            </Border.BorderBrush>
+                            <Border.Background>
+                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
+                            </Border.Background>
+                            <ContentPresenter Margin="{TemplateBinding Padding}" />
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style BasedOn="{StaticResource {x:Static local:GroupBoxKeys.Default}}"
+           TargetType="GroupBox" />
+
+</ResourceDictionary>

@@ -2,9 +2,9 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:h="https://github.com/HeBianGu"
         xmlns:local="clr-namespace:H.Test.Form"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:h="https://github.com/HeBianGu"
         Title="MainWindow"
         Width="800"
         Height="450"
@@ -14,18 +14,20 @@
         <TabItem Header="Student">
             <h:Form>
                 <h:Form.SelectObject>
-                    <h:Student/>
+                    <h:Student />
                 </h:Form.SelectObject>
             </h:Form>
         </TabItem>
         <TabItem Header="TypeCTestModel">
             <h:Form>
                 <h:Form.SelectObject>
-                    <h:TypeCTestModel/>
+                    <h:TypeCTestModel />
                 </h:Form.SelectObject>
                 <h:Form.ItemHeaderTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding}" VerticalAlignment="Center" Width="Auto"/>
+                        <TextBlock Width="Auto"
+                                   VerticalAlignment="Center"
+                                   Text="{Binding}" />
                     </DataTemplate>
                 </h:Form.ItemHeaderTemplate>
             </h:Form>
@@ -33,11 +35,13 @@
         <TabItem Header="ControlTypeConverterModel">
             <h:Form>
                 <h:Form.SelectObject>
-                    <h:ControlTypeConverterModel/>
+                    <h:ControlTypeConverterModel />
                 </h:Form.SelectObject>
                 <h:Form.ItemHeaderTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding}"  VerticalAlignment="Center" Width="Auto"/>
+                        <TextBlock Width="Auto"
+                                   VerticalAlignment="Center"
+                                   Text="{Binding}" />
                     </DataTemplate>
                 </h:Form.ItemHeaderTemplate>
             </h:Form>

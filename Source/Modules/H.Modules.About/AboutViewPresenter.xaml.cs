@@ -27,7 +27,7 @@ namespace H.Modules.About
     }
 
     [Display(Name = "关于", GroupName = "系统设置", Description = "这是一个关于页面的信息")]
-    public class AboutViewPresenter : IocInstance<AboutViewPresenter, IAboutViewPresenter>, IAboutViewPresenter, IAboutViewPresenterOption
+    public class AboutViewPresenter : Ioc<AboutViewPresenter, IAboutViewPresenter>, IAboutViewPresenter, IAboutViewPresenterOption
     {
         public AboutViewPresenter()
         {

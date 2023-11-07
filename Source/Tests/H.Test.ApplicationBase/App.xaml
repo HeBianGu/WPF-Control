@@ -1,9 +1,9 @@
 ﻿<h:ApplicationBase x:Class="H.Test.ApplicationBase.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:H.Test.ApplicationBase"
-                   xmlns:h="https://github.com/HeBianGu">
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:h="https://github.com/HeBianGu"
+                   xmlns:local="clr-namespace:H.Test.ApplicationBase">
     <Application.Resources>
-        <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/ConciseControls.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/ConciseControls.xaml" />
     </Application.Resources>
 </h:ApplicationBase>

@@ -3,6 +3,7 @@ using H.Extensions.ApplicationBase;
 using H.Providers.Ioc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -24,6 +25,15 @@ namespace H.Test.Sqlite
             services.AddSetting();
             services.AddMessage();
             services.AddDbContextBySetting<MyDataContext>();
+            services.AddLogging(configure =>
+            {
+
+            });
+
+            services.AddMemoryCache(x =>
+            {
+                x.TrackLinkedCacheEntries = true;
+            });
         }
 
         protected override Window CreateMainWindow(StartupEventArgs e)
@@ -35,7 +45,7 @@ namespace H.Test.Sqlite
         {
             base.OnSplashScreen(e);
 
-           var r= Ioc.GetService<IDbConnectService>().Load(out string error);
+            var r = Ioc.GetService<IDbConnectService>().Load(out string error);
         }
     }
 }

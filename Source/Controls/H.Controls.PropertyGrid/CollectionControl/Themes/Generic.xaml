@@ -1,7 +1,8 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:h="https://github.com/HeBianGu"
-                    xmlns:local="clr-namespace:H.Controls.PropertyGrid">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:h="https://github.com/HeBianGu"
+    xmlns:local="clr-namespace:H.Controls.PropertyGrid">
 
 
     <ResourceDictionary.MergedDictionaries>
@@ -39,7 +40,10 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:CollectionControl}">
-                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
                         <Grid Margin="{TemplateBinding Padding}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -57,11 +61,12 @@
                                     <RowDefinition />
                                 </Grid.RowDefinitions>
                                 <TextBlock Margin="0,0,0,5" Text="Select type:" />
-                                <ComboBox x:Name="PART_NewItemTypesComboBox"
-                                          Grid.Row="1"
-                                          Margin="0,0,0,3"
-                                          HorizontalAlignment="Stretch"
-                                          DisplayMemberPath="Name">
+                                <ComboBox
+                                    x:Name="PART_NewItemTypesComboBox"
+                                    Grid.Row="1"
+                                    Margin="0,0,0,3"
+                                    HorizontalAlignment="Stretch"
+                                    DisplayMemberPath="Name">
                                     <ComboBox.ItemsSource>
                                         <MultiBinding Converter="{StaticResource NewItemTypesComboBoxConverter}">
                                             <Binding Path="ItemsSourceType" RelativeSource="{RelativeSource TemplatedParent}" />
@@ -69,41 +74,53 @@
                                         </MultiBinding>
                                     </ComboBox.ItemsSource>
                                 </ComboBox>
-                                <Button Grid.Row="1"
-                                        Grid.Column="1"
-                                        Margin="3,0,0,3"
-                                        Padding="5,0"
-                                        Command="New"
-                                        CommandParameter="{Binding SelectedItem, ElementName=PART_NewItemTypesComboBox}"
-                                        Content="Add" />
-                                <ListBox x:Name="PART_ListBox"
-                                         Grid.Row="2"
-                                         Grid.ColumnSpan="2"
-                                         ItemsSource="{Binding Items, RelativeSource={RelativeSource TemplatedParent}}"
-                                         SelectedIndex="0"
-                                         SelectedItem="{Binding SelectedItem, RelativeSource={RelativeSource TemplatedParent}}" />
-                                <StackPanel Grid.Row="2"
-                                            Grid.Column="2"
-                                            Margin="7,2,0,0"
-                                            VerticalAlignment="Top">
-                                    <Button Command="ComponentCommands.MoveUp" CommandParameter="{Binding SelectedItem, ElementName=PART_ListBox}" Style="{StaticResource CollectionControlButtonStyle}">
-                                        <Path Data="F0 M 6,0 L 12,7 8,7 8,12 4,12 4,7 0,7 Z" Fill="#FF404040" />
+                                <Button
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Margin="3,0,0,3"
+                                    Padding="5,0"
+                                    Command="New"
+                                    CommandParameter="{Binding SelectedItem, ElementName=PART_NewItemTypesComboBox}"
+                                    Content="Add" />
+                                <ListBox
+                                    x:Name="PART_ListBox"
+                                    Grid.Row="2"
+                                    Grid.ColumnSpan="2" Style="{DynamicResource {x:Static h:ListBoxKeys.Default}}"
+                                    ItemsSource="{Binding Items, RelativeSource={RelativeSource TemplatedParent}}"
+                                    SelectedIndex="0"
+                                    SelectedItem="{Binding SelectedItem, RelativeSource={RelativeSource TemplatedParent}}" />
+                                <StackPanel
+                                    Grid.Row="2"
+                                    Grid.Column="2"
+                                    Margin="7,2,0,0"
+                                    VerticalAlignment="Top">
+                                    <Button Padding="10"
+                                        Command="ComponentCommands.MoveUp"
+                                        CommandParameter="{Binding SelectedItem, ElementName=PART_ListBox}"
+                                        Style="{StaticResource {x:Static h:ButtonKeys.Geometry}}">
+                                        F0 M 6,0 L 12,7 8,7 8,12 4,12 4,7 0,7 Z
                                     </Button>
-                                    <Button Margin="0,1,0,0"
-                                            Command="ComponentCommands.MoveDown"
-                                            CommandParameter="{Binding SelectedItem, ElementName=PART_ListBox}"
-                                            Style="{StaticResource CollectionControlButtonStyle}">
-                                        <Path Data="F0 M 4,0 L 8,0 8,5 12,5 6,12 0,5 4,5 Z" Fill="#FF404040" />
+                                    <Button
+                                        Margin="0,1,0,0" Padding="10"
+                                        Command="ComponentCommands.MoveDown"
+                                        CommandParameter="{Binding SelectedItem, ElementName=PART_ListBox}"
+                                        Style="{StaticResource {x:Static h:ButtonKeys.Geometry}}">
+                                        F0 M 4,0 L 8,0 8,5 12,5 6,12 0,5 4,5 Z
                                     </Button>
-                                    <Button Margin="0,7,0,0"
-                                            Command="Delete"
-                                            CommandParameter="{Binding SelectedItem, ElementName=PART_ListBox}"
-                                            Style="{StaticResource CollectionControlButtonStyle}">
-                                        <Image Width="16"
+                                    <Button
+                                        Margin="0,7,0,0"
+                                        Command="Delete" Padding="10"
+                                        CommandParameter="{Binding SelectedItem, ElementName=PART_ListBox}"
+                                        Style="{StaticResource {x:Static h:ButtonKeys.Geometry}}">
+                                        F1M8.583,8L13,12.424 12.424,13 8,8.583 3.576,13 3,12.424 7.417,8 3,3.576 3.576,3 8,7.417 12.424,3 13,3.576z
+                                        <!--<Button.Background>
+                                            <ImageBrush ImageSource="./../Images/Delete16.png" />
+                                        </Button.Background>-->
+                                        <!--<Image Width="16"
                                                Height="16"
                                                Margin="1"
                                                Source="./../Images/Delete16.png"
-                                               Stretch="None" />
+                                               Stretch="None" />-->
                                     </Button>
                                 </StackPanel>
                             </Grid>
@@ -113,14 +130,15 @@
                                     <RowDefinition />
                                 </Grid.RowDefinitions>
                                 <TextBlock Grid.Column="1" Text="Properties:" />
-                                <local:PropertyGrid x:Name="PART_PropertyGrid"
-                                                    Grid.Row="1"
-                                                    Grid.Column="1"
-                                                    Margin="0,5,0,0"
-                                                    HorizontalAlignment="Stretch"
-                                                    VerticalAlignment="Stretch"
-                                                    IsReadOnly="{Binding IsReadOnly, RelativeSource={RelativeSource TemplatedParent}}"
-                                                    SelectedObject="{Binding SelectedItem, RelativeSource={RelativeSource TemplatedParent}}" />
+                                <local:PropertyGrid
+                                    x:Name="PART_PropertyGrid"
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Margin="0,5,0,0"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    IsReadOnly="{Binding IsReadOnly, RelativeSource={RelativeSource TemplatedParent}}"
+                                    SelectedObject="{Binding SelectedItem, RelativeSource={RelativeSource TemplatedParent}}" />
                             </Grid>
                         </Grid>
                     </Border>
@@ -153,18 +171,19 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:PrimitiveTypeCollectionControl}">
-                    <local:MultiLineTextEditor Padding="{TemplateBinding Padding}"
-                                               HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                               VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                               Background="{TemplateBinding Background}"
-                                               BorderBrush="{TemplateBinding BorderBrush}"
-                                               BorderThickness="{TemplateBinding BorderThickness}"
-                                               Content="{TemplateBinding Content}"
-                                               ContentTemplate="{TemplateBinding ContentTemplate}"
-                                               DropDownWidth="{TemplateBinding ActualWidth}"
-                                               IsOpen="{TemplateBinding IsOpen}"
-                                               IsReadOnly="{TemplateBinding IsReadOnly}"
-                                               Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <local:MultiLineTextEditor
+                        Padding="{TemplateBinding Padding}"
+                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        Content="{TemplateBinding Content}"
+                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                        DropDownWidth="{TemplateBinding ActualWidth}"
+                        IsOpen="{TemplateBinding IsOpen}"
+                        IsReadOnly="{TemplateBinding IsReadOnly}"
+                        Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}}" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -173,12 +192,13 @@
     <Style BasedOn="{StaticResource PrimitiveTypeCollectionControl}" TargetType="{x:Type local:PrimitiveTypeCollectionControl}" />
 
     <Style x:Key="CollectionControlButton" TargetType="{x:Type local:CollectionControlButton}">
-        <Setter Property="Background" Value="White" />
-        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
         <Setter Property="Padding" Value="2,0,0,0" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="Content" Value="(Collection)" />
+        <Setter Property="Content" Value="(集合)" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="MinHeight" Value="22" />
         <Setter Property="IsTabStop" Value="True" />
@@ -192,32 +212,38 @@
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
 
-                            <Border Padding="{TemplateBinding Padding}"
-                                    Background="{TemplateBinding Background}"
-                                    BorderBrush="{TemplateBinding BorderBrush}"
-                                    BorderThickness="{TemplateBinding BorderThickness}"
-                                    SnapsToDevicePixels="True">
-                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                                  Content="{TemplateBinding Content}"
-                                                  ContentTemplate="{TemplateBinding ContentTemplate}"
-                                                  ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}" />
+                            <Border
+                                Padding="{TemplateBinding Padding}"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="2"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                SnapsToDevicePixels="True">
+                                <ContentPresenter
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    Content="{TemplateBinding Content}"
+                                    ContentTemplate="{TemplateBinding ContentTemplate}"
+                                    ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}" />
                             </Border>
 
-                            <local:ButtonChrome x:Name="ToggleButtonChrome"
-                                                Grid.Column="1"
-                                                CornerRadius="0,2.75,2.75,0"
-                                                RenderEnabled="{Binding IsEnabled, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:CollectionControlButton}}"
-                                                RenderMouseOver="{TemplateBinding IsMouseOver}">
-                                <Grid x:Name="arrowGlyph"
-                                      Grid.Column="1"
-                                      Margin="5"
-                                      IsHitTestVisible="False">
-                                    <Path x:Name="Arrow"
-                                          Width="9" Height="5"
-                                          Margin="0,1,0,0"
-                                          Data="{StaticResource DownArrowGeometry}"
-                                          Fill="#FF000000" />
+                            <local:ButtonChrome
+                                x:Name="ToggleButtonChrome"
+                                Grid.Column="1"
+                                CornerRadius="2"
+                                RenderEnabled="{Binding IsEnabled, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:CollectionControlButton}}"
+                                RenderMouseOver="{TemplateBinding IsMouseOver}">
+                                <Grid
+                                    x:Name="arrowGlyph"
+                                    Grid.Column="1"
+                                    Margin="5"
+                                    IsHitTestVisible="False">
+                                    <Path
+                                        x:Name="Arrow"
+                                        Width="9"
+                                        Height="5"
+                                        Margin="0,1,0,0"
+                                        Data="{StaticResource DownArrowGeometry}"
+                                        Fill="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
                                 </Grid>
                             </local:ButtonChrome>
                         </Grid>

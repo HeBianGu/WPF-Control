@@ -9,4 +9,8 @@
     <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Providers\H.Providers.Mvvm\H.Providers.Mvvm.csproj" />
+  </ItemGroup>
+
 </Project>

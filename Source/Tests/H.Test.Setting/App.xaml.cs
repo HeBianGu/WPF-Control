@@ -1,5 +1,6 @@
 ﻿using H.Extensions.ApplicationBase;
 using H.Modules.Setting;
+using H.Providers.Ioc;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -35,6 +36,13 @@ namespace H.Test.Setting
         protected override Window CreateMainWindow(StartupEventArgs e)
         {
             return new MainWindow();
+        }
+
+        protected override void OnSplashScreen(StartupEventArgs e)
+        {
+            base.OnSplashScreen(e);
+
+            SettingDataManager.Instance.Load(out var message);
         }
     }
 }

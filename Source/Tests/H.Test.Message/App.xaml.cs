@@ -1,6 +1,7 @@
 ﻿using H.Extensions.ApplicationBase;
 using H.Modules.Message;
 using H.Providers.Ioc;
+using H.Styles.Default;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,12 @@ namespace H.Test.Message
             services.AddSingleton<IDialogMessage, DialogMessage>();
             services.AddSingleton<IFormMessage, FormMessage>();
             services.AddAbout();
+
+
+            //var sss= SystemColors.ControlDarkColor.ToString();
+            // System.Diagnostics.Debug.WriteLine(sss);
+         var ss=   SystemParameters.WindowCaptionButtonHeight;
+
         }
 
         protected override Window CreateMainWindow(StartupEventArgs e)

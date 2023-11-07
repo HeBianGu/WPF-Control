@@ -14,8 +14,7 @@ using System.Windows;
 
 namespace H.Modules.Setting
 {
-    [Display(Name = "设置", GroupName = SystemSetting.GroupBase, Description = "点击此处弹出设置页面")]
-    public class SettingViewPresenter : IocInstance<SettingViewPresenter, ISettingViewPresenter>, ISettingViewPresenter, ISettingViewPresenterOption
+    public class SettingViewPresenter : Ioc<SettingViewPresenter, ISettingViewPresenter>, ISettingViewPresenter, ISettingViewPresenterOption
     {
         public SettingViewPresenter()
         {

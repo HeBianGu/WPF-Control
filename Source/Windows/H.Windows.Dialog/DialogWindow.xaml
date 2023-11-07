@@ -15,6 +15,7 @@
         <!--<Setter Property="MinWidth" Value="400" />
         <Setter Property="MinHeight" Value="200" />-->
         <!--<Setter Property="SizeToContent" Value="WidthAndHeight"/>-->
+        <Setter Property="Icon" Value="{h:Logo}" />
         <Setter Property="ShowInTaskbar" Value="False" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
@@ -24,7 +25,7 @@
                 <ControlTemplate TargetType="{x:Type local:DialogWindow}">
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="40" />
+                            <RowDefinition Height="Auto" />
                             <RowDefinition />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
@@ -32,15 +33,20 @@
                             <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.Background}}" />
                         </Grid.Background>
                         <Border Grid.Row="0">
+                            <TextElement.Foreground>
+                                <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.CaptionForeground}}" />
+                            </TextElement.Foreground>
                             <Border.Background>
-                                <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.Dark0_2}}" />
+                                <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.CaptionBackground}}" />
                             </Border.Background>
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition />
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
-                                <StackPanel Margin="5,0" VerticalAlignment="Center" Orientation="Horizontal">
+                                <StackPanel Margin="5,0"
+                                            VerticalAlignment="Center"
+                                            Orientation="Horizontal">
                                     <Button Width="{x:Static SystemParameters.SmallIconWidth}"
                                             Height="{x:Static SystemParameters.SmallIconHeight}"
                                             Margin="7,0,5,0"
@@ -56,7 +62,8 @@
                                             </ControlTemplate>
                                         </Button.Template>
                                     </Button>
-                                    <TextBlock Margin="5,0" Text="{TemplateBinding Title}" />
+                                    <TextBlock Margin="5,0"
+                                               Text="{TemplateBinding Title}" />
                                 </StackPanel>
 
                                 <StackPanel Grid.Column="1"
@@ -90,15 +97,29 @@
                                 </StackPanel>
                             </Grid>
                         </Border>
-                        <AdornerDecorator Grid.Row="1" Grid.ColumnSpan="3">
-                            <ContentPresenter Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+
+                        <AdornerDecorator Grid.Row="1"
+                                          Grid.ColumnSpan="3">
+                            <ContentPresenter Margin="{TemplateBinding Padding}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                         </AdornerDecorator>
+
+                        <Border Grid.RowSpan="3"
+                                IsHitTestVisible="False"
+                                Opacity="{Binding Source={x:Static h:WindowSetting.Instance}, Path=Opacity}">
+                            <Border.Background>
+                                <ImageBrush Stretch="{Binding Source={x:Static h:WindowSetting.Instance}, Path=Stretch}" ImageSource="{Binding Source={x:Static h:WindowSetting.Instance}, Path=BackImagePath}" />
+                            </Border.Background>
+                        </Border>
                         <!--<Border Grid.Row="2" BorderThickness="0,1,0,0">
                             <Border.BorderBrush>
                                 <SolidColorBrush Color="{StaticResource {x:Static h:ColorKeys.BorderBrushAssist}}" />
                             </Border.BorderBrush>
                         </Border>-->
-                        <Control Grid.Row="2" MinHeight="10" Template="{TemplateBinding BottomTemplate}" />
+                        <Control Grid.Row="2"
+                                 MinHeight="10"
+                                 Template="{TemplateBinding BottomTemplate}" />
                         <ResizeGrip x:Name="WindowResizeGrip"
                                     Grid.RowSpan="3"
                                     Grid.ColumnSpan="3"
@@ -142,10 +163,14 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.DialogWindow.None, TypeInTargetAssembly={x:Type local:DialogKeys}}" TargetType="{x:Type local:DialogWindow}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.DialogWindow.None,
+                                        TypeInTargetAssembly={x:Type local:DialogKeys}}"
+           TargetType="{x:Type local:DialogWindow}">
         <Setter Property="BottomTemplate" Value="{x:Null}" />
     </Style>
-    <Style x:Key="{ComponentResourceKey ResourceId=S.DialogWindow.Sumit, TypeInTargetAssembly={x:Type local:DialogKeys}}" TargetType="{x:Type local:DialogWindow}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.DialogWindow.Sumit,
+                                        TypeInTargetAssembly={x:Type local:DialogKeys}}"
+           TargetType="{x:Type local:DialogWindow}">
         <Setter Property="BottomTemplate">
             <Setter.Value>
                 <ControlTemplate>
@@ -160,7 +185,9 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style x:Key="{ComponentResourceKey ResourceId=S.DialogWindow.Cancel, TypeInTargetAssembly={x:Type local:DialogKeys}}" TargetType="{x:Type local:DialogWindow}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.DialogWindow.Cancel,
+                                        TypeInTargetAssembly={x:Type local:DialogKeys}}"
+           TargetType="{x:Type local:DialogWindow}">
         <Setter Property="BottomTemplate">
             <Setter.Value>
                 <ControlTemplate>
@@ -175,11 +202,14 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style x:Key="{ComponentResourceKey ResourceId=S.DialogWindow.SumitAndCancel, TypeInTargetAssembly={x:Type local:DialogKeys}}" TargetType="{x:Type local:DialogWindow}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.DialogWindow.SumitAndCancel,
+                                        TypeInTargetAssembly={x:Type local:DialogKeys}}"
+           TargetType="{x:Type local:DialogWindow}">
         <Setter Property="BottomTemplate">
             <Setter.Value>
                 <ControlTemplate>
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel HorizontalAlignment="Center"
+                                Orientation="Horizontal">
                         <Button Width="100"
                                 Margin="6,0,6,10"
                                 HorizontalAlignment="Center"

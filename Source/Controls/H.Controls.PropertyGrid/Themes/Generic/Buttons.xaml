@@ -7,6 +7,9 @@
     <Style x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:ResourceKeys}, ResourceId=SpinnerButtonStyleKey}" TargetType="RepeatButton">
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Padding" Value="2,2" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}"/>
+        <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Background}}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="RepeatButton">

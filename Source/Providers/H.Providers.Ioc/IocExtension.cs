@@ -13,6 +13,7 @@ namespace H.Providers.Ioc
         public Type Type { get; set; }
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
+            //var sss = serviceProvider.GetService(this.Type);
             return System.Ioc.GetService<object>(this.Type);
         }
     }

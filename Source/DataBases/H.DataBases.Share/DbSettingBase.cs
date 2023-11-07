@@ -17,6 +17,7 @@ using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
+using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -28,6 +29,7 @@ namespace H.DataBases.Share
     {
         public abstract string GetConnect();
 
+        [JsonIgnore]
         [XmlIgnore]
         [Browsable(false)]
         [Display(Name = "测试连接")]
@@ -51,6 +53,7 @@ namespace H.DataBases.Share
                 await IocMessage.Dialog.ShowMessage(r.Item2, "连接失败");
         });
 
+        [JsonIgnore]
         [XmlIgnore]
         [Browsable(false)]
         [Display(Name = "保存配置")]

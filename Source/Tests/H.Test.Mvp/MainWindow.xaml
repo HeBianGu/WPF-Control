@@ -10,6 +10,6 @@
         Style="{StaticResource {x:Type Window}}"
         mc:Ignorable="d">
     <UniformGrid>
-        <ContentPresenter Content="{Ioc Type={x:Type IAboutButtonPresenter}}"/>
+        <ContentPresenter Content="{Ioc Type={x:Type IAboutButtonPresenter}}" />
     </UniformGrid>
 </Window>

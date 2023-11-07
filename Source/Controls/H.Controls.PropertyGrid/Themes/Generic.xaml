@@ -4,6 +4,8 @@
                     xmlns:local="clr-namespace:H.Controls.PropertyGrid">
 
     <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.PropertyGrid;component/Themes/Generic/Buttons.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.PropertyGrid;component/Themes/Generic/Common.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.PropertyGrid;component/ButtonSpinner/Themes/Generic.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.PropertyGrid;component/Calculator/Themes/Generic.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.PropertyGrid;component/CalculatorUpDown/Themes/Generic.xaml" />

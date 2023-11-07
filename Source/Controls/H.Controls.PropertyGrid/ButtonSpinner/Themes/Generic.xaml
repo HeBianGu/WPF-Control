@@ -16,8 +16,8 @@
     <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
 
     <Style TargetType="{x:Type local:ButtonSpinner}">
-        <Setter Property="Background" Value="{DynamicResource {x:Static local:ResourceKeys.ControlNormalBackgroundKey}}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static local:ResourceKeys.ControlNormalBorderKey}}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrushTitle}}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Focusable" Value="False" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -54,13 +54,13 @@
                                     <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
 
-                                <RepeatButton x:Name="PART_IncreaseButton"
+                                <RepeatButton x:Name="PART_IncreaseButton" Height="Auto"
                                               ContentTemplate="{StaticResource IncreaseGlyphNormalKey}"
                                               IsTabStop="{TemplateBinding IsTabStop}"
                                               Style="{DynamicResource {x:Static local:ResourceKeys.SpinnerButtonStyleKey}}" />
 
                                 <RepeatButton x:Name="PART_DecreaseButton"
-                                              Grid.Row="1"
+                                              Grid.Row="1" Height="Auto"
                                               ContentTemplate="{StaticResource DecreaseGlyphNormalKey}"
                                               IsTabStop="{TemplateBinding IsTabStop}"
                                               Style="{DynamicResource {x:Static local:ResourceKeys.SpinnerButtonStyleKey}}" />

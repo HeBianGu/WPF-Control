@@ -1,0 +1,38 @@
+﻿<Window x:Class="H.Test.RepositoryPresenter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:H.Test.RepositoryPresenter"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Title="MainWindow"
+        Width="800"
+        Height="450"
+        Style="{StaticResource {x:Type Window}}"
+        mc:Ignorable="d">
+    <TabControl>
+        <TabItem Header="RepositoryPresenter">
+            <ContentPresenter Content="{RepositoryPresenter Type={x:Type local:mbc_dv_image}}" />
+        </TabItem>
+        <TabItem Header="RepositoryBox - DataGrid">
+            <RepositoryBox Style="{DynamicResource {x:Static RepositoryBoxKeys.DataGrid}}"
+                           Type="{x:Type local:mbc_dv_image}" />
+        </TabItem>
+        <TabItem Header="RepositoryBox">
+            <RepositoryBox Type="{x:Type local:mbc_dv_image}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Form SelectObject="{Binding Model}"
+                              UsePropertyNames="Name,Url"
+                              UsePropertyView="True" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="2" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </RepositoryBox>
+        </TabItem>
+    </TabControl>
+</Window>

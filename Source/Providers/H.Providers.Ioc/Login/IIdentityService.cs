@@ -37,12 +37,12 @@ namespace H.Providers.Ioc
         bool ResetPassword(string phone, string password, out string message);
     }
 
-    public class Loginner : IocInstance<ILoginService>
+    public class Loginner : Ioc<ILoginService>
     {
 
     }
 
-    public class Register : IocInstance<IRegisterService>
+    public class Register : Ioc<IRegisterService>
     {
 
     }

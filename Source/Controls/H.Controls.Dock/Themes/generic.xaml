@@ -21,7 +21,7 @@
 	xmlns:shell="clr-namespace:Microsoft.Windows.Shell">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/Controls/TabControl.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Controls/TabControl.xaml" />
     </ResourceDictionary.MergedDictionaries>
     <!--  DocumentPaneControlStyle  -->
 	<Style x:Key="DocumentPaneControlStyle" TargetType="{x:Type avalonDockControls:LayoutDocumentPaneControl}">

@@ -4,8 +4,9 @@
                     xmlns:local="clr-namespace:H.Presenters.Common">
     <DataTemplate DataType="{x:Type local:MessagePresenter}">
         <TextBlock Margin="10,6"
+                   VerticalAlignment="Center"
                    Text="{Binding Value}"
-                   TextWrapping="Wrap" VerticalAlignment="Center"
+                   TextWrapping="Wrap"
                    ToolTip="{Binding Value}" />
     </DataTemplate>
 </ResourceDictionary>

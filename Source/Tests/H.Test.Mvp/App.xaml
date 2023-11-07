@@ -1,9 +1,7 @@
 ﻿<h:ApplicationBase x:Class="H.Test.Mvp.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:H.Test.Mvp"
-                   xmlns:h="https://github.com/HeBianGu">
-    <Application.Resources>
-         
-    </Application.Resources>
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:h="https://github.com/HeBianGu"
+                   xmlns:local="clr-namespace:H.Test.Mvp">
+    <Application.Resources />
 </h:ApplicationBase>

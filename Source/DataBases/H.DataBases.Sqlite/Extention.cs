@@ -32,7 +32,7 @@ namespace System
         public static void AddDbContextBySetting<TDbContext>(this IServiceCollection services, Action<ISqliteOption> action = null) where TDbContext : DbContext
         {
             action?.Invoke(SqliteSetting.Instance);
-            //SqliteSetting.Instance.Load();
+            SqliteSetting.Instance.Load();
             string connect = SqliteSetting.Instance.GetConnect();
             services.AddDbContext<TDbContext>(x => x.UseSqlite(connect));
             SettingDataManager.Instance.Add(SqliteSetting.Instance);
