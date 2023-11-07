@@ -29,8 +29,11 @@
                             <ContentPresenter Margin="4"
                                               VerticalAlignment="Center"
                                               ContentSource="Header"
-                                              TextElement.Foreground="{DynamicResource {x:Static BrushKeys.CaptionForeground}}"
-                                              RecognizesAccessKey="True" />
+                                              RecognizesAccessKey="True">
+                                <TextElement.Foreground>
+                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionForeground}}"/>
+                                </TextElement.Foreground>
+                            </ContentPresenter>
                         </Border>
 
                         <Border Grid.Row="1"

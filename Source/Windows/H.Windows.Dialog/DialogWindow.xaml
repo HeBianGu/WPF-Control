@@ -32,7 +32,10 @@
                         <Grid.Background>
                             <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.Background}}" />
                         </Grid.Background>
-                        <Border Grid.Row="0" TextElement.Foreground="{DynamicResource {x:Static BrushKeys.CaptionForeground}}">
+                        <Border Grid.Row="0">
+                            <TextElement.Foreground>
+                                <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.CaptionForeground}}"/>
+                            </TextElement.Foreground>
                             <Border.Background>
                                 <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.CaptionBackground}}" />
                             </Border.Background>

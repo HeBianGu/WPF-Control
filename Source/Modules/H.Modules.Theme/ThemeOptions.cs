@@ -2,6 +2,7 @@
 using H.Providers.Ioc;
 using H.Themes.Default;
 using Microsoft.Extensions.Options;
+using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.DirectoryServices.ActiveDirectory;
@@ -40,6 +41,17 @@ namespace H.Modules.Theme
             base.LoadDefault();
         }
 
+        public override bool Save(out string message)
+        {
+            this.RefreshTheme();
+            {
+                var brushResource = new ResourceDictionary() { Source = new Uri("pack://application:,,,/H.Styles.Default;component/ConciseControls.xaml", UriKind.Absolute) };
+                brushResource.ChangeResourceDictionary(x => x.Source.AbsoluteUri == brushResource.Source.AbsoluteUri, true);
+
+            }
+            return base.Save(out message);
+        }
+
         public override void Load()
         {
             base.Load();
@@ -51,6 +63,8 @@ namespace H.Modules.Theme
             this.Color.ChangeThemeType();
             this.FontSize.ChangeFontSizeThemeType();
             this.Layout.ChangeLayoutThemeType();
+
+
         }
     }
 }

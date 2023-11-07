@@ -3,6 +3,7 @@
 using System;
 using System.Linq;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace H.Themes.Default
 {
@@ -69,8 +70,34 @@ namespace H.Themes.Default
             var resource = n.GetResource();
             ChangeResourceDictionary(resource, x => x.IsColorsResource());
 
-            var brushResource = GetResource("BrushKeys");
-            brushResource.ChangeResourceDictionary(x => x.Source.AbsoluteUri == brushResource.Source.AbsoluteUri, true);
+
+            //{
+            //    var brushResource = GetResource("BrushKeys");
+            //    brushResource.ChangeResourceDictionary(x => x.Source.AbsoluteUri == brushResource.Source.AbsoluteUri, true);
+
+            //}
+
+        
+
+
+            //Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.SystemIdle, new Action(() =>
+            //          {
+            //              var dic = Application.Current.Resources.MergedDictionaries;
+            //              var temp = dic.ToList();
+            //              dic.Clear();
+            //              foreach (var item in temp)
+            //              {
+            //                  dic.Add(item);
+            //              }
+            //          }));
+
+
+            //{
+            //    var brushResource = GetResource("ConciseControls");
+            //    brushResource.ChangeResourceDictionary(x => x.Source.AbsoluteUri == brushResource.Source.AbsoluteUri, true);
+
+            //}
+
         }
 
         public static void ChangeFontSizeThemeType(this ThemeType n)
@@ -86,7 +113,7 @@ namespace H.Themes.Default
             ChangeResourceDictionary(resource, x => x.IsLayoutsResource());
         }
 
-        private static void ChangeResourceDictionary(this ResourceDictionary n, Func<ResourceDictionary, bool> predicate, bool force = false)
+        public static void ChangeResourceDictionary(this ResourceDictionary n, Func<ResourceDictionary, bool> predicate, bool force = false)
         {
             var dic = Application.Current.Resources.MergedDictionaries;
             var finds = dic.Where(predicate).ToList();

@@ -45,7 +45,7 @@
             <MenuItem Header="文件" />
         </Menu>
         <ToolBar DockPanel.Dock="Top">
-            <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+            <Button Style="{DynamicResource {x:Static ToolBar.ButtonStyleKey}}">
                 <Border>
                     <Border.Background>
                         <DrawingBrush>
@@ -71,7 +71,7 @@
                     </Border.Background>
                 </Border>
             </Button>
-            <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+            <Button Style="{DynamicResource {x:Static ToolBar.ButtonStyleKey}}">
                 <Border>
                     <Border.Background>
                         <DrawingBrush>
@@ -99,7 +99,7 @@
                     </Border.Background>
                 </Border>
             </Button>
-            <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+            <Button Style="{DynamicResource {x:Static ToolBar.ButtonStyleKey}}">
                 <Border>
                     <Border.Background>
                         <DrawingBrush>
@@ -131,7 +131,7 @@
                     </Border.Background>
                 </Border>
             </Button>
-            <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+            <Button Style="{DynamicResource {x:Static ToolBar.ButtonStyleKey}}">
                 <Border>
                     <Border.Background>
                         <DrawingBrush>

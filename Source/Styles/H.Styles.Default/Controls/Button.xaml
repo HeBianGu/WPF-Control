@@ -32,7 +32,11 @@
         <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}" />
         <Setter Property="Padding" Value="10,6" />
         <Setter Property="Margin" Value="2" />
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.CaptionForeground}}" />
+        <Setter Property="Foreground">
+            <Setter.Value>
+                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionForeground}}"/>
+            </Setter.Value>
+        </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -129,13 +133,6 @@
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                           RecognizesAccessKey="True" />
-                        <!--<Border Margin="{TemplateBinding Padding}" Background="{TemplateBinding Background}" />-->
-                        <!--<Border.BorderBrush>
-                                    <SolidColorBrush Color="{StaticResource {x:Static lightstyle:ColorKeys.BorderBrush}}" />
-                                </Border.BorderBrush>-->
-                        <!--<Border.Background>
-                                    <SolidColorBrush Color="{StaticResource {x:Static lightstyle:ColorKeys.BorderBrush}}" />
-                                </Border.Background>-->
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <!--<VisualStateGroup.Transitions>

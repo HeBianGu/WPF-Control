@@ -127,10 +127,13 @@
                                 </ToggleButton>
                                 <ContentPresenter Grid.Column="1"
                                                   Margin="4"
-                                                  TextElement.Foreground="{DynamicResource {x:Static BrushKeys.CaptionForeground}}"
                                                   VerticalAlignment="Center"
                                                   ContentSource="Header"
-                                                  RecognizesAccessKey="True" />
+                                                  RecognizesAccessKey="True">
+                                    <TextElement.Foreground>
+                                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionForeground}}"/>
+                                    </TextElement.Foreground>
+                                </ContentPresenter>
                             </Grid>
                         </Border>
                         <Border x:Name="Content"
