@@ -88,14 +88,15 @@
                                             Content="{TemplateBinding Icon}"
                                             IsTabStop="False"
                                             Style="{x:Null}"
-                                            WindowChrome.IsHitTestVisibleInChrome="True">
+                                            WindowChrome.IsHitTestVisibleInChrome="True"> 
                                         <Button.Template>
                                             <ControlTemplate TargetType="{x:Type Button}">
                                                 <Image Source="{TemplateBinding Content}" />
                                             </ControlTemplate>
+                                           
                                         </Button.Template>
                                     </Button>
-                                    <TextBlock Margin="5,0" Text="{TemplateBinding Title}" />
+                                    <TextBlock Margin="5,0" VerticalAlignment="Center" Text="{TemplateBinding Title}" />
                                 </StackPanel>
 
                                 <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">

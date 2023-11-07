@@ -41,10 +41,10 @@
                             CornerRadius="2"
                             TextBlock.Foreground="{TemplateBinding Foreground}">
                         <Border.BorderBrush>
-                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />
+                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
                         </Border.BorderBrush>
                         <Border.Background>
-                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />
+                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
                         </Border.Background>
                         <ContentPresenter Margin="{TemplateBinding Padding}"
                                           HorizontalAlignment="Center"
@@ -62,7 +62,7 @@
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
                                                                       Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
                                             <EasingColorKeyFrame KeyTime="0"
-                                                                 Value="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
+                                                                 Value="{DynamicResource {x:Static ColorKeys.Selected}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -71,7 +71,7 @@
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
                                                                       Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
                                             <EasingColorKeyFrame KeyTime="0"
-                                                                 Value="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />
+                                                                 Value="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>

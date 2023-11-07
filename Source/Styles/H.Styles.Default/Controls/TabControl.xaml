@@ -142,7 +142,11 @@
                                 <Condition Property="Selector.IsSelectionActive" Value="True" />
                                 <Condition Property="IsSelected" Value="True" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource {x:Static BrushKeys.Selected}}" />
+                            <Setter TargetName="Bd" Property="Background">
+                                <Setter.Value>
+                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
+                                </Setter.Value>
+                            </Setter>
                             <Setter Property="TextElement.Foreground" TargetName="ContentSite" Value="{DynamicResource {x:Static BrushKeys.ForegroundTitle}}" />
                         </MultiTrigger>
                         <Trigger Property="IsEnabled" Value="False">

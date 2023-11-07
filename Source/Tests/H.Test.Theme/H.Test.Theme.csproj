@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Datas\H.Data.Test\H.Data.Test.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.ApplicationBase\H.Extensions.ApplicationBase.csproj" />
+    <ProjectReference Include="..\..\Modules\H.Modules.Message\H.Modules.Message.csproj" />
+    <ProjectReference Include="..\..\Modules\H.Modules.Setting\H.Modules.Setting.csproj" />
+    <ProjectReference Include="..\..\Modules\H.Modules.SplashScreen\H.Modules.SplashScreen.csproj" />
+    <ProjectReference Include="..\..\Modules\H.Modules.Theme\H.Modules.Theme.csproj" />
+    <ProjectReference Include="..\..\Themes\H.Themes.Default\H.Themes.Default.csproj" />
+    <ProjectReference Include="..\..\Windows\H.Windows.Dialog\H.Windows.Dialog.csproj" />
+    <ProjectReference Include="..\..\Windows\H.Windows.Main\H.Windows.Main.csproj" />
+  </ItemGroup>
+
+</Project>

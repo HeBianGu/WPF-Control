@@ -6,7 +6,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ColorTheme Type="Dark"/>
+                <ColorTheme Type="LightAccent" />
                 <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/ConciseControls.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

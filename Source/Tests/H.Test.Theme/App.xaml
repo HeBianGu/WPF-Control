@@ -1,0 +1,16 @@
+﻿<h:ApplicationBase x:Class="H.Test.Theme.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:H.Test.Theme"
+                   xmlns:h="https://github.com/HeBianGu">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <FontSizeTheme Type="Small" />
+                <LayoutTheme Type="Default" />
+                <ColorTheme Type="{x:Static h:ColorThemeType.Dark}" />
+                <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/ConciseControls.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</h:ApplicationBase>

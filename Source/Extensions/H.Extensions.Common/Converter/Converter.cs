@@ -542,6 +542,22 @@ namespace H.Extensions.Common
         public static ConverterBase<double, CornerRadius> GetDoubleToCornerRadiusRightTop => new ConverterBase<double, CornerRadius>(x => new CornerRadius(0, x, 0, 0));
         public static ConverterBase<double, CornerRadius> GetDoubleToCornerRadiusRightBottom => new ConverterBase<double, CornerRadius>(x => new CornerRadius(0, 0, x, 0));
         #endregion
+
+        #region - Enum -
+        public static ConverterBase<Type, IEnumerable> GetEnumSource => new ConverterBase<Type, IEnumerable>(x =>
+        {
+            if (null == x)
+                throw new InvalidOperationException("This EnumType must be specified.");
+            Type actualEnumType = Nullable.GetUnderlyingType(x) ?? x;
+            Array enumVlues = Enum.GetValues(actualEnumType);
+            if (actualEnumType == x)
+                return enumVlues;
+            Array tempArray = Array.CreateInstance(actualEnumType, enumVlues.Length + 1);
+            enumVlues.CopyTo(tempArray, 1);
+            return tempArray;
+        });
+        #endregion
+
     }
 
     public class ConverterBase<T, P, R> : IValueConverter

@@ -10,7 +10,7 @@ namespace H.Themes.Default
 
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
-            return this.GetResource("Layouts", Type.ToString());
+            return this.Type.GetLayoutResource();
         }
     }
 }

@@ -5,11 +5,12 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
+using System.Windows.Markup;
 
 namespace H.Extensions.Common
 {
     /// <summary> 显示枚举中所有选项 </summary>
-    public class EnumSourceExtension : System.Windows.Markup.MarkupExtension
+    public class GetEnumSourceExtension : MarkupExtension
     {
         private Type _enumType;
 
@@ -32,12 +33,12 @@ namespace H.Extensions.Common
             }
         }
 
-        public EnumSourceExtension()
+        public GetEnumSourceExtension()
         {
 
         }
 
-        public EnumSourceExtension(Type enumType)
+        public GetEnumSourceExtension(Type enumType)
         {
             this.EnumType = enumType;
         }
@@ -63,7 +64,7 @@ namespace H.Extensions.Common
     }
 
     /// <summary> 根据DisplayAttribute特性中组名显示选项 </summary>
-    public class EnumGroupSourceExtension : System.Windows.Markup.MarkupExtension
+    public class GetEnumGroupSourceExtension : System.Windows.Markup.MarkupExtension
     {
         private Type _enumType;
 
@@ -88,12 +89,12 @@ namespace H.Extensions.Common
 
         public string GroupName { get; set; }
 
-        public EnumGroupSourceExtension()
+        public GetEnumGroupSourceExtension()
         {
 
         }
 
-        public EnumGroupSourceExtension(Type enumType)
+        public GetEnumGroupSourceExtension(Type enumType)
         {
             this.EnumType = enumType;
         }

@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.DirectoryServices.ActiveDirectory;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
@@ -36,13 +38,12 @@ namespace H.Controls.Form
             get { return _value; }
             set
             {
-
+                T o = _value;
                 this.Message = null;
                 _value = value;
                 if (!this.CheckType(value, out string error))
                 {
                     this.Message = error;
-
                     return;
                 }
 
@@ -87,7 +88,34 @@ namespace H.Controls.Form
 
                 //  Do ：触发值更改
                 this.ValueChanged?.Invoke(value);
+                this.OnValueChanged(o, value);
+            }
+        }
 
+        protected virtual void OnValueChanged(T o, T n)
+        {
+            string methodName = this.PropertyInfo.Name;
+            Type[] types = new Type[3];
+            types[0] = typeof(PropertyInfo);
+            types[1] = this.PropertyInfo.PropertyType;
+            types[2] = this.PropertyInfo.PropertyType;
+            object[] parameters = new object[3];
+            parameters[0] = this.PropertyInfo;
+            parameters[1] = o;
+            parameters[2] = n;
+            {
+                MethodInfo method = this.Obj.GetType().GetMethod($"On{methodName}ValueChanged", types);
+                method?.Invoke(this.Obj, parameters);
+            }
+
+            if (this.Obj is IPropertyValueChanged changed)
+                changed.OnPropertyValueChanged(this.PropertyInfo, o, n);
+            else if (this.Obj is IPropertyValueChanged<T> typechanged)
+                typechanged.OnPropertyValueChanged(this.PropertyInfo, o, n);
+            else
+            {
+                MethodInfo method = this.Obj.GetType().GetMethod($"OnPropertyValueChanged", types);
+                method?.Invoke(this.Obj, parameters);
             }
         }
 
@@ -200,6 +228,15 @@ namespace H.Controls.Form
 
     }
 
+    public interface IPropertyValueChanged
+    {
+        void OnPropertyValueChanged(PropertyInfo propertyInfo, object o, object n);
+    }
+
+    public interface IPropertyValueChanged<PropertyType>
+    {
+        void OnPropertyValueChanged(PropertyInfo propertyInfo, PropertyType o, PropertyType n);
+    }
 
     /// <summary> 类型基类 </summary>
     public abstract class ObjectPropertyItem : DisplayerViewModelBase, IPropertyItem
