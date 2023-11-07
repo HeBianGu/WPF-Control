@@ -10,7 +10,7 @@ using System.Windows;
 namespace H.Extensions.MarkupExtension
 {
     public class GetVisibilityExtension : GetValueExtensionBase
-    {
+    { 
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
             if (Enum.TryParse<Visibility>(this.Value, out Visibility result))
@@ -19,5 +19,5 @@ namespace H.Extensions.MarkupExtension
             }
             return Visibility.Visible;
         }
-    }
+    } 
 }

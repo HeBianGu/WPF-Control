@@ -3,21 +3,18 @@
 using H.Extensions.TypeConverter;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Xml.Linq;
 
 namespace H.Themes.Default
 {
     [TypeConverter(typeof(DisplayEnumConverter))]
-    public enum ColorThemeType
+    public enum FontSizeThemeType
     {
         [Display(Name = "常规")]
         Default = 0,
-        [Display(Name = "深色")]
-        Dark,
-        [Display(Name = "深灰")]
-        DarkGray,
-        [Display(Name = "浅色")]
-        Light,
-        [Display(Name = "主色")]
-        LightAccent
+        [Display(Name = "大")]
+        Large,
+        [Display(Name = "小")]
+        Small
     }
 }

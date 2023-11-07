@@ -3,7 +3,7 @@
 using System;
 using System.ComponentModel;
 
-namespace H.Extensions.Common
+namespace H.Extensions.MarkupExtension
 {
     /// <summary>
     /// TypeConverter需继承TypeConverter

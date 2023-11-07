@@ -4,7 +4,7 @@ using System;
 using System.Windows;
 using System.Windows.Media;
 
-namespace H.Extensions.Common
+namespace H.Extensions.MarkupExtension
 {
     /// <summary> 生成随机数据 </summary>
     public abstract class RandomExtension<T> : System.Windows.Markup.MarkupExtension

@@ -6,9 +6,9 @@ using System.Text;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Markup;
-using H.Extensions.Common;
 
-namespace H.Extensions.Common
+
+namespace H.Extensions.ValueConverter
 {
     public abstract class MarkupValueConverterBase : MarkupExtension, IValueConverter, INotifyPropertyChanged
     {

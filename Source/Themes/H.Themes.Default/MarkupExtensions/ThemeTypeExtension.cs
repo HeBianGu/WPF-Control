@@ -70,44 +70,16 @@ namespace H.Themes.Default
             var resource = n.GetResource();
             ChangeResourceDictionary(resource, x => x.IsColorsResource());
 
-
-            //{
-            //    var brushResource = GetResource("BrushKeys");
-            //    brushResource.ChangeResourceDictionary(x => x.Source.AbsoluteUri == brushResource.Source.AbsoluteUri, true);
-
-            //}
-
-        
-
-
-            //Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.SystemIdle, new Action(() =>
-            //          {
-            //              var dic = Application.Current.Resources.MergedDictionaries;
-            //              var temp = dic.ToList();
-            //              dic.Clear();
-            //              foreach (var item in temp)
-            //              {
-            //                  dic.Add(item);
-            //              }
-            //          }));
-
-
-            //{
-            //    var brushResource = GetResource("ConciseControls");
-            //    brushResource.ChangeResourceDictionary(x => x.Source.AbsoluteUri == brushResource.Source.AbsoluteUri, true);
-
-            //}
-
         }
 
-        public static void ChangeFontSizeThemeType(this ThemeType n)
+        public static void ChangeFontSizeThemeType(this FontSizeThemeType n)
         {
             var resource = n.GetFontSizeResource();
             ChangeResourceDictionary(resource, x => x.IsFontSizesResource());
         }
 
 
-        public static void ChangeLayoutThemeType(this ThemeType n)
+        public static void ChangeLayoutThemeType(this LayoutThemeType n)
         {
             var resource = n.GetLayoutResource();
             ChangeResourceDictionary(resource, x => x.IsLayoutsResource());
@@ -134,12 +106,12 @@ namespace H.Themes.Default
             dic.Add(n);
         }
 
-        public static ResourceDictionary GetLayoutResource(this ThemeType type)
+        public static ResourceDictionary GetLayoutResource(this LayoutThemeType type)
         {
             return GetResource("Layouts", type.ToString());
         }
 
-        public static ResourceDictionary GetFontSizeResource(this ThemeType type)
+        public static ResourceDictionary GetFontSizeResource(this FontSizeThemeType type)
         {
             return GetResource("FontSizes", type.ToString());
         }

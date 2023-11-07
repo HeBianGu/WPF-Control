@@ -23,23 +23,23 @@ namespace H.Modules.Theme
         [Displayer(Name = "颜色")]
         public ColorThemeType Color { get; set; }
 
-        [DefaultValue(ThemeType.Default)]
+        [DefaultValue(FontSizeThemeType.Default)]
         [Displayer(Name = "字体")]
-        public ThemeType FontSize { get; set; }
+        public FontSizeThemeType FontSize { get; set; }
 
-        [DefaultValue(ThemeType.Default)]
+        [DefaultValue(LayoutThemeType.Default)]
         [Displayer(Name = "布局")]
-        public ThemeType Layout { get; set; }
+        public LayoutThemeType Layout { get; set; }
 
         public void OnColorValueChanged(PropertyInfo property, ColorThemeType o, ColorThemeType n)
         {
             this.Color.ChangeThemeType();
         }
-        public void OnFontSizeValueChanged(PropertyInfo property, ThemeType o, ThemeType n)
+        public void OnFontSizeValueChanged(PropertyInfo property, FontSizeThemeType o, FontSizeThemeType n)
         {
             this.FontSize.ChangeFontSizeThemeType();
         }
-        public void OnLayoutValueChanged(PropertyInfo property, ThemeType o, ThemeType n)
+        public void OnLayoutValueChanged(PropertyInfo property, LayoutThemeType o, LayoutThemeType n)
         {
             this.Layout.ChangeLayoutThemeType();
         }

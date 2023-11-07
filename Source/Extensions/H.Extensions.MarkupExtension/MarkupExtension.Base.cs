@@ -3,7 +3,7 @@
 using System;
 using System.Windows.Markup;
 
-namespace H.Extensions.Common
+namespace H.Extensions.MarkupExtension
 {
     public abstract class GetValueToTypeExtensionBase : System.Windows.Markup.MarkupExtension
     {

@@ -18,7 +18,7 @@ using System.Windows.Media.Imaging;
 using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace H.Extensions.Common
+namespace H.Extensions.ValueConverter
 {
     public static class Converter
     {

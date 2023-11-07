@@ -2,7 +2,7 @@
 
 using System;
 
-namespace H.Extensions.Common
+namespace H.Extensions.MarkupExtension
 {
     public class GenericTypeExtension : System.Windows.Markup.MarkupExtension
     {

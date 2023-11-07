@@ -51,9 +51,9 @@ namespace H.Extensions.ValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value == null) return null;
-            double d = double.Parse(value.ToString());
-            TimeSpan sp = TimeSpan.FromTicks((long)d);
+            if (value == null) return null; 
+            double d = double.Parse(value.ToString()); 
+            TimeSpan sp = TimeSpan.FromTicks((long)d); 
             return sp.ToString().Split('.')[0];
         }
 

@@ -6,10 +6,9 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <!--<ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/ResourceKeys/Layouts/Default.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/ResourceKeys/Colors/Darks/Gray.xaml" />-->
-                <!--<ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/ConciseControls.xaml" />-->
-                <!--<ColorTheme Type="LightAccent" />-->
+                <FontSizeTheme Type="{x:Static h:FontSizeThemeType.Default}"/>
+                <LayoutTheme Type="{x:Static h:LayoutThemeType.Default}" />
+                <ColorTheme Type="{x:Static h:ColorThemeType.Dark}" />
                 <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/ConciseControls.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
