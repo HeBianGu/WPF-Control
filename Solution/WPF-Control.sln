@@ -125,6 +125,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Extensions.ValueConverter
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Extensions.MarkupExtension", "..\Source\Extensions\H.Extensions.MarkupExtension\H.Extensions.MarkupExtension.csproj", "{5D089BCB-131D-4B5C-842E-C60C3E403B70}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Extensions.ImageSource", "..\Source\Extensions\H.Extensions.ImageSource\H.Extensions.ImageSource.csproj", "{9D6A1940-27FD-4C2A-B092-A2A0DF694121}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -327,6 +329,10 @@ Global
 		{5D089BCB-131D-4B5C-842E-C60C3E403B70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D089BCB-131D-4B5C-842E-C60C3E403B70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D089BCB-131D-4B5C-842E-C60C3E403B70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D6A1940-27FD-4C2A-B092-A2A0DF694121}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D6A1940-27FD-4C2A-B092-A2A0DF694121}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D6A1940-27FD-4C2A-B092-A2A0DF694121}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D6A1940-27FD-4C2A-B092-A2A0DF694121}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -382,6 +388,7 @@ Global
 		{E6E7796A-122F-496F-AB69-4A95F1A30BF8} = {09F8FD00-E76A-4D72-AAB4-7FA06DBE12D4}
 		{9DAF1181-3E64-4B12-896D-B07209072EF2} = {09F8FD00-E76A-4D72-AAB4-7FA06DBE12D4}
 		{5D089BCB-131D-4B5C-842E-C60C3E403B70} = {09F8FD00-E76A-4D72-AAB4-7FA06DBE12D4}
+		{9D6A1940-27FD-4C2A-B092-A2A0DF694121} = {09F8FD00-E76A-4D72-AAB4-7FA06DBE12D4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF825C3D-F4F4-4E62-BBFF-B42A5E81112F}

@@ -4,7 +4,7 @@
                     xmlns:local="clr-namespace:H.Modules.About">
     <DataTemplate DataType="{x:Type local:AboutViewPresenter}">
         <Grid>
-            <h:Form SelectObject="{Binding}"
+            <h:StaticForm SelectObject="{Binding}"
                     UseBoolen="False"
                     UseEnum="False"
                     UseNull="False"

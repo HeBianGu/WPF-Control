@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Datas\H.Data.Test\H.Data.Test.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.ApplicationBase\H.Extensions.ApplicationBase.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.ImageSource\H.Extensions.ImageSource.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Message\H.Modules.Message.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Setting\H.Modules.Setting.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.SplashScreen\H.Modules.SplashScreen.csproj" />

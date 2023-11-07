@@ -54,6 +54,7 @@
     </Style>
 
     <Style TargetType="{x:Type Window}">
+        <Setter Property="Icon" Value="{local:Logo}" />
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="WindowChrome.WindowChrome" Value="{DynamicResource {x:Static local:WindowKeys.WindowChrome}}" />
@@ -137,9 +138,20 @@
                                 </StackPanel>
                             </Grid>
                         </Border>
+
                         <AdornerDecorator Grid.Row="1">
                             <ContentPresenter />
                         </AdornerDecorator>
+
+                        <Border Grid.RowSpan="3"
+                                IsHitTestVisible="False"
+                                Opacity="{Binding Source={x:Static local:WindowSetting.Instance}, Path=Opacity}">
+                            <Border.Background>
+                                <ImageBrush ImageSource="{Binding Source={x:Static local:WindowSetting.Instance}, Path=BackImagePath}"
+                                            Stretch="{Binding Source={x:Static local:WindowSetting.Instance}, Path=Stretch}" />
+                            </Border.Background>
+                        </Border>
+
                         <ResizeGrip x:Name="WindowResizeGrip"
                                     Grid.Row="1"
                                     HorizontalAlignment="Right"

@@ -1,6 +1,7 @@
 ﻿using H.Extensions.ApplicationBase;
 using H.Modules.Message;
 using H.Providers.Ioc;
+using H.Styles.Default;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;

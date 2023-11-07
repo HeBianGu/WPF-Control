@@ -19,9 +19,7 @@ namespace H.Modules.Theme
     {
         public ThemeViewPresenter(IOptions<ThemeOptions> options)
         {
-            this.MyName = options.Value.MyName;
+            
         }
-
-        public string MyName { get; set; }
     }
 }

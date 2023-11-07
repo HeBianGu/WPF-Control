@@ -1,4 +1,5 @@
 ﻿using H.Extensions.ApplicationBase;
+using H.Styles.Default;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -31,7 +32,14 @@ namespace H.Test.Theme
         protected override void Configure(IApplicationBuilder app)
         {
             base.Configure(app);
-            app.UseTheme();
+            app.UseTheme(x=>
+            {
+                x.Color = Themes.Default.ColorThemeType.DarkGray;
+            });
+            app.UseWindowSetting(x =>
+            {
+                x.BackImagePath = "pack://application:,,,/H.Extensions.ImageSource;component/b41.png";
+            });
         }
     }
 }

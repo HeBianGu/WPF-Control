@@ -19,7 +19,7 @@
     </h:MainWindow.CaptionTempate>
     <h:MainWindow.SideTemplate>
         <ControlTemplate>
-            <Grid Width="200"
+            <Grid Width="200" Visibility="Collapsed"
                   Background="Orange" />
         </ControlTemplate>
     </h:MainWindow.SideTemplate>

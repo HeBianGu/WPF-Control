@@ -1,5 +1,6 @@
 ﻿using H.Extensions.Setting;
 using H.Providers.Ioc;
+using H.Providers.Mvvm;
 using H.Themes.Default;
 using Microsoft.Extensions.Options;
 using System;
@@ -18,9 +19,16 @@ namespace H.Modules.Theme
     [Display(Name = "主题设置", GroupName = SystemSetting.GroupSystem, Description = "登录页面设置的信息")]
     public class ThemeOptions : IocOptionInstance<ThemeOptions>
     {
-        public string MyName { get; set; } = "我是名称";
+        [DefaultValue(ColorThemeType.DarkGray)]
+        [Displayer(Name = "颜色")]
         public ColorThemeType Color { get; set; }
+
+        [DefaultValue(ThemeType.Default)]
+        [Displayer(Name = "字体")]
         public ThemeType FontSize { get; set; }
+
+        [DefaultValue(ThemeType.Default)]
+        [Displayer(Name = "布局")]
         public ThemeType Layout { get; set; }
 
         public void OnColorValueChanged(PropertyInfo property, ColorThemeType o, ColorThemeType n)
@@ -34,11 +42,6 @@ namespace H.Modules.Theme
         public void OnLayoutValueChanged(PropertyInfo property, ThemeType o, ThemeType n)
         {
             this.Layout.ChangeLayoutThemeType();
-        }
-
-        public override void LoadDefault()
-        {
-            base.LoadDefault();
         }
 
         public override bool Save(out string message)
@@ -63,8 +66,6 @@ namespace H.Modules.Theme
             this.Color.ChangeThemeType();
             this.FontSize.ChangeFontSizeThemeType();
             this.Layout.ChangeLayoutThemeType();
-
-
         }
     }
 }

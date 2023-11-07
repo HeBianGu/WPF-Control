@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Resource Include="**\*.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="b39.png" />
+    <None Remove="b41.png" />
+    <None Remove="c13.png" />
+    <None Remove="c7.png" />
+    <None Remove="Cover.png" />
+    <None Remove="halo10.png" />
+    <None Remove="halo12.png" />
+    <None Remove="logo.png" />
+    <None Remove="sun.png" />
+  </ItemGroup>
+</Project>

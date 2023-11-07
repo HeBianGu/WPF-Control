@@ -15,6 +15,7 @@
         <!--<Setter Property="MinWidth" Value="400" />
         <Setter Property="MinHeight" Value="200" />-->
         <!--<Setter Property="SizeToContent" Value="WidthAndHeight"/>-->
+        <Setter Property="Icon" Value="{h:Logo}" />
         <Setter Property="ShowInTaskbar" Value="False" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
@@ -96,12 +97,21 @@
                                 </StackPanel>
                             </Grid>
                         </Border>
+
                         <AdornerDecorator Grid.Row="1"
                                           Grid.ColumnSpan="3">
                             <ContentPresenter Margin="{TemplateBinding Padding}"
                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                         </AdornerDecorator>
+
+                        <Border Grid.RowSpan="3"
+                                IsHitTestVisible="False"
+                                Opacity="{Binding Source={x:Static h:WindowSetting.Instance}, Path=Opacity}">
+                            <Border.Background>
+                                <ImageBrush Stretch="{Binding Source={x:Static h:WindowSetting.Instance}, Path=Stretch}" ImageSource="{Binding Source={x:Static h:WindowSetting.Instance}, Path=BackImagePath}" />
+                            </Border.Background>
+                        </Border>
                         <!--<Border Grid.Row="2" BorderThickness="0,1,0,0">
                             <Border.BorderBrush>
                                 <SolidColorBrush Color="{StaticResource {x:Static h:ColorKeys.BorderBrushAssist}}" />
