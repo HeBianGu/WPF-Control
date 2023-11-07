@@ -315,9 +315,12 @@
             <TabItem Header="Button">
                 <UniformGrid>
                     <Button Content="Button" />
-                    <Button Content="F1M12,12L4,12 4,4 12,4z M3,13L13,13 13,3 3,3z" Padding="10" Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}"/>
-                    <Button Padding="10" Style="{DynamicResource {x:Static h:ButtonKeys.Tool}}">
-                        <Border Background="Red"/>
+                    <Button Padding="10"
+                            Content="F1M12,12L4,12 4,4 12,4z M3,13L13,13 13,3 3,3z"
+                            Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
+                    <Button Padding="10"
+                            Style="{DynamicResource {x:Static h:ButtonKeys.Tool}}">
+                        <Border Background="Red" />
                     </Button>
 
                 </UniformGrid>
@@ -411,7 +414,8 @@
                 </ScrollViewer>
             </TabItem>
             <TabItem Header="Slider">
-                <Slider Value="50" Maximum="100" />
+                <Slider Maximum="100"
+                        Value="50" />
             </TabItem>
             <TabItem Header="ToolTip">
                 <TextBlock Text="ToolTip"

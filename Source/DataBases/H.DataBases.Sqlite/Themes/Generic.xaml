@@ -40,7 +40,9 @@
                                   Message="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Command.Message}"
                                   Style="{DynamicResource {x:Static h:ProgressButton.DefaultKey}}" />
             </DockPanel>
-            <h:StaticForm SelectObject="{Binding}" UseAsync="False" UseCommand="False" />
+            <h:StaticForm SelectObject="{Binding}"
+                          UseAsync="False"
+                          UseCommand="False" />
         </DockPanel>
     </DataTemplate>
 </ResourceDictionary>

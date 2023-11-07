@@ -48,7 +48,7 @@
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush.Title, TypeInTargetAssembly={x:Type local:ColorKeys}}">#DFDFDF</Color>
     <!--  使用0.4  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush.Assist, TypeInTargetAssembly={x:Type local:ColorKeys}}">#EAEAEA</Color>
-   
+
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush.Disabled, TypeInTargetAssembly={x:Type local:ColorKeys}}">##FFE0E0E0</Color>
 
     <!--  Accent  -->

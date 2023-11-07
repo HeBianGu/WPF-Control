@@ -1,6 +1,9 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:H.Styles.Default">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:H.Styles.Default">
     <Style x:Key="{ComponentResourceKey ResourceId=S.ResizeGrip.Default,
-                                     TypeInTargetAssembly={x:Type local:ResizeGripKeys}}" TargetType="{x:Type ResizeGrip}">
+                                        TypeInTargetAssembly={x:Type local:ResizeGripKeys}}"
+           TargetType="{x:Type ResizeGrip}">
         <!--<Setter Property="OverridesDefaultStyle" Value="true" />-->
         <Setter Property="Template">
             <Setter.Value>
@@ -35,6 +38,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style TargetType="ResizeGrip" BasedOn="{StaticResource {x:Static local:ResizeGripKeys.Default}}"/>
+    <Style BasedOn="{StaticResource {x:Static local:ResizeGripKeys.Default}}"
+           TargetType="ResizeGrip" />
 
 </ResourceDictionary>

@@ -31,7 +31,7 @@
                                               ContentSource="Header"
                                               RecognizesAccessKey="True">
                                 <TextElement.Foreground>
-                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionForeground}}"/>
+                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionForeground}}" />
                                 </TextElement.Foreground>
                             </ContentPresenter>
                         </Border>

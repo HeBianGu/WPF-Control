@@ -5,7 +5,7 @@
 
     <Style TargetType="{x:Type local:MainWindow}">
         <Setter Property="SnapsToDevicePixels" Value="true" />
-        <Setter Property="CaptionHeight" Value="{DynamicResource {x:Static h:LayoutKeys.WindowCaptionHeight}}"/>
+        <Setter Property="CaptionHeight" Value="{DynamicResource {x:Static h:LayoutKeys.WindowCaptionHeight}}" />
         <Setter Property="WindowChrome.WindowChrome">
             <Setter.Value>
                 <WindowChrome CaptionHeight="{Binding RelativeSource={RelativeSource AncestorType=local:MainWindow}, Path=CaptionHeight}"
@@ -42,7 +42,8 @@
                                  Grid.Column="0"
                                  Template="{TemplateBinding SideTemplate}" />
 
-                        <Border Grid.Row="0" Grid.Column="1">
+                        <Border Grid.Row="0"
+                                Grid.Column="1">
                             <Border.Background>
                                 <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.Background}}" />
                             </Border.Background>
@@ -52,7 +53,9 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <StackPanel Margin="5,0" VerticalAlignment="Center" Orientation="Horizontal">
+                                <StackPanel Margin="5,0"
+                                            VerticalAlignment="Center"
+                                            Orientation="Horizontal">
                                     <Button Width="{x:Static SystemParameters.SmallIconWidth}"
                                             Height="{x:Static SystemParameters.SmallIconHeight}"
                                             Margin="7,0,5,0"
@@ -68,12 +71,16 @@
                                             </ControlTemplate>
                                         </Button.Template>
                                     </Button>
-                                    <TextBlock Margin="5,0" Text="{TemplateBinding Title}" />
+                                    <TextBlock Margin="5,0"
+                                               Text="{TemplateBinding Title}" />
                                 </StackPanel>
 
-                                <Control Grid.Column="1" Template="{TemplateBinding CaptionTempate}" />
+                                <Control Grid.Column="1"
+                                         Template="{TemplateBinding CaptionTempate}" />
 
-                                <StackPanel Grid.Column="2" HorizontalAlignment="Right" Orientation="Horizontal">
+                                <StackPanel Grid.Column="2"
+                                            HorizontalAlignment="Right"
+                                            Orientation="Horizontal">
                                     <Button x:Name="Btn_Minimize"
                                             Command="{h:MinimizeWindowCommand}"
                                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
@@ -101,13 +108,18 @@
                             </Grid>
                         </Border>
 
-                        <AdornerDecorator Grid.Row="1" Grid.Column="1">
+                        <AdornerDecorator Grid.Row="1"
+                                          Grid.Column="1">
                             <ContentPresenter />
                         </AdornerDecorator>
 
-                        <Border x:Name="PART_Over" Grid.ColumnSpan="5" Grid.RowSpan="5" Visibility="Collapsed">
+                        <Border x:Name="PART_Over"
+                                Grid.RowSpan="5"
+                                Grid.ColumnSpan="5"
+                                Visibility="Collapsed">
                             <Border.Background>
-                                <SolidColorBrush Color="Black" Opacity="0.3"/>
+                                <SolidColorBrush Opacity="0.3"
+                                                 Color="Black" />
                             </Border.Background>
                         </Border>
                         <ResizeGrip x:Name="WindowResizeGrip"

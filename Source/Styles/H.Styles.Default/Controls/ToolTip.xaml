@@ -1,10 +1,14 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:local="clr-namespace:H.Styles.Default" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:H.Styles.Default">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
     <Style x:Key="{ComponentResourceKey ResourceId=S.ToolTip.Default,
-                                     TypeInTargetAssembly={x:Type local:ToolTipKeys}}" BasedOn="{StaticResource S.Control.Base}" TargetType="ToolTip">
+                                        TypeInTargetAssembly={x:Type local:ToolTipKeys}}"
+           BasedOn="{StaticResource S.Control.Base}"
+           TargetType="ToolTip">
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="HasDropShadow" Value="True" />
         <Setter Property="Template">
@@ -15,12 +19,14 @@
                             Height="{TemplateBinding Height}"
                             BorderThickness="1">
                         <Border.Background>
-                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}"/>
+                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
                         </Border.Background>
                         <Border.BorderBrush>
                             <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
                         </Border.BorderBrush>
-                        <ContentPresenter Margin="10 6" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                        <ContentPresenter Margin="10,6"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Center" />
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="HasDropShadow" Value="true">
@@ -32,6 +38,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style TargetType="ToolTip" BasedOn="{StaticResource {x:Static local:ToolTipKeys.Default}}"/>
+    <Style BasedOn="{StaticResource {x:Static local:ToolTipKeys.Default}}"
+           TargetType="ToolTip" />
 
 </ResourceDictionary>

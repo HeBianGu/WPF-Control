@@ -40,7 +40,7 @@
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.9.5, TypeInTargetAssembly={x:Type local:ColorKeys}}">#f9fafb</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.9, TypeInTargetAssembly={x:Type local:ColorKeys}}">#f2f4f7</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.8.5, TypeInTargetAssembly={x:Type local:ColorKeys}}">#eceff4</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.8, TypeInTargetAssembly={x:Type local:ColorKeys}}" >#e6eaf0</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.8, TypeInTargetAssembly={x:Type local:ColorKeys}}">#e6eaf0</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.7.5, TypeInTargetAssembly={x:Type local:ColorKeys}}">#dadfe8</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.7, TypeInTargetAssembly={x:Type local:ColorKeys}}">#ced5e1</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.6.5, TypeInTargetAssembly={x:Type local:ColorKeys}}">#c3cbd9</Color>

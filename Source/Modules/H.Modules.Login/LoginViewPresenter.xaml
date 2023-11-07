@@ -1,10 +1,11 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:local="clr-namespace:H.Modules.Login"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:H.Modules.Login">
     <DataTemplate DataType="{x:Type local:LoginViewPresenter}">
         <UniformGrid>
-            <TextBlock Text="{Binding MyName}" FontSize="20"/>
-            <TextBlock Text="{Binding Source={x:Static local:LoginOptions.Instance},Path=MyName}"/>
+            <TextBlock FontSize="20"
+                       Text="{Binding MyName}" />
+            <TextBlock Text="{Binding Source={x:Static local:LoginOptions.Instance}, Path=MyName}" />
         </UniformGrid>
     </DataTemplate>
 </ResourceDictionary>

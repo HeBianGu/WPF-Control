@@ -10,6 +10,6 @@
         Style="{StaticResource {x:Type Window}}"
         mc:Ignorable="d">
     <Grid>
-        <ContentPresenter Content="{Ioc Type={x:Type ISettingButtonPresenter}}"/>
+        <ContentPresenter Content="{Ioc Type={x:Type ISettingButtonPresenter}}" />
     </Grid>
 </Window>

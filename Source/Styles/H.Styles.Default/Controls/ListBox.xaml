@@ -85,14 +85,14 @@
                     <ControlTemplate.Triggers>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
-                                <Condition Property="IsMouseOver" Value="True"/>
+                                <Condition Property="IsMouseOver" Value="True" />
                             </MultiTrigger.Conditions>
-                            <Setter Property="Background" TargetName="Bd">
+                            <Setter TargetName="Bd" Property="Background">
                                 <Setter.Value>
                                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
                                 </Setter.Value>
                             </Setter>
-                            <Setter Property="BorderBrush" TargetName="Bd">
+                            <Setter TargetName="Bd" Property="BorderBrush">
                                 <Setter.Value>
                                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrushTitle}}" />
                                 </Setter.Value>
@@ -100,10 +100,10 @@
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
-                                <Condition Property="Selector.IsSelectionActive" Value="False"/>
-                                <Condition Property="IsSelected" Value="True"/>
+                                <Condition Property="Selector.IsSelectionActive" Value="False" />
+                                <Condition Property="IsSelected" Value="True" />
                             </MultiTrigger.Conditions>
-                            <Setter Property="Background" TargetName="Bd">
+                            <Setter TargetName="Bd" Property="Background">
                                 <Setter.Value>
                                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
                                 </Setter.Value>
@@ -111,10 +111,10 @@
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
-                                <Condition Property="Selector.IsSelectionActive" Value="True"/>
-                                <Condition Property="IsSelected" Value="True"/>
+                                <Condition Property="Selector.IsSelectionActive" Value="True" />
+                                <Condition Property="IsSelected" Value="True" />
                             </MultiTrigger.Conditions>
-                            <Setter Property="Background" TargetName="Bd">
+                            <Setter TargetName="Bd" Property="Background">
                                 <Setter.Value>
                                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
                                 </Setter.Value>
@@ -124,10 +124,10 @@
                                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundTitle}}" />
                                 </Setter.Value>
                             </Setter>
-                            
+
                         </MultiTrigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="TextElement.Foreground" TargetName="Bd">
+                            <Setter TargetName="Bd" Property="TextElement.Foreground">
                                 <Setter.Value>
                                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
                                 </Setter.Value>

@@ -159,7 +159,7 @@
                                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
                                 </Setter.Value>
                             </Setter>
-                            <Setter Property="TextElement.Foreground" TargetName="ContentSite">
+                            <Setter TargetName="ContentSite" Property="TextElement.Foreground">
                                 <Setter.Value>
                                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundTitle}}" />
                                 </Setter.Value>

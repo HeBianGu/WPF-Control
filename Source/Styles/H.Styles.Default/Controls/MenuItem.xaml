@@ -1,4 +1,6 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:H.Styles.Default">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:H.Styles.Default">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Share.xaml" />
@@ -11,7 +13,9 @@
     <Geometry x:Key="RightArrow">M 0,0 L 4,3.5 L 0,7 Z</Geometry>
     <Geometry x:Key="Checkmark">F1 M 10.0,1.2 L 4.7,9.1 L 4.5,9.1 L 0,5.2 L 1.3,3.5 L 4.3,6.1L 8.3,0 L 10.0,1.2 Z</Geometry>
 
-    <Style x:Key="MenuScrollButton" BasedOn="{x:Null}" TargetType="{x:Type RepeatButton}">
+    <Style x:Key="MenuScrollButton"
+           BasedOn="{x:Null}"
+           TargetType="{x:Type RepeatButton}">
         <Setter Property="ClickMode" Value="Hover" />
         <Setter Property="Template">
             <Setter.Value>
@@ -21,14 +25,18 @@
                             BorderBrush="Transparent"
                             BorderThickness="1"
                             SnapsToDevicePixels="true">
-                        <ContentPresenter Margin="6" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        <ContentPresenter Margin="6"
+                                          HorizontalAlignment="Center"
+                                          VerticalAlignment="Center" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
 
-    <Style x:Key="MenuScrollViewer" BasedOn="{x:Null}" TargetType="{x:Type ScrollViewer}">
+    <Style x:Key="MenuScrollViewer"
+           BasedOn="{x:Null}"
+           TargetType="{x:Type ScrollViewer}">
         <Setter Property="HorizontalScrollBarVisibility" Value="Hidden" />
         <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
         <Setter Property="Template">
@@ -43,7 +51,8 @@
                             <RowDefinition Height="*" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <Border Grid.Row="1" Grid.Column="0">
+                        <Border Grid.Row="1"
+                                Grid.Column="0">
                             <ScrollContentPresenter Margin="{TemplateBinding Padding}" />
                         </Border>
                         <RepeatButton Grid.Row="0"
@@ -53,14 +62,21 @@
                                       Focusable="False"
                                       Style="{StaticResource MenuScrollButton}">
                             <RepeatButton.Visibility>
-                                <MultiBinding Converter="{StaticResource MenuScrollingVisibilityConverter}" ConverterParameter="0" FallbackValue="Visibility.Collapsed">
-                                    <Binding Path="ComputedVerticalScrollBarVisibility" RelativeSource="{RelativeSource TemplatedParent}" />
-                                    <Binding Path="VerticalOffset" RelativeSource="{RelativeSource TemplatedParent}" />
-                                    <Binding Path="ExtentHeight" RelativeSource="{RelativeSource TemplatedParent}" />
-                                    <Binding Path="ViewportHeight" RelativeSource="{RelativeSource TemplatedParent}" />
+                                <MultiBinding Converter="{StaticResource MenuScrollingVisibilityConverter}"
+                                              ConverterParameter="0"
+                                              FallbackValue="Visibility.Collapsed">
+                                    <Binding Path="ComputedVerticalScrollBarVisibility"
+                                             RelativeSource="{RelativeSource TemplatedParent}" />
+                                    <Binding Path="VerticalOffset"
+                                             RelativeSource="{RelativeSource TemplatedParent}" />
+                                    <Binding Path="ExtentHeight"
+                                             RelativeSource="{RelativeSource TemplatedParent}" />
+                                    <Binding Path="ViewportHeight"
+                                             RelativeSource="{RelativeSource TemplatedParent}" />
                                 </MultiBinding>
                             </RepeatButton.Visibility>
-                            <Path Data="{StaticResource UpArrow}" Fill="{DynamicResource {x:Static SystemColors.MenuTextBrushKey}}" />
+                            <Path Data="{StaticResource UpArrow}"
+                                  Fill="{DynamicResource {x:Static SystemColors.MenuTextBrushKey}}" />
                         </RepeatButton>
                         <RepeatButton Grid.Row="2"
                                       Grid.Column="0"
@@ -69,14 +85,21 @@
                                       Focusable="False"
                                       Style="{StaticResource MenuScrollButton}">
                             <RepeatButton.Visibility>
-                                <MultiBinding Converter="{StaticResource MenuScrollingVisibilityConverter}" ConverterParameter="100" FallbackValue="Visibility.Collapsed">
-                                    <Binding Path="ComputedVerticalScrollBarVisibility" RelativeSource="{RelativeSource TemplatedParent}" />
-                                    <Binding Path="VerticalOffset" RelativeSource="{RelativeSource TemplatedParent}" />
-                                    <Binding Path="ExtentHeight" RelativeSource="{RelativeSource TemplatedParent}" />
-                                    <Binding Path="ViewportHeight" RelativeSource="{RelativeSource TemplatedParent}" />
+                                <MultiBinding Converter="{StaticResource MenuScrollingVisibilityConverter}"
+                                              ConverterParameter="100"
+                                              FallbackValue="Visibility.Collapsed">
+                                    <Binding Path="ComputedVerticalScrollBarVisibility"
+                                             RelativeSource="{RelativeSource TemplatedParent}" />
+                                    <Binding Path="VerticalOffset"
+                                             RelativeSource="{RelativeSource TemplatedParent}" />
+                                    <Binding Path="ExtentHeight"
+                                             RelativeSource="{RelativeSource TemplatedParent}" />
+                                    <Binding Path="ViewportHeight"
+                                             RelativeSource="{RelativeSource TemplatedParent}" />
                                 </MultiBinding>
                             </RepeatButton.Visibility>
-                            <Path Data="{StaticResource DownArrow}" Fill="{DynamicResource {x:Static SystemColors.MenuTextBrushKey}}" />
+                            <Path Data="{StaticResource DownArrow}"
+                                  Fill="{DynamicResource {x:Static SystemColors.MenuTextBrushKey}}" />
                         </RepeatButton>
                     </Grid>
                 </ControlTemplate>
@@ -84,7 +107,8 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{x:Static MenuItem.SeparatorStyleKey}" TargetType="{x:Type Separator}">
+    <Style x:Key="{x:Static MenuItem.SeparatorStyleKey}"
+           TargetType="{x:Type Separator}">
         <Setter Property="Height" Value="1" />
         <Setter Property="Margin" Value="0,4,0,4" />
         <Setter Property="Template">
@@ -101,7 +125,8 @@
     </Style>
 
     <!--  TopLevelHeader  -->
-    <ControlTemplate x:Key="{x:Static MenuItem.TopLevelHeaderTemplateKey}" TargetType="{x:Type MenuItem}">
+    <ControlTemplate x:Key="{x:Static MenuItem.TopLevelHeaderTemplateKey}"
+                     TargetType="{x:Type MenuItem}">
         <Border x:Name="Border">
             <Grid>
                 <ContentPresenter Margin="6,3,6,3"
@@ -114,15 +139,19 @@
                        IsOpen="{TemplateBinding IsSubmenuOpen}"
                        Placement="Bottom"
                        PopupAnimation="Fade">
-                    <Border x:Name="SubmenuBorder" BorderThickness="1" SnapsToDevicePixels="True">
+                    <Border x:Name="SubmenuBorder"
+                            BorderThickness="1"
+                            SnapsToDevicePixels="True">
                         <Border.Background>
                             <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
                         </Border.Background>
                         <Border.BorderBrush>
                             <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
                         </Border.BorderBrush>
-                        <ScrollViewer CanContentScroll="True" Style="{StaticResource MenuScrollViewer}">
-                            <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
+                        <ScrollViewer CanContentScroll="True"
+                                      Style="{StaticResource MenuScrollViewer}">
+                            <StackPanel IsItemsHost="True"
+                                        KeyboardNavigation.DirectionalNavigation="Cycle" />
                         </ScrollViewer>
                     </Border>
                 </Popup>
@@ -155,7 +184,8 @@
     </ControlTemplate>
 
     <!--  TopLevelItem  -->
-    <ControlTemplate x:Key="{x:Static MenuItem.TopLevelItemTemplateKey}" TargetType="{x:Type MenuItem}">
+    <ControlTemplate x:Key="{x:Static MenuItem.TopLevelItemTemplateKey}"
+                     TargetType="{x:Type MenuItem}">
         <Border x:Name="Border">
             <Grid>
                 <ContentPresenter Margin="6,3,6,3"
@@ -183,13 +213,17 @@
     </ControlTemplate>
 
     <!--  SubmenuItem  -->
-    <ControlTemplate x:Key="{x:Static MenuItem.SubmenuItemTemplateKey}" TargetType="{x:Type MenuItem}">
-        <Border x:Name="Border" BorderThickness="1">
+    <ControlTemplate x:Key="{x:Static MenuItem.SubmenuItemTemplateKey}"
+                     TargetType="{x:Type MenuItem}">
+        <Border x:Name="Border"
+                BorderThickness="1">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" SharedSizeGroup="Icon" />
+                    <ColumnDefinition Width="Auto"
+                                      SharedSizeGroup="Icon" />
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" SharedSizeGroup="Shortcut" />
+                    <ColumnDefinition Width="Auto"
+                                      SharedSizeGroup="Shortcut" />
                     <ColumnDefinition Width="13" />
                 </Grid.ColumnDefinitions>
                 <ContentPresenter x:Name="Icon"
@@ -209,7 +243,8 @@
                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
                     </Border.Background>
                     <Path x:Name="CheckMark"
-                          Width="7" Height="7"
+                          Width="7"
+                          Height="7"
                           Data="M 0 0 L 7 7 M 0 7 L 7 0"
                           SnapsToDevicePixels="False"
                           StrokeThickness="2"
@@ -265,13 +300,17 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <ControlTemplate x:Key="{x:Static MenuItem.SubmenuHeaderTemplateKey}" TargetType="{x:Type MenuItem}">
-        <Border x:Name="Border" BorderThickness="1">
+    <ControlTemplate x:Key="{x:Static MenuItem.SubmenuHeaderTemplateKey}"
+                     TargetType="{x:Type MenuItem}">
+        <Border x:Name="Border"
+                BorderThickness="1">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" SharedSizeGroup="Icon" />
+                    <ColumnDefinition Width="Auto"
+                                      SharedSizeGroup="Icon" />
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" SharedSizeGroup="Shortcut" />
+                    <ColumnDefinition Width="Auto"
+                                      SharedSizeGroup="Shortcut" />
                     <ColumnDefinition Width="13" />
                 </Grid.ColumnDefinitions>
                 <ContentPresenter x:Name="Icon"
@@ -306,15 +345,19 @@
                        IsOpen="{TemplateBinding IsSubmenuOpen}"
                        Placement="Right"
                        PopupAnimation="Fade">
-                    <Border x:Name="SubmenuBorder" BorderThickness="1" SnapsToDevicePixels="True">
+                    <Border x:Name="SubmenuBorder"
+                            BorderThickness="1"
+                            SnapsToDevicePixels="True">
                         <Border.Background>
                             <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
                         </Border.Background>
                         <Border.BorderBrush>
                             <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
                         </Border.BorderBrush>
-                        <ScrollViewer CanContentScroll="True" Style="{StaticResource MenuScrollViewer}">
-                            <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
+                        <ScrollViewer CanContentScroll="True"
+                                      Style="{StaticResource MenuScrollViewer}">
+                            <StackPanel IsItemsHost="True"
+                                        KeyboardNavigation.DirectionalNavigation="Cycle" />
                         </ScrollViewer>
                     </Border>
                 </Popup>
@@ -352,7 +395,9 @@
 
     <!--  MenuItem Style  -->
     <Style x:Key="{ComponentResourceKey ResourceId=S.MenuItem.Default,
-                                     TypeInTargetAssembly={x:Type local:MenuItemKeys}}" BasedOn="{StaticResource S.Control.Base}" TargetType="{x:Type MenuItem}">
+                                        TypeInTargetAssembly={x:Type local:MenuItemKeys}}"
+           BasedOn="{StaticResource S.Control.Base}"
+           TargetType="{x:Type MenuItem}">
         <!--<Setter Property="OverridesDefaultStyle" Value="True" />-->
         <Style.Triggers>
             <Trigger Property="Role" Value="TopLevelHeader">
@@ -370,6 +415,7 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    <Style TargetType="MenuItem" BasedOn="{StaticResource {x:Static local:MenuItemKeys.Default}}"/>
+    <Style BasedOn="{StaticResource {x:Static local:MenuItemKeys.Default}}"
+           TargetType="MenuItem" />
 
 </ResourceDictionary>

@@ -1,8 +1,8 @@
 ﻿<h:ApplicationBase x:Class="H.Test.Form.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:H.Test.Form"
-                   xmlns:h="https://github.com/HeBianGu">
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:h="https://github.com/HeBianGu"
+                   xmlns:local="clr-namespace:H.Test.Form">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

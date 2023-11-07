@@ -20,8 +20,11 @@
                 Content="Yellow"
                 d:LayoutOverrides="Width, Height">
             <Behaviors:Interaction.Triggers>
-                <Behaviors:EventTrigger EventName="Click" SourceObject="{Binding ElementName=YellowButton}">
-                    <Behaviors:ChangePropertyAction PropertyName="Background" TargetObject="{Binding ElementName=YellowButton}" Value="LightYellow" />
+                <Behaviors:EventTrigger EventName="Click"
+                                        SourceObject="{Binding ElementName=YellowButton}">
+                    <Behaviors:ChangePropertyAction PropertyName="Background"
+                                                    TargetObject="{Binding ElementName=YellowButton}"
+                                                    Value="LightYellow" />
                 </Behaviors:EventTrigger>
             </Behaviors:Interaction.Triggers>
         </Button>

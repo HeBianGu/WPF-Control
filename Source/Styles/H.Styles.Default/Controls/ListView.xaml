@@ -185,7 +185,7 @@
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
         <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="AlternationCount" Value="2"/>
+        <Setter Property="AlternationCount" Value="2" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListView">
@@ -230,8 +230,8 @@
                 <ControlTemplate TargetType="ListBoxItem">
                     <Border x:Name="Bd"
                             Padding="2"
-                            BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                             Background="Transparent"
+                            BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                             BorderThickness="0,0,0,1"
                             SnapsToDevicePixels="true">
                         <GridViewRowPresenter Margin="{TemplateBinding Padding}"
@@ -269,7 +269,7 @@
                                 <Condition Property="Selector.IsSelectionActive" Value="False" />
                                 <Condition Property="IsSelected" Value="True" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="Bd" Property="Background" >
+                            <Setter TargetName="Bd" Property="Background">
                                 <Setter.Value>
                                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
                                 </Setter.Value>
