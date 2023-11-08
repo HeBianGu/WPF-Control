@@ -6,11 +6,8 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:shell="clr-namespace:Microsoft.Windows.Shell"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/HeBianGu.General.WpfControlLib;component/Themes/Share.xaml" />
-    </ResourceDictionary.MergedDictionaries>
     <Style x:Key="{x:Type lc:NavigatorWindow}" TargetType="{x:Type lc:NavigatorWindow}">
-        <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.BackgroundDefault}}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Background}}" />
         <Setter Property="SizeToContent" Value="WidthAndHeight" />
         <Setter Property="ResizeMode" Value="NoResize" />
         <Setter Property="shell:WindowChrome.WindowChrome">
@@ -26,8 +23,8 @@
                 <ControlTemplate TargetType="{x:Type lc:NavigatorWindow}">
                     <Grid>
                         <Border x:Name="WindowBorder"
-                                Background="{DynamicResource {x:Static h:BrushKeys.BackgroundDefault}}"
-                                BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrushDefault}}"
+                                Background="{DynamicResource {x:Static h:BrushKeys.Background}}"
+                                BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
                                 BorderThickness="3">
                             <Grid Margin="5">
                                 <Grid.RowDefinitions>

@@ -7,12 +7,11 @@
                     xmlns:local="clr-namespace:H.Controls.Dock"
                     xmlns:lp="clr-namespace:H.Controls.Dock.Properties"
                     xmlns:shell="clr-namespace:Microsoft.Windows.Shell">
-    <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/HeBianGu.General.WpfControlLib;component/Themes/Share.xaml" />
-    </ResourceDictionary.MergedDictionaries>
+
     <Style x:Key="AnchorablePaneTitleStyle"
-           BasedOn="{StaticResource {x:Static h:ControlKeys.ForegroundDynamic}}"
            TargetType="{x:Type lc:AnchorablePaneTitle}">
+        <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.CaptionBackground}}"/>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.CaptionForeground}}"/>
         <Setter Property="Height" Value="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Template">

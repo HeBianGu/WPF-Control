@@ -4,12 +4,8 @@
                     xmlns:lc="clr-namespace:H.Controls.Dock.Controls"
                     xmlns:lcv="clr-namespace:H.Controls.Dock.Converters"
                     xmlns:local="clr-namespace:H.Controls.Dock">
-    <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/HeBianGu.General.WpfControlLib;component/Themes/Share.xaml" />
-    </ResourceDictionary.MergedDictionaries>
-
     <!--  DocumentPaneControlStyle  -->
-    <Style x:Key="DocumentPaneControlStyle" TargetType="{x:Type lc:LayoutDocumentPaneControl}" BasedOn="{StaticResource {x:Static h:TabControlKeys.Dynamic}}">
+    <Style x:Key="DocumentPaneControlStyle" TargetType="{x:Type lc:LayoutDocumentPaneControl}" BasedOn="{StaticResource {x:Static h:TabControlKeys.Default}}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type lc:LayoutDocumentPaneControl}">
@@ -33,11 +29,11 @@
                             <lc:DropDownButton x:Name="MenuDropDownButton"
                                                Grid.Column="1"
                                                Focusable="False"
-                                               Style="{DynamicResource {x:Static h:ToggleButtonKeys.Rotate90}}">
+                                               Style="{DynamicResource {x:Static h:ToggleButtonKeys.Default}}">
                                 <lc:DropDownButton.DropDownContextMenu>
-                                    <lc:ContextMenuEx Style="{DynamicResource {x:Static h:ContextMenuKeys.Dynamic}}" ItemsSource="{Binding Model.ChildrenSorted, RelativeSource={RelativeSource TemplatedParent}}">
+                                    <lc:ContextMenuEx Style="{DynamicResource {x:Static h:ContextMenuKeys.Default}}" ItemsSource="{Binding Model.ChildrenSorted, RelativeSource={RelativeSource TemplatedParent}}">
                                         <lc:ContextMenuEx.ItemContainerStyle>
-                                            <Style BasedOn="{StaticResource {x:Static h:MenuItemKeys.Icon}}" TargetType="{x:Type lc:MenuItemEx}">
+                                            <Style BasedOn="{StaticResource {x:Static h:MenuItemKeys.Default}}" TargetType="{x:Type lc:MenuItemEx}">
                                                 <Setter Property="HeaderTemplate" Value="{Binding Path=Root.Manager.DocumentPaneMenuItemHeaderTemplate}" />
                                                 <Setter Property="HeaderTemplateSelector" Value="{Binding Path=Root.Manager.DocumentPaneMenuItemHeaderTemplateSelector}" />
                                                 <Setter Property="IconTemplate" Value="{Binding Path=Root.Manager.IconContentTemplate}" />

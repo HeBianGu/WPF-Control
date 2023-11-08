@@ -24,7 +24,7 @@ using System.Windows.Threading;
 namespace H.Test.Dock
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MainWindow.xamlDockingManager
     /// </summary>
 	public partial class MainWindow : Window
     {

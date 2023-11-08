@@ -20,7 +20,6 @@
                     xmlns:shell="clr-namespace:Microsoft.Windows.Shell">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/HeBianGu.General.WpfControlLib;component/Themes/Share.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Dock;component/DockingManager.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Dock;component/Controls/AnchorablePaneTitle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Dock;component/Controls/LayoutAnchorableControl.xaml" />

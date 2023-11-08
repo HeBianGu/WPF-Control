@@ -7,16 +7,16 @@
                     xmlns:local="clr-namespace:H.Controls.Dock"
                     xmlns:lp="clr-namespace:H.Controls.Dock.Properties"
                     xmlns:shell="clr-namespace:Microsoft.Windows.Shell">
-    <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/HeBianGu.General.WpfControlLib;component/Themes/Share.xaml" />
-    </ResourceDictionary.MergedDictionaries>
-    <Style x:Key="{x:Type lc:LayoutAnchorableFloatingWindowControl}" TargetType="{x:Type lc:LayoutAnchorableFloatingWindowControl}">
-        <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.BackgroundDefault}}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrushDefault}}" />
-        <Setter Property="BorderThickness" Value="3" />
+
+    <Style x:Key="{x:Type lc:LayoutAnchorableFloatingWindowControl}"
+           TargetType="{x:Type lc:LayoutAnchorableFloatingWindowControl}">
+        <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Background}}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
+        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="shell:WindowChrome.WindowChrome">
             <Setter.Value>
-                <shell:WindowChrome CaptionHeight="16"
+                <shell:WindowChrome CaptionHeight="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}"
                                     CornerRadius="3,3,3,3"
                                     GlassFrameThickness="0"
                                     ResizeBorderThickness="10"
@@ -33,11 +33,16 @@
                                 BorderThickness="{TemplateBinding BorderThickness}">
                             <Grid Margin="3">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" MinHeight="16" />
+                                    <RowDefinition Height="Auto"
+                                                   MinHeight="16" />
                                     <!--  https://github.com/xceedsoftware/wpftoolkit/issues/1203  -->
                                     <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
-                                <Grid UseLayoutRounding="True">
+                                <Grid Height="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}"
+                                      UseLayoutRounding="True">
+                                    <Grid.Background>
+                                        <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.CaptionBackground}}" />
+                                    </Grid.Background>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="Auto" />
@@ -46,8 +51,13 @@
                                     </Grid.ColumnDefinitions>
 
                                     <Border Visibility="{Binding Path=Model.IsSinglePane, RelativeSource={RelativeSource TemplatedParent}, Converter={lcv:BoolToVisibilityConverter}}">
-                                        <lc:DropDownControlArea DropDownContextMenu="{Binding Model.Root.Manager.AnchorableContextMenu, RelativeSource={RelativeSource TemplatedParent}}" DropDownContextMenuDataContext="{Binding Path=SingleContentLayoutItem, RelativeSource={RelativeSource TemplatedParent}}">
-                                            <ContentPresenter Content="{Binding Model.SinglePane.SelectedContent, RelativeSource={RelativeSource TemplatedParent}}" ContentTemplate="{Binding Model.Root.Manager.AnchorableTitleTemplate, RelativeSource={RelativeSource TemplatedParent}}" ContentTemplateSelector="{Binding Model.Root.Manager.AnchorableTitleTemplateSelector, RelativeSource={RelativeSource TemplatedParent}}" />
+                                        <lc:DropDownControlArea DropDownContextMenu="{Binding Model.Root.Manager.AnchorableContextMenu, RelativeSource={RelativeSource TemplatedParent}}"
+                                                                DropDownContextMenuDataContext="{Binding Path=SingleContentLayoutItem, RelativeSource={RelativeSource TemplatedParent}}">
+                                            <ContentPresenter VerticalAlignment="Center"
+                                                              Content="{Binding Model.SinglePane.SelectedContent, RelativeSource={RelativeSource TemplatedParent}}"
+                                                              ContentTemplate="{Binding Model.Root.Manager.AnchorableTitleTemplate, RelativeSource={RelativeSource TemplatedParent}}"
+                                                              ContentTemplateSelector="{Binding Model.Root.Manager.AnchorableTitleTemplateSelector, RelativeSource={RelativeSource TemplatedParent}}"
+                                                              TextElement.Foreground="{DynamicResource {x:Static h:BrushKeys.CaptionForeground}}" />
                                         </lc:DropDownControlArea>
                                     </Border>
 
@@ -68,7 +78,8 @@
                                             shell:WindowChrome.IsHitTestVisibleInChrome="True"
                                             Command="{x:Static shell:SystemCommands.MaximizeWindowCommand}"
                                             CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                                            Focusable="False" Content="F1M12,12L4,12 4,4 12,4z M3,13L13,13 13,3 3,3z"
+                                            Content="F1M12,12L4,12 4,4 12,4z M3,13L13,13 13,3 3,3z"
+                                            Focusable="False"
                                             Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}"
                                             ToolTip="{x:Static lp:Resources.Window_Maximize}"
                                             Visibility="{Binding IsMaximized, RelativeSource={RelativeSource TemplatedParent}, Converter={lcv:InverseBoolToVisibilityConverter}}" />
@@ -77,8 +88,8 @@
                                             shell:WindowChrome.IsHitTestVisibleInChrome="True"
                                             Command="{x:Static shell:SystemCommands.RestoreWindowCommand}"
                                             CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                            Content="F1M11.999,10.002L10.998,10.002 10.998,5.002 5.998,5.002 5.998,4.001 11.999,4.001z M10.002,11.999L4.001,11.999 4.001,5.998 10.002,5.998z M5.002,3L5.002,5.002 3,5.002 3,13 10.998,13 10.998,10.998 13,10.998 13,3z"
                                             Focusable="False"
-                                            Content="F1M12,12L4,12 4,4 12,4z M3,13L13,13 13,3 3,3z"
                                             Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}"
                                             ToolTip="{x:Static lp:Resources.Window_Restore}"
                                             Visibility="{Binding IsMaximized, RelativeSource={RelativeSource TemplatedParent}, Converter={lcv:BoolToVisibilityConverter}}" />
@@ -87,14 +98,14 @@
                                             Grid.Column="3"
                                             shell:WindowChrome.IsHitTestVisibleInChrome="True"
                                             Command="{Binding HideWindowCommand, RelativeSource={RelativeSource TemplatedParent}}"
+                                            Content="F1M8.583,8L13,12.424 12.424,13 8,8.583 3.576,13 3,12.424 7.417,8 3,3.576 3.576,3 8,7.417 12.424,3 13,3.576z"
                                             Focusable="False"
                                             Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}"
                                             ToolTip="{x:Static lp:Resources.Anchorable_BtnClose_Hint}"
-                                            Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={lcv:BoolToVisibilityConverter}}">
-                                        <Image Source="/H.Controls.Dock;component/Themes/Generic/Images/PinClose.png" />
-                                    </Button>
+                                            Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={lcv:BoolToVisibilityConverter}}" />
                                 </Grid>
-                                <ContentPresenter Grid.Row="1" Content="{TemplateBinding Content}" />
+                                <ContentPresenter Grid.Row="1"
+                                                  Content="{TemplateBinding Content}" />
                             </Grid>
                         </Border>
                     </Grid>
@@ -102,10 +113,12 @@
                         <Trigger Property="WindowState" Value="Maximized">
                             <Setter TargetName="WindowBorder" Property="Padding" Value="3" />
                         </Trigger>
-                        <DataTrigger Binding="{Binding Model.SinglePane.SelectedContent.IsActive, RelativeSource={RelativeSource Self}}" Value="True">
-                            <Setter TargetName="WindowBorder" Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
+                        <DataTrigger Binding="{Binding Model.SinglePane.SelectedContent.IsActive, RelativeSource={RelativeSource Self}}"
+                                     Value="True">
+                            <Setter TargetName="WindowBorder" Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Model.SinglePane.SelectedContent.CanClose, RelativeSource={RelativeSource Mode=Self}}" Value="True">
+                        <DataTrigger Binding="{Binding Model.SinglePane.SelectedContent.CanClose, RelativeSource={RelativeSource Mode=Self}}"
+                                     Value="True">
                             <Setter TargetName="CloseButton" Property="Command" Value="{Binding CloseWindowCommand, RelativeSource={RelativeSource TemplatedParent}}" />
                             <Setter TargetName="CloseButton" Property="ToolTip" Value="{x:Static lp:Resources.Document_Close}" />
 

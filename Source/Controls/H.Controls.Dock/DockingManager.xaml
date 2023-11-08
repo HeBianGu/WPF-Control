@@ -9,7 +9,6 @@
                     xmlns:shell="clr-namespace:Microsoft.Windows.Shell">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/HeBianGu.General.WpfControlLib;component/Themes/Share.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Dock;component/Controls/AnchorablePaneTitle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Dock;component/Controls/LayoutAnchorableControl.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Dock;component/Controls/LayoutAnchorableFloatingWindowControl.xaml" />
@@ -62,7 +61,7 @@
     </DataTemplate>
 
 
-    <ContextMenu x:Key="AnchorableContextMenu" Style="{DynamicResource {x:Static h:ContextMenuKeys.Dynamic}}">
+    <ContextMenu x:Key="AnchorableContextMenu" Style="{DynamicResource {x:Static h:ContextMenuKeys.Default}}">
         <MenuItem Command="{Binding Path=FloatCommand}" Header="{x:Static lp:Resources.Anchorable_Float}" />
         <MenuItem Command="{Binding Path=DockCommand}" Header="{x:Static lp:Resources.Anchorable_Dock}" />
         <MenuItem Command="{Binding Path=DockAsDocumentCommand}" Header="{x:Static lp:Resources.Anchorable_DockAsDocument}" />
@@ -81,7 +80,7 @@
         </MenuItem>
     </ContextMenu>
 
-    <ContextMenu x:Key="DocumentContextMenu" Style="{DynamicResource {x:Static h:ContextMenuKeys.Dynamic}}">
+    <ContextMenu x:Key="DocumentContextMenu" Style="{DynamicResource {x:Static h:ContextMenuKeys.Default}}">
         <MenuItem Command="{Binding Path=CloseCommand}" Header="{x:Static lp:Resources.Document_Close}" Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={lcv:BoolToVisibilityConverter}}" />
         <MenuItem Command="{Binding Path=CloseAllButThisCommand}" Header="{x:Static lp:Resources.Document_CloseAllButThis}" />
         <MenuItem Command="{Binding Path=CloseAllCommand}" Header="{x:Static lp:Resources.Document_CloseAll}" />
