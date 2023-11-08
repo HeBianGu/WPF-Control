@@ -64,6 +64,15 @@ namespace H.Windows.Dialog
                 }
 
             }));
+
+        protected override void OnSourceInitialized(EventArgs e)
+        {
+            base.OnSourceInitialized(e);
+            if (SizeToContent == SizeToContent.WidthAndHeight && System.Windows.Shell.WindowChrome.GetWindowChrome(this) != null)
+            {
+                InvalidateMeasure();
+            }
+        }
     }
 
     partial class DialogWindow : Window

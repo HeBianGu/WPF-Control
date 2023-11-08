@@ -165,6 +165,7 @@
                         <Trigger Property="WindowState" Value="Maximized">
                             <Setter TargetName="Btn_Maximize" Property="Visibility" Value="Collapsed" />
                             <Setter TargetName="Btn_Restore" Property="Visibility" Value="Visible" />
+                            <Setter  Property="Margin" Value="17" />
                         </Trigger>
                         <Trigger Property="WindowState" Value="Normal">
                             <Setter TargetName="Btn_Maximize" Property="Visibility" Value="Visible" />

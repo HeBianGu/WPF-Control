@@ -10,6 +10,7 @@
             <Setter.Value>
                 <WindowChrome CaptionHeight="{Binding RelativeSource={RelativeSource AncestorType=local:MainWindow}, Path=CaptionHeight}"
                               GlassFrameThickness="-1"
+                              NonClientFrameEdges="None"
                               ResizeBorderThickness="8"
                               UseAeroCaptionButtons="False" />
             </Setter.Value>
@@ -43,8 +44,7 @@
                                  Grid.Column="0"
                                  Template="{TemplateBinding SideTemplate}" />
 
-                        <Border Grid.Row="0"
-                                Grid.Column="1">
+                        <Border Grid.Row="0" Grid.Column="1">
                             <Border.Background>
                                 <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.Background}}" />
                             </Border.Background>
@@ -72,12 +72,10 @@
                                             </ControlTemplate>
                                         </Button.Template>
                                     </Button>
-                                    <TextBlock Margin="5,0"
-                                               Text="{TemplateBinding Title}" />
+                                    <TextBlock Margin="5,0" Text="{TemplateBinding Title}" />
                                 </StackPanel>
 
-                                <Control Grid.Column="1"
-                                         Template="{TemplateBinding CaptionTempate}" />
+                                <Control Grid.Column="1" Template="{TemplateBinding CaptionTempate}" />
 
                                 <StackPanel Grid.Column="2"
                                             HorizontalAlignment="Right"
@@ -109,16 +107,16 @@
                             </Grid>
                         </Border>
 
-                        <AdornerDecorator Grid.Row="1"
-                                          Grid.Column="1">
+                        <AdornerDecorator Grid.Row="1" Grid.Column="1">
                             <ContentPresenter />
                         </AdornerDecorator>
 
-                        <Border Grid.RowSpan="3" Grid.ColumnSpan="3"
+                        <Border Grid.RowSpan="3"
+                                Grid.ColumnSpan="3"
                                 IsHitTestVisible="False"
                                 Opacity="{Binding Source={x:Static h:WindowSetting.Instance}, Path=Opacity}">
                             <Border.Background>
-                                <ImageBrush Stretch="{Binding Source={x:Static h:WindowSetting.Instance}, Path=Stretch}"  ImageSource="{Binding Source={x:Static h:WindowSetting.Instance}, Path=BackImagePath}" />
+                                <ImageBrush ImageSource="{Binding Source={x:Static h:WindowSetting.Instance}, Path=BackImagePath}" Stretch="{Binding Source={x:Static h:WindowSetting.Instance}, Path=Stretch}" />
                             </Border.Background>
                         </Border>
 
@@ -127,8 +125,7 @@
                                 Grid.ColumnSpan="5"
                                 Visibility="Collapsed">
                             <Border.Background>
-                                <SolidColorBrush Opacity="0.3"
-                                                 Color="Black" />
+                                <SolidColorBrush Opacity="0.3" Color="Black" />
                             </Border.Background>
                         </Border>
                         <ResizeGrip x:Name="WindowResizeGrip"
