@@ -122,6 +122,7 @@ namespace H.Windows.Dialog
             dialog.CanSumit = canSumit;
             var key = GetResourceKey(dialogButton);
             dialog.Style = Application.Current.FindResource(key) as Style;
+            owner = owner ?? Application.Current.MainWindow;
             if (owner?.IsLoaded == true)
             {
                 dialog.Owner = owner;
@@ -145,6 +146,7 @@ namespace H.Windows.Dialog
             dialog.MinHeight = 150;
             dialog.SizeToContent = SizeToContent.Height;
             dialog.Style = Application.Current.FindResource(GetResourceKey(dialogButton)) as Style;
+            owner = owner ?? Application.Current.MainWindow;
             if (owner?.IsLoaded == true)
             {
                 dialog.Owner = owner;
