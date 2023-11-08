@@ -37,7 +37,8 @@
     <WindowChrome x:Key="{ComponentResourceKey ResourceId=S.Window.WindowChrome,
                                                TypeInTargetAssembly={x:Type local:WindowKeys}}"
                   CaptionHeight="35"
-                  GlassFrameThickness="-1"
+                  GlassFrameThickness="1"
+                  NonClientFrameEdges="None"
                   ResizeBorderThickness="8"
                   UseAeroCaptionButtons="False" />
 
@@ -76,8 +77,7 @@
                         <Grid.Background>
                             <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
                         </Grid.Background>
-                        <Border Grid.Row="0"
-                                TextElement.Foreground="{DynamicResource {x:Static BrushKeys.CaptionForeground}}">
+                        <Border Grid.Row="0" TextElement.Foreground="{DynamicResource {x:Static BrushKeys.CaptionForeground}}">
                             <Border.Background>
                                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />
                             </Border.Background>
@@ -147,8 +147,7 @@
                                 IsHitTestVisible="False"
                                 Opacity="{Binding Source={x:Static local:WindowSetting.Instance}, Path=Opacity}">
                             <Border.Background>
-                                <ImageBrush ImageSource="{Binding Source={x:Static local:WindowSetting.Instance}, Path=BackImagePath}"
-                                            Stretch="{Binding Source={x:Static local:WindowSetting.Instance}, Path=Stretch}" />
+                                <ImageBrush ImageSource="{Binding Source={x:Static local:WindowSetting.Instance}, Path=BackImagePath}" Stretch="{Binding Source={x:Static local:WindowSetting.Instance}, Path=Stretch}" />
                             </Border.Background>
                         </Border>
 
