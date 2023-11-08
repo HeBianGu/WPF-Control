@@ -20,6 +20,16 @@
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="Padding" Value="10,6" />
+        <Setter Property="h:Cattach.CaptionBackground">
+            <Setter.Value>
+                <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.Background}}" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="h:Cattach.CaptionForeground">
+            <Setter.Value>
+                <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.Foreground}}" />
+            </Setter.Value>
+        </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:DialogWindow}">
@@ -32,13 +42,7 @@
                         <Grid.Background>
                             <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.Background}}" />
                         </Grid.Background>
-                        <Border Grid.Row="0">
-                            <TextElement.Foreground>
-                                <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.CaptionForeground}}" />
-                            </TextElement.Foreground>
-                            <Border.Background>
-                                <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.CaptionBackground}}" />
-                            </Border.Background>
+                        <Border Grid.Row="0" Background="{Binding RelativeSource={RelativeSource AncestorType=Window},Path=(h:Cattach.CaptionBackground)}" TextElement.Foreground="{Binding RelativeSource={RelativeSource AncestorType=Window},Path=(h:Cattach.CaptionForeground)}">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition />

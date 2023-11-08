@@ -4,6 +4,15 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net7.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+    <Product>H大师</Product>
+    <Description>电脑参数：可以查看处理器、内存、硬盘、网卡、显卡、操作系统、安装软件等</Description>
+    <AssemblyVersion>1.0.2</AssemblyVersion>
+    <FileVersion>1.0.0</FileVersion>
+    <Copyright>Copyright © HeBianGu 2019-2023</Copyright>
+    <Authors></Authors>
+    <PackageProjectUrl>https://github.com/HeBianGu</PackageProjectUrl>    <Title></Title>
+    <Version>1.0.3</Version>
   </PropertyGroup>
 
   <ItemGroup>

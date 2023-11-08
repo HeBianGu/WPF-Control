@@ -13,7 +13,7 @@ using System.Windows.Markup;
 
 namespace H.Windows.Dialog
 {
-    public partial class DialogWindow : Window, ICancelable
+    public partial class DialogWindow : Window, ICancelable, IDialogWindow
     {
         static DialogWindow()
         {
@@ -28,6 +28,12 @@ namespace H.Windows.Dialog
                 return;
             }
             base.OnClosing(e);
+        }
+
+        public void Sumit()
+        {
+            this.DialogResult = true;
+            this.Close();
         }
 
         public Func<bool> CanSumit { get; set; }
@@ -62,15 +68,18 @@ namespace H.Windows.Dialog
 
     partial class DialogWindow : Window
     {
-        public static bool? ShowMessage(string message, string title = "提示", DialogButton dialogButton = DialogButton.Sumit, Window owner = null, Action<System.Windows.Window> action = null)
+        public static bool? ShowMessage(string message, string title = "提示", DialogButton dialogButton = DialogButton.Sumit, Window owner = null, Action<IDialogWindow> action = null)
         {
-            Action<Window> build = x =>
+            Action<IDialogWindow> build = x =>
             {
-                x.Width = 400;
-                x.Height = 200;
-                x.MinHeight = 150;
-                x.HorizontalContentAlignment = HorizontalAlignment.Center;
-                x.Style = Application.Current.FindResource(GetResourceKey(dialogButton)) as Style;
+                if (x is DialogWindow c)
+                {
+                    c.Width = 400;
+                    c.Height = 200;
+                    c.MinHeight = 150;
+                    c.HorizontalContentAlignment = HorizontalAlignment.Center;
+                    c.Style = Application.Current.FindResource(GetResourceKey(dialogButton)) as Style;
+                }
                 action?.Invoke(x);
             };
 
@@ -118,7 +127,7 @@ namespace H.Windows.Dialog
             return r;
         }
 
-        public static T ShowAction<T>(object data, Func<ICancelable, T> func, Action<DialogWindow> action = null, string title = null, Window owner = null)
+        public static T ShowAction<T>(object data, Func<ICancelable, T> func, Action<DialogWindow> action = null, DialogButton dialogButton = DialogButton.Cancel, string title = null, Window owner = null)
         {
             DialogWindow dialog = new DialogWindow();
             dialog.Content = data;
@@ -126,7 +135,7 @@ namespace H.Windows.Dialog
             dialog.Width = 500;
             dialog.MinHeight = 150;
             dialog.SizeToContent = SizeToContent.Height;
-            dialog.Style = Application.Current.FindResource(DialogKeys.Cancel) as Style;
+            dialog.Style = Application.Current.FindResource(GetResourceKey(dialogButton)) as Style;
             if (owner?.IsLoaded == true)
             {
                 dialog.Owner = owner;
@@ -159,20 +168,21 @@ namespace H.Windows.Dialog
             return ShowPresenter(data, null, DialogButton.Sumit, title);
         }
 
-        public static bool? ShowIoc<T>(Action<DialogWindow> action = null, string title = null, Window owner = null)
+        public static bool? ShowIoc<T>(Action<DialogWindow> action = null, string title = null, DialogButton dialogButton = DialogButton.Sumit, Window owner = null)
         {
             var about = Ioc.Services.GetService(typeof(T));
-            return DialogWindow.ShowIoc(typeof(T), action, title, owner);
+            return DialogWindow.ShowIoc(typeof(T), action, title, dialogButton, owner);
         }
 
-        public static bool? ShowIoc(Type type, Action<DialogWindow> action = null, string title = null, Window owner = null)
+        public static bool? ShowIoc(Type type, Action<DialogWindow> action = null, string title = null, DialogButton dialogButton = DialogButton.Sumit, Window owner = null)
         {
             var about = Ioc.Services.GetService(type);
             return DialogWindow.ShowPresenter(about, x =>
             {
                 x.Width = 500;
                 x.Height = 300;
-            });
+                action?.Invoke(x);
+            }, dialogButton, title, null, owner);
         }
     }
 }

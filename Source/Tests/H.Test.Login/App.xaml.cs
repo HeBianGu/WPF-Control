@@ -22,7 +22,7 @@ namespace H.Test.Login
         {
             services.AddSetting();
             services.AddMessage();
-            services.AddLogin(x => x.MyName = "你好配置的名称");
+            services.AddLogin();
         }
 
         protected override Window CreateMainWindow(StartupEventArgs e)

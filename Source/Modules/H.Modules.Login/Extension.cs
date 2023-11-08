@@ -19,6 +19,7 @@ namespace System
             services.TryAdd(ServiceDescriptor.Singleton<ILoginViewPresenter, LoginViewPresenter>());
             if (setupAction != null)
                 services.Configure(setupAction);
+            services.TryAdd(ServiceDescriptor.Singleton<ILoginService, LoginService>());
             return services;
         }
 

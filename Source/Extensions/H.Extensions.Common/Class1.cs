@@ -5,5 +5,6 @@ namespace H.Extensions.Common
 {
     internal class Class1
     {
+
     }
 }

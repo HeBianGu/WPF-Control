@@ -1,4 +1,5 @@
-﻿using H.Providers.Ioc;
+﻿using H.Extensions.Common;
+using H.Providers.Ioc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using System;
@@ -11,6 +12,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace H.Extensions.ApplicationBase
 {
@@ -41,7 +44,7 @@ namespace H.Extensions.ApplicationBase
             {
                 Func<ICancelable, ISplashScreenViewPresenter, bool?> func = (c, s) =>
                 {
-                    if(c.IsCancel == false)
+                    if (c.IsCancel == false)
                     {
                         ILoad load = Ioc.GetService<IDbConnectService>(false);
                         if (load != null)
@@ -99,7 +102,12 @@ namespace H.Extensions.ApplicationBase
             var exist = Ioc.Exist<ILoginViewPresenter>();
             if (exist == false)
                 return;
-            var r = IocMessage.Dialog.ShowIoc<ILoginViewPresenter>().Result;
+
+            var r = IocMessage.Dialog.ShowIoc<ILoginViewPresenter>(null, x =>
+            {
+                if (x is Control c)
+                    c.Width = 400;
+            }, DialogButton.None, ApplicationProvider.Version).Result;
             if (r == false)
             {
                 Logger.Instance?.Info("登录失败程序退出");

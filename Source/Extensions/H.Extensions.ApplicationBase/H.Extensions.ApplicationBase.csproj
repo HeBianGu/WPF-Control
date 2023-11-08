@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Providers\H.Providers.Ioc\H.Providers.Ioc.csproj" />
+    <ProjectReference Include="..\H.Extensions.Common\H.Extensions.Common.csproj" />
   </ItemGroup>
 
 </Project>

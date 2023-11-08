@@ -106,14 +106,14 @@
                                 </DockPanel>
                                 <DataGrid ItemsSource="{Binding Collection.Source}">
                                     <Behaviors:Interaction.Behaviors>
-                                        <h:AutoColumnDataGridBehavior
+                                        <h:DataGridAutoColumnBehavior
                                             BindingPath="Model.{0}"
                                             DataGridLength="*"
                                             Type="{Binding ModelType}">
-                                            <h:AutoColumnDataGridBehavior.HomeColumns>
+                                            <h:DataGridAutoColumnBehavior.HomeColumns>
                                                 <DataGridCheckBoxColumn Binding="{Binding IsSelected}" Header="全选" />
-                                            </h:AutoColumnDataGridBehavior.HomeColumns>
-                                        </h:AutoColumnDataGridBehavior>
+                                            </h:DataGridAutoColumnBehavior.HomeColumns>
+                                        </h:DataGridAutoColumnBehavior>
                                     </Behaviors:Interaction.Behaviors>
                                 </DataGrid>
                             </DockPanel>

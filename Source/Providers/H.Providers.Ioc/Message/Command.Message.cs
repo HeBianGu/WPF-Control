@@ -39,10 +39,13 @@ namespace H.Providers.Ioc
             return this;
         }
 
-        protected void Build(Control c)
+        protected void Build(IDialogWindow w)
         {
-            c.Width = this.Width;
-            c.Height = this.Height;
+            if(w is Control c)
+            {
+                c.Width = this.Width;
+                c.Height = this.Height;
+            }
         }
     }
 
@@ -77,7 +80,7 @@ namespace H.Providers.Ioc
         public Type Type { get; set; }
         public override void Execute(object parameter)
         {
-            IocMessage.Dialog.ShowIoc(this.Type, null, this.Build, this.Title);
+            IocMessage.Dialog.ShowIoc(this.Type, null, this.Build,DialogButton.Sumit, this.Title);
         }
 
         public override bool CanExecute(object parameter)

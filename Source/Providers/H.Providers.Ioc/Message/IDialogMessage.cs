@@ -11,14 +11,14 @@ namespace H.Providers.Ioc
 {
     public interface IDialogMessage
     {
-        Task<bool?> ShowMessage(string message, string title = "提示", DialogButton dialogButton = DialogButton.Sumit, Action<Control> action = null, Window owner = null);
-        Task<bool?> Show(object presenter, Action<Control> action = null, DialogButton dialogButton = DialogButton.Sumit, string title = null, Func<bool> canSumit = null, Window owner = null);
-        Task<bool?> ShowIoc(Type typeAction, Func<ICancelable, bool?> action = null, Action<Control> build = null, string title = null, Func<bool> canSumit = null, Window owner = null);
-        Task<bool?> ShowIoc<T>(Func<ICancelable, T, bool?> action = null, Action<Control> build = null, string title = null, Func<bool> canSumit = null, Window owner = null);
+        Task<bool?> ShowMessage(string message, string title = "提示", DialogButton dialogButton = DialogButton.Sumit, Action<IDialogWindow> action = null, Window owner = null);
+        Task<bool?> Show(object presenter, Action<IDialogWindow> action = null, DialogButton dialogButton = DialogButton.Sumit, string title = null, Func<bool> canSumit = null, Window owner = null);
+        Task<bool?> ShowIoc(Type typeAction, Func<ICancelable, bool?> action = null, Action<IDialogWindow> build = null, DialogButton dialogButton = DialogButton.Sumit, string title = null, Func<bool> canSumit = null, Window owner = null);
+        Task<bool?> ShowIoc<T>(Func<ICancelable, T, bool?> action = null, Action<IDialogWindow> build = null, DialogButton dialogButton = DialogButton.Sumit, string title = null, Func<bool> canSumit = null, Window owner = null);
 
-        Task<T> ShowPercent<T>(Func<IPercentPresenter, ICancelable, T> action, Action<Control> build = null, string title = null, Window owner = null);
-        Task<T> ShowString<T>(Func<IStringPresenter, ICancelable, T> action, Action<Control> build = null, string title = null, Window owner = null);
-        Task<T> ShowWait<T>(Func<ICancelable, T> action, Action<Control> build = null, string title = null, Window owner = null);
+        Task<T> ShowPercent<T>(Func<IPercentPresenter, ICancelable, T> action, Action<IDialogWindow> build = null, DialogButton dialogButton = DialogButton.Cancel, string title = null, Window owner = null);
+        Task<T> ShowString<T>(Func<IStringPresenter, ICancelable, T> action, Action<IDialogWindow> build = null, DialogButton dialogButton = DialogButton.Cancel, string title = null, Window owner = null);
+        Task<T> ShowWait<T>(Func<ICancelable, T> action, Action<IDialogWindow> build = null, DialogButton dialogButton = DialogButton.Cancel, string title = null, Window owner = null);
     }
 
     public class Messager : Ioc<IDialogMessage>

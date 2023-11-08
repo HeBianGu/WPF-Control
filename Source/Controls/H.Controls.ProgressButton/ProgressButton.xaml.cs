@@ -10,8 +10,6 @@ namespace H.Controls.ProgressButton
     {
         public static ComponentResourceKey DefaultKey => new ComponentResourceKey(typeof(ProgressButton), "S.ProgressButton.Default");
         public static ComponentResourceKey CommandKey => new ComponentResourceKey(typeof(ProgressButton), "S.ProgressButton.Command");
-
-
         static ProgressButton()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ProgressButton), new FrameworkPropertyMetadata(typeof(ProgressButton)));

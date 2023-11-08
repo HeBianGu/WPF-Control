@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Extensions\H.Extensions.Attach\H.Extensions.Attach.csproj" />
     <ProjectReference Include="..\..\Presenters\H.Presenters.Common\H.Presenters.Common.csproj" />
     <ProjectReference Include="..\..\Providers\H.Providers.Ioc\H.Providers.Ioc.csproj" />
     <ProjectReference Include="..\..\Styles\H.Styles.Default\H.Styles.Default.csproj" />
