@@ -36,7 +36,7 @@
                 <ControlTemplate TargetType="{x:Type local:DialogWindow}">
                     <Border x:Name="PART_Border" BorderThickness="1">
                         <Border.BorderBrush>
-                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
+                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
                         </Border.BorderBrush>
                         <Border.Background>
                             <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
