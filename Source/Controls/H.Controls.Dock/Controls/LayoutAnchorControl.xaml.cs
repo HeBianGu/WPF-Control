@@ -1,4 +1,4 @@
-﻿/************************************************************************
+/************************************************************************
    H.Controls.Dock
 
    Copyright (C) 2007-2013 Xceed Software Inc.
@@ -20,7 +20,7 @@ namespace H.Controls.Dock.Controls
     /// Implements a control that is displayed when a <see cref="LayoutAnchorableControl"/>
     /// is in AutoHide mode (which can be applied via context menu drop entry or click on the Pin symbol.
     /// </summary>
-    public class LayoutAnchorControl : Control, ILayoutControl
+    public class LayoutAnchorControl : System.Windows.Controls.Control, ILayoutControl
     {
         #region fields
 
@@ -34,7 +34,7 @@ namespace H.Controls.Dock.Controls
         static LayoutAnchorControl()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(LayoutAnchorControl), new FrameworkPropertyMetadata(typeof(LayoutAnchorControl)));
-            Control.IsHitTestVisibleProperty.AddOwner(typeof(LayoutAnchorControl), new FrameworkPropertyMetadata(true));
+            System.Windows.Controls.Control.IsHitTestVisibleProperty.AddOwner(typeof(LayoutAnchorControl), new FrameworkPropertyMetadata(true));
         }
 
         internal LayoutAnchorControl(LayoutAnchorable model)

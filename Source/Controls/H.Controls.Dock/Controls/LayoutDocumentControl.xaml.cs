@@ -20,7 +20,7 @@ namespace H.Controls.Dock.Controls
     /// Implements the content part of the document control.
     /// It hosts a <see cref="LayoutDocument"/> as its <see cref="Model"/>.
     /// </summary>
-    public class LayoutDocumentControl : Control
+    public class LayoutDocumentControl : System.Windows.Controls.Control
     {
         #region Constructors
 

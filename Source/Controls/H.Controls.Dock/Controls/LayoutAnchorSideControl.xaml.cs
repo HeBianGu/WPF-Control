@@ -25,7 +25,7 @@ namespace H.Controls.Dock.Controls
     /// </summary>
     /// <seealso cref="Control"/>
     /// <seealso cref="ILayoutControl"/>
-    public class LayoutAnchorSideControl : Control, ILayoutControl
+    public class LayoutAnchorSideControl : System.Windows.Controls.Control, ILayoutControl
     {
         #region fields
 

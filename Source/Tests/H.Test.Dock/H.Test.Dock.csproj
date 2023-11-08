@@ -11,7 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Controls\H.Controls.Dock\H.Controls.Dock.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.ApplicationBase\H.Extensions.ApplicationBase.csproj" />
     <ProjectReference Include="..\..\Styles\H.Styles.Default\H.Styles.Default.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Default\H.Themes.Default.csproj" />

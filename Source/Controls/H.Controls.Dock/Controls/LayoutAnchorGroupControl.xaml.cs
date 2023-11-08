@@ -20,7 +20,7 @@ namespace H.Controls.Dock.Controls
     /// This control displays multiple <see cref="LayoutAnchorControl"/>s along the
     /// top, bottom, left, or right side of the <see cref="DockingManager"/>.
     /// </summary>
-    public class LayoutAnchorGroupControl : Control, ILayoutControl
+    public class LayoutAnchorGroupControl : System.Windows.Controls.Control, ILayoutControl
     {
         #region fields
 

@@ -23,7 +23,7 @@ namespace H.Controls.Dock.Controls
     /// of a <see cref="LayoutAnchorablePaneControl"/>.
     /// </summary>
     /// <seealso cref="Control"/>
-    public class LayoutAnchorableTabItem : Control
+    public class LayoutAnchorableTabItem : System.Windows.Controls.Control
     {
         #region fields
 

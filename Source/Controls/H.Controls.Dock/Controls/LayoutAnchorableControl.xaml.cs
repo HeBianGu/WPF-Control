@@ -1,4 +1,4 @@
-﻿/************************************************************************
+/************************************************************************
    H.Controls.Dock
 
    Copyright (C) 2007-2013 Xceed Software Inc.
@@ -17,7 +17,7 @@ namespace H.Controls.Dock.Controls
     /// <inheritdoc />
     /// <summary>Implements the inner part of tool window.</summary>
     /// <seealso cref="Control"/>
-    public class LayoutAnchorableControl : Control
+    public class LayoutAnchorableControl : System.Windows.Controls.Control
     {
         #region Constructors
 

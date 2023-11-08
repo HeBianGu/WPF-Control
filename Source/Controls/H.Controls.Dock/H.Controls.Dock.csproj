@@ -1,17 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
     <TargetFramework>net7.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+	  <PackageIcon>logo.jpg</PackageIcon> 
   </PropertyGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Themes\H.Themes.Default\H.Themes.Default.csproj" />
-  </ItemGroup>
 
+  <ItemGroup>
+    <None Include="..\..\..\Document\Resource\logo.jpg">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="**\*.png" />
   </ItemGroup>
-
+  <ItemGroup>
+    <ProjectReference Include="..\..\Styles\H.Styles.Default\H.Styles.Default.csproj" />
+    <ProjectReference Include="..\..\Themes\H.Themes.Default\H.Themes.Default.csproj" />
+  </ItemGroup>
+  
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -28,8 +35,4 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-
-  <!--PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DefineConstants>TRACE;DEBUG</DefineConstants>
-  </PropertyGroup>-->
 </Project>

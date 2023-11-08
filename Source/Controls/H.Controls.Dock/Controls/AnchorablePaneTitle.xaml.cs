@@ -1,4 +1,4 @@
-﻿/************************************************************************
+/************************************************************************
    H.Controls.Dock
 
    Copyright (C) 2007-2013 Xceed Software Inc.
@@ -21,7 +21,7 @@ namespace H.Controls.Dock.Controls
     /// It is used to show a title bar with docking window buttons to let users interact
     /// with a <see cref="LayoutAnchorable"/> via drop down menu click or drag & drop.
     /// </summary>
-    public class AnchorablePaneTitle : Control
+    public class AnchorablePaneTitle : System.Windows.Controls.Control
     {
         #region fields
 

@@ -37,7 +37,7 @@
     <WindowChrome x:Key="{ComponentResourceKey ResourceId=S.Window.WindowChrome,
                                                TypeInTargetAssembly={x:Type local:WindowKeys}}"
                   CaptionHeight="35"
-                  GlassFrameThickness="1"
+                  GlassFrameThickness="0"
                   NonClientFrameEdges="None"
                   ResizeBorderThickness="8"
                   UseAeroCaptionButtons="False" />
@@ -67,10 +67,11 @@
         <Setter Property="WindowStyle" Value="SingleBorderWindow" />
         <Setter Property="FontSize" Value="{DynamicResource {x:Static FontSizeKeys.Default}}" />
         <Setter Property="ResizeMode" Value="CanResizeWithGrip" />
+        <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Window}">
-                    <Border x:Name="PART_Border" BorderThickness="1">
+                    <Border x:Name="PART_Border" BorderThickness="{TemplateBinding BorderThickness}">
                         <Border.BorderBrush>
                             <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
                         </Border.BorderBrush>

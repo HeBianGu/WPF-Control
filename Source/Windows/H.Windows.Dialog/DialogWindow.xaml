@@ -31,12 +31,13 @@
                 <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.Foreground}}" />
             </Setter.Value>
         </Setter>
+        <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:DialogWindow}">
-                    <Border x:Name="PART_Border" BorderThickness="1">
+                    <Border x:Name="PART_Border" BorderThickness="{TemplateBinding BorderThickness}">
                         <Border.BorderBrush>
-                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
+                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrushAssist}}" />
                         </Border.BorderBrush>
                         <Border.Background>
                             <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />

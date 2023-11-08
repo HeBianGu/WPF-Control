@@ -1,4 +1,4 @@
-﻿/************************************************************************
+/************************************************************************
    H.Controls.Dock
 
    Copyright (C) 2007-2013 Xceed Software Inc.
@@ -37,13 +37,14 @@ using System.Windows.Markup;
                                               // app, or any theme specific resource dictionaries)
 )]
 
-[assembly: XmlnsPrefix("https://github.com/Dirkster99/H.Controls.Dock", "avalondock")]
-[assembly: XmlnsDefinition("https://github.com/Dirkster99/H.Controls.Dock", "H.Controls.Dock")]
-[assembly: XmlnsDefinition("https://github.com/Dirkster99/H.Controls.Dock", "H.Controls.Dock.Controls")]
-[assembly: XmlnsDefinition("https://github.com/Dirkster99/H.Controls.Dock", "H.Controls.Dock.Converters")]
-[assembly: XmlnsDefinition("https://github.com/Dirkster99/H.Controls.Dock", "H.Controls.Dock.Layout")]
-[assembly: XmlnsDefinition("https://github.com/Dirkster99/H.Controls.Dock", "H.Controls.Dock.Themes")]
-[assembly: XmlnsPrefix("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "avalondock")]
+[assembly: XmlnsPrefix("https://github.com/HeBianGu", "h")]
+[assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Controls.Dock")]
+[assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Controls.Dock.Controls")]
+[assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Controls.Dock.Converters")]
+[assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Controls.Dock.Layout")]
+[assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Controls.Dock.Themes")]
+
+[assembly: XmlnsPrefix("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "h")]
 [assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Controls.Dock")]
 [assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Controls.Dock.Controls")]
 [assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Controls.Dock.Converters")]

@@ -418,9 +418,9 @@ namespace H.Controls.Dock.Controls
                         .OfType<Border>())
                     .ToArray();
                 var controls = children
-                    .OfType<Control>()
+                    .OfType<System.Windows.Controls.Control>()
                     .Concat(parents
-                        .OfType<Control>())
+                        .OfType<System.Windows.Controls.Control>())
                     .ToArray();
                 var frameworkElements = children
                     .OfType<FrameworkElement>()

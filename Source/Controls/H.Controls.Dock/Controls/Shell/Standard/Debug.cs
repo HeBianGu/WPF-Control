@@ -1,4 +1,4 @@
-﻿/************************************************************************
+/************************************************************************
    H.Controls.Dock
 
    Copyright (C) 2007-2013 Xceed Software Inc.
@@ -32,7 +32,7 @@ namespace Standard
         private static void _Break()
         {
 #if DEV_DEBUG
-            Debugger.Break();
+			Debugger.Break();
 #else
             Debug.Assert(false);
 #endif

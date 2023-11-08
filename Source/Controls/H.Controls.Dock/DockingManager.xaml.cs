@@ -39,7 +39,7 @@ namespace H.Controls.Dock
     /// <seealso cref="IOverlayWindowHost"/>
     [ContentProperty(nameof(Layout))]
     [TemplatePart(Name = "PART_AutoHideArea")]
-    public class DockingManager : Control, IOverlayWindowHost//, ILogicalChildrenContainer
+    public class DockingManager : System.Windows.Controls.Control, IOverlayWindowHost//, ILogicalChildrenContainer
     {
         #region fields
         // ShortCut to current H.Controls.Dock theme if OnThemeChanged() is invoked with DictionaryTheme instance
