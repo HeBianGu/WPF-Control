@@ -13,6 +13,7 @@
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Controls/Expander.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Controls/Frame.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Controls/GroupBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Controls/GridSplitter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Controls/Label.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Controls/ListBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Controls/ListView.xaml" />

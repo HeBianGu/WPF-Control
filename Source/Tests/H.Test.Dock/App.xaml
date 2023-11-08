@@ -1,11 +1,13 @@
 ﻿<Application x:Class="H.Test.Dock.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:h="https://github.com/HeBianGu"
              xmlns:local="clr-namespace:H.Test.Dock"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ColorTheme Type="{x:Static h:ColorThemeType.Dark}" />
                 <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/ConciseControls.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

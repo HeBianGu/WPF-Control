@@ -331,6 +331,9 @@
             <TabItem Header="CheckBox">
                 <CheckBox Content="CheckBox" />
             </TabItem>
+            <TabItem Header="ToggleButton">
+                <ToggleButton Content="ToggleButton" />
+            </TabItem>
             <TabItem Header="ComboBox">
                 <ComboBox SelectedIndex="0">
                     <system:String>1</system:String>

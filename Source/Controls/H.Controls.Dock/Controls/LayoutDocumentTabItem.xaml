@@ -7,16 +7,18 @@
                     xmlns:local="clr-namespace:H.Controls.Dock"
                     xmlns:lp="clr-namespace:H.Controls.Dock.Properties"
                     xmlns:shell="clr-namespace:Microsoft.Windows.Shell">
-    <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/HeBianGu.General.WpfControlLib;component/Themes/Share.xaml" />
-    </ResourceDictionary.MergedDictionaries>
     <Style TargetType="{x:Type lc:LayoutDocumentTabItem}">
         <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
+        <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type lc:LayoutDocumentTabItem}">
-                    <lc:DropDownControlArea DropDownContextMenu="{Binding Root.Manager.DocumentContextMenu}" DropDownContextMenuDataContext="{Binding LayoutItem, RelativeSource={RelativeSource TemplatedParent}}">
-                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                    <lc:DropDownControlArea DropDownContextMenu="{Binding Root.Manager.DocumentContextMenu}"
+                                            DropDownContextMenuDataContext="{Binding LayoutItem, RelativeSource={RelativeSource TemplatedParent}}">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
@@ -36,8 +38,8 @@
                                         Height="Auto"
                                         VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                         Command="{Binding Path=LayoutItem.CloseCommand, RelativeSource={RelativeSource TemplatedParent}}"
+                                        Content="F1M8.583,8L13,12.424 12.424,13 8,8.583 3.576,13 3,12.424 7.417,8 3,3.576 3.576,3 8,7.417 12.424,3 13,3.576z"
                                         Foreground="{TemplateBinding Foreground}"
-                                        Content="F1M12,12L4,12 4,4 12,4z M3,13L13,13 13,3 3,3z"
                                         Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}"
                                         ToolTip="{x:Static lp:Resources.Document_Close}"
                                         Visibility="Hidden" />

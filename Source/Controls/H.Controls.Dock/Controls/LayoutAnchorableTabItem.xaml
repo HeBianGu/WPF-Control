@@ -7,18 +7,22 @@
                     xmlns:local="clr-namespace:H.Controls.Dock"
                     xmlns:lp="clr-namespace:H.Controls.Dock.Properties"
                     xmlns:shell="clr-namespace:Microsoft.Windows.Shell">
-    <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/HeBianGu.General.WpfControlLib;component/Themes/Share.xaml" />
-    </ResourceDictionary.MergedDictionaries>
+
     <Style TargetType="{x:Type lc:LayoutAnchorableTabItem}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type lc:LayoutAnchorableTabItem}">
                     <lc:DropDownControlArea DropDownContextMenu="{Binding Root.Manager.AnchorableContextMenu}" DropDownContextMenuDataContext="{Binding LayoutItem, RelativeSource={RelativeSource TemplatedParent}}">
-                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
                             <Grid>
-                                <ContentPresenter Content="{Binding Model, RelativeSource={RelativeSource TemplatedParent}}" ContentTemplate="{Binding AnchorableHeaderTemplate, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type local:DockingManager}, Mode=FindAncestor}}" ContentTemplateSelector="{Binding AnchorableHeaderTemplateSelector, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type local:DockingManager}, Mode=FindAncestor}}" />
-                                <lc:DropDownControlArea Grid.Column="0" DropDownContextMenu="{Binding Model.Root.Manager.AnchorableContextMenu, RelativeSource={RelativeSource TemplatedParent}}" DropDownContextMenuDataContext="{Binding Path=Model, RelativeSource={RelativeSource TemplatedParent}}" />
+                                <ContentPresenter Content="{Binding Model, RelativeSource={RelativeSource TemplatedParent}}"
+                                                  ContentTemplate="{Binding AnchorableHeaderTemplate, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type local:DockingManager}, Mode=FindAncestor}}"
+                                                  ContentTemplateSelector="{Binding AnchorableHeaderTemplateSelector, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type local:DockingManager}, Mode=FindAncestor}}" />
+                                <lc:DropDownControlArea Grid.Column="0"
+                                                        DropDownContextMenu="{Binding Model.Root.Manager.AnchorableContextMenu, RelativeSource={RelativeSource TemplatedParent}}"
+                                                        DropDownContextMenuDataContext="{Binding Path=Model, RelativeSource={RelativeSource TemplatedParent}}" />
                             </Grid>
                         </Border>
                     </lc:DropDownControlArea>

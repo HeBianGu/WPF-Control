@@ -4,11 +4,9 @@
                     xmlns:lc="clr-namespace:H.Controls.Dock.Controls"
                     xmlns:lcv="clr-namespace:H.Controls.Dock.Converters"
                     xmlns:local="clr-namespace:H.Controls.Dock">
-    <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/HeBianGu.General.WpfControlLib;component/Themes/Share.xaml" />
-    </ResourceDictionary.MergedDictionaries>
+ 
     <!--  AnchorablePaneControlStyle  -->
-    <Style x:Key="AnchorablePaneControlStyle" TargetType="{x:Type lc:LayoutAnchorablePaneControl}" BasedOn="{StaticResource {x:Static h:TabControlKeys.Line}}">
+    <Style x:Key="AnchorablePaneControlStyle" TargetType="{x:Type lc:LayoutAnchorablePaneControl}" BasedOn="{StaticResource {x:Static h:TabControlKeys.Default}}">
         <Setter Property="Foreground" Value="{Binding Model.Root.Manager.Foreground, RelativeSource={RelativeSource Self}}" />
         <Setter Property="Background" Value="{Binding Model.Root.Manager.Background, RelativeSource={RelativeSource Self}}" />
         <Setter Property="TabStripPlacement" Value="Bottom" />
@@ -54,7 +52,7 @@
 
         <Setter Property="ItemContainerStyle">
             <Setter.Value>
-                <Style TargetType="{x:Type TabItem}" BasedOn="{StaticResource {x:Static h:TabItemKeys.Line}}">
+                <Style TargetType="{x:Type TabItem}" BasedOn="{StaticResource {x:Static h:TabItemKeys.Default}}">
                     <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
                     <Setter Property="IsEnabled" Value="{Binding IsEnabled}" />
                     <Setter Property="ToolTip" Value="{Binding ToolTip}" />

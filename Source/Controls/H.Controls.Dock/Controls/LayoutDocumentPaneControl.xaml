@@ -4,16 +4,16 @@
                     xmlns:lc="clr-namespace:H.Controls.Dock.Controls"
                     xmlns:lcv="clr-namespace:H.Controls.Dock.Converters"
                     xmlns:local="clr-namespace:H.Controls.Dock">
-    <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/HeBianGu.General.WpfControlLib;component/Themes/Share.xaml" />
-    </ResourceDictionary.MergedDictionaries>
-
     <!--  DocumentPaneControlStyle  -->
-    <Style x:Key="DocumentPaneControlStyle" TargetType="{x:Type lc:LayoutDocumentPaneControl}" BasedOn="{StaticResource {x:Static h:TabControlKeys.Dynamic}}">
+    <Style x:Key="DocumentPaneControlStyle"
+           BasedOn="{StaticResource {x:Static h:TabControlKeys.Default}}"
+           TargetType="{x:Type lc:LayoutDocumentPaneControl}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type lc:LayoutDocumentPaneControl}">
-                    <Grid ClipToBounds="true" KeyboardNavigation.TabNavigation="Local" SnapsToDevicePixels="true">
+                    <Grid ClipToBounds="true"
+                          KeyboardNavigation.TabNavigation="Local"
+                          SnapsToDevicePixels="true">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="*" />
@@ -32,12 +32,14 @@
                                                      KeyboardNavigation.TabIndex="1" />
                             <lc:DropDownButton x:Name="MenuDropDownButton"
                                                Grid.Column="1"
+                                               Padding="10"
+                                               Content="M532.207 718.134l0 0c3.079-1.777 6.39-3.079 9.112-5.802 0.477-0.594 0.827-1.064 1.303-1.539 0.594-0.709 1.539-0.946 2.128-1.54l319.434-331.383c8.519-8.757 12.781-20.121 12.781-31.483 0-11.836-4.733-23.79-13.964-32.666-18.107-17.398-46.871-16.924-64.265 1.183l-288.071 298.956-283.922-300.139c-17.28-18.225-46.04-19.057-64.265-1.777-18.226 17.281-19.057 46.04-1.777 64.265l316.355 334.462c13.844 14.676 35.149 17.399 52.429 9.113 0.945-0.35 1.777-1.182 2.722-1.653l0 0zM532.207 718.134z"
                                                Focusable="False"
-                                               Style="{DynamicResource {x:Static h:ToggleButtonKeys.Rotate90}}">
+                                               Style="{DynamicResource {x:Static h:ToggleButtonKeys.Geometry}}">
                                 <lc:DropDownButton.DropDownContextMenu>
-                                    <lc:ContextMenuEx Style="{DynamicResource {x:Static h:ContextMenuKeys.Dynamic}}" ItemsSource="{Binding Model.ChildrenSorted, RelativeSource={RelativeSource TemplatedParent}}">
+                                    <lc:ContextMenuEx ItemsSource="{Binding Model.ChildrenSorted, RelativeSource={RelativeSource TemplatedParent}}" Style="{DynamicResource {x:Static h:ContextMenuKeys.Default}}">
                                         <lc:ContextMenuEx.ItemContainerStyle>
-                                            <Style BasedOn="{StaticResource {x:Static h:MenuItemKeys.Icon}}" TargetType="{x:Type lc:MenuItemEx}">
+                                            <Style BasedOn="{StaticResource {x:Static h:MenuItemKeys.Default}}" TargetType="{x:Type lc:MenuItemEx}">
                                                 <Setter Property="HeaderTemplate" Value="{Binding Path=Root.Manager.DocumentPaneMenuItemHeaderTemplate}" />
                                                 <Setter Property="HeaderTemplateSelector" Value="{Binding Path=Root.Manager.DocumentPaneMenuItemHeaderTemplateSelector}" />
                                                 <Setter Property="IconTemplate" Value="{Binding Path=Root.Manager.IconContentTemplate}" />
@@ -47,9 +49,6 @@
                                         </lc:ContextMenuEx.ItemContainerStyle>
                                     </lc:ContextMenuEx>
                                 </lc:DropDownButton.DropDownContextMenu>
-                                <!--<Border Background="White">
-                                    <Image Source="/H.Controls.Dock;component/Themes/Generic/Images/PinDocMenu.png" />
-                                </Border>-->
                             </lc:DropDownButton>
                         </Grid>
                         <Border x:Name="ContentPanel"
@@ -82,11 +81,12 @@
         </Setter>
         <Setter Property="ItemContainerStyle">
             <Setter.Value>
-                <Style TargetType="{x:Type TabItem}" BasedOn="{StaticResource {x:Static h:TabItemKeys.Default}}">
+                <Style BasedOn="{StaticResource {x:Static h:TabItemKeys.Default}}" TargetType="{x:Type TabItem}">
                     <Setter Property="Visibility" Value="{Binding IsVisible, Converter={lcv:BoolToVisibilityConverter}}" />
                     <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
                     <Setter Property="IsEnabled" Value="{Binding IsEnabled}" />
                     <Setter Property="ToolTip" Value="{Binding ToolTip}" />
+                    <Setter Property="Background" Value="Transparent" />
                     <!--<Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type TabItem}">
@@ -104,15 +104,16 @@
                                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                                     </Border>
                                 </Grid>
-                                --><!--<ControlTemplate.Triggers>
-                                    -->
-                                <!--<Trigger Property="Selector.IsSelected" Value="true">
+                    -->
+                    <!--<ControlTemplate.Triggers>
+                    -->
+                    <!--<Trigger Property="Selector.IsSelected" Value="true">
                                         <Setter Property="Background" Value="White" />
                                         <Setter Property="Panel.ZIndex" Value="1" />
                                         <Setter Property="Margin" Value="0,0,0,-2" />
                                         <Setter TargetName="Content" Property="Margin" Value="0,0,0,3" />
                                     </Trigger>-->
-                                <!--<MultiTrigger>
+                    <!--<MultiTrigger>
                                         <MultiTrigger.Conditions>
                                             <Condition Property="IsMouseOver" Value="true" />
                                             <Condition Property="Selector.IsSelected" Value="false" />
@@ -124,8 +125,9 @@
                                     <Trigger Property="IsEnabled" Value="false">
                                         <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrushTitle}}" />
                                     </Trigger>-->
-                                <!--
-                                </ControlTemplate.Triggers>--><!--
+                    <!--
+                                </ControlTemplate.Triggers>-->
+                    <!--
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>-->
