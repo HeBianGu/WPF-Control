@@ -65,6 +65,7 @@
                                             Content="{TemplateBinding Icon}"
                                             IsTabStop="False"
                                             Style="{x:Null}"
+                                            Visibility="{Binding Icon, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={x:Static Converter.GetNullToCollapsed}}"
                                             WindowChrome.IsHitTestVisibleInChrome="True">
                                         <Button.Template>
                                             <ControlTemplate TargetType="{x:Type Button}">
@@ -134,7 +135,8 @@
                                     HorizontalAlignment="Right"
                                     VerticalAlignment="Bottom"
                                     IsTabStop="false"
-                                    Visibility="Collapsed" />
+                                    Visibility="Collapsed"
+                                    WindowChrome.ResizeGripDirection="BottomRight" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="ResizeMode" Value="CanResizeWithGrip">

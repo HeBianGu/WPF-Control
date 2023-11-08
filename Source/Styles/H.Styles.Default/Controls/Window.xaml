@@ -66,10 +66,12 @@
         </Setter>
         <Setter Property="FontSize" Value="{DynamicResource {x:Static FontSizeKeys.Default}}" />
         <Setter Property="ResizeMode" Value="CanResizeWithGrip" />
+        <Setter Property="BorderBrush" Value="Red" />
+
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Window}">
-                    <Grid>
+                    <Grid x:Name="grid">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition />
@@ -97,6 +99,7 @@
                                             Content="{TemplateBinding Icon}"
                                             IsTabStop="False"
                                             Style="{x:Null}"
+                                            Visibility="{Binding Icon, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={x:Static Converter.GetNullToCollapsed}}"
                                             WindowChrome.IsHitTestVisibleInChrome="True">
                                         <Button.Template>
                                             <ControlTemplate TargetType="{x:Type Button}">
@@ -156,7 +159,8 @@
                                     HorizontalAlignment="Right"
                                     VerticalAlignment="Bottom"
                                     IsTabStop="false"
-                                    Visibility="Collapsed" />
+                                    Visibility="Collapsed"
+                                    WindowChrome.ResizeGripDirection="BottomRight" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="ResizeMode" Value="CanResizeWithGrip">
@@ -165,7 +169,7 @@
                         <Trigger Property="WindowState" Value="Maximized">
                             <Setter TargetName="Btn_Maximize" Property="Visibility" Value="Collapsed" />
                             <Setter TargetName="Btn_Restore" Property="Visibility" Value="Visible" />
-                            <Setter  Property="Margin" Value="17" />
+                            <!--<Setter TargetName="grid"  Property="Margin" Value="117" />-->
                         </Trigger>
                         <Trigger Property="WindowState" Value="Normal">
                             <Setter TargetName="Btn_Maximize" Property="Visibility" Value="Visible" />

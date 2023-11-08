@@ -42,7 +42,9 @@
                         <Grid.Background>
                             <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.Background}}" />
                         </Grid.Background>
-                        <Border Grid.Row="0" Background="{Binding RelativeSource={RelativeSource AncestorType=Window},Path=(h:Cattach.CaptionBackground)}" TextElement.Foreground="{Binding RelativeSource={RelativeSource AncestorType=Window},Path=(h:Cattach.CaptionForeground)}">
+                        <Border Grid.Row="0"
+                                Background="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=(h:Cattach.CaptionBackground)}"
+                                TextElement.Foreground="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=(h:Cattach.CaptionForeground)}">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition />
@@ -59,6 +61,7 @@
                                             Content="{TemplateBinding Icon}"
                                             IsTabStop="False"
                                             Style="{x:Null}"
+                                            Visibility="{Binding Icon, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={x:Static Converter.GetNullToCollapsed}}"
                                             WindowChrome.IsHitTestVisibleInChrome="True">
                                         <Button.Template>
                                             <ControlTemplate TargetType="{x:Type Button}">
@@ -66,8 +69,7 @@
                                             </ControlTemplate>
                                         </Button.Template>
                                     </Button>
-                                    <TextBlock Margin="5,0"
-                                               Text="{TemplateBinding Title}" />
+                                    <TextBlock Margin="5,0" Text="{TemplateBinding Title}" />
                                 </StackPanel>
 
                                 <StackPanel Grid.Column="1"
@@ -102,8 +104,7 @@
                             </Grid>
                         </Border>
 
-                        <AdornerDecorator Grid.Row="1"
-                                          Grid.ColumnSpan="3">
+                        <AdornerDecorator Grid.Row="1" Grid.ColumnSpan="3">
                             <ContentPresenter Margin="{TemplateBinding Padding}"
                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
@@ -113,7 +114,7 @@
                                 IsHitTestVisible="False"
                                 Opacity="{Binding Source={x:Static h:WindowSetting.Instance}, Path=Opacity}">
                             <Border.Background>
-                                <ImageBrush Stretch="{Binding Source={x:Static h:WindowSetting.Instance}, Path=Stretch}" ImageSource="{Binding Source={x:Static h:WindowSetting.Instance}, Path=BackImagePath}" />
+                                <ImageBrush ImageSource="{Binding Source={x:Static h:WindowSetting.Instance}, Path=BackImagePath}" Stretch="{Binding Source={x:Static h:WindowSetting.Instance}, Path=Stretch}" />
                             </Border.Background>
                         </Border>
                         <!--<Border Grid.Row="2" BorderThickness="0,1,0,0">
@@ -130,7 +131,8 @@
                                     HorizontalAlignment="Right"
                                     VerticalAlignment="Bottom"
                                     IsTabStop="false"
-                                    Visibility="Collapsed" />
+                                    Visibility="Collapsed"
+                                    WindowChrome.ResizeGripDirection="BottomRight" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="ResizeMode" Value="CanResizeWithGrip">
@@ -167,14 +169,10 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.DialogWindow.None,
-                                        TypeInTargetAssembly={x:Type local:DialogKeys}}"
-           TargetType="{x:Type local:DialogWindow}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.DialogWindow.None, TypeInTargetAssembly={x:Type local:DialogKeys}}" TargetType="{x:Type local:DialogWindow}">
         <Setter Property="BottomTemplate" Value="{x:Null}" />
     </Style>
-    <Style x:Key="{ComponentResourceKey ResourceId=S.DialogWindow.Sumit,
-                                        TypeInTargetAssembly={x:Type local:DialogKeys}}"
-           TargetType="{x:Type local:DialogWindow}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.DialogWindow.Sumit, TypeInTargetAssembly={x:Type local:DialogKeys}}" TargetType="{x:Type local:DialogWindow}">
         <Setter Property="BottomTemplate">
             <Setter.Value>
                 <ControlTemplate>
@@ -189,9 +187,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style x:Key="{ComponentResourceKey ResourceId=S.DialogWindow.Cancel,
-                                        TypeInTargetAssembly={x:Type local:DialogKeys}}"
-           TargetType="{x:Type local:DialogWindow}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.DialogWindow.Cancel, TypeInTargetAssembly={x:Type local:DialogKeys}}" TargetType="{x:Type local:DialogWindow}">
         <Setter Property="BottomTemplate">
             <Setter.Value>
                 <ControlTemplate>
@@ -206,14 +202,11 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style x:Key="{ComponentResourceKey ResourceId=S.DialogWindow.SumitAndCancel,
-                                        TypeInTargetAssembly={x:Type local:DialogKeys}}"
-           TargetType="{x:Type local:DialogWindow}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.DialogWindow.SumitAndCancel, TypeInTargetAssembly={x:Type local:DialogKeys}}" TargetType="{x:Type local:DialogWindow}">
         <Setter Property="BottomTemplate">
             <Setter.Value>
                 <ControlTemplate>
-                    <StackPanel HorizontalAlignment="Center"
-                                Orientation="Horizontal">
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                         <Button Width="100"
                                 Margin="6,0,6,10"
                                 HorizontalAlignment="Center"
