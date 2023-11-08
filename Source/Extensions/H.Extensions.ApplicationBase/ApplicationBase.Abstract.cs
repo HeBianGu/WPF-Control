@@ -78,7 +78,18 @@ namespace H.Extensions.ApplicationBase
                     Thread.Sleep(sleep);
                     return true;
                 };
-                var r = IocMessage.Dialog.ShowIoc<ISplashScreenViewPresenter>(func).Result;
+                var r = IocMessage.Dialog.ShowIoc(func, x =>
+                {
+                    if (x is Control c)
+                    {
+                        c.Width = 500;
+                        c.Height= 300;
+                    }
+                    if (x is Window w)
+                    {
+                        w.SizeToContent = SizeToContent.Manual;
+                    }
+                }, DialogButton.None, ApplicationProvider.Version).Result;
                 if (r == false)
                 {
                     Logger.Instance?.Info("启动失败，程序退出");

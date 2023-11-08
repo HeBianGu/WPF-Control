@@ -19,7 +19,7 @@
                 <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.Foreground}}" />
             </Setter.Value>
         </Setter>
-        <Setter Property="Icon" Value="{h:Logo}" />
+        <!--<Setter Property="Icon" Value="{h:Logo}" />-->
         <Setter Property="FontSize" Value="{DynamicResource {x:Static h:FontSizeKeys.Default}}" />
         <Setter Property="ResizeMode" Value="CanResizeWithGrip" />
         <Setter Property="Template">

@@ -25,8 +25,6 @@ namespace H.Extensions.Common
         
         //  Do ：major.minor.build.revision 形式的程序集清单版本数值(如 2.4.0.1)
         public static string FileVersion => Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyFileVersionAttribute>()?.Version;
-
-
         //public static string Authors => Assembly.GetEntryAssembly().GetCustomAttribute<AuthorsAttribute>()?.Version;
         //  Do ：UI 显示的程序集产品版本(如 1.0 Beta)
         //public static string InformationalVersion => Assembly.GetEntryAssembly().GetCustomAttribute<InformationalVersionAttribute>()?.Version;

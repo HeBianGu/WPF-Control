@@ -23,6 +23,7 @@ namespace H.Test.Login
             services.AddSetting();
             services.AddMessage();
             services.AddLogin();
+      
         }
 
         protected override Window CreateMainWindow(StartupEventArgs e)

@@ -13,17 +13,36 @@ namespace H.Modules.Login
     [Display(Name = "登录页面", GroupName = SystemSetting.GroupSystem, Description = "登录页面设置的信息")]
     public class LoginOptions : IocOptionInstance<LoginOptions>
     {
-        public LoginOptions()
+        public override void LoadDefault()
         {
+            base.LoadDefault();
             this.Product = ApplicationProvider.Product;
         }
 
+        private string _product;
         [Display(Name = "登录标题")]
-        public string Product { get; set; } = "我是名称";
+        public string Product
+        {
+            get { return _product; }
+            set
+            {
+                _product = value;
+                RaisePropertyChanged();
+            }
+        }
 
+        private double _productFontSize;
+        [DefaultValue(50)]
         [Display(Name = "字体大小")]
-        public double ProductFontSize { get; set; } = 50;
-
+        public double ProductFontSize
+        {
+            get { return _productFontSize; }
+            set
+            {
+                _productFontSize = value;
+                RaisePropertyChanged();
+            }
+        }
         private string _userName;
         [DefaultValue("admin")]
         [Required]

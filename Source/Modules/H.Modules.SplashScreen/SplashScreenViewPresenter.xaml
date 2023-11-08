@@ -2,11 +2,30 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:H.Modules.SplashScreen">
     <DataTemplate DataType="{x:Type local:SplashScreenViewPresenter}">
-        <UniformGrid>
-            <TextBlock HorizontalAlignment="Center"
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0"
+                       HorizontalAlignment="Center"
                        VerticalAlignment="Center"
-                       FontSize="20"
+                       FontSize="{Binding Source={x:Static local:SplashScreenOption.Instance}, Path=ProductFontSize}"
+                       Text="{Binding Source={x:Static local:SplashScreenOption.Instance}, Path=Product}" />
+
+            <TextBlock Grid.Row="1"
+                       Margin="0,10"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="{DynamicResource {x:Static FontSizeKeys.Header4}}"
                        Text="{Binding Message}" />
-        </UniformGrid>
+
+            <TextBlock Grid.Row="2"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="{DynamicResource {x:Static FontSizeKeys.Header6}}"
+                       Text="{x:Static ApplicationProvider.Copyright}" />
+        </Grid>
     </DataTemplate>
 </ResourceDictionary>
