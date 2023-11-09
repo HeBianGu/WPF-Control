@@ -11,7 +11,7 @@
               Height="700"
               mc:Ignorable="d">
 
-    <Window.Resources>
+    <!--<Window.Resources>
         <Style TargetType="RibbonButton">
             <Setter Property="Label" Value="{Binding Label}" />
             <Setter Property="LargeImageSource" Value="/Resources/CropImage32.png" />
@@ -94,6 +94,17 @@
             <Setter Property="ImageSource" Value="/Resources/CropImage32.png" />
         </Style>
 
+        <Style TargetType="Ribbon">
+            <Setter Property="MouseOverBackground" Value="{DynamicResource {x:Static h:BrushKeys.MouseOver}}" />
+            <Setter Property="MouseOverBorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
+            <Setter Property="CheckedBackground" Value="{DynamicResource {x:Static h:BrushKeys.Selected}}" />
+            <Setter Property="CheckedBorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrushTitle}}" />
+            <Setter Property="PressedBackground" Value="{DynamicResource {x:Static h:BrushKeys.Background}}" />
+            <Setter Property="PressedBorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
+            <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Background}}" />
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
+        </Style>
+
         <Style TargetType="RibbonMenuButton">
             <Setter Property="Label" Value="选择:" />
             <Setter Property="LargeImageSource" Value="/Resources/CropImage32.png" />
@@ -106,7 +117,7 @@
             </Setter>
         </Style>
 
-    </Window.Resources>
+    </Window.Resources>-->
     <Ribbon Title="文件">
         <Ribbon.ApplicationMenu>
             <RibbonApplicationMenu>

@@ -202,7 +202,9 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
                     <Border Background="Transparent">
-                        <Path Margin="0,0,2,2" Data="M 9,0 L 11,0 L 11,11 L 0,11 L 0,9 L 3,9 L 3,6 L 6,6 L 6,3 L 9,3 z" Fill="Red" />
+                        <Path Margin="0,0,2,2"
+                              Data="M 9,0 L 11,0 L 11,11 L 0,11 L 0,9 L 3,9 L 3,6 L 6,6 L 6,3 L 9,3 z"
+                              Fill="Red" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
@@ -229,7 +231,9 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RibbonToggleButton}">
-                    <Grid Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Width}" Height="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Height}" SnapsToDevicePixels="True">
+                    <Grid Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Width}"
+                          Height="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Height}"
+                          SnapsToDevicePixels="True">
                         <Border x:Name="OuterBorder"
                                 HorizontalAlignment="Stretch"
                                 VerticalAlignment="Stretch"
@@ -251,7 +255,9 @@
                                     CornerRadius="0,2,0,0" />
                         </Border>
 
-                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                        <StackPanel HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Orientation="Horizontal">
                             <Image Width="16"
                                    Height="16"
                                    Margin="0,-0.5,0,0"
@@ -345,7 +351,9 @@
                                           Content="{Binding Path=CustomizeMenuButton, RelativeSource={RelativeSource TemplatedParent}}"
                                           TextElement.Foreground="{DynamicResource {x:Static h:BrushKeys.CaptionForeground}}" />
 
-                        <Grid x:Name="OverflowButtonHost" Grid.Column="2" Visibility="Collapsed">
+                        <Grid x:Name="OverflowButtonHost"
+                              Grid.Column="2"
+                              Visibility="Collapsed">
                             <!--  Please note that the setter for the Style property is only so that this ToggleButton doesn't accidentally pick up some styles defined at the app level.  -->
                             <RibbonToggleButton x:Name="PART_OverflowButton"
                                                 Width="12"
@@ -357,7 +365,8 @@
                                     <RibbonControlSizeDefinition ImageSize="Collapsed" IsLabelVisible="True" />
                                 </RibbonToggleButton.ControlSizeDefinition>
                             </RibbonToggleButton>
-                            <Path Width="7" Height="5"
+                            <Path Width="7"
+                                  Height="5"
                                   Margin="1,0,0,0"
                                   HorizontalAlignment="Center"
                                   VerticalAlignment="Center"
@@ -387,7 +396,9 @@
                                         BorderThickness="1"
                                         CornerRadius="2">
                                     <DockPanel>
-                                        <primitives:RibbonQuickAccessToolBarOverflowPanel Name="PART_OverflowPanel" KeyboardNavigation.DirectionalNavigation="Cycle" KeyboardNavigation.TabNavigation="Cycle" />
+                                        <primitives:RibbonQuickAccessToolBarOverflowPanel Name="PART_OverflowPanel"
+                                                                                          KeyboardNavigation.DirectionalNavigation="Cycle"
+                                                                                          KeyboardNavigation.TabNavigation="Cycle" />
                                         <ContentPresenter Name="OverflowCustomizeMenuHost" DockPanel.Dock="Right" />
                                     </DockPanel>
                                 </Border>
@@ -450,7 +461,9 @@
                                     BorderBrush="{TemplateBinding BorderBrush}"
                                     BorderThickness="0,1,0,1">
                                 <Border x:Name="Overlay" Background="Red">
-                                    <TextBlock x:Name="Text" Margin="2,1,2,1" Text="{TemplateBinding Label}" />
+                                    <TextBlock x:Name="Text"
+                                               Margin="2,1,2,1"
+                                               Text="{TemplateBinding Label}" />
                                 </Border>
                             </Border>
                             <ControlTemplate.Triggers>
@@ -469,7 +482,9 @@
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="{x:Type RibbonSeparator}">
-                                    <Grid x:Name="Grid" Margin="1" SnapsToDevicePixels="True">
+                                    <Grid x:Name="Grid"
+                                          Margin="1"
+                                          SnapsToDevicePixels="True">
                                         <Grid.ColumnDefinitions>
                                             <!--  Icon or check mark column  -->
                                             <ColumnDefinition Width="Auto" SharedSizeGroup="MenuItemIconColumnGroup" />
@@ -485,7 +500,9 @@
                                               Stretch="Fill"
                                               Stroke="{TemplateBinding BorderBrush}"
                                               StrokeThickness="1"
-                                              X1="0" X2="1" Y1="0"
+                                              X1="0"
+                                              X2="1"
+                                              Y1="0"
                                               Y2="0" />
                                     </Grid>
 
@@ -514,7 +531,9 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RibbonApplicationMenu}">
-                    <Grid x:Name="OuterGrid" Focusable="False" SnapsToDevicePixels="True">
+                    <Grid x:Name="OuterGrid"
+                          Focusable="False"
+                          SnapsToDevicePixels="True">
                         <RibbonToggleButton x:Name="PART_ToggleButton"
                                             Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Width}"
                                             Height="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Height}"
@@ -599,7 +618,8 @@
 
                                                         <Grid RenderOptions.ClearTypeHint="Enabled">
                                                             <Canvas x:Name="BackgroundCanvas"
-                                                                    Width="0" Height="0"
+                                                                    Width="0"
+                                                                    Height="0"
                                                                     HorizontalAlignment="Left"
                                                                     VerticalAlignment="Top">
                                                                 <Rectangle x:Name="OpaqueRect"
@@ -793,7 +813,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="{x:Type Ribbon}" TargetType="{x:Type Ribbon}">
+    <Style TargetType="{x:Type Ribbon}">
         <Style.Resources>
             <PopupAnimation x:Key="{x:Static SystemParameters.MenuPopupAnimationKey}">Fade</PopupAnimation>
         </Style.Resources>
@@ -1169,7 +1189,9 @@
                                     BorderThickness="1,1,1,0"
                                     CornerRadius="2,2,0,0"
                                     RenderOptions.ClearTypeHint="Enabled">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" ContentSource="Content" />
+                                <ContentPresenter HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"
+                                                  ContentSource="Content" />
                             </Border>
                         </Border>
                     </Grid>
@@ -1519,7 +1541,9 @@
                            VerticalAlignment="Center"
                            RenderOptions.BitmapScalingMode="{TemplateBinding RenderOptions.BitmapScalingMode}"
                            Source="{TemplateBinding LargeImageSource}" />
-                    <Grid x:Name="Grid" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid x:Name="Grid"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center">
                         <RibbonTwoLineText x:Name="TwoLineText"
                                            Margin="1,1,1,0"
                                            HorizontalAlignment="Center"
@@ -1728,8 +1752,10 @@
         <Style.Resources>
             <Thickness x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type Ribbon},
                                                     ResourceId=LargeImageMargin}"
-                       Bottom="2" Left="1"
-                       Right="1" Top="1" />
+                       Bottom="2"
+                       Left="1"
+                       Right="1"
+                       Top="1" />
         </Style.Resources>
     </Style>
 
