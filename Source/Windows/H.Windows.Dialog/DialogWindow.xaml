@@ -19,7 +19,7 @@
         <Setter Property="ShowInTaskbar" Value="False" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
-        <Setter Property="WindowStyle" Value="SingleBorderWindow"/>
+        <Setter Property="WindowStyle" Value="SingleBorderWindow" />
         <Setter Property="Padding" Value="10,6" />
         <Setter Property="h:Cattach.CaptionBackground">
             <Setter.Value>
@@ -31,7 +31,7 @@
                 <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.Foreground}}" />
             </Setter.Value>
         </Setter>
-        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:DialogWindow}">
@@ -121,7 +121,8 @@
 
                             <Border Grid.RowSpan="3"
                                     IsHitTestVisible="False"
-                                    Opacity="{Binding Source={x:Static h:WindowSetting.Instance}, Path=Opacity}">
+                                    Opacity="{Binding Source={x:Static h:WindowSetting.Instance}, Path=Opacity}"
+                                    Visibility="{Binding Source={x:Static h:WindowSetting.Instance}, Path=BackImagePath, Converter={x:Static Converter.GetNullToCollapsed}}">
                                 <Border.Background>
                                     <ImageBrush ImageSource="{Binding Source={x:Static h:WindowSetting.Instance}, Path=BackImagePath}" Stretch="{Binding Source={x:Static h:WindowSetting.Instance}, Path=Stretch}" />
                                 </Border.Background>
@@ -151,7 +152,7 @@
                         <Trigger Property="WindowState" Value="Maximized">
                             <Setter TargetName="Btn_Maximize" Property="Visibility" Value="Collapsed" />
                             <Setter TargetName="Btn_Restore" Property="Visibility" Value="Visible" />
-                            <Setter TargetName="PART_Border"  Property="Padding" Value="7" />
+                            <Setter TargetName="PART_Border" Property="Padding" Value="7" />
 
                         </Trigger>
                         <Trigger Property="WindowState" Value="Normal">
@@ -164,7 +165,7 @@
                             <Setter TargetName="Btn_Restore" Property="Visibility" Value="Collapsed" />
                         </Trigger>
                         <Trigger Property="IsActive" Value="False">
-                            <Setter TargetName="grid"  Property="Opacity" Value="0.5" />
+                            <Setter TargetName="grid" Property="Opacity" Value="0.5" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

@@ -15,7 +15,7 @@
                               UseAeroCaptionButtons="False" />
             </Setter.Value>
         </Setter>
-        <Setter Property="WindowStyle" Value="SingleBorderWindow"/>
+        <Setter Property="WindowStyle" Value="SingleBorderWindow" />
         <Setter Property="Foreground">
             <Setter.Value>
                 <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.Foreground}}" />
@@ -24,7 +24,7 @@
         <Setter Property="Icon" Value="{h:Logo}" />
         <Setter Property="FontSize" Value="{DynamicResource {x:Static h:FontSizeKeys.Default}}" />
         <Setter Property="ResizeMode" Value="CanResizeWithGrip" />
-        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="BorderThickness" Value="0" />
 
         <Setter Property="Template">
             <Setter.Value>
@@ -125,7 +125,8 @@
                             <Border Grid.RowSpan="3"
                                     Grid.ColumnSpan="3"
                                     IsHitTestVisible="False"
-                                    Opacity="{Binding Source={x:Static h:WindowSetting.Instance}, Path=Opacity}">
+                                    Opacity="{Binding Source={x:Static h:WindowSetting.Instance}, Path=Opacity}"
+                                    Visibility="{Binding Source={x:Static h:WindowSetting.Instance}, Path=BackImagePath, Converter={x:Static h:Converter.GetNullToCollapsed}}">
                                 <Border.Background>
                                     <ImageBrush ImageSource="{Binding Source={x:Static h:WindowSetting.Instance}, Path=BackImagePath}" Stretch="{Binding Source={x:Static h:WindowSetting.Instance}, Path=Stretch}" />
                                 </Border.Background>
@@ -168,7 +169,7 @@
                             <Setter TargetName="Btn_Restore" Property="Visibility" Value="Collapsed" />
                         </Trigger>
                         <Trigger Property="IsActive" Value="False">
-                            <Setter TargetName="grid"  Property="Opacity" Value="0.5" />
+                            <Setter TargetName="grid" Property="Opacity" Value="0.5" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
