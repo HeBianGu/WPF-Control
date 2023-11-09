@@ -32,7 +32,8 @@
                                 BorderThickness="{TemplateBinding BorderThickness}">
                             <Grid Margin="3">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" MinHeight="16" />
+                                    <RowDefinition Height="Auto"
+                                                   MinHeight="16" />
                                     <!--  https://github.com/xceedsoftware/wpftoolkit/issues/1203  -->
                                     <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
@@ -104,7 +105,8 @@
                                             ToolTip="{x:Static lp:Resources.Anchorable_BtnClose_Hint}"
                                             Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={lcv:BoolToVisibilityConverter}}" />
                                 </Grid>
-                                <ContentPresenter Grid.Row="1" Content="{TemplateBinding Content}" />
+                                <ContentPresenter Grid.Row="1"
+                                                  Content="{TemplateBinding Content}" />
                             </Grid>
                         </Border>
                     </Grid>
@@ -115,7 +117,8 @@
                         <DataTrigger Binding="{Binding Model.SinglePane.SelectedContent.IsActive, RelativeSource={RelativeSource Self}}" Value="True">
                             <Setter TargetName="WindowBorder" Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Model.SinglePane.SelectedContent.CanClose, RelativeSource={RelativeSource Mode=Self}}" Value="True">
+                        <DataTrigger Binding="{Binding Model.SinglePane.SelectedContent.CanClose, RelativeSource={RelativeSource Mode=Self}}"
+                                     Value="True">
                             <Setter TargetName="CloseButton" Property="Command" Value="{Binding CloseWindowCommand, RelativeSource={RelativeSource TemplatedParent}}" />
                             <Setter TargetName="CloseButton" Property="ToolTip" Value="{x:Static lp:Resources.Document_Close}" />
 
