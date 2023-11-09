@@ -7,10 +7,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\CropImage16.png" />
+    <None Remove="Resources\CropImage32.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\Extensions\H.Extensions.ValueConverter\H.Extensions.ValueConverter.csproj" />
     <ProjectReference Include="..\..\Providers\H.Providers.Mvvm\H.Providers.Mvvm.csproj" />
     <ProjectReference Include="..\..\Styles\H.Styles.Default\H.Styles.Default.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Default\H.Themes.Default.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\CropImage16.png" />
+    <Resource Include="Resources\CropImage32.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,15 +34,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Update="RibbonTab.xaml">
+    <Page Update="ResourceKeys\RibbonTab.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Themes\Generic.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
   </ItemGroup>
 

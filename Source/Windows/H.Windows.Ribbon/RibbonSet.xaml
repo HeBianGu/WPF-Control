@@ -197,8 +197,8 @@
 
                             <CheckBox IsChecked="{Binding IsLabelVisible}" Content="IsLabelVisible" Margin="5 0" VerticalAlignment="Center"/>
                             <ComboBox SelectedItem="{Binding ImageSize}">
-                                <ribbon:RibbonImageSize>Small</ribbon:RibbonImageSize>
-                                <ribbon:RibbonImageSize>Large</ribbon:RibbonImageSize>
+                                <RibbonImageSize>Small</RibbonImageSize>
+                                <RibbonImageSize>Large</RibbonImageSize>
                             </ComboBox>
                         </DockPanel>
                     </DataTemplate>-->

@@ -1,0 +1,175 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="{x:Type RibbonGalleryItem}" TargetType="{x:Type RibbonGalleryItem}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="MouseOverBorderBrush" Value="{Binding RelativeSource={RelativeSource Self}, Path=Ribbon.MouseOverBorderBrush}" />
+        <Setter Property="MouseOverBackground" Value="{Binding RelativeSource={RelativeSource Self}, Path=Ribbon.MouseOverBackground}" />
+        <Setter Property="PressedBorderBrush" Value="{Binding RelativeSource={RelativeSource Self}, Path=Ribbon.PressedBorderBrush}" />
+        <Setter Property="PressedBackground" Value="{Binding RelativeSource={RelativeSource Self}, Path=Ribbon.PressedBackground}" />
+        <Setter Property="CheckedBorderBrush" Value="{Binding RelativeSource={RelativeSource Self}, Path=Ribbon.CheckedBorderBrush}" />
+        <Setter Property="CheckedBackground" Value="{Binding RelativeSource={RelativeSource Self}, Path=Ribbon.CheckedBackground}" />
+        <Setter Property="ToolTipService.InitialShowDelay" Value="{StaticResource S.RibbonToolTip.InitialShowDelay}" />
+        <Setter Property="ToolTipService.ShowDuration" Value="{StaticResource S.RibbonToolTip.ShowDuration}" />
+        <Setter Property="ToolTipService.BetweenShowDelay" Value="{StaticResource S.RibbonToolTip.BetweenShowDelay}" />
+        <Setter Property="Focusable" Value="True" />
+        <Setter Property="HorizontalContentAlignment" Value="{Binding Path=HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="VerticalContentAlignment" Value="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="Padding" Value="0" />
+
+        <!--
+            =================================================================
+            Classic (the default template)
+            ==================================================================
+        -->
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RibbonGalleryItem}">
+                    <Grid x:Name="MainGrid" SnapsToDevicePixels="True">
+                        <Border x:Name="OuterBorder"
+                                Padding="{TemplateBinding Padding}"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="2">
+                            <Border x:Name="InnerBorder"
+                                    Background="Transparent"
+                                    BorderBrush="Transparent"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="2">
+                                <ContentPresenter Margin="2"
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                  RecognizesAccessKey="True" />
+                            </Border>
+                        </Border>
+                        <Border x:Name="PressedStateOverlay"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                CornerRadius="2" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <!--  IsEnabled  -->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.5" />
+                            <Setter TargetName="MainGrid" Property="TextElement.Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
+                        </Trigger>
+
+                        <!--  HighContrast  -->
+
+                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+                            <Setter TargetName="MainGrid" Property="TextElement.Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
+                            <Setter TargetName="OuterBorder" Property="Background" Value="Transparent" />
+                            <Setter TargetName="OuterBorder" Property="BorderBrush" Value="Transparent" />
+                            <Setter TargetName="OuterBorder" Property="CornerRadius" Value="0" />
+                            <Setter TargetName="PressedStateOverlay" Property="CornerRadius" Value="0" />
+                        </DataTrigger>
+
+                        <!--  Highlighted  -->
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsHighlighted" Value="True" />
+                                <Condition Property="IsPressed" Value="False" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="OuterBorder" Property="Background" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=MouseOverBackground}" />
+                            <Setter TargetName="OuterBorder" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=MouseOverBorderBrush}" />
+                        </MultiTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsHighlighted}" Value="True" />
+
+                                <Condition Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True" />
+
+
+
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="OuterBorder" Property="Background" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
+                            <Setter TargetName="OuterBorder" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushAssist}}" />
+                            <Setter TargetName="MainGrid" Property="TextElement.Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundTitle}}" />
+                        </MultiDataTrigger>
+
+                        <!--  IsPressed  -->
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="OuterBorder" Property="Background" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=PressedBackground}" />
+                            <Setter TargetName="OuterBorder" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=PressedBorderBrush}" />
+                            <Setter TargetName="PressedStateOverlay" Property="Background" Value="{DynamicResource {x:Static BrushKeys.Background}}" />
+                        </Trigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsPressed}" Value="True" />
+
+                                <Condition Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True" />
+
+
+
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="OuterBorder" Property="Background" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
+                            <Setter TargetName="OuterBorder" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.Red}}" />
+                            <Setter TargetName="PressedStateOverlay" Property="Background" Value="{DynamicResource {x:Static BrushKeys.Background}}" />
+                            <Setter TargetName="MainGrid" Property="TextElement.Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundTitle}}" />
+                        </MultiDataTrigger>
+
+                        <!--  IsSelected  -->
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="OuterBorder" Property="Background" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=CheckedBackground}" />
+                            <Setter TargetName="OuterBorder" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=CheckedBorderBrush}" />
+                        </Trigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsSelected}" Value="True" />
+
+                                <Condition Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True" />
+
+
+
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="OuterBorder" Property="Background" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
+                            <Setter TargetName="OuterBorder" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.Red}}" />
+                            <Setter TargetName="MainGrid" Property="TextElement.Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundTitle}}" />
+                        </MultiDataTrigger>
+                        <!--  IsHighlighted + IsSelected  -->
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsHighlighted" Value="True" />
+                                <Condition Property="IsSelected" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="InnerBorder" Property="Background" Value="{DynamicResource {x:Static BrushKeys.Background}}" />
+                        </MultiTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsSelected}" Value="True" />
+                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsHighlighted}" Value="True" />
+
+                                <Condition Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True" />
+
+
+
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="InnerBorder" Property="Background" Value="Transparent" />
+                            <Setter TargetName="InnerBorder" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.Red}}" />
+                            <Setter TargetName="OuterBorder" Property="Background" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
+                            <Setter TargetName="OuterBorder" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushAssist}}" />
+                            <Setter TargetName="MainGrid" Property="TextElement.Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundTitle}}" />
+                        </MultiDataTrigger>
+
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsEnabled}" Value="False" />
+
+                                <Condition Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True" />
+
+
+
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="MainGrid" Property="TextElement.Foreground" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
+                        </MultiDataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

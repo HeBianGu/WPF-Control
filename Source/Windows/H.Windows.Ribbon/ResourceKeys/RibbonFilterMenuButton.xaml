@@ -1,0 +1,260 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:classic="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Classic">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/Share.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    <Style x:Key="{x:Type RibbonFilterMenuButton}" TargetType="{x:Type RibbonFilterMenuButton}">
+        <!--<Style.Resources>
+            <SolidColorBrush x:Key="&#273;" Color="#959595" />
+            <SolidColorBrush x:Key="&#274;" Color="#FFD232" />
+        </Style.Resources>-->
+        <Setter Property="Label" Value="RibbonCheckBox" />
+        <Setter Property="LargeImageSource" Value="/Resources/CropImage32.png" />
+        <Setter Property="SmallImageSource" Value="/Resources/CropImage16.png" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Background}}" />
+        <Setter Property="MouseOverBorderBrush" Value="{x:Null}" />
+        <Setter Property="MouseOverBackground" Value="{x:Null}" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="Padding" Value="6,0,0,0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RibbonFilterMenuButton}">
+                    <ControlTemplate.Resources>
+                        <ControlTemplate x:Key="&#275;" TargetType="{x:Type RibbonToggleButton}">
+                            <Grid SnapsToDevicePixels="True">
+                                <Border x:Name="OuterBorder"
+                                        Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="2,2,0,0">
+                                    <Grid Margin="{TemplateBinding Padding}">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <RibbonMenuItem x:Name="PART_CurrentFilterItem"
+                                                        Focusable="False"
+                                                        IsHitTestVisible="False">
+                                            <RibbonMenuItem.Template>
+                                                <ControlTemplate TargetType="{x:Type RibbonMenuItem}">
+                                                    <Border Background="{TemplateBinding Background}"
+                                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                                            BorderThickness="{TemplateBinding BorderThickness}">
+                                                        <ContentPresenter ContentSource="Header" />
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </RibbonMenuItem.Template>
+                                        </RibbonMenuItem>
+                                        <RibbonTwoLineText x:Name="TwoLineText"
+                                                           Grid.Column="1"
+                                                           Margin="1"
+                                                           HorizontalAlignment="Left"
+                                                           VerticalAlignment="Top"
+                                                           LineHeight="13px"
+                                                           LineStackingStrategy="BlockLineHeight"
+                                                           PathData="{TemplateBinding RibbonTwoLineText.PathData}"
+                                                           PathFill="{TemplateBinding Foreground}"
+                                                           PathStroke="{TemplateBinding Foreground}" />
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                        </ControlTemplate>
+                    </ControlTemplate.Resources>
+                    <Grid SnapsToDevicePixels="True">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <!--  Please note that the setter for the Style property is only so that this ToggleButton doesn't accidentally pick up some styles defined at the app level.  -->
+                        <RibbonToggleButton x:Name="PART_ToggleButton"
+                                            Padding="{TemplateBinding Padding}"
+                                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                            Background="{TemplateBinding Background}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="1"
+                                            CheckedBackground="{TemplateBinding PressedBackground}"
+                                            CheckedBorderBrush="{TemplateBinding PressedBorderBrush}"
+                                            ClickMode="Press"
+                                            FocusedBackground="{TemplateBinding FocusedBackground}"
+                                            FocusedBorderBrush="{TemplateBinding FocusedBorderBrush}"
+                                            Foreground="{TemplateBinding Foreground}"
+                                            IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsDropDownOpen, Mode=TwoWay}"
+                                            Label="{TemplateBinding Label}"
+                                            LargeImageSource="{TemplateBinding LargeImageSource}"
+                                            MouseOverBackground="{TemplateBinding MouseOverBackground}"
+                                            MouseOverBorderBrush="{TemplateBinding MouseOverBorderBrush}"
+                                            RibbonTwoLineText.PathData="{StaticResource S.Geometry.208}"
+                                            SmallImageSource="{TemplateBinding SmallImageSource}"
+                                            Style="{x:Null}"
+                                            Template="{StaticResource &#275;}" />
+
+                        <!--
+                            We only want the style-level setting of Foreground=White to apply to the RibbonToggleButton part;
+                            the filter menu items should not be affected by this setting.  So, we ancestor-bind the Foreground they
+                            will inherit to be the ancestor RibbonGallery's Foreground.  This only works if the RibbonFilterMenuButton
+                            is used within a RibbonGallery.  If it's used outside of a RibbonGallery, all the filter menu items will
+                            have White Foreground by default.
+                        -->
+                        <Popup x:Name="PART_Popup"
+                               AllowsTransparency="True"
+                               Focusable="False"
+                               HorizontalOffset="1"
+                               IsOpen="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsDropDownOpen}"
+                               Placement="Bottom"
+                               PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}"
+                               TextElement.Foreground="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type RibbonGallery}}, Path=Foreground}"
+                               VerticalOffset="-1">
+                            <classic:SystemDropShadowChrome Name="Shadow"
+                                                            KeyTipService.IsKeyTipScope="True"
+                                                            RenderOptions.ClearTypeHint="Enabled"
+                                                            Color="Transparent">
+                                <Border Name="MenuBorder"
+                                        Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Ribbon.Background}"
+                                        BorderBrush="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Ribbon.BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="2">
+                                    <Border x:Name="SubMenuInnerBorder"
+                                            Background="{DynamicResource {x:Static BrushKeys.Background}}"
+                                            BorderThickness="0"
+                                            CornerRadius="2">
+                                        <ScrollViewer x:Name="PART_SubMenuScrollViewer"
+                                                      Margin="1"
+                                                      Style="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type FrameworkElement},
+                                                                                                    ResourceId=MenuScrollViewer}}">
+
+                                            <Grid RenderOptions.ClearTypeHint="Enabled">
+                                                <Canvas x:Name="BackgroundCanvas"
+                                                        Width="0"
+                                                        Height="0"
+                                                        HorizontalAlignment="Left"
+                                                        VerticalAlignment="Top">
+                                                    <Rectangle x:Name="OpaqueRect"
+                                                               Width="{Binding ElementName=MenuBorder, Path=ActualWidth}"
+                                                               Height="{Binding ElementName=MenuBorder, Path=ActualHeight}"
+                                                               Fill="{Binding ElementName=MenuBorder, Path=Background}"
+                                                               RadiusX="2"
+                                                               RadiusY="2" />
+                                                    <Rectangle x:Name="OverlayRect"
+                                                               Width="{Binding ElementName=SubMenuInnerBorder, Path=ActualWidth}"
+                                                               Height="{Binding ElementName=SubMenuInnerBorder, Path=ActualHeight}"
+                                                               Fill="{Binding ElementName=SubMenuInnerBorder, Path=Background}"
+                                                               RadiusX="2"
+                                                               RadiusY="2" />
+                                                </Canvas>
+
+                                                <ItemsPresenter x:Name="ItemsPresenter"
+                                                                Grid.IsSharedSizeScope="True"
+                                                                KeyboardNavigation.DirectionalNavigation="Cycle"
+                                                                KeyboardNavigation.TabNavigation="Cycle" />
+
+                                            </Grid>
+
+                                        </ScrollViewer>
+                                    </Border>
+                                </Border>
+                            </classic:SystemDropShadowChrome>
+                        </Popup>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+
+                        <Trigger SourceName="PART_SubMenuScrollViewer" Property="ScrollViewer.CanContentScroll" Value="false">
+                            <Setter TargetName="OpaqueRect" Property="Canvas.Top" Value="{Binding ElementName=PART_SubMenuScrollViewer, Path=VerticalOffset}" />
+                            <Setter TargetName="OpaqueRect" Property="Canvas.Left" Value="{Binding ElementName=PART_SubMenuScrollViewer, Path=HorizontalOffset}" />
+                            <Setter TargetName="OverlayRect" Property="Canvas.Top" Value="{Binding ElementName=PART_SubMenuScrollViewer, Path=VerticalOffset}" />
+                            <Setter TargetName="OverlayRect" Property="Canvas.Left" Value="{Binding ElementName=PART_SubMenuScrollViewer, Path=HorizontalOffset}" />
+                        </Trigger>
+
+                        <Trigger SourceName="PART_Popup" Property="Popup.HasDropShadow" Value="True">
+                            <Setter TargetName="Shadow" Property="Margin" Value="0,0,5,5" />
+                            <Setter TargetName="Shadow" Property="Color" Value="Black" />
+                        </Trigger>
+                        <Trigger SourceName="PART_Popup" Property="Popup.IsOpen" Value="False">
+                            <Setter TargetName="PART_Popup" Property="PopupAnimation" Value="None" />
+                        </Trigger>
+                        <!--  HighContrast  -->
+
+                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+
+
+
+
+                            <Setter TargetName="BackgroundCanvas" Property="Visibility" Value="Collapsed" />
+
+                            <Setter TargetName="Shadow" Property="Color" Value="Transparent" />
+                            <Setter TargetName="PART_SubMenuScrollViewer" Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundTitle}}" />
+                            <Setter TargetName="PART_Popup" Property="PopupAnimation" Value="None" />
+                            <Setter TargetName="MenuBorder" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
+                            <Setter TargetName="MenuBorder" Property="Background" Value="{DynamicResource {x:Static BrushKeys.Background}}" />
+                            <Setter TargetName="SubMenuInnerBorder" Property="Background" Value="Transparent" />
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+
+
+
+                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Background}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
+            </DataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+
+                    <Condition Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="False" />
+
+
+
+                    <Condition Binding="{Binding Path=IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True" />
+                    <Condition Binding="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource Self}}" Value="False" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+
+                    <Condition Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True" />
+
+
+
+                    <Condition Binding="{Binding Path=IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True" />
+                    <Condition Binding="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource Self}}" Value="False" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Background}}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+
+                    <Condition Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="False" />
+
+
+
+                    <Condition Binding="{Binding Path=IsKeyboardFocusWithin, RelativeSource={RelativeSource Self}}" Value="True" />
+                    <Condition Binding="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource Self}}" Value="False" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+
+                    <Condition Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True" />
+
+
+
+                    <Condition Binding="{Binding Path=IsKeyboardFocusWithin, RelativeSource={RelativeSource Self}}" Value="True" />
+                    <Condition Binding="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource Self}}" Value="False" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Background}}" />
+            </MultiDataTrigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

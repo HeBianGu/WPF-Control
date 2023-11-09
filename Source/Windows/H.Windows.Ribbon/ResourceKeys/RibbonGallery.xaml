@@ -1,0 +1,139 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:primitives="clr-namespace:System.Windows.Controls.Ribbon.Primitives;assembly=System.Windows.Controls.Ribbon">
+    <Style x:Key="{x:Type RibbonGallery}" TargetType="{x:Type RibbonGallery}">
+        <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Self}, Path=Ribbon.BorderBrush}" />
+        <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Self}, Path=Ribbon.Background}" />
+        <Setter Property="BorderThickness" Value="0,1" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Visible" />
+        <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="CommandParameter" Value="{Binding RelativeSource={RelativeSource Self}, Path=SelectedItem}" />
+        <Setter Property="PreviewCommandParameter" Value="{Binding RelativeSource={RelativeSource Self}, Path=HighlightedItem}" />
+
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <primitives:RibbonGalleryCategoriesPanel Name="ItemsHostPanel" IsItemsHost="True" />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RibbonGallery}">
+                    <Border x:Name="Border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            SnapsToDevicePixels="True">
+                        <Border x:Name="InnerBorder" Background="{DynamicResource {x:Static BrushKeys.Background}}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid x:Name="FilterHost">
+                                    <ContentPresenter x:Name="PART_FilterContentPane" ContentSource="FilterPaneContent" />
+                                    <RibbonFilterMenuButton x:Name="PART_FilterMenuButton"
+                                                            HorizontalContentAlignment="Left"
+                                                            ItemContainerStyleSelector="{TemplateBinding FilterItemContainerStyleSelector}"
+                                                            ItemTemplateSelector="{TemplateBinding FilterItemTemplateSelector}"
+                                                            Style="{TemplateBinding FilterMenuButtonStyle}"
+                                                            Visibility="Collapsed" />
+                                </Grid>
+                                <ScrollViewer x:Name="PART_ScrollViewer"
+                                              Grid.Row="1"
+                                              Padding="{TemplateBinding Padding}"
+                                              Focusable="False">
+
+                                    <Grid RenderOptions.ClearTypeHint="Enabled">
+                                        <Canvas x:Name="BackgroundCanvas"
+                                                Width="0"
+                                                Height="0"
+                                                HorizontalAlignment="Left"
+                                                VerticalAlignment="Top">
+                                            <Rectangle x:Name="OpaqueRect"
+                                                       Width="{Binding ElementName=Border, Path=ActualWidth}"
+                                                       Height="{Binding ElementName=Border, Path=ActualHeight}"
+                                                       Fill="{Binding ElementName=Border, Path=Background}" />
+                                            <Rectangle x:Name="OverlayRect"
+                                                       Width="{Binding ElementName=Border, Path=ActualWidth}"
+                                                       Height="{Binding ElementName=Border, Path=ActualHeight}"
+                                                       Fill="{DynamicResource {x:Static BrushKeys.Foreground}}" />
+                                        </Canvas>
+
+                                        <ItemsPresenter x:Name="ItemsPresenter"
+                                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                        KeyboardNavigation.DirectionalNavigation="Continue" />
+
+                                    </Grid>
+
+                                </ScrollViewer>
+                            </Grid>
+                        </Border>
+                    </Border>
+                    <ControlTemplate.Triggers>
+
+                        <Trigger SourceName="PART_ScrollViewer" Property="ScrollViewer.CanContentScroll" Value="false">
+                            <Setter TargetName="OpaqueRect" Property="Canvas.Top" Value="{Binding ElementName=PART_ScrollViewer, Path=VerticalOffset}" />
+                            <Setter TargetName="OpaqueRect" Property="Canvas.Left" Value="{Binding ElementName=PART_ScrollViewer, Path=HorizontalOffset}" />
+                            <Setter TargetName="OverlayRect" Property="Canvas.Top" Value="{Binding ElementName=PART_ScrollViewer, Path=VerticalOffset}" />
+                            <Setter TargetName="OverlayRect" Property="Canvas.Left" Value="{Binding ElementName=PART_ScrollViewer, Path=HorizontalOffset}" />
+                        </Trigger>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource {x:Static BrushKeys.Background}}" />
+                        </Trigger>
+                        <Trigger Property="CanUserFilter" Value="False">
+                            <Setter TargetName="FilterHost" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="FilterPaneContent" Value="{x:Null}" />
+                                <Condition Property="FilterPaneContentTemplate" Value="{x:Null}" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="PART_FilterMenuButton" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="PART_FilterContentPane" Property="Visibility" Value="Collapsed" />
+                        </MultiTrigger>
+
+                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+
+
+
+
+                            <Setter TargetName="BackgroundCanvas" Property="Visibility" Value="Collapsed" />
+
+                            <Setter TargetName="Border" Property="Background" Value="Transparent" />
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
+                            <Setter TargetName="InnerBorder" Property="Background" Value="Transparent" />
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

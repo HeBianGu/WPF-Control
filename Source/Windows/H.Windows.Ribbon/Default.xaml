@@ -1,0 +1,37 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/Share.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/ResourceKeys/Ribbon.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/ResourceKeys/RibbonApplicationMenu.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/ResourceKeys/RibbonApplicationMenuItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/ResourceKeys/RibbonApplicationSplitMenuItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/ResourceKeys/RibbonButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/ResourceKeys/RibbonCheckBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/ResourceKeys/RibbonComboBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/ResourceKeys/RibbonContextMenu.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/ResourceKeys/RibbonContextualTabGroup.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/ResourceKeys/RibbonContextualTabGroupItemsControl.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/ResourceKeys/RibbonControl.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/ResourceKeys/RibbonControlGroup.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/ResourceKeys/RibbonFilterMenuButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/ResourceKeys/RibbonGallery.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/ResourceKeys/RibbonGalleryCategory.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/ResourceKeys/RibbonGalleryItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/ResourceKeys/RibbonGroup.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/ResourceKeys/RibbonMenuButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/ResourceKeys/RibbonMenuItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/ResourceKeys/RibbonQuickAccessToolBar.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/ResourceKeys/RibbonRadioButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/ResourceKeys/RibbonSeparator.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/ResourceKeys/RibbonSplitButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/ResourceKeys/RibbonSplitMenuItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/ResourceKeys/RibbonTab.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/ResourceKeys/RibbonTextBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/ResourceKeys/RibbonToggleButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/ResourceKeys/RibbonToolTip.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/ResourceKeys/RibbonTextBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/ResourceKeys/RibbonTwoLineText.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/ResourceKeys/RibbonWindow.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

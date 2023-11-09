@@ -46,11 +46,11 @@
                 <Setter Property="GroupSizeDefinitions" Value="{Binding GroupSizeDefinitions, Mode=TwoWay}" />
                 <!--<Setter Property="GroupSizeDefinitions">
                                 <Setter.Value>
-                                    <ribbon:RibbonGroupSizeDefinitionBaseCollection>
-                                        <ribbon:RibbonGroupSizeDefinition IsCollapsed="{Binding IsCollapsed}">
-                                            <ribbon:RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="False"/>
-                                        </ribbon:RibbonGroupSizeDefinition>
-                                    </ribbon:RibbonGroupSizeDefinitionBaseCollection>
+                                    <RibbonGroupSizeDefinitionBaseCollection>
+                                        <RibbonGroupSizeDefinition IsCollapsed="{Binding IsCollapsed}">
+                                            <RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="False"/>
+                                        </RibbonGroupSizeDefinition>
+                                    </RibbonGroupSizeDefinitionBaseCollection>
                                 </Setter.Value>
                             </Setter>-->
                 <!--<Setter Property="ItemsSource" Value="{Binding ControlDataCollection}"/>-->

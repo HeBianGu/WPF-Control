@@ -1,0 +1,167 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:classic="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Classic">
+
+    <Style x:Key="{x:Type RibbonToolTip}" TargetType="{x:Type RibbonToolTip}">
+        <Setter Property="Title" Value="RibbonToolTip"/>
+        <Setter Property="ImageSource" Value="/Resources/CropImage32.png" />
+        <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Self}, Path=Ribbon.Background}" />
+        <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Self}, Path=Ribbon.BorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="FontSize" Value="{DynamicResource {x:Static SystemFonts.StatusFontSizeKey}}" />
+        <Setter Property="FontStyle" Value="{DynamicResource {x:Static SystemFonts.StatusFontStyleKey}}" />
+        <Setter Property="FontWeight" Value="{DynamicResource {x:Static SystemFonts.StatusFontWeightKey}}" />
+        <Setter Property="FontFamily" Value="{DynamicResource {x:Static SystemFonts.StatusFontFamilyKey}}" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
+        <Setter Property="HasDropShadow" Value="{DynamicResource {x:Static SystemParameters.DropShadowKey}}" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Padding" Value="5,5,5,4" />
+        <Setter Property="Placement" Value="Mouse" />
+        <Setter Property="Width" Value="318" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RibbonToolTip}">
+
+                    <classic:SystemDropShadowChrome x:Name="Shadow"
+                                                    CornerRadius="2"
+                                                    RenderOptions.ClearTypeHint="Enabled"
+                                                    SnapsToDevicePixels="True"
+                                                    Color="Transparent">
+                        <Border x:Name="Border"
+                                MinHeight="50"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="2">
+                            <Border x:Name="InnerBorder"
+                                    Padding="{TemplateBinding Padding}"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    Background="{DynamicResource {x:Static BrushKeys.Background}}"
+                                    BorderBrush="Transparent"
+                                    BorderThickness="0"
+                                    CornerRadius="2">
+                                <StackPanel>
+                                    <Grid x:Name="Header">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock x:Name="Title"
+                                                   Grid.ColumnSpan="2"
+                                                   FontWeight="Bold"
+                                                   Text="{TemplateBinding Title}"
+                                                   TextWrapping="Wrap" />
+                                        <Image x:Name="Image"
+                                               Grid.Row="1"
+                                               Margin="7,9,6,4"
+                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                               Source="{TemplateBinding ImageSource}"
+                                               Stretch="None" />
+                                        <TextBlock x:Name="Description"
+                                                   Grid.Row="1"
+                                                   Grid.Column="1"
+                                                   Margin="8,8,0,0"
+                                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                   Text="{TemplateBinding Description}"
+                                                   TextWrapping="Wrap" />
+                                    </Grid>
+                                    <RibbonSeparator x:Name="Separator"
+                                                     Margin="0,6,0,0"
+                                                     BorderBrush="{TemplateBinding BorderBrush}"
+                                                     Visibility="Collapsed" />
+                                    <Grid x:Name="Footer"
+                                          Margin="0,4,0,0"
+                                          Visibility="Collapsed">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <Image x:Name="FooterImage"
+                                               Margin="0,0,7,0"
+                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                               Source="{TemplateBinding FooterImageSource}"
+                                               Stretch="None" />
+                                        <TextBlock x:Name="FooterTitle"
+                                                   Grid.Column="1"
+                                                   FontWeight="Bold"
+                                                   Text="{TemplateBinding FooterTitle}"
+                                                   TextWrapping="Wrap" />
+                                        <TextBlock x:Name="FooterDescription"
+                                                   Grid.Row="1"
+                                                   Grid.Column="1"
+                                                   Margin="0,0,6,0"
+                                                   Text="{TemplateBinding FooterDescription}"
+                                                   TextWrapping="Wrap" />
+                                    </Grid>
+                                </StackPanel>
+                            </Border>
+                        </Border>
+                    </classic:SystemDropShadowChrome>
+
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="HasHeader" Value="False">
+                            <Setter TargetName="Header" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <Trigger Property="ImageSource" Value="{x:Null}">
+                            <Setter TargetName="Image" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="Description" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="Description" Property="Grid.ColumnSpan" Value="2" />
+                            <Setter Property="Width" Value="210" />
+                        </Trigger>
+                        <Trigger Property="HasFooter" Value="True">
+                            <Setter TargetName="Separator" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="Footer" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="FooterDescription" Value="{x:Null}">
+                            <Setter TargetName="FooterDescription" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <Trigger Property="HasDropShadow" Value="True">
+                            <Setter TargetName="Shadow" Property="Margin" Value="0,0,5,5" />
+                            <Setter TargetName="Shadow" Property="Color" Value="Black" />
+                        </Trigger>
+
+                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+
+
+
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource {x:Static BrushKeys.ForegroundTitle}}" />
+                            <Setter TargetName="Border" Property="TextElement.Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
+                            <Setter TargetName="InnerBorder" Property="Background" Value="Transparent" />
+                            <Setter TargetName="Shadow" Property="Color" Value="Transparent" />
+                        </DataTrigger>
+                        <Trigger Property="IsPlacementTargetInRibbonGroup" Value="True">
+                            <Setter Property="Placement" Value="Custom" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="ImageSource" Value="{x:Null}" />
+                                <Condition Property="Description" Value="{x:Null}" />
+                                <Condition Property="HasFooter" Value="False" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Border" Property="MinHeight" Value="0" />
+                            <Setter TargetName="Title" Property="FontWeight" Value="Normal" />
+                            <Setter TargetName="Description" Property="Visibility" Value="Collapsed" />
+                            <Setter Property="Width" Value="Auto" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+
+</ResourceDictionary>
