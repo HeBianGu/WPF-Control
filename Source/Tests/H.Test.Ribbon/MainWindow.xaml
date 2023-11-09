@@ -8,7 +8,7 @@
               xmlns:system="clr-namespace:System;assembly=mscorlib"
               Title="ShellWindow"
               Width="1100"
-              Height="700"
+              Height="700" Style="{DynamicResource {x:Static h:RibbonWindowKeys.Default}}"
               mc:Ignorable="d">
 
     <!--<Window.Resources>
@@ -118,148 +118,152 @@
         </Style>
 
     </Window.Resources>-->
-    <Ribbon Title="文件">
-        <Ribbon.ApplicationMenu>
-            <RibbonApplicationMenu>
-                <RibbonApplicationMenuItem Header="开始" />
-                <RibbonApplicationMenuItem Header="开始" />
-                <RibbonApplicationMenuItem Header="开始" />
-                <RibbonApplicationMenuItem Header="开始" />
-                <RibbonApplicationMenuItem Header="开始" />
-            </RibbonApplicationMenu>
-        </Ribbon.ApplicationMenu>
+
+    <DockPanel>
+        <Ribbon Visibility="Visible" Title="文件" DockPanel.Dock="Top">
+            <Ribbon.ApplicationMenu>
+                <RibbonApplicationMenu>
+                    <RibbonApplicationMenuItem Header="开始" />
+                    <RibbonApplicationMenuItem Header="开始" />
+                    <RibbonApplicationMenuItem Header="开始" />
+                    <RibbonApplicationMenuItem Header="开始" />
+                    <RibbonApplicationMenuItem Header="开始" />
+                </RibbonApplicationMenu>
+            </Ribbon.ApplicationMenu>
 
 
-        <Ribbon.QuickAccessToolBar>
-            <RibbonQuickAccessToolBar>
-                <RibbonButton />
-                <RibbonButton />
-                <RibbonButton />
-                <RibbonButton />
-                <RibbonButton />
+            <Ribbon.QuickAccessToolBar>
+                <RibbonQuickAccessToolBar>
+                    <RibbonButton />
+                    <RibbonButton />
+                    <RibbonButton />
+                    <RibbonButton />
+                    <RibbonButton />
 
-                <RibbonMenuButton>
-                    <RibbonMenuButton.ControlSizeDefinition>
-                        <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True" />
-                    </RibbonMenuButton.ControlSizeDefinition>
-                    <RibbonSplitMenuItem StaysOpenOnClick="True">
-                        <RibbonMenuItem Header="ss" />
+                    <RibbonMenuButton>
+                        <RibbonMenuButton.ControlSizeDefinition>
+                            <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True" />
+                        </RibbonMenuButton.ControlSizeDefinition>
+                        <RibbonSplitMenuItem StaysOpenOnClick="True">
+                            <RibbonMenuItem Header="ss" />
+                            <RibbonMenuItem />
+                            <RibbonMenuItem />
+                            <RibbonMenuItem />
+                            <RibbonMenuItem />
+                            <RibbonMenuItem />
+                        </RibbonSplitMenuItem>
                         <RibbonMenuItem />
                         <RibbonMenuItem />
                         <RibbonMenuItem />
                         <RibbonMenuItem />
                         <RibbonMenuItem />
-                    </RibbonSplitMenuItem>
-                    <RibbonMenuItem />
-                    <RibbonMenuItem />
-                    <RibbonMenuItem />
-                    <RibbonMenuItem />
-                    <RibbonMenuItem />
-                </RibbonMenuButton>
-                <RibbonButton />
-            </RibbonQuickAccessToolBar>
-        </Ribbon.QuickAccessToolBar>
+                    </RibbonMenuButton>
+                    <RibbonButton />
+                </RibbonQuickAccessToolBar>
+            </Ribbon.QuickAccessToolBar>
 
-        <RibbonTab Header="开始">
-            <RibbonGroup Header="Button">
-                <RibbonButton />
-                <RibbonButton />
-                <RibbonButton />
-            </RibbonGroup>
+            <RibbonTab Header="开始">
+                <RibbonGroup Header="Button">
+                    <RibbonButton />
+                    <RibbonButton />
+                    <RibbonButton />
+                </RibbonGroup>
 
-            <RibbonGroup Header="CheckBox">
-                <RibbonCheckBox />
-            </RibbonGroup>
+                <RibbonGroup Header="CheckBox">
+                    <RibbonCheckBox />
+                </RibbonGroup>
 
-            <RibbonGroup Header="SplitButton">
-                <RibbonSplitButton>
-                    <RibbonMenuItem Header="放大" />
-                    <RibbonMenuItem Header="放大" />
-                    <RibbonMenuItem Header="放大" />
-                    <RibbonMenuItem Header="放大" />
-                    <RibbonMenuItem Header="放大" />
-                    <RibbonMenuItem Header="放大" />
-                </RibbonSplitButton>
-            </RibbonGroup>
+                <RibbonGroup Header="SplitButton">
+                    <RibbonSplitButton>
+                        <RibbonMenuItem Header="放大" />
+                        <RibbonMenuItem Header="放大" />
+                        <RibbonMenuItem Header="放大" />
+                        <RibbonMenuItem Header="放大" />
+                        <RibbonMenuItem Header="放大" />
+                        <RibbonMenuItem Header="放大" />
+                    </RibbonSplitButton>
+                </RibbonGroup>
 
-            <RibbonGroup Header="ComboBox">
-                <RibbonComboBox>
-                    <system:String>1</system:String>
-                    <system:String>1</system:String>
-                    <system:String>1</system:String>
-                    <system:String>1</system:String>
-                </RibbonComboBox>
+                <RibbonGroup Header="ComboBox">
+                    <RibbonComboBox>
+                        <system:String>1</system:String>
+                        <system:String>1</system:String>
+                        <system:String>1</system:String>
+                        <system:String>1</system:String>
+                    </RibbonComboBox>
 
-                <RibbonSeparator />
-            </RibbonGroup>
+                    <RibbonSeparator />
+                </RibbonGroup>
 
-            <RibbonGroup Header="TextBox">
-                <RibbonTextBox />
-            </RibbonGroup>
+                <RibbonGroup Header="TextBox">
+                    <RibbonTextBox />
+                </RibbonGroup>
 
-            <RibbonGroup Header="ToggleButton">
-                <RibbonToggleButton />
-            </RibbonGroup>
+                <RibbonGroup Header="ToggleButton">
+                    <RibbonToggleButton />
+                </RibbonGroup>
 
-        </RibbonTab>
+            </RibbonTab>
 
-        <RibbonTab Header="插入">
-            <RibbonGroup Header="剪贴板">
-                <RibbonToggleButton />
-            </RibbonGroup>
-        </RibbonTab>
+            <RibbonTab Header="插入">
+                <RibbonGroup Header="剪贴板">
+                    <RibbonToggleButton />
+                </RibbonGroup>
+            </RibbonTab>
 
-        <RibbonTab Header="设计">
-            <RibbonGroup Header="剪贴板">
-                <RibbonButton Content="复制" />
-                <RibbonCheckBox Content="自动保存" />
-                <RibbonComboBox Text="1">
-                    <system:String>1</system:String>
-                    <system:String>1</system:String>
-                    <system:String>1</system:String>
-                    <system:String>1</system:String>
-                </RibbonComboBox>
+            <RibbonTab Header="设计">
+                <RibbonGroup Header="剪贴板">
+                    <RibbonButton Content="复制" />
+                    <RibbonCheckBox Content="自动保存" />
+                    <RibbonComboBox Text="1">
+                        <system:String>1</system:String>
+                        <system:String>1</system:String>
+                        <system:String>1</system:String>
+                        <system:String>1</system:String>
+                    </RibbonComboBox>
 
-                <RibbonSplitButton />
-                <RibbonRadioButton />
-                <RibbonSeparator />
-                <RibbonTextBox />
-                <RibbonToggleButton />
-            </RibbonGroup>
-        </RibbonTab>
+                    <RibbonSplitButton />
+                    <RibbonRadioButton />
+                    <RibbonSeparator />
+                    <RibbonTextBox />
+                    <RibbonToggleButton />
+                </RibbonGroup>
+            </RibbonTab>
 
-        <RibbonTab Header="布局">
-            <RibbonGroup Header="剪贴板">
-                <RibbonButton Content="复制" />
-                <RibbonCheckBox Content="自动保存" />
-                <RibbonComboBox Text="1">
-                    <system:String>1</system:String>
-                    <system:String>1</system:String>
-                    <system:String>1</system:String>
-                    <system:String>1</system:String>
-                </RibbonComboBox>
+            <RibbonTab Header="布局">
+                <RibbonGroup Header="剪贴板">
+                    <RibbonButton Content="复制" />
+                    <RibbonCheckBox Content="自动保存" />
+                    <RibbonComboBox Text="1">
+                        <system:String>1</system:String>
+                        <system:String>1</system:String>
+                        <system:String>1</system:String>
+                        <system:String>1</system:String>
+                    </RibbonComboBox>
 
-                <RibbonSplitButton />
-                <RibbonRadioButton />
-                <RibbonSeparator />
-                <RibbonTextBox />
-                <RibbonToggleButton />
-            </RibbonGroup>
-        </RibbonTab>
+                    <RibbonSplitButton />
+                    <RibbonRadioButton />
+                    <RibbonSeparator />
+                    <RibbonTextBox />
+                    <RibbonToggleButton />
+                </RibbonGroup>
+            </RibbonTab>
 
-        <RibbonTab Header="布局111">
-            <RibbonGroup Header="剪贴板" />
-            <RibbonGroup Header="剪贴板"
+            <RibbonTab Header="布局111">
+                <RibbonGroup Header="剪贴板" />
+                <RibbonGroup Header="剪贴板"
                          IsEnabled="False"
                          ItemsSource="{Binding Collection}"
                          Style="{x:Null}" />
 
-            <RibbonControlGroup>
-                <RibbonButton Content="复制" />
-                <RibbonButton Content="复制" />
-            </RibbonControlGroup>
+                <RibbonControlGroup>
+                    <RibbonButton Content="复制" />
+                    <RibbonButton Content="复制" />
+                </RibbonControlGroup>
 
-        </RibbonTab>
-    </Ribbon>
+            </RibbonTab>
+        </Ribbon>
+        <Button Content="按钮"/>
+    </DockPanel>
 </RibbonWindow>
 

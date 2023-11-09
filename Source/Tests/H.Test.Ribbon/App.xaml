@@ -7,10 +7,10 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <!--<FontSizeTheme Type="{x:Static h:FontSizeThemeType.Default}"/>
+                <FontSizeTheme Type="{x:Static h:FontSizeThemeType.Default}"/>
                 <LayoutTheme Type="{x:Static h:LayoutThemeType.Default}" />
                 <ColorTheme Type="{x:Static h:ColorThemeType.Dark}" />
-                <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/ConciseControls.xaml" />-->
+                <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/ConciseControls.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/Generic.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
