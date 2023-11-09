@@ -12,6 +12,14 @@
                 <ColorTheme Type="{x:Static h:ColorThemeType.Dark}" />
                 <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/ConciseControls.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/Generic.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/RibbonWindow.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/RibbonButton.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/Ribbon.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/RibbonTab.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/RibbonGroup.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/RibbonSplitButton.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/RibbonMenuItem.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/RibbonToggleButton.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
