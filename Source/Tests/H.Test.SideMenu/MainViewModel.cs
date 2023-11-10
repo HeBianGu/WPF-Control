@@ -1,0 +1,57 @@
+﻿using H.Providers.Mvvm;
+using System.Collections.ObjectModel;
+using System.Linq;
+
+namespace H.Test.SideMenu
+{
+    public class MainViewModel : NotifyPropertyChanged
+    {
+        public MainViewModel()
+        {
+            this.Collection.Add(new UserManager());
+            this.Collection.Add(new RoleManager());
+            this.Collection.Add(new AuthorManager());
+
+            this.Collection.Add(new DebugManager());
+            this.Collection.Add(new ErrorManager());
+            this.Collection.Add(new FatalManager());
+            this.Collection.Add(new InfoManager());
+            this.Collection.Add(new WarnManager());
+        }
+        private ObservableCollection<IManager> _collection = new ObservableCollection<IManager>();
+        public ObservableCollection<IManager> Collection
+        {
+            get { return _collection; }
+            set
+            {
+                _collection = value;
+                RaisePropertyChanged();
+            }
+        }
+
+
+        private IManager _selectedManager;
+        public IManager SelectedManager
+        {
+            get { return _selectedManager; }
+            set
+            {
+                _selectedManager = value;
+                if (_selectedManager != null)
+                    _selectedManager.IsVisibleInTab = true;
+                RaisePropertyChanged();
+            }
+        }
+
+        public RelayCommand HideItemCommand => new RelayCommand((s, e) =>
+        {
+            if (e is IManager manager)
+                manager.IsVisibleInTab = false;
+        }, (s, e) =>
+        {
+            return this.Collection.Count(x => x.IsVisibleInTab) > 1;
+        });
+
+    }
+
+}

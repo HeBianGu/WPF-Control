@@ -386,13 +386,14 @@
                 <Label Content="Label" />
             </TabItem>
             <TabItem Header="Expander">
-                <Expander Header="Expander">
+                <Expander Header="Expander" IsExpanded="True">
                     <ListBox ItemsSource="{h:GetStudents Count=50}" />
                 </Expander>
             </TabItem>
             <TabItem Header="ListBox">
                 <ListBox ItemsSource="{h:GetStudents Count=50}"
-                         SelectedIndex="0" />
+                         SelectedIndex="0">
+                </ListBox>
             </TabItem>
             <TabItem Header="PasswordBox">
                 <PasswordBox />

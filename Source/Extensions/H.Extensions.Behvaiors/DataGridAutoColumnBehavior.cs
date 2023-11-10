@@ -41,7 +41,7 @@ namespace H.Extensions.Behvaiors
                 {
 
                 }
-
+                control.GenerateColumns();
             }));
 
         /// <summary>

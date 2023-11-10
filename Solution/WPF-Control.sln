@@ -131,13 +131,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Extensions.Command", "..\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Controls.Dock", "..\Source\Controls\H.Controls.Dock\H.Controls.Dock.csproj", "{2DB3B438-B8F3-4D43-93ED-1DB6E94EEEA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Controls.OutlookBar", "..\Source\Controls\H.Controls.OutlookBar\H.Controls.OutlookBar.csproj", "{1AE0A6D5-4058-45AF-ADD1-964217A69E08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Controls.OutlookBar", "..\Source\Controls\H.Controls.OutlookBar\H.Controls.OutlookBar.csproj", "{1AE0A6D5-4058-45AF-ADD1-964217A69E08}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Test.OutlookBar", "..\Source\Tests\H.Test.OutlookBar\H.Test.OutlookBar.csproj", "{5192D629-5D91-4AB0-968D-66FBE2C8DB0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Test.OutlookBar", "..\Source\Tests\H.Test.OutlookBar\H.Test.OutlookBar.csproj", "{5192D629-5D91-4AB0-968D-66FBE2C8DB0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Windows.Ribbon", "..\Source\Windows\H.Windows.Ribbon\H.Windows.Ribbon.csproj", "{FD46B6AD-7614-4503-BF9A-20F0BF158A4E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Windows.Ribbon", "..\Source\Windows\H.Windows.Ribbon\H.Windows.Ribbon.csproj", "{FD46B6AD-7614-4503-BF9A-20F0BF158A4E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Test.Ribbon", "..\Source\Tests\H.Test.Ribbon\H.Test.Ribbon.csproj", "{4A1BCCE2-C31C-4C2D-8BFC-119352E3D7F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Test.Ribbon", "..\Source\Tests\H.Test.Ribbon\H.Test.Ribbon.csproj", "{4A1BCCE2-C31C-4C2D-8BFC-119352E3D7F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Test.SideMenu", "..\Source\Tests\H.Test.SideMenu\H.Test.SideMenu.csproj", "{9FD0A533-34A3-458B-8C5A-80182A5039B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -369,6 +371,10 @@ Global
 		{4A1BCCE2-C31C-4C2D-8BFC-119352E3D7F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A1BCCE2-C31C-4C2D-8BFC-119352E3D7F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A1BCCE2-C31C-4C2D-8BFC-119352E3D7F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FD0A533-34A3-458B-8C5A-80182A5039B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FD0A533-34A3-458B-8C5A-80182A5039B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FD0A533-34A3-458B-8C5A-80182A5039B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FD0A533-34A3-458B-8C5A-80182A5039B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -431,6 +437,7 @@ Global
 		{5192D629-5D91-4AB0-968D-66FBE2C8DB0A} = {E2C0B11D-5ED5-4F22-8E56-F68982B6E59B}
 		{FD46B6AD-7614-4503-BF9A-20F0BF158A4E} = {281CB212-771A-413C-B839-2852631897FD}
 		{4A1BCCE2-C31C-4C2D-8BFC-119352E3D7F0} = {E2C0B11D-5ED5-4F22-8E56-F68982B6E59B}
+		{9FD0A533-34A3-458B-8C5A-80182A5039B6} = {E2C0B11D-5ED5-4F22-8E56-F68982B6E59B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF825C3D-F4F4-4E62-BBFF-B42A5E81112F}

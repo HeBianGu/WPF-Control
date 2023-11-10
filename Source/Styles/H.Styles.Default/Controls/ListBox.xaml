@@ -7,9 +7,10 @@
 
     <Style x:Key="{ComponentResourceKey ResourceId=S.ListBox.Default,
                                         TypeInTargetAssembly={x:Type local:ListBoxKeys}}"
+           BasedOn="{StaticResource {x:Type ListBox}}"
            TargetType="ListBox">
         <Setter Property="SnapsToDevicePixels" Value="true" />
-        <!--<Setter Property="OverridesDefaultStyle" Value="true" />-->
+        <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
         <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
@@ -27,10 +28,8 @@
                         <Border.BorderBrush>
                             <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
                         </Border.BorderBrush>
-                        <ScrollViewer Margin="0"
-                                      Focusable="false">
-                            <StackPanel Margin="2"
-                                        IsItemsHost="True" />
+                        <ScrollViewer Focusable="false" Padding="{TemplateBinding Padding}">
+                            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                         </ScrollViewer>
                     </Border>
                     <ControlTemplate.Triggers>
@@ -46,9 +45,13 @@
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
-                        <Trigger Property="IsGrouping" Value="true">
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsGrouping" Value="true" />
+                                <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
+                            </MultiTrigger.Conditions>
                             <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
-                        </Trigger>
+                        </MultiTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -138,9 +141,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style BasedOn="{StaticResource {x:Static local:ListBoxKeys.Default}}"
-           TargetType="ListBox" />
-    <Style BasedOn="{StaticResource {x:Static local:ListBoxItemKeys.Default}}"
-           TargetType="ListBoxItem" />
+    <Style BasedOn="{StaticResource {x:Static local:ListBoxKeys.Default}}" TargetType="ListBox" />
+    <Style BasedOn="{StaticResource {x:Static local:ListBoxItemKeys.Default}}" TargetType="ListBoxItem" />
 
 </ResourceDictionary>
