@@ -143,5 +143,4 @@
     </Style>
     <Style BasedOn="{StaticResource {x:Static local:ListBoxKeys.Default}}" TargetType="ListBox" />
     <Style BasedOn="{StaticResource {x:Static local:ListBoxItemKeys.Default}}" TargetType="ListBoxItem" />
-
 </ResourceDictionary>

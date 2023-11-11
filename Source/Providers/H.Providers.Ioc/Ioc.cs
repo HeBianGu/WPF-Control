@@ -20,6 +20,13 @@ namespace System
 
         public static T GetService<T>(bool throwIfNone = true)
         {
+            if (_services == null)
+            {
+                if (throwIfNone)
+                    throw new ArgumentNullException($"请先注册使用ApplicationBase注册<IServiceCollection>接口");
+                else
+                    return default(T);
+            }
             var r = (T)_services.GetService(typeof(T));
             if (r == null && throwIfNone)
             {

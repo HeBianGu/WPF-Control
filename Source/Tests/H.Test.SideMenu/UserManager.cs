@@ -1,4 +1,5 @@
-﻿using H.Providers.Mvvm;
+﻿using H.Data.Test;
+using H.Providers.Mvvm;
 using HeBianGu.Systems.Logger;
 using System;
 using System.ComponentModel.DataAnnotations;
@@ -27,9 +28,6 @@ namespace H.Test.SideMenu
     public abstract class ManagerBase<T> : ManagerBase
     {
         public Type Type { get; } = typeof(T);
-
-      
-
     }
 
     [Display(Name = "用户管理", GroupName = "身份认证", Description = "用户管理")]
@@ -72,6 +70,34 @@ namespace H.Test.SideMenu
     }
     [Display(Name = "警告日志", GroupName = "日志记录", Description = "权限管理")]
     public class WarnManager : ManagerBase<hl_dm_warn>
+    {
+
+    }
+
+
+    [Display(Name = "学生管理", GroupName = "人员管理", Description = "权限管理",Order =0)]
+    public class StudentManager : ManagerBase<Student>
+    {
+
+    }
+
+
+    [Display(Name = "后勤管理", GroupName = "人员管理", Description = "权限管理", Order = 3)]
+    public class LogisticManager : ManagerBase<Student>
+    {
+
+    }
+
+
+    [Display(Name = "教师管理", GroupName = "人员管理", Description = "权限管理", Order = 1)]
+    public class TeatherManager : ManagerBase<Student>
+    {
+
+    }
+
+
+    [Display(Name = "管理人员", GroupName = "人员管理", Description = "权限管理", Order = 2)]
+    public class LeaderManager : ManagerBase<Student>
     {
 
     }

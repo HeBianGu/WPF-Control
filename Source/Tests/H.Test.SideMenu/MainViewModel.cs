@@ -8,6 +8,11 @@ namespace H.Test.SideMenu
     {
         public MainViewModel()
         {
+            this.Collection.Add(new StudentManager());
+            this.Collection.Add(new TeatherManager());
+            this.Collection.Add(new LogisticManager());
+            this.Collection.Add(new LeaderManager());
+
             this.Collection.Add(new UserManager());
             this.Collection.Add(new RoleManager());
             this.Collection.Add(new AuthorManager());
@@ -17,6 +22,7 @@ namespace H.Test.SideMenu
             this.Collection.Add(new FatalManager());
             this.Collection.Add(new InfoManager());
             this.Collection.Add(new WarnManager());
+
         }
         private ObservableCollection<IManager> _collection = new ObservableCollection<IManager>();
         public ObservableCollection<IManager> Collection

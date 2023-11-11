@@ -15,11 +15,81 @@
               WindowStartupLocation="CenterScreen"
               mc:Ignorable="d">
     <Window.Resources>
+        <CollectionViewSource x:Key="GroupedStudentDataList" Source="{h:GetStudents Count=100}">
+            <CollectionViewSource.GroupDescriptions>
+                <PropertyGroupDescription PropertyName="Name" />
+                <PropertyGroupDescription PropertyName="Class" />
+            </CollectionViewSource.GroupDescriptions>
+        </CollectionViewSource>
+
         <DataTemplate DataType="{x:Type local:ManagerBase}">
             <DataGrid>
                 <Behaviors:Interaction.Behaviors>
                     <h:DataGridAutoColumnBehavior DataGridLength="*" Type="{Binding Type}" />
                 </Behaviors:Interaction.Behaviors>
+            </DataGrid>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type local:StudentManager}">
+            <DataGrid AlternatingRowBackground="{x:Null}">
+                <Behaviors:Interaction.Behaviors>
+                    <h:DataGridAutoColumnBehavior Type="{x:Type h:Student}" />
+                </Behaviors:Interaction.Behaviors>
+                <DataGrid.GroupStyle>
+                    <GroupStyle>
+                        <GroupStyle.ContainerStyle>
+                            <Style TargetType="{x:Type GroupItem}">
+                                <Setter Property="Margin" Value="0,0,0,5" />
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type GroupItem}">
+                                            <Expander IsExpanded="True">
+                                                <Expander.Header>
+                                                    <DockPanel>
+                                                        <TextBlock Width="100"
+                                                                   Margin="5,0,0,0"
+                                                                   FontWeight="Bold"
+                                                                   Text="{Binding Path=Name}" />
+                                                        <TextBlock FontWeight="Bold" Text="{Binding Path=ItemCount}" />
+                                                    </DockPanel>
+                                                </Expander.Header>
+                                                <ItemsPresenter />
+                                            </Expander>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </GroupStyle.ContainerStyle>
+                    </GroupStyle>
+                    <GroupStyle>
+                        <GroupStyle.HeaderTemplate>
+                            <DataTemplate>
+                                <DockPanel Height="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}">
+                                    <DockPanel.Background>
+                                        <SolidColorBrush Opacity="0.1" Color="{DynamicResource {x:Static h:ColorKeys.Accent}}" />
+                                    </DockPanel.Background>
+                                    <TextBlock Width="100"
+                                               Margin="30,0,0,0"
+                                               VerticalAlignment="Center"
+                                               Text="{Binding Path=Name}" />
+                                    <TextBlock VerticalAlignment="Center" Text="{Binding Path=ItemCount}" />
+                                </DockPanel>
+                            </DataTemplate>
+                        </GroupStyle.HeaderTemplate>
+                    </GroupStyle>
+                </DataGrid.GroupStyle>
+                <DataGrid.Style>
+                    <Style BasedOn="{StaticResource {x:Type DataGrid}}" TargetType="DataGrid">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=UseDataGroup}" Value="True">
+                                <Setter Property="ItemsSource" Value="{Binding Source={StaticResource GroupedStudentDataList}}" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=UseDataGroup}" Value="False">
+                                <Setter Property="ItemsSource" Value="{h:GetStudents Count=100}" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.Style>
             </DataGrid>
         </DataTemplate>
     </Window.Resources>
@@ -45,7 +115,7 @@
                                    FontSize="{DynamicResource {x:Static h:FontSizeKeys.Header2}}"
                                    Text="企业管理系统" />
                     </DockPanel>
-                    <Grid Width="200">
+                    <Grid>
                         <Grid.Resources>
                             <CollectionViewSource x:Key="GroupedDataList" Source="{Binding Collection}">
                                 <CollectionViewSource.GroupDescriptions>
@@ -137,7 +207,6 @@
                     </Style>
                 </TabControl.ItemContainerStyle>
             </TabControl>
-
         </Border>
     </Grid>
 </h:MainWindow>

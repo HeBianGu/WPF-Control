@@ -5,13 +5,12 @@
     <Style x:Key="{ComponentResourceKey ResourceId=S.GridSplitter.Default,
                                         TypeInTargetAssembly={x:Type local:GridSplitterKeys}}"
            TargetType="GridSplitter">
-        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <!--<Setter Property="OverridesDefaultStyle" Value="true" />-->
         <Setter Property="Background">
             <Setter.Value>
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
             </Setter.Value>
         </Setter>
     </Style>
-    <Style BasedOn="{StaticResource {x:Static local:GridSplitterKeys.Default}}"
-           TargetType="GridSplitter" />
+    <Style BasedOn="{StaticResource {x:Static local:GridSplitterKeys.Default}}" TargetType="GridSplitter" />
 </ResourceDictionary>
