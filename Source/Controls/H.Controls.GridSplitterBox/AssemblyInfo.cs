@@ -12,8 +12,8 @@ using System.Windows.Markup;
                                               // app, or any theme specific resource dictionaries)
 )]
 
-[assembly: XmlnsDefinition("QQ:908293466", "H.Controls.GridSplitter")]
+[assembly: XmlnsDefinition("QQ:908293466", "H.Controls.GridSplitterBox")]
 [assembly: XmlnsPrefix("QQ:908293466", "h")]
 
-[assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Controls.GridSplitter")]
+[assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Controls.GridSplitterBox")]
 [assembly: XmlnsPrefix("https://github.com/HeBianGu", "h")]

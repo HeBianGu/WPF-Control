@@ -4,6 +4,11 @@
                     xmlns:local="clr-namespace:H.Windows.Main">
 
     <Style TargetType="{x:Type local:MainWindow}">
+        <Setter Property="h:GridSplitterBox.MenuMaxWidth" Value="200" />
+        <Setter Property="h:GridSplitterBox.MenuMinWidth" Value="50" />
+        <Setter Property="h:GridSplitterBox.IsExpanded" Value="False" />
+        <Setter Property="h:GridSplitterBox.Mode" Value="Extend" />
+        <Setter Property="h:GridSplitterBox.GridSpliteWidth" Value="2" />
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="CaptionHeight" Value="{DynamicResource {x:Static h:LayoutKeys.WindowCaptionHeight}}" />
         <Setter Property="WindowChrome.WindowChrome">
@@ -35,13 +40,16 @@
                         <Border.Background>
                             <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
                         </Border.Background>
-                        <h:GridSplitterContainer x:Name="grid"
-                                                 ID="MainWindowGridSplitterContainer"
-                                                 ToggleVerticalAlignment="Bottom"
-                                                 WindowChrome.IsHitTestVisibleInChrome="True">
-                            <h:GridSplitterContainer.MenuContent>
+                        <h:GridSplitterBox x:Name="grid"
+                                                 GridSpliteWidth="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:GridSplitterBox.GridSpliteWidth)}"
+                                                 IsExpanded="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:GridSplitterBox.IsExpanded)}"
+                                                 MenuMaxWidth="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:GridSplitterBox.MenuMaxWidth)}"
+                                                 MenuMinWidth="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:GridSplitterBox.MenuMinWidth)}"
+                                                 Mode="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:GridSplitterBox.Mode)}"
+                                                 ToggleVerticalAlignment="Bottom">
+                            <h:GridSplitterBox.MenuContent>
                                 <Control Template="{TemplateBinding SideTemplate}" />
-                            </h:GridSplitterContainer.MenuContent>
+                            </h:GridSplitterBox.MenuContent>
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="{Binding RelativeSource={RelativeSource AncestorType=local:MainWindow}, Path=CaptionHeight}" />
@@ -147,7 +155,7 @@
                                             Visibility="Collapsed"
                                             WindowChrome.ResizeGripDirection="BottomRight" />
                             </Grid>
-                        </h:GridSplitterContainer>
+                        </h:GridSplitterBox>
 
                     </Border>
                     <ControlTemplate.Triggers>

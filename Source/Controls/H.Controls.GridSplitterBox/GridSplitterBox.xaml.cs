@@ -1,35 +1,50 @@
 ﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
 
-
+using H.Providers.Mvvm;
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 
-namespace H.Controls.GridSplitter
+namespace H.Controls.GridSplitterBox
 {
     [TemplatePart(Name = GridSplitterName, Type = typeof(System.Windows.Controls.GridSplitter))]
-    public partial class GridSplitterContainer : ContentControl, IMetaSettingSerilize
+    [TemplatePart(Name = "PART_Row_Menu", Type = typeof(System.Windows.Controls.RowDefinition))]
+    [TemplatePart(Name = "PART_Column_Menu", Type = typeof(System.Windows.Controls.ColumnDefinition))]
+    [TemplatePart(Name = "PART_Menu", Type = typeof(System.Windows.Controls.Grid))]
+    public partial class GridSplitterBox : ContentControl, IMetaSettingSerilize
     {
-        public static ComponentResourceKey DefaultKey => new ComponentResourceKey(typeof(GridSplitterContainer), "S.GridSplitterContainer.Default");
-        public static ComponentResourceKey RightKey => new ComponentResourceKey(typeof(GridSplitterContainer), "S.GridSplitterContainer.Right");
-        public static ComponentResourceKey TopKey => new ComponentResourceKey(typeof(GridSplitterContainer), "S.GridSplitterContainer.Top");
-        public static ComponentResourceKey BottomKey => new ComponentResourceKey(typeof(GridSplitterContainer), "S.GridSplitterContainer.Bottom");
+        public static ComponentResourceKey DefaultKey => new ComponentResourceKey(typeof(GridSplitterBox), "S.GridSplitterBox.Default");
+        public static ComponentResourceKey RightKey => new ComponentResourceKey(typeof(GridSplitterBox), "S.GridSplitterBox.Right");
+        public static ComponentResourceKey TopKey => new ComponentResourceKey(typeof(GridSplitterBox), "S.GridSplitterBox.Top");
+        public static ComponentResourceKey BottomKey => new ComponentResourceKey(typeof(GridSplitterBox), "S.GridSplitterBox.Bottom");
 
         private const string GridSplitterName = "PART_GridSplitter";
-        static GridSplitterContainer()
+
+        static GridSplitterBox()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(GridSplitterContainer), new FrameworkPropertyMetadata(typeof(GridSplitterContainer)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(GridSplitterBox), new FrameworkPropertyMetadata(typeof(GridSplitterBox)));
         }
+
         private System.Windows.Controls.GridSplitter _gridSplitter = null;
+        private Grid _menuGrid = null;
+        private ColumnDefinition _menuColumnDefinition = null;
+        private RowDefinition _menuRowDefinition = null;
         private double _menuWidthTemp;
+
+
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
             _gridSplitter = Template.FindName(GridSplitterName, this) as System.Windows.Controls.GridSplitter;
-            if (_gridSplitter == null) 
+            if (_gridSplitter == null)
                 return;
-
+            _menuGrid = Template.FindName("PART_Menu", this) as Grid;
+            if (_menuGrid == null)
+                return;
+            _menuColumnDefinition = Template.FindName("PART_Column_Menu", this) as ColumnDefinition;
+            _menuRowDefinition = Template.FindName("PART_Row_Menu", this) as RowDefinition;
             _menuWidthTemp = this.MenuWidth.Value;
             this.Load();
             if (this.MenuDock == Dock.Right)
@@ -38,9 +53,9 @@ namespace H.Controls.GridSplitter
                 _gridSplitter.DragCompleted += (l, k) =>
                 {
                     this._setting.HorizontalChange = _menuWidthTemp - this.MenuWidth.Value + k.HorizontalChange;
+                    this.RefreshButtonState();
                     this.Save();
                 };
-
             }
             else if (this.MenuDock == Dock.Bottom)
             {
@@ -48,6 +63,7 @@ namespace H.Controls.GridSplitter
                 _gridSplitter.DragCompleted += (l, k) =>
                 {
                     this._setting.VerticalChange = _menuWidthTemp - this.MenuWidth.Value + k.VerticalChange;
+                    this.RefreshButtonState();
                     this.Save();
                 };
             }
@@ -58,6 +74,7 @@ namespace H.Controls.GridSplitter
                 _gridSplitter.DragCompleted += (l, k) =>
                 {
                     this._setting.HorizontalChange = this.MenuWidth.Value - _menuWidthTemp + k.HorizontalChange;
+                    this.RefreshButtonState();
                     this.Save();
                 };
             }
@@ -67,10 +84,97 @@ namespace H.Controls.GridSplitter
                 _gridSplitter.DragCompleted += (l, k) =>
                 {
                     this._setting.VerticalChange = this.MenuWidth.Value - _menuWidthTemp + k.VerticalChange;
+                    this.RefreshButtonState();
                     this.Save();
                 };
             }
+
+            {
+                CommandBinding cb = new CommandBinding(Commands.Switch);
+                cb.Executed += (l, k) =>
+                {
+                    this.RefreshState();
+                };
+                this.CommandBindings.Add(cb);
+            }
+
+            this.RefreshState();
         }
+
+
+
+        private void RefreshButtonState()
+        {
+            if (this.Mode == GridSplitteMode.Hidden)
+                return;
+            if (this.MenuWidth.Value == this.MenuMinWidth)
+                this.IsExpanded = false;
+            if (this.MenuWidth.Value == this.MenuMaxWidth)
+                this.IsExpanded = true;
+        }
+
+
+        private void RefreshState()
+        {
+            if (this.IsExpanded)
+            {
+                if (this.Mode == GridSplitteMode.Hidden)
+                {
+                    if (this._menuGrid != null)
+                        this._menuGrid.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    if (this._menuColumnDefinition != null)
+                        this._menuColumnDefinition.Width = new GridLength(this.MenuMaxWidth);
+                    if (this._menuRowDefinition != null)
+                        this._menuRowDefinition.Height = new GridLength(this.MenuMaxWidth);
+                }
+            }
+            else
+            {
+                if (this.Mode == GridSplitteMode.Hidden)
+                {
+                    if (this._menuGrid != null)
+                        this._menuGrid.Visibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    if (this._menuColumnDefinition != null)
+                        this._menuColumnDefinition.Width = new GridLength(this.MenuMinWidth);
+                    if (this._menuRowDefinition != null)
+                        this._menuRowDefinition.Height = new GridLength(this.MenuMinWidth);
+                }
+            }
+        }
+
+
+        public GridSplitteMode Mode
+        {
+            get { return (GridSplitteMode)GetValue(ModeProperty); }
+            set { SetValue(ModeProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ModeProperty =
+            DependencyProperty.Register("Mode", typeof(GridSplitteMode), typeof(GridSplitterBox), new FrameworkPropertyMetadata(GridSplitteMode.Hidden, (d, e) =>
+            {
+                GridSplitterBox control = d as GridSplitterBox;
+
+                if (control == null) return;
+
+                if (e.OldValue is GridSplitteMode o)
+                {
+
+                }
+
+                if (e.NewValue is GridSplitteMode n)
+                {
+
+                }
+
+            }));
+
 
         public object MenuContent
         {
@@ -80,9 +184,9 @@ namespace H.Controls.GridSplitter
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MenuContentProperty =
-            DependencyProperty.Register("MenuContent", typeof(object), typeof(GridSplitterContainer), new FrameworkPropertyMetadata(default(object), (d, e) =>
+            DependencyProperty.Register("MenuContent", typeof(object), typeof(GridSplitterBox), new FrameworkPropertyMetadata(default(object), (d, e) =>
              {
-                 GridSplitterContainer control = d as GridSplitterContainer;
+                 GridSplitterBox control = d as GridSplitterBox;
 
                  if (control == null) return;
 
@@ -98,6 +202,7 @@ namespace H.Controls.GridSplitter
 
              }));
 
+
         public DataTemplate MenuTempate
         {
             get { return (DataTemplate)GetValue(MenuTempateProperty); }
@@ -106,9 +211,9 @@ namespace H.Controls.GridSplitter
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MenuTempateProperty =
-            DependencyProperty.Register("MenuTempate", typeof(DataTemplate), typeof(GridSplitterContainer), new FrameworkPropertyMetadata(default(DataTemplate), (d, e) =>
+            DependencyProperty.Register("MenuTempate", typeof(DataTemplate), typeof(GridSplitterBox), new FrameworkPropertyMetadata(default(DataTemplate), (d, e) =>
              {
-                 GridSplitterContainer control = d as GridSplitterContainer;
+                 GridSplitterBox control = d as GridSplitterBox;
 
                  if (control == null) return;
 
@@ -124,6 +229,7 @@ namespace H.Controls.GridSplitter
 
              }));
 
+
         public double GridSpliteWidth
         {
             get { return (double)GetValue(GridSpliteWidthProperty); }
@@ -132,9 +238,9 @@ namespace H.Controls.GridSplitter
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty GridSpliteWidthProperty =
-            DependencyProperty.Register("GridSpliteWidth", typeof(double), typeof(GridSplitterContainer), new FrameworkPropertyMetadata(5.0, (d, e) =>
+            DependencyProperty.Register("GridSpliteWidth", typeof(double), typeof(GridSplitterBox), new FrameworkPropertyMetadata(5.0, (d, e) =>
              {
-                 GridSplitterContainer control = d as GridSplitterContainer;
+                 GridSplitterBox control = d as GridSplitterBox;
 
                  if (control == null) return;
 
@@ -158,9 +264,9 @@ namespace H.Controls.GridSplitter
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MenuMinWidthProperty =
-            DependencyProperty.Register("MenuMinWidth", typeof(double), typeof(GridSplitterContainer), new FrameworkPropertyMetadata(10.0, (d, e) =>
+            DependencyProperty.Register("MenuMinWidth", typeof(double), typeof(GridSplitterBox), new FrameworkPropertyMetadata(10.0, (d, e) =>
              {
-                 GridSplitterContainer control = d as GridSplitterContainer;
+                 GridSplitterBox control = d as GridSplitterBox;
 
                  if (control == null) return;
 
@@ -175,8 +281,6 @@ namespace H.Controls.GridSplitter
                  }
 
              }));
-
-
         public double MenuMaxWidth
         {
             get { return (double)GetValue(MenuMaxWidthProperty); }
@@ -185,9 +289,9 @@ namespace H.Controls.GridSplitter
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MenuMaxWidthProperty =
-            DependencyProperty.Register("MenuMaxWidth", typeof(double), typeof(GridSplitterContainer), new FrameworkPropertyMetadata(300.0, (d, e) =>
+            DependencyProperty.Register("MenuMaxWidth", typeof(double), typeof(GridSplitterBox), new FrameworkPropertyMetadata(300.0, (d, e) =>
              {
-                 GridSplitterContainer control = d as GridSplitterContainer;
+                 GridSplitterBox control = d as GridSplitterBox;
 
                  if (control == null) return;
 
@@ -202,6 +306,7 @@ namespace H.Controls.GridSplitter
                  }
 
              }));
+
 
         public GridLength MenuWidth
         {
@@ -211,9 +316,9 @@ namespace H.Controls.GridSplitter
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MenuWidthProperty =
-            DependencyProperty.Register("MenuWidth", typeof(GridLength), typeof(GridSplitterContainer), new FrameworkPropertyMetadata(new GridLength(200.0), (d, e) =>
+            DependencyProperty.Register("MenuWidth", typeof(GridLength), typeof(GridSplitterBox), new FrameworkPropertyMetadata(new GridLength(200.0), (d, e) =>
              {
-                 GridSplitterContainer control = d as GridSplitterContainer;
+                 GridSplitterBox control = d as GridSplitterBox;
 
                  if (control == null) return;
 
@@ -229,60 +334,6 @@ namespace H.Controls.GridSplitter
 
              }));
 
-
-        public bool UseToggle
-        {
-            get { return (bool)GetValue(UseToggleProperty); }
-            set { SetValue(UseToggleProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty UseToggleProperty =
-            DependencyProperty.Register("UseToggle", typeof(bool), typeof(GridSplitterContainer), new FrameworkPropertyMetadata(true, (d, e) =>
-            {
-                GridSplitterContainer control = d as GridSplitterContainer;
-
-                if (control == null) return;
-
-                if (e.OldValue is bool o)
-                {
-
-                }
-
-                if (e.NewValue is bool n)
-                {
-
-                }
-
-            }));
-
-
-        public bool IsExpanded
-        {
-            get { return (bool)GetValue(IsExpandedProperty); }
-            set { SetValue(IsExpandedProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty IsExpandedProperty =
-            DependencyProperty.Register("IsExpanded", typeof(bool), typeof(GridSplitterContainer), new FrameworkPropertyMetadata(true, (d, e) =>
-            {
-                GridSplitterContainer control = d as GridSplitterContainer;
-
-                if (control == null) return;
-
-                if (e.OldValue is bool o)
-                {
-
-                }
-
-                if (e.NewValue is bool n)
-                {
-
-                }
-                control.Save();
-            }));
-
         public Brush GridSpliterBackground
         {
             get { return (Brush)GetValue(GridSpliterBackgroundProperty); }
@@ -291,9 +342,9 @@ namespace H.Controls.GridSplitter
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty GridSpliterBackgroundProperty =
-            DependencyProperty.Register("GridSpliterBackground", typeof(Brush), typeof(GridSplitterContainer), new FrameworkPropertyMetadata(default(Brush), (d, e) =>
+            DependencyProperty.Register("GridSpliterBackground", typeof(Brush), typeof(GridSplitterBox), new FrameworkPropertyMetadata(default(Brush), (d, e) =>
              {
-                 GridSplitterContainer control = d as GridSplitterContainer;
+                 GridSplitterBox control = d as GridSplitterBox;
 
                  if (control == null) return;
 
@@ -317,9 +368,9 @@ namespace H.Controls.GridSplitter
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ToggleHorizontalAlignmentProperty =
-            DependencyProperty.Register("ToggleHorizontalAlignment", typeof(HorizontalAlignment), typeof(GridSplitterContainer), new FrameworkPropertyMetadata(default(HorizontalAlignment), (d, e) =>
+            DependencyProperty.Register("ToggleHorizontalAlignment", typeof(HorizontalAlignment), typeof(GridSplitterBox), new FrameworkPropertyMetadata(default(HorizontalAlignment), (d, e) =>
              {
-                 GridSplitterContainer control = d as GridSplitterContainer;
+                 GridSplitterBox control = d as GridSplitterBox;
 
                  if (control == null) return;
 
@@ -344,9 +395,9 @@ namespace H.Controls.GridSplitter
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ToggleVerticalAlignmentProperty =
-            DependencyProperty.Register("ToggleVerticalAlignment", typeof(VerticalAlignment), typeof(GridSplitterContainer), new FrameworkPropertyMetadata(default(VerticalAlignment), (d, e) =>
+            DependencyProperty.Register("ToggleVerticalAlignment", typeof(VerticalAlignment), typeof(GridSplitterBox), new FrameworkPropertyMetadata(default(VerticalAlignment), (d, e) =>
              {
-                 GridSplitterContainer control = d as GridSplitterContainer;
+                 GridSplitterBox control = d as GridSplitterBox;
 
                  if (control == null) return;
 
@@ -371,9 +422,9 @@ namespace H.Controls.GridSplitter
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MenuDockProperty =
-            DependencyProperty.Register("MenuDock", typeof(Dock), typeof(GridSplitterContainer), new FrameworkPropertyMetadata(default(Dock), (d, e) =>
+            DependencyProperty.Register("MenuDock", typeof(Dock), typeof(GridSplitterBox), new FrameworkPropertyMetadata(default(Dock), (d, e) =>
              {
-                 GridSplitterContainer control = d as GridSplitterContainer;
+                 GridSplitterBox control = d as GridSplitterBox;
 
                  if (control == null) return;
 
@@ -389,6 +440,32 @@ namespace H.Controls.GridSplitter
 
              }));
 
+        public Style ToggleStyle
+        {
+            get { return (Style)GetValue(ToggleStyleProperty); }
+            set { SetValue(ToggleStyleProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ToggleStyleProperty =
+            DependencyProperty.Register("ToggleStyle", typeof(Style), typeof(GridSplitterBox), new FrameworkPropertyMetadata(default(Style), (d, e) =>
+            {
+                GridSplitterBox control = d as GridSplitterBox;
+
+                if (control == null) return;
+
+                if (e.OldValue is Style o)
+                {
+
+                }
+
+                if (e.NewValue is Style n)
+                {
+
+                }
+
+            }));
+
 
         public string OpenGeometry
         {
@@ -398,9 +475,9 @@ namespace H.Controls.GridSplitter
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty OpenGeometryProperty =
-            DependencyProperty.Register("OpenGeometry", typeof(string), typeof(GridSplitterContainer), new FrameworkPropertyMetadata(default(string), (d, e) =>
+            DependencyProperty.Register("OpenGeometry", typeof(string), typeof(GridSplitterBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
             {
-                GridSplitterContainer control = d as GridSplitterContainer;
+                GridSplitterBox control = d as GridSplitterBox;
 
                 if (control == null) return;
 
@@ -425,9 +502,9 @@ namespace H.Controls.GridSplitter
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CloseGeometryProperty =
-            DependencyProperty.Register("CloseGeometry", typeof(string), typeof(GridSplitterContainer), new FrameworkPropertyMetadata(default(string), (d, e) =>
+            DependencyProperty.Register("CloseGeometry", typeof(string), typeof(GridSplitterBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
             {
-                GridSplitterContainer control = d as GridSplitterContainer;
+                GridSplitterBox control = d as GridSplitterBox;
 
                 if (control == null) return;
 
@@ -444,26 +521,53 @@ namespace H.Controls.GridSplitter
             }));
 
 
-        public Style ToggleStyle
+        public bool IsExpanded
         {
-            get { return (Style)GetValue(ToggleStyleProperty); }
-            set { SetValue(ToggleStyleProperty, value); }
+            get { return (bool)GetValue(IsExpandedProperty); }
+            set { SetValue(IsExpandedProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ToggleStyleProperty =
-            DependencyProperty.Register("ToggleStyle", typeof(Style), typeof(GridSplitterContainer), new FrameworkPropertyMetadata(default(Style), (d, e) =>
+        public static readonly DependencyProperty IsExpandedProperty =
+            DependencyProperty.Register("IsExpanded", typeof(bool), typeof(GridSplitterBox), new FrameworkPropertyMetadata(true, (d, e) =>
             {
-                GridSplitterContainer control = d as GridSplitterContainer;
+                GridSplitterBox control = d as GridSplitterBox;
 
                 if (control == null) return;
 
-                if (e.OldValue is Style o)
+                if (e.OldValue is bool o)
                 {
 
                 }
 
-                if (e.NewValue is Style n)
+                if (e.NewValue is bool n)
+                {
+
+                }
+                control.Save();
+            }));
+
+
+        public bool UseToggle
+        {
+            get { return (bool)GetValue(UseToggleProperty); }
+            set { SetValue(UseToggleProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty UseToggleProperty =
+            DependencyProperty.Register("UseToggle", typeof(bool), typeof(GridSplitterBox), new FrameworkPropertyMetadata(true, (d, e) =>
+            {
+                GridSplitterBox control = d as GridSplitterBox;
+
+                if (control == null) return;
+
+                if (e.OldValue is bool o)
+                {
+
+                }
+
+                if (e.NewValue is bool n)
                 {
 
                 }
@@ -472,11 +576,14 @@ namespace H.Controls.GridSplitter
 
 
         public string ID { get; set; }
+
         public IMetaSettingService MetaSettingService => Ioc.GetService<IMetaSettingService>(false);
+
         private GridSplitterSetting _setting = new GridSplitterSetting();
+
         public void Save()
         {
-            if (string.IsNullOrEmpty(this.ID)) 
+            if (string.IsNullOrEmpty(this.ID))
                 return;
             this._setting.IsExpanded = this.IsExpanded;
             this.MetaSettingService?.Serilize(this._setting, this.ID);
@@ -484,12 +591,12 @@ namespace H.Controls.GridSplitter
 
         public void Load()
         {
-            if (string.IsNullOrEmpty(this.ID)) 
+            if (string.IsNullOrEmpty(this.ID))
                 return;
             GridSplitterSetting find = this.MetaSettingService?.Deserilize<GridSplitterSetting>(this.ID);
-            this._setting = find ?? new GridSplitterSetting() 
-            { 
-                IsExpanded = true 
+            this._setting = find ?? new GridSplitterSetting()
+            {
+                IsExpanded = true
             };
             this.IsExpanded = this._setting.IsExpanded;
         }
@@ -499,33 +606,14 @@ namespace H.Controls.GridSplitter
     public class GridSplitterSetting : IMetaSetting
     {
         public double HorizontalChange { get; set; }
+
         public double VerticalChange { get; set; }
+
         public bool IsExpanded { get; set; }
     }
 
-    public class GridSpliterContainerService
+    public enum GridSplitteMode
     {
-        public static bool GetIsExpanded(DependencyObject obj)
-        {
-            return (bool)obj.GetValue(IsExpandedProperty);
-        }
-
-        public static void SetIsExpanded(DependencyObject obj, bool value)
-        {
-            obj.SetValue(IsExpandedProperty, value);
-        }
-
-        /// <summary> 应用窗体关闭和显示 </summary>
-        public static readonly DependencyProperty IsExpandedProperty =
-            DependencyProperty.RegisterAttached("IsExpanded", typeof(bool), typeof(GridSpliterContainerService), new PropertyMetadata(default(bool), OnIsExpandedChanged));
-
-        static public void OnIsExpandedChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            DependencyObject control = d as DependencyObject;
-
-            bool n = (bool)e.NewValue;
-
-            bool o = (bool)e.OldValue;
-        }
+        Extend, Hidden
     }
 }

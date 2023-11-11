@@ -46,67 +46,67 @@
     </h:MainWindow.SideTemplate>-->
     <Grid>
         <TabControl>
-            <TabItem Header="GridSplitterContainer">
+            <TabItem Header="GridSplitterBox">
                 <Grid>
                     <TabControl>
                         <TabItem Header="Left">
-                            <h:GridSplitterContainer ID="Left">
+                            <h:GridSplitterBox ID="Left">
                                 <Border>
                                     <Grid Background="Red">
                                         <TextBlock FontSize="100" Text="Center" />
                                     </Grid>
                                 </Border>
-                                <h:GridSplitterContainer.MenuContent>
+                                <h:GridSplitterBox.MenuContent>
                                     <Border Background="Yellow">
                                         <TextBlock FontSize="100" Text="Menu" />
                                     </Border>
-                                </h:GridSplitterContainer.MenuContent>
-                            </h:GridSplitterContainer>
+                                </h:GridSplitterBox.MenuContent>
+                            </h:GridSplitterBox>
                         </TabItem>
 
                         <TabItem Header="right">
-                            <h:GridSplitterContainer ID="right" Style="{DynamicResource {x:Static h:GridSplitterContainer.RightKey}}">
+                            <h:GridSplitterBox ID="right" Style="{DynamicResource {x:Static h:GridSplitterBox.RightKey}}">
                                 <Border>
                                     <Grid>
                                         <TextBlock FontSize="100" Text="Center" />
                                     </Grid>
                                 </Border>
-                                <h:GridSplitterContainer.MenuContent>
+                                <h:GridSplitterBox.MenuContent>
                                     <Border>
                                         <TextBlock FontSize="100" Text="Menu" />
                                     </Border>
-                                </h:GridSplitterContainer.MenuContent>
-                            </h:GridSplitterContainer>
+                                </h:GridSplitterBox.MenuContent>
+                            </h:GridSplitterBox>
                         </TabItem>
 
                         <TabItem Header="top">
-                            <h:GridSplitterContainer ID="top" Style="{DynamicResource {x:Static h:GridSplitterContainer.TopKey}}">
+                            <h:GridSplitterBox ID="top" Style="{DynamicResource {x:Static h:GridSplitterBox.TopKey}}">
                                 <Border>
                                     <Grid>
                                         <TextBlock FontSize="100" Text="Center" />
                                     </Grid>
                                 </Border>
-                                <h:GridSplitterContainer.MenuContent>
+                                <h:GridSplitterBox.MenuContent>
                                     <Border>
                                         <TextBlock FontSize="100" Text="Menu" />
                                     </Border>
-                                </h:GridSplitterContainer.MenuContent>
-                            </h:GridSplitterContainer>
+                                </h:GridSplitterBox.MenuContent>
+                            </h:GridSplitterBox>
                         </TabItem>
 
                         <TabItem Header="bottom">
-                            <h:GridSplitterContainer ID="bottom" Style="{DynamicResource {x:Static h:GridSplitterContainer.BottomKey}}">
+                            <h:GridSplitterBox ID="bottom" Style="{DynamicResource {x:Static h:GridSplitterBox.BottomKey}}">
                                 <Border>
                                     <Grid>
                                         <TextBlock FontSize="100" Text="Center" />
                                     </Grid>
                                 </Border>
-                                <h:GridSplitterContainer.MenuContent>
+                                <h:GridSplitterBox.MenuContent>
                                     <Border>
                                         <TextBlock FontSize="100" Text="Menu" />
                                     </Border>
-                                </h:GridSplitterContainer.MenuContent>
-                            </h:GridSplitterContainer>
+                                </h:GridSplitterBox.MenuContent>
+                            </h:GridSplitterBox>
                         </TabItem>
                     </TabControl>
                 </Grid>
