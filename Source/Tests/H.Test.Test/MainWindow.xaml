@@ -111,6 +111,21 @@
                     </TabControl>
                 </Grid>
             </TabItem>
+            <TabItem Header="HorseTextBlock">
+                <DockPanel>
+                    <TextBox Text="{Binding ElementName=hourse, Path=Text,UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Bottom"/>
+                    <h:HorseTextBlock x:Name="hourse"
+                                      ClipToBounds="True"
+                                      FontSize="55"
+                                      FontWeight="Black"
+                                      Foreground="Red"
+                                      RepeatBehavior="5x"
+                                      Text="我是用来测试跑马灯的文本"
+                                      From="900"
+                                      To="-500"
+                                      Duration="00:00:03" />
+                </DockPanel>
+            </TabItem>
         </TabControl>
     </Grid>
 </h:MainWindow>

@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Controls\H.Controls.GridSplitter\H.Controls.GridSplitter.csproj" />
+    <ProjectReference Include="..\..\Controls\H.Controls.HorseTextBlock\H.Controls.HorseTextBlock.csproj" />
     <ProjectReference Include="..\..\Datas\H.Data.Test\H.Data.Test.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Default\H.Themes.Default.csproj" />
     <ProjectReference Include="..\..\Windows\H.Windows.Dialog\H.Windows.Dialog.csproj" />

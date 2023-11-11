@@ -64,12 +64,12 @@
                     <GroupStyle>
                         <GroupStyle.HeaderTemplate>
                             <DataTemplate>
-                                <DockPanel Height="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}">
+                                <DockPanel>
                                     <DockPanel.Background>
-                                        <SolidColorBrush Opacity="0.1" Color="{DynamicResource {x:Static h:ColorKeys.Accent}}" />
+                                        <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.BorderBrush}}" />
                                     </DockPanel.Background>
                                     <TextBlock Width="100"
-                                               Margin="30,0,0,0"
+                                               Margin="30,6,0,6"
                                                VerticalAlignment="Center"
                                                Text="{Binding Path=Name}" />
                                     <TextBlock VerticalAlignment="Center" Text="{Binding Path=ItemCount}" />
