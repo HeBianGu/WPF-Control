@@ -1,6 +1,7 @@
 ﻿<h:MainWindow x:Class="H.Test.Test.MainWindow"
               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
               xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
               xmlns:h="https://github.com/HeBianGu"
               xmlns:local="clr-namespace:H.Test.Test"
@@ -113,7 +114,7 @@
             </TabItem>
             <TabItem Header="HorseTextBlock">
                 <DockPanel>
-                    <TextBox Text="{Binding ElementName=hourse, Path=Text,UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Bottom"/>
+                    <TextBox DockPanel.Dock="Bottom" Text="{Binding ElementName=hourse, Path=Text, UpdateSourceTrigger=PropertyChanged}" />
                     <h:HorseTextBlock x:Name="hourse"
                                       ClipToBounds="True"
                                       FontSize="55"
@@ -124,6 +125,92 @@
                                       From="900"
                                       To="-500"
                                       Duration="00:00:03" />
+                </DockPanel>
+            </TabItem>
+
+            <TabItem Header="FilterBox">
+                <DockPanel>
+                    <DockPanel DockPanel.Dock="Top" LastChildFill="False">
+                        <h:PropertyFilterBox x:Name="fb"
+                                             Margin="5"
+                                             Type="{x:Type h:Student}" />
+                        <h:TextFilterBox x:Name="tfb"
+                                         Width="200"
+                                         DockPanel.Dock="Right" />
+                    </DockPanel>
+                    <DockPanel DockPanel.Dock="Top">
+                        <BulletDecorator Margin="5,0">
+                            <BulletDecorator.Bullet>
+                                <TextBlock VerticalAlignment="Center" Text="用户姓名  " />
+                            </BulletDecorator.Bullet>
+
+                            <h:SelectionFilterBox x:Name="sfb"
+                                                  MaxHeight="100"
+                                                  Margin="0,5"
+                                                  HorizontalAlignment="Stretch"
+                                                  HorizontalContentAlignment="Stretch"
+                                                  Datas="{h:GetStudents Count=100}"
+                                                  PropertyName="Name"
+                                                  SelectionMode="Multiple"
+                                                  Type="{x:Type h:Student}" />
+                        </BulletDecorator>
+                    </DockPanel>
+                    <DockPanel DockPanel.Dock="Top">
+                        <BulletDecorator Margin="5,0">
+                            <BulletDecorator.Bullet>
+                                <TextBlock VerticalAlignment="Center" Text="用户班级  " />
+                            </BulletDecorator.Bullet>
+
+                            <h:SelectionFilterBox x:Name="sfb1"
+                                                  MaxHeight="100"
+                                                  Margin="0,5"
+                                                  HorizontalAlignment="Stretch"
+                                                  HorizontalContentAlignment="Stretch"
+                                                  Datas="{h:GetStudents Count=100}"
+                                                  PropertyName="Class"
+                                                  SelectionMode="Multiple"
+                                                  Type="{x:Type h:Student}" />
+                        </BulletDecorator>
+                    </DockPanel>
+                    <DockPanel DockPanel.Dock="Top">
+                        <BulletDecorator Margin="5,0">
+                            <BulletDecorator.Bullet>
+                                <TextBlock VerticalAlignment="Center" Text="是否启用  " />
+                            </BulletDecorator.Bullet>
+
+                            <h:SelectionFilterBox x:Name="sfb2"
+                                                  MaxHeight="100"
+                                                  Margin="0,5"
+                                                  HorizontalAlignment="Stretch"
+                                                  HorizontalContentAlignment="Stretch"
+                                                  Datas="{h:GetStudents Count=100}"
+                                                  PropertyName="IsEnbled"
+                                                  SelectionMode="Multiple"
+                                                  Type="{x:Type h:Student}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding ., Converter={h:GetBoolConverter TrueValue=启用, FalseValue=禁用}}" />
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </h:SelectionFilterBox>
+                        </BulletDecorator>
+                    </DockPanel>
+                    <TextBlock Margin="10" DockPanel.Dock="Bottom">
+                        <Run Text=" 合计：" />
+                        <Run Text="{Binding ElementName=dg, Path=ItemsSource.Count, Mode=OneWay}" />
+                    </TextBlock>
+                    <DataGrid x:Name="dg">
+                        <Behaviors:Interaction.Behaviors>
+                            <h:DataGridAutoColumnBehavior DataGridLength="*" Type="{x:Type h:Student}" />
+                            <h:ItemsControlFilterBehavior Filter="{Binding ElementName=fb, Path=Filter}"
+                                                          Filter1="{Binding ElementName=tfb, Path=Filter}"
+                                                          Filter2="{Binding ElementName=sfb, Path=Filter}"
+                                                          Filter3="{Binding ElementName=sfb1, Path=Filter}"
+                                                          Filter4="{Binding ElementName=sfb2, Path=Filter}"
+                                                          ItemsSource="{h:GetStudents Count=500}" />
+                        </Behaviors:Interaction.Behaviors>
+
+                    </DataGrid>
                 </DockPanel>
             </TabItem>
         </TabControl>
