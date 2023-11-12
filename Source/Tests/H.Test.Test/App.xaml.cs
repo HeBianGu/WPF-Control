@@ -1,4 +1,6 @@
-﻿using System;
+﻿using H.Extensions.ApplicationBase;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -11,7 +13,18 @@ namespace H.Test.Test
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : Application
+    public partial class App : ApplicationBase
     {
+        protected override Window CreateMainWindow(StartupEventArgs e)
+        {
+          return  new MainWindow();
+        }
+
+        protected override void ConfigureServices(IServiceCollection services)
+        {
+            base.ConfigureServices(services);
+
+            services.AddMessage();
+        }
     }
 }

@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:h="https://github.com/HeBianGu"
         xmlns:local="clr-namespace:H.Test.XamlBehaviors"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         Title="MainWindow"
@@ -10,23 +11,63 @@
         Height="450"
         mc:Ignorable="d">
     <Grid>
-        <Button x:Name="YellowButton"
-                Grid.Column="0"
-                Margin="0,10,5,10"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch"
-                Background="DarkGray"
-                BorderBrush="LightYellow"
-                Content="Yellow"
-                d:LayoutOverrides="Width, Height">
-            <Behaviors:Interaction.Triggers>
-                <Behaviors:EventTrigger EventName="Click"
-                                        SourceObject="{Binding ElementName=YellowButton}">
-                    <Behaviors:ChangePropertyAction PropertyName="Background"
-                                                    TargetObject="{Binding ElementName=YellowButton}"
-                                                    Value="LightYellow" />
-                </Behaviors:EventTrigger>
-            </Behaviors:Interaction.Triggers>
-        </Button>
+        <TabControl>
+            <TabItem Header="Behaviors">
+                <Button x:Name="YellowButton"
+                        Grid.Column="0"
+                        Margin="0,10,5,10"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Background="DarkGray"
+                        BorderBrush="LightYellow"
+                        Content="Yellow"
+                        d:LayoutOverrides="Width, Height">
+                    <Behaviors:Interaction.Triggers>
+                        <Behaviors:EventTrigger EventName="Click" SourceObject="{Binding ElementName=YellowButton}">
+                            <Behaviors:ChangePropertyAction PropertyName="Background"
+                                                            TargetObject="{Binding ElementName=YellowButton}"
+                                                            Value="LightYellow" />
+                        </Behaviors:EventTrigger>
+                    </Behaviors:Interaction.Triggers>
+                </Button>
+            </TabItem>
+            <TabItem Header="TextBlockCountBehavior">
+                <DockPanel>
+                    <TextBlock DockPanel.Dock="Top">
+                        <Behaviors:Interaction.Behaviors>
+                            <h:TextBlockCountBehavior ItemsSource="{Binding ElementName=dg, Path=ItemsSource}"
+                                                      PropertyName="Name"
+                                                      Value="Tom" />
+                        </Behaviors:Interaction.Behaviors>
+                    </TextBlock>
+                    <TextBlock DockPanel.Dock="Top">
+                        <Behaviors:Interaction.Behaviors>
+                            <h:TextBlockCountBehavior ItemsSource="{Binding ElementName=dg, Path=ItemsSource}"
+                                                      PropertyName="Name"
+                                                      Value="Jim" />
+                        </Behaviors:Interaction.Behaviors>
+                    </TextBlock>
+                    <TextBlock DockPanel.Dock="Top">
+                        <Behaviors:Interaction.Behaviors>
+                            <h:TextBlockCountBehavior ItemsSource="{Binding ElementName=dg, Path=ItemsSource}"
+                                                      PropertyName="Class"
+                                                      Value="3班" />
+                        </Behaviors:Interaction.Behaviors>
+                    </TextBlock>
+                    <TextBlock DockPanel.Dock="Top">
+                        <Behaviors:Interaction.Behaviors>
+                            <h:TextBlockCountBehavior ItemsSource="{Binding ElementName=dg, Path=ItemsSource}"
+                                                      PropertyName="Age"
+                                                      Value="25" />
+                        </Behaviors:Interaction.Behaviors>
+                    </TextBlock>
+                    <DataGrid x:Name="dg" ItemsSource="{h:GetStudents Count=500}">
+                        <Behaviors:Interaction.Behaviors>
+                            <h:DataGridAutoColumnBehavior DataGridLength="*" Type="{x:Type h:Student}" />
+                        </Behaviors:Interaction.Behaviors>
+                    </DataGrid>
+                </DockPanel>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
