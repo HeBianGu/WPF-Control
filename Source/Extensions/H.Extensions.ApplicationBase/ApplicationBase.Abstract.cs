@@ -40,50 +40,58 @@ namespace H.Extensions.ApplicationBase
         {
             int sleep = 1000;
             var exist = Ioc.Exist<ISplashScreenViewPresenter>();
-            if (exist)
+
+            Func<ICancelable, ISplashScreenViewPresenter, bool?> func = (c, s) =>
             {
-                Func<ICancelable, ISplashScreenViewPresenter, bool?> func = (c, s) =>
+                if (c?.IsCancel != true)
                 {
-                    if (c.IsCancel == false)
+                    if (s != null)
+                        s.Message = "正在加载设置数据...";
+                    //  Do ：加载设置参数
+                    var r = SettingDataManager.Instance.Load(out var message);
+                    if (r == false)
                     {
-                        ILoad load = Ioc.GetService<IDbConnectService>(false);
-                        if (load != null)
-                        {
-                            s.Message = $"正在加载{load.Name}...";
-                            var r = load.Load(out string message);
-                            if (r == false)
-                            {
-                                s.Message = message;
-                                Thread.Sleep(sleep);
-                                return false;
-                            }
-                            Thread.Sleep(sleep);
-                        }
+                        s.Message = message;
                     }
 
-                    if (c.IsCancel == false)
+                    Thread.Sleep(sleep);
+                }
+
+                if (c?.IsCancel != true)
+                {
+                    var loads = Ioc.Services.GetServices<IDbConnectService>();
+
+                    foreach (var load in loads)
                     {
-                        s.Message = "正在加载设置数据...";
-                        //  Do ：加载设置参数
-                        var r = SettingDataManager.Instance.Load(out var message);
+                        if (load == null)
+                            continue;
+
+                        if (s != null)
+                            s.Message = $"正在加载{load.Name}...";
+                        var r = load.Load(out string message);
                         if (r == false)
                         {
-                            s.Message = message;
+                            if (s != null)
+                                s.Message = message;
+                            Thread.Sleep(sleep);
+                            return false;
                         }
-
                         Thread.Sleep(sleep);
                     }
-
+                }
+                if (s != null)
                     s.Message = "加载完成";
-                    Thread.Sleep(sleep);
-                    return true;
-                };
+                Thread.Sleep(sleep);
+                return true;
+            };
+            if (exist)
+            {
                 var r = IocMessage.Dialog.ShowIoc(func, x =>
                 {
                     if (x is Control c)
                     {
                         c.Width = 500;
-                        c.Height= 300;
+                        c.Height = 300;
                     }
                     if (x is Window w)
                     {
@@ -102,6 +110,10 @@ namespace H.Extensions.ApplicationBase
                 var r = SettingDataManager.Instance.Load(out var message);
                 if (r == false)
                     IocMessage.Dialog.ShowMessage(message);
+
+                var fr = func.Invoke(null, null);
+                if (fr == false)
+                    throw new ArgumentException("初始化数据异常，请看日志");
             }
         }
 

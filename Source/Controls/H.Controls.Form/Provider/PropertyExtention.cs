@@ -75,11 +75,9 @@ namespace H.Controls.Form
                 {
                     return new ArrayPropertyItem(info, obj);
                 }
-
             }
 
             CustomValidationAttribute attr = info.GetCustomAttribute<CustomValidationAttribute>();
-
             if (attr == null || string.IsNullOrEmpty(attr.Method))
             {
                 return new ObjectPropertyItem<object>(info, obj);
@@ -87,11 +85,9 @@ namespace H.Controls.Form
             else
             {
                 MethodInfo ms = obj.GetType().GetMethod(attr.Method);
-
                 IEnumerable<object> source = ms.Invoke(obj, null) as IEnumerable<object>;
-
-                if (source == null) return new ObjectPropertyItem<object>(info, obj);
-
+                if (source == null) 
+                    new ObjectPropertyItem<object>(info, obj);
                 return new SelectSourcePropertyItem(info, obj);
             }
         }

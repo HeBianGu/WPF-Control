@@ -69,6 +69,18 @@ namespace H.Modules.Login
                              Thread.Sleep(1000);
                              return false;
                          }
+
+                         if (LoginOptions.Instance.Remember)
+                         {
+                             LoginOptions.Instance.LastUserName = this.UserName;
+                             LoginOptions.Instance.LastPassword = this.Password;
+                         }
+                         else
+                         {
+                             LoginOptions.Instance.LastUserName = null;
+                             LoginOptions.Instance.LastPassword = null;
+                         }
+
                          s.Message = "登录成功";
                          Thread.Sleep(1000);
                          return true;

@@ -3,6 +3,7 @@ using H.Providers.Mvvm;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
@@ -14,7 +15,7 @@ using System.Windows.Threading;
 
 namespace H.Controls.FilterBox
 {
-    public class SelectionFilterBox : ListBox, IDisplayFilterBox
+    public class SelectionFilterBox : ListBox
     {
         static SelectionFilterBox()
         {
@@ -57,13 +58,14 @@ namespace H.Controls.FilterBox
         protected override void OnSelectionChanged(SelectionChangedEventArgs e)
         {
             base.OnSelectionChanged(e);
-            this.Filter = new SelectionFilter(this);
-
+            if (_flag == true)
+                return;
             var checkItem = this.GetCheckAllItem();
             if (checkItem == null)
                 return;
-            if (_flag == true)
-                return;
+            this.Filter = new SelectionFilter(this);
+            this.OnFilterChagned();
+
             if (e.AddedItems.Count == 1 && this.Items[0] == e.AddedItems[0] && checkItem.IsMouseOver)
             {
                 _flag = true;
@@ -186,17 +188,17 @@ namespace H.Controls.FilterBox
 
                 if (control == null) return;
 
-                if (e.OldValue is IEnumerable o)
-                {
-
-                }
-
-                if (e.NewValue is IEnumerable n)
-                {
-
-                }
+                if (e.OldValue is INotifyCollectionChanged o)
+                    o.CollectionChanged -= control.CollectionChanged;
+                if (e.NewValue is INotifyCollectionChanged n)
+                    n.CollectionChanged += control.CollectionChanged;
                 control.RefreshData();
             }));
+
+        private void CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            this.RefreshData();
+        }
 
         private void RefreshData()
         {
@@ -230,7 +232,8 @@ namespace H.Controls.FilterBox
             {
                 if (data == null)
                     continue;
-                var value = propertyInfo.GetValue(data);
+                object value = data is IModelViewModel model ? propertyInfo.GetValue(model.GetModel()) : propertyInfo.GetValue(data);
+
                 if (items.Contains(value))
                     continue;
                 items.Add(value);
@@ -240,13 +243,13 @@ namespace H.Controls.FilterBox
 
         public IFilter Filter
         {
-            get { return (IFilter)GetValue(FilterProperty); }
-            private set { SetValue(FilterProperty, value); }
+            get { return (SelectionFilter)GetValue(FilterProperty); }
+            set { SetValue(FilterProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty FilterProperty =
-            DependencyProperty.Register("Filter", typeof(IFilter), typeof(SelectionFilterBox), new FrameworkPropertyMetadata(default(IFilter), (d, e) =>
+            DependencyProperty.Register("Filter", typeof(IFilter), typeof(SelectionFilterBox), new FrameworkPropertyMetadata(default(IFilter), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, (d, e) =>
             {
                 SelectionFilterBox control = d as SelectionFilterBox;
 
@@ -264,17 +267,41 @@ namespace H.Controls.FilterBox
 
             }));
 
+
+        //声明和注册路由事件
+        public static readonly RoutedEvent FilterChagnedRoutedEvent =
+            EventManager.RegisterRoutedEvent("FilterChagned", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(SelectionFilterBox));
+        //CLR事件包装
+        public event RoutedEventHandler FilterChagned
+        {
+            add { this.AddHandler(FilterChagnedRoutedEvent, value); }
+            remove { this.RemoveHandler(FilterChagnedRoutedEvent, value); }
+        }
+
+        //激发路由事件,借用Click事件的激发方法
+
+        protected void OnFilterChagned()
+        {
+            RoutedEventArgs args = new RoutedEventArgs(FilterChagnedRoutedEvent, this);
+            this.RaiseEvent(args);
+        }
+
+
         public ListBoxItem GetCheckAllItem()
         {
-            if (this.Items.Count > 0 && this.UseCheckAll)
-                return this.ItemContainerGenerator.ContainerFromIndex(0) as ListBoxItem;
-            return null;
+            return this.Dispatcher.Invoke(() =>
+               {
+                   if (this.Items.Count > 0 && this.UseCheckAll)
+                       return this.ItemContainerGenerator.ContainerFromIndex(0) as ListBoxItem;
+                   return null;
+               });
+
         }
     }
 
     public class SelectionFilter : IDisplayFilter
     {
-        SelectionFilterBox _selectionFilterBox;
+        private readonly SelectionFilterBox _selectionFilterBox;
         PropertyInfo _propertyInfo;
         public SelectionFilter(SelectionFilterBox SelectionFilterBox)
         {
@@ -290,17 +317,21 @@ namespace H.Controls.FilterBox
                 return false;
             if (_propertyInfo == null)
                 return true;
-            if (_selectionFilterBox.SelectedItems.Count == 0)
+
+            var selectedItems = _selectionFilterBox.Dispatcher.Invoke(() => _selectionFilterBox.SelectedItems);
+            if (selectedItems.Count == 0)
                 return true;
             var checkItem = this._selectionFilterBox.GetCheckAllItem();
             if (checkItem != null)
             {
-                if (checkItem.IsSelected)
+                if (checkItem.Dispatcher.Invoke(()=> checkItem.IsSelected))
                     return true;
             }
-            foreach (var item in _selectionFilterBox.SelectedItems)
+            foreach (var item in selectedItems)
             {
-                if (_propertyInfo.GetValue(obj).Equals(item))
+                var value = obj is IModelViewModel model ? _propertyInfo.GetValue(model.GetModel())
+                    : _propertyInfo.GetValue(obj);
+                if (value.Equals(item))
                     return true;
             }
             return false;

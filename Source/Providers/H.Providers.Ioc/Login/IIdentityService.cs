@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace H.Providers.Ioc
 {
+
     /// <summary>
     /// 认证接口
     /// </summary>
@@ -30,9 +31,9 @@ namespace H.Providers.Ioc
     {
         bool Register(string phone, string password, out string message);
 
-        string GetPhoneVerificationCode(string phone, out string message);
+        //string GetPhoneVerificationCode(string phone, out string message);
 
-        string GetVerificationCode(out string message);
+        //string GetVerificationCode(out string message);
 
         bool ResetPassword(string phone, string password, out string message);
     }

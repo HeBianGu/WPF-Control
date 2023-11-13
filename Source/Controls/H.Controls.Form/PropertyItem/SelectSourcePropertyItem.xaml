@@ -4,7 +4,9 @@
                     xmlns:local="clr-namespace:H.Controls.Form">
 
     <DataTemplate DataType="{x:Type local:SelectSourcePropertyItem}">
-        <Expander Padding="0" Header="{Binding Name}" Visibility="{Binding Visibility}">
+        <Expander Padding="0"
+                  Header="{Binding Name}"
+                  Visibility="{Binding Visibility}">
             <Border Margin="15,5,0,5" BorderThickness="5,0,0,0">
                 <Border.BorderBrush>
                     <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.BorderBrush}}" />
@@ -71,47 +73,16 @@
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type local:ComboBoxSelectSourcePropertyItem}">
-        <DockPanel Grid.Column="2">
-            <Grid Height="{DynamicResource {x:Static h:LayoutKeys.RowHeight}}" DockPanel.Dock="Top" Visibility="{Binding Visibility}">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <TextBlock Style="{StaticResource S.TextBlock.Title}" />
-                <TextBlock Style="{StaticResource S.TextBlock.Flag}" />
-                <ComboBox Grid.Column="2"
-                          Margin="0"
-                          Padding="0"
-                          DockPanel.Dock="Top"
-                          ItemsSource="{Binding Collection}"
-                          SelectedItem="{Binding Value}" />
-                <!--<TextBlock Grid.Column="3" Style="{StaticResource S.TextBlock.Error}" />-->
-            </Grid>
+        <DockPanel>
+            <ComboBox DockPanel.Dock="Top"
+                      ItemsSource="{Binding Collection}"
+                      SelectedItem="{Binding Value}" />
             <local:Form Padding="0" SelectObject="{Binding Value}" />
         </DockPanel>
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type local:OnlyComboBoxSelectSourcePropertyItem}">
-        <DockPanel Grid.Column="2">
-            <Grid Height="{DynamicResource {x:Static h:LayoutKeys.RowHeight}}" DockPanel.Dock="Top" Visibility="{Binding Visibility}">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <TextBlock Style="{StaticResource S.TextBlock.Title}" />
-                <TextBlock Style="{StaticResource S.TextBlock.Flag}" />
-                <ComboBox Grid.Column="2"
-                          Margin="0"
-                          Padding="0"
-                          DockPanel.Dock="Top"
-                          ItemsSource="{Binding Collection}"
-                          SelectedItem="{Binding Value}" />
-                <!--<TextBlock Grid.Column="3" Style="{StaticResource S.TextBlock.Error}" />-->
-            </Grid>
-        </DockPanel>
+        <ComboBox ItemsSource="{Binding Collection}" 
+                  SelectedItem="{Binding Value}" />
     </DataTemplate>
 </ResourceDictionary>

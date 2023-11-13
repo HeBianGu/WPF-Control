@@ -10,8 +10,8 @@ namespace H.Providers.Ioc
 {
     public interface IFormMessage
     {
-        Task<bool?> ShowEdit<T>(T value, Predicate<T> match = null, Action<Control> action = null, string title = null, Window owner = null);
-        Task<bool?> ShowView<T>(T value, Predicate<T> match = null, Action<Control> action = null, string title = null, Window owner = null);
+        Task<bool?> ShowEdit<T>(T value, Predicate<T> match = null, Action<Control> action = null, Action<IFormdOption> option = null, string title = null, Window owner = null);
+        Task<bool?> ShowView<T>(T value, Predicate<T> match = null, Action<Control> action = null, Action<IFormdOption> option = null, string title = null, Window owner = null);
     }
 
     public interface IFormdOption
@@ -29,7 +29,7 @@ namespace H.Providers.Ioc
         bool UseCommandOnly { get; set; }
         bool UseDateTime { get; set; }
         bool UseDeclaredOnly { get; set; }
-        bool UseDisplayer { get; set; }
+        bool UseDisplayOnly { get; set; }
         bool UseEnum { get; set; }
         bool UseEnumerator { get; set; }
         bool UseGroup { get; set; }

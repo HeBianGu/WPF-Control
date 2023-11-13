@@ -1,5 +1,6 @@
 ﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
 
+using H.Providers.Ioc;
 using H.Providers.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -31,7 +32,7 @@ namespace H.Extensions.ViewModel
         void RefreshPage(Action after = null);
         void Remove(params T[] value);
         void RemoveAll(Func<T, bool> predicate);
-        void Sort<TKey>(Func<T, TKey> keySelector, bool isdesc=false);
+        void Sort<TKey>(Func<T, TKey> keySelector, bool isdesc = false);
         IEnumerable<T> Where(Func<T, bool> predicate);
         T FirstOrDefault(Func<T, bool> predicate);
         void Foreach(Action<T> predicate);
@@ -40,6 +41,11 @@ namespace H.Extensions.ViewModel
 
         void Next();
         void Previous();
+        IDisplayFilter Filter1 { get; set; }
+        IFilter Filter2 { get; set; }
+        IFilter Filter3 { get; set; }
+        IFilter Filter4 { get; set; }
+        IFilter Filter5 { get; set; }
     }
 
     /// <summary> 带有页码的 ObservableCollection 集合</summary>
@@ -199,11 +205,79 @@ namespace H.Extensions.ViewModel
             }
         }
 
-        private static bool _isRefreshing;
+
+        private IDisplayFilter _filter1;
+        public IDisplayFilter Filter1
+        {
+            get { return _filter1; }
+            set
+            {
+                _filter1 = value;
+                RaisePropertyChanged();
+                this.RefreshPage();
+            }
+        }
+
+        private IFilter _filter2;
+        /// <summary> 说明  </summary>
+        public IFilter Filter2
+        {
+            get { return _filter2; }
+            set
+            {
+                _filter2 = value;
+                RaisePropertyChanged();
+                this.RefreshPage();
+            }
+        }
+
+        private IFilter _filter3;
+        /// <summary> 说明  </summary>
+        public IFilter Filter3
+        {
+            get { return _filter3; }
+            set
+            {
+                _filter3 = value;
+                RaisePropertyChanged();
+                this.RefreshPage();
+            }
+        }
+
+        private IFilter _filter4;
+        /// <summary> 说明  </summary>
+        public IFilter Filter4
+        {
+            get { return _filter4; }
+            set
+            {
+                _filter4 = value;
+                RaisePropertyChanged();
+                this.RefreshPage();
+            }
+        }
+
+        private IFilter _filter5;
+        /// <summary> 说明  </summary>
+        public IFilter Filter5
+        {
+            get { return _filter5; }
+            set
+            {
+                _filter5 = value;
+                RaisePropertyChanged();
+            }
+        }
+
         /// <summary> 刷新当前显示Source </summary>
         public void RefreshPage(Action after = null)
         {
-            var where = this.Cache.Where(l => this.Fileter?.Invoke(l) != false);
+            var where = this.Cache.Where(l => this.Fileter?.Invoke(l) != false).
+                Where(x => this.Filter1?.IsMatch(x) != false).
+                Where(x => this.Filter2?.IsMatch(x) != false).
+                Where(x => this.Filter3?.IsMatch(x) != false).
+                Where(x => this.Filter4?.IsMatch(x) != false).
+                Where(x => this.Filter5?.IsMatch(x) != false);
             this.FilterSource = where.ToObservable();
             this.Total = this.FilterSource.Count;
             int min = (this.PageIndex - 1) * this.PageCount;
@@ -211,8 +285,7 @@ namespace H.Extensions.ViewModel
             this.MinValue = this.Total == 0 ? 0 : (min + 1);
             this.MaxValue = max < this.Total ? max : this.Total;
             this.TotalPage = this.Total % this.PageCount == 0 ? this.Total / this.PageCount : this.Total / this.PageCount + 1;
-            List<T> collection = where.Skip(this.MinValue-1).Take(this.PageCount).ToList();
-
+            List<T> collection = where.Skip(this.MinValue - 1).Take(this.PageCount).ToList();
             //this.Source = collection.ToObservable();
             this.DelayInvoke(this.Source, collection, () =>
             {
@@ -301,7 +374,7 @@ namespace H.Extensions.ViewModel
             if (this.SelectedItem == null)
                 return;
             int index = this.FilterSource.IndexOf(this.SelectedItem);
-            if (index >= this.Total-1 || index == -1)
+            if (index >= this.Total - 1 || index == -1)
                 index = 0;
             else
                 index++;

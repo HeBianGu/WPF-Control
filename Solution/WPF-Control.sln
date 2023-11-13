@@ -147,9 +147,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Controls.HorseTextBlock",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Controls.GridSplitterBox", "..\Source\Controls\H.Controls.GridSplitterBox\H.Controls.GridSplitterBox.csproj", "{183CE3D1-BAC8-40E1-9531-9448F39D510C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Controls.FilterBox", "..\Source\Controls\H.Controls.FilterBox\H.Controls.FilterBox.csproj", "{2F0D8537-14D7-4520-A18C-A279675E67DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Controls.FilterBox", "..\Source\Controls\H.Controls.FilterBox\H.Controls.FilterBox.csproj", "{2F0D8537-14D7-4520-A18C-A279675E67DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Extensions.Geometry", "..\Source\Extensions\H.Extensions.Geometry\H.Extensions.Geometry.csproj", "{85D2A482-92C3-4F96-9A9A-6D3D41F855B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Extensions.Geometry", "..\Source\Extensions\H.Extensions.Geometry\H.Extensions.Geometry.csproj", "{85D2A482-92C3-4F96-9A9A-6D3D41F855B3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Modules.Identity", "..\Source\Modules\H.Modules.Identity\H.Modules.Identity.csproj", "{A2C0116D-C9FD-43CB-A8DC-A2CAB95A5CC0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Test.Identify", "..\Source\Tests\H.Test.Identify\H.Test.Identify.csproj", "{0F5229CB-F38E-4931-A3B9-5EBB342372F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Modules.Operation", "..\Source\Modules\H.Modules.Operation\H.Modules.Operation.csproj", "{14FDBE70-7A65-4760-992C-4A06031796FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -405,6 +411,18 @@ Global
 		{85D2A482-92C3-4F96-9A9A-6D3D41F855B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{85D2A482-92C3-4F96-9A9A-6D3D41F855B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{85D2A482-92C3-4F96-9A9A-6D3D41F855B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2C0116D-C9FD-43CB-A8DC-A2CAB95A5CC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2C0116D-C9FD-43CB-A8DC-A2CAB95A5CC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2C0116D-C9FD-43CB-A8DC-A2CAB95A5CC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2C0116D-C9FD-43CB-A8DC-A2CAB95A5CC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F5229CB-F38E-4931-A3B9-5EBB342372F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F5229CB-F38E-4931-A3B9-5EBB342372F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F5229CB-F38E-4931-A3B9-5EBB342372F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F5229CB-F38E-4931-A3B9-5EBB342372F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14FDBE70-7A65-4760-992C-4A06031796FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14FDBE70-7A65-4760-992C-4A06031796FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14FDBE70-7A65-4760-992C-4A06031796FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14FDBE70-7A65-4760-992C-4A06031796FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -473,6 +491,9 @@ Global
 		{183CE3D1-BAC8-40E1-9531-9448F39D510C} = {9E63ED70-6F96-4CB2-8B9D-EAEC77D0548E}
 		{2F0D8537-14D7-4520-A18C-A279675E67DD} = {9E63ED70-6F96-4CB2-8B9D-EAEC77D0548E}
 		{85D2A482-92C3-4F96-9A9A-6D3D41F855B3} = {09F8FD00-E76A-4D72-AAB4-7FA06DBE12D4}
+		{A2C0116D-C9FD-43CB-A8DC-A2CAB95A5CC0} = {27F6EA0F-3811-4403-9599-3B436A5EC502}
+		{0F5229CB-F38E-4931-A3B9-5EBB342372F6} = {E2C0B11D-5ED5-4F22-8E56-F68982B6E59B}
+		{14FDBE70-7A65-4760-992C-4A06031796FA} = {27F6EA0F-3811-4403-9599-3B436A5EC502}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF825C3D-F4F4-4E62-BBFF-B42A5E81112F}

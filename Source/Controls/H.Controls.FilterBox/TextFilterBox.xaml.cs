@@ -21,12 +21,13 @@ namespace H.Controls.FilterBox
         public TextFilterBox()
         {
             this.Filter = new TextFilter(this);
+
         }
         protected override void OnTextChanged(TextChangedEventArgs e)
         {
             base.OnTextChanged(e);
-
             this.Filter = new TextFilter(this);
+            this.OnFilterChanged();
         }
 
 
@@ -136,8 +137,6 @@ namespace H.Controls.FilterBox
 
             }));
 
-
-
         public IFilter Filter
         {
             get { return (IFilter)GetValue(FilterProperty); }
@@ -164,12 +163,27 @@ namespace H.Controls.FilterBox
 
             }));
 
+
+        public static readonly RoutedEvent FilterChangedRoutedEvent =
+            EventManager.RegisterRoutedEvent("FilterChanged", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(TextFilterBox));
+
+        public event RoutedEventHandler FilterChanged
+        {
+            add { this.AddHandler(FilterChangedRoutedEvent, value); }
+            remove { this.RemoveHandler(FilterChangedRoutedEvent, value); }
+        }
+
+        protected void OnFilterChanged()
+        {
+            RoutedEventArgs args = new RoutedEventArgs(FilterChangedRoutedEvent, this);
+            this.RaiseEvent(args);
+        }
+
     }
 
     public class TextFilter : IDisplayFilter
     {
-        TextFilterBox _textFilterBox;
-        IEnumerable<PropertyInfo> _propertyInfos = null;
+        private readonly TextFilterBox _textFilterBox;
         public TextFilter(TextFilterBox textFilterBox)
         {
             _textFilterBox = textFilterBox;
@@ -186,10 +200,13 @@ namespace H.Controls.FilterBox
                 return searchable.Filter(txt);
             if (obj == null)
                 return false;
+            obj = obj is IModelViewModel model ? model.GetModel() : obj;
             string[] propertyNames = this._textFilterBox.PropertyNames?.Split(',');
             var ps = obj.GetType().GetProperties().Where(x => propertyNames?.Contains(x.Name) != false);
             foreach (var p in ps)
             {
+                if (p.Name == "Item")
+                    continue;
                 var value = p.GetValue(obj);
                 if (value != null)
                 {

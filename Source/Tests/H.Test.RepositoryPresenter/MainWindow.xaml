@@ -14,9 +14,8 @@
         <TabItem Header="RepositoryPresenter">
             <ContentPresenter Content="{RepositoryPresenter Type={x:Type local:mbc_dv_image}}" />
         </TabItem>
-        <TabItem Header="RepositoryBox - DataGrid">
-            <RepositoryBox Style="{DynamicResource {x:Static RepositoryBoxKeys.DataGrid}}"
-                           Type="{x:Type local:mbc_dv_image}" />
+        <TabItem Header="RepositoryGrid">
+            <RepositoryGrid Type="{x:Type local:mbc_dv_image}" />
         </TabItem>
         <TabItem Header="RepositoryBox">
             <RepositoryBox Type="{x:Type local:mbc_dv_image}">

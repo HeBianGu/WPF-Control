@@ -4,5 +4,6 @@
     xmlns:local="clr-namespace:H.Controls.RepositoryBox">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Controls.RepositoryBox;component/RepositoryBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.RepositoryBox;component/RepositoryGrid.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

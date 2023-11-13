@@ -7,53 +7,16 @@ using Microsoft.Win32;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 
 namespace H.Extensions.ViewModel
 {
-    public interface IRepositoryViewModel
-    {
-
-    }
-
-    public interface IRepositoryViewModelBase<TEntity> : IRepositoryViewModel where TEntity : StringEntityBase, new()
-    {
-        RelayCommand LoadedCommand { get; }
-        RelayCommand AddCommand { get; }
-        bool CheckedAll { get; set; }
-        RelayCommand CheckedAllCommand { get; }
-        RelayCommand ClearCommand { get; }
-        RelayCommand DeleteCheckedCommand { get; }
-        RelayCommand DeleteCommand { get; }
-        RelayCommand EditCommand { get; }
-        TransactionCommand EditTransactionCommand { get; }
-        RelayCommand ExportCommand { get; }
-        bool IsBusy { get; set; }
-        Type ModelType { get; }
-        RelayCommand NextCommand { get; }
-        RelayCommand PreviousCommand { get; }
-        IStringRepository<TEntity> Repository { get; }
-        RelayCommand SaveCommand { get; }
-        RelayCommand ViewCommand { get; }
-        RelayCommand GridSetCommand { get; }
-
-        Task Add(object obj);
-        Task Add(params TEntity[] ms);
-        Task Clear(object obj = null);
-        bool CanClear();
-        Task Delete(object obj);
-        Task Edit(object obj);
-        Task Export(string path);
-        void RefreshData(params string[] includes);
-        Task<int> Save();
-        Task View(object obj);
-        void Next();
-        void Previous();
-    }
 
     public class RepositoryViewModelBase : NotifyPropertyChanged
     {
@@ -331,6 +294,7 @@ namespace H.Extensions.ViewModel
 
         public virtual async Task Export(string path)
         {
+            Ioc.GetService<IOperationService>().Log<TEntity>($"导出");
             var collection = this.Collection.Select(x => x.Model);
             string message = null;
             var r = Ioc<IExcelService>.Instance?.Export(collection, path, typeof(TEntity).Name, out message);
@@ -377,7 +341,7 @@ namespace H.Extensions.ViewModel
         public virtual async Task Add(object obj)
         {
             var m = new TEntity();
-            bool? dialog = await IocMessage.Form.ShowEdit(this.GetAddModel(m), null, null, "新增");
+            bool? dialog = await IocMessage.Form.ShowEdit(this.GetAddModel(m), null, null, null, "新增");
             if (dialog != true)
             {
                 IocMessage.Snack?.ShowTime("取消操作");
@@ -389,7 +353,7 @@ namespace H.Extensions.ViewModel
 
         public abstract Task Add(params TEntity[] ms);
 
-        TEntity GetEntity(object obj)
+        protected TEntity GetEntity(object obj)
         {
             if (obj is SelectViewModel<TEntity> svm)
                 return svm.Model;
@@ -425,6 +389,7 @@ namespace H.Extensions.ViewModel
             {
                 IocMessage.Snack?.ShowTime("保存失败，数据库保存错误");
             }
+            Ioc<IOperationService>.Instance?.Log<TEntity>($"编辑", entity.ID,OperationType.Update);
         }
 
         public virtual async Task Delete(object obj)
@@ -454,7 +419,7 @@ namespace H.Extensions.ViewModel
             {
                 IocMessage.Snack?.ShowTime("删除失败,数据库保存错误");
             }
-
+            Ioc<IOperationService>.Instance?.Log<TEntity>($"新增", entity.ID,OperationType.Delete);
             this.OnCollectionChanged(obj);
         }
 
@@ -480,7 +445,7 @@ namespace H.Extensions.ViewModel
             {
                 IocMessage.Snack?.ShowTime("清空失败,数据库保存错误");
             }
-
+            Ioc<IOperationService>.Instance?.Log<TEntity>($"清空",null,OperationType.Delete);
             this.OnCollectionChanged(obj);
         }
 
@@ -490,6 +455,7 @@ namespace H.Extensions.ViewModel
             if (entity == null)
                 return;
             await IocMessage.Form.ShowView(this.GetViewModel(entity));
+            Ioc<IOperationService>.Instance?.Log<TEntity>($"查看",entity.ID,OperationType.Search);
             this.OnCollectionChanged(obj);
         }
 
@@ -531,7 +497,10 @@ namespace H.Extensions.ViewModel
             {
                 IocMessage.Snack?.ShowTime("删除失败,数据库保存错误");
             }
-
+            foreach (var item in checks)
+            {
+                Ioc<IOperationService>.Instance?.Log<TEntity>($"删除", item.ID, OperationType.Delete);
+            }
             this.OnCollectionChanged(obj);
         }
 

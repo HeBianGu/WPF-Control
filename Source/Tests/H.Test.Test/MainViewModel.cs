@@ -1,4 +1,5 @@
 ﻿using H.Data.Test;
+using H.Providers.Ioc;
 using H.Providers.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,33 @@ namespace H.Test.Test
                 RaisePropertyChanged();
             }
         }
+
+
+        private IFilter  _filter;
+        /// <summary> 说明  </summary>
+        public IFilter Filter
+        {
+            get { return _filter; }
+            set
+            {
+                _filter = value;
+                RaisePropertyChanged();
+            }
+        }
+
+
+        private string _NotifyClass;
+        /// <summary> 说明  </summary>
+        public string NotifyClass
+        {
+            get { return _NotifyClass; }
+            set
+            {
+                _NotifyClass = value;
+                RaisePropertyChanged();
+            }
+        }
+
 
         #endregion
 

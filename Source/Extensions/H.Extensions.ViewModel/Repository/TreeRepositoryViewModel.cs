@@ -10,11 +10,6 @@ using System.Threading.Tasks;
 
 namespace H.Extensions.ViewModel
 {
-    public interface ITreeRepositoryViewModel<TEntity> : IRepositoryViewModelBase<TEntity> where TEntity : StringEntityBase, new()
-    {
-        IObservableSource<TreeNodeBase<TEntity>> Collection { get; set; }
-        TreeNodeBase<TEntity> SelectedTreeItem { get; set; }
-    }
 
     /// <summary>
     /// 直接对接模型的仓储基类
@@ -144,7 +139,7 @@ namespace H.Extensions.ViewModel
             var m = new TEntity();
             if (this.SelectedTreeItem != null)
                 m.SetPath(this.SelectedTreeItem.Model.GetFullPath());
-            bool? dialog = await IocMessage.Form.ShowEdit(this.GetAddModel(m), null, null, "新增");
+            bool? dialog = await IocMessage.Form.ShowEdit(this.GetAddModel(m), null, null,null, "新增");
             if (dialog != true)
             {
                 IocMessage.Snack?.ShowTime("取消操作");

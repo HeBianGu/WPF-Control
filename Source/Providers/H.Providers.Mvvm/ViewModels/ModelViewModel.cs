@@ -5,13 +5,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
-using System.Windows;
 
 namespace H.Providers.Mvvm
 {
     public interface IModelViewModel
     {
-
+        object GetModel();
     }
     //public interface IModelViewModel<T> : IModelViewModel
     //{
@@ -49,6 +48,11 @@ namespace H.Providers.Mvvm
                 _model = value;
                 RaisePropertyChanged("Model");
             }
+        }
+
+        public object GetModel()
+        {
+            return this.Model;
         }
 
         private bool _visible = true;

@@ -146,15 +146,15 @@ namespace H.Extensions.Behvaiors
             }));
 
 
-        public IFilter Filter4
+        public IDisplayFilter Filter4
         {
-            get { return (IFilter)GetValue(Filter4Property); }
+            get { return (IDisplayFilter)GetValue(Filter4Property); }
             set { SetValue(Filter4Property, value); }
         }
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty Filter4Property =
-            DependencyProperty.Register("Filter4", typeof(IFilter), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IFilter), (d, e) =>
+            DependencyProperty.Register("Filter4", typeof(IDisplayFilter), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IDisplayFilter), (d, e) =>
             {
                 ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
 

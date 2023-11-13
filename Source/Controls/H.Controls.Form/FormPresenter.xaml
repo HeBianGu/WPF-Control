@@ -3,14 +3,17 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.Form">
     <DataTemplate DataType="{x:Type local:FormPresenter}">
-        <local:Form SelectObject="{Binding Value}" UseAsync="False" UsePropertyView="{Binding UsePropertyView}" />
+        <local:Form SelectObject="{Binding Value}"
+                    UseAsync="False"
+                    UsePropertyView="{Binding UsePropertyView}" />
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type local:StaticFormPresenter}">
-        <local:StaticForm SelectObject="{Binding Value}" UseAsync="False" UsePropertyView="{Binding UsePropertyView}" />
+        <local:StaticForm SelectObject="{Binding Value}"
+                          UseAsync="False"
+                          UsePropertyView="{Binding UsePropertyView}" />
     </DataTemplate>
-
-
+    
     <DataTemplate DataType="{x:Type local:ItemsFormPresenter}">
         <ScrollViewer>
             <ItemsControl MinWidth="600" ItemsSource="{Binding Objs}">

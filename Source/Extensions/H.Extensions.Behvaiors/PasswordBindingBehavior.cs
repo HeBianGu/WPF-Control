@@ -6,7 +6,6 @@ namespace H.Extensions.Behvaiors
 {
     public class PasswordBindingBehavior : Behavior<PasswordBox>
     {
-
         public string Password
         {
             get { return (string)GetValue(PasswordProperty); }
@@ -19,7 +18,7 @@ namespace H.Extensions.Behvaiors
             {
                 PasswordBindingBehavior control = d as PasswordBindingBehavior;
 
-                if (control == null) 
+                if (control == null)
                     return;
                 if (control.AssociatedObject == null)
                     return;

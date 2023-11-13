@@ -10,7 +10,6 @@ namespace H.Presenters.Repository
     public class RepositoryPresenter
     {
         private readonly IRepositoryViewModel _viewModel;
-
         public RepositoryPresenter(Type type)
         {
             var gType = typeof(IRepositoryViewModel<>).MakeGenericType(type);

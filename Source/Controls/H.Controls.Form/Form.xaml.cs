@@ -3,6 +3,8 @@
 
 
 
+using H.Providers.Ioc;
+using H.Providers.Mvvm;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -23,7 +25,7 @@ using System.Windows.Threading;
 
 namespace H.Controls.Form
 {
-    public partial class Form : ItemsControl
+    public partial class Form : ItemsControl, IFormdOption
     {
         static Form()
         {
@@ -74,7 +76,6 @@ namespace H.Controls.Form
                 if (l.PropertyType.IsClass && l.PropertyType != typeof(string))
                 {
                     var current = l.GetCustomAttribute<PropertyAttribute>()?.UsePresenter;
-
                     if (this.UsePresenter && current != false)
                     {
                         return new PresenterPropertyItem(l, k);
@@ -120,7 +121,6 @@ namespace H.Controls.Form
             RoutedEventArgs args = new RoutedEventArgs(CloseRoutedEvent, this);
             this.RaiseEvent(args);
         }
-
 
         public DataTemplate ItemHeaderTemplate
         {
@@ -213,6 +213,33 @@ namespace H.Controls.Form
                  Predicate<PropertyInfo> config = e.NewValue as Predicate<PropertyInfo>;
 
              }));
+
+
+        public bool UseDisplayOnly
+        {
+            get { return (bool)GetValue(UseDisplayOnlyProperty); }
+            set { SetValue(UseDisplayOnlyProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty UseDisplayOnlyProperty =
+            DependencyProperty.Register("UseDisplayOnly", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(true, (d, e) =>
+            {
+                Form control = d as Form;
+
+                if (control == null) return;
+
+                if (e.OldValue is bool o)
+                {
+
+                }
+
+                if (e.NewValue is bool n)
+                {
+
+                }
+
+            }));
 
 
         public bool UseDeclaredOnly
@@ -648,40 +675,6 @@ namespace H.Controls.Form
              }));
 
 
-        public bool UseDisplayer
-        {
-            get { return (bool)GetValue(UseDisplayerProperty); }
-            set { SetValue(UseDisplayerProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty UseDisplayerProperty =
-            DependencyProperty.Register("UseDisplayer", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(default(bool), (d, e) =>
-             {
-                 Form control = d as Form;
-
-                 if (control == null) return;
-
-                 if (e.OldValue is bool o)
-                 {
-
-                 }
-
-                 if (e.NewValue is bool n)
-                 {
-                 }
-
-                 //control.RefreshDisplayer();
-
-             }));
-
-        //void RefreshDisplayer()
-        //{
-        //    if (!this.UseDisplayer) return;
-        //    var displayer = this.SelectObject?.GetType()?.GetCustomAttribute<DisplayerAttribute>();
-        //    this.Title = displayer?.Name;
-        //    Cattach.SetIcon(this, displayer?.Icon);
-        //}
 
 
         public bool UseCommandOnly
@@ -1232,6 +1225,12 @@ namespace H.Controls.Form
                     }
                 }
 
+                if (this.UseDisplayOnly)
+                {
+                    if (item.GetCustomAttribute<DisplayerAttribute>() == null && item.GetCustomAttribute<DisplayAttribute>() == null)
+                        continue;
+                }
+
                 if (!string.IsNullOrEmpty(this.UsePropertyNames))
                 {
                     var array = this.UsePropertyNames.Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
@@ -1262,7 +1261,6 @@ namespace H.Controls.Form
                 }
                 items.Add(from);
             }
-
 
             IEnumerable<IPropertyItem> result;
 

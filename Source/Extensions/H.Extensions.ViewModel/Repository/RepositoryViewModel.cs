@@ -5,7 +5,9 @@ using H.Providers.Ioc;
 using H.Providers.Mvvm;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace H.Extensions.ViewModel
@@ -51,8 +53,10 @@ namespace H.Extensions.ViewModel
                 foreach (var m in ms)
                 {
                     this.Collection.Add(new SelectViewModel<TEntity>(m));
+                    Ioc<IOperationService>.Instance?.Log<TEntity>($"新增", m.ID, OperationType.Add);
                 }
                 IocMessage.Snack?.ShowTime("新增成功");
+
                 return;
             }
             var r = await this.Repository?.InsertRangeAsync(ms);
@@ -64,6 +68,10 @@ namespace H.Extensions.ViewModel
             else
             {
                 IocMessage.Snack?.ShowTime("新增失败,数据库保存错误");
+            }
+            foreach (var m in ms)
+            {
+                Ioc<IOperationService>.Instance?.Log<TEntity>($"新增", m.ID, OperationType.Add);
             }
         }
     }

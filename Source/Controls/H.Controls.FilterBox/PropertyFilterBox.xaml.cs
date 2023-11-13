@@ -114,7 +114,7 @@ namespace H.Controls.FilterBox
         }
 
         public static readonly DependencyProperty FilterProperty =
-            DependencyProperty.Register("Filter", typeof(IFilter), typeof(PropertyFilterBox), new FrameworkPropertyMetadata(default(IFilter), (d, e) =>
+            DependencyProperty.Register("Filter", typeof(IFilter), typeof(PropertyFilterBox), new FrameworkPropertyMetadata(default(IFilter), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, (d, e) =>
             {
                 PropertyFilterBox control = d as PropertyFilterBox;
 

@@ -18,19 +18,6 @@ namespace System
             service.AddSingleton<IAboutButtonPresenter, AboutButtonPresenter>();
         }
 
-        ///// <summary>
-        ///// 注册
-        ///// </summary>
-        ///// <param name="service"></param>
-        //public static void AddAboutViewPresenterOnCaption(this IServiceCollection service, Action<IAboutViewPresenterOption> action = null)
-        //{
-        //    service.AddWindowCaptionViewPresenter();
-        //    service.AddSingleton<IAboutViewPresenter, AboutViewPresenter>();
-        //    action?.Invoke(AboutViewPresenter.Instance);
-        //    WindowCaptionViewPresenter.Instance.AddPersenter(AboutViewPresenter.Instance);
-        //    SystemSetting.Instance?.Add(AboutViewPresenter.Instance);
-        //}
-
         /// <summary>
         /// 配置
         /// </summary>

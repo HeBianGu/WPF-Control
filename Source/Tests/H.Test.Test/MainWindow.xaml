@@ -163,7 +163,6 @@
                             <BulletDecorator.Bullet>
                                 <TextBlock VerticalAlignment="Center" Text="用户班级  " />
                             </BulletDecorator.Bullet>
-
                             <h:SelectionFilterBox x:Name="sfb1"
                                                   MaxHeight="100"
                                                   Margin="0,5"
@@ -256,7 +255,6 @@
                                                           Filter4="{Binding ElementName=sfb2, Path=Filter}"
                                                           ItemsSource="{Binding Students}" />
                         </Behaviors:Interaction.Behaviors>
-
                     </DataGrid>
                 </DockPanel>
             </TabItem>

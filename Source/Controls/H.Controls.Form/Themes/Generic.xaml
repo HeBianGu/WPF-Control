@@ -12,6 +12,7 @@
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form;component/PropertyItem/DateTimePropertyItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form;component/PropertyItem/BoolPropertyItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form;component/PropertyItem/CommandPropertyItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form;component/PropertyItem/ComboBoxRepositoryPropertyItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form;component/FormPresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
@@ -213,7 +214,7 @@
                             UseClass="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=UseClass}"
                             UseDateTime="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=UseDateTime}"
                             UseDeclaredOnly="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=UseDeclaredOnly}"
-                            UseDisplayer="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=UseDisplayer}"
+                            UseDisplayOnly="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=UseDisplayOnly}"
                             UseEnum="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=UseEnum}"
                             UseEnumerator="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=UseGroup}"
                             UseGroup="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=UseGroupNames}"
