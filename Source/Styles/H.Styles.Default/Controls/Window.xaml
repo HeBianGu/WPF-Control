@@ -154,9 +154,9 @@
                             <Border Grid.RowSpan="3"
                                     IsHitTestVisible="False"
                                     Opacity="{Binding Source={x:Static local:WindowSetting.Instance}, Path=Opacity}"
-                                    Visibility="{Binding Source={x:Static local:WindowSetting.Instance}, Path=BackImagePath, Converter={x:Static Converter.GetNullToCollapsed}}">
+                                    Visibility="{Binding ElementName=ib, Path=ImageSource, Converter={x:Static Converter.GetNullToCollapsed}}">
                                 <Border.Background>
-                                    <ImageBrush ImageSource="{Binding Source={x:Static local:WindowSetting.Instance}, Path=BackImagePath}" Stretch="{Binding Source={x:Static local:WindowSetting.Instance}, Path=Stretch}" />
+                                    <ImageBrush x:Name="ib" ImageSource="{Binding Source={x:Static local:WindowSetting.Instance}, Path=BackImagePath}" Stretch="{Binding Source={x:Static local:WindowSetting.Instance}, Path=Stretch}" />
                                 </Border.Background>
                             </Border>
 

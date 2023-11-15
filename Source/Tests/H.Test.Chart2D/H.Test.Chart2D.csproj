@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>    <ProjectReference Include="..\..\Controls\H.Controls.Chart2D\H.Controls.Chart2D.csproj" />
+
+    <ProjectReference Include="..\..\Datas\H.Data.Test\H.Data.Test.csproj" />
+    <ProjectReference Include="..\..\Styles\H.Styles.Default\H.Styles.Default.csproj" />
+    <ProjectReference Include="..\..\Themes\H.Themes.Default\H.Themes.Default.csproj" />
+  </ItemGroup>
+
+</Project>

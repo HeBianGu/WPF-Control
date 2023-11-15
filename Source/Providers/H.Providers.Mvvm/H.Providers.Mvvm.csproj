@@ -5,4 +5,8 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\H.Providers.Ioc\H.Providers.Ioc.csproj" />
+  </ItemGroup>
+
 </Project>

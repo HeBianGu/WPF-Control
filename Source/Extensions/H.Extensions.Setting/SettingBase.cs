@@ -49,7 +49,6 @@ namespace H.Extensions.Setting
         protected virtual ISerializerService GetSerializerService()
         {
             return new JsonSerializerService();
-            //return XmlSerialize.Instance;
         }
 
         public virtual void Load()

@@ -11,6 +11,9 @@
               CaptionHeight="50"
               WindowStartupLocation="CenterScreen"
               mc:Ignorable="d">
+    <Window.DataContext>
+        <local:MainViewModel/>
+    </Window.DataContext>
     <h:MainWindow.CaptionTempate>
         <ControlTemplate>
             <DockPanel LastChildFill="False" HorizontalAlignment="Right">
@@ -19,7 +22,7 @@
         </ControlTemplate>
     </h:MainWindow.CaptionTempate>
     <Grid>
-        <TabControl>
+        <TabControl BorderThickness="1" BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}">
             <TabItem Header="用户管理">
                 <ContentPresenter Content="{Ioc Type={x:Type h:IUserViewPresenter}}" />
             </TabItem>
@@ -31,6 +34,22 @@
             </TabItem>
             <TabItem Header="操作日志">
                 <ContentPresenter Content="{Ioc Type={x:Type h:IOperationViewPresenter}}" />
+            </TabItem>
+            <TabItem Header="操作日志图表">
+                <TabControl BorderThickness="1" TabStripPlacement="Bottom" BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}">
+                    <TabItem Header="用户登录次数">
+                        <ContentPresenter Margin="100" Content="{Binding Bar}" />
+                    </TabItem>
+                    <TabItem Header="用户操作日志数量对比图">
+                        <ContentPresenter Margin="100" Content="{Binding Pie}" />
+                    </TabItem>
+                    <TabItem Header="用户登录次数">
+                        <ContentPresenter Margin="100" Content="{Binding Radar}" />
+                    </TabItem>
+                    <TabItem Header="近7天用户登录次数">
+                        <ContentPresenter Margin="100" Content="{Binding Line}" />
+                    </TabItem>
+                </TabControl>
             </TabItem>
         </TabControl>
     </Grid>

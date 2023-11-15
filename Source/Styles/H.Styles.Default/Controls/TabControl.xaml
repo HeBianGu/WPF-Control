@@ -8,6 +8,12 @@
     <Style x:Key="{ComponentResourceKey ResourceId=S.TabControl.Default, TypeInTargetAssembly={x:Type local:TabControlKeys}}" TargetType="{x:Type TabControl}">
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="BorderBrush">
+            <Setter.Value>
+                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabControl}">

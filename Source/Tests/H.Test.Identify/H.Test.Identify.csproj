@@ -3,7 +3,6 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net7.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>logo.ico</ApplicationIcon>
   </PropertyGroup>
@@ -14,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Controls\H.Controls.Chart2D\H.Controls.Chart2D.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.RepositoryBox\H.Controls.RepositoryBox.csproj" />
     <ProjectReference Include="..\..\DataBases\H.DataBases.Sqlite\H.DataBases.Sqlite.csproj" />
     <ProjectReference Include="..\..\Datas\H.Data.Test\H.Data.Test.csproj" />
