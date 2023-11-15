@@ -324,7 +324,7 @@ namespace H.Controls.FilterBox
             var checkItem = this._selectionFilterBox.GetCheckAllItem();
             if (checkItem != null)
             {
-                if (checkItem.Dispatcher.Invoke(()=> checkItem.IsSelected))
+                if (checkItem.Dispatcher.Invoke(() => checkItem.IsSelected))
                     return true;
             }
             foreach (var item in selectedItems)

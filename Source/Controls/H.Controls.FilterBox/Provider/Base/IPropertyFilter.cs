@@ -8,6 +8,7 @@ namespace H.Controls.FilterBox
 {
     public interface IPropertyFilter : IDisplayFilter
     {
+        string DisplayName { get; set; }
         bool IsSelected { get; set; }
         string Name { get; set; }
         FilterOperate Operate { get; set; }

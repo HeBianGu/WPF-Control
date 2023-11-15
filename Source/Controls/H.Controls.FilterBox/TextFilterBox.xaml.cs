@@ -54,7 +54,6 @@ namespace H.Controls.FilterBox
                 {
 
                 }
-
             }));
 
 
@@ -107,7 +106,6 @@ namespace H.Controls.FilterBox
                 {
 
                 }
-
             }));
 
 
@@ -136,6 +134,8 @@ namespace H.Controls.FilterBox
                 }
 
             }));
+
+
 
         public IFilter Filter
         {
@@ -178,7 +178,6 @@ namespace H.Controls.FilterBox
             RoutedEventArgs args = new RoutedEventArgs(FilterChangedRoutedEvent, this);
             this.RaiseEvent(args);
         }
-
     }
 
     public class TextFilter : IDisplayFilter
