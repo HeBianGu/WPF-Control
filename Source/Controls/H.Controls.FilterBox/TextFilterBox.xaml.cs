@@ -171,7 +171,7 @@ namespace H.Controls.FilterBox
         {
             add { this.AddHandler(FilterChangedRoutedEvent, value); }
             remove { this.RemoveHandler(FilterChangedRoutedEvent, value); }
-        }
+    }
 
         protected void OnFilterChanged()
         {
