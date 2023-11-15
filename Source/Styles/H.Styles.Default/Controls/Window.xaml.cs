@@ -25,6 +25,7 @@ namespace H.Styles.Default
     public class WindowSetting : Setting<WindowSetting>
     {
         private string _backImagePath;
+        [DefaultValue("pack://application:,,,/H.Extensions.BackgroundImage;component/b41.png")]
         [Displayer(Name = "窗口背景图片")]
         public string BackImagePath
         {

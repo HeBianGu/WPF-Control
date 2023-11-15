@@ -38,7 +38,7 @@ namespace H.Test.Theme
             });
             app.UseWindowSetting(x =>
             {
-                x.BackImagePath = "pack://application:,,,/H.Extensions.ImageSource;component/b41.png";
+                x.BackImagePath = "pack://application:,,,/H.Extensions.BackgroundImage;component/b13.png";
             });
         }
     }

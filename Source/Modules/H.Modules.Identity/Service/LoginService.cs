@@ -44,24 +44,34 @@ namespace H.Modules.Identity
                 return false;
             }
 
-            var reporitory = Ioc.GetService<IStringRepository<hi_dd_user>>();
-            if (reporitory.GetList(x => x.Account.ToLower() == name.ToLower()).Count() == 0)
+            if (AdminUser.Instance.Account == name && AdminUser.Instance.Password == password)
             {
-                message = "用户名不正确";
-                return false;
+                this.User = AdminUser.Instance;
             }
-
-            if (reporitory.GetList(x => x.Account.ToLower() == name.ToLower() && x.Password.ToLower() == password.ToLower()).Count() == 0)
+            else
             {
-                message = "密码不正确";
-                return false;
+                var reporitory = Ioc.GetService<IStringRepository<hi_dd_user>>();
+                var user = reporitory.GetList(x => x.Account.ToLower() == name.ToLower()).FirstOrDefault();
+                if (user == null)
+                {
+                    message = "用户名不正确";
+                    return false;
+                }
+                if (user.Password.ToLower() != password.ToLower())
+                {
+                    message = "密码不正确";
+                    return false;
+                }
+                this.User = new User(user);
             }
+            Ioc<IOperationService>.Instance?.Log<hi_dd_user>("登录", "登录成功");
             return true;
         }
 
         public bool Logout(out string message)
         {
             message = null;
+            Ioc<IOperationService>.Instance?.Log<hi_dd_user>("登录", "退出登录");
             User = null;
             return true;
         }
@@ -70,12 +80,9 @@ namespace H.Modules.Identity
     public class AdminUser : User
     {
         public static AdminUser Instance = new AdminUser();
-        public AdminUser() : base(new hi_dd_user() { ID = "02A15DAA-423E-46F3-884D-AF114ACDF5BA", Name = "系统管理员", Account = "admin", Password = "123456", Role = AdminRole.Instance.Model })
+        public AdminUser() : base(new hi_dd_user() { ID = "02A15DAA-423E-46F3-884D-AF114ACDF5BA", Name = "系统管理员", Account = "admin", Password = "123456" })
         {
-            //this.ID = "02A15DAA-423E-46F3-884D-AF114ACDF5BA";
-            //this.Name = "admin";
-            //this.Password = "123456";
-            //this.Role = AdminRole.Instance;
+
         }
         public override bool IsValid(string authorId)
         {

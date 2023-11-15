@@ -19,7 +19,7 @@
             </h:Form>
         </TabItem>
         <TabItem Header="TypeCTestModel">
-            <h:Form>
+            <h:Form UseDisplayOnly="False">
                 <h:Form.SelectObject>
                     <h:TypeCTestModel />
                 </h:Form.SelectObject>
@@ -33,7 +33,7 @@
             </h:Form>
         </TabItem>
         <TabItem Header="ControlTypeConverterModel">
-            <h:Form>
+            <h:Form UseDisplayOnly="False">
                 <h:Form.SelectObject>
                     <h:ControlTypeConverterModel />
                 </h:Form.SelectObject>

@@ -7,6 +7,5 @@
         public const string Maximize = "F1M12,12L4,12 4,4 12,4z M3,13L13,13 13,3 3,3z";
         public const string Minimize = "F1M3,8L13,8 13,7 3,7z";
         public const string Down = "M 0 0 L 4 4 L 8 0 Z";
-        
     }
 }

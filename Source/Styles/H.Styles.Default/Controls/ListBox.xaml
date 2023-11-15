@@ -88,7 +88,7 @@
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
             </Setter.Value>
         </Setter>
-        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=(Cattach.ItemBorderThickness)}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListBoxItem">

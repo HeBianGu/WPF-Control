@@ -23,6 +23,10 @@ namespace H.Windows.Main
             DefaultStyleKeyProperty.OverrideMetadata(typeof(MainWindow), new FrameworkPropertyMetadata(typeof(MainWindow)));
         }
 
+        public MainWindow()
+        {
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+        }
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();

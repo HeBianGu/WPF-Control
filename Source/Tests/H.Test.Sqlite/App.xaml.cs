@@ -44,8 +44,11 @@ namespace H.Test.Sqlite
         protected override void OnSplashScreen(StartupEventArgs e)
         {
             base.OnSplashScreen(e);
-
-            var r = Ioc.GetService<IDbConnectService>().Load(out string error);
+            var loads = Ioc.Services.GetServices<ILoad>().OfType<IDbConnectService>();
+            foreach (var load in loads)
+            {
+                load.Load(out string error);
+            }
         }
     }
 }

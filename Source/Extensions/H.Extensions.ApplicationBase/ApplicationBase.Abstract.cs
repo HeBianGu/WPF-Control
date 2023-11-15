@@ -59,8 +59,7 @@ namespace H.Extensions.ApplicationBase
 
                 if (c?.IsCancel != true)
                 {
-                    var loads = Ioc.Services.GetServices<IDbConnectService>();
-
+                    var loads = Ioc.Services.GetServices<ILoad>();
                     foreach (var load in loads)
                     {
                         if (load == null)

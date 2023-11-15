@@ -29,6 +29,15 @@ namespace System
         /// 注册
         /// </summary>
         /// <param name="service"></param>
+        public static void AddLoginService(this IServiceCollection service)
+        {
+            service.AddSingleton<ILoginService, LoginService>();
+        }
+
+        /// <summary>
+        /// 注册
+        /// </summary>
+        /// <param name="service"></param>
         public static void AddRoleViewPresenter(this IServiceCollection service)
         {
             service.AddSingleton<IRepositoryViewModel<hi_dd_role>, RoleRepositoryViewModel>();

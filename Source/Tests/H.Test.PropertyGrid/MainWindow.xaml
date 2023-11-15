@@ -7,7 +7,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         Title="MainWindow"
         Width="800"
-        Height="450"
+        Height="650"
         Style="{StaticResource {x:Type Window}}"
         mc:Ignorable="d">
     <DockPanel>
@@ -19,13 +19,7 @@
                         ShowDescriptionByTooltip="True"
                         ShowPreview="True"
                         ShowSummary="True"
-                        ShowTitle="True">
-            <!--<h:SystemPropertyGrid.SelectedObject>
-                <h:Student/>
-            </h:SystemPropertyGrid.SelectedObject>-->
-        </h:PropertyGrid>
-        <Button x:Name="btn"
-                Content="我是按钮"
-                FontSize="100" />
+                        ShowTitle="True" />
+        <Button x:Name="btn" Content="我是按钮" />
     </DockPanel>
 </Window>

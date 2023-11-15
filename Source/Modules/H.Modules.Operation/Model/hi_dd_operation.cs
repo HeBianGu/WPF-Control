@@ -29,7 +29,6 @@ namespace H.Modules.Operation
         [Display(Name = "类型")]
         public string Type { get; set; }
 
-        [Browsable(false)]
         [Display(Name = "操作类型")]
         public OperationType OperationType { get; set; }
 

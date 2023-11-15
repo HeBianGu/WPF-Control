@@ -25,9 +25,9 @@ namespace H.Modules.Operation
                 Message = message,
                 Method = methodName,
                 OperationType = operationType,
-                Type = typeof(T).Name,
+                Type = typeName,
                 UserID = Ioc<ILoginService>.Instance?.User?.ID,
-                UserName = Ioc<ILoginService>.Instance?.User?.Name
+                UserName = Ioc<ILoginService>.Instance?.User?.Account
             };
             vm.Add(operation);
         }

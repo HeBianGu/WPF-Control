@@ -126,7 +126,8 @@
                                 </CollectionViewSource.SortDescriptions>
                             </CollectionViewSource>
                         </Grid.Resources>
-                        <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                        <ListBox Cattach.ItemBorderThickness="0"
+                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                                  ScrollViewer.VerticalScrollBarVisibility="Disabled"
                                  SelectedItem="{Binding SelectedManager}">
                             <ItemsControl.ItemTemplate>
@@ -148,7 +149,9 @@
                                                   Stroke="{DynamicResource {x:Static h:BrushKeys.Foreground}}"
                                                   ToolTip="{Binding Name}" />
                                         </DockPanel>
-                                        <TextBlock x:Name="dp_2" Margin="20 0" Text="{Binding Name}" />
+                                        <TextBlock x:Name="dp_2"
+                                                   Margin="20,0"
+                                                   Text="{Binding Name}" />
                                     </Grid>
                                     <DataTemplate.Triggers>
                                         <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=h:GridSplitterBox}, Path=MenuWidth.Value, Converter={x:Static h:Converter.GetLessThan}, ConverterParameter=90}" Value="True">
@@ -223,10 +226,10 @@
                 <TabControl.ItemTemplate>
                     <DataTemplate>
                         <DockPanel>
-                            <Button Height="22"
+                            <Button Padding="12"
                                     Command="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.HideItemCommand}"
                                     CommandParameter="{Binding}"
-                                    Content="F1M8.583,8L13,12.424 12.424,13 8,8.583 3.576,13 3,12.424 7.417,8 3,3.576 3.576,3 8,7.417 12.424,3 13,3.576z"
+                                    Content="{x:Static h:Geometrys.Close}"
                                     DockPanel.Dock="Right"
                                     Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
                             <TextBlock VerticalAlignment="Center" Text="{Binding Name}" />
@@ -235,7 +238,7 @@
                 </TabControl.ItemTemplate>
                 <TabControl.ItemContainerStyle>
                     <Style BasedOn="{StaticResource {x:Type TabItem}}" TargetType="TabItem">
-                        <Setter Property="Padding" Value="5,0" />
+                        <Setter Property="Padding" Value="5,0,0,0" />
                         <Setter Property="Visibility" Value="{Binding IsVisibleInTab, Converter={x:Static Converter.GetTrueToVisible}}" />
                     </Style>
                 </TabControl.ItemContainerStyle>

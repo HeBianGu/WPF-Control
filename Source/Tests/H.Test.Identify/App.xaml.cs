@@ -27,15 +27,18 @@ namespace H.Test.Identify
 
         protected override void ConfigureServices(IServiceCollection services)
         {
-            base.ConfigureServices(services);
+            services.AddSetting();
             services.AddMessage();
+            services.AddLoginViewPresenter();
+            services.AddSplashScreen();
+
             services.AddDbContextBySetting<IdentifyDataContext>();
 
             services.AddSingleton<IStringRepository<hi_dd_user>, DbContextRepository<IdentifyDataContext, hi_dd_user>>();
             services.AddUserViewPresenter();
+            services.AddLoginService();
 
             services.AddSingleton<IStringRepository<hi_dd_role>, DbContextRepository<IdentifyDataContext, hi_dd_role>>();
-           
             services.AddRoleViewPresenter();
 
             services.AddSingleton<IStringRepository<hi_dd_author>, DbContextRepository<IdentifyDataContext, hi_dd_author>>();

@@ -9,6 +9,7 @@
         Width="800"
         Height="450"
         Style="{StaticResource {x:Type Window}}"
+        WindowStartupLocation="CenterScreen"
         mc:Ignorable="d">
     <Grid>
         <ContentPresenter Content="{Ioc Type={x:Type ISettingButtonPresenter}}" />

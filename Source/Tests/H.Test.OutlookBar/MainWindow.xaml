@@ -9,6 +9,7 @@
         Width="1100"
         Height="650"
         Style="{StaticResource {x:Type Window}}"
+        WindowStartupLocation="CenterScreen"
         mc:Ignorable="d">
     <DockPanel>
         <h:OutlookBar Width="250"

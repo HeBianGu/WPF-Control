@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:h="https://github.com/HeBianGu"
         xmlns:local="clr-namespace:H.Test.RepositoryPresenter"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         Title="MainWindow"
@@ -15,10 +16,34 @@
             <ContentPresenter Content="{RepositoryPresenter Type={x:Type local:mbc_dv_image}}" />
         </TabItem>
         <TabItem Header="RepositoryGrid">
-            <RepositoryGrid Type="{x:Type local:mbc_dv_image}" />
+            <RepositoryGrid Type="{x:Type local:mbc_dv_image}"
+                            UseCheckAll="True"
+                            UseDeleteChecked="True"
+                            UseExport="True"
+                            UseNextPage="True"
+                            UsePreviousPage="True"
+                            UseSave="True"
+                            UseView="True">
+                <Behaviors:Interaction.Behaviors>
+                    <h:DataGridAutoColumnBehavior BindingPath="Model.{0}"
+                                                  DataGridLength="*"
+                                                  Type="{Binding ModelType}">
+                        <h:DataGridAutoColumnBehavior.HomeColumns>
+                            <DataGridCheckBoxColumn Binding="{Binding IsSelected}" Header="全选" />
+                        </h:DataGridAutoColumnBehavior.HomeColumns>
+                    </h:DataGridAutoColumnBehavior>
+                </Behaviors:Interaction.Behaviors>
+            </RepositoryGrid>
         </TabItem>
         <TabItem Header="RepositoryBox">
-            <RepositoryBox Type="{x:Type local:mbc_dv_image}">
+            <RepositoryBox Type="{x:Type local:mbc_dv_image}"
+                           UseCheckAll="True"
+                           UseDeleteChecked="True"
+                           UseExport="True"
+                           UseNextPage="True"
+                           UsePreviousPage="True" h:Cattach.ItemHeight="Auto"
+                           UseSave="True"
+                           UseView="True">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Form SelectObject="{Binding Model}"
@@ -28,7 +53,7 @@
                 </ItemsControl.ItemTemplate>
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <UniformGrid Columns="2" />
+                        <UniformGrid Columns="4" VerticalAlignment="Top"/>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
             </RepositoryBox>

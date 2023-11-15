@@ -12,11 +12,13 @@ using System.Data.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 #endif
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
@@ -40,13 +42,22 @@ namespace H.DataBases.Share
                   s.IsBusy = true;
                   s.Message = "正在连接...";
 
-                  var init = Ioc.GetService<IDbConnectService>();
-                  var r = init.TryConnect(out string message);
-                  s.Message = message;
+                  var inits = Ioc.Services.GetServices<ILoad>().OfType<IDbConnectService>();
+                  var r = false;
+                  foreach (var init in inits)
+                  {
+                      r = init.TryConnect(out string message);
+                      if (r == false)
+                      {
+                          s.Message = message;
+                          break;
+                      }
+                  }
+
                   Thread.Sleep(500);
                   s.IsBusy = false;
                   CommandManager.InvalidateRequerySuggested();
-                  return Tuple.Create(r, message);
+                  return Tuple.Create(r, s.Message);
               });
 
             if (r.Item1 == false)
@@ -60,7 +71,7 @@ namespace H.DataBases.Share
         public RelayCommand SaveCommand => new RelayCommand((s, e) =>
         {
             var r = this.Save(out string message);
-            if(r)
+            if (r)
             {
                 IocMessage.Dialog.ShowMessage("保存成功");
             }

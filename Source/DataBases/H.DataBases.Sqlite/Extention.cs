@@ -37,7 +37,7 @@ namespace System
             string connect = SqliteSetting.Instance.GetConnect();
             services.AddDbContext<TDbContext>(x => x.UseLazyLoadingProxies().UseSqlite(connect));
             SettingDataManager.Instance.Add(SqliteSetting.Instance);
-            services.AddSingleton<IDbConnectService, SqliteDbConnectService<TDbContext>>();
+            services.AddSingleton<ILoad, SqliteDbConnectService<TDbContext>>();
             services.AddSingleton<IDbDisconnectService, DbDisconnectService<TDbContext>>();
         }
 
@@ -54,7 +54,7 @@ namespace System
             string connect = setting.GetConnect();
             services.AddDbContext<TDbContext>(x => x.UseLazyLoadingProxies().UseSqlite(connect));
             SettingDataManager.Instance.Add(setting);
-            services.AddSingleton<IDbConnectService, SqliteDbConnectService<TDbContext>>();
+            services.AddSingleton<ILoad, SqliteDbConnectService<TDbContext>>();
             services.AddSingleton<IDbDisconnectService, DbDisconnectService<TDbContext>>();
         }
     }

@@ -17,12 +17,12 @@
             </DockPanel>
         </ControlTemplate>
     </h:MainWindow.CaptionTempate>
-    <h:MainWindow.SideTemplate>
+    <!--<h:MainWindow.SideTemplate>
         <ControlTemplate>
             <Grid Width="200" Visibility="Collapsed"
                   Background="Orange" />
         </ControlTemplate>
-    </h:MainWindow.SideTemplate>
+    </h:MainWindow.SideTemplate>-->
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="文件">

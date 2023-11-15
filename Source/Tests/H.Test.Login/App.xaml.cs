@@ -22,7 +22,8 @@ namespace H.Test.Login
         {
             services.AddSetting();
             services.AddMessage();
-            services.AddLogin();
+            services.AddLoginViewPresenter();
+            services.AddTestLoginService();
       
         }
 
@@ -34,7 +35,6 @@ namespace H.Test.Login
         protected override void Configure(IApplicationBuilder app)
         {
             base.Configure(app);
-
             app.UseLoginSetting();
         }
 

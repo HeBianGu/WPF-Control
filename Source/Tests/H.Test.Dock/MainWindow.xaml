@@ -5,9 +5,10 @@
         xmlns:local="clr-namespace:H.Test.Dock"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         Title="MainWindow"
-        Width="800"
-        Height="450"
+        Width="1100"
+        Height="650"
         Style="{StaticResource {x:Type Window}}"
+        WindowStartupLocation="CenterScreen"
         mc:Ignorable="d">
     <Grid x:Name="layoutRoot">
         <Grid.RowDefinitions>
@@ -25,41 +26,26 @@
             </MenuItem>
             <MenuItem Header="Layout">
                 <MenuItem Header="Save">
-                    <MenuItem Click="OnSaveLayout"
-                              Header="Layout_1" />
-                    <MenuItem Click="OnSaveLayout"
-                              Header="Layout_2" />
-                    <MenuItem Click="OnSaveLayout"
-                              Header="Layout_3" />
-                    <MenuItem Click="OnSaveLayout"
-                              Header="Layout_4" />
+                    <MenuItem Click="OnSaveLayout" Header="Layout_1" />
+                    <MenuItem Click="OnSaveLayout" Header="Layout_2" />
+                    <MenuItem Click="OnSaveLayout" Header="Layout_3" />
+                    <MenuItem Click="OnSaveLayout" Header="Layout_4" />
                 </MenuItem>
                 <MenuItem Header="Load">
-                    <MenuItem Click="OnLoadLayout"
-                              Header="Layout_1" />
-                    <MenuItem Click="OnLoadLayout"
-                              Header="Layout_2" />
-                    <MenuItem Click="OnLoadLayout"
-                              Header="Layout_3" />
-                    <MenuItem Click="OnLoadLayout"
-                              Header="Layout_4" />
+                    <MenuItem Click="OnLoadLayout" Header="Layout_1" />
+                    <MenuItem Click="OnLoadLayout" Header="Layout_2" />
+                    <MenuItem Click="OnLoadLayout" Header="Layout_3" />
+                    <MenuItem Click="OnLoadLayout" Header="Layout_4" />
                 </MenuItem>
-                <MenuItem Click="OnDumpToConsole"
-                          Header="Dump To Console" />
-                <MenuItem Click="OnUnloadManager"
-                          Header="Unload Manager" />
-                <MenuItem Click="OnLoadManager"
-                          Header="Load Manager" />
-                <MenuItem Click="OnShowHeader"
-                          Header="Show header" />
+                <MenuItem Click="OnDumpToConsole" Header="Dump To Console" />
+                <MenuItem Click="OnUnloadManager" Header="Unload Manager" />
+                <MenuItem Click="OnLoadManager" Header="Load Manager" />
+                <MenuItem Click="OnShowHeader" Header="Show header" />
             </MenuItem>
             <MenuItem Header="Tools">
-                <MenuItem Click="OnShowWinformsWindow"
-                          Header="WinForms Window" />
-                <MenuItem Click="OnShowToolWindow1"
-                          Header="Tool Window1" />
-                <MenuItem Click="OnNewFloatingWindow"
-                          Header="New floating window" />
+                <MenuItem Click="OnShowWinformsWindow" Header="WinForms Window" />
+                <MenuItem Click="OnShowToolWindow1" Header="Tool Window1" />
+                <MenuItem Click="OnNewFloatingWindow" Header="New floating window" />
             </MenuItem>
         </Menu>
 
@@ -76,29 +62,29 @@
             <DockingManager.DocumentHeaderTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <Image Margin="0,0,4,0"
-                               Source="{Binding IconSource}" />
-                        <TextBlock Text="{Binding Title}"
+                        <Image Margin="5" Source="{Logo}" />
+                        <TextBlock VerticalAlignment="Center"
+                                   Text="{Binding Title}"
                                    TextTrimming="CharacterEllipsis" />
                     </StackPanel>
                 </DataTemplate>
             </DockingManager.DocumentHeaderTemplate>
             <LayoutRoot PropertyChanged="OnLayoutRootPropertyChanged">
                 <LayoutPanel Orientation="Horizontal">
-                    <LayoutAnchorablePane DockWidth="50">
+                    <LayoutAnchorablePane DockWidth="250">
                         <LayoutAnchorable x:Name="WinFormsWindow"
                                           Title="WinForms Window"
                                           CanClose="False"
                                           CanHide="False"
                                           ContentId="WinFormsWindow"
                                           ToolTip="My WinForms Tool">
+                            <Border />
                             <!--<winformsIntegration:WindowsFormsHost x:Name="winFormsHost" Background="White" />-->
                         </LayoutAnchorable>
                     </LayoutAnchorablePane>
                     <LayoutDocumentPaneGroup>
                         <LayoutDocumentPane x:Name="LayoutDocumentPane">
-                            <LayoutDocument Title="Document 1"
-                                            ContentId="document1">
+                            <LayoutDocument Title="Document 1" ContentId="document1">
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition />
@@ -108,12 +94,10 @@
                                             VerticalAlignment="Top"
                                             Click="AddTwoDocuments_click"
                                             Content="Click to add 2 documents" />
-                                    <TextBox Grid.Row="1"
-                                             Text="Document 1 Content" />
+                                    <TextBox Grid.Row="1" Text="Document 1 Content" />
                                 </Grid>
                             </LayoutDocument>
-                            <LayoutDocument Title="Document 2"
-                                            ContentId="document2">
+                            <LayoutDocument Title="Document 2" ContentId="document2">
                                 <TextBox Background="Transparent"
                                          BorderThickness="0"
                                          Foreground="White"
@@ -121,18 +105,17 @@
                             </LayoutDocument>
                         </LayoutDocumentPane>
                     </LayoutDocumentPaneGroup>
-                    <LayoutAnchorablePaneGroup DockWidth="50">
+                    <LayoutAnchorablePaneGroup DockWidth="250">
                         <LayoutAnchorablePane>
                             <LayoutAnchorable Title="Tool Window 1"
                                               ContentId="toolWindow1"
                                               Hiding="OnToolWindow1Hiding">
-                                <StackPanel MinHeight="450">
+                                <StackPanel MinWidth="250">
                                     <!--<local:TestUserControl />-->
                                     <TextBox Text="{Binding TestTimer, Mode=OneWay, StringFormat='Tool Window 1 Attached to Timer ->\{0\}'}" />
                                 </StackPanel>
                             </LayoutAnchorable>
-                            <LayoutAnchorable Title="Tool Window 2"
-                                              ContentId="toolWindow2">
+                            <LayoutAnchorable Title="Tool Window 2" ContentId="toolWindow2">
                                 <TextBlock Text="{Binding FocusedElement}" />
                             </LayoutAnchorable>
                         </LayoutAnchorablePane>
@@ -142,12 +125,10 @@
                 <LayoutRoot.LeftSide>
                     <LayoutAnchorSide>
                         <LayoutAnchorGroup>
-                            <LayoutAnchorable Title="AutoHide1 Content"
-                                              ContentId="AutoHide1Content">
+                            <LayoutAnchorable Title="AutoHide1 Content" ContentId="AutoHide1Content">
                                 <TextBox Text="{Binding TestTimer, Mode=OneWay, StringFormat='AutoHide Attached to Timer ->\{0\}'}" />
                             </LayoutAnchorable>
-                            <LayoutAnchorable Title="AutoHide2 Content"
-                                              ContentId="AutoHide2Content">
+                            <LayoutAnchorable Title="AutoHide2 Content" ContentId="AutoHide2Content">
                                 <StackPanel Orientation="Vertical">
                                     <TextBox />
                                     <TextBox />

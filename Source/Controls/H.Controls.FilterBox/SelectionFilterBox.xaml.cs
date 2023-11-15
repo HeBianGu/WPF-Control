@@ -331,6 +331,8 @@ namespace H.Controls.FilterBox
             {
                 var value = obj is IModelViewModel model ? _propertyInfo.GetValue(model.GetModel())
                     : _propertyInfo.GetValue(obj);
+                if (value == null && item == null)
+                    return true;
                 if (value.Equals(item))
                     return true;
             }

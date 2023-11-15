@@ -27,9 +27,72 @@
                         </h:DataGridAutoColumnBehavior.HomeColumns>
                     </h:DataGridAutoColumnBehavior>
                 </Behaviors:Interaction.Behaviors>
+                <h:Cattach.CaptionLeftTemplate>
+                    <ControlTemplate>
+                        <StackPanel>
+                            <BulletDecorator Margin="10,2">
+                                <BulletDecorator.Bullet>
+                                    <TextBlock VerticalAlignment="Center" Text="操作类型" />
+                                </BulletDecorator.Bullet>
+                                <h:SelectionFilterBox x:Name="sfb"
+                                                      Margin="5,0"
+                                                      VerticalAlignment="Center"
+                                                      Datas="{Binding Collection.Cache}"
+                                                      PropertyName="Type"
+                                                      Type="{Binding ModelType}">
+                                    <Behaviors:Interaction.Triggers>
+                                        <Behaviors:EventTrigger EventName="FilterChagned">
+                                            <Behaviors:ChangePropertyAction PropertyName="Filter1"
+                                                                            TargetObject="{Binding Collection}"
+                                                                            Value="{Binding ElementName=sfb, Path=Filter}" />
+                                        </Behaviors:EventTrigger>
+                                    </Behaviors:Interaction.Triggers>
+                                </h:SelectionFilterBox>
+                            </BulletDecorator>
+                            <BulletDecorator Margin="10,2">
+                                <BulletDecorator.Bullet>
+                                    <TextBlock VerticalAlignment="Center" Text="操作方法" />
+                                </BulletDecorator.Bullet>
+                                <h:SelectionFilterBox x:Name="sfb1"
+                                                      Margin="5,0"
+                                                      VerticalAlignment="Center"
+                                                      Datas="{Binding Collection.Cache}"
+                                                      PropertyName="Method"
+                                                      Type="{Binding ModelType}">
+                                    <Behaviors:Interaction.Triggers>
+                                        <Behaviors:EventTrigger EventName="FilterChagned">
+                                            <Behaviors:ChangePropertyAction PropertyName="Filter3"
+                                                                            TargetObject="{Binding Collection}"
+                                                                            Value="{Binding ElementName=sfb1, Path=Filter}" />
+                                        </Behaviors:EventTrigger>
+                                    </Behaviors:Interaction.Triggers>
+                                </h:SelectionFilterBox>
+                            </BulletDecorator>
+                            <BulletDecorator Margin="10,2">
+                                <BulletDecorator.Bullet>
+                                    <TextBlock VerticalAlignment="Center" Text="操作账号" />
+                                </BulletDecorator.Bullet>
+                                <h:SelectionFilterBox x:Name="sfb2"
+                                                      Margin="5,0"
+                                                      VerticalAlignment="Center"
+                                                      Datas="{Binding Collection.Cache}"
+                                                      PropertyName="UserName"
+                                                      Type="{Binding ModelType}">
+                                    <Behaviors:Interaction.Triggers>
+                                        <Behaviors:EventTrigger EventName="FilterChagned">
+                                            <Behaviors:ChangePropertyAction PropertyName="Filter4"
+                                                                            TargetObject="{Binding Collection}"
+                                                                            Value="{Binding ElementName=sfb2, Path=Filter}" />
+                                        </Behaviors:EventTrigger>
+                                    </Behaviors:Interaction.Triggers>
+                                </h:SelectionFilterBox>
+                            </BulletDecorator>
+                        </StackPanel>
+                    </ControlTemplate>
+                </h:Cattach.CaptionLeftTemplate>
                 <h:Cattach.CaptionRightTemplate>
                     <ControlTemplate>
-                        <BulletDecorator VerticalAlignment="Center">
+                        <BulletDecorator VerticalAlignment="Bottom">
                             <BulletDecorator.Bullet>
                                 <TextBlock VerticalAlignment="Center" Text="搜索 " />
                             </BulletDecorator.Bullet>
@@ -39,7 +102,7 @@
                                              DockPanel.Dock="Top">
                                 <Behaviors:Interaction.Triggers>
                                     <Behaviors:EventTrigger EventName="FilterChanged">
-                                        <Behaviors:ChangePropertyAction PropertyName="Filter1"
+                                        <Behaviors:ChangePropertyAction PropertyName="Filter2"
                                                                         TargetObject="{Binding Collection}"
                                                                         Value="{Binding ElementName=tfb1, Path=Filter}" />
                                     </Behaviors:EventTrigger>
@@ -48,67 +111,6 @@
                         </BulletDecorator>
                     </ControlTemplate>
                 </h:Cattach.CaptionRightTemplate>
-
-                <!--<Setter Property="Behaviors:Interaction.Behaviors">
-            <Setter.Value>
-                <h:DataGridAutoColumnBehavior BindingPath="Model.{0}"
-                                                                      DataGridLength="*"
-                                                                      Type="{Binding ModelType}">
-                    <h:DataGridAutoColumnBehavior.HomeColumns>
-                        <DataGridCheckBoxColumn Binding="{Binding IsSelected}" Header="全选" />
-                    </h:DataGridAutoColumnBehavior.HomeColumns>
-                </h:DataGridAutoColumnBehavior>
-            </Setter.Value>
-        </Setter>-->
-                <!--<Setter Property="Behaviors:Interaction.Triggers">
-            <Setter.Value>
-                <Behaviors:EventTrigger EventName="Loaded">
-                    <Behaviors:InvokeCommandAction Command="{Binding LoadedCommand}" />
-                </Behaviors:EventTrigger>
-            </Setter.Value>
-        </Setter>-->
-                <!--<DataGrid.Columns>
-                    <DataGridTextColumn Width="*"
-                                        Binding="{Binding Model.Name}"
-                                        Header="权限名称" />
-                    <DataGridTextColumn Width="*"
-                                        Binding="{Binding Model.Code}"
-                                        Header="权限编码" />
-                    <DataGridTemplateColumn Width="*" Header="角色列表">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <ItemsControl ItemsSource="{Binding Model.Roles}">
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Margin="0,5" Text="{Binding Name}" />
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
-
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-
-                    <DataGridTemplateColumn Width="*" Header="用户列表">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <ItemsControl ItemsSource="{Binding Model.Roles}">
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <ItemsControl ItemsSource="{Binding Users}">
-                                                <ItemsControl.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <TextBlock Margin="0,5" Text="{Binding Name}" />
-                                                    </DataTemplate>
-                                                </ItemsControl.ItemTemplate>
-                                            </ItemsControl>
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>-->
             </RepositoryGrid>
         </DockPanel>
         <DataTemplate.Triggers>

@@ -13,12 +13,18 @@ namespace System
 {
     public static class Extension
     {
-        public static  IServiceCollection AddLogin(this IServiceCollection services, Action<LoginOptions> setupAction = null)
+        public static  IServiceCollection AddLoginViewPresenter(this IServiceCollection services, Action<LoginOptions> setupAction = null)
         {
             services.AddOptions();
             services.TryAdd(ServiceDescriptor.Singleton<ILoginViewPresenter, LoginViewPresenter>());
             if (setupAction != null)
                 services.Configure(setupAction);
+            //services.TryAdd(ServiceDescriptor.Singleton<ILoginService, LoginService>());
+            return services;
+        }
+
+        public static IServiceCollection AddTestLoginService(this IServiceCollection services, Action<LoginOptions> setupAction = null)
+        {
             services.TryAdd(ServiceDescriptor.Singleton<ILoginService, LoginService>());
             return services;
         }

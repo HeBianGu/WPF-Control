@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using H.Providers.Ioc;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -110,6 +111,7 @@ namespace H.Extensions.ApplicationBase
             try
             {
                 this.ILogger?.Info("系统退出");
+                Ioc<IOperationService>.Instance?.Log<ApplicationBase>("系统推出");
             }
             catch (Exception ex)
             {
