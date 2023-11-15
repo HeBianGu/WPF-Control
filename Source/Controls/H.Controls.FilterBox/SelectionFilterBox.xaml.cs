@@ -333,7 +333,7 @@ namespace H.Controls.FilterBox
                     : _propertyInfo.GetValue(obj);
                 if (value == null && item == null)
                     return true;
-                if (value.Equals(item))
+                if (value?.Equals(item)==true)
                     return true;
             }
             return false;
