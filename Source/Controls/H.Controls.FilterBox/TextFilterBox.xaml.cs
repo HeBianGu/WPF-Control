@@ -53,7 +53,8 @@ namespace H.Controls.FilterBox
                 if (e.NewValue is string n)
                 {
 
-                }
+            this.Filter = new TextFilter(this);
+        }
 
             }));
 
@@ -137,6 +138,8 @@ namespace H.Controls.FilterBox
 
             }));
 
+
+
         public IFilter Filter
         {
             get { return (IFilter)GetValue(FilterProperty); }
@@ -171,7 +174,7 @@ namespace H.Controls.FilterBox
         {
             add { this.AddHandler(FilterChangedRoutedEvent, value); }
             remove { this.RemoveHandler(FilterChangedRoutedEvent, value); }
-        }
+    }
 
         protected void OnFilterChanged()
         {

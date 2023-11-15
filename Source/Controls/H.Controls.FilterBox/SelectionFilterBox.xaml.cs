@@ -196,9 +196,11 @@ namespace H.Controls.FilterBox
             }));
 
         private void CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
+                {
             this.RefreshData();
-        }
+                }
+                control.RefreshData();
+            }));
 
         private void RefreshData()
         {
@@ -284,11 +286,11 @@ namespace H.Controls.FilterBox
         {
             RoutedEventArgs args = new RoutedEventArgs(FilterChagnedRoutedEvent, this);
             this.RaiseEvent(args);
-        }
+    }
 
 
         public ListBoxItem GetCheckAllItem()
-        {
+    {
             return this.Dispatcher.Invoke(() =>
                {
                    if (this.Items.Count > 0 && this.UseCheckAll)
@@ -325,7 +327,7 @@ namespace H.Controls.FilterBox
             if (checkItem != null)
             {
                 if (checkItem.Dispatcher.Invoke(()=> checkItem.IsSelected))
-                    return true;
+                return true;
             }
             foreach (var item in selectedItems)
             {

@@ -63,8 +63,11 @@ namespace H.Controls.FilterBox
         public PropertyFilterBase(PropertyInfo propertyInfo)
         {
             this.PropertyInfo = propertyInfo;
+
             this.Name = propertyInfo.Name;
+
             string display = propertyInfo.GetCustomAttribute<DisplayAttribute>()?.Name;
+
             this.DisplayName = display ?? propertyInfo.Name;
         }
 
