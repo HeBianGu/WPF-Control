@@ -196,9 +196,9 @@ namespace H.Controls.FilterBox
             }));
 
         private void CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
+                {
             this.RefreshData();
-        }
+                }
 
         private void RefreshData()
         {
@@ -284,11 +284,11 @@ namespace H.Controls.FilterBox
         {
             RoutedEventArgs args = new RoutedEventArgs(FilterChagnedRoutedEvent, this);
             this.RaiseEvent(args);
-        }
+    }
 
 
         public ListBoxItem GetCheckAllItem()
-        {
+    {
             return this.Dispatcher.Invoke(() =>
                {
                    if (this.Items.Count > 0 && this.UseCheckAll)
