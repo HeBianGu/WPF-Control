@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:H.Windows.Ribbon"
                     xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Windows.Ribbon"
                     xmlns:primitives="clr-namespace:System.Windows.Controls.Ribbon.Primitives;assembly=System.Windows.Controls.Ribbon"
                     xmlns:windows="clr-namespace:System.Windows;assembly=PresentationFramework">
     <primitives:RibbonWindowSmallIconConverter x:Key="&#304;" />
@@ -252,9 +252,11 @@
 
                         <Border IsHitTestVisible="False"
                                 Opacity="{Binding Source={x:Static h:WindowSetting.Instance}, Path=Opacity}"
-                                Visibility="{Binding Source={x:Static h:WindowSetting.Instance}, Path=BackImagePath, Converter={x:Static h:Converter.GetNullToCollapsed}}">
+                                Visibility="{Binding ElementName=ib, Path=ImageSource, Converter={x:Static Converter.GetNullToCollapsed}}">
                             <Border.Background>
-                                <ImageBrush ImageSource="{Binding Source={x:Static h:WindowSetting.Instance}, Path=BackImagePath}" Stretch="{Binding Source={x:Static h:WindowSetting.Instance}, Path=Stretch}" />
+                                <ImageBrush x:Name="ib"
+                                            ImageSource="{Binding Source={x:Static h:WindowSetting.Instance}, Path=BackImagePath}"
+                                            Stretch="{Binding Source={x:Static h:WindowSetting.Instance}, Path=Stretch}" />
                             </Border.Background>
                         </Border>
                     </Grid>

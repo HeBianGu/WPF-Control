@@ -41,7 +41,8 @@
                             <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
                         </Border.Background>
                         <Grid x:Name="grid">
-                            <h:GridSplitterBox x:Name="gsb" GridSpliteWidth="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:GridSplitterBox.GridSpliteWidth)}"
+                            <h:GridSplitterBox x:Name="gsb"
+                                               GridSpliteWidth="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:GridSplitterBox.GridSpliteWidth)}"
                                                IsExpanded="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:GridSplitterBox.IsExpanded)}"
                                                MenuMaxWidth="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:GridSplitterBox.MenuMaxWidth)}"
                                                MenuMinWidth="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:GridSplitterBox.MenuMinWidth)}"
@@ -147,9 +148,11 @@
                             </h:GridSplitterBox>
                             <Border IsHitTestVisible="False"
                                     Opacity="{Binding Source={x:Static h:WindowSetting.Instance}, Path=Opacity}"
-                                    Visibility="{Binding Source={x:Static h:WindowSetting.Instance}, Path=BackImagePath, Converter={x:Static h:Converter.GetNullToCollapsed}}">
+                                    Visibility="{Binding ElementName=ib, Path=ImageSource, Converter={x:Static Converter.GetNullToCollapsed}}">
                                 <Border.Background>
-                                    <ImageBrush ImageSource="{Binding Source={x:Static h:WindowSetting.Instance}, Path=BackImagePath}" Stretch="{Binding Source={x:Static h:WindowSetting.Instance}, Path=Stretch}" />
+                                    <ImageBrush x:Name="ib"
+                                                ImageSource="{Binding Source={x:Static h:WindowSetting.Instance}, Path=BackImagePath}"
+                                                Stretch="{Binding Source={x:Static h:WindowSetting.Instance}, Path=Stretch}" />
                                 </Border.Background>
                             </Border>
                         </Grid>

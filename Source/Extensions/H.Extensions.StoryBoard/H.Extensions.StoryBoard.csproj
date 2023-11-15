@@ -6,7 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\H.Providers.Ioc\H.Providers.Ioc.csproj" />
+    <Resource Include="**\*.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="b39.png" />
+    <None Remove="c7.png" />
+    <None Remove="halo10.png" />
+    <None Remove="logo.png" />
+  </ItemGroup>
 </Project>
