@@ -238,6 +238,7 @@ namespace H.Controls.Form
                 {
 
                 }
+                control.RefreshObject();
 
             }));
 

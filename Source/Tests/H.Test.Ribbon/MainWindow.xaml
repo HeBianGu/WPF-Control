@@ -133,6 +133,23 @@
                 Visibility="Visible">
             <Ribbon.ApplicationMenu>
                 <RibbonApplicationMenu Label="文件" SmallImageSource="/Resources/CropImage32.png">
+                    <RibbonApplicationMenu.AuxiliaryPaneContent>
+                        <TabControl>
+                            <TabControl.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Header}" />
+                                </DataTemplate>
+                            </TabControl.ItemTemplate>
+                            <TabItem Header="Header1">
+                                <Grid Width="600"
+                                      Height="600"
+                                      Background="Orange" />
+                            </TabItem>
+                            <TabItem Header="Header1" />
+                            <TabItem Header="Header1" />
+                            <TabItem Header="Header1" />
+                        </TabControl>
+                    </RibbonApplicationMenu.AuxiliaryPaneContent>
                     <RibbonApplicationMenuItem Header="开始" />
                     <RibbonApplicationMenuItem Header="开始">
                         <RibbonApplicationMenuItem Header="开始" />
@@ -224,6 +241,54 @@
             <RibbonTab Header="插入">
                 <RibbonGroup Header="剪贴板">
                     <RibbonToggleButton />
+                </RibbonGroup>
+                <RibbonGroup Header="Button">
+                    <RibbonGroup.GroupSizeDefinitions>
+                        <RibbonGroupSizeDefinition>
+                            <RibbonControlSizeDefinition ImageSize="Large" />
+                        </RibbonGroupSizeDefinition>
+                        <RibbonGroupSizeDefinition IsCollapsed="True" />
+                    </RibbonGroup.GroupSizeDefinitions>
+                    <RibbonButton Label="Ribbon Button" >
+                        <RibbonButton.ControlSizeDefinition>
+                            <RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True"/>
+                        </RibbonButton.ControlSizeDefinition> >
+                    </RibbonButton>
+                    <RibbonButton Label="Ribbon Button" >
+                        <RibbonButton.ControlSizeDefinition>
+                            <RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True"/>
+                        </RibbonButton.ControlSizeDefinition> >
+                    </RibbonButton>
+                    <RibbonButton Label="Ribbon Button">
+                        <RibbonButton.ControlSizeDefinition>
+                            <RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True"/>
+                        </RibbonButton.ControlSizeDefinition> >
+                    </RibbonButton>
+                    <RibbonButton Label="Ribbon Button">
+                        <RibbonButton.ControlSizeDefinition>
+                            <RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True"/>
+                        </RibbonButton.ControlSizeDefinition> >
+                    </RibbonButton>
+                    <RibbonButton Label="Ribbon Button" >
+                        <RibbonButton.ControlSizeDefinition>
+                            <RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True"/>
+                        </RibbonButton.ControlSizeDefinition> >
+                    </RibbonButton>
+                    <RibbonButton Label="Ribbon Button">
+                        <RibbonButton.ControlSizeDefinition>
+                            <RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True"/>
+                        </RibbonButton.ControlSizeDefinition> >
+                    </RibbonButton>
+                    <RibbonButton Label="Ribbon Button">
+                        <RibbonButton.ControlSizeDefinition>
+                            <RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True"/>
+                        </RibbonButton.ControlSizeDefinition> >
+                    </RibbonButton>
+                    <RibbonButton Label="Ribbon Button">
+                        <RibbonButton.ControlSizeDefinition>
+                            <RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True"/>
+                        </RibbonButton.ControlSizeDefinition> >
+                    </RibbonButton>
                 </RibbonGroup>
             </RibbonTab>
 

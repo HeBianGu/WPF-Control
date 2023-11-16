@@ -69,7 +69,7 @@ namespace System
         {
             get
             {
-                var r = Ioc.Services.GetService(typeof(Interface));
+                var r = Ioc.Services?.GetService(typeof(Interface));
                 return r == null ? default : (Interface)r;
             }
         }

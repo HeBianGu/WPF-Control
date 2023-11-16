@@ -43,32 +43,32 @@ namespace H.Modules.Login
                 RaisePropertyChanged();
             }
         }
-        private string _userName;
+        private string _adminName;
         [DefaultValue("admin")]
         [Required]
         [Display(Name = "管理员账号")]
-        public string UserName
+        public string AdminName
         {
-            get { return _userName; }
+            get { return _adminName; }
             set
             {
-                _userName = value;
+                _adminName = value;
                 RaisePropertyChanged();
             }
         }
 
-        private string _password;
+        private string _adminPassword;
         [XmlIgnore]
         [JsonIgnore]
         [DefaultValue("123456")]
         [Required]
         [Display(Name = "管理员密码")]
-        public string Password
+        public string AdminPassword
         {
-            get { return _password; }
+            get { return _adminPassword; }
             set
             {
-                _password = value;
+                _adminPassword = value;
                 RaisePropertyChanged();
             }
         }

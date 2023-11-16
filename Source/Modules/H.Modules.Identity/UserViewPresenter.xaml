@@ -57,9 +57,13 @@
                     <DataGridTextColumn Width="*"
                                         Binding="{Binding Model.Account}"
                                         Header="登陆账号" />
-                    <DataGridTextColumn Width="*"
-                                        Binding="{Binding Model.Password}"
-                                        Header="登陆密码" />
+                    <DataGridTemplateColumn Width="*" Header="登陆密码">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Margin="0,5" Text="******" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                     <DataGridTextColumn Width="*"
                                         Binding="{Binding Model.DisplayName}"
                                         Header="昵称" />

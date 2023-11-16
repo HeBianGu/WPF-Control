@@ -28,6 +28,7 @@
            BasedOn="{StaticResource S.Control.Base}"
            TargetType="Button">
         <Setter Property="SnapsToDevicePixels" Value="true" />
+        <Setter Property="Cursor" Value="Hand"/>
         <!--<Setter Property="OverridesDefaultStyle" Value="true" />-->
         <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}" />
         <Setter Property="Padding" Value="10,6" />
@@ -107,6 +108,7 @@
            BasedOn="{StaticResource S.Control.Base}"
            TargetType="Button">
         <Setter Property="SnapsToDevicePixels" Value="true" />
+        <Setter Property="Cursor" Value="Hand"/>
         <!--<Setter Property="OverridesDefaultStyle" Value="true" />-->
         <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}" />
         <Setter Property="Padding" Value="10" />
@@ -185,6 +187,7 @@
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="{x:Null}" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.CaptionForeground}}" />
+        <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">

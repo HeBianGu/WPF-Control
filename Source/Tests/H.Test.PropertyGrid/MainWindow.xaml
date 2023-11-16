@@ -14,6 +14,7 @@
         <h:PropertyGrid Width="350"
                         DockPanel.Dock="Right"
                         FilterWatermark="搜索"
+                        HideInheritedProperties="False"
                         SelectedObject="{Binding ElementName=btn}"
                         ShowAdvancedOptions="True"
                         ShowDescriptionByTooltip="True"

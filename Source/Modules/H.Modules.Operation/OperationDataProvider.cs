@@ -30,11 +30,11 @@ namespace H.Modules.Operation
                 IGrouping<DateTime, hi_dd_operation> data = datas.FirstOrDefault(x => x.Key == date);
                 if (data == null)
                 {
-                    tuples.Add(Tuple.Create(date.ToString("yyyy-mm-dd"), 0.0));
+                    tuples.Add(Tuple.Create(date.ToString("yyyy-MM-dd"), 0.0));
                 }
                 else
                 {
-                    tuples.Add(Tuple.Create(date.ToString("yyyy-mm-dd"), (double)data.Count()));
+                    tuples.Add(Tuple.Create(date.ToString("yyyy-MM-dd"), (double)data.Count()));
                 }
 
             }

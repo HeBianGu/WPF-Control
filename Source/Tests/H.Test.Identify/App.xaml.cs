@@ -48,5 +48,11 @@ namespace H.Test.Identify
             services.AddSingleton<IStringRepository<hi_dd_operation>, DbContextRepository<OperationDataContext, hi_dd_operation>>();
             services.AddOperationViewPresenter();
         }
+
+        protected override void Configure(IApplicationBuilder app)
+        {
+            base.Configure(app);
+            app.UseLoginSetting();
+        }
     }
 }

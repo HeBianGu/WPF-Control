@@ -62,12 +62,20 @@ namespace H.Modules.Login
                          s.IsBusy = true;
                          s.Message = "正在登录...";
                          Thread.Sleep(1000);
-                         var r = Ioc<ILoginService>.Instance.Login(this.UserName, this.Password, out string message);
-                         if (!r)
+
+                         if (this.UserName == LoginOptions.Instance.AdminName && this.Password == LoginOptions.Instance.AdminPassword)
                          {
-                             s.Message = message;
                              Thread.Sleep(1000);
-                             return false;
+                         }
+                         else
+                         {
+                             var r = Ioc<ILoginService>.Instance.Login(this.UserName, this.Password, out string message);
+                             if (!r)
+                             {
+                                 s.Message = message;
+                                 Thread.Sleep(2000);
+                                 return false;
+                             }
                          }
 
                          if (LoginOptions.Instance.Remember)
@@ -110,7 +118,7 @@ namespace H.Modules.Login
                     }
                     dialog.Sumit();
                 }
-                   
+
             }
 
         });

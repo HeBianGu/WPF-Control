@@ -22,9 +22,9 @@
                     <h:DataGridAutoColumnBehavior BindingPath="Model.{0}"
                                                   DataGridLength="*"
                                                   Type="{Binding ModelType}">
-                        <h:DataGridAutoColumnBehavior.HomeColumns>
+                        <!--<h:DataGridAutoColumnBehavior.HomeColumns>
                             <DataGridCheckBoxColumn Binding="{Binding IsSelected}" Header="全选" />
-                        </h:DataGridAutoColumnBehavior.HomeColumns>
+                        </h:DataGridAutoColumnBehavior.HomeColumns>-->
                     </h:DataGridAutoColumnBehavior>
                 </Behaviors:Interaction.Behaviors>
                 <h:Cattach.CaptionLeftTemplate>

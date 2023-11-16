@@ -270,7 +270,15 @@
                 <TextBlock Text="TextBlock" />
             </TabItem>
             <TabItem Header="CheckBox">
-                <CheckBox Content="CheckBox" />
+                <ItemsControl>
+                    <CheckBox Content="CheckBox" IsThreeState="True" />
+                    <CheckBox Content="CheckBox" IsThreeState="True" />
+                    <CheckBox Content="CheckBox" IsThreeState="True" />
+                    <CheckBox Content="CheckBox" IsThreeState="True" />
+                    <CheckBox Content="CheckBox" IsThreeState="True" />
+                    <CheckBox Content="CheckBox" IsThreeState="True" />
+                    <CheckBox Content="CheckBox" IsThreeState="True" />
+                </ItemsControl>
             </TabItem>
             <TabItem Header="ToggleButton">
                 <ToggleButton Content="ToggleButton" />
