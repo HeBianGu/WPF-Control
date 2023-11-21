@@ -13,33 +13,33 @@
     <TabControl>
         <TabItem Header="Line">
             <ScrollViewer>
-                <StackPanel>
-                    <GroupBox Height="470" Header="简单样式">
-                        <DockPanel>
+            <StackPanel>
+                <GroupBox Height="470" Header="简单样式">
+                    <DockPanel>
                             <!--<h:PropertyControl SelectObject="{Binding ElementName=chart}"/>-->
-                            <h:Chart Padding="100,50"
-                             Style="{DynamicResource {x:Static h:Chart.CoordKey}}"
-                             xAxis="0,1,2,3,4,5,6,7,8,9,10,11"
-                             yAxis="0,1,2,3,4,5,6,7,8,9,10">
-                                <h:Series yDatas="5,4,3,4,5,8,9,7,1,2,4,6">
-                                    <h:Line />
-                                    <h:Scatter>
-                                        <h:Scatter.MarkStyle>
-                                            <Style BasedOn="{StaticResource {x:Static h:EllipseMarker.DefaultKey}}" TargetType="h:EllipseMarker">
-                                                <Setter Property="StrokeThickness" Value="3" />
-                                                <Setter Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.ForegroundWhite}}" />
-                                                <Setter Property="Rect">
-                                                    <Setter.Value>
-                                                        <Rect Width="10" Height="10" />
-                                                    </Setter.Value>
-                                                </Setter>
-                                            </Style>
-                                        </h:Scatter.MarkStyle>
-                                    </h:Scatter>
-                                </h:Series>
-                            </h:Chart>
-                        </DockPanel>
-                    </GroupBox>
+                        <h:Chart Padding="100,50"
+                                 Style="{DynamicResource {x:Static h:Chart.CoordKey}}"
+                                 xAxis="0,1,2,3,4,5,6,7,8,9,10,11"
+                                 yAxis="0,1,2,3,4,5,6,7,8,9,10">
+                            <h:Series yDatas="5,4,3,4,5,8,9,7,1,2,4,6">
+                                <h:Line />
+                                <h:Scatter>
+                                    <h:Scatter.MarkStyle>
+                                        <Style BasedOn="{StaticResource {x:Static h:EllipseMarker.DefaultKey}}" TargetType="h:EllipseMarker">
+                                            <Setter Property="StrokeThickness" Value="3" />
+                                            <Setter Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.ForegroundWhite}}" />
+                                            <Setter Property="Rect">
+                                                <Setter.Value>
+                                                    <Rect Width="10" Height="10" />
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </h:Scatter.MarkStyle>
+                                </h:Scatter>
+                            </h:Series>
+                        </h:Chart>
+                    </DockPanel>
+                </GroupBox>
 
                     <GroupBox Height="470" Header="简单样式">
                         <h:Chart Padding="100,50"
@@ -229,7 +229,7 @@
 
                         </h:Chart>
                     </GroupBox>
-                </StackPanel>
+            </StackPanel>
             </ScrollViewer>
         </TabItem>
         <TabItem Header="Scatter">
@@ -272,15 +272,15 @@
         </TabItem>
         <TabItem Header="Bar">
             <ScrollViewer>
-                <StackPanel>
-                    <GroupBox Height="500" Header="单值">
-                        <h:Chart Padding="100,50"
-                         Style="{DynamicResource {x:Static h:Chart.BarKey}}"
-                         xAxis="0,1,2,3,4,5,6,7,8,9,10,11"
-                         yAxis="0,1,2,3,4,5,6,7,8,9,10">
-                            <h:Series Style="{DynamicResource {x:Static h:Series.BarKey}}" yDatas="5,4,3,4,5,8,9,7,1,2,4,6" />
-                        </h:Chart>
-                    </GroupBox>
+            <StackPanel>
+                <GroupBox Height="500" Header="单值">
+                    <h:Chart Padding="100,50"
+                             Style="{DynamicResource {x:Static h:Chart.BarKey}}"
+                             xAxis="0,1,2,3,4,5,6,7,8,9,10,11"
+                             yAxis="0,1,2,3,4,5,6,7,8,9,10">
+                        <h:Series Style="{DynamicResource {x:Static h:Series.BarKey}}" yDatas="5,4,3,4,5,8,9,7,1,2,4,6" />
+                    </h:Chart>
+                </GroupBox>
 
                     <GroupBox Height="500" Header="二值">
                         <h:Chart Padding="100,50"
@@ -334,7 +334,7 @@
                             </h:Series>
                         </h:Chart>
                     </GroupBox>
-                </StackPanel>
+            </StackPanel>
             </ScrollViewer>
         </TabItem>
         <TabItem Header="Pie">
