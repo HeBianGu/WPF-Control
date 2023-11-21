@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:H.Extensions.Revertible">
+    <DataTemplate DataType="{x:Type local:PropertyChangedRevertiblePrensenterBase}">
+        <TextBlock>
+            <Run Text="{Binding PropertyName}" />
+            <Run Text=":" />
+            <Run Text="{Binding OldValue}" />
+            <Run Text="=&gt;" />
+            <Run Text="{Binding NewValue}" />
+        </TextBlock>
+    </DataTemplate>
+</ResourceDictionary>

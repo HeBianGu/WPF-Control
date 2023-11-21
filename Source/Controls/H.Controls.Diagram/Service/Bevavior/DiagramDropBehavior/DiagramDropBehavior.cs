@@ -45,7 +45,6 @@ namespace H.Controls.Diagram
             node.Content = content;
 
             node.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
-
             node.Location = new Point(location.X - offset.X + node.DesiredSize.Width / 2, location.Y - offset.Y + node.DesiredSize.Height / 2);
 
 

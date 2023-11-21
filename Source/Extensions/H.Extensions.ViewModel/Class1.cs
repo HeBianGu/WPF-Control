@@ -7,4 +7,5 @@ namespace H.Extensions.ViewModel
     internal class Class1
     {
     }
+
 }

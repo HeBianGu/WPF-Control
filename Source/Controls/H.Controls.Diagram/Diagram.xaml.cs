@@ -885,12 +885,12 @@ namespace H.Controls.Diagram
         {
             foreach (var node in nodes)
             {
-                this.NodesSource.Add(node);
-                this.Nodes.Add(node);
-                this.NodeLayer.Children.Add(node);
+                this.NodesSource.Remove(node);
+                this.Nodes.Remove(node);
+                this.NodeLayer.Children.Remove(node);
             }
 
-            this.Layout.AddNode(nodes);
+            this.Layout.RemoveNode(nodes);
             this.OnItemsChanged();
         }
 

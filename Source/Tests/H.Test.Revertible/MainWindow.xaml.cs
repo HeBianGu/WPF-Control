@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,12 +8,13 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace H.Test.Mvvm
+namespace H.Test.Revertible
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -22,7 +24,6 @@ namespace H.Test.Mvvm
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new User() { Name = "Name" };
         }
     }
 }

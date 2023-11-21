@@ -1,0 +1,49 @@
+﻿<Window x:Class="H.Test.Revertible.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:h="https://github.com/HeBianGu"
+        xmlns:local="clr-namespace:H.Test.Revertible"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Title="MainWindow"
+        Width="800"
+        Height="450"
+        Style="{StaticResource {x:Type Window}}"
+        mc:Ignorable="d">
+    <Window.DataContext>
+        <local:MainViewModel />
+    </Window.DataContext>
+    <DockPanel>
+        <GroupBox>
+            <GroupBox.Header>
+                <TextBlock>
+                    <Run Text="数量：" />
+                    <Run Text="[" />
+                    <Run Text="{Binding Source={Ioc Type={x:Type IRevertibleService}}, Path=Revertibles.Count, Mode=OneWay}" />
+                    <Run Text="]" />
+                </TextBlock>
+            </GroupBox.Header>
+            <ListBox Width="250"
+                     DockPanel.Dock="Left"
+                     ItemsSource="{Binding Source={Ioc Type={x:Type IRevertibleService}}, Path=Revertibles}"
+                     SelectedIndex="{Binding Source={Ioc Type={x:Type IRevertibleService}}, Path=Position, Mode=OneWay}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <ContentPresenter Content="{Binding Data}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ListBox>
+        </GroupBox>
+
+        <Button Command="{h:RedoCommand}"
+                Content="重做"
+                DockPanel.Dock="Bottom" />
+        <Button Command="{h:UndoCommand}"
+                Content="撤销"
+                DockPanel.Dock="Bottom" />
+        <UniformGrid Columns="2">
+            <TextBox Text="{Binding Value}" />
+            <TextBox Text="{Binding Value1}" />
+        </UniformGrid>
+    </DockPanel>
+</Window>
