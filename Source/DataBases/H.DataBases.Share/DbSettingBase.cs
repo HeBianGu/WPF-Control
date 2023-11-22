@@ -42,7 +42,7 @@ namespace H.DataBases.Share
                   s.IsBusy = true;
                   s.Message = "正在连接...";
 
-                  var inits = Ioc.Services.GetServices<ILoad>().OfType<IDbConnectService>();
+                  var inits = Ioc.Services.GetServices<ISplashLoad>().OfType<IDbConnectService>();
                   var r = false;
                   foreach (var init in inits)
                   {

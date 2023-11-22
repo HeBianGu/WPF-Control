@@ -35,7 +35,7 @@ namespace H.Test.SqlServer
         {
             base.OnSplashScreen(e);
 
-            var loads = Ioc.Services.GetServices<ILoad>().OfType<IDbConnectService>();
+            var loads = Ioc.Services.GetServices<ISplashLoad>().OfType<IDbConnectService>();
             foreach (var load in loads)
             {
                 load.Load(out string error);

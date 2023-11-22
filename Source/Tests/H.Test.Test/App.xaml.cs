@@ -25,6 +25,14 @@ namespace H.Test.Test
             base.ConfigureServices(services);
 
             services.AddMessage();
+            services.AddLog4net();
+            services.AddSetting();
+        }
+
+        protected override void Configure(IApplicationBuilder app)
+        {
+            base.Configure(app);
+            app.UseAddLog4netSetting();
         }
     }
 }

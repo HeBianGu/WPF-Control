@@ -50,16 +50,13 @@ namespace H.Extensions.ApplicationBase
                     //  Do ：加载设置参数
                     var r = SettingDataManager.Instance.Load(out var message);
                     if (r == false)
-                    {
                         s.Message = message;
-                    }
-
                     Thread.Sleep(sleep);
                 }
 
                 if (c?.IsCancel != true)
                 {
-                    var loads = Ioc.Services.GetServices<ILoad>();
+                    var loads = Ioc.Services.GetServices<ISplashLoad>();
                     foreach (var load in loads)
                     {
                         if (load == null)
@@ -68,10 +65,10 @@ namespace H.Extensions.ApplicationBase
                         if (s != null)
                             s.Message = $"正在加载{load.Name}...";
                         var r = load.Load(out string message);
+                        if (s != null && !string.IsNullOrEmpty(message))
+                            s.Message = message;
                         if (r == false)
                         {
-                            if (s != null)
-                                s.Message = message;
                             Thread.Sleep(sleep);
                             return false;
                         }

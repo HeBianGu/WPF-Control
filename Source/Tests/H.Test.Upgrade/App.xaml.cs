@@ -10,7 +10,7 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace H.Test.Revertible
+namespace H.Test.Upgrade
 {
     /// <summary>
     /// Interaction logic for App.xaml
@@ -21,16 +21,26 @@ namespace H.Test.Revertible
         {
             return new MainWindow();
         }
+
         protected override void ConfigureServices(IServiceCollection services)
         {
             base.ConfigureServices(services);
-            services.AddRevertible(x=>
+            services.AddSetting();
+            services.AddMessage();
+            services.AddSplashScreen();
+            //  Do ：注册软件更新页面
+            services.AddAutoUpgrade(x =>
             {
-                x.Capacity = 5;
-                x.AutoInitializedOnCreate= true;
+                //x.Uri = "https://gitee.com/hebiangu/wpf-auto-update/raw/master/Install/Diagram/AutoUpdate.xml";
+                x.Uri = "https://gitee.com/hebiangu/wpf-auto-update/raw/master/Install/Movie/Movie.xml";
+                x.UseIEDownload = false;
             });
+        }
 
-            
+        protected override void Configure(IApplicationBuilder app)
+        {
+            base.Configure(app);
+            app.UseUpgrade();
         }
     }
 }

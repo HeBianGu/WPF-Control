@@ -49,5 +49,18 @@ namespace H.Providers.Ioc
                 return Dialog.ShowMessage(message, title, dialogButton).Result;
             }
         }
+
+
+        public static void ShowSnackMessage(object message)
+        {
+            if (Snack == null)
+            {
+
+            }
+            else
+            {
+                Snack.Show(message);
+            }
+        }
     }
 }

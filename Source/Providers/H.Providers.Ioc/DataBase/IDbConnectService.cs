@@ -2,7 +2,7 @@
 
 namespace H.Providers.Ioc
 {
-    public interface IDbConnectService : ILoad
+    public interface IDbConnectService : ISplashLoad
     {
         /// <summary>
         /// 初始化启动尝试连接
