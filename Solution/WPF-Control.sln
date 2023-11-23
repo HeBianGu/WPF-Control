@@ -185,6 +185,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Modules.Upgrade", "..\Sou
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Test.Upgrade", "..\Source\Tests\H.Test.Upgrade\H.Test.Upgrade.csproj", "{B948F583-221D-43D8-B2B7-3719441EA991}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Extensions.Tree", "..\Source\Extensions\H.Extensions.Tree\H.Extensions.Tree.csproj", "{FEAC99AF-1A18-460C-A592-D4623216B219}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -507,6 +509,10 @@ Global
 		{B948F583-221D-43D8-B2B7-3719441EA991}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B948F583-221D-43D8-B2B7-3719441EA991}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B948F583-221D-43D8-B2B7-3719441EA991}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEAC99AF-1A18-460C-A592-D4623216B219}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEAC99AF-1A18-460C-A592-D4623216B219}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEAC99AF-1A18-460C-A592-D4623216B219}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEAC99AF-1A18-460C-A592-D4623216B219}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -592,6 +598,7 @@ Global
 		{C5C407A4-163F-4C9C-BDD1-2C60F69D796C} = {09F8FD00-E76A-4D72-AAB4-7FA06DBE12D4}
 		{151DB7CB-AC0D-459C-9F64-A108BB606095} = {27F6EA0F-3811-4403-9599-3B436A5EC502}
 		{B948F583-221D-43D8-B2B7-3719441EA991} = {E2C0B11D-5ED5-4F22-8E56-F68982B6E59B}
+		{FEAC99AF-1A18-460C-A592-D4623216B219} = {09F8FD00-E76A-4D72-AAB4-7FA06DBE12D4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF825C3D-F4F4-4E62-BBFF-B42A5E81112F}

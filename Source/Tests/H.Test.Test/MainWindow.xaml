@@ -278,7 +278,7 @@
                                Focusable="True"
                                IsTabStop="True"
                                RelativeZoomModifiers="Ctrl,Alt,Exact"
-                               ViewStackIndex="0" 
+                               ViewStackIndex="0"
                                ZoomModifiers="Shift,Exact"
                                ZoomToSelectionModifiers="Alt,Exact">
                         <h:Zoombox.ViewStack>
@@ -303,19 +303,71 @@
                                     </DrawingBrush.Drawing>
                                 </DrawingBrush>
                             </Grid.Background>
-                            <Button Content="aa" Width="100" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Button Width="100"
+                                    Height="100"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="aa" />
                         </Grid>
                     </h:Zoombox>
                 </DockPanel>
             </TabItem>
             <TabItem Header="日志测试">
                 <UniformGrid>
-                    <Button Content="Info" Command="{LogCommand Message=运行日志,Type=Info}"/>
-                    <Button Content="Error" Command="{LogCommand Message=错误日志,Type=Error}"/>
-                    <Button Content="Debug" Command="{LogCommand Message=调试日志,Type=Debug}"/>
-                    <Button Content="Warn" Command="{LogCommand Message=警告日志,Type=Warn}"/>
-                    <Button Content="Fatal" Command="{LogCommand Message=严重日志,Type=Fatal}"/>
+                    <Button Command="{LogCommand Message=运行日志, Type=Info}" Content="Info" />
+                    <Button Command="{LogCommand Message=错误日志, Type=Error}" Content="Error" />
+                    <Button Command="{LogCommand Message=调试日志, Type=Debug}" Content="Debug" />
+                    <Button Command="{LogCommand Message=警告日志, Type=Warn}" Content="Warn" />
+                    <Button Command="{LogCommand Message=严重日志, Type=Fatal}" Content="Fatal" />
                 </UniformGrid>
+            </TabItem>
+            <TabItem Header="ITree">
+                <TabControl>
+                    <TabItem Header="类继承关系">
+                        <TreeView ItemsSource="{ClassTypeTreeDataProvider Type={x:Type FrameworkElement}}">
+                            <TreeView.ItemTemplate>
+                                <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
+                                    <TextBlock x:Name="a" VerticalAlignment="Center" Text="{Binding Model.Name}" />
+                                </HierarchicalDataTemplate>
+                            </TreeView.ItemTemplate>
+                            <TreeView.ItemContainerStyle>
+                                <Style TargetType="TreeViewItem" BasedOn="{StaticResource {x:Static h:TreeViewItemKeys.Default}}">
+                                    <Setter Property="h:BehvaiorAttach.Behaviors">
+                                        <Setter.Value>
+                                            <h:Behaviors>
+                                                <h:TreeViewItemLazyLoadBehavior Tree="{ClassTypeTree}"/>
+                                            </h:Behaviors>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </TreeView.ItemContainerStyle>
+                        </TreeView>
+                    </TabItem>
+                    <TabItem Header="资源管理器">
+                        <TreeView ItemsSource="{ExploreTreeDataProvider}">
+                            <TreeView.ItemTemplate>
+                                <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
+                                    <TextBlock x:Name="a" VerticalAlignment="Center" Text="{Binding Model.Name}" />
+                                </HierarchicalDataTemplate>
+                            </TreeView.ItemTemplate>
+                            <TreeView.ItemContainerStyle>
+                                <Style TargetType="TreeViewItem" BasedOn="{StaticResource {x:Static h:TreeViewItemKeys.Default}}">
+                                    <Setter Property="h:BehvaiorAttach.Behaviors">
+                                        <Setter.Value>
+                                            <h:Behaviors>
+                                                <h:TreeViewItemLazyLoadBehavior>
+                                                    <h:TreeViewItemLazyLoadBehavior.Tree>
+                                                        <h:ExploreTree/>
+                                                    </h:TreeViewItemLazyLoadBehavior.Tree>
+                                                </h:TreeViewItemLazyLoadBehavior>
+                                            </h:Behaviors>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </TreeView.ItemContainerStyle>
+                        </TreeView>
+                    </TabItem>
+                </TabControl>
             </TabItem>
         </TabControl>
     </Grid>

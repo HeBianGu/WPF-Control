@@ -155,6 +155,8 @@ namespace H.Providers.Mvvm
             }
         }
 
+        public bool IsLoaded { get; set; }
+
         public TreeNodeBase<T> Parent { get; set; }
 
         private ObservableCollection<TreeNodeBase<T>> _nodes = new ObservableCollection<TreeNodeBase<T>>();
