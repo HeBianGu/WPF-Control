@@ -151,6 +151,8 @@ namespace H.Controls.Diagram
                     k.CanExecute = this.Nodes.SelectMany(x => x.GetParts()).Any(x => x.IsSelected);
                 };
                 this.CommandBindings.Add(binding);
+                var keyBinding = new KeyBinding(DiagramCommands.DeleteSelected, new KeyGesture(Key.Delete));
+                this.InputBindings.Add(keyBinding);
             }
             {
                 CommandBinding binding = new CommandBinding(DiagramCommands.SelectAll);
@@ -177,10 +179,8 @@ namespace H.Controls.Diagram
                 //    k.CanExecute = this.Nodes.Any(x => x.IsSelected == false);
                 //};
                 this.CommandBindings.Add(binding);
-
-                //var keyBinding = new KeyBinding(DiagramCommands.SelectAll, Key.A, ModifierKeys.Control);
-                //keyBinding.Command = binding.Command;
-                //this.InputBindings.Add(keyBinding);
+                var keyBinding = new KeyBinding(DiagramCommands.SelectAll, Key.A, ModifierKeys.Control);
+                this.InputBindings.Add(keyBinding);
             }
 
             {
@@ -190,6 +190,9 @@ namespace H.Controls.Diagram
                     this.ZoomToFit();
                 };
                 this.CommandBindings.Add(binding);
+
+                var keyBinding = new MouseBinding(DiagramCommands.ZoomToFit, new MouseGesture(MouseAction.LeftDoubleClick));
+                this.InputBindings.Add(keyBinding);
             }
 
             {
@@ -243,6 +246,12 @@ namespace H.Controls.Diagram
                     k.CanExecute = this.Nodes.Count > 0;
                 };
                 this.CommandBindings.Add(binding);
+
+
+                {
+                    var keyBinding = new KeyBinding(DiagramCommands.Next, new KeyGesture(Key.Tab));
+                    this.InputBindings.Add(keyBinding);
+                }
             }
 
             {
@@ -278,31 +287,91 @@ namespace H.Controls.Diagram
             }
 
             {
-                CommandBinding binding = new CommandBinding(DiagramCommands.Undo);
+                CommandBinding binding = new CommandBinding(DiagramCommands.MoveLeft);
                 binding.Executed += (l, k) =>
                 {
-                    
-
+                    var selecteds = this.Nodes.Where(x => x.IsSelected);
+                    foreach (var item in selecteds)
+                    {
+                        NodeLayer.SetPosition(item, new Point(item.Location.X - 5, item.Location.Y));
+                    }
                 };
                 binding.CanExecute += (l, k) =>
                 {
-                  
+                    k.CanExecute = this.Nodes.Count > 0;
                 };
                 this.CommandBindings.Add(binding);
+
+                var keyBinding = new KeyBinding(DiagramCommands.MoveLeft, new KeyGesture(Key.Left));
+                this.InputBindings.Add(keyBinding);
+            }
+            {
+                CommandBinding binding = new CommandBinding(DiagramCommands.MoveRight);
+                binding.Executed += (l, k) =>
+                {
+                    var selecteds = this.Nodes.Where(x => x.IsSelected);
+                    foreach (var item in selecteds)
+                    {
+                        NodeLayer.SetPosition(item, new Point(item.Location.X + 5, item.Location.Y));
+                    }
+                };
+                binding.CanExecute += (l, k) =>
+                {
+                    k.CanExecute = this.Nodes.Count > 0;
+                };
+                this.CommandBindings.Add(binding);
+
+                var keyBinding = new KeyBinding(DiagramCommands.MoveRight, new KeyGesture(Key.Right));
+                this.InputBindings.Add(keyBinding);
+            }
+            {
+                CommandBinding binding = new CommandBinding(DiagramCommands.MoveUp);
+                binding.Executed += (l, k) =>
+                {
+                    var selecteds = this.Nodes.Where(x => x.IsSelected);
+                    foreach (var item in selecteds)
+                    {
+                        NodeLayer.SetPosition(item, new Point(item.Location.X, item.Location.Y - 5));
+                    }
+                };
+                binding.CanExecute += (l, k) =>
+                {
+                    k.CanExecute = this.Nodes.Count > 0;
+                };
+                this.CommandBindings.Add(binding);
+
+                var keyBinding = new KeyBinding(DiagramCommands.MoveUp, new KeyGesture(Key.Up));
+                this.InputBindings.Add(keyBinding);
+            }
+            {
+                CommandBinding binding = new CommandBinding(DiagramCommands.MoveDown);
+                binding.Executed += (l, k) =>
+                {
+                    var selecteds = this.Nodes.Where(x => x.IsSelected);
+                    foreach (var item in selecteds)
+                    {
+                        NodeLayer.SetPosition(item, new Point(item.Location.X, item.Location.Y + 5));
+                    }
+                };
+                binding.CanExecute += (l, k) =>
+                {
+                    k.CanExecute = this.Nodes.Count > 0;
+                };
+                this.CommandBindings.Add(binding);
+
+                var keyBinding = new KeyBinding(DiagramCommands.MoveDown, new KeyGesture(Key.Down));
+                this.InputBindings.Add(keyBinding);
             }
 
             {
-                CommandBinding binding = new CommandBinding(DiagramCommands.Redo);
-                binding.Executed += (l, k) =>
+
+                ContextMenu contextMenu = new ContextMenu();
+                foreach (CommandBinding item in this.CommandBindings)
                 {
-
-
-                };
-                binding.CanExecute += (l, k) =>
-                {
-
-                };
-                this.CommandBindings.Add(binding);
+                    if (item.Command is RoutedUICommand routed)
+                        contextMenu.Items.Add(new MenuItem() { Command = item.Command, Header = routed.Text });
+                }
+                this.ContextMenu= contextMenu;
             }
         }
 
@@ -758,6 +827,7 @@ namespace H.Controls.Diagram
 
             this.SelectedNode = null;
             this.SelectedPart = null;
+            this.Focus();
         }
 
         public IEnumerable<Part> GetAllParts(Func<Part, bool> predicate = null)
@@ -885,12 +955,12 @@ namespace H.Controls.Diagram
         {
             foreach (var node in nodes)
             {
-                this.NodesSource.Remove(node);
-                this.Nodes.Remove(node);
-                this.NodeLayer.Children.Remove(node);
+                this.NodesSource.Add(node);
+                this.Nodes.Add(node);
+                this.NodeLayer.Children.Add(node);
             }
 
-            this.Layout.RemoveNode(nodes);
+            this.Layout.AddNode(nodes);
             this.OnItemsChanged();
         }
 

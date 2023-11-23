@@ -359,7 +359,7 @@
                                    FlowableZoomMode="Center"
                                    Focusable="True"
                                    UseAnimation="False">
-                            <h:Diagram.InputBindings>
+                            <!--<h:Diagram.InputBindings>
                                 <KeyBinding Key="A"
                                             Command="{x:Static h:DiagramCommands.SelectAll}"
                                             CommandTarget="{Binding ElementName=diagram}"
@@ -367,7 +367,16 @@
                                 <KeyBinding Key="Tab"
                                             Command="{x:Static h:DiagramCommands.Next}"
                                             CommandTarget="{Binding ElementName=diagram}" />
-                            </h:Diagram.InputBindings>
+                                <KeyBinding Key="Delete"
+                                            Command="{x:Static h:DiagramCommands.DeleteSelected}"
+                                            CommandTarget="{Binding ElementName=diagram}" />
+                                <KeyBinding Key="Left"
+                                            Command="{x:Static h:DiagramCommands.Previous}"
+                                            CommandTarget="{Binding ElementName=diagram}" />
+                                <KeyBinding Key="Right"
+                                            Command="{x:Static h:DiagramCommands.Next}"
+                                            CommandTarget="{Binding ElementName=diagram}" />
+                            </h:Diagram.InputBindings>-->
                             <h:Diagram.Layout>
                                 <h:LocationLayout />
                             </h:Diagram.Layout>

@@ -74,6 +74,7 @@ namespace H.Controls.Diagram
             this._start = e.GetPosition(_layer);
             e.Handled = true;
             this.StartDragging();
+            this.AssociatedObject.GetDiagram().Focus();
         }
 
         private void StartDragging()

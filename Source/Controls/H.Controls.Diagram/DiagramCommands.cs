@@ -19,8 +19,9 @@ namespace H.Controls.Diagram
         public static RoutedUICommand Next = new RoutedUICommand() { Text = "下一个" };
         public static RoutedUICommand Previous = new RoutedUICommand() { Text = "上一个" };
 
-        public static RoutedUICommand Undo = new RoutedUICommand() { Text = "撤销" };
-        public static RoutedUICommand Redo = new RoutedUICommand() { Text = "重做" };
-
+        public static RoutedUICommand MoveLeft = new RoutedUICommand() { Text = "左移动" };
+        public static RoutedUICommand MoveRight = new RoutedUICommand() { Text = "右移动" };
+        public static RoutedUICommand MoveUp = new RoutedUICommand() { Text = "上移动" };
+        public static RoutedUICommand MoveDown= new RoutedUICommand() { Text = "下移动" };
     }
 }
