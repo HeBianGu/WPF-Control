@@ -21,7 +21,7 @@ namespace H.Modules.Upgrade
         public override void Execute(object parameter)
         {
             if (this.Service.Upgrade(out string message)==false)
-                IocMessage.ShowMessage(message);
+                IocMessage.ShowDialogMessage(message);
         }
     }
 }

@@ -82,7 +82,7 @@ namespace H.Extensions.ApplicationBase
             };
             if (exist)
             {
-                var r = IocMessage.Dialog.ShowIoc(func, x =>
+                var r = IocMessage.Window.ShowIoc(func, x =>
                 {
                     if (x is Control c)
                     {
@@ -105,7 +105,7 @@ namespace H.Extensions.ApplicationBase
             {
                 var r = SettingDataManager.Instance.Load(out var message);
                 if (r == false)
-                    IocMessage.Dialog.ShowMessage(message);
+                    IocMessage.Window.ShowMessage(message);
 
                 var fr = func.Invoke(null, null);
                 if (fr == false)
@@ -122,7 +122,7 @@ namespace H.Extensions.ApplicationBase
             if (exist == false)
                 return;
 
-            var r = IocMessage.Dialog.ShowIoc<ILoginViewPresenter>(null, x =>
+            var r = IocMessage.Window.ShowIoc<ILoginViewPresenter>(null, x =>
             {
                 if (x is Control c)
                     c.Width = 400;

@@ -2,6 +2,10 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:H.Modules.Message">
     <ResourceDictionary.MergedDictionaries>
-        <!--<ResourceDictionary Source="pack://application:,,,/H.Modules.Message;component/LoginWindow.xaml" />-->
+        <ResourceDictionary Source="pack://application:,,,/H.Modules.Message;component/Dialog/AdonerDialog/AdornerDialogPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Modules.Message;component/Notice/Presenters/MessagePresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Modules.Message;component/Notice/Presenters/ProgressMessagePresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Modules.Message;component/Notice/Presenters/DialogMessagePresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Modules.Message;component/Notice/NoticeBoxPresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

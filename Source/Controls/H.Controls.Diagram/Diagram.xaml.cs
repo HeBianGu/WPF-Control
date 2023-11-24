@@ -57,7 +57,7 @@ namespace H.Controls.Diagram
                     var start = this.GetStartNode(out string message);
                     if (start == null)
                     {
-                        IocMessage.ShowMessage(message);
+                        IocMessage.ShowDialogMessage(message);
                         return;
                     }
 

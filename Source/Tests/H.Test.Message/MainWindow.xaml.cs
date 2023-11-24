@@ -1,8 +1,11 @@
 ﻿
+using H.Controls.Adorner;
 using H.Data.Test;
 using H.Providers.Ioc;
+using H.Providers.Mvvm;
 using H.Windows.Dialog;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Xaml.Behaviors.Layout;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,4 +49,18 @@ namespace H.Test.Message
             IocMessage.Form.ShowEdit(student, match);
         }
     }
+
+    //public class PresenterAdorner : Adorner
+    //{
+    //    public PresenterAdorner(object presenter) : base(new ContentPresenter() { Content = "presenter" })
+    //    {
+
+    //    }
+    //}
+
+
+
+
+
+
 }

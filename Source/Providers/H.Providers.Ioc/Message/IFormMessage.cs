@@ -10,8 +10,8 @@ namespace H.Providers.Ioc
 {
     public interface IFormMessage
     {
-        Task<bool?> ShowEdit<T>(T value, Predicate<T> match = null, Action<Control> action = null, Action<IFormdOption> option = null, string title = null, Window owner = null);
-        Task<bool?> ShowView<T>(T value, Predicate<T> match = null, Action<Control> action = null, Action<IFormdOption> option = null, string title = null, Window owner = null);
+        Task<bool?> ShowEdit<T>(T value, Predicate<T> match = null, Action<IDialogWindow> action = null, Action<IFormdOption> option = null, string title = null, Window owner = null);
+        Task<bool?> ShowView<T>(T value, Predicate<T> match = null, Action<IDialogWindow> action = null, Action<IFormdOption> option = null, string title = null, Window owner = null);
     }
 
     public interface IFormdOption

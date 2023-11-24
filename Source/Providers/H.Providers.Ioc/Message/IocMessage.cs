@@ -8,11 +8,12 @@ namespace H.Providers.Ioc
 {
     public static class IocMessage
     {
+        public static IWindowMessage Window => System.Ioc.GetService<IWindowMessage>(throwIfNone: false);
         public static IDialogMessage Dialog => System.Ioc.GetService<IDialogMessage>(throwIfNone: false);
         public static ISnackMessage Snack => System.Ioc.GetService<ISnackMessage>(throwIfNone: false);
         public static ITaskBarMessage TaskBar => System.Ioc.GetService<ITaskBarMessage>(throwIfNone: false);
         public static ISystemNotifyMessage SystemNotify => System.Ioc.GetService<ISystemNotifyMessage>(throwIfNone: false);
-        public static INotifyMessage Notify => System.Ioc.GetService<INotifyMessage>(throwIfNone: false);
+        public static INoticeMessageService Notify => System.Ioc.GetService<INoticeMessageService>(throwIfNone: false);
         public static IFormMessage Form => System.Ioc.GetService<IFormMessage>(throwIfNone: false);
 
         //public static void ShowMessage(string message, string title = "提示")
@@ -28,7 +29,7 @@ namespace H.Providers.Ioc
         //    }
         //}
 
-        public static bool? ShowMessage(string message, string title = "提示", DialogButton dialogButton = DialogButton.Sumit)
+        public static bool? ShowDialogMessage(string message, string title = "提示", DialogButton dialogButton = DialogButton.Sumit)
         {
             if (Dialog == null)
             {
@@ -47,6 +48,28 @@ namespace H.Providers.Ioc
             else
             {
                 return Dialog.ShowMessage(message, title, dialogButton).Result;
+            }
+        }
+
+        public static bool? ShowWindowgMessage(string message, string title = "提示", DialogButton dialogButton = DialogButton.Sumit)
+        {
+            if (Window == null)
+            {
+                MessageBoxButton boxButton = MessageBoxButton.OK;
+                if (dialogButton == DialogButton.Sumit)
+                    boxButton = MessageBoxButton.OK;
+                if (dialogButton == DialogButton.Cancel)
+                    boxButton = MessageBoxButton.OK;
+                if (dialogButton == DialogButton.SumitAndCancel)
+                    boxButton = MessageBoxButton.OKCancel;
+                MessageBoxResult r = MessageBox.Show(message, title, boxButton);
+                if (r == MessageBoxResult.None)
+                    return new Nullable<bool>();
+                return new Nullable<bool>(r == MessageBoxResult.OK);
+            }
+            else
+            {
+                return Window.ShowMessage(message, title, dialogButton).Result;
             }
         }
 

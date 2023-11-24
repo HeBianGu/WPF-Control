@@ -21,7 +21,8 @@ namespace H.Test.Login
         protected override void ConfigureServices(IServiceCollection services)
         {
             services.AddSetting();
-            services.AddMessage();
+            services.AddWindowMessage();
+            services.AddAdornerDialogMessage();
             services.AddLoginViewPresenter();
             services.AddTestLoginService();
       

@@ -14,7 +14,7 @@ using System.Windows.Markup;
 
 namespace H.Modules.Message
 {
-    public class DialogMessage : IDialogMessage
+    public class WindowDialogMessage : IDialogMessage, IWindowMessage
     {
         public async Task<bool?> Show(object presenter, Action<IDialogWindow> action = null, DialogButton dialogButton = DialogButton.Sumit, string title = null, Func<bool> canSumit = null, Window owner = null)
         {
@@ -47,7 +47,7 @@ namespace H.Modules.Message
             else
             {
                 var instance = (T)Ioc.Services.GetService(typeof(T));
-                var r = DialogWindow.ShowAction<bool?>(instance, x => action?.Invoke(x, instance), build, dialogButton, title, owner);
+                var r = DialogWindow.ShowAction(instance, x => action?.Invoke(x, instance), build, dialogButton, title, owner);
                 return await Task.FromResult(r);
             }
 
