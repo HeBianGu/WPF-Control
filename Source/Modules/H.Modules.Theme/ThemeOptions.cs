@@ -1,9 +1,11 @@
-﻿using H.Extensions.Setting;
+﻿using H.Controls.Form;
+using H.Extensions.Setting;
 using H.Providers.Ioc;
 using H.Providers.Mvvm;
 using H.Themes.Default;
 using Microsoft.Extensions.Options;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.DirectoryServices.ActiveDirectory;
@@ -19,9 +21,12 @@ namespace H.Modules.Theme
     [Display(Name = "主题设置", GroupName = SystemSetting.GroupSystem, Description = "登录页面设置的信息")]
     public class ThemeOptions : IocOptionInstance<ThemeOptions>
     {
-        [DefaultValue(ColorThemeType.DarkGray)]
-        [Displayer(Name = "颜色")]
-        public ColorThemeType Color { get; set; }
+        public ThemeOptions()
+        {
+            this.ColorResources.Add(new DarkColorResource());
+            this.ColorResources.Add(new DefaultColorResource());
+            this.ColorResources.Add(new LightColorResource());
+        }
 
         [DefaultValue(FontSizeThemeType.Default)]
         [Displayer(Name = "字体")]
@@ -31,9 +36,25 @@ namespace H.Modules.Theme
         [Displayer(Name = "布局")]
         public LayoutThemeType Layout { get; set; }
 
-        public void OnColorValueChanged(PropertyInfo property, ColorThemeType o, ColorThemeType n)
+        [XmlIgnore]
+        [JsonIgnore]
+        [BindingGetSelectSourceProperty(nameof(ColorResources))]
+        [PropertyItemType(typeof(OnlyComboBoxSelectSourcePropertyItem))]
+        [Displayer(Name = "颜色主题")]
+        public IColorResource ColorResource { get; set; }
+
+        [XmlIgnore]
+        [JsonIgnore]
+        [Browsable(false)]
+        public List<IColorResource> ColorResources { get; } = new List<IColorResource>();
+
+        [Browsable(false)]
+        public int ColorResourceSelectedIndex { get; set; }
+
+        public void OnColorResourceValueChanged(PropertyInfo property, ColorThemeType o, ColorThemeType n)
         {
-            this.Color.ChangeThemeType();
+            //this.Color.ChangeThemeType();
+            this.ChangeColorTheme();
         }
         public void OnFontSizeValueChanged(PropertyInfo property, FontSizeThemeType o, FontSizeThemeType n)
         {
@@ -50,22 +71,33 @@ namespace H.Modules.Theme
             {
                 var brushResource = new ResourceDictionary() { Source = new Uri("pack://application:,,,/H.Styles.Default;component/ConciseControls.xaml", UriKind.Absolute) };
                 brushResource.ChangeResourceDictionary(x => x.Source.AbsoluteUri == brushResource.Source.AbsoluteUri, true);
-
             }
+            this.ColorResourceSelectedIndex = this.ColorResources.IndexOf(this.ColorResource);
             return base.Save(out message);
         }
 
         public override void Load()
         {
             base.Load();
+            this.ColorResource = this.ColorResources[this.ColorResourceSelectedIndex];
             this.RefreshTheme();
         }
 
         private void RefreshTheme()
         {
-            this.Color.ChangeThemeType();
+            //this.Color.ChangeThemeType();
             this.FontSize.ChangeFontSizeThemeType();
             this.Layout.ChangeLayoutThemeType();
+            this.ChangeColorTheme();
+        }
+
+        void ChangeColorTheme()
+        {
+            var resource = this.ColorResource.Resource;
+            ThemeTypeExtension.ChangeResourceDictionary(resource, x =>
+            {
+                return this.ColorResources.Any(l => l.Resource.Source == x.Source);
+            });
         }
     }
 }

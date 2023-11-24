@@ -1,5 +1,8 @@
 ﻿using H.Extensions.ApplicationBase;
 using H.Styles.Default;
+using H.Themes.Colors.Accent;
+using H.Themes.Colors.Gray;
+using H.Themes.Colors.Purple;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -34,7 +37,9 @@ namespace H.Test.Theme
             base.Configure(app);
             app.UseTheme(x=>
             {
-                x.Color = Themes.Default.ColorThemeType.DarkGray;
+                x.ColorResources.Add(new PurpleDarkColorResource());
+                x.ColorResources.Add(new GrayDarkColorResource());
+                x.ColorResources.Add(new AccentLightColorResource());
             });
             app.UseWindowSetting(x =>
             {

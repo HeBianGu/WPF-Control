@@ -47,28 +47,6 @@ namespace H.Controls.Form
     //    public string PropertyName { get; }
     //}
 
-    [System.AttributeUsage(System.AttributeTargets.Property, Inherited = false, AllowMultiple = false)]
-    public sealed class BindingGetSelectSourceMethodAttribute : System.Attribute
-    {
-        public BindingGetSelectSourceMethodAttribute(string methodName)
-        {
-            MethodName = methodName;
-        }
-
-        public string MethodName { get; }
-    }
-
-    [System.AttributeUsage(System.AttributeTargets.Property, Inherited = false, AllowMultiple = false)]
-    public sealed class BindingGetSelectSourcePropertyAttribute : System.Attribute
-    {
-        public BindingGetSelectSourcePropertyAttribute(string propertyName)
-        {
-            PropertyName = propertyName;
-        }
-
-        public string PropertyName { get; }
-    }
-
     public abstract class SelectSourcePropertyItem<T> : ObjectPropertyItem<object>
     {
         public SelectSourcePropertyItem(PropertyInfo property, object obj) : base(property, obj)

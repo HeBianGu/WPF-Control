@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="ResourceKeys\**" />
+    <EmbeddedResource Remove="ResourceKeys\**" />
+    <None Remove="ResourceKeys\**" />
+    <Page Remove="ResourceKeys\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\H.Themes.Default\H.Themes.Default.csproj" />
+  </ItemGroup>
+
+</Project>

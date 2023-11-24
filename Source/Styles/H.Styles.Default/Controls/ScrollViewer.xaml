@@ -9,6 +9,8 @@
                                         TypeInTargetAssembly={x:Type local:ScrollViewerKeys}}"
            TargetType="{x:Type ScrollViewer}">
         <!--<Setter Property="OverridesDefaultStyle" Value="True" />-->
+        <!--延迟滚动-->
+        <!--<Setter Property="ScrollViewer.IsDeferredScrollingEnabled" Value="False" />-->
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ScrollViewer}">

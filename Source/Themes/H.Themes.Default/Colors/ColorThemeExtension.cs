@@ -8,10 +8,15 @@ namespace H.Themes.Default
     public class ColorThemeExtension : MarkupExtension
     {
         public ColorThemeType Type { get; set; }
-
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
-            return this.Type.GetResource();
+            if (this.Type == ColorThemeType.Default)
+                return new DefaultColorResource().Resource;
+            if (this.Type == ColorThemeType.Dark)
+                return new DarkColorResource().Resource;
+            if (this.Type == ColorThemeType.Light)
+                return new LightColorResource().Resource;
+            return null;
         }
     }
 }
