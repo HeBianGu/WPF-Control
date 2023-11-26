@@ -96,7 +96,7 @@ namespace H.Extensions.Setting
             try
             {
                 Directory.Delete(Cache, true);
-                IocMessage.Snack.ShowTime("操作完成");
+                IocMessage.Snack.ShowInfo("操作完成");
             }
             catch (Exception ex)
             {
@@ -111,7 +111,7 @@ namespace H.Extensions.Setting
             {
                 Directory.Delete(this.Setting, true);
                 Directory.Delete(this.UserSetting, true);
-                IocMessage.Snack.ShowTime("操作完成");
+                IocMessage.Snack.ShowInfo("操作完成");
             }
             catch (Exception ex)
             {

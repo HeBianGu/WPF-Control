@@ -25,7 +25,7 @@ using System.Windows.Threading;
 
 namespace H.Controls.Form
 {
-    public partial class Form : ItemsControl, IFormdOption
+    public partial class Form : ItemsControl, IFormOption
     {
         static Form()
         {

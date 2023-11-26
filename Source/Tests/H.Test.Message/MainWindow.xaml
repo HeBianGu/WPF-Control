@@ -29,14 +29,27 @@
         </TabItem>
         <TabItem Header="Notice">
             <UniformGrid>
-                <Button Command="{h:ShowInfoNoticeMessageCommand Message=我是Info消息}" Content="ShowInfoNoticeMessageCommand" />
-                <Button Command="{h:ShowErrorNoticeMessageCommand Message=我是Error消息}" Content="ShowErrorNoticeMessageCommand" />
-                <Button Command="{h:ShowSuccessNoticeMessageCommand Message=我是Success消息}" Content="ShowSuccessNoticeMessageCommand" />
-                <Button Command="{h:ShowWarnNoticeMessageCommand Message=我是Warn消息}" Content="ShowWarnNoticeMessageCommand" />
-                <Button Command="{h:ShowFatalNoticeMessageCommand Message=我是Fatal消息}" Content="ShowFatalNoticeMessageCommand" />
-                <Button Command="{h:ShowProgressNoticeMessageCommand Message=我是Progress消息}" Content="ShowProgressNoticeMessageCommand" />
-                <Button Command="{h:ShowStringNoticeMessageCommand Message=我是String消息}" Content="ShowStringNoticeMessageCommand" />
-                <Button Command="{h:ShowDialogNoticeMessageCommand Message=我是Dialog消息}" Content="ShowDialogNoticeMessageCommand" />
+                <Button Command="{h:ShowInfoNoticeMessageCommand Message=我是Info消息}" Content="ShowInfo" />
+                <Button Command="{h:ShowErrorNoticeMessageCommand Message=我是Error消息}" Content="ShowError" />
+                <Button Command="{h:ShowSuccessNoticeMessageCommand Message=我是Success消息}" Content="ShowSuccess" />
+                <Button Command="{h:ShowWarnNoticeMessageCommand Message=我是Warn消息}" Content="ShowWarn" />
+                <Button Command="{h:ShowFatalNoticeMessageCommand Message=我是Fatal消息}" Content="ShowFatal" />
+                <Button Command="{h:ShowProgressNoticeMessageCommand Message=我是Progress消息}" Content="ShowProgress" />
+                <Button Command="{h:ShowStringNoticeMessageCommand Message=我是String消息}" Content="ShowString" />
+                <Button Command="{h:ShowDialogNoticeMessageCommand Message=我是Dialog消息}" Content="ShowDialog" />
+            </UniformGrid>
+        </TabItem>
+
+        <TabItem Header="Snack">
+            <UniformGrid>
+                <Button Command="{h:ShowInfoSnackMessageCommand Message=我是Info消息}" Content="ShowInfo" />
+                <Button Command="{h:ShowErrorSnackMessageCommand Message=我是Error消息}" Content="ShowError" />
+                <Button Command="{h:ShowSuccessSnackMessageCommand Message=我是Success消息}" Content="ShowSuccess" />
+                <Button Command="{h:ShowWarnSnackMessageCommand Message=我是Warn消息}" Content="ShowWarn" />
+                <Button Command="{h:ShowFatalSnackMessageCommand Message=我是Fatal消息}" Content="ShowFatal" />
+                <Button Command="{h:ShowProgressSnackMessageCommand Message=我是Progress消息}" Content="ShowProgress" />
+                <Button Command="{h:ShowStringSnackMessageCommand Message=我是String消息}" Content="ShowString" />
+                <Button Command="{h:ShowDialogSnackMessageCommand Message=我是Dialog消息}" Content="ShowDialog" />
             </UniformGrid>
         </TabItem>
     </TabControl>

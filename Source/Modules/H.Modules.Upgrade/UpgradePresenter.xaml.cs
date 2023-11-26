@@ -17,6 +17,7 @@ using System.Xml.Serialization;
 using System.Collections.Generic;
 using System.Linq;
 
+
 namespace H.Modules.Upgrade
 {
     [Display(Name = "软件更新", GroupName = SystemSetting.GroupSystem, Description = "应用此功能检查软件更新")]

@@ -6,6 +6,7 @@ using System;
 using System.Windows.Input;
 using H.Providers.Ioc;
 
+
 #if NETFRAMEWORK
 using System.Data.Entity;
 #endif

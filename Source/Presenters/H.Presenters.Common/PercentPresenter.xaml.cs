@@ -1,4 +1,5 @@
-﻿using H.Providers.Ioc;
+﻿
+using H.Providers.Ioc;
 using H.Providers.Mvvm;
 using System;
 using System.Collections.Generic;

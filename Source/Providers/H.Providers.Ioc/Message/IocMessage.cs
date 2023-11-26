@@ -1,6 +1,5 @@
 ﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
 
-using H.Providers.Ioc;
 using System;
 using System.Windows;
 
@@ -9,12 +8,12 @@ namespace H.Providers.Ioc
     public static class IocMessage
     {
         public static IWindowMessage Window => System.Ioc.GetService<IWindowMessage>(throwIfNone: false);
-        public static IDialogMessage Dialog => System.Ioc.GetService<IDialogMessage>(throwIfNone: false);
-        public static ISnackMessage Snack => System.Ioc.GetService<ISnackMessage>(throwIfNone: false);
+        public static IDialogMessageService Dialog => System.Ioc.GetService<IDialogMessageService>(throwIfNone: false);
+        public static ISnackMessageService Snack => System.Ioc.GetService<ISnackMessageService>(throwIfNone: false);
         public static ITaskBarMessage TaskBar => System.Ioc.GetService<ITaskBarMessage>(throwIfNone: false);
         public static ISystemNotifyMessage SystemNotify => System.Ioc.GetService<ISystemNotifyMessage>(throwIfNone: false);
         public static INoticeMessageService Notify => System.Ioc.GetService<INoticeMessageService>(throwIfNone: false);
-        public static IFormMessage Form => System.Ioc.GetService<IFormMessage>(throwIfNone: false);
+        public static IFormMessageService Form => System.Ioc.GetService<IFormMessageService>(throwIfNone: false);
 
         //public static void ShowMessage(string message, string title = "提示")
         //{
@@ -74,7 +73,7 @@ namespace H.Providers.Ioc
         }
 
 
-        public static void ShowSnackMessage(object message)
+        public static void ShowSnackMessage(string message)
         {
             if (Snack == null)
             {
@@ -82,7 +81,7 @@ namespace H.Providers.Ioc
             }
             else
             {
-                Snack.Show(message);
+                Snack.ShowInfo(message);
             }
         }
     }
