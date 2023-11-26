@@ -2,19 +2,12 @@
 
 using H.Controls.Adorner;
 using H.Providers.Ioc;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace System
 {
     public static class Extention
     {
-        ///// <summary>
-        ///// 注册
-        ///// </summary>
-        ///// <param name="service"></param>
-        //public static void AddPropertyGrid(this IServiceCollection service)
-        //{
-        //    service.AddSingleton<IService, Service>();
-        //}
 
         /// <summary>
         /// 配置

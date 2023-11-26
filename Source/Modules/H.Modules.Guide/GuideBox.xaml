@@ -1,0 +1,174 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Modules.Guide"
+                    xmlns:s="clr-namespace:System"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <Style TargetType="{x:Type local:GuideBox}">
+        <!--<Setter Property="Background" Value="Red" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:GuideBox}">
+                    <ContentPresenter />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>-->
+        <Setter Property="PathStyle">
+            <Setter.Value>
+                <Style TargetType="Path">
+                    <Setter Property="Fill" Value="Transparent" />
+                    <Setter Property="Stroke" Value="{Binding Source={x:Static local:GuideOptions.Instance}, Path=Stroke}" />
+                    <Setter Property="StrokeThickness" Value="{Binding Source={x:Static local:GuideOptions.Instance}, Path=StrokeThickness}" />
+                    <Setter Property="StrokeDashArray" Value="{Binding Source={x:Static local:GuideOptions.Instance}, Path=StrokeDashArray}" />
+                    <Setter Property="StrokeDashCap" Value="Triangle" />
+                    <Setter Property="Data">
+                        <Setter.Value>
+                            <RectangleGeometry Rect="0 0 0 0" />
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="Background">
+            <Setter.Value>
+                <SolidColorBrush Opacity="{Binding Source={x:Static local:GuideOptions.Instance}, Path=CoverOpacity, Mode=TwoWay}" Color="{Binding Source={x:Static local:GuideOptions.Instance}, Path=CoverColor, Mode=TwoWay}" />
+            </Setter.Value>
+        </Setter>
+        <!--<Setter Property="ContentControl">
+            <Setter.Value>
+                <ContentControl Width="Auto"
+                                Height="Auto"
+                                Margin="10"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Foreground="White">
+                    <ContentControl.Template>
+                        <ControlTemplate TargetType="ContentControl">
+                            <Border>
+                                <DockPanel>
+                                    <DockPanel DockPanel.Dock="Bottom">
+                                        <Button HorizontalAlignment="Left"
+                                                Command="{x:Static local:GuideBox.SkipCommand}"
+                                                Content="跳过指南&gt;&gt;" />
+
+                                        <Button x:Name="bt_next"
+                                                Width="100"
+                                                HorizontalAlignment="Left"
+                                                Background="{DynamicResource {x:Static h:BrushKeys.Orange}}"
+                                                Command="{x:Static local:GuideBox.NextCommand}"
+                                                Content="下一步" />
+                                    </DockPanel>
+
+                                    <DockPanel DockPanel.Dock="Top">
+                                        <Border Width="30"
+                                                Height="30"
+                                                Background="{DynamicResource {x:Static h:BrushKeys.Orange}}"
+                                                CornerRadius="15">
+                                            <TextBlock HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center"
+                                                       FontSize="{StaticResource {x:Static h:FontSizeKeys.Header5}}"
+                                                       FontWeight="Bold"
+                                                       Foreground="White"
+                                                       Text="{Binding RelativeSource={RelativeSource AncestorType=local:GuideBox}, Path=CurrentIndex}" />
+                                        </Border>
+
+                                        <TextBlock Margin="10,0"
+                                                   VerticalAlignment="Center"
+                                                   DockPanel.Dock="Top"
+                                                   FontSize="{StaticResource {x:Static h:FontSizeKeys.Header3}}"
+                                                   FontWeight="Bold"
+                                                   Foreground="White">
+                                            --><!--<Run Text="{Binding RelativeSource={RelativeSource AncestorType=local:GuideBox}, Path=CurrentIndex}" /><Run Text="/" /><Run Text="{Binding RelativeSource={RelativeSource AncestorType=local:GuideBox}, Path=Total}" />-->
+                                            <!--<Run Text="{Binding RelativeSource={RelativeSource AncestorType=local:GuideBox}, Path=CurrentIndex}" />--><!--
+                                            <Run Text="{TemplateBinding h:Cattach.GuideTitle}" />
+                                        </TextBlock>
+                                    </DockPanel>
+                                    --><!--<TextBlock Margin="0,10" Text="{TemplateBinding Content}" TextWrapping="Wrap" />--><!--
+                                    <ContentPresenter Margin="0,10">
+                                        <ContentPresenter.Resources>
+                                            <DataTemplate DataType="{x:Type sys:String}">
+                                                <TextBlock Width="{Binding Source={x:Static local:GuideOptions.Instance}, Path=TextMaxWidth}"
+                                                           Text="{Binding}"
+                                                           TextWrapping="Wrap" />
+                                            </DataTemplate>
+                                        </ContentPresenter.Resources>
+                                    </ContentPresenter>
+                                </DockPanel>
+                            </Border>
+                            --><!--<ControlTemplate.Triggers>
+                                <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=local:GuideBox}, Path=CurrentIndex}" Value="{Binding RelativeSource={RelativeSource AncestorType=local:GuideBox}, Path=Total}">
+                                    <Setter Property="Content" Value="完成" TargetName="bt_next"/>
+                                </DataTrigger>
+                            </ControlTemplate.Triggers>--><!--
+                        </ControlTemplate>
+                    </ContentControl.Template>
+                </ContentControl>
+            </Setter.Value>
+        </Setter>-->
+        <Setter Property="ControlTemplate">
+            <Setter.Value>
+                <ControlTemplate TargetType="ContentControl">
+                    <Border>
+                        <DockPanel>
+                            <DockPanel DockPanel.Dock="Bottom">
+                                <Button HorizontalAlignment="Left"
+                                        Command="{x:Static local:GuideBox.SkipCommand}"
+                                        Content="跳过指南&gt;&gt;" />
+
+                                <Button x:Name="bt_next"
+                                        Width="100"
+                                        HorizontalAlignment="Left"
+                                        Background="{DynamicResource {x:Static h:BrushKeys.Orange}}"
+                                        Command="{x:Static local:GuideBox.NextCommand}"
+                                        Content="下一步" />
+                            </DockPanel>
+
+                            <DockPanel DockPanel.Dock="Top">
+                                <Border Width="30"
+                                        Height="30"
+                                        Background="{DynamicResource {x:Static h:BrushKeys.Orange}}"
+                                        CornerRadius="15">
+                                    <TextBlock HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               FontSize="{StaticResource {x:Static h:FontSizeKeys.Header5}}"
+                                               FontWeight="Bold"
+                                               Foreground="White"
+                                               Text="{Binding RelativeSource={RelativeSource AncestorType=local:GuideBox}, Path=CurrentIndex}" />
+                                </Border>
+
+                                <TextBlock Margin="10,0"
+                                           VerticalAlignment="Center"
+                                           DockPanel.Dock="Top"
+                                           FontSize="{StaticResource {x:Static h:FontSizeKeys.Header3}}"
+                                           FontWeight="Bold"
+                                           Foreground="White">
+                                    <!--<Run Text="{Binding RelativeSource={RelativeSource AncestorType=local:GuideBox}, Path=CurrentIndex}" /><Run Text="/" /><Run Text="{Binding RelativeSource={RelativeSource AncestorType=local:GuideBox}, Path=Total}" />-->
+                                    <!--<Run Text="{Binding RelativeSource={RelativeSource AncestorType=local:GuideBox}, Path=CurrentIndex}" />-->
+                                    <Run Text="{TemplateBinding h:Cattach.GuideTitle}" />
+                                </TextBlock>
+                            </DockPanel>
+                            <!--<TextBlock Margin="0,10" Text="{TemplateBinding Content}" TextWrapping="Wrap" />-->
+                            <ContentPresenter Margin="0,10">
+                                <ContentPresenter.Resources>
+                                    <DataTemplate DataType="{x:Type sys:String}">
+                                        <TextBlock Width="{Binding Source={x:Static local:GuideOptions.Instance}, Path=TextMaxWidth}"
+                                                   Text="{Binding}"
+                                                   TextWrapping="Wrap" />
+                                    </DataTemplate>
+                                </ContentPresenter.Resources>
+                            </ContentPresenter>
+                        </DockPanel>
+                    </Border>
+                    <!--<ControlTemplate.Triggers>
+                                <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=local:GuideBox}, Path=CurrentIndex}" Value="{Binding RelativeSource={RelativeSource AncestorType=local:GuideBox}, Path=Total}">
+                                    <Setter Property="Content" Value="完成" TargetName="bt_next"/>
+                                </DataTrigger>
+                            </ControlTemplate.Triggers>-->
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

@@ -1,0 +1,35 @@
+﻿<Window x:Class="H.Test.Guide.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:h="https://github.com/HeBianGu"
+        xmlns:local="clr-namespace:H.Test.Guide"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Title="MainWindow"
+        Width="800"
+        Height="450"
+        Style="{StaticResource {x:Type Window}}"
+        mc:Ignorable="d">
+    <UniformGrid>
+        <Button h:Cattach.GuideData="这是一条说明信息"
+                h:Cattach.GuideTitle="消息列表"
+                h:Cattach.UseGuide="True"
+                Command="{ShowGuideCommand}"
+                Content="显示新手向导" />
+        <Button h:Cattach.GuideData="这是一条说明信息"
+                h:Cattach.GuideTitle="消息列表"
+                h:Cattach.UseGuide="True"
+                Command="{ShowGuideCommand}"
+                Content="显示新手向导" />
+        <Button h:Cattach.GuideData="这是一条说明信息"
+                h:Cattach.GuideTitle="消息列表"
+                h:Cattach.UseGuide="True"
+                Command="{ShowGuideCommand}"
+                Content="显示新手向导" />
+        <Button h:Cattach.GuideData="这是一条说明信息"
+                h:Cattach.GuideTitle="消息列表"
+                h:Cattach.UseGuide="True"
+                Command="{ShowGuideCommand}"
+                Content="显示新手向导" />
+    </UniformGrid>
+</Window>
