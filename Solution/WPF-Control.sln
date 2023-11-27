@@ -205,6 +205,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Modules.Guide", "..\Sourc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Test.Guide", "..\Source\Tests\H.Test.Guide\H.Test.Guide.csproj", "{A3B51C52-71FC-44F1-8E91-B0721B4826D6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Controls.Eazy", "..\Source\H.Controls.Eazy\H.Controls.Eazy.csproj", "{6002368E-4DE7-4F6B-8F50-5176BEB95FB3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -563,6 +565,10 @@ Global
 		{A3B51C52-71FC-44F1-8E91-B0721B4826D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3B51C52-71FC-44F1-8E91-B0721B4826D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3B51C52-71FC-44F1-8E91-B0721B4826D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6002368E-4DE7-4F6B-8F50-5176BEB95FB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6002368E-4DE7-4F6B-8F50-5176BEB95FB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6002368E-4DE7-4F6B-8F50-5176BEB95FB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6002368E-4DE7-4F6B-8F50-5176BEB95FB3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

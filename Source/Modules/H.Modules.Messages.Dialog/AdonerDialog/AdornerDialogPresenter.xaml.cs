@@ -121,7 +121,9 @@ namespace H.Modules.Messages.Dialog
             {
                 var child = Application.Current.MainWindow.Content as UIElement;
                 var layer = AdornerLayer.GetAdornerLayer(child);
-                var adorners = layer.GetAdorners(child).OfType<PresenterAdorner>().Where(x => x.Presenter == this);
+                var adorners = layer.GetAdorners(child)?.OfType<PresenterAdorner>().Where(x => x.Presenter == this);
+                if (adorners == null)
+                    return;
                 foreach (var adorner in adorners)
                 {
                     layer.Remove(adorner);

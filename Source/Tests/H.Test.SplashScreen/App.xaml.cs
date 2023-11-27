@@ -18,6 +18,7 @@ namespace H.Test.SplashScreen
     {
         protected override void ConfigureServices(IServiceCollection services)
         {
+            services.AddWindowMessage();
             services.AddWindowDialogMessage();
             services.AddSplashScreen();
             services.AddSetting();

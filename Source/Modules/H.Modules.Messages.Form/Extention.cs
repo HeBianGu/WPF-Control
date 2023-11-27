@@ -11,7 +11,7 @@ namespace System
         /// 注册
         /// </summary>
         /// <param name="service"></param>
-        public static void AddFormMessage(this IServiceCollection services)
+        public static void AddFormMessageService(this IServiceCollection services)
         {
             services.AddSingleton<IFormMessageService, FormMessageService>();
         }
