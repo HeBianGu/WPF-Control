@@ -24,7 +24,7 @@ namespace H.Test.Test
         {
             base.ConfigureServices(services);
 
-            services.AddMessage();
+            services.AddAdornerDialogMessage();
             services.AddLog4net();
             services.AddSetting();
         }

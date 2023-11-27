@@ -20,7 +20,7 @@ namespace H.Test.Setting
     {
         protected override void ConfigureServices(IServiceCollection services)
         {
-            services.AddMessage();
+            services.AddAdornerDialogMessage();
             services.AddSetting();
         }
 

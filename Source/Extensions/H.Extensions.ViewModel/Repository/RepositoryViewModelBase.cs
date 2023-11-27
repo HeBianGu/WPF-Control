@@ -121,7 +121,7 @@ namespace H.Extensions.ViewModel
                 {
                     if (project.ModelState(out List<string> message) == false)
                     {
-                        IocMessage.Snack?.Show(message?.FirstOrDefault());
+                        IocMessage.Snack?.ShowInfo(message?.FirstOrDefault());
                         return false;
                     }
                     return true;
@@ -345,7 +345,7 @@ namespace H.Extensions.ViewModel
             bool? dialog = await IocMessage.Form.ShowEdit(this.GetAddModel(m), null, null, null, "新增");
             if (dialog != true)
             {
-                IocMessage.Snack?.ShowTime("取消操作");
+                IocMessage.Snack?.ShowInfo("取消操作");
                 return;
             }
             await this.Add(m);
@@ -375,7 +375,7 @@ namespace H.Extensions.ViewModel
             bool? r = await IocMessage.Form.ShowEdit(this.GetEditModel(entity));
             if (r != true)
             {
-                IocMessage.Snack?.ShowTime("取消操作");
+                IocMessage.Snack?.ShowInfo("取消操作");
                 return;
             }
 
@@ -384,11 +384,11 @@ namespace H.Extensions.ViewModel
             if (rs > 0)
             {
                 if (this.UseMessage)
-                    IocMessage.Snack?.ShowTime("保存成功");
+                    IocMessage.Snack?.ShowInfo("保存成功");
             }
             else
             {
-                IocMessage.Snack?.ShowTime("保存失败，数据库保存错误");
+                IocMessage.Snack?.ShowInfo("保存失败，数据库保存错误");
             }
             Ioc<IOperationService>.Instance?.Log<TEntity>($"编辑", entity.ID,OperationType.Update);
         }
@@ -411,14 +411,14 @@ namespace H.Extensions.ViewModel
             if (r > 0)
             {
                 if (this.UseMessage)
-                    IocMessage.Snack?.ShowTime("删除成功");
+                    IocMessage.Snack?.ShowInfo("删除成功");
                 var m = this.Collection.FirstOrDefault(x => x.Model == entity);
                 this.Collection.Remove(m);
                 this.Collection.SelectedItem = this.Collection.FirstOrDefault(x => true);
             }
             else
             {
-                IocMessage.Snack?.ShowTime("删除失败,数据库保存错误");
+                IocMessage.Snack?.ShowInfo("删除失败,数据库保存错误");
             }
             Ioc<IOperationService>.Instance?.Log<TEntity>($"新增", entity.ID,OperationType.Delete);
             this.OnCollectionChanged(obj);
@@ -439,12 +439,12 @@ namespace H.Extensions.ViewModel
             if (r > 0)
             {
                 if (this.UseMessage)
-                    IocMessage.Snack?.ShowTime("清空成功");
+                    IocMessage.Snack?.ShowInfo("清空成功");
                 this.Collection.Clear();
             }
             else
             {
-                IocMessage.Snack?.ShowTime("清空失败,数据库保存错误");
+                IocMessage.Snack?.ShowInfo("清空失败,数据库保存错误");
             }
             Ioc<IOperationService>.Instance?.Log<TEntity>($"清空",null,OperationType.Delete);
             this.OnCollectionChanged(obj);
@@ -466,11 +466,11 @@ namespace H.Extensions.ViewModel
             if (r > 0)
             {
                 if (this.UseMessage)
-                    IocMessage.Snack?.ShowTime("保存成功");
+                    IocMessage.Snack?.ShowInfo("保存成功");
             }
             else
             {
-                IocMessage.Snack?.ShowTime("保存失败,数据库保存错误");
+                IocMessage.Snack?.ShowInfo("保存失败,数据库保存错误");
             }
             return r;
         }
@@ -491,12 +491,12 @@ namespace H.Extensions.ViewModel
             var r = this.Repository == null ? 1 : await this.Repository.DeleteAsync(x => checks.Contains(x));
             if (r > 0)
             {
-                IocMessage.Snack?.ShowTime($"删除成功,共计{checks.Count()}条");
+                IocMessage.Snack?.ShowInfo($"删除成功,共计{checks.Count()}条");
                 this.Collection.RemoveAll(x => checks.Contains(x.Model));
             }
             else
             {
-                IocMessage.Snack?.ShowTime("删除失败,数据库保存错误");
+                IocMessage.Snack?.ShowInfo("删除失败,数据库保存错误");
             }
             foreach (var item in checks)
             {

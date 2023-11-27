@@ -38,7 +38,7 @@ namespace H.Modules.Identity
             bool? dialog = await IocMessage.Dialog.Show(roleViewModel, null, DialogButton.Sumit, "新增");
             if (dialog != true)
             {
-                IocMessage.Snack?.ShowTime("取消操作");
+                IocMessage.Snack?.ShowInfo("取消操作");
                 return;
             }
             await this.Add(m);
@@ -54,7 +54,7 @@ namespace H.Modules.Identity
             bool? r = await IocMessage.Dialog.Show(roleViewModel, null, DialogButton.Sumit, "编辑");
             if (r != true)
             {
-                IocMessage.Snack?.ShowTime("取消操作");
+                IocMessage.Snack?.ShowInfo("取消操作");
                 return;
             }
 
@@ -63,11 +63,11 @@ namespace H.Modules.Identity
             if (rs > 0)
             {
                 if (this.UseMessage)
-                    IocMessage.Snack?.ShowTime("保存成功");
+                    IocMessage.Snack?.ShowInfo("保存成功");
             }
             else
             {
-                IocMessage.Snack?.ShowTime("保存失败，数据库保存错误");
+                IocMessage.Snack?.ShowInfo("保存失败，数据库保存错误");
             }
         }
     }

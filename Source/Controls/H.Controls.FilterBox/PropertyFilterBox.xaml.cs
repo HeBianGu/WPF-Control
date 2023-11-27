@@ -203,7 +203,7 @@ namespace H.Controls.FilterBox
             if (r == true)
             {
                 this.Save();
-                IocMessage.Snack?.ShowTime("保存成功");
+                IocMessage.Snack?.ShowInfo("保存成功");
             }
         }
 

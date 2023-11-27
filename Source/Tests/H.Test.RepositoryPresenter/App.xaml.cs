@@ -24,7 +24,7 @@ namespace H.Test.RepositoryPresenter
         protected override void ConfigureServices(IServiceCollection services)
         {
             services.AddSetting();
-            services.AddMessage();
+            services.AddAdornerDialogMessage();
             services.AddDbContextBySetting<MyDataContext>();
             services.AddSingleton<IStringRepository<mbc_dv_image>, DbContextRepository<MyDataContext, mbc_dv_image>>();
             services.AddSingleton<IRepositoryViewModel<mbc_dv_image>, RepositoryViewModel<mbc_dv_image>>();

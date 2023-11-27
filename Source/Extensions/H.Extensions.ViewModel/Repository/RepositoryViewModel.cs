@@ -55,7 +55,7 @@ namespace H.Extensions.ViewModel
                     this.Collection.Add(new SelectViewModel<TEntity>(m));
                     Ioc<IOperationService>.Instance?.Log<TEntity>($"新增", m.ID, OperationType.Add);
                 }
-                IocMessage.Snack?.ShowTime("新增成功");
+                IocMessage.Snack?.ShowInfo("新增成功");
 
                 return;
             }
@@ -63,11 +63,11 @@ namespace H.Extensions.ViewModel
             if (r > 0)
             {
                 this.Collection.Add(ms.Select(x => new SelectViewModel<TEntity>(x)).ToArray());
-                IocMessage.Snack?.ShowTime("新增成功");
+                IocMessage.Snack?.ShowInfo("新增成功");
             }
             else
             {
-                IocMessage.Snack?.ShowTime("新增失败,数据库保存错误");
+                IocMessage.Snack?.ShowInfo("新增失败,数据库保存错误");
             }
             foreach (var m in ms)
             {

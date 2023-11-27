@@ -28,7 +28,7 @@ namespace H.Test.Identify
         protected override void ConfigureServices(IServiceCollection services)
         {
             services.AddSetting();
-            services.AddMessage();
+            services.AddAdornerDialogMessage();
             services.AddLoginViewPresenter();
             services.AddSplashScreen();
 

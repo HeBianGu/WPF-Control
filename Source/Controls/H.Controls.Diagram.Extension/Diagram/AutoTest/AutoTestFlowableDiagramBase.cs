@@ -81,7 +81,7 @@
 
 //        protected virtual Task<bool> ShowSetting()
 //        {
-//            IocMessage.Snack?.ShowTime("未实现该功能");
+//            IocMessage.Snack?.ShowInfo("未实现该功能");
 //            return Task.FromResult(true);
 //        }
 
@@ -95,7 +95,7 @@
 //        //          result.Diagram = ToXmlString();
 //        //          result.Result = this.State == DiagramFlowableState.Success ? "合格" : "不合格";
 //        //          await AutoTestResultPresenter.Add(result);
-//        //          IocMessage.Snack?.ShowTime("保存完成，请在数据统计中查看");
+//        //          IocMessage.Snack?.ShowInfo("保存完成，请在数据统计中查看");
 //        //          return true;
 //        //      });
 //        //    _isSaved = true;

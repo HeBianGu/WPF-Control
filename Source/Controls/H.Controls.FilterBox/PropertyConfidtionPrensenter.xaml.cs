@@ -291,7 +291,7 @@ namespace H.Controls.FilterBox
                 _propertyConfidtions.Save();
                 //this.Sessions = this._cache.Where(x => this._propertyConfidtions.IsMatch(x)).ToObservable();
                 this.OnConditionChanged();
-                IocMessage.Snack.ShowTime("保存成功");
+                IocMessage.Snack?.ShowInfo("保存成功");
             }
         });
 

@@ -26,7 +26,7 @@ namespace H.Test.Upgrade
         {
             base.ConfigureServices(services);
             services.AddSetting();
-            services.AddMessage();
+            services.AddWindowDialogMessage();
             services.AddSplashScreen();
             //  Do ：注册软件更新页面
             services.AddAutoUpgrade(x =>

@@ -84,7 +84,7 @@ namespace H.Extensions.ViewModel
                     else
                         this.SelectedTreeItem.Nodes.Add(new TreeNodeBase<TEntity>(m));
                 }
-                IocMessage.Snack?.ShowTime("新增成功");
+                IocMessage.Snack?.ShowInfo("新增成功");
                 return;
             }
             var r = await this.Repository?.InsertRangeAsync(ms);
@@ -97,11 +97,11 @@ namespace H.Extensions.ViewModel
                     else
                         this.SelectedTreeItem.Nodes.Add(new TreeNodeBase<TEntity>(m));
                 }
-                IocMessage.Snack?.ShowTime("新增成功");
+                IocMessage.Snack?.ShowInfo("新增成功");
             }
             else
             {
-                IocMessage.Snack?.ShowTime("新增失败,数据库保存错误");
+                IocMessage.Snack?.ShowInfo("新增失败,数据库保存错误");
             }
         }
 
@@ -124,7 +124,7 @@ namespace H.Extensions.ViewModel
                 this.Collection.Remove(entity);
             else
                 entity.Parent.Nodes.Remove(entity);
-            IocMessage.Snack?.ShowTime("删除成功");
+            IocMessage.Snack?.ShowInfo("删除成功");
             this.SelectedTreeItem = this.Collection.FirstOrDefault(x => true);
             this.OnCollectionChanged(obj);
         }
@@ -143,7 +143,7 @@ namespace H.Extensions.ViewModel
             bool? dialog = await IocMessage.Form.ShowEdit(this.GetAddModel(m), null, null,null, "新增");
             if (dialog != true)
             {
-                IocMessage.Snack?.ShowTime("取消操作");
+                IocMessage.Snack?.ShowInfo("取消操作");
                 return;
             }
             await this.Add(m);

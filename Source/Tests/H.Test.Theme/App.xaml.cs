@@ -23,7 +23,7 @@ namespace H.Test.Theme
         protected override void ConfigureServices(IServiceCollection services)
         {
             services.AddSetting();
-            services.AddMessage();
+            services.AddAdornerDialogMessage();
             services.AddTheme();
         }
 

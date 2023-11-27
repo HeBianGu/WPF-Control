@@ -64,7 +64,7 @@ namespace H.Controls.Diagram
                     this.State = DiagramFlowableState.Running;
                     bool? b = await Start(start);
                     this.State = b == null ? DiagramFlowableState.Canceled : b == true ? DiagramFlowableState.Success : DiagramFlowableState.Error;
-                    IocMessage.Snack?.ShowTime(b == null ? "用户取消" : b == true ? "运行成功" : "运行失败");
+                    IocMessage.Snack?.ShowInfo(b == null ? "用户取消" : b == true ? "运行成功" : "运行失败");
                     Commands.InvalidateRequerySuggested();
                 };
                 binding.CanExecute += (l, k) =>

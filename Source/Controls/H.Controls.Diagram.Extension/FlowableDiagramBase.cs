@@ -63,7 +63,7 @@ namespace H.Controls.Diagram.Extension
             this.State = DiagramFlowableState.Running;
             bool? b = await Start(start);
             this.State = b == null ? DiagramFlowableState.Canceled : b == true ? DiagramFlowableState.Success : DiagramFlowableState.Error;
-            IocMessage.Snack?.ShowTime(b == null ? "用户取消" : b == true ? "运行成功" : "运行失败");
+            IocMessage.Snack?.ShowInfo(b == null ? "用户取消" : b == true ? "运行成功" : "运行失败");
             //Commander.InvalidateRequerySuggested();
             s.IsBusy = false;
             await Task.Delay(2000).ContinueWith(x =>
@@ -126,7 +126,7 @@ namespace H.Controls.Diagram.Extension
             this.State = DiagramFlowableState.Running;
             bool? b = await Start(start);
             this.State = b == null ? DiagramFlowableState.Canceled : b == true ? DiagramFlowableState.Success : DiagramFlowableState.Error;
-            IocMessage.Snack?.ShowTime(b == null ? "用户取消" : b == true ? "运行成功" : "运行失败");
+            IocMessage.Snack?.ShowInfo(b == null ? "用户取消" : b == true ? "运行成功" : "运行失败");
             //Commander.InvalidateRequerySuggested();
             s.IsBusy = false;
             await Task.Delay(2000).ContinueWith(x =>
@@ -152,13 +152,13 @@ namespace H.Controls.Diagram.Extension
 
             if (starts == null || starts.Count() == 0)
             {
-                IocMessage.Snack?.ShowTime("未找到起始节点,请添加UseStart节点");
+                IocMessage.Snack?.ShowInfo("未找到起始节点,请添加UseStart节点");
                 return null;
             }
 
             if (starts.Count() > 1)
             {
-                IocMessage.Snack?.ShowTime("查询到多个节点");
+                IocMessage.Snack?.ShowInfo("查询到多个节点");
                 return null;
             }
 

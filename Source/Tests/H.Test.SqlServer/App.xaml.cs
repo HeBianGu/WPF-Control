@@ -22,7 +22,7 @@ namespace H.Test.SqlServer
         protected override void ConfigureServices(IServiceCollection services)
         {
             services.AddSetting();
-            services.AddMessage();
+            services.AddWindowDialogMessage();
             services.AddDbContextBySetting<MyDataContext>();
         }
 
