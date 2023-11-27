@@ -25,8 +25,8 @@ namespace H.Modules.Guide
         }
 
         private GuideTree _guideTree = null;
-        private readonly Border _conver = new Border();
-        private readonly Path _path = new Path();
+        private readonly Border _backgroundBorder = new Border();
+        private readonly Path _currentBound= new Path();
         private readonly UIElement _element;
         private readonly ContentControl _contentControl = new ContentControl() { Margin = new Thickness(10.0), HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top };
 
@@ -69,7 +69,6 @@ namespace H.Modules.Guide
                 this.CommandBindings.Add(binding);
             }
 
-
             {
                 CommandBinding binding = new CommandBinding(SkipCommand);
                 binding.Executed += (l, k) =>
@@ -84,11 +83,11 @@ namespace H.Modules.Guide
             {
                 this.Begin();
             };
-            this._conver.Background = this.Background;
-            this._path.Style = this.PathStyle;
+            this._backgroundBorder.Background = this.Background;
+            this._currentBound.Style = this.PathStyle;
             this._contentControl.Template = this.ControlTemplate;
-            this.AddVisualChild(_conver);
-            this.AddVisualChild(_path);
+            this.AddVisualChild(_backgroundBorder);
+            this.AddVisualChild(_currentBound);
             this.AddVisualChild(_contentControl);
         }
 
@@ -141,7 +140,7 @@ namespace H.Modules.Guide
 
                 if (e.NewValue is Style n)
                 {
-                    control._path.Style = n;
+                    control._currentBound.Style = n;
                 }
 
             }));
@@ -216,7 +215,7 @@ namespace H.Modules.Guide
 
                 if (e.NewValue is Brush n)
                 {
-                    control._conver.Background = n;
+                    control._backgroundBorder.Background = n;
                 }
 
             }));
@@ -242,24 +241,24 @@ namespace H.Modules.Guide
         #region - FrameworkElement -
         protected override Size ArrangeOverride(Size finalSize)
         {
-            _conver.Arrange(new Rect(new Point(0, 0), finalSize));
-            _path.Arrange(new Rect(new Point(0, 0), finalSize));
+            _backgroundBorder.Arrange(new Rect(new Point(0, 0), finalSize));
+            _currentBound.Arrange(new Rect(new Point(0, 0), finalSize));
             this._contentControl.Arrange(new Rect(new Point(0, 0), finalSize));
             return base.ArrangeOverride(finalSize);
         }
         protected override Size MeasureOverride(Size availableSize)
         {
-            _conver.Measure(availableSize);
-            _path.Measure(availableSize);
+            _backgroundBorder.Measure(availableSize);
+            _currentBound.Measure(availableSize);
             this._contentControl.Measure(availableSize);
             return base.MeasureOverride(availableSize);
         }
         protected override Visual GetVisualChild(int index)
         {
             if (base.VisualChildrenCount == index)
-                return this._conver;
+                return this._backgroundBorder;
             if (base.VisualChildrenCount + 1 == index)
-                return this._path;
+                return this._currentBound;
             if (base.VisualChildrenCount + 2 == index)
                 return this._contentControl;
 
@@ -323,9 +322,9 @@ namespace H.Modules.Guide
             RectangleGeometry outRect = new RectangleGeometry(new Rect(this.RenderSize));
             RectangleGeometry childRect = new RectangleGeometry(new Rect(0, 0, 0, 0), 1, 1);
             CombinedGeometry combinedGeometry = new CombinedGeometry(GeometryCombineMode.Exclude, outRect, childRect);
-            this._conver.Background = this.Background;
-            this._conver.Clip = combinedGeometry;
-            this._path.Data = new RectangleGeometry() { Rect = new Rect() };
+            this._backgroundBorder.Background = this.Background;
+            this._backgroundBorder.Clip = combinedGeometry;
+            this._currentBound.Data = new RectangleGeometry() { Rect = new Rect() };
         }
 
         private void AutoClick()
@@ -376,30 +375,13 @@ namespace H.Modules.Guide
                 return;
             Point point = this._guideTree.Current.Element.TranslatePoint(new Point(0, 0), element);
             Rect rect = new Rect(point, this._guideTree.Current.Element.RenderSize);
-            {
-                RectAnimation da = new RectAnimation();
-                da.To = rect;
-                da.EasingFunction = EasingFunctionFactroy.PowerEase;
-                Storyboard sb = StoryboardFactory.Create();
-                sb.Duration = TimeSpan.FromMilliseconds(1000);
-                sb.Children.Add(da);
-                Storyboard.SetTarget(da, this._conver);
-                Storyboard.SetTargetProperty(da, new PropertyPath("(0).(1).(2)", new DependencyProperty[] { UIElement.ClipProperty, CombinedGeometry.Geometry2Property, RectangleGeometry.RectProperty }));
-                sb.Begin();
-            }
+            this._backgroundBorder.Clip = new CombinedGeometry(GeometryCombineMode.Exclude, new RectangleGeometry(new Rect(this._backgroundBorder.RenderSize)), new RectangleGeometry(rect));
+            double thickness = this._currentBound.StrokeThickness;
+            this._currentBound.Data = new RectangleGeometry(new Rect(new Point(point.X - thickness * 0.5,
+                point.Y - thickness * 0.5),
+                new Size(this._guideTree.Current.Element.RenderSize.Width + thickness * 1,
+                this._guideTree.Current.Element.RenderSize.Height + thickness * 1)));
 
-            {
-                double thickness = this._path.StrokeThickness;
-                RectAnimation da = new RectAnimation();
-                da.To = new Rect(new Point(point.X - thickness * 0.5, point.Y - thickness * 0.5), new Size(this._guideTree.Current.Element.RenderSize.Width + thickness * 1, this._guideTree.Current.Element.RenderSize.Height + thickness * 1));
-                da.EasingFunction = EasingFunctionFactroy.PowerEase;
-                Storyboard sb = StoryboardFactory.Create();
-                sb.Duration = TimeSpan.FromMilliseconds(1000);
-                sb.Children.Add(da);
-                Storyboard.SetTarget(da, this._path);
-                Storyboard.SetTargetProperty(da, new PropertyPath("(0).(1)", new DependencyProperty[] { Path.DataProperty, RectangleGeometry.RectProperty }));
-                sb.Begin();
-            }
             object title = Cattach.GetGuideTitle(this._guideTree.Current.Element);
             Cattach.SetGuideTitle(this._contentControl, title);
             this._contentControl.Content = Cattach.GetGuideData(this._guideTree.Current.Element);
