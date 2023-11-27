@@ -13,20 +13,20 @@ namespace System
 {
     public static class Extension
     {
-        public static IServiceCollection AddTheme(this IServiceCollection services, Action<ThemeOptions> setupAction = null)
+        public static IApplicationBuilder UseTheme(this IApplicationBuilder builder, Action<ThemeSetting> option = null)
+        {
+            SettingDataManager.Instance.Add(ThemeSetting.Instance);
+            option?.Invoke(ThemeSetting.Instance);
+            return builder;
+        }
+
+        public static IServiceCollection AddSwitchThemeViewPresenter(this IServiceCollection services, Action<SwitchThemeOptions> setupAction = null)
         {
             services.AddOptions();
-            services.TryAdd(ServiceDescriptor.Singleton<IThemeViewPresenter, ThemeViewPresenter>());
+            services.TryAdd(ServiceDescriptor.Singleton<ISwitchThemeViewPresenter, SwitchThemeViewPresenter>());
             if (setupAction != null)
                 services.Configure(setupAction);
             return services;
-        }
-
-        public static IApplicationBuilder UseTheme(this IApplicationBuilder builder, Action<ThemeOptions> option = null)
-        {
-            SettingDataManager.Instance.Add(ThemeOptions.Instance);
-            option?.Invoke(ThemeOptions.Instance);
-            return builder;
         }
     }
 }

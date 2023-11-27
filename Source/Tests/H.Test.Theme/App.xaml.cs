@@ -24,7 +24,10 @@ namespace H.Test.Theme
         {
             services.AddSetting();
             services.AddAdornerDialogMessage();
-            services.AddTheme();
+            services.AddSwitchThemeViewPresenter(x=>
+            {
+                x.Dark = new PurpleDarkColorResource();
+            });
         }
 
         protected override Window CreateMainWindow(StartupEventArgs e)

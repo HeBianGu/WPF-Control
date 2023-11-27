@@ -2,6 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:H.Modules.Theme">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/H.Modules.Theme;component/LoginViewPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Modules.Theme;component/SwitchThemeViewPresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

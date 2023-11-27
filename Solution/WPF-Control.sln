@@ -191,19 +191,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Themes.Colors.Gray", "..\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Themes.Colors.Accent", "..\Source\Themes\H.Themes.Colors.Accent\H.Themes.Colors.Accent.csproj", "{42639F78-5C5A-439C-8213-DC51685B7941}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Modules.Messages.Dialog", "..\Source\Modules\H.Modules.Messages.Dialog\H.Modules.Messages.Dialog.csproj", "{6A487FB0-9098-4D61-A7CA-A07B10163DCA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Modules.Messages.Dialog", "..\Source\Modules\H.Modules.Messages.Dialog\H.Modules.Messages.Dialog.csproj", "{6A487FB0-9098-4D61-A7CA-A07B10163DCA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Modules.Messages.Notice", "..\Source\Modules\H.Modules.Messages.Notice\H.Modules.Messages.Notice.csproj", "{45831782-ECE2-44B7-9294-CCEBD0B24E4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Modules.Messages.Notice", "..\Source\Modules\H.Modules.Messages.Notice\H.Modules.Messages.Notice.csproj", "{45831782-ECE2-44B7-9294-CCEBD0B24E4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Modules.Messages.Form", "..\Source\Modules\H.Modules.Messages.Form\H.Modules.Messages.Form.csproj", "{CCDA4DD8-D9DC-4575-B63F-CD27EBF52ACE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Modules.Messages.Form", "..\Source\Modules\H.Modules.Messages.Form\H.Modules.Messages.Form.csproj", "{CCDA4DD8-D9DC-4575-B63F-CD27EBF52ACE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Modules.Messages.Snack", "..\Source\Modules\H.Modules.Messages.Snack\H.Modules.Messages.Snack.csproj", "{8CD532E9-4BCC-4231-899E-D0F54BA7CC86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Modules.Messages.Snack", "..\Source\Modules\H.Modules.Messages.Snack\H.Modules.Messages.Snack.csproj", "{8CD532E9-4BCC-4231-899E-D0F54BA7CC86}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Messages", "Messages", "{CC8F84E6-925C-4D45-8A46-69B69E7F2CD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Modules.Guide", "..\Source\Modules\H.Modules.Guide\H.Modules.Guide.csproj", "{2FB48DD8-E972-44F4-AD88-0FD7A9BE53ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Modules.Guide", "..\Source\Modules\H.Modules.Guide\H.Modules.Guide.csproj", "{2FB48DD8-E972-44F4-AD88-0FD7A9BE53ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Test.Guide", "..\Source\Tests\H.Test.Guide\H.Test.Guide.csproj", "{A3B51C52-71FC-44F1-8E91-B0721B4826D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Test.Guide", "..\Source\Tests\H.Test.Guide\H.Test.Guide.csproj", "{A3B51C52-71FC-44F1-8E91-B0721B4826D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -582,7 +582,7 @@ Global
 		{620B7EC7-83EB-4E67-933B-A9331CBF61FC} = {E2C0B11D-5ED5-4F22-8E56-F68982B6E59B}
 		{6FF010D8-B69E-4D71-AE35-343ABCC7EBFB} = {E2C0B11D-5ED5-4F22-8E56-F68982B6E59B}
 		{8456A653-2FCE-4979-ABD7-EAB33AD68748} = {E2C0B11D-5ED5-4F22-8E56-F68982B6E59B}
-		{ACF03BA8-7B19-4210-B441-602133D0A43B} = {27F6EA0F-3811-4403-9599-3B436A5EC502}
+		{ACF03BA8-7B19-4210-B441-602133D0A43B} = {CC8F84E6-925C-4D45-8A46-69B69E7F2CD6}
 		{62EA8CA5-716A-4A66-867A-63687EFBCF3C} = {E2C0B11D-5ED5-4F22-8E56-F68982B6E59B}
 		{54D381DE-A28C-448B-9E5F-6A38B88C7630} = {E2C0B11D-5ED5-4F22-8E56-F68982B6E59B}
 		{AF5CF051-DFAB-4724-9E40-D90E3D5F03B7} = {93892A11-5FF0-4EB2-AA73-F330E1F9515E}

@@ -19,9 +19,9 @@ using System.Xml.Serialization;
 namespace H.Modules.Theme
 {
     [Display(Name = "主题设置", GroupName = SystemSetting.GroupSystem, Description = "登录页面设置的信息")]
-    public class ThemeOptions : IocOptionInstance<ThemeOptions>
+    public class ThemeSetting: Setting<ThemeSetting>
     {
-        public ThemeOptions()
+        public ThemeSetting()
         {
             this.ColorResources.Add(new DarkColorResource());
             this.ColorResources.Add(new DefaultColorResource());
