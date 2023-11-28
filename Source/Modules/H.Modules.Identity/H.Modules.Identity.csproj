@@ -1,11 +1,4 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
-
-  <PropertyGroup>
-
-    <UseWPF>true</UseWPF>
-	  <PackageIcon>logo.jpg</PackageIcon>
-  </PropertyGroup>
-
   <ItemGroup Condition="'$(TargetFramework)' == 'net7.0-windows'">
     <PackageReference Include="Microsoft.EntityFrameworkCore">
       <Version>7.0.8</Version>

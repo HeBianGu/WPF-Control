@@ -1,10 +1,4 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
-
-  <PropertyGroup>
-
-    <UseWPF>true</UseWPF>
-	  <PackageIcon>logo.jpg</PackageIcon>
-  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.77" />
   </ItemGroup>
@@ -14,39 +8,4 @@
     <ProjectReference Include="..\..\Providers\H.Providers.Mvvm\H.Providers.Mvvm.csproj" />
     <ProjectReference Include="..\H.Controls.Adorner\H.Controls.Adorner.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Page Update="Diagram.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="NodeResizeAdorner.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Part\Link.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Part\Node.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Part\Port.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Part\TreeNode.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="PropertyControl.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="PropertyTabControl.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Themes\Default.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Themes\Generic.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-
 </Project>

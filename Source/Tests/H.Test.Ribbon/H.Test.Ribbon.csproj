@@ -12,9 +12,4 @@
     <ProjectReference Include="..\..\Themes\H.Themes.Default\H.Themes.Default.csproj" />
     <ProjectReference Include="..\..\Windows\H.Windows.Ribbon\H.Windows.Ribbon.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Resources\CropImage16.png" />
-    <Resource Include="Resources\CropImage32.png" />
-  </ItemGroup>
 </Project>

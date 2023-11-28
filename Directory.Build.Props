@@ -19,6 +19,8 @@
   <ItemGroup>
     <Resource Include="**\*.png" />
     <Resource Include="**\*.jpg" />
+    <Resource Include="**\*.cur" />
+    <Resource Include="**\*.ico" />
   </ItemGroup>
   
   <ItemGroup>

@@ -1,30 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
-
-  <PropertyGroup>
-	  <UseWPF>true</UseWPF>
-	  <PackageIcon>logo.jpg</PackageIcon>
-
-  </PropertyGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\Controls\H.Controls.Form\H.Controls.Form.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.ProgressButton\H.Controls.ProgressButton.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Setting\H.Extensions.Setting.csproj" />
     <ProjectReference Include="..\..\Styles\H.Styles.Default\H.Styles.Default.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Default\H.Themes.Default.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Update="PropertyControl.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="PropertyTabControl.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Themes\Generic.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net7.0-windows'">

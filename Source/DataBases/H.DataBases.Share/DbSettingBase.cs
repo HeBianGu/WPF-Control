@@ -61,7 +61,7 @@ namespace H.DataBases.Share
               });
 
             if (r.Item1 == false)
-                await IocMessage.Dialog.ShowMessage(r.Item2, "连接失败");
+                await IocMessage.Window.ShowMessage(r.Item2, "连接失败");
         });
 
         [JsonIgnore]
@@ -73,11 +73,11 @@ namespace H.DataBases.Share
             var r = this.Save(out string message);
             if (r)
             {
-                IocMessage.Dialog.ShowMessage("保存成功");
+                IocMessage.Window.ShowMessage("保存成功");
             }
             else
             {
-                IocMessage.Dialog.ShowMessage(message, "保存失败");
+                IocMessage.Window.ShowMessage(message, "保存失败");
             }
         });
     }

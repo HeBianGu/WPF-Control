@@ -25,6 +25,7 @@ namespace H.Test.RepositoryPresenter
         {
             services.AddSetting();
             services.AddAdornerDialogMessage();
+            services.AddWindowMessage();
             services.AddDbContextBySetting<MyDataContext>();
             services.AddSingleton<IStringRepository<mbc_dv_image>, DbContextRepository<MyDataContext, mbc_dv_image>>();
             services.AddSingleton<IRepositoryViewModel<mbc_dv_image>, RepositoryViewModel<mbc_dv_image>>();

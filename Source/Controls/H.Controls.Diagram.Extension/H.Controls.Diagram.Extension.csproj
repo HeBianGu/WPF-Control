@@ -1,9 +1,4 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-	  <UseWPF>true</UseWPF>
-</PropertyGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\Extensions\H.Extensions.Geometry\H.Extensions.Geometry.csproj" />
     <ProjectReference Include="..\..\Styles\H.Styles.Default\H.Styles.Default.csproj" />
@@ -13,30 +8,4 @@
     <ProjectReference Include="..\H.Controls.Diagram\H.Controls.Diagram.csproj" />
     <ProjectReference Include="..\H.Controls.Form\H.Controls.Form.csproj" />
   </ItemGroup>
-
-  <!--<ItemGroup>
-    <ProjectReference Include="..\..\..\..\WPF-Controls\Source\Base\HeBianGu.Base.WpfBase\HeBianGu.Base.WpfBase.csproj" />
-    <ProjectReference Include="..\..\..\..\WPF-Controls\Source\Control\HeBianGu.Control.Adorner\HeBianGu.Control.Adorner.csproj" />
-    <ProjectReference Include="..\..\..\..\WPF-Controls\Source\Control\HeBianGu.Control.Chart2D\HeBianGu.Control.Chart2D.csproj" />
-    <ProjectReference Include="..\..\..\..\WPF-Controls\Source\Control\HeBianGu.Control.Diagram\csproj" />
-    <ProjectReference Include="..\..\..\..\WPF-Controls\Source\Control\HeBianGu.Control.DiagraphBox\HeBianGu.Control.DiagraphBox.csproj" />
-    <ProjectReference Include="..\..\..\..\WPF-Controls\Source\Control\HeBianGu.Control.Form\HeBianGu.Control.Form.csproj" />
-    <ProjectReference Include="..\..\..\..\WPF-Controls\Source\Control\HeBianGu.Control.ScrollVewerLocator\HeBianGu.Control.ScrollVewerLocator.csproj" />
-    <ProjectReference Include="..\..\..\..\WPF-Controls\Source\Control\HeBianGu.Control.Shape\HeBianGu.Control.Shape.csproj" />
-    <ProjectReference Include="..\..\..\..\WPF-Controls\Source\Control\HeBianGu.Control.TextEditor\HeBianGu.Control.TextEditor.csproj" />
-    <ProjectReference Include="..\..\..\..\WPF-Controls\Source\Control\HeBianGu.Control.ZoomBox\HeBianGu.Control.ZoomBox.csproj" />
-    <ProjectReference Include="..\..\..\..\WPF-Controls\Source\Service\HeBianGu.Service.Command\HeBianGu.Service.Command.csproj" />
-    <ProjectReference Include="..\..\..\..\WPF-Controls\Source\Service\HeBianGu.Service.Converter\HeBianGu.Service.Converter.csproj" />
-    <ProjectReference Include="..\..\..\..\WPF-Controls\Source\Service\HeBianGu.Service.MarkupExtension\HeBianGu.Service.MarkupExtension.csproj" />
-    <ProjectReference Include="..\..\..\..\WPF-Controls\Source\System\HeBianGu.Systems.Repository\HeBianGu.Systems.Repository.csproj" />
-    <ProjectReference Include="..\..\..\..\WPF-Controls\Source\System\HeBianGu.Systems.XmlSerialize\HeBianGu.Systems.XmlSerialize.csproj" />
-  </ItemGroup>-->
-
-  <ItemGroup>
-    <Page Update="Themes\Generic.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
-
 </Project>

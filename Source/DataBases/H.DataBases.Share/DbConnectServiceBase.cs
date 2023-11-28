@@ -50,12 +50,12 @@ namespace H.DataBases.Share
             bool r = this.CanConnect(context, out message);
             if (!r)
             {
-                var result = IocMessage.Dialog.ShowMessage(message, "数据库连接失败，是否重新配置?").Result;
+                var result = IocMessage.Window.ShowMessage(message, "数据库连接失败，是否重新配置?").Result;
                 if (result != true)
                     return false;
-                result = IocMessage.Dialog.Show(this.GetSetting(), null, DialogButton.None, "数据库连接失败，请重新配置数据库").Result;
+                result = IocMessage.Window.Show(this.GetSetting(), null, DialogButton.None, "数据库连接失败，请重新配置数据库").Result;
                 message = "数据库配置已修改，请重新启动";
-                IocMessage.Dialog.ShowMessage("数据库配置已修改，请重新启动").Wait();
+                IocMessage.Window.ShowMessage("数据库配置已修改，请重新启动").Wait();
                 return false;
             }
 
