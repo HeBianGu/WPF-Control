@@ -1,12 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
-  <PropertyGroup>
 
-    <UseWPF>true</UseWPF>
-	  <PackageIcon>logo.jpg</PackageIcon> 
-  </PropertyGroup>
-  <ItemGroup>
-    <Resource Include="**\*.png" />
-  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Styles\H.Styles.Default\H.Styles.Default.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Default\H.Themes.Default.csproj" />

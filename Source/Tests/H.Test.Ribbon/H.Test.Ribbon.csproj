@@ -2,15 +2,8 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-
     <UseWPF>true</UseWPF>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="Resources\CropImage16.png" />
-    <None Remove="Resources\CropImage32.png" />
-  </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\Controls\H.Controls.PropertyGrid\H.Controls.PropertyGrid.csproj" />
     <ProjectReference Include="..\..\Datas\H.Data.Test\H.Data.Test.csproj" />
@@ -24,5 +17,4 @@
     <Resource Include="Resources\CropImage16.png" />
     <Resource Include="Resources\CropImage32.png" />
   </ItemGroup>
-
 </Project>

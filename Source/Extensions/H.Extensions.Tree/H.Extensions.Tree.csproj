@@ -1,14 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-
-    <UseWPF>true</UseWPF>
-  </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.77" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Providers\H.Providers.Ioc\H.Providers.Ioc.csproj" />
     <ProjectReference Include="..\..\Providers\H.Providers.Mvvm\H.Providers.Mvvm.csproj" />
   </ItemGroup>
 

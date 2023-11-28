@@ -1,6 +1,5 @@
 ﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
 
-using H.Providers.Ioc;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -365,7 +364,8 @@ namespace H.Providers.Mvvm
         {
             //return this.CloneBy(x => x.GetCustomAttribute<BrowsableAttribute>()?.Browsable != false);
             //return this.CloneXml();
-            return new JsonSerializerService().CloneXml(this);
+            var txt = JsonSerializer.Serialize(this);
+            return JsonSerializer.Deserialize(txt, this.GetType());
         }
     }
 

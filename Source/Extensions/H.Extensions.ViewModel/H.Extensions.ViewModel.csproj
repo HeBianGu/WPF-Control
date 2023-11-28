@@ -1,14 +1,4 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-
-    <UseWPF>true</UseWPF>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
-  </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\Providers\H.Providers.Ioc\H.Providers.Ioc.csproj" />
     <ProjectReference Include="..\..\Providers\H.Providers.Mvvm\H.Providers.Mvvm.csproj" />
