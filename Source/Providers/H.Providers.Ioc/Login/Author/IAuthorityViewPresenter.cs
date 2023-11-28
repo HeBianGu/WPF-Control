@@ -2,8 +2,8 @@
 
 namespace H.Providers.Ioc
 {
-    public interface IDbConnectService : ISplashLoad
+    public interface IAuthorityViewPresenter
     {
-        bool TryConnect(out string message);
+
     }
 }

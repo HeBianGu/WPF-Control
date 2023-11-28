@@ -10,7 +10,7 @@ using System.Xml.Serialization;
 namespace H.Modules.Identity
 {
     [Display(Name = "权限管理")]
-    public class hi_dd_author : mbc_db_modelbase
+    public class hi_dd_author : DbModelBase
     {
         public hi_dd_author()
         {

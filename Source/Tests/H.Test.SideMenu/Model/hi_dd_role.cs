@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace H.Test.SideMenu
 {
-    public class hi_dd_role : mbc_db_modelbase
+    public class hi_dd_role : DbModelBase
     {
         public hi_dd_role()
         {

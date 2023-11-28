@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using H.Providers.Mvvm;
 using H.Providers.Ioc;
+using H.Providers.Ioc;
 
 namespace H.Modules.Login
 {

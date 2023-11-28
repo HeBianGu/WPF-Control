@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HeBianGu.Systems.Logger
 {
-    public abstract class LogEntityBase : mbc_db_modelbase
+    public abstract class LogEntityBase : DbModelBase
     {
         [Display(Name = "名称")]
         [Column("name", Order = 1)]

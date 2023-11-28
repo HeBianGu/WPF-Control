@@ -11,7 +11,7 @@ using System.Xml.Serialization;
 namespace H.Modules.Identity
 {
     [Display(Name = "角色管理")]
-    public class hi_dd_role : mbc_db_modelbase
+    public class hi_dd_role : DbModelBase
     {
         public hi_dd_role()
         {

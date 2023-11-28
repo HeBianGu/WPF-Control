@@ -2,8 +2,12 @@
 
 namespace H.Providers.Ioc
 {
-    public interface IDbConnectService : ISplashLoad
+    public enum OperationType
     {
-        bool TryConnect(out string message);
+        Default = 0,
+        Add,
+        Update,
+        Delete,
+        Search
     }
 }

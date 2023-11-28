@@ -6,7 +6,7 @@ using System.Security.AccessControl;
 
 namespace H.Extensions.Tree
 {
-    public class ExploreTree : ITree
+    public class ExploreTree : ITree, IParent
     {
         public string SearchPattern { get; set; } = "*";
         public SearchOption SearchOption { get; set; }
@@ -25,8 +25,6 @@ namespace H.Extensions.Tree
 
             if (parent is DirectoryInfo directory)
             {
-                //if (!directory.Attributes.HasFlag(FileAttributes.System))
-
                 try
                 {
                     return directory.GetFileSystemInfos();
@@ -37,8 +35,14 @@ namespace H.Extensions.Tree
 
                 }
             }
-
             return Enumerable.Empty<string>();
+        }
+
+        public object GetParent(object current)
+        {
+            if (current is FileSystemInfo info)
+                Path.GetDirectoryName(info.FullName);
+            return null;
         }
     }
 }

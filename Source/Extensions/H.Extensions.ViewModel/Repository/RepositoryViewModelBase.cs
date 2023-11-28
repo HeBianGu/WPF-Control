@@ -2,7 +2,7 @@
 
 
 using H.Providers.Ioc;
-
+using H.Providers.Ioc;
 using H.Providers.Mvvm;
 using Microsoft.Win32;
 using System;

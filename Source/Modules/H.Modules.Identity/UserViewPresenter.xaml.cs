@@ -1,4 +1,5 @@
 ﻿using H.Providers.Ioc;
+using H.Providers.Ioc;
 using System.ComponentModel.DataAnnotations;
 
 namespace H.Modules.Identity

@@ -11,9 +11,9 @@ using System.Windows.Threading;
 
 namespace H.Providers.Ioc
 {
-    public class mbc_db_modelbase : StringEntityBase, INotifyPropertyChanged, IDataErrorInfo
+    public abstract class DbModelBase : StringEntityBase, INotifyPropertyChanged, IDataErrorInfo
     {
-        public mbc_db_modelbase()
+        public DbModelBase()
         {
             this.CDATE = DateTime.Now;
             this.UDATE = this.CDATE;

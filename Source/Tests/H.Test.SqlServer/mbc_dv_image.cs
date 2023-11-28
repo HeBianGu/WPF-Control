@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace H.Test.SqlServer
 {
-    public class mbc_dv_image : mbc_db_modelbase
+    public class mbc_dv_image : DbModelBase
     {
         [Required]
         [Display(Name = "资源名称")]

@@ -5,6 +5,7 @@
 
 using H.Extensions.Setting;
 using H.Providers.Ioc;
+using H.Providers.Ioc;
 using System;
 using System.Collections.Generic;
 using System.Linq;

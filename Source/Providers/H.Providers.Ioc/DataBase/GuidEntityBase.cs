@@ -2,9 +2,6 @@
 
 namespace H.Providers.Ioc
 {
-    /// <summary>
-    /// 定义默认主键类型为Guid的实体基类
-    /// </summary>
     public abstract class GuidEntityBase : EntityBase<Guid>
     {
         public GuidEntityBase()
@@ -12,5 +9,4 @@ namespace H.Providers.Ioc
             this.ID = Guid.NewGuid();
         }
     }
-
 }

@@ -69,7 +69,7 @@ namespace H.Extensions.Setting
 
         private string GetUserName()
         {
-            return Loginner.Instance?.User?.Account;
+            return Ioc<ILoginService>.Instance?.User?.Account;
         }
         
         public string UserData=> Path.Combine(this.UserPath, nameof(Data));

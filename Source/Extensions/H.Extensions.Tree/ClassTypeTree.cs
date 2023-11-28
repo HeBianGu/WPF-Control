@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace H.Extensions.Tree
 {
-    public class ClassTypeTree : ITree
+    public class ClassTypeTree : ITree, IParent
     {
         private readonly Type _type;
         public ClassTypeTree(Type type)
@@ -23,6 +23,13 @@ namespace H.Extensions.Tree
                 return type.Assembly.GetTypes().Where(x => x.BaseType == type);
             }
             return Enumerable.Empty<string>();
+        }
+
+        public object GetParent(object current)
+        {
+            if (current is Type type)
+                return type.BaseType;
+            return null;
         }
     }
 }

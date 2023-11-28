@@ -4,7 +4,7 @@
     <PackageIcon>logo.ico</PackageIcon>
     <!--<TargetFrameworks>netcoreapp3.1;net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;net5.0-windows;net6.0-windows;net7.0-windows;</TargetFrameworks>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>-->
-    <TargetFrameworks>net6.0-windows;net7.0-windows</TargetFrameworks>
+    <TargetFrameworks>net7.0-windows;net6.0-windows</TargetFrameworks>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <LangVersion>9.0</LangVersion>
     <Version>1.0.0</Version>

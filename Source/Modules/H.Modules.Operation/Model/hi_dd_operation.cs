@@ -1,6 +1,7 @@
 ﻿
 
 using H.Providers.Ioc;
+using H.Providers.Ioc;
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -9,7 +10,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace H.Modules.Operation
 {
     [Display(Name ="操作日志")]
-    public class hi_dd_operation : mbc_db_modelbase
+    public class hi_dd_operation : DbModelBase
     {
         [Browsable(false)]
         public string UserID { get; set; }

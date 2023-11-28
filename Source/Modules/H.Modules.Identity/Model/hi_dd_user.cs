@@ -12,7 +12,7 @@ using System.Xml.Serialization;
 namespace H.Modules.Identity
 {
     [Display(Name = "用户管理")]
-    public class hi_dd_user : mbc_db_modelbase
+    public class hi_dd_user : DbModelBase
     {
 
         public hi_dd_user()

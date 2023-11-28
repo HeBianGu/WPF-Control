@@ -1,5 +1,6 @@
 ﻿using H.Extensions.ViewModel;
 using H.Providers.Ioc;
+using H.Providers.Ioc;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

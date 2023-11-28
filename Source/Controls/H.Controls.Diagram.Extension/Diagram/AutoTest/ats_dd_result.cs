@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace H.Controls.Diagram.Extension
 {
-    public class ats_dd_result : mbc_db_modelbase
+    public class ats_dd_result : DbModelBase
     {
         [Display(Name = "批次号")]
         public string BatchCode { get; set; } = DateTime.Now.ToString("yyyyMMddHHmmssfff");

@@ -12,49 +12,11 @@ using System.Windows.Threading;
 
 namespace H.Extensions.ViewModel
 {
-    public interface IObservableSource<T>
-    {
-        Predicate<T> Fileter { get; set; }
-        int Count { get; }
-        int MaxValue { get; set; }
-        int MinValue { get; set; }
-        int PageCount { get; set; }
-        int PageIndex { get; set; }
-        int SelectedIndex { get; set; }
-        T SelectedItem { get; set; }
-        ObservableCollection<T> Source { get; set; }
-        ObservableCollection<T> FilterSource { get; set; }
-        int Total { get; set; }
-        int TotalPage { get; set; }
-        void Add(params T[] value);
-        void Clear();
-        void Load(IEnumerable<T> source);
-        void RefreshPage(Action after = null);
-        void Remove(params T[] value);
-        void RemoveAll(Func<T, bool> predicate);
-        void Sort<TKey>(Func<T, TKey> keySelector, bool isdesc = false);
-        IEnumerable<T> Where(Func<T, bool> predicate);
-        T FirstOrDefault(Func<T, bool> predicate);
-        void Foreach(Action<T> predicate);
-        bool Any(Func<T, bool> predicate);
-        IEnumerable<TResult> Select<TResult>(Func<T, TResult> predicate);
 
-        void Next();
-        void Previous();
-        IDisplayFilter Filter1 { get; set; }
-        IFilter Filter2 { get; set; }
-        IFilter Filter3 { get; set; }
-        IFilter Filter4 { get; set; }
-        IFilter Filter5 { get; set; }
-    }
-
-    /// <summary> 带有页码的 ObservableCollection 集合</summary>
     public class ObservableSource<T> : NotifyPropertyChanged, IObservableSource, IObservableSource<T>
     {
         public int Count => this.Cache.Count;
-
         private ObservableCollection<T> _cache = new ObservableCollection<T>();
-        /// <summary> 说明  </summary>
         public ObservableCollection<T> Cache
         {
             get { return _cache; }
@@ -65,7 +27,6 @@ namespace H.Extensions.ViewModel
             }
         }
         private ObservableCollection<T> _filterSource = new ObservableCollection<T>();
-        /// <summary> 说明  </summary>
         public ObservableCollection<T> FilterSource
         {
             get { return _filterSource; }
@@ -77,7 +38,6 @@ namespace H.Extensions.ViewModel
         }
 
         private ObservableCollection<T> _source = new ObservableCollection<T>();
-        /// <summary> 要显示的资源  </summary>
         public ObservableCollection<T> Source
         {
             get { return _source; }
@@ -89,7 +49,6 @@ namespace H.Extensions.ViewModel
         }
 
         private T _selectedItem;
-        /// <summary> 说明  </summary>
         public T SelectedItem
         {
             get { return _selectedItem; }
@@ -104,7 +63,6 @@ namespace H.Extensions.ViewModel
         }
 
         private int _selectedIndex;
-        /// <summary> 说明  </summary>
         public int SelectedIndex
         {
             get { return _selectedIndex; }
@@ -119,7 +77,6 @@ namespace H.Extensions.ViewModel
         }
 
         private int _total;
-        /// <summary> 总数量  </summary>
         public int Total
         {
             get { return _total; }
@@ -131,7 +88,6 @@ namespace H.Extensions.ViewModel
         }
 
         private int _totalPage;
-        /// <summary> 总页数  </summary>
         public int TotalPage
         {
             get { return _totalPage; }
@@ -143,7 +99,6 @@ namespace H.Extensions.ViewModel
         }
 
         private int _pageIndex = 1;
-        /// <summary> 当前页索引  </summary>
         public int PageIndex
         {
             get { return _pageIndex; }
@@ -156,7 +111,6 @@ namespace H.Extensions.ViewModel
         }
 
         private int _pageCount = 20;
-        /// <summary> 每页数量  </summary>
         public int PageCount
         {
             get { return _pageCount; }
@@ -169,7 +123,6 @@ namespace H.Extensions.ViewModel
         }
 
         private Predicate<T> _fileter = l => true;
-        /// <summary> 过滤条件  </summary>
         public Predicate<T> Fileter
         {
             get { return _fileter; }
@@ -182,7 +135,6 @@ namespace H.Extensions.ViewModel
         }
 
         private int _minValue;
-        /// <summary> 当前页最小值  </summary>
         public int MinValue
         {
             get { return _minValue; }
@@ -194,7 +146,6 @@ namespace H.Extensions.ViewModel
         }
 
         private int _maxValue;
-        /// <summary> 当前页最大值  </summary>
         public int MaxValue
         {
             get { return _maxValue; }
@@ -219,7 +170,6 @@ namespace H.Extensions.ViewModel
         }
 
         private IFilter _filter2;
-        /// <summary> 说明  </summary>
         public IFilter Filter2
         {
             get { return _filter2; }
@@ -232,7 +182,6 @@ namespace H.Extensions.ViewModel
         }
 
         private IFilter _filter3;
-        /// <summary> 说明  </summary>
         public IFilter Filter3
         {
             get { return _filter3; }
@@ -245,7 +194,6 @@ namespace H.Extensions.ViewModel
         }
 
         private IFilter _filter4;
-        /// <summary> 说明  </summary>
         public IFilter Filter4
         {
             get { return _filter4; }
@@ -258,7 +206,6 @@ namespace H.Extensions.ViewModel
         }
 
         private IFilter _filter5;
-        /// <summary> 说明  </summary>
         public IFilter Filter5
         {
             get { return _filter5; }
@@ -269,7 +216,6 @@ namespace H.Extensions.ViewModel
             }
         }
 
-        /// <summary> 刷新当前显示Source </summary>
         public void RefreshPage(Action after = null)
         {
             var where = this.Cache.Where(l => this.Fileter?.Invoke(l) != false).

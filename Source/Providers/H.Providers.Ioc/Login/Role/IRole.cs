@@ -2,8 +2,10 @@
 
 namespace H.Providers.Ioc
 {
-    public interface IDbConnectService : ISplashLoad
+    public interface IRole
     {
-        bool TryConnect(out string message);
+        string ID { get; }
+        string Name { get; set; }
+        bool IsValid(string authorId);
     }
 }

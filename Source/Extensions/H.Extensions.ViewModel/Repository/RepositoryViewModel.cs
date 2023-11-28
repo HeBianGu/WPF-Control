@@ -2,6 +2,7 @@
 
 
 using H.Providers.Ioc;
+using H.Providers.Ioc;
 using H.Providers.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -76,7 +77,7 @@ namespace H.Extensions.ViewModel
         }
     }
 
-    public class DateRepositoryViewModel<TEntity> : RepositoryViewModel<TEntity> where TEntity : mbc_db_modelbase, new()
+    public class DateRepositoryViewModel<TEntity> : RepositoryViewModel<TEntity> where TEntity : DbModelBase, new()
     {
         public override void RefreshData(params string[] includes)
         {
