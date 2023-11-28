@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-
-namespace H.Controls.Dock.Properties
-{
+namespace H.Controls.Dock.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   一个强类型的资源类，用于查找本地化的字符串等。
     /// </summary>
@@ -22,301 +22,247 @@ namespace H.Controls.Dock.Properties
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resources
-    {
-
+    public class Resources {
+        
         private static global::System.Resources.ResourceManager resourceMan;
-
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
-
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources()
-        {
+        internal Resources() {
         }
-
+        
         /// <summary>
         ///   返回此类使用的缓存的 ResourceManager 实例。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager
-        {
-            get
-            {
-                if (object.ReferenceEquals(resourceMan, null))
-                {
+        public static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("H.Controls.Dock.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-
+        
         /// <summary>
         ///   重写当前线程的 CurrentUICulture 属性，对
         ///   使用此强类型资源类的所有资源查找执行重写。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture
-        {
-            get
-            {
+        public static global::System.Globalization.CultureInfo Culture {
+            get {
                 return resourceCulture;
             }
-            set
-            {
+            set {
                 resourceCulture = value;
             }
         }
-
+        
         /// <summary>
         ///   查找类似 Active Files 的本地化字符串。
         /// </summary>
-        public static string Active_Files
-        {
-            get
-            {
+        public static string Active_Files {
+            get {
                 return ResourceManager.GetString("Active_Files", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   查找类似 Active Tool Windows 的本地化字符串。
         /// </summary>
-        public static string Active_ToolWindows
-        {
-            get
-            {
+        public static string Active_ToolWindows {
+            get {
                 return ResourceManager.GetString("Active_ToolWindows", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   查找类似 Auto Hide 的本地化字符串。
         /// </summary>
-        public static string Anchorable_AutoHide
-        {
-            get
-            {
+        public static string Anchorable_AutoHide {
+            get {
                 return ResourceManager.GetString("Anchorable_AutoHide", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   查找类似 Auto Hide 的本地化字符串。
         /// </summary>
-        public static string Anchorable_BtnAutoHide_Hint
-        {
-            get
-            {
+        public static string Anchorable_BtnAutoHide_Hint {
+            get {
                 return ResourceManager.GetString("Anchorable_BtnAutoHide_Hint", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   查找类似 Hide 的本地化字符串。
         /// </summary>
-        public static string Anchorable_BtnClose_Hint
-        {
-            get
-            {
+        public static string Anchorable_BtnClose_Hint {
+            get {
                 return ResourceManager.GetString("Anchorable_BtnClose_Hint", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   查找类似 Window Position 的本地化字符串。
         /// </summary>
-        public static string Anchorable_CxMenu_Hint
-        {
-            get
-            {
+        public static string Anchorable_CxMenu_Hint {
+            get {
                 return ResourceManager.GetString("Anchorable_CxMenu_Hint", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   查找类似 Dock 的本地化字符串。
         /// </summary>
-        public static string Anchorable_Dock
-        {
-            get
-            {
+        public static string Anchorable_Dock {
+            get {
                 return ResourceManager.GetString("Anchorable_Dock", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   查找类似 Dock as Tabbed Document 的本地化字符串。
         /// </summary>
-        public static string Anchorable_DockAsDocument
-        {
-            get
-            {
+        public static string Anchorable_DockAsDocument {
+            get {
                 return ResourceManager.GetString("Anchorable_DockAsDocument", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   查找类似 Float 的本地化字符串。
         /// </summary>
-        public static string Anchorable_Float
-        {
-            get
-            {
+        public static string Anchorable_Float {
+            get {
                 return ResourceManager.GetString("Anchorable_Float", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   查找类似 Hide 的本地化字符串。
         /// </summary>
-        public static string Anchorable_Hide
-        {
-            get
-            {
+        public static string Anchorable_Hide {
+            get {
                 return ResourceManager.GetString("Anchorable_Hide", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   查找类似 Toggle Pin status 的本地化字符串。
         /// </summary>
-        public static string Document_BtnPinned_Hint
-        {
-            get
-            {
+        public static string Document_BtnPinned_Hint {
+            get {
                 return ResourceManager.GetString("Document_BtnPinned_Hint", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   查找类似 Close 的本地化字符串。
         /// </summary>
-        public static string Document_Close
-        {
-            get
-            {
+        public static string Document_Close {
+            get {
                 return ResourceManager.GetString("Document_Close", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   查找类似 Close All 的本地化字符串。
         /// </summary>
-        public static string Document_CloseAll
-        {
-            get
-            {
+        public static string Document_CloseAll {
+            get {
                 return ResourceManager.GetString("Document_CloseAll", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   查找类似 Close All But This 的本地化字符串。
         /// </summary>
-        public static string Document_CloseAllButThis
-        {
-            get
-            {
+        public static string Document_CloseAllButThis {
+            get {
                 return ResourceManager.GetString("Document_CloseAllButThis", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   查找类似 Window Position 的本地化字符串。
         /// </summary>
-        public static string Document_CxMenu_Hint
-        {
-            get
-            {
+        public static string Document_CxMenu_Hint {
+            get {
                 return ResourceManager.GetString("Document_CxMenu_Hint", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   查找类似 Dock as Tabbed Document 的本地化字符串。
         /// </summary>
-        public static string Document_DockAsDocument
-        {
-            get
-            {
+        public static string Document_DockAsDocument {
+            get {
                 return ResourceManager.GetString("Document_DockAsDocument", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   查找类似 Float 的本地化字符串。
         /// </summary>
-        public static string Document_Float
-        {
-            get
-            {
+        public static string Document_Float {
+            get {
                 return ResourceManager.GetString("Document_Float", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   查找类似 Move To Next Tab Group 的本地化字符串。
         /// </summary>
-        public static string Document_MoveToNextTabGroup
-        {
-            get
-            {
+        public static string Document_MoveToNextTabGroup {
+            get {
                 return ResourceManager.GetString("Document_MoveToNextTabGroup", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   查找类似 Move To Previous Tab Group 的本地化字符串。
         /// </summary>
-        public static string Document_MoveToPreviousTabGroup
-        {
-            get
-            {
+        public static string Document_MoveToPreviousTabGroup {
+            get {
                 return ResourceManager.GetString("Document_MoveToPreviousTabGroup", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   查找类似 New Horizontal Tab Group 的本地化字符串。
         /// </summary>
-        public static string Document_NewHorizontalTabGroup
-        {
-            get
-            {
+        public static string Document_NewHorizontalTabGroup {
+            get {
                 return ResourceManager.GetString("Document_NewHorizontalTabGroup", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   查找类似 New Vertical Tab Group 的本地化字符串。
         /// </summary>
-        public static string Document_NewVerticalTabGroup
-        {
-            get
-            {
+        public static string Document_NewVerticalTabGroup {
+            get {
                 return ResourceManager.GetString("Document_NewVerticalTabGroup", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   查找类似 Maximize 的本地化字符串。
         /// </summary>
-        public static string Window_Maximize
-        {
-            get
-            {
+        public static string Window_Maximize {
+            get {
                 return ResourceManager.GetString("Window_Maximize", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   查找类似 Restore 的本地化字符串。
         /// </summary>
-        public static string Window_Restore
-        {
-            get
-            {
+        public static string Window_Restore {
+            get {
                 return ResourceManager.GetString("Window_Restore", resourceCulture);
             }
         }
