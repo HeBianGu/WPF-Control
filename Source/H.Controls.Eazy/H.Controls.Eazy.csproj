@@ -13,7 +13,13 @@
     </Page>
 
     <Compile Include="..\Providers\H.Providers.Ioc\LazyInstance.cs">
-      <Link>..\Providers\H.Providers.Ioc\LazyInstance.cs</Link>
+      <Link>Providers\Ioc\LazyInstance.cs</Link>
+    </Compile>
+    <Compile Include="..\Modules\H.Modules.About\AboutViewPresenter.xaml.cs">
+      <Link>Modules\About\AboutViewPresenter.xaml.cs</Link>
+    </Compile>
+    <Compile Include="..\Modules\H.Modules.About\AboutViewPresenter.xaml">
+      <Link>Modules\About\AboutViewPresenter.xaml</Link>
     </Compile>
   </ItemGroup>
 </Project>

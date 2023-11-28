@@ -1,5 +1,6 @@
 ﻿using H.Extensions.Command;
 using H.Providers.Ioc;
+using H.Providers.Ioc;
 using H.Providers.Mvvm;
 using Microsoft.Extensions.Options;
 using Microsoft.VisualBasic.FileIO;
@@ -53,7 +54,7 @@ namespace H.Modules.Login
 
         public RelayCommand LoginCommand => new RelayCommand(async (s, e) =>
         {
-            if (e is IDialogWindow dialog)
+            if (e is IDialog dialog)
             {
                 var result = await Task.Run<bool>(() =>
                  {

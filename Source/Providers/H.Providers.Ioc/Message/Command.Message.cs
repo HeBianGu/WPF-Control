@@ -6,6 +6,7 @@ using System;
 using System.Windows.Controls;
 using System.Threading;
 using System.Windows;
+using H.Providers.Ioc;
 
 namespace H.Providers.Ioc
 {
@@ -39,7 +40,7 @@ namespace H.Providers.Ioc
             return this;
         }
 
-        protected void Build(IDialogWindow w)
+        protected void Build(IDialog w)
         {
             if(w is Control c)
             {

@@ -1,5 +1,6 @@
 ﻿using H.Presenters.Common;
 using H.Providers.Ioc;
+using H.Providers.Ioc;
 using H.Themes.Default;
 using System;
 using System.ComponentModel;
@@ -13,7 +14,7 @@ using System.Windows.Markup;
 
 namespace H.Windows.Dialog
 {
-    public partial class DialogWindow : Window, ICancelable, IDialogWindow
+    public partial class DialogWindow : Window, ICancelable, IDialog
     {
         static DialogWindow()
         {
@@ -77,9 +78,9 @@ namespace H.Windows.Dialog
 
     partial class DialogWindow : Window
     {
-        public static bool? ShowMessage(string message, string title = "提示", DialogButton dialogButton = DialogButton.Sumit, Window owner = null, Action<IDialogWindow> action = null)
+        public static bool? ShowMessage(string message, string title = "提示", DialogButton dialogButton = DialogButton.Sumit, Window owner = null, Action<IDialog> action = null)
         {
-            Action<IDialogWindow> build = x =>
+            Action<IDialog> build = x =>
             {
                 if (x is DialogWindow c)
                 {

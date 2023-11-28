@@ -1,6 +1,6 @@
 ﻿using H.Presenters.Common;
 using H.Providers.Ioc;
-
+using H.Providers.Ioc;
 using H.Windows.Dialog;
 using System;
 using System.Collections.Generic;
@@ -17,13 +17,13 @@ namespace H.Modules.Messages.Dialog
 {
     public class WindowDialogMessage : IDialogMessageService, IWindowMessage
     {
-        public async Task<bool?> Show(object presenter, Action<IDialogWindow> action = null, DialogButton dialogButton = DialogButton.Sumit, string title = null, Func<bool> canSumit = null, Window owner = null)
+        public async Task<bool?> Show(object presenter, Action<IDialog> action = null, DialogButton dialogButton = DialogButton.Sumit, string title = null, Func<bool> canSumit = null, Window owner = null)
         {
             var r = DialogWindow.ShowPresenter(presenter, action, dialogButton, title, canSumit, owner);
             return await Task.FromResult(r);
         }
 
-        public async Task<bool?> ShowIoc(Type type, Func<ICancelable, bool?> action = null, Action<IDialogWindow> build = null, DialogButton dialogButton = DialogButton.Sumit, string title = null, Func<bool> canSumit = null, Window owner = null)
+        public async Task<bool?> ShowIoc(Type type, Func<ICancelable, bool?> action = null, Action<IDialog> build = null, DialogButton dialogButton = DialogButton.Sumit, string title = null, Func<bool> canSumit = null, Window owner = null)
         {
             if (action == null)
             {
@@ -38,7 +38,7 @@ namespace H.Modules.Messages.Dialog
             }
         }
 
-        public async Task<bool?> ShowIoc<T>(Func<ICancelable, T, bool?> action = null, Action<IDialogWindow> build = null, DialogButton dialogButton = DialogButton.Sumit, string title = null, Func<bool> canSumit = null, Window owner = null)
+        public async Task<bool?> ShowIoc<T>(Func<ICancelable, T, bool?> action = null, Action<IDialog> build = null, DialogButton dialogButton = DialogButton.Sumit, string title = null, Func<bool> canSumit = null, Window owner = null)
         {
             if (action == null)
             {
@@ -54,13 +54,13 @@ namespace H.Modules.Messages.Dialog
 
         }
 
-        public async Task<bool?> ShowMessage(string message, string title = "提示", DialogButton dialogButton = DialogButton.Sumit, Action<IDialogWindow> action = null, Window owner = null)
+        public async Task<bool?> ShowMessage(string message, string title = "提示", DialogButton dialogButton = DialogButton.Sumit, Action<IDialog> action = null, Window owner = null)
         {
             var r = DialogWindow.ShowMessage(message, title, dialogButton, owner, action);
             return await Task.FromResult(r);
         }
 
-        public async Task<T> ShowPercent<T>(Func<IPercentPresenter, ICancelable, T> action, Action<IDialogWindow> build = null, DialogButton dialogButton = DialogButton.Cancel, string title = null, Window owner = null)
+        public async Task<T> ShowPercent<T>(Func<IPercentPresenter, ICancelable, T> action, Action<IDialog> build = null, DialogButton dialogButton = DialogButton.Cancel, string title = null, Window owner = null)
         {
             var p = new PercentPresenter();
             var r = DialogWindow.ShowAction(p, cancel => action.Invoke(p, cancel), x =>
@@ -70,7 +70,7 @@ namespace H.Modules.Messages.Dialog
             return await Task.FromResult(r);
         }
 
-        public async Task<T> ShowString<T>(Func<IStringPresenter, ICancelable, T> action, Action<IDialogWindow> build = null, DialogButton dialogButton = DialogButton.Cancel, string title = null, Window owner = null)
+        public async Task<T> ShowString<T>(Func<IStringPresenter, ICancelable, T> action, Action<IDialog> build = null, DialogButton dialogButton = DialogButton.Cancel, string title = null, Window owner = null)
         {
             var p = new StringPresenter();
             var r = DialogWindow.ShowAction(p, cancel => action.Invoke(p, cancel), x =>
@@ -80,7 +80,7 @@ namespace H.Modules.Messages.Dialog
             return await Task.FromResult(r);
         }
 
-        public async Task<T> ShowWait<T>(Func<ICancelable, T> action, Action<IDialogWindow> build = null, DialogButton dialogButton = DialogButton.Cancel, string title = null, Window owner = null)
+        public async Task<T> ShowWait<T>(Func<ICancelable, T> action, Action<IDialog> build = null, DialogButton dialogButton = DialogButton.Cancel, string title = null, Window owner = null)
         {
             var p = new WaitPresenter();
             var r = DialogWindow.ShowAction(p, cancel => action.Invoke(cancel), x =>

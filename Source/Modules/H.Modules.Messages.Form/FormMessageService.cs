@@ -1,5 +1,6 @@
 ﻿using H.Controls.Form;
 using H.Providers.Ioc;
+using H.Providers.Ioc;
 using H.Windows.Dialog;
 using System;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ namespace H.Modules.Messages.Form
 {
     public class FormMessageService : IFormMessageService
     {
-        public async Task<bool?> ShowEdit<T>(T value, Predicate<T> match = null, Action<IDialogWindow> action = null, Action<IFormOption> option = null, string title = null, Window owner = null)
+        public async Task<bool?> ShowEdit<T>(T value, Predicate<T> match = null, Action<IDialog> action = null, Action<IFormOption> option = null, string title = null, Window owner = null)
         {
             Func<bool> canSumit = () =>
             {
@@ -25,7 +26,7 @@ namespace H.Modules.Messages.Form
             var presenter = new StaticFormPresenter(value);
             return await IocMessage.Dialog.Show(presenter, action, DialogButton.Sumit, title, canSumit, owner);
         }
-        public async Task<bool?> ShowView<T>(T value, Predicate<T> match = null, Action<IDialogWindow> action = null, Action<IFormOption> option = null, string title = null, Window owner = null)
+        public async Task<bool?> ShowView<T>(T value, Predicate<T> match = null, Action<IDialog> action = null, Action<IFormOption> option = null, string title = null, Window owner = null)
         {
             Func<bool> canSumit = () =>
             {

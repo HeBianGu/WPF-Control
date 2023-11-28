@@ -1,6 +1,6 @@
 ﻿using H.Controls.Adorner;
 using H.Providers.Ioc;
-
+using H.Providers.Ioc;
 using H.Providers.Mvvm;
 using System;
 using System.Linq;
@@ -12,7 +12,7 @@ using System.Windows.Documents;
 
 namespace H.Modules.Messages.Dialog
 {
-    public partial class AdornerDialogPresenter : DesignPresenterBase, IDialogWindow, ICancelable
+    public partial class AdornerDialogPresenter : DesignPresenterBase, IDialog, ICancelable
     {
         public AdornerDialogPresenter(object presenter)
         {
@@ -21,10 +21,8 @@ namespace H.Modules.Messages.Dialog
             this.VerticalContentAlignment = VerticalAlignment.Center;
             this.Padding = new Thickness(20);
         }
-
         public string Title { get; set; } = "提示";
         public object Presenter { get; set; }
-
         private bool _useCancel = false;
         public bool UseCancel
         {

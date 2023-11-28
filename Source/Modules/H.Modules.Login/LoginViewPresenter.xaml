@@ -40,7 +40,7 @@
                           IsChecked="{Binding Source={x:Static h:LoginOptions.Instance}, Path=Remember}" />
                 <h:ProgressButton HorizontalAlignment="Stretch"
                                   Command="{Binding LoginCommand}"
-                                  CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type h:IDialogWindow}}}"
+                                  CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type h:IDialog}}}"
                                   Content="登录" Margin="33 5 3 15"
                                   Style="{DynamicResource {x:Static h:ProgressButton.CommandKey}}" />
             </StackPanel>

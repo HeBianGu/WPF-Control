@@ -16,20 +16,15 @@ namespace H.Modules.Setting
             var setting = new SettingViewPresenter();
             var r = await IocMessage.Dialog.Show(setting, x =>
             {
-                if(x is Control c)
-                {
-                    c.Width = 800;
-                    c.Height = 500;
-                }
+                x.Width = 800;
+                x.Height = 500;
                 if (x is Window window)
                 {
-                  
                     window.SizeToContent = SizeToContent.Manual;
                     window.ResizeMode = ResizeMode.CanResize;
                     window.ShowInTaskbar = true;
                     window.VerticalContentAlignment = VerticalAlignment.Stretch;
                 }
-                  
             }, DialogButton.None);
             if (r != true)
                 return;

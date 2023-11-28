@@ -1,6 +1,7 @@
 ﻿using H.Controls.Adorner;
 using H.Presenters.Common;
 using H.Providers.Ioc;
+using H.Providers.Ioc;
 using H.Windows.Dialog;
 using System;
 using System.ComponentModel.DataAnnotations;
@@ -13,9 +14,9 @@ namespace H.Modules.Messages.Dialog
 {
     public static class AdornerDialog
     {
-        public static async Task<bool?> ShowMessage(string message, string title = "提示", DialogButton dialogButton = DialogButton.Sumit, Window owner = null, Action<IDialogWindow> action = null)
+        public static async Task<bool?> ShowMessage(string message, string title = "提示", DialogButton dialogButton = DialogButton.Sumit, Window owner = null, Action<IDialog> action = null)
         {
-            Action<IDialogWindow> build = x =>
+            Action<IDialog> build = x =>
             {
                 if (x is AdornerDialogPresenter c)
                 {
@@ -39,6 +40,7 @@ namespace H.Modules.Messages.Dialog
             dialog.MinWidth = 500;
             dialog.CanSumit = canSumit;
             action?.Invoke(dialog);
+            dialog.RefreshButton(dialogButton);
             return await dialog.ShowDialog();
         }
 
