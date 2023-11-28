@@ -14,7 +14,7 @@ namespace System
         /// <param name="service"></param>
         public static void AddWindowDialogMessage(this IServiceCollection services)
         {
-            services.AddSingleton<IDialogMessageService, WindowDialogMessage>();
+            services.AddSingleton<IDialogMessageService, WindowDialogMessageService>();
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace System
         /// <param name="service"></param>
         public static void AddWindowMessage(this IServiceCollection services)
         {
-            services.AddSingleton<IWindowMessage, WindowDialogMessage>();
+            services.AddSingleton<IWindowDialogMessageService, WindowDialogMessageService>();
         }
     }
 }

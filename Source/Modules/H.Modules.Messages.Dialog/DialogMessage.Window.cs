@@ -15,7 +15,7 @@ using System.Windows.Markup;
 
 namespace H.Modules.Messages.Dialog
 {
-    public class WindowDialogMessage : IDialogMessageService, IWindowMessage
+    public class WindowDialogMessageService : IDialogMessageService, IWindowDialogMessageService
     {
         public async Task<bool?> Show(object presenter, Action<IDialog> action = null, DialogButton dialogButton = DialogButton.Sumit, string title = null, Func<bool> canSumit = null, Window owner = null)
         {

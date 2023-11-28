@@ -1,7 +1,6 @@
 ﻿
 using H.Presenters.Common;
 using H.Providers.Ioc;
-using H.Providers.Ioc;
 using H.Windows.Dialog;
 using System;
 using System.Collections.Generic;
@@ -16,7 +15,7 @@ using System.Windows.Markup;
 
 namespace H.Modules.Messages.Dialog
 {
-    public class AdornerDialogMessageService : IDialogMessageService
+    public class AdornerDialogMessageService : IDialogMessageService, IAdornerDialogMessageService
     {
         public async Task<bool?> Show(object presenter, Action<IDialog> action = null, DialogButton dialogButton = DialogButton.Sumit, string title = null, Func<bool> canSumit = null, Window owner = null)
         {
@@ -33,7 +32,7 @@ namespace H.Modules.Messages.Dialog
             else
             {
                 var presenter = Ioc.Services.GetService(type);
-                return await AdornerDialog.ShowAction(presenter, action, build, dialogButton, title, owner);  
+                return await AdornerDialog.ShowAction(presenter, action, build, dialogButton, title, owner);
             }
         }
 

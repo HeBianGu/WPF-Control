@@ -7,26 +7,14 @@ namespace H.Providers.Ioc
 {
     public static class IocMessage
     {
-        public static IWindowMessage Window => System.Ioc.GetService<IWindowMessage>(throwIfNone: false);
+        public static IAdornerDialogMessageService Adorner => System.Ioc.GetService<IAdornerDialogMessageService>(throwIfNone: false);
+        public static IWindowDialogMessageService Window => System.Ioc.GetService<IWindowDialogMessageService>(throwIfNone: false);
         public static IDialogMessageService Dialog => System.Ioc.GetService<IDialogMessageService>(throwIfNone: false);
         public static ISnackMessageService Snack => System.Ioc.GetService<ISnackMessageService>(throwIfNone: false);
         public static ITaskBarMessage TaskBar => System.Ioc.GetService<ITaskBarMessage>(throwIfNone: false);
         public static ISystemNotifyMessage SystemNotify => System.Ioc.GetService<ISystemNotifyMessage>(throwIfNone: false);
         public static INoticeMessageService Notify => System.Ioc.GetService<INoticeMessageService>(throwIfNone: false);
         public static IFormMessageService Form => System.Ioc.GetService<IFormMessageService>(throwIfNone: false);
-
-        //public static void ShowMessage(string message, string title = "提示")
-        //{
-        //    if (Dialog == null)
-        //    {
-        //        MessageBox.Show(message, title);
-        //        return;
-        //    }
-        //    else
-        //    {
-        //        Dialog.ShowMessage(message, title);
-        //    }
-        //}
 
         public static bool? ShowDialogMessage(string message, string title = "提示", DialogButton dialogButton = DialogButton.Sumit)
         {
@@ -50,7 +38,7 @@ namespace H.Providers.Ioc
             }
         }
 
-        public static bool? ShowWindowgMessage(string message, string title = "提示", DialogButton dialogButton = DialogButton.Sumit)
+        public static bool? ShowWindowMessage(string message, string title = "提示", DialogButton dialogButton = DialogButton.Sumit)
         {
             if (Window == null)
             {
