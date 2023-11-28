@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net7.0-windows</TargetFramework>
+
     <UseWPF>true</UseWPF>
     <ApplicationIcon>logo.ico</ApplicationIcon>
     <Product>H大师</Product>
@@ -23,7 +23,6 @@
     <ProjectReference Include="..\..\Extensions\H.Extensions.ApplicationBase\H.Extensions.ApplicationBase.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Login\H.Modules.Login.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Messages.Dialog\H.Modules.Messages.Dialog.csproj" />
-    <ProjectReference Include="..\..\Modules\H.Modules.Message\H.Modules.Message.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Setting\H.Modules.Setting.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.SplashScreen\H.Modules.SplashScreen.csproj" />
     <ProjectReference Include="..\..\Styles\H.Styles.Default\H.Styles.Default.csproj" />

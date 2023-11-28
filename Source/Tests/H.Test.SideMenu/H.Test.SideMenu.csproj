@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net7.0-windows</TargetFramework>
+
     <UseWPF>true</UseWPF>
     <ApplicationIcon>logo.ico</ApplicationIcon>
   </PropertyGroup>
@@ -20,7 +20,6 @@
     <ProjectReference Include="..\..\Extensions\H.Extensions.Behvaiors\H.Extensions.Behvaiors.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Geometry\H.Extensions.Geometry.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Messages.Dialog\H.Modules.Messages.Dialog.csproj" />
-    <ProjectReference Include="..\..\Modules\H.Modules.Message\H.Modules.Message.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Setting\H.Modules.Setting.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.SplashScreen\H.Modules.SplashScreen.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Default\H.Themes.Default.csproj" />

@@ -1,14 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-
     <UseWPF>true</UseWPF>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="Calendar.xaml~RF6c75702.TMP" />
-  </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\Extensions\H.Extensions.TypeConverter\H.Extensions.TypeConverter.csproj" />
   </ItemGroup>
