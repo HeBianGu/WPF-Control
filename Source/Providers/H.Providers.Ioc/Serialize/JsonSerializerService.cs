@@ -2,10 +2,13 @@
 
 using System;
 using System.IO;
+using System.Reflection;
 using System.Text.Json;
+using System.Xml;
 
 namespace H.Providers.Ioc
 {
+
     public class JsonSerializerService : ISerializerService
     {
         public object CloneXml(object o)

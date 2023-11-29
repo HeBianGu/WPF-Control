@@ -1,0 +1,15 @@
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+
+using System;
+using System.Reflection;
+using System.Xml;
+
+namespace H.Providers.Ioc
+{
+    public interface IXmlable
+    {
+        void FromXml(XmlElement xmlEle, XmlDocument cnt, Func<PropertyInfo, object, bool> match = null);
+
+        void ToXml(XmlElement xmlEle, XmlDocument cnt, Func<PropertyInfo, object, bool> match = null);
+    }
+}

@@ -98,7 +98,6 @@ namespace H.Providers.Mvvm
         //public virtual string ID { get; set; }
 
         private string _id;
-        [JsonIgnore]
         [Browsable(false)]
         public virtual string ID
         {

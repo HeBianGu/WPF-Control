@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Modules.Messages.Dialog">
     <DataTemplate DataType="{x:Type local:AdornerDialogPresenter}">
@@ -13,6 +14,9 @@
                   MinHeight="{Binding MinHeight}"
                   HorizontalAlignment="{Binding HorizontalContentAlignment}"
                   VerticalAlignment="{Binding VerticalContentAlignment}">
+                <b:Interaction.Behaviors>
+                    <b:MouseDragElementBehavior ConstrainToParentBounds="True" />
+                </b:Interaction.Behaviors>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition />

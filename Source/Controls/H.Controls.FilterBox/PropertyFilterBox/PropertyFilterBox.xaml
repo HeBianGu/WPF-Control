@@ -22,7 +22,7 @@
                                               Style="{DynamicResource {x:Static h:ToggleButtonKeys.Geometry}}" />
                                 <Button x:Name="PART_Button"
                                         Margin="1,0"
-                                        Content="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=PropertyConfidtions.SelectedItem.ID,FallbackValue=数据过滤器}" />
+                                        Content="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=PropertyConfidtions.SelectedItem.ID, FallbackValue=数据过滤器}" />
                             </DockPanel>
 
                             <Popup Height="Auto"

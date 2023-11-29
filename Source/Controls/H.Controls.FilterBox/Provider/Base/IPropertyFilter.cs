@@ -11,7 +11,7 @@ namespace H.Controls.FilterBox
         bool IsSelected { get; set; }
         string Name { get; set; }
         FilterOperate Operate { get; set; }
-        //PropertyInfo PropertyInfo { get; set; }
+        PropertyInfo PropertyInfo { get; set; }
         //void SetValue(object value);
         //object GetValue();
         IFilter Copy();

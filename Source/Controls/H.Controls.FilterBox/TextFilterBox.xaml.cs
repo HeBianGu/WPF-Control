@@ -11,7 +11,7 @@ using System.Windows.Controls;
 
 namespace H.Controls.FilterBox
 {
-    public class TextFilterBox : TextBox, IDisplayFilterBox
+    public class TextFilterBox : TextBox
     {
         static TextFilterBox()
         {

@@ -1,4 +1,15 @@
-﻿using H.Providers.Ioc;
+﻿
+/* 项目“H.Controls.FilterBox (net6.0-windows)”的未合并的更改
+在此之前:
+using H.Providers.Ioc;
+在此之后:
+using H;
+using H.Controls;
+using H.Controls.FilterBox;
+using H.Controls.FilterBox;
+using H.Providers.Ioc;
+*/
+using H.Providers.Ioc;
 using H.Providers.Ioc;
 using System;
 using System.Collections.Generic;
@@ -21,7 +32,7 @@ namespace H.Controls.FilterBox
 {
     [TemplatePart(Name = "PART_Button")]
     [TemplatePart(Name = "PART_Selector")]
-    public class PropertyFilterBox : Control, IDisplayFilterBox
+    public class PropertyFilterBox : Control
     {
         private PropertyConfidtionsPrensenter _propertyConfidtions;
         public PropertyConfidtionsPrensenter PropertyConfidtions => _propertyConfidtions;
@@ -34,26 +45,29 @@ namespace H.Controls.FilterBox
 
         public PropertyFilterBox()
         {
-            this.Filter = new PropertyFilterBoxFilter(this);
+            Filter = new PropertyFilterBoxFilter(this);
+            ID = GetType().Name;
         }
+
+        public string ID { get; set; }
 
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
 
-            _button = this.Template.FindName("PART_Button", this) as Button;
+            _button = Template.FindName("PART_Button", this) as Button;
             _button.Click += (l, k) =>
             {
-                this.ShowConfig();
+                ShowConfig();
             };
 
-            _selector = this.Template.FindName("PART_Selector", this) as Selector;
+            _selector = Template.FindName("PART_Selector", this) as Selector;
             _selector.SelectionChanged += (l, k) =>
             {
                 if (l is Popup popup && popup.IsOpen == false)
                     return;
-                this.OnSelectedChanged();
-                this.Save();
+                OnSelectedChanged();
+                Save();
             };
         }
 
@@ -166,13 +180,13 @@ namespace H.Controls.FilterBox
             EventManager.RegisterRoutedEvent("SelectedChanged", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(PropertyFilterBox));
         public event RoutedEventHandler SelectedChanged
         {
-            add { this.AddHandler(SelectedChangedRoutedEvent, value); }
-            remove { this.RemoveHandler(SelectedChangedRoutedEvent, value); }
+            add { AddHandler(SelectedChangedRoutedEvent, value); }
+            remove { RemoveHandler(SelectedChangedRoutedEvent, value); }
         }
         protected void OnSelectedChanged()
         {
             RoutedEventArgs args = new RoutedEventArgs(SelectedChangedRoutedEvent, this);
-            this.RaiseEvent(args);
+            RaiseEvent(args);
         }
 
         void RefreshType(Type type)
@@ -181,13 +195,13 @@ namespace H.Controls.FilterBox
                 return;
             Func<PropertyInfo, bool> predicate = x =>
             {
-                return this.PropertyNames?.Split(',').Contains(x.Name) != false;
+                return PropertyNames?.Split(',').Contains(x.Name) != false;
             };
-            this._propertyConfidtions = new PropertyConfidtionsPrensenter(type, predicate)
+            _propertyConfidtions = new PropertyConfidtionsPrensenter(type, predicate)
             {
-                ID = type.Name
+                ID = ID
             };
-            this._propertyConfidtions.Load();
+            _propertyConfidtions.Load();
         }
 
 
@@ -202,7 +216,7 @@ namespace H.Controls.FilterBox
             }, DialogButton.Sumit, "数据过滤器");
             if (r == true)
             {
-                this.Save();
+                Save();
                 IocMessage.Snack?.ShowInfo("保存成功");
             }
         }
@@ -210,7 +224,7 @@ namespace H.Controls.FilterBox
         void Save()
         {
             _propertyConfidtions.Save();
-            this.Filter = new PropertyFilterBoxFilter(this);
+            Filter = new PropertyFilterBoxFilter(this);
         }
     }
 
