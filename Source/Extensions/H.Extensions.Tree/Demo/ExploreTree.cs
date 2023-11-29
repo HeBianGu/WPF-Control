@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Security.AccessControl;
 
-namespace H.Extensions.Tree
+namespace H.Extensions.Tree.Demo
 {
     public class ExploreTree : ITree, IParent
     {
@@ -15,13 +15,13 @@ namespace H.Extensions.Tree
         {
             if (parent == null)
             {
-                if (!Directory.Exists(this.Root))
+                if (!Directory.Exists(Root))
                     return DriveInfo.GetDrives();
-                return new DirectoryInfo[] { new DirectoryInfo(this.Root) };
+                return new DirectoryInfo[] { new DirectoryInfo(Root) };
             }
 
             if (parent is DriveInfo drive)
-                return drive.RootDirectory.GetFileSystemInfos(this.SearchPattern,SearchOption);
+                return drive.RootDirectory.GetFileSystemInfos(SearchPattern, SearchOption);
 
             if (parent is DirectoryInfo directory)
             {

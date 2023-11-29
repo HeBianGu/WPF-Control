@@ -37,7 +37,7 @@ namespace H.Extensions.Tree
                     if (node.Nodes.Count > 0)
                         continue;
 
-                    var chidren = TreeDataProvider.Instance.GetTreeNodes(node.Model, this.Tree, false);
+                    var chidren = this.Tree.GetTreeNodes(node.Model, false);
                     node.Nodes = new ObservableCollection<TreeNodeBase<object>>(chidren);
                     System.Diagnostics.Debug.WriteLine(node.Nodes.Count);
                     node.IsLoaded= true;

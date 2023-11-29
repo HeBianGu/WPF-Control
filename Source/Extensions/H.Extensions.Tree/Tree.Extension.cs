@@ -5,28 +5,28 @@ using System.Collections.ObjectModel;
 
 namespace H.Extensions.Tree
 {
-    public class TreeDataProvider : LazyInstance<TreeDataProvider>
+    public static class TreeExtension
     {
-        public IEnumerable<ITreeNode> GetTreeNodes(ITree tree, bool isRecursion = true)
+        public static IEnumerable<ITreeNode> GetTreeNodes(this ITree tree, bool isRecursion = true)
         {
             var roots = tree.GetChildren(null);
             foreach (var root in roots)
             {
                 var rootNode = new TreeNodeBase<object>(root);
-                var childrenNodes = this.GetTreeNodes(root, tree, isRecursion);
+                var childrenNodes = tree.GetTreeNodes(root, isRecursion);
                 rootNode.Nodes = new ObservableCollection<TreeNodeBase<object>>(childrenNodes);
                 yield return rootNode;
             }
         }
 
-        public IEnumerable<TreeNodeBase<object>> GetTreeNodes(object parent, ITree tree, bool isRecursion = true)
+        public static IEnumerable<TreeNodeBase<object>> GetTreeNodes(this ITree tree, object parent, bool isRecursion = true)
         {
             foreach (var item in tree.GetChildren(parent))
             {
                 var rootNode = new TreeNodeBase<object>(item);
                 if (isRecursion)
                 {
-                    var childrenNodes = this.GetTreeNodes(item, tree);
+                    var childrenNodes = tree.GetTreeNodes(item);
                     rootNode.Nodes = new ObservableCollection<TreeNodeBase<object>>(childrenNodes);
                 }
                 yield return rootNode;
