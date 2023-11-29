@@ -11,6 +11,7 @@
     <ProjectReference Include="..\..\Controls\H.Controls.FilterBox\H.Controls.FilterBox.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.GridSplitterBox\H.Controls.GridSplitterBox.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.HorseTextBlock\H.Controls.HorseTextBlock.csproj" />
+    <ProjectReference Include="..\..\Controls\H.Controls.OrderBox\H.Controls.OrderBox.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.PropertyGrid\H.Controls.PropertyGrid.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.ZoomBox\H.Controls.ZoomBox.csproj" />
     <ProjectReference Include="..\..\Datas\H.Data.Test\H.Data.Test.csproj" />

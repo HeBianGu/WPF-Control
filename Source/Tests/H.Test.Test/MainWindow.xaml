@@ -259,6 +259,23 @@
                     </DataGrid>
                 </DockPanel>
             </TabItem>
+
+            <TabItem Header="OrderBox">
+                <DockPanel>
+                    <DockPanel DockPanel.Dock="Top" LastChildFill="False">
+                        <h:PropertyOrderBox x:Name="ob"
+                                             Margin="5"
+                                             Type="{x:Type h:Student}" />
+                    </DockPanel>
+                    <DataGrid>
+                        <Behaviors:Interaction.Behaviors>
+                            <h:DataGridAutoColumnBehavior DataGridLength="*" Type="{x:Type h:Student}" />
+                            <h:ItemsControlFilterBehavior Order="{Binding ElementName=ob, Path=Order}"
+                                                          ItemsSource="{Binding Students}" />
+                        </Behaviors:Interaction.Behaviors>
+                    </DataGrid>
+                </DockPanel>
+            </TabItem>
             <TabItem Header="ZoomViewbox">
                 <DockPanel>
                     <!--<h:PropertyGrid Width="300"

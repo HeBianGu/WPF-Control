@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Markup;
 
-namespace H.Extensions.Tree.Demo
+namespace H.Extensions.Tree
 {
     public class ExploreTreeDataProviderExtension : MarkupExtension
     {
@@ -9,8 +9,11 @@ namespace H.Extensions.Tree.Demo
         public bool IsRecursion { get; set; } = false;
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
-            var tree = new ExploreTree() { Root = Root };
-            var result = tree.GetTreeNodes(tree, IsRecursion);
+            var tree = new ExploreTree() 
+            { 
+                Root = Root 
+            };
+            var result = tree.GetTreeNodes(IsRecursion);
             return result;
         }
     }

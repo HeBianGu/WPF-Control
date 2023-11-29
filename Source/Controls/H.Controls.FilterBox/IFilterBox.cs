@@ -6,9 +6,4 @@ namespace H.Controls.FilterBox
     {
         IFilter Filter { get; }
     }
-
-    public interface IDisplayFilterBox : IFilterBox
-    {
-        string DisplayName { get; }
-    }
 }

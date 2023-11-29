@@ -10,5 +10,7 @@ namespace H.Extensions.ViewModel
         int PageIndex { get; set; }
         int Total { get; set; }
         int TotalPage { get; set; }
+        int Count { get; }
+        int SelectedIndex { get; set; }
     }
 }

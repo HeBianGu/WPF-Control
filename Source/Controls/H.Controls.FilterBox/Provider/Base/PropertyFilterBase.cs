@@ -46,7 +46,7 @@ namespace H.Controls.FilterBox
                 RaisePropertyChanged("SelectedSource");
             }
         }
-     
+
         private PropertyInfo _propertyInfo;
         [XmlIgnore]
         public PropertyInfo PropertyInfo
@@ -185,10 +185,5 @@ namespace H.Controls.FilterBox
         public abstract bool IsMatch(object obj);
 
         public abstract IFilter Copy();
-
-        //public void SetValue(object value)
-        //{
-        //    this.Value = value.TryChangeType<T>();
-        //}
     }
 }

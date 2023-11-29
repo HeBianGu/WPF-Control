@@ -196,7 +196,7 @@ namespace H.Extensions.Behvaiors
                 {
 
                 }
-
+                control.RefreshData();
             }));
 
 
@@ -223,7 +223,7 @@ namespace H.Extensions.Behvaiors
                 {
 
                 }
-
+                control.RefreshData();
             }));
 
 
@@ -250,7 +250,7 @@ namespace H.Extensions.Behvaiors
                 {
 
                 }
-
+                control.RefreshData();
             }));
 
 
@@ -277,7 +277,7 @@ namespace H.Extensions.Behvaiors
                 {
 
                 }
-
+                control.RefreshData();
             }));
 
 
@@ -304,18 +304,195 @@ namespace H.Extensions.Behvaiors
                 {
 
                 }
+                control.RefreshData();
+            }));
 
+
+
+        public IOrder Order
+        {
+            get { return (IOrder)GetValue(OrderProperty); }
+            set { SetValue(OrderProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty OrderProperty =
+            DependencyProperty.Register("Order", typeof(IOrder), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrder), (d, e) =>
+            {
+                ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
+
+                if (control == null) return;
+
+                if (e.OldValue is IOrder o)
+                {
+
+                }
+
+                if (e.NewValue is IOrder n)
+                {
+
+                }
+                control.RefreshData();
+            }));
+
+
+        public IOrder Order2
+        {
+            get { return (IOrder)GetValue(Order2Property); }
+            set { SetValue(Order2Property, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty Order2Property =
+            DependencyProperty.Register("Order2", typeof(IOrder), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrder), (d, e) =>
+            {
+                ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
+
+                if (control == null) return;
+
+                if (e.OldValue is IOrder o)
+                {
+
+                }
+
+                if (e.NewValue is IOrder n)
+                {
+
+                }
+                control.RefreshData();
+            }));
+
+
+        public IOrder Order1
+        {
+            get { return (IOrder)GetValue(Order1Property); }
+            set { SetValue(Order1Property, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty Order1Property =
+            DependencyProperty.Register("Order1", typeof(IOrder), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrder), (d, e) =>
+            {
+                ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
+
+                if (control == null) return;
+
+                if (e.OldValue is IOrder o)
+                {
+
+                }
+
+                if (e.NewValue is IOrder n)
+                {
+
+                }
+                control.RefreshData();
+            }));
+
+
+        public IOrder Order3
+        {
+            get { return (IOrder)GetValue(Order3Property); }
+            set { SetValue(Order3Property, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty Order3Property =
+            DependencyProperty.Register("Order3", typeof(IOrder), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrder), (d, e) =>
+            {
+                ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
+
+                if (control == null) return;
+
+                if (e.OldValue is IOrder o)
+                {
+
+                }
+
+                if (e.NewValue is IOrder n)
+                {
+
+                }
+                control.RefreshData();
+            }));
+
+
+        public IOrder Order4
+        {
+            get { return (IOrder)GetValue(Order4Property); }
+            set { SetValue(Order4Property, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty Order4Property =
+            DependencyProperty.Register("Order4", typeof(IOrder), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrder), (d, e) =>
+            {
+                ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
+
+                if (control == null) return;
+
+                if (e.OldValue is IOrder o)
+                {
+
+                }
+
+                if (e.NewValue is IOrder n)
+                {
+
+                }
+                control.RefreshData();
+            }));
+
+
+        public IOrder Order5
+        {
+            get { return (IOrder)GetValue(Order5Property); }
+            set { SetValue(Order5Property, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty Order5Property =
+            DependencyProperty.Register("Order5", typeof(IOrder), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrder), (d, e) =>
+            {
+                ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
+
+                if (control == null) return;
+
+                if (e.OldValue is IOrder o)
+                {
+
+                }
+
+                if (e.NewValue is IOrder n)
+                {
+
+                }
+                control.RefreshData();
             }));
 
 
 
         private IEnumerable<IFilter> GetFilters()
         {
-            yield return Filter;
-            yield return Filter1;
-            yield return Filter2;
-            yield return Filter3;
-            yield return Filter4;
+            yield return this.Filter;
+            yield return this.Filter1;
+            yield return this.Filter2;
+            yield return this.Filter3;
+            yield return this.Filter4;
+            yield return this.Filter5;
+            yield return this.Filter6;
+            yield return this.Filter7;
+            yield return this.Filter8;
+            yield return this.Filter9;
+        }
+        private IEnumerable<IOrder> GetOrders()
+        {
+            yield return this.Order;
+            yield return this.Order1;
+            yield return this.Order2;
+            yield return this.Order3;
+            yield return this.Order4;
+            yield return this.Order5;
         }
 
         private void RefreshData()
@@ -324,14 +501,18 @@ namespace H.Extensions.Behvaiors
                 return;
             if (this.AssociatedObject == null)
                 return;
-            var filters = this.GetFilters().Where(x => x != null).ToList();
-            if (filters.Count == 0)
-                this.AssociatedObject.ItemsSource = this.ItemsSource;
-            else
-                this.AssociatedObject.ItemsSource = this.ItemsSource.OfType<object>().Where(x => filters.All(l => l.IsMatch(x)));
+            var filters = this.GetFilters().Where(x => x != null);
+            var source = filters.Count() == 0 ? this.ItemsSource
+                : this.ItemsSource.OfType<object>().Where(x => filters.All(l => l.IsMatch(x)));
+            var orders = this.GetOrders().ToList();
+            foreach (var item in orders)
+            {
+                if (item == null)
+                    continue;
+                source = item.Where(source);
+            }
+            this.AssociatedObject.ItemsSource = source;
         }
-
-
 
         protected override void OnAttached()
         {

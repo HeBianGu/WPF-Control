@@ -1,6 +1,6 @@
 ﻿using H.Providers.Ioc;
-using H.Providers.Ioc;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -17,26 +17,28 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace H.Controls.FilterBox
+namespace H.Controls.OrderBox
 {
     [TemplatePart(Name = "PART_Button")]
     [TemplatePart(Name = "PART_Selector")]
-    public class PropertyFilterBox : Control, IDisplayFilterBox
+    public class PropertyOrderBox : Control
     {
-        private PropertyConfidtionsPrensenter _propertyConfidtions;
-        public PropertyConfidtionsPrensenter PropertyConfidtions => _propertyConfidtions;
+        private PropertyOrdersPrensenter _propertyOrders;
+        public PropertyOrdersPrensenter PropertyOrders => _propertyOrders;
         private Button _button = null;
         private Selector _selector = null;
-        static PropertyFilterBox()
+        static PropertyOrderBox()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(PropertyFilterBox), new FrameworkPropertyMetadata(typeof(PropertyFilterBox)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(PropertyOrderBox), new FrameworkPropertyMetadata(typeof(PropertyOrderBox)));
         }
 
-        public PropertyFilterBox()
+        public PropertyOrderBox()
         {
-            this.Filter = new PropertyFilterBoxFilter(this);
+            this.ID = this.GetType().Name;
+            this.Order = new PropertyOrderBoxOrder(this);
         }
 
+        public string ID { get; set; }
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -66,9 +68,9 @@ namespace H.Controls.FilterBox
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty DisplayNameProperty =
-            DependencyProperty.Register("DisplayName", typeof(string), typeof(PropertyFilterBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
+            DependencyProperty.Register("DisplayName", typeof(string), typeof(PropertyOrderBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
             {
-                PropertyFilterBox control = d as PropertyFilterBox;
+                PropertyOrderBox control = d as PropertyOrderBox;
 
                 if (control == null) return;
 
@@ -91,9 +93,9 @@ namespace H.Controls.FilterBox
         }
 
         public static readonly DependencyProperty TypeProperty =
-            DependencyProperty.Register("Type", typeof(Type), typeof(PropertyFilterBox), new FrameworkPropertyMetadata(default(Type), (d, e) =>
+            DependencyProperty.Register("Type", typeof(Type), typeof(PropertyOrderBox), new FrameworkPropertyMetadata(default(Type), (d, e) =>
             {
-                PropertyFilterBox control = d as PropertyFilterBox;
+                PropertyOrderBox control = d as PropertyOrderBox;
 
                 if (control == null) return;
 
@@ -108,25 +110,25 @@ namespace H.Controls.FilterBox
                 }
             }));
 
-        public IFilter Filter
+        public IOrder Order
         {
-            get { return (IFilter)GetValue(FilterProperty); }
-            private set { SetValue(FilterProperty, value); }
+            get { return (IOrder)GetValue(OrderProperty); }
+            private set { SetValue(OrderProperty, value); }
         }
 
-        public static readonly DependencyProperty FilterProperty =
-            DependencyProperty.Register("Filter", typeof(IFilter), typeof(PropertyFilterBox), new FrameworkPropertyMetadata(default(IFilter), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, (d, e) =>
+        public static readonly DependencyProperty OrderProperty =
+            DependencyProperty.Register("Order", typeof(IOrder), typeof(PropertyOrderBox), new FrameworkPropertyMetadata(default(IOrder), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, (d, e) =>
             {
-                PropertyFilterBox control = d as PropertyFilterBox;
+                PropertyOrderBox control = d as PropertyOrderBox;
 
                 if (control == null) return;
 
-                if (e.OldValue is IFilter o)
+                if (e.OldValue is IOrder o)
                 {
 
                 }
 
-                if (e.NewValue is IFilter n)
+                if (e.NewValue is IOrder n)
                 {
 
                 }
@@ -142,9 +144,9 @@ namespace H.Controls.FilterBox
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty PropertyNamesProperty =
-            DependencyProperty.Register("PropertyNames", typeof(string), typeof(PropertyFilterBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
+            DependencyProperty.Register("PropertyNames", typeof(string), typeof(PropertyOrderBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
             {
-                PropertyFilterBox control = d as PropertyFilterBox;
+                PropertyOrderBox control = d as PropertyOrderBox;
 
                 if (control == null) return;
 
@@ -163,7 +165,7 @@ namespace H.Controls.FilterBox
 
 
         public static readonly RoutedEvent SelectedChangedRoutedEvent =
-            EventManager.RegisterRoutedEvent("SelectedChanged", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(PropertyFilterBox));
+            EventManager.RegisterRoutedEvent("SelectedChanged", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(PropertyOrderBox));
         public event RoutedEventHandler SelectedChanged
         {
             add { this.AddHandler(SelectedChangedRoutedEvent, value); }
@@ -183,23 +185,23 @@ namespace H.Controls.FilterBox
             {
                 return this.PropertyNames?.Split(',').Contains(x.Name) != false;
             };
-            this._propertyConfidtions = new PropertyConfidtionsPrensenter(type, predicate)
+            this._propertyOrders = new PropertyOrdersPrensenter(type, predicate)
             {
-                ID = type.Name
+                ID = this.ID
             };
-            this._propertyConfidtions.Load();
+            this._propertyOrders.Load();
         }
 
 
         public async void ShowConfig()
         {
-            var r = await IocMessage.Dialog.Show(_propertyConfidtions, x =>
+            var r = await IocMessage.Dialog.Show(_propertyOrders, x =>
             {
                 if (x is Control control)
                 {
                     control.MinWidth = 900;
                 }
-            }, DialogButton.Sumit, "数据过滤器");
+            }, DialogButton.Sumit, "数据排序器");
             if (r == true)
             {
                 this.Save();
@@ -209,27 +211,8 @@ namespace H.Controls.FilterBox
 
         void Save()
         {
-            _propertyConfidtions.Save();
-            this.Filter = new PropertyFilterBoxFilter(this);
-        }
-    }
-
-
-    public class PropertyFilterBoxFilter : IDisplayFilter
-    {
-        PropertyFilterBox _propertyFilter;
-        public PropertyFilterBoxFilter(PropertyFilterBox propertyFilter)
-        {
-            _propertyFilter = propertyFilter;
-        }
-
-        public string DisplayName => _propertyFilter.DisplayName;
-
-        public bool IsMatch(object obj)
-        {
-            if (_propertyFilter.PropertyConfidtions == null)
-                return true;
-            return _propertyFilter.PropertyConfidtions.IsMatch(obj);
+            _propertyOrders.Save();
+            this.Order = new PropertyOrderBoxOrder(this);
         }
     }
 }

@@ -16,7 +16,7 @@ using System.Windows.Controls.Primitives;
 using H.Providers.Mvvm;
 using H.Providers.Ioc;
 using H.Extensions.TypeConverter;
-
+using H.Providers.Ioc;
 
 namespace H.Controls.FilterBox
 {
@@ -112,7 +112,7 @@ namespace H.Controls.FilterBox
         }
 
         [XmlIgnore]
-        public IMetaSettingService MetaSettingService => Ioc.GetService<IMetaSettingService>(false);
+        public IMetaSettingService MetaSettingService => new JsonMetaSettingService();
 
         public void Save()
         {
@@ -240,7 +240,7 @@ namespace H.Controls.FilterBox
         }
 
         [XmlIgnore]
-        public IMetaSettingService MetaSettingService => Ioc.GetService<IMetaSettingService>(false);
+        public IMetaSettingService MetaSettingService => new JsonMetaSettingService();
 
         bool _loaded = false;
         public void Load()

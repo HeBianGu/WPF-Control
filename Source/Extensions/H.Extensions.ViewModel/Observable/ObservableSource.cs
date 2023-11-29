@@ -8,12 +8,13 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Threading;
 
 namespace H.Extensions.ViewModel
 {
 
-    public class ObservableSource<T> : NotifyPropertyChanged, IObservableSource, IObservableSource<T>
+    public class ObservableSource<T> : NotifyPropertyChanged, IObservableSource<T>
     {
         public int Count => this.Cache.Count;
         private ObservableCollection<T> _cache = new ObservableCollection<T>();
@@ -157,8 +158,8 @@ namespace H.Extensions.ViewModel
         }
 
 
-        private IDisplayFilter _filter1;
-        public IDisplayFilter Filter1
+        private IFilter _filter1;
+        public IFilter Filter1
         {
             get { return _filter1; }
             set
@@ -213,6 +214,43 @@ namespace H.Extensions.ViewModel
             {
                 _filter5 = value;
                 RaisePropertyChanged();
+                this.RefreshPage();
+            }
+        }
+
+        private IOrder _order1;
+        public IOrder Order1
+        {
+            get { return _order1; }
+            set
+            {
+                _order1 = value;
+                RaisePropertyChanged();
+                this.RefreshPage();
+            }
+        }
+
+        private IOrder _order2;
+        public IOrder Order2
+        {
+            get { return _order2; }
+            set
+            {
+                _order2 = value;
+                RaisePropertyChanged();
+                this.RefreshPage();
+            }
+        }
+
+        private IOrder _order3;
+        public IOrder Order3
+        {
+            get { return _order3; }
+            set
+            {
+                _order3 = value;
+                RaisePropertyChanged();
+                this.RefreshPage();
             }
         }
 
@@ -224,6 +262,14 @@ namespace H.Extensions.ViewModel
                 Where(x => this.Filter3?.IsMatch(x) != false).
                 Where(x => this.Filter4?.IsMatch(x) != false).
                 Where(x => this.Filter5?.IsMatch(x) != false);
+
+            if (this.Order1 != null)
+                where = this.Order1.Where(where);
+            if (this.Order2 != null)
+                where = this.Order2.Where(where);
+            if (this.Order2 != null)
+                where = this.Order3.Where(where);
+
             this.FilterSource = where.ToObservable();
             this.Total = this.FilterSource.Count;
             int min = (this.PageIndex - 1) * this.PageCount;

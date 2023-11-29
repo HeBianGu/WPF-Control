@@ -205,6 +205,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Modules.Guide", "..\Sourc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Test.Guide", "..\Source\Tests\H.Test.Guide\H.Test.Guide.csproj", "{A3B51C52-71FC-44F1-8E91-B0721B4826D6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Controls.OrderBox", "..\Source\Controls\H.Controls.OrderBox\H.Controls.OrderBox.csproj", "{15FF8370-DA69-4CAF-BA8E-CCD84947F7EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -563,6 +565,10 @@ Global
 		{A3B51C52-71FC-44F1-8E91-B0721B4826D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3B51C52-71FC-44F1-8E91-B0721B4826D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3B51C52-71FC-44F1-8E91-B0721B4826D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15FF8370-DA69-4CAF-BA8E-CCD84947F7EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15FF8370-DA69-4CAF-BA8E-CCD84947F7EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15FF8370-DA69-4CAF-BA8E-CCD84947F7EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15FF8370-DA69-4CAF-BA8E-CCD84947F7EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -658,6 +664,7 @@ Global
 		{CC8F84E6-925C-4D45-8A46-69B69E7F2CD6} = {27F6EA0F-3811-4403-9599-3B436A5EC502}
 		{2FB48DD8-E972-44F4-AD88-0FD7A9BE53ED} = {27F6EA0F-3811-4403-9599-3B436A5EC502}
 		{A3B51C52-71FC-44F1-8E91-B0721B4826D6} = {E2C0B11D-5ED5-4F22-8E56-F68982B6E59B}
+		{15FF8370-DA69-4CAF-BA8E-CCD84947F7EE} = {9E63ED70-6F96-4CB2-8B9D-EAEC77D0548E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF825C3D-F4F4-4E62-BBFF-B42A5E81112F}

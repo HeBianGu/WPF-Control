@@ -1,6 +1,5 @@
 ﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
 
-using H.Providers.Ioc;
 using Microsoft.Xaml.Behaviors;
 using System;
 using System.Collections;
@@ -13,6 +12,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Diagnostics;
+using H.Providers.Ioc;
 
 namespace H.Controls.FilterBox
 {

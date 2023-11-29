@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Security.AccessControl;
 
-namespace H.Extensions.Tree.Demo
+namespace H.Extensions.Tree
 {
     public class ExploreTree : ITree, IParent
     {

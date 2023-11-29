@@ -7,20 +7,12 @@ using System.Collections.ObjectModel;
 
 namespace H.Extensions.ViewModel
 {
-    public interface IObservableSource<T>
+    public interface IObservableSource<T>: IObservableSource
     {
         Predicate<T> Fileter { get; set; }
-        int Count { get; }
-        int MaxValue { get; set; }
-        int MinValue { get; set; }
-        int PageCount { get; set; }
-        int PageIndex { get; set; }
-        int SelectedIndex { get; set; }
         T SelectedItem { get; set; }
         ObservableCollection<T> Source { get; set; }
         ObservableCollection<T> FilterSource { get; set; }
-        int Total { get; set; }
-        int TotalPage { get; set; }
         void Add(params T[] value);
         void Clear();
         void Load(IEnumerable<T> source);
@@ -36,7 +28,7 @@ namespace H.Extensions.ViewModel
 
         void Next();
         void Previous();
-        IDisplayFilter Filter1 { get; set; }
+        IFilter Filter1 { get; set; }
         IFilter Filter2 { get; set; }
         IFilter Filter3 { get; set; }
         IFilter Filter4 { get; set; }
