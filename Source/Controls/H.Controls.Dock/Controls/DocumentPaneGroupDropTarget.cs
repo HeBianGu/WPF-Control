@@ -1,12 +1,4 @@
-﻿/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
-
+﻿
 using H.Controls.Dock.Layout;
 using System.Linq;
 using System.Windows;
@@ -62,9 +54,9 @@ namespace H.Controls.Dock.Controls
                     #region DropTargetType.DocumentPaneGroupDockInside
 
                     {
-                        var paneGroupModel = targetModel as LayoutDocumentPaneGroup;
-                        var paneModel = paneGroupModel as LayoutDocumentPaneGroup;
-                        var sourceModel = floatingWindow.RootPanel as LayoutDocumentPaneGroup;
+                        LayoutDocumentPaneGroup paneGroupModel = targetModel as LayoutDocumentPaneGroup;
+                        LayoutDocumentPaneGroup paneModel = paneGroupModel;
+                        LayoutDocumentPaneGroup sourceModel = floatingWindow.RootPanel;
 
                         paneModel.Children.Insert(0, sourceModel);
                     }
@@ -92,12 +84,12 @@ namespace H.Controls.Dock.Controls
                     #region DropTargetType.DocumentPaneGroupDockInside
 
                     {
-                        var paneGroupModel = targetModel as LayoutDocumentPaneGroup;
-                        var paneModel = paneGroupModel.Children[0] as LayoutDocumentPane;
-                        var layoutAnchorablePaneGroup = floatingWindow.RootPanel as LayoutAnchorablePaneGroup;
+                        LayoutDocumentPaneGroup paneGroupModel = targetModel as LayoutDocumentPaneGroup;
+                        LayoutDocumentPane paneModel = paneGroupModel.Children[0] as LayoutDocumentPane;
+                        LayoutAnchorablePaneGroup layoutAnchorablePaneGroup = floatingWindow.RootPanel;
 
                         int i = 0;
-                        foreach (var anchorableToImport in layoutAnchorablePaneGroup.Descendents().OfType<LayoutAnchorable>().ToArray())
+                        foreach (LayoutAnchorable anchorableToImport in layoutAnchorablePaneGroup.Descendents().OfType<LayoutAnchorable>().ToArray())
                         {
                             // BD: 18.07.2020 Remove that bodge and handle CanClose=false && CanHide=true in XAML
                             //anchorableToImport.SetCanCloseInternal(true);
@@ -132,7 +124,7 @@ namespace H.Controls.Dock.Controls
                     #region DropTargetType.DocumentPaneGroupDockInside
 
                     {
-                        var targetScreenRect = TargetElement.GetScreenArea();
+                        Rect targetScreenRect = TargetElement.GetScreenArea();
                         targetScreenRect.Offset(-overlayWindow.Left, -overlayWindow.Top);
 
                         return new RectangleGeometry(targetScreenRect);

@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Windows;
@@ -174,7 +174,7 @@ namespace H.Controls.PropertyGrid
 
         public bool Contains(Segment segment)
         {
-            return (segment == this.Intersection(segment));
+            return segment == this.Intersection(segment);
         }
 
         public override bool Equals(object o)
@@ -193,16 +193,16 @@ namespace H.Controls.PropertyGrid
             //    2) the opposing endpoints are equal and equally excluded
             if (DoubleHelper.AreVirtuallyEqual(_p1, other._p1))
             {
-                return (DoubleHelper.AreVirtuallyEqual(_p2, other._p2)
+                return DoubleHelper.AreVirtuallyEqual(_p2, other._p2)
                      && _isP1Excluded == other._isP1Excluded
-                     && _isP2Excluded == other._isP2Excluded);
+                     && _isP2Excluded == other._isP2Excluded;
             }
             else
             {
-                return (DoubleHelper.AreVirtuallyEqual(_p1, other._p2)
+                return DoubleHelper.AreVirtuallyEqual(_p1, other._p2)
                      && DoubleHelper.AreVirtuallyEqual(_p2, other._p1)
                      && _isP1Excluded == other._isP2Excluded
-                     && _isP2Excluded == other._isP1Excluded);
+                     && _isP2Excluded == other._isP1Excluded;
             }
         }
 
@@ -241,17 +241,17 @@ namespace H.Controls.PropertyGrid
             if (!DoubleHelper.AreVirtuallyEqual(Slope, segment.Slope))
             {
                 // check for intersection on other segment
-                double s = (Vector.CrossProduct(endpointVector, v1)) / xProd;
+                double s = Vector.CrossProduct(endpointVector, v1) / xProd;
                 if (s < 0 || s > 1)
                     return Segment.Empty;
 
                 // check for intersection on this segment
-                s = (Vector.CrossProduct(endpointVector, v2)) / xProd;
+                s = Vector.CrossProduct(endpointVector, v2) / xProd;
                 if (s < 0 || s > 1)
                     return Segment.Empty;
 
                 // intersection of segments is a point
-                return new Segment(p1 + s * v1);
+                return new Segment(p1 + (s * v1));
             }
 
             // segments are parallel

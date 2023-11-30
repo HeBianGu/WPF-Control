@@ -9,8 +9,8 @@ namespace H.Extensions.Tree
         public bool IsRecursion { get; set; } = false;
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
-            var tree = new ClassTypeTree(this.Type);
-            var result = tree.GetTreeNodes(this.IsRecursion);
+            ClassTypeTree tree = new ClassTypeTree(this.Type);
+            System.Collections.Generic.IEnumerable<Providers.Mvvm.ITreeNode> result = tree.GetTreeNodes(this.IsRecursion);
             return result;
         }
     }

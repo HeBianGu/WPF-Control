@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections.ObjectModel;
@@ -108,7 +108,7 @@ namespace H.Controls.PropertyGrid
 
         private void OnAvailableColorsSortingModeChanged(ColorSortingMode oldValue, ColorSortingMode newValue)
         {
-            ListCollectionView lcv = (ListCollectionView)(CollectionViewSource.GetDefaultView(this.AvailableColors));
+            ListCollectionView lcv = (ListCollectionView)CollectionViewSource.GetDefaultView(this.AvailableColors);
             if (lcv != null)
             {
                 lcv.CustomSort = (AvailableColorsSortingMode == ColorSortingMode.HueSaturationBrightness)
@@ -256,7 +256,7 @@ namespace H.Controls.PropertyGrid
 
         private static void OnMaxDropDownWidthChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
         {
-            var colorPicker = o as ColorPicker;
+            ColorPicker colorPicker = o as ColorPicker;
             if (colorPicker != null)
                 colorPicker.OnMaxDropDownWidthChanged((double)e.OldValue, (double)e.NewValue);
         }
@@ -632,7 +632,7 @@ namespace H.Controls.PropertyGrid
 
             if (e.AddedItems.Count > 0)
             {
-                var colorItem = (ColorItem)e.AddedItems[0];
+                ColorItem colorItem = (ColorItem)e.AddedItems[0];
                 SelectedColor = colorItem.Color;
                 if (!string.IsNullOrEmpty(colorItem.Name))
                 {
@@ -772,11 +772,11 @@ namespace H.Controls.PropertyGrid
         {
             ObservableCollection<ColorItem> standardColors = new ObservableCollection<ColorItem>();
 
-            foreach (var item in ColorUtilities.KnownColors)
+            foreach (System.Collections.Generic.KeyValuePair<string, Color> item in ColorUtilities.KnownColors)
             {
                 if (!String.Equals(item.Key, "Transparent"))
                 {
-                    var colorItem = new ColorItem(item.Value, item.Key);
+                    ColorItem colorItem = new ColorItem(item.Value, item.Key);
                     if (!standardColors.Contains(colorItem))
                         standardColors.Add(colorItem);
                 }

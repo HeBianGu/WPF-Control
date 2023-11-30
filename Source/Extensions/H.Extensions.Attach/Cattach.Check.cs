@@ -1,8 +1,5 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
 using System.Windows.Media;
 
@@ -21,13 +18,13 @@ namespace H.Extensions.Attach
             obj.SetValue(IsCheckedProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty IsCheckedProperty =
             DependencyProperty.RegisterAttached("IsChecked", typeof(bool?), typeof(Cattach), new PropertyMetadata(default(bool?), OnIsCheckedChanged));
 
-        static public void OnIsCheckedChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnIsCheckedChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             bool? n = (bool?)e.NewValue;
 
@@ -45,13 +42,13 @@ namespace H.Extensions.Attach
             obj.SetValue(CheckedIconProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty CheckedIconProperty =
             DependencyProperty.RegisterAttached("CheckedIcon", typeof(string), typeof(Cattach), new PropertyMetadata(default(string), OnCheckedIconChanged));
 
-        static public void OnCheckedIconChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnCheckedIconChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             string n = (string)e.NewValue;
 
@@ -69,13 +66,13 @@ namespace H.Extensions.Attach
             obj.SetValue(UncheckedIconProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty UncheckedIconProperty =
             DependencyProperty.RegisterAttached("UncheckedIcon", typeof(string), typeof(Cattach), new PropertyMetadata(default(string), OnUncheckedIconChanged));
 
-        static public void OnUncheckedIconChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnUncheckedIconChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             string n = (string)e.NewValue;
 
@@ -117,13 +114,13 @@ namespace H.Extensions.Attach
             obj.SetValue(CheckedTextProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty CheckedTextProperty =
             DependencyProperty.RegisterAttached("CheckedText", typeof(string), typeof(Cattach), new PropertyMetadata(default(string), OnCheckedTextChanged));
 
-        static public void OnCheckedTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnCheckedTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             string n = (string)e.NewValue;
 
@@ -141,13 +138,13 @@ namespace H.Extensions.Attach
             obj.SetValue(UncheckedTextProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty UncheckedTextProperty =
             DependencyProperty.RegisterAttached("UncheckedText", typeof(string), typeof(Cattach), new PropertyMetadata(default(string), OnUncheckedTextChanged));
 
-        static public void OnUncheckedTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnUncheckedTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             string n = (string)e.NewValue;
 
@@ -191,13 +188,13 @@ namespace H.Extensions.Attach
             obj.SetValue(CheckedForegroundProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty CheckedForegroundProperty =
             DependencyProperty.RegisterAttached("CheckedForeground", typeof(Brush), typeof(Cattach), new PropertyMetadata(default(Brush), OnCheckedForegroundChanged));
 
-        static public void OnCheckedForegroundChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnCheckedForegroundChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             Brush n = (Brush)e.NewValue;
 
@@ -214,13 +211,13 @@ namespace H.Extensions.Attach
             obj.SetValue(UncheckForegroundProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty UncheckForegroundProperty =
             DependencyProperty.RegisterAttached("UncheckForeground", typeof(Brush), typeof(Cattach), new PropertyMetadata(default(Brush), OnUncheckForegroundChanged));
 
-        static public void OnUncheckForegroundChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnUncheckForegroundChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             Brush n = (Brush)e.NewValue;
 
@@ -262,13 +259,13 @@ namespace H.Extensions.Attach
             obj.SetValue(CheckedBackgroundProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty CheckedBackgroundProperty =
             DependencyProperty.RegisterAttached("CheckedBackground", typeof(Brush), typeof(Cattach), new PropertyMetadata(default(Brush), OnCheckedBackgroundChanged));
 
-        static public void OnCheckedBackgroundChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnCheckedBackgroundChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             Brush n = (Brush)e.NewValue;
 
@@ -286,13 +283,13 @@ namespace H.Extensions.Attach
             obj.SetValue(UncheckedBackgroundProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty UncheckedBackgroundProperty =
             DependencyProperty.RegisterAttached("UncheckedBackground", typeof(Brush), typeof(Cattach), new PropertyMetadata(default(Brush), OnUncheckedBackgroundChanged));
 
-        static public void OnUncheckedBackgroundChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnUncheckedBackgroundChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             Brush n = (Brush)e.NewValue;
 
@@ -334,13 +331,13 @@ namespace H.Extensions.Attach
             obj.SetValue(CheckedBorderBrushProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty CheckedBorderBrushProperty =
             DependencyProperty.RegisterAttached("CheckedBorderBrush", typeof(Brush), typeof(Cattach), new PropertyMetadata(default(Brush), OnCheckedBorderBrushChanged));
 
-        static public void OnCheckedBorderBrushChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnCheckedBorderBrushChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             Brush n = (Brush)e.NewValue;
 
@@ -358,13 +355,13 @@ namespace H.Extensions.Attach
             obj.SetValue(UnCheckedBorderBrushProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty UnCheckedBorderBrushProperty =
             DependencyProperty.RegisterAttached("UnCheckedBorderBrush", typeof(Brush), typeof(Cattach), new PropertyMetadata(default(Brush), OnUnCheckedBorderBrushChanged));
 
-        static public void OnUnCheckedBorderBrushChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnUnCheckedBorderBrushChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             Brush n = (Brush)e.NewValue;
 
@@ -406,13 +403,13 @@ namespace H.Extensions.Attach
             obj.SetValue(CheckedBorderThicknessProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty CheckedBorderThicknessProperty =
             DependencyProperty.RegisterAttached("CheckedBorderThickness", typeof(Thickness), typeof(Cattach), new PropertyMetadata(default(Thickness), OnCheckedBorderThicknessChanged));
 
-        static public void OnCheckedBorderThicknessChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnCheckedBorderThicknessChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             Thickness n = (Thickness)e.NewValue;
 
@@ -430,13 +427,13 @@ namespace H.Extensions.Attach
             obj.SetValue(UnCheckedBorderThicknessProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty UnCheckedBorderThicknessProperty =
             DependencyProperty.RegisterAttached("UnCheckedBorderThickness", typeof(Thickness), typeof(Cattach), new PropertyMetadata(default(Thickness), OnUnCheckedBorderThicknessChanged));
 
-        static public void OnUnCheckedBorderThicknessChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnUnCheckedBorderThicknessChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             Thickness n = (Thickness)e.NewValue;
 
@@ -478,13 +475,13 @@ namespace H.Extensions.Attach
             obj.SetValue(CheckedOpacityProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty CheckedOpacityProperty =
             DependencyProperty.RegisterAttached("CheckedOpacity", typeof(double), typeof(Cattach), new PropertyMetadata(1.0, OnCheckedOpacityChanged));
 
-        static public void OnCheckedOpacityChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnCheckedOpacityChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             double n = (double)e.NewValue;
 
@@ -502,13 +499,13 @@ namespace H.Extensions.Attach
             obj.SetValue(UncheckedOpacityProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty UncheckedOpacityProperty =
             DependencyProperty.RegisterAttached("UncheckedOpacity", typeof(double), typeof(Cattach), new PropertyMetadata(1.0, OnUncheckedOpacityChanged));
 
-        static public void OnUncheckedOpacityChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnUncheckedOpacityChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             double n = (double)e.NewValue;
 

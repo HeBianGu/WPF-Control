@@ -1,7 +1,7 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
 
 namespace H.Modules.Upgrade
 {

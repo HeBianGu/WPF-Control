@@ -1,11 +1,11 @@
-/************************************************************************
-   H.Controls.Dock
 
-   Copyright (C) 2007-2013 Xceed Software Inc.
 
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
+
+
+
+
+
+
 
 using System;
 using System.ComponentModel;
@@ -204,7 +204,7 @@ namespace H.Controls.Dock.Layout
         /// <inheritdoc />
         protected override void InternalDock()
         {
-            var root = Root as LayoutRoot;
+            LayoutRoot root = Root as LayoutRoot;
             LayoutAnchorablePane anchorablePane = null;
 
             //look for active content parent pane
@@ -213,7 +213,7 @@ namespace H.Controls.Dock.Layout
             if (anchorablePane == null) anchorablePane = root.Descendents().OfType<LayoutAnchorablePane>().FirstOrDefault(pane => !pane.IsHostedInFloatingWindow && pane.GetSide() == AnchorSide.Right);
             //look for an available pane
             if (anchorablePane == null) anchorablePane = root.Descendents().OfType<LayoutAnchorablePane>().FirstOrDefault();
-            var added = false;
+            bool added = false;
             if (root.Manager.LayoutUpdateStrategy != null)
                 added = root.Manager.LayoutUpdateStrategy.BeforeInsertAnchorable(root, this, anchorablePane);
 
@@ -221,7 +221,7 @@ namespace H.Controls.Dock.Layout
             {
                 if (anchorablePane == null)
                 {
-                    var mainLayoutPanel = new LayoutPanel { Orientation = Orientation.Horizontal };
+                    LayoutPanel mainLayoutPanel = new LayoutPanel { Orientation = Orientation.Horizontal };
                     if (root.RootPanel != null)
                         mainLayoutPanel.Children.Add(root.RootPanel);
 
@@ -284,7 +284,7 @@ namespace H.Controls.Dock.Layout
         {
             if (Root?.Manager != null)
             {
-                var dockingManager = Root.Manager;
+                DockingManager dockingManager = Root.Manager;
                 dockingManager.ExecuteCloseCommand(this);
             }
             else
@@ -292,12 +292,12 @@ namespace H.Controls.Dock.Layout
         }
 
 #if TRACE
-		/// <inheritdoc />
-		public override void ConsoleDump(int tab)
-		{
-			System.Diagnostics.Trace.Write(new string(' ', tab * 4));
-			System.Diagnostics.Trace.WriteLine("Anchorable()");
-		}
+        /// <inheritdoc />
+        public override void ConsoleDump(int tab)
+        {
+            System.Diagnostics.Trace.Write(new string(' ', tab * 4));
+            System.Diagnostics.Trace.WriteLine("Anchorable()");
+        }
 #endif
 
         /// <summary>Method can be invoked to fire the <see cref="Hiding"/> event.</summary>
@@ -329,7 +329,7 @@ namespace H.Controls.Dock.Layout
 
             if (cancelable)
             {
-                var args = new CancelEventArgs();
+                CancelEventArgs args = new CancelEventArgs();
                 OnHiding(args);
                 if (args.Cancel) return false;
             }
@@ -338,7 +338,7 @@ namespace H.Controls.Dock.Layout
             RaisePropertyChanging(nameof(IsVisible));
             if (Parent is ILayoutGroup)
             {
-                var parentAsGroup = Parent as ILayoutGroup;
+                ILayoutGroup parentAsGroup = Parent as ILayoutGroup;
                 PreviousContainer = parentAsGroup;
                 PreviousContainerIndex = parentAsGroup.IndexOfChild(this);
             }
@@ -358,14 +358,14 @@ namespace H.Controls.Dock.Layout
             if (!IsHidden) throw new InvalidOperationException();
             RaisePropertyChanging(nameof(IsHidden));
             RaisePropertyChanging(nameof(IsVisible));
-            var added = false;
-            var root = Root;
+            bool added = false;
+            ILayoutRoot root = Root;
             if (root?.Manager?.LayoutUpdateStrategy != null)
                 added = root.Manager.LayoutUpdateStrategy.BeforeInsertAnchorable(root as LayoutRoot, this, PreviousContainer);
 
             if (!added && PreviousContainer != null)
             {
-                var previousContainerAsLayoutGroup = PreviousContainer as ILayoutGroup;
+                ILayoutGroup previousContainerAsLayoutGroup = PreviousContainer as ILayoutGroup;
                 if (PreviousContainerIndex < previousContainerAsLayoutGroup.ChildrenCount)
                     previousContainerAsLayoutGroup.InsertChildAt(PreviousContainerIndex, this);
                 else
@@ -391,21 +391,21 @@ namespace H.Controls.Dock.Layout
         {
             if (IsVisible || IsHidden) throw new InvalidOperationException();
 
-            var most = (strategy & AnchorableShowStrategy.Most) == AnchorableShowStrategy.Most;
-            var left = (strategy & AnchorableShowStrategy.Left) == AnchorableShowStrategy.Left;
-            var right = (strategy & AnchorableShowStrategy.Right) == AnchorableShowStrategy.Right;
-            var top = (strategy & AnchorableShowStrategy.Top) == AnchorableShowStrategy.Top;
-            var bottom = (strategy & AnchorableShowStrategy.Bottom) == AnchorableShowStrategy.Bottom;
+            bool most = (strategy & AnchorableShowStrategy.Most) == AnchorableShowStrategy.Most;
+            bool left = (strategy & AnchorableShowStrategy.Left) == AnchorableShowStrategy.Left;
+            bool right = (strategy & AnchorableShowStrategy.Right) == AnchorableShowStrategy.Right;
+            bool top = (strategy & AnchorableShowStrategy.Top) == AnchorableShowStrategy.Top;
+            bool bottom = (strategy & AnchorableShowStrategy.Bottom) == AnchorableShowStrategy.Bottom;
 
             if (!most)
             {
-                var side = AnchorSide.Left;
+                AnchorSide side = AnchorSide.Left;
                 if (left) side = AnchorSide.Left;
                 if (right) side = AnchorSide.Right;
                 if (top) side = AnchorSide.Top;
                 if (bottom) side = AnchorSide.Bottom;
 
-                var anchorablePane = manager.Layout.Descendents().OfType<LayoutAnchorablePane>().FirstOrDefault(p => p.GetSide() == side);
+                LayoutAnchorablePane anchorablePane = manager.Layout.Descendents().OfType<LayoutAnchorablePane>().FirstOrDefault(p => p.GetSide() == side);
                 if (anchorablePane != null)
                     anchorablePane.Children.Add(this);
                 else
@@ -448,13 +448,13 @@ namespace H.Controls.Dock.Layout
 
             if (IsAutoHidden)
             {
-                var parentGroup = Parent as LayoutAnchorGroup;
-                var parentSide = parentGroup.Parent as LayoutAnchorSide;
-                var previousContainer = ((ILayoutPreviousContainer)parentGroup).PreviousContainer as LayoutAnchorablePane;
+                LayoutAnchorGroup parentGroup = Parent as LayoutAnchorGroup;
+                LayoutAnchorSide parentSide = parentGroup.Parent as LayoutAnchorSide;
+                LayoutAnchorablePane previousContainer = ((ILayoutPreviousContainer)parentGroup).PreviousContainer as LayoutAnchorablePane;
 
                 if (previousContainer == null)
                 {
-                    var side = ((LayoutAnchorSide)parentGroup.Parent).Side;
+                    AnchorSide side = ((LayoutAnchorSide)parentGroup.Parent).Side;
                     switch (side)
                     {
                         case AnchorSide.Right:
@@ -474,9 +474,9 @@ namespace H.Controls.Dock.Layout
                                     DockMinHeight = AutoHideMinHeight,
                                     DockMinWidth = AutoHideMinWidth
                                 };
-                                var panel = new LayoutPanel { Orientation = Orientation.Horizontal };
-                                var root = parentGroup.Root as LayoutRoot;
-                                var oldRootPanel = parentGroup.Root.RootPanel;
+                                LayoutPanel panel = new LayoutPanel { Orientation = Orientation.Horizontal };
+                                LayoutRoot root = parentGroup.Root as LayoutRoot;
+                                LayoutPanel oldRootPanel = parentGroup.Root.RootPanel;
                                 root.RootPanel = panel;
                                 panel.Children.Add(oldRootPanel);
                                 panel.Children.Add(previousContainer);
@@ -500,9 +500,9 @@ namespace H.Controls.Dock.Layout
                                     DockMinHeight = AutoHideMinHeight,
                                     DockMinWidth = AutoHideMinWidth
                                 };
-                                var panel = new LayoutPanel { Orientation = Orientation.Horizontal };
-                                var root = parentGroup.Root as LayoutRoot;
-                                var oldRootPanel = parentGroup.Root.RootPanel;
+                                LayoutPanel panel = new LayoutPanel { Orientation = Orientation.Horizontal };
+                                LayoutRoot root = parentGroup.Root as LayoutRoot;
+                                LayoutPanel oldRootPanel = parentGroup.Root.RootPanel;
                                 root.RootPanel = panel;
                                 panel.Children.Add(previousContainer);
                                 panel.Children.Add(oldRootPanel);
@@ -526,9 +526,9 @@ namespace H.Controls.Dock.Layout
                                     DockMinWidth = AutoHideMinWidth,
                                     DockMinHeight = AutoHideMinHeight
                                 };
-                                var panel = new LayoutPanel { Orientation = Orientation.Vertical };
-                                var root = parentGroup.Root as LayoutRoot;
-                                var oldRootPanel = parentGroup.Root.RootPanel;
+                                LayoutPanel panel = new LayoutPanel { Orientation = Orientation.Vertical };
+                                LayoutRoot root = parentGroup.Root as LayoutRoot;
+                                LayoutPanel oldRootPanel = parentGroup.Root.RootPanel;
                                 root.RootPanel = panel;
                                 panel.Children.Add(previousContainer);
                                 panel.Children.Add(oldRootPanel);
@@ -552,9 +552,9 @@ namespace H.Controls.Dock.Layout
                                     DockMinWidth = AutoHideMinWidth,
                                     DockMinHeight = AutoHideMinHeight
                                 };
-                                var panel = new LayoutPanel { Orientation = Orientation.Vertical };
-                                var root = parentGroup.Root as LayoutRoot;
-                                var oldRootPanel = parentGroup.Root.RootPanel;
+                                LayoutPanel panel = new LayoutPanel { Orientation = Orientation.Vertical };
+                                LayoutRoot root = parentGroup.Root as LayoutRoot;
+                                LayoutPanel oldRootPanel = parentGroup.Root.RootPanel;
                                 root.RootPanel = panel;
                                 panel.Children.Add(oldRootPanel);
                                 panel.Children.Add(previousContainer);
@@ -566,17 +566,17 @@ namespace H.Controls.Dock.Layout
                 {
                     //I'm about to remove parentGroup, redirect any content (ie hidden contents) that point to it
                     //to previousContainer
-                    var root = parentGroup.Root as LayoutRoot;
-                    foreach (var cnt in root.Descendents().OfType<ILayoutPreviousContainer>().Where(c => c.PreviousContainer == parentGroup))
+                    LayoutRoot root = parentGroup.Root as LayoutRoot;
+                    foreach (ILayoutPreviousContainer cnt in root.Descendents().OfType<ILayoutPreviousContainer>().Where(c => c.PreviousContainer == parentGroup))
                         cnt.PreviousContainer = previousContainer;
                 }
 
-                var selectedIndex = -1;
-                var selectedItem = parentGroup.Children.FirstOrDefault(x => x.IsActive);
+                int selectedIndex = -1;
+                LayoutAnchorable selectedItem = parentGroup.Children.FirstOrDefault(x => x.IsActive);
                 if (selectedItem != null)
                     selectedIndex = parentGroup.Children.IndexOf(selectedItem);
 
-                foreach (var anchorableToToggle in parentGroup.Children.ToArray())
+                foreach (LayoutAnchorable anchorableToToggle in parentGroup.Children.ToArray())
                     previousContainer.Children.Add(anchorableToToggle);
 
                 if (selectedIndex != -1)
@@ -584,7 +584,7 @@ namespace H.Controls.Dock.Layout
 
                 parentSide.Children.Remove(parentGroup);
 
-                var parent = previousContainer.Parent as LayoutGroupBase;
+                LayoutGroupBase parent = previousContainer.Parent as LayoutGroupBase;
                 while (parent != null)
                 {
                     if (parent is LayoutGroup<ILayoutPanelElement> layoutGroup)
@@ -599,16 +599,16 @@ namespace H.Controls.Dock.Layout
 
             else if (Parent is LayoutAnchorablePane)
             {
-                var root = Root;
-                var parentPane = Parent as LayoutAnchorablePane;
-                var newAnchorGroup = new LayoutAnchorGroup();
+                ILayoutRoot root = Root;
+                LayoutAnchorablePane parentPane = Parent as LayoutAnchorablePane;
+                LayoutAnchorGroup newAnchorGroup = new LayoutAnchorGroup();
                 ((ILayoutPreviousContainer)newAnchorGroup).PreviousContainer = parentPane;
 
-                foreach (var anchorableToImport in parentPane.Children.ToArray())
+                foreach (LayoutAnchorable anchorableToImport in parentPane.Children.ToArray())
                     newAnchorGroup.Children.Add(anchorableToImport);
 
                 //detect anchor side for the pane
-                var anchorSide = parentPane.GetSide();
+                AnchorSide anchorSide = parentPane.GetSide();
 
                 switch (anchorSide)
                 {

@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.ComponentModel;
 using System.Windows;
@@ -115,13 +115,13 @@ namespace H.Extensions.Attach
             obj.SetValue(TitleMinWidthProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty TitleMinWidthProperty =
             DependencyProperty.RegisterAttached("TitleMinWidth", typeof(double), typeof(Cattach), new PropertyMetadata(default(double), OnTitleMinWidthChanged));
 
-        static public void OnTitleMinWidthChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnTitleMinWidthChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             double n = (double)e.NewValue;
 
@@ -289,7 +289,7 @@ namespace H.Extensions.Attach
             obj.SetValue(TitleFontSizeProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty TitleFontSizeProperty =
             DependencyProperty.RegisterAttached("TitleFontSize", typeof(double), typeof(Cattach), new PropertyMetadata(0.0, OnTitleFontSizeChanged));
 

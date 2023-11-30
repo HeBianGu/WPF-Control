@@ -1,6 +1,6 @@
-﻿using System.Windows;
+﻿using Microsoft.Xaml.Behaviors;
+using System.Windows;
 using System.Windows.Controls;
-using Microsoft.Xaml.Behaviors;
 
 namespace H.Extensions.Behvaiors
 {
@@ -12,7 +12,7 @@ namespace H.Extensions.Behvaiors
             set { SetValue(PasswordProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty PasswordProperty =
             DependencyProperty.Register("Password", typeof(string), typeof(PasswordBindingBehavior), new FrameworkPropertyMetadata(default(string), (d, e) =>
             {

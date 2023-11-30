@@ -5,8 +5,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style x:Key="{x:Static GridView.GridViewScrollViewerStyleKey}"
-           TargetType="ScrollViewer">
+    <Style x:Key="{x:Static GridView.GridViewScrollViewerStyleKey}" TargetType="ScrollViewer">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ScrollViewer">
@@ -64,15 +63,13 @@
         </Setter>
     </Style>
 
-    <Style x:Key="GridViewColumnHeaderGripper"
-           TargetType="Thumb">
+    <Style x:Key="GridViewColumnHeaderGripper" TargetType="Thumb">
         <Setter Property="Width" Value="18" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
-                    <Border Padding="{TemplateBinding Padding}"
-                            Background="Transparent">
+                    <Border Padding="{TemplateBinding Padding}" Background="Transparent">
                         <Rectangle Width="1"
                                    HorizontalAlignment="Center"
                                    Fill="{TemplateBinding Background}" />
@@ -87,8 +84,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{x:Type GridViewColumnHeader}"
-           TargetType="GridViewColumnHeader">
+    <Style x:Key="{x:Type GridViewColumnHeader}" TargetType="GridViewColumnHeader">
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Height" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
@@ -126,10 +122,8 @@
                                 <VisualState x:Name="Normal" />
                                 <VisualState x:Name="MouseOver">
                                     <Storyboard>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="HeaderBorder"
-                                                                      Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0"
-                                                                 Value="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="HeaderBorder" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -160,8 +154,7 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="GridViewColumnHeader">
-                            <Border Name="HeaderBorder"
-                                    BorderThickness="0,1,0,1">
+                            <Border Name="HeaderBorder" BorderThickness="0,1,0,1">
                                 <Border.Background>
                                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
                                 </Border.Background>
@@ -176,9 +169,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.ListView.Default,
-                                        TypeInTargetAssembly={x:Type local:ListViewKeys}}"
-           TargetType="ListView">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.ListView.Default, TypeInTargetAssembly={x:Type local:ListViewKeys}}" TargetType="ListView">
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <!--<Setter Property="OverridesDefaultStyle" Value="true" />-->
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
@@ -189,8 +180,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListView">
-                    <Border Name="Border"
-                            BorderThickness="1">
+                    <Border Name="Border" BorderThickness="1">
                         <Border.Background>
                             <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
                         </Border.Background>
@@ -303,9 +293,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style BasedOn="{StaticResource {x:Static local:ListViewKeys.Default}}"
-           TargetType="ListView" />
-    <Style BasedOn="{StaticResource {x:Static local:ListViewItemKeys.Default}}"
-           TargetType="ListViewItem" />
+    <Style BasedOn="{StaticResource {x:Static local:ListViewKeys.Default}}" TargetType="ListView" />
+    <Style BasedOn="{StaticResource {x:Static local:ListViewItemKeys.Default}}" TargetType="ListViewItem" />
 
 </ResourceDictionary>

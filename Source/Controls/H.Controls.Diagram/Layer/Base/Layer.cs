@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Windows;
@@ -16,7 +16,7 @@ namespace H.Controls.Diagram
             set { SetValue(UseAnimationProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UseAnimationProperty =
             DependencyProperty.Register("UseAnimation", typeof(bool), typeof(Layer), new PropertyMetadata(true, (d, e) =>
             {
@@ -36,7 +36,7 @@ namespace H.Controls.Diagram
             set { SetValue(DurationProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty DurationProperty =
             DependencyProperty.Register("Duration", typeof(TimeSpan), typeof(Layer), new PropertyMetadata(TimeSpan.FromMilliseconds(200), (d, e) =>
             {

@@ -58,7 +58,7 @@
                                 <TranslateTransform />
                             </TransformGroup>
                         </Setter.Value>
-                    </Setter>                    
+                    </Setter>
                     <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
                     <Style.Triggers>
                         <EventTrigger RoutedEvent="Loaded">

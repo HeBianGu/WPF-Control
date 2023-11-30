@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.Windows;
 
@@ -12,7 +12,7 @@ namespace H.Providers.Ioc
             {
                 if (element is IDialog)
                     return element as IDialog;
-                var parent= element.GetParent<FrameworkElement>(x => x?.DataContext is IDialog || x is IDialog);
+                FrameworkElement parent = element.GetParent<FrameworkElement>(x => x?.DataContext is IDialog || x is IDialog);
                 if (parent is IDialog dialog)
                     return dialog;
                 else

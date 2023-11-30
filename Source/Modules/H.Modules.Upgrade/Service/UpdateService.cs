@@ -1,7 +1,6 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
-using H.Extensions.Setting;
 using H.Providers.Ioc;
 
 using Microsoft.Extensions.Options;
@@ -24,7 +23,7 @@ namespace H.Modules.Upgrade
         private VersionData GetVersion(out string message)
         {
             message = null;
-            var args = _webXmlService.Load<UpdateXmlInfo>(_options.Value.Uri, out message);
+            UpdateXmlInfo args = _webXmlService.Load<UpdateXmlInfo>(_options.Value.Uri, out message);
             if (args == null)
                 return null;
 
@@ -46,17 +45,17 @@ namespace H.Modules.Upgrade
         #region - IUpgradeService -
         public bool CanUpgrade(out string message)
         {
-            var versionData = this.GetVersion(out message);
+            VersionData versionData = this.GetVersion(out message);
             return versionData != null;
         }
 
         public bool Upgrade(out string message)
         {
             message = null;
-            var data = this.GetVersion(out message);
+            VersionData data = this.GetVersion(out message);
             if (data == null)
                 return false;
-            var r = Application.Current.Dispatcher.Invoke(() =>
+            bool? r = Application.Current.Dispatcher.Invoke(() =>
             {
                 return IocMessage.Dialog.Show(new UpgradePresenter(data), null, DialogButton.None).Result;
             });

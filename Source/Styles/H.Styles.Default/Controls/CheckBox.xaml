@@ -33,9 +33,10 @@
                                     <Path x:Name="CheckMark"
                                           Width="8"
                                           Height="8"
+                                          ClipToBounds="False"
                                           Data="M 0 2 L 2 7 L 2 7 L 8 0"
                                           SnapsToDevicePixels="False"
-                                          StrokeDashCap="Round" ClipToBounds="False"
+                                          StrokeDashCap="Round"
                                           StrokeEndLineCap="Triangle"
                                           StrokeStartLineCap="Triangle"
                                           StrokeThickness="1.5"
@@ -105,7 +106,7 @@
                     </BulletDecorator>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" Value="0.6"/>
+                            <Setter Property="Opacity" Value="0.6" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

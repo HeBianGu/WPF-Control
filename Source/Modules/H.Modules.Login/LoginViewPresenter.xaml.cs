@@ -1,25 +1,15 @@
-﻿using H.Extensions.Command;
-using H.Providers.Ioc;
-using H.Providers.Ioc;
+﻿using H.Providers.Ioc;
 using H.Providers.Mvvm;
 using Microsoft.Extensions.Options;
-using Microsoft.VisualBasic.FileIO;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Configuration;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows.Input;
-using System.Xml.Linq;
 
 namespace H.Modules.Login
 {
     public class LoginViewPresenter : NotifyPropertyChangedBase, ILoginViewPresenter
     {
-        IOptions<LoginOptions> _options;
+        private IOptions<LoginOptions> _options;
         public LoginViewPresenter(IOptions<LoginOptions> options)
         {
             _options = options;
@@ -56,7 +46,7 @@ namespace H.Modules.Login
         {
             if (e is IDialog dialog)
             {
-                var result = await Task.Run<bool>(() =>
+                bool result = await Task.Run<bool>(() =>
                  {
                      try
                      {
@@ -70,7 +60,7 @@ namespace H.Modules.Login
                          }
                          else
                          {
-                             var r = Ioc<ILoginService>.Instance.Login(this.UserName, this.Password, out string message);
+                             bool r = Ioc<ILoginService>.Instance.Login(this.UserName, this.Password, out string message);
                              if (!r)
                              {
                                  s.Message = message;
@@ -97,7 +87,7 @@ namespace H.Modules.Login
                      catch (Exception ex)
                      {
                          s.Message = ex.Message;
-                         Logger.Instance?.Error(ex);
+                         IocLog.Instance?.Error(ex);
                          return false;
                      }
                      finally

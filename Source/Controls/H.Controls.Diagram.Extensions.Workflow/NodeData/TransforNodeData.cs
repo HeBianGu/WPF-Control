@@ -1,7 +1,4 @@
-﻿
-using System.Windows.Media;
-
-namespace H.Controls.Diagram.Extensions.Workflow
+﻿namespace H.Controls.Diagram.Extensions.Workflow
 {
     //[NodeType(Type = DiagramType.Workflow, Name = "控制传递", GroupName = "基本流程图形状", Order = 0, Description = "控制传递")]
     //public class TransforNodeData : WorkflowNodeBase

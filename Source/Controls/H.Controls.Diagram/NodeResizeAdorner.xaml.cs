@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 
@@ -7,14 +7,12 @@ using H.Controls.Adorner;
 using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Media;
 
 namespace H.Controls.Diagram
 {
     public class NoteResizeAdorner : ResizeAdorner
     {
-        public new static ComponentResourceKey TemplateDefaultKey => new ComponentResourceKey(typeof(NoteResizeAdorner), "S.NoteResizeAdorner.Template.Default");
+        public static new ComponentResourceKey TemplateDefaultKey => new ComponentResourceKey(typeof(NoteResizeAdorner), "S.NoteResizeAdorner.Template.Default");
 
         public NoteResizeAdorner(UIElement adornedElement) : base(adornedElement)
         {
@@ -30,8 +28,8 @@ namespace H.Controls.Diagram
         {
             //Canvas.SetLeft(this.AdornedElement, Math.Max(Canvas.GetLeft(this.AdornedElement) + change, 0));
 
-            var node = this.AdornedElement.GetParent<Node>();
-            var point = NodeLayer.GetPosition(node);
+            Node node = this.AdornedElement.GetParent<Node>();
+            Point point = NodeLayer.GetPosition(node);
             Point to = new Point(point.X + change, point.Y);
             NodeLayer.SetPosition(node, to);
         }
@@ -40,8 +38,8 @@ namespace H.Controls.Diagram
             //Canvas.SetTop(this.AdornedElement, Math.Max(Canvas.GetTop(this.AdornedElement) + change, 0));
 
 
-            var node = this.AdornedElement.GetParent<Node>();
-            var point = NodeLayer.GetPosition(node);
+            Node node = this.AdornedElement.GetParent<Node>();
+            Point point = NodeLayer.GetPosition(node);
             Point to = new Point(point.X, point.Y + change);
             NodeLayer.SetPosition(node, to);
         }
@@ -90,8 +88,8 @@ namespace H.Controls.Diagram
             element.Height = Math.Max(MinValue, element.Height + change);
 
 
-            var node = this.AdornedElement.GetParent<Node>();
-            var point = NodeLayer.GetPosition(node);
+            Node node = this.AdornedElement.GetParent<Node>();
+            Point point = NodeLayer.GetPosition(node);
             Point to = new Point(point.X, point.Y + (change / 2));
             NodeLayer.SetPosition(node, to);
         }
@@ -100,8 +98,8 @@ namespace H.Controls.Diagram
             FrameworkElement element = AdornedElement as FrameworkElement;
             element.Width = Math.Max(MinValue, element.Width + change);
 
-            var node = this.AdornedElement.GetParent<Node>();
-            var point = NodeLayer.GetPosition(node);
+            Node node = this.AdornedElement.GetParent<Node>();
+            Point point = NodeLayer.GetPosition(node);
             Point to = new Point(point.X + (change / 2), point.Y);
             NodeLayer.SetPosition(node, to);
         }

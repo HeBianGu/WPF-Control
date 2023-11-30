@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections.Generic;
@@ -72,11 +72,11 @@ namespace H.Controls.PropertyGrid
 
         protected override BindingBase CreateValueBinding()
         {
-            var selectedObject = this.SelectedObject;
-            var propertyName = this.PropertyDescriptor.Name;
+            object selectedObject = this.SelectedObject;
+            string propertyName = this.PropertyDescriptor.Name;
 
             //Bind the value property with the source object.
-            var binding = new Binding(propertyName)
+            Binding binding = new Binding(propertyName)
             {
                 Source = this.GetValueInstance(selectedObject),
                 Mode = PropertyDescriptor.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay,
@@ -102,7 +102,7 @@ namespace H.Controls.PropertyGrid
         {
             if (!PropertyDescriptor.IsReadOnly)
             {
-                var defaultValue = this.ComputeDefaultValueAttribute();
+                object defaultValue = this.ComputeDefaultValueAttribute();
                 if (defaultValue != null)
                     return true;
 
@@ -125,7 +125,7 @@ namespace H.Controls.PropertyGrid
 #if VS2008
         return PropertyDescriptor.Category;
 #else
-            var displayAttribute = PropertyGridUtilities.GetAttribute<DisplayAttribute>(PropertyDescriptor);
+            DisplayAttribute displayAttribute = PropertyGridUtilities.GetAttribute<DisplayAttribute>(PropertyDescriptor);
             return ((displayAttribute != null) && (displayAttribute.GetGroupName() != null)) ? displayAttribute.GetGroupName() : PropertyDescriptor.Category;
 #endif
         }
@@ -147,7 +147,7 @@ namespace H.Controls.PropertyGrid
 
         protected override bool ComputeIsExpandable()
         {
-            return (this.Value != null)
+            return this.Value != null
               ;
         }
 
@@ -173,7 +173,7 @@ namespace H.Controls.PropertyGrid
 
         internal override ITypeEditor CreateAttributeEditor()
         {
-            var editorAttribute = GetAttribute<EditorAttribute>();
+            EditorAttribute editorAttribute = GetAttribute<EditorAttribute>();
             if (editorAttribute != null)
             {
                 Type type = null;
@@ -198,14 +198,14 @@ namespace H.Controls.PropertyGrid
                 if (typeof(ITypeEditor).IsAssignableFrom(type)
                   && (type.GetConstructor(new Type[0]) != null))
                 {
-                    var instance = Activator.CreateInstance(type) as ITypeEditor;
+                    ITypeEditor instance = Activator.CreateInstance(type) as ITypeEditor;
                     Debug.Assert(instance != null, "Type was expected to be ITypeEditor with public constructor.");
                     if (instance != null)
                         return instance;
                 }
             }
 
-            var itemsSourceAttribute = GetAttribute<ItemsSourceAttribute>();
+            ItemsSourceAttribute itemsSourceAttribute = GetAttribute<ItemsSourceAttribute>();
             if (itemsSourceAttribute != null)
                 return new ItemsSourceAttributeEditor(itemsSourceAttribute);
 

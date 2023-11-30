@@ -8,6 +8,8 @@
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type local:BoolNullablePropertyItem}">
-        <CheckBox Grid.Column="2" IsChecked="{Binding Value, Mode=TwoWay}" IsEnabled="{Binding ReadOnly, Converter={x:Static h:Converter.GetTrueToFalse}}" />
+        <CheckBox Grid.Column="2"
+                  IsChecked="{Binding Value, Mode=TwoWay}"
+                  IsEnabled="{Binding ReadOnly, Converter={x:Static h:Converter.GetTrueToFalse}}" />
     </DataTemplate>
 </ResourceDictionary>

@@ -13,7 +13,7 @@
                           UseAsync="False"
                           UsePropertyView="{Binding UsePropertyView}" />
     </DataTemplate>
-    
+
     <DataTemplate DataType="{x:Type local:ItemsFormPresenter}">
         <ScrollViewer>
             <ItemsControl MinWidth="600" ItemsSource="{Binding Objs}">

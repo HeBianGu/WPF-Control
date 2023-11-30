@@ -4,7 +4,7 @@
                     xmlns:local="clr-namespace:H.Modules.Upgrade">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/H.Modules.Upgrade;component/UpgradePresenter.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/H.Modules.Upgrade;component/UpgradePresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <!--<DataTemplate DataType="{x:Type local:UpgradeFlagViewPresenter}">

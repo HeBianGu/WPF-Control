@@ -144,7 +144,8 @@
                                       Margin="5"
                                       IsHitTestVisible="False">
                                     <Path x:Name="Arrow"
-                                          Width="9" Height="5"
+                                          Width="9"
+                                          Height="5"
                                           Margin="0,1,0,0"
                                           Data="{StaticResource DownArrowGeometry}"
                                           Fill="#FF000000" />
@@ -261,7 +262,9 @@
                             <Grid Margin="2">
                                 <ContentControl x:Name="ColorOnly" Style="{StaticResource ColorDisplayStyle}" />
 
-                                <Border x:Name="ColorAndName" Background="White" Visibility="Hidden">
+                                <Border x:Name="ColorAndName"
+                                        Background="White"
+                                        Visibility="Hidden">
                                     <StackPanel Orientation="Horizontal">
                                         <ContentControl Width="20"
                                                         Margin="2,1,4,1"
@@ -298,8 +301,12 @@
                                     Background="{StaticResource PopupBackgroundBrush}"
                                     BorderBrush="{StaticResource ColorPickerDarkBorderBrush}"
                                     BorderThickness="1">
-                                <TabControl x:Name="ColorPickerTabControl" Background="Transparent" SelectedIndex="{Binding ColorMode, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ColorModeToTabItemSelectedConverter}}">
-                                    <local:ColorPickerTabItem x:Name="StandardTabItem" Header="{Binding StandardButtonHeader, RelativeSource={RelativeSource TemplatedParent}}" Template="{StaticResource TabItemTemplate}">
+                                <TabControl x:Name="ColorPickerTabControl"
+                                            Background="Transparent"
+                                            SelectedIndex="{Binding ColorMode, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ColorModeToTabItemSelectedConverter}}">
+                                    <local:ColorPickerTabItem x:Name="StandardTabItem"
+                                                              Header="{Binding StandardButtonHeader, RelativeSource={RelativeSource TemplatedParent}}"
+                                                              Template="{StaticResource TabItemTemplate}">
                                         <Grid x:Name="_colorPaletteHost" Margin="4">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto" />
@@ -345,7 +352,10 @@
                                             </Grid>
 
                                             <!--  Recent Colors  -->
-                                            <Grid Grid.Row="3" Margin="0,1,0,1" Visibility="{TemplateBinding ShowRecentColors, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            <Grid Grid.Row="3"
+                                                  Margin="0,1,0,1"
+                                                  Visibility="{TemplateBinding ShowRecentColors,
+                                                                               Converter={StaticResource BooleanToVisibilityConverter}}">
                                                 <Grid>
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="Auto" />
@@ -363,7 +373,9 @@
                                             </Grid>
                                         </Grid>
                                     </local:ColorPickerTabItem>
-                                    <local:ColorPickerTabItem x:Name="AdvancedTabItem" Header="{Binding AdvancedButtonHeader, RelativeSource={RelativeSource TemplatedParent}}" Template="{StaticResource TabItemTemplate}">
+                                    <local:ColorPickerTabItem x:Name="AdvancedTabItem"
+                                                              Header="{Binding AdvancedButtonHeader, RelativeSource={RelativeSource TemplatedParent}}"
+                                                              Template="{StaticResource TabItemTemplate}">
                                         <!--  ColorCanvas  -->
                                         <Grid x:Name="_colorCanvasHost">
                                             <local:ColorCanvas Width="{Binding MaxDropDownWidth, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource AdditionConverter}, ConverterParameter=-18}"

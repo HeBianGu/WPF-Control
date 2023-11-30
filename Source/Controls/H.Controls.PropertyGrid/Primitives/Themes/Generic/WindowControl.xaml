@@ -75,7 +75,9 @@
                                         <BlurEffect Radius="10" />
                                     </Rectangle.Effect>
                                 </Rectangle>
-                                <Grid x:Name="TitleGrid" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                <Grid x:Name="TitleGrid"
+                                      HorizontalAlignment="Left"
+                                      VerticalAlignment="Center">
                                     <TextBlock x:Name="TitleText"
                                                Margin="5,0,5,0"
                                                FontSize="{TemplateBinding CaptionFontSize}"
@@ -101,7 +103,9 @@
                                     </MultiBinding>
                                 </StackPanel.Margin>
                                 <!--  close button  -->
-                                <Button x:Name="PART_CloseButton" Style="{TemplateBinding CloseButtonStyle}" Visibility="{TemplateBinding CloseButtonVisibility}" />
+                                <Button x:Name="PART_CloseButton"
+                                        Style="{TemplateBinding CloseButtonStyle}"
+                                        Visibility="{TemplateBinding CloseButtonVisibility}" />
                             </StackPanel>
 
                             <!--  ToolWindow Close Button  -->
@@ -119,7 +123,9 @@
                                         <!--  not used  -->
                                     </MultiBinding>
                                 </Border.Margin>
-                                <Button x:Name="PART_ToolWindowCloseButton" Margin="0,3,0,1" Style="{TemplateBinding CloseButtonStyle}" />
+                                <Button x:Name="PART_ToolWindowCloseButton"
+                                        Margin="0,3,0,1"
+                                        Style="{TemplateBinding CloseButtonStyle}" />
                             </Border>
 
                             <!--  Header Drag Thumb  -->
@@ -143,10 +149,14 @@
                                     Background="{TemplateBinding Background}"
                                     BorderBrush="{TemplateBinding BorderBrush}"
                                     BorderThickness="{TemplateBinding BorderThickness}">
-                                <Border x:Name="ContentInnerBorder" BorderBrush="#FFF2F2F2" BorderThickness="0">
+                                <Border x:Name="ContentInnerBorder"
+                                        BorderBrush="#FFF2F2F2"
+                                        BorderThickness="0">
                                     <!--  only visible for ToolWindow  -->
                                     <AdornerDecorator>
-                                        <ContentPresenter x:Name="Content" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" />
+                                        <ContentPresenter x:Name="Content"
+                                                          Content="{TemplateBinding Content}"
+                                                          ContentTemplate="{TemplateBinding ContentTemplate}" />
                                     </AdornerDecorator>
                                 </Border>
                             </Border>
@@ -157,7 +167,9 @@
             </Border>
 
             <!--  Special Border to prevent all mouse inputs when this WindowControl is behind a modal window  -->
-            <Border x:Name="PART_BlockMouseInputsBorder" Background="Transparent" Visibility="Collapsed" />
+            <Border x:Name="PART_BlockMouseInputsBorder"
+                    Background="Transparent"
+                    Visibility="Collapsed" />
         </Grid>
         <ControlTemplate.Triggers>
 

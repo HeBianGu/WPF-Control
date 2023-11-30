@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +23,7 @@ namespace H.Controls.Chart2D
             set { SetValue(AlignLenghtProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty AlignLenghtProperty =
             DependencyProperty.Register("AlignLenght", typeof(int), typeof(Axis), new PropertyMetadata(5, (d, e) =>
              {
@@ -42,7 +42,7 @@ namespace H.Controls.Chart2D
             set { SetValue(LabelStyleProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty LabelStyleProperty =
             DependencyProperty.Register("LabelStyle", typeof(Style), typeof(Axis), new PropertyMetadata(default(Style), (d, e) =>
              {
@@ -60,7 +60,7 @@ namespace H.Controls.Chart2D
             set { SetValue(TextAlignmentCenterProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty TextAlignmentCenterProperty =
             DependencyProperty.Register("TextAlignmentCenter", typeof(bool), typeof(Axis), new PropertyMetadata(default(bool), (d, e) =>
             {
@@ -81,7 +81,7 @@ namespace H.Controls.Chart2D
             set { SetValue(AlignAlignmentCenterProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty AlignAlignmentCenterProperty =
             DependencyProperty.Register("AlignAlignmentCenter", typeof(bool), typeof(Axis), new PropertyMetadata(default(bool), (d, e) =>
             {
@@ -99,7 +99,7 @@ namespace H.Controls.Chart2D
             set { SetValue(ValueProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty ValueProperty =
             DependencyProperty.Register("Value", typeof(double), typeof(Axis), new PropertyMetadata(0.0, (d, e) =>
              {
@@ -121,7 +121,7 @@ namespace H.Controls.Chart2D
             set { SetValue(DockAlignmentProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty DockAlignmentProperty =
             DependencyProperty.Register("DockAlignment", typeof(Dock), typeof(Axis), new PropertyMetadata(Dock.Left, (d, e) =>
              {
@@ -152,18 +152,18 @@ namespace H.Controls.Chart2D
             {
                 double span = (this.maxX - this.minX) / this.xAxis.Count;
 
-                this.maxX = this.maxX + span / 2;
+                this.maxX = this.maxX + (span / 2);
 
-                this.minX = this.minX - span / 2;
+                this.minX = this.minX - (span / 2);
             }
 
             if (this.TextAlignmentCenter)
             {
                 double span = (this.maxY - this.minY) / this.yAxis.Count;
 
-                this.maxY = this.maxY + span / 2;
+                this.maxY = this.maxY + (span / 2);
 
-                this.minY = this.minY - span / 2;
+                this.minY = this.minY - (span / 2);
             }
         }
 
@@ -171,7 +171,7 @@ namespace H.Controls.Chart2D
         {
             base.Draw(canvas);
 
-            double span = this.TextAlignmentCenter ? this.AlignAlignmentCenter ? 0 : (this.maxX - this.minX) / (this.xAxis.Count) : 0;
+            double span = this.TextAlignmentCenter ? this.AlignAlignmentCenter ? 0 : (this.maxX - this.minX) / this.xAxis.Count : 0;
 
             //this.Y = this.DockTop ? this.yAxis.Max() : this.Y;
 
@@ -217,7 +217,7 @@ namespace H.Controls.Chart2D
                 }
                 else
                 {
-                    Canvas.SetLeft(l, this.GetX(item + span / 2));
+                    Canvas.SetLeft(l, this.GetX(item + (span / 2)));
                 }
 
                 double bottom = this.ActualHeight - this.GetY(y) + (this.DockAlignment == Dock.Top || this.DockAlignment == Dock.Left ? 0 : -this.AlignLenght);
@@ -240,11 +240,11 @@ namespace H.Controls.Chart2D
                 {
                     if (this.xAxis.Count == 1)
                     {
-                        Canvas.SetLeft(t, this.ActualWidth / 2 - t.ActualWidth / 2);
+                        Canvas.SetLeft(t, (this.ActualWidth / 2) - (t.ActualWidth / 2));
                     }
                     else
                     {
-                        Canvas.SetLeft(t, this.GetX(item, this.ActualWidth) - t.ActualWidth / 2);
+                        Canvas.SetLeft(t, this.GetX(item, this.ActualWidth) - (t.ActualWidth / 2));
                     }
 
                     double top = (this.DockAlignment == Dock.Top || this.DockAlignment == Dock.Left ? -(this.AlignLenght + t.ActualHeight) : this.AlignLenght) + this.GetY(y);
@@ -273,9 +273,9 @@ namespace H.Controls.Chart2D
             {
                 double span = (this.maxY - this.minY) / this.yAxis.Count;
 
-                this.maxY = this.maxY + span / 2;
+                this.maxY = this.maxY + (span / 2);
 
-                this.minY = this.minY - span / 2;
+                this.minY = this.minY - (span / 2);
             }
         }
 
@@ -283,7 +283,7 @@ namespace H.Controls.Chart2D
         {
             base.Draw(canvas);
 
-            double span = this.TextAlignmentCenter ? this.AlignAlignmentCenter ? 0 : (this.maxY - this.minY) / (this.yAxis.Count) : 0;
+            double span = this.TextAlignmentCenter ? this.AlignAlignmentCenter ? 0 : (this.maxY - this.minY) / this.yAxis.Count : 0;
 
             //Y坐标
             foreach (double item in this.yAxis)
@@ -315,7 +315,7 @@ namespace H.Controls.Chart2D
                 }
                 else
                 {
-                    Canvas.SetTop(l, this.GetY(item + span / 2, this.ActualHeight));
+                    Canvas.SetTop(l, this.GetY(item + (span / 2), this.ActualHeight));
                 }
 
                 if (this.DockAlignment == Dock.Right || this.DockAlignment == Dock.Bottom)
@@ -347,13 +347,13 @@ namespace H.Controls.Chart2D
                 {
                     if (this.yAxis.Count == 1)
                     {
-                        Canvas.SetTop(t, this.ActualHeight / 2 - t.ActualHeight / 2);
+                        Canvas.SetTop(t, (this.ActualHeight / 2) - (t.ActualHeight / 2));
                     }
                     else
                     {
-                        Canvas.SetTop(t, this.GetY(item, this.ActualHeight) - t.ActualHeight / 2);
+                        Canvas.SetTop(t, this.GetY(item, this.ActualHeight) - (t.ActualHeight / 2));
                     }
-                    Canvas.SetLeft(t, (this.DockAlignment == Dock.Right || this.DockAlignment == Dock.Bottom ? (this.AlignLenght) : -this.AlignLenght - t.ActualWidth) + postion);
+                    Canvas.SetLeft(t, (this.DockAlignment == Dock.Right || this.DockAlignment == Dock.Bottom ? this.AlignLenght : -this.AlignLenght - t.ActualWidth) + postion);
                 };
 
                 canvas.Children.Add(t);
@@ -375,7 +375,7 @@ namespace H.Controls.Chart2D
             set { SetValue(LenProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty LenProperty =
             DependencyProperty.Register("Len", typeof(double), typeof(RadiusAxis), new PropertyMetadata(default(double), (d, e) =>
              {
@@ -394,7 +394,7 @@ namespace H.Controls.Chart2D
         {
             base.Draw(canvas);
 
-            double span = this.TextAlignmentCenter ? this.AlignAlignmentCenter ? 0 : (this.maxX - this.minX) / (this.xAxis.Count) : 0;
+            double span = this.TextAlignmentCenter ? this.AlignAlignmentCenter ? 0 : (this.maxX - this.minX) / this.xAxis.Count : 0;
 
             //  Do ：绘制坐标
             foreach (double item in this.xAxis)
@@ -402,7 +402,7 @@ namespace H.Controls.Chart2D
                 //  Do ：底线
                 System.Windows.Shapes.Line yright = new System.Windows.Shapes.Line();
                 yright.X1 = this.ActualWidth / 2;
-                yright.X2 = this.ActualWidth / 2 + Len;
+                yright.X2 = (this.ActualWidth / 2) + Len;
                 yright.Y1 = 0;
                 yright.Y2 = 0;
                 yright.Style = this.LineStyle;
@@ -418,7 +418,7 @@ namespace H.Controls.Chart2D
                 l.Y1 = 0;
                 l.Y2 = this.VerticalAlignment == VerticalAlignment.Top ? -this.AlignLenght : this.AlignLenght;
                 l.Style = this.LineStyle;
-                Canvas.SetLeft(l, this.GetX(item + span / 2, this.Len));
+                Canvas.SetLeft(l, this.GetX(item + (span / 2), this.Len));
 
                 canvas.Children.Add(l);
 
@@ -430,7 +430,7 @@ namespace H.Controls.Chart2D
 
                 t.Loaded += (o, e) =>
                 {
-                    Canvas.SetLeft(t, this.GetX(item, this.Len) - t.ActualWidth / 2);
+                    Canvas.SetLeft(t, this.GetX(item, this.Len) - (t.ActualWidth / 2));
                     Canvas.SetTop(t, this.VerticalAlignment == VerticalAlignment.Top ? -(this.AlignLenght + t.ActualHeight) : this.AlignLenght);
                 };
                 canvas.Children.Add(t);
@@ -453,7 +453,7 @@ namespace H.Controls.Chart2D
             set { SetValue(LenProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty LenProperty =
             DependencyProperty.Register("Len", typeof(double), typeof(AngleAxis), new PropertyMetadata(default(double), (d, e) =>
             {
@@ -544,7 +544,7 @@ namespace H.Controls.Chart2D
             {
                 Point center = new Point(0, 0);
 
-                Point start = new Point(this.Len + this.AlignLenght * 4, center.Y);
+                Point start = new Point(this.Len + (this.AlignLenght * 4), center.Y);
 
                 Matrix matrix = new Matrix();
 
@@ -562,10 +562,10 @@ namespace H.Controls.Chart2D
 
                 t.Loaded += (o, e) =>
                 {
-                    double endParam = (end.X > center.X ? hlen + hlen / 2 : -hlen - t.ActualWidth - hlen / 2);
+                    double endParam = end.X > center.X ? hlen + (hlen / 2) : -hlen - t.ActualWidth - (hlen / 2);
 
                     Canvas.SetLeft(t, end.X + endParam);
-                    Canvas.SetTop(t, end.Y - t.ActualHeight / 2);
+                    Canvas.SetTop(t, end.Y - (t.ActualHeight / 2));
                 };
                 this.Children.Add(t);
             }

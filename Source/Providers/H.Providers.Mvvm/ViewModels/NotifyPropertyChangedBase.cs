@@ -19,7 +19,7 @@ namespace H.Providers.Mvvm
 
         #region - MVVM -
 
-        bool _isRefreshing;
+        private bool _isRefreshing;
 
         public event PropertyChangedEventHandler PropertyChanged;
 

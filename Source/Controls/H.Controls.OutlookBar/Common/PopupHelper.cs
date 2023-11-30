@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Media;
 
 namespace H.Controls.OutlookBar
@@ -17,7 +13,7 @@ namespace H.Controls.OutlookBar
                 while (obj != null)
                 {
                     FrameworkElement parent = VisualTreeHelper.GetParent(obj) as FrameworkElement;
-                    obj = parent == null ? obj.Parent as FrameworkElement : parent as FrameworkElement;
+                    obj = parent == null ? obj.Parent as FrameworkElement : parent;
                     if (obj == ancestor) return true;
                 }
             }

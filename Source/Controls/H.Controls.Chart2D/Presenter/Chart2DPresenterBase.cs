@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 using H.Providers.Mvvm;
@@ -8,7 +8,6 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Windows;
 using System.Windows.Media;
 using System.Xml.Serialization;
 
@@ -130,7 +129,7 @@ namespace H.Controls.Chart2D
             while (max - current > -0.0001)
             {
                 yield return current;
-                var ssss = max - current;
+                double ssss = max - current;
                 if (ssss <= 0)
                     break;
                 current += vSpan;

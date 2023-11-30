@@ -1,13 +1,9 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
-using System.Linq;
-using System.Linq.Expressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -278,7 +274,7 @@ namespace H.Controls.PropertyGrid
 
         private static void OnIsVirtualizingChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
         {
-            var propertyGrid = o as PropertyGrid;
+            PropertyGrid propertyGrid = o as PropertyGrid;
             if (propertyGrid != null)
                 propertyGrid.OnIsVirtualizingChanged((bool)e.OldValue, (bool)e.NewValue);
         }
@@ -385,7 +381,7 @@ namespace H.Controls.PropertyGrid
 
         private static void OnPropertyContainerStyleChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
         {
-            var owner = o as PropertyGrid;
+            PropertyGrid owner = o as PropertyGrid;
             if (owner != null)
                 owner.OnPropertyContainerStyleChanged((Style)e.OldValue, (Style)e.NewValue);
         }
@@ -464,7 +460,7 @@ namespace H.Controls.PropertyGrid
         {
             get
             {
-                return (object)GetValue(SelectedObjectProperty);
+                return GetValue(SelectedObjectProperty);
             }
             set
             {
@@ -476,7 +472,7 @@ namespace H.Controls.PropertyGrid
         {
             PropertyGrid propertyInspector = o as PropertyGrid;
             if (propertyInspector != null)
-                propertyInspector.OnSelectedObjectChanged((object)e.OldValue, (object)e.NewValue);
+                propertyInspector.OnSelectedObjectChanged(e.OldValue, e.NewValue);
         }
 
         protected virtual void OnSelectedObjectChanged(object oldValue, object newValue)
@@ -560,7 +556,7 @@ namespace H.Controls.PropertyGrid
             PropertyGrid propertyGrid = o as PropertyGrid;
             if (propertyGrid != null)
             {
-                if ((propertyGrid.SelectedObject is FrameworkElement) && (String.IsNullOrEmpty((String)baseValue)))
+                if ((propertyGrid.SelectedObject is FrameworkElement) && String.IsNullOrEmpty((String)baseValue))
                     return "<no name>";
             }
 
@@ -642,7 +638,7 @@ namespace H.Controls.PropertyGrid
         /// </summary>
         public object SelectedProperty
         {
-            get { return (object)GetValue(SelectedPropertyProperty); }
+            get { return GetValue(SelectedPropertyProperty); }
             set { SetValue(SelectedPropertyProperty, value); }
         }
 
@@ -651,7 +647,7 @@ namespace H.Controls.PropertyGrid
             PropertyGrid propertyGrid = sender as PropertyGrid;
             if (propertyGrid != null)
             {
-                propertyGrid.OnSelectedPropertyChanged((object)args.OldValue, (object)args.NewValue);
+                propertyGrid.OnSelectedPropertyChanged(args.OldValue, args.NewValue);
             }
         }
 
@@ -853,7 +849,7 @@ namespace H.Controls.PropertyGrid
 
         protected override void OnPreviewKeyDown(KeyEventArgs e)
         {
-            var textBox = e.OriginalSource as TextBox;
+            TextBox textBox = e.OriginalSource as TextBox;
 
             //hitting enter on textbox will update value of underlying source if UpdateTextBoxSourceOnEnterKey is true
             if ((this.SelectedPropertyItem != null)
@@ -927,7 +923,7 @@ namespace H.Controls.PropertyGrid
 
         private void PropertyGrid_PropertyValueChanged(object sender, PropertyValueChangedEventArgs e)
         {
-            var modifiedPropertyItem = e.OriginalSource as PropertyItem;
+            PropertyItem modifiedPropertyItem = e.OriginalSource as PropertyItem;
             if (modifiedPropertyItem != null)
             {
                 // Need to refresh the PropertyGrid Properties.
@@ -937,7 +933,7 @@ namespace H.Controls.PropertyGrid
                     this.UpdateContainerHelper();
                 }
 
-                var parentPropertyItem = modifiedPropertyItem.ParentNode as PropertyItem;
+                PropertyItem parentPropertyItem = modifiedPropertyItem.ParentNode as PropertyItem;
                 if ((parentPropertyItem != null) && parentPropertyItem.IsExpandable)
                 {
                     //Rebuild Editor for parent propertyItem if one of its sub-propertyItem have changed.
@@ -978,7 +974,7 @@ namespace H.Controls.PropertyGrid
 
         public double GetScrollPosition()
         {
-            var scrollViewer = this.GetScrollViewer();
+            ScrollViewer scrollViewer = this.GetScrollViewer();
             if (scrollViewer != null)
             {
                 return scrollViewer.VerticalOffset;
@@ -988,7 +984,7 @@ namespace H.Controls.PropertyGrid
 
         public void ScrollToPosition(double position)
         {
-            var scrollViewer = this.GetScrollViewer();
+            ScrollViewer scrollViewer = this.GetScrollViewer();
             if (scrollViewer != null)
             {
                 scrollViewer.ScrollToVerticalOffset(position);
@@ -997,7 +993,7 @@ namespace H.Controls.PropertyGrid
 
         public void ScrollToTop()
         {
-            var scrollViewer = this.GetScrollViewer();
+            ScrollViewer scrollViewer = this.GetScrollViewer();
             if (scrollViewer != null)
             {
                 scrollViewer.ScrollToTop();
@@ -1006,7 +1002,7 @@ namespace H.Controls.PropertyGrid
 
         public void ScrollToBottom()
         {
-            var scrollViewer = this.GetScrollViewer();
+            ScrollViewer scrollViewer = this.GetScrollViewer();
             if (scrollViewer != null)
             {
                 scrollViewer.ScrollToBottom();
@@ -1066,7 +1062,7 @@ namespace H.Controls.PropertyGrid
                 propertyItem.Editor = editor;
 
                 //Update Source of binding and Validation of PropertyItem to update
-                var be = propertyItem.GetBindingExpression(PropertyItem.ValueProperty);
+                BindingExpression be = propertyItem.GetBindingExpression(PropertyItem.ValueProperty);
                 if (be != null)
                 {
                     be.UpdateSource();
@@ -1406,11 +1402,11 @@ namespace H.Controls.PropertyGrid
 
         bool? IPropertyContainer.IsPropertyVisible(PropertyDescriptor pd)
         {
-            var handler = this.IsPropertyBrowsable;
+            IsPropertyBrowsableHandler handler = this.IsPropertyBrowsable;
             //If anyone is registered to PropertyGrid.IsPropertyBrowsable event
             if (handler != null)
             {
-                var isBrowsableArgs = new IsPropertyBrowsableArgs(pd);
+                IsPropertyBrowsableArgs isBrowsableArgs = new IsPropertyBrowsableArgs(pd);
                 handler(this, isBrowsableArgs);
 
                 return isBrowsableArgs.IsBrowsable;

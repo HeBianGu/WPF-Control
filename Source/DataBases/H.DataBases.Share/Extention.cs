@@ -1,16 +1,4 @@
-﻿
-
-
-
-
-
-using H.DataBases.Share;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using System.Linq;
-using System.Reflection;
-
-namespace System
+﻿namespace System
 {
     public static class Extention
     {

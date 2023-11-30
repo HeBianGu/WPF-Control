@@ -1,4 +1,4 @@
-﻿// CopyRightTemplate © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// CopyRightTemplate © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.Windows;
 using System.Windows.Controls;
@@ -17,13 +17,13 @@ namespace H.Extensions.Attach
             obj.SetValue(BottomTemplateProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty BottomTemplateProperty =
             DependencyProperty.RegisterAttached("BottomTemplate", typeof(ControlTemplate), typeof(Cattach), new PropertyMetadata(default(ControlTemplate), OnBottomTemplateChanged));
 
-        static public void OnBottomTemplateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnBottomTemplateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             ControlTemplate n = (ControlTemplate)e.NewValue;
 
@@ -40,13 +40,13 @@ namespace H.Extensions.Attach
             obj.SetValue(TopTemplateProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty TopTemplateProperty =
             DependencyProperty.RegisterAttached("TopTemplate", typeof(ControlTemplate), typeof(Cattach), new PropertyMetadata(default(ControlTemplate), OnTopTemplateChanged));
 
-        static public void OnTopTemplateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnTopTemplateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             ControlTemplate n = (ControlTemplate)e.NewValue;
 
@@ -63,13 +63,13 @@ namespace H.Extensions.Attach
             obj.SetValue(LeftTemplateProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty LeftTemplateProperty =
             DependencyProperty.RegisterAttached("LeftTemplate", typeof(ControlTemplate), typeof(Cattach), new PropertyMetadata(default(ControlTemplate), OnLeftTemplateChanged));
 
-        static public void OnLeftTemplateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnLeftTemplateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             ControlTemplate n = (ControlTemplate)e.NewValue;
 
@@ -86,13 +86,13 @@ namespace H.Extensions.Attach
             obj.SetValue(RightTemplateProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty RightTemplateProperty =
             DependencyProperty.RegisterAttached("RightTemplate", typeof(ControlTemplate), typeof(Cattach), new PropertyMetadata(default(ControlTemplate), OnRightTemplateChanged));
 
-        static public void OnRightTemplateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnRightTemplateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             ControlTemplate n = (ControlTemplate)e.NewValue;
 
@@ -110,13 +110,13 @@ namespace H.Extensions.Attach
             obj.SetValue(CenterTemplateProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty CenterTemplateProperty =
             DependencyProperty.RegisterAttached("CenterTemplate", typeof(ControlTemplate), typeof(Cattach), new PropertyMetadata(default(ControlTemplate), OnCenterTemplateChanged));
 
-        static public void OnCenterTemplateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnCenterTemplateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             ControlTemplate n = (ControlTemplate)e.NewValue;
 

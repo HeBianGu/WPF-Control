@@ -4,9 +4,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style x:Key="{ComponentResourceKey ResourceId=S.TreeView.Default,
-                                        TypeInTargetAssembly={x:Type local:TreeViewKeys}}"
-           TargetType="TreeView">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.TreeView.Default, TypeInTargetAssembly={x:Type local:TreeViewKeys}}" TargetType="TreeView">
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
@@ -35,8 +33,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="ExpandCollapseToggleStyle"
-           TargetType="ToggleButton">
+    <Style x:Key="ExpandCollapseToggleStyle" TargetType="ToggleButton">
         <Setter Property="Focusable" Value="False" />
         <Setter Property="Template">
             <Setter.Value>
@@ -61,15 +58,11 @@
                             <VisualStateGroup x:Name="CheckStates">
                                 <VisualState x:Name="Checked">
                                     <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Collapsed"
-                                                                       Storyboard.TargetProperty="(UIElement.Visibility)">
-                                            <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{x:Static Visibility.Hidden}" />
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Collapsed" Storyboard.TargetProperty="(UIElement.Visibility)">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}" />
                                         </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Expanded"
-                                                                       Storyboard.TargetProperty="(UIElement.Visibility)">
-                                            <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{x:Static Visibility.Visible}" />
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Expanded" Storyboard.TargetProperty="(UIElement.Visibility)">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}" />
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -97,9 +90,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style x:Key="{ComponentResourceKey ResourceId=S.TreeViewItem.Default,
-                                        TypeInTargetAssembly={x:Type local:TreeViewItemKeys}}"
-           TargetType="{x:Type TreeViewItem}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.TreeViewItem.Default, TypeInTargetAssembly={x:Type local:TreeViewItemKeys}}" TargetType="{x:Type TreeViewItem}">
         <Setter Property="VerticalAlignment" Value="Top" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="HorizontalContentAlignment" Value="{Binding Path=HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
@@ -116,8 +107,7 @@
                 <ControlTemplate TargetType="{x:Type TreeViewItem}">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"
-                                              MinWidth="19" />
+                            <ColumnDefinition Width="Auto" MinWidth="19" />
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
@@ -160,10 +150,8 @@
                                 <VisualState x:Name="Normal" />
                                 <VisualState x:Name="MouseOver">
                                     <Storyboard>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Bd"
-                                                                      Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0"
-                                                                 Value="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Bd" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -171,20 +159,16 @@
                             <VisualStateGroup x:Name="SelectionStates">
                                 <VisualState x:Name="Selected">
                                     <Storyboard>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Bd"
-                                                                      Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0"
-                                                                 Value="{DynamicResource {x:Static ColorKeys.Selected}}" />
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Bd" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.Selected}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Unselected" />
                                 <VisualState x:Name="SelectedInactive">
                                     <Storyboard>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Bd"
-                                                                      Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0"
-                                                                 Value="{DynamicResource {x:Static ColorKeys.Selected}}" />
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Bd" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.Selected}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -192,10 +176,8 @@
                             <VisualStateGroup x:Name="ExpansionStates">
                                 <VisualState x:Name="Expanded">
                                     <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ItemsHost"
-                                                                       Storyboard.TargetProperty="(UIElement.Visibility)">
-                                            <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{x:Static Visibility.Visible}" />
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ItemsHost" Storyboard.TargetProperty="(UIElement.Visibility)">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}" />
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -262,9 +244,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style BasedOn="{StaticResource {x:Static local:TreeViewKeys.Default}}"
-           TargetType="TreeView" />
-    <Style BasedOn="{StaticResource {x:Static local:TreeViewItemKeys.Default}}"
-           TargetType="TreeViewItem" />
+    <Style BasedOn="{StaticResource {x:Static local:TreeViewKeys.Default}}" TargetType="TreeView" />
+    <Style BasedOn="{StaticResource {x:Static local:TreeViewItemKeys.Default}}" TargetType="TreeViewItem" />
 
 </ResourceDictionary>

@@ -10,23 +10,12 @@ using H.Controls.FilterBox;
 using H.Providers.Ioc;
 */
 using H.Providers.Ioc;
-using H.Providers.Ioc;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace H.Controls.FilterBox
 {
@@ -78,7 +67,7 @@ namespace H.Controls.FilterBox
             set { SetValue(DisplayNameProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty DisplayNameProperty =
             DependencyProperty.Register("DisplayName", typeof(string), typeof(PropertyFilterBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
             {
@@ -154,7 +143,7 @@ namespace H.Controls.FilterBox
             set { SetValue(PropertyNamesProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty PropertyNamesProperty =
             DependencyProperty.Register("PropertyNames", typeof(string), typeof(PropertyFilterBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
             {
@@ -189,7 +178,7 @@ namespace H.Controls.FilterBox
             RaiseEvent(args);
         }
 
-        void RefreshType(Type type)
+        private void RefreshType(Type type)
         {
             if (type == null)
                 return;
@@ -207,7 +196,7 @@ namespace H.Controls.FilterBox
 
         public async void ShowConfig()
         {
-            var r = await IocMessage.Dialog.Show(_propertyConfidtions, x =>
+            bool? r = await IocMessage.Dialog.Show(_propertyConfidtions, x =>
             {
                 if (x is Control control)
                 {
@@ -221,7 +210,7 @@ namespace H.Controls.FilterBox
             }
         }
 
-        void Save()
+        private void Save()
         {
             _propertyConfidtions.Save();
             Filter = new PropertyFilterBoxFilter(this);
@@ -231,7 +220,7 @@ namespace H.Controls.FilterBox
 
     public class PropertyFilterBoxFilter : IDisplayFilter
     {
-        PropertyFilterBox _propertyFilter;
+        private PropertyFilterBox _propertyFilter;
         public PropertyFilterBoxFilter(PropertyFilterBox propertyFilter)
         {
             _propertyFilter = propertyFilter;

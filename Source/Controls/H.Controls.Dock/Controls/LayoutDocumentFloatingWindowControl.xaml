@@ -7,8 +7,7 @@
                     xmlns:local="clr-namespace:H.Controls.Dock"
                     xmlns:lp="clr-namespace:H.Controls.Dock.Properties"
                     xmlns:shell="clr-namespace:Microsoft.Windows.Shell">
-    <Style x:Key="{x:Type lc:LayoutDocumentFloatingWindowControl}"
-           TargetType="{x:Type lc:LayoutDocumentFloatingWindowControl}">
+    <Style x:Key="{x:Type lc:LayoutDocumentFloatingWindowControl}" TargetType="{x:Type lc:LayoutDocumentFloatingWindowControl}">
         <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Background}}" />
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
@@ -32,13 +31,11 @@
                                 BorderThickness="{TemplateBinding BorderThickness}">
                             <Grid Margin="3">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"
-                                                   MinHeight="16" />
+                                    <RowDefinition Height="Auto" MinHeight="16" />
                                     <!--  https://github.com/xceedsoftware/wpftoolkit/issues/1203  -->
                                     <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
-                                <Grid Height="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}"
-                                      UseLayoutRounding="True">
+                                <Grid Height="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}" UseLayoutRounding="True">
                                     <Grid.Background>
                                         <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.CaptionBackground}}" />
                                     </Grid.Background>
@@ -48,8 +45,7 @@
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <Border Visibility="{Binding Path=Model.IsSinglePane, RelativeSource={RelativeSource TemplatedParent}, Converter={lcv:BoolToVisibilityConverter}}">
-                                        <lc:DropDownControlArea DropDownContextMenu="{Binding Model.Root.Manager.DocumentContextMenu, RelativeSource={RelativeSource TemplatedParent}}"
-                                                                DropDownContextMenuDataContext="{Binding Path=SingleContentLayoutItem, RelativeSource={RelativeSource TemplatedParent}}">
+                                        <lc:DropDownControlArea DropDownContextMenu="{Binding Model.Root.Manager.DocumentContextMenu, RelativeSource={RelativeSource TemplatedParent}}" DropDownContextMenuDataContext="{Binding Path=SingleContentLayoutItem, RelativeSource={RelativeSource TemplatedParent}}">
                                             <ContentPresenter VerticalAlignment="Center"
                                                               Content="{Binding Model.SinglePane.SelectedContent, RelativeSource={RelativeSource TemplatedParent}}"
                                                               ContentTemplate="{Binding Model.Root.Manager.DocumentTitleTemplate, RelativeSource={RelativeSource TemplatedParent}}"
@@ -71,7 +67,7 @@
                                             shell:WindowChrome.IsHitTestVisibleInChrome="True"
                                             Command="{x:Static shell:SystemCommands.RestoreWindowCommand}"
                                             CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                                                Content="F1M11.999,10.002L10.998,10.002 10.998,5.002 5.998,5.002 5.998,4.001 11.999,4.001z M10.002,11.999L4.001,11.999 4.001,5.998 10.002,5.998z M5.002,3L5.002,5.002 3,5.002 3,13 10.998,13 10.998,10.998 13,10.998 13,3z"
+                                            Content="F1M11.999,10.002L10.998,10.002 10.998,5.002 5.998,5.002 5.998,4.001 11.999,4.001z M10.002,11.999L4.001,11.999 4.001,5.998 10.002,5.998z M5.002,3L5.002,5.002 3,5.002 3,13 10.998,13 10.998,10.998 13,10.998 13,3z"
                                             Focusable="False"
                                             Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}"
                                             ToolTip="{x:Static lp:Resources.Window_Restore}"
@@ -86,8 +82,7 @@
                                             ToolTip="{x:Static lp:Resources.Document_Close}"
                                             Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={lcv:BoolToVisibilityConverter}}" />
                                 </Grid>
-                                <ContentPresenter Grid.Row="1"
-                                                  Content="{TemplateBinding Content}" />
+                                <ContentPresenter Grid.Row="1" Content="{TemplateBinding Content}" />
                             </Grid>
                         </Border>
                     </Grid>
@@ -95,8 +90,7 @@
                         <Trigger Property="WindowState" Value="Maximized">
                             <Setter TargetName="WindowBorder" Property="Padding" Value="3" />
                         </Trigger>
-                        <DataTrigger Binding="{Binding IsActive, RelativeSource={RelativeSource Self}}"
-                                     Value="True">
+                        <DataTrigger Binding="{Binding IsActive, RelativeSource={RelativeSource Self}}" Value="True">
                             <Setter TargetName="WindowBorder" Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
                         </DataTrigger>
                     </ControlTemplate.Triggers>

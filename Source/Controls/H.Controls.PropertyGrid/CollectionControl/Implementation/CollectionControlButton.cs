@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections;
@@ -106,8 +106,8 @@ namespace H.Controls.PropertyGrid
 
         private void CollectionControlButton_Click(object sender, RoutedEventArgs e)
         {
-            var collectionControlDialog = new CollectionControlDialog();
-            var binding = new Binding("ItemsSource") { Source = this, Mode = BindingMode.TwoWay };
+            CollectionControlDialog collectionControlDialog = new CollectionControlDialog();
+            Binding binding = new Binding("ItemsSource") { Source = this, Mode = BindingMode.TwoWay };
             BindingOperations.SetBinding(collectionControlDialog, CollectionControlDialog.ItemsSourceProperty, binding);
             collectionControlDialog.NewItemTypes = this.NewItemTypes;
             collectionControlDialog.ItemsSourceType = this.ItemsSourceType;

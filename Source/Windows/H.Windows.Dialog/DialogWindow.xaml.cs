@@ -1,7 +1,5 @@
 ﻿using H.Presenters.Common;
 using H.Providers.Ioc;
-using H.Providers.Ioc;
-using H.Themes.Default;
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -9,8 +7,6 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Markup;
 
 namespace H.Windows.Dialog
 {
@@ -76,7 +72,7 @@ namespace H.Windows.Dialog
         }
     }
 
-    partial class DialogWindow : Window
+    public partial class DialogWindow : Window
     {
         public static bool? ShowMessage(string message, string title = "提示", DialogButton dialogButton = DialogButton.Sumit, Window owner = null, Action<IDialog> action = null)
         {
@@ -121,7 +117,7 @@ namespace H.Windows.Dialog
             dialog.Width = 500;
             dialog.SizeToContent = SizeToContent.Height;
             dialog.CanSumit = canSumit;
-            var key = GetResourceKey(dialogButton);
+            ResourceKey key = GetResourceKey(dialogButton);
             dialog.Style = Application.Current.FindResource(key) as Style;
             owner = owner ?? Application.Current.MainWindow;
             if (owner?.IsLoaded == true)
@@ -134,7 +130,7 @@ namespace H.Windows.Dialog
                 dialog.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             }
             action?.Invoke(dialog);
-            var r = dialog.ShowDialog();
+            bool? r = dialog.ShowDialog();
             return r;
         }
 
@@ -182,13 +178,13 @@ namespace H.Windows.Dialog
 
         public static bool? ShowIoc<T>(Action<DialogWindow> action = null, string title = null, DialogButton dialogButton = DialogButton.Sumit, Window owner = null)
         {
-            var about = Ioc.Services.GetService(typeof(T));
+            object about = Ioc.Services.GetService(typeof(T));
             return DialogWindow.ShowIoc(typeof(T), action, title, dialogButton, owner);
         }
 
         public static bool? ShowIoc(Type type, Action<DialogWindow> action = null, string title = null, DialogButton dialogButton = DialogButton.Sumit, Window owner = null)
         {
-            var about = Ioc.Services.GetService(type);
+            object about = Ioc.Services.GetService(type);
             return DialogWindow.ShowPresenter(about, x =>
             {
                 x.Width = 500;

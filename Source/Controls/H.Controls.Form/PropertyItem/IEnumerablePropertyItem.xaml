@@ -46,7 +46,9 @@
                                         <TextBlock Text="]" />
                                         <!--<TextBlock Margin="10,0" Text="{Binding ., Converter={x:Static h:XConverter.GetTypeDisplayConverter}}" />-->
                                         <!--<TextBlock Margin="10,0" DockPanel.Dock="Right" Text="{Binding ., Converter={x:Static h:Converter.GetDiaplayName}}" />-->
-                                        <TextBlock Margin="10,0" DockPanel.Dock="Right" Text="{Binding .}" />
+                                        <TextBlock Margin="10,0"
+                                                   DockPanel.Dock="Right"
+                                                   Text="{Binding .}" />
                                     </DockPanel>
                                 </Expander.Header>
                                 <!--<h:Cattach.CaptionRightTemplate>

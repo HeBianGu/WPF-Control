@@ -21,36 +21,23 @@
                             <Setter Property="Margin" Value="2,0" />
                         </Style>
                     </DockPanel.Resources>-->
-                    <Button Command="{Binding AddCommand}"
-                            Content="新增" />
-                    <Button Command="{Binding ClearCommand}"
-                            Content="清空" />
-                    <Button Command="{Binding EditCommand}"
-                            Content="编辑" />
-                    <Button Command="{Binding DeleteCommand}"
-                            Content="删除" />
-                    <Button Command="{Binding ExportCommand}"
-                            Content="导出" />
-                    <Button Command="{Binding ViewCommand}"
-                            Content="查看" />
-                    <Button Command="{Binding CheckedAllCommand}"
-                            Content="全选" />
-                    <Button Command="{Binding DeleteCheckedCommand}"
-                            Content="删除选中" />
-                    <Button Command="{Binding NextCommand}"
-                            Content="下一页" />
-                    <Button Command="{Binding PreviousCommand}"
-                            Content="上一页" />
-                    <Button Command="{Binding SaveCommand}"
-                            Content="保存" />
-                    <CheckBox Content="全选"
-                              IsChecked="{Binding CheckedAll}" />
+                    <Button Command="{Binding AddCommand}" Content="新增" />
+                    <Button Command="{Binding ClearCommand}" Content="清空" />
+                    <Button Command="{Binding EditCommand}" Content="编辑" />
+                    <Button Command="{Binding DeleteCommand}" Content="删除" />
+                    <Button Command="{Binding ExportCommand}" Content="导出" />
+                    <Button Command="{Binding ViewCommand}" Content="查看" />
+                    <Button Command="{Binding CheckedAllCommand}" Content="全选" />
+                    <Button Command="{Binding DeleteCheckedCommand}" Content="删除选中" />
+                    <Button Command="{Binding NextCommand}" Content="下一页" />
+                    <Button Command="{Binding PreviousCommand}" Content="上一页" />
+                    <Button Command="{Binding SaveCommand}" Content="保存" />
+                    <CheckBox Content="全选" IsChecked="{Binding CheckedAll}" />
                     <BulletDecorator DockPanel.Dock="Right">
                         <BulletDecorator.Bullet>
                             <TextBlock Text="搜索" />
                         </BulletDecorator.Bullet>
-                        <TextBox Width="200"
-                                 Margin="5,0" />
+                        <TextBox Width="200" Margin="5,0" />
                     </BulletDecorator>
                 </DockPanel>
                 <DataGrid ItemsSource="{Binding Collection.Source}">
@@ -59,8 +46,7 @@
                                                       DataGridLength="*"
                                                       Type="{Binding ModelType}">
                             <h:DataGridAutoColumnBehavior.HomeColumns>
-                                <DataGridCheckBoxColumn Binding="{Binding IsSelected}"
-                                                        Header="全选" />
+                                <DataGridCheckBoxColumn Binding="{Binding IsSelected}" Header="全选" />
                             </h:DataGridAutoColumnBehavior.HomeColumns>
                         </h:DataGridAutoColumnBehavior>
                     </Behaviors:Interaction.Behaviors>

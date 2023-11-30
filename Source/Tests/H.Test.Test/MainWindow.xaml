@@ -192,7 +192,7 @@
                                                   Type="{x:Type h:Student}">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding ., Converter={h:GetBoolConverter TrueValue=启用, FalseValue=禁用, DefaultValue=全选}}" />
+                                        <TextBlock Text="{Binding ., Converter={h:GetBoolToValueConverter TrueValue=启用, FalseValue=禁用, DefaultValue=全选}}" />
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
                             </h:SelectionFilterBox>
@@ -264,14 +264,13 @@
                 <DockPanel>
                     <DockPanel DockPanel.Dock="Top" LastChildFill="False">
                         <h:PropertyOrderBox x:Name="ob"
-                                             Margin="5"
-                                             Type="{x:Type h:Student}" />
+                                            Margin="5"
+                                            Type="{x:Type h:Student}" />
                     </DockPanel>
                     <DataGrid>
                         <Behaviors:Interaction.Behaviors>
                             <h:DataGridAutoColumnBehavior DataGridLength="*" Type="{x:Type h:Student}" />
-                            <h:ItemsControlFilterBehavior Order="{Binding ElementName=ob, Path=Order}"
-                                                          ItemsSource="{Binding Students}" />
+                            <h:ItemsControlFilterBehavior ItemsSource="{Binding Students}" Order="{Binding ElementName=ob, Path=Order}" />
                         </Behaviors:Interaction.Behaviors>
                     </DataGrid>
                 </DockPanel>
@@ -344,15 +343,17 @@
                         <TreeView ItemsSource="{ClassTypeTreeDataProvider Type={x:Type FrameworkElement}}">
                             <TreeView.ItemTemplate>
                                 <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
-                                    <TextBlock x:Name="a" VerticalAlignment="Center" Text="{Binding Model.Name}" />
+                                    <TextBlock x:Name="a"
+                                               VerticalAlignment="Center"
+                                               Text="{Binding Model.Name}" />
                                 </HierarchicalDataTemplate>
                             </TreeView.ItemTemplate>
                             <TreeView.ItemContainerStyle>
-                                <Style TargetType="TreeViewItem" BasedOn="{StaticResource {x:Static h:TreeViewItemKeys.Default}}">
+                                <Style BasedOn="{StaticResource {x:Static h:TreeViewItemKeys.Default}}" TargetType="TreeViewItem">
                                     <Setter Property="h:BehvaiorAttach.Behaviors">
                                         <Setter.Value>
                                             <h:Behaviors>
-                                                <h:TreeViewItemLazyLoadBehavior Tree="{ClassTypeTree}"/>
+                                                <h:TreeViewItemLazyLoadBehavior Tree="{ClassTypeTree}" />
                                             </h:Behaviors>
                                         </Setter.Value>
                                     </Setter>
@@ -364,17 +365,19 @@
                         <TreeView ItemsSource="{ExploreTreeDataProvider}">
                             <TreeView.ItemTemplate>
                                 <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
-                                    <TextBlock x:Name="a" VerticalAlignment="Center" Text="{Binding Model.Name}" />
+                                    <TextBlock x:Name="a"
+                                               VerticalAlignment="Center"
+                                               Text="{Binding Model.Name}" />
                                 </HierarchicalDataTemplate>
                             </TreeView.ItemTemplate>
                             <TreeView.ItemContainerStyle>
-                                <Style TargetType="TreeViewItem" BasedOn="{StaticResource {x:Static h:TreeViewItemKeys.Default}}">
+                                <Style BasedOn="{StaticResource {x:Static h:TreeViewItemKeys.Default}}" TargetType="TreeViewItem">
                                     <Setter Property="h:BehvaiorAttach.Behaviors">
                                         <Setter.Value>
                                             <h:Behaviors>
                                                 <h:TreeViewItemLazyLoadBehavior>
                                                     <h:TreeViewItemLazyLoadBehavior.Tree>
-                                                        <h:ExploreTree/>
+                                                        <h:ExploreTree />
                                                     </h:TreeViewItemLazyLoadBehavior.Tree>
                                                 </h:TreeViewItemLazyLoadBehavior>
                                             </h:Behaviors>

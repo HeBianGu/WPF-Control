@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 using H.Extensions.TypeConverter;
@@ -21,7 +21,7 @@ namespace H.Controls.Diagram
             set { SetValue(SpanProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty SpanProperty =
             DependencyProperty.Register("Span", typeof(double), typeof(TreeLayout), new PropertyMetadata(200.0, (d, e) =>
              {
@@ -42,7 +42,7 @@ namespace H.Controls.Diagram
             set { SetValue(AlignmentProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty AlignmentProperty =
             DependencyProperty.Register("Alignment", typeof(HorizontalAlignment), typeof(TreeLayout), new PropertyMetadata(HorizontalAlignment.Center, (d, e) =>
              {
@@ -63,7 +63,7 @@ namespace H.Controls.Diagram
             set { SetValue(OrientationProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty OrientationProperty =
             DependencyProperty.Register("Orientation", typeof(Orientation), typeof(TreeLayout), new PropertyMetadata(default(Orientation), (d, e) =>
              {
@@ -110,7 +110,7 @@ namespace H.Controls.Diagram
             foreach (TreeNode node in roots)
             {
                 node.MeasureNode();
-                Point center = new Point(this.Diagram.Width / 2.0 - node.DesiredSize.Width / 2, this.Diagram.Height / 2.0 - node.DesiredSize.Height / 2);
+                Point center = new Point((this.Diagram.Width / 2.0) - (node.DesiredSize.Width / 2), (this.Diagram.Height / 2.0) - (node.DesiredSize.Height / 2));
 
                 node.ArrangeNode(center, l => l);
             }
@@ -120,14 +120,14 @@ namespace H.Controls.Diagram
         {
             NodeLayer.SetPosition(node, transfor.Invoke(point));
             node.Location = point;
-            double y = point.Y - node.NodeDesiredSize.Height / 2;
-            foreach (var item in node.GetChildren())
+            double y = point.Y - (node.NodeDesiredSize.Height / 2);
+            foreach (TreeNode item in node.GetChildren())
             {
                 item.MeasureNode();
                 y += item.NodeDesiredSize.Height;
                 int level = item.GetLevel();
-                double x = level * this.Span + point.X;
-                Point center = new Point(x, y - item.NodeDesiredSize.Height / 2);
+                double x = (level * this.Span) + point.X;
+                Point center = new Point(x, y - (item.NodeDesiredSize.Height / 2));
                 this.ArrangeNode(item, center, transfor);
             }
         }
@@ -143,13 +143,13 @@ namespace H.Controls.Diagram
             //  Do ：设置连线连接到节点上
             if (this.Orientation == Orientation.Vertical)
             {
-                from = new Point(from.X + link.FromNode.DesiredSize.Width / 2, from.Y);
-                to = new Point(to.X - link.ToNode.DesiredSize.Width / 2, to.Y);
+                from = new Point(from.X + (link.FromNode.DesiredSize.Width / 2), from.Y);
+                to = new Point(to.X - (link.ToNode.DesiredSize.Width / 2), to.Y);
             }
             else
             {
-                from = new Point(from.X, from.Y + link.FromNode.DesiredSize.Height / 2);
-                to = new Point(to.X, to.Y - link.ToNode.DesiredSize.Height / 2);
+                from = new Point(from.X, from.Y + (link.FromNode.DesiredSize.Height / 2));
+                to = new Point(to.X, to.Y - (link.ToNode.DesiredSize.Height / 2));
             }
 
             LinkLayer.SetEnd(link, to);
@@ -184,7 +184,7 @@ namespace H.Controls.Diagram
 
         protected virtual void TranformAll(IEnumerable<TreeNode> roots)
         {
-            foreach (var item in roots)
+            foreach (TreeNode item in roots)
             {
                 if (this.Orientation == Orientation.Horizontal)
                     item.TranformAll(new Vector(0, 0));

@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,6 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Windows;
 using System.Windows.Media;
-using System.Windows.Shapes;
 
 namespace H.Controls.Diagram
 {
@@ -33,7 +32,7 @@ namespace H.Controls.Diagram
             set { SetValue(InnerSpanProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty InnerSpanProperty =
             DependencyProperty.Register("InnerSpan", typeof(int), typeof(BrokenLinkDrawer), new FrameworkPropertyMetadata(30, (d, e) =>
              {
@@ -59,7 +58,7 @@ namespace H.Controls.Diagram
             Point start = LinkLayer.GetStart(link);
             Point end = LinkLayer.GetEnd(link);
             Vector v1 = end - start;
-            center = new Point(v1.X / 2 + start.X, v1.Y / 2 + start.Y);
+            center = new Point((v1.X / 2) + start.X, (v1.Y / 2) + start.Y);
             List<Point> points = new List<Point>();
 
             //  Do ：创建内连点
@@ -220,20 +219,19 @@ namespace H.Controls.Diagram
 
         public Geometry GetBrokenGeometry(Point[] points)
         {
-            var geo = this.GetPolyLineGeometry(points.ToArray());
+            Geometry geo = this.GetPolyLineGeometry(points.ToArray());
             if (this.IsUseArrow == false)
                 return geo;
-            var start = points[points.Length - 2];
-            var end = points[points.Length - 1];
+            Point start = points[points.Length - 2];
+            Point end = points[points.Length - 1];
             return this.GetArrowGeometry(geo, start, end);
         }
 
-
-        Point GetCenter(List<Point> points)
+        private Point GetCenter(List<Point> points)
         {
             if (points.Count > 2)
             {
-                return new Point(points[2].X / 2 + points[1].X / 2, points[2].Y / 2 + points[1].Y / 2);
+                return new Point((points[2].X / 2) + (points[1].X / 2), (points[2].Y / 2) + (points[1].Y / 2));
             }
             if (points.Count > 1)
             {

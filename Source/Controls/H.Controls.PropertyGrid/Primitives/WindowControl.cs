@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Windows;
@@ -215,7 +215,7 @@ namespace H.Controls.PropertyGrid
 
         private static void OnIsActiveChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            var windowControl = obj as WindowControl;
+            WindowControl windowControl = obj as WindowControl;
             if (windowControl != null)
                 windowControl.OnIsActiveChanged((bool)e.OldValue, (bool)e.NewValue);
         }
@@ -268,7 +268,7 @@ namespace H.Controls.PropertyGrid
             if (basevalue == DependencyProperty.UnsetValue)
                 return basevalue;
 
-            var windowControl = (WindowControl)d;
+            WindowControl windowControl = (WindowControl)d;
             if (windowControl == null)
                 return basevalue;
 
@@ -277,7 +277,7 @@ namespace H.Controls.PropertyGrid
 
         private object OnCoerceLeft(object newValue)
         {
-            var value = (double)newValue;
+            double value = (double)newValue;
             if (object.Equals(value, double.NaN))
                 return 0.0;
 
@@ -324,7 +324,7 @@ namespace H.Controls.PropertyGrid
             if (basevalue == DependencyProperty.UnsetValue)
                 return basevalue;
 
-            var windowControl = (WindowControl)d;
+            WindowControl windowControl = (WindowControl)d;
             if (windowControl == null)
                 return basevalue;
 
@@ -333,7 +333,7 @@ namespace H.Controls.PropertyGrid
 
         private object OnCoerceTop(object newValue)
         {
-            var value = (double)newValue;
+            double value = (double)newValue;
             if (object.Equals(value, double.NaN))
                 return 0.0;
 

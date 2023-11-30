@@ -9,7 +9,10 @@
         <ResourceDictionary Source="../Marker/Marker.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.FlagTip.Default, TypeInTargetAssembly={x:Type local:FlagTip}}" BasedOn="{StaticResource {x:Static h:Layer.DefaultKey}}" TargetType="{x:Type local:FlagTip}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.FlagTip.Default,
+                                        TypeInTargetAssembly={x:Type local:FlagTip}}"
+           BasedOn="{StaticResource {x:Static h:Layer.DefaultKey}}"
+           TargetType="{x:Type local:FlagTip}">
         <Setter Property="Data" Value="{Binding RelativeSource={RelativeSource AncestorType=local:Chart}, Path=yDatas}" />
         <Setter Property="xAxis" Value="{Binding RelativeSource={RelativeSource AncestorType=local:Chart}, Path=xDatas}" />
 
@@ -28,10 +31,11 @@
                     <Style.Triggers>
                         <EventTrigger RoutedEvent="Loaded">
                             <BeginStoryboard>
-                                <Storyboard >
+                                <Storyboard>
                                     <DoubleAnimation RepeatBehavior="Forever"
                                                      Storyboard.TargetProperty="Opacity"
-                                                     From="0" To="1"
+                                                     From="0"
+                                                     To="1"
                                                      Duration="00:00:00.5" />
                                 </Storyboard>
                             </BeginStoryboard>
@@ -66,7 +70,9 @@
                         <Setter.Value>
                             <ControlTemplate TargetType="Label">
                                 <Grid>
-                                    <Border Background="{TemplateBinding Background}" CornerRadius="2" Opacity="0.8" />
+                                    <Border Background="{TemplateBinding Background}"
+                                            CornerRadius="2"
+                                            Opacity="0.8" />
 
                                     <TextBlock Margin="20,6"
                                                HorizontalAlignment="Center"
@@ -99,6 +105,6 @@
     </Style>
 
     <Style BasedOn="{StaticResource {x:Static h:FlagTip.DefaultKey}}" TargetType="{x:Type local:FlagTip}" />
-    
+
 </ResourceDictionary>
 

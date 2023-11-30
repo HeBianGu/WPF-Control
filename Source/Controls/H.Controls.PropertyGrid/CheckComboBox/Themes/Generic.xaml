@@ -47,7 +47,9 @@
                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                      Text="{Binding Content, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
                                      VerticalScrollBarVisibility="Hidden" />
-                            <Grid Grid.Column="1" Width="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" HorizontalAlignment="Right">
+                            <Grid Grid.Column="1"
+                                  Width="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}"
+                                  HorizontalAlignment="Right">
                                 <Path x:Name="Arrow"
                                       Margin="3,0,3,0"
                                       HorizontalAlignment="Center"
@@ -107,7 +109,8 @@
                                         BorderThickness="1">
                                     <ScrollViewer x:Name="DropDownScrollViewer">
                                         <Grid RenderOptions.ClearTypeHint="Enabled">
-                                            <Canvas Width="0" Height="0"
+                                            <Canvas Width="0"
+                                                    Height="0"
                                                     HorizontalAlignment="Left"
                                                     VerticalAlignment="Top">
                                                 <Rectangle x:Name="OpaqueRect"
@@ -115,14 +118,18 @@
                                                            Height="{Binding ActualHeight, ElementName=DropDownBorder}"
                                                            Fill="{Binding Background, ElementName=DropDownBorder}" />
                                             </Canvas>
-                                            <ItemsPresenter x:Name="PART_ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                            <ItemsPresenter x:Name="PART_ItemsPresenter"
+                                                            KeyboardNavigation.DirectionalNavigation="Contained"
+                                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                                         </Grid>
                                     </ScrollViewer>
                                 </Border>
                             </Grid>
                         </Popup>
 
-                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" />
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}" />
                         <ToggleButton x:Name="PART_DropDownButton"
                                       Padding="{TemplateBinding Padding}"
                                       HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"

@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 
@@ -10,7 +10,7 @@ namespace H.Controls.PropertyGrid
 
         static ByteUpDown()
         {
-            UpdateMetadata(typeof(ByteUpDown), (byte)1, byte.MinValue, byte.MaxValue);
+            UpdateMetadata(typeof(ByteUpDown), 1, byte.MinValue, byte.MaxValue);
         }
 
         public ByteUpDown()

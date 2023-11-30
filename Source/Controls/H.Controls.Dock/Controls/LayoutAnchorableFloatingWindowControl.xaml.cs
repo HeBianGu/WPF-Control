@@ -1,11 +1,3 @@
-/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
 
 using H.Controls.Dock.Commands;
 using H.Controls.Dock.Converters;
@@ -70,7 +62,7 @@ namespace H.Controls.Dock.Controls
         private void LayoutAnchorableFloatingWindowControl_Activated(object sender, EventArgs e)
         {
             // Issue similar to: http://avalondock.codeplex.com/workitem/15036
-            var visibilityBinding = GetBindingExpression(VisibilityProperty);
+            BindingExpression visibilityBinding = GetBindingExpression(VisibilityProperty);
             if (visibilityBinding == null && Visibility == Visibility.Visible) SetVisibilityBinding();
         }
 
@@ -145,9 +137,9 @@ namespace H.Controls.Dock.Controls
             return HitTest(this.TransformToDeviceDPI(dragPoint));
         }
 
-        bool HitTest(Point dragPoint)
+        private bool HitTest(Point dragPoint)
         {
-            var detectionRect = new Rect(this.PointToScreenDPIWithoutFlowDirection(new Point()), this.TransformActualSizeToAncestor());
+            Rect detectionRect = new Rect(this.PointToScreenDPIWithoutFlowDirection(new Point()), this.TransformActualSizeToAncestor());
             return detectionRect.Contains(dragPoint);
         }
 
@@ -173,10 +165,10 @@ namespace H.Controls.Dock.Controls
             if (_dropAreas != null) return _dropAreas;
             _dropAreas = new List<IDropArea>();
             if (draggingWindow.Model is LayoutDocumentFloatingWindow) return _dropAreas;
-            var rootVisual = (Content as FloatingWindowContentHost).RootVisual;
-            foreach (var areaHost in rootVisual.FindVisualChildren<LayoutAnchorablePaneControl>())
+            System.Windows.Media.Visual rootVisual = (Content as FloatingWindowContentHost).RootVisual;
+            foreach (LayoutAnchorablePaneControl areaHost in rootVisual.FindVisualChildren<LayoutAnchorablePaneControl>())
                 _dropAreas.Add(new DropArea<LayoutAnchorablePaneControl>(areaHost, DropAreaType.AnchorablePane));
-            foreach (var areaHost in rootVisual.FindVisualChildren<LayoutDocumentPaneControl>())
+            foreach (LayoutDocumentPaneControl areaHost in rootVisual.FindVisualChildren<LayoutDocumentPaneControl>())
                 _dropAreas.Add(new DropArea<LayoutDocumentPaneControl>(areaHost, DropAreaType.DocumentPane));
             return _dropAreas;
         }
@@ -191,7 +183,7 @@ namespace H.Controls.Dock.Controls
         protected override void OnInitialized(EventArgs e)
         {
             base.OnInitialized(e);
-            var manager = _model.Root.Manager;
+            DockingManager manager = _model.Root.Manager;
             Content = manager.CreateUIElementForModel(_model.RootPanel);
             //SetBinding(VisibilityProperty, new Binding("IsVisible") { Source = _model, Converter = new BoolToVisibilityConverter(), Mode = BindingMode.OneWay, ConverterParameter = Visibility.Hidden });
 
@@ -204,7 +196,7 @@ namespace H.Controls.Dock.Controls
         /// <inheritdoc />
         protected override void OnClosed(EventArgs e)
         {
-            var root = Model.Root;
+            ILayoutRoot root = Model.Root;
             if (root != null)
             {
                 if (root is LayoutRoot layoutRoot) layoutRoot.Updated -= OnRootUpdated;
@@ -233,7 +225,7 @@ namespace H.Controls.Dock.Controls
         /// <inheritdoc />
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
-            var canHide = HideWindowCommand.CanExecute(null);
+            bool canHide = HideWindowCommand.CanExecute(null);
             if (CloseInitiatedByUser && !KeepContentVisibleOnClose && !canHide) e.Cancel = true;
             base.OnClosing(e);
         }
@@ -244,12 +236,12 @@ namespace H.Controls.Dock.Controls
             switch (msg)
             {
                 case Win32Helper.WM_ACTIVATE:
-                    var anchorablePane = _model.Descendents().OfType<LayoutAnchorablePane>()
+                    LayoutAnchorablePane anchorablePane = _model.Descendents().OfType<LayoutAnchorablePane>()
                         .FirstOrDefault(p => p.ChildrenCount > 0 && p.SelectedContent != null);
 
                     if (anchorablePane != null)
                     {
-                        var isActive = !(((int)wParam & 0xFFFF) == Win32Helper.WA_INACTIVE);
+                        bool isActive = !(((int)wParam & 0xFFFF) == Win32Helper.WA_INACTIVE);
                         anchorablePane.SelectedContent.IsActive = isActive;
 
                         handled = true;
@@ -260,7 +252,7 @@ namespace H.Controls.Dock.Controls
                 case Win32Helper.WM_NCRBUTTONUP:
                     if (wParam.ToInt32() == Win32Helper.HT_CAPTION)
                     {
-                        var windowChrome = WindowChrome.GetWindowChrome(this);
+                        WindowChrome windowChrome = WindowChrome.GetWindowChrome(this);
                         if (windowChrome != null)
                         {
                             if (OpenContextMenu()) handled = true;
@@ -315,7 +307,7 @@ namespace H.Controls.Dock.Controls
             else
                 _overlayWindow.Owner = null;
 
-            var rectWindow = new Rect(this.PointToScreenDPIWithoutFlowDirection(new Point()), this.TransformActualSizeToAncestor());
+            Rect rectWindow = new Rect(this.PointToScreenDPIWithoutFlowDirection(new Point()), this.TransformActualSizeToAncestor());
             _overlayWindow.Left = rectWindow.Left;
             _overlayWindow.Top = rectWindow.Top;
             _overlayWindow.Width = rectWindow.Width;
@@ -324,7 +316,7 @@ namespace H.Controls.Dock.Controls
 
         private bool OpenContextMenu()
         {
-            var ctxMenu = _model.Root.Manager.AnchorableContextMenu;
+            System.Windows.Controls.ContextMenu ctxMenu = _model.Root.Manager.AnchorableContextMenu;
             if (ctxMenu == null || SingleContentLayoutItem == null) return false;
             ctxMenu.PlacementTarget = null;
             ctxMenu.Placement = PlacementMode.MousePoint;
@@ -350,7 +342,7 @@ namespace H.Controls.Dock.Controls
         /// <summary>IsVisibleChanged Event Handler.</summary>
         private void LayoutAnchorableFloatingWindowControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            var visibilityBinding = GetBindingExpression(VisibilityProperty);
+            BindingExpression visibilityBinding = GetBindingExpression(VisibilityProperty);
             if (IsVisible && visibilityBinding == null)
                 SetBinding(VisibilityProperty, new Binding(nameof(IsVisible))
                 { Source = _model, Converter = new BoolToVisibilityConverter(), Mode = BindingMode.OneWay, ConverterParameter = Visibility.Hidden });
@@ -360,17 +352,17 @@ namespace H.Controls.Dock.Controls
 
         private bool CanExecuteHideWindowCommand(object parameter)
         {
-            var manager = Model?.Root?.Manager;
+            DockingManager manager = Model?.Root?.Manager;
             if (manager == null) return false;
-            var canExecute = false;
-            foreach (var anchorable in Model.Descendents().OfType<LayoutAnchorable>().ToArray())
+            bool canExecute = false;
+            foreach (LayoutAnchorable anchorable in Model.Descendents().OfType<LayoutAnchorable>().ToArray())
             {
                 if (!anchorable.CanHide)
                 {
                     canExecute = false;
                     break;
                 }
-                var anchorableLayoutItem = manager.GetLayoutItemFromModel(anchorable) as LayoutAnchorableItem;
+                LayoutAnchorableItem anchorableLayoutItem = manager.GetLayoutItemFromModel(anchorable) as LayoutAnchorableItem;
                 if (anchorableLayoutItem?.HideCommand == null || !anchorableLayoutItem.HideCommand.CanExecute(parameter))
                 {
                     canExecute = false;
@@ -383,10 +375,10 @@ namespace H.Controls.Dock.Controls
 
         private void OnExecuteHideWindowCommand(object parameter)
         {
-            var manager = Model.Root.Manager;
-            foreach (var anchorable in Model.Descendents().OfType<LayoutAnchorable>().ToArray())
+            DockingManager manager = Model.Root.Manager;
+            foreach (LayoutAnchorable anchorable in Model.Descendents().OfType<LayoutAnchorable>().ToArray())
             {
-                var anchorableLayoutItem = manager.GetLayoutItemFromModel(anchorable) as LayoutAnchorableItem;
+                LayoutAnchorableItem anchorableLayoutItem = manager.GetLayoutItemFromModel(anchorable) as LayoutAnchorableItem;
                 anchorableLayoutItem.HideCommand.Execute(parameter);
             }
             Hide(); // Bring toolwindows inside hidden FloatingWindow back requires restart of app
@@ -398,17 +390,17 @@ namespace H.Controls.Dock.Controls
 
         private bool CanExecuteCloseWindowCommand(object parameter)
         {
-            var manager = Model?.Root?.Manager;
+            DockingManager manager = Model?.Root?.Manager;
             if (manager == null) return false;
-            var canExecute = false;
-            foreach (var anchorable in Model.Descendents().OfType<LayoutAnchorable>().ToArray())
+            bool canExecute = false;
+            foreach (LayoutAnchorable anchorable in Model.Descendents().OfType<LayoutAnchorable>().ToArray())
             {
                 if (!anchorable.CanClose)
                 {
                     canExecute = false;
                     break;
                 }
-                var anchorableLayoutItem = manager.GetLayoutItemFromModel(anchorable) as LayoutAnchorableItem;
+                LayoutAnchorableItem anchorableLayoutItem = manager.GetLayoutItemFromModel(anchorable) as LayoutAnchorableItem;
                 if (anchorableLayoutItem?.CloseCommand == null || !anchorableLayoutItem.CloseCommand.CanExecute(parameter))
                 {
                     canExecute = false;
@@ -421,10 +413,10 @@ namespace H.Controls.Dock.Controls
 
         private void OnExecuteCloseWindowCommand(object parameter)
         {
-            var manager = Model.Root.Manager;
-            foreach (var anchorable in Model.Descendents().OfType<LayoutAnchorable>().ToArray())
+            DockingManager manager = Model.Root.Manager;
+            foreach (LayoutAnchorable anchorable in Model.Descendents().OfType<LayoutAnchorable>().ToArray())
             {
-                var anchorableLayoutItem = manager.GetLayoutItemFromModel(anchorable) as LayoutAnchorableItem;
+                LayoutAnchorableItem anchorableLayoutItem = manager.GetLayoutItemFromModel(anchorable) as LayoutAnchorableItem;
                 anchorableLayoutItem.CloseCommand.Execute(parameter);
             }
         }

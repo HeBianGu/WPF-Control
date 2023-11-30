@@ -1,12 +1,4 @@
-﻿/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
-
+﻿
 using Standard;
 using System;
 using System.Collections.Generic;
@@ -16,9 +8,9 @@ using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Media;
 
-/**************************************************************************\
-    Copyright Microsoft Corporation. All Rights Reserved.
-\**************************************************************************/
+
+
+
 
 namespace Microsoft.Windows.Shell
 {
@@ -66,28 +58,28 @@ namespace Microsoft.Windows.Shell
 
         private void _InitializeGlassColor()
         {
-            NativeMethods.DwmGetColorizationColor(out var color, out var isOpaque);
+            NativeMethods.DwmGetColorizationColor(out uint color, out bool isOpaque);
             color |= isOpaque ? 0xFF000000 : 0;
             WindowGlassColor = Utility.ColorFromArgbDword(color);
-            var glassBrush = new SolidColorBrush(WindowGlassColor);
+            SolidColorBrush glassBrush = new SolidColorBrush(WindowGlassColor);
             glassBrush.Freeze();
             WindowGlassBrush = glassBrush;
         }
 
         private void _UpdateGlassColor(IntPtr wParam, IntPtr lParam)
         {
-            var isOpaque = lParam != IntPtr.Zero;
-            var color = unchecked((uint)(int)wParam.ToInt64());
+            bool isOpaque = lParam != IntPtr.Zero;
+            uint color = unchecked((uint)(int)wParam.ToInt64());
             color |= isOpaque ? 0xFF000000 : 0;
             WindowGlassColor = Utility.ColorFromArgbDword(color);
-            var glassBrush = new SolidColorBrush(WindowGlassColor);
+            SolidColorBrush glassBrush = new SolidColorBrush(WindowGlassColor);
             glassBrush.Freeze();
             WindowGlassBrush = glassBrush;
         }
 
         private void _InitializeCaptionHeight()
         {
-            var ptCaption = new Point(0, NativeMethods.GetSystemMetrics(SM.CYCAPTION));
+            Point ptCaption = new Point(0, NativeMethods.GetSystemMetrics(SM.CYCAPTION));
             WindowCaptionHeight = DpiHelper.DevicePixelsToLogical(ptCaption).Y;
         }
 
@@ -98,8 +90,8 @@ namespace Microsoft.Windows.Shell
 
         private void _InitializeWindowResizeBorderThickness()
         {
-            var frameSize = new Size(NativeMethods.GetSystemMetrics(SM.CXSIZEFRAME), NativeMethods.GetSystemMetrics(SM.CYSIZEFRAME));
-            var frameSizeInDips = DpiHelper.DeviceSizeToLogical(frameSize);
+            Size frameSize = new Size(NativeMethods.GetSystemMetrics(SM.CXSIZEFRAME), NativeMethods.GetSystemMetrics(SM.CYSIZEFRAME));
+            Size frameSizeInDips = DpiHelper.DeviceSizeToLogical(frameSize);
             WindowResizeBorderThickness = new Thickness(frameSizeInDips.Width, frameSizeInDips.Height, frameSizeInDips.Width, frameSizeInDips.Height);
         }
 
@@ -110,10 +102,10 @@ namespace Microsoft.Windows.Shell
 
         private void _InitializeWindowNonClientFrameThickness()
         {
-            var frameSize = new Size(NativeMethods.GetSystemMetrics(SM.CXSIZEFRAME), NativeMethods.GetSystemMetrics(SM.CYSIZEFRAME));
-            var frameSizeInDips = DpiHelper.DeviceSizeToLogical(frameSize);
-            var captionHeight = NativeMethods.GetSystemMetrics(SM.CYCAPTION);
-            var captionHeightInDips = DpiHelper.DevicePixelsToLogical(new Point(0, captionHeight)).Y;
+            Size frameSize = new Size(NativeMethods.GetSystemMetrics(SM.CXSIZEFRAME), NativeMethods.GetSystemMetrics(SM.CYSIZEFRAME));
+            Size frameSizeInDips = DpiHelper.DeviceSizeToLogical(frameSize);
+            int captionHeight = NativeMethods.GetSystemMetrics(SM.CYCAPTION);
+            double captionHeightInDips = DpiHelper.DevicePixelsToLogical(new Point(0, captionHeight)).Y;
             WindowNonClientFrameThickness = new Thickness(frameSizeInDips.Width, frameSizeInDips.Height + captionHeightInDips, frameSizeInDips.Width, frameSizeInDips.Height);
         }
 
@@ -136,13 +128,13 @@ namespace Microsoft.Windows.Shell
         {
             // This calculation isn't quite right, but it's pretty close.
             // I expect this is good enough for the scenarios where this is expected to be used.
-            var captionX = NativeMethods.GetSystemMetrics(SM.CXSIZE);
-            var captionY = NativeMethods.GetSystemMetrics(SM.CYSIZE);
+            int captionX = NativeMethods.GetSystemMetrics(SM.CXSIZE);
+            int captionY = NativeMethods.GetSystemMetrics(SM.CYSIZE);
 
-            var frameX = NativeMethods.GetSystemMetrics(SM.CXSIZEFRAME) + NativeMethods.GetSystemMetrics(SM.CXEDGE);
-            var frameY = NativeMethods.GetSystemMetrics(SM.CYSIZEFRAME) + NativeMethods.GetSystemMetrics(SM.CYEDGE);
+            int frameX = NativeMethods.GetSystemMetrics(SM.CXSIZEFRAME) + NativeMethods.GetSystemMetrics(SM.CXEDGE);
+            int frameY = NativeMethods.GetSystemMetrics(SM.CYSIZEFRAME) + NativeMethods.GetSystemMetrics(SM.CYEDGE);
 
-            var captionRect = new Rect(0, 0, captionX * 3, captionY);
+            Rect captionRect = new Rect(0, 0, captionX * 3, captionY);
             captionRect.Offset(-frameX - captionRect.Width, frameY);
 
             WindowCaptionButtonsLocation = captionRect;
@@ -158,8 +150,8 @@ namespace Microsoft.Windows.Shell
                 return;
             }
 
-            var tbix = new TITLEBARINFOEX { cbSize = Marshal.SizeOf(typeof(TITLEBARINFOEX)) };
-            var lParam = Marshal.AllocHGlobal(tbix.cbSize);
+            TITLEBARINFOEX tbix = new TITLEBARINFOEX { cbSize = Marshal.SizeOf(typeof(TITLEBARINFOEX)) };
+            IntPtr lParam = Marshal.AllocHGlobal(tbix.cbSize);
             try
             {
                 Marshal.StructureToPtr(tbix, lParam, false);
@@ -177,19 +169,19 @@ namespace Microsoft.Windows.Shell
 
             // TITLEBARINFOEX has information relative to the screen.  We need to convert the containing rect
             // to instead be relative to the top-right corner of the window.
-            var rcAllCaptionButtons = RECT.Union(tbix.rgrect_CloseButton, tbix.rgrect_MinimizeButton);
+            RECT rcAllCaptionButtons = RECT.Union(tbix.rgrect_CloseButton, tbix.rgrect_MinimizeButton);
             // For all known themes, the RECT for the maximize box shouldn't add anything to the union of the minimize and close boxes.
             Assert.AreEqual(rcAllCaptionButtons, RECT.Union(rcAllCaptionButtons, tbix.rgrect_MaximizeButton));
 
-            var rcWindow = NativeMethods.GetWindowRect(_messageHwnd.Handle);
+            RECT rcWindow = NativeMethods.GetWindowRect(_messageHwnd.Handle);
 
             // Reorient the Top/Right to be relative to the top right edge of the Window.
-            var deviceCaptionLocation = new Rect(
+            Rect deviceCaptionLocation = new Rect(
                 rcAllCaptionButtons.Left - rcWindow.Width - rcWindow.Left,
                 rcAllCaptionButtons.Top - rcWindow.Top,
                 rcAllCaptionButtons.Width,
                 rcAllCaptionButtons.Height);
-            var logicalCaptionLocation = DpiHelper.DeviceRectToLogical(deviceCaptionLocation);
+            Rect logicalCaptionLocation = DpiHelper.DeviceRectToLogical(deviceCaptionLocation);
             WindowCaptionButtonsLocation = logicalCaptionLocation;
         }
 
@@ -200,7 +192,7 @@ namespace Microsoft.Windows.Shell
 
         private void _InitializeHighContrast()
         {
-            var hc = NativeMethods.SystemParameterInfo_GetHIGHCONTRAST();
+            HIGHCONTRAST hc = NativeMethods.SystemParameterInfo_GetHIGHCONTRAST();
             HighContrast = (hc.dwFlags & HCF.HIGHCONTRASTON) != 0;
         }
 
@@ -218,7 +210,7 @@ namespace Microsoft.Windows.Shell
                 return;
             }
 
-            NativeMethods.GetCurrentThemeName(out var name, out var color, out _);
+            NativeMethods.GetCurrentThemeName(out string name, out string color, out _);
 
             // Consider whether this is the most useful way to expose this...
             UxThemeName = System.IO.Path.GetFileNameWithoutExtension(name);
@@ -293,7 +285,7 @@ namespace Microsoft.Windows.Shell
             // This window gets used for calculations about standard caption button locations
             // so it has WS_OVERLAPPEDWINDOW as a style to give it normal caption buttons.
             // This window may be shown during calculations of caption bar information, so create it at a location that's likely offscreen.
-            _messageHwnd = new MessageWindow((CS)0, WS.OVERLAPPEDWINDOW | WS.DISABLED, (WS_EX)0, new Rect(-16000, -16000, 100, 100), "", _WndProc);
+            _messageHwnd = new MessageWindow(0, WS.OVERLAPPEDWINDOW | WS.DISABLED, 0, new Rect(-16000, -16000, 100, 100), "", _WndProc);
             _messageHwnd.Dispatcher.ShutdownStarted += (sender, e) => Utility.SafeDispose(ref _messageHwnd);
 
             // Fixup the default values of the DPs.
@@ -339,9 +331,9 @@ namespace Microsoft.Windows.Shell
         {
             // Don't do this if called within the SystemParameters2 constructor
             if (_UpdateTable == null) return NativeMethods.DefWindowProc(hwnd, msg, wParam, lParam);
-            if (!_UpdateTable.TryGetValue(msg, out var handlers)) return NativeMethods.DefWindowProc(hwnd, msg, wParam, lParam);
+            if (!_UpdateTable.TryGetValue(msg, out List<_SystemMetricUpdate> handlers)) return NativeMethods.DefWindowProc(hwnd, msg, wParam, lParam);
             Assert.IsNotNull(handlers);
-            foreach (var handler in handlers) handler(wParam, lParam);
+            foreach (_SystemMetricUpdate handler in handlers) handler(wParam, lParam);
             return NativeMethods.DefWindowProc(hwnd, msg, wParam, lParam);
         }
 

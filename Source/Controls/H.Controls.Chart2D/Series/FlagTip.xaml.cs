@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections.Generic;
@@ -53,9 +53,9 @@ namespace H.Controls.Chart2D
             if (this.Y == null) return;
             if (this.X == null) return;
 
-            double xValue = (this.maxX - this.minX) * (position.X / this.ActualWidth) + this.minX;
+            double xValue = ((this.maxX - this.minX) * (position.X / this.ActualWidth)) + this.minX;
 
-            double yValue = (this.maxY - this.minY) * (position.Y / this.ActualHeight) + this.minY;
+            double yValue = ((this.maxY - this.minY) * (position.Y / this.ActualHeight)) + this.minY;
 
 
 
@@ -134,7 +134,7 @@ namespace H.Controls.Chart2D
             set { SetValue(XProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty XProperty =
             DependencyProperty.Register("X", typeof(Path), typeof(FlagTip), new PropertyMetadata(default(Path), (d, e) =>
             {
@@ -152,7 +152,7 @@ namespace H.Controls.Chart2D
             set { SetValue(YProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty YProperty =
             DependencyProperty.Register("Y", typeof(Path), typeof(FlagTip), new PropertyMetadata(default(Path), (d, e) =>
             {
@@ -171,7 +171,7 @@ namespace H.Controls.Chart2D
             set { SetValue(LabelXProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty LabelXProperty =
             DependencyProperty.Register("LabelX", typeof(Label), typeof(FlagTip), new PropertyMetadata(default(Label), (d, e) =>
             {
@@ -190,7 +190,7 @@ namespace H.Controls.Chart2D
             set { SetValue(LabelYProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty LabelYProperty =
             DependencyProperty.Register("LabelY", typeof(Label), typeof(FlagTip), new PropertyMetadata(default(Label), (d, e) =>
             {
@@ -209,7 +209,7 @@ namespace H.Controls.Chart2D
             set { SetValue(MarkerProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty MarkerProperty =
             DependencyProperty.Register("Marker", typeof(Shape), typeof(FlagTip), new PropertyMetadata(default(Shape), (d, e) =>
              {
@@ -296,7 +296,7 @@ namespace H.Controls.Chart2D
             set { SetValue(FlagTipTypeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty FlagTipTypeProperty =
             DependencyProperty.Register("FlagTipType", typeof(FlagTipType), typeof(FlagTip), new PropertyMetadata(default(FlagTipType), (d, e) =>
             {

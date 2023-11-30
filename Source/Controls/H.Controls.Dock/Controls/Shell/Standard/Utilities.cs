@@ -1,12 +1,4 @@
-﻿/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
-
+﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,10 +12,6 @@ using System.Text;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-
-/**************************************************************************\
-    Copyright Microsoft Corporation. All Rights Reserved.
-\**************************************************************************/
 
 // This file contains general utilities to aid in development.
 // Classes here generally shouldn't be exposed publicly since
@@ -40,18 +28,18 @@ namespace Standard
         [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         private static bool _MemCmp(IntPtr left, IntPtr right, long cb)
         {
-            var offset = 0;
+            int offset = 0;
             for (; offset < cb - sizeof(Int64); offset += sizeof(Int64))
             {
-                var left64 = Marshal.ReadInt64(left, offset);
-                var right64 = Marshal.ReadInt64(right, offset);
+                long left64 = Marshal.ReadInt64(left, offset);
+                long right64 = Marshal.ReadInt64(right, offset);
                 if (left64 != right64) return false;
             }
 
             for (; offset < cb; offset += sizeof(byte))
             {
-                var left8 = Marshal.ReadByte(left, offset);
-                var right8 = Marshal.ReadByte(right, offset);
+                byte left8 = Marshal.ReadByte(left, offset);
+                byte right8 = Marshal.ReadByte(right, offset);
                 if (left8 != right8) return false;
             }
 
@@ -90,31 +78,31 @@ namespace Standard
             if (!left.CanRead || !right.CanRead) throw new NotSupportedException("The streams can't be read for comparison");
             if (left.Length != right.Length) return false;
 
-            var length = (int)left.Length;
+            int length = (int)left.Length;
 
             // seek to beginning
             left.Position = 0;
             right.Position = 0;
 
             // total bytes read
-            var totalReadLeft = 0;
-            var totalReadRight = 0;
+            int totalReadLeft = 0;
+            int totalReadRight = 0;
 
             // bytes read on this iteration
-            var cbReadLeft = 0;
-            var cbReadRight = 0;
+            int cbReadLeft = 0;
+            int cbReadRight = 0;
 
             // where to store the read data
-            var leftBuffer = new byte[512];
-            var rightBuffer = new byte[512];
+            byte[] leftBuffer = new byte[512];
+            byte[] rightBuffer = new byte[512];
 
             // pin the left buffer
-            var handleLeft = GCHandle.Alloc(leftBuffer, GCHandleType.Pinned);
-            var ptrLeft = handleLeft.AddrOfPinnedObject();
+            GCHandle handleLeft = GCHandle.Alloc(leftBuffer, GCHandleType.Pinned);
+            IntPtr ptrLeft = handleLeft.AddrOfPinnedObject();
 
             // pin the right buffer
-            var handleRight = GCHandle.Alloc(rightBuffer, GCHandleType.Pinned);
-            var ptrRight = handleRight.AddrOfPinnedObject();
+            GCHandle handleRight = GCHandle.Alloc(rightBuffer, GCHandleType.Pinned);
+            IntPtr ptrRight = handleRight.AddrOfPinnedObject();
 
             try
             {
@@ -207,50 +195,50 @@ namespace Standard
             else
             {
                 // Constrain the dimensions based on the aspect ratio.
-                var drawingDimensions = new Rect(0, 0, dimensions.Width, dimensions.Height);
+                Rect drawingDimensions = new Rect(0, 0, dimensions.Width, dimensions.Height);
                 // There's no reason to assume that the requested image dimensions are square.
-                var renderRatio = dimensions.Width / dimensions.Height;
-                var aspectRatio = image.Width / image.Height;
+                double renderRatio = dimensions.Width / dimensions.Height;
+                double aspectRatio = image.Width / image.Height;
                 // If it's smaller than the requested size, then place it in the middle and pad the image.
                 if (image.Width <= dimensions.Width && image.Height <= dimensions.Height)
                     drawingDimensions = new Rect((dimensions.Width - image.Width) / 2, (dimensions.Height - image.Height) / 2, image.Width, image.Height);
                 else if (renderRatio > aspectRatio)
                 {
-                    var scaledRenderWidth = image.Width / image.Height * dimensions.Width;
+                    double scaledRenderWidth = image.Width / image.Height * dimensions.Width;
                     drawingDimensions = new Rect((dimensions.Width - scaledRenderWidth) / 2, 0, scaledRenderWidth, dimensions.Height);
                 }
                 else if (renderRatio < aspectRatio)
                 {
-                    var scaledRenderHeight = image.Height / image.Width * dimensions.Height;
+                    double scaledRenderHeight = image.Height / image.Width * dimensions.Height;
                     drawingDimensions = new Rect(0, (dimensions.Height - scaledRenderHeight) / 2, dimensions.Width, scaledRenderHeight);
                 }
 
-                var dv = new DrawingVisual();
-                var dc = dv.RenderOpen();
+                DrawingVisual dv = new DrawingVisual();
+                DrawingContext dc = dv.RenderOpen();
                 dc.DrawImage(image, drawingDimensions);
                 dc.Close();
 
-                var bmp = new RenderTargetBitmap((int)dimensions.Width, (int)dimensions.Height, 96, 96, PixelFormats.Pbgra32);
+                RenderTargetBitmap bmp = new RenderTargetBitmap((int)dimensions.Width, (int)dimensions.Height, 96, 96, PixelFormats.Pbgra32);
                 bmp.Render(dv);
                 bf = BitmapFrame.Create(bmp);
             }
 
             // Using GDI+ to convert to an HICON.
             // I'd rather not duplicate their code.
-            using (var memstm = new MemoryStream())
+            using (MemoryStream memstm = new MemoryStream())
             {
                 BitmapEncoder enc = new PngBitmapEncoder();
                 enc.Frames.Add(bf);
                 enc.Save(memstm);
-                using (var istm = new ManagedIStream(memstm))
+                using (ManagedIStream istm = new ManagedIStream(memstm))
                 {
                     // We are not bubbling out GDI+ errors when creating the native image fails.
-                    var bitmap = IntPtr.Zero;
+                    IntPtr bitmap = IntPtr.Zero;
                     try
                     {
-                        var gpStatus = NativeMethods.GdipCreateBitmapFromStream(istm, out bitmap);
+                        Status gpStatus = NativeMethods.GdipCreateBitmapFromStream(istm, out bitmap);
                         if (Status.Ok != gpStatus) return IntPtr.Zero;
-                        gpStatus = NativeMethods.GdipCreateHICONFromBitmap(bitmap, out var hicon);
+                        gpStatus = NativeMethods.GdipCreateHICONFromBitmap(bitmap, out IntPtr hicon);
                         return Status.Ok != gpStatus ? IntPtr.Zero : hicon;
                         // Caller is responsible for freeing this.
                     }
@@ -266,14 +254,14 @@ namespace Standard
 
         private static int _MatchImage(BitmapFrame frame, int bitDepth, int width, int height, int bpp)
         {
-            return 2 * _WeightedAbs(bpp, bitDepth, false) +
+            return (2 * _WeightedAbs(bpp, bitDepth, false)) +
                             _WeightedAbs(frame.PixelWidth, width, true) +
                             _WeightedAbs(frame.PixelHeight, height, true);
         }
 
         private static int _WeightedAbs(int valueHave, int valueWant, bool fPunish)
         {
-            var diff = valueHave - valueWant;
+            int diff = valueHave - valueWant;
             return diff >= 0 ? diff : (fPunish ? -2 : -1) * diff;
         }
 
@@ -282,15 +270,15 @@ namespace Standard
         /// system behaviors.
         private static BitmapFrame _GetBestMatch(IList<BitmapFrame> frames, int bitDepth, int width, int height)
         {
-            var bestScore = int.MaxValue;
-            var bestBpp = 0;
-            var bestIndex = 0;
-            var isBitmapIconDecoder = frames[0].Decoder is IconBitmapDecoder;
-            for (var i = 0; i < frames.Count && bestScore != 0; ++i)
+            int bestScore = int.MaxValue;
+            int bestBpp = 0;
+            int bestIndex = 0;
+            bool isBitmapIconDecoder = frames[0].Decoder is IconBitmapDecoder;
+            for (int i = 0; i < frames.Count && bestScore != 0; ++i)
             {
-                var currentIconBitDepth = isBitmapIconDecoder ? frames[i].Thumbnail.Format.BitsPerPixel : frames[i].Format.BitsPerPixel;
+                int currentIconBitDepth = isBitmapIconDecoder ? frames[i].Thumbnail.Format.BitsPerPixel : frames[i].Format.BitsPerPixel;
                 if (currentIconBitDepth == 0) currentIconBitDepth = 8;
-                var score = _MatchImage(frames[i], bitDepth, width, height, currentIconBitDepth);
+                int score = _MatchImage(frames[i], bitDepth, width, height, currentIconBitDepth);
                 if (score < bestScore)
                 {
                     bestIndex = i;
@@ -314,7 +302,7 @@ namespace Standard
         private static int _GetBitDepth()
         {
             if (s_bitDepth != 0) return s_bitDepth;
-            using (var dc = SafeDC.GetDesktop())
+            using (SafeDC dc = SafeDC.GetDesktop())
                 s_bitDepth = NativeMethods.GetDeviceCaps(dc, DeviceCap.BITSPIXEL) * NativeMethods.GetDeviceCaps(dc, DeviceCap.PLANES);
             return s_bitDepth;
         }
@@ -337,7 +325,7 @@ namespace Standard
         [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         public static void SafeDeleteObject(ref IntPtr gdiObject)
         {
-            var p = gdiObject;
+            IntPtr p = gdiObject;
             gdiObject = IntPtr.Zero;
             if (p != IntPtr.Zero) NativeMethods.DeleteObject(p);
         }
@@ -345,7 +333,7 @@ namespace Standard
         [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         public static void SafeDestroyIcon(ref IntPtr hicon)
         {
-            var p = hicon;
+            IntPtr p = hicon;
             hicon = IntPtr.Zero;
             if (p != IntPtr.Zero) NativeMethods.DestroyIcon(p);
         }
@@ -353,7 +341,7 @@ namespace Standard
         [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         public static void SafeDestroyWindow(ref IntPtr hwnd)
         {
-            var p = hwnd;
+            IntPtr p = hwnd;
             hwnd = IntPtr.Zero;
             if (NativeMethods.IsWindow(p)) NativeMethods.DestroyWindow(p);
         }
@@ -372,7 +360,7 @@ namespace Standard
         [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         public static void SafeDisposeImage(ref IntPtr gdipImage)
         {
-            var p = gdipImage;
+            IntPtr p = gdipImage;
             gdipImage = IntPtr.Zero;
             if (p != IntPtr.Zero) NativeMethods.GdipDisposeImage(p);
         }
@@ -381,7 +369,7 @@ namespace Standard
         [SuppressMessage("Microsoft.Security", "CA2122:DoNotIndirectlyExposeMethodsWithLinkDemands")]
         public static void SafeCoTaskMemFree(ref IntPtr ptr)
         {
-            var p = ptr;
+            IntPtr p = ptr;
             ptr = IntPtr.Zero;
             if (p != IntPtr.Zero) Marshal.FreeCoTaskMem(p);
         }
@@ -390,7 +378,7 @@ namespace Standard
         [SuppressMessage("Microsoft.Security", "CA2122:DoNotIndirectlyExposeMethodsWithLinkDemands")]
         public static void SafeFreeHGlobal(ref IntPtr hglobal)
         {
-            var p = hglobal;
+            IntPtr p = hglobal;
             hglobal = IntPtr.Zero;
             if (p != IntPtr.Zero) Marshal.FreeHGlobal(p);
         }
@@ -399,7 +387,7 @@ namespace Standard
         [SuppressMessage("Microsoft.Security", "CA2122:DoNotIndirectlyExposeMethodsWithLinkDemands")]
         public static void SafeRelease<T>(ref T comObject) where T : class
         {
-            var t = comObject;
+            T t = comObject;
             comObject = default(T);
             if (t == null) return;
             Assert.IsTrue(Marshal.IsComObject(t));
@@ -443,13 +431,13 @@ namespace Standard
         [Obsolete]
         public static string GenerateToString<T>(T @object) where T : struct
         {
-            var sbRet = new StringBuilder();
-            foreach (var property in typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance))
+            StringBuilder sbRet = new StringBuilder();
+            foreach (PropertyInfo property in typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance))
             {
                 if (sbRet.Length != 0) sbRet.Append(", ");
                 Assert.AreEqual(0, property.GetIndexParameters().Length);
-                var value = property.GetValue(@object, null);
-                var format = null == value ? "{0}: <null>" : "{0}: \"{1}\"";
+                object value = property.GetValue(@object, null);
+                string format = null == value ? "{0}: <null>" : "{0}: \"{1}\"";
                 sbRet.AppendFormat(format, property.Name, value);
             }
             return sbRet.ToString();
@@ -469,7 +457,7 @@ namespace Standard
                 // the source stream doesn't know it's size...
                 destination.SetLength(source.Length);
             }
-            var buffer = new byte[4096];
+            byte[] buffer = new byte[4096];
             int cbRead;
             do
             {
@@ -486,10 +474,10 @@ namespace Standard
         public static string HashStreamMD5(Stream stm)
         {
             stm.Position = 0;
-            var hashBuilder = new StringBuilder();
-            using (var md5 = MD5.Create())
+            StringBuilder hashBuilder = new StringBuilder();
+            using (MD5 md5 = MD5.Create())
             {
-                foreach (var b in md5.ComputeHash(stm)) hashBuilder.Append(b.ToString("x2", CultureInfo.InvariantCulture));
+                foreach (byte b in md5.ComputeHash(stm)) hashBuilder.Append(b.ToString("x2", CultureInfo.InvariantCulture));
                 return hashBuilder.ToString();
             }
         }
@@ -508,12 +496,12 @@ namespace Standard
             Assert.IsTrue(cb <= Math.Min(left.Length, right.Length));
 
             // pin this buffer
-            var handleLeft = GCHandle.Alloc(left, GCHandleType.Pinned);
-            var ptrLeft = handleLeft.AddrOfPinnedObject();
+            GCHandle handleLeft = GCHandle.Alloc(left, GCHandleType.Pinned);
+            IntPtr ptrLeft = handleLeft.AddrOfPinnedObject();
             // pin the other buffer
-            var handleRight = GCHandle.Alloc(right, GCHandleType.Pinned);
-            var ptrRight = handleRight.AddrOfPinnedObject();
-            var fRet = _MemCmp(ptrLeft, ptrRight, cb);
+            GCHandle handleRight = GCHandle.Alloc(right, GCHandleType.Pinned);
+            IntPtr ptrRight = handleRight.AddrOfPinnedObject();
+            bool fRet = _MemCmp(ptrLeft, ptrRight, cb);
             handleLeft.Free();
             handleRight.Free();
             return fRet;
@@ -566,11 +554,11 @@ namespace Standard
         {
             if (url == null) return null;
 
-            var decoder = new _UrlDecoder(url.Length, Encoding.UTF8);
-            var length = url.Length;
-            for (var i = 0; i < length; ++i)
+            _UrlDecoder decoder = new _UrlDecoder(url.Length, Encoding.UTF8);
+            int length = url.Length;
+            for (int i = 0; i < length; ++i)
             {
-                var ch = url[i];
+                char ch = url[i];
                 if (ch == '+')
                 {
                     decoder.AddByte((byte)' ');
@@ -582,10 +570,10 @@ namespace Standard
                     // decode %uXXXX into a Unicode character.
                     if (url[i + 1] == 'u' && i < length - 5)
                     {
-                        var a = _HexToInt(url[i + 2]);
-                        var b = _HexToInt(url[i + 3]);
-                        var c = _HexToInt(url[i + 4]);
-                        var d = _HexToInt(url[i + 5]);
+                        int a = _HexToInt(url[i + 2]);
+                        int b = _HexToInt(url[i + 3]);
+                        int c = _HexToInt(url[i + 4]);
+                        int d = _HexToInt(url[i + 5]);
                         if (a >= 0 && b >= 0 && c >= 0 && d >= 0)
                         {
                             decoder.AddChar((char)((a << 12) | (b << 8) | (c << 4) | d));
@@ -597,8 +585,8 @@ namespace Standard
                     else
                     {
                         // decode %XX into a Unicode character.
-                        var a = _HexToInt(url[i + 1]);
-                        var b = _HexToInt(url[i + 2]);
+                        int a = _HexToInt(url[i + 1]);
+                        int b = _HexToInt(url[i + 2]);
 
                         if (a >= 0 && b >= 0)
                         {
@@ -635,10 +623,10 @@ namespace Standard
         public static string UrlEncode(string url)
         {
             if (url == null) return null;
-            var bytes = Encoding.UTF8.GetBytes(url);
-            var needsEncoding = false;
-            var unsafeCharCount = 0;
-            foreach (var b in bytes)
+            byte[] bytes = Encoding.UTF8.GetBytes(url);
+            bool needsEncoding = false;
+            int unsafeCharCount = 0;
+            foreach (byte b in bytes)
             {
                 if (b == ' ')
                     needsEncoding = true;
@@ -650,9 +638,9 @@ namespace Standard
             }
 
             if (!needsEncoding) return Encoding.ASCII.GetString(bytes);
-            var buffer = new byte[bytes.Length + unsafeCharCount * 2];
-            var writeIndex = 0;
-            foreach (var b in bytes)
+            byte[] buffer = new byte[bytes.Length + (unsafeCharCount * 2)];
+            int writeIndex = 0;
+            foreach (byte b in bytes)
             {
                 if (_UrlEncodeIsSafe(b))
                     buffer[writeIndex++] = b;
@@ -698,7 +686,7 @@ namespace Standard
         }
 
         [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        private static bool _IsAsciiAlphaNumeric(byte b) => b >= 'a' && b <= 'z' || b >= 'A' && b <= 'Z' || b >= '0' && b <= '9';
+        private static bool _IsAsciiAlphaNumeric(byte b) => (b >= 'a' && b <= 'z') || (b >= 'A' && b <= 'Z') || (b >= '0' && b <= '9');
 
         [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         private static byte _IntToHex(int n)
@@ -722,7 +710,7 @@ namespace Standard
             if (component == null) return;
             Assert.IsNotNull(property);
             Assert.IsNotNull(listener);
-            var dpd = DependencyPropertyDescriptor.FromProperty(property, component.GetType());
+            DependencyPropertyDescriptor dpd = DependencyPropertyDescriptor.FromProperty(property, component.GetType());
             dpd.AddValueChanged(component, listener);
         }
 
@@ -731,7 +719,7 @@ namespace Standard
             if (component == null) return;
             Assert.IsNotNull(property);
             Assert.IsNotNull(listener);
-            var dpd = DependencyPropertyDescriptor.FromProperty(property, component.GetType());
+            DependencyPropertyDescriptor dpd = DependencyPropertyDescriptor.FromProperty(property, component.GetType());
             dpd.RemoveValueChanged(component, listener);
         }
 

@@ -5,11 +5,9 @@
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.ScrollViewer.Left,
-                                        TypeInTargetAssembly={x:Type local:ScrollViewerKeys}}"
-           TargetType="{x:Type ScrollViewer}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.ScrollViewer.Left, TypeInTargetAssembly={x:Type local:ScrollViewerKeys}}" TargetType="{x:Type ScrollViewer}">
         <!--<Setter Property="OverridesDefaultStyle" Value="True" />-->
-        <!--延迟滚动-->
+        <!--  延迟滚动  -->
         <!--<Setter Property="ScrollViewer.IsDeferredScrollingEnabled" Value="False" />-->
         <Setter Property="Template">
             <Setter.Value>
@@ -23,8 +21,7 @@
                             <RowDefinition />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <Border Grid.Column="1"
-                                BorderThickness="0,1,1,1">
+                        <Border Grid.Column="1" BorderThickness="0,1,1,1">
                             <Border.BorderBrush>
                                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
                             </Border.BorderBrush>

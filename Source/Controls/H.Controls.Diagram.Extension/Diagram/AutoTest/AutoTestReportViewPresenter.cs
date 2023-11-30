@@ -5,10 +5,7 @@ using H.Providers.Mvvm;
 
 using System;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Windows;
-using System.Windows.Threading;
 using System.Xml.Serialization;
 
 namespace H.Controls.Diagram.Extension
@@ -34,7 +31,7 @@ namespace H.Controls.Diagram.Extension
                 PointData seriesData = new PointData();
                 for (int i = 0; i <= this.Days; i++)
                 {
-                    var current = DateTime.Now.AddDays(i - this.Days).Date;
+                    DateTime current = DateTime.Now.AddDays(i - this.Days).Date;
                     this.LoginData.xAxis.Add(i - this.Days);
                     this.LoginData.xDisplay.Add(current.ToString("dd"));
                     seriesData.xDatas.Add(i - this.Days);
@@ -45,7 +42,7 @@ namespace H.Controls.Diagram.Extension
             }
 
             {
-                var data = Enumerable.Range(0, 2).Select(x => Tuple.Create(random.NextDouble() * 100, x == 0 ? "合格" : "不合格"));
+                System.Collections.Generic.IEnumerable<Tuple<double, string>> data = Enumerable.Range(0, 2).Select(x => Tuple.Create(random.NextDouble() * 100, x == 0 ? "合格" : "不合格"));
                 DoubleData seriesData = new DoubleData();
                 seriesData.Build(data);
                 this.UserData.SeriesDatas.Add(seriesData);

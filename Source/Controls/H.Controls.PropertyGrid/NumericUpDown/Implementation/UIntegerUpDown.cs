@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 
@@ -10,7 +10,7 @@ namespace H.Controls.PropertyGrid
 
         static UIntegerUpDown()
         {
-            UpdateMetadata(typeof(UIntegerUpDown), (uint)1, uint.MinValue, uint.MaxValue);
+            UpdateMetadata(typeof(UIntegerUpDown), 1, uint.MinValue, uint.MaxValue);
         }
 
         public UIntegerUpDown()
@@ -24,12 +24,12 @@ namespace H.Controls.PropertyGrid
 
         protected override uint IncrementValue(uint value, uint increment)
         {
-            return (uint)(value + increment);
+            return value + increment;
         }
 
         protected override uint DecrementValue(uint value, uint increment)
         {
-            return (uint)(value - increment);
+            return value - increment;
         }
 
         #endregion //Base Class Overrides

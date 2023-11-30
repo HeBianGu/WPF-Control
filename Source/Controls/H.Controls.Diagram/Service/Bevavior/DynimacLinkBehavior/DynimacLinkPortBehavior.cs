@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Linq;
@@ -68,7 +68,7 @@ namespace H.Controls.Diagram
             }
 
 #if DEBUG
-            var span = DateTime.Now - dateTime;
+            TimeSpan span = DateTime.Now - dateTime;
             System.Diagnostics.Debug.WriteLine("DynimacLinkPortBehavior.MouseMoveHitTestFilter：" + span.ToString());
 #endif 
             return HitTestFilterBehavior.Continue;
@@ -97,7 +97,7 @@ namespace H.Controls.Diagram
             where.ForEach(l => l.GetPorts().ForEach(k => k.Visibility = Visibility.Hidden));
 
 #if DEBUG
-            var span = DateTime.Now - dateTime;
+            TimeSpan span = DateTime.Now - dateTime;
             System.Diagnostics.Debug.WriteLine("ClearDynamic：" + span.ToString());
 #endif 
         }
@@ -125,7 +125,7 @@ namespace H.Controls.Diagram
             this.AssociatedObject.OnAddLinked(link);
 
 #if DEBUG
-            var span = DateTime.Now - dateTime;
+            TimeSpan span = DateTime.Now - dateTime;
             System.Diagnostics.Debug.WriteLine("CreateDynamicLink：" + span.ToString());
 #endif 
         }
@@ -146,7 +146,7 @@ namespace H.Controls.Diagram
             this.AssociatedObject._dynamicLink.ToPort = new Port();
             Point position = NodeLayer.GetPosition(port);
             Thickness thickness = port.Margin;
-            position = new Point(position.X + (thickness.Left - thickness.Right) / 2, position.Y + (thickness.Top - thickness.Bottom) / 2);
+            position = new Point(position.X + ((thickness.Left - thickness.Right) / 2), position.Y + ((thickness.Top - thickness.Bottom) / 2));
 
             LinkLayer.SetStart(this.AssociatedObject._dynamicLink, position);
             LinkLayer.SetEnd(this.AssociatedObject._dynamicLink, position);
@@ -154,7 +154,7 @@ namespace H.Controls.Diagram
             //  Do ：设置所有系统点可用
             this.AssociatedObject.Nodes.Where(l => l != port.ParentNode).ToList().ForEach(l => l.GetPorts(k => k.PortType == PortType.Input || k.PortType == PortType.Both).ForEach(k => k.Visibility = Visibility.Visible));
 #if DEBUG
-            var span = DateTime.Now - dateTime;
+            TimeSpan span = DateTime.Now - dateTime;
             System.Diagnostics.Debug.WriteLine("InitDynamic：" + span.ToString());
 #endif 
         }

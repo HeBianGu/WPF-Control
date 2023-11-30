@@ -1,19 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace H.Controls.HorseTextBlock
 {
@@ -26,8 +15,8 @@ namespace H.Controls.HorseTextBlock
 
         public HorseTextBlock()
         {
-            DependencyPropertyDescriptor descriptor = DependencyPropertyDescriptor.FromProperty(TextBlock.TextProperty, typeof(HorseTextBlock)); 
-            descriptor.AddValueChanged(this, (o, e) => 
+            DependencyPropertyDescriptor descriptor = DependencyPropertyDescriptor.FromProperty(TextBlock.TextProperty, typeof(HorseTextBlock));
+            descriptor.AddValueChanged(this, (o, e) =>
             {
                 this.Begin();
             });
@@ -110,7 +99,7 @@ namespace H.Controls.HorseTextBlock
             set { SetValue(RepeatBehaviorProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty RepeatBehaviorProperty =
             DependencyProperty.Register("RepeatBehavior", typeof(RepeatBehavior), typeof(HorseTextBlock), new FrameworkPropertyMetadata(new RepeatBehavior(3), (d, e) =>
             {
@@ -129,8 +118,7 @@ namespace H.Controls.HorseTextBlock
                 }
                 control.Begin();
             }));
-
-        Storyboard storyboard = null;
+        private Storyboard storyboard = null;
         private void Begin()
         {
             if (this.IsLoaded == false)
@@ -152,10 +140,10 @@ namespace H.Controls.HorseTextBlock
             storyboard.FillBehavior = FillBehavior.Stop;
             storyboard.Begin();
         }
- 
+
         public static readonly RoutedEvent CompletedRoutedEvent =
             EventManager.RegisterRoutedEvent("Completed", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(HorseTextBlock));
-   
+
         public event RoutedEventHandler Completed
         {
             add { this.AddHandler(CompletedRoutedEvent, value); }

@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.ComponentModel;
@@ -30,97 +30,97 @@ namespace H.Controls.PropertyGrid.Media.Animation
                 switch (value as string)
                 {
                     case "BackEaseIn":
-                        result = PennerEquations.BackEaseIn as IterativeEquation<double>;
+                        result = PennerEquations.BackEaseIn;
                         break;
                     case "BackEaseInOut":
-                        result = PennerEquations.BackEaseInOut as IterativeEquation<double>;
+                        result = PennerEquations.BackEaseInOut;
                         break;
                     case "BackEaseOut":
-                        result = PennerEquations.BackEaseOut as IterativeEquation<double>;
+                        result = PennerEquations.BackEaseOut;
                         break;
                     case "BounceEaseIn":
-                        result = PennerEquations.BounceEaseIn as IterativeEquation<double>;
+                        result = PennerEquations.BounceEaseIn;
                         break;
                     case "BounceEaseInOut":
-                        result = PennerEquations.BounceEaseInOut as IterativeEquation<double>;
+                        result = PennerEquations.BounceEaseInOut;
                         break;
                     case "BounceEaseOut":
-                        result = PennerEquations.BounceEaseOut as IterativeEquation<double>;
+                        result = PennerEquations.BounceEaseOut;
                         break;
                     case "CircEaseIn":
-                        result = PennerEquations.CircEaseIn as IterativeEquation<double>;
+                        result = PennerEquations.CircEaseIn;
                         break;
                     case "CircEaseInOut":
-                        result = PennerEquations.CircEaseInOut as IterativeEquation<double>;
+                        result = PennerEquations.CircEaseInOut;
                         break;
                     case "CircEaseOut":
-                        result = PennerEquations.CircEaseOut as IterativeEquation<double>;
+                        result = PennerEquations.CircEaseOut;
                         break;
                     case "CubicEaseIn":
-                        result = PennerEquations.CubicEaseIn as IterativeEquation<double>;
+                        result = PennerEquations.CubicEaseIn;
                         break;
                     case "CubicEaseInOut":
-                        result = PennerEquations.CubicEaseInOut as IterativeEquation<double>;
+                        result = PennerEquations.CubicEaseInOut;
                         break;
                     case "CubicEaseOut":
-                        result = PennerEquations.CubicEaseOut as IterativeEquation<double>;
+                        result = PennerEquations.CubicEaseOut;
                         break;
                     case "ElasticEaseIn":
-                        result = PennerEquations.ElasticEaseIn as IterativeEquation<double>;
+                        result = PennerEquations.ElasticEaseIn;
                         break;
                     case "ElasticEaseInOut":
-                        result = PennerEquations.ElasticEaseInOut as IterativeEquation<double>;
+                        result = PennerEquations.ElasticEaseInOut;
                         break;
                     case "ElasticEaseOut":
-                        result = PennerEquations.ElasticEaseOut as IterativeEquation<double>;
+                        result = PennerEquations.ElasticEaseOut;
                         break;
                     case "ExpoEaseIn":
-                        result = PennerEquations.ExpoEaseIn as IterativeEquation<double>;
+                        result = PennerEquations.ExpoEaseIn;
                         break;
                     case "ExpoEaseInOut":
-                        result = PennerEquations.ExpoEaseInOut as IterativeEquation<double>;
+                        result = PennerEquations.ExpoEaseInOut;
                         break;
                     case "ExpoEaseOut":
-                        result = PennerEquations.ExpoEaseOut as IterativeEquation<double>;
+                        result = PennerEquations.ExpoEaseOut;
                         break;
                     case "Linear":
-                        result = PennerEquations.Linear as IterativeEquation<double>;
+                        result = PennerEquations.Linear;
                         break;
                     case "QuadEaseIn":
-                        result = PennerEquations.QuadEaseIn as IterativeEquation<double>;
+                        result = PennerEquations.QuadEaseIn;
                         break;
                     case "QuadEaseInOut":
-                        result = PennerEquations.QuadEaseInOut as IterativeEquation<double>;
+                        result = PennerEquations.QuadEaseInOut;
                         break;
                     case "QuadEaseOut":
-                        result = PennerEquations.QuadEaseOut as IterativeEquation<double>;
+                        result = PennerEquations.QuadEaseOut;
                         break;
                     case "QuartEaseIn":
-                        result = PennerEquations.QuartEaseIn as IterativeEquation<double>;
+                        result = PennerEquations.QuartEaseIn;
                         break;
                     case "QuartEaseInOut":
-                        result = PennerEquations.QuartEaseInOut as IterativeEquation<double>;
+                        result = PennerEquations.QuartEaseInOut;
                         break;
                     case "QuartEaseOut":
-                        result = PennerEquations.QuartEaseOut as IterativeEquation<double>;
+                        result = PennerEquations.QuartEaseOut;
                         break;
                     case "QuintEaseIn":
-                        result = PennerEquations.QuintEaseIn as IterativeEquation<double>;
+                        result = PennerEquations.QuintEaseIn;
                         break;
                     case "QuintEaseInOut":
-                        result = PennerEquations.QuintEaseInOut as IterativeEquation<double>;
+                        result = PennerEquations.QuintEaseInOut;
                         break;
                     case "QuintEaseOut":
-                        result = PennerEquations.QuintEaseOut as IterativeEquation<double>;
+                        result = PennerEquations.QuintEaseOut;
                         break;
                     case "SineEaseIn":
-                        result = PennerEquations.SineEaseIn as IterativeEquation<double>;
+                        result = PennerEquations.SineEaseIn;
                         break;
                     case "SineEaseInOut":
-                        result = PennerEquations.SineEaseInOut as IterativeEquation<double>;
+                        result = PennerEquations.SineEaseInOut;
                         break;
                     case "SineEaseOut":
-                        result = PennerEquations.SineEaseOut as IterativeEquation<double>;
+                        result = PennerEquations.SineEaseOut;
                         break;
                 }
             }

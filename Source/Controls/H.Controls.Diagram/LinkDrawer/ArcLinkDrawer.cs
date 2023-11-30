@@ -1,11 +1,9 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Windows.Shapes;
 
 namespace H.Controls.Diagram
 {
@@ -22,7 +20,7 @@ namespace H.Controls.Diagram
             set { SetValue(OrientationProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty OrientationProperty =
             DependencyProperty.Register("Orientation", typeof(Orientation), typeof(ArcLinkDrawer), new FrameworkPropertyMetadata(default(Orientation), (d, e) =>
              {
@@ -48,7 +46,7 @@ namespace H.Controls.Diagram
             Point start = LinkLayer.GetStart(link);
             Point end = LinkLayer.GetEnd(link);
             Vector v = end - start;
-            center = new Point(v.X / 2 + start.X, v.Y / 2 + start.Y);
+            center = new Point((v.X / 2) + start.X, (v.Y / 2) + start.Y);
 
             Point point = Orientation == Orientation.Vertical ? new Point(start.X, end.Y) : new Point(end.X, start.Y);
 
@@ -67,12 +65,12 @@ namespace H.Controls.Diagram
                     end = (Point)find_end.Value;
                 }
             }
-            var geo = GetDrawBezierGeometry(start, point, end);
+            Geometry geo = GetDrawBezierGeometry(start, point, end);
             if (this.IsUseArrow == false)
                 return geo;
             Vector vector = end - point;
             Vector normalize = vector / vector.Length;
-            Point end1 = end - normalize * this.ArrowLength;
+            Point end1 = end - (normalize * this.ArrowLength);
             return this.GetArrowGeometry(geo, end1, end);
         }
 

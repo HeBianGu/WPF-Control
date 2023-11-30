@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.ComponentModel;
@@ -118,7 +118,7 @@ namespace H.Controls.PropertyGrid
 
         public static bool IsPublicInstanceProperty(Type type, string propertyName)
         {
-            BindingFlags flags = (System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.FlattenHierarchy | System.Reflection.BindingFlags.Public);
+            BindingFlags flags = System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.FlattenHierarchy | System.Reflection.BindingFlags.Public;
             return type.GetProperty(propertyName, flags) != null;
         }
     }

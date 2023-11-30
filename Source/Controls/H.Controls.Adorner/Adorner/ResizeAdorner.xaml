@@ -30,7 +30,9 @@
                    Style="{x:Null}">
                 <Thumb.Template>
                     <ControlTemplate TargetType="Thumb">
-                        <Rectangle Fill="{TemplateBinding Background}" Stroke="{DynamicResource {x:Static h:BrushKeys.Accent}}" StrokeDashArray="4 4" />
+                        <Rectangle Fill="{TemplateBinding Background}"
+                                   Stroke="{DynamicResource {x:Static h:BrushKeys.Accent}}"
+                                   StrokeDashArray="4 4" />
                     </ControlTemplate>
                 </Thumb.Template>
             </Thumb>

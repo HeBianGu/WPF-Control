@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections.Generic;
@@ -248,7 +248,7 @@ namespace H.Controls.PropertyGrid
 
         protected override void OnTextInput(TextCompositionEventArgs e)
         {
-            var buttonType = CalculatorUtilities.GetCalculatorButtonTypeFromText(e.Text);
+            CalculatorButtonType buttonType = CalculatorUtilities.GetCalculatorButtonTypeFromText(e.Text);
             if (buttonType != CalculatorButtonType.None)
             {
                 SimulateCalculatorButtonClick(buttonType);
@@ -272,7 +272,7 @@ namespace H.Controls.PropertyGrid
             }
         }
 
-        void Timer_Tick(object sender, EventArgs e)
+        private void Timer_Tick(object sender, EventArgs e)
         {
             DispatcherTimer timer = (DispatcherTimer)sender;
             timer.Stop();
@@ -280,7 +280,7 @@ namespace H.Controls.PropertyGrid
 
             if (_timers.ContainsValue(timer))
             {
-                var button = _timers.Where(x => x.Value == timer).Select(x => x.Key).FirstOrDefault();
+                Button button = _timers.Where(x => x.Value == timer).Select(x => x.Key).FirstOrDefault();
                 if (button != null)
                 {
                     VisualStateManager.GoToState(button, button.IsMouseOver ? "MouseOver" : "Normal", true);
@@ -385,7 +385,7 @@ namespace H.Controls.PropertyGrid
             return newValue;
         }
 
-        void ProcessBackKey()
+        private void ProcessBackKey()
         {
             string displayText;
             if (DisplayText.Length > 1 && !(DisplayText.Length == 2 && DisplayText[0] == '-'))
@@ -405,7 +405,7 @@ namespace H.Controls.PropertyGrid
         {
             if (CalculatorUtilities.IsDigit(buttonType))
                 ProcessDigitKey(buttonType);
-            else if ((CalculatorUtilities.IsMemory(buttonType)))
+            else if (CalculatorUtilities.IsMemory(buttonType))
                 ProcessMemoryKey(buttonType);
             else
                 ProcessOperationKey(buttonType);
@@ -512,7 +512,7 @@ namespace H.Controls.PropertyGrid
 
         private void SimulateCalculatorButtonClick(CalculatorButtonType buttonType)
         {
-            var button = CalculatorUtilities.FindButtonByCalculatorButtonType(_buttonPanel, buttonType);
+            Button button = CalculatorUtilities.FindButtonByCalculatorButtonType(_buttonPanel, buttonType);
             if (button != null)
             {
                 VisualStateManager.GoToState(button, "Pressed", true);
@@ -558,7 +558,7 @@ namespace H.Controls.PropertyGrid
 
         private void ExecuteCalculatorButtonClick(object sender, ExecutedRoutedEventArgs e)
         {
-            var buttonType = (CalculatorButtonType)e.Parameter;
+            CalculatorButtonType buttonType = (CalculatorButtonType)e.Parameter;
             ProcessCalculatorButton(buttonType);
         }
 

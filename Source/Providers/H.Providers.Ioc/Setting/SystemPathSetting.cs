@@ -108,7 +108,7 @@ namespace H.Providers.Ioc
             catch (Exception ex)
             {
                 IocMessage.Dialog.ShowMessage("清空失败,详情请查看日志");
-                Logger.Instance?.Error(ex);
+                IocLog.Instance?.Error(ex);
             }
         }
 
@@ -123,7 +123,7 @@ namespace H.Providers.Ioc
             catch (Exception ex)
             {
                 IocMessage.Dialog.ShowMessage("清空失败,详情请查看日志");
-                Logger.Instance?.Error(ex);
+                IocLog.Instance?.Error(ex);
             }
         }
 

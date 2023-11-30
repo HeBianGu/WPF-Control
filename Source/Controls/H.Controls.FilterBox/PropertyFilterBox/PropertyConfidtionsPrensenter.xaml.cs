@@ -1,15 +1,15 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
+using H.Extensions.XmlSerialize;
+using H.Providers.Ioc;
+using H.Providers.Mvvm;
 using System;
 using System.Collections.ObjectModel;
-using System.Reflection;
 using System.Linq;
-using System.Xml.Serialization;
-using H.Providers.Mvvm;
-using H.Providers.Ioc;
+using System.Reflection;
 using System.Text.Json.Serialization;
-using H.Extensions.XmlSerialize;
+using System.Xml.Serialization;
 
 namespace H.Controls.FilterBox
 {
@@ -22,7 +22,7 @@ namespace H.Controls.FilterBox
 
         public PropertyConfidtionsPrensenter(Type modelTyle, Func<PropertyInfo, bool> predicate = null)
         {
-            var ps = modelTyle.GetProperties().Where(x => x.PropertyType.IsPrimitive || x.PropertyType == typeof(DateTime) || x.PropertyType == typeof(string)).ToObservable();
+            ObservableCollection<PropertyInfo> ps = modelTyle.GetProperties().Where(x => x.PropertyType.IsPrimitive || x.PropertyType == typeof(DateTime) || x.PropertyType == typeof(string)).ToObservable();
             if (predicate != null)
                 Properties = ps.Where(predicate).ToObservable();
             else
@@ -82,7 +82,7 @@ namespace H.Controls.FilterBox
         [XmlIgnore]
         public RelayCommand AddCommand => new RelayCommand(l =>
         {
-            var item = new PropertyConfidtionPrensenter() { ID = DateTime.Now.ToString("yyyyMMddHHmmssfff") };
+            PropertyConfidtionPrensenter item = new PropertyConfidtionPrensenter() { ID = DateTime.Now.ToString("yyyyMMddHHmmssfff") };
             item.Properties = Properties;
             item.Load();
             PropertyConfidtions.Add(item);
@@ -117,24 +117,24 @@ namespace H.Controls.FilterBox
         [XmlIgnore]
         public IMetaSettingService MetaSettingService => new XmlMetaSettingService();
 
-        bool _loaded = false;
+        private bool _loaded = false;
         public void Load()
         {
             if (_loaded == true)
                 return;
-            var find = MetaSettingService?.Deserilize<PropertyConfidtionsPrensenter>(ID);
+            PropertyConfidtionsPrensenter find = MetaSettingService?.Deserilize<PropertyConfidtionsPrensenter>(ID);
             if (find == null)
                 return;
             PropertyConfidtions = find.PropertyConfidtions;
             if (find.SelectedIndex >= 0)
                 SelectedItem = find.PropertyConfidtions[find.SelectedIndex];
 
-            foreach (var item in find.PropertyConfidtions)
+            foreach (PropertyConfidtionPrensenter item in find.PropertyConfidtions)
             {
                 item.Properties = Properties;
-                foreach (var confidtion in item.Conditions)
+                foreach (IPropertyConfidtion confidtion in item.Conditions)
                 {
-                    var propertyInfo = item.Properties.FirstOrDefault(x => x.Name == confidtion.Filter.Name);
+                    PropertyInfo propertyInfo = item.Properties.FirstOrDefault(x => x.Name == confidtion.Filter.Name);
                     confidtion.Filter.PropertyInfo = propertyInfo;
                 }
             }

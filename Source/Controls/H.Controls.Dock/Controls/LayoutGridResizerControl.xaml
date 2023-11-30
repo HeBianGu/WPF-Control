@@ -1,11 +1,12 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"  xmlns:local="clr-namespace:H.Controls.Dock"
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
                     xmlns:lc="clr-namespace:H.Controls.Dock.Controls"
                     xmlns:lcv="clr-namespace:H.Controls.Dock.Converters"
                     xmlns:ll="clr-namespace:H.Controls.Dock.Layout"
+                    xmlns:local="clr-namespace:H.Controls.Dock"
                     xmlns:lp="clr-namespace:H.Controls.Dock.Properties"
-                    xmlns:h="https://github.com/HeBianGu"
-                    xmlns:shell="clr-namespace:Microsoft.Windows.Shell"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:shell="clr-namespace:Microsoft.Windows.Shell">
     <!--  LayoutGridResizerControl  -->
     <Style x:Key="{x:Type lc:LayoutGridResizerControl}" TargetType="{x:Type lc:LayoutGridResizerControl}">
         <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrushAssist}}" />

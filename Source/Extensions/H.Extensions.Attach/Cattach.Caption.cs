@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.ComponentModel;
 using System.Windows;
@@ -20,7 +20,7 @@ namespace H.Extensions.Attach
             obj.SetValue(CaptionCornerRadiusProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty CaptionCornerRadiusProperty =
             DependencyProperty.RegisterAttached("CaptionCornerRadius", typeof(CornerRadius), typeof(Cattach), new FrameworkPropertyMetadata(default(CornerRadius), FrameworkPropertyMetadataOptions.Inherits, OnCaptionCornerRadiusChanged));
 
@@ -44,7 +44,7 @@ namespace H.Extensions.Attach
             obj.SetValue(CaptionBackgroundProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty CaptionBackgroundProperty =
             DependencyProperty.RegisterAttached("CaptionBackground", typeof(Brush), typeof(Cattach), new FrameworkPropertyMetadata(default(Brush), FrameworkPropertyMetadataOptions.Inherits, OnCaptionBackgroundChanged));
 
@@ -68,7 +68,7 @@ namespace H.Extensions.Attach
             obj.SetValue(CaptionForegroundProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty CaptionForegroundProperty =
             DependencyProperty.RegisterAttached("CaptionForeground", typeof(Brush), typeof(Cattach), new FrameworkPropertyMetadata(default(Brush), FrameworkPropertyMetadataOptions.Inherits, OnCaptionForegroundChanged));
 
@@ -92,7 +92,7 @@ namespace H.Extensions.Attach
             obj.SetValue(CaptionBorderBrushProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty CaptionBorderBrushProperty =
             DependencyProperty.RegisterAttached("CaptionBorderBrush", typeof(Brush), typeof(Cattach), new FrameworkPropertyMetadata(default(Brush), FrameworkPropertyMetadataOptions.Inherits, OnCaptionBorderBrushChanged));
 
@@ -116,7 +116,7 @@ namespace H.Extensions.Attach
             obj.SetValue(CaptionHeightProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty CaptionHeightProperty =
             DependencyProperty.RegisterAttached("CaptionHeight", typeof(double), typeof(Cattach), new FrameworkPropertyMetadata(default(double), FrameworkPropertyMetadataOptions.Inherits, OnCaptionHeightChanged));
 
@@ -140,7 +140,7 @@ namespace H.Extensions.Attach
             obj.SetValue(CaptionBorderThicknessProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty CaptionBorderThicknessProperty =
             DependencyProperty.RegisterAttached("CaptionBorderThickness", typeof(Thickness), typeof(Cattach), new FrameworkPropertyMetadata(default(Thickness), FrameworkPropertyMetadataOptions.Inherits, OnCaptionBorderThicknessChanged));
 
@@ -164,7 +164,7 @@ namespace H.Extensions.Attach
             obj.SetValue(CaptionHorizontalAlignmentProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty CaptionHorizontalAlignmentProperty =
             DependencyProperty.RegisterAttached("CaptionHorizontalAlignment", typeof(HorizontalAlignment), typeof(Cattach), new PropertyMetadata(default(HorizontalAlignment), OnCaptionHorizontalAlignmentChanged));
 
@@ -188,7 +188,7 @@ namespace H.Extensions.Attach
             obj.SetValue(CaptionVerticalAlignmentProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty CaptionVerticalAlignmentProperty =
             DependencyProperty.RegisterAttached("CaptionVerticalAlignment", typeof(VerticalAlignment), typeof(Cattach), new PropertyMetadata(default(VerticalAlignment), OnCaptionVerticalAlignmentChanged));
 
@@ -212,7 +212,7 @@ namespace H.Extensions.Attach
             obj.SetValue(CaptionMarginProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty CaptionMarginProperty =
             DependencyProperty.RegisterAttached("CaptionMargin", typeof(Thickness), typeof(Cattach), new PropertyMetadata(default(Thickness), OnCaptionMarginChanged));
 
@@ -236,13 +236,13 @@ namespace H.Extensions.Attach
             obj.SetValue(CaptionFontSizeProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty CaptionFontSizeProperty =
             DependencyProperty.RegisterAttached("CaptionFontSize", typeof(double), typeof(Cattach), new PropertyMetadata(15.0, OnCaptionFontSizeChanged));
 
-        static public void OnCaptionFontSizeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnCaptionFontSizeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             double n = (double)e.NewValue;
 
@@ -260,7 +260,7 @@ namespace H.Extensions.Attach
             obj.SetValue(CaptionLeftTemplateProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty CaptionLeftTemplateProperty =
             DependencyProperty.RegisterAttached("CaptionLeftTemplate", typeof(ControlTemplate), typeof(Cattach), new PropertyMetadata(default(ControlTemplate), OnCaptionLeftTemplateChanged));
 
@@ -284,7 +284,7 @@ namespace H.Extensions.Attach
             obj.SetValue(CaptionRightTemplateProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty CaptionRightTemplateProperty =
             DependencyProperty.RegisterAttached("CaptionRightTemplate", typeof(ControlTemplate), typeof(Cattach), new PropertyMetadata(default(ControlTemplate), OnCaptionRightTemplateChanged));
 
@@ -308,13 +308,13 @@ namespace H.Extensions.Attach
             obj.SetValue(CaptionCenterTemplateProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty CaptionCenterTemplateProperty =
             DependencyProperty.RegisterAttached("CaptionCenterTemplate", typeof(ControlTemplate), typeof(Cattach), new PropertyMetadata(default(ControlTemplate), OnCaptionCenterTemplateChanged));
 
-        static public void OnCaptionCenterTemplateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnCaptionCenterTemplateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             ControlTemplate n = (ControlTemplate)e.NewValue;
 

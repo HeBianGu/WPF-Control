@@ -38,10 +38,11 @@
                 <CheckBox HorizontalAlignment="Right"
                           Content="记住密码"
                           IsChecked="{Binding Source={x:Static h:LoginOptions.Instance}, Path=Remember}" />
-                <h:ProgressButton HorizontalAlignment="Stretch"
+                <h:ProgressButton Margin="33,5,3,15"
+                                  HorizontalAlignment="Stretch"
                                   Command="{Binding LoginCommand}"
                                   CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type h:IDialog}}}"
-                                  Content="登录" Margin="33 5 3 15"
+                                  Content="登录"
                                   Style="{DynamicResource {x:Static h:ProgressButton.CommandKey}}" />
             </StackPanel>
         </Grid>

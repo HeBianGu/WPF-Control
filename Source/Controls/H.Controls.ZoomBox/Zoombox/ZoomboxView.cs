@@ -226,8 +226,8 @@ namespace H.Controls.ZoomBox
                     switch (this.ViewKind)
                     {
                         case ZoomboxViewKind.Absolute:
-                            result = (DoubleHelper.AreVirtuallyEqual(_scaleWidth, other._scaleWidth))
-                                  && (DoubleHelper.AreVirtuallyEqual(Position, other.Position));
+                            result = DoubleHelper.AreVirtuallyEqual(_scaleWidth, other._scaleWidth)
+                                  && DoubleHelper.AreVirtuallyEqual(Position, other.Position);
                             break;
 
                         case ZoomboxViewKind.Region:

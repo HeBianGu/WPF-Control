@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.ComponentModel;
@@ -16,13 +16,13 @@ namespace H.Controls.PropertyGrid
     {
         public PropertyItemsControl()
         {
-            var propertyItemsControlProperties = TypeDescriptor.GetProperties(this, new Attribute[] { new PropertyFilterAttribute(PropertyFilterOptions.All) });
-            var prop1 = propertyItemsControlProperties.Find("VirtualizingPanel.IsVirtualizingWhenGrouping", false);
+            PropertyDescriptorCollection propertyItemsControlProperties = TypeDescriptor.GetProperties(this, new Attribute[] { new PropertyFilterAttribute(PropertyFilterOptions.All) });
+            PropertyDescriptor prop1 = propertyItemsControlProperties.Find("VirtualizingPanel.IsVirtualizingWhenGrouping", false);
             if (prop1 != null)
             {
                 prop1.SetValue(this, true);
             }
-            var prop2 = propertyItemsControlProperties.Find("VirtualizingPanel.CacheLengthUnit", false);
+            PropertyDescriptor prop2 = propertyItemsControlProperties.Find("VirtualizingPanel.CacheLengthUnit", false);
             if (prop2 != null)
             {
                 prop2.SetValue(this, Enum.ToObject(prop2.PropertyType, 1));
@@ -75,7 +75,7 @@ namespace H.Controls.PropertyGrid
 
         protected override bool IsItemItsOwnContainerOverride(object item)
         {
-            return (item is PropertyItemBase);
+            return item is PropertyItemBase;
         }
 
 

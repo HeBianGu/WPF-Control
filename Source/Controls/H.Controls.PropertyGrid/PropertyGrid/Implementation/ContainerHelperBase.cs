@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections;
@@ -21,7 +21,7 @@ namespace H.Controls.PropertyGrid
 
             PropertyContainer = propertyContainer;
 
-            var propChange = propertyContainer as INotifyPropertyChanged;
+            INotifyPropertyChanged propChange = propertyContainer as INotifyPropertyChanged;
             if (propChange != null)
             {
                 propChange.PropertyChanged += new PropertyChangedEventHandler(OnPropertyContainerPropertyChanged);
@@ -69,7 +69,7 @@ namespace H.Controls.PropertyGrid
         {
             this.IsCleaning = true;
 
-            var propChange = PropertyContainer as INotifyPropertyChanged;
+            INotifyPropertyChanged propChange = PropertyContainer as INotifyPropertyChanged;
             if (propChange != null)
             {
                 propChange.PropertyChanged -= new PropertyChangedEventHandler(OnPropertyContainerPropertyChanged);
@@ -127,7 +127,7 @@ namespace H.Controls.PropertyGrid
 
         protected virtual void OnPropertyContainerPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            var propertyName = e.PropertyName;
+            string propertyName = e.PropertyName;
             IPropertyContainer ps = null;
             if (propertyName == ReflectionHelper.GetPropertyOrFieldName(() => ps.FilterInfo))
             {
@@ -183,9 +183,9 @@ namespace H.Controls.PropertyGrid
 
         protected internal virtual void SetPropertiesExpansion(bool isExpanded)
         {
-            foreach (var item in this.Properties)
+            foreach (object item in this.Properties)
             {
-                var propertyItem = item as PropertyItemBase;
+                PropertyItemBase propertyItem = item as PropertyItemBase;
                 if ((propertyItem != null) && propertyItem.IsExpandable)
                 {
                     if (propertyItem.ContainerHelper != null)
@@ -199,9 +199,9 @@ namespace H.Controls.PropertyGrid
 
         protected internal virtual void SetPropertiesExpansion(string propertyName, bool isExpanded)
         {
-            foreach (var item in this.Properties)
+            foreach (object item in this.Properties)
             {
-                var propertyItem = item as PropertyItemBase;
+                PropertyItemBase propertyItem = item as PropertyItemBase;
                 if ((propertyItem != null) && propertyItem.IsExpandable)
                 {
                     if (propertyItem.DisplayName == propertyName)

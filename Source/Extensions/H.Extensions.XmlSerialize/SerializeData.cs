@@ -1,12 +1,10 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace H.Extensions.XmlSerialize
@@ -29,19 +27,19 @@ namespace H.Extensions.XmlSerialize
         {
             Type type = obj.GetType();
             this.AssemblyQualifiedName = type.AssemblyQualifiedName;
-            var ps = type.GetProperties().Where(x => x.CanRead && x.CanWrite).Where(x => x.GetCustomAttribute<XmlIgnoreAttribute>() == null);
+            IEnumerable<PropertyInfo> ps = type.GetProperties().Where(x => x.CanRead && x.CanWrite).Where(x => x.GetCustomAttribute<XmlIgnoreAttribute>() == null);
             ps = ps.Where(x => !x.DeclaringType.FullName.StartsWith("System.")).ToList();
-            foreach (var p in ps)
+            foreach (PropertyInfo p in ps)
             {
-                var value = p.GetValue(obj);
-                var dv = p.GetCustomAttribute<DefaultValueAttribute>();
+                object value = p.GetValue(obj);
+                DefaultValueAttribute dv = p.GetCustomAttribute<DefaultValueAttribute>();
                 if (dv != null && dv.Value == value)
                     continue;
                 XmlProperty xmlProperty = new XmlProperty();
                 xmlProperty.Name = p.Name;
 
                 {
-                    var pTypeC = p.GetCustomAttribute<TypeConverterAttribute>();
+                    TypeConverterAttribute pTypeC = p.GetCustomAttribute<TypeConverterAttribute>();
                     if (pTypeC != null)
                     {
                         Type ctype = Type.GetType(pTypeC.ConverterTypeName);
@@ -53,7 +51,7 @@ namespace H.Extensions.XmlSerialize
                 }
 
                 {
-                    var pTypeC = p.PropertyType.GetCustomAttribute<TypeConverterAttribute>();
+                    TypeConverterAttribute pTypeC = p.PropertyType.GetCustomAttribute<TypeConverterAttribute>();
                     if (pTypeC != null)
                     {
                         Type ctype = Type.GetType(pTypeC.ConverterTypeName);
@@ -101,11 +99,11 @@ namespace H.Extensions.XmlSerialize
         public object ToObject(object obj)
         {
             Type type = obj.GetType();
-            var ps = type.GetProperties().Where(x => x.CanRead && x.CanWrite).Where(x => x.GetCustomAttribute<XmlIgnoreAttribute>() == null);
+            IEnumerable<PropertyInfo> ps = type.GetProperties().Where(x => x.CanRead && x.CanWrite).Where(x => x.GetCustomAttribute<XmlIgnoreAttribute>() == null);
 
-            foreach (var property in this.Properties)
+            foreach (XmlProperty property in this.Properties)
             {
-                var p = ps.FirstOrDefault(x => x.Name == property.Name);
+                PropertyInfo p = ps.FirstOrDefault(x => x.Name == property.Name);
 
                 if (p.PropertyType.IsEnum)
                 {
@@ -124,7 +122,7 @@ namespace H.Extensions.XmlSerialize
                 }
 
                 {
-                    var pTypeC = p.GetCustomAttribute<TypeConverterAttribute>();
+                    TypeConverterAttribute pTypeC = p.GetCustomAttribute<TypeConverterAttribute>();
                     if (pTypeC != null)
                     {
                         Type ctype = Type.GetType(pTypeC.ConverterTypeName);
@@ -136,7 +134,7 @@ namespace H.Extensions.XmlSerialize
                 }
 
                 {
-                    var pTypeC = p.PropertyType.GetCustomAttribute<TypeConverterAttribute>();
+                    TypeConverterAttribute pTypeC = p.PropertyType.GetCustomAttribute<TypeConverterAttribute>();
                     if (pTypeC != null)
                     {
                         Type ctype = Type.GetType(pTypeC.ConverterTypeName);
@@ -149,9 +147,9 @@ namespace H.Extensions.XmlSerialize
 
                 p.SetValue(obj, property.Value);
             }
-            foreach (var property in this.ClassProperties)
+            foreach (XmlClassProperty property in this.ClassProperties)
             {
-                var p = ps.FirstOrDefault(x => x.Name == property.Name);
+                PropertyInfo p = ps.FirstOrDefault(x => x.Name == property.Name);
                 if (p == null) continue;
                 object pObj = property.ToObject();
 

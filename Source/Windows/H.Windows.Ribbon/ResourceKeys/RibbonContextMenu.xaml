@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:classic="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Classic"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:classic="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Classic">
     <Style x:Key="{x:Type RibbonContextMenu}" TargetType="{x:Type RibbonContextMenu}">
         <Style.Resources>
             <Style x:Key="{x:Static MenuItem.SeparatorStyleKey}" TargetType="{x:Type RibbonSeparator}">

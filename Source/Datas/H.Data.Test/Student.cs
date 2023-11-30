@@ -4,11 +4,8 @@ using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Markup;
-using System.Xml.Linq;
 
 namespace H.Data.Test
 {
@@ -90,7 +87,7 @@ namespace H.Data.Test
 
         public static Students Randoms(int c = 100)
         {
-            var ss = Enumerable.Range(0, c).Select(x => Student.Random()).ToList();
+            List<Student> ss = Enumerable.Range(0, c).Select(x => Student.Random()).ToList();
             return new Students(ss);
         }
     }

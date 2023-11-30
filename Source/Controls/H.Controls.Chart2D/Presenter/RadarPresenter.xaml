@@ -19,7 +19,9 @@
 
             <local:Series>
                 <local:RadarLine Data="{Binding Data}" TryFreeze="False" />
-                <local:PolarScatter Data="{Binding Data}" MarkStyle="{DynamicResource {x:Static local:EllipseMarker.Default4Key}}" TryFreeze="False" />
+                <local:PolarScatter Data="{Binding Data}"
+                                    MarkStyle="{DynamicResource {x:Static local:EllipseMarker.Default4Key}}"
+                                    TryFreeze="False" />
             </local:Series>
 
             <local:Legend Style="{DynamicResource {x:Static local:Legend.VerticalKey}}" />

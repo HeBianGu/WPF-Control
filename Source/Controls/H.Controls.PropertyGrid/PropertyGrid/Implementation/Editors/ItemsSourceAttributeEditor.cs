@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 
@@ -43,7 +43,7 @@ namespace H.Controls.PropertyGrid
 
         private System.Collections.IEnumerable CreateItemsSource()
         {
-            var instance = Activator.CreateInstance(_attribute.Type);
+            object instance = Activator.CreateInstance(_attribute.Type);
             return (instance as IItemsSource).GetValues();
         }
     }

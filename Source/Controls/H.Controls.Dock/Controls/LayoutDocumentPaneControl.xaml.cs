@@ -1,12 +1,4 @@
-﻿/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
-
+﻿
 using H.Controls.Dock.Layout;
 using System;
 using System.Collections.Specialized;
@@ -114,14 +106,14 @@ namespace H.Controls.Dock.Controls
             base.OnItemsChanged(e);
             if (e.Action == NotifyCollectionChangedAction.Remove)
             {
-                foreach (var item in e.OldItems)
+                foreach (object item in e.OldItems)
                 {
                     if (item is LayoutContent layoutContent && layoutContent.TabItem != null)
                     {
                         layoutContent.TabItem.Model = null;
                         layoutContent.TabItem.ContextMenu = null;
                         layoutContent.TabItem.Content = null;
-                        var panel = layoutContent.TabItem.FindVisualAncestor<Panel>();
+                        Panel panel = layoutContent.TabItem.FindVisualAncestor<Panel>();
                         if (panel != null) panel.Children.Remove(layoutContent.TabItem);
                         layoutContent.TabItem = null;
                     }
@@ -135,7 +127,7 @@ namespace H.Controls.Dock.Controls
 
         private void OnSizeChanged(object sender, SizeChangedEventArgs e)
         {
-            var modelWithAtcualSize = _model as ILayoutPositionableElementWithActualSize;
+            ILayoutPositionableElementWithActualSize modelWithAtcualSize = _model;
             modelWithAtcualSize.ActualWidth = ActualWidth;
             modelWithAtcualSize.ActualHeight = ActualHeight;
         }

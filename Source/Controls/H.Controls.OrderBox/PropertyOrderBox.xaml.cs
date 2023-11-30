@@ -1,21 +1,10 @@
 ﻿using H.Providers.Ioc;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace H.Controls.OrderBox
 {
@@ -66,7 +55,7 @@ namespace H.Controls.OrderBox
             set { SetValue(DisplayNameProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty DisplayNameProperty =
             DependencyProperty.Register("DisplayName", typeof(string), typeof(PropertyOrderBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
             {
@@ -142,7 +131,7 @@ namespace H.Controls.OrderBox
             set { SetValue(PropertyNamesProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty PropertyNamesProperty =
             DependencyProperty.Register("PropertyNames", typeof(string), typeof(PropertyOrderBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
             {
@@ -177,7 +166,7 @@ namespace H.Controls.OrderBox
             this.RaiseEvent(args);
         }
 
-        void RefreshType(Type type)
+        private void RefreshType(Type type)
         {
             if (type == null)
                 return;
@@ -195,7 +184,7 @@ namespace H.Controls.OrderBox
 
         public async void ShowConfig()
         {
-            var r = await IocMessage.Dialog.Show(_propertyOrders, x =>
+            bool? r = await IocMessage.Dialog.Show(_propertyOrders, x =>
             {
                 if (x is Control control)
                 {
@@ -209,7 +198,7 @@ namespace H.Controls.OrderBox
             }
         }
 
-        void Save()
+        private void Save()
         {
             _propertyOrders.Save();
             this.Order = new PropertyOrderBoxOrder(this);

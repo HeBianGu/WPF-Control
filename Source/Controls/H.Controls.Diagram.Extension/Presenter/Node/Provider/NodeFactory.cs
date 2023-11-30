@@ -5,8 +5,6 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace H.Controls.Diagram.Extension
 {
@@ -14,18 +12,18 @@ namespace H.Controls.Diagram.Extension
     {
         public static IEnumerable<INodeData> LoadGeometryNodeDatas(params Type[] type)
         {
-            var types = Assembly.GetExecutingAssembly().GetTypes().Where(t => typeof(TextNodeData).IsAssignableFrom(t)).Where(x => !x.IsAbstract);
+            IEnumerable<Type> types = Assembly.GetExecutingAssembly().GetTypes().Where(t => typeof(TextNodeData).IsAssignableFrom(t)).Where(x => !x.IsAbstract);
 
-            foreach (var item in types)
+            foreach (Type item in types)
             {
-                var result = Activator.CreateInstance(item) as TextNodeData;
+                TextNodeData result = Activator.CreateInstance(item) as TextNodeData;
                 if (type == null)
                     yield return result;
-                var nodeTypes = item.GetCustomAttributes<NodeTypeAttribute>();
-                var nodeType = nodeTypes?.FirstOrDefault(l => type.Any(x => x == l.DiagramType));
+                IEnumerable<NodeTypeAttribute> nodeTypes = item.GetCustomAttributes<NodeTypeAttribute>();
+                NodeTypeAttribute nodeType = nodeTypes?.FirstOrDefault(l => type.Any(x => x == l.DiagramType));
                 if (nodeType == null)
                     continue;
-                var displayer = item.GetCustomAttribute<DisplayAttribute>();
+                DisplayAttribute displayer = item.GetCustomAttribute<DisplayAttribute>();
                 result.Name = displayer?.Name;
                 result.Description = displayer?.Description;
                 result.GroupName = displayer?.GroupName;
@@ -46,8 +44,8 @@ namespace H.Controls.Diagram.Extension
 
         public static IEnumerable<NodeGroup> GetNodeGroups(this IEnumerable<NodeData> nodeDatas)
         {
-            var groups = nodeDatas.GroupBy(l => l.GroupName);
-            foreach (var group in groups)
+            IEnumerable<IGrouping<string, NodeData>> groups = nodeDatas.GroupBy(l => l.GroupName);
+            foreach (IGrouping<string, NodeData> group in groups)
             {
                 NodeGroup nodeGroup = new NodeGroup();
                 nodeGroup.Name = group.Key;
@@ -58,9 +56,9 @@ namespace H.Controls.Diagram.Extension
 
         public static IEnumerable<NodeGroup> GetNodeGroups(params Type[] type)
         {
-            var groups1 = LoadGeometryNodeDatas(type).OfType<TextNodeData>().GetNodeGroups();
+            IEnumerable<NodeGroup> groups1 = LoadGeometryNodeDatas(type).OfType<TextNodeData>().GetNodeGroups();
 
-            var groups2 = LoadIconNodeDatas(type).OfType<TextNodeData>().Take(10).GetNodeGroups();
+            IEnumerable<NodeGroup> groups2 = LoadIconNodeDatas(type).OfType<TextNodeData>().Take(10).GetNodeGroups();
 
             return groups1.Union(groups2);
         }

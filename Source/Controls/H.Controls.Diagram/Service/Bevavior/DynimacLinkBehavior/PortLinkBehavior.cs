@@ -1,9 +1,8 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 using Microsoft.Xaml.Behaviors;
 using System;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -13,7 +12,7 @@ namespace H.Controls.Diagram
 {
     public class PortLinkBehavior : Behavior<Port>
     {
-        Diagram diagram;
+        private Diagram diagram;
 
         protected override void OnAttached()
         {
@@ -48,9 +47,9 @@ namespace H.Controls.Diagram
 
         private void AssociatedObject_MouseLeave(object sender, MouseEventArgs e)
         {
-            if (diagram._dynamicLink.Visibility != Visibility.Visible) 
+            if (diagram._dynamicLink.Visibility != Visibility.Visible)
                 return;
-            if (e.MouseDevice.LeftButton == MouseButtonState.Released) 
+            if (e.MouseDevice.LeftButton == MouseButtonState.Released)
                 return;
 
             Port.SetIsCanDrop(this.AssociatedObject, false);
@@ -82,7 +81,7 @@ namespace H.Controls.Diagram
                 else
                 {
                     this.diagram._dynamicLink.HasError = true;
-                    this.AssociatedObject.HasError= true;
+                    this.AssociatedObject.HasError = true;
                 }
             }
             else
@@ -118,8 +117,8 @@ namespace H.Controls.Diagram
             }));
         }
 
-        Point point;
-        Point previous;
+        private Point point;
+        private Point previous;
         private void Diagram_MouseMove(object sender, MouseEventArgs e)
         {
             if (diagram._dynamicLink.Visibility != Visibility.Visible)
@@ -141,8 +140,8 @@ namespace H.Controls.Diagram
                 diagram._dynamicLink.Update();
                 return;
             }
-            var v = (point - previous);
-            if(v.Length>SystemParameters.MinimumHorizontalDragDistance)
+            Vector v = point - previous;
+            if (v.Length > SystemParameters.MinimumHorizontalDragDistance)
             {
                 this.DelayInvoke(() =>
                 {
@@ -156,11 +155,11 @@ namespace H.Controls.Diagram
                     }
                 });
             }
-     
+
 
             diagram._dynamicLink.Update();
 #if DEBUG
-            var span = DateTime.Now - dateTime;
+            TimeSpan span = DateTime.Now - dateTime;
             System.Diagnostics.Debug.WriteLine("Diagram_PreviewMouseMove：" + span.ToString());
 #endif
             //}));
@@ -178,7 +177,7 @@ namespace H.Controls.Diagram
             this.Clear();
         }
 
-        void Clear()
+        private void Clear()
         {
             Mouse.OverrideCursor = null;
             this.ClearDynamic();
@@ -191,7 +190,7 @@ namespace H.Controls.Diagram
             this.SetMessage(null);
         }
 
-        void Init()
+        private void Init()
         {
             Mouse.OverrideCursor = Cursors.Pen;
             diagram.MouseMove += Diagram_MouseMove;
@@ -215,7 +214,7 @@ namespace H.Controls.Diagram
             diagram._dynamicLink.ToPort = new Port();
             Point position = NodeLayer.GetPosition(port);
             Thickness thickness = port.Margin;
-            position = new Point(position.X + (thickness.Left - thickness.Right) / 2, position.Y + (thickness.Top - thickness.Bottom) / 2);
+            position = new Point(position.X + ((thickness.Left - thickness.Right) / 2), position.Y + ((thickness.Top - thickness.Bottom) / 2));
 
             LinkLayer.SetStart(diagram._dynamicLink, position);
             LinkLayer.SetEnd(diagram._dynamicLink, position);
@@ -230,7 +229,7 @@ namespace H.Controls.Diagram
             //})); 
 
 #if DEBUG
-            var span = DateTime.Now - dateTime;
+            TimeSpan span = DateTime.Now - dateTime;
             System.Diagnostics.Debug.WriteLine("InitDynamic：" + span.ToString());
 #endif 
         }
@@ -242,14 +241,14 @@ namespace H.Controls.Diagram
 #endif
             this.diagram._dynamicLink.HasError = false;
             diagram._dynamicLink.Visibility = Visibility.Collapsed;
-            if (diagram._dynamicLink.FromPort == null) 
+            if (diagram._dynamicLink.FromPort == null)
                 return;
 
             ////  Do ：设置所有系统点可用
             //System.Collections.Generic.List<Node> where = diagram.Nodes.Where(l => l != diagram._dynamicLink.FromPort.ParentNode).OfType<Node>().ToList();
             //where.ForEach(l => l.GetPorts().ForEach(k => k.Visibility = Visibility.Collapsed));
 #if DEBUG
-            var span = DateTime.Now - dateTime;
+            TimeSpan span = DateTime.Now - dateTime;
             System.Diagnostics.Debug.WriteLine("ClearDynamic：" + span.ToString());
 #endif 
         }
@@ -277,7 +276,7 @@ namespace H.Controls.Diagram
                        }));
 
 #if DEBUG
-            var span = DateTime.Now - dateTime;
+            TimeSpan span = DateTime.Now - dateTime;
             System.Diagnostics.Debug.WriteLine("CreateDynamicLink：" + span.ToString());
 #endif 
         }

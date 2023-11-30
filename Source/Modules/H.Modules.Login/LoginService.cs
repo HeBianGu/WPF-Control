@@ -1,18 +1,9 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-using System;
-using System.Collections.ObjectModel;
-using System.Text.RegularExpressions;
-using System.Threading;
-using System.Linq;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Reflection;
-using System.Collections.Generic;
-using System.Xml.Serialization;
+using H.Providers.Ioc;
 using H.Providers.Mvvm;
-using H.Providers.Ioc;
-using H.Providers.Ioc;
+using System;
+using System.Threading;
 
 namespace H.Modules.Login
 {

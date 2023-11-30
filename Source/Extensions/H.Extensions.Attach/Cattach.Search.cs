@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.ComponentModel;
 using System.Windows;
@@ -19,7 +19,7 @@ namespace H.Extensions.Attach
             obj.SetValue(UseSearchProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty UseSearchProperty =
             DependencyProperty.RegisterAttached("UseSearch", typeof(bool), typeof(Cattach), new FrameworkPropertyMetadata(false, OnUseSearchChanged));
 
@@ -43,7 +43,7 @@ namespace H.Extensions.Attach
             obj.SetValue(SearchWidthProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty SearchWidthProperty =
             DependencyProperty.RegisterAttached("SearchWidth", typeof(double), typeof(Cattach), new FrameworkPropertyMetadata(default(double), OnSearchWidthChanged));
 
@@ -67,7 +67,7 @@ namespace H.Extensions.Attach
             obj.SetValue(SearchDockProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty SearchDockProperty =
             DependencyProperty.RegisterAttached("SearchDock", typeof(Dock), typeof(Cattach), new FrameworkPropertyMetadata(Dock.Right, OnSearchDockChanged));
 
@@ -91,7 +91,7 @@ namespace H.Extensions.Attach
             obj.SetValue(SearchUseHistoryProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty SearchUseHistoryProperty =
             DependencyProperty.RegisterAttached("SearchUseHistory", typeof(bool), typeof(Cattach), new FrameworkPropertyMetadata(false, OnSearchUseHistoryChanged));
 
@@ -115,13 +115,13 @@ namespace H.Extensions.Attach
             obj.SetValue(SearchHeightProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty SearchHeightProperty =
             DependencyProperty.RegisterAttached("SearchHeight", typeof(double), typeof(Cattach), new PropertyMetadata(default(double), OnSearchHeightChanged));
 
-        static public void OnSearchHeightChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnSearchHeightChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             double n = (double)e.NewValue;
 
@@ -139,13 +139,13 @@ namespace H.Extensions.Attach
             obj.SetValue(SearchVerticalAlignmentProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty SearchVerticalAlignmentProperty =
             DependencyProperty.RegisterAttached("SearchVerticalAlignment", typeof(VerticalAlignment), typeof(Cattach), new PropertyMetadata(default(VerticalAlignment), OnSearchVerticalAlignmentChanged));
 
-        static public void OnSearchVerticalAlignmentChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnSearchVerticalAlignmentChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             VerticalAlignment n = (VerticalAlignment)e.NewValue;
 
@@ -163,13 +163,13 @@ namespace H.Extensions.Attach
             obj.SetValue(SearchHorizontalAlignmentProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty SearchHorizontalAlignmentProperty =
             DependencyProperty.RegisterAttached("SearchHorizontalAlignment", typeof(HorizontalAlignment), typeof(Cattach), new PropertyMetadata(default(HorizontalAlignment), OnSearchHorizontalAlignmentChanged));
 
-        static public void OnSearchHorizontalAlignmentChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnSearchHorizontalAlignmentChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             HorizontalAlignment n = (HorizontalAlignment)e.NewValue;
 
@@ -187,13 +187,13 @@ namespace H.Extensions.Attach
             obj.SetValue(SearchMarginProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty SearchMarginProperty =
             DependencyProperty.RegisterAttached("SearchMargin", typeof(Thickness), typeof(Cattach), new PropertyMetadata(default(Thickness), OnSearchMarginChanged));
 
-        static public void OnSearchMarginChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnSearchMarginChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             Thickness n = (Thickness)e.NewValue;
 
@@ -211,13 +211,13 @@ namespace H.Extensions.Attach
             obj.SetValue(SearchTextProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty SearchTextProperty =
             DependencyProperty.RegisterAttached("SearchText", typeof(string), typeof(Cattach), new PropertyMetadata(default(string), OnSearchTextChanged));
 
-        static public void OnSearchTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnSearchTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             string n = (string)e.NewValue;
 

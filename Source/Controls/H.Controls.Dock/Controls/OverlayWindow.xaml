@@ -58,19 +58,29 @@
                                        Grid.ColumnSpan="3"
                                        Source="/H.Controls.Dock;component/Themes/Generic/Images/DockPaneEmpty.PNG"
                                        Stretch="Uniform" />
-                                <Border Name="PART_AnchorablePaneDropTargetTop" Grid.Row="0" Grid.Column="1">
+                                <Border Name="PART_AnchorablePaneDropTargetTop"
+                                        Grid.Row="0"
+                                        Grid.Column="1">
                                     <Image Source="/H.Controls.Dock;component/Themes/Generic/Images/InnerDockPaneTop.png" Stretch="None" />
                                 </Border>
-                                <Border Name="PART_AnchorablePaneDropTargetRight" Grid.Row="1" Grid.Column="2">
+                                <Border Name="PART_AnchorablePaneDropTargetRight"
+                                        Grid.Row="1"
+                                        Grid.Column="2">
                                     <Image Source="/H.Controls.Dock;component/Themes/Generic/Images/InnerDockPaneRight.png" Stretch="None" />
                                 </Border>
-                                <Border Name="PART_AnchorablePaneDropTargetBottom" Grid.Row="2" Grid.Column="1">
+                                <Border Name="PART_AnchorablePaneDropTargetBottom"
+                                        Grid.Row="2"
+                                        Grid.Column="1">
                                     <Image Source="/H.Controls.Dock;component/Themes/Generic/Images/InnerDockPaneBottom.png" Stretch="None" />
                                 </Border>
-                                <Border Name="PART_AnchorablePaneDropTargetLeft" Grid.Row="1" Grid.Column="0">
+                                <Border Name="PART_AnchorablePaneDropTargetLeft"
+                                        Grid.Row="1"
+                                        Grid.Column="0">
                                     <Image Source="/H.Controls.Dock;component/Themes/Generic/Images/InnerDockPaneLeft.png" Stretch="None" />
                                 </Border>
-                                <Border Name="PART_AnchorablePaneDropTargetInto" Grid.Row="1" Grid.Column="1">
+                                <Border Name="PART_AnchorablePaneDropTargetInto"
+                                        Grid.Row="1"
+                                        Grid.Column="1">
                                     <Image Source="/H.Controls.Dock;component/Themes/Generic/Images/InnerDockPaneInside.png" Stretch="None" />
                                 </Border>
                             </Grid>
@@ -94,19 +104,29 @@
                                        Grid.ColumnSpan="3"
                                        Source="/H.Controls.Dock;component/Themes/Generic/Images/DockPaneEmpty.PNG"
                                        Stretch="Uniform" />
-                                <Border Name="PART_DocumentPaneDropTargetTop" Grid.Row="0" Grid.Column="1">
+                                <Border Name="PART_DocumentPaneDropTargetTop"
+                                        Grid.Row="0"
+                                        Grid.Column="1">
                                     <Image Source="/H.Controls.Dock;component/Themes/Generic/Images/InnerDockDocPaneTop.png" Stretch="None" />
                                 </Border>
-                                <Border Name="PART_DocumentPaneDropTargetRight" Grid.Row="1" Grid.Column="2">
+                                <Border Name="PART_DocumentPaneDropTargetRight"
+                                        Grid.Row="1"
+                                        Grid.Column="2">
                                     <Image Source="/H.Controls.Dock;component/Themes/Generic/Images/InnerDockDocPaneRight.png" Stretch="None" />
                                 </Border>
-                                <Border Name="PART_DocumentPaneDropTargetBottom" Grid.Row="2" Grid.Column="1">
+                                <Border Name="PART_DocumentPaneDropTargetBottom"
+                                        Grid.Row="2"
+                                        Grid.Column="1">
                                     <Image Source="/H.Controls.Dock;component/Themes/Generic/Images/InnerDockDocPaneBottom.png" Stretch="None" />
                                 </Border>
-                                <Border Name="PART_DocumentPaneDropTargetLeft" Grid.Row="1" Grid.Column="0">
+                                <Border Name="PART_DocumentPaneDropTargetLeft"
+                                        Grid.Row="1"
+                                        Grid.Column="0">
                                     <Image Source="/H.Controls.Dock;component/Themes/Generic/Images/InnerDockDocPaneLeft.png" Stretch="None" />
                                 </Border>
-                                <Border Name="PART_DocumentPaneDropTargetInto" Grid.Row="1" Grid.Column="1">
+                                <Border Name="PART_DocumentPaneDropTargetInto"
+                                        Grid.Row="1"
+                                        Grid.Column="1">
                                     <Image Source="/H.Controls.Dock;component/Themes/Generic/Images/InnerDockPaneInside.png" Stretch="None" />
                                 </Border>
                             </Grid>

@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using H.Providers.Ioc;
 using H.Providers.Mvvm;
@@ -6,14 +6,10 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Input;
 using System.Windows.Threading;
 
 namespace H.Extensions.ViewModel
 {
-
     public class ObservableSource<T> : NotifyPropertyChanged, IObservableSource<T>
     {
         public int Count => this.Cache.Count;
@@ -256,7 +252,7 @@ namespace H.Extensions.ViewModel
 
         public void RefreshPage(Action after = null)
         {
-            var where = this.Cache.Where(l => this.Fileter?.Invoke(l) != false).
+            IEnumerable<T> where = this.Cache.Where(l => this.Fileter?.Invoke(l) != false).
                 Where(x => this.Filter1?.IsMatch(x) != false).
                 Where(x => this.Filter2?.IsMatch(x) != false).
                 Where(x => this.Filter3?.IsMatch(x) != false).
@@ -264,11 +260,11 @@ namespace H.Extensions.ViewModel
                 Where(x => this.Filter5?.IsMatch(x) != false);
 
             if (this.Order1 != null)
-                where = this.Order1.Where(where);
+                where = this.Order1.Where(where).Cast<T>();
             if (this.Order2 != null)
-                where = this.Order2.Where(where);
+                where = this.Order2.Where(where).Cast<T>();
             if (this.Order2 != null)
-                where = this.Order3.Where(where);
+                where = this.Order3.Where(where).Cast<T>();
 
             this.FilterSource = where.ToObservable();
             this.Total = this.FilterSource.Count;
@@ -276,7 +272,7 @@ namespace H.Extensions.ViewModel
             int max = min + this.PageCount;
             this.MinValue = this.Total == 0 ? 0 : (min + 1);
             this.MaxValue = max < this.Total ? max : this.Total;
-            this.TotalPage = this.Total % this.PageCount == 0 ? this.Total / this.PageCount : this.Total / this.PageCount + 1;
+            this.TotalPage = this.Total % this.PageCount == 0 ? this.Total / this.PageCount : (this.Total / this.PageCount) + 1;
             List<T> collection = where.Skip(this.MinValue - 1).Take(this.PageCount).ToList();
             //this.Source = collection.ToObservable();
             this.DelayInvoke(this.Source, collection, () =>

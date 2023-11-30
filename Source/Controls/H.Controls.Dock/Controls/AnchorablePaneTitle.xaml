@@ -42,8 +42,7 @@
                                                DropDownContextMenuDataContext="{Binding Path=LayoutItem, RelativeSource={RelativeSource TemplatedParent}}"
                                                Focusable="False"
                                                Style="{DynamicResource {x:Static h:ToggleButtonKeys.Geometry}}"
-                                               ToolTip="{x:Static lp:Resources.Anchorable_CxMenu_Hint}">
-                            </lc:DropDownButton>
+                                               ToolTip="{x:Static lp:Resources.Anchorable_CxMenu_Hint}" />
 
                             <Button x:Name="PART_AutoHidePin"
                                     Grid.Column="2"
@@ -54,8 +53,7 @@
                                     Focusable="False"
                                     Style="{StaticResource {x:Static h:ButtonKeys.Geometry}}"
                                     ToolTip="{x:Static lp:Resources.Anchorable_BtnAutoHide_Hint}"
-                                    Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={lcv:BoolToVisibilityConverter}}">
-                            </Button>
+                                    Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={lcv:BoolToVisibilityConverter}}" />
 
                             <Button x:Name="PART_HidePin"
                                     Grid.Column="3"

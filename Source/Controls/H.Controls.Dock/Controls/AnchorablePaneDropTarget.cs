@@ -1,12 +1,4 @@
-﻿/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
-
+﻿
 using H.Controls.Dock.Layout;
 using System.Linq;
 using System.Windows;
@@ -82,8 +74,8 @@ namespace H.Controls.Dock.Controls
                     #region DropTargetType.AnchorablePaneDockBottom
 
                     {
-                        var parentModel = targetModel.Parent as ILayoutGroup;
-                        var parentModelOrientable = targetModel.Parent as ILayoutOrientableGroup;
+                        ILayoutGroup parentModel = targetModel.Parent as ILayoutGroup;
+                        ILayoutOrientableGroup parentModelOrientable = targetModel.Parent as ILayoutOrientableGroup;
                         int insertToIndex = parentModel.IndexOfChild(targetModel);
 
                         if (parentModelOrientable.Orientation != System.Windows.Controls.Orientation.Vertical &&
@@ -92,12 +84,12 @@ namespace H.Controls.Dock.Controls
 
                         if (parentModelOrientable.Orientation == System.Windows.Controls.Orientation.Vertical)
                         {
-                            var layoutAnchorablePaneGroup = floatingWindow.RootPanel as LayoutAnchorablePaneGroup;
+                            LayoutAnchorablePaneGroup layoutAnchorablePaneGroup = floatingWindow.RootPanel;
                             if (layoutAnchorablePaneGroup != null &&
                                 (layoutAnchorablePaneGroup.Children.Count == 1 ||
                                     layoutAnchorablePaneGroup.Orientation == System.Windows.Controls.Orientation.Vertical))
                             {
-                                var anchorablesToMove = layoutAnchorablePaneGroup.Children.ToArray();
+                                ILayoutAnchorablePane[] anchorablesToMove = layoutAnchorablePaneGroup.Children.ToArray();
                                 for (int i = 0; i < anchorablesToMove.Length; i++)
                                     parentModel.InsertChildAt(insertToIndex + 1 + i, anchorablesToMove[i]);
                             }
@@ -106,8 +98,8 @@ namespace H.Controls.Dock.Controls
                         }
                         else
                         {
-                            var targetModelAsPositionableElement = targetModel as ILayoutPositionableElement;
-                            var newOrientedPanel = new LayoutAnchorablePaneGroup()
+                            ILayoutPositionableElement targetModelAsPositionableElement = targetModel as ILayoutPositionableElement;
+                            LayoutAnchorablePaneGroup newOrientedPanel = new LayoutAnchorablePaneGroup()
                             {
                                 Orientation = System.Windows.Controls.Orientation.Vertical,
                                 DockWidth = targetModelAsPositionableElement.DockWidth,
@@ -128,8 +120,8 @@ namespace H.Controls.Dock.Controls
                     #region DropTargetType.AnchorablePaneDockTop
 
                     {
-                        var parentModel = targetModel.Parent as ILayoutGroup;
-                        var parentModelOrientable = targetModel.Parent as ILayoutOrientableGroup;
+                        ILayoutGroup parentModel = targetModel.Parent as ILayoutGroup;
+                        ILayoutOrientableGroup parentModelOrientable = targetModel.Parent as ILayoutOrientableGroup;
                         int insertToIndex = parentModel.IndexOfChild(targetModel);
 
                         if (parentModelOrientable.Orientation != System.Windows.Controls.Orientation.Vertical &&
@@ -138,12 +130,12 @@ namespace H.Controls.Dock.Controls
 
                         if (parentModelOrientable.Orientation == System.Windows.Controls.Orientation.Vertical)
                         {
-                            var layoutAnchorablePaneGroup = floatingWindow.RootPanel as LayoutAnchorablePaneGroup;
+                            LayoutAnchorablePaneGroup layoutAnchorablePaneGroup = floatingWindow.RootPanel;
                             if (layoutAnchorablePaneGroup != null &&
                                 (layoutAnchorablePaneGroup.Children.Count == 1 ||
                                     layoutAnchorablePaneGroup.Orientation == System.Windows.Controls.Orientation.Vertical))
                             {
-                                var anchorablesToMove = layoutAnchorablePaneGroup.Children.ToArray();
+                                ILayoutAnchorablePane[] anchorablesToMove = layoutAnchorablePaneGroup.Children.ToArray();
                                 for (int i = 0; i < anchorablesToMove.Length; i++)
                                     parentModel.InsertChildAt(insertToIndex + i, anchorablesToMove[i]);
                             }
@@ -152,8 +144,8 @@ namespace H.Controls.Dock.Controls
                         }
                         else
                         {
-                            var targetModelAsPositionableElement = targetModel as ILayoutPositionableElement;
-                            var newOrientedPanel = new LayoutAnchorablePaneGroup()
+                            ILayoutPositionableElement targetModelAsPositionableElement = targetModel as ILayoutPositionableElement;
+                            LayoutAnchorablePaneGroup newOrientedPanel = new LayoutAnchorablePaneGroup()
                             {
                                 Orientation = System.Windows.Controls.Orientation.Vertical,
                                 DockWidth = targetModelAsPositionableElement.DockWidth,
@@ -175,8 +167,8 @@ namespace H.Controls.Dock.Controls
                     #region DropTargetType.AnchorablePaneDockLeft
 
                     {
-                        var parentModel = targetModel.Parent as ILayoutGroup;
-                        var parentModelOrientable = targetModel.Parent as ILayoutOrientableGroup;
+                        ILayoutGroup parentModel = targetModel.Parent as ILayoutGroup;
+                        ILayoutOrientableGroup parentModelOrientable = targetModel.Parent as ILayoutOrientableGroup;
                         int insertToIndex = parentModel.IndexOfChild(targetModel);
 
                         if (parentModelOrientable.Orientation != System.Windows.Controls.Orientation.Horizontal &&
@@ -185,12 +177,12 @@ namespace H.Controls.Dock.Controls
 
                         if (parentModelOrientable.Orientation == System.Windows.Controls.Orientation.Horizontal)
                         {
-                            var layoutAnchorablePaneGroup = floatingWindow.RootPanel as LayoutAnchorablePaneGroup;
+                            LayoutAnchorablePaneGroup layoutAnchorablePaneGroup = floatingWindow.RootPanel;
                             if (layoutAnchorablePaneGroup != null &&
                                 (layoutAnchorablePaneGroup.Children.Count == 1 ||
                                     layoutAnchorablePaneGroup.Orientation == System.Windows.Controls.Orientation.Horizontal))
                             {
-                                var anchorablesToMove = layoutAnchorablePaneGroup.Children.ToArray();
+                                ILayoutAnchorablePane[] anchorablesToMove = layoutAnchorablePaneGroup.Children.ToArray();
                                 for (int i = 0; i < anchorablesToMove.Length; i++)
                                     parentModel.InsertChildAt(insertToIndex + i, anchorablesToMove[i]);
                             }
@@ -199,8 +191,8 @@ namespace H.Controls.Dock.Controls
                         }
                         else
                         {
-                            var targetModelAsPositionableElement = targetModel as ILayoutPositionableElement;
-                            var newOrientedPanel = new LayoutAnchorablePaneGroup()
+                            ILayoutPositionableElement targetModelAsPositionableElement = targetModel as ILayoutPositionableElement;
+                            LayoutAnchorablePaneGroup newOrientedPanel = new LayoutAnchorablePaneGroup()
                             {
                                 Orientation = System.Windows.Controls.Orientation.Horizontal,
                                 DockWidth = targetModelAsPositionableElement.DockWidth,
@@ -222,8 +214,8 @@ namespace H.Controls.Dock.Controls
                     #region DropTargetType.AnchorablePaneDockRight
 
                     {
-                        var parentModel = targetModel.Parent as ILayoutGroup;
-                        var parentModelOrientable = targetModel.Parent as ILayoutOrientableGroup;
+                        ILayoutGroup parentModel = targetModel.Parent as ILayoutGroup;
+                        ILayoutOrientableGroup parentModelOrientable = targetModel.Parent as ILayoutOrientableGroup;
                         int insertToIndex = parentModel.IndexOfChild(targetModel);
 
                         if (parentModelOrientable.Orientation != System.Windows.Controls.Orientation.Horizontal &&
@@ -232,12 +224,12 @@ namespace H.Controls.Dock.Controls
 
                         if (parentModelOrientable.Orientation == System.Windows.Controls.Orientation.Horizontal)
                         {
-                            var layoutAnchorablePaneGroup = floatingWindow.RootPanel as LayoutAnchorablePaneGroup;
+                            LayoutAnchorablePaneGroup layoutAnchorablePaneGroup = floatingWindow.RootPanel;
                             if (layoutAnchorablePaneGroup != null &&
                                 (layoutAnchorablePaneGroup.Children.Count == 1 ||
                                     layoutAnchorablePaneGroup.Orientation == System.Windows.Controls.Orientation.Horizontal))
                             {
-                                var anchorablesToMove = layoutAnchorablePaneGroup.Children.ToArray();
+                                ILayoutAnchorablePane[] anchorablesToMove = layoutAnchorablePaneGroup.Children.ToArray();
                                 for (int i = 0; i < anchorablesToMove.Length; i++)
                                     parentModel.InsertChildAt(insertToIndex + 1 + i, anchorablesToMove[i]);
                             }
@@ -246,8 +238,8 @@ namespace H.Controls.Dock.Controls
                         }
                         else
                         {
-                            var targetModelAsPositionableElement = targetModel as ILayoutPositionableElement;
-                            var newOrientedPanel = new LayoutAnchorablePaneGroup()
+                            ILayoutPositionableElement targetModelAsPositionableElement = targetModel as ILayoutPositionableElement;
+                            LayoutAnchorablePaneGroup newOrientedPanel = new LayoutAnchorablePaneGroup()
                             {
                                 Orientation = System.Windows.Controls.Orientation.Horizontal,
                                 DockWidth = targetModelAsPositionableElement.DockWidth,
@@ -268,11 +260,11 @@ namespace H.Controls.Dock.Controls
                     #region DropTargetType.AnchorablePaneDockInside
 
                     {
-                        var paneModel = targetModel as LayoutAnchorablePane;
-                        var layoutAnchorablePaneGroup = floatingWindow.RootPanel as LayoutAnchorablePaneGroup;
+                        LayoutAnchorablePane paneModel = targetModel as LayoutAnchorablePane;
+                        LayoutAnchorablePaneGroup layoutAnchorablePaneGroup = floatingWindow.RootPanel;
 
                         int i = _tabIndex == -1 ? 0 : _tabIndex;
-                        foreach (var anchorableToImport in
+                        foreach (LayoutAnchorable anchorableToImport in
                             layoutAnchorablePaneGroup.Descendents().OfType<LayoutAnchorable>().ToArray())
                         {
                             paneModel.Children.Insert(i, anchorableToImport);
@@ -304,7 +296,7 @@ namespace H.Controls.Dock.Controls
             {
                 case DropTargetType.AnchorablePaneDockBottom:
                     {
-                        var targetScreenRect = TargetElement.GetScreenArea();
+                        Rect targetScreenRect = TargetElement.GetScreenArea();
                         targetScreenRect.Offset(-overlayWindow.Left, -overlayWindow.Top);
 
                         targetScreenRect.Offset(0.0, targetScreenRect.Height / 2.0);
@@ -315,7 +307,7 @@ namespace H.Controls.Dock.Controls
 
                 case DropTargetType.AnchorablePaneDockTop:
                     {
-                        var targetScreenRect = TargetElement.GetScreenArea();
+                        Rect targetScreenRect = TargetElement.GetScreenArea();
                         targetScreenRect.Offset(-overlayWindow.Left, -overlayWindow.Top);
 
                         targetScreenRect.Height /= 2.0;
@@ -325,7 +317,7 @@ namespace H.Controls.Dock.Controls
 
                 case DropTargetType.AnchorablePaneDockLeft:
                     {
-                        var targetScreenRect = TargetElement.GetScreenArea();
+                        Rect targetScreenRect = TargetElement.GetScreenArea();
                         targetScreenRect.Offset(-overlayWindow.Left, -overlayWindow.Top);
 
                         targetScreenRect.Width /= 2.0;
@@ -335,7 +327,7 @@ namespace H.Controls.Dock.Controls
 
                 case DropTargetType.AnchorablePaneDockRight:
                     {
-                        var targetScreenRect = TargetElement.GetScreenArea();
+                        Rect targetScreenRect = TargetElement.GetScreenArea();
                         targetScreenRect.Offset(-overlayWindow.Left, -overlayWindow.Top);
 
                         targetScreenRect.Offset(targetScreenRect.Width / 2.0, 0.0);
@@ -346,17 +338,17 @@ namespace H.Controls.Dock.Controls
 
                 case DropTargetType.AnchorablePaneDockInside:
                     {
-                        var targetScreenRect = TargetElement.GetScreenArea();
+                        Rect targetScreenRect = TargetElement.GetScreenArea();
                         targetScreenRect.Offset(-overlayWindow.Left, -overlayWindow.Top);
 
                         if (_tabIndex == -1)
                             return new RectangleGeometry(targetScreenRect);
                         else
                         {
-                            var translatedDetectionRect = new Rect(DetectionRects[0].TopLeft, DetectionRects[0].BottomRight);
+                            Rect translatedDetectionRect = new Rect(DetectionRects[0].TopLeft, DetectionRects[0].BottomRight);
                             translatedDetectionRect.Offset(-overlayWindow.Left, -overlayWindow.Top);
 
-                            var pathFigure = new PathFigure();
+                            PathFigure pathFigure = new PathFigure();
                             pathFigure.StartPoint = targetScreenRect.TopLeft;
                             pathFigure.Segments.Add(new LineSegment() { Point = new Point(targetScreenRect.Left, translatedDetectionRect.Top) });
                             pathFigure.Segments.Add(new LineSegment() { Point = translatedDetectionRect.TopLeft });

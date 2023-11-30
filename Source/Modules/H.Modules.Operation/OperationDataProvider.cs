@@ -14,7 +14,7 @@ namespace H.Modules.Operation
 
         public IChartDataProvider GetUserMethodsData(params string[] methodNames)
         {
-            var logins = this.Datas.Where(x => methodNames.Count() == 0 || methodNames.Any(l => l == x.Method)).GroupBy(x => x.UserName);
+            IEnumerable<IGrouping<string, hi_dd_operation>> logins = this.Datas.Where(x => methodNames.Count() == 0 || methodNames.Any(l => l == x.Method)).GroupBy(x => x.UserName);
             return new OperationChartDataProvider(logins.Select(x => Tuple.Create($"{x.Key}[{x.Count()}]", (double)x.Count())));
         }
 
@@ -22,8 +22,8 @@ namespace H.Modules.Operation
 
         public IChartDataProvider GetLastDayLoginData(int count = 7)
         {
-            var datas = this.Datas.GroupBy(x => x.CDATE.Date);
-            var tuples = new List<Tuple<string, double>>();
+            IEnumerable<IGrouping<DateTime, hi_dd_operation>> datas = this.Datas.GroupBy(x => x.CDATE.Date);
+            List<Tuple<string, double>> tuples = new List<Tuple<string, double>>();
             for (int i = 0; i < count; i++)
             {
                 DateTime date = DateTime.Now.AddDays(i - count + 1).Date;
@@ -44,7 +44,7 @@ namespace H.Modules.Operation
 
     public class OperationChartDataProvider : IChartDataProvider
     {
-        IEnumerable<Tuple<string, double>> _data;
+        private IEnumerable<Tuple<string, double>> _data;
         public OperationChartDataProvider(IEnumerable<Tuple<string, double>> data)
         {
             _data = data;

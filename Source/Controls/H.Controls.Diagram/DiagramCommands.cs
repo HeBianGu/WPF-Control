@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 
@@ -22,6 +22,6 @@ namespace H.Controls.Diagram
         public static RoutedUICommand MoveLeft = new RoutedUICommand() { Text = "左移动" };
         public static RoutedUICommand MoveRight = new RoutedUICommand() { Text = "右移动" };
         public static RoutedUICommand MoveUp = new RoutedUICommand() { Text = "上移动" };
-        public static RoutedUICommand MoveDown= new RoutedUICommand() { Text = "下移动" };
+        public static RoutedUICommand MoveDown = new RoutedUICommand() { Text = "下移动" };
     }
 }

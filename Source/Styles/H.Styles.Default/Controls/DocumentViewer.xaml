@@ -5,9 +5,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style x:Key="{ComponentResourceKey ResourceId=S.DocumentViewer.Default,
-                                        TypeInTargetAssembly={x:Type local:DocumentViewerKeys}}"
-           TargetType="{x:Type DocumentViewer}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.DocumentViewer.Default, TypeInTargetAssembly={x:Type local:DocumentViewerKeys}}" TargetType="{x:Type DocumentViewer}">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
         <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
@@ -26,8 +24,7 @@
                                 <RowDefinition Height="*" />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <ToolBar KeyboardNavigation.TabNavigation="Continue"
-                                     ToolBarTray.IsLocked="True">
+                            <ToolBar KeyboardNavigation.TabNavigation="Continue" ToolBarTray.IsLocked="True">
                                 <Button Command="ApplicationCommands.Print"
                                         CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                         Content="Print" />
@@ -69,15 +66,13 @@
                                 </ScrollViewer.Background>
                             </ScrollViewer>
 
-                            <ContentControl x:Name="PART_FindToolBarHost"
-                                            Grid.Row="2" />
+                            <ContentControl x:Name="PART_FindToolBarHost" Grid.Row="2" />
                         </Grid>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-    <Style BasedOn="{StaticResource {x:Static local:DocumentViewerKeys.Default}}"
-           TargetType="DocumentViewer" />
+    <Style BasedOn="{StaticResource {x:Static local:DocumentViewerKeys.Default}}" TargetType="DocumentViewer" />
 
 </ResourceDictionary>

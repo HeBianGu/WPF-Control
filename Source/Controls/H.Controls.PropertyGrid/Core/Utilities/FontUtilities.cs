@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.Collections.Generic;
 using System.Windows;
@@ -19,7 +19,7 @@ namespace H.Controls.PropertyGrid
                     try
                     {
                         // In WPF 4, this will throw an exception.
-                        var throwAcess = font.FamilyNames;
+                        LanguageSpecificStringDictionary throwAcess = font.FamilyNames;
                     }
                     catch
                     {

@@ -1,11 +1,3 @@
-/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
 
 using H.Controls.Dock.Layout;
 using H.Controls.Dock.Themes;
@@ -186,7 +178,7 @@ namespace H.Controls.Dock.Controls
                 }
                 else
                 {
-                    var resourceDictionaryToRemove =
+                    ResourceDictionary resourceDictionaryToRemove =
                         Resources.MergedDictionaries.FirstOrDefault(r => r.Source == oldTheme.GetResourceUri());
                     if (resourceDictionaryToRemove != null)
                         Resources.MergedDictionaries.Remove(
@@ -249,13 +241,13 @@ namespace H.Controls.Dock.Controls
             }
 
             // Find all content layouts in the anchorable pane (object to drop on)
-            var contentLayoutsOnPositionableElementPane = GetAllLayoutContents(positionableElement);
+            List<LayoutContent> contentLayoutsOnPositionableElementPane = GetAllLayoutContents(positionableElement);
 
             // Find all content layouts in the floating window (object to drop)
-            var contentLayoutsOnFloatingWindow = GetAllLayoutContents(_floatingWindow.Model);
+            List<LayoutContent> contentLayoutsOnFloatingWindow = GetAllLayoutContents(_floatingWindow.Model);
 
             // If any of the content layouts is present in the drop area, then disable the DropTargetInto button.
-            foreach (var content in contentLayoutsOnFloatingWindow)
+            foreach (LayoutContent content in contentLayoutsOnFloatingWindow)
             {
                 if (!contentLayoutsOnPositionableElementPane.Any(item =>
                     item.Title == content.Title &&
@@ -283,11 +275,11 @@ namespace H.Controls.Dock.Controls
         /// <returns>A list of all LayoutContent's</returns>
         private List<LayoutContent> GetAllLayoutContents(object source)
         {
-            var result = new List<LayoutContent>();
+            List<LayoutContent> result = new List<LayoutContent>();
 
             if (source is LayoutDocumentFloatingWindow documentFloatingWindow)
             {
-                foreach (var layoutElement in documentFloatingWindow.Children)
+                foreach (ILayoutElement layoutElement in documentFloatingWindow.Children)
                 {
                     result.AddRange(GetAllLayoutContents(layoutElement));
                 }
@@ -295,7 +287,7 @@ namespace H.Controls.Dock.Controls
 
             if (source is LayoutAnchorableFloatingWindow anchorableFloatingWindow)
             {
-                foreach (var layoutElement in anchorableFloatingWindow.Children)
+                foreach (ILayoutElement layoutElement in anchorableFloatingWindow.Children)
                 {
                     result.AddRange(GetAllLayoutContents(layoutElement));
                 }
@@ -303,7 +295,7 @@ namespace H.Controls.Dock.Controls
 
             if (source is LayoutDocumentPaneGroup documentPaneGroup)
             {
-                foreach (var layoutDocumentPane in documentPaneGroup.Children)
+                foreach (ILayoutDocumentPane layoutDocumentPane in documentPaneGroup.Children)
                 {
                     result.AddRange(GetAllLayoutContents(layoutDocumentPane));
                 }
@@ -311,7 +303,7 @@ namespace H.Controls.Dock.Controls
 
             if (source is LayoutAnchorablePaneGroup anchorablePaneGroup)
             {
-                foreach (var layoutDocumentPane in anchorablePaneGroup.Children)
+                foreach (ILayoutAnchorablePane layoutDocumentPane in anchorablePaneGroup.Children)
                 {
                     result.AddRange(GetAllLayoutContents(layoutDocumentPane));
                 }
@@ -319,7 +311,7 @@ namespace H.Controls.Dock.Controls
 
             if (source is LayoutDocumentPane documentPane)
             {
-                foreach (var layoutContent in documentPane.Children)
+                foreach (LayoutContent layoutContent in documentPane.Children)
                 {
                     result.Add(layoutContent);
                 }
@@ -327,7 +319,7 @@ namespace H.Controls.Dock.Controls
 
             if (source is LayoutAnchorablePane anchorablePane)
             {
-                foreach (var layoutContent in anchorablePane.Children)
+                foreach (LayoutAnchorable layoutContent in anchorablePane.Children)
                 {
                     result.Add(layoutContent);
                 }
@@ -353,14 +345,14 @@ namespace H.Controls.Dock.Controls
         /// <inheritdoc cref="IOverlayWindow"/>
         IEnumerable<IDropTarget> IOverlayWindow.GetTargets()
         {
-            foreach (var visibleArea in _visibleAreas)
+            foreach (IDropArea visibleArea in _visibleAreas)
             {
                 switch (visibleArea.Type)
                 {
                     case DropAreaType.DockingManager:
                         {
                             // Dragging over DockingManager -> Add DropTarget Area
-                            var dropAreaDockingManager = visibleArea as DropArea<DockingManager>;
+                            DropArea<DockingManager> dropAreaDockingManager = visibleArea as DropArea<DockingManager>;
                             yield return new DockingManagerDropTarget(dropAreaDockingManager.AreaElement, _dockingManagerDropTargetLeft.GetScreenArea(), DropTargetType.DockingManagerDockLeft);
                             yield return new DockingManagerDropTarget(dropAreaDockingManager.AreaElement, _dockingManagerDropTargetTop.GetScreenArea(), DropTargetType.DockingManagerDockTop);
                             yield return new DockingManagerDropTarget(dropAreaDockingManager.AreaElement, _dockingManagerDropTargetBottom.GetScreenArea(), DropTargetType.DockingManagerDockBottom);
@@ -371,7 +363,7 @@ namespace H.Controls.Dock.Controls
                     case DropAreaType.AnchorablePane:
                         {
                             // Dragging over AnchorablePane -> Add DropTarget Area
-                            var dropAreaAnchorablePane = visibleArea as DropArea<LayoutAnchorablePaneControl>;
+                            DropArea<LayoutAnchorablePaneControl> dropAreaAnchorablePane = visibleArea as DropArea<LayoutAnchorablePaneControl>;
                             yield return new AnchorablePaneDropTarget(dropAreaAnchorablePane.AreaElement, _anchorablePaneDropTargetLeft.GetScreenArea(), DropTargetType.AnchorablePaneDockLeft);
                             yield return new AnchorablePaneDropTarget(dropAreaAnchorablePane.AreaElement, _anchorablePaneDropTargetTop.GetScreenArea(), DropTargetType.AnchorablePaneDockTop);
                             yield return new AnchorablePaneDropTarget(dropAreaAnchorablePane.AreaElement, _anchorablePaneDropTargetRight.GetScreenArea(), DropTargetType.AnchorablePaneDockRight);
@@ -379,11 +371,11 @@ namespace H.Controls.Dock.Controls
                             if (_anchorablePaneDropTargetInto.IsVisible)
                                 yield return new AnchorablePaneDropTarget(dropAreaAnchorablePane.AreaElement, _anchorablePaneDropTargetInto.GetScreenArea(), DropTargetType.AnchorablePaneDockInside);
 
-                            var parentPaneModel = dropAreaAnchorablePane.AreaElement.Model as LayoutAnchorablePane;
+                            LayoutAnchorablePane parentPaneModel = dropAreaAnchorablePane.AreaElement.Model as LayoutAnchorablePane;
                             LayoutAnchorableTabItem lastAreaTabItem = null;
-                            foreach (var dropAreaTabItem in dropAreaAnchorablePane.AreaElement.FindVisualChildren<LayoutAnchorableTabItem>())
+                            foreach (LayoutAnchorableTabItem dropAreaTabItem in dropAreaAnchorablePane.AreaElement.FindVisualChildren<LayoutAnchorableTabItem>())
                             {
-                                var tabItemModel = dropAreaTabItem.Model as LayoutAnchorable;
+                                LayoutAnchorable tabItemModel = dropAreaTabItem.Model as LayoutAnchorable;
                                 lastAreaTabItem = lastAreaTabItem == null || lastAreaTabItem.GetScreenArea().Right < dropAreaTabItem.GetScreenArea().Right ?
                                     dropAreaTabItem : lastAreaTabItem;
                                 int tabIndex = parentPaneModel.Children.IndexOf(tabItemModel);
@@ -392,13 +384,13 @@ namespace H.Controls.Dock.Controls
 
                             if (lastAreaTabItem != null)
                             {
-                                var lastAreaTabItemScreenArea = lastAreaTabItem.GetScreenArea();
-                                var newAreaTabItemScreenArea = new Rect(lastAreaTabItemScreenArea.TopRight, new Point(lastAreaTabItemScreenArea.Right + lastAreaTabItemScreenArea.Width, lastAreaTabItemScreenArea.Bottom));
+                                Rect lastAreaTabItemScreenArea = lastAreaTabItem.GetScreenArea();
+                                Rect newAreaTabItemScreenArea = new Rect(lastAreaTabItemScreenArea.TopRight, new Point(lastAreaTabItemScreenArea.Right + lastAreaTabItemScreenArea.Width, lastAreaTabItemScreenArea.Bottom));
                                 if (newAreaTabItemScreenArea.Right < dropAreaAnchorablePane.AreaElement.GetScreenArea().Right)
                                     yield return new AnchorablePaneDropTarget(dropAreaAnchorablePane.AreaElement, newAreaTabItemScreenArea, DropTargetType.AnchorablePaneDockInside, parentPaneModel.Children.Count);
                             }
 
-                            var dropAreaTitle = dropAreaAnchorablePane.AreaElement.FindVisualChildren<AnchorablePaneTitle>().FirstOrDefault();
+                            AnchorablePaneTitle dropAreaTitle = dropAreaAnchorablePane.AreaElement.FindVisualChildren<AnchorablePaneTitle>().FirstOrDefault();
                             if (dropAreaTitle != null)
                                 yield return new AnchorablePaneDropTarget(dropAreaAnchorablePane.AreaElement, dropAreaTitle.GetScreenArea(), DropTargetType.AnchorablePaneDockInside);
                         }
@@ -412,7 +404,7 @@ namespace H.Controls.Dock.Controls
                             {
                                 // Item dragged is a layout anchorable over the DockingManager's DocumentPane
                                 // -> Yield a drop target structure with 9 buttons
-                                var dropAreaDocumentPane = visibleArea as DropArea<LayoutDocumentPaneControl>;
+                                DropArea<LayoutDocumentPaneControl> dropAreaDocumentPane = visibleArea as DropArea<LayoutDocumentPaneControl>;
                                 if (_documentPaneFullDropTargetLeft.IsVisible)
                                     yield return new DocumentPaneDropTarget(dropAreaDocumentPane.AreaElement, _documentPaneFullDropTargetLeft.GetScreenArea(), DropTargetType.DocumentPaneDockLeft);
                                 if (_documentPaneFullDropTargetTop.IsVisible)
@@ -424,11 +416,11 @@ namespace H.Controls.Dock.Controls
                                 if (_documentPaneFullDropTargetInto.IsVisible)
                                     yield return new DocumentPaneDropTarget(dropAreaDocumentPane.AreaElement, _documentPaneFullDropTargetInto.GetScreenArea(), DropTargetType.DocumentPaneDockInside);
 
-                                var parentPaneModel = dropAreaDocumentPane.AreaElement.Model as LayoutDocumentPane;
+                                LayoutDocumentPane parentPaneModel = dropAreaDocumentPane.AreaElement.Model as LayoutDocumentPane;
                                 LayoutDocumentTabItem lastAreaTabItem = null;
-                                foreach (var dropAreaTabItem in dropAreaDocumentPane.AreaElement.FindVisualChildren<LayoutDocumentTabItem>())
+                                foreach (LayoutDocumentTabItem dropAreaTabItem in dropAreaDocumentPane.AreaElement.FindVisualChildren<LayoutDocumentTabItem>())
                                 {
-                                    var tabItemModel = dropAreaTabItem.Model;
+                                    LayoutContent tabItemModel = dropAreaTabItem.Model;
                                     lastAreaTabItem = lastAreaTabItem == null || lastAreaTabItem.GetScreenArea().Right < dropAreaTabItem.GetScreenArea().Right ?
                                         dropAreaTabItem : lastAreaTabItem;
                                     int tabIndex = parentPaneModel.Children.IndexOf(tabItemModel);
@@ -437,8 +429,8 @@ namespace H.Controls.Dock.Controls
 
                                 if (lastAreaTabItem != null)
                                 {
-                                    var lastAreaTabItemScreenArea = lastAreaTabItem.GetScreenArea();
-                                    var newAreaTabItemScreenArea = new Rect(lastAreaTabItemScreenArea.TopRight, new Point(lastAreaTabItemScreenArea.Right + lastAreaTabItemScreenArea.Width, lastAreaTabItemScreenArea.Bottom));
+                                    Rect lastAreaTabItemScreenArea = lastAreaTabItem.GetScreenArea();
+                                    Rect newAreaTabItemScreenArea = new Rect(lastAreaTabItemScreenArea.TopRight, new Point(lastAreaTabItemScreenArea.Right + lastAreaTabItemScreenArea.Width, lastAreaTabItemScreenArea.Bottom));
                                     if (newAreaTabItemScreenArea.Right < dropAreaDocumentPane.AreaElement.GetScreenArea().Right)
                                         yield return new DocumentPaneDropTarget(dropAreaDocumentPane.AreaElement, newAreaTabItemScreenArea, DropTargetType.DocumentPaneDockInside, parentPaneModel.Children.Count);
                                 }
@@ -456,7 +448,7 @@ namespace H.Controls.Dock.Controls
                             {
                                 // Item being dragged is a document over the DockingManager's DocumentPane
                                 // -> Yield a drop target structure with 5 center buttons over the document
-                                var dropAreaDocumentPane = visibleArea as DropArea<LayoutDocumentPaneControl>;
+                                DropArea<LayoutDocumentPaneControl> dropAreaDocumentPane = visibleArea as DropArea<LayoutDocumentPaneControl>;
                                 if (_documentPaneDropTargetLeft.IsVisible)
                                     yield return new DocumentPaneDropTarget(dropAreaDocumentPane.AreaElement, _documentPaneDropTargetLeft.GetScreenArea(), DropTargetType.DocumentPaneDockLeft);
                                 if (_documentPaneDropTargetTop.IsVisible)
@@ -468,11 +460,11 @@ namespace H.Controls.Dock.Controls
                                 if (_documentPaneDropTargetInto.IsVisible)
                                     yield return new DocumentPaneDropTarget(dropAreaDocumentPane.AreaElement, _documentPaneDropTargetInto.GetScreenArea(), DropTargetType.DocumentPaneDockInside);
 
-                                var parentPaneModel = dropAreaDocumentPane.AreaElement.Model as LayoutDocumentPane;
+                                LayoutDocumentPane parentPaneModel = dropAreaDocumentPane.AreaElement.Model as LayoutDocumentPane;
                                 LayoutDocumentTabItem lastAreaTabItem = null;
-                                foreach (var dropAreaTabItem in dropAreaDocumentPane.AreaElement.FindVisualChildren<LayoutDocumentTabItem>())
+                                foreach (LayoutDocumentTabItem dropAreaTabItem in dropAreaDocumentPane.AreaElement.FindVisualChildren<LayoutDocumentTabItem>())
                                 {
-                                    var tabItemModel = dropAreaTabItem.Model;
+                                    LayoutContent tabItemModel = dropAreaTabItem.Model;
                                     lastAreaTabItem = lastAreaTabItem == null || lastAreaTabItem.GetScreenArea().Right < dropAreaTabItem.GetScreenArea().Right ?
                                         dropAreaTabItem : lastAreaTabItem;
                                     int tabIndex = parentPaneModel.Children.IndexOf(tabItemModel);
@@ -481,8 +473,8 @@ namespace H.Controls.Dock.Controls
 
                                 if (lastAreaTabItem != null)
                                 {
-                                    var lastAreaTabItemScreenArea = lastAreaTabItem.GetScreenArea();
-                                    var newAreaTabItemScreenArea = new Rect(lastAreaTabItemScreenArea.TopRight, new Point(lastAreaTabItemScreenArea.Right + lastAreaTabItemScreenArea.Width, lastAreaTabItemScreenArea.Bottom));
+                                    Rect lastAreaTabItemScreenArea = lastAreaTabItem.GetScreenArea();
+                                    Rect newAreaTabItemScreenArea = new Rect(lastAreaTabItemScreenArea.TopRight, new Point(lastAreaTabItemScreenArea.Right + lastAreaTabItemScreenArea.Width, lastAreaTabItemScreenArea.Bottom));
                                     if (newAreaTabItemScreenArea.Right < dropAreaDocumentPane.AreaElement.GetScreenArea().Right)
                                         yield return new DocumentPaneDropTarget(dropAreaDocumentPane.AreaElement, newAreaTabItemScreenArea, DropTargetType.DocumentPaneDockInside, parentPaneModel.Children.Count);
                                 }
@@ -493,7 +485,7 @@ namespace H.Controls.Dock.Controls
                     case DropAreaType.DocumentPaneGroup:
                         {
                             // Dragging over DocumentPaneGroup -> Add DropTarget Area
-                            var dropAreaDocumentPane = visibleArea as DropArea<LayoutDocumentPaneGroupControl>;
+                            DropArea<LayoutDocumentPaneGroupControl> dropAreaDocumentPane = visibleArea as DropArea<LayoutDocumentPaneGroupControl>;
                             if (_documentPaneDropTargetInto.IsVisible)
                                 yield return new DocumentPaneGroupDropTarget(dropAreaDocumentPane.AreaElement, _documentPaneDropTargetInto.GetScreenArea(), DropTargetType.DocumentPaneGroupDockInside);
                         }
@@ -520,7 +512,7 @@ namespace H.Controls.Dock.Controls
         /// <inheritdoc cref="IOverlayWindow"/>
         void IOverlayWindow.DragEnter(IDropArea area)
         {
-            var floatingWindowManager = _floatingWindow.Model.Root.Manager;
+            DockingManager floatingWindowManager = _floatingWindow.Model.Root.Manager;
 
             _visibleAreas.Add(area);
 
@@ -528,7 +520,7 @@ namespace H.Controls.Dock.Controls
             switch (area.Type)
             {
                 case DropAreaType.DockingManager:
-                    var dropAreaDockingManager = area as DropArea<DockingManager>;
+                    DropArea<DockingManager> dropAreaDockingManager = area as DropArea<DockingManager>;
                     if (dropAreaDockingManager.AreaElement != floatingWindowManager)
                     {
                         _visibleAreas.Remove(area);
@@ -540,8 +532,8 @@ namespace H.Controls.Dock.Controls
                 case DropAreaType.AnchorablePane:
                     areaElement = _gridAnchorablePaneDropTargets;
 
-                    var dropAreaAnchorablePaneGroup = area as DropArea<LayoutAnchorablePaneControl>;
-                    var layoutAnchorablePane = dropAreaAnchorablePaneGroup.AreaElement.Model as LayoutAnchorablePane;
+                    DropArea<LayoutAnchorablePaneControl> dropAreaAnchorablePaneGroup = area as DropArea<LayoutAnchorablePaneControl>;
+                    LayoutAnchorablePane layoutAnchorablePane = dropAreaAnchorablePaneGroup.AreaElement.Model as LayoutAnchorablePane;
                     if (layoutAnchorablePane.Root.Manager != floatingWindowManager)
                     {
                         _visibleAreas.Remove(area);
@@ -553,9 +545,9 @@ namespace H.Controls.Dock.Controls
                 case DropAreaType.DocumentPaneGroup:
                     {
                         areaElement = _gridDocumentPaneDropTargets;
-                        var dropAreaDocumentPaneGroup = area as DropArea<LayoutDocumentPaneGroupControl>;
-                        var layoutDocumentPane = (dropAreaDocumentPaneGroup.AreaElement.Model as LayoutDocumentPaneGroup).Children.First() as LayoutDocumentPane;
-                        var parentDocumentPaneGroup = layoutDocumentPane.Parent as LayoutDocumentPaneGroup;
+                        DropArea<LayoutDocumentPaneGroupControl> dropAreaDocumentPaneGroup = area as DropArea<LayoutDocumentPaneGroupControl>;
+                        LayoutDocumentPane layoutDocumentPane = (dropAreaDocumentPaneGroup.AreaElement.Model as LayoutDocumentPaneGroup).Children.First() as LayoutDocumentPane;
+                        LayoutDocumentPaneGroup parentDocumentPaneGroup = layoutDocumentPane.Parent as LayoutDocumentPaneGroup;
                         if (parentDocumentPaneGroup.Root.Manager != floatingWindowManager)
                         {
                             _visibleAreas.Remove(area);
@@ -575,9 +567,9 @@ namespace H.Controls.Dock.Controls
                         if (isDraggingAnchorables && _gridDocumentPaneFullDropTargets != null)
                         {
                             areaElement = _gridDocumentPaneFullDropTargets;
-                            var dropAreaDocumentPaneGroup = area as DropArea<LayoutDocumentPaneControl>;
-                            var layoutDocumentPane = dropAreaDocumentPaneGroup.AreaElement.Model as LayoutDocumentPane;
-                            var parentDocumentPaneGroup = layoutDocumentPane.Parent as LayoutDocumentPaneGroup;
+                            DropArea<LayoutDocumentPaneControl> dropAreaDocumentPaneGroup = area as DropArea<LayoutDocumentPaneControl>;
+                            LayoutDocumentPane layoutDocumentPane = dropAreaDocumentPaneGroup.AreaElement.Model as LayoutDocumentPane;
+                            LayoutDocumentPaneGroup parentDocumentPaneGroup = layoutDocumentPane.Parent as LayoutDocumentPaneGroup;
                             if (layoutDocumentPane.Root.Manager != floatingWindowManager)
                             {
                                 _visibleAreas.Remove(area);
@@ -589,7 +581,7 @@ namespace H.Controls.Dock.Controls
                             if (parentDocumentPaneGroup != null &&
                                 parentDocumentPaneGroup.Children.Where(c => c.IsVisible).Count() > 1)
                             {
-                                var manager = parentDocumentPaneGroup.Root.Manager;
+                                DockingManager manager = parentDocumentPaneGroup.Root.Manager;
                                 if (!manager.AllowMixedOrientation)
                                 {
                                     _documentPaneFullDropTargetLeft.Visibility = parentDocumentPaneGroup.Orientation == Orientation.Horizontal ? Visibility.Visible : Visibility.Hidden;
@@ -638,7 +630,7 @@ namespace H.Controls.Dock.Controls
                                 bool isFirstChild = indexOfDocumentPane == 0;
                                 bool isLastChild = indexOfDocumentPane == parentDocumentPaneGroup.ChildrenCount - 1;
 
-                                var manager = parentDocumentPaneGroup.Root.Manager;
+                                DockingManager manager = parentDocumentPaneGroup.Root.Manager;
                                 if (!manager.AllowMixedOrientation)
                                 {
                                     _documentPaneDropTargetBottomAsAnchorablePane.Visibility =
@@ -680,9 +672,9 @@ namespace H.Controls.Dock.Controls
                         {
                             // Showing a drop target structure with 5 centered star like buttons.
                             areaElement = _gridDocumentPaneDropTargets;
-                            var dropAreaDocumentPaneGroup = area as DropArea<LayoutDocumentPaneControl>;
-                            var layoutDocumentPane = dropAreaDocumentPaneGroup.AreaElement.Model as LayoutDocumentPane;
-                            var parentDocumentPaneGroup = layoutDocumentPane.Parent as LayoutDocumentPaneGroup;
+                            DropArea<LayoutDocumentPaneControl> dropAreaDocumentPaneGroup = area as DropArea<LayoutDocumentPaneControl>;
+                            LayoutDocumentPane layoutDocumentPane = dropAreaDocumentPaneGroup.AreaElement.Model as LayoutDocumentPane;
+                            LayoutDocumentPaneGroup parentDocumentPaneGroup = layoutDocumentPane.Parent as LayoutDocumentPaneGroup;
                             if (layoutDocumentPane.Root.Manager != floatingWindowManager)
                             {
                                 _visibleAreas.Remove(area);
@@ -694,7 +686,7 @@ namespace H.Controls.Dock.Controls
                             if (parentDocumentPaneGroup != null &&
                                 parentDocumentPaneGroup.Children.Where(c => c.IsVisible).Count() > 1)
                             {
-                                var manager = parentDocumentPaneGroup.Root.Manager;
+                                DockingManager manager = parentDocumentPaneGroup.Root.Manager;
                                 if (!manager.AllowMixedOrientation)
                                 {
                                     _documentPaneDropTargetLeft.Visibility = parentDocumentPaneGroup.Orientation == Orientation.Horizontal ? Visibility.Visible : Visibility.Hidden;
@@ -776,7 +768,7 @@ namespace H.Controls.Dock.Controls
         /// <inheritdoc cref="IOverlayWindow"/>
         void IOverlayWindow.DragEnter(IDropTarget target)
         {
-            var previewBoxPath = target.GetPreviewPath(this, _floatingWindow.Model as LayoutFloatingWindow);
+            System.Windows.Media.Geometry previewBoxPath = target.GetPreviewPath(this, _floatingWindow.Model as LayoutFloatingWindow);
             if (previewBoxPath != null)
             {
                 _previewBox.Data = previewBoxPath;

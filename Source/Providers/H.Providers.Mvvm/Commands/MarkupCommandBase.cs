@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Markup;
-using System.Xml.Linq;
 
 namespace H.Providers.Mvvm
 {

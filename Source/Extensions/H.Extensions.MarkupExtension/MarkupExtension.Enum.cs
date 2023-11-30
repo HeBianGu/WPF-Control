@@ -1,11 +1,10 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
-using System.Windows.Markup;
 
 namespace H.Extensions.MarkupExtension
 {
@@ -116,11 +115,11 @@ namespace H.Extensions.MarkupExtension
 
                 DisplayAttribute display = field.GetCustomAttribute<DisplayAttribute>();
 
-                if (display == null) 
+                if (display == null)
                     continue;
                 if (display.GroupName == null)
                     continue;
-                if (display.GroupName.Split(',').Contains(this.GroupName)==true)
+                if (display.GroupName.Split(',').Contains(this.GroupName) == true)
                 {
                     matchs.Add(item);
                 }
@@ -131,7 +130,7 @@ namespace H.Extensions.MarkupExtension
     }
 
     public class GetEnumExtension : GetValueToTypeExtensionBase
-    { 
+    {
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
             return Enum.Parse(this.Type, this.Value);

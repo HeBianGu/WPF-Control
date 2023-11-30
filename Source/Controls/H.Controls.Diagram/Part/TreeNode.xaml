@@ -8,7 +8,10 @@
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram;component/Part/Node.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.TreeNode.Default, TypeInTargetAssembly={x:Type local:TreeNode}}" BasedOn="{StaticResource {x:Static local:Node.DefaultKey}}" TargetType="{x:Type local:TreeNode}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.TreeNode.Default,
+                                        TypeInTargetAssembly={x:Type local:TreeNode}}"
+           BasedOn="{StaticResource {x:Static local:Node.DefaultKey}}"
+           TargetType="{x:Type local:TreeNode}">
         <Setter Property="Margin" Value="0" />
         <!--<Setter Property="RenderTransform" Value="{DynamicResource {x:Static h:SystemKeys.TransformGroup}}" />-->
         <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />

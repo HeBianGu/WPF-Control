@@ -185,7 +185,7 @@ namespace H.Controls.ZoomBox
         {
             this.VerifyStackModification();
 
-            bool currentDeleted = (this.Zoombox.CurrentViewIndex >= 0);
+            bool currentDeleted = this.Zoombox.CurrentViewIndex >= 0;
             base.ClearItems();
             this.Zoombox.SetViewStackCount(Count);
 
@@ -251,7 +251,7 @@ namespace H.Controls.ZoomBox
         {
             this.VerifyStackModification();
 
-            bool currentDeleted = (this.Zoombox.ViewStackIndex == index);
+            bool currentDeleted = this.Zoombox.ViewStackIndex == index;
             if (!this.IsMovingViews)
             {
                 // if an item below the current index was deleted 

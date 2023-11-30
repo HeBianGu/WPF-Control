@@ -125,7 +125,7 @@ namespace H.Controls.Dock.Commands
                 return;
             }
 
-            var actionTarget = ActionTarget;
+            object actionTarget = ActionTarget;
 
             if (IsAlive)
             {
@@ -157,7 +157,7 @@ namespace H.Controls.Dock.Commands
         /// being casted to T.</param>
         public void ExecuteWithObject(object parameter)
         {
-            var parameterCasted = (T)parameter;
+            T parameterCasted = (T)parameter;
             Execute(parameterCasted);
         }
 

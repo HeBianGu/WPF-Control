@@ -1,11 +1,5 @@
-﻿using H.Providers.Ioc;
-using H.Providers.Mvvm;
-using System;
-using System.Collections.Generic;
+﻿using H.Providers.Mvvm;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace H.Controls.Form
 {

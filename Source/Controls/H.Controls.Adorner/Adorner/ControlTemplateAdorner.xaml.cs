@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 
@@ -32,7 +32,7 @@ namespace H.Controls.Adorner
 
         protected virtual ControlTemplate CreateTemplate()
         {
-            return ControlTemplateAdorner.GetTemplate(this.AdornedElement) as ControlTemplate;
+            return ControlTemplateAdorner.GetTemplate(this.AdornedElement);
         }
 
         public static ControlTemplate GetTemplate(DependencyObject obj)
@@ -48,9 +48,9 @@ namespace H.Controls.Adorner
         public static readonly DependencyProperty TemplateProperty =
             DependencyProperty.RegisterAttached("Template", typeof(ControlTemplate), typeof(ControlTemplateAdorner), new PropertyMetadata(default(ControlTemplate), OnTemplateChanged));
 
-        static public void OnTemplateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnTemplateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
             ControlTemplate n = (ControlTemplate)e.NewValue;
             ControlTemplate o = (ControlTemplate)e.OldValue;
         }
@@ -64,7 +64,7 @@ namespace H.Controls.Adorner
 
         protected override Size ArrangeOverride(Size finalSize)
         {
-            var r = base.ArrangeOverride(finalSize);
+            Size r = base.ArrangeOverride(finalSize);
             this.RefreshLayout();
             return r;
         }

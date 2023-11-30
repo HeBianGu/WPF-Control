@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Linq;
@@ -29,7 +29,7 @@ namespace H.Controls.PropertyGrid
             get
             {
                 string passwordString;
-                var valuePtr = Marshal.SecureStringToBSTR(this.SecurePassword);
+                IntPtr valuePtr = Marshal.SecureStringToBSTR(this.SecurePassword);
                 try
                 {
                     passwordString = Marshal.PtrToStringUni(valuePtr);
@@ -81,7 +81,7 @@ namespace H.Controls.PropertyGrid
 
         private static void OnPasswordCharChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
         {
-            var watermarkPasswordBox = o as WatermarkPasswordBox;
+            WatermarkPasswordBox watermarkPasswordBox = o as WatermarkPasswordBox;
             if (watermarkPasswordBox != null)
             {
                 watermarkPasswordBox.OnPasswordCharChanged((char)e.OldValue, (char)e.NewValue);
@@ -218,7 +218,7 @@ namespace H.Controls.PropertyGrid
             if (!e.SourceDataObject.GetDataPresent(DataFormats.UnicodeText, true))
                 return;
 
-            var text = e.SourceDataObject.GetData(DataFormats.UnicodeText) as string;
+            string text = e.SourceDataObject.GetData(DataFormats.UnicodeText) as string;
             if (text != null)
             {
                 this.PasswordInsert(text, this.CaretIndex);
@@ -256,7 +256,7 @@ namespace H.Controls.PropertyGrid
                 this.PasswordRemove(index);
             }
 
-            var newPassword = this.Password;
+            string newPassword = this.Password;
             for (int i = 0; i < text.Length; ++i)
             {
                 // MaxLength == 0 is no limit
@@ -276,7 +276,7 @@ namespace H.Controls.PropertyGrid
 
             if (this.SelectedText.Length > 0)
             {
-                var newPassword = this.Password;
+                string newPassword = this.Password;
                 for (int i = 0; i < this.SelectedText.Length; ++i)
                 {
                     newPassword = newPassword.Remove(index, 1);
@@ -285,7 +285,7 @@ namespace H.Controls.PropertyGrid
             }
             else
             {
-                var newPassword = this.Password.Remove(index, 1);
+                string newPassword = this.Password.Remove(index, 1);
                 this.SetPassword(newPassword, index);
             }
         }
@@ -299,7 +299,7 @@ namespace H.Controls.PropertyGrid
 
         private void SyncTextPassword(int nextCarretIndex)
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             this.Text = sb.Append(Enumerable.Repeat(this.PasswordChar, this.Password.Length).ToArray()).ToString();
             //set CaretIndex after Text is changed
             this.CaretIndex = Math.Max(nextCarretIndex, 0);

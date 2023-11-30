@@ -241,7 +241,7 @@
                                                 <Grid RenderOptions.ClearTypeHint="Enabled">
                                                     <Canvas x:Name="BackgroundCanvas"
                                                             Width="0"
-                                                            Height="0" 
+                                                            Height="0"
                                                             HorizontalAlignment="Left"
                                                             VerticalAlignment="Top">
                                                         <Rectangle x:Name="OpaqueRect"

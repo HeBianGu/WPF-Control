@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 
@@ -19,7 +19,7 @@ namespace H.Controls.Form
     {
         public TextPropertyItem(PropertyInfo property, object obj) : base(property, obj)
         {
-            var ta = property.GetCustomAttribute<TextBoxAttribute>();
+            TextBoxAttribute ta = property.GetCustomAttribute<TextBoxAttribute>();
             if (ta != null)
             {
                 this.TextWrapping = ta.TextWrapping;
@@ -55,7 +55,7 @@ namespace H.Controls.Form
 
         protected override string GetValue()
         {
-            var value = this.PropertyInfo.GetValue(this.Obj);
+            object value = this.PropertyInfo.GetValue(this.Obj);
             if (value == null)
                 return null;
             if (IsTypeConverter(this.PropertyInfo))
@@ -82,7 +82,7 @@ namespace H.Controls.Form
             return false;
         }
 
-        string TypeConverterToString(object value)
+        private string TypeConverterToString(object value)
         {
             TypeConverterAttribute propertyConvert = this.PropertyInfo.GetCustomAttribute<TypeConverterAttribute>();
             if (propertyConvert != null)

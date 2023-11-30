@@ -1,7 +1,6 @@
 ﻿using H.Modules.Messages.Notice;
 using H.Providers.Ioc;
 using Microsoft.Extensions.DependencyInjection;
-using System.Windows.Input;
 
 namespace System
 {

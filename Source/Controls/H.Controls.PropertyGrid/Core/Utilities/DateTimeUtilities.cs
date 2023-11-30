@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 
@@ -21,7 +21,7 @@ namespace H.Controls.PropertyGrid
             if (date1 == null || date2 == null)
                 return false;
 
-            return (date1.Value.Date == date2.Value.Date);
+            return date1.Value.Date == date2.Value.Date;
         }
     }
 }

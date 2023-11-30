@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Globalization;
@@ -13,8 +13,8 @@ namespace H.Controls.PropertyGrid
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var thickness = (Thickness)value;
-            var sideToRemove = int.Parse((string)parameter);
+            Thickness thickness = (Thickness)value;
+            int sideToRemove = int.Parse((string)parameter);
             switch (sideToRemove)
             {
                 case 0: thickness.Left = 0d; break;

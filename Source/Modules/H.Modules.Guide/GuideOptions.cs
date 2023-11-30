@@ -2,17 +2,12 @@
 using H.Extensions.Attach;
 using H.Extensions.Setting;
 using H.Providers.Ioc;
-using H.Themes.Default;
-using Microsoft.Extensions.Options;
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Threading;
-using System.Xml.Linq;
-using System.Xml.Serialization;
 
 namespace H.Modules.Guide
 {
@@ -95,7 +90,7 @@ namespace H.Modules.Guide
         }
 
 
-        private Brush _stroke=Brushes.Orange;
+        private Brush _stroke = Brushes.Orange;
         [Display(Name = "线条颜色")]
         public Brush Stroke
         {

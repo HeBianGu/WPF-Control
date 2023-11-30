@@ -5,7 +5,6 @@ using H.Themes.Default;
 
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Reflection;
 using System.Windows;
 using System.Windows.Media;
 using System.Xml.Serialization;

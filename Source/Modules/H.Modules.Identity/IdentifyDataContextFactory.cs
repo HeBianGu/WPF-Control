@@ -7,7 +7,7 @@ namespace H.Modules.Identity
     {
         public IdentifyDataContext CreateDbContext(string[] args)
         {
-            var optionsBuilder = new DbContextOptionsBuilder<IdentifyDataContext>();
+            DbContextOptionsBuilder<IdentifyDataContext> optionsBuilder = new DbContextOptionsBuilder<IdentifyDataContext>();
             optionsBuilder.UseLazyLoadingProxies().UseSqlite("Data Source=Migration.db");
             return new IdentifyDataContext(optionsBuilder.Options);
         }

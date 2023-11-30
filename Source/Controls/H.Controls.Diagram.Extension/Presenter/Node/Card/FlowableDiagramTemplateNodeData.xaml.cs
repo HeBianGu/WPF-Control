@@ -1,15 +1,11 @@
-﻿
-
-using H.Providers.Ioc;
-using H.Providers.Mvvm;
+﻿using H.Providers.Mvvm;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Xml.Serialization;
 
 namespace H.Controls.Diagram.Extension
 {
-     [Display(Name = "基本流程图", GroupName = "流程图", Order = 0)]
+    [Display(Name = "基本流程图", GroupName = "流程图", Order = 0)]
     public class FlowableDiagramTemplateNodeData : TitleCardNodeData
     {
         public FlowableDiagramTemplateNodeData()
@@ -50,23 +46,23 @@ namespace H.Controls.Diagram.Extension
 
 
         [XmlIgnore]
-         [Display(Name = "查看模板", GroupName = "操作")]
+        [Display(Name = "查看模板", GroupName = "操作")]
         public RelayCommand ShowTemplateCommand => new RelayCommand(async (s, e) =>
         {
-        //    await IocMessage.Dialog.Show(this.Template, null, this.Name, x =>
-        //    {
-        //        x.HorizontalAlignment = HorizontalAlignment.Stretch;
-        //        x.VerticalAlignment = VerticalAlignment.Stretch;
-        //        x.Margin = new Thickness(20);
-        //        x.Padding = new Thickness(20);
-        //    });
+            //    await IocMessage.Dialog.Show(this.Template, null, this.Name, x =>
+            //    {
+            //        x.HorizontalAlignment = HorizontalAlignment.Stretch;
+            //        x.VerticalAlignment = VerticalAlignment.Stretch;
+            //        x.Margin = new Thickness(20);
+            //        x.Padding = new Thickness(20);
+            //    });
         });
 
         public override async Task<IFlowableResult> InvokeAsync(Part previors, Node current)
         {
             if (this.Template.Diagram is IFlowableDiagram flowable)
             {
-                var r = await flowable.Start();
+                bool? r = await flowable.Start();
                 this.Message = flowable.Message;
                 return r == true ? this.OK(flowable.Message) : this.Error(flowable.Message);
             }

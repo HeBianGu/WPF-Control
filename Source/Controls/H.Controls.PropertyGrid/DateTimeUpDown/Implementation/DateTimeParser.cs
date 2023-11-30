@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections.Generic;
@@ -17,7 +17,7 @@ namespace H.Controls.PropertyGrid
             if (string.IsNullOrEmpty(value) || string.IsNullOrEmpty(format))
                 return false;
 
-            var dateTimeString = ComputeDateTimeString(value, format, currentDate, cultureInfo).Trim();
+            string dateTimeString = ComputeDateTimeString(value, format, currentDate, cultureInfo).Trim();
 
             if (!String.IsNullOrEmpty(dateTimeString))
                 success = DateTime.TryParse(dateTimeString, cultureInfo.DateTimeFormat, DateTimeStyles.None, out result);
@@ -38,9 +38,9 @@ namespace H.Controls.PropertyGrid
 
             UpdateSortableDateTimeString(ref dateTime, ref format, cultureInfo);
 
-            var dateTimeParts = new List<string>();
-            var formats = new List<string>();
-            var isContainingDateTimeSeparators = dateTimeSeparators.Any(s => dateTime.Contains(s));
+            List<string> dateTimeParts = new List<string>();
+            List<string> formats = new List<string>();
+            bool isContainingDateTimeSeparators = dateTimeSeparators.Any(s => dateTime.Contains(s));
             if (isContainingDateTimeSeparators)
             {
                 dateTimeParts = dateTime.Split(dateTimeSeparators, StringSplitOptions.RemoveEmptyEntries).ToList();
@@ -50,10 +50,10 @@ namespace H.Controls.PropertyGrid
             {
                 string currentformat = "";
                 string currentString = "";
-                var formatArray = format.ToCharArray();
+                char[] formatArray = format.ToCharArray();
                 for (int i = 0; i < formatArray.Count(); ++i)
                 {
-                    var c = formatArray[i];
+                    char c = formatArray[i];
                     if (!currentformat.Contains(c))
                     {
                         if (!string.IsNullOrEmpty(currentformat))
@@ -92,7 +92,7 @@ namespace H.Controls.PropertyGrid
 
             for (int i = 0; i < formats.Count; i++)
             {
-                var f = formats[i];
+                string f = formats[i];
                 if (!f.Contains("ddd") && !f.Contains("GMT"))
                 {
                     if (f.Contains("M"))
@@ -119,8 +119,8 @@ namespace H.Controls.PropertyGrid
                 }
             }
 
-            var date = string.Join(cultureInfo.DateTimeFormat.DateSeparator, dateParts.Select(x => x.Value).ToArray());
-            var time = string.Join(cultureInfo.DateTimeFormat.TimeSeparator, timeParts);
+            string date = string.Join(cultureInfo.DateTimeFormat.DateSeparator, dateParts.Select(x => x.Value).ToArray());
+            string time = string.Join(cultureInfo.DateTimeFormat.TimeSeparator, timeParts);
             time += "." + millisecondsPart;
 
             return String.Format("{0} {1} {2}", date, time, designator);
@@ -143,8 +143,8 @@ namespace H.Controls.PropertyGrid
         private static Dictionary<string, string> GetDateParts(DateTime currentDate, CultureInfo cultureInfo)
         {
             Dictionary<string, string> dateParts = new Dictionary<string, string>();
-            var dateTimeSeparators = new[] { ",", " ", "-", ".", "/", cultureInfo.DateTimeFormat.DateSeparator, cultureInfo.DateTimeFormat.TimeSeparator };
-            var dateFormatParts = cultureInfo.DateTimeFormat.ShortDatePattern.Split(dateTimeSeparators, StringSplitOptions.RemoveEmptyEntries).ToList();
+            string[] dateTimeSeparators = new[] { ",", " ", "-", ".", "/", cultureInfo.DateTimeFormat.DateSeparator, cultureInfo.DateTimeFormat.TimeSeparator };
+            List<string> dateFormatParts = cultureInfo.DateTimeFormat.ShortDatePattern.Split(dateTimeSeparators, StringSplitOptions.RemoveEmptyEntries).ToList();
             dateFormatParts.ForEach(item =>
             {
                 string key = string.Empty;

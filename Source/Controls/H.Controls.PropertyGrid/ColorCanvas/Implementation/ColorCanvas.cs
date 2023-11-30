@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.IO;
@@ -235,7 +235,7 @@ namespace H.Controls.PropertyGrid
 
         private static object OnCoerceHexadecimalString(DependencyObject d, object basevalue)
         {
-            var colorCanvas = (ColorCanvas)d;
+            ColorCanvas colorCanvas = (ColorCanvas)d;
             if (colorCanvas == null)
                 return basevalue;
 
@@ -244,7 +244,7 @@ namespace H.Controls.PropertyGrid
 
         private object OnCoerceHexadecimalString(object newValue)
         {
-            var value = newValue as string;
+            string value = newValue as string;
             string retValue = value;
 
             try
@@ -383,7 +383,7 @@ namespace H.Controls.PropertyGrid
 
         #region Event Handlers
 
-        void ColorShadingCanvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void ColorShadingCanvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (_colorShadingCanvas != null)
             {
@@ -395,7 +395,7 @@ namespace H.Controls.PropertyGrid
             }
         }
 
-        void ColorShadingCanvas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void ColorShadingCanvas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             if (_colorShadingCanvas != null)
             {
@@ -403,7 +403,7 @@ namespace H.Controls.PropertyGrid
             }
         }
 
-        void ColorShadingCanvas_MouseMove(object sender, MouseEventArgs e)
+        private void ColorShadingCanvas_MouseMove(object sender, MouseEventArgs e)
         {
             if (_colorShadingCanvas != null)
             {
@@ -416,7 +416,7 @@ namespace H.Controls.PropertyGrid
             }
         }
 
-        void ColorShadingCanvas_SizeChanged(object sender, SizeChangedEventArgs e)
+        private void ColorShadingCanvas_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             if (_currentColorPosition != null)
             {
@@ -430,7 +430,7 @@ namespace H.Controls.PropertyGrid
             }
         }
 
-        void SpectrumSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void SpectrumSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if ((_currentColorPosition != null) && (this.SelectedColor != null))
             {
@@ -438,7 +438,7 @@ namespace H.Controls.PropertyGrid
             }
         }
 
-        void HexadecimalTextBox_LostFocus(object sender, RoutedEventArgs e)
+        private void HexadecimalTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
             TextBox textbox = sender as TextBox;
             SetHexadecimalStringProperty(textbox.Text, true);
@@ -473,7 +473,7 @@ namespace H.Controls.PropertyGrid
         private void UpdateSelectedColor(Color? color)
         {
             SelectedColor = ((color != null) && color.HasValue)
-                            ? (Color?)Color.FromArgb(color.Value.A, color.Value.R, color.Value.G, color.Value.B)
+                            ? Color.FromArgb(color.Value.A, color.Value.R, color.Value.G, color.Value.B)
                             : null;
         }
 
@@ -528,7 +528,7 @@ namespace H.Controls.PropertyGrid
 
             _currentColorPosition = null;
 
-            var hsv = ColorUtilities.ConvertRgbToHsv(color.Value.R, color.Value.G, color.Value.B);
+            HsvColor hsv = ColorUtilities.ConvertRgbToHsv(color.Value.R, color.Value.G, color.Value.B);
 
             if (_updateSpectrumSliderValue)
             {
@@ -553,7 +553,7 @@ namespace H.Controls.PropertyGrid
                 S = p.X,
                 V = 1 - p.Y
             };
-            var currentColor = ColorUtilities.ConvertHsvToRgb(hsv.H, hsv.S, hsv.V);
+            Color currentColor = ColorUtilities.ConvertHsvToRgb(hsv.H, hsv.S, hsv.V);
             currentColor.A = A;
             _updateSpectrumSliderValue = false;
             SelectedColor = currentColor;

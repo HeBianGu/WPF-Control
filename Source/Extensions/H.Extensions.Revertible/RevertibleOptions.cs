@@ -2,9 +2,6 @@
 using H.Providers.Ioc;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
-using System.Xml.Linq;
-using System.Xml.Serialization;
 
 namespace H.Extensions.Revertible
 {
@@ -14,7 +11,7 @@ namespace H.Extensions.Revertible
         private int _capacity;
         [ReadOnly(true)]
         [DefaultValue(10)]
-        [Display(Name ="容量")]
+        [Display(Name = "容量")]
         public int Capacity
         {
             get { return _capacity; }

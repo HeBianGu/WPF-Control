@@ -11,7 +11,6 @@ using System.Data.Entity;
 
 #if NETCOREAPP
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 #endif
 namespace H.DataBases.Share
 {
@@ -21,7 +20,7 @@ namespace H.DataBases.Share
         public bool Save(out string message)
         {
             message = null;
-            var db = Ioc.GetService<DbContext>();
+            DbContext db = Ioc.GetService<DbContext>();
             db?.SaveChanges();
             //db.Dispose();
             return true;
@@ -34,7 +33,7 @@ namespace H.DataBases.Share
         public bool Save(out string message)
         {
             message = null;
-            var db = Ioc.GetService<TDbContext>();
+            TDbContext db = Ioc.GetService<TDbContext>();
             db?.SaveChanges();
             //db.Dispose();
             return true;

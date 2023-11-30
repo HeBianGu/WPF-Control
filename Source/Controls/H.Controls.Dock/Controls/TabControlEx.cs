@@ -8,13 +8,6 @@ using System.Windows.Data;
 
 namespace H.Controls.Dock.Controls
 {
-    /// <summary>
-    /// This control added to mitigate issue with tab (document) switching speed
-    /// See this https://stackoverflow.com/questions/2080764/how-to-preserve-control-state-within-tab-items-in-a-tabcontrol
-    /// and this https://stackoverflow.com/questions/31030293/cefsharp-in-tabcontrol-not-working/37171847#37171847
-    ///
-    /// by implmenting an option to enable virtualization for tabbed document containers.
-    /// </summary>
     [TemplatePart(Name = "PART_ItemsHolder", Type = typeof(Panel))]
     public class TabControlEx : TabControl
     {
@@ -74,7 +67,7 @@ namespace H.Controls.Dock.Controls
 
             ItemsHolderPanel = CreateGrid();
             // exchange ContentPresenter for Grid
-            var topGrid = (Grid)GetVisualChild(0);
+            Grid topGrid = (Grid)GetVisualChild(0);
 
             if (topGrid != null)
             {
@@ -82,12 +75,12 @@ namespace H.Controls.Dock.Controls
                 {
                     if (topGrid.Children[1] is Border)
                     {
-                        var border = (Border)topGrid.Children[1];
+                        Border border = (Border)topGrid.Children[1];
                         border.Child = ItemsHolderPanel;
                     }
                     else if (topGrid.Children[2] is Border)
                     {
-                        var border = (Border)topGrid.Children[2];
+                        Border border = (Border)topGrid.Children[2];
                         border.Child = ItemsHolderPanel;
                     }
                 }
@@ -121,7 +114,7 @@ namespace H.Controls.Dock.Controls
                 case NotifyCollectionChangedAction.Remove:
                     if (e.OldItems != null)
                     {
-                        foreach (var item in e.OldItems)
+                        foreach (object item in e.OldItems)
                         {
                             ContentPresenter cp = FindChildContentPresenter(item);
                             if (cp != null)
@@ -193,7 +186,7 @@ namespace H.Controls.Dock.Controls
 
         private Grid CreateGrid()
         {
-            var grid = new Grid();
+            Grid grid = new Grid();
             Binding binding = new Binding(PaddingProperty.Name);
             binding.Source = this;  // view model?
             grid.SetBinding(Grid.MarginProperty, binding);
@@ -217,7 +210,7 @@ namespace H.Controls.Dock.Controls
 
             // show the right child
             foreach (ContentPresenter child in ItemsHolderPanel.Children)
-                child.Visibility = ((child.Tag as TabItem).IsSelected) ? Visibility.Visible : Visibility.Collapsed;
+                child.Visibility = (child.Tag as TabItem).IsSelected ? Visibility.Visible : Visibility.Collapsed;
         }
 
         private ContentPresenter CreateChildContentPresenter(object item)
@@ -237,7 +230,7 @@ namespace H.Controls.Dock.Controls
             cp.ContentTemplateSelector = this.SelectedContentTemplateSelector;
             cp.ContentStringFormat = this.SelectedContentStringFormat;
             cp.Visibility = Visibility.Collapsed;
-            cp.Tag = (item is TabItem) ? item : (this.ItemContainerGenerator.ContainerFromItem(item));
+            cp.Tag = (item is TabItem) ? item : this.ItemContainerGenerator.ContainerFromItem(item);
             ItemsHolderPanel.Children.Add(cp);
             return cp;
         }

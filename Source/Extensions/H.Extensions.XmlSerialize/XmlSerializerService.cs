@@ -1,11 +1,8 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
-
-
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 using H.Providers.Ioc;
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Net;
 using System.Xml.Serialization;
 
 namespace H.Extensions.XmlSerialize
@@ -14,7 +11,7 @@ namespace H.Extensions.XmlSerialize
     {
         public void Save(string filePath, object sourceObj, string xmlRootName = null)
         {
-            if (string.IsNullOrWhiteSpace(filePath)) 
+            if (string.IsNullOrWhiteSpace(filePath))
                 return;
             string folder = Path.GetDirectoryName(filePath);
             if (!Directory.Exists(folder))
@@ -46,7 +43,7 @@ namespace H.Extensions.XmlSerialize
             }
             catch (Exception ex)
             {
-                Logger.Instance?.Error(ex);
+                IocLog.Instance?.Error(ex);
                 Trace.Assert(false);
                 File.Delete(filePath);
             }

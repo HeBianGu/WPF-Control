@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections.Generic;
@@ -32,7 +32,7 @@ namespace H.Controls.Chart2D
             set { SetValue(TrangleStyleProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty TrangleStyleProperty =
             DependencyProperty.Register("TrangleStyle", typeof(Style), typeof(MarkLine), new PropertyMetadata(default(Style), (d, e) =>
              {
@@ -53,7 +53,7 @@ namespace H.Controls.Chart2D
             set { SetValue(OrientationProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty OrientationProperty =
             DependencyProperty.Register("Orientation", typeof(Orientation), typeof(MarkLine), new PropertyMetadata(default(Orientation), (d, e) =>
              {
@@ -73,7 +73,7 @@ namespace H.Controls.Chart2D
             set { SetValue(MarkBrushesProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty MarkBrushesProperty =
             DependencyProperty.Register("MarkBrushes", typeof(ObservableCollection<Color>), typeof(MarkLine), new PropertyMetadata(new ObservableCollection<Color>(), (d, e) =>
              {
@@ -94,7 +94,7 @@ namespace H.Controls.Chart2D
             set { SetValue(StartProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty StartProperty =
             DependencyProperty.Register("Start", typeof(Point), typeof(MarkLine), new PropertyMetadata(default(Point), (d, e) =>
              {
@@ -114,7 +114,7 @@ namespace H.Controls.Chart2D
             set { SetValue(EndProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty EndProperty =
             DependencyProperty.Register("End", typeof(Point), typeof(MarkLine), new PropertyMetadata(default(Point), (d, e) =>
              {
@@ -228,7 +228,7 @@ namespace H.Controls.Chart2D
 
                         if (ng.Children[2] is RotateTransform rotate)
                         {
-                            double angle = Math.Atan2((end.Y - start.Y), (end.X - start.X)) * 180 / Math.PI;
+                            double angle = Math.Atan2(end.Y - start.Y, end.X - start.X) * 180 / Math.PI;
                             rotate.Angle = -angle;
                         }
 
@@ -237,8 +237,8 @@ namespace H.Controls.Chart2D
 
                     path.Loaded += (l, k) =>
                     {
-                        Canvas.SetBottom(path, this.ActualHeight - this.GetY(end.Y) - path.ActualHeight / 2);
-                        Canvas.SetLeft(path, this.GetX(end.X) - path.ActualWidth / 2);
+                        Canvas.SetBottom(path, this.ActualHeight - this.GetY(end.Y) - (path.ActualHeight / 2));
+                        Canvas.SetLeft(path, this.GetX(end.X) - (path.ActualWidth / 2));
                     };
 
                     this.Children.Add(path);
@@ -262,8 +262,8 @@ namespace H.Controls.Chart2D
 
                     text.Loaded += (l, k) =>
                     {
-                        Canvas.SetTop(text, this.GetY(end.Y) - text.ActualHeight / 2);
-                        Canvas.SetLeft(text, this.GetX(end.X) + text.ActualWidth / 2);
+                        Canvas.SetTop(text, this.GetY(end.Y) - (text.ActualHeight / 2));
+                        Canvas.SetLeft(text, this.GetX(end.X) + (text.ActualWidth / 2));
                     };
 
 
@@ -297,8 +297,8 @@ namespace H.Controls.Chart2D
                     }
                     text.Loaded += (l, k) =>
                     {
-                        Canvas.SetTop(text, this.GetY(start.Y) - text.ActualHeight / 2);
-                        Canvas.SetLeft(text, this.GetX(start.X) - text.ActualWidth * 1.5);
+                        Canvas.SetTop(text, this.GetY(start.Y) - (text.ActualHeight / 2));
+                        Canvas.SetLeft(text, this.GetX(start.X) - (text.ActualWidth * 1.5));
                     };
 
                     this.Children.Add(text);
@@ -336,7 +336,7 @@ namespace H.Controls.Chart2D
             set { SetValue(MarkLineTypeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty MarkLineTypeProperty =
             DependencyProperty.Register("MarkLineType", typeof(MarkLineType), typeof(MarkLine), new PropertyMetadata(default(MarkLineType), (d, e) =>
              {
@@ -376,7 +376,7 @@ namespace H.Controls.Chart2D
                 if (this.Data.Count == 0 && this.Value != double.NaN)
                     yield return this.Value;
                 else
-                    foreach (var item in this.Data)
+                    foreach (double item in this.Data)
                     {
                         yield return item;
                     }
@@ -389,7 +389,7 @@ namespace H.Controls.Chart2D
             set { SetValue(ValueProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty ValueProperty =
             DependencyProperty.Register("Value", typeof(double), typeof(MarkLine), new FrameworkPropertyMetadata(double.NaN, (d, e) =>
             {

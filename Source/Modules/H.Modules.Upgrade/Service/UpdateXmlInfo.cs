@@ -1,5 +1,4 @@
-﻿using System;
-using System.Xml.Serialization;
+﻿using System.Xml.Serialization;
 
 namespace H.Modules.Upgrade
 {
@@ -11,7 +10,7 @@ namespace H.Modules.Upgrade
 
         [XmlElement("changelog")]
         public string Changelog { get; set; }
-        
+
         [XmlElement("version")]
         public string Version { get; set; }
 

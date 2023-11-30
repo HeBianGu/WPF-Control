@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Windows;
@@ -77,7 +77,7 @@ namespace H.Controls.PropertyGrid
             _pickerBrush.EndPoint = new Point(0.5, 1);
             _pickerBrush.ColorInterpolationMode = ColorInterpolationMode.SRgbLinearInterpolation;
 
-            var colorsList = ColorUtilities.GenerateHsvSpectrum();
+            System.Collections.Generic.List<Color> colorsList = ColorUtilities.GenerateHsvSpectrum();
 
             double stopIncrement = (double)1 / (colorsList.Count - 1);
 

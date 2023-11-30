@@ -1,17 +1,8 @@
-﻿/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
-
+﻿
 using H.Controls.Dock.Layout;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Data;
 
 namespace H.Controls.Dock.Controls
@@ -70,10 +61,10 @@ namespace H.Controls.Dock.Controls
 
         private void CreateChildrenViews()
         {
-            var manager = _model.Root.Manager;
-            foreach (var childModel in _model.Children)
+            DockingManager manager = _model.Root.Manager;
+            foreach (LayoutAnchorable childModel in _model.Children)
             {
-                var lac = new LayoutAnchorControl(childModel);
+                LayoutAnchorControl lac = new LayoutAnchorControl(childModel);
                 lac.SetBinding(LayoutAnchorControl.TemplateProperty, new Binding(DockingManager.AnchorTemplateProperty.Name) { Source = manager });
                 _childViews.Add(lac);
             }
@@ -87,7 +78,7 @@ namespace H.Controls.Dock.Controls
                 if (e.OldItems != null)
                 {
                     {
-                        foreach (var childModel in e.OldItems)
+                        foreach (object childModel in e.OldItems)
                             _childViews.Remove(_childViews.First(cv => cv.Model == childModel));
                     }
                 }
@@ -101,11 +92,11 @@ namespace H.Controls.Dock.Controls
             {
                 if (e.NewItems != null)
                 {
-                    var manager = _model.Root.Manager;
+                    DockingManager manager = _model.Root.Manager;
                     int insertIndex = e.NewStartingIndex;
                     foreach (LayoutAnchorable childModel in e.NewItems)
                     {
-                        var lac = new LayoutAnchorControl(childModel);
+                        LayoutAnchorControl lac = new LayoutAnchorControl(childModel);
                         lac.SetBinding(LayoutAnchorControl.TemplateProperty, new Binding(DockingManager.AnchorTemplateProperty.Name) { Source = manager });
                         _childViews.Insert(insertIndex++, lac);
                     }

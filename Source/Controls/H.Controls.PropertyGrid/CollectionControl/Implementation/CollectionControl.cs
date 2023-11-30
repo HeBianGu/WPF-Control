@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections;
@@ -82,7 +82,7 @@ namespace H.Controls.PropertyGrid
 
         private static void OnItemsSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var CollectionControl = (CollectionControl)d;
+            CollectionControl CollectionControl = (CollectionControl)d;
             if (CollectionControl != null)
                 CollectionControl.OnItemSourceChanged((IEnumerable)e.OldValue, (IEnumerable)e.NewValue);
         }
@@ -91,20 +91,20 @@ namespace H.Controls.PropertyGrid
         {
             if (newValue != null)
             {
-                var dict = newValue as IDictionary;
+                IDictionary dict = newValue as IDictionary;
                 if (dict != null)
                 {
                     // A Dictionary contains KeyValuePair that can't be edited.
                     // We need to Add EditableKeyValuePairs from DictionaryEntries.
                     foreach (DictionaryEntry item in dict)
                     {
-                        var keyType = (item.Key != null)
+                        Type keyType = (item.Key != null)
                                       ? item.Key.GetType()
                                       : (dict.GetType().GetGenericArguments().Count() > 0) ? dict.GetType().GetGenericArguments()[0] : typeof(object);
-                        var valueType = (item.Value != null)
+                        Type valueType = (item.Value != null)
                                       ? item.Value.GetType()
                                       : (dict.GetType().GetGenericArguments().Count() > 1) ? dict.GetType().GetGenericArguments()[1] : typeof(object);
-                        var editableKeyValuePair = ListUtilities.CreateEditableKeyValuePair(item.Key
+                        object editableKeyValuePair = ListUtilities.CreateEditableKeyValuePair(item.Key
                                                                                             , keyType
                                                                                             , item.Value
                                                                                             , valueType);
@@ -113,7 +113,7 @@ namespace H.Controls.PropertyGrid
                 }
                 else
                 {
-                    foreach (var item in newValue)
+                    foreach (object item in newValue)
                     {
                         if (item != null)
                         {
@@ -167,7 +167,7 @@ namespace H.Controls.PropertyGrid
         {
             get
             {
-                return (object)GetValue(SelectedItemProperty);
+                return GetValue(SelectedItemProperty);
             }
             set
             {
@@ -363,7 +363,7 @@ namespace H.Controls.PropertyGrid
 
         #region EventHandlers
 
-        void NewItemTypesComboBox_Loaded(object sender, RoutedEventArgs e)
+        private void NewItemTypesComboBox_Loaded(object sender, RoutedEventArgs e)
         {
             if (_newItemTypesComboBox != null)
                 _newItemTypesComboBox.SelectedIndex = 0;
@@ -383,19 +383,19 @@ namespace H.Controls.PropertyGrid
 
         private void AddNew(object sender, ExecutedRoutedEventArgs e)
         {
-            var newItem = CreateNewItem((Type)e.Parameter);
-            var properties = newItem.GetType().GetProperties();
-            foreach (var property in properties)
+            object newItem = CreateNewItem((Type)e.Parameter);
+            System.Reflection.PropertyInfo[] properties = newItem.GetType().GetProperties();
+            foreach (System.Reflection.PropertyInfo property in properties)
             {
                 // For Generic Types, add an empty collection/list of T.
                 if (property.CanWrite && property.PropertyType.IsGenericType)
                 {
-                    var genericCollection = Activator.CreateInstance(property.PropertyType);
+                    object genericCollection = Activator.CreateInstance(property.PropertyType);
                     property.SetValue(newItem, genericCollection, null);
                 }
             }
 
-            var eventArgs = new ItemAddingEventArgs(ItemAddingEvent, newItem);
+            ItemAddingEventArgs eventArgs = new ItemAddingEventArgs(ItemAddingEvent, newItem);
             this.RaiseEvent(eventArgs);
             if (eventArgs.Cancel)
                 return;
@@ -424,7 +424,7 @@ namespace H.Controls.PropertyGrid
 
         private void Delete(object sender, ExecutedRoutedEventArgs e)
         {
-            var eventArgs = new ItemDeletingEventArgs(ItemDeletingEvent, e.Parameter);
+            ItemDeletingEventArgs eventArgs = new ItemDeletingEventArgs(ItemDeletingEvent, e.Parameter);
             this.RaiseEvent(eventArgs);
             if (eventArgs.Cancel)
                 return;
@@ -441,8 +441,8 @@ namespace H.Controls.PropertyGrid
 
         private void MoveDown(object sender, ExecutedRoutedEventArgs e)
         {
-            var selectedItem = e.Parameter;
-            var index = Items.IndexOf(selectedItem);
+            object selectedItem = e.Parameter;
+            int index = Items.IndexOf(selectedItem);
             Items.RemoveAt(index);
             Items.Insert(++index, selectedItem);
 
@@ -459,8 +459,8 @@ namespace H.Controls.PropertyGrid
 
         private void MoveUp(object sender, ExecutedRoutedEventArgs e)
         {
-            var selectedItem = e.Parameter;
-            var index = Items.IndexOf(selectedItem);
+            object selectedItem = e.Parameter;
+            int index = Items.IndexOf(selectedItem);
             Items.RemoveAt(index);
             Items.Insert(--index, selectedItem);
 
@@ -486,7 +486,7 @@ namespace H.Controls.PropertyGrid
 
         internal void PersistChanges(IList sourceList)
         {
-            var collection = ComputeItemsSource();
+            IEnumerable collection = ComputeItemsSource();
             if (collection == null)
                 return;
 
@@ -494,14 +494,14 @@ namespace H.Controls.PropertyGrid
             if (collection is IDictionary)
             {
                 //For a Dictionary, we need to parse the list of EditableKeyValuePair and add KeyValuePair to the Dictionary.
-                var dict = (IDictionary)collection;
+                IDictionary dict = (IDictionary)collection;
                 //the easiest way to persist changes to the source is to just clear the source list and then add all items to it.
                 dict.Clear();
 
-                foreach (var item in sourceList)
+                foreach (object item in sourceList)
                 {
-                    var propInfoKey = item.GetType().GetProperty("Key");
-                    var propInfoValue = item.GetType().GetProperty("Value");
+                    System.Reflection.PropertyInfo propInfoKey = item.GetType().GetProperty("Key");
+                    System.Reflection.PropertyInfo propInfoValue = item.GetType().GetProperty("Value");
                     if ((propInfoKey != null) && (propInfoValue != null))
                     {
                         dict.Add(propInfoKey.GetValue(item, null), propInfoValue.GetValue(item, null));
@@ -511,7 +511,7 @@ namespace H.Controls.PropertyGrid
             //IList
             else if (collection is IList)
             {
-                var list = (IList)collection;
+                IList list = (IList)collection;
 
                 //the easiest way to persist changes to the source is to just clear the source list and then add all items to it.
                 list.Clear();
@@ -526,7 +526,7 @@ namespace H.Controls.PropertyGrid
                 }
                 else
                 {
-                    foreach (var item in sourceList)
+                    foreach (object item in sourceList)
                     {
                         list.Add(item);
                     }
@@ -535,19 +535,19 @@ namespace H.Controls.PropertyGrid
             else
             {
                 //ICollection<T> (or IList<T>)
-                var collectionType = collection.GetType();
-                var iCollectionOfTInterface = collectionType.GetInterfaces().FirstOrDefault(x => x.IsGenericType && (x.GetGenericTypeDefinition() == typeof(ICollection<>)));
+                Type collectionType = collection.GetType();
+                Type iCollectionOfTInterface = collectionType.GetInterfaces().FirstOrDefault(x => x.IsGenericType && (x.GetGenericTypeDefinition() == typeof(ICollection<>)));
                 if (iCollectionOfTInterface != null)
                 {
-                    var argumentType = iCollectionOfTInterface.GetGenericArguments().FirstOrDefault();
+                    Type argumentType = iCollectionOfTInterface.GetGenericArguments().FirstOrDefault();
                     if (argumentType != null)
                     {
-                        var iCollectionOfTType = typeof(ICollection<>).MakeGenericType(argumentType);
+                        Type iCollectionOfTType = typeof(ICollection<>).MakeGenericType(argumentType);
 
                         //the easiest way to persist changes to the source is to just clear the source list and then add all items to it.
                         iCollectionOfTType.GetMethod("Clear").Invoke(collection, null);
 
-                        foreach (var item in sourceList)
+                        foreach (object item in sourceList)
                         {
                             iCollectionOfTType.GetMethod("Add").Invoke(collection, new object[] { item });
                         }
@@ -562,7 +562,7 @@ namespace H.Controls.PropertyGrid
 
             if (ItemsSourceType != null)
             {
-                var constructor = ItemsSourceType.GetConstructor(Type.EmptyTypes);
+                System.Reflection.ConstructorInfo constructor = ItemsSourceType.GetConstructor(Type.EmptyTypes);
                 if (constructor != null)
                 {
                     collection = (IEnumerable)constructor.Invoke(null);

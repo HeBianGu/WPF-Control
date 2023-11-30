@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Windows;
@@ -250,7 +250,7 @@ namespace H.Controls.PropertyGrid
             CloseEditor();
         }
 
-        void ResizeThumb_DragDelta(object sender, DragDeltaEventArgs e)
+        private void ResizeThumb_DragDelta(object sender, DragDeltaEventArgs e)
         {
             double yadjust = DropDownHeight + e.VerticalChange;
             double xadjust = DropDownWidth + e.HorizontalChange;

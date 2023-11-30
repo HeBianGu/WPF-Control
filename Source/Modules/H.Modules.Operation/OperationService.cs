@@ -1,14 +1,9 @@
 ﻿using H.Extensions.ViewModel;
 using H.Providers.Ioc;
-using H.Providers.Ioc;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace H.Modules.Operation
 {
@@ -18,9 +13,9 @@ namespace H.Modules.Operation
         {
             if (typeof(hi_dd_operation) == typeof(T))
                 return;
-            var vm = Ioc.GetService<IRepositoryViewModel<hi_dd_operation>>();
+            IRepositoryViewModel<hi_dd_operation> vm = Ioc.GetService<IRepositoryViewModel<hi_dd_operation>>();
             string typeName = typeof(T).GetCustomAttribute<DisplayAttribute>()?.Name ?? typeof(T).Name;
-            var operation = new hi_dd_operation()
+            hi_dd_operation operation = new hi_dd_operation()
             {
                 Title = title,
                 Message = message,

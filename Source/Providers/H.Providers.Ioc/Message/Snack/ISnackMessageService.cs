@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Threading.Tasks;
@@ -7,11 +7,6 @@ namespace H.Providers.Ioc
 {
     public interface ISnackMessageService
     {
-        //void Show(object message);
-        //void Show(object message, object actionContent, Action actionHandler);
-        //void Show<TArgument>(string message, object actionContent, Action<TArgument> actionHandler, TArgument actionArgument);
-        //void ShowTime(object message);
-
         Task<bool?> ShowDialog(string message);
         void ShowError(string message);
         void ShowFatal(string message);

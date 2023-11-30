@@ -1,7 +1,4 @@
-﻿using System.IO;
-using System.Text.Json;
-
-namespace H.Providers.Ioc
+﻿namespace H.Providers.Ioc
 {
     public interface IMetaSettingSerilize
     {

@@ -18,7 +18,7 @@ namespace H.Controls.Diagram.Extension
             if (parameter is ContextMenu menu)
             {
                 Node node = menu.PlacementTarget.GetParent<Node>();
-                var diagram = node.GetParent<Diagram>();
+                Diagram diagram = node.GetParent<Diagram>();
                 if (node.Content is NodeData data)
                 {
                     if (UseApplayToAll)
@@ -31,9 +31,9 @@ namespace H.Controls.Diagram.Extension
                     }
                     else
                     {
-                        var finds = diagram.Nodes.Select(x => x.Content).OfType<NodeData>().Where(x => x.GetType().IsAssignableFrom(data.GetType()));
+                        System.Collections.Generic.IEnumerable<NodeData> finds = diagram.Nodes.Select(x => x.Content).OfType<NodeData>().Where(x => x.GetType().IsAssignableFrom(data.GetType()));
 
-                        foreach (var item in finds)
+                        foreach (NodeData item in finds)
                         {
                             data.ApplayStyleTo(item);
                         }

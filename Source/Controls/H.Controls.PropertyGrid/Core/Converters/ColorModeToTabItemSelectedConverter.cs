@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Globalization;
@@ -10,13 +10,13 @@ namespace H.Controls.PropertyGrid
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var colorMode = (ColorMode)value;
+            ColorMode colorMode = (ColorMode)value;
             return (colorMode == ColorMode.ColorPalette) ? 0 : 1;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var index = (int)value;
+            int index = (int)value;
             return (index == 0) ? ColorMode.ColorPalette : ColorMode.ColorCanvas;
         }
     }

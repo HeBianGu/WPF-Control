@@ -9,11 +9,11 @@ namespace H.Extensions.Tree
         public bool IsRecursion { get; set; } = false;
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
-            var tree = new ExploreTree() 
-            { 
-                Root = Root 
+            ExploreTree tree = new ExploreTree()
+            {
+                Root = Root
             };
-            var result = tree.GetTreeNodes(IsRecursion);
+            System.Collections.Generic.IEnumerable<Providers.Mvvm.ITreeNode> result = tree.GetTreeNodes(IsRecursion);
             return result;
         }
     }

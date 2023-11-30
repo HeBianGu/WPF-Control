@@ -1,12 +1,10 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using H.Extensions.Geometry;
 using H.Providers.Mvvm;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Input;
 
 namespace H.Modules.Messages.Snack
 {
@@ -35,7 +33,7 @@ namespace H.Modules.Messages.Snack
             this.Close();
         });
 
-        void Close()
+        private void Close()
         {
             _waitHandle.Set();
         }

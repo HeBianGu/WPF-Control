@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.Windows.Controls;
 using System.Windows;
@@ -19,7 +19,7 @@ namespace H.Controls.PropertyGrid
 #if !VS2008
         protected override void SetControlProperties(PropertyItem propertyItem)
         {
-            var displayAttribute = PropertyGridUtilities.GetAttribute<DisplayAttribute>(propertyItem.PropertyDescriptor);
+            DisplayAttribute displayAttribute = PropertyGridUtilities.GetAttribute<DisplayAttribute>(propertyItem.PropertyDescriptor);
             if (displayAttribute != null)
             {
                 this.Editor.Watermark = displayAttribute.GetPrompt();

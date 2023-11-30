@@ -1,6 +1,5 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 using H.Extensions.ViewModel;
-using H.Providers.Ioc;
 using H.Providers.Ioc;
 using H.Providers.Mvvm;
 using System;
@@ -33,7 +32,7 @@ namespace H.Modules.Identity
     {
         public override async Task Add(object obj)
         {
-            var m = new hi_dd_role();
+            hi_dd_role m = new hi_dd_role();
             RoleEditPresenter roleViewModel = new RoleEditPresenter(m);
             bool? dialog = await IocMessage.Dialog.Show(roleViewModel, null, DialogButton.Sumit, "新增");
             if (dialog != true)

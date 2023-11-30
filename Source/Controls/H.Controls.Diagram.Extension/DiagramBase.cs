@@ -1,26 +1,17 @@
 ﻿
 using H.Providers.Ioc;
 using H.Providers.Mvvm;
-
-
-
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Threading;
 using System.Xml;
-using System.Xml.Linq;
-using System.Xml.Schema;
 using System.Xml.Serialization;
 
 namespace H.Controls.Diagram.Extension
@@ -38,8 +29,8 @@ namespace H.Controls.Diagram.Extension
             this.LinkDrawers = this.CreateLinkDrawerSource()?.ToObservable();
             this.LinkDrawer = this.LinkDrawers?.FirstOrDefault();
 
-            var nodeGroups = this.CreateNodeGroups()?.ToObservable();
-            foreach (var nodeGroup in nodeGroups)
+            ObservableCollection<NodeGroup> nodeGroups = this.CreateNodeGroups()?.ToObservable();
+            foreach (NodeGroup nodeGroup in nodeGroups)
             {
                 Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.SystemIdle, new Action(() =>
                           {
@@ -66,9 +57,9 @@ namespace H.Controls.Diagram.Extension
             {
                 DiagramThemeGroup group = new DiagramThemeGroup();
                 group.Add(themeDefault);
-                foreach (var color in colors)
+                foreach (Color color in colors)
                 {
-                    var brush = new SolidColorBrush(color);
+                    SolidColorBrush brush = new SolidColorBrush(color);
                     DiagramTheme theme = new DiagramTheme();
                     theme.Note.Fill = brush;
                     theme.Note.Stroke = brush;
@@ -83,9 +74,9 @@ namespace H.Controls.Diagram.Extension
             {
                 DiagramThemeGroup group = new DiagramThemeGroup();
                 group.Add(themeDefault);
-                foreach (var color in colors)
+                foreach (Color color in colors)
                 {
-                    var brush = new SolidColorBrush(color);
+                    SolidColorBrush brush = new SolidColorBrush(color);
                     DiagramTheme theme = new DiagramTheme();
                     theme.Note.Stroke = brush;
                     theme.Note.Foreground = brush;
@@ -99,9 +90,9 @@ namespace H.Controls.Diagram.Extension
             {
                 DiagramThemeGroup group = new DiagramThemeGroup();
                 group.Add(themeDefault);
-                foreach (var color in colors)
+                foreach (Color color in colors)
                 {
-                    var brush = new SolidColorBrush(color);
+                    SolidColorBrush brush = new SolidColorBrush(color);
                     DiagramTheme theme = new DiagramTheme();
                     theme.Note.Fill = new SolidColorBrush(color) { Opacity = 0.1 };
                     theme.Note.Stroke = brush;
@@ -116,9 +107,9 @@ namespace H.Controls.Diagram.Extension
             {
                 DiagramThemeGroup group = new DiagramThemeGroup();
                 group.Add(themeDefault);
-                foreach (var color in colors)
+                foreach (Color color in colors)
                 {
-                    var brush = new SolidColorBrush(color);
+                    SolidColorBrush brush = new SolidColorBrush(color);
                     DiagramTheme theme = new DiagramTheme();
                     theme.Note.Fill = new SolidColorBrush(color) { Opacity = 0.1 };
                     group.Add(theme);
@@ -129,9 +120,9 @@ namespace H.Controls.Diagram.Extension
             {
                 DiagramThemeGroup group = new DiagramThemeGroup();
                 group.Add(themeDefault);
-                foreach (var color in colors)
+                foreach (Color color in colors)
                 {
-                    var brush = new SolidColorBrush(color);
+                    SolidColorBrush brush = new SolidColorBrush(color);
                     DiagramTheme theme = new DiagramTheme();
                     theme.Note.Fill = Brushes.Transparent;
                     theme.Note.Stroke = brush;
@@ -159,20 +150,20 @@ namespace H.Controls.Diagram.Extension
 
         protected virtual IEnumerable<NodeGroup> CreateNodeGroups()
         {
-            var types = this.GetType().Assembly.GetTypes().Where(x => typeof(INodeData).IsAssignableFrom(x)).Where(x => !x.IsAbstract);
+            IEnumerable<Type> types = this.GetType().Assembly.GetTypes().Where(x => typeof(INodeData).IsAssignableFrom(x)).Where(x => !x.IsAbstract);
             types = types.Where(x => x.GetCustomAttributes<NodeTypeAttribute>(true).Any(t => t.DiagramType == this.GetType()));
             List<NodeData> datas = new List<NodeData>();
-            foreach (var item in types)
+            foreach (Type item in types)
             {
-                var data = Activator.CreateInstance(item) as NodeData;
-                var type = item.GetCustomAttribute<DisplayerAttribute>();
+                NodeData data = Activator.CreateInstance(item) as NodeData;
+                DisplayerAttribute type = item.GetCustomAttribute<DisplayerAttribute>();
                 data.Name = type?.Name;
                 data.GroupName = type?.GroupName;
                 data.Description = type?.Description;
                 data.Order = type?.Order ?? 0;
                 datas.Add(data);
             }
-            var groups = datas.OrderBy(x => x.Order).GroupBy(x => x.GroupName);
+            IEnumerable<IGrouping<string, NodeData>> groups = datas.OrderBy(x => x.Order).GroupBy(x => x.GroupName);
             return groups.Select(x => new NodeGroup(x.ToList()) { Name = x.Key, Columns = x.ToList()?.FirstOrDefault()?.Columns ?? 4 }); ;
         }
 
@@ -435,7 +426,7 @@ namespace H.Controls.Diagram.Extension
 
         protected virtual IEnumerable<Node> LoadNodes(IEnumerable<INodeData> nodeDatas, IEnumerable<ILinkData> linkDatas)
         {
-            var converter = new DiagramDataSourceConverter(nodeDatas, linkDatas);
+            DiagramDataSourceConverter converter = new DiagramDataSourceConverter(nodeDatas, linkDatas);
             return converter.NodeSource;
         }
 
@@ -513,7 +504,7 @@ namespace H.Controls.Diagram.Extension
 
         public async void DeleteReferenceTemplate(FlowableDiagramTemplateNodeData data)
         {
-            var finds = this.Nodes.Where(x =>
+            IEnumerable<Node> finds = this.Nodes.Where(x =>
             {
                 if (x.Content is FlowableDiagramTemplateNodeData f)
                 {
@@ -523,10 +514,10 @@ namespace H.Controls.Diagram.Extension
             });
             if (finds != null && finds.Count() > 0)
             {
-                var r = await IocMessage.Dialog.Show("当前已添加对应节点，删除将删除节点，是否确定删除？");
-                if (r!=true) return;
+                bool? r = await IocMessage.Dialog.Show("当前已添加对应节点，删除将删除节点，是否确定删除？");
+                if (r != true) return;
 
-                foreach (var item in finds.ToList())
+                foreach (Node item in finds.ToList())
                 {
                     item.Delete();
                 }
@@ -535,15 +526,15 @@ namespace H.Controls.Diagram.Extension
             this.ReferenceTemplateNodeDatas.Remove(data);
         }
 
-         [Display(Name = "默认样式", GroupName = "操作", Order = 6, Description = "点击此功能，恢复所有节点、连线和端口默认样式")]
+        [Display(Name = "默认样式", GroupName = "操作", Order = 6, Description = "点击此功能，恢复所有节点、连线和端口默认样式")]
         //[Command(Icon = "\xe8dc")]
         public new RelayCommand LoadDefaultCommand => new RelayCommand((s, e) =>
         {
-            foreach (var node in this.Nodes)
+            foreach (Node node in this.Nodes)
             {
-                var displayers = node.GetParts().Select(x => x.Content).OfType<IDisplayer>();
+                IEnumerable<IDisplayer> displayers = node.GetParts().Select(x => x.Content).OfType<IDisplayer>();
 
-                foreach (var item in displayers)
+                foreach (IDisplayer item in displayers)
                 {
                     item.LoadDefault();
                 }
@@ -555,20 +546,20 @@ namespace H.Controls.Diagram.Extension
             }
         }, (s, e) => this.Nodes.Count > 0);
 
-         [Display(Name = "删除", GroupName = "操作", Order = 4, Description = "点击此功能，删除选中的节点、连线或端口")]
+        [Display(Name = "删除", GroupName = "操作", Order = 4, Description = "点击此功能，删除选中的节点、连线或端口")]
         public virtual RelayCommand DeleteCommand => new RelayCommand((s, e) =>
         {
             this.SelectedPart.Delete();
         }, (s, e) => this.SelectedPart != null);
 
-         [Display(Name = "清空", GroupName = "操作", Order = 5, Description = "点击此功能，删除所有节点、连线和端口")]
+        [Display(Name = "清空", GroupName = "操作", Order = 5, Description = "点击此功能，删除所有节点、连线和端口")]
         public virtual RelayCommand ClearCommand => new RelayCommand((s, e) =>
         {
             this.Clear();
         }, (s, e) => this.Nodes.Count > 0);
 
         [XmlIgnore]
-         [Display(Name = "自动对齐", GroupName = "操作", Order = 5)]
+        [Display(Name = "自动对齐", GroupName = "操作", Order = 5)]
         public virtual RelayCommand AlignmentCommand => new RelayCommand((s, e) =>
         {
             this.Aligment();
@@ -576,7 +567,7 @@ namespace H.Controls.Diagram.Extension
 
 
         [XmlIgnore]
-         [Display(Name = "上一个", GroupName = "操作", Order = 5)]
+        [Display(Name = "上一个", GroupName = "操作", Order = 5)]
         public virtual RelayCommand ProviewCommand => new RelayCommand((s, e) =>
         {
             this.SelectedPart.GetPrevious().IsSelected = true;
@@ -584,7 +575,7 @@ namespace H.Controls.Diagram.Extension
         }, (s, e) => this.SelectedPart?.GetPrevious() != null);
 
         [XmlIgnore]
-         [Display(Name = "下一个", GroupName = "操作", Order = 5)]
+        [Display(Name = "下一个", GroupName = "操作", Order = 5)]
         public virtual RelayCommand NextCommand => new RelayCommand((s, e) =>
         {
             this.SelectedPart.GetNext().IsSelected = true;
@@ -594,7 +585,7 @@ namespace H.Controls.Diagram.Extension
 
         public virtual void Aligment()
         {
-            foreach (var item in this.Nodes)
+            foreach (Node item in this.Nodes)
             {
                 item.Aligment();
             }
@@ -612,14 +603,14 @@ namespace H.Controls.Diagram.Extension
         {
             if (e is DiagramTheme project)
             {
-                foreach (var node in this.Nodes)
+                foreach (Node node in this.Nodes)
                 {
                     if (node.Content is INodeData nodeData)
                     {
                         project.Note.ApplayStyleTo(nodeData);
                     }
 
-                    foreach (var link in node.GetAllLinks().Distinct())
+                    foreach (Link link in node.GetAllLinks().Distinct())
                     {
                         if (link.Content is ILinkData linkData)
                         {
@@ -627,7 +618,7 @@ namespace H.Controls.Diagram.Extension
                         }
                     }
 
-                    foreach (var port in node.GetPorts().Distinct())
+                    foreach (Port port in node.GetPorts().Distinct())
                     {
                         if (port.Content is IPortData portData)
                         {
@@ -676,13 +667,13 @@ namespace H.Controls.Diagram.Extension
             this.RefreshRoot();
         });
 
-         [Display(Name = "缩放定位", GroupName = "操作", Order = 5)]
+        [Display(Name = "缩放定位", GroupName = "操作", Order = 5)]
         public virtual RelayCommand ZoomAllCommand => new RelayCommand((s, e) =>
         {
             this.ZoomAll();
         }, (s, e) => this.Nodes.Count > 0);
 
-         [Display(Name = "平移定位", GroupName = "操作", Order = 5)]
+        [Display(Name = "平移定位", GroupName = "操作", Order = 5)]
         public virtual RelayCommand LocateCenterCommand => new RelayCommand((s, e) =>
         {
             this.LocateCenter();
@@ -731,7 +722,7 @@ namespace H.Controls.Diagram.Extension
             Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.SystemIdle, new Action(() =>
             {
                 _isSelectedPartRefreshing = false;
-                var find = this.Root.FindAll(x => x.Model == this.SelectedPart)?.FirstOrDefault();
+                TreeNodeBase<Part> find = this.Root.FindAll(x => x.Model == this.SelectedPart)?.FirstOrDefault();
                 if (find == null)
                     return;
                 find.IsSelected = true;
@@ -749,27 +740,27 @@ namespace H.Controls.Diagram.Extension
         {
             if (this.Nodes.Count == 0)
                 return;
-            double xmax = this.Nodes.Max(x => x.Location.X + x.ActualWidth / 2);
-            double xmin = this.Nodes.Min(x => x.Location.X - x.ActualWidth / 2);
-            double ymax = this.Nodes.Max(x => x.Location.Y + x.ActualHeight / 2);
-            double ymin = this.Nodes.Min(x => x.Location.Y - x.ActualHeight / 2);
+            double xmax = this.Nodes.Max(x => x.Location.X + (x.ActualWidth / 2));
+            double xmin = this.Nodes.Min(x => x.Location.X - (x.ActualWidth / 2));
+            double ymax = this.Nodes.Max(x => x.Location.Y + (x.ActualHeight / 2));
+            double ymin = this.Nodes.Min(x => x.Location.Y - (x.ActualHeight / 2));
             Rect rect = new Rect(new Point(xmin, ymin), new Point(xmax, ymax));
             this.LocateRectCallBack.Invoke(rect);
         }
 
         public void LocateCenter()
         {
-            double xmax = this.Nodes.Max(x => x.Location.X + x.ActualWidth / 2);
-            double xmin = this.Nodes.Min(x => x.Location.X - x.ActualWidth / 2);
-            double ymax = this.Nodes.Max(x => x.Location.Y + x.ActualHeight / 2);
-            double ymin = this.Nodes.Min(x => x.Location.Y - x.ActualHeight / 2);
+            double xmax = this.Nodes.Max(x => x.Location.X + (x.ActualWidth / 2));
+            double xmin = this.Nodes.Min(x => x.Location.X - (x.ActualWidth / 2));
+            double ymax = this.Nodes.Max(x => x.Location.Y + (x.ActualHeight / 2));
+            double ymin = this.Nodes.Min(x => x.Location.Y - (x.ActualHeight / 2));
             Point center = new Point((xmin + xmax) / 2, (ymin + ymax) / 2);
             this.LocateCenterCallBack.Invoke(center);
         }
 
         public void Clear()
         {
-            foreach (var item in this.Nodes.ToList())
+            foreach (Node item in this.Nodes.ToList())
             {
                 item.Delete();
             }
@@ -786,7 +777,7 @@ namespace H.Controls.Diagram.Extension
             {
                 _isRefreshRooting = false;
                 this.Root.Nodes.Clear();
-                foreach (var note in this.Nodes)
+                foreach (Node note in this.Nodes)
                 {
                     NodeTreeNode nd = new NodeTreeNode(note);
 
@@ -797,7 +788,7 @@ namespace H.Controls.Diagram.Extension
 
                     Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.SystemIdle, new Action(() =>
                     {
-                        foreach (var port in note.GetPorts())
+                        foreach (Port port in note.GetPorts())
                         {
                             PortTreeNode pd = new PortTreeNode(port);
                             nd.AddNode(pd);
@@ -806,7 +797,7 @@ namespace H.Controls.Diagram.Extension
                         nd.RefreshSelected();
                     }));
 
-                    foreach (var link in note.LinksOutOf)
+                    foreach (Link link in note.LinksOutOf)
                     {
                         LinkTreeNode ld = new LinkTreeNode(link);
                         Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.SystemIdle, new Action(() =>
@@ -823,15 +814,15 @@ namespace H.Controls.Diagram.Extension
         {
             if (part is Link link)
             {
-                var point1 = LinkLayer.GetStart(link);
-                var point2 = LinkLayer.GetEnd(link);
+                Point point1 = LinkLayer.GetStart(link);
+                Point point2 = LinkLayer.GetEnd(link);
                 Point center = new Point((point1.X + point2.X) / 2, (point1.Y + point2.Y) / 2);
                 this.LocateCenterCallBack.Invoke(center);
             }
             else
             {
                 Rect rect = part.Bound;
-                Point center = new Point(rect.Left + rect.Width / 2, rect.Top + rect.Height / 2);
+                Point center = new Point(rect.Left + (rect.Width / 2), rect.Top + (rect.Height / 2));
                 this.LocateCenterCallBack.Invoke(center);
             }
         }
@@ -840,8 +831,8 @@ namespace H.Controls.Diagram.Extension
         {
             if (part is Link link)
             {
-                var point1 = LinkLayer.GetStart(link);
-                var point2 = LinkLayer.GetEnd(link);
+                Point point1 = LinkLayer.GetStart(link);
+                Point point2 = LinkLayer.GetEnd(link);
                 Rect rect = new Rect(point1, point2);
                 this.LocateRectCallBack.Invoke(rect);
             }

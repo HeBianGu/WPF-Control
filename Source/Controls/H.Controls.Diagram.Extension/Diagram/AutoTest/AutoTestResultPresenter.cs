@@ -1,10 +1,4 @@
-﻿
-
-using H.Providers.Ioc;
-using System.Threading.Tasks;
-using System.Windows;
-
-namespace H.Controls.Diagram.Extension
+﻿namespace H.Controls.Diagram.Extension
 {
     //public class AutoTestResultPresenter : RepositoryPropertyChangedPresenter<ats_dd_result>
     //{

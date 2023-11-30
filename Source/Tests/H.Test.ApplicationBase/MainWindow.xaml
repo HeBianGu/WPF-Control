@@ -9,7 +9,6 @@
         Height="450"
         mc:Ignorable="d">
     <Grid>
-        <Button Click="Button_Click"
-                Content="测试" />
+        <Button Click="Button_Click" Content="测试" />
     </Grid>
 </Window>

@@ -1,11 +1,11 @@
-﻿/************************************************************************
-   H.Controls.Dock
+﻿
 
-   Copyright (C) 2007-2013 Xceed Software Inc.
 
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
+
+
+
+
+
 
 using System;
 using System.Xml.Serialization;
@@ -45,7 +45,7 @@ namespace H.Controls.Dock.Layout
         internal void RaiseChildrenTreeChanged()
         {
             OnChildrenTreeChanged(ChildrenTreeChange.DirectChildrenChanged);
-            var parentGroup = Parent as LayoutGroupBase;
+            LayoutGroupBase parentGroup = Parent as LayoutGroupBase;
             if (parentGroup != null)
                 parentGroup.RaiseChildrenTreeChanged();
         }
@@ -68,7 +68,7 @@ namespace H.Controls.Dock.Layout
         protected void NotifyChildrenTreeChanged(ChildrenTreeChange change)
         {
             OnChildrenTreeChanged(change);
-            var parentGroup = Parent as LayoutGroupBase;
+            LayoutGroupBase parentGroup = Parent as LayoutGroupBase;
             if (parentGroup != null)
                 parentGroup.NotifyChildrenTreeChanged(ChildrenTreeChange.TreeChanged);
         }

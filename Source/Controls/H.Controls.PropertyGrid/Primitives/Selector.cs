@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections;
@@ -100,7 +100,7 @@ namespace H.Controls.PropertyGrid
         {
             get
             {
-                return (object)GetValue(SelectedItemProperty);
+                return GetValue(SelectedItemProperty);
             }
             set
             {
@@ -212,7 +212,7 @@ namespace H.Controls.PropertyGrid
 
         private static void OnSelectedMemberPathChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
         {
-            Selector sel = ((Selector)o);
+            Selector sel = (Selector)o;
             sel.OnSelectedMemberPathChanged((string)e.OldValue, (string)e.NewValue);
         }
 
@@ -275,7 +275,7 @@ namespace H.Controls.PropertyGrid
 
         private static void OnValueMemberPathChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
         {
-            Selector sel = ((Selector)o);
+            Selector sel = (Selector)o;
             sel.OnValueMemberPathChanged((string)e.OldValue, (string)e.NewValue);
         }
 
@@ -295,7 +295,7 @@ namespace H.Controls.PropertyGrid
         {
             get
             {
-                return ItemsSource ?? ((IEnumerable)Items ?? (IEnumerable)new object[0]);
+                return ItemsSource ?? (IEnumerable)Items ?? (new object[0]);
             }
         }
 
@@ -320,7 +320,7 @@ namespace H.Controls.PropertyGrid
             base.PrepareContainerForItemOverride(element, item);
 
             _surpressItemSelectionChanged = true;
-            var selectorItem = element as FrameworkElement;
+            FrameworkElement selectorItem = element as FrameworkElement;
 
             selectorItem.SetValue(SelectorItem.IsSelectedProperty, SelectedItems.Contains(item));
 
@@ -331,8 +331,8 @@ namespace H.Controls.PropertyGrid
         {
             base.OnItemsSourceChanged(oldValue, newValue);
 
-            var oldCollection = oldValue as INotifyCollectionChanged;
-            var newCollection = newValue as INotifyCollectionChanged;
+            INotifyCollectionChanged oldCollection = oldValue as INotifyCollectionChanged;
+            INotifyCollectionChanged newCollection = newValue as INotifyCollectionChanged;
 
             if (oldCollection != null)
             {
@@ -440,10 +440,10 @@ namespace H.Controls.PropertyGrid
             {
                 foreach (object item in ItemsCollection)
                 {
-                    var property = item.GetType().GetProperty(ValueMemberPath);
+                    PropertyInfo property = item.GetType().GetProperty(ValueMemberPath);
                     if (property != null)
                     {
-                        var propertyValue = property.GetValue(item, null);
+                        object propertyValue = property.GetValue(item, null);
                         if (value.Equals(propertyValue.ToString(), StringComparison.InvariantCultureIgnoreCase))
                             return item;
                     }
@@ -492,7 +492,7 @@ namespace H.Controls.PropertyGrid
             string[] nameParts = this.SelectedMemberPath.Split('.');
             if (nameParts.Length == 1)
             {
-                var property = item.GetType().GetProperty(this.SelectedMemberPath);
+                PropertyInfo property = item.GetType().GetProperty(this.SelectedMemberPath);
                 if ((property != null) && (property.PropertyType == typeof(bool)))
                     return property.GetValue(item, null) as bool?;
                 return null;
@@ -500,8 +500,8 @@ namespace H.Controls.PropertyGrid
 
             for (int i = 0; i < nameParts.Count(); ++i)
             {
-                var type = item.GetType();
-                var info = type.GetProperty(nameParts[i]);
+                Type type = item.GetType();
+                PropertyInfo info = type.GetProperty(nameParts[i]);
                 if (info == null)
                 {
                     return null;
@@ -530,7 +530,7 @@ namespace H.Controls.PropertyGrid
             string[] nameParts = this.SelectedMemberPath.Split('.');
             if (nameParts.Length == 1)
             {
-                var property = item.GetType().GetProperty(this.SelectedMemberPath);
+                PropertyInfo property = item.GetType().GetProperty(this.SelectedMemberPath);
                 if ((property != null) && (property.PropertyType == typeof(bool)))
                 {
                     property.SetValue(item, value, null);
@@ -540,8 +540,8 @@ namespace H.Controls.PropertyGrid
 
             for (int i = 0; i < nameParts.Count(); ++i)
             {
-                var type = item.GetType();
-                var info = type.GetProperty(nameParts[i]);
+                Type type = item.GetType();
+                PropertyInfo info = type.GetProperty(nameParts[i]);
                 if (info == null)
                     return;
 
@@ -697,7 +697,7 @@ namespace H.Controls.PropertyGrid
         private void UpdateFromSelectedMemberPathValues()
         {
             _ignoreSelectedItemsCollectionChanged++;
-            foreach (var item in ItemsCollection)
+            foreach (object item in ItemsCollection)
             {
                 bool? isSelected = this.GetSelectedMemberPathValue(item);
                 if (isSelected != null)
@@ -760,7 +760,7 @@ namespace H.Controls.PropertyGrid
                 this.SetSelectedMemberPathValue(o, isSelected);
                 _ignoreSelectedMemberPathValuesChanged--;
 
-                var selectorItem = ItemContainerGenerator.ContainerFromItem(o) as SelectorItem;
+                SelectorItem selectorItem = ItemContainerGenerator.ContainerFromItem(o) as SelectorItem;
                 if (selectorItem != null)
                 {
                     selectorItem.IsSelected = isSelected;

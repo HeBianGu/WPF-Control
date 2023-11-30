@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Windows;
@@ -184,11 +184,11 @@ namespace H.Controls.PropertyGrid
 
         #region Event Handlers
 
-        void CalculatorPopup_Opened(object sender, EventArgs e)
+        private void CalculatorPopup_Opened(object sender, EventArgs e)
         {
             if (_calculator != null)
             {
-                var initValue = this.UpdateValueOnEnterKey ? this.ConvertTextToValue(this.TextBox.Text) : this.Value;
+                decimal? initValue = this.UpdateValueOnEnterKey ? this.ConvertTextToValue(this.TextBox.Text) : this.Value;
                 _calculator.InitializeToValue(initValue);
                 _calculator.Focus();
             }
@@ -198,7 +198,7 @@ namespace H.Controls.PropertyGrid
         {
             if (IsOpen && EnterClosesCalculator)
             {
-                var buttonType = CalculatorUtilities.GetCalculatorButtonTypeFromText(e.Text);
+                Calculator.CalculatorButtonType buttonType = CalculatorUtilities.GetCalculatorButtonTypeFromText(e.Text);
                 if (buttonType == Calculator.CalculatorButtonType.Equal)
                 {
                     CloseCalculatorUpDown(true);

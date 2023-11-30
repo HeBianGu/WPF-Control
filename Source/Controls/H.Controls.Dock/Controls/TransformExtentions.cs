@@ -1,12 +1,4 @@
-﻿/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
-
+﻿
 using System.Windows;
 using System.Windows.Media;
 
@@ -24,7 +16,7 @@ namespace H.Controls.Dock.Controls
         {
             if (FrameworkElement.GetFlowDirection(element) == FlowDirection.RightToLeft)
             {
-                var actualSize = element.TransformActualSizeToAncestor();
+                Size actualSize = element.TransformActualSizeToAncestor();
                 Point leftToRightPoint = new Point(
                     actualSize.Width - point.X,
                     point.Y);
@@ -42,10 +34,10 @@ namespace H.Controls.Dock.Controls
 
             //public static Rect GetScreenAreaWithoutFlowDirection(this FrameworkElement element)
             //{
-            var point = element.PointToScreenDPI(new Point());
+            Point point = element.PointToScreenDPI(new Point());
             if (FrameworkElement.GetFlowDirection(element) == FlowDirection.RightToLeft)
             {
-                var actualSize = element.TransformActualSizeToAncestor();
+                Size actualSize = element.TransformActualSizeToAncestor();
                 Point leftToRightPoint = new Point(
                     actualSize.Width - point.X,
                     point.Y);
@@ -85,8 +77,8 @@ namespace H.Controls.Dock.Controls
             if (PresentationSource.FromVisual(element) == null)
                 return new Size(element.ActualWidth, element.ActualHeight);
 
-            var parentWindow = PresentationSource.FromVisual(element).RootVisual;
-            var transformToWindow = element.TransformToAncestor(parentWindow);
+            Visual parentWindow = PresentationSource.FromVisual(element).RootVisual;
+            GeneralTransform transformToWindow = element.TransformToAncestor(parentWindow);
             return transformToWindow.TransformBounds(new Rect(0, 0, element.ActualWidth, element.ActualHeight)).Size;
         }
 
@@ -95,8 +87,8 @@ namespace H.Controls.Dock.Controls
             if (PresentationSource.FromVisual(element) == null)
                 return sizeToTransform;
 
-            var parentWindow = PresentationSource.FromVisual(element).RootVisual;
-            var transformToWindow = element.TransformToAncestor(parentWindow);
+            Visual parentWindow = PresentationSource.FromVisual(element).RootVisual;
+            GeneralTransform transformToWindow = element.TransformToAncestor(parentWindow);
             return transformToWindow.TransformBounds(new Rect(0, 0, sizeToTransform.Width, sizeToTransform.Height)).Size;
         }
 
@@ -105,7 +97,7 @@ namespace H.Controls.Dock.Controls
             if (PresentationSource.FromVisual(element) == null)
                 return new MatrixTransform(Matrix.Identity);
 
-            var parentWindow = PresentationSource.FromVisual(element).RootVisual;
+            Visual parentWindow = PresentationSource.FromVisual(element).RootVisual;
             return element.TransformToAncestor(parentWindow);
         }
     }

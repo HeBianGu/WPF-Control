@@ -1,11 +1,3 @@
-/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
 
 using H.Controls.Dock.Layout;
 using System;
@@ -50,24 +42,24 @@ namespace H.Controls.Dock.Controls
 
         protected override Size ArrangeOverride(Size finalSize)
         {
-            var visibleChildren = Children.Cast<UIElement>().Where(ch => ch.Visibility != System.Windows.Visibility.Collapsed);
-            var offset = 0.0;
-            var skipAllOthers = false;
+            System.Collections.Generic.IEnumerable<UIElement> visibleChildren = Children.Cast<UIElement>().Where(ch => ch.Visibility != System.Windows.Visibility.Collapsed);
+            double offset = 0.0;
+            bool skipAllOthers = false;
             foreach (TabItem doc in visibleChildren)
             {
                 if (skipAllOthers || offset + doc.DesiredSize.Width > finalSize.Width)
                 {
                     bool isLayoutContentSelected = false;
-                    var layoutContent = doc.Content as LayoutContent;
+                    LayoutContent layoutContent = doc.Content as LayoutContent;
 
                     if (layoutContent != null)
                         isLayoutContentSelected = layoutContent.IsSelected;
 
                     if (isLayoutContentSelected && !doc.IsVisible)
                     {
-                        var parentContainer = layoutContent.Parent as ILayoutContainer;
-                        var parentSelector = layoutContent.Parent as ILayoutContentSelector;
-                        var parentPane = layoutContent.Parent as ILayoutPane;
+                        ILayoutContainer parentContainer = layoutContent.Parent;
+                        ILayoutContentSelector parentSelector = layoutContent.Parent as ILayoutContentSelector;
+                        ILayoutPane parentPane = layoutContent.Parent as ILayoutPane;
                         int contentIndex = parentSelector.IndexOf(layoutContent);
                         if (contentIndex > 0 &&
                             parentContainer.ChildrenCount > 1)

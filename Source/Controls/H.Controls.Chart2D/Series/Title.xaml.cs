@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.Windows;
 using System.Windows.Controls;
@@ -20,7 +20,7 @@ namespace H.Controls.Chart2D
             set { SetValue(TextProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty TextProperty =
             DependencyProperty.Register("Text", typeof(string), typeof(Title), new PropertyMetadata(default(string), (d, e) =>
              {
@@ -39,7 +39,7 @@ namespace H.Controls.Chart2D
             set { SetValue(DescriptionProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty DescriptionProperty =
             DependencyProperty.Register("Description", typeof(string), typeof(Title), new PropertyMetadata(default(string), (d, e) =>
              {

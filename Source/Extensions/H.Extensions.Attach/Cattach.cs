@@ -1,12 +1,8 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using Microsoft.Win32;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -15,35 +11,8 @@ using System.Windows.Media.Animation;
 
 namespace H.Extensions.Attach
 {
-    /// <summary> 公共附加属性 </summary>
     public static partial class Cattach
     {
-        //public static readonly DependencyProperty CheckedForegroundBrushProperty = DependencyProperty.RegisterAttached(
-        //    "CheckedForegroundBrush", typeof(Brush), typeof(Cattach), new FrameworkPropertyMetadata(Brushes.Transparent));
-
-        //public static void SetCheckedForegroundBrush(DependencyObject element, Brush value)
-        //{
-        //    element.SetValue(CheckedForegroundBrushProperty, value);
-        //}
-
-        //public static Brush GetCheckedForegroundBrush(DependencyObject element)
-        //{
-        //    return (Brush)element.GetValue(CheckedForegroundBrushProperty);
-        //}
-
-        //public static readonly DependencyProperty CheckedBackgroundBrushProperty = DependencyProperty.RegisterAttached(
-        //    "CheckedBackgroundBrush", typeof(Brush), typeof(Cattach), new FrameworkPropertyMetadata(Brushes.Transparent));
-
-        //public static void SetCheckedBackgroundBrush(DependencyObject element, Brush value)
-        //{
-        //    element.SetValue(CheckedBackgroundBrushProperty, value);
-        //}
-
-        //public static Brush GetCheckedBackgroundBrush(DependencyObject element)
-        //{
-        //    return (Brush)element.GetValue(CheckedBackgroundBrushProperty);
-        //}
-
         public static readonly DependencyProperty WatermarkProperty = DependencyProperty.RegisterAttached(
             "Watermark", typeof(string), typeof(Cattach), new FrameworkPropertyMetadata(""));
 
@@ -485,9 +454,9 @@ namespace H.Extensions.Attach
         public static readonly DependencyProperty IsOpenProperty =
             DependencyProperty.RegisterAttached("IsOpen", typeof(bool), typeof(Cattach), new PropertyMetadata(true, OnIsOpenChanged));
 
-        static public void OnIsOpenChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnIsOpenChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
             bool n = (bool)e.NewValue;
             bool o = (bool)e.OldValue;
         }
@@ -902,7 +871,7 @@ namespace H.Extensions.Attach
             obj.SetValue(DateTimeFormatProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty DateTimeFormatProperty =
             DependencyProperty.RegisterAttached("DateTimeFormat", typeof(string), typeof(Cattach), new FrameworkPropertyMetadata("YYYY-MM-dd", OnDateTimeFormatChanged));
 
@@ -969,13 +938,13 @@ namespace H.Extensions.Attach
             obj.SetValue(DockProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty DockProperty =
             DependencyProperty.RegisterAttached("Dock", typeof(Dock), typeof(Cattach), new PropertyMetadata(default(Dock), OnDockChanged));
 
-        static public void OnDockChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnDockChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             Dock n = (Dock)e.NewValue;
 

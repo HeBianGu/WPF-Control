@@ -3,7 +3,7 @@
                     xmlns:classic="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Classic">
 
     <Style x:Key="{x:Type RibbonToolTip}" TargetType="{x:Type RibbonToolTip}">
-        <Setter Property="Title" Value="RibbonToolTip"/>
+        <Setter Property="Title" Value="RibbonToolTip" />
         <Setter Property="ImageSource" Value="/Resources/CropImage32.png" />
         <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Self}, Path=Ribbon.Background}" />
         <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Self}, Path=Ribbon.BorderBrush}" />

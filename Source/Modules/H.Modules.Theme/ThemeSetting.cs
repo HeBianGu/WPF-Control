@@ -3,23 +3,20 @@ using H.Extensions.Setting;
 using H.Providers.Ioc;
 using H.Providers.Mvvm;
 using H.Themes.Default;
-using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.DirectoryServices.ActiveDirectory;
 using System.Linq;
 using System.Reflection;
 using System.Text.Json.Serialization;
 using System.Windows;
-using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace H.Modules.Theme
 {
     [Display(Name = "主题设置", GroupName = SystemSetting.GroupSystem, Description = "登录页面设置的信息")]
-    public class ThemeSetting: Setting<ThemeSetting>
+    public class ThemeSetting : Setting<ThemeSetting>
     {
         public ThemeSetting()
         {
@@ -69,7 +66,7 @@ namespace H.Modules.Theme
         {
             this.RefreshTheme();
             {
-                var brushResource = new ResourceDictionary() { Source = new Uri("pack://application:,,,/H.Styles.Default;component/ConciseControls.xaml", UriKind.Absolute) };
+                ResourceDictionary brushResource = new ResourceDictionary() { Source = new Uri("pack://application:,,,/H.Styles.Default;component/ConciseControls.xaml", UriKind.Absolute) };
                 brushResource.ChangeResourceDictionary(x => x.Source.AbsoluteUri == brushResource.Source.AbsoluteUri, true);
             }
             this.ColorResourceSelectedIndex = this.ColorResources.IndexOf(this.ColorResource);
@@ -91,9 +88,9 @@ namespace H.Modules.Theme
             this.ChangeColorTheme();
         }
 
-        void ChangeColorTheme()
+        private void ChangeColorTheme()
         {
-            var resource = this.ColorResource.Resource;
+            ResourceDictionary resource = this.ColorResource.Resource;
             ThemeTypeExtension.ChangeResourceDictionary(resource, x =>
             {
                 return this.ColorResources.Any(l => l.Resource.Source == x.Source);

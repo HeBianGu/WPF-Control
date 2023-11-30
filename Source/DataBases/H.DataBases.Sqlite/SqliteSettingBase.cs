@@ -6,13 +6,12 @@ using System.Data.Entity;
 #endif
 
 #if NETCOREAPP
-using Microsoft.EntityFrameworkCore;
 #endif
+using H.DataBases.Share;
+using H.Providers.Ioc;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
-using H.DataBases.Share;
-using H.Extensions.Setting;
 
 namespace H.DataBases.Sqlite
 {

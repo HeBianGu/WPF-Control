@@ -1,12 +1,4 @@
-﻿/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
-
+﻿
 using H.Controls.Dock.Layout;
 using System.ComponentModel;
 using System.Linq;
@@ -113,7 +105,7 @@ namespace H.Controls.Dock.Controls
             base.OnMouseLeftButtonDown(e);
 
             // Start a drag & drop action for a LayoutAnchorable
-            var anchorAble = this.Model as LayoutAnchorable;
+            LayoutAnchorable anchorAble = this.Model as LayoutAnchorable;
             if (anchorAble != null)
             {
                 if (anchorAble.CanMove == false) return;
@@ -163,16 +155,16 @@ namespace H.Controls.Dock.Controls
         {
             base.OnMouseEnter(e);
             if (_draggingItem == null || _draggingItem == this || e.LeftButton != MouseButtonState.Pressed) return;
-            var model = Model;
-            var container = model.Parent;
-            var containerPane = model.Parent as ILayoutPane;
+            LayoutContent model = Model;
+            ILayoutContainer container = model.Parent;
+            ILayoutPane containerPane = model.Parent as ILayoutPane;
             if (containerPane is LayoutAnchorablePane layoutAnchorablePane && !layoutAnchorablePane.CanRepositionItems) return;
             if (containerPane.Parent is LayoutAnchorablePaneGroup layoutAnchorablePaneGroup && !layoutAnchorablePaneGroup.CanRepositionItems) return;
-            var childrenList = container.Children.ToList();
+            System.Collections.Generic.List<ILayoutElement> childrenList = container.Children.ToList();
 
             // Hotfix to avoid crash caused by a likely threading issue Back in the containerPane.
-            var oldIndex = childrenList.IndexOf(_draggingItem.Model);
-            var newIndex = childrenList.IndexOf(model);
+            int oldIndex = childrenList.IndexOf(_draggingItem.Model);
+            int newIndex = childrenList.IndexOf(model);
             if (newIndex < containerPane.ChildrenCount && oldIndex > -1) containerPane.MoveChild(oldIndex, newIndex);
         }
 

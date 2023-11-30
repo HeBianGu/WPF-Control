@@ -1,9 +1,8 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace H.Controls.Adorner
@@ -82,8 +81,8 @@ namespace H.Controls.Adorner
         protected override void RefreshLayout()
         {
             Point point = new Point();
-            point.X = this.location.X + (this.AdornedElement.DesiredSize.Width - this._contentPresenter.DesiredSize.Width) / 2;
-            point.Y = this.location.Y + (this.AdornedElement.DesiredSize.Height - this._contentPresenter.DesiredSize.Height) / 2;
+            point.X = this.location.X + ((this.AdornedElement.DesiredSize.Width - this._contentPresenter.DesiredSize.Width) / 2);
+            point.Y = this.location.Y + ((this.AdornedElement.DesiredSize.Height - this._contentPresenter.DesiredSize.Height) / 2);
             this._contentPresenter.Arrange(new Rect(point, this._contentPresenter.DesiredSize));
         }
 
@@ -114,8 +113,8 @@ namespace H.Controls.Adorner
         protected override void RefreshLayout()
         {
             Point point = new Point();
-            point.X = this.location.X + (this.AdornedElement.DesiredSize.Width - this._contentControl.DesiredSize.Width) / 2;
-            point.Y = this.location.Y + (this.AdornedElement.DesiredSize.Height - this._contentControl.DesiredSize.Height) / 2;
+            point.X = this.location.X + ((this.AdornedElement.DesiredSize.Width - this._contentControl.DesiredSize.Width) / 2);
+            point.Y = this.location.Y + ((this.AdornedElement.DesiredSize.Height - this._contentControl.DesiredSize.Height) / 2);
             this._contentControl.Arrange(new Rect(point, this._contentControl.DesiredSize));
         }
 

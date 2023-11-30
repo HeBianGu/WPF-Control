@@ -9,7 +9,10 @@
         <ResourceDictionary Source="../Marker/Marker.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.MarkLine.Default, TypeInTargetAssembly={x:Type local:MarkLine}}" BasedOn="{StaticResource {x:Static h:Layer.DefaultKey}}" TargetType="{x:Type local:MarkLine}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.MarkLine.Default,
+                                        TypeInTargetAssembly={x:Type local:MarkLine}}"
+           BasedOn="{StaticResource {x:Static h:Layer.DefaultKey}}"
+           TargetType="{x:Type local:MarkLine}">
         <Setter Property="MarkStyle" Value="{StaticResource {x:Static h:EllipseMarker.Default10Key}}" />
         <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType=local:Series}, Path=Foreground}" />
         <Setter Property="PathStyle">
@@ -34,7 +37,10 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.MarkLine.Horizontal, TypeInTargetAssembly={x:Type local:MarkLine}}" BasedOn="{StaticResource {x:Static h:MarkLine.DefaultKey}}" TargetType="{x:Type local:MarkLine}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.MarkLine.Horizontal,
+                                        TypeInTargetAssembly={x:Type local:MarkLine}}"
+           BasedOn="{StaticResource {x:Static h:MarkLine.DefaultKey}}"
+           TargetType="{x:Type local:MarkLine}">
         <Setter Property="PathStyle">
             <Setter.Value>
                 <Style TargetType="Path">
@@ -45,13 +51,14 @@
                     <Style.Triggers>
                         <EventTrigger RoutedEvent="Loaded">
                             <BeginStoryboard>
-                                <Storyboard >
+                                <Storyboard>
                                     <ThicknessAnimation Storyboard.TargetProperty="Margin"
                                                         From="-1000,0,0,0"
                                                         To="0,0,0,0"
                                                         Duration="0:0:0.5" />
                                     <DoubleAnimation Storyboard.TargetProperty="Opacity"
-                                                     From="0.5" To="1"
+                                                     From="0.5"
+                                                     To="1"
                                                      Duration="0:0:0.5" />
                                 </Storyboard>
                             </BeginStoryboard>
@@ -81,13 +88,14 @@
                     <Style.Triggers>
                         <EventTrigger RoutedEvent="Loaded">
                             <BeginStoryboard>
-                                <Storyboard >
+                                <Storyboard>
                                     <ThicknessAnimation Storyboard.TargetProperty="Margin"
                                                         From="-1000,0,0,0"
                                                         To="0,0,0,0"
                                                         Duration="0:0:0.5" />
                                     <DoubleAnimation Storyboard.TargetProperty="Opacity"
-                                                     From="0.5" To="1"
+                                                     From="0.5"
+                                                     To="1"
                                                      Duration="0:0:0.5" />
                                 </Storyboard>
                             </BeginStoryboard>
@@ -98,7 +106,10 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.MarkLine.Horizontal.Static, TypeInTargetAssembly={x:Type local:MarkLine}}" BasedOn="{StaticResource {x:Static h:MarkLine.DefaultKey}}" TargetType="{x:Type local:MarkLine}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.MarkLine.Horizontal.Static,
+                                        TypeInTargetAssembly={x:Type local:MarkLine}}"
+           BasedOn="{StaticResource {x:Static h:MarkLine.DefaultKey}}"
+           TargetType="{x:Type local:MarkLine}">
         <Setter Property="PathStyle">
             <Setter.Value>
                 <Style TargetType="Path">
@@ -132,9 +143,15 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.MarkLine.Single, TypeInTargetAssembly={x:Type local:MarkLine}}" BasedOn="{StaticResource {x:Static h:MarkLine.DefaultKey}}" TargetType="{x:Type local:MarkLine}" />
+    <Style x:Key="{ComponentResourceKey ResourceId=S.MarkLine.Single,
+                                        TypeInTargetAssembly={x:Type local:MarkLine}}"
+           BasedOn="{StaticResource {x:Static h:MarkLine.DefaultKey}}"
+           TargetType="{x:Type local:MarkLine}" />
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.MarkLine.Vertical, TypeInTargetAssembly={x:Type local:MarkLine}}" BasedOn="{StaticResource {x:Static h:MarkLine.DefaultKey}}" TargetType="{x:Type local:MarkLine}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.MarkLine.Vertical,
+                                        TypeInTargetAssembly={x:Type local:MarkLine}}"
+           BasedOn="{StaticResource {x:Static h:MarkLine.DefaultKey}}"
+           TargetType="{x:Type local:MarkLine}">
         <Setter Property="Orientation" Value="Vertical" />
         <Setter Property="PathStyle">
             <Setter.Value>
@@ -146,10 +163,11 @@
                     <Style.Triggers>
                         <EventTrigger RoutedEvent="Loaded">
                             <BeginStoryboard>
-                                <Storyboard >
+                                <Storyboard>
                                     <!--<ThicknessAnimation From="0,0,0,-1000" To="0,0,0,0" Duration="0:0:0.5" Storyboard.TargetProperty="Margin"/>-->
                                     <DoubleAnimation Storyboard.TargetProperty="Opacity"
-                                                     From="0.5" To="1"
+                                                     From="0.5"
+                                                     To="1"
                                                      Duration="0:0:0.5" />
                                 </Storyboard>
                             </BeginStoryboard>
@@ -179,10 +197,11 @@
                     <Style.Triggers>
                         <EventTrigger RoutedEvent="Loaded">
                             <BeginStoryboard>
-                                <Storyboard >
+                                <Storyboard>
                                     <!--<ThicknessAnimation From="0,0,0,-1000" To="0,0,0,0" Duration="0:0:0.5" Storyboard.TargetProperty="Margin"/>-->
                                     <DoubleAnimation Storyboard.TargetProperty="Opacity"
-                                                     From="0.5" To="1"
+                                                     From="0.5"
+                                                     To="1"
                                                      Duration="0:0:0.5" />
                                 </Storyboard>
                             </BeginStoryboard>
@@ -192,7 +211,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
     <Style BasedOn="{StaticResource {x:Static h:MarkLine.HorizontalKey}}" TargetType="{x:Type local:MarkLine}" />
 </ResourceDictionary>
 

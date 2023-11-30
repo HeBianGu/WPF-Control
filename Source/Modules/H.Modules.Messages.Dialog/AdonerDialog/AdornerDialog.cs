@@ -1,14 +1,10 @@
-﻿using H.Controls.Adorner;
-using H.Presenters.Common;
+﻿using H.Presenters.Common;
 using H.Providers.Ioc;
-using H.Providers.Ioc;
-using H.Windows.Dialog;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Documents;
 
 namespace H.Modules.Messages.Dialog
 {
@@ -35,7 +31,7 @@ namespace H.Modules.Messages.Dialog
 
         public static async Task<bool?> ShowPresenter(object presenter, Action<AdornerDialogPresenter> action = null, DialogButton dialogButton = DialogButton.Sumit, string title = null, Func<bool> canSumit = null, Window owner = null)
         {
-            var dialog = new AdornerDialogPresenter(presenter);
+            AdornerDialogPresenter dialog = new AdornerDialogPresenter(presenter);
             dialog.Title = title ?? presenter.GetType().GetCustomAttribute<DisplayAttribute>()?.Name ?? "提示";
             dialog.MinWidth = 500;
             dialog.CanSumit = canSumit;
@@ -81,7 +77,7 @@ namespace H.Modules.Messages.Dialog
 
         public static async Task<bool?> ShowIoc(Type type, Action<AdornerDialogPresenter> action = null, string title = null, DialogButton dialogButton = DialogButton.Sumit, Window owner = null)
         {
-            var presenter = Ioc.Services.GetService(type);
+            object presenter = Ioc.Services.GetService(type);
             return await ShowPresenter(presenter, x =>
             {
                 x.MinWidth = 500;

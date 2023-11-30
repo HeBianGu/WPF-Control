@@ -1,12 +1,4 @@
-﻿/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
-
+﻿
 using System;
 using System.Windows;
 using System.Windows.Data;
@@ -32,7 +24,7 @@ namespace H.Controls.Dock.Converters
         {
             if (!(value is bool)) throw new ArgumentException("Invalid argument type. Expected argument: bool.", nameof(value));
             if (targetType != typeof(Visibility)) throw new ArgumentException("Invalid return type. Expected type: Visibility", nameof(targetType));
-            var val = !(bool)value;
+            bool val = !(bool)value;
             if (val) return Visibility.Visible;
             return parameter is Visibility ? parameter : Visibility.Collapsed;
         }

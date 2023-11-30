@@ -1,11 +1,11 @@
-/************************************************************************
-   H.Controls.Dock
 
-   Copyright (C) 2007-2013 Xceed Software Inc.
 
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
+
+
+
+
+
+
 
 using H.Controls.Dock.Layout;
 using H.Controls.Dock.Themes;
@@ -305,7 +305,7 @@ namespace H.Controls.Dock.Controls
                 }
                 else
                 {
-                    var resourceDictionaryToRemove =
+                    ResourceDictionary resourceDictionaryToRemove =
                         Resources.MergedDictionaries.FirstOrDefault(r => r.Source == oldTheme.GetResourceUri());
                     if (resourceDictionaryToRemove != null)
                         Resources.MergedDictionaries.Remove(
@@ -314,7 +314,7 @@ namespace H.Controls.Dock.Controls
             }
 
             // Implicit parameter to this method is the new theme already set here
-            var manager = _model.Root?.Manager;
+            DockingManager manager = _model.Root?.Manager;
             if (manager?.Theme == null) return;
             if (manager.Theme is DictionaryTheme dictionaryTheme)
             {
@@ -335,8 +335,8 @@ namespace H.Controls.Dock.Controls
             else
             {
                 CaptureMouse();
-                var windowHandle = new WindowInteropHelper(this).Handle;
-                var lParam = new IntPtr(((int)Left & 0xFFFF) | ((int)Top << 16));
+                IntPtr windowHandle = new WindowInteropHelper(this).Handle;
+                IntPtr lParam = new IntPtr(((int)Left & 0xFFFF) | ((int)Top << 16));
                 Win32Helper.SendMessage(windowHandle, Win32Helper.WM_NCLBUTTONDOWN, new IntPtr(Win32Helper.HT_CAPTION), lParam);
             }
         }
@@ -356,8 +356,8 @@ namespace H.Controls.Dock.Controls
 
                     if (_dragService != null)
                     {
-                        var mousePosition = (Win32Helper.GetMousePosition());
-                        _dragService.Drop(mousePosition, out var dropFlag);
+                        Point mousePosition = Win32Helper.GetMousePosition();
+                        _dragService.Drop(mousePosition, out bool dropFlag);
                         _dragService = null;
                         SetIsDragging(false);
                         if (dropFlag) InternalClose();
@@ -381,7 +381,7 @@ namespace H.Controls.Dock.Controls
                     break;
 
                 case Win32Helper.WM_SYSCOMMAND:
-                    var command = (int)wParam & 0xFFF0;
+                    int command = (int)wParam & 0xFFF0;
                     if (command == Win32Helper.SC_MAXIMIZE || command == Win32Helper.SC_RESTORE) UpdateMaximizedState(command == Win32Helper.SC_MAXIMIZE);
                     break;
             }
@@ -396,7 +396,7 @@ namespace H.Controls.Dock.Controls
         private void UpdateMargins()
         {
             // The grid with window bar and content
-            var grid = this.GetChildrenRecursive()
+            Grid grid = this.GetChildrenRecursive()
                 .OfType<Grid>()
                 .FirstOrDefault(g => g.RowDefinitions.Count > 0);
             ContentPresenter contentControl = this.GetChildrenRecursive()
@@ -405,31 +405,31 @@ namespace H.Controls.Dock.Controls
             if (contentControl == null)
                 return;
             // The content control in the grid, this has a different tree to walk up
-            var layoutContent = (LayoutContent)contentControl.Content;
+            LayoutContent layoutContent = (LayoutContent)contentControl.Content;
             if (grid != null && layoutContent.Content is FrameworkElement content)
             {
-                var parents = content.GetParents().ToArray();
-                var children = this.GetChildrenRecursive()
+                DependencyObject[] parents = content.GetParents().ToArray();
+                DependencyObject[] children = this.GetChildrenRecursive()
                     .TakeWhile(c => c != grid)
                     .ToArray();
-                var borders = children
+                Border[] borders = children
                     .OfType<Border>()
                     .Concat(parents
                         .OfType<Border>())
                     .ToArray();
-                var controls = children
+                Control[] controls = children
                     .OfType<System.Windows.Controls.Control>()
                     .Concat(parents
                         .OfType<System.Windows.Controls.Control>())
                     .ToArray();
-                var frameworkElements = children
+                FrameworkElement[] frameworkElements = children
                     .OfType<FrameworkElement>()
                     .Concat(parents
                         .OfType<FrameworkElement>())
                     .ToArray();
-                var padding = controls.Sum(b => b.Padding);
-                var border = borders.Sum(b => b.BorderThickness);
-                var margin = frameworkElements.Sum(f => f.Margin);
+                Thickness padding = controls.Sum(b => b.Padding);
+                Thickness border = borders.Sum(b => b.BorderThickness);
+                Thickness margin = frameworkElements.Sum(f => f.Margin);
                 margin = margin.Add(padding).Add(border).Add(grid.Margin);
                 margin.Top = grid.RowDefinitions[0].MinHeight;
                 TotalMargin = margin;
@@ -450,30 +450,30 @@ namespace H.Controls.Dock.Controls
                 {
                     // The LayoutAnchorableControl is bound via the ContentPresenter, hence it is best to do below in code and not in a style
                     // See https://github.com/Dirkster99/H.Controls.Dock/pull/146#issuecomment-609974424
-                    var layoutContents = this.GetChildrenRecursive()
+                    System.Collections.Generic.IEnumerable<object> layoutContents = this.GetChildrenRecursive()
                         .OfType<ContentPresenter>()
                         .Select(c => c.Content)
                         .OfType<LayoutContent>()
                         .Select(lc => lc.Content);
-                    var contents = layoutContents.OfType<FrameworkElement>();
-                    foreach (var content in contents)
+                    System.Collections.Generic.IEnumerable<FrameworkElement> contents = layoutContents.OfType<FrameworkElement>();
+                    foreach (FrameworkElement content in contents)
                     {
                         ContentMinHeight = Math.Max(content.MinHeight, ContentMinHeight);
                         ContentMinWidth = Math.Max(content.MinWidth, ContentMinWidth);
                         if ((this.Model?.Root?.Manager?.AutoWindowSizeWhenOpened).GetValueOrDefault())
                         {
-                            var parent = content.GetParents()
+                            FrameworkElement parent = content.GetParents()
                                 .OfType<FrameworkElement>()
                                 .FirstOrDefault();
                             // StackPanels among others have an ActualHeight larger than visible, hence we check the parent control as well
                             if (content.ActualHeight < content.MinHeight ||
-                                parent != null && parent.ActualHeight < content.MinHeight)
+                                (parent != null && parent.ActualHeight < content.MinHeight))
                             {
                                 Height = content.MinHeight + TotalMargin.Top + TotalMargin.Bottom;
                             }
 
                             if (content.ActualWidth < content.MinWidth ||
-                                parent != null && parent.ActualWidth < content.MinWidth)
+                                (parent != null && parent.ActualWidth < content.MinWidth))
                             {
                                 Width = content.MinWidth + TotalMargin.Left + TotalMargin.Right;
                             }
@@ -568,7 +568,7 @@ namespace H.Controls.Dock.Controls
             _hwndSrcHook = FilterMessage;
             _hwndSrc.AddHook(_hwndSrcHook);
             // Restore maximize state
-            var maximized = Model.Descendents().OfType<ILayoutElementForFloatingWindow>().Any(l => l.IsMaximized);
+            bool maximized = Model.Descendents().OfType<ILayoutElementForFloatingWindow>().Any(l => l.IsMaximized);
             UpdateMaximizedState(maximized);
         }
 
@@ -576,7 +576,7 @@ namespace H.Controls.Dock.Controls
         {
             // Determine whether the child window should be owned by the parent or act independently
             // according to OwnedByDockingManagerWindow property.
-            var manager = Model?.Root?.Manager;
+            DockingManager manager = Model?.Root?.Manager;
             if (OwnedByDockingManagerWindow && manager != null)
                 this.SetParentToMainWindowOf(manager);
             else
@@ -602,7 +602,7 @@ namespace H.Controls.Dock.Controls
 
         private void OnSizeChanged(object sender, SizeChangedEventArgs e)
         {
-            foreach (var posElement in Model.Descendents().OfType<ILayoutElementForFloatingWindow>())
+            foreach (ILayoutElementForFloatingWindow posElement in Model.Descendents().OfType<ILayoutElementForFloatingWindow>())
             {
                 posElement.FloatingWidth = ActualWidth;
                 posElement.FloatingHeight = ActualHeight;
@@ -615,10 +615,10 @@ namespace H.Controls.Dock.Controls
             Activated -= OnActivated;
 
             if (!_attachDrag || Mouse.LeftButton != MouseButtonState.Pressed) return;
-            var windowHandle = new WindowInteropHelper(this).Handle;
-            var mousePosition = this.PointToScreenDPI(Mouse.GetPosition(this));
+            IntPtr windowHandle = new WindowInteropHelper(this).Handle;
+            Point mousePosition = this.PointToScreenDPI(Mouse.GetPosition(this));
 
-            var area = this.GetScreenArea();
+            Rect area = this.GetScreenArea();
 
             // BugFix Issue #6
             // This code is initializes the drag when content (document or toolwindow) is dragged
@@ -636,13 +636,13 @@ namespace H.Controls.Dock.Controls
 
             _attachDrag = false;
             Show();
-            var lParam = new IntPtr(((int)mousePosition.X & 0xFFFF) | ((int)mousePosition.Y << 16));
+            IntPtr lParam = new IntPtr(((int)mousePosition.X & 0xFFFF) | ((int)mousePosition.Y << 16));
             Win32Helper.SendMessage(windowHandle, Win32Helper.WM_NCLBUTTONDOWN, new IntPtr(Win32Helper.HT_CAPTION), lParam);
         }
 
         private void UpdatePositionAndSizeOfPanes()
         {
-            foreach (var posElement in Model.Descendents().OfType<ILayoutElementForFloatingWindow>())
+            foreach (ILayoutElementForFloatingWindow posElement in Model.Descendents().OfType<ILayoutElementForFloatingWindow>())
             {
                 posElement.FloatingLeft = Left;
                 posElement.FloatingTop = Top;
@@ -654,7 +654,7 @@ namespace H.Controls.Dock.Controls
 
         private void UpdateMaximizedState(bool isMaximized)
         {
-            foreach (var posElement in Model.Descendents().OfType<ILayoutElementForFloatingWindow>())
+            foreach (ILayoutElementForFloatingWindow posElement in Model.Descendents().OfType<ILayoutElementForFloatingWindow>())
                 posElement.IsMaximized = isMaximized;
             IsMaximized = isMaximized;
             _isInternalChange = true;
@@ -680,7 +680,7 @@ namespace H.Controls.Dock.Controls
                 _dragService = new DragService(this);
                 SetIsDragging(true);
             }
-            var mousePosition = (Win32Helper.GetMousePosition());
+            Point mousePosition = Win32Helper.GetMousePosition();
             _dragService.UpdateMouseLocation(mousePosition);
         }
 
@@ -712,7 +712,7 @@ namespace H.Controls.Dock.Controls
             public FloatingWindowContentHost(LayoutFloatingWindowControl owner)
             {
                 _owner = owner;
-                var binding = new Binding(nameof(SizeToContent)) { Source = _owner };
+                Binding binding = new Binding(nameof(SizeToContent)) { Source = _owner };
                 BindingOperations.SetBinding(this, SizeToContentProperty, binding);
             }
 

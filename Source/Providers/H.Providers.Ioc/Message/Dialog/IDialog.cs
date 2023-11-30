@@ -2,7 +2,7 @@
 
 namespace H.Providers.Ioc
 {
-    public interface IDialog : ILayout
+    public interface IDialog : ILayoutable
     {
         Func<bool> CanSumit { get; set; }
         bool IsCancel { get; }

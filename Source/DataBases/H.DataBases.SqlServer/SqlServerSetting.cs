@@ -4,12 +4,11 @@ using System.Data.Entity;
 
 #if NETCOREAPP
 #endif
+using H.DataBases.Share;
+using H.Providers.Ioc;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
-using H.DataBases.Share;
-using H.Extensions.Setting;
-using H.Providers.Ioc;
 
 namespace H.DataBases.SqlServer
 {

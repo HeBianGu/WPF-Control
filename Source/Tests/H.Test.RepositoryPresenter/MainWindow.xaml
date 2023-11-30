@@ -36,12 +36,13 @@
             </RepositoryGrid>
         </TabItem>
         <TabItem Header="RepositoryBox">
-            <RepositoryBox Type="{x:Type local:mbc_dv_image}"
+            <RepositoryBox h:Cattach.ItemHeight="Auto"
+                           Type="{x:Type local:mbc_dv_image}"
                            UseCheckAll="True"
                            UseDeleteChecked="True"
                            UseExport="True"
                            UseNextPage="True"
-                           UsePreviousPage="True" h:Cattach.ItemHeight="Auto"
+                           UsePreviousPage="True"
                            UseSave="True"
                            UseView="True">
                 <ItemsControl.ItemTemplate>
@@ -53,7 +54,7 @@
                 </ItemsControl.ItemTemplate>
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <UniformGrid Columns="4" VerticalAlignment="Top"/>
+                        <UniformGrid VerticalAlignment="Top" Columns="4" />
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
             </RepositoryBox>

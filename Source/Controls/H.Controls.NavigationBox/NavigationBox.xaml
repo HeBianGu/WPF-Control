@@ -11,11 +11,11 @@
         <Setter Property="ItemContainerStyle">
             <Setter.Value>
                 <Style TargetType="ListBoxItem">
-                    <Setter Property="Height" Value="Auto"/>
+                    <Setter Property="Height" Value="Auto" />
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="ListBoxItem">
-                                <ContentPresenter/>
+                                <ContentPresenter />
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -36,13 +36,17 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:NavigationBox}">
                     <Grid>
-                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" />
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}" />
                         <DockPanel>
                             <ListBox x:Name="PART_NAVIGATION"
                                      ItemTemplate="{TemplateBinding NavigationDataTemplate}"
-                                     ItemsSource="{TemplateBinding NavigationSource}"/>
+                                     ItemsSource="{TemplateBinding NavigationSource}" />
 
-                            <ScrollViewer x:Name="PART_SCROLLVIEWER" Grid.Column="1" Background="Transparent">
+                            <ScrollViewer x:Name="PART_SCROLLVIEWER"
+                                          Grid.Column="1"
+                                          Background="Transparent">
                                 <ItemsPresenter Margin="{TemplateBinding Padding}"
                                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"

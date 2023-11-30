@@ -3,7 +3,6 @@ using H.Extensions.Setting;
 using H.Providers.Ioc;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Xml.Linq;
 
 namespace H.Modules.SplashScreen
 {

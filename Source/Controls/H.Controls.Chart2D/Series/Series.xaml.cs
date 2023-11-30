@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.Windows;
 
@@ -25,7 +25,7 @@ namespace H.Controls.Chart2D
             set { SetValue(LineStyleProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty LineStyleProperty =
             DependencyProperty.Register("LineStyle", typeof(Style), typeof(Series), new PropertyMetadata(default(Style), (d, e) =>
              {
@@ -44,7 +44,7 @@ namespace H.Controls.Chart2D
             set { SetValue(ScatterStyleProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty ScatterStyleProperty =
             DependencyProperty.Register("ScatterStyle", typeof(Style), typeof(Series), new PropertyMetadata(default(Style), (d, e) =>
              {
@@ -64,7 +64,7 @@ namespace H.Controls.Chart2D
             set { SetValue(BarStyleProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty BarStyleProperty =
             DependencyProperty.Register("BarStyle", typeof(Style), typeof(Series), new PropertyMetadata(default(Style), (d, e) =>
              {

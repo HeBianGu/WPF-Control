@@ -1,11 +1,11 @@
-﻿/************************************************************************
-   H.Controls.Dock
+﻿
 
-   Copyright (C) 2007-2013 Xceed Software Inc.
 
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
+
+
+
+
+
 
 using System;
 using System.Linq;
@@ -102,7 +102,7 @@ namespace H.Controls.Dock.Layout
         {
             if (Root?.Manager != null)
             {
-                var dockingManager = Root.Manager;
+                DockingManager dockingManager = Root.Manager;
                 dockingManager.ExecuteCloseCommand(this);
             }
             else
@@ -110,20 +110,20 @@ namespace H.Controls.Dock.Layout
         }
 
 #if TRACE
-		public override void ConsoleDump(int tab)
-		{
-			System.Diagnostics.Trace.Write(new string(' ', tab * 4));
-			System.Diagnostics.Trace.WriteLine("Document()");
-		}
+        public override void ConsoleDump(int tab)
+        {
+            System.Diagnostics.Trace.Write(new string(' ', tab * 4));
+            System.Diagnostics.Trace.WriteLine("Document()");
+        }
 #endif
 
         protected override void InternalDock()
         {
-            var root = Root as LayoutRoot;
+            LayoutRoot root = Root as LayoutRoot;
             LayoutDocumentPane documentPane = null;
             if (root?.LastFocusedDocument != null && root.LastFocusedDocument != this) documentPane = root.LastFocusedDocument.Parent as LayoutDocumentPane;
             if (documentPane == null) documentPane = root.Descendents().OfType<LayoutDocumentPane>().FirstOrDefault();
-            var added = false;
+            bool added = false;
             if (root?.Manager.LayoutUpdateStrategy != null) added = root.Manager.LayoutUpdateStrategy.BeforeInsertDocument(root, this, documentPane);
             if (!added)
             {

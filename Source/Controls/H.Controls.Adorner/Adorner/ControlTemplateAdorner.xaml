@@ -4,8 +4,6 @@
                     xmlns:local="clr-namespace:H.Controls.Adorner">
 
 
-    <Style TargetType="{x:Type local:ControlTemplateAdorner}"> 
-
-    </Style>
+    <Style TargetType="{x:Type local:ControlTemplateAdorner}" />
 
 </ResourceDictionary>

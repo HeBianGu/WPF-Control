@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.Windows;
 using System.Windows.Controls;
@@ -20,7 +20,7 @@ namespace H.Controls.Adorner
         protected override void OnRender(DrawingContext dc)
         {
             Rect rect = new Rect(this.AdornedElement.RenderSize);
-            rect = new Rect(rect.Left - ScaleLen, rect.Top - ScaleLen, rect.Width + 2 * ScaleLen, rect.Height + 2 * ScaleLen);
+            rect = new Rect(rect.Left - ScaleLen, rect.Top - ScaleLen, rect.Width + (2 * ScaleLen), rect.Height + (2 * ScaleLen));
             dc.DrawRectangle(this.Fill, null, rect);
 
             if (Dock == Dock.Left)

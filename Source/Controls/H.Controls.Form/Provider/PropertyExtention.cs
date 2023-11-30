@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections;
@@ -86,7 +86,7 @@ namespace H.Controls.Form
             {
                 MethodInfo ms = obj.GetType().GetMethod(attr.Method);
                 IEnumerable<object> source = ms.Invoke(obj, null) as IEnumerable<object>;
-                if (source == null) 
+                if (source == null)
                     new ObjectPropertyItem<object>(info, obj);
                 return new SelectSourcePropertyItem(info, obj);
             }

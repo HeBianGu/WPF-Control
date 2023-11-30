@@ -1,13 +1,9 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.ComponentModel;
 
 namespace H.Providers.Mvvm
 {
-    public interface ISelectViewModel
-    {
-        bool IsSelected { get; set; }
-    }
 
     public partial class SelectViewModel<T> : ModelViewModel<T>, ISelectViewModel
     {
@@ -18,7 +14,6 @@ namespace H.Providers.Mvvm
 
         private bool _isSelected;
         [Browsable(false)]
-        /// <summary> 是否选中  </summary>
         public bool IsSelected
         {
             get { return _isSelected; }

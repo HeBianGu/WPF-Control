@@ -6,7 +6,7 @@
     <Style TargetType="{x:Type local:ThumbToolBar}">
         <Setter Property="Foreground">
             <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.Accent}}" Opacity="0.5"/>
+                <SolidColorBrush Opacity="0.5" Color="{DynamicResource {x:Static h:ColorKeys.Accent}}" />
             </Setter.Value>
         </Setter>
         <Setter Property="Background" Value="Transparent" />
@@ -14,7 +14,9 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:ThumbToolBar}">
-                    <Border Height="{TemplateBinding Height}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                    <Border Height="{TemplateBinding Height}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
                         <Canvas x:Name="PART_CENTER"
                                 Height="{TemplateBinding Height}"
                                 HorizontalAlignment="Stretch"
@@ -32,9 +34,11 @@
                                                 <ColumnDefinition Width="15" />
                                             </Grid.ColumnDefinitions>
 
-                                            <Border x:Name="border" Grid.ColumnSpan="3" Background="{TemplateBinding Background}" />
+                                            <Border x:Name="border"
+                                                    Grid.ColumnSpan="3"
+                                                    Background="{TemplateBinding Background}" />
 
-                                            
+
                                             <Thumb x:Name="PART_LEFT_THUMB"
                                                    Grid.Column="0"
                                                    Margin="-5,0,0,0"

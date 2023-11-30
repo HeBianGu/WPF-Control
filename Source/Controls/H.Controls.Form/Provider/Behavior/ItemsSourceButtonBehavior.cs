@@ -1,8 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
-
-
-using System;
-using System.Windows;
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 namespace H.Controls.Form
 {
@@ -14,7 +10,7 @@ namespace H.Controls.Form
     //        set { SetValue(TitleProperty, value); }
     //    }
 
-    //    // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+    //    
     //    public static readonly DependencyProperty TitleProperty =
     //        DependencyProperty.Register("Title", typeof(string), typeof(AddItemWithPropertyGridButtonBehavior), new FrameworkPropertyMetadata(default(string), (d, e) =>
     //         {
@@ -55,7 +51,7 @@ namespace H.Controls.Form
     //        set { SetValue(ItemProperty, value); }
     //    }
 
-    //    // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+    //    
     //    public static readonly DependencyProperty ItemProperty =
     //        DependencyProperty.Register("Item", typeof(object), typeof(EditItemWithPropertyGridButtonBehavior), new FrameworkPropertyMetadata(default(object), (d, e) =>
     //         {
@@ -82,7 +78,7 @@ namespace H.Controls.Form
     //        set { SetValue(TitleProperty, value); }
     //    }
 
-    //    // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+    //    
     //    public static readonly DependencyProperty TitleProperty =
     //        DependencyProperty.Register("Title", typeof(string), typeof(EditItemWithPropertyGridButtonBehavior), new FrameworkPropertyMetadata(default(string), (d, e) =>
     //        {
@@ -107,7 +103,7 @@ namespace H.Controls.Form
     //        set { SetValue(UseSaveProperty, value); }
     //    }
 
-    //    // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+    //    
     //    public static readonly DependencyProperty UseSaveProperty =
     //        DependencyProperty.Register("UseSave", typeof(bool), typeof(EditItemWithPropertyGridButtonBehavior), new FrameworkPropertyMetadata(default(bool), (d, e) =>
     //         {
@@ -158,7 +154,7 @@ namespace H.Controls.Form
     //        set { SetValue(ItemProperty, value); }
     //    }
 
-    //    // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+    //    
     //    public static readonly DependencyProperty ItemProperty =
     //        DependencyProperty.Register("Item", typeof(object), typeof(DetialItemWithPropertyGridButtonBehavior), new FrameworkPropertyMetadata(default(object), (d, e) =>
     //        {
@@ -185,7 +181,7 @@ namespace H.Controls.Form
     //        set { SetValue(TitleProperty, value); }
     //    }
 
-    //    // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+    //    
     //    public static readonly DependencyProperty TitleProperty =
     //        DependencyProperty.Register("Title", typeof(string), typeof(DetialItemWithPropertyGridButtonBehavior), new FrameworkPropertyMetadata(default(string), (d, e) =>
     //         {

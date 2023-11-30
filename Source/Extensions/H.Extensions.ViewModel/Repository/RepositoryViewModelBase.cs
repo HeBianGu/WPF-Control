@@ -1,33 +1,24 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
-using H.Providers.Ioc;
 using H.Providers.Ioc;
 using H.Providers.Mvvm;
 using Microsoft.Win32;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 
 namespace H.Extensions.ViewModel
 {
-
     public class RepositoryViewModelBase : NotifyPropertyChanged
     {
 
     }
 
-    /// <summary>
-    /// 直接对接模型的仓储基类
-    /// </summary>
-    /// <typeparam name="TEntity"></typeparam>
     public abstract class RepositoryViewModelBase<TViewModel, TEntity> : RepositoryViewModelBase, IRepositoryViewModelBase<TEntity> where TEntity : StringEntityBase, new() where TViewModel : SelectViewModel<TEntity>
     {
         protected virtual IEnumerable<string> GetIncludes()
@@ -117,7 +108,7 @@ namespace H.Extensions.ViewModel
             if (e is TEntity project)
             {
                 TEntity temp;
-                var r = await s.BeginEditAsync(() =>
+                bool r = await s.BeginEditAsync(() =>
                 {
                     if (project.ModelState(out List<string> message) == false)
                     {
@@ -296,16 +287,16 @@ namespace H.Extensions.ViewModel
         public virtual async Task Export(string path)
         {
             Ioc.GetService<IOperationService>().Log<TEntity>($"导出");
-            var collection = this.Collection.Select(x => x.Model);
+            IEnumerable<TEntity> collection = this.Collection.Select(x => x.Model);
             string message = null;
-            var r = Ioc<IExcelService>.Instance?.Export(collection, path, typeof(TEntity).Name, out message);
+            bool? r = Ioc<IExcelService>.Instance?.Export(collection, path, typeof(TEntity).Name, out message);
             if (r == false)
             {
                 await IocMessage.Dialog.ShowMessage("导出错误," + message);
             }
             else
             {
-                var rs = await IocMessage.Dialog.ShowMessage("导出成功，是否立即查看?", null, DialogButton.SumitAndCancel);
+                bool? rs = await IocMessage.Dialog.ShowMessage("导出成功，是否立即查看?", null, DialogButton.SumitAndCancel);
                 if (rs == true)
                 {
                     //Process.Start("explorer.exe", path);
@@ -341,7 +332,7 @@ namespace H.Extensions.ViewModel
 
         public virtual async Task Add(object obj)
         {
-            var m = new TEntity();
+            TEntity m = new TEntity();
             bool? dialog = await IocMessage.Form.ShowEdit(this.GetAddModel(m), null, null, null, "新增");
             if (dialog != true)
             {
@@ -390,7 +381,7 @@ namespace H.Extensions.ViewModel
             {
                 IocMessage.Snack?.ShowInfo("保存失败，数据库保存错误");
             }
-            Ioc<IOperationService>.Instance?.Log<TEntity>($"编辑", entity.ID,OperationType.Update);
+            Ioc<IOperationService>.Instance?.Log<TEntity>($"编辑", entity.ID, OperationType.Update);
         }
 
         public virtual async Task Delete(object obj)
@@ -401,18 +392,18 @@ namespace H.Extensions.ViewModel
 
             if (this.UseMessage)
             {
-                var result = await IocMessage.Dialog.ShowMessage("确定删除数据？", "提示", DialogButton.SumitAndCancel);
+                bool? result = await IocMessage.Dialog.ShowMessage("确定删除数据？", "提示", DialogButton.SumitAndCancel);
                 if (result != true)
                     return;
             }
 
-            var r = this.Repository == null ? 1 : await this.Repository.DeleteAsync(entity);
+            int r = this.Repository == null ? 1 : await this.Repository.DeleteAsync(entity);
 
             if (r > 0)
             {
                 if (this.UseMessage)
                     IocMessage.Snack?.ShowInfo("删除成功");
-                var m = this.Collection.FirstOrDefault(x => x.Model == entity);
+                TViewModel m = this.Collection.FirstOrDefault(x => x.Model == entity);
                 this.Collection.Remove(m);
                 this.Collection.SelectedItem = this.Collection.FirstOrDefault(x => true);
             }
@@ -420,7 +411,7 @@ namespace H.Extensions.ViewModel
             {
                 IocMessage.Snack?.ShowInfo("删除失败,数据库保存错误");
             }
-            Ioc<IOperationService>.Instance?.Log<TEntity>($"新增", entity.ID,OperationType.Delete);
+            Ioc<IOperationService>.Instance?.Log<TEntity>($"新增", entity.ID, OperationType.Delete);
             this.OnCollectionChanged(obj);
         }
 
@@ -431,11 +422,11 @@ namespace H.Extensions.ViewModel
 
         public virtual async Task Clear(object obj = null)
         {
-            var result = await IocMessage.Dialog.ShowMessage("确定清空数据？", "提示", DialogButton.SumitAndCancel);
+            bool? result = await IocMessage.Dialog.ShowMessage("确定清空数据？", "提示", DialogButton.SumitAndCancel);
             if (result != true)
                 return;
 
-            var r = this.Repository == null ? 1 : await this.Repository.ClearAsync();
+            int r = this.Repository == null ? 1 : await this.Repository.ClearAsync();
             if (r > 0)
             {
                 if (this.UseMessage)
@@ -446,7 +437,7 @@ namespace H.Extensions.ViewModel
             {
                 IocMessage.Snack?.ShowInfo("清空失败,数据库保存错误");
             }
-            Ioc<IOperationService>.Instance?.Log<TEntity>($"清空",null,OperationType.Delete);
+            Ioc<IOperationService>.Instance?.Log<TEntity>($"清空", null, OperationType.Delete);
             this.OnCollectionChanged(obj);
         }
 
@@ -456,13 +447,13 @@ namespace H.Extensions.ViewModel
             if (entity == null)
                 return;
             await IocMessage.Form.ShowView(this.GetViewModel(entity));
-            Ioc<IOperationService>.Instance?.Log<TEntity>($"查看",entity.ID,OperationType.Search);
+            Ioc<IOperationService>.Instance?.Log<TEntity>($"查看", entity.ID, OperationType.Search);
             this.OnCollectionChanged(obj);
         }
 
         public virtual async Task<int> Save()
         {
-            var r = this.Repository == null ? 1 : await this.Repository.SaveAsync();
+            int r = this.Repository == null ? 1 : await this.Repository.SaveAsync();
             if (r > 0)
             {
                 if (this.UseMessage)
@@ -483,12 +474,12 @@ namespace H.Extensions.ViewModel
 
         protected virtual async Task DeleteAllChecked(object obj)
         {
-            var result = await IocMessage.Dialog.ShowMessage("确定删除数据？", "提示", DialogButton.SumitAndCancel);
+            bool? result = await IocMessage.Dialog.ShowMessage("确定删除数据？", "提示", DialogButton.SumitAndCancel);
             if (result != true)
                 return;
 
-            var checks = this.Collection.Where(k => k.IsSelected).Select(x => x.Model)?.ToList();
-            var r = this.Repository == null ? 1 : await this.Repository.DeleteAsync(x => checks.Contains(x));
+            List<TEntity> checks = this.Collection.Where(k => k.IsSelected).Select(x => x.Model)?.ToList();
+            int r = this.Repository == null ? 1 : await this.Repository.DeleteAsync(x => checks.Contains(x));
             if (r > 0)
             {
                 IocMessage.Snack?.ShowInfo($"删除成功,共计{checks.Count()}条");
@@ -498,7 +489,7 @@ namespace H.Extensions.ViewModel
             {
                 IocMessage.Snack?.ShowInfo("删除失败,数据库保存错误");
             }
-            foreach (var item in checks)
+            foreach (TEntity item in checks)
             {
                 Ioc<IOperationService>.Instance?.Log<TEntity>($"删除", item.ID, OperationType.Delete);
             }

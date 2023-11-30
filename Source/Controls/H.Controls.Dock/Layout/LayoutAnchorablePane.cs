@@ -1,11 +1,11 @@
-﻿/************************************************************************
-   H.Controls.Dock
+﻿
 
-   Copyright (C) 2007-2013 Xceed Software Inc.
 
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
+
+
+
+
+
 
 using System;
 using System.Linq;
@@ -124,7 +124,7 @@ namespace H.Controls.Dock.Layout
         protected override void OnChildrenCollectionChanged()
         {
             AutoFixSelectedContent();
-            for (var i = 0; i < Children.Count; i++)
+            for (int i = 0; i < Children.Count; i++)
             {
                 if (!Children[i].IsSelected) continue;
                 SelectedContentIndex = i;
@@ -165,15 +165,15 @@ namespace H.Controls.Dock.Layout
         }
 
 #if TRACE
-		/// <inheritdoc />
-		public override void ConsoleDump(int tab)
-		{
-			System.Diagnostics.Trace.Write(new string(' ', tab * 4));
-			System.Diagnostics.Trace.WriteLine("AnchorablePane()");
+        /// <inheritdoc />
+        public override void ConsoleDump(int tab)
+        {
+            System.Diagnostics.Trace.Write(new string(' ', tab * 4));
+            System.Diagnostics.Trace.WriteLine("AnchorablePane()");
 
-			foreach (LayoutElement child in Children)
-				child.ConsoleDump(tab + 1);
-		}
+            foreach (LayoutElement child in Children)
+                child.ConsoleDump(tab + 1);
+        }
 #endif
 
         #endregion Overrides
@@ -200,7 +200,7 @@ namespace H.Controls.Dock.Layout
         {
             get
             {
-                var parentFloatingWindow = this.FindParent<LayoutAnchorableFloatingWindow>();
+                LayoutAnchorableFloatingWindow parentFloatingWindow = this.FindParent<LayoutAnchorableFloatingWindow>();
                 return parentFloatingWindow != null && parentFloatingWindow.IsSinglePane;
                 //return Parent != null && Parent.ChildrenCount == 1 && Parent.Parent is LayoutFloatingWindow;
             }
@@ -214,7 +214,7 @@ namespace H.Controls.Dock.Layout
         internal void SetNextSelectedIndex()
         {
             SelectedContentIndex = -1;
-            for (var i = 0; i < Children.Count; ++i)
+            for (int i = 0; i < Children.Count; ++i)
             {
                 if (!Children[i].IsEnabled) continue;
                 SelectedContentIndex = i;
@@ -241,7 +241,7 @@ namespace H.Controls.Dock.Layout
         /// <summary>Sets the current <see cref="SelectedContentIndex"/> to the last activated child with IsEnabled == true</summary>
         private void SetLastActivatedIndex()
         {
-            var lastActivatedDocument = Children.Where(c => c.IsEnabled).OrderByDescending(c => c.LastActivationTimeStamp.GetValueOrDefault()).FirstOrDefault();
+            LayoutAnchorable lastActivatedDocument = Children.Where(c => c.IsEnabled).OrderByDescending(c => c.LastActivationTimeStamp.GetValueOrDefault()).FirstOrDefault();
             SelectedContentIndex = Children.IndexOf(lastActivatedDocument);
         }
 

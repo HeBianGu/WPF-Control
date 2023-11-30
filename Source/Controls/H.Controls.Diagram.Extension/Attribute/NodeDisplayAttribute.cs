@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace H.Controls.Diagram.Extension
+﻿namespace H.Controls.Diagram.Extension
 {
     //[System.AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
     //public class NodeDisplayAttribute : Attribute

@@ -1,9 +1,8 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Reflection;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace H.Providers.Ioc
 {
@@ -46,5 +45,4 @@ namespace H.Providers.Ioc
         HorizontalAlignment HorizontalAlignment { get; set; }
         VerticalAlignment VerticalAlignment { get; set; }
     }
-
 }

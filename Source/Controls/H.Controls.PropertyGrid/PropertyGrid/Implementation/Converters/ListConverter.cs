@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections;
@@ -18,7 +18,7 @@ namespace H.Controls.PropertyGrid
 
         public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
         {
-            return (destinationType == typeof(string));
+            return destinationType == typeof(string);
         }
 
         public override object ConvertFrom(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value)
@@ -28,7 +28,7 @@ namespace H.Controls.PropertyGrid
 
             string names = value as string;
 
-            var list = new List<object>();
+            List<object> list = new List<object>();
             if (names == null && value != null)
             {
                 list.Add(value);
@@ -38,7 +38,7 @@ namespace H.Controls.PropertyGrid
                 if (names == null)
                     return null;
 
-                foreach (var name in names.Split(','))
+                foreach (string name in names.Split(','))
                 {
                     list.Add(name.Trim());
                 }

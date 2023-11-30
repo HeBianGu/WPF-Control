@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using H.Providers.Ioc;
 using System.Reflection;
@@ -24,7 +24,7 @@ namespace H.Controls.FilterBox
         public override bool IsMatch(object obj)
         {
             PropertyInfo p = obj.GetType().GetProperty(this.Name);
-            if (p == null || !p.CanRead) 
+            if (p == null || !p.CanRead)
                 return false;
             bool v = (bool)p.GetValue(obj);
             return v == this.Value;

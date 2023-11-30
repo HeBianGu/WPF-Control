@@ -4,7 +4,6 @@ using log4net;
 using log4net.Appender;
 using Microsoft.Extensions.Options;
 using System;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.IO;
@@ -19,7 +18,7 @@ namespace H.Extensions.Log4net
         public Log4netService(IOptions<Log4netOptions> options)
         {
             this._options = options;
-            var process = Process.GetCurrentProcess().ProcessName;
+            string process = Process.GetCurrentProcess().ProcessName;
             this.InitLogger(process);
         }
 
@@ -55,7 +54,7 @@ namespace H.Extensions.Log4net
             InitLogPath(this._options.Value.LogPath);
         }
 
-        ILog Logger = null;
+        private ILog Logger = null;
         private void InitLogPath(string repository)
         {
             RollingFileAppender appender = new RollingFileAppender();
@@ -72,7 +71,7 @@ namespace H.Extensions.Log4net
             log4net.Config.BasicConfigurator.Configure(appender);
         }
 
-        void ReplaceFileTag(string logconfig)
+        private void ReplaceFileTag(string logconfig)
         {
             try
             {
@@ -98,7 +97,7 @@ namespace H.Extensions.Log4net
 
         public virtual void Debug(params string[] messages)
         {
-            foreach (var item in messages)
+            foreach (string item in messages)
             {
                 this.Logger.Debug(item);
             }
@@ -106,7 +105,7 @@ namespace H.Extensions.Log4net
 
         public virtual void Error(params string[] messages)
         {
-            foreach (var item in messages)
+            foreach (string item in messages)
             {
                 this.Logger.Error(item);
             }
@@ -114,7 +113,7 @@ namespace H.Extensions.Log4net
 
         public virtual void Fatal(params string[] messages)
         {
-            foreach (var item in messages)
+            foreach (string item in messages)
             {
                 this.Logger.Fatal(item);
             }
@@ -122,7 +121,7 @@ namespace H.Extensions.Log4net
 
         public virtual void Fatal(params Exception[] messages)
         {
-            foreach (var item in messages)
+            foreach (Exception item in messages)
             {
                 this.Logger.Fatal(item.Message, item);
             }
@@ -130,7 +129,7 @@ namespace H.Extensions.Log4net
 
         public virtual void Trace(params string[] messages)
         {
-            foreach (var item in messages)
+            foreach (string item in messages)
             {
                 this.Logger.Debug(item);
             }
@@ -138,7 +137,7 @@ namespace H.Extensions.Log4net
 
         public virtual void Warn(params string[] messages)
         {
-            foreach (var item in messages)
+            foreach (string item in messages)
             {
                 this.Logger.Warn(item);
             }
@@ -146,7 +145,7 @@ namespace H.Extensions.Log4net
 
         public virtual void Error(params Exception[] messages)
         {
-            foreach (var item in messages)
+            foreach (Exception item in messages)
             {
                 this.Logger.Error(item);
             }
@@ -154,7 +153,7 @@ namespace H.Extensions.Log4net
 
         public virtual void Info(params string[] messages)
         {
-            foreach (var item in messages)
+            foreach (string item in messages)
             {
                 this.Logger.Info(item);
             }

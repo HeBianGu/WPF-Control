@@ -10,13 +10,13 @@ namespace H.Providers.Ioc
         {
             if (!File.Exists(this.GetFilePath(typeof(T).Name, id)))
                 return default;
-            var txt = File.ReadAllText(this.GetFilePath(typeof(T).Name, id));
+            string txt = File.ReadAllText(this.GetFilePath(typeof(T).Name, id));
             return (T)JsonSerializer.Deserialize(txt, typeof(T));
         }
 
         public void Serilize(object setting, string id)
         {
-            var txt = JsonSerializer.Serialize(setting);
+            string txt = JsonSerializer.Serialize(setting);
             File.WriteAllText(this.GetFilePath(setting.GetType().Name, id), txt);
         }
     }

@@ -1,11 +1,3 @@
-/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
 
 using System;
 using System.Linq;
@@ -60,19 +52,19 @@ namespace H.Controls.Dock.Layout.Serialization
 
         protected virtual void FixupLayout(LayoutRoot layout)
         {
-            foreach (var element in layout.Descendents().OfType<LayoutElement>()) element.FixCachedRootOnDeserialize();
+            foreach (LayoutElement element in layout.Descendents().OfType<LayoutElement>()) element.FixCachedRootOnDeserialize();
 
             //fix container panes
-            foreach (var lcToAttach in layout.Descendents().OfType<ILayoutPreviousContainer>().Where(lc => lc.PreviousContainerId != null))
+            foreach (ILayoutPreviousContainer lcToAttach in layout.Descendents().OfType<ILayoutPreviousContainer>().Where(lc => lc.PreviousContainerId != null))
             {
-                var paneContainerToAttach = layout.Descendents().OfType<ILayoutPaneSerializable>().FirstOrDefault(lps => lps.Id == lcToAttach.PreviousContainerId);
+                ILayoutPaneSerializable paneContainerToAttach = layout.Descendents().OfType<ILayoutPaneSerializable>().FirstOrDefault(lps => lps.Id == lcToAttach.PreviousContainerId);
                 if (paneContainerToAttach == null)
                     throw new ArgumentException($"Unable to find a pane with id ='{lcToAttach.PreviousContainerId}'");
                 lcToAttach.PreviousContainer = paneContainerToAttach as ILayoutContainer;
             }
 
             //now fix the content of the layout anchorable contents
-            foreach (var lcToFix in layout.Descendents().OfType<LayoutAnchorable>().Where(lc => lc.Content == null).ToArray())
+            foreach (LayoutAnchorable lcToFix in layout.Descendents().OfType<LayoutAnchorable>().Where(lc => lc.Content == null).ToArray())
             {
                 LayoutAnchorable previousAchorable = null;            //try find the content in replaced layout
                 if (lcToFix.ContentId != null)
@@ -84,7 +76,7 @@ namespace H.Controls.Dock.Layout.Serialization
                 if (LayoutSerializationCallback != null)
                 {
                     // Ask client application via callback if item should be deserialized
-                    var args = new LayoutSerializationCallbackEventArgs(lcToFix, previousAchorable?.Content);
+                    LayoutSerializationCallbackEventArgs args = new LayoutSerializationCallbackEventArgs(lcToFix, previousAchorable?.Content);
                     LayoutSerializationCallback(this, args);
                     if (args.Cancel)
                         lcToFix.Close();
@@ -103,7 +95,7 @@ namespace H.Controls.Dock.Layout.Serialization
             }
 
             //now fix the content of the layout document contents
-            foreach (var lcToFix in layout.Descendents().OfType<LayoutDocument>().Where(lc => lc.Content == null).ToArray())
+            foreach (LayoutDocument lcToFix in layout.Descendents().OfType<LayoutDocument>().Where(lc => lc.Content == null).ToArray())
             {
                 LayoutDocument previousDocument = null;               //try find the content in replaced layout
                 if (lcToFix.ContentId != null)
@@ -112,7 +104,7 @@ namespace H.Controls.Dock.Layout.Serialization
                 if (LayoutSerializationCallback != null)
                 {
                     // Ask client application via callback if this realy should be deserialized
-                    var args = new LayoutSerializationCallbackEventArgs(lcToFix, previousDocument?.Content);
+                    LayoutSerializationCallbackEventArgs args = new LayoutSerializationCallbackEventArgs(lcToFix, previousDocument?.Content);
                     LayoutSerializationCallback(this, args);
 
                     if (args.Cancel)

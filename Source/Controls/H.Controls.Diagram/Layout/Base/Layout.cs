@@ -1,7 +1,6 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -27,7 +26,7 @@ namespace H.Controls.Diagram
 
         public virtual void UpdateNode(params Node[] nodes)
         {
-            foreach (var node in nodes)
+            foreach (Node node in nodes)
             {
                 this.DoLayoutNode(node);
                 this.DoLayoutPort(node);
@@ -65,10 +64,10 @@ namespace H.Controls.Diagram
 
                 port.Measure();
 
-                Node.SetPosition(port, new Point(0, height_left_span * (i + 1) - port.DesiredSize.Height / 2));
+                Node.SetPosition(port, new Point(0, (height_left_span * (i + 1)) - (port.DesiredSize.Height / 2)));
 
                 //  Do ：设置范围
-                Point port_point = new Point(point.X - node.DesiredSize.Width / 2.0 + port.DesiredSize.Width / 2, point.Y - (node.DesiredSize.Height / 2.0) + height_left_span * (i + 1));
+                Point port_point = new Point(point.X - (node.DesiredSize.Width / 2.0) + (port.DesiredSize.Width / 2), point.Y - (node.DesiredSize.Height / 2.0) + (height_left_span * (i + 1)));
 
                 port.MeasureBound(port_point);
 
@@ -92,10 +91,10 @@ namespace H.Controls.Diagram
 
                 port.Measure();
 
-                Node.SetPosition(port, new Point(node.DesiredSize.Width - port.DesiredSize.Width, height_right_span * (i + 1) - port.DesiredSize.Height / 2));
+                Node.SetPosition(port, new Point(node.DesiredSize.Width - port.DesiredSize.Width, (height_right_span * (i + 1)) - (port.DesiredSize.Height / 2)));
 
                 //  Do ：设置范围
-                Point port_point = new Point(point.X + node.DesiredSize.Width / 2.0 - +port.DesiredSize.Width / 2, point.Y - (node.DesiredSize.Height / 2.0) + height_right_span * (i + 1));
+                Point port_point = new Point(point.X + (node.DesiredSize.Width / 2.0) - (+port.DesiredSize.Width / 2), point.Y - (node.DesiredSize.Height / 2.0) + (height_right_span * (i + 1)));
 
                 port.MeasureBound(port_point);
 
@@ -119,11 +118,11 @@ namespace H.Controls.Diagram
 
                 port.Measure();
 
-                Node.SetPosition(port, new Point(height_top_span * (i + 1) - port.DesiredSize.Width / 2, 0));
+                Node.SetPosition(port, new Point((height_top_span * (i + 1)) - (port.DesiredSize.Width / 2), 0));
 
 
                 //  Do ：设置范围
-                Point port_point = new Point(point.X - (node.DesiredSize.Width / 2.0) + height_top_span * (i + 1), point.Y - node.DesiredSize.Height / 2.0 + port.DesiredSize.Height / 2);
+                Point port_point = new Point(point.X - (node.DesiredSize.Width / 2.0) + (height_top_span * (i + 1)), point.Y - (node.DesiredSize.Height / 2.0) + (port.DesiredSize.Height / 2));
 
                 port.MeasureBound(port_point);
 
@@ -147,10 +146,10 @@ namespace H.Controls.Diagram
 
                 port.Measure();
 
-                Node.SetPosition(port, new Point(height_bottom_span * (i + 1) - port.DesiredSize.Width / 2, node.DesiredSize.Height - port.DesiredSize.Height));
+                Node.SetPosition(port, new Point((height_bottom_span * (i + 1)) - (port.DesiredSize.Width / 2), node.DesiredSize.Height - port.DesiredSize.Height));
 
                 //  Do ：设置范围
-                Point port_point = new Point(point.X - (node.DesiredSize.Width / 2.0) + height_bottom_span * (i + 1), point.Y + node.DesiredSize.Height / 2.0 - port.DesiredSize.Height / 2);
+                Point port_point = new Point(point.X - (node.DesiredSize.Width / 2.0) + (height_bottom_span * (i + 1)), point.Y + (node.DesiredSize.Height / 2.0) - (port.DesiredSize.Height / 2));
 
                 port.MeasureBound(port_point);
 
@@ -181,9 +180,9 @@ namespace H.Controls.Diagram
             //    this.DoLayoutLink(link);
             //}
 
-            var links = node.GetAllLinks();
+            IEnumerable<Link> links = node.GetAllLinks();
 
-            foreach (var item in links)
+            foreach (Link item in links)
             {
                 this.DoLayoutLink(item);
             }
@@ -201,7 +200,7 @@ namespace H.Controls.Diagram
                 //to = NodeLayer.GetPosition(link.ToPort);
                 Point point = NodeLayer.GetPosition(link.ToPort);
                 Thickness thickness = link.ToPort.Margin;
-                to = new Point(point.X + (thickness.Left - thickness.Right) / 2, point.Y + (thickness.Top - thickness.Bottom) / 2);
+                to = new Point(point.X + ((thickness.Left - thickness.Right) / 2), point.Y + ((thickness.Top - thickness.Bottom) / 2));
             }
 
             if (link.FromPort != null)
@@ -209,7 +208,7 @@ namespace H.Controls.Diagram
                 //from = NodeLayer.GetPosition(link.FromPort);
                 Point point = NodeLayer.GetPosition(link.FromPort);
                 Thickness thickness = link.FromPort.Margin;
-                from = new Point(point.X + (thickness.Left - thickness.Right) / 2, point.Y + (thickness.Top - thickness.Bottom) / 2);
+                from = new Point(point.X + ((thickness.Left - thickness.Right) / 2), point.Y + ((thickness.Top - thickness.Bottom) / 2));
             }
 
 

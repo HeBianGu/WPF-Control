@@ -3,9 +3,6 @@
 using H.Controls.Diagram.Extension;
 using System.ComponentModel.DataAnnotations;
 using System.Windows.Media;
-using System.Xml;
-using System.Xml.Schema;
-using System.Xml.Serialization;
 
 namespace H.Controls.Diagram.Extensions.Workflow
 {

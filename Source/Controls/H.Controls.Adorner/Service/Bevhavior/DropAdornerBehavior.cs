@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 using Microsoft.Xaml.Behaviors;
@@ -20,7 +20,7 @@ namespace H.Controls.Adorner
             set { SetValue(DragGroupProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty DragGroupProperty =
             DependencyProperty.Register("DragGroup", typeof(string), typeof(DropAdornerBehavior<T>), new PropertyMetadata("DragGroup", (d, e) =>
             {

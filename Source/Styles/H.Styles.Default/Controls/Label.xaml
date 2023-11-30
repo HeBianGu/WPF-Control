@@ -5,9 +5,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Label.Default,
-                                        TypeInTargetAssembly={x:Type local:LabelKeys}}"
-           TargetType="Label">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Label.Default, TypeInTargetAssembly={x:Type local:LabelKeys}}" TargetType="Label">
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Top" />
         <Setter Property="Foreground">
@@ -36,7 +34,6 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style BasedOn="{StaticResource {x:Static local:LabelKeys.Default}}"
-           TargetType="Label" />
+    <Style BasedOn="{StaticResource {x:Static local:LabelKeys.Default}}" TargetType="Label" />
 
 </ResourceDictionary>

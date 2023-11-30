@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 using System;
@@ -28,7 +28,7 @@ namespace H.Controls.Chart2D
             set { SetValue(WidthPercentProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty WidthPercentProperty =
             DependencyProperty.Register("WidthPercent", typeof(double), typeof(BarBase), new PropertyMetadata(0.8, (d, e) =>
             {
@@ -49,7 +49,7 @@ namespace H.Controls.Chart2D
             set { SetValue(ItemPercentProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty ItemPercentProperty =
             DependencyProperty.Register("ItemPercent", typeof(double), typeof(BarBase), new PropertyMetadata(1.0, (d, e) =>
             {
@@ -69,7 +69,7 @@ namespace H.Controls.Chart2D
             set { SetValue(MulCountProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty MulCountProperty =
             DependencyProperty.Register("MulCount", typeof(int), typeof(BarBase), new PropertyMetadata(1, (d, e) =>
             {
@@ -90,7 +90,7 @@ namespace H.Controls.Chart2D
             set { SetValue(MulIndexProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty MulIndexProperty =
             DependencyProperty.Register("MulIndex", typeof(int), typeof(BarBase), new PropertyMetadata(0, (d, e) =>
             {
@@ -122,9 +122,9 @@ namespace H.Controls.Chart2D
 
             double span = (this.maxX - this.minX) / this.xAxis.Count;
 
-            this.maxX = this.maxX + span / 2;
+            this.maxX = this.maxX + (span / 2);
 
-            this.minX = this.minX - span / 2;
+            this.minX = this.minX - (span / 2);
         }
 
         public override void Draw(Canvas canvas)
@@ -148,13 +148,13 @@ namespace H.Controls.Chart2D
                 PolyLineSegment area = new PolyLineSegment();
 
                 //  Do ：添加曲线
-                area.Points.Add(new Point(this.GetX((x - itemWidth / 2) + this.MulIndex * itemWidth / this.MulCount, this.ActualWidth), this.GetY(this.minY, this.ActualHeight)));
+                area.Points.Add(new Point(this.GetX(x - (itemWidth / 2) + (this.MulIndex * itemWidth / this.MulCount), this.ActualWidth), this.GetY(this.minY, this.ActualHeight)));
 
-                area.Points.Add(new Point(this.GetX((x - itemWidth / 2) + this.MulIndex * itemWidth / this.MulCount, this.ActualWidth), this.GetY(y, this.ActualHeight)));
+                area.Points.Add(new Point(this.GetX(x - (itemWidth / 2) + (this.MulIndex * itemWidth / this.MulCount), this.ActualWidth), this.GetY(y, this.ActualHeight)));
 
-                area.Points.Add(new Point(this.GetX((x - itemWidth / 2) + ((this.MulIndex + 1) * itemWidth / this.MulCount) * this.ItemPercent, this.ActualWidth), this.GetY(y, this.ActualHeight)));
+                area.Points.Add(new Point(this.GetX(x - (itemWidth / 2) + ((this.MulIndex + 1) * itemWidth / this.MulCount * this.ItemPercent), this.ActualWidth), this.GetY(y, this.ActualHeight)));
 
-                area.Points.Add(new Point(this.GetX((x - itemWidth / 2) + ((this.MulIndex + 1) * itemWidth / this.MulCount) * this.ItemPercent, this.ActualWidth), this.GetY(this.minY, this.ActualHeight)));
+                area.Points.Add(new Point(this.GetX(x - (itemWidth / 2) + ((this.MulIndex + 1) * itemWidth / this.MulCount * this.ItemPercent), this.ActualWidth), this.GetY(this.minY, this.ActualHeight)));
 
                 area.Points.Add(area.Points.FirstOrDefault());
 
@@ -187,7 +187,7 @@ namespace H.Controls.Chart2D
             set { SetValue(DataProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static new readonly DependencyProperty DataProperty =
             DependencyProperty.Register("Data", typeof(ObservableCollection<double[]>), typeof(StackBarBase), new PropertyMetadata(new ObservableCollection<double[]>(), (d, e) =>
             {
@@ -216,7 +216,7 @@ namespace H.Controls.Chart2D
             set { SetValue(ForegroundProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static new readonly DependencyProperty ForegroundProperty =
             DependencyProperty.Register("Foreground", typeof(ObservableCollection<Color>), typeof(StackBarBase), new PropertyMetadata(new ObservableCollection<Color>(), (d, e) =>
             {
@@ -245,9 +245,9 @@ namespace H.Controls.Chart2D
 
             double span = (this.maxX - this.minX) / this.xAxis.Count;
 
-            this.maxX = this.maxX + span / 2;
+            this.maxX = this.maxX + (span / 2);
 
-            this.minX = this.minX - span / 2;
+            this.minX = this.minX - (span / 2);
         }
 
         public override void Draw(Canvas canvas)
@@ -287,13 +287,13 @@ namespace H.Controls.Chart2D
                     PolyLineSegment area = new PolyLineSegment();
 
                     //  Do ：添加曲线
-                    area.Points.Add(new Point(this.GetX((x - itemWidth / 2) + this.MulIndex * itemWidth / this.MulCount, this.ActualWidth), this.GetY(start, this.ActualHeight)));
+                    area.Points.Add(new Point(this.GetX(x - (itemWidth / 2) + (this.MulIndex * itemWidth / this.MulCount), this.ActualWidth), this.GetY(start, this.ActualHeight)));
 
-                    area.Points.Add(new Point(this.GetX((x - itemWidth / 2) + this.MulIndex * itemWidth / this.MulCount, this.ActualWidth), this.GetY(y, this.ActualHeight)));
+                    area.Points.Add(new Point(this.GetX(x - (itemWidth / 2) + (this.MulIndex * itemWidth / this.MulCount), this.ActualWidth), this.GetY(y, this.ActualHeight)));
 
-                    area.Points.Add(new Point(this.GetX((x - itemWidth / 2) + ((this.MulIndex + 1) * itemWidth / this.MulCount) * this.ItemPercent, this.ActualWidth), this.GetY(y, this.ActualHeight)));
+                    area.Points.Add(new Point(this.GetX(x - (itemWidth / 2) + ((this.MulIndex + 1) * itemWidth / this.MulCount * this.ItemPercent), this.ActualWidth), this.GetY(y, this.ActualHeight)));
 
-                    area.Points.Add(new Point(this.GetX((x - itemWidth / 2) + ((this.MulIndex + 1) * itemWidth / this.MulCount) * this.ItemPercent, this.ActualWidth), this.GetY(start, this.ActualHeight)));
+                    area.Points.Add(new Point(this.GetX(x - (itemWidth / 2) + ((this.MulIndex + 1) * itemWidth / this.MulCount * this.ItemPercent), this.ActualWidth), this.GetY(start, this.ActualHeight)));
 
                     area.Points.Add(area.Points.FirstOrDefault());
 
@@ -332,9 +332,9 @@ namespace H.Controls.Chart2D
 
             double span = (this.maxY - this.minY) / this.yAxis.Count;
 
-            this.maxY = this.maxY + span / 2;
+            this.maxY = this.maxY + (span / 2);
 
-            this.minY = this.minY - span / 2;
+            this.minY = this.minY - (span / 2);
         }
 
         public override void Draw(Canvas canvas)
@@ -358,13 +358,13 @@ namespace H.Controls.Chart2D
                 PolyLineSegment area = new PolyLineSegment();
 
                 //  Do ：添加曲线
-                area.Points.Add(new Point(this.GetX(this.minX), this.GetY((x - itemWidth / 2) + this.MulIndex * itemWidth / this.MulCount)));
+                area.Points.Add(new Point(this.GetX(this.minX), this.GetY(x - (itemWidth / 2) + (this.MulIndex * itemWidth / this.MulCount))));
 
-                area.Points.Add(new Point(this.GetX(d), this.GetY((x - itemWidth / 2) + this.MulIndex * itemWidth / this.MulCount)));
+                area.Points.Add(new Point(this.GetX(d), this.GetY(x - (itemWidth / 2) + (this.MulIndex * itemWidth / this.MulCount))));
 
-                area.Points.Add(new Point(this.GetX(d), this.GetY((x - itemWidth / 2) + ((this.MulIndex + 1) * itemWidth / this.MulCount) * this.ItemPercent)));
+                area.Points.Add(new Point(this.GetX(d), this.GetY(x - (itemWidth / 2) + ((this.MulIndex + 1) * itemWidth / this.MulCount * this.ItemPercent))));
 
-                area.Points.Add(new Point(this.GetX(this.minX), this.GetY((x - itemWidth / 2) + ((this.MulIndex + 1) * itemWidth / this.MulCount) * this.ItemPercent)));
+                area.Points.Add(new Point(this.GetX(this.minX), this.GetY(x - (itemWidth / 2) + ((this.MulIndex + 1) * itemWidth / this.MulCount * this.ItemPercent))));
 
                 area.Points.Add(area.Points.FirstOrDefault());
 
@@ -398,9 +398,9 @@ namespace H.Controls.Chart2D
 
             double span = (this.maxY - this.minY) / this.yAxis.Count;
 
-            this.maxY = this.maxY + span / 2;
+            this.maxY = this.maxY + (span / 2);
 
-            this.minY = this.minY - span / 2;
+            this.minY = this.minY - (span / 2);
         }
 
         public override void Draw(Canvas canvas)
@@ -436,13 +436,13 @@ namespace H.Controls.Chart2D
                     PolyLineSegment area = new PolyLineSegment();
 
                     //  Do ：添加曲线
-                    area.Points.Add(new Point(this.GetX(start), this.GetY((x - itemWidth / 2) + this.MulIndex * itemWidth / this.MulCount)));
+                    area.Points.Add(new Point(this.GetX(start), this.GetY(x - (itemWidth / 2) + (this.MulIndex * itemWidth / this.MulCount))));
 
-                    area.Points.Add(new Point(this.GetX(d), this.GetY((x - itemWidth / 2) + this.MulIndex * itemWidth / this.MulCount)));
+                    area.Points.Add(new Point(this.GetX(d), this.GetY(x - (itemWidth / 2) + (this.MulIndex * itemWidth / this.MulCount))));
 
-                    area.Points.Add(new Point(this.GetX(d), this.GetY((x - itemWidth / 2) + ((this.MulIndex + 1) * itemWidth / this.MulCount) * this.ItemPercent)));
+                    area.Points.Add(new Point(this.GetX(d), this.GetY(x - (itemWidth / 2) + ((this.MulIndex + 1) * itemWidth / this.MulCount * this.ItemPercent))));
 
-                    area.Points.Add(new Point(this.GetX(start), this.GetY((x - itemWidth / 2) + ((this.MulIndex + 1) * itemWidth / this.MulCount) * this.ItemPercent)));
+                    area.Points.Add(new Point(this.GetX(start), this.GetY(x - (itemWidth / 2) + ((this.MulIndex + 1) * itemWidth / this.MulCount * this.ItemPercent))));
 
                     area.Points.Add(area.Points.FirstOrDefault());
 
@@ -479,7 +479,7 @@ namespace H.Controls.Chart2D
             set { SetValue(AnimationDataDataProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty AnimationDataDataProperty =
             DependencyProperty.Register("AnimationData", typeof(DoubleCollection), typeof(yAnimationBar), new PropertyMetadata(default(DoubleCollection), (d, e) =>
              {
@@ -499,7 +499,7 @@ namespace H.Controls.Chart2D
             set { SetValue(DurationProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty DurationProperty =
             DependencyProperty.Register("Duration", typeof(double), typeof(yAnimationBar), new PropertyMetadata(500.0, (d, e) =>
              {
@@ -515,8 +515,8 @@ namespace H.Controls.Chart2D
         {
             base.InitY();
             double span = (this.maxY - this.minY) / this.yAxis.Count;
-            this.maxY = this.maxY + span / 2;
-            this.minY = this.minY - span / 2;
+            this.maxY = this.maxY + (span / 2);
+            this.minY = this.minY - (span / 2);
         }
 
         public override void Draw(Canvas canvas)
@@ -551,13 +551,13 @@ namespace H.Controls.Chart2D
                 //area.Points.Add(new Point(this.GetX(this.minX), this.GetY((x - itemWidth / 2) + ((this.MulIndex + 1) * itemWidth / this.MulCount) * this.ItemPercent)));
 
 
-                area.Points.Add(new Point(this.GetX(this.minX), this.GetY((x - itemWidth / 2) + this.MulIndex * itemWidth / this.MulCount)));
+                area.Points.Add(new Point(this.GetX(this.minX), this.GetY(x - (itemWidth / 2) + (this.MulIndex * itemWidth / this.MulCount))));
 
-                area.Points.Add(new Point(this.GetX(this.maxX), this.GetY((x - itemWidth / 2) + this.MulIndex * itemWidth / this.MulCount)));
+                area.Points.Add(new Point(this.GetX(this.maxX), this.GetY(x - (itemWidth / 2) + (this.MulIndex * itemWidth / this.MulCount))));
 
-                area.Points.Add(new Point(this.GetX(this.maxX), this.GetY((x - itemWidth / 2) + ((this.MulIndex + 1) * itemWidth / this.MulCount) * this.ItemPercent)));
+                area.Points.Add(new Point(this.GetX(this.maxX), this.GetY(x - (itemWidth / 2) + ((this.MulIndex + 1) * itemWidth / this.MulCount * this.ItemPercent))));
 
-                area.Points.Add(new Point(this.GetX(this.minX), this.GetY((x - itemWidth / 2) + ((this.MulIndex + 1) * itemWidth / this.MulCount) * this.ItemPercent)));
+                area.Points.Add(new Point(this.GetX(this.minX), this.GetY(x - (itemWidth / 2) + ((this.MulIndex + 1) * itemWidth / this.MulCount * this.ItemPercent))));
 
                 area.Points.Add(area.Points.FirstOrDefault());
 
@@ -619,7 +619,7 @@ namespace H.Controls.Chart2D
 
                 FrameworkElement panel = this.Children[i] as FrameworkElement;
 
-                Point end = new Point(this.GetX(this.minX), this.GetY(this.yAxis[index]) - panel.ActualHeight / 2);
+                Point end = new Point(this.GetX(this.minX), this.GetY(this.yAxis[index]) - (panel.ActualHeight / 2));
 
                 if (panel.CheckDefaultTransformGroup())
                 {

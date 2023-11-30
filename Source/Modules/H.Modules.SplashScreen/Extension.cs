@@ -2,18 +2,13 @@
 using H.Providers.Ioc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.Extensions.Options;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace System
 {
     public static class Extension
     {
-        public static  IServiceCollection AddSplashScreen(this IServiceCollection services, Action<SplashScreenOption> setupAction = null)
+        public static IServiceCollection AddSplashScreen(this IServiceCollection services, Action<SplashScreenOption> setupAction = null)
         {
             services.AddOptions();
             services.TryAdd(ServiceDescriptor.Singleton<ISplashScreenViewPresenter, SplashScreenViewPresenter>());

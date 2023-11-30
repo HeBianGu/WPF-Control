@@ -1,11 +1,11 @@
-﻿/************************************************************************
-   H.Controls.Dock
+﻿
 
-   Copyright (C) 2007-2013 Xceed Software Inc.
 
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
+
+
+
+
+
 
 using System;
 using System.ComponentModel;
@@ -70,8 +70,8 @@ namespace H.Controls.Dock.Layout
             set
             {
                 if (_parent == value) return;
-                var oldValue = _parent;
-                var oldRoot = _root;
+                ILayoutContainer oldValue = _parent;
+                ILayoutRoot oldRoot = _root;
                 RaisePropertyChanging(nameof(Parent));
                 OnParentChanging(oldValue, value);
                 _parent = value;
@@ -89,7 +89,7 @@ namespace H.Controls.Dock.Layout
         {
             get
             {
-                var parent = Parent;
+                ILayoutContainer parent = Parent;
                 while (parent != null && (!(parent is ILayoutRoot))) parent = parent.Parent;
                 return parent as ILayoutRoot;
             }
@@ -100,11 +100,11 @@ namespace H.Controls.Dock.Layout
         #region Public Methods
 
 #if TRACE
-		public virtual void ConsoleDump(int tab)
-		{
-			System.Diagnostics.Trace.Write(new String(' ', tab * 4));
-			System.Diagnostics.Trace.WriteLine(this.ToString());
-		}
+        public virtual void ConsoleDump(int tab)
+        {
+            System.Diagnostics.Trace.Write(new String(' ', tab * 4));
+            System.Diagnostics.Trace.WriteLine(this.ToString());
+        }
 #endif
 
         #endregion Public Methods

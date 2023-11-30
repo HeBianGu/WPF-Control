@@ -14,7 +14,7 @@ namespace H.Controls.Diagram.Extension
             set { SetValue(NodeTypeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty NodeTypeProperty =
             DependencyProperty.Register("NodeType", typeof(Type), typeof(DiagramDropTextNodeBehavior), new FrameworkPropertyMetadata(typeof(Node), (d, e) =>
              {
@@ -39,7 +39,7 @@ namespace H.Controls.Diagram.Extension
         {
             ISystemNodeData componentNode = nodeData as ISystemNodeData;
             Node node = Activator.CreateInstance(this.NodeType) as Node;
-            foreach (var p in componentNode.PortDatas)
+            foreach (IPortData p in componentNode.PortDatas)
             {
                 Port port = Port.Create(node);
                 port.Dock = p.Dock;

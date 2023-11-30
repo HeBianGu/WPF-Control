@@ -68,7 +68,8 @@
                                       Margin="5"
                                       IsHitTestVisible="False">
                                     <Path x:Name="Arrow"
-                                          Width="9" Height="5"
+                                          Width="9"
+                                          Height="5"
                                           Margin="0,1,0,0"
                                           Data="{StaticResource DownArrowGeometry}"
                                           Fill="#FF000000" />
@@ -146,7 +147,9 @@
                                     </Style.Triggers>
                                 </Style>
                             </Popup.Resources>
-                            <Border Background="{StaticResource PopupBackgroundBrush}" BorderBrush="{StaticResource PopupDarkBorderBrush}" BorderThickness="1">
+                            <Border Background="{StaticResource PopupBackgroundBrush}"
+                                    BorderBrush="{StaticResource PopupDarkBorderBrush}"
+                                    BorderThickness="1">
                                 <Grid>
                                     <TextBox x:Name="PART_TextBox"
                                              Margin="3"
@@ -166,7 +169,9 @@
                                         <Thumb.Template>
                                             <ControlTemplate TargetType="{x:Type Thumb}">
                                                 <Grid Background="Transparent">
-                                                    <Path Data="M0.5,6.5 L6.5,0.5 M6.5,3.5 L3.5,6.5" Stroke="Black" StrokeThickness="1" />
+                                                    <Path Data="M0.5,6.5 L6.5,0.5 M6.5,3.5 L3.5,6.5"
+                                                          Stroke="Black"
+                                                          StrokeThickness="1" />
                                                 </Grid>
                                             </ControlTemplate>
                                         </Thumb.Template>

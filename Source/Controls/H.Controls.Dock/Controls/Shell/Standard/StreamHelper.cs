@@ -1,24 +1,11 @@
-﻿/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
-
+﻿
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
 
-// disambiguate with System.Runtime.InteropServices.STATSTG
 using STATSTG = System.Runtime.InteropServices.ComTypes.STATSTG;
-
-/**************************************************************************\
-    Copyright Microsoft Corporation. All Rights Reserved.
-\**************************************************************************/
 
 namespace Standard
 {
@@ -117,12 +104,12 @@ namespace Standard
             Verify.IsNotNull(pstm, nameof(pstm));
             _Validate();
             // Reasonably sized buffer, don't try to copy large streams in bulk.
-            var buffer = new byte[4096];
+            byte[] buffer = new byte[4096];
             long cbWritten = 0;
 
             while (cbWritten < cb)
             {
-                var cbRead = _source.Read(buffer, 0, buffer.Length);
+                int cbRead = _source.Read(buffer, 0, buffer.Length);
                 if (cbRead == 0) break;
                 // COM documentation is a bit vague here whether NULL is valid for the third parameter.
                 // Going to assume it is, as most implementations I've seen treat it as optional.
@@ -172,7 +159,7 @@ namespace Standard
         public void Read(byte[] pv, int cb, IntPtr pcbRead)
         {
             _Validate();
-            var cbRead = _source.Read(pv, 0, cb);
+            int cbRead = _source.Read(pv, 0, cb);
             if (pcbRead != IntPtr.Zero) Marshal.WriteInt32(pcbRead, cbRead);
         }
 
@@ -207,7 +194,7 @@ namespace Standard
         public void Seek(long dlibMove, int dwOrigin, IntPtr plibNewPosition)
         {
             _Validate();
-            var position = _source.Seek(dlibMove, (SeekOrigin)dwOrigin);
+            long position = _source.Seek(dlibMove, (SeekOrigin)dwOrigin);
             if (plibNewPosition != IntPtr.Zero) Marshal.WriteInt64(plibNewPosition, position);
         }
 

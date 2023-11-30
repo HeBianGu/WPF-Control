@@ -1,23 +1,10 @@
-﻿/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
-
+﻿
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Threading;
-
-/**************************************************************************\
-    Copyright Microsoft Corporation. All Rights Reserved.
-\**************************************************************************/
-
 namespace Standard
 {
     internal sealed class MessageWindow : DispatcherObject, IDisposable
@@ -43,7 +30,7 @@ namespace Standard
             _wndProcCallback = callback;
             _className = "MessageWindowClass+" + Guid.NewGuid().ToString();
 
-            var wc = new WNDCLASSEX
+            WNDCLASSEX wc = new WNDCLASSEX
             {
                 cbSize = Marshal.SizeOf(typeof(WNDCLASSEX)),
                 style = classStyle,
@@ -56,11 +43,11 @@ namespace Standard
 
             NativeMethods.RegisterClassEx(ref wc);
 
-            var gcHandle = default(GCHandle);
+            GCHandle gcHandle = default(GCHandle);
             try
             {
                 gcHandle = GCHandle.Alloc(this);
-                var pinnedThisPtr = (IntPtr)gcHandle;
+                IntPtr pinnedThisPtr = (IntPtr)gcHandle;
 
                 Handle = NativeMethods.CreateWindowEx(
                     exStyle,
@@ -101,8 +88,8 @@ namespace Standard
             // Block against reentrancy.
             if (_isDisposed) return;
             _isDisposed = true;
-            var hwnd = Handle;
-            var className = _className;
+            IntPtr hwnd = Handle;
+            string className = _className;
 
             if (isHwndBeingDestroyed)
                 Dispatcher.BeginInvoke(DispatcherPriority.Normal, (DispatcherOperationCallback)(arg => _DestroyWindow(IntPtr.Zero, className)));
@@ -121,13 +108,13 @@ namespace Standard
         [SuppressMessage("Microsoft.Usage", "CA1816:CallGCSuppressFinalizeCorrectly")]
         private static IntPtr _WndProc(IntPtr hwnd, WM msg, IntPtr wParam, IntPtr lParam)
         {
-            var ret = IntPtr.Zero;
+            IntPtr ret = IntPtr.Zero;
             MessageWindow hwndWrapper = null;
 
             if (msg == WM.CREATE)
             {
-                var createStruct = (CREATESTRUCT)Marshal.PtrToStructure(lParam, typeof(CREATESTRUCT));
-                var gcHandle = GCHandle.FromIntPtr(createStruct.lpCreateParams);
+                CREATESTRUCT createStruct = (CREATESTRUCT)Marshal.PtrToStructure(lParam, typeof(CREATESTRUCT));
+                GCHandle gcHandle = GCHandle.FromIntPtr(createStruct.lpCreateParams);
                 hwndWrapper = (MessageWindow)gcHandle.Target;
                 s_windowLookup.Add(hwnd, hwndWrapper);
             }
@@ -138,7 +125,7 @@ namespace Standard
             }
             Assert.IsNotNull(hwndWrapper);
 
-            var callback = hwndWrapper._wndProcCallback;
+            WndProc callback = hwndWrapper._wndProcCallback;
             if (callback != null)
                 ret = callback(hwnd, msg, wParam, lParam);
             else

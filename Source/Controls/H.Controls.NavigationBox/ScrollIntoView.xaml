@@ -13,14 +13,16 @@
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
 
-                        <ListBox x:Name="PART_NAVIGATION" ItemTemplate="{TemplateBinding NavigationDataTemplate}" ItemsSource="{TemplateBinding Source}" />
+                        <ListBox x:Name="PART_NAVIGATION"
+                                 ItemTemplate="{TemplateBinding NavigationDataTemplate}"
+                                 ItemsSource="{TemplateBinding Source}" />
 
                         <ListBox x:Name="PART_CONTAINT"
                                  Grid.Column="1"
                                  Background="{DynamicResource {x:Static h:BrushKeys.Dark0_2}}"
                                  ItemTemplate="{TemplateBinding ContainDataTemplate}"
                                  ItemsSource="{TemplateBinding Source}"
-                                 ScrollViewer.CanContentScroll="False"/>
+                                 ScrollViewer.CanContentScroll="False" />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

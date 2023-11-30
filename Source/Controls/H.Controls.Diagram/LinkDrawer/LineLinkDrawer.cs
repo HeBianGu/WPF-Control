@@ -1,10 +1,7 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
 using System.Windows.Media;
-using System.Windows.Shapes;
 
 namespace H.Controls.Diagram
 {
@@ -19,7 +16,7 @@ namespace H.Controls.Diagram
             Point start = LinkLayer.GetStart(link);
             Point end = LinkLayer.GetEnd(link);
             Vector v = end - start;
-            center = new Point(v.X / 2 + start.X, v.Y / 2 + start.Y);
+            center = new Point((v.X / 2) + start.X, (v.Y / 2) + start.Y);
             if (this.IsLinkCrossBound == true)
             {
                 Vector? find_start = Intersects(link.FromPort == null ? link.FromNode.Bound : link.FromPort.Bound, start, end);
@@ -41,7 +38,7 @@ namespace H.Controls.Diagram
 
         protected Geometry GetLineGeometry(double x1, double y1, double x2, double y2)
         {
-            var geo= this.GetPolyLineGeometry(new Point(x1, y1), new Point(x2, y2));
+            Geometry geo = this.GetPolyLineGeometry(new Point(x1, y1), new Point(x2, y2));
             if (!this.IsUseArrow)
                 return geo;
             return this.GetArrowGeometry(geo, new Point(x1, y1), new Point(x2, y2));

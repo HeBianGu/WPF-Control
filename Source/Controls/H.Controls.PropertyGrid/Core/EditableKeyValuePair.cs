@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections.Generic;
@@ -35,12 +35,12 @@ namespace H.Controls.PropertyGrid
         //Necessary for adding new items in CollectionEditor
         public EditableKeyValuePair()
         {
-            var propertyList = new List<PropertyDescriptor>();
+            List<PropertyDescriptor> propertyList = new List<PropertyDescriptor>();
 
-            var KeyDescriptor = TypeDescriptor.CreateProperty(this.GetType(), "Key", typeof(TKey));
+            PropertyDescriptor KeyDescriptor = TypeDescriptor.CreateProperty(this.GetType(), "Key", typeof(TKey));
             propertyList.Add(KeyDescriptor);
 
-            var ValueDescriptor = TypeDescriptor.CreateProperty(this.GetType(), "Value", typeof(TValue));
+            PropertyDescriptor ValueDescriptor = TypeDescriptor.CreateProperty(this.GetType(), "Value", typeof(TValue));
             propertyList.Add(ValueDescriptor);
 
             _properties = new PropertyDescriptorCollection(propertyList.ToArray());

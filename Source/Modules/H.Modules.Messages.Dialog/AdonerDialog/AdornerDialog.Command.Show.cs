@@ -9,11 +9,11 @@ namespace H.Modules.Messages.Dialog
     {
         public override void Execute(object parameter)
         {
-            var window = Application.Current.MainWindow;
-            var child = window.Content as UIElement;
-            var layer = AdornerLayer.GetAdornerLayer(child);
-            var contentDialog = new AdornerDialogPresenter(parameter);
-            var adorner = new PresenterAdorner(child, contentDialog);
+            Window window = Application.Current.MainWindow;
+            UIElement child = window.Content as UIElement;
+            AdornerLayer layer = AdornerLayer.GetAdornerLayer(child);
+            AdornerDialogPresenter contentDialog = new AdornerDialogPresenter(parameter);
+            PresenterAdorner adorner = new PresenterAdorner(child, contentDialog);
             layer.Add(adorner);
         }
     }

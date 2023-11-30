@@ -33,13 +33,13 @@ namespace H.Controls.ZoomBox
                 || (type == typeof(double))
                 || (type == typeof(Point))
                 || (type == typeof(Rect))
-                || (base.CanConvertFrom(typeDescriptorContext, type));
+                || base.CanConvertFrom(typeDescriptorContext, type);
         }
 
         public override bool CanConvertTo(ITypeDescriptorContext typeDescriptorContext, Type type)
         {
             return (type == typeof(string))
-                || (base.CanConvertTo(typeDescriptorContext, type));
+                || base.CanConvertTo(typeDescriptorContext, type);
         }
 
         public override object ConvertFrom(
@@ -125,7 +125,7 @@ namespace H.Controls.ZoomBox
                     }
                 }
             }
-            return (result == null ? base.ConvertFrom(typeDescriptorContext, cultureInfo, value) : result);
+            return result == null ? base.ConvertFrom(typeDescriptorContext, cultureInfo, value) : result;
         }
 
         public override object ConvertTo(
@@ -185,7 +185,7 @@ namespace H.Controls.ZoomBox
                     }
                 }
             }
-            return (result == null ? base.ConvertTo(typeDescriptorContext, cultureInfo, value, destinationType) : result);
+            return result == null ? base.ConvertTo(typeDescriptorContext, cultureInfo, value, destinationType) : result;
         }
     }
 }

@@ -1,12 +1,10 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Windows;
 using System.Windows.Media;
-using System.Windows.Shapes;
 using System.Xml.Serialization;
 
 namespace H.Controls.Diagram
@@ -32,7 +30,7 @@ namespace H.Controls.Diagram
             set { SetValue(IsLinkCrossBoundProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty IsLinkCrossBoundProperty =
             DependencyProperty.Register("IsLinkCrossBound", typeof(bool), typeof(LinkDrawer), new PropertyMetadata(true, (d, e) =>
             {
@@ -56,7 +54,7 @@ namespace H.Controls.Diagram
             set { SetValue(IsUseArrowProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty IsUseArrowProperty =
             DependencyProperty.Register("IsUseArrow", typeof(bool), typeof(LinkDrawer), new FrameworkPropertyMetadata(true, (d, e) =>
              {
@@ -88,7 +86,7 @@ namespace H.Controls.Diagram
             set { SetValue(ArrowAngleProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty ArrowAngleProperty =
             DependencyProperty.Register("ArrowAngle", typeof(double), typeof(LinkDrawer), new FrameworkPropertyMetadata(Math.PI / 6, (d, e) =>
              {
@@ -117,7 +115,7 @@ namespace H.Controls.Diagram
             set { SetValue(ArrowLengthProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty ArrowLengthProperty =
             DependencyProperty.Register("ArrowLength", typeof(double), typeof(LinkDrawer), new FrameworkPropertyMetadata(5.0, (d, e) =>
              {
@@ -165,11 +163,11 @@ namespace H.Controls.Diagram
             double angleUp = angleOri + this.ArrowAngle;     // 箭头扩张角度
             int directionFlag = (x2 > x1) ? -1 : 1;     // 方向标识
 
-            double x3 = x2 + ((directionFlag * this.ArrowLength) * Math.Cos(angleDown));   // 箭头第三个点的坐标
-            double y3 = y2 + ((directionFlag * this.ArrowLength) * Math.Sin(angleDown));
+            double x3 = x2 + (directionFlag * this.ArrowLength * Math.Cos(angleDown));   // 箭头第三个点的坐标
+            double y3 = y2 + (directionFlag * this.ArrowLength * Math.Sin(angleDown));
 
-            double x4 = x2 + ((directionFlag * this.ArrowLength) * Math.Cos(angleUp));     // 箭头第四个点的坐标
-            double y4 = y2 + ((directionFlag * this.ArrowLength) * Math.Sin(angleUp));
+            double x4 = x2 + (directionFlag * this.ArrowLength * Math.Cos(angleUp));     // 箭头第四个点的坐标
+            double y4 = y2 + (directionFlag * this.ArrowLength * Math.Sin(angleUp));
 
             Point point3 = new Point(x3, y3);   // 箭头第三个点
             Point point4 = new Point(x4, y4);   // 箭头第四个点
@@ -188,7 +186,7 @@ namespace H.Controls.Diagram
             StreamGeometry geometry = new StreamGeometry();
             using (StreamGeometryContext ctx = geometry.Open())
             {
-                var first = points.FirstOrDefault();
+                Point first = points.FirstOrDefault();
                 // Begin the triangle at the point specified. Notice that the shape is set to 
                 // be closed so only two lines need to be specified below to make the triangle.
                 ctx.BeginFigure(first, filled /* is filled */, closed /* is closed */);
@@ -198,11 +196,11 @@ namespace H.Controls.Diagram
             return geometry;
         }
 
-        protected Geometry GetArrowGeometry(Geometry geo, Point start,Point end)
+        protected Geometry GetArrowGeometry(Geometry geo, Point start, Point end)
         {
             PathGeometry pathGeometry = PathGeometry.CreateFromGeometry(geo);
             Point[] arrowPoints = this.GetArrowPoints(start.X, start.Y, end.X, end.Y);
-            var arrowGeo = this.GetPolyLineGeometry(true, true, arrowPoints);
+            Geometry arrowGeo = this.GetPolyLineGeometry(true, true, arrowPoints);
             pathGeometry.AddGeometry(arrowGeo);
             pathGeometry.Freeze();
             return pathGeometry;
@@ -323,26 +321,26 @@ namespace H.Controls.Diagram
         {
             Vector b = a2 - a1;
             Vector d = b2 - b1;
-            double bDotDPerp = b.X * d.Y - b.Y * d.X;
+            double bDotDPerp = (b.X * d.Y) - (b.Y * d.X);
 
             // if b dot d == 0, it means the lines are parallel so have infinite intersection points
             if (bDotDPerp == 0)
                 return null;
 
             Vector c = b1 - a1;
-            double t = (c.X * d.Y - c.Y * d.X) / bDotDPerp;
+            double t = ((c.X * d.Y) - (c.Y * d.X)) / bDotDPerp;
             if (t < 0 || t > 1)
             {
                 return null;
             }
 
-            double u = (c.X * b.Y - c.Y * b.X) / bDotDPerp;
+            double u = ((c.X * b.Y) - (c.Y * b.X)) / bDotDPerp;
             if (u < 0 || u > 1)
             {
                 return null;
             }
 
-            return a1 + t * b;
+            return a1 + (t * b);
         }
 
         public override string ToString()

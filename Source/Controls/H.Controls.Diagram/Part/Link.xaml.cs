@@ -1,9 +1,8 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 using System;
 using System.Windows;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
@@ -25,7 +24,7 @@ namespace H.Controls.Diagram
             DefaultStyleKeyProperty.OverrideMetadata(typeof(Link), new FrameworkPropertyMetadata(typeof(Link)));
         }
 
-        Path _path = new Path();
+        private Path _path = new Path();
         public Link()
         {
             this.Content = new DefaultLinkData();
@@ -105,7 +104,7 @@ namespace H.Controls.Diagram
             set { SetValue(PathStyleProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty PathStyleProperty =
             DependencyProperty.Register("PathStyle", typeof(Style), typeof(Link), new PropertyMetadata(default(Style), (d, e) =>
             {
@@ -123,7 +122,7 @@ namespace H.Controls.Diagram
             set { SetValue(ForegroundProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty ForegroundProperty =
             DependencyProperty.Register("Foreground", typeof(Brush), typeof(Link), new FrameworkPropertyMetadata(default(Brush), (d, e) =>
              {
@@ -150,7 +149,7 @@ namespace H.Controls.Diagram
             set { SetValue(FontSizeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty FontSizeProperty =
             DependencyProperty.Register("FontSize", typeof(double), typeof(Link), new FrameworkPropertyMetadata(default(double), (d, e) =>
              {
@@ -182,8 +181,9 @@ namespace H.Controls.Diagram
 
         public Port ToPort { get; set; }
 
-        Point _center;
-        void Draw(Point start, Point end)
+        private Point _center;
+
+        private void Draw(Point start, Point end)
         {
 #if DEBUG
             DateTime dateTime = DateTime.Now;
@@ -200,7 +200,7 @@ namespace H.Controls.Diagram
             //this._path.Style = this.PathStyle;
             //this.InvalidateArrange();
 #if DEBUG
-            var span = DateTime.Now - dateTime;
+            TimeSpan span = DateTime.Now - dateTime;
             System.Diagnostics.Debug.WriteLine("Link.Draw：" + span.ToString());
 #endif 
         }
@@ -325,7 +325,7 @@ namespace H.Controls.Diagram
             {
                 //Rect rect = Rect.Inflate(this._path.Data.Bounds, 500, 500);
 
-                Rect rect = new Rect(_center.X - child.DesiredSize.Width / 2, _center.Y - child.DesiredSize.Height / 2, child.DesiredSize.Width, child.DesiredSize.Height);
+                Rect rect = new Rect(_center.X - (child.DesiredSize.Width / 2), _center.Y - (child.DesiredSize.Height / 2), child.DesiredSize.Width, child.DesiredSize.Height);
                 child.Arrange(rect);
             }
             return finalSize;

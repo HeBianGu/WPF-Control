@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Threading;
@@ -31,7 +31,7 @@ namespace H.Providers.Mvvm
 
         }
 
-        public TransactionCommand(Action<ITransactionCommand, object> action, Func<ITransactionCommand, object, bool> canAction) 
+        public TransactionCommand(Action<ITransactionCommand, object> action, Func<ITransactionCommand, object, bool> canAction)
             : base((s, e) => action(s as ITransactionCommand, e), (s, e) => canAction(s as ITransactionCommand, e))
         {
 
@@ -74,8 +74,8 @@ namespace H.Providers.Mvvm
             });
         }
 
-        bool _result;
-        AutoResetEvent waitHandle = new AutoResetEvent(false);
+        private bool _result;
+        private AutoResetEvent waitHandle = new AutoResetEvent(false);
         public InvokeCommand CommitCommand => new InvokeCommand(e =>
          {
              if (_canCommit?.Invoke() == false) return;

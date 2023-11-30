@@ -13,7 +13,6 @@ using System.Collections.Generic;
 
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace H.DataBases.Share
@@ -67,7 +66,7 @@ namespace H.DataBases.Share
             {
                 IQueryable<TEntity> temp = _dbContext.Set<TEntity>();
 
-                foreach (var item in includes)
+                foreach (string item in includes)
                 {
                     temp = temp.Include(item);
                 }
@@ -93,7 +92,7 @@ namespace H.DataBases.Share
             {
                 IQueryable<TEntity> temp = _dbContext.Set<TEntity>();
 
-                foreach (var item in includes)
+                foreach (string item in includes)
                 {
                     temp = temp.Include(item);
                 }
@@ -108,7 +107,7 @@ namespace H.DataBases.Share
         /// <returns></returns>
         public List<TEntity> GetList(Action<IQueryable<TEntity>> action)
         {
-            var set = _dbContext.Set<TEntity>();
+            DbSet<TEntity> set = _dbContext.Set<TEntity>();
             action?.Invoke(set);
             return set.ToList();
         }
@@ -206,7 +205,7 @@ namespace H.DataBases.Share
         /// <param name="autoSave">是否立即执行保存</param>
         public async Task<int> UpdateAsync(TEntity entity, bool autoSave = true)
         {
-            var obj = GetByIDAsync(entity.ID).Result;
+            TEntity obj = GetByIDAsync(entity.ID).Result;
 
             EntityToEntity(entity, obj);
 
@@ -223,7 +222,7 @@ namespace H.DataBases.Share
         /// <param name="autoSave">是否立即执行保存</param>
         public int Update(TEntity entity, bool autoSave = true)
         {
-            var obj = GetByIDAsync(entity.ID).Result;
+            TEntity obj = GetByIDAsync(entity.ID).Result;
 
             EntityToEntity(entity, obj);
 
@@ -235,7 +234,7 @@ namespace H.DataBases.Share
 
         private void EntityToEntity<T>(T pTargetObjSrc, T pTargetObjDest)
         {
-            foreach (var mItem in typeof(T).GetProperties())
+            foreach (System.Reflection.PropertyInfo mItem in typeof(T).GetProperties())
             {
                 mItem.SetValue(pTargetObjDest, mItem.GetValue(pTargetObjSrc, new object[] { }), null);
             }
@@ -274,7 +273,7 @@ namespace H.DataBases.Share
         /// <param name="autoSave">是否立即执行保存</param>
         public async Task<int> DeleteByIDAsync(TPrimaryKey id, bool autoSave = true)
         {
-            var entity = await this.GetByIDAsync(id);
+            TEntity entity = await this.GetByIDAsync(id);
             _dbContext.Set<TEntity>().Remove(entity);
             if (autoSave)
                 return await SaveAsync();
@@ -289,7 +288,7 @@ namespace H.DataBases.Share
         /// <param name="autoSave">是否立即执行保存</param>
         public int DeleteByID(TPrimaryKey id, bool autoSave = true)
         {
-            var entity = _dbContext.Set<TEntity>().FirstOrDefault(CreateEqualityExpressionForId(id));
+            TEntity entity = _dbContext.Set<TEntity>().FirstOrDefault(CreateEqualityExpressionForId(id));
 
             _dbContext.Set<TEntity>().Remove(entity);
             if (autoSave)
@@ -391,8 +390,8 @@ namespace H.DataBases.Share
         {
             int rowCount;
 
-            var result = from p in _dbContext.Set<TEntity>()
-                         select p;
+            IQueryable<TEntity> result = from p in _dbContext.Set<TEntity>()
+                                         select p;
 
             if (where != null)
                 result = result.Where(where);
@@ -404,7 +403,7 @@ namespace H.DataBases.Share
 
             rowCount = await result.CountAsync();
 
-            var skip = await result.Skip((startPage - 1) * pageSize).Take(pageSize).ToListAsync();
+            List<TEntity> skip = await result.Skip((startPage - 1) * pageSize).Take(pageSize).ToListAsync();
 
             return Tuple.Create(skip, rowCount);
         }
@@ -432,8 +431,8 @@ namespace H.DataBases.Share
         /// <returns></returns>
         protected static Expression<Func<TEntity, bool>> CreateEqualityExpressionForId(TPrimaryKey id)
         {
-            var lambdaParam = System.Linq.Expressions.Expression.Parameter(typeof(TEntity));
-            var lambdaBody = System.Linq.Expressions.Expression.Equal(
+            ParameterExpression lambdaParam = System.Linq.Expressions.Expression.Parameter(typeof(TEntity));
+            BinaryExpression lambdaBody = System.Linq.Expressions.Expression.Equal(
                 System.Linq.Expressions.Expression.PropertyOrField(lambdaParam, "Id"),
                System.Linq.Expressions.Expression.Constant(id, typeof(TPrimaryKey))
                 );

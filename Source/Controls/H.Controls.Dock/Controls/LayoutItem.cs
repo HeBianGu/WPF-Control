@@ -1,12 +1,4 @@
-﻿/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
-
+﻿
 using H.Controls.Dock.Commands;
 using H.Controls.Dock.Layout;
 using System;
@@ -405,7 +397,7 @@ namespace H.Controls.Dock.Controls
 
         private bool CanExecuteCloseAllButThisCommand(object parameter)
         {
-            var root = LayoutElement?.Root;
+            ILayoutRoot root = LayoutElement?.Root;
             if (root == null) return false;
             return LayoutElement.Root.Manager.Layout.Descendents().OfType<LayoutContent>().Any(d => d != LayoutElement && (d.Parent is LayoutDocumentPane || d.Parent is LayoutDocumentFloatingWindow));
         }
@@ -441,7 +433,7 @@ namespace H.Controls.Dock.Controls
 
         private bool CanExecuteCloseAllCommand(object parameter)
         {
-            var root = LayoutElement?.Root;
+            ILayoutRoot root = LayoutElement?.Root;
             if (root == null) return false;
             return LayoutElement.Root.Manager.Layout.Descendents().OfType<LayoutContent>().Any(d => d.Parent is LayoutDocumentPane || d.Parent is LayoutDocumentFloatingWindow);
         }
@@ -507,7 +499,7 @@ namespace H.Controls.Dock.Controls
         {
             if (LayoutElement == null) return false;
             if (LayoutElement is LayoutDocument layoutDocument && !layoutDocument.CanMove) return false;
-            var parentDocumentGroup = LayoutElement.FindParent<LayoutDocumentPaneGroup>();
+            LayoutDocumentPaneGroup parentDocumentGroup = LayoutElement.FindParent<LayoutDocumentPaneGroup>();
             return (parentDocumentGroup == null ||
                       parentDocumentGroup.ChildrenCount == 1 ||
                       parentDocumentGroup.Root.Manager.AllowMixedOrientation ||
@@ -518,19 +510,19 @@ namespace H.Controls.Dock.Controls
 
         private void ExecuteNewVerticalTabGroupCommand(object parameter)
         {
-            var layoutElement = LayoutElement;
-            var parentDocumentGroup = layoutElement.FindParent<LayoutDocumentPaneGroup>();
-            var parentDocumentPane = layoutElement.Parent as LayoutDocumentPane;
+            LayoutContent layoutElement = LayoutElement;
+            LayoutDocumentPaneGroup parentDocumentGroup = layoutElement.FindParent<LayoutDocumentPaneGroup>();
+            LayoutDocumentPane parentDocumentPane = layoutElement.Parent as LayoutDocumentPane;
 
             if (parentDocumentGroup == null)
             {
-                var grandParent = parentDocumentPane.Parent;
+                ILayoutContainer grandParent = parentDocumentPane.Parent;
                 parentDocumentGroup = new LayoutDocumentPaneGroup { Orientation = Orientation.Horizontal };
                 grandParent.ReplaceChild(parentDocumentPane, parentDocumentGroup);
                 parentDocumentGroup.Children.Add(parentDocumentPane);
             }
             parentDocumentGroup.Orientation = Orientation.Horizontal;
-            var indexOfParentPane = parentDocumentGroup.IndexOfChild(parentDocumentPane);
+            int indexOfParentPane = parentDocumentGroup.IndexOfChild(parentDocumentPane);
             parentDocumentGroup.InsertChildAt(indexOfParentPane + 1, new LayoutDocumentPane(layoutElement));
             layoutElement.IsActive = true;
             layoutElement.Root.CollectGarbage();
@@ -564,7 +556,7 @@ namespace H.Controls.Dock.Controls
         {
             if (LayoutElement == null) return false;
             if (LayoutElement is LayoutDocument layoutDocument && !layoutDocument.CanMove) return false;
-            var parentDocumentGroup = LayoutElement.FindParent<LayoutDocumentPaneGroup>();
+            LayoutDocumentPaneGroup parentDocumentGroup = LayoutElement.FindParent<LayoutDocumentPaneGroup>();
             return (parentDocumentGroup == null ||
                       parentDocumentGroup.ChildrenCount == 1 ||
                       parentDocumentGroup.Root.Manager.AllowMixedOrientation ||
@@ -575,19 +567,19 @@ namespace H.Controls.Dock.Controls
 
         private void ExecuteNewHorizontalTabGroupCommand(object parameter)
         {
-            var layoutElement = LayoutElement;
-            var parentDocumentGroup = layoutElement.FindParent<LayoutDocumentPaneGroup>();
-            var parentDocumentPane = layoutElement.Parent as LayoutDocumentPane;
+            LayoutContent layoutElement = LayoutElement;
+            LayoutDocumentPaneGroup parentDocumentGroup = layoutElement.FindParent<LayoutDocumentPaneGroup>();
+            LayoutDocumentPane parentDocumentPane = layoutElement.Parent as LayoutDocumentPane;
 
             if (parentDocumentGroup == null)
             {
-                var grandParent = parentDocumentPane.Parent;
+                ILayoutContainer grandParent = parentDocumentPane.Parent;
                 parentDocumentGroup = new LayoutDocumentPaneGroup { Orientation = Orientation.Vertical };
                 grandParent.ReplaceChild(parentDocumentPane, parentDocumentGroup);
                 parentDocumentGroup.Children.Add(parentDocumentPane);
             }
             parentDocumentGroup.Orientation = Orientation.Vertical;
-            var indexOfParentPane = parentDocumentGroup.IndexOfChild(parentDocumentPane);
+            int indexOfParentPane = parentDocumentGroup.IndexOfChild(parentDocumentPane);
             parentDocumentGroup.InsertChildAt(indexOfParentPane + 1, new LayoutDocumentPane(layoutElement));
             layoutElement.IsActive = true;
             layoutElement.Root.CollectGarbage();
@@ -620,7 +612,7 @@ namespace H.Controls.Dock.Controls
         private bool CanExecuteMoveToNextTabGroupCommand(object parameter)
         {
             if (LayoutElement == null) return false;
-            var parentDocumentGroup = LayoutElement.FindParent<LayoutDocumentPaneGroup>();
+            LayoutDocumentPaneGroup parentDocumentGroup = LayoutElement.FindParent<LayoutDocumentPaneGroup>();
             return parentDocumentGroup != null &&
                      LayoutElement.Parent is LayoutDocumentPane parentDocumentPane &&
                      parentDocumentGroup.ChildrenCount > 1 &&
@@ -630,11 +622,11 @@ namespace H.Controls.Dock.Controls
 
         private void ExecuteMoveToNextTabGroupCommand(object parameter)
         {
-            var layoutElement = LayoutElement;
-            var parentDocumentGroup = layoutElement.FindParent<LayoutDocumentPaneGroup>();
-            var parentDocumentPane = layoutElement.Parent as LayoutDocumentPane;
-            var indexOfParentPane = parentDocumentGroup.IndexOfChild(parentDocumentPane);
-            var nextDocumentPane = parentDocumentGroup.Children[indexOfParentPane + 1] as LayoutDocumentPane;
+            LayoutContent layoutElement = LayoutElement;
+            LayoutDocumentPaneGroup parentDocumentGroup = layoutElement.FindParent<LayoutDocumentPaneGroup>();
+            LayoutDocumentPane parentDocumentPane = layoutElement.Parent as LayoutDocumentPane;
+            int indexOfParentPane = parentDocumentGroup.IndexOfChild(parentDocumentPane);
+            LayoutDocumentPane nextDocumentPane = parentDocumentGroup.Children[indexOfParentPane + 1] as LayoutDocumentPane;
             nextDocumentPane.InsertChildAt(0, layoutElement);
             layoutElement.IsActive = true;
             layoutElement.Root.CollectGarbage();
@@ -667,7 +659,7 @@ namespace H.Controls.Dock.Controls
         private bool CanExecuteMoveToPreviousTabGroupCommand(object parameter)
         {
             if (LayoutElement == null) return false;
-            var parentDocumentGroup = LayoutElement.FindParent<LayoutDocumentPaneGroup>();
+            LayoutDocumentPaneGroup parentDocumentGroup = LayoutElement.FindParent<LayoutDocumentPaneGroup>();
             return parentDocumentGroup != null &&
                      LayoutElement.Parent is LayoutDocumentPane parentDocumentPane &&
                      parentDocumentGroup.ChildrenCount > 1 &&
@@ -677,11 +669,11 @@ namespace H.Controls.Dock.Controls
 
         private void ExecuteMoveToPreviousTabGroupCommand(object parameter)
         {
-            var layoutElement = LayoutElement;
-            var parentDocumentGroup = layoutElement.FindParent<LayoutDocumentPaneGroup>();
-            var parentDocumentPane = layoutElement.Parent as LayoutDocumentPane;
-            var indexOfParentPane = parentDocumentGroup.IndexOfChild(parentDocumentPane);
-            var nextDocumentPane = parentDocumentGroup.Children[indexOfParentPane - 1] as LayoutDocumentPane;
+            LayoutContent layoutElement = LayoutElement;
+            LayoutDocumentPaneGroup parentDocumentGroup = layoutElement.FindParent<LayoutDocumentPaneGroup>();
+            LayoutDocumentPane parentDocumentPane = layoutElement.Parent as LayoutDocumentPane;
+            int indexOfParentPane = parentDocumentGroup.IndexOfChild(parentDocumentPane);
+            LayoutDocumentPane nextDocumentPane = parentDocumentGroup.Children[indexOfParentPane - 1] as LayoutDocumentPane;
             nextDocumentPane.InsertChildAt(0, layoutElement);
             layoutElement.IsActive = true;
             layoutElement.Root.CollectGarbage();
@@ -798,9 +790,9 @@ namespace H.Controls.Dock.Controls
             if (!_isActiveReentrantFlag.CanEnter) return;
             using (_isActiveReentrantFlag.Enter())
             {
-                var bnd = BindingOperations.GetBinding(this, IsActiveProperty);
+                Binding bnd = BindingOperations.GetBinding(this, IsActiveProperty);
                 IsActive = LayoutElement.IsActive;
-                var bnd2 = BindingOperations.GetBinding(this, IsActiveProperty);
+                Binding bnd2 = BindingOperations.GetBinding(this, IsActiveProperty);
             }
         }
 

@@ -82,7 +82,6 @@
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type local:OnlyComboBoxSelectSourcePropertyItem}">
-        <ComboBox ItemsSource="{Binding Collection}" 
-                  SelectedItem="{Binding Value}" />
+        <ComboBox ItemsSource="{Binding Collection}" SelectedItem="{Binding Value}" />
     </DataTemplate>
 </ResourceDictionary>

@@ -1,26 +1,23 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.ComponentModel.DataAnnotations;
-using System.Windows;
-using System.Windows.Data;
-using System.IO;
-using System.Windows.Media;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.ComponentModel;
-using System.Windows.Media.Imaging;
-using System.Runtime.CompilerServices;
 using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace H.Extensions.ValueConverter
 {
-    public static class Converter
+    public static partial class Converter
     {
         #region - TimeSpan -
         public static ConverterBase<int, string> GetTimeSpanStrFromSeconds => new ConverterBase<int, string>(x => TimeSpan.FromSeconds(x).TimespanToString());
@@ -30,8 +27,6 @@ namespace H.Extensions.ValueConverter
         public static ConverterBase<int, string> GetTimeSpanStrFromHours => new ConverterBase<int, string>(x => TimeSpan.FromHours(x).TimespanToString());
         public static ConverterBase<long, string> GetTimeSpanStrFromTicks => new ConverterBase<long, string>(x => TimeSpan.FromTicks(x).TimespanToString());
         public static ConverterBase<TimeSpan, string> GetTimeSpanStr => new ConverterBase<TimeSpan, string>(x => x.TimespanToString());
-
-
 
         public static string TimespanToDislay(this TimeSpan t)
         {
@@ -91,7 +86,7 @@ namespace H.Extensions.ValueConverter
 
         #endregion
 
-        #region - string -
+        #region - String -
         public static ConverterBase<string, string> GetStringTrim => new ConverterBase<string, string>(x => x.Trim());
         public static ConverterBase<string, string> GetStringToUpper => new ConverterBase<string, string>(x => x.ToUpper());
         public static ConverterBase<string, string> GetStringToLower => new ConverterBase<string, string>(x => x.ToLower());
@@ -130,7 +125,7 @@ namespace H.Extensions.ValueConverter
         {
             IList list = Activator.CreateInstance(x.GetType()) as IList;
 
-            foreach (var item in x.Take(p))
+            foreach (object item in x.Take(p))
             {
                 list.Add(item);
             }
@@ -139,7 +134,7 @@ namespace H.Extensions.ValueConverter
         public static IEnumerableTypeConverterBase<object, int> GetIEnumerableCast => new IEnumerableTypeConverterBase<object, int>((x, p, t) =>
         {
             IList list = Activator.CreateInstance(x.GetType()) as IList;
-            foreach (var item in x)
+            foreach (object item in x)
             {
                 list.Add(item);
             }
@@ -152,7 +147,7 @@ namespace H.Extensions.ValueConverter
         public static IEnumerableTypeConverterBase<object> GetIEnumerableDistinct => new IEnumerableTypeConverterBase<object>((x, t) =>
         {
             IList list = Activator.CreateInstance(x.GetType()) as IList;
-            foreach (var item in x.Distinct())
+            foreach (object item in x.Distinct())
             {
                 list.Add(item);
             }
@@ -161,7 +156,7 @@ namespace H.Extensions.ValueConverter
         public static IEnumerableTypeConverterBase<object, IEnumerable<object>> GetIEnumerableExcept => new IEnumerableTypeConverterBase<object, IEnumerable<object>>((x, p, t) =>
         {
             IList list = Activator.CreateInstance(x.GetType()) as IList;
-            foreach (var item in x.Except(p))
+            foreach (object item in x.Except(p))
             {
                 list.Add(item);
             }
@@ -170,25 +165,24 @@ namespace H.Extensions.ValueConverter
         public static IEnumerableTypeConverterBase<object> GetIEnumerableReverse => new IEnumerableTypeConverterBase<object>((x, t) =>
         {
             IList list = Activator.CreateInstance(x.GetType()) as IList;
-            foreach (var item in x.Reverse())
+            foreach (object item in x.Reverse())
             {
                 list.Add(item);
             }
             return list;
         });
-
         public static IEnumerableConverterBase<object, string, object> GetIEnumerablePropertyList => new IEnumerableConverterBase<object, string, object>((x, p) =>
         {
             if (x.GetType().IsGenericType)
             {
-                var gType = x.GetGenericArgumentType();
-                var property = gType.GetProperty(p);
+                Type gType = x.GetGenericArgumentType();
+                PropertyInfo property = gType.GetProperty(p);
                 Type type = typeof(List<>);
-                var listType = type.MakeGenericType(property.PropertyType);
+                Type listType = type.MakeGenericType(property.PropertyType);
                 IList list = Activator.CreateInstance(listType) as IList;
-                foreach (var item in x)
+                foreach (object item in x)
                 {
-                    var value = property.GetValue(item);
+                    object value = property.GetValue(item);
                     list.Add(value);
                 }
                 return list;
@@ -209,7 +203,7 @@ namespace H.Extensions.ValueConverter
         public static ConverterBase<object, string> GetDiaplayDescription => new ConverterBase<object, string>(x => x.GetType().GetCustomAttribute<DisplayAttribute>()?.Description);
         public static ConverterBase<object, Type, bool> GetIsAssignableFrom => new ConverterBase<object, Type, bool>((x, y) =>
         {
-            var r = y.IsAssignableFrom(x.GetType());
+            bool r = y.IsAssignableFrom(x.GetType());
             return r;
         });
         public static ConverterBase<object, bool> GetIsValueType => new ConverterBase<object, bool>(x => x.GetType().IsValueType);
@@ -282,7 +276,7 @@ namespace H.Extensions.ValueConverter
         {
             if (x == null)
                 return null;
-            var filePath = x.ToString();
+            string filePath = x.ToString();
             if (!File.Exists(filePath))
                 return null;
             BitmapImage bmp = new BitmapImage(new Uri(filePath, UriKind.Absolute));
@@ -291,21 +285,21 @@ namespace H.Extensions.ValueConverter
             return bmp.PixelWidth + "×" + bmp.PixelHeight;
         });
 
-        static List<Tuple<string, int, BitmapImage>> _fileCache = new List<Tuple<string, int, BitmapImage>>();
+        private static List<Tuple<string, int, BitmapImage>> _fileCache = new List<Tuple<string, int, BitmapImage>>();
         public static ConverterBase<string, int, ImageSource> GetFileImageSourceInMemory => new ConverterBase<string, int, ImageSource>((x, p) =>
         {
             if (x == null)
                 return null;
-            var filePath = x.ToString();
+            string filePath = x.ToString();
             if (!File.Exists(filePath))
                 return null;
-            var find = _fileCache.FirstOrDefault(k => k.Item1 == filePath && k.Item2 == p);
+            Tuple<string, int, BitmapImage> find = _fileCache.FirstOrDefault(k => k.Item1 == filePath && k.Item2 == p);
             if (find != null && find.Item3 != null)
                 return find.Item3;
 
             try
             {
-                using (var filestream = File.Open(filePath, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))
+                using (FileStream filestream = File.Open(filePath, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))
                 {
                     using (BinaryReader reader = new BinaryReader(filestream))
 
@@ -410,16 +404,16 @@ namespace H.Extensions.ValueConverter
 
         public static MultiConverterBase<object, Visibility> GetAllEqualsToVisible => new MultiConverterBase<object, Visibility>(x =>
         {
-            var first = x.FirstOrDefault();
+            object first = x.FirstOrDefault();
             if (first == null)
                 return Visibility.Collapsed;
-            var SSS = x.All(l => l.Equals(first));
+            bool SSS = x.All(l => l.Equals(first));
             return x.All(l => l.Equals(first)) ? Visibility.Visible : Visibility.Collapsed;
         });
 
         public static MultiConverterBase<IComparable, Visibility> GetComparableAllTrueToVisible => new MultiConverterBase<IComparable, Visibility>(x =>
         {
-            var first = x.FirstOrDefault();
+            IComparable first = x.FirstOrDefault();
             if (first == null)
                 return Visibility.Collapsed;
             return x.All(l => l.CompareTo(first) == 0) ? Visibility.Visible : Visibility.Collapsed;
@@ -430,6 +424,12 @@ namespace H.Extensions.ValueConverter
         #region - DateTime -
         public static ConverterBase<DateTime, string> GetDateTimeToString => new ConverterBase<DateTime, string>(x => x.ToString("yyyy-MM-dd HH:mm:ss"));
         public static ConverterBase<DateTime, string> GetDateTimeToDateString => new ConverterBase<DateTime, string>(x => x.ToString("yyyy-MM-dd"));
+        public static ConverterBase<DateTime, int> GetDateTimeToAge => new ConverterBase<DateTime, int>(x =>
+        {
+            TimeSpan span = DateTime.Now - x;
+            return (int)(span.TotalDays / 365.0);
+        });
+
         public static ConverterBase<DateTime, DateTime> GetDateTimeToDate => new ConverterBase<DateTime, DateTime>(x => x.Date);
         public static ConverterBase<DateTime, double, DateTime> GetDateTimeToAddDays => new ConverterBase<DateTime, double, DateTime>((x, y) => x.AddDays(y));
         public static ConverterBase<DateTime, double, DateTime> GetDateTimeToAddHours => new ConverterBase<DateTime, double, DateTime>((x, y) => x.AddHours(y));
@@ -514,7 +514,7 @@ namespace H.Extensions.ValueConverter
             Action<TreeViewItem> action = null;
             action = t =>
             {
-                var parent = ItemsControl.ItemsControlFromItemContainer(t);
+                ItemsControl parent = ItemsControl.ItemsControlFromItemContainer(t);
                 if (parent is TreeViewItem item)
                 {
                     level++;

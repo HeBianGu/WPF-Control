@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections;
@@ -10,8 +10,8 @@ namespace H.Controls.PropertyGrid
 {
     public class SourceComboBoxEditor : ComboBoxEditor
     {
-        ICollection _collection;
-        TypeConverter _typeConverter;
+        private ICollection _collection;
+        private TypeConverter _typeConverter;
 
         public SourceComboBoxEditor(ICollection collection, TypeConverter typeConverter)
         {

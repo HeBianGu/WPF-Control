@@ -1,11 +1,11 @@
-<ResourceDictionary  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:H.Controls.Adorner" 
-    xmlns:h="https://github.com/HeBianGu">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Controls.Adorner">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/H.Controls.Adorner;component/ListBoxItem.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/H.Controls.Adorner;component/Adorner/ControlTemplateAdorner.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/H.Controls.Adorner;component/Adorner/ResizeAdorner.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Adorner;component/ListBoxItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Adorner;component/Adorner/ControlTemplateAdorner.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Adorner;component/Adorner/ResizeAdorner.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

@@ -46,10 +46,10 @@ namespace H.Controls.Diagram.Extension
             }
         }
 
-         [Display(Name = "开始", GroupName = "操作", Order = 0)]
+        [Display(Name = "开始", GroupName = "操作", Order = 0)]
         public RelayCommand StartCommand => new RelayCommand(async (s, e) =>
         {
-            var start = this.GetStartNode();
+            Node start = this.GetStartNode();
             if (start == null)
             {
                 return;
@@ -75,13 +75,13 @@ namespace H.Controls.Diagram.Extension
         }, (s, e) => State != DiagramFlowableState.Running && this.State != DiagramFlowableState.Canceling);
 
 
-         [Display(Name = "停止", GroupName = "操作", Order = 0)]
+        [Display(Name = "停止", GroupName = "操作", Order = 0)]
         public RelayCommand StopCommand => new RelayCommand((s, e) =>
         {
-            var parts = this.Nodes.SelectMany(x => x.GetParts());
-            foreach (var part in parts)
+            IEnumerable<Part> parts = this.Nodes.SelectMany(x => x.GetParts());
+            foreach (Part part in parts)
             {
-                var data = part.GetContent<IFlowable>();
+                IFlowable data = part.GetContent<IFlowable>();
                 {
                     if (data != null)
                     {
@@ -98,11 +98,11 @@ namespace H.Controls.Diagram.Extension
             }
         }, (s, e) => State == DiagramFlowableState.Running && this.State != DiagramFlowableState.Canceling);
 
-         [Display(Name = "重置", GroupName = "操作", Order = 0)]
+        [Display(Name = "重置", GroupName = "操作", Order = 0)]
         public RelayCommand CancelCommand => new RelayCommand((s, e) =>
         {
-            var parts = this.Nodes.SelectMany(x => x.GetParts());
-            foreach (var part in parts)
+            IEnumerable<Part> parts = this.Nodes.SelectMany(x => x.GetParts());
+            foreach (Part part in parts)
             {
                 part.State = FlowableState.Ready;
                 if (part.Content is IFlowable flowable)
@@ -141,14 +141,14 @@ namespace H.Controls.Diagram.Extension
 
         protected virtual Node GetStartNode()
         {
-            var parts = this.Nodes.SelectMany(x => x.GetParts());
-            foreach (var part in parts)
+            IEnumerable<Part> parts = this.Nodes.SelectMany(x => x.GetParts());
+            foreach (Part part in parts)
             {
                 part.State = FlowableState.Wait;
                 if (part.Content is IFlowable flowable)
                     flowable.State = FlowableState.Wait;
             }
-            var starts = this.Nodes.Where(x => x.GetFromNodes().Count == 0 && x.GetContent<FlowableNodeData>()?.UseStart == true);
+            IEnumerable<Node> starts = this.Nodes.Where(x => x.GetFromNodes().Count == 0 && x.GetContent<FlowableNodeData>()?.UseStart == true);
 
             if (starts == null || starts.Count() == 0)
             {
@@ -185,13 +185,13 @@ namespace H.Controls.Diagram.Extension
 
         public async Task<bool?> Start()
         {
-            var start = this.GetStartNode();
+            Node start = this.GetStartNode();
             if (start == null)
             {
                 this.Message = "没有找到开始节点";
                 return false;
             }
-            var b = await Start(start);
+            bool? b = await Start(start);
             this.State = b == null ? DiagramFlowableState.Canceled : b == true ? DiagramFlowableState.Success : DiagramFlowableState.Error;
             return b;
         }

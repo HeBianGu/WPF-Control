@@ -1,23 +1,16 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
+using H.Extensions.XmlSerialize;
+using H.Providers.Ioc;
+using H.Providers.Mvvm;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel;
-using System.Reflection;
 using System.Linq;
-using System.Windows;
-using System.Xml.Serialization;
-using System.Xml;
-using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using H.Providers.Mvvm;
-using H.Providers.Ioc;
-using H.Extensions.TypeConverter;
+using System.Reflection;
 using System.Text.Json.Serialization;
-using H.Extensions.XmlSerialize;
+using System.Xml.Serialization;
 
 namespace H.Controls.FilterBox
 {
@@ -32,7 +25,7 @@ namespace H.Controls.FilterBox
 
         public PropertyConfidtionPrensenter(Type modelTyle, Func<PropertyInfo, bool> predicate = null)
         {
-            var ps = modelTyle.GetProperties().Where(x => x.PropertyType.IsPrimitive || x.PropertyType == typeof(DateTime) || x.PropertyType == typeof(string)).ToObservable();
+            ObservableCollection<PropertyInfo> ps = modelTyle.GetProperties().Where(x => x.PropertyType.IsPrimitive || x.PropertyType == typeof(DateTime) || x.PropertyType == typeof(string)).ToObservable();
             if (predicate != null)
                 Properties = ps.Where(predicate).ToObservable();
             else
@@ -67,7 +60,7 @@ namespace H.Controls.FilterBox
         [XmlIgnore]
         public RelayCommand AddConditionCommand => new RelayCommand(l =>
         {
-            var first = Properties.FirstOrDefault();
+            PropertyInfo first = Properties.FirstOrDefault();
             PropertyConfidtion confidtion = new PropertyConfidtion(first);
             confidtion.Filter.IsSelected = true;
             Conditions.Add(confidtion);
@@ -123,21 +116,21 @@ namespace H.Controls.FilterBox
 
         }
 
-        bool _isLoaded = false;
+        private bool _isLoaded = false;
         public void Load()
         {
             if (_isLoaded)
                 return;
             if (string.IsNullOrEmpty(ID))
                 return;
-            var find = MetaSettingService?.Deserilize<PropertyConfidtionPrensenter>(ID);
+            PropertyConfidtionPrensenter find = MetaSettingService?.Deserilize<PropertyConfidtionPrensenter>(ID);
             if (find == null)
                 return;
 
-            foreach (var item in find.Conditions)
+            foreach (IPropertyConfidtion item in find.Conditions)
             {
                 //var propertyInfo = this.Properties.FirstOrDefault(x => x.Name == item.Filter.Name);
-                var pc = new PropertyConfidtion();
+                PropertyConfidtion pc = new PropertyConfidtion();
                 //item.Filter.PropertyInfo = propertyInfo;
                 pc.Filter = item.Filter;
                 Conditions.Add(pc);

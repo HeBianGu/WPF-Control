@@ -7,8 +7,6 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Windows;
 using System.Windows.Media;
-using System.Windows.Media.Effects;
-using System.Xml.Serialization;
 
 namespace H.Controls.Diagram.Extension
 {

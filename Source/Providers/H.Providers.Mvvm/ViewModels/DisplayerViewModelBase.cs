@@ -36,7 +36,7 @@ namespace H.Providers.Mvvm
             {
 
                 {
-                    var display = GetType().GetCustomAttribute<DisplayerAttribute>(true);
+                    DisplayerAttribute display = GetType().GetCustomAttribute<DisplayerAttribute>(true);
                     if (display != null)
                     {
                         ID = display.ID ?? ID;
@@ -49,21 +49,21 @@ namespace H.Providers.Mvvm
                     }
                 }
                 {
-                    var display = GetType().GetCustomAttribute<DisplayAttribute>(true);
+                    DisplayAttribute display = GetType().GetCustomAttribute<DisplayAttribute>(true);
                     if (display != null)
                     {
                         Name = display.Name ?? Name;
                         GroupName = display.GroupName;
                         Description = display.Description;
-                        var od = display.GetOrder();
+                        int? od = display.GetOrder();
                         if (od.HasValue)
                             Order = od.Value;
                     }
                 }
             }
 
-            var cmdps = GetType().GetProperties().Where(x => typeof(ICommand).IsAssignableFrom(x.PropertyType));
-            foreach (var cmdp in cmdps)
+            System.Collections.Generic.IEnumerable<PropertyInfo> cmdps = GetType().GetProperties().Where(x => typeof(ICommand).IsAssignableFrom(x.PropertyType));
+            foreach (PropertyInfo cmdp in cmdps)
             {
                 if (cmdp.CanRead == false)
                     continue;

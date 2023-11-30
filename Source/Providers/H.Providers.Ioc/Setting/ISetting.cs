@@ -1,15 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using System.Xml.Serialization;
-
-namespace H.Providers.Ioc
+﻿namespace H.Providers.Ioc
 {
     public interface ISetting
     {

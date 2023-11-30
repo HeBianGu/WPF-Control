@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.Windows;
 
@@ -18,7 +18,7 @@ namespace H.Controls.PropertyGrid
 
         public static void OpenOnMouseLeftButtonClickChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            var control = (FrameworkElement)sender;
+            FrameworkElement control = (FrameworkElement)sender;
             if ((bool)e.NewValue)
             {
                 control.PreviewMouseLeftButtonDown += (s, args) =>

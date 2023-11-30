@@ -16,7 +16,7 @@
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form;component/FormPresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-  
+
 
     <!--<DataTemplate x:Key="S.DataTemplate.TextPropertyItem.Weight" DataType="{x:Type local:TextPropertyItem}">
         <TextBox IsReadOnly="{Binding ReadOnly}" Text="{Binding Value, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
@@ -112,7 +112,9 @@
 
             <Expander Background="Transparent">
                 <Expander.Header>
-                    <DockPanel Margin="1,0,0,0" HorizontalAlignment="Stretch" LastChildFill="False">
+                    <DockPanel Margin="1,0,0,0"
+                               HorizontalAlignment="Stretch"
+                               LastChildFill="False">
                         <TextBlock>
                             <Run Text="{Binding Name}" />
                             <Run Text="[" />
@@ -144,13 +146,17 @@
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <DockPanel LastChildFill="True">
-                                    <TextBlock Margin="0,0,0,0" VerticalAlignment="Center" Text="[" />
+                                    <TextBlock Margin="0,0,0,0"
+                                               VerticalAlignment="Center"
+                                               Text="[" />
                                     <TextBlock VerticalAlignment="Center">
                                         <!--<h:Interaction.Behaviors>
                                             <h:ItemsControlItemIndexBehavior />
                                         </h:Interaction.Behaviors>-->
                                     </TextBlock>
-                                    <TextBlock Margin="0,0,5,0" VerticalAlignment="Center" Text="]" />
+                                    <TextBlock Margin="0,0,5,0"
+                                               VerticalAlignment="Center"
+                                               Text="]" />
                                     <Button DockPanel.Dock="Right" Visibility="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl}, Path=DataContext.ReadOnly, Converter={x:Static h:Converter.GetTrueToCollapsed}}">
                                         <!--<h:Interaction.Triggers>
                                             <h:EventTrigger EventName="Click">
@@ -161,7 +167,9 @@
                                             <h:RemoveItemVisualTreeButtonBehavior/>
                                         </h:Interaction.Behaviors>-->
                                     </Button>
-                                    <TextBox Width="Auto" HorizontalAlignment="Stretch" Text="{Binding Value, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+                                    <TextBox Width="Auto"
+                                             HorizontalAlignment="Stretch"
+                                             Text="{Binding Value, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
                                         <!--<h:Interaction.Triggers>
                                             <h:EventTrigger EventName="TextChanged">
                                                 <h:CallMethodAction MethodName="RefreshValue" TargetObject="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext}" />
@@ -237,7 +245,9 @@
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type local:DictionaryPropertyViewItem}">
-        <Expander Padding="0" Header="{Binding Name}" IsExpanded="False">
+        <Expander Padding="0"
+                  Header="{Binding Name}"
+                  IsExpanded="False">
             <ItemsControl ItemsSource="{Binding Value}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>

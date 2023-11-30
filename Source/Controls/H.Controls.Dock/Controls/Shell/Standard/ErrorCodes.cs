@@ -1,22 +1,10 @@
-﻿/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
-
+﻿
 using System;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Reflection;
 using System.Runtime.InteropServices;
-
-/**************************************************************************\
-    Copyright Microsoft Corporation. All Rights Reserved.
-\**************************************************************************/
 
 namespace Standard
 {
@@ -322,7 +310,7 @@ namespace Standard
             // Facility has 11 bits reserved (different than SCODES, which have 4 bits reserved)
             // MSDN documentation incorrectly uses 12 bits for the ESE facility (e5e), so go ahead and let that one slide.
             // And WIC also ignores it the documented size...
-            Assert.Implies((int)facility != (int)((int)facility & 0x1FF), facility == Facility.Ese || facility == Facility.WinCodec);
+            Assert.Implies((int)facility != ((int)facility & 0x1FF), facility == Facility.Ese || facility == Facility.WinCodec);
             // Code has 4 bits reserved.
             Assert.AreEqual(code, code & 0xFFFF);
 
@@ -348,7 +336,7 @@ namespace Standard
         public static int GetCode(int error)
         {
             // #define HRESULT_CODE(hr)    ((hr) & 0xFFFF)
-            return (int)(error & 0xFFFF);
+            return error & 0xFFFF;
         }
 
         #region Overrides
@@ -370,11 +358,11 @@ namespace Standard
             // CONSIDER: This data is static.  It could be cached
             // after first usage for fast lookup since the keys are unique.
             //
-            foreach (var publicStaticField in typeof(HRESULT).GetFields(BindingFlags.Static | BindingFlags.Public))
+            foreach (FieldInfo publicStaticField in typeof(HRESULT).GetFields(BindingFlags.Static | BindingFlags.Public))
             {
                 if (publicStaticField.FieldType == typeof(HRESULT))
                 {
-                    var hr = (HRESULT)publicStaticField.GetValue(null);
+                    HRESULT hr = (HRESULT)publicStaticField.GetValue(null);
                     if (hr == this)
                         return publicStaticField.Name;
                 }
@@ -383,11 +371,11 @@ namespace Standard
             // Try Win32 error codes also
             if (Facility == Facility.Win32)
             {
-                foreach (var publicStaticField in typeof(Win32Error).GetFields(BindingFlags.Static | BindingFlags.Public))
+                foreach (FieldInfo publicStaticField in typeof(Win32Error).GetFields(BindingFlags.Static | BindingFlags.Public))
                 {
                     if (publicStaticField.FieldType == typeof(Win32Error))
                     {
-                        var error = (Win32Error)publicStaticField.GetValue(null);
+                        Win32Error error = (Win32Error)publicStaticField.GetValue(null);
                         if ((HRESULT)error == this)
                             return "HRESULT_FROM_WIN32(" + publicStaticField.Name + ")";
                     }
@@ -435,8 +423,8 @@ namespace Standard
             if (string.IsNullOrEmpty(message))
                 message = ToString();
 #if DEBUG
-			else
-				message += " (" + ToString() + ")";
+            else
+                message += " (" + ToString() + ")";
 #endif
             // Wow.  Reflection in a throw call.  Later on this may turn out to have been a bad idea.
             // If you're throwing an exception I assume it's OK for me to take some time to give it back.
@@ -449,7 +437,7 @@ namespace Standard
             // the process of implementing an IErrorInfo and then use that.  There's no stock
             // implementations of IErrorInfo available and I don't think it's worth the maintenance
             // overhead of doing it, nor would it have significant value over this approach.
-            var e = Marshal.GetExceptionForHR((int)_value, new IntPtr(-1));
+            Exception e = Marshal.GetExceptionForHR((int)_value, new IntPtr(-1));
             Assert.IsNotNull(e);
             // ArgumentNullException doesn't have the right constructor parameters,
             // (nor does Win32Exception...)
@@ -469,7 +457,7 @@ namespace Standard
             }
             else
             {
-                var cons = e.GetType().GetConstructor(new[] { typeof(string) });
+                ConstructorInfo cons = e.GetType().GetConstructor(new[] { typeof(string) });
                 if (null != cons)
                 {
                     e = cons.Invoke(new object[] { message }) as Exception;

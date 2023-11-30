@@ -1,14 +1,11 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 
-using System.Threading.Tasks;
-using System.Threading;
-using System.Windows.Documents;
-using System.Windows;
-using System.Windows.Controls;
 using H.Providers.Ioc;
 using System.Linq;
+using System.Windows;
+using System.Windows.Documents;
 
 namespace H.Modules.Guide
 {
@@ -18,31 +15,31 @@ namespace H.Modules.Guide
         {
             if (this.CanShow() == false)
                 this.Close();
-            var child = owner ?? Application.Current.MainWindow.Content as UIElement;
-            var layer = AdornerLayer.GetAdornerLayer(child);
-            var adorner = new GuideBoxAdorner(child, () => this.Close());
+            UIElement child = owner ?? Application.Current.MainWindow.Content as UIElement;
+            AdornerLayer layer = AdornerLayer.GetAdornerLayer(child);
+            GuideBoxAdorner adorner = new GuideBoxAdorner(child, () => this.Close());
             layer.Add(adorner);
         }
 
-        bool CanShow(UIElement owner = null)
+        private bool CanShow(UIElement owner = null)
         {
             return Application.Current.Dispatcher.Invoke(() =>
               {
-                  var child = owner ?? Application.Current.MainWindow.Content as UIElement;
-                  var layer = AdornerLayer.GetAdornerLayer(child);
-                  var adorners = layer.GetAdorners(child)?.OfType<GuideBoxAdorner>();
+                  UIElement child = owner ?? Application.Current.MainWindow.Content as UIElement;
+                  AdornerLayer layer = AdornerLayer.GetAdornerLayer(child);
+                  System.Collections.Generic.IEnumerable<GuideBoxAdorner> adorners = layer.GetAdorners(child)?.OfType<GuideBoxAdorner>();
                   return adorners == null || adorners.Count() == 0;
               });
         }
 
-        void Close()
+        private void Close()
         {
             Application.Current.Dispatcher.Invoke(() =>
             {
-                var child = Application.Current.MainWindow.Content as UIElement;
-                var layer = AdornerLayer.GetAdornerLayer(child);
-                var adorners = layer.GetAdorners(child).OfType<GuideBoxAdorner>();
-                foreach (var adorner in adorners)
+                UIElement child = Application.Current.MainWindow.Content as UIElement;
+                AdornerLayer layer = AdornerLayer.GetAdornerLayer(child);
+                System.Collections.Generic.IEnumerable<GuideBoxAdorner> adorners = layer.GetAdorners(child).OfType<GuideBoxAdorner>();
+                foreach (GuideBoxAdorner adorner in adorners)
                 {
                     layer.Remove(adorner);
                 }

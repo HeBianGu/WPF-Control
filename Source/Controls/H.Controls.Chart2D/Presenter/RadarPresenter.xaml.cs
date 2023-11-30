@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 using System;
@@ -17,7 +17,7 @@ namespace H.Controls.Chart2D
         public RadarPresenter()
         {
             this.Height = 500;
-            var data = Enumerable.Range(0, 6).Select(x => x + random.NextDouble() * 10);
+            IEnumerable<double> data = Enumerable.Range(0, 6).Select(x => x + (random.NextDouble() * 10));
             this.RefreshData(data);
         }
         public RadarPresenter(IEnumerable<double> data) : this()
@@ -28,7 +28,7 @@ namespace H.Controls.Chart2D
         public RadarPresenter(IChartDataProvider dataProvider) : this()
         {
             this.xDisplay = dataProvider.GetData().Select(x => x.Item1).ToObservable();
-            var data = dataProvider.GetData().Select(x => x.Item2);
+            IEnumerable<double> data = dataProvider.GetData().Select(x => x.Item2);
             this.RefreshData(data);
         }
 
@@ -51,7 +51,7 @@ namespace H.Controls.Chart2D
 
         protected virtual void LoadxAxis(IEnumerable<double> data, double max = double.PositiveInfinity, double min = 0.0, int count = 5)
         {
-            var ds = this.Load(data, max, min, 5);
+            IEnumerable<double> ds = this.Load(data, max, min, 5);
             this.xAxis = new DoubleCollection(ds);
         }
 

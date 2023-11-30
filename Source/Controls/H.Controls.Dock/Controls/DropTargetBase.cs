@@ -1,12 +1,4 @@
-﻿/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
-
+﻿
 using System.ComponentModel;
 using System.Windows;
 
@@ -21,7 +13,7 @@ namespace H.Controls.Dock.Controls
 
         /// <summary>IsDraggingOver Attached Dependency Property</summary>
         public static readonly DependencyProperty IsDraggingOverProperty = DependencyProperty.RegisterAttached("IsDraggingOver", typeof(bool), typeof(DropTargetBase),
-                new FrameworkPropertyMetadata((bool)false));
+                new FrameworkPropertyMetadata(false));
 
         /// <summary>Gets wether the user is dragging a window over the target element.</summary>
         [Bindable(true), Description("Gets wether the user is dragging a window over the target element."), Category("Other")]

@@ -28,7 +28,7 @@ namespace H.Extensions.Tree
         {
             if (this.Tree == null)
                 return;
-            foreach (var item in this.AssociatedObject.ItemsSource)
+            foreach (object item in this.AssociatedObject.ItemsSource)
             {
                 if (item is TreeNodeBase<object> node)
                 {
@@ -37,10 +37,10 @@ namespace H.Extensions.Tree
                     if (node.Nodes.Count > 0)
                         continue;
 
-                    var chidren = this.Tree.GetTreeNodes(node.Model, false);
+                    System.Collections.Generic.IEnumerable<TreeNodeBase<object>> chidren = this.Tree.GetTreeNodes(node.Model, false);
                     node.Nodes = new ObservableCollection<TreeNodeBase<object>>(chidren);
                     System.Diagnostics.Debug.WriteLine(node.Nodes.Count);
-                    node.IsLoaded= true;
+                    node.IsLoaded = true;
                 }
             }
         }

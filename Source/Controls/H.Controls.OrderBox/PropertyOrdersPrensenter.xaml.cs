@@ -1,16 +1,15 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Reflection;
-using System.Linq;
-using System.Xml.Serialization;
-using H.Providers.Mvvm;
 using H.Providers.Ioc;
-using System.Text.Json.Serialization;
+using H.Providers.Mvvm;
+using System;
 using System.Collections;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Reflection;
+using System.Text.Json.Serialization;
+using System.Xml.Serialization;
 
 namespace H.Controls.OrderBox
 {
@@ -23,7 +22,7 @@ namespace H.Controls.OrderBox
 
         public PropertyOrdersPrensenter(Type modelTyle, Func<PropertyInfo, bool> predicate = null)
         {
-            var ps = modelTyle.GetProperties().Where(x => x.PropertyType.IsPrimitive || x.PropertyType == typeof(DateTime) || x.PropertyType == typeof(string)).ToObservable();
+            ObservableCollection<PropertyInfo> ps = modelTyle.GetProperties().Where(x => x.PropertyType.IsPrimitive || x.PropertyType == typeof(DateTime) || x.PropertyType == typeof(string)).ToObservable();
             if (predicate != null)
                 this.Properties = ps.Where(predicate).ToObservable();
             else
@@ -82,7 +81,7 @@ namespace H.Controls.OrderBox
         [XmlIgnore]
         public RelayCommand AddCommand => new RelayCommand(l =>
         {
-            var item = new PropertyOrderPrensenter() { ID = DateTime.Now.ToString("yyyyMMddHHmmssfff") };
+            PropertyOrderPrensenter item = new PropertyOrderPrensenter() { ID = DateTime.Now.ToString("yyyyMMddHHmmssfff") };
             item.Properties = this.Properties;
             item.Load();
             this.PropertyOrders.Add(item);
@@ -109,24 +108,25 @@ namespace H.Controls.OrderBox
         [JsonIgnore]
         [XmlIgnore]
         public IMetaSettingService MetaSettingService => new JsonMetaSettingService();
-        bool _loaded = false;
+
+        private bool _loaded = false;
         public void Load()
         {
             if (_loaded == true)
                 return;
-            var find = this.MetaSettingService?.Deserilize<PropertyOrdersPrensenter>(this.ID);
+            PropertyOrdersPrensenter find = this.MetaSettingService?.Deserilize<PropertyOrdersPrensenter>(this.ID);
             if (find == null)
                 return;
             this.PropertyOrders = find.PropertyOrders;
             if (find.SelectedIndex >= 0)
                 this.SelectedItem = find.PropertyOrders[find.SelectedIndex];
 
-            foreach (var item in find.PropertyOrders)
+            foreach (PropertyOrderPrensenter item in find.PropertyOrders)
             {
                 item.Properties = this.Properties;
-                foreach (var Order in item.Conditions)
+                foreach (PropertyOrder Order in item.Conditions)
                 {
-                    var propertyInfo = item.Properties.FirstOrDefault(x => x.Name == Order.PropertyName);
+                    PropertyInfo propertyInfo = item.Properties.FirstOrDefault(x => x.Name == Order.PropertyName);
                     Order.PropertyInfo = propertyInfo;
                 }
             }

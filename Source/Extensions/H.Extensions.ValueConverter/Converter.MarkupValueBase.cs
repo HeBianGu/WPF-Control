@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
-using System.Text;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Markup;
@@ -30,7 +28,7 @@ namespace H.Extensions.ValueConverter
 
         public object DefaultValue { get; set; } = DependencyProperty.UnsetValue;
 
-        public object DefaultBackValue { get; set; } = DependencyProperty.UnsetValue; 
+        public object DefaultBackValue { get; set; } = DependencyProperty.UnsetValue;
 
         //  Do ：目前作用不大
         #region - INotifyPropertyChanged -

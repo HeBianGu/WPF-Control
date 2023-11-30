@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Windows.Data;
@@ -54,7 +54,7 @@ namespace H.Controls.PropertyGrid
             double blendRatio = this.BlendedColorRatio;
             double sourceRatio = 1 - blendRatio;
 
-            double result = (((double)original) * sourceRatio) + (((double)blend) * blendRatio);
+            double result = (original * sourceRatio) + (blend * blendRatio);
             result = Math.Round(result);
             result = Math.Min(255d, Math.Max(0d, result));
             return System.Convert.ToByte(result);

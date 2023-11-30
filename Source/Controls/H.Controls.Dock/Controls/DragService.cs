@@ -1,11 +1,3 @@
-/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
 
 using H.Controls.Dock.Layout;
 using System;
@@ -16,33 +8,6 @@ using System.Windows.Interop;
 
 namespace H.Controls.Dock.Controls
 {
-    /// <summary>
-    /// This class manages the drag & drop behavior when the user drags a:
-    /// - document (<see cref="LayoutDocument"/>) or
-    /// - tool window (<see cref="LayoutAnchorable"/>) and drops it in an alternative position.
-    ///
-    /// The <see cref="LayoutFloatingWindowControl"/> contains a <see cref="DragService"/> field
-    /// in order to implement the drag behavior for inheriting classes
-    /// (<see cref="LayoutDocumentFloatingWindowControl"/> and <see cref="LayoutAnchorableFloatingWindowControl"/>).
-    ///
-    /// Dragging a <see cref="LayoutDocument"/> usually results in a converted <see cref="LayoutDocumentFloatingWindow"/>
-    /// being actually dragged around. Likewise, Dragging a <see cref="LayoutAnchorable"/> usually
-    /// results in a converted <see cref="LayoutAnchorableFloatingWindow"/> being dragged around.
-    ///
-    /// The behavior at the drop position can be that the floating window control is converted back into its
-    /// original class type and being inserted/dropped at the final drop target position. But its also possible
-    /// that the floating window control remains a floating window if the user simply drags an item out and positions
-    /// it at no specific drop target position. The behavior at the final drop position is not always the
-    /// same since it depends on:
-    /// 1- the item being dragged around (and its content) and
-    /// 2- the drop position (and its content).
-    /// </summary>
-    /// <seealso cref="LayoutAnchorable"/>
-    /// <seealso cref="LayoutDocument"/>
-    /// <seealso cref="LayoutAnchorableFloatingWindow"/>
-    /// <seealso cref="LayoutDocumentFloatingWindow"/>
-    /// <seealso cref="LayoutDocumentFloatingWindowControl"/>
-    /// <seeslso cref="LayoutAnchorableFloatingWindowControl"/>).
     internal class DragService
     {
         #region fields
@@ -94,7 +59,7 @@ namespace H.Controls.Dock.Controls
                 _isDrag = true;
             }
 
-            var newHost = _overlayWindowHosts.FirstOrDefault(oh => oh.HitTestScreen(dragPosition));
+            IOverlayWindowHost newHost = _overlayWindowHosts.FirstOrDefault(oh => oh.HitTestScreen(dragPosition));
 
             if (_currentHost != null || _currentHost != newHost)
             {
@@ -176,7 +141,7 @@ namespace H.Controls.Dock.Controls
             areasToRemove.ForEach(a =>
                 _currentWindowAreas.Remove(a));
 
-            var areasToAdd =
+            List<IDropArea> areasToAdd =
                 _currentHost.GetDropAreas(_floatingWindow).Where(cw => !_currentWindowAreas.Contains(cw) && cw.DetectionRect.Contains(cw.TransformToDeviceDPI(dragPosition))).ToList();
 
             _currentWindowAreas.AddRange(areasToAdd);
@@ -222,8 +187,8 @@ namespace H.Controls.Dock.Controls
 
             UpdateMouseLocation(dropLocation);
 
-            var floatingWindowModel = _floatingWindow.Model as LayoutFloatingWindow;
-            var root = floatingWindowModel.Root;
+            LayoutFloatingWindow floatingWindowModel = _floatingWindow.Model as LayoutFloatingWindow;
+            ILayoutRoot root = floatingWindowModel.Root;
 
             if (_currentHost != null)
                 _currentHost.HideOverlayWindow();
@@ -255,7 +220,7 @@ namespace H.Controls.Dock.Controls
         /// </summary>
         internal void Abort()
         {
-            var floatingWindowModel = _floatingWindow.Model as LayoutFloatingWindow;
+            LayoutFloatingWindow floatingWindowModel = _floatingWindow.Model as LayoutFloatingWindow;
 
             _currentWindowAreas.ForEach(a => _currentWindow.DragLeave(a));
 

@@ -1,11 +1,3 @@
-/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
 
 using H.Controls.Dock.Layout;
 using System;
@@ -71,7 +63,7 @@ namespace H.Controls.Dock.Controls
         /// <summary>Provides derived classes an opportunity to handle changes to the <see cref="Model"/> property.</summary>
         protected virtual void OnModelChanged(DependencyPropertyChangedEventArgs e)
         {
-            var layoutItem = (Model?.Root?.Manager)?.GetLayoutItemFromModel(Model);
+            LayoutItem layoutItem = (Model?.Root?.Manager)?.GetLayoutItemFromModel(Model);
             SetLayoutItem(layoutItem);
             if (layoutItem != null)
                 Model.TabItem = this;
@@ -125,7 +117,7 @@ namespace H.Controls.Dock.Controls
             _isMouseDown = Mouse.LeftButton == MouseButtonState.Pressed && _isMouseDown;
             if (_isMouseDown)
             {
-                var ptMouseMove = e.GetPosition(this);
+                Point ptMouseMove = e.GetPosition(this);
                 CaptureMouse();
                 if (Math.Abs(ptMouseMove.X - _mouseDownPoint.X) > SystemParameters.MinimumHorizontalDragDistance || Math.Abs(ptMouseMove.Y - _mouseDownPoint.Y) > SystemParameters.MinimumVerticalDragDistance)
                 {
@@ -135,21 +127,21 @@ namespace H.Controls.Dock.Controls
                 }
             }
             if (!IsMouseCaptured || !_allowDrag) return;
-            var mousePosInScreenCoord = this.PointToScreenDPI(e.GetPosition(this));
+            Point mousePosInScreenCoord = this.PointToScreenDPI(e.GetPosition(this));
             if (!_parentDocumentTabPanelScreenArea.Contains(mousePosInScreenCoord))
                 StartDraggingFloatingWindowForContent();
             else
             {
-                var indexOfTabItemWithMouseOver = _otherTabsScreenArea.FindIndex(r => r.Contains(mousePosInScreenCoord));
+                int indexOfTabItemWithMouseOver = _otherTabsScreenArea.FindIndex(r => r.Contains(mousePosInScreenCoord));
                 if (indexOfTabItemWithMouseOver < 0) return;
-                var targetModel = _otherTabs[indexOfTabItemWithMouseOver].Content as LayoutContent;
-                var container = Model.Parent as ILayoutContainer;
-                var containerPane = Model.Parent as ILayoutPane;
+                LayoutContent targetModel = _otherTabs[indexOfTabItemWithMouseOver].Content as LayoutContent;
+                ILayoutContainer container = Model.Parent;
+                ILayoutPane containerPane = Model.Parent as ILayoutPane;
 
                 if (containerPane is LayoutDocumentPane layoutDocumentPane && !layoutDocumentPane.CanRepositionItems) return;
                 if (containerPane.Parent is LayoutDocumentPaneGroup layoutDocumentPaneGroup && !layoutDocumentPaneGroup.CanRepositionItems) return;
 
-                var childrenList = container.Children.ToList();
+                List<ILayoutElement> childrenList = container.Children.ToList();
                 containerPane.MoveChild(childrenList.IndexOf(Model), childrenList.IndexOf(targetModel));
                 Model.IsActive = true;
                 _parentDocumentTabPanel.UpdateLayout();
@@ -200,10 +192,10 @@ namespace H.Controls.Dock.Controls
             _parentDocumentTabPanel = this.FindLogicalAncestor<DocumentPaneTabPanel>();
             _parentDocumentTabPanelScreenArea = _parentDocumentTabPanel.GetScreenArea();
             _otherTabs = _parentDocumentTabPanel.Children.Cast<TabItem>().Where(ch => ch.Visibility != Visibility.Collapsed).ToList();
-            var currentTabScreenArea = this.FindLogicalAncestor<TabItem>().GetScreenArea();
+            Rect currentTabScreenArea = this.FindLogicalAncestor<TabItem>().GetScreenArea();
             _otherTabsScreenArea = _otherTabs.Select(ti =>
             {
-                var screenArea = ti.GetScreenArea();
+                Rect screenArea = ti.GetScreenArea();
                 return new Rect(screenArea.Left, screenArea.Top, currentTabScreenArea.Width, screenArea.Height);
             }).ToList();
         }
@@ -218,7 +210,7 @@ namespace H.Controls.Dock.Controls
             ReleaseMouseCapture();
             // BD: 17.08.2020 Remove that bodge and handle CanClose=false && CanHide=true in XAML
             //if (Model is LayoutAnchorable layoutAnchorable) layoutAnchorable.ResetCanCloseInternal();
-            var manager = Model.Root.Manager;
+            DockingManager manager = Model.Root.Manager;
             manager.StartDraggingFloatingWindowForContent(Model);
         }
 

@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using H.Providers.Ioc;
 using System;
@@ -7,7 +7,7 @@ using System.Collections.ObjectModel;
 
 namespace H.Extensions.ViewModel
 {
-    public interface IObservableSource<T>: IObservableSource
+    public interface IObservableSource<T> : IObservableSource
     {
         Predicate<T> Fileter { get; set; }
         T SelectedItem { get; set; }

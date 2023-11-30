@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections;
@@ -14,8 +14,8 @@ namespace H.Controls.PropertyGrid
     {
         #region Members
 
-        bool _surpressTextChanged;
-        bool _conversionFailed;
+        private bool _surpressTextChanged;
+        private bool _conversionFailed;
 
         #endregion //Members
 
@@ -200,7 +200,7 @@ namespace H.Controls.PropertyGrid
             list.Clear();
 
             int counter = 0;
-            foreach (var item in items)
+            foreach (object item in items)
             {
                 if (list is Array)
                 {

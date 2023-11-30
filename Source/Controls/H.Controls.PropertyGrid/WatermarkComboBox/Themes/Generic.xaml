@@ -5,7 +5,9 @@
                     xmlns:local="clr-namespace:H.Controls.PropertyGrid">
 
     <DataTemplate x:Key="DefaultWatermarkTemplate">
-        <ContentControl Content="{Binding}" Focusable="False" Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+        <ContentControl Content="{Binding}"
+                        Focusable="False"
+                        Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
     </DataTemplate>
 
     <!--  ===============================================================================  -->
@@ -35,7 +37,8 @@
                         <ScrollViewer x:Name="DropDownScrollViewer">
                             <Grid x:Name="grid">
                                 <Canvas x:Name="canvas"
-                                        Width="0" Height="0"
+                                        Width="0"
+                                        Height="0"
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Top">
                                     <Rectangle x:Name="OpaqueRect"
@@ -43,7 +46,9 @@
                                                Height="{Binding ActualHeight, ElementName=DropDownBorder}"
                                                Fill="{Binding Background, ElementName=DropDownBorder}" />
                                 </Canvas>
-                                <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                <ItemsPresenter x:Name="ItemsPresenter"
+                                                KeyboardNavigation.DirectionalNavigation="Contained"
+                                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                             </Grid>
                         </ScrollViewer>
                     </Border>

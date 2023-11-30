@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.Windows;
 using System.Windows.Controls.Primitives;
@@ -70,7 +70,7 @@ namespace H.Controls.PropertyGrid
         {
             get
             {
-                return GetValue(ContentProperty) as object;
+                return GetValue(ContentProperty);
             }
             set
             {
@@ -249,7 +249,7 @@ namespace H.Controls.PropertyGrid
                 case Key.Enter:
                     {
                         //Do not Spin on enter Key when spinners have focus
-                        if (((this.IncreaseButton != null) && (this.IncreaseButton.IsFocused))
+                        if (((this.IncreaseButton != null) && this.IncreaseButton.IsFocused)
                           || ((this.DecreaseButton != null) && this.DecreaseButton.IsFocused))
                         {
                             e.Handled = true;
@@ -267,7 +267,7 @@ namespace H.Controls.PropertyGrid
             {
                 if (e.Delta != 0)
                 {
-                    var spinnerEventArgs = new SpinEventArgs(Spinner.SpinnerSpinEvent, (e.Delta < 0) ? SpinDirection.Decrease : SpinDirection.Increase, true);
+                    SpinEventArgs spinnerEventArgs = new SpinEventArgs(Spinner.SpinnerSpinEvent, (e.Delta < 0) ? SpinDirection.Decrease : SpinDirection.Increase, true);
                     this.OnSpin(spinnerEventArgs);
                     e.Handled = spinnerEventArgs.Handled;
                 }

@@ -1,8 +1,7 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace H.Controls.ProgressButton
 {
@@ -17,7 +16,7 @@ namespace H.Controls.ProgressButton
 
         public ProgressButton()
         {
-            
+
         }
 
 
@@ -27,7 +26,7 @@ namespace H.Controls.ProgressButton
             set { SetValue(IsIndeterminateProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty IsIndeterminateProperty =
             DependencyProperty.Register("IsIndeterminate", typeof(bool), typeof(ProgressButton), new FrameworkPropertyMetadata(default(bool), (d, e) =>
              {
@@ -54,7 +53,7 @@ namespace H.Controls.ProgressButton
             set { SetValue(IsBusyProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty IsBusyProperty =
             DependencyProperty.Register("IsBusy", typeof(bool), typeof(ProgressButton), new FrameworkPropertyMetadata(default(bool), (d, e) =>
              {
@@ -81,7 +80,7 @@ namespace H.Controls.ProgressButton
             set { SetValue(PercentProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty PercentProperty =
             DependencyProperty.Register("Percent", typeof(double), typeof(ProgressButton), new FrameworkPropertyMetadata(default(double), (d, e) =>
              {
@@ -108,7 +107,7 @@ namespace H.Controls.ProgressButton
             set { SetValue(MessageProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty MessageProperty =
             DependencyProperty.Register("Message", typeof(string), typeof(ProgressButton), new FrameworkPropertyMetadata(default(string), (d, e) =>
              {
@@ -135,7 +134,7 @@ namespace H.Controls.ProgressButton
             set { SetValue(ProgressOpacityProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty ProgressOpacityProperty =
             DependencyProperty.Register("ProgressOpacity", typeof(double), typeof(ProgressButton), new FrameworkPropertyMetadata(0.5, (d, e) =>
              {

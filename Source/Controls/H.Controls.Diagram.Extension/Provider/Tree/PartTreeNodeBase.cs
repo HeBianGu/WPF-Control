@@ -1,7 +1,4 @@
-﻿
-
-
-using H.Providers.Mvvm;
+﻿using H.Providers.Mvvm;
 
 namespace H.Controls.Diagram.Extension
 {

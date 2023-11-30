@@ -18,8 +18,8 @@
                      xDisplay="{Binding xDisplay}"
                      yAxis="{Binding yAxis}">
             <local:Series yDatas="{Binding Data}">
-                <local:Line/>
-                <local:Scatter/>
+                <local:Line />
+                <local:Scatter />
             </local:Series>
         </local:Chart>
     </DataTemplate>

@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.Linq;
 using System.Windows;
@@ -23,7 +23,7 @@ namespace H.Controls.Chart2D
             set { SetValue(WidthPercentProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty WidthPercentProperty =
             DependencyProperty.Register("WidthPercent", typeof(double), typeof(MarkPosition), new PropertyMetadata(0.8, (d, e) =>
             {
@@ -43,7 +43,7 @@ namespace H.Controls.Chart2D
             set { SetValue(ItemPercentProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty ItemPercentProperty =
             DependencyProperty.Register("ItemPercent", typeof(double), typeof(MarkPosition), new PropertyMetadata(1.0, (d, e) =>
             {
@@ -63,7 +63,7 @@ namespace H.Controls.Chart2D
             set { SetValue(MulCountProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty MulCountProperty =
             DependencyProperty.Register("MulCount", typeof(int), typeof(MarkPosition), new PropertyMetadata(1, (d, e) =>
             {
@@ -84,7 +84,7 @@ namespace H.Controls.Chart2D
             set { SetValue(MulIndexProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty MulIndexProperty =
             DependencyProperty.Register("MulIndex", typeof(int), typeof(MarkPosition), new PropertyMetadata(0, (d, e) =>
             {
@@ -103,7 +103,7 @@ namespace H.Controls.Chart2D
             set { SetValue(AlignmentCenterProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty AlignmentCenterProperty =
             DependencyProperty.Register("AlignmentCenter", typeof(bool), typeof(MarkPosition), new PropertyMetadata(default(bool), (d, e) =>
             {
@@ -124,7 +124,7 @@ namespace H.Controls.Chart2D
             set { SetValue(MarkForegroundProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty MarkForegroundProperty =
             DependencyProperty.Register("MarkForeground", typeof(Brush), typeof(MarkPosition), new FrameworkPropertyMetadata(Brushes.White, (d, e) =>
             {
@@ -152,9 +152,9 @@ namespace H.Controls.Chart2D
             {
                 double span = (this.maxX - this.minX) / this.xAxis.Count;
 
-                this.maxX = this.maxX + span / 2;
+                this.maxX = this.maxX + (span / 2);
 
-                this.minX = this.minX - span / 2;
+                this.minX = this.minX - (span / 2);
             }
         }
 
@@ -165,7 +165,7 @@ namespace H.Controls.Chart2D
             set { SetValue(MarkValueTypeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty MarkValueTypeProperty =
             DependencyProperty.Register("MarkValueType", typeof(MarkValueType), typeof(MarkPosition), new PropertyMetadata(default(MarkValueType), (d, e) =>
              {
@@ -187,7 +187,7 @@ namespace H.Controls.Chart2D
             set { SetValue(PointProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty PointProperty =
             DependencyProperty.Register("Point", typeof(Point), typeof(MarkPosition), new PropertyMetadata(default(Point), (d, e) =>
              {
@@ -206,7 +206,7 @@ namespace H.Controls.Chart2D
         {
             if (this.MarkValueType == MarkValueType.Default) return this.Point;
 
-            double span = this.AlignmentCenter ? (this.maxX - this.minX) / (this.xAxis.Count) : 0;
+            double span = this.AlignmentCenter ? (this.maxX - this.minX) / this.xAxis.Count : 0;
 
             double itemWidth = span * this.WidthPercent;
 
@@ -234,7 +234,7 @@ namespace H.Controls.Chart2D
 
             double x = this.xAxis[index];
 
-            return new Point((x - itemWidth / 2) + (this.MulIndex + 0.5) * (itemWidth / this.MulCount), v);
+            return new Point(x - (itemWidth / 2) + ((this.MulIndex + 0.5) * (itemWidth / this.MulCount)), v);
         }
 
         public virtual void DrawMark()
@@ -251,13 +251,13 @@ namespace H.Controls.Chart2D
             {
                 if (this.xAxis.Count == 1)
                 {
-                    Canvas.SetLeft(t, this.ActualWidth / 2 - t.ActualWidth / 2);
-                    Canvas.SetTop(t, this.ActualHeight / 2 - t.ActualHeight * 1.2);
+                    Canvas.SetLeft(t, (this.ActualWidth / 2) - (t.ActualWidth / 2));
+                    Canvas.SetTop(t, (this.ActualHeight / 2) - (t.ActualHeight * 1.2));
                 }
                 else
                 {
-                    Canvas.SetLeft(t, this.GetX(point.X) - t.ActualWidth / 2);
-                    Canvas.SetTop(t, this.GetY(point.Y) - t.ActualHeight * 1.2);
+                    Canvas.SetLeft(t, this.GetX(point.X) - (t.ActualWidth / 2));
+                    Canvas.SetTop(t, this.GetY(point.Y) - (t.ActualHeight * 1.2));
                 }
             };
 

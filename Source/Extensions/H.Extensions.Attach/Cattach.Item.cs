@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.ComponentModel;
 using System.Windows;
@@ -133,7 +133,7 @@ namespace H.Extensions.Attach
             obj.SetValue(ItemBorderThicknessProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty ItemBorderThicknessProperty =
             DependencyProperty.RegisterAttached("ItemBorderThickness", typeof(Thickness), typeof(Cattach), new FrameworkPropertyMetadata(default(Thickness), FrameworkPropertyMetadataOptions.Inherits, OnItemBorderThicknessChanged));
 
@@ -157,7 +157,7 @@ namespace H.Extensions.Attach
             obj.SetValue(ItemHorizontalAlignmentProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty ItemHorizontalAlignmentProperty =
             DependencyProperty.RegisterAttached("ItemHorizontalAlignment", typeof(HorizontalAlignment), typeof(Cattach), new PropertyMetadata(default(HorizontalAlignment), OnItemHorizontalAlignmentChanged));
 
@@ -181,13 +181,13 @@ namespace H.Extensions.Attach
             obj.SetValue(ItemVerticalAlignmentProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty ItemVerticalAlignmentProperty =
             DependencyProperty.RegisterAttached("ItemVerticalAlignment", typeof(VerticalAlignment), typeof(Cattach), new PropertyMetadata(default(VerticalAlignment), OnItemVerticalAlignmentChanged));
 
-        static public void OnItemVerticalAlignmentChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnItemVerticalAlignmentChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             VerticalAlignment n = (VerticalAlignment)e.NewValue;
 
@@ -207,13 +207,13 @@ namespace H.Extensions.Attach
             obj.SetValue(ItemMinHeightProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty ItemMinHeightProperty =
             DependencyProperty.RegisterAttached("ItemMinHeight", typeof(double), typeof(Cattach), new PropertyMetadata(default(double), OnItemMinHeightChanged));
 
-        static public void OnItemMinHeightChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnItemMinHeightChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             double n = (double)e.NewValue;
 
@@ -232,13 +232,13 @@ namespace H.Extensions.Attach
             obj.SetValue(ItemMinWidthProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty ItemMinWidthProperty =
             DependencyProperty.RegisterAttached("ItemMinWidth", typeof(double), typeof(Cattach), new PropertyMetadata(default(double), OnItemMinWidthChanged));
 
-        static public void OnItemMinWidthChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnItemMinWidthChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             double n = (double)e.NewValue;
 
@@ -256,13 +256,13 @@ namespace H.Extensions.Attach
             obj.SetValue(ItemMarginProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty ItemMarginProperty =
             DependencyProperty.RegisterAttached("ItemMargin", typeof(Thickness), typeof(Cattach), new PropertyMetadata(default(Thickness), OnItemMarginChanged));
 
-        static public void OnItemMarginChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnItemMarginChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             Thickness n = (Thickness)e.NewValue;
 
@@ -280,13 +280,13 @@ namespace H.Extensions.Attach
             obj.SetValue(ItemPaddingProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty ItemPaddingProperty =
             DependencyProperty.RegisterAttached("ItemPadding", typeof(Thickness), typeof(Cattach), new PropertyMetadata(default(Thickness), OnItemPaddingChanged));
 
-        static public void OnItemPaddingChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnItemPaddingChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             Thickness n = (Thickness)e.NewValue;
 
@@ -304,13 +304,13 @@ namespace H.Extensions.Attach
             obj.SetValue(ItemHorizontalContentAlignmentProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty ItemHorizontalContentAlignmentProperty =
             DependencyProperty.RegisterAttached("ItemHorizontalContentAlignment", typeof(HorizontalAlignment), typeof(Cattach), new PropertyMetadata(default(HorizontalAlignment), OnItemHorizontalContentAlignmentChanged));
 
-        static public void OnItemHorizontalContentAlignmentChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnItemHorizontalContentAlignmentChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             HorizontalAlignment n = (HorizontalAlignment)e.NewValue;
 
@@ -328,13 +328,13 @@ namespace H.Extensions.Attach
             obj.SetValue(ItemVerticalContentAlignmentProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty ItemVerticalContentAlignmentProperty =
             DependencyProperty.RegisterAttached("ItemVerticalContentAlignment", typeof(VerticalAlignment), typeof(Cattach), new PropertyMetadata(default(VerticalAlignment), OnItemVerticalContentAlignmentChanged));
 
-        static public void OnItemVerticalContentAlignmentChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnItemVerticalContentAlignmentChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             VerticalAlignment n = (VerticalAlignment)e.NewValue;
 
@@ -351,13 +351,13 @@ namespace H.Extensions.Attach
             obj.SetValue(ItemOverTemplateProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty ItemOverTemplateProperty =
             DependencyProperty.RegisterAttached("ItemOverTemplate", typeof(ControlTemplate), typeof(Cattach), new PropertyMetadata(default(ControlTemplate), OnItemOverTemplateChanged));
 
-        static public void OnItemOverTemplateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnItemOverTemplateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             ControlTemplate n = (ControlTemplate)e.NewValue;
 
@@ -375,13 +375,13 @@ namespace H.Extensions.Attach
             obj.SetValue(ItemsContianerWidthProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty ItemsContianerWidthProperty =
             DependencyProperty.RegisterAttached("ItemsContianerWidth", typeof(double), typeof(Cattach), new PropertyMetadata(default(double), OnItemsContianerWidthChanged));
 
-        static public void OnItemsContianerWidthChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnItemsContianerWidthChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             double n = (double)e.NewValue;
 
@@ -399,13 +399,13 @@ namespace H.Extensions.Attach
             obj.SetValue(SelectedItemTemplateProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty SelectedItemTemplateProperty =
             DependencyProperty.RegisterAttached("SelectedItemTemplate", typeof(DataTemplate), typeof(Cattach), new PropertyMetadata(default(DataTemplate), OnSelectedItemTemplateChanged));
 
-        static public void OnSelectedItemTemplateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnSelectedItemTemplateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             DataTemplate n = (DataTemplate)e.NewValue;
 

@@ -1,8 +1,7 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -12,7 +11,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media;
-using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace H.Providers.Mvvm
@@ -320,8 +318,8 @@ namespace H.Providers.Mvvm
         {
             if (e is ContentControl project)
             {
-                var adorner = this.GetParent<Adorner>(project);
-                var source = this.GetParent<ItemsControl>(adorner.AdornedElement);
+                Adorner adorner = this.GetParent<Adorner>(project);
+                ItemsControl source = this.GetParent<ItemsControl>(adorner.AdornedElement);
                 this.GetItemsSource<IList>(source).Remove(project.Content);
             }
         }
@@ -364,7 +362,7 @@ namespace H.Providers.Mvvm
         {
             //return this.CloneBy(x => x.GetCustomAttribute<BrowsableAttribute>()?.Browsable != false);
             //return this.CloneXml();
-            var txt = JsonSerializer.Serialize(this);
+            string txt = JsonSerializer.Serialize(this);
             return JsonSerializer.Deserialize(txt, this.GetType());
         }
     }
@@ -577,7 +575,7 @@ namespace H.Providers.Mvvm
     {
         public ColumnPropertyInfo(PropertyInfo t)
         {
-            var display = t.GetCustomAttribute<DisplayAttribute>();
+            DisplayAttribute display = t.GetCustomAttribute<DisplayAttribute>();
             this.Header = display?.Name ?? t.Name;
             this.PropertyInfo = t;
         }

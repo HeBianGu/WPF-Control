@@ -27,6 +27,29 @@
                         <Border.Background>
                             <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.MouseOver}}" />
                         </Border.Background>
+                        <!--<ContentPresenter Margin="{TemplateBinding Padding}"
+                                          HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          RecognizesAccessKey="True" />-->
+                        <Grid>
+                            <ContentPresenter x:Name="cp"
+                                              Margin="{TemplateBinding Padding}"
+                                              HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              RecognizesAccessKey="True" />
+                            <ProgressBar Height="Auto"
+                                         Background="Transparent"
+                                         BorderThickness="0"
+                                         Foreground="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Foreground}"
+                                         IsIndeterminate="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsIndeterminate}"
+                                         Maximum="1.0"
+                                         Minimum="0.0"
+                                         Opacity="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ProgressOpacity}"
+                                         Style="{x:Null}"
+                                         Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsBusy, Converter={x:Static h:Converter.GetTrueToVisible}}"
+                                         Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Percent}" />
+
+                        </Grid>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <!--<VisualStateGroup.Transitions>
@@ -57,28 +80,6 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <!--<ContentPresenter Margin="{TemplateBinding Padding}"
-                                          HorizontalAlignment="Center"
-                                          VerticalAlignment="Center"
-                                          RecognizesAccessKey="True" />-->
-                        <Grid>
-                            <ContentPresenter x:Name="cp" Margin="{TemplateBinding Padding}"
-                                              HorizontalAlignment="Center"
-                                              VerticalAlignment="Center"
-                                              RecognizesAccessKey="True" />
-                            <ProgressBar Height="Auto"
-                                         Background="Transparent"
-                                         BorderThickness="0"
-                                         Foreground="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Foreground}"
-                                         IsIndeterminate="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsIndeterminate}"
-                                         Maximum="1.0"
-                                         Minimum="0.0"
-                                         Opacity="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ProgressOpacity}"
-                                         Style="{x:Null}"
-                                         Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsBusy, Converter={x:Static h:Converter.GetTrueToVisible}}"
-                                         Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Percent}" />
-
-                        </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsBusy" Value="true">
@@ -105,7 +106,10 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.ProgressButton.Command, TypeInTargetAssembly={x:Type local:ProgressButton}}" BasedOn="{StaticResource {x:Static h:ProgressButton.DefaultKey}}" TargetType="{x:Type local:ProgressButton}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.ProgressButton.Command,
+                                        TypeInTargetAssembly={x:Type local:ProgressButton}}"
+           BasedOn="{StaticResource {x:Static h:ProgressButton.DefaultKey}}"
+           TargetType="{x:Type local:ProgressButton}">
         <Setter Property="IsBusy" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Command.IsBusy}" />
         <Setter Property="Percent" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Command.Percent}" />
         <Setter Property="IsIndeterminate" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Command.IsIndeterminate}" />

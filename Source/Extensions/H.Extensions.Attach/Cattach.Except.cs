@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.Windows;
 
@@ -16,7 +16,7 @@ namespace H.Extensions.Attach
             obj.SetValue(IsExceptSelfProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty IsExceptSelfProperty =
             DependencyProperty.RegisterAttached("IsExceptSelf", typeof(bool), typeof(Cattach), new PropertyMetadata(false, OnIsExceptSelfChanged));
 
@@ -40,7 +40,7 @@ namespace H.Extensions.Attach
             obj.SetValue(IsExcepChildrenProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty IsExcepChildrenProperty =
             DependencyProperty.RegisterAttached("IsExcepChildren", typeof(bool), typeof(Cattach), new PropertyMetadata(false, OnIsExcepChildrenChanged));
 

@@ -1,10 +1,8 @@
 ﻿using H.Controls.Adorner;
 using H.Providers.Ioc;
-using H.Providers.Ioc;
 using H.Providers.Mvvm;
 using System;
 using System.Linq;
-using System.Reflection.Metadata;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -49,10 +47,10 @@ namespace H.Modules.Messages.Dialog
 
         public async Task<bool?> ShowDialog(Window owner = null)
         {
-            var window = owner ?? Application.Current.MainWindow;
-            var child = window.Content as UIElement;
-            var layer = AdornerLayer.GetAdornerLayer(child);
-            var adorner = new PresenterAdorner(child, this);
+            Window window = owner ?? Application.Current.MainWindow;
+            UIElement child = window.Content as UIElement;
+            AdornerLayer layer = AdornerLayer.GetAdornerLayer(child);
+            PresenterAdorner adorner = new PresenterAdorner(child, this);
             layer.Add(adorner);
             _waitHandle.Reset();
             return await Task.Run(() =>
@@ -117,12 +115,12 @@ namespace H.Modules.Messages.Dialog
         {
             Application.Current.Dispatcher.Invoke(() =>
             {
-                var child = Application.Current.MainWindow.Content as UIElement;
-                var layer = AdornerLayer.GetAdornerLayer(child);
-                var adorners = layer.GetAdorners(child)?.OfType<PresenterAdorner>().Where(x => x.Presenter == this);
+                UIElement child = Application.Current.MainWindow.Content as UIElement;
+                AdornerLayer layer = AdornerLayer.GetAdornerLayer(child);
+                System.Collections.Generic.IEnumerable<PresenterAdorner> adorners = layer.GetAdorners(child)?.OfType<PresenterAdorner>().Where(x => x.Presenter == this);
                 if (adorners == null)
                     return;
-                foreach (var adorner in adorners)
+                foreach (PresenterAdorner adorner in adorners)
                 {
                     layer.Remove(adorner);
                 }

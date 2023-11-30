@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Globalization;
@@ -12,8 +12,8 @@ namespace H.Controls.PropertyGrid
         {
             if ((value != null) && (parameter != null))
             {
-                var firstValue = (double)value;
-                var secondValue = double.Parse(parameter as string);
+                double firstValue = (double)value;
+                double secondValue = double.Parse(parameter as string);
 
                 return firstValue + secondValue;
             }

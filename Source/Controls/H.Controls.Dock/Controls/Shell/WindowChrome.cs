@@ -1,12 +1,4 @@
-﻿/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
-
+﻿
 using Standard;
 using System;
 using System.Collections.Generic;
@@ -14,9 +6,9 @@ using System.Diagnostics.CodeAnalysis;
 using System.Windows;
 using System.Windows.Data;
 
-/**************************************************************************\
-    Copyright Microsoft Corporation. All Rights Reserved.
-\**************************************************************************/
+
+
+
 
 namespace Microsoft.Windows.Shell
 {
@@ -29,7 +21,7 @@ namespace Microsoft.Windows.Shell
             // A more correct way to do this would be to Coerce the value iff the source of the DP was the default value.
             // Unfortunately with the current property system we can't detect whether the value being applied at the time
             // of the coersion is the default.
-            foreach (var bp in _BoundProperties)
+            foreach (_SystemParameterBoundProperty bp in _BoundProperties)
             {
                 // This list must be declared after the DP's are assigned.
                 Assert.IsNotNull(bp.DependencyProperty);
@@ -68,15 +60,15 @@ namespace Microsoft.Windows.Shell
             // There's certainly room for improvement here.
             if (System.ComponentModel.DesignerProperties.GetIsInDesignMode(d)) return;
 
-            var window = (Window)d;
-            var newChrome = (WindowChrome)e.NewValue;
+            Window window = (Window)d;
+            WindowChrome newChrome = (WindowChrome)e.NewValue;
             Assert.IsNotNull(window);
 
             // Update the ChromeWorker with this new object.
 
             // If there isn't currently a worker associated with the Window then assign a new one.
             // There can be a many:1 relationship of to Window to WindowChrome objects, but a 1:1 for a Window and a WindowChromeWorker.
-            var chromeWorker = WindowChromeWorker.GetWindowChromeWorker(window);
+            WindowChromeWorker chromeWorker = WindowChromeWorker.GetWindowChromeWorker(window);
             if (chromeWorker == null)
             {
                 chromeWorker = new WindowChromeWorker();

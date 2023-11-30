@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using H.Providers.Ioc;
 using System;
@@ -10,7 +10,6 @@ using System.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Markup;
-using System.Windows.Media;
 using System.Xml;
 using System.Xml.Serialization;
 namespace H.Extensions.XmlSerialize
@@ -54,12 +53,12 @@ namespace H.Extensions.XmlSerialize
 
         public object Load(XmlDocument xmldoc, object t, Func<PropertyInfo, object, bool> match = null)
         {
-            var root = xmldoc.SelectSingleNode(this.Root);
-            var baseElement = root[t.GetType().Name];
+            XmlNode root = xmldoc.SelectSingleNode(this.Root);
+            XmlElement baseElement = root[t.GetType().Name];
 
             if (t is IXmlable xmlable)
             {
-                var e = root[xmlable.GetType().Name];
+                XmlElement e = root[xmlable.GetType().Name];
                 xmlable.FromXml(e, xmldoc, match);
             }
             else
@@ -73,17 +72,17 @@ namespace H.Extensions.XmlSerialize
         {
             XmlDocument xmldoc = new XmlDocument();
             xmldoc.Load(path);
-            var root = xmldoc.SelectSingleNode(this.Root);
+            XmlNode root = xmldoc.SelectSingleNode(this.Root);
             if (root == null)
                 return false;
-            var baseElement = root[type.Name];
+            XmlElement baseElement = root[type.Name];
             return baseElement != null;
         }
 
         public object Load(string path, Type type, Func<PropertyInfo, object, bool> match)
         {
             XmlDocument xmldoc = new XmlDocument();
-            var t = Activator.CreateInstance(type);
+            object t = Activator.CreateInstance(type);
             xmldoc.Load(path);
             return this.Load(xmldoc, t, match);
             //var root = xmldoc.SelectSingleNode(this.Root);
@@ -134,11 +133,11 @@ namespace H.Extensions.XmlSerialize
             XmlDocument xmldoc = new XmlDocument();
             XmlDeclaration dec = xmldoc.CreateXmlDeclaration("1.0", "utf-8", null);
             xmldoc.AppendChild(dec);
-            var root = xmldoc.CreateElement(this.Root);
+            XmlElement root = xmldoc.CreateElement(this.Root);
 
             if (obj is IXmlable xmlable)
             {
-                var e = xmldoc.CreateElement(obj.GetType().Name);
+                XmlElement e = xmldoc.CreateElement(obj.GetType().Name);
                 e.SetAttribute("AssemblyQualifiedName", xmlable.GetType().AssemblyQualifiedName);
                 e.SetAttribute("FullName", xmlable.GetType().FullName);
                 root.AppendChild(e);
@@ -156,12 +155,12 @@ namespace H.Extensions.XmlSerialize
 
         public void FromXml(XmlElement e, object o, XmlDocument doc, Func<PropertyInfo, object, bool> match = null)
         {
-            var ps = o.GetType().GetProperties().Where(x => x.CanRead && x.CanWrite).Where(x => x.GetCustomAttribute<XmlIgnoreAttribute>() == null);
+            IEnumerable<PropertyInfo> ps = o.GetType().GetProperties().Where(x => x.CanRead && x.CanWrite).Where(x => x.GetCustomAttribute<XmlIgnoreAttribute>() == null);
             //ps = ps.Where(x => !x.DeclaringType.FullName.StartsWith(this.ExceptStartNamespance)).ToList();
             ps = ps.Where(x => match?.Invoke(x, o) != false);
-            foreach (var p in ps)
+            foreach (PropertyInfo p in ps)
             {
-                var str = e.GetAttribute(p.Name);
+                string str = e.GetAttribute(p.Name);
                 if (p.PropertyType.IsEnum)
                 {
                     if (string.IsNullOrEmpty(str)) continue;
@@ -172,14 +171,14 @@ namespace H.Extensions.XmlSerialize
 
                 //  Do ：ValueSerializerAttribute
                 {
-                    var pTypeC = p.GetCustomAttribute<ValueSerializerAttribute>();
+                    ValueSerializerAttribute pTypeC = p.GetCustomAttribute<ValueSerializerAttribute>();
                     if (pTypeC != null)
                     {
                         Type ctype = Type.GetType(pTypeC.ValueSerializerTypeName);
                         ValueSerializer ddd = Activator.CreateInstance(ctype) as ValueSerializer;
                         if (ddd.CanConvertFromString(str, null))
                         {
-                            var value = ddd.ConvertFromString(str, null);
+                            object value = ddd.ConvertFromString(str, null);
                             p.SetValue(o, value);
                         }
                         continue;
@@ -187,7 +186,7 @@ namespace H.Extensions.XmlSerialize
                 }
 
                 {
-                    var pTypeC = p.PropertyType.GetCustomAttribute<ValueSerializerAttribute>();
+                    ValueSerializerAttribute pTypeC = p.PropertyType.GetCustomAttribute<ValueSerializerAttribute>();
                     if (pTypeC != null)
                     {
                         Type ctype = Type.GetType(pTypeC.ValueSerializerTypeName);
@@ -199,13 +198,13 @@ namespace H.Extensions.XmlSerialize
                             {
                                 Application.Current.Dispatcher.Invoke(() =>
                                 {
-                                    var value = ddd.ConvertFromString(str, null);
+                                    object value = ddd.ConvertFromString(str, null);
                                     p.SetValue(o, value);
                                 });
                             }
                             else
                             {
-                                var value = ddd.ConvertFromString(str, null);
+                                object value = ddd.ConvertFromString(str, null);
                                 p.SetValue(o, value);
                             }
                         }
@@ -216,19 +215,19 @@ namespace H.Extensions.XmlSerialize
 
                 //  Do ：TypeConverter
                 {
-                    var pTypeC = p.GetCustomAttribute<TypeConverterAttribute>();
+                    TypeConverterAttribute pTypeC = p.GetCustomAttribute<TypeConverterAttribute>();
                     if (pTypeC != null)
                     {
                         Type ctype = Type.GetType(pTypeC.ConverterTypeName);
                         TypeConverter ddd = Activator.CreateInstance(ctype) as TypeConverter;
-                        var value = ddd.ConvertFromString(null, System.Globalization.CultureInfo.CurrentUICulture, str);
+                        object value = ddd.ConvertFromString(null, System.Globalization.CultureInfo.CurrentUICulture, str);
                         p.SetValue(o, value);
                         continue;
                     }
                 }
 
                 {
-                    var pTypeC = p.PropertyType.GetCustomAttribute<TypeConverterAttribute>();
+                    TypeConverterAttribute pTypeC = p.PropertyType.GetCustomAttribute<TypeConverterAttribute>();
                     if (pTypeC != null)
                     {
                         Type ctype = Type.GetType(pTypeC.ConverterTypeName);
@@ -240,13 +239,13 @@ namespace H.Extensions.XmlSerialize
                         {
                             Application.Current.Dispatcher.Invoke(() =>
                             {
-                                var value = ddd.ConvertFromString(null, System.Globalization.CultureInfo.CurrentUICulture, str);
+                                object value = ddd.ConvertFromString(null, System.Globalization.CultureInfo.CurrentUICulture, str);
                                 p.SetValue(o, value);
                             });
                         }
                         else
                         {
-                            var value = ddd.ConvertFromString(null, System.Globalization.CultureInfo.CurrentUICulture, str);
+                            object value = ddd.ConvertFromString(null, System.Globalization.CultureInfo.CurrentUICulture, str);
                             p.SetValue(o, value);
                         }
                         continue;
@@ -258,19 +257,19 @@ namespace H.Extensions.XmlSerialize
 
                     if (string.IsNullOrEmpty(str))
                     {
-                        var value = p.PropertyType.IsValueType ? Activator.CreateInstance(p.PropertyType) : null;
+                        object value = p.PropertyType.IsValueType ? Activator.CreateInstance(p.PropertyType) : null;
                         p.SetValue(o, value);
                     }
                     else
                     {
                         try
                         {
-                            var value = Convert.ChangeType(str, p.PropertyType);
+                            object value = Convert.ChangeType(str, p.PropertyType);
                             p.SetValue(o, value);
                         }
                         catch (Exception ex)
                         {
-                            Logger.Instance.Error(ex);
+                            IocLog.Instance.Error(ex);
                             System.Diagnostics.Debug.WriteLine(ex);
                         }
                     }
@@ -280,10 +279,10 @@ namespace H.Extensions.XmlSerialize
 
                 if (typeof(IXmlable).IsAssignableFrom(p.PropertyType))
                 {
-                    var xmlableElement = e[p.Name];
-                    var assemblyQualifiedName = xmlableElement.GetAttribute("AssemblyQualifiedName");
-                    var itemType = Type.GetType(assemblyQualifiedName);
-                    var value = Activator.CreateInstance(itemType);
+                    XmlElement xmlableElement = e[p.Name];
+                    string assemblyQualifiedName = xmlableElement.GetAttribute("AssemblyQualifiedName");
+                    Type itemType = Type.GetType(assemblyQualifiedName);
+                    object value = Activator.CreateInstance(itemType);
                     IXmlable xmlable = value as IXmlable;
                     if (xmlable != null)
                     {
@@ -302,17 +301,17 @@ namespace H.Extensions.XmlSerialize
                         foreach (XmlElement item in e[p.Name])
                         {
                             if (item == null) continue;
-                            var assemblyQualifiedName = item.GetAttribute("AssemblyQualifiedName");
+                            string assemblyQualifiedName = item.GetAttribute("AssemblyQualifiedName");
 
-                            var itemType = Type.GetType(assemblyQualifiedName);
+                            Type itemType = Type.GetType(assemblyQualifiedName);
                             //var instance = Activator.CreateInstance(type);
                             {
-                                var pTypeC = itemType.GetCustomAttribute<TypeConverterAttribute>();
+                                TypeConverterAttribute pTypeC = itemType.GetCustomAttribute<TypeConverterAttribute>();
                                 if (pTypeC != null)
                                 {
                                     Type ctype = Type.GetType(pTypeC.ConverterTypeName);
                                     TypeConverter ddd = Activator.CreateInstance(ctype) as TypeConverter;
-                                    var obj = ddd.ConvertFromString(null, System.Globalization.CultureInfo.CurrentUICulture, item.InnerText);
+                                    object obj = ddd.ConvertFromString(null, System.Globalization.CultureInfo.CurrentUICulture, item.InnerText);
                                     list.Add(obj);
                                     continue;
                                 }
@@ -320,7 +319,7 @@ namespace H.Extensions.XmlSerialize
 
                             if (typeof(IConvertible).IsAssignableFrom(itemType))
                             {
-                                var obj = Convert.ChangeType(item.InnerText, itemType);
+                                object obj = Convert.ChangeType(item.InnerText, itemType);
                                 list.Add(obj);
                                 continue;
                             }
@@ -338,7 +337,7 @@ namespace H.Extensions.XmlSerialize
 
                             //action.Invoke(item, item);
 
-                            var instance = Activator.CreateInstance(itemType);
+                            object instance = Activator.CreateInstance(itemType);
 
                             this.FromXml(item, instance, doc, match);
 
@@ -350,11 +349,11 @@ namespace H.Extensions.XmlSerialize
                     continue;
                 }
                 {
-                    var element = e[p.Name];
+                    XmlElement element = e[p.Name];
                     if (element == null) continue;
-                    var assemblyQualifiedName = element.GetAttribute("AssemblyQualifiedName");
-                    var itemType = Type.GetType(assemblyQualifiedName);
-                    var value = Activator.CreateInstance(itemType);
+                    string assemblyQualifiedName = element.GetAttribute("AssemblyQualifiedName");
+                    Type itemType = Type.GetType(assemblyQualifiedName);
+                    object value = Activator.CreateInstance(itemType);
                     //var value = p.GetValue(o);
                     //action.Invoke(value, element);
                     this.FromXml(element, value, doc, match);
@@ -375,7 +374,7 @@ namespace H.Extensions.XmlSerialize
             }
 
             Type type = o.GetType();
-            var ps = type.GetProperties().Where(x => x.CanRead && x.CanWrite);
+            IEnumerable<PropertyInfo> ps = type.GetProperties().Where(x => x.CanRead && x.CanWrite);
 
             ps = o.GetType().GetProperties().Where(x => x.CanRead && x.CanWrite).Where(x => x.GetCustomAttribute<XmlIgnoreAttribute>() == null);
             //if (!string.IsNullOrEmpty(this.ExceptStartNamespance))
@@ -388,19 +387,19 @@ namespace H.Extensions.XmlSerialize
             if (!type.IsPrimitive && !type.IsEnum && type.IsValueType)
             {
                 //  Do ：struct
-                var fs = o.GetType().GetFields();
+                FieldInfo[] fs = o.GetType().GetFields();
 
             }
 
-            foreach (var p in ps)
+            foreach (PropertyInfo p in ps)
             {
                 if (p.Name == "Item")
                     continue;
-                var value = p.GetValue(o);
+                object value = p.GetValue(o);
                 if (value == null)
                     continue;
 
-                var dv = p.GetCustomAttribute<DefaultValueAttribute>();
+                DefaultValueAttribute dv = p.GetCustomAttribute<DefaultValueAttribute>();
                 if (dv != null && dv.Value == value)
                     continue;
 
@@ -412,7 +411,7 @@ namespace H.Extensions.XmlSerialize
 
                 //  Do ：ValueSerializerAttribute
                 {
-                    var pTypeC = p.GetCustomAttribute<ValueSerializerAttribute>();
+                    ValueSerializerAttribute pTypeC = p.GetCustomAttribute<ValueSerializerAttribute>();
                     if (pTypeC != null)
                     {
                         Type ctype = Type.GetType(pTypeC.ValueSerializerTypeName);
@@ -425,7 +424,7 @@ namespace H.Extensions.XmlSerialize
                             {
                                 if (ddd.CanConvertToString(value, null))
                                 {
-                                    var str = ddd.ConvertToString(value, null);
+                                    string str = ddd.ConvertToString(value, null);
                                     element.SetAttribute(p.Name, str);
                                 }
                             });
@@ -434,7 +433,7 @@ namespace H.Extensions.XmlSerialize
                         {
                             if (ddd.CanConvertToString(value, null))
                             {
-                                var str = ddd.ConvertToString(value, null);
+                                string str = ddd.ConvertToString(value, null);
                                 element.SetAttribute(p.Name, str);
                             }
                         }
@@ -443,7 +442,7 @@ namespace H.Extensions.XmlSerialize
                 }
 
                 {
-                    var pTypeC = p.PropertyType.GetCustomAttribute<ValueSerializerAttribute>();
+                    ValueSerializerAttribute pTypeC = p.PropertyType.GetCustomAttribute<ValueSerializerAttribute>();
                     if (pTypeC != null)
                     {
                         Type ctype = Type.GetType(pTypeC.ValueSerializerTypeName);
@@ -455,7 +454,7 @@ namespace H.Extensions.XmlSerialize
                             {
                                 if (ddd.CanConvertToString(value, null))
                                 {
-                                    var str = ddd.ConvertToString(value, null);
+                                    string str = ddd.ConvertToString(value, null);
                                     element.SetAttribute(p.Name, str);
                                 }
                             });
@@ -464,7 +463,7 @@ namespace H.Extensions.XmlSerialize
                         {
                             if (ddd.CanConvertToString(value, null))
                             {
-                                var str = ddd.ConvertToString(value, null);
+                                string str = ddd.ConvertToString(value, null);
                                 element.SetAttribute(p.Name, str);
                             }
 
@@ -475,7 +474,7 @@ namespace H.Extensions.XmlSerialize
 
                 //  Do ：TypeConverterAttribute
                 {
-                    var pTypeC = p.GetCustomAttribute<TypeConverterAttribute>();
+                    TypeConverterAttribute pTypeC = p.GetCustomAttribute<TypeConverterAttribute>();
                     if (pTypeC != null)
                     {
                         Type ctype = Type.GetType(pTypeC.ConverterTypeName);
@@ -485,13 +484,13 @@ namespace H.Extensions.XmlSerialize
                         {
                             Application.Current.Dispatcher.Invoke(() =>
                             {
-                                var str = ddd.ConvertToString(null, System.Globalization.CultureInfo.CurrentUICulture, value);
+                                string str = ddd.ConvertToString(null, System.Globalization.CultureInfo.CurrentUICulture, value);
                                 element.SetAttribute(p.Name, str);
                             });
                         }
                         else
                         {
-                            var str = ddd.ConvertToString(null, System.Globalization.CultureInfo.CurrentUICulture, value);
+                            string str = ddd.ConvertToString(null, System.Globalization.CultureInfo.CurrentUICulture, value);
                             element.SetAttribute(p.Name, str);
                         }
                         continue;
@@ -499,7 +498,7 @@ namespace H.Extensions.XmlSerialize
                 }
 
                 {
-                    var pTypeC = p.PropertyType.GetCustomAttribute<TypeConverterAttribute>();
+                    TypeConverterAttribute pTypeC = p.PropertyType.GetCustomAttribute<TypeConverterAttribute>();
                     if (pTypeC != null)
                     {
                         Type ctype = Type.GetType(pTypeC.ConverterTypeName);
@@ -509,13 +508,13 @@ namespace H.Extensions.XmlSerialize
                         {
                             Application.Current.Dispatcher.Invoke(() =>
                             {
-                                var str = ddd.ConvertToString(null, System.Globalization.CultureInfo.CurrentUICulture, value);
+                                string str = ddd.ConvertToString(null, System.Globalization.CultureInfo.CurrentUICulture, value);
                                 element.SetAttribute(p.Name, str);
                             });
                         }
                         else
                         {
-                            var str = ddd.ConvertToString(null, System.Globalization.CultureInfo.CurrentUICulture, value);
+                            string str = ddd.ConvertToString(null, System.Globalization.CultureInfo.CurrentUICulture, value);
                             element.SetAttribute(p.Name, str);
                         }
                         continue;
@@ -524,7 +523,7 @@ namespace H.Extensions.XmlSerialize
 
                 if (typeof(IConvertible).IsAssignableFrom(p.PropertyType))
                 {
-                    var str = value?.ToString();
+                    string str = value?.ToString();
                     element.SetAttribute(p.Name, str);
                     continue;
                 }
@@ -535,7 +534,7 @@ namespace H.Extensions.XmlSerialize
 
                     if (xmlable != null)
                     {
-                        var toXml = doc.CreateElement(p.Name);
+                        XmlElement toXml = doc.CreateElement(p.Name);
                         toXml.SetAttribute("AssemblyQualifiedName", xmlable.GetType().AssemblyQualifiedName);
                         toXml.SetAttribute("FullName", xmlable.GetType().FullName);
                         xmlable.ToXml(toXml, doc, match);
@@ -550,8 +549,8 @@ namespace H.Extensions.XmlSerialize
 
                     if (collection != null)
                     {
-                        var collectionElement = doc.CreateElement(p.Name);
-                        foreach (var item in collection)
+                        XmlElement collectionElement = doc.CreateElement(p.Name);
+                        foreach (object item in collection)
                         {
                             Type itemType = item.GetType();
                             string name = itemType.Name;
@@ -559,17 +558,17 @@ namespace H.Extensions.XmlSerialize
                             {
                                 name = itemType.Name.Split('`')[0];
                             }
-                            var itemElment = doc.CreateElement(name);
+                            XmlElement itemElment = doc.CreateElement(name);
                             itemElment.SetAttribute("AssemblyQualifiedName", itemType.AssemblyQualifiedName);
                             itemElment.SetAttribute("FullName", itemType.FullName);
 
                             {
-                                var pTypeC = item.GetType().GetCustomAttribute<TypeConverterAttribute>();
+                                TypeConverterAttribute pTypeC = item.GetType().GetCustomAttribute<TypeConverterAttribute>();
                                 if (pTypeC != null)
                                 {
                                     Type ctype = Type.GetType(pTypeC.ConverterTypeName);
                                     TypeConverter ddd = Activator.CreateInstance(ctype) as TypeConverter;
-                                    var str = ddd.ConvertToString(null, System.Globalization.CultureInfo.CurrentUICulture, item);
+                                    string str = ddd.ConvertToString(null, System.Globalization.CultureInfo.CurrentUICulture, item);
                                     itemElment.InnerText = str;
                                     collectionElement.AppendChild(itemElment);
                                     continue;
@@ -578,7 +577,7 @@ namespace H.Extensions.XmlSerialize
 
                             if (typeof(IConvertible).IsAssignableFrom(itemType))
                             {
-                                var str = item?.ToString();
+                                string str = item?.ToString();
                                 itemElment.InnerText = str;
                                 collectionElement.AppendChild(itemElment);
                                 continue;
@@ -619,7 +618,7 @@ namespace H.Extensions.XmlSerialize
         public object XmlClone(object obj)
         {
             XmlDocument document = this.SaveAs(obj);
-            var n = Activator.CreateInstance(obj.GetType());
+            object n = Activator.CreateInstance(obj.GetType());
             return this.Load(document, n);
         }
     }

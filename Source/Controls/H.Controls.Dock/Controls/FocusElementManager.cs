@@ -1,12 +1,4 @@
-﻿/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
-
+﻿
 using H.Controls.Dock.Layout;
 using System;
 using System.Collections.Generic;
@@ -51,7 +43,7 @@ namespace H.Controls.Dock.Controls
                 {
                     //Application.Current.Exit += new ExitEventHandler( Current_Exit );
                     //Application.Current.Dispatcher.Invoke(new Action(() => Application.Current.Exit += new ExitEventHandler(Current_Exit)));
-                    var disp = Application.Current.Dispatcher;
+                    Dispatcher disp = Application.Current.Dispatcher;
                     Action subscribeToExitAction = new Action(() => Application.Current.Exit += new ExitEventHandler(Current_Exit));
                     if (disp.CheckAccess())
                     {
@@ -165,19 +157,19 @@ namespace H.Controls.Dock.Controls
 
         private static void manager_PreviewGotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
-            var focusedElement = e.NewFocus as Visual;
+            Visual focusedElement = e.NewFocus as Visual;
             if (focusedElement != null &&
                 !(focusedElement is LayoutAnchorableTabItem || focusedElement is LayoutDocumentTabItem))
             //Avoid tracking focus for elements like this
             {
-                var parentAnchorable = focusedElement.FindVisualAncestor<LayoutAnchorableControl>();
+                LayoutAnchorableControl parentAnchorable = focusedElement.FindVisualAncestor<LayoutAnchorableControl>();
                 if (parentAnchorable != null)
                 {
                     _modelFocusedElement[parentAnchorable.Model] = e.NewFocus;
                 }
                 else
                 {
-                    var parentDocument = focusedElement.FindVisualAncestor<LayoutDocumentControl>();
+                    LayoutDocumentControl parentDocument = focusedElement.FindVisualAncestor<LayoutDocumentControl>();
                     if (parentDocument != null)
                     {
                         _modelFocusedElement[parentDocument.Model] = e.NewFocus;
@@ -188,13 +180,13 @@ namespace H.Controls.Dock.Controls
 
         private static void WindowFocusChanging(object sender, FocusChangeEventArgs e)
         {
-            foreach (var manager in _managers)
+            foreach (DockingManager manager in _managers)
             {
-                var hostContainingFocusedHandle = manager.FindLogicalChildren<HwndHost>().FirstOrDefault(hw => Win32Helper.IsChild(hw.Handle, e.GotFocusWinHandle));
+                HwndHost hostContainingFocusedHandle = manager.FindLogicalChildren<HwndHost>().FirstOrDefault(hw => Win32Helper.IsChild(hw.Handle, e.GotFocusWinHandle));
 
                 if (hostContainingFocusedHandle != null)
                 {
-                    var parentAnchorable = hostContainingFocusedHandle.FindVisualAncestor<LayoutAnchorableControl>();
+                    LayoutAnchorableControl parentAnchorable = hostContainingFocusedHandle.FindVisualAncestor<LayoutAnchorableControl>();
                     if (parentAnchorable != null)
                     {
                         _modelFocusedWindowHandle[parentAnchorable.Model] = e.GotFocusWinHandle;
@@ -203,7 +195,7 @@ namespace H.Controls.Dock.Controls
                     }
                     else
                     {
-                        var parentDocument = hostContainingFocusedHandle.FindVisualAncestor<LayoutDocumentControl>();
+                        LayoutDocumentControl parentDocument = hostContainingFocusedHandle.FindVisualAncestor<LayoutDocumentControl>();
                         if (parentDocument != null)
                         {
                             _modelFocusedWindowHandle[parentDocument.Model] = e.GotFocusWinHandle;
@@ -221,10 +213,10 @@ namespace H.Controls.Dock.Controls
                 _lastFocusedElement != null &&
                 _lastFocusedElement.IsAlive)
             {
-                var elementToSetFocus = _lastFocusedElement.Target as ILayoutElement;
+                ILayoutElement elementToSetFocus = _lastFocusedElement.Target as ILayoutElement;
                 if (elementToSetFocus != null)
                 {
-                    var manager = elementToSetFocus.Root.Manager;
+                    DockingManager manager = elementToSetFocus.Root.Manager;
                     if (manager == null)
                         return;
 
@@ -255,7 +247,7 @@ namespace H.Controls.Dock.Controls
             if (Keyboard.FocusedElement == null)
                 return;
 
-            var lastfocusDepObj = Keyboard.FocusedElement as DependencyObject;
+            DependencyObject lastfocusDepObj = Keyboard.FocusedElement as DependencyObject;
             if (lastfocusDepObj.FindLogicalAncestor<DockingManager>() == null)
             {
                 _lastFocusedElementBeforeEnterMenuMode = null;
@@ -270,7 +262,7 @@ namespace H.Controls.Dock.Controls
             if (_lastFocusedElementBeforeEnterMenuMode != null &&
                 _lastFocusedElementBeforeEnterMenuMode.IsAlive)
             {
-                var lastFocusedInputElement = _lastFocusedElementBeforeEnterMenuMode.GetValueOrDefault<UIElement>();
+                UIElement lastFocusedInputElement = _lastFocusedElementBeforeEnterMenuMode.GetValueOrDefault<UIElement>();
                 if (lastFocusedInputElement != null)
                 {
                     if (lastFocusedInputElement != Keyboard.Focus(lastFocusedInputElement))

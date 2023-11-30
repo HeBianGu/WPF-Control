@@ -1,12 +1,4 @@
-﻿/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
-
+﻿
 using H.Controls.Dock.Layout;
 using System;
 using System.ComponentModel;
@@ -110,7 +102,7 @@ namespace H.Controls.Dock.Controls
 
         private void OnSizeChanged(object sender, SizeChangedEventArgs e)
         {
-            var modelWithActualSize = _model as ILayoutPositionableElementWithActualSize;
+            ILayoutPositionableElementWithActualSize modelWithActualSize = _model;
             modelWithActualSize.ActualWidth = ActualWidth;
             modelWithActualSize.ActualHeight = ActualHeight;
         }

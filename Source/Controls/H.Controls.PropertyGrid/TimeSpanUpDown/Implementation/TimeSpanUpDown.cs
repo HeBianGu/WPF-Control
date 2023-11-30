@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Globalization;
@@ -66,7 +66,7 @@ namespace H.Controls.PropertyGrid
 
         protected virtual void OnFractionalSecondsDigitsCountChanged(int oldValue, int newValue)
         {
-            var value = this.UpdateValueOnEnterKey
+            TimeSpan? value = this.UpdateValueOnEnterKey
                         ? (this.TextBox != null) ? this.ConvertTextToValue(this.TextBox.Text) : null
                         : this.Value;
             this.InitializeDateTimeInfoList(value);
@@ -99,7 +99,7 @@ namespace H.Controls.PropertyGrid
 
         protected virtual void OnShowSecondsChanged(bool oldValue, bool newValue)
         {
-            var value = this.UpdateValueOnEnterKey
+            TimeSpan? value = this.UpdateValueOnEnterKey
                         ? (this.TextBox != null) ? this.ConvertTextToValue(this.TextBox.Text) : null
                         : this.Value;
             this.InitializeDateTimeInfoList(value);
@@ -114,7 +114,7 @@ namespace H.Controls.PropertyGrid
 
         protected override void OnCultureInfoChanged(CultureInfo oldValue, CultureInfo newValue)
         {
-            var value = this.UpdateValueOnEnterKey
+            TimeSpan? value = this.UpdateValueOnEnterKey
                         ? (this.TextBox != null) ? this.ConvertTextToValue(this.TextBox.Text) : null
                         : this.Value;
             this.InitializeDateTimeInfoList(value);
@@ -203,12 +203,12 @@ namespace H.Controls.PropertyGrid
 
             TimeSpan current = this.Value.HasValue ? this.Value.Value : new TimeSpan();
             TimeSpan result;
-            var success = TimeSpan.TryParse(currentValue, out result);
+            bool success = TimeSpan.TryParse(currentValue, out result);
             if (!success)
             {
                 // Validate when more than 60 seconds (or more than 60 minutes, or more than 24 hours) are entered.
-                var separators = currentValue.Where(x => x == ':' || x == '.').ToList();
-                var values = currentValue.Split(new char[] { ':', '.' });
+                System.Collections.Generic.List<char> separators = currentValue.Where(x => x == ':' || x == '.').ToList();
+                string[] values = currentValue.Split(new char[] { ':', '.' });
                 if (values.Count() >= 2)
                 {
                     bool haveDays = separators.First() == '.';
@@ -239,7 +239,7 @@ namespace H.Controls.PropertyGrid
             //but only if it is not null
             if (newValue != null)
             {
-                var value = this.UpdateValueOnEnterKey
+                TimeSpan? value = this.UpdateValueOnEnterKey
                           ? (this.TextBox != null) ? this.ConvertTextToValue(this.TextBox.Text) : null
                           : this.Value;
                 this.InitializeDateTimeInfoList(value);
@@ -249,7 +249,7 @@ namespace H.Controls.PropertyGrid
 
         protected override void PerformMouseSelection()
         {
-            var value = this.UpdateValueOnEnterKey
+            TimeSpan? value = this.UpdateValueOnEnterKey
                         ? (this.TextBox != null) ? this.ConvertTextToValue(this.TextBox.Text) : null
                         : this.Value;
             this.InitializeDateTimeInfoList(value);
@@ -258,9 +258,9 @@ namespace H.Controls.PropertyGrid
 
         protected override void InitializeDateTimeInfoList(TimeSpan? value)
         {
-            var lastDayInfo = _dateTimeInfoList.FirstOrDefault(x => x.Type == DateTimePart.Day);
+            DateTimeInfo lastDayInfo = _dateTimeInfoList.FirstOrDefault(x => x.Type == DateTimePart.Day);
             bool hasDay = lastDayInfo != null;
-            var negInfo = _dateTimeInfoList.FirstOrDefault(x => x.Type == DateTimePart.Other);
+            DateTimeInfo negInfo = _dateTimeInfoList.FirstOrDefault(x => x.Type == DateTimePart.Other);
             bool hasNegative = (negInfo != null) && (negInfo.Content == "-");
 
             _dateTimeInfoList.Clear();
@@ -296,7 +296,7 @@ namespace H.Controls.PropertyGrid
                     else if (!hasDay)
                     {
                         _fireSelectionChangedEvent = false;
-                        this.TextBox.SelectionStart += (dayLength + 1);
+                        this.TextBox.SelectionStart += dayLength + 1;
                         _fireSelectionChangedEvent = true;
                     }
                 }
@@ -341,7 +341,7 @@ namespace H.Controls.PropertyGrid
             if (value1 == null || value2 == null)
                 return false;
 
-            return (value1.Value < value2.Value);
+            return value1.Value < value2.Value;
         }
 
         protected override bool IsGreaterThan(TimeSpan? value1, TimeSpan? value2)
@@ -349,7 +349,7 @@ namespace H.Controls.PropertyGrid
             if (value1 == null || value2 == null)
                 return false;
 
-            return (value1.Value > value2.Value);
+            return value1.Value > value2.Value;
         }
 
 
@@ -486,16 +486,16 @@ namespace H.Controls.PropertyGrid
             // Sync Value on Text only when Enter Key is pressed.
             if (this.UpdateValueOnEnterKey)
             {
-                var currentValue = this.ConvertTextToValue(this.TextBox.Text);
-                var newValue = currentValue.HasValue
+                TimeSpan? currentValue = this.ConvertTextToValue(this.TextBox.Text);
+                TimeSpan? newValue = currentValue.HasValue
                                ? this.UpdateTimeSpan(currentValue, step)
                                : this.DefaultValue ?? TimeSpan.Zero;
 
                 if (newValue != null)
                 {
                     this.InitializeDateTimeInfoList(newValue);
-                    var selectionStart = this.TextBox.SelectionStart;
-                    var selectionLength = this.TextBox.SelectionLength;
+                    int selectionStart = this.TextBox.SelectionStart;
+                    int selectionLength = this.TextBox.SelectionLength;
 #if VS2008
           this.TextBox.Text = newValue.Value.ToString();
 #else
@@ -508,12 +508,12 @@ namespace H.Controls.PropertyGrid
             {
                 if (this.Value.HasValue)
                 {
-                    var newValue = this.UpdateTimeSpan(this.Value, step);
+                    TimeSpan? newValue = this.UpdateTimeSpan(this.Value, step);
                     if (newValue != null)
                     {
                         this.InitializeDateTimeInfoList(newValue);
-                        var selectionStart = this.TextBox.SelectionStart;
-                        var selectionLength = this.TextBox.SelectionLength;
+                        int selectionStart = this.TextBox.SelectionStart;
+                        int selectionLength = this.TextBox.SelectionLength;
                         this.Value = newValue;
                         this.TextBox.Select(selectionStart, selectionLength);
                     }
@@ -529,14 +529,14 @@ namespace H.Controls.PropertyGrid
         private string GetTimeSpanFormat()
         {
             //use this format : "d.hh\:mm\:ss\.fff"
-            var formatParts = _dateTimeInfoList.Select(part =>
+            System.Collections.Generic.List<string> formatParts = _dateTimeInfoList.Select(part =>
             {
                 if (part.Format == null)
                     return '\\' + part.Content;
 
                 if (part.Format.Contains('d'))
                 {
-                    var dayInfo = _dateTimeInfoList.FirstOrDefault(info => info.Type == DateTimePart.Day);
+                    DateTimeInfo dayInfo = _dateTimeInfoList.FirstOrDefault(info => info.Type == DateTimePart.Day);
                     part.Format = string.Join("", Enumerable.Repeat("d", dayInfo.Length));
                 }
                 return part.Format;
@@ -566,9 +566,9 @@ namespace H.Controls.PropertyGrid
             if (e.DataObject.GetDataPresent(typeof(string)))
             {
                 // Allow pasting only TimeSpan values
-                var pasteText = e.DataObject.GetData(typeof(string)) as string;
+                string pasteText = e.DataObject.GetData(typeof(string)) as string;
                 TimeSpan result;
-                var success = TimeSpan.TryParse(pasteText, out result);
+                bool success = TimeSpan.TryParse(pasteText, out result);
                 if (!success)
                 {
                     e.CancelCommand();

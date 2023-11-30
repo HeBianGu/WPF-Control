@@ -8,7 +8,7 @@
         <DockPanel MinWidth="900"
                    IsEnabled="{Binding IsEnabled}"
                    Visibility="{Binding IsVisible, Converter={x:Static h:Converter.GetTrueToVisible}}">
-            <RepositoryGrid AutoGenerateColumns="False" 
+            <RepositoryGrid AutoGenerateColumns="False"
                             Type="{x:Type local:hi_dd_author}"
                             UseAdd="False"
                             UseDelete="False"

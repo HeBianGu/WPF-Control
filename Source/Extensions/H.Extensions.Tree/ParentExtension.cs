@@ -7,11 +7,11 @@ namespace H.Extensions.Tree
     {
         public static IEnumerable<object> GetParent(this IParent tree, object current)
         {
-            var result = new List<object>();
+            List<object> result = new List<object>();
             Action<object> getParent = null;
             getParent = x =>
              {
-                 var parent = tree.GetParent(x);
+                 object parent = tree.GetParent(x);
                  result.Add(parent);
                  if (parent != null)
                      getParent(parent);

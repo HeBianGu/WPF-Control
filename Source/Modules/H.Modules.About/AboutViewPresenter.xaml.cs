@@ -80,8 +80,8 @@ namespace H.Modules.About
                 _company = value;
             }
         }
-    
-        
+
+
         private string _culture;
         [XmlIgnore]
         [ReadOnly(true)]
@@ -124,7 +124,7 @@ namespace H.Modules.About
         private string _privacy;
         [XmlIgnore]
         [ReadOnly(true)]
-        [DefaultValue("https://github.com/HeBianGu/WPF-ControlBase")]
+        [DefaultValue("https://github.com/HeBianGu/WPF-Control")]
         [Display(Name = "隐私政策")]
         public string Privacy
         {
@@ -138,7 +138,7 @@ namespace H.Modules.About
         private string _agreement;
         [XmlIgnore]
         [ReadOnly(true)]
-        [DefaultValue("https://github.com/HeBianGu/WPF-ControlBase")]
+        [DefaultValue("https://github.com/HeBianGu/WPF-Control")]
         [Display(Name = "服务协议")]
         public string Agreement
         {
@@ -191,7 +191,7 @@ namespace H.Modules.About
         private string _webSet;
         [XmlIgnore]
         [ReadOnly(true)]
-        [DefaultValue("https://github.com/HeBianGu/WPF-ControlBase")]
+        [DefaultValue("https://github.com/HeBianGu/WPF-Control")]
         [Display(Name = "官方网站")]
         public string WebSet
         {
@@ -218,7 +218,7 @@ namespace H.Modules.About
     }
 
 
-    public class AboutButtonPresenter: IAboutButtonPresenter
+    public class AboutButtonPresenter : IAboutButtonPresenter
     {
 
     }

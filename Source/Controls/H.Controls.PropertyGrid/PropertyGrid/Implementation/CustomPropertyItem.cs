@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Windows;
@@ -95,7 +95,7 @@ namespace H.Controls.PropertyGrid
         {
             get
             {
-                return (object)GetValue(ValueProperty);
+                return GetValue(ValueProperty);
             }
             set
             {
@@ -122,7 +122,7 @@ namespace H.Controls.PropertyGrid
             CustomPropertyItem propertyItem = o as CustomPropertyItem;
             if (propertyItem != null)
             {
-                propertyItem.OnValueChanged((object)e.OldValue, (object)e.NewValue);
+                propertyItem.OnValueChanged(e.OldValue, e.NewValue);
             }
         }
 

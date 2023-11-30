@@ -1,12 +1,4 @@
-﻿/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
-
+﻿
 using H.Controls.Dock.Layout;
 using System;
 using System.Linq;
@@ -35,7 +27,7 @@ namespace H.Controls.Dock.Controls
         {
             double totWidth = 0;
             double maxHeight = 0;
-            var visibleChildren = Children.Cast<UIElement>().Where(ch => ch.Visibility != System.Windows.Visibility.Collapsed);
+            System.Collections.Generic.IEnumerable<UIElement> visibleChildren = Children.Cast<UIElement>().Where(ch => ch.Visibility != System.Windows.Visibility.Collapsed);
             foreach (FrameworkElement child in visibleChildren)
             {
                 child.Measure(new Size(double.PositiveInfinity, availableSize.Height));
@@ -57,7 +49,7 @@ namespace H.Controls.Dock.Controls
 
         protected override Size ArrangeOverride(Size finalSize)
         {
-            var visibleChildren = Children.Cast<UIElement>().Where(ch => ch.Visibility != System.Windows.Visibility.Collapsed);
+            System.Collections.Generic.IEnumerable<UIElement> visibleChildren = Children.Cast<UIElement>().Where(ch => ch.Visibility != System.Windows.Visibility.Collapsed);
 
             double finalWidth = finalSize.Width;
             double desideredWidth = visibleChildren.Sum(ch => ch.DesiredSize.Width);
@@ -92,8 +84,8 @@ namespace H.Controls.Dock.Controls
             if (e.LeftButton == System.Windows.Input.MouseButtonState.Pressed &&
                 LayoutAnchorableTabItem.IsDraggingItem())
             {
-                var contentModel = LayoutAnchorableTabItem.GetDraggingItem().Model as LayoutAnchorable;
-                var manager = contentModel.Root.Manager;
+                LayoutAnchorable contentModel = LayoutAnchorableTabItem.GetDraggingItem().Model as LayoutAnchorable;
+                DockingManager manager = contentModel.Root.Manager;
                 LayoutAnchorableTabItem.ResetDraggingItem();
 
                 manager.StartDraggingFloatingWindowForContent(contentModel);

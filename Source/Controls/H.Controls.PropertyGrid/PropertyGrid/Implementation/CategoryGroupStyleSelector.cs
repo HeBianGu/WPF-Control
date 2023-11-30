@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.ComponentModel;
 using System.Windows;
@@ -23,7 +23,7 @@ namespace H.Controls.PropertyGrid
 
         public override Style SelectStyle(object item, DependencyObject container)
         {
-            var group = item as CollectionViewGroup;
+            CollectionViewGroup group = item as CollectionViewGroup;
             // Category is not "Misc" => use regular ItemGroupStyle
             if ((group.Name != null) && !group.Name.Equals(CategoryAttribute.Default.Category))
                 return this.ItemGroupStyle;
@@ -36,7 +36,7 @@ namespace H.Controls.PropertyGrid
                     break;
             }
 
-            var itemsControl = container as ItemsControl;
+            ItemsControl itemsControl = container as ItemsControl;
             if (itemsControl != null)
             {
                 // Category is "Misc" and this is the only category => use SingleDefaultCategoryItemGroupContainerStyle

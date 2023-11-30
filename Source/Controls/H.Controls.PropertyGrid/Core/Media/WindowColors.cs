@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Windows.Media;
@@ -75,8 +75,8 @@ namespace H.Controls.PropertyGrid.Media
         {
             // This value is not accessible throught the standard WPF API.
             // We must dig into the registry to get the value.
-            var curUser = Microsoft.Win32.Registry.CurrentUser;
-            var subKey = curUser.CreateSubKey(
+            Microsoft.Win32.RegistryKey curUser = Microsoft.Win32.Registry.CurrentUser;
+            Microsoft.Win32.RegistryKey subKey = curUser.CreateSubKey(
               @"Software\Microsoft\Windows\DWM",
               Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree
 #if VS2008
@@ -103,7 +103,7 @@ namespace H.Controls.PropertyGrid.Media
         private static bool GetDWMBoolValue(string keyName)
         {
             int value = WindowColors.GetDWMIntValue(keyName);
-            return (value != 0);
+            return value != 0;
         }
     }
 }

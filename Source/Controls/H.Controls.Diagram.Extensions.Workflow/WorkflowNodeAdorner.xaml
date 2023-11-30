@@ -15,7 +15,7 @@
                                    Opacity="1.2"
                                    Visibility="{Binding RelativeSource={RelativeSource AncestorType=h:Node}, Path=IsMouseOver, Converter={x:Static h:Converter.GetTrueToVisible}}">
 
-                            <DockPanel DockPanel.Dock="Left">  
+                            <DockPanel DockPanel.Dock="Left">
                                 <Button x:Name="btn_left"
                                         h:Cattach.Icon="{x:Static h:Icons.LeftFill}"
                                         DockPanel.Dock="Left"

@@ -1,11 +1,10 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 
 using Microsoft.Xaml.Behaviors;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows;
@@ -13,7 +12,6 @@ using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Xml.Linq;
 
 namespace H.Controls.Adorner
 {
@@ -30,7 +28,7 @@ namespace H.Controls.Adorner
             set { SetValue(OpacityProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty OpacityProperty =
             DependencyProperty.Register("Opacity", typeof(double), typeof(DragAdornerBehavior), new PropertyMetadata(0.5, (d, e) =>
              {
@@ -49,7 +47,7 @@ namespace H.Controls.Adorner
             set { SetValue(AncestorTypeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty AncestorTypeProperty =
             DependencyProperty.Register("AncestorType", typeof(Type), typeof(DragAdornerBehavior), new PropertyMetadata(typeof(ScrollViewer), (d, e) =>
              {
@@ -67,7 +65,7 @@ namespace H.Controls.Adorner
             set { SetValue(DragGroupProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty DragGroupProperty =
             DependencyProperty.Register("DragGroup", typeof(string), typeof(DragAdornerBehavior), new PropertyMetadata("DragGroup", (d, e) =>
             {
@@ -86,7 +84,7 @@ namespace H.Controls.Adorner
             set { SetValue(DragDropEffectsProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty DragDropEffectsProperty =
             DependencyProperty.Register("DragDropEffects", typeof(DragDropEffects), typeof(DragAdornerBehavior), new PropertyMetadata(DragDropEffects.Copy, (d, e) =>
              {
@@ -144,7 +142,7 @@ namespace H.Controls.Adorner
             if (adorner != null)
             {
                 Visual lbl = sender as Visual;
-                var source = PresentationSource.FromVisual(lbl);
+                PresentationSource source = PresentationSource.FromVisual(lbl);
                 if (source == null)
                 {
                     Point pos = Application.Current.MainWindow.PointFromScreen(GetMousePosition());
@@ -273,19 +271,19 @@ namespace H.Controls.Adorner
         public static readonly DependencyProperty IsUseProperty =
             DependencyProperty.RegisterAttached("IsUse", typeof(bool), typeof(DragAdornerBehavior), new PropertyMetadata(default(bool), OnIsUseChanged));
 
-        static public void OnIsUseChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnIsUseChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
             bool n = (bool)e.NewValue;
             bool o = (bool)e.OldValue;
             RefreshUse(d, n);
         }
 
-        static void RefreshUse(DependencyObject d, bool use)
+        private static void RefreshUse(DependencyObject d, bool use)
         {
-            var bevaviors = Interaction.GetBehaviors(d);
-            var finds = bevaviors.Where(x => x.GetType() == typeof(DragAdornerBehavior));
-            foreach (var item in finds)
+            BehaviorCollection bevaviors = Interaction.GetBehaviors(d);
+            IEnumerable<Behavior> finds = bevaviors.Where(x => x.GetType() == typeof(DragAdornerBehavior));
+            foreach (Behavior item in finds)
             {
                 bevaviors.Remove(item);
             }

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Controls;
-using System.Xml.Serialization;
 
 namespace H.Controls.Diagram.Extension
 {
@@ -51,7 +50,7 @@ namespace H.Controls.Diagram.Extension
 
         public override object Clone()
         {
-            var data = base.Clone() as SystemNodeData;
+            SystemNodeData data = base.Clone() as SystemNodeData;
             data.PortDatas.Clear();
             data.InitPort();
             return data;

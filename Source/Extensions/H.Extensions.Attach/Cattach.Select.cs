@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.Windows;
 using System.Windows.Media;
@@ -53,7 +53,7 @@ namespace H.Extensions.Attach
             obj.SetValue(SelectBorderThicknessProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty SelectBorderThicknessProperty =
             DependencyProperty.RegisterAttached("SelectBorderThickness", typeof(Thickness), typeof(Cattach), new FrameworkPropertyMetadata(default(Thickness), OnSelectBorderThicknessChanged));
 
@@ -76,7 +76,7 @@ namespace H.Extensions.Attach
             obj.SetValue(SelectEffectProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty SelectEffectProperty =
             DependencyProperty.RegisterAttached("SelectEffect", typeof(Effect), typeof(Cattach), new FrameworkPropertyMetadata(default(Effect), FrameworkPropertyMetadataOptions.Inherits, OnSelectEffectChanged));
 

@@ -1,10 +1,9 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using H.Providers.Ioc;
 using System;
 using System.Collections;
 using System.Collections.ObjectModel;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 
@@ -41,11 +40,11 @@ namespace H.Controls.FilterBox
 
         public override IFilter Copy()
         {
-            StringFilter result = new StringFilter(this.PropertyInfo) 
-            { 
-                Operate = this.Operate, 
-                Value = this.Value, 
-                Source = this.Source, 
+            StringFilter result = new StringFilter(this.PropertyInfo)
+            {
+                Operate = this.Operate,
+                Value = this.Value,
+                Source = this.Source,
                 SelectedSource = new ObservableCollection<string>(this.SelectedSource)
             };
 

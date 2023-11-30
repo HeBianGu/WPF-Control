@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections;
@@ -45,7 +45,7 @@ namespace H.Controls.PropertyGrid
 
         public object AdvancedOptionsTooltip
         {
-            get { return (object)GetValue(AdvancedOptionsTooltipProperty); }
+            get { return GetValue(AdvancedOptionsTooltipProperty); }
             set { SetValue(AdvancedOptionsTooltipProperty, value); }
         }
 
@@ -455,8 +455,8 @@ namespace H.Controls.PropertyGrid
         {
             if ((this.ParentNode != null) && (this.ParentNode.PropertyDefinitions != null))
             {
-                var name = this.GetPropertyItemName();
-                foreach (var pd in this.ParentNode.PropertyDefinitions)
+                string name = this.GetPropertyItemName();
+                foreach (PropertyDefinition pd in this.ParentNode.PropertyDefinitions)
                 {
                     if (pd.TargetProperties.Contains(name))
                     {
@@ -465,12 +465,12 @@ namespace H.Controls.PropertyGrid
                     }
                     else
                     {
-                        var type = this.GetPropertyItemType();
+                        Type type = this.GetPropertyItemType();
                         if (type != null)
                         {
-                            foreach (var targetProperty in pd.TargetProperties)
+                            foreach (object targetProperty in pd.TargetProperties)
                             {
-                                var targetPropertyType = targetProperty as Type;
+                                Type targetPropertyType = targetProperty as Type;
                                 // PropertyDefinitions contains a PropertyDefinition for this PropertyItem Type => return its PropertyDefinitions.
                                 if ((targetPropertyType != null) && targetPropertyType.IsAssignableFrom(type))
                                     return pd.PropertyDefinitions;
@@ -542,7 +542,7 @@ namespace H.Controls.PropertyGrid
             {
                 if (this.ParentNode != null)
                 {
-                    var propertyItemPropertyDefinitions = this.GetPropertItemPropertyDefinitions();
+                    PropertyDefinitionCollection propertyItemPropertyDefinitions = this.GetPropertItemPropertyDefinitions();
                     // No PropertyDefinitions specified : show all properties of this PropertyItem.
                     if ((propertyItemPropertyDefinitions == null) || (propertyItemPropertyDefinitions.Count == 0))
                         return true;

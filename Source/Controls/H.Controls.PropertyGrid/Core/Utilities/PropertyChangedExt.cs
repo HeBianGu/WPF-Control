@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.ComponentModel;
@@ -21,7 +21,7 @@ namespace H.Controls.PropertyGrid
             if (expression == null)
                 throw new ArgumentNullException("expression");
 
-            var body = expression.Body as MemberExpression;
+            MemberExpression body = expression.Body as MemberExpression;
             if (body == null)
                 throw new ArgumentException("The expression must target a property or field.", "expression");
 
@@ -62,7 +62,7 @@ namespace H.Controls.PropertyGrid
                 return true;
 
             return (!targetPropertyOnly)
-                && (string.IsNullOrEmpty(target));
+                && string.IsNullOrEmpty(target);
         }
 
         internal static bool PropertyChanged<TOwner, TMember>(
@@ -70,7 +70,7 @@ namespace H.Controls.PropertyGrid
           PropertyChangedEventArgs e,
           bool targetPropertyOnly)
         {
-            var body = expression.Body as MemberExpression;
+            MemberExpression body = expression.Body as MemberExpression;
             if (body == null)
                 throw new ArgumentException("The expression must target a property or field.", "expression");
 
@@ -82,7 +82,7 @@ namespace H.Controls.PropertyGrid
           PropertyChangedEventArgs e,
           bool targetPropertyOnly)
         {
-            var body = expression.Body as MemberExpression;
+            MemberExpression body = expression.Body as MemberExpression;
             if (body == null)
                 throw new ArgumentException("The expression must target a property or field.", "expression");
 
@@ -91,7 +91,7 @@ namespace H.Controls.PropertyGrid
 
         private static bool PropertyChanged(MemberExpression expression, Type ownerType, PropertyChangedEventArgs e, bool targetPropertyOnly)
         {
-            var propertyName = PropertyChangedExt.GetPropertyName(expression, ownerType);
+            string propertyName = PropertyChangedExt.GetPropertyName(expression, ownerType);
 
             return PropertyChangedExt.PropertyChanged(propertyName, e, targetPropertyOnly);
         }
@@ -100,7 +100,7 @@ namespace H.Controls.PropertyGrid
 
         private static string GetPropertyName(MemberExpression expression, Type ownerType)
         {
-            var targetType = expression.Expression.Type;
+            Type targetType = expression.Expression.Type;
             if (!targetType.IsAssignableFrom(ownerType))
                 throw new ArgumentException("The expression must target a property or field on the appropriate owner.", "expression");
 

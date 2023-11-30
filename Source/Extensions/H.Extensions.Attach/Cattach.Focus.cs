@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.Windows;
 using System.Windows.Media;
@@ -29,7 +29,7 @@ namespace H.Extensions.Attach
             obj.SetValue(FocusBorderThicknessProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty FocusBorderThicknessProperty =
             DependencyProperty.RegisterAttached("FocusBorderThickness", typeof(Thickness), typeof(Cattach), new FrameworkPropertyMetadata(new Thickness(1), OnFocusBorderThicknessChanged));
 

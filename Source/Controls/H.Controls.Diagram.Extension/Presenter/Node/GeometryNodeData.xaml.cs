@@ -1,16 +1,9 @@
-﻿using H.Controls.Diagram.Extension;
-using H.Extensions.Geometry;
+﻿using H.Extensions.Geometry;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Converters;
-using System.Xml.Serialization;
 
 namespace H.Controls.Diagram.Extension
 {

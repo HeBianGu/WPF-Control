@@ -1,12 +1,10 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Windows;
-using System.Windows.Media;
 
 namespace H.Extensions.MarkupExtension
 {
-    /// <summary> 生成随机数据 </summary>
     public abstract class RandomExtension<T> : System.Windows.Markup.MarkupExtension
     {
         public T From { get; set; }
@@ -28,9 +26,9 @@ namespace H.Extensions.MarkupExtension
     {
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
-            return random.NextDouble() * (this.To - this.From) + this.From;
+            return (random.NextDouble() * (this.To - this.From)) + this.From;
         }
-    } 
+    }
 
     public class PointExtension : System.Windows.Markup.MarkupExtension
     {
@@ -44,14 +42,13 @@ namespace H.Extensions.MarkupExtension
         }
     }
 
-
     public class PointRandomExtension : RandomExtension<Point>
     {
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
-            double x = random.NextDouble() * (this.To.X - this.From.X) + this.From.X;
+            double x = (random.NextDouble() * (this.To.X - this.From.X)) + this.From.X;
 
-            double y = random.NextDouble() * (this.To.Y - this.From.Y) + this.From.Y;
+            double y = (random.NextDouble() * (this.To.Y - this.From.Y)) + this.From.Y;
 
             return new Point(x, y);
         }
@@ -78,13 +75,13 @@ namespace H.Extensions.MarkupExtension
     {
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
-            double x = random.NextDouble() * (this.To.X - this.From.X) + this.From.X;
+            double x = (random.NextDouble() * (this.To.X - this.From.X)) + this.From.X;
 
-            double y = random.NextDouble() * (this.To.Y - this.From.Y) + this.From.Y;
+            double y = (random.NextDouble() * (this.To.Y - this.From.Y)) + this.From.Y;
 
-            double w = random.NextDouble() * (this.To.Width - this.From.Width) + this.From.Width;
+            double w = (random.NextDouble() * (this.To.Width - this.From.Width)) + this.From.Width;
 
-            double h = random.NextDouble() * (this.To.Height - this.From.Height) + this.From.Height;
+            double h = (random.NextDouble() * (this.To.Height - this.From.Height)) + this.From.Height;
 
             return new Rect(x, y, w, h);
         }

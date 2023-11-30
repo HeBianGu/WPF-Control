@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 using System;
@@ -82,7 +82,7 @@ namespace H.Controls.Diagram
 #if DEBUG
             DateTime dateTime = DateTime.Now;
 #endif
-            var ssss = this.Children.Count;
+            int ssss = this.Children.Count;
             foreach (Link child in this.Children)
             {
                 if (child == null) { continue; }
@@ -101,7 +101,7 @@ namespace H.Controls.Diagram
                 }
             }
 #if DEBUG
-            var span = DateTime.Now - dateTime;
+            TimeSpan span = DateTime.Now - dateTime;
             System.Diagnostics.Debug.WriteLine("LinkLayer.ArrangeOverride：" + span.ToString());
 #endif 
             return base.ArrangeOverride(arrangeSize);

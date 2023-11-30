@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections.Generic;
@@ -32,7 +32,7 @@ namespace H.Controls.PropertyGrid
 
         private static Dictionary<string, Color> GetKnownColors()
         {
-            var colorProperties = typeof(Colors).GetProperties(BindingFlags.Static | BindingFlags.Public);
+            PropertyInfo[] colorProperties = typeof(Colors).GetProperties(BindingFlags.Static | BindingFlags.Public);
             return colorProperties.ToDictionary(p => p.Name, p => (Color)p.GetValue(null, null));
         }
 
@@ -67,9 +67,9 @@ namespace H.Controls.PropertyGrid
                 if (r == v)
                     h = (g - b) / delta;
                 else if (g == v)
-                    h = 2 + (b - r) / delta;
+                    h = 2 + ((b - r) / delta);
                 else if (b == v)
-                    h = 4 + (r - g) / delta;
+                    h = 4 + ((r - g) / delta);
 
                 h *= 60;
                 if (h < 0.0)
@@ -167,7 +167,7 @@ namespace H.Controls.PropertyGrid
 
             }
 
-            return Color.FromArgb(255, (byte)(Math.Round(r * 255)), (byte)(Math.Round(g * 255)), (byte)(Math.Round(b * 255)));
+            return Color.FromArgb(255, (byte)Math.Round(r * 255), (byte)Math.Round(g * 255), (byte)Math.Round(b * 255));
         }
 
         /// <summary>
@@ -176,7 +176,7 @@ namespace H.Controls.PropertyGrid
         /// <returns></returns>
         public static List<Color> GenerateHsvSpectrum()
         {
-            var colorsList = new List<Color>();
+            List<Color> colorsList = new List<Color>();
             int hStep = 60;
 
             for (int h = 0; h < 360; h += hStep)

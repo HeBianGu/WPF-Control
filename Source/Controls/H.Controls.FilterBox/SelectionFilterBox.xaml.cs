@@ -4,14 +4,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Threading;
 
 namespace H.Controls.FilterBox
 {
@@ -33,7 +28,7 @@ namespace H.Controls.FilterBox
             set { SetValue(DisplayNameProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty DisplayNameProperty =
             DependencyProperty.Register("DisplayName", typeof(string), typeof(SelectionFilterBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
             {
@@ -52,15 +47,13 @@ namespace H.Controls.FilterBox
                 }
 
             }));
-
-
-        bool _flag = false;
+        private bool _flag = false;
         protected override void OnSelectionChanged(SelectionChangedEventArgs e)
         {
             base.OnSelectionChanged(e);
             if (_flag == true)
                 return;
-            var checkItem = this.GetCheckAllItem();
+            ListBoxItem checkItem = this.GetCheckAllItem();
             if (checkItem == null)
                 return;
             this.Filter = new SelectionFilter(this);
@@ -69,7 +62,7 @@ namespace H.Controls.FilterBox
             if (e.AddedItems.Count == 1 && this.Items[0] == e.AddedItems[0] && checkItem.IsMouseOver)
             {
                 _flag = true;
-                foreach (var item in this.Items)
+                foreach (object item in this.Items)
                 {
                     this.SelectedItems.Add(item);
                 }
@@ -79,7 +72,7 @@ namespace H.Controls.FilterBox
             else if (e.RemovedItems.Count == 1 && this.Items[0] == e.RemovedItems[0] && checkItem.IsMouseOver)
             {
                 _flag = true;
-                foreach (var item in this.Items)
+                foreach (object item in this.Items)
                 {
                     this.SelectedItems.Remove(item);
                 }
@@ -100,7 +93,7 @@ namespace H.Controls.FilterBox
             set { SetValue(TypeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty TypeProperty =
             DependencyProperty.Register("Type", typeof(Type), typeof(SelectionFilterBox), new FrameworkPropertyMetadata(default(Type), (d, e) =>
             {
@@ -127,7 +120,7 @@ namespace H.Controls.FilterBox
             set { SetValue(UseCheckAllProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UseCheckAllProperty =
             DependencyProperty.Register("UseCheckAll", typeof(bool), typeof(SelectionFilterBox), new FrameworkPropertyMetadata(true, (d, e) =>
             {
@@ -154,7 +147,7 @@ namespace H.Controls.FilterBox
             set { SetValue(PropertyNameProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty PropertyNameProperty =
             DependencyProperty.Register("PropertyName", typeof(string), typeof(SelectionFilterBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
             {
@@ -180,7 +173,7 @@ namespace H.Controls.FilterBox
             set { SetValue(DatasProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty DatasProperty =
             DependencyProperty.Register("Datas", typeof(IEnumerable), typeof(SelectionFilterBox), new FrameworkPropertyMetadata(default(IEnumerable), (d, e) =>
             {
@@ -196,13 +189,13 @@ namespace H.Controls.FilterBox
             }));
 
         private void CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-                {
+        {
             this.RefreshData();
-                }
+        }
 
         private void RefreshData()
         {
-            var propertyInfo = this.GetPropertyInfo();
+            PropertyInfo propertyInfo = this.GetPropertyInfo();
             if (propertyInfo == null)
                 return;
             if (this.Datas == null)
@@ -219,7 +212,7 @@ namespace H.Controls.FilterBox
                 return null;
             if (string.IsNullOrWhiteSpace(this.PropertyName))
                 return null;
-            var propertyInfo = this.Type.GetProperty(this.PropertyName);
+            PropertyInfo propertyInfo = this.Type.GetProperty(this.PropertyName);
             return propertyInfo;
         }
 
@@ -228,7 +221,7 @@ namespace H.Controls.FilterBox
             List<object> items = new List<object>();
             if (this.UseCheckAll)
                 yield return "全选";
-            foreach (var data in this.Datas)
+            foreach (object data in this.Datas)
             {
                 if (data == null)
                     continue;
@@ -247,7 +240,7 @@ namespace H.Controls.FilterBox
             set { SetValue(FilterProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty FilterProperty =
             DependencyProperty.Register("Filter", typeof(IFilter), typeof(SelectionFilterBox), new FrameworkPropertyMetadata(default(IFilter), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, (d, e) =>
             {
@@ -284,11 +277,11 @@ namespace H.Controls.FilterBox
         {
             RoutedEventArgs args = new RoutedEventArgs(FilterChagnedRoutedEvent, this);
             this.RaiseEvent(args);
-    }
+        }
 
 
         public ListBoxItem GetCheckAllItem()
-    {
+        {
             return this.Dispatcher.Invoke(() =>
                {
                    if (this.Items.Count > 0 && this.UseCheckAll)
@@ -302,7 +295,7 @@ namespace H.Controls.FilterBox
     public class SelectionFilter : IDisplayFilter
     {
         private readonly SelectionFilterBox _selectionFilterBox;
-        PropertyInfo _propertyInfo;
+        private PropertyInfo _propertyInfo;
         public SelectionFilter(SelectionFilterBox SelectionFilterBox)
         {
             _selectionFilterBox = SelectionFilterBox;
@@ -318,22 +311,22 @@ namespace H.Controls.FilterBox
             if (_propertyInfo == null)
                 return true;
 
-            var selectedItems = _selectionFilterBox.Dispatcher.Invoke(() => _selectionFilterBox.SelectedItems);
+            IList selectedItems = _selectionFilterBox.Dispatcher.Invoke(() => _selectionFilterBox.SelectedItems);
             if (selectedItems.Count == 0)
                 return true;
-            var checkItem = this._selectionFilterBox.GetCheckAllItem();
+            ListBoxItem checkItem = this._selectionFilterBox.GetCheckAllItem();
             if (checkItem != null)
             {
                 if (checkItem.Dispatcher.Invoke(() => checkItem.IsSelected))
                     return true;
             }
-            foreach (var item in selectedItems)
+            foreach (object item in selectedItems)
             {
-                var value = obj is IModelViewModel model ? _propertyInfo.GetValue(model.GetModel())
+                object value = obj is IModelViewModel model ? _propertyInfo.GetValue(model.GetModel())
                     : _propertyInfo.GetValue(obj);
                 if (value == null && item == null)
                     return true;
-                if (value?.Equals(item)==true)
+                if (value?.Equals(item) == true)
                     return true;
             }
             return false;

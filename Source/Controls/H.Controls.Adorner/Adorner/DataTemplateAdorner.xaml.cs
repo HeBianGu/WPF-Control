@@ -1,10 +1,9 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 
 namespace H.Controls.Adorner
 {
@@ -26,7 +25,7 @@ namespace H.Controls.Adorner
         public DataTemplateAdorner(UIElement adornedElement) : base(adornedElement)
         {
             _visualCollection.Add(_contentPresenter);
-            var data = DataTemplateAdorner.GetData(adornedElement);
+            object data = DataTemplateAdorner.GetData(adornedElement);
             if (data != null)
             {
                 _contentPresenter.Content = data;
@@ -52,12 +51,12 @@ namespace H.Controls.Adorner
 
         protected virtual ControlTemplate CreateTemplate()
         {
-            return ControlTemplateAdorner.GetTemplate(this.AdornedElement) as ControlTemplate;
+            return ControlTemplateAdorner.GetTemplate(this.AdornedElement);
         }
 
         public static object GetData(DependencyObject obj)
         {
-            return (object)obj.GetValue(DataProperty);
+            return obj.GetValue(DataProperty);
         }
 
         public static void SetData(DependencyObject obj, object value)
@@ -65,17 +64,17 @@ namespace H.Controls.Adorner
             obj.SetValue(DataProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty DataProperty =
             DependencyProperty.RegisterAttached("Data", typeof(object), typeof(DataTemplateAdorner), new PropertyMetadata(default(object), OnDataChanged));
 
-        static public void OnDataChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnDataChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
-            object n = (object)e.NewValue;
+            object n = e.NewValue;
 
-            object o = (object)e.OldValue;
+            object o = e.OldValue;
         }
 
         protected override Size MeasureOverride(Size constraint)
@@ -123,7 +122,7 @@ namespace H.Controls.Adorner
 
         protected override Size ArrangeOverride(Size finalSize)
         {
-            var size = base.ArrangeOverride(finalSize);
+            Size size = base.ArrangeOverride(finalSize);
             this.UpdatePosition(this.location);
             return size;
 

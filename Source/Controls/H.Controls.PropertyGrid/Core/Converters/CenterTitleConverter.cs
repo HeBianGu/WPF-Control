@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Globalization;
@@ -22,7 +22,7 @@ namespace H.Controls.PropertyGrid
 
 
             // Result (1) Title is Centered across all HeaderColumns
-            if ((titleTextWidth + buttonsColWidth * 2) < windowWidth)
+            if ((titleTextWidth + (buttonsColWidth * 2)) < windowWidth)
                 return 1;
 
             // Result (2) Title is Centered in HeaderColumns[2]

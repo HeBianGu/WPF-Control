@@ -1,12 +1,4 @@
-﻿/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
-
+﻿
 using H.Controls.Dock.Controls;
 using H.Controls.Dock.Layout;
 using System;
@@ -37,7 +29,7 @@ namespace H.Controls.Dock.Converters
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             //when this converter is called layout could be constructing so many properties here are potentially not valid
-            if (value as LayoutContent == null)
+            if ((value as LayoutContent) == null)
                 return null;
 
             if ((value as LayoutContent).Root == null)

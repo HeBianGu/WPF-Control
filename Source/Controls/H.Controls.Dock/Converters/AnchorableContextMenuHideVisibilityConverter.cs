@@ -1,12 +1,4 @@
-﻿/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
-
+﻿
 using System;
 using System.Globalization;
 using System.Linq;
@@ -48,7 +40,7 @@ namespace H.Controls.Dock.Converters
               && (values[1] != DependencyProperty.UnsetValue)
               && (values[1] is bool boolean))
             {
-                var canClose = boolean;
+                bool canClose = boolean;
 
                 return canClose ? Visibility.Collapsed : values[0];
             }

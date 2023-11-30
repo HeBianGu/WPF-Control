@@ -5,7 +5,7 @@ namespace H.Controls.OrderBox
 {
     public class PropertyOrderBoxOrder : IOrder
     {
-        PropertyOrderBox _propertyOrder;
+        private PropertyOrderBox _propertyOrder;
         public PropertyOrderBoxOrder(PropertyOrderBox propertyOrder)
         {
             _propertyOrder = propertyOrder;

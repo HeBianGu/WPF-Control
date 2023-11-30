@@ -4,16 +4,20 @@
                     xmlns:lc="clr-namespace:H.Controls.Dock.Controls"
                     xmlns:lcv="clr-namespace:H.Controls.Dock.Converters"
                     xmlns:local="clr-namespace:H.Controls.Dock">
- 
+
     <!--  AnchorablePaneControlStyle  -->
-    <Style x:Key="AnchorablePaneControlStyle" TargetType="{x:Type lc:LayoutAnchorablePaneControl}" BasedOn="{StaticResource {x:Static h:TabControlKeys.Default}}">
+    <Style x:Key="AnchorablePaneControlStyle"
+           BasedOn="{StaticResource {x:Static h:TabControlKeys.Default}}"
+           TargetType="{x:Type lc:LayoutAnchorablePaneControl}">
         <Setter Property="Foreground" Value="{Binding Model.Root.Manager.Foreground, RelativeSource={RelativeSource Self}}" />
         <Setter Property="Background" Value="{Binding Model.Root.Manager.Background, RelativeSource={RelativeSource Self}}" />
         <Setter Property="TabStripPlacement" Value="Bottom" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type lc:LayoutAnchorablePaneControl}">
-                    <Grid ClipToBounds="true" KeyboardNavigation.TabNavigation="Local" SnapsToDevicePixels="true">
+                    <Grid ClipToBounds="true"
+                          KeyboardNavigation.TabNavigation="Local"
+                          SnapsToDevicePixels="true">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
                             <RowDefinition Height="Auto" />
@@ -52,7 +56,7 @@
 
         <Setter Property="ItemContainerStyle">
             <Setter.Value>
-                <Style TargetType="{x:Type TabItem}" BasedOn="{StaticResource {x:Static h:TabItemKeys.Default}}">
+                <Style BasedOn="{StaticResource {x:Static h:TabItemKeys.Default}}" TargetType="{x:Type TabItem}">
                     <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
                     <Setter Property="IsEnabled" Value="{Binding IsEnabled}" />
                     <Setter Property="ToolTip" Value="{Binding ToolTip}" />
@@ -73,7 +77,8 @@
                                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                                     </Border>
                                 </Grid>
-                                --><!--<ControlTemplate.Triggers>
+                    -->
+                    <!--<ControlTemplate.Triggers>
                                     <Trigger Property="Selector.IsSelected" Value="true">
                                         <Setter Property="Background" Value="White" />
                                         <Setter Property="Panel.ZIndex" Value="1" />
@@ -91,7 +96,8 @@
                                     <Trigger Property="IsEnabled" Value="false">
                                         <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrushTitle}}" />
                                     </Trigger>
-                                </ControlTemplate.Triggers>--><!--
+                                </ControlTemplate.Triggers>-->
+                    <!--
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>-->

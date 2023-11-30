@@ -1,29 +1,7 @@
-/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
 
 using System;
 using System.Diagnostics;
 using System.Threading;
-
-/**************************************************************************\
-    Copyright Microsoft Corporation. All Rights Reserved.
-\**************************************************************************/
-
-// Conditional to use more aggressive fail-fast behaviors when debugging.
-//#define DEV_DEBUG
-
-// This file contains general utilities to aid in development.
-// It is distinct from unit test Assert classes.
-// Classes here generally shouldn't be exposed publicly since
-// they're not particular to any library functionality.
-// Because the classes here are internal, it's likely this file
-// might be included in multiple assemblies.
 namespace Standard
 {
     /// <summary>A static class for verifying assumptions.</summary>

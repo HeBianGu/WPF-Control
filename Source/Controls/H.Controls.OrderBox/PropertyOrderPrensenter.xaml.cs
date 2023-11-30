@@ -1,23 +1,18 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
+using H.Providers.Ioc;
+using H.Providers.Mvvm;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
-using System.Reflection;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Windows;
-using System.Xml.Serialization;
-using System.Xml;
-using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using H.Providers.Mvvm;
-using H.Providers.Ioc;
-using H.Extensions.TypeConverter;
+using System.Reflection;
 using System.Text.Json.Serialization;
-using System.Collections;
+using System.Xml.Serialization;
 
 namespace H.Controls.OrderBox
 {
@@ -43,7 +38,7 @@ namespace H.Controls.OrderBox
 
         public PropertyOrderPrensenter(Type modelTyle, Func<PropertyInfo, bool> predicate = null)
         {
-            var ps = modelTyle.GetProperties().Where(x => x.PropertyType.IsPrimitive || x.PropertyType == typeof(DateTime) || x.PropertyType == typeof(string)).ToObservable();
+            ObservableCollection<PropertyInfo> ps = modelTyle.GetProperties().Where(x => x.PropertyType.IsPrimitive || x.PropertyType == typeof(DateTime) || x.PropertyType == typeof(string)).ToObservable();
             if (predicate != null)
                 this.Properties = ps.Where(predicate).ToObservable();
             else
@@ -64,7 +59,7 @@ namespace H.Controls.OrderBox
         [XmlIgnore]
         public RelayCommand AddConditionCommand => new RelayCommand(l =>
         {
-            var first = this.Properties.FirstOrDefault();
+            PropertyInfo first = this.Properties.FirstOrDefault();
             PropertyOrder Order = new PropertyOrder(first);
             this.Conditions.Add(Order);
         });
@@ -104,21 +99,21 @@ namespace H.Controls.OrderBox
 
         }
 
-        bool _isLoaded = false;
+        private bool _isLoaded = false;
         public void Load()
         {
             if (_isLoaded)
                 return;
             if (string.IsNullOrEmpty(this.ID))
                 return;
-            var find = this.MetaSettingService?.Deserilize<PropertyOrderPrensenter>(this.ID);
+            PropertyOrderPrensenter find = this.MetaSettingService?.Deserilize<PropertyOrderPrensenter>(this.ID);
             if (find == null)
                 return;
 
-            foreach (var item in find.Conditions)
+            foreach (PropertyOrder item in find.Conditions)
             {
-                var propertyInfo = this.Properties.FirstOrDefault(x => x.Name == item.PropertyName);
-                var pc = new PropertyOrder(propertyInfo);
+                PropertyInfo propertyInfo = this.Properties.FirstOrDefault(x => x.Name == item.PropertyName);
+                PropertyOrder pc = new PropertyOrder(propertyInfo);
                 this.Conditions.Add(pc);
             }
             _isLoaded = true;
@@ -126,10 +121,10 @@ namespace H.Controls.OrderBox
 
         public IEnumerable Where(IEnumerable from)
         {
-            var selecteds = this.Conditions.Where(x => x.IsSelected).ToList();
+            List<PropertyOrder> selecteds = this.Conditions.Where(x => x.IsSelected).ToList();
             if (selecteds.Count == 0)
                 return from;
-            var first = selecteds[0];
+            PropertyOrder first = selecteds[0];
             IOrderedEnumerable<object> result = first.UseDesc ?
                 from.OfType<object>().OrderByDescending(x => first.PropertyInfo.GetValue(x)) :
                 from.OfType<object>().OrderBy(x => first.PropertyInfo.GetValue(x));
@@ -138,7 +133,7 @@ namespace H.Controls.OrderBox
 
             for (int i = 1; i < selecteds.Count; i++)
             {
-                var item = selecteds[i];
+                PropertyOrder item = selecteds[i];
                 result = item.UseDesc ? result.ThenByDescending(x => item.PropertyInfo.GetValue(x)) :
                      result.ThenBy(x => item.PropertyInfo.GetValue(x));
             }

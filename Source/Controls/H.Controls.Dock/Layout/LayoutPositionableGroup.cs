@@ -1,11 +1,11 @@
-﻿/************************************************************************
-   H.Controls.Dock
+﻿
 
-   Copyright (C) 2007-2013 Xceed Software Inc.
 
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
+
+
+
+
+
 
 using System;
 using System.Globalization;
@@ -176,13 +176,13 @@ namespace H.Controls.Dock.Layout
 
         public double CalculatedDockMinWidth()
         {
-            var childrenDockMinWidth = 0.0;
-            var visibleChildren = Children.OfType<ILayoutPositionableElement>().Where(child => child.IsVisible).ToList();
+            double childrenDockMinWidth = 0.0;
+            System.Collections.Generic.List<ILayoutPositionableElement> visibleChildren = Children.OfType<ILayoutPositionableElement>().Where(child => child.IsVisible).ToList();
             if (this is ILayoutOrientableGroup orientableGroup && visibleChildren.Any())
             {
                 childrenDockMinWidth = orientableGroup.Orientation == Orientation.Vertical ?
                     visibleChildren.Max(child => child.CalculatedDockMinWidth())
-                  : visibleChildren.Sum(child => child.CalculatedDockMinWidth() + (Root?.Manager?.GridSplitterWidth ?? 0) * (visibleChildren.Count - 1));
+                  : visibleChildren.Sum(child => child.CalculatedDockMinWidth() + ((Root?.Manager?.GridSplitterWidth ?? 0) * (visibleChildren.Count - 1)));
             }
             return Math.Max(this._dockMinWidth, childrenDockMinWidth);
         }
@@ -208,12 +208,12 @@ namespace H.Controls.Dock.Layout
 
         public double CalculatedDockMinHeight()
         {
-            var childrenDockMinHeight = 0.0;
-            var visibleChildren = Children.OfType<ILayoutPositionableElement>().Where(child => child.IsVisible).ToList();
+            double childrenDockMinHeight = 0.0;
+            System.Collections.Generic.List<ILayoutPositionableElement> visibleChildren = Children.OfType<ILayoutPositionableElement>().Where(child => child.IsVisible).ToList();
             if (this is ILayoutOrientableGroup orientableGroup && visibleChildren.Any())
             {
                 childrenDockMinHeight = orientableGroup.Orientation == Orientation.Vertical ?
-                    visibleChildren.Sum(child => child.CalculatedDockMinHeight() + (Root?.Manager?.GridSplitterHeight ?? 0) * (visibleChildren.Count - 1))
+                    visibleChildren.Sum(child => child.CalculatedDockMinHeight() + ((Root?.Manager?.GridSplitterHeight ?? 0) * (visibleChildren.Count - 1)))
                   : visibleChildren.Max(child => child.CalculatedDockMinHeight());
             }
 

@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections.Generic;
@@ -42,7 +42,7 @@ namespace H.Controls.Chart2D
             set { SetValue(ForegroundProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static new readonly DependencyProperty ForegroundProperty =
             DependencyProperty.Register("Foreground", typeof(ObservableCollection<Color>), typeof(Pie), new PropertyMetadata(new ObservableCollection<Color>(), (d, e) =>
             {
@@ -62,7 +62,7 @@ namespace H.Controls.Chart2D
             set { SetValue(LenProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty LenProperty =
             DependencyProperty.Register("Len", typeof(double), typeof(Pie), new PropertyMetadata(double.NaN, (d, e) =>
              {
@@ -83,7 +83,7 @@ namespace H.Controls.Chart2D
             set { SetValue(CircleLenProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty CircleLenProperty =
             DependencyProperty.Register("CircleLen", typeof(double), typeof(Pie), new PropertyMetadata(0.0, (d, e) =>
              {
@@ -105,7 +105,7 @@ namespace H.Controls.Chart2D
             set { SetValue(IsCustomizedProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty IsCustomizedProperty =
             DependencyProperty.Register("IsCustomized", typeof(bool), typeof(Pie), new PropertyMetadata(default(bool), (d, e) =>
              {
@@ -127,7 +127,7 @@ namespace H.Controls.Chart2D
             set { SetValue(EllipseStyleProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty EllipseStyleProperty =
             DependencyProperty.Register("EllipseStyle", typeof(Style), typeof(Pie), new PropertyMetadata(default(Style), (d, e) =>
              {
@@ -195,15 +195,15 @@ namespace H.Controls.Chart2D
                 //  Do ：增加标记
                 {
                     //  Do ：第二个点
-                    Point start = new Point(center.X - max - max / 10, center.X);
+                    Point start = new Point(center.X - max - (max / 10), center.X);
                     Matrix matrix = new Matrix();
-                    matrix.RotateAt((endAngle - startAngle) / 2 + startAngle, center.X, center.Y);
+                    matrix.RotateAt(((endAngle - startAngle) / 2) + startAngle, center.X, center.Y);
                     Point end = matrix.Transform(start);
 
                     //  Do ：第一个点
                     Point startFirst = new Point(center.X - len, center.X);
                     Matrix matrixFirst = new Matrix();
-                    matrixFirst.RotateAt((endAngle - startAngle) / 2 + startAngle, center.X, center.Y);
+                    matrixFirst.RotateAt(((endAngle - startAngle) / 2) + startAngle, center.X, center.Y);
                     Point endFirst = matrixFirst.Transform(startFirst);
 
                     Path path = new Path();
@@ -219,7 +219,7 @@ namespace H.Controls.Chart2D
 
                     double hlen = len / 8;
 
-                    double endParam = (end.X > center.X ? hlen : -hlen);
+                    double endParam = end.X > center.X ? hlen : -hlen;
 
                     pf.Segments.Add(new LineSegment(new Point(end.X + endParam, end.Y), true));
 
@@ -240,10 +240,10 @@ namespace H.Controls.Chart2D
 
                     t.Loaded += (o, e) =>
                     {
-                        endParam = (end.X > center.X ? hlen + hlen / 2 : -hlen - t.ActualWidth - hlen / 2);
+                        endParam = end.X > center.X ? hlen + (hlen / 2) : -hlen - t.ActualWidth - (hlen / 2);
 
                         Canvas.SetLeft(t, end.X + endParam);
-                        Canvas.SetTop(t, end.Y - t.ActualHeight / 2);
+                        Canvas.SetTop(t, end.Y - (t.ActualHeight / 2));
                     };
 
 
