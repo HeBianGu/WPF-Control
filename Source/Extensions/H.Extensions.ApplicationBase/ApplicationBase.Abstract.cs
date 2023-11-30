@@ -96,7 +96,7 @@ namespace H.Extensions.ApplicationBase
                 }, DialogButton.None, ApplicationProvider.Version).Result;
                 if (r == false)
                 {
-                    Logger.Instance?.Info("启动失败，程序退出");
+                    IocLog.Instance?.Info("启动失败，程序退出");
                     this.Shutdown();
                     return;
                 }
@@ -129,7 +129,7 @@ namespace H.Extensions.ApplicationBase
             }, DialogButton.None, ApplicationProvider.Version).Result;
             if (r == false)
             {
-                Logger.Instance?.Info("登录失败程序退出");
+                IocLog.Instance?.Info("登录失败程序退出");
                 this.Shutdown();
                 return;
             }

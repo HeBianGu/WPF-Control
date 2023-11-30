@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.Windows;
 
@@ -20,8 +20,7 @@ namespace H.Providers.Mvvm
             get { return (object)GetValue(DataProperty); }
             set { SetValue(DataProperty, value); }
         }
-
-        // Using a DependencyProperty as the backing store for Data.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty DataProperty =
             DependencyProperty.Register("Data", typeof(object), typeof(BindingProxy), new UIPropertyMetadata(null));
     }

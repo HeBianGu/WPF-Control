@@ -192,7 +192,7 @@
                                                   Type="{x:Type h:Student}">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding ., Converter={h:GetBoolConverter TrueValue=启用, FalseValue=禁用, DefaultValue=全选}}" />
+                                        <TextBlock Text="{Binding ., Converter={h:GetBoolToValueConverter TrueValue=启用, FalseValue=禁用, DefaultValue=全选}}" />
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
                             </h:SelectionFilterBox>

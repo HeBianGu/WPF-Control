@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 using H.Providers.Mvvm;
@@ -41,7 +41,7 @@ namespace H.Controls.Chart2D
 
             this._center_thumb.DragDeltaChanged += (l, k) =>
               {
-                  ObjectRoutedEventArgs<ThumbType> from = k as ObjectRoutedEventArgs<ThumbType>;
+                  RoutedEventArgs<ThumbType> from = k as RoutedEventArgs<ThumbType>;
 
                   this.RefreshData(from.Entity);
 
@@ -328,7 +328,7 @@ namespace H.Controls.Chart2D
 
         protected void OnDragDeltaChanged(ThumbType thumbType = ThumbType.Center)
         {
-            ObjectRoutedEventArgs<ThumbType> args = new ObjectRoutedEventArgs<ThumbType>(DragDeltaChangedRoutedEvent, this);
+            RoutedEventArgs<ThumbType> args = new RoutedEventArgs<ThumbType>(DragDeltaChangedRoutedEvent, this);
             args.Entity = thumbType;
             this.RaiseEvent(args);
         }

@@ -32,7 +32,7 @@ namespace H.DataBases.Share
             }
             catch (System.Exception ex)
             {
-                Logger.Instance?.Error(ex);
+                IocLog.Instance?.Error(ex);
                 message = ex.Message;
                 return false;
             }
@@ -86,7 +86,7 @@ namespace H.DataBases.Share
             }
             catch (Exception ex)
             {
-                Logger.Instance?.Error(ex);
+                IocLog.Instance?.Error(ex);
                 message = ex.Message;
                 return false;
             }

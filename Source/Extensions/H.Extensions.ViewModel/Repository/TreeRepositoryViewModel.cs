@@ -1,8 +1,7 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 using H.Providers.Ioc;
-
 using H.Providers.Mvvm;
 using System;
 using System.IO;
@@ -11,15 +10,9 @@ using System.Threading.Tasks;
 
 namespace H.Extensions.ViewModel
 {
-
-    /// <summary>
-    /// 直接对接模型的仓储基类
-    /// </summary>
-    /// <typeparam name="TEntity"></typeparam>
     public class TreeRepositoryViewModel<TEntity> : RepositoryViewModelBase<TreeNodeBase<TEntity>, TEntity>, ITreeRepositoryViewModel<TEntity> where TEntity : StringEntityBase, ITreePath, new()
     {
         private TreeNodeBase<TEntity> _selectedTreeItem;
-        /// <summary> 说明  </summary>
         public TreeNodeBase<TEntity> SelectedTreeItem
         {
             get { return _selectedTreeItem; }
@@ -57,14 +50,11 @@ namespace H.Extensions.ViewModel
                 {
                     builder.Invoke(root);
                 }
-
-                //var collection = this.Repository.GetList().Select(x => new TreeNodeBase<TEntity>(x));
-                //this.Collection = collection.Select(x => new SelectViewModel<TEntity>(x)).ToObservable();
                 this.Collection.Load(rootVms);
             }
             catch (Exception ex)
             {
-                Logger.Instance?.Error(ex);
+                IocLog.Instance?.Error(ex);
                 IocMessage.Dialog.ShowMessage("加载数据错误:" + ex.Message);
             }
             finally

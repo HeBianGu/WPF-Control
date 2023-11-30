@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using H.Providers.Ioc;
 using H.Providers.Mvvm;
@@ -13,7 +13,6 @@ using System.Windows.Threading;
 
 namespace H.Extensions.ViewModel
 {
-
     public class ObservableSource<T> : NotifyPropertyChanged, IObservableSource<T>
     {
         public int Count => this.Cache.Count;
@@ -264,11 +263,11 @@ namespace H.Extensions.ViewModel
                 Where(x => this.Filter5?.IsMatch(x) != false);
 
             if (this.Order1 != null)
-                where = this.Order1.Where(where);
+                where = this.Order1.Where(where).Cast<T>();
             if (this.Order2 != null)
-                where = this.Order2.Where(where);
+                where = this.Order2.Where(where).Cast<T>();
             if (this.Order2 != null)
-                where = this.Order3.Where(where);
+                where = this.Order3.Where(where).Cast<T>();
 
             this.FilterSource = where.ToObservable();
             this.Total = this.FilterSource.Count;

@@ -108,7 +108,7 @@ namespace H.Controls.Diagram.Extension
             }
             catch (Exception ex)
             {
-                Logger.Instance?.Error(ex);
+                IocLog.Instance?.Error(ex);
                 return null;
             }
         }

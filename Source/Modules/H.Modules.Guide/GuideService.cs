@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 
@@ -7,8 +7,8 @@ using System.Threading;
 using System.Windows.Documents;
 using System.Windows;
 using System.Windows.Controls;
-using H.Providers.Ioc;
 using System.Linq;
+using H.Providers.Ioc;
 
 namespace H.Modules.Guide
 {

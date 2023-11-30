@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.ComponentModel;
@@ -15,9 +15,7 @@ namespace H.Extensions.TypeConverter
             {
                 if (value == null)
                     return string.Empty;
-
                 DisplayNameAttribute attributes = value.GetType().GetCustomAttribute<DisplayNameAttribute>(false);
-
                 return attributes?.DisplayName ?? string.Empty;
             }
             return base.ConvertTo(context, culture, value, destinationType);

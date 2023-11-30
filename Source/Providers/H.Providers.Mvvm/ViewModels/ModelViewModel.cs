@@ -1,36 +1,18 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
+using H.Providers.Mvvm;
 
 namespace H.Providers.Mvvm
 {
-    public interface IModelViewModel
-    {
-        object GetModel();
-    }
-    //public interface IModelViewModel<T> : IModelViewModel
-    //{
-    //    T Model { get; set; }
-    //}
-
-    public interface IModelViewModel<T> : IModelViewModel
-    {
-        T Model { get; set; }
-        double Value { get; set; }
-        bool Visible { get; set; }
-    }
 
 
     public partial class ModelViewModel<T> : NotifyPropertyChanged, IModelViewModel<T>, ISearchable
     {
-        //public ModelViewModel()
-        //{
-        //    this.Model = new T();
-        //}
         public ModelViewModel(T t)
         {
             Model = t;
@@ -38,7 +20,6 @@ namespace H.Providers.Mvvm
         }
 
         private T _model;
-        /// <summary> Model层  </summary>
         [Browsable(false)]
         public T Model
         {
@@ -56,7 +37,6 @@ namespace H.Providers.Mvvm
         }
 
         private bool _visible = true;
-        /// <summary> 是否可见  </summary>
         [Browsable(false)]
         public bool Visible
         {
@@ -69,7 +49,6 @@ namespace H.Providers.Mvvm
         }
 
         private bool _isEnbled;
-        /// <summary> 是否可用  </summary>
         [Browsable(false)]
         public bool IsEnbled
         {
@@ -83,7 +62,6 @@ namespace H.Providers.Mvvm
 
 
         private bool _isBuzy;
-        /// <summary> 说明  </summary>
         [Browsable(false)]
         public bool IsBuzy
         {
@@ -97,7 +75,6 @@ namespace H.Providers.Mvvm
 
 
         private double _value;
-        /// <summary> 说明  </summary>
         [Browsable(false)]
         public double Value
         {
@@ -122,8 +99,6 @@ namespace H.Providers.Mvvm
             }
         }
 
-
-        /// <summary> 将Model数据加载到ViewModel属性上面 通过名称匹配 </summary>
         protected virtual bool LoadValue(out string message)
         {
             message = string.Empty;
@@ -140,7 +115,6 @@ namespace H.Providers.Mvvm
             return true;
         }
 
-        /// <summary> 将ViewModel数据加载到Model属性上面 通过名称匹配 </summary>
         protected virtual bool SaveValue(out string message)
         {
             message = string.Empty;
@@ -171,7 +145,6 @@ namespace H.Providers.Mvvm
                 {
                     return true;
                 }
-
             }
             {
                 IEnumerable<PropertyInfo> ps = GetType().GetProperties().Where(x => x.CanRead).Where(l => l.PropertyType == typeof(string) || l.PropertyType.IsPrimitive || l.PropertyType == typeof(DateTime));

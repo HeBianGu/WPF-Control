@@ -97,7 +97,7 @@ namespace H.Modules.Login
                      catch (Exception ex)
                      {
                          s.Message = ex.Message;
-                         Logger.Instance?.Error(ex);
+                         IocLog.Instance?.Error(ex);
                          return false;
                      }
                      finally

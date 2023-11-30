@@ -7,4 +7,9 @@
     <ProjectReference Include="..\H.Extensions.Common\H.Extensions.Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DateTime\" />
+    <Folder Include="String\" />
+  </ItemGroup>
+
 </Project>

@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 
@@ -722,9 +722,9 @@ namespace H.Controls.Diagram
         #region - 事件 -
 
         public static readonly RoutedEvent AddLinkedRoutedEvent =
-            EventManager.RegisterRoutedEvent("AddLinked", RoutingStrategy.Bubble, typeof(EventHandler<ObjectRoutedEventArgs<Link>>), typeof(Diagram));
+            EventManager.RegisterRoutedEvent("AddLinked", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs<Link>>), typeof(Diagram));
 
-        public event EventHandler<ObjectRoutedEventArgs<Link>> AddLinked
+        public event EventHandler<RoutedEventArgs<Link>> AddLinked
         {
             add { this.AddHandler(AddLinkedRoutedEvent, value); }
             remove { this.RemoveHandler(AddLinkedRoutedEvent, value); }
@@ -732,7 +732,7 @@ namespace H.Controls.Diagram
 
         internal void OnAddLinked(Link link)
         {
-            ObjectRoutedEventArgs<Link> args = new ObjectRoutedEventArgs<Link>(AddLinkedRoutedEvent, this, link);
+            RoutedEventArgs<Link> args = new RoutedEventArgs<Link>(AddLinkedRoutedEvent, this, link);
             this.RaiseEvent(args);
         }
 
@@ -769,7 +769,7 @@ namespace H.Controls.Diagram
 
         //声明和注册路由事件
         public static readonly RoutedEvent RunningPartChangedRoutedEvent =
-            EventManager.RegisterRoutedEvent("RunningPartChanged", RoutingStrategy.Bubble, typeof(EventHandler<ObjectRoutedEventArgs<Part>>), typeof(Diagram));
+            EventManager.RegisterRoutedEvent("RunningPartChanged", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs<Part>>), typeof(Diagram));
         //CLR事件包装
         public event RoutedEventHandler RunningPartChanged
         {
@@ -780,7 +780,7 @@ namespace H.Controls.Diagram
 
         internal void OnRunningPartChanged(Part part)
         {
-            var args = new ObjectRoutedEventArgs<Part>(RunningPartChangedRoutedEvent, this, part);
+            var args = new RoutedEventArgs<Part>(RunningPartChangedRoutedEvent, this, part);
             this.RaiseEvent(args);
 
             if (this.FlowableZoomMode == DiagramFlowableZoomMode.Rect)

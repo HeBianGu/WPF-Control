@@ -4,10 +4,4 @@
     {
 
     }
-
-
-    public interface IAboutButtonPresenter
-    {
-
-    }
 }

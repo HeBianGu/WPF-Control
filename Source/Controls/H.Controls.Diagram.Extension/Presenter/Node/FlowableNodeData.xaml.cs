@@ -180,10 +180,10 @@ namespace H.Controls.Diagram.Extension
                 this.State = FlowableState.Running;
                 this.IsBuzy = true;
                 if (this.UseInfoLogger)
-                    Logger.Instance?.Info($"正在执行<{this.GetType().Name}>:{this.Text}");
+                    IocLog.Instance?.Info($"正在执行<{this.GetType().Name}>:{this.Text}");
                 IFlowableResult result = await InvokeAsync(previors, current);
                 if (this.UseInfoLogger)
-                    Logger.Instance?.Info(result.State == FlowableResultState.Error ? $"运行错误<{this.GetType().Name}>:{this.Text} {result.Message}" : $"执行完成<{this.GetType().Name}>:{this.Text} {result.Message}");
+                    IocLog.Instance?.Info(result.State == FlowableResultState.Error ? $"运行错误<{this.GetType().Name}>:{this.Text} {result.Message}" : $"执行完成<{this.GetType().Name}>:{this.Text} {result.Message}");
                 this.State = result.State == FlowableResultState.OK ? FlowableState.Success : FlowableState.Error;
                 return result;
             }
@@ -192,8 +192,8 @@ namespace H.Controls.Diagram.Extension
                 this.State = FlowableState.Error;
                 this.Exception = ex;
                 this.Message = ex.Message;
-                Logger.Instance?.Error($"执行错误<{this.GetType().Name}>:{this.Name} {this.Message}");
-                Logger.Instance?.Error(ex);
+                IocLog.Instance?.Error($"执行错误<{this.GetType().Name}>:{this.Name} {this.Message}");
+                IocLog.Instance?.Error(ex);
                 return this.Error(ex.Message);
             }
             finally

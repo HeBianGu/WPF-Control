@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections;
@@ -20,7 +20,7 @@ using System.Text;
 
 namespace H.Extensions.ValueConverter
 {
-    public static class Converter
+    public  static partial class Converter
     {
         #region - TimeSpan -
         public static ConverterBase<int, string> GetTimeSpanStrFromSeconds => new ConverterBase<int, string>(x => TimeSpan.FromSeconds(x).TimespanToString());
@@ -30,8 +30,6 @@ namespace H.Extensions.ValueConverter
         public static ConverterBase<int, string> GetTimeSpanStrFromHours => new ConverterBase<int, string>(x => TimeSpan.FromHours(x).TimespanToString());
         public static ConverterBase<long, string> GetTimeSpanStrFromTicks => new ConverterBase<long, string>(x => TimeSpan.FromTicks(x).TimespanToString());
         public static ConverterBase<TimeSpan, string> GetTimeSpanStr => new ConverterBase<TimeSpan, string>(x => x.TimespanToString());
-
-
 
         public static string TimespanToDislay(this TimeSpan t)
         {
@@ -91,7 +89,7 @@ namespace H.Extensions.ValueConverter
 
         #endregion
 
-        #region - string -
+        #region - String -
         public static ConverterBase<string, string> GetStringTrim => new ConverterBase<string, string>(x => x.Trim());
         public static ConverterBase<string, string> GetStringToUpper => new ConverterBase<string, string>(x => x.ToUpper());
         public static ConverterBase<string, string> GetStringToLower => new ConverterBase<string, string>(x => x.ToLower());
@@ -176,7 +174,6 @@ namespace H.Extensions.ValueConverter
             }
             return list;
         });
-
         public static IEnumerableConverterBase<object, string, object> GetIEnumerablePropertyList => new IEnumerableConverterBase<object, string, object>((x, p) =>
         {
             if (x.GetType().IsGenericType)
@@ -430,6 +427,12 @@ namespace H.Extensions.ValueConverter
         #region - DateTime -
         public static ConverterBase<DateTime, string> GetDateTimeToString => new ConverterBase<DateTime, string>(x => x.ToString("yyyy-MM-dd HH:mm:ss"));
         public static ConverterBase<DateTime, string> GetDateTimeToDateString => new ConverterBase<DateTime, string>(x => x.ToString("yyyy-MM-dd"));
+        public static ConverterBase<DateTime, int> GetDateTimeToAge => new ConverterBase<DateTime, int>(x =>
+        {
+            TimeSpan span = DateTime.Now - x;
+            return (int)(span.TotalDays / 365.0);
+        });
+
         public static ConverterBase<DateTime, DateTime> GetDateTimeToDate => new ConverterBase<DateTime, DateTime>(x => x.Date);
         public static ConverterBase<DateTime, double, DateTime> GetDateTimeToAddDays => new ConverterBase<DateTime, double, DateTime>((x, y) => x.AddDays(y));
         public static ConverterBase<DateTime, double, DateTime> GetDateTimeToAddHours => new ConverterBase<DateTime, double, DateTime>((x, y) => x.AddHours(y));

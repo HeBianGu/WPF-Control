@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using Microsoft.Xaml.Behaviors;
 using System;
@@ -15,7 +15,6 @@ namespace H.Extensions.Behvaiors
 {
     public class TextBlockCountBehavior : Behavior<TextBlock>
     {
-
         public string PropertyName
         {
             get { return (string)GetValue(PropertyNameProperty); }

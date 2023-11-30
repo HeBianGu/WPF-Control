@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 using H.Providers.Ioc;
@@ -18,16 +18,11 @@ using System.Windows.Threading;
 
 namespace H.Extensions.ViewModel
 {
-
     public class RepositoryViewModelBase : NotifyPropertyChanged
     {
 
     }
 
-    /// <summary>
-    /// 直接对接模型的仓储基类
-    /// </summary>
-    /// <typeparam name="TEntity"></typeparam>
     public abstract class RepositoryViewModelBase<TViewModel, TEntity> : RepositoryViewModelBase, IRepositoryViewModelBase<TEntity> where TEntity : StringEntityBase, new() where TViewModel : SelectViewModel<TEntity>
     {
         protected virtual IEnumerable<string> GetIncludes()
