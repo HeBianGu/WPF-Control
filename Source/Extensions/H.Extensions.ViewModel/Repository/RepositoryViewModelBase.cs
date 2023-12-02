@@ -292,11 +292,15 @@ namespace H.Extensions.ViewModel
             bool? r = Ioc<IExcelService>.Instance?.Export(collection, path, typeof(TEntity).Name, out message);
             if (r == false)
             {
-                await IocMessage.Dialog.ShowMessage("导出错误," + message);
+                await IocMessage.Dialog.Show("导出错误," + message);
             }
             else
             {
-                bool? rs = await IocMessage.Dialog.ShowMessage("导出成功，是否立即查看?", null, DialogButton.SumitAndCancel);
+                bool? rs = await IocMessage.Dialog.Show("导出成功，是否立即查看?", x =>
+                {
+                    x.Title = "提示";
+                    x.DialogButton = DialogButton.SumitAndCancel;
+                });
                 if (rs == true)
                 {
                     //Process.Start("explorer.exe", path);
@@ -392,7 +396,11 @@ namespace H.Extensions.ViewModel
 
             if (this.UseMessage)
             {
-                bool? result = await IocMessage.Dialog.ShowMessage("确定删除数据？", "提示", DialogButton.SumitAndCancel);
+                bool? result = await IocMessage.Dialog.Show("确定删除数据？",x=>
+                {
+                    x.Title = "提示";
+                    x.DialogButton = DialogButton.SumitAndCancel;
+                });
                 if (result != true)
                     return;
             }
@@ -422,7 +430,11 @@ namespace H.Extensions.ViewModel
 
         public virtual async Task Clear(object obj = null)
         {
-            bool? result = await IocMessage.Dialog.ShowMessage("确定清空数据？", "提示", DialogButton.SumitAndCancel);
+            bool? result = await IocMessage.Dialog.Show("确定删除数据？", x =>
+            {
+                x.Title = "提示";
+                x.DialogButton = DialogButton.SumitAndCancel;
+            });
             if (result != true)
                 return;
 
@@ -474,7 +486,11 @@ namespace H.Extensions.ViewModel
 
         protected virtual async Task DeleteAllChecked(object obj)
         {
-            bool? result = await IocMessage.Dialog.ShowMessage("确定删除数据？", "提示", DialogButton.SumitAndCancel);
+            bool? result = await IocMessage.Dialog.Show("确定删除数据？", x =>
+            {
+                x.Title = "提示";
+                x.DialogButton = DialogButton.SumitAndCancel;
+            }); 
             if (result != true)
                 return;
 

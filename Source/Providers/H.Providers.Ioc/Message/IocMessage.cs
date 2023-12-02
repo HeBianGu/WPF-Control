@@ -34,7 +34,11 @@ namespace H.Providers.Ioc
             }
             else
             {
-                return Dialog.ShowMessage(message, title, dialogButton).Result;
+                return Dialog.Show(message, x =>
+                {
+                    x.DialogButton = dialogButton;
+                    x.Title = title;
+                }).Result;
             }
         }
 
@@ -56,7 +60,11 @@ namespace H.Providers.Ioc
             }
             else
             {
-                return Window.ShowMessage(message, title, dialogButton).Result;
+                return Window.Show(message,x=>
+                {
+                    x.DialogButton= dialogButton;
+                    x.Title= title;
+                }).Result;
             }
         }
 

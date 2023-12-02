@@ -14,13 +14,18 @@ namespace H.Modules.Messages.Form
             {
                 if (value.ModelStateDeep(out string error) == false)
                 {
-                    IocMessage.Dialog.ShowMessage(error);
+                    IocMessage.Dialog.Show(error);
                     return false;
                 }
                 return match?.Invoke(value) != false;
             };
             StaticFormPresenter presenter = new StaticFormPresenter(value);
-            return await IocMessage.Dialog.Show(presenter, action, DialogButton.Sumit, title, canSumit, owner);
+            return await IocMessage.Dialog.Show(presenter, x =>
+            {
+                x.DialogButton = DialogButton.Sumit;
+                x.Title = title;
+                action?.Invoke(x);
+            }, canSumit);
         }
         public async Task<bool?> ShowView<T>(T value, Predicate<T> match = null, Action<IDialog> action = null, Action<IFormOption> option = null, string title = null, Window owner = null)
         {
@@ -30,7 +35,12 @@ namespace H.Modules.Messages.Form
             };
             StaticFormPresenter presenter = new StaticFormPresenter(value);
             presenter.UsePropertyView = true;
-            return await IocMessage.Dialog.Show(presenter, action, DialogButton.Sumit, title, canSumit, owner);
+            return await IocMessage.Dialog.Show(presenter, x =>
+            {
+                x.DialogButton = DialogButton.Sumit;
+                x.Title = title;
+                action?.Invoke(x);
+            }, canSumit);
         }
     }
 }

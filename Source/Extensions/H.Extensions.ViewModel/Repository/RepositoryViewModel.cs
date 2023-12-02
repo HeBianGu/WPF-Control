@@ -34,7 +34,7 @@ namespace H.Extensions.ViewModel
             //catch (Exception ex)
             //{
             //    Logger.Error(ex);
-            //    IocMessage.Dialog.ShowMessage("加载数据错误:" + ex.Message);
+            //    IocMessage.Dialog.Show("加载数据错误:" + ex.Message);
             //}
             //finally
             //{

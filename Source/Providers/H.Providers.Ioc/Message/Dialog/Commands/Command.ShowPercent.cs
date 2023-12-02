@@ -9,7 +9,7 @@ namespace H.Providers.Ioc
     {
         public override void Execute(object parameter)
         {
-            Func<IPercentPresenter, ICancelable, bool> func = (p, c) =>
+            Func< ICancelable,IPercentPresenter, bool> func = (c, p) =>
                 {
                     for (int i = 0; i <= 100; i++)
                     {

@@ -130,6 +130,8 @@ namespace H.Modules.Messages.Dialog
 
         public Func<bool> CanSumit { get; set; }
         public bool IsCancel => this.DialogResult == false;
+        public DialogButton DialogButton { get; set; } = DialogButton.Sumit;
+        public Window Owner { get; set; }
         #endregion
     }
 }

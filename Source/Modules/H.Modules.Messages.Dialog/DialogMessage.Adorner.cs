@@ -9,68 +9,44 @@ namespace H.Modules.Messages.Dialog
 {
     public class AdornerDialogMessageService : IDialogMessageService, IAdornerDialogMessageService
     {
-        public async Task<bool?> Show(object presenter, Action<IDialog> action = null, DialogButton dialogButton = DialogButton.Sumit, string title = null, Func<bool> canSumit = null, Window owner = null)
+        public async Task<bool?> Show(object presenter, Action<IDialog> builder = null, Func<bool> canSumit = null)
         {
-            return await AdornerDialog.ShowPresenter(presenter, action, dialogButton, title, canSumit, owner);
+            return await AdornerDialog.ShowPresenter(presenter, builder, canSumit);
         }
 
-        public async Task<bool?> ShowIoc(Type type, Func<ICancelable, bool?> action = null, Action<IDialog> build = null, DialogButton dialogButton = DialogButton.Sumit, string title = null, Func<bool> canSumit = null, Window owner = null)
+        public async Task<T> ShowAction<P, T>(P presenter, Action<IDialog> builder = null, Func<IDialog, P, T> action = null)
         {
-            if (action == null)
-            {
-                object presenter = Ioc.Services.GetService(type);
-                return await AdornerDialog.ShowIoc(type, build, title, dialogButton, owner);
-            }
-            else
-            {
-                object presenter = Ioc.Services.GetService(type);
-                return await AdornerDialog.ShowAction(presenter, action, build, dialogButton, title, owner);
-            }
+            return await AdornerDialog.ShowAction(presenter, action, builder);
         }
 
-        public async Task<bool?> ShowIoc<T>(Func<ICancelable, T, bool?> action = null, Action<IDialog> build = null, DialogButton dialogButton = DialogButton.Sumit, string title = null, Func<bool> canSumit = null, Window owner = null)
-        {
-            T presenter = (T)Ioc.Services.GetService(typeof(T));
-            if (action == null)
-            {
-                return await AdornerDialog.ShowIoc<T>(build, title, dialogButton, owner);
-            }
-            else
-            {
-                return await AdornerDialog.ShowAction(presenter, x => action?.Invoke(x, presenter), build, dialogButton, title, owner);
-            }
-        }
-
-        public async Task<bool?> ShowMessage(string message, string title = "提示", DialogButton dialogButton = DialogButton.Sumit, Action<IDialog> action = null, Window owner = null)
-        {
-            return await AdornerDialog.ShowMessage(message, title, dialogButton, owner, action);
-        }
-
-        public async Task<T> ShowPercent<T>(Func<IPercentPresenter, ICancelable, T> action, Action<IDialog> build = null, DialogButton dialogButton = DialogButton.Cancel, string title = null, Window owner = null)
+        public async Task<T> ShowPercent<T>(Func<IDialog, IPercentPresenter, T> action, Action<IDialog> build = null)
         {
             PercentPresenter p = new PercentPresenter();
-            return await AdornerDialog.ShowAction(p, cancel => action.Invoke(p, cancel), x =>
+            return await AdornerDialog.ShowAction(p, action, x =>
             {
-
-            }, dialogButton, title, owner);
+                x.DialogButton = DialogButton.Cancel;
+                build?.Invoke(x);
+            });
         }
 
-        public async Task<T> ShowString<T>(Func<IStringPresenter, ICancelable, T> action, Action<IDialog> build = null, DialogButton dialogButton = DialogButton.Cancel, string title = null, Window owner = null)
+        public async Task<T> ShowString<T>(Func<IDialog, IStringPresenter, T> action, Action<IDialog> build = null)
         {
             StringPresenter p = new StringPresenter();
-            return await AdornerDialog.ShowAction(p, cancel => action.Invoke(p, cancel), x =>
+            return await AdornerDialog.ShowAction(p, action, x =>
             {
+                x.DialogButton = DialogButton.Cancel;
                 x.HorizontalContentAlignment = HorizontalAlignment.Center;
-            }, dialogButton, title, owner);
+                build?.Invoke(x);
+            });
         }
 
-        public async Task<T> ShowWait<T>(Func<ICancelable, T> action, Action<IDialog> build = null, DialogButton dialogButton = DialogButton.Cancel, string title = null, Window owner = null)
+        public async Task<T> ShowWait<T>(Func<IDialog, T> action, Action<IDialog> build = null)
         {
-            WaitPresenter p = new WaitPresenter();
-            return await AdornerDialog.ShowAction(p, cancel => action.Invoke(cancel), x =>
+            return await AdornerDialog.ShowAction(new WaitPresenter(), (d, p) => action.Invoke(d), x =>
             {
-
-            }, dialogButton, title, owner);
+                x.DialogButton = DialogButton.Cancel;
+                build?.Invoke(x);
+            });
         }
     }
 }

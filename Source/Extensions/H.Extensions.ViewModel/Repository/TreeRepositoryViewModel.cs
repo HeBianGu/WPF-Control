@@ -55,7 +55,7 @@ namespace H.Extensions.ViewModel
             catch (Exception ex)
             {
                 IocLog.Instance?.Error(ex);
-                IocMessage.Dialog.ShowMessage("加载数据错误:" + ex.Message);
+                IocMessage.Dialog.Show("加载数据错误:" + ex.Message);
             }
             finally
             {
@@ -100,7 +100,11 @@ namespace H.Extensions.ViewModel
             TreeNodeBase<TEntity> entity = obj as TreeNodeBase<TEntity>;
             if (entity == null)
                 return;
-            bool? result = await IocMessage.Dialog.ShowMessage("确定删除数据？", "提示", DialogButton.SumitAndCancel);
+            bool? result = await IocMessage.Dialog.Show("确定删除数据？", x =>
+            {
+                x.Title = "提示";
+                x.DialogButton = DialogButton.SumitAndCancel;
+            });
             if (result != true)
                 return;
 

@@ -10,7 +10,7 @@ namespace H.Providers.Ioc
         public string Format { get; set; } = "正在加载数据第{0}/100条";
         public override void Execute(object parameter)
         {
-            Func<IStringPresenter, ICancelable, bool> func = (p, c) =>
+            Func<ICancelable, IStringPresenter, bool> func = (c, p) =>
             {
                 for (int i = 0; i <= 100; i++)
                 {

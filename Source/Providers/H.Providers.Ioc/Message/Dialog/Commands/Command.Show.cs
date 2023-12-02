@@ -7,7 +7,11 @@ namespace H.Providers.Ioc
         public object Presnter { get; set; }
         public override void Execute(object parameter)
         {
-            IocMessage.Dialog.Show(Presnter, Build, DialogButton, Title);
+            IocMessage.Dialog.Show(Presnter, x=>
+            {
+                x.DialogButton = this.DialogButton;
+                x.Title=this.Title;
+            });
         }
         public override bool CanExecute(object parameter)
         {

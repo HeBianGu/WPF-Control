@@ -30,9 +30,8 @@ namespace H.Extensions.ApplicationBase
         protected virtual void OnSplashScreen(StartupEventArgs e)
         {
             int sleep = 1000;
-            bool exist = Ioc.Exist<ISplashScreenViewPresenter>();
-
-            Func<ICancelable, ISplashScreenViewPresenter, bool?> func = (c, s) =>
+            var presenter = Ioc.Services.GetService<ISplashScreenViewPresenter>();
+            Func<IDialog, ISplashScreenViewPresenter, bool?> func = (c, s) =>
             {
                 if (c?.IsCancel != true)
                 {
@@ -47,8 +46,8 @@ namespace H.Extensions.ApplicationBase
 
                 if (c?.IsCancel != true)
                 {
-                    global::System.Collections.Generic.IEnumerable<global::H.Providers.Ioc.ISplashLoad> loads = Ioc.Services.GetServices<ISplashLoad>();
-                    foreach (global::H.Providers.Ioc.ISplashLoad load in loads)
+                    System.Collections.Generic.IEnumerable<ISplashLoad> loads = Ioc.Services.GetServices<ISplashLoad>();
+                    foreach (ISplashLoad load in loads)
                     {
                         if (load == null)
                             continue;
@@ -71,20 +70,17 @@ namespace H.Extensions.ApplicationBase
                 Thread.Sleep(sleep);
                 return true;
             };
-            if (exist)
+            if (presenter != null)
             {
-                bool? r = IocMessage.Window.ShowIoc(func, x =>
+                bool? r = IocMessage.Window.ShowAction(presenter, x =>
                 {
-                    if (x is Control c)
-                    {
-                        c.Width = 500;
-                        c.Height = 300;
-                    }
+                    x.DialogButton = DialogButton.None;
+                    x.Title = ApplicationProvider.Version;
+                    x.Width = 500;
+                    x.Height = 300;
                     if (x is Window w)
-                    {
                         w.SizeToContent = SizeToContent.Manual;
-                    }
-                }, DialogButton.None, ApplicationProvider.Version).Result;
+                }, x => func.Invoke(x, presenter)).Result;
                 if (r == false)
                 {
                     IocLog.Instance?.Info("启动失败，程序退出");
@@ -96,8 +92,7 @@ namespace H.Extensions.ApplicationBase
             {
                 bool r = SettingDataManager.Instance.Load(out string message);
                 if (r == false)
-                    IocMessage.Window.ShowMessage(message);
-
+                    IocMessage.Window.Show(message);
                 bool? fr = func.Invoke(null, null);
                 if (fr == false)
                     throw new ArgumentException("初始化数据异常，请看日志");
@@ -109,15 +104,15 @@ namespace H.Extensions.ApplicationBase
         /// </summary>
         protected virtual void OnLogin(StartupEventArgs e)
         {
-            bool exist = Ioc.Exist<ILoginViewPresenter>();
-            if (exist == false)
+            var presenter = Ioc.Services.GetService<ILoginViewPresenter>();
+            if (presenter == null)
                 return;
-
-            bool? r = IocMessage.Window.ShowIoc<ILoginViewPresenter>(null, x =>
+            bool? r = IocMessage.Window.Show(presenter, x =>
             {
-                if (x is Control c)
-                    c.Width = 400;
-            }, DialogButton.None, ApplicationProvider.Version).Result;
+                x.Width = 400;
+                x.DialogButton = DialogButton.Cancel;
+                x.Title = ApplicationProvider.Version;
+            }).Result;
             if (r == false)
             {
                 IocLog.Instance?.Info("登录失败程序退出");

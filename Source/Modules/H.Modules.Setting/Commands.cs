@@ -31,7 +31,7 @@ namespace H.Modules.Setting
             bool sr = SettingDataManager.Instance.Save(out string error);
             if (sr == false)
             {
-                await IocMessage.Dialog.ShowMessage(error);
+                await IocMessage.Dialog.Show(error);
             }
         }
     }
