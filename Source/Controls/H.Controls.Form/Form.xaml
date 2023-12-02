@@ -29,7 +29,7 @@
         <Setter Property="Text" Value="！" />
         <Setter Property="ToolTip" Value="{Binding Message}" />
         <Setter Property="TextTrimming" Value="{Binding CharacterEllipsis}" />
-        <!--<Setter Property="Visibility" Value="{Binding Message, Converter={x:Static h:XConverter.VisibilityWithOutStringConverter}, ConverterParameter={x:Null}, Mode=TwoWay}" />-->
+        <Setter Property="Visibility" Value="{Binding Message, Converter={x:Static h:Converter.GetNullToCollapsed}, Mode=TwoWay}" />
         <Setter Property="Width" Value="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=MessageWidth}" />
         <Setter Property="TextAlignment" Value="Center" />
         <Setter Property="Grid.Column" Value="4" />
