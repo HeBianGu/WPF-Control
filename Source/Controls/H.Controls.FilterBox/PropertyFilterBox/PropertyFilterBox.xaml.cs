@@ -198,11 +198,10 @@ namespace H.Controls.FilterBox
         {
             bool? r = await IocMessage.Dialog.Show(_propertyConfidtions, x =>
             {
-                if (x is Control control)
-                {
-                    control.MinWidth = 900;
-                }
-            }, DialogButton.Sumit, "数据过滤器");
+                x.DialogButton = DialogButton.Sumit;
+                x.Title = "数据过滤器";
+                x.MinWidth = 900;
+            });
             if (r == true)
             {
                 Save();

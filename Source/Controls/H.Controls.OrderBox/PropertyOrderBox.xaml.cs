@@ -55,7 +55,7 @@ namespace H.Controls.OrderBox
             set { SetValue(DisplayNameProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty DisplayNameProperty =
             DependencyProperty.Register("DisplayName", typeof(string), typeof(PropertyOrderBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
             {
@@ -131,7 +131,7 @@ namespace H.Controls.OrderBox
             set { SetValue(PropertyNamesProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty PropertyNamesProperty =
             DependencyProperty.Register("PropertyNames", typeof(string), typeof(PropertyOrderBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
             {
@@ -186,11 +186,10 @@ namespace H.Controls.OrderBox
         {
             bool? r = await IocMessage.Dialog.Show(_propertyOrders, x =>
             {
-                if (x is Control control)
-                {
-                    control.MinWidth = 900;
-                }
-            }, DialogButton.Sumit, "数据排序器");
+                x.MinWidth = 900;
+                x.DialogButton = DialogButton.Sumit;
+                x.Title = "数据排序器";
+            });
             if (r == true)
             {
                 this.Save();

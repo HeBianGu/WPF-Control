@@ -25,6 +25,9 @@
                 <Button Command="{h:ShowAdornerDialogCommand}"
                         CommandParameter="{h:GetStudent}"
                         Content="内嵌弹窗" />
+                <Button Command="{h:ShowStepCommand Count=6}" Content="ShowStepCommand" />
+                <Button Command="{h:ShowVerticalStepCommand Count=6, Width=40}" Content="ShowVerticalStepCommand" />
+
             </UniformGrid>
         </TabItem>
         <TabItem Header="Notice">

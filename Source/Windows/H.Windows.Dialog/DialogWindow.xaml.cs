@@ -119,7 +119,7 @@ namespace H.Windows.Dialog
             return r;
         }
 
-        public static T ShowAction<P, T>(P presenter, Func<IDialog,P, T> func, Action<IDialog> action = null)
+        public static T ShowAction<P, T>(P presenter, Func<IDialog, P, T> func, Action<IDialog> action = null)
         {
             DialogWindow dialog = new DialogWindow();
             dialog.Content = presenter;
@@ -142,15 +142,18 @@ namespace H.Windows.Dialog
             T result = default;
             dialog.Loaded += (l, k) =>
             {
-                Task.Run(() =>
+                if (func != null)
                 {
-                    result = func.Invoke(dialog, presenter);
-                    dialog.Dispatcher.Invoke(() =>
+                    Task.Run(() =>
                     {
-                        if (dialog.DialogResult == null)
-                            dialog.DialogResult = true;
+                        result = func.Invoke(dialog, presenter);
+                        dialog.Dispatcher.Invoke(() =>
+                        {
+                            if (dialog.DialogResult == null)
+                                dialog.DialogResult = true;
+                        });
                     });
-                });
+                }
             };
             dialog.ShowDialog();
             return result;

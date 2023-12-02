@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Controls.Step">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Step;component/Step.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Step;component/StepItemPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Step;component/StepPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Step;component/StepItemVerticalPresenter.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

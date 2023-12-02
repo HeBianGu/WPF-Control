@@ -13,7 +13,6 @@ namespace H.Extensions.ValueConverter
         {
             DependencyObject item = (DependencyObject)value;
             ItemsControl ic = ItemsControl.ItemsControlFromItemContainer(item);
-
             foreach (object current in ic.Items)
             {
                 UIElement cItem = ic.ItemContainerGenerator.ContainerFromItem(current) as UIElement;
@@ -24,10 +23,7 @@ namespace H.Extensions.ValueConverter
                 if (cItem.Visibility == Visibility.Visible)
                     return false;
             }
-
             return false;
-
-            //return ic.ItemContainerGenerator.IndexFromContainer(item) == 0;
         }
     }
 

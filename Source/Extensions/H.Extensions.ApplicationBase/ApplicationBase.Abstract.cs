@@ -80,7 +80,7 @@ namespace H.Extensions.ApplicationBase
                     x.Height = 300;
                     if (x is Window w)
                         w.SizeToContent = SizeToContent.Manual;
-                }, x => func.Invoke(x, presenter)).Result;
+                }, func).Result;
                 if (r == false)
                 {
                     IocLog.Instance?.Info("启动失败，程序退出");

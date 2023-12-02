@@ -21,30 +21,8 @@ namespace H.Modules.Messages.Dialog
         }
         public string Title { get; set; } = "提示";
         public object Presenter { get; set; }
-        private bool _useCancel = false;
-        public bool UseCancel
-        {
-            get { return _useCancel; }
-            set
-            {
-                _useCancel = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        private bool _useSumit = true;
-        public bool UseSumit
-        {
-            get { return _useSumit; }
-            set
-            {
-                _useSumit = value;
-                RaisePropertyChanged();
-            }
-        }
 
         private static ManualResetEvent _waitHandle = new ManualResetEvent(false);
-
         public async Task<bool?> ShowDialog(Window owner = null)
         {
             Window window = owner ?? Application.Current.MainWindow;
@@ -59,44 +37,6 @@ namespace H.Modules.Messages.Dialog
                 return this.DialogResult;
             });
         }
-
-        public void RefreshButton(DialogButton dialogButton)
-        {
-            switch (dialogButton)
-            {
-                case DialogButton.Sumit:
-                    {
-                        this.UseSumit = true;
-                        this.UseCancel = false;
-                        return;
-                    }
-                case DialogButton.None:
-                    {
-                        this.UseSumit = false;
-                        this.UseCancel = false;
-                        return;
-                    }
-                case DialogButton.Cancel:
-                    {
-                        this.UseSumit = false;
-                        this.UseCancel = true;
-                        return;
-                    }
-                case DialogButton.SumitAndCancel:
-                    {
-                        this.UseSumit = true;
-                        this.UseCancel = true;
-                        return;
-                    }
-                default:
-                    {
-                        this.UseSumit = true;
-                        this.UseCancel = false;
-                        return;
-                    }
-            }
-        }
-
         #region - IDialogWindow -
         public bool? DialogResult { get; set; }
         public void Sumit()

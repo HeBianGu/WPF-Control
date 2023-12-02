@@ -43,12 +43,6 @@
             </DockPanel>
         </ControlTemplate>
     </h:MainWindow.CaptionTempate>
-    <!--<h:MainWindow.SideTemplate>
-        <ControlTemplate>
-            <Grid Width="200"
-                  Background="Orange" />
-        </ControlTemplate>
-    </h:MainWindow.SideTemplate>-->
     <Grid>
         <TabControl>
             <TabItem Header="GridSplitterBox">
@@ -131,7 +125,6 @@
                                       Duration="00:00:03" />
                 </DockPanel>
             </TabItem>
-
             <TabItem Header="FilterBox">
                 <DockPanel>
                     <DockPanel DockPanel.Dock="Top" LastChildFill="False">
@@ -259,7 +252,6 @@
                     </DataGrid>
                 </DockPanel>
             </TabItem>
-
             <TabItem Header="OrderBox">
                 <DockPanel>
                     <DockPanel DockPanel.Dock="Top" LastChildFill="False">
@@ -386,6 +378,65 @@
                                 </Style>
                             </TreeView.ItemContainerStyle>
                         </TreeView>
+                    </TabItem>
+                </TabControl>
+            </TabItem>
+            <TabItem Header="Step">
+                <TabControl>
+                    <TabItem Header="Horizontal">
+                        <h:Step Height="Auto" Cattach.ItemHeight="Auto">
+                            <h:StepItemPresenter DisplayName="1"
+                                                 Message="成功"
+                                                 State="Success" />
+                            <h:StepItemPresenter DisplayName="2"
+                                                 Message="成功"
+                                                 State="Success" />
+                            <h:StepItemPresenter DisplayName="3"
+                                                 Message="成功"
+                                                 State="Success" />
+                            <h:StepItemPresenter DisplayName="4"
+                                                 Message="失败"
+                                                 State="Error" />
+                            <h:StepItemPresenter DisplayName="5"
+                                                 Message="正在运行"
+                                                 State="Running" />
+                            <h:StepItemPresenter DisplayName="6"
+                                                 Message=""
+                                                 State="Ready" />
+                            <h:StepItemPresenter DisplayName="7"
+                                                 Message=""
+                                                 State="Ready" />
+                        </h:Step>
+                    </TabItem>
+                    <TabItem Header="Vertical">
+                        <h:Step Height="Auto">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <h:StepItemVerticalPresenter DisplayName="1"
+                                                         Message="成功"
+                                                         State="Success" />
+                            <h:StepItemVerticalPresenter DisplayName="2"
+                                                         Message="成功"
+                                                         State="Success" />
+                            <h:StepItemVerticalPresenter DisplayName="3"
+                                                         Message="成功"
+                                                         State="Success" />
+                            <h:StepItemVerticalPresenter DisplayName="4"
+                                                         Message="失败"
+                                                         State="Error" />
+                            <h:StepItemVerticalPresenter DisplayName="5"
+                                                         Message="正在运行"
+                                                         State="Running" />
+                            <h:StepItemVerticalPresenter DisplayName="6"
+                                                         Message=""
+                                                         State="Ready" />
+                            <h:StepItemVerticalPresenter DisplayName="7"
+                                                         Message=""
+                                                         State="Ready" />
+                        </h:Step>
                     </TabItem>
                 </TabControl>
             </TabItem>

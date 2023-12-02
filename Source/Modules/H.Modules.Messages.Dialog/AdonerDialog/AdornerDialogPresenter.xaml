@@ -38,34 +38,53 @@
                                 Style="{DynamicResource {x:Static ButtonKeys.Geometry}}" />
                     </Grid>
                 </Border>
+                <!--<ScrollViewer Grid.Row="1"
+                              Grid.ColumnSpan="3"
+                              HorizontalScrollBarVisibility="Auto"
+                              VerticalScrollBarVisibility="Visible">-->
                 <ContentPresenter Grid.Row="1"
                                   Grid.ColumnSpan="3"
                                   Margin="10,6"
+                                  VerticalAlignment="Center"
                                   Content="{Binding Presenter}" />
-
+                <!--</ScrollViewer>-->
 
                 <StackPanel Grid.Row="2"
-                            MinHeight="10"
+                            MinHeight="20"
                             HorizontalAlignment="Center"
                             Orientation="Horizontal">
-                    <Button Width="100"
+                    <Button x:Name="btn_sumit"
+                            Width="100"
                             Margin="6,0,6,10"
                             HorizontalAlignment="Center"
                             Command="{local:SumitAdornerDialogCommand}"
                             CommandParameter="{Binding}"
                             Content="确定"
                             IsDefault="True"
-                            Visibility="{Binding UseSumit, Converter={x:Static h:Converter.GetTrueToVisible}}" />
-                    <Button Width="100"
+                            Visibility="Collapsed" />
+                    <Button x:Name="btn_cancel"
+                            Width="100"
                             Margin="6,0,6,10"
                             HorizontalAlignment="Center"
                             Command="{local:CancelAdornerDialogCommand}"
                             CommandParameter="{Binding}"
                             Content="取消"
                             IsCancel="True"
-                            Visibility="{Binding UseCancel, Converter={x:Static h:Converter.GetTrueToVisible}}" />
+                            Visibility="Collapsed" />
                 </StackPanel>
             </Grid>
         </Grid>
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding DialogButton}" Value="Sumit">
+                <Setter TargetName="btn_sumit" Property="Visibility" Value="Visible" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding DialogButton}" Value="Cancel">
+                <Setter TargetName="btn_cancel" Property="Visibility" Value="Visible" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding DialogButton}" Value="SumitAndCancel">
+                <Setter TargetName="btn_sumit" Property="Visibility" Value="Visible" />
+                <Setter TargetName="btn_cancel" Property="Visibility" Value="Visible" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
     </DataTemplate>
 </ResourceDictionary>

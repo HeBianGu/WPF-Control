@@ -17,7 +17,6 @@ namespace H.Modules.Messages.Dialog
             dialog.CanSumit = canSumit;
             action?.Invoke(dialog);
             dialog.Title = dialog.Title ?? presenter.GetType().GetCustomAttribute<DisplayAttribute>()?.Name ?? "提示";
-            dialog.RefreshButton(dialog.DialogButton);
             return await dialog.ShowDialog();
         }
 
@@ -27,7 +26,6 @@ namespace H.Modules.Messages.Dialog
             dialog.MinWidth = 500;
             dialog.MinHeight = 150;
             action?.Invoke(dialog);
-            dialog.RefreshButton(dialog.DialogButton);
             dialog.Title = dialog.Title ?? presenter.GetType().GetCustomAttribute<DisplayAttribute>()?.Name ?? "提示";
             T result = default;
 #pragma warning disable CS4014 // 由于此调用不会等待，因此在调用完成前将继续执行当前方法

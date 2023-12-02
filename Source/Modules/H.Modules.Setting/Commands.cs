@@ -17,6 +17,7 @@ namespace H.Modules.Setting
             {
                 x.Width = 800;
                 x.Height = 500;
+                x.DialogButton = DialogButton.None;
                 if (x is Window window)
                 {
                     window.SizeToContent = SizeToContent.Manual;
@@ -24,7 +25,7 @@ namespace H.Modules.Setting
                     window.ShowInTaskbar = true;
                     window.VerticalContentAlignment = VerticalAlignment.Stretch;
                 }
-            }, DialogButton.None);
+            });
             if (r != true)
                 return;
 
