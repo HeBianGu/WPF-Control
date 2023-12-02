@@ -17,7 +17,7 @@ namespace H.Controls.Adorner
         public object Presenter => this._contentPresenter.Content;
         protected override Size MeasureOverride(Size constraint)
         {
-            this._contentPresenter.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
+            this._contentPresenter.Measure(this.AdornedElement.RenderSize);
             return new Size(Math.Max(this._contentPresenter.DesiredSize.Width, this.AdornedElement.DesiredSize.Width), Math.Max(this._contentPresenter.DesiredSize.Height, this.AdornedElement.DesiredSize.Height));
         }
 
