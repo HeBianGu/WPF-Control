@@ -352,11 +352,21 @@
             </TabItem>
             <!--<TabItem Header="日志测试">
                 <UniformGrid>
-                    <Button Command="{LogCommand Message=运行日志, Type=Info}" Content="Info" />
-                    <Button Command="{LogCommand Message=错误日志, Type=Error}" Content="Error" />
-                    <Button Command="{LogCommand Message=调试日志, Type=Debug}" Content="Debug" />
-                    <Button Command="{LogCommand Message=警告日志, Type=Warn}" Content="Warn" />
-                    <Button Command="{LogCommand Message=严重日志, Type=Fatal}" Content="Fatal" />
+                    <Button Command="{LogCommand Message=运行日志,
+                                                 Type=Info}"
+                            Content="Info" />
+                    <Button Command="{LogCommand Message=错误日志,
+                                                 Type=Error}"
+                            Content="Error" />
+                    <Button Command="{LogCommand Message=调试日志,
+                                                 Type=Debug}"
+                            Content="Debug" />
+                    <Button Command="{LogCommand Message=警告日志,
+                                                 Type=Warn}"
+                            Content="Warn" />
+                    <Button Command="{LogCommand Message=严重日志,
+                                                 Type=Fatal}"
+                            Content="Fatal" />
                 </UniformGrid>
             </TabItem>-->
             <TabItem Header="ITree">
