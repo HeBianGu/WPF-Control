@@ -7,7 +7,7 @@ namespace H.Test.Window.Main
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow
+    public partial class MainWindow 
     {
         public MainWindow()
         {
@@ -16,7 +16,7 @@ namespace H.Test.Window.Main
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            DialogWindow.ShowMessage("这是一个提示消息");
+            DialogWindow.ShowPresenter("这是一个提示消息");
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -25,7 +25,8 @@ namespace H.Test.Window.Main
             {
                 x.Width = 500;
                 x.Height = 300;
-                x.SizeToContent = SizeToContent.Height;
+                if (x is System.Windows.Window window)
+                    window.SizeToContent = SizeToContent.Height;
             });
         }
 

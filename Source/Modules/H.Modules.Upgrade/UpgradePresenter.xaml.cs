@@ -84,7 +84,11 @@ namespace H.Modules.Upgrade
                 string savePath = System.IO.Path.Combine(save, fileName);
                 if (File.Exists(savePath))
                 {
-                    bool? cr = await IocMessage.Dialog.Show("文件已存在，是否删除重新下载", "提示", DialogButton.SumitAndCancel);
+                    bool? cr = await IocMessage.Dialog.Show("文件已存在，是否删除重新下载", x =>
+                    {
+                        x.DialogButton = DialogButton.SumitAndCancel;
+                        x.Title = "提示";
+                    });
                     if (cr != true)
                     {
                         this.Message = "文件已存在，直接安装取消下载";
@@ -151,7 +155,11 @@ namespace H.Modules.Upgrade
         public bool ShowSetup(string savePath, out string message)
         {
             message = null;
-            bool? r = IocMessage.Dialog.Show("是否立即安装", "提示", DialogButton.SumitAndCancel).Result;
+            bool? r = IocMessage.Dialog.Show("是否立即安装", x =>
+            {
+                x.DialogButton = DialogButton.SumitAndCancel;
+                x.Title = "提示";
+            }).Result;
             if (r == false)
             {
                 message = "用户取消安装";

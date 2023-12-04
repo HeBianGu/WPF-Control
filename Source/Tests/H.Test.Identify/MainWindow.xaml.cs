@@ -29,7 +29,7 @@ namespace H.Test.Identify
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            DialogWindow.ShowMessage("这是一个提示消息");
+            DialogWindow.ShowPresenter("这是一个提示消息");
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -38,7 +38,8 @@ namespace H.Test.Identify
             {
                 x.Width = 500;
                 x.Height = 300;
-                x.SizeToContent = SizeToContent.Height;
+                if (x is Window w)
+                    w.SizeToContent = SizeToContent.Height;
             });
         }
 

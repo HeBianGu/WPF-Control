@@ -57,7 +57,10 @@ namespace H.Modules.Upgrade
                 return false;
             bool? r = Application.Current.Dispatcher.Invoke(() =>
             {
-                return IocMessage.Dialog.Show(new UpgradePresenter(data), null, DialogButton.None).Result;
+                return IocMessage.Dialog.Show(new UpgradePresenter(data), x =>
+                {
+                    x.DialogButton = DialogButton.None;
+                }).Result;
             });
             ;
             if (r == false)
