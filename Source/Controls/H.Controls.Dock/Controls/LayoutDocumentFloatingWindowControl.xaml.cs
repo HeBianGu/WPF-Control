@@ -1,11 +1,3 @@
-/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
 
 using H.Controls.Dock.Commands;
 using H.Controls.Dock.Layout;
@@ -101,7 +93,7 @@ namespace H.Controls.Dock.Controls
         protected override void OnInitialized(EventArgs e)
         {
             base.OnInitialized(e);
-            var manager = _model.Root.Manager;
+            DockingManager manager = _model.Root.Manager;
             Content = manager.CreateUIElementForModel(_model.RootPanel);
             // TODO IsVisibleChanged
             //SetBinding(SingleContentLayoutItemProperty, new Binding("Model.SinglePane.SelectedContent") { Source = this, Converter = new LayoutItemFromLayoutModelConverter() });
@@ -115,7 +107,7 @@ namespace H.Controls.Dock.Controls
 
         private void ActiveOfSinglePane(bool isActive)
         {
-            var layoutDocumentPane = _model.Descendents().OfType<LayoutDocumentPane>()
+            LayoutDocumentPane layoutDocumentPane = _model.Descendents().OfType<LayoutDocumentPane>()
                 .FirstOrDefault(p => p.ChildrenCount > 0 && p.SelectedContent != null);
 
             if (layoutDocumentPane != null)
@@ -137,15 +129,15 @@ namespace H.Controls.Dock.Controls
 
         private LayoutDocumentPaneControl FindDocumentPaneControlByMousePoint()
         {
-            var mousePosition = Win32Helper.GetMousePosition();
-            var rootVisual = ((FloatingWindowContentHost)Content).RootVisual;
-            var areaHosts = rootVisual.FindVisualChildren<LayoutDocumentPaneControl>();
+            Point mousePosition = Win32Helper.GetMousePosition();
+            System.Windows.Media.Visual rootVisual = ((FloatingWindowContentHost)Content).RootVisual;
+            IEnumerable<LayoutDocumentPaneControl> areaHosts = rootVisual.FindVisualChildren<LayoutDocumentPaneControl>();
 
-            foreach (var areaHost in areaHosts)
+            foreach (LayoutDocumentPaneControl areaHost in areaHosts)
             {
-                var area = areaHost.GetScreenArea();
-                var pos = areaHost.TransformFromDeviceDPI(mousePosition);
-                var b = area.Contains(pos);
+                Rect area = areaHost.GetScreenArea();
+                Point pos = areaHost.TransformFromDeviceDPI(mousePosition);
+                bool b = area.Contains(pos);
 
                 if (b)
                 {
@@ -160,13 +152,13 @@ namespace H.Controls.Dock.Controls
         {
             if (model.Children.Count > 0)
             {
-                var index = 0;
+                int index = 0;
                 if (model.Children.Count > 1)
                 {
-                    var tmTimeStamp = model.Children[0].LastActivationTimeStamp;
-                    for (var i = 1; i < model.Children.Count; i++)
+                    DateTime? tmTimeStamp = model.Children[0].LastActivationTimeStamp;
+                    for (int i = 1; i < model.Children.Count; i++)
                     {
-                        var item = model.Children[i];
+                        LayoutContent item = model.Children[i];
                         if (item.LastActivationTimeStamp > tmTimeStamp)
                         {
                             tmTimeStamp = item.LastActivationTimeStamp;
@@ -181,16 +173,16 @@ namespace H.Controls.Dock.Controls
 
         private void ActiveLastActivationOfItems(bool isActive)
         {
-            var items = _model.Descendents().OfType<LayoutContent>().ToList();
+            List<LayoutContent> items = _model.Descendents().OfType<LayoutContent>().ToList();
             if (items.Count > 0)
             {
-                var index = 0;
+                int index = 0;
                 if (items.Count > 1)
                 {
-                    var tmpTimeStamp2 = items[0].LastActivationTimeStamp;
-                    for (var i = 1; i < items.Count; i++)
+                    DateTime? tmpTimeStamp2 = items[0].LastActivationTimeStamp;
+                    for (int i = 1; i < items.Count; i++)
                     {
-                        var item = items[i];
+                        LayoutContent item = items[i];
                         if (item.LastActivationTimeStamp > tmpTimeStamp2)
                         {
                             tmpTimeStamp2 = item.LastActivationTimeStamp;
@@ -207,10 +199,10 @@ namespace H.Controls.Dock.Controls
         {
             if (isActive)
             {
-                var documentPane = FindDocumentPaneControlByMousePoint();
+                LayoutDocumentPaneControl documentPane = FindDocumentPaneControlByMousePoint();
                 if (documentPane != null)
                 {
-                    var model = (LayoutDocumentPane)documentPane.Model;
+                    LayoutDocumentPane model = (LayoutDocumentPane)documentPane.Model;
                     if (model.SelectedContent != null)
                     {
                         model.SelectedContent.IsActive = true;
@@ -232,7 +224,7 @@ namespace H.Controls.Dock.Controls
             switch (msg)
             {
                 case Win32Helper.WM_ACTIVATE:
-                    var isInactive = ((int)wParam & 0xFFFF) == Win32Helper.WA_INACTIVE;
+                    bool isInactive = ((int)wParam & 0xFFFF) == Win32Helper.WA_INACTIVE;
                     if (_model.IsSinglePane)
                     {
                         ActiveOfSinglePane(!isInactive);
@@ -248,7 +240,7 @@ namespace H.Controls.Dock.Controls
                 case Win32Helper.WM_NCRBUTTONUP:
                     if (wParam.ToInt32() == Win32Helper.HT_CAPTION)
                     {
-                        var windowChrome = WindowChrome.GetWindowChrome(this);
+                        WindowChrome windowChrome = WindowChrome.GetWindowChrome(this);
                         if (windowChrome != null)
                         {
                             if (OpenContextMenu())
@@ -279,7 +271,7 @@ namespace H.Controls.Dock.Controls
         /// <inheritdoc />
         protected override void OnClosed(EventArgs e)
         {
-            var root = Model.Root;
+            ILayoutRoot root = Model.Root;
             // MK sometimes root is null, prevent crash, or should it always be set??
             if (root != null)
             {
@@ -307,7 +299,7 @@ namespace H.Controls.Dock.Controls
 
         private bool OpenContextMenu()
         {
-            var ctxMenu = _model.Root.Manager.DocumentContextMenu;
+            System.Windows.Controls.ContextMenu ctxMenu = _model.Root.Manager.DocumentContextMenu;
             if (ctxMenu == null || SingleContentLayoutItem == null) return false;
             ctxMenu.PlacementTarget = null;
             ctxMenu.Placement = PlacementMode.MousePoint;
@@ -333,9 +325,9 @@ namespace H.Controls.Dock.Controls
             return HitTest(this.TransformToDeviceDPI(dragPoint));
         }
 
-        bool HitTest(Point dragPoint)
+        private bool HitTest(Point dragPoint)
         {
-            var detectionRect = new Rect(this.PointToScreenDPIWithoutFlowDirection(new Point()), this.TransformActualSizeToAncestor());
+            Rect detectionRect = new Rect(this.PointToScreenDPIWithoutFlowDirection(new Point()), this.TransformActualSizeToAncestor());
             return detectionRect.Contains(dragPoint);
         }
 
@@ -355,7 +347,7 @@ namespace H.Controls.Dock.Controls
             else
                 _overlayWindow.Owner = null;
 
-            var rectWindow = new Rect(this.PointToScreenDPIWithoutFlowDirection(new Point()), this.TransformActualSizeToAncestor());
+            Rect rectWindow = new Rect(this.PointToScreenDPIWithoutFlowDirection(new Point()), this.TransformActualSizeToAncestor());
             _overlayWindow.Left = rectWindow.Left;
             _overlayWindow.Top = rectWindow.Top;
             _overlayWindow.Width = rectWindow.Width;
@@ -383,15 +375,15 @@ namespace H.Controls.Dock.Controls
         {
             if (_dropAreas != null) return _dropAreas;
             _dropAreas = new List<IDropArea>();
-            var isDraggingDocuments = draggingWindow.Model is LayoutDocumentFloatingWindow;
+            bool isDraggingDocuments = draggingWindow.Model is LayoutDocumentFloatingWindow;
 
             // Determine if floatingWindow is configured to dock as document or not
-            var dockAsDocument = true;
+            bool dockAsDocument = true;
             if (!isDraggingDocuments)
             {
                 if (draggingWindow.Model is LayoutAnchorableFloatingWindow)
                 {
-                    foreach (var item in GetAnchorableInFloatingWindow(draggingWindow))
+                    foreach (LayoutAnchorable item in GetAnchorableInFloatingWindow(draggingWindow))
                     {
                         if (item.CanDockAsTabbedDocument != false) continue;
                         dockAsDocument = false;
@@ -400,16 +392,16 @@ namespace H.Controls.Dock.Controls
                 }
             }
 
-            var rootVisual = ((FloatingWindowContentHost)Content).RootVisual;
+            System.Windows.Media.Visual rootVisual = ((FloatingWindowContentHost)Content).RootVisual;
 
-            foreach (var areaHost in rootVisual.FindVisualChildren<LayoutAnchorablePaneControl>())
+            foreach (LayoutAnchorablePaneControl areaHost in rootVisual.FindVisualChildren<LayoutAnchorablePaneControl>())
                 _dropAreas.Add(new DropArea<LayoutAnchorablePaneControl>(areaHost, DropAreaType.AnchorablePane));
 
             if (dockAsDocument)
             {
-                foreach (var areaHost in rootVisual.FindVisualChildren<LayoutDocumentPaneControl>())
+                foreach (LayoutDocumentPaneControl areaHost in rootVisual.FindVisualChildren<LayoutDocumentPaneControl>())
                 {
-                    if (areaHost is LayoutDocumentPaneControl == true)
+                    if ((areaHost is LayoutDocumentPaneControl) == true)
                         _dropAreas.Add(new DropArea<LayoutDocumentPaneControl>(areaHost, DropAreaType.DocumentPane));
                 }
             }
@@ -428,13 +420,13 @@ namespace H.Controls.Dock.Controls
             if (!(draggingWindow.Model is LayoutAnchorableFloatingWindow layoutAnchorableFloatingWindow)) yield break;
             //big part of code for getting type
 
-            if (layoutAnchorableFloatingWindow.SinglePane is LayoutAnchorablePane layoutAnchorablePane && (layoutAnchorableFloatingWindow.IsSinglePane && layoutAnchorablePane.SelectedContent != null))
+            if (layoutAnchorableFloatingWindow.SinglePane is LayoutAnchorablePane layoutAnchorablePane && layoutAnchorableFloatingWindow.IsSinglePane && layoutAnchorablePane.SelectedContent != null)
             {
-                var layoutAnchorable = ((LayoutAnchorablePane)layoutAnchorableFloatingWindow.SinglePane).SelectedContent as LayoutAnchorable;
+                LayoutAnchorable layoutAnchorable = ((LayoutAnchorablePane)layoutAnchorableFloatingWindow.SinglePane).SelectedContent as LayoutAnchorable;
                 yield return layoutAnchorable;
             }
             else
-                foreach (var item in GetLayoutAnchorable(layoutAnchorableFloatingWindow.RootPanel))
+                foreach (LayoutAnchorable item in GetLayoutAnchorable(layoutAnchorableFloatingWindow.RootPanel))
                     yield return item;
         }
 
@@ -449,7 +441,7 @@ namespace H.Controls.Dock.Controls
         internal IEnumerable<LayoutAnchorable> GetLayoutAnchorable(LayoutAnchorablePaneGroup layoutAnchPaneGroup)
         {
             if (layoutAnchPaneGroup == null) yield break;
-            foreach (var anchorable in layoutAnchPaneGroup.Descendents().OfType<LayoutAnchorable>())
+            foreach (LayoutAnchorable anchorable in layoutAnchPaneGroup.Descendents().OfType<LayoutAnchorable>())
                 yield return anchorable;
         }
 
@@ -459,15 +451,15 @@ namespace H.Controls.Dock.Controls
 
         private bool CanExecuteHideWindowCommand(object parameter)
         {
-            var root = Model?.Root;
-            var manager = root?.Manager;
+            ILayoutRoot root = Model?.Root;
+            DockingManager manager = root?.Manager;
             if (manager == null) return false;
 
             // TODO check CanHide of anchorables
-            var canExecute = false;
-            foreach (var content in this.Model.Descendents().OfType<LayoutContent>().ToArray())
+            bool canExecute = false;
+            foreach (LayoutContent content in this.Model.Descendents().OfType<LayoutContent>().ToArray())
             {
-                if (content is LayoutAnchorable anchorable && !anchorable.CanHide || !content.CanClose)
+                if ((content is LayoutAnchorable anchorable && !anchorable.CanHide) || !content.CanClose)
                 {
                     canExecute = false;
                     break;
@@ -492,8 +484,8 @@ namespace H.Controls.Dock.Controls
 
         private void OnExecuteHideWindowCommand(object parameter)
         {
-            var manager = Model.Root.Manager;
-            foreach (var anchorable in this.Model.Descendents().OfType<LayoutContent>().ToArray())
+            DockingManager manager = Model.Root.Manager;
+            foreach (LayoutContent anchorable in this.Model.Descendents().OfType<LayoutContent>().ToArray())
             {
                 //if (manager.GetLayoutItemFromModel(anchorable) is LayoutAnchorableItem layoutAnchorableItem) layoutAnchorableItem.HideCommand.Execute(parameter);
                 //else
@@ -509,11 +501,11 @@ namespace H.Controls.Dock.Controls
 
         private bool CanExecuteCloseWindowCommand(object parameter)
         {
-            var manager = Model?.Root?.Manager;
+            DockingManager manager = Model?.Root?.Manager;
             if (manager == null) return false;
 
-            var canExecute = false;
-            foreach (var document in this.Model.Descendents().OfType<LayoutDocument>().ToArray())
+            bool canExecute = false;
+            foreach (LayoutDocument document in this.Model.Descendents().OfType<LayoutDocument>().ToArray())
             {
                 if (!document.CanClose)
                 {
@@ -533,10 +525,10 @@ namespace H.Controls.Dock.Controls
 
         private void OnExecuteCloseWindowCommand(object parameter)
         {
-            var manager = Model.Root.Manager;
-            foreach (var document in this.Model.Descendents().OfType<LayoutDocument>().ToArray())
+            DockingManager manager = Model.Root.Manager;
+            foreach (LayoutDocument document in this.Model.Descendents().OfType<LayoutDocument>().ToArray())
             {
-                var documentLayoutItem = manager.GetLayoutItemFromModel(document) as LayoutDocumentItem;
+                LayoutDocumentItem documentLayoutItem = manager.GetLayoutItemFromModel(document) as LayoutDocumentItem;
                 documentLayoutItem?.CloseCommand.Execute(parameter);
             }
         }

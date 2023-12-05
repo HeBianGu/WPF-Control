@@ -1,17 +1,8 @@
-/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
 
 using H.Controls.Dock.Layout;
 using System;
 using System.ComponentModel;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Threading;
 
 namespace H.Controls.Dock.Controls
@@ -64,7 +55,7 @@ namespace H.Controls.Dock.Controls
         /// Side Read-Only Dependency Property
         /// </summary>
         private static readonly DependencyPropertyKey SidePropertyKey = DependencyProperty.RegisterReadOnly("Side", typeof(AnchorSide), typeof(LayoutAnchorControl),
-                new FrameworkPropertyMetadata((AnchorSide)AnchorSide.Left));
+                new FrameworkPropertyMetadata(AnchorSide.Left));
 
         public static readonly DependencyProperty SideProperty = SidePropertyKey.DependencyProperty;
 

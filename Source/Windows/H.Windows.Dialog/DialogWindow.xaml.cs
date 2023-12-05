@@ -1,7 +1,5 @@
 ﻿using H.Presenters.Common;
 using H.Providers.Ioc;
-using H.Providers.Ioc;
-using H.Themes.Default;
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -9,12 +7,10 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Markup;
 
 namespace H.Windows.Dialog
 {
-    public partial class DialogWindow : Window, ICancelable, IDialog
+    public partial class DialogWindow : Window, IDialog
     {
         static DialogWindow()
         {
@@ -47,6 +43,8 @@ namespace H.Windows.Dialog
             set { SetValue(BottomTemplateProperty, value); }
         }
 
+        public DialogButton DialogButton { get; set; } = DialogButton.Sumit;
+
         public static readonly DependencyProperty BottomTemplateProperty =
             DependencyProperty.Register("BottomTemplate", typeof(ControlTemplate), typeof(DialogWindow), new FrameworkPropertyMetadata(default(ControlTemplate), (d, e) =>
             {
@@ -76,26 +74,8 @@ namespace H.Windows.Dialog
         }
     }
 
-    partial class DialogWindow : Window
+    public partial class DialogWindow : Window
     {
-        public static bool? ShowMessage(string message, string title = "提示", DialogButton dialogButton = DialogButton.Sumit, Window owner = null, Action<IDialog> action = null)
-        {
-            Action<IDialog> build = x =>
-            {
-                if (x is DialogWindow c)
-                {
-                    c.Width = 400;
-                    c.Height = 200;
-                    c.MinHeight = 150;
-                    c.HorizontalContentAlignment = HorizontalAlignment.Center;
-                    c.Style = Application.Current.FindResource(GetResourceKey(dialogButton)) as Style;
-                }
-                action?.Invoke(x);
-            };
-
-            return ShowPresenter(new MessagePresenter() { Value = message }, build, DialogButton.Sumit, title, null, owner);
-        }
-
         public static ResourceKey GetResourceKey(DialogButton dialogButton)
         {
             switch (dialogButton)
@@ -113,17 +93,18 @@ namespace H.Windows.Dialog
             }
         }
 
-        public static bool? ShowPresenter(object data, Action<DialogWindow> action = null, DialogButton dialogButton = DialogButton.Sumit, string title = null, Func<bool> canSumit = null, Window owner = null)
+        public static bool? ShowPresenter(object presenter, Action<IDialog> action = null, Func<bool> canSumit = null)
         {
             DialogWindow dialog = new DialogWindow();
-            dialog.Content = data;
-            dialog.Title = title ?? data.GetType().GetCustomAttribute<DisplayAttribute>()?.Name ?? "提示";
+            dialog.Content = presenter;
             dialog.Width = 500;
             dialog.SizeToContent = SizeToContent.Height;
             dialog.CanSumit = canSumit;
-            var key = GetResourceKey(dialogButton);
+            action?.Invoke(dialog);
+            dialog.Title = dialog.Title ?? presenter.GetType().GetCustomAttribute<DisplayAttribute>()?.Name ?? "提示";
+            ResourceKey key = GetResourceKey(dialog.DialogButton);
             dialog.Style = Application.Current.FindResource(key) as Style;
-            owner = owner ?? Application.Current.MainWindow;
+            var owner = dialog.Owner ?? Application.Current.MainWindow;
             if (owner?.IsLoaded == true)
             {
                 dialog.Owner = owner;
@@ -133,21 +114,22 @@ namespace H.Windows.Dialog
             {
                 dialog.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             }
-            action?.Invoke(dialog);
-            var r = dialog.ShowDialog();
+
+            bool? r = dialog.ShowDialog();
             return r;
         }
 
-        public static T ShowAction<T>(object data, Func<ICancelable, T> func, Action<DialogWindow> action = null, DialogButton dialogButton = DialogButton.Cancel, string title = null, Window owner = null)
+        public static T ShowAction<P, T>(P presenter, Func<IDialog, P, T> func, Action<IDialog> action = null)
         {
             DialogWindow dialog = new DialogWindow();
-            dialog.Content = data;
-            dialog.Title = title ?? data.GetType().GetCustomAttribute<DisplayAttribute>()?.Name ?? "提示";
+            dialog.Content = presenter;
             dialog.Width = 500;
             dialog.MinHeight = 150;
             dialog.SizeToContent = SizeToContent.Height;
-            dialog.Style = Application.Current.FindResource(GetResourceKey(dialogButton)) as Style;
-            owner = owner ?? Application.Current.MainWindow;
+            action?.Invoke(dialog);
+            dialog.Title = dialog.Title ?? presenter.GetType().GetCustomAttribute<DisplayAttribute>()?.Name ?? "提示";
+            dialog.Style = Application.Current.FindResource(GetResourceKey(dialog.DialogButton)) as Style;
+            var owner = dialog.Owner ?? Application.Current.MainWindow;
             if (owner?.IsLoaded == true)
             {
                 dialog.Owner = owner;
@@ -160,41 +142,21 @@ namespace H.Windows.Dialog
             T result = default;
             dialog.Loaded += (l, k) =>
             {
-                Task.Run(() =>
+                if (func != null)
                 {
-                    result = func.Invoke(dialog);
-                    dialog.Dispatcher.Invoke(() =>
+                    Task.Run(() =>
                     {
-                        if (dialog.DialogResult == null)
-                            dialog.DialogResult = true;
+                        result = func.Invoke(dialog, presenter);
+                        dialog.Dispatcher.Invoke(() =>
+                        {
+                            if (dialog.DialogResult == null)
+                                dialog.DialogResult = true;
+                        });
                     });
-                });
+                }
             };
-            action?.Invoke(dialog);
             dialog.ShowDialog();
             return result;
-        }
-
-        public static bool? ShowPresenter(object data, string title)
-        {
-            return ShowPresenter(data, null, DialogButton.Sumit, title);
-        }
-
-        public static bool? ShowIoc<T>(Action<DialogWindow> action = null, string title = null, DialogButton dialogButton = DialogButton.Sumit, Window owner = null)
-        {
-            var about = Ioc.Services.GetService(typeof(T));
-            return DialogWindow.ShowIoc(typeof(T), action, title, dialogButton, owner);
-        }
-
-        public static bool? ShowIoc(Type type, Action<DialogWindow> action = null, string title = null, DialogButton dialogButton = DialogButton.Sumit, Window owner = null)
-        {
-            var about = Ioc.Services.GetService(type);
-            return DialogWindow.ShowPresenter(about, x =>
-            {
-                x.Width = 500;
-                x.Height = 300;
-                action?.Invoke(x);
-            }, dialogButton, title, null, owner);
         }
     }
 }

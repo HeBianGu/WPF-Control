@@ -1,13 +1,10 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Windows;
 using System.Windows.Media;
 
 namespace H.Controls.Chart2D
@@ -28,7 +25,7 @@ namespace H.Controls.Chart2D
         public LinePresenter(IChartDataProvider dataProvider)
         {
             this.xDisplay = dataProvider.GetData().Select(x => x.Item1).ToObservable();
-            var data = dataProvider.GetData().Select(x => x.Item2);
+            IEnumerable<double> data = dataProvider.GetData().Select(x => x.Item2);
             this.RefreshData(data);
             this.Height = 300.0;
         }
@@ -42,7 +39,7 @@ namespace H.Controls.Chart2D
 
         public virtual void LoadyAxis(IEnumerable<double> data, double max = double.PositiveInfinity, double min = 0.0, int count = 5)
         {
-            var ds = this.Load(data, max, min, 5);
+            IEnumerable<double> ds = this.Load(data, max, min, 5);
             this.yAxis = new DoubleCollection(ds);
         }
 

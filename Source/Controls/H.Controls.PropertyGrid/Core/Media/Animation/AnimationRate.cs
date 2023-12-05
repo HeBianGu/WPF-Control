@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.ComponentModel;
@@ -69,7 +69,7 @@ namespace H.Controls.PropertyGrid.Media.Animation
         {
             get
             {
-                return (_rateType == RateType.TimeSpan);
+                return _rateType == RateType.TimeSpan;
             }
         }
 
@@ -101,7 +101,7 @@ namespace H.Controls.PropertyGrid.Media.Animation
         {
             get
             {
-                return (_rateType == RateType.Speed);
+                return _rateType == RateType.Speed;
             }
         }
 
@@ -215,7 +215,7 @@ namespace H.Controls.PropertyGrid.Media.Animation
             if (DoubleHelper.IsNaN(speed) || speed < 0)
                 throw new ArgumentException(ErrorMessages.GetMessage(ErrorMessages.NegativeSpeedNotSupported));
 
-            return new AnimationRate((double)speed);
+            return new AnimationRate(speed);
         }
 
         public static AnimationRate operator +(AnimationRate t1, AnimationRate t2)
@@ -247,7 +247,7 @@ namespace H.Controls.PropertyGrid.Media.Animation
 
         public static bool operator !=(AnimationRate t1, AnimationRate t2)
         {
-            return !(t1.Equals(t2));
+            return !t1.Equals(t2);
         }
 
         public static bool operator >(AnimationRate t1, AnimationRate t2)
@@ -311,11 +311,11 @@ namespace H.Controls.PropertyGrid.Media.Animation
         #region Private Fields
 
         [FieldOffset(0)]
-        long _duration;
+        private long _duration;
         [FieldOffset(0)]
-        double _speed;
+        private double _speed;
         [FieldOffset(8)]
-        RateType _rateType;
+        private RateType _rateType;
 
         #endregion
 

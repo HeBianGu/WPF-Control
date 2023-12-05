@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Linq;
-using System.Xml.Linq;
+using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
 namespace H.Providers.Mvvm
@@ -9,14 +9,17 @@ namespace H.Providers.Mvvm
     public abstract class NotifyPropertyChanged : NotifyPropertyChangedBase
     {
         [Browsable(false)]
+        [JsonIgnore]
         [XmlIgnore]
         public RelayCommand RelayCommand { get; set; }
 
         [Browsable(false)]
+        [JsonIgnore]
         [XmlIgnore]
         public RelayCommand LoadedCommand => new RelayCommand(Loaded);
 
         [Browsable(false)]
+        [JsonIgnore]
         [XmlIgnore]
         public RelayCommand CallMethodCommand { get; set; }
 

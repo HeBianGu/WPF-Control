@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Markup;
-
-namespace System
+﻿namespace System
 {
     public static class Ioc
     {
@@ -27,7 +18,7 @@ namespace System
                 else
                     return default(T);
             }
-            var r = (T)_services.GetService(typeof(T));
+            T r = (T)_services.GetService(typeof(T));
             if (r == null && throwIfNone)
             {
                 System.Diagnostics.Debug.WriteLine(typeof(T));
@@ -38,7 +29,7 @@ namespace System
 
         public static T GetService<T>(Type type, bool throwIfNone = true)
         {
-            var r = (T)_services.GetService(type);
+            T r = (T)_services.GetService(type);
             if (r == null && throwIfNone)
             {
                 System.Diagnostics.Debug.WriteLine(type);
@@ -69,7 +60,7 @@ namespace System
         {
             get
             {
-                var r = Ioc.Services?.GetService(typeof(Interface));
+                object r = Ioc.Services?.GetService(typeof(Interface));
                 return r == null ? default : (Interface)r;
             }
         }

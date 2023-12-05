@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Diagnostics;
@@ -93,7 +93,7 @@ namespace H.Controls.PropertyGrid
 
         internal bool IsSizeEmptyOrUndefined(Size size)
         {
-            return (DoubleHelper.IsNaN(size.Width) || DoubleHelper.IsNaN(size.Height) || size.IsEmpty);
+            return DoubleHelper.IsNaN(size.Width) || DoubleHelper.IsNaN(size.Height) || size.IsEmpty;
         }
 
         private static void OnStrokeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)

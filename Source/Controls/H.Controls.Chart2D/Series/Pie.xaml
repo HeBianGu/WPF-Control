@@ -6,7 +6,7 @@
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="../Provider/Layer.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Extensions.StoryBoard;component/StoryBoard.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Extensions.StoryBoard;component/StoryBoardKeys.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
 

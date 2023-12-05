@@ -3,7 +3,9 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.Form">
     <DataTemplate DataType="{x:Type local:CommandPropertyItem}">
-        <Button Command="{Binding Value}" Content="{Binding Name}" IsEnabled="{Binding ReadOnly, Converter={x:Static h:Converter.GetTrueToFalse}}">
+        <Button Command="{Binding Value}"
+                Content="{Binding Name}"
+                IsEnabled="{Binding ReadOnly, Converter={x:Static h:Converter.GetTrueToFalse}}">
             <Button.ToolTip>
                 <ToolTip>
                     <BulletDecorator>

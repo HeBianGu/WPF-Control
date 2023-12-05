@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Windows;
@@ -9,7 +9,7 @@ namespace H.Controls.PropertyGrid
     {
         public static Point Center(Rect rect)
         {
-            return new Point(rect.Left + rect.Width / 2, rect.Top + rect.Height / 2);
+            return new Point(rect.Left + (rect.Width / 2), rect.Top + (rect.Height / 2));
         }
 
         public static Nullable<Point> GetNearestPointOfIntersectionBetweenRectAndSegment(Rect rect, Segment segment, Point point)
@@ -32,7 +32,7 @@ namespace H.Controls.PropertyGrid
 
         public static Rect GetRectCenteredOnPoint(Point center, Size size)
         {
-            return new Rect(new Point(center.X - size.Width / 2, center.Y - size.Height / 2), size);
+            return new Rect(new Point(center.X - (size.Width / 2), center.Y - (size.Height / 2)), size);
         }
 
         private static void AdjustResultForIntersectionWithSide(ref Nullable<Point> result, ref double distance, Segment intersection, Point point)

@@ -1,0 +1,73 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Controls.OrderBox">
+    <Style TargetType="{x:Type local:PropertyOrderBox}">
+        <Setter Property="Height" Value="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="MinWidth" Value="120" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:PropertyOrderBox}">
+                    <Border Background="{DynamicResource {x:Static h:BrushKeys.MouseOver}}">
+                        <Grid>
+                            <DockPanel>
+                                <ToggleButton x:Name="tb_order"
+                                              Padding="10"
+                                              Background="{DynamicResource {x:Static h:BrushKeys.MouseOver}}"
+                                              BorderThickness="0"
+                                              Content="M418.142355 135.239124l0 743.094262c0 11.2973-9.15859 20.466124-20.466124 20.466124-11.2973 0-20.466124-9.168824-20.466124-20.466124l0-708.025559-223.275179 223.285412c-7.992021 7.992021-20.957311 7.992021-28.949332 0s-7.992021-20.957311 0-28.949332l258.210853-258.20062c5.853311-5.853311 14.643512-7.603165 22.297842-4.441149 7.644097 3.162016 12.627598 10.621918 12.637832 18.890232L418.142355 135.239124z M914.957515 634.592083l-258.210853 258.210853c-3.90903 3.90903-9.148357 5.996574-14.479783 5.996574-2.629897 0-5.28026-0.511653-7.818059-1.555425-7.644097-3.162016-12.627598-10.621918-12.637832-18.900465l-0.010233-14.346753 0-743.084029c0-11.307533 9.15859-20.466124 20.466124-20.466124 11.2973 0 20.466124 9.15859 20.466124 20.466124l0 708.015326 223.275179-223.275179c7.992021-7.992021 20.957311-7.992021 28.949332 0S922.949536 626.600061 914.957515 634.592083z"
+                                              DockPanel.Dock="Right"
+                                              Style="{DynamicResource {x:Static h:ToggleButtonKeys.Geometry}}" />
+                                <Button x:Name="PART_Button"
+                                        Margin="1,0"
+                                        Content="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=PropertyOrders.SelectedItem.ID, FallbackValue=数据排序器}" />
+                            </DockPanel>
+
+                            <Popup Height="Auto"
+                                   AllowsTransparency="True"
+                                   IsOpen="{Binding ElementName=tb_order, Path=IsChecked}"
+                                   PlacementTarget="{Binding ElementName=tb_order}"
+                                   StaysOpen="False"
+                                   VerticalOffset="10">
+                                <Border Background="{DynamicResource {x:Static h:BrushKeys.Background}}"
+                                        BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
+                                        BorderThickness="1">
+                                    <DockPanel MinWidth="200">
+                                        <Button Command="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=PropertyOrders.ClearSelectionCommand}"
+                                                Content="清空选择排序器"
+                                                DockPanel.Dock="Bottom"
+                                                Style="{DynamicResource {x:Static h:ButtonKeys.Default}}" />
+                                        <Separator DockPanel.Dock="Bottom" Style="{DynamicResource {x:Static h:SeparatorKeys.Default}}" />
+                                        <ListBox x:Name="PART_Selector"
+                                                 ItemsSource="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=PropertyOrders.PropertyOrders}"
+                                                 SelectedItem="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=PropertyOrders.SelectedItem}">
+                                            <!--<Behaviors:Interaction.Triggers>
+                                                <Behaviors:EventTrigger EventName="SelectionChanged">
+                                                    <Behaviors:InvokeCommandAction Command="{Binding OrderChangedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Popup}}" />
+                                                </Behaviors:EventTrigger>
+                                            </Behaviors:Interaction.Triggers>-->
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <DockPanel>
+                                                        <TextBlock Margin="0,0,10,0"
+                                                                   FontSize="15"
+                                                                   Text="√"
+                                                                   Visibility="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}, Path=IsSelected, Converter={x:Static h:Converter.GetFalseToHidden}}" />
+                                                        <TextBlock VerticalAlignment="Center" Text="{Binding ID}" />
+                                                    </DockPanel>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ListBox>
+                                    </DockPanel>
+                                </Border>
+                            </Popup>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+</ResourceDictionary>

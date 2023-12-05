@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Globalization;
@@ -633,7 +633,7 @@ namespace H.Controls.PropertyGrid
             if (value1 == null || value2 == null)
                 return false;
 
-            return (value1.Value < value2.Value);
+            return value1.Value < value2.Value;
         }
 
         protected override bool IsGreaterThan(DateTime? value1, DateTime? value2)
@@ -641,7 +641,7 @@ namespace H.Controls.PropertyGrid
             if (value1 == null || value2 == null)
                 return false;
 
-            return (value1.Value > value2.Value);
+            return value1.Value > value2.Value;
         }
 
         protected override void OnUpdateValueOnEnterKeyChanged(bool oldValue, bool newValue)
@@ -867,7 +867,7 @@ namespace H.Controls.PropertyGrid
             DateTime current = this.ContextNow;
             try
             {
-                current = (this.Value.HasValue)
+                current = this.Value.HasValue
                             ? this.Value.Value
                             : DateTime.Parse(this.ContextNow.ToString(), this.CultureInfo.DateTimeFormat);
 
@@ -915,7 +915,7 @@ namespace H.Controls.PropertyGrid
 
         private void DateTimeUpDown_Loaded(object sender, RoutedEventArgs e)
         {
-            if ((this.Format == DateTimeFormat.Custom) && (string.IsNullOrEmpty(this.FormatString)))
+            if ((this.Format == DateTimeFormat.Custom) && string.IsNullOrEmpty(this.FormatString))
             {
                 throw new InvalidOperationException("A FormatString is necessary when Format is set to Custom.");
             }

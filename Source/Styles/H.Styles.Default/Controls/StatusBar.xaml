@@ -29,15 +29,13 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{x:Static StatusBar.SeparatorStyleKey}"
-           TargetType="{x:Type Separator}">
+    <Style x:Key="{x:Static StatusBar.SeparatorStyleKey}" TargetType="{x:Type Separator}">
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Separator}">
-                    <Rectangle Width="1"
-                               Margin="3">
+                    <Rectangle Width="1" Margin="3">
                         <Rectangle.Fill>
                             <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
                         </Rectangle.Fill>
@@ -47,16 +45,13 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.StatusBarItem.Default,
-                                        TypeInTargetAssembly={x:Type local:StatusBarItemKeys}}"
-           TargetType="{x:Type StatusBarItem}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.StatusBarItem.Default, TypeInTargetAssembly={x:Type local:StatusBarItemKeys}}" TargetType="{x:Type StatusBarItem}">
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type StatusBarItem}">
-                    <ContentPresenter Name="ContentSite"
-                                      Margin="3" />
+                    <ContentPresenter Name="ContentSite" Margin="3" />
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Foreground">
@@ -71,9 +66,7 @@
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static local:StatusBarKeys.Default}}"
-           TargetType="StatusBar" />
-    <Style BasedOn="{StaticResource {x:Static local:StatusBarItemKeys.Default}}"
-           TargetType="StatusBarItem" />
+    <Style BasedOn="{StaticResource {x:Static local:StatusBarKeys.Default}}" TargetType="StatusBar" />
+    <Style BasedOn="{StaticResource {x:Static local:StatusBarItemKeys.Default}}" TargetType="StatusBarItem" />
 
 </ResourceDictionary>

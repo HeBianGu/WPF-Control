@@ -1,5 +1,4 @@
-﻿using H.Providers.Ioc;
-using H.Providers.Mvvm;
+﻿using H.Providers.Mvvm;
 
 namespace H.Presenters.Common
 {

@@ -8,8 +8,11 @@
         <ResourceDictionary Source="../Provider/Layer.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Grid.Default, TypeInTargetAssembly={x:Type local:Grid}}" BasedOn="{StaticResource {x:Static h:XyLayer.DefaultKey}}" TargetType="{x:Type local:Grid}">
-        <Setter Property="Opacity" Value="0.2"/>
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Grid.Default,
+                                        TypeInTargetAssembly={x:Type local:Grid}}"
+           BasedOn="{StaticResource {x:Static h:XyLayer.DefaultKey}}"
+           TargetType="{x:Type local:Grid}">
+        <Setter Property="Opacity" Value="0.2" />
         <Setter Property="LineStyle">
             <Setter.Value>
                 <Style TargetType="Line">
@@ -36,7 +39,10 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Grid.Cross, TypeInTargetAssembly={x:Type local:Grid}}" BasedOn="{StaticResource {x:Static h:Grid.DefaultKey}}" TargetType="{x:Type local:Grid}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Grid.Cross,
+                                        TypeInTargetAssembly={x:Type local:Grid}}"
+           BasedOn="{StaticResource {x:Static h:Grid.DefaultKey}}"
+           TargetType="{x:Type local:Grid}">
         <Setter Property="HorizontalLineStyle">
             <Setter.Value>
                 <Style TargetType="Line">
@@ -47,7 +53,10 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Grid.Vertical, TypeInTargetAssembly={x:Type local:Grid}}" BasedOn="{StaticResource {x:Static h:Grid.DefaultKey}}" TargetType="{x:Type local:Grid}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Grid.Vertical,
+                                        TypeInTargetAssembly={x:Type local:Grid}}"
+           BasedOn="{StaticResource {x:Static h:Grid.DefaultKey}}"
+           TargetType="{x:Type local:Grid}">
         <Setter Property="HorizontalLineStyle">
             <Setter.Value>
                 <Style TargetType="Line">

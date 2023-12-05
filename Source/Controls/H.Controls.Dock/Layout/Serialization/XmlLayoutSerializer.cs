@@ -1,11 +1,11 @@
-/************************************************************************
-   H.Controls.Dock
 
-   Copyright (C) 2007-2013 Xceed Software Inc.
 
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
+
+
+
+
+
+
 
 using System.IO;
 using System.Xml;
@@ -42,7 +42,7 @@ namespace H.Controls.Dock.Layout.Serialization
             try
             {
                 StartDeserialization();
-                var layout = function();
+                LayoutRoot layout = function();
                 FixupLayout(layout);
                 Manager.Layout = layout;
             }
@@ -55,7 +55,7 @@ namespace H.Controls.Dock.Layout.Serialization
 
         #region Public Methods
 
-        readonly XmlSerializer _serializer = XmlSerializersCache.GetSerializer<LayoutRoot>();
+        private readonly XmlSerializer _serializer = XmlSerializersCache.GetSerializer<LayoutRoot>();
 
         /// <summary>Serialize the layout into a <see cref="XmlWriter"/>.</summary>
         /// <param name="writer"></param>
@@ -82,7 +82,7 @@ namespace H.Controls.Dock.Layout.Serialization
         /// <param name="filepath"></param>
         public void Serialize(string filepath)
         {
-            using (var stream = new StreamWriter(filepath))
+            using (StreamWriter stream = new StreamWriter(filepath))
                 Serialize(stream);
         }
 
@@ -116,7 +116,7 @@ namespace H.Controls.Dock.Layout.Serialization
         /// <param name="filepath"></param>
         public void Deserialize(string filepath)
         {
-            using (var stream = new StreamReader(filepath))
+            using (StreamReader stream = new StreamReader(filepath))
                 Deserialize(stream);
         }
 

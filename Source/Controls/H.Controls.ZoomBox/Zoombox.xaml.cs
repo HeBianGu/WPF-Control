@@ -35,7 +35,7 @@ namespace H.Controls.ZoomBox
             Zoombox.FocusableProperty.OverrideMetadata(typeof(Zoombox), new FrameworkPropertyMetadata(true));
             Zoombox.HorizontalContentAlignmentProperty.OverrideMetadata(typeof(Zoombox), new FrameworkPropertyMetadata(HorizontalAlignment.Center, new PropertyChangedCallback(Zoombox.RefocusView)));
             Zoombox.VerticalContentAlignmentProperty.OverrideMetadata(typeof(Zoombox), new FrameworkPropertyMetadata(VerticalAlignment.Center, new PropertyChangedCallback(Zoombox.RefocusView)));
-            Zoombox.ContentProperty.OverrideMetadata(typeof(Zoombox), new FrameworkPropertyMetadata((PropertyChangedCallback)null, new CoerceValueCallback(Zoombox.CoerceContentValue)));
+            Zoombox.ContentProperty.OverrideMetadata(typeof(Zoombox), new FrameworkPropertyMetadata(null, new CoerceValueCallback(Zoombox.CoerceContentValue)));
         }
 
         public Zoombox()
@@ -266,7 +266,7 @@ namespace H.Controls.ZoomBox
 
         private object CoerceContentValue(object value)
         {
-            if (value != null && !(value is UIElement) && !((bool)this.GetValue(DesignerProperties.IsInDesignModeProperty)))
+            if (value != null && !(value is UIElement) && !(bool)this.GetValue(DesignerProperties.IsInDesignModeProperty))
                 throw new InvalidContentException(ErrorMessages.GetMessage("ZoomboxContentMustBeUIElement"));
 
             object oldContent = _content;
@@ -282,7 +282,7 @@ namespace H.Controls.ZoomBox
                     {
                         (viewbox.Child as FrameworkElement).RemoveHandler(FrameworkElement.SizeChangedEvent, new SizeChangedEventHandler(this.OnContentSizeChanged));
                     }
-                  (viewbox as Viewbox).Child = null;
+                    viewbox.Child = null;
 
                     this.RemoveLogicalChild(viewbox);
                 }
@@ -320,7 +320,7 @@ namespace H.Controls.ZoomBox
                     this.IsContentWrapped = true;
                 }
 
-                if ((_content is Viewbox) && (this.IsContentWrapped) && (_trueContent is FrameworkElement))
+                if ((_content is Viewbox) && this.IsContentWrapped && (_trueContent is FrameworkElement))
                 {
                     (_trueContent as FrameworkElement).AddHandler(FrameworkElement.SizeChangedEvent, new SizeChangedEventHandler(this.OnContentSizeChanged), true);
                 }
@@ -524,7 +524,7 @@ namespace H.Controls.ZoomBox
         public static readonly DependencyProperty IsAnimatedProperty =
           DependencyProperty.Register("IsAnimated", typeof(bool), typeof(Zoombox),
             new FrameworkPropertyMetadata(true,
-              (PropertyChangedCallback)null, new CoerceValueCallback(Zoombox.CoerceIsAnimatedValue)));
+              null, new CoerceValueCallback(Zoombox.CoerceIsAnimatedValue)));
 
         public bool IsAnimated
         {
@@ -601,7 +601,7 @@ namespace H.Controls.ZoomBox
 
         public static readonly DependencyProperty IsUsingScrollBarsProperty =
           DependencyProperty.Register("IsUsingScrollBars", typeof(bool), typeof(Zoombox),
-            new FrameworkPropertyMetadata(false, (PropertyChangedCallback)null));
+            new FrameworkPropertyMetadata(false, null));
 
         public bool IsUsingScrollBars
         {
@@ -888,7 +888,7 @@ namespace H.Controls.ZoomBox
 
         public static Visibility GetViewFinderVisibility(DependencyObject d)
         {
-            return (Visibility)(d.GetValue(Zoombox.ViewFinderVisibilityProperty));
+            return (Visibility)d.GetValue(Zoombox.ViewFinderVisibilityProperty);
         }
 
         public static void SetViewFinderVisibility(DependencyObject d, Visibility value)
@@ -1062,9 +1062,9 @@ namespace H.Controls.ZoomBox
             {
                 if (effectiveMode == ZoomboxViewStackMode.Default)
                 {
-                    effectiveMode = (zoombox.ViewStack.AreViewsFromSource ? ZoomboxViewStackMode.Manual : ZoomboxViewStackMode.Auto);
+                    effectiveMode = zoombox.ViewStack.AreViewsFromSource ? ZoomboxViewStackMode.Manual : ZoomboxViewStackMode.Auto;
                 }
-                if (zoombox.ViewStack.AreViewsFromSource && (ZoomboxViewStackMode)effectiveMode != ZoomboxViewStackMode.Manual)
+                if (zoombox.ViewStack.AreViewsFromSource && effectiveMode != ZoomboxViewStackMode.Manual)
                 {
                     throw new InvalidOperationException(ErrorMessages.GetMessage("ViewModeInvalidForSource"));
                 }
@@ -1081,7 +1081,7 @@ namespace H.Controls.ZoomBox
 
         public static readonly DependencyProperty ViewStackSourceProperty =
           DependencyProperty.Register("ViewStackSource", typeof(IEnumerable), typeof(Zoombox),
-            new FrameworkPropertyMetadata((IEnumerable)null,
+            new FrameworkPropertyMetadata(null,
               new PropertyChangedCallback(Zoombox.OnViewStackSourceChanged)));
 
         [Bindable(true)]
@@ -1763,7 +1763,7 @@ namespace H.Controls.ZoomBox
         private void CanRefocusView(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = (this.EffectiveViewStackMode == ZoomboxViewStackMode.Manual)
-                        && (this.ViewStackIndex >= 0 && this.ViewStackIndex < this.ViewStack.Count)
+                        && this.ViewStackIndex >= 0 && this.ViewStackIndex < this.ViewStack.Count
                         && (this.CurrentView != this.ViewStack[this.ViewStackIndex]);
         }
 
@@ -2570,7 +2570,7 @@ namespace H.Controls.ZoomBox
             if (_content == null || _verticalScrollBar == null || _horizontalScrollBar == null)
                 return;
 
-            var contentSize = (_content is Viewbox) ? ((Viewbox)_content).Child.DesiredSize : this.RenderSize;
+            Size contentSize = (_content is Viewbox) ? ((Viewbox)_content).Child.DesiredSize : this.RenderSize;
 
             _verticalScrollBar.SmallChange = 10d;
             _verticalScrollBar.LargeChange = 10d;
@@ -2725,7 +2725,7 @@ namespace H.Controls.ZoomBox
                 return;
 
             e.Handled = true;
-            double percentage = ((e.Delta / Zoombox.MOUSE_WHEEL_DELTA) * this.ZoomPercentage) / 100;
+            double percentage = e.Delta / Zoombox.MOUSE_WHEEL_DELTA * this.ZoomPercentage / 100;
 
             // Are we doing a zoom relative to the current mouse position?
             if (doRelativeZoom)
@@ -2850,7 +2850,7 @@ namespace H.Controls.ZoomBox
                         case ZoomboxViewKind.Absolute:
                             newRelativeScale = DoubleHelper.IsNaN(view.Scale) ? _relativeScale : view.Scale;
                             newRelativePosition = PointHelper.IsEmpty(view.Position) ? _relativePosition
-                                : new Point(view.Position.X, view.Position.Y) - this.ContentOffset * newRelativeScale;
+                                : new Point(view.Position.X, view.Position.Y) - (this.ContentOffset * newRelativeScale);
                             break;
 
                         case ZoomboxViewKind.Region:
@@ -2867,8 +2867,8 @@ namespace H.Controls.ZoomBox
 
                                 // inflate (or deflate) the rect by the appropriate amounts in the x & y directions
                                 region = Rect.Inflate(currentContentRect,
-                                    (this.RenderSize.Width / _viewboxFactor - currentContentRect.Width) / 2,
-                                    (this.RenderSize.Height / _viewboxFactor - currentContentRect.Height) / 2);
+                                    ((this.RenderSize.Width / _viewboxFactor) - currentContentRect.Width) / 2,
+                                    ((this.RenderSize.Height / _viewboxFactor) - currentContentRect.Height) / 2);
 
                                 // now translate the centered rect back to the coordinate space of the content
                                 region = new Rect(this.TranslatePoint(region.TopLeft, _content), this.TranslatePoint(region.BottomRight, _content));
@@ -3012,8 +3012,8 @@ namespace H.Controls.ZoomBox
 
                         _contentPresenter.RenderTransform = tg;
 
-                        var initialContentSize = (_content is Viewbox) ? ((Viewbox)_content).Child.DesiredSize : this.RenderSize;
-                        var scaledContentSize = new Size(initialContentSize.Width * newRelativeScale, initialContentSize.Height * newRelativeScale);
+                        Size initialContentSize = (_content is Viewbox) ? ((Viewbox)_content).Child.DesiredSize : this.RenderSize;
+                        Size scaledContentSize = new Size(initialContentSize.Width * newRelativeScale, initialContentSize.Height * newRelativeScale);
 
                         if (allowAnimation && IsAnimated)
                         {
@@ -3086,7 +3086,7 @@ namespace H.Controls.ZoomBox
 
                         // update the Scale and Position properties to keep them in sync with the current view
                         this.Scale = newRelativeScale;
-                        _basePosition = newRelativePosition + this.ContentOffset * newRelativeScale;
+                        _basePosition = newRelativePosition + (this.ContentOffset * newRelativeScale);
                         this.UpdateViewport();
                     }
 
@@ -3206,22 +3206,22 @@ namespace H.Controls.ZoomBox
             {
                 case HorizontalAlignment.Center:
                 case HorizontalAlignment.Stretch:
-                    horizontalOffset = (this.RenderSize.Width - region.Width * newRelativeScale) / 2;
+                    horizontalOffset = (this.RenderSize.Width - (region.Width * newRelativeScale)) / 2;
                     break;
 
                 case HorizontalAlignment.Right:
-                    horizontalOffset = (this.RenderSize.Width - region.Width * newRelativeScale);
+                    horizontalOffset = this.RenderSize.Width - (region.Width * newRelativeScale);
                     break;
             }
             switch (VerticalContentAlignment)
             {
                 case VerticalAlignment.Center:
                 case VerticalAlignment.Stretch:
-                    verticalOffset = (this.RenderSize.Height - region.Height * newRelativeScale) / 2;
+                    verticalOffset = (this.RenderSize.Height - (region.Height * newRelativeScale)) / 2;
                     break;
 
                 case VerticalAlignment.Bottom:
-                    verticalOffset = (this.RenderSize.Height - region.Height * newRelativeScale);
+                    verticalOffset = this.RenderSize.Height - (region.Height * newRelativeScale);
                     break;
             }
             newRelativePosition =
@@ -3526,7 +3526,7 @@ namespace H.Controls.ZoomBox
               || (_verticalScrollBar.Value == _verticalScrollBar.Maximum)
               || (_verticalScrollBar.Value == _verticalScrollBar.Minimum))
             {
-                var finalValue = _verticalScrollBar.Value;
+                double finalValue = _verticalScrollBar.Value;
                 //this will reset Value to original value of animation
                 _verticalScrollBar.BeginAnimation(ScrollBar.ValueProperty, null);
                 //this will set to last value of the animation.
@@ -3546,7 +3546,7 @@ namespace H.Controls.ZoomBox
               || (_horizontalScrollBar.Value == _horizontalScrollBar.Maximum)
               || (_horizontalScrollBar.Value == _horizontalScrollBar.Minimum))
             {
-                var finalValue = _horizontalScrollBar.Value;
+                double finalValue = _horizontalScrollBar.Value;
                 //this will reset Value to original value of animation
                 _horizontalScrollBar.BeginAnimation(ScrollBar.ValueProperty, null);
                 //this will set to last value of the animation.
@@ -3574,7 +3574,7 @@ namespace H.Controls.ZoomBox
                 return;
 
             // if necessary, verify that the relativeTo point falls within the content
-            if (restrictRelativePointToContent && !(new Rect(_content.RenderSize)).Contains(relativeTo))
+            if (restrictRelativePointToContent && !new Rect(_content.RenderSize).Contains(relativeTo))
                 return;
 
             // ensure that the scale value falls within the valid range
@@ -3608,13 +3608,13 @@ namespace H.Controls.ZoomBox
                 }
 
                 // now there should be a valid RenderTransform
-                relativeTo = (_contentPresenter.RenderTransform as Transform).Transform(relativeTo);
+                relativeTo = _contentPresenter.RenderTransform.Transform(relativeTo);
             }
 
             // determine the new content position for this zoom operation
             Point translateTo = new Point(relativeTo.X - (translateFrom.X * scale / _viewboxFactor),
                 relativeTo.Y - (translateFrom.Y * scale / _viewboxFactor))
-                + this.ContentOffset * scale / _viewboxFactor;
+                + (this.ContentOffset * scale / _viewboxFactor);
             this.UpdateView(new ZoomboxView(scale, translateTo), !this.IsResizingViewport, allowStackAddition);
         }
 

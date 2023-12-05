@@ -8,9 +8,6 @@ using System.Data.Entity;
 
 #if NETCOREAPP
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Microsoft.EntityFrameworkCore.Sqlite;
 using Microsoft.Extensions.DependencyInjection;
 using H.Providers.Ioc;
 using H.DataBases.Share;

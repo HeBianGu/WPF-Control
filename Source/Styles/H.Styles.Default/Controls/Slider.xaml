@@ -5,8 +5,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style x:Key="SliderButtonStyle"
-           TargetType="{x:Type RepeatButton}">
+    <Style x:Key="SliderButtonStyle" TargetType="{x:Type RepeatButton}">
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <!--<Setter Property="OverridesDefaultStyle" Value="true" />-->
         <Setter Property="IsTabStop" Value="false" />
@@ -20,8 +19,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="SliderThumbStyle"
-           TargetType="{x:Type Thumb}">
+    <Style x:Key="SliderThumbStyle" TargetType="{x:Type Thumb}">
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <!--<Setter Property="OverridesDefaultStyle" Value="true" />-->
         <Setter Property="Height" Value="14" />
@@ -29,8 +27,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
-                    <Ellipse x:Name="Ellipse"
-                             StrokeThickness="1">
+                    <Ellipse x:Name="Ellipse" StrokeThickness="1">
                         <Ellipse.Stroke>
                             <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionForeground}}" />
                         </Ellipse.Stroke>
@@ -42,28 +39,22 @@
                                 <VisualState x:Name="Normal" />
                                 <VisualState x:Name="MouseOver">
                                     <Storyboard>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Ellipse"
-                                                                      Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0"
-                                                                 Value="{DynamicResource {x:Static ColorKeys.CaptionForeground}}" />
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Ellipse" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.CaptionForeground}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Pressed">
                                     <Storyboard>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Ellipse"
-                                                                      Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0"
-                                                                 Value="{DynamicResource {x:Static ColorKeys.CaptionForeground}}" />
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Ellipse" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.CaptionForeground}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Disabled">
                                     <Storyboard>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Ellipse"
-                                                                      Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0"
-                                                                 Value="{DynamicResource {x:Static ColorKeys.BorderBrushTitle}}" />
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Ellipse" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.BorderBrushTitle}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -76,13 +67,11 @@
     </Style>
 
     <!--  Template when the orientation of the Slider is Horizontal.  -->
-    <ControlTemplate x:Key="HorizontalSlider"
-                     TargetType="{x:Type Slider}">
+    <ControlTemplate x:Key="HorizontalSlider" TargetType="{x:Type Slider}">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto"
-                               MinHeight="{TemplateBinding MinHeight}" />
+                <RowDefinition Height="Auto" MinHeight="{TemplateBinding MinHeight}" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <TickBar x:Name="TopTick"
@@ -109,14 +98,11 @@
                 </Border.Background>-->
             <!--
             </Border>-->
-            <Track x:Name="PART_Track"
-                   Grid.Row="1">
+            <Track x:Name="PART_Track" Grid.Row="1">
                 <Track.DecreaseRepeatButton>
-                    <RepeatButton Height="4"
-                                  Command="Slider.DecreaseLarge">
+                    <RepeatButton Height="4" Command="Slider.DecreaseLarge">
                         <RepeatButton.Style>
-                            <Style BasedOn="{StaticResource SliderButtonStyle}"
-                                   TargetType="RepeatButton">
+                            <Style BasedOn="{StaticResource SliderButtonStyle}" TargetType="RepeatButton">
                                 <Setter Property="Background">
                                     <Setter.Value>
                                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionForeground}}" />
@@ -139,11 +125,9 @@
                     <Thumb Style="{StaticResource SliderThumbStyle}" />
                 </Track.Thumb>
                 <Track.IncreaseRepeatButton>
-                    <RepeatButton Height="4"
-                                  Command="Slider.IncreaseLarge">
+                    <RepeatButton Height="4" Command="Slider.IncreaseLarge">
                         <RepeatButton.Style>
-                            <Style BasedOn="{StaticResource SliderButtonStyle}"
-                                   TargetType="RepeatButton">
+                            <Style BasedOn="{StaticResource SliderButtonStyle}" TargetType="RepeatButton">
                                 <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.CaptionBackground}}" />
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
@@ -182,13 +166,11 @@
     </ControlTemplate>
 
     <!--  Template when the orientation of the Slider is Vertical.  -->
-    <ControlTemplate x:Key="VerticalSlider"
-                     TargetType="{x:Type Slider}">
+    <ControlTemplate x:Key="VerticalSlider" TargetType="{x:Type Slider}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto"
-                                  MinWidth="{TemplateBinding MinWidth}" />
+                <ColumnDefinition Width="Auto" MinWidth="{TemplateBinding MinWidth}" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <TickBar x:Name="TopTick"
@@ -214,18 +196,15 @@
                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
                 </Border.Background>
             </Border>
-            <Track x:Name="PART_Track"
-                   Grid.Column="1">
+            <Track x:Name="PART_Track" Grid.Column="1">
                 <Track.DecreaseRepeatButton>
-                    <RepeatButton Command="Slider.DecreaseLarge"
-                                  Style="{StaticResource SliderButtonStyle}" />
+                    <RepeatButton Command="Slider.DecreaseLarge" Style="{StaticResource SliderButtonStyle}" />
                 </Track.DecreaseRepeatButton>
                 <Track.Thumb>
                     <Thumb Style="{StaticResource SliderThumbStyle}" />
                 </Track.Thumb>
                 <Track.IncreaseRepeatButton>
-                    <RepeatButton Command="Slider.IncreaseLarge"
-                                  Style="{StaticResource SliderButtonStyle}" />
+                    <RepeatButton Command="Slider.IncreaseLarge" Style="{StaticResource SliderButtonStyle}" />
                 </Track.IncreaseRepeatButton>
             </Track>
             <TickBar x:Name="BottomTick"
@@ -269,7 +248,6 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    <Style BasedOn="{StaticResource {x:Static local:SliderKeys.Default}}"
-           TargetType="Slider" />
+    <Style BasedOn="{StaticResource {x:Static local:SliderKeys.Default}}" TargetType="Slider" />
 
 </ResourceDictionary>

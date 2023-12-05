@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections.ObjectModel;
@@ -20,7 +20,7 @@ namespace H.Controls.Chart2D
             set { SetValue(AlignmentCenterProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty AlignmentCenterProperty =
             DependencyProperty.Register("AlignmentCenter", typeof(bool), typeof(ScatterBase), new PropertyMetadata(default(bool), (d, e) =>
             {
@@ -43,9 +43,9 @@ namespace H.Controls.Chart2D
             {
                 double span = (this.maxX - this.minX) / this.xAxis.Count;
 
-                this.maxX = this.maxX + span / 2;
+                this.maxX = this.maxX + (span / 2);
 
-                this.minX = this.minX - span / 2;
+                this.minX = this.minX - (span / 2);
             }
         }
 
@@ -56,7 +56,7 @@ namespace H.Controls.Chart2D
             set { SetValue(ShowCountProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty ShowCountProperty =
             DependencyProperty.Register("ShowCount", typeof(int), typeof(ScatterBase), new PropertyMetadata(500, (d, e) =>
              {
@@ -101,15 +101,15 @@ namespace H.Controls.Chart2D
 
                     if (this.xAxis.Count == 1)
                     {
-                        Canvas.SetLeft(m, this.ActualWidth / 2 - m.ActualWidth / 2);
-                        Canvas.SetTop(m, this.ActualHeight / 2 - m.ActualHeight / 2);
+                        Canvas.SetLeft(m, (this.ActualWidth / 2) - (m.ActualWidth / 2));
+                        Canvas.SetTop(m, (this.ActualHeight / 2) - (m.ActualHeight / 2));
                         this.Children.Add(m);
                     }
 
                     else
                     {
-                        Canvas.SetLeft(m, this.GetX(x, this.ActualWidth) - m.ActualWidth / 2);
-                        Canvas.SetTop(m, this.GetY(y, this.ActualHeight) - m.ActualHeight / 2);
+                        Canvas.SetLeft(m, this.GetX(x, this.ActualWidth) - (m.ActualWidth / 2));
+                        Canvas.SetTop(m, this.GetY(y, this.ActualHeight) - (m.ActualHeight / 2));
                         this.Children.Add(m);
                     }
 
@@ -137,7 +137,7 @@ namespace H.Controls.Chart2D
             set { SetValue(DataProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static new readonly DependencyProperty DataProperty =
             DependencyProperty.Register("Data", typeof(ObservableCollection<double[]>), typeof(AreaScatter), new PropertyMetadata(new ObservableCollection<double[]>(), (d, e) =>
             {
@@ -170,8 +170,8 @@ namespace H.Controls.Chart2D
                 {
                     m.Style = this.MarkStyle;
 
-                    Canvas.SetLeft(m, this.GetX(x, this.ActualWidth) - m.ActualWidth / 2);
-                    Canvas.SetTop(m, this.GetY(y, this.ActualHeight) - m.ActualHeight / 2);
+                    Canvas.SetLeft(m, this.GetX(x, this.ActualWidth) - (m.ActualWidth / 2));
+                    Canvas.SetTop(m, this.GetY(y, this.ActualHeight) - (m.ActualHeight / 2));
                     this.Children.Add(m);
 
                     m.Tag = $"（{x.ToString("G4")}，{y.ToString("G4")}）";
@@ -196,7 +196,7 @@ namespace H.Controls.Chart2D
             set { SetValue(BubbleDataProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty BubbleDataProperty =
             DependencyProperty.Register("BubbleData", typeof(DoubleCollection), typeof(Bubble), new PropertyMetadata(default(DoubleCollection), (d, e) =>
              {
@@ -262,7 +262,7 @@ namespace H.Controls.Chart2D
             set { SetValue(LenProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty LenProperty =
             DependencyProperty.Register("Len", typeof(double), typeof(PolarScatter), new PropertyMetadata(200.0, (d, e) =>
             {
@@ -300,8 +300,8 @@ namespace H.Controls.Chart2D
                 {
                     m.Style = this.MarkStyle;
 
-                    Canvas.SetLeft(m, end.X - m.ActualWidth / 2);
-                    Canvas.SetTop(m, end.Y - m.ActualHeight / 2);
+                    Canvas.SetLeft(m, end.X - (m.ActualWidth / 2));
+                    Canvas.SetTop(m, end.Y - (m.ActualHeight / 2));
 
                     this.Children.Add(m);
 
@@ -327,7 +327,7 @@ namespace H.Controls.Chart2D
             set { SetValue(BubbleDataProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty BubbleDataProperty =
             DependencyProperty.Register("BubbleData", typeof(DoubleCollection), typeof(PolarBubble), new PropertyMetadata(default(DoubleCollection), (d, e) =>
             {
@@ -346,7 +346,7 @@ namespace H.Controls.Chart2D
             set { SetValue(LenProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty LenProperty =
             DependencyProperty.Register("Len", typeof(double), typeof(PolarBubble), new PropertyMetadata(200.0, (d, e) =>
             {

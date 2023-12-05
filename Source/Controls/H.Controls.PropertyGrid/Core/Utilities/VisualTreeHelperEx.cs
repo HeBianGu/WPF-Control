@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Windows;
@@ -14,7 +14,7 @@ namespace H.Controls.PropertyGrid
                 return null;
 
             if (specificTypeOnly ? (element.GetType() == type)
-                : (element.GetType() == type) || (element.GetType().IsSubclassOf(type)))
+                : (element.GetType() == type) || element.GetType().IsSubclassOf(type))
                 return element;
 
             return VisualTreeHelperEx.FindAncestorByType(VisualTreeHelper.GetParent(element), type, specificTypeOnly);
@@ -69,7 +69,7 @@ namespace H.Controls.PropertyGrid
                 return null;
 
             if (specificTypeOnly ? (element.GetType() == type)
-                : (element.GetType() == type) || (element.GetType().IsSubclassOf(type)))
+                : (element.GetType() == type) || element.GetType().IsSubclassOf(type))
                 return element;
 
             Visual foundElement = null;

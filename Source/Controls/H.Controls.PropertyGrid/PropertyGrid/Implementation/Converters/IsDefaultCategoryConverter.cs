@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.ComponentModel;
@@ -14,7 +14,7 @@ namespace H.Controls.PropertyGrid
             string categoryName = value as string;
             if (categoryName != null)
             {
-                return (categoryName == CategoryAttribute.Default.Category);
+                return categoryName == CategoryAttribute.Default.Category;
             }
 
             return false;

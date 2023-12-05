@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections.Generic;
@@ -22,7 +22,7 @@ namespace H.Controls.PropertyGrid
         internal static Type GetCollectionItemType(Type colType)
         {
             Type iCollectionOfT = null;
-            var isCollectionOfT = colType.IsGenericType && (colType.GetGenericTypeDefinition() == typeof(ICollection<>));
+            bool isCollectionOfT = colType.IsGenericType && (colType.GetGenericTypeDefinition() == typeof(ICollection<>));
             if (isCollectionOfT)
             {
                 iCollectionOfT = colType;
@@ -39,7 +39,7 @@ namespace H.Controls.PropertyGrid
 
         internal static Type[] GetDictionaryItemsType(Type dictType)
         {
-            var isDict = dictType.IsGenericType
+            bool isDict = dictType.IsGenericType
               && ((dictType.GetGenericTypeDefinition() == typeof(Dictionary<,>)) || (dictType.GetGenericTypeDefinition() == typeof(IDictionary<,>)));
 
             return isDict
@@ -49,14 +49,14 @@ namespace H.Controls.PropertyGrid
 
         internal static object CreateEditableKeyValuePair(object key, Type keyType, object value, Type valueType)
         {
-            var itemType = ListUtilities.CreateEditableKeyValuePairType(keyType, valueType);
+            Type itemType = ListUtilities.CreateEditableKeyValuePairType(keyType, valueType);
             return Activator.CreateInstance(itemType, key, value);
         }
 
         internal static Type CreateEditableKeyValuePairType(Type keyType, Type valueType)
         {
             //return an EditableKeyValuePair< TKey, TValue> Type from keyType and valueType
-            var itemGenType = typeof(EditableKeyValuePair<,>);
+            Type itemGenType = typeof(EditableKeyValuePair<,>);
             Type[] itemGenTypeArgs = { keyType, valueType };
             return itemGenType.MakeGenericType(itemGenTypeArgs);
         }

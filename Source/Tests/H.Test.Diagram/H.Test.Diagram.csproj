@@ -1,11 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-
     <UseWPF>true</UseWPF>
   </PropertyGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\Controls\H.Controls.Diagram.Extensions.Workflow\H.Controls.Diagram.Extensions.Workflow.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.Diagram.Extension\H.Controls.Diagram.Extension.csproj" />

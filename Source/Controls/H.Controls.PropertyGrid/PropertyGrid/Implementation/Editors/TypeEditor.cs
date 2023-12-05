@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.Windows;
 using System.Windows.Data;
@@ -50,7 +50,7 @@ namespace H.Controls.PropertyGrid
 
         protected virtual void ResolveValueBinding(PropertyItem propertyItem)
         {
-            var _binding = new Binding("Value");
+            Binding _binding = new Binding("Value");
             _binding.Source = propertyItem;
             _binding.UpdateSourceTrigger = (Editor is InputBase) ? UpdateSourceTrigger.PropertyChanged : UpdateSourceTrigger.Default;
             _binding.Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay;

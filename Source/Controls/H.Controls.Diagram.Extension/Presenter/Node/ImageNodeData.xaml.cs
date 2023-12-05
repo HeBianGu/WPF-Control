@@ -4,12 +4,8 @@ using Microsoft.Win32;
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.IO;
-using System.Security.Policy;
-using System.Web;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace H.Controls.Diagram.Extension
@@ -103,12 +99,12 @@ namespace H.Controls.Diagram.Extension
                 return null;
             try
             {
-                var bitmap = new BitmapImage(uri);
+                BitmapImage bitmap = new BitmapImage(uri);
                 return bitmap;
             }
             catch (Exception ex)
             {
-                Logger.Instance?.Error(ex);
+                IocLog.Instance?.Error(ex);
                 return null;
             }
         }

@@ -1,11 +1,11 @@
-/************************************************************************
-   H.Controls.Dock
 
-   Copyright (C) 2007-2013 Xceed Software Inc.
 
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
+
+
+
+
+
+
 
 using System;
 using System.Collections.Generic;
@@ -58,10 +58,10 @@ namespace H.Controls.Dock.Layout
         /// <inheritdoc cref="IXmlSerializable"/>
         public virtual void WriteXml(XmlWriter writer)
         {
-            foreach (var child in Children)
+            foreach (ILayoutElement child in Children)
             {
-                var type = child.GetType();
-                var serializer = XmlSerializersCache.GetSerializer(type);
+                Type type = child.GetType();
+                XmlSerializer serializer = XmlSerializersCache.GetSerializer(type);
                 serializer.Serialize(writer, child);
             }
         }

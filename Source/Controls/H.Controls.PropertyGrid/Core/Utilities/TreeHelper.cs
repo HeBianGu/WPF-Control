@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Windows;
@@ -72,7 +72,7 @@ namespace H.Controls.PropertyGrid
         public static T FindParent<T>(DependencyObject startingObject, bool checkStartingObject, Func<T, bool> additionalCheck) where T : DependencyObject
         {
             T foundElement;
-            DependencyObject parent = (checkStartingObject ? startingObject : TreeHelper.GetParent(startingObject, true));
+            DependencyObject parent = checkStartingObject ? startingObject : TreeHelper.GetParent(startingObject, true);
 
             while (parent != null)
             {

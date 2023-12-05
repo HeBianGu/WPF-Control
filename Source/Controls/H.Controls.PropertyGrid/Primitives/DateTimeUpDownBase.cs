@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections.Generic;
@@ -72,7 +72,7 @@ namespace H.Controls.PropertyGrid
 
         private static void OnStepChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
         {
-            var dateTimeUpDownBase = o as DateTimeUpDownBase<T>;
+            DateTimeUpDownBase<T> dateTimeUpDownBase = o as DateTimeUpDownBase<T>;
             if (dateTimeUpDownBase != null)
                 dateTimeUpDownBase.OnStepChanged((int)e.OldValue, (int)e.NewValue);
         }
@@ -204,7 +204,7 @@ namespace H.Controls.PropertyGrid
 
         protected virtual void PerformMouseSelection()
         {
-            var dateTimeInfo = this.GetDateTimeInfo(TextBox.SelectionStart);
+            DateTimeInfo dateTimeInfo = this.GetDateTimeInfo(TextBox.SelectionStart);
             if ((dateTimeInfo != null) && (dateTimeInfo.Type == DateTimePart.Other))
             {
                 this.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() =>

@@ -7,7 +7,7 @@ namespace H.Modules.Operation
     {
         public OperationDataContext CreateDbContext(string[] args)
         {
-            var optionsBuilder = new DbContextOptionsBuilder<OperationDataContext>();
+            DbContextOptionsBuilder<OperationDataContext> optionsBuilder = new DbContextOptionsBuilder<OperationDataContext>();
             optionsBuilder.UseLazyLoadingProxies().UseSqlite("Data Source=Migration.db");
             return new OperationDataContext(optionsBuilder.Options);
         }

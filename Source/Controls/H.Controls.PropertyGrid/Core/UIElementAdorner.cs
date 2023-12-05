@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.Collections;
 using System.Windows;
@@ -17,9 +17,9 @@ namespace H.Controls.PropertyGrid
     {
         #region Fields
 
-        TElement _child = null;
-        double _offsetLeft = 0;
-        double _offsetTop = 0;
+        private TElement _child = null;
+        private double _offsetLeft = 0;
+        private double _offsetTop = 0;
 
         #endregion // Fields
 
@@ -214,7 +214,7 @@ namespace H.Controls.PropertyGrid
 
         #region Private Helpers
 
-        void UpdateLocation()
+        private void UpdateLocation()
         {
             AdornerLayer adornerLayer = base.Parent as AdornerLayer;
             if (adornerLayer != null)

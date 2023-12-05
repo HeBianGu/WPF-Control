@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Windows;
@@ -26,11 +26,11 @@ namespace H.Controls.PropertyGrid
             if (propertyDescriptor == null)
                 return;
 
-            var rangeAttribute = PropertyGridUtilities.GetAttribute<RangeAttribute>(propertyDescriptor);
+            RangeAttribute rangeAttribute = PropertyGridUtilities.GetAttribute<RangeAttribute>(propertyDescriptor);
             if (rangeAttribute != null)
             {
-                Editor.Maximum = ((TType)converter.ConvertFrom(rangeAttribute.Maximum.ToString()));
-                Editor.Minimum = ((TType)converter.ConvertFrom(rangeAttribute.Minimum.ToString()));
+                Editor.Maximum = (TType)converter.ConvertFrom(rangeAttribute.Maximum.ToString());
+                Editor.Minimum = (TType)converter.ConvertFrom(rangeAttribute.Minimum.ToString());
             }
         }
 #endif

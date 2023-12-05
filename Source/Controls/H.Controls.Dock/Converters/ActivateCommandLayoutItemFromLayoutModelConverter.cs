@@ -1,12 +1,4 @@
-﻿/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
-
+﻿
 using H.Controls.Dock.Layout;
 using System;
 using System.Windows.Data;
@@ -43,7 +35,7 @@ namespace H.Controls.Dock.Converters
             if (layoutModel.Root.Manager == null)
                 return null;
 
-            var layoutItemModel = layoutModel.Root.Manager.GetLayoutItemFromModel(layoutModel);
+            Controls.LayoutItem layoutItemModel = layoutModel.Root.Manager.GetLayoutItemFromModel(layoutModel);
             if (layoutItemModel == null)
                 return Binding.DoNothing;
 

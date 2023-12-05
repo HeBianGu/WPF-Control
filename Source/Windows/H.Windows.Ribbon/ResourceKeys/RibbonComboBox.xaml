@@ -377,11 +377,11 @@
                           HorizontalAlignment="Center"
                           VerticalAlignment="Center">
                         <RibbonTwoLineText x:Name="TwoLineText"
-                                                  Margin="2,0,2,0"
-                                                  LineHeight="13px"
-                                                  LineStackingStrategy="BlockLineHeight"
-                                                  Text="{TemplateBinding Label}"
-                                                  TextAlignment="Center" />
+                                           Margin="2,0,2,0"
+                                           LineHeight="13px"
+                                           LineStackingStrategy="BlockLineHeight"
+                                           Text="{TemplateBinding Label}"
+                                           TextAlignment="Center" />
                         <Rectangle x:Name="FocusVisual"
                                    Margin="1"
                                    Stroke="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
@@ -409,17 +409,17 @@
                                  IsReadOnly="{Binding Path=IsReadOnly, RelativeSource={RelativeSource TemplatedParent}}"
                                  Style="{StaticResource &#255;}" />
                         <RibbonToggleButton Name="PART_ToggleButton"
-                                                   Grid.Column="1"
-                                                   Background="Transparent"
-                                                   BorderBrush="Transparent"
-                                                   BorderThickness="{TemplateBinding BorderThickness}"
-                                                   CheckedBackground="{TemplateBinding PressedBackground}"
-                                                   CheckedBorderBrush="{TemplateBinding PressedBorderBrush}"
-                                                   IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                                                   IsTabStop="false"
-                                                   PressedBackground="{TemplateBinding PressedBackground}"
-                                                   PressedBorderBrush="{TemplateBinding PressedBorderBrush}"
-                                                   Style="{StaticResource &#259;}" />
+                                            Grid.Column="1"
+                                            Background="Transparent"
+                                            BorderBrush="Transparent"
+                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                            CheckedBackground="{TemplateBinding PressedBackground}"
+                                            CheckedBorderBrush="{TemplateBinding PressedBorderBrush}"
+                                            IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                            IsTabStop="false"
+                                            PressedBackground="{TemplateBinding PressedBackground}"
+                                            PressedBorderBrush="{TemplateBinding PressedBorderBrush}"
+                                            Style="{StaticResource &#259;}" />
                     </Grid>
                 </Grid>
 
@@ -820,11 +820,11 @@
                                       HorizontalAlignment="Center"
                                       VerticalAlignment="Center">
                                     <RibbonTwoLineText x:Name="TwoLineText"
-                                                              Margin="2,0,2,0"
-                                                              LineHeight="13px"
-                                                              LineStackingStrategy="BlockLineHeight"
-                                                              Text="{TemplateBinding Label}"
-                                                              TextAlignment="Center" />
+                                                       Margin="2,0,2,0"
+                                                       LineHeight="13px"
+                                                       LineStackingStrategy="BlockLineHeight"
+                                                       Text="{TemplateBinding Label}"
+                                                       TextAlignment="Center" />
                                     <Rectangle x:Name="FocusVisual"
                                                Margin="1"
                                                Stroke="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
@@ -861,16 +861,16 @@
                                                           ContentTemplateSelector="{TemplateBinding SelectionBoxItemTemplateSelector}" />
                                     </Grid>
                                     <RibbonToggleButton Name="PART_ToggleButton"
-                                                               Grid.ColumnSpan="2"
-                                                               Background="Transparent"
-                                                               BorderBrush="Transparent"
-                                                               BorderThickness="{TemplateBinding BorderThickness}"
-                                                               CheckedBackground="{TemplateBinding PressedBackground}"
-                                                               CheckedBorderBrush="{TemplateBinding PressedBorderBrush}"
-                                                               IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                                                               PressedBackground="{TemplateBinding PressedBackground}"
-                                                               PressedBorderBrush="{TemplateBinding PressedBorderBrush}"
-                                                               Style="{StaticResource &#257;}" />
+                                                        Grid.ColumnSpan="2"
+                                                        Background="Transparent"
+                                                        BorderBrush="Transparent"
+                                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                                        CheckedBackground="{TemplateBinding PressedBackground}"
+                                                        CheckedBorderBrush="{TemplateBinding PressedBorderBrush}"
+                                                        IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                                        PressedBackground="{TemplateBinding PressedBackground}"
+                                                        PressedBorderBrush="{TemplateBinding PressedBorderBrush}"
+                                                        Style="{StaticResource &#257;}" />
 
                                 </Grid>
                             </Grid>

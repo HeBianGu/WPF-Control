@@ -1,8 +1,4 @@
 ﻿using H.Controls.Diagram.Extension;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 
 namespace H.Controls.Diagram.Extensions.Workflow
 {

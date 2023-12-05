@@ -5,8 +5,7 @@
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
     <!--  Style for the days of a month.  -->
-    <Style x:Key="CalendarDayButtonStyle"
-           TargetType="CalendarDayButton">
+    <Style x:Key="CalendarDayButtonStyle" TargetType="CalendarDayButton">
         <Setter Property="MinWidth" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
         <Setter Property="MinHeight" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
         <Setter Property="FontSize" Value="10" />
@@ -210,8 +209,7 @@
     </Style>
 
     <!--  Style for the months of a year and years of a decade.  -->
-    <Style x:Key="CalendarButtonStyle"
-           TargetType="CalendarButton">
+    <Style x:Key="CalendarButtonStyle" TargetType="CalendarButton">
         <Setter Property="MinWidth" Value="40" />
         <Setter Property="MinHeight" Value="42" />
         <Setter Property="FontSize" Value="10" />
@@ -337,8 +335,7 @@
     </Style>
 
     <!--  Button to go to the previous month or year.  -->
-    <ControlTemplate x:Key="PreviousButtonTemplate"
-                     TargetType="{x:Type Button}">
+    <ControlTemplate x:Key="PreviousButtonTemplate" TargetType="{x:Type Button}">
         <Grid Cursor="Hand">
             <!--<Rectangle Fill="Transparent" Opacity="1" Stretch="Fill"/>-->
             <Grid Background="Transparent">
@@ -380,8 +377,7 @@
     </ControlTemplate>
 
     <!--  Button to go to the next month or year.  -->
-    <ControlTemplate x:Key="NextButtonTemplate"
-                     TargetType="{x:Type Button}">
+    <ControlTemplate x:Key="NextButtonTemplate" TargetType="{x:Type Button}">
         <Grid Cursor="Hand">
             <!--<Rectangle Fill="#11E5EBF1" Opacity="1" Stretch="Fill"/>-->
             <Grid Background="Transparent">
@@ -423,8 +419,7 @@
     </ControlTemplate>
 
     <!--  Button to go up a level to the year or decade.  -->
-    <ControlTemplate x:Key="HeaderButtonTemplate"
-                     TargetType="{x:Type Button}">
+    <ControlTemplate x:Key="HeaderButtonTemplate" TargetType="{x:Type Button}">
         <Grid Cursor="Hand">
             <ContentPresenter x:Name="buttonContent"
                               Margin="1,4,1,9"
@@ -460,8 +455,7 @@
         </Grid>
     </ControlTemplate>
 
-    <Style x:Key="CalendarItemStyle"
-           TargetType="{x:Type CalendarItem}">
+    <Style x:Key="CalendarItemStyle" TargetType="{x:Type CalendarItem}">
         <Setter Property="Margin" Value="0,3,0,3" />
         <Setter Property="Template">
             <Setter.Value>
@@ -483,15 +477,13 @@
                     </ControlTemplate.Resources>
                     <Grid x:Name="PART_Root">
                         <Grid.Resources>
-                            <SolidColorBrush x:Key="DisabledColor"
-                                             Color="{DynamicResource {x:Static ColorKeys.BackgroundDisabled}}" />
+                            <SolidColorBrush x:Key="DisabledColor" Color="{DynamicResource {x:Static ColorKeys.BackgroundDisabled}}" />
                         </Grid.Resources>
                         <Border Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 CornerRadius="1">
-                            <Border BorderThickness="1"
-                                    CornerRadius="1">
+                            <Border BorderThickness="1" CornerRadius="1">
                                 <Border.BorderBrush>
                                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
                                 </Border.BorderBrush>
@@ -609,13 +601,11 @@
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="PART_DisabledVisual" Property="Visibility" Value="Visible" />
                         </Trigger>
-                        <DataTrigger Binding="{Binding DisplayMode, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Calendar}}}"
-                                     Value="Year">
+                        <DataTrigger Binding="{Binding DisplayMode, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Calendar}}}" Value="Year">
                             <Setter TargetName="PART_MonthView" Property="Visibility" Value="Hidden" />
                             <Setter TargetName="PART_YearView" Property="Visibility" Value="Visible" />
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding DisplayMode, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Calendar}}}"
-                                     Value="Decade">
+                        <DataTrigger Binding="{Binding DisplayMode, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Calendar}}}" Value="Decade">
                             <Setter TargetName="PART_MonthView" Property="Visibility" Value="Hidden" />
                             <Setter TargetName="PART_YearView" Property="Visibility" Value="Visible" />
                         </DataTrigger>
@@ -625,9 +615,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Calendar.Default,
-                                        TypeInTargetAssembly={x:Type local:CalendarKeys}}"
-           TargetType="{x:Type Calendar}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Calendar.Default, TypeInTargetAssembly={x:Type local:CalendarKeys}}" TargetType="{x:Type Calendar}">
         <Setter Property="CalendarButtonStyle" Value="{StaticResource CalendarButtonStyle}" />
         <Setter Property="CalendarDayButtonStyle" Value="{StaticResource CalendarDayButtonStyle}" />
         <Setter Property="CalendarItemStyle" Value="{StaticResource CalendarItemStyle}" />
@@ -651,8 +639,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Calendar}">
                     <Grid>
-                        <StackPanel x:Name="PART_Root"
-                                    HorizontalAlignment="Center">
+                        <StackPanel x:Name="PART_Root" HorizontalAlignment="Center">
                             <CalendarItem x:Name="PART_CalendarItem"
                                           Background="{TemplateBinding Background}"
                                           BorderBrush="{TemplateBinding BorderBrush}"
@@ -663,8 +650,7 @@
                                 IsHitTestVisible="False"
                                 Opacity="{Binding Source={x:Static local:WindowSetting.Instance}, Path=Opacity}">
                             <Border.Background>
-                                <ImageBrush ImageSource="{Binding Source={x:Static local:WindowSetting.Instance}, Path=BackImagePath}"
-                                            Stretch="{Binding Source={x:Static local:WindowSetting.Instance}, Path=Stretch}" />
+                                <ImageBrush ImageSource="{Binding Source={x:Static local:WindowSetting.Instance}, Path=BackImagePath}" Stretch="{Binding Source={x:Static local:WindowSetting.Instance}, Path=Stretch}" />
                             </Border.Background>
                         </Border>
                     </Grid>
@@ -673,7 +659,6 @@
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static local:CalendarKeys.Default}}"
-           TargetType="Calendar" />
+    <Style BasedOn="{StaticResource {x:Static local:CalendarKeys.Default}}" TargetType="Calendar" />
 
 </ResourceDictionary>

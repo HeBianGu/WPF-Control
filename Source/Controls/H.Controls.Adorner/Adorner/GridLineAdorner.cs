@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.Windows;
 using System.Windows.Controls;
@@ -23,13 +23,13 @@ namespace H.Controls.Adorner
             if (grid == null)
                 return;
             this.Pen = this.Pen ?? new Pen(Brushes.Blue, 1);
-            foreach (var item in grid.RowDefinitions)
+            foreach (RowDefinition item in grid.RowDefinitions)
             {
                 dc.DrawLine(this.Pen, new Point(0, item.Offset), new Point(this.ActualWidth, item.Offset));
             }
             dc.DrawLine(this.Pen, new Point(0, grid.ActualHeight), new Point(this.ActualWidth, this.ActualHeight));
 
-            foreach (var item in grid.ColumnDefinitions)
+            foreach (ColumnDefinition item in grid.ColumnDefinitions)
             {
                 dc.DrawLine(this.Pen, new Point(item.Offset, 0), new Point(item.Offset, this.ActualHeight));
             }

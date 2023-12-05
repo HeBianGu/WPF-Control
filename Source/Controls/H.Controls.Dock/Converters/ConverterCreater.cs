@@ -3,10 +3,6 @@ using System.Collections.Generic;
 
 namespace H.Controls.Dock.Converters
 {
-    /// <summary>
-    /// Implements a static factory pattern for instances of WPF converters
-    /// and ensures that every single converter is instanciated only once.
-    /// </summary>
     internal class ConverterCreater
     {
         #region Private fields

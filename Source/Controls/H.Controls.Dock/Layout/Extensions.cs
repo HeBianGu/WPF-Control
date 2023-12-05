@@ -1,11 +1,11 @@
-﻿/************************************************************************
-   H.Controls.Dock
+﻿
 
-   Copyright (C) 2007-2013 Xceed Software Inc.
 
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
+
+
+
+
+
 
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -21,17 +21,17 @@ namespace H.Controls.Dock.Layout
         public static IEnumerable<ILayoutElement> Descendents(this ILayoutElement element)
         {
             if (!(element is ILayoutContainer container)) yield break;
-            foreach (var childElement in container.Children)
+            foreach (ILayoutElement childElement in container.Children)
             {
                 yield return childElement;
-                foreach (var childChildElement in childElement.Descendents())
+                foreach (ILayoutElement childChildElement in childElement.Descendents())
                     yield return childChildElement;
             }
         }
 
         public static T FindParent<T>(this ILayoutElement element) //where T : ILayoutContainer
         {
-            var parent = element.Parent;
+            ILayoutContainer parent = element.Parent;
             while (parent != null && !(parent is T))
                 parent = parent.Parent;
             return (T)parent;
@@ -40,7 +40,7 @@ namespace H.Controls.Dock.Layout
         public static ILayoutRoot GetRoot(this ILayoutElement element) //where T : ILayoutContainer
         {
             if (element is ILayoutRoot layoutRoot) return layoutRoot;
-            var parent = element.Parent;
+            ILayoutContainer parent = element.Parent;
             while (parent != null && !(parent is ILayoutRoot))
                 parent = parent.Parent;
             return (ILayoutRoot)parent;
@@ -48,14 +48,14 @@ namespace H.Controls.Dock.Layout
 
         public static bool ContainsChildOfType<T>(this ILayoutContainer element)
         {
-            foreach (var childElement in element.Descendents())
+            foreach (ILayoutElement childElement in element.Descendents())
                 if (childElement is T) return true;
             return false;
         }
 
         public static bool ContainsChildOfType<T, S>(this ILayoutContainer container)
         {
-            foreach (var childElement in container.Descendents())
+            foreach (ILayoutElement childElement in container.Descendents())
                 if (childElement is T || childElement is S) return true;
             return false;
         }
@@ -66,7 +66,7 @@ namespace H.Controls.Dock.Layout
         {
             if (element.Parent is ILayoutOrientableGroup parentContainer)
             {
-                var layoutPanel = parentContainer as LayoutPanel ?? parentContainer.FindParent<LayoutPanel>();
+                LayoutPanel layoutPanel = parentContainer as LayoutPanel ?? parentContainer.FindParent<LayoutPanel>();
                 if (layoutPanel != null && layoutPanel.Children.Count > 0)
                 {
                     if (layoutPanel.Orientation == System.Windows.Controls.Orientation.Horizontal)
@@ -91,18 +91,18 @@ namespace H.Controls.Dock.Layout
         /// <param name="paneInsideFloatingWindow"></param>
         internal static void KeepInsideNearestMonitor_Issue20(this ILayoutElementForFloatingWindow paneInsideFloatingWindow)
         {
-            var r = new Win32Helper.RECT { Left = (int)paneInsideFloatingWindow.FloatingLeft, Top = (int)paneInsideFloatingWindow.FloatingTop };
+            Win32Helper.RECT r = new Win32Helper.RECT { Left = (int)paneInsideFloatingWindow.FloatingLeft, Top = (int)paneInsideFloatingWindow.FloatingTop };
             r.Bottom = r.Top + (int)paneInsideFloatingWindow.FloatingHeight;
             r.Right = r.Left + (int)paneInsideFloatingWindow.FloatingWidth;
 
             uint MONITOR_DEFAULTTONEAREST = 0x00000002;
             uint MONITOR_DEFAULTTONULL = 0x00000000;
 
-            var monitor = Win32Helper.MonitorFromRect(ref r, MONITOR_DEFAULTTONULL);
+            System.IntPtr monitor = Win32Helper.MonitorFromRect(ref r, MONITOR_DEFAULTTONULL);
             if (monitor != System.IntPtr.Zero) return;
-            var nearestMonitor = Win32Helper.MonitorFromRect(ref r, MONITOR_DEFAULTTONEAREST);
+            System.IntPtr nearestMonitor = Win32Helper.MonitorFromRect(ref r, MONITOR_DEFAULTTONEAREST);
             if (nearestMonitor == System.IntPtr.Zero) return;
-            var monitorInfo = new Win32Helper.MonitorInfo();
+            Win32Helper.MonitorInfo monitorInfo = new Win32Helper.MonitorInfo();
             monitorInfo.Size = Marshal.SizeOf(monitorInfo);
             Win32Helper.GetMonitorInfo(nearestMonitor, monitorInfo);
 

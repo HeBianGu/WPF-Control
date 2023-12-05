@@ -31,9 +31,9 @@ namespace H.Controls.Diagram.Extension
 
         public virtual object Clone()
         {
-            var result = Activator.CreateInstance(GetType());
-            var ps = GetType().GetProperties().Where(x => x.CanRead && x.CanWrite);
-            foreach (var p in ps)
+            object result = Activator.CreateInstance(GetType());
+            System.Collections.Generic.IEnumerable<PropertyInfo> ps = GetType().GetProperties().Where(x => x.CanRead && x.CanWrite);
+            foreach (PropertyInfo p in ps)
             {
                 p.SetValue(result, p.GetValue(this));
             }
@@ -46,7 +46,7 @@ namespace H.Controls.Diagram.Extension
     {
         public NodeData()
         {
-            var type = GetType().GetCustomAttributes<NodeTypeAttribute>()?.FirstOrDefault();
+            NodeTypeAttribute type = GetType().GetCustomAttributes<NodeTypeAttribute>()?.FirstOrDefault();
             Columns = type?.GroupColumns ?? 4;
         }
 
@@ -119,7 +119,7 @@ namespace H.Controls.Diagram.Extension
        {
            if (e is Node node)
            {
-               var diagram = node.GetParent<Diagram>();
+               Diagram diagram = node.GetParent<Diagram>();
                diagram.Nodes.ForEach(x =>
                {
                    if (x.Content is NodeData nodeData)
@@ -134,11 +134,11 @@ namespace H.Controls.Diagram.Extension
        {
            if (e is Node node)
            {
-               var diagram = node.GetParent<Diagram>();
+               Diagram diagram = node.GetParent<Diagram>();
 
-               var finds = diagram.Nodes.Select(x => x.Content).OfType<NodeData>().Where(x => x.GetType().IsAssignableFrom(GetType()));
+               System.Collections.Generic.IEnumerable<NodeData> finds = diagram.Nodes.Select(x => x.Content).OfType<NodeData>().Where(x => x.GetType().IsAssignableFrom(GetType()));
 
-               foreach (var item in finds)
+               foreach (NodeData item in finds)
                {
                    ApplayStyleTo(item);
                }
@@ -373,7 +373,7 @@ namespace H.Controls.Diagram.Extension
 
         public override object Clone()
         {
-            var data = base.Clone() as NodeData;
+            NodeData data = base.Clone() as NodeData;
             data.ID = Guid.NewGuid().ToString();
             return data;
         }

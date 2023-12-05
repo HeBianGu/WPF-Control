@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Windows.Markup;
+﻿using System.Collections;
 
 namespace H.Extensions.Tree
 {

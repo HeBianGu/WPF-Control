@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 
 namespace H.Styles.Default
 {
@@ -11,6 +6,8 @@ namespace H.Styles.Default
     {
         public static ComponentResourceKey Default => new ComponentResourceKey(typeof(ToggleButtonKeys), "S.ToggleButton.Default");
         public static ComponentResourceKey Geometry => new ComponentResourceKey(typeof(ToggleButtonKeys), "S.ToggleButton.Geometry");
+        public static ComponentResourceKey Tree => new ComponentResourceKey(typeof(ToggleButtonKeys), "S.ToggleButton.Tree");
+
 
     }
 }

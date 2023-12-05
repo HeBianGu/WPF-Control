@@ -1,5 +1,4 @@
-﻿using System;
-using System.Reflection;
+﻿using System.Reflection;
 
 namespace H.Extensions.Common
 {
@@ -22,7 +21,7 @@ namespace H.Extensions.Common
         public static string Version => Assembly.GetEntryAssembly().GetName().Version.ToString();
         ////  Do ：major.minor.patch 形式的程序集清单版本数值(如 2.4.0)
         //public static string Version => Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyVersionAttribute>()?.Version;
-        
+
         //  Do ：major.minor.build.revision 形式的程序集清单版本数值(如 2.4.0.1)
         public static string FileVersion => Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyFileVersionAttribute>()?.Version;
         //public static string Authors => Assembly.GetEntryAssembly().GetCustomAttribute<AuthorsAttribute>()?.Version;

@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 using System;
@@ -71,8 +71,8 @@ namespace H.Controls.Diagram
             Point point = NodeLayer.GetPosition(child);
 
             //  Do ：居中
-            point.X = point.X - child.DesiredSize.Width / 2;
-            point.Y = point.Y - child.DesiredSize.Height / 2;
+            point.X = point.X - (child.DesiredSize.Width / 2);
+            point.Y = point.Y - (child.DesiredSize.Height / 2);
 
             child.Arrange(new Rect(point, child.DesiredSize));
 
@@ -125,7 +125,7 @@ namespace H.Controls.Diagram
             }
 
 #if DEBUG
-            var span = DateTime.Now - dateTime;
+            TimeSpan span = DateTime.Now - dateTime;
             System.Diagnostics.Debug.WriteLine("NodeLayer.ArrangeOverride：" + span.ToString());
 #endif 
             return base.ArrangeOverride(arrangeSize);

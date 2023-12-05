@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections;
@@ -15,7 +15,7 @@ namespace H.Controls.PropertyGrid
         public WeakCollectionChangedWrapper(IList sourceList)
         {
             _innerList = sourceList;
-            var notifyList = _innerList as INotifyCollectionChanged;
+            INotifyCollectionChanged notifyList = _innerList as INotifyCollectionChanged;
             if (notifyList != null)
             {
                 _innerListListener = new WeakEventListener<NotifyCollectionChangedEventArgs>(OnInnerCollectionChanged);

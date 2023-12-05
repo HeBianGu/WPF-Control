@@ -1,11 +1,11 @@
-﻿/************************************************************************
-   H.Controls.Dock
+﻿
 
-   Copyright (C) 2007-2013 Xceed Software Inc.
 
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
+
+
+
+
+
 
 using System;
 using System.Collections.Generic;
@@ -75,7 +75,7 @@ namespace H.Controls.Dock.Layout
             get
             {
                 if (!IsSinglePane) return null;
-                var singlePane = RootPanel.Descendents().OfType<LayoutDocumentPane>().Single(p => p.IsVisible);
+                LayoutDocumentPane singlePane = RootPanel.Descendents().OfType<LayoutDocumentPane>().Single(p => p.IsVisible);
                 //singlePane.UpdateIsDirectlyHostedInFloatingWindow();
                 return singlePane;
             }
@@ -139,7 +139,7 @@ namespace H.Controls.Dock.Layout
                 return;
             }
 
-            var localName = reader.LocalName;
+            string localName = reader.LocalName;
             reader.Read();
 
             while (true)
@@ -156,7 +156,7 @@ namespace H.Controls.Dock.Layout
                     serializer = XmlSerializersCache.GetSerializer<LayoutDocument>();
                 else
                 {
-                    var type = LayoutRoot.FindType(reader.LocalName);
+                    Type type = LayoutRoot.FindType(reader.LocalName);
                     if (type == null) throw new ArgumentException("H.Controls.Dock.LayoutDocumentFloatingWindow doesn't know how to deserialize " + reader.LocalName);
                     serializer = XmlSerializersCache.GetSerializer(type);
                 }
@@ -167,13 +167,13 @@ namespace H.Controls.Dock.Layout
         }
 
 #if TRACE
-		public override void ConsoleDump(int tab)
-		{
-			System.Diagnostics.Trace.Write(new string(' ', tab * 4));
-			System.Diagnostics.Trace.WriteLine("FloatingDocumentWindow()");
+        public override void ConsoleDump(int tab)
+        {
+            System.Diagnostics.Trace.Write(new string(' ', tab * 4));
+            System.Diagnostics.Trace.WriteLine("FloatingDocumentWindow()");
 
-			RootPanel.ConsoleDump(tab + 1);
-		}
+            RootPanel.ConsoleDump(tab + 1);
+        }
 #endif
 
         #endregion Overrides

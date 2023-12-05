@@ -1,8 +1,5 @@
 ﻿namespace H.Controls.Dock.Commands
 {
-    /// <summary>
-    /// Interface IExecuteWithObjectAndResult
-    /// </summary>
     internal interface IExecuteWithObjectAndResult
     {
         #region Public Methods

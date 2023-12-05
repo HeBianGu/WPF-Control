@@ -1,9 +1,8 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using H.Controls.Adorner;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 
 namespace H.Controls.Diagram.Extensions.Workflow
 {
@@ -21,7 +20,7 @@ namespace H.Controls.Diagram.Extensions.Workflow
 
         protected override ControlTemplate CreateTemplate()
         {
-            return WorkflowNodeAdorner.GetTemplate(this.AdornedElement) as ControlTemplate;
+            return WorkflowNodeAdorner.GetTemplate(this.AdornedElement);
         }
 
 
@@ -35,13 +34,13 @@ namespace H.Controls.Diagram.Extensions.Workflow
             obj.SetValue(TemplateProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static new readonly DependencyProperty TemplateProperty =
             DependencyProperty.RegisterAttached("Template", typeof(ControlTemplate), typeof(WorkflowNodeAdorner), new PropertyMetadata(default(ControlTemplate), OnTemplateChanged));
 
-        static public new void OnTemplateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static new void OnTemplateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             ControlTemplate n = (ControlTemplate)e.NewValue;
 

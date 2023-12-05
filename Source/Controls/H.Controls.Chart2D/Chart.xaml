@@ -10,7 +10,10 @@
         <ResourceDictionary Source="Provider/LayerGroup.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Chart.Default, TypeInTargetAssembly={x:Type local:Chart}}" BasedOn="{StaticResource {x:Static h:LayerGroup.DefaultKey}}" TargetType="{x:Type local:Chart}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Chart.Default,
+                                        TypeInTargetAssembly={x:Type local:Chart}}"
+           BasedOn="{StaticResource {x:Static h:LayerGroup.DefaultKey}}"
+           TargetType="{x:Type local:Chart}">
         <Setter Property="xAxisStyle" Value="{StaticResource {x:Static h:xAxis.DefaultKey}}" />
         <Setter Property="yAxisStyle" Value="{StaticResource {x:Static h:yAxis.DefaultKey}}" />
         <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Background}}" />
@@ -43,7 +46,10 @@
     </Style>
 
     <!--  带有直角坐标系的图  -->
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Chart.Coord, TypeInTargetAssembly={x:Type local:Chart}}" BasedOn="{StaticResource {x:Static local:Chart.DefaultKey}}" TargetType="{x:Type local:Chart}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Chart.Coord,
+                                        TypeInTargetAssembly={x:Type local:Chart}}"
+           BasedOn="{StaticResource {x:Static local:Chart.DefaultKey}}"
+           TargetType="{x:Type local:Chart}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:Chart}">
@@ -55,8 +61,12 @@
                         <local:LayerGroup>
                             <local:Grid Style="{TemplateBinding GridStyle}" Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UseGrid, Converter={x:Static h:Converter.GetTrueToVisible}}" />
                             <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                            <local:xAxis VerticalAlignment="Bottom" Style="{TemplateBinding xAxisStyle}" Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UsexAxis, Converter={x:Static h:Converter.GetTrueToVisible}}" />
-                            <local:yAxis HorizontalAlignment="Left" Style="{TemplateBinding yAxisStyle}" Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UseyAxis, Converter={x:Static h:Converter.GetTrueToVisible}}" />
+                            <local:xAxis VerticalAlignment="Bottom"
+                                         Style="{TemplateBinding xAxisStyle}"
+                                         Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UsexAxis, Converter={x:Static h:Converter.GetTrueToVisible}}" />
+                            <local:yAxis HorizontalAlignment="Left"
+                                         Style="{TemplateBinding yAxisStyle}"
+                                         Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UseyAxis, Converter={x:Static h:Converter.GetTrueToVisible}}" />
                             <local:Legend Style="{TemplateBinding LegendStyle}" Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UseLegend, Converter={x:Static h:Converter.GetTrueToVisible}}" />
                             <Button HorizontalAlignment="Right"
                                     VerticalAlignment="Top"
@@ -72,7 +82,10 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Chart.CoordScreen, TypeInTargetAssembly={x:Type local:Chart}}" BasedOn="{StaticResource {x:Static h:Chart.DefaultKey}}" TargetType="{x:Type local:Chart}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Chart.CoordScreen,
+                                        TypeInTargetAssembly={x:Type local:Chart}}"
+           BasedOn="{StaticResource {x:Static h:Chart.DefaultKey}}"
+           TargetType="{x:Type local:Chart}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:Chart}">
@@ -82,10 +95,16 @@
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 CornerRadius="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:Cattach.CornerRadius)}" />
                         <local:LayerGroup>
-                            <local:Grid Opacity="0.2" TryFreeze="False" Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UseGrid, Converter={x:Static h:Converter.GetTrueToVisible}}" />
+                            <local:Grid Opacity="0.2"
+                                        TryFreeze="False"
+                                        Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UseGrid, Converter={x:Static h:Converter.GetTrueToVisible}}" />
                             <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                            <local:yAxis LineStyle="{x:Null}" TryFreeze="False" Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UseyAxis, Converter={x:Static h:Converter.GetTrueToVisible}}" />
-                            <local:xAxis LineStyle="{x:Null}" TryFreeze="False" Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UsexAxis, Converter={x:Static h:Converter.GetTrueToVisible}}" />
+                            <local:yAxis LineStyle="{x:Null}"
+                                         TryFreeze="False"
+                                         Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UseyAxis, Converter={x:Static h:Converter.GetTrueToVisible}}" />
+                            <local:xAxis LineStyle="{x:Null}"
+                                         TryFreeze="False"
+                                         Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UsexAxis, Converter={x:Static h:Converter.GetTrueToVisible}}" />
                             <local:Legend Style="{TemplateBinding LegendStyle}" Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UseLegend, Converter={x:Static h:Converter.GetTrueToVisible}}" />
                             <Button HorizontalAlignment="Right"
                                     VerticalAlignment="Top"
@@ -101,7 +120,10 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Chart.Coord.WithOutTool, TypeInTargetAssembly={x:Type local:Chart}}" BasedOn="{StaticResource {x:Static local:Chart.DefaultKey}}" TargetType="{x:Type local:Chart}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Chart.Coord.WithOutTool,
+                                        TypeInTargetAssembly={x:Type local:Chart}}"
+           BasedOn="{StaticResource {x:Static local:Chart.DefaultKey}}"
+           TargetType="{x:Type local:Chart}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:Chart}">
@@ -124,7 +146,10 @@
     </Style>
 
     <!--  带有直角坐标系的图  -->
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Chart.Coord.Single, TypeInTargetAssembly={x:Type local:Chart}}" BasedOn="{StaticResource {x:Static local:Chart.DefaultKey}}" TargetType="{x:Type local:Chart}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Chart.Coord.Single,
+                                        TypeInTargetAssembly={x:Type local:Chart}}"
+           BasedOn="{StaticResource {x:Static local:Chart.DefaultKey}}"
+           TargetType="{x:Type local:Chart}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:Chart}">
@@ -148,7 +173,10 @@
     </Style>
 
     <!--  带有直角坐标系的图  -->
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Chart.Coord.Vertical, TypeInTargetAssembly={x:Type local:Chart}}" BasedOn="{StaticResource {x:Static local:Chart.DefaultKey}}" TargetType="{x:Type local:Chart}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Chart.Coord.Vertical,
+                                        TypeInTargetAssembly={x:Type local:Chart}}"
+           BasedOn="{StaticResource {x:Static local:Chart.DefaultKey}}"
+           TargetType="{x:Type local:Chart}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:Chart}">
@@ -167,7 +195,9 @@
 
                         <local:xAxis Style="{TemplateBinding xAxisStyle}" />
 
-                        <local:yAxis HorizontalAlignment="Left" Style="{TemplateBinding yAxisStyle}" TextAlignmentCenter="True" />
+                        <local:yAxis HorizontalAlignment="Left"
+                                     Style="{TemplateBinding yAxisStyle}"
+                                     TextAlignmentCenter="True" />
 
                         <local:Legend Style="{TemplateBinding LegendStyle}" Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UseLegend, Converter={x:Static h:Converter.GetTrueToVisible}}" />
                     </local:LayerGroup>
@@ -176,9 +206,15 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Chart.yBar.Default, TypeInTargetAssembly={x:Type local:Chart}}" BasedOn="{StaticResource {x:Static local:Chart.CoordVerticalKey}}" TargetType="{x:Type local:Chart}" />
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Chart.yBar.Default,
+                                        TypeInTargetAssembly={x:Type local:Chart}}"
+           BasedOn="{StaticResource {x:Static local:Chart.CoordVerticalKey}}"
+           TargetType="{x:Type local:Chart}" />
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Chart.yStackBar.Default, TypeInTargetAssembly={x:Type local:Chart}}" BasedOn="{StaticResource {x:Static local:Chart.CoordVerticalKey}}" TargetType="{x:Type local:Chart}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Chart.yStackBar.Default,
+                                        TypeInTargetAssembly={x:Type local:Chart}}"
+           BasedOn="{StaticResource {x:Static local:Chart.CoordVerticalKey}}"
+           TargetType="{x:Type local:Chart}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:Chart}">
@@ -195,7 +231,9 @@
                                 ToolTip="刷新" />
 
                         <local:xAxis Style="{TemplateBinding xAxisStyle}" />
-                        <local:yAxis HorizontalAlignment="Left" Style="{TemplateBinding yAxisStyle}" TextAlignmentCenter="True" />
+                        <local:yAxis HorizontalAlignment="Left"
+                                     Style="{TemplateBinding yAxisStyle}"
+                                     TextAlignmentCenter="True" />
 
                         <local:StackLegend Style="{TemplateBinding LegendStyle}" Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UseLegend, Converter={x:Static h:Converter.GetTrueToVisible}}" />
                     </local:LayerGroup>
@@ -204,7 +242,10 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Chart.yAnimationBar.Default, TypeInTargetAssembly={x:Type local:Chart}}" BasedOn="{StaticResource {x:Static local:Chart.CoordVerticalKey}}" TargetType="{x:Type local:Chart}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Chart.yAnimationBar.Default,
+                                        TypeInTargetAssembly={x:Type local:Chart}}"
+           BasedOn="{StaticResource {x:Static local:Chart.CoordVerticalKey}}"
+           TargetType="{x:Type local:Chart}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:Chart}">
@@ -223,7 +264,10 @@
     </Style>
 
     <!--  带有直角坐标系的图 X坐标剧中效果  -->
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Chart.Coord.AlignmentCenter, TypeInTargetAssembly={x:Type local:Chart}}" BasedOn="{StaticResource {x:Static local:Chart.DefaultKey}}" TargetType="{x:Type local:Chart}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Chart.Coord.AlignmentCenter,
+                                        TypeInTargetAssembly={x:Type local:Chart}}"
+           BasedOn="{StaticResource {x:Static local:Chart.DefaultKey}}"
+           TargetType="{x:Type local:Chart}">
         <Setter Property="LegendStyle" Value="{DynamicResource {x:Static h:Legend.DefaultKey}}" />
         <Setter Property="Template">
             <Setter.Value>
@@ -257,9 +301,15 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Chart.Bar.Default, TypeInTargetAssembly={x:Type local:Chart}}" BasedOn="{StaticResource {x:Static local:Chart.CoordAlignmentCenterKey}}" TargetType="{x:Type local:Chart}" />
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Chart.Bar.Default,
+                                        TypeInTargetAssembly={x:Type local:Chart}}"
+           BasedOn="{StaticResource {x:Static local:Chart.CoordAlignmentCenterKey}}"
+           TargetType="{x:Type local:Chart}" />
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Chart.StackBar.Default, TypeInTargetAssembly={x:Type local:Chart}}" BasedOn="{StaticResource {x:Static local:Chart.CoordAlignmentCenterKey}}" TargetType="{x:Type local:Chart}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Chart.StackBar.Default,
+                                        TypeInTargetAssembly={x:Type local:Chart}}"
+           BasedOn="{StaticResource {x:Static local:Chart.CoordAlignmentCenterKey}}"
+           TargetType="{x:Type local:Chart}">
         <Setter Property="LegendStyle" Value="{DynamicResource {x:Static h:StackLegend.DefaultKey}}" />
         <Setter Property="Template">
             <Setter.Value>
@@ -287,13 +337,19 @@
     <Style BasedOn="{StaticResource {x:Static h:Chart.DefaultKey}}" TargetType="{x:Type local:Chart}" />
 
     <!--  默认样式 需要自己添加坐标系等元素  -->
-    <Style x:Key="{ComponentResourceKey ResourceId=S.PolarChart.Default, TypeInTargetAssembly={x:Type local:PolarChart}}" BasedOn="{StaticResource {x:Static local:Chart.DefaultKey}}" TargetType="{x:Type local:PolarChart}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.PolarChart.Default,
+                                        TypeInTargetAssembly={x:Type local:PolarChart}}"
+           BasedOn="{StaticResource {x:Static local:Chart.DefaultKey}}"
+           TargetType="{x:Type local:PolarChart}">
         <Setter Property="Len" Value="150" />
         <Setter Property="yAxis" Value="0,30,60,90,120,150,180,210,240,270,300,330" />
     </Style>
 
     <!--  默认样式 需要自己添加坐标系等元素  -->
-    <Style x:Key="{ComponentResourceKey ResourceId=S.PolarChart.Angle, TypeInTargetAssembly={x:Type local:PolarChart}}" BasedOn="{StaticResource {x:Static local:PolarChart.DefaultKey}}" TargetType="{x:Type local:PolarChart}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.PolarChart.Angle,
+                                        TypeInTargetAssembly={x:Type local:PolarChart}}"
+           BasedOn="{StaticResource {x:Static local:PolarChart.DefaultKey}}"
+           TargetType="{x:Type local:PolarChart}">
         <Setter Property="LegendStyle" Value="{DynamicResource {x:Static h:Legend.VerticalKey}}" />
         <Setter Property="Template">
             <Setter.Value>
@@ -307,7 +363,9 @@
                             <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                             <local:RadiusAxis />
                             <local:AngleAxis />
-                            <local:Legend HorizontalAlignment="Left" Style="{TemplateBinding LegendStyle}" Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UseLegend, Converter={x:Static h:Converter.GetTrueToVisible}}" />
+                            <local:Legend HorizontalAlignment="Left"
+                                          Style="{TemplateBinding LegendStyle}"
+                                          Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UseLegend, Converter={x:Static h:Converter.GetTrueToVisible}}" />
                             <Button HorizontalAlignment="Right"
                                     VerticalAlignment="Top"
                                     h:Cattach.Icon="&#xe8dc;"
@@ -341,9 +399,13 @@
                                       yDatas="{TemplateBinding yDatas}">
                             <local:Line Style="{DynamicResource {x:Static h:Line.SingleKey}}" />
                             <local:MarkPosition MarkValueType="Max" Style="{DynamicResource {x:Static h:MarkPosition.SingleKey}}" />
-                            <local:MarkPosition Foreground="Red" MarkValueType="Min" Style="{DynamicResource {x:Static h:MarkPosition.SingleKey}}" />
+                            <local:MarkPosition Foreground="Red"
+                                                MarkValueType="Min"
+                                                Style="{DynamicResource {x:Static h:MarkPosition.SingleKey}}" />
                         </local:Series>
-                        <local:ThumbToolBar x:Name="PART_TOOLBAR" Height="{TemplateBinding Height}" MaxValue="100" />
+                        <local:ThumbToolBar x:Name="PART_TOOLBAR"
+                                            Height="{TemplateBinding Height}"
+                                            MaxValue="100" />
                     </local:LayerGroup>
                 </ControlTemplate>
             </Setter.Value>

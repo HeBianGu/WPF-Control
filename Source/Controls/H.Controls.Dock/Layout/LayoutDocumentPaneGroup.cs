@@ -1,11 +1,11 @@
-﻿/************************************************************************
-   H.Controls.Dock
+﻿
 
-   Copyright (C) 2007-2013 Xceed Software Inc.
 
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
+
+
+
+
+
 
 using System;
 using System.Windows.Controls;
@@ -79,15 +79,15 @@ namespace H.Controls.Dock.Layout
         }
 
 #if TRACE
-		/// <inheritdoc />
-		public override void ConsoleDump(int tab)
-		{
-			System.Diagnostics.Trace.Write(new string(' ', tab * 4));
-			System.Diagnostics.Trace.WriteLine(string.Format("DocumentPaneGroup({0})", Orientation));
+        /// <inheritdoc />
+        public override void ConsoleDump(int tab)
+        {
+            System.Diagnostics.Trace.Write(new string(' ', tab * 4));
+            System.Diagnostics.Trace.WriteLine(string.Format("DocumentPaneGroup({0})", Orientation));
 
-			foreach (LayoutElement child in Children)
-				child.ConsoleDump(tab + 1);
-		}
+            foreach (LayoutElement child in Children)
+                child.ConsoleDump(tab + 1);
+        }
 #endif
 
         #endregion Overrides

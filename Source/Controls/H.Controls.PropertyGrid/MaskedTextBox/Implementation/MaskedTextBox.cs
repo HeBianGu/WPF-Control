@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections.Generic;
@@ -73,7 +73,7 @@ namespace H.Controls.PropertyGrid
                 }
                 else
                 {
-                    if ((lastCharIsLiteralIdentifier) || (Array.IndexOf(maskChars, currentChar) < 0))
+                    if (lastCharIsLiteralIdentifier || (Array.IndexOf(maskChars, currentChar) < 0))
                     {
                         lastCharIsLiteralIdentifier = false;
 
@@ -799,7 +799,7 @@ namespace H.Controls.PropertyGrid
             if (value == null)
                 value = string.Empty;
 
-            if ((maskedTextBox.IsForcingText) || (maskedTextBox.m_maskIsNull))
+            if (maskedTextBox.IsForcingText || maskedTextBox.m_maskIsNull)
                 return value;
 
             // Only direct affectation to the Text property or binding of the Text property should
@@ -871,7 +871,7 @@ namespace H.Controls.PropertyGrid
         {
             if (!m_maskIsNull)
             {
-                if ((this.IsInValueChanged) || (!this.IsForcingText))
+                if (this.IsInValueChanged || (!this.IsForcingText))
                 {
                     string newText = this.Text;
 
@@ -959,13 +959,13 @@ namespace H.Controls.PropertyGrid
             else if (e.Command == EditingCommands.DeleteNextWord)
             {
                 e.Handled = true;
-                EditingCommands.SelectRightByWord.Execute(null, this as IInputElement);
+                EditingCommands.SelectRightByWord.Execute(null, this);
                 this.Delete(this.SelectionStart, this.SelectionLength, true);
             }
             else if (e.Command == EditingCommands.DeletePreviousWord)
             {
                 e.Handled = true;
-                EditingCommands.SelectLeftByWord.Execute(null, this as IInputElement);
+                EditingCommands.SelectLeftByWord.Execute(null, this);
                 this.Delete(this.SelectionStart, this.SelectionLength, false);
             }
             else if (e.Command == EditingCommands.Backspace)
@@ -977,8 +977,8 @@ namespace H.Controls.PropertyGrid
             {
                 e.Handled = true;
 
-                if (ApplicationCommands.Copy.CanExecute(null, this as IInputElement))
-                    ApplicationCommands.Copy.Execute(null, this as IInputElement);
+                if (ApplicationCommands.Copy.CanExecute(null, this))
+                    ApplicationCommands.Copy.Execute(null, this);
 
                 this.Delete(this.SelectionStart, this.SelectionLength, true);
             }
@@ -1015,7 +1015,7 @@ namespace H.Controls.PropertyGrid
             e.CanExecute = this.CanDelete(this.SelectionStart, this.SelectionLength, true, this.MaskedTextProvider.Clone() as MaskedTextProvider);
             e.Handled = true;
 
-            if ((!e.CanExecute) && (this.BeepOnError))
+            if ((!e.CanExecute) && this.BeepOnError)
                 System.Media.SystemSounds.Beep.Play();
         }
 
@@ -1024,14 +1024,14 @@ namespace H.Controls.PropertyGrid
             if (m_maskIsNull)
                 return;
 
-            bool canDeletePreviousWord = (!this.IsReadOnly) && (EditingCommands.SelectLeftByWord.CanExecute(null, this as IInputElement));
+            bool canDeletePreviousWord = (!this.IsReadOnly) && EditingCommands.SelectLeftByWord.CanExecute(null, this);
 
             if (canDeletePreviousWord)
             {
                 int cachedSelectionStart = this.SelectionStart;
                 int cachedSelectionLength = this.SelectionLength;
 
-                EditingCommands.SelectLeftByWord.Execute(null, this as IInputElement);
+                EditingCommands.SelectLeftByWord.Execute(null, this);
 
                 canDeletePreviousWord = this.CanDelete(this.SelectionStart, this.SelectionLength, false, this.MaskedTextProvider.Clone() as MaskedTextProvider);
 
@@ -1045,7 +1045,7 @@ namespace H.Controls.PropertyGrid
             e.CanExecute = canDeletePreviousWord;
             e.Handled = true;
 
-            if ((!e.CanExecute) && (this.BeepOnError))
+            if ((!e.CanExecute) && this.BeepOnError)
                 System.Media.SystemSounds.Beep.Play();
         }
 
@@ -1054,14 +1054,14 @@ namespace H.Controls.PropertyGrid
             if (m_maskIsNull)
                 return;
 
-            bool canDeleteNextWord = (!this.IsReadOnly) && (EditingCommands.SelectRightByWord.CanExecute(null, this as IInputElement));
+            bool canDeleteNextWord = (!this.IsReadOnly) && EditingCommands.SelectRightByWord.CanExecute(null, this);
 
             if (canDeleteNextWord)
             {
                 int cachedSelectionStart = this.SelectionStart;
                 int cachedSelectionLength = this.SelectionLength;
 
-                EditingCommands.SelectRightByWord.Execute(null, this as IInputElement);
+                EditingCommands.SelectRightByWord.Execute(null, this);
 
                 canDeleteNextWord = this.CanDelete(this.SelectionStart, this.SelectionLength, true, this.MaskedTextProvider.Clone() as MaskedTextProvider);
 
@@ -1075,7 +1075,7 @@ namespace H.Controls.PropertyGrid
             e.CanExecute = canDeleteNextWord;
             e.Handled = true;
 
-            if ((!e.CanExecute) && (this.BeepOnError))
+            if ((!e.CanExecute) && this.BeepOnError)
                 System.Media.SystemSounds.Beep.Play();
         }
 
@@ -1087,7 +1087,7 @@ namespace H.Controls.PropertyGrid
             e.CanExecute = this.CanDelete(this.SelectionStart, this.SelectionLength, false, this.MaskedTextProvider.Clone() as MaskedTextProvider);
             e.Handled = true;
 
-            if ((!e.CanExecute) && (this.BeepOnError))
+            if ((!e.CanExecute) && this.BeepOnError)
                 System.Media.SystemSounds.Beep.Play();
         }
 
@@ -1100,7 +1100,7 @@ namespace H.Controls.PropertyGrid
 
             if (canCut)
             {
-                int endPosition = (this.SelectionLength > 0) ? ((this.SelectionStart + this.SelectionLength) - 1) : this.SelectionStart;
+                int endPosition = (this.SelectionLength > 0) ? (this.SelectionStart + this.SelectionLength - 1) : this.SelectionStart;
 
                 MaskedTextProvider provider = m_maskedTextProvider.Clone() as MaskedTextProvider;
 
@@ -1110,7 +1110,7 @@ namespace H.Controls.PropertyGrid
             e.CanExecute = canCut;
             e.Handled = true;
 
-            if ((!canCut) && (this.BeepOnError))
+            if ((!canCut) && this.BeepOnError)
                 System.Media.SystemSounds.Beep.Play();
         }
 
@@ -1144,7 +1144,7 @@ namespace H.Controls.PropertyGrid
             e.CanExecute = canPaste;
             e.Handled = true;
 
-            if ((!e.CanExecute) && (this.BeepOnError))
+            if ((!e.CanExecute) && this.BeepOnError)
                 System.Media.SystemSounds.Beep.Play();
         }
 
@@ -1156,7 +1156,7 @@ namespace H.Controls.PropertyGrid
             e.CanExecute = !m_maskedTextProvider.IsPassword;
             e.Handled = true;
 
-            if ((!e.CanExecute) && (this.BeepOnError))
+            if ((!e.CanExecute) && this.BeepOnError)
                 System.Media.SystemSounds.Beep.Play();
         }
 
@@ -1331,7 +1331,7 @@ namespace H.Controls.PropertyGrid
             if (this.IsInIMEComposition)
                 this.EndIMEComposition();
 
-            if ((m_maskIsNull) || (m_maskedTextProvider == null) || (this.IsReadOnly))
+            if (m_maskIsNull || (m_maskedTextProvider == null) || this.IsReadOnly)
             {
                 base.OnTextInput(e);
                 return;
@@ -1436,7 +1436,7 @@ namespace H.Controls.PropertyGrid
         internal override bool GetIsEditTextEmpty()
         {
             if (!m_maskIsNull)
-                return (this.MaskedTextProvider.AssignedEditPositionCount == 0);
+                return this.MaskedTextProvider.AssignedEditPositionCount == 0;
             return true;
         }
 
@@ -1672,7 +1672,7 @@ namespace H.Controls.PropertyGrid
 
                 if (length > 0)
                 {
-                    int endPosition = (startPosition + length) - 1;
+                    int endPosition = startPosition + length - 1;
                     return provider.Replace(ch, startPosition, endPosition, out caretPosition, out notUsed);
                 }
 
@@ -1711,7 +1711,7 @@ namespace H.Controls.PropertyGrid
 
         internal virtual bool CanReplace(MaskedTextProvider provider, string text, int startPosition, int selectionLength, bool rejectInputOnFirstFailure, out int tentativeCaretIndex)
         {
-            int endPosition = (startPosition + selectionLength) - 1;
+            int endPosition = startPosition + selectionLength - 1;
             tentativeCaretIndex = -1;
 
 
@@ -1782,7 +1782,7 @@ namespace H.Controls.PropertyGrid
             MaskedTextResultHint notUsed;
             int tentativeCaretPosition = startPosition;
 
-            int endPosition = (selectionLength > 0) ? ((startPosition + selectionLength) - 1) : startPosition;
+            int endPosition = (selectionLength > 0) ? (startPosition + selectionLength - 1) : startPosition;
 
             bool success = provider.RemoveAt(startPosition, endPosition, out tentativeCaretPosition, out notUsed);
 
@@ -1813,7 +1813,7 @@ namespace H.Controls.PropertyGrid
             MaskedTextResultHint hint;
             int tentativeCaretPosition = startPosition;
 
-            int endPosition = (selectionLength > 0) ? ((startPosition + selectionLength) - 1) : startPosition;
+            int endPosition = (selectionLength > 0) ? (startPosition + selectionLength - 1) : startPosition;
 
             string oldTextOutput = this.MaskedTextOutput;
 
@@ -1895,7 +1895,7 @@ namespace H.Controls.PropertyGrid
             //System.Diagnostics.Debug.Assert( provider.EditPositionCount > 0 );
 
 
-            bool includePrompt = (this.IsReadOnly) ? false : (!this.HidePromptOnLeave || this.IsFocused);
+            bool includePrompt = this.IsReadOnly ? false : (!this.HidePromptOnLeave || this.IsFocused);
 
             string displayString = provider.ToString(false, includePrompt, true, 0, m_maskedTextProvider.Length);
 
@@ -1926,7 +1926,7 @@ namespace H.Controls.PropertyGrid
         private bool m_maskIsNull = true;
         private bool m_forcingMask; // = false;
 
-        List<int> m_unhandledLiteralsPositions; // = null;
+        private List<int> m_unhandledLiteralsPositions; // = null;
         private string m_formatSpecifier;
         private MethodInfo m_valueToStringMethodInfo; // = null;
 

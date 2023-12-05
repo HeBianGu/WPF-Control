@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 using System;
@@ -121,7 +121,7 @@ namespace H.Controls.PropertyGrid
             //Backup data if case "Cancel" is clicked.
             if (this.ItemsSource != null)
             {
-                foreach (var item in this.ItemsSource)
+                foreach (object item in this.ItemsSource)
                 {
                     originalData.Add(this.Clone(item));
                 }
@@ -166,11 +166,11 @@ namespace H.Controls.PropertyGrid
                 return null;
 
             object result = null;
-            var sourceType = source.GetType();
+            Type sourceType = source.GetType();
 
             if (source is Array)
             {
-                using (var stream = new MemoryStream())
+                using (MemoryStream stream = new MemoryStream())
                 {
                     //var formatter = new BinaryFormatter();
                     //formatter.Serialize( stream, source );
@@ -196,7 +196,7 @@ namespace H.Controls.PropertyGrid
                 {
                 }
 
-                var constructor = sourceType.GetConstructor(Type.EmptyTypes);
+                System.Reflection.ConstructorInfo constructor = sourceType.GetConstructor(Type.EmptyTypes);
                 if (constructor != null)
                 {
                     constructor.Invoke(result, null);
@@ -209,13 +209,13 @@ namespace H.Controls.PropertyGrid
             Debug.Assert(result != null);
             if (result != null)
             {
-                var properties = sourceType.GetProperties();
+                System.Reflection.PropertyInfo[] properties = sourceType.GetProperties();
 
-                foreach (var propertyInfo in properties)
+                foreach (System.Reflection.PropertyInfo propertyInfo in properties)
                 {
-                    var parameters = propertyInfo.GetIndexParameters();
-                    var index = parameters.GetLength(0) == 0 ? null : new object[] { parameters.GetLength(0) - 1 };
-                    var propertyInfoValue = propertyInfo.GetValue(source, index);
+                    System.Reflection.ParameterInfo[] parameters = propertyInfo.GetIndexParameters();
+                    object[] index = parameters.GetLength(0) == 0 ? null : new object[] { parameters.GetLength(0) - 1 };
+                    object propertyInfoValue = propertyInfo.GetValue(source, index);
 
                     if (propertyInfo.CanWrite)
                     {
@@ -228,10 +228,10 @@ namespace H.Controls.PropertyGrid
                             if (propertyInfo.PropertyType.IsGenericType)
                             {
                                 // Clone sub-objects if the T are non-primitive types objects. 
-                                var arg = propertyInfo.PropertyType.GetGenericArguments().FirstOrDefault();
+                                Type arg = propertyInfo.PropertyType.GetGenericArguments().FirstOrDefault();
                                 if ((arg != null) && !arg.IsPrimitive && !arg.Equals(typeof(String)) && !arg.IsEnum)
                                 {
-                                    var nestedObject = this.Clone(propertyInfoValue);
+                                    object nestedObject = this.Clone(propertyInfoValue);
                                     propertyInfo.SetValue(result, nestedObject, null);
                                 }
                                 else
@@ -242,7 +242,7 @@ namespace H.Controls.PropertyGrid
                             }
                             else
                             {
-                                var nestedObject = this.Clone(propertyInfoValue);
+                                object nestedObject = this.Clone(propertyInfoValue);
                                 if (nestedObject != null)
                                 {
                                     // For T object included in List/Collections, Add it to the List/Collection of T.
@@ -279,12 +279,12 @@ namespace H.Controls.PropertyGrid
 
         private object GenerateEditableKeyValuePair(object source)
         {
-            var sourceType = source.GetType();
+            Type sourceType = source.GetType();
             if ((sourceType.GetGenericArguments() == null) || (sourceType.GetGenericArguments().GetLength(0) != 2))
                 return null;
 
-            var propInfoKey = sourceType.GetProperty("Key");
-            var propInfoValue = sourceType.GetProperty("Value");
+            System.Reflection.PropertyInfo propInfoKey = sourceType.GetProperty("Key");
+            System.Reflection.PropertyInfo propInfoValue = sourceType.GetProperty("Value");
             if ((propInfoKey != null) && (propInfoValue != null))
             {
                 return ListUtilities.CreateEditableKeyValuePair(propInfoKey.GetValue(source, null)
@@ -297,9 +297,9 @@ namespace H.Controls.PropertyGrid
 
         private bool AreDictionaryKeysValid()
         {
-            var keys = _collectionControl.Items.Select(x =>
+            IEnumerable<object> keys = _collectionControl.Items.Select(x =>
             {
-                var keyType = x.GetType().GetProperty("Key");
+                System.Reflection.PropertyInfo keyType = x.GetType().GetProperty("Key");
                 if (keyType != null)
                 {
                     return keyType.GetValue(x, null);

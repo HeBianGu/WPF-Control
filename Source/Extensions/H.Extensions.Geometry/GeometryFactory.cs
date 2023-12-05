@@ -1,12 +1,7 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 
@@ -21,7 +16,7 @@ namespace H.Extensions.Geometry
             return converter.ConvertFromString(data) as System.Windows.Media.Geometry;
         }
 
-        public static PathGeometry Create(Point start,bool isclose,params PathSegment[] segments)
+        public static PathGeometry Create(Point start, bool isclose, params PathSegment[] segments)
         {
             PathGeometry geometry = new PathGeometry();
             geometry.Figures.Add(new PathFigure(start, segments, isclose));
@@ -30,9 +25,9 @@ namespace H.Extensions.Geometry
 
         public static System.Windows.Media.Geometry CreateGroup(Action<GeometryGroup> action = null, params System.Windows.Media.Geometry[] geometries)
         {
-            GeometryGroup group = new GeometryGroup(); 
+            GeometryGroup group = new GeometryGroup();
             action?.Invoke(group);
-            foreach (var item in geometries)
+            foreach (System.Windows.Media.Geometry item in geometries)
             {
                 group.Children.Add(item);
             }
@@ -47,7 +42,7 @@ namespace H.Extensions.Geometry
         public static System.Windows.Media.Geometry CreateGroup(params string[] datas)
         {
             GeometryConverter converter = new GeometryConverter();
-            return CreateGroup(null, datas.Select(x=> converter.ConvertFromString(x) as System.Windows.Media.Geometry).ToArray());
+            return CreateGroup(null, datas.Select(x => converter.ConvertFromString(x) as System.Windows.Media.Geometry).ToArray());
         }
         #endregion
 

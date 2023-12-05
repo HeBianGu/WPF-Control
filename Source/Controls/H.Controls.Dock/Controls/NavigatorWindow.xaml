@@ -1,11 +1,12 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"  xmlns:local="clr-namespace:H.Controls.Dock"
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
                     xmlns:lc="clr-namespace:H.Controls.Dock.Controls"
                     xmlns:lcv="clr-namespace:H.Controls.Dock.Converters"
                     xmlns:ll="clr-namespace:H.Controls.Dock.Layout"
+                    xmlns:local="clr-namespace:H.Controls.Dock"
                     xmlns:lp="clr-namespace:H.Controls.Dock.Properties"
-                    xmlns:h="https://github.com/HeBianGu"
-                    xmlns:shell="clr-namespace:Microsoft.Windows.Shell"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:shell="clr-namespace:Microsoft.Windows.Shell">
     <Style x:Key="{x:Type lc:NavigatorWindow}" TargetType="{x:Type lc:NavigatorWindow}">
         <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Background}}" />
         <Setter Property="SizeToContent" Value="WidthAndHeight" />
@@ -68,7 +69,9 @@
                                             <RowDefinition Height="Auto" />
                                             <RowDefinition />
                                         </Grid.RowDefinitions>
-                                        <TextBlock Margin="0,3,0,4" FontWeight="Bold" Text="{x:Static lp:Resources.Active_ToolWindows}" />
+                                        <TextBlock Margin="0,3,0,4"
+                                                   FontWeight="Bold"
+                                                   Text="{x:Static lp:Resources.Active_ToolWindows}" />
                                         <ListBox x:Name="PART_AnchorableListBox"
                                                  Grid.Row="1"
                                                  MaxHeight="400"
@@ -111,7 +114,9 @@
                                             <RowDefinition Height="Auto" />
                                             <RowDefinition />
                                         </Grid.RowDefinitions>
-                                        <TextBlock Margin="0,3,0,4" FontWeight="Bold" Text="{x:Static lp:Resources.Active_Files}" />
+                                        <TextBlock Margin="0,3,0,4"
+                                                   FontWeight="Bold"
+                                                   Text="{x:Static lp:Resources.Active_Files}" />
                                         <ListBox x:Name="PART_DocumentListBox"
                                                  Grid.Row="1"
                                                  MaxHeight="400"

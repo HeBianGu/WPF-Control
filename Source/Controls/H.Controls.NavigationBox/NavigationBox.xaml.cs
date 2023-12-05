@@ -1,10 +1,5 @@
-﻿using H.Extensions.Common;
-using System;
+﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -40,8 +35,8 @@ namespace H.Controls.NavigationBox
                 if (index < 0) return;
 
                 //this.ScrollIntoView(this.Items[index]);
-                var element = this.Items[index] as UIElement;
-                var find = this.ItemContainerGenerator.ContainerFromIndex(index) as UIElement;
+                UIElement element = this.Items[index] as UIElement;
+                UIElement find = this.ItemContainerGenerator.ContainerFromIndex(index) as UIElement;
                 this.ScrollTo(find);
 
             };
@@ -95,7 +90,7 @@ namespace H.Controls.NavigationBox
             set { SetValue(HitTestPointProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty HitTestPointProperty =
             DependencyProperty.Register("HitTestPoint", typeof(Point), typeof(NavigationBox), new FrameworkPropertyMetadata(new Point(10, 10), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, (d, e) =>
             {
@@ -153,7 +148,7 @@ namespace H.Controls.NavigationBox
             set { SetValue(NavigationDataTemplateProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty NavigationDataTemplateProperty =
             DependencyProperty.Register("NavigationDataTemplate", typeof(DataTemplate), typeof(NavigationBox), new PropertyMetadata(default(DataTemplate), (d, e) =>
             {
@@ -172,7 +167,7 @@ namespace H.Controls.NavigationBox
             set { SetValue(ContainDataTemplateProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty ContainDataTemplateProperty =
             DependencyProperty.Register("ContainDataTemplate", typeof(DataTemplate), typeof(NavigationBox), new PropertyMetadata(default(DataTemplate), (d, e) =>
             {
@@ -191,7 +186,7 @@ namespace H.Controls.NavigationBox
             set { SetValue(NavigationSourceProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty NavigationSourceProperty =
             DependencyProperty.Register("NavigationSource", typeof(IEnumerable), typeof(NavigationBox), new PropertyMetadata(default(IEnumerable), (d, e) =>
             {
@@ -211,7 +206,7 @@ namespace H.Controls.NavigationBox
             set { SetValue(NavigationStyleProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty NavigationStyleProperty =
             DependencyProperty.Register("NavigationStyle", typeof(Style), typeof(NavigationBox), new FrameworkPropertyMetadata(default(Style), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, (d, e) =>
             {

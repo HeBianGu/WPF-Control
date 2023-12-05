@@ -1,11 +1,4 @@
-/************************************************************************
-   H.Controls.Dock
 
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
 
 using H.Controls.Dock.Layout;
 using System.Linq;
@@ -78,11 +71,11 @@ namespace H.Controls.Dock.Controls
             LayoutDocument documentActive = floatingWindow.Descendents().OfType<LayoutDocument>().FirstOrDefault();
 
             // ensure paneGroup
-            var paneGroup = targetModel.Parent as LayoutDocumentPaneGroup;
+            LayoutDocumentPaneGroup paneGroup = targetModel.Parent as LayoutDocumentPaneGroup;
             if (paneGroup == null)
             {
-                var targetModelAsPositionableElement = targetModel as ILayoutPositionableElement;
-                var layoutGroup = targetModel.Parent as ILayoutGroup;
+                ILayoutPositionableElement targetModelAsPositionableElement = targetModel as ILayoutPositionableElement;
+                ILayoutGroup layoutGroup = targetModel.Parent as ILayoutGroup;
                 paneGroup = new LayoutDocumentPaneGroup()
                 {
                     Orientation = System.Windows.Controls.Orientation.Vertical,
@@ -93,7 +86,7 @@ namespace H.Controls.Dock.Controls
                 paneGroup.Children.Add(targetModel);
                 layoutGroup.InsertChildAt(0, paneGroup);
             }
-            var paneGroupOrientaion = paneGroup as ILayoutOrientableGroup;
+            ILayoutOrientableGroup paneGroupOrientaion = paneGroup;
 
 
             switch (Type)
@@ -109,15 +102,15 @@ namespace H.Controls.Dock.Controls
                             paneGroup.Orientation = System.Windows.Controls.Orientation.Vertical;
                         }
 
-                        var insertToIndex = paneGroup.IndexOfChild(targetModel);
+                        int insertToIndex = paneGroup.IndexOfChild(targetModel);
                         if (insertToIndex == (paneGroup.Children.Count - 1))
                         {
                             insertToIndex = paneGroup.Children.Count;
                         }
-                        var documentsToMove = floatingWindow.Children.ToArray();
+                        ILayoutElement[] documentsToMove = floatingWindow.Children.ToArray();
                         for (int i = 0; i < documentsToMove.Length; i++)
                         {
-                            var floatingChild = documentsToMove[i];
+                            ILayoutElement floatingChild = documentsToMove[i];
                             paneGroup.InsertChildAt(insertToIndex + i, floatingChild);
 
                         }
@@ -137,15 +130,15 @@ namespace H.Controls.Dock.Controls
                             paneGroup.Orientation = System.Windows.Controls.Orientation.Vertical;
                         }
 
-                        var insertToIndex = paneGroup.IndexOfChild(targetModel);
+                        int insertToIndex = paneGroup.IndexOfChild(targetModel);
                         if (insertToIndex < 0)
                         {
                             insertToIndex = 0;
                         }
-                        var documentsToMove = floatingWindow.Children.ToArray();
+                        ILayoutElement[] documentsToMove = floatingWindow.Children.ToArray();
                         for (int i = 0; i < documentsToMove.Length; i++)
                         {
-                            var floatingChild = documentsToMove[i];
+                            ILayoutElement floatingChild = documentsToMove[i];
                             paneGroup.InsertChildAt(insertToIndex + i, floatingChild);
 
                         }
@@ -164,15 +157,15 @@ namespace H.Controls.Dock.Controls
                             paneGroup.Orientation = System.Windows.Controls.Orientation.Horizontal;
                         }
 
-                        var insertToIndex = paneGroup.IndexOfChild(targetModel);
+                        int insertToIndex = paneGroup.IndexOfChild(targetModel);
                         if (insertToIndex < 0)
                         {
                             insertToIndex = 0;
                         }
-                        var documentsToMove = floatingWindow.Children.ToArray();
+                        ILayoutElement[] documentsToMove = floatingWindow.Children.ToArray();
                         for (int i = 0; i < documentsToMove.Length; i++)
                         {
-                            var floatingChild = documentsToMove[i];
+                            ILayoutElement floatingChild = documentsToMove[i];
                             paneGroup.InsertChildAt(insertToIndex + i, floatingChild);
 
                         }
@@ -191,15 +184,15 @@ namespace H.Controls.Dock.Controls
                             paneGroup.Orientation = System.Windows.Controls.Orientation.Horizontal;
                         }
 
-                        var insertToIndex = paneGroup.IndexOfChild(targetModel);
+                        int insertToIndex = paneGroup.IndexOfChild(targetModel);
                         if (insertToIndex == (paneGroup.Children.Count - 1))
                         {
                             insertToIndex = paneGroup.Children.Count;
                         }
-                        var documentsToMove = floatingWindow.Children.ToArray();
+                        ILayoutElement[] documentsToMove = floatingWindow.Children.ToArray();
                         for (int i = 0; i < documentsToMove.Length; i++)
                         {
-                            var floatingChild = documentsToMove[i];
+                            ILayoutElement floatingChild = documentsToMove[i];
                             paneGroup.InsertChildAt(insertToIndex + i, floatingChild);
 
                         }
@@ -213,15 +206,15 @@ namespace H.Controls.Dock.Controls
                     #region DropTargetType.DocumentPaneDockInside
 
                     {
-                        var paneModel = targetModel as LayoutDocumentPane;
-                        var layoutDocumentPaneGroup = floatingWindow.RootPanel as LayoutDocumentPaneGroup;
+                        LayoutDocumentPane paneModel = targetModel as LayoutDocumentPane;
+                        LayoutDocumentPaneGroup layoutDocumentPaneGroup = floatingWindow.RootPanel;
 
                         // A LayoutFloatingDocumentWindow can contain multiple instances of both Anchorables or Documents
                         // and we should drop these back into the DocumentPane if they are available
-                        var allowedDropTypes = new[] { typeof(LayoutDocument), typeof(LayoutAnchorable) };
+                        System.Type[] allowedDropTypes = new[] { typeof(LayoutDocument), typeof(LayoutAnchorable) };
 
                         int i = _tabIndex == -1 ? 0 : _tabIndex;
-                        foreach (var anchorableToImport in
+                        foreach (LayoutContent anchorableToImport in
                             layoutDocumentPaneGroup.Descendents().OfType<LayoutContent>()
                                 .Where(item => allowedDropTypes.Any(dropType => dropType.IsInstanceOfType(item))).ToArray())
                         {
@@ -258,20 +251,20 @@ namespace H.Controls.Dock.Controls
                     #region DropTargetType.DocumentPaneDockBottom
 
                     {
-                        var parentModel = targetModel.Parent as LayoutDocumentPaneGroup;
-                        var newLayoutDocumentPane = new LayoutDocumentPane();
+                        LayoutDocumentPaneGroup parentModel = targetModel.Parent as LayoutDocumentPaneGroup;
+                        LayoutDocumentPane newLayoutDocumentPane = new LayoutDocumentPane();
 
                         if (parentModel == null)
                         {
-                            var parentContainer = targetModel.Parent as ILayoutContainer;
-                            var newParentModel = new LayoutDocumentPaneGroup() { Orientation = System.Windows.Controls.Orientation.Vertical };
+                            ILayoutContainer parentContainer = targetModel.Parent;
+                            LayoutDocumentPaneGroup newParentModel = new LayoutDocumentPaneGroup() { Orientation = System.Windows.Controls.Orientation.Vertical };
                             parentContainer.ReplaceChild(targetModel, newParentModel);
                             newParentModel.Children.Add(targetModel as LayoutDocumentPane);
                             newParentModel.Children.Add(newLayoutDocumentPane);
                         }
                         else
                         {
-                            var manager = parentModel.Root.Manager;
+                            DockingManager manager = parentModel.Root.Manager;
                             if (!manager.AllowMixedOrientation || parentModel.Orientation == System.Windows.Controls.Orientation.Vertical)
                             {
                                 parentModel.Orientation = System.Windows.Controls.Orientation.Vertical;
@@ -288,7 +281,7 @@ namespace H.Controls.Dock.Controls
                             }
                         }
 
-                        foreach (var cntToTransfer in floatingWindow.RootPanel.Descendents().OfType<LayoutAnchorable>().ToArray())
+                        foreach (LayoutAnchorable cntToTransfer in floatingWindow.RootPanel.Descendents().OfType<LayoutAnchorable>().ToArray())
                             newLayoutDocumentPane.Children.Add(cntToTransfer);
                     }
                     break;
@@ -300,20 +293,20 @@ namespace H.Controls.Dock.Controls
                     #region DropTargetType.DocumentPaneDockTop
 
                     {
-                        var parentModel = targetModel.Parent as LayoutDocumentPaneGroup;
-                        var newLayoutDocumentPane = new LayoutDocumentPane();
+                        LayoutDocumentPaneGroup parentModel = targetModel.Parent as LayoutDocumentPaneGroup;
+                        LayoutDocumentPane newLayoutDocumentPane = new LayoutDocumentPane();
 
                         if (parentModel == null)
                         {
-                            var parentContainer = targetModel.Parent as ILayoutContainer;
-                            var newParentModel = new LayoutDocumentPaneGroup() { Orientation = System.Windows.Controls.Orientation.Vertical };
+                            ILayoutContainer parentContainer = targetModel.Parent;
+                            LayoutDocumentPaneGroup newParentModel = new LayoutDocumentPaneGroup() { Orientation = System.Windows.Controls.Orientation.Vertical };
                             parentContainer.ReplaceChild(targetModel, newParentModel);
                             newParentModel.Children.Add(newLayoutDocumentPane);
                             newParentModel.Children.Add(targetModel as LayoutDocumentPane);
                         }
                         else
                         {
-                            var manager = parentModel.Root.Manager;
+                            DockingManager manager = parentModel.Root.Manager;
                             if (!manager.AllowMixedOrientation || parentModel.Orientation == System.Windows.Controls.Orientation.Vertical)
                             {
                                 parentModel.Orientation = System.Windows.Controls.Orientation.Vertical;
@@ -330,7 +323,7 @@ namespace H.Controls.Dock.Controls
                             }
                         }
 
-                        foreach (var cntToTransfer in floatingWindow.RootPanel.Descendents().OfType<LayoutAnchorable>().ToArray())
+                        foreach (LayoutAnchorable cntToTransfer in floatingWindow.RootPanel.Descendents().OfType<LayoutAnchorable>().ToArray())
                             newLayoutDocumentPane.Children.Add(cntToTransfer);
                     }
                     break;
@@ -342,20 +335,20 @@ namespace H.Controls.Dock.Controls
                     #region DropTargetType.DocumentPaneDockLeft
 
                     {
-                        var parentModel = targetModel.Parent as LayoutDocumentPaneGroup;
-                        var newLayoutDocumentPane = new LayoutDocumentPane();
+                        LayoutDocumentPaneGroup parentModel = targetModel.Parent as LayoutDocumentPaneGroup;
+                        LayoutDocumentPane newLayoutDocumentPane = new LayoutDocumentPane();
 
                         if (parentModel == null)
                         {
-                            var parentContainer = targetModel.Parent as ILayoutContainer;
-                            var newParentModel = new LayoutDocumentPaneGroup() { Orientation = System.Windows.Controls.Orientation.Horizontal };
+                            ILayoutContainer parentContainer = targetModel.Parent;
+                            LayoutDocumentPaneGroup newParentModel = new LayoutDocumentPaneGroup() { Orientation = System.Windows.Controls.Orientation.Horizontal };
                             parentContainer.ReplaceChild(targetModel, newParentModel);
                             newParentModel.Children.Add(newLayoutDocumentPane);
                             newParentModel.Children.Add(targetModel as LayoutDocumentPane);
                         }
                         else
                         {
-                            var manager = parentModel.Root.Manager;
+                            DockingManager manager = parentModel.Root.Manager;
                             if (!manager.AllowMixedOrientation || parentModel.Orientation == System.Windows.Controls.Orientation.Horizontal)
                             {
                                 parentModel.Orientation = System.Windows.Controls.Orientation.Horizontal;
@@ -372,7 +365,7 @@ namespace H.Controls.Dock.Controls
                             }
                         }
 
-                        foreach (var cntToTransfer in floatingWindow.RootPanel.Descendents().OfType<LayoutAnchorable>().ToArray())
+                        foreach (LayoutAnchorable cntToTransfer in floatingWindow.RootPanel.Descendents().OfType<LayoutAnchorable>().ToArray())
                             newLayoutDocumentPane.Children.Add(cntToTransfer);
                     }
                     break;
@@ -384,20 +377,20 @@ namespace H.Controls.Dock.Controls
                     #region DropTargetType.DocumentPaneDockRight
 
                     {
-                        var parentModel = targetModel.Parent as LayoutDocumentPaneGroup;
-                        var newLayoutDocumentPane = new LayoutDocumentPane();
+                        LayoutDocumentPaneGroup parentModel = targetModel.Parent as LayoutDocumentPaneGroup;
+                        LayoutDocumentPane newLayoutDocumentPane = new LayoutDocumentPane();
 
                         if (parentModel == null)
                         {
-                            var parentContainer = targetModel.Parent as ILayoutContainer;
-                            var newParentModel = new LayoutDocumentPaneGroup() { Orientation = System.Windows.Controls.Orientation.Horizontal };
+                            ILayoutContainer parentContainer = targetModel.Parent;
+                            LayoutDocumentPaneGroup newParentModel = new LayoutDocumentPaneGroup() { Orientation = System.Windows.Controls.Orientation.Horizontal };
                             parentContainer.ReplaceChild(targetModel, newParentModel);
                             newParentModel.Children.Add(targetModel as LayoutDocumentPane);
                             newParentModel.Children.Add(newLayoutDocumentPane);
                         }
                         else
                         {
-                            var manager = parentModel.Root.Manager;
+                            DockingManager manager = parentModel.Root.Manager;
                             if (!manager.AllowMixedOrientation || parentModel.Orientation == System.Windows.Controls.Orientation.Horizontal)
                             {
                                 parentModel.Orientation = System.Windows.Controls.Orientation.Horizontal;
@@ -414,7 +407,7 @@ namespace H.Controls.Dock.Controls
                             }
                         }
 
-                        foreach (var cntToTransfer in floatingWindow.RootPanel.Descendents().OfType<LayoutAnchorable>().ToArray())
+                        foreach (LayoutAnchorable cntToTransfer in floatingWindow.RootPanel.Descendents().OfType<LayoutAnchorable>().ToArray())
                             newLayoutDocumentPane.Children.Add(cntToTransfer);
                     }
                     break;
@@ -426,8 +419,8 @@ namespace H.Controls.Dock.Controls
                     #region DropTargetType.DocumentPaneDockInside
 
                     {
-                        var paneModel = targetModel as LayoutDocumentPane;
-                        var layoutAnchorablePaneGroup = floatingWindow.RootPanel as LayoutAnchorablePaneGroup;
+                        LayoutDocumentPane paneModel = targetModel as LayoutDocumentPane;
+                        LayoutAnchorablePaneGroup layoutAnchorablePaneGroup = floatingWindow.RootPanel;
 
                         bool checkPreviousContainer = true;
                         int i = 0;
@@ -438,11 +431,11 @@ namespace H.Controls.Dock.Controls
                         }
                         LayoutAnchorable anchorableToActivate = null;
 
-                        foreach (var anchorableToImport in layoutAnchorablePaneGroup.Descendents().OfType<LayoutAnchorable>().ToArray())
+                        foreach (LayoutAnchorable anchorableToImport in layoutAnchorablePaneGroup.Descendents().OfType<LayoutAnchorable>().ToArray())
                         {
                             if (checkPreviousContainer)
                             {
-                                var previousContainer = ((ILayoutPreviousContainer)anchorableToImport).PreviousContainer;
+                                ILayoutContainer previousContainer = ((ILayoutPreviousContainer)anchorableToImport).PreviousContainer;
                                 if (object.ReferenceEquals(previousContainer, targetModel) && (anchorableToImport.PreviousContainerIndex != -1))
                                 {
                                     i = anchorableToImport.PreviousContainerIndex;
@@ -483,7 +476,7 @@ namespace H.Controls.Dock.Controls
             {
                 case DropTargetType.DocumentPaneDockInside:
                     {
-                        var targetScreenRect = TargetElement.GetScreenArea();
+                        Rect targetScreenRect = TargetElement.GetScreenArea();
                         targetScreenRect.Offset(-overlayWindow.Left, -overlayWindow.Top);
 
                         if (_tabIndex == -1)
@@ -492,10 +485,10 @@ namespace H.Controls.Dock.Controls
                         }
                         else
                         {
-                            var translatedDetectionRect = new Rect(DetectionRects[0].TopLeft, DetectionRects[0].BottomRight);
+                            Rect translatedDetectionRect = new Rect(DetectionRects[0].TopLeft, DetectionRects[0].BottomRight);
                             translatedDetectionRect.Offset(-overlayWindow.Left, -overlayWindow.Top);
 
-                            var pathFigure = new PathFigure();
+                            PathFigure pathFigure = new PathFigure();
                             pathFigure.StartPoint = targetScreenRect.BottomRight;
                             pathFigure.Segments.Add(new LineSegment() { Point = new Point(targetScreenRect.Right, translatedDetectionRect.Bottom) });
                             pathFigure.Segments.Add(new LineSegment() { Point = translatedDetectionRect.BottomRight });
@@ -513,7 +506,7 @@ namespace H.Controls.Dock.Controls
 
                 case DropTargetType.DocumentPaneDockBottom:
                     {
-                        var targetScreenRect = TargetElement.GetScreenArea();
+                        Rect targetScreenRect = TargetElement.GetScreenArea();
                         targetScreenRect.Offset(-overlayWindow.Left, -overlayWindow.Top);
                         targetScreenRect.Offset(0.0, targetScreenRect.Height / 2.0);
                         targetScreenRect.Height /= 2.0;
@@ -522,7 +515,7 @@ namespace H.Controls.Dock.Controls
 
                 case DropTargetType.DocumentPaneDockTop:
                     {
-                        var targetScreenRect = TargetElement.GetScreenArea();
+                        Rect targetScreenRect = TargetElement.GetScreenArea();
                         targetScreenRect.Offset(-overlayWindow.Left, -overlayWindow.Top);
                         targetScreenRect.Height /= 2.0;
                         return new RectangleGeometry(targetScreenRect);
@@ -530,7 +523,7 @@ namespace H.Controls.Dock.Controls
 
                 case DropTargetType.DocumentPaneDockLeft:
                     {
-                        var targetScreenRect = TargetElement.GetScreenArea();
+                        Rect targetScreenRect = TargetElement.GetScreenArea();
                         targetScreenRect.Offset(-overlayWindow.Left, -overlayWindow.Top);
                         targetScreenRect.Width /= 2.0;
                         return new RectangleGeometry(targetScreenRect);
@@ -538,7 +531,7 @@ namespace H.Controls.Dock.Controls
 
                 case DropTargetType.DocumentPaneDockRight:
                     {
-                        var targetScreenRect = TargetElement.GetScreenArea();
+                        Rect targetScreenRect = TargetElement.GetScreenArea();
                         targetScreenRect.Offset(-overlayWindow.Left, -overlayWindow.Top);
                         targetScreenRect.Offset(targetScreenRect.Width / 2.0, 0.0);
                         targetScreenRect.Width /= 2.0;

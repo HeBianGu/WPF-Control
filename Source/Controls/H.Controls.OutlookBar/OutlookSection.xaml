@@ -11,22 +11,6 @@
         <Setter Property="Focusable" Value="False" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
         <Setter Property="Height" Value="Auto" />
-        <!--<Setter Property="h:Cattach.MouseOverBackground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type odc:OutlookBar}}, Path=(h:Cattach.MouseOverBackground)}" />
-        <Setter Property="h:Cattach.MouseOverForeground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type odc:OutlookBar}}, Path=(h:Cattach.MouseOverForeground)}" />
-        <Setter Property="h:Cattach.MouseOverBorderBrush" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type odc:OutlookBar}}, Path=(h:Cattach.MouseOverBorderBrush)}" />
-        <Setter Property="h:Cattach.SelectBackground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type odc:OutlookBar}}, Path=(h:Cattach.SelectBackground)}" />
-        <Setter Property="h:Cattach.SelectForeground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type odc:OutlookBar}}, Path=(h:Cattach.SelectForeground)}" />
-        <Setter Property="h:Cattach.SelectBorderBrush" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type odc:OutlookBar}}, Path=(h:Cattach.SelectBorderBrush)}" />-->
-        
-        <!--<Setter Property="h:Cattach.MouseOverBackground" Value="{DynamicResource {x:Static h:BrushKeys.MouseOver}}" />
-        <Setter Property="h:Cattach.MouseOverForeground" Value="{DynamicResource {x:Static h:BrushKeys.ForegroundTitle}}" />
-        <Setter Property="h:Cattach.MouseOverBorderBrush" Value="Transparent" />
-
-        <Setter Property="h:Cattach.SelectBackground" Value="{DynamicResource {x:Static h:BrushKeys.Selected}}" />
-        <Setter Property="h:Cattach.SelectForeground" Value="{DynamicResource {x:Static h:BrushKeys.ForegroundTitle}}" />
-        <Setter Property="h:Cattach.SelectBorderBrush" Value="Transparent" />-->
-
-        <!--<Setter Property="h:Cattach.IsSelected" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=IsSelected}" />-->
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
         <Setter Property="BorderThickness" Value="0,1,0,0" />
         <Setter Property="Template">

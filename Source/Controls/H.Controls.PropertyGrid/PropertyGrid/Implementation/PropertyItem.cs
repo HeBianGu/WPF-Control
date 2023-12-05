@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections.ObjectModel;
@@ -160,7 +160,7 @@ namespace H.Controls.PropertyGrid
             {
                 this.ContainerHelper.ClearHelper();
             }
-            var helper = this.DescriptorDefinition.CreateContainerHelper(this);
+            ObjectContainerHelperBase helper = this.DescriptorDefinition.CreateContainerHelper(this);
             this.ContainerHelper = helper;
             if (this.IsExpanded)
             {
@@ -192,7 +192,7 @@ namespace H.Controls.PropertyGrid
             this.ValueContainer.FontWeight = ((this.DescriptorDefinition != null)
                                                && (this.DescriptorDefinition.DefaultValue != null)
                                                && (this.Value != null)
-                                               && (this.Value.Equals(this.DescriptorDefinition.DefaultValue))
+                                               && this.Value.Equals(this.DescriptorDefinition.DefaultValue)
                                                && !(this.Editor is ComboBox))
                                              ? FontWeights.Bold
                                              : FontWeights.Normal;
@@ -204,7 +204,7 @@ namespace H.Controls.PropertyGrid
             {
                 // This withholds the generation of all PropertyItem instances (recursively)
                 // until the PropertyItem is expanded.
-                var objectContainerHelper = ContainerHelper as ObjectContainerHelperBase;
+                ObjectContainerHelperBase objectContainerHelper = ContainerHelper as ObjectContainerHelperBase;
                 if (objectContainerHelper != null)
                 {
                     objectContainerHelper.GenerateProperties();

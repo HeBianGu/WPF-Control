@@ -44,7 +44,7 @@ namespace H.Controls.ZoomBox
 
         private static readonly DependencyPropertyKey ContentBoundsPropertyKey =
           DependencyProperty.RegisterReadOnly("ContentBounds", typeof(Rect), typeof(ZoomboxViewFinderDisplay),
-            new FrameworkPropertyMetadata((Rect)Rect.Empty, FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsRender));
+            new FrameworkPropertyMetadata(Rect.Empty, FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsRender));
 
         public static readonly DependencyProperty ContentBoundsProperty = ZoomboxViewFinderDisplay.ContentBoundsPropertyKey.DependencyProperty;
 

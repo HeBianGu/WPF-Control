@@ -1,11 +1,11 @@
-﻿/************************************************************************
-   H.Controls.Dock
+﻿
 
-   Copyright (C) 2007-2013 Xceed Software Inc.
 
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
+
+
+
+
+
 
 using H.Controls.Dock.Commands;
 using H.Controls.Dock.Layout;
@@ -17,15 +17,6 @@ using System.Windows.Input;
 
 namespace H.Controls.Dock.Controls
 {
-    /// <inheritdoc />
-    /// <summary>
-    /// This is a wrapper for around the custom anchorable content view of <see cref="LayoutElement"/>.
-    /// Implements the <see cref="H.Controls.Dock.Controls.LayoutItem" />
-    ///
-    /// All DPs implemented here can be bound in a corresponding style to control parameters
-    /// in dependency properties via binding in MVVM.
-    /// </summary>
-    /// <seealso cref="H.Controls.Dock.Controls.LayoutItem" />
     public class LayoutAnchorableItem : LayoutItem
     {
         #region fields
@@ -158,7 +149,7 @@ namespace H.Controls.Dock.Controls
         #region CanHide
 
         /// <summary><see cref="CanHide"/> dependency property.</summary>
-        public static readonly DependencyProperty CanHideProperty = DependencyProperty.Register(nameof(CanHide), typeof(bool), typeof(LayoutAnchorableItem), new FrameworkPropertyMetadata((bool)true,
+        public static readonly DependencyProperty CanHideProperty = DependencyProperty.Register(nameof(CanHide), typeof(bool), typeof(LayoutAnchorableItem), new FrameworkPropertyMetadata(true,
                     OnCanHideChanged));
 
         /// <summary>Gets/sets wether the user can hide the anchorable item.</summary>
@@ -183,7 +174,7 @@ namespace H.Controls.Dock.Controls
         #region CanMove
 
         /// <summary><see cref="CanMove"/> dependency property.</summary>
-        public static readonly DependencyProperty CanMoveProperty = DependencyProperty.Register(nameof(CanMove), typeof(bool), typeof(LayoutAnchorableItem), new FrameworkPropertyMetadata((bool)true,
+        public static readonly DependencyProperty CanMoveProperty = DependencyProperty.Register(nameof(CanMove), typeof(bool), typeof(LayoutAnchorableItem), new FrameworkPropertyMetadata(true,
                     OnCanMoveChanged));
 
         /// <summary>Gets/sets wether the user can hide the anchorable item.</summary>
@@ -226,7 +217,7 @@ namespace H.Controls.Dock.Controls
         /// <inheritdoc />
         protected override bool CanExecuteDockAsDocumentCommand()
         {
-            var canExecute = base.CanExecuteDockAsDocumentCommand();
+            bool canExecute = base.CanExecuteDockAsDocumentCommand();
             if (canExecute && _anchorable != null) return _anchorable.CanDockAsTabbedDocument;
             return canExecute;
         }
@@ -235,7 +226,7 @@ namespace H.Controls.Dock.Controls
         protected override void Close()
         {
             if (_anchorable.Root?.Manager == null) return;
-            var dockingManager = _anchorable.Root.Manager;
+            DockingManager dockingManager = _anchorable.Root.Manager;
             dockingManager.ExecuteCloseCommand(_anchorable);
         }
 

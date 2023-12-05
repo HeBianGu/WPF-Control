@@ -5,9 +5,6 @@ using System.Reflection;
 
 namespace H.Controls.Dock.Commands
 {
-    /// <summary>
-    /// Class WeakAction.
-    /// </summary>
     internal class WeakAction
     {
         #region Private Fields
@@ -229,7 +226,7 @@ namespace H.Controls.Dock.Commands
                 return;
             }
 
-            var actionTarget = ActionTarget;
+            object actionTarget = ActionTarget;
 
             if (IsAlive)
             {
@@ -237,7 +234,7 @@ namespace H.Controls.Dock.Commands
                     && ActionReference != null
                     && actionTarget != null)
                 {
-                    var paras = Method.GetParameters().Count();
+                    int paras = Method.GetParameters().Count();
                     try
                     {
                         if (paras > 0)

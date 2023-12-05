@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections.Generic;
@@ -144,7 +144,7 @@ namespace H.Controls.PropertyGrid
             bool isResource = false;
             bool isDynamicResource = false;
 
-            var markupProperty = markupObject.Properties.FirstOrDefault(p => p.Name == PropertyName);
+            MarkupProperty markupProperty = markupObject.Properties.FirstOrDefault(p => p.Name == PropertyName);
             if (markupProperty != null)
             {
                 //TODO: need to find a better way to determine if a StaticResource has been applied to any property not just a style(maybe with StaticResourceExtension)
@@ -202,13 +202,13 @@ namespace H.Controls.PropertyGrid
         internal void UpdateIsExpandable()
         {
             this.IsExpandable = this.ComputeIsExpandable()
-                                && (this.ExpandableAttribute
-                                   );
+                                && this.ExpandableAttribute
+                                   ;
         }
 
         internal void UpdateValueFromSource()
         {
-            var bindingExpr = BindingOperations.GetBindingExpressionBase(this, DescriptorPropertyDefinitionBase.ValueProperty);
+            BindingExpressionBase bindingExpr = BindingOperations.GetBindingExpressionBase(this, DescriptorPropertyDefinitionBase.ValueProperty);
             if (bindingExpr != null)
             {
                 bindingExpr.UpdateTarget();
@@ -227,14 +227,14 @@ namespace H.Controls.PropertyGrid
             //since this value is cached by PropertyDescriptor and the localized version 
             //(e.g., LocalizedDescriptionAttribute) value can dynamicaly change.
 #if !VS2008
-            var displayAttribute = PropertyGridUtilities.GetAttribute<DisplayAttribute>(pd);
+            DisplayAttribute displayAttribute = PropertyGridUtilities.GetAttribute<DisplayAttribute>(pd);
             if (displayAttribute != null)
             {
                 return displayAttribute.GetDescription();
             }
 #endif
 
-            var descriptionAtt = PropertyGridUtilities.GetAttribute<DescriptionAttribute>(pd);
+            DescriptionAttribute descriptionAtt = PropertyGridUtilities.GetAttribute<DescriptionAttribute>(pd);
             return (descriptionAtt != null)
                     ? descriptionAtt.Description
                     : pd.Description;
@@ -243,7 +243,7 @@ namespace H.Controls.PropertyGrid
         internal object ComputeNewItemTypesForItem(object item)
         {
             PropertyDescriptor pd = item as PropertyDescriptor;
-            var attribute = PropertyGridUtilities.GetAttribute<NewItemTypesAttribute>(pd);
+            NewItemTypesAttribute attribute = PropertyGridUtilities.GetAttribute<NewItemTypesAttribute>(pd);
 
             return (attribute != null)
                     ? attribute.Types
@@ -258,10 +258,10 @@ namespace H.Controls.PropertyGrid
         {
             PropertyDescriptor pd = item as PropertyDescriptor;
 #if !VS2008
-            var displayAttribute = PropertyGridUtilities.GetAttribute<DisplayAttribute>(PropertyDescriptor);
+            DisplayAttribute displayAttribute = PropertyGridUtilities.GetAttribute<DisplayAttribute>(PropertyDescriptor);
             if (displayAttribute != null)
             {
-                var order = displayAttribute.GetOrder();
+                int? order = displayAttribute.GetOrder();
                 if (order.HasValue)
                     return displayAttribute.GetOrder();
             }
@@ -275,15 +275,15 @@ namespace H.Controls.PropertyGrid
 
                 if (this.IsPropertyGridCategorized)
                 {
-                    var attribute = list.FirstOrDefault(x => ((x.UsageContext == UsageContextEnum.Categorized)
-                                                              || (x.UsageContext == UsageContextEnum.Both)));
+                    PropertyOrderAttribute attribute = list.FirstOrDefault(x => (x.UsageContext == UsageContextEnum.Categorized)
+                                                              || (x.UsageContext == UsageContextEnum.Both));
                     if (attribute != null)
                         return attribute.Order;
                 }
                 else
                 {
-                    var attribute = list.FirstOrDefault(x => ((x.UsageContext == UsageContextEnum.Alphabetical)
-                                                              || (x.UsageContext == UsageContextEnum.Both)));
+                    PropertyOrderAttribute attribute = list.FirstOrDefault(x => (x.UsageContext == UsageContextEnum.Alphabetical)
+                                                              || (x.UsageContext == UsageContextEnum.Both));
                     if (attribute != null)
                         return attribute.Order;
                 }
@@ -295,10 +295,10 @@ namespace H.Controls.PropertyGrid
 
         internal object ComputeExpandableAttributeForItem(object item)
         {
-            var pd = (PropertyDescriptor)item;
+            PropertyDescriptor pd = (PropertyDescriptor)item;
 
-            var attribute = PropertyGridUtilities.GetAttribute<ExpandableObjectAttribute>(pd);
-            return (attribute != null);
+            ExpandableObjectAttribute attribute = PropertyGridUtilities.GetAttribute<ExpandableObjectAttribute>(pd);
+            return attribute != null;
         }
 
         internal int ComputeDisplayOrderInternal(bool isPropertyGridCategorized)
@@ -317,9 +317,9 @@ namespace H.Controls.PropertyGrid
 
         internal object ComputeDefaultValueAttributeForItem(object item)
         {
-            var pd = (PropertyDescriptor)item;
+            PropertyDescriptor pd = (PropertyDescriptor)item;
 
-            var defaultValue = PropertyGridUtilities.GetAttribute<DefaultValueAttribute>(pd);
+            DefaultValueAttribute defaultValue = PropertyGridUtilities.GetAttribute<DefaultValueAttribute>(pd);
             return (defaultValue != null) ? defaultValue.Value : null;
         }
 
@@ -343,11 +343,11 @@ namespace H.Controls.PropertyGrid
 #if VS2008
         var displayName = PropertyDescriptor.DisplayName;
 #else
-            var displayAttribute = PropertyGridUtilities.GetAttribute<DisplayAttribute>(PropertyDescriptor);
-            var displayName = (displayAttribute != null) ? displayAttribute.GetName() : PropertyDescriptor.DisplayName;
+            DisplayAttribute displayAttribute = PropertyGridUtilities.GetAttribute<DisplayAttribute>(PropertyDescriptor);
+            string displayName = (displayAttribute != null) ? displayAttribute.GetName() : PropertyDescriptor.DisplayName;
 #endif
 
-            var attribute = PropertyGridUtilities.GetAttribute<ParenthesizePropertyNameAttribute>(PropertyDescriptor);
+            ParenthesizePropertyNameAttribute attribute = PropertyGridUtilities.GetAttribute<ParenthesizePropertyNameAttribute>(PropertyDescriptor);
             if ((attribute != null) && attribute.NeedParenthesis)
             {
                 displayName = "(" + displayName + ")";
@@ -402,7 +402,7 @@ namespace H.Controls.PropertyGrid
         {
             get
             {
-                return (object)GetValue(AdvancedOptionsTooltipProperty);
+                return GetValue(AdvancedOptionsTooltipProperty);
             }
             set
             {

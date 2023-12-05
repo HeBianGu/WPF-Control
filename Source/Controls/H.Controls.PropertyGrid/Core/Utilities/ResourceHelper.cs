@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.IO;
 using System.Reflection;
@@ -16,7 +16,7 @@ namespace H.Controls.PropertyGrid
             // resource names are lower case and contain only forward slashes
             resId = resId.ToLower();
             resId = resId.Replace('\\', '/');
-            return (resourceManager.GetObject(resId) as Stream);
+            return resourceManager.GetObject(resId) as Stream;
         }
     }
 }

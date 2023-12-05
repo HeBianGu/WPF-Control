@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 
@@ -10,7 +10,7 @@ namespace H.Controls.PropertyGrid
 
         static UShortUpDown()
         {
-            UpdateMetadata(typeof(UShortUpDown), (ushort)1, ushort.MinValue, ushort.MaxValue);
+            UpdateMetadata(typeof(UShortUpDown), 1, ushort.MinValue, ushort.MaxValue);
         }
 
         public UShortUpDown()

@@ -242,9 +242,15 @@
                     <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsVisible}" />
                     <Image Margin="5" Source="{Binding SmallImage}" />
                     <Image Margin="5,0" Source="{Binding LargeImage}" />
-                    <Button Command="{x:Static local:Commander.MoveNext}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}" Content="下移" />
-                    <Button Command="{x:Static local:Commander.MovePrevious}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}" Content="上移" />
-                    <Button Command="{x:Static local:Commander.ChangedImage}" CommandParameter="{Binding}" Content="设置图片" />
+                    <Button Command="{x:Static local:Commander.MoveNext}"
+                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
+                            Content="下移" />
+                    <Button Command="{x:Static local:Commander.MovePrevious}"
+                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
+                            Content="上移" />
+                    <Button Command="{x:Static local:Commander.ChangedImage}"
+                            CommandParameter="{Binding}"
+                            Content="设置图片" />
 
                     <CheckBox Margin="5,0"
                               VerticalAlignment="Center"
@@ -256,7 +262,9 @@
                         <RibbonImageSize>Large</RibbonImageSize>
                     </ComboBox>
 
-                    <TextBox Width="150" VerticalAlignment="Stretch" Text="{Binding Label, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox Width="150"
+                             VerticalAlignment="Stretch"
+                             Text="{Binding Label, UpdateSourceTrigger=PropertyChanged}" />
 
                 </DockPanel>
             </DataTemplate>

@@ -1,7 +1,6 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Style x:Key="{x:Type RibbonSeparator}" TargetType="{x:Type RibbonSeparator}">
-        <Setter Property="Label" Value="RibbonSeparetor"/>
+        <Setter Property="Label" Value="RibbonSeparetor" />
         <Setter Property="Focusable" Value="false" />
         <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Self}, Path=Ribbon.BorderBrush}" />
         <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Self}, Path=Ribbon.BorderBrush}" />

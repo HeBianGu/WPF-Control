@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.Windows;
 using System.Windows.Media;
@@ -27,7 +27,7 @@ namespace H.Controls.Chart2D
             set { SetValue(RectProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty RectProperty =
             DependencyProperty.Register("Rect", typeof(Rect), typeof(EllipseMarker), new PropertyMetadata(default(Rect), (d, e) =>
             {

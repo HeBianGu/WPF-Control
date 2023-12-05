@@ -1,10 +1,8 @@
 ﻿using H.Controls.Adorner;
 using H.Providers.Ioc;
-using H.Providers.Ioc;
 using H.Providers.Mvvm;
 using System;
 using System.Linq;
-using System.Reflection.Metadata;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,36 +21,14 @@ namespace H.Modules.Messages.Dialog
         }
         public string Title { get; set; } = "提示";
         public object Presenter { get; set; }
-        private bool _useCancel = false;
-        public bool UseCancel
-        {
-            get { return _useCancel; }
-            set
-            {
-                _useCancel = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        private bool _useSumit = true;
-        public bool UseSumit
-        {
-            get { return _useSumit; }
-            set
-            {
-                _useSumit = value;
-                RaisePropertyChanged();
-            }
-        }
 
         private static ManualResetEvent _waitHandle = new ManualResetEvent(false);
-
         public async Task<bool?> ShowDialog(Window owner = null)
         {
-            var window = owner ?? Application.Current.MainWindow;
-            var child = window.Content as UIElement;
-            var layer = AdornerLayer.GetAdornerLayer(child);
-            var adorner = new PresenterAdorner(child, this);
+            Window window = owner ?? Application.Current.MainWindow;
+            UIElement child = window.Content as UIElement;
+            AdornerLayer layer = AdornerLayer.GetAdornerLayer(child);
+            PresenterAdorner adorner = new PresenterAdorner(child, this);
             layer.Add(adorner);
             _waitHandle.Reset();
             return await Task.Run(() =>
@@ -61,44 +37,6 @@ namespace H.Modules.Messages.Dialog
                 return this.DialogResult;
             });
         }
-
-        public void RefreshButton(DialogButton dialogButton)
-        {
-            switch (dialogButton)
-            {
-                case DialogButton.Sumit:
-                    {
-                        this.UseSumit = true;
-                        this.UseCancel = false;
-                        return;
-                    }
-                case DialogButton.None:
-                    {
-                        this.UseSumit = false;
-                        this.UseCancel = false;
-                        return;
-                    }
-                case DialogButton.Cancel:
-                    {
-                        this.UseSumit = false;
-                        this.UseCancel = true;
-                        return;
-                    }
-                case DialogButton.SumitAndCancel:
-                    {
-                        this.UseSumit = true;
-                        this.UseCancel = true;
-                        return;
-                    }
-                default:
-                    {
-                        this.UseSumit = true;
-                        this.UseCancel = false;
-                        return;
-                    }
-            }
-        }
-
         #region - IDialogWindow -
         public bool? DialogResult { get; set; }
         public void Sumit()
@@ -117,12 +55,12 @@ namespace H.Modules.Messages.Dialog
         {
             Application.Current.Dispatcher.Invoke(() =>
             {
-                var child = Application.Current.MainWindow.Content as UIElement;
-                var layer = AdornerLayer.GetAdornerLayer(child);
-                var adorners = layer.GetAdorners(child)?.OfType<PresenterAdorner>().Where(x => x.Presenter == this);
+                UIElement child = Application.Current.MainWindow.Content as UIElement;
+                AdornerLayer layer = AdornerLayer.GetAdornerLayer(child);
+                System.Collections.Generic.IEnumerable<PresenterAdorner> adorners = layer.GetAdorners(child)?.OfType<PresenterAdorner>().Where(x => x.Presenter == this);
                 if (adorners == null)
                     return;
-                foreach (var adorner in adorners)
+                foreach (PresenterAdorner adorner in adorners)
                 {
                     layer.Remove(adorner);
                 }
@@ -132,6 +70,8 @@ namespace H.Modules.Messages.Dialog
 
         public Func<bool> CanSumit { get; set; }
         public bool IsCancel => this.DialogResult == false;
+        public DialogButton DialogButton { get; set; } = DialogButton.Sumit;
+        public Window Owner { get; set; }
         #endregion
     }
 }

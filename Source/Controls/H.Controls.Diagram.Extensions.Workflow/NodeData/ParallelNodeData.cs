@@ -1,7 +1,4 @@
-﻿
-using System.Windows.Media;
-
-namespace H.Controls.Diagram.Extensions.Workflow
+﻿namespace H.Controls.Diagram.Extensions.Workflow
 {
     //[NodeType(Type = DiagramType.Workflow, Name = "并行模式", GroupName = "基本流程图形状", Order = 0, Description = "并行模式")]
     //public class ParallelNodeData : WorkflowNodeBase

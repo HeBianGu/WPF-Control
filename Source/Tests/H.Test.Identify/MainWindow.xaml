@@ -12,17 +12,17 @@
               WindowStartupLocation="CenterScreen"
               mc:Ignorable="d">
     <Window.DataContext>
-        <local:MainViewModel/>
+        <local:MainViewModel />
     </Window.DataContext>
     <h:MainWindow.CaptionTempate>
         <ControlTemplate>
-            <DockPanel LastChildFill="False" HorizontalAlignment="Right">
+            <DockPanel HorizontalAlignment="Right" LastChildFill="False">
                 <ContentPresenter Content="{Ioc Type={x:Type ISettingButtonPresenter}}" />
             </DockPanel>
         </ControlTemplate>
     </h:MainWindow.CaptionTempate>
     <Grid>
-        <TabControl BorderThickness="1" BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}">
+        <TabControl BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" BorderThickness="1">
             <TabItem Header="用户管理">
                 <ContentPresenter Content="{Ioc Type={x:Type h:IUserViewPresenter}}" />
             </TabItem>
@@ -36,7 +36,9 @@
                 <ContentPresenter Content="{Ioc Type={x:Type h:IOperationViewPresenter}}" />
             </TabItem>
             <TabItem Header="操作日志图表">
-                <TabControl BorderThickness="1" TabStripPlacement="Bottom" BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}">
+                <TabControl BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
+                            BorderThickness="1"
+                            TabStripPlacement="Bottom">
                     <TabItem Header="用户登录次数">
                         <ContentPresenter Margin="100" Content="{Binding Bar}" />
                     </TabItem>

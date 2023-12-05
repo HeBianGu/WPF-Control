@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections.Generic;
@@ -27,7 +27,7 @@ namespace H.Controls.Chart2D
             set { SetValue(ThinningTypeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty ThinningTypeProperty =
             DependencyProperty.Register("ThinningType", typeof(ThinningType), typeof(LineBase), new PropertyMetadata(default(ThinningType), (d, e) =>
              {
@@ -46,7 +46,7 @@ namespace H.Controls.Chart2D
             set { SetValue(ThresholdProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty ThresholdProperty =
             DependencyProperty.Register("Threshold", typeof(int), typeof(LineBase), new PropertyMetadata(10, (d, e) =>
              {
@@ -65,7 +65,7 @@ namespace H.Controls.Chart2D
             set { SetValue(AlignmentCenterProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty AlignmentCenterProperty =
             DependencyProperty.Register("AlignmentCenter", typeof(bool), typeof(LineBase), new PropertyMetadata(default(bool), (d, e) =>
             {
@@ -88,9 +88,9 @@ namespace H.Controls.Chart2D
             {
                 double span = (this.maxX - this.minX) / this.xAxis.Count;
 
-                this.maxX = this.maxX + span / 2;
+                this.maxX = this.maxX + (span / 2);
 
-                this.minX = this.minX - span / 2;
+                this.minX = this.minX - (span / 2);
             }
         }
 
@@ -141,8 +141,8 @@ namespace H.Controls.Chart2D
             Point controlPt2 = nextC1 + controlPtOffset2;
 
             //如果觉得曲线幅度太大，可以将控制点向当前点靠近一定的系数。
-            controlPt1 = controlPt1 + 0 * (currentPt - controlPt1);
-            controlPt2 = controlPt2 + 0 * (nextPt1 - controlPt2);
+            controlPt1 = controlPt1 + (0 * (currentPt - controlPt1));
+            controlPt2 = controlPt2 + (0 * (nextPt1 - controlPt2));
 
             BezierSegment bzs = new BezierSegment(controlPt1, controlPt2, nextPt1, true);
             return bzs;
@@ -297,7 +297,7 @@ namespace H.Controls.Chart2D
             set { SetValue(UseSmoothProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UseSmoothProperty =
             DependencyProperty.Register("UseSmooth", typeof(bool), typeof(Area), new FrameworkPropertyMetadata(default(bool), (d, e) =>
              {
@@ -326,7 +326,7 @@ namespace H.Controls.Chart2D
             set { SetValue(PathAreaStyleProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty PathAreaStyleProperty =
             DependencyProperty.Register("PathAreaStyle", typeof(Style), typeof(Area), new FrameworkPropertyMetadata(default(Style), (d, e) =>
              {
@@ -353,7 +353,7 @@ namespace H.Controls.Chart2D
             set { SetValue(AreaBackgroundProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty AreaBackgroundProperty =
             DependencyProperty.Register("AreaBackground", typeof(Brush), typeof(Area), new FrameworkPropertyMetadata(default(Brush), (d, e) =>
              {
@@ -484,7 +484,7 @@ namespace H.Controls.Chart2D
             set { SetValue(LenProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty LenProperty =
             DependencyProperty.Register("Len", typeof(double), typeof(PolarLine), new PropertyMetadata(200.0, (d, e) =>
              {
@@ -687,7 +687,7 @@ namespace H.Controls.Chart2D
             set { SetValue(StepTypeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty StepTypeProperty =
             DependencyProperty.Register("StepType", typeof(StepType), typeof(StepLine), new PropertyMetadata(default(StepType), (d, e) =>
              {
@@ -768,7 +768,7 @@ namespace H.Controls.Chart2D
                     else
                     {
                         double yn = this.Data[i + 1];
-                        double xc = (this.xAxis[i + 1] - this.xAxis[i]) / 2 + this.xAxis[i];
+                        double xc = ((this.xAxis[i + 1] - this.xAxis[i]) / 2) + this.xAxis[i];
 
                         pls.Points.Add(new Point(this.GetX(xc), this.GetY(y)));
                         pls.Points.Add(new Point(this.GetX(xc), this.GetY(yn)));
@@ -819,7 +819,7 @@ namespace H.Controls.Chart2D
             set { SetValue(ForegroundContrartyProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty ForegroundContrartyProperty =
             DependencyProperty.Register("ForegroundContrarty", typeof(Brush), typeof(Candlestick), new PropertyMetadata(default(Brush), (d, e) =>
              {
@@ -843,7 +843,7 @@ namespace H.Controls.Chart2D
             set { SetValue(DataProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static new readonly DependencyProperty DataProperty =
             DependencyProperty.Register("Data", typeof(ObservableCollection<double[]>), typeof(Candlestick), new PropertyMetadata(default(ObservableCollection<double[]>), (d, e) =>
              {
@@ -861,7 +861,7 @@ namespace H.Controls.Chart2D
             set { SetValue(WidthPercentProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty WidthPercentProperty =
             DependencyProperty.Register("WidthPercent", typeof(double), typeof(Candlestick), new PropertyMetadata(0.5, (d, e) =>
              {
@@ -882,9 +882,9 @@ namespace H.Controls.Chart2D
 
             double span = (this.maxX - this.minX) / this.xAxis.Count;
 
-            this.maxX = this.maxX + span / 2;
+            this.maxX = this.maxX + (span / 2);
 
-            this.minX = this.minX - span / 2;
+            this.minX = this.minX - (span / 2);
         }
 
         public override void Draw(Canvas canvas)
@@ -925,13 +925,13 @@ namespace H.Controls.Chart2D
                 PolyLineSegment area = new PolyLineSegment();
 
                 //  Do ：添加曲线
-                area.Points.Add(new Point(this.GetX((x - itemWidth / 2)), this.GetY(open)));
+                area.Points.Add(new Point(this.GetX(x - (itemWidth / 2)), this.GetY(open)));
 
-                area.Points.Add(new Point(this.GetX((x - itemWidth / 2)), this.GetY(close)));
+                area.Points.Add(new Point(this.GetX(x - (itemWidth / 2)), this.GetY(close)));
 
-                area.Points.Add(new Point(this.GetX((x + itemWidth / 2)), this.GetY(close)));
+                area.Points.Add(new Point(this.GetX(x + (itemWidth / 2)), this.GetY(close)));
 
-                area.Points.Add(new Point(this.GetX((x + itemWidth / 2)), this.GetY(open)));
+                area.Points.Add(new Point(this.GetX(x + (itemWidth / 2)), this.GetY(open)));
 
                 area.Points.Add(area.Points.FirstOrDefault());
 

@@ -32,7 +32,7 @@ namespace H.DataBases.Share
             }
             catch (System.Exception ex)
             {
-                Logger.Instance?.Error(ex);
+                IocLog.Instance?.Error(ex);
                 message = ex.Message;
                 return false;
             }
@@ -46,16 +46,20 @@ namespace H.DataBases.Share
         public virtual bool Load(out string message)
         {
             message = null;
-            var context = Ioc.GetService<TDbContext>();
+            TDbContext context = Ioc.GetService<TDbContext>();
             bool r = this.CanConnect(context, out message);
             if (!r)
             {
-                var result = IocMessage.Window.ShowMessage(message, "数据库连接失败，是否重新配置?").Result;
+                bool? result = IocMessage.Window.Show(message, x => x.Title = "数据库连接失败，是否重新配置?").Result;
                 if (result != true)
                     return false;
-                result = IocMessage.Window.Show(this.GetSetting(), null, DialogButton.None, "数据库连接失败，请重新配置数据库").Result;
+                result = IocMessage.Window.Show(this.GetSetting(), x =>
+                {
+                    x.DialogButton = DialogButton.None;
+                    x.Title = "数据库连接失败，请重新配置数据库";
+                }).Result;
                 message = "数据库配置已修改，请重新启动";
-                IocMessage.Window.ShowMessage("数据库配置已修改，请重新启动").Wait();
+                IocMessage.Window.Show("数据库配置已修改，请重新启动").Wait();
                 return false;
             }
 
@@ -74,11 +78,11 @@ namespace H.DataBases.Share
             message = null;
             try
             {
-                var context = Ioc.GetService<TDbContext>();
+                TDbContext context = Ioc.GetService<TDbContext>();
                 string connect = this.GetSetting().GetConnect();
                 context.Database.SetConnectionString(connect);
                 context.Database.Migrate();
-                var r = context.Database.CanConnect();
+                bool r = context.Database.CanConnect();
                 message = r ? "连接成功" : "连接失败";
                 CommandManager.InvalidateRequerySuggested();
                 return r;
@@ -86,7 +90,7 @@ namespace H.DataBases.Share
             }
             catch (Exception ex)
             {
-                Logger.Instance?.Error(ex);
+                IocLog.Instance?.Error(ex);
                 message = ex.Message;
                 return false;
             }

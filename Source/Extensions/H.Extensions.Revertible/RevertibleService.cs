@@ -3,10 +3,8 @@ using H.Providers.Ioc;
 using H.Providers.Mvvm;
 using Microsoft.Extensions.Options;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
 
 namespace H.Extensions.Revertible
 {

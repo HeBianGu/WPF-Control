@@ -1,6 +1,5 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 using H.Extensions.ViewModel;
-using H.Providers.Ioc;
 using H.Providers.Ioc;
 using H.Providers.Mvvm;
 using System;
@@ -33,9 +32,13 @@ namespace H.Modules.Identity
     {
         public override async Task Add(object obj)
         {
-            var m = new hi_dd_role();
+            hi_dd_role m = new hi_dd_role();
             RoleEditPresenter roleViewModel = new RoleEditPresenter(m);
-            bool? dialog = await IocMessage.Dialog.Show(roleViewModel, null, DialogButton.Sumit, "新增");
+            bool? dialog = await IocMessage.Dialog.Show(roleViewModel,x =>
+            {
+                x.DialogButton = DialogButton.Sumit;
+                x.Title = "新增";
+            });
             if (dialog != true)
             {
                 IocMessage.Snack?.ShowInfo("取消操作");
@@ -51,7 +54,11 @@ namespace H.Modules.Identity
             if (entity == null)
                 return;
             RoleEditPresenter roleViewModel = new RoleEditPresenter(entity);
-            bool? r = await IocMessage.Dialog.Show(roleViewModel, null, DialogButton.Sumit, "编辑");
+            bool? r = await IocMessage.Dialog.Show(roleViewModel,x=>
+            {
+                x.DialogButton = DialogButton.Sumit;
+                x.Title = "编辑";
+            });
             if (r != true)
             {
                 IocMessage.Snack?.ShowInfo("取消操作");

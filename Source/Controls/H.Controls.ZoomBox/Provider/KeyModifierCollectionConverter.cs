@@ -36,7 +36,7 @@ namespace H.Controls.ZoomBox
 
             // convert null as None
             if (value == null
-                || stringValue != null && stringValue.Trim() == string.Empty)
+                || (stringValue != null && stringValue.Trim() == string.Empty))
             {
                 result.Add(KeyModifier.None);
             }

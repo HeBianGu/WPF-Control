@@ -1,11 +1,6 @@
 ﻿
 using H.Providers.Ioc;
 using H.Providers.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace H.Presenters.Common
 {

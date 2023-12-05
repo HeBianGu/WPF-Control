@@ -1,18 +1,13 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 //using H.Extensions.ViewModel;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Markup;
 using System.Windows.Media;
 
 namespace H.Controls.Chart2D
@@ -39,7 +34,7 @@ namespace H.Controls.Chart2D
         public PiePresenter(IChartDataProvider dataProvider) : this()
         {
             this.xDisplay = dataProvider.GetData().Select(x => x.Item1).ToObservable();
-            var data = dataProvider.GetData().Select(x => x.Item2);
+            IEnumerable<double> data = dataProvider.GetData().Select(x => x.Item2);
             this.RefreshData(data);
         }
 

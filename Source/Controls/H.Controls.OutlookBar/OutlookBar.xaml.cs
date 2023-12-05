@@ -1,22 +1,12 @@
 ﻿
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 #region changelog
 // Version 1.3.17
@@ -33,8 +23,8 @@ namespace H.Controls.OutlookBar
     [TemplatePart(Name = partMinimizedButtonContainer)]
     public class OutlookBar : HeaderedItemsControl, IKeyTipControl
     {
-        const string partMinimizedButtonContainer = "PART_MinimizedContainer";
-        const string partPopup = "PART_Popup";
+        private const string partMinimizedButtonContainer = "PART_MinimizedContainer";
+        private const string partPopup = "PART_Popup";
         static OutlookBar()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(OutlookBar), new FrameworkPropertyMetadata(typeof(OutlookBar)));
@@ -72,7 +62,7 @@ namespace H.Controls.OutlookBar
             }
         }
 
-        void OutlookBar_SizeChanged(object sender, SizeChangedEventArgs e)
+        private void OutlookBar_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             ApplySections();
         }
@@ -107,7 +97,7 @@ namespace H.Controls.OutlookBar
             this.Visibility = Visibility.Collapsed;
         }
 
-        void PreviewMouseMoveResize(object sender, MouseEventArgs e)
+        private void PreviewMouseMoveResize(object sender, MouseEventArgs e)
         {
             System.Windows.Controls.Control c = e.OriginalSource as System.Windows.Controls.Control;
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -172,7 +162,7 @@ namespace H.Controls.OutlookBar
         /// <summary>
         /// Remove all PreviewMouseMove events from the outlookbar that have been possible set at the beginning of a drag command.
         /// </summary>
-        void DragMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void DragMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             System.Windows.Controls.Control c = e.OriginalSource as System.Windows.Controls.Control;
             if (c != null)
@@ -183,7 +173,7 @@ namespace H.Controls.OutlookBar
             this.PreviewMouseMove -= PreviewMouseMoveResize;
         }
 
-        void PreviewMouseMoveButtons(object sender, MouseEventArgs e)
+        private void PreviewMouseMoveButtons(object sender, MouseEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
@@ -331,15 +321,14 @@ namespace H.Controls.OutlookBar
             }
         }
 
-        void item_Click(object sender, RoutedEventArgs e)
+        private void item_Click(object sender, RoutedEventArgs e)
         {
             MenuItem item = e.OriginalSource as MenuItem;
             OutlookSection section = item.Tag as OutlookSection;
             this.SelectedSection = section;
         }
 
-
-        void SectionsCollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        private void SectionsCollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             ApplySections();
         }
@@ -370,7 +359,7 @@ namespace H.Controls.OutlookBar
             base.OnApplyTemplate();
         }
 
-        void btn_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void btn_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             Mouse.Capture(null);
             popup.StaysOpen = false;
@@ -728,7 +717,7 @@ namespace H.Controls.OutlookBar
         /// </summary>
         internal object SectionContent
         {
-            get { return (object)GetValue(SectionContentProperty); }
+            get { return GetValue(SectionContentProperty); }
             set { SetValue(SectionContentPropertyKey, value); }
         }
 
@@ -744,7 +733,7 @@ namespace H.Controls.OutlookBar
         /// </summary>
         internal object CollapsedSectionContent
         {
-            get { return (object)GetValue(CollapsedSectionContentProperty); }
+            get { return GetValue(CollapsedSectionContentProperty); }
             set { SetValue(CollapsedSectionContentPropertyKey, value); }
         }
 
@@ -844,7 +833,7 @@ namespace H.Controls.OutlookBar
         }
 
         public static readonly DependencyProperty ButtonHeightProperty =
-            DependencyProperty.Register("ButtonHeight", typeof(double), typeof(OutlookBar), new UIPropertyMetadata((double)28.0));
+            DependencyProperty.Register("ButtonHeight", typeof(double), typeof(OutlookBar), new UIPropertyMetadata(28.0));
 
 
 
@@ -860,7 +849,7 @@ namespace H.Controls.OutlookBar
         }
 
         public static readonly DependencyProperty PopupWidthProperty =
-            DependencyProperty.Register("PopupWidth", typeof(double), typeof(OutlookBar), new UIPropertyMetadata((double)double.NaN));
+            DependencyProperty.Register("PopupWidth", typeof(double), typeof(OutlookBar), new UIPropertyMetadata(double.NaN));
 
 
 
@@ -939,7 +928,7 @@ namespace H.Controls.OutlookBar
         /// </summary>
         public object NavigationPaneText
         {
-            get { return (object)GetValue(NavigationPaneTextProperty); }
+            get { return GetValue(NavigationPaneTextProperty); }
             set { SetValue(NavigationPaneTextProperty, value); }
         }
 
@@ -957,7 +946,7 @@ namespace H.Controls.OutlookBar
 
         protected virtual IEnumerable GetLogicalChildren()
         {
-            foreach (var section in Sections) yield return section;
+            foreach (OutlookSection section in Sections) yield return section;
             if (SelectedSection != null) yield return SelectedSection.Content;
         }
 

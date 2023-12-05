@@ -1,7 +1,5 @@
-﻿using H.Themes.Default;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Windows;
 using System.Windows.Media;
 
 namespace H.Controls.Diagram.Extension

@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections.Generic;
@@ -33,12 +33,12 @@ namespace H.Controls.PropertyGrid
         protected override string GetDefaultPropertyName()
         {
             object selectedObject = SelectedObject;
-            return (selectedObject != null) ? ObjectContainerHelperBase.GetDefaultPropertyName(SelectedObject) : (string)null;
+            return (selectedObject != null) ? ObjectContainerHelperBase.GetDefaultPropertyName(SelectedObject) : null;
         }
 
         protected override IEnumerable<PropertyItem> GenerateSubPropertiesCore()
         {
-            var propertyItems = new List<PropertyItem>();
+            List<PropertyItem> propertyItems = new List<PropertyItem>();
 
             if (SelectedObject != null)
             {
@@ -49,12 +49,12 @@ namespace H.Controls.PropertyGrid
                         descriptors = ObjectContainerHelperBase.GetPropertyDescriptors(SelectedObject, this.PropertyContainer.HideInheritedProperties);
                     }
 
-                    foreach (var descriptor in descriptors)
+                    foreach (PropertyDescriptor descriptor in descriptors)
                     {
-                        var propertyDef = this.GetPropertyDefinition(descriptor);
+                        PropertyDefinition propertyDef = this.GetPropertyDefinition(descriptor);
                         bool isBrowsable = false;
 
-                        var isPropertyBrowsable = this.PropertyContainer.IsPropertyVisible(descriptor);
+                        bool? isPropertyBrowsable = this.PropertyContainer.IsPropertyVisible(descriptor);
                         if (isPropertyBrowsable.HasValue)
                         {
                             isBrowsable = isPropertyBrowsable.Value;
@@ -62,10 +62,10 @@ namespace H.Controls.PropertyGrid
                         else
                         {
 #if !VS2008
-                            var displayAttribute = PropertyGridUtilities.GetAttribute<DisplayAttribute>(descriptor);
+                            DisplayAttribute displayAttribute = PropertyGridUtilities.GetAttribute<DisplayAttribute>(descriptor);
                             if (displayAttribute != null)
                             {
-                                var autoGenerateField = displayAttribute.GetAutoGenerateField();
+                                bool? autoGenerateField = displayAttribute.GetAutoGenerateField();
                                 isBrowsable = this.PropertyContainer.AutoGenerateProperties
                                               && ((autoGenerateField.HasValue && autoGenerateField.Value) || !autoGenerateField.HasValue);
                             }
@@ -83,7 +83,7 @@ namespace H.Controls.PropertyGrid
 
                         if (isBrowsable)
                         {
-                            var prop = this.CreatePropertyItem(descriptor, propertyDef);
+                            PropertyItem prop = this.CreatePropertyItem(descriptor, propertyDef);
                             if (prop != null)
                             {
                                 propertyItems.Add(prop);
@@ -131,7 +131,7 @@ namespace H.Controls.PropertyGrid
               ? (CategoryOrderAttribute[])selectedObject.GetType().GetCustomAttributes(typeof(CategoryOrderAttribute), true)
               : new CategoryOrderAttribute[0];
 
-            var orderAttribute = orderAttributes
+            CategoryOrderAttribute orderAttribute = orderAttributes
               .FirstOrDefault((a) => object.Equals(a.CategoryValue, categoryValue));
 
             if (orderAttribute != null)

@@ -1,13 +1,10 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace H.Extensions.TypeConverter
 {
@@ -24,12 +21,12 @@ namespace H.Extensions.TypeConverter
 
         public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
         {
-            var result = new ObservableCollection<Item>();
+            ObservableCollection<Item> result = new ObservableCollection<Item>();
             if (value is string str)
             {
                 if (string.IsNullOrEmpty(str))
                     return result;
-                foreach (var item in str.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries))
+                foreach (string item in str.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries))
                 {
                     result.Add((Item)ItemTypeConverter.ConvertFrom(item));
                 }

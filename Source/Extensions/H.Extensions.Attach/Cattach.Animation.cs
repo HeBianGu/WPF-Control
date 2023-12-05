@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.Windows;
 
@@ -17,13 +17,13 @@ namespace H.Extensions.Attach
             obj.SetValue(FromDoubleProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty FromDoubleProperty =
             DependencyProperty.RegisterAttached("FromDouble", typeof(double), typeof(Cattach), new PropertyMetadata(default(double), OnFromDoubleChanged));
 
-        static public void OnFromDoubleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnFromDoubleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             double n = (double)e.NewValue;
 
@@ -41,13 +41,13 @@ namespace H.Extensions.Attach
             obj.SetValue(ToDoubleProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty ToDoubleProperty =
             DependencyProperty.RegisterAttached("ToDouble", typeof(double), typeof(Cattach), new PropertyMetadata(default(double), OnToDoubleChanged));
 
-        static public void OnToDoubleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnToDoubleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             double n = (double)e.NewValue;
 

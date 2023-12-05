@@ -1,12 +1,4 @@
-﻿/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
-
+﻿
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -103,7 +95,7 @@ namespace H.Controls.Dock.Controls
         private void OnContextMenuClosed(object sender, RoutedEventArgs e)
         {
             //Debug.Assert(IsChecked.GetValueOrDefault());
-            var ctxMenu = sender as ContextMenu;
+            ContextMenu ctxMenu = sender as ContextMenu;
             ctxMenu.Closed -= OnContextMenuClosed;
             IsChecked = false;
         }

@@ -9,7 +9,10 @@
         <ResourceDictionary Source="../Marker/Marker.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.MarkPosition.Default, TypeInTargetAssembly={x:Type local:MarkPosition}}" BasedOn="{StaticResource {x:Static h:Layer.DefaultKey}}" TargetType="{x:Type local:MarkPosition}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.MarkPosition.Default,
+                                        TypeInTargetAssembly={x:Type local:MarkPosition}}"
+           BasedOn="{StaticResource {x:Static h:Layer.DefaultKey}}"
+           TargetType="{x:Type local:MarkPosition}">
         <!--<Setter Property="Data" Value="{Binding RelativeSource={RelativeSource AncestorType=local:Series},Path=Data}"/>-->
         <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType=local:Series}, Path=Foreground}" />
         <Setter Property="LabelStyle">
@@ -55,7 +58,10 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.MarkPosition.Single, TypeInTargetAssembly={x:Type local:MarkPosition}}" BasedOn="{StaticResource {x:Static h:MarkPosition.DefaultKey}}" TargetType="{x:Type local:MarkPosition}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.MarkPosition.Single,
+                                        TypeInTargetAssembly={x:Type local:MarkPosition}}"
+           BasedOn="{StaticResource {x:Static h:MarkPosition.DefaultKey}}"
+           TargetType="{x:Type local:MarkPosition}">
         <Setter Property="IsUseAnimation" Value="False" />
         <Setter Property="LabelStyle">
             <Setter.Value>

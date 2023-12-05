@@ -19,8 +19,7 @@
                 <DockPanel DockPanel.Dock="Top">
                     <CheckBox IsChecked="{Binding IsEnabled}" />
                     <TextBlock Text="鼠标键盘无动作 " />
-                    <ComboBox IsEditable="True"
-                              SelectedItem="{Binding DoNotingMinite}">
+                    <ComboBox IsEditable="True" SelectedItem="{Binding DoNotingMinite}">
                         <system:Int32>1</system:Int32>
                         <system:Int32>2</system:Int32>
                         <system:Int32>3</system:Int32>
@@ -47,8 +46,7 @@
                        VerticalAlignment="Top"
                        Text="{Binding Name, StringFormat={}{0}:}" />
             <DockPanel>
-                <ItemsControl HorizontalAlignment="Stretch"
-                              ItemsSource="{Binding HotKeys}">
+                <ItemsControl HorizontalAlignment="Stretch" ItemsSource="{Binding HotKeys}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <TextBox MinWidth="200" />

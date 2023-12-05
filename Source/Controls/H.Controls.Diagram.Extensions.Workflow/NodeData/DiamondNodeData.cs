@@ -23,7 +23,7 @@ namespace H.Controls.Diagram.Extensions.Workflow
         public override IFlowableResult Invoke(Part previors, Node current)
         {
             Thread.Sleep(1000);
-            var r = this.Random.Next(0, 3);
+            int r = this.Random.Next(0, 3);
             if (r == 1)
                 return new FlowableResult<BoolResult>(BoolResult.True);
 

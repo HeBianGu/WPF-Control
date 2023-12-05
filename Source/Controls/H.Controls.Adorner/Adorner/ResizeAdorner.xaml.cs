@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 
@@ -6,7 +6,6 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Media;
 
 namespace H.Controls.Adorner
 {
@@ -24,7 +23,7 @@ namespace H.Controls.Adorner
             return Application.Current.FindResource(ResizeAdorner.TemplateDefaultKey) as ControlTemplate;
         }
 
-        Thumb thumb;
+        private Thumb thumb;
         public ResizeAdorner(UIElement adornedElement) : base(adornedElement)
         {
             if (this._contentControl.Template == null)

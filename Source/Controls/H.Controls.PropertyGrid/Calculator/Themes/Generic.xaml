@@ -13,54 +13,6 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid x:Name="Control">
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Normal" />
-                                <VisualState x:Name="MouseOver">
-                                    <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetName="PART_Default"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To="0" Duration="0" />
-                                        <DoubleAnimation Storyboard.TargetName="PART_MouseOver"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To="1" Duration="0" />
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Pressed">
-                                    <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetName="PART_Default"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To="0" Duration="0" />
-                                        <DoubleAnimation Storyboard.TargetName="PART_Pressed"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To="1" Duration="0" />
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Disabled">
-                                    <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetName="PART_Default"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To=".5" Duration="0" />
-                                        <DoubleAnimation Storyboard.TargetName="contentPresenter"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To=".5" Duration="0" />
-                                    </Storyboard>
-                                </VisualState>
-                            </VisualStateGroup>
-                            <VisualStateGroup x:Name="MemoryStates">
-                                <VisualState x:Name="EmptyMemory" />
-                                <VisualState x:Name="MemoryAssigned">
-                                    <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetName="PART_Border1"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To="0" Duration="0" />
-                                        <DoubleAnimation Storyboard.TargetName="PART_Border2"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To="1" Duration="0" />
-                                    </Storyboard>
-                                </VisualState>
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
                         <Border Margin="0,0,0,-1"
                                 Background="White"
                                 BorderBrush="{x:Null}"
@@ -68,7 +20,9 @@
                                 CornerRadius="2"
                                 Opacity="0.5" />
                         <Grid x:Name="PART_Default">
-                            <Border Background="#FF9CA2AB" BorderThickness="0" CornerRadius="2">
+                            <Border Background="#FF9CA2AB"
+                                    BorderThickness="0"
+                                    CornerRadius="2">
                                 <Grid>
                                     <Border x:Name="PART_Border1"
                                             Margin="1"
@@ -80,7 +34,9 @@
                                                 <GradientStop Offset="1" Color="#FFD5DBE3" />
                                             </LinearGradientBrush>
                                         </Border.Background>
-                                        <Border Margin="2" BorderThickness="0" CornerRadius="1">
+                                        <Border Margin="2"
+                                                BorderThickness="0"
+                                                CornerRadius="1">
                                             <Border.Background>
                                                 <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                                     <GradientStop Offset="0" Color="#FFEDF1F7" />
@@ -100,7 +56,9 @@
                                                 <GradientStop Offset="1" Color="#FF9CA2AB" />
                                             </LinearGradientBrush>
                                         </Border.Background>
-                                        <Border Margin="2" BorderThickness="0" CornerRadius="1">
+                                        <Border Margin="2"
+                                                BorderThickness="0"
+                                                CornerRadius="1">
                                             <Border.Background>
                                                 <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                                     <GradientStop Offset="0" Color="#FFEDF1F7" />
@@ -113,8 +71,12 @@
                             </Border>
                         </Grid>
                         <Grid x:Name="PART_MouseOver" Opacity="0">
-                            <Border Background="#FF9CA2AB" BorderThickness="0" CornerRadius="2">
-                                <Border Margin="1" BorderThickness="0" CornerRadius="1">
+                            <Border Background="#FF9CA2AB"
+                                    BorderThickness="0"
+                                    CornerRadius="2">
+                                <Border Margin="1"
+                                        BorderThickness="0"
+                                        CornerRadius="1">
                                     <Border.Background>
                                         <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                             <GradientStop Offset="0" Color="#FFFDFEFF" />
@@ -125,7 +87,9 @@
                             </Border>
                         </Grid>
                         <Grid x:Name="PART_Pressed" Opacity="0">
-                            <Border Background="#FF90959D" BorderThickness="0" CornerRadius="2">
+                            <Border Background="#FF90959D"
+                                    BorderThickness="0"
+                                    CornerRadius="2">
                                 <Border Margin="1"
                                         Background="#FFB5BBC5"
                                         BorderThickness="0"
@@ -136,6 +100,62 @@
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PART_Default"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0"
+                                                         Duration="0" />
+                                        <DoubleAnimation Storyboard.TargetName="PART_MouseOver"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="0" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PART_Default"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0"
+                                                         Duration="0" />
+                                        <DoubleAnimation Storyboard.TargetName="PART_Pressed"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="0" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PART_Default"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To=".5"
+                                                         Duration="0" />
+                                        <DoubleAnimation Storyboard.TargetName="contentPresenter"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To=".5"
+                                                         Duration="0" />
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="MemoryStates">
+                                <VisualState x:Name="EmptyMemory" />
+                                <VisualState x:Name="MemoryAssigned">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PART_Border1"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0"
+                                                         Duration="0" />
+                                        <DoubleAnimation Storyboard.TargetName="PART_Border2"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="0" />
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
@@ -149,41 +169,6 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid x:Name="Control">
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Normal" />
-                                <VisualState x:Name="MouseOver">
-                                    <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetName="PART_Default"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To="0" Duration="0" />
-                                        <DoubleAnimation Storyboard.TargetName="PART_MouseOver"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To="1" Duration="0" />
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Pressed">
-                                    <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetName="PART_Default"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To="0" Duration="0" />
-                                        <DoubleAnimation Storyboard.TargetName="PART_Pressed"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To="1" Duration="0" />
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Disabled">
-                                    <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetName="PART_Default"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To=".5" Duration="0" />
-                                        <DoubleAnimation Storyboard.TargetName="contentPresenter"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To=".5" Duration="0" />
-                                    </Storyboard>
-                                </VisualState>
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
                         <Border Margin="0,0,0,-1"
                                 Background="White"
                                 BorderBrush="{x:Null}"
@@ -198,7 +183,9 @@
                                         <GradientStop Offset="1" Color="#FFA67D80" />
                                     </LinearGradientBrush>
                                 </Border.Background>
-                                <Border Margin="1" BorderThickness="0" CornerRadius="1">
+                                <Border Margin="1"
+                                        BorderThickness="0"
+                                        CornerRadius="1">
                                     <Border.Background>
                                         <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                             <GradientStop Offset="0" Color="#FFFDB8B8" />
@@ -216,7 +203,9 @@
                                         <GradientStop Offset="1" Color="#FFA67D80" />
                                     </LinearGradientBrush>
                                 </Border.Background>
-                                <Border Margin="1" BorderThickness="0" CornerRadius="1">
+                                <Border Margin="1"
+                                        BorderThickness="0"
+                                        CornerRadius="1">
                                     <Border.Background>
                                         <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                             <GradientStop Offset="0" Color="#FFFEC9C9" />
@@ -227,7 +216,9 @@
                             </Border>
                         </Grid>
                         <Grid x:Name="PART_Pressed" Opacity="0">
-                            <Border Background="#FF9B6F72" BorderThickness="0" CornerRadius="2">
+                            <Border Background="#FF9B6F72"
+                                    BorderThickness="0"
+                                    CornerRadius="2">
                                 <Border Margin="1"
                                         Background="#FFE69197"
                                         BorderThickness="0"
@@ -238,6 +229,47 @@
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PART_Default"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0"
+                                                         Duration="0" />
+                                        <DoubleAnimation Storyboard.TargetName="PART_MouseOver"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="0" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PART_Default"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0"
+                                                         Duration="0" />
+                                        <DoubleAnimation Storyboard.TargetName="PART_Pressed"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="0" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PART_Default"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To=".5"
+                                                         Duration="0" />
+                                        <DoubleAnimation Storyboard.TargetName="contentPresenter"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To=".5"
+                                                         Duration="0" />
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
@@ -251,41 +283,6 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid x:Name="Control">
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Normal" />
-                                <VisualState x:Name="MouseOver">
-                                    <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetName="PART_Default"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To="0" Duration="0" />
-                                        <DoubleAnimation Storyboard.TargetName="PART_MouseOver"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To="1" Duration="0" />
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Pressed">
-                                    <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetName="PART_Default"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To="0" Duration="0" />
-                                        <DoubleAnimation Storyboard.TargetName="PART_Pressed"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To="1" Duration="0" />
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Disabled">
-                                    <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetName="PART_Default"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To=".5" Duration="0" />
-                                        <DoubleAnimation Storyboard.TargetName="contentPresenter"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To=".5" Duration="0" />
-                                    </Storyboard>
-                                </VisualState>
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
                         <Border Margin="0,0,0,-1"
                                 Background="White"
                                 BorderBrush="{x:Null}"
@@ -300,7 +297,9 @@
                                         <GradientStop Offset="1" Color="#FF98999A" />
                                     </LinearGradientBrush>
                                 </Border.Background>
-                                <Border Margin="1" BorderThickness="0" CornerRadius="1">
+                                <Border Margin="1"
+                                        BorderThickness="0"
+                                        CornerRadius="1">
                                     <Border.Background>
                                         <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                             <GradientStop Offset="0" Color="#FFF6F7F7" />
@@ -318,7 +317,9 @@
                                         <GradientStop Offset="1" Color="#FF98999A" />
                                     </LinearGradientBrush>
                                 </Border.Background>
-                                <Border Margin="1" BorderThickness="0" CornerRadius="1">
+                                <Border Margin="1"
+                                        BorderThickness="0"
+                                        CornerRadius="1">
                                     <Border.Background>
                                         <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                             <GradientStop Offset="0" Color="#FFFCFCFC" />
@@ -329,7 +330,9 @@
                             </Border>
                         </Grid>
                         <Grid x:Name="PART_Pressed" Opacity="0">
-                            <Border Background="#FF87888A" BorderThickness="0" CornerRadius="2">
+                            <Border Background="#FF87888A"
+                                    BorderThickness="0"
+                                    CornerRadius="2">
                                 <Border Margin="1"
                                         Background="#FFB5BBC5"
                                         BorderThickness="0"
@@ -340,6 +343,47 @@
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PART_Default"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0"
+                                                         Duration="0" />
+                                        <DoubleAnimation Storyboard.TargetName="PART_MouseOver"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="0" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PART_Default"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0"
+                                                         Duration="0" />
+                                        <DoubleAnimation Storyboard.TargetName="PART_Pressed"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="0" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PART_Default"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To=".5"
+                                                         Duration="0" />
+                                        <DoubleAnimation Storyboard.TargetName="contentPresenter"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To=".5"
+                                                         Duration="0" />
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
@@ -635,7 +679,8 @@
                                     BorderBrush="#FF949494"
                                     BorderThickness="1">
                                 <StackPanel>
-                                    <Path Width="9" Height="9"
+                                    <Path Width="9"
+                                          Height="9"
                                           Margin="4,4,0,0"
                                           HorizontalAlignment="Left"
                                           VerticalAlignment="Top"

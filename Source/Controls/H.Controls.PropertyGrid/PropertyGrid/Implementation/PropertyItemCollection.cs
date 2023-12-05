@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -83,7 +83,7 @@ namespace H.Controls.PropertyGrid
             using (GetDefaultView().DeferRefresh())
             {
                 EditableCollection.Clear();
-                foreach (var item in newItems)
+                foreach (PropertyItem item in newItems)
                 {
                     this.EditableCollection.Add(item);
                 }
@@ -141,20 +141,20 @@ namespace H.Controls.PropertyGrid
             {
                 filter = (item) =>
                 {
-                    var property = item as PropertyItem;
+                    PropertyItem property = item as PropertyItem;
                     if (property.DisplayName != null)
                     {
 #if !VS2008
-                        var displayAttribute = PropertyGridUtilities.GetAttribute<DisplayAttribute>(property.PropertyDescriptor);
+                        DisplayAttribute displayAttribute = PropertyGridUtilities.GetAttribute<DisplayAttribute>(property.PropertyDescriptor);
                         if (displayAttribute != null)
                         {
-                            var canBeFiltered = displayAttribute.GetAutoGenerateFilter();
+                            bool? canBeFiltered = displayAttribute.GetAutoGenerateFilter();
                             if (canBeFiltered.HasValue && !canBeFiltered.Value)
                                 return false;
                         }
 #endif
                         property.HighlightedText = property.DisplayName.ToLower().Contains(text.ToLower()) ? text : null;
-                        return (property.HighlightedText != null);
+                        return property.HighlightedText != null;
                     }
 
                     return false;

@@ -1,10 +1,8 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 
 
-using H.Extensions.Setting;
-using H.Providers.Ioc;
 using H.Providers.Ioc;
 using System;
 using System.Collections.Generic;
@@ -84,7 +82,7 @@ namespace H.Modules.Identity
             _datas = XmlSerialize.Instance.Load<List<IdentityData>>(this.Path);
         }
 
-        Random random = new Random();
+        private Random random = new Random();
         public bool Register(string phone, string password, out string message)
         {
             if (string.IsNullOrEmpty(phone))

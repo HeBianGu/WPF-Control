@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections;
@@ -23,13 +23,13 @@ namespace H.Controls.PropertyGrid
         {
             ITypeEditor editor = null;
 
-            var context = new EditorTypeDescriptorContext(null, propertyItem.Instance, propertyItem.PropertyDescriptor);
+            EditorTypeDescriptorContext context = new EditorTypeDescriptorContext(null, propertyItem.Instance, propertyItem.PropertyDescriptor);
             if ((typeConverter != null)
               && typeConverter.GetStandardValuesSupported(context)
               && typeConverter.GetStandardValuesExclusive(context)
               && (propertyType != typeof(bool)) && (propertyType != typeof(bool?)))  //Bool type always have a BooleanConverter with standardValues : True/False.
             {
-                var items = typeConverter.GetStandardValues(context);
+                TypeConverter.StandardValuesCollection items = typeConverter.GetStandardValues(context);
                 editor = new SourceComboBoxEditor(items, typeConverter);
             }
             else if (propertyType == typeof(string))
@@ -79,7 +79,7 @@ namespace H.Controls.PropertyGrid
                 editor = new TextBoxEditor();
             else
             {
-                var listType = ListUtilities.GetListItemType(propertyType);
+                Type listType = ListUtilities.GetListItemType(propertyType);
 
                 // A List of T
                 if (listType != null)
@@ -91,8 +91,8 @@ namespace H.Controls.PropertyGrid
                 }
                 else
                 {
-                    var dictionaryType = ListUtilities.GetDictionaryItemsType(propertyType);
-                    var collectionType = ListUtilities.GetCollectionItemType(propertyType);
+                    Type[] dictionaryType = ListUtilities.GetDictionaryItemsType(propertyType);
+                    Type collectionType = ListUtilities.GetCollectionItemType(propertyType);
                     // A dictionary of T or a Collection of T or an ICollection
                     if ((dictionaryType != null) || (collectionType != null) || typeof(ICollection).IsAssignableFrom(propertyType))
                     {
@@ -104,8 +104,8 @@ namespace H.Controls.PropertyGrid
                         // string conversion to the object type. Use TextBox in theses cases.
                         // Otherwise, return a TextBlock editor since no valid editor exists.
                         editor = (typeConverter != null && typeConverter.CanConvertFrom(typeof(string)))
-                          ? (ITypeEditor)new TextBoxEditor()
-                          : (ITypeEditor)new TextBlockEditor();
+                          ? new TextBoxEditor()
+                          : new TextBlockEditor();
                     }
                 }
             }
@@ -130,9 +130,9 @@ namespace H.Controls.PropertyGrid
 
         private class EditorTypeDescriptorContext : ITypeDescriptorContext
         {
-            IContainer _container;
-            object _instance;
-            PropertyDescriptor _propertyDescriptor;
+            private IContainer _container;
+            private object _instance;
+            private PropertyDescriptor _propertyDescriptor;
 
             internal EditorTypeDescriptorContext(IContainer container, object instance, PropertyDescriptor pd)
             {

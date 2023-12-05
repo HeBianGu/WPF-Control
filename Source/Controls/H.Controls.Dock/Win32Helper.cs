@@ -1,11 +1,11 @@
-/************************************************************************
-   H.Controls.Dock
 
-   Copyright (C) 2007-2013 Xceed Software Inc.
 
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
+
+
+
+
+
+
 
 using System;
 using System.Runtime.InteropServices;
@@ -339,10 +339,10 @@ namespace H.Controls.Dock
 
         public static bool GetWindowZOrder(IntPtr hwnd, out int zOrder)
         {
-            var lowestHwnd = GetWindow(hwnd, (uint)GetWindow_Cmd.GW_HWNDLAST);
+            IntPtr lowestHwnd = GetWindow(hwnd, (uint)GetWindow_Cmd.GW_HWNDLAST);
 
-            var z = 0;
-            var hwndTmp = lowestHwnd;
+            int z = 0;
+            IntPtr hwndTmp = lowestHwnd;
             while (hwndTmp != IntPtr.Zero)
             {
                 if (hwnd == hwndTmp)
@@ -361,7 +361,7 @@ namespace H.Controls.Dock
 
         internal static int MakeLParam(int LoWord, int HiWord)
         {
-            return (int)((HiWord << 16) | (LoWord & 0xffff));
+            return (HiWord << 16) | (LoWord & 0xffff);
         }
 
         internal const int WM_MOUSEMOVE = 0x200;

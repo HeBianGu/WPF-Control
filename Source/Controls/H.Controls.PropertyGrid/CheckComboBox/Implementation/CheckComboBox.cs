@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections.Generic;
@@ -78,7 +78,7 @@ namespace H.Controls.PropertyGrid
 
         private static void OnTextChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
         {
-            var checkComboBox = o as CheckComboBox;
+            CheckComboBox checkComboBox = o as CheckComboBox;
             if (checkComboBox != null)
                 checkComboBox.OnTextChanged((string)e.OldValue, (string)e.NewValue);
         }
@@ -307,7 +307,7 @@ namespace H.Controls.PropertyGrid
             string[] nameParts = this.DisplayMemberPath.Split('.');
             if (nameParts.Length == 1)
             {
-                var property = item.GetType().GetProperty(this.DisplayMemberPath);
+                System.Reflection.PropertyInfo property = item.GetType().GetProperty(this.DisplayMemberPath);
                 if (property != null)
                     return property.GetValue(item, null);
                 return item;
@@ -315,8 +315,8 @@ namespace H.Controls.PropertyGrid
 
             for (int i = 0; i < nameParts.Count(); ++i)
             {
-                var type = item.GetType();
-                var info = type.GetProperty(nameParts[i]);
+                Type type = item.GetType();
+                System.Reflection.PropertyInfo info = type.GetProperty(nameParts[i]);
                 if (info == null)
                 {
                     return item;

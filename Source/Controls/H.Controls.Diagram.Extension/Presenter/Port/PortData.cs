@@ -6,10 +6,8 @@ using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 using System.Xml.Serialization;
 
 namespace H.Controls.Diagram.Extension
@@ -81,7 +79,7 @@ namespace H.Controls.Diagram.Extension
         public Thickness PortMargin { get; set; } = new Thickness(0, 0, 0, 0);
 
         [XmlIgnore]
-         [Display(Name = "删除", GroupName = "操作")]
+        [Display(Name = "删除", GroupName = "操作")]
         public RelayCommand DeleteCommand => new RelayCommand((s, e) =>
         {
             if (e is Part part)
@@ -91,14 +89,14 @@ namespace H.Controls.Diagram.Extension
         });
 
         [XmlIgnore]
-         [Display(Name = "恢复默认", GroupName = "操作")]
+        [Display(Name = "恢复默认", GroupName = "操作")]
         public override RelayCommand LoadDefaultCommand => new RelayCommand((s, e) =>
         {
             this.LoadDefault();
         });
 
         [XmlIgnore]
-         [Display(Name = "保存模板", GroupName = "操作")]
+        [Display(Name = "保存模板", GroupName = "操作")]
         public RelayCommand SaveAsTemplateCommand => new RelayCommand((s, e) =>
         {
             if (e is Node node)
@@ -108,7 +106,7 @@ namespace H.Controls.Diagram.Extension
         });
 
         [XmlIgnore]
-         [Display(Name = "缩放定位", GroupName = "操作")]
+        [Display(Name = "缩放定位", GroupName = "操作")]
         public RelayCommand LocateFullCommand => new RelayCommand((s, e) =>
         {
             if (e is Port node)
@@ -121,7 +119,7 @@ namespace H.Controls.Diagram.Extension
         });
 
         [XmlIgnore]
-         [Display(Name = "平移定位", GroupName = "操作")]
+        [Display(Name = "平移定位", GroupName = "操作")]
         public RelayCommand LocateMoveCommand => new RelayCommand((s, e) =>
         {
             if (e is Port node)
@@ -134,14 +132,14 @@ namespace H.Controls.Diagram.Extension
         });
 
         [XmlIgnore]
-         [Display(Name = "应用到全部", GroupName = "操作")]
+        [Display(Name = "应用到全部", GroupName = "操作")]
         public RelayCommand ApplyToAllCommand => new RelayCommand((s, e) =>
         {
             if (e is Port part)
             {
-                var diagram = part.GetParent<Diagram>();
+                Diagram diagram = part.GetParent<Diagram>();
 
-                foreach (var item in diagram.Nodes.SelectMany(x => x.GetPorts()).Select(x => x.Content).OfType<PortData>())
+                foreach (PortData item in diagram.Nodes.SelectMany(x => x.GetPorts()).Select(x => x.Content).OfType<PortData>())
                 {
                     this.ApplayStyleTo(item);
                 }
@@ -149,13 +147,13 @@ namespace H.Controls.Diagram.Extension
         });
 
         [XmlIgnore]
-         [Display(Name = "应用到同类型", GroupName = "操作")]
+        [Display(Name = "应用到同类型", GroupName = "操作")]
         public RelayCommand ApplyToTypeCommand => new RelayCommand((s, e) =>
         {
             if (e is Port node)
             {
-                var diagram = node.GetParent<Diagram>();
-                foreach (var item in diagram.Nodes.SelectMany(x => x.GetPorts()).Select(x => x.Content).OfType<PortData>().Where(x => x.GetType().IsAssignableFrom(this.GetType())))
+                Diagram diagram = node.GetParent<Diagram>();
+                foreach (PortData item in diagram.Nodes.SelectMany(x => x.GetPorts()).Select(x => x.Content).OfType<PortData>().Where(x => x.GetType().IsAssignableFrom(this.GetType())))
                 {
                     this.ApplayStyleTo(item);
                 }

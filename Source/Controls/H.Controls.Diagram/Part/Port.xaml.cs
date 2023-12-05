@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +33,7 @@ namespace H.Controls.Diagram
             set { SetValue(DockProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty DockProperty =
             DependencyProperty.Register("Dock", typeof(Dock), typeof(Port), new PropertyMetadata(default(Dock), (d, e) =>
             {
@@ -130,8 +130,8 @@ namespace H.Controls.Diagram
 
         public override Part GetPrevious()
         {
-            var ports = this.ParentNode.GetPorts();
-            var index = ports.IndexOf(this);
+            List<Port> ports = this.ParentNode.GetPorts();
+            int index = ports.IndexOf(this);
             if (index == 0)
                 return ports[ports.Count - 1];
             return ports[index - 1];
@@ -139,8 +139,8 @@ namespace H.Controls.Diagram
 
         public override Part GetNext()
         {
-            var ports = this.ParentNode.GetPorts();
-            var index = ports.IndexOf(this);
+            List<Port> ports = this.ParentNode.GetPorts();
+            int index = ports.IndexOf(this);
             if (index == ports.Count - 1)
                 return ports[0];
             return ports[index + 1];

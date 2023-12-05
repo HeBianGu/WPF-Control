@@ -227,7 +227,7 @@ namespace H.Controls.Dock.Commands
                 return _staticFunc();
             }
 
-            var funcTarget = FuncTarget;
+            object funcTarget = FuncTarget;
 
             if (IsAlive)
             {

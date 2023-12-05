@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 using System;
@@ -28,7 +28,7 @@ namespace H.Controls.Diagram
             set { SetValue(IsExpandedProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty IsExpandedProperty =
             DependencyProperty.Register("IsExpanded", typeof(bool), typeof(TreeNode), new PropertyMetadata(true, (d, e) =>
             {
@@ -64,7 +64,7 @@ namespace H.Controls.Diagram
         {
             this.Foreach(x =>
             {
-                var p = NodeLayer.GetPosition(x);
+                Point p = NodeLayer.GetPosition(x);
                 Point point = p + vector;
                 NodeLayer.SetPosition(x, point);
                 x.Location = point;
@@ -194,7 +194,7 @@ namespace H.Controls.Diagram
             set { SetValue(SpanProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty SpanProperty =
             DependencyProperty.Register("Span", typeof(double), typeof(TreeNode), new FrameworkPropertyMetadata(110.0, (d, e) =>
              {
@@ -221,14 +221,14 @@ namespace H.Controls.Diagram
             //System.Diagnostics.Debug.WriteLine("ArrangeNode");
             NodeLayer.SetPosition(this, transfor.Invoke(point));
             this.Location = point;
-            double y = point.Y - this.NodeDesiredSize.Height / 2;
-            foreach (var item in this.GetChildren())
+            double y = point.Y - (this.NodeDesiredSize.Height / 2);
+            foreach (TreeNode item in this.GetChildren())
             {
                 item.MeasureNode();
                 y += item.NodeDesiredSize.Height;
                 int level = item.GetLevel();
-                double x = level * this.Span + point.X;
-                Point center = new Point(x, y - item.NodeDesiredSize.Height / 2);
+                double x = (level * this.Span) + point.X;
+                Point center = new Point(x, y - (item.NodeDesiredSize.Height / 2));
                 item.ArrangeNode(center, transfor);
             }
         }

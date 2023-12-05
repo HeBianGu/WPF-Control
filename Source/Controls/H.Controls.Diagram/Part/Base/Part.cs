@@ -1,8 +1,7 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 using System;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -26,7 +25,7 @@ namespace H.Controls.Diagram
         {
             this.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
 
-            this.Bound = new Rect(center.X - this.DesiredSize.Width / 2.0, center.Y - this.DesiredSize.Height / 2, this.DesiredSize.Width, this.DesiredSize.Height);
+            this.Bound = new Rect(center.X - (this.DesiredSize.Width / 2.0), center.Y - (this.DesiredSize.Height / 2), this.DesiredSize.Width, this.DesiredSize.Height);
 
         }
 
@@ -34,7 +33,7 @@ namespace H.Controls.Diagram
         //{
         //    this.Arrange(this.Bound);
         //}
-        Diagram _diagram;
+        private Diagram _diagram;
         public Diagram GetDiagram()
         {
             if (_diagram == null)
@@ -64,7 +63,7 @@ namespace H.Controls.Diagram
             this.IsSelected = !this.IsSelected;
             this.RefreshSelected();
 #if DEBUG
-            var span = DateTime.Now - dateTime;
+            TimeSpan span = DateTime.Now - dateTime;
             System.Diagnostics.Debug.WriteLine("Part_MouseLeftButtonDown：" + span.ToString());
 #endif 
 
@@ -83,7 +82,7 @@ namespace H.Controls.Diagram
             set { SetValue(IsSelectedProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty IsSelectedProperty =
             DependencyProperty.Register("IsSelected", typeof(bool), typeof(Part), new PropertyMetadata(default(bool), (d, e) =>
              {
@@ -117,8 +116,8 @@ namespace H.Controls.Diagram
             //if (!this.IsSelected)
             //    return;
 
-            var diagram = this.GetParent<Diagram>();
-            foreach (var child in diagram.GetChildren<Part>())
+            Diagram diagram = this.GetParent<Diagram>();
+            foreach (Part child in diagram.GetChildren<Part>())
             {
                 if (child != this && !Keyboard.IsKeyDown(Key.LeftCtrl))
                     child.IsSelected = false;
@@ -132,7 +131,7 @@ namespace H.Controls.Diagram
             set { SetValue(StateProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty StateProperty =
             DependencyProperty.Register("State", typeof(FlowableState), typeof(Part), new FrameworkPropertyMetadata(default(FlowableState), (d, e) =>
              {
@@ -159,7 +158,7 @@ namespace H.Controls.Diagram
         /// </summary>
         public virtual void Delete()
         {
-            var diagram = this.GetParent<Diagram>();
+            Diagram diagram = this.GetParent<Diagram>();
             //  Do ：删除显示数据
             Layer layer = this.GetParent<Layer>();
             if (layer == null)
@@ -228,7 +227,7 @@ namespace H.Controls.Diagram
             set { SetValue(HasErrorProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty HasErrorProperty =
             DependencyProperty.Register("HasError", typeof(bool), typeof(Part), new FrameworkPropertyMetadata(default(bool), (d, e) =>
             {

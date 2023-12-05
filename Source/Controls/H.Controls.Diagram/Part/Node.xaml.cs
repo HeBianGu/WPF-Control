@@ -1,17 +1,14 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
-using System.Xml.Linq;
 
 namespace H.Controls.Diagram
 {
@@ -30,7 +27,7 @@ namespace H.Controls.Diagram
             DefaultStyleKeyProperty.OverrideMetadata(typeof(Node), new FrameworkPropertyMetadata(typeof(Node)));
         }
 
-    
+
 
         public string Id => this.GetContent<INodeData>().ID;
 
@@ -62,7 +59,7 @@ namespace H.Controls.Diagram
             set { SetValue(LocationProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty LocationProperty =
             DependencyProperty.Register("Location", typeof(Point), typeof(Node), new FrameworkPropertyMetadata(default(Point), (d, e) =>
              {
@@ -127,15 +124,15 @@ namespace H.Controls.Diagram
 
         public IEnumerable<Link> GetAllLinks()
         {
-            foreach (var item in this.LinksInto)
+            foreach (Link item in this.LinksInto)
             {
                 yield return item;
             }
-            foreach (var item in this.LinksOutOf)
+            foreach (Link item in this.LinksOutOf)
             {
                 yield return item;
             }
-            foreach (var item in this.ConnectLinks)
+            foreach (Link item in this.ConnectLinks)
             {
                 yield return item;
             }
@@ -154,8 +151,8 @@ namespace H.Controls.Diagram
             //    link.Delete();
             //}
 
-            var links = this.GetAllLinks().ToArray();
-            foreach (var item in links)
+            Link[] links = this.GetAllLinks().ToArray();
+            foreach (Link item in links)
             {
                 item.Delete();
             }
@@ -213,21 +210,21 @@ namespace H.Controls.Diagram
         public IEnumerable<Part> GetAllParts(Func<Part, bool> filter = null)
         {
             yield return this;
-            foreach (var item in this._ports)
+            foreach (Port item in this._ports)
             {
                 if (filter?.Invoke(item) != false)
                     yield return item;
             }
-            foreach (var item in this.LinksOutOf)
+            foreach (Link item in this.LinksOutOf)
             {
                 if (filter?.Invoke(item) != false)
                     yield return item;
             }
-            var toNodes = this.GetToNodes();
-            foreach (var item in toNodes)
+            List<Node> toNodes = this.GetToNodes();
+            foreach (Node item in toNodes)
             {
-                var parts = item.GetAllParts(filter);
-                foreach (var part in parts)
+                IEnumerable<Part> parts = item.GetAllParts(filter);
+                foreach (Part part in parts)
                 {
                     yield return part;
                 }
@@ -237,12 +234,12 @@ namespace H.Controls.Diagram
         public IEnumerable<Part> GetParts(Func<Part, bool> filter = null)
         {
             yield return this;
-            foreach (var item in this._ports)
+            foreach (Port item in this._ports)
             {
                 if (filter?.Invoke(item) != false)
                     yield return item;
             }
-            foreach (var item in this.LinksOutOf)
+            foreach (Link item in this.LinksOutOf)
             {
                 if (filter?.Invoke(item) != false)
                     yield return item;
@@ -267,17 +264,17 @@ namespace H.Controls.Diagram
 
         public List<Port> GetPorts(Func<Port, bool> predicate = null)
         {
-            if (predicate == null) 
+            if (predicate == null)
                 return this._ports.Where(l => true)?.ToList();
             return this._ports.Where(predicate)?.ToList();
         }
 
         public void Aligment()
         {
-            foreach (var link in this.LinksInto)
+            foreach (Link link in this.LinksInto)
             {
-                double spanHeight = (link.FromNode.ActualHeight + this.ActualHeight) / 2 + 60;
-                double spanWidth = (link.FromNode.ActualWidth + this.ActualWidth) / 2 + 100;
+                double spanHeight = ((link.FromNode.ActualHeight + this.ActualHeight) / 2) + 60;
+                double spanWidth = ((link.FromNode.ActualWidth + this.ActualWidth) / 2) + 100;
                 double x = link.FromNode.Location.X;
                 double y = link.FromNode.Location.Y;
 
@@ -343,7 +340,7 @@ namespace H.Controls.Diagram
                     return;
                 }
 
-                var point = new Point(x, y);
+                Point point = new Point(x, y);
                 NodeLayer.SetPosition(this, point);
             }
         }
@@ -366,7 +363,7 @@ namespace H.Controls.Diagram
                         return false;
                     }
 
-                    var links = l.LinksOutOf.Where(x => x.GetContent<IFlowableLink>().IsMatchResult(result));
+                    IEnumerable<Link> links = l.LinksOutOf.Where(x => x.GetContent<IFlowableLink>().IsMatchResult(result));
                     foreach (Link link in links)
                     {
                         if (link.GetDispatcherValue(x => x.State) == FlowableState.Canceling)
@@ -374,7 +371,7 @@ namespace H.Controls.Diagram
                         builder?.Invoke(link.FromPort);
                         IFlowablePort portData = link.FromPort?.GetContent<IFlowablePort>();
                         this.GetDiagram().OnRunningPartChanged(link.FromPort);
-                        var rFrom = await portData?.TryInvokeAsync(l, link.FromPort);
+                        IFlowableResult rFrom = await portData?.TryInvokeAsync(l, link.FromPort);
                         if (rFrom?.State == FlowableResultState.Error)
                             return false;
 
@@ -384,7 +381,7 @@ namespace H.Controls.Diagram
                         IFlowableLink linkData = link.GetContent<IFlowableLink>();
                         link.InvokeDispatcher(x => x.State = FlowableState.Running);
                         this.GetDiagram().OnRunningPartChanged(link);
-                        var r = await linkData?.TryInvokeAsync(link.FromPort, link);
+                        IFlowableResult r = await linkData?.TryInvokeAsync(link.FromPort, link);
                         link.InvokeDispatcher(x => link.State = r?.State == FlowableResultState.OK ? FlowableState.Success : FlowableState.Error);
                         if (r?.State == FlowableResultState.Error)
                             return false;
@@ -394,7 +391,7 @@ namespace H.Controls.Diagram
                         builder?.Invoke(link.ToPort);
                         IFlowablePort toPort = link.ToPort.GetContent<IFlowablePort>();
                         this.GetDiagram().OnRunningPartChanged(link.ToPort);
-                        var rTo = await toPort?.TryInvokeAsync(link, link.ToPort);
+                        IFlowableResult rTo = await toPort?.TryInvokeAsync(link, link.ToPort);
                         if (rTo?.State == FlowableResultState.Error)
                             return false;
 
@@ -433,7 +430,7 @@ namespace H.Controls.Diagram
                         IFlowableLink linkData = link.GetContent<IFlowableLink>();
                         link.State = FlowableState.Running;
                         this.GetDiagram().OnRunningPartChanged(link);
-                        var r = await linkData?.TryInvokeAsync(l, link);
+                        IFlowableResult r = await linkData?.TryInvokeAsync(l, link);
                         link.State = r?.State == FlowableResultState.OK ? FlowableState.Success : FlowableState.Error;
                         if (r?.State == FlowableResultState.Error)
                             return false;
@@ -526,7 +523,7 @@ namespace H.Controls.Diagram
                 }
             }
 #if DEBUG
-            var span = DateTime.Now - dateTime;
+            TimeSpan span = DateTime.Now - dateTime;
             System.Diagnostics.Debug.WriteLine("Node.ArrangeOverride：" + span.ToString());
 #endif 
             return finalSize;

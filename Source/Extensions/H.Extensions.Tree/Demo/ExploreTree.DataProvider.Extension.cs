@@ -1,0 +1,20 @@
+﻿using System;
+using System.Windows.Markup;
+
+namespace H.Extensions.Tree
+{
+    public class ExploreTreeDataProviderExtension : MarkupExtension
+    {
+        public string Root { get; set; }
+        public bool IsRecursion { get; set; } = false;
+        public override object ProvideValue(IServiceProvider serviceProvider)
+        {
+            ExploreTree tree = new ExploreTree()
+            {
+                Root = Root
+            };
+            System.Collections.Generic.IEnumerable<Providers.Mvvm.ITreeNode> result = tree.GetTreeNodes(IsRecursion);
+            return result;
+        }
+    }
+}

@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.Windows.Media;
 
@@ -25,10 +25,10 @@ namespace H.Controls.PropertyGrid
 
         public override bool Equals(object obj)
         {
-            var ci = obj as ColorItem;
+            ColorItem ci = obj as ColorItem;
             if (ci == null)
                 return false;
-            return (ci.Color.Equals(Color) && ci.Name.Equals(Name));
+            return ci.Color.Equals(Color) && ci.Name.Equals(Name);
         }
 
         public override int GetHashCode()

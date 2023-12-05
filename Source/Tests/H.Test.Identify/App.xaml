@@ -1,8 +1,8 @@
 ﻿<ApplicationBase x:Class="H.Test.Identify.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:h="https://github.com/HeBianGu"
-             xmlns:local="clr-namespace:H.Test.Identify">
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:h="https://github.com/HeBianGu"
+                 xmlns:local="clr-namespace:H.Test.Identify">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

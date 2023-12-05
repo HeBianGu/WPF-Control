@@ -4,14 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
 namespace H.Controls.FilterBox
 {
-    public class TextFilterBox : TextBox, IDisplayFilterBox
+    public class TextFilterBox : TextBox
     {
         static TextFilterBox()
         {
@@ -37,7 +35,7 @@ namespace H.Controls.FilterBox
             set { SetValue(DisplayNameProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty DisplayNameProperty =
             DependencyProperty.Register("DisplayName", typeof(string), typeof(TextFilterBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
             {
@@ -63,7 +61,7 @@ namespace H.Controls.FilterBox
             set { SetValue(UseSearchableProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UseSearchableProperty =
             DependencyProperty.Register("UseSearchable", typeof(bool), typeof(TextFilterBox), new FrameworkPropertyMetadata(default(bool), (d, e) =>
             {
@@ -89,7 +87,7 @@ namespace H.Controls.FilterBox
             set { SetValue(PropertyNamesProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty PropertyNamesProperty =
             DependencyProperty.Register("PropertyNames", typeof(string), typeof(TextFilterBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
             {
@@ -115,7 +113,7 @@ namespace H.Controls.FilterBox
             set { SetValue(StringComparisonProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty StringComparisonProperty =
             DependencyProperty.Register("StringComparison", typeof(StringComparison), typeof(TextFilterBox), new FrameworkPropertyMetadata(StringComparison.OrdinalIgnoreCase, (d, e) =>
             {
@@ -143,7 +141,7 @@ namespace H.Controls.FilterBox
             private set { SetValue(FilterProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty FilterProperty =
             DependencyProperty.Register("Filter", typeof(IFilter), typeof(TextFilterBox), new FrameworkPropertyMetadata(default(IFilter), (d, e) =>
             {
@@ -171,7 +169,7 @@ namespace H.Controls.FilterBox
         {
             add { this.AddHandler(FilterChangedRoutedEvent, value); }
             remove { this.RemoveHandler(FilterChangedRoutedEvent, value); }
-    }
+        }
 
         protected void OnFilterChanged()
         {
@@ -201,15 +199,15 @@ namespace H.Controls.FilterBox
                 return false;
             obj = obj is IModelViewModel model ? model.GetModel() : obj;
             string[] propertyNames = this._textFilterBox.PropertyNames?.Split(',');
-            var ps = obj.GetType().GetProperties().Where(x => propertyNames?.Contains(x.Name) != false);
-            foreach (var p in ps)
+            IEnumerable<PropertyInfo> ps = obj.GetType().GetProperties().Where(x => propertyNames?.Contains(x.Name) != false);
+            foreach (PropertyInfo p in ps)
             {
                 if (p.Name == "Item")
                     continue;
-                var value = p.GetValue(obj);
+                object value = p.GetValue(obj);
                 if (value != null)
                 {
-                    var r = value.ToString().Contains(txt, this._textFilterBox.StringComparison);
+                    bool r = value.ToString().Contains(txt, this._textFilterBox.StringComparison);
                     if (r)
                         return true;
                 }

@@ -1,17 +1,8 @@
-/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
 
 using H.Controls.Dock.Layout;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace H.Controls.Dock.Controls
@@ -106,11 +97,11 @@ namespace H.Controls.Dock.Controls
             base.OnMouseLeave(e);
             if (_isMouseDown && e.LeftButton == MouseButtonState.Pressed)
             {
-                var pane = this.FindVisualAncestor<LayoutAnchorablePaneControl>();
+                LayoutAnchorablePaneControl pane = this.FindVisualAncestor<LayoutAnchorablePaneControl>();
                 if (pane != null)
                 {
-                    var paneModel = pane.Model as LayoutAnchorablePane;
-                    var manager = paneModel.Root.Manager;
+                    LayoutAnchorablePane paneModel = pane.Model as LayoutAnchorablePane;
+                    DockingManager manager = paneModel.Root.Manager;
                     manager.StartDraggingFloatingWindowForPane(paneModel);
                 }
                 else
@@ -131,14 +122,14 @@ namespace H.Controls.Dock.Controls
 
             // Start a drag & drop action for a LayoutAnchorable
             if (e.Handled || Model.CanMove == false) return;
-            var attachFloatingWindow = false;
-            var parentFloatingWindow = Model.FindParent<LayoutAnchorableFloatingWindow>();
+            bool attachFloatingWindow = false;
+            LayoutAnchorableFloatingWindow parentFloatingWindow = Model.FindParent<LayoutAnchorableFloatingWindow>();
             if (parentFloatingWindow != null) attachFloatingWindow = parentFloatingWindow.Descendents().OfType<LayoutAnchorablePane>().Count() == 1;
 
             if (attachFloatingWindow)
             {
                 //the pane is hosted inside a floating window that contains only an anchorable pane so drag the floating window itself
-                var floatingWndControl = Model.Root.Manager.FloatingWindows.Single(fwc => fwc.Model == parentFloatingWindow);
+                LayoutFloatingWindowControl floatingWndControl = Model.Root.Manager.FloatingWindows.Single(fwc => fwc.Model == parentFloatingWindow);
                 floatingWndControl.AttachDrag(false);
             }
             else

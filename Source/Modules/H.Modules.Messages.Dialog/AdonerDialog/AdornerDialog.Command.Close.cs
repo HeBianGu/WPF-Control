@@ -1,8 +1,4 @@
-﻿using H.Controls.Adorner;
-using H.Providers.Mvvm;
-using System.Linq;
-using System.Windows;
-using System.Windows.Documents;
+﻿using H.Providers.Mvvm;
 
 namespace H.Modules.Messages.Dialog
 {

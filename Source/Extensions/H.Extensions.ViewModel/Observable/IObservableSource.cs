@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 namespace H.Extensions.ViewModel
 {
@@ -10,5 +10,7 @@ namespace H.Extensions.ViewModel
         int PageIndex { get; set; }
         int Total { get; set; }
         int TotalPage { get; set; }
+        int Count { get; }
+        int SelectedIndex { get; set; }
     }
 }

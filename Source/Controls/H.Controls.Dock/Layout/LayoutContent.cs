@@ -1,11 +1,11 @@
-/************************************************************************
-   H.Controls.Dock
 
-   Copyright (C) 2007-2013 Xceed Software Inc.
 
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
+
+
+
+
+
+
 
 using H.Controls.Dock.Controls;
 using System;
@@ -73,7 +73,7 @@ namespace H.Controls.Dock.Layout
 
         private static object CoerceTitleValue(DependencyObject obj, object value)
         {
-            var lc = (LayoutContent)obj;
+            LayoutContent lc = (LayoutContent)obj;
             if ((string)value != lc.Title) lc.RaisePropertyChanging(TitleProperty.Name);
             return value;
         }
@@ -111,7 +111,7 @@ namespace H.Controls.Dock.Layout
         {
             get
             {
-                var value = (string)GetValue(ContentIdProperty);
+                string value = (string)GetValue(ContentIdProperty);
                 if (!string.IsNullOrWhiteSpace(value)) return value;
                 // #83 - if Content.Name is empty at setting content and will be set later, ContentId will stay null.
                 SetContentIdFromContent();
@@ -132,7 +132,7 @@ namespace H.Controls.Dock.Layout
 
         private void SetContentIdFromContent()
         {
-            var contentAsControl = _content as FrameworkElement;
+            FrameworkElement contentAsControl = _content as FrameworkElement;
             if (!string.IsNullOrWhiteSpace(contentAsControl?.Name)) SetCurrentValue(ContentIdProperty, contentAsControl.Name);
         }
 
@@ -148,7 +148,7 @@ namespace H.Controls.Dock.Layout
             set
             {
                 if (value == _isSelected) return;
-                var oldValue = _isSelected;
+                bool oldValue = _isSelected;
                 RaisePropertyChanging(nameof(IsSelected));
                 _isSelected = value;
                 if (Parent is ILayoutContentSelector parentSelector) parentSelector.SelectedContentIndex = _isSelected ? parentSelector.IndexOf(this) : -1;
@@ -180,9 +180,9 @@ namespace H.Controls.Dock.Layout
             {
                 if (value == _isActive) return;
                 RaisePropertyChanging(nameof(IsActive));
-                var oldValue = _isActive;
+                bool oldValue = _isActive;
                 _isActive = value;
-                var root = Root;
+                ILayoutRoot root = Root;
                 if (root != null)
                 {
                     if (root.ActiveContent != this && value) Root.ActiveContent = this;
@@ -617,9 +617,9 @@ namespace H.Controls.Dock.Layout
         {
             if (PreviousContainer != null && PreviousContainer.FindParent<LayoutFloatingWindow>() != null)
             {
-                var currentContainer = Parent as ILayoutPane;
-                var currentContainerIndex = (currentContainer as ILayoutGroup).IndexOfChild(this);
-                var previousContainerAsLayoutGroup = PreviousContainer as ILayoutGroup;
+                ILayoutPane currentContainer = Parent as ILayoutPane;
+                int currentContainerIndex = (currentContainer as ILayoutGroup).IndexOfChild(this);
+                ILayoutGroup previousContainerAsLayoutGroup = PreviousContainer as ILayoutGroup;
 
                 if (PreviousContainerIndex < previousContainerAsLayoutGroup.ChildrenCount)
                     previousContainerAsLayoutGroup.InsertChildAt(PreviousContainerIndex, this);
@@ -677,9 +677,9 @@ namespace H.Controls.Dock.Layout
         {
             if (PreviousContainer != null)
             {
-                var currentContainer = Parent;
-                var currentContainerIndex = currentContainer is ILayoutGroup ? (currentContainer as ILayoutGroup).IndexOfChild(this) : -1;
-                var previousContainerAsLayoutGroup = PreviousContainer as ILayoutGroup;
+                ILayoutContainer currentContainer = Parent;
+                int currentContainerIndex = currentContainer is ILayoutGroup ? (currentContainer as ILayoutGroup).IndexOfChild(this) : -1;
+                ILayoutGroup previousContainerAsLayoutGroup = PreviousContainer as ILayoutGroup;
 
                 if (PreviousContainerIndex < previousContainerAsLayoutGroup.ChildrenCount)
                     previousContainerAsLayoutGroup.InsertChildAt(PreviousContainerIndex, this);
@@ -726,7 +726,7 @@ namespace H.Controls.Dock.Layout
         {
             if (IsSelected && Parent is ILayoutContentSelector)
             {
-                var parentSelector = Parent as ILayoutContentSelector;
+                ILayoutContentSelector parentSelector = Parent as ILayoutContentSelector;
                 parentSelector.SelectedContentIndex = parentSelector.IndexOf(this);
             }
 
@@ -741,19 +741,19 @@ namespace H.Controls.Dock.Layout
         /// <returns></returns>
         internal bool TestCanClose()
         {
-            var args = new CancelEventArgs();
+            CancelEventArgs args = new CancelEventArgs();
             OnClosing(args);
             return !args.Cancel;
         }
 
         internal void CloseInternal()
         {
-            var root = Root;
-            var parentAsContainer = Parent;
+            ILayoutRoot root = Root;
+            ILayoutContainer parentAsContainer = Parent;
 
             if (PreviousContainer == null)
             {
-                var parentAsGroup = Parent as ILayoutGroup;
+                ILayoutGroup parentAsGroup = Parent as ILayoutGroup;
                 PreviousContainer = parentAsContainer;
                 PreviousContainerIndex = parentAsGroup.IndexOfChild(this);
 

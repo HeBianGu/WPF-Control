@@ -1,11 +1,10 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
@@ -62,7 +61,7 @@ namespace H.Controls.Form
                 BindingGetSelectSourceMethodAttribute attr = this.PropertyInfo.GetCustomAttribute<BindingGetSelectSourceMethodAttribute>();
                 if (attr != null)
                 {
-                    var p = this.Obj.GetType().GetMethod(attr.MethodName);
+                    MethodInfo p = this.Obj.GetType().GetMethod(attr.MethodName);
                     return p.Invoke(this.Obj, null) as IEnumerable<T>;
                 }
             }
@@ -71,7 +70,7 @@ namespace H.Controls.Form
                 BindingGetSelectSourcePropertyAttribute attr = this.PropertyInfo.GetCustomAttribute<BindingGetSelectSourcePropertyAttribute>();
                 if (attr != null)
                 {
-                    var p = this.Obj.GetType().GetProperty(attr.PropertyName);
+                    PropertyInfo p = this.Obj.GetType().GetProperty(attr.PropertyName);
                     return p.GetValue(this.Obj) as IEnumerable<T>;
                 }
             }

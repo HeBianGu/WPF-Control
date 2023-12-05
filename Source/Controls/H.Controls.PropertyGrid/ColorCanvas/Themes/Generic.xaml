@@ -52,7 +52,9 @@
 
     <SolidColorBrush x:Key="ThumbMouseOver" Color="#FFE5F2F6" />
 
-    <Style x:Key="ColorCanvasTextBoxStyle" BasedOn="{StaticResource {x:Type TextBox}}" TargetType="TextBox">
+    <Style x:Key="ColorCanvasTextBoxStyle"
+           BasedOn="{StaticResource {x:Type TextBox}}"
+           TargetType="TextBox">
         <Setter Property="Background" Value="Transparent" />
         <Style.Triggers>
             <Trigger Property="IsFocused" Value="False">
@@ -108,7 +110,8 @@
                 <ControlTemplate TargetType="{x:Type Thumb}">
                     <Canvas SnapsToDevicePixels="true">
                         <Path x:Name="LeftArrow"
-                              Width="6" Height="8"
+                              Width="6"
+                              Height="8"
                               Data="F1 M 276.761,316L 262.619,307.835L 262.619,324.165L 276.761,316 Z "
                               Fill="#FF000000"
                               RenderTransformOrigin="0.5,0.5"
@@ -125,7 +128,8 @@
                             </Path.RenderTransform>
                         </Path>
                         <Path x:Name="RightArrow"
-                              Width="6" Height="8"
+                              Width="6"
+                              Height="8"
                               Data="F1 M 276.761,316L 262.619,307.835L 262.619,324.165L 276.761,316 Z "
                               Fill="#FF000000"
                               RenderTransformOrigin="0.5,0.5"
@@ -248,7 +252,9 @@
                                                    Width="{Binding ElementName=PART_ColorShadingCanvas, Path=Width}"
                                                    Height="{Binding ElementName=PART_ColorShadingCanvas, Path=Height}"
                                                    Fill="{Binding SelectedColor, ElementName=PART_SpectrumSlider, Converter={StaticResource ColorToSolidColorBrushConverter}}" />
-                                        <Rectangle x:Name="WhiteGradient" Width="{Binding ElementName=PART_ColorShadingCanvas, Path=Width}" Height="{Binding ElementName=PART_ColorShadingCanvas, Path=Height}">
+                                        <Rectangle x:Name="WhiteGradient"
+                                                   Width="{Binding ElementName=PART_ColorShadingCanvas, Path=Width}"
+                                                   Height="{Binding ElementName=PART_ColorShadingCanvas, Path=Height}">
                                             <Rectangle.Fill>
                                                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                                                     <GradientStop Offset="0" Color="#ffffffff" />
@@ -256,7 +262,9 @@
                                                 </LinearGradientBrush>
                                             </Rectangle.Fill>
                                         </Rectangle>
-                                        <Rectangle x:Name="BlackGradient" Width="{Binding ElementName=PART_ColorShadingCanvas, Path=Width}" Height="{Binding ElementName=PART_ColorShadingCanvas, Path=Height}">
+                                        <Rectangle x:Name="BlackGradient"
+                                                   Width="{Binding ElementName=PART_ColorShadingCanvas, Path=Width}"
+                                                   Height="{Binding ElementName=PART_ColorShadingCanvas, Path=Height}">
                                             <Rectangle.Fill>
                                                 <LinearGradientBrush StartPoint="0,1" EndPoint="0, 0">
                                                     <GradientStop Offset="0" Color="#ff000000" />
@@ -453,9 +461,13 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:ColorSpectrumSlider}">
                     <Grid>
-                        <Border Margin="0,8,0,0" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                        <Border Margin="0,8,0,0"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
                             <Border x:Name="PART_TrackBackground" Width="15">
-                                <Rectangle x:Name="PART_SpectrumDisplay" VerticalAlignment="Stretch" Stretch="Fill" />
+                                <Rectangle x:Name="PART_SpectrumDisplay"
+                                           VerticalAlignment="Stretch"
+                                           Stretch="Fill" />
                             </Border>
                         </Border>
 

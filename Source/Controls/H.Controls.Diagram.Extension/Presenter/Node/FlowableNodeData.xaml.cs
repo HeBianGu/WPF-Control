@@ -2,14 +2,12 @@
 
 using H.Providers.Mvvm;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Xml.Serialization;
 
 namespace H.Controls.Diagram.Extension
@@ -17,7 +15,7 @@ namespace H.Controls.Diagram.Extension
     public class FlowableNodeData : TextNodeData, IFlowableNode
     {
         [XmlIgnore]
-         [Display(Name = "开始", GroupName = "操作")]
+        [Display(Name = "开始", GroupName = "操作")]
         public RelayCommand StartCommand => new RelayCommand(async (s, e) =>
         {
             if (e is Node part)
@@ -180,10 +178,10 @@ namespace H.Controls.Diagram.Extension
                 this.State = FlowableState.Running;
                 this.IsBuzy = true;
                 if (this.UseInfoLogger)
-                    Logger.Instance?.Info($"正在执行<{this.GetType().Name}>:{this.Text}");
+                    IocLog.Instance?.Info($"正在执行<{this.GetType().Name}>:{this.Text}");
                 IFlowableResult result = await InvokeAsync(previors, current);
                 if (this.UseInfoLogger)
-                    Logger.Instance?.Info(result.State == FlowableResultState.Error ? $"运行错误<{this.GetType().Name}>:{this.Text} {result.Message}" : $"执行完成<{this.GetType().Name}>:{this.Text} {result.Message}");
+                    IocLog.Instance?.Info(result.State == FlowableResultState.Error ? $"运行错误<{this.GetType().Name}>:{this.Text} {result.Message}" : $"执行完成<{this.GetType().Name}>:{this.Text} {result.Message}");
                 this.State = result.State == FlowableResultState.OK ? FlowableState.Success : FlowableState.Error;
                 return result;
             }
@@ -192,8 +190,8 @@ namespace H.Controls.Diagram.Extension
                 this.State = FlowableState.Error;
                 this.Exception = ex;
                 this.Message = ex.Message;
-                Logger.Instance?.Error($"执行错误<{this.GetType().Name}>:{this.Name} {this.Message}");
-                Logger.Instance?.Error(ex);
+                IocLog.Instance?.Error($"执行错误<{this.GetType().Name}>:{this.Name} {this.Message}");
+                IocLog.Instance?.Error(ex);
                 return this.Error(ex.Message);
             }
             finally
@@ -222,7 +220,7 @@ namespace H.Controls.Diagram.Extension
 
         protected T GetFromData<T>(Node current)
         {
-            var from = current.GetFromNodes().FirstOrDefault();
+            Node from = current.GetFromNodes().FirstOrDefault();
             if (from == null)
                 return default(T);
             return from.GetContent<T>();

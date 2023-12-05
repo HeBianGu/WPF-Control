@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Runtime.InteropServices;
@@ -26,32 +26,32 @@ namespace H.Controls.PropertyGrid
 
         public static bool AreVirtuallyEqual(Size s1, Size s2)
         {
-            return (AreVirtuallyEqual(s1.Width, s2.Width)
-                && AreVirtuallyEqual(s1.Height, s2.Height));
+            return AreVirtuallyEqual(s1.Width, s2.Width)
+                && AreVirtuallyEqual(s1.Height, s2.Height);
         }
 
         public static bool AreVirtuallyEqual(Point p1, Point p2)
         {
-            return (AreVirtuallyEqual(p1.X, p2.X)
-                && AreVirtuallyEqual(p1.Y, p2.Y));
+            return AreVirtuallyEqual(p1.X, p2.X)
+                && AreVirtuallyEqual(p1.Y, p2.Y);
         }
 
         public static bool AreVirtuallyEqual(Rect r1, Rect r2)
         {
-            return (AreVirtuallyEqual(r1.TopLeft, r2.TopLeft)
-                && AreVirtuallyEqual(r1.BottomRight, r2.BottomRight));
+            return AreVirtuallyEqual(r1.TopLeft, r2.TopLeft)
+                && AreVirtuallyEqual(r1.BottomRight, r2.BottomRight);
         }
 
         public static bool AreVirtuallyEqual(Vector v1, Vector v2)
         {
-            return (AreVirtuallyEqual(v1.X, v2.X)
-                && AreVirtuallyEqual(v1.Y, v2.Y));
+            return AreVirtuallyEqual(v1.X, v2.X)
+                && AreVirtuallyEqual(v1.Y, v2.Y);
         }
 
         public static bool AreVirtuallyEqual(Segment s1, Segment s2)
         {
             // note: Segment struct already uses "virtually equal" approach
-            return (s1 == s2);
+            return s1 == s2;
         }
 
         public static bool IsNaN(double value)

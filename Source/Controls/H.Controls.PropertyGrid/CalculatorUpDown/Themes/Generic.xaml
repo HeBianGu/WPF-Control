@@ -45,14 +45,17 @@
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
 
-                                <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                <ContentPresenter HorizontalAlignment="Stretch"
+                                                  VerticalAlignment="Stretch"
+                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
 
                                 <Grid x:Name="arrowGlyph"
                                       Grid.Column="1"
                                       Margin="5"
                                       IsHitTestVisible="False">
                                     <Path x:Name="Arrow"
-                                          Width="9" Height="5"
+                                          Width="9"
+                                          Height="5"
                                           Margin="0,1,0,0"
                                           Data="{StaticResource DownArrowGeometry}"
                                           Fill="#FF000000" />

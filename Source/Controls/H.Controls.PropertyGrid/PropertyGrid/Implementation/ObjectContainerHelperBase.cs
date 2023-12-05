@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections;
@@ -45,7 +45,7 @@ namespace H.Controls.PropertyGrid
             get
             {
                 PropertyItem defaultProperty = null;
-                var defaultName = this.GetDefaultPropertyName();
+                string defaultName = this.GetDefaultPropertyName();
                 if (defaultName != null)
                 {
                     defaultProperty = _propertyItemCollection
@@ -74,12 +74,12 @@ namespace H.Controls.PropertyGrid
             // the PropertyItem itself.
             Debug.Assert(item is PropertyItem || item is string);
 
-            var propertyItem = item as PropertyItem;
+            PropertyItem propertyItem = item as PropertyItem;
             if (propertyItem != null)
                 return propertyItem;
 
 
-            var propertyStr = item as string;
+            string propertyStr = item as string;
             if (propertyStr != null)
                 return PropertyItems.FirstOrDefault((prop) => propertyStr == prop.PropertyDescriptor.Name);
 
@@ -90,7 +90,7 @@ namespace H.Controls.PropertyGrid
         {
             // Since this call is only used to update the PropertyGrid.SelectedProperty property,
             // return the PropertyName.
-            var propertyItem = container as PropertyItem;
+            PropertyItem propertyItem = container as PropertyItem;
             if (propertyItem == null)
                 return null;
 
@@ -108,7 +108,7 @@ namespace H.Controls.PropertyGrid
 
         public void GenerateProperties()
         {
-            if ((PropertyItems.Count == 0)
+            if (PropertyItems.Count == 0
               )
             {
                 this.RegenerateProperties();
@@ -203,7 +203,7 @@ namespace H.Controls.PropertyGrid
 
         private string GetCategoryGroupingPropertyName()
         {
-            var propGroup = this.ComputeCategoryGroupDescription() as PropertyGroupDescription;
+            PropertyGroupDescription propGroup = this.ComputeCategoryGroupDescription() as PropertyGroupDescription;
             return (propGroup != null) ? propGroup.PropertyName : null;
         }
 
@@ -229,13 +229,13 @@ namespace H.Controls.PropertyGrid
         {
             IEnumerable<PropertyItem> subProperties = this.GenerateSubPropertiesCore();
 
-            foreach (var propertyItem in subProperties)
+            foreach (PropertyItem propertyItem in subProperties)
             {
                 this.InitializePropertyItem(propertyItem);
             }
 
             //Remove the event callback from the previous children (if any)
-            foreach (var propertyItem in PropertyItems)
+            foreach (PropertyItem propertyItem in PropertyItems)
             {
                 propertyItem.PropertyChanged -= OnChildrenPropertyChanged;
             }
@@ -243,7 +243,7 @@ namespace H.Controls.PropertyGrid
             PropertyItems.UpdateItems(subProperties);
 
             //Add the event callback to the new childrens
-            foreach (var propertyItem in PropertyItems)
+            foreach (PropertyItem propertyItem in PropertyItems)
             {
                 propertyItem.PropertyChanged += OnChildrenPropertyChanged;
             }
@@ -270,8 +270,8 @@ namespace H.Controls.PropertyGrid
                 //ICustomTypeProvider is only available in .net 4.5 and over. Use reflection so the .net 4.0 and .net 3.5 still works.
                 else if (instance.GetType().GetInterface("ICustomTypeProvider", true) != null)
                 {
-                    var methodInfo = instance.GetType().GetMethod("GetCustomType");
-                    var result = methodInfo.Invoke(instance, null) as Type;
+                    System.Reflection.MethodInfo methodInfo = instance.GetType().GetMethod("GetCustomType");
+                    Type result = methodInfo.Invoke(instance, null) as Type;
                     descriptors = TypeDescriptor.GetProperties(result);
                 }
                 else
@@ -284,14 +284,14 @@ namespace H.Controls.PropertyGrid
                 descriptors = tc.GetProperties(instance);
             }
 
-            if ((descriptors != null))
+            if (descriptors != null)
             {
-                var descriptorsProperties = descriptors.Cast<PropertyDescriptor>();
+                IEnumerable<PropertyDescriptor> descriptorsProperties = descriptors.Cast<PropertyDescriptor>();
                 if (hideInheritedProperties)
                 {
-                    var properties = from p in descriptorsProperties
-                                     where p.ComponentType == instance.GetType()
-                                     select p;
+                    IEnumerable<PropertyDescriptor> properties = from p in descriptorsProperties
+                                                                 where p.ComponentType == instance.GetType()
+                                                                 select p;
                     return properties.ToList();
                 }
                 else
@@ -311,7 +311,7 @@ namespace H.Controls.PropertyGrid
             if (propertyDescriptor == null)
                 return false;
 
-            var attribute = PropertyGridUtilities.GetAttribute<RefreshPropertiesAttribute>(propertyDescriptor);
+            RefreshPropertiesAttribute attribute = PropertyGridUtilities.GetAttribute<RefreshPropertiesAttribute>(propertyDescriptor);
             if (attribute != null)
                 return attribute.RefreshProperties != RefreshProperties.None;
 
@@ -394,7 +394,7 @@ namespace H.Controls.PropertyGrid
             // PropertyItem.PropertyType's defaultValue equals current PropertyItem's value => set the DefaultValue attribute
             if (pd.DefaultValue != null)
             {
-                var typeDefaultValue = this.GetTypeDefaultValue(propertyItem.PropertyType);
+                object typeDefaultValue = this.GetTypeDefaultValue(propertyItem.PropertyType);
 
                 if (((propertyItem.Value != null) && propertyItem.Value.Equals(typeDefaultValue))
                       || ((propertyItem.Value == null) && (typeDefaultValue == propertyItem.Value)))
@@ -415,7 +415,7 @@ namespace H.Controls.PropertyGrid
                 type = type.GetProperty("Value").PropertyType;
             }
 
-            return (type.IsValueType ? Activator.CreateInstance(type) : null);
+            return type.IsValueType ? Activator.CreateInstance(type) : null;
         }
 
         private void SetupDefinitionBinding<T>(
@@ -481,7 +481,7 @@ namespace H.Controls.PropertyGrid
         {
             PropertyDefinition def = null;
 
-            var propertyDefs = this.PropertyContainer.PropertyDefinitions;
+            PropertyDefinitionCollection propertyDefs = this.PropertyContainer.PropertyDefinitions;
             if (propertyDefs != null)
             {
                 def = propertyDefs[descriptor.Name];
@@ -527,7 +527,7 @@ namespace H.Controls.PropertyGrid
         public override Binding CreateChildrenDefaultBinding(PropertyItemBase propertyItem)
         {
             Binding binding = new Binding("Value");
-            binding.Mode = (((PropertyItem)propertyItem).IsReadOnly) ? BindingMode.OneWay : BindingMode.TwoWay;
+            binding.Mode = ((PropertyItem)propertyItem).IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay;
             return binding;
         }
 

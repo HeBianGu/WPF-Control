@@ -1,15 +1,16 @@
 ﻿using System;
+using System.Windows;
 
 namespace H.Providers.Ioc
 {
-    public interface IDialog : ILayout
+    public interface IDialog : ILayoutable, ICancelable
     {
         Func<bool> CanSumit { get; set; }
-        bool IsCancel { get; }
         void Sumit();
         void Close();
-
         string Title { get; set; }
         bool? DialogResult { get; set; }
+        DialogButton DialogButton { get; set; }
+        Window Owner { get; set; }
     }
 }

@@ -1,5 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.77" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\Controls\H.Controls.Adorner\H.Controls.Adorner.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.Form\H.Controls.Form.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Attach\H.Extensions.Attach.csproj" />

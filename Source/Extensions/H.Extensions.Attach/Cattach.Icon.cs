@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.Windows;
 using System.Windows.Media;
@@ -17,7 +17,7 @@ namespace H.Extensions.Attach
             obj.SetValue(OpacityProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty OpacityProperty =
             DependencyProperty.RegisterAttached("Opacity", typeof(double), typeof(Cattach), new PropertyMetadata(1.0, OnOpacityChanged));
 
@@ -93,7 +93,7 @@ namespace H.Extensions.Attach
             obj.SetValue(IconForegroundProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty IconForegroundProperty =
             DependencyProperty.RegisterAttached("IconForeground", typeof(Brush), typeof(Cattach), new PropertyMetadata(default(Brush), OnIconForegroundChanged));
 

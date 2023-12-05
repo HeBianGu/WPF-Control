@@ -10,7 +10,7 @@ namespace H.Providers.Ioc
         }
         public override bool CanExecute(object parameter)
         {
-            return Ioc<IRevertibleService>.Instance?.CanUndo==true;
+            return Ioc<IRevertibleService>.Instance?.CanUndo == true;
         }
     }
 }

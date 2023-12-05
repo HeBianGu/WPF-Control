@@ -1,6 +1,5 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 using H.Extensions.Attach;
-using H.Extensions.StoryBoard;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +7,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
@@ -26,7 +24,7 @@ namespace H.Modules.Guide
 
         private GuideTree _guideTree = null;
         private readonly Border _backgroundBorder = new Border();
-        private readonly Path _currentBound= new Path();
+        private readonly Path _currentBound = new Path();
         private readonly UIElement _element;
         private readonly ContentControl _contentControl = new ContentControl() { Margin = new Thickness(10.0), HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top };
 
@@ -200,7 +198,7 @@ namespace H.Modules.Guide
             set { SetValue(BackgroundProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty BackgroundProperty =
             DependencyProperty.Register("Background", typeof(Brush), typeof(GuideBox), new FrameworkPropertyMetadata(default(Brush), (d, e) =>
             {
@@ -377,10 +375,10 @@ namespace H.Modules.Guide
             Rect rect = new Rect(point, this._guideTree.Current.Element.RenderSize);
             this._backgroundBorder.Clip = new CombinedGeometry(GeometryCombineMode.Exclude, new RectangleGeometry(new Rect(this._backgroundBorder.RenderSize)), new RectangleGeometry(rect));
             double thickness = this._currentBound.StrokeThickness;
-            this._currentBound.Data = new RectangleGeometry(new Rect(new Point(point.X - thickness * 0.5,
-                point.Y - thickness * 0.5),
-                new Size(this._guideTree.Current.Element.RenderSize.Width + thickness * 1,
-                this._guideTree.Current.Element.RenderSize.Height + thickness * 1)));
+            this._currentBound.Data = new RectangleGeometry(new Rect(new Point(point.X - (thickness * 0.5),
+                point.Y - (thickness * 0.5)),
+                new Size(this._guideTree.Current.Element.RenderSize.Width + (thickness * 1),
+                this._guideTree.Current.Element.RenderSize.Height + (thickness * 1))));
 
             object title = Cattach.GetGuideTitle(this._guideTree.Current.Element);
             Cattach.SetGuideTitle(this._contentControl, title);
@@ -400,7 +398,7 @@ namespace H.Modules.Guide
                 x = this.RenderSize.Width - this._contentControl.RenderSize.Width;
 
             if (x < 0)
-                x = this.RenderSize.Width / 2 - this._contentControl.RenderSize.Width / 2;
+                x = (this.RenderSize.Width / 2) - (this._contentControl.RenderSize.Width / 2);
 
             double y = rect.Bottom;
             if (rect.Height > this.RenderSize.Height - rect.Bottom)

@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 
@@ -9,18 +9,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Threading;
 
 namespace H.Controls.Form
@@ -69,13 +65,13 @@ namespace H.Controls.Form
         //    return true;
         //}
 
-        void RefreshMapper()
+        private void RefreshMapper()
         {
             this.Mapper = (l, k) =>
             {
                 if (l.PropertyType.IsClass && l.PropertyType != typeof(string))
                 {
-                    var current = l.GetCustomAttribute<PropertyAttribute>()?.UsePresenter;
+                    bool? current = l.GetCustomAttribute<PropertyAttribute>()?.UsePresenter;
                     if (this.UsePresenter && current != false)
                     {
                         return new PresenterPropertyItem(l, k);
@@ -128,7 +124,7 @@ namespace H.Controls.Form
             set { SetValue(ItemHeaderTemplateProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty ItemHeaderTemplateProperty =
             DependencyProperty.Register("ItemHeaderTemplate", typeof(DataTemplate), typeof(Form), new FrameworkPropertyMetadata(default(DataTemplate), (d, e) =>
             {
@@ -221,7 +217,7 @@ namespace H.Controls.Form
             set { SetValue(UseDisplayOnlyProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UseDisplayOnlyProperty =
             DependencyProperty.Register("UseDisplayOnly", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(true, (d, e) =>
             {
@@ -249,7 +245,7 @@ namespace H.Controls.Form
             set { SetValue(UseDeclaredOnlyProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UseDeclaredOnlyProperty =
             DependencyProperty.Register("UseDeclaredOnly", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(default(bool), (d, e) =>
              {
@@ -276,7 +272,7 @@ namespace H.Controls.Form
             set { SetValue(ExceptPropertyNamesProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty ExceptPropertyNamesProperty =
             DependencyProperty.Register("ExceptPropertyNames", typeof(string), typeof(Form), new FrameworkPropertyMetadata(default(string), (d, e) =>
              {
@@ -304,7 +300,7 @@ namespace H.Controls.Form
             set { SetValue(UsePropertyNamesProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UsePropertyNamesProperty =
             DependencyProperty.Register("UsePropertyNames", typeof(string), typeof(Form), new FrameworkPropertyMetadata(default(string), (d, e) =>
              {
@@ -332,7 +328,7 @@ namespace H.Controls.Form
             set { SetValue(UsePropertyViewProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UsePropertyViewProperty =
             DependencyProperty.Register("UsePropertyView", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(default(bool), FrameworkPropertyMetadataOptions.Inherits, (d, e) =>
               {
@@ -362,7 +358,7 @@ namespace H.Controls.Form
             set { SetValue(UsePresenterProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UsePresenterProperty =
             DependencyProperty.Register("UsePresenter", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(default(bool), (d, e) =>
              {
@@ -416,7 +412,7 @@ namespace H.Controls.Form
             set { SetValue(UseTypeConverterOnlyProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UseTypeConverterOnlyProperty =
             DependencyProperty.Register("UseTypeConverterOnly", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(default(bool), (d, e) =>
              {
@@ -494,7 +490,7 @@ namespace H.Controls.Form
             set { SetValue(UseBoolenProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UseBoolenProperty =
             DependencyProperty.Register("UseBoolen", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(true, (d, e) =>
              {
@@ -522,7 +518,7 @@ namespace H.Controls.Form
             set { SetValue(UseOrderByTypeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UseOrderByTypeProperty =
             DependencyProperty.Register("UseOrderByType", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(default(bool), (d, e) =>
              {
@@ -549,7 +545,7 @@ namespace H.Controls.Form
             set { SetValue(UseOrderByNameProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UseOrderByNameProperty =
             DependencyProperty.Register("UseOrderByName", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(default(bool), (d, e) =>
              {
@@ -577,7 +573,7 @@ namespace H.Controls.Form
             set { SetValue(UseOrderProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UseOrderProperty =
             DependencyProperty.Register("UseOrder", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(true, (d, e) =>
              {
@@ -603,7 +599,7 @@ namespace H.Controls.Form
             set { SetValue(UseEnumProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UseEnumProperty =
             DependencyProperty.Register("UseEnum", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(true, (d, e) =>
              {
@@ -629,7 +625,7 @@ namespace H.Controls.Form
             set { SetValue(UseStringProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UseStringProperty =
             DependencyProperty.Register("UseString", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(true, (d, e) =>
              {
@@ -655,7 +651,7 @@ namespace H.Controls.Form
             set { SetValue(UseDateTimeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UseDateTimeProperty =
             DependencyProperty.Register("UseDateTime", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(true, (d, e) =>
              {
@@ -684,7 +680,7 @@ namespace H.Controls.Form
             set { SetValue(UseCommandOnlyProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UseCommandOnlyProperty =
             DependencyProperty.Register("UseCommandOnly", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(default(bool), (d, e) =>
             {
@@ -711,7 +707,7 @@ namespace H.Controls.Form
             set { SetValue(UseCommandProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UseCommandProperty =
             DependencyProperty.Register("UseCommand", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(true, (d, e) =>
              {
@@ -738,7 +734,7 @@ namespace H.Controls.Form
             set { SetValue(UseClassProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UseClassProperty =
             DependencyProperty.Register("UseClass", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(true, (d, e) =>
              {
@@ -765,7 +761,7 @@ namespace H.Controls.Form
             set { SetValue(UseArrayProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UseArrayProperty =
             DependencyProperty.Register("UseArray", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(true, (d, e) =>
              {
@@ -792,7 +788,7 @@ namespace H.Controls.Form
             set { SetValue(UseInterfaceProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UseInterfaceProperty =
             DependencyProperty.Register("UseInterface", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(true, (d, e) =>
              {
@@ -820,7 +816,7 @@ namespace H.Controls.Form
             set { SetValue(UsePrimitiveProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UsePrimitiveProperty =
             DependencyProperty.Register("UsePrimitive", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(true, (d, e) =>
              {
@@ -846,7 +842,7 @@ namespace H.Controls.Form
             set { SetValue(MapperProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty MapperProperty =
             DependencyProperty.Register("Mapper", typeof(Func<PropertyInfo, object, IPropertyItem>), typeof(Form), new FrameworkPropertyMetadata(default(Func<PropertyInfo, object, IPropertyItem>), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, (d, e) =>
                  {
@@ -871,7 +867,7 @@ namespace H.Controls.Form
         //    set { SetValue(FilterGroupProperty, value); }
         //}
 
-        //// Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        //
         //public static readonly DependencyProperty FilterGroupProperty =
         //    DependencyProperty.Register("FilterGroup", typeof(string), typeof(PropertyGrid), new FrameworkPropertyMetadata(default(string), (d, e) =>
         //     {
@@ -898,7 +894,7 @@ namespace H.Controls.Form
             set { SetValue(UseGroupProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UseGroupProperty =
             DependencyProperty.Register("UseGroup", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(default(bool), (d, e) =>
              {
@@ -927,7 +923,7 @@ namespace H.Controls.Form
             set { SetValue(UseGroupNamesProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UseGroupNamesProperty =
             DependencyProperty.Register("UseGroupNames", typeof(string), typeof(Form), new FrameworkPropertyMetadata(default(string), (d, e) =>
              {
@@ -1038,7 +1034,7 @@ namespace H.Controls.Form
             set { SetValue(MessageWidthProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty MessageWidthProperty =
             DependencyProperty.Register("MessageWidth", typeof(double), typeof(Form), new PropertyMetadata(default(double), (d, e) =>
              {
@@ -1075,7 +1071,7 @@ namespace H.Controls.Form
             set { SetValue(UseAsyncProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UseAsyncProperty =
             DependencyProperty.Register("UseAsync", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(default(bool), (d, e) =>
             {
@@ -1198,12 +1194,12 @@ namespace H.Controls.Form
                 if (browsable != null && browsable.Browsable == false) continue;
                 if (!string.IsNullOrEmpty(this.UseGroupNames))
                 {
-                    var display = item.GetCustomAttribute<DisplayAttribute>();
-                    var array = this.UseGroupNames.Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
-                    var array1 = display?.GroupName?.Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                    DisplayAttribute display = item.GetCustomAttribute<DisplayAttribute>();
+                    string[] array = this.UseGroupNames.Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                    string[] array1 = display?.GroupName?.Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
                     if (array1 == null)
                     {
-                        var displayer = item.GetCustomAttribute<DisplayAttribute>();
+                        DisplayAttribute displayer = item.GetCustomAttribute<DisplayAttribute>();
                         array1 = displayer?.GroupName?.Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
                     }
 
@@ -1234,7 +1230,7 @@ namespace H.Controls.Form
 
                 if (!string.IsNullOrEmpty(this.UsePropertyNames))
                 {
-                    var array = this.UsePropertyNames.Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                    string[] array = this.UsePropertyNames.Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
                     if (!array.Contains(item.Name))
                     {
                         continue;
@@ -1243,7 +1239,7 @@ namespace H.Controls.Form
 
                 if (!string.IsNullOrEmpty(this.ExceptPropertyNames))
                 {
-                    var array = this.ExceptPropertyNames.Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                    string[] array = this.ExceptPropertyNames.Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
                     if (array.Contains(item.Name))
                     {
                         continue;
@@ -1287,7 +1283,7 @@ namespace H.Controls.Form
                 ObservableCollection<IPropertyItem> observable = new ObservableCollection<IPropertyItem>();
                 this.ItemsSource = observable;
 
-                foreach (var item in result)
+                foreach (IPropertyItem item in result)
                 {
                     Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Input, new Action(() =>
                               {

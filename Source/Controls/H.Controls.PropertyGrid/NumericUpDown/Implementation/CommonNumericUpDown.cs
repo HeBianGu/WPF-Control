@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Globalization;
@@ -106,7 +106,7 @@ namespace H.Controls.PropertyGrid
         {
             if (!Value.HasValue)
             {
-                T forcedValue = (DefaultValue.HasValue)
+                T forcedValue = DefaultValue.HasValue
                   ? DefaultValue.Value
                   : default(T);
 
@@ -147,14 +147,14 @@ namespace H.Controls.PropertyGrid
                 // Sync Value on Text only when Enter Key is pressed.
                 if (this.UpdateValueOnEnterKey)
                 {
-                    var currentValue = this.ConvertTextToValue(this.TextBox.Text);
-                    var result = this.IncrementValue(currentValue.Value, Increment.Value);
-                    var newValue = this.CoerceValueMinMax(result);
+                    T? currentValue = this.ConvertTextToValue(this.TextBox.Text);
+                    T result = this.IncrementValue(currentValue.Value, Increment.Value);
+                    T? newValue = this.CoerceValueMinMax(result);
                     this.TextBox.Text = newValue.Value.ToString(this.FormatString, this.CultureInfo);
                 }
                 else
                 {
-                    var result = this.IncrementValue(Value.Value, Increment.Value);
+                    T result = this.IncrementValue(Value.Value, Increment.Value);
                     this.Value = this.CoerceValueMinMax(result);
                 }
             }
@@ -168,14 +168,14 @@ namespace H.Controls.PropertyGrid
                 // Sync Value on Text only when Enter Key is pressed.
                 if (this.UpdateValueOnEnterKey)
                 {
-                    var currentValue = this.ConvertTextToValue(this.TextBox.Text);
-                    var result = this.DecrementValue(currentValue.Value, Increment.Value);
-                    var newValue = this.CoerceValueMinMax(result);
+                    T? currentValue = this.ConvertTextToValue(this.TextBox.Text);
+                    T result = this.DecrementValue(currentValue.Value, Increment.Value);
+                    T? newValue = this.CoerceValueMinMax(result);
                     this.TextBox.Text = newValue.Value.ToString(this.FormatString, this.CultureInfo);
                 }
                 else
                 {
-                    var result = this.DecrementValue(Value.Value, Increment.Value);
+                    T result = this.DecrementValue(Value.Value, Increment.Value);
                     this.Value = this.CoerceValueMinMax(result);
                 }
             }
@@ -262,8 +262,8 @@ namespace H.Controls.PropertyGrid
             if (PIndex >= 0)
             {
                 //stringToTest contains a "P" between 2 "'", it's considered as text, not percent
-                bool isText = (stringToTest.Substring(0, PIndex).Contains("'")
-                              && stringToTest.Substring(PIndex, FormatString.Length - PIndex).Contains("'"));
+                bool isText = stringToTest.Substring(0, PIndex).Contains("'")
+                              && stringToTest.Substring(PIndex, FormatString.Length - PIndex).Contains("'");
 
                 return !isText;
             }
@@ -292,12 +292,12 @@ namespace H.Controls.PropertyGrid
                     if (!_fromText(currentValueText, this.ParsingNumberStyle, CultureInfo, out currentValueTextOutputValue))
                     {
                         // extract non-digit characters
-                        var currentValueTextSpecialCharacters = currentValueText.Where(c => !Char.IsDigit(c));
-                        var textSpecialCharacters = text.Where(c => !Char.IsDigit(c));
+                        System.Collections.Generic.IEnumerable<char> currentValueTextSpecialCharacters = currentValueText.Where(c => !Char.IsDigit(c));
+                        System.Collections.Generic.IEnumerable<char> textSpecialCharacters = text.Where(c => !Char.IsDigit(c));
                         // same non-digit characters on currentValueText and new text => remove them on new Text to parse it again.
                         if (currentValueTextSpecialCharacters.Except(textSpecialCharacters).ToList().Count == 0)
                         {
-                            foreach (var character in textSpecialCharacters)
+                            foreach (char character in textSpecialCharacters)
                             {
                                 text = text.Replace(character.ToString(), string.Empty);
                             }

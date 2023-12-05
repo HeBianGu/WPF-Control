@@ -16,7 +16,10 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.EllipseMarker.Animation, TypeInTargetAssembly={x:Type local:EllipseMarker}}" BasedOn="{StaticResource {x:Static h:EllipseMarker.DefaultKey}}" TargetType="local:EllipseMarker">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.EllipseMarker.Animation,
+                                        TypeInTargetAssembly={x:Type local:EllipseMarker}}"
+           BasedOn="{StaticResource {x:Static h:EllipseMarker.DefaultKey}}"
+           TargetType="local:EllipseMarker">
         <Setter Property="RenderTransform">
             <Setter.Value>
                 <TransformGroup>
@@ -41,7 +44,7 @@
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Trigger.EnterActions>
-                    <BeginStoryboard Storyboard="{StaticResource {x:Static h:StoryBoardKeys.ScaleEnlarge_1_2}}" /> 
+                    <BeginStoryboard Storyboard="{StaticResource {x:Static h:StoryBoardKeys.ScaleEnlarge_1_2}}" />
                 </Trigger.EnterActions>
 
                 <Trigger.ExitActions>
@@ -53,7 +56,10 @@
 
 
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.EllipseMarker.10, TypeInTargetAssembly={x:Type local:EllipseMarker}}" BasedOn="{StaticResource {x:Static h:EllipseMarker.DefaultKey}}" TargetType="local:EllipseMarker">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.EllipseMarker.10,
+                                        TypeInTargetAssembly={x:Type local:EllipseMarker}}"
+           BasedOn="{StaticResource {x:Static h:EllipseMarker.DefaultKey}}"
+           TargetType="local:EllipseMarker">
         <Setter Property="StrokeThickness" Value="2" />
         <Setter Property="Rect">
             <Setter.Value>
@@ -62,7 +68,10 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.EllipseMarker.5, TypeInTargetAssembly={x:Type local:EllipseMarker}}" BasedOn="{StaticResource {x:Static h:EllipseMarker.DefaultKey}}" TargetType="local:EllipseMarker">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.EllipseMarker.5,
+                                        TypeInTargetAssembly={x:Type local:EllipseMarker}}"
+           BasedOn="{StaticResource {x:Static h:EllipseMarker.DefaultKey}}"
+           TargetType="local:EllipseMarker">
         <Setter Property="StrokeThickness" Value="2" />
         <Setter Property="Rect">
             <Setter.Value>
@@ -71,7 +80,10 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.EllipseMarker.4, TypeInTargetAssembly={x:Type local:EllipseMarker}}" BasedOn="{StaticResource {x:Static h:EllipseMarker.DefaultKey}}" TargetType="local:EllipseMarker">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.EllipseMarker.4,
+                                        TypeInTargetAssembly={x:Type local:EllipseMarker}}"
+           BasedOn="{StaticResource {x:Static h:EllipseMarker.DefaultKey}}"
+           TargetType="local:EllipseMarker">
         <Setter Property="Fill" Value="White" />
         <Setter Property="Rect">
             <Setter.Value>
@@ -80,7 +92,10 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.EllipseMarker.2, TypeInTargetAssembly={x:Type local:EllipseMarker}}" BasedOn="{StaticResource {x:Static h:EllipseMarker.DefaultKey}}" TargetType="local:EllipseMarker">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.EllipseMarker.2,
+                                        TypeInTargetAssembly={x:Type local:EllipseMarker}}"
+           BasedOn="{StaticResource {x:Static h:EllipseMarker.DefaultKey}}"
+           TargetType="local:EllipseMarker">
         <Setter Property="Rect">
             <Setter.Value>
                 <Rect Width="2" Height="2" />
@@ -88,7 +103,10 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.EllipseMarker.Circle, TypeInTargetAssembly={x:Type local:EllipseMarker}}" BasedOn="{StaticResource {x:Static h:EllipseMarker.DefaultKey}}" TargetType="local:EllipseMarker">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.EllipseMarker.Circle,
+                                        TypeInTargetAssembly={x:Type local:EllipseMarker}}"
+           BasedOn="{StaticResource {x:Static h:EllipseMarker.DefaultKey}}"
+           TargetType="local:EllipseMarker">
         <Setter Property="StrokeThickness" Value="2" />
         <Setter Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.ForegroundWhite}}" />
         <Setter Property="Rect">

@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 
@@ -14,7 +14,7 @@ namespace H.Controls.PropertyGrid
 
         public ItemsSourceAttribute(Type type)
         {
-            var valueSourceInterface = type.GetInterface(typeof(IItemsSource).FullName);
+            Type valueSourceInterface = type.GetInterface(typeof(IItemsSource).FullName);
             if (valueSourceInterface == null)
                 throw new ArgumentException("Type must implement the IItemsSource interface.", "type");
 

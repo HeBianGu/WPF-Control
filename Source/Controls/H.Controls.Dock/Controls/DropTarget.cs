@@ -1,11 +1,3 @@
-/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
 
 using H.Controls.Dock.Layout;
 using System;
@@ -113,9 +105,9 @@ namespace H.Controls.Dock.Controls
 
         public void Drop(LayoutFloatingWindow floatingWindow)
         {
-            var root = floatingWindow.Root;
-            var currentActiveContent = floatingWindow.Root.ActiveContent;
-            var fwAsAnchorable = floatingWindow as LayoutAnchorableFloatingWindow;
+            ILayoutRoot root = floatingWindow.Root;
+            LayoutContent currentActiveContent = floatingWindow.Root.ActiveContent;
+            LayoutAnchorableFloatingWindow fwAsAnchorable = floatingWindow as LayoutAnchorableFloatingWindow;
 
             if (fwAsAnchorable != null)
             {
@@ -123,7 +115,7 @@ namespace H.Controls.Dock.Controls
             }
             else
             {
-                var fwAsDocument = floatingWindow as LayoutDocumentFloatingWindow;
+                LayoutDocumentFloatingWindow fwAsDocument = floatingWindow as LayoutDocumentFloatingWindow;
                 this.Drop(fwAsDocument);
             }
             if (currentActiveContent == null)

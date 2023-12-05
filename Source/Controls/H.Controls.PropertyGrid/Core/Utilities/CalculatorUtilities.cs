@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Globalization;
@@ -69,7 +69,7 @@ namespace H.Controls.PropertyGrid
 
             for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
             {
-                var child = VisualTreeHelper.GetChild(parent, i);
+                DependencyObject child = VisualTreeHelper.GetChild(parent, i);
                 if (child == null)
                     continue;
 
@@ -81,7 +81,7 @@ namespace H.Controls.PropertyGrid
                 }
                 else
                 {
-                    var result = FindButtonByCalculatorButtonType(child, type);
+                    Button result = FindButtonByCalculatorButtonType(child, type);
 
                     if (result != null)
                         return result;
@@ -224,7 +224,7 @@ namespace H.Controls.PropertyGrid
         public static decimal ParseDecimal(string text)
         {
             decimal result;
-            var success = Decimal.TryParse(text, NumberStyles.Any, CultureInfo.CurrentCulture, out result);
+            bool success = Decimal.TryParse(text, NumberStyles.Any, CultureInfo.CurrentCulture, out result);
             return success ? result : decimal.Zero;
         }
 

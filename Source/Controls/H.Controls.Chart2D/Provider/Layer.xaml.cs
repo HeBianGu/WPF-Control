@@ -1,11 +1,10 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -33,7 +32,7 @@ namespace H.Controls.Chart2D
             set { SetValue(UseVisualProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UseVisualProperty =
             DependencyProperty.Register("UseVisual", typeof(bool), typeof(DrawingCanvas), new PropertyMetadata(default(bool), (d, e) =>
              {
@@ -233,7 +232,7 @@ namespace H.Controls.Chart2D
             set { SetValue(TryFreezeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty TryFreezeProperty =
             DependencyProperty.Register("TryFreeze", typeof(bool), typeof(LayerBase), new PropertyMetadata(true, (d, e) =>
              {
@@ -333,7 +332,7 @@ namespace H.Controls.Chart2D
             set { SetValue(TimelinesProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty TimelinesProperty =
             DependencyProperty.Register("Timelines", typeof(Timelines), typeof(AnimationLayer), new PropertyMetadata(new Timelines(), (d, e) =>
             {
@@ -417,7 +416,7 @@ namespace H.Controls.Chart2D
             set { SetValue(SplitMilliSecondProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty SplitMilliSecondProperty =
             DependencyProperty.Register("SplitMilliSecond", typeof(double), typeof(AnimationLayer), new PropertyMetadata(5.0, (d, e) =>
             {
@@ -435,7 +434,7 @@ namespace H.Controls.Chart2D
             set { SetValue(IsUseAnimationProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty IsUseAnimationProperty =
             DependencyProperty.Register("IsUseAnimation", typeof(bool), typeof(AnimationLayer), new PropertyMetadata(true, (d, e) =>
              {
@@ -512,7 +511,7 @@ namespace H.Controls.Chart2D
             set { SetValue(ForegroundProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty ForegroundProperty =
             DependencyProperty.Register("Foreground", typeof(Brush), typeof(XyLayer), new PropertyMetadata(Brushes.Black, (d, e) =>
             {
@@ -543,7 +542,7 @@ namespace H.Controls.Chart2D
         {
             if (this.maxX == this.minX) return this.minX;
 
-            double bottom = ((value - this.minX) / (this.maxX - this.minX)) * width;
+            double bottom = (value - this.minX) / (this.maxX - this.minX) * width;
 
             return bottom;
         }
@@ -559,7 +558,7 @@ namespace H.Controls.Chart2D
         {
             if (this.maxY == this.minY) return this.minY;
 
-            double bottom = height - ((value - this.minY) / (this.maxY - this.minY)) * height;
+            double bottom = height - ((value - this.minY) / (this.maxY - this.minY) * height);
 
             return bottom;
         }
@@ -569,7 +568,7 @@ namespace H.Controls.Chart2D
         {
             if (this.maxY == this.minY) return this.minY;
 
-            double bottom = ((this.ActualHeight - value) / this.ActualHeight) * (this.maxY - this.minY) + this.minY;
+            double bottom = ((this.ActualHeight - value) / this.ActualHeight * (this.maxY - this.minY)) + this.minY;
 
             return bottom;
         }
@@ -606,7 +605,7 @@ namespace H.Controls.Chart2D
             set { SetValue(LineStyleProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty LineStyleProperty =
             DependencyProperty.Register("LineStyle", typeof(Style), typeof(XyLayer), new PropertyMetadata(default(Style), (d, e) =>
             {
@@ -627,7 +626,7 @@ namespace H.Controls.Chart2D
             set { SetValue(xAxisProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty xAxisProperty =
             DependencyProperty.Register("xAxis", typeof(DoubleCollection), typeof(XyLayer), new FrameworkPropertyMetadata(new DoubleCollection(), FrameworkPropertyMetadataOptions.Inherits, (d, e) =>
             {
@@ -648,7 +647,7 @@ namespace H.Controls.Chart2D
             set { SetValue(yAxisProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty yAxisProperty =
             DependencyProperty.Register("yAxis", typeof(DoubleCollection), typeof(XyLayer), new FrameworkPropertyMetadata(new DoubleCollection(), FrameworkPropertyMetadataOptions.Inherits, (d, e) =>
             {
@@ -670,7 +669,7 @@ namespace H.Controls.Chart2D
             set { SetValue(xDisplayProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty xDisplayProperty =
             DependencyProperty.Register("xDisplay", typeof(ObservableCollection<string>), typeof(XyLayer), new PropertyMetadata(new ObservableCollection<string>(), (d, e) =>
             {
@@ -692,7 +691,7 @@ namespace H.Controls.Chart2D
             set { SetValue(yDisplayProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty yDisplayProperty =
             DependencyProperty.Register("yDisplay", typeof(ObservableCollection<string>), typeof(XyLayer), new PropertyMetadata(new ObservableCollection<string>(), (d, e) =>
              {
@@ -713,7 +712,7 @@ namespace H.Controls.Chart2D
             set { SetValue(xMapProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty xMapProperty =
             DependencyProperty.Register("xMap", typeof(ObservableCollection<double[]>), typeof(XyLayer), new PropertyMetadata(default(ObservableCollection<double[]>), (d, e) =>
              {
@@ -732,7 +731,7 @@ namespace H.Controls.Chart2D
             set { SetValue(yMapProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty yMapProperty =
             DependencyProperty.Register("yMap", typeof(ObservableCollection<double[]>), typeof(XyLayer), new PropertyMetadata(default(ObservableCollection<double[]>), (d, e) =>
              {
@@ -752,7 +751,7 @@ namespace H.Controls.Chart2D
             set { SetValue(xConvertProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty xConvertProperty =
             DependencyProperty.Register("xConvert", typeof(Func<double, string>), typeof(XyLayer), new PropertyMetadata(default(Func<double, string>), (d, e) =>
             {
@@ -771,7 +770,7 @@ namespace H.Controls.Chart2D
             set { SetValue(yConvertProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty yConvertProperty =
             DependencyProperty.Register("yConvert", typeof(Func<double, string>), typeof(XyLayer), new PropertyMetadata(default(Func<double, string>), (d, e) =>
             {
@@ -802,7 +801,7 @@ namespace H.Controls.Chart2D
             set { SetValue(DataProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty DataProperty =
             DependencyProperty.Register("Data", typeof(DoubleCollection), typeof(DataLayer), new PropertyMetadata(new DoubleCollection(), (d, e) =>
             {
@@ -829,7 +828,7 @@ namespace H.Controls.Chart2D
             set { SetValue(DataBooleanProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty DataBooleanProperty =
             DependencyProperty.Register("DataBoolean", typeof(ObservableCollection<bool>), typeof(DataLayer), new PropertyMetadata(new ObservableCollection<bool>(), (d, e) =>
              {
@@ -848,7 +847,7 @@ namespace H.Controls.Chart2D
             set { SetValue(DataMapProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty DataMapProperty =
             DependencyProperty.Register("DataMap", typeof(ObservableCollection<double[]>), typeof(DataLayer), new PropertyMetadata(default(ObservableCollection<double[]>), (d, e) =>
              {
@@ -894,7 +893,7 @@ namespace H.Controls.Chart2D
             set { SetValue(yAxisesProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty yAxisesProperty =
             DependencyProperty.Register("yAxises", typeof(ObservableCollection<yAxis>), typeof(MapLayer), new PropertyMetadata(default(ObservableCollection<yAxis>), (d, e) =>
             {
@@ -913,7 +912,7 @@ namespace H.Controls.Chart2D
             set { SetValue(xAxisesProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty xAxisesProperty =
             DependencyProperty.Register("xAxises", typeof(ObservableCollection<xAxis>), typeof(MapLayer), new PropertyMetadata(default(ObservableCollection<xAxis>), (d, e) =>
             {
@@ -937,7 +936,7 @@ namespace H.Controls.Chart2D
                 return value;
             double min = find.yAxis.Min();
             double max = find.yAxis.Max();
-            return ((value - min) / (max - min)) * (this.maxY - this.minY) + this.minY;
+            return ((value - min) / (max - min) * (this.maxY - this.minY)) + this.minY;
         }
 
         public double GetMapX(double y, double value)
@@ -954,7 +953,7 @@ namespace H.Controls.Chart2D
             double max = find.yAxis.Max();
 
 
-            return ((value - min) / (max - min)) * (this.maxX - this.minX) + this.minX;
+            return ((value - min) / (max - min) * (this.maxX - this.minX)) + this.minX;
         }
     }
 
@@ -973,7 +972,7 @@ namespace H.Controls.Chart2D
             set { SetValue(MarkStyleProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty MarkStyleProperty =
             DependencyProperty.Register("MarkStyle", typeof(Style), typeof(Layer), new PropertyMetadata(default(Style), (d, e) =>
             {
@@ -994,7 +993,7 @@ namespace H.Controls.Chart2D
             set { SetValue(LabelStyleProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty LabelStyleProperty =
             DependencyProperty.Register("LabelStyle", typeof(Style), typeof(Layer), new PropertyMetadata(default(Style), (d, e) =>
              {
@@ -1035,7 +1034,7 @@ namespace H.Controls.Chart2D
             set { SetValue(PathStyleProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty PathStyleProperty =
             DependencyProperty.Register("PathStyle", typeof(Style), typeof(Layer), new PropertyMetadata(default(Style), (d, e) =>
             {
@@ -1048,8 +1047,7 @@ namespace H.Controls.Chart2D
                 control.TryDraw();
 
             }));
-
-        bool _refreshing = false;
+        private bool _refreshing = false;
         public override void TryDraw()
         {
             if (_refreshing)

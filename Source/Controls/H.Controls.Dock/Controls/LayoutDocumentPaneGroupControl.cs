@@ -1,11 +1,11 @@
-﻿/************************************************************************
-   H.Controls.Dock
+﻿
 
-   Copyright (C) 2007-2013 Xceed Software Inc.
 
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
+
+
+
+
+
 
 using H.Controls.Dock.Layout;
 using System.Windows;
@@ -47,7 +47,7 @@ namespace H.Controls.Dock.Controls
             {
                 for (int i = 0; i < _model.Children.Count; i++)
                 {
-                    var childModel = _model.Children[i] as ILayoutPositionableElement;
+                    ILayoutPositionableElement childModel = _model.Children[i] as ILayoutPositionableElement;
                     if (!childModel.DockWidth.IsStar)
                     {
                         childModel.DockWidth = new GridLength(1.0, GridUnitType.Star);
@@ -58,7 +58,7 @@ namespace H.Controls.Dock.Controls
             {
                 for (int i = 0; i < _model.Children.Count; i++)
                 {
-                    var childModel = _model.Children[i] as ILayoutPositionableElement;
+                    ILayoutPositionableElement childModel = _model.Children[i] as ILayoutPositionableElement;
                     if (!childModel.DockHeight.IsStar)
                     {
                         childModel.DockHeight = new GridLength(1.0, GridUnitType.Star);

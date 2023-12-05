@@ -9,12 +9,15 @@
         <Setter Property="yAxis" Value="{Binding RelativeSource={RelativeSource AncestorType=local:ViewLayerGroup}, Path=yAxis}" />
         <Setter Property="Margin" Value="{Binding RelativeSource={RelativeSource AncestorType=local:ViewLayerGroup}, Path=Padding}" />
         <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType=local:Series}, Path=Foreground}" />
-        <Setter Property="TryFreeze" Value="{Binding RelativeSource={RelativeSource AncestorType=local:ViewLayerGroup},Path=UseDrawOnce}"/>
+        <Setter Property="TryFreeze" Value="{Binding RelativeSource={RelativeSource AncestorType=local:ViewLayerGroup}, Path=UseDrawOnce}" />
     </Style>
 
     <Style BasedOn="{StaticResource {x:Static h:XyLayer.DefaultKey}}" TargetType="{x:Type local:XyLayer}" />
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Layer.Default, TypeInTargetAssembly={x:Type local:Layer}}" BasedOn="{StaticResource {x:Static h:XyLayer.DefaultKey}}" TargetType="{x:Type local:Layer}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Layer.Default,
+                                        TypeInTargetAssembly={x:Type local:Layer}}"
+           BasedOn="{StaticResource {x:Static h:XyLayer.DefaultKey}}"
+           TargetType="{x:Type local:Layer}">
         <Setter Property="xAxis" Value="{Binding RelativeSource={RelativeSource AncestorType=local:Series}, Path=xDatas}" />
         <Setter Property="Data" Value="{Binding RelativeSource={RelativeSource AncestorType=local:Series}, Path=yDatas}" />
         <!--<Setter Property="Margin" Value="{Binding RelativeSource={RelativeSource AncestorType=local:ViewLayerGroup},Path=Padding}"/>-->

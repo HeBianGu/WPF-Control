@@ -1,11 +1,11 @@
-/************************************************************************
-   H.Controls.Dock
 
-   Copyright (C) 2007-2013 Xceed Software Inc.
 
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
+
+
+
+
+
+
 
 using System;
 using System.Collections.Generic;
@@ -112,7 +112,7 @@ namespace H.Controls.Dock.Layout
         {
             if (oldElement is T oldT && newElement is T newT)
             {
-                var index = _children.IndexOf(oldT);
+                int index = _children.IndexOf(oldT);
                 _children.Insert(index, newT);
                 _children.RemoveAt(index + 1);
             }
@@ -138,7 +138,7 @@ namespace H.Controls.Dock.Layout
                 ComputeVisibility();
                 return;
             }
-            var localName = reader.LocalName;
+            string localName = reader.LocalName;
             reader.Read();
             while (true)
             {
@@ -170,10 +170,10 @@ namespace H.Controls.Dock.Layout
         /// <summary>provides a standard overridable implementation for deriving classes.</summary>
         public virtual void WriteXml(System.Xml.XmlWriter writer)
         {
-            foreach (var child in Children)
+            foreach (T child in Children)
             {
-                var type = child.GetType();
-                var serializer = XmlSerializersCache.GetSerializer(type);
+                Type type = child.GetType();
+                XmlSerializer serializer = XmlSerializersCache.GetSerializer(type);
                 serializer.Serialize(writer, child);
             }
         }
@@ -250,8 +250,8 @@ namespace H.Controls.Dock.Layout
 
         private Type FindType(string name)
         {
-            foreach (var a in AppDomain.CurrentDomain.GetAssemblies())
-                foreach (var t in a.GetTypes())
+            foreach (System.Reflection.Assembly a in AppDomain.CurrentDomain.GetAssemblies())
+                foreach (Type t in a.GetTypes())
                     if (t.Name.Equals(name)) return t;
             return null;
         }

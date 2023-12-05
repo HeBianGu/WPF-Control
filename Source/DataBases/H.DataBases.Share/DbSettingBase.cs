@@ -9,15 +9,11 @@ using System.Data.Entity;
 #endif
 
 #if NETCOREAPP
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 #endif
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.IO;
 using System.Linq;
 using System.Text.Json.Serialization;
 using System.Threading;
@@ -37,14 +33,14 @@ namespace H.DataBases.Share
         [Display(Name = "测试连接")]
         public RelayCommand ConnectCommand => new RelayCommand(async (s, e) =>
         {
-            var r = await Task.Run(() =>
+            Tuple<bool, string> r = await Task.Run(() =>
               {
                   s.IsBusy = true;
                   s.Message = "正在连接...";
 
-                  var inits = Ioc.Services.GetServices<ISplashLoad>().OfType<IDbConnectService>();
-                  var r = false;
-                  foreach (var init in inits)
+                  System.Collections.Generic.IEnumerable<IDbConnectService> inits = Ioc.Services.GetServices<ISplashLoad>().OfType<IDbConnectService>();
+                  bool r = false;
+                  foreach (IDbConnectService init in inits)
                   {
                       r = init.TryConnect(out string message);
                       if (r == false)
@@ -61,7 +57,7 @@ namespace H.DataBases.Share
               });
 
             if (r.Item1 == false)
-                await IocMessage.Window.ShowMessage(r.Item2, "连接失败");
+                await IocMessage.Window.Show(r.Item2, x => x.Title = "连接失败");
         });
 
         [JsonIgnore]
@@ -70,14 +66,14 @@ namespace H.DataBases.Share
         [Display(Name = "保存配置")]
         public RelayCommand SaveCommand => new RelayCommand((s, e) =>
         {
-            var r = this.Save(out string message);
+            bool r = this.Save(out string message);
             if (r)
             {
-                IocMessage.Window.ShowMessage("保存成功");
+                IocMessage.Window.Show("保存成功");
             }
             else
             {
-                IocMessage.Window.ShowMessage(message, "保存失败");
+                IocMessage.Window.Show(message, x => x.Title = "保存失败");
             }
         });
     }

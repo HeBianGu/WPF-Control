@@ -1,20 +1,19 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using H.Providers.Ioc;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Reflection;
 
 namespace H.Controls.Form
 {
-    public class ComboboxRepositoryPropertyItem: ObjectPropertyItem<object>
+    public class ComboboxRepositoryPropertyItem : ObjectPropertyItem<object>
     {
         public ComboboxRepositoryPropertyItem(PropertyInfo property, object obj) : base(property, obj)
         {
             Type rType = typeof(IStringRepository<>).MakeGenericType(property.PropertyType);
             object r = Ioc.Services.GetService(rType);
-            var method = rType.GetMethods(BindingFlags.Instance);
+            MethodInfo[] method = rType.GetMethods(BindingFlags.Instance);
             IEnumerable source = rType.GetMethod("GetList").Invoke(r, new object[] { null }) as IEnumerable;
 
             this.ItemsSource = source;

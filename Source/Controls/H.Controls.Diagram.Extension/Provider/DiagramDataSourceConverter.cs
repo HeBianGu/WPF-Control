@@ -49,7 +49,7 @@ namespace H.Controls.Diagram.Extension
             Port fromPort = fromNode.GetPorts(l => l.GetContent<IPortData>().ID == wire.FromPortID)?.FirstOrDefault();
             Port toPort = toNode.GetPorts(l => l.Id == wire.ToPortID)?.FirstOrDefault();
 
-            var result = Link.Create(fromNode, toNode, fromPort, toPort);
+            Link result = Link.Create(fromNode, toNode, fromPort, toPort);
             result.Content = wire;
             return result;
         }

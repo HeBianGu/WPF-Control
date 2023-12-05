@@ -1,11 +1,8 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-using H.Extensions.Common;
-using System;
 using System.Collections;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 
 namespace H.Controls.NavigationBox
 {
@@ -45,7 +42,7 @@ namespace H.Controls.NavigationBox
             set { SetValue(NavigationDataTemplateProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty NavigationDataTemplateProperty =
             DependencyProperty.Register("NavigationDataTemplate", typeof(DataTemplate), typeof(ScrollIntoView), new PropertyMetadata(default(DataTemplate), (d, e) =>
              {
@@ -64,7 +61,7 @@ namespace H.Controls.NavigationBox
             set { SetValue(ContainDataTemplateProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty ContainDataTemplateProperty =
             DependencyProperty.Register("ContainDataTemplate", typeof(DataTemplate), typeof(ScrollIntoView), new PropertyMetadata(default(DataTemplate), (d, e) =>
              {
@@ -83,7 +80,7 @@ namespace H.Controls.NavigationBox
             set { SetValue(SourceProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty SourceProperty =
             DependencyProperty.Register("Source", typeof(IEnumerable), typeof(ScrollIntoView), new PropertyMetadata(default(IEnumerable), (d, e) =>
              {

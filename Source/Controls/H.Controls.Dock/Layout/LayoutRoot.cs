@@ -1,11 +1,11 @@
-/************************************************************************
-   H.Controls.Dock
 
-   Copyright (C) 2007-2013 Xceed Software Inc.
 
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
+
+
+
+
+
+
 
 using System;
 using System.Collections.Generic;
@@ -99,8 +99,8 @@ namespace H.Controls.Dock.Layout
             {
                 if (_rootPanel == value) return;
                 RaisePropertyChanging(nameof(RootPanel));
-                var activeContent = ActiveContent;
-                var activeRoot = activeContent?.Root;
+                LayoutContent activeContent = ActiveContent;
+                ILayoutRoot activeRoot = activeContent?.Root;
                 if (_rootPanel != null && _rootPanel.Parent == this) _rootPanel.Parent = null;
                 _rootPanel = value ?? new LayoutPanel(new LayoutDocumentPane());
                 _rootPanel.Parent = this;
@@ -213,7 +213,7 @@ namespace H.Controls.Dock.Layout
                     yield return RootPanel;
                 if (_floatingWindows != null)
                 {
-                    foreach (var floatingWindow in _floatingWindows)
+                    foreach (LayoutFloatingWindow floatingWindow in _floatingWindows)
                         yield return floatingWindow;
                 }
                 if (TopSide != null)
@@ -226,7 +226,7 @@ namespace H.Controls.Dock.Layout
                     yield return LeftSide;
                 if (_hiddenAnchorables != null)
                 {
-                    foreach (var hiddenAnchorable in _hiddenAnchorables)
+                    foreach (LayoutAnchorable hiddenAnchorable in _hiddenAnchorables)
                         yield return hiddenAnchorable;
                 }
             }
@@ -247,7 +247,7 @@ namespace H.Controls.Dock.Layout
             }
             set
             {
-                var currentValue = ActiveContent;
+                LayoutContent currentValue = ActiveContent;
                 if (currentValue != value)
                 {
                     InternalSetActiveContent(currentValue, value);
@@ -261,7 +261,7 @@ namespace H.Controls.Dock.Layout
             get => _lastFocusedDocument.GetValueOrDefault<LayoutContent>();
             private set
             {
-                var currentValue = LastFocusedDocument;
+                LayoutContent currentValue = LastFocusedDocument;
                 if (currentValue != value)
                 {
                     RaisePropertyChanging(nameof(LastFocusedDocument));
@@ -293,25 +293,25 @@ namespace H.Controls.Dock.Layout
         #region Overrides
 
 #if TRACE
-		public override void ConsoleDump(int tab)
-		{
-			System.Diagnostics.Trace.Write(new string(' ', tab * 4));
-			System.Diagnostics.Trace.WriteLine("RootPanel()");
+        public override void ConsoleDump(int tab)
+        {
+            System.Diagnostics.Trace.Write(new string(' ', tab * 4));
+            System.Diagnostics.Trace.WriteLine("RootPanel()");
 
-			RootPanel.ConsoleDump(tab + 1);
+            RootPanel.ConsoleDump(tab + 1);
 
-			System.Diagnostics.Trace.Write(new string(' ', tab * 4));
-			System.Diagnostics.Trace.WriteLine("FloatingWindows()");
+            System.Diagnostics.Trace.Write(new string(' ', tab * 4));
+            System.Diagnostics.Trace.WriteLine("FloatingWindows()");
 
-			foreach (var fw in FloatingWindows)
-				fw.ConsoleDump(tab + 1);
+            foreach (LayoutFloatingWindow fw in FloatingWindows)
+                fw.ConsoleDump(tab + 1);
 
-			System.Diagnostics.Trace.Write(new string(' ', tab * 4));
-			System.Diagnostics.Trace.WriteLine("Hidden()");
+            System.Diagnostics.Trace.Write(new string(' ', tab * 4));
+            System.Diagnostics.Trace.WriteLine("Hidden()");
 
-			foreach (var hidden in Hidden)
-				hidden.ConsoleDump(tab + 1);
-		}
+            foreach (LayoutAnchorable hidden in Hidden)
+                hidden.ConsoleDump(tab + 1);
+        }
 #endif
 
         #endregion Overrides
@@ -342,13 +342,13 @@ namespace H.Controls.Dock.Layout
                 RootPanel = (LayoutPanel)newElement;
             else if (_floatingWindows != null && _floatingWindows.Contains(oldElement))
             {
-                var index = _floatingWindows.IndexOf(oldElement as LayoutFloatingWindow);
+                int index = _floatingWindows.IndexOf(oldElement as LayoutFloatingWindow);
                 _floatingWindows.Remove(oldElement as LayoutFloatingWindow);
                 _floatingWindows.Insert(index, newElement as LayoutFloatingWindow);
             }
             else if (_hiddenAnchorables != null && _hiddenAnchorables.Contains(oldElement))
             {
-                var index = _hiddenAnchorables.IndexOf(oldElement as LayoutAnchorable);
+                int index = _hiddenAnchorables.IndexOf(oldElement as LayoutAnchorable);
                 _hiddenAnchorables.Remove(oldElement as LayoutAnchorable);
                 _hiddenAnchorables.Insert(index, newElement as LayoutAnchorable);
             }
@@ -365,7 +365,7 @@ namespace H.Controls.Dock.Layout
         /// <summary>Removes any empty container not directly referenced by other layout items.</summary>
         public void CollectGarbage()
         {
-            var exitFlag = true;
+            bool exitFlag = true;
 
             #region collect empty panes
 
@@ -374,17 +374,17 @@ namespace H.Controls.Dock.Layout
                 exitFlag = true;
 
                 //for each content that references via PreviousContainer a disconnected Pane set the property to null
-                foreach (var content in this.Descendents().OfType<ILayoutPreviousContainer>().Where(c => c.PreviousContainer != null &&
+                foreach (ILayoutPreviousContainer content in this.Descendents().OfType<ILayoutPreviousContainer>().Where(c => c.PreviousContainer != null &&
                     (c.PreviousContainer.Parent == null || c.PreviousContainer.Parent.Root != this)))
                 {
                     content.PreviousContainer = null;
                 }
 
                 //for each pane that is empty
-                foreach (var emptyPane in this.Descendents().OfType<ILayoutPane>().Where(p => p.ChildrenCount == 0))
+                foreach (ILayoutPane emptyPane in this.Descendents().OfType<ILayoutPane>().Where(p => p.ChildrenCount == 0))
                 {
                     //...set null any reference coming from contents not yet hosted in a floating window
-                    foreach (var contentReferencingEmptyPane in this.Descendents().OfType<LayoutContent>()
+                    foreach (LayoutContent contentReferencingEmptyPane in this.Descendents().OfType<LayoutContent>()
                         .Where(c => ((ILayoutPreviousContainer)c).PreviousContainer == emptyPane && !c.IsFloating))
                     {
                         if (contentReferencingEmptyPane is LayoutAnchorable anchorable &&
@@ -404,7 +404,7 @@ namespace H.Controls.Dock.Layout
                     //...if this empty pane is not referenced by anyone, then remove it from its parent container
                     if (!this.Descendents().OfType<ILayoutPreviousContainer>().Any(c => c.PreviousContainer == emptyPane))
                     {
-                        var parentGroup = emptyPane.Parent;
+                        ILayoutContainer parentGroup = emptyPane.Parent;
                         parentGroup.RemoveChild(emptyPane);
                         exitFlag = false;
                         break;
@@ -414,9 +414,9 @@ namespace H.Controls.Dock.Layout
                 if (!exitFlag)
                 {
                     //removes any empty anchorable pane group
-                    foreach (var emptyLayoutAnchorablePaneGroup in this.Descendents().OfType<LayoutAnchorablePaneGroup>().Where(p => p.ChildrenCount == 0))
+                    foreach (LayoutAnchorablePaneGroup emptyLayoutAnchorablePaneGroup in this.Descendents().OfType<LayoutAnchorablePaneGroup>().Where(p => p.ChildrenCount == 0))
                     {
-                        var parentGroup = emptyLayoutAnchorablePaneGroup.Parent;
+                        ILayoutContainer parentGroup = emptyLayoutAnchorablePaneGroup.Parent;
                         parentGroup.RemoveChild(emptyLayoutAnchorablePaneGroup);
                         exitFlag = false;
                         break;
@@ -426,18 +426,18 @@ namespace H.Controls.Dock.Layout
                 if (!exitFlag)
                 {
                     //removes any empty layout panel
-                    foreach (var emptyLayoutPanel in this.Descendents().OfType<LayoutPanel>().Where(p => p.ChildrenCount == 0))
+                    foreach (LayoutPanel emptyLayoutPanel in this.Descendents().OfType<LayoutPanel>().Where(p => p.ChildrenCount == 0))
                     {
-                        var parentGroup = emptyLayoutPanel.Parent;
+                        ILayoutContainer parentGroup = emptyLayoutPanel.Parent;
                         parentGroup.RemoveChild(emptyLayoutPanel);
                         exitFlag = false;
                         break;
                     }
-                    foreach (var emptyLayoutDocumentPane in this.Descendents().OfType<LayoutDocumentPane>().Where(p => p.ChildrenCount == 0))
+                    foreach (LayoutDocumentPane emptyLayoutDocumentPane in this.Descendents().OfType<LayoutDocumentPane>().Where(p => p.ChildrenCount == 0))
                     {
-                        var parentGroup = emptyLayoutDocumentPane.Parent;
+                        ILayoutContainer parentGroup = emptyLayoutDocumentPane.Parent;
                         if (!(parentGroup.Parent is LayoutDocumentFloatingWindow)) continue;
-                        var index = RootPanel.IndexOfChild(this.Descendents().OfType<LayoutDocumentPaneGroup>().First());
+                        int index = RootPanel.IndexOfChild(this.Descendents().OfType<LayoutDocumentPaneGroup>().First());
                         parentGroup.RemoveChild(emptyLayoutDocumentPane);
                         if (!this.Descendents().OfType<LayoutDocumentPane>().Any())
                         {
@@ -453,9 +453,9 @@ namespace H.Controls.Dock.Layout
                 if (!exitFlag)
                 {
                     //removes any empty floating window
-                    foreach (var emptyLayoutFloatingWindow in this.Descendents().OfType<LayoutFloatingWindow>().Where(p => p.ChildrenCount == 0))
+                    foreach (LayoutFloatingWindow emptyLayoutFloatingWindow in this.Descendents().OfType<LayoutFloatingWindow>().Where(p => p.ChildrenCount == 0))
                     {
-                        var parentGroup = emptyLayoutFloatingWindow.Parent;
+                        ILayoutContainer parentGroup = emptyLayoutFloatingWindow.Parent;
                         parentGroup.RemoveChild(emptyLayoutFloatingWindow);
                         exitFlag = false;
                         break;
@@ -465,11 +465,11 @@ namespace H.Controls.Dock.Layout
                 if (!exitFlag)
                 {
                     //removes any empty anchor group
-                    foreach (var emptyLayoutAnchorGroup in this.Descendents().OfType<LayoutAnchorGroup>().Where(p => p.ChildrenCount == 0))
+                    foreach (LayoutAnchorGroup emptyLayoutAnchorGroup in this.Descendents().OfType<LayoutAnchorGroup>().Where(p => p.ChildrenCount == 0))
                     {
                         if (!this.Descendents().OfType<ILayoutPreviousContainer>().Any(c => c.PreviousContainer == emptyLayoutAnchorGroup))
                         {
-                            var parentGroup = emptyLayoutAnchorGroup.Parent;
+                            ILayoutContainer parentGroup = emptyLayoutAnchorGroup.Parent;
                             parentGroup.RemoveChild(emptyLayoutAnchorGroup);
                             exitFlag = false;
                             break;
@@ -487,9 +487,9 @@ namespace H.Controls.Dock.Layout
             {
                 exitFlag = true;
                 //for each pane that is empty
-                foreach (var paneGroupToCollapse in this.Descendents().OfType<LayoutAnchorablePaneGroup>().Where(p => p.ChildrenCount == 1 && p.Children[0] is LayoutAnchorablePaneGroup).ToArray())
+                foreach (LayoutAnchorablePaneGroup paneGroupToCollapse in this.Descendents().OfType<LayoutAnchorablePaneGroup>().Where(p => p.ChildrenCount == 1 && p.Children[0] is LayoutAnchorablePaneGroup).ToArray())
                 {
-                    var singleChild = paneGroupToCollapse.Children[0] as LayoutAnchorablePaneGroup;
+                    LayoutAnchorablePaneGroup singleChild = paneGroupToCollapse.Children[0] as LayoutAnchorablePaneGroup;
                     paneGroupToCollapse.Orientation = singleChild.Orientation;
                     while (singleChild.ChildrenCount > 0)
                         paneGroupToCollapse.InsertChildAt(paneGroupToCollapse.ChildrenCount, singleChild.Children[0]);
@@ -508,9 +508,9 @@ namespace H.Controls.Dock.Layout
             {
                 exitFlag = true;
                 //for each pane that is empty
-                foreach (var paneGroupToCollapse in this.Descendents().OfType<LayoutDocumentPaneGroup>().Where(p => p.ChildrenCount == 1 && p.Children[0] is LayoutDocumentPaneGroup).ToArray())
+                foreach (LayoutDocumentPaneGroup paneGroupToCollapse in this.Descendents().OfType<LayoutDocumentPaneGroup>().Where(p => p.ChildrenCount == 1 && p.Children[0] is LayoutDocumentPaneGroup).ToArray())
                 {
-                    var singleChild = paneGroupToCollapse.Children[0] as LayoutDocumentPaneGroup;
+                    LayoutDocumentPaneGroup singleChild = paneGroupToCollapse.Children[0] as LayoutDocumentPaneGroup;
                     paneGroupToCollapse.Orientation = singleChild.Orientation;
                     while (singleChild.ChildrenCount > 0)
                         paneGroupToCollapse.InsertChildAt(paneGroupToCollapse.ChildrenCount, singleChild.Children[0]);
@@ -550,8 +550,8 @@ namespace H.Controls.Dock.Layout
             UpdateActiveContentProperty();
 
 #if DEBUG
-			Debug.Assert(!this.Descendents().OfType<LayoutAnchorablePane>().Any(a => a.ChildrenCount == 0 && a.IsVisible));
-			//DumpTree(true);
+            Debug.Assert(!this.Descendents().OfType<LayoutAnchorablePane>().Any(a => a.ChildrenCount == 0 && a.IsVisible));
+            //DumpTree(true);
 #if TRACE
             RootPanel.ConsoleDump(4);
 #endif
@@ -573,12 +573,12 @@ namespace H.Controls.Dock.Layout
                 return;
             }
 
-            var layoutPanelElements = ReadRootPanel(reader, out var orientation, out var canDock);
+            List<ILayoutPanelElement> layoutPanelElements = ReadRootPanel(reader, out Orientation orientation, out bool canDock);
             if (layoutPanelElements != null)
             {
                 RootPanel = new LayoutPanel { Orientation = orientation, CanDock = canDock };
                 //Add all children to RootPanel
-                foreach (var panel in layoutPanelElements) RootPanel.Children.Add(panel);
+                foreach (ILayoutPanelElement panel in layoutPanelElements) RootPanel.Children.Add(panel);
             }
 
             TopSide = new LayoutAnchorSide();
@@ -591,12 +591,12 @@ namespace H.Controls.Dock.Layout
             if (ReadElement(reader) != null) FillLayoutAnchorSide(reader, BottomSide);
 
             FloatingWindows.Clear();
-            var floatingWindows = ReadElementList(reader, true);
-            foreach (var floatingWindow in floatingWindows) FloatingWindows.Add((LayoutFloatingWindow)floatingWindow);
+            List<object> floatingWindows = ReadElementList(reader, true);
+            foreach (object floatingWindow in floatingWindows) FloatingWindows.Add((LayoutFloatingWindow)floatingWindow);
 
             Hidden.Clear();
-            var hidden = ReadElementList(reader, false);
-            foreach (var hiddenObject in hidden) Hidden.Add((LayoutAnchorable)hiddenObject);
+            List<object> hidden = ReadElementList(reader, false);
+            foreach (object hiddenObject in hidden) Hidden.Add((LayoutAnchorable)hiddenObject);
 
             //Read the closing end element of LayoutRoot
             reader.ReadEndElement();
@@ -628,7 +628,7 @@ namespace H.Controls.Dock.Layout
             // Write all floating windows (can be LayoutDocumentFloatingWindow or LayoutAnchorableFloatingWindow).
             // To prevent "can not create instance of abstract type", the type is retrieved with GetType().Name
             writer.WriteStartElement(nameof(FloatingWindows));
-            foreach (var layoutFloatingWindow in FloatingWindows)
+            foreach (LayoutFloatingWindow layoutFloatingWindow in FloatingWindows)
             {
                 writer.WriteStartElement(layoutFloatingWindow.GetType().Name);
                 layoutFloatingWindow.WriteXml(writer);
@@ -637,7 +637,7 @@ namespace H.Controls.Dock.Layout
             writer.WriteEndElement();
 
             writer.WriteStartElement(nameof(Hidden));
-            foreach (var layoutAnchorable in Hidden)
+            foreach (LayoutAnchorable layoutAnchorable in Hidden)
             {
                 writer.WriteStartElement(layoutAnchorable.GetType().Name);
                 layoutAnchorable.WriteXml(writer);
@@ -654,12 +654,12 @@ namespace H.Controls.Dock.Layout
 
         internal static Type FindType(string name)
         {
-            var avalonAssembly = Assembly.GetAssembly(typeof(LayoutRoot));
+            Assembly avalonAssembly = Assembly.GetAssembly(typeof(LayoutRoot));
 
-            foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies().OrderBy(a => a != avalonAssembly))
+            foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies().OrderBy(a => a != avalonAssembly))
                 try
                 {
-                    foreach (var type in assembly.GetTypes())
+                    foreach (Type type in assembly.GetTypes())
                         if (type.Name.Equals(name))
                             return type;
                 }
@@ -689,7 +689,7 @@ namespace H.Controls.Dock.Layout
 
         private void _floatingWindows_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            var bNotifyChildren = false;
+            bool bNotifyChildren = false;
 
             if (e.OldItems != null && (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Remove || e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Replace))
             {
@@ -730,7 +730,7 @@ namespace H.Controls.Dock.Layout
 
         private void _hiddenAnchorables_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            var bNotifyChildren = false;
+            bool bNotifyChildren = false;
 
             if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Remove || e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Replace)
             {
@@ -797,7 +797,7 @@ namespace H.Controls.Dock.Layout
 
         private void UpdateActiveContentProperty()
         {
-            var activeContent = ActiveContent;
+            LayoutContent activeContent = ActiveContent;
             if (_activeContentSet && (activeContent == null || activeContent.Root != this))
             {
                 _activeContentSet = false;
@@ -807,7 +807,7 @@ namespace H.Controls.Dock.Layout
 
         private void FillLayoutAnchorSide(XmlReader reader, LayoutAnchorSide layoutAnchorSide)
         {
-            var result = new List<LayoutAnchorGroup>();
+            List<LayoutAnchorGroup> result = new List<LayoutAnchorGroup>();
 
             while (true)
             {
@@ -817,7 +817,7 @@ namespace H.Controls.Dock.Layout
             }
 
             reader.ReadEndElement();
-            foreach (var las in result)
+            foreach (LayoutAnchorGroup las in result)
             {
                 layoutAnchorSide.Children.Add(las);
             }
@@ -837,8 +837,8 @@ namespace H.Controls.Dock.Layout
             orientation = Orientation.Horizontal;
             canDock = true;
 
-            var result = new List<ILayoutPanelElement>();
-            var startElementName = reader.LocalName;
+            List<ILayoutPanelElement> result = new List<ILayoutPanelElement>();
+            string startElementName = reader.LocalName;
             reader.Read();
             if (reader.LocalName.Equals(startElementName) && reader.NodeType == XmlNodeType.EndElement) return null;
 
@@ -848,7 +848,7 @@ namespace H.Controls.Dock.Layout
             {
                 orientation = (Orientation)Enum.Parse(typeof(Orientation), reader.GetAttribute(nameof(Orientation)), true);
 
-                var canDockStr = reader.GetAttribute("CanDock");
+                string canDockStr = reader.GetAttribute("CanDock");
                 if (canDockStr != null)
                     canDock = bool.Parse(canDockStr);
 
@@ -867,7 +867,7 @@ namespace H.Controls.Dock.Layout
 
         private List<object> ReadElementList(XmlReader reader, bool isFloatingWindow)
         {
-            var resultList = new List<object>();
+            List<object> resultList = new List<object>();
             while (reader.NodeType == XmlNodeType.Whitespace) reader.Read();
             if (reader.NodeType == XmlNodeType.EndElement) return resultList;
 
@@ -877,7 +877,7 @@ namespace H.Controls.Dock.Layout
                 return resultList;
             }
 
-            var startElementName = reader.LocalName;
+            string startElementName = reader.LocalName;
             reader.Read();
             if (reader.LocalName.Equals(startElementName) && reader.NodeType == XmlNodeType.EndElement) return null;
 
@@ -976,31 +976,31 @@ namespace H.Controls.Dock.Layout
 
 #if DEBUG
 
-		public void DumpTree(bool shortPropertyNames = false)
-		{
-			void DumpElement(ILayoutElement element, StringBuilder indent, int childID, bool isLastChild)
-			{
-				Debug.Write($"{indent}{(indent.Length > 0 ? isLastChild ? " └─ " : " ├─ " : "")}{childID:D2} 0x{element.GetHashCode():X8} " +
-								$"{element.GetType().Name} {(shortPropertyNames ? "P" : "Parent")}:0x{element.Parent?.GetHashCode() ?? 0:X8} " +
-								$"{(shortPropertyNames ? "R" : "Root")}:0x{element.Root?.GetHashCode() ?? 0:X8}");
-				if (!(element is ILayoutContainer containerElement))
-				{
-					Debug.WriteLine("");
-					return;
-				}
-				Debug.WriteLine($" {(shortPropertyNames ? "C" : "Children")}:{containerElement.ChildrenCount}");
-				var nrChild = 0;
-				indent.Append(isLastChild ? "   " : " │ ");
-				foreach (var child in containerElement.Children)
-				{
-					var lastChild = nrChild == containerElement.ChildrenCount - 1;
-					DumpElement(child, indent, nrChild++, lastChild);
-				}
-				indent.Remove(indent.Length - 3, 3);
-			}
+        public void DumpTree(bool shortPropertyNames = false)
+        {
+            void DumpElement(ILayoutElement element, StringBuilder indent, int childID, bool isLastChild)
+            {
+                Debug.Write($"{indent}{(indent.Length > 0 ? isLastChild ? " └─ " : " ├─ " : "")}{childID:D2} 0x{element.GetHashCode():X8} " +
+                                $"{element.GetType().Name} {(shortPropertyNames ? "P" : "Parent")}:0x{element.Parent?.GetHashCode() ?? 0:X8} " +
+                                $"{(shortPropertyNames ? "R" : "Root")}:0x{element.Root?.GetHashCode() ?? 0:X8}");
+                if (!(element is ILayoutContainer containerElement))
+                {
+                    Debug.WriteLine("");
+                    return;
+                }
+                Debug.WriteLine($" {(shortPropertyNames ? "C" : "Children")}:{containerElement.ChildrenCount}");
+                int nrChild = 0;
+                indent.Append(isLastChild ? "   " : " │ ");
+                foreach (ILayoutElement child in containerElement.Children)
+                {
+                    bool lastChild = nrChild == containerElement.ChildrenCount - 1;
+                    DumpElement(child, indent, nrChild++, lastChild);
+                }
+                indent.Remove(indent.Length - 3, 3);
+            }
 
-			DumpElement(this, new StringBuilder(), 0, true);
-		}
+            DumpElement(this, new StringBuilder(), 0, true);
+        }
 
 #endif
 

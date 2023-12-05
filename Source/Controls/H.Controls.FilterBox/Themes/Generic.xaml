@@ -5,8 +5,9 @@
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/H.Controls.FilterBox;component/PropertyFilterBox.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Controls.FilterBox;component/PropertyConfidtionPrensenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.FilterBox;component/PropertyFilterBox/PropertyFilterBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.FilterBox;component/PropertyFilterBox/PropertyConfidtionPrensenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.FilterBox;component/PropertyFilterBox/PropertyConfidtionsPrensenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.FilterBox;component/TextFilterBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.FilterBox;component/SelectionFilterBox.xaml" />
     </ResourceDictionary.MergedDictionaries>

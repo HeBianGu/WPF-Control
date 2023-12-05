@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace H.Extensions.BackgroundImage
 {
-    public class Class1
+    internal class Class1
     {
     }
 }

@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using H.Providers.Ioc;
 using Microsoft.Xaml.Behaviors;
@@ -6,13 +6,10 @@ using System;
 using System.Collections;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Diagnostics;
 
 namespace H.Controls.FilterBox
 {
@@ -53,7 +50,7 @@ namespace H.Controls.FilterBox
             set { SetValue(HeaderProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty HeaderProperty =
             DependencyProperty.Register("Header", typeof(string), typeof(TextBlockFiltersCountBehavior), new FrameworkPropertyMetadata("合计：", (d, e) =>
             {
@@ -80,7 +77,7 @@ namespace H.Controls.FilterBox
             set { SetValue(FormatProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty FormatProperty =
             DependencyProperty.Register("Format", typeof(string), typeof(TextBlockFiltersCountBehavior), new FrameworkPropertyMetadata("[{0}] {1}", (d, e) =>
             {
@@ -107,7 +104,7 @@ namespace H.Controls.FilterBox
             set { SetValue(ConditionOperateProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty ConditionOperateProperty =
             DependencyProperty.Register("ConditionOperate", typeof(ConditionOperate), typeof(TextBlockFiltersCountBehavior), new FrameworkPropertyMetadata(ConditionOperate.All, (d, e) =>
             {
@@ -144,7 +141,7 @@ namespace H.Controls.FilterBox
                 return;
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.Append(this.Header);
-            var datas = this.ItemsSource.OfType<object>();
+            System.Collections.Generic.IEnumerable<object> datas = this.ItemsSource.OfType<object>();
             int count = 0;
             if (this.ConditionOperate == ConditionOperate.All)
                 count = datas.Count(x => this.DisplayFilters.All(l => l.IsMatch(x)));

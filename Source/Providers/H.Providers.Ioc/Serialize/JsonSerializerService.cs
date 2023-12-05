@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.IO;
@@ -6,11 +6,12 @@ using System.Text.Json;
 
 namespace H.Providers.Ioc
 {
+
     public class JsonSerializerService : ISerializerService
     {
         public object CloneXml(object o)
         {
-            var txt = JsonSerializer.Serialize(o);
+            string txt = JsonSerializer.Serialize(o);
             return JsonSerializer.Deserialize(txt, o.GetType());
         }
 
@@ -18,7 +19,7 @@ namespace H.Providers.Ioc
         {
             if (!File.Exists(filePath))
                 return null;
-            var txt = File.ReadAllText(filePath);
+            string txt = File.ReadAllText(filePath);
             return JsonSerializer.Deserialize(txt, type);
         }
 
@@ -29,7 +30,7 @@ namespace H.Providers.Ioc
 
         public void Save(string filePath, object sourceObj, string xmlRootName = null)
         {
-            var txt = JsonSerializer.Serialize(sourceObj);
+            string txt = JsonSerializer.Serialize(sourceObj);
             System.Diagnostics.Debug.WriteLine(txt);
             File.WriteAllText(filePath, txt);
         }

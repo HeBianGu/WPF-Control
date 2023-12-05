@@ -18,7 +18,7 @@ namespace H.Controls.RepositoryBox
             set { SetValue(TypeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty TypeProperty =
             DependencyProperty.Register("Type", typeof(Type), typeof(RepositoryGrid), new FrameworkPropertyMetadata(default(Type), (d, e) =>
             {
@@ -38,9 +38,9 @@ namespace H.Controls.RepositoryBox
 
             }));
 
-        void RefreshType(Type type)
+        private void RefreshType(Type type)
         {
-            var gType = typeof(IRepositoryViewModel<>).MakeGenericType(type);
+            Type gType = typeof(IRepositoryViewModel<>).MakeGenericType(type);
             this.DataContext = Ioc.GetService<IRepositoryViewModel>(gType, true);
         }
 
@@ -51,7 +51,7 @@ namespace H.Controls.RepositoryBox
             set { SetValue(UseAddProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UseAddProperty =
             DependencyProperty.Register("UseAdd", typeof(bool), typeof(RepositoryGrid), new FrameworkPropertyMetadata(default(bool), (d, e) =>
             {
@@ -78,7 +78,7 @@ namespace H.Controls.RepositoryBox
             set { SetValue(UseDeleteProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UseDeleteProperty =
             DependencyProperty.Register("UseDelete", typeof(bool), typeof(RepositoryGrid), new FrameworkPropertyMetadata(default(bool), (d, e) =>
             {
@@ -105,7 +105,7 @@ namespace H.Controls.RepositoryBox
             set { SetValue(UseCheckAllProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UseCheckAllProperty =
             DependencyProperty.Register("UseCheckAll", typeof(bool), typeof(RepositoryGrid), new FrameworkPropertyMetadata(default(bool), (d, e) =>
             {
@@ -132,7 +132,7 @@ namespace H.Controls.RepositoryBox
             set { SetValue(UseClearProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UseClearProperty =
             DependencyProperty.Register("UseClear", typeof(bool), typeof(RepositoryGrid), new FrameworkPropertyMetadata(default(bool), (d, e) =>
             {
@@ -159,7 +159,7 @@ namespace H.Controls.RepositoryBox
             set { SetValue(UseEditProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UseEditProperty =
             DependencyProperty.Register("UseEdit", typeof(bool), typeof(RepositoryGrid), new FrameworkPropertyMetadata(default(bool), (d, e) =>
             {
@@ -186,7 +186,7 @@ namespace H.Controls.RepositoryBox
             set { SetValue(UseExportProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UseExportProperty =
             DependencyProperty.Register("UseExport", typeof(bool), typeof(RepositoryGrid), new FrameworkPropertyMetadata(default(bool), (d, e) =>
             {
@@ -213,7 +213,7 @@ namespace H.Controls.RepositoryBox
             set { SetValue(UseViewProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UseViewProperty =
             DependencyProperty.Register("UseView", typeof(bool), typeof(RepositoryGrid), new FrameworkPropertyMetadata(default(bool), (d, e) =>
             {
@@ -240,7 +240,7 @@ namespace H.Controls.RepositoryBox
             set { SetValue(UseDeleteCheckedProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UseDeleteCheckedProperty =
             DependencyProperty.Register("UseDeleteChecked", typeof(bool), typeof(RepositoryGrid), new FrameworkPropertyMetadata(default(bool), (d, e) =>
             {
@@ -267,7 +267,7 @@ namespace H.Controls.RepositoryBox
             set { SetValue(UseSaveProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UseSaveProperty =
             DependencyProperty.Register("UseSave", typeof(bool), typeof(RepositoryGrid), new FrameworkPropertyMetadata(default(bool), (d, e) =>
             {
@@ -294,7 +294,7 @@ namespace H.Controls.RepositoryBox
             set { SetValue(UseNextPageProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UseNextPageProperty =
             DependencyProperty.Register("UseNextPage", typeof(bool), typeof(RepositoryGrid), new FrameworkPropertyMetadata(default(bool), (d, e) =>
             {
@@ -321,7 +321,7 @@ namespace H.Controls.RepositoryBox
             set { SetValue(UsePreviousPageProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UsePreviousPageProperty =
             DependencyProperty.Register("UsePreviousPage", typeof(bool), typeof(RepositoryGrid), new FrameworkPropertyMetadata(default(bool), (d, e) =>
             {

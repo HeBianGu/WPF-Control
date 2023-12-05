@@ -1,5 +1,6 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
+using H.Providers.Ioc;
 using H.Providers.Mvvm;
 using System;
 using System.Windows;
@@ -155,7 +156,7 @@ namespace H.Controls.GridSplitterBox
             set { SetValue(ModeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty ModeProperty =
             DependencyProperty.Register("Mode", typeof(GridSplitteMode), typeof(GridSplitterBox), new FrameworkPropertyMetadata(GridSplitteMode.Hidden, (d, e) =>
             {
@@ -182,7 +183,7 @@ namespace H.Controls.GridSplitterBox
             set { SetValue(MenuContentProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty MenuContentProperty =
             DependencyProperty.Register("MenuContent", typeof(object), typeof(GridSplitterBox), new FrameworkPropertyMetadata(default(object), (d, e) =>
              {
@@ -209,7 +210,7 @@ namespace H.Controls.GridSplitterBox
             set { SetValue(MenuTempateProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty MenuTempateProperty =
             DependencyProperty.Register("MenuTempate", typeof(DataTemplate), typeof(GridSplitterBox), new FrameworkPropertyMetadata(default(DataTemplate), (d, e) =>
              {
@@ -236,7 +237,7 @@ namespace H.Controls.GridSplitterBox
             set { SetValue(GridSpliteWidthProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty GridSpliteWidthProperty =
             DependencyProperty.Register("GridSpliteWidth", typeof(double), typeof(GridSplitterBox), new FrameworkPropertyMetadata(5.0, (d, e) =>
              {
@@ -262,7 +263,7 @@ namespace H.Controls.GridSplitterBox
             set { SetValue(MenuMinWidthProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty MenuMinWidthProperty =
             DependencyProperty.Register("MenuMinWidth", typeof(double), typeof(GridSplitterBox), new FrameworkPropertyMetadata(10.0, (d, e) =>
              {
@@ -287,7 +288,7 @@ namespace H.Controls.GridSplitterBox
             set { SetValue(MenuMaxWidthProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty MenuMaxWidthProperty =
             DependencyProperty.Register("MenuMaxWidth", typeof(double), typeof(GridSplitterBox), new FrameworkPropertyMetadata(300.0, (d, e) =>
              {
@@ -314,7 +315,7 @@ namespace H.Controls.GridSplitterBox
             set { SetValue(MenuWidthProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty MenuWidthProperty =
             DependencyProperty.Register("MenuWidth", typeof(GridLength), typeof(GridSplitterBox), new FrameworkPropertyMetadata(new GridLength(200.0), (d, e) =>
              {
@@ -340,7 +341,7 @@ namespace H.Controls.GridSplitterBox
             set { SetValue(GridSpliterBackgroundProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty GridSpliterBackgroundProperty =
             DependencyProperty.Register("GridSpliterBackground", typeof(Brush), typeof(GridSplitterBox), new FrameworkPropertyMetadata(default(Brush), (d, e) =>
              {
@@ -366,7 +367,7 @@ namespace H.Controls.GridSplitterBox
             set { SetValue(ToggleHorizontalAlignmentProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty ToggleHorizontalAlignmentProperty =
             DependencyProperty.Register("ToggleHorizontalAlignment", typeof(HorizontalAlignment), typeof(GridSplitterBox), new FrameworkPropertyMetadata(default(HorizontalAlignment), (d, e) =>
              {
@@ -393,7 +394,7 @@ namespace H.Controls.GridSplitterBox
             set { SetValue(ToggleVerticalAlignmentProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty ToggleVerticalAlignmentProperty =
             DependencyProperty.Register("ToggleVerticalAlignment", typeof(VerticalAlignment), typeof(GridSplitterBox), new FrameworkPropertyMetadata(default(VerticalAlignment), (d, e) =>
              {
@@ -420,7 +421,7 @@ namespace H.Controls.GridSplitterBox
             set { SetValue(MenuDockProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty MenuDockProperty =
             DependencyProperty.Register("MenuDock", typeof(Dock), typeof(GridSplitterBox), new FrameworkPropertyMetadata(default(Dock), (d, e) =>
              {
@@ -446,7 +447,7 @@ namespace H.Controls.GridSplitterBox
             set { SetValue(ToggleStyleProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty ToggleStyleProperty =
             DependencyProperty.Register("ToggleStyle", typeof(Style), typeof(GridSplitterBox), new FrameworkPropertyMetadata(default(Style), (d, e) =>
             {
@@ -473,7 +474,7 @@ namespace H.Controls.GridSplitterBox
             set { SetValue(OpenGeometryProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty OpenGeometryProperty =
             DependencyProperty.Register("OpenGeometry", typeof(string), typeof(GridSplitterBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
             {
@@ -500,7 +501,7 @@ namespace H.Controls.GridSplitterBox
             set { SetValue(CloseGeometryProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty CloseGeometryProperty =
             DependencyProperty.Register("CloseGeometry", typeof(string), typeof(GridSplitterBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
             {
@@ -527,7 +528,7 @@ namespace H.Controls.GridSplitterBox
             set { SetValue(IsExpandedProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty IsExpandedProperty =
             DependencyProperty.Register("IsExpanded", typeof(bool), typeof(GridSplitterBox), new FrameworkPropertyMetadata(true, (d, e) =>
             {
@@ -554,7 +555,7 @@ namespace H.Controls.GridSplitterBox
             set { SetValue(UseToggleProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UseToggleProperty =
             DependencyProperty.Register("UseToggle", typeof(bool), typeof(GridSplitterBox), new FrameworkPropertyMetadata(true, (d, e) =>
             {

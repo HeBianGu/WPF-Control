@@ -32,14 +32,14 @@ namespace H.Controls.Diagram.Extension
         public string ToPortID { get; set; }
 
         [XmlIgnore]
-         [Display(Name = "恢复默认", GroupName = "操作")]
+        [Display(Name = "恢复默认", GroupName = "操作")]
         public override RelayCommand LoadDefaultCommand => new RelayCommand((s, e) =>
         {
             this.LoadDefault();
         });
 
         [XmlIgnore]
-         [Display(Name = "删除", GroupName = "操作")]
+        [Display(Name = "删除", GroupName = "操作")]
         public RelayCommand DeleteCommand => new RelayCommand((s, e) =>
         {
             if (e is Part part)
@@ -49,7 +49,7 @@ namespace H.Controls.Diagram.Extension
         });
 
         [XmlIgnore]
-         [Display(Name = "保存模板", GroupName = "操作")]
+        [Display(Name = "保存模板", GroupName = "操作")]
         public RelayCommand SaveAsTemplateCommand => new RelayCommand((s, e) =>
         {
             if (e is Node node)
@@ -59,7 +59,7 @@ namespace H.Controls.Diagram.Extension
         });
 
         [XmlIgnore]
-         [Display(Name = "缩放定位", GroupName = "操作")]
+        [Display(Name = "缩放定位", GroupName = "操作")]
         public RelayCommand LocateFullCommand => new RelayCommand((s, e) =>
         {
             if (e is Link node)
@@ -72,7 +72,7 @@ namespace H.Controls.Diagram.Extension
         });
 
         [XmlIgnore]
-         [Display(Name = "平移定位", GroupName = "操作")]
+        [Display(Name = "平移定位", GroupName = "操作")]
         public RelayCommand LocateMoveCommand => new RelayCommand((s, e) =>
         {
             if (e is Link node)
@@ -85,13 +85,13 @@ namespace H.Controls.Diagram.Extension
         });
 
         [XmlIgnore]
-         [Display(Name = "应用到全部", GroupName = "操作")]
+        [Display(Name = "应用到全部", GroupName = "操作")]
         public RelayCommand ApplyToAllCommand => new RelayCommand((s, e) =>
         {
             if (e is Link part)
             {
-                var diagram = part.GetParent<Diagram>();
-                foreach (var item in diagram.Nodes.SelectMany(x => x.GetAllLinks()).Select(x => x.Content).Distinct().OfType<LinkData>())
+                Diagram diagram = part.GetParent<Diagram>();
+                foreach (LinkData item in diagram.Nodes.SelectMany(x => x.GetAllLinks()).Select(x => x.Content).Distinct().OfType<LinkData>())
                 {
                     this.ApplayStyleTo(item);
                 }
@@ -99,13 +99,13 @@ namespace H.Controls.Diagram.Extension
         });
 
         [XmlIgnore]
-         [Display(Name = "应用到同类型", GroupName = "操作")]
+        [Display(Name = "应用到同类型", GroupName = "操作")]
         public RelayCommand ApplyToTypeCommand => new RelayCommand((s, e) =>
         {
             if (e is Link part)
             {
-                var diagram = part.GetParent<Diagram>();
-                foreach (var item in diagram.Nodes.SelectMany(x => x.GetAllLinks()).Select(x => x.Content).Distinct().OfType<LinkData>().Where(x => x.GetType().IsAssignableFrom(this.GetType())))
+                Diagram diagram = part.GetParent<Diagram>();
+                foreach (LinkData item in diagram.Nodes.SelectMany(x => x.GetAllLinks()).Select(x => x.Content).Distinct().OfType<LinkData>().Where(x => x.GetType().IsAssignableFrom(this.GetType())))
                 {
                     this.ApplayStyleTo(item);
                 }

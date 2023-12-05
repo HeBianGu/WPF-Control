@@ -1,9 +1,8 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Linq;
 using System.Windows;
-using System.Windows.Threading;
 
 namespace H.Themes.Default
 {
@@ -47,23 +46,23 @@ namespace H.Themes.Default
 
         public static void ChangeFontSizeThemeType(this FontSizeThemeType n)
         {
-            var resource = n.GetFontSizeResource();
+            ResourceDictionary resource = n.GetFontSizeResource();
             ChangeResourceDictionary(resource, x => x.IsFontSizesResource());
         }
 
         public static void ChangeLayoutThemeType(this LayoutThemeType n)
         {
-            var resource = n.GetLayoutResource();
+            ResourceDictionary resource = n.GetLayoutResource();
             ChangeResourceDictionary(resource, x => x.IsLayoutsResource());
         }
 
         public static void ChangeResourceDictionary(this ResourceDictionary n, Func<ResourceDictionary, bool> predicate, bool force = false)
         {
-            var dic = Application.Current.Resources.MergedDictionaries;
-            var finds = dic.Where(predicate).ToList();
+            System.Collections.ObjectModel.Collection<ResourceDictionary> dic = Application.Current.Resources.MergedDictionaries;
+            System.Collections.Generic.List<ResourceDictionary> finds = dic.Where(predicate).ToList();
             if (finds.Count() == 1 && force == false)
             {
-                var find = finds.First();
+                ResourceDictionary find = finds.First();
                 if (find.Source.AbsoluteUri != n.Source.AbsoluteUri)
                 {
                     int index = dic.IndexOf(find);
@@ -71,7 +70,7 @@ namespace H.Themes.Default
                 }
                 return;
             }
-            foreach (var find in finds)
+            foreach (ResourceDictionary find in finds)
             {
                 dic.Remove(find);
             }

@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.Windows;
 using System.Windows.Media;
@@ -22,13 +22,13 @@ namespace H.Controls.Adorner
             obj.SetValue(PenProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty PenProperty =
             DependencyProperty.RegisterAttached("Pen", typeof(Pen), typeof(AdornerBase), new PropertyMetadata(new Pen(Brushes.DeepSkyBlue, 1), OnPenChanged));
 
-        static public void OnPenChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnPenChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             Pen n = (Pen)e.NewValue;
 
@@ -46,13 +46,13 @@ namespace H.Controls.Adorner
             obj.SetValue(FillProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty FillProperty =
             DependencyProperty.RegisterAttached("Fill", typeof(Brush), typeof(AdornerBase), new PropertyMetadata(default(Brush), OnFillChanged));
 
-        static public void OnFillChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnFillChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             Brush n = (Brush)e.NewValue;
 

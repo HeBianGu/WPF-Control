@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 using H.Providers.Mvvm;
@@ -41,7 +41,7 @@ namespace H.Controls.Chart2D
 
             this._center_thumb.DragDeltaChanged += (l, k) =>
               {
-                  ObjectRoutedEventArgs<ThumbType> from = k as ObjectRoutedEventArgs<ThumbType>;
+                  RoutedEventArgs<ThumbType> from = k as RoutedEventArgs<ThumbType>;
 
                   this.RefreshData(from.Entity);
 
@@ -99,7 +99,7 @@ namespace H.Controls.Chart2D
             set { SetValue(MaxValueProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty MaxValueProperty =
             DependencyProperty.Register("MaxValue", typeof(double), typeof(ThumbToolBar), new PropertyMetadata(100.0, (d, e) =>
              {
@@ -127,11 +127,11 @@ namespace H.Controls.Chart2D
 
                 if (thumb == ThumbType.Left)
                 {
-                    this.LeftPercent = (left * MaxValue - (left * MaxValue) % minSplite) / MaxValue;
+                    this.LeftPercent = ((left * MaxValue) - (left * MaxValue % minSplite)) / MaxValue;
                 }
                 else if (thumb == ThumbType.Right)
                 {
-                    this.RightPercent = (right * MaxValue - (right * MaxValue) % minSplite + minSplite) / MaxValue;
+                    this.RightPercent = ((right * MaxValue) - (right * MaxValue % minSplite) + minSplite) / MaxValue;
                 }
                 else
                 {
@@ -139,8 +139,8 @@ namespace H.Controls.Chart2D
 
                     //this.RightPercent = Convert.ToDouble((int)(right * MaxValue)) / MaxValue;
 
-                    this.LeftPercent = (left * MaxValue - (left * MaxValue) % minSplite) / MaxValue;
-                    this.RightPercent = (right * MaxValue - (right * MaxValue) % minSplite) / MaxValue;
+                    this.LeftPercent = ((left * MaxValue) - (left * MaxValue % minSplite)) / MaxValue;
+                    this.RightPercent = ((right * MaxValue) - (right * MaxValue % minSplite)) / MaxValue;
 
                 }
 
@@ -166,7 +166,7 @@ namespace H.Controls.Chart2D
 
                 Canvas.SetLeft(_center_thumb, this.LeftPercent * parent.ActualWidth);
 
-                _center_thumb.Width = this.RightPercent * parent.ActualWidth - this.LeftPercent * parent.ActualWidth;
+                _center_thumb.Width = (this.RightPercent * parent.ActualWidth) - (this.LeftPercent * parent.ActualWidth);
 
                 _flag = true;
             }
@@ -328,7 +328,7 @@ namespace H.Controls.Chart2D
 
         protected void OnDragDeltaChanged(ThumbType thumbType = ThumbType.Center)
         {
-            ObjectRoutedEventArgs<ThumbType> args = new ObjectRoutedEventArgs<ThumbType>(DragDeltaChangedRoutedEvent, this);
+            RoutedEventArgs<ThumbType> args = new RoutedEventArgs<ThumbType>(DragDeltaChangedRoutedEvent, this);
             args.Entity = thumbType;
             this.RaiseEvent(args);
         }

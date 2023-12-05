@@ -1,32 +1,10 @@
-﻿/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
-
+﻿
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Windows.Input;
 
 namespace H.Controls.Dock.Commands
 {
-    /// <inheritdoc />
-    /// <summary>
-    /// A command whose sole purpose is to  relay its functionality to other
-    /// objects by invoking delegates.
-    /// The default return value for the <see cref="ICommand.CanExecute"/> method is <c>true</c>.
-    ///
-    /// Source: <see href="http://www.codeproject.com/Articles/31837/Creating-an-Internationalized-Wizard-in-WPF"/>
-    /// </summary>
-    /// <seealso cref="ICommand"/>
-    /// <summary>
-    /// Class RelayCommand.
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <seealso cref="System.Windows.Input.ICommand" />
     internal class RelayCommand<T> : ICommand
     {
         #region Private Fields
@@ -132,7 +110,7 @@ namespace H.Controls.Dock.Commands
 
                 if (parameter == null || parameter is T)
                 {
-                    return (_canExecute.Execute((T)parameter));
+                    return _canExecute.Execute((T)parameter);
                 }
             }
 
@@ -146,7 +124,7 @@ namespace H.Controls.Dock.Commands
         /// to be passed, this object can be set to a null reference</param>
         public virtual void Execute(object parameter)
         {
-            var val = parameter;
+            object val = parameter;
 
             if (parameter != null
                 && parameter.GetType() != typeof(T))

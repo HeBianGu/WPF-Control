@@ -1,12 +1,4 @@
-﻿/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
-
+﻿
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -97,7 +89,7 @@ namespace H.Controls.Dock.Controls
             _reentrantFlag = true;
             if (IconTemplateSelector != null)
             {
-                var dataTemplateToUse = IconTemplateSelector.SelectTemplate(Icon, this);
+                DataTemplate dataTemplateToUse = IconTemplateSelector.SelectTemplate(Icon, this);
                 if (dataTemplateToUse != null) Icon = dataTemplateToUse.LoadContent();
             }
             else if (IconTemplate != null)

@@ -1,9 +1,7 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 using H.Controls.Form;
-using H.Providers.Ioc;
-using H.Providers.Ioc;
 using H.Providers.Ioc;
 using H.Providers.Mvvm;
 
@@ -13,7 +11,6 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
-using System.Transactions;
 using System.Xml.Serialization;
 
 namespace H.Modules.Identity
@@ -52,8 +49,8 @@ namespace H.Modules.Identity
             }
             else
             {
-                var reporitory = Ioc.GetService<IStringRepository<hi_dd_user>>();
-                var user = reporitory.GetList(x => x.Account.ToLower() == name.ToLower()).FirstOrDefault();
+                IStringRepository<hi_dd_user> reporitory = Ioc.GetService<IStringRepository<hi_dd_user>>();
+                hi_dd_user user = reporitory.GetList(x => x.Account.ToLower() == name.ToLower()).FirstOrDefault();
                 if (user == null)
                 {
                     message = "用户名不正确";

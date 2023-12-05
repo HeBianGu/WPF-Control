@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 
@@ -8,10 +8,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -54,7 +52,7 @@ namespace H.Controls.Diagram
                 CommandBinding binding = new CommandBinding(DiagramCommands.Start);
                 binding.Executed += async (l, k) =>
                 {
-                    var start = this.GetStartNode(out string message);
+                    Node start = this.GetStartNode(out string message);
                     if (start == null)
                     {
                         IocMessage.ShowDialogMessage(message);
@@ -78,10 +76,10 @@ namespace H.Controls.Diagram
                 CommandBinding binding = new CommandBinding(DiagramCommands.Stop);
                 binding.Executed += (l, k) =>
                 {
-                    var parts = this.Nodes.SelectMany(x => x.GetParts());
-                    foreach (var part in parts)
+                    IEnumerable<Part> parts = this.Nodes.SelectMany(x => x.GetParts());
+                    foreach (Part part in parts)
                     {
-                        var data = part.GetContent<IFlowable>();
+                        IFlowable data = part.GetContent<IFlowable>();
                         {
                             if (data != null)
                             {
@@ -106,8 +104,8 @@ namespace H.Controls.Diagram
                 CommandBinding binding = new CommandBinding(DiagramCommands.Reset);
                 binding.Executed += (l, k) =>
                 {
-                    var parts = this.Nodes.SelectMany(x => x.GetParts());
-                    foreach (var part in parts)
+                    IEnumerable<Part> parts = this.Nodes.SelectMany(x => x.GetParts());
+                    foreach (Part part in parts)
                     {
                         part.State = FlowableState.Ready;
                         if (part.Content is IFlowable flowable)
@@ -139,8 +137,8 @@ namespace H.Controls.Diagram
                 CommandBinding binding = new CommandBinding(DiagramCommands.DeleteSelected);
                 binding.Executed += (l, k) =>
                 {
-                    var parts = this.Nodes.SelectMany(x => x.GetParts()).Where(x => x.IsSelected).ToList();
-                    foreach (var item in parts)
+                    List<Part> parts = this.Nodes.SelectMany(x => x.GetParts()).Where(x => x.IsSelected).ToList();
+                    foreach (Part item in parts)
                     {
                         if (item is Node || item is Link)
                             item.Delete();
@@ -151,7 +149,7 @@ namespace H.Controls.Diagram
                     k.CanExecute = this.Nodes.SelectMany(x => x.GetParts()).Any(x => x.IsSelected);
                 };
                 this.CommandBindings.Add(binding);
-                var keyBinding = new KeyBinding(DiagramCommands.DeleteSelected, new KeyGesture(Key.Delete));
+                KeyBinding keyBinding = new KeyBinding(DiagramCommands.DeleteSelected, new KeyGesture(Key.Delete));
                 this.InputBindings.Add(keyBinding);
             }
             {
@@ -160,14 +158,14 @@ namespace H.Controls.Diagram
                 {
                     if (this.Nodes.All(x => x.IsSelected))
                     {
-                        foreach (var item in this.Nodes)
+                        foreach (Node item in this.Nodes)
                         {
                             item.IsSelected = false;
                         }
                     }
                     else
                     {
-                        foreach (var item in this.Nodes)
+                        foreach (Node item in this.Nodes)
                         {
                             item.IsSelected = true;
                         }
@@ -179,7 +177,7 @@ namespace H.Controls.Diagram
                 //    k.CanExecute = this.Nodes.Any(x => x.IsSelected == false);
                 //};
                 this.CommandBindings.Add(binding);
-                var keyBinding = new KeyBinding(DiagramCommands.SelectAll, Key.A, ModifierKeys.Control);
+                KeyBinding keyBinding = new KeyBinding(DiagramCommands.SelectAll, Key.A, ModifierKeys.Control);
                 this.InputBindings.Add(keyBinding);
             }
 
@@ -191,7 +189,7 @@ namespace H.Controls.Diagram
                 };
                 this.CommandBindings.Add(binding);
 
-                var keyBinding = new MouseBinding(DiagramCommands.ZoomToFit, new MouseGesture(MouseAction.LeftDoubleClick));
+                MouseBinding keyBinding = new MouseBinding(DiagramCommands.ZoomToFit, new MouseGesture(MouseAction.LeftDoubleClick));
                 this.InputBindings.Add(keyBinding);
             }
 
@@ -202,15 +200,15 @@ namespace H.Controls.Diagram
                     Action<IEnumerable<Node>> action = null;
                     action = nodes =>
                     {
-                        foreach (var node in nodes)
+                        foreach (Node node in nodes)
                         {
                             node.Aligment();
-                            var fromNodes = node.GetFromNodes();
+                            List<Node> fromNodes = node.GetFromNodes();
                             action.Invoke(fromNodes);
                         }
                     };
 
-                    var nodes = this.Nodes.Where(x => x.LinksOutOf.Count == 0);
+                    IEnumerable<Node> nodes = this.Nodes.Where(x => x.LinksOutOf.Count == 0);
                     action.Invoke(nodes);
                 };
                 this.CommandBindings.Add(binding);
@@ -220,7 +218,7 @@ namespace H.Controls.Diagram
                 CommandBinding binding = new CommandBinding(DiagramCommands.Next);
                 binding.Executed += (l, k) =>
                 {
-                    var selected = this.Nodes.FirstOrDefault(x => x.IsSelected);
+                    Node selected = this.Nodes.FirstOrDefault(x => x.IsSelected);
                     if (selected == null)
                     {
                         selected = this.Nodes.FirstOrDefault();
@@ -249,7 +247,7 @@ namespace H.Controls.Diagram
 
 
                 {
-                    var keyBinding = new KeyBinding(DiagramCommands.Next, new KeyGesture(Key.Tab));
+                    KeyBinding keyBinding = new KeyBinding(DiagramCommands.Next, new KeyGesture(Key.Tab));
                     this.InputBindings.Add(keyBinding);
                 }
             }
@@ -258,7 +256,7 @@ namespace H.Controls.Diagram
                 CommandBinding binding = new CommandBinding(DiagramCommands.Previous);
                 binding.Executed += (l, k) =>
                 {
-                    var selected = this.Nodes.FirstOrDefault(x => x.IsSelected);
+                    Node selected = this.Nodes.FirstOrDefault(x => x.IsSelected);
                     if (selected == null)
                     {
                         selected = this.Nodes.LastOrDefault();
@@ -290,8 +288,8 @@ namespace H.Controls.Diagram
                 CommandBinding binding = new CommandBinding(DiagramCommands.MoveLeft);
                 binding.Executed += (l, k) =>
                 {
-                    var selecteds = this.Nodes.Where(x => x.IsSelected);
-                    foreach (var item in selecteds)
+                    IEnumerable<Node> selecteds = this.Nodes.Where(x => x.IsSelected);
+                    foreach (Node item in selecteds)
                     {
                         NodeLayer.SetPosition(item, new Point(item.Location.X - 5, item.Location.Y));
                     }
@@ -302,15 +300,15 @@ namespace H.Controls.Diagram
                 };
                 this.CommandBindings.Add(binding);
 
-                var keyBinding = new KeyBinding(DiagramCommands.MoveLeft, new KeyGesture(Key.Left));
+                KeyBinding keyBinding = new KeyBinding(DiagramCommands.MoveLeft, new KeyGesture(Key.Left));
                 this.InputBindings.Add(keyBinding);
             }
             {
                 CommandBinding binding = new CommandBinding(DiagramCommands.MoveRight);
                 binding.Executed += (l, k) =>
                 {
-                    var selecteds = this.Nodes.Where(x => x.IsSelected);
-                    foreach (var item in selecteds)
+                    IEnumerable<Node> selecteds = this.Nodes.Where(x => x.IsSelected);
+                    foreach (Node item in selecteds)
                     {
                         NodeLayer.SetPosition(item, new Point(item.Location.X + 5, item.Location.Y));
                     }
@@ -321,15 +319,15 @@ namespace H.Controls.Diagram
                 };
                 this.CommandBindings.Add(binding);
 
-                var keyBinding = new KeyBinding(DiagramCommands.MoveRight, new KeyGesture(Key.Right));
+                KeyBinding keyBinding = new KeyBinding(DiagramCommands.MoveRight, new KeyGesture(Key.Right));
                 this.InputBindings.Add(keyBinding);
             }
             {
                 CommandBinding binding = new CommandBinding(DiagramCommands.MoveUp);
                 binding.Executed += (l, k) =>
                 {
-                    var selecteds = this.Nodes.Where(x => x.IsSelected);
-                    foreach (var item in selecteds)
+                    IEnumerable<Node> selecteds = this.Nodes.Where(x => x.IsSelected);
+                    foreach (Node item in selecteds)
                     {
                         NodeLayer.SetPosition(item, new Point(item.Location.X, item.Location.Y - 5));
                     }
@@ -340,15 +338,15 @@ namespace H.Controls.Diagram
                 };
                 this.CommandBindings.Add(binding);
 
-                var keyBinding = new KeyBinding(DiagramCommands.MoveUp, new KeyGesture(Key.Up));
+                KeyBinding keyBinding = new KeyBinding(DiagramCommands.MoveUp, new KeyGesture(Key.Up));
                 this.InputBindings.Add(keyBinding);
             }
             {
                 CommandBinding binding = new CommandBinding(DiagramCommands.MoveDown);
                 binding.Executed += (l, k) =>
                 {
-                    var selecteds = this.Nodes.Where(x => x.IsSelected);
-                    foreach (var item in selecteds)
+                    IEnumerable<Node> selecteds = this.Nodes.Where(x => x.IsSelected);
+                    foreach (Node item in selecteds)
                     {
                         NodeLayer.SetPosition(item, new Point(item.Location.X, item.Location.Y + 5));
                     }
@@ -359,7 +357,7 @@ namespace H.Controls.Diagram
                 };
                 this.CommandBindings.Add(binding);
 
-                var keyBinding = new KeyBinding(DiagramCommands.MoveDown, new KeyGesture(Key.Down));
+                KeyBinding keyBinding = new KeyBinding(DiagramCommands.MoveDown, new KeyGesture(Key.Down));
                 this.InputBindings.Add(keyBinding);
             }
 
@@ -371,7 +369,7 @@ namespace H.Controls.Diagram
                     if (item.Command is RoutedUICommand routed)
                         contextMenu.Items.Add(new MenuItem() { Command = item.Command, Header = routed.Text });
                 }
-                this.ContextMenu= contextMenu;
+                this.ContextMenu = contextMenu;
             }
         }
 
@@ -449,7 +447,7 @@ namespace H.Controls.Diagram
             set { SetValue(UseStartNodeOnlyProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UseStartNodeOnlyProperty =
             DependencyProperty.Register("UseStartNodeOnly", typeof(bool), typeof(Diagram), new FrameworkPropertyMetadata(default(bool), (d, e) =>
             {
@@ -476,7 +474,7 @@ namespace H.Controls.Diagram
             set { SetValue(FlowableModeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty FlowableModeProperty =
             DependencyProperty.Register("FlowableMode", typeof(DiagramFlowableMode), typeof(Diagram), new FrameworkPropertyMetadata(DiagramFlowableMode.Link, (d, e) =>
             {
@@ -503,7 +501,7 @@ namespace H.Controls.Diagram
             private set { SetValue(StateProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty StateProperty =
             DependencyProperty.Register("State", typeof(DiagramFlowableState), typeof(Diagram), new FrameworkPropertyMetadata(default(DiagramFlowableState), (d, e) =>
             {
@@ -529,7 +527,7 @@ namespace H.Controls.Diagram
             set { SetValue(MessageProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty MessageProperty =
             DependencyProperty.Register("Message", typeof(string), typeof(Diagram), new FrameworkPropertyMetadata(default(string), (d, e) =>
             {
@@ -556,7 +554,7 @@ namespace H.Controls.Diagram
             set { SetValue(LayoutProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty LayoutProperty =
             DependencyProperty.Register("Layout", typeof(ILayout), typeof(Diagram), new FrameworkPropertyMetadata(default(ILayout), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, (d, e) =>
             {
@@ -595,7 +593,7 @@ namespace H.Controls.Diagram
             set { SetValue(SelectedPartProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty SelectedPartProperty =
             DependencyProperty.Register("SelectedPart", typeof(Part), typeof(Diagram), new FrameworkPropertyMetadata(default(Part), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, (d, e) =>
             {
@@ -616,7 +614,7 @@ namespace H.Controls.Diagram
             set { SetValue(SelectedNodeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty SelectedNodeProperty =
             DependencyProperty.Register("SelectedNode", typeof(Node), typeof(Diagram), new PropertyMetadata(default(Node), (d, e) =>
             {
@@ -639,7 +637,7 @@ namespace H.Controls.Diagram
             set { SetValue(NodesSourceProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty NodesSourceProperty =
             DependencyProperty.Register("NodesSource", typeof(IList), typeof(Diagram), new PropertyMetadata(new ObservableCollection<Node>(), (d, e) =>
             {
@@ -670,7 +668,7 @@ namespace H.Controls.Diagram
             set { SetValue(UseFlowableSelectToRunningProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty UseFlowableSelectToRunningProperty =
             DependencyProperty.Register("UseFlowableSelectToRunning", typeof(bool), typeof(Diagram), new FrameworkPropertyMetadata(false, (d, e) =>
             {
@@ -697,7 +695,7 @@ namespace H.Controls.Diagram
             set { SetValue(FlowableZoomModeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty FlowableZoomModeProperty =
             DependencyProperty.Register("FlowableZoomMode", typeof(DiagramFlowableZoomMode), typeof(Diagram), new FrameworkPropertyMetadata(default(DiagramFlowableZoomMode), (d, e) =>
             {
@@ -722,9 +720,9 @@ namespace H.Controls.Diagram
         #region - 事件 -
 
         public static readonly RoutedEvent AddLinkedRoutedEvent =
-            EventManager.RegisterRoutedEvent("AddLinked", RoutingStrategy.Bubble, typeof(EventHandler<ObjectRoutedEventArgs<Link>>), typeof(Diagram));
+            EventManager.RegisterRoutedEvent("AddLinked", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs<Link>>), typeof(Diagram));
 
-        public event EventHandler<ObjectRoutedEventArgs<Link>> AddLinked
+        public event EventHandler<RoutedEventArgs<Link>> AddLinked
         {
             add { this.AddHandler(AddLinkedRoutedEvent, value); }
             remove { this.RemoveHandler(AddLinkedRoutedEvent, value); }
@@ -732,7 +730,7 @@ namespace H.Controls.Diagram
 
         internal void OnAddLinked(Link link)
         {
-            ObjectRoutedEventArgs<Link> args = new ObjectRoutedEventArgs<Link>(AddLinkedRoutedEvent, this, link);
+            RoutedEventArgs<Link> args = new RoutedEventArgs<Link>(AddLinkedRoutedEvent, this, link);
             this.RaiseEvent(args);
         }
 
@@ -769,7 +767,7 @@ namespace H.Controls.Diagram
 
         //声明和注册路由事件
         public static readonly RoutedEvent RunningPartChangedRoutedEvent =
-            EventManager.RegisterRoutedEvent("RunningPartChanged", RoutingStrategy.Bubble, typeof(EventHandler<ObjectRoutedEventArgs<Part>>), typeof(Diagram));
+            EventManager.RegisterRoutedEvent("RunningPartChanged", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs<Part>>), typeof(Diagram));
         //CLR事件包装
         public event RoutedEventHandler RunningPartChanged
         {
@@ -780,7 +778,7 @@ namespace H.Controls.Diagram
 
         internal void OnRunningPartChanged(Part part)
         {
-            var args = new ObjectRoutedEventArgs<Part>(RunningPartChangedRoutedEvent, this, part);
+            RoutedEventArgs<Part> args = new RoutedEventArgs<Part>(RunningPartChangedRoutedEvent, this, part);
             this.RaiseEvent(args);
 
             if (this.FlowableZoomMode == DiagramFlowableZoomMode.Rect)
@@ -799,7 +797,7 @@ namespace H.Controls.Diagram
             if (this.Nodes.Count == 0)
                 return;
             Rect rect;
-            foreach (var item in this.Nodes.Select(x => x.Bound))
+            foreach (Rect item in this.Nodes.Select(x => x.Bound))
             {
                 if (rect == default(Rect))
                     rect = item;
@@ -820,9 +818,9 @@ namespace H.Controls.Diagram
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {
             base.OnMouseLeftButtonDown(e);
-            var parts = this.GetAllParts();
-            var selecteds = parts.Where(x => x.IsSelected);
-            foreach (var selected in selecteds)
+            IEnumerable<Part> parts = this.GetAllParts();
+            IEnumerable<Part> selecteds = parts.Where(x => x.IsSelected);
+            foreach (Part selected in selecteds)
                 selected.IsSelected = false;
 
             this.SelectedNode = null;
@@ -852,14 +850,14 @@ namespace H.Controls.Diagram
         protected virtual Node GetStartNode(out string message)
         {
             message = null;
-            var parts = this.Nodes.SelectMany(x => x.GetParts());
-            foreach (var part in parts)
+            IEnumerable<Part> parts = this.Nodes.SelectMany(x => x.GetParts());
+            foreach (Part part in parts)
             {
                 part.State = FlowableState.Wait;
                 if (part.Content is IFlowable flowable)
                     flowable.State = FlowableState.Wait;
             }
-            var starts = this.Nodes.Where(x => x.GetFromNodes().Count == 0 && (x.GetContent<IFlowableNode>()?.UseStart == true || !this.UseStartNodeOnly));
+            IEnumerable<Node> starts = this.Nodes.Where(x => x.GetFromNodes().Count == 0 && (x.GetContent<IFlowableNode>()?.UseStart == true || !this.UseStartNodeOnly));
             if (starts == null || starts.Count() == 0)
             {
                 message = "未找到起始节点,请添加UseStart节点";
@@ -911,7 +909,7 @@ namespace H.Controls.Diagram
             }
             this.Layout?.UpdateNode(this.Nodes.ToArray());
 #if DEBUG
-            var span = DateTime.Now - dateTime;
+            TimeSpan span = DateTime.Now - dateTime;
             System.Diagnostics.Debug.WriteLine("RefreshData：" + span.ToString());
 #endif 
         }
@@ -926,18 +924,18 @@ namespace H.Controls.Diagram
 #if DEBUG
             DateTime dateTime = DateTime.Now;
 #endif
-            foreach (var item in nodes)
+            foreach (Node item in nodes)
             {
                 item.Style = this.NodeStyle;
             }
-            foreach (var item in nodes.SelectMany(x => x.LinksInto))
+            foreach (Link item in nodes.SelectMany(x => x.LinksInto))
             {
                 item.Style = this.LinkStyle;
             }
             this.Layout?.DoLayout(nodes?.ToArray());
 
 #if DEBUG
-            var span = DateTime.Now - dateTime;
+            TimeSpan span = DateTime.Now - dateTime;
             System.Diagnostics.Debug.WriteLine("RefreshLayout：" + span.ToString());
 #endif 
         }
@@ -945,7 +943,7 @@ namespace H.Controls.Diagram
         public void RefreshLinkDrawer()
         {
             this.LinkLayer?.InvalidateArrange();
-            foreach (var item in this.Nodes.SelectMany(x => x.GetAllLinks()).Distinct())
+            foreach (Link item in this.Nodes.SelectMany(x => x.GetAllLinks()).Distinct())
             {
                 item.Update();
             }
@@ -953,7 +951,7 @@ namespace H.Controls.Diagram
 
         public void AddNode(params Node[] nodes)
         {
-            foreach (var node in nodes)
+            foreach (Node node in nodes)
             {
                 this.NodesSource.Add(node);
                 this.Nodes.Add(node);
@@ -995,7 +993,7 @@ namespace H.Controls.Diagram
             set { SetValue(DurationProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty DurationProperty =
             DependencyProperty.Register("Duration", typeof(TimeSpan), typeof(Diagram), new PropertyMetadata(TimeSpan.FromMilliseconds(500), (d, e) =>
              {
@@ -1014,7 +1012,7 @@ namespace H.Controls.Diagram
         //    set { SetValue(UseAnimationProperty, value); }
         //}
 
-        //// Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        //
         //public static readonly DependencyProperty UseAnimationProperty =
         //    DependencyProperty.Register("UseAnimation", typeof(bool), typeof(Diagram), new PropertyMetadata(false, (d, e) =>
         //     {
@@ -1036,7 +1034,7 @@ namespace H.Controls.Diagram
             set { SetValue(LinkDrawerProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty LinkDrawerProperty =
             DependencyProperty.Register("LinkDrawer", typeof(ILinkDrawer), typeof(Diagram), new PropertyMetadata(default(ILinkDrawer), (d, e) =>
              {

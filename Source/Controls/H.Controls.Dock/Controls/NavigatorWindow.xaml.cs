@@ -1,11 +1,3 @@
-/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
 
 using H.Controls.Dock.Layout;
 using H.Controls.Dock.Themes;
@@ -87,7 +79,7 @@ namespace H.Controls.Dock.Controls
             }
             else
             {
-                var anchorable = Anchorables.FirstOrDefault();
+                LayoutAnchorableItem anchorable = Anchorables.FirstOrDefault();
                 if (anchorable != null)
                 {
                     InternalSetSelectedAnchorable(anchorable);
@@ -191,7 +183,7 @@ namespace H.Controls.Dock.Controls
         {
             if (_internalSetSelectedAnchorable) return;
             // TODO: What goes on here??
-            var selectedAnchorable = e.NewValue as LayoutAnchorableItem;
+            LayoutAnchorableItem selectedAnchorable = e.NewValue as LayoutAnchorableItem;
             if (SelectedAnchorable != null && SelectedAnchorable.ActivateCommand.CanExecute(null))
             {
                 Close();
@@ -226,7 +218,7 @@ namespace H.Controls.Dock.Controls
         private void ItemContainerGenerator_StatusChanged(object sender, EventArgs e)
         {
             bool isListOfDocuments = sender == _documentListBox.ItemContainerGenerator;
-            var itemsCollection = isListOfDocuments ? (IEnumerable)Documents : Anchorables.ToArray();
+            IEnumerable itemsCollection = isListOfDocuments ? Documents : Anchorables.ToArray();
             ItemContainerGenerator generator = (ItemContainerGenerator)sender;
             switch (generator.Status)
             {
@@ -286,7 +278,7 @@ namespace H.Controls.Dock.Controls
                 case Key.Right:
                     if (_isSelectingDocument)
                     {
-                        var anchorable = Anchorables.ElementAtOrDefault(Documents.IndexOf(SelectedDocument))
+                        LayoutAnchorableItem anchorable = Anchorables.ElementAtOrDefault(Documents.IndexOf(SelectedDocument))
                             ?? Anchorables.LastOrDefault();
                         if (anchorable != null)
                         {
@@ -299,7 +291,7 @@ namespace H.Controls.Dock.Controls
                     {
                         int index = _anchorableListBox?.SelectedIndex
                             ?? Anchorables.ToArray().IndexOf(SelectedAnchorable);
-                        var document = Documents.ElementAtOrDefault(index)
+                        LayoutDocumentItem document = Documents.ElementAtOrDefault(index)
                             ?? Documents.LastOrDefault();
                         if (document != null)
                         {
@@ -365,7 +357,7 @@ namespace H.Controls.Dock.Controls
                     // There is no SelectedAnchorable, select the first one.
                     else
                     {
-                        var anchorable = Anchorables.FirstOrDefault();
+                        LayoutAnchorableItem anchorable = Anchorables.FirstOrDefault();
                         if (anchorable != null)
                         {
                             InternalSetSelectedAnchorable(anchorable);
@@ -424,7 +416,7 @@ namespace H.Controls.Dock.Controls
                 }
                 else
                 {
-                    var resourceDictionaryToRemove = Resources.MergedDictionaries.FirstOrDefault(r => r.Source == oldTheme.GetResourceUri());
+                    ResourceDictionary resourceDictionaryToRemove = Resources.MergedDictionaries.FirstOrDefault(r => r.Source == oldTheme.GetResourceUri());
                     if (resourceDictionaryToRemove != null) Resources.MergedDictionaries.Remove(resourceDictionaryToRemove);
                 }
             }
@@ -443,7 +435,7 @@ namespace H.Controls.Dock.Controls
         internal void SelectNextDocument()
         {
             if (SelectedDocument == null) return;
-            var docIndex = Documents.IndexOf(SelectedDocument);
+            int docIndex = Documents.IndexOf(SelectedDocument);
             docIndex++;
             if (docIndex == Documents.Length) docIndex = 0;
             InternalSetSelectedDocument(Documents[docIndex]);
@@ -452,8 +444,8 @@ namespace H.Controls.Dock.Controls
         internal void SelectNextAnchorable()
         {
             if (SelectedAnchorable == null) return;
-            var anchorablesArray = Anchorables.ToArray();
-            var anchorableIndex = anchorablesArray.IndexOf(SelectedAnchorable);
+            LayoutAnchorableItem[] anchorablesArray = Anchorables.ToArray();
+            int anchorableIndex = anchorablesArray.IndexOf(SelectedAnchorable);
             anchorableIndex++;
             if (anchorableIndex == anchorablesArray.Length) anchorableIndex = 0;
             InternalSetSelectedAnchorable(anchorablesArray[anchorableIndex]);
@@ -462,7 +454,7 @@ namespace H.Controls.Dock.Controls
         internal void SelectPreviousDocument()
         {
             if (SelectedDocument == null) return;
-            var docIndex = Documents.IndexOf(SelectedDocument);
+            int docIndex = Documents.IndexOf(SelectedDocument);
             docIndex--;
             if (docIndex < 0) docIndex = Documents.Length - 1;
             InternalSetSelectedDocument(Documents[docIndex]);
@@ -471,8 +463,8 @@ namespace H.Controls.Dock.Controls
         internal void SelectPreviousAnchorable()
         {
             if (SelectedAnchorable == null) return;
-            var anchorablesArray = Anchorables.ToArray();
-            var anchorableIndex = anchorablesArray.IndexOf(SelectedAnchorable);
+            LayoutAnchorableItem[] anchorablesArray = Anchorables.ToArray();
+            int anchorableIndex = anchorablesArray.IndexOf(SelectedAnchorable);
             anchorableIndex--;
             if (anchorableIndex < 0) anchorableIndex = anchorablesArray.Length - 1;
             InternalSetSelectedAnchorable(anchorablesArray[anchorableIndex]);
@@ -524,7 +516,7 @@ namespace H.Controls.Dock.Controls
         {
             if (list.SelectedIndex >= 0)
             {
-                var listBoxItem = (ListBoxItem)list.ItemContainerGenerator.ContainerFromIndex(list.SelectedIndex);
+                ListBoxItem listBoxItem = (ListBoxItem)list.ItemContainerGenerator.ContainerFromIndex(list.SelectedIndex);
                 if (listBoxItem != null)
                 {
                     this.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Loaded, (Func<bool>)listBoxItem.Focus);

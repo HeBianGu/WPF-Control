@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Windows;
@@ -49,7 +49,7 @@ namespace H.Controls.PropertyGrid
 
             double sinq = Math.Sin(q);
             double cosq = Math.Cos(q);
-            return Math.Sqrt((a * a * b * b) / ((a * a * sinq * sinq) + (b * b * cosq * cosq)));
+            return Math.Sqrt(a * a * b * b / ((a * a * sinq * sinq) + (b * b * cosq * cosq)));
         }
     }
 }

@@ -12,17 +12,17 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
                     <Grid>
-                        <Rectangle  Width="{TemplateBinding Width}"
+                        <Rectangle Width="{TemplateBinding Width}"
                                    Height="{TemplateBinding Height}"
                                    Fill="{TemplateBinding Background}"
                                    Stroke="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Selected}}"/>
+                            <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Selected}}" />
                         </Trigger>
                         <Trigger Property="IsDragging" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"/>
+                            <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

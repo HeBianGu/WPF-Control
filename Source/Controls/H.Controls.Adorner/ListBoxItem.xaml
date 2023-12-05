@@ -7,7 +7,10 @@
         <ResourceDictionary Source="pack://application:,,,/HeBianGu.General.WpfControlLib;component/Custom/System/ListBoxItem.xaml" />
     </ResourceDictionary.MergedDictionaries>-->
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.ListBoxItem.AllowDrop, TypeInTargetAssembly={x:Type local:DragAdorner}}" BasedOn="{StaticResource {x:Static h:ListBoxItemKeys.Default}}" TargetType="ListBoxItem">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.ListBoxItem.AllowDrop,
+                                        TypeInTargetAssembly={x:Type local:DragAdorner}}"
+           BasedOn="{StaticResource {x:Static h:ListBoxItemKeys.Default}}"
+           TargetType="ListBoxItem">
         <Setter Property="AllowDrop" Value="True" />
         <Setter Property="h:BehvaiorAttach.Behaviors">
             <Setter.Value>
@@ -18,7 +21,10 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.ListBoxItem.AllowDrop.Both, TypeInTargetAssembly={x:Type local:DragAdorner}}" BasedOn="{StaticResource {x:Static h:ListBoxItemKeys.Default}}" TargetType="ListBoxItem">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.ListBoxItem.AllowDrop.Both,
+                                        TypeInTargetAssembly={x:Type local:DragAdorner}}"
+           BasedOn="{StaticResource {x:Static h:ListBoxItemKeys.Default}}"
+           TargetType="ListBoxItem">
         <Setter Property="AllowDrop" Value="True" />
         <Setter Property="h:BehvaiorAttach.Behaviors">
             <Setter.Value>

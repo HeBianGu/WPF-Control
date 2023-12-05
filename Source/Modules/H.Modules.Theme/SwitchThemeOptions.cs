@@ -23,6 +23,6 @@ namespace H.Modules.Theme
         [Browsable(false)]
         [JsonIgnore]
         [XmlIgnore]
-        public IColorResource Light { get; set; } = new LightColorResource ();
+        public IColorResource Light { get; set; } = new LightColorResource();
     }
 }

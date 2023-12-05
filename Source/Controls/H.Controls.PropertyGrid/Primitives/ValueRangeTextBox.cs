@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections.Specialized;
@@ -127,7 +127,7 @@ namespace H.Controls.PropertyGrid
         {
             get
             {
-                return (object)GetValue(MinValueProperty);
+                return GetValue(MinValueProperty);
             }
             set
             {
@@ -184,7 +184,7 @@ namespace H.Controls.PropertyGrid
         {
             get
             {
-                return (object)GetValue(MaxValueProperty);
+                return GetValue(MaxValueProperty);
             }
             set
             {
@@ -241,7 +241,7 @@ namespace H.Controls.PropertyGrid
         {
             get
             {
-                return (object)GetValue(NullValueProperty);
+                return GetValue(NullValueProperty);
             }
             set
             {
@@ -304,7 +304,7 @@ namespace H.Controls.PropertyGrid
         {
             get
             {
-                return (object)GetValue(ValueProperty);
+                return GetValue(ValueProperty);
             }
             set
             {
@@ -440,7 +440,7 @@ namespace H.Controls.PropertyGrid
 
             object nullValue = this.NullValue;
 
-            if (((nullValue != null) && (nullValue != DBNull.Value))
+            if ((nullValue != null) && (nullValue != DBNull.Value)
               && (nullValue.GetType() != type))
             {
                 nullValue = System.Convert.ChangeType(nullValue, type, CultureInfo.InvariantCulture);
@@ -448,7 +448,7 @@ namespace H.Controls.PropertyGrid
 
             object value = this.Value;
 
-            if (((value != null) && (value != DBNull.Value))
+            if ((value != null) && (value != DBNull.Value)
               && (value.GetType() != type))
             {
                 value = System.Convert.ChangeType(value, type, CultureInfo.InvariantCulture);
@@ -491,7 +491,7 @@ namespace H.Controls.PropertyGrid
 
             object nullValue = this.NullValue;
 
-            if (((nullValue != null) && (nullValue != DBNull.Value))
+            if ((nullValue != null) && (nullValue != DBNull.Value)
               && (nullValue.GetType() != type))
             {
                 this.NullValue = ValueRangeTextBox.ConvertValueToDataType(nullValue, type);
@@ -499,7 +499,7 @@ namespace H.Controls.PropertyGrid
 
             object value = this.Value;
 
-            if (((value != null) && (value != DBNull.Value))
+            if ((value != null) && (value != DBNull.Value)
               && (value.GetType() != type))
             {
                 this.Value = ValueRangeTextBox.ConvertValueToDataType(value, type);
@@ -950,7 +950,7 @@ namespace H.Controls.PropertyGrid
 
                 this.Text = text;
 
-                if ((preserveCaret) && (this.IsLoaded))
+                if (preserveCaret && this.IsLoaded)
                 {
                     try
                     {
@@ -1016,7 +1016,7 @@ namespace H.Controls.PropertyGrid
 
         internal void RefreshValue()
         {
-            if ((this.IsForcingValue) || (this.ValueDataType == null) || (this.IsInIMEComposition))
+            if (this.IsForcingValue || (this.ValueDataType == null) || this.IsInIMEComposition)
                 return;
 
             object value;
@@ -1083,7 +1083,7 @@ namespace H.Controls.PropertyGrid
             if (type == null)
                 return null;
 
-            if (((value != null) && (value != DBNull.Value))
+            if ((value != null) && (value != DBNull.Value)
               && (value.GetType() != type))
             {
                 return ChangeTypeHelper.ChangeType(value, type, CultureInfo.InvariantCulture);

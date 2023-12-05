@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.Windows;
 using System.Windows.Data;
@@ -19,7 +19,7 @@ namespace H.Controls.PropertyGrid
 
         internal static object GetStubValue(DependencyObject obj)
         {
-            return (object)obj.GetValue(GeneralUtilities.StubValueProperty);
+            return obj.GetValue(GeneralUtilities.StubValueProperty);
         }
 
         internal static void SetStubValue(DependencyObject obj, object value)
@@ -31,7 +31,7 @@ namespace H.Controls.PropertyGrid
 
         public static object GetPathValue(object sourceObject, string path)
         {
-            var targetObj = new GeneralUtilities();
+            GeneralUtilities targetObj = new GeneralUtilities();
             BindingOperations.SetBinding(targetObj, GeneralUtilities.StubValueProperty, new Binding(path) { Source = sourceObject });
             object value = GeneralUtilities.GetStubValue(targetObj);
             BindingOperations.ClearBinding(targetObj, GeneralUtilities.StubValueProperty);
@@ -56,7 +56,7 @@ namespace H.Controls.PropertyGrid
 
             bindingClone.Source = sourceObject;
 
-            var targetObj = new GeneralUtilities();
+            GeneralUtilities targetObj = new GeneralUtilities();
             BindingOperations.SetBinding(targetObj, GeneralUtilities.StubValueProperty, bindingClone);
             object value = GeneralUtilities.GetStubValue(targetObj);
             BindingOperations.ClearBinding(targetObj, GeneralUtilities.StubValueProperty);
@@ -65,9 +65,9 @@ namespace H.Controls.PropertyGrid
 
         internal static bool CanConvertValue(object value, object targetType)
         {
-            return ((value != null)
+            return (value != null)
                     && (!object.Equals(value.GetType(), targetType))
-                    && (!object.Equals(targetType, typeof(object))));
+                    && (!object.Equals(targetType, typeof(object)));
         }
     }
 }

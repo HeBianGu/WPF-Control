@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.ComponentModel;
@@ -24,9 +24,9 @@ namespace H.Controls.PropertyGrid
 
         public override bool CanConvertTo(ITypeDescriptorContext typeDescriptorContext, Type type)
         {
-            return (type == typeof(InstanceDescriptor)
+            return type == typeof(InstanceDescriptor)
                 || type == typeof(KeyModifierCollection)
-                || type == typeof(string));
+                || type == typeof(string);
         }
 
         public override object ConvertFrom(ITypeDescriptorContext typeDescriptorContext,

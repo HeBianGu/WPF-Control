@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 using H.Providers.Ioc;
@@ -11,7 +11,6 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
-using System.Windows.Media.Animation;
 using System.Xml.Serialization;
 
 namespace H.Controls.FilterBox
@@ -46,7 +45,7 @@ namespace H.Controls.FilterBox
                 RaisePropertyChanged("SelectedSource");
             }
         }
-     
+
         private PropertyInfo _propertyInfo;
         [XmlIgnore]
         public PropertyInfo PropertyInfo
@@ -185,10 +184,5 @@ namespace H.Controls.FilterBox
         public abstract bool IsMatch(object obj);
 
         public abstract IFilter Copy();
-
-        //public void SetValue(object value)
-        //{
-        //    this.Value = value.TryChangeType<T>();
-        //}
     }
 }

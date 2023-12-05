@@ -1,9 +1,6 @@
 ﻿
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Xml;
-using System.Xml.Schema;
-using System.Xml.Serialization;
 
 
 namespace H.Controls.Diagram.Extension

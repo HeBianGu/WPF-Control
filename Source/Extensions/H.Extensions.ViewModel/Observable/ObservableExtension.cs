@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections;
@@ -49,7 +49,7 @@ namespace H.Extensions.ViewModel
 
         public static ObservableCollection<T> Sort<T>(this ObservableCollection<T> collection, Comparison<T> comparison)
         {
-            var sort = collection.ToList();
+            List<T> sort = collection.ToList();
             sort.Sort(comparison);
             return sort.ToObservable();
         }
@@ -123,10 +123,10 @@ namespace H.Extensions.ViewModel
             return collection;
         }
 
-        public static void RemoveAll<T>(this ObservableCollection<T> collection, Func<T, bool> predicate, bool useDispatcher=true)
+        public static void RemoveAll<T>(this ObservableCollection<T> collection, Func<T, bool> predicate, bool useDispatcher = true)
         {
             List<T> finds = collection.Where(predicate).ToList();
-            if(useDispatcher)
+            if (useDispatcher)
             {
                 foreach (T item in finds)
                 {

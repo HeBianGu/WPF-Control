@@ -1,9 +1,8 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 using Microsoft.Xaml.Behaviors;
 using System;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -81,7 +80,7 @@ namespace H.Controls.Diagram
 
         protected Point point;
         protected Point previous;
-        PointHitTestParameters parameters;
+        private PointHitTestParameters parameters;
         private void Diagram_PreviewMouseMove(object sender, MouseEventArgs e)
         {
             if (this.AssociatedObject._dynamicLink.Visibility != Visibility.Visible) return;
@@ -103,7 +102,7 @@ namespace H.Controls.Diagram
             this.Dispatcher.DelayInvoke(DispatcherPriority.SystemIdle, new Action(() =>
             {
                 //_isRefreshing = false;
-                var v = (point - previous);
+                Vector v = point - previous;
                 if (Math.Abs(v.X) > Math.Abs(v.Y))
                 {
                     this.AssociatedObject._dynamicLink.ToPort.Dock = v.X > 0 ? Dock.Left : Dock.Right;
@@ -117,7 +116,7 @@ namespace H.Controls.Diagram
                 this.AssociatedObject._dynamicLink.Update();
 
 #if DEBUG
-                var span = DateTime.Now - dateTime;
+                TimeSpan span = DateTime.Now - dateTime;
                 System.Diagnostics.Debug.WriteLine("Diagram_PreviewMouseMove：" + span.ToString());
 #endif
             }));
@@ -145,7 +144,7 @@ namespace H.Controls.Diagram
               }));
 
 #if DEBUG
-            var span = DateTime.Now - dateTime;
+            TimeSpan span = DateTime.Now - dateTime;
             System.Diagnostics.Debug.WriteLine("Diagram_PreviewMouseUp：" + span.ToString());
 #endif 
         }

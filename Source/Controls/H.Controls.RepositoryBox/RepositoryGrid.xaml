@@ -8,7 +8,7 @@
         <Setter Property="UseAdd" Value="True" />
         <Setter Property="UseEdit" Value="True" />
         <Setter Property="UseDelete" Value="True" />
-        <Setter Property="IsReadOnly" Value="True"/>
+        <Setter Property="IsReadOnly" Value="True" />
         <Setter Property="Cattach.CaptionLeftTemplate">
             <Setter.Value>
                 <ControlTemplate>

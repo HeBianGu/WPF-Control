@@ -1,12 +1,4 @@
-﻿/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
-
+﻿
 using H.Controls.Dock.Layout;
 using System;
 using System.Linq;
@@ -98,7 +90,7 @@ namespace H.Controls.Dock.Controls
                         }
                         else if (parentGroupPanel != null)
                         {
-                            var newParentPanel = new LayoutPanel() { Orientation = System.Windows.Controls.Orientation.Vertical };
+                            LayoutPanel newParentPanel = new LayoutPanel() { Orientation = System.Windows.Controls.Orientation.Vertical };
                             parentGroupPanel.ReplaceChild(parentGroup != null ? parentGroup : targetModel, newParentPanel);
                             newParentPanel.Children.Add(parentGroup != null ? parentGroup : targetModel);
                             newParentPanel.Children.Add(floatingWindow.RootPanel);
@@ -130,7 +122,7 @@ namespace H.Controls.Dock.Controls
                         }
                         else if (parentGroupPanel != null)
                         {
-                            var newParentPanel = new LayoutPanel() { Orientation = System.Windows.Controls.Orientation.Vertical };
+                            LayoutPanel newParentPanel = new LayoutPanel() { Orientation = System.Windows.Controls.Orientation.Vertical };
                             parentGroupPanel.ReplaceChild(parentGroup != null ? parentGroup : targetModel, newParentPanel);
                             newParentPanel.Children.Add(parentGroup != null ? parentGroup : targetModel);
                             newParentPanel.Children.Insert(0, floatingWindow.RootPanel);
@@ -162,7 +154,7 @@ namespace H.Controls.Dock.Controls
                         }
                         else if (parentGroupPanel != null)
                         {
-                            var newParentPanel = new LayoutPanel() { Orientation = System.Windows.Controls.Orientation.Horizontal };
+                            LayoutPanel newParentPanel = new LayoutPanel() { Orientation = System.Windows.Controls.Orientation.Horizontal };
                             parentGroupPanel.ReplaceChild(parentGroup != null ? parentGroup : targetModel, newParentPanel);
                             newParentPanel.Children.Add(parentGroup != null ? parentGroup : targetModel);
                             newParentPanel.Children.Insert(0, floatingWindow.RootPanel);
@@ -194,7 +186,7 @@ namespace H.Controls.Dock.Controls
                         }
                         else if (parentGroupPanel != null)
                         {
-                            var newParentPanel = new LayoutPanel() { Orientation = System.Windows.Controls.Orientation.Horizontal };
+                            LayoutPanel newParentPanel = new LayoutPanel() { Orientation = System.Windows.Controls.Orientation.Horizontal };
                             parentGroupPanel.ReplaceChild(parentGroup != null ? parentGroup : targetModel, newParentPanel);
                             newParentPanel.Children.Add(parentGroup != null ? parentGroup : targetModel);
                             newParentPanel.Children.Add(floatingWindow.RootPanel);
@@ -224,7 +216,7 @@ namespace H.Controls.Dock.Controls
         {
             Rect targetScreenRect;
             ILayoutDocumentPane targetModel = _targetPane.Model as ILayoutDocumentPane;
-            var manager = targetModel.Root.Manager;
+            DockingManager manager = targetModel.Root.Manager;
 
             //ILayoutDocumentPane targetModel = _targetPane.Model as ILayoutDocumentPane;
             LayoutDocumentPaneGroup parentGroup;
@@ -245,7 +237,7 @@ namespace H.Controls.Dock.Controls
             //}
 
             //var parentPanel = targetModel.FindParent<LayoutPanel>();
-            var documentPaneControl = manager.FindLogicalChildren<FrameworkElement>().OfType<ILayoutControl>().First(d => parentGroup != null ? d.Model == parentGroup : d.Model == parentGroupPanel) as FrameworkElement;
+            FrameworkElement documentPaneControl = manager.FindLogicalChildren<FrameworkElement>().OfType<ILayoutControl>().First(d => parentGroup != null ? d.Model == parentGroup : d.Model == parentGroupPanel) as FrameworkElement;
             targetScreenRect = documentPaneControl.GetScreenArea();
 
             switch (Type)
@@ -253,7 +245,7 @@ namespace H.Controls.Dock.Controls
                 case DropTargetType.DocumentPaneDockAsAnchorableBottom:
                     {
                         targetScreenRect.Offset(-overlayWindow.Left, -overlayWindow.Top);
-                        targetScreenRect.Offset(0.0, targetScreenRect.Height - targetScreenRect.Height / 3.0);
+                        targetScreenRect.Offset(0.0, targetScreenRect.Height - (targetScreenRect.Height / 3.0));
                         targetScreenRect.Height /= 3.0;
                         return new RectangleGeometry(targetScreenRect);
                     }
@@ -268,7 +260,7 @@ namespace H.Controls.Dock.Controls
                 case DropTargetType.DocumentPaneDockAsAnchorableRight:
                     {
                         targetScreenRect.Offset(-overlayWindow.Left, -overlayWindow.Top);
-                        targetScreenRect.Offset(targetScreenRect.Width - targetScreenRect.Width / 3.0, 0.0);
+                        targetScreenRect.Offset(targetScreenRect.Width - (targetScreenRect.Width / 3.0), 0.0);
                         targetScreenRect.Width /= 3.0;
                         return new RectangleGeometry(targetScreenRect);
                     }
@@ -301,7 +293,7 @@ namespace H.Controls.Dock.Controls
             }
             else if (documentPane.Parent is LayoutDocumentPaneGroup)
             {
-                var currentDocumentPaneGroup = documentPane.Parent as LayoutDocumentPaneGroup;
+                LayoutDocumentPaneGroup currentDocumentPaneGroup = documentPane.Parent as LayoutDocumentPaneGroup;
                 while (!(currentDocumentPaneGroup.Parent is LayoutPanel))
                 {
                     currentDocumentPaneGroup = currentDocumentPaneGroup.Parent as LayoutDocumentPaneGroup;

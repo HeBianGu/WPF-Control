@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Windows;
-using System.Windows.Controls.Primitives;
+﻿using System.Windows;
 
 namespace H.Providers.Ioc
 {

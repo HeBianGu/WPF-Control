@@ -1,10 +1,7 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace H.Extensions.MarkupExtension
 {
@@ -24,9 +21,9 @@ namespace H.Extensions.MarkupExtension
         public string MethodName { get; set; }
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
-            var method = typeof(TimeSpan).GetMethod(this.MethodName);
-            var param = method.GetParameters().FirstOrDefault();
-            var value = Convert.ChangeType(this.Param, param.ParameterType);
+            System.Reflection.MethodInfo method = typeof(TimeSpan).GetMethod(this.MethodName);
+            System.Reflection.ParameterInfo param = method.GetParameters().FirstOrDefault();
+            object value = Convert.ChangeType(this.Param, param.ParameterType);
             return method.Invoke(null, new object[] { param });
         }
     }

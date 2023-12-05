@@ -14,7 +14,6 @@
 
     <StackPanel>
         <TextBlock Text="{Binding ElementName=vm, Path=Counter, Mode=OneWay}" />
-        <Button Command="{Binding ElementName=vm, Path=IncrementCounterCommand}"
-                Content="Click me!" />
+        <Button Command="{Binding ElementName=vm, Path=IncrementCounterCommand}" Content="Click me!" />
     </StackPanel>
 </Window>

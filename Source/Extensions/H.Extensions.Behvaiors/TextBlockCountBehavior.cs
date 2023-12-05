@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using Microsoft.Xaml.Behaviors;
 using System;
@@ -15,14 +15,13 @@ namespace H.Extensions.Behvaiors
 {
     public class TextBlockCountBehavior : Behavior<TextBlock>
     {
-
         public string PropertyName
         {
             get { return (string)GetValue(PropertyNameProperty); }
             set { SetValue(PropertyNameProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty PropertyNameProperty =
             DependencyProperty.Register("PropertyName", typeof(string), typeof(TextBlockCountBehavior), new FrameworkPropertyMetadata(default(string), (d, e) =>
             {
@@ -45,11 +44,11 @@ namespace H.Extensions.Behvaiors
 
         public object Value
         {
-            get { return (object)GetValue(ValueProperty); }
+            get { return GetValue(ValueProperty); }
             set { SetValue(ValueProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty ValueProperty =
             DependencyProperty.Register("Value", typeof(object), typeof(TextBlockCountBehavior), new FrameworkPropertyMetadata(default(object), (d, e) =>
             {
@@ -75,7 +74,7 @@ namespace H.Extensions.Behvaiors
             set { SetValue(TypeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty TypeProperty =
             DependencyProperty.Register("Type", typeof(Type), typeof(TextBlockCountBehavior), new FrameworkPropertyMetadata(default(Type), (d, e) =>
             {
@@ -122,7 +121,7 @@ namespace H.Extensions.Behvaiors
             set { SetValue(HeaderProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty HeaderProperty =
             DependencyProperty.Register("Header", typeof(string), typeof(TextBlockCountBehavior), new FrameworkPropertyMetadata("合计：", (d, e) =>
             {
@@ -149,7 +148,7 @@ namespace H.Extensions.Behvaiors
             set { SetValue(FormatProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty FormatProperty =
             DependencyProperty.Register("Format", typeof(string), typeof(TextBlockCountBehavior), new FrameworkPropertyMetadata("[{0}] {1}={2}", (d, e) =>
             {
@@ -181,11 +180,11 @@ namespace H.Extensions.Behvaiors
                 return;
             if (this.AssociatedObject == null)
                 return;
-            var cType = this.ItemsSource.GetType();
+            Type cType = this.ItemsSource.GetType();
             if (!cType.IsGenericType && this.Type == null)
                 return;
 
-            var argType = cType.GenericTypeArguments.FirstOrDefault();
+            Type argType = cType.GenericTypeArguments.FirstOrDefault();
             Type type = this.Type ?? argType;
             if (type == null)
                 return;
@@ -194,11 +193,11 @@ namespace H.Extensions.Behvaiors
 
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.Append(this.Header);
-            var p = type.GetProperty(this.PropertyName);
+            PropertyInfo p = type.GetProperty(this.PropertyName);
             if (p == null)
                 return;
-            var count = this.ItemsSource.OfType<object>().Count(x => p.GetValue(x)?.Equals(this.Value) == true);
-            var display = p.GetCustomAttribute<DisplayAttribute>();
+            int count = this.ItemsSource.OfType<object>().Count(x => p.GetValue(x)?.Equals(this.Value) == true);
+            DisplayAttribute display = p.GetCustomAttribute<DisplayAttribute>();
             stringBuilder.Append(string.Format(this.Format, count, display?.Name ?? p.Name, this.Value));
             this.AssociatedObject.Text = stringBuilder.ToString();
         }

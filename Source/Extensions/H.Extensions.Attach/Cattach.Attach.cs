@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.ComponentModel;
 using System.Windows;
@@ -240,13 +240,13 @@ namespace H.Extensions.Attach
             obj.SetValue(AttachDockProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty AttachDockProperty =
             DependencyProperty.RegisterAttached("AttachDock", typeof(Dock), typeof(Cattach), new PropertyMetadata(default(Dock), OnAttachDockChanged));
 
-        static public void OnAttachDockChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void OnAttachDockChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DependencyObject control = d as DependencyObject;
+            DependencyObject control = d;
 
             Dock n = (Dock)e.NewValue;
 

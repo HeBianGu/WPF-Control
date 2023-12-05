@@ -1,9 +1,7 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Media;
-using System.Windows.Shapes;
 
 namespace H.Controls.Diagram
 {
@@ -19,7 +17,7 @@ namespace H.Controls.Diagram
             set { SetValue(SpanProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty SpanProperty =
             DependencyProperty.Register("Span", typeof(double), typeof(BezierLinkDrawer), new FrameworkPropertyMetadata(50.0, (d, e) =>
              {
@@ -47,14 +45,14 @@ namespace H.Controls.Diagram
             Point start = LinkLayer.GetStart(link);
             Point end = LinkLayer.GetEnd(link);
             Vector v = end - start;
-            center = new Point(v.X / 2 + start.X, v.Y / 2 + start.Y);
+            center = new Point((v.X / 2) + start.X, (v.Y / 2) + start.Y);
             double w = v.X / 5.0;
             double h = v.Y / 5.0;
 
             w = 0;
             h = 0;
 
-            Point point2 = new Point(start.X + (end.X - start.X) / 2.0, start.Y + (end.Y - start.Y) / 2.0);
+            Point point2 = new Point(start.X + ((end.X - start.X) / 2.0), start.Y + ((end.Y - start.Y) / 2.0));
             Point point1 = link.FromPort != null ? link.FromPort.ChangedPoint(start, this.Span) : new Point(start.X + w, start.Y);
             Point point3 = link.ToPort != null ? link.ToPort.ChangedPoint(end, this.Span) : new Point(end.X - w, end.Y);
 
@@ -74,13 +72,13 @@ namespace H.Controls.Diagram
                 }
             }
 
-            var geo = this.DrawBezier(start, point1, point2, point3, end);
+            Geometry geo = this.DrawBezier(start, point1, point2, point3, end);
             if (this.IsUseArrow == false)
                 return geo;
             Vector vector = end - point3;
             Vector normalize = vector / vector.Length;
-            Point end1 = end - normalize * this.ArrowLength;
-            return this.GetArrowGeometry(geo,end1,end);
+            Point end1 = end - (normalize * this.ArrowLength);
+            return this.GetArrowGeometry(geo, end1, end);
         }
 
         private Geometry DrawBezier(Point p1, Point p2, Point p3, Point p4, Point p5)

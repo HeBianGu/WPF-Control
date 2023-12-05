@@ -38,9 +38,10 @@ namespace H.Windows.Dialog
     {
         public Type Type { get; set; }
 
-        public override void Execute(object? parameter)
+        public override void Execute(object parameter)
         {
-            DialogWindow.ShowIoc(this.Type, x =>
+            var value = Ioc.Services.GetService(typeof(Type));
+            DialogWindow.ShowPresenter(value, x =>
             {
                 x.Width = this.Width;
                 x.Height = this.Height;

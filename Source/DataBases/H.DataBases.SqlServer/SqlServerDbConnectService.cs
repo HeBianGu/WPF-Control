@@ -1,12 +1,4 @@
-﻿
-
-
-
-using System;
-using System.Linq;
-using System.Windows;
-using System.Windows.Input;
-using H.DataBases.Share;
+﻿using H.DataBases.Share;
 
 #if NETFRAMEWORK
 using System.Data.Entity;

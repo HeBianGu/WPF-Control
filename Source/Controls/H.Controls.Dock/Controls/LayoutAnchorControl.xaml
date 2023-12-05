@@ -1,34 +1,37 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"  xmlns:local="clr-namespace:H.Controls.Dock"
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
                     xmlns:lc="clr-namespace:H.Controls.Dock.Controls"
                     xmlns:lcv="clr-namespace:H.Controls.Dock.Converters"
                     xmlns:ll="clr-namespace:H.Controls.Dock.Layout"
+                    xmlns:local="clr-namespace:H.Controls.Dock"
                     xmlns:lp="clr-namespace:H.Controls.Dock.Properties"
-                    xmlns:h="https://github.com/HeBianGu"
-                    xmlns:shell="clr-namespace:Microsoft.Windows.Shell"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-   
+                    xmlns:shell="clr-namespace:Microsoft.Windows.Shell">
+
     <Style TargetType="{x:Type lc:LayoutAnchorControl}">
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="Padding" Value="10 0"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"/>
-        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="10,0" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
+        <Setter Property="BorderThickness" Value="1" />
         <!--<Setter Property="h:Cattach.MouseOverBackground" Value="Red"/>
         <Setter Property="h:Cattach.SelectBackground" Value="Green"/>-->
         <!--<Setter Property="h:Cattach.IsMouseOver" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=IsMouseOver}" />
         <Setter Property="h:Cattach.IsSelected" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Model.IsActive}" />-->
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.MouseOver}}"/>
+                <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.MouseOver}}" />
             </Trigger>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Model.IsActive}" Value="True">
-                <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Selected}}"/>
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.ForegroundTitle}}"/>
+                <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Selected}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.ForegroundTitle}}" />
             </DataTrigger>
         </Style.Triggers>
     </Style>
 
     <ControlTemplate x:Key="AnchorTemplate" TargetType="{x:Type lc:LayoutAnchorControl}">
-        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+        <Border Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}">
             <ContentPresenter Margin="{TemplateBinding Padding}"
                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"

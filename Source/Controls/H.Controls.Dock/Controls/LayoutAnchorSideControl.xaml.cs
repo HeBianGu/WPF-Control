@@ -1,11 +1,3 @@
-/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
 
 using H.Controls.Dock.Layout;
 using System;
@@ -161,8 +153,8 @@ namespace H.Controls.Dock.Controls
 
         private void CreateChildrenViews()
         {
-            var manager = _model.Root.Manager;
-            foreach (var childModel in _model.Children) _childViews.Add(manager.CreateUIElementForModel(childModel) as LayoutAnchorGroupControl);
+            DockingManager manager = _model.Root.Manager;
+            foreach (LayoutAnchorGroup childModel in _model.Children) _childViews.Add(manager.CreateUIElementForModel(childModel) as LayoutAnchorGroupControl);
         }
 
         private void OnModelChildrenCollectionChanged(object sender,
@@ -172,7 +164,7 @@ namespace H.Controls.Dock.Controls
                 (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Remove ||
                 e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Replace))
             {
-                foreach (var childModel in e.OldItems)
+                foreach (object childModel in e.OldItems)
                     _childViews.Remove(_childViews.First(cv => cv.Model == childModel));
             }
 
@@ -183,8 +175,8 @@ namespace H.Controls.Dock.Controls
                 (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Add ||
                 e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Replace))
             {
-                var manager = _model.Root.Manager;
-                var insertIndex = e.NewStartingIndex;
+                DockingManager manager = _model.Root.Manager;
+                int insertIndex = e.NewStartingIndex;
                 foreach (LayoutAnchorGroup childModel in e.NewItems) _childViews.Insert(insertIndex++, manager.CreateUIElementForModel(childModel) as LayoutAnchorGroupControl);
             }
         }

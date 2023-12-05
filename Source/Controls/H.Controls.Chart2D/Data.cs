@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 using H.Providers.Mvvm;
@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Windows;
 using System.Windows.Media;
 
 namespace H.Controls.Chart2D
@@ -114,7 +113,7 @@ namespace H.Controls.Chart2D
         {
             this.yAxis.Clear();
             if (min >= max) return;
-            double span = ((max - min) * 1.0 / (count - 1));
+            double span = (max - min) * 1.0 / (count - 1);
             double current = min;
             while (true)
             {
@@ -160,7 +159,7 @@ namespace H.Controls.Chart2D
             }
         }
 
-        void Clear()
+        private void Clear()
         {
             this.xDatas.Clear();
             this.yDatas.Clear();
@@ -170,7 +169,7 @@ namespace H.Controls.Chart2D
         public void Build(IEnumerable<Tuple<double, double>> collection)
         {
             this.Clear();
-            foreach (var item in collection)
+            foreach (Tuple<double, double> item in collection)
             {
                 this.xDatas.Add(item.Item1);
                 this.yDatas.Add(item.Item2);
@@ -180,7 +179,7 @@ namespace H.Controls.Chart2D
         public void Build(IEnumerable<Tuple<DateTime, double>> collection)
         {
             this.Clear();
-            foreach (var item in collection)
+            foreach (Tuple<DateTime, double> item in collection)
             {
                 this.xDatas.Add(item.Item1.Ticks);
                 this.yDatas.Add(item.Item2);
@@ -191,7 +190,7 @@ namespace H.Controls.Chart2D
         {
             this.Clear();
             int index = 0;
-            foreach (var item in collection)
+            foreach (Tuple<string, double> item in collection)
             {
                 this.xDatas.Add(index);
                 this.yDatas.Add(item.Item2);

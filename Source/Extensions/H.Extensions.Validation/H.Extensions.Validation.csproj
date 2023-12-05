@@ -1,0 +1,5 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <ItemGroup>
+    <ProjectReference Include="..\..\Providers\H.Providers.Mvvm\H.Providers.Mvvm.csproj" />
+  </ItemGroup>
+</Project>

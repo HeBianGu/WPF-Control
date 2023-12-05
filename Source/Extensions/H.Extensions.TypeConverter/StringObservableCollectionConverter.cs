@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ namespace H.Extensions.TypeConverter
     public class StringObservableCollectionConverter : System.ComponentModel.TypeConverter
     {
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
-        { 
+        {
             if (value is StringObservableCollection obs)
             {
                 return string.Join(",", obs);
@@ -22,10 +22,10 @@ namespace H.Extensions.TypeConverter
         }
 
         public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
-        { 
+        {
             if (value is string str)
-            { 
-                var sss= new StringObservableCollection(str?.Split(','));
+            {
+                StringObservableCollection sss = new StringObservableCollection(str?.Split(','));
 
                 return sss;
             }

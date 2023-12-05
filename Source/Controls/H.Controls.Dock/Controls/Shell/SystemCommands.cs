@@ -1,12 +1,4 @@
-﻿/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
-
+﻿
 using Standard;
 using System;
 using System.Windows;
@@ -34,7 +26,7 @@ namespace Microsoft.Windows.Shell
 
         private static void _PostSystemCommand(Window window, SC command)
         {
-            var hWnd = new WindowInteropHelper(window).Handle;
+            IntPtr hWnd = new WindowInteropHelper(window).Handle;
             if (hWnd == IntPtr.Zero || !NativeMethods.IsWindow(hWnd)) return;
             NativeMethods.PostMessage(hWnd, WM.SYSCOMMAND, new IntPtr((int)command), IntPtr.Zero);
         }
@@ -78,10 +70,10 @@ namespace Microsoft.Windows.Shell
             const uint TPM_LEFTBUTTON = 0x0;
 
             Verify.IsNotNull(window, nameof(window));
-            var hWnd = new WindowInteropHelper(window).Handle;
+            IntPtr hWnd = new WindowInteropHelper(window).Handle;
             if (hWnd == IntPtr.Zero || !NativeMethods.IsWindow(hWnd)) return;
-            var hMenu = NativeMethods.GetSystemMenu(hWnd, false);
-            var cmd = NativeMethods.TrackPopupMenuEx(hMenu, TPM_LEFTBUTTON | TPM_RETURNCMD, (int)physicalScreenLocation.X, (int)physicalScreenLocation.Y, hWnd, IntPtr.Zero);
+            IntPtr hMenu = NativeMethods.GetSystemMenu(hWnd, false);
+            uint cmd = NativeMethods.TrackPopupMenuEx(hMenu, TPM_LEFTBUTTON | TPM_RETURNCMD, (int)physicalScreenLocation.X, (int)physicalScreenLocation.Y, hWnd, IntPtr.Zero);
             if (cmd != 0) NativeMethods.PostMessage(hWnd, WM.SYSCOMMAND, new IntPtr(cmd), IntPtr.Zero);
         }
     }

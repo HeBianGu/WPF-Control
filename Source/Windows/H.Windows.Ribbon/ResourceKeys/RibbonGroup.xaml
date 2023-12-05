@@ -150,7 +150,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
     <Style x:Key="&#290;" TargetType="{x:Type RibbonToggleButton}">
         <Setter Property="Focusable" Value="True" />
         <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type RibbonGroup}}, Path=BorderBrush}" />
@@ -167,14 +167,14 @@
                     <ControlTemplate.Resources>
                         <DataTemplate DataType="{x:Type system:String}">
                             <RibbonTwoLineText Margin="2,4,2,0"
-                                                      VerticalAlignment="Top"
-                                                      HasTwoLines="{TemplateBinding RibbonTwoLineText.HasTwoLines}"
-                                                      LineHeight="13px"
-                                                      LineStackingStrategy="BlockLineHeight"
-                                                      PathData="{TemplateBinding RibbonTwoLineText.PathData}"
-                                                      PathFill="{TemplateBinding TextElement.Foreground}"
-                                                      Text="{Binding}"
-                                                      TextAlignment="Center" />
+                                               VerticalAlignment="Top"
+                                               HasTwoLines="{TemplateBinding RibbonTwoLineText.HasTwoLines}"
+                                               LineHeight="13px"
+                                               LineStackingStrategy="BlockLineHeight"
+                                               PathData="{TemplateBinding RibbonTwoLineText.PathData}"
+                                               PathFill="{TemplateBinding TextElement.Foreground}"
+                                               Text="{Binding}"
+                                               TextAlignment="Center" />
                         </DataTemplate>
                     </ControlTemplate.Resources>
                     <Grid x:Name="MainGrid" SnapsToDevicePixels="True">
@@ -435,16 +435,16 @@
     <ControlTemplate x:Key="&#293;" TargetType="{x:Type RibbonGroup}">
         <Grid x:Name="MainGrid">
             <RibbonToggleButton x:Name="PART_ToggleButton"
-                                       Margin="0,3,0,0"
-                                       Background="{TemplateBinding Background}"
-                                       Content="{TemplateBinding Header}"
-                                       ContentStringFormat="{TemplateBinding HeaderStringFormat}"
-                                       ContentTemplate="{TemplateBinding HeaderTemplate}"
-                                       ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
-                                       IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                                       LargeImageSource="{TemplateBinding LargeImageSource}"
-                                       SmallImageSource="{TemplateBinding SmallImageSource}"
-                                       Style="{StaticResource &#290;}" />
+                                Margin="0,3,0,0"
+                                Background="{TemplateBinding Background}"
+                                Content="{TemplateBinding Header}"
+                                ContentStringFormat="{TemplateBinding HeaderStringFormat}"
+                                ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
+                                IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                LargeImageSource="{TemplateBinding LargeImageSource}"
+                                SmallImageSource="{TemplateBinding SmallImageSource}"
+                                Style="{StaticResource &#290;}" />
             <Popup x:Name="PART_Popup"
                    AllowsTransparency="true"
                    Focusable="false"
@@ -453,10 +453,10 @@
                    PlacementTarget="{Binding ElementName=PART_ToggleButton}"
                    PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}">
                 <classic:SystemDropShadowChrome Name="Shdw"
-                                                KeyTipService.IsKeyTipScope="True"
                                                 CornerRadius="2"
                                                 FocusVisualStyle="{x:Null}"
                                                 Focusable="True"
+                                                KeyTipService.IsKeyTipScope="True"
                                                 RenderOptions.ClearTypeHint="Enabled"
                                                 SnapsToDevicePixels="true"
                                                 Color="Transparent">
@@ -538,7 +538,7 @@
                 <Setter TargetName="PART_PopupGrid" Property="Height" Value="Auto" />
                 <Setter TargetName="PART_ToggleButton" Property="Style" Value="{StaticResource &#291;}" />
                 <Setter TargetName="PART_ToggleButton" Property="Margin" Value="0" />
-                <Setter  TargetName="PART_PopupGrid" Property="VerticalAlignment" Value="Center" />
+                <Setter TargetName="PART_PopupGrid" Property="VerticalAlignment" Value="Center" />
             </Trigger>
 
             <Trigger Property="IsDropDownOpen" Value="True">
@@ -556,7 +556,7 @@
     </ControlTemplate>
 
     <Style x:Key="{x:Type RibbonGroup}" TargetType="{x:Type RibbonGroup}">
-        <Setter Property="Header" Value="RibbonGroup"/>
+        <Setter Property="Header" Value="RibbonGroup" />
         <Setter Property="LargeImageSource" Value="/Resources/CropImage32.png" />
         <Setter Property="SmallImageSource" Value="/Resources/CropImage16.png" />
         <Setter Property="Margin" Value="1" />

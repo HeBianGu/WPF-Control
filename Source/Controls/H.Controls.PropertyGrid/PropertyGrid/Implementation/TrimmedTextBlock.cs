@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Windows;
@@ -36,7 +36,7 @@ namespace H.Controls.PropertyGrid
 
         private static void OnIsTextTrimmedChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var textBlock = d as TrimmedTextBlock;
+            TrimmedTextBlock textBlock = d as TrimmedTextBlock;
             if (textBlock != null)
             {
                 textBlock.OnIsTextTrimmedChanged((bool)e.OldValue, (bool)e.NewValue);
@@ -45,7 +45,7 @@ namespace H.Controls.PropertyGrid
 
         private void OnIsTextTrimmedChanged(bool oldValue, bool newValue)
         {
-            this.ToolTip = (newValue) ? this.Text : null;
+            this.ToolTip = newValue ? this.Text : null;
         }
 
         #endregion
@@ -86,7 +86,7 @@ namespace H.Controls.PropertyGrid
 
         private static void HighlightedTextChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            var trimmedTextBlock = sender as TrimmedTextBlock;
+            TrimmedTextBlock trimmedTextBlock = sender as TrimmedTextBlock;
             if (trimmedTextBlock != null)
             {
                 trimmedTextBlock.HighlightedTextChanged((string)e.OldValue, (string)e.NewValue);
@@ -101,24 +101,24 @@ namespace H.Controls.PropertyGrid
             // Set original text without highlight.
             if (newValue == null)
             {
-                var newrRun = new Run(this.Text);
+                Run newrRun = new Run(this.Text);
                 this.Inlines.Clear();
                 this.Inlines.Add(newrRun);
 
                 return;
             }
 
-            var startHighlightedIndex = this.Text.IndexOf(newValue, StringComparison.InvariantCultureIgnoreCase);
-            var endHighlightedIndex = startHighlightedIndex + newValue.Length;
+            int startHighlightedIndex = this.Text.IndexOf(newValue, StringComparison.InvariantCultureIgnoreCase);
+            int endHighlightedIndex = startHighlightedIndex + newValue.Length;
 
-            var startUnHighlightedText = this.Text.Substring(0, startHighlightedIndex);
-            var highlightedText = this.Text.Substring(startHighlightedIndex, newValue.Length);
-            var endUnHighlightedText = this.Text.Substring(endHighlightedIndex, this.Text.Length - endHighlightedIndex);
+            string startUnHighlightedText = this.Text.Substring(0, startHighlightedIndex);
+            string highlightedText = this.Text.Substring(startHighlightedIndex, newValue.Length);
+            string endUnHighlightedText = this.Text.Substring(endHighlightedIndex, this.Text.Length - endHighlightedIndex);
 
             this.Inlines.Clear();
 
             // Start Un-Highlighted text
-            var run = new Run(startUnHighlightedText);
+            Run run = new Run(startUnHighlightedText);
             this.Inlines.Add(run);
 
             // Highlighted text
@@ -137,7 +137,7 @@ namespace H.Controls.PropertyGrid
 
         private void TrimmedTextBlock_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            var textBlock = sender as TextBlock;
+            TextBlock textBlock = sender as TextBlock;
             if (textBlock != null)
             {
                 this.IsTextTrimmed = this.GetIsTextTrimmed(textBlock);
@@ -157,11 +157,11 @@ namespace H.Controls.PropertyGrid
             if (textBlock.TextWrapping != TextWrapping.NoWrap)
                 return false;
 
-            var textBlockActualWidth = textBlock.ActualWidth;
+            double textBlockActualWidth = textBlock.ActualWidth;
             textBlock.Measure(new Size(double.MaxValue, double.MaxValue));
-            var textBlockDesiredWidth = textBlock.DesiredSize.Width;
+            double textBlockDesiredWidth = textBlock.DesiredSize.Width;
 
-            return (textBlockActualWidth < textBlockDesiredWidth);
+            return textBlockActualWidth < textBlockDesiredWidth;
         }
 
         #endregion

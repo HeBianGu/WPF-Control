@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.Windows;
 
@@ -24,7 +24,7 @@ namespace H.Controls.PropertyGrid
 
         protected override void ResolveValueBinding(PropertyItem propertyItem)
         {
-            var type = propertyItem.PropertyType;
+            System.Type type = propertyItem.PropertyType;
             Editor.ItemsSourceType = type;
 
             if (type.BaseType == typeof(System.Array))
@@ -33,7 +33,7 @@ namespace H.Controls.PropertyGrid
             }
             else
             {
-                var typeArguments = type.GetGenericArguments();
+                System.Type[] typeArguments = type.GetGenericArguments();
                 if (typeArguments.Length > 0)
                 {
                     Editor.ItemType = typeArguments[0];

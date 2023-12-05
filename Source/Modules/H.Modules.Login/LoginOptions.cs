@@ -1,11 +1,9 @@
 ﻿using H.Extensions.Common;
 using H.Extensions.Setting;
 using H.Providers.Ioc;
-using Microsoft.Extensions.Options;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
-using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace H.Modules.Login

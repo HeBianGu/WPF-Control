@@ -1,7 +1,6 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.Windows;
-using System.Windows.Media;
 
 namespace H.Extensions.Attach
 {
@@ -20,7 +19,7 @@ namespace H.Extensions.Attach
             obj.SetValue(UseGuideProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty UseGuideProperty =
             DependencyProperty.RegisterAttached("UseGuide", typeof(bool), typeof(Cattach), new PropertyMetadata(false, OnUseGuideChanged));
 
@@ -33,7 +32,7 @@ namespace H.Extensions.Attach
 
         public static object GetGuideTitle(DependencyObject obj)
         {
-            return (object)obj.GetValue(GuideTitleProperty);
+            return obj.GetValue(GuideTitleProperty);
         }
 
         public static void SetGuideTitle(DependencyObject obj, object value)
@@ -41,7 +40,7 @@ namespace H.Extensions.Attach
             obj.SetValue(GuideTitleProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty GuideTitleProperty =
             DependencyProperty.RegisterAttached("GuideTitle", typeof(object), typeof(Cattach), new PropertyMetadata(null, OnGuideTitleChanged));
 
@@ -49,9 +48,9 @@ namespace H.Extensions.Attach
         {
             DependencyObject control = d;
 
-            object n = (object)e.NewValue;
+            object n = e.NewValue;
 
-            object o = (object)e.OldValue;
+            object o = e.OldValue;
         }
 
 
@@ -65,7 +64,7 @@ namespace H.Extensions.Attach
             obj.SetValue(GuideParentTitleProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty GuideParentTitleProperty =
             DependencyProperty.RegisterAttached("GuideParentTitle", typeof(string), typeof(Cattach), new PropertyMetadata(null, OnGuideParentTitleChanged));
 
@@ -81,7 +80,7 @@ namespace H.Extensions.Attach
 
         public static object GetGuideData(DependencyObject obj)
         {
-            return (object)obj.GetValue(GuideDataProperty);
+            return obj.GetValue(GuideDataProperty);
         }
 
         public static void SetGuideData(DependencyObject obj, object value)
@@ -89,7 +88,7 @@ namespace H.Extensions.Attach
             obj.SetValue(GuideDataProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty GuideDataProperty =
             DependencyProperty.RegisterAttached("GuideData", typeof(object), typeof(Cattach), new PropertyMetadata(null, OnGuideDataChanged));
 
@@ -113,7 +112,7 @@ namespace H.Extensions.Attach
             obj.SetValue(GuideDataTemplateProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty GuideDataTemplateProperty =
             DependencyProperty.RegisterAttached("GuideDataTemplate", typeof(DataTemplate), typeof(Cattach), new PropertyMetadata(null, OnGuideDataTemplateChanged));
 
@@ -137,7 +136,7 @@ namespace H.Extensions.Attach
             obj.SetValue(IsGuideProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty IsGuideProperty =
             DependencyProperty.RegisterAttached("IsGuide", typeof(bool), typeof(Cattach), new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnIsGuideChanged));
 
@@ -160,7 +159,7 @@ namespace H.Extensions.Attach
             obj.SetValue(GuideUseClickProperty, value);
         }
 
-        /// <summary> 应用窗体关闭和显示 </summary>
+       
         public static readonly DependencyProperty GuideUseClickProperty =
             DependencyProperty.RegisterAttached("GuideUseClick", typeof(bool), typeof(Cattach), new PropertyMetadata(false, OnGuideUseClickChanged));
 

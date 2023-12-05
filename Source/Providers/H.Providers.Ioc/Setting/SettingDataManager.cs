@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Linq;
+using System.Text;
 
 namespace H.Providers.Ioc
 {
@@ -46,7 +46,7 @@ namespace H.Providers.Ioc
             settings.RemoveAll(x => x == null);
             settings.Sort(comparison);
             this.Settings = new ObservableCollection<ISetting>(settings);
-            foreach (var item in this.Settings)
+            foreach (ISetting item in this.Settings)
             {
                 item.Load();
             }
@@ -77,7 +77,7 @@ namespace H.Providers.Ioc
 
         public void SetDefault()
         {
-            foreach (var item in this.Settings)
+            foreach (ISetting item in this.Settings)
             {
                 item.LoadDefault();
             }
@@ -85,7 +85,7 @@ namespace H.Providers.Ioc
 
         public void Cancel()
         {
-            foreach (var item in this.Settings)
+            foreach (ISetting item in this.Settings)
             {
                 item.Load();
             }
@@ -93,7 +93,7 @@ namespace H.Providers.Ioc
 
         public void Add(params ISetting[] settings)
         {
-            foreach (var setting in settings)
+            foreach (ISetting setting in settings)
             {
                 if (this.Settings.Contains(setting))
                     continue;

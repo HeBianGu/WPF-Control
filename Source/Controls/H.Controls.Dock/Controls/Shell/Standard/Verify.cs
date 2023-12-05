@@ -1,28 +1,10 @@
-﻿/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
-
+﻿
 using System;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IO;
 using System.Threading;
-
-/**************************************************************************\
-    Copyright Microsoft Corporation. All Rights Reserved.
-\**************************************************************************/
-
-// This file contains general utilities to aid in development.
-// Classes here generally shouldn't be exposed publicly since
-// they're not particular to any library functionality.
-// Because the classes here are internal, it's likely this file
-// might be included in multiple assemblies.
 namespace Standard
 {
     /// <summary>
@@ -229,8 +211,8 @@ namespace Standard
             Assert.IsNotNull(interfaceType);
             Assert.IsTrue(interfaceType.IsInterface);
 
-            var isImplemented = false;
-            foreach (var iFaceType in parameter.GetType().GetInterfaces())
+            bool isImplemented = false;
+            foreach (Type iFaceType in parameter.GetType().GetInterfaces())
             {
                 if (iFaceType != interfaceType) continue;
                 isImplemented = true;

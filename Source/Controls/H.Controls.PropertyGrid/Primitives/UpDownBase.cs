@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Globalization;
@@ -364,7 +364,7 @@ namespace H.Controls.PropertyGrid
 
         private static void OnUpdateValueOnEnterKeyChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
         {
-            var upDownBase = o as UpDownBase<T>;
+            UpDownBase<T> upDownBase = o as UpDownBase<T>;
             if (upDownBase != null)
                 upDownBase.OnUpdateValueOnEnterKeyChanged((bool)e.OldValue, (bool)e.NewValue);
         }
@@ -571,11 +571,11 @@ namespace H.Controls.PropertyGrid
         {
             if (AllowSpin && !IsReadOnly)
             {
-                var activeTrigger = this.MouseWheelActiveTrigger;
+                MouseWheelActiveTrigger activeTrigger = this.MouseWheelActiveTrigger;
                 bool spin = !e.UsingMouseWheel;
-                spin |= (activeTrigger == MouseWheelActiveTrigger.MouseOver);
-                spin |= ((TextBox != null) && TextBox.IsFocused && (activeTrigger == MouseWheelActiveTrigger.FocusedMouseOver));
-                spin |= ((TextBox != null) && TextBox.IsFocused && (activeTrigger == MouseWheelActiveTrigger.Focused) && (Mouse.Captured is Spinner));
+                spin |= activeTrigger == MouseWheelActiveTrigger.MouseOver;
+                spin |= (TextBox != null) && TextBox.IsFocused && (activeTrigger == MouseWheelActiveTrigger.FocusedMouseOver);
+                spin |= (TextBox != null) && TextBox.IsFocused && (activeTrigger == MouseWheelActiveTrigger.Focused) && (Mouse.Captured is Spinner);
 
                 if (spin)
                 {
@@ -651,7 +651,7 @@ namespace H.Controls.PropertyGrid
             bool updateValueFromText =
               (this.ReadLocalValue(ValueProperty) == DependencyProperty.UnsetValue)
               && (BindingOperations.GetBinding(this, ValueProperty) == null)
-              && (object.Equals(this.Value, ValueProperty.DefaultMetadata.DefaultValue));
+              && object.Equals(this.Value, ValueProperty.DefaultMetadata.DefaultValue);
 
             this.SyncTextAndValueProperties(updateValueFromText, Text, !updateValueFromText);
         }

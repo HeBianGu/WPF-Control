@@ -9,7 +9,10 @@
         <ResourceDictionary Source="../Marker/Marker.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.MarkTip.Default, TypeInTargetAssembly={x:Type local:MarkTip}}" BasedOn="{StaticResource {x:Static h:Layer.DefaultKey}}" TargetType="{x:Type local:MarkTip}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.MarkTip.Default,
+                                        TypeInTargetAssembly={x:Type local:MarkTip}}"
+           BasedOn="{StaticResource {x:Static h:Layer.DefaultKey}}"
+           TargetType="{x:Type local:MarkTip}">
         <Setter Property="Data" Value="{Binding RelativeSource={RelativeSource AncestorType=local:Series}, Path=yDatas}" />
         <Setter Property="xAxis" Value="{Binding RelativeSource={RelativeSource AncestorType=local:Series}, Path=xDatas}" />
         <Setter Property="MarkStyle">

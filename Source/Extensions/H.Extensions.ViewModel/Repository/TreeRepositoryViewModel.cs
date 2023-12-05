@@ -1,8 +1,7 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 using H.Providers.Ioc;
-
 using H.Providers.Mvvm;
 using System;
 using System.IO;
@@ -11,15 +10,9 @@ using System.Threading.Tasks;
 
 namespace H.Extensions.ViewModel
 {
-
-    /// <summary>
-    /// 直接对接模型的仓储基类
-    /// </summary>
-    /// <typeparam name="TEntity"></typeparam>
     public class TreeRepositoryViewModel<TEntity> : RepositoryViewModelBase<TreeNodeBase<TEntity>, TEntity>, ITreeRepositoryViewModel<TEntity> where TEntity : StringEntityBase, ITreePath, new()
     {
         private TreeNodeBase<TEntity> _selectedTreeItem;
-        /// <summary> 说明  </summary>
         public TreeNodeBase<TEntity> SelectedTreeItem
         {
             get { return _selectedTreeItem; }
@@ -36,36 +29,33 @@ namespace H.Extensions.ViewModel
             this.IsBusy = true;
             try
             {
-                var datas = this.Repository.GetList();
-                var ssss = datas.Select(x => x.GetFullPath()).ToList();
-                var roots = datas.Where(x => !x.GetFullPath().Contains(Path.DirectorySeparatorChar)).ToList();
-                var rootVms = roots.Select(x => new TreeNodeBase<TEntity>(x)).ToList();
+                System.Collections.Generic.List<TEntity> datas = this.Repository.GetList();
+                System.Collections.Generic.List<string> ssss = datas.Select(x => x.GetFullPath()).ToList();
+                System.Collections.Generic.List<TEntity> roots = datas.Where(x => !x.GetFullPath().Contains(Path.DirectorySeparatorChar)).ToList();
+                System.Collections.Generic.List<TreeNodeBase<TEntity>> rootVms = roots.Select(x => new TreeNodeBase<TEntity>(x)).ToList();
 
                 Action<TreeNodeBase<TEntity>> builder = null;
                 builder = p =>
                 {
-                    var items = datas.Where(x => Path.GetDirectoryName(x.GetFullPath()) == p.Model.GetFullPath());
-                    var vms = items.Select(x => new TreeNodeBase<TEntity>(x));
-                    foreach (var vm in vms)
+                    System.Collections.Generic.IEnumerable<TEntity> items = datas.Where(x => Path.GetDirectoryName(x.GetFullPath()) == p.Model.GetFullPath());
+                    System.Collections.Generic.IEnumerable<TreeNodeBase<TEntity>> vms = items.Select(x => new TreeNodeBase<TEntity>(x));
+                    foreach (TreeNodeBase<TEntity> vm in vms)
                     {
                         p.AddNode(vm);
                         builder.Invoke(vm);
                     }
                 };
 
-                foreach (var root in rootVms)
+                foreach (TreeNodeBase<TEntity> root in rootVms)
                 {
                     builder.Invoke(root);
                 }
-
-                //var collection = this.Repository.GetList().Select(x => new TreeNodeBase<TEntity>(x));
-                //this.Collection = collection.Select(x => new SelectViewModel<TEntity>(x)).ToObservable();
                 this.Collection.Load(rootVms);
             }
             catch (Exception ex)
             {
-                Logger.Instance?.Error(ex);
-                IocMessage.Dialog.ShowMessage("加载数据错误:" + ex.Message);
+                IocLog.Instance?.Error(ex);
+                IocMessage.Dialog.Show("加载数据错误:" + ex.Message);
             }
             finally
             {
@@ -77,7 +67,7 @@ namespace H.Extensions.ViewModel
         {
             if (this.Repository == null)
             {
-                foreach (var m in ms)
+                foreach (TEntity m in ms)
                 {
                     if (this.SelectedTreeItem == null)
                         this.Collection.Add(new TreeNodeBase<TEntity>(m));
@@ -87,10 +77,10 @@ namespace H.Extensions.ViewModel
                 IocMessage.Snack?.ShowInfo("新增成功");
                 return;
             }
-            var r = await this.Repository?.InsertRangeAsync(ms);
+            int r = await this.Repository?.InsertRangeAsync(ms);
             if (r > 0)
             {
-                foreach (var m in ms)
+                foreach (TEntity m in ms)
                 {
                     if (this.SelectedTreeItem == null)
                         this.Collection.Add(new TreeNodeBase<TEntity>(m));
@@ -110,13 +100,17 @@ namespace H.Extensions.ViewModel
             TreeNodeBase<TEntity> entity = obj as TreeNodeBase<TEntity>;
             if (entity == null)
                 return;
-            var result = await IocMessage.Dialog.ShowMessage("确定删除数据？", "提示", DialogButton.SumitAndCancel);
+            bool? result = await IocMessage.Dialog.Show("确定删除数据？", x =>
+            {
+                x.Title = "提示";
+                x.DialogButton = DialogButton.SumitAndCancel;
+            });
             if (result != true)
                 return;
 
-            var all = entity.FindAll().ToList();
+            System.Collections.Generic.List<TreeNodeBase<TEntity>> all = entity.FindAll().ToList();
             all.Add(entity);
-            foreach (var item in all)
+            foreach (TreeNodeBase<TEntity> item in all)
             {
                 await this.Repository.DeleteAsync(item.Model);
             }
@@ -137,10 +131,10 @@ namespace H.Extensions.ViewModel
 
         public override async Task Add(object obj)
         {
-            var m = new TEntity();
+            TEntity m = new TEntity();
             if (this.SelectedTreeItem != null)
                 m.SetPath(this.SelectedTreeItem.Model.GetFullPath());
-            bool? dialog = await IocMessage.Form.ShowEdit(this.GetAddModel(m), null, null,null, "新增");
+            bool? dialog = await IocMessage.Form.ShowEdit(this.GetAddModel(m), null, null, null, "新增");
             if (dialog != true)
             {
                 IocMessage.Snack?.ShowInfo("取消操作");

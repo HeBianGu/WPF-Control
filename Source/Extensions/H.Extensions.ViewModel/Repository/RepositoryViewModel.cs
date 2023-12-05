@@ -1,14 +1,9 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
-
-
-using H.Providers.Ioc;
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 using H.Providers.Ioc;
 using H.Providers.Mvvm;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
 
 namespace H.Extensions.ViewModel
@@ -31,7 +26,7 @@ namespace H.Extensions.ViewModel
             //try
             //{
             includes = includes ?? this.GetIncludes()?.ToArray();
-            var collection = includes == null ? this.Repository.GetList().Select(x => new SelectViewModel<TEntity>(x))
+            IEnumerable<SelectViewModel<TEntity>> collection = includes == null ? this.Repository.GetList().Select(x => new SelectViewModel<TEntity>(x))
             : this.Repository.GetList(includes).Select(x => new SelectViewModel<TEntity>(x));
             //this.Collection = collection.Select(x => new SelectViewModel<TEntity>(x)).ToObservable();
             this.Collection.Load(collection);
@@ -39,7 +34,7 @@ namespace H.Extensions.ViewModel
             //catch (Exception ex)
             //{
             //    Logger.Error(ex);
-            //    IocMessage.Dialog.ShowMessage("加载数据错误:" + ex.Message);
+            //    IocMessage.Dialog.Show("加载数据错误:" + ex.Message);
             //}
             //finally
             //{
@@ -51,7 +46,7 @@ namespace H.Extensions.ViewModel
         {
             if (this.Repository == null)
             {
-                foreach (var m in ms)
+                foreach (TEntity m in ms)
                 {
                     this.Collection.Add(new SelectViewModel<TEntity>(m));
                     Ioc<IOperationService>.Instance?.Log<TEntity>($"新增", m.ID, OperationType.Add);
@@ -60,7 +55,7 @@ namespace H.Extensions.ViewModel
 
                 return;
             }
-            var r = await this.Repository?.InsertRangeAsync(ms);
+            int r = await this.Repository?.InsertRangeAsync(ms);
             if (r > 0)
             {
                 this.Collection.Add(ms.Select(x => new SelectViewModel<TEntity>(x)).ToArray());
@@ -70,7 +65,7 @@ namespace H.Extensions.ViewModel
             {
                 IocMessage.Snack?.ShowInfo("新增失败,数据库保存错误");
             }
-            foreach (var m in ms)
+            foreach (TEntity m in ms)
             {
                 Ioc<IOperationService>.Instance?.Log<TEntity>($"新增", m.ID, OperationType.Add);
             }
@@ -82,7 +77,7 @@ namespace H.Extensions.ViewModel
         public override void RefreshData(params string[] includes)
         {
             includes = includes ?? this.GetIncludes().ToArray();
-            var collection = includes == null ? this.Repository.GetList(x => x.CDATE > this.StartTime && x.CDATE < this.EndTime).Select(x => new SelectViewModel<TEntity>(x))
+            IEnumerable<SelectViewModel<TEntity>> collection = includes == null ? this.Repository.GetList(x => x.CDATE > this.StartTime && x.CDATE < this.EndTime).Select(x => new SelectViewModel<TEntity>(x))
             : this.Repository.GetList(includes).Select(x => new SelectViewModel<TEntity>(x));
             this.Collection.Load(collection);
         }

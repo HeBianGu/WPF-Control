@@ -1,15 +1,8 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using Microsoft.Xaml.Behaviors;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
 
 namespace H.Extensions.Behvaiors
 {
@@ -191,7 +184,7 @@ namespace H.Extensions.Behvaiors
     //        set { SetValue(RepeatBehaviorProperty, value); }
     //    }
 
-    //    // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+    //    
     //    public static readonly DependencyProperty RepeatBehaviorProperty =
     //        DependencyProperty.Register("RepeatBehavior", typeof(RepeatBehavior), typeof(FlashBehavior), new PropertyMetadata(default(RepeatBehavior), (d, e) =>
     //        {
@@ -210,7 +203,7 @@ namespace H.Extensions.Behvaiors
     //        set { SetValue(IsUseAllProperty, value); }
     //    }
 
-    //    // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+    //    
     //    public static readonly DependencyProperty IsUseAllProperty =
     //        DependencyProperty.Register("IsUseAll", typeof(bool), typeof(FlashBehavior), new PropertyMetadata(false, (d, e) =>
     //        {
@@ -225,7 +218,7 @@ namespace H.Extensions.Behvaiors
     //        set { SetValue(DurationProperty, value); }
     //    }
 
-    //    // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+    //    
     //    public static readonly DependencyProperty DurationProperty =
     //        DependencyProperty.Register("Duration", typeof(double), typeof(FlashBehavior), new PropertyMetadata(200.0, (d, e) =>
     //        {
@@ -244,7 +237,7 @@ namespace H.Extensions.Behvaiors
     //        set { SetValue(IsAnimationProperty, value); }
     //    }
 
-    //    // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+    //    
     //    public static readonly DependencyProperty IsAnimationProperty =
     //        DependencyProperty.Register("IsAnimation", typeof(bool), typeof(FlashBehavior), new PropertyMetadata(true, (d, e) =>
     //        {
@@ -262,7 +255,7 @@ namespace H.Extensions.Behvaiors
     //        set { SetValue(TimelinesProperty, value); }
     //    }
 
-    //    // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+    //    
     //    public static readonly DependencyProperty TimelinesProperty =
     //        DependencyProperty.Register("Timelines", typeof(ArrayList), typeof(FlashBehavior), new PropertyMetadata(new ArrayList(), (d, e) =>
     //        {
@@ -280,7 +273,7 @@ namespace H.Extensions.Behvaiors
     //        set { SetValue(SplitMilliSecondProperty, value); }
     //    }
 
-    //    // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+    //    
     //    public static readonly DependencyProperty SplitMilliSecondProperty =
     //        DependencyProperty.Register("SplitMilliSecond", typeof(double), typeof(FlashBehavior), new PropertyMetadata(5.0, (d, e) =>
     //        {
@@ -300,7 +293,7 @@ namespace H.Extensions.Behvaiors
     //        set { SetValue(UseCancelProperty, value); }
     //    }
 
-    //    // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+    //    
     //    public static readonly DependencyProperty UseCancelProperty =
     //        DependencyProperty.Register("UseCancel", typeof(bool), typeof(MouseDownCancelBehavior), new FrameworkPropertyMetadata(default(bool), (d, e) =>
     //        {

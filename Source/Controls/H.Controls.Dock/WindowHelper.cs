@@ -1,11 +1,11 @@
-﻿/************************************************************************
-   H.Controls.Dock
+﻿
 
-   Copyright (C) 2007-2013 Xceed Software Inc.
 
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
+
+
+
+
+
 
 using System;
 using System.Windows;
@@ -23,7 +23,7 @@ namespace H.Controls.Dock
 
         public static void SetParentToMainWindowOf(this Window window, Visual element)
         {
-            var wndParent = Window.GetWindow(element);
+            Window wndParent = Window.GetWindow(element);
             if (wndParent != null)
                 window.Owner = wndParent;
             else

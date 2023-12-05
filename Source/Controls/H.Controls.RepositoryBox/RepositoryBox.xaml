@@ -5,7 +5,7 @@
                     xmlns:local="clr-namespace:H.Controls.RepositoryBox">
     <Style BasedOn="{StaticResource {x:Static h:ListBoxKeys.Default}}" TargetType="{x:Type local:RepositoryBox}">
         <Setter Property="ItemsSource" Value="{Binding Collection.Source}" />
-        <Setter Property="SelectedItem" Value="{Binding Collection.SelectedItem}"/>
+        <Setter Property="SelectedItem" Value="{Binding Collection.SelectedItem}" />
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
         <Setter Property="UseAdd" Value="True" />
         <Setter Property="UseEdit" Value="True" />

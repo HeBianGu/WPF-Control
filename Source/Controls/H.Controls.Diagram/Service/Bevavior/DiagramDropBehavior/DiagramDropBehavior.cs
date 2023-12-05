@@ -1,13 +1,11 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 
 using H.Controls.Adorner;
 using Microsoft.Xaml.Behaviors;
 using System;
-using System.Collections;
 using System.Windows;
-using System.Windows.Documents;
 
 namespace H.Controls.Diagram
 {
@@ -45,7 +43,7 @@ namespace H.Controls.Diagram
             node.Content = content;
 
             node.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
-            node.Location = new Point(location.X - offset.X + node.DesiredSize.Width / 2, location.Y - offset.Y + node.DesiredSize.Height / 2);
+            node.Location = new Point(location.X - offset.X + (node.DesiredSize.Width / 2), location.Y - offset.Y + (node.DesiredSize.Height / 2));
 
 
             //collection.Add(node);

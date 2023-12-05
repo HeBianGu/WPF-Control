@@ -8,7 +8,10 @@
         <ResourceDictionary Source="../Provider/Layer.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Polar.Default, TypeInTargetAssembly={x:Type local:Polar}}" BasedOn="{StaticResource {x:Static h:XyLayer.DefaultKey}}" TargetType="{x:Type local:Polar}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Polar.Default,
+                                        TypeInTargetAssembly={x:Type local:Polar}}"
+           BasedOn="{StaticResource {x:Static h:XyLayer.DefaultKey}}"
+           TargetType="{x:Type local:Polar}">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
         <Setter Property="Background" Value="Red" />
         <Setter Property="Len" Value="{Binding RelativeSource={RelativeSource AncestorType=local:PolarChart}, Path=Len}" />
@@ -18,7 +21,7 @@
         <Setter Property="LineStyle">
             <Setter.Value>
                 <Style TargetType="Line">
-                    <Setter Property="Opacity" Value="0.2"/>
+                    <Setter Property="Opacity" Value="0.2" />
                     <Setter Property="StrokeThickness" Value="0.5" />
                     <Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
                 </Style>
@@ -28,7 +31,7 @@
         <Setter Property="PathStyle">
             <Setter.Value>
                 <Style TargetType="Path">
-                    <Setter Property="Opacity" Value="0.2"/>
+                    <Setter Property="Opacity" Value="0.2" />
                     <Setter Property="StrokeThickness" Value="1" />
                     <Setter Property="Stroke" Value="{Binding RelativeSource={RelativeSource AncestorType=local:Layer}, Path=Foreground}" />
                 </Style>
@@ -39,7 +42,10 @@
     <Style BasedOn="{StaticResource {x:Static h:Polar.DefaultKey}}" TargetType="{x:Type local:Polar}" />
 
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Radar.Default, TypeInTargetAssembly={x:Type local:Radar}}" BasedOn="{StaticResource {x:Static h:Polar.DefaultKey}}" TargetType="{x:Type local:Radar}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Radar.Default,
+                                        TypeInTargetAssembly={x:Type local:Radar}}"
+           BasedOn="{StaticResource {x:Static h:Polar.DefaultKey}}"
+           TargetType="{x:Type local:Radar}">
         <Setter Property="yAxis" Value="{Binding RelativeSource={RelativeSource AncestorType=local:PolarChart}, Path=yAxis}" />
     </Style>
 

@@ -1,0 +1,9 @@
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+
+namespace H.Providers.Ioc
+{
+    public interface ISystemNotifyMessage
+    {
+        void Show(string message, string title = null, NotifyBalloonIcon tipIcon = NotifyBalloonIcon.Info, int timeout = 1000);
+    }
+}

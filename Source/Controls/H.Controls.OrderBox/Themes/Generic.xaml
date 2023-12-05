@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Controls.OrderBox"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.OrderBox;component/PropertyOrderBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.OrderBox;component/PropertyOrderPrensenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.OrderBox;component/PropertyOrdersPrensenter.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

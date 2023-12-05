@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.ComponentModel;
@@ -62,7 +62,7 @@ namespace H.Controls.PropertyGrid
             //ICustomTypeProvider is only available in .net 4.5 and over. Use reflection so the .net 4.0 and .net 3.5 still works.
             if (newType.GetInterface("ICustomTypeProvider", true) != null)
             {
-                var methodInfo = newType.GetMethod("GetCustomType");
+                MethodInfo methodInfo = newType.GetMethod("GetCustomType");
                 newType = methodInfo.Invoke(value, null) as Type;
             }
 

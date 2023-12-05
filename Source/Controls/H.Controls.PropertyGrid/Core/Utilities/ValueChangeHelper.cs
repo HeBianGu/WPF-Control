@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Collections;
@@ -24,7 +24,7 @@ namespace H.Controls.PropertyGrid
         {
             get
             {
-                return (object)GetValue(ValueProperty);
+                return GetValue(ValueProperty);
             }
             set
             {
@@ -73,7 +73,7 @@ namespace H.Controls.PropertyGrid
                 MultiBinding multiBinding = new MultiBinding();
                 multiBinding.Converter = new BlankMultiValueConverter();
 
-                foreach (var item in sourceItems)
+                foreach (object item in sourceItems)
                 {
                     multiBinding.Bindings.Add(new Binding(path) { Source = item });
                 }

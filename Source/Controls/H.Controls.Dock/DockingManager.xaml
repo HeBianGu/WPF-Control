@@ -38,7 +38,9 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Image x:Name="icon" Source="{Binding IconSource, Converter={lcv:NullToDoNothingConverter}}" Stretch="Uniform" />
+            <Image x:Name="icon"
+                   Source="{Binding IconSource, Converter={lcv:NullToDoNothingConverter}}"
+                   Stretch="Uniform" />
             <TextBlock x:Name="title"
                        Grid.Column="1"
                        Margin="5"
@@ -66,7 +68,9 @@
         <MenuItem Command="{Binding Path=DockCommand}" Header="{x:Static lp:Resources.Anchorable_Dock}" />
         <MenuItem Command="{Binding Path=DockAsDocumentCommand}" Header="{x:Static lp:Resources.Anchorable_DockAsDocument}" />
         <MenuItem Command="{Binding Path=AutoHideCommand}" Header="{x:Static lp:Resources.Anchorable_AutoHide}" />
-        <MenuItem Command="{Binding Path=CloseCommand}" Header="{x:Static lp:Resources.Document_Close}" Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={lcv:BoolToVisibilityConverter}}" />
+        <MenuItem Command="{Binding Path=CloseCommand}"
+                  Header="{x:Static lp:Resources.Document_Close}"
+                  Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={lcv:BoolToVisibilityConverter}}" />
         <MenuItem Command="{Binding Path=HideCommand}" Header="{x:Static lp:Resources.Anchorable_Hide}">
             <MenuItem.Visibility>
                 <MultiBinding Converter="{lcv:AnchorableContextMenuHideVisibilityConverter}">
@@ -81,15 +85,25 @@
     </ContextMenu>
 
     <ContextMenu x:Key="DocumentContextMenu" Style="{DynamicResource {x:Static h:ContextMenuKeys.Default}}">
-        <MenuItem Command="{Binding Path=CloseCommand}" Header="{x:Static lp:Resources.Document_Close}" Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={lcv:BoolToVisibilityConverter}}" />
+        <MenuItem Command="{Binding Path=CloseCommand}"
+                  Header="{x:Static lp:Resources.Document_Close}"
+                  Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={lcv:BoolToVisibilityConverter}}" />
         <MenuItem Command="{Binding Path=CloseAllButThisCommand}" Header="{x:Static lp:Resources.Document_CloseAllButThis}" />
         <MenuItem Command="{Binding Path=CloseAllCommand}" Header="{x:Static lp:Resources.Document_CloseAll}" />
         <MenuItem Command="{Binding Path=FloatCommand}" Header="{x:Static lp:Resources.Document_Float}" />
         <MenuItem Command="{Binding Path=DockAsDocumentCommand}" Header="{x:Static lp:Resources.Document_DockAsDocument}" />
-        <MenuItem Command="{Binding Path=NewHorizontalTabGroupCommand}" Header="{x:Static lp:Resources.Document_NewHorizontalTabGroup}" Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={lcv:BoolToVisibilityConverter}}" />
-        <MenuItem Command="{Binding Path=NewVerticalTabGroupCommand}" Header="{x:Static lp:Resources.Document_NewVerticalTabGroup}" Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={lcv:BoolToVisibilityConverter}}" />
-        <MenuItem Command="{Binding Path=MoveToNextTabGroupCommand}" Header="{x:Static lp:Resources.Document_MoveToNextTabGroup}" Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={lcv:BoolToVisibilityConverter}}" />
-        <MenuItem Command="{Binding Path=MoveToPreviousTabGroupCommand}" Header="{x:Static lp:Resources.Document_MoveToPreviousTabGroup}" Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={lcv:BoolToVisibilityConverter}}" />
+        <MenuItem Command="{Binding Path=NewHorizontalTabGroupCommand}"
+                  Header="{x:Static lp:Resources.Document_NewHorizontalTabGroup}"
+                  Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={lcv:BoolToVisibilityConverter}}" />
+        <MenuItem Command="{Binding Path=NewVerticalTabGroupCommand}"
+                  Header="{x:Static lp:Resources.Document_NewVerticalTabGroup}"
+                  Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={lcv:BoolToVisibilityConverter}}" />
+        <MenuItem Command="{Binding Path=MoveToNextTabGroupCommand}"
+                  Header="{x:Static lp:Resources.Document_MoveToNextTabGroup}"
+                  Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={lcv:BoolToVisibilityConverter}}" />
+        <MenuItem Command="{Binding Path=MoveToPreviousTabGroupCommand}"
+                  Header="{x:Static lp:Resources.Document_MoveToPreviousTabGroup}"
+                  Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={lcv:BoolToVisibilityConverter}}" />
     </ContextMenu>
 
     <DataTemplate x:Key="IconContentTemplate">
@@ -114,7 +128,9 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:DockingManager}">
-                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
                         <Grid FlowDirection="LeftToRight">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
@@ -126,7 +142,9 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
-                            <ContentPresenter Grid.Row="1" Grid.Column="1" Content="{TemplateBinding LayoutRootPanel}" />
+                            <ContentPresenter Grid.Row="1"
+                                              Grid.Column="1"
+                                              Content="{TemplateBinding LayoutRootPanel}" />
                             <ContentPresenter Grid.Row="0"
                                               Grid.RowSpan="3"
                                               Grid.Column="2"

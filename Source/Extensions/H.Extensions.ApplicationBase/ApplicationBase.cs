@@ -1,9 +1,7 @@
 ﻿using H.Providers.Ioc;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,16 +14,16 @@ namespace H.Extensions.ApplicationBase
         public ApplicationBase()
         {
             this.OnExcetion();
-            var sc = new ServiceCollection();
+            ServiceCollection sc = new ServiceCollection();
             this.ConfigureServices(sc);
-            var sp = sc.BuildServiceProvider();
+            ServiceProvider sp = sc.BuildServiceProvider();
             Ioc.Build(sp);
             this.OnSetting();
         }
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            var bulder = new ApplicationBuilder();
+            ApplicationBuilder bulder = new ApplicationBuilder();
             this.Configure(bulder);
             this.OnSingleton(e);
             base.OnStartup(e);

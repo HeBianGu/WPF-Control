@@ -138,7 +138,7 @@ namespace H.Controls.Dock.Commands
                 return _staticFunc(parameter);
             }
 
-            var funcTarget = FuncTarget;
+            object funcTarget = FuncTarget;
 
             if (IsAlive)
             {
@@ -169,7 +169,7 @@ namespace H.Controls.Dock.Commands
         /// <returns>The result of the execution as object, to be casted to T.</returns>
         public object ExecuteWithObject(object parameter)
         {
-            var parameterCasted = (T)parameter;
+            T parameterCasted = (T)parameter;
             return Execute(parameterCasted);
         }
 

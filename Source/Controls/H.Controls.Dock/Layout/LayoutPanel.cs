@@ -1,11 +1,11 @@
-﻿/************************************************************************
-   H.Controls.Dock
+﻿
 
-   Copyright (C) 2007-2013 Xceed Software Inc.
 
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
+
+
+
+
+
 
 using System;
 using System.Linq;
@@ -114,7 +114,7 @@ namespace H.Controls.Dock.Layout
                 Orientation = (Orientation)Enum.Parse(typeof(Orientation), reader.Value, true);
             if (reader.MoveToAttribute(nameof(CanDock)))
             {
-                var canDockStr = reader.GetAttribute("CanDock");
+                string canDockStr = reader.GetAttribute("CanDock");
                 if (canDockStr != null)
                     CanDock = bool.Parse(canDockStr);
             }
@@ -122,15 +122,15 @@ namespace H.Controls.Dock.Layout
         }
 
 #if TRACE
-		/// <inheritdoc />
-		public override void ConsoleDump(int tab)
-		{
-			System.Diagnostics.Trace.Write(new string(' ', tab * 4));
-			System.Diagnostics.Trace.WriteLine(string.Format("Panel({0})", Orientation));
+        /// <inheritdoc />
+        public override void ConsoleDump(int tab)
+        {
+            System.Diagnostics.Trace.Write(new string(' ', tab * 4));
+            System.Diagnostics.Trace.WriteLine(string.Format("Panel({0})", Orientation));
 
-			foreach (LayoutElement child in Children)
-				child.ConsoleDump(tab + 1);
-		}
+            foreach (LayoutElement child in Children)
+                child.ConsoleDump(tab + 1);
+        }
 #endif
 
         #endregion Overrides

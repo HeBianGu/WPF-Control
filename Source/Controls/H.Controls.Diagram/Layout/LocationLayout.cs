@@ -1,8 +1,7 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 using H.Extensions.TypeConverter;
-using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace H.Controls.Diagram
@@ -25,7 +24,7 @@ namespace H.Controls.Diagram
 
         public override void RemoveNode(params Node[] nodes)
         {
-            foreach (var node in nodes)
+            foreach (Node node in nodes)
             {
                 node.Delete();
             }

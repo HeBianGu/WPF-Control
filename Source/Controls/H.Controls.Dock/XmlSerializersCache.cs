@@ -12,7 +12,7 @@ namespace H.Controls.Dock
 
         public static XmlSerializer GetSerializer(Type targetType)
         {
-            if (s_cache.TryGetValue(targetType, out var serializer))
+            if (s_cache.TryGetValue(targetType, out XmlSerializer serializer))
                 return serializer;
 
             lock (s_lock)

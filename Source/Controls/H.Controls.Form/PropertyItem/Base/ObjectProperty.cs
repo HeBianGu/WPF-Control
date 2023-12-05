@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 using H.Providers.Mvvm;
@@ -6,8 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.DirectoryServices.ActiveDirectory;
-using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
@@ -288,7 +286,7 @@ namespace H.Controls.Form
             BrowsableAttribute browsable = property.GetCustomAttribute<BrowsableAttribute>();
             this.Visibility = browsable == null || browsable.Browsable ? Visibility.Visible : Visibility.Collapsed;
 
-            var unit = property.GetCustomAttribute<UnitAttribute>();
+            UnitAttribute unit = property.GetCustomAttribute<UnitAttribute>();
             if (unit != null)
                 this.Unit = unit.Unit;
 

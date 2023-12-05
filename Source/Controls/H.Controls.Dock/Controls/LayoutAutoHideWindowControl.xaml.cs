@@ -1,11 +1,3 @@
-/************************************************************************
-   H.Controls.Dock
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
-
-   This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
- ************************************************************************/
 
 using H.Controls.Dock.Layout;
 using System;
@@ -146,14 +138,14 @@ namespace H.Controls.Dock.Controls
         {
             get
             {
-                var ptMouse = new Win32Helper.Win32Point();
+                Win32Helper.Win32Point ptMouse = new Win32Helper.Win32Point();
                 if (!Win32Helper.GetCursorPos(ref ptMouse)) return false;
-                var location = this.PointToScreenDPI(new Point());
-                var rectWindow = this.GetScreenArea();
+                Point location = this.PointToScreenDPI(new Point());
+                Rect rectWindow = this.GetScreenArea();
                 if (rectWindow.Contains(new Point(ptMouse.X, ptMouse.Y))) return true;
 
-                var manager = Model?.Root.Manager;
-                var anchor = manager?.FindVisualChildren<LayoutAnchorControl>().Where(c => c.Model == Model).FirstOrDefault();
+                DockingManager manager = Model?.Root.Manager;
+                LayoutAnchorControl anchor = manager?.FindVisualChildren<LayoutAnchorControl>().Where(c => c.Model == Model).FirstOrDefault();
 
                 return anchor != null && anchor.IsMouseOver;
                 //location = anchor.PointToScreenDPI(new Point());
@@ -227,7 +219,7 @@ namespace H.Controls.Dock.Controls
         {
             get
             {
-                var viewboxes = _manager.GetParents().OfType<Viewbox>().ToList();
+                List<Viewbox> viewboxes = _manager.GetParents().OfType<Viewbox>().ToList();
 
                 if (viewboxes.Any())
                 {
@@ -235,9 +227,9 @@ namespace H.Controls.Dock.Controls
                     {
                         if (!transform.Value.IsIdentity)
                         {
-                            var origin = transform.Transform(new Point());
+                            Point origin = transform.Transform(new Point());
 
-                            var newTransformGroup = new TransformGroup();
+                            TransformGroup newTransformGroup = new TransformGroup();
                             newTransformGroup.Children.Add(transform);
                             newTransformGroup.Children.Add(new TranslateTransform(-origin.X, -origin.Y));
                             return newTransformGroup;
@@ -351,10 +343,10 @@ namespace H.Controls.Dock.Controls
         private void ShowResizerOverlayWindow(LayoutGridResizerControl splitter)
         {
             _resizerGhost = new Border { Background = splitter.BackgroundWhileDragging, Opacity = splitter.OpacityWhileDragging };
-            var areaElement = _manager.GetAutoHideAreaElement();
+            FrameworkElement areaElement = _manager.GetAutoHideAreaElement();
             //var modelControlActualSize = this._internalHost.TransformActualSizeToAncestor();
-            var ptTopLeftScreen = areaElement.PointToScreenDPIWithoutFlowDirection(new Point());
-            var managerSize = areaElement.TransformActualSizeToAncestor();
+            Point ptTopLeftScreen = areaElement.PointToScreenDPIWithoutFlowDirection(new Point());
+            Size managerSize = areaElement.TransformActualSizeToAncestor();
             Size windowSize;
 
             if (_side == AnchorSide.Right || _side == AnchorSide.Left)
@@ -378,7 +370,7 @@ namespace H.Controls.Dock.Controls
             else
                 Canvas.SetTop(_resizerGhost, _initialStartPoint.Y);
 
-            var panelHostResizer = new Canvas { HorizontalAlignment = HorizontalAlignment.Stretch, VerticalAlignment = VerticalAlignment.Stretch };
+            Canvas panelHostResizer = new Canvas { HorizontalAlignment = HorizontalAlignment.Stretch, VerticalAlignment = VerticalAlignment.Stretch };
             panelHostResizer.Children.Add(_resizerGhost);
             _resizerWindowHost = new Window
             {
@@ -410,12 +402,12 @@ namespace H.Controls.Dock.Controls
         private void OnResizerDragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e)
         {
             //var splitter = sender as LayoutGridResizerControl;
-            var rootVisual = this.FindVisualTreeRoot() as Visual;
+            Visual rootVisual = this.FindVisualTreeRoot() as Visual;
 
-            var trToWnd = TransformToAncestor(rootVisual);
+            GeneralTransform trToWnd = TransformToAncestor(rootVisual);
             //var transformedDelta = trToWnd.Transform(new Point(e.HorizontalChange, e.VerticalChange)) - trToWnd.Transform(new Point());
 
-            var deltaPoint = ChildLayoutTransform.Inverse.Transform(new Point(Canvas.GetLeft(_resizerGhost) - _initialStartPoint.X, Canvas.GetTop(_resizerGhost) - _initialStartPoint.Y));
+            Point deltaPoint = ChildLayoutTransform.Inverse.Transform(new Point(Canvas.GetLeft(_resizerGhost) - _initialStartPoint.X, Canvas.GetTop(_resizerGhost) - _initialStartPoint.Y));
 
             double delta;
             if (_side == AnchorSide.Right || _side == AnchorSide.Left)
@@ -462,10 +454,10 @@ namespace H.Controls.Dock.Controls
         private void OnResizerDragDelta(object sender, System.Windows.Controls.Primitives.DragDeltaEventArgs e)
         {
             //var splitter = sender as LayoutGridResizerControl;
-            var rootVisual = this.FindVisualTreeRoot() as Visual;
+            Visual rootVisual = this.FindVisualTreeRoot() as Visual;
 
-            var trToWnd = TransformToAncestor(rootVisual);
-            var transformedDelta = trToWnd.Transform(new Point(e.HorizontalChange, e.VerticalChange)) - trToWnd.Transform(new Point());
+            GeneralTransform trToWnd = TransformToAncestor(rootVisual);
+            Vector transformedDelta = trToWnd.Transform(new Point(e.HorizontalChange, e.VerticalChange)) - trToWnd.Transform(new Point());
             if (ChildLayoutTransform is Transform transform && !transform.Value.IsIdentity)
             {
                 transformedDelta = transform.Transform(new Point() + transformedDelta) - new Point();

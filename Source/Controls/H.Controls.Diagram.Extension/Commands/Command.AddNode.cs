@@ -2,13 +2,9 @@
 using H.Providers.Mvvm;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace H.Controls.Diagram.Extension
 {
@@ -49,15 +45,15 @@ namespace H.Controls.Diagram.Extension
         {
             if (this.Dock == Dock.Top || this.Dock == Dock.Bottom)
                 return this.OffSet + toNode.DesiredSize.Height;
-            return this.OffSet + toNode.DesiredSize.Width / 2;
+            return this.OffSet + (toNode.DesiredSize.Width / 2);
         }
         protected override void Create(Node fromNode, INodeData nodeData)
         {
-            var diagram = fromNode.GetParent<Diagram>();
+            Diagram diagram = fromNode.GetParent<Diagram>();
             if (diagram == null)
                 return;
 
-            IList nodeSource = diagram.NodesSource as IList;
+            IList nodeSource = diagram.NodesSource;
             if (nodeSource == null)
                 return;
 
@@ -73,22 +69,22 @@ namespace H.Controls.Diagram.Extension
 
             if (this.Dock == Dock.Top)
             {
-                toNode.Location = new Point(location.X, location.Y - this.OffSet + fromNode.DesiredSize.Height / 2);
+                toNode.Location = new Point(location.X, location.Y - this.OffSet + (fromNode.DesiredSize.Height / 2));
                 this.CreateLink(diagram, fromNode, toNode);
             }
             if (this.Dock == Dock.Bottom)
             {
-                toNode.Location = new Point(location.X, location.Y + this.OffSet - fromNode.DesiredSize.Height / 2);
+                toNode.Location = new Point(location.X, location.Y + this.OffSet - (fromNode.DesiredSize.Height / 2));
                 this.CreateLink(diagram, fromNode, toNode);
             }
             if (this.Dock == Dock.Left)
             {
-                toNode.Location = new Point(location.X - this.OffSet - fromNode.DesiredSize.Width / 2, location.Y);
+                toNode.Location = new Point(location.X - this.OffSet - (fromNode.DesiredSize.Width / 2), location.Y);
                 this.CreateLink(diagram, fromNode, toNode);
             }
             if (this.Dock == Dock.Right)
             {
-                toNode.Location = new Point(location.X + this.OffSet + fromNode.DesiredSize.Width / 2, location.Y);
+                toNode.Location = new Point(location.X + this.OffSet + (fromNode.DesiredSize.Width / 2), location.Y);
                 this.CreateLink(diagram, fromNode, toNode);
             }
             //nodeSource.Add(toNode);
@@ -104,7 +100,7 @@ namespace H.Controls.Diagram.Extension
 
             if (nodeData is ISystemNodeData displayNodeData)
             {
-                foreach (var p in displayNodeData.PortDatas)
+                foreach (IPortData p in displayNodeData.PortDatas)
                 {
                     Port port = Port.Create(node);
                     port.Dock = p.Dock;
