@@ -1,6 +1,11 @@
 # WPF-Control
 WPF轻量级控件和皮肤库
 
+<p align="left"> 
+    <img alt="dotnet-version" src="https://img.shields.io/badge/.net-v6.0-windows.svg"></img>
+    <img alt="dotnet-version" src="https://img.shields.io/badge/.net-v7.0-windows.svg"></img>
+</p>
+
 ## IOC
 Microsoft.Extensions.DependencyInjection
 
