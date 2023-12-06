@@ -221,6 +221,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Extensions.Color", "..\So
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Extensions.Excel", "..\Source\Extensions\H.Extensions.Excel\H.Extensions.Excel.csproj", "{2439E43A-C4CC-4F65-BA7F-D403FFB59BBF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Extensions.Encryption", "..\Source\Extensions\H.Extensions.Encryption\H.Extensions.Encryption.csproj", "{FA049434-2D8D-4F2B-8836-5835A1A649ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -611,6 +613,10 @@ Global
 		{2439E43A-C4CC-4F65-BA7F-D403FFB59BBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2439E43A-C4CC-4F65-BA7F-D403FFB59BBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2439E43A-C4CC-4F65-BA7F-D403FFB59BBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA049434-2D8D-4F2B-8836-5835A1A649ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA049434-2D8D-4F2B-8836-5835A1A649ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA049434-2D8D-4F2B-8836-5835A1A649ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA049434-2D8D-4F2B-8836-5835A1A649ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -714,6 +720,7 @@ Global
 		{D78AA908-459B-4A13-A9AC-F30A9ADF0385} = {9E63ED70-6F96-4CB2-8B9D-EAEC77D0548E}
 		{4F6496EE-40FA-4521-92F7-679F31E6EA0A} = {09F8FD00-E76A-4D72-AAB4-7FA06DBE12D4}
 		{2439E43A-C4CC-4F65-BA7F-D403FFB59BBF} = {09F8FD00-E76A-4D72-AAB4-7FA06DBE12D4}
+		{FA049434-2D8D-4F2B-8836-5835A1A649ED} = {09F8FD00-E76A-4D72-AAB4-7FA06DBE12D4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF825C3D-F4F4-4E62-BBFF-B42A5E81112F}
