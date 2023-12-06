@@ -3,9 +3,6 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.TreeListView"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
-
-    <local:LevelToIndentConverter x:Key="LevelIndentConverter" />
-
     <Style x:Key="{ComponentResourceKey ResourceId=S.TreeListView.Default,
                                         TypeInTargetAssembly={x:Type local:TreeListView}}"
            TargetType="{x:Type local:TreeListView}">

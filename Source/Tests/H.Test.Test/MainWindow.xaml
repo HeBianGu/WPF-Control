@@ -424,43 +424,29 @@
                 </TabControl>
             </TabItem>
             <TabItem Header="TreeListView">
-                <h:TreeListView ItemsSource="{ExploreTreeDataProvider}">
+                <h:TreeListView ItemsSource="{ClassTypeTreeDataProvider Type={x:Type FrameworkElement}, IsRecursion=True}">
                     <h:TreeListView.Columns>
                         <GridViewColumnCollection>
-                            <GridViewColumn Width="500"
-                                            Header="列头">
+                            <GridViewColumn Width="300"
+                                            Header="Name">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <DockPanel>
-                                            <ToggleButton x:Name="Expander"
-                                                          Margin="{Binding Path=Level, Converter={StaticResource LevelIndentConverter}, RelativeSource={RelativeSource AncestorType={x:Type h:TreeListViewItem}}}"
-                                                          ClickMode="Press"
-                                                          IsChecked="{Binding Path=IsExpanded, RelativeSource={RelativeSource AncestorType={x:Type h:TreeListViewItem}}}" />
+                                            <ToggleButton Margin="{Binding Path=Level, Converter={GetLevelToIndentConverter}, RelativeSource={RelativeSource AncestorType={x:Type h:TreeListViewItem}}}"
+                                                          Style="{DynamicResource {x:Static h:ToggleButtonKeys.Tree}}" />
                                             <TextBlock Margin="5,0">
-                                                <Run Text="{Binding Name}" />
+                                                <Run Text="{Binding Model.Name, Mode=OneWay}" />
                                             </TextBlock>
                                         </DockPanel>
-                                        <DataTemplate.Triggers>
-                                            <DataTrigger Binding="{Binding Path=HasItems, RelativeSource={RelativeSource AncestorType={x:Type h:TreeListViewItem}}}"
-                                                         Value="False">
-                                                <Setter TargetName="Expander" Property="Visibility" Value="Hidden" />
-                                            </DataTrigger>
-                                        </DataTemplate.Triggers>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn Width="200"
-                                            DisplayMemberBinding="{Binding Name}"
-                                            Header="名称" />
-                            <GridViewColumn Width="200"
-                                            DisplayMemberBinding="{Binding Code}"
-                                            Header="编号" />
-                            <GridViewColumn Width="200"
-                                            DisplayMemberBinding="{Binding RootCode}"
-                                            Header="类型" />
-                            <GridViewColumn Width="200"
-                                            DisplayMemberBinding="{Binding ParentID}"
-                                            Header="父节点" />
+                            <GridViewColumn DisplayMemberBinding="{Binding Model.IsClass, Mode=OneWay}"
+                                            Header="IsClass" />
+                            <GridViewColumn DisplayMemberBinding="{Binding Model.IsInterface, Mode=OneWay}"
+                                            Header="IsInterface" />
+                            <GridViewColumn DisplayMemberBinding="{Binding Model.Assembly, Mode=OneWay}"
+                                            Header="Assembly" />
                         </GridViewColumnCollection>
                     </h:TreeListView.Columns>
                     <TreeView.ItemTemplate>
