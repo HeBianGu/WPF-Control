@@ -1,0 +1,49 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Modules.License"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <DataTemplate DataType="{x:Type local:LicenseFlagViewPresenter}">
+        <DockPanel>
+            <TextBlock VerticalAlignment="Center"
+                       Text="许可日期" />
+            <TextBlock Margin="5,0,5,0"
+                       VerticalAlignment="Center"
+                       FontSize="10"
+                       FontWeight="Bold">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Time, Converter={x:Static h:Converter.GetTrue}}"
+                                         Value="True">
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Green}}" />
+                                <Setter Property="Text" Value="{Binding Time, StringFormat=yyyy-MM-dd}" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Time}"
+                                         Value="{x:Static sys:DateTime.MinValue}">
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Red}}" />
+                                <Setter Property="Text" Value="未注册" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Time}"
+                                         Value="{x:Static sys:DateTime.MaxValue}">
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Green}}" />
+                                <Setter Property="Text" Value="永久" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsTrail}"
+                                         Value="True">
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Gray}}" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            <TextBlock VerticalAlignment="Center"
+                       FontSize="8"
+                       Foreground="{DynamicResource {x:Static h:BrushKeys.Red}}"
+                       Visibility="{Binding IsTrail, Mode=OneWay, Converter={x:Static h:Converter.GetTrueToVisible}}">
+                <Run Text="[" /><Run Text="试用" /><Run Text="]" />
+            </TextBlock>
+        </DockPanel>
+    </DataTemplate>
+</ResourceDictionary>

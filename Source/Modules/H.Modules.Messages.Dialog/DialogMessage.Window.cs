@@ -11,7 +11,8 @@ namespace H.Modules.Messages.Dialog
     {
         public async Task<bool?> Show(object presenter, Action<IDialog> builder = null, Func<bool> canSumit = null)
         {
-            bool? r = DialogWindow.ShowPresenter(presenter, builder, canSumit);
+            var data = presenter is string str ? new StringPresenter() { Value = str } : presenter;
+            bool? r = DialogWindow.ShowPresenter(data, builder, canSumit);
             return await Task.FromResult(r);
         }
 

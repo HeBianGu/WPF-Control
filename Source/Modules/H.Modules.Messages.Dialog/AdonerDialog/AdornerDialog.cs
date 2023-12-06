@@ -13,7 +13,7 @@ namespace H.Modules.Messages.Dialog
         public static async Task<bool?> ShowPresenter(object presenter, Action<IDialog> action = null, Func<bool> canSumit = null)
         {
             AdornerDialogPresenter dialog = new AdornerDialogPresenter(presenter);
-            dialog.MinWidth = 500;
+            dialog.MinWidth = 400;
             dialog.CanSumit = canSumit;
             action?.Invoke(dialog);
             dialog.Title = dialog.Title ?? presenter.GetType().GetCustomAttribute<DisplayAttribute>()?.Name ?? "提示";
@@ -23,7 +23,7 @@ namespace H.Modules.Messages.Dialog
         public static async Task<T> ShowAction<P, T>(P presenter, Func<IDialog, P, T> func = null, Action<IDialog> action = null)
         {
             AdornerDialogPresenter dialog = new AdornerDialogPresenter(presenter);
-            dialog.MinWidth = 500;
+            dialog.MinWidth = 400;
             dialog.MinHeight = 150;
             action?.Invoke(dialog);
             dialog.Title = dialog.Title ?? presenter.GetType().GetCustomAttribute<DisplayAttribute>()?.Name ?? "提示";

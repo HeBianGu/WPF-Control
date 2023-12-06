@@ -97,7 +97,7 @@ namespace H.Windows.Dialog
         {
             DialogWindow dialog = new DialogWindow();
             dialog.Content = presenter;
-            dialog.Width = 500;
+            dialog.Width = 400;
             dialog.SizeToContent = SizeToContent.Height;
             dialog.CanSumit = canSumit;
             action?.Invoke(dialog);

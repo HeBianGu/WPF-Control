@@ -11,7 +11,8 @@ namespace H.Modules.Messages.Dialog
     {
         public async Task<bool?> Show(object presenter, Action<IDialog> builder = null, Func<bool> canSumit = null)
         {
-            return await AdornerDialog.ShowPresenter(presenter, builder, canSumit);
+            var data = presenter is string str ? new StringPresenter() { Value = str } : presenter;
+            return await AdornerDialog.ShowPresenter(data, builder, canSumit);
         }
 
         public async Task<T> ShowAction<P, T>(P presenter, Action<IDialog> builder = null, Func<IDialog, P, T> action = null)

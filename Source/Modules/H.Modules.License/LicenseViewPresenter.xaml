@@ -1,0 +1,146 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Modules.License"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <DataTemplate DataType="{x:Type local:LicenseViewPresenter}">
+        <DockPanel MinWidth="500"
+                   Margin="0">
+            <StackPanel DockPanel.Dock="Top"
+                        Orientation="Horizontal">
+                <TextBlock Margin="0,5"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center">
+                    <Run Text="截止日期：" />
+                </TextBlock>
+                <TextBlock Margin="2,0"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           FontWeight="Bold">
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Time, Converter={x:Static h:Converter.GetTrue}}"
+                                             Value="True">
+                                    <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Green}}" />
+                                    <Setter Property="Text" Value="{Binding Time, StringFormat=yyyy-MM-dd}" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Time}"
+                                             Value="{x:Static sys:DateTime.MinValue}">
+                                    <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Red}}" />
+                                    <Setter Property="Text" Value="未注册，请联系管理员获取注册码" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Time}"
+                                             Value="{x:Static sys:DateTime.MaxValue}">
+                                    <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Green}}" />
+                                    <Setter Property="Text" Value="永久" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding IsTrail}"
+                                             Value="True">
+                                    <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.ForegroundAssist}}" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </StackPanel>
+
+            <StackPanel DockPanel.Dock="Top"
+                        Orientation="Horizontal"
+                        Visibility="{Binding UseVip, Converter={x:Static h:Converter.GetTrueToVisible}}">
+                <TextBlock Margin="0,5"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center">
+                    <Run Text="会员等级：" />
+                </TextBlock>
+                <TextBlock Margin="2,0"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           FontWeight="Bold"
+                           Foreground="{DynamicResource {x:Static h:BrushKeys.Orange}}"
+                           Text="{Binding Level,StringFormat=v{0}}" />
+            </StackPanel>
+
+            <Grid DockPanel.Dock="Bottom"
+                  Visibility="{Binding IsTrail, Converter={x:Static h:Converter.GetTrueToVisible}}">
+                <TextBlock HorizontalAlignment="Left"
+                           Foreground="{DynamicResource {x:Static h:BrushKeys.Red}}">
+                    <Run Text="试用许可，可试用30天,如需注册请联系客服获取注册码" />
+                </TextBlock>
+                <Grid.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
+                        <Setter Property="RenderTransformOrigin" Value="0.5 0.5" />
+                    </Style>
+                </Grid.Resources>
+            </Grid>
+
+            <StackPanel DockPanel.Dock="Top">
+                <Grid>
+                    <BulletDecorator>
+                        <BulletDecorator.Bullet>
+                            <TextBlock Text="机器编码：" />
+                        </BulletDecorator.Bullet>
+                        <DockPanel>
+                            <Button Command="{ClipBoardCopyTextCommand}"
+                                    CommandParameter="{Binding HostID}"
+                                    Content="复制"
+                                    DockPanel.Dock="Right" />
+                            <TextBox IsReadOnly="True"
+                                     Text="{Binding HostID}" />
+                        </DockPanel>
+                    </BulletDecorator>
+                </Grid>
+
+                <Grid>
+                    <BulletDecorator>
+                        <BulletDecorator.Bullet>
+                            <TextBlock Text="产品名称：" />
+                        </BulletDecorator.Bullet>
+                        <DockPanel>
+                            <Button Command="{ClipBoardCopyTextCommand}"
+                                    CommandParameter="{Binding Module}"
+                                    Content="复制"
+                                    DockPanel.Dock="Right" />
+                            <TextBox IsReadOnly="True"
+                                     Text="{Binding Module}" />
+                        </DockPanel>
+                    </BulletDecorator>
+                </Grid>
+                <!--<Label Content="注:机器编码用于申请License，请将Licens提供给管理员！" HorizontalAlignment="Left" Margin="100,0" Foreground="Red" Style="{DynamicResource S.Label.Flash}"/>-->
+            </StackPanel>
+
+            <Grid DockPanel.Dock="Bottom">
+                <TextBlock HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           Text="{Binding Source={x:Static local:LicenseOptions.Instance}, Path=Contract, StringFormat=联系客服：{0}}" />
+                <TextBlock HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Foreground="{DynamicResource {x:Static h:BrushKeys.Red}}"
+                           Text="{Binding Message}" />
+                <Button HorizontalAlignment="Right"
+                        Command="{Binding RegisterCommand}"
+                        Content="注册" />
+            </Grid>
+
+            <BulletDecorator>
+                <BulletDecorator.Bullet>
+                    <TextBlock Text="输入许可：" />
+                </BulletDecorator.Bullet>
+                <DockPanel>
+                    <Button Command="{ClipBoardPasteTextCommand}"
+                            CommandParameter="{Binding ElementName=tb}"
+                            Content="粘贴"
+                            DockPanel.Dock="Right" />
+                    <TextBox x:Name="tb"
+                             Height="Auto"
+                             Text="{Binding Lic, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                             TextWrapping="Wrap" />
+                </DockPanel>
+            </BulletDecorator>
+        </DockPanel>
+    </DataTemplate>
+</ResourceDictionary>

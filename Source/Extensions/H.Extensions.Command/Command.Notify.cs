@@ -13,13 +13,11 @@ namespace H.Extensions.Command
 
         protected readonly Predicate<object> _canExecute;
 
-        /// <summary> 执行命令 </summary>
         public NotifyCommandBase(Action<object> action)
         {
             _action = action;
         }
 
-        /// <summary> 执行命令 </summary>
         public NotifyCommandBase(Action<object> execute, Predicate<object> canExecute)
         {
             _action = execute;
@@ -27,7 +25,6 @@ namespace H.Extensions.Command
             _canExecute = canExecute ?? (x => true);
         }
 
-        /// <summary> 命令是否可执行 </summary>
         public virtual bool CanExecute(object parameter)
         {
             if (_canExecute == null) return true;
@@ -47,13 +44,11 @@ namespace H.Extensions.Command
             }
         }
 
-        /// <summary> 刷新命令可执行状态 (会调用CanExecute方法) </summary>
         public void Refresh()
         {
             CommandManager.InvalidateRequerySuggested();
         }
 
-        /// <summary> 执行命令 </summary>
         public virtual void Execute(object parameter)
         {
             _action(parameter);

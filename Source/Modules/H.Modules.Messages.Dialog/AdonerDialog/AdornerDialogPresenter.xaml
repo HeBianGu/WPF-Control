@@ -38,16 +38,11 @@
                                 Style="{DynamicResource {x:Static ButtonKeys.Geometry}}" />
                     </Grid>
                 </Border>
-                <!--<ScrollViewer Grid.Row="1"
-                              Grid.ColumnSpan="3"
-                              HorizontalScrollBarVisibility="Auto"
-                              VerticalScrollBarVisibility="Visible">-->
                 <ContentPresenter Grid.Row="1"
                                   Grid.ColumnSpan="3"
                                   Margin="10,6"
-                                  VerticalAlignment="Center"
+                                  VerticalAlignment="Stretch"
                                   Content="{Binding Presenter}" />
-                <!--</ScrollViewer>-->
 
                 <StackPanel Grid.Row="2"
                             MinHeight="20"

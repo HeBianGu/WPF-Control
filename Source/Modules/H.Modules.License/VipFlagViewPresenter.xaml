@@ -1,0 +1,18 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Modules.License"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <DataTemplate DataType="{x:Type local:VipFlagViewPresenter}">
+        <TextBlock VerticalAlignment="Center"
+                   DockPanel.Dock="Right">
+            <Run Text="会员等级" />
+            <Run FontWeight="Bold"
+                 Foreground="{DynamicResource {x:Static h:BrushKeys.Orange}}"
+                 Text="v" /><Run FontSize="10"
+                 FontWeight="Bold"
+                 Foreground="{DynamicResource {x:Static h:BrushKeys.Orange}}"
+                 Text="{Binding Path=Level, Mode=OneWay, Converter={x:Static h:Converter.GetIntLessZeroString}, ConverterParameter=游客}" />
+        </TextBlock>
+    </DataTemplate>
+</ResourceDictionary>

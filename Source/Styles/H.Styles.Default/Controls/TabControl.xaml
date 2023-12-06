@@ -5,7 +5,9 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style x:Key="{ComponentResourceKey ResourceId=S.TabControl.Default, TypeInTargetAssembly={x:Type local:TabControlKeys}}" TargetType="{x:Type TabControl}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.TabControl.Default,
+                                        TypeInTargetAssembly={x:Type local:TabControlKeys}}"
+           TargetType="{x:Type TabControl}">
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="BorderBrush">
@@ -23,16 +25,20 @@
                           SnapsToDevicePixels="true">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition x:Name="ColumnDefinition0" />
-                            <ColumnDefinition x:Name="ColumnDefinition1" Width="0" />
+                            <ColumnDefinition x:Name="ColumnDefinition1"
+                                              Width="0" />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition x:Name="RowDefinition0" Height="Auto" />
-                            <RowDefinition x:Name="RowDefinition1" Height="*" />
+                            <RowDefinition x:Name="RowDefinition0"
+                                           Height="Auto" />
+                            <RowDefinition x:Name="RowDefinition1"
+                                           Height="*" />
                         </Grid.RowDefinitions>
-                        <ScrollViewer x:Name="headerPanel" VerticalScrollBarVisibility="Auto">
+                        <ScrollViewer x:Name="headerPanel"
+                                      Margin="0,0,0,1"
+                                      VerticalScrollBarVisibility="Auto">
                             <TabPanel Grid.Row="0"
                                       Grid.Column="0"
-                                      Margin="2,2,2,0"
                                       Panel.ZIndex="1"
                                       Background="Transparent"
                                       IsItemsHost="true"
@@ -182,7 +188,9 @@
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static local:TabControlKeys.Default}}" TargetType="TabControl" />
-    <Style BasedOn="{StaticResource {x:Static local:TabItemKeys.Default}}" TargetType="TabItem" />
+    <Style BasedOn="{StaticResource {x:Static local:TabControlKeys.Default}}"
+           TargetType="TabControl" />
+    <Style BasedOn="{StaticResource {x:Static local:TabItemKeys.Default}}"
+           TargetType="TabItem" />
 
 </ResourceDictionary>

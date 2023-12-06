@@ -217,11 +217,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Controls.TreeListView", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Controls.ColorBox", "..\Source\Controls\H.Controls.ColorBox\H.Controls.ColorBox.csproj", "{D78AA908-459B-4A13-A9AC-F30A9ADF0385}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Extensions.Color", "..\Source\Extensions\H.Extensions.Color\H.Extensions.Color.csproj", "{4F6496EE-40FA-4521-92F7-679F31E6EA0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Extensions.Color", "..\Source\Extensions\H.Extensions.Color\H.Extensions.Color.csproj", "{4F6496EE-40FA-4521-92F7-679F31E6EA0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Extensions.Excel", "..\Source\Extensions\H.Extensions.Excel\H.Extensions.Excel.csproj", "{2439E43A-C4CC-4F65-BA7F-D403FFB59BBF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Extensions.Excel", "..\Source\Extensions\H.Extensions.Excel\H.Extensions.Excel.csproj", "{2439E43A-C4CC-4F65-BA7F-D403FFB59BBF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Extensions.Encryption", "..\Source\Extensions\H.Extensions.Encryption\H.Extensions.Encryption.csproj", "{FA049434-2D8D-4F2B-8836-5835A1A649ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Extensions.Encryption", "..\Source\Extensions\H.Extensions.Encryption\H.Extensions.Encryption.csproj", "{FA049434-2D8D-4F2B-8836-5835A1A649ED}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Modules.License", "..\Source\Modules\H.Modules.License\H.Modules.License.csproj", "{5DBE226E-29F4-45B9-AF5F-E0C6D9B99A5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Test.License", "..\Source\Tests\H.Test.License\H.Test.License.csproj", "{369302BF-083E-4670-903B-BFA564D1FF9E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -617,6 +621,14 @@ Global
 		{FA049434-2D8D-4F2B-8836-5835A1A649ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA049434-2D8D-4F2B-8836-5835A1A649ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA049434-2D8D-4F2B-8836-5835A1A649ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DBE226E-29F4-45B9-AF5F-E0C6D9B99A5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DBE226E-29F4-45B9-AF5F-E0C6D9B99A5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DBE226E-29F4-45B9-AF5F-E0C6D9B99A5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DBE226E-29F4-45B9-AF5F-E0C6D9B99A5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{369302BF-083E-4670-903B-BFA564D1FF9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{369302BF-083E-4670-903B-BFA564D1FF9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{369302BF-083E-4670-903B-BFA564D1FF9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{369302BF-083E-4670-903B-BFA564D1FF9E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -721,6 +733,8 @@ Global
 		{4F6496EE-40FA-4521-92F7-679F31E6EA0A} = {09F8FD00-E76A-4D72-AAB4-7FA06DBE12D4}
 		{2439E43A-C4CC-4F65-BA7F-D403FFB59BBF} = {09F8FD00-E76A-4D72-AAB4-7FA06DBE12D4}
 		{FA049434-2D8D-4F2B-8836-5835A1A649ED} = {09F8FD00-E76A-4D72-AAB4-7FA06DBE12D4}
+		{5DBE226E-29F4-45B9-AF5F-E0C6D9B99A5C} = {27F6EA0F-3811-4403-9599-3B436A5EC502}
+		{369302BF-083E-4670-903B-BFA564D1FF9E} = {E2C0B11D-5ED5-4F22-8E56-F68982B6E59B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF825C3D-F4F4-4E62-BBFF-B42A5E81112F}
