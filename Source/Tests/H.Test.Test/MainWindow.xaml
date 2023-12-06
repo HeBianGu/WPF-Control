@@ -350,7 +350,7 @@
                     </h:Zoombox>
                 </DockPanel>
             </TabItem>
-            <!--<TabItem Header="日志测试">
+            <TabItem Header="日志测试">
                 <UniformGrid>
                     <Button Command="{LogCommand Message=运行日志,
                                                  Type=Info}"
@@ -368,7 +368,7 @@
                                                  Type=Fatal}"
                             Content="Fatal" />
                 </UniformGrid>
-            </TabItem>-->
+            </TabItem>
             <TabItem Header="ITree">
                 <TabControl>
                     <TabItem Header="类继承关系">
@@ -423,7 +423,7 @@
                     </TabItem>
                 </TabControl>
             </TabItem>
-            <TabItem Header="ITree">
+            <TabItem Header="TreeListView">
                 <h:TreeListView ItemsSource="{ExploreTreeDataProvider}">
                     <h:TreeListView.Columns>
                         <GridViewColumnCollection>
@@ -528,6 +528,37 @@
                                                          Message=""
                                                          State="Ready" />
                         </h:Step>
+                    </TabItem>
+                </TabControl>
+            </TabItem>
+
+            <TabItem Header="ColorBox">
+                <TabControl>
+                    <TabItem Header="ColorBox">
+                        <h:ColorBox ItemsSource="{GetDepthColors}" />
+                    </TabItem>
+                    <TabItem Header="Available">
+                        <h:ColorBox Height="Auto"
+                                    ItemsSource="{GetAvailableColors}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </h:ColorBox>
+                    </TabItem>
+                    <TabItem Header="Standard">
+                        <h:ColorBox ItemsSource="{GetStandardColors}" />
+                    </TabItem>
+                    <TabItem Header="System">
+                        <h:ColorBox Height="Auto"
+                                    ItemsSource="{GetSystemColors}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </h:ColorBox>
                     </TabItem>
                 </TabControl>
             </TabItem>
