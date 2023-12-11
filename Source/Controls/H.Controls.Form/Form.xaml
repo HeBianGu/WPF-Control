@@ -3,14 +3,16 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.Form"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
-    <Style x:Key="S.TextBlock.Unit" TargetType="TextBlock">
+    <Style x:Key="S.TextBlock.Unit"
+           TargetType="TextBlock">
         <Setter Property="Text" Value="{Binding Unit}" />
         <!--<Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Red}}" />-->
         <Setter Property="Grid.Column" Value="4" />
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 
-    <Style x:Key="S.TextBlock.Flag" TargetType="TextBlock">
+    <Style x:Key="S.TextBlock.Flag"
+           TargetType="TextBlock">
         <Setter Property="Text" Value="{Binding Flag}" />
         <Setter Property="Width" Value="10" />
         <Setter Property="Grid.Column" Value="1" />
@@ -22,7 +24,8 @@
         </Setter>
     </Style>
 
-    <Style x:Key="S.TextBlock.Error" TargetType="TextBlock">
+    <Style x:Key="S.TextBlock.Error"
+           TargetType="TextBlock">
         <Setter Property="FontSize" Value="14" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Center" />
@@ -65,7 +68,8 @@
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
-                        <ScrollViewer Margin="0" Padding="0">
+                        <ScrollViewer Margin="0"
+                                      Padding="0">
                             <ItemsPresenter Margin="0"
                                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
@@ -90,7 +94,7 @@
                     <Setter Property="ContentTemplate">
                         <Setter.Value>
                             <DataTemplate>
-                                <Grid>
+                                <Grid ToolTip="{Binding Description}">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="Auto" />
@@ -100,9 +104,12 @@
                                     <ContentPresenter Grid.Column="0"
                                                       Content="{Binding Name}"
                                                       ContentTemplate="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:Form}}, Path=ItemHeaderTemplate}" />
-                                    <TextBlock Grid.Column="1" Style="{StaticResource S.TextBlock.Flag}" />
-                                    <ContentPresenter Grid.Column="2" Content="{Binding}" />
-                                    <TextBlock Grid.Column="3" Style="{StaticResource S.TextBlock.Error}" />
+                                    <TextBlock Grid.Column="1"
+                                               Style="{StaticResource S.TextBlock.Flag}" />
+                                    <ContentPresenter Grid.Column="2"
+                                                      Content="{Binding}" />
+                                    <TextBlock Grid.Column="3"
+                                               Style="{StaticResource S.TextBlock.Error}" />
                                 </Grid>
                             </DataTemplate>
                         </Setter.Value>

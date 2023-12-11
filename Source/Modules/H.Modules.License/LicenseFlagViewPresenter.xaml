@@ -32,7 +32,7 @@
                             </DataTrigger>
                             <DataTrigger Binding="{Binding IsTrail}"
                                          Value="True">
-                                <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Gray}}" />
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Red}}" />
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>

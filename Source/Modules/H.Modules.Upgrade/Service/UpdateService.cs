@@ -60,6 +60,8 @@ namespace H.Modules.Upgrade
                 return IocMessage.Dialog.Show(new UpgradePresenter(data), x =>
                 {
                     x.DialogButton = DialogButton.None;
+                    x.Width = 500;
+                    x.Height = 400;
                 }).Result;
             });
             ;

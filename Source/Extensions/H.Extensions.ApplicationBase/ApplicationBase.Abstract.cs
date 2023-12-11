@@ -110,7 +110,7 @@ namespace H.Extensions.ApplicationBase
             bool? r = IocMessage.Window.Show(presenter, x =>
             {
                 x.Width = 400;
-                x.DialogButton = DialogButton.Cancel;
+                x.DialogButton = DialogButton.None;
                 x.Title = ApplicationProvider.Version;
             }).Result;
             if (r == false)

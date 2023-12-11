@@ -5,7 +5,9 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style x:Key="{ComponentResourceKey ResourceId=S.GroupBox.Default, TypeInTargetAssembly={x:Type local:GroupBoxKeys}}" TargetType="GroupBox">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.GroupBox.Default,
+                                        TypeInTargetAssembly={x:Type local:GroupBoxKeys}}"
+           TargetType="GroupBox">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="GroupBox">
@@ -24,7 +26,7 @@
                             <Border.Background>
                                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />
                             </Border.Background>
-                            <ContentPresenter Margin="4"
+                            <ContentPresenter Margin="4,0"
                                               VerticalAlignment="Center"
                                               ContentSource="Header"
                                               RecognizesAccessKey="True">
@@ -50,6 +52,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style BasedOn="{StaticResource {x:Static local:GroupBoxKeys.Default}}" TargetType="GroupBox" />
+    <Style BasedOn="{StaticResource {x:Static local:GroupBoxKeys.Default}}"
+           TargetType="GroupBox" />
 
 </ResourceDictionary>

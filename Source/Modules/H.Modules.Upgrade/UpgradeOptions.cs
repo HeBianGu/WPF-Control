@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace H.Modules.Upgrade
 {
-    [Display(Name = "软件更新", GroupName = SystemSetting.GroupSystem)]
+    [Display(Name = "软件更新", GroupName = SystemSetting.GroupSystem, Description = "配置软件更新相关参数")]
     public class UpgradeOptions : IocOptionInstance<UpgradeOptions>
     {
         protected override string GetDefaultFolder()
@@ -83,7 +83,7 @@ namespace H.Modules.Upgrade
 
         private bool _automaticUpgrade;
         [DefaultValue(true)]
-        [Display(Name = "有更新时自动为我安装(推荐)", Description = "当有更新时，智能选择最佳的软件更新方案，自动完成更新的下载与安装，省心省力")]
+        [Display(Name = "自动安装", Description = "有更新时自动为我安装(推荐)")]
         public bool AutomaticUpgrade
         {
             get { return _automaticUpgrade; }
@@ -96,7 +96,7 @@ namespace H.Modules.Upgrade
 
         private bool _notifyUpgrade;
         [DefaultValue(false)]
-        [Display(Name = "有更新时不要安装，但提醒我", Description = "此方式不影响安全补丁等重要更新的自动安装")]
+        [Display(Name = "提醒安装", Description = "有更新时不要安装，但提醒我")]
         public bool NotifyUpgrade
         {
             get { return _notifyUpgrade; }

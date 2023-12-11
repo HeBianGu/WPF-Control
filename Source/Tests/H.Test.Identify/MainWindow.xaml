@@ -1,6 +1,7 @@
 ﻿<h:MainWindow x:Class="H.Test.Identify.MainWindow"
               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
               xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
               xmlns:h="https://github.com/HeBianGu"
               xmlns:local="clr-namespace:H.Test.Identify"
@@ -11,18 +12,25 @@
               CaptionHeight="50"
               WindowStartupLocation="CenterScreen"
               mc:Ignorable="d">
+    <b:Interaction.Triggers>
+        <b:EventTrigger EventName="Loaded">
+            <b:InvokeCommandAction Command="{Binding LoadedCommand}" />
+        </b:EventTrigger>
+    </b:Interaction.Triggers>
     <Window.DataContext>
         <local:MainViewModel />
     </Window.DataContext>
     <h:MainWindow.CaptionTempate>
         <ControlTemplate>
-            <DockPanel HorizontalAlignment="Right" LastChildFill="False">
+            <DockPanel HorizontalAlignment="Right"
+                       LastChildFill="False">
                 <ContentPresenter Content="{Ioc Type={x:Type ISettingButtonPresenter}}" />
             </DockPanel>
         </ControlTemplate>
     </h:MainWindow.CaptionTempate>
     <Grid>
-        <TabControl BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" BorderThickness="1">
+        <TabControl BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
+                    BorderThickness="1">
             <TabItem Header="用户管理">
                 <ContentPresenter Content="{Ioc Type={x:Type h:IUserViewPresenter}}" />
             </TabItem>
@@ -40,16 +48,20 @@
                             BorderThickness="1"
                             TabStripPlacement="Bottom">
                     <TabItem Header="用户登录次数">
-                        <ContentPresenter Margin="100" Content="{Binding Bar}" />
+                        <ContentPresenter Margin="100"
+                                          Content="{Binding Bar}" />
                     </TabItem>
                     <TabItem Header="用户操作日志数量对比图">
-                        <ContentPresenter Margin="100" Content="{Binding Pie}" />
+                        <ContentPresenter Margin="100"
+                                          Content="{Binding Pie}" />
                     </TabItem>
                     <TabItem Header="用户登录次数">
-                        <ContentPresenter Margin="100" Content="{Binding Radar}" />
+                        <ContentPresenter Margin="100"
+                                          Content="{Binding Radar}" />
                     </TabItem>
                     <TabItem Header="近7天用户登录次数">
-                        <ContentPresenter Margin="100" Content="{Binding Line}" />
+                        <ContentPresenter Margin="100"
+                                          Content="{Binding Line}" />
                     </TabItem>
                 </TabControl>
             </TabItem>

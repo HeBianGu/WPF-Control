@@ -35,7 +35,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:DialogWindow}">
-                    <Border x:Name="PART_Border" BorderThickness="{TemplateBinding BorderThickness}">
+                    <Border x:Name="PART_Border"
+                            BorderThickness="{TemplateBinding BorderThickness}">
                         <Border.BorderBrush>
                             <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrushAssist}}" />
                         </Border.BorderBrush>
@@ -78,7 +79,8 @@
                                                 </ControlTemplate>
                                             </Button.Template>
                                         </Button>
-                                        <TextBlock Margin="5,0" Text="{TemplateBinding Title}" />
+                                        <TextBlock Margin="5,0"
+                                                   Text="{TemplateBinding Title}" />
                                     </StackPanel>
 
                                     <StackPanel Grid.Column="1"
@@ -113,7 +115,8 @@
                                 </Grid>
                             </Border>
 
-                            <AdornerDecorator Grid.Row="1" Grid.ColumnSpan="3">
+                            <AdornerDecorator Grid.Row="1"
+                                              Grid.ColumnSpan="3">
                                 <ContentPresenter Margin="{TemplateBinding Padding}"
                                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
@@ -122,16 +125,13 @@
                             <Border Grid.RowSpan="3"
                                     IsHitTestVisible="False"
                                     Opacity="{Binding Source={x:Static h:WindowSetting.Instance}, Path=Opacity}"
-                                    Visibility="{Binding Source={x:Static h:WindowSetting.Instance}, Path=BackImagePath, Converter={x:Static Converter.GetNullToCollapsed}}">
+                                    Visibility="{Binding ElementName=ib, Path=ImageSource, Converter={x:Static Converter.GetNullToCollapsed}}">
                                 <Border.Background>
-                                    <ImageBrush ImageSource="{Binding Source={x:Static h:WindowSetting.Instance}, Path=BackImagePath}" Stretch="{Binding Source={x:Static h:WindowSetting.Instance}, Path=Stretch}" />
+                                    <ImageBrush x:Name="ib"
+                                                ImageSource="{Binding Source={x:Static h:WindowSetting.Instance}, Path=BackImagePath}"
+                                                Stretch="{Binding Source={x:Static h:WindowSetting.Instance}, Path=Stretch}" />
                                 </Border.Background>
                             </Border>
-                            <!--<Border Grid.Row="2" BorderThickness="0,1,0,0">
-                            <Border.BorderBrush>
-                                <SolidColorBrush Color="{StaticResource {x:Static h:ColorKeys.BorderBrushAssist}}" />
-                            </Border.BorderBrush>
-                        </Border>-->
                             <Control Grid.Row="2"
                                      MinHeight="10"
                                      Template="{TemplateBinding BottomTemplate}" />
@@ -185,10 +185,14 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.DialogWindow.None, TypeInTargetAssembly={x:Type local:DialogKeys}}" TargetType="{x:Type local:DialogWindow}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.DialogWindow.None,
+                                        TypeInTargetAssembly={x:Type local:DialogKeys}}"
+           TargetType="{x:Type local:DialogWindow}">
         <Setter Property="BottomTemplate" Value="{x:Null}" />
     </Style>
-    <Style x:Key="{ComponentResourceKey ResourceId=S.DialogWindow.Sumit, TypeInTargetAssembly={x:Type local:DialogKeys}}" TargetType="{x:Type local:DialogWindow}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.DialogWindow.Sumit,
+                                        TypeInTargetAssembly={x:Type local:DialogKeys}}"
+           TargetType="{x:Type local:DialogWindow}">
         <Setter Property="BottomTemplate">
             <Setter.Value>
                 <ControlTemplate>
@@ -203,7 +207,9 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style x:Key="{ComponentResourceKey ResourceId=S.DialogWindow.Cancel, TypeInTargetAssembly={x:Type local:DialogKeys}}" TargetType="{x:Type local:DialogWindow}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.DialogWindow.Cancel,
+                                        TypeInTargetAssembly={x:Type local:DialogKeys}}"
+           TargetType="{x:Type local:DialogWindow}">
         <Setter Property="BottomTemplate">
             <Setter.Value>
                 <ControlTemplate>
@@ -218,11 +224,14 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style x:Key="{ComponentResourceKey ResourceId=S.DialogWindow.SumitAndCancel, TypeInTargetAssembly={x:Type local:DialogKeys}}" TargetType="{x:Type local:DialogWindow}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.DialogWindow.SumitAndCancel,
+                                        TypeInTargetAssembly={x:Type local:DialogKeys}}"
+           TargetType="{x:Type local:DialogWindow}">
         <Setter Property="BottomTemplate">
             <Setter.Value>
                 <ControlTemplate>
-                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <StackPanel HorizontalAlignment="Center"
+                                Orientation="Horizontal">
                         <Button Width="100"
                                 Margin="6,0,6,10"
                                 HorizontalAlignment="Center"

@@ -452,14 +452,13 @@ namespace H.Controls.Chart2D
         /// </summary>
         protected void RunPath(Path path, double MilliSecond = 1000)
         {
-            if (!this.IsUseAnimation) return;
+            if (!this.IsUseAnimation) 
+                return;
 
             double _pathLength = path.Data.GetTotalLength(new Size(path.ActualWidth, path.ActualHeight), path.StrokeThickness) * 2;
-
-            if (Math.Abs(_pathLength) < 1E-06) return;
-
+            if (Math.Abs(_pathLength) < 1E-06) 
+                return;
             path.StrokeDashOffset = _pathLength;
-
             path.StrokeDashArray = new DoubleCollection(new List<double>
             {
                 _pathLength,

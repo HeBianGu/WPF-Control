@@ -1,31 +1,34 @@
 ﻿using H.Controls.Chart2D;
 using H.Modules.Operation;
 using H.Providers.Mvvm;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
+using System.Windows.Threading;
 
 namespace H.Test.Identify
 {
     public class MainViewModel : NotifyPropertyChanged
     {
-
-        public MainViewModel()
+        protected override void Loaded(object obj)
         {
+            base.Loaded(obj);
 
             {
                 var data = OperationDataProvider.Instance.GetUserLoginData();
-                _bar = new BarPresenter(data);
-            
-                _radar = new RadarPresenter(data);
+                this.Bar = new BarPresenter(data);
+
+                this.Radar = new RadarPresenter(data);
             }
             {
                 var data = OperationDataProvider.Instance.GetLastDayLoginData();
-                _line = new LinePresenter(data);
+                this.Line = new LinePresenter(data);
             }
 
             {
                 var data = OperationDataProvider.Instance.GetUserMethodsData();
-                _pie = new PiePresenter(data);
+                this.Pie = new PiePresenter(data);
             }
         }
 

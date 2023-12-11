@@ -45,23 +45,21 @@
                             <h:NavigationBox.ItemTemplate>
                                 <DataTemplate DataType="{x:Type h:ISetting}">
                                     <GroupBox BorderBrush="Transparent"
-                                              Header="{Binding Name}">
+                                              Header="{Binding}">
                                         <GroupBox.HeaderTemplate>
                                             <DataTemplate>
                                                 <DockPanel>
-                                                    <TextBlock Margin="10,10,0,0"
+                                                    <TextBlock Margin="10,0,0,0"
                                                                VerticalAlignment="Bottom"
                                                                FontWeight="Bold"
-                                                               Foreground="{DynamicResource {x:Static h:BrushKeys.ForegroundTitle}}"
-                                                               Text="{Binding}"
-                                                               ToolTip="{Binding RelativeSource={RelativeSource AncestorType=GroupBox}, Path=DataContext.Description}" />
+                                                               Text="{Binding Name}"
+                                                               ToolTip="{Binding Description}" />
 
-                                                    <TextBlock Margin="10,5,0,0"
+                                                    <TextBlock Margin="10,0,0,0"
                                                                VerticalAlignment="Center"
                                                                FontSize="{DynamicResource {x:Static h:FontSizeKeys.Header7}}"
                                                                Foreground="{DynamicResource {x:Static h:BrushKeys.ForegroundAssist}}"
-                                                               Text="{Binding RelativeSource={RelativeSource AncestorType=GroupBox}, Path=DataContext.Description}"
-                                                               Visibility="Collapsed" />
+                                                               Text="{Binding Description}" />
                                                 </DockPanel>
                                             </DataTemplate>
                                         </GroupBox.HeaderTemplate>

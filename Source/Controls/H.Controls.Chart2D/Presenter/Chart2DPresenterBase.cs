@@ -122,6 +122,8 @@ namespace H.Controls.Chart2D
 
         protected IEnumerable<double> Load(IEnumerable<double> data, double max = double.PositiveInfinity, double min = 0.0, int count = 5)
         {
+            if(data.Count()==0)
+               yield break;
             max = max == double.PositiveInfinity ? data.Max() : max;
             min = min == double.PositiveInfinity ? data.Min() : min;
             double vSpan = (max - min) / count;

@@ -35,50 +35,20 @@ namespace H.Modules.Login
                 return false;
             }
 
-            //if (!string.IsNullOrEmpty(LoginOptions.Instance.PasswordRegular))
-            //{
-            //    Regex regex = new Regex(LoginOptions.Instance.PasswordRegular);
-            //    if (regex.IsMatch(password))
-            //    {
-            //        message = "密码规则不匹配";
-            //        return false;
-            //    }
-            //}
+            if (name == LoginOptions.Instance.AdminName && password == LoginOptions.Instance.AdminPassword)
+            {
+                Thread.Sleep(1000);
+                this.User = new TestUser(name, password, "Test Name");
+                message = "登录成功";
+                return true;
+            }
+            else
+            {
+                Thread.Sleep(2000);
+                message = "登录失败，用户名密码错误";
+                return false;
+            }
 
-            //if (name.ToLower() != IdentifySetting.Instance.UserName?.ToLower())
-            //{
-            //    message = "用户名不正确";
-            //    return false;
-            //}
-
-            //if (password.ToLower() != IdentifySetting.Instance.Password?.ToLower())
-            //{
-            //    message = "密码不正确";
-            //    return false;
-            //}
-
-            //if (UserViewPresenter.Instance.GetUsers(x => x.Account.ToLower() == name.ToLower()).Count() == 0)
-            //{
-            //    message = "用户名不正确";
-            //    return false;
-            //}
-
-            //var user = UserViewPresenter.Instance.GetUsers(x => x.Account.ToLower() == name.ToLower() && x.Password.ToLower() == password.ToLower())?.FirstOrDefault();
-
-            //if (user == null)
-            //{
-            //    message = "用户名或密码不正确";
-            //    return false;
-            //}
-
-            bool result = random.Next(5) != 1;
-            Thread.Sleep(2000);
-            message = "登录成功";
-            //this.User = new User() { Account = name };
-            //this.User = user;
-            ////this.Operation?.Log(result.ToString(), message); 
-            //OparationViewPresenterProxy.Instance?.Log("登录成功");
-            return result;
         }
 
         public bool Logout(out string message)
@@ -89,22 +59,25 @@ namespace H.Modules.Login
         }
     }
 
-    //public class AdminUser : User
-    //{
-    //    public static AdminUser Instance = new AdminUser();
-    //    public AdminUser() : base(new hi_dd_user() { ID = "02A15DAA-423E-46F3-884D-AF114ACDF5BA", Name = "系统管理员", Account = "admin", Password = "123456", Role = AdminRole.Instance.Model })
-    //    {
-    //        //this.ID = "02A15DAA-423E-46F3-884D-AF114ACDF5BA";
-    //        //this.Name = "admin";
-    //        //this.Password = "123456";
-    //        //this.Role = AdminRole.Instance;
-    //    }
-    //    public override bool IsValid(string authorId)
-    //    {
-    //        return true;
-    //    }
+    public class TestUser : IUser
+    {
+        public TestUser(string account, string password, string name)
+        {
+            Account = account;
+            Password = password;
+            Name = name;
+        }
 
-    //}
+        public string ID => "{C44465C0-AFBC-405D-ADA8-94A7825E7699}";
+        public string Account { get; set; }
+        public string Password { get; set; }
+        public string Name { get; set; }
+        public bool IsValid(string authorId)
+        {
+            return true;
+        }
+
+    }
     //public class User : SelectViewModel<hi_dd_user>, IUser
     //{
     //    public User() : base(new hi_dd_user())

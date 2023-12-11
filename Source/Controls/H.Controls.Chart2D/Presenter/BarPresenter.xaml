@@ -12,7 +12,8 @@
                      xAxis="{Binding xAxis}"
                      xDisplay="{Binding xDisplay}"
                      yAxis="{Binding yAxis}">
-            <local:Series Style="{DynamicResource {x:Static local:Series.BarKey}}" yDatas="{Binding Data}" />
+            <local:Series Style="{DynamicResource {x:Static local:Series.BarKey}}"
+                          yDatas="{Binding Data}" />
         </local:Chart>
     </DataTemplate>
 </ResourceDictionary>
