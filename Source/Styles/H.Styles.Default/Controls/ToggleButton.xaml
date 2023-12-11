@@ -5,7 +5,8 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <ControlTemplate x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
+    <ControlTemplate x:Key="ComboBoxToggleButton"
+                     TargetType="{x:Type ToggleButton}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
@@ -43,22 +44,30 @@
                     <VisualState x:Name="Normal" />
                     <VisualState x:Name="MouseOver">
                         <Storyboard>
-                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
+                                                          Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                                <EasingColorKeyFrame KeyTime="0"
+                                                     Value="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
                             </ColorAnimationUsingKeyFrames>
                         </Storyboard>
                     </VisualState>
                     <VisualState x:Name="Pressed" />
                     <VisualState x:Name="Disabled">
                         <Storyboard>
-                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
+                                                          Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                                <EasingColorKeyFrame KeyTime="0"
+                                                     Value="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
                             </ColorAnimationUsingKeyFrames>
-                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Arrow" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
-                                <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Arrow"
+                                                          Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
+                                <EasingColorKeyFrame KeyTime="0"
+                                                     Value="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
                             </ColorAnimationUsingKeyFrames>
-                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)">
-                                <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
+                                                          Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)">
+                                <EasingColorKeyFrame KeyTime="0"
+                                                     Value="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
                             </ColorAnimationUsingKeyFrames>
                         </Storyboard>
                     </VisualState>
@@ -66,8 +75,10 @@
                 <VisualStateGroup x:Name="CheckStates">
                     <VisualState x:Name="Checked">
                         <Storyboard>
-                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.Selected}}" />
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
+                                                          Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                                <EasingColorKeyFrame KeyTime="0"
+                                                     Value="{DynamicResource {x:Static ColorKeys.Selected}}" />
                             </ColorAnimationUsingKeyFrames>
                         </Storyboard>
                     </VisualState>
@@ -230,5 +241,20 @@
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static local:ToggleButtonKeys.Default}}" TargetType="ToggleButton" />
+
+    <Style x:Key="{ComponentResourceKey ResourceId=S.ToggleButton.Switch,
+                                        TypeInTargetAssembly={x:Type local:ToggleButtonKeys}}"
+           BasedOn="{StaticResource {x:Static local:ToggleButtonKeys.Geometry}}"
+           TargetType="ToggleButton">
+        <Style.Triggers>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Content" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Cattach.CheckedIcon)}" />
+            </Trigger>
+            <Trigger Property="IsChecked" Value="False">
+                <Setter Property="Content" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Cattach.UncheckedIcon)}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style BasedOn="{StaticResource {x:Static local:ToggleButtonKeys.Default}}"
+           TargetType="ToggleButton" />
 </ResourceDictionary>

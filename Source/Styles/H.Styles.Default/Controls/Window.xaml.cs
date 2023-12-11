@@ -57,6 +57,20 @@ namespace H.Styles.Default
                 RaisePropertyChanged();
             }
         }
+
+        private bool _useNoticeOnMainWindowClose;
+        [DefaultValue(true)]
+        [Displayer(Name = "主窗口关闭提示", Description = "当主窗口点击关闭时会提示是否关闭窗口")]
+        public bool UseNoticeOnMainWindowClose
+        {
+            get { return _useNoticeOnMainWindowClose; }
+            set
+            {
+                _useNoticeOnMainWindowClose = value;
+                RaisePropertyChanged();
+            }
+        }
+
     }
 
     public static partial class Extension

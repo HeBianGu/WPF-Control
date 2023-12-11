@@ -3,9 +3,12 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Presenters.Common">
     <DataTemplate DataType="{x:Type local:StringPresenter}">
-        <TextBlock Margin="10,6"
+        <TextBlock Margin="10,40"
+                   HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    FontSize="{DynamicResource {x:Static FontSizeKeys.Default}}"
-                   Text="{Binding Value}" />
+                   Text="{Binding Value}"
+                   TextWrapping="Wrap"
+                   ToolTip="{Binding Value}" />
     </DataTemplate>
 </ResourceDictionary>

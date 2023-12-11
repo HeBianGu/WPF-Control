@@ -198,6 +198,11 @@ namespace H.Providers.Mvvm
         /// </summary>
         public static RoutedCommand View { get; } = new RoutedCommand(nameof(View), typeof(Commands));
 
+        /// <summary>
+        /// 刷新
+        /// </summary>
+        public static RoutedCommand Refresh { get; } = new RoutedCommand(nameof(Refresh), typeof(Commands));
+
 
         public static void InvalidateRequerySuggested()
         {

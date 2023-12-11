@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Modules.Project">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/H.Modules.Project;component/ProjectBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Modules.Project;component/ProjectViewPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Modules.Project;component/ProjectListViewPresenter.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

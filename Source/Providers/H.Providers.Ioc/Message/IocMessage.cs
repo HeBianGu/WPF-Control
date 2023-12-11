@@ -1,6 +1,7 @@
 ﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace H.Providers.Ioc
@@ -16,7 +17,7 @@ namespace H.Providers.Ioc
         public static INoticeMessageService Notify => System.Ioc.GetService<INoticeMessageService>(throwIfNone: false);
         public static IFormMessageService Form => System.Ioc.GetService<IFormMessageService>(throwIfNone: false);
 
-        public static bool? ShowDialogMessage(string message, string title = "提示", DialogButton dialogButton = DialogButton.Sumit)
+        public static async Task<bool?> ShowDialogMessage(string message, string title = "提示", DialogButton dialogButton = DialogButton.Sumit)
         {
             if (Dialog == null)
             {
@@ -34,15 +35,15 @@ namespace H.Providers.Ioc
             }
             else
             {
-                return Dialog.Show(message, x =>
+               return await Dialog.Show(message, x =>
                 {
                     x.DialogButton = dialogButton;
                     x.Title = title;
-                }).Result;
+                });
             }
         }
 
-        public static bool? ShowWindowMessage(string message, string title = "提示", DialogButton dialogButton = DialogButton.Sumit)
+        public static async Task<bool?> ShowWindowMessage(string message, string title = "提示", DialogButton dialogButton = DialogButton.Sumit)
         {
             if (Window == null)
             {
@@ -60,11 +61,11 @@ namespace H.Providers.Ioc
             }
             else
             {
-                return Window.Show(message,x=>
+                return await Window.Show(message,x=>
                 {
                     x.DialogButton= dialogButton;
                     x.Title= title;
-                }).Result;
+                });
             }
         }
 
