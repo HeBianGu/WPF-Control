@@ -1,0 +1,46 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Controls.PrintBox">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.PrintPage.Default,
+                                        TypeInTargetAssembly={x:Type local:PrintPage}}"
+           TargetType="{x:Type local:PrintPage}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:PrintPage">
+                    <Grid>
+                        <Border x:Name="PART_Host"
+                                Width="{Binding RelativeSource={RelativeSource AncestorType=local:PrintBox}, Path=PrintableAreaWidth}"
+                                MinHeight="{Binding RelativeSource={RelativeSource AncestorType=local:PrintBox}, Path=PrintPageHeight}"
+                                Padding="{Binding RelativeSource={RelativeSource AncestorType=local:PrintBox}, Path=FixedPageMargin}"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                IsHitTestVisible="True">
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="0"
+                                                  Direction="-45"
+                                                  ShadowDepth="10"
+                                                  Color="LightGray" />
+                            </Border.Effect>
+                            <ContentPresenter />
+                            <!--  Margin="{Binding RelativeSource={RelativeSource AncestorType=local:PrintBox}, Path=FixedPageMargin}"  -->
+                        </Border>
+                        <local:PrintRuler PageHeight="{Binding RelativeSource={RelativeSource AncestorType=local:PrintBox}, Path=PrintPageHeight, Mode=TwoWay}" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.6" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Margin" Value="10" />
+        <Setter Property="Background" Value="White" />
+        <Setter Property="Visibility" Value="{Binding Visible, Converter={x:Static h:Converter.GetTrueToVisible}}" />
+    </Style>
+    <Style BasedOn="{StaticResource {x:Static local:PrintPage.DefaultKey}}"
+           TargetType="{x:Type local:PrintPage}" />
+
+</ResourceDictionary>

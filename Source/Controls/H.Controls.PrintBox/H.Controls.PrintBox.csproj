@@ -1,0 +1,112 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <ItemGroup Condition="'$(TargetFramework)' == 'net45'">
+    <Reference Include="ReachFramework" Version="4.0.0" />
+    <Reference Include="System.Printing" Version="4.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net451'">
+    <Reference Include="ReachFramework" Version="4.0.0" />
+    <Reference Include="System.Printing" Version="4.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net452'">
+    <Reference Include="ReachFramework" Version="4.0.0" />
+    <Reference Include="System.Printing" Version="4.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net46'">
+    <Reference Include="ReachFramework" Version="4.0.0" />
+    <Reference Include="System.Printing" Version="4.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net461'">
+    <Reference Include="ReachFramework" Version="4.0.0" />
+    <Reference Include="System.Printing" Version="4.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net462'">
+    <Reference Include="ReachFramework" Version="4.0.0" />
+    <Reference Include="System.Printing" Version="4.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net47'">
+    <Reference Include="ReachFramework" Version="4.0.0" />
+    <Reference Include="System.Printing" Version="4.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net471'">
+    <Reference Include="ReachFramework" Version="4.0.0" />
+    <Reference Include="System.Printing" Version="4.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net472'">
+    <Reference Include="ReachFramework" Version="4.0.0" />
+    <Reference Include="System.Printing" Version="4.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
+    <Reference Include="ReachFramework" Version="4.0.0" />
+    <Reference Include="System.Printing" Version="4.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
+    <Reference Include="ReachFramework" Version="4.0.0" />
+    <Reference Include="System.Printing" Version="4.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net5.0-windows'">
+    <Reference Include="ReachFramework" Version="4.0.0" />
+    <Reference Include="System.Printing" Version="4.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net6.0-windows'">
+    <Reference Include="ReachFramework" Version="4.0.0" />
+    <Reference Include="System.Printing" Version="4.0.0" />
+  </ItemGroup>
+  
+  <ItemGroup Condition="'$(TargetFramework)' == 'net8.0-windows'">
+    <Reference Include="ReachFramework" Version="6.0.2" />
+    <Reference Include="System.Printing" Version="6.0.2" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net7.0-windows'">
+    <Reference Include="ReachFramework" Version="6.0.2" />
+    <Reference Include="System.Printing" Version="6.0.2" />
+  </ItemGroup>
+
+  
+  <ItemGroup Condition="'$(TargetFramework)' == 'net5.0-windows'">
+    <Reference Include="ReachFramework" Version="6.0.2" />
+    <Reference Include="System.Printing" Version="6.0.2" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net6.0-windows'">
+    <Reference Include="ReachFramework" Version="6.0.2" />
+    <Reference Include="System.Printing" Version="6.0.2" />
+  </ItemGroup>
+ 
+  
+  <ItemGroup Condition="'$(TargetFramework)' == 'net7.0-windows'">
+    <Reference Include="ReachFramework" Version="6.0.2" />
+    <Reference Include="System.Printing" Version="6.0.2" />
+  </ItemGroup>
+ 
+  
+  <ItemGroup>
+    <ProjectReference Include="..\..\Extensions\H.Extensions.Attach\H.Extensions.Attach.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.Setting\H.Extensions.Setting.csproj" />
+    <ProjectReference Include="..\H.Controls.Form\H.Controls.Form.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="PrintBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+
+</Project>

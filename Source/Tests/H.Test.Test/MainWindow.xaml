@@ -548,6 +548,16 @@
                     </TabItem>
                 </TabControl>
             </TabItem>
+
+            <TabItem Header="PrintBox">
+                <h:PrintBox>
+                    <h:PrintPage>
+                        <ListBox Background="White"
+                                 Cattach.ItemHeight="Auto"
+                                 ItemsSource="{GetStudents Count=100}" />
+                    </h:PrintPage>
+                </h:PrintBox>
+            </TabItem>
         </TabControl>
     </Grid>
 </h:MainWindow>

@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Controls.PrintBox">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.PrintBox;component/PrintBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.PrintBox;component/PrintPage.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.PrintBox;component/PagerSizeViewPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.PrintBox;component/DocumentViewPresenter.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>
