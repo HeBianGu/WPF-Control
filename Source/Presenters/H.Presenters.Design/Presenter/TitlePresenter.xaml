@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"   xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Presenters.Design"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <DataTemplate DataType="{x:Type local:TitlePresenter}">
+        <local:DesignBorder>
+            <DockPanel VerticalAlignment="{Binding VerticalContentAlignment}">
+                <TextBlock Height="Auto"
+                           FontSize="{Binding TitleFontSize}"
+                           FontWeight="{Binding TitleFontWeight}"
+                           Foreground="{Binding TitleForeground}"
+                           Style="{DynamicResource {x:Static h:TextBlockKeys.Binding}}"
+                           Text="{Binding Title}" />
+                <TextBlock Height="Auto" Style="{DynamicResource {x:Static h:TextBlockKeys.Binding}}" />
+            </DockPanel>
+        </local:DesignBorder>
+    </DataTemplate>
+</ResourceDictionary>
