@@ -16,7 +16,7 @@ namespace H.Modules.Project
             _options = options;
         }
 
-        public IProjectItem Create()
+        public virtual IProjectItem Create()
         {
             return new ProjectItem()
             {

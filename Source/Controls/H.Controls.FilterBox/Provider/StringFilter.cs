@@ -58,7 +58,6 @@ namespace H.Controls.FilterBox
 
         public override bool IsMatch(object obj)
         {
-
             PropertyInfo p = obj.GetType().GetProperty(this.Name);
             if (p == null || !p.CanRead)
                 return false;

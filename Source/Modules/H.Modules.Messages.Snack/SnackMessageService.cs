@@ -17,26 +17,37 @@ namespace H.Modules.Messages.Snack
 
         private void CheckValid()
         {
-            UIElement child = Application.Current.MainWindow.Content as UIElement;
-            AdornerLayer layer = AdornerLayer.GetAdornerLayer(child);
-            System.Collections.Generic.IEnumerable<PresenterAdorner> adorners = layer.GetAdorners(child)?.OfType<PresenterAdorner>().Where(x => x.Presenter == this._snackBox);
-            if (adorners == null || adorners.Count() == 0)
+            Application.Current.Dispatcher.Invoke(() =>
             {
-                PresenterAdorner adorner = new PresenterAdorner(child, this._snackBox);
-                layer.Add(adorner);
-            }
+                UIElement child = Application.Current.MainWindow.Content as UIElement;
+                AdornerLayer layer = AdornerLayer.GetAdornerLayer(child);
+                System.Collections.Generic.IEnumerable<PresenterAdorner> adorners = layer.GetAdorners(child)?.OfType<PresenterAdorner>().Where(x => x.Presenter == this._snackBox);
+                if (adorners == null || adorners.Count() == 0)
+                {
+                    PresenterAdorner adorner = new PresenterAdorner(child, this._snackBox);
+                    layer.Add(adorner);
+                }
+            });
+
         }
 
         public async void ShowInfo(string message)
         {
             this.CheckValid();
             InfoMessagePresenter presenter = new InfoMessagePresenter() { Message = message };
-            this._snackBox.Collection.Add(presenter);
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                this._snackBox.Collection.Add(presenter);
+            });
+
             await Task.Run(() =>
             {
                 Thread.Sleep(3000);
             });
-            this._snackBox.Collection.Remove(presenter);
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                this._snackBox.Collection.Remove(presenter);
+            });
         }
 
         public void ShowError(string message)

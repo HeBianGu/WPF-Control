@@ -347,11 +347,9 @@ namespace H.Extensions.ValueConverter
         public static List<string> GetAllFiles(this string dirPath, Predicate<FileInfo> match = null)
         {
             List<string> ss = new List<string>();
-
-            if (!Directory.Exists(dirPath)) return ss;
-
+            if (!Directory.Exists(dirPath)) 
+                return ss;
             DirectoryInfo dir = new DirectoryInfo(dirPath);
-
             foreach (FileSystemInfo d in dir.GetFileSystemInfos())
             {
                 if (d is DirectoryInfo)
@@ -362,14 +360,10 @@ namespace H.Extensions.ValueConverter
                 else if (d is FileInfo)
                 {
                     FileInfo dd = d as FileInfo;
-
                     if (match == null || match(dd))
-                    {
                         ss.Add(d.FullName);
-                    }
                 }
             }
-
             return ss;
         }
         #endregion

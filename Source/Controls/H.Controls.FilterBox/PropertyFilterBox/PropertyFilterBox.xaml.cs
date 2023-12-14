@@ -213,6 +213,22 @@ namespace H.Controls.FilterBox
         {
             _propertyConfidtions.Save();
             Filter = new PropertyFilterBoxFilter(this);
+            this.OnFilterChanged();
+        }
+
+        public static readonly RoutedEvent FilterChangedRoutedEvent =
+    EventManager.RegisterRoutedEvent("FilterChanged", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(PropertyFilterBox));
+
+        public event RoutedEventHandler FilterChanged
+        {
+            add { this.AddHandler(FilterChangedRoutedEvent, value); }
+            remove { this.RemoveHandler(FilterChangedRoutedEvent, value); }
+        }
+
+        protected void OnFilterChanged()
+        {
+            RoutedEventArgs args = new RoutedEventArgs(FilterChangedRoutedEvent, this);
+            this.RaiseEvent(args);
         }
     }
 

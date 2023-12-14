@@ -18,8 +18,17 @@ namespace System
         /// <param name="service"></param>
         public static IServiceCollection AddProject(this IServiceCollection services, Action<ProjectOptions> setupAction = null)
         {
+            return services.AddProject<ProjectService>(setupAction);
+        }
+
+        /// <summary>
+        /// 注册
+        /// </summary>
+        /// <param name="service"></param>
+        public static IServiceCollection AddProject<T>(this IServiceCollection services, Action<ProjectOptions> setupAction = null) where T : class, IProjectService
+        {
             services.AddOptions();
-            services.TryAdd(ServiceDescriptor.Singleton<IProjectService, ProjectService>());
+            services.TryAdd(ServiceDescriptor.Singleton<IProjectService, T>());
             services.TryAdd(ServiceDescriptor.Singleton<IProjectViewPresenter, ProjectViewPresenter>());
             services.TryAdd(ServiceDescriptor.Singleton<ISplashLoad, ProjectLoadService>());
 
@@ -27,6 +36,7 @@ namespace System
                 services.Configure(setupAction);
             return services;
         }
+
 
         /// <summary>
         /// 配置

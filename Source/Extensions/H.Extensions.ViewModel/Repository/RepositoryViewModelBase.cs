@@ -435,6 +435,7 @@ namespace H.Extensions.ViewModel
                 x.Title = "提示";
                 x.DialogButton = DialogButton.SumitAndCancel;
             });
+
             if (result != true)
                 return;
 

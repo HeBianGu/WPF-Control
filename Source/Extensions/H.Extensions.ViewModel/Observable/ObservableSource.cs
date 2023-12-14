@@ -263,7 +263,7 @@ namespace H.Extensions.ViewModel
                 where = this.Order1.Where(where).Cast<T>();
             if (this.Order2 != null)
                 where = this.Order2.Where(where).Cast<T>();
-            if (this.Order2 != null)
+            if (this.Order3 != null)
                 where = this.Order3.Where(where).Cast<T>();
 
             this.FilterSource = where.ToObservable();

@@ -4,17 +4,19 @@ using System.Data.Entity;
 
 #if NETCOREAPP
 #endif
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.EntityFrameworkCore.Infrastructure.Internal;
+
 namespace H.DataBases.Sqlite
 {
-    //#if NETCOREAPP
-    //    public class DataContextFactory : IDesignTimeDbContextFactory<DataContext>
+    //public class DataContextFactory<T> : IDesignTimeDbContextFactory<T> where T : DbContext
+    //{
+    //    public T CreateDbContext(string[] args)
     //    {
-    //        public DataContext CreateDbContext(string[] args)
-    //        {
-    //            var optionsBuilder = new DbContextOptionsBuilder<DataContext>();
-    //            optionsBuilder.UseLazyLoadingProxies().UseSqlite("Data Source=Migration.db");
-    //            return new DataContext(optionsBuilder.Options);
-    //        }
+    //        var optionsBuilder = new DbContextOptionsBuilder<T>();
+    //        optionsBuilder.UseLazyLoadingProxies().UseSqlite("Data Source=Migration.db");
+    //        return new T(optionsBuilder.Options);
     //    }
-    //#endif
+    //}
 }

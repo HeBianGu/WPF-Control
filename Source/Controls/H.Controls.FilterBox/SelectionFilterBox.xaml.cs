@@ -4,9 +4,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Threading;
 
 namespace H.Controls.FilterBox
 {
@@ -28,7 +30,7 @@ namespace H.Controls.FilterBox
             set { SetValue(DisplayNameProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty DisplayNameProperty =
             DependencyProperty.Register("DisplayName", typeof(string), typeof(SelectionFilterBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
             {
@@ -93,7 +95,7 @@ namespace H.Controls.FilterBox
             set { SetValue(TypeProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty TypeProperty =
             DependencyProperty.Register("Type", typeof(Type), typeof(SelectionFilterBox), new FrameworkPropertyMetadata(default(Type), (d, e) =>
             {
@@ -110,7 +112,7 @@ namespace H.Controls.FilterBox
                 {
 
                 }
-                control.RefreshData();
+                control.DelayRefreshData();
             }));
 
 
@@ -120,7 +122,7 @@ namespace H.Controls.FilterBox
             set { SetValue(UseCheckAllProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty UseCheckAllProperty =
             DependencyProperty.Register("UseCheckAll", typeof(bool), typeof(SelectionFilterBox), new FrameworkPropertyMetadata(true, (d, e) =>
             {
@@ -147,7 +149,7 @@ namespace H.Controls.FilterBox
             set { SetValue(PropertyNameProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty PropertyNameProperty =
             DependencyProperty.Register("PropertyName", typeof(string), typeof(SelectionFilterBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
             {
@@ -164,7 +166,7 @@ namespace H.Controls.FilterBox
                 {
 
                 }
-                control.RefreshData();
+                control.DelayRefreshData();
             }));
 
         public IEnumerable Datas
@@ -173,27 +175,37 @@ namespace H.Controls.FilterBox
             set { SetValue(DatasProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty DatasProperty =
             DependencyProperty.Register("Datas", typeof(IEnumerable), typeof(SelectionFilterBox), new FrameworkPropertyMetadata(default(IEnumerable), (d, e) =>
             {
                 SelectionFilterBox control = d as SelectionFilterBox;
-
-                if (control == null) return;
-
+                if (control == null)
+                    return;
                 if (e.OldValue is INotifyCollectionChanged o)
                     o.CollectionChanged -= control.CollectionChanged;
                 if (e.NewValue is INotifyCollectionChanged n)
                     n.CollectionChanged += control.CollectionChanged;
-                control.RefreshData();
+                control.DelayRefreshData();
             }));
 
         private void CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            this.RefreshData();
+            this.DelayRefreshData();
         }
 
-        private void RefreshData()
+        private void DelayRefreshData()
+        {
+            this.DelayInvoke(() =>
+            {
+                if (this.IsLoaded == false)
+                    return;
+                this.RefreshData();
+            });
+        }
+
+
+        public void RefreshData()
         {
             PropertyInfo propertyInfo = this.GetPropertyInfo();
             if (propertyInfo == null)
@@ -203,24 +215,27 @@ namespace H.Controls.FilterBox
                 this.Items.Clear();
                 return;
             }
+
             this.ItemsSource = this.GetItemsSource(propertyInfo);
         }
 
         public PropertyInfo GetPropertyInfo()
         {
-            if (this.Type == null)
+            var propertyName = this.Dispatcher.Invoke(() => this.PropertyName);
+            var type = this.Dispatcher.Invoke(() => this.Type);
+            if (type == null)
                 return null;
-            if (string.IsNullOrWhiteSpace(this.PropertyName))
+            if (string.IsNullOrWhiteSpace(propertyName))
                 return null;
-            PropertyInfo propertyInfo = this.Type.GetProperty(this.PropertyName);
+            PropertyInfo propertyInfo = type.GetProperty(propertyName);
             return propertyInfo;
         }
 
         private IEnumerable GetItemsSource(PropertyInfo propertyInfo)
         {
             List<object> items = new List<object>();
-            if (this.UseCheckAll)
-                yield return "全选";
+
+            //yield return "全选";
             foreach (object data in this.Datas)
             {
                 if (data == null)
@@ -230,8 +245,12 @@ namespace H.Controls.FilterBox
                 if (items.Contains(value))
                     continue;
                 items.Add(value);
-                yield return value;
+                //yield return value;
             }
+            var order = items.Order().ToList();
+            if (this.UseCheckAll)
+                order.Insert(0, "全选");
+            return order;
         }
 
         public IFilter Filter
@@ -240,7 +259,7 @@ namespace H.Controls.FilterBox
             set { SetValue(FilterProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty FilterProperty =
             DependencyProperty.Register("Filter", typeof(IFilter), typeof(SelectionFilterBox), new FrameworkPropertyMetadata(default(IFilter), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, (d, e) =>
             {

@@ -48,6 +48,8 @@ namespace H.Controls.FilterBox
         {
             if (obj == null)
                 return false;
+            if(obj is IModelViewModel mv)
+                return Filter.IsMatch(mv.GetModel());
             return Filter.IsMatch(obj);
         }
     }
