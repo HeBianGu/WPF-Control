@@ -15,5 +15,13 @@
                 </ItemsPanelTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="ItemContainerStyle">
+            <Setter.Value>
+                <Style BasedOn="{StaticResource {x:Static h:ListBoxItemKeys.Default}}" TargetType="ListBoxItem">
+                    <Setter Property="BorderThickness" Value="1" />
+                    <Setter Property="Margin" Value="1"/>
+                </Style>
+            </Setter.Value>
+        </Setter>
     </Style>
 </ResourceDictionary>

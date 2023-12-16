@@ -121,21 +121,22 @@ namespace H.Controls.OrderBox
 
         public IEnumerable Where(IEnumerable from)
         {
+            Func<object, object> convert = x => x is IModelViewModel m ? m.GetModel() : x;
             List<PropertyOrder> selecteds = this.Conditions.Where(x => x.IsSelected).ToList();
             if (selecteds.Count == 0)
                 return from;
             PropertyOrder first = selecteds[0];
             IOrderedEnumerable<object> result = first.UseDesc ?
-                from.OfType<object>().OrderByDescending(x => first.PropertyInfo.GetValue(x)) :
-                from.OfType<object>().OrderBy(x => first.PropertyInfo.GetValue(x));
+                from.OfType<object>().OrderByDescending(x => first.PropertyInfo.GetValue(convert(x))) :
+                from.OfType<object>().OrderBy(x => first.PropertyInfo.GetValue(convert(x)));
             if (selecteds.Count == 1)
                 return result;
 
             for (int i = 1; i < selecteds.Count; i++)
             {
                 PropertyOrder item = selecteds[i];
-                result = item.UseDesc ? result.ThenByDescending(x => item.PropertyInfo.GetValue(x)) :
-                     result.ThenBy(x => item.PropertyInfo.GetValue(x));
+                result = item.UseDesc ? result.ThenByDescending(x => item.PropertyInfo.GetValue(convert(x))) :
+                     result.ThenBy(x => item.PropertyInfo.GetValue(convert(x)));
             }
             return result;
         }

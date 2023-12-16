@@ -201,7 +201,7 @@ namespace H.Controls.FilterBox
                 if (this.IsLoaded == false)
                     return;
                 this.RefreshData();
-            });
+            }, DispatcherPriority.ApplicationIdle);
         }
 
 

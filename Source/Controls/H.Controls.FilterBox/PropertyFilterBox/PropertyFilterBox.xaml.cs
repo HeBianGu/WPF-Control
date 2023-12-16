@@ -67,7 +67,7 @@ namespace H.Controls.FilterBox
             set { SetValue(DisplayNameProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty DisplayNameProperty =
             DependencyProperty.Register("DisplayName", typeof(string), typeof(PropertyFilterBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
             {
@@ -143,7 +143,7 @@ namespace H.Controls.FilterBox
             set { SetValue(PropertyNamesProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty PropertyNamesProperty =
             DependencyProperty.Register("PropertyNames", typeof(string), typeof(PropertyFilterBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
             {
@@ -191,6 +191,7 @@ namespace H.Controls.FilterBox
                 ID = ID
             };
             _propertyConfidtions.Load();
+            this.OnFilterChanged();
         }
 
 

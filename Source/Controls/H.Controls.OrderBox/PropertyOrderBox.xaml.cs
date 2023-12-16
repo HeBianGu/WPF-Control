@@ -125,6 +125,23 @@ namespace H.Controls.OrderBox
             }));
 
 
+        public static readonly RoutedEvent OrderChangedRoutedEvent =
+            EventManager.RegisterRoutedEvent("OrderChanged", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(PropertyOrderBox));
+  
+        public event RoutedEventHandler OrderChanged
+        {
+            add { this.AddHandler(OrderChangedRoutedEvent, value); }
+            remove { this.RemoveHandler(OrderChangedRoutedEvent, value); }
+        }
+
+
+        protected void OnOrderChanged()
+        {
+            RoutedEventArgs args = new RoutedEventArgs(OrderChangedRoutedEvent, this);
+            this.RaiseEvent(args);
+        }
+
+
         public string PropertyNames
         {
             get { return (string)GetValue(PropertyNamesProperty); }
@@ -181,7 +198,6 @@ namespace H.Controls.OrderBox
             this._propertyOrders.Load();
         }
 
-
         public async void ShowConfig()
         {
             bool? r = await IocMessage.Dialog.Show(_propertyOrders, x =>
@@ -201,6 +217,7 @@ namespace H.Controls.OrderBox
         {
             _propertyOrders.Save();
             this.Order = new PropertyOrderBoxOrder(this);
+            this.OnOrderChanged();
         }
     }
 }
