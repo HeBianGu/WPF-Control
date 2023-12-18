@@ -17,7 +17,7 @@ using System.Xml.Serialization;
 namespace H.Controls.OrderBox
 {
     [Display(Name = "设置规则")]
-    public class PropertyOrderPrensenter : DisplayerViewModelBase, IOrder, IMetaSettingSerilize, IMetaSetting
+    public class PropertyOrderPrensenter : DisplayerViewModelBase, IOrder, IMetaSetting
     {
         public PropertyOrderPrensenter()
         {
@@ -73,7 +73,7 @@ namespace H.Controls.OrderBox
         [XmlIgnore]
         public RelayCommand SaveCommand => new RelayCommand(l =>
         {
-            this.Save();
+            this.Save(out string message);
         });
 
         private ObservableCollection<PropertyInfo> _properties = new ObservableCollection<PropertyInfo>();
@@ -91,14 +91,18 @@ namespace H.Controls.OrderBox
         [JsonIgnore]
         [XmlIgnore]
         public IMetaSettingService MetaSettingService => new JsonMetaSettingService();
-        public void Save()
+
+        public bool Save(out string message)
         {
-            if (string.IsNullOrEmpty(this.ID))
-                return;
-            this.MetaSettingService?.Serilize(this, this.ID);
-
+            message = null;
+            if (string.IsNullOrEmpty(ID))
+            {
+                message = "ID为空";
+                return false;
+            }
+            MetaSettingService?.Serilize(this, ID);
+            return true;
         }
-
         private bool _isLoaded = false;
         public void Load()
         {

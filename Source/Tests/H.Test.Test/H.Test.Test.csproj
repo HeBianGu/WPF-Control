@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>logo.ico</ApplicationIcon>
   </PropertyGroup>
@@ -16,6 +15,7 @@
     <ProjectReference Include="..\..\Controls\H.Controls.PrintBox\H.Controls.PrintBox.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.PropertyGrid\H.Controls.PropertyGrid.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.Step\H.Controls.Step.csproj" />
+    <ProjectReference Include="..\..\Controls\H.Controls.TagBox\H.Controls.TagBox.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.TreeListView\H.Controls.TreeListView.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.ZoomBox\H.Controls.ZoomBox.csproj" />
     <ProjectReference Include="..\..\Datas\H.Data.Test\H.Data.Test.csproj" />
@@ -23,7 +23,9 @@
     <ProjectReference Include="..\..\Extensions\H.Extensions.Log4net\H.Extensions.Log4net.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Tree\H.Extensions.Tree.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.ValueConverter\H.Extensions.ValueConverter.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.XmlSerialize\H.Extensions.XmlSerialize.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Messages.Dialog\H.Modules.Messages.Dialog.csproj" />
+    <ProjectReference Include="..\..\Modules\H.Modules.Messages.Form\H.Modules.Messages.Form.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Setting\H.Modules.Setting.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Default\H.Themes.Default.csproj" />
     <ProjectReference Include="..\..\Windows\H.Windows.Dialog\H.Windows.Dialog.csproj" />

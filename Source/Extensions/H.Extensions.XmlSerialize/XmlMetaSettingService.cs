@@ -10,7 +10,7 @@ namespace H.Extensions.XmlSerialize
     {
         private ISerializerService XmlSerializer => new XmlSerializerService();
 
-        public T Deserilize<T>(string id) where T : IMetaSetting
+        public T Deserilize<T>(string id)
         {
             string path = Path.Combine(SystemPathSetting.Instance.Cache, typeof(T).Name, id + ".xml");
 

@@ -14,7 +14,7 @@ namespace H.Controls.GridSplitterBox
     [TemplatePart(Name = "PART_Row_Menu", Type = typeof(System.Windows.Controls.RowDefinition))]
     [TemplatePart(Name = "PART_Column_Menu", Type = typeof(System.Windows.Controls.ColumnDefinition))]
     [TemplatePart(Name = "PART_Menu", Type = typeof(System.Windows.Controls.Grid))]
-    public partial class GridSplitterBox : ContentControl, IMetaSettingSerilize
+    public partial class GridSplitterBox : ContentControl, IMetaSetting
     {
         public static ComponentResourceKey DefaultKey => new ComponentResourceKey(typeof(GridSplitterBox), "S.GridSplitterBox.Default");
         public static ComponentResourceKey RightKey => new ComponentResourceKey(typeof(GridSplitterBox), "S.GridSplitterBox.Right");
@@ -55,7 +55,7 @@ namespace H.Controls.GridSplitterBox
                 {
                     this._setting.HorizontalChange = _menuWidthTemp - this.MenuWidth.Value + k.HorizontalChange;
                     this.RefreshButtonState();
-                    this.Save();
+                    this.Save(out string message);
                 };
             }
             else if (this.MenuDock == Dock.Bottom)
@@ -65,7 +65,7 @@ namespace H.Controls.GridSplitterBox
                 {
                     this._setting.VerticalChange = _menuWidthTemp - this.MenuWidth.Value + k.VerticalChange;
                     this.RefreshButtonState();
-                    this.Save();
+                    this.Save(out string message);
                 };
             }
 
@@ -76,7 +76,7 @@ namespace H.Controls.GridSplitterBox
                 {
                     this._setting.HorizontalChange = this.MenuWidth.Value - _menuWidthTemp + k.HorizontalChange;
                     this.RefreshButtonState();
-                    this.Save();
+                    this.Save(out string message);
                 };
             }
             else if (this.MenuDock == Dock.Top)
@@ -86,7 +86,7 @@ namespace H.Controls.GridSplitterBox
                 {
                     this._setting.VerticalChange = this.MenuWidth.Value - _menuWidthTemp + k.VerticalChange;
                     this.RefreshButtonState();
-                    this.Save();
+                    this.Save(out string message);
                 };
             }
 
@@ -545,7 +545,7 @@ namespace H.Controls.GridSplitterBox
                 {
 
                 }
-                control.Save();
+                control.Save(out string message);
             }));
 
 
@@ -582,12 +582,17 @@ namespace H.Controls.GridSplitterBox
 
         private GridSplitterSetting _setting = new GridSplitterSetting();
 
-        public void Save()
+        public bool Save(out string message)
         {
+            message = null;
             if (string.IsNullOrEmpty(this.ID))
-                return;
+            {
+                message = "ID为空";
+                return false;
+            }
             this._setting.IsExpanded = this.IsExpanded;
             this.MetaSettingService?.Serilize(this._setting, this.ID);
+            return true;
         }
 
         public void Load()
@@ -604,12 +609,10 @@ namespace H.Controls.GridSplitterBox
 
     }
 
-    public class GridSplitterSetting : IMetaSetting
+    public class GridSplitterSetting
     {
         public double HorizontalChange { get; set; }
-
         public double VerticalChange { get; set; }
-
         public bool IsExpanded { get; set; }
     }
 

@@ -517,7 +517,6 @@
                     </TabItem>
                 </TabControl>
             </TabItem>
-
             <TabItem Header="ColorBox">
                 <TabControl>
                     <TabItem Header="ColorBox">
@@ -548,7 +547,6 @@
                     </TabItem>
                 </TabControl>
             </TabItem>
-
             <TabItem Header="PrintBox">
                 <h:PrintBox>
                     <h:PrintPage>
@@ -557,6 +555,25 @@
                                  ItemsSource="{GetStudents Count=100}" />
                     </h:PrintPage>
                 </h:PrintBox>
+            </TabItem>
+            <TabItem Header="TagBox">
+                <DockPanel>
+                    <h:TagBox Width="250"
+                              DockPanel.Dock="Right"
+                              Tags="{Binding SelectedStudent.Tag, Mode=TwoWay}" />
+                    <h:TagFilterBox x:Name="tagfb"
+                                    Width="250"
+                                    DockPanel.Dock="Left"
+                                    PropertyName="Tag" />
+                    <DataGrid SelectedItem="{Binding SelectedStudent}">
+                        <Behaviors:Interaction.Behaviors>
+                            <h:DataGridAutoColumnBehavior DataGridLength="*"
+                                                          Type="{x:Type h:Student}" />
+                            <h:ItemsControlFilterBehavior Filter="{Binding ElementName=tagfb, Path=Filter}"
+                                                          ItemsSource="{Binding Students}" />
+                        </Behaviors:Interaction.Behaviors>
+                    </DataGrid>
+                </DockPanel>
             </TabItem>
         </TabControl>
     </Grid>

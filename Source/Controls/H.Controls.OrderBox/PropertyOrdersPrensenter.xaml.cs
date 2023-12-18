@@ -13,7 +13,7 @@ using System.Xml.Serialization;
 
 namespace H.Controls.OrderBox
 {
-    public class PropertyOrdersPrensenter : DisplayerViewModelBase, IOrder, IMetaSettingSerilize, IMetaSetting
+    public class PropertyOrdersPrensenter : DisplayerViewModelBase, IOrder, IMetaSetting
     {
         public PropertyOrdersPrensenter()
         {
@@ -94,16 +94,22 @@ namespace H.Controls.OrderBox
         public RelayCommand ClearSelectionCommand => new RelayCommand(l =>
         {
             this.SelectedItem = null;
-            this.Save();
+            this.Save(out string message);
         }, x => this.SelectedItem != null);
 
-        public void Save()
+        public bool Save(out string message)
         {
-            if (string.IsNullOrEmpty(this.ID))
-                return;
+            message = null;
+            if (string.IsNullOrEmpty(ID))
+            {
+                message = "ID为空";
+                return false;
+            }
             this.SelectedIndex = this.PropertyOrders.IndexOf(this.SelectedItem);
             this.MetaSettingService?.Serilize(this, this.ID);
+            return true;
         }
+
 
         [JsonIgnore]
         [XmlIgnore]

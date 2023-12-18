@@ -237,7 +237,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Presenters.Design", "..\S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Test.Design", "..\Source\Tests\H.Test.Design\H.Test.Design.csproj", "{0EC77F0B-A7D3-48E9-811A-EC76298452A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Controls.Panel", "..\Source\Controls\H.Controls.Panel\H.Controls.Panel.csproj", "{8634791D-536C-424F-B6D5-8986A4C6EF3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Controls.Panel", "..\Source\Controls\H.Controls.Panel\H.Controls.Panel.csproj", "{8634791D-536C-424F-B6D5-8986A4C6EF3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Controls.TagBox", "..\Source\Controls\H.Controls.TagBox\H.Controls.TagBox.csproj", "{DE3EACC0-9F8D-497B-9401-4CE41BE80196}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -665,6 +667,10 @@ Global
 		{8634791D-536C-424F-B6D5-8986A4C6EF3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8634791D-536C-424F-B6D5-8986A4C6EF3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8634791D-536C-424F-B6D5-8986A4C6EF3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE3EACC0-9F8D-497B-9401-4CE41BE80196}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE3EACC0-9F8D-497B-9401-4CE41BE80196}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE3EACC0-9F8D-497B-9401-4CE41BE80196}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE3EACC0-9F8D-497B-9401-4CE41BE80196}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -777,6 +783,7 @@ Global
 		{2A209B5F-0ED4-4286-B4A9-24265B125C82} = {B5FE7036-B316-4FC3-81E8-00BD6C76784D}
 		{0EC77F0B-A7D3-48E9-811A-EC76298452A7} = {E2C0B11D-5ED5-4F22-8E56-F68982B6E59B}
 		{8634791D-536C-424F-B6D5-8986A4C6EF3B} = {9E63ED70-6F96-4CB2-8B9D-EAEC77D0548E}
+		{DE3EACC0-9F8D-497B-9401-4CE41BE80196} = {9E63ED70-6F96-4CB2-8B9D-EAEC77D0548E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF825C3D-F4F4-4E62-BBFF-B42A5E81112F}

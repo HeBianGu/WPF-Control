@@ -42,6 +42,19 @@ namespace H.Test.Test
         }
 
 
+        private Student _selectedStudent;
+        /// <summary> 说明  </summary>
+        public Student SelectedStudent
+        {
+            get { return _selectedStudent; }
+            set
+            {
+                _selectedStudent = value;
+                RaisePropertyChanged();
+            }
+        }
+
+
         private string _NotifyClass;
         /// <summary> 说明  </summary>
         public string NotifyClass

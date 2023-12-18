@@ -211,7 +211,7 @@ namespace H.Controls.FilterBox
 
         private void Save()
         {
-            _propertyConfidtions.Save();
+            _propertyConfidtions.Save(out string message);
             Filter = new PropertyFilterBoxFilter(this);
         }
     }

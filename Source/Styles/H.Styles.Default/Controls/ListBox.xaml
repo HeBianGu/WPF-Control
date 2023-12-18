@@ -37,7 +37,8 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="2">
-                        <ScrollViewer Padding="{TemplateBinding Padding}" Focusable="false">
+                        <ScrollViewer Padding="{TemplateBinding Padding}"
+                                      Focusable="false">
                             <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                         </ScrollViewer>
                     </Border>
@@ -101,7 +102,7 @@
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                     </Border>
-                    <ControlTemplate.Triggers>
+                    <!--<ControlTemplate.Triggers>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsMouseOver" Value="True" />
@@ -152,11 +153,65 @@
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
-                    </ControlTemplate.Triggers>
+                    </ControlTemplate.Triggers>-->
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver" Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="BorderBrush">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
+                    </Setter.Value>
+                </Setter>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Selector.IsSelectionActive" Value="False" />
+                    <Condition Property="IsSelected" Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
+                    </Setter.Value>
+                </Setter>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Selector.IsSelectionActive" Value="True" />
+                    <Condition Property="IsSelected" Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Foreground">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundTitle}}" />
+                    </Setter.Value>
+                </Setter>
+
+            </MultiTrigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="TextElement.Foreground">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
     </Style>
-    <Style BasedOn="{StaticResource {x:Static local:ListBoxKeys.Default}}" TargetType="ListBox" />
-    <Style BasedOn="{StaticResource {x:Static local:ListBoxItemKeys.Default}}" TargetType="ListBoxItem" />
+    <Style BasedOn="{StaticResource {x:Static local:ListBoxKeys.Default}}"
+           TargetType="ListBox" />
+    <Style BasedOn="{StaticResource {x:Static local:ListBoxItemKeys.Default}}"
+           TargetType="ListBoxItem" />
 </ResourceDictionary>

@@ -16,7 +16,7 @@ namespace H.Controls.FilterBox
 {
 
     [Display(Name = "设置条件")]
-    public class PropertyConfidtionPrensenter : DisplayerViewModelBase, IConditionable, IMetaSettingSerilize, IMetaSetting
+    public class PropertyConfidtionPrensenter : DisplayerViewModelBase, IConditionable, IMetaSetting
     {
         public PropertyConfidtionPrensenter()
         {
@@ -77,7 +77,7 @@ namespace H.Controls.FilterBox
         [XmlIgnore]
         public RelayCommand SaveCommand => new RelayCommand(l =>
         {
-            Save();
+            this.Save(out string message);
         });
 
         private ObservableCollection<PropertyInfo> _properties = new ObservableCollection<PropertyInfo>();
@@ -108,12 +108,16 @@ namespace H.Controls.FilterBox
         [XmlIgnore]
         public IMetaSettingService MetaSettingService => new XmlMetaSettingService();
 
-        public void Save()
+        public bool Save(out string message)
         {
+            message = null;
             if (string.IsNullOrEmpty(ID))
-                return;
+            {
+                message = "ID为空";
+                return false;
+            }
             MetaSettingService?.Serilize(this, ID);
-
+            return true;
         }
 
         private bool _isLoaded = false;
