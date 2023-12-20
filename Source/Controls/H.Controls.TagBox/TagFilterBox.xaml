@@ -6,6 +6,15 @@
            TargetType="{x:Type local:TagFilterBox}">
         <Setter Property="ItemsSource" Value="{Binding Source={x:Static local:TagOptions.Instance}, Path=Tags}" />
         <Setter Property="SelectionMode" Value="Multiple" />
+        <Setter Property="ItemContainerStyle">
+            <Setter.Value>
+                <Style BasedOn="{StaticResource {x:Static h:ListBoxItemKeys.Default}}"
+                       TargetType="ListBoxItem">
+                    <Setter Property="BorderThickness" Value="1" />
+                    <Setter Property="Margin" Value="1" />
+                </Style>
+            </Setter.Value>
+        </Setter>
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>

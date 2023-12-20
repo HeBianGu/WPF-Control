@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
 
-namespace H.Controls.TagBox
+using System.Collections.Generic;
+
+namespace H.Providers.Ioc
 {
     public interface IDataSourceService<T>
     {

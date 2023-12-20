@@ -4,5 +4,14 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Controls.TagBox;component/TagBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.TagBox;component/TagFilterBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.TagBox;component/TagsPresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
+    <DataTemplate DataType="{x:Type local:Tag}">
+        <DockPanel>
+            <Border Width="10"
+                    Margin="0,5,5,5"
+                    Background="{Binding Background}" />
+            <TextBlock Text="{Binding Name}" />
+        </DockPanel>
+    </DataTemplate>
 </ResourceDictionary>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using H.Providers.Mvvm;
+using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,38 +9,46 @@ using System.Windows.Media;
 
 namespace H.Controls.TagBox
 {
-    public class Tag : ITag
+    public class Tag :NotifyPropertyChangedBase, ITag
     {
+        private string _name;
         [Required]
         [Display(Name = "名称")]
-        public string Name { get; set; }
-
-        [JsonConverter(typeof(BrushJsonConverter))]
-        [Display(Name = "颜色")]
-        public Brush Background { get; set; }
-
-        [Display(Name = "说明")]
-        public string Description { get; set; }
-        public override string ToString() => this.Name;
-    }
-
-    public class BrushJsonConverter : JsonConverter<Brush>
-    {
-        public override Brush Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        public string Name
         {
-            string value = reader.GetString();
-            return value.TryChangeType<Brush>();
-        }
-
-        public override void Write(Utf8JsonWriter writer, Brush value, JsonSerializerOptions options)
-        {
-            if (value == null)
+            get { return _name; }
+            set
             {
-                writer.WriteNull(string.Empty);
-                return;
+                _name = value;
+                RaisePropertyChanged();
             }
-            string txt = value.TryConvertToString();
-            writer.WriteStringValue(txt);
         }
-    }
+
+        private Brush _background;
+        [JsonConverter(typeof(TypeJsonConverter<Brush>))]
+        [Display(Name = "颜色")]
+        public Brush Background
+        {
+            get { return _background; }
+            set
+            {
+                _background = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        private string _description;
+        [Display(Name = "说明")]
+        public string Description
+        {
+            get { return _description; }
+            set
+            {
+                _description = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public override string ToString() => this.Name;
+    } 
 }
