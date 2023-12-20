@@ -1,9 +1,9 @@
 ﻿namespace H.Providers.Ioc
 {
-    public interface IMetaSettingSerilize
+    public interface IMetaSetting
     {
         string ID { get; set; }
-        void Save();
         void Load();
+        bool Save(out string message);
     }
 }

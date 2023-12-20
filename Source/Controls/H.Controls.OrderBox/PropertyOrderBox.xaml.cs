@@ -215,7 +215,7 @@ namespace H.Controls.OrderBox
 
         private void Save()
         {
-            _propertyOrders.Save();
+            _propertyOrders.Save(out string message);
             this.Order = new PropertyOrderBoxOrder(this);
             this.OnOrderChanged();
         }

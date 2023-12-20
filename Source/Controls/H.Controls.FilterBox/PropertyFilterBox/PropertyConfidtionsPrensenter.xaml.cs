@@ -13,7 +13,7 @@ using System.Xml.Serialization;
 
 namespace H.Controls.FilterBox
 {
-    public class PropertyConfidtionsPrensenter : DisplayerViewModelBase, IConditionable, IMetaSettingSerilize, IMetaSetting
+    public class PropertyConfidtionsPrensenter : DisplayerViewModelBase, IConditionable, IMetaSetting
     {
         public PropertyConfidtionsPrensenter()
         {
@@ -95,7 +95,7 @@ namespace H.Controls.FilterBox
         public RelayCommand ClearSelectionCommand => new RelayCommand(l =>
         {
             SelectedItem = null;
-            Save();
+            this.Save(out string message);
         }, x => SelectedItem != null);
 
         public bool IsMatch(object obj)
@@ -105,12 +105,17 @@ namespace H.Controls.FilterBox
             return SelectedItem.IsMatch(obj);
         }
 
-        public void Save()
+        public bool Save(out string message)
         {
+            message = null;
             if (string.IsNullOrEmpty(ID))
-                return;
+            {
+                message = "ID为空";
+                return false;
+            }
             SelectedIndex = PropertyConfidtions.IndexOf(SelectedItem);
             MetaSettingService?.Serilize(this, ID);
+            return true;
         }
 
         [JsonIgnore]

@@ -3,6 +3,6 @@
     public interface IMetaSettingService
     {
         void Serilize(object setting, string id);
-        T Deserilize<T>(string id) where T : IMetaSetting;
+        T Deserilize<T>(string id);
     }
 }

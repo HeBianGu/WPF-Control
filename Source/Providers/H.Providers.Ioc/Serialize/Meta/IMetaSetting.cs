@@ -1,7 +1,7 @@
 ﻿namespace H.Providers.Ioc
 {
-    public interface IMetaSetting
-    {
+    //public interface IMetaSetting
+    //{
 
-    }
+    //}
 }

@@ -1,0 +1,8 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:H.Controls.TagBox">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.TagBox;component/TagBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.TagBox;component/TagFilterBox.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

@@ -1,4 +1,5 @@
-﻿using H.Extensions.ApplicationBase;
+﻿using H.Controls.TagBox;
+using H.Extensions.ApplicationBase;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 
 namespace H.Test.Test
 {
@@ -17,7 +19,7 @@ namespace H.Test.Test
     {
         protected override Window CreateMainWindow(StartupEventArgs e)
         {
-          return  new MainWindow();
+            return new MainWindow();
         }
 
         protected override void ConfigureServices(IServiceCollection services)
@@ -25,8 +27,19 @@ namespace H.Test.Test
             base.ConfigureServices(services);
 
             services.AddAdornerDialogMessage();
+            services.AddFormMessageService();
             services.AddLog4net();
             services.AddSetting();
+            services.AddXmlMetaSettingService();
+
+            services.AddTag(x =>
+            {
+                x.Tags.Add(new Tag() { Name = "严重", Description = "这是一个严重标签", Background = Brushes.Purple });
+                x.Tags.Add(new Tag() { Name = "错误", Description = "这是一个严重标签", Background = Brushes.Red });
+                x.Tags.Add(new Tag() { Name = "警告", Description = "这是一个严重标签", Background = Brushes.Orange });
+                x.Tags.Add(new Tag() { Name = "运行", Description = "这是一个严重标签", Background = Brushes.Blue });
+                x.Tags.Add(new Tag() { Name = "成功", Description = "这是一个严重标签", Background = Brushes.Green });
+            });
         }
 
         protected override void Configure(IApplicationBuilder app)
