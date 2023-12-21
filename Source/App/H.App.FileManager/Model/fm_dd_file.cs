@@ -30,11 +30,20 @@ namespace H.App.FileManager
         [ReadOnly(true)]
         [DataGridColumn("2*")]
         [Required]
-        [Display(Name = "资源路径")]
+        [Display(Name = "路径")]
         public string Url { get; set; }
 
-        [Display(Name = "资源标签")]
-        public string Tags { get; set; }
+        private string _tags;
+        [Display(Name = "标签")]
+        public string Tags
+        {
+            get { return _tags; }
+            set
+            {
+                _tags = value;
+                RaisePropertyChanged();
+            }
+        }
 
         [DataGridColumn("Auto")]
         [ReadOnly(true)]

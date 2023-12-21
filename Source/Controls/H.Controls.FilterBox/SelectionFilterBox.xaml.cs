@@ -59,7 +59,7 @@ namespace H.Controls.FilterBox
             if (checkItem == null)
                 return;
             this.Filter = new SelectionFilter(this);
-            this.OnFilterChagned();
+            this.OnFilterChanged();
 
             if (e.AddedItems.Count == 1 && this.Items[0] == e.AddedItems[0] && checkItem.IsMouseOver)
             {
@@ -281,20 +281,20 @@ namespace H.Controls.FilterBox
 
 
         //声明和注册路由事件
-        public static readonly RoutedEvent FilterChagnedRoutedEvent =
-            EventManager.RegisterRoutedEvent("FilterChagned", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(SelectionFilterBox));
+        public static readonly RoutedEvent FilterChangedRoutedEvent =
+            EventManager.RegisterRoutedEvent("FilterChanged", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(SelectionFilterBox));
         //CLR事件包装
-        public event RoutedEventHandler FilterChagned
+        public event RoutedEventHandler FilterChanged
         {
-            add { this.AddHandler(FilterChagnedRoutedEvent, value); }
-            remove { this.RemoveHandler(FilterChagnedRoutedEvent, value); }
+            add { this.AddHandler(FilterChangedRoutedEvent, value); }
+            remove { this.RemoveHandler(FilterChangedRoutedEvent, value); }
         }
 
         //激发路由事件,借用Click事件的激发方法
 
-        protected void OnFilterChagned()
+        protected void OnFilterChanged()
         {
-            RoutedEventArgs args = new RoutedEventArgs(FilterChagnedRoutedEvent, this);
+            RoutedEventArgs args = new RoutedEventArgs(FilterChangedRoutedEvent, this);
             this.RaiseEvent(args);
         }
 

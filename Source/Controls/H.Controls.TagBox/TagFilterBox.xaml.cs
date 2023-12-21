@@ -209,7 +209,7 @@ namespace H.Controls.TagBox
             {
                 model = viewModel.GetModel();
             }
-            var property = obj.GetType().GetProperty(this._tagBox.PropertyName);
+            var property = model.GetType().GetProperty(this._tagBox.PropertyName);
             if (property == null)
                 return false;
             var value = property.GetValue(model);

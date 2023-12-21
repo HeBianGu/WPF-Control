@@ -41,7 +41,7 @@
                                                       PropertyName="Type"
                                                       Type="{Binding ModelType}">
                                     <Behaviors:Interaction.Triggers>
-                                        <Behaviors:EventTrigger EventName="FilterChagned">
+                                        <Behaviors:EventTrigger EventName="FilterChanged">
                                             <Behaviors:ChangePropertyAction PropertyName="Filter1"
                                                                             TargetObject="{Binding Collection}"
                                                                             Value="{Binding ElementName=sfb, Path=Filter}" />
@@ -60,7 +60,7 @@
                                                       PropertyName="Method"
                                                       Type="{Binding ModelType}">
                                     <Behaviors:Interaction.Triggers>
-                                        <Behaviors:EventTrigger EventName="FilterChagned">
+                                        <Behaviors:EventTrigger EventName="FilterChanged">
                                             <Behaviors:ChangePropertyAction PropertyName="Filter3"
                                                                             TargetObject="{Binding Collection}"
                                                                             Value="{Binding ElementName=sfb1, Path=Filter}" />
@@ -79,7 +79,7 @@
                                                       PropertyName="UserName"
                                                       Type="{Binding ModelType}">
                                     <Behaviors:Interaction.Triggers>
-                                        <Behaviors:EventTrigger EventName="FilterChagned">
+                                        <Behaviors:EventTrigger EventName="FilterChanged">
                                             <Behaviors:ChangePropertyAction PropertyName="Filter4"
                                                                             TargetObject="{Binding Collection}"
                                                                             Value="{Binding ElementName=sfb2, Path=Filter}" />

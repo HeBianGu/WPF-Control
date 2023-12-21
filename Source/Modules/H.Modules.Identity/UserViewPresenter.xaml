@@ -18,7 +18,7 @@
                                                   PropertyName="Role"
                                                   Type="{x:Type local:hi_dd_user}">
                                 <Behaviors:Interaction.Triggers>
-                                    <Behaviors:EventTrigger EventName="FilterChagned">
+                                    <Behaviors:EventTrigger EventName="FilterChanged">
                                         <Behaviors:ChangePropertyAction PropertyName="Filter1"
                                                                         TargetObject="{Binding Collection}"
                                                                         Value="{Binding ElementName=sfb, Path=Filter}" />

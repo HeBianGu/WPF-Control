@@ -1,4 +1,5 @@
-﻿using H.DataBases.Share;
+﻿using H.Controls.TagBox;
+using H.DataBases.Share;
 using H.Extensions.ApplicationBase;
 using H.Extensions.ViewModel;
 using H.Modules.Login;
@@ -15,6 +16,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 
 namespace H.App.FileManager
 {
@@ -39,6 +41,14 @@ namespace H.App.FileManager
             services.AddDbContextBySetting<DataContext>();
             services.AddSingleton<IStringRepository<fm_dd_file>, DbContextRepository<DataContext, fm_dd_file>>();
             services.AddSingleton<IRepositoryViewModel<fm_dd_file>, FileRepositoryViewModel>();
+            services.AddTag(x =>
+            {
+                x.Tags.Add(new Tag() { Name = "严重", Description = "这是一个严重标签", Background = Brushes.Purple });
+                x.Tags.Add(new Tag() { Name = "错误", Description = "这是一个严重标签", Background = Brushes.Red });
+                x.Tags.Add(new Tag() { Name = "警告", Description = "这是一个严重标签", Background = Brushes.Orange });
+                x.Tags.Add(new Tag() { Name = "运行", Description = "这是一个严重标签", Background = Brushes.Blue });
+                x.Tags.Add(new Tag() { Name = "成功", Description = "这是一个严重标签", Background = Brushes.Green });
+            });
         }
     }
 
