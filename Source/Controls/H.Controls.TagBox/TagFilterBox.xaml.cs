@@ -2,9 +2,7 @@
 using H.Providers.Mvvm;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
@@ -26,7 +24,7 @@ namespace H.Controls.TagBox
 
         public void RefreshData()
         {
-            this.DelayInvoke(()=> this.ItemsSource = this.GetItemsSource());
+            this.DelayInvoke(() => this.ItemsSource = this.GetItemsSource());
         }
 
 
@@ -49,7 +47,7 @@ namespace H.Controls.TagBox
             ListBoxItem checkItem = this.GetCheckAllItem();
             if (checkItem == null)
                 return;
-          
+
             if (e.AddedItems.Count == 1 && this.Items[0] == e.AddedItems[0] && checkItem.IsMouseOver)
             {
                 _flag = true;

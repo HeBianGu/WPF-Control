@@ -1,15 +1,12 @@
 ﻿using H.Providers.Mvvm;
 using System;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Windows.Media;
 
 namespace H.Controls.TagBox
 {
-    public class Tag :NotifyPropertyChangedBase, ITag
+    public class Tag : NotifyPropertyChangedBase, ITag
     {
         private string _name;
         [Required]
@@ -50,5 +47,5 @@ namespace H.Controls.TagBox
         }
 
         public override string ToString() => this.Name;
-    } 
+    }
 }
