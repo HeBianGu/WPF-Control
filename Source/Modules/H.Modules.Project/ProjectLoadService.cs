@@ -6,6 +6,7 @@ using H.Extensions.XmlSerialize;
 using H.Modules.Login;
 using H.Providers.Ioc;
 using System;
+using System.Linq;
 
 namespace H.Modules.Project
 {
@@ -23,6 +24,7 @@ namespace H.Modules.Project
             {
                 Ioc<IProjectService>.Instance.Add(item);
             }
+            //Ioc<IProjectService>.Instance.Current = data.ProjectItems.FirstOrDefault();
             return true;
         }
 

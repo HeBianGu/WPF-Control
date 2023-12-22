@@ -27,8 +27,8 @@ namespace H.Extensions.ViewModel
             //try
             //{
             includes = includes ?? this.GetIncludes()?.ToArray();
-            IEnumerable<SelectViewModel<TEntity>> collection = includes == null ? this.Repository.GetList().Select(x => new SelectViewModel<TEntity>(x))
-            : this.Repository.GetList(includes).Select(x => new SelectViewModel<TEntity>(x));
+            IEnumerable<SelectViewModel<TEntity>> collection = includes == null ? this.Repository.GetList().Where(x=>this.Where(x)).Select(x => new SelectViewModel<TEntity>(x))
+            : this.Repository.GetList(includes).Where(x => this.Where(x)).Select(x => new SelectViewModel<TEntity>(x));
             //this.Collection = collection.Select(x => new SelectViewModel<TEntity>(x)).ToObservable();
             this.Collection.Load(collection);
             //}
@@ -63,6 +63,11 @@ namespace H.Extensions.ViewModel
         //        this.Collection.Load(collection);
         //    }
         //}
+
+        protected virtual bool Where(TEntity entity)
+        {
+            return true;
+        }
 
         public override async Task Add(params TEntity[] ms)
         {

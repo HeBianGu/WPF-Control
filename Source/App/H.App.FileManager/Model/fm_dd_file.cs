@@ -1,4 +1,5 @@
 ﻿using H.Extensions.Behvaiors;
+using H.Modules.Project;
 using H.Providers.Ioc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
@@ -6,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
@@ -48,7 +50,7 @@ namespace H.App.FileManager
         [DataGridColumn("Auto")]
         [ReadOnly(true)]
         [Display(Name = "扩展名")]
-        public string Extend{ get; set; }
+        public string Extend { get; set; }
 
         [DataGridColumn("Auto")]
         [ReadOnly(true)]
@@ -67,32 +69,52 @@ namespace H.App.FileManager
         [DataGridColumn("Auto")]
         [Display(Name = "收藏")]
         public bool Favorite { get; set; }
+
+        [Browsable(false)]
+        [Display(Name = "收藏")]
+        public string Project { get; set; }
     }
 
 
     public class DataContext : DbContext
     {
-        public DataContext(DbContextOptions<DataContext> options) : base(options)
-        {
-            //Database.EnsureCreated();
-        }
+        IProjectService _projectService;
+        //public DataContext(IProjectService projectService, DbContextOptions<DataContext> options) : base(options)
+        //{
+        //    //Database.EnsureCreated();
+        //    _projectService = projectService;
+        //}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            this.Database.Migrate();
+        }
+
+        public DataContext(IProjectService projectService)
+        {
+            _projectService = projectService;
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            string connetStr = _projectService.Current == null ? $"Data Source=default.db" :
+                $"Data Source={Path.Combine(_projectService.Current.Path, _projectService.Current.Title ?? "default")}.db";
+            optionsBuilder.UseSqlite(connetStr);
+         
         }
 
         public DbSet<fm_dd_file> fm_dd_files { get; set; }
 
     }
 
-    public class DataContextFactory : IDesignTimeDbContextFactory<DataContext>
-    {
-        public DataContext CreateDbContext(string[] args)
-        {
-            var optionsBuilder = new DbContextOptionsBuilder<DataContext>();
-            optionsBuilder.UseLazyLoadingProxies().UseSqlite("Data Source=Migration.db");
-            return new DataContext(optionsBuilder.Options);
-        }
-    }
+    //public class DataContextFactory : IDesignTimeDbContextFactory<DataContext>
+    //{
+    //    public DataContext CreateDbContext(string[] args)
+    //    {
+    //        var optionsBuilder = new DbContextOptionsBuilder<DataContext>();
+    //        optionsBuilder.UseLazyLoadingProxies().UseSqlite("Data Source=Migration.db");
+    //        return new DataContext(optionsBuilder.Options);
+    //    }
+    //}
 }

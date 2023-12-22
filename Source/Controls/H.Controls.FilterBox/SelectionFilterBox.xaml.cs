@@ -212,7 +212,10 @@ namespace H.Controls.FilterBox
                 return;
             if (this.Datas == null)
             {
-                this.Items.Clear();
+                if (this.ItemsSource is IList list)
+                    list.Clear();
+                else
+                    this.Items.Clear();
                 return;
             }
 

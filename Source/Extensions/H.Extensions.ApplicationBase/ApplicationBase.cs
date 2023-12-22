@@ -14,6 +14,11 @@ namespace H.Extensions.ApplicationBase
         public ApplicationBase()
         {
             this.OnExcetion();
+            this.RefreshIoc();
+        }
+
+        public void RefreshIoc()
+        {
             ServiceCollection sc = new ServiceCollection();
             this.ConfigureServices(sc);
             ServiceProvider sp = sc.BuildServiceProvider();
@@ -28,12 +33,11 @@ namespace H.Extensions.ApplicationBase
             this.OnSingleton(e);
             base.OnStartup(e);
             this.CreateMainWindow(e);
-            this.OnSplashScreen(e);
+            this.OnSplashScreen();
             this.OnLogin(e);
             this.MainWindow.Show();
             this.ILogger?.Info("系统启动");
         }
-
 
         #region - Exception -
         protected virtual void OnExcetion()

@@ -5,6 +5,7 @@ using H.Extensions.ViewModel;
 using H.Modules.Login;
 using H.Modules.Project;
 using H.Providers.Ioc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
@@ -38,7 +39,7 @@ namespace H.App.FileManager
             services.AddFormMessageService();
             services.AddProject<FileProjectService>();
             services.AddSplashScreen();
-            services.AddDbContextBySetting<DataContext>();
+            services.AddDbContext<DataContext>(x => x.UseLazyLoadingProxies());
             services.AddSingleton<IStringRepository<fm_dd_file>, DbContextRepository<DataContext, fm_dd_file>>();
             services.AddSingleton<IRepositoryViewModel<fm_dd_file>, FileRepositoryViewModel>();
             services.AddTag(x =>
@@ -65,6 +66,24 @@ namespace H.App.FileManager
             {
                 Path = SystemPathSetting.Instance.Project
             };
+        }
+
+        protected override void OnCurrentChanged(IProjectItem o, IProjectItem n)
+        {
+            //if(Application.Current is ApplicationBase application)
+            //{
+            //    application.RefreshIoc();
+            //    application.OnSplashScreen();
+            //}
+            //  Do ：重新注册dbcontext
+            Ioc.ConfigureServices(x=>
+            {
+                x.AddDbContextBySetting<DataContext>();
+                //services.AddDbContext<DataContext>(x => x.UseLazyLoadingProxies());
+                //services.AddSingleton<IStringRepository<fm_dd_file>, DbContextRepository<DataContext, fm_dd_file>>();
+                //services.AddSingleton<IRepositoryViewModel<fm_dd_file>, FileRepositoryViewModel>();
+            });
+            base.OnCurrentChanged(o, n);
         }
     }
 

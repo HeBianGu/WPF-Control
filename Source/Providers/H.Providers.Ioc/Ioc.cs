@@ -1,12 +1,18 @@
-﻿namespace System
+﻿using Microsoft.Extensions.DependencyInjection;
+
+namespace System
 {
     public static class Ioc
     {
         private static IServiceProvider _services = null;
         public static IServiceProvider Services => _services;
-        public static void Build(IServiceProvider services)
+
+        private static IServiceCollection _serviceCollection = null;
+
+        public static void Build(IServiceCollection serviceCollection)
         {
-            _services = services;
+            _services = serviceCollection.BuildServiceProvider();
+            _serviceCollection = serviceCollection;
         }
 
         public static T GetService<T>(bool throwIfNone = true)
@@ -41,6 +47,14 @@
         public static bool Exist<T>()
         {
             return GetService<T>(throwIfNone: false) != null;
+        }
+
+        public static void ConfigureServices(Action<IServiceCollection> action)
+        {
+            if (_serviceCollection == null)
+                return;
+            action?.Invoke(_serviceCollection);
+            Build(_serviceCollection);
         }
     }
 

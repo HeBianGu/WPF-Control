@@ -27,7 +27,7 @@ namespace H.Extensions.ApplicationBase
         /// <summary>
         /// 加载启动页面
         /// </summary>
-        protected virtual void OnSplashScreen(StartupEventArgs e)
+        public virtual async void OnSplashScreen()
         {
             int sleep = 1000;
             var presenter = Ioc.Services.GetService<ISplashScreenViewPresenter>();
@@ -72,15 +72,18 @@ namespace H.Extensions.ApplicationBase
             };
             if (presenter != null)
             {
-                bool? r = IocMessage.Window.ShowAction(presenter, x =>
+                bool? r = Dispatcher.Invoke(() =>
                 {
-                    x.DialogButton = DialogButton.None;
-                    x.Title = ApplicationProvider.Version;
-                    x.Width = 500;
-                    x.Height = 300;
-                    if (x is Window w)
-                        w.SizeToContent = SizeToContent.Manual;
-                }, func).Result;
+                    return IocMessage.Window.ShowAction(presenter, x =>
+                     {
+                         x.DialogButton = DialogButton.None;
+                         x.Title = ApplicationProvider.Version;
+                         x.Width = 500;
+                         x.Height = 300;
+                         if (x is Window w)
+                             w.SizeToContent = SizeToContent.Manual;
+                     }, func).Result;
+                });
                 if (r == false)
                 {
                     IocLog.Instance?.Info("启动失败，程序退出");

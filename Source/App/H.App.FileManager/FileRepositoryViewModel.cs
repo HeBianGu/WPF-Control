@@ -3,6 +3,7 @@ using H.Extensions.ViewModel;
 using H.Providers.Ioc;
 using H.Providers.Mvvm;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -12,20 +13,18 @@ namespace H.App.FileManager
 {
     public class FileRepositoryViewModel : RepositoryViewModel<fm_dd_file>
     {
+        public override void RefreshData(params string[] includes)
+        {
+            includes = includes ?? this.GetIncludes()?.ToArray();
+            IEnumerable<SelectViewModel<fm_dd_file>> collection = includes == null ? this.Repository.GetList().Select(x => new SelectViewModel<fm_dd_file>(x))
+            : this.Repository.GetList(includes).Select(x => new SelectViewModel<fm_dd_file>(x));
+            this.Collection.Load(collection);
+        }
 
-        //protected override async void Loaded(object obj)
-        //{
-        //    base.Loaded(obj);
-        //    await Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Input, new Action(async () =>
-        //               {
-        //                   await IocMessage.Dialog.ShowWait(x =>
-        //                   {
-        //                       this.RefreshData();
-        //                       return true;
-        //                   }, x => x.DialogButton = DialogButton.None);
-        //               }));
-
-        //}
+        protected override bool Where(fm_dd_file entity)
+        {
+            return entity.Project == Ioc.GetService<IProjectService>()?.Current?.Title;
+        }
 
         public RelayCommand RefreshCommand => new RelayCommand(async (s, e) =>
         {
@@ -44,14 +43,15 @@ namespace H.App.FileManager
                            Extend = Path.GetExtension(x),
                            Size = new FileInfo(x).Length,
                            Score = random.Next(0, 10).ToString(),
-                           Favorite = random.Next(10) == 1
-                       }).ToArray()); ;
+                           Favorite = random.Next(10) == 1,
+                           Project = Ioc.GetService<IProjectService>()?.Current?.Title
+                       }).ToArray());
                        x.Value = "加载完成，正在保存...";
                        return await this.Save();
                    });
                 if (r > 0)
                     IocMessage.Snack.ShowInfo("保存完成");
-                else
+                else    
                     IocMessage.Snack.ShowError("保存失败");
             }
         }, (s, e) => IocProject.Instance.Current is FileProjectItem);
