@@ -1,6 +1,7 @@
 ﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 using H.Providers.Ioc;
 using H.Providers.Mvvm;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,6 +42,27 @@ namespace H.Extensions.ViewModel
             //    this.IsBusy = false;
             //}
         }
+
+        //public override async void RefreshData(params string[] includes)
+        //{
+        //    using (var sp = Ioc.Services.CreateScope())
+        //    {
+        //        var repository = sp.ServiceProvider.GetRequiredService<IStringRepository<TEntity>>();
+        //        includes = includes ?? this.GetIncludes()?.ToArray();
+        //        IEnumerable<SelectViewModel<TEntity>> collection = null;
+        //        if (includes == null)
+        //        {
+        //            var datas = await repository.GetListAsync();
+        //            collection = datas.Select(x => new SelectViewModel<TEntity>(x));
+        //        }
+        //        else
+        //        {
+        //            var datas = await repository.GetListAsync(includes);
+        //            collection = datas.Select(x => new SelectViewModel<TEntity>(x));
+        //        }
+        //        this.Collection.Load(collection);
+        //    }
+        //}
 
         public override async Task Add(params TEntity[] ms)
         {

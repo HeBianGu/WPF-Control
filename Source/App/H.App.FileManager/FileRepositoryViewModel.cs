@@ -13,19 +13,19 @@ namespace H.App.FileManager
     public class FileRepositoryViewModel : RepositoryViewModel<fm_dd_file>
     {
 
-        protected override async void Loaded(object obj)
-        {
-            base.Loaded(obj);
-            await Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Input, new Action(async () =>
-                       {
-                           await IocMessage.Dialog.ShowWait(x =>
-                           {
-                               this.RefreshData();
-                               return true;
-                           }, x => x.DialogButton = DialogButton.None);
-                       }));
+        //protected override async void Loaded(object obj)
+        //{
+        //    base.Loaded(obj);
+        //    await Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Input, new Action(async () =>
+        //               {
+        //                   await IocMessage.Dialog.ShowWait(x =>
+        //                   {
+        //                       this.RefreshData();
+        //                       return true;
+        //                   }, x => x.DialogButton = DialogButton.None);
+        //               }));
 
-        }
+        //}
 
         public RelayCommand RefreshCommand => new RelayCommand(async (s, e) =>
         {

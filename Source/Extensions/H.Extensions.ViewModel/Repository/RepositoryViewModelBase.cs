@@ -26,18 +26,18 @@ namespace H.Extensions.ViewModel
             return null;
         }
 
-        protected override void Loaded(object obj)
+        protected override async void Loaded(object obj)
         {
-            if (this.Repository == null)
-                return;
-            Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Input, new Action(() =>
+            base.Loaded(obj);
+            await Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Input, new Action(async () =>
             {
-                IocMessage.Dialog.ShowWait(x =>
+                await IocMessage.Dialog.ShowWait(x =>
                 {
                     this.RefreshData();
                     return true;
-                });
+                }, x => x.DialogButton = DialogButton.None);
             }));
+
         }
 
         public abstract void RefreshData(params string[] includes);
