@@ -27,14 +27,43 @@ namespace H.Modules.Project
         public ProjectBox()
         {
             {
-                CommandBinding commandBinding = new CommandBinding(Commands.Clear);
+                CommandBinding commandBinding = new CommandBinding(Commands.Delete);
+                commandBinding.Executed += async (l, k) =>
+                {
+                    if (k.Parameter is IProjectItem project)
+                    {
+                        var r = await IocMessage.Dialog.Show("确定要删除？");
+                        if (r != true) return;
+                        IocProject.Instance.Delete(x => x == project);
+                        IocProject.Instance.Save(out string message);
+                    }
+                };
+                this.CommandBindings.Add(commandBinding);
+            }
+
+            {
+                CommandBinding commandBinding = new CommandBinding(Commands.Open);
                 commandBinding.Executed += (l, k) =>
                 {
                     if (k.Parameter is IProjectItem project)
                     {
-                        IocProject.Instance.Delete(x => x == project);
+                        IocProject.Instance.Current = project;
                         IocProject.Instance.Save(out string message);
                     }
+                };
+                this.CommandBindings.Add(commandBinding);
+            }
+
+            {
+                CommandBinding commandBinding = new CommandBinding(Commands.New);
+                commandBinding.Executed += async (l, k) =>
+                {
+                    var project = IocProject.Instance.Create();
+                    var r = await IocMessage.Form.ShowEdit(project, null, null, null, "新建工程");
+                    if (r != true)
+                        return;
+                    IocProject.Instance.Add(project);
+                    IocProject.Instance.Current = project;
                 };
                 this.CommandBindings.Add(commandBinding);
             }
@@ -112,7 +141,7 @@ namespace H.Modules.Project
 
         public Func<IProjectItem, string> GroupBy
         {
-            get { return (Func<IProjectItem, string>)GetValue(GroupByProperty); }
+            get { return this.Dispatcher.Invoke(() => (Func<IProjectItem, string>)GetValue(GroupByProperty)); }
             set { SetValue(GroupByProperty, value); }
         }
 
@@ -132,9 +161,16 @@ namespace H.Modules.Project
         public void Refresh()
         {
 
-            if (this.Projects == null) return;
 
-            var order = this.Projects.OrderBy(l => !l.IsFixed).ThenBy(l => l.UpdateTime);
+            var projects = this.Dispatcher.Invoke(() =>
+              {
+                  return this.Projects;
+              });
+
+            if (projects == null)
+                return;
+
+            var order = projects.OrderBy(l => !l.IsFixed).ThenBy(l => l.UpdateTime);
 
             IEnumerable<IGrouping<string, IProjectItem>> groups = order.GroupBy(this.GroupBy ?? new Func<IProjectItem, string>(l =>
                     {
@@ -172,8 +208,10 @@ namespace H.Modules.Project
                 //vw.SortDescriptions.Clear(); 
                 //vw.SortDescriptions.Add(new SortDescription());
             });
-
-            this.ItemsSource = models;
+            this.Dispatcher.Invoke(() =>
+            {
+                this.ItemsSource = models;
+            });
         }
     }
 }

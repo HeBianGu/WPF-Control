@@ -10,22 +10,24 @@ using System.Linq;
 
 namespace H.Modules.Project
 {
+    [Obsolete]
     public class ProjectLoadService : IProjectLoadService
     {
         public string Name => "工程列表";
 
         public virtual bool Load(out string message)
         {
-            message = null;
-            var data = this.GetSerializer().Load<ProjectHistroyData>(ProjectOptions.Instance.HistoryPath);
-            if (data == null)
-                return true;
-            foreach (var item in data.ProjectItems)
-            {
-                Ioc<IProjectService>.Instance.Add(item);
-            }
+            //message = null;
+            //var data = this.GetSerializer().Load<ProjectHistroyData>(ProjectOptions.Instance.HistoryPath);
+            //if (data == null)
+            //    return true;
+            //foreach (var item in data.ProjectItems)
+            //{
+            //    Ioc<IProjectService>.Instance.Add(item);
+            //}
             //Ioc<IProjectService>.Instance.Current = data.ProjectItems.FirstOrDefault();
-            return true;
+           return Ioc<IProjectService>.Instance.Load(out message);
+            //return true;
         }
 
         protected ISerializerService GetSerializer() => new XmlSerializerService();

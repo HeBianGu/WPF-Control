@@ -17,8 +17,7 @@
                             <Setter Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="{x:Type GroupItem}">
-                                        <Expander Header="{Binding Name}"
-                                                  IsExpanded="True">
+                                        <Expander Header="{Binding Name}" IsExpanded="True">
                                             <Expander.HeaderTemplate>
                                                 <DataTemplate>
                                                     <TextBlock HorizontalAlignment="Left"

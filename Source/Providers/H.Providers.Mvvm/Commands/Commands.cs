@@ -53,6 +53,12 @@ namespace H.Providers.Mvvm
         public static RoutedCommand Restore { get; } = new RoutedCommand(nameof(Restore), typeof(Commands));
 
         /// <summary>
+        ///     新建
+        /// </summary>
+        public static RoutedCommand New { get; } = new RoutedCommand(nameof(New), typeof(Commands));
+
+
+        /// <summary>
         ///     打开
         /// </summary>
         public static RoutedCommand Open { get; } = new RoutedCommand(nameof(Open), typeof(Commands));

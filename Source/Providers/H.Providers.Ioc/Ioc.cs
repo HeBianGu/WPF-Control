@@ -1,14 +1,15 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace System
 {
+
     public static class Ioc
     {
         private static IServiceProvider _services = null;
         public static IServiceProvider Services => _services;
-
         private static IServiceCollection _serviceCollection = null;
-
         public static void Build(IServiceCollection serviceCollection)
         {
             _services = serviceCollection.BuildServiceProvider();
@@ -54,7 +55,28 @@ namespace System
             if (_serviceCollection == null)
                 return;
             action?.Invoke(_serviceCollection);
-            Build(_serviceCollection);
+            //Build(_serviceCollection);
+        }
+
+        public static IEnumerable<ServiceDescriptor> FindAll(Func<ServiceDescriptor, bool> predicate = null)
+        {
+            foreach (var item in _serviceCollection)
+            {
+                if (predicate?.Invoke(item) != false)
+                    yield return item;
+            }
+        }
+
+        public static IEnumerable<T> GetAssignableFromServices<T>(Func<T, bool> predicate = null)
+        {
+            foreach (var item in _serviceCollection)
+            {
+                if (item.ServiceType is T t)
+                {
+                    if (predicate?.Invoke(t) != false)
+                        yield return (T)item.ImplementationInstance;
+                }
+            }
         }
     }
 

@@ -14,15 +14,15 @@ namespace H.Extensions.ApplicationBase
         public ApplicationBase()
         {
             this.OnExcetion();
-            this.RefreshIoc();
+            this.OnRefreshIoc();
         }
 
-        public void RefreshIoc()
+        protected void OnRefreshIoc()
         {
             ServiceCollection sc = new ServiceCollection();
             this.ConfigureServices(sc);
-            ServiceProvider sp = sc.BuildServiceProvider();
-            Ioc.Build(sp);
+            //ServiceProvider sp = sc.BuildServiceProvider();
+            Ioc.Build(sc);
             this.OnSetting();
         }
 

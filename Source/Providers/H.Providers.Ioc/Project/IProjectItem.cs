@@ -4,7 +4,7 @@ using System;
 
 namespace H.Providers.Ioc
 {
-    public interface IProjectItem
+    public interface IProjectItem : ISave, ILoad
     {
         DateTime UpdateTime { get; set; }
         bool IsFixed { get; set; }

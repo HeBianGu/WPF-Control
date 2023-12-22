@@ -50,7 +50,7 @@ namespace H.Modules.Login
         public override void LoadDefault()
         {
             base.LoadDefault();
-            this.HistoryPath = System.IO.Path.Combine(SystemPathSetting.Instance.Project, "Histroy.xml");
+            this.HistoryPath = System.IO.Path.Combine(SystemPathSetting.Instance.Project, "Histroy.json");
         }
     }
 }

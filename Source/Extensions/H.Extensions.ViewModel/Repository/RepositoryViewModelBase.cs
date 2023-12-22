@@ -79,7 +79,7 @@ namespace H.Extensions.ViewModel
             }
         }
 
-        public IStringRepository<TEntity> Repository => Ioc.GetService<IStringRepository<TEntity>>();
+        public IStringRepository<TEntity> Repository => DbIoc.GetService<IStringRepository<TEntity>>();
         //public IStringRepository<TEntity> Repository => ServiceRegistry.Instance.GetAllAssignableFrom<IStringRepository<TEntity>>()?.FirstOrDefault();
         private IObservableSource<TViewModel> _collection = new ObservableSource<TViewModel>();
         /// <summary> 说明  </summary>

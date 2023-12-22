@@ -2,18 +2,14 @@
 using H.DataBases.Share;
 using H.Extensions.ApplicationBase;
 using H.Extensions.ViewModel;
-using H.Modules.Login;
-using H.Modules.Project;
 using H.Providers.Ioc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Configuration;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -39,9 +35,6 @@ namespace H.App.FileManager
             services.AddFormMessageService();
             services.AddProject<FileProjectService>();
             services.AddSplashScreen();
-            services.AddDbContext<DataContext>(x => x.UseLazyLoadingProxies());
-            services.AddSingleton<IStringRepository<fm_dd_file>, DbContextRepository<DataContext, fm_dd_file>>();
-            services.AddSingleton<IRepositoryViewModel<fm_dd_file>, FileRepositoryViewModel>();
             services.AddTag(x =>
             {
                 x.Tags.Add(new Tag() { Name = "严重", Description = "这是一个严重标签", Background = Brushes.Purple });
@@ -51,46 +44,5 @@ namespace H.App.FileManager
                 x.Tags.Add(new Tag() { Name = "成功", Description = "这是一个严重标签", Background = Brushes.Green });
             });
         }
-    }
-
-    public class FileProjectService : ProjectServiceBase, IProjectService
-    {
-        public FileProjectService(IOptions<ProjectOptions> options) : base(options)
-        {
-
-        }
-
-        public IProjectItem Create()
-        {
-            return new FileProjectItem()
-            {
-                Path = SystemPathSetting.Instance.Project
-            };
-        }
-
-        protected override void OnCurrentChanged(IProjectItem o, IProjectItem n)
-        {
-            //if(Application.Current is ApplicationBase application)
-            //{
-            //    application.RefreshIoc();
-            //    application.OnSplashScreen();
-            //}
-            //  Do ：重新注册dbcontext
-            Ioc.ConfigureServices(x=>
-            {
-                x.AddDbContextBySetting<DataContext>();
-                //services.AddDbContext<DataContext>(x => x.UseLazyLoadingProxies());
-                //services.AddSingleton<IStringRepository<fm_dd_file>, DbContextRepository<DataContext, fm_dd_file>>();
-                //services.AddSingleton<IRepositoryViewModel<fm_dd_file>, FileRepositoryViewModel>();
-            });
-            base.OnCurrentChanged(o, n);
-        }
-    }
-
-    public class FileProjectItem : ProjectItemBase
-    {
-        [Required]
-        [Display(Name = "文件路径", Order = 2)]
-        public string BaseFolder { get; set; }
     }
 }

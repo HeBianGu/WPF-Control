@@ -4,11 +4,12 @@
 
 using H.Modules.Login;
 using H.Providers.Ioc;
+using H.Providers.Mvvm;
 using Microsoft.Extensions.Options;
 
 namespace H.Modules.Project
 {
-    public class ProjectService : ProjectServiceBase, IProjectService
+    public class ProjectService : ProjectServiceBase<ProjectItem>, IProjectService
     {
         IOptions<ProjectOptions> _options;
         public ProjectService(IOptions<ProjectOptions> options) : base(options)
@@ -16,7 +17,7 @@ namespace H.Modules.Project
             _options = options;
         }
 
-        public virtual IProjectItem Create()
+        public override IProjectItem Create()
         {
             return new ProjectItem()
             {

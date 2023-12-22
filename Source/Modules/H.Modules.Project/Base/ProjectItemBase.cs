@@ -75,5 +75,19 @@ namespace H.Modules.Project
                 RaisePropertyChanged();
             }
         }
+
+        public string Name => this.Title;
+
+        public virtual bool Save(out string message)
+        {
+            message = null;
+            return true;
+        }
+
+        public virtual bool Load(out string message)
+        {
+            message = null;
+            return true;
+        }
     }
 }

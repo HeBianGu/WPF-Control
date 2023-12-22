@@ -1,6 +1,7 @@
 ﻿<ApplicationBase x:Class="H.App.FileManager.App"
                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
                  xmlns:h="https://github.com/HeBianGu"
                  xmlns:local="clr-namespace:H.App.FileManager">
     <Application.Resources>
@@ -11,6 +12,36 @@
                 <ColorTheme Type="{x:Static h:ColorThemeType.Dark}" />
                 <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/ConciseControls.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type local:FileProjectItem}">
+                <DockPanel>
+                    <!--<Image Width="30"
+                                       Height="30"
+                                       Margin="5"
+                                       Source="{Binding Model.Path, Converter={x:Static h:ConverterService.FilePathToImageSourceConverter}}" />-->
+                    <!--<Image Width="30"
+                                       Height="30"
+                                       Margin="5" />-->
+                    <UniformGrid Columns="1">
+
+                        <Grid>
+
+                            <TextBlock Text="{Binding Title}" />
+                            <TextBlock Margin="10,0"
+                                       HorizontalAlignment="Right"
+                                       VerticalAlignment="Center"
+                                       DockPanel.Dock="Right"
+                                       Text="{Binding UpdateTime, Converter={x:Static h:Converter.GetDateTimeToString}}" />
+
+                        </Grid>
+                        <TextBlock FontSize="{DynamicResource {x:Static h:FontSizeKeys.Header6}}"
+                                   Foreground="{DynamicResource {x:Static h:BrushKeys.ForegroundAssist}}"
+                                   Text="{Binding BaseFolder}"
+                                   TextTrimming="CharacterEllipsis"
+                                   ToolTip="{Binding BaseFolder}" />
+                    </UniformGrid>
+                </DockPanel>
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </ApplicationBase>

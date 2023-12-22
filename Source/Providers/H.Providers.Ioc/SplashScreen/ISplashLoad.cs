@@ -2,9 +2,13 @@
 
 namespace H.Providers.Ioc
 {
-    public interface ISplashLoad
+    public interface ISplashLoad : ILoad
     {
         string Name { get; }
+    }
+
+    public interface ILoad
+    {
         bool Load(out string message);
     }
 }

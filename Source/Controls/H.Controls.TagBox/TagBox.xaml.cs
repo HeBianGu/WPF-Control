@@ -17,7 +17,7 @@ namespace H.Controls.TagBox
             var service = Ioc.GetService<ITagService>();
             if (service == null)
                 return;
-            service.Load();
+            service.Load(out string message);
             this.ItemsSource = service?.Collection;
         }
         private bool _flag = false;

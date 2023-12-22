@@ -8,6 +8,7 @@ namespace H.Controls.TagBox
     [Display(Name = "标签管理")]
     public class TagService : ITagService
     {
+        public string Name => "标签管理";
         public IEnumerable<ITag> Collection => TagOptions.Instance.Tags;
 
         public void Add(params ITag[] ts)
@@ -29,9 +30,11 @@ namespace H.Controls.TagBox
             }
         }
 
-        public void Load()
+        public bool Load(out string message)
         {
+            message = string.Empty;
             TagOptions.Instance.Load();
+            return true;
         }
 
         public bool Save(out string message)

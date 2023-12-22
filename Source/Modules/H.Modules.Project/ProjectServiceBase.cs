@@ -5,6 +5,7 @@ using H.Providers.Ioc;
 using H.Providers.Mvvm;
 using Microsoft.Extensions.Options;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -17,7 +18,7 @@ using System.Xml.Serialization;
 namespace H.Modules.Project
 {
     [Display(Name = "工程数据", GroupName = SystemSetting.GroupData)]
-    public abstract class ProjectServiceBase : NotifyPropertyChangedBase, ISave
+    public abstract class ProjectServiceBase<T> : NotifyPropertyChangedBase, IProjectService, IDataSourceService<T> where T : IProjectItem
     {
         IOptions<ProjectOptions> _options;
         public ProjectServiceBase(IOptions<ProjectOptions> options)
@@ -25,14 +26,14 @@ namespace H.Modules.Project
             _options = options;
         }
 
-        private ObservableCollection<IProjectItem> _projects = new ObservableCollection<IProjectItem>();
+        private IEnumerable<T> _collection = new ObservableCollection<T>();
         [Browsable(false)]
-        public ObservableCollection<IProjectItem> Projects
+        public IEnumerable<T> Collection
         {
-            get { return _projects; }
+            get { return _collection; }
             internal set
             {
-                _projects = value;
+                _collection = value;
                 RaisePropertyChanged();
             }
         }
@@ -50,6 +51,8 @@ namespace H.Modules.Project
                     return;
                 IProjectItem old = _current;
                 _current = value;
+                old?.Save(out string message);
+                _current?.Load(out message);
                 RaisePropertyChanged();
                 this.OnCurrentChanged(old, _current);
             }
@@ -67,38 +70,12 @@ namespace H.Modules.Project
             this.CurrentChanged?.Invoke(o, n);
         }
 
-        public virtual void Add(IProjectItem project)
-        {
-            if (this.Projects.Contains(project)) return;
-            this.Projects.Add(project);
-            this.OnItemChanged();
-        }
-
-        public virtual void Delete(Func<IProjectItem, bool> func)
-        {
-            var finds = this.Projects.Where(func).ToList();
-            foreach (var item in finds)
-            {
-                if (File.Exists(item.Path))
-                    File.Delete(item.Path);
-                if (!string.IsNullOrEmpty(item.Path))
-                {
-                    var find = Path.Combine(item.Path, item.Title + "" + this._options.Value.Extenstion);
-                    if (File.Exists(find))
-                        File.Delete(find);
-                }
-
-                this.Projects.Remove(item);
-            }
-            this.OnItemChanged();
-        }
-
         public virtual IEnumerable<IProjectItem> Where(Func<IProjectItem, bool> func = null)
         {
-            return func == null ? this.Projects : this.Projects.Where(func);
+            return func == null ? this.Collection.OfType<IProjectItem>() : this.Collection.Where(x => func(x)).OfType<IProjectItem>();
         }
 
-        protected ISerializerService GetSerializer() => new XmlSerializerService();
+        protected ISerializerService GetSerializer() => new JsonSerializerService();
         protected virtual void OnItemChanged()
         {
             if (this._options.Value.SaveMode == ProjectSaveMode.OnProjectChanged)
@@ -110,7 +87,7 @@ namespace H.Modules.Project
             message = null;
             try
             {
-                this.GetSerializer().Save(ProjectOptions.Instance.HistoryPath, new ProjectHistroyData() { ProjectItems = this.Projects.ToList() });
+                this.GetSerializer().Save(ProjectOptions.Instance.HistoryPath, new ProjectHistroyData<T>() { ProjectItems = this.Collection.ToList() });
                 return true;
             }
             catch (Exception ex)
@@ -119,10 +96,73 @@ namespace H.Modules.Project
                 return false;
             }
         }
+
+        public void Add(params T[] ts)
+        {
+            foreach (var item in ts)
+            {
+                if (this.Collection.Contains(item))
+                    return;
+                if (this.Collection is IList list)
+                    list.Add(item);
+                this.OnItemChanged();
+            }
+        }
+
+        public void Delete(params T[] ts)
+        {
+            foreach (var item in ts)
+            {
+                if (File.Exists(item.Path))
+                    File.Delete(item.Path);
+                if (!string.IsNullOrEmpty(item.Path))
+                {
+                    var find = Path.Combine(item.Path, item.Title + "" + this._options.Value.Extenstion);
+                    if (File.Exists(find))
+                        File.Delete(find);
+                }
+                if (this.Collection is IList list)
+                    list.Remove(item);
+            }
+            this.OnItemChanged();
+        }
+        public abstract IProjectItem Create();
+
+        public void Add(IProjectItem project)
+        {
+            if (project is T t)
+                this.Add(t);
+        }
+
+        public void Delete(Func<IProjectItem, bool> func)
+        {
+            var ps = this.Collection.Where(x => func(x));
+            this.Delete(ps.ToArray());
+        }
+
+        public virtual bool Load(out string message)
+        {
+            message = string.Empty;
+            var data = this.GetSerializer().Load<ProjectHistroyData<T>>(ProjectOptions.Instance.HistoryPath);
+            if (data != null)
+            {
+                foreach (var item in data.ProjectItems)
+                {
+                    this.Add(data.ProjectItems.ToArray());
+                }
+                this.Current = data.ProjectItems.FirstOrDefault();
+            }
+            if (this.Current == null)
+            {
+                this.Current = this.Create();
+                this.Current.Title = "新建项目";
+            }
+            return true;
+        }
     }
 
-    public class ProjectHistroyData
+    public class ProjectHistroyData<T>
     {
-        public List<IProjectItem> ProjectItems { get; set; }
+        public List<T> ProjectItems { get; set; }
     }
 }
