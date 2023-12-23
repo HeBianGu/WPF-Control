@@ -1,6 +1,7 @@
 ﻿using H.Extensions.Behvaiors;
 using H.Modules.Project;
 using H.Providers.Ioc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using System;
 using System.Collections.Generic;
@@ -73,13 +74,36 @@ namespace H.App.FileManager
         public string Project { get; set; }
     }
 
-    //public class DataContextFactory : IDesignTimeDbContextFactory<DataContext>
-    //{
-    //    public DataContext CreateDbContext(string[] args)
-    //    {
-    //        var optionsBuilder = new DbContextOptionsBuilder<DataContext>();
-    //        optionsBuilder.UseLazyLoadingProxies().UseSqlite("Data Source=Migration.db");
-    //        return new DataContext(optionsBuilder.Options);
-    //    }
-    //}
+    public class DataContextFactory : IDesignTimeDbContextFactory<DataContext>
+    {
+        public DataContext CreateDbContext(string[] args)
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<DataContext>();
+            optionsBuilder.UseLazyLoadingProxies().UseSqlite("Data Source=Migration.db");
+            return new DataContext(optionsBuilder.Options);
+        }
+    }
+
+    public class fm_dd_image : fm_dd_file
+    {
+        [DataGridColumn("Auto")]
+        [ReadOnly(true)]
+        [Display(Name = "宽度")]
+        public int PixelWidth { get; set; }
+
+        [DataGridColumn("Auto")]
+        [ReadOnly(true)]
+        [Display(Name = "高度")]
+        public int PixelHeight { get; set; }
+    }
+
+    public class fm_dd_video : fm_dd_image
+    {
+
+    }
+
+    public class fm_dd_audio : fm_dd_file
+    {
+
+    }
 }

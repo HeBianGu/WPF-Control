@@ -20,5 +20,8 @@ namespace H.App.FileManager
             base.OnConfiguring(optionsBuilder);
         }
         public DbSet<fm_dd_file> fm_dd_files { get; set; }
+        public DbSet<fm_dd_image> fm_dd_images { get; set; }
+        public DbSet<fm_dd_video> fm_dd_videos { get; set; }
+        public DbSet<fm_dd_audio> fm_dd_audios { get; set; }
     }
 }

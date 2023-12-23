@@ -6,8 +6,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Policy;
 using System.Windows;
 using System.Windows.Threading;
+using static System.Formats.Asn1.AsnWriter;
+using System.Xml.Linq;
 
 namespace H.App.FileManager
 {
@@ -15,7 +18,7 @@ namespace H.App.FileManager
     {
         public override void RefreshData(params string[] includes)
         {
-            
+
             includes = includes ?? this.GetIncludes()?.ToArray();
             IEnumerable<SelectViewModel<fm_dd_file>> collection = includes == null ? this.Repository.GetList().Select(x => new SelectViewModel<fm_dd_file>(x))
             : this.Repository.GetList(includes).Select(x => new SelectViewModel<fm_dd_file>(x));
@@ -37,22 +40,44 @@ namespace H.App.FileManager
                        x.Value = "正在加载数据...";
                        var files = projectItem.BaseFolder.GetAllFiles();
                        this.Repository.Clear();
-                       await this.Add(files.Select(x => new fm_dd_file()
+
+                       foreach (var file in files)
                        {
-                           Name = Path.GetFileNameWithoutExtension(x),
-                           Url = Path.GetFullPath(x),
-                           Extend = Path.GetExtension(x),
-                           Size = new FileInfo(x).Length,
-                           Score = random.Next(0, 10).ToString(),
-                           Favorite = random.Next(10) == 1,
-                           Project = Ioc.GetService<IProjectService>()?.Current?.Title
-                       }).ToArray());
+                           fm_dd_file fm_Dd_File = null;
+                           if (file.IsImage())
+                           {
+                               fm_dd_image image = new fm_dd_image();
+                               image.PixelHeight = 200;
+                               image.PixelWidth = 400;
+                               fm_Dd_File = image;
+                           }
+                           else if (file.IsVedio())
+                           {
+                               fm_Dd_File = new fm_dd_video();
+                           }
+                           else if (file.IsAudio())
+                           {
+                               fm_Dd_File = new fm_dd_audio();
+                           }
+                           else
+                           {
+                               fm_Dd_File = new fm_dd_file();
+                           }
+                           fm_Dd_File.Name = Path.GetFileNameWithoutExtension(file);
+                           fm_Dd_File.Url = Path.GetFullPath(file);
+                           fm_Dd_File.Extend = Path.GetExtension(file);
+                           fm_Dd_File.Size = new FileInfo(file).Length;
+                           fm_Dd_File.Score = random.Next(0, 10).ToString();
+                           fm_Dd_File.Favorite = random.Next(10) == 1;
+                           fm_Dd_File.Project = Ioc.GetService<IProjectService>()?.Current?.Title;
+                           await this.Add(fm_Dd_File);
+                       }
                        x.Value = "加载完成，正在保存...";
                        return await this.Save();
                    });
                 if (r > 0)
                     IocMessage.Snack.ShowInfo("保存完成");
-                else    
+                else
                     IocMessage.Snack.ShowError("保存失败");
             }
         }, (s, e) => IocProject.Instance.Current is FileProjectItem);

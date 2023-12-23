@@ -43,6 +43,17 @@ namespace H.App.FileManager
                 x.Tags.Add(new Tag() { Name = "运行", Description = "这是一个严重标签", Background = Brushes.Blue });
                 x.Tags.Add(new Tag() { Name = "成功", Description = "这是一个严重标签", Background = Brushes.Green });
             });
+            services.AddSetting();
+        }
+
+        protected override void Configure(IApplicationBuilder app)
+        {
+            base.Configure(app);
+
+            app.UseSetting(x=>
+            {
+                x.Add(AppSetting.Instance);
+            });
         }
     }
 }

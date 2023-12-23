@@ -79,7 +79,6 @@ namespace H.Extensions.ViewModel
                     Ioc<IOperationService>.Instance?.Log<TEntity>($"新增", m.ID, OperationType.Add);
                 }
                 IocMessage.Snack?.ShowInfo("新增成功");
-
                 return;
             }
             int r = await this.Repository?.InsertRangeAsync(ms);

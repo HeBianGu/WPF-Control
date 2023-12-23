@@ -343,29 +343,6 @@ namespace H.Extensions.ValueConverter
 
         public static ConverterBase<string, List<string>> GetAllFile => new ConverterBase<string, List<string>>(x => x.GetAllFiles());
 
-        /// <summary> 获取当前文件夹下所有匹配的文件 </summary>
-        public static List<string> GetAllFiles(this string dirPath, Predicate<FileInfo> match = null)
-        {
-            List<string> ss = new List<string>();
-            if (!Directory.Exists(dirPath)) 
-                return ss;
-            DirectoryInfo dir = new DirectoryInfo(dirPath);
-            foreach (FileSystemInfo d in dir.GetFileSystemInfos())
-            {
-                if (d is DirectoryInfo)
-                {
-                    DirectoryInfo dd = d as DirectoryInfo;
-                    ss.AddRange(dd.FullName.GetAllFiles(match));
-                }
-                else if (d is FileInfo)
-                {
-                    FileInfo dd = d as FileInfo;
-                    if (match == null || match(dd))
-                        ss.Add(d.FullName);
-                }
-            }
-            return ss;
-        }
         #endregion
 
         #region - Bool -
