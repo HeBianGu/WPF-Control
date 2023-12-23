@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace H.Providers.Ioc
 {
-    public interface IDataSourceService<T> : ISplashLoad, ISave
+    public interface IDataSourceService<T>
     {
         IEnumerable<T> Collection { get; }
         void Add(params T[] ts);

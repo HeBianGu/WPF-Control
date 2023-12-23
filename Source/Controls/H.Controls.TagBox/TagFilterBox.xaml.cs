@@ -22,6 +22,34 @@ namespace H.Controls.TagBox
             this.RefreshData();
         }
 
+
+        public string GroupName
+        {
+            get { return (string)GetValue(GroupNameProperty); }
+            set { SetValue(GroupNameProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty GroupNameProperty =
+            DependencyProperty.Register("GroupName", typeof(string), typeof(TagFilterBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
+            {
+                TagFilterBox control = d as TagFilterBox;
+
+                if (control == null) return;
+
+                if (e.OldValue is string o)
+                {
+
+                }
+
+                if (e.NewValue is string n)
+                {
+
+                }
+                control.RefreshData();
+            }));
+
+
         public void RefreshData()
         {
             this.DelayInvoke(() => this.ItemsSource = this.GetItemsSource());
@@ -32,7 +60,7 @@ namespace H.Controls.TagBox
         {
             if (this.UseCheckAll)
                 yield return "全选";
-            foreach (object value in TagOptions.Instance.Tags)
+            foreach (object value in TagOptions.Instance.Tags.Where(x => GroupName == this.GroupName))
             {
                 yield return value;
             }

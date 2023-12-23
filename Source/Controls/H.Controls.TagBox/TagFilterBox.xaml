@@ -2,14 +2,21 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.TagBox">
-    <Style BasedOn="{StaticResource {x:Static h:ListBoxKeys.Default}}"
-           TargetType="{x:Type local:TagFilterBox}">
-        <Setter Property="ItemsSource" Value="{Binding Source={x:Static local:TagOptions.Instance}, Path=Tags}" />
+    <Style BasedOn="{StaticResource {x:Static h:ListBoxKeys.Default}}" TargetType="{x:Type local:TagFilterBox}">
+        <Setter Property="ItemsSource">
+            <Setter.Value>
+                <MultiBinding Converter="{local:TagWhereByGroupConverter}">
+                    <MultiBinding.Bindings>
+                        <Binding Path="Collection" Source="{x:Static local:IocTagService.Instance}" />
+                        <Binding Path="GroupName" RelativeSource="{RelativeSource Mode=Self}" />
+                    </MultiBinding.Bindings>
+                </MultiBinding>
+            </Setter.Value>
+        </Setter>
         <Setter Property="SelectionMode" Value="Multiple" />
         <Setter Property="ItemContainerStyle">
             <Setter.Value>
-                <Style BasedOn="{StaticResource {x:Static h:ListBoxItemKeys.Default}}"
-                       TargetType="ListBoxItem">
+                <Style BasedOn="{StaticResource {x:Static h:ListBoxItemKeys.Default}}" TargetType="ListBoxItem">
                     <Setter Property="BorderThickness" Value="1" />
                     <Setter Property="Margin" Value="1" />
                 </Style>

@@ -10,6 +10,7 @@ namespace H.Controls.TagBox
         {
             var service = Ioc.GetService<ITagService>();
             var tag = service.Create();
+            tag.GroupName = parameter?.ToString();
             var r = await IocMessage.Form.ShowEdit(tag);
             if (r != true)
                 return;

@@ -1,5 +1,6 @@
 ﻿using H.Providers.Mvvm;
 using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 using System.Windows.Media;
@@ -42,6 +43,19 @@ namespace H.Controls.TagBox
             set
             {
                 _description = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        private string _groupName;
+        [Browsable(false)]
+        [Display(Name = "分组")]
+        public string GroupName
+        {
+            get { return _groupName; }
+            set
+            {
+                _groupName = value;
                 RaisePropertyChanged();
             }
         }

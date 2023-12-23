@@ -30,7 +30,7 @@ namespace System
             services.AddOptions();
             services.TryAdd(ServiceDescriptor.Singleton<IProjectService, T>());
             services.TryAdd(ServiceDescriptor.Singleton<IProjectViewPresenter, ProjectViewPresenter>());
-            services.TryAdd(ServiceDescriptor.Singleton<ISplashLoad, ProjectLoadService>());
+            //services.TryAdd(ServiceDescriptor.Singleton<ISplashLoad, ProjectLoadService>());
 
             if (setupAction != null)
                 services.Configure(setupAction);

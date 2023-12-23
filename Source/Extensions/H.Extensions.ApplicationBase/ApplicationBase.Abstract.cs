@@ -2,6 +2,7 @@
 using H.Providers.Ioc;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Linq;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
@@ -27,7 +28,7 @@ namespace H.Extensions.ApplicationBase
         /// <summary>
         /// 加载启动页面
         /// </summary>
-        public virtual async void OnSplashScreen()
+        public virtual void OnSplashScreen()
         {
             int sleep = 1000;
             var presenter = Ioc.Services.GetService<ISplashScreenViewPresenter>();
@@ -46,7 +47,7 @@ namespace H.Extensions.ApplicationBase
 
                 if (c?.IsCancel != true)
                 {
-                    System.Collections.Generic.IEnumerable<ISplashLoad> loads = Ioc.Services.GetServices<ISplashLoad>();
+                    var loads = Ioc.GetAssignableFromServices<ISplashLoad>().ToList();
                     foreach (ISplashLoad load in loads)
                     {
                         if (load == null)

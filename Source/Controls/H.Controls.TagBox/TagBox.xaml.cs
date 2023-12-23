@@ -12,14 +12,48 @@ namespace H.Controls.TagBox
             DefaultStyleKeyProperty.OverrideMetadata(typeof(TagBox), new FrameworkPropertyMetadata(typeof(TagBox)));
         }
 
-        public TagBox()
+        //public TagBox()
+        //{
+        //    this.RefreshData();
+        //}
+
+
+        //private void RefreshData()
+        //{
+        //    var service = Ioc.GetService<ITagService>();
+        //    if (service == null)
+        //        return;
+        //    service.Load(out string message);
+        //    this.ItemsSource = service?.Collection;
+        //}
+
+        public string GroupName
         {
-            var service = Ioc.GetService<ITagService>();
-            if (service == null)
-                return;
-            service.Load(out string message);
-            this.ItemsSource = service?.Collection;
+            get { return (string)GetValue(GroupNameProperty); }
+            set { SetValue(GroupNameProperty, value); }
         }
+
+        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty GroupNameProperty =
+            DependencyProperty.Register("GroupName", typeof(string), typeof(TagBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
+            {
+                TagBox control = d as TagBox;
+
+                if (control == null) return;
+
+                if (e.OldValue is string o)
+                {
+
+                }
+
+                if (e.NewValue is string n)
+                {
+
+                }
+                //control.RefreshData();
+            }));
+
+
         private bool _flag = false;
         protected override void OnSelectionChanged(SelectionChangedEventArgs e)
         {

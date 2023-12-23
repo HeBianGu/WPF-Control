@@ -71,10 +71,25 @@ namespace System
         {
             foreach (var item in _serviceCollection)
             {
-                if (item.ServiceType is T t)
+                if (typeof(T).IsAssignableFrom(item.ServiceType))
                 {
-                    if (predicate?.Invoke(t) != false)
-                        yield return (T)item.ImplementationInstance;
+                    if (item.ImplementationInstance == null)
+                    {
+                        var instance = Ioc.Services.GetService(item.ServiceType);
+                        if(instance is T it)
+                        {
+                            if (predicate?.Invoke(it) != false)
+                                yield return it;
+                        }
+                    }
+                    else
+                    {
+                        if (item.ImplementationInstance is T t)
+                        {
+                            if (predicate?.Invoke(t) != false)
+                                yield return (T)item.ImplementationInstance;
+                        }
+                    }
                 }
             }
         }

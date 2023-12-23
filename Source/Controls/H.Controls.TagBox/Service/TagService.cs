@@ -1,4 +1,6 @@
-﻿using System;
+﻿using H.Providers.Mvvm;
+using Microsoft.Extensions.Options;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -6,14 +8,28 @@ using System.Linq;
 namespace H.Controls.TagBox
 {
     [Display(Name = "标签管理")]
-    public class TagService : ITagService
+    public class TagService : NotifyPropertyChangedBase, ITagService
     {
+        IOptions<TagOptions> _options;
+        public TagService(IOptions<TagOptions> options)
+        {
+            _options = options;
+        }
         public string Name => "标签管理";
-        public IEnumerable<ITag> Collection => TagOptions.Instance.Tags;
+        private IEnumerable<ITag> _collection;
+        public IEnumerable<ITag> Collection
+        {
+            get { return _collection; }
+            set
+            {
+                _collection = value;
+                RaisePropertyChanged();
+            }
+        }
 
         public void Add(params ITag[] ts)
         {
-            TagOptions.Instance.Tags.AddRange(ts.OfType<Tag>());
+            this._options.Value.Tags.AddRange(ts.OfType<Tag>());
         }
 
         public ITag Create()
@@ -26,20 +42,21 @@ namespace H.Controls.TagBox
             var tags = ts.OfType<Tag>();
             foreach (var t in tags)
             {
-                TagOptions.Instance.Tags.Remove(t);
+                this._options.Value.Tags.Remove(t);
             }
         }
 
         public bool Load(out string message)
         {
             message = string.Empty;
-            TagOptions.Instance.Load();
+            this._options.Value.Load();
+            this.Collection = this._options.Value.Tags;
             return true;
         }
 
         public bool Save(out string message)
         {
-            return TagOptions.Instance.Save(out message);
+            return this._options.Value.Save(out message);
         }
     }
 }

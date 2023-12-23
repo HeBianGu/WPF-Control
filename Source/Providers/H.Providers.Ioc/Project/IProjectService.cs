@@ -15,9 +15,9 @@ namespace H.Providers.Ioc
         Action<IProjectItem, IProjectItem> CurrentChanged { get; set; }
     }
 
-    public interface IProjectLoadService : ISplashLoad
-    {
+    //public interface IProjectLoadService : ISplashLoad
+    //{
 
-    }
+    //}
 
 }
