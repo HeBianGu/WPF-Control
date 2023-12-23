@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace H.Providers.Ioc
 {
-    public interface IProjectService : ISave, ISplashLoad
+    public interface IProjectService : ISplashSave, ISplashLoad
     {
         IProjectItem Current { get; set; }
         IProjectItem Create();

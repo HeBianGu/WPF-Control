@@ -28,7 +28,7 @@ namespace H.Extensions.ApplicationBase
         /// <summary>
         /// 加载启动页面
         /// </summary>
-        public virtual void OnSplashScreen()
+        protected virtual void OnSplashScreen(StartupEventArgs e)
         {
             int sleep = 1000;
             var presenter = Ioc.Services.GetService<ISplashScreenViewPresenter>();

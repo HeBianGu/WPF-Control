@@ -12,7 +12,7 @@ namespace System
         {
             service.AddOptions();
             service.TryAdd(ServiceDescriptor.Singleton<ILicenseService, LicenseService>());
-            service.TryAdd(ServiceDescriptor.Singleton<ISplashLoad, LicenseLoadService>());
+            service.TryAdd(ServiceDescriptor.Singleton<ILicenseLoadService, LicenseLoadService>());
             service.TryAdd(ServiceDescriptor.Singleton<ILicenseViewPresenter, LicenseViewPresenter>());
             service.TryAdd(ServiceDescriptor.Singleton<ILicenseFlagViewPresenter, LicenseFlagViewPresenter>());
             service.TryAdd(ServiceDescriptor.Singleton<IVipFlagViewPresenter, VipFlagViewPresenter>());

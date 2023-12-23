@@ -10,7 +10,7 @@ namespace H.Providers.Ioc
     {
         public override async void Execute(object parameter)
         {
-            var saves = System.Ioc.Services.GetServices<ISave>();
+            var saves = System.Ioc.Services.GetServices<ISplashSave>();
             if (saves.Count() > 0)
             {
                 var r = await IocMessage.Dialog.ShowString((f, x) =>
@@ -37,7 +37,7 @@ namespace H.Providers.Ioc
 
         public override bool CanExecute(object parameter)
         {
-            return System.Ioc.Services != null && System.Ioc.Services.GetServices<ISave>().Count() > 0;
+            return System.Ioc.Services != null && System.Ioc.Services.GetServices<ISplashSave>().Count() > 0;
         }
     }
 }

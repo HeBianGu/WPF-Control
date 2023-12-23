@@ -17,7 +17,7 @@ namespace System
         {
             services.AddOptions();
             services.TryAdd(ServiceDescriptor.Singleton<IUpgradeService, UpdateService>());
-            services.TryAdd(ServiceDescriptor.Singleton<ISplashLoad, UpdateService>());
+            //services.TryAdd(ServiceDescriptor.Singleton<ISplashLoad, UpdateService>());
             services.TryAdd(ServiceDescriptor.Singleton<IWebXmlSerializerService, XmlWebSerializerService>());
             if (setupAction != null)
                 services.Configure(setupAction);

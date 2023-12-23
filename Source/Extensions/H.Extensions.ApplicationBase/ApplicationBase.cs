@@ -33,7 +33,7 @@ namespace H.Extensions.ApplicationBase
             this.OnSingleton(e);
             base.OnStartup(e);
             this.CreateMainWindow(e);
-            this.OnSplashScreen();
+            this.OnSplashScreen(e);
             this.OnLogin(e);
             this.MainWindow.Show();
             this.ILogger?.Info("系统启动");

@@ -27,7 +27,7 @@ namespace H.Styles.Default
 
             if (Ioc.Services != null && this.UseSave)
             {
-                var saves = Ioc.Services.GetServices<ISave>();
+                var saves = Ioc.Services.GetServices<ISplashSave>();
                 if (saves.Count() > 0)
                 {
                     var r = await IocMessage.Dialog.ShowString((f, x) =>

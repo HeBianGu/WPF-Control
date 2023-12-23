@@ -4,7 +4,6 @@ namespace H.Providers.Ioc
 {
     public interface ISave
     {
-        string Name { get; }
         bool Save(out string message);
     }
 }

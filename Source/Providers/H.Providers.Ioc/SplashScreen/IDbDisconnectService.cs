@@ -2,7 +2,7 @@
 
 namespace H.Providers.Ioc
 {
-    public interface IDbDisconnectService : ISave
+    public interface IDbDisconnectService : ISplashSave
     {
 
     }
