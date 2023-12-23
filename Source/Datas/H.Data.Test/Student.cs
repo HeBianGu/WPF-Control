@@ -1,13 +1,9 @@
 ﻿using H.Providers.Mvvm;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Globalization;
 using System.Linq;
-using System.Windows.Controls;
-using System.Windows.Markup;
 
 namespace H.Data.Test
 {
@@ -104,46 +100,6 @@ namespace H.Data.Test
         {
             List<Student> ss = Enumerable.Range(0, c).Select(x => Student.Random()).ToList();
             return new Students(ss);
-        }
-    }
-
-    public class Students : ObservableCollection<Student>
-    {
-        public Students()
-        {
-
-        }
-        public Students(IEnumerable<Student> collection) : base(collection)
-        {
-
-        }
-    }
-
-    public class GetStudentsExtension : MarkupExtension
-    {
-        public int Count { get; set; } = 10;
-
-        public override object ProvideValue(IServiceProvider serviceProvider)
-        {
-            return Enumerable.Range(0, this.Count).Select(x => new Student());
-        }
-    }
-
-    public class GetStudentExtension : MarkupExtension
-    {
-        public override object ProvideValue(IServiceProvider serviceProvider)
-        {
-            return Student.Random();
-        }
-    }
-
-    public class StudentValidationRule : ValidationRule
-    {
-        public override System.Windows.Controls.ValidationResult Validate(object value, CultureInfo cultureInfo)
-        {
-            if (value is Student student)
-                return student.Age > 30 ? System.Windows.Controls.ValidationResult.ValidResult : new System.Windows.Controls.ValidationResult(false, "Age不应该大于50");
-            return System.Windows.Controls.ValidationResult.ValidResult;
         }
     }
 }

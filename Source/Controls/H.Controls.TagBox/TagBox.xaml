@@ -13,7 +13,7 @@
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
         <!--<Setter Property="ItemsSource" Value="{Binding Source={x:Static local:TagOptions.Instance}, Path=Tags}" />-->
-        <Setter Property="ItemsSource">
+        <!--<Setter Property="ItemsSource">
             <Setter.Value>
                 <MultiBinding Converter="{local:TagWhereByGroupConverter}">
                     <MultiBinding.Bindings>
@@ -22,7 +22,7 @@
                     </MultiBinding.Bindings>
                 </MultiBinding>
             </Setter.Value>
-        </Setter>
+        </Setter>-->
         <Setter Property="SelectionMode" Value="Multiple" />
         <Setter Property="ItemContainerStyle">
             <Setter.Value>
@@ -131,6 +131,7 @@
                                                    DockPanel.Dock="Top"
                                                    Text="标签列表" />
                                         <Button Command="{local:ManageTagCommand}"
+                                                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=local:TagBox}, Path=GroupName}"
                                                 Content="管理标签"
                                                 DockPanel.Dock="Bottom">
                                             <b:Interaction.Triggers>

@@ -3,6 +3,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
@@ -24,7 +25,34 @@ namespace H.Extensions.Behvaiors
             set { SetValue(TypeProperty, value); }
         }
 
-        
+
+        public string UsePropertyNames
+        {
+            get { return (string)GetValue(UsePropertyNamesProperty); }
+            set { SetValue(UsePropertyNamesProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty UsePropertyNamesProperty =
+            DependencyProperty.Register("UsePropertyNames", typeof(string), typeof(DataGridAutoColumnBehavior), new FrameworkPropertyMetadata(default(string), (d, e) =>
+            {
+                DataGridAutoColumnBehavior control = d as DataGridAutoColumnBehavior;
+
+                if (control == null) return;
+
+                if (e.OldValue is string o)
+                {
+
+                }
+
+                if (e.NewValue is string n)
+                {
+
+                }
+                control.GenerateColumns();
+            }));
+
+
         public static readonly DependencyProperty TypeProperty =
             DependencyProperty.Register("Type", typeof(Type), typeof(DataGridAutoColumnBehavior), new FrameworkPropertyMetadata(default(Type), (d, e) =>
             {
@@ -53,7 +81,7 @@ namespace H.Extensions.Behvaiors
             set { SetValue(BindingPathProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty BindingPathProperty =
             DependencyProperty.Register("BindingPath", typeof(string), typeof(DataGridAutoColumnBehavior), new FrameworkPropertyMetadata("{0}", (d, e) =>
             {
@@ -80,7 +108,7 @@ namespace H.Extensions.Behvaiors
             set { SetValue(DataGridLengthProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty DataGridLengthProperty =
             DependencyProperty.Register("DataGridLength", typeof(DataGridLength), typeof(DataGridAutoColumnBehavior), new FrameworkPropertyMetadata(DataGridLength.Auto, (d, e) =>
             {
@@ -142,6 +170,13 @@ namespace H.Extensions.Behvaiors
                 BrowsableAttribute browsable = p.GetCustomAttribute<BrowsableAttribute>();
                 if (browsable?.Browsable == false)
                     continue;
+
+                if (!string.IsNullOrEmpty(this.UsePropertyNames))
+                {
+                    var names = this.UsePropertyNames.Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                    if (names.Count() > 0 && !names.Any(x => x == p.Name))
+                        continue;
+                }
                 DisplayAttribute display = p.GetCustomAttribute<DisplayAttribute>();
                 ReadOnlyAttribute readOnly = p.GetCustomAttribute<ReadOnlyAttribute>();
                 DataGridColumnAttribute columnAttribute = p.GetCustomAttribute<DataGridColumnAttribute>();

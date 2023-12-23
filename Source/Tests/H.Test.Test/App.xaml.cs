@@ -39,6 +39,12 @@ namespace H.Test.Test
                 x.Tags.Add(new Tag() { Name = "警告", Description = "这是一个严重标签", Background = Brushes.Orange });
                 x.Tags.Add(new Tag() { Name = "运行", Description = "这是一个严重标签", Background = Brushes.Blue });
                 x.Tags.Add(new Tag() { Name = "成功", Description = "这是一个严重标签", Background = Brushes.Green });
+
+                x.Tags.Add(new Tag() { Name = "测试1", GroupName="Test",Description = "这是一个严重标签", Background = Brushes.Purple });
+                x.Tags.Add(new Tag() { Name = "测试2", GroupName = "Test", Description = "这是一个严重标签", Background = Brushes.Red });
+                x.Tags.Add(new Tag() { Name = "测试3", GroupName = "Test", Description = "这是一个严重标签", Background = Brushes.Orange });
+                x.Tags.Add(new Tag() { Name = "测试4", GroupName = "Test", Description = "这是一个严重标签", Background = Brushes.Blue });
+                x.Tags.Add(new Tag() { Name = "测试5", GroupName = "Test", Description = "这是一个严重标签", Background = Brushes.Green });
             });
         }
 

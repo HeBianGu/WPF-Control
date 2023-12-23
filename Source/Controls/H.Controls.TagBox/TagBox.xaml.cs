@@ -12,20 +12,20 @@ namespace H.Controls.TagBox
             DefaultStyleKeyProperty.OverrideMetadata(typeof(TagBox), new FrameworkPropertyMetadata(typeof(TagBox)));
         }
 
-        //public TagBox()
-        //{
-        //    this.RefreshData();
-        //}
+        public TagBox()
+        {
+            IocTagService.Instance.CollectionChanged += (l, k) =>
+            {
+                this.RefreshData();
+            };
+        }
 
 
-        //private void RefreshData()
-        //{
-        //    var service = Ioc.GetService<ITagService>();
-        //    if (service == null)
-        //        return;
-        //    service.Load(out string message);
-        //    this.ItemsSource = service?.Collection;
-        //}
+        private void RefreshData()
+        {
+            var service = Ioc.GetService<ITagService>();
+            this.ItemsSource = service?.Collection.Where(x => x.GroupName == this.GroupName);
+        }
 
         public string GroupName
         {

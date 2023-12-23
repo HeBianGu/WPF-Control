@@ -3,7 +3,7 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.TagBox">
     <Style BasedOn="{StaticResource {x:Static h:ListBoxKeys.Default}}" TargetType="{x:Type local:TagFilterBox}">
-        <Setter Property="ItemsSource">
+        <!--<Setter Property="ItemsSource">
             <Setter.Value>
                 <MultiBinding Converter="{local:TagWhereByGroupConverter}">
                     <MultiBinding.Bindings>
@@ -12,7 +12,7 @@
                     </MultiBinding.Bindings>
                 </MultiBinding>
             </Setter.Value>
-        </Setter>
+        </Setter>-->
         <Setter Property="SelectionMode" Value="Multiple" />
         <Setter Property="ItemContainerStyle">
             <Setter.Value>

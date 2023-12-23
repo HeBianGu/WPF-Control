@@ -20,8 +20,11 @@ namespace H.Controls.TagBox
         {
             this.Filter = new TagFilter(this);
             this.RefreshData();
+            IocTagService.Instance.CollectionChanged += (l, k) =>
+            {
+                this.RefreshData();
+            };
         }
-
 
         public string GroupName
         {
@@ -55,12 +58,11 @@ namespace H.Controls.TagBox
             this.DelayInvoke(() => this.ItemsSource = this.GetItemsSource());
         }
 
-
         private IEnumerable GetItemsSource()
         {
             if (this.UseCheckAll)
                 yield return "全选";
-            foreach (object value in TagOptions.Instance.Tags.Where(x => GroupName == this.GroupName))
+            foreach (object value in IocTagService.Instance.Collection.Where(x => x.GroupName == this.GroupName))
             {
                 yield return value;
             }
@@ -142,7 +144,6 @@ namespace H.Controls.TagBox
                 }
                 control.RefreshData();
             }));
-
 
         public IFilter Filter
         {

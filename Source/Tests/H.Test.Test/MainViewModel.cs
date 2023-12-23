@@ -14,8 +14,6 @@ namespace H.Test.Test
     /// <summary> 说明</summary>
     public class MainViewModel : NotifyPropertyChanged
     {
-        #region - 属性 -
-
         private Students _students = Student.Randoms(100);
         /// <summary> 说明  </summary>
         public Students Students
@@ -67,13 +65,28 @@ namespace H.Test.Test
             }
         }
 
+        private TestViewModels _testViewModels= TestViewModel.Randoms(100);
+        /// <summary> 说明  </summary>
+        public TestViewModels TestViewModels
+        {
+            get { return _testViewModels; }
+            set
+            {
+                _testViewModels = value;
+                RaisePropertyChanged();
+            }
+        }
 
-        #endregion
-
-        #region - 命令 -
-
-        #endregion
-
+        private TestViewModel _selectedTestViewModel;
+        /// <summary> 说明  </summary>
+        public TestViewModel SelectedTestViewModel
+        {
+            get { return _selectedTestViewModel; }
+            set
+            {
+                _selectedTestViewModel = value;
+                RaisePropertyChanged();
+            }
+        }
     }
-
 }

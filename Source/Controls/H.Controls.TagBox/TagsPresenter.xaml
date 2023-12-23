@@ -4,7 +4,7 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.TagBox">
     <DataTemplate DataType="{x:Type local:TagsPresenter}">
-        <ListBox ItemsSource="{Binding TagServce.Collection}">
+        <ListBox ItemsSource="{Binding Collection}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <DockPanel>
@@ -22,8 +22,7 @@
                                 Height="6"
                                 Background="{Binding Background}"
                                 DockPanel.Dock="Left" />
-                        <TextBlock VerticalAlignment="Center"
-                                   Text="{Binding Name}" />
+                        <TextBlock VerticalAlignment="Center" Text="{Binding Name}" />
                     </DockPanel>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
