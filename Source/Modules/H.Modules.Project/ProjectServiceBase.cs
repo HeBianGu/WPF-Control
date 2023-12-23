@@ -39,6 +39,9 @@ namespace H.Modules.Project
         }
 
         private IProjectItem _current;
+
+        public event EventHandler CollectionChanged;
+
         [JsonIgnore]
         [XmlIgnore]
         [Browsable(false)]

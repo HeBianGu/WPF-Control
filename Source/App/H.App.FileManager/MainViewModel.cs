@@ -3,7 +3,7 @@ using H.DataBases.Share;
 using H.Extensions.ViewModel;
 using H.Providers.Mvvm;
 using Microsoft.Extensions.DependencyInjection;
-using System;
+using System.Reflection;
 
 namespace H.App.FileManager
 {

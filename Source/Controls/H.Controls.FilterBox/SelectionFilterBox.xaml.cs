@@ -12,7 +12,21 @@ using System.Windows.Threading;
 
 namespace H.Controls.FilterBox
 {
-    public class SelectionFilterBox : ListBox
+    public interface ISelectionFilterBox
+    {
+        IEnumerable Datas { get; set; }
+        string DisplayName { get; set; }
+        IFilter Filter { get; set; }
+        string PropertyName { get; set; }
+        Type Type { get; set; }
+        bool UseCheckAll { get; set; }
+        event RoutedEventHandler FilterChanged;
+        ListBoxItem GetCheckAllItem();
+        PropertyInfo GetPropertyInfo();
+        void RefreshData();
+    }
+
+    public class SelectionFilterBox : ListBox, ISelectionFilterBox
     {
         static SelectionFilterBox()
         {
@@ -310,7 +324,6 @@ namespace H.Controls.FilterBox
                        return this.ItemContainerGenerator.ContainerFromIndex(0) as ListBoxItem;
                    return null;
                });
-
         }
     }
 

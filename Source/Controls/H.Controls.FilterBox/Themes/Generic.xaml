@@ -10,6 +10,7 @@
         <ResourceDictionary Source="pack://application:,,,/H.Controls.FilterBox;component/PropertyFilterBox/PropertyConfidtionsPrensenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.FilterBox;component/TextFilterBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.FilterBox;component/SelectionFilterBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.FilterBox;component/FilterBox.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <DataTemplate DataType="{x:Type local:StringFilter}">

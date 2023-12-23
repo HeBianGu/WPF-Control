@@ -9,7 +9,17 @@ using System.Windows.Controls;
 
 namespace H.Controls.FilterBox
 {
-    public class TextFilterBox : TextBox
+    public interface ITextFilterBox
+    {
+        string DisplayName { get; set; }
+        IFilter Filter { get; }
+        string PropertyNames { get; set; }
+        StringComparison StringComparison { get; set; }
+        bool UseSearchable { get; set; }
+        event RoutedEventHandler FilterChanged;
+    }
+
+    public class TextFilterBox : TextBox, ITextFilterBox
     {
         static TextFilterBox()
         {
@@ -35,7 +45,7 @@ namespace H.Controls.FilterBox
             set { SetValue(DisplayNameProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty DisplayNameProperty =
             DependencyProperty.Register("DisplayName", typeof(string), typeof(TextFilterBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
             {
@@ -61,7 +71,7 @@ namespace H.Controls.FilterBox
             set { SetValue(UseSearchableProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty UseSearchableProperty =
             DependencyProperty.Register("UseSearchable", typeof(bool), typeof(TextFilterBox), new FrameworkPropertyMetadata(default(bool), (d, e) =>
             {
@@ -87,7 +97,7 @@ namespace H.Controls.FilterBox
             set { SetValue(PropertyNamesProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty PropertyNamesProperty =
             DependencyProperty.Register("PropertyNames", typeof(string), typeof(TextFilterBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
             {
@@ -113,7 +123,7 @@ namespace H.Controls.FilterBox
             set { SetValue(StringComparisonProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty StringComparisonProperty =
             DependencyProperty.Register("StringComparison", typeof(StringComparison), typeof(TextFilterBox), new FrameworkPropertyMetadata(StringComparison.OrdinalIgnoreCase, (d, e) =>
             {
@@ -141,7 +151,7 @@ namespace H.Controls.FilterBox
             private set { SetValue(FilterProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty FilterProperty =
             DependencyProperty.Register("Filter", typeof(IFilter), typeof(TextFilterBox), new FrameworkPropertyMetadata(default(IFilter), (d, e) =>
             {
@@ -216,4 +226,5 @@ namespace H.Controls.FilterBox
 
         }
     }
+
 }

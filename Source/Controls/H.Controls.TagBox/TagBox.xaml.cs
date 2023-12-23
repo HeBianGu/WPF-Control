@@ -16,7 +16,11 @@ namespace H.Controls.TagBox
         {
             IocTagService.Instance.CollectionChanged += (l, k) =>
             {
-                this.RefreshData();
+                this.Dispatcher.Invoke(() =>
+                {
+                    this.RefreshData();
+                });
+
             };
         }
 

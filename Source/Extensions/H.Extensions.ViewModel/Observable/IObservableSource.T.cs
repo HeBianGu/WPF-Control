@@ -33,6 +33,10 @@ namespace H.Extensions.ViewModel
         IFilter Filter3 { get; set; }
         IFilter Filter4 { get; set; }
         IFilter Filter5 { get; set; }
+        IFilter Filter6 { get; set; }
+        IFilter Filter7 { get; set; }
+        IFilter Filter8 { get; set; }
+        IFilter Filter9 { get; set; }
     }
 
 

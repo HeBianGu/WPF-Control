@@ -214,6 +214,55 @@ namespace H.Extensions.ViewModel
             }
         }
 
+        private IFilter _filter6;
+        /// <summary> 说明  </summary>
+        public IFilter Filter6
+        {
+            get { return _filter6; }
+            set
+            {
+                _filter6 = value;
+                RaisePropertyChanged();
+                this.RefreshPage();
+            }
+        }
+
+        private IFilter _filter7;
+        /// <summary> 说明  </summary>
+        public IFilter Filter7
+        {
+            get { return _filter7; }
+            set
+            {
+                _filter7 = value;
+                RaisePropertyChanged();
+                this.RefreshPage();
+            }
+        }
+        private IFilter _filter8;
+        /// <summary> 说明  </summary>
+        public IFilter Filter8
+        {
+            get { return _filter8; }
+            set
+            {
+                _filter8 = value;
+                RaisePropertyChanged();
+                this.RefreshPage();
+            }
+        }
+        private IFilter _filter9;
+        /// <summary> 说明  </summary>
+        public IFilter Filter9
+        {
+            get { return _filter9; }
+            set
+            {
+                _filter9 = value;
+                RaisePropertyChanged();
+                this.RefreshPage();
+            }
+        }
         private IOrder _order1;
         public IOrder Order1
         {
@@ -257,7 +306,11 @@ namespace H.Extensions.ViewModel
                 Where(x => this.Filter2?.IsMatch(x) != false).
                 Where(x => this.Filter3?.IsMatch(x) != false).
                 Where(x => this.Filter4?.IsMatch(x) != false).
-                Where(x => this.Filter5?.IsMatch(x) != false);
+                Where(x => this.Filter5?.IsMatch(x) != false).
+                Where(x => this.Filter6?.IsMatch(x) != false).
+                Where(x => this.Filter7?.IsMatch(x) != false).
+                Where(x => this.Filter8?.IsMatch(x) != false).
+                Where(x => this.Filter9?.IsMatch(x) != false);
 
             if (this.Order1 != null)
                 where = this.Order1.Where(where).Cast<T>();
