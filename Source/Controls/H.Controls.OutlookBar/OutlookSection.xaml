@@ -31,7 +31,11 @@
                                       TextBlock.FontWeight="Bold">
                             <ToggleButton.Content>
                                 <DockPanel Focusable="False">
-                                    <Grid Width="{TemplateBinding Height}" Height="{TemplateBinding Height}">
+                                    <ContentControl DockPanel.Dock="Right"
+                                                    Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:Cattach.CaptionRightTemplate)}" />
+
+                                    <Grid Width="{TemplateBinding Height}"
+                                          Height="{TemplateBinding Height}">
                                         <Image x:Name="image"
                                                Margin="4,0,4,0"
                                                VerticalAlignment="Center"

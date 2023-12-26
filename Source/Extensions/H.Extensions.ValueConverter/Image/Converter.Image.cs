@@ -36,8 +36,8 @@ namespace H.Extensions.ValueConverter
             if (value == null)
                 return null;
             string str = value.ToString();
-            if (File.Exists(str) == false)
-                return null;
+            //if (File.Exists(str) == false)
+            //    return null;
             var icon = IconHelper.GetSystemInfoIcon(str);
             return IconHelper.GetIconToImageSource(icon);
         }

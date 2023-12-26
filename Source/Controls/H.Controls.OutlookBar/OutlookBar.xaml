@@ -11,7 +11,8 @@
 
     <BooleanToVisibilityConverter x:Key="visibleConverter" />
 
-    <Style x:Key="odcHeader" TargetType="{x:Type odc:OdcExpander}">
+    <Style x:Key="odcHeader"
+           TargetType="{x:Type odc:OdcExpander}">
         <Setter Property="CanAnimate" Value="True" />
         <Setter Property="HeaderBackground" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
         <Setter Property="MouseOverHeaderBackground" Value="{DynamicResource {x:Static h:BrushKeys.MouseOver}}" />
@@ -24,7 +25,8 @@
         <Setter Property="Margin" Value="0" />
     </Style>
 
-    <Style x:Key="buttonStyle" TargetType="{x:Type ButtonBase}">
+    <Style x:Key="buttonStyle"
+           TargetType="{x:Type ButtonBase}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
@@ -175,7 +177,8 @@
         </Setter>
     </Style>
 
-    <Style x:Key="OutlookBar" TargetType="{x:Type odc:OutlookBar}">
+    <Style x:Key="OutlookBar"
+           TargetType="{x:Type odc:OutlookBar}">
         <!--<Setter Property="odc:KeyTip.Stop" Value="false" />
         <Setter Property="odc:KeyTip.YOffset" Value="2" />
         <Setter Property="odc:KeyTip.XOffset" Value="-24" />-->
@@ -244,6 +247,10 @@
                                                       Stroke="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}" />
                                             </Button.Content>-->
                                         </Button>
+
+                                        <ContentControl DockPanel.Dock="Right"
+                                                        Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=SelectedSection.(h:Cattach.CaptionRightTemplate)}" />
+
                                         <TextBlock x:Name="headerText"
                                                    Margin="4,0,4,0"
                                                    HorizontalAlignment="Left"
@@ -253,7 +260,8 @@
                                                    TextBlock.FontWeight="Bold" />
                                     </DockPanel>
                                 </Border>
-                                <Grid x:Name="contentGrid" Grid.Row="1">
+                                <Grid x:Name="contentGrid"
+                                      Grid.Row="1">
                                     <ContentPresenter x:Name="content"
                                                       Content="{Binding SectionContent, RelativeSource={RelativeSource TemplatedParent}}"
                                                       Focusable="False" />
@@ -271,8 +279,10 @@
                                                       IsChecked="{Binding IsPopupVisible, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
                                                       TextBlock.FontSize="14" />
                                         <DockPanel.Resources>
-                                            <Style BasedOn="{StaticResource verticalButtonStyle}" TargetType="{x:Type Button}" />
-                                            <Style BasedOn="{StaticResource verticalToggleButtonStyle}" TargetType="{x:Type ToggleButton}" />
+                                            <Style BasedOn="{StaticResource verticalButtonStyle}"
+                                                   TargetType="{x:Type Button}" />
+                                            <Style BasedOn="{StaticResource verticalToggleButtonStyle}"
+                                                   TargetType="{x:Type ToggleButton}" />
                                         </DockPanel.Resources>
                                     </DockPanel>
                                     <Popup x:Name="PART_Popup"
@@ -300,7 +310,8 @@
                                                             Background="{DynamicResource {x:Static h:BrushKeys.Background}}"
                                                             BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
                                                             BorderThickness="1">
-                                                        <ContentPresenter Content="{Binding CollapsedSectionContent, RelativeSource={RelativeSource TemplatedParent}}" Focusable="False" />
+                                                        <ContentPresenter Content="{Binding CollapsedSectionContent, RelativeSource={RelativeSource TemplatedParent}}"
+                                                                          Focusable="False" />
                                                     </Border>
                                                 </Border>
                                             </Border>
@@ -381,13 +392,15 @@
                                             </Canvas>
                                         </Button.Content>
                                     </Button>
-                                    <ItemsControl Focusable="False" ItemsSource="{TemplateBinding MaximizedSections}" />
+                                    <ItemsControl Focusable="False"
+                                                  ItemsSource="{TemplateBinding MaximizedSections}" />
                                     <Border x:Name="PART_MinimizedContainer"
                                             Height="{TemplateBinding ButtonHeight}"
                                             Background="{DynamicResource {x:Static h:BrushKeys.Dark0_1}}"
                                             BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
                                             BorderThickness="0,1,0,0">
-                                        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                                        <StackPanel HorizontalAlignment="Right"
+                                                    Orientation="Horizontal">
                                             <ItemsControl x:Name="minimizedButtons"
                                                           ClipToBounds="True"
                                                           Focusable="False"
@@ -398,7 +411,8 @@
                                                     </ItemsPanelTemplate>
                                                 </ItemsControl.ItemsPanel>
                                                 <ItemsControl.Resources>
-                                                    <Style BasedOn="{StaticResource odcHeader}" TargetType="{x:Type odc:OdcExpander}" />
+                                                    <Style BasedOn="{StaticResource odcHeader}"
+                                                           TargetType="{x:Type odc:OdcExpander}" />
                                                 </ItemsControl.Resources>
                                             </ItemsControl>
                                             <ToggleButton Width="18"
@@ -456,13 +470,15 @@
                         </Trigger>
                     </ControlTemplate.Triggers>
                     <ControlTemplate.Resources>
-                        <Style BasedOn="{StaticResource odcHeader}" TargetType="{x:Type odc:OdcExpander}" />
+                        <Style BasedOn="{StaticResource odcHeader}"
+                               TargetType="{x:Type odc:OdcExpander}" />
                     </ControlTemplate.Resources>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource OutlookBar}" TargetType="{x:Type odc:OutlookBar}" />
+    <Style BasedOn="{StaticResource OutlookBar}"
+           TargetType="{x:Type odc:OutlookBar}" />
 
 </ResourceDictionary>

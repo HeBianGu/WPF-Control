@@ -20,7 +20,18 @@ namespace H.App.FileManager
     {
         [Required]
         [Display(Name = "文件路径", Order = 2)]
-        public string BaseFolder { get; set; }
+        private string _baseFolder;
+        /// <summary> 说明  </summary>
+        public string BaseFolder
+        {
+            get { return _baseFolder; }
+            set
+            {
+                _baseFolder = value;
+                RaisePropertyChanged();
+            }
+        }
+
 
         private IRepositoryViewModel<fm_dd_file> _file = new RepositoryViewModel<fm_dd_file>();
         [JsonIgnore]

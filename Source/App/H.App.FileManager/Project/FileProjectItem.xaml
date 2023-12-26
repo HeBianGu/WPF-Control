@@ -9,7 +9,7 @@
             <Image Width="30"
                    Height="30"
                    Margin="5"
-                   Source="{Binding Model.BaseFolder, Converter={h:GetFilePathToSystemInfoIconConverter}}" />
+                   Source="{Binding BaseFolder, Converter={h:GetFilePathToSystemInfoIconConverter}}" />
             <UniformGrid Columns="1">
                 <Grid>
                     <TextBlock Text="{Binding Title}" />

@@ -149,10 +149,14 @@
                                                  HorizontalContentAlignment="Stretch"
                                                  SelectionMode="Multiple">
                                         <h:FilterBox.Filters>
-                                            <local:FileFilter DisplayName="图片" Extensions=".gif .jpg .jpeg .bmp .jfif .png" />
-                                            <local:FileFilter DisplayName="视频" Extensions=".gif .jpg .jpeg .bmp .jfif .png" />
-                                            <local:FileFilter DisplayName="音频" Extensions=".gif .jpg .jpeg .bmp .jfif .png" />
-                                            <local:FileFilter DisplayName="数据库" Extensions=".db" />
+                                            <local:FileFilter DisplayName="图片"
+                                                              Extensions=".gif .jpg .jpeg .bmp .jfif .png" />
+                                            <local:FileFilter DisplayName="视频"
+                                                              Extensions=".gif .jpg .jpeg .bmp .jfif .png" />
+                                            <local:FileFilter DisplayName="音频"
+                                                              Extensions=".gif .jpg .jpeg .bmp .jfif .png" />
+                                            <local:FileFilter DisplayName="数据库"
+                                                              Extensions=".db" />
                                         </h:FilterBox.Filters>
                                         <b:Interaction.Triggers>
                                             <b:EventTrigger EventName="FilterChanged">
@@ -277,39 +281,48 @@
                                 </DrawingImage.Drawing>
                             </DrawingImage>
                         </h:OutlookSection.Image>
-                        <DockPanel>
-                            <Button Command="{h:ProjectNewCommand}"
-                                    Content="新建项目"
-                                    DockPanel.Dock="Top" />
-                            <h:ProjectBox>
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate>
-                                        <Grid>
-                                            <DockPanel Margin="0,10">
-                                                <Button Margin="0"
-                                                        Command="{x:Static h:Commands.Open}"
-                                                        CommandParameter="{Binding Model}"
-                                                        Content="打开"
-                                                        DockPanel.Dock="Right" />
-                                                <Button Margin="0"
-                                                        Command="{x:Static h:Commands.Delete}"
-                                                        CommandParameter="{Binding Model}"
-                                                        Content="删除"
-                                                        DockPanel.Dock="Right" />
-                                                <UniformGrid Columns="1">
-                                                    <TextBlock Text="{Binding Model.Title}" />
-                                                    <TextBlock FontSize="{DynamicResource {x:Static h:FontSizeKeys.Header6}}"
-                                                               Foreground="{DynamicResource {x:Static h:BrushKeys.ForegroundAssist}}"
-                                                               Text="{Binding Model.BaseFolder}"
-                                                               TextTrimming="CharacterEllipsis"
-                                                               ToolTip="{Binding Model.BaseFolder}" />
-                                                </UniformGrid>
-                                            </DockPanel>
-                                        </Grid>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </h:ProjectBox>
-                        </DockPanel>
+                        <h:Cattach.CaptionRightTemplate>
+                            <ControlTemplate>
+                                <Button Height="Auto"
+                                        HorizontalAlignment="Right"
+                                        Background="Transparent"
+                                        Command="{h:ProjectNewCommand}"
+                                        Content="新建工程"
+                                        DockPanel.Dock="Bottom" />
+                            </ControlTemplate>
+                        </h:Cattach.CaptionRightTemplate>
+                        <h:ProjectBox BorderThickness="0">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <DockPanel Margin="0,10">
+                                            <Image Width="20"
+                                                   Height="30"
+                                                   Margin="2"
+                                                   Source="{Binding Model.BaseFolder, Converter={h:GetFilePathToSystemInfoIconConverter}}" />
+                                            <Button Margin="0"
+                                                    Command="{x:Static h:Commands.Open}"
+                                                    CommandParameter="{Binding Model}"
+                                                    Content="打开"
+                                                    DockPanel.Dock="Right" />
+                                            <Button Margin="0"
+                                                    Command="{x:Static h:Commands.Delete}"
+                                                    CommandParameter="{Binding Model}"
+                                                    Content="删除"
+                                                    DockPanel.Dock="Right" />
+                                            <UniformGrid Columns="1">
+                                                <TextBlock Text="{Binding Model.Title}" />
+                                                <TextBlock FontSize="{DynamicResource {x:Static h:FontSizeKeys.Header6}}"
+                                                           Foreground="{DynamicResource {x:Static h:BrushKeys.ForegroundAssist}}"
+                                                           Text="{Binding Model.BaseFolder}"
+                                                           TextTrimming="CharacterEllipsis"
+                                                           ToolTip="{Binding Model.BaseFolder}" />
+                                            </UniformGrid>
+                                        </DockPanel>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </h:ProjectBox>
                     </h:OutlookSection>
                 </h:OutlookBar.Sections>
                 <h:OutlookBar.OptionButtons>
