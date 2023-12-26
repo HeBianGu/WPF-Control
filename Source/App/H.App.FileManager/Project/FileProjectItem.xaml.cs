@@ -1,4 +1,8 @@
-﻿using H.DataBases.Share;
+﻿
+
+
+
+using H.DataBases.Share;
 using H.Extensions.ViewModel;
 using H.Modules.Project;
 using H.Providers.Ioc;
@@ -50,14 +54,14 @@ namespace H.App.FileManager
             var find = DbIoc.Services.GetService<DataContext>();
             find.Database.Migrate();
             //  Do ：刷新数据
-            this.File = DbIoc.GetService<IRepositoryViewModel<fm_dd_file>>();
-            this.File.RefreshData();
+            File = DbIoc.GetService<IRepositoryViewModel<fm_dd_file>>();
+            File.RefreshData();
             return base.Load(out message);
         }
 
         public override bool Save(out string message)
         {
-            this.File?.Save();
+            File?.Save();
             var context = DbIoc.Services.GetService<DataContext>();
             context?.SaveChanges();
             context?.Dispose();

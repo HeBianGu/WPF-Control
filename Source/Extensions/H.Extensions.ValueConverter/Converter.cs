@@ -277,56 +277,18 @@ namespace H.Extensions.ValueConverter
             if (x == null)
                 return null;
             string filePath = x.ToString();
-            if (!File.Exists(filePath))
+            var tuple = filePath.GetImagePixel();
+            if (tuple == null)
                 return null;
-            BitmapImage bmp = new BitmapImage(new Uri(filePath, UriKind.Absolute));
-            if (bmp == null)
-                return null;
-            return bmp.PixelWidth + "×" + bmp.PixelHeight;
+            return tuple.Item1 + "×" + tuple.Item2;
         });
 
-        private static List<Tuple<string, int, BitmapImage>> _fileCache = new List<Tuple<string, int, BitmapImage>>();
         public static ConverterBase<string, int, ImageSource> GetFileImageSourceInMemory => new ConverterBase<string, int, ImageSource>((x, p) =>
         {
             if (x == null)
                 return null;
             string filePath = x.ToString();
-            if (!File.Exists(filePath))
-                return null;
-            Tuple<string, int, BitmapImage> find = _fileCache.FirstOrDefault(k => k.Item1 == filePath && k.Item2 == p);
-            if (find != null && find.Item3 != null)
-                return find.Item3;
-
-            try
-            {
-                using (FileStream filestream = File.Open(filePath, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))
-                {
-                    using (BinaryReader reader = new BinaryReader(filestream))
-
-                    //using (BinaryReader reader = new BinaryReader(File.Open(filePath, FileMode.Open,FileAccess.ReadWrite, FileShare.ReadWrite)))
-                    {
-                        FileInfo fi = new FileInfo(filePath);
-                        byte[] bytes = reader.ReadBytes((int)fi.Length);
-                        reader.Close();
-                        BitmapImage bitmapImage = new BitmapImage();
-                        bitmapImage.BeginInit();
-                        if (p > 0)
-                            bitmapImage.DecodePixelWidth = p;
-                        bitmapImage.StreamSource = new MemoryStream(bytes);
-                        bitmapImage.EndInit();
-                        bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
-                        _fileCache.Add(Tuple.Create(filePath, p, bitmapImage));
-                        return bitmapImage;
-                    }
-                }
-
-            }
-            catch (Exception ex)
-            {
-                if (p > 0)
-                    return new BitmapImage(new Uri(filePath, UriKind.Absolute)) { DecodePixelWidth = p };
-                return new BitmapImage(new Uri(filePath, UriKind.Absolute));
-            }
+            return filePath.GetImageSource(p, 0, true);
         });
 
         #endregion

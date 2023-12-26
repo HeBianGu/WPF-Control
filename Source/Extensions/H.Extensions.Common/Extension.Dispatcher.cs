@@ -71,7 +71,7 @@ namespace System.Windows.Threading
             }));
         }
 
-        public static void DelayInvoke(this object obj, IList target, IList src, Action end = null, DispatcherPriority priority = DispatcherPriority.Input)
+        public static void DelayInvoke(this object obj, IList target, Func<IList> getSrc, Action end = null, DispatcherPriority priority = DispatcherPriority.Input)
         {
             if (!_isRefreshings.ContainsKey(obj))
             {
@@ -87,6 +87,8 @@ namespace System.Windows.Threading
             {
                 _isRefreshings[obj] = false;
                 target.Clear();
+
+                IList src = getSrc.Invoke();
                 foreach (object item in src)
                 {
                     Application.Current.Dispatcher.BeginInvoke(priority, new Action(() =>

@@ -27,7 +27,7 @@ namespace H.Extensions.ViewModel
             //try
             //{
             includes = includes ?? this.GetIncludes()?.ToArray();
-            IEnumerable<SelectViewModel<TEntity>> collection = includes == null ? this.Repository.GetList().Where(x=>this.Where(x)).Select(x => new SelectViewModel<TEntity>(x))
+            IEnumerable<SelectViewModel<TEntity>> collection = includes == null ? this.Repository.GetList().Where(x => this.Where(x)).Select(x => new SelectViewModel<TEntity>(x))
             : this.Repository.GetList(includes).Where(x => this.Where(x)).Select(x => new SelectViewModel<TEntity>(x));
             //this.Collection = collection.Select(x => new SelectViewModel<TEntity>(x)).ToObservable();
             this.Collection.Load(collection);
@@ -78,18 +78,21 @@ namespace H.Extensions.ViewModel
                     this.Collection.Add(new SelectViewModel<TEntity>(m));
                     Ioc<IOperationService>.Instance?.Log<TEntity>($"新增", m.ID, OperationType.Add);
                 }
-                IocMessage.Snack?.ShowInfo("新增成功");
+                if (this.UseMessage)
+                    IocMessage.Snack?.ShowInfo("新增成功");
                 return;
             }
             int r = await this.Repository?.InsertRangeAsync(ms);
             if (r > 0)
             {
                 this.Collection.Add(ms.Select(x => new SelectViewModel<TEntity>(x)).ToArray());
-                IocMessage.Snack?.ShowInfo("新增成功");
+                if (this.UseMessage)
+                    IocMessage.Snack?.ShowInfo("新增成功");
             }
             else
             {
-                IocMessage.Snack?.ShowInfo("新增失败,数据库保存错误");
+                if (this.UseMessage)
+                    IocMessage.Snack?.ShowInfo("新增失败,数据库保存错误");
             }
             foreach (TEntity m in ms)
             {

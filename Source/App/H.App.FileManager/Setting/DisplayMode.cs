@@ -2,7 +2,8 @@
 {
     public enum DisplayMode
     {
-        DataGrid, 
-        ListBox
+        DataGrid,
+        ListBox,
+        View
     }
 }

@@ -15,9 +15,9 @@ namespace System.IO
         public const string VedioExtension = "wmv asf asx rm rmvb mpg mpeg mpe 3gp mov mp4 m4v avi dat mkv flv vob dat bdmv";
         public const string AudioExtension = "mp3 mpeg3 wav wave flac fla aiff aif aifc aac adt adts m2ts mp2 3g2 3gp2 3gp 3gpp m4a m4v mp4v mp4 mov asf wm wmv wma mp1 avi ac3 ec3";
 
-        public static string[] ImageExtensions => ImageExtension.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-        public static string[] VedioExtensions => VedioExtension.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
-        public static string[] AudioExtensions => AudioExtension.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
+        public static string[] ImageExtensions => ImageExtension.Split(new char[] { ';', ' ' }, StringSplitOptions.RemoveEmptyEntries);
+        public static string[] VedioExtensions => VedioExtension.Split(new char[] { ';', ' ' }, StringSplitOptions.RemoveEmptyEntries);
+        public static string[] AudioExtensions => AudioExtension.Split(new char[] { ';', ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
         public static IEnumerable<string> GetAllImages(this string foldPath)
         {

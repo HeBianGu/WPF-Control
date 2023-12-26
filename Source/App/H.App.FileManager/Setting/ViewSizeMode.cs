@@ -2,11 +2,11 @@
 {
     public enum ViewSizeMode
     {
-        Normal, 
-        Auto, 
+        Normal,
+        Auto,
         ExtraLarge,
-        Large, 
-        Small, 
+        Large,
+        Small,
         ExtraSmall
     }
 }

@@ -3,6 +3,7 @@ using System;
 using H.App.FileManager;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace H.App.FileManager.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20231227063135_init3")]
+    partial class init3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -117,6 +120,11 @@ namespace H.App.FileManager.Migrations
                     b.Property<string>("Year")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("fm_dd_videoID")
+                        .HasColumnType("TEXT");
+
+                    b.HasIndex("fm_dd_videoID");
+
                     b.HasDiscriminator().HasValue("fm_dd_image");
                 });
 
@@ -139,9 +147,6 @@ namespace H.App.FileManager.Migrations
                     b.Property<string>("Rate")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("SelectedImageIndex")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Torrent")
                         .HasColumnType("TEXT");
 
@@ -151,22 +156,7 @@ namespace H.App.FileManager.Migrations
                     b.HasDiscriminator().HasValue("fm_dd_video");
                 });
 
-            modelBuilder.Entity("H.App.FileManager.fm_dd_video_image", b =>
-                {
-                    b.HasBaseType("H.App.FileManager.fm_dd_image");
-
-                    b.Property<long>("TimeStamp")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("fm_dd_videoID")
-                        .HasColumnType("TEXT");
-
-                    b.HasIndex("fm_dd_videoID");
-
-                    b.HasDiscriminator().HasValue("fm_dd_video_image");
-                });
-
-            modelBuilder.Entity("H.App.FileManager.fm_dd_video_image", b =>
+            modelBuilder.Entity("H.App.FileManager.fm_dd_image", b =>
                 {
                     b.HasOne("H.App.FileManager.fm_dd_video", null)
                         .WithMany("Images")

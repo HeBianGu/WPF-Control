@@ -3,6 +3,7 @@ using System;
 using H.App.FileManager;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace H.App.FileManager.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20231227065629_init4")]
+    partial class init4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -139,9 +142,6 @@ namespace H.App.FileManager.Migrations
                     b.Property<string>("Rate")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("SelectedImageIndex")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Torrent")
                         .HasColumnType("TEXT");
 
@@ -154,9 +154,6 @@ namespace H.App.FileManager.Migrations
             modelBuilder.Entity("H.App.FileManager.fm_dd_video_image", b =>
                 {
                     b.HasBaseType("H.App.FileManager.fm_dd_image");
-
-                    b.Property<long>("TimeStamp")
-                        .HasColumnType("INTEGER");
 
                     b.Property<string>("fm_dd_videoID")
                         .HasColumnType("TEXT");

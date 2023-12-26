@@ -1,17 +1,10 @@
 ﻿using H.Extensions.Behvaiors;
-using H.Modules.Project;
 using H.Providers.Ioc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace H.App.FileManager
 {
@@ -63,15 +56,21 @@ namespace H.App.FileManager
 
         [DataGridColumn("Auto")]
         [Display(Name = "评分")]
-        public string Score { get; set; }
+        public int Score { get; set; }
 
         [DataGridColumn("Auto")]
         [Display(Name = "收藏")]
         public bool Favorite { get; set; }
 
-        [Browsable(false)]
-        [Display(Name = "收藏")]
-        public string Project { get; set; }
+        [Display(Name = "最近打开")]
+        public DateTime LastPlayTime { get; set; }
+
+        [Display(Name = "已观看")]
+        public bool Watched { get; set; }
+
+        //[Browsable(false)]
+        //[Display(Name = "收藏")]
+        //public string Project { get; set; }
     }
 
     public class DataContextFactory : IDesignTimeDbContextFactory<DataContext>
@@ -82,28 +81,5 @@ namespace H.App.FileManager
             optionsBuilder.UseLazyLoadingProxies().UseSqlite("Data Source=Migration.db");
             return new DataContext(optionsBuilder.Options);
         }
-    }
-
-    public class fm_dd_image : fm_dd_file
-    {
-        [DataGridColumn("Auto")]
-        [ReadOnly(true)]
-        [Display(Name = "宽度")]
-        public int PixelWidth { get; set; }
-
-        [DataGridColumn("Auto")]
-        [ReadOnly(true)]
-        [Display(Name = "高度")]
-        public int PixelHeight { get; set; }
-    }
-
-    public class fm_dd_video : fm_dd_image
-    {
-
-    }
-
-    public class fm_dd_audio : fm_dd_file
-    {
-
     }
 }

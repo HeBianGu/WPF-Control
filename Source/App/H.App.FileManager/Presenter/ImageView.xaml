@@ -1,0 +1,39 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.App.FileManager">
+    <DataTemplate DataType="{x:Type local:fm_dd_image}">
+        <Grid>
+            <Image Source="{Binding Url, Converter={x:Static h:Converter.GetFileImageSourceInMemory}, ConverterParameter=100, IsAsync=True}" />
+        </Grid>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type local:ImageView}">
+        <DockPanel>
+            <TextBlock Margin="5"
+                       DockPanel.Dock="Top"
+                       Text="{Binding Url}" />
+            <ItemsControl DockPanel.Dock="Left">
+                <Button Content="{x:Static h:Geometrys.Info}"
+                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
+                <Button Content="{x:Static h:Geometrys.Info}"
+                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
+                <Button Content="{x:Static h:Geometrys.Info}"
+                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
+                <Button Content="{x:Static h:Geometrys.Info}"
+                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
+                <Button Content="{x:Static h:Geometrys.Info}"
+                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
+                <Button Content="{x:Static h:Geometrys.Info}"
+                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
+                <Button Content="{x:Static h:Geometrys.Info}"
+                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
+                <Button Content="{x:Static h:Geometrys.Info}"
+                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
+            </ItemsControl>
+            <Image Source="{Binding Model.Url, IsAsync=True}" />
+        </DockPanel>
+    </DataTemplate>
+
+</ResourceDictionary>

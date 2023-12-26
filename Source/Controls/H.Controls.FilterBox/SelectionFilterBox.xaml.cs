@@ -232,8 +232,15 @@ namespace H.Controls.FilterBox
                     this.Items.Clear();
                 return;
             }
-
-            this.ItemsSource = this.GetItemsSource(propertyInfo);
+            try
+            {
+                var datas = this.Datas.OfType<object>().ToList();
+                this.ItemsSource = this.GetItemsSource(propertyInfo, datas);
+            }
+            catch (Exception ex)
+            {
+                IocLog.Instance?.Error(ex);
+            }
         }
 
         public PropertyInfo GetPropertyInfo()
@@ -248,12 +255,11 @@ namespace H.Controls.FilterBox
             return propertyInfo;
         }
 
-        private IEnumerable GetItemsSource(PropertyInfo propertyInfo)
+        private IEnumerable GetItemsSource(PropertyInfo propertyInfo,List<object> datas)
         {
             List<object> items = new List<object>();
-
             //yield return "全选";
-            foreach (object data in this.Datas)
+            foreach (object data in datas)
             {
                 if (data == null)
                     continue;
