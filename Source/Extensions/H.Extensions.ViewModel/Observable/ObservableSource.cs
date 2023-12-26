@@ -3,6 +3,7 @@
 using H.Providers.Ioc;
 using H.Providers.Mvvm;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -326,12 +327,17 @@ namespace H.Extensions.ViewModel
             this.MinValue = this.Total == 0 ? 0 : (min + 1);
             this.MaxValue = max < this.Total ? max : this.Total;
             this.TotalPage = this.Total % this.PageCount == 0 ? this.Total / this.PageCount : (this.Total / this.PageCount) + 1;
-            List<T> collection = where.Skip(this.MinValue - 1).Take(this.PageCount).ToList();
-            //this.Source = collection.ToObservable();
-            this.DelayInvoke(this.Source, collection, () =>
+
+            Func<List<T>> func = () =>
             {
+                return where.Skip(this.MinValue - 1).Take(this.PageCount).ToList();
+            };
+            //this.Source = collection.ToObservable();
+            this.DelayInvoke(this.Source, func, () =>
+            {
+          
                 if (after == null)
-                    this.SelectedItem = collection.FirstOrDefault();
+                    this.SelectedItem = func.Invoke().FirstOrDefault();
                 else
                     after?.Invoke();
             });
