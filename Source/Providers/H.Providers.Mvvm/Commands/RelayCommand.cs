@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Windows.Input;
+using System.Xml.Serialization;
 
 namespace H.Providers.Mvvm
 {
@@ -15,6 +16,8 @@ namespace H.Providers.Mvvm
         //ILogService Logger { get; }
         string Message { get; set; }
         double Percent { get; set; }
+
+        string GroupName { get; set; }
     }
 
     public class RelayCommand<T> : ICommand
@@ -209,6 +212,20 @@ namespace H.Providers.Mvvm
                 RaisePropertyChanged();
             }
         }
+
+        private string _groupName;
+        [XmlIgnore]
+        [Browsable(false)]
+        public string GroupName
+        {
+            get { return _groupName; }
+            set
+            {
+                _groupName = value;
+                RaisePropertyChanged();
+            }
+        }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 

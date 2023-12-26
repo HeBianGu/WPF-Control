@@ -56,7 +56,7 @@ namespace H.App.FileManager
 
         [DataGridColumn("Auto")]
         [Display(Name = "评分")]
-        public int Score { get; set; }
+        public int Score { get; set; } = 1;
 
         [DataGridColumn("Auto")]
         [Display(Name = "收藏")]

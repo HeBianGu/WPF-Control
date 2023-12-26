@@ -7,6 +7,7 @@
     <DataTemplate DataType="{x:Type local:fm_dd_file}">
         <Image Width="40"
                Height="40"
+               Margin="15"
                Source="{Binding Url, Converter={h:GetFilePathToSystemInfoIconConverter}, IsAsync=True}" />
     </DataTemplate>
 

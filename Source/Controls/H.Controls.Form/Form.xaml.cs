@@ -1169,6 +1169,7 @@ namespace H.Controls.Form
 
                 if (!this.UseNull)
                 {
+                    if(item.Name!="Item")
                     if (item.GetValue(o) == null) continue;
                 }
 

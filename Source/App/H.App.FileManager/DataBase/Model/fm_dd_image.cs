@@ -16,21 +16,48 @@ namespace H.App.FileManager
         [ReadOnly(true)]
         [Display(Name = "高度")]
         public int PixelHeight { get; set; }
-
+    
+        private string _object;
         [DataGridColumn("Auto")]
         [ReadOnly(true)]
         [Display(Name = "对象")]
-        public string Object { get; set; }
+        public string Object
+        {
+            get { return _object; }
+            set
+            {
+                _object = value;
+                RaisePropertyChanged();
+            }
+        }
 
         [Display(Name = "年份")]
         public string Year { get; set; }
 
+        private string _area;
         [Display(Name = "国家")]
-        public string Area { get; set; }
+        public string Area
+        {
+            get { return _area; }
+            set
+            {
+                _area = value;
+                RaisePropertyChanged();
+            }
+        }
 
+
+        private string _articulation;
         [Display(Name = "清晰度")]
-        public string Articulation { get; set; }
-
+        public string Articulation
+        {
+            get { return _articulation; }
+            set
+            {
+                _articulation = value;
+                RaisePropertyChanged();
+            }
+        }
 
         [Display(Name = "简介")]
         public string Introduction { get; set; }

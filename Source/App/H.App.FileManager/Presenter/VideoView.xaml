@@ -11,7 +11,7 @@
                    Height="30"
                    HorizontalAlignment="Right"
                    VerticalAlignment="Bottom"
-                   Source="{Binding Url, Converter={h:GetFilePathToSystemInfoIconConverter}, IsAsync=True}" />
+                   Source="{Binding Url, Converter={h:GetFilePathToSystemInfoIconConverter}, IsAsync=True, ConverterParameter=200}" />
         </Grid>
     </DataTemplate>
 
@@ -43,7 +43,7 @@
                      Width="100"
                      Cattach.ItemHeight="100"
                      DockPanel.Dock="Right"
-                     ItemsSource="{Binding Model.Images, IsAsync=True}"
+                     ItemsSource="{Binding Model.Images}"
                      SelectedIndex="{Binding Model.SelectedImageIndex, IsAsync=True}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -51,7 +51,7 @@
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
             </ListBox>
-            <Image Source="{Binding ElementName=lb, Path=SelectedItem.Url, IsAsync=True}" />
+            <Image Source="{Binding ElementName=lb, Path=SelectedItem.Url}" />
         </DockPanel>
     </DataTemplate>
 </ResourceDictionary>

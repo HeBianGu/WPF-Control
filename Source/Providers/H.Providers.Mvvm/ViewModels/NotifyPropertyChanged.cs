@@ -36,9 +36,7 @@ namespace H.Providers.Mvvm
         public NotifyPropertyChanged()
         {
             RelayCommand = new RelayCommand(RelayMethod);
-
             CallMethodCommand = new RelayCommand(CallMethod);
-
             RelayMethod("init");
         }
 

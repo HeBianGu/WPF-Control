@@ -7,6 +7,14 @@ using System.Xml.Serialization;
 namespace H.Providers.Mvvm
 
 {
+    public interface IDisplayCommand
+    {
+        string Name { get; set; }
+        string Description { get; set; }
+        string GroupName { get; set; }
+        int Order { get; set; }
+    }
+
     //public class CommandAttribute : Attribute
     //{
     //    /// <summary>
@@ -17,7 +25,7 @@ namespace H.Providers.Mvvm
     //    public string Icon { get; set; }
     //}
 
-    public class DisplayerCommand : RelayCommand
+    public class DisplayerCommand : RelayCommand, IDisplayCommand
     {
         public DisplayerCommand(Action<object> action) : base(action)
         {
@@ -48,19 +56,6 @@ namespace H.Providers.Mvvm
             set
             {
                 _icon = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        private string _groupName;
-        [XmlIgnore]
-        [Browsable(false)]
-        public virtual string GroupName
-        {
-            get { return _groupName; }
-            set
-            {
-                _groupName = value;
                 RaisePropertyChanged();
             }
         }

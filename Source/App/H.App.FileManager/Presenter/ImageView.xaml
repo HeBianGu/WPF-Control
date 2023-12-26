@@ -5,7 +5,7 @@
                     xmlns:local="clr-namespace:H.App.FileManager">
     <DataTemplate DataType="{x:Type local:fm_dd_image}">
         <Grid>
-            <Image Source="{Binding Url, Converter={x:Static h:Converter.GetFileImageSourceInMemory}, ConverterParameter=100, IsAsync=True}" />
+            <Image Source="{Binding Url, Converter={x:Static h:Converter.GetFileImageSourceInMemory}, ConverterParameter=200, IsAsync=True}" />
         </Grid>
     </DataTemplate>
 
@@ -32,7 +32,7 @@
                 <Button Content="{x:Static h:Geometrys.Info}"
                         Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
             </ItemsControl>
-            <Image Source="{Binding Model.Url, IsAsync=True}" />
+            <Image Source="{Binding Model.Url}" />
         </DockPanel>
     </DataTemplate>
 

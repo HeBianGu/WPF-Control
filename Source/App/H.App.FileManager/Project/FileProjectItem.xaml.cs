@@ -18,10 +18,9 @@ namespace H.App.FileManager
 {
     public class FileProjectItem : ProjectItemBase
     {
-        [Required]
-        [Display(Name = "文件路径", Order = 2)]
         private string _baseFolder;
-        /// <summary> 说明  </summary>
+        [Required]
+        [Display(Name = "文件路径", Order = 5)]
         public string BaseFolder
         {
             get { return _baseFolder; }

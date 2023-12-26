@@ -1,0 +1,307 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.App.FileManager">
+    <DataTemplate DataType="{x:Type local:FileRepositoryViewModel}">
+        <DockPanel>
+            <DockPanel DockPanel.Dock="Top"
+                       LastChildFill="False">
+                <DockPanel Background="{DynamicResource {x:Static h:BrushKeys.MouseOver}}">
+                    <Button Command="{Binding RefreshCommand}"
+                            Content="加载文件" />
+                    <ToggleButton Content="{x:Static h:Geometrys.Down}"
+                                  Style="{DynamicResource {x:Static h:ToggleButtonKeys.Geometry}}">
+                        <b:Interaction.Behaviors>
+                            <h:MouseOverContextMenuBehavior />
+                        </b:Interaction.Behaviors>
+                        <Control.ContextMenu>
+                            <ContextMenu ItemsSource="{Binding UpdateCommands}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <MenuItem Command="{Binding .}"
+                                                  Header="{Binding Name}" />
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ContextMenu>
+                        </Control.ContextMenu>
+                    </ToggleButton>
+                </DockPanel>
+
+                <DockPanel Margin="2,0"
+                           Background="{DynamicResource {x:Static h:BrushKeys.MouseOver}}">
+                    <Button Command="{Binding RefreshCommand}"
+                            Content="更多操作" />
+                    <ToggleButton Content="{x:Static h:Geometrys.Down}"
+                                  Style="{DynamicResource {x:Static h:ToggleButtonKeys.Geometry}}">
+                        <b:Interaction.Behaviors>
+                            <h:MouseOverContextMenuBehavior />
+                        </b:Interaction.Behaviors>
+                        <Control.ContextMenu>
+                            <ContextMenu ItemsSource="{Binding MoreCommands}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <MenuItem Command="{Binding .}"
+                                                  Header="{Binding Name}" />
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ContextMenu>
+                        </Control.ContextMenu>
+                    </ToggleButton>
+                </DockPanel>
+
+                <h:PropertyFilterBox Margin="5"
+                                     DockPanel.Dock="Right"
+                                     Type="{x:Type local:fm_dd_file}">
+                    <b:Interaction.Triggers>
+                        <b:EventTrigger EventName="FilterChanged">
+                            <b:ChangePropertyAction PropertyName="Filter1"
+                                                    TargetObject="{Binding Collection}"
+                                                    Value="{Binding RelativeSource={RelativeSource AncestorType=h:PropertyFilterBox}, Path=Filter}" />
+                        </b:EventTrigger>
+                        <b:EventTrigger EventName="Loaded">
+                            <b:ChangePropertyAction PropertyName="Filter1"
+                                                    TargetObject="{Binding Collection}"
+                                                    Value="{Binding RelativeSource={RelativeSource AncestorType=h:PropertyFilterBox}, Path=Filter}" />
+                        </b:EventTrigger>
+                    </b:Interaction.Triggers>
+                </h:PropertyFilterBox>
+
+                <h:PropertyOrderBox Margin="5"
+                                    DockPanel.Dock="Right"
+                                    Type="{x:Type local:fm_dd_file}">
+                    <b:Interaction.Triggers>
+                        <b:EventTrigger EventName="OrderChanged">
+                            <b:ChangePropertyAction PropertyName="Order1"
+                                                    TargetObject="{Binding Collection}"
+                                                    Value="{Binding RelativeSource={RelativeSource AncestorType=h:PropertyOrderBox}, Path=Order}" />
+                        </b:EventTrigger>
+                        <b:EventTrigger EventName="Loaded">
+                            <b:ChangePropertyAction PropertyName="Order1"
+                                                    TargetObject="{Binding Collection}"
+                                                    Value="{Binding RelativeSource={RelativeSource AncestorType=h:PropertyOrderBox}, Path=Order}" />
+                        </b:EventTrigger>
+                    </b:Interaction.Triggers>
+                </h:PropertyOrderBox>
+                <h:TextFilterBox x:Name="tfb"
+                                 Width="200"
+                                 DockPanel.Dock="Right">
+                    <b:Interaction.Triggers>
+                        <b:EventTrigger EventName="FilterChanged">
+                            <b:ChangePropertyAction PropertyName="Filter2"
+                                                    TargetObject="{Binding Collection}"
+                                                    Value="{Binding ElementName=tfb, Path=Filter}" />
+                        </b:EventTrigger>
+                    </b:Interaction.Triggers>
+                </h:TextFilterBox>
+            </DockPanel>
+
+            <ContentPresenter Content="{Ioc Type={x:Type IProjectViewPresenter}}"
+                              DockPanel.Dock="Bottom" />
+            <TextBlock Margin="10"
+                       DockPanel.Dock="Bottom">
+                <Run Text=" 合计：" />
+                <Run Text="{Binding Collection.FilterSource.Count, Mode=OneWay}" />
+                <Run Text="/" />
+                <Run Text="{Binding Collection.Cache.Count, Mode=OneWay}" />
+            </TextBlock>
+            <Grid>
+                <Control>
+                    <Control.Template>
+                        <ControlTemplate>
+                            <Grid>
+                                <Grid.ContextMenu>
+                                    <ContextMenu ItemsSource="{Binding Collection.SelectedItem.Model, Converter={local:GetFileMenuItemConverter}}"
+                                                 StaysOpen="True">
+                                        <ItemsControl.ItemTemplate>
+                                            <!--<DataTemplate>
+                                                <MenuItem Command="{Binding Model}"
+                                                          Header="{Binding Model.Name}"
+                                                          ItemsSource="{Binding Nodes}" />
+                                            </DataTemplate>-->
+                                            <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
+                                                <TextBlock VerticalAlignment="Center"
+                                                           Text="{Binding}" />
+                                            </HierarchicalDataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                        <ContextMenu.ItemContainerStyle>
+                                            <Style BasedOn="{StaticResource {x:Static h:MenuItemKeys.Default}}"
+                                                   TargetType="MenuItem">
+                                                <Setter Property="Command" Value="{Binding Model}" />
+                                                <Setter Property="Header" Value="{Binding Model.Name}" />
+                                            </Style>
+                                        </ContextMenu.ItemContainerStyle>
+                                    </ContextMenu>
+                                    <!--<ContextMenu>
+                                        <MenuItem Header="彻底删除" />
+                                        <MenuItem Header="打开" />
+                                        <MenuItem Header="查看" />
+                                        <MenuItem Header="浏览" />
+                                        <MenuItem Header="打开文件夹" />
+                                        <MenuItem Header="复制" />
+                                        <MenuItem Header="另存为" />
+                                        <MenuItem Header="移出" />
+                                        <MenuItem Header="移出不存在的文件" />
+                                        <Separator />
+                                        <MenuItem Header="根据名称生成标签" />
+                                        <MenuItem Header="收藏" />
+                                        <MenuItem Header="备份" />
+                                        <MenuItem Header="设置标签">
+                                            <MenuItem Header="标签1" />
+                                            <MenuItem Header="标签2" />
+                                            <MenuItem Header="标签3" />
+                                            <MenuItem Header="标签4" />
+                                            <MenuItem Header="标签5" />
+                                        </MenuItem>
+                                        <MenuItem Header="设置评分">
+                                            <MenuItem Header="1" />
+                                            <MenuItem Header="1" />
+                                            <MenuItem Header="1" />
+                                            <MenuItem Header="1" />
+                                            <MenuItem Header="1" />
+                                            <MenuItem Header="1" />
+                                            <MenuItem Header="1" />
+                                        </MenuItem>
+                                        <Separator />
+                                        <MenuItem Header="加载缩率图" />
+                                        <MenuItem Header="加载预览图" />
+                                        <MenuItem Header="加载时长、清晰度、分辨率" />
+                                    </ContextMenu>-->
+                                </Grid.ContextMenu>
+                                <DataGrid x:Name="dg"
+                                          ItemsSource="{Binding Collection.Source, IsAsync=True}"
+                                          SelectedItem="{Binding Collection.SelectedItem}"
+                                          Visibility="Collapsed">
+                                    <b:Interaction.Behaviors>
+                                        <h:DataGridAutoColumnBehavior BindingPath="Model.{0}"
+                                                                      DataGridLength="*"
+                                                                      Type="{x:Type local:fm_dd_file}">
+                                            <h:DataGridAutoColumnBehavior.HomeColumns>
+                                                <DataGridCheckBoxColumn Header="全选" />
+                                            </h:DataGridAutoColumnBehavior.HomeColumns>
+                                        </h:DataGridAutoColumnBehavior>
+
+                                        <h:ItemsControlFilterBehavior Filter="{Binding ElementName=fb, Path=Filter}"
+                                                                      Filter1="{Binding ElementName=tfb, Path=Filter}"
+                                                                      Filter2="{Binding ElementName=sfb, Path=Filter}"
+                                                                      Filter3="{Binding ElementName=sfb1, Path=Filter}"
+                                                                      Filter4="{Binding ElementName=sfb2, Path=Filter}"
+                                                                      ItemsSource="{Binding Students}" />
+
+                                    </b:Interaction.Behaviors>
+                                </DataGrid>
+
+                                <ListBox x:Name="lb"
+                                         h:Cattach.ItemHeight="Auto"
+                                         ItemsSource="{Binding Collection.Source, IsAsync=True}"
+                                         SelectedItem="{Binding Collection.SelectedItem}"
+                                         Visibility="Collapsed">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <DockPanel x:Name="dp"
+                                                       Width="200"
+                                                       Height="200">
+                                                <TextBlock Margin="2,5"
+                                                           DockPanel.Dock="Bottom"
+                                                           Text="{Binding Model.Name}"
+                                                           TextTrimming="CharacterEllipsis"
+                                                           ToolTip="{Binding Model.Url}" />
+                                                <!--<Image HorizontalAlignment="Center"
+                                                           VerticalAlignment="Center"
+                                                           Source="{Binding Model, Converter={local:GetFileToViewImageConverter}, ConverterParameter=200, IsAsync=True}"
+                                                           Stretch="{Binding Source={x:Static local:AppSetting.Instance}, Path=Stretch}"
+                                                           StretchDirection="Both" />-->
+                                                <ContentPresenter Content="{Binding Model}" />
+                                            </DockPanel>
+                                            <DataTemplate.Triggers>
+                                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=ViewSizeMode}"
+                                                             Value="Auto">
+                                                    <Setter TargetName="dp" Property="Width" Value="Auto" />
+                                                    <Setter TargetName="dp" Property="Height" Value="Auto" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=ViewSizeMode}"
+                                                             Value="ExtraLarge">
+                                                    <Setter TargetName="dp" Property="Width" Value="600" />
+                                                    <Setter TargetName="dp" Property="Height" Value="600" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=ViewSizeMode}"
+                                                             Value="Large">
+                                                    <Setter TargetName="dp" Property="Width" Value="400" />
+                                                    <Setter TargetName="dp" Property="Height" Value="400" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=ViewSizeMode}"
+                                                             Value="Small">
+                                                    <Setter TargetName="dp" Property="Width" Value="100" />
+                                                    <Setter TargetName="dp" Property="Height" Value="100" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=ViewSizeMode}"
+                                                             Value="ExtraSmall">
+                                                    <Setter TargetName="dp" Property="Width" Value="50" />
+                                                    <Setter TargetName="dp" Property="Height" Value="50" />
+                                                </DataTrigger>
+                                            </DataTemplate.Triggers>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel HorizontalAlignment="Center" />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                </ListBox>
+
+                                <DockPanel x:Name="lb_view"
+                                           Visibility="Collapsed">
+                                    <ListBox h:Cattach.ItemHeight="Auto"
+                                             DockPanel.Dock="Bottom"
+                                             ItemsSource="{Binding Collection.Source, IsAsync=True}"
+                                             ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                             ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                             SelectedItem="{Binding Collection.SelectedItem}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <DockPanel Width="100"
+                                                           Height="100">
+                                                    <TextBlock Margin="2,5"
+                                                               DockPanel.Dock="Bottom"
+                                                               Text="{Binding Model.Name}"
+                                                               TextTrimming="CharacterEllipsis"
+                                                               ToolTip="{Binding Model.Url}" />
+                                                    <!--<Image HorizontalAlignment="Center"
+                                                               VerticalAlignment="Center"
+                                                               Source="{Binding Model, Converter={local:GetFileToViewConverter}}"
+                                                               Stretch="{Binding Source={x:Static local:AppSetting.Instance}, Path=Stretch}"
+                                                               StretchDirection="Both" />-->
+                                                    <ContentPresenter Content="{Binding Model}" />
+                                                </DockPanel>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Orientation="Horizontal" />
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                    </ListBox>
+                                    <ContentPresenter Content="{Binding Collection.SelectedItem.Model, Converter={local:GetFileToViewConverter}}" />
+                                </DockPanel>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=DisplayMode}"
+                                             Value="DataGrid">
+                                    <Setter TargetName="dg" Property="Visibility" Value="Visible" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=DisplayMode}"
+                                             Value="ListBox">
+                                    <Setter TargetName="lb" Property="Visibility" Value="Visible" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=DisplayMode}"
+                                             Value="View">
+                                    <Setter TargetName="lb_view" Property="Visibility" Value="Visible" />
+                                </DataTrigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Control.Template>
+                </Control>
+            </Grid>
+        </DockPanel>
+    </DataTemplate>
+</ResourceDictionary>

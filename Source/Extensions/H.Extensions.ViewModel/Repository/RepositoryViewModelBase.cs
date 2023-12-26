@@ -6,16 +6,50 @@ using H.Providers.Mvvm;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Threading;
+using System.Xml.Serialization;
 
 namespace H.Extensions.ViewModel
 {
     public class RepositoryViewModelBase : NotifyPropertyChanged
     {
+        public RepositoryViewModelBase()
+        {
+            System.Collections.Generic.IEnumerable<PropertyInfo> cmdps = GetType().GetProperties().Where(x => typeof(ICommand).IsAssignableFrom(x.PropertyType));
+            foreach (PropertyInfo cmdp in cmdps)
+            {
+                if (cmdp.CanRead == false)
+                    continue;
+                if (cmdp.GetCustomAttribute<BrowsableAttribute>()?.Browsable == false)
+                    continue;
+                ICommand command = cmdp.GetValue(this) as ICommand;
+                if (command is IRelayCommand relay)
+                {
+                    if (relay.Name == null || relay.GroupName == null)
+                    {
+                        var display = cmdp.GetCustomAttribute<DisplayAttribute>();
+                        relay.Name = relay.Name ?? display?.Name ?? cmdp.Name;
+                        relay.GroupName = relay.GroupName ?? display?.GroupName;
+                    }
+                }
+                Commands.Add(command);
+            }
+        }
+
+        [Browsable(false)]
+        [JsonIgnore]
+        [XmlIgnore]
+        public ObservableCollection<ICommand> Commands { get; } = new ObservableCollection<ICommand>();
 
     }
 
@@ -103,6 +137,8 @@ namespace H.Extensions.ViewModel
         [Displayer(Name = "编辑", GroupName = "操作")]
         public RelayCommand EditCommand => new RelayCommand(async l => await Edit(l), l => this.GetEntity(l) != null) { Name = $"编辑" };
 
+        [Displayer(Name = "编辑", GroupName = "操作")]
+        [Browsable(false)]
         public TransactionCommand EditTransactionCommand => new TransactionCommand(async (s, e) =>
         {
             if (e is TEntity project)
@@ -396,7 +432,7 @@ namespace H.Extensions.ViewModel
 
             if (this.UseMessage)
             {
-                bool? result = await IocMessage.Dialog.Show("确定删除数据？",x=>
+                bool? result = await IocMessage.Dialog.Show("确定删除数据？", x =>
                 {
                     x.Title = "提示";
                     x.DialogButton = DialogButton.SumitAndCancel;
@@ -491,7 +527,7 @@ namespace H.Extensions.ViewModel
             {
                 x.Title = "提示";
                 x.DialogButton = DialogButton.SumitAndCancel;
-            }); 
+            });
             if (result != true)
                 return;
 

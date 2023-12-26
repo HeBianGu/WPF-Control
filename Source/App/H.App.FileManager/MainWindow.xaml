@@ -67,24 +67,6 @@
                         </h:OutlookSection.Image>
                         <ScrollViewer VerticalScrollBarVisibility="Auto">
                             <ItemsControl>
-                                <!--<Expander Header="评分">
-                                    <h:SelectionFilterBox Margin="0,5"
-                                                          HorizontalAlignment="Stretch"
-                                                          HorizontalContentAlignment="Stretch"
-                                                          Datas="{Binding Collection.Cache, IsAsync=True}"
-                                                          DisplayName="选择筛选器筛选出来的用户数量"
-                                                          PropertyName="Score"
-                                                          SelectionMode="Multiple"
-                                                          Type="{x:Type local:fm_dd_file}">
-                                        <b:Interaction.Triggers>
-                                            <b:EventTrigger EventName="FilterChanged">
-                                                <b:ChangePropertyAction PropertyName="Filter4"
-                                                                        TargetObject="{Binding Collection}"
-                                                                        Value="{Binding RelativeSource={RelativeSource AncestorType=h:SelectionFilterBox}, Path=Filter}" />
-                                            </b:EventTrigger>
-                                        </b:Interaction.Triggers>
-                                    </h:SelectionFilterBox>
-                                </Expander>-->
                                 <Expander Header="收藏">
                                     <h:FilterBox Margin="0,5"
                                                  HorizontalAlignment="Stretch"
@@ -112,26 +94,28 @@
                                                  HorizontalContentAlignment="Stretch"
                                                  SelectionMode="Multiple">
                                         <h:FilterBox.Filters>
-                                            <local:ScoreFileFilter DisplayName="0星"
+                                            <local:ScoreFileFilter DisplayName="0分"
                                                                    Value="0" />
-                                            <local:ScoreFileFilter DisplayName="1星"
+                                            <local:ScoreFileFilter DisplayName="1分"
                                                                    Value="1" />
-                                            <local:ScoreFileFilter DisplayName="2星"
+                                            <local:ScoreFileFilter DisplayName="2分"
                                                                    Value="2" />
-                                            <local:ScoreFileFilter DisplayName="3星"
+                                            <local:ScoreFileFilter DisplayName="3分"
                                                                    Value="3" />
-                                            <local:ScoreFileFilter DisplayName="4星"
+                                            <local:ScoreFileFilter DisplayName="4分"
                                                                    Value="4" />
-                                            <local:ScoreFileFilter DisplayName="5星"
+                                            <local:ScoreFileFilter DisplayName="5分"
                                                                    Value="5" />
-                                            <local:ScoreFileFilter DisplayName="6星"
+                                            <local:ScoreFileFilter DisplayName="6分"
                                                                    Value="6" />
-                                            <local:ScoreFileFilter DisplayName="7星"
+                                            <local:ScoreFileFilter DisplayName="7分"
                                                                    Value="7" />
-                                            <local:ScoreFileFilter DisplayName="8星"
+                                            <local:ScoreFileFilter DisplayName="8分"
                                                                    Value="8" />
-                                            <local:ScoreFileFilter DisplayName="9星"
+                                            <local:ScoreFileFilter DisplayName="9分"
                                                                    Value="9" />
+                                            <local:ScoreFileFilter DisplayName="10分"
+                                                                   Value="10" />
                                         </h:FilterBox.Filters>
                                         <b:Interaction.Triggers>
                                             <b:EventTrigger EventName="FilterChanged">
@@ -150,13 +134,13 @@
                                                  SelectionMode="Multiple">
                                         <h:FilterBox.Filters>
                                             <local:FileFilter DisplayName="图片"
-                                                              Extensions=".gif .jpg .jpeg .bmp .jfif .png" />
+                                                              Extensions="{x:Static h:FileExtension.ImageExtension}" />
                                             <local:FileFilter DisplayName="视频"
-                                                              Extensions=".gif .jpg .jpeg .bmp .jfif .png" />
+                                                              Extensions="{x:Static h:FileExtension.VedioExtension}" />
                                             <local:FileFilter DisplayName="音频"
-                                                              Extensions=".gif .jpg .jpeg .bmp .jfif .png" />
+                                                              Extensions="{x:Static h:FileExtension.AudioExtension}" />
                                             <local:FileFilter DisplayName="数据库"
-                                                              Extensions=".db" />
+                                                              Extensions="db" />
                                         </h:FilterBox.Filters>
                                         <b:Interaction.Triggers>
                                             <b:EventTrigger EventName="FilterChanged">
@@ -341,7 +325,7 @@
                           NavigationPaneText="{Binding RelativeSource={RelativeSource Mode=Self}, Path=SelectedSection.Header}"
                           ShowButtons="True">
                 <h:OutlookBar.Sections>
-                    <h:OutlookSection Header="属性">
+                    <h:OutlookSection Header="详情">
                         <h:OutlookSection.Image>
                             <DrawingImage>
                                 <DrawingImage.Drawing>
@@ -365,15 +349,42 @@
                             </DrawingImage>
                         </h:OutlookSection.Image>
                         <DockPanel>
-                            <ContentPresenter Height="300"
-                                              Content="{Binding Collection.SelectedItem.Model}"
+                            <ContentPresenter Content="{Binding Collection.SelectedItem.Model}"
                                               DockPanel.Dock="Top" />
                             <!--<Image Height="300"
                                    DockPanel.Dock="Top"
                                    Source="{Binding Collection.SelectedItem.Model, Converter={local:GetFileToViewConverter}, ConverterParameter=300, IsAsync=True}" />-->
                             <h:Form Foreground="{DynamicResource {x:Static h:BrushKeys.Foreground}}"
-                                    SelectObject="{Binding Collection.SelectedItem.Model, Mode=TwoWay}" />
+                                    SelectObject="{Binding Collection.SelectedItem.Model, Mode=TwoWay}"
+                                    UseNull="False"
+                                    UsePropertyView="True" />
                         </DockPanel>
+                    </h:OutlookSection>
+                    <h:OutlookSection Header="编辑">
+                        <h:OutlookSection.Image>
+                            <DrawingImage>
+                                <DrawingImage.Drawing>
+                                    <DrawingGroup>
+                                        <DrawingGroup.Children>
+                                            <GeometryDrawing Brush="#00FFFFFF"
+                                                             Geometry="F1M16,16L0,16 0,0 16,0z" />
+                                            <GeometryDrawing Brush="#FFF6F6F6"
+                                                             Geometry="F1M13.4141,0L2.5861,0 9.99999999997669E-05,2.586 9.99999999997669E-05,9.414 0.3491,9.763C0.1251,10.298 9.99999999997669E-05,10.884 9.99999999997669E-05,11.5 9.99999999997669E-05,13.985 2.0151,16 4.5001,16 6.8141,16 8.6981,14.247 8.9501,12L13.4141,12 16.0001,9.414 16.0001,2.586z" />
+                                            <GeometryDrawing Brush="#FF414141"
+                                                             Geometry="F1M13,1L3,1 1,3 1,8.703C1.518,8.056,2.204,7.559,3,7.275L3,3.828 3.828,3 12.172,3 13,3.828 13,8.172 12.172,9 8.24,9C8.631,9.583,8.868,10.268,8.95,11L13,11 15,9 15,3z" />
+                                            <GeometryDrawing Brush="#FF414141"
+                                                             Geometry="F1M7.4858,9.7217L3.4998,13.7067 1.6468,11.8537 2.3538,11.1467 3.4998,12.2927 6.8608,8.9317C6.2378,8.3587 5.4138,7.9997 4.4998,7.9997 2.5678,7.9997 0.9998,9.5677 0.9998,11.4997 0.9998,13.4327 2.5678,14.9997 4.4998,14.9997 6.4328,14.9997 7.9998,13.4327 7.9998,11.4997 7.9998,10.8437 7.8018,10.2427 7.4858,9.7217 M7.4938,9.7127C7.4808,9.6907 7.4598,9.6747 7.4458,9.6537 7.4598,9.6757 7.4718,9.6997 7.4858,9.7217z M6.8608,8.9317C7.0898,9.1427 7.2778,9.3907 7.4458,9.6537 7.2798,9.3887 7.0898,9.1427 6.8608,8.9317" />
+                                            <GeometryDrawing Brush="#FFF0EFF1"
+                                                             Geometry="F1M12.1719,3L3.8279,3 2.9999,3.828 2.9999,7.275C3.4709,7.108 3.9709,7 4.4999,7 6.0599,7 7.4329,7.794 8.2399,9L12.1719,9 12.9999,8.172 12.9999,3.828z" />
+                                            <GeometryDrawing Brush="#FFF0EFF1"
+                                                             Geometry="F1M2.3535,11.1465L1.6465,11.8535 3.4995,13.7075 7.4945,9.7125C7.3205,9.4215,7.1095,9.1605,6.8615,8.9315L3.4995,12.2925z" />
+                                        </DrawingGroup.Children>
+                                    </DrawingGroup>
+                                </DrawingImage.Drawing>
+                            </DrawingImage>
+                        </h:OutlookSection.Image>
+                        <h:Form Foreground="{DynamicResource {x:Static h:BrushKeys.Foreground}}"
+                                SelectObject="{Binding Collection.SelectedItem.Model, Mode=TwoWay}" />
                     </h:OutlookSection>
                     <h:OutlookSection Header="标签">
                         <h:OutlookSection.Image>
@@ -454,248 +465,7 @@
                     </h:OutlookSection>
                 </h:OutlookBar.Sections>
             </h:OutlookBar>
-
-            <DockPanel>
-                <DockPanel DockPanel.Dock="Top"
-                           LastChildFill="False">
-                    <Button Command="{Binding RefreshCommand}"
-                            Content="加载文件" />
-                    <Button Content="根据名称提取标签" />
-                    <Button Command="{Binding SaveCommand}"
-                            Content="保存" />
-                </DockPanel>
-                <DockPanel DockPanel.Dock="Top"
-                           LastChildFill="False">
-                    <h:PropertyFilterBox Margin="5"
-                                         Type="{x:Type local:fm_dd_file}">
-                        <b:Interaction.Triggers>
-                            <b:EventTrigger EventName="FilterChanged">
-                                <b:ChangePropertyAction PropertyName="Filter1"
-                                                        TargetObject="{Binding Collection}"
-                                                        Value="{Binding RelativeSource={RelativeSource AncestorType=h:PropertyFilterBox}, Path=Filter}" />
-                            </b:EventTrigger>
-                            <b:EventTrigger EventName="Loaded">
-                                <b:ChangePropertyAction PropertyName="Filter1"
-                                                        TargetObject="{Binding Collection}"
-                                                        Value="{Binding RelativeSource={RelativeSource AncestorType=h:PropertyFilterBox}, Path=Filter}" />
-                            </b:EventTrigger>
-                        </b:Interaction.Triggers>
-                    </h:PropertyFilterBox>
-
-                    <h:PropertyOrderBox Margin="5"
-                                        Type="{x:Type local:fm_dd_file}">
-                        <b:Interaction.Triggers>
-                            <b:EventTrigger EventName="OrderChanged">
-                                <b:ChangePropertyAction PropertyName="Order1"
-                                                        TargetObject="{Binding Collection}"
-                                                        Value="{Binding RelativeSource={RelativeSource AncestorType=h:PropertyOrderBox}, Path=Order}" />
-                            </b:EventTrigger>
-                            <b:EventTrigger EventName="Loaded">
-                                <b:ChangePropertyAction PropertyName="Order1"
-                                                        TargetObject="{Binding Collection}"
-                                                        Value="{Binding RelativeSource={RelativeSource AncestorType=h:PropertyOrderBox}, Path=Order}" />
-                            </b:EventTrigger>
-                        </b:Interaction.Triggers>
-                    </h:PropertyOrderBox>
-                    <h:TextFilterBox x:Name="tfb"
-                                     Width="200"
-                                     DockPanel.Dock="Right">
-                        <b:Interaction.Triggers>
-                            <b:EventTrigger EventName="FilterChanged">
-                                <b:ChangePropertyAction PropertyName="Filter2"
-                                                        TargetObject="{Binding Collection}"
-                                                        Value="{Binding ElementName=tfb, Path=Filter}" />
-                            </b:EventTrigger>
-                        </b:Interaction.Triggers>
-                    </h:TextFilterBox>
-                </DockPanel>
-
-                <ContentPresenter Content="{Ioc Type={x:Type IProjectViewPresenter}}"
-                                  DockPanel.Dock="Bottom" />
-                <TextBlock Margin="10"
-                           DockPanel.Dock="Bottom">
-                    <Run Text=" 合计：" />
-                    <Run Text="{Binding Collection.FilterSource.Count, Mode=OneWay}" />
-                    <Run Text="/" />
-                    <Run Text="{Binding Collection.Cache.Count, Mode=OneWay}" />
-                </TextBlock>
-                <Grid>
-                    <Control>
-                        <Control.Template>
-                            <ControlTemplate>
-                                <Grid>
-                                    <Grid.ContextMenu>
-                                        <ContextMenu>
-                                            <MenuItem Header="彻底删除" />
-                                            <MenuItem Header="打开" />
-                                            <MenuItem Header="查看" />
-                                            <MenuItem Header="浏览" />
-                                            <MenuItem Header="打开文件夹" />
-                                            <MenuItem Header="复制" />
-                                            <MenuItem Header="另存为" />
-                                            <MenuItem Header="移出" />
-                                            <MenuItem Header="移出不存在的文件" />
-                                            <Separator />
-                                            <MenuItem Header="根据名称生成标签" />
-                                            <MenuItem Header="收藏" />
-                                            <MenuItem Header="备份" />
-                                            <MenuItem Header="设置标签">
-                                                <MenuItem Header="标签1" />
-                                                <MenuItem Header="标签2" />
-                                                <MenuItem Header="标签3" />
-                                                <MenuItem Header="标签4" />
-                                                <MenuItem Header="标签5" />
-                                            </MenuItem>
-                                            <MenuItem Header="设置评分">
-                                                <MenuItem Header="1" />
-                                                <MenuItem Header="1" />
-                                                <MenuItem Header="1" />
-                                                <MenuItem Header="1" />
-                                                <MenuItem Header="1" />
-                                                <MenuItem Header="1" />
-                                                <MenuItem Header="1" />
-                                            </MenuItem>
-                                            <Separator />
-                                            <MenuItem Header="加载缩率图" />
-                                            <MenuItem Header="加载预览图" />
-                                            <MenuItem Header="加载时长、清晰度、分辨率" />
-                                        </ContextMenu>
-                                    </Grid.ContextMenu>
-                                    <DataGrid x:Name="dg"
-                                              ItemsSource="{Binding Collection.Source, IsAsync=True}"
-                                              SelectedItem="{Binding Collection.SelectedItem}"
-                                              Visibility="Collapsed">
-                                        <b:Interaction.Behaviors>
-                                            <h:DataGridAutoColumnBehavior BindingPath="Model.{0}"
-                                                                          DataGridLength="*"
-                                                                          Type="{x:Type local:fm_dd_file}">
-                                                <h:DataGridAutoColumnBehavior.HomeColumns>
-                                                    <DataGridCheckBoxColumn Header="全选" />
-                                                </h:DataGridAutoColumnBehavior.HomeColumns>
-                                            </h:DataGridAutoColumnBehavior>
-
-                                            <h:ItemsControlFilterBehavior Filter="{Binding ElementName=fb, Path=Filter}"
-                                                                          Filter1="{Binding ElementName=tfb, Path=Filter}"
-                                                                          Filter2="{Binding ElementName=sfb, Path=Filter}"
-                                                                          Filter3="{Binding ElementName=sfb1, Path=Filter}"
-                                                                          Filter4="{Binding ElementName=sfb2, Path=Filter}"
-                                                                          ItemsSource="{Binding Students}" />
-
-                                        </b:Interaction.Behaviors>
-                                    </DataGrid>
-
-                                    <ListBox x:Name="lb"
-                                             h:Cattach.ItemHeight="Auto"
-                                             ItemsSource="{Binding Collection.Source, IsAsync=True}"
-                                             SelectedItem="{Binding Collection.SelectedItem}"
-                                             Visibility="Collapsed">
-                                        <ItemsControl.ItemTemplate>
-                                            <DataTemplate>
-                                                <DockPanel x:Name="dp"
-                                                           Width="200"
-                                                           Height="200">
-                                                    <TextBlock Margin="2,5"
-                                                               DockPanel.Dock="Bottom"
-                                                               Text="{Binding Model.Name}"
-                                                               TextTrimming="CharacterEllipsis"
-                                                               ToolTip="{Binding Model.Url}" />
-                                                    <!--<Image HorizontalAlignment="Center"
-                                                           VerticalAlignment="Center"
-                                                           Source="{Binding Model, Converter={local:GetFileToViewImageConverter}, ConverterParameter=200, IsAsync=True}"
-                                                           Stretch="{Binding Source={x:Static local:AppSetting.Instance}, Path=Stretch}"
-                                                           StretchDirection="Both" />-->
-                                                    <ContentPresenter Content="{Binding Model}" />
-                                                </DockPanel>
-                                                <DataTemplate.Triggers>
-                                                    <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=ViewSizeMode}"
-                                                                 Value="Auto">
-                                                        <Setter TargetName="dp" Property="Width" Value="Auto" />
-                                                        <Setter TargetName="dp" Property="Height" Value="Auto" />
-                                                    </DataTrigger>
-                                                    <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=ViewSizeMode}"
-                                                                 Value="ExtraLarge">
-                                                        <Setter TargetName="dp" Property="Width" Value="600" />
-                                                        <Setter TargetName="dp" Property="Height" Value="600" />
-                                                    </DataTrigger>
-                                                    <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=ViewSizeMode}"
-                                                                 Value="Large">
-                                                        <Setter TargetName="dp" Property="Width" Value="400" />
-                                                        <Setter TargetName="dp" Property="Height" Value="400" />
-                                                    </DataTrigger>
-                                                    <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=ViewSizeMode}"
-                                                                 Value="Small">
-                                                        <Setter TargetName="dp" Property="Width" Value="100" />
-                                                        <Setter TargetName="dp" Property="Height" Value="100" />
-                                                    </DataTrigger>
-                                                    <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=ViewSizeMode}"
-                                                                 Value="ExtraSmall">
-                                                        <Setter TargetName="dp" Property="Width" Value="50" />
-                                                        <Setter TargetName="dp" Property="Height" Value="50" />
-                                                    </DataTrigger>
-                                                </DataTemplate.Triggers>
-                                            </DataTemplate>
-                                        </ItemsControl.ItemTemplate>
-                                        <ItemsControl.ItemsPanel>
-                                            <ItemsPanelTemplate>
-                                                <WrapPanel HorizontalAlignment="Center" />
-                                            </ItemsPanelTemplate>
-                                        </ItemsControl.ItemsPanel>
-                                    </ListBox>
-
-                                    <DockPanel x:Name="lb_view"
-                                               Visibility="Collapsed">
-                                        <ListBox h:Cattach.ItemHeight="Auto"
-                                                 DockPanel.Dock="Bottom"
-                                                 ItemsSource="{Binding Collection.Source, IsAsync=True}"
-                                                 ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                                                 ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                                                 SelectedItem="{Binding Collection.SelectedItem}">
-                                            <ItemsControl.ItemTemplate>
-                                                <DataTemplate>
-                                                    <DockPanel Width="100"
-                                                               Height="100">
-                                                        <TextBlock Margin="2,5"
-                                                                   DockPanel.Dock="Bottom"
-                                                                   Text="{Binding Model.Name}"
-                                                                   TextTrimming="CharacterEllipsis"
-                                                                   ToolTip="{Binding Model.Url}" />
-                                                        <!--<Image HorizontalAlignment="Center"
-                                                               VerticalAlignment="Center"
-                                                               Source="{Binding Model, Converter={local:GetFileToViewConverter}}"
-                                                               Stretch="{Binding Source={x:Static local:AppSetting.Instance}, Path=Stretch}"
-                                                               StretchDirection="Both" />-->
-                                                        <ContentPresenter Content="{Binding Model}" />
-                                                    </DockPanel>
-                                                </DataTemplate>
-                                            </ItemsControl.ItemTemplate>
-                                            <ItemsControl.ItemsPanel>
-                                                <ItemsPanelTemplate>
-                                                    <StackPanel Orientation="Horizontal" />
-                                                </ItemsPanelTemplate>
-                                            </ItemsControl.ItemsPanel>
-                                        </ListBox>
-                                        <ContentPresenter Content="{Binding Collection.SelectedItem.Model, Converter={local:GetFileToViewConverter}}" />
-                                    </DockPanel>
-                                </Grid>
-                                <ControlTemplate.Triggers>
-                                    <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=DisplayMode}"
-                                                 Value="DataGrid">
-                                        <Setter TargetName="dg" Property="Visibility" Value="Visible" />
-                                    </DataTrigger>
-                                    <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=DisplayMode}"
-                                                 Value="ListBox">
-                                        <Setter TargetName="lb" Property="Visibility" Value="Visible" />
-                                    </DataTrigger>
-                                    <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=DisplayMode}"
-                                                 Value="View">
-                                        <Setter TargetName="lb_view" Property="Visibility" Value="Visible" />
-                                    </DataTrigger>
-                                </ControlTemplate.Triggers>
-                            </ControlTemplate>
-                        </Control.Template>
-                    </Control>
-                </Grid>
-            </DockPanel>
+            <ContentPresenter Content="{Binding}"/>
         </DockPanel>
     </Grid>
 </h:MainWindow>
