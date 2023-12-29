@@ -55,5 +55,34 @@ namespace H.Controls.TagBox
             this.CollectionChanged?.Invoke(this, EventArgs.Empty);
             return this._options.Value.Save(out message);
         }
+
+
+        public string ConvertToCheck(string name, ITag tag)
+        {
+            var list = name?.Split(new char[] { ',', ' ' }).ToList();
+            var contain = list?.Contains(tag.Name) == true;
+            if (contain)
+                return name;
+            name += "," + tag.Name;
+            name.Trim(',');
+            return name;
+        }
+
+        public string ConvertToUnCheck(string name, ITag tag)
+        {
+            var list = name?.Split(new char[] { ',', ' ' }).ToList();
+            var contain = list?.Contains(tag.Name) == true;
+            if (!contain)
+                return name;
+            list.Remove(tag.Name);
+            return string.Join(',', list);
+
+        }
+
+        public bool ContainTag(string name, ITag tag)
+        {
+            var list = name?.Split(new char[] { ',', ' ' }).ToList();
+            return list?.Contains(tag.Name) == true;
+        }
     }
 }

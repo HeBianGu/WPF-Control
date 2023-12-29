@@ -96,15 +96,23 @@
                 </h:TextFilterBox>
             </DockPanel>
 
-            <ContentPresenter Content="{Ioc Type={x:Type IProjectViewPresenter}}"
-                              DockPanel.Dock="Bottom" />
-            <TextBlock Margin="10"
+            <!--<ContentPresenter Content="{Ioc Type={x:Type IProjectViewPresenter}}"
+                              DockPanel.Dock="Bottom" />-->
+
+            <DockPanel Margin="10"
                        DockPanel.Dock="Bottom">
-                <Run Text=" 合计：" />
-                <Run Text="{Binding Collection.FilterSource.Count, Mode=OneWay}" />
-                <Run Text="/" />
-                <Run Text="{Binding Collection.Cache.Count, Mode=OneWay}" />
-            </TextBlock>
+                <TextBlock VerticalAlignment="Center">
+                    <Run Text=" 合计：" />
+                    <Run Text="{Binding Collection.FilterSource.Count, Mode=OneWay}" />
+                    <Run Text="/" />
+                    <Run Text="{Binding Collection.Cache.Count, Mode=OneWay}" />
+                </TextBlock>
+
+                <h:PagerBox HorizontalAlignment="Right"
+                            MaxPageCount="{Binding Path=Collection.TotalPage, Mode=TwoWay}"
+                            PageIndex="{Binding Path=Collection.PageIndex, Mode=TwoWay}" />
+            </DockPanel>
+
             <Grid>
                 <Control>
                     <Control.Template>
@@ -129,6 +137,8 @@
                                                    TargetType="MenuItem">
                                                 <Setter Property="Command" Value="{Binding Model}" />
                                                 <Setter Property="Header" Value="{Binding Model.Name}" />
+                                                <Setter Property="IsCheckable" Value="{Binding IsCheckable, Mode=TwoWay}" />
+                                                <Setter Property="IsChecked" Value="{Binding IsChecked, Mode=TwoWay}" />
                                             </Style>
                                         </ContextMenu.ItemContainerStyle>
                                     </ContextMenu>

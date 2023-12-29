@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Controls.PagerBox">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.PagerBox;component/PagerBox.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    
+    <!--<TextBlock HorizontalAlignment="Left" Style="{DynamicResource {x:Static h:TextBlockKeys.Default}}">
+                            <Run Text="第" />
+                            <Run Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=MinValue}" />
+                            <Run Text="到" />
+                            <Run Text="{Binding RelativeSource={RelativeSource AncestorType=local:PagedDataGrid}, Path=MaxValue}" />
+                            <Run Text="条记录，共" />
+                            <Run Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Total}" />
+                            <Run Text="条" />
+    </TextBlock>-->
+</ResourceDictionary>

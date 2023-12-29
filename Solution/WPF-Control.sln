@@ -245,7 +245,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.App.FileManager", "..\Sou
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Controls.TagBox", "..\Source\Controls\H.Controls.TagBox\H.Controls.TagBox.csproj", "{8AFD266F-EB72-4886-AF74-60507C64E5AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Controls.FavoriteBox", "..\Source\Controls\H.Controls.FavoriteBox\H.Controls.FavoriteBox.csproj", "{9667A8AC-ECEC-493C-BD6B-22DB01E9FDAD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Controls.FavoriteBox", "..\Source\Controls\H.Controls.FavoriteBox\H.Controls.FavoriteBox.csproj", "{9667A8AC-ECEC-493C-BD6B-22DB01E9FDAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Controls.PagerBox", "..\Source\Controls\H.Controls.PagerBox\H.Controls.PagerBox.csproj", "{5566DBA0-F492-4EC0-A199-079933407BDC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -685,6 +687,10 @@ Global
 		{9667A8AC-ECEC-493C-BD6B-22DB01E9FDAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9667A8AC-ECEC-493C-BD6B-22DB01E9FDAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9667A8AC-ECEC-493C-BD6B-22DB01E9FDAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5566DBA0-F492-4EC0-A199-079933407BDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5566DBA0-F492-4EC0-A199-079933407BDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5566DBA0-F492-4EC0-A199-079933407BDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5566DBA0-F492-4EC0-A199-079933407BDC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -800,6 +806,7 @@ Global
 		{3C56A343-0550-4C60-8F8A-063CDDD830E6} = {2A599954-FBB0-4BD9-ACC0-A1EB5C6AC6C3}
 		{8AFD266F-EB72-4886-AF74-60507C64E5AE} = {9E63ED70-6F96-4CB2-8B9D-EAEC77D0548E}
 		{9667A8AC-ECEC-493C-BD6B-22DB01E9FDAD} = {9E63ED70-6F96-4CB2-8B9D-EAEC77D0548E}
+		{5566DBA0-F492-4EC0-A199-079933407BDC} = {9E63ED70-6F96-4CB2-8B9D-EAEC77D0548E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF825C3D-F4F4-4E62-BBFF-B42A5E81112F}

@@ -38,8 +38,15 @@ namespace H.App.FileManager
         public List<TreeNodeBase<ICommand>> GetFileCommands(fm_dd_file file)
         {
             List<TreeNodeBase<ICommand>> result = new List<TreeNodeBase<ICommand>>();
-            result.Add(new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x => file.Favorite = true) { Name = "收藏=[已收藏]" }));
-            result.Add(new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x => file.Favorite = true) { Name = "收藏=[未收藏]" }));
+            TreeNodeBase<ICommand> favorite = null;
+            favorite = new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x =>
+            {
+                file.Favorite = !file.Favorite;
+                favorite.IsChecked = file.Favorite;
+            })
+            { Name = "收藏" })
+            { IsCheckable = true, IsChecked = file.Favorite };
+            result.Add(favorite);
 
             var scoreNode = new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x => file.Score = 9) { Name = $"评分" });
             result.Add(scoreNode);
@@ -64,22 +71,25 @@ namespace H.App.FileManager
                     var tags = tagService.Collection.Where(x => x.GroupName == null);
                     foreach (var tag in tags)
                     {
-                        tagNode.Nodes.Add(new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x =>
-                        {
-                            var list = file.Tags?.Split(new char[] { ',', ' ' }).ToList();
-                            var contain = list?.Contains(tag.Name) == true;
-                            if (contain)
-                            {
-                                var rs = list.Remove(tag.Name);
-                                file.Tags = string.Join(',', list);
-                            }
-                            else
-                            {
-                                file.Tags += "," + tag.Name;
-                                file.Tags.Trim(',');
-                            }
-                        })
-                        { Name = $"标签=[{tag.Name}]" }));
+                        TreeNodeBase<ICommand> ctagNode = null;
+                        ctagNode = new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x =>
+                       {
+                           var contain = tagService.ContainTag(file.Tags, tag);
+                           if (contain)
+                           {
+                               file.Tags = tagService.ConvertToUnCheck(file.Tags, tag);
+                           }
+                           else
+                           {
+                               file.Tags = tagService.ConvertToCheck(file.Tags, tag);
+                           }
+
+                           //tagNode.Nodes.Foreach(x => x.IsChecked = false);
+                           ctagNode.IsChecked = !contain;
+                       })
+                        { Name = $"标签=[{tag.Name}]" })
+                        { IsCheckable = true, IsChecked = tagService.ContainTag(file.Tags, tag) };
+                        tagNode.Nodes.Add(ctagNode);
                     }
                 }
             }
@@ -117,7 +127,8 @@ namespace H.App.FileManager
                                     file.Object.Trim(',');
                                 }
                             })
-                            { Name = $"标签=[{tag.Name}]" }));
+                            { Name = $"标签=[{tag.Name}]" })
+                            { IsCheckable = true });
                         }
                     }
                 }
@@ -144,7 +155,8 @@ namespace H.App.FileManager
                                     file.Area.Trim(',');
                                 }
                             })
-                            { Name = $"标签=[{tag.Name}]" }));
+                            { Name = $"标签=[{tag.Name}]" })
+                            { IsCheckable = true });
                         }
                     }
                 }
@@ -171,7 +183,8 @@ namespace H.App.FileManager
                                     file.Articulation.Trim(',');
                                 }
                             })
-                            { Name = $"标签=[{tag.Name}]" }));
+                            { Name = $"标签=[{tag.Name}]" })
+                            { IsCheckable = true });
                         }
                     }
                 }

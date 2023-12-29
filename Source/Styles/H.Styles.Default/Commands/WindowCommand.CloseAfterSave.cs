@@ -14,20 +14,9 @@ namespace H.Styles.Default
         public bool UseSave { get; set; } = true;
         public override async void Execute(object parameter)
         {
-            if (parameter is Window window)
-            {
-                bool isMain = Application.Current.MainWindow == window && WindowSetting.Instance.UseNoticeOnMainWindowClose;
-                if (isMain || this.UseDialog)
-                {
-                    var r = await IocMessage.ShowDialogMessage(this.Message,"提示",DialogButton.SumitAndCancel);
-                    if (r != true)
-                        return;
-                }
-            }
-
             if (Ioc.Services != null && this.UseSave)
             {
-                var saves = Ioc.Services.GetServices<ISplashSave>();
+                var saves = Ioc.GetAssignableFromServices<ISplashSave>().ToList();
                 if (saves.Count() > 0)
                 {
                     var r = await IocMessage.Dialog.ShowString((f, x) =>
@@ -41,8 +30,8 @@ namespace H.Styles.Default
                             if (r == false)
                             {
                                 x.Value = message;
-                                Thread.Sleep(1000);
                             }
+                            Thread.Sleep(1000);
                         }
                         return true;
                     }, x => x.DialogButton = DialogButton.Cancel);
@@ -51,6 +40,16 @@ namespace H.Styles.Default
                 }
             }
 
+            if (parameter is Window window)
+            {
+                bool isMain = Application.Current.MainWindow == window && WindowSetting.Instance.UseNoticeOnMainWindowClose;
+                if (isMain || this.UseDialog)
+                {
+                    var r = await IocMessage.ShowDialogMessage(this.Message, "提示", DialogButton.SumitAndCancel);
+                    if (r != true)
+                        return;
+                }
+            }
             if (parameter is Window window1)
                 SystemCommands.CloseWindow(window1);
         }

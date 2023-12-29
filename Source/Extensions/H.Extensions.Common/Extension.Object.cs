@@ -5,6 +5,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
+using System.Windows.Media;
+using System.Windows.Threading;
 
 namespace System
 {
@@ -185,6 +187,10 @@ namespace System
                 {
                     TypeConverter instance = Activator.CreateInstance(t) as TypeConverter;
 
+                    if (obj is DispatcherObject dispatcher)
+                    {
+                       return dispatcher.Dispatcher.Invoke(() => instance.ConvertToString(null, System.Globalization.CultureInfo.CurrentUICulture, obj));
+                    }
                     return instance.ConvertToString(null, System.Globalization.CultureInfo.CurrentUICulture, obj);
                 }
             }

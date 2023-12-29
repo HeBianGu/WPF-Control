@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace H.Controls.FavoriteBox
 {
-    [Display(Name = "标签管理")]
+    [Display(Name = "收藏夹管理")]
     public class FavoriteService : NotifyPropertyChangedBase, IFavoriteService
     {
         IOptions<FavoriteOptions> _options;
@@ -19,7 +19,7 @@ namespace H.Controls.FavoriteBox
         {
             _options = options;
         }
-        public string Name => "标签管理";
+        public string Name => "收藏夹管理";
         private IEnumerable<IFavoriteItem> _collection;
         public event EventHandler CollectionChanged;
         public IEnumerable<IFavoriteItem> Collection => this._options.Value.FavoriteItems;
