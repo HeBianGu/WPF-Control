@@ -17,6 +17,6 @@ namespace H.Controls.TagBox
         [ReadOnly(true)]
         [JsonIgnore]
         [XmlIgnore]
-        public string SplitChars { get; set; } = ", ";
+        public string SplitChars { get; set; } = ", \n \r";
     }
 }

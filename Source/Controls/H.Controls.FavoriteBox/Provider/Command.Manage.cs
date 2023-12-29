@@ -3,22 +3,22 @@ using H.Providers.Mvvm;
 using System;
 using System.Linq;
 
-namespace H.Controls.TagBox
+namespace H.Controls.FavoriteBox
 {
-    public class ManageTagCommand : MarkupCommandBase
+    public class ManageFavoriteCommand : MarkupCommandBase
     {
         public override async void Execute(object parameter)
         {
-            var ioc = Ioc.GetService<ITagService>();
-            var tag = new TagsPresenter();
+            var ioc = Ioc.GetService<IFavoriteService>();
+            var favorite = new FavoritesPresenter();
             var temp = ioc.Collection.Where(x => x.GroupName == parameter?.ToString()).ToList();
-            tag.Collection = temp.ToObservable();
-            var r = await IocMessage.Dialog.Show(tag);
+            favorite.Collection = temp.ToObservable();
+            var r = await IocMessage.Dialog.Show(favorite);
             if (r != true)
                 return;
             foreach (var item in temp)
             {
-                if (tag.Collection.Contains(item))
+                if (favorite.Collection.Contains(item))
                     continue;
                 ioc.Delete(item);
             }
@@ -27,7 +27,7 @@ namespace H.Controls.TagBox
 
         public override bool CanExecute(object parameter)
         {
-            return Ioc.Exist<ITagService>();
+            return Ioc.Exist<IFavoriteService>();
         }
     }
 }

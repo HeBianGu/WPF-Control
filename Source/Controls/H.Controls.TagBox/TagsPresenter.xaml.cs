@@ -18,5 +18,16 @@ namespace H.Controls.TagBox
             }
         }
 
+        private string _groupName;
+        /// <summary> 说明  </summary>
+        public string GroupName
+        {
+            get { return _groupName; }
+            set
+            {
+                _groupName = value;
+                RaisePropertyChanged();
+            }
+        }
     }
 }

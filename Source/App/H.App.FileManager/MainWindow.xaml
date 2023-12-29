@@ -36,7 +36,7 @@
                           IsMaximized="True"
                           IsOverflowVisible="True"
                           IsPopupVisible="False"
-                          MaxNumberOfButtons="2"
+                          MaxNumberOfButtons="5"
                           NavigationPaneText="{Binding RelativeSource={RelativeSource Mode=Self}, Path=SelectedSection.Header}"
                           SelectedSectionIndex="0"
                           ShowButtons="True"
@@ -151,29 +151,7 @@
                                         </b:Interaction.Triggers>
                                     </h:FilterBox>
                                 </Expander>
-                                <!--<Expander Header="收藏">
-                                    <h:SelectionFilterBox Margin="0,5"
-                                                          HorizontalAlignment="Stretch"
-                                                          HorizontalContentAlignment="Stretch"
-                                                          Datas="{Binding Collection.Cache, IsAsync=True}"
-                                                          DisplayName="选择筛选器筛选出来的用户数量"
-                                                          PropertyName="Favorite"
-                                                          SelectionMode="Multiple"
-                                                          Type="{x:Type local:fm_dd_file}">
-                                        <ItemsControl.ItemTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding ., Converter={h:GetBoolToValueConverter TrueValue=已收藏, FalseValue=未收藏, DefaultValue=全选}}" />
-                                            </DataTemplate>
-                                        </ItemsControl.ItemTemplate>
-                                        <b:Interaction.Triggers>
-                                            <b:EventTrigger EventName="FilterChanged">
-                                                <b:ChangePropertyAction PropertyName="Filter5"
-                                                                        TargetObject="{Binding Collection}"
-                                                                        Value="{Binding RelativeSource={RelativeSource AncestorType=h:SelectionFilterBox}, Path=Filter}" />
-                                            </b:EventTrigger>
-                                        </b:Interaction.Triggers>
-                                    </h:SelectionFilterBox>
-                                </Expander>-->
+
                                 <Expander Header="标签">
                                     <h:TagFilterBox PropertyName="Tags">
                                         <b:Interaction.Triggers>
@@ -242,6 +220,50 @@
                             </ItemsControl>
                         </ScrollViewer>
                     </h:OutlookSection>
+                    <h:OutlookSection Header="收藏夹">
+                        <h:OutlookSection.Image>
+                            <DrawingImage>
+                                <DrawingImage.Drawing>
+                                    <DrawingGroup>
+                                        <DrawingGroup.Children>
+                                            <GeometryDrawing Brush="#00FFFFFF"
+                                                             Geometry="F1M16,16L0,16 0,0 16,0z" />
+                                            <GeometryDrawing Brush="#FFF6F6F6"
+                                                             Geometry="F1M13.4141,0L2.5861,0 9.99999999997669E-05,2.586 9.99999999997669E-05,9.414 0.3491,9.763C0.1251,10.298 9.99999999997669E-05,10.884 9.99999999997669E-05,11.5 9.99999999997669E-05,13.985 2.0151,16 4.5001,16 6.8141,16 8.6981,14.247 8.9501,12L13.4141,12 16.0001,9.414 16.0001,2.586z" />
+                                            <GeometryDrawing Brush="#FF414141"
+                                                             Geometry="F1M13,1L3,1 1,3 1,8.703C1.518,8.056,2.204,7.559,3,7.275L3,3.828 3.828,3 12.172,3 13,3.828 13,8.172 12.172,9 8.24,9C8.631,9.583,8.868,10.268,8.95,11L13,11 15,9 15,3z" />
+                                            <GeometryDrawing Brush="#FF414141"
+                                                             Geometry="F1M7.4858,9.7217L3.4998,13.7067 1.6468,11.8537 2.3538,11.1467 3.4998,12.2927 6.8608,8.9317C6.2378,8.3587 5.4138,7.9997 4.4998,7.9997 2.5678,7.9997 0.9998,9.5677 0.9998,11.4997 0.9998,13.4327 2.5678,14.9997 4.4998,14.9997 6.4328,14.9997 7.9998,13.4327 7.9998,11.4997 7.9998,10.8437 7.8018,10.2427 7.4858,9.7217 M7.4938,9.7127C7.4808,9.6907 7.4598,9.6747 7.4458,9.6537 7.4598,9.6757 7.4718,9.6997 7.4858,9.7217z M6.8608,8.9317C7.0898,9.1427 7.2778,9.3907 7.4458,9.6537 7.2798,9.3887 7.0898,9.1427 6.8608,8.9317" />
+                                            <GeometryDrawing Brush="#FFF0EFF1"
+                                                             Geometry="F1M12.1719,3L3.8279,3 2.9999,3.828 2.9999,7.275C3.4709,7.108 3.9709,7 4.4999,7 6.0599,7 7.4329,7.794 8.2399,9L12.1719,9 12.9999,8.172 12.9999,3.828z" />
+                                            <GeometryDrawing Brush="#FFF0EFF1"
+                                                             Geometry="F1M2.3535,11.1465L1.6465,11.8535 3.4995,13.7075 7.4945,9.7125C7.3205,9.4215,7.1095,9.1605,6.8615,8.9315L3.4995,12.2925z" />
+                                        </DrawingGroup.Children>
+                                    </DrawingGroup>
+                                </DrawingImage.Drawing>
+                            </DrawingImage>
+                        </h:OutlookSection.Image>
+                        <h:Cattach.CaptionRightTemplate>
+                            <ControlTemplate>
+                                <Button Height="Auto"
+                                        HorizontalAlignment="Right"
+                                        Background="Transparent"
+                                        Command="{h:ManageFavoriteCommand}"
+                                        Content="收藏夹管理"
+                                        DockPanel.Dock="Bottom" />
+                            </ControlTemplate>
+                        </h:Cattach.CaptionRightTemplate>
+
+                        <h:FavoriteFilterBox PropertyName="FavoritePath">
+                            <b:Interaction.Triggers>
+                                <b:EventTrigger EventName="FilterChanged">
+                                    <b:ChangePropertyAction PropertyName="Filter10"
+                                                            TargetObject="{Binding Collection}"
+                                                            Value="{Binding RelativeSource={RelativeSource AncestorType=h:FavoriteFilterBox}, Path=Filter}" />
+                                </b:EventTrigger>
+                            </b:Interaction.Triggers>
+                        </h:FavoriteFilterBox>
+                    </h:OutlookSection>
                     <h:OutlookSection Header="工程管理">
                         <h:OutlookSection.Image>
                             <DrawingImage>
@@ -308,6 +330,7 @@
                             </ItemsControl.ItemTemplate>
                         </h:ProjectBox>
                     </h:OutlookSection>
+
                 </h:OutlookBar.Sections>
                 <h:OutlookBar.OptionButtons>
                     <ToggleButton Width="100"
@@ -321,7 +344,7 @@
                           DockPosition="Right"
                           IsCloseButtonVisible="False"
                           IsMaximized="True"
-                          MaxNumberOfButtons="3"
+                          MaxNumberOfButtons="5"
                           NavigationPaneText="{Binding RelativeSource={RelativeSource Mode=Self}, Path=SelectedSection.Header}"
                           ShowButtons="True">
                 <h:OutlookBar.Sections>
@@ -427,8 +450,7 @@
                             </GroupBox>
                         </StackPanel>
                     </h:OutlookSection>
-
-                    <h:OutlookSection Header="Triggers">
+                    <h:OutlookSection Header="收藏夹">
                         <h:OutlookSection.Image>
                             <DrawingImage>
                                 <DrawingImage.Drawing>
@@ -451,21 +473,11 @@
                                 </DrawingImage.Drawing>
                             </DrawingImage>
                         </h:OutlookSection.Image>
-                        <DockPanel>
-                            <DockPanel DockPanel.Dock="Bottom"
-                                       LastChildFill="False">
-                                <Button Content="添加"
-                                        DockPanel.Dock="Right"
-                                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
-                                <CheckBox Content="全选"
-                                          DockPanel.Dock="Left" />
-                                <TextBlock />
-                            </DockPanel>
-                        </DockPanel>
+                        <h:FavoriteBox SelectedFavoritePath="{Binding Collection.SelectedItem.Model.FavoritePath, Mode=TwoWay}" />
                     </h:OutlookSection>
                 </h:OutlookBar.Sections>
             </h:OutlookBar>
-            <ContentPresenter Content="{Binding}"/>
+            <ContentPresenter Content="{Binding}" />
         </DockPanel>
     </Grid>
 </h:MainWindow>

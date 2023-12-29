@@ -45,6 +45,13 @@ namespace H.Data.Test
                         item.SetValue(this, Math.Round(_random.NextDouble() * 100, 2));
                     }
                 }
+                if (item.PropertyType == typeof(string))
+                {
+                    if (item.CanWrite)
+                    {
+                        item.SetValue(this, item.Name);
+                    }
+                }
             }
         }
 

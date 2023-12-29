@@ -5,14 +5,14 @@ using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 using System.Windows.Media;
 
-namespace H.Controls.TagBox
+namespace H.Controls.FavoriteBox
 {
-    public class Tag : NotifyPropertyChangedBase, ITag
+    public class FavoriteItem : NotifyPropertyChangedBase, IFavoriteItem
     {
         private string _name;
         [Required]
         [Display(Name = "名称")]
-        public string Name
+        public string Path
         {
             get { return _name; }
             set
@@ -60,6 +60,6 @@ namespace H.Controls.TagBox
             }
         }
 
-        public override string ToString() => this.Name;
+        public override string ToString() => this.Path;
     }
 }

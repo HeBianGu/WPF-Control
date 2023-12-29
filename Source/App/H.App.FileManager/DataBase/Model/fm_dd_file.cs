@@ -61,6 +61,20 @@ namespace H.App.FileManager
         [DataGridColumn("Auto")]
         [Display(Name = "收藏")]
         public bool Favorite { get; set; }
+    
+        private string _favoritePath;
+        [DataGridColumn("Auto")]
+        [Display(Name = "收藏夹")]
+        public string FavoritePath
+        {
+            get { return _favoritePath; }
+            set
+            {
+                _favoritePath = value;
+                RaisePropertyChanged();
+            }
+        }
+
 
         [Display(Name = "最近打开")]
         public DateTime LastPlayTime { get; set; }

@@ -181,12 +181,12 @@
                                             </h:DataGridAutoColumnBehavior.HomeColumns>
                                         </h:DataGridAutoColumnBehavior>
 
-                                        <h:ItemsControlFilterBehavior Filter="{Binding ElementName=fb, Path=Filter}"
+                                        <!--<h:ItemsControlFilterBehavior Filter="{Binding ElementName=fb, Path=Filter}"
                                                                       Filter1="{Binding ElementName=tfb, Path=Filter}"
                                                                       Filter2="{Binding ElementName=sfb, Path=Filter}"
                                                                       Filter3="{Binding ElementName=sfb1, Path=Filter}"
                                                                       Filter4="{Binding ElementName=sfb2, Path=Filter}"
-                                                                      ItemsSource="{Binding Students}" />
+                                                                      ItemsSource="{Binding Students}" />-->
 
                                     </b:Interaction.Behaviors>
                                 </DataGrid>

@@ -1,4 +1,5 @@
-﻿using H.Controls.TagBox;
+﻿using H.Controls.FavoriteBox;
+using H.Controls.TagBox;
 using H.Extensions.ApplicationBase;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace H.Test.Test
 {
@@ -45,6 +47,24 @@ namespace H.Test.Test
                 x.Tags.Add(new Tag() { Name = "测试3", GroupName = "Test", Description = "这是一个严重标签", Background = Brushes.Orange });
                 x.Tags.Add(new Tag() { Name = "测试4", GroupName = "Test", Description = "这是一个严重标签", Background = Brushes.Blue });
                 x.Tags.Add(new Tag() { Name = "测试5", GroupName = "Test", Description = "这是一个严重标签", Background = Brushes.Green });
+            });
+
+            services.AddFavorite(x =>
+            {
+                x.FavoriteItems.Add(new FavoriteItem() { Path = "1", Description = "这是一个严重标签", Background = Brushes.Purple });
+                x.FavoriteItems.Add(new FavoriteItem() { Path = "1\\1", Description = "这是一个严重标签", Background = Brushes.Purple });
+                x.FavoriteItems.Add(new FavoriteItem() { Path = "1\\1\\1", Description = "这是一个严重标签", Background = Brushes.Purple });
+                x.FavoriteItems.Add(new FavoriteItem() { Path = "2", Description = "这是一个严重标签", Background = Brushes.Purple });
+                x.FavoriteItems.Add(new FavoriteItem() { Path = "2\\1", Description = "这是一个严重标签", Background = Brushes.Purple });
+
+                //var r= "1".Contains(System.IO.Path.DirectorySeparatorChar);
+
+               //var ss=  System.IO.Path.GetDirectoryName("2\\1");
+                //x.Tags.Add(new Tag() { Name = "测试1", GroupName = "Test", Description = "这是一个严重标签", Background = Brushes.Purple });
+                //x.Tags.Add(new Tag() { Name = "测试2", GroupName = "Test", Description = "这是一个严重标签", Background = Brushes.Red });
+                //x.Tags.Add(new Tag() { Name = "测试3", GroupName = "Test", Description = "这是一个严重标签", Background = Brushes.Orange });
+                //x.Tags.Add(new Tag() { Name = "测试4", GroupName = "Test", Description = "这是一个严重标签", Background = Brushes.Blue });
+                //x.Tags.Add(new Tag() { Name = "测试5", GroupName = "Test", Description = "这是一个严重标签", Background = Brushes.Green });
             });
         }
 

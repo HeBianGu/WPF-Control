@@ -1,6 +1,9 @@
 ﻿using H.Providers.Mvvm;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace H.Extensions.Tree
 {
@@ -31,6 +34,30 @@ namespace H.Extensions.Tree
                 yield return rootNode;
             }
         }
-    }
 
+        public static IEnumerable<TreeNodeBase<object>> Where<T>(this IEnumerable<ITreeNode> treeNodes, Func<T, bool> func)
+        {
+            foreach (var item in treeNodes)
+            {
+                if (item is TreeNodeBase<object> node)
+                {
+                    if (node.Model is T c)
+                    {
+                        var wheres = node.FindAll(x =>
+                        {
+                            if (x.Model is T t)
+                            {
+                                return func?.Invoke(t) != false;
+                            }
+                            return false;
+                        });
+                        if (func?.Invoke(c) != false)
+                            yield return node;
+                        foreach (var where in wheres)
+                            yield return where;
+                    }
+                }
+            }
+        }
+    }
 }

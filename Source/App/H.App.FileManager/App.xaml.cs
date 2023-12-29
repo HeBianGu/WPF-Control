@@ -1,4 +1,5 @@
-﻿using H.Controls.TagBox;
+﻿using H.Controls.FavoriteBox;
+using H.Controls.TagBox;
 using H.Extensions.ApplicationBase;
 using H.Providers.Ioc;
 using Microsoft.Extensions.DependencyInjection;
@@ -52,6 +53,15 @@ namespace H.App.FileManager
                 x.Tags.Add(new Tag() { Name = "标清", GroupName = "Articulation", Description = "这是一个严重标签", Background = Brushes.Orange });
                 x.Tags.Add(new Tag() { Name = "模糊", GroupName = "Articulation", Description = "这是一个严重标签", Background = Brushes.Blue });
                 x.Tags.Add(new Tag() { Name = "差劲", GroupName = "Articulation", Description = "这是一个严重标签", Background = Brushes.Green });
+            });
+
+            services.AddFavorite(x =>
+            {
+                x.FavoriteItems.Add(new FavoriteItem() { Path = "默认"});
+                x.FavoriteItems.Add(new FavoriteItem() { Path = "资源"});
+                x.FavoriteItems.Add(new FavoriteItem() { Path = "学习"});
+                x.FavoriteItems.Add(new FavoriteItem() { Path = "娱乐"});
+                x.FavoriteItems.Add(new FavoriteItem() { Path = "工作"});
             });
             services.AddSetting();
         }

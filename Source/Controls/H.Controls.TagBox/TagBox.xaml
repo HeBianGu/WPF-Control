@@ -26,7 +26,8 @@
         <Setter Property="SelectionMode" Value="Multiple" />
         <Setter Property="ItemContainerStyle">
             <Setter.Value>
-                <Style BasedOn="{StaticResource {x:Static h:ListBoxItemKeys.Default}}" TargetType="{x:Type ListBoxItem}">
+                <Style BasedOn="{StaticResource {x:Static h:ListBoxItemKeys.Default}}"
+                       TargetType="{x:Type ListBoxItem}">
                     <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Background}}" />
                     <Setter Property="Template">
                         <Setter.Value>
@@ -57,7 +58,8 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
                         <DockPanel>
-                            <DockPanel x:Name="dp" DockPanel.Dock="Top">
+                            <DockPanel x:Name="dp"
+                                       DockPanel.Dock="Top">
                                 <ToggleButton x:Name="tb"
                                               VerticalAlignment="Top"
                                               Content="{x:Static h:Geometrys.Down}"
@@ -83,7 +85,8 @@
                                                                 BorderThickness="{TemplateBinding BorderThickness}"
                                                                 CornerRadius="13"
                                                                 SnapsToDevicePixels="true">
-                                                            <DockPanel Margin="10,3" VerticalAlignment="Center">
+                                                            <DockPanel Margin="10,3"
+                                                                       VerticalAlignment="Center">
                                                                 <Button Width="8"
                                                                         Height="8"
                                                                         Content="{x:Static h:Geometrys.Close}"
@@ -154,8 +157,10 @@
                                                 </b:EventTrigger>
                                             </b:Interaction.Triggers>
                                         </Button>
-                                        <TextBox DockPanel.Dock="Top" Text="搜索" />
-                                        <ScrollViewer HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
+                                        <TextBox DockPanel.Dock="Top"
+                                                 Text="搜索" />
+                                        <ScrollViewer HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                                                      VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
                                             <ItemsPresenter Margin="{TemplateBinding Padding}"
                                                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"

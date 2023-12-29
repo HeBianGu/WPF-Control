@@ -1,0 +1,46 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Controls.FavoriteBox">
+    <Style BasedOn="{StaticResource {x:Static h:TreeViewKeys.Default}}"
+           TargetType="{x:Type local:FavoriteFilterBox}">
+        <Setter Property="ItemContainerStyle">
+            <Setter.Value>
+                <Style BasedOn="{StaticResource {x:Static h:TreeViewItemKeys.Default}}"
+                       TargetType="TreeViewItem">
+                    <Setter Property="IsExpanded" Value="True" />
+                    <Setter Property="IsSelected" Value="{Binding Model.IsSelected, Mode=TwoWay}" />
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemTemplate">
+            <Setter.Value>
+                <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
+                    <DockPanel ToolTip="{Binding Model.Description}">
+                        <Border Width="10"
+                                Height="10"
+                                Margin="5,0"
+                                Background="{Binding Model.Background}" />
+                        <TextBlock VerticalAlignment="Center"
+                                   Text="{Binding Model.Path, Converter={x:Static h:Converter.GetFileNameWithoutExtension}}" />
+                    </DockPanel>
+                </HierarchicalDataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="h:Cattach.TopTemplate">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Button Command="{x:Static h:Commands.Clear}"
+                            Content="取消选择" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BehvaiorAttach.Behaviors">
+            <Setter.Value>
+                <h:Behaviors>
+                    <h:TreeViewSelectNoneOnMouseDownBehavior />
+                </h:Behaviors>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

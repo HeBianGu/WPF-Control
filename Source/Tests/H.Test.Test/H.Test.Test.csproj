@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Controls\H.Controls.ColorBox\H.Controls.ColorBox.csproj" />
+    <ProjectReference Include="..\..\Controls\H.Controls.FavoriteBox\H.Controls.FavoriteBox.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.FilterBox\H.Controls.FilterBox.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.GridSplitterBox\H.Controls.GridSplitterBox.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.HorseTextBlock\H.Controls.HorseTextBlock.csproj" />

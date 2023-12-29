@@ -264,6 +264,84 @@ namespace H.Extensions.ViewModel
                 this.RefreshPage();
             }
         }
+
+        private IFilter _filter10;
+        /// <summary> 说明  </summary>
+        public IFilter Filter10
+        {
+            get { return _filter10; }
+            set
+            {
+                _filter10 = value;
+                RaisePropertyChanged();
+                this.RefreshPage();
+            }
+        }
+
+        private IFilter _filter11;
+        /// <summary> 说明  </summary>
+        public IFilter Filter11
+        {
+            get { return _filter11; }
+            set
+            {
+                _filter11= value;
+                RaisePropertyChanged();
+                this.RefreshPage();
+            }
+        }
+
+        private IFilter _filter12;
+        /// <summary> 说明  </summary>
+        public IFilter Filter12
+        {
+            get { return _filter12; }
+            set
+            {
+                _filter12 = value;
+                RaisePropertyChanged();
+                this.RefreshPage();
+            }
+        }
+
+        private IFilter _filter13;
+        /// <summary> 说明  </summary>
+        public IFilter Filter13
+        {
+            get { return _filter13; }
+            set
+            {
+                _filter13 = value;
+                RaisePropertyChanged();
+                this.RefreshPage();
+            }
+        }
+
+        private IFilter _filter14;
+        /// <summary> 说明  </summary>
+        public IFilter Filter14
+        {
+            get { return _filter14; }
+            set
+            {
+                _filter14 = value;
+                RaisePropertyChanged();
+                this.RefreshPage();
+            }
+        }
+
+        private IFilter _filter15;
+        /// <summary> 说明  </summary>
+        public IFilter Filter15
+        {
+            get { return _filter15; }
+            set
+            {
+                _filter15 = value;
+                RaisePropertyChanged();
+                this.RefreshPage();
+            }
+        }
         private IOrder _order1;
         public IOrder Order1
         {
@@ -311,7 +389,13 @@ namespace H.Extensions.ViewModel
                 Where(x => this.Filter6?.IsMatch(x) != false).
                 Where(x => this.Filter7?.IsMatch(x) != false).
                 Where(x => this.Filter8?.IsMatch(x) != false).
-                Where(x => this.Filter9?.IsMatch(x) != false);
+                Where(x => this.Filter9?.IsMatch(x) != false).
+                Where(x => this.Filter10?.IsMatch(x) != false).
+                Where(x => this.Filter11?.IsMatch(x) != false).
+                Where(x => this.Filter12?.IsMatch(x) != false).
+                Where(x => this.Filter13?.IsMatch(x) != false).
+                Where(x => this.Filter14?.IsMatch(x) != false).
+                Where(x => this.Filter15?.IsMatch(x) != false); 
 
             if (this.Order1 != null)
                 where = this.Order1.Where(where).Cast<T>();

@@ -22,7 +22,7 @@ namespace H.Modules.Messages.Dialog
         public string Title { get; set; } = "提示";
         public object Presenter { get; set; }
 
-        private static ManualResetEvent _waitHandle = new ManualResetEvent(false);
+        private ManualResetEvent _waitHandle = new ManualResetEvent(false);
         public async Task<bool?> ShowDialog(Window owner = null)
         {
             Window window = owner ?? Application.Current.MainWindow;

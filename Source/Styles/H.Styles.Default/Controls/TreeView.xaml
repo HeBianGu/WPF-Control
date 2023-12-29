@@ -8,11 +8,10 @@
     <Style x:Key="{ComponentResourceKey ResourceId=S.TreeView.Default,
                                         TypeInTargetAssembly={x:Type local:TreeViewKeys}}"
            TargetType="TreeView">
-        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <!--<Setter Property="OverridesDefaultStyle" Value="True" />-->
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
-
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TreeView">
@@ -25,11 +24,17 @@
                         <Border.Background>
                             <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
                         </Border.Background>
-                        <ScrollViewer Padding="4"
-                                      CanContentScroll="False"
-                                      Focusable="False">
-                            <ItemsPresenter />
-                        </ScrollViewer>
+                        <DockPanel>
+                            <ContentControl DockPanel.Dock="Bottom"
+                                            Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:Cattach.BottomTemplate)}" />
+                            <ContentControl DockPanel.Dock="Top"
+                                            Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:Cattach.TopTemplate)}" />
+                            <ScrollViewer Padding="4"
+                                          CanContentScroll="False"
+                                          Focusable="False">
+                                <ItemsPresenter />
+                            </ScrollViewer>
+                        </DockPanel>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
@@ -39,7 +44,7 @@
     <Style x:Key="{ComponentResourceKey ResourceId=S.ToggleButton.Tree,
                                         TypeInTargetAssembly={x:Type local:ToggleButtonKeys}}"
            TargetType="ToggleButton">
-        <Setter Property="ClickMode" Value="Press"/>
+        <Setter Property="ClickMode" Value="Press" />
         <Setter Property="Focusable" Value="False" />
         <Setter Property="IsChecked" Value="{Binding RelativeSource={RelativeSource AncestorType=TreeViewItem}, Path=IsExpanded, Mode=TwoWay}" />
         <Setter Property="Visibility" Value="{Binding RelativeSource={RelativeSource AncestorType=TreeViewItem}, Path=HasItems, Mode=OneWay, Converter={x:Static h:Converter.GetFalseToHidden}}" />
@@ -135,7 +140,7 @@
                         <Border x:Name="Bd"
                                 Grid.Column="0"
                                 Grid.ColumnSpan="3"
-                                Margin="-100,0"
+                                Margin="-3000,0"
                                 Padding="{TemplateBinding Padding}"
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
@@ -148,6 +153,7 @@
                                       Style="{DynamicResource {x:Static local:ToggleButtonKeys.Tree}}" />
 
                         <Border Grid.Column="1"
+                                Grid.ColumnSpan="5"
                                 Height="{DynamicResource {x:Static LayoutKeys.ItemHeight}}"
                                 Padding="{TemplateBinding Padding}">
                             <ContentPresenter x:Name="PART_Header"
@@ -160,8 +166,9 @@
                                         Grid.Row="1"
                                         Grid.Column="1"
                                         Grid.ColumnSpan="2"
+                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                         Visibility="Collapsed" />
-                        <VisualStateManager.VisualStateGroups>
+                        <!--<VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal" />
                                 <VisualState x:Name="MouseOver">
@@ -207,11 +214,14 @@
                                 </VisualState>
                                 <VisualState x:Name="Collapsed" />
                             </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
+                        </VisualStateManager.VisualStateGroups>-->
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="HasItems" Value="false">
                             <Setter TargetName="Expander" Property="Visibility" Value="Hidden" />
+                        </Trigger>
+                        <Trigger Property="IsExpanded" Value="True">
+                            <Setter TargetName="ItemsHost" Property="Visibility" Value="Visible" />
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -227,46 +237,55 @@
                             </MultiTrigger.Conditions>
                             <Setter TargetName="PART_Header" Property="MinHeight" Value="19" />
                         </MultiTrigger>
-
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="IsSelected" Value="true" />
-                                <Condition Property="IsSelectionActive" Value="false" />
-                            </MultiTrigger.Conditions>
-                            <Setter TargetName="Bd" Property="Background">
-                                <Setter.Value>
-                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
-                                </Setter.Value>
-                            </Setter>
-                        </MultiTrigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="IsSelected" Value="true" />
-                                <Condition Property="IsSelectionActive" Value="True" />
-                            </MultiTrigger.Conditions>
-                            <Setter TargetName="Bd" Property="Background">
-                                <Setter.Value>
-                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
-                                </Setter.Value>
-                            </Setter>
-                            <Setter Property="Foreground">
-                                <Setter.Value>
-                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundTitle}}" />
-                                </Setter.Value>
-                            </Setter>
-                        </MultiTrigger>
-
-                        <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Foreground">
-                                <Setter.Value>
-                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
-                                </Setter.Value>
-                            </Setter>
-                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsSelected" Value="true" />
+                    <Condition Property="IsSelectionActive" Value="false" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
+                    </Setter.Value>
+                </Setter>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsSelected" Value="true" />
+                    <Condition Property="IsSelectionActive" Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Foreground">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundTitle}}" />
+                    </Setter.Value>
+                </Setter>
+            </MultiTrigger>
+
+            <Trigger Property="IsMouseDirectlyOver" Value="True">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="Foreground">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
     </Style>
     <Style BasedOn="{StaticResource {x:Static local:TreeViewKeys.Default}}"
            TargetType="TreeView" />
