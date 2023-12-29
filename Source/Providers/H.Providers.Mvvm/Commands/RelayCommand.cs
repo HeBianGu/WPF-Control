@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 namespace H.Providers.Mvvm
 {
 
-    public interface IRelayCommand
+    public interface IRelayCommand : ICommand
     {
         string Name { get; set; }
         bool IsBusy { get; set; }

@@ -74,7 +74,7 @@ namespace H.App.FileManager
             File?.Save();
             var context = DbIoc.Services.GetService<DataContext>();
             context?.SaveChanges();
-            context?.Dispose();
+            //context?.Dispose();
             return base.Save(out message);
         }
     }

@@ -99,11 +99,11 @@ namespace H.Controls.FavoriteBox
                         if (find != null)
                         {
                             find.IsSelected = true;
-                            var item = control.GetChild<TreeViewItem>(x => x.DataContext == find);
-                            if (item != null)
-                            {
-                                item.IsSelected = true;
-                            }
+                            //var item = control.GetChild<TreeViewItem>(x => x.DataContext == find);
+                            //if (item != null)
+                            //{
+                            //    item.IsSelected = true;
+                            //}
                         }
                         else
                         {

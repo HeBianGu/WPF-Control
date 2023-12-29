@@ -19,41 +19,51 @@ namespace H.App.FileManager
         {
             if (DbIoc.GetService<IRepositoryViewModel<fm_dd_file>>() is FileRepositoryViewModel vm)
             {
+                List<TreeNodeBase<ICommand>> result = new List<TreeNodeBase<ICommand>>();
                 if (value is fm_dd_video video)
-                {
-                    return this.GetImageCommands(video);
-                }
+                    result= this.GetImageCommands(video);
                 if (value is fm_dd_image image)
-                {
-                    return this.GetImageCommands(image);
-                }
+                    result= this.GetImageCommands(image);
                 if (value is fm_dd_file file)
+                    result= this.GetFileCommands(file);
+                foreach (var item in vm.MenuCommands)
                 {
-                    return this.GetFileCommands(file);
+                    result.Add(new TreeNodeBase<ICommand>(item));
                 }
+                return result;
             }
             return null;
         }
 
         public List<TreeNodeBase<ICommand>> GetFileCommands(fm_dd_file file)
         {
-            List<TreeNodeBase<ICommand>> result = new List<TreeNodeBase<ICommand>>();
-            result.Add(new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x => file.Favorite = true) { Name = "收藏=[已收藏]" }));
-            result.Add(new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x => file.Favorite = true) { Name = "收藏=[未收藏]" }));
+            List<TreeNodeBase<ICommand>> result = new List<TreeNodeBase<ICommand>>();  
+            TreeNodeBase<ICommand> favorite = null;
+            favorite = new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x =>
+            {
+                file.Favorite = !file.Favorite;
+                favorite.IsChecked = file.Favorite;
+            })
+            { Name = "收藏" })
+            { IsCheckable = true, IsChecked = file.Favorite };
+            result.Add(favorite);
 
             var scoreNode = new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x => file.Score = 9) { Name = $"评分" });
             result.Add(scoreNode);
-            scoreNode.Nodes.Add(new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x => file.Score = 10) { Name = $"评分=[{10}]" }));
-            scoreNode.Nodes.Add(new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x => file.Score = 9) { Name = $"评分=[{9}]" }));
-            scoreNode.Nodes.Add(new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x => file.Score = 8) { Name = $"评分=[{8}]" }));
-            scoreNode.Nodes.Add(new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x => file.Score = 7) { Name = $"评分=[{7}]" }));
-            scoreNode.Nodes.Add(new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x => file.Score = 6) { Name = $"评分=[{6}]" }));
-            scoreNode.Nodes.Add(new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x => file.Score = 5) { Name = $"评分=[{5}]" }));
-            scoreNode.Nodes.Add(new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x => file.Score = 4) { Name = $"评分=[{4}]" }));
-            scoreNode.Nodes.Add(new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x => file.Score = 3) { Name = $"评分=[{3}]" }));
-            scoreNode.Nodes.Add(new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x => file.Score = 2) { Name = $"评分=[{2}]" }));
-            scoreNode.Nodes.Add(new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x => file.Score = 1) { Name = $"评分=[{1}]" }));
-            scoreNode.Nodes.Add(new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x => file.Score = 0) { Name = $"评分=[{0}]" }));
+
+            foreach (var item in Enumerable.Range(0, 11).Reverse())
+            {
+                TreeNodeBase<ICommand> score = null;
+                score = new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x =>
+                {
+                    file.Score = item;
+                    scoreNode.Nodes.Foreach(x => x.IsChecked = false);
+                    score.IsChecked = true;
+                })
+                { Name = $"评分=[{item}]" })
+                { IsCheckable = true, IsChecked = file.Score == item };
+                scoreNode.Nodes.Add(score);
+            }
 
             var tagNode = new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x => { }) { Name = "标签" });
             result.Add(tagNode);
@@ -64,22 +74,23 @@ namespace H.App.FileManager
                     var tags = tagService.Collection.Where(x => x.GroupName == null);
                     foreach (var tag in tags)
                     {
-                        tagNode.Nodes.Add(new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x =>
-                        {
-                            var list = file.Tags?.Split(new char[] { ',', ' ' }).ToList();
-                            var contain = list?.Contains(tag.Name) == true;
-                            if (contain)
-                            {
-                                var rs = list.Remove(tag.Name);
-                                file.Tags = string.Join(',', list);
-                            }
-                            else
-                            {
-                                file.Tags += "," + tag.Name;
-                                file.Tags.Trim(',');
-                            }
-                        })
-                        { Name = $"标签=[{tag.Name}]" }));
+                        TreeNodeBase<ICommand> ctagNode = null;
+                        ctagNode = new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x =>
+                       {
+                           var contain = tagService.ContainTag(file.Tags, tag);
+                           if (contain)
+                           {
+                               file.Tags = tagService.ConvertToUnCheck(file.Tags, tag);
+                           }
+                           else
+                           {
+                               file.Tags = tagService.ConvertToCheck(file.Tags, tag);
+                           }
+                           ctagNode.IsChecked = !contain;
+                       })
+                        { Name = $"标签=[{tag.Name}]" })
+                        { IsCheckable = true, IsChecked = tagService.ContainTag(file.Tags, tag) };
+                        tagNode.Nodes.Add(ctagNode);
                     }
                 }
             }
@@ -102,22 +113,23 @@ namespace H.App.FileManager
                         var tags = tagService.Collection.Where(x => x.GroupName == "Object");
                         foreach (var tag in tags)
                         {
-                            tagNode.Nodes.Add(new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x =>
+                            TreeNodeBase<ICommand> ctagNode = null;
+                            ctagNode = new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x =>
                             {
-                                var list = file.Object?.Split(new char[] { ',', ' ' }).ToList();
-                                var contain = list?.Contains(tag.Name) == true;
+                                var contain = tagService.ContainTag(file.Object, tag);
                                 if (contain)
                                 {
-                                    var rs = list.Remove(tag.Name);
-                                    file.Object = string.Join(',', list);
+                                    file.Object = tagService.ConvertToUnCheck(file.Object, tag);
                                 }
                                 else
                                 {
-                                    file.Object += "," + tag.Name;
-                                    file.Object.Trim(',');
+                                    file.Object = tagService.ConvertToCheck(file.Object, tag);
                                 }
+                                ctagNode.IsChecked = !contain;
                             })
-                            { Name = $"标签=[{tag.Name}]" }));
+                            { Name = $"标签=[{tag.Name}]" })
+                            { IsCheckable = true, IsChecked = tagService.ContainTag(file.Object, tag) };
+                            tagNode.Nodes.Add(ctagNode);
                         }
                     }
                 }
@@ -129,22 +141,23 @@ namespace H.App.FileManager
                         var tags = tagService.Collection.Where(x => x.GroupName == "Area");
                         foreach (var tag in tags)
                         {
-                            tagNode.Nodes.Add(new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x =>
+                            TreeNodeBase<ICommand> ctagNode = null;
+                            ctagNode = new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x =>
                             {
-                                var list = file.Area?.Split(new char[] { ',', ' ' }).ToList();
-                                var contain = list?.Contains(tag.Name) == true;
+                                var contain = tagService.ContainTag(file.Area, tag);
                                 if (contain)
                                 {
-                                    var rs = list.Remove(tag.Name);
-                                    file.Area = string.Join(',', list);
+                                    file.Area = tagService.ConvertToUnCheck(file.Area, tag);
                                 }
                                 else
                                 {
-                                    file.Area += "," + tag.Name;
-                                    file.Area.Trim(',');
+                                    file.Area = tagService.ConvertToCheck(file.Area, tag);
                                 }
+                                ctagNode.IsChecked = !contain;
                             })
-                            { Name = $"标签=[{tag.Name}]" }));
+                            { Name = $"标签=[{tag.Name}]" })
+                            { IsCheckable = true, IsChecked = tagService.ContainTag(file.Area, tag) };
+                            tagNode.Nodes.Add(ctagNode);
                         }
                     }
                 }
@@ -156,22 +169,23 @@ namespace H.App.FileManager
                         var tags = tagService.Collection.Where(x => x.GroupName == "Articulation");
                         foreach (var tag in tags)
                         {
-                            tagNode.Nodes.Add(new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x =>
+                            TreeNodeBase<ICommand> ctagNode = null;
+                            ctagNode = new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x =>
                             {
-                                var list = file.Articulation?.Split(new char[] { ',', ' ' }).ToList();
-                                var contain = list?.Contains(tag.Name) == true;
+                                var contain = tagService.ContainTag(file.Articulation, tag);
                                 if (contain)
                                 {
-                                    var rs = list.Remove(tag.Name);
-                                    file.Articulation = string.Join(',', list);
+                                    file.Articulation = tagService.ConvertToUnCheck(file.Articulation, tag);
                                 }
                                 else
                                 {
-                                    file.Articulation += "," + tag.Name;
-                                    file.Articulation.Trim(',');
+                                    file.Articulation = tagService.ConvertToCheck(file.Articulation, tag);
                                 }
+                                ctagNode.IsChecked = !contain;
                             })
-                            { Name = $"标签=[{tag.Name}]" }));
+                            { Name = $"标签=[{tag.Name}]" })
+                            { IsCheckable = true, IsChecked = tagService.ContainTag(file.Articulation, tag) };
+                            tagNode.Nodes.Add(ctagNode);
                         }
                     }
                 }

@@ -409,7 +409,7 @@
                         <h:Form Foreground="{DynamicResource {x:Static h:BrushKeys.Foreground}}"
                                 SelectObject="{Binding Collection.SelectedItem.Model, Mode=TwoWay}" />
                     </h:OutlookSection>
-                    <h:OutlookSection Header="标签">
+                    <h:OutlookSection Header="标签设置">
                         <h:OutlookSection.Image>
                             <DrawingImage>
                                 <DrawingImage.Drawing>
@@ -433,7 +433,7 @@
                             </DrawingImage>
                         </h:OutlookSection.Image>
                         <StackPanel>
-                            <GroupBox Header="常用">
+                            <GroupBox Header="默认">
                                 <h:TagBox Tags="{Binding Collection.SelectedItem.Model.Tags, Mode=TwoWay}" />
                             </GroupBox>
                             <GroupBox Header="国家/区域">
@@ -450,7 +450,7 @@
                             </GroupBox>
                         </StackPanel>
                     </h:OutlookSection>
-                    <h:OutlookSection Header="收藏夹">
+                    <h:OutlookSection Header="收藏夹设置">
                         <h:OutlookSection.Image>
                             <DrawingImage>
                                 <DrawingImage.Drawing>

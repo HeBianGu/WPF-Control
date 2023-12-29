@@ -138,7 +138,8 @@
     <!--  TopLevelHeader  -->
     <ControlTemplate x:Key="{x:Static MenuItem.TopLevelHeaderTemplateKey}"
                      TargetType="{x:Type MenuItem}">
-        <Border x:Name="Border">
+        <Border x:Name="Border"
+                Background="Transparent">
             <Grid>
                 <ContentPresenter Margin="6,3,6,3"
                                   VerticalAlignment="Center"
@@ -198,7 +199,7 @@
     <ControlTemplate x:Key="{x:Static MenuItem.TopLevelItemTemplateKey}"
                      TargetType="{x:Type MenuItem}">
         <Border x:Name="Border">
-            <Grid>
+            <Grid Background="Transparent">
                 <ContentPresenter Margin="6,3,6,3"
                                   VerticalAlignment="Center"
                                   ContentSource="Header"
@@ -227,6 +228,7 @@
     <ControlTemplate x:Key="{x:Static MenuItem.SubmenuItemTemplateKey}"
                      TargetType="{x:Type MenuItem}">
         <Border x:Name="Border"
+                Background="Transparent"
                 BorderThickness="1">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -314,6 +316,7 @@
     <ControlTemplate x:Key="{x:Static MenuItem.SubmenuHeaderTemplateKey}"
                      TargetType="{x:Type MenuItem}">
         <Border x:Name="Border"
+                Background="Transparent"
                 BorderThickness="1">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -352,7 +355,7 @@
                 <Popup x:Name="Popup"
                        AllowsTransparency="True"
                        Focusable="False"
-                       HorizontalOffset="-4"
+                       HorizontalOffset="2"
                        IsOpen="{TemplateBinding IsSubmenuOpen}"
                        Placement="Right"
                        PopupAnimation="Fade">

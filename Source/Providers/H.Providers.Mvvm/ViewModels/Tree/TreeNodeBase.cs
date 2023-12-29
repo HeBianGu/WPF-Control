@@ -33,6 +33,19 @@ namespace H.Providers.Mvvm
             }
         }
 
+        private bool _isCheckable = false;
+        /// <summary> 说明  </summary>
+        public bool IsCheckable
+        {
+            get { return _isCheckable; }
+            set
+            {
+                _isCheckable = value;
+                RaisePropertyChanged();
+            }
+        }
+
+
         private void RefreshParentCheckState()
         {
             if (Parent == null)

@@ -10,7 +10,7 @@
                 <Style BasedOn="{StaticResource {x:Static h:TreeViewItemKeys.Default}}"
                        TargetType="TreeViewItem">
                     <Setter Property="IsExpanded" Value="True" />
-                    <Setter Property="IsSelected" Value="{Binding Model.IsSelected, Mode=TwoWay}" />
+                    <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
                 </Style>
             </Setter.Value>
         </Setter>
@@ -43,7 +43,7 @@
         <Setter Property="BehvaiorAttach.Behaviors">
             <Setter.Value>
                 <h:Behaviors>
-                    <h:TreeViewSelectNoneOnMouseDownBehavior/>
+                    <h:TreeViewSelectNoneOnMouseDownBehavior />
                 </h:Behaviors>
             </Setter.Value>
         </Setter>

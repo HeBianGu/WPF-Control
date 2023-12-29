@@ -5,22 +5,18 @@
                     xmlns:local="clr-namespace:H.App.FileManager">
     <DataTemplate DataType="{x:Type local:FileRepositoryViewModel}">
         <DockPanel>
-            <DockPanel DockPanel.Dock="Top"
-                       LastChildFill="False">
+            <DockPanel DockPanel.Dock="Top" LastChildFill="False">
                 <DockPanel Background="{DynamicResource {x:Static h:BrushKeys.MouseOver}}">
-                    <Button Command="{Binding RefreshCommand}"
-                            Content="加载文件" />
-                    <ToggleButton Content="{x:Static h:Geometrys.Down}"
-                                  Style="{DynamicResource {x:Static h:ToggleButtonKeys.Geometry}}">
+                    <Button Command="{Binding RefreshCommand}" Content="加载文件" />
+                    <ToggleButton Content="{x:Static h:Geometrys.Down}" Style="{DynamicResource {x:Static h:ToggleButtonKeys.Geometry}}">
                         <b:Interaction.Behaviors>
                             <h:MouseOverContextMenuBehavior />
                         </b:Interaction.Behaviors>
                         <Control.ContextMenu>
-                            <ContextMenu ItemsSource="{Binding UpdateCommands}">
+                            <ContextMenu ItemsSource="{Binding UpdateCommands}" StaysOpen="True">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <MenuItem Command="{Binding .}"
-                                                  Header="{Binding Name}" />
+                                        <MenuItem Command="{Binding .}" Header="{Binding Name}" />
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
                             </ContextMenu>
@@ -28,12 +24,9 @@
                     </ToggleButton>
                 </DockPanel>
 
-                <DockPanel Margin="2,0"
-                           Background="{DynamicResource {x:Static h:BrushKeys.MouseOver}}">
-                    <Button Command="{Binding RefreshCommand}"
-                            Content="更多操作" />
-                    <ToggleButton Content="{x:Static h:Geometrys.Down}"
-                                  Style="{DynamicResource {x:Static h:ToggleButtonKeys.Geometry}}">
+                <DockPanel Margin="2,0" Background="{DynamicResource {x:Static h:BrushKeys.MouseOver}}">
+                    <Button Command="{Binding RefreshCommand}" Content="更多操作" />
+                    <ToggleButton Content="{x:Static h:Geometrys.Down}" Style="{DynamicResource {x:Static h:ToggleButtonKeys.Geometry}}">
                         <b:Interaction.Behaviors>
                             <h:MouseOverContextMenuBehavior />
                         </b:Interaction.Behaviors>
@@ -41,8 +34,7 @@
                             <ContextMenu ItemsSource="{Binding MoreCommands}">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <MenuItem Command="{Binding .}"
-                                                  Header="{Binding Name}" />
+                                        <MenuItem Command="{Binding .}" Header="{Binding Name}" />
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
                             </ContextMenu>
@@ -96,23 +88,29 @@
                 </h:TextFilterBox>
             </DockPanel>
 
-            <ContentPresenter Content="{Ioc Type={x:Type IProjectViewPresenter}}"
-                              DockPanel.Dock="Bottom" />
-            <TextBlock Margin="10"
-                       DockPanel.Dock="Bottom">
-                <Run Text=" 合计：" />
-                <Run Text="{Binding Collection.FilterSource.Count, Mode=OneWay}" />
-                <Run Text="/" />
-                <Run Text="{Binding Collection.Cache.Count, Mode=OneWay}" />
-            </TextBlock>
+            <!--<ContentPresenter Content="{Ioc Type={x:Type IProjectViewPresenter}}"
+                              DockPanel.Dock="Bottom" />-->
+
+            <DockPanel Margin="10" DockPanel.Dock="Bottom">
+                <TextBlock VerticalAlignment="Center">
+                    <Run Text=" 合计：" />
+                    <Run Text="{Binding Collection.FilterSource.Count, Mode=OneWay}" />
+                    <Run Text="/" />
+                    <Run Text="{Binding Collection.Cache.Count, Mode=OneWay}" />
+                </TextBlock>
+
+                <h:PagerBox HorizontalAlignment="Right"
+                            MaxPageCount="{Binding Path=Collection.TotalPage, Mode=TwoWay}"
+                            PageIndex="{Binding Path=Collection.PageIndex, Mode=TwoWay}" />
+            </DockPanel>
+
             <Grid>
                 <Control>
                     <Control.Template>
                         <ControlTemplate>
                             <Grid>
                                 <Grid.ContextMenu>
-                                    <ContextMenu ItemsSource="{Binding Collection.SelectedItem.Model, Converter={local:GetFileMenuItemConverter}}"
-                                                 StaysOpen="True">
+                                    <ContextMenu ItemsSource="{Binding Collection.SelectedItem.Model, Converter={local:GetFileMenuItemConverter}}" StaysOpen="True">
                                         <ItemsControl.ItemTemplate>
                                             <!--<DataTemplate>
                                                 <MenuItem Command="{Binding Model}"
@@ -120,15 +118,15 @@
                                                           ItemsSource="{Binding Nodes}" />
                                             </DataTemplate>-->
                                             <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
-                                                <TextBlock VerticalAlignment="Center"
-                                                           Text="{Binding}" />
+                                                <TextBlock VerticalAlignment="Center" Text="{Binding}" />
                                             </HierarchicalDataTemplate>
                                         </ItemsControl.ItemTemplate>
                                         <ContextMenu.ItemContainerStyle>
-                                            <Style BasedOn="{StaticResource {x:Static h:MenuItemKeys.Default}}"
-                                                   TargetType="MenuItem">
+                                            <Style BasedOn="{StaticResource {x:Static h:MenuItemKeys.Default}}" TargetType="MenuItem">
                                                 <Setter Property="Command" Value="{Binding Model}" />
                                                 <Setter Property="Header" Value="{Binding Model.Name}" />
+                                                <Setter Property="IsCheckable" Value="{Binding IsCheckable, Mode=TwoWay}" />
+                                                <Setter Property="IsChecked" Value="{Binding IsChecked, Mode=TwoWay}" />
                                             </Style>
                                         </ContextMenu.ItemContainerStyle>
                                     </ContextMenu>
@@ -214,28 +212,23 @@
                                                 <ContentPresenter Content="{Binding Model}" />
                                             </DockPanel>
                                             <DataTemplate.Triggers>
-                                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=ViewSizeMode}"
-                                                             Value="Auto">
+                                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=ViewSizeMode}" Value="Auto">
                                                     <Setter TargetName="dp" Property="Width" Value="Auto" />
                                                     <Setter TargetName="dp" Property="Height" Value="Auto" />
                                                 </DataTrigger>
-                                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=ViewSizeMode}"
-                                                             Value="ExtraLarge">
+                                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=ViewSizeMode}" Value="ExtraLarge">
                                                     <Setter TargetName="dp" Property="Width" Value="600" />
                                                     <Setter TargetName="dp" Property="Height" Value="600" />
                                                 </DataTrigger>
-                                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=ViewSizeMode}"
-                                                             Value="Large">
+                                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=ViewSizeMode}" Value="Large">
                                                     <Setter TargetName="dp" Property="Width" Value="400" />
                                                     <Setter TargetName="dp" Property="Height" Value="400" />
                                                 </DataTrigger>
-                                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=ViewSizeMode}"
-                                                             Value="Small">
+                                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=ViewSizeMode}" Value="Small">
                                                     <Setter TargetName="dp" Property="Width" Value="100" />
                                                     <Setter TargetName="dp" Property="Height" Value="100" />
                                                 </DataTrigger>
-                                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=ViewSizeMode}"
-                                                             Value="ExtraSmall">
+                                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=ViewSizeMode}" Value="ExtraSmall">
                                                     <Setter TargetName="dp" Property="Width" Value="50" />
                                                     <Setter TargetName="dp" Property="Height" Value="50" />
                                                 </DataTrigger>
@@ -249,8 +242,7 @@
                                     </ItemsControl.ItemsPanel>
                                 </ListBox>
 
-                                <DockPanel x:Name="lb_view"
-                                           Visibility="Collapsed">
+                                <DockPanel x:Name="lb_view" Visibility="Collapsed">
                                     <ListBox h:Cattach.ItemHeight="Auto"
                                              DockPanel.Dock="Bottom"
                                              ItemsSource="{Binding Collection.Source, IsAsync=True}"
@@ -259,8 +251,7 @@
                                              SelectedItem="{Binding Collection.SelectedItem}">
                                         <ItemsControl.ItemTemplate>
                                             <DataTemplate>
-                                                <DockPanel Width="100"
-                                                           Height="100">
+                                                <DockPanel Width="100" Height="100">
                                                     <TextBlock Margin="2,5"
                                                                DockPanel.Dock="Bottom"
                                                                Text="{Binding Model.Name}"
@@ -285,16 +276,13 @@
                                 </DockPanel>
                             </Grid>
                             <ControlTemplate.Triggers>
-                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=DisplayMode}"
-                                             Value="DataGrid">
+                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=DisplayMode}" Value="DataGrid">
                                     <Setter TargetName="dg" Property="Visibility" Value="Visible" />
                                 </DataTrigger>
-                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=DisplayMode}"
-                                             Value="ListBox">
+                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=DisplayMode}" Value="ListBox">
                                     <Setter TargetName="lb" Property="Visibility" Value="Visible" />
                                 </DataTrigger>
-                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=DisplayMode}"
-                                             Value="View">
+                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=DisplayMode}" Value="View">
                                     <Setter TargetName="lb_view" Property="Visibility" Value="Visible" />
                                 </DataTrigger>
                             </ControlTemplate.Triggers>
