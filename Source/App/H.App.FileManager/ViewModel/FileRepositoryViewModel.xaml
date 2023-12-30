@@ -108,7 +108,7 @@
                 <Control>
                     <Control.Template>
                         <ControlTemplate>
-                            <Grid>
+                            <Grid Background="Transparent">
                                 <Grid.ContextMenu>
                                     <ContextMenu ItemsSource="{Binding Collection.SelectedItem.Model, Converter={local:GetFileMenuItemConverter}}" StaysOpen="True">
                                         <ItemsControl.ItemTemplate>

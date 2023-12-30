@@ -33,7 +33,6 @@ namespace H.Test.Test
             services.AddLog4net();
             services.AddSetting();
             services.AddXmlMetaSettingService();
-
             services.AddTag(x =>
             {
                 x.Tags.Add(new Tag() { Name = "严重", Description = "这是一个严重标签", Background = Brushes.Purple });
@@ -72,6 +71,10 @@ namespace H.Test.Test
         {
             base.Configure(app);
             app.UseAddLog4netSetting();
+            app.UseVlc(x=>
+            {
+                x.LibvlcPath = "G:\\BaiduNetdiskDownload\\libvlc\\win-x64";
+            });
         }
     }
 }

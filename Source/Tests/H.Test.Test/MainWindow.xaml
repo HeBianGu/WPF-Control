@@ -613,6 +613,11 @@
                         </Behaviors:Interaction.Behaviors>
                     </DataGrid>
                 </DockPanel>
+            </TabItem> 
+            <TabItem Header="Vlc">
+                <DockPanel>
+                    <h:VlcPlayer/>
+                </DockPanel>
             </TabItem>
         </TabControl>
     </Grid>

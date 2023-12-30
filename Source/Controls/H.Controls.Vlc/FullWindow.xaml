@@ -1,0 +1,31 @@
+﻿<Window x:Class="H.Controls.Vlc.FullWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:h="https://github.com/HeBianGu"
+        xmlns:local="clr-namespace:H.Controls.Vlc"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Title="FullWindow"
+        Width="800"
+        Height="450"
+        WindowState="Maximized"
+        WindowStyle="None"
+        mc:Ignorable="d">
+    <Window.Template>
+        <ControlTemplate TargetType="Window">
+            <Grid>
+                <AdornerDecorator Grid.Row="1" Margin="3,0,3,3">
+                    <Grid>
+                        <ContentPresenter />
+                        <Button HorizontalAlignment="Right"
+                                VerticalAlignment="Top"
+                                Command="{x:Static SystemCommands.CloseWindowCommand}"
+                                Content="{x:Static h:Geometrys.Close}"
+                                Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
+                    </Grid>
+                </AdornerDecorator>
+
+            </Grid>
+        </ControlTemplate>
+    </Window.Template>
+</Window>

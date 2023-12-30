@@ -74,6 +74,11 @@ namespace H.App.FileManager
             {
                 x.Add(AppSetting.Instance);
             });
+
+            app.UseVlc(x =>
+            {
+                x.LibvlcPath = "G:\\BaiduNetdiskDownload\\libvlc\\win-x64";
+            });
         }
     }
 }

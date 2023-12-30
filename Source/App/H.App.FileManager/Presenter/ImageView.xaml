@@ -15,24 +15,27 @@
                        DockPanel.Dock="Top"
                        Text="{Binding Url}" />
             <ItemsControl DockPanel.Dock="Left">
-                <Button Content="{x:Static h:Geometrys.Info}"
-                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
-                <Button Content="{x:Static h:Geometrys.Info}"
-                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
-                <Button Content="{x:Static h:Geometrys.Info}"
-                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
-                <Button Content="{x:Static h:Geometrys.Info}"
-                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
-                <Button Content="{x:Static h:Geometrys.Info}"
-                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
-                <Button Content="{x:Static h:Geometrys.Info}"
-                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
-                <Button Content="{x:Static h:Geometrys.Info}"
-                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
-                <Button Content="{x:Static h:Geometrys.Info}"
-                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
+                <Button Content="{x:Static h:Geometrys.Info}" Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
+                <Button Content="{x:Static h:Geometrys.Info}" Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
+                <Button Content="{x:Static h:Geometrys.Info}" Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
+                <Button Content="{x:Static h:Geometrys.Info}" Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
+                <Button Content="{x:Static h:Geometrys.Info}" Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
+                <Button Content="{x:Static h:Geometrys.Info}" Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
+                <Button Content="{x:Static h:Geometrys.Info}" Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
+                <Button Content="{x:Static h:Geometrys.Info}" Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
             </ItemsControl>
-            <Image Source="{Binding Model.Url}" />
+
+            <h:Zoombox x:Name="zoomview"
+                       Background="Transparent"
+                       DragModifiers=""
+                       Focusable="True"
+                       IsTabStop="True"
+                       NavigateOnPreview="False"
+                       RelativeZoomModifiers=""
+                       ViewStackIndex="0"
+                       ZoomOn="Content">
+                <Image Source="{Binding Model.Url}" />
+            </h:Zoombox>
         </DockPanel>
     </DataTemplate>
 

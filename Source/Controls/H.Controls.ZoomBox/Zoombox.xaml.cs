@@ -3012,7 +3012,7 @@ namespace H.Controls.ZoomBox
 
                         _contentPresenter.RenderTransform = tg;
 
-                        Size initialContentSize = (_content is Viewbox) ? ((Viewbox)_content).Child.DesiredSize : this.RenderSize;
+                        Size initialContentSize = (_content is Viewbox) && ((Viewbox)_content).Child!= null ? ((Viewbox)_content).Child.DesiredSize : this.RenderSize;
                         Size scaledContentSize = new Size(initialContentSize.Width * newRelativeScale, initialContentSize.Height * newRelativeScale);
 
                         if (allowAnimation && IsAnimated)

@@ -68,7 +68,7 @@
 
     <!--  Template when the orientation of the Slider is Horizontal.  -->
     <ControlTemplate x:Key="HorizontalSlider" TargetType="{x:Type Slider}">
-        <Grid>
+        <Grid VerticalAlignment="Center">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" MinHeight="{TemplateBinding MinHeight}" />

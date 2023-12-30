@@ -13,12 +13,13 @@
 
     <DataTemplate DataType="{x:Type local:FileView}">
         <DockPanel>
-            <TextBlock Margin="5"
-                       DockPanel.Dock="Top"
-                       Text="{Binding Model.Url}" />
             <Image Width="100"
                    Height="100"
+                   Margin="10"
+                   HorizontalAlignment="Left"
+                   DockPanel.Dock="Top"
                    Source="{Binding Model.Url, Converter={h:GetFilePathToSystemInfoIconConverter}, IsAsync=True}" />
+            <h:Form SelectObject="{Binding}" UsePropertyView="True" />
         </DockPanel>
     </DataTemplate>
 </ResourceDictionary>
