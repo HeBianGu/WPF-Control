@@ -28,8 +28,11 @@ namespace H.App.FileManager
 
             this.UpdateCommands = this.Commands.OfType<IRelayCommand>().Where(x => x.GroupName == "更新").ToObservable();
             this.MenuCommands = this.Commands.OfType<IRelayCommand>().Where(x => x.GroupName == "菜单").ToObservable();
-            this.MoreCommands = this.Commands.OfType<IRelayCommand>().Where(x => string.IsNullOrEmpty(x.GroupName)).ToObservable();
+            this.MoreCommands = this.Commands.OfType<IRelayCommand>().Where(x => x.GroupName != "菜单" && x.GroupName != "更新").ToObservable();
         }
+
+        public static FileRepositoryViewModel Instance => DbIoc.GetService<IRepositoryViewModel<fm_dd_file>>() as FileRepositoryViewModel;
+
         public override void RefreshData(params string[] includes)
         {
             includes = includes ?? GetIncludes()?.ToArray();
@@ -37,6 +40,18 @@ namespace H.App.FileManager
             : Repository.GetList(includes).Select(x => new SelectViewModel<fm_dd_file>(x));
             Collection.Load(collection);
         }
+
+        private ObservableCollection<fm_dd_file> _hisotry = new ObservableCollection<fm_dd_file>();
+        public ObservableCollection<fm_dd_file> History
+        {
+            get { return _hisotry; }
+            set
+            {
+                _hisotry = value;
+                RaisePropertyChanged("History");
+            }
+        }
+
 
         [Browsable(false)]
         [JsonIgnore]
@@ -68,32 +83,8 @@ namespace H.App.FileManager
                        List<fm_dd_file> dbFiles = new List<fm_dd_file>();
                        foreach (var file in files)
                        {
-                           fm_dd_file fm_Dd_File = null;
-                           if (file.IsImage())
-                           {
-                               fm_dd_image image = new fm_dd_image();
-                               image.PixelHeight = 200;
-                               image.PixelWidth = 400;
-                               fm_Dd_File = image;
-                           }
-                           else if (file.IsVedio())
-                           {
-                               fm_dd_video video = new fm_dd_video();
-                               fm_Dd_File = video;
-                           }
-                           else if (file.IsAudio())
-                           {
-                               fm_Dd_File = new fm_dd_audio();
-                           }
-                           else
-                           {
-                               fm_Dd_File = new fm_dd_file();
-                           }
-                           fm_Dd_File.Name = Path.GetFileNameWithoutExtension(file);
-                           fm_Dd_File.Url = Path.GetFullPath(file);
-                           fm_Dd_File.Extend = Path.GetExtension(file);
-                           fm_Dd_File.Size = new FileInfo(file).Length;
-                           dbFiles.Add(fm_Dd_File);
+                           var fileEnity = Ioc.GetService<IFileToEntityService>().ToEntity(file);
+                           dbFiles.Add(fileEnity);
                        }
                        await Add(dbFiles.ToArray());
                        x.Value = "加载完成，正在保存...";
@@ -122,7 +113,6 @@ namespace H.App.FileManager
 
 
         [Display(Name = "复制", GroupName = "菜单")]
-
         public RelayCommand CopyCommand { get; set; } = new RelayCommand(l =>
         {
             if (l is string project)
@@ -139,6 +129,7 @@ namespace H.App.FileManager
 
             }
         });
+
         [Display(Name = "更新视频信息", GroupName = "更新")]
         public RelayCommand UpdateVieoInfoCommand { get; set; } = new RelayCommand(l =>
         {
@@ -225,7 +216,7 @@ namespace H.App.FileManager
             IocMessage.Snack.ShowInfo($"操作完成[{finds.Count()}]条");
         }, x => this.Collection.FilterSource.Count > 0);
 
-        [Display(Name = "彻底删除选中文件")]
+        [Display(Name = "彻底删除", GroupName = "菜单")]
         public RelayCommand DeleteSelectedFileCommand => new RelayCommand(async l =>
         {
             var r = await IocMessage.Dialog.Show("确定删除？");
@@ -233,6 +224,18 @@ namespace H.App.FileManager
                 return;
             if (File.Exists(this.Collection.SelectedItem.Model.Url))
                 File.Delete(this.Collection.SelectedItem.Model.Url);
+            await this.Delete(this.Collection.SelectedItem);
+            IocMessage.Snack.ShowInfo($"操作完成");
+
+        }, x => this.Collection.SelectedItem != null);
+
+
+        [Display(Name = "移除", GroupName = "菜单")]
+        public RelayCommand RemoveSelectedFileCommand => new RelayCommand(async l =>
+        {
+            var r = await IocMessage.Dialog.Show("确定删除？");
+            if (r != true)
+                return;
             await this.Delete(this.Collection.SelectedItem);
             IocMessage.Snack.ShowInfo($"操作完成");
 
@@ -297,5 +300,28 @@ namespace H.App.FileManager
             }
             IocMessage.Snack.ShowInfo($"操作完成[{finds.Count()}]条");
         }, x => this.Collection.FilterSource.Where(x => x.Model.Score < 1).Count() > 0);
+
+        [Browsable(false)]
+        public RelayCommand SelectionChangedCommand => new RelayCommand((s, e) =>
+        {
+            if (e is fm_dd_file file)
+            {
+                file.Watched = true;
+                file.LastPlayTime = DateTime.Now;
+                file.PlayCount = file.PlayCount + 1;
+                this.History.Add(file);
+            }
+        });
+
+        [Browsable(false)]
+        public RelayCommand MouseDoubleClickCommand => new RelayCommand(async (s, e) =>
+        {
+            if (e is fm_dd_file file)
+            {
+                this.History.Add(file);
+                var view = Ioc.GetService<IFileToViewService>().ToView(file);
+                await IocMessage.Dialog.Show(view);
+            }
+        });
     }
 }

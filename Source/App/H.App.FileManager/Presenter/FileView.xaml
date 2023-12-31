@@ -5,10 +5,71 @@
                     xmlns:local="clr-namespace:H.App.FileManager">
 
     <DataTemplate DataType="{x:Type local:fm_dd_file}">
-        <Image Width="40"
-               Height="40"
-               Margin="15"
-               Source="{Binding Url, Converter={h:GetFilePathToSystemInfoIconConverter}, IsAsync=True}" />
+        <Grid>
+            <DockPanel>
+                <Image Width="50"
+                       Height="50"
+                       Source="{Binding Url, Converter={h:GetFilePathToSystemInfoIconConverter}, IsAsync=True, ConverterParameter=200}" />
+                <ItemsControl MinWidth="50"
+                              MaxWidth="150"
+                              Margin="5"
+                              ToolTip="{Binding Url}">
+                    <TextBlock MaxHeight="50"
+                               FontWeight="Bold"
+                               Text="{Binding Name}"
+                               TextTrimming="CharacterEllipsis"
+                               TextWrapping="Wrap"
+                               ToolTip="{Binding Name}" />
+                    <TextBlock Foreground="{DynamicResource {x:Static h:BrushKeys.Orange}}"
+                               Text="{Binding Tags}"
+                               ToolTip="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text}" />
+                    <TextBlock Foreground="{DynamicResource {x:Static h:BrushKeys.Pink}}"
+                               Text="{Binding Area}"
+                               ToolTip="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text}" />
+                    <TextBlock Foreground="{DynamicResource {x:Static h:BrushKeys.LightBlue}}"
+                               Text="{Binding Articulation}"
+                               ToolTip="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text}" />
+                    <TextBlock Foreground="{DynamicResource {x:Static h:BrushKeys.Green}}"
+                               Text="{Binding Object}"
+                               ToolTip="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text}" />
+                </ItemsControl>
+            </DockPanel>
+            <Border HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Background="{DynamicResource {x:Static h:BrushKeys.Red}}"
+                    CornerRadius="2"
+                    Visibility="{Binding Watched, Converter={x:Static h:Converter.GetTrueToCollapsed}}">
+                <TextBlock Margin="5,3"
+                           Foreground="White"
+                           Text="New" />
+            </Border>
+
+            <TextBlock HorizontalAlignment="Left"
+                       VerticalAlignment="Bottom"
+                       FontWeight="Bold"
+                       Foreground="{DynamicResource {x:Static h:BrushKeys.Orange}}">
+                <Run Text="{Binding Score}" /><Run Text="分" />
+            </TextBlock>
+
+            <ToggleButton Width="20"
+                          Height="20"
+                          Padding="2"
+                          HorizontalAlignment="Right"
+                          VerticalAlignment="Bottom"
+                          BorderThickness="0"
+                          Content="M655.58253 161.724518c-54.76554 0-104.459127 20.519015-145.894532 59.815819-41.652156-39.730304-90.543766-59.815819-145.865632-59.815819-132.116447 0-239.60285 115.079884-239.60285 256.531038 0 82.834686 36.948677 140.454103 64.042447 182.705934 63.421096 99.755648 194.670543 203.253849 267.267396 256.068638l3.366852 2.456502c14.450011 11.234883 31.862273 17.188288 50.372737 17.188287 17.433938 0 34.45605-5.657179 49.231186-16.335737l0.946476-0.700825c0.599675-0.455175 1.784576-1.322176 3.496902-2.564877 72.575178-52.923164 203.867974-156.551415 267.881522-256.299838 26.970945-42.071206 63.919622-99.683398 63.919621-182.525309-0.007225-141.443929-107.291329-256.523813-239.162125-256.523813z"
+                          IsChecked="{Binding Favorite, Mode=TwoWay}">
+                <ToggleButton.Style>
+                    <Style BasedOn="{StaticResource {x:Static h:ToggleButtonKeys.Geometry}}" TargetType="ToggleButton">
+                        <Style.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Red}}" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ToggleButton.Style>
+            </ToggleButton>
+        </Grid>
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type local:FileView}">

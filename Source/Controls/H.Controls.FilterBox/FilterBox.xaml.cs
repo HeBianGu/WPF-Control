@@ -1,5 +1,4 @@
 ﻿using H.Providers.Ioc;
-using H.Providers.Mvvm;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -178,7 +177,6 @@ namespace H.Controls.FilterBox
     public class Filter : IFilter
     {
         private readonly FilterBox _filterBox;
-        private PropertyInfo _propertyInfo;
         public Filter(FilterBox SelectionFilterBox)
         {
             _filterBox = SelectionFilterBox;

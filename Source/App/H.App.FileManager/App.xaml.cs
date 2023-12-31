@@ -64,6 +64,7 @@ namespace H.App.FileManager
                 x.FavoriteItems.Add(new FavoriteItem() { Path = "工作"});
             });
             services.AddSetting();
+            services.AddAppService();
         }
 
         protected override void Configure(IApplicationBuilder app)

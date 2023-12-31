@@ -44,7 +44,7 @@ namespace H.App.FileManager
                 file.Favorite = !file.Favorite;
                 favorite.IsChecked = file.Favorite;
             })
-            { Name = "收藏" })
+            { Name = "喜欢" })
             { IsCheckable = true, IsChecked = file.Favorite };
             result.Add(favorite);
 
@@ -193,5 +193,15 @@ namespace H.App.FileManager
             return result;
         }
 
+    }
+
+    public class GetTickToMillisecond : MarkupValueConverterBase
+    {
+        public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if(value is long l)
+                return TimeSpan.FromTicks(l).TotalMilliseconds;
+            return value;
+        }
     }
 }

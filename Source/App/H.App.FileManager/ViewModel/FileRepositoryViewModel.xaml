@@ -242,38 +242,65 @@
                                     </ItemsControl.ItemsPanel>
                                 </ListBox>
 
-                                <DockPanel x:Name="lb_view" Visibility="Collapsed">
-                                    <ListBox h:Cattach.ItemHeight="Auto"
-                                             DockPanel.Dock="Bottom"
-                                             ItemsSource="{Binding Collection.Source, IsAsync=True}"
-                                             ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                                             ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                                             SelectedItem="{Binding Collection.SelectedItem}">
-                                        <ItemsControl.ItemTemplate>
-                                            <DataTemplate>
-                                                <DockPanel Width="100" Height="100">
-                                                    <TextBlock Margin="2,5"
-                                                               DockPanel.Dock="Bottom"
-                                                               Text="{Binding Model.Name}"
-                                                               TextTrimming="CharacterEllipsis"
-                                                               ToolTip="{Binding Model.Url}" />
-                                                    <!--<Image HorizontalAlignment="Center"
-                                                               VerticalAlignment="Center"
-                                                               Source="{Binding Model, Converter={local:GetFileToViewConverter}}"
-                                                               Stretch="{Binding Source={x:Static local:AppSetting.Instance}, Path=Stretch}"
-                                                               StretchDirection="Both" />-->
-                                                    <ContentPresenter Content="{Binding Model}" />
-                                                </DockPanel>
-                                            </DataTemplate>
-                                        </ItemsControl.ItemTemplate>
-                                        <ItemsControl.ItemsPanel>
-                                            <ItemsPanelTemplate>
-                                                <StackPanel Orientation="Horizontal" />
-                                            </ItemsPanelTemplate>
-                                        </ItemsControl.ItemsPanel>
-                                    </ListBox>
-                                    <ContentPresenter Content="{Binding Collection.SelectedItem.Model, Converter={local:GetFileToViewConverter}}" />
-                                </DockPanel>
+                                <h:GridSplitterBox x:Name="lb_view"
+                                                   MenuMaxWidth="300"
+                                                   MenuMinWidth="120"
+                                                   Mode="Extend"
+                                                   Visibility="Collapsed">
+                                    <h:GridSplitterBox.MenuContent>
+                                        <ListBox h:Cattach.ItemHeight="Auto"
+                                                 DockPanel.Dock="Left"
+                                                 ItemsSource="{Binding Collection.Source, IsAsync=True}"
+                                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                                 ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                                 SelectedItem="{Binding Collection.SelectedItem}">
+                                            <b:Interaction.Triggers>
+                                                <b:EventTrigger EventName="SelectionChanged">
+                                                    <b:InvokeCommandAction Command="{Binding SelectionChangedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=SelectedItem.Model}" />
+                                                </b:EventTrigger>
+                                                <b:EventTrigger EventName="MouseDoubleClick">
+                                                    <b:InvokeCommandAction Command="{Binding MouseDoubleClickCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=SelectedItem.Model}" />
+                                                </b:EventTrigger>
+                                            </b:Interaction.Triggers>
+                                            <ListBox.ItemContainerStyle>
+                                                <Style BasedOn="{StaticResource {x:Static h:ListBoxItemKeys.Default}}" TargetType="ListBoxItem">
+                                                    <Setter Property="BorderThickness" Value="1" />
+                                                    <Setter Property="Margin" Value="1" />
+                                                    <Setter Property="Padding" Value="5" />
+                                                </Style>
+                                            </ListBox.ItemContainerStyle>
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <DockPanel>
+                                                        <ContentPresenter Content="{Binding Model}" />
+                                                    </DockPanel>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                            <ItemsControl.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <VirtualizingStackPanel Orientation="Vertical" />
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl.ItemsPanel>
+                                        </ListBox>
+                                    </h:GridSplitterBox.MenuContent>
+                                    <Grid Background="Transparent">
+                                        <b:Interaction.Triggers>
+                                            <h:MouseTrigger ClickCount="2"
+                                                            Mode="Right"
+                                                            MouseButton="Left"
+                                                            UseHandle="False">
+                                                <b:InvokeCommandAction Command="{Binding NextCommand}" />
+                                            </h:MouseTrigger>
+                                            <h:MouseTrigger ClickCount="2"
+                                                            Mode="Left"
+                                                            MouseButton="Left"
+                                                            UseHandle="False">
+                                                <b:InvokeCommandAction Command="{Binding PreviousCommand}" />
+                                            </h:MouseTrigger>
+                                        </b:Interaction.Triggers>
+                                        <ContentPresenter Content="{Binding Collection.SelectedItem.Model, Converter={local:GetFileToViewConverter}}" />
+                                    </Grid>
+                                </h:GridSplitterBox>
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=DisplayMode}" Value="DataGrid">

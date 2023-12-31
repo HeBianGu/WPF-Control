@@ -131,13 +131,13 @@ namespace H.Extensions.ViewModel
 
         #region - 命令 -
 
-        [Displayer(Name = "新增", GroupName = "操作")]
+        [Display(Name = "新增", GroupName = "操作")]
         public RelayCommand AddCommand => new RelayCommand(async l => await Add(l)) { Name = "新增" };
 
-        [Displayer(Name = "编辑", GroupName = "操作")]
+        [Display(Name = "编辑", GroupName = "操作")]
         public RelayCommand EditCommand => new RelayCommand(async l => await Edit(l), l => this.GetEntity(l) != null) { Name = $"编辑" };
 
-        [Displayer(Name = "编辑", GroupName = "操作")]
+        [Display(Name = "编辑", GroupName = "操作")]
         [Browsable(false)]
         public TransactionCommand EditTransactionCommand => new TransactionCommand(async (s, e) =>
         {
@@ -165,19 +165,19 @@ namespace H.Extensions.ViewModel
             }
         });
 
-        [Displayer(Name = "删除", GroupName = "操作")]
+        [Display(Name = "删除", GroupName = "操作")]
         public RelayCommand DeleteCommand => new RelayCommand(async l => await Delete(l), l => this.GetEntity(l) != null) { Name = $"删除" };
 
-        [Displayer(Name = "查看", GroupName = "操作")]
+        [Display(Name = "查看", GroupName = "操作")]
         public RelayCommand ViewCommand => new RelayCommand(async l => await View(l), l => this.GetEntity(l) != null) { Name = $"查看" };
 
-        [Displayer(Name = "清空", GroupName = "操作")]
+        [Display(Name = "清空", GroupName = "操作")]
         public RelayCommand ClearCommand => new RelayCommand(async l => await Clear(l), l => this.Collection != null && this.Collection.Count > 0) { Name = $"清除" };
 
-        [Displayer(Name = "保存", GroupName = "操作")]
-        public RelayCommand SaveCommand => new RelayCommand(async l => await this.Save());
+        [Display(Name = "保存", GroupName = "操作")]
+        public RelayCommand SaveCommand => new RelayCommand(async l => await this.Save()) { Name = "保存" };
 
-        [Displayer(Name = "导出", GroupName = "操作")]
+        [Display(Name = "导出", GroupName = "操作")]
         public RelayCommand ExportCommand => new RelayCommand(async l =>
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -196,23 +196,25 @@ namespace H.Extensions.ViewModel
         }, l => this.Collection != null && this.Collection.Count > 0)
         { Name = $"导出" };
 
-        [Displayer(Name = "下一个", GroupName = "操作")]
+        [Display(Name = "下一个", GroupName = "操作")]
         public RelayCommand NextCommand => new RelayCommand((s, e) =>
         {
             this.Next();
 
-        }, (s, e) => this.Collection.Count > 0);
+        }, (s, e) => this.Collection.Count > 0)
+        { Name = "下一个" };
 
         public virtual void Next()
         {
             this.Collection.Next();
         }
 
-        [Displayer(Name = "上一个", GroupName = "操作")]
+        [Display(Name = "上一个", GroupName = "操作")]
         public RelayCommand PreviousCommand => new RelayCommand((s, e) =>
         {
             this.Previous();
-        }, (s, e) => this.Collection.Count > 0);
+        }, (s, e) => this.Collection.Count > 0)
+        { Name = "上一个" };
 
 
         public virtual void Previous()
@@ -233,7 +235,7 @@ namespace H.Extensions.ViewModel
 
         //    await this.Import(openFileDialog.FileName);
         //}); 
-        [Displayer(Name = "全选", GroupName = "操作")]
+        [Display(Name = "全选", GroupName = "操作")]
         public RelayCommand CheckedAllCommand => new RelayCommand(l =>
         {
             if (l is Boolean b)
@@ -249,7 +251,7 @@ namespace H.Extensions.ViewModel
         }, l => this.Collection != null && this.Collection.Count > 0)
         { Name = $"全选" };
 
-        [Displayer(Name = "取消选则", GroupName = "操作")]
+        [Display(Name = "取消选则", GroupName = "操作")]
         public RelayCommand CheckedNoneCommand => new RelayCommand(l =>
         {
             this.Collection.Foreach(K => K.IsSelected = false);
@@ -257,7 +259,7 @@ namespace H.Extensions.ViewModel
         }, l => this.Collection != null && this.Collection.Count > 0)
         { Name = $"取消选则" };
 
-        [Displayer(Name = "全选当前页", GroupName = "操作")]
+        [Display(Name = "全选当前页", GroupName = "操作")]
         public RelayCommand CheckedAllCurrentPageCommand => new RelayCommand(l =>
         {
             if (l is Boolean b)
@@ -275,7 +277,7 @@ namespace H.Extensions.ViewModel
         { Name = $"全选当前页" };
 
 
-        [Displayer(Name = "全选当前过滤器", GroupName = "操作")]
+        [Display(Name = "全选当前过滤器", GroupName = "操作")]
         public RelayCommand CheckedAllFilterSourceCommand => new RelayCommand(l =>
         {
             if (l is Boolean b)
@@ -292,7 +294,7 @@ namespace H.Extensions.ViewModel
         }, l => this.Collection != null && this.Collection.Count > 0)
         { Name = $"全选当前页" };
 
-        [Displayer(Name = "删除选中", GroupName = "操作")]
+        [Display(Name = "删除选中", GroupName = "操作")]
         public RelayCommand DeleteCheckedCommand => new RelayCommand(async l => await DeleteAllChecked(l), l => this.Collection.Any(k => k.IsSelected)) { Name = $"删除选中" };
 
         //public RelayCommand PrintCommand => new RelayCommand(async (s, e) =>
@@ -306,7 +308,7 @@ namespace H.Extensions.ViewModel
         //    return await MessageProxy.Printer.PrintTable(finds);
         //}
 
-        [Displayer(Name = "表格设置", GroupName = "操作", Icon = "\xe8a5")]
+        [Display(Name = "表格设置", GroupName = "操作")]
         public RelayCommand GridSetCommand => new RelayCommand(GridSet);
 
         protected async void GridSet(object obj)

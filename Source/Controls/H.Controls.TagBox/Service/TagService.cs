@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Windows.Documents;
 
 namespace H.Controls.TagBox
 {
@@ -59,29 +60,37 @@ namespace H.Controls.TagBox
 
         public string ConvertToCheck(string name, ITag tag)
         {
-            var list = name?.Split(new char[] { ',', ' ' }).ToList();
+            var list = ToArray(name)?.ToList();
             var contain = list?.Contains(tag.Name) == true;
             if (contain)
                 return name;
-            name += "," + tag.Name;
-            name.Trim(',');
+            name += " " + tag.Name;
+            name.Trim(' ');
             return name;
         }
 
+        private string[] ToArray(string name) => name?.Split(TagOptions.Instance.SplitChars.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+
         public string ConvertToUnCheck(string name, ITag tag)
         {
-            var list = name?.Split(new char[] { ',', ' ' }).ToList();
+            var list = ToArray(name)?.ToList();
             var contain = list?.Contains(tag.Name) == true;
             if (!contain)
                 return name;
             list.Remove(tag.Name);
-            return string.Join(',', list).Trim(',');
+            return string.Join(' ', list).Trim(' ');
         }
 
         public bool ContainTag(string name, ITag tag)
         {
-            var list = name?.Split(new char[] { ',', ' ' }).ToList();
+            var list = ToArray(name)?.ToList();
             return list?.Contains(tag.Name) == true;
+        }
+
+        public IEnumerable<ITag> ToTags(string name)
+        {
+            var list = ToArray(name)?.ToList();
+            return this.Collection.Where(x => list != null && list.Any(k => k == x.Name));
         }
     }
 }

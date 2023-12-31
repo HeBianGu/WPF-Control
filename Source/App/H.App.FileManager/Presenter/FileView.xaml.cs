@@ -5,7 +5,7 @@ using System.IO;
 
 namespace H.App.FileManager
 {
-    public class FileView : ModelViewModel<fm_dd_file>
+    public class FileView : ModelViewModel<fm_dd_file>, IFileView
     {
         FileInfo _file;
         public FileView(fm_dd_file t) : base(t)

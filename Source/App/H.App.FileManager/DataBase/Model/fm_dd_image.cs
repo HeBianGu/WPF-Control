@@ -46,7 +46,6 @@ namespace H.App.FileManager
             }
         }
 
-
         private string _articulation;
         [Display(Name = "清晰度")]
         public string Articulation

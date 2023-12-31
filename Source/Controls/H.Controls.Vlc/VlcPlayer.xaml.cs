@@ -55,10 +55,8 @@ namespace H.Controls.Vlc
             {
                 CommandBinding binding = new CommandBinding(VlcPlayerCommands.ShootCut, async (l, k) =>
                 {
-                    string filePath = await this.BeginShootCut();
-
-                    this.OnShootCut(filePath);
-
+                    var tuple = await this.BeginShootCut();
+                    this.OnShootCut(tuple);
                     //if (VlcSetting.Instance.AutoDeleteShotCutFile)
                     //{
                     //    File.Delete(filePath);
@@ -321,42 +319,34 @@ namespace H.Controls.Vlc
 
         //激发路由事件,借用Click事件的激发方法
 
-        protected void OnShootCut(string uri)
+        protected void OnShootCut(Tuple<string, long> tuple)
         {
-            RoutedEventArgs<string> args = new RoutedEventArgs<string>(ShootCutRoutedEvent, this);
-
-            args.Entity = uri;
-
+            var args = new RoutedEventArgs<Tuple<string, long>>(ShootCutRoutedEvent, this);
+            args.Entity = tuple;
             this.RaiseEvent(args);
         }
 
-        public async Task<string> BeginShootCut()
+        public async Task<Tuple<string, long>> BeginShootCut()
         {
             if (this._vlc == null)
                 return null;
-
             string name = Path.GetFileNameWithoutExtension(this.VedioSource?.LocalPath);
-
-            string timespan = TimeSpan.FromMilliseconds(this._vlc.SourceProvider.MediaPlayer.Time).Ticks.ToString();
-
+            long time = TimeSpan.FromMilliseconds(this._vlc.SourceProvider.MediaPlayer.Time).Ticks;
+            string timespan = time.ToString();
             string filePath = Path.Combine(VlcSetting.Instance.ShotCutPath, name, timespan + ".jpg");
-
             if (VlcSetting.Instance.IsSaveShotCutWithFile)
             {
                 var folder = Path.GetDirectoryName(this.VedioSource?.LocalPath);
                 filePath = Path.Combine(folder, name + "_" + timespan + ".jpg");
             }
-
             if (!Directory.Exists(Path.GetDirectoryName(filePath)))
             {
                 Directory.CreateDirectory(Path.GetDirectoryName(filePath));
             }
-
             return await Task.Run(() =>
             {
                 this._vlc.SourceProvider.MediaPlayer.TakeSnapshot(new FileInfo(filePath));
-
-                return filePath;
+                return Tuple.Create(filePath, time);
             });
         }
 
@@ -372,7 +362,7 @@ namespace H.Controls.Vlc
             DependencyProperty.Register("VedioSource", typeof(Uri), typeof(VlcPlayer), new PropertyMetadata(default(Uri), (d, e) =>
             {
                 VlcPlayer control = d as VlcPlayer;
-                if (control == null) 
+                if (control == null)
                     return;
                 Uri config = e.NewValue as Uri;
                 if (config == null)
@@ -380,7 +370,39 @@ namespace H.Controls.Vlc
                 control.InitVlc();
                 control._vlc.SourceProvider.MediaPlayer.Play(config);
                 control.IsPlaying = true;
+                //if (!control.UseAutoPlayOnVedioSource)
+                //{
+                //    control.Pause();
+                //}
             }));
+
+
+        public bool UseAutoPlayOnVedioSource
+        {
+            get { return (bool)GetValue(UseAutoPlayOnVedioSourceProperty); }
+            set { SetValue(UseAutoPlayOnVedioSourceProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty UseAutoPlayOnVedioSourceProperty =
+            DependencyProperty.Register("UseAutoPlayOnVedioSource", typeof(bool), typeof(VlcPlayer), new FrameworkPropertyMetadata(true, (d, e) =>
+            {
+                VlcPlayer control = d as VlcPlayer;
+
+                if (control == null) return;
+
+                if (e.OldValue is bool o)
+                {
+
+                }
+
+                if (e.NewValue is bool n)
+                {
+
+                }
+
+            }));
+
 
         private void InitVlc()
         {
@@ -388,17 +410,15 @@ namespace H.Controls.Vlc
             if (this._vlc?.SourceProvider?.MediaPlayer != null)
             {
                 this._vlc.SourceProvider.MediaPlayer.PositionChanged -= MediaPlayer_PositionChanged;
-
                 this._vlc.SourceProvider.MediaPlayer.LengthChanged -= MediaPlayer_LengthChanged;
-
                 this.Rate = this._vlc.SourceProvider.MediaPlayer.Rate;
+                //this._vlc.SourceProvider?.MediaPlayer.Stop();
+                this.Stop();
+                //this._vlc.SourceProvider?.MediaPlayer.Dispose();
             }
 
-
             this._vlc = new VlcControl();
-
             this.Content = this._vlc;
-
 
             DirectoryInfo libDirectory = new DirectoryInfo(VlcSetting.Instance.LibvlcPath);
 
