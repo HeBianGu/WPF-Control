@@ -13,7 +13,7 @@ namespace H.Modules.Identity
 {
     internal class XmlLoginService : ILoginService
     {
-        public string Path { get; } = System.IO.Path.Combine(SystemPathSetting.Instance.Default, nameof(XmlLoginService) + ".xml");
+        public string Path { get; } = System.IO.Path.Combine(AppPaths.Instance.Default, nameof(XmlLoginService) + ".xml");
 
         private List<IdentityData> _datas = new List<IdentityData>();
 
@@ -73,7 +73,7 @@ namespace H.Modules.Identity
 
     internal class XmlRegisterService : IRegisterService
     {
-        public string Path { get; } = System.IO.Path.Combine(SystemPathSetting.Instance.Config, nameof(XmlLoginService) + ".xml");
+        public string Path { get; } = System.IO.Path.Combine(AppPaths.Instance.Config, nameof(XmlLoginService) + ".xml");
 
         private List<IdentityData> _datas = new List<IdentityData>();
 

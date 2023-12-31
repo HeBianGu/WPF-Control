@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace H.Controls.TagBox
 {
-    [Display(Name = "标签管理", GroupName = SystemSetting.GroupSystem, Description = "登录页面设置的信息")]
+    [Display(Name = "标签管理", GroupName = SettingGroupNames.GroupSystem, Description = "登录页面设置的信息")]
     public class TagOptions : IocOptionInstance<TagOptions>
     {
         [Browsable(false)]

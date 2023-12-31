@@ -8,12 +8,12 @@ using System.Xml.Serialization;
 
 namespace H.Extensions.Setting
 {
-    public abstract class SettingBase : DisplayerViewModelBase, ISetting
+    public abstract class SettingBase : DisplayerViewModelBase, ISetting, ILoadable, ISaveable, IDefaultable
     {
-        [XmlIgnore]
-        [JsonIgnore]
-        [Browsable(false)]
-        public bool IsVisibleInSetting { get; set; } = true;
+        //[XmlIgnore]
+        //[JsonIgnore]
+        //[Browsable(false)]
+        //public bool IsVisibleInSetting { get; set; } = true;
 
         public override void LoadDefault()
         {
@@ -27,7 +27,7 @@ namespace H.Extensions.Setting
 
         protected virtual string GetDefaultFolder()
         {
-            return SystemPathSetting.Instance.Setting;
+            return AppPaths.Instance.Setting;
         }
 
         public virtual bool Save(out string message)
@@ -46,9 +46,11 @@ namespace H.Extensions.Setting
             return new JsonSerializerService();
         }
 
-        public virtual void Load()
+        public virtual bool Load(out string message)
         {
+            message = null;
             this.Load(this.GetDefaultPath());
+            return true;
         }
 
         protected virtual void Load(string path)

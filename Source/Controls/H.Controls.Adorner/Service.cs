@@ -19,7 +19,7 @@ namespace H.Controls.Adorner
 
     }
 
-    [Display(Name = "装饰层配置", GroupName = SystemSetting.GroupStyle)]
+    [Display(Name = "装饰层配置", GroupName = SettingGroupNames.GroupStyle)]
     public class AdornerSetting : LazySettingInstance<AdornerSetting>
     {
         private double _dragAornerOpacity;

@@ -4,7 +4,7 @@ using H.Extensions.Setting;
 
 namespace H.Controls.PrintBox
 {
-    [Display(Name = "打印设置", GroupName = SystemSetting.GroupControl)]
+    [Display(Name = "打印设置", GroupName = SettingGroupNames.GroupControl)]
     public class PrintBoxSetting : Setting<PrintBoxSetting>
     {
         private double _printableAreaWidth;

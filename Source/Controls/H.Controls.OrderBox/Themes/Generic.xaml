@@ -7,5 +7,7 @@
         <ResourceDictionary Source="pack://application:,,,/H.Controls.OrderBox;component/PropertyOrderBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.OrderBox;component/PropertyOrderPrensenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.OrderBox;component/PropertyOrdersPrensenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.OrderBox;component/OrderBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.OrderBox;component/OrderBase.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

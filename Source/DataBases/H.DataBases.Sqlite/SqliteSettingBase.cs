@@ -25,8 +25,8 @@ namespace H.DataBases.Sqlite
         public override void LoadDefault()
         {
             base.LoadDefault();
-            this.ConfigPath = Path.Combine(SystemPathSetting.Instance.Config, this.GetType().Name + SystemPathSetting.Instance.ConfigExtention);
-            this.FilePath = SystemPathSetting.Instance.Data;
+            this.ConfigPath = Path.Combine(AppPaths.Instance.Config, this.GetType().Name + AppPaths.Instance.ConfigExtention);
+            this.FilePath = AppPaths.Instance.Data;
         }
 
         private string _configPath;

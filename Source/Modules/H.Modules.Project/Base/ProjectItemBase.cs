@@ -51,6 +51,7 @@ namespace H.Modules.Project
         }
 
         private DateTime _createTime = DateTime.Now;
+        [Browsable(false)]
         [ReadOnly(true)]
         [Display(Name = "创建时间", Order = 4)]
         public DateTime CreateTime
@@ -64,6 +65,7 @@ namespace H.Modules.Project
         }
 
         private DateTime _updateTime = DateTime.Now;
+        [Browsable(false)]
         [ReadOnly(true)]
         [Display(Name = "修改时间", Order = 4)]
         public DateTime UpdateTime
@@ -85,6 +87,12 @@ namespace H.Modules.Project
         }
 
         public virtual bool Load(out string message)
+        {
+            message = null;
+            return true;
+        }
+
+        public virtual bool Close(out string message)
         {
             message = null;
             return true;

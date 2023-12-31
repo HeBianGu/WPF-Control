@@ -1,10 +1,11 @@
 ﻿using H.Extensions.Setting;
+using H.Providers.Ioc;
 using System.ComponentModel.DataAnnotations;
 using System.Windows.Media;
 
 namespace H.App.FileManager
 {
-    [Display(Name = "系统配置")]
+    [Display(Name = "系统配置", GroupName = SettingGroupNames.GroupApp)]
     public class AppSetting : Setting<AppSetting>
     {
         private DisplayMode _displayMode;

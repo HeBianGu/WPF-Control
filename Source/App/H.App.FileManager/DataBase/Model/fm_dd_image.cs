@@ -16,7 +16,7 @@ namespace H.App.FileManager
         [ReadOnly(true)]
         [Display(Name = "高度")]
         public int PixelHeight { get; set; }
-    
+
         private string _object;
         [DataGridColumn("Auto")]
         [ReadOnly(true)]
@@ -45,7 +45,6 @@ namespace H.App.FileManager
                 RaisePropertyChanged();
             }
         }
-
 
         private string _articulation;
         [Display(Name = "清晰度")]

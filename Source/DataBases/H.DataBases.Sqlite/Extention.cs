@@ -30,7 +30,7 @@ namespace System
         public static void AddDbContextBySetting<TDbContext>(this IServiceCollection services, Action<ISqliteOption> action = null) where TDbContext : DbContext
         {
             action?.Invoke(SqliteSetting.Instance);
-            SqliteSetting.Instance.Load();
+            SqliteSetting.Instance.Load(out string messge);
             string connect = SqliteSetting.Instance.GetConnect();
             services.AddDbContext<TDbContext>(x => x.UseLazyLoadingProxies().UseSqlite(connect));
             SettingDataManager.Instance.Add(SqliteSetting.Instance);
@@ -47,7 +47,7 @@ namespace System
             setting.FilePath = Path.Combine(setting.FilePath, setting.ID);
             Directory.CreateDirectory(setting.FilePath);
             action?.Invoke(setting);
-            setting.Load();
+            setting.Load(out string message);
             string connect = setting.GetConnect();
             services.AddDbContext<TDbContext>(x => x.UseLazyLoadingProxies().UseSqlite(connect));
             SettingDataManager.Instance.Add(setting);

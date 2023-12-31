@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace H.Modules.Upgrade
 {
-    [Display(Name = "软件更新", GroupName = SystemSetting.GroupSystem, Description = "应用此功能检查软件更新")]
+    [Display(Name = "软件更新", GroupName = SettingGroupNames.GroupSystem, Description = "应用此功能检查软件更新")]
     internal class UpgradePresenter : NotifyPropertyChangedBase
     {
         private readonly VersionData _args;

@@ -1,25 +1,21 @@
 ﻿
-using H.Providers.Ioc;
+using H.Controls.FilterBox;
 using H.Providers.Mvvm;
+using System.ComponentModel.DataAnnotations;
 
 namespace H.App.FileManager
 {
-    public class ScoreFileFilter : IFilter
+    [Display(Name = "评分")]
+    public class ScoreFileFilter : FilterBase
     {
-        public string DisplayName { get; set; }
         public int Value { get; set; }
-        public bool IsMatch(object obj)
+        public override bool IsMatch(object obj)
         {
             if (obj is ModelViewModel<fm_dd_file> file)
             {
                 return file.Model.Score == Value;
             }
             return false;
-        }
-
-        public override string ToString()
-        {
-            return DisplayName ?? GetType().Name;
         }
     }
 }

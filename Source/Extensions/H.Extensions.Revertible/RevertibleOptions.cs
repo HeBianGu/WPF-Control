@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace H.Extensions.Revertible
 {
-    [Display(Name = "登录页面", GroupName = SystemSetting.GroupSystem, Description = "登录页面设置的信息")]
+    [Display(Name = "登录页面", GroupName = SettingGroupNames.GroupSystem, Description = "登录页面设置的信息")]
     public class RevertibleOptions : IocOptionInstance<RevertibleOptions>
     {
         private int _capacity;

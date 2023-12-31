@@ -5,15 +5,15 @@ using System.IO;
 
 namespace H.App.FileManager
 {
-    public class FileView : ModelViewModel<fm_dd_file>
+    public class FileView : ModelViewModel<fm_dd_file>, IFileView
     {
-        FileInfo _file;
+        private FileInfo _file;
         public FileView(fm_dd_file t) : base(t)
         {
             _file = new FileInfo(t.Url);
         }
 
-        [Display(Name ="名称")]
+        [Display(Name = "名称")]
         public string FileName => this._file.Name;
         [Display(Name = "位置")]
 
@@ -37,14 +37,14 @@ namespace H.App.FileManager
         [Display(Name = "只读")]
         public bool IsReadOnly => this._file.IsReadOnly;
 
-        [Display(Name = "类型")] 
+        [Display(Name = "类型")]
         public string Extension => this._file.Extension;
 
-        [Display(Name = "大小")] 
+        [Display(Name = "大小")]
         public long Length => this._file.Length;
 
         //public UnixFileMode UnixFileMode => this._file.GetAccessControl().GetOwner;
-        [Display(Name = "特性")] 
+        [Display(Name = "特性")]
         public FileAttributes FileAttributes => this._file.Attributes;
 
         [Display(Name = "代码")]

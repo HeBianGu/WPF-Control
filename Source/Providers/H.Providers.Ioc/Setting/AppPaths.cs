@@ -5,42 +5,12 @@ using System.Reflection;
 
 namespace H.Providers.Ioc
 {
-    public interface ISystemPathSetting
-    {
-        string AppName { get; }
-        string AppPath { get; }
-        string Cache { get; }
-        string Company { get; set; }
-        string Component { get; }
-        string Config { get; }
-        string ConfigExtention { get; set; }
-        string Data { get; }
-        string Default { get; }
-        string Document { get; set; }
-        string License { get; }
-        string Log { get; }
-        string Module { get; }
-        string Project { get; }
-        string RegistryPath { get; }
-        string Setting { get; }
-        string Template { get; }
-        string UserCache { get; }
-        string UserData { get; }
-        string UserLicense { get; }
-        string UserLog { get; }
-        string UserPath { get; }
-        string UserProject { get; }
-        string UserSetting { get; }
-        string UserTemplate { get; }
-        string Version { get; }
-    }
-
-    [Display(Name = "系统路径", GroupName = SystemSetting.GroupSystem)]
-    public class SystemPathSetting : LazyInstance<SystemPathSetting>, ISystemPathSetting
+    [Display(Name = "系统路径", GroupName = SettingGroupNames.GroupSystem)]
+    public class AppPaths : LazyInstance<AppPaths>, IAppPaths
     {
         public string Company { get; set; } = "HeBianGu";
         public string ConfigExtention { get; set; } = ".xml";
-        public SystemPathSetting()
+        public AppPaths()
         {
             this.CheckFolder(AppPath);
             this.CheckFolder(Default);

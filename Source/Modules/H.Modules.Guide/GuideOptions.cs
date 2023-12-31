@@ -11,7 +11,7 @@ using System.Windows.Threading;
 
 namespace H.Modules.Guide
 {
-    [Display(Name = "登录页面", GroupName = SystemSetting.GroupSystem, Description = "登录页面设置的信息")]
+    [Display(Name = "登录页面", GroupName = SettingGroupNames.GroupSystem, Description = "登录页面设置的信息")]
     public class GuideOptions : IocOptionInstance<GuideOptions>
     {
         private bool _useOnLoad;
@@ -27,12 +27,13 @@ namespace H.Modules.Guide
             }
         }
 
-        public override void Load()
+        public override bool Load(out string message)
         {
-            Application.Current.Dispatcher.Invoke(() =>
-            {
-                base.Load();
-            });
+            message = null;
+            var r = Application.Current.Dispatcher.Invoke(() =>
+              {
+                  return base.Load(out string message);
+              });
 
             if (this.UseOnLoad)
             {
@@ -43,6 +44,7 @@ namespace H.Modules.Guide
 
                 this.UseOnLoad = false;
             }
+            return r;
         }
         private double _textMaxWidth = 300.0;
         [Range(100.0, 800.0)]
@@ -56,7 +58,6 @@ namespace H.Modules.Guide
                 RaisePropertyChanged();
             }
         }
-
 
         private Color _coverColor = Colors.Black;
         [Display(Name = "遮盖背景")]

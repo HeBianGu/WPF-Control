@@ -2,8 +2,8 @@
 
 namespace H.Providers.Ioc
 {
-    public interface ILoad
+    public interface ISaveable
     {
-        bool Load(out string message);
+        bool Save(out string message);
     }
 }

@@ -30,8 +30,9 @@ namespace H.Styles.Default
                             if (r == false)
                             {
                                 x.Value = message;
+                                Thread.Sleep(1000);
                             }
-                            Thread.Sleep(1000);
+                            Thread.Sleep(200);
                         }
                         return true;
                     }, x => x.DialogButton = DialogButton.Cancel);

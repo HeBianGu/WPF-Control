@@ -2,13 +2,16 @@
 
 
 
+using H.Controls.TagBox;
 using H.DataBases.Share;
+using H.Extensions.Setting;
 using H.Extensions.ViewModel;
 using H.Modules.Project;
 using H.Providers.Ioc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
@@ -31,6 +34,8 @@ namespace H.App.FileManager
             }
         }
 
+        [Browsable(false)]
+        public ObservableCollection<Tag> Tags { get; set; } = new ObservableCollection<Tag>();
 
         private IRepositoryViewModel<fm_dd_file> _file = new RepositoryViewModel<fm_dd_file>();
         [JsonIgnore]
@@ -46,6 +51,10 @@ namespace H.App.FileManager
             }
         }
 
+        public int Order { get; }
+
+        public string GroupName { get; } = "工程设置";
+
         public override bool Load(out string message)
         {
             //  Do ：重新注册仓储和上下文接口
@@ -53,7 +62,7 @@ namespace H.App.FileManager
             {
                 dx.AddDbContext<DataContext>(x =>
                 {
-                    var project = Ioc.GetService<IProjectService>();
+                    IProjectService project = Ioc.GetService<IProjectService>();
                     string con = project.Current == null ? $"Data Source=default.db" : $"Data Source={System.IO.Path.Combine(project.Current.Path, project.Current.Title)}.db";
                     x.UseLazyLoadingProxies().UseSqlite(con);
                 });
@@ -61,21 +70,44 @@ namespace H.App.FileManager
                 dx.AddSingleton<IRepositoryViewModel<fm_dd_file>, FileRepositoryViewModel>();
             });
             //  Do ：迁移数据
-            var find = DbIoc.Services.GetService<DataContext>();
+            DataContext find = DbIoc.Services.GetService<DataContext>();
             find.Database.Migrate();
             //  Do ：刷新数据
             File = DbIoc.GetService<IRepositoryViewModel<fm_dd_file>>();
             File.RefreshData();
+            IocTagService.Instance.Load(out message);
+            SettingDataManager.Instance.Add(this.Setting);
             return base.Load(out message);
         }
 
         public override bool Save(out string message)
         {
             File?.Save();
-            var context = DbIoc.Services.GetService<DataContext>();
+            DataContext context = DbIoc.Services.GetService<DataContext>();
             context?.SaveChanges();
             //context?.Dispose();
             return base.Save(out message);
         }
+
+        public override bool Close(out string messge)
+        {
+            this.Save(out messge);
+            DataContext context = DbIoc.Services.GetService<DataContext>();
+            context?.Dispose();
+            SettingDataManager.Instance.Remove(this.Setting);
+            return true;
+        } 
+
+        private FileProjectItemSetting _setting = new FileProjectItemSetting();
+        public FileProjectItemSetting Setting
+        {
+            get { return _setting; }
+            set
+            {
+                _setting = value;
+                RaisePropertyChanged();
+            }
+        }
+
     }
 }

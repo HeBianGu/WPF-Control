@@ -11,7 +11,7 @@ using System.Xml.Serialization;
 namespace H.Modules.Setting
 {
     /// <summary> 热键</summary>
-    [Display(Name = "热键", GroupName = SystemSetting.GroupBase)]
+    [Display(Name = "热键", GroupName = SettingGroupNames.GroupBase)]
     public class HotKeySetting : Setting<HotKeySetting>
     {
         private ObservableCollection<HotKeyItem> _hotKeys = new ObservableCollection<HotKeyItem>();
@@ -24,11 +24,6 @@ namespace H.Modules.Setting
                 _hotKeys = value;
                 RaisePropertyChanged("HotKeys");
             }
-        }
-
-        public override void Load()
-        {
-            base.Load();
         }
     }
 

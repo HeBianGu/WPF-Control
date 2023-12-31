@@ -3,7 +3,7 @@
 
 namespace H.Providers.Ioc
 {
-    public class SystemSetting
+    public class SettingGroupNames
     {
         public const string GroupBase = "基本设置";
         public const string GroupApp = "应用设置";

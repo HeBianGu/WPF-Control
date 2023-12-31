@@ -21,7 +21,7 @@ namespace H.Modules.Project
         {
             return new ProjectItem()
             {
-                Path = SystemPathSetting.Instance.Project
+                Path = AppPaths.Instance.Project
             };
         }
     }

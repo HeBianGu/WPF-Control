@@ -1,13 +1,10 @@
 ﻿using H.Controls.TagBox;
 using H.Extensions.ValueConverter;
 using H.Extensions.ViewModel;
-using H.Providers.Ioc;
 using H.Providers.Mvvm;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
 using System.Linq;
 using System.Windows.Input;
 
@@ -21,12 +18,12 @@ namespace H.App.FileManager
             {
                 List<TreeNodeBase<ICommand>> result = new List<TreeNodeBase<ICommand>>();
                 if (value is fm_dd_video video)
-                    result= this.GetImageCommands(video);
+                    result = this.GetImageCommands(video);
                 if (value is fm_dd_image image)
-                    result= this.GetImageCommands(image);
+                    result = this.GetImageCommands(image);
                 if (value is fm_dd_file file)
-                    result= this.GetFileCommands(file);
-                foreach (var item in vm.MenuCommands)
+                    result = this.GetFileCommands(file);
+                foreach (IRelayCommand item in vm.MenuCommands)
                 {
                     result.Add(new TreeNodeBase<ICommand>(item));
                 }
@@ -37,21 +34,21 @@ namespace H.App.FileManager
 
         public List<TreeNodeBase<ICommand>> GetFileCommands(fm_dd_file file)
         {
-            List<TreeNodeBase<ICommand>> result = new List<TreeNodeBase<ICommand>>();  
+            List<TreeNodeBase<ICommand>> result = new List<TreeNodeBase<ICommand>>();
             TreeNodeBase<ICommand> favorite = null;
             favorite = new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x =>
             {
                 file.Favorite = !file.Favorite;
                 favorite.IsChecked = file.Favorite;
             })
-            { Name = "收藏" })
+            { Name = "喜欢" })
             { IsCheckable = true, IsChecked = file.Favorite };
             result.Add(favorite);
 
-            var scoreNode = new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x => file.Score = 9) { Name = $"评分" });
+            TreeNodeBase<ICommand> scoreNode = new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x => file.Score = 9) { Name = $"评分" });
             result.Add(scoreNode);
 
-            foreach (var item in Enumerable.Range(0, 11).Reverse())
+            foreach (int item in Enumerable.Range(0, 11).Reverse())
             {
                 TreeNodeBase<ICommand> score = null;
                 score = new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x =>
@@ -65,19 +62,19 @@ namespace H.App.FileManager
                 scoreNode.Nodes.Add(score);
             }
 
-            var tagNode = new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x => { }) { Name = "标签" });
+            TreeNodeBase<ICommand> tagNode = new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x => { }) { Name = "标签" });
             result.Add(tagNode);
-            var tagService = Ioc.GetService<ITagService>();
+            ITagService tagService = Ioc.GetService<ITagService>();
             if (tagService != null)
             {
                 {
-                    var tags = tagService.Collection.Where(x => x.GroupName == null);
-                    foreach (var tag in tags)
+                    IEnumerable<ITag> tags = tagService.Collection.Where(x => x.GroupName == null);
+                    foreach (ITag tag in tags)
                     {
                         TreeNodeBase<ICommand> ctagNode = null;
                         ctagNode = new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x =>
                        {
-                           var contain = tagService.ContainTag(file.Tags, tag);
+                           bool contain = tagService.ContainTag(file.Tags, tag);
                            if (contain)
                            {
                                file.Tags = tagService.ConvertToUnCheck(file.Tags, tag);
@@ -102,21 +99,21 @@ namespace H.App.FileManager
         {
             List<TreeNodeBase<ICommand>> result = this.GetFileCommands(file);
 
-            var tagService = Ioc.GetService<ITagService>();
+            ITagService tagService = Ioc.GetService<ITagService>();
             if (tagService != null)
             {
 
                 {
-                    var tagNode = new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x => { }) { Name = "对象" });
+                    TreeNodeBase<ICommand> tagNode = new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x => { }) { Name = "对象" });
                     result.Add(tagNode);
                     {
-                        var tags = tagService.Collection.Where(x => x.GroupName == "Object");
-                        foreach (var tag in tags)
+                        IEnumerable<ITag> tags = tagService.Collection.Where(x => x.GroupName == "Object");
+                        foreach (ITag tag in tags)
                         {
                             TreeNodeBase<ICommand> ctagNode = null;
                             ctagNode = new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x =>
                             {
-                                var contain = tagService.ContainTag(file.Object, tag);
+                                bool contain = tagService.ContainTag(file.Object, tag);
                                 if (contain)
                                 {
                                     file.Object = tagService.ConvertToUnCheck(file.Object, tag);
@@ -135,16 +132,16 @@ namespace H.App.FileManager
                 }
 
                 {
-                    var tagNode = new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x => { }) { Name = "国家" });
+                    TreeNodeBase<ICommand> tagNode = new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x => { }) { Name = "国家" });
                     result.Add(tagNode);
                     {
-                        var tags = tagService.Collection.Where(x => x.GroupName == "Area");
-                        foreach (var tag in tags)
+                        IEnumerable<ITag> tags = tagService.Collection.Where(x => x.GroupName == "Area");
+                        foreach (ITag tag in tags)
                         {
                             TreeNodeBase<ICommand> ctagNode = null;
                             ctagNode = new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x =>
                             {
-                                var contain = tagService.ContainTag(file.Area, tag);
+                                bool contain = tagService.ContainTag(file.Area, tag);
                                 if (contain)
                                 {
                                     file.Area = tagService.ConvertToUnCheck(file.Area, tag);
@@ -163,16 +160,16 @@ namespace H.App.FileManager
                 }
 
                 {
-                    var tagNode = new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x => { }) { Name = "清晰度" });
+                    TreeNodeBase<ICommand> tagNode = new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x => { }) { Name = "清晰度" });
                     result.Add(tagNode);
                     {
-                        var tags = tagService.Collection.Where(x => x.GroupName == "Articulation");
-                        foreach (var tag in tags)
+                        IEnumerable<ITag> tags = tagService.Collection.Where(x => x.GroupName == "Articulation");
+                        foreach (ITag tag in tags)
                         {
                             TreeNodeBase<ICommand> ctagNode = null;
                             ctagNode = new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x =>
                             {
-                                var contain = tagService.ContainTag(file.Articulation, tag);
+                                bool contain = tagService.ContainTag(file.Articulation, tag);
                                 if (contain)
                                 {
                                     file.Articulation = tagService.ConvertToUnCheck(file.Articulation, tag);
@@ -193,5 +190,15 @@ namespace H.App.FileManager
             return result;
         }
 
+    }
+
+    public class GetTickToMillisecond : MarkupValueConverterBase
+    {
+        public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value is long l)
+                return TimeSpan.FromTicks(l).TotalMilliseconds;
+            return value;
+        }
     }
 }

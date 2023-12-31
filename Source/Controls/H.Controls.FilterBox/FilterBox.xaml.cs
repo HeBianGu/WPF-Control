@@ -1,5 +1,4 @@
 ﻿using H.Providers.Ioc;
-using H.Providers.Mvvm;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -178,7 +177,6 @@ namespace H.Controls.FilterBox
     public class Filter : IFilter
     {
         private readonly FilterBox _filterBox;
-        private PropertyInfo _propertyInfo;
         public Filter(FilterBox SelectionFilterBox)
         {
             _filterBox = SelectionFilterBox;
@@ -186,7 +184,8 @@ namespace H.Controls.FilterBox
 
         public bool IsMatch(object obj)
         {
-            var filters = this._filterBox.SelectedItems.OfType<IFilter>();
+            IList list = this._filterBox.Dispatcher.Invoke(() => this._filterBox.SelectedItems);
+            var filters = list.OfType<IFilter>();
             if (filters == null || filters.Count() == 0)
                 return true;
             return filters.Any(f => f.IsMatch(obj));

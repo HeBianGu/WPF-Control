@@ -13,7 +13,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace H.DataBases.Sqlite
 {
-    [Display(Name = "数据库配置", GroupName = SystemSetting.GroupApp)]
+    [Display(Name = "数据库配置", GroupName = SettingGroupNames.GroupApp)]
     public class SqliteSetting : SqliteSettingBase<SqliteSetting>, ISqliteOption, IDbSetting
     {
 

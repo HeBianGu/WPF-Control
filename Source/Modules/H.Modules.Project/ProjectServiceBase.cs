@@ -17,7 +17,7 @@ using System.Xml.Serialization;
 
 namespace H.Modules.Project
 {
-    [Display(Name = "工程数据", GroupName = SystemSetting.GroupData)]
+    [Display(Name = "工程数据", GroupName = SettingGroupNames.GroupData)]
     public abstract class ProjectServiceBase<T> : NotifyPropertyChangedBase, IProjectService, IDataSourceService<T> where T : IProjectItem
     {
         IOptions<ProjectOptions> _options;
@@ -55,6 +55,7 @@ namespace H.Modules.Project
                 IProjectItem old = _current;
                 _current = value;
                 old?.Save(out string message);
+                old?.Close(out string messge);
                 _current?.Load(out message);
                 RaisePropertyChanged();
                 this.OnCurrentChanged(old, _current);
@@ -147,6 +148,7 @@ namespace H.Modules.Project
         {
             message = string.Empty;
             var data = this.GetSerializer().Load<ProjectHistroyData<T>>(ProjectOptions.Instance.HistoryPath);
+            this.Clear();
             if (data != null)
             {
                 foreach (var item in data.ProjectItems)
@@ -162,6 +164,14 @@ namespace H.Modules.Project
             }
             return true;
         }
+
+
+        public void Clear()
+        {
+            if (this.Collection is IList list)
+                list.Clear();
+        }
+
     }
 
     public class ProjectHistroyData<T>

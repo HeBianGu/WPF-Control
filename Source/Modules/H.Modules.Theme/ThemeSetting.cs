@@ -15,7 +15,7 @@ using System.Xml.Serialization;
 
 namespace H.Modules.Theme
 {
-    [Display(Name = "主题设置", GroupName = SystemSetting.GroupSystem, Description = "登录页面设置的信息")]
+    [Display(Name = "主题设置", GroupName = SettingGroupNames.GroupSystem, Description = "登录页面设置的信息")]
     public class ThemeSetting : Setting<ThemeSetting>
     {
         public ThemeSetting()
@@ -73,11 +73,12 @@ namespace H.Modules.Theme
             return base.Save(out message);
         }
 
-        public override void Load()
+        public override bool Load(out string message)
         {
-            base.Load();
+            var r= base.Load(out message);
             this.ColorResource = this.ColorResources[this.ColorResourceSelectedIndex];
             this.RefreshTheme();
+            return r;
         }
 
         private void RefreshTheme()

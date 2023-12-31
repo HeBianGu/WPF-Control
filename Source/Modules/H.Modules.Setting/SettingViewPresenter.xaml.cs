@@ -14,7 +14,7 @@ namespace H.Modules.Setting
     {
         public SettingViewPresenter()
         {
-            this.Data = SettingDataManager.Instance.Settings?.Where(x => x.IsVisibleInSetting)?.GroupBy(l => l.GroupName);
+            this.Data = SettingDataManager.Instance.Settings?.GroupBy(l => l.GroupName);
         }
 
         private IEnumerable<IGrouping<string, ISetting>> _data;
@@ -26,7 +26,6 @@ namespace H.Modules.Setting
                 _data = value;
             }
         }
-
 
         private bool _usePassword;
         [DefaultValue(false)]
@@ -57,34 +56,10 @@ namespace H.Modules.Setting
             SettingDataManager.Instance.Add(settings);
         }
 
-        //public override bool Invoke(out string message)
-        //{
-        //    message = null;
-
-        //    if (PasswordDialogService.Instance == null || !this.UsePassword)
-        //    {
-        //        Application.Current.Dispatcher.Invoke(() =>
-        //        {
-        //            SettingDialog setting = new SettingDialog();
-        //            MessageProxy.Container.Show(setting);
-        //        });
-        //        return true;
-        //    }
-
-        //    var r = PasswordDialogService.Instance?.ShowPasswordDialog();
-        //    r.ContinueWith(x =>
-        //    {
-        //        if (!x.Result) return false;
-        //        Application.Current.Dispatcher.Invoke(() =>
-        //        {
-        //            SettingDialog setting = new SettingDialog();
-        //            MessageProxy.Container.Show(setting);
-        //        });
-
-        //        return true;
-        //    });
-        //    return true;
-        //}
+        public void Remove(params ISetting[] settings)
+        {
+            SettingDataManager.Instance.Remove(settings);
+        }
     }
 
     public class SettingButtonPresenter : ISettingButtonPresenter

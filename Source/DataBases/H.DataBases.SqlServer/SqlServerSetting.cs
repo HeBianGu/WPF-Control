@@ -22,7 +22,7 @@ namespace H.DataBases.SqlServer
         public override void LoadDefault()
         {
             base.LoadDefault();
-            this.ConfigPath = Path.Combine(SystemPathSetting.Instance.Config, this.GetType().Name + SystemPathSetting.Instance.ConfigExtention);
+            this.ConfigPath = Path.Combine(AppPaths.Instance.Config, this.GetType().Name + AppPaths.Instance.ConfigExtention);
         }
 
         private string _configPath;
@@ -99,7 +99,7 @@ namespace H.DataBases.SqlServer
     }
 
 
-    [Display(Name = "数据库配置", GroupName = SystemSetting.GroupApp)]
+    [Display(Name = "数据库配置", GroupName = SettingGroupNames.GroupApp)]
     public class SqlServerSetting : SqlServerSetting<SqlServerSetting>, ISqlServerOption
     {
 

@@ -1,25 +1,21 @@
 ﻿
-using H.Providers.Ioc;
+using H.Controls.FilterBox;
 using H.Providers.Mvvm;
+using System.ComponentModel.DataAnnotations;
 
 namespace H.App.FileManager
 {
-    public class FavoriteFileFilter : IFilter
+    [Display(Name = "按清晰度")]
+    public class FavoriteFileFilter : FilterBase
     {
-        public string DisplayName { get; set; }
         public bool Value { get; set; }
-        public bool IsMatch(object obj)
+        public override bool IsMatch(object obj)
         {
             if (obj is ModelViewModel<fm_dd_file> file)
             {
                 return file.Model.Favorite == Value;
             }
             return false;
-        }
-
-        public override string ToString()
-        {
-            return DisplayName ?? GetType().Name;
         }
     }
 }

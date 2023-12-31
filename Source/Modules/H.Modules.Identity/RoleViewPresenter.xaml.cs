@@ -79,7 +79,7 @@ namespace H.Modules.Identity
         }
     }
 
-    [Display(Name = "角色管理", GroupName = SystemSetting.GroupAuthority, Description = "应用此功能进行角色管理")]
+    [Display(Name = "角色管理", GroupName = SettingGroupNames.GroupAuthority, Description = "应用此功能进行角色管理")]
     public class RoleViewPresenter : IRoleViewPresenter
     {
 

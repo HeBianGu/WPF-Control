@@ -54,8 +54,8 @@ namespace H.App.FileManager.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("PlayCount")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("PlayCount")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("Score")
                         .HasColumnType("INTEGER");

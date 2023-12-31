@@ -48,9 +48,9 @@ namespace H.Controls.FavoriteBox
         public bool Load(out string message)
         {
             message = string.Empty;
-            this._options.Value.Load();
+            var r = this._options.Value.Load(out message);
             this.CollectionChanged?.Invoke(this, EventArgs.Empty);
-            return true;
+            return r;
         }
 
         public bool Save(out string message)

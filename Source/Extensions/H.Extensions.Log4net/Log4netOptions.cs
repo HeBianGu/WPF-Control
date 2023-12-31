@@ -4,14 +4,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace H.Extensions.Revertible
 {
-    [Display(Name = "日志配置", GroupName = SystemSetting.GroupSystem, Description = "登录页面设置的信息")]
+    [Display(Name = "日志配置", GroupName = SettingGroupNames.GroupSystem, Description = "登录页面设置的信息")]
     public class Log4netOptions : IocOptionInstance<Log4netOptions>
     {
         public override void LoadDefault()
         {
             base.LoadDefault();
-            this.LogPath = SystemPathSetting.Instance.Log;
-            this.tempPath = SystemPathSetting.Instance.Cache;
+            this.LogPath = AppPaths.Instance.Log;
+            this.tempPath = AppPaths.Instance.Cache;
         }
 
         private string _logPath;

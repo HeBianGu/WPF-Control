@@ -15,7 +15,7 @@ namespace H.Styles.Default
         public static ComponentResourceKey WindowChrome => new ComponentResourceKey(typeof(WindowKeys), "S.Window.WindowChrome");
     }
 
-    [Display(Name = "窗口设置", GroupName = SystemSetting.GroupSystem, Description = "设置窗口参数")]
+    [Display(Name = "窗口设置", GroupName = SettingGroupNames.GroupSystem, Description = "设置窗口参数")]
     public class WindowSetting : Setting<WindowSetting>
     {
         private string _backImagePath;

@@ -1,9 +1,11 @@
 ﻿using H.Providers.Mvvm;
 using Microsoft.Extensions.Options;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Windows.Documents;
 
 namespace H.Controls.TagBox
 {
@@ -19,69 +21,92 @@ namespace H.Controls.TagBox
         public string Name => "标签管理";
         private IEnumerable<ITag> _collection;
         public event EventHandler CollectionChanged;
-        public IEnumerable<ITag> Collection => this._options.Value.Tags;
+        public virtual IEnumerable<ITag> Collection => this._options.Value.Tags;
 
-        public void Add(params ITag[] ts)
+        public virtual void Add(params ITag[] ts)
         {
-            this._options.Value.Tags.AddRange(ts.OfType<Tag>());
-            this.CollectionChanged?.Invoke(this, EventArgs.Empty);
+            if (this.Collection is IList list)
+            {
+                foreach (var t in ts)
+                {
+                    if (t is Tag)
+                        list.Add(t);
+                }
+                this.OnCollectionChanged();
+            }
         }
 
-        public ITag Create()
+        public virtual ITag Create()
         {
             return new Tag();
         }
 
-        public void Delete(params ITag[] ts)
+        public virtual void Delete(params ITag[] ts)
         {
-            var tags = ts.OfType<Tag>();
-            foreach (var t in tags)
+            if (this.Collection is IList list)
             {
-                this._options.Value.Tags.Remove(t);
+                var tags = ts.OfType<Tag>();
+                foreach (var t in tags)
+                {
+                    list.Remove(t);
+                }
+                this.OnCollectionChanged();
             }
-            this.CollectionChanged?.Invoke(this, EventArgs.Empty);
         }
 
-        public bool Load(out string message)
+        public virtual bool Load(out string message)
         {
             message = string.Empty;
-            this._options.Value.Load();
-            this.CollectionChanged?.Invoke(this, EventArgs.Empty);
-            return true;
+           var r=  this._options.Value.Load(out message);
+            this.OnCollectionChanged(); 
+            return r;
         }
 
-        public bool Save(out string message)
+        public virtual bool Save(out string message)
         {
-            this.CollectionChanged?.Invoke(this, EventArgs.Empty);
             return this._options.Value.Save(out message);
         }
 
 
-        public string ConvertToCheck(string name, ITag tag)
+        public virtual string ConvertToCheck(string name, ITag tag)
         {
-            var list = name?.Split(new char[] { ',', ' ' }).ToList();
+            var list = ToArray(name)?.ToList();
             var contain = list?.Contains(tag.Name) == true;
             if (contain)
                 return name;
-            name += "," + tag.Name;
-            name.Trim(',');
+            name += " " + tag.Name;
+            name.Trim(' ');
             return name;
         }
 
-        public string ConvertToUnCheck(string name, ITag tag)
+        private string[] ToArray(string name) => name?.Split(TagOptions.Instance.SplitChars.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+
+        public virtual string ConvertToUnCheck(string name, ITag tag)
         {
-            var list = name?.Split(new char[] { ',', ' ' }).ToList();
+            var list = ToArray(name)?.ToList();
             var contain = list?.Contains(tag.Name) == true;
             if (!contain)
                 return name;
             list.Remove(tag.Name);
-            return string.Join(',', list).Trim(',');
+            return string.Join(' ', list).Trim(' ');
         }
 
-        public bool ContainTag(string name, ITag tag)
+        public virtual bool ContainTag(string name, ITag tag)
         {
-            var list = name?.Split(new char[] { ',', ' ' }).ToList();
+            var list = ToArray(name)?.ToList();
             return list?.Contains(tag.Name) == true;
+        }
+
+        public virtual IEnumerable<ITag> ToTags(string name)
+        {
+            var list = ToArray(name)?.ToList();
+            return this.Collection.Where(x => list != null && list.Any(k => k == x.Name));
+        }
+
+
+        protected void OnCollectionChanged()
+        {
+            this.CollectionChanged?.Invoke(this, EventArgs.Empty);
         }
     }
 }

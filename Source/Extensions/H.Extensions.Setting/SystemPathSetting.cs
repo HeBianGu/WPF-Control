@@ -9,7 +9,7 @@ namespace H.Extensions.Setting
     {
         public override void Execute(object parameter)
         {
-            SystemPathSetting.Instance.ClearCache();
+            AppPaths.Instance.ClearCache();
         }
     }
 
@@ -17,7 +17,7 @@ namespace H.Extensions.Setting
     {
         public override void Execute(object parameter)
         {
-            SystemPathSetting.Instance.ClearSetting();
+            AppPaths.Instance.ClearSetting();
         }
     }
 }

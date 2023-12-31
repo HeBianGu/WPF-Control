@@ -12,9 +12,14 @@ using System.Windows;
 
 namespace H.Controls.Vlc
 {
-    [Display(Name = "视频控件", GroupName = SystemSetting.GroupControl)]
+    [Display(Name = "视频控件", GroupName = SettingGroupNames.GroupControl)]
     public class VlcSetting : Setting<VlcSetting>
     {
+        public override void LoadDefault()
+        {
+            base.LoadDefault();
+            this._shotCutPath = Path.Combine(AppPaths.Instance.Cache, "ShootCut");
+        }
         private bool _isSaveShotCutWithFile = true;
         [Display(Name = "截图时保存到影片目录")]
         [DefaultValue(true)]
@@ -41,7 +46,7 @@ namespace H.Controls.Vlc
             }
         }
 
-        private string _shotCutPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "HeBianGu", Assembly.GetExecutingAssembly().GetName().Name, "ShootCut");
+        private string _shotCutPath;
         [Display(Name = "截图保存的路径")]
         public string ShotCutPath
         {

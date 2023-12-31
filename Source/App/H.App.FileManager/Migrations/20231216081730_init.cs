@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 
-#nullable disable
 
 namespace H.App.FileManager.Migrations
 {

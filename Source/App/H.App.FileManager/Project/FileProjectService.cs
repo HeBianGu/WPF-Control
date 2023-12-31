@@ -1,4 +1,5 @@
-﻿using H.Modules.Login;
+﻿using H.Controls.TagBox;
+using H.Modules.Login;
 using H.Modules.Project;
 using H.Providers.Ioc;
 using Microsoft.Extensions.Options;
@@ -8,9 +9,10 @@ namespace H.App.FileManager
 {
     public class FileProjectService : ProjectServiceBase<FileProjectItem>, IProjectService
     {
-        public FileProjectService(IOptions<ProjectOptions> options) : base(options)
+        private readonly IOptions<TagOptions> _tagOptions;
+        public FileProjectService(IOptions<ProjectOptions> options, IOptions<TagOptions> tagOptions) : base(options)
         {
-
+            _tagOptions = tagOptions;
         }
 
         public override IProjectItem Create()
@@ -18,18 +20,9 @@ namespace H.App.FileManager
             return new FileProjectItem()
             {
                 Title = DateTime.Now.ToString("yyyyMMddHHmmss"),
-                Path = SystemPathSetting.Instance.Project
+                Path = AppPaths.Instance.Project,
+                Tags = _tagOptions.Value.Tags.ToObservable()
             };
-        }
-    }
-
-    public class AppSaveService : IAppSaveService
-    {
-        public string Name => "应用程序保存";
-
-        public bool Save(out string message)
-        {
-            return IocProject.Instance.Current.Save(out message);
         }
     }
 }

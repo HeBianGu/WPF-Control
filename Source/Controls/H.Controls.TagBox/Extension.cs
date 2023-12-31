@@ -17,6 +17,15 @@ namespace System
             return services;
         }
 
+        public static IServiceCollection AddTag<T>(this IServiceCollection services, Action<TagOptions> setupAction = null) where T : class, ITagService
+        {
+            services.AddOptions();
+            services.TryAdd(ServiceDescriptor.Singleton<ITagService, T>());
+            if (setupAction != null)
+                services.Configure(setupAction);
+            return services;
+        }
+
         public static IApplicationBuilder UseTag(this IApplicationBuilder builder, Action<TagOptions> option = null)
         {
             SettingDataManager.Instance.Add(TagOptions.Instance);

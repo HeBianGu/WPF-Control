@@ -12,17 +12,17 @@ using System.Windows.Markup;
 
 namespace H.Modules.License
 {
-    [Display(Name = "许可设置", GroupName = SystemSetting.GroupAuthority, Description = "应用此功能设置许可验证方式")]
+    [Display(Name = "许可设置", GroupName = SettingGroupNames.GroupAuthority, Description = "应用此功能设置许可验证方式")]
     internal class LicenseService : Setting<LicenseService>, ILicenseService
     {
-        public LicenseService()
-        {
-            this.IsVisibleInSetting = false;
-        }
+        //public LicenseService()
+        //{
+        //    this.IsVisibleInSetting = false;
+        //}
 
         protected override string GetDefaultFolder()
         {
-            return SystemPathSetting.Instance.License;
+            return AppPaths.Instance.License;
         }
 
 
@@ -49,7 +49,7 @@ namespace H.Modules.License
 
         string GetBaseDirectoryPath()
         {
-            return System.IO.Path.Combine(SystemPathSetting.Instance.Config, "Microsoft.Extensions.Xmlable.dll");
+            return System.IO.Path.Combine(AppPaths.Instance.Config, "Microsoft.Extensions.Xmlable.dll");
             //return System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Microsoft.Extensions.Xmlable.dll");
         }
 
@@ -58,7 +58,7 @@ namespace H.Modules.License
             return !File.Exists(this.GetDefaultPath()) && !File.Exists(this.GetBaseDirectoryPath());
         }
 
-        public override void Load()
+        public override bool Load(out string message)
         {
             if (File.Exists(this.GetDefaultPath()))
             {
@@ -69,7 +69,7 @@ namespace H.Modules.License
                 base.Load(this.GetBaseDirectoryPath());
             }
 
-            this.Save(out string message);
+            return this.Save(out message);
         }
 
         private DateTime _trialEndTime = DateTime.Now.AddDays(30);

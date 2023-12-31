@@ -9,6 +9,7 @@ namespace H.Providers.Ioc
     public interface ISettingDataManagerOption
     {
         void Add(params ISetting[] settings);
+        void Remove(params ISetting[] settings);
     }
 
     public class SettingDataManager : LazyInstance<SettingDataManager>, ISettingDataManagerOption
@@ -24,16 +25,16 @@ namespace H.Providers.Ioc
         {
             message = null;
             List<string> list = new List<string>();
-            list.Add(SystemSetting.GroupApp);
-            list.Add(SystemSetting.GroupBase);
-            list.Add(SystemSetting.GroupSystem);
-            list.Add(SystemSetting.GroupData);
-            list.Add(SystemSetting.GroupStyle);
-            list.Add(SystemSetting.GroupControl);
-            list.Add(SystemSetting.GroupMessage);
-            list.Add(SystemSetting.GroupSecurity);
-            list.Add(SystemSetting.GroupAuthority);
-            list.Add(SystemSetting.GroupOther);
+            list.Add(SettingGroupNames.GroupApp);
+            list.Add(SettingGroupNames.GroupBase);
+            list.Add(SettingGroupNames.GroupSystem);
+            list.Add(SettingGroupNames.GroupData);
+            list.Add(SettingGroupNames.GroupStyle);
+            list.Add(SettingGroupNames.GroupControl);
+            list.Add(SettingGroupNames.GroupMessage);
+            list.Add(SettingGroupNames.GroupSecurity);
+            list.Add(SettingGroupNames.GroupAuthority);
+            list.Add(SettingGroupNames.GroupOther);
             Comparison<ISetting> comparison = (x, y) =>
             {
                 if (x == null) return -1;
@@ -46,9 +47,9 @@ namespace H.Providers.Ioc
             settings.RemoveAll(x => x == null);
             settings.Sort(comparison);
             this.Settings = new ObservableCollection<ISetting>(settings);
-            foreach (ISetting item in this.Settings)
+            foreach (ILoadable item in this.Settings.OfType<ILoadable>())
             {
-                item.Load();
+                item.Load(out message);
             }
 
             return true;
@@ -57,7 +58,7 @@ namespace H.Providers.Ioc
         public virtual bool Save(out string message)
         {
             StringBuilder sb = new StringBuilder();
-            foreach (ISetting item in this.Settings)
+            foreach (ISaveable item in this.Settings.OfType<ISaveable>())
             {
                 try
                 {
@@ -77,7 +78,7 @@ namespace H.Providers.Ioc
 
         public void SetDefault()
         {
-            foreach (ISetting item in this.Settings)
+            foreach (IDefaultable item in this.Settings.OfType<IDefaultable>())
             {
                 item.LoadDefault();
             }
@@ -85,9 +86,9 @@ namespace H.Providers.Ioc
 
         public void Cancel()
         {
-            foreach (ISetting item in this.Settings)
+            foreach (ILoadable item in this.Settings.OfType<ILoadable>())
             {
-                item.Load();
+                item.Load(out string message);
             }
         }
 
@@ -98,6 +99,16 @@ namespace H.Providers.Ioc
                 if (this.Settings.Contains(setting))
                     continue;
                 this.Settings.Add(setting);
+            }
+        }
+
+        public void Remove(params ISetting[] settings)
+        {
+            foreach (ISetting setting in settings)
+            {
+                if (!this.Settings.Contains(setting))
+                    continue;
+                this.Settings.Remove(setting);
             }
         }
     }

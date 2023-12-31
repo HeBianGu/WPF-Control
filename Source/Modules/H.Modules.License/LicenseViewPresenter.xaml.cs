@@ -16,7 +16,7 @@ namespace H.Modules.License
 
     }
 
-    [Display(Name = "许可证书", GroupName = SystemSetting.GroupAuthority, Description = "应用此功能进行产品许可注册")]
+    [Display(Name = "许可证书", GroupName = SettingGroupNames.GroupAuthority, Description = "应用此功能进行产品许可注册")]
     public class LicenseViewPresenter : NotifyPropertyChangedBase, ILicenseViewPresenter, IDataErrorInfo
     {
         public LicenseViewPresenter()

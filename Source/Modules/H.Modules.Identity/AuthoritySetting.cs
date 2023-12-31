@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace H.Modules.Identity
 {
-    [Displayer(Name = "权限设置", GroupName = SystemSetting.GroupSystem)]
+    [Displayer(Name = "权限设置", GroupName = SettingGroupNames.GroupSystem)]
     public class AuthoritySetting : Setting<AuthoritySetting>
     {
         private bool _useAuthority = true;

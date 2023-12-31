@@ -5,7 +5,7 @@ namespace H.Providers.Ioc
     /// <summary>
     /// 项目关闭会预保存的接口
     /// </summary>
-    public interface ISplashSave : ISave
+    public interface ISplashSave : ISaveable
     {
         string Name { get; }
     }

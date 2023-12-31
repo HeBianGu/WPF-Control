@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 namespace H.Modules.Setting
 {
     /// <summary> 登录 </summary>
-    [Display(Name = "登录", GroupName = SystemSetting.GroupBase)]
+    [Display(Name = "登录", GroupName = SettingGroupNames.GroupBase)]
     public class LoginSetting : Setting<LoginSetting>
     {
         private bool _automaticStart;

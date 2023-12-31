@@ -8,7 +8,7 @@ using System.Windows.Threading;
 
 namespace H.Extensions.XmlSerialize
 {
-    [Display(Name = "元配置数据", GroupName = SystemSetting.GroupData)]
+    [Display(Name = "元配置数据", GroupName = SettingGroupNames.GroupData)]
     public class MetaSetting : LazyInstance<MetaSetting>
     {
         [DefaultValue(DispatcherPriority.SystemIdle)]

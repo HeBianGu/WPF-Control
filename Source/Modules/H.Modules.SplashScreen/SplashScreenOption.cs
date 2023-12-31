@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace H.Modules.SplashScreen
 {
-    [Display(Name = "启动页面", GroupName = SystemSetting.GroupSystem, Description = "启动页面设置信息")]
+    [Display(Name = "启动页面", GroupName = SettingGroupNames.GroupSystem, Description = "启动页面设置信息")]
     public class SplashScreenOption : IocOptionInstance<SplashScreenOption>
     {
         public override void LoadDefault()

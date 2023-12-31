@@ -10,7 +10,7 @@ using System.ComponentModel.DataAnnotations;
 namespace H.Modules.Setting
 {
     /// <summary> 主面板 </summary>
-    [Display(Name = "主面板", GroupName = SystemSetting.GroupBase)]
+    [Display(Name = "主面板", GroupName = SettingGroupNames.GroupBase)]
     public class MainSetting : Setting<MainSetting>
     {
 

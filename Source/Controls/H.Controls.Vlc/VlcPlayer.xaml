@@ -52,13 +52,16 @@
                                     </Button.Template>
                                 </Button>
 
-                                <TextBlock HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"
-                                           FontSize="100"
-                                           Foreground="{DynamicResource {x:Static h:BrushKeys.Foreground}}"
-                                           IsHitTestVisible="False"
-                                           Text="Play"
-                                           Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsPlaying, Converter={x:Static h:Converter.GetTrueToHidden}}" />
+                                <Path Width="100"
+                                      Height="100"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      Data="M128 138.666667c0-47.232 33.322667-66.666667 74.176-43.562667l663.146667 374.954667c40.96 23.168 40.853333 60.8 0 83.882666L202.176 928.896C161.216 952.064 128 932.565333 128 885.333333v-746.666666z"
+                                      Fill="{DynamicResource {x:Static h:BrushKeys.Foreground}}"
+                                      IsHitTestVisible="False"
+                                      Stretch="Uniform"
+                                      ToolTip="播放"
+                                      Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsPlaying, Converter={x:Static h:Converter.GetTrueToHidden}}" />
 
                                 <DockPanel DockPanel.Dock="Right" Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:VlcPlayer}, Path=UseRight, Converter={x:Static h:Converter.GetTrueToVisible}}">
                                     <ContentControl HorizontalAlignment="Right" Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:Cattach.RightTemplate)}" />

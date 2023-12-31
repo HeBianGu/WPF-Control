@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace H.Modules.Login
 {
-    [Display(Name = "登录页面", GroupName = SystemSetting.GroupSystem, Description = "登录页面设置的信息")]
+    [Display(Name = "登录页面", GroupName = SettingGroupNames.GroupSystem, Description = "登录页面设置的信息")]
     public class LoginOptions : IocOptionInstance<LoginOptions>
     {
         public override void LoadDefault()

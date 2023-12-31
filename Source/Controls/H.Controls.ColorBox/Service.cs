@@ -20,12 +20,12 @@ namespace H.Controls.ColorBox
 
     }
 
-    [Display(Name = "颜色列表设置", GroupName = SystemSetting.GroupControl)]
+    [Display(Name = "颜色列表设置", GroupName = SettingGroupNames.GroupControl)]
     public class ColorBoxSetting : Setting<ColorBoxSetting>
     {
         public ColorBoxSetting()
         {
-            this.IsVisibleInSetting = false;
+            //this.IsVisibleInSetting = false;
         }
         private int _from = 0;
         [Display(Name = "起始位置")]

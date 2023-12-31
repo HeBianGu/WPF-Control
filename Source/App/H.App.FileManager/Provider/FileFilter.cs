@@ -1,27 +1,23 @@
 ﻿
-using H.Providers.Ioc;
+using H.Controls.FilterBox;
 using H.Providers.Mvvm;
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace H.App.FileManager
 {
-    public class FileFilter : IFilter
+    [Display(Name = "扩展名")]
+    public class FileFilter : FilterBase
     {
-        public string DisplayName { get; set; }
         public string Extensions { get; set; }
-        public bool IsMatch(object obj)
+        public override bool IsMatch(object obj)
         {
             if (obj is ModelViewModel<fm_dd_file> file)
             {
-                return Extensions.Split(' ').Any(x => x.Equals(file.Model.Extend.Trim('.'), StringComparison.OrdinalIgnoreCase));
+                return Extensions.Split(' ').Any(x => x.Equals(file.Model.Extend?.Trim('.'), StringComparison.OrdinalIgnoreCase));
             }
             return false;
-        }
-
-        public override string ToString()
-        {
-            return DisplayName ?? GetType().Name;
         }
     }
 }

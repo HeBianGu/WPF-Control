@@ -10,7 +10,7 @@ using System.Windows;
 namespace H.Modules.Setting
 {
     /// <summary> 登录 </summary>
-    [Display(Name = "设置页面配置", GroupName = SystemSetting.GroupBase)]
+    [Display(Name = "设置页面配置", GroupName = SettingGroupNames.GroupBase)]
     public class SettingViewSetting : Setting<LoginSetting>
     {
         private Thickness _margin;

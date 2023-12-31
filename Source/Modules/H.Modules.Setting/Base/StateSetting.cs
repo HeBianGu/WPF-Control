@@ -10,7 +10,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace H.Modules.Setting
 {
-    [Display(Name = "状态", GroupName = SystemSetting.GroupBase)]
+    [Display(Name = "状态", GroupName = SettingGroupNames.GroupBase)]
     public class StateSetting : Setting<StateSetting>
     {
         private int _doNotingMinite;

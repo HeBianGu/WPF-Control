@@ -11,7 +11,7 @@ using System.Text;
 
 namespace H.Extensions.Log4net
 {
-    [Display(Name = "日志记录", GroupName = SystemSetting.GroupSystem, Description = "点击显示新手向导")]
+    [Display(Name = "日志记录", GroupName = SettingGroupNames.GroupSystem, Description = "点击显示新手向导")]
     public class Log4netService : ILogService
     {
         private readonly IOptions<Log4netOptions> _options;

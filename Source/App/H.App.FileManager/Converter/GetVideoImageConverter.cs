@@ -16,7 +16,7 @@ namespace H.App.FileManager
             {
                 if (video.Images.Count > 0 && video.SelectedImageIndex < 0)
                     return video.Images[0].Url.GetImageSource();
-                var vimage = video.Images[video.SelectedImageIndex];
+                fm_dd_video_image vimage = video.Images[video.SelectedImageIndex];
                 return vimage.Url.GetImageSource();
             }
             return null;

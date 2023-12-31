@@ -5,7 +5,7 @@ namespace H.Providers.Ioc
     /// <summary>
     /// 项目启动会预加载的接口
     /// </summary>
-    public interface ISplashLoad : ILoad
+    public interface ISplashLoad : ILoadable
     {
         string Name { get; }
     }

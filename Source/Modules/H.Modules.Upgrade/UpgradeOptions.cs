@@ -8,13 +8,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace H.Modules.Upgrade
 {
-    [Display(Name = "软件更新", GroupName = SystemSetting.GroupSystem, Description = "配置软件更新相关参数")]
+    [Display(Name = "软件更新", GroupName = SettingGroupNames.GroupSystem, Description = "配置软件更新相关参数")]
     public class UpgradeOptions : IocOptionInstance<UpgradeOptions>
     {
         protected override string GetDefaultFolder()
         {
             //base.GetDefaultFolder();
-            return SystemPathSetting.Instance.Config;
+            return AppPaths.Instance.Config;
         }
 
         private string _uri;
@@ -29,7 +29,7 @@ namespace H.Modules.Upgrade
             }
         }
 
-        private string _SavePath = SystemPathSetting.Instance.Version;
+        private string _SavePath = AppPaths.Instance.Version;
         [Display(Name = "更新文件保存位置")]
         public string SavePath
         {

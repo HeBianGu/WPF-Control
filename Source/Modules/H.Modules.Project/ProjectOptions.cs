@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace H.Modules.Login
 {
-    [Display(Name = "工程配置", GroupName = SystemSetting.GroupSystem, Description = "工程配置的信息")]
+    [Display(Name = "工程配置", GroupName = SettingGroupNames.GroupSystem, Description = "工程配置的信息")]
     public class ProjectOptions : IocOptionInstance<ProjectOptions>
     {
         private string _extenstion;
@@ -50,7 +50,7 @@ namespace H.Modules.Login
         public override void LoadDefault()
         {
             base.LoadDefault();
-            this.HistoryPath = System.IO.Path.Combine(SystemPathSetting.Instance.Project, "Histroy.json");
+            this.HistoryPath = System.IO.Path.Combine(AppPaths.Instance.Project, "Histroy.json");
         }
     }
 }

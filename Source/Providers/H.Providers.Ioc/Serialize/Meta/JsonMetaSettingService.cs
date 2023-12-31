@@ -5,7 +5,7 @@ namespace H.Providers.Ioc
 {
     public class JsonMetaSettingService : IMetaSettingService
     {
-        private string GetFilePath(string typeName, string id) => Path.Combine(SystemPathSetting.Instance.Cache, id + ".json");
+        private string GetFilePath(string typeName, string id) => Path.Combine(AppPaths.Instance.Cache, id + ".json");
         public T Deserilize<T>(string id)
         {
             if (!File.Exists(this.GetFilePath(typeof(T).Name, id)))

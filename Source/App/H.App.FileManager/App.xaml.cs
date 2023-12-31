@@ -28,7 +28,7 @@ namespace H.App.FileManager
             services.AddProject<FileProjectService>();
             services.AddSplashScreen();
             services.AddSingleton<IAppSaveService, AppSaveService>();
-            services.AddTag(x =>
+            services.AddTag<ProjectTagService>(x =>
             {
                 x.Tags.Add(new Tag() { Name = "严重", Description = "这是一个严重标签", Background = Brushes.Purple });
                 x.Tags.Add(new Tag() { Name = "错误", Description = "这是一个严重标签", Background = Brushes.Red });
@@ -57,13 +57,14 @@ namespace H.App.FileManager
 
             services.AddFavorite(x =>
             {
-                x.FavoriteItems.Add(new FavoriteItem() { Path = "默认"});
-                x.FavoriteItems.Add(new FavoriteItem() { Path = "资源"});
-                x.FavoriteItems.Add(new FavoriteItem() { Path = "学习"});
-                x.FavoriteItems.Add(new FavoriteItem() { Path = "娱乐"});
-                x.FavoriteItems.Add(new FavoriteItem() { Path = "工作"});
+                x.FavoriteItems.Add(new FavoriteItem() { Path = "默认" });
+                x.FavoriteItems.Add(new FavoriteItem() { Path = "资源" });
+                x.FavoriteItems.Add(new FavoriteItem() { Path = "学习" });
+                x.FavoriteItems.Add(new FavoriteItem() { Path = "娱乐" });
+                x.FavoriteItems.Add(new FavoriteItem() { Path = "工作" });
             });
             services.AddSetting();
+            services.AddAppService();
         }
 
         protected override void Configure(IApplicationBuilder app)

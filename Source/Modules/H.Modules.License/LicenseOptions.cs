@@ -10,7 +10,7 @@ using System.Xml.Serialization;
 
 namespace H.Modules.License
 {
-    [Display(Name = "许可管理", GroupName = SystemSetting.GroupSystem, Description = "许可管理设置的信息")]
+    [Display(Name = "许可管理", GroupName = SettingGroupNames.GroupSystem, Description = "许可管理设置的信息")]
     public class LicenseOptions : IocOptionInstance<LicenseOptions>
     {
         private bool _useTipTrialOnLoad = false;
@@ -73,7 +73,7 @@ namespace H.Modules.License
             }
         }
 
-        private string _filePath = SystemPathSetting.Instance.License;
+        private string _filePath = AppPaths.Instance.License;
         [Browsable(false)]
         [XmlIgnore]
         [ReadOnly(true)]

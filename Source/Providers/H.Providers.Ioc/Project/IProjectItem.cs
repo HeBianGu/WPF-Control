@@ -4,11 +4,12 @@ using System;
 
 namespace H.Providers.Ioc
 {
-    public interface IProjectItem : ISave, ILoad
+    public interface IProjectItem : ISaveable, ILoadable
     {
         DateTime UpdateTime { get; set; }
         bool IsFixed { get; set; }
         string Title { get; set; }
         string Path { get; set; }
+        bool Close(out string message);
     }
 }

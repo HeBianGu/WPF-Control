@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace H.Controls.FavoriteBox
 {
-    [Display(Name = "收藏夹管理", GroupName = SystemSetting.GroupSystem, Description = "登录页面设置的信息")]
+    [Display(Name = "收藏夹管理", GroupName = SettingGroupNames.GroupSystem, Description = "登录页面设置的信息")]
     public class FavoriteOptions : IocOptionInstance<FavoriteOptions>
     {
         [Browsable(false)]
