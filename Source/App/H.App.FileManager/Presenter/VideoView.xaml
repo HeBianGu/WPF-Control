@@ -7,9 +7,11 @@
     <DataTemplate DataType="{x:Type local:fm_dd_video}">
         <Grid>
             <DockPanel>
-                <Border BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" BorderThickness="1">
+                <Border BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
+                        BorderThickness="1">
                     <Grid Margin="5">
-                        <Image Width="100" Source="{Binding ., Converter={local:GetVideoImageConverter}, ConverterParameter=200, IsAsync=True}" />
+                        <Image Width="100"
+                               Source="{Binding ., Converter={local:GetVideoImageConverter}, ConverterParameter=200, IsAsync=True}" />
                         <Image Width="30"
                                Height="30"
                                HorizontalAlignment="Right"
@@ -80,7 +82,8 @@
                           Content="M655.58253 161.724518c-54.76554 0-104.459127 20.519015-145.894532 59.815819-41.652156-39.730304-90.543766-59.815819-145.865632-59.815819-132.116447 0-239.60285 115.079884-239.60285 256.531038 0 82.834686 36.948677 140.454103 64.042447 182.705934 63.421096 99.755648 194.670543 203.253849 267.267396 256.068638l3.366852 2.456502c14.450011 11.234883 31.862273 17.188288 50.372737 17.188287 17.433938 0 34.45605-5.657179 49.231186-16.335737l0.946476-0.700825c0.599675-0.455175 1.784576-1.322176 3.496902-2.564877 72.575178-52.923164 203.867974-156.551415 267.881522-256.299838 26.970945-42.071206 63.919622-99.683398 63.919621-182.525309-0.007225-141.443929-107.291329-256.523813-239.162125-256.523813z"
                           IsChecked="{Binding Favorite}">
                 <ToggleButton.Style>
-                    <Style BasedOn="{StaticResource {x:Static h:ToggleButtonKeys.Geometry}}" TargetType="ToggleButton">
+                    <Style BasedOn="{StaticResource {x:Static h:ToggleButtonKeys.Geometry}}"
+                           TargetType="ToggleButton">
                         <Style.Triggers>
                             <Trigger Property="IsChecked" Value="True">
                                 <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Red}}" />
@@ -94,10 +97,12 @@
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type local:fm_dd_video_image}">
-        <Border BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" BorderThickness="1">
+        <Border BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
+                BorderThickness="1">
             <DockPanel Margin="2">
                 <Grid>
-                    <Image Width="100" Source="{Binding Url, Converter={x:Static h:Converter.GetFileImageSourceInMemory}, ConverterParameter=200, IsAsync=True}" />
+                    <Image Width="100"
+                           Source="{Binding Url, Converter={x:Static h:Converter.GetFileImageSourceInMemory}, ConverterParameter=200, IsAsync=True}" />
                     <TextBlock HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                FontSize="15"
@@ -105,7 +110,8 @@
                                Foreground="Black"
                                Text="{Binding TimeStamp, Converter={x:Static h:Converter.GetTimeSpanStrFromTicks}}">
                         <TextBlock.Effect>
-                            <DropShadowEffect ShadowDepth="0" Color="White" />
+                            <DropShadowEffect ShadowDepth="0"
+                                              Color="White" />
                         </TextBlock.Effect>
                     </TextBlock>
                 </Grid>
@@ -126,14 +132,17 @@
                          Visibility="{Binding ElementName=tb_list, Path=IsChecked, Converter={x:Static h:Converter.GetTrueToVisible}}">
                     <b:Interaction.Triggers>
                         <b:EventTrigger EventName="SelectionChanged">
-                            <b:InvokeCommandAction Command="{Binding SelectionChangedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=SelectedItem.Model}" />
+                            <b:InvokeCommandAction Command="{Binding SelectionChangedCommand}"
+                                                   CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=SelectedItem.Model}" />
                         </b:EventTrigger>
                         <b:EventTrigger EventName="MouseDoubleClick">
-                            <b:InvokeCommandAction Command="{Binding MouseDoubleClickCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=SelectedItem.Model}" />
+                            <b:InvokeCommandAction Command="{Binding MouseDoubleClickCommand}"
+                                                   CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=SelectedItem.Model}" />
                         </b:EventTrigger>
                     </b:Interaction.Triggers>
                     <ListBox.ItemContainerStyle>
-                        <Style BasedOn="{StaticResource {x:Static h:ListBoxItemKeys.Default}}" TargetType="ListBoxItem">
+                        <Style BasedOn="{StaticResource {x:Static h:ListBoxItemKeys.Default}}"
+                               TargetType="ListBoxItem">
                             <Setter Property="BorderThickness" Value="1" />
                             <Setter Property="Margin" Value="1" />
                             <Setter Property="Padding" Value="5" />
@@ -159,7 +168,8 @@
                 </ListBox>
             </GroupBox>
             <Grid DockPanel.Dock="Bottom">
-                <DockPanel HorizontalAlignment="Stretch" DockPanel.Dock="Bottom">
+                <DockPanel HorizontalAlignment="Stretch"
+                           DockPanel.Dock="Bottom">
                     <Button VerticalAlignment="Center"
                             Background="Transparent"
                             Command="{x:Static h:VlcPlayerCommands.PreviousFrame}"
@@ -215,7 +225,8 @@
             <TextBlock Margin="5"
                        DockPanel.Dock="Top"
                        Text="{Binding Model.Url}" />
-            <DockPanel DockPanel.Dock="Top" LastChildFill="False">
+            <DockPanel DockPanel.Dock="Top"
+                       LastChildFill="False">
                 <Button Command="{x:Static h:VlcPlayerCommands.ShootCut}"
                         CommandTarget="{Binding ElementName=vlc}"
                         Content="截图" />
@@ -235,13 +246,20 @@
                               Content="更多推荐"
                               DockPanel.Dock="Right"
                               IsChecked="True" />
-                <Button Content="{x:Static h:Geometrys.Info}" Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
-                <Button Content="{x:Static h:Geometrys.Info}" Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
-                <Button Content="{x:Static h:Geometrys.Info}" Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
-                <Button Content="{x:Static h:Geometrys.Info}" Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
-                <Button Content="{x:Static h:Geometrys.Info}" Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
-                <Button Content="{x:Static h:Geometrys.Info}" Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
-                <Button Content="{x:Static h:Geometrys.Info}" Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
+                <Button Content="{x:Static h:Geometrys.Info}"
+                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
+                <Button Content="{x:Static h:Geometrys.Info}"
+                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
+                <Button Content="{x:Static h:Geometrys.Info}"
+                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
+                <Button Content="{x:Static h:Geometrys.Info}"
+                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
+                <Button Content="{x:Static h:Geometrys.Info}"
+                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
+                <Button Content="{x:Static h:Geometrys.Info}"
+                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
+                <Button Content="{x:Static h:Geometrys.Info}"
+                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
             </DockPanel>
             <GroupBox DockPanel.Dock="Right"
                       Header="预览图"
@@ -253,7 +271,8 @@
                          ItemsSource="{Binding SelectedItem.Model.Images}"
                          SelectedIndex="{Binding SelectedItem.Model.SelectedImageIndex, IsAsync=True}">
                     <ListBox.ItemContainerStyle>
-                        <Style BasedOn="{StaticResource {x:Static h:ListBoxItemKeys.Default}}" TargetType="ListBoxItem">
+                        <Style BasedOn="{StaticResource {x:Static h:ListBoxItemKeys.Default}}"
+                               TargetType="ListBoxItem">
                             <Setter Property="BorderThickness" Value="1" />
                             <Setter Property="Margin" Value="1" />
                             <Setter Property="Padding" Value="5" />
@@ -299,12 +318,12 @@
                        ViewStackIndex="0"
                        ZoomOn="Content">
                 <h:Zoombox.ViewStack>
-                    <h:ZoomboxView>Empty</h:ZoomboxView>
+                    <!--<h:ZoomboxView>Empty</h:ZoomboxView>-->
                     <h:ZoomboxView>Fit</h:ZoomboxView>
-                    <h:ZoomboxView>Fill</h:ZoomboxView>
+                    <!--<h:ZoomboxView>Fill</h:ZoomboxView>
                     <h:ZoomboxView>Center</h:ZoomboxView>
                     <h:ZoomboxView>10 10 100 100</h:ZoomboxView>
-                    <h:ZoomboxView>2.0</h:ZoomboxView>
+                    <h:ZoomboxView>2.0</h:ZoomboxView>-->
                 </h:Zoombox.ViewStack>
                 <h:VlcPlayer x:Name="vlc"
                              VerticalAlignment="Center"
@@ -313,7 +332,8 @@
                              VedioSource="{Binding SelectedItem.Model.Url}">
                     <b:Interaction.Triggers>
                         <b:EventTrigger EventName="ShootCut">
-                            <b:InvokeCommandAction Command="{Binding ShootCutCommand}" PassEventArgsToCommand="True" />
+                            <b:InvokeCommandAction Command="{Binding ShootCutCommand}"
+                                                   PassEventArgsToCommand="True" />
                         </b:EventTrigger>
                     </b:Interaction.Triggers>
                 </h:VlcPlayer>

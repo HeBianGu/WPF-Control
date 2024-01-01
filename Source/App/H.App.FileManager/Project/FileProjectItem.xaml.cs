@@ -2,6 +2,7 @@
 
 
 
+using H.Controls.FavoriteBox;
 using H.Controls.TagBox;
 using H.DataBases.Share;
 using H.Extensions.ViewModel;
@@ -35,6 +36,10 @@ namespace H.App.FileManager
 
         [Browsable(false)]
         public ObservableCollection<Tag> Tags { get; set; } = new ObservableCollection<Tag>();
+
+        [Browsable(false)]
+        public ObservableCollection<FavoriteItem> FavoriteItems { get; set; } = new ObservableCollection<FavoriteItem>();
+        
 
         private IRepositoryViewModel<fm_dd_file> _file = new RepositoryViewModel<fm_dd_file>();
         [JsonIgnore]
@@ -75,6 +80,7 @@ namespace H.App.FileManager
             File = DbIoc.GetService<IRepositoryViewModel<fm_dd_file>>();
             File.RefreshData();
             IocTagService.Instance.Load(out message);
+            IocFavoriteService.Instance.Load(out message);
             SettingDataManager.Instance.Add(this.Setting);
             return base.Load(out message);
         }

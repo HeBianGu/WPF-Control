@@ -51,6 +51,10 @@ namespace H.Modules.Project
                         IocProject.Instance.Save(out string message);
                     }
                 };
+                commandBinding.CanExecute += (l, k) =>
+                {
+                    k.CanExecute = k.Parameter is IProjectItem project ? project != IocProject.Instance.Current : false;
+                };
                 this.CommandBindings.Add(commandBinding);
             }
 
@@ -160,8 +164,6 @@ namespace H.Modules.Project
 
         public void Refresh()
         {
-
-
             var projects = this.Dispatcher.Invoke(() =>
               {
                   return this.Projects;

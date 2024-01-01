@@ -10,11 +10,7 @@ namespace System
     {
         public static IServiceCollection AddTag(this IServiceCollection services, Action<TagOptions> setupAction = null)
         {
-            services.AddOptions();
-            services.TryAdd(ServiceDescriptor.Singleton<ITagService, TagService>());
-            if (setupAction != null)
-                services.Configure(setupAction);
-            return services;
+            return services.AddTag<TagService>(setupAction);
         }
 
         public static IServiceCollection AddTag<T>(this IServiceCollection services, Action<TagOptions> setupAction = null) where T : class, ITagService

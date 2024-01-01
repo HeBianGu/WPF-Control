@@ -10,8 +10,13 @@ namespace System
     {
         public static IServiceCollection AddFavorite(this IServiceCollection services, Action<FavoriteOptions> setupAction = null)
         {
+            return services.AddFavorite<FavoriteService>(setupAction);
+        }
+
+        public static IServiceCollection AddFavorite<T>(this IServiceCollection services, Action<FavoriteOptions> setupAction = null) where T : class, IFavoriteService
+        {
             services.AddOptions();
-            services.TryAdd(ServiceDescriptor.Singleton<IFavoriteService, FavoriteService>());
+            services.TryAdd(ServiceDescriptor.Singleton<IFavoriteService, T>());
             if (setupAction != null)
                 services.Configure(setupAction);
             return services;

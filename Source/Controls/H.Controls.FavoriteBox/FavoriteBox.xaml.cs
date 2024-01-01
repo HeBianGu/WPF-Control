@@ -24,6 +24,10 @@ namespace H.Controls.FavoriteBox
             bingding.Executed += (s, e) =>
             {
                 this.SelectNone();
+            }; 
+            bingding.CanExecute += (l, k) =>
+            {
+                k.CanExecute = this.SelectedItem != null;
             };
             this.CommandBindings.Add(bingding);
 

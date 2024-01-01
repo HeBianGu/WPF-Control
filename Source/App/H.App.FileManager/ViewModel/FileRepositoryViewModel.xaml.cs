@@ -316,7 +316,7 @@ namespace H.App.FileManager
             if (e is fm_dd_file file)
             {
                 this.History.Add(file);
-                IFileView view = Ioc.GetService<IFileToViewService>().ToView(file);
+                var view = Ioc.GetService<IFileToViewService>().ToView(file);
                 await IocMessage.Dialog.Show(view);
             }
         });

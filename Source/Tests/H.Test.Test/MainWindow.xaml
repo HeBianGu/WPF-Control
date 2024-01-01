@@ -316,12 +316,12 @@
                                ZoomModifiers="Shift,Exact"
                                ZoomToSelectionModifiers="Alt,Exact">
                         <h:Zoombox.ViewStack>
-                            <h:ZoomboxView>Empty</h:ZoomboxView>
+                            <!--<h:ZoomboxView>Empty</h:ZoomboxView>-->
                             <h:ZoomboxView>Fit</h:ZoomboxView>
-                            <h:ZoomboxView>Fill</h:ZoomboxView>
+                            <!--<h:ZoomboxView>Fill</h:ZoomboxView>
                             <h:ZoomboxView>Center</h:ZoomboxView>
                             <h:ZoomboxView>10 10 100 100</h:ZoomboxView>
-                            <h:ZoomboxView>2.0</h:ZoomboxView>
+                            <h:ZoomboxView>2.0</h:ZoomboxView>-->
                         </h:Zoombox.ViewStack>
                         <Grid Width="300"
                               Height="300">

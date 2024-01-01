@@ -30,8 +30,12 @@
         <Setter Property="h:Cattach.TopTemplate">
             <Setter.Value>
                 <ControlTemplate>
-                    <Button Command="{x:Static h:Commands.Clear}"
-                            Content="取消选择" />
+                    <DockPanel LastChildFill="False">
+                        <Button Command="{x:Static h:Commands.Clear}"
+                                Content="取消选择" />
+                        <Button Command="{local:ManageFavoriteCommand}"
+                                Content="管理收藏夹" />
+                    </DockPanel>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

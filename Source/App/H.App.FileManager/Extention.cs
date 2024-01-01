@@ -2,6 +2,11 @@
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System;
+using System.Linq;
+using System.IO;
 
 namespace H.App.FileManager
 {

@@ -1,4 +1,5 @@
-﻿using H.Controls.TagBox;
+﻿using H.Controls.FavoriteBox;
+using H.Controls.TagBox;
 using H.Modules.Login;
 using H.Modules.Project;
 using H.Providers.Ioc;
@@ -10,9 +11,11 @@ namespace H.App.FileManager
     public class FileProjectService : ProjectServiceBase<FileProjectItem>, IProjectService
     {
         private readonly IOptions<TagOptions> _tagOptions;
-        public FileProjectService(IOptions<ProjectOptions> options, IOptions<TagOptions> tagOptions) : base(options)
+        private readonly IOptions<FavoriteOptions> _favoriteOptions;
+        public FileProjectService(IOptions<ProjectOptions> options, IOptions<TagOptions> tagOptions, IOptions<FavoriteOptions> favoriteOptions) : base(options)
         {
             _tagOptions = tagOptions;
+            _favoriteOptions = favoriteOptions;
         }
 
         public override IProjectItem Create()
@@ -21,7 +24,8 @@ namespace H.App.FileManager
             {
                 Title = DateTime.Now.ToString("yyyyMMddHHmmss"),
                 Path = AppPaths.Instance.Project,
-                Tags = _tagOptions.Value.Tags.ToObservable()
+                Tags = _tagOptions.Value.Tags.ToObservable(),
+                FavoriteItems= _favoriteOptions.Value.FavoriteItems.ToObservable()
             };
         }
     }

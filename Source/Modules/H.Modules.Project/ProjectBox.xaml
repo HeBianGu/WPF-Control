@@ -4,7 +4,8 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Modules.Project">
 
-    <Style BasedOn="{StaticResource {x:Static h:ListBoxKeys.Default}}" TargetType="{x:Type local:ProjectBox}">
+    <Style BasedOn="{StaticResource {x:Static h:ListBoxKeys.Default}}"
+           TargetType="{x:Type local:ProjectBox}">
         <Setter Property="Projects" Value="{Binding Source={x:Static h:IocProject.Instance}, Path=Collection, Mode=OneWay}" />
         <Setter Property="h:Cattach.ItemHeight" Value="Auto" />
         <Setter Property="ItemTemplate">
@@ -30,11 +31,25 @@
                 </DataTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="ItemsPanel">
+        <Setter Property="ItemContainerStyle">
             <Setter.Value>
-                <ItemsPanelTemplate>
-                    <StackPanel />
-                </ItemsPanelTemplate>
+                <Style BasedOn="{StaticResource {x:Static h:ListBoxItemKeys.Default}}"
+                       TargetType="ListBoxItem">
+                    <Style.Triggers>
+                        <DataTrigger Value="True">
+                            <DataTrigger.Binding>
+                                <MultiBinding Converter="{local:GetIsCurrentProjectConverter}">
+                                    <Binding Path="Model" />
+                                    <Binding Path="Current"
+                                             Source="{x:Static h:IocProject.Instance}" />
+                                </MultiBinding>
+                            </DataTrigger.Binding>
+                            <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.ForegroundTitle}}" />
+                            <Setter Property="TextElement.FontWeight" Value="Bold" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
             </Setter.Value>
         </Setter>
         <Setter Property="ContextMenu">
@@ -43,13 +58,19 @@
                     <ContextMenu.Resources>
                         <Style TargetType="MenuItem" />
                     </ContextMenu.Resources>
-                    <MenuItem Header="打开(_O)" Icon="&#xeada;" />
-                    <MenuItem Header="打开副本(_N)" Icon="&#xeadb;" />
-                    <MenuItem Header="将路径复制到剪贴板(_C)" Icon="&#xe83e;" />
+                    <MenuItem Header="打开(_O)"
+                              Icon="&#xeada;" />
+                    <MenuItem Header="打开副本(_N)"
+                              Icon="&#xeadb;" />
+                    <MenuItem Header="将路径复制到剪贴板(_C)"
+                              Icon="&#xe83e;" />
 
-                    <MenuItem Header="固定至列表(_P)" Icon="&#xe7f2;" />
-                    <MenuItem Header="从列表中删除(_R)" Icon="&#xe62d;" />
-                    <MenuItem Header="清楚已取消固定的文档(_E)" Icon="&#xe618;" />
+                    <MenuItem Header="固定至列表(_P)"
+                              Icon="&#xe7f2;" />
+                    <MenuItem Header="从列表中删除(_R)"
+                              Icon="&#xe62d;" />
+                    <MenuItem Header="清楚已取消固定的文档(_E)"
+                              Icon="&#xe618;" />
                 </ContextMenu>
             </Setter.Value>
         </Setter>

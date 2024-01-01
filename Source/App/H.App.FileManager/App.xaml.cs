@@ -55,7 +55,7 @@ namespace H.App.FileManager
                 x.Tags.Add(new Tag() { Name = "差劲", GroupName = "Articulation", Description = "这是一个严重标签", Background = Brushes.Green });
             });
 
-            services.AddFavorite(x =>
+            services.AddFavorite<ProjectFavoriteService>(x =>
             {
                 x.FavoriteItems.Add(new FavoriteItem() { Path = "默认" });
                 x.FavoriteItems.Add(new FavoriteItem() { Path = "资源" });
@@ -65,6 +65,7 @@ namespace H.App.FileManager
             });
             services.AddSetting();
             services.AddAppService();
+            services.AddTorrent();
         }
 
         protected override void Configure(IApplicationBuilder app)

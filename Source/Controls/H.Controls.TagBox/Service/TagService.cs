@@ -57,8 +57,8 @@ namespace H.Controls.TagBox
         public virtual bool Load(out string message)
         {
             message = string.Empty;
-           var r=  this._options.Value.Load(out message);
-            this.OnCollectionChanged(); 
+            var r = this._options.Value.Load(out message);
+            this.OnCollectionChanged();
             return r;
         }
 
@@ -102,7 +102,6 @@ namespace H.Controls.TagBox
             var list = ToArray(name)?.ToList();
             return this.Collection.Where(x => list != null && list.Any(k => k == x.Name));
         }
-
 
         protected void OnCollectionChanged()
         {

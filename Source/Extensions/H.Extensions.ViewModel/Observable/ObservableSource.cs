@@ -285,7 +285,7 @@ namespace H.Extensions.ViewModel
             get { return _filter11; }
             set
             {
-                _filter11= value;
+                _filter11 = value;
                 RaisePropertyChanged();
                 this.RefreshPage();
             }
@@ -380,46 +380,45 @@ namespace H.Extensions.ViewModel
 
         public void RefreshPage(Action after = null)
         {
-            IEnumerable<T> where = this.Cache.Where(l => this.Fileter?.Invoke(l) != false).
-                Where(x => this.Filter1?.IsMatch(x) != false).
-                Where(x => this.Filter2?.IsMatch(x) != false).
-                Where(x => this.Filter3?.IsMatch(x) != false).
-                Where(x => this.Filter4?.IsMatch(x) != false).
-                Where(x => this.Filter5?.IsMatch(x) != false).
-                Where(x => this.Filter6?.IsMatch(x) != false).
-                Where(x => this.Filter7?.IsMatch(x) != false).
-                Where(x => this.Filter8?.IsMatch(x) != false).
-                Where(x => this.Filter9?.IsMatch(x) != false).
-                Where(x => this.Filter10?.IsMatch(x) != false).
-                Where(x => this.Filter11?.IsMatch(x) != false).
-                Where(x => this.Filter12?.IsMatch(x) != false).
-                Where(x => this.Filter13?.IsMatch(x) != false).
-                Where(x => this.Filter14?.IsMatch(x) != false).
-                Where(x => this.Filter15?.IsMatch(x) != false); 
-
-            if (this.Order1 != null)
-                where = this.Order1.Where(where).Cast<T>();
-            if (this.Order2 != null)
-                where = this.Order2.Where(where).Cast<T>();
-            if (this.Order3 != null)
-                where = this.Order3.Where(where).Cast<T>();
-
-            this.FilterSource = where.ToObservable();
-            this.Total = this.FilterSource.Count;
-            int min = (this.PageIndex - 1) * this.PageCount;
-            int max = min + this.PageCount;
-            this.MinValue = this.Total == 0 ? 0 : (min + 1);
-            this.MaxValue = max < this.Total ? max : this.Total;
-            this.TotalPage = this.Total % this.PageCount == 0 ? this.Total / this.PageCount : (this.Total / this.PageCount) + 1;
-
             Func<List<T>> func = () =>
             {
+                IEnumerable<T> where = this.Cache.Where(l => this.Fileter?.Invoke(l) != false).
+         Where(x => this.Filter1?.IsMatch(x) != false).
+         Where(x => this.Filter2?.IsMatch(x) != false).
+         Where(x => this.Filter3?.IsMatch(x) != false).
+         Where(x => this.Filter4?.IsMatch(x) != false).
+         Where(x => this.Filter5?.IsMatch(x) != false).
+         Where(x => this.Filter6?.IsMatch(x) != false).
+         Where(x => this.Filter7?.IsMatch(x) != false).
+         Where(x => this.Filter8?.IsMatch(x) != false).
+         Where(x => this.Filter9?.IsMatch(x) != false).
+         Where(x => this.Filter10?.IsMatch(x) != false).
+         Where(x => this.Filter11?.IsMatch(x) != false).
+         Where(x => this.Filter12?.IsMatch(x) != false).
+         Where(x => this.Filter13?.IsMatch(x) != false).
+         Where(x => this.Filter14?.IsMatch(x) != false).
+         Where(x => this.Filter15?.IsMatch(x) != false);
+
+                if (this.Order1 != null)
+                    where = this.Order1.Where(where).Cast<T>();
+                if (this.Order2 != null)
+                    where = this.Order2.Where(where).Cast<T>();
+                if (this.Order3 != null)
+                    where = this.Order3.Where(where).Cast<T>();
+
+                this.FilterSource = where.ToObservable();
+                this.Total = this.FilterSource.Count;
+                int min = (this.PageIndex - 1) * this.PageCount;
+                int max = min + this.PageCount;
+                this.MinValue = this.Total == 0 ? 0 : (min + 1);
+                this.MaxValue = max < this.Total ? max : this.Total;
+                this.TotalPage = this.Total % this.PageCount == 0 ? this.Total / this.PageCount : (this.Total / this.PageCount) + 1;
                 return where.Skip(this.MinValue - 1).Take(this.PageCount).ToList();
             };
             //this.Source = collection.ToObservable();
             this.DelayInvoke(this.Source, func, () =>
             {
-          
+
                 if (after == null)
                     this.SelectedItem = func.Invoke().FirstOrDefault();
                 else

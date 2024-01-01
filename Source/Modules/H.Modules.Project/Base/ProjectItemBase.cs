@@ -27,7 +27,8 @@ namespace H.Modules.Project
         private string _path;
         [ReadOnly(true)]
         [Required]
-        [Display(Name = "文件路径", Order = 4)]
+        [Browsable(false)]
+        [Display(Name = "工程文件路径", Order = 4)]
         public string Path
         {
             get { return _path; }
