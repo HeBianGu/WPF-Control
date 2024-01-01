@@ -3,7 +3,6 @@ using H.Providers.Mvvm;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Xml.Linq;
 
 namespace H.App.FileManager
 {

@@ -1,5 +1,6 @@
 ﻿using H.Extensions.Setting;
 using H.Providers.Ioc;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Windows.Media;
 
@@ -40,6 +41,19 @@ namespace H.App.FileManager
             set
             {
                 _stretch = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        private bool _useProject = true;
+        [DefaultValue(true)]
+        [Display(Name = "启用工程管理")]
+        public bool UseProject
+        {
+            get { return _useProject; }
+            set
+            {
+                _useProject = value;
                 RaisePropertyChanged();
             }
         }

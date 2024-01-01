@@ -4,10 +4,8 @@
 
 using H.Controls.TagBox;
 using H.DataBases.Share;
-using H.Extensions.Setting;
 using H.Extensions.ViewModel;
 using H.Modules.Project;
-using H.Providers.Ioc;
 using H.Providers.Ioc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -97,7 +95,7 @@ namespace H.App.FileManager
             context?.Dispose();
             SettingDataManager.Instance.Remove(this.Setting);
             return true;
-        } 
+        }
 
         private FileProjectItemSetting _setting = new FileProjectItemSetting();
         [Browsable(false)]

@@ -110,13 +110,10 @@
                         <ControlTemplate>
                             <Grid Background="Transparent">
                                 <Grid.ContextMenu>
-                                    <ContextMenu ItemsSource="{Binding Collection.SelectedItem.Model, Converter={local:GetFileMenuItemConverter}}" StaysOpen="True">
+                                    <ContextMenu IsOpen="True"
+                                                 ItemsSource="{Binding Collection.SelectedItem.Model, Converter={local:GetFileMenuItemConverter}}"
+                                                 StaysOpen="True">
                                         <ItemsControl.ItemTemplate>
-                                            <!--<DataTemplate>
-                                                <MenuItem Command="{Binding Model}"
-                                                          Header="{Binding Model.Name}"
-                                                          ItemsSource="{Binding Nodes}" />
-                                            </DataTemplate>-->
                                             <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
                                                 <TextBlock VerticalAlignment="Center" Text="{Binding}" />
                                             </HierarchicalDataTemplate>
@@ -130,41 +127,6 @@
                                             </Style>
                                         </ContextMenu.ItemContainerStyle>
                                     </ContextMenu>
-                                    <!--<ContextMenu>
-                                        <MenuItem Header="彻底删除" />
-                                        <MenuItem Header="打开" />
-                                        <MenuItem Header="查看" />
-                                        <MenuItem Header="浏览" />
-                                        <MenuItem Header="打开文件夹" />
-                                        <MenuItem Header="复制" />
-                                        <MenuItem Header="另存为" />
-                                        <MenuItem Header="移出" />
-                                        <MenuItem Header="移出不存在的文件" />
-                                        <Separator />
-                                        <MenuItem Header="根据名称生成标签" />
-                                        <MenuItem Header="收藏" />
-                                        <MenuItem Header="备份" />
-                                        <MenuItem Header="设置标签">
-                                            <MenuItem Header="标签1" />
-                                            <MenuItem Header="标签2" />
-                                            <MenuItem Header="标签3" />
-                                            <MenuItem Header="标签4" />
-                                            <MenuItem Header="标签5" />
-                                        </MenuItem>
-                                        <MenuItem Header="设置评分">
-                                            <MenuItem Header="1" />
-                                            <MenuItem Header="1" />
-                                            <MenuItem Header="1" />
-                                            <MenuItem Header="1" />
-                                            <MenuItem Header="1" />
-                                            <MenuItem Header="1" />
-                                            <MenuItem Header="1" />
-                                        </MenuItem>
-                                        <Separator />
-                                        <MenuItem Header="加载缩率图" />
-                                        <MenuItem Header="加载预览图" />
-                                        <MenuItem Header="加载时长、清晰度、分辨率" />
-                                    </ContextMenu>-->
                                 </Grid.ContextMenu>
                                 <DataGrid x:Name="dg"
                                           ItemsSource="{Binding Collection.Source, IsAsync=True}"

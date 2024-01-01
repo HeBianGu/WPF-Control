@@ -33,6 +33,8 @@ namespace H.App.FileManager
             return null;
         }
 
+        private FileProjectItem FileProjectItem => IocProject.Instance.Current as FileProjectItem;
+
         public List<TreeNodeBase<ICommand>> GetFileCommands(fm_dd_file file)
         {
             List<TreeNodeBase<ICommand>> result = new List<TreeNodeBase<ICommand>>();
@@ -44,10 +46,12 @@ namespace H.App.FileManager
             })
             { Name = "喜欢" })
             { IsCheckable = true, IsChecked = file.Favorite };
-            result.Add(favorite);
+            if (FileProjectItem.Setting.UseFavorite)
+                result.Add(favorite);
 
             TreeNodeBase<ICommand> scoreNode = new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x => file.Score = 9) { Name = $"评分" });
-            result.Add(scoreNode);
+            if (FileProjectItem.Setting.UseScore)
+                result.Add(scoreNode);
 
             foreach (int item in Enumerable.Range(0, 11).Reverse())
             {
@@ -103,10 +107,10 @@ namespace H.App.FileManager
             ITagService tagService = Ioc.GetService<ITagService>();
             if (tagService != null)
             {
-
                 {
                     TreeNodeBase<ICommand> tagNode = new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x => { }) { Name = "对象" });
-                    result.Add(tagNode);
+                    if (FileProjectItem.Setting.UseObjectTag)
+                        result.Add(tagNode);
                     {
                         IEnumerable<ITag> tags = tagService.Collection.Where(x => x.GroupName == "Object");
                         foreach (ITag tag in tags)
@@ -134,7 +138,8 @@ namespace H.App.FileManager
 
                 {
                     TreeNodeBase<ICommand> tagNode = new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x => { }) { Name = "国家" });
-                    result.Add(tagNode);
+                    if (FileProjectItem.Setting.UseAreaTag)
+                        result.Add(tagNode);
                     {
                         IEnumerable<ITag> tags = tagService.Collection.Where(x => x.GroupName == "Area");
                         foreach (ITag tag in tags)
@@ -162,7 +167,8 @@ namespace H.App.FileManager
 
                 {
                     TreeNodeBase<ICommand> tagNode = new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x => { }) { Name = "清晰度" });
-                    result.Add(tagNode);
+                    if (FileProjectItem.Setting.UseArticulationTag)
+                        result.Add(tagNode);
                     {
                         IEnumerable<ITag> tags = tagService.Collection.Where(x => x.GroupName == "Articulation");
                         foreach (ITag tag in tags)
@@ -191,25 +197,5 @@ namespace H.App.FileManager
             return result;
         }
 
-    }
-
-    public class GetTickToMillisecond : MarkupValueConverterBase
-    {
-        public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            if (value is long l)
-                return TimeSpan.FromTicks(l).TotalMilliseconds;
-            return value;
-        }
-    }
-
-    public class GetTickToMillisecond : MarkupValueConverterBase
-    {
-        public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            if(value is long l)
-                return TimeSpan.FromTicks(l).TotalMilliseconds;
-            return value;
-        }
     }
 }
