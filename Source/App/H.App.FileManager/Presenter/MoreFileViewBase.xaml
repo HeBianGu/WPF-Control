@@ -1,0 +1,67 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.App.FileManager">
+
+    <DataTemplate DataType="{x:Type local:MoreFileViewBase}">
+        <h:GridSplitterBox MenuMaxWidth="300"
+                           MenuMinWidth="50"
+                           MenuWidth="100"
+                           Mode="Hidden"
+                           Style="{DynamicResource {x:Static h:GridSplitterBox.BottomKey}}">
+            <h:GridSplitterBox.MenuContent>
+                <ListBox Cattach.ItemHeight="Auto"
+                         ItemsSource="{Binding More}"
+                         ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                         ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                         SelectedItem="{Binding SelectedItem}"
+                         Visibility="{Binding ElementName=tb_list, Path=IsChecked, Converter={x:Static h:Converter.GetTrueToVisible}}">
+                    <b:Interaction.Triggers>
+                        <b:EventTrigger EventName="SelectionChanged">
+                            <b:InvokeCommandAction Command="{Binding SelectionChangedCommand}"
+                                                   CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=SelectedItem.Model}" />
+                        </b:EventTrigger>
+                        <b:EventTrigger EventName="MouseDoubleClick">
+                            <b:InvokeCommandAction Command="{Binding MouseDoubleClickCommand}"
+                                                   CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=SelectedItem.Model}" />
+                        </b:EventTrigger>
+                    </b:Interaction.Triggers>
+                    <ListBox.ItemContainerStyle>
+                        <Style BasedOn="{StaticResource {x:Static h:ListBoxItemKeys.Default}}"
+                               TargetType="ListBoxItem">
+                            <Setter Property="BorderThickness" Value="1" />
+                            <Setter Property="Margin" Value="1" />
+                            <Setter Property="Padding" Value="5" />
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <ContentPresenter Content="{Binding Model}" />
+                                <TextBlock HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           FontWeight="Bold"
+                                           Text="{Binding Description}" />
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ListBox>
+            </h:GridSplitterBox.MenuContent>
+            <DockPanel Background="Transparent">
+                <TextBlock Margin="5"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top"
+                           DockPanel.Dock="Top"
+                           Text="{Binding Model.Url}" />
+                <ContentPresenter Content="{Binding SelectedItem}" />
+            </DockPanel>
+        </h:GridSplitterBox>
+    </DataTemplate>
+</ResourceDictionary>

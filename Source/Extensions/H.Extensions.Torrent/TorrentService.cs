@@ -43,7 +43,12 @@ namespace H.Extensions.Torrent
                                     new Sha1Hash(torrent.GetInfoHashBytes()),
                                     files,
                                     pieces,
-                                    torrent.Trackers.Select(x => x.Select(y => new Uri(y))),
+                                    torrent.Trackers.Select(x => x.Select(y =>
+                                    {
+                                        if (Uri.TryCreate(y, UriKind.RelativeOrAbsolute, out Uri uri))
+                                            return uri;
+                                        return null;
+                                    }).OfType<Uri>()),
                                     new byte[0]);
             }
 

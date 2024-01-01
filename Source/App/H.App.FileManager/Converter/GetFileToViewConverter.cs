@@ -11,7 +11,7 @@ namespace H.App.FileManager
         {
             if (value is fm_dd_file file)
             {
-                return Ioc.GetService<IFileToViewService>().ToView(file);
+                return Ioc.GetService<IFileToMoreViewService>().ToView(file);
             }
             return null;
 

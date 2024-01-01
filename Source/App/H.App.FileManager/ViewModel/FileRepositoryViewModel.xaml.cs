@@ -317,7 +317,7 @@ namespace H.App.FileManager
             {
                 this.History.Add(file);
                 var view = Ioc.GetService<IFileToViewService>().ToView(file);
-                await IocMessage.Dialog.Show(view);
+                await IocMessage.Dialog.Show(view,x => x.DialogButton = DialogButton.None);
             }
         });
     }

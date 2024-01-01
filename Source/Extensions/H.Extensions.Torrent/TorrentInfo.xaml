@@ -11,20 +11,21 @@
     </DataTemplate>
     <DataTemplate DataType="{x:Type local:TorrentInfo}">
         <DockPanel>
-            <TextBlock Margin="10,6"
-                       DockPanel.Dock="Top"
-                       FontWeight="Bold">
-                <Run Text="{Binding Name, Mode=OneWay}" />
-                <Run Text="【" /><Run Text="{Binding TotalSize, Mode=OneWay, Converter={h:GetByteToSizeDisplayConverter}}" /><Run Text="】" />
-            </TextBlock>
-            <GroupBox DockPanel.Dock="Top"
-                      Header="文件">
+            <Expander DockPanel.Dock="Top">
+                <Expander.Header>
+                    <TextBlock Margin="10,6"
+                               DockPanel.Dock="Top"
+                               FontWeight="Bold">
+                        <Run Text="{Binding Name, Mode=OneWay}" />
+                        <Run Text="【" /><Run Text="{Binding TotalSize, Mode=OneWay, Converter={h:GetByteToSizeDisplayConverter}}" /><Run Text="】" />
+                    </TextBlock>
+                </Expander.Header>
                 <ListBox BorderThickness="0"
                          DockPanel.Dock="Top"
                          ItemsSource="{Binding Files, Mode=OneWay}" />
-            </GroupBox>
+            </Expander>
 
-            <GroupBox Header="地址">
+            <Expander Header="资源地址">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <ItemsControl ItemsSource="{Binding Trackers, Mode=OneWay}">
                         <ItemsControl.ItemTemplate>
@@ -34,7 +35,7 @@
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
                 </ScrollViewer>
-            </GroupBox>
+            </Expander>
         </DockPanel>
     </DataTemplate>
 </ResourceDictionary>

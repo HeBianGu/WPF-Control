@@ -10,12 +10,12 @@
                         BorderThickness="1">
                     <Grid Margin="5">
                         <Image Width="100"
-                               Source="{Binding Url, Converter={x:Static h:Converter.GetFileImageSourceInMemory}, ConverterParameter=200, IsAsync=True}" />
+                               Source="{Binding Url, Converter={x:Static h:Converter.GetFileImageSourceInMemory}, ConverterParameter=100, IsAsync=True}" />
                         <Image Width="30"
                                Height="30"
                                HorizontalAlignment="Right"
                                VerticalAlignment="Bottom"
-                               Source="{Binding Url, Converter={h:GetFilePathToSystemInfoIconConverter}, IsAsync=True, ConverterParameter=200}" />
+                               Source="{Binding Url, Converter={h:GetFilePathToSystemInfoIconConverter}, IsAsync=True, ConverterParameter=100}" />
                     </Grid>
                 </Border>
                 <ItemsControl MinWidth="50"
@@ -80,30 +80,9 @@
         </Grid>
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type local:ImageView}">
-        <DockPanel>
-            <TextBlock Margin="5"
-                       DockPanel.Dock="Top"
-                       Text="{Binding Url}" />
-            <ItemsControl DockPanel.Dock="Left">
-                <Button Content="{x:Static h:Geometrys.Info}"
-                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
-                <Button Content="{x:Static h:Geometrys.Info}"
-                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
-                <Button Content="{x:Static h:Geometrys.Info}"
-                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
-                <Button Content="{x:Static h:Geometrys.Info}"
-                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
-                <Button Content="{x:Static h:Geometrys.Info}"
-                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
-                <Button Content="{x:Static h:Geometrys.Info}"
-                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
-                <Button Content="{x:Static h:Geometrys.Info}"
-                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
-                <Button Content="{x:Static h:Geometrys.Info}"
-                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
-            </ItemsControl>
 
+    <DataTemplate DataType="{x:Type local:ImageView}">
+        <Grid>
             <h:Zoombox x:Name="zoomview"
                        Background="Transparent"
                        DragModifiers=""
@@ -121,24 +100,56 @@
                     <h:ZoomboxView>10 10 100 100</h:ZoomboxView>
                     <h:ZoomboxView>2.0</h:ZoomboxView>-->
                 </h:Zoombox.ViewStack>
+                <b:Interaction.Triggers>
+                    <h:MouseTrigger ClickCount="2"
+                                    Mode="Right"
+                                    MouseButton="Left"
+                                    UseHandle="False">
+                        <!--<b:InvokeCommandAction Command="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.File.NextCommand}" />-->
+                        <h:CallMethodActionEx MethodName="FitToBounds"
+                                              TargetObject="{Binding ElementName=zoomview}" />
+                    </h:MouseTrigger>
+                    <h:MouseTrigger ClickCount="2"
+                                    Mode="Left"
+                                    MouseButton="Left"
+                                    UseHandle="False">
+                        <!--<b:InvokeCommandAction Command="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.File.PreviousCommand}" />-->
+                        <h:CallMethodActionEx MethodName="FitToBounds"
+                                              TargetObject="{Binding ElementName=zoomview}" />
+                    </h:MouseTrigger>
+                </b:Interaction.Triggers>
                 <Image Source="{Binding Model.Url}">
                     <b:Interaction.Triggers>
-                        <h:MouseTrigger ClickCount="2"
-                                        Mode="Right"
-                                        MouseButton="Left"
-                                        UseHandle="False">
-                            <b:InvokeCommandAction Command="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.File.NextCommand}" />
-                        </h:MouseTrigger>
-                        <h:MouseTrigger ClickCount="2"
-                                        Mode="Left"
-                                        MouseButton="Left"
-                                        UseHandle="False">
-                            <b:InvokeCommandAction Command="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.File.PreviousCommand}" />
-                        </h:MouseTrigger>
+                        <b:EventTrigger EventName="SourceUpdated">
+                            <h:CallMethodActionEx MethodName="FitToBounds"
+                                                  TargetObject="{Binding ElementName=zoomview}" />
+                        </b:EventTrigger>
                     </b:Interaction.Triggers>
                 </Image>
             </h:Zoombox>
-        </DockPanel>
-    </DataTemplate>
+            <DockPanel HorizontalAlignment="Right"
+                       VerticalAlignment="Top"
+                       DockPanel.Dock="Top"
+                       LastChildFill="False">
+                <Button Command="{x:Static h:Zoombox.Fit}"
+                        CommandTarget="{Binding ElementName=zoomview}"
+                        Content="适配"
+                        DockPanel.Dock="Right" />
 
+                <Button Command="{x:Static h:Zoombox.Fill}"
+                        CommandTarget="{Binding ElementName=zoomview}"
+                        Content="填充"
+                        DockPanel.Dock="Right" />
+
+                <Button Command="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.File.PreviousCommand}"
+                        Content="上一个"
+                        DockPanel.Dock="Right" />
+
+                <Button Command="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.File.NextCommand}"
+                        Content="下一个"
+                        DockPanel.Dock="Right" />
+
+            </DockPanel>
+        </Grid>
+    </DataTemplate>
 </ResourceDictionary>

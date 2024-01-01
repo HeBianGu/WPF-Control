@@ -101,8 +101,7 @@
                 BorderThickness="1">
             <DockPanel Margin="2">
                 <Grid>
-                    <Image Width="100"
-                           Source="{Binding Url, Converter={x:Static h:Converter.GetFileImageSourceInMemory}, ConverterParameter=200, IsAsync=True}" />
+                    <Image Source="{Binding Url, Converter={x:Static h:Converter.GetFileImageSourceInMemory}, ConverterParameter=200, IsAsync=True}" />
                     <TextBlock HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                FontSize="15"
@@ -120,156 +119,17 @@
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type local:VideoView}">
-        <DockPanel>
-            <GroupBox DockPanel.Dock="Bottom"
-                      Header="更多推荐"
-                      Visibility="{Binding ElementName=tb_more, Path=IsChecked, Converter={x:Static h:Converter.GetTrueToVisible}}">
-                <ListBox Cattach.ItemHeight="100"
-                         ItemsSource="{Binding More}"
-                         ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                         ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                         SelectedItem="{Binding SelectedItem}"
-                         Visibility="{Binding ElementName=tb_list, Path=IsChecked, Converter={x:Static h:Converter.GetTrueToVisible}}">
-                    <b:Interaction.Triggers>
-                        <b:EventTrigger EventName="SelectionChanged">
-                            <b:InvokeCommandAction Command="{Binding SelectionChangedCommand}"
-                                                   CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=SelectedItem.Model}" />
-                        </b:EventTrigger>
-                        <b:EventTrigger EventName="MouseDoubleClick">
-                            <b:InvokeCommandAction Command="{Binding MouseDoubleClickCommand}"
-                                                   CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=SelectedItem.Model}" />
-                        </b:EventTrigger>
-                    </b:Interaction.Triggers>
-                    <ListBox.ItemContainerStyle>
-                        <Style BasedOn="{StaticResource {x:Static h:ListBoxItemKeys.Default}}"
-                               TargetType="ListBoxItem">
-                            <Setter Property="BorderThickness" Value="1" />
-                            <Setter Property="Margin" Value="1" />
-                            <Setter Property="Padding" Value="5" />
-                        </Style>
-                    </ListBox.ItemContainerStyle>
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <VirtualizingStackPanel Orientation="Horizontal" />
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <ContentPresenter Content="{Binding Model}" />
-                                <TextBlock HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"
-                                           FontSize="20"
-                                           FontWeight="Bold"
-                                           Text="{Binding Descption}" />
-                            </Grid>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ListBox>
-            </GroupBox>
-            <Grid DockPanel.Dock="Bottom">
-                <DockPanel HorizontalAlignment="Stretch"
-                           DockPanel.Dock="Bottom">
-                    <Button VerticalAlignment="Center"
-                            Background="Transparent"
-                            Command="{x:Static h:VlcPlayerCommands.PreviousFrame}"
-                            CommandTarget="{Binding ElementName=vlc}"
-                            Content="上一帧"
-                            DockPanel.Dock="Left"
-                            ToolTip="上一帧" />
-                    <Button VerticalAlignment="Center"
-                            Background="Transparent"
-                            Command="{x:Static h:VlcPlayerCommands.SpeedDown}"
-                            CommandTarget="{Binding ElementName=vlc}"
-                            Content="减速"
-                            DockPanel.Dock="Left"
-                            ToolTip="减速" />
-                    <TextBlock Margin="3,0"
-                               VerticalAlignment="Center"
-                               DockPanel.Dock="Left"
-                               Text="{Binding ElementName=media_slider, Path=Value, Converter={x:Static h:Converter.GetTimeSpanStrFromMilliseconds}}" />
-                    <Button VerticalAlignment="Center"
-                            Background="Transparent"
-                            Command="{x:Static h:VlcPlayerCommands.Stop}"
-                            CommandTarget="{Binding ElementName=vlc}"
-                            Content="停止"
-                            DockPanel.Dock="Right"
-                            ToolTip="停止" />
-                    <Button VerticalAlignment="Center"
-                            Background="Transparent"
-                            Command="{x:Static h:VlcPlayerCommands.NextFrame}"
-                            CommandTarget="{Binding ElementName=vlc}"
-                            Content="下一帧"
-                            DockPanel.Dock="Right"
-                            ToolTip="下一帧" />
-                    <Button VerticalAlignment="Center"
-                            Background="Transparent"
-                            Command="{x:Static h:VlcPlayerCommands.SpeedUp}"
-                            CommandTarget="{Binding ElementName=vlc}"
-                            Content="加速"
-                            DockPanel.Dock="Right"
-                            ToolTip="加速" />
-                    <TextBlock Margin="3,0"
-                               VerticalAlignment="Center"
-                               DockPanel.Dock="Right"
-                               Text="{Binding ElementName=media_slider, Path=Maximum, Converter={x:Static h:Converter.GetTimeSpanStrFromMilliseconds}}" />
-                    <Slider x:Name="media_slider"
-                            VerticalAlignment="Center"
-                            IsMoveToPointEnabled="True"
-                            IsSnapToTickEnabled="True"
-                            Maximum="{Binding ElementName=vlc, Path=Maxinum}"
-                            Minimum="0"
-                            Value="{Binding ElementName=vlc, Path=Time}" />
-                </DockPanel>
-            </Grid>
-            <TextBlock Margin="5"
-                       DockPanel.Dock="Top"
-                       Text="{Binding Model.Url}" />
-            <DockPanel DockPanel.Dock="Top"
-                       LastChildFill="False">
-                <Button Command="{x:Static h:VlcPlayerCommands.ShootCut}"
-                        CommandTarget="{Binding ElementName=vlc}"
-                        Content="截图" />
-                <Button Command="{x:Static h:VlcPlayerCommands.FullScreen}"
-                        CommandTarget="{Binding ElementName=vlc}"
-                        Content="全屏" />
-                <Button Content="加速" />
-                <Button Content="减速" />
-                <Button Content="上一帧" />
-                <Button Content="下一帧" />
-                <Button Content="停止" />
-                <ToggleButton x:Name="tb_list"
-                              Content="预览图"
-                              DockPanel.Dock="Right"
-                              IsChecked="True" />
-                <ToggleButton x:Name="tb_more"
-                              Content="更多推荐"
-                              DockPanel.Dock="Right"
-                              IsChecked="True" />
-                <Button Content="{x:Static h:Geometrys.Info}"
-                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
-                <Button Content="{x:Static h:Geometrys.Info}"
-                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
-                <Button Content="{x:Static h:Geometrys.Info}"
-                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
-                <Button Content="{x:Static h:Geometrys.Info}"
-                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
-                <Button Content="{x:Static h:Geometrys.Info}"
-                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
-                <Button Content="{x:Static h:Geometrys.Info}"
-                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
-                <Button Content="{x:Static h:Geometrys.Info}"
-                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
-            </DockPanel>
-            <GroupBox DockPanel.Dock="Right"
-                      Header="预览图"
-                      Visibility="{Binding ElementName=tb_list, Path=IsChecked, Converter={x:Static h:Converter.GetTrueToVisible}}">
-                <ListBox x:Name="lb"
-                         Width="120"
-                         Cattach.ItemHeight="100"
+        <h:GridSplitterBox GridSpliteWidth="5"
+                           MenuMaxWidth="500"
+                           MenuMinWidth="50"
+                           MenuWidth="100"
+                           Mode="Hidden"
+                           Style="{DynamicResource {x:Static h:GridSplitterBox.RightKey}}">
+            <h:GridSplitterBox.MenuContent>
+                <ListBox Cattach.ItemHeight="Auto"
                          DockPanel.Dock="Top"
-                         ItemsSource="{Binding SelectedItem.Model.Images}"
-                         SelectedIndex="{Binding SelectedItem.Model.SelectedImageIndex, IsAsync=True}">
+                         ItemsSource="{Binding Model.Images}"
+                         SelectedIndex="{Binding Model.SelectedImageIndex, IsAsync=True}">
                     <ListBox.ItemContainerStyle>
                         <Style BasedOn="{StaticResource {x:Static h:ListBoxItemKeys.Default}}"
                                TargetType="ListBoxItem">
@@ -306,39 +166,125 @@
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ListBox>
-            </GroupBox>
-            <h:Zoombox x:Name="zoomview"
-                       Background="Transparent"
-                       DragModifiers="Ctrl"
-                       DragOnPreview="True"
-                       Focusable="True"
-                       IsTabStop="True"
-                       NavigateOnPreview="True"
-                       RelativeZoomModifiers=""
-                       ViewStackIndex="0"
-                       ZoomOn="Content">
-                <h:Zoombox.ViewStack>
-                    <!--<h:ZoomboxView>Empty</h:ZoomboxView>-->
-                    <h:ZoomboxView>Fit</h:ZoomboxView>
-                    <!--<h:ZoomboxView>Fill</h:ZoomboxView>
+            </h:GridSplitterBox.MenuContent>
+            <Grid Background="Transparent">
+                <DockPanel>
+                    <Grid DockPanel.Dock="Bottom">
+                        <DockPanel HorizontalAlignment="Stretch"
+                                   DockPanel.Dock="Bottom">
+                            <Button VerticalAlignment="Center"
+                                    Background="Transparent"
+                                    Command="{x:Static h:VlcPlayerCommands.PreviousFrame}"
+                                    CommandTarget="{Binding ElementName=vlc}"
+                                    Content="上一帧"
+                                    DockPanel.Dock="Left"
+                                    ToolTip="上一帧" />
+                            <Button VerticalAlignment="Center"
+                                    Background="Transparent"
+                                    Command="{x:Static h:VlcPlayerCommands.SpeedDown}"
+                                    CommandTarget="{Binding ElementName=vlc}"
+                                    Content="减速"
+                                    DockPanel.Dock="Left"
+                                    ToolTip="减速" />
+                            <TextBlock Margin="3,0"
+                                       VerticalAlignment="Center"
+                                       DockPanel.Dock="Left"
+                                       Text="{Binding ElementName=media_slider, Path=Value, Converter={x:Static h:Converter.GetTimeSpanStrFromMilliseconds}}" />
+                            <Button VerticalAlignment="Center"
+                                    Background="Transparent"
+                                    Command="{x:Static h:VlcPlayerCommands.Stop}"
+                                    CommandTarget="{Binding ElementName=vlc}"
+                                    Content="停止"
+                                    DockPanel.Dock="Right"
+                                    ToolTip="停止" />
+                            <Button VerticalAlignment="Center"
+                                    Background="Transparent"
+                                    Command="{x:Static h:VlcPlayerCommands.NextFrame}"
+                                    CommandTarget="{Binding ElementName=vlc}"
+                                    Content="下一帧"
+                                    DockPanel.Dock="Right"
+                                    ToolTip="下一帧" />
+                            <Button VerticalAlignment="Center"
+                                    Background="Transparent"
+                                    Command="{x:Static h:VlcPlayerCommands.SpeedUp}"
+                                    CommandTarget="{Binding ElementName=vlc}"
+                                    Content="加速"
+                                    DockPanel.Dock="Right"
+                                    ToolTip="加速" />
+                            <TextBlock Margin="3,0"
+                                       VerticalAlignment="Center"
+                                       DockPanel.Dock="Right"
+                                       Text="{Binding ElementName=media_slider, Path=Maximum, Converter={x:Static h:Converter.GetTimeSpanStrFromMilliseconds}}" />
+                            <Slider x:Name="media_slider"
+                                    VerticalAlignment="Center"
+                                    IsMoveToPointEnabled="True"
+                                    IsSnapToTickEnabled="True"
+                                    Maximum="{Binding ElementName=vlc, Path=Maxinum}"
+                                    Minimum="0"
+                                    Value="{Binding ElementName=vlc, Path=Time}" />
+                        </DockPanel>
+                    </Grid>
+                    <TextBlock Margin="5"
+                               DockPanel.Dock="Top"
+                               Text="{Binding Model.Url}" />
+                    <DockPanel DockPanel.Dock="Top"
+                               LastChildFill="False">
+                        <Button Command="{x:Static h:VlcPlayerCommands.ShootCut}"
+                                CommandTarget="{Binding ElementName=vlc}"
+                                Content="截图" />
+                        <Button Command="{x:Static h:VlcPlayerCommands.FullScreen}"
+                                CommandTarget="{Binding ElementName=vlc}"
+                                Content="全屏" />
+                        <Button Content="加速" />
+                        <Button Content="减速" />
+                        <Button Content="上一帧" />
+                        <Button Content="下一帧" />
+                        <Button Content="停止" />
+                        
+                        <Button Command="{x:Static h:Zoombox.Fit}"
+                                CommandTarget="{Binding ElementName=zoomview}"
+                                Content="适配"
+                                DockPanel.Dock="Right" />
+
+                        <Button Command="{x:Static h:Zoombox.Fill}"
+                                CommandTarget="{Binding ElementName=zoomview}"
+                                Content="填充"
+                                DockPanel.Dock="Right" />
+                    </DockPanel>
+
+                    <h:Zoombox x:Name="zoomview"
+                               Background="Transparent"
+                               DragModifiers="Ctrl"
+                               DragOnPreview="True"
+                               Focusable="True"
+                               IsTabStop="True"
+                               NavigateOnPreview="True"
+                               RelativeZoomModifiers=""
+                               ViewStackIndex="0"
+                               ZoomOn="Content">
+                        <h:Zoombox.ViewStack>
+                            <!--<h:ZoomboxView>Empty</h:ZoomboxView>-->
+                            <h:ZoomboxView>Fit</h:ZoomboxView>
+                            <!--<h:ZoomboxView>Fill</h:ZoomboxView>
                     <h:ZoomboxView>Center</h:ZoomboxView>
                     <h:ZoomboxView>10 10 100 100</h:ZoomboxView>
                     <h:ZoomboxView>2.0</h:ZoomboxView>-->
-                </h:Zoombox.ViewStack>
-                <h:VlcPlayer x:Name="vlc"
-                             VerticalAlignment="Center"
-                             Cattach.BottomTemplate="{x:Null}"
-                             UseAutoPlayOnVedioSource="False"
-                             VedioSource="{Binding SelectedItem.Model.Url}">
-                    <b:Interaction.Triggers>
-                        <b:EventTrigger EventName="ShootCut">
-                            <b:InvokeCommandAction Command="{Binding ShootCutCommand}"
-                                                   PassEventArgsToCommand="True" />
-                        </b:EventTrigger>
-                    </b:Interaction.Triggers>
-                </h:VlcPlayer>
-            </h:Zoombox>
-            <!--<Image Source="{Binding ElementName=lb, Path=SelectedItem.Url}" />-->
-        </DockPanel>
+                        </h:Zoombox.ViewStack>
+                        <h:VlcPlayer x:Name="vlc"
+                                     VerticalAlignment="Center"
+                                     Cattach.BottomTemplate="{x:Null}"
+                                     UseAutoPlayOnVedioSource="False"
+                                     VedioSource="{Binding Model.Url}">
+                            <b:Interaction.Triggers>
+                                <b:EventTrigger EventName="ShootCut">
+                                    <b:InvokeCommandAction Command="{Binding ShootCutCommand}"
+                                                           PassEventArgsToCommand="True" />
+                                </b:EventTrigger>
+                            </b:Interaction.Triggers>
+                        </h:VlcPlayer>
+                    </h:Zoombox>
+                </DockPanel>
+            </Grid>
+        </h:GridSplitterBox>
     </DataTemplate>
 </ResourceDictionary>

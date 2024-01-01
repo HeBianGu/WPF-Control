@@ -20,6 +20,7 @@ namespace H.App.FileManager
         {
             services.TryAdd(ServiceDescriptor.Singleton<IFileToEntityService, FileToEntityService>());
             services.TryAdd(ServiceDescriptor.Singleton<IFileToViewService, FileToViewService>());
+            services.TryAdd(ServiceDescriptor.Singleton<IFileToMoreViewService, FileToMoreViewService>());
             return services;
         }
     }

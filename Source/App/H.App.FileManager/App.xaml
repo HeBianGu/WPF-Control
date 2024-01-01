@@ -14,6 +14,10 @@
                 <ResourceDictionary Source="pack://application:,,,/H.App.FileManager;component/Presenter/FileView.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/H.App.FileManager;component/Presenter/ImageView.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/H.App.FileManager;component/Presenter/VideoView.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/H.App.FileManager;component/Presenter/TorrentView.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/H.App.FileManager;component/Presenter/MoreFileViewBase.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/H.App.FileManager;component/Presenter/MoreImageView.xaml" />
+
                 <ResourceDictionary Source="pack://application:,,,/H.App.FileManager;component/Project/FileProjectItem.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/H.App.FileManager;component/ViewModel/FileRepositoryViewModel.xaml" />
             </ResourceDictionary.MergedDictionaries>

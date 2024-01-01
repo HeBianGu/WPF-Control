@@ -2,6 +2,6 @@
 {
     public interface IFileToViewService
     {
-        object ToView(fm_dd_file file);
+        IFileView ToView(fm_dd_file file, string desc = null);
     }
 }

@@ -6,7 +6,7 @@ using System.IO;
 
 namespace H.App.FileManager
 {
-    public class FileView : ModelViewModel<fm_dd_file>, IFileView
+    public class FileView : FileView<fm_dd_file>
     {
         private FileInfo _file;
         public FileView(fm_dd_file t) : base(t)
@@ -56,6 +56,5 @@ namespace H.App.FileManager
 
         [Display(Name = "UnixFileMode")]
         public UnixFileMode UnixFileMode => this._file.UnixFileMode;
-
     }
 }
