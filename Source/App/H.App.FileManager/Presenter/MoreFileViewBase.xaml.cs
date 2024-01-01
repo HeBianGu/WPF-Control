@@ -50,7 +50,7 @@ namespace H.App.FileManager
             }
         });
 
-        public RelayCommand MouseDoubleClickCommand => new RelayCommand(async (s, e) =>
+        public virtual RelayCommand MouseDoubleClickCommand => new RelayCommand(async (s, e) =>
         {
             if (e is fm_dd_file file)
             {
@@ -107,5 +107,38 @@ namespace H.App.FileManager
 
             return mores;
         }
+
+
+        public RelayCommand NextCommand => new RelayCommand(l =>
+        {
+            if (this.SelectedItem == null)
+            {
+                this.SelectedItem = this.More.FirstOrDefault();
+                return;
+            }
+
+            int index = this.More.IndexOf(this.SelectedItem);
+            if (index >= this.More.Count - 1)
+                this.SelectedItem = this.More.FirstOrDefault();
+            else
+                this.SelectedItem = this.More[index + 1];
+
+        }, x => this.More.Count > 0);
+
+
+        public RelayCommand PreviousCommand => new RelayCommand(l =>
+        {
+            if (this.SelectedItem == null)
+            {
+                this.SelectedItem = this.More.LastOrDefault();
+                return;
+            }
+
+            int index = this.More.IndexOf(this.SelectedItem);
+            if (index <= 0)
+                this.SelectedItem = this.More.LastOrDefault();
+            else
+                this.SelectedItem = this.More[index - 1];
+        }, x => this.More.Count > 0);
     }
 }

@@ -224,9 +224,9 @@
                                     Value="{Binding ElementName=vlc, Path=Time}" />
                         </DockPanel>
                     </Grid>
-                    <TextBlock Margin="5"
+                    <!--<TextBlock Margin="5"
                                DockPanel.Dock="Top"
-                               Text="{Binding Model.Url}" />
+                               Text="{Binding Model.Url}" />-->
                     <DockPanel DockPanel.Dock="Top"
                                LastChildFill="False">
                         <Button Command="{x:Static h:VlcPlayerCommands.ShootCut}"
@@ -240,7 +240,7 @@
                         <Button Content="上一帧" />
                         <Button Content="下一帧" />
                         <Button Content="停止" />
-                        
+
                         <Button Command="{x:Static h:Zoombox.Fit}"
                                 CommandTarget="{Binding ElementName=zoomview}"
                                 Content="适配"
@@ -270,6 +270,22 @@
                     <h:ZoomboxView>10 10 100 100</h:ZoomboxView>
                     <h:ZoomboxView>2.0</h:ZoomboxView>-->
                         </h:Zoombox.ViewStack>
+                        <b:Interaction.Triggers>
+                            <h:MouseTrigger ClickCount="2"
+                                            Mode="Right"
+                                            MouseButton="Left"
+                                            UseHandle="False">
+                                <h:CallMethodActionEx MethodName="FitToBounds"
+                                                      TargetObject="{Binding ElementName=zoomview}" />
+                            </h:MouseTrigger>
+                            <h:MouseTrigger ClickCount="2"
+                                            Mode="Left"
+                                            MouseButton="Left"
+                                            UseHandle="False">
+                                <h:CallMethodActionEx MethodName="FitToBounds"
+                                                      TargetObject="{Binding ElementName=zoomview}" />
+                            </h:MouseTrigger>
+                        </b:Interaction.Triggers>
                         <h:VlcPlayer x:Name="vlc"
                                      VerticalAlignment="Center"
                                      Cattach.BottomTemplate="{x:Null}"

@@ -1,5 +1,7 @@
 ﻿
 using H.Controls.TagBox;
+using H.Providers.Ioc;
+using H.Providers.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -116,5 +118,15 @@ namespace H.App.FileManager
 
             return mores;
         }
+
+
+        public override RelayCommand MouseDoubleClickCommand => new RelayCommand(async (s, e) =>
+        {
+            if (e is fm_dd_file file)
+            {
+                //var view = Ioc.GetService<IFileToViewService>().ToView(file);
+                await IocMessage.Dialog.Show(this, x => x.DialogButton = DialogButton.None);
+            }
+        });
     }
 }

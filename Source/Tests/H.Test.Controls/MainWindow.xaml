@@ -314,6 +314,8 @@
             <TabItem Header="Button">
                 <UniformGrid>
                     <Button Content="Button" />
+                    <Button Content="Button"
+                            IsEnabled="False" />
                     <Button Padding="10"
                             Content="F1M12,12L4,12 4,4 12,4z M3,13L13,13 13,3 3,3z"
                             Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
@@ -518,8 +520,8 @@
                             <Path Width="50"
                                   Height="50"
                                   Data="{Binding}"
-                                  Stretch="Fill"
-                                  Fill="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
+                                  Fill="{DynamicResource {x:Static h:BrushKeys.Foreground}}"
+                                  Stretch="Fill" />
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                     <ItemsControl.ItemsPanel>

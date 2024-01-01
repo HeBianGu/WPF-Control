@@ -60,7 +60,33 @@
                            VerticalAlignment="Top"
                            DockPanel.Dock="Top"
                            Text="{Binding Model.Url}" />
-                <ContentPresenter Content="{Binding SelectedItem}" />
+                <Grid Background="Transparent"
+                      Focusable="True">
+                    <Grid.InputBindings>
+                        <KeyBinding Key="Right"
+                                    Command="{Binding NextCommand}" />
+                        <KeyBinding Key="Backspace"
+                                    Command="{Binding NextCommand}" />
+                        <KeyBinding Key="Return"
+                                    Command="{Binding NextCommand}" />
+                        <KeyBinding Key="Down"
+                                    Command="{Binding NextCommand}" />
+                        <KeyBinding Key="Left"
+                                    Command="{Binding PreviousCommand}" />
+                        <KeyBinding Key="Up"
+                                    Command="{Binding PreviousCommand}" />
+                    </Grid.InputBindings>
+                    <ContentPresenter Content="{Binding SelectedItem}" />
+                    <Button HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Command="{Binding PreviousCommand}"
+                            Content="上一个" />
+
+                    <Button HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Command="{Binding NextCommand}"
+                            Content="下一个" />
+                </Grid>
             </DockPanel>
         </h:GridSplitterBox>
     </DataTemplate>
