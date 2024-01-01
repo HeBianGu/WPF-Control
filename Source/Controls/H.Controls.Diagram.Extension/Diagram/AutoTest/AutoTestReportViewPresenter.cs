@@ -10,7 +10,7 @@ using System.Xml.Serialization;
 
 namespace H.Controls.Diagram.Extension
 {
-    public class AutoTestReportViewPresenter : NotifyPropertyChangedBase
+    public class AutoTestReportViewPresenter : ViewModelBase
     {
         private int _days = 30;
         public int Days

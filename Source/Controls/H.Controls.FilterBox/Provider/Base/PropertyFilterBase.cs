@@ -15,7 +15,7 @@ using System.Xml.Serialization;
 
 namespace H.Controls.FilterBox
 {
-    public abstract class PropertyFilterBase<T> : NotifyPropertyChanged, IPropertyFilter
+    public abstract class PropertyFilterBase<T> : ViewModel, IPropertyFilter
     {
         public PropertyFilterBase()
         {
@@ -183,6 +183,6 @@ namespace H.Controls.FilterBox
 
         public abstract bool IsMatch(object obj);
 
-        public abstract IFilter Copy();
+        public abstract IFilterable Copy();
     }
 }

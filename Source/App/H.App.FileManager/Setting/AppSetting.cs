@@ -6,7 +6,7 @@ using System.Windows.Media;
 namespace H.App.FileManager
 {
     [Display(Name = "系统配置", GroupName = SettingGroupNames.GroupApp)]
-    public class AppSetting : Setting<AppSetting>
+    public class AppSetting : Settable<AppSetting>
     {
         private DisplayMode _displayMode;
         [Display(Name = "布局方式")]

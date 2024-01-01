@@ -14,10 +14,4 @@ namespace H.Providers.Ioc
         IEnumerable<IProjectItem> Where(Func<IProjectItem, bool> func = null);
         Action<IProjectItem, IProjectItem> CurrentChanged { get; set; }
     }
-
-    //public interface IProjectLoadService : ISplashLoad
-    //{
-
-    //}
-
 }

@@ -7,7 +7,7 @@ using H.Providers.Mvvm;
 
 namespace H.Modules.Project
 {
-    public class ProjectListViewPresenter : NotifyPropertyChangedBase
+    public class ProjectListViewPresenter : ViewModelBase
     {
         private IProjectItem _selectedItem;
         public IProjectItem SelectedItem

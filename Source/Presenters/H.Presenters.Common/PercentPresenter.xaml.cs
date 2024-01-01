@@ -4,7 +4,7 @@ using H.Providers.Mvvm;
 
 namespace H.Presenters.Common
 {
-    public class PercentPresenter : DisplayerViewModelBase, IPercentPresenter
+    public class PercentPresenter : DisplayViewModelBase, IPercentPresenter
     {
         private int _value;
         public int Value

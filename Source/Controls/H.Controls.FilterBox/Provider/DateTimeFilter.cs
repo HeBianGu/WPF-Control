@@ -30,7 +30,7 @@ namespace H.Controls.FilterBox
             }
         }
 
-        public override IFilter Copy()
+        public override IFilterable Copy()
         {
             return new DateTimeFilter(this.PropertyInfo) { Operate = this.Operate, Value = this.Value };
         }

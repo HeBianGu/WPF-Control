@@ -3,7 +3,7 @@ using H.Providers.Ioc;
 
 namespace H.Controls.FavoriteBox
 {
-    public interface IFavoriteService : IDataSourceService<IFavoriteItem>, ISplashLoad, ISplashSave
+    public interface IFavoriteService : IDataSource<IFavoriteItem>, ISplashLoad, ISplashSave
     {
         IFavoriteItem Create();
     }

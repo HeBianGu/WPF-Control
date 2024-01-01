@@ -8,9 +8,7 @@ using System.Reflection;
 
 namespace H.Providers.Mvvm
 {
-
-
-    public partial class ModelViewModel<T> : NotifyPropertyChanged, IModelViewModel<T>, ISearchable
+    public partial class ModelViewModel<T> : ViewModelBase, IModelViewModel<T>, ISearchable
     {
         public ModelViewModel(T t)
         {

@@ -13,7 +13,7 @@ using System.Windows.Markup;
 namespace H.Modules.License
 {
     [Display(Name = "许可设置", GroupName = SettingGroupNames.GroupAuthority, Description = "应用此功能设置许可验证方式")]
-    internal class LicenseService : Setting<LicenseService>, ILicenseService
+    internal class LicenseService : Settable<LicenseService>, ILicenseService
     {
         //public LicenseService()
         //{

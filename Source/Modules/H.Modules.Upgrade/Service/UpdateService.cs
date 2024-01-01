@@ -2,7 +2,6 @@
 
 
 using H.Providers.Ioc;
-
 using Microsoft.Extensions.Options;
 using System;
 using System.Linq;

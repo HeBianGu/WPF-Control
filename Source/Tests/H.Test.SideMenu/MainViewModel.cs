@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace H.Test.SideMenu
 {
-    public class MainViewModel : NotifyPropertyChanged
+    public class MainViewModel : ViewModel
     {
         public MainViewModel()
         {

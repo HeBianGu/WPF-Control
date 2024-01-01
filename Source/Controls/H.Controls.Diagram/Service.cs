@@ -14,7 +14,7 @@ namespace H.Controls.Diagram
 
     }
 
-    //[Displayer(Name = "参数设置", GroupName = SystemSetting.GroupStyle)]
+    //[Display(Name = "参数设置", GroupName = SystemSetting.GroupStyle)]
     //public class Setting : LazySettingInstance<Setting>
     //{
 

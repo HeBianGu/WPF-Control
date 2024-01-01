@@ -8,7 +8,7 @@ namespace H.Modules.Setting
 {
     /// <summary> 提醒 </summary>
     [Display(Name = "提醒", GroupName = SettingGroupNames.GroupMessage)]
-    public class NotifySetting : Setting<NotifySetting>
+    public class NotifySetting : Settable<NotifySetting>
     {
     }
 }

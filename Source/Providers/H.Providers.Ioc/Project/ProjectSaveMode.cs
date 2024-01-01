@@ -4,6 +4,7 @@ namespace H.Providers.Ioc
 {
     public enum ProjectSaveMode
     {
-        OnAppExit = 0, OnProjectChanged
+        OnAppExit = 0, 
+        OnProjectChanged
     }
 }

@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 
 namespace H.Controls.FilterBox
 {
-    public class PropertyConfidtion : NotifyPropertyChanged, IConditionable, IPropertyConfidtion
+    public class PropertyConfidtion : ViewModel, IConditionable, IPropertyConfidtion
     {
         public PropertyConfidtion()
         {

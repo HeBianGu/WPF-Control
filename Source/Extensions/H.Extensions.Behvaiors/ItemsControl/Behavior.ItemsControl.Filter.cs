@@ -37,25 +37,25 @@ namespace H.Extensions.Behvaiors
             RefreshData();
         }
 
-        public IFilter Filter
+        public IFilterable Filter
         {
-            get { return (IFilter)GetValue(FilterProperty); }
+            get { return (IFilterable)GetValue(FilterProperty); }
             set { SetValue(FilterProperty, value); }
         }
 
         public static readonly DependencyProperty FilterProperty =
-            DependencyProperty.Register("Filter", typeof(IFilter), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IFilter), (d, e) =>
+            DependencyProperty.Register("Filter", typeof(IFilterable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IFilterable), (d, e) =>
             {
                 ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
 
                 if (control == null) return;
 
-                if (e.OldValue is IFilter o)
+                if (e.OldValue is IFilterable o)
                 {
 
                 }
 
-                if (e.NewValue is IFilter n)
+                if (e.NewValue is IFilterable n)
                 {
 
                 }
@@ -63,26 +63,26 @@ namespace H.Extensions.Behvaiors
             }));
 
 
-        public IFilter Filter1
+        public IFilterable Filter1
         {
-            get { return (IFilter)GetValue(Filter1Property); }
+            get { return (IFilterable)GetValue(Filter1Property); }
             set { SetValue(Filter1Property, value); }
         }
 
         
         public static readonly DependencyProperty Filter1Property =
-            DependencyProperty.Register("Filter1", typeof(IFilter), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IFilter), (d, e) =>
+            DependencyProperty.Register("Filter1", typeof(IFilterable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IFilterable), (d, e) =>
             {
                 ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
 
                 if (control == null) return;
 
-                if (e.OldValue is IFilter o)
+                if (e.OldValue is IFilterable o)
                 {
 
                 }
 
-                if (e.NewValue is IFilter n)
+                if (e.NewValue is IFilterable n)
                 {
 
                 }
@@ -90,26 +90,26 @@ namespace H.Extensions.Behvaiors
             }));
 
 
-        public IFilter Filter2
+        public IFilterable Filter2
         {
-            get { return (IFilter)GetValue(Filter2Property); }
+            get { return (IFilterable)GetValue(Filter2Property); }
             set { SetValue(Filter2Property, value); }
         }
 
         
         public static readonly DependencyProperty Filter2Property =
-            DependencyProperty.Register("Filter2", typeof(IFilter), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IFilter), (d, e) =>
+            DependencyProperty.Register("Filter2", typeof(IFilterable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IFilterable), (d, e) =>
             {
                 ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
 
                 if (control == null) return;
 
-                if (e.OldValue is IFilter o)
+                if (e.OldValue is IFilterable o)
                 {
 
                 }
 
-                if (e.NewValue is IFilter n)
+                if (e.NewValue is IFilterable n)
                 {
 
                 }
@@ -117,26 +117,26 @@ namespace H.Extensions.Behvaiors
             }));
 
 
-        public IFilter Filter3
+        public IFilterable Filter3
         {
-            get { return (IFilter)GetValue(Filter3Property); }
+            get { return (IFilterable)GetValue(Filter3Property); }
             set { SetValue(Filter3Property, value); }
         }
 
         
         public static readonly DependencyProperty Filter3Property =
-            DependencyProperty.Register("Filter3", typeof(IFilter), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IFilter), (d, e) =>
+            DependencyProperty.Register("Filter3", typeof(IFilterable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IFilterable), (d, e) =>
             {
                 ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
 
                 if (control == null) return;
 
-                if (e.OldValue is IFilter o)
+                if (e.OldValue is IFilterable o)
                 {
 
                 }
 
-                if (e.NewValue is IFilter n)
+                if (e.NewValue is IFilterable n)
                 {
 
                 }
@@ -158,12 +158,12 @@ namespace H.Extensions.Behvaiors
 
                 if (control == null) return;
 
-                if (e.OldValue is IFilter o)
+                if (e.OldValue is IFilterable o)
                 {
 
                 }
 
-                if (e.NewValue is IFilter n)
+                if (e.NewValue is IFilterable n)
                 {
 
                 }
@@ -171,26 +171,26 @@ namespace H.Extensions.Behvaiors
             }));
 
 
-        public IFilter Filter5
+        public IFilterable Filter5
         {
-            get { return (IFilter)GetValue(Filter5Property); }
+            get { return (IFilterable)GetValue(Filter5Property); }
             set { SetValue(Filter5Property, value); }
         }
 
         
         public static readonly DependencyProperty Filter5Property =
-            DependencyProperty.Register("Filter5", typeof(IFilter), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IFilter), (d, e) =>
+            DependencyProperty.Register("Filter5", typeof(IFilterable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IFilterable), (d, e) =>
             {
                 ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
 
                 if (control == null) return;
 
-                if (e.OldValue is IFilter o)
+                if (e.OldValue is IFilterable o)
                 {
 
                 }
 
-                if (e.NewValue is IFilter n)
+                if (e.NewValue is IFilterable n)
                 {
 
                 }
@@ -198,26 +198,26 @@ namespace H.Extensions.Behvaiors
             }));
 
 
-        public IFilter Filter6
+        public IFilterable Filter6
         {
-            get { return (IFilter)GetValue(Filter6Property); }
+            get { return (IFilterable)GetValue(Filter6Property); }
             set { SetValue(Filter6Property, value); }
         }
 
         
         public static readonly DependencyProperty Filter6Property =
-            DependencyProperty.Register("Filter6", typeof(IFilter), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IFilter), (d, e) =>
+            DependencyProperty.Register("Filter6", typeof(IFilterable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IFilterable), (d, e) =>
             {
                 ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
 
                 if (control == null) return;
 
-                if (e.OldValue is IFilter o)
+                if (e.OldValue is IFilterable o)
                 {
 
                 }
 
-                if (e.NewValue is IFilter n)
+                if (e.NewValue is IFilterable n)
                 {
 
                 }
@@ -225,26 +225,26 @@ namespace H.Extensions.Behvaiors
             }));
 
 
-        public IFilter Filter7
+        public IFilterable Filter7
         {
-            get { return (IFilter)GetValue(Filter7Property); }
+            get { return (IFilterable)GetValue(Filter7Property); }
             set { SetValue(Filter7Property, value); }
         }
 
         
         public static readonly DependencyProperty Filter7Property =
-            DependencyProperty.Register("Filter7", typeof(IFilter), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IFilter), (d, e) =>
+            DependencyProperty.Register("Filter7", typeof(IFilterable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IFilterable), (d, e) =>
             {
                 ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
 
                 if (control == null) return;
 
-                if (e.OldValue is IFilter o)
+                if (e.OldValue is IFilterable o)
                 {
 
                 }
 
-                if (e.NewValue is IFilter n)
+                if (e.NewValue is IFilterable n)
                 {
 
                 }
@@ -252,26 +252,26 @@ namespace H.Extensions.Behvaiors
             }));
 
 
-        public IFilter Filter8
+        public IFilterable Filter8
         {
-            get { return (IFilter)GetValue(Filter8Property); }
+            get { return (IFilterable)GetValue(Filter8Property); }
             set { SetValue(Filter8Property, value); }
         }
 
         
         public static readonly DependencyProperty Filter8Property =
-            DependencyProperty.Register("Filter8", typeof(IFilter), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IFilter), (d, e) =>
+            DependencyProperty.Register("Filter8", typeof(IFilterable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IFilterable), (d, e) =>
             {
                 ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
 
                 if (control == null) return;
 
-                if (e.OldValue is IFilter o)
+                if (e.OldValue is IFilterable o)
                 {
 
                 }
 
-                if (e.NewValue is IFilter n)
+                if (e.NewValue is IFilterable n)
                 {
 
                 }
@@ -279,26 +279,26 @@ namespace H.Extensions.Behvaiors
             }));
 
 
-        public IFilter Filter9
+        public IFilterable Filter9
         {
-            get { return (IFilter)GetValue(Filter9Property); }
+            get { return (IFilterable)GetValue(Filter9Property); }
             set { SetValue(Filter9Property, value); }
         }
 
         
         public static readonly DependencyProperty Filter9Property =
-            DependencyProperty.Register("Filter9", typeof(IFilter), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IFilter), (d, e) =>
+            DependencyProperty.Register("Filter9", typeof(IFilterable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IFilterable), (d, e) =>
             {
                 ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
 
                 if (control == null) return;
 
-                if (e.OldValue is IFilter o)
+                if (e.OldValue is IFilterable o)
                 {
 
                 }
 
-                if (e.NewValue is IFilter n)
+                if (e.NewValue is IFilterable n)
                 {
 
                 }
@@ -307,26 +307,26 @@ namespace H.Extensions.Behvaiors
 
 
 
-        public IOrder Order
+        public IOrderable Order
         {
-            get { return (IOrder)GetValue(OrderProperty); }
+            get { return (IOrderable)GetValue(OrderProperty); }
             set { SetValue(OrderProperty, value); }
         }
 
         
         public static readonly DependencyProperty OrderProperty =
-            DependencyProperty.Register("Order", typeof(IOrder), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrder), (d, e) =>
+            DependencyProperty.Register("Order", typeof(IOrderable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrderable), (d, e) =>
             {
                 ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
 
                 if (control == null) return;
 
-                if (e.OldValue is IOrder o)
+                if (e.OldValue is IOrderable o)
                 {
 
                 }
 
-                if (e.NewValue is IOrder n)
+                if (e.NewValue is IOrderable n)
                 {
 
                 }
@@ -334,26 +334,26 @@ namespace H.Extensions.Behvaiors
             }));
 
 
-        public IOrder Order2
+        public IOrderable Order2
         {
-            get { return (IOrder)GetValue(Order2Property); }
+            get { return (IOrderable)GetValue(Order2Property); }
             set { SetValue(Order2Property, value); }
         }
 
         
         public static readonly DependencyProperty Order2Property =
-            DependencyProperty.Register("Order2", typeof(IOrder), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrder), (d, e) =>
+            DependencyProperty.Register("Order2", typeof(IOrderable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrderable), (d, e) =>
             {
                 ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
 
                 if (control == null) return;
 
-                if (e.OldValue is IOrder o)
+                if (e.OldValue is IOrderable o)
                 {
 
                 }
 
-                if (e.NewValue is IOrder n)
+                if (e.NewValue is IOrderable n)
                 {
 
                 }
@@ -361,26 +361,26 @@ namespace H.Extensions.Behvaiors
             }));
 
 
-        public IOrder Order1
+        public IOrderable Order1
         {
-            get { return (IOrder)GetValue(Order1Property); }
+            get { return (IOrderable)GetValue(Order1Property); }
             set { SetValue(Order1Property, value); }
         }
 
         
         public static readonly DependencyProperty Order1Property =
-            DependencyProperty.Register("Order1", typeof(IOrder), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrder), (d, e) =>
+            DependencyProperty.Register("Order1", typeof(IOrderable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrderable), (d, e) =>
             {
                 ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
 
                 if (control == null) return;
 
-                if (e.OldValue is IOrder o)
+                if (e.OldValue is IOrderable o)
                 {
 
                 }
 
-                if (e.NewValue is IOrder n)
+                if (e.NewValue is IOrderable n)
                 {
 
                 }
@@ -388,26 +388,26 @@ namespace H.Extensions.Behvaiors
             }));
 
 
-        public IOrder Order3
+        public IOrderable Order3
         {
-            get { return (IOrder)GetValue(Order3Property); }
+            get { return (IOrderable)GetValue(Order3Property); }
             set { SetValue(Order3Property, value); }
         }
 
         
         public static readonly DependencyProperty Order3Property =
-            DependencyProperty.Register("Order3", typeof(IOrder), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrder), (d, e) =>
+            DependencyProperty.Register("Order3", typeof(IOrderable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrderable), (d, e) =>
             {
                 ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
 
                 if (control == null) return;
 
-                if (e.OldValue is IOrder o)
+                if (e.OldValue is IOrderable o)
                 {
 
                 }
 
-                if (e.NewValue is IOrder n)
+                if (e.NewValue is IOrderable n)
                 {
 
                 }
@@ -415,26 +415,26 @@ namespace H.Extensions.Behvaiors
             }));
 
 
-        public IOrder Order4
+        public IOrderable Order4
         {
-            get { return (IOrder)GetValue(Order4Property); }
+            get { return (IOrderable)GetValue(Order4Property); }
             set { SetValue(Order4Property, value); }
         }
 
         
         public static readonly DependencyProperty Order4Property =
-            DependencyProperty.Register("Order4", typeof(IOrder), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrder), (d, e) =>
+            DependencyProperty.Register("Order4", typeof(IOrderable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrderable), (d, e) =>
             {
                 ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
 
                 if (control == null) return;
 
-                if (e.OldValue is IOrder o)
+                if (e.OldValue is IOrderable o)
                 {
 
                 }
 
-                if (e.NewValue is IOrder n)
+                if (e.NewValue is IOrderable n)
                 {
 
                 }
@@ -442,26 +442,26 @@ namespace H.Extensions.Behvaiors
             }));
 
 
-        public IOrder Order5
+        public IOrderable Order5
         {
-            get { return (IOrder)GetValue(Order5Property); }
+            get { return (IOrderable)GetValue(Order5Property); }
             set { SetValue(Order5Property, value); }
         }
 
         
         public static readonly DependencyProperty Order5Property =
-            DependencyProperty.Register("Order5", typeof(IOrder), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrder), (d, e) =>
+            DependencyProperty.Register("Order5", typeof(IOrderable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrderable), (d, e) =>
             {
                 ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
 
                 if (control == null) return;
 
-                if (e.OldValue is IOrder o)
+                if (e.OldValue is IOrderable o)
                 {
 
                 }
 
-                if (e.NewValue is IOrder n)
+                if (e.NewValue is IOrderable n)
                 {
 
                 }
@@ -470,7 +470,7 @@ namespace H.Extensions.Behvaiors
 
 
 
-        private IEnumerable<IFilter> GetFilters()
+        private IEnumerable<IFilterable> GetFilters()
         {
             yield return Filter;
             yield return Filter1;
@@ -483,7 +483,7 @@ namespace H.Extensions.Behvaiors
             yield return Filter8;
             yield return Filter9;
         }
-        private IEnumerable<IOrder> GetOrders()
+        private IEnumerable<IOrderable> GetOrders()
         {
             yield return Order;
             yield return Order1;
@@ -499,11 +499,11 @@ namespace H.Extensions.Behvaiors
                 return;
             if (AssociatedObject == null)
                 return;
-            IEnumerable<IFilter> filters = GetFilters().Where(x => x != null);
+            IEnumerable<IFilterable> filters = GetFilters().Where(x => x != null);
             IEnumerable source = filters.Count() == 0 ? ItemsSource
                 : ItemsSource.OfType<object>().Where(x => filters.All(l => l.IsMatch(x)));
-            List<IOrder> orders = GetOrders().ToList();
-            foreach (IOrder item in orders)
+            List<IOrderable> orders = GetOrders().ToList();
+            foreach (IOrderable item in orders)
             {
                 if (item == null)
                     continue;

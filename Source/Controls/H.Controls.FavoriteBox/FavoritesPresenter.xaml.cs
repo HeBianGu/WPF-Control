@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 
 namespace H.Controls.FavoriteBox
 {
-    public class FavoritesPresenter : NotifyPropertyChangedBase
+    public class FavoritesPresenter : ViewModelBase
     {
         private ObservableCollection<IFavoriteItem> _collection = new ObservableCollection<IFavoriteItem>();
         /// <summary> 说明  </summary>

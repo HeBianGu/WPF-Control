@@ -7,7 +7,7 @@ using System.Windows.Media;
 
 namespace H.Presenters.Design
 {
-    [Displayer(Name = "标题", Icon = "\xe71f")]
+    [Display(Name = "标题")]
     public class TitlePresenter : TextBlockPresenter
     {
         public TitlePresenter()

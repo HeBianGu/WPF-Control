@@ -1,9 +1,10 @@
 ﻿using H.Presenters.Design;
 using H.Providers.Mvvm;
+using System.ComponentModel.DataAnnotations;
 
 namespace H.Presenters.Design
 {
-    [Displayer(Name = "GridArea", Icon = "\xe921")]
+    [Display(Name = "GridArea")]
     public class GridAreaPresenter : PanelPresenterBase
     {
 

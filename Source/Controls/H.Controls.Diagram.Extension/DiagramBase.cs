@@ -1,4 +1,5 @@
 ﻿
+using H.Extensions.ValueConverter;
 using H.Providers.Ioc;
 using H.Providers.Mvvm;
 using System;
@@ -16,7 +17,7 @@ using System.Xml.Serialization;
 
 namespace H.Controls.Diagram.Extension
 {
-    public abstract class DiagramBase : DisplayerViewModelBase, IDiagram
+    public abstract class DiagramBase : DisplayViewModelBase, IDiagram
     {
         public DiagramBase()
         {
@@ -156,11 +157,14 @@ namespace H.Controls.Diagram.Extension
             foreach (Type item in types)
             {
                 NodeData data = Activator.CreateInstance(item) as NodeData;
-                DisplayerAttribute type = item.GetCustomAttribute<DisplayerAttribute>();
+                DisplayAttribute type = item.GetCustomAttribute<DisplayAttribute>();
                 data.Name = type?.Name;
                 data.GroupName = type?.GroupName;
                 data.Description = type?.Description;
-                data.Order = type?.Order ?? 0;
+                //data.Order = type?.Order ?? 0;
+                int? od = type.GetOrder();
+                if (od.HasValue)
+                    Order = od.Value;
                 datas.Add(data);
             }
             IEnumerable<IGrouping<string, NodeData>> groups = datas.OrderBy(x => x.Order).GroupBy(x => x.GroupName);
@@ -532,14 +536,14 @@ namespace H.Controls.Diagram.Extension
         {
             foreach (Node node in this.Nodes)
             {
-                IEnumerable<IDisplayer> displayers = node.GetParts().Select(x => x.Content).OfType<IDisplayer>();
+                IEnumerable<IDefaultable> displayers = node.GetParts().Select(x => x.Content).OfType<IDefaultable>();
 
-                foreach (IDisplayer item in displayers)
+                foreach (IDefaultable item in displayers)
                 {
                     item.LoadDefault();
                 }
 
-                if (node.Content is IDisplayer displayer)
+                if (node.Content is IDefaultable displayer)
                 {
                     displayer.LoadDefault();
                 }

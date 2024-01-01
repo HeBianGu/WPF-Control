@@ -4,7 +4,7 @@ using H.Providers.Mvvm;
 
 namespace H.Controls.Diagram.Extension
 {
-    public class DiagramTheme : NotifyPropertyChangedBase
+    public class DiagramTheme : ViewModelBase
     {
         private TextNodeData _note = new TextNodeData();
         public TextNodeData Note

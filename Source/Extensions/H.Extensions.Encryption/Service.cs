@@ -1,8 +1,4 @@
-﻿
-
-
-
-using H.Providers.Ioc;
+﻿using H.Providers.Ioc;
 
 namespace H.Extensions.Encryption
 {

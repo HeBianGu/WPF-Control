@@ -1,8 +1,8 @@
 ﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-using System.Threading;
 using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
+using System.Threading;
 
 namespace H.Providers.Ioc
 {
@@ -10,17 +10,17 @@ namespace H.Providers.Ioc
     {
         public override async void Execute(object parameter)
         {
-            var saves = System.Ioc.Services.GetServices<ISplashSave>();
+            System.Collections.Generic.IEnumerable<ISplashSave> saves = System.Ioc.Services.GetServices<ISplashSave>();
             if (saves.Count() > 0)
             {
-                var r = await IocMessage.Dialog.ShowString((f, x) =>
+                bool r = await IocMessage.Dialog.ShowString((f, x) =>
                 {
-                    foreach (var save in saves)
+                    foreach (ISplashSave save in saves)
                     {
                         if (f.IsCancel)
                             return false;
                         x.Value = "正在保存" + save.Name;
-                        var r = save.Save(out string message);
+                        bool r = save.Save(out string message);
                         if (r == false)
                         {
                             x.Value = message;

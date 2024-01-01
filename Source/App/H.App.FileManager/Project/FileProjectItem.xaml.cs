@@ -8,6 +8,7 @@ using H.Extensions.Setting;
 using H.Extensions.ViewModel;
 using H.Modules.Project;
 using H.Providers.Ioc;
+using H.Providers.Ioc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -99,6 +100,7 @@ namespace H.App.FileManager
         } 
 
         private FileProjectItemSetting _setting = new FileProjectItemSetting();
+        [Browsable(false)]
         public FileProjectItemSetting Setting
         {
             get { return _setting; }
@@ -108,6 +110,5 @@ namespace H.App.FileManager
                 RaisePropertyChanged();
             }
         }
-
     }
 }

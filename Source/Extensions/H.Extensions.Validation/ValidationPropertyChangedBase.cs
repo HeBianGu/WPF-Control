@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace H.Extensions.Validation
 {
-    public abstract class ValidationPropertyChangedBase : NotifyPropertyChangedBase, IDataErrorInfo
+    public abstract class ValidationPropertyChangedBase : ViewModelBase, IDataErrorInfo
     {
         [Browsable(false)]
         public string Error { get; private set; }

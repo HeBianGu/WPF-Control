@@ -8,7 +8,7 @@ namespace H.Providers.Ioc
         {
             if (parameter is IProjectItem project)
             {
-                var r = await IocMessage.Dialog.Show("确定要删除？");
+                bool? r = await IocMessage.Dialog.Show("确定要删除？");
                 if (r != true) return;
                 IocProject.Instance.Delete(x => x == project);
                 IocProject.Instance.Save(out string message);

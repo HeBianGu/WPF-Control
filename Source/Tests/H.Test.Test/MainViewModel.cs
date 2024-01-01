@@ -12,7 +12,7 @@ namespace H.Test.Test
 {
 
     /// <summary> 说明</summary>
-    public class MainViewModel : NotifyPropertyChanged
+    public class MainViewModel : ViewModel
     {
         private Students _students = Student.Randoms(100);
         /// <summary> 说明  </summary>
@@ -27,9 +27,9 @@ namespace H.Test.Test
         }
 
 
-        private IFilter  _filter;
+        private IFilterable  _filter;
         /// <summary> 说明  </summary>
-        public IFilter Filter
+        public IFilterable Filter
         {
             get { return _filter; }
             set

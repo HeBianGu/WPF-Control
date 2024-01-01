@@ -8,7 +8,7 @@ using System.Collections.ObjectModel;
 
 namespace H.Extensions.Revertible
 {
-    public class RevertibleService : NotifyPropertyChangedBase, IRevertibleService
+    public class RevertibleService : ViewModelBase, IRevertibleService
     {
         private readonly IOptions<RevertibleOptions> _options;
         public RevertibleService(IOptions<RevertibleOptions> options)

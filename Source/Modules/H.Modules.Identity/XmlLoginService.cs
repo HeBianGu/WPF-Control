@@ -19,7 +19,7 @@ namespace H.Modules.Identity
 
         public XmlLoginService()
         {
-            _datas = XmlSerialize.Instance.Load<List<IdentityData>>(this.Path);
+            _datas = IocSerializer.Instance.Load<List<IdentityData>>(this.Path);
         }
 
         public IUser User { get; private set; }
@@ -79,7 +79,7 @@ namespace H.Modules.Identity
 
         public XmlRegisterService()
         {
-            _datas = XmlSerialize.Instance.Load<List<IdentityData>>(this.Path);
+            _datas = IocSerializer.Instance.Load<List<IdentityData>>(this.Path);
         }
 
         private Random random = new Random();
@@ -111,7 +111,7 @@ namespace H.Modules.Identity
             IdentityData data = new IdentityData() { UserName = phone, Password = password };
 
             this._datas.Add(data);
-            XmlSerialize.Instance.Save(this.Path, this._datas);
+            IocSerializer.Instance.Save(this.Path, this._datas);
 
             Thread.Sleep(1000);
             message = "注册成功，请重新登录";

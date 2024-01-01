@@ -17,7 +17,7 @@ using System.Xml.Serialization;
 namespace H.Controls.OrderBox
 {
     [Display(Name = "设置规则")]
-    public class PropertyOrderPrensenter : DisplayerViewModelBase, IOrder, IMetaSetting
+    public class PropertyOrderPrensenter : DisplayViewModelBase, IOrderable, IMetaSetting
     {
         public PropertyOrderPrensenter()
         {

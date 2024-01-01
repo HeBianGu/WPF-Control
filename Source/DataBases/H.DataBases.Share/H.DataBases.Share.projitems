@@ -12,7 +12,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)DbConnectServiceBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DbDisconnectService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IDbSetting.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DbSettingBase.cs" />
+    <Compile Include="..\H.DataBases.Share\DbSettableBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extention.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Provider\DbContextRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Provider\RepositoryBase.cs" />

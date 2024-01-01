@@ -9,7 +9,7 @@ namespace H.Providers.Ioc
         public Type Type { get; set; }
         public override void Execute(object parameter)
         {
-            var p = System.Ioc.Services.GetService(this.Type);
+            object p = System.Ioc.Services.GetService(this.Type);
             IocMessage.Dialog.Show(p, x =>
             {
                 x.DialogButton = DialogButton.Sumit;

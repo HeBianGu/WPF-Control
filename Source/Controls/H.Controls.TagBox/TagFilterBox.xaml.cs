@@ -145,26 +145,26 @@ namespace H.Controls.TagBox
                 control.RefreshData();
             }));
 
-        public IFilter Filter
+        public IFilterable Filter
         {
-            get { return (IFilter)GetValue(FilterProperty); }
+            get { return (IFilterable)GetValue(FilterProperty); }
             set { SetValue(FilterProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty FilterProperty =
-            DependencyProperty.Register("Filter", typeof(IFilter), typeof(TagFilterBox), new FrameworkPropertyMetadata(default(IFilter), (d, e) =>
+            DependencyProperty.Register("Filter", typeof(IFilterable), typeof(TagFilterBox), new FrameworkPropertyMetadata(default(IFilterable), (d, e) =>
             {
                 TagFilterBox control = d as TagFilterBox;
 
                 if (control == null) return;
 
-                if (e.OldValue is IFilter o)
+                if (e.OldValue is IFilterable o)
                 {
 
                 }
 
-                if (e.NewValue is IFilter n)
+                if (e.NewValue is IFilterable n)
                 {
 
                 }
@@ -214,7 +214,7 @@ namespace H.Controls.TagBox
 
     }
 
-    public class TagFilter : IFilter
+    public class TagFilter : IFilterable
     {
         TagFilterBox _tagBox;
         public TagFilter(TagFilterBox tagBox)

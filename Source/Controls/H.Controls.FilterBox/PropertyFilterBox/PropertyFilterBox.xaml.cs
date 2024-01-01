@@ -111,25 +111,25 @@ namespace H.Controls.FilterBox
                 }
             }));
 
-        public IFilter Filter
+        public IFilterable Filter
         {
-            get { return (IFilter)GetValue(FilterProperty); }
+            get { return (IFilterable)GetValue(FilterProperty); }
             private set { SetValue(FilterProperty, value); }
         }
 
         public static readonly DependencyProperty FilterProperty =
-            DependencyProperty.Register("Filter", typeof(IFilter), typeof(PropertyFilterBox), new FrameworkPropertyMetadata(default(IFilter), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, (d, e) =>
+            DependencyProperty.Register("Filter", typeof(IFilterable), typeof(PropertyFilterBox), new FrameworkPropertyMetadata(default(IFilterable), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, (d, e) =>
             {
                 PropertyFilterBox control = d as PropertyFilterBox;
 
                 if (control == null) return;
 
-                if (e.OldValue is IFilter o)
+                if (e.OldValue is IFilterable o)
                 {
 
                 }
 
-                if (e.NewValue is IFilter n)
+                if (e.NewValue is IFilterable n)
                 {
 
                 }

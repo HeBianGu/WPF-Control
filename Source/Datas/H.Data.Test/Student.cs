@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace H.Data.Test
 {
-    public class Student :NotifyPropertyChangedBase,ICloneable
+    public class Student :ViewModelBase,ICloneable
     {
         [Display(Name = "姓名", GroupName = "基础信息")]
         [Required()]

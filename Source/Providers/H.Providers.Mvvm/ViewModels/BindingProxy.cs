@@ -6,14 +6,10 @@ namespace H.Providers.Mvvm
 {
     public class BindingProxy : Freezable
     {
-        #region Overrides of Freezable
-
         protected override Freezable CreateInstanceCore()
         {
             return new BindingProxy();
         }
-
-        #endregion
 
         public object Data
         {

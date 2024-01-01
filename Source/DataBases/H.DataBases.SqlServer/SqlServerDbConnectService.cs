@@ -11,9 +11,9 @@ namespace H.DataBases.SqlServer
 {
     public class SqlServerDbConnectService<TDbContext> : DbConnectServiceBase<TDbContext> where TDbContext : DbContext
     {
-        protected override IDbSetting GetSetting()
+        protected override IDbSettable GetSetting()
         {
-            return SqlServerSetting.Instance;
+            return SqlServerSettable.Instance;
         }
 
     }

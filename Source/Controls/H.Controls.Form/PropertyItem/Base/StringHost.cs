@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace H.Controls.Form
 {
-    public class StringHost : NotifyPropertyChanged, IDataErrorInfo
+    public class StringHost : ViewModel, IDataErrorInfo
     {
         public StringHost(string value, Type type)
         {

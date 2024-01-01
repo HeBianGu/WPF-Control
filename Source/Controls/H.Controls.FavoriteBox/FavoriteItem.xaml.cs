@@ -7,7 +7,7 @@ using System.Windows.Media;
 
 namespace H.Controls.FavoriteBox
 {
-    public class FavoriteItem : NotifyPropertyChangedBase, IFavoriteItem
+    public class FavoriteItem : ViewModelBase, IFavoriteItem
     {
         private string _name;
         [Required]

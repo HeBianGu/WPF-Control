@@ -6,7 +6,7 @@ using System.Windows.Media;
 
 namespace H.Presenters.Design
 {
-    [Displayer(Name = "图片", Icon = "\xe606")]
+    [Display(Name = "图片")]  
     public class ImagePresenter : CommandsDesignPresenterBase
     {
         public ImagePresenter()

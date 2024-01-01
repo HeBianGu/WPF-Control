@@ -1,10 +1,11 @@
 ﻿using H.Providers.Ioc;
 using H.Providers.Mvvm;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace H.Presenters.Design
 {
-    [Displayer(Name = "当前用户", Icon = "\xe84b")]
+    [Display(Name = "当前用户")]
     public class UserPresenter : TitlePresenter
     {
         public UserPresenter()

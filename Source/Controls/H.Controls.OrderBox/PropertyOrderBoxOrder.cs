@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace H.Controls.OrderBox
 {
-    public class PropertyOrderBoxOrder : IOrder
+    public class PropertyOrderBoxOrder : IOrderable
     {
         private PropertyOrderBox _propertyOrder;
         public PropertyOrderBoxOrder(PropertyOrderBox propertyOrder)

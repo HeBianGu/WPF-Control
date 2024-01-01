@@ -16,7 +16,7 @@ namespace H.Controls.FilterBox
 {
 
     [Display(Name = "设置条件")]
-    public class PropertyConfidtionPrensenter : DisplayerViewModelBase, IConditionable, IMetaSetting
+    public class PropertyConfidtionPrensenter : DisplayViewModelBase, IConditionable, IMetaSetting
     {
         public PropertyConfidtionPrensenter()
         {

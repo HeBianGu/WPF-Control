@@ -7,8 +7,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace H.Modules.Identity
 {
-    [Displayer(Name = "权限设置", GroupName = SettingGroupNames.GroupSystem)]
-    public class AuthoritySetting : Setting<AuthoritySetting>
+    [Display(Name = "权限设置", GroupName = SettingGroupNames.GroupSystem)]
+    public class AuthoritySetting : Settable<AuthoritySetting>
     {
         private bool _useAuthority = true;
         [Display(Name = "启用权限控制")]

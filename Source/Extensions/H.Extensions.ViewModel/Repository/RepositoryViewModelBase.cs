@@ -2,6 +2,7 @@
 
 
 using H.Providers.Ioc;
+using H.Providers.Ioc;
 using H.Providers.Mvvm;
 using Microsoft.Win32;
 using System;
@@ -21,7 +22,7 @@ using System.Xml.Serialization;
 
 namespace H.Extensions.ViewModel
 {
-    public class RepositoryViewModelBase : NotifyPropertyChanged
+    public class RepositoryViewModelBase : Providers.Mvvm.ViewModel
     {
         public RepositoryViewModelBase()
         {

@@ -16,7 +16,7 @@ using System.Xml.Serialization;
 namespace H.Modules.Theme
 {
     [Display(Name = "主题设置", GroupName = SettingGroupNames.GroupSystem, Description = "登录页面设置的信息")]
-    public class ThemeSetting : Setting<ThemeSetting>
+    public class ThemeSetting : Settable<ThemeSetting>
     {
         public ThemeSetting()
         {
@@ -26,18 +26,18 @@ namespace H.Modules.Theme
         }
 
         [DefaultValue(FontSizeThemeType.Default)]
-        [Displayer(Name = "字体")]
+        [Display(Name = "字体")]
         public FontSizeThemeType FontSize { get; set; }
 
         [DefaultValue(LayoutThemeType.Default)]
-        [Displayer(Name = "布局")]
+        [Display(Name = "布局")]
         public LayoutThemeType Layout { get; set; }
 
         [XmlIgnore]
         [JsonIgnore]
         [BindingGetSelectSourceProperty(nameof(ColorResources))]
         [PropertyItemType(typeof(OnlyComboBoxSelectSourcePropertyItem))]
-        [Displayer(Name = "颜色主题")]
+        [Display(Name = "颜色主题")]
         public IColorResource ColorResource { get; set; }
 
         [XmlIgnore]

@@ -21,7 +21,7 @@ namespace H.Controls.ColorBox
     }
 
     [Display(Name = "颜色列表设置", GroupName = SettingGroupNames.GroupControl)]
-    public class ColorBoxSetting : Setting<ColorBoxSetting>
+    public class ColorBoxSetting : Settable<ColorBoxSetting>
     {
         public ColorBoxSetting()
         {

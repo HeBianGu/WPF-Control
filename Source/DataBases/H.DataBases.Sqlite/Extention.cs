@@ -29,18 +29,18 @@ namespace System
 
         public static void AddDbContextBySetting<TDbContext>(this IServiceCollection services, Action<ISqliteOption> action = null) where TDbContext : DbContext
         {
-            action?.Invoke(SqliteSetting.Instance);
-            SqliteSetting.Instance.Load(out string messge);
-            string connect = SqliteSetting.Instance.GetConnect();
+            action?.Invoke(SqliteSettable.Instance);
+            SqliteSettable.Instance.Load(out string messge);
+            string connect = SqliteSettable.Instance.GetConnect();
             services.AddDbContext<TDbContext>(x => x.UseLazyLoadingProxies().UseSqlite(connect));
-            SettingDataManager.Instance.Add(SqliteSetting.Instance);
+            SettingDataManager.Instance.Add(SqliteSettable.Instance);
             services.AddSingleton<IDbConnectService, SqliteDbConnectService<TDbContext>>();
             services.AddSingleton<IDbDisconnectService, DbDisconnectService<TDbContext>>();
         }
 
         public static void AddDbContextNewSetting<TDbContext>(this IServiceCollection services, Action<ISqliteOption> action = null) where TDbContext : DbContext
         {
-            SqliteSetting setting = new SqliteSetting()
+            SqliteSettable setting = new SqliteSettable()
             {
                 ID = typeof(TDbContext).Name
             };

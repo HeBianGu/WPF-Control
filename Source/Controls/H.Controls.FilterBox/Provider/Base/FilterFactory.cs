@@ -10,7 +10,7 @@ namespace H.Controls.FilterBox
 
     public static class FilterFactory
     {
-        public static IFilter Create(PropertyInfo property, IEnumerable source)
+        public static IFilterable Create(PropertyInfo property, IEnumerable source)
         {
             if (property == null) return null;
 

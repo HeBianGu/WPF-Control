@@ -11,7 +11,7 @@ namespace H.Modules.Setting
 {
     /// <summary> 登录 </summary>
     [Display(Name = "设置页面配置", GroupName = SettingGroupNames.GroupBase)]
-    public class SettingViewSetting : Setting<LoginSetting>
+    public class SettingViewSetting : Settable<LoginSetting>
     {
         private Thickness _margin;
         [DefaultValue(typeof(Thickness), "0,0,0,0")]

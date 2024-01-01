@@ -5,7 +5,7 @@ using System.Windows.Input;
 
 namespace H.Providers.Mvvm
 {
-    public class InvokeCommand : ICommand
+    public class InvokeCommand : CommandBase
     {
         protected Action<object> _action;
         protected readonly Predicate<object> _canExecute;
@@ -19,25 +19,13 @@ namespace H.Providers.Mvvm
             _canExecute = canExecute ?? (x => true);
         }
 
-        public event EventHandler CanExecuteChanged
-        {
-            add
-            {
-                CommandManager.RequerySuggested += value;
-            }
-            remove
-            {
-                CommandManager.RequerySuggested -= value;
-            }
-        }
-
-        public virtual void Execute(object parameter)
+        public override void Execute(object parameter)
         {
             if (_action != null)
                 _action(parameter);
         }
 
-        public bool CanExecute(object parameter)
+        public override bool CanExecute(object parameter)
         {
             if (_canExecute != null)
                 return _canExecute(parameter);

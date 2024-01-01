@@ -8,7 +8,7 @@ using System.Windows.Media;
 
 namespace H.Presenters.Design
 {
-    [Displayer(Name = "文本", Icon = "\xe649")]
+    [Display(Name = "文本")]
     public class TextBlockPresenter : CommandsDesignPresenterBase, ITextData
     {
         public TextBlockPresenter()

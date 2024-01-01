@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace H.Controls.TagBox
 {
-    public interface ITagService : IDataSourceService<ITag>, ISplashLoad, ISplashSave
+    public interface ITagService : IDataSource<ITag>, ISplashLoad, ISplashSave
     {
         ITag Create();
         string ConvertToCheck(string value, ITag tag);

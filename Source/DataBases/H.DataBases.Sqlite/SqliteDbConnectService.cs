@@ -11,9 +11,9 @@ namespace H.DataBases.Sqlite
 {
     public class SqliteDbConnectService<TDbContext> : DbConnectServiceBase<TDbContext> where TDbContext : DbContext
     {
-        protected override IDbSetting GetSetting()
+        protected override IDbSettable GetSetting()
         {
-            return SqliteSetting.Instance;
+            return SqliteSettable.Instance;
         }
     }
 }

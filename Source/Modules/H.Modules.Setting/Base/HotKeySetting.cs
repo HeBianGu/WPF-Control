@@ -12,7 +12,7 @@ namespace H.Modules.Setting
 {
     /// <summary> 热键</summary>
     [Display(Name = "热键", GroupName = SettingGroupNames.GroupBase)]
-    public class HotKeySetting : Setting<HotKeySetting>
+    public class HotKeySetting : Settable<HotKeySetting>
     {
         private ObservableCollection<HotKeyItem> _hotKeys = new ObservableCollection<HotKeyItem>();
         /// <summary> 说明  </summary>

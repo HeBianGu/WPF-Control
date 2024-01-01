@@ -12,7 +12,7 @@ namespace H.Controls.FilterBox
     public interface ITextFilterBox
     {
         string DisplayName { get; set; }
-        IFilter Filter { get; }
+        IFilterable Filter { get; }
         string PropertyNames { get; set; }
         StringComparison StringComparison { get; set; }
         bool UseSearchable { get; set; }
@@ -145,26 +145,26 @@ namespace H.Controls.FilterBox
 
 
 
-        public IFilter Filter
+        public IFilterable Filter
         {
-            get { return (IFilter)GetValue(FilterProperty); }
+            get { return (IFilterable)GetValue(FilterProperty); }
             private set { SetValue(FilterProperty, value); }
         }
 
 
         public static readonly DependencyProperty FilterProperty =
-            DependencyProperty.Register("Filter", typeof(IFilter), typeof(TextFilterBox), new FrameworkPropertyMetadata(default(IFilter), (d, e) =>
+            DependencyProperty.Register("Filter", typeof(IFilterable), typeof(TextFilterBox), new FrameworkPropertyMetadata(default(IFilterable), (d, e) =>
             {
                 TextFilterBox control = d as TextFilterBox;
 
                 if (control == null) return;
 
-                if (e.OldValue is IFilter o)
+                if (e.OldValue is IFilterable o)
                 {
 
                 }
 
-                if (e.NewValue is IFilter n)
+                if (e.NewValue is IFilterable n)
                 {
 
                 }

@@ -169,7 +169,6 @@ namespace H.Providers.Mvvm
         }
 
         private bool _isIndeterminate = true;
-        /// <summary> 说明  </summary>
         public bool IsIndeterminate
         {
             get { return _isIndeterminate; }
@@ -236,9 +235,6 @@ namespace H.Providers.Mvvm
         }
 
         #endregion
-
-        //[Browsable(false)]
-        //public ILogService Logger => ServiceRegistry.Instance.GetInstance<ILogService>();
 
         /// <summary> 刷新命令可执行状态 (会调用CanExecute方法) </summary>
         public void Refresh()

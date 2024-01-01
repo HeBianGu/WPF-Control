@@ -20,7 +20,7 @@
 
 //                if (value is DateTime time)
 //                {
-//                    return CryptProxy.Instance?.Encrypt(time.Ticks.ToString());
+//                    return IocCrypt.Instance?.Encrypt(time.Ticks.ToString());
 //                }
 //            }
 //            return base.ConvertTo(context, culture, value, destinationType);
@@ -32,7 +32,7 @@
 //                return DateTime.MinValue;
 //            if (value is string str)
 //            {
-//                string v = CryptProxy.Instance?.Decrypt(str);
+//                string v = IocCrypt.Instance?.Decrypt(str);
 //                if (long.TryParse(v, out long result) == false)
 //                    return DateTime.MinValue;
 //                return new DateTime(result);
@@ -48,7 +48,7 @@
 //        {
 //            if (value is DateTime time)
 //            {
-//                return CryptProxy.Instance.Encrypt(time.Ticks.ToString());
+//                return IocCrypt.Instance.Encrypt(time.Ticks.ToString());
 //            }
 
 //            return null;
@@ -69,7 +69,7 @@
 //            if (value == null)
 //                return DateTime.MinValue;
 
-//            string v = CryptProxy.Instance.Decrypt(value);
+//            string v = IocCrypt.Instance.Decrypt(value);
 //            if (long.TryParse(v, out long result) == false)
 //                return DateTime.MinValue;
 //            return new DateTime(result);
@@ -81,12 +81,12 @@
 //    {
 //        public override string ConvertToString(object value, IValueSerializerContext context)
 //        {
-//            return CryptProxy.Instance.Encrypt(value.ToString());
+//            return IocCrypt.Instance.Encrypt(value.ToString());
 //        }
 
 //        public override object ConvertFromString(string value, IValueSerializerContext context)
 //        {
-//            return CryptProxy.Instance.Decrypt(value);
+//            return IocCrypt.Instance.Decrypt(value);
 //        }
 //    }
 

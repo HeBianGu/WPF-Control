@@ -1225,7 +1225,7 @@ namespace H.Controls.Form
 
                 if (this.UseDisplayOnly)
                 {
-                    if (item.GetCustomAttribute<DisplayerAttribute>() == null && item.GetCustomAttribute<DisplayAttribute>() == null)
+                    if (item.GetCustomAttribute<DisplayAttribute>() == null)
                         continue;
                 }
 

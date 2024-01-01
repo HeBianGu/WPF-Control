@@ -9,7 +9,7 @@ using System;
 
 namespace H.DataBases.Share
 {
-    public interface IDbSetting
+    public interface IDbSettable
     {
         string GetConnect();
     }

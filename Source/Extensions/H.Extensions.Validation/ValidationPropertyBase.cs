@@ -5,7 +5,7 @@ using H.Providers.Mvvm;
 namespace H.Extensions.Validation
 {
     /// <summary> 验证Model属性的基类 </summary>
-    public class ValidationPropertyBase : NotifyPropertyChanged
+    public class ValidationPropertyBase : ViewModel
     {
         #region - 属性 -
 

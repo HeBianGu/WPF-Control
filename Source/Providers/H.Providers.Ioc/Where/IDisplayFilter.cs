@@ -1,7 +1,7 @@
 ﻿namespace H.Providers.Ioc
 {
-    public interface IDisplayFilter : IFilter
+    public interface IDisplayFilter : IFilterable, IDisplayable
     {
-        string DisplayName { get; }
+        
     }
 }

@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace H.Modules.Project
 {
-    public abstract class ProjectItemBase : NotifyPropertyChangedBase, IProjectItem
+    public abstract class ProjectItemBase : ViewModelBase, IProjectItem
     {
         private string _title;
         [Required]

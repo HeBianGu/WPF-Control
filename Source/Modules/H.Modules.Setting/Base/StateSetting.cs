@@ -11,7 +11,7 @@ using System.ComponentModel.DataAnnotations;
 namespace H.Modules.Setting
 {
     [Display(Name = "状态", GroupName = SettingGroupNames.GroupBase)]
-    public class StateSetting : Setting<StateSetting>
+    public class StateSetting : Settable<StateSetting>
     {
         private int _doNotingMinite;
         [DefaultValue(3)]

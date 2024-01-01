@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace H.Presenters.Design
 {
-    [Displayer(Name = "当前日期")]
+    [Display(Name = "当前日期")]
     public class DateTimeNowPresenter : TitlePresenter
     {
         public DateTimeNowPresenter()

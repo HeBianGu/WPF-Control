@@ -10,7 +10,7 @@ namespace H.Modules.License
         void Refresh();
     }
 
-    public class LicenseFlagViewPresenter : NotifyPropertyChangedBase, ILicenseFlagViewPresenter
+    public class LicenseFlagViewPresenter : ViewModelBase, ILicenseFlagViewPresenter
     {
         public LicenseFlagViewPresenter()
         {

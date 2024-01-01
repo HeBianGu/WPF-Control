@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace H.Presenters.Design
 {
-    [Displayer(Name = "属性列表", Icon = "\xe740")]
+    [Display(Name = "属性列表")]
     public class PropertyGridDesignPresenter : CommandsDesignPresenterBase
     {
         private object _data;

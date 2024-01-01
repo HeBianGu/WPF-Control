@@ -16,11 +16,11 @@ namespace H.Styles.Default
     }
 
     [Display(Name = "窗口设置", GroupName = SettingGroupNames.GroupSystem, Description = "设置窗口参数")]
-    public class WindowSetting : Setting<WindowSetting>
+    public class WindowSetting : Settable<WindowSetting>
     {
         private string _backImagePath;
         [DefaultValue("pack://application:,,,/H.Extensions.BackgroundImage;component/b41.png")]
-        [Displayer(Name = "窗口背景图片")]
+        [Display(Name = "窗口背景图片")]
         public string BackImagePath
         {
             get { return _backImagePath; }
@@ -33,7 +33,7 @@ namespace H.Styles.Default
 
         private double _opacity;
         [DefaultValue(0.3)]
-        [Displayer(Name = "图片透明度")]
+        [Display(Name = "图片透明度")]
         public double Opacity
         {
             get { return _opacity; }
@@ -47,7 +47,7 @@ namespace H.Styles.Default
 
         private Stretch _stretch;
         [DefaultValue(Stretch.UniformToFill)]
-        [Displayer(Name = "图片拉伸")]
+        [Display(Name = "图片拉伸")]
         public Stretch Stretch
         {
             get { return _stretch; }
@@ -60,7 +60,7 @@ namespace H.Styles.Default
 
         private bool _useNoticeOnMainWindowClose;
         [DefaultValue(true)]
-        [Displayer(Name = "主窗口关闭提示", Description = "当主窗口点击关闭时会提示是否关闭窗口")]
+        [Display(Name = "主窗口关闭提示", Description = "当主窗口点击关闭时会提示是否关闭窗口")]
         public bool UseNoticeOnMainWindowClose
         {
             get { return _useNoticeOnMainWindowClose; }

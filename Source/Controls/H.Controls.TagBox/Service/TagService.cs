@@ -10,7 +10,7 @@ using System.Windows.Documents;
 namespace H.Controls.TagBox
 {
     [Display(Name = "标签管理")]
-    public class TagService : NotifyPropertyChangedBase, ITagService
+    public class TagService : ViewModelBase, ITagService
     {
         IOptions<TagOptions> _options;
 

@@ -30,11 +30,11 @@ namespace System
 
         public static void AddDbContextBySetting<TDbContext>(this IServiceCollection services, Action<ISqlServerOption> action = null) where TDbContext : DbContext
         {
-            action?.Invoke(SqlServerSetting.Instance);
-            SqlServerSetting.Instance.Load(out string message);
-            string connect = SqlServerSetting.Instance.GetConnect();
+            action?.Invoke(SqlServerSettable.Instance);
+            SqlServerSettable.Instance.Load(out string message);
+            string connect = SqlServerSettable.Instance.GetConnect();
             services.AddDbContext<TDbContext>(x => x.UseSqlServer(connect));
-            SettingDataManager.Instance.Add(SqlServerSetting.Instance);
+            SettingDataManager.Instance.Add(SqlServerSettable.Instance);
             services.AddSingleton<IDbConnectService, SqlServerDbConnectService<TDbContext>>();
             services.AddSingleton<IDbDisconnectService, DbDisconnectService<TDbContext>>();
         }

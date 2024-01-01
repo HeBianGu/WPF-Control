@@ -6,7 +6,7 @@ using System.ComponentModel;
 namespace H.Test.SideMenu
 {
     [Display(Name = "页面设置", GroupName = SettingGroupNames.GroupBase)]
-    public class AppSetting : Setting<AppSetting>
+    public class AppSetting : Settable<AppSetting>
     {
         private bool _useGroup;
         [DefaultValue(false)]

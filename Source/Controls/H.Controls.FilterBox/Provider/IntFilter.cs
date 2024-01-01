@@ -18,7 +18,7 @@ namespace H.Controls.FilterBox
 
         }
 
-        public override IFilter Copy()
+        public override IFilterable Copy()
         {
             return new IntFilter(this.PropertyInfo) { Operate = this.Operate, Value = this.Value };
         }
@@ -36,7 +36,7 @@ namespace H.Controls.FilterBox
 
         }
 
-        public override IFilter Copy()
+        public override IFilterable Copy()
         {
             return new LongFilter(this.PropertyInfo) { Operate = this.Operate, Value = this.Value };
         }

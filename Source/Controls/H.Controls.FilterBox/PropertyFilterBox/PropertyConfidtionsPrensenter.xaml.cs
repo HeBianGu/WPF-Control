@@ -13,7 +13,7 @@ using System.Xml.Serialization;
 
 namespace H.Controls.FilterBox
 {
-    public class PropertyConfidtionsPrensenter : DisplayerViewModelBase, IConditionable, IMetaSetting
+    public class PropertyConfidtionsPrensenter : DisplayViewModelBase, IConditionable, IMetaSetting
     {
         public PropertyConfidtionsPrensenter()
         {

@@ -6,7 +6,7 @@ using System.Windows.Controls;
 namespace H.Controls.Step
 {
     [Display(Name = "步骤")]
-    public class StepPresenter : DisplayerViewModelBase
+    public class StepPresenter : DisplayViewModelBase
     {
         private Orientation _orientation= Orientation.Horizontal;
         public Orientation Orientation

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace H.Presenters.Design
 {
-    [Displayer(Name = "Uniform", Icon = "\xe734")]
+    [Display(Name = "Uniform")]
     public class UniformGridPresenter : PanelPresenterBase
     {
         private int _columns;

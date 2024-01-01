@@ -38,7 +38,7 @@ namespace H.Controls.FilterBox
             }
         }
 
-        public override IFilter Copy()
+        public override IFilterable Copy()
         {
             StringFilter result = new StringFilter(this.PropertyInfo)
             {

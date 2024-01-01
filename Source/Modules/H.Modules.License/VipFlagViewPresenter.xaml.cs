@@ -10,7 +10,7 @@ namespace H.Modules.License
         void Refresh();
     }
 
-    public class VipFlagViewPresenter : NotifyPropertyChangedBase, IVipFlagViewPresenter
+    public class VipFlagViewPresenter : ViewModelBase, IVipFlagViewPresenter
     {
         public VipFlagViewPresenter()
         {

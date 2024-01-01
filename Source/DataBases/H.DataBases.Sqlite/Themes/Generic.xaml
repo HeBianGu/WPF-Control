@@ -3,7 +3,7 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.DataBases.Sqlite">
 
-    <DataTemplate DataType="{x:Type local:SqliteSetting}">
+    <DataTemplate DataType="{x:Type local:SqliteSettable}">
         <DockPanel>
             <!--<TextBlock Width="400"
                            Margin="10,0" DockPanel.Dock="Bottom"

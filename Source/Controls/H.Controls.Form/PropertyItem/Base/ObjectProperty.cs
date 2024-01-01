@@ -237,7 +237,7 @@ namespace H.Controls.Form
     }
 
     /// <summary> 类型基类 </summary>
-    public abstract class ObjectPropertyItem : DisplayerViewModelBase, IPropertyItem
+    public abstract class ObjectPropertyItem : DisplayViewModelBase, IPropertyItem
     {
         public string TabGroup { get; set; }
         public PropertyInfo PropertyInfo { get; set; }

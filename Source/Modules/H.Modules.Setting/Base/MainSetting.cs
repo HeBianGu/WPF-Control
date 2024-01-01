@@ -11,7 +11,7 @@ namespace H.Modules.Setting
 {
     /// <summary> 主面板 </summary>
     [Display(Name = "主面板", GroupName = SettingGroupNames.GroupBase)]
-    public class MainSetting : Setting<MainSetting>
+    public class MainSetting : Settable<MainSetting>
     {
 
         private bool _isShowNotify;

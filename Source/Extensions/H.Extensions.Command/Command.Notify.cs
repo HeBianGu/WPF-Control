@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace H.Extensions.Command
 {
-    public abstract class NotifyCommandBase : NotifyPropertyChangedBase, ICommand
+    public abstract class NotifyCommandBase : ViewModelBase, ICommand
     {
         protected Action<object> _action;
 

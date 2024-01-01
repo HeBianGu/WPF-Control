@@ -14,6 +14,6 @@ namespace H.Controls.FilterBox
         PropertyInfo PropertyInfo { get; set; }
         //void SetValue(object value);
         //object GetValue();
-        IFilter Copy();
+        IFilterable Copy();
     }
 }

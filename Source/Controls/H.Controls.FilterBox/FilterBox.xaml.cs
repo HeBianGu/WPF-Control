@@ -12,8 +12,8 @@ namespace H.Controls.FilterBox
 {
     public interface IFilterBox
     {
-        IFilter Filter { get; set; }
-        ObservableCollection<IFilter> Filters { get; }
+        IFilterable Filter { get; set; }
+        ObservableCollection<IFilterable> Filters { get; }
         bool UseCheckAll { get; set; }
         event RoutedEventHandler FilterChanged;
         ListBoxItem GetCheckAllItem();
@@ -45,33 +45,33 @@ namespace H.Controls.FilterBox
             });
         }
 
-        public IFilter Filter
+        public IFilterable Filter
         {
-            get { return (IFilter)GetValue(FilterProperty); }
+            get { return (IFilterable)GetValue(FilterProperty); }
             set { SetValue(FilterProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty FilterProperty =
-            DependencyProperty.Register("Filter", typeof(IFilter), typeof(FilterBox), new FrameworkPropertyMetadata(default(IFilter), (d, e) =>
+            DependencyProperty.Register("Filter", typeof(IFilterable), typeof(FilterBox), new FrameworkPropertyMetadata(default(IFilterable), (d, e) =>
             {
                 FilterBox control = d as FilterBox;
 
                 if (control == null) return;
 
-                if (e.OldValue is IFilter o)
+                if (e.OldValue is IFilterable o)
                 {
 
                 }
 
-                if (e.NewValue is IFilter n)
+                if (e.NewValue is IFilterable n)
                 {
 
                 }
 
             }));
 
-        public ObservableCollection<IFilter> Filters { get; } = new ObservableCollection<IFilter>();
+        public ObservableCollection<IFilterable> Filters { get; } = new ObservableCollection<IFilterable>();
 
         //声明和注册路由事件
         public static readonly RoutedEvent FilterChangedRoutedEvent =
@@ -125,7 +125,7 @@ namespace H.Controls.FilterBox
         {
             if (this.UseCheckAll)
                 yield return "全选";
-            foreach (IFilter data in this.Filters)
+            foreach (IFilterable data in this.Filters)
             {
                 yield return data;
             }
@@ -174,7 +174,7 @@ namespace H.Controls.FilterBox
 
     }
 
-    public class Filter : IFilter
+    public class Filter : IFilterable
     {
         private readonly FilterBox _filterBox;
         public Filter(FilterBox SelectionFilterBox)
@@ -185,7 +185,7 @@ namespace H.Controls.FilterBox
         public bool IsMatch(object obj)
         {
             IList list = this._filterBox.Dispatcher.Invoke(() => this._filterBox.SelectedItems);
-            var filters = list.OfType<IFilter>();
+            var filters = list.OfType<IFilterable>();
             if (filters == null || filters.Count() == 0)
                 return true;
             return filters.Any(f => f.IsMatch(obj));

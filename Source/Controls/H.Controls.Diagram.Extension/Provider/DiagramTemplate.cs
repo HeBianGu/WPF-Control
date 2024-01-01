@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace H.Controls.Diagram.Extension
 {
-    public class DiagramTemplate : DisplayerViewModelBase, IDiagramTemplate
+    public class DiagramTemplate : DisplayViewModelBase, IDiagramTemplate
     {
         public DiagramTemplate()
         {
@@ -21,7 +21,7 @@ namespace H.Controls.Diagram.Extension
             this.Name = diagram.TypeName;
             this.GroupName = diagram.GroupName;
             this.TypeName = diagram.TypeName;
-            this.TabName = diagram.TabName;
+            //this.TabName = diagram.TabName;
         }
         private IDiagram _diagram;
         /// <summary> 说明  </summary>
@@ -167,7 +167,7 @@ namespace H.Controls.Diagram.Extension
 
 
 
-    public class DiagramTemplateGroup : NotifyPropertyChangedBase
+    public class DiagramTemplateGroup : ViewModelBase
     {
         public DiagramTemplateGroup(IEnumerable<DiagramTemplate> collection)
         {
@@ -204,7 +204,7 @@ namespace H.Controls.Diagram.Extension
 
     }
 
-    public class DiagramTemplateGroups : NotifyPropertyChangedBase
+    public class DiagramTemplateGroups : ViewModelBase
     {
         public DiagramTemplateGroups(IEnumerable<DiagramTemplateGroup> collection)
         {

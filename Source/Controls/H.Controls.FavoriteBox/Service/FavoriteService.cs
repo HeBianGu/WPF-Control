@@ -11,7 +11,7 @@ using System.Linq;
 namespace H.Controls.FavoriteBox
 {
     [Display(Name = "收藏夹管理")]
-    public class FavoriteService : NotifyPropertyChangedBase, IFavoriteService
+    public class FavoriteService : ViewModelBase, IFavoriteService
     {
         IOptions<FavoriteOptions> _options;
 

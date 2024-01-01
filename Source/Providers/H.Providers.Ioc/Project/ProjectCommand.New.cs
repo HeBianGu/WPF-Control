@@ -6,8 +6,8 @@ namespace H.Providers.Ioc
     {
         public override async void Execute(object parameter)
         {
-            var project = IocProject.Instance.Create();
-            var r = await IocMessage.Form.ShowEdit(project, null, null, null, "新建工程");
+            IProjectItem project = IocProject.Instance.Create();
+            bool? r = await IocMessage.Form.ShowEdit(project, null, null, null, "新建工程");
             if (r != true)
                 return;
             IocProject.Instance.Add(project);

@@ -1,9 +1,11 @@
 ﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using H.Extensions.Common;
+using H.Providers.Mvvm;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.IO;
@@ -13,6 +15,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -215,32 +218,29 @@ namespace H.Extensions.ValueConverter
         public static ConverterBase<object, bool> GetIsAbstract => new ConverterBase<object, bool>(x => x.GetType().IsAbstract);
         public static ConverterBase<object, bool> GetIsArray => new ConverterBase<object, bool>(x => x.GetType().IsArray);
 
-        //public static ConverterBase<object, IList<Displayer<ICommand>>> GetCommandDisplayers => new ConverterBase<object, IList<Displayer<ICommand>>>(x =>
-        //{
-        //    var ps = x.GetType().GetProperties().Where(k => typeof(ICommand).IsAssignableFrom(k.PropertyType));
-
-        //    List<Displayer<ICommand>> result = new List<Displayer<ICommand>>();
-        //    foreach (var item in ps)
-        //    {
-        //        if (item.GetCustomAttribute<BrowsableAttribute>()?.Browsable == false)
-        //            continue;
-        //        DisplayerAttribute displayer = item.GetCustomAttribute<DisplayerAttribute>(true);
-
-        //        var r = new Displayer<ICommand>()
-        //        {
-        //            Description = displayer.Description,
-        //            Icon = displayer.Icon,
-        //            Order = displayer.Order,
-        //            Name = displayer.Name,
-        //            GroupName = displayer.GroupName,
-        //            ID = displayer.ID,
-        //            TabName = displayer.TabName
-        //        };
-        //        r.Value = item.GetValue(x) as ICommand;
-        //        result.Add(r);
-        //    }
-        //    return result.OrderBy(k => k.Order).ToList();
-        //});
+        public static ConverterBase<object, IList<ICommand>> GetCommands => new ConverterBase<object, IList<ICommand>>(x =>
+        {
+            var ps = x.GetType().GetProperties().Where(k => typeof(ICommand).IsAssignableFrom(k.PropertyType));
+            List<ICommand> result = new List<ICommand>();
+            foreach (var item in ps)
+            {
+                if (item.GetCustomAttribute<BrowsableAttribute>()?.Browsable == false)
+                    continue;
+                DisplayAttribute da = item.GetCustomAttribute<DisplayAttribute>(true);
+                if (item.GetValue(x) is ICommand command)
+                {
+                    if (command is IDisplayCommand display)
+                    {
+                        display.Name = display.Name ?? da.Name;
+                        display.Description = display.Description ?? da.Description;
+                        display.Order = da.Order;
+                        display.GroupName = display.GroupName ?? da.GroupName;
+                    }
+                    result.Add(command);
+                }
+            }
+            return result.OrderBy(k => k is IDisplayCommand d ? d.Order : 0).ToList();
+        });
         #endregion
 
         #region - Path -
@@ -802,15 +802,15 @@ namespace H.Extensions.ValueConverter
         }
     }
 
-    public class Displayer<T>
-    {
-        public T Value { get; set; }
-        public int Order { get; set; }
-        public string GroupName { get; set; }
-        public string Description { get; set; }
-        public string Name { get; set; }
-        public string ID { get; set; }
-        public string Icon { get; set; }
-        public string TabName { get; set; }
-    }
+    //public class Display<T>
+    //{
+    //    public T Value { get; set; }
+    //    public int Order { get; set; }
+    //    public string GroupName { get; set; }
+    //    public string Description { get; set; }
+    //    public string Name { get; set; }
+    //    public string ID { get; set; }
+    //    public string Icon { get; set; }
+    //    public string TabName { get; set; }
+    //}
 }

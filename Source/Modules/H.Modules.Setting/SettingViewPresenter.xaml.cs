@@ -17,8 +17,8 @@ namespace H.Modules.Setting
             this.Data = SettingDataManager.Instance.Settings?.GroupBy(l => l.GroupName);
         }
 
-        private IEnumerable<IGrouping<string, ISetting>> _data;
-        public IEnumerable<IGrouping<string, ISetting>> Data
+        private IEnumerable<IGrouping<string, ISettable>> _data;
+        public IEnumerable<IGrouping<string, ISettable>> Data
         {
             get { return _data; }
             private set
@@ -51,12 +51,12 @@ namespace H.Modules.Setting
             }
         }
 
-        public void Add(params ISetting[] settings)
+        public void Add(params ISettable[] settings)
         {
             SettingDataManager.Instance.Add(settings);
         }
 
-        public void Remove(params ISetting[] settings)
+        public void Remove(params ISettable[] settings)
         {
             SettingDataManager.Instance.Remove(settings);
         }

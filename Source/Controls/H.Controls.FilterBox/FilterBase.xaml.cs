@@ -3,7 +3,7 @@ using H.Providers.Mvvm;
 
 namespace H.Controls.FilterBox
 {
-    public abstract class FilterBase : DisplayerViewModelBase, IFilter
+    public abstract class FilterBase : DisplayViewModelBase, IFilterable
     {
         public abstract bool IsMatch(object obj);
 

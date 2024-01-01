@@ -9,7 +9,7 @@ using System.Windows.Media;
 
 namespace H.Windows.Ribbon
 {
-    public class ControlData : NotifyPropertyChangedBase
+    public class ControlData : ViewModelBase
     {
         public string Label
         {

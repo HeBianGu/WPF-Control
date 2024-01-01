@@ -8,14 +8,14 @@ namespace H.Providers.Ioc
 {
     public interface ISettingDataManagerOption
     {
-        void Add(params ISetting[] settings);
-        void Remove(params ISetting[] settings);
+        void Add(params ISettable[] settings);
+        void Remove(params ISettable[] settings);
     }
 
     public class SettingDataManager : LazyInstance<SettingDataManager>, ISettingDataManagerOption
     {
-        private ObservableCollection<ISetting> _settings = new ObservableCollection<ISetting>();
-        public ObservableCollection<ISetting> Settings
+        private ObservableCollection<ISettable> _settings = new ObservableCollection<ISettable>();
+        public ObservableCollection<ISettable> Settings
         {
             get { return _settings; }
             set { _settings = value; }
@@ -35,7 +35,7 @@ namespace H.Providers.Ioc
             list.Add(SettingGroupNames.GroupSecurity);
             list.Add(SettingGroupNames.GroupAuthority);
             list.Add(SettingGroupNames.GroupOther);
-            Comparison<ISetting> comparison = (x, y) =>
+            Comparison<ISettable> comparison = (x, y) =>
             {
                 if (x == null) return -1;
                 if (y == null) return 1;
@@ -43,10 +43,10 @@ namespace H.Providers.Ioc
                     return x.Order.CompareTo(y.Order);
                 return list.IndexOf(x.GroupName).CompareTo(list.IndexOf(y.GroupName));
             };
-            List<ISetting> settings = this.Settings.ToList();
+            List<ISettable> settings = this.Settings.ToList();
             settings.RemoveAll(x => x == null);
             settings.Sort(comparison);
-            this.Settings = new ObservableCollection<ISetting>(settings);
+            this.Settings = new ObservableCollection<ISettable>(settings);
             foreach (ILoadable item in this.Settings.OfType<ILoadable>())
             {
                 item.Load(out message);
@@ -92,9 +92,9 @@ namespace H.Providers.Ioc
             }
         }
 
-        public void Add(params ISetting[] settings)
+        public void Add(params ISettable[] settings)
         {
-            foreach (ISetting setting in settings)
+            foreach (ISettable setting in settings)
             {
                 if (this.Settings.Contains(setting))
                     continue;
@@ -102,9 +102,9 @@ namespace H.Providers.Ioc
             }
         }
 
-        public void Remove(params ISetting[] settings)
+        public void Remove(params ISettable[] settings)
         {
-            foreach (ISetting setting in settings)
+            foreach (ISettable setting in settings)
             {
                 if (!this.Settings.Contains(setting))
                     continue;

@@ -110,7 +110,7 @@ namespace H.Controls.Form
         }
 
         //[Browsable(true)]
-        //[Displayer(Name = "恢复默认", Icon = "\xe8dc", Order = 1)]
+        //[Display(Name = "恢复默认", Icon = "\xe8dc", Order = 1)]
         //public override RelayCommand LoadDefaultCommand => new RelayCommand(l =>
         //{
         //    this.LoadDefault();
@@ -119,7 +119,7 @@ namespace H.Controls.Form
 
 
         //[Browsable(true)]
-        //[Displayer(Name = "删除", Icon = "\xe857", Order = 0)]
+        //[Display(Name = "删除", Icon = "\xe857", Order = 0)]
         //public RelayCommand ClearCommand => new RelayCommand(l =>
         //{
         //    this.Value = null;

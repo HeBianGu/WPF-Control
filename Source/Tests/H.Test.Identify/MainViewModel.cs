@@ -9,7 +9,7 @@ using System.Windows.Threading;
 
 namespace H.Test.Identify
 {
-    public class MainViewModel : NotifyPropertyChanged
+    public class MainViewModel : ViewModel
     {
         protected override void Loaded(object obj)
         {

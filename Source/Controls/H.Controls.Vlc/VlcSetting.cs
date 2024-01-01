@@ -13,7 +13,7 @@ using System.Windows;
 namespace H.Controls.Vlc
 {
     [Display(Name = "视频控件", GroupName = SettingGroupNames.GroupControl)]
-    public class VlcSetting : Setting<VlcSetting>
+    public class VlcSetting : Settable<VlcSetting>
     {
         public override void LoadDefault()
         {

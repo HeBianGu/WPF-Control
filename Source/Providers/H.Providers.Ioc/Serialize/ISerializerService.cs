@@ -11,9 +11,4 @@ namespace H.Providers.Ioc
         void Save(string filePath, object sourceObj, string xmlRootName = null);
         object CloneXml(object o);
     }
-
-    public class XmlSerialize : Ioc<ISerializerService>
-    {
-
-    }
 }

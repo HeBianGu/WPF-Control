@@ -13,7 +13,7 @@ using System.Windows.Media;
 namespace H.Controls.Diagram.Extension
 {
     [Display(Name = "绘图面板", GroupName = SettingGroupNames.GroupApp)]
-    public class DiagramSetting : LazySettingInstance<DiagramSetting>
+    public class DiagramSetting : LazySettableInstance<DiagramSetting>
     {
         private Color _symbolDefaultBackground = (Application.Current.FindResource(BrushKeys.Foreground) as SolidColorBrush).Color;
         [Display(Name = "符号默认背景色")]
@@ -258,7 +258,7 @@ namespace H.Controls.Diagram.Extension
     }
 
     [Display(Name = "应用参数", GroupName = SettingGroupNames.GroupApp)]
-    public class AppSetting : LazySettingInstance<AppSetting>
+    public class AppSetting : LazySettableInstance<AppSetting>
     {
         private bool _showLog;
         [Display(Name = "显示日志")]

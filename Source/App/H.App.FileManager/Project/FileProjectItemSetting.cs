@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace H.App.FileManager
 {
-    public class FileProjectItemSetting : NotifyPropertyChangedBase, ISetting
+    public class FileProjectItemSetting : ViewModelBase, ISettable
     {
         public int Order => 0;
         public string Name => "当前工程";

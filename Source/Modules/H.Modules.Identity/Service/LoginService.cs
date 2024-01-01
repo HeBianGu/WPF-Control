@@ -15,7 +15,7 @@ using System.Xml.Serialization;
 
 namespace H.Modules.Identity
 {
-    internal class LoginService : NotifyPropertyChangedBase, ILoginService
+    internal class LoginService : ViewModelBase, ILoginService
     {
         private IUser _user;
         public IUser User

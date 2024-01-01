@@ -35,11 +35,11 @@ namespace H.Providers.Ioc
             }
             else
             {
-               return await Dialog.Show(message, x =>
-                {
-                    x.DialogButton = dialogButton;
-                    x.Title = title;
-                });
+                return await Dialog.Show(message, x =>
+                 {
+                     x.DialogButton = dialogButton;
+                     x.Title = title;
+                 });
             }
         }
 
@@ -61,10 +61,10 @@ namespace H.Providers.Ioc
             }
             else
             {
-                return await Window.Show(message,x=>
+                return await Window.Show(message, x =>
                 {
-                    x.DialogButton= dialogButton;
-                    x.Title= title;
+                    x.DialogButton = dialogButton;
+                    x.Title = title;
                 });
             }
         }

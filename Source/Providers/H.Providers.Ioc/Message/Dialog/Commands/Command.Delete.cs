@@ -14,7 +14,7 @@ namespace H.Providers.Ioc
             {
                 if (element.DataContext == null)
                     return;
-                var items = element.GetParent<ItemsControl>();
+                ItemsControl items = element.GetParent<ItemsControl>();
                 if (items.ItemsSource is IList list)
                     list.Remove(element.DataContext);
                 else
@@ -28,7 +28,7 @@ namespace H.Providers.Ioc
             {
                 if (element.DataContext == null)
                     return false;
-                var items = element.GetParent<ItemsControl>();
+                ItemsControl items = element.GetParent<ItemsControl>();
                 if (items == null)
                     return false;
                 return true;

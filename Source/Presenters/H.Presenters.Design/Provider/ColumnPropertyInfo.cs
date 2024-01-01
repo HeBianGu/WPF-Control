@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 namespace H.Presenters.Design
 {
     [Display(Name = "列头设置")]
-    public class ColumnPropertyInfo : NotifyPropertyChangedBase
+    public class ColumnPropertyInfo : ViewModelBase
     {
         public ColumnPropertyInfo(PropertyInfo t)
         {

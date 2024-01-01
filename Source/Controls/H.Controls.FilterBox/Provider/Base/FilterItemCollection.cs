@@ -5,7 +5,7 @@ using System.Collections.ObjectModel;
 
 namespace H.Controls.FilterBox
 {
-    public class FilterItemCollection : ObservableCollection<IFilter>
+    public class FilterItemCollection : ObservableCollection<IFilterable>
     {
 
     }

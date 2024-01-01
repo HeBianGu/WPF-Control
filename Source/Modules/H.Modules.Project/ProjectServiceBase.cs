@@ -18,7 +18,7 @@ using System.Xml.Serialization;
 namespace H.Modules.Project
 {
     [Display(Name = "工程数据", GroupName = SettingGroupNames.GroupData)]
-    public abstract class ProjectServiceBase<T> : NotifyPropertyChangedBase, IProjectService, IDataSourceService<T> where T : IProjectItem
+    public abstract class ProjectServiceBase<T> : ViewModelBase, IProjectService, IDataSource<T> where T : IProjectItem
     {
         IOptions<ProjectOptions> _options;
         public ProjectServiceBase(IOptions<ProjectOptions> options)

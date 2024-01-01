@@ -4,7 +4,7 @@ using System;
 
 namespace H.Providers.Ioc
 {
-    public class IocProject: Ioc<IProjectService>
+    public class IocProject : Ioc<IProjectService>
     {
 
     }

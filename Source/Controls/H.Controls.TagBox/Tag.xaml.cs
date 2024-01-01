@@ -7,7 +7,7 @@ using System.Windows.Media;
 
 namespace H.Controls.TagBox
 {
-    public class Tag : NotifyPropertyChangedBase, ITag
+    public class Tag : ViewModelBase, ITag
     {
         private string _name;
         [Required]

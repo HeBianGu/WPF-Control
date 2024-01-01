@@ -16,7 +16,7 @@ namespace H.Controls.FilterBox
     {
         IEnumerable Datas { get; set; }
         string DisplayName { get; set; }
-        IFilter Filter { get; set; }
+        IFilterable Filter { get; set; }
         string PropertyName { get; set; }
         Type Type { get; set; }
         bool UseCheckAll { get; set; }
@@ -276,7 +276,7 @@ namespace H.Controls.FilterBox
             return order;
         }
 
-        public IFilter Filter
+        public IFilterable Filter
         {
             get { return (SelectionFilter)GetValue(FilterProperty); }
             set { SetValue(FilterProperty, value); }
@@ -284,18 +284,18 @@ namespace H.Controls.FilterBox
 
 
         public static readonly DependencyProperty FilterProperty =
-            DependencyProperty.Register("Filter", typeof(IFilter), typeof(SelectionFilterBox), new FrameworkPropertyMetadata(default(IFilter), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, (d, e) =>
+            DependencyProperty.Register("Filter", typeof(IFilterable), typeof(SelectionFilterBox), new FrameworkPropertyMetadata(default(IFilterable), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, (d, e) =>
             {
                 SelectionFilterBox control = d as SelectionFilterBox;
 
                 if (control == null) return;
 
-                if (e.OldValue is IFilter o)
+                if (e.OldValue is IFilterable o)
                 {
 
                 }
 
-                if (e.NewValue is IFilter n)
+                if (e.NewValue is IFilterable n)
                 {
 
                 }

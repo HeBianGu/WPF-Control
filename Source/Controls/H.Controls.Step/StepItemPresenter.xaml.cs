@@ -4,7 +4,7 @@ using H.Providers.Mvvm;
 
 namespace H.Controls.Step
 {
-    public class StepItemPresenter : NotifyPropertyChangedBase, IStepItemPresenter
+    public class StepItemPresenter : ViewModelBase, IStepItemPresenter
     {
         private string _displayName;
         public string DisplayName

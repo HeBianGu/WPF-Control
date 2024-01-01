@@ -133,7 +133,7 @@ namespace H.Controls.Chart2D
         }
     }
 
-    internal class LegendItem : NotifyPropertyChanged
+    internal class LegendItem : ViewModel
     {
         private Series _series;
         /// <summary> 说明  </summary>
@@ -148,7 +148,7 @@ namespace H.Controls.Chart2D
         }
     }
 
-    internal class ShapeLegendItem : NotifyPropertyChanged
+    internal class ShapeLegendItem : ViewModel
     {
         private DataLayer _layer;
         /// <summary> 说明  </summary>
@@ -222,7 +222,7 @@ namespace H.Controls.Chart2D
         }
     }
 
-    internal class StackLegendItem : NotifyPropertyChanged
+    internal class StackLegendItem : ViewModel
     {
         private LayerBase _layer;
         /// <summary> 说明  </summary>

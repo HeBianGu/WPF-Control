@@ -11,7 +11,7 @@ namespace H.Controls.Diagram.Extension
         string Name { get; set; }
         string GroupName { get; set; }
         string TypeName { get; set; }
-        string TabName { get; set; }
+        //string TabName { get; set; }
         Part SelectedPart { get; set; }
         void ZoomAll();
         void RefreshRoot();

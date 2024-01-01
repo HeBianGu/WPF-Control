@@ -9,7 +9,7 @@ namespace H.Modules.Setting
 {
     /// <summary> 登录 </summary>
     [Display(Name = "登录", GroupName = SettingGroupNames.GroupBase)]
-    public class LoginSetting : Setting<LoginSetting>
+    public class LoginSetting : Settable<LoginSetting>
     {
         private bool _automaticStart;
         /// <summary> 开机自动启动  </summary>

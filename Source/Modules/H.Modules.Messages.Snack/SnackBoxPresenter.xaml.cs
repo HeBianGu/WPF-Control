@@ -6,7 +6,7 @@ using System.Collections.ObjectModel;
 
 namespace H.Modules.Messages.Snack
 {
-    public class SnackBoxPresenter : NotifyPropertyChangedBase
+    public class SnackBoxPresenter : ViewModelBase
     {
         private ObservableCollection<ISnackItem> _collection = new ObservableCollection<ISnackItem>();
         public ObservableCollection<ISnackItem> Collection

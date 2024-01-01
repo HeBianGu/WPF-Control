@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace H.Modules.Identity
 {
-    public class Filter : IFilter
+    public class Filter : IFilterable
     {
         public bool IsMatch(object obj)
         {

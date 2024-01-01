@@ -7,7 +7,7 @@ using System.Windows.Media;
 
 namespace H.Modules.Messages.Notice
 {
-    public abstract class MessagePresenterBase : NotifyPropertyChangedBase, INoticeItem
+    public abstract class MessagePresenterBase : ViewModelBase, INoticeItem
     {
         public string Time { get; } = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         public Geometry Geometry { get; set; }

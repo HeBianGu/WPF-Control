@@ -1,9 +1,10 @@
 ﻿
 using H.Providers.Mvvm;
+using System.ComponentModel.DataAnnotations;
 
 namespace H.Presenters.Design
 {
-    [Displayer(Name = "DataGrid", Icon = "\xe890")]
+    [Display(Name = "DataGrid")]
     public class DataGridDesignPresenter : DataGridPresenterBase, IDesignPresenter
     {
         public DataGridDesignPresenter()

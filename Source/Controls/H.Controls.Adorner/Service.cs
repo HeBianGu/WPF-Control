@@ -20,7 +20,7 @@ namespace H.Controls.Adorner
     }
 
     [Display(Name = "装饰层配置", GroupName = SettingGroupNames.GroupStyle)]
-    public class AdornerSetting : LazySettingInstance<AdornerSetting>
+    public class AdornerSetting : LazySettableInstance<AdornerSetting>
     {
         private double _dragAornerOpacity;
         [Display(Name = "拖拽时控件的透明度")]

@@ -6,7 +6,7 @@ using System.Windows.Media;
 
 namespace H.Presenters.Design
 {
-    [Displayer(Name = "卡片", Icon = "\xe71e")]
+    [Display(Name = "卡片")]
     public class CardPresenter : TitlePresenter
     {
         public CardPresenter()

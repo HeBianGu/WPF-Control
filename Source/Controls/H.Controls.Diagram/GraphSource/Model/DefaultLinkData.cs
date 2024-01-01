@@ -9,7 +9,7 @@ namespace H.Controls.Diagram
     /// <summary>
     /// 默认端口要显示的效果
     /// </summary>
-    public class DefaultLinkData : NotifyPropertyChanged, ILinkData
+    public class DefaultLinkData : ViewModel, ILinkData
     {
         private string _message;
         /// <summary> 说明  </summary>

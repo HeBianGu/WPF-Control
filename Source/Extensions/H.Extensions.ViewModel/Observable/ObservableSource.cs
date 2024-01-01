@@ -11,7 +11,7 @@ using System.Windows.Threading;
 
 namespace H.Extensions.ViewModel
 {
-    public class ObservableSource<T> : NotifyPropertyChanged, IObservableSource<T>
+    public class ObservableSource<T> : Providers.Mvvm.ViewModel, IObservableSource<T>
     {
         public int Count => this.Cache.Count;
         private ObservableCollection<T> _cache = new ObservableCollection<T>();
@@ -155,8 +155,8 @@ namespace H.Extensions.ViewModel
         }
 
 
-        private IFilter _filter1;
-        public IFilter Filter1
+        private IFilterable _filter1;
+        public IFilterable Filter1
         {
             get { return _filter1; }
             set
@@ -167,8 +167,8 @@ namespace H.Extensions.ViewModel
             }
         }
 
-        private IFilter _filter2;
-        public IFilter Filter2
+        private IFilterable _filter2;
+        public IFilterable Filter2
         {
             get { return _filter2; }
             set
@@ -179,8 +179,8 @@ namespace H.Extensions.ViewModel
             }
         }
 
-        private IFilter _filter3;
-        public IFilter Filter3
+        private IFilterable _filter3;
+        public IFilterable Filter3
         {
             get { return _filter3; }
             set
@@ -191,8 +191,8 @@ namespace H.Extensions.ViewModel
             }
         }
 
-        private IFilter _filter4;
-        public IFilter Filter4
+        private IFilterable _filter4;
+        public IFilterable Filter4
         {
             get { return _filter4; }
             set
@@ -203,8 +203,8 @@ namespace H.Extensions.ViewModel
             }
         }
 
-        private IFilter _filter5;
-        public IFilter Filter5
+        private IFilterable _filter5;
+        public IFilterable Filter5
         {
             get { return _filter5; }
             set
@@ -215,9 +215,9 @@ namespace H.Extensions.ViewModel
             }
         }
 
-        private IFilter _filter6;
+        private IFilterable _filter6;
         /// <summary> 说明  </summary>
-        public IFilter Filter6
+        public IFilterable Filter6
         {
             get { return _filter6; }
             set
@@ -228,9 +228,9 @@ namespace H.Extensions.ViewModel
             }
         }
 
-        private IFilter _filter7;
+        private IFilterable _filter7;
         /// <summary> 说明  </summary>
-        public IFilter Filter7
+        public IFilterable Filter7
         {
             get { return _filter7; }
             set
@@ -240,9 +240,9 @@ namespace H.Extensions.ViewModel
                 this.RefreshPage();
             }
         }
-        private IFilter _filter8;
+        private IFilterable _filter8;
         /// <summary> 说明  </summary>
-        public IFilter Filter8
+        public IFilterable Filter8
         {
             get { return _filter8; }
             set
@@ -252,9 +252,9 @@ namespace H.Extensions.ViewModel
                 this.RefreshPage();
             }
         }
-        private IFilter _filter9;
+        private IFilterable _filter9;
         /// <summary> 说明  </summary>
-        public IFilter Filter9
+        public IFilterable Filter9
         {
             get { return _filter9; }
             set
@@ -265,9 +265,9 @@ namespace H.Extensions.ViewModel
             }
         }
 
-        private IFilter _filter10;
+        private IFilterable _filter10;
         /// <summary> 说明  </summary>
-        public IFilter Filter10
+        public IFilterable Filter10
         {
             get { return _filter10; }
             set
@@ -278,9 +278,9 @@ namespace H.Extensions.ViewModel
             }
         }
 
-        private IFilter _filter11;
+        private IFilterable _filter11;
         /// <summary> 说明  </summary>
-        public IFilter Filter11
+        public IFilterable Filter11
         {
             get { return _filter11; }
             set
@@ -291,9 +291,9 @@ namespace H.Extensions.ViewModel
             }
         }
 
-        private IFilter _filter12;
+        private IFilterable _filter12;
         /// <summary> 说明  </summary>
-        public IFilter Filter12
+        public IFilterable Filter12
         {
             get { return _filter12; }
             set
@@ -304,9 +304,9 @@ namespace H.Extensions.ViewModel
             }
         }
 
-        private IFilter _filter13;
+        private IFilterable _filter13;
         /// <summary> 说明  </summary>
-        public IFilter Filter13
+        public IFilterable Filter13
         {
             get { return _filter13; }
             set
@@ -317,9 +317,9 @@ namespace H.Extensions.ViewModel
             }
         }
 
-        private IFilter _filter14;
+        private IFilterable _filter14;
         /// <summary> 说明  </summary>
-        public IFilter Filter14
+        public IFilterable Filter14
         {
             get { return _filter14; }
             set
@@ -330,9 +330,9 @@ namespace H.Extensions.ViewModel
             }
         }
 
-        private IFilter _filter15;
+        private IFilterable _filter15;
         /// <summary> 说明  </summary>
-        public IFilter Filter15
+        public IFilterable Filter15
         {
             get { return _filter15; }
             set
@@ -342,8 +342,8 @@ namespace H.Extensions.ViewModel
                 this.RefreshPage();
             }
         }
-        private IOrder _order1;
-        public IOrder Order1
+        private IOrderable _order1;
+        public IOrderable Order1
         {
             get { return _order1; }
             set
@@ -354,8 +354,8 @@ namespace H.Extensions.ViewModel
             }
         }
 
-        private IOrder _order2;
-        public IOrder Order2
+        private IOrderable _order2;
+        public IOrderable Order2
         {
             get { return _order2; }
             set
@@ -366,8 +366,8 @@ namespace H.Extensions.ViewModel
             }
         }
 
-        private IOrder _order3;
-        public IOrder Order3
+        private IOrderable _order3;
+        public IOrderable Order3
         {
             get { return _order3; }
             set
