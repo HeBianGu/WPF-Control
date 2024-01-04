@@ -375,7 +375,13 @@
                           SelectedIndex="0" />
             </TabItem>
             <TabItem Header="TextBox">
-                <TextBox Text="12345566" />
+                <StackPanel>
+                    <TextBox Text="12345566" />
+                    <TextBox IsReadOnly="True"
+                             Text="12345566" />
+                    <TextBox IsEnabled="False"
+                             Text="12345566" />
+                </StackPanel>
             </TabItem>
             <TabItem Header="ListBox">
                 <ListBox h:Cattach.ItemHeight="Auto"
