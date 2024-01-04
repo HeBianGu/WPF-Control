@@ -5,7 +5,8 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <ControlTemplate x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
+    <ControlTemplate x:Key="ComboBoxToggleButton"
+                     TargetType="{x:Type ToggleButton}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
@@ -43,22 +44,30 @@
                     <VisualState x:Name="Normal" />
                     <VisualState x:Name="MouseOver">
                         <Storyboard>
-                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
+                                                          Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                                <EasingColorKeyFrame KeyTime="0"
+                                                     Value="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
                             </ColorAnimationUsingKeyFrames>
                         </Storyboard>
                     </VisualState>
                     <VisualState x:Name="Pressed" />
                     <VisualState x:Name="Disabled">
                         <Storyboard>
-                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
+                                                          Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                                <EasingColorKeyFrame KeyTime="0"
+                                                     Value="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
                             </ColorAnimationUsingKeyFrames>
-                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Arrow" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
-                                <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Arrow"
+                                                          Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
+                                <EasingColorKeyFrame KeyTime="0"
+                                                     Value="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
                             </ColorAnimationUsingKeyFrames>
-                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)">
-                                <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
+                                                          Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)">
+                                <EasingColorKeyFrame KeyTime="0"
+                                                     Value="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
                             </ColorAnimationUsingKeyFrames>
                         </Storyboard>
                     </VisualState>
@@ -66,8 +75,10 @@
                 <VisualStateGroup x:Name="CheckStates">
                     <VisualState x:Name="Checked">
                         <Storyboard>
-                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.Selected}}" />
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
+                                                          Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                                <EasingColorKeyFrame KeyTime="0"
+                                                     Value="{DynamicResource {x:Static ColorKeys.Selected}}" />
                             </ColorAnimationUsingKeyFrames>
                         </Storyboard>
                     </VisualState>
@@ -90,88 +101,15 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
-                    <Border x:Name="Border"
-                            Background="Transparent"
-                            BorderBrush="Transparent"
-                            BorderThickness="1">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
                         <ContentPresenter Margin="{TemplateBinding Padding}"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                           RecognizesAccessKey="True" />
                     </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsChecked" Value="True">
-                            <Setter TargetName="Border" Property="Background">
-                                <Setter.Value>
-                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
-                                </Setter.Value>
-                            </Setter>
-                            <Setter TargetName="Border" Property="BorderBrush">
-                                <Setter.Value>
-                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrushTitle}}" />
-                                </Setter.Value>
-                            </Setter>
-                        </Trigger>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Border" Property="Background">
-                                <Setter.Value>
-                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
-                                </Setter.Value>
-                            </Setter>
-                            <Setter TargetName="Border" Property="BorderBrush">
-                                <Setter.Value>
-                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrushTitle}}" />
-                                </Setter.Value>
-                            </Setter>
-                        </Trigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="IsChecked" Value="True" />
-                                <Condition Property="IsMouseOver" Value="True" />
-                            </MultiTrigger.Conditions>
-                            <Setter TargetName="Border" Property="Background">
-                                <Setter.Value>
-                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-                                </Setter.Value>
-                            </Setter>
-                        </MultiTrigger>
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="Border" Property="Background">
-                                <Setter.Value>
-                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
-                                </Setter.Value>
-                            </Setter>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.ToggleButton.Geometry,
-                                        TypeInTargetAssembly={x:Type local:ToggleButtonKeys}}"
-           BasedOn="{StaticResource S.Control.Base}"
-           TargetType="ToggleButton">
-        <Setter Property="Cursor" Value="Hand" />
-        <Setter Property="Width" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
-        <Setter Property="Height" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
-        <Setter Property="Padding" Value="10" />
-        <Setter Property="Background" Value="Transparent" />
-        <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="BorderBrush" Value="Transparent" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type ToggleButton}">
-                    <Border x:Name="Border"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}">
-                        <Path Margin="{TemplateBinding Padding}"
-                              Data="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Content}"
-                              Fill="{TemplateBinding Foreground}"
-                              Stretch="Uniform"
-                              Stroke="{TemplateBinding Foreground}" />
-                    </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -231,6 +169,35 @@
         </Style.Triggers>
     </Style>
 
+    <Style x:Key="{ComponentResourceKey ResourceId=S.ToggleButton.Geometry,
+                                        TypeInTargetAssembly={x:Type local:ToggleButtonKeys}}"
+           BasedOn="{StaticResource {x:Static local:ToggleButtonKeys.Default}}"
+           TargetType="ToggleButton">
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Width" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
+        <Setter Property="Height" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
+        <Setter Property="Padding" Value="10" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Border x:Name="Border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <Path Margin="{TemplateBinding Padding}"
+                              Data="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Content}"
+                              Fill="{TemplateBinding Foreground}"
+                              Stretch="Uniform"
+                              Stroke="{TemplateBinding Foreground}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 
     <Style x:Key="{ComponentResourceKey ResourceId=S.ToggleButton.Switch,
                                         TypeInTargetAssembly={x:Type local:ToggleButtonKeys}}"
@@ -245,5 +212,6 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    <Style BasedOn="{StaticResource {x:Static local:ToggleButtonKeys.Default}}" TargetType="ToggleButton" />
+    <Style BasedOn="{StaticResource {x:Static local:ToggleButtonKeys.Default}}"
+           TargetType="ToggleButton" />
 </ResourceDictionary>
