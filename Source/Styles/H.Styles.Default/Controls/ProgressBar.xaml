@@ -31,7 +31,8 @@
                             <Border.BorderBrush>
                                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
                             </Border.BorderBrush>
-                            <Grid x:Name="Animation" ClipToBounds="True">
+                            <Grid x:Name="Animation"
+                                  ClipToBounds="True">
                                 <Rectangle x:Name="PART_GlowRect"
                                            Width="100"
                                            Margin="-100,0,0,0"
@@ -65,7 +66,6 @@
                                                 </DiscreteObjectKeyFrame.Value>
                                             </DiscreteObjectKeyFrame>
                                         </ObjectAnimationUsingKeyFrames>
-
                                     </Storyboard>
                                 </VisualState>
                             </VisualStateGroup>
@@ -85,6 +85,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style BasedOn="{StaticResource {x:Static local:ProgressBarKeys.Default}}" TargetType="ProgressBar" />
+    <Style BasedOn="{StaticResource {x:Static local:ProgressBarKeys.Default}}"
+           TargetType="ProgressBar" />
 
 </ResourceDictionary>
