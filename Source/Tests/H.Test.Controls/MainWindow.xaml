@@ -378,7 +378,8 @@
                 <TextBox Text="12345566" />
             </TabItem>
             <TabItem Header="ListBox">
-                <ListBox ItemsSource="{h:GetStudents Count=50}"
+                <ListBox h:Cattach.ItemHeight="Auto"
+                         ItemsSource="{h:GetStudents Count=50}"
                          SelectedIndex="0" />
             </TabItem>
             <TabItem Header="ListView">
@@ -406,7 +407,8 @@
             </TabItem>
             <TabItem Header="GroupBox">
                 <GroupBox Header="GroupBox">
-                    <ListBox ItemsSource="{h:GetStudents Count=50}" />
+                    <ListBox h:Cattach.ItemHeight="Auto"
+                             ItemsSource="{h:GetStudents Count=50}" />
                 </GroupBox>
             </TabItem>
             <TabItem Header="Label">
@@ -415,11 +417,13 @@
             <TabItem Header="Expander">
                 <Expander Header="Expander"
                           IsExpanded="True">
-                    <ListBox ItemsSource="{h:GetStudents Count=50}" />
+                    <ListBox h:Cattach.ItemHeight="Auto"
+                             ItemsSource="{h:GetStudents Count=50}" />
                 </Expander>
             </TabItem>
             <TabItem Header="ListBox">
-                <ListBox ItemsSource="{h:GetStudents Count=50}"
+                <ListBox h:Cattach.ItemHeight="Auto"
+                         ItemsSource="{h:GetStudents Count=50}"
                          SelectedIndex="0" />
             </TabItem>
             <TabItem Header="PasswordBox">
@@ -447,7 +451,8 @@
             </TabItem>
             <TabItem Header="ScrollViewer">
                 <ScrollViewer>
-                    <ListBox ItemsSource="{h:GetStudents Count=50}"
+                    <ListBox h:Cattach.ItemHeight="Auto"
+                             ItemsSource="{h:GetStudents Count=50}"
                              SelectedIndex="0" />
                 </ScrollViewer>
             </TabItem>
