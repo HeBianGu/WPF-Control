@@ -13,22 +13,25 @@
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <!--<Setter Property="OverridesDefaultStyle" Value="true" />-->
         <Setter Property="FocusVisualStyle" Value="{DynamicResource CheckBoxFocusVisual}" />
+        <Setter Property="Foreground">
+            <Setter.Value>
+                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionForeground}}" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Background" Value="{x:Null}" />
+        <Setter Property="BorderBrush" Value="{x:Null}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type CheckBox}">
-                    <BulletDecorator VerticalAlignment="Center" Background="Transparent">
+                    <BulletDecorator VerticalAlignment="Center"
+                                     Background="Transparent">
                         <BulletDecorator.Bullet>
                             <Border x:Name="Border"
                                     Width="13"
                                     Height="13"
+                                    BorderBrush="{TemplateBinding Foreground}"
                                     BorderThickness="1"
                                     CornerRadius="0">
-                                <Border.BorderBrush>
-                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
-                                </Border.BorderBrush>
-                                <Border.Background>
-                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
-                                </Border.Background>
                                 <Grid>
                                     <Path x:Name="CheckMark"
                                           Width="8"
@@ -36,26 +39,20 @@
                                           ClipToBounds="False"
                                           Data="M 0 2 L 2 7 L 2 7 L 8 0"
                                           SnapsToDevicePixels="False"
+                                          Stroke="{TemplateBinding Foreground}"
                                           StrokeDashCap="Round"
                                           StrokeEndLineCap="Triangle"
                                           StrokeStartLineCap="Triangle"
                                           StrokeThickness="1.5"
-                                          Visibility="Collapsed">
-                                        <Path.Stroke>
-                                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
-                                        </Path.Stroke>
-                                    </Path>
+                                          Visibility="Collapsed" />
                                     <Path x:Name="InderminateMark"
                                           Width="7"
                                           Height="7"
                                           Data="M 0 0 L 7 0L 7 7L 0 7Z"
+                                          Fill="{TemplateBinding Foreground}"
                                           SnapsToDevicePixels="False"
                                           StrokeThickness="2"
-                                          Visibility="Collapsed">
-                                        <Path.Fill>
-                                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundAssist}}" />
-                                        </Path.Fill>
-                                    </Path>
+                                          Visibility="Collapsed" />
                                 </Grid>
                             </Border>
                         </BulletDecorator.Bullet>
@@ -64,54 +61,66 @@
                                           VerticalAlignment="Center"
                                           RecognizesAccessKey="True" />
                         <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Normal" />
-                                <VisualState x:Name="MouseOver">
-                                    <Storyboard>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
-                                        </ColorAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Pressed">
-                                    <Storyboard>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.Selected}}" />
-                                        </ColorAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Disabled" />
-                            </VisualStateGroup>
                             <VisualStateGroup x:Name="CheckStates">
                                 <VisualState x:Name="Checked">
                                     <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CheckMark" Storyboard.TargetProperty="(UIElement.Visibility)">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}" />
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CheckMark"
+                                                                       Storyboard.TargetProperty="(UIElement.Visibility)">
+                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                    Value="{x:Static Visibility.Visible}" />
                                         </ObjectAnimationUsingKeyFrames>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-                                        </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Unchecked" />
                                 <VisualState x:Name="Indeterminate">
                                     <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="InderminateMark" Storyboard.TargetProperty="(UIElement.Visibility)">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}" />
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="InderminateMark"
+                                                                       Storyboard.TargetProperty="(UIElement.Visibility)">
+                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                    Value="{x:Static Visibility.Visible}" />
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
                     </BulletDecorator>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" Value="0.6" />
-                        </Trigger>
-                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.6" />
+            </Trigger>
+            <Trigger Property="IsChecked" Value="true">
+                <Setter Property="Foreground">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundTitle}}" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Foreground">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundTitle}}" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="true">
+                <Setter Property="Opacity" Value="0.6" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
-    <Style BasedOn="{StaticResource {x:Static local:CheckBoxKeys.Default}}" TargetType="CheckBox" />
+    <Style BasedOn="{StaticResource {x:Static local:CheckBoxKeys.Default}}"
+           TargetType="CheckBox" />
 </ResourceDictionary>

@@ -332,10 +332,13 @@
             <TabItem Header="CheckBox">
                 <ItemsControl>
                     <CheckBox Content="CheckBox"
+                              IsChecked="True"
                               IsThreeState="True" />
                     <CheckBox Content="CheckBox"
+                              IsChecked="False"
                               IsThreeState="True" />
                     <CheckBox Content="CheckBox"
+                              IsChecked="{x:Null}"
                               IsThreeState="True" />
                     <CheckBox Content="CheckBox"
                               IsThreeState="True" />

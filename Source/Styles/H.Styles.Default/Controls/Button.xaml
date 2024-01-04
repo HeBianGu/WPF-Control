@@ -78,11 +78,6 @@
             </Trigger>
             <Trigger Property="IsPressed" Value="true">
                 <Setter Property="Opacity" Value="0.6" />
-                <Setter Property="Background">
-                    <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
-                    </Setter.Value>
-                </Setter>
             </Trigger>
             <Trigger Property="IsMouseOver" Value="true">
                 <Setter Property="Foreground">
