@@ -77,7 +77,7 @@
                 <Setter Property="Opacity" Value="0.6" />
             </Trigger>
             <Trigger Property="IsPressed" Value="true">
-                <Setter Property="Opacity" Value="0.6" />
+                <Setter Property="Opacity" Value="0.8" />
             </Trigger>
             <Trigger Property="IsMouseOver" Value="true">
                 <Setter Property="Foreground">
