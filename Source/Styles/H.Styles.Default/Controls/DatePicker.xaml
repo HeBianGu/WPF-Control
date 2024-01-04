@@ -6,14 +6,8 @@
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Share.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Controls/Calendar.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <!--
-        In this example, an implecit style for Calendar is defined elsewhere
-        in the application.  DatePickerCalendarStyle is based on the implicit
-        style so that the DatePicker will use the application's calendar style.
-    -->
-    <!--<Style x:Key="DatePickerCalendarStyle" BasedOn="{StaticResource {x:Type Calendar}}" TargetType="{x:Type Calendar}" />-->
-
-    <Style BasedOn="{StaticResource S.Control.Base}" TargetType="{x:Type DatePickerTextBox}">
+    <Style BasedOn="{StaticResource S.Control.Base}"
+           TargetType="{x:Type DatePickerTextBox}">
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <!--<Setter Property="OverridesDefaultStyle" Value="True" />-->
         <Setter Property="KeyboardNavigation.TabNavigation" Value="None" />
@@ -33,63 +27,71 @@
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
             </Setter.Value>
         </Setter>
+        <Setter Property="Background">
+            <Setter.Value>
+                <SolidColorBrush Color="Transparent" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderBrush">
+            <Setter.Value>
+                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
+            </Setter.Value>
+        </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBoxBase}">
                     <Border Name="Border"
                             Padding="0"
-                            BorderThickness="0"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="2">
-                        <Border.Background>
-                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
-                        </Border.Background>
-                        <Border.BorderBrush>
-                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-                        </Border.BorderBrush>
-                        <ScrollViewer x:Name="PART_ContentHost" Margin="0" />
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Normal" />
-                                <VisualState x:Name="Disabled">
-                                    <Storyboard>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.BackgroundDisabled}}" />
-                                        </ColorAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="ReadOnly">
-                                    <Storyboard>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.Dark0_3}}" />
-                                        </ColorAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="MouseOver">
-                                    <Storyboard>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
-                                        </ColorAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
-                            </VisualStateGroup>
-                            <VisualStateGroup x:Name="FocusStates">
-                                <VisualState x:Name="Unfocused" />
-                                <VisualState x:Name="Focused">
-                                    <Storyboard>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.Selected}}" />
-                                        </ColorAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
+                        <ScrollViewer x:Name="PART_ContentHost"
+                                      Margin="0" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="Opacity" Value="0.5" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="IsFocused" Value="true">
+                <Setter Property="Foreground">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundTitle}}" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="IsReadOnly" Value="true">
+                <Setter Property="Foreground">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
     </Style>
-    <!--  The template for the button that displays the calendar.  -->
-    <Style x:Key="DropDownButtonStyle" TargetType="Button">
+
+    <Style x:Key="DropDownButtonStyle"
+           TargetType="Button">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -208,8 +210,10 @@
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualStateGroup.Transitions>
                                     <VisualTransition GeneratedDuration="0" />
-                                    <VisualTransition GeneratedDuration="0:0:0.1" To="MouseOver" />
-                                    <VisualTransition GeneratedDuration="0:0:0.1" To="Pressed" />
+                                    <VisualTransition GeneratedDuration="0:0:0.1"
+                                                      To="MouseOver" />
+                                    <VisualTransition GeneratedDuration="0:0:0.1"
+                                                      To="Pressed" />
                                 </VisualStateGroup.Transitions>
                                 <VisualState x:Name="Normal" />
                                 <VisualState x:Name="MouseOver">
@@ -218,13 +222,15 @@
                                                                       Storyboard.TargetName="BackgroundGradient"
                                                                       Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
                                                                       Duration="00:00:00.001">
-                                            <SplineColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.ForegroundTitle}}" />
+                                            <SplineColorKeyFrame KeyTime="0"
+                                                                 Value="{DynamicResource {x:Static ColorKeys.ForegroundTitle}}" />
                                         </ColorAnimationUsingKeyFrames>
                                         <ColorAnimationUsingKeyFrames BeginTime="0"
                                                                       Storyboard.TargetName="BackgroundGradient"
                                                                       Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
                                                                       Duration="00:00:00.001">
-                                            <SplineColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.ForegroundTitle}}" />
+                                            <SplineColorKeyFrame KeyTime="0"
+                                                                 Value="{DynamicResource {x:Static ColorKeys.ForegroundTitle}}" />
                                         </ColorAnimationUsingKeyFrames>
                                         <ColorAnimation Storyboard.TargetName="Background"
                                                         Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
@@ -234,7 +240,8 @@
                                                                       Storyboard.TargetName="BackgroundGradient"
                                                                       Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
                                                                       Duration="00:00:00.001">
-                                            <SplineColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.ForegroundTitle}}" />
+                                            <SplineColorKeyFrame KeyTime="0"
+                                                                 Value="{DynamicResource {x:Static ColorKeys.ForegroundTitle}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -244,37 +251,43 @@
                                                                       Storyboard.TargetName="Background"
                                                                       Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
                                                                       Duration="00:00:00.001">
-                                            <SplineColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.ForegroundAssist}}" />
+                                            <SplineColorKeyFrame KeyTime="0"
+                                                                 Value="{DynamicResource {x:Static ColorKeys.ForegroundAssist}}" />
                                         </ColorAnimationUsingKeyFrames>
                                         <DoubleAnimationUsingKeyFrames BeginTime="0"
                                                                        Storyboard.TargetName="Highlight"
                                                                        Storyboard.TargetProperty="(UIElement.Opacity)"
                                                                        Duration="00:00:00.001">
-                                            <SplineDoubleKeyFrame KeyTime="0" Value="1" />
+                                            <SplineDoubleKeyFrame KeyTime="0"
+                                                                  Value="1" />
                                         </DoubleAnimationUsingKeyFrames>
                                         <ColorAnimationUsingKeyFrames BeginTime="0"
                                                                       Storyboard.TargetName="BackgroundGradient"
                                                                       Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
                                                                       Duration="00:00:00.001">
-                                            <SplineColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.ForegroundAssist}}" />
+                                            <SplineColorKeyFrame KeyTime="0"
+                                                                 Value="{DynamicResource {x:Static ColorKeys.ForegroundAssist}}" />
                                         </ColorAnimationUsingKeyFrames>
                                         <ColorAnimationUsingKeyFrames BeginTime="0"
                                                                       Storyboard.TargetName="BackgroundGradient"
                                                                       Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
                                                                       Duration="00:00:00.001">
-                                            <SplineColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.ForegroundAssist}}" />
+                                            <SplineColorKeyFrame KeyTime="0"
+                                                                 Value="{DynamicResource {x:Static ColorKeys.ForegroundAssist}}" />
                                         </ColorAnimationUsingKeyFrames>
                                         <ColorAnimationUsingKeyFrames BeginTime="0"
                                                                       Storyboard.TargetName="BackgroundGradient"
                                                                       Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
                                                                       Duration="00:00:00.001">
-                                            <SplineColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.ForegroundAssist}}" />
+                                            <SplineColorKeyFrame KeyTime="0"
+                                                                 Value="{DynamicResource {x:Static ColorKeys.ForegroundAssist}}" />
                                         </ColorAnimationUsingKeyFrames>
                                         <ColorAnimationUsingKeyFrames BeginTime="0"
                                                                       Storyboard.TargetName="BackgroundGradient"
                                                                       Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
                                                                       Duration="00:00:00.001">
-                                            <SplineColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.ForegroundAssist}}" />
+                                            <SplineColorKeyFrame KeyTime="0"
+                                                                 Value="{DynamicResource {x:Static ColorKeys.ForegroundAssist}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -302,14 +315,16 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DatePicker}">
-                    <Border Padding="{TemplateBinding Padding}" BorderThickness="{TemplateBinding BorderThickness}">
+                    <Border Padding="{TemplateBinding Padding}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
                         <Border.BorderBrush>
                             <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
                         </Border.BorderBrush>
                         <Border.Background>
                             <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
                         </Border.Background>
-                        <Grid x:Name="PART_Root" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+                        <Grid x:Name="PART_Root"
+                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
@@ -383,6 +398,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style BasedOn="{StaticResource {x:Static local:DatePickerKeys.Default}}" TargetType="DatePicker" />
+    <Style BasedOn="{StaticResource {x:Static local:DatePickerKeys.Default}}"
+           TargetType="DatePicker" />
 
 </ResourceDictionary>

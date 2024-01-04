@@ -5,26 +5,42 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style x:Key="{ComponentResourceKey ResourceId=S.DocumentViewer.Default, TypeInTargetAssembly={x:Type local:DocumentViewerKeys}}" TargetType="{x:Type DocumentViewer}">
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
-        <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
+    <Style x:Key="{ComponentResourceKey ResourceId=S.DocumentViewer.Default,
+                                        TypeInTargetAssembly={x:Type local:DocumentViewerKeys}}"
+           TargetType="{x:Type DocumentViewer}">
+
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Foreground">
+            <Setter.Value>
+                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Background">
+            <Setter.Value>
+                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderBrush">
+            <Setter.Value>
+                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DocumentViewer}">
-                    <Border BorderBrush="{TemplateBinding BorderBrush}"
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             Focusable="False">
                         <Grid KeyboardNavigation.TabNavigation="Local">
-                            <Grid.Background>
-                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
-                            </Grid.Background>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="*" />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <ToolBar KeyboardNavigation.TabNavigation="Continue" ToolBarTray.IsLocked="True">
+                            <ToolBar KeyboardNavigation.TabNavigation="Continue"
+                                     ToolBarTray.IsLocked="True">
                                 <Button Command="ApplicationCommands.Print"
                                         CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                         Content="Print" />
@@ -58,21 +74,20 @@
 
                             <ScrollViewer x:Name="PART_ContentHost"
                                           Grid.Row="1"
+                                          Background="{TemplateBinding Background}"
                                           CanContentScroll="true"
                                           HorizontalScrollBarVisibility="Auto"
-                                          IsTabStop="true">
-                                <ScrollViewer.Background>
-                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
-                                </ScrollViewer.Background>
-                            </ScrollViewer>
+                                          IsTabStop="true" />
 
-                            <ContentControl x:Name="PART_FindToolBarHost" Grid.Row="2" />
+                            <ContentControl x:Name="PART_FindToolBarHost"
+                                            Grid.Row="2" />
                         </Grid>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-    <Style BasedOn="{StaticResource {x:Static local:DocumentViewerKeys.Default}}" TargetType="DocumentViewer" />
+    <Style BasedOn="{StaticResource {x:Static local:DocumentViewerKeys.Default}}"
+           TargetType="DocumentViewer" />
 
 </ResourceDictionary>
