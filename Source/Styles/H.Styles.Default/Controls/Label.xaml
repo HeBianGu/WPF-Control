@@ -5,7 +5,9 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Label.Default, TypeInTargetAssembly={x:Type local:LabelKeys}}" TargetType="Label">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Label.Default,
+                                        TypeInTargetAssembly={x:Type local:LabelKeys}}"
+           TargetType="Label">
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Top" />
         <Setter Property="Foreground">
@@ -21,19 +23,15 @@
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                           RecognizesAccessKey="True" />
                     </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Foreground">
-                                <Setter.Value>
-                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
-                                </Setter.Value>
-                            </Setter>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="Opacity" Value="0.5" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
-    <Style BasedOn="{StaticResource {x:Static local:LabelKeys.Default}}" TargetType="Label" />
-
+    <Style BasedOn="{StaticResource {x:Static local:LabelKeys.Default}}"
+           TargetType="Label" />
 </ResourceDictionary>
