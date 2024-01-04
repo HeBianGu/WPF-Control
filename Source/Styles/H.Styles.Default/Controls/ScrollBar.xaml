@@ -5,32 +5,40 @@
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="ScrollBarLineButton" TargetType="{x:Type RepeatButton}">
+    <Style x:Key="ScrollBarLineButton"
+           TargetType="{x:Type RepeatButton}">
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="Focusable" Value="false" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <SolidColorBrush Color="Transparent" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderBrush">
+            <Setter.Value>
+                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Foreground">
+            <Setter.Value>
+                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RepeatButton}">
-                    <Border x:Name="Border"
-                            Margin="1"
-                            BorderThickness="1"
+                    <Border Margin="1"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="2">
-                        <Border.BorderBrush>
-                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-                        </Border.BorderBrush>
-                        <Border.Background>
-                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
-                        </Border.Background>
-                        <Path x:Name="Arrow"
-                              HorizontalAlignment="Center"
+                        <Path HorizontalAlignment="Center"
                               VerticalAlignment="Center"
-                              Data="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}">
-                            <Path.Fill>
-                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
-                            </Path.Fill>
-                        </Path>
-                        <VisualStateManager.VisualStateGroups>
+                              Data="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}"
+                              Fill="{TemplateBinding Foreground}" />
+                        <!--<VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal" />
                                 <VisualState x:Name="MouseOver">
@@ -55,14 +63,39 @@
                                     </Storyboard>
                                 </VisualState>
                             </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
+                        </VisualStateManager.VisualStateGroups>-->
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="Opacity" Value="0.5" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Foreground">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundTitle}}" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrushTitle}}" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="true">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrushAssist}}" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
-    <Style x:Key="ScrollBarPageButton" TargetType="{x:Type RepeatButton}">
+    <Style x:Key="ScrollBarPageButton"
+           TargetType="{x:Type RepeatButton}">
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <!--<Setter Property="OverridesDefaultStyle" Value="true" />-->
         <Setter Property="IsTabStop" Value="false" />
@@ -76,38 +109,60 @@
         </Setter>
     </Style>
 
-    <Style x:Key="ScrollBarThumb" TargetType="{x:Type Thumb}">
+    <Style x:Key="ScrollBarThumb"
+           TargetType="{x:Type Thumb}">
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="IsTabStop" Value="false" />
         <Setter Property="Focusable" Value="false" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderBrush">
+            <Setter.Value>
+                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
+            </Setter.Value>
+        </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
-                    <Border x:Name="Border"
-                            Background="{TemplateBinding Background}"
+                    <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="1"
                             CornerRadius="2">
-                        <VisualStateManager.VisualStateGroups>
+                        <!--<VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal" />
                                 <VisualState x:Name="MouseOver">
                                     <Storyboard>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.BorderBrushTitle}}" />
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
+                                                                      Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                                                 Value="{DynamicResource {x:Static ColorKeys.BorderBrushTitle}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                             </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
+                        </VisualStateManager.VisualStateGroups>-->
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrushTitle}}" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
-    <ControlTemplate x:Key="VerticalScrollBar" TargetType="{x:Type ScrollBar}">
+    <ControlTemplate x:Key="VerticalScrollBar"
+                     TargetType="{x:Type ScrollBar}">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition MaxHeight="18" />
@@ -130,20 +185,23 @@
                    Grid.Row="1"
                    IsDirectionReversed="true">
                 <Track.DecreaseRepeatButton>
-                    <RepeatButton Command="ScrollBar.PageUpCommand" Style="{StaticResource ScrollBarPageButton}" />
+                    <RepeatButton Command="ScrollBar.PageUpCommand"
+                                  Style="{StaticResource ScrollBarPageButton}" />
                 </Track.DecreaseRepeatButton>
                 <Track.Thumb>
-                    <Thumb Margin="1,0,1,0" Style="{StaticResource ScrollBarThumb}">
-                        <Thumb.BorderBrush>
+                    <Thumb Margin="1,0,1,0"
+                           Style="{StaticResource ScrollBarThumb}">
+                        <!--<Thumb.BorderBrush>
                             <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
                         </Thumb.BorderBrush>
                         <Thumb.Background>
                             <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-                        </Thumb.Background>
+                        </Thumb.Background>-->
                     </Thumb>
                 </Track.Thumb>
                 <Track.IncreaseRepeatButton>
-                    <RepeatButton Command="ScrollBar.PageDownCommand" Style="{StaticResource ScrollBarPageButton}" />
+                    <RepeatButton Command="ScrollBar.PageDownCommand"
+                                  Style="{StaticResource ScrollBarPageButton}" />
                 </Track.IncreaseRepeatButton>
             </Track>
             <RepeatButton Grid.Row="3"
@@ -154,14 +212,16 @@
         </Grid>
     </ControlTemplate>
 
-    <ControlTemplate x:Key="HorizontalScrollBar" TargetType="{x:Type ScrollBar}">
+    <ControlTemplate x:Key="HorizontalScrollBar"
+                     TargetType="{x:Type ScrollBar}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition MaxWidth="18" />
                 <ColumnDefinition Width="0.00001*" />
                 <ColumnDefinition MaxWidth="18" />
             </Grid.ColumnDefinitions>
-            <Border Grid.ColumnSpan="3" CornerRadius="2">
+            <Border Grid.ColumnSpan="3"
+                    CornerRadius="2">
                 <Border.Background>
                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
                 </Border.Background>
@@ -175,10 +235,12 @@
                    Grid.Column="1"
                    IsDirectionReversed="False">
                 <Track.DecreaseRepeatButton>
-                    <RepeatButton Command="ScrollBar.PageLeftCommand" Style="{StaticResource ScrollBarPageButton}" />
+                    <RepeatButton Command="ScrollBar.PageLeftCommand"
+                                  Style="{StaticResource ScrollBarPageButton}" />
                 </Track.DecreaseRepeatButton>
                 <Track.Thumb>
-                    <Thumb Margin="0,1,0,1" Style="{StaticResource ScrollBarThumb}">
+                    <Thumb Margin="0,1,0,1"
+                           Style="{StaticResource ScrollBarThumb}">
                         <Thumb.BorderBrush>
                             <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
                         </Thumb.BorderBrush>
@@ -188,7 +250,8 @@
                     </Thumb>
                 </Track.Thumb>
                 <Track.IncreaseRepeatButton>
-                    <RepeatButton Command="ScrollBar.PageRightCommand" Style="{StaticResource ScrollBarPageButton}" />
+                    <RepeatButton Command="ScrollBar.PageRightCommand"
+                                  Style="{StaticResource ScrollBarPageButton}" />
                 </Track.IncreaseRepeatButton>
             </Track>
             <RepeatButton Grid.Column="3"
@@ -199,7 +262,9 @@
         </Grid>
     </ControlTemplate>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.ScrollBar.Default, TypeInTargetAssembly={x:Type local:ScrollBarKeys}}" TargetType="{x:Type ScrollBar}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.ScrollBar.Default,
+                                        TypeInTargetAssembly={x:Type local:ScrollBarKeys}}"
+           TargetType="{x:Type ScrollBar}">
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <!--<Setter Property="OverridesDefaultStyle" Value="true" />-->
         <Style.Triggers>
@@ -215,6 +280,7 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    <Style BasedOn="{StaticResource {x:Static local:ScrollBarKeys.Default}}" TargetType="ScrollBar" />
+    <Style BasedOn="{StaticResource {x:Static local:ScrollBarKeys.Default}}"
+           TargetType="ScrollBar" />
 
 </ResourceDictionary>
