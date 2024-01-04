@@ -8,6 +8,27 @@
     <Style x:Key="{ComponentResourceKey ResourceId=S.GroupBox.Default,
                                         TypeInTargetAssembly={x:Type local:GroupBoxKeys}}"
            TargetType="GroupBox">
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <SolidColorBrush Color="Transparent" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderBrush">
+            <Setter.Value>
+                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Cattach.CaptionBackground">
+            <Setter.Value>
+                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Cattach.CaptionForeground">
+            <Setter.Value>
+                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionForeground}}" />
+            </Setter.Value>
+        </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="GroupBox">
@@ -18,33 +39,22 @@
                         </Grid.RowDefinitions>
                         <Border Grid.Row="0"
                                 Height="{DynamicResource {x:Static LayoutKeys.ItemHeight}}"
+                                Background="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionBackground)}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="1"
                                 CornerRadius="2,2,0,0">
-                            <Border.BorderBrush>
-                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-                            </Border.BorderBrush>
-                            <Border.Background>
-                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />
-                            </Border.Background>
                             <ContentPresenter Margin="4,0"
                                               VerticalAlignment="Center"
                                               ContentSource="Header"
-                                              RecognizesAccessKey="True">
-                                <TextElement.Foreground>
-                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionForeground}}" />
-                                </TextElement.Foreground>
-                            </ContentPresenter>
+                                              RecognizesAccessKey="True"
+                                              TextElement.Foreground="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionForeground)}" />
                         </Border>
 
                         <Border Grid.Row="1"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="1,0,1,1"
                                 CornerRadius="0,0,2,2">
-                            <Border.BorderBrush>
-                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-                            </Border.BorderBrush>
-                            <Border.Background>
-                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
-                            </Border.Background>
                             <ContentPresenter Margin="{TemplateBinding Padding}" />
                         </Border>
                     </Grid>

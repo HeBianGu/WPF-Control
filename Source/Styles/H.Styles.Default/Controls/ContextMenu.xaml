@@ -4,7 +4,9 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style x:Key="{ComponentResourceKey ResourceId=S.ContextMenu.Default, TypeInTargetAssembly={x:Type local:ContextMenuKeys}}" TargetType="{x:Type ContextMenu}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.ContextMenu.Default,
+                                        TypeInTargetAssembly={x:Type local:ContextMenuKeys}}"
+           TargetType="{x:Type ContextMenu}">
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <!--<Setter Property="OverridesDefaultStyle" Value="True" />-->
         <Setter Property="Grid.IsSharedSizeScope" Value="true" />
@@ -12,7 +14,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ContextMenu}">
-                    <Border x:Name="Border" BorderThickness="1">
+                    <Border x:Name="Border"
+                            BorderThickness="1">
                         <Border.Background>
                             <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
                         </Border.Background>
@@ -20,7 +23,8 @@
                             <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
                         </Border.BorderBrush>
                         <Grid>
-                            <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
+                            <StackPanel IsItemsHost="True"
+                                        KeyboardNavigation.DirectionalNavigation="Cycle" />
                             <Border IsHitTestVisible="False"
                                     Opacity="{Binding Source={x:Static local:WindowSetting.Instance}, Path=Opacity}"
                                     Visibility="{Binding ElementName=ib, Path=ImageSource, Converter={x:Static Converter.GetNullToCollapsed}}">
@@ -43,6 +47,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style BasedOn="{StaticResource {x:Static local:ContextMenuKeys.Default}}" TargetType="ContextMenu" />
+    <Style BasedOn="{StaticResource {x:Static local:ContextMenuKeys.Default}}"
+           TargetType="ContextMenu" />
 
 </ResourceDictionary>
