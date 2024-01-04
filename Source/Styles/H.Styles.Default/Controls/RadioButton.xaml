@@ -11,32 +11,30 @@
            TargetType="{x:Type RadioButton}">
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="SnapsToDevicePixels" Value="true" />
+        <Setter Property="Foreground">
+            <Setter.Value>
+                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionForeground}}" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Background" Value="{x:Null}" />
+        <Setter Property="BorderBrush" Value="{x:Null}" />
         <!--<Setter Property="OverridesDefaultStyle" Value="true" />-->
         <Setter Property="FocusVisualStyle" Value="{DynamicResource RadioButtonFocusVisual}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RadioButton}">
-                    <BulletDecorator VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Background="Transparent">
+                    <BulletDecorator VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                     Background="Transparent">
                         <BulletDecorator.Bullet>
                             <Grid>
-                                <Ellipse x:Name="Border"
-                                         Width="13"
+                                <Ellipse Width="13"
                                          Height="13"
-                                         StrokeThickness="1">
-                                    <Ellipse.Stroke>
-                                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
-                                    </Ellipse.Stroke>
-                                    <Ellipse.Fill>
-                                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
-                                    </Ellipse.Fill>
-                                </Ellipse>
+                                         Stroke="{TemplateBinding Foreground}"
+                                         StrokeThickness="1" />
                                 <Ellipse x:Name="CheckMark"
                                          Margin="4"
-                                         Visibility="Collapsed">
-                                    <Ellipse.Fill>
-                                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
-                                    </Ellipse.Fill>
-                                </Ellipse>
+                                         Fill="{TemplateBinding Foreground}"
+                                         Visibility="Collapsed" />
                             </Grid>
                         </BulletDecorator.Bullet>
                         <ContentPresenter Margin="4,0,0,0"
@@ -44,35 +42,13 @@
                                           VerticalAlignment="Center"
                                           RecognizesAccessKey="True" />
                         <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Normal" />
-                                <VisualState x:Name="MouseOver">
-                                    <Storyboard>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
-                                        </ColorAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Pressed">
-                                    <Storyboard>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.Selected}}" />
-                                        </ColorAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Disabled">
-                                    <Storyboard>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
-                                        </ColorAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
-                            </VisualStateGroup>
                             <VisualStateGroup x:Name="CheckStates">
                                 <VisualState x:Name="Checked">
                                     <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CheckMark" Storyboard.TargetProperty="(UIElement.Visibility)">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}" />
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CheckMark"
+                                                                       Storyboard.TargetProperty="(UIElement.Visibility)">
+                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                    Value="{x:Static Visibility.Visible}" />
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -84,7 +60,40 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>
-    <Style BasedOn="{StaticResource {x:Static local:RadioButtonKeys.Default}}" TargetType="RadioButton" />
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.6" />
+            </Trigger>
+            <Trigger Property="IsChecked" Value="true">
+                <Setter Property="Foreground">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundTitle}}" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
 
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Foreground">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundTitle}}" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="true">
+                <Setter Property="Opacity" Value="0.6" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style BasedOn="{StaticResource {x:Static local:RadioButtonKeys.Default}}"
+           TargetType="RadioButton" />
 </ResourceDictionary>

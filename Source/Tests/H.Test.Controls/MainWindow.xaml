@@ -429,7 +429,14 @@
                 <ProgressBar Value="50" />
             </TabItem>
             <TabItem Header="RadioButton">
-                <RadioButton Content="RadioButton" />
+                <StackPanel>
+                    <RadioButton Content="RadioButton" />
+                    <RadioButton Content="RadioButton" />
+                    <RadioButton Content="RadioButton" />
+                    <RadioButton Content="RadioButton" />
+                    <RadioButton Content="RadioButton" />
+                    <RadioButton Content="RadioButton" />
+                </StackPanel>
             </TabItem>
             <TabItem Header="RepeatButton">
                 <RepeatButton>
