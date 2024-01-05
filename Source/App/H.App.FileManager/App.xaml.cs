@@ -66,6 +66,10 @@ namespace H.App.FileManager
             services.AddSetting();
             services.AddAppService();
             services.AddTorrent();
+            services.AddFFMpeg(x=>
+            {
+                x.WorkingDirectory = "D:\\ffmpeg";
+            });
         }
 
         protected override void Configure(IApplicationBuilder app)
@@ -81,6 +85,8 @@ namespace H.App.FileManager
             {
                 x.LibvlcPath = "G:\\BaiduNetdiskDownload\\libvlc\\win-x64";
             });
+
+            app.UseFFMpeg();
         }
     }
 }

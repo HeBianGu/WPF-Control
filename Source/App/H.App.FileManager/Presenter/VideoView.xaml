@@ -106,12 +106,13 @@
                                VerticalAlignment="Center"
                                FontSize="15"
                                FontWeight="Bold"
-                               Foreground="Black"
-                               Text="{Binding TimeStamp, Converter={x:Static h:Converter.GetTimeSpanStrFromTicks}}">
+                               Foreground="Black">
                         <TextBlock.Effect>
                             <DropShadowEffect ShadowDepth="0"
                                               Color="White" />
                         </TextBlock.Effect>
+                        <Run Text="{Binding TimeStamp, Converter={x:Static h:Converter.GetTimeSpanStrFromTicks}}" />
+                        <Run Text="{Binding DisplayName}" />
                     </TextBlock>
                 </Grid>
             </DockPanel>

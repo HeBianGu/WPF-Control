@@ -2,6 +2,9 @@
 using H.Providers.Ioc;
 using H.Windows.Dialog;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -54,6 +57,27 @@ namespace H.Modules.Messages.Dialog
                 build?.Invoke(x);
             });
             return await Task.FromResult(r);
+        }
+
+        public async Task<bool> ShowForeach<T>(Func<IEnumerable<T>> list, Func<T, Tuple<bool, string>> itemAction, Action<IDialog> build = null)
+        {
+            return await this.ShowString<bool>((d, m) =>
+            {
+                m.Value = $"正在加载数据";
+                var finds = list.Invoke().ToList();
+                for (int i = 0; i < finds.Count; i++)
+                {
+                    if (d.IsCancel)
+                        return false;
+                    T item = finds[i];
+                    var tuple = itemAction?.Invoke(item);
+                    string success = tuple.Item1 ? "完成" : "错误";
+                    m.Value = $"[{i + 1}/{finds.Count}] {tuple.Item2} {success}";
+                }
+                m.Value = $"操作完成";
+                Thread.Sleep(500);
+                return true;
+            }, build);
         }
     }
 }

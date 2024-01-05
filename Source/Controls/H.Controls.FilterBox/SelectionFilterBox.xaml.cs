@@ -255,7 +255,7 @@ namespace H.Controls.FilterBox
             return propertyInfo;
         }
 
-        private IEnumerable GetItemsSource(PropertyInfo propertyInfo,List<object> datas)
+        private IEnumerable GetItemsSource(PropertyInfo propertyInfo, List<object> datas)
         {
             List<object> items = new List<object>();
             //yield return "全选";
@@ -263,12 +263,15 @@ namespace H.Controls.FilterBox
             {
                 if (data == null)
                     continue;
-                object value = data is IModelViewModel model ? propertyInfo.GetValue(model.GetModel()) : propertyInfo.GetValue(data);
-
+                object model = data;
+                if (data is IModelViewModel mv)
+                    model = mv.GetModel();
+                if (!this.Type.IsAssignableFrom(model.GetType()))
+                    continue;
+                object value = propertyInfo.GetValue(model);
                 if (items.Contains(value))
                     continue;
                 items.Add(value);
-                //yield return value;
             }
             var order = items.Order().ToList();
             if (this.UseCheckAll)
@@ -363,8 +366,14 @@ namespace H.Controls.FilterBox
             }
             foreach (object item in selectedItems)
             {
-                object value = obj is IModelViewModel model ? _propertyInfo.GetValue(model.GetModel())
-                    : _propertyInfo.GetValue(obj);
+                //object value = obj is IModelViewModel model ? _propertyInfo.GetValue(model.GetModel())
+                //    : _propertyInfo.GetValue(obj);
+                object model = obj;
+                if (obj is IModelViewModel mv)
+                    model = mv.GetModel();
+                if (!this._selectionFilterBox.Type.IsAssignableFrom(model.GetType()))
+                    continue;
+                object value = _propertyInfo.GetValue(model);
                 if (value == null && item == null)
                     return true;
                 if (value?.Equals(item) == true)

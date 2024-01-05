@@ -42,18 +42,25 @@
                           ShowButtons="True"
                           ShowSideButtons="True">
                 <h:OutlookBar.Sections>
-                    <h:OutlookSection Header="收藏夹" Visibility="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Setting.UseFavoritePath, Converter={x:Static h:Converter.GetTrueToVisible}}">
+                    <h:OutlookSection Header="收藏夹"
+                                      Visibility="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Setting.UseFavoritePath, Converter={x:Static h:Converter.GetTrueToVisible}}">
                         <h:OutlookSection.Image>
                             <DrawingImage>
                                 <DrawingImage.Drawing>
                                     <DrawingGroup>
                                         <DrawingGroup.Children>
-                                            <GeometryDrawing Brush="#00FFFFFF" Geometry="F1M16,16L0,16 0,0 16,0z" />
-                                            <GeometryDrawing Brush="#FFF6F6F6" Geometry="F1M13.4141,0L2.5861,0 9.99999999997669E-05,2.586 9.99999999997669E-05,9.414 0.3491,9.763C0.1251,10.298 9.99999999997669E-05,10.884 9.99999999997669E-05,11.5 9.99999999997669E-05,13.985 2.0151,16 4.5001,16 6.8141,16 8.6981,14.247 8.9501,12L13.4141,12 16.0001,9.414 16.0001,2.586z" />
-                                            <GeometryDrawing Brush="#FF414141" Geometry="F1M13,1L3,1 1,3 1,8.703C1.518,8.056,2.204,7.559,3,7.275L3,3.828 3.828,3 12.172,3 13,3.828 13,8.172 12.172,9 8.24,9C8.631,9.583,8.868,10.268,8.95,11L13,11 15,9 15,3z" />
-                                            <GeometryDrawing Brush="#FF414141" Geometry="F1M7.4858,9.7217L3.4998,13.7067 1.6468,11.8537 2.3538,11.1467 3.4998,12.2927 6.8608,8.9317C6.2378,8.3587 5.4138,7.9997 4.4998,7.9997 2.5678,7.9997 0.9998,9.5677 0.9998,11.4997 0.9998,13.4327 2.5678,14.9997 4.4998,14.9997 6.4328,14.9997 7.9998,13.4327 7.9998,11.4997 7.9998,10.8437 7.8018,10.2427 7.4858,9.7217 M7.4938,9.7127C7.4808,9.6907 7.4598,9.6747 7.4458,9.6537 7.4598,9.6757 7.4718,9.6997 7.4858,9.7217z M6.8608,8.9317C7.0898,9.1427 7.2778,9.3907 7.4458,9.6537 7.2798,9.3887 7.0898,9.1427 6.8608,8.9317" />
-                                            <GeometryDrawing Brush="#FFF0EFF1" Geometry="F1M12.1719,3L3.8279,3 2.9999,3.828 2.9999,7.275C3.4709,7.108 3.9709,7 4.4999,7 6.0599,7 7.4329,7.794 8.2399,9L12.1719,9 12.9999,8.172 12.9999,3.828z" />
-                                            <GeometryDrawing Brush="#FFF0EFF1" Geometry="F1M2.3535,11.1465L1.6465,11.8535 3.4995,13.7075 7.4945,9.7125C7.3205,9.4215,7.1095,9.1605,6.8615,8.9315L3.4995,12.2925z" />
+                                            <GeometryDrawing Brush="#00FFFFFF"
+                                                             Geometry="F1M16,16L0,16 0,0 16,0z" />
+                                            <GeometryDrawing Brush="#FFF6F6F6"
+                                                             Geometry="F1M13.4141,0L2.5861,0 9.99999999997669E-05,2.586 9.99999999997669E-05,9.414 0.3491,9.763C0.1251,10.298 9.99999999997669E-05,10.884 9.99999999997669E-05,11.5 9.99999999997669E-05,13.985 2.0151,16 4.5001,16 6.8141,16 8.6981,14.247 8.9501,12L13.4141,12 16.0001,9.414 16.0001,2.586z" />
+                                            <GeometryDrawing Brush="#FF414141"
+                                                             Geometry="F1M13,1L3,1 1,3 1,8.703C1.518,8.056,2.204,7.559,3,7.275L3,3.828 3.828,3 12.172,3 13,3.828 13,8.172 12.172,9 8.24,9C8.631,9.583,8.868,10.268,8.95,11L13,11 15,9 15,3z" />
+                                            <GeometryDrawing Brush="#FF414141"
+                                                             Geometry="F1M7.4858,9.7217L3.4998,13.7067 1.6468,11.8537 2.3538,11.1467 3.4998,12.2927 6.8608,8.9317C6.2378,8.3587 5.4138,7.9997 4.4998,7.9997 2.5678,7.9997 0.9998,9.5677 0.9998,11.4997 0.9998,13.4327 2.5678,14.9997 4.4998,14.9997 6.4328,14.9997 7.9998,13.4327 7.9998,11.4997 7.9998,10.8437 7.8018,10.2427 7.4858,9.7217 M7.4938,9.7127C7.4808,9.6907 7.4598,9.6747 7.4458,9.6537 7.4598,9.6757 7.4718,9.6997 7.4858,9.7217z M6.8608,8.9317C7.0898,9.1427 7.2778,9.3907 7.4458,9.6537 7.2798,9.3887 7.0898,9.1427 6.8608,8.9317" />
+                                            <GeometryDrawing Brush="#FFF0EFF1"
+                                                             Geometry="F1M12.1719,3L3.8279,3 2.9999,3.828 2.9999,7.275C3.4709,7.108 3.9709,7 4.4999,7 6.0599,7 7.4329,7.794 8.2399,9L12.1719,9 12.9999,8.172 12.9999,3.828z" />
+                                            <GeometryDrawing Brush="#FFF0EFF1"
+                                                             Geometry="F1M2.3535,11.1465L1.6465,11.8535 3.4995,13.7075 7.4945,9.7125C7.3205,9.4215,7.1095,9.1605,6.8615,8.9315L3.4995,12.2925z" />
                                         </DrawingGroup.Children>
                                     </DrawingGroup>
                                 </DrawingImage.Drawing>
@@ -73,7 +80,7 @@
                         <h:FavoriteFilterBox PropertyName="FavoritePath">
                             <b:Interaction.Triggers>
                                 <b:EventTrigger EventName="FilterChanged">
-                                    <b:ChangePropertyAction PropertyName="Filter10"
+                                    <b:ChangePropertyAction PropertyName="Filter11"
                                                             TargetObject="{Binding Collection}"
                                                             Value="{Binding RelativeSource={RelativeSource AncestorType=h:FavoriteFilterBox}, Path=Filter}" />
                                 </b:EventTrigger>
@@ -86,12 +93,18 @@
                                 <DrawingImage.Drawing>
                                     <DrawingGroup>
                                         <DrawingGroup.Children>
-                                            <GeometryDrawing Brush="#00FFFFFF" Geometry="F1M16,16L0,16 0,0 16,0z" />
-                                            <GeometryDrawing Brush="#FFF6F6F6" Geometry="F1M13.4141,0L2.5861,0 9.99999999997669E-05,2.586 9.99999999997669E-05,9.414 0.3491,9.763C0.1251,10.298 9.99999999997669E-05,10.884 9.99999999997669E-05,11.5 9.99999999997669E-05,13.985 2.0151,16 4.5001,16 6.8141,16 8.6981,14.247 8.9501,12L13.4141,12 16.0001,9.414 16.0001,2.586z" />
-                                            <GeometryDrawing Brush="#FF414141" Geometry="F1M13,1L3,1 1,3 1,8.703C1.518,8.056,2.204,7.559,3,7.275L3,3.828 3.828,3 12.172,3 13,3.828 13,8.172 12.172,9 8.24,9C8.631,9.583,8.868,10.268,8.95,11L13,11 15,9 15,3z" />
-                                            <GeometryDrawing Brush="#FF414141" Geometry="F1M7.4858,9.7217L3.4998,13.7067 1.6468,11.8537 2.3538,11.1467 3.4998,12.2927 6.8608,8.9317C6.2378,8.3587 5.4138,7.9997 4.4998,7.9997 2.5678,7.9997 0.9998,9.5677 0.9998,11.4997 0.9998,13.4327 2.5678,14.9997 4.4998,14.9997 6.4328,14.9997 7.9998,13.4327 7.9998,11.4997 7.9998,10.8437 7.8018,10.2427 7.4858,9.7217 M7.4938,9.7127C7.4808,9.6907 7.4598,9.6747 7.4458,9.6537 7.4598,9.6757 7.4718,9.6997 7.4858,9.7217z M6.8608,8.9317C7.0898,9.1427 7.2778,9.3907 7.4458,9.6537 7.2798,9.3887 7.0898,9.1427 6.8608,8.9317" />
-                                            <GeometryDrawing Brush="#FFF0EFF1" Geometry="F1M12.1719,3L3.8279,3 2.9999,3.828 2.9999,7.275C3.4709,7.108 3.9709,7 4.4999,7 6.0599,7 7.4329,7.794 8.2399,9L12.1719,9 12.9999,8.172 12.9999,3.828z" />
-                                            <GeometryDrawing Brush="#FFF0EFF1" Geometry="F1M2.3535,11.1465L1.6465,11.8535 3.4995,13.7075 7.4945,9.7125C7.3205,9.4215,7.1095,9.1605,6.8615,8.9315L3.4995,12.2925z" />
+                                            <GeometryDrawing Brush="#00FFFFFF"
+                                                             Geometry="F1M16,16L0,16 0,0 16,0z" />
+                                            <GeometryDrawing Brush="#FFF6F6F6"
+                                                             Geometry="F1M13.4141,0L2.5861,0 9.99999999997669E-05,2.586 9.99999999997669E-05,9.414 0.3491,9.763C0.1251,10.298 9.99999999997669E-05,10.884 9.99999999997669E-05,11.5 9.99999999997669E-05,13.985 2.0151,16 4.5001,16 6.8141,16 8.6981,14.247 8.9501,12L13.4141,12 16.0001,9.414 16.0001,2.586z" />
+                                            <GeometryDrawing Brush="#FF414141"
+                                                             Geometry="F1M13,1L3,1 1,3 1,8.703C1.518,8.056,2.204,7.559,3,7.275L3,3.828 3.828,3 12.172,3 13,3.828 13,8.172 12.172,9 8.24,9C8.631,9.583,8.868,10.268,8.95,11L13,11 15,9 15,3z" />
+                                            <GeometryDrawing Brush="#FF414141"
+                                                             Geometry="F1M7.4858,9.7217L3.4998,13.7067 1.6468,11.8537 2.3538,11.1467 3.4998,12.2927 6.8608,8.9317C6.2378,8.3587 5.4138,7.9997 4.4998,7.9997 2.5678,7.9997 0.9998,9.5677 0.9998,11.4997 0.9998,13.4327 2.5678,14.9997 4.4998,14.9997 6.4328,14.9997 7.9998,13.4327 7.9998,11.4997 7.9998,10.8437 7.8018,10.2427 7.4858,9.7217 M7.4938,9.7127C7.4808,9.6907 7.4598,9.6747 7.4458,9.6537 7.4598,9.6757 7.4718,9.6997 7.4858,9.7217z M6.8608,8.9317C7.0898,9.1427 7.2778,9.3907 7.4458,9.6537 7.2798,9.3887 7.0898,9.1427 6.8608,8.9317" />
+                                            <GeometryDrawing Brush="#FFF0EFF1"
+                                                             Geometry="F1M12.1719,3L3.8279,3 2.9999,3.828 2.9999,7.275C3.4709,7.108 3.9709,7 4.4999,7 6.0599,7 7.4329,7.794 8.2399,9L12.1719,9 12.9999,8.172 12.9999,3.828z" />
+                                            <GeometryDrawing Brush="#FFF0EFF1"
+                                                             Geometry="F1M2.3535,11.1465L1.6465,11.8535 3.4995,13.7075 7.4945,9.7125C7.3205,9.4215,7.1095,9.1605,6.8615,8.9315L3.4995,12.2925z" />
                                         </DrawingGroup.Children>
                                     </DrawingGroup>
                                 </DrawingImage.Drawing>
@@ -99,18 +112,21 @@
                         </h:OutlookSection.Image>
                         <ScrollViewer VerticalScrollBarVisibility="Auto">
                             <ItemsControl>
-                                <Expander Header="喜欢" Visibility="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Setting.UseFavorite, Converter={x:Static h:Converter.GetTrueToVisible}}">
+                                <Expander Header="喜欢"
+                                          Visibility="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Setting.UseFavorite, Converter={x:Static h:Converter.GetTrueToVisible}}">
                                     <h:FilterBox Margin="0,5"
                                                  HorizontalAlignment="Stretch"
                                                  HorizontalContentAlignment="Stretch"
                                                  SelectionMode="Multiple">
                                         <h:FilterBox.Filters>
-                                            <local:FavoriteFileFilter Name="未喜欢" Value="False" />
-                                            <local:FavoriteFileFilter Name="已喜欢" Value="True" />
+                                            <local:FavoriteFileFilter Name="未喜欢"
+                                                                      Value="False" />
+                                            <local:FavoriteFileFilter Name="已喜欢"
+                                                                      Value="True" />
                                         </h:FilterBox.Filters>
                                         <b:Interaction.Triggers>
                                             <b:EventTrigger EventName="FilterChanged">
-                                                <b:ChangePropertyAction PropertyName="Filter6"
+                                                <b:ChangePropertyAction PropertyName="Filter1"
                                                                         TargetObject="{Binding Collection}"
                                                                         Value="{Binding RelativeSource={RelativeSource AncestorType=h:FilterBox}, Path=Filter}" />
                                             </b:EventTrigger>
@@ -118,45 +134,60 @@
                                     </h:FilterBox>
                                 </Expander>
 
-                                <Expander Header="观看" Visibility="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Setting.UseWatched, Converter={x:Static h:Converter.GetTrueToVisible}}">
+                                <Expander Header="观看"
+                                          Visibility="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Setting.UseWatched, Converter={x:Static h:Converter.GetTrueToVisible}}">
                                     <h:FilterBox Margin="0,5"
                                                  HorizontalAlignment="Stretch"
                                                  HorizontalContentAlignment="Stretch"
                                                  SelectionMode="Multiple">
                                         <h:FilterBox.Filters>
-                                            <local:WatchedFileFilter Name="未观看" Value="False" />
-                                            <local:WatchedFileFilter Name="已观看" Value="True" />
+                                            <local:WatchedFileFilter Name="未观看"
+                                                                     Value="False" />
+                                            <local:WatchedFileFilter Name="已观看"
+                                                                     Value="True" />
                                         </h:FilterBox.Filters>
                                         <b:Interaction.Triggers>
                                             <b:EventTrigger EventName="FilterChanged">
-                                                <b:ChangePropertyAction PropertyName="Filter11"
+                                                <b:ChangePropertyAction PropertyName="Filter2"
                                                                         TargetObject="{Binding Collection}"
                                                                         Value="{Binding RelativeSource={RelativeSource AncestorType=h:FilterBox}, Path=Filter}" />
                                             </b:EventTrigger>
                                         </b:Interaction.Triggers>
                                     </h:FilterBox>
                                 </Expander>
-                                <Expander Header="评分" Visibility="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Setting.UseScore, Converter={x:Static h:Converter.GetTrueToVisible}}">
+                                <Expander Header="评分"
+                                          Visibility="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Setting.UseScore, Converter={x:Static h:Converter.GetTrueToVisible}}">
                                     <h:FilterBox Margin="0,5"
                                                  HorizontalAlignment="Stretch"
                                                  HorizontalContentAlignment="Stretch"
                                                  SelectionMode="Multiple">
                                         <h:FilterBox.Filters>
-                                            <local:ScoreFileFilter Name="0分" Value="0" />
-                                            <local:ScoreFileFilter Name="1分" Value="1" />
-                                            <local:ScoreFileFilter Name="2分" Value="2" />
-                                            <local:ScoreFileFilter Name="3分" Value="3" />
-                                            <local:ScoreFileFilter Name="4分" Value="4" />
-                                            <local:ScoreFileFilter Name="5分" Value="5" />
-                                            <local:ScoreFileFilter Name="6分" Value="6" />
-                                            <local:ScoreFileFilter Name="7分" Value="7" />
-                                            <local:ScoreFileFilter Name="8分" Value="8" />
-                                            <local:ScoreFileFilter Name="9分" Value="9" />
-                                            <local:ScoreFileFilter Name="10分" Value="10" />
+                                            <local:ScoreFileFilter Name="0分"
+                                                                   Value="0" />
+                                            <local:ScoreFileFilter Name="1分"
+                                                                   Value="1" />
+                                            <local:ScoreFileFilter Name="2分"
+                                                                   Value="2" />
+                                            <local:ScoreFileFilter Name="3分"
+                                                                   Value="3" />
+                                            <local:ScoreFileFilter Name="4分"
+                                                                   Value="4" />
+                                            <local:ScoreFileFilter Name="5分"
+                                                                   Value="5" />
+                                            <local:ScoreFileFilter Name="6分"
+                                                                   Value="6" />
+                                            <local:ScoreFileFilter Name="7分"
+                                                                   Value="7" />
+                                            <local:ScoreFileFilter Name="8分"
+                                                                   Value="8" />
+                                            <local:ScoreFileFilter Name="9分"
+                                                                   Value="9" />
+                                            <local:ScoreFileFilter Name="10分"
+                                                                   Value="10" />
                                         </h:FilterBox.Filters>
                                         <b:Interaction.Triggers>
                                             <b:EventTrigger EventName="FilterChanged">
-                                                <b:ChangePropertyAction PropertyName="Filter6"
+                                                <b:ChangePropertyAction PropertyName="Filter3"
                                                                         TargetObject="{Binding Collection}"
                                                                         Value="{Binding RelativeSource={RelativeSource AncestorType=h:FilterBox}, Path=Filter}" />
                                             </b:EventTrigger>
@@ -164,20 +195,24 @@
                                     </h:FilterBox>
                                 </Expander>
 
-                                <Expander Header="文件类型" Visibility="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Setting.UseFileType, Converter={x:Static h:Converter.GetTrueToVisible}}">
+                                <Expander Header="文件类型"
+                                          Visibility="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Setting.UseFileType, Converter={x:Static h:Converter.GetTrueToVisible}}">
                                     <h:FilterBox Margin="0,5"
                                                  HorizontalAlignment="Stretch"
                                                  HorizontalContentAlignment="Stretch"
                                                  SelectionMode="Multiple">
                                         <h:FilterBox.Filters>
-                                            <local:FileFilter Name="图片" Extensions="{x:Static h:FileExtension.ImageExtension}" />
-                                            <local:FileFilter Name="视频" Extensions="{x:Static h:FileExtension.VedioExtension}" />
-                                            <local:FileFilter Name="音频" Extensions="{x:Static h:FileExtension.AudioExtension}" />
+                                            <local:FileFilter Name="图片"
+                                                              Extensions="{x:Static h:FileExtension.ImageExtension}" />
+                                            <local:FileFilter Name="视频"
+                                                              Extensions="{x:Static h:FileExtension.VedioExtension}" />
+                                            <local:FileFilter Name="音频"
+                                                              Extensions="{x:Static h:FileExtension.AudioExtension}" />
                                             <!--<local:FileFilter Name="数据库" Extensions="db" />-->
                                         </h:FilterBox.Filters>
                                         <b:Interaction.Triggers>
                                             <b:EventTrigger EventName="FilterChanged">
-                                                <b:ChangePropertyAction PropertyName="Filter6"
+                                                <b:ChangePropertyAction PropertyName="Filter4"
                                                                         TargetObject="{Binding Collection}"
                                                                         Value="{Binding RelativeSource={RelativeSource AncestorType=h:FilterBox}, Path=Filter}" />
                                             </b:EventTrigger>
@@ -189,15 +224,30 @@
                                     <h:TagFilterBox PropertyName="Tags">
                                         <b:Interaction.Triggers>
                                             <b:EventTrigger EventName="FilterChanged">
-                                                <b:ChangePropertyAction PropertyName="Filter4"
+                                                <b:ChangePropertyAction PropertyName="Filter5"
                                                                         TargetObject="{Binding Collection}"
                                                                         Value="{Binding RelativeSource={RelativeSource AncestorType=h:TagFilterBox}, Path=Filter}" />
                                             </b:EventTrigger>
                                         </b:Interaction.Triggers>
                                     </h:TagFilterBox>
                                 </Expander>
-                                <Expander Header="国家/区域" Visibility="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Setting.UseAreaTag, Converter={x:Static h:Converter.GetTrueToVisible}}">
-                                    <h:TagFilterBox GroupName="Area" PropertyName="Area">
+                                <Expander Header="国家/区域"
+                                          Visibility="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Setting.UseAreaTag, Converter={x:Static h:Converter.GetTrueToVisible}}">
+                                    <h:TagFilterBox GroupName="Area"
+                                                    PropertyName="Area">
+                                        <b:Interaction.Triggers>
+                                            <b:EventTrigger EventName="FilterChanged">
+                                                <b:ChangePropertyAction PropertyName="Filter6"
+                                                                        TargetObject="{Binding Collection}"
+                                                                        Value="{Binding RelativeSource={RelativeSource AncestorType=h:TagFilterBox}, Path=Filter}" />
+                                            </b:EventTrigger>
+                                        </b:Interaction.Triggers>
+                                    </h:TagFilterBox>
+                                </Expander>
+                                <Expander Header="清晰度"
+                                          Visibility="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Setting.UseArticulationTag, Converter={x:Static h:Converter.GetTrueToVisible}}">
+                                    <h:TagFilterBox GroupName="Articulation"
+                                                    PropertyName="Articulation">
                                         <b:Interaction.Triggers>
                                             <b:EventTrigger EventName="FilterChanged">
                                                 <b:ChangePropertyAction PropertyName="Filter7"
@@ -207,19 +257,29 @@
                                         </b:Interaction.Triggers>
                                     </h:TagFilterBox>
                                 </Expander>
-                                <Expander Header="清晰度" Visibility="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Setting.UseArticulationTag, Converter={x:Static h:Converter.GetTrueToVisible}}">
-                                    <h:TagFilterBox GroupName="Articulation" PropertyName="Articulation">
+                                <Expander Header="像素格式"
+                                          Visibility="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Setting.UsePixelFormat, Converter={x:Static h:Converter.GetTrueToVisible}}">
+                                    <h:SelectionFilterBox Margin="0,5"
+                                                          HorizontalAlignment="Stretch"
+                                                          HorizontalContentAlignment="Stretch"
+                                                          Datas="{Binding Collection.Cache, IsAsync=True}"
+                                                          DisplayName="选择筛选器筛选出来的用户数量"
+                                                          PropertyName="PixelFormat"
+                                                          SelectionMode="Multiple"
+                                                          Type="{x:Type local:fm_dd_video}">
                                         <b:Interaction.Triggers>
                                             <b:EventTrigger EventName="FilterChanged">
                                                 <b:ChangePropertyAction PropertyName="Filter8"
                                                                         TargetObject="{Binding Collection}"
-                                                                        Value="{Binding RelativeSource={RelativeSource AncestorType=h:TagFilterBox}, Path=Filter}" />
+                                                                        Value="{Binding RelativeSource={RelativeSource AncestorType=h:SelectionFilterBox}, Path=Filter}" />
                                             </b:EventTrigger>
                                         </b:Interaction.Triggers>
-                                    </h:TagFilterBox>
+                                    </h:SelectionFilterBox>
                                 </Expander>
-                                <Expander Header="对象" Visibility="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Setting.UseObjectTag, Converter={x:Static h:Converter.GetTrueToVisible}}">
-                                    <h:TagFilterBox GroupName="Object" PropertyName="Object">
+                                <Expander Header="对象"
+                                          Visibility="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Setting.UseObjectTag, Converter={x:Static h:Converter.GetTrueToVisible}}">
+                                    <h:TagFilterBox GroupName="Object"
+                                                    PropertyName="Object">
                                         <b:Interaction.Triggers>
                                             <b:EventTrigger EventName="FilterChanged">
                                                 <b:ChangePropertyAction PropertyName="Filter9"
@@ -229,7 +289,8 @@
                                         </b:Interaction.Triggers>
                                     </h:TagFilterBox>
                                 </Expander>
-                                <Expander Header="扩展名" Visibility="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Setting.UseExtension, Converter={x:Static h:Converter.GetTrueToVisible}}">
+                                <Expander Header="扩展名"
+                                          Visibility="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Setting.UseExtension, Converter={x:Static h:Converter.GetTrueToVisible}}">
                                     <h:SelectionFilterBox Margin="0,5"
                                                           HorizontalAlignment="Stretch"
                                                           HorizontalContentAlignment="Stretch"
@@ -240,7 +301,7 @@
                                                           Type="{x:Type local:fm_dd_file}">
                                         <b:Interaction.Triggers>
                                             <b:EventTrigger EventName="FilterChanged">
-                                                <b:ChangePropertyAction PropertyName="Filter3"
+                                                <b:ChangePropertyAction PropertyName="Filter10"
                                                                         TargetObject="{Binding Collection}"
                                                                         Value="{Binding RelativeSource={RelativeSource AncestorType=h:SelectionFilterBox}, Path=Filter}" />
                                             </b:EventTrigger>
@@ -250,18 +311,25 @@
                             </ItemsControl>
                         </ScrollViewer>
                     </h:OutlookSection>
-                    <h:OutlookSection Header="排序器" Visibility="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Setting.UseOrderBox, Converter={x:Static h:Converter.GetTrueToVisible}}">
+                    <h:OutlookSection Header="排序器"
+                                      Visibility="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Setting.UseOrderBox, Converter={x:Static h:Converter.GetTrueToVisible}}">
                         <h:OutlookSection.Image>
                             <DrawingImage>
                                 <DrawingImage.Drawing>
                                     <DrawingGroup>
                                         <DrawingGroup.Children>
-                                            <GeometryDrawing Brush="#00FFFFFF" Geometry="F1M16,16L0,16 0,0 16,0z" />
-                                            <GeometryDrawing Brush="#FFF6F6F6" Geometry="F1M13.4141,0L2.5861,0 9.99999999997669E-05,2.586 9.99999999997669E-05,9.414 0.3491,9.763C0.1251,10.298 9.99999999997669E-05,10.884 9.99999999997669E-05,11.5 9.99999999997669E-05,13.985 2.0151,16 4.5001,16 6.8141,16 8.6981,14.247 8.9501,12L13.4141,12 16.0001,9.414 16.0001,2.586z" />
-                                            <GeometryDrawing Brush="#FF414141" Geometry="F1M13,1L3,1 1,3 1,8.703C1.518,8.056,2.204,7.559,3,7.275L3,3.828 3.828,3 12.172,3 13,3.828 13,8.172 12.172,9 8.24,9C8.631,9.583,8.868,10.268,8.95,11L13,11 15,9 15,3z" />
-                                            <GeometryDrawing Brush="#FF414141" Geometry="F1M7.4858,9.7217L3.4998,13.7067 1.6468,11.8537 2.3538,11.1467 3.4998,12.2927 6.8608,8.9317C6.2378,8.3587 5.4138,7.9997 4.4998,7.9997 2.5678,7.9997 0.9998,9.5677 0.9998,11.4997 0.9998,13.4327 2.5678,14.9997 4.4998,14.9997 6.4328,14.9997 7.9998,13.4327 7.9998,11.4997 7.9998,10.8437 7.8018,10.2427 7.4858,9.7217 M7.4938,9.7127C7.4808,9.6907 7.4598,9.6747 7.4458,9.6537 7.4598,9.6757 7.4718,9.6997 7.4858,9.7217z M6.8608,8.9317C7.0898,9.1427 7.2778,9.3907 7.4458,9.6537 7.2798,9.3887 7.0898,9.1427 6.8608,8.9317" />
-                                            <GeometryDrawing Brush="#FFF0EFF1" Geometry="F1M12.1719,3L3.8279,3 2.9999,3.828 2.9999,7.275C3.4709,7.108 3.9709,7 4.4999,7 6.0599,7 7.4329,7.794 8.2399,9L12.1719,9 12.9999,8.172 12.9999,3.828z" />
-                                            <GeometryDrawing Brush="#FFF0EFF1" Geometry="F1M2.3535,11.1465L1.6465,11.8535 3.4995,13.7075 7.4945,9.7125C7.3205,9.4215,7.1095,9.1605,6.8615,8.9315L3.4995,12.2925z" />
+                                            <GeometryDrawing Brush="#00FFFFFF"
+                                                             Geometry="F1M16,16L0,16 0,0 16,0z" />
+                                            <GeometryDrawing Brush="#FFF6F6F6"
+                                                             Geometry="F1M13.4141,0L2.5861,0 9.99999999997669E-05,2.586 9.99999999997669E-05,9.414 0.3491,9.763C0.1251,10.298 9.99999999997669E-05,10.884 9.99999999997669E-05,11.5 9.99999999997669E-05,13.985 2.0151,16 4.5001,16 6.8141,16 8.6981,14.247 8.9501,12L13.4141,12 16.0001,9.414 16.0001,2.586z" />
+                                            <GeometryDrawing Brush="#FF414141"
+                                                             Geometry="F1M13,1L3,1 1,3 1,8.703C1.518,8.056,2.204,7.559,3,7.275L3,3.828 3.828,3 12.172,3 13,3.828 13,8.172 12.172,9 8.24,9C8.631,9.583,8.868,10.268,8.95,11L13,11 15,9 15,3z" />
+                                            <GeometryDrawing Brush="#FF414141"
+                                                             Geometry="F1M7.4858,9.7217L3.4998,13.7067 1.6468,11.8537 2.3538,11.1467 3.4998,12.2927 6.8608,8.9317C6.2378,8.3587 5.4138,7.9997 4.4998,7.9997 2.5678,7.9997 0.9998,9.5677 0.9998,11.4997 0.9998,13.4327 2.5678,14.9997 4.4998,14.9997 6.4328,14.9997 7.9998,13.4327 7.9998,11.4997 7.9998,10.8437 7.8018,10.2427 7.4858,9.7217 M7.4938,9.7127C7.4808,9.6907 7.4598,9.6747 7.4458,9.6537 7.4598,9.6757 7.4718,9.6997 7.4858,9.7217z M6.8608,8.9317C7.0898,9.1427 7.2778,9.3907 7.4458,9.6537 7.2798,9.3887 7.0898,9.1427 6.8608,8.9317" />
+                                            <GeometryDrawing Brush="#FFF0EFF1"
+                                                             Geometry="F1M12.1719,3L3.8279,3 2.9999,3.828 2.9999,7.275C3.4709,7.108 3.9709,7 4.4999,7 6.0599,7 7.4329,7.794 8.2399,9L12.1719,9 12.9999,8.172 12.9999,3.828z" />
+                                            <GeometryDrawing Brush="#FFF0EFF1"
+                                                             Geometry="F1M2.3535,11.1465L1.6465,11.8535 3.4995,13.7075 7.4945,9.7125C7.3205,9.4215,7.1095,9.1605,6.8615,8.9315L3.4995,12.2925z" />
                                         </DrawingGroup.Children>
                                     </DrawingGroup>
                                 </DrawingImage.Drawing>
@@ -288,18 +356,25 @@
                         </h:OrderBox>
                     </h:OutlookSection>
 
-                    <h:OutlookSection Header="历史记录" Visibility="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Setting.UseHistory, Converter={x:Static h:Converter.GetTrueToVisible}}">
+                    <h:OutlookSection Header="历史记录"
+                                      Visibility="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Setting.UseHistory, Converter={x:Static h:Converter.GetTrueToVisible}}">
                         <h:OutlookSection.Image>
                             <DrawingImage>
                                 <DrawingImage.Drawing>
                                     <DrawingGroup>
                                         <DrawingGroup.Children>
-                                            <GeometryDrawing Brush="#00FFFFFF" Geometry="F1M16,16L0,16 0,0 16,0z" />
-                                            <GeometryDrawing Brush="#FFF6F6F6" Geometry="F1M13.4141,0L2.5861,0 9.99999999997669E-05,2.586 9.99999999997669E-05,9.414 0.3491,9.763C0.1251,10.298 9.99999999997669E-05,10.884 9.99999999997669E-05,11.5 9.99999999997669E-05,13.985 2.0151,16 4.5001,16 6.8141,16 8.6981,14.247 8.9501,12L13.4141,12 16.0001,9.414 16.0001,2.586z" />
-                                            <GeometryDrawing Brush="#FF414141" Geometry="F1M13,1L3,1 1,3 1,8.703C1.518,8.056,2.204,7.559,3,7.275L3,3.828 3.828,3 12.172,3 13,3.828 13,8.172 12.172,9 8.24,9C8.631,9.583,8.868,10.268,8.95,11L13,11 15,9 15,3z" />
-                                            <GeometryDrawing Brush="#FF414141" Geometry="F1M7.4858,9.7217L3.4998,13.7067 1.6468,11.8537 2.3538,11.1467 3.4998,12.2927 6.8608,8.9317C6.2378,8.3587 5.4138,7.9997 4.4998,7.9997 2.5678,7.9997 0.9998,9.5677 0.9998,11.4997 0.9998,13.4327 2.5678,14.9997 4.4998,14.9997 6.4328,14.9997 7.9998,13.4327 7.9998,11.4997 7.9998,10.8437 7.8018,10.2427 7.4858,9.7217 M7.4938,9.7127C7.4808,9.6907 7.4598,9.6747 7.4458,9.6537 7.4598,9.6757 7.4718,9.6997 7.4858,9.7217z M6.8608,8.9317C7.0898,9.1427 7.2778,9.3907 7.4458,9.6537 7.2798,9.3887 7.0898,9.1427 6.8608,8.9317" />
-                                            <GeometryDrawing Brush="#FFF0EFF1" Geometry="F1M12.1719,3L3.8279,3 2.9999,3.828 2.9999,7.275C3.4709,7.108 3.9709,7 4.4999,7 6.0599,7 7.4329,7.794 8.2399,9L12.1719,9 12.9999,8.172 12.9999,3.828z" />
-                                            <GeometryDrawing Brush="#FFF0EFF1" Geometry="F1M2.3535,11.1465L1.6465,11.8535 3.4995,13.7075 7.4945,9.7125C7.3205,9.4215,7.1095,9.1605,6.8615,8.9315L3.4995,12.2925z" />
+                                            <GeometryDrawing Brush="#00FFFFFF"
+                                                             Geometry="F1M16,16L0,16 0,0 16,0z" />
+                                            <GeometryDrawing Brush="#FFF6F6F6"
+                                                             Geometry="F1M13.4141,0L2.5861,0 9.99999999997669E-05,2.586 9.99999999997669E-05,9.414 0.3491,9.763C0.1251,10.298 9.99999999997669E-05,10.884 9.99999999997669E-05,11.5 9.99999999997669E-05,13.985 2.0151,16 4.5001,16 6.8141,16 8.6981,14.247 8.9501,12L13.4141,12 16.0001,9.414 16.0001,2.586z" />
+                                            <GeometryDrawing Brush="#FF414141"
+                                                             Geometry="F1M13,1L3,1 1,3 1,8.703C1.518,8.056,2.204,7.559,3,7.275L3,3.828 3.828,3 12.172,3 13,3.828 13,8.172 12.172,9 8.24,9C8.631,9.583,8.868,10.268,8.95,11L13,11 15,9 15,3z" />
+                                            <GeometryDrawing Brush="#FF414141"
+                                                             Geometry="F1M7.4858,9.7217L3.4998,13.7067 1.6468,11.8537 2.3538,11.1467 3.4998,12.2927 6.8608,8.9317C6.2378,8.3587 5.4138,7.9997 4.4998,7.9997 2.5678,7.9997 0.9998,9.5677 0.9998,11.4997 0.9998,13.4327 2.5678,14.9997 4.4998,14.9997 6.4328,14.9997 7.9998,13.4327 7.9998,11.4997 7.9998,10.8437 7.8018,10.2427 7.4858,9.7217 M7.4938,9.7127C7.4808,9.6907 7.4598,9.6747 7.4458,9.6537 7.4598,9.6757 7.4718,9.6997 7.4858,9.7217z M6.8608,8.9317C7.0898,9.1427 7.2778,9.3907 7.4458,9.6537 7.2798,9.3887 7.0898,9.1427 6.8608,8.9317" />
+                                            <GeometryDrawing Brush="#FFF0EFF1"
+                                                             Geometry="F1M12.1719,3L3.8279,3 2.9999,3.828 2.9999,7.275C3.4709,7.108 3.9709,7 4.4999,7 6.0599,7 7.4329,7.794 8.2399,9L12.1719,9 12.9999,8.172 12.9999,3.828z" />
+                                            <GeometryDrawing Brush="#FFF0EFF1"
+                                                             Geometry="F1M2.3535,11.1465L1.6465,11.8535 3.4995,13.7075 7.4945,9.7125C7.3205,9.4215,7.1095,9.1605,6.8615,8.9315L3.4995,12.2925z" />
                                         </DrawingGroup.Children>
                                     </DrawingGroup>
                                 </DrawingImage.Drawing>
@@ -311,11 +386,13 @@
                                  ScrollViewer.VerticalScrollBarVisibility="Auto">
                             <b:Interaction.Triggers>
                                 <b:EventTrigger EventName="MouseDoubleClick">
-                                    <b:InvokeCommandAction Command="{Binding MouseDoubleClickCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=SelectedItem}" />
+                                    <b:InvokeCommandAction Command="{Binding MouseDoubleClickCommand}"
+                                                           CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=SelectedItem}" />
                                 </b:EventTrigger>
                             </b:Interaction.Triggers>
                             <ListBox.ItemContainerStyle>
-                                <Style BasedOn="{StaticResource {x:Static h:ListBoxItemKeys.Default}}" TargetType="ListBoxItem">
+                                <Style BasedOn="{StaticResource {x:Static h:ListBoxItemKeys.Default}}"
+                                       TargetType="ListBoxItem">
                                     <Setter Property="BorderThickness" Value="1" />
                                     <Setter Property="Margin" Value="1" />
                                     <Setter Property="Padding" Value="5" />
@@ -323,18 +400,25 @@
                             </ListBox.ItemContainerStyle>
                         </ListBox>
                     </h:OutlookSection>
-                    <h:OutlookSection Header="工程管理" Visibility="{Binding Source={x:Static local:AppSetting.Instance}, Path=UseProject, Converter={x:Static h:Converter.GetTrueToVisible}}">
+                    <h:OutlookSection Header="工程管理"
+                                      Visibility="{Binding Source={x:Static local:AppSetting.Instance}, Path=UseProject, Converter={x:Static h:Converter.GetTrueToVisible}}">
                         <h:OutlookSection.Image>
                             <DrawingImage>
                                 <DrawingImage.Drawing>
                                     <DrawingGroup>
                                         <DrawingGroup.Children>
-                                            <GeometryDrawing Brush="#00FFFFFF" Geometry="F1M16,16L0,16 0,0 16,0z" />
-                                            <GeometryDrawing Brush="#FFF6F6F6" Geometry="F1M13.4141,0L2.5861,0 9.99999999997669E-05,2.586 9.99999999997669E-05,9.414 0.3491,9.763C0.1251,10.298 9.99999999997669E-05,10.884 9.99999999997669E-05,11.5 9.99999999997669E-05,13.985 2.0151,16 4.5001,16 6.8141,16 8.6981,14.247 8.9501,12L13.4141,12 16.0001,9.414 16.0001,2.586z" />
-                                            <GeometryDrawing Brush="#FF414141" Geometry="F1M13,1L3,1 1,3 1,8.703C1.518,8.056,2.204,7.559,3,7.275L3,3.828 3.828,3 12.172,3 13,3.828 13,8.172 12.172,9 8.24,9C8.631,9.583,8.868,10.268,8.95,11L13,11 15,9 15,3z" />
-                                            <GeometryDrawing Brush="#FF414141" Geometry="F1M7.4858,9.7217L3.4998,13.7067 1.6468,11.8537 2.3538,11.1467 3.4998,12.2927 6.8608,8.9317C6.2378,8.3587 5.4138,7.9997 4.4998,7.9997 2.5678,7.9997 0.9998,9.5677 0.9998,11.4997 0.9998,13.4327 2.5678,14.9997 4.4998,14.9997 6.4328,14.9997 7.9998,13.4327 7.9998,11.4997 7.9998,10.8437 7.8018,10.2427 7.4858,9.7217 M7.4938,9.7127C7.4808,9.6907 7.4598,9.6747 7.4458,9.6537 7.4598,9.6757 7.4718,9.6997 7.4858,9.7217z M6.8608,8.9317C7.0898,9.1427 7.2778,9.3907 7.4458,9.6537 7.2798,9.3887 7.0898,9.1427 6.8608,8.9317" />
-                                            <GeometryDrawing Brush="#FFF0EFF1" Geometry="F1M12.1719,3L3.8279,3 2.9999,3.828 2.9999,7.275C3.4709,7.108 3.9709,7 4.4999,7 6.0599,7 7.4329,7.794 8.2399,9L12.1719,9 12.9999,8.172 12.9999,3.828z" />
-                                            <GeometryDrawing Brush="#FFF0EFF1" Geometry="F1M2.3535,11.1465L1.6465,11.8535 3.4995,13.7075 7.4945,9.7125C7.3205,9.4215,7.1095,9.1605,6.8615,8.9315L3.4995,12.2925z" />
+                                            <GeometryDrawing Brush="#00FFFFFF"
+                                                             Geometry="F1M16,16L0,16 0,0 16,0z" />
+                                            <GeometryDrawing Brush="#FFF6F6F6"
+                                                             Geometry="F1M13.4141,0L2.5861,0 9.99999999997669E-05,2.586 9.99999999997669E-05,9.414 0.3491,9.763C0.1251,10.298 9.99999999997669E-05,10.884 9.99999999997669E-05,11.5 9.99999999997669E-05,13.985 2.0151,16 4.5001,16 6.8141,16 8.6981,14.247 8.9501,12L13.4141,12 16.0001,9.414 16.0001,2.586z" />
+                                            <GeometryDrawing Brush="#FF414141"
+                                                             Geometry="F1M13,1L3,1 1,3 1,8.703C1.518,8.056,2.204,7.559,3,7.275L3,3.828 3.828,3 12.172,3 13,3.828 13,8.172 12.172,9 8.24,9C8.631,9.583,8.868,10.268,8.95,11L13,11 15,9 15,3z" />
+                                            <GeometryDrawing Brush="#FF414141"
+                                                             Geometry="F1M7.4858,9.7217L3.4998,13.7067 1.6468,11.8537 2.3538,11.1467 3.4998,12.2927 6.8608,8.9317C6.2378,8.3587 5.4138,7.9997 4.4998,7.9997 2.5678,7.9997 0.9998,9.5677 0.9998,11.4997 0.9998,13.4327 2.5678,14.9997 4.4998,14.9997 6.4328,14.9997 7.9998,13.4327 7.9998,11.4997 7.9998,10.8437 7.8018,10.2427 7.4858,9.7217 M7.4938,9.7127C7.4808,9.6907 7.4598,9.6747 7.4458,9.6537 7.4598,9.6757 7.4718,9.6997 7.4858,9.7217z M6.8608,8.9317C7.0898,9.1427 7.2778,9.3907 7.4458,9.6537 7.2798,9.3887 7.0898,9.1427 6.8608,8.9317" />
+                                            <GeometryDrawing Brush="#FFF0EFF1"
+                                                             Geometry="F1M12.1719,3L3.8279,3 2.9999,3.828 2.9999,7.275C3.4709,7.108 3.9709,7 4.4999,7 6.0599,7 7.4329,7.794 8.2399,9L12.1719,9 12.9999,8.172 12.9999,3.828z" />
+                                            <GeometryDrawing Brush="#FFF0EFF1"
+                                                             Geometry="F1M2.3535,11.1465L1.6465,11.8535 3.4995,13.7075 7.4945,9.7125C7.3205,9.4215,7.1095,9.1605,6.8615,8.9315L3.4995,12.2925z" />
                                         </DrawingGroup.Children>
                                     </DrawingGroup>
                                 </DrawingImage.Drawing>
@@ -386,7 +470,8 @@
 
                 </h:OutlookBar.Sections>
                 <h:OutlookBar.OptionButtons>
-                    <ToggleButton Width="100" Content="我是勾选按钮" />
+                    <ToggleButton Width="100"
+                                  Content="我是勾选按钮" />
                     <Button Width="100">我是按钮</Button>
                 </h:OutlookBar.OptionButtons>
             </h:OutlookBar>
@@ -406,12 +491,18 @@
                                 <DrawingImage.Drawing>
                                     <DrawingGroup>
                                         <DrawingGroup.Children>
-                                            <GeometryDrawing Brush="#00FFFFFF" Geometry="F1M16,16L0,16 0,0 16,0z" />
-                                            <GeometryDrawing Brush="#FFF6F6F6" Geometry="F1M13.4141,0L2.5861,0 9.99999999997669E-05,2.586 9.99999999997669E-05,9.414 0.3491,9.763C0.1251,10.298 9.99999999997669E-05,10.884 9.99999999997669E-05,11.5 9.99999999997669E-05,13.985 2.0151,16 4.5001,16 6.8141,16 8.6981,14.247 8.9501,12L13.4141,12 16.0001,9.414 16.0001,2.586z" />
-                                            <GeometryDrawing Brush="#FF414141" Geometry="F1M13,1L3,1 1,3 1,8.703C1.518,8.056,2.204,7.559,3,7.275L3,3.828 3.828,3 12.172,3 13,3.828 13,8.172 12.172,9 8.24,9C8.631,9.583,8.868,10.268,8.95,11L13,11 15,9 15,3z" />
-                                            <GeometryDrawing Brush="#FF414141" Geometry="F1M7.4858,9.7217L3.4998,13.7067 1.6468,11.8537 2.3538,11.1467 3.4998,12.2927 6.8608,8.9317C6.2378,8.3587 5.4138,7.9997 4.4998,7.9997 2.5678,7.9997 0.9998,9.5677 0.9998,11.4997 0.9998,13.4327 2.5678,14.9997 4.4998,14.9997 6.4328,14.9997 7.9998,13.4327 7.9998,11.4997 7.9998,10.8437 7.8018,10.2427 7.4858,9.7217 M7.4938,9.7127C7.4808,9.6907 7.4598,9.6747 7.4458,9.6537 7.4598,9.6757 7.4718,9.6997 7.4858,9.7217z M6.8608,8.9317C7.0898,9.1427 7.2778,9.3907 7.4458,9.6537 7.2798,9.3887 7.0898,9.1427 6.8608,8.9317" />
-                                            <GeometryDrawing Brush="#FFF0EFF1" Geometry="F1M12.1719,3L3.8279,3 2.9999,3.828 2.9999,7.275C3.4709,7.108 3.9709,7 4.4999,7 6.0599,7 7.4329,7.794 8.2399,9L12.1719,9 12.9999,8.172 12.9999,3.828z" />
-                                            <GeometryDrawing Brush="#FFF0EFF1" Geometry="F1M2.3535,11.1465L1.6465,11.8535 3.4995,13.7075 7.4945,9.7125C7.3205,9.4215,7.1095,9.1605,6.8615,8.9315L3.4995,12.2925z" />
+                                            <GeometryDrawing Brush="#00FFFFFF"
+                                                             Geometry="F1M16,16L0,16 0,0 16,0z" />
+                                            <GeometryDrawing Brush="#FFF6F6F6"
+                                                             Geometry="F1M13.4141,0L2.5861,0 9.99999999997669E-05,2.586 9.99999999997669E-05,9.414 0.3491,9.763C0.1251,10.298 9.99999999997669E-05,10.884 9.99999999997669E-05,11.5 9.99999999997669E-05,13.985 2.0151,16 4.5001,16 6.8141,16 8.6981,14.247 8.9501,12L13.4141,12 16.0001,9.414 16.0001,2.586z" />
+                                            <GeometryDrawing Brush="#FF414141"
+                                                             Geometry="F1M13,1L3,1 1,3 1,8.703C1.518,8.056,2.204,7.559,3,7.275L3,3.828 3.828,3 12.172,3 13,3.828 13,8.172 12.172,9 8.24,9C8.631,9.583,8.868,10.268,8.95,11L13,11 15,9 15,3z" />
+                                            <GeometryDrawing Brush="#FF414141"
+                                                             Geometry="F1M7.4858,9.7217L3.4998,13.7067 1.6468,11.8537 2.3538,11.1467 3.4998,12.2927 6.8608,8.9317C6.2378,8.3587 5.4138,7.9997 4.4998,7.9997 2.5678,7.9997 0.9998,9.5677 0.9998,11.4997 0.9998,13.4327 2.5678,14.9997 4.4998,14.9997 6.4328,14.9997 7.9998,13.4327 7.9998,11.4997 7.9998,10.8437 7.8018,10.2427 7.4858,9.7217 M7.4938,9.7127C7.4808,9.6907 7.4598,9.6747 7.4458,9.6537 7.4598,9.6757 7.4718,9.6997 7.4858,9.7217z M6.8608,8.9317C7.0898,9.1427 7.2778,9.3907 7.4458,9.6537 7.2798,9.3887 7.0898,9.1427 6.8608,8.9317" />
+                                            <GeometryDrawing Brush="#FFF0EFF1"
+                                                             Geometry="F1M12.1719,3L3.8279,3 2.9999,3.828 2.9999,7.275C3.4709,7.108 3.9709,7 4.4999,7 6.0599,7 7.4329,7.794 8.2399,9L12.1719,9 12.9999,8.172 12.9999,3.828z" />
+                                            <GeometryDrawing Brush="#FFF0EFF1"
+                                                             Geometry="F1M2.3535,11.1465L1.6465,11.8535 3.4995,13.7075 7.4945,9.7125C7.3205,9.4215,7.1095,9.1605,6.8615,8.9315L3.4995,12.2925z" />
                                         </DrawingGroup.Children>
                                     </DrawingGroup>
                                 </DrawingImage.Drawing>
@@ -436,18 +527,25 @@
                                 <DrawingImage.Drawing>
                                     <DrawingGroup>
                                         <DrawingGroup.Children>
-                                            <GeometryDrawing Brush="#00FFFFFF" Geometry="F1M16,16L0,16 0,0 16,0z" />
-                                            <GeometryDrawing Brush="#FFF6F6F6" Geometry="F1M13.4141,0L2.5861,0 9.99999999997669E-05,2.586 9.99999999997669E-05,9.414 0.3491,9.763C0.1251,10.298 9.99999999997669E-05,10.884 9.99999999997669E-05,11.5 9.99999999997669E-05,13.985 2.0151,16 4.5001,16 6.8141,16 8.6981,14.247 8.9501,12L13.4141,12 16.0001,9.414 16.0001,2.586z" />
-                                            <GeometryDrawing Brush="#FF414141" Geometry="F1M13,1L3,1 1,3 1,8.703C1.518,8.056,2.204,7.559,3,7.275L3,3.828 3.828,3 12.172,3 13,3.828 13,8.172 12.172,9 8.24,9C8.631,9.583,8.868,10.268,8.95,11L13,11 15,9 15,3z" />
-                                            <GeometryDrawing Brush="#FF414141" Geometry="F1M7.4858,9.7217L3.4998,13.7067 1.6468,11.8537 2.3538,11.1467 3.4998,12.2927 6.8608,8.9317C6.2378,8.3587 5.4138,7.9997 4.4998,7.9997 2.5678,7.9997 0.9998,9.5677 0.9998,11.4997 0.9998,13.4327 2.5678,14.9997 4.4998,14.9997 6.4328,14.9997 7.9998,13.4327 7.9998,11.4997 7.9998,10.8437 7.8018,10.2427 7.4858,9.7217 M7.4938,9.7127C7.4808,9.6907 7.4598,9.6747 7.4458,9.6537 7.4598,9.6757 7.4718,9.6997 7.4858,9.7217z M6.8608,8.9317C7.0898,9.1427 7.2778,9.3907 7.4458,9.6537 7.2798,9.3887 7.0898,9.1427 6.8608,8.9317" />
-                                            <GeometryDrawing Brush="#FFF0EFF1" Geometry="F1M12.1719,3L3.8279,3 2.9999,3.828 2.9999,7.275C3.4709,7.108 3.9709,7 4.4999,7 6.0599,7 7.4329,7.794 8.2399,9L12.1719,9 12.9999,8.172 12.9999,3.828z" />
-                                            <GeometryDrawing Brush="#FFF0EFF1" Geometry="F1M2.3535,11.1465L1.6465,11.8535 3.4995,13.7075 7.4945,9.7125C7.3205,9.4215,7.1095,9.1605,6.8615,8.9315L3.4995,12.2925z" />
+                                            <GeometryDrawing Brush="#00FFFFFF"
+                                                             Geometry="F1M16,16L0,16 0,0 16,0z" />
+                                            <GeometryDrawing Brush="#FFF6F6F6"
+                                                             Geometry="F1M13.4141,0L2.5861,0 9.99999999997669E-05,2.586 9.99999999997669E-05,9.414 0.3491,9.763C0.1251,10.298 9.99999999997669E-05,10.884 9.99999999997669E-05,11.5 9.99999999997669E-05,13.985 2.0151,16 4.5001,16 6.8141,16 8.6981,14.247 8.9501,12L13.4141,12 16.0001,9.414 16.0001,2.586z" />
+                                            <GeometryDrawing Brush="#FF414141"
+                                                             Geometry="F1M13,1L3,1 1,3 1,8.703C1.518,8.056,2.204,7.559,3,7.275L3,3.828 3.828,3 12.172,3 13,3.828 13,8.172 12.172,9 8.24,9C8.631,9.583,8.868,10.268,8.95,11L13,11 15,9 15,3z" />
+                                            <GeometryDrawing Brush="#FF414141"
+                                                             Geometry="F1M7.4858,9.7217L3.4998,13.7067 1.6468,11.8537 2.3538,11.1467 3.4998,12.2927 6.8608,8.9317C6.2378,8.3587 5.4138,7.9997 4.4998,7.9997 2.5678,7.9997 0.9998,9.5677 0.9998,11.4997 0.9998,13.4327 2.5678,14.9997 4.4998,14.9997 6.4328,14.9997 7.9998,13.4327 7.9998,11.4997 7.9998,10.8437 7.8018,10.2427 7.4858,9.7217 M7.4938,9.7127C7.4808,9.6907 7.4598,9.6747 7.4458,9.6537 7.4598,9.6757 7.4718,9.6997 7.4858,9.7217z M6.8608,8.9317C7.0898,9.1427 7.2778,9.3907 7.4458,9.6537 7.2798,9.3887 7.0898,9.1427 6.8608,8.9317" />
+                                            <GeometryDrawing Brush="#FFF0EFF1"
+                                                             Geometry="F1M12.1719,3L3.8279,3 2.9999,3.828 2.9999,7.275C3.4709,7.108 3.9709,7 4.4999,7 6.0599,7 7.4329,7.794 8.2399,9L12.1719,9 12.9999,8.172 12.9999,3.828z" />
+                                            <GeometryDrawing Brush="#FFF0EFF1"
+                                                             Geometry="F1M2.3535,11.1465L1.6465,11.8535 3.4995,13.7075 7.4945,9.7125C7.3205,9.4215,7.1095,9.1605,6.8615,8.9315L3.4995,12.2925z" />
                                         </DrawingGroup.Children>
                                     </DrawingGroup>
                                 </DrawingImage.Drawing>
                             </DrawingImage>
                         </h:OutlookSection.Image>
-                        <h:Form Foreground="{DynamicResource {x:Static h:BrushKeys.Foreground}}" SelectObject="{Binding Collection.SelectedItem.Model, Mode=TwoWay}" />
+                        <h:Form Foreground="{DynamicResource {x:Static h:BrushKeys.Foreground}}"
+                                SelectObject="{Binding Collection.SelectedItem.Model, Mode=TwoWay}" />
                     </h:OutlookSection>
                     <h:OutlookSection Header="标签设置">
                         <h:OutlookSection.Image>
@@ -455,12 +553,18 @@
                                 <DrawingImage.Drawing>
                                     <DrawingGroup>
                                         <DrawingGroup.Children>
-                                            <GeometryDrawing Brush="#00FFFFFF" Geometry="F1M16,16L0,16 0,0 16,0z" />
-                                            <GeometryDrawing Brush="#FFF6F6F6" Geometry="F1M13.4141,0L2.5861,0 9.99999999997669E-05,2.586 9.99999999997669E-05,9.414 0.3491,9.763C0.1251,10.298 9.99999999997669E-05,10.884 9.99999999997669E-05,11.5 9.99999999997669E-05,13.985 2.0151,16 4.5001,16 6.8141,16 8.6981,14.247 8.9501,12L13.4141,12 16.0001,9.414 16.0001,2.586z" />
-                                            <GeometryDrawing Brush="#FF414141" Geometry="F1M13,1L3,1 1,3 1,8.703C1.518,8.056,2.204,7.559,3,7.275L3,3.828 3.828,3 12.172,3 13,3.828 13,8.172 12.172,9 8.24,9C8.631,9.583,8.868,10.268,8.95,11L13,11 15,9 15,3z" />
-                                            <GeometryDrawing Brush="#FF414141" Geometry="F1M7.4858,9.7217L3.4998,13.7067 1.6468,11.8537 2.3538,11.1467 3.4998,12.2927 6.8608,8.9317C6.2378,8.3587 5.4138,7.9997 4.4998,7.9997 2.5678,7.9997 0.9998,9.5677 0.9998,11.4997 0.9998,13.4327 2.5678,14.9997 4.4998,14.9997 6.4328,14.9997 7.9998,13.4327 7.9998,11.4997 7.9998,10.8437 7.8018,10.2427 7.4858,9.7217 M7.4938,9.7127C7.4808,9.6907 7.4598,9.6747 7.4458,9.6537 7.4598,9.6757 7.4718,9.6997 7.4858,9.7217z M6.8608,8.9317C7.0898,9.1427 7.2778,9.3907 7.4458,9.6537 7.2798,9.3887 7.0898,9.1427 6.8608,8.9317" />
-                                            <GeometryDrawing Brush="#FFF0EFF1" Geometry="F1M12.1719,3L3.8279,3 2.9999,3.828 2.9999,7.275C3.4709,7.108 3.9709,7 4.4999,7 6.0599,7 7.4329,7.794 8.2399,9L12.1719,9 12.9999,8.172 12.9999,3.828z" />
-                                            <GeometryDrawing Brush="#FFF0EFF1" Geometry="F1M2.3535,11.1465L1.6465,11.8535 3.4995,13.7075 7.4945,9.7125C7.3205,9.4215,7.1095,9.1605,6.8615,8.9315L3.4995,12.2925z" />
+                                            <GeometryDrawing Brush="#00FFFFFF"
+                                                             Geometry="F1M16,16L0,16 0,0 16,0z" />
+                                            <GeometryDrawing Brush="#FFF6F6F6"
+                                                             Geometry="F1M13.4141,0L2.5861,0 9.99999999997669E-05,2.586 9.99999999997669E-05,9.414 0.3491,9.763C0.1251,10.298 9.99999999997669E-05,10.884 9.99999999997669E-05,11.5 9.99999999997669E-05,13.985 2.0151,16 4.5001,16 6.8141,16 8.6981,14.247 8.9501,12L13.4141,12 16.0001,9.414 16.0001,2.586z" />
+                                            <GeometryDrawing Brush="#FF414141"
+                                                             Geometry="F1M13,1L3,1 1,3 1,8.703C1.518,8.056,2.204,7.559,3,7.275L3,3.828 3.828,3 12.172,3 13,3.828 13,8.172 12.172,9 8.24,9C8.631,9.583,8.868,10.268,8.95,11L13,11 15,9 15,3z" />
+                                            <GeometryDrawing Brush="#FF414141"
+                                                             Geometry="F1M7.4858,9.7217L3.4998,13.7067 1.6468,11.8537 2.3538,11.1467 3.4998,12.2927 6.8608,8.9317C6.2378,8.3587 5.4138,7.9997 4.4998,7.9997 2.5678,7.9997 0.9998,9.5677 0.9998,11.4997 0.9998,13.4327 2.5678,14.9997 4.4998,14.9997 6.4328,14.9997 7.9998,13.4327 7.9998,11.4997 7.9998,10.8437 7.8018,10.2427 7.4858,9.7217 M7.4938,9.7127C7.4808,9.6907 7.4598,9.6747 7.4458,9.6537 7.4598,9.6757 7.4718,9.6997 7.4858,9.7217z M6.8608,8.9317C7.0898,9.1427 7.2778,9.3907 7.4458,9.6537 7.2798,9.3887 7.0898,9.1427 6.8608,8.9317" />
+                                            <GeometryDrawing Brush="#FFF0EFF1"
+                                                             Geometry="F1M12.1719,3L3.8279,3 2.9999,3.828 2.9999,7.275C3.4709,7.108 3.9709,7 4.4999,7 6.0599,7 7.4329,7.794 8.2399,9L12.1719,9 12.9999,8.172 12.9999,3.828z" />
+                                            <GeometryDrawing Brush="#FFF0EFF1"
+                                                             Geometry="F1M2.3535,11.1465L1.6465,11.8535 3.4995,13.7075 7.4945,9.7125C7.3205,9.4215,7.1095,9.1605,6.8615,8.9315L3.4995,12.2925z" />
                                         </DrawingGroup.Children>
                                     </DrawingGroup>
                                 </DrawingImage.Drawing>
@@ -470,29 +574,42 @@
                             <GroupBox Header="默认">
                                 <h:TagBox Tags="{Binding Collection.SelectedItem.Model.Tags, Mode=TwoWay}" />
                             </GroupBox>
-                            <GroupBox Header="国家/区域" Visibility="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Setting.UseAreaTag, Converter={x:Static h:Converter.GetTrueToVisible}}">
-                                <h:TagBox GroupName="Area" Tags="{Binding Collection.SelectedItem.Model.Area, Mode=TwoWay}" />
+                            <GroupBox Header="国家/区域"
+                                      Visibility="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Setting.UseAreaTag, Converter={x:Static h:Converter.GetTrueToVisible}}">
+                                <h:TagBox GroupName="Area"
+                                          Tags="{Binding Collection.SelectedItem.Model.Area, Mode=TwoWay}" />
                             </GroupBox>
-                            <GroupBox Header="对象" Visibility="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Setting.UseObjectTag, Converter={x:Static h:Converter.GetTrueToVisible}}">
-                                <h:TagBox GroupName="Object" Tags="{Binding Collection.SelectedItem.Model.Object, Mode=TwoWay}" />
+                            <GroupBox Header="对象"
+                                      Visibility="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Setting.UseObjectTag, Converter={x:Static h:Converter.GetTrueToVisible}}">
+                                <h:TagBox GroupName="Object"
+                                          Tags="{Binding Collection.SelectedItem.Model.Object, Mode=TwoWay}" />
                             </GroupBox>
-                            <GroupBox Header="清晰度" Visibility="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Setting.UseArticulationTag, Converter={x:Static h:Converter.GetTrueToVisible}}">
-                                <h:TagBox GroupName="Articulation" Tags="{Binding Collection.SelectedItem.Model.Articulation, Mode=TwoWay}" />
+                            <GroupBox Header="清晰度"
+                                      Visibility="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Setting.UseArticulationTag, Converter={x:Static h:Converter.GetTrueToVisible}}">
+                                <h:TagBox GroupName="Articulation"
+                                          Tags="{Binding Collection.SelectedItem.Model.Articulation, Mode=TwoWay}" />
                             </GroupBox>
                         </StackPanel>
                     </h:OutlookSection>
-                    <h:OutlookSection Header="收藏夹设置" Visibility="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Setting.UseFavoritePath, Converter={x:Static h:Converter.GetTrueToVisible}}">
+                    <h:OutlookSection Header="收藏夹设置"
+                                      Visibility="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Setting.UseFavoritePath, Converter={x:Static h:Converter.GetTrueToVisible}}">
                         <h:OutlookSection.Image>
                             <DrawingImage>
                                 <DrawingImage.Drawing>
                                     <DrawingGroup>
                                         <DrawingGroup.Children>
-                                            <GeometryDrawing Brush="#00FFFFFF" Geometry="F1M16,16L0,16 0,0 16,0z" />
-                                            <GeometryDrawing Brush="#FFF6F6F6" Geometry="F1M13.4141,0L2.5861,0 9.99999999997669E-05,2.586 9.99999999997669E-05,9.414 0.3491,9.763C0.1251,10.298 9.99999999997669E-05,10.884 9.99999999997669E-05,11.5 9.99999999997669E-05,13.985 2.0151,16 4.5001,16 6.8141,16 8.6981,14.247 8.9501,12L13.4141,12 16.0001,9.414 16.0001,2.586z" />
-                                            <GeometryDrawing Brush="#FF414141" Geometry="F1M13,1L3,1 1,3 1,8.703C1.518,8.056,2.204,7.559,3,7.275L3,3.828 3.828,3 12.172,3 13,3.828 13,8.172 12.172,9 8.24,9C8.631,9.583,8.868,10.268,8.95,11L13,11 15,9 15,3z" />
-                                            <GeometryDrawing Brush="#FF414141" Geometry="F1M7.4858,9.7217L3.4998,13.7067 1.6468,11.8537 2.3538,11.1467 3.4998,12.2927 6.8608,8.9317C6.2378,8.3587 5.4138,7.9997 4.4998,7.9997 2.5678,7.9997 0.9998,9.5677 0.9998,11.4997 0.9998,13.4327 2.5678,14.9997 4.4998,14.9997 6.4328,14.9997 7.9998,13.4327 7.9998,11.4997 7.9998,10.8437 7.8018,10.2427 7.4858,9.7217 M7.4938,9.7127C7.4808,9.6907 7.4598,9.6747 7.4458,9.6537 7.4598,9.6757 7.4718,9.6997 7.4858,9.7217z M6.8608,8.9317C7.0898,9.1427 7.2778,9.3907 7.4458,9.6537 7.2798,9.3887 7.0898,9.1427 6.8608,8.9317" />
-                                            <GeometryDrawing Brush="#FFF0EFF1" Geometry="F1M12.1719,3L3.8279,3 2.9999,3.828 2.9999,7.275C3.4709,7.108 3.9709,7 4.4999,7 6.0599,7 7.4329,7.794 8.2399,9L12.1719,9 12.9999,8.172 12.9999,3.828z" />
-                                            <GeometryDrawing Brush="#FFF0EFF1" Geometry="F1M2.3535,11.1465L1.6465,11.8535 3.4995,13.7075 7.4945,9.7125C7.3205,9.4215,7.1095,9.1605,6.8615,8.9315L3.4995,12.2925z" />
+                                            <GeometryDrawing Brush="#00FFFFFF"
+                                                             Geometry="F1M16,16L0,16 0,0 16,0z" />
+                                            <GeometryDrawing Brush="#FFF6F6F6"
+                                                             Geometry="F1M13.4141,0L2.5861,0 9.99999999997669E-05,2.586 9.99999999997669E-05,9.414 0.3491,9.763C0.1251,10.298 9.99999999997669E-05,10.884 9.99999999997669E-05,11.5 9.99999999997669E-05,13.985 2.0151,16 4.5001,16 6.8141,16 8.6981,14.247 8.9501,12L13.4141,12 16.0001,9.414 16.0001,2.586z" />
+                                            <GeometryDrawing Brush="#FF414141"
+                                                             Geometry="F1M13,1L3,1 1,3 1,8.703C1.518,8.056,2.204,7.559,3,7.275L3,3.828 3.828,3 12.172,3 13,3.828 13,8.172 12.172,9 8.24,9C8.631,9.583,8.868,10.268,8.95,11L13,11 15,9 15,3z" />
+                                            <GeometryDrawing Brush="#FF414141"
+                                                             Geometry="F1M7.4858,9.7217L3.4998,13.7067 1.6468,11.8537 2.3538,11.1467 3.4998,12.2927 6.8608,8.9317C6.2378,8.3587 5.4138,7.9997 4.4998,7.9997 2.5678,7.9997 0.9998,9.5677 0.9998,11.4997 0.9998,13.4327 2.5678,14.9997 4.4998,14.9997 6.4328,14.9997 7.9998,13.4327 7.9998,11.4997 7.9998,10.8437 7.8018,10.2427 7.4858,9.7217 M7.4938,9.7127C7.4808,9.6907 7.4598,9.6747 7.4458,9.6537 7.4598,9.6757 7.4718,9.6997 7.4858,9.7217z M6.8608,8.9317C7.0898,9.1427 7.2778,9.3907 7.4458,9.6537 7.2798,9.3887 7.0898,9.1427 6.8608,8.9317" />
+                                            <GeometryDrawing Brush="#FFF0EFF1"
+                                                             Geometry="F1M12.1719,3L3.8279,3 2.9999,3.828 2.9999,7.275C3.4709,7.108 3.9709,7 4.4999,7 6.0599,7 7.4329,7.794 8.2399,9L12.1719,9 12.9999,8.172 12.9999,3.828z" />
+                                            <GeometryDrawing Brush="#FFF0EFF1"
+                                                             Geometry="F1M2.3535,11.1465L1.6465,11.8535 3.4995,13.7075 7.4945,9.7125C7.3205,9.4215,7.1095,9.1605,6.8615,8.9315L3.4995,12.2925z" />
                                         </DrawingGroup.Children>
                                     </DrawingGroup>
                                 </DrawingImage.Drawing>

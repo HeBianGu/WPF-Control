@@ -32,6 +32,9 @@ namespace H.App.FileManager
         [Display(Name = "缩率图位置")]
         public int SelectedImageIndex { get; set; }
 
+        [Display(Name = "像素格式")]
+        public string PixelFormat { get; set; }
+
         [Browsable(false)]
         [Display(Name = "预览")]
         public virtual ObservableCollection<fm_dd_video_image> Images { get; set; } = new ObservableCollection<fm_dd_video_image>();

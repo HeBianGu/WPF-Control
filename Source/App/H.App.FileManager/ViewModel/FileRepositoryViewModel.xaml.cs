@@ -1,5 +1,7 @@
-﻿using H.Controls.TagBox;
+﻿using H.Controls.PropertyGrid;
+using H.Controls.TagBox;
 using H.Extensions.Common;
+using H.Extensions.FFMpeg;
 using H.Extensions.ViewModel;
 using H.Providers.Ioc;
 using H.Providers.Mvvm;
@@ -12,6 +14,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text.Json.Serialization;
+using System.Threading;
+using System.Windows;
 using System.Xml.Serialization;
 
 namespace H.App.FileManager
@@ -70,7 +74,6 @@ namespace H.App.FileManager
         {
             if (IocProject.Instance.Current is FileProjectItem projectItem)
             {
-                Random random = new Random();
                 int r = await await IocMessage.Dialog.ShowString(async (c, x) =>
                    {
                        x.Value = "正在加载数据...";
@@ -112,29 +115,51 @@ namespace H.App.FileManager
         [Display(Name = "复制", GroupName = "菜单")]
         public RelayCommand CopyCommand { get; set; } = new RelayCommand(l =>
         {
-            if (l is string project)
-            {
-
-            }
+           
         });
 
         [Display(Name = "另存为", GroupName = "菜单")]
-        public RelayCommand SaveAsCommand { get; set; } = new RelayCommand(l =>
+        public RelayCommand SaveAsCommand => new RelayCommand(l =>
         {
-            if (l is string project)
-            {
+         
 
-            }
         });
 
-        [Display(Name = "更新视频信息", GroupName = "更新")]
-        public RelayCommand UpdateVieoInfoCommand { get; set; } = new RelayCommand(l =>
+        [Display(Name = "更新视频信息[时长、清晰度、比特率、编码格式]", GroupName = "更新")]
+        public RelayCommand UpdateVieoInfoCommand => new RelayCommand(async l =>
         {
-            if (l is string project)
+            await IocMessage.Dialog.ShowForeach(() => this.Collection.FilterSource.Select(x => x.Model).OfType<fm_dd_video>(), item =>
             {
+                var mediaInfo = IocFFMpeg.Instance.GetMediaAnalysis(item.Url);
+                if (mediaInfo == null)
+                    return Tuple.Create(false, item.Name);
+                item.Duration = mediaInfo.Duration.Ticks;
+                var video = mediaInfo.VideoStreams?.FirstOrDefault();
+                if (video == null)
+                    return Tuple.Create(false, item.Name);
+                item.PixelFormat = video.PixelFormat;
+                item.Bitrate = video.BitRate.ToString();
+                item.VideoCode = video.CodecName;
+                item.PixelWidth = video.Width;
+                item.PixelHeight = video.Height;
+                item.Rate = video.FrameRate.ToString();
+                item.Type = video.CodecLongName;
+                return Tuple.Create(true, item.Name);
+            });
 
-            }
-        });
+        }, x => this.Collection.FilterSource.Select(x => x.Model).OfType<fm_dd_video>().Count() > 0);
+
+        [Display(Name = "保存视频配置信息", GroupName = "更新")]
+        public RelayCommand SaveVedioConfigCommand => new RelayCommand(async l =>
+        {
+            await IocMessage.Dialog.ShowForeach(() => this.Collection.FilterSource.Select(x => x.Model).OfType<fm_dd_video>(), item =>
+            {
+                string path = Path.ChangeExtension(item.Url, ".json");
+                JsonSerializerService service = new JsonSerializerService();
+                service.Save(path, item);
+                return Tuple.Create(true, item.Name);
+            });
+        }, x => this.Collection.FilterSource.Select(x => x.Model).OfType<fm_dd_video>().Count() > 0);
 
         [Display(Name = "更新视频缩率图", GroupName = "更新")]
         public RelayCommand UpdateVedioImageCommand => new RelayCommand(async l =>
@@ -142,29 +167,54 @@ namespace H.App.FileManager
             bool? r = await IocMessage.Dialog.Show("确定更新？");
             if (r != true)
                 return;
-            foreach (fm_dd_video item in this.Collection.FilterSource.Select(x => x.Model).OfType<fm_dd_video>())
+            await IocMessage.Dialog.ShowForeach(() => this.Collection.FilterSource.Select(x => x.Model).OfType<fm_dd_video>(), item =>
             {
                 string dir = Path.GetDirectoryName(item.Url);
                 IEnumerable<string> images = Directory.GetFiles(dir).Where(x => x.IsImage() && Path.GetFileNameWithoutExtension(x).StartsWith(item.Name));
-                item.Images.Clear();
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    item.Images.Clear();
+                });
                 foreach (string image in images)
                 {
-                    item.Images.Add(new fm_dd_video_image() { Url = image, Name = Path.GetFileNameWithoutExtension(item.Name) });
+                    var vimage = new fm_dd_video_image()
+                    {
+                        Url = image,
+                        Name = Path.GetFileNameWithoutExtension(image)
+                    };
+
+                    var array = image.Split('_');
+                    if (array.Length > 1)
+                    {
+                        if (long.TryParse(array[1].Split('.')[0], out long v))
+                        {
+                            vimage.TimeStamp = v;
+                        }
+                    }
+                    if (array.Length > 2)
+                    {
+                        vimage.DisplayName = array[2];
+                    }
+                    Application.Current.Dispatcher.Invoke(() =>
+                    {
+                        item.Images.Add(vimage);
+                    });
                 }
                 item.SelectedImageIndex = 0;
-            }
+                return Tuple.Create(true, item.Name);
+            });
         }, x => this.Collection.FilterSource.Select(x => x.Model).OfType<fm_dd_video>().Count() > 0);
 
         [Display(Name = "根据名称加载标签", GroupName = "更新")]
-        public RelayCommand UpdateTagCommand => new RelayCommand(l =>
+        public RelayCommand UpdateTagCommand => new RelayCommand(async l =>
         {
             ITagService tagService = Ioc.GetService<ITagService>();
-            foreach (fm_dd_file item in this.Collection.FilterSource.Select(x => x.Model))
+            await IocMessage.Dialog.ShowForeach(() => this.Collection.FilterSource.Select(x => x.Model), item =>
             {
                 if (item is fm_dd_file)
                 {
-                    IEnumerable<ITag> finds = tagService.Collection.Where(x => x.GroupName == null).Where(x => item.Name.Contains(x.Name));
-                    foreach (ITag find in finds)
+                    IEnumerable<ITag> findtags = tagService.Collection.Where(x => x.GroupName == null).Where(x => item.Name.Contains(x.Name));
+                    foreach (ITag find in findtags)
                     {
                         item.Tags = tagService.ConvertToCheck(item.Tags, find);
                     }
@@ -172,32 +222,32 @@ namespace H.App.FileManager
                 if (item is fm_dd_image image)
                 {
                     {
-                        IEnumerable<ITag> finds = tagService.Collection.Where(x => x.GroupName == "Object").Where(x => item.Name.Contains(x.Name));
-                        foreach (ITag find in finds)
+                        IEnumerable<ITag> findtags = tagService.Collection.Where(x => x.GroupName == "Object").Where(x => item.Name.Contains(x.Name));
+                        foreach (ITag find in findtags)
                         {
                             image.Object = tagService.ConvertToCheck(image.Object, find);
                         }
                     }
 
                     {
-                        IEnumerable<ITag> finds = tagService.Collection.Where(x => x.GroupName == "Area").Where(x => item.Name.Contains(x.Name));
-                        foreach (ITag find in finds)
+                        IEnumerable<ITag> findtags = tagService.Collection.Where(x => x.GroupName == "Area").Where(x => item.Name.Contains(x.Name));
+                        foreach (ITag find in findtags)
                         {
                             image.Area = tagService.ConvertToCheck(image.Area, find);
                         }
                     }
 
                     {
-                        IEnumerable<ITag> finds = tagService.Collection.Where(x => x.GroupName == "Articulation").Where(x => item.Name.Contains(x.Name));
-                        foreach (ITag find in finds)
+                        IEnumerable<ITag> findtags = tagService.Collection.Where(x => x.GroupName == "Articulation").Where(x => item.Name.Contains(x.Name));
+                        foreach (ITag find in findtags)
                         {
                             image.Articulation = tagService.ConvertToCheck(image.Articulation, find);
                         }
                     }
                 }
-
-            }
-        });
+                return Tuple.Create(true, item.Name);
+            });
+        }, x => this.Collection.FilterSource.Count() > 0);
 
         [Display(Name = "移除不存在的文件", GroupName = "更新")]
         public RelayCommand RemoveAbsentFileCommand => new RelayCommand(async l =>
@@ -205,12 +255,13 @@ namespace H.App.FileManager
             bool? r = await IocMessage.Dialog.Show("确定移除？");
             if (r != true)
                 return;
-            List<fm_dd_file> finds = this.Collection.FilterSource.Select(x => x.Model).Where(x => !File.Exists(x.Url)).ToList();
-            foreach (fm_dd_file item in finds)
-            {
-                await this.Delete(item);
-            }
-            IocMessage.Snack.ShowInfo($"操作完成[{finds.Count()}]条");
+
+            await IocMessage.Dialog.ShowForeach(() => this.Collection.FilterSource.Select(x => x.Model).Where(x => !File.Exists(x.Url)),
+                 x =>
+                {
+                    this.Delete(x).Wait();
+                    return Tuple.Create(true, x.Name);
+                });
         }, x => this.Collection.FilterSource.Count > 0);
 
         [Display(Name = "彻底删除", GroupName = "菜单")]
@@ -244,14 +295,14 @@ namespace H.App.FileManager
             bool? r = await IocMessage.Dialog.Show("确定删除？");
             if (r != true)
                 return;
-            List<SelectViewModel<fm_dd_file>> finds = this.Collection.FilterSource.ToList();
-            foreach (SelectViewModel<fm_dd_file> item in finds)
+
+            await IocMessage.Dialog.ShowForeach(() => this.Collection.FilterSource, item =>
             {
                 if (File.Exists(item.Model.Url))
                     File.Delete(item.Model.Url);
-                await this.Delete(item);
-            }
-            IocMessage.Snack.ShowInfo($"操作完成[{finds.Count()}]条");
+                this.Delete(item).Wait();
+                return Tuple.Create(true, item.Model.Name);
+            });
         }, x => this.Collection.FilterSource.Count > 0);
 
         [Display(Name = "移除当前筛选的文件", GroupName = "更新")]
@@ -260,12 +311,12 @@ namespace H.App.FileManager
             bool? r = await IocMessage.Dialog.Show("确定移除？");
             if (r != true)
                 return;
-            List<SelectViewModel<fm_dd_file>> finds = this.Collection.FilterSource.ToList();
-            foreach (SelectViewModel<fm_dd_file> item in finds)
+
+            await IocMessage.Dialog.ShowForeach(() => this.Collection.FilterSource, item =>
             {
-                await this.Delete(item);
-            }
-            IocMessage.Snack.ShowInfo($"操作完成[{finds.Count()}]条");
+                this.Delete(item).Wait();
+                return Tuple.Create(true, item.Model.Name);
+            });
         }, x => this.Collection.FilterSource.Count > 0);
 
         [Display(Name = "移除评分低于1的文件", GroupName = "更新")]
@@ -274,12 +325,11 @@ namespace H.App.FileManager
             bool? r = await IocMessage.Dialog.Show("确定移除？");
             if (r != true)
                 return;
-            List<SelectViewModel<fm_dd_file>> finds = this.Collection.FilterSource.Where(x => x.Model.Score < 1).ToList();
-            foreach (SelectViewModel<fm_dd_file> item in finds)
+            await IocMessage.Dialog.ShowForeach(() => this.Collection.FilterSource.Where(x => x.Model.Score < 1), item =>
             {
-                await this.Delete(item);
-            }
-            IocMessage.Snack.ShowInfo($"操作完成[{finds.Count()}]条");
+                this.Delete(item).Wait();
+                return Tuple.Create(true, item.Model.Name);
+            });
         }, x => this.Collection.FilterSource.Where(x => x.Model.Score < 1).Count() > 0);
 
         [Display(Name = "彻底删除评分低于1的文件", GroupName = "更新")]
@@ -288,14 +338,13 @@ namespace H.App.FileManager
             bool? r = await IocMessage.Dialog.Show("确定删除？");
             if (r != true)
                 return;
-            List<SelectViewModel<fm_dd_file>> finds = this.Collection.FilterSource.Where(x => x.Model.Score < 1).ToList();
-            foreach (SelectViewModel<fm_dd_file> item in finds)
+            await IocMessage.Dialog.ShowForeach(() => this.Collection.FilterSource.Where(x => x.Model.Score < 1), item =>
             {
                 if (File.Exists(item.Model.Url))
                     File.Delete(item.Model.Url);
-                await this.Delete(item);
-            }
-            IocMessage.Snack.ShowInfo($"操作完成[{finds.Count()}]条");
+                this.Delete(item).Wait();
+                return Tuple.Create(true, item.Model.Name);
+            });
         }, x => this.Collection.FilterSource.Where(x => x.Model.Score < 1).Count() > 0);
 
         [Browsable(false)]
@@ -317,7 +366,7 @@ namespace H.App.FileManager
             {
                 this.History.Add(file);
                 var view = Ioc.GetService<IFileToViewService>().ToView(file);
-                await IocMessage.Dialog.Show(view,x => x.DialogButton = DialogButton.None);
+                await IocMessage.Dialog.Show(view, x => x.DialogButton = DialogButton.None);
             }
         });
     }

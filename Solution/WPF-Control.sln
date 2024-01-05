@@ -257,6 +257,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - Setup", "6 - Setup", "{
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "H.Setup.FileManager", "..\Source\Setup\H.Setup.FileManager\H.Setup.FileManager.vdproj", "{2FBCB7DF-4468-4F58-ACF4-1CB5C7F12259}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - Setup", "6 - Setup", "{B78841F3-C873-4D2A-9F5C-B126AC59EFA1}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "H.Setup.FileManager", "..\Source\Setup\H.Setup.FileManager\H.Setup.FileManager.vdproj", "{2FBCB7DF-4468-4F58-ACF4-1CB5C7F12259}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Extensions.FFMpeg", "..\Source\Extensions\H.Extensions.FFMpeg\H.Extensions.FFMpeg.csproj", "{C8A6ED2A-2B18-4D06-A5EF-2E5557ABA1BB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -146,5 +146,18 @@ namespace H.App.FileManager
                 RaisePropertyChanged();
             }
         }
+
+        private bool _usePixelFormat = false;
+        [Display(Name = "启用像素格式")]
+        public bool UsePixelFormat
+        {
+            get { return _usePixelFormat; }
+            set
+            {
+                _usePixelFormat = value;
+                RaisePropertyChanged();
+            }
+        }
+
     }
 }
