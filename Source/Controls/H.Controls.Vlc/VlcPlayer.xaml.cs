@@ -164,6 +164,18 @@ namespace H.Controls.Vlc
                 this.CommandBindings.Add(binding);
             }
 
+            this.Unloaded += VlcPlayer_Unloaded;
+        }
+
+        private void VlcPlayer_Unloaded(object sender, RoutedEventArgs e)
+        {
+            if (this._vlc?.SourceProvider?.MediaPlayer == null)
+                return;
+            Task.Run(() =>
+            {
+                this._vlc.SourceProvider.MediaPlayer.Stop();
+                this._vlc.SourceProvider.MediaPlayer.Dispose();
+            });
         }
 
         public float Rate

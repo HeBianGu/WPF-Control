@@ -190,6 +190,8 @@ namespace H.Extensions.Behvaiors
                     binding.Path = new PropertyPath(path);
                     binding.Mode = readOnly?.IsReadOnly == true ? BindingMode.OneWay : BindingMode.TwoWay;
                     bound.Binding = binding;
+                    if (columnAttribute?.ConvertyType != null)
+                        binding.Converter = Activator.CreateInstance(columnAttribute.ConvertyType) as IValueConverter;
                 }
                 dataGrid.Columns.Add(column);
             }

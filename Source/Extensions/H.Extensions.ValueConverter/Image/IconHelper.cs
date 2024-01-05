@@ -64,6 +64,8 @@ namespace HeBianGu.App.Tool
 
         public static ImageSource GetIconToImageSource(Icon icon)
         {
+            if (icon == null) 
+                return null;  
             ImageSource imageSource =
                 System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(
                 icon.Handle,

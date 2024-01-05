@@ -95,7 +95,7 @@ namespace H.Modules.Upgrade
                         cr = this.ShowSetup(savePath, out string message);
                         if (cr == false)
                         {
-                            IocMessage.ShowDialogMessage(message);
+                          await  IocMessage.ShowDialogMessage(message);
                             return;
                         }
                         return;
@@ -109,7 +109,7 @@ namespace H.Modules.Upgrade
                 });
                 if (string.IsNullOrEmpty(url))
                 {
-                    IocMessage.ShowDialogMessage(messageDownload);
+                  await  IocMessage.ShowDialogMessage(messageDownload);
                     return;
                 }
 

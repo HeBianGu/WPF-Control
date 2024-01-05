@@ -14,8 +14,6 @@ namespace H.App.FileManager
                 return Ioc.GetService<IFileToMoreViewService>().ToView(file);
             }
             return null;
-
-
         }
     }
 }

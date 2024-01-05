@@ -31,12 +31,12 @@
         <Setter Property="h:Cattach.TopTemplate">
             <Setter.Value>
                 <ControlTemplate>
-                    <DockPanel LastChildFill="False">
+                    <UniformGrid Rows="1">
                         <Button Command="{x:Static h:Commands.Clear}"
                                 Content="取消选择" />
                         <Button Command="{local:ManageFavoriteCommand}"
                                 Content="管理收藏夹" />
-                    </DockPanel>
+                    </UniformGrid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

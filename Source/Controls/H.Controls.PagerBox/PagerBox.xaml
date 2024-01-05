@@ -62,6 +62,7 @@
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition />
                             <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
                         <Button x:Name="PART_ButtonLeft"
@@ -76,8 +77,7 @@
                                     Orientation="Horizontal">
                             <b:Interaction.Triggers>
                                 <b:EventTrigger EventName="RadioButton.Checked">
-                                    <b:InvokeCommandAction Command="{x:Static h:Commands.Selected}"
-                                                           PassEventArgsToCommand="True" />
+                                    <b:InvokeCommandAction Command="{x:Static h:Commands.Selected}" PassEventArgsToCommand="True" />
                                 </b:EventTrigger>
                             </b:Interaction.Triggers>
 
@@ -92,8 +92,7 @@
                                        VerticalAlignment="Center"
                                        Text="..." />
 
-                            <StackPanel Name="PART_PanelMain"
-                                        Orientation="Horizontal" />
+                            <StackPanel Name="PART_PanelMain" Orientation="Horizontal" />
 
                             <TextBlock Name="PART_TextBlockRight"
                                        Margin="10,0"
@@ -112,6 +111,12 @@
                                 Background="Transparent"
                                 Command="{x:Static h:Commands.Next}"
                                 Content="下一页" />
+
+                        <ComboBox Grid.Column="3"
+                                  MinWidth="50"
+                                  IsEditable="True"
+                                  ItemsSource="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=MaxPageCount, Converter={local:GetPageIndexsConverter}}"
+                                  Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=PageIndex}" />
 
                     </Grid>
                 </ControlTemplate>

@@ -1,10 +1,12 @@
 ﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
 
+using H.Extensions.ValueConverter;
 using H.Providers.Mvvm;
 
 
 using System;
 using System.Collections;
+using System.Globalization;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,9 +15,6 @@ using System.Windows.Threading;
 
 namespace H.Controls.PagerBox
 {
-    /// <summary>
-    ///     页码
-    /// </summary>
     [TemplatePart(Name = ElementButtonLeft, Type = typeof(Button))]
     [TemplatePart(Name = ElementButtonRight, Type = typeof(Button))]
     [TemplatePart(Name = ElementButtonFirst, Type = typeof(RadioButton))]
@@ -218,7 +217,7 @@ namespace H.Controls.PagerBox
         ///     表示当前选中的按钮距离左右两个方向按钮的最大间隔（4表示间隔4个按钮，如果超过则用省略号表示）
         /// </summary>       
         public static readonly DependencyProperty MaxPageIntervalProperty = DependencyProperty.Register(
-            "MaxPageInterval", typeof(int), typeof(PagerBox), new PropertyMetadata(3, (o, args) =>
+            "MaxPageInterval", typeof(int), typeof(PagerBox), new PropertyMetadata(5, (o, args) =>
             {
                 if (o is PagerBox)
                 {
@@ -410,5 +409,15 @@ namespace H.Controls.PagerBox
                  }
 
              }));
+    }
+
+    public class GetPageIndexsConverter : MarkupValueConverterBase
+    {
+        public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value is int v)
+                return Enumerable.Range(1, v);
+            return DependencyProperty.UnsetValue;
+        }
     }
 }

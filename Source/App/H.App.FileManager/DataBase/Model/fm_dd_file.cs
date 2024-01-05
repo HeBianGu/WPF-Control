@@ -1,4 +1,6 @@
 ﻿using H.Extensions.Behvaiors;
+using H.Extensions.TypeConverter;
+using H.Extensions.ValueConverter;
 using H.Providers.Ioc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
@@ -45,9 +47,10 @@ namespace H.App.FileManager
         public string Extend { get; set; }
 
         private long _size;
-        [DataGridColumn("Auto")]
+        [DataGridColumn("Auto", ConvertyType = typeof(GetByteToSizeDisplayConverter))]
         [ReadOnly(true)]
         [Display(Name = "大小")]
+        [TypeConverter(typeof(SizeToDisplayTypeConverter))]
         public long Size
         {
             get { return _size; }

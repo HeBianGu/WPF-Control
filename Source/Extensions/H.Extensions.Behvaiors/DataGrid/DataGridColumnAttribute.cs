@@ -17,7 +17,8 @@ namespace H.Extensions.Behvaiors
 
         }
         public DataGridLength Width { get; set; } = DataGridLength.Auto;
-        public Type Template { get; set; } = typeof(DataGridTextColumn);
+        public Type Template { get; set; } = typeof(DataGridTextColumn); 
+        public Type ConvertyType { get; set; }
         /// <summary>
         /// "{0}.Property"
         /// </summary>
