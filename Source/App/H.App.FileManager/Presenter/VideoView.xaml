@@ -290,11 +290,19 @@
                                      VerticalAlignment="Center"
                                      Cattach.BottomTemplate="{x:Null}"
                                      UseAutoPlayOnVedioSource="False"
-                                     VedioSource="{Binding Model.Url}">
+                                     VedioSource="{Binding Model.Url, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}">
                             <b:Interaction.Triggers>
                                 <b:EventTrigger EventName="ShootCut">
                                     <b:InvokeCommandAction Command="{Binding ShootCutCommand}"
                                                            PassEventArgsToCommand="True" />
+                                </b:EventTrigger>
+                                <b:EventTrigger EventName="SourceUpdated">
+                                    <h:CallMethodActionEx MethodName="FitToBounds"
+                                                          TargetObject="{Binding ElementName=zoomview}" />
+                                </b:EventTrigger>
+                                <b:EventTrigger EventName="TargetUpdated">
+                                    <h:CallMethodActionEx MethodName="FitToBounds"
+                                                          TargetObject="{Binding ElementName=zoomview}" />
                                 </b:EventTrigger>
                             </b:Interaction.Triggers>
                         </h:VlcPlayer>

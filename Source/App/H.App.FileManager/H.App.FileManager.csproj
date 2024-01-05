@@ -3,6 +3,16 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+    <Product>H文件管理器</Product>
+    <Description>电脑文件管理器：收藏、评分、标签，图片、视频等</Description>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <FileVersion>1.0.0</FileVersion>
+    <Copyright>Copyright © HeBianGu 2024-2024</Copyright>
+    <Authors></Authors>
+    <PackageProjectUrl>https://github.com/HeBianGu</PackageProjectUrl>    
+    <Title>H文件管理器</Title>
+    <Version>1.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

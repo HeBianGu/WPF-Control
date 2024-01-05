@@ -118,9 +118,13 @@
                                               TargetObject="{Binding ElementName=zoomview}" />
                     </h:MouseTrigger>
                 </b:Interaction.Triggers>
-                <Image Source="{Binding Model.Url}">
+                <Image Source="{Binding Model.Url, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}">
                     <b:Interaction.Triggers>
                         <b:EventTrigger EventName="SourceUpdated">
+                            <h:CallMethodActionEx MethodName="FitToBounds"
+                                                  TargetObject="{Binding ElementName=zoomview}" />
+                        </b:EventTrigger>
+                        <b:EventTrigger EventName="TargetUpdated">
                             <h:CallMethodActionEx MethodName="FitToBounds"
                                                   TargetObject="{Binding ElementName=zoomview}" />
                         </b:EventTrigger>

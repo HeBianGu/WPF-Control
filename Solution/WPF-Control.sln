@@ -251,7 +251,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Controls.PagerBox", "..\S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Controls.Vlc", "..\Source\Controls\H.Controls.Vlc\H.Controls.Vlc.csproj", "{74F3C541-19E8-47D3-9DDE-A1514F7EBF77}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Extensions.Torrent", "..\Source\Extensions\H.Extensions.Torrent\H.Extensions.Torrent.csproj", "{E2AD6EAF-12F7-4A85-AF3E-5AB4370902B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Extensions.Torrent", "..\Source\Extensions\H.Extensions.Torrent\H.Extensions.Torrent.csproj", "{E2AD6EAF-12F7-4A85-AF3E-5AB4370902B2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - Setup", "6 - Setup", "{B78841F3-C873-4D2A-9F5C-B126AC59EFA1}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "H.Setup.FileManager", "..\Source\Setup\H.Setup.FileManager\H.Setup.FileManager.vdproj", "{2FBCB7DF-4468-4F58-ACF4-1CB5C7F12259}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -703,6 +707,8 @@ Global
 		{E2AD6EAF-12F7-4A85-AF3E-5AB4370902B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2AD6EAF-12F7-4A85-AF3E-5AB4370902B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E2AD6EAF-12F7-4A85-AF3E-5AB4370902B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FBCB7DF-4468-4F58-ACF4-1CB5C7F12259}.Debug|Any CPU.ActiveCfg = Release
+		{2FBCB7DF-4468-4F58-ACF4-1CB5C7F12259}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -821,6 +827,7 @@ Global
 		{5566DBA0-F492-4EC0-A199-079933407BDC} = {9E63ED70-6F96-4CB2-8B9D-EAEC77D0548E}
 		{74F3C541-19E8-47D3-9DDE-A1514F7EBF77} = {9E63ED70-6F96-4CB2-8B9D-EAEC77D0548E}
 		{E2AD6EAF-12F7-4A85-AF3E-5AB4370902B2} = {09F8FD00-E76A-4D72-AAB4-7FA06DBE12D4}
+		{2FBCB7DF-4468-4F58-ACF4-1CB5C7F12259} = {B78841F3-C873-4D2A-9F5C-B126AC59EFA1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF825C3D-F4F4-4E62-BBFF-B42A5E81112F}

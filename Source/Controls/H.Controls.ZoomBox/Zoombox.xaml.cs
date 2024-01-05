@@ -2569,8 +2569,9 @@ namespace H.Controls.ZoomBox
         {
             if (_content == null || _verticalScrollBar == null || _horizontalScrollBar == null)
                 return;
-
-            Size contentSize = (_content is Viewbox) ? ((Viewbox)_content).Child.DesiredSize : this.RenderSize;
+            Size contentSize = this.RenderSize;
+            if (_content is Viewbox viewbox && viewbox.Child != null)
+                contentSize = viewbox.Child.DesiredSize;
 
             _verticalScrollBar.SmallChange = 10d;
             _verticalScrollBar.LargeChange = 10d;
@@ -3012,7 +3013,7 @@ namespace H.Controls.ZoomBox
 
                         _contentPresenter.RenderTransform = tg;
 
-                        Size initialContentSize = (_content is Viewbox) && ((Viewbox)_content).Child!= null ? ((Viewbox)_content).Child.DesiredSize : this.RenderSize;
+                        Size initialContentSize = (_content is Viewbox) && ((Viewbox)_content).Child != null ? ((Viewbox)_content).Child.DesiredSize : this.RenderSize;
                         Size scaledContentSize = new Size(initialContentSize.Width * newRelativeScale, initialContentSize.Height * newRelativeScale);
 
                         if (allowAnimation && IsAnimated)
