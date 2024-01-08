@@ -1,4 +1,5 @@
-﻿using System;
+﻿using H.Providers.Mvvm;
+using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,10 +26,50 @@ namespace H.Controls.TagBox
         }
 
 
+        public string SearchText
+        {
+            get { return (string)GetValue(SearchTextProperty); }
+            set { SetValue(SearchTextProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty SearchTextProperty =
+            DependencyProperty.Register("SearchText", typeof(string), typeof(TagBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
+            {
+                TagBox control = d as TagBox;
+
+                if (control == null) return;
+
+                if (e.OldValue is string o)
+                {
+
+                }
+
+                if (e.NewValue is string n)
+                {
+
+                }
+                control.RefreshData();
+            }));
+
+
         private void RefreshData()
         {
             var service = Ioc.GetService<ITagService>();
-            this.ItemsSource = service?.Collection.Where(x => x.GroupName == this.GroupName);
+            this.ItemsSource = service?.Collection.Where(x => x.GroupName == this.GroupName).Select(x => new ModelViewModel<ITag>(x));
+            //this.Items.Filter = x =>
+            //{
+            //    if (x is ITag tag)
+            //    {
+            //        return string.IsNullOrEmpty(this.SearchText) || tag.Name.Contains(this.SearchText);
+            //    }
+            //    return false;
+            //};
+
+            foreach (var item in this.ItemsSource.OfType<ModelViewModel<ITag>>())
+            {
+                item.Visible = string.IsNullOrEmpty(this.SearchText) || item.Model.Name.Contains(this.SearchText);
+            }
         }
 
         public string GroupName
@@ -62,9 +103,9 @@ namespace H.Controls.TagBox
         protected override void OnSelectionChanged(SelectionChangedEventArgs e)
         {
             base.OnSelectionChanged(e);
-            var tags = this.SelectedItems.OfType<ITag>();
+            var tags = this.SelectedItems.OfType<ModelViewModel<ITag>>();
             this._flag = true;
-            this.Tags = string.Join(",", tags.Select(x => x.Name));
+            this.Tags = string.Join(",", tags.Select(x => x.Model.Name));
             this.OnTagChanged();
             this._flag = false;
         }
@@ -96,9 +137,10 @@ namespace H.Controls.TagBox
                 if (e.NewValue is string n)
                 {
                     var values = n.Split(TagOptions.Instance.SplitChars.ToCharArray());
+
                     foreach (var value in values)
                     {
-                        var find = TagOptions.Instance.Tags.FirstOrDefault(x => x.Name == value);
+                        var find = control.ItemsSource.OfType<ModelViewModel<ITag>>().FirstOrDefault(x => x.Model.Name == value);
                         if (find == null)
                             continue;
                         control.SelectedItems.Add(find);
