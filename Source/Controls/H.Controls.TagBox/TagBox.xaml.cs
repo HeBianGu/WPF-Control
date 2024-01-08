@@ -1,5 +1,7 @@
-﻿using H.Providers.Mvvm;
+﻿using H.Extensions.ValueConverter;
+using H.Providers.Mvvm;
 using System;
+using System.Globalization;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -49,7 +51,6 @@ namespace H.Controls.TagBox
                 {
 
                 }
-                control.RefreshData();
             }));
 
 
@@ -136,17 +137,27 @@ namespace H.Controls.TagBox
 
                 if (e.NewValue is string n)
                 {
-                    var values = n.Split(TagOptions.Instance.SplitChars.ToCharArray());
-
-                    foreach (var value in values)
-                    {
-                        var find = control.ItemsSource.OfType<ModelViewModel<ITag>>().FirstOrDefault(x => x.Model.Name == value);
-                        if (find == null)
-                            continue;
-                        control.SelectedItems.Add(find);
-                    }
+                    control.RefreshSelection();
                 }
             }));
+
+
+        private void RefreshSelection()
+        {
+            if (this.Tags == null)
+            {
+                this.SelectedItems.Clear();
+                return;
+            }
+            var values = this.Tags.Split(TagOptions.Instance.SplitChars.ToCharArray());
+            foreach (var value in values)
+            {
+                var find = this.ItemsSource.OfType<ITag>().FirstOrDefault(x => x.Name == value);
+                if (find == null)
+                    continue;
+                this.SelectedItems.Add(find);
+            }
+        }
 
 
         //声明和注册路由事件
@@ -166,7 +177,21 @@ namespace H.Controls.TagBox
             RoutedEventArgs args = new RoutedEventArgs(TagChangedRoutedEvent, this);
             this.RaiseEvent(args);
         }
+    }
 
-
+    public class TagBoxSearchConverter : MarkupMultiValueConverterBase
+    {
+        public override object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        {
+            if(values.Length!=2)
+                return DependencyProperty.UnsetValue;
+            if (values[0] is ITag tag && values[1] is string txt)
+            {
+                if (string.IsNullOrEmpty(txt) || tag.Name.Contains(txt))
+                    return Visibility.Visible;
+                return Visibility.Collapsed;
+            }
+            return DependencyProperty.UnsetValue;
+        }
     }
 }

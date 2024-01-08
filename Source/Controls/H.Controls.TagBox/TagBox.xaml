@@ -29,7 +29,15 @@
                 <Style BasedOn="{StaticResource {x:Static h:ListBoxItemKeys.Default}}"
                        TargetType="{x:Type ListBoxItem}">
                     <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Background}}" />
-                    <Setter Property="Visibility" Value="{Binding Visible, Converter={x:Static h:Converter.GetTrueToVisible}}" />
+                    <Setter Property="Visibility">
+                        <Setter.Value>
+                            <MultiBinding Converter="{local:TagBoxSearchConverter}">
+                                <Binding Path="." />
+                                <Binding Path="SearchText"
+                                         RelativeSource="{RelativeSource AncestorType=local:TagBox}" />
+                            </MultiBinding>
+                        </Setter.Value>
+                    </Setter>
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type ListBoxItem}">
@@ -44,7 +52,7 @@
                                         <ContentPresenter Margin="{TemplateBinding Padding}"
                                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                                          Content="{Binding Model}" />
+                                                          Content="{Binding}" />
                                     </DockPanel>
                                 </Border>
                             </ControlTemplate>
@@ -159,8 +167,13 @@
                                                 </b:EventTrigger>
                                             </b:Interaction.Triggers>
                                         </Button>
-                                        <TextBox DockPanel.Dock="Top"
-                                                 Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=SearchText, UpdateSourceTrigger=PropertyChanged}" />
+                                        <DockPanel DockPanel.Dock="Top">
+                                            <Button Content="清空"
+                                                    DockPanel.Dock="Right" >
+                                            </Button>
+                                            <TextBox Margin="2"
+                                                     Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=SearchText, UpdateSourceTrigger=PropertyChanged}" />
+                                        </DockPanel>
                                         <ScrollViewer HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
                                                       VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
                                             <ItemsPresenter Margin="{TemplateBinding Padding}"
