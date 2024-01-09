@@ -1,17 +1,16 @@
 ﻿using H.Controls.FilterBox;
 using H.Providers.Mvvm;
-using System.ComponentModel.DataAnnotations;
 
 namespace H.App.FileManager
 {
-    public class FavoriteFileFilter : FilterBase
+    public class SeeLaterFileFilter : FilterBase
     {
         public bool Value { get; set; }
         public override bool IsMatch(object obj)
         {
             if (obj is ModelViewModel<fm_dd_file> file)
             {
-                return file.Model.Favorite == Value;
+                return file.Model.SeeLater == Value;
             }
             return false;
         }

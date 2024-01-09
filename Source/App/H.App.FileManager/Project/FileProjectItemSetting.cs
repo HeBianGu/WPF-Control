@@ -34,6 +34,18 @@ namespace H.App.FileManager
             }
         }
 
+        private bool _useSeeLater;
+        [Display(Name = "启用稍后观看")]
+        public bool UseSeeLater
+        {
+            get { return _useSeeLater; }
+            set
+            {
+                _useSeeLater = value;
+                RaisePropertyChanged();
+            }
+        }
+
         private bool _useAreaTag = false;
         [Display(Name = "启用国家标记")]
         public bool UseAreaTag

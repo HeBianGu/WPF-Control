@@ -38,16 +38,32 @@ namespace H.App.FileManager
         public List<TreeNodeBase<ICommand>> GetFileCommands(fm_dd_file file)
         {
             List<TreeNodeBase<ICommand>> result = new List<TreeNodeBase<ICommand>>();
-            TreeNodeBase<ICommand> favorite = null;
-            favorite = new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x =>
+
             {
-                file.Favorite = !file.Favorite;
-                favorite.IsChecked = file.Favorite;
-            })
-            { Name = "喜欢" })
-            { IsCheckable = true, IsChecked = file.Favorite };
-            if (FileProjectItem.Setting.UseFavorite)
-                result.Add(favorite);
+                TreeNodeBase<ICommand> favorite = null;
+                favorite = new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x =>
+                {
+                    file.Favorite = !file.Favorite;
+                    favorite.IsChecked = file.Favorite;
+                })
+                { Name = "喜欢" })
+                { IsCheckable = true, IsChecked = file.Favorite };
+                if (FileProjectItem.Setting.UseFavorite)
+                    result.Add(favorite);
+            }
+
+            {
+                TreeNodeBase<ICommand> later = null;
+                later = new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x =>
+                {
+                    file.SeeLater = !file.SeeLater;
+                    later.IsChecked = file.SeeLater;
+                })
+                { Name = "稍后观看" })
+                { IsCheckable = true, IsChecked = file.SeeLater };
+                if (FileProjectItem.Setting.UseSeeLater)
+                    result.Add(later);
+            }
 
             TreeNodeBase<ICommand> scoreNode = new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x => file.Score = 9) { Name = $"评分" });
             if (FileProjectItem.Setting.UseScore)

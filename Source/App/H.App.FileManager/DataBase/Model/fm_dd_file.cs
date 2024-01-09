@@ -131,6 +131,19 @@ namespace H.App.FileManager
                 RaisePropertyChanged();
             }
         }
+
+        private bool _seeLater;
+        [Display(Name = "稍后观看")]
+        public bool SeeLater
+        {
+            get { return _seeLater; }
+            set
+            {
+                _seeLater = value;
+                RaisePropertyChanged();
+            }
+        }
+
     }
 
     public class DataContextFactory : IDesignTimeDbContextFactory<DataContext>

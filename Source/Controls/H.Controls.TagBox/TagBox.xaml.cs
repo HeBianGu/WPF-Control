@@ -57,20 +57,7 @@ namespace H.Controls.TagBox
         private void RefreshData()
         {
             var service = Ioc.GetService<ITagService>();
-            this.ItemsSource = service?.Collection.Where(x => x.GroupName == this.GroupName).Select(x => new ModelViewModel<ITag>(x));
-            //this.Items.Filter = x =>
-            //{
-            //    if (x is ITag tag)
-            //    {
-            //        return string.IsNullOrEmpty(this.SearchText) || tag.Name.Contains(this.SearchText);
-            //    }
-            //    return false;
-            //};
-
-            foreach (var item in this.ItemsSource.OfType<ModelViewModel<ITag>>())
-            {
-                item.Visible = string.IsNullOrEmpty(this.SearchText) || item.Model.Name.Contains(this.SearchText);
-            }
+            this.ItemsSource = service?.Collection.Where(x => x.GroupName == this.GroupName);
         }
 
         public string GroupName
@@ -104,9 +91,9 @@ namespace H.Controls.TagBox
         protected override void OnSelectionChanged(SelectionChangedEventArgs e)
         {
             base.OnSelectionChanged(e);
-            var tags = this.SelectedItems.OfType<ModelViewModel<ITag>>();
+            var tags = this.SelectedItems.OfType<ITag>();
             this._flag = true;
-            this.Tags = string.Join(",", tags.Select(x => x.Model.Name));
+            this.Tags = string.Join(",", tags.Select(x => x.Name));
             this.OnTagChanged();
             this._flag = false;
         }

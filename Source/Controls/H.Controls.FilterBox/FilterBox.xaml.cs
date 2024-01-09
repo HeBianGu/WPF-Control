@@ -138,36 +138,37 @@ namespace H.Controls.FilterBox
             if (_flag == true)
                 return;
             ListBoxItem checkItem = this.GetCheckAllItem();
-            if (checkItem == null)
-                return;
-
-
-            if (e.AddedItems.Count == 1 && this.Items[0] == e.AddedItems[0] && checkItem.IsMouseOver)
+            if (checkItem != null)
             {
-                _flag = true;
-                foreach (object item in this.Items)
+
+                if (e.AddedItems.Count == 1 && this.Items[0] == e.AddedItems[0] && checkItem.IsMouseOver)
                 {
-                    this.SelectedItems.Add(item);
+                    _flag = true;
+                    foreach (object item in this.Items)
+                    {
+                        this.SelectedItems.Add(item);
+                    }
+                    _flag = false;
                 }
-                _flag = false;
-            }
 
-            else if (e.RemovedItems.Count == 1 && this.Items[0] == e.RemovedItems[0] && checkItem.IsMouseOver)
-            {
-                _flag = true;
-                foreach (object item in this.Items)
+                else if (e.RemovedItems.Count == 1 && this.Items[0] == e.RemovedItems[0] && checkItem.IsMouseOver)
                 {
-                    this.SelectedItems.Remove(item);
+                    _flag = true;
+                    foreach (object item in this.Items)
+                    {
+                        this.SelectedItems.Remove(item);
+                    }
+                    _flag = false;
                 }
-                _flag = false;
-            }
-            else
-            {
-                if (this.SelectedItems.Count + e.AddedItems.Count >= this.Items.Count)
-                    checkItem.IsSelected = true;
                 else
-                    checkItem.IsSelected = false;
+                {
+                    if (this.SelectedItems.Count + e.AddedItems.Count >= this.Items.Count)
+                        checkItem.IsSelected = true;
+                    else
+                        checkItem.IsSelected = false;
+                }
             }
+
             this.Filter = new Filter(this);
             this.OnFilterChanged();
         }

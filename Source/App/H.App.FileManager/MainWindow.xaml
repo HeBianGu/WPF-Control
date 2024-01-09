@@ -134,6 +134,27 @@
                                     </h:FilterBox>
                                 </Expander>
 
+                                <Expander Header="稍后观看"
+                                          Visibility="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Setting.UseSeeLater, Converter={x:Static h:Converter.GetTrueToVisible}}">
+                                    <h:FilterBox Margin="0,5"
+                                                 HorizontalAlignment="Stretch"
+                                                 HorizontalContentAlignment="Stretch"
+                                                 SelectionMode="Multiple"
+                                                 UseCheckAll="False">
+                                        <h:FilterBox.Filters>
+                                            <local:SeeLaterFileFilter Name="稍后观看"
+                                                                      Value="True" />
+                                        </h:FilterBox.Filters>
+                                        <b:Interaction.Triggers>
+                                            <b:EventTrigger EventName="FilterChanged">
+                                                <b:ChangePropertyAction PropertyName="Filter12"
+                                                                        TargetObject="{Binding Collection}"
+                                                                        Value="{Binding RelativeSource={RelativeSource AncestorType=h:FilterBox}, Path=Filter}" />
+                                            </b:EventTrigger>
+                                        </b:Interaction.Triggers>
+                                    </h:FilterBox>
+                                </Expander>
+
                                 <Expander Header="观看"
                                           Visibility="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Setting.UseWatched, Converter={x:Static h:Converter.GetTrueToVisible}}">
                                     <h:FilterBox Margin="0,5"
