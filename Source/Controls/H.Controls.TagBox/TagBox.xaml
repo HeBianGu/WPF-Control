@@ -83,7 +83,7 @@
                                     </ItemsControl.ItemsPanel>
                                     <ListBox.ItemContainerStyle>
                                         <Style TargetType="ListBoxItem">
-                                            <Setter Property="Background" Value="{Binding Model.Background}" />
+                                            <Setter Property="Background" Value="{Binding Background}" />
                                             <Setter Property="Foreground" Value="White" />
                                             <Setter Property="Height" Value="25" />
                                             <Setter Property="Template">
@@ -117,7 +117,7 @@
                                                                 <TextBlock Margin="2,0"
                                                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                                                            VerticalAlignment="Center"
-                                                                           Text="{Binding Model.Name}" />
+                                                                           Text="{Binding Name}" />
                                                             </DockPanel>
                                                         </Border>
                                                     </ControlTemplate>
@@ -168,10 +168,12 @@
                                             </b:Interaction.Triggers>
                                         </Button>
                                         <DockPanel DockPanel.Dock="Top">
-                                            <Button Content="清空"
+                                            <Button Content="清空" 
+                                                    Command="{h:TextBoxClearTextCommand}"
+                                                    CommandParameter="{Binding ElementName=tb_search}"
                                                     DockPanel.Dock="Right" >
                                             </Button>
-                                            <TextBox Margin="2"
+                                            <TextBox Margin="2" x:Name="tb_search"
                                                      Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=SearchText, UpdateSourceTrigger=PropertyChanged}" />
                                         </DockPanel>
                                         <ScrollViewer HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"

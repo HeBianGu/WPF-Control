@@ -52,6 +52,23 @@
                             </Grid>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
+                    <ListBox.Template>
+                        <ControlTemplate TargetType="ListBox">
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="2">
+                                <ScrollViewer Padding="{TemplateBinding Padding}"
+                                              Focusable="false">
+                                    <b:Interaction.Behaviors>
+                                        <h:ScrollViewerBebavior UseHorizontalMouseWheel="True"
+                                                                UseMouseWheelHijack="True" />
+                                    </b:Interaction.Behaviors>
+                                    <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                </ScrollViewer>
+                            </Border>
+                        </ControlTemplate>
+                    </ListBox.Template>
                 </ListBox>
             </h:GridSplitterBox.MenuContent>
             <DockPanel Background="Transparent">
