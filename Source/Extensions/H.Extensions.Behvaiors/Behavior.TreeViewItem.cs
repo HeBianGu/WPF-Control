@@ -119,6 +119,4 @@ namespace H.Extensions.Behvaiors
             action.Invoke(this.AssociatedObject);
         }
     }
-
-
 }
