@@ -33,6 +33,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_89275E2A70684CA8BD80D0215D14D0E5"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_99A866A48EB544109E5FE72B9C383E6F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -40,12 +46,6 @@
         "Entry"
         {
         "MsmKey" = "8:_A918F5EE045D4EDAA8759A272229AC29"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B23D9AC576034BD7992C1F06E2DC2EB1"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -73,6 +73,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -89,6 +97,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -168,6 +192,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_89275E2A70684CA8BD80D0215D14D0E5"
+            {
+            "SourcePath" = "8:..\\..\\App\\H.App.FileManager\\bin\\Debug\\net7.0-windows\\H.App.FileManager.deps.json"
+            "TargetName" = "8:H.App.FileManager.deps.json"
+            "Tag" = "8:"
+            "Folder" = "8:_C236263A2B16452092A1A1F3D73E94E5"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_99A866A48EB544109E5FE72B9C383E6F"
             {
             "SourcePath" = "8:..\\..\\App\\H.App.FileManager\\bin\\Debug\\net7.0-windows\\runtimes\\win-x86\\native\\e_sqlite3.dll"
@@ -194,26 +238,6 @@
             "TargetName" = "8:e_sqlite3.dll"
             "Tag" = "8:"
             "Folder" = "8:_F3081A700673486B95AAA6D6CF2FE227"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B23D9AC576034BD7992C1F06E2DC2EB1"
-            {
-            "SourcePath" = "8:C:\\Program Files (x86)\\HeBianGu\\文件管理器\\H.App.FileManager.deps.json"
-            "TargetName" = "8:H.App.FileManager.deps.json"
-            "Tag" = "8:"
-            "Folder" = "8:_C236263A2B16452092A1A1F3D73E94E5"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -404,7 +428,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:H文件管理器"
         "ProductCode" = "8:{05B3FBCE-A731-444B-9393-8E847EA8FC85}"
-        "PackageCode" = "8:{DD9953F1-E5BE-42E5-90CB-8C536D6B345C}"
+        "PackageCode" = "8:{1065E22B-C9B3-4C66-9216-E5D165EF8785}"
         "UpgradeCode" = "8:{BF2CF058-561A-41B5-AAFF-1F3767304D62}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
