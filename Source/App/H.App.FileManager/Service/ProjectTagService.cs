@@ -23,4 +23,12 @@ namespace H.App.FileManager
             }
         }
     }
+
+    public class ProjectSaveScheduledTaskService : ScheduledTaskServiceBase
+    {
+        public override bool Invoke(out string message)
+        {
+            return IocProject.Instance.Save(out message);
+        }
+    }
 }

@@ -70,6 +70,8 @@ namespace H.App.FileManager
             {
                 x.WorkingDirectory = "D:\\ffmpeg";
             });
+
+            services.AddSingleton<IScheduledTaskService,ProjectSaveScheduledTaskService>();
         }
 
         protected override void Configure(IApplicationBuilder app)

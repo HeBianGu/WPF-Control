@@ -1,5 +1,6 @@
 ﻿
 using H.Controls.TagBox;
+using H.Extensions.Common;
 using H.Providers.Ioc;
 using H.Providers.Mvvm;
 using System;
@@ -58,6 +59,20 @@ namespace H.App.FileManager
             }
 
             {
+                IEnumerable<fm_dd_file> finds = files.Where(x => Path.GetDirectoryName(x.Url) == Path.GetDirectoryName(t.Url) && x.Url != t.Url).OrderBy(x =>
+                {
+                    if (x.Name == this.Model.Name)
+                        return -1;
+                    if (x.Extend == this.Model.Extend)
+                        return 0;
+                    if (x.Url.IsImage() == this.Model.Extend.IsImage() || x.Url.IsVedio() == this.Model.Extend.IsVedio() || x.Url.IsAudio() == this.Model.Extend.IsAudio())
+                        return 1;
+                    return 2;
+                });
+                mores.AddRange(finds.Select(l => filtToView.ToView(l, "同文件夹")));
+            }
+
+            {
                 IEnumerable<fm_dd_file> finds = files.Where(x =>
                 {
                     IEnumerable<ITag> ctags = IocTagService.Instance.ToTags(t.Tags);
@@ -83,11 +98,6 @@ namespace H.App.FileManager
                     return false;
                 });
                 mores.AddRange(finds.Select(l => filtToView.ToView(l, "同清晰度")));
-            }
-
-            {
-                IEnumerable<fm_dd_file> finds = files.Where(x => Path.GetDirectoryName(x.Url) == Path.GetDirectoryName(t.Url) && x.Url != t.Url);
-                mores.AddRange(finds.Select(l => filtToView.ToView(l, "同文件夹")));
             }
 
             {

@@ -37,6 +37,7 @@ namespace H.Extensions.ApplicationBase
             this.OnLogin(e);
             this.MainWindow.Show();
             this.ILogger?.Info("系统启动");
+            Ioc<IScheduledTaskService>.Instance?.Start();
         }
 
         #region - Exception -
@@ -112,6 +113,7 @@ namespace H.Extensions.ApplicationBase
         {
             try
             {
+                Ioc<IScheduledTaskService>.Instance?.Stop();
                 this.ILogger?.Info("系统退出");
                 Ioc<IOperationService>.Instance?.Log<ApplicationBase>("系统推出");
             }
