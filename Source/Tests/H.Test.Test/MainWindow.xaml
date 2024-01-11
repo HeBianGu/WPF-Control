@@ -613,11 +613,69 @@
                         </Behaviors:Interaction.Behaviors>
                     </DataGrid>
                 </DockPanel>
-            </TabItem> 
+            </TabItem>
             <TabItem Header="Vlc">
                 <DockPanel>
-                    <h:VlcPlayer/>
+                    <h:VlcPlayer />
                 </DockPanel>
+            </TabItem>
+
+            <TabItem Header="DockWindow">
+                <Grid>
+                    <Button HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Command="{h:ShowDockWindowCommand Content={GetStudent},
+                                                              Horizontal=Left,
+                                                              Vertical=Top}"
+                            Content="ShowDockWindowCommand" />
+                    <Button HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Command="{h:ShowDockWindowCommand Content={GetStudent},
+                                                              Horizontal=Left,
+                                                              Vertical=Center}"
+                            Content="ShowDockWindowCommand" />
+                    <Button HorizontalAlignment="Left"
+                            VerticalAlignment="Bottom"
+                            Command="{h:ShowDockWindowCommand Content={GetStudent},
+                                                              Horizontal=Left,
+                                                              Vertical=Bottom}"
+                            Content="ShowDockWindowCommand" />
+                    <Button HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Command="{h:ShowDockWindowCommand Content={GetStudent},
+                                                              Horizontal=Right,
+                                                              Vertical=Top}"
+                            Content="ShowDockWindowCommand" />
+                    <Button HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Command="{h:ShowDockWindowCommand Content={GetStudent},
+                                                              Horizontal=Right,
+                                                              Vertical=Center}"
+                            Content="ShowDockWindowCommand" />
+
+                    <Button HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"
+                            Command="{h:ShowDockWindowCommand Content={GetStudent},
+                                                              Horizontal=Right,
+                                                              Vertical=Bottom}"
+                            Content="ShowDockWindowCommand" />
+
+                    <Button HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Command="{h:ShowDockWindowCommand Content={GetStudent},
+                                                              Horizontal=Center,
+                                                              Vertical=Top}"
+                            Content="ShowDockWindowCommand" />
+
+
+                    <Button HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom"
+                            Command="{h:ShowDockWindowCommand Content={GetStudent},
+                                                              Horizontal=Center,
+                                                              Vertical=Bottom}"
+                            Content="ShowDockWindowCommand" />
+
+                </Grid>
             </TabItem>
         </TabControl>
     </Grid>
