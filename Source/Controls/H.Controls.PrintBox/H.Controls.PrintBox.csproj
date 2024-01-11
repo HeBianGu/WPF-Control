@@ -97,16 +97,4 @@
     <ProjectReference Include="..\..\Extensions\H.Extensions.Setting\H.Extensions.Setting.csproj" />
     <ProjectReference Include="..\H.Controls.Form\H.Controls.Form.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Page Update="PrintBox.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Themes\Generic.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-
-
 </Project>
