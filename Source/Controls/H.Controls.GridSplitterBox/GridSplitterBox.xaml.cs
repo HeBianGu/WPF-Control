@@ -21,6 +21,9 @@ namespace H.Controls.GridSplitterBox
         public static ComponentResourceKey TopKey => new ComponentResourceKey(typeof(GridSplitterBox), "S.GridSplitterBox.Top");
         public static ComponentResourceKey BottomKey => new ComponentResourceKey(typeof(GridSplitterBox), "S.GridSplitterBox.Bottom");
 
+        public static ComponentResourceKey ToggleKey => new ComponentResourceKey(typeof(GridSplitterBox), "S.GridSplitterBox.Toggle");
+
+
         private const string GridSplitterName = "PART_GridSplitter";
 
         static GridSplitterBox()

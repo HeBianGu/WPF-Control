@@ -73,9 +73,9 @@ namespace H.App.FileManager
             }
 
             {
+                IEnumerable<ITag> ctags = IocTagService.Instance.ToTags(t.Tags);
                 IEnumerable<fm_dd_file> finds = files.Where(x =>
                 {
-                    IEnumerable<ITag> ctags = IocTagService.Instance.ToTags(t.Tags);
                     IEnumerable<ITag> xtags = IocTagService.Instance.ToTags(x.Tags);
                     IEnumerable<ITag> jtags = ctags.Join(xtags, l => l.Name, l => l.Name, (l, k) => l);
                     if (jtags.Count() > 0)
@@ -87,9 +87,9 @@ namespace H.App.FileManager
             }
 
             {
+                IEnumerable<ITag> ctags = IocTagService.Instance.ToTags(t.Articulation);
                 IEnumerable<fm_dd_image> finds = files.OfType<fm_dd_image>().Where(x =>
                 {
-                    IEnumerable<ITag> ctags = IocTagService.Instance.ToTags(t.Articulation);
                     IEnumerable<ITag> xtags = IocTagService.Instance.ToTags(x.Articulation);
                     IEnumerable<ITag> jtags = ctags.Join(xtags, l => l.Name, l => l.Name, (l, k) => l);
                     if (jtags.Count() > 0)
@@ -101,9 +101,9 @@ namespace H.App.FileManager
             }
 
             {
+                IEnumerable<ITag> ctags = IocTagService.Instance.ToTags(t.Area);
                 IEnumerable<fm_dd_image> finds = files.OfType<fm_dd_image>().Where(x =>
                 {
-                    IEnumerable<ITag> ctags = IocTagService.Instance.ToTags(t.Area);
                     IEnumerable<ITag> xtags = IocTagService.Instance.ToTags(x.Area);
                     IEnumerable<ITag> jtags = ctags.Join(xtags, l => l.Name, l => l.Name, (l, k) => l);
                     if (jtags.Count() > 0)

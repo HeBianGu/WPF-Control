@@ -91,6 +91,8 @@ namespace H.Controls.TagBox
         protected override void OnSelectionChanged(SelectionChangedEventArgs e)
         {
             base.OnSelectionChanged(e);
+            if (this._flag)
+                return;
             var tags = this.SelectedItems.OfType<ITag>();
             this._flag = true;
             this.Tags = string.Join(",", tags.Select(x => x.Name));
@@ -116,6 +118,7 @@ namespace H.Controls.TagBox
                     return;
                 if (control.SelectionMode == SelectionMode.Single)
                     return;
+                control._flag = true;
                 control.SelectedItems.Clear();
                 if (e.OldValue is string o)
                 {
@@ -126,6 +129,7 @@ namespace H.Controls.TagBox
                 {
                     control.RefreshSelection();
                 }
+                control._flag = false;
             }));
 
 

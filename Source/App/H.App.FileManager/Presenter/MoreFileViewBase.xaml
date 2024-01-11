@@ -42,7 +42,7 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Grid>
+                            <Grid MaxWidth="200">
                                 <ContentPresenter Content="{Binding Model}" />
                                 <TextBlock HorizontalAlignment="Center"
                                            VerticalAlignment="Center"
@@ -71,6 +71,12 @@
                     </ListBox.Template>
                 </ListBox>
             </h:GridSplitterBox.MenuContent>
+            <h:GridSplitterBox.ToggleStyle>
+                <Style BasedOn="{StaticResource {x:Static h:GridSplitterBox.ToggleKey}}"
+                       TargetType="ToggleButton">
+                    <Setter Property="Grid.Row" Value="0" />
+                </Style>
+            </h:GridSplitterBox.ToggleStyle>
             <DockPanel Background="Transparent">
                 <TextBlock Margin="5"
                            HorizontalAlignment="Left"
