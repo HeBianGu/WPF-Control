@@ -15,6 +15,8 @@ namespace H.Windows.Dock
         public DockWindow()
         {
             this.Loaded += DockWindow_Loaded;
+            this.AllowsTransparency =true;
+            this.WindowStyle = WindowStyle.None;
         }
 
         private void DockWindow_Loaded(object sender, RoutedEventArgs e)

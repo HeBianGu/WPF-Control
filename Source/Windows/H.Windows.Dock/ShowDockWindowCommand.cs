@@ -16,9 +16,7 @@ namespace H.Windows.Dock
             {
                 HorizontalDock = this.Horizontal,
                 VerticalDock = this.Vertical,
-                AllowsTransparency = true,
-                WindowStyle = WindowStyle.None,
-                Content = this.Content
+                Content = this.Content?? parameter
             };
             w.Show();
         }
