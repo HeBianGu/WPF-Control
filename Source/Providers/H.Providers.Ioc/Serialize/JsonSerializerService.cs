@@ -1,18 +1,28 @@
 ﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
+using Microsoft.VisualBasic.FileIO;
 using System;
 using System.IO;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace H.Providers.Ioc
 {
 
     public class JsonSerializerService : ISerializerService
     {
-        public object CloneXml(object o)
+
+        private readonly JsonSerializerOptions _option;
+        public JsonSerializerService()
         {
-            string txt = JsonSerializer.Serialize(o);
-            return JsonSerializer.Deserialize(txt, o.GetType());
+            var serializeOption = new JsonSerializerOptions()
+            {
+                AllowTrailingCommas = false,
+                WriteIndented = true,
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault,//忽略默认的属性或字段
+                IncludeFields = true,
+            };
+            _option = serializeOption;
         }
 
         public object Load(string filePath, Type type)

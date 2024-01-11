@@ -67,15 +67,6 @@ namespace H.Extensions.XmlSerialize
             return null;
         }
 
-        public object CloneXml(object realObject)
-        {
-            using (Stream stream = new MemoryStream())
-            {
-                XmlSerializer serializer = new XmlSerializer(realObject.GetType());
-                serializer.Serialize(stream, realObject);
-                stream.Seek(0, SeekOrigin.Begin);
-                return serializer.Deserialize(stream);
-            }
-        }
+
     }
 }

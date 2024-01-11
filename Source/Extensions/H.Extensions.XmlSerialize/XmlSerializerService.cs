@@ -50,11 +50,5 @@ namespace H.Extensions.XmlSerialize
 
             return null;
         }
-
-        public object CloneXml(object o)
-        {
-            return XmlableSerializor.Instance.XmlClone(o);
-
-        }
     }
 }

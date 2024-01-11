@@ -9,6 +9,5 @@ namespace H.Providers.Ioc
         object Load(string filePath, Type type);
         T Load<T>(string filePath);
         void Save(string filePath, object sourceObj, string xmlRootName = null);
-        object CloneXml(object o);
     }
 }
