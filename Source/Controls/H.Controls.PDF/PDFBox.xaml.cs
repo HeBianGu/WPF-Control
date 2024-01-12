@@ -19,7 +19,7 @@ using System.Windows.Input;
 
 namespace H.Controls.PDF
 {
-    [TemplatePart(Name = "Part_Renderer")]
+    [TemplatePart(Name = "PART_Renderer")]
     public class PDFBox : Control
     {
         static PDFBox()
@@ -27,33 +27,42 @@ namespace H.Controls.PDF
             DefaultStyleKeyProperty.OverrideMetadata(typeof(PDFBox), new FrameworkPropertyMetadata(typeof(PDFBox)));
         }
 
-        private CancellationTokenSource Cts { get; }
-
+        private readonly CancellationTokenSource _cts;
+        private PdfSearchManager _searchManager;
+        private PdfRenderer _renderer;
         public PDFBox()
         {
 
             this.Unloaded += (l, k) =>
             {
-                this.Renderer?.Dispose();
+                this._renderer?.Dispose();
             };
 
-            Cts = new CancellationTokenSource();
+            _cts = new CancellationTokenSource();
             {
                 CommandBinding binding = new CommandBinding(PDFBoxCommands.Open);
-                binding.Executed += (l, k) =>
+                binding.Executed += async (l, k) =>
                 {
-                    var dialog = new OpenFileDialog
-                    {
-                        Filter = "PDF Files (*.pdf)|*.pdf|All Files (*.*)|*.*",
-                        Title = "Open PDF File"
-                    };
-
-                    if (dialog.ShowDialog() == true)
-                    {
-                        var bytes = File.ReadAllBytes(dialog.FileName);
-                        var mem = new MemoryStream(bytes);
-                        this.Renderer.OpenPdf(mem);
-                    }
+                    OpenFileDialog openFileDialog = new OpenFileDialog();
+                    //openFileDialog.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory; //设置初始路径
+                    openFileDialog.Filter = "PDF文件(*.pdf)|*.pdf|所有文件(*.*)|*.*"; //设置“另存为文件类型”或“文件类型”框中出现的选择内容
+                    openFileDialog.FilterIndex = 1; //设置默认显示文件类型为Csv文件(*.csv)|*.csv
+                    openFileDialog.Title = "打开文件"; //获取或设置文件对话框标题
+                    openFileDialog.RestoreDirectory = true; //设置对话框是否记忆上次打开的目录
+                    openFileDialog.Multiselect = false;//设置多选
+                    if (openFileDialog.ShowDialog() != true)
+                        return;
+                    this.PageIndex = 0;
+                    this.Bookmarks?.Clear();
+                    var mem = await IocMessage.Dialog.ShowWait(x =>
+                       {
+                           var bytes = File.ReadAllBytes(openFileDialog.FileName);
+                           return new MemoryStream(bytes);
+                       });
+                    this._renderer.OpenPdf(mem);
+                    this._renderer.Bookmarks.OrderBy(x => x.PageIndex);
+                    this.Bookmarks = this._renderer.Bookmarks;
+                    this.ShowBookmarks = this.Bookmarks?.Count > 0;
                 }; binding.CanExecute += (l, k) =>
                 {
                     k.CanExecute = true;
@@ -70,7 +79,7 @@ namespace H.Controls.PDF
                     // Create a "Save As" dialog for selecting a directory (HACK)
                     var dialog = new Microsoft.Win32.SaveFileDialog
                     {
-                        Title = "Select a Directory",
+                        Title = "选择文件夹",
                         Filter = "Directory|*.this.directory",
                         FileName = "select"
                     };
@@ -103,7 +112,7 @@ namespace H.Controls.PDF
                 CommandBinding binding = new CommandBinding(PDFBoxCommands.Previous);
                 binding.Executed += (l, k) =>
                 {
-                    this.Renderer.PreviousPage();
+                    this._renderer.PreviousPage();
                 };
                 binding.CanExecute += (l, k) =>
                 {
@@ -116,7 +125,7 @@ namespace H.Controls.PDF
                 CommandBinding binding = new CommandBinding(PDFBoxCommands.Next);
                 binding.Executed += (l, k) =>
                 {
-                    this.Renderer.NextPage();
+                    this._renderer.NextPage();
                 }; binding.CanExecute += (l, k) =>
                 {
                     k.CanExecute = true;
@@ -128,7 +137,7 @@ namespace H.Controls.PDF
                 CommandBinding binding = new CommandBinding(PDFBoxCommands.FitToWidth);
                 binding.Executed += (l, k) =>
                 {
-                    this.Renderer.SetZoomMode(PdfViewerZoomMode.FitWidth);
+                    this._renderer.SetZoomMode(PdfViewerZoomMode.FitWidth);
                 };
                 binding.CanExecute += (l, k) =>
                 {
@@ -143,7 +152,7 @@ namespace H.Controls.PDF
                 CommandBinding binding = new CommandBinding(PDFBoxCommands.FitToHeight);
                 binding.Executed += (l, k) =>
                 {
-                    this.Renderer.SetZoomMode(PdfViewerZoomMode.FitHeight);
+                    this._renderer.SetZoomMode(PdfViewerZoomMode.FitHeight);
                 };
                 binding.CanExecute += (l, k) =>
                 {
@@ -158,17 +167,17 @@ namespace H.Controls.PDF
                 {
                     try
                     {
-                        var pageStep = this.Renderer.PagesDisplayMode == PdfViewerPagesDisplayMode.BookMode ? 2 : 1;
-                        Dispatcher.Invoke(() => this.Renderer.GotoPage(0));
-                        while (this.Renderer.PageNo < this.Renderer.PageCount - pageStep)
+                        var pageStep = this._renderer.PagesDisplayMode == PdfViewerPagesDisplayMode.BookMode ? 2 : 1;
+                        Dispatcher.Invoke(() => this._renderer.GotoPage(0));
+                        while (this._renderer.PageNo < this._renderer.PageCount - pageStep)
                         {
-                            Dispatcher.Invoke(() => this.Renderer.NextPage());
+                            Dispatcher.Invoke(() => this._renderer.NextPage());
                             await Task.Delay(1);
                         }
                     }
                     catch (Exception ex)
                     {
-                        Cts.Cancel();
+                        _cts.Cancel();
                         Debug.Fail(ex.Message);
                         //MessageBox.Show(this, ex.Message, "Error!");
                         await IocMessage.ShowDialogMessage(ex.Message);
@@ -185,7 +194,7 @@ namespace H.Controls.PDF
                 CommandBinding binding = new CommandBinding(PDFBoxCommands.ZoomIn);
                 binding.Executed += (l, k) =>
                 {
-                    this.Renderer.ZoomIn();
+                    this._renderer.ZoomIn();
                 };
                 binding.CanExecute += (l, k) =>
                 {
@@ -198,7 +207,7 @@ namespace H.Controls.PDF
                 CommandBinding binding = new CommandBinding(PDFBoxCommands.ZoomOut);
                 binding.Executed += (l, k) =>
                 {
-                    this.Renderer.ZoomOut();
+                    this._renderer.ZoomOut();
 
                 };
                 binding.CanExecute += (l, k) =>
@@ -212,7 +221,7 @@ namespace H.Controls.PDF
                 CommandBinding binding = new CommandBinding(PDFBoxCommands.RotateToLeft);
                 binding.Executed += (l, k) =>
                 {
-                    this.Renderer.Counterclockwise();
+                    this._renderer.Counterclockwise();
                 };
                 binding.CanExecute += (l, k) =>
                 {
@@ -225,7 +234,7 @@ namespace H.Controls.PDF
                 CommandBinding binding = new CommandBinding(PDFBoxCommands.RotateToRight);
                 binding.Executed += (l, k) =>
                 {
-                    this.Renderer.ClockwiseRotate();
+                    this._renderer.ClockwiseRotate();
                 };
                 binding.CanExecute += (l, k) =>
                 {
@@ -238,7 +247,7 @@ namespace H.Controls.PDF
                 CommandBinding binding = new CommandBinding(PDFBoxCommands.ShowInfo);
                 binding.Executed += async (l, k) =>
                 {
-                    var info = this.Renderer.GetInformation();
+                    var info = this._renderer.GetInformation();
                     if (info != null)
                     {
                         var sb = new StringBuilder();
@@ -296,7 +305,7 @@ namespace H.Controls.PDF
                 CommandBinding binding = new CommandBinding(PDFBoxCommands.ContinuousPage);
                 binding.Executed += (l, k) =>
                 {
-                    Renderer.PagesDisplayMode = PdfViewerPagesDisplayMode.ContinuousMode;
+                    _renderer.PagesDisplayMode = PdfViewerPagesDisplayMode.ContinuousMode;
 
                 };
                 binding.CanExecute += (l, k) =>
@@ -310,7 +319,7 @@ namespace H.Controls.PDF
                 CommandBinding binding = new CommandBinding(PDFBoxCommands.TwoPage);
                 binding.Executed += (l, k) =>
                 {
-                    Renderer.PagesDisplayMode = PdfViewerPagesDisplayMode.BookMode;
+                    _renderer.PagesDisplayMode = PdfViewerPagesDisplayMode.BookMode;
                 };
                 binding.CanExecute += (l, k) =>
                 {
@@ -323,7 +332,7 @@ namespace H.Controls.PDF
                 CommandBinding binding = new CommandBinding(PDFBoxCommands.SinglePage);
                 binding.Executed += (l, k) =>
                 {
-                    Renderer.PagesDisplayMode = PdfViewerPagesDisplayMode.SinglePageMode;
+                    _renderer.PagesDisplayMode = PdfViewerPagesDisplayMode.SinglePageMode;
                 };
                 binding.CanExecute += (l, k) =>
                 {
@@ -336,13 +345,13 @@ namespace H.Controls.PDF
                 CommandBinding binding = new CommandBinding(PDFBoxCommands.Transparent);
                 binding.Executed += (l, k) =>
                 {
-                    if ((Renderer.Flags & PdfRenderFlags.Transparent) != 0)
+                    if ((_renderer.Flags & PdfRenderFlags.Transparent) != 0)
                     {
-                        Renderer.Flags &= ~PdfRenderFlags.Transparent;
+                        _renderer.Flags &= ~PdfRenderFlags.Transparent;
                     }
                     else
                     {
-                        Renderer.Flags |= PdfRenderFlags.Transparent;
+                        _renderer.Flags |= PdfRenderFlags.Transparent;
                     }
                 };
                 binding.CanExecute += (l, k) =>
@@ -369,7 +378,7 @@ namespace H.Controls.PDF
                 CommandBinding binding = new CommandBinding(PDFBoxCommands.ToRight);
                 binding.Executed += (l, k) =>
                 {
-                    Renderer.IsRightToLeft = true;
+                    _renderer.IsRightToLeft = true;
                     //OnPropertyChanged(nameof(IsRtl));
                 };
                 binding.CanExecute += (l, k) =>
@@ -383,7 +392,7 @@ namespace H.Controls.PDF
                 CommandBinding binding = new CommandBinding(PDFBoxCommands.ToLeft);
                 binding.Executed += (l, k) =>
                 {
-                    Renderer.IsRightToLeft = false;
+                    _renderer.IsRightToLeft = false;
                     //OnPropertyChanged(nameof(IsRtl));
                 };
                 binding.CanExecute += (l, k) =>
@@ -395,17 +404,15 @@ namespace H.Controls.PDF
 
             {
                 CommandBinding binding = new CommandBinding(PDFBoxCommands.Close);
-                binding.Executed += (l, k) =>
+                binding.Executed += async (l, k) =>
                 {
                     try
                     {
-                        //InfoBar.Foreground = System.Windows.Media.Brushes.Red;
-                        Renderer.UnLoad();
-                        //await Task.Delay(5000);
-                        //InfoBar.Foreground = System.Windows.Media.Brushes.Black;
+                        _renderer.UnLoad();
                     }
                     catch (Exception exception)
                     {
+                        await IocMessage.ShowDialogMessage(exception.Message);
                         Console.WriteLine(exception);
                     }
                 };
@@ -421,7 +428,7 @@ namespace H.Controls.PDF
                 binding.Executed += (l, k) =>
                 {
                     if (k.Parameter is ToggleButton toggle)
-                        Renderer.EnableKinetic = toggle.IsChecked == true;
+                        _renderer.EnableKinetic = toggle.IsChecked == true;
                 };
                 binding.CanExecute += (l, k) =>
                 {
@@ -438,7 +445,7 @@ namespace H.Controls.PDF
                     {
                         SearchMatchItemNo--;
                         // DisplayTextSpan(SearchMatches.Items[SearchMatchItemNo - 1].TextSpan);
-                        SearchManager.FindNext(false);
+                        _searchManager.FindNext(false);
                     }
                 };
                 binding.CanExecute += (l, k) =>
@@ -456,7 +463,7 @@ namespace H.Controls.PDF
                     {
                         SearchMatchItemNo++;
                         //DisplayTextSpan(SearchMatches.Items[SearchMatchItemNo - 1].TextSpan);
-                        SearchManager.FindNext(true);
+                        _searchManager.FindNext(true);
                     }
                 };
                 binding.CanExecute += (l, k) =>
@@ -471,12 +478,17 @@ namespace H.Controls.PDF
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            this.Renderer = this.Template.FindName("Part_Renderer", this) as PdfRenderer;
+            this._renderer = this.Template.FindName("PART_Renderer", this) as PdfRenderer;
+            this._renderer.PropertyChanged += (l, k) =>
+            {
+                this.PageIndex = this._renderer.PageNo + 1;
+                this.ZoomPercent = this._renderer.Zoom * 100;
+            };
 
-            SearchManager = new PdfSearchManager(Renderer);
-            this.UseMatchCase = SearchManager.MatchCase;
-            this.UseWholeWordOnly = SearchManager.MatchWholeWord;
-            this.UseHighlightAllMatches = SearchManager.HighlightAllMatches;
+            _searchManager = new PdfSearchManager(_renderer);
+            this.UseMatchCase = _searchManager.MatchCase;
+            this.UseWholeWordOnly = _searchManager.MatchWholeWord;
+            this.UseHighlightAllMatches = _searchManager.HighlightAllMatches;
         }
 
 
@@ -508,8 +520,59 @@ namespace H.Controls.PDF
 
             }));
 
-        public int SearchMatchItemNo { get; set; }
-        public int SearchMatchesCount { get; set; }
+        public int SearchMatchItemNo
+        {
+            get { return (int)GetValue(SearchMatchItemNoProperty); }
+            set { SetValue(SearchMatchItemNoProperty, value); }
+        }
+
+
+        public static readonly DependencyProperty SearchMatchItemNoProperty =
+            DependencyProperty.Register("SearchMatchItemNo", typeof(int), typeof(PDFBox), new FrameworkPropertyMetadata(default(int), (d, e) =>
+            {
+                PDFBox control = d as PDFBox;
+
+                if (control == null) return;
+
+                if (e.OldValue is int o)
+                {
+
+                }
+
+                if (e.NewValue is int n)
+                {
+
+                }
+
+            }));
+
+
+        public int SearchMatchesCount
+        {
+            get { return (int)GetValue(SearchMatchesCountProperty); }
+            set { SetValue(SearchMatchesCountProperty, value); }
+        }
+
+
+        public static readonly DependencyProperty SearchMatchesCountProperty =
+            DependencyProperty.Register("SearchMatchesCount", typeof(int), typeof(PDFBox), new FrameworkPropertyMetadata(default(int), (d, e) =>
+            {
+                PDFBox control = d as PDFBox;
+
+                if (control == null) return;
+
+                if (e.OldValue is int o)
+                {
+
+                }
+
+                if (e.NewValue is int n)
+                {
+
+                }
+
+            }));
+
 
         public bool IsSearchOpen
         {
@@ -517,7 +580,7 @@ namespace H.Controls.PDF
             set { SetValue(IsSearchOpenProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+
         public static readonly DependencyProperty IsSearchOpenProperty =
             DependencyProperty.Register("IsSearchOpen", typeof(bool), typeof(PDFBox), new FrameworkPropertyMetadata(default(bool), (d, e) =>
             {
@@ -544,7 +607,7 @@ namespace H.Controls.PDF
             set { SetValue(ShowBookmarksProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+
         public static readonly DependencyProperty ShowBookmarksProperty =
             DependencyProperty.Register("ShowBookmarks", typeof(bool), typeof(PDFBox), new FrameworkPropertyMetadata(default(bool), (d, e) =>
             {
@@ -564,30 +627,103 @@ namespace H.Controls.PDF
 
             }));
 
-        public int Page
+
+        public int PageIndex
         {
-            get => Renderer?.PageNo ?? 0 + 1;
-            set => Renderer.GotoPage(Math.Min(Math.Max(value - 1, 0), Renderer.PageCount - 1));
+            get { return (int)GetValue(PageIndexProperty); }
+            set { SetValue(PageIndexProperty, value); }
         }
 
-        public int PageCount
+
+        public static readonly DependencyProperty PageIndexProperty =
+            DependencyProperty.Register("PageIndex", typeof(int), typeof(PDFBox), new FrameworkPropertyMetadata(default(int), (d, e) =>
+            {
+                PDFBox control = d as PDFBox;
+
+                if (control == null) return;
+
+                if (e.OldValue is int o)
+                {
+
+                }
+
+                if (e.NewValue is int n)
+                {
+                    control._renderer.GotoPage(Math.Min(Math.Max(n - 1, 0), control._renderer.PageCount - 1));
+                    if (control.Bookmarks == null)
+                        return;
+                    PdfBookmark find = null;
+                    Action<PdfBookmark> action = null;
+                    action = x =>
+                      {
+                          foreach (var bookmark in x.Children)
+                          {
+                              if (bookmark.PageIndex <= n)
+                              {
+                                  find = bookmark;
+                              }
+                              action.Invoke(bookmark);
+                          }
+                      };
+                    foreach (var bookmark in control.Bookmarks)
+                    {
+                        if (bookmark.PageIndex <= n)
+                        {
+                            find = bookmark;
+                        }
+                        action.Invoke(bookmark);
+                    }
+                    if (control._isrefreshBookMark)
+                        return;
+                    control._isrefreshBookMark = true;
+                    if (find != null)
+                        control.SelectedBookIndex = find;
+                    control._isrefreshBookMark = false;
+                }
+            }));
+
+
+        public double ZoomPercent
         {
-            get => Renderer?.PageNo ?? 0 + 1;
-            set => Renderer.GotoPage(Math.Min(Math.Max(value - 1, 0), Renderer.PageCount - 1));
+            get { return (double)GetValue(ZoomPercentProperty); }
+            set { SetValue(ZoomPercentProperty, value); }
         }
+
+
+        public static readonly DependencyProperty ZoomPercentProperty =
+            DependencyProperty.Register("ZoomPercent", typeof(double), typeof(PDFBox), new FrameworkPropertyMetadata(default(double), (d, e) =>
+            {
+                PDFBox control = d as PDFBox;
+
+                if (control == null) return;
+
+                if (e.OldValue is double o)
+                {
+
+                }
+
+                if (e.NewValue is double n)
+                {
+                    control._renderer.SetZoom(n / 100);
+                }
+            }));
+
 
         public FlowDirection IsRtl
         {
-            get => Renderer?.IsRightToLeft == true ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
-            set => Renderer.IsRightToLeft = value == FlowDirection.RightToLeft ? true : false;
+            get => _renderer?.IsRightToLeft == true ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
+            set => _renderer.IsRightToLeft = value == FlowDirection.RightToLeft ? true : false;
         }
+
+
+        bool _isrefreshBookMark = false;
         public PdfBookmark SelectedBookIndex
         {
             get { return (PdfBookmark)GetValue(SelectedBookIndexProperty); }
             set { SetValue(SelectedBookIndexProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+
         public static readonly DependencyProperty SelectedBookIndexProperty =
             DependencyProperty.Register("SelectedBookIndex", typeof(PdfBookmark), typeof(PDFBox), new FrameworkPropertyMetadata(default(PdfBookmark), (d, e) =>
             {
@@ -600,11 +736,14 @@ namespace H.Controls.PDF
 
                 }
 
+                if (control._isrefreshBookMark)
+                    return;
+                control._isrefreshBookMark = true;
                 if (e.NewValue is PdfBookmark n)
                 {
-                    control.Renderer.GotoPage(n.PageIndex);
+                    control._renderer.GotoPage(n.PageIndex);
                 }
-
+                control._isrefreshBookMark = false;
             }));
 
 
@@ -614,7 +753,7 @@ namespace H.Controls.PDF
             set { SetValue(UseMatchCaseProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+
         public static readonly DependencyProperty UseMatchCaseProperty =
             DependencyProperty.Register("UseMatchCase", typeof(bool), typeof(PDFBox), new FrameworkPropertyMetadata(default(bool), (d, e) =>
             {
@@ -641,7 +780,7 @@ namespace H.Controls.PDF
             set { SetValue(UseWholeWordOnlyProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+
         public static readonly DependencyProperty UseWholeWordOnlyProperty =
             DependencyProperty.Register("UseWholeWordOnly", typeof(bool), typeof(PDFBox), new FrameworkPropertyMetadata(default(bool), (d, e) =>
             {
@@ -695,7 +834,7 @@ namespace H.Controls.PDF
             set { SetValue(SearchTermProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+
         public static readonly DependencyProperty SearchTermProperty =
             DependencyProperty.Register("SearchTerm", typeof(string), typeof(PDFBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
             {
@@ -717,21 +856,17 @@ namespace H.Controls.PDF
         public async void Search()
         {
             SearchMatchItemNo = 0;
-            SearchManager.MatchCase = this.UseMatchCase;
-            SearchManager.MatchWholeWord = this.UseWholeWordOnly;
-            SearchManager.HighlightAllMatches = this.UseHighlightAllMatches;
+            _searchManager.MatchCase = this.UseMatchCase;
+            _searchManager.MatchWholeWord = this.UseWholeWordOnly;
+            _searchManager.HighlightAllMatches = this.UseHighlightAllMatches;
             //SearchMatchesTextBlock.Visibility = Visibility.Visible;
-
-            if (!SearchManager.Search(SearchTerm))
-            {
+            if (!_searchManager.Search(SearchTerm))
                 await IocMessage.ShowDialogMessage("未搜索到数据");
             }
             else
-            {
-                SearchMatchesCount = SearchManager.MatchesCount;
-            }
+                SearchMatchesCount = _searchManager.MatchesCount;
 
-            if (!SearchManager.FindNext(true))
+            if (!_searchManager.FindNext(true))
                 await IocMessage.ShowDialogMessage("到达了搜索的起点");
         }
 
@@ -739,16 +874,16 @@ namespace H.Controls.PDF
         {
             try
             {
-                for (var i = 0; i < Renderer.PageCount; i++)
+                for (var i = 0; i < _renderer.PageCount; i++)
                 {
-                    var size = Renderer.Document.PageSizes[i];
-                    var image = Renderer.Document.Render(i, (int)size.Width * 5, (int)size.Height * 5, 300, 300, false);
+                    var size = _renderer.Document.PageSizes[i];
+                    var image = _renderer.Document.Render(i, (int)size.Width * 5, (int)size.Height * 5, 300, 300, false);
                     image.Save(Path.Combine(path, $"img{i}.png"));
                 }
             }
             catch (Exception ex)
             {
-                Cts.Cancel();
+                _cts.Cancel();
                 Debug.Fail(ex.Message);
                 //MessageBox.Show(this, ex.Message, "Error!");
                 await IocMessage.ShowDialogMessage(ex.Message);

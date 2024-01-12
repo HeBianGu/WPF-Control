@@ -24,7 +24,6 @@
                                 Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
                     </Grid>
                 </AdornerDecorator>
-
             </Grid>
         </ControlTemplate>
     </Window.Template>

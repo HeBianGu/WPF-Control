@@ -57,7 +57,7 @@ namespace H.Controls.TagBox
         private void RefreshData()
         {
             var service = Ioc.GetService<ITagService>();
-            this.ItemsSource = service?.Collection.Where(x => x.GroupName == this.GroupName);
+            this.ItemsSource = service?.Collection.Where(x => x.GroupName == this.GroupName).OrderByDescending(x => x.Order);
         }
 
         public string GroupName
@@ -93,6 +93,15 @@ namespace H.Controls.TagBox
             base.OnSelectionChanged(e);
             if (this._flag)
                 return;
+
+            if(e.AddedItems!=null)
+            {
+                foreach (var item in e.AddedItems.OfType<ITag>())
+                {
+                    item.Order++;
+                }
+            }
+          
             var tags = this.SelectedItems.OfType<ITag>();
             this._flag = true;
             this.Tags = string.Join(",", tags.Select(x => x.Name));
@@ -174,7 +183,7 @@ namespace H.Controls.TagBox
     {
         public override object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            if(values.Length!=2)
+            if (values.Length != 2)
                 return DependencyProperty.UnsetValue;
             if (values[0] is ITag tag && values[1] is string txt)
             {

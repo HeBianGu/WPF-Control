@@ -75,36 +75,20 @@ namespace H.Controls.Vlc
                     Action ShowDialg = () =>
                       {
                           FullWindow window = new FullWindow();
-                          window.Content = this;
+                          var vlc = new VlcPlayer() { VedioSource = this.VedioSource, IsFullScreen = true };
+                          window.Content = vlc;
                           window.Owner = Application.Current.MainWindow;
-                          this.IsFullScreen = true;
-                          var key = VlcSetting.Instance.GetFullScreenKey();
-                          this.Style = Application.Current.FindResource(key) as Style;
+                          window.Loaded += (l, k) =>
+                          {
+                              vlc.Time = this.Time;
+                          };
+                          this.Pause();
                           window.ShowDialog();
-                          window.Content = null;
+                          this.Time = vlc.Time;
+                          if (vlc.IsPlaying)
+                              this.Play();
                       };
-
-                    Action<Style> Close = s =>
-                     {
-                         this.Style = s;
-                         this.IsFullScreen = false;
-                     };
-
-                    if (this.Parent is Panel panel)
-                    {
-                        int index = panel.Children.IndexOf(this);
-                        panel.Children.RemoveAt(index);
-                        ShowDialg();
-                        panel.Children.Insert(index, this);
-                        Close(temp);
-                    }
-
-                    if (this.Parent is ContentControl control)
-                    {
-                        ShowDialg();
-                        control.Content = this;
-                        Close(temp);
-                    }
+                    ShowDialg();
                 });
 
                 this.CommandBindings.Add(binding);
@@ -166,6 +150,7 @@ namespace H.Controls.Vlc
 
             this.Unloaded += VlcPlayer_Unloaded;
         }
+
 
         private void VlcPlayer_Unloaded(object sender, RoutedEventArgs e)
         {
@@ -499,6 +484,8 @@ namespace H.Controls.Vlc
         {
             this.Dispatcher.Invoke(() =>
             {
+                if (this.IsPlaying == false|| this._vlc.IsLoaded==false)
+                    return;
                 this._media_slider.ValueChanged -= this.media_slider_ValueChanged;
                 this._media_slider.Value = this._vlc.SourceProvider.MediaPlayer == null ? 0 : this._vlc.SourceProvider.MediaPlayer.Time;
                 this.Time = (long)this._media_slider.Value;

@@ -60,6 +60,19 @@ namespace H.Controls.TagBox
             }
         }
 
+        private int _order;
+        [Browsable(false)]
+        [Display(Name = "排序")]
+        public int Order
+        {
+            get { return _order; }
+            set
+            {
+                _order = value;
+                RaisePropertyChanged();
+            }
+        }
+
         public override string ToString() => this.Name;
     }
 }

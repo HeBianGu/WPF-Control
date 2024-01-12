@@ -8,5 +8,6 @@ namespace H.Controls.TagBox
         string Description { get; set; }
         string Name { get; set; }
         string GroupName { get; set; }
+        int Order { get; set; }
     }
 }

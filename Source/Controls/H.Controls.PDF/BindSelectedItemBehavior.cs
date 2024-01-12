@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Runtime.CompilerServices;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace H.Controls.PDF
@@ -22,6 +23,17 @@ namespace H.Controls.PDF
             if (e.NewValue is TreeViewItem item)
             {
                 item.SetValue(TreeViewItem.IsSelectedProperty, true);
+            }
+            else
+            {
+                if (sender is BindSelectedItemBehavior behavior)
+                {
+                    var treeitem = behavior.AssociatedObject.GetChild<TreeViewItem>(x => x.DataContext == e.NewValue); 
+                    if (treeitem != null)
+                    {
+                        treeitem.IsSelected = true;
+                    };
+                }
             }
         }
 
