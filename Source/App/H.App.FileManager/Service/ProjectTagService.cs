@@ -13,7 +13,7 @@ namespace H.App.FileManager
             _project = project;
         }
 
-        public override IEnumerable<ITag> Collection
+        public override IList<Tag> Collection
         {
             get
             {

@@ -130,15 +130,17 @@ namespace H.Modules.Project
             }
             this.OnItemChanged();
         }
-        public abstract IProjectItem Create();
 
-        public void Add(IProjectItem project)
+        IProjectItem IProjectService.Create() => this.Create();
+
+        public abstract T Create();
+
+        void IProjectService.Add(IProjectItem project)
         {
             if (project is T t)
                 this.Add(t);
         }
-
-        public void Delete(Func<IProjectItem, bool> func)
+        void IProjectService.Delete(Func<IProjectItem, bool> func)
         {
             var ps = this.Collection.Where(x => func(x));
             this.Delete(ps.ToArray());

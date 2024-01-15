@@ -17,7 +17,7 @@ namespace H.Modules.Project
             _options = options;
         }
 
-        public override IProjectItem Create()
+        public override ProjectItem Create()
         {
             return new ProjectItem()
             {

@@ -861,9 +861,11 @@ namespace H.Controls.PDF
             _searchManager.HighlightAllMatches = this.UseHighlightAllMatches;
             //SearchMatchesTextBlock.Visibility = Visibility.Visible;
             if (!_searchManager.Search(SearchTerm))
+            { 
                 await IocMessage.ShowDialogMessage("未搜索到数据");
             }
             else
+
                 SearchMatchesCount = _searchManager.MatchesCount;
 
             if (!_searchManager.FindNext(true))
