@@ -13,8 +13,8 @@
         <!--<Setter Property="OverridesDefaultStyle" Value="True" />-->
         <Setter Property="KeyboardNavigation.TabNavigation" Value="None" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="MinWidth" Value="120" />
-        <Setter Property="MinHeight" Value="20" />
+        <!--<Setter Property="MinWidth" Value="120" />-->
+        <!--<Setter Property="MinHeight" Value="20" />-->
         <Setter Property="AllowDrop" Value="true" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="CaretBrush">

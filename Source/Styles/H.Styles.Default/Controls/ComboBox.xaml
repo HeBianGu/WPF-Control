@@ -94,8 +94,8 @@
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
         <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
-        <Setter Property="MinWidth" Value="120" />
-        <Setter Property="MinHeight" Value="20" />
+        <!--<Setter Property="MinWidth" Value="120" />
+        <Setter Property="MinHeight" Value="20" />-->
         <Setter Property="Padding" Value="3,3,23,3" />
         <Setter Property="Template">
             <Setter.Value>

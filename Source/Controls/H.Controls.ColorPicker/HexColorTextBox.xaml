@@ -1,0 +1,35 @@
+﻿<local:PickerControlBase x:Class="H.Controls.ColorPicker.HexColorTextBox"
+                         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                         xmlns:behav="clr-namespace:H.Controls.ColorPicker.Behaviors"
+                         xmlns:conv="clr-namespace:H.Controls.ColorPicker.Converters"
+                         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                         xmlns:i="clr-namespace:Microsoft.Xaml.Behaviors;assembly=Microsoft.Xaml.Behaviors"
+                         xmlns:local="clr-namespace:H.Controls.ColorPicker"
+                         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                         x:Name="uc"
+                         d:DesignHeight="450"
+                         d:DesignWidth="800"
+                         mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <conv:ColorToHexConverter x:Key="ColorToHexConverter"
+                                      HexRepresentation="{Binding Source={x:Reference uc}, Path=HexRepresentation}"
+                                      OnShowAlphaChange="RefreshTextbox"
+                                      OnShowHexRepresentationChange="RefreshTextbox"
+                                      ShowAlpha="{Binding Source={x:Reference uc}, Path=ShowAlpha}" />
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <TextBox x:Name="textbox"
+                 Width="Auto"
+                 VerticalAlignment="Center"
+                 Text="{Binding Path=SelectedColor, Converter={StaticResource ColorToHexConverter}, ElementName=uc}">
+            <i:Interaction.Behaviors>
+                <behav:TextBoxFocusBehavior ConfirmOnEnter="True"
+                                            DeselectOnFocusLoss="True"
+                                            SelectOnMouseClick="False" />
+            </i:Interaction.Behaviors>
+        </TextBox>
+    </Grid>
+</local:PickerControlBase>
