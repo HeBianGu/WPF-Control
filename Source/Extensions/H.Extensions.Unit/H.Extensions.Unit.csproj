@@ -1,0 +1,6 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\..\Providers\H.Providers.Mvvm\H.Providers.Mvvm.csproj" />
+    <ProjectReference Include="..\H.Extensions.ValueConverter\H.Extensions.ValueConverter.csproj" />
+  </ItemGroup>
+</Project>

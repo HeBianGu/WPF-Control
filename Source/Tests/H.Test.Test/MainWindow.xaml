@@ -757,7 +757,7 @@
                     <h:ColorSliders Grid.Row="0"
                                     Grid.Column="1"
                                     ColorState="{Binding ElementName=maindisplay, Path=ColorState, Mode=TwoWay, Delay=10}"
-                                    ShowAlpha="False"/>
+                                    ShowAlpha="False" />
 
                     <Label Grid.Row="1"
                            Grid.Column="1">
@@ -846,6 +846,45 @@
                     </Label>
 
                 </Grid>
+            </TabItem>
+
+            <TabItem Header="Unit">
+                <StackPanel>
+                    <StackPanel.DataContext>
+                        <h:Unit />
+                    </StackPanel.DataContext>
+                    <TextBox Text="{Binding Byte, Converter={h:ByteSizeUnitableConverter}}">
+                        <Behaviors:Interaction.Behaviors>
+                            <h:TextBoxUpdateSourceOnKeyDownBebavior />
+                        </Behaviors:Interaction.Behaviors>
+                    </TextBox>
+                    <TextBlock Margin="0,5"
+                               Text="{Binding Byte}" />
+                    <TextBox Text="{Binding Millimeter, Converter={h:MillimeterUnitableConverter}}">
+                        <Behaviors:Interaction.Behaviors>
+                            <h:TextBoxUpdateSourceOnKeyDownBebavior />
+                        </Behaviors:Interaction.Behaviors>
+                    </TextBox>
+                    <TextBlock Margin="0,5"
+                               Text="{Binding Millimeter}" />
+
+                    <TextBox Text="{Binding Weight, Converter={h:UnitableValueConverter UnitableType={x:Type h:WeightUnitable}, Digits=3 }}">
+                        <Behaviors:Interaction.Behaviors>
+                            <h:TextBoxUpdateSourceOnKeyDownBebavior />
+                        </Behaviors:Interaction.Behaviors>
+                    </TextBox>
+                    <TextBlock Margin="0,5"
+                               Text="{Binding Weight}" />
+
+
+                    <TextBox Text="{Binding Time, Converter={h:UnitableValueConverter UnitableType={x:Type h:TimeUnitable}}}">
+                        <Behaviors:Interaction.Behaviors>
+                            <h:TextBoxUpdateSourceOnKeyDownBebavior />
+                        </Behaviors:Interaction.Behaviors>
+                    </TextBox>
+                    <TextBlock Margin="0,5"
+                               Text="{Binding Time}" />
+                </StackPanel>
             </TabItem>
         </TabControl>
     </Grid>
