@@ -17,6 +17,8 @@
     <ProjectReference Include="..\..\Controls\H.Controls.PDF\H.Controls.PDF.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.PrintBox\H.Controls.PrintBox.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.PropertyGrid\H.Controls.PropertyGrid.csproj" />
+    <ProjectReference Include="..\..\Controls\H.Controls.QRCoderBox\H.Controls.QRCoderBox.csproj" />
+    <ProjectReference Include="..\..\Controls\H.Controls.ScheduleBox\H.Controls.ScheduleBox.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.Step\H.Controls.Step.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.TagBox\H.Controls.TagBox.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.TreeListView\H.Controls.TreeListView.csproj" />
@@ -32,6 +34,7 @@
     <ProjectReference Include="..\..\Modules\H.Modules.Messages.Dialog\H.Modules.Messages.Dialog.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Messages.Form\H.Modules.Messages.Form.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Setting\H.Modules.Setting.csproj" />
+    <ProjectReference Include="..\..\Styles\H.Styles.Default\H.Styles.Default.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Default\H.Themes.Default.csproj" />
     <ProjectReference Include="..\..\Windows\H.Windows.Dialog\H.Windows.Dialog.csproj" />
     <ProjectReference Include="..\..\Windows\H.Windows.Dock\H.Windows.Dock.csproj" />

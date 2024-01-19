@@ -265,7 +265,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Controls.PDF", "..\Source
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Controls.ColorPicker", "..\Source\Controls\H.Controls.ColorPicker\H.Controls.ColorPicker.csproj", "{FEAD4C39-0B1B-4550-A611-1073006AC565}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Extensions.Unit", "..\Source\Extensions\H.Extensions.Unit\H.Extensions.Unit.csproj", "{E4ECBFB2-BCD6-4BEB-B88E-932E3587E04B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Extensions.Unit", "..\Source\Extensions\H.Extensions.Unit\H.Extensions.Unit.csproj", "{E4ECBFB2-BCD6-4BEB-B88E-932E3587E04B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Controls.QRCoderBox", "..\Source\Controls\H.Controls.QRCoderBox\H.Controls.QRCoderBox.csproj", "{AEC475E3-607E-4290-93B6-5EDFE0229F6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Controls.ScheduleBox", "..\Source\Controls\H.Controls.ScheduleBox\H.Controls.ScheduleBox.csproj", "{24785305-3565-4A79-B83D-CC990D20C42B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -739,6 +743,14 @@ Global
 		{E4ECBFB2-BCD6-4BEB-B88E-932E3587E04B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4ECBFB2-BCD6-4BEB-B88E-932E3587E04B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4ECBFB2-BCD6-4BEB-B88E-932E3587E04B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEC475E3-607E-4290-93B6-5EDFE0229F6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEC475E3-607E-4290-93B6-5EDFE0229F6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEC475E3-607E-4290-93B6-5EDFE0229F6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEC475E3-607E-4290-93B6-5EDFE0229F6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24785305-3565-4A79-B83D-CC990D20C42B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24785305-3565-4A79-B83D-CC990D20C42B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24785305-3565-4A79-B83D-CC990D20C42B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24785305-3565-4A79-B83D-CC990D20C42B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -863,6 +875,8 @@ Global
 		{65C35887-99FB-49F8-8B8A-E28F5ADBC5BF} = {9E63ED70-6F96-4CB2-8B9D-EAEC77D0548E}
 		{FEAD4C39-0B1B-4550-A611-1073006AC565} = {9E63ED70-6F96-4CB2-8B9D-EAEC77D0548E}
 		{E4ECBFB2-BCD6-4BEB-B88E-932E3587E04B} = {09F8FD00-E76A-4D72-AAB4-7FA06DBE12D4}
+		{AEC475E3-607E-4290-93B6-5EDFE0229F6C} = {9E63ED70-6F96-4CB2-8B9D-EAEC77D0548E}
+		{24785305-3565-4A79-B83D-CC990D20C42B} = {9E63ED70-6F96-4CB2-8B9D-EAEC77D0548E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF825C3D-F4F4-4E62-BBFF-B42A5E81112F}

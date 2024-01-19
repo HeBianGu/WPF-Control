@@ -847,7 +847,6 @@
 
                 </Grid>
             </TabItem>
-
             <TabItem Header="Unit">
                 <StackPanel>
                     <StackPanel.DataContext>
@@ -868,7 +867,7 @@
                     <TextBlock Margin="0,5"
                                Text="{Binding Millimeter}" />
 
-                    <TextBox Text="{Binding Weight, Converter={h:UnitableValueConverter UnitableType={x:Type h:WeightUnitable}, Digits=3 }}">
+                    <TextBox Text="{Binding Weight, Converter={h:UnitableValueConverter UnitableType={x:Type h:WeightUnitable}, Digits=3}}">
                         <Behaviors:Interaction.Behaviors>
                             <h:TextBoxUpdateSourceOnKeyDownBebavior />
                         </Behaviors:Interaction.Behaviors>
@@ -885,6 +884,21 @@
                     <TextBlock Margin="0,5"
                                Text="{Binding Time}" />
                 </StackPanel>
+            </TabItem>
+            <TabItem Header="QRCoderBox">
+                <DockPanel>
+                    <h:PropertyGrid Width="300"
+                                    DockPanel.Dock="Right"
+                                    HideInheritedProperties="True"
+                                    SelectedObject="{Binding ElementName=qrb}" />
+                    <h:QRCoderBox x:Name="qrb"
+                                  PlainText="123456789" />
+                </DockPanel>
+            </TabItem>
+            <TabItem Header="ScheduleBox">
+                <DockPanel>
+                    <h:ScheduleBox/>
+                </DockPanel>
             </TabItem>
         </TabControl>
     </Grid>

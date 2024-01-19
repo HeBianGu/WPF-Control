@@ -65,6 +65,8 @@ namespace H.Test.Test
                 //x.Tags.Add(new Tag() { Name = "测试4", GroupName = "Test", Description = "这是一个严重标签", Background = Brushes.Blue });
                 //x.Tags.Add(new Tag() { Name = "测试5", GroupName = "Test", Description = "这是一个严重标签", Background = Brushes.Green });
             });
+
+            services.AddSchedule();
         }
 
         protected override void Configure(IApplicationBuilder app)
