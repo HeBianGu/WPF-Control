@@ -18,7 +18,7 @@ namespace H.App.FileManager
             _favoriteOptions = favoriteOptions;
         }
 
-        public override IProjectItem Create()
+        public override FileProjectItem Create()
         {
             return new FileProjectItem()
             {

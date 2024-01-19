@@ -78,13 +78,17 @@ namespace H.App.FileManager
                    {
                        x.Value = "正在加载数据...";
                        List<string> files = projectItem.BaseFolder.GetAllFiles();
-                       Repository.Clear();
+                       //Repository.Clear();
 
                        List<fm_dd_file> dbFiles = new List<fm_dd_file>();
                        foreach (string file in files)
                        {
+                           if (c.IsCancel)
+                               return -1;
                            fm_dd_file fileEnity = Ioc.GetService<IFileToEntityService>().ToEntity(file);
-                           dbFiles.Add(fileEnity);
+                           if (this.Collection.FirstOrDefault(k => k.Model.Url == file) == null)
+                               dbFiles.Add(fileEnity);
+                           x.Value = file;
                        }
                        await Add(dbFiles.ToArray());
                        x.Value = "加载完成，正在保存...";
@@ -115,13 +119,13 @@ namespace H.App.FileManager
         [Display(Name = "复制", GroupName = "菜单")]
         public RelayCommand CopyCommand { get; set; } = new RelayCommand(l =>
         {
-           
+
         });
 
         [Display(Name = "另存为", GroupName = "菜单")]
         public RelayCommand SaveAsCommand => new RelayCommand(l =>
         {
-         
+
 
         });
 
@@ -213,7 +217,7 @@ namespace H.App.FileManager
             {
                 if (item is fm_dd_file)
                 {
-                    IEnumerable<ITag> findtags = tagService.Collection.Where(x => x.GroupName == null).Where(x => item.Name.Contains(x.Name));
+                    IEnumerable<ITag> findtags = tagService.Collection.Where(x => x.GroupName == null).Where(x => item.Url.Contains(x.Name));
                     foreach (ITag find in findtags)
                     {
                         item.Tags = tagService.ConvertToCheck(item.Tags, find);
@@ -222,7 +226,7 @@ namespace H.App.FileManager
                 if (item is fm_dd_image image)
                 {
                     {
-                        IEnumerable<ITag> findtags = tagService.Collection.Where(x => x.GroupName == "Object").Where(x => item.Name.Contains(x.Name));
+                        IEnumerable<ITag> findtags = tagService.Collection.Where(x => x.GroupName == "Object").Where(x => item.Url.Contains(x.Name));
                         foreach (ITag find in findtags)
                         {
                             image.Object = tagService.ConvertToCheck(image.Object, find);
@@ -230,7 +234,7 @@ namespace H.App.FileManager
                     }
 
                     {
-                        IEnumerable<ITag> findtags = tagService.Collection.Where(x => x.GroupName == "Area").Where(x => item.Name.Contains(x.Name));
+                        IEnumerable<ITag> findtags = tagService.Collection.Where(x => x.GroupName == "Area").Where(x => item.Url.Contains(x.Name));
                         foreach (ITag find in findtags)
                         {
                             image.Area = tagService.ConvertToCheck(image.Area, find);
@@ -238,7 +242,7 @@ namespace H.App.FileManager
                     }
 
                     {
-                        IEnumerable<ITag> findtags = tagService.Collection.Where(x => x.GroupName == "Articulation").Where(x => item.Name.Contains(x.Name));
+                        IEnumerable<ITag> findtags = tagService.Collection.Where(x => x.GroupName == "Articulation").Where(x => item.Url.Contains(x.Name));
                         foreach (ITag find in findtags)
                         {
                             image.Articulation = tagService.ConvertToCheck(image.Articulation, find);
