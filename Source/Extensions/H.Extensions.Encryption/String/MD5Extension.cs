@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -46,6 +47,25 @@ namespace H.Extensions.Encryption
             byte[] output = md5.ComputeHash(result);
             string encryptResult = BitConverter.ToString(output).Replace("-", "");
             return encryptResult.ToUpper();
+        }
+
+
+        public static string GetFileMD5(string path)
+        {
+            try
+            {
+                using (MD5 md5 = MD5.Create())
+                {
+                    using (FileStream stream = File.OpenRead(path))
+                    {
+                        return Convert.ToBase64String(md5.ComputeHash(stream));
+                    }
+                }
+            }
+            catch (System.Exception)
+            {
+                return null;
+            }
         }
     }
 }

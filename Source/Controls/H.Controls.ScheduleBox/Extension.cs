@@ -14,7 +14,7 @@ namespace System
         public static IServiceCollection AddSchedule(this IServiceCollection services)
         {
             //services.AddOptions();
-            services.TryAdd(ServiceDescriptor.Singleton<IScheduleService, ScheduleService>());
+            //services.TryAdd(ServiceDescriptor.Singleton<IScheduleService, ScheduleService>());
             //if (setupAction != null)
             //    services.Configure(setupAction);
 

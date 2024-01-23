@@ -22,14 +22,7 @@
                         <DockPanel>
                             <Control DockPanel.Dock="Top"
                                      Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:Cattach.TopTemplate)}" />
-
-                            <ItemsControl Width="250"
-                                          Background="Red"
-                                          ItemsSource="{TemplateBinding Messages}" />
-
-                            <ItemsPresenter Margin="{TemplateBinding Padding}"
-                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            <ItemsPresenter />
                         </DockPanel>
                     </Border>
                 </ControlTemplate>
@@ -38,13 +31,142 @@
         <Setter Property="Cattach.TopTemplate">
             <Setter.Value>
                 <ControlTemplate>
-                    <DockPanel>
+                    <DockPanel LastChildFill="False">
                         <Button Command="{x:Static local:ScheduleCommands.Start}"
-                                Content="启动调度器" />
+                                Content="启动" />
+                        <Button Command="{x:Static local:ScheduleCommands.Stop}"
+                                Content="停止" />
+                        <Button Command="{x:Static local:ScheduleCommands.Add}"
+                                Content="添加任务" />
                     </DockPanel>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="Cattach.ItemHeight" Value="Auto" />
+        <Setter Property="Cattach.ItemPadding" Value="0" />
+        <Setter Property="ItemTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Grid>
+                        <Border x:Name="bd"
+                                Margin="5"
+                                Background="{DynamicResource {x:Static h:BrushKeys.Dark0_2}}"
+                                CornerRadius="5"
+                                Style="{DynamicResource {x:Static h:BorderKeys.Background}}"
+                                TextElement.Foreground="{DynamicResource {x:Static h:BrushKeys.Foreground}}">
+                            <DockPanel Margin="10,6">
+                                <TextBlock DockPanel.Dock="Top">
+                                    <Run Text="{Binding Name}" />
+                                </TextBlock>
+                                <DockPanel DockPanel.Dock="Right">
+                                    <Button Background="Transparent"
+                                            Command="{x:Static ScheduleCommands.Edit}"
+                                            CommandParameter="{Binding .}"
+                                            Content="编辑" />
+                                    <Button Background="Transparent"
+                                            Command="{x:Static ScheduleCommands.Delete}"
+                                            CommandParameter="{Binding .}"
+                                            Content="删除" />
+                                </DockPanel>
+
+                                <TextBlock DockPanel.Dock="Bottom">
+                                    <Run Text=" 消息:" />
+                                    <Run Text="{Binding Message}" />
+                                </TextBlock>
+                                <TextBlock Margin="20"
+                                           DockPanel.Dock="Top">
+                                    <Run FontSize="15"
+                                         Text="下次触发时间: " />
+                                    <Run x:Name="r"
+                                         FontSize="25"
+                                         FontWeight="Black"
+                                         Text="{Binding NextFireTime}" />
+                                </TextBlock>
+
+                            </DockPanel>
+                        </Border>
+                        <ProgressBar Height="Auto"
+                                     Margin="5"
+                                     Background="Transparent"
+                                     IsIndeterminate="True"
+                                     Opacity="0.5"
+                                     Visibility="{Binding IsRunning, Converter={x:Static h:Converter.GetTrueToVisible}}" />
+                    </Grid>
+                    <DataTemplate.Triggers>
+                        <DataTrigger Binding="{Binding IsRunning}"
+                                     Value="True">
+                            <Setter TargetName="bd" Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Dark0_4}}" />
+                            <!--<Setter TargetName="bd" Property="TextElement.Foreground" Value="White" />-->
+                        </DataTrigger>
+                        <!--<DataTrigger Binding="{Binding NextFireTime}"
+                                     Value="{x:Null}">
+                            <Setter TargetName="r" Property="Text" Value="等待中..." />
+                        </DataTrigger>-->
+                    </DataTemplate.Triggers>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 
+    <DataTemplate DataType="{x:Type local:ScheduleJobBase}">
+        <GroupBox Header="{Binding Name}">
+            <DockPanel>
+                <h:Form DockPanel.Dock="Top"
+                        SelectObject="{Binding .}"
+                        UseDisplayOnly="True" />
+                <GroupBox Header="触发器">
+                    <Cattach.CaptionRightTemplate>
+                        <ControlTemplate>
+                            <DockPanel>
+                                <Button Height="Auto"
+                                        MinHeight="0"
+                                        Command="{Binding AddTriggerCommand}"
+                                        Content="添加触发器" />
+                            </DockPanel>
+                        </ControlTemplate>
+                    </Cattach.CaptionRightTemplate>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <ItemsControl ItemsSource="{Binding Triggers}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Expander Header="{Binding Name}">
+                                        <Cattach.CaptionRightTemplate>
+                                            <ControlTemplate>
+                                                <DockPanel>
+                                                    <Button Height="Auto"
+                                                            MinHeight="0"
+                                                            Command="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl}, Path=DataContext.DeleteTriggerCommand}"
+                                                            CommandParameter="{Binding .}"
+                                                            Content="删除" />
+                                                </DockPanel>
+                                            </ControlTemplate>
+                                        </Cattach.CaptionRightTemplate>
+                                        <h:Form DockPanel.Dock="Top"
+                                                SelectObject="{Binding .}"
+                                                UseDisplayOnly="True" />
+                                    </Expander>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </GroupBox>
+            </DockPanel>
+        </GroupBox>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type local:DayOfWeeks}">
+        <ListBox ItemsSource="{Binding Source}" SelectionMode="Multiple">
+            <b:Interaction.Behaviors>
+                <h:ListBoxBindingSelectedItemsBehavior SelectedItems="{Binding .}"/>
+            </b:Interaction.Behaviors>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel>
+                        <CheckBox IsChecked="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem},Path=IsSelected}"/>
+                        <TextBlock Text="{Binding}" VerticalAlignment="Center"/>
+                    </DockPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ListBox>
+    </DataTemplate>
 </ResourceDictionary>
