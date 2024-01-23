@@ -77,19 +77,19 @@ namespace H.Controls.Form
                 }
             }
 
-            CustomValidationAttribute attr = info.GetCustomAttribute<CustomValidationAttribute>();
-            if (attr == null || string.IsNullOrEmpty(attr.Method))
-            {
+            //CustomValidationAttribute attr = info.GetCustomAttribute<CustomValidationAttribute>();
+            //if (attr == null || string.IsNullOrEmpty(attr.Method))
+            //{
                 return new ObjectPropertyItem<object>(info, obj);
-            }
-            else
-            {
-                MethodInfo ms = obj.GetType().GetMethod(attr.Method);
-                IEnumerable<object> source = ms.Invoke(obj, null) as IEnumerable<object>;
-                if (source == null)
-                    new ObjectPropertyItem<object>(info, obj);
-                return new SelectSourcePropertyItem(info, obj);
-            }
+            //}
+            //else
+            //{
+            //    MethodInfo ms = obj.GetType().GetMethod(attr.Method);
+            //    IEnumerable<object> source = ms.Invoke(obj, null) as IEnumerable<object>;
+            //    if (source == null)
+            //        new ObjectPropertyItem<object>(info, obj);
+            //    return new SelectSourcePropertyItem(info, obj);
+            //}
         }
 
         public static ObjectPropertyItem CreateByType(this PropertyInfo info, object obj)
@@ -143,22 +143,22 @@ namespace H.Controls.Form
 
             }
 
-            CustomValidationAttribute attr = info.GetCustomAttribute<CustomValidationAttribute>();
+            //CustomValidationAttribute attr = info.GetCustomAttribute<CustomValidationAttribute>();
 
-            if (attr == null || string.IsNullOrEmpty(attr.Method))
-            {
+            //if (attr == null || string.IsNullOrEmpty(attr.Method))
+            //{
                 return new ObjectPropertyItem<object>(info, obj);
-            }
-            else
-            {
-                MethodInfo ms = obj.GetType().GetMethod(attr.Method);
+            //}
+            //else
+            //{
+            //    MethodInfo ms = obj.GetType().GetMethod(attr.Method);
 
-                IEnumerable<object> source = ms.Invoke(obj, null) as IEnumerable<object>;
+            //    IEnumerable<object> source = ms.Invoke(obj, null) as IEnumerable<object>;
 
-                if (source == null) return new ObjectPropertyItem<object>(info, obj);
+            //    if (source == null) return new ObjectPropertyItem<object>(info, obj);
 
-                return new SelectSourcePropertyItem(info, obj);
-            }
+            //    return new SelectSourcePropertyItem(info, obj);
+            //}
         }
 
         public static T ChangeType<T>(this object obj)

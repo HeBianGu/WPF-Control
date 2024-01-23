@@ -965,66 +965,69 @@ namespace H.Controls.Form
         protected void OnValueChanged(Tuple<IPropertyItem, object> tuple)
         {
             RoutedEventArgs args = new RoutedEventArgs(ValueChangedRoutedEvent, this);
-
             args.Source = tuple;
+            ////  Do ：触发通知方法
+            //CustomValidationAttribute attribute = tuple.Item1.PropertyInfo.GetCustomAttribute<CustomValidationAttribute>();
 
-            //  Do ：触发通知方法
-            CustomValidationAttribute attribute = tuple.Item1.PropertyInfo.GetCustomAttribute<CustomValidationAttribute>();
+            //if (attribute != null)
+            //{
+            //    MethodInfo method = tuple.Item1.Obj.GetType().GetMethod(attribute.Method);
+            //    method?.Invoke(tuple.Item1.Obj, null);
+            //}
 
-            if (attribute != null)
+            //{
+            //    //  Do ：触发绑定属性值刷新
+            //    List<IPropertyItem> binds = this.ItemsSource.Cast<IPropertyItem>().Where(l => l.PropertyInfo.GetCustomAttribute<CompareAttribute>()?.OtherProperty == tuple.Item1.PropertyInfo.Name)?.ToList();
+
+            //    foreach (IPropertyItem bind in binds)
+            //    {
+            //        if (bind is ObjectPropertyItem objectProperty)
+            //        {
+            //            objectProperty.LoadValue();
+            //        }
+            //    }
+            //}
+
+            //{
+            //    Func<IPropertyItem, bool> predicate = l =>
+            //          {
+            //              BindingAttribute binding = l.PropertyInfo.GetCustomAttribute<BindingAttribute>();
+
+            //              if (binding == null) return false;
+
+            //              string firstPath = binding.GetPaths()?.FirstOrDefault();
+
+            //              return firstPath == tuple.Item1.PropertyInfo.Name;
+            //          };
+
+            //    IEnumerable<IPropertyItem> binds = this.ItemsSource.Cast<IPropertyItem>().Where(predicate);
+
+            //    foreach (IPropertyItem bind in binds)
+            //    {
+            //        BindingAttribute binding = bind.PropertyInfo.GetCustomAttribute<BindingAttribute>();
+
+            //        string[] paths = binding.GetPaths();
+
+            //        if (bind is ObjectPropertyItem objectProperty)
+            //        {
+            //            object v = binding.GetValue(tuple.Item2);
+
+            //            bind.PropertyInfo.SetValue(bind.Obj, v);
+
+            //            objectProperty.LoadValue();
+            //        }
+
+            //    }
+            //}
+
+            if(this.CheckAccess())
             {
-                MethodInfo method = tuple.Item1.Obj.GetType().GetMethod(attribute.Method);
-
-                method?.Invoke(tuple.Item1.Obj, null);
+                this.RaiseEvent(args);
             }
-
-
+            else
             {
-                //  Do ：触发绑定属性值刷新
-                List<IPropertyItem> binds = this.ItemsSource.Cast<IPropertyItem>().Where(l => l.PropertyInfo.GetCustomAttribute<CompareAttribute>()?.OtherProperty == tuple.Item1.PropertyInfo.Name)?.ToList();
-
-                foreach (IPropertyItem bind in binds)
-                {
-                    if (bind is ObjectPropertyItem objectProperty)
-                    {
-                        objectProperty.LoadValue();
-                    }
-                }
+                this.Dispatcher.Invoke(()=> this.RaiseEvent(args));
             }
-
-            {
-                Func<IPropertyItem, bool> predicate = l =>
-                      {
-                          BindingAttribute binding = l.PropertyInfo.GetCustomAttribute<BindingAttribute>();
-
-                          if (binding == null) return false;
-
-                          string firstPath = binding.GetPaths()?.FirstOrDefault();
-
-                          return firstPath == tuple.Item1.PropertyInfo.Name;
-                      };
-
-                IEnumerable<IPropertyItem> binds = this.ItemsSource.Cast<IPropertyItem>().Where(predicate);
-
-                foreach (IPropertyItem bind in binds)
-                {
-                    BindingAttribute binding = bind.PropertyInfo.GetCustomAttribute<BindingAttribute>();
-
-                    string[] paths = binding.GetPaths();
-
-                    if (bind is ObjectPropertyItem objectProperty)
-                    {
-                        object v = binding.GetValue(tuple.Item2);
-
-                        bind.PropertyInfo.SetValue(bind.Obj, v);
-
-                        objectProperty.LoadValue();
-                    }
-
-                }
-            }
-
-            this.RaiseEvent(args);
         }
 
         [TypeConverter(typeof(LengthConverter))]
