@@ -7,5 +7,6 @@
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/WaitPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/MessagePresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/TextBoxPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/SelectItemPresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

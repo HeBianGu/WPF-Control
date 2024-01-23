@@ -897,7 +897,21 @@
             </TabItem>
             <TabItem Header="ScheduleBox">
                 <DockPanel>
-                    <h:ScheduleBox/>
+                    <h:ScheduleBox>
+                        <h:ScheduleBox.JobsSource>
+                            <h:TestScheduleJob Name="测试1">
+                                <h:TestScheduleJob.Triggers>
+                                    <h:DataTimeTrigger/>
+                                    <h:RepeatTrigger Interval="00:00:40"
+                                                     RepeatCount="50" />
+                                </h:TestScheduleJob.Triggers>
+                            </h:TestScheduleJob>
+                            <h:TestScheduleJob Name="测试2" />
+                            <h:TestScheduleJob Name="测试3" />
+                            <h:TestScheduleJob Name="测试4" />
+                            <h:TestScheduleJob Name="测试5" />
+                        </h:ScheduleBox.JobsSource>
+                    </h:ScheduleBox>
                 </DockPanel>
             </TabItem>
         </TabControl>

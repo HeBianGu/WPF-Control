@@ -137,6 +137,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="20" />
                                     <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <ToggleButton Foreground="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionForeground)}"
                                               IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
@@ -148,6 +149,9 @@
                                                   ContentSource="Header"
                                                   RecognizesAccessKey="True"
                                                   TextElement.Foreground="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionForeground)}" />
+
+                                <Control Grid.Column="2"
+                                         Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionRightTemplate)}" />
                             </Grid>
                         </Border>
                         <Border Grid.Row="1"

@@ -43,11 +43,20 @@
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="1"
                                 CornerRadius="2,2,0,0">
-                            <ContentPresenter Margin="4,0"
-                                              VerticalAlignment="Center"
-                                              ContentSource="Header"
-                                              RecognizesAccessKey="True"
-                                              TextElement.Foreground="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionForeground)}" />
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <ContentPresenter Margin="4,0"
+                                                  VerticalAlignment="Center"
+                                                  ContentSource="Header"
+                                                  RecognizesAccessKey="True"
+                                                  TextElement.Foreground="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionForeground)}" />
+                                <Control Grid.Column="2"
+                                         Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionRightTemplate)}" />
+                            </Grid>
+
                         </Border>
 
                         <Border Grid.Row="1"
