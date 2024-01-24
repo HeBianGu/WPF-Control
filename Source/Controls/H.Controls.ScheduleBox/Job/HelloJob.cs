@@ -9,8 +9,8 @@ namespace H.Controls.ScheduleBox
     {
         public async Task Execute(IJobExecutionContext context)
         {
-			try
-			{
+            try
+            {
                 //Debug.WriteLine($"【任务执行】：{DateTime.Now}");
                 //Debug.WriteLine($"【触发时间】：{context.ScheduledFireTimeUtc?.LocalDateTime}");
                 //Debug.WriteLine($"【下次触发时间】：{context.NextFireTimeUtc?.LocalDateTime}");
@@ -22,11 +22,11 @@ namespace H.Controls.ScheduleBox
                 //IocSchedule.Instance.OnLogMessaged($"【触发时间】：{context.ScheduledFireTimeUtc?.LocalDateTime}");
                 //IocSchedule.Instance.OnLogMessaged($"【下次触发时间】：{context.NextFireTimeUtc?.LocalDateTime}");
             }
-			catch (Exception ex)
-			{
+            catch (Exception ex)
+            {
 
-				
-			}
+
+            }
             await Task.FromResult(true);
         }
     }

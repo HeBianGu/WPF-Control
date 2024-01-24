@@ -10,7 +10,6 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Xml.Serialization;
 
 namespace H.Controls.ScheduleBox

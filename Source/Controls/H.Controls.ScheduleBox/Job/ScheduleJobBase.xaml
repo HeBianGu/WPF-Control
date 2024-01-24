@@ -1,0 +1,50 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Controls.ScheduleBox">
+    <DataTemplate DataType="{x:Type local:ScheduleJobBase}">
+        <GroupBox Header="{Binding Name}">
+            <DockPanel>
+                <h:Form DockPanel.Dock="Top"
+                        SelectObject="{Binding .}"
+                        UseDisplayOnly="True" />
+                <GroupBox Header="触发器">
+                    <Cattach.CaptionRightTemplate>
+                        <ControlTemplate>
+                            <DockPanel>
+                                <Button Height="Auto"
+                                        MinHeight="0"
+                                        Command="{Binding AddTriggerCommand}"
+                                        Content="添加触发器" />
+                            </DockPanel>
+                        </ControlTemplate>
+                    </Cattach.CaptionRightTemplate>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <ItemsControl ItemsSource="{Binding Triggers}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Expander Header="{Binding Name}">
+                                        <Cattach.CaptionRightTemplate>
+                                            <ControlTemplate>
+                                                <DockPanel>
+                                                    <Button Height="Auto"
+                                                            MinHeight="0"
+                                                            Command="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl}, Path=DataContext.DeleteTriggerCommand}"
+                                                            CommandParameter="{Binding .}"
+                                                            Content="删除" />
+                                                </DockPanel>
+                                            </ControlTemplate>
+                                        </Cattach.CaptionRightTemplate>
+                                        <h:Form DockPanel.Dock="Top"
+                                                SelectObject="{Binding .}"
+                                                UseDisplayOnly="True" />
+                                    </Expander>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </GroupBox>
+            </DockPanel>
+        </GroupBox>
+    </DataTemplate>
+</ResourceDictionary>

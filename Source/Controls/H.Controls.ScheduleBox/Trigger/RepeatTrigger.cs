@@ -65,8 +65,6 @@ namespace H.Controls.ScheduleBox
             }
         }
 
-
-
         public override ITrigger Build(IScheduleJob scheduleJob)
         {
             scheduleJob.NextFireTime = System.DateTime.Now + this.Interval;

@@ -1,11 +1,8 @@
-﻿using H.Controls.ScheduleBox;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Quartz;
 //using H.Providers.Ioc;
 //using Microsoft.Extensions.DependencyInjection;
 //using Microsoft.Extensions.DependencyInjection.Extensions;
-using System.Collections.Generic;
 
 namespace System
 {
@@ -20,7 +17,7 @@ namespace System
 
             services.AddQuartz(x =>
             {
-               
+
             });
             return services;
         }

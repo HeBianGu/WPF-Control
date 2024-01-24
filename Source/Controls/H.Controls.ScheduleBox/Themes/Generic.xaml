@@ -3,5 +3,6 @@
                     xmlns:local="clr-namespace:H.Controls.ScheduleBox">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Controls.ScheduleBox;component/ScheduleBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.ScheduleBox;component/Job/ScheduleJobBase.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

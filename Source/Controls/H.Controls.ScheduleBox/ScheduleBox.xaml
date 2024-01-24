@@ -22,6 +22,22 @@
                         <DockPanel>
                             <Control DockPanel.Dock="Top"
                                      Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:Cattach.TopTemplate)}" />
+
+                            <Expander MaxHeight="300"
+                                      DockPanel.Dock="Bottom"
+                                      Header="日志"
+                                      IsExpanded="True">
+                                <h:Cattach.CaptionRightTemplate>
+                                    <ControlTemplate>
+                                        <Button Height="Auto"
+                                                Content="清空" />
+                                    </ControlTemplate>
+                                </h:Cattach.CaptionRightTemplate>
+                                <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                                              VerticalScrollBarVisibility="Auto">
+                                    <ItemsControl ItemsSource="{TemplateBinding Messages}" />
+                                </ScrollViewer>
+                            </Expander>
                             <ItemsPresenter />
                         </DockPanel>
                     </Border>
@@ -108,62 +124,18 @@
         </Setter>
     </Style>
 
-    <DataTemplate DataType="{x:Type local:ScheduleJobBase}">
-        <GroupBox Header="{Binding Name}">
-            <DockPanel>
-                <h:Form DockPanel.Dock="Top"
-                        SelectObject="{Binding .}"
-                        UseDisplayOnly="True" />
-                <GroupBox Header="触发器">
-                    <Cattach.CaptionRightTemplate>
-                        <ControlTemplate>
-                            <DockPanel>
-                                <Button Height="Auto"
-                                        MinHeight="0"
-                                        Command="{Binding AddTriggerCommand}"
-                                        Content="添加触发器" />
-                            </DockPanel>
-                        </ControlTemplate>
-                    </Cattach.CaptionRightTemplate>
-                    <ScrollViewer VerticalScrollBarVisibility="Auto">
-                        <ItemsControl ItemsSource="{Binding Triggers}">
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <Expander Header="{Binding Name}">
-                                        <Cattach.CaptionRightTemplate>
-                                            <ControlTemplate>
-                                                <DockPanel>
-                                                    <Button Height="Auto"
-                                                            MinHeight="0"
-                                                            Command="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl}, Path=DataContext.DeleteTriggerCommand}"
-                                                            CommandParameter="{Binding .}"
-                                                            Content="删除" />
-                                                </DockPanel>
-                                            </ControlTemplate>
-                                        </Cattach.CaptionRightTemplate>
-                                        <h:Form DockPanel.Dock="Top"
-                                                SelectObject="{Binding .}"
-                                                UseDisplayOnly="True" />
-                                    </Expander>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
-                    </ScrollViewer>
-                </GroupBox>
-            </DockPanel>
-        </GroupBox>
-    </DataTemplate>
-
     <DataTemplate DataType="{x:Type local:DayOfWeeks}">
-        <ListBox ItemsSource="{Binding Source}" SelectionMode="Multiple">
+        <ListBox ItemsSource="{Binding Source}"
+                 SelectionMode="Multiple">
             <b:Interaction.Behaviors>
-                <h:ListBoxBindingSelectedItemsBehavior SelectedItems="{Binding .}"/>
+                <h:ListBoxBindingSelectedItemsBehavior SelectedItems="{Binding .}" />
             </b:Interaction.Behaviors>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <DockPanel>
-                        <CheckBox IsChecked="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem},Path=IsSelected}"/>
-                        <TextBlock Text="{Binding}" VerticalAlignment="Center"/>
+                        <CheckBox IsChecked="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}, Path=IsSelected}" />
+                        <TextBlock VerticalAlignment="Center"
+                                   Text="{Binding}" />
                     </DockPanel>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
