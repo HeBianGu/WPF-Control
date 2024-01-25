@@ -6,8 +6,7 @@ namespace H.Extensions.Unit
     public interface IUnitable
     {
         string ToString(object value);
-        object ToValue(string str);
-
+        object Parse(string str);
         int Digits { get; set; }
     }
 }

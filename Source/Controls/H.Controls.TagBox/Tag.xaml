@@ -4,7 +4,8 @@
     <DataTemplate DataType="{x:Type local:Tag}">
         <DockPanel ToolTip="{Binding Description}">
             <Border Width="10"
-                    Margin="0,5,5,5"
+                    Height="10"
+                    Margin="2"
                     Background="{Binding Background}" />
             <TextBlock Text="{Binding Name}" />
         </DockPanel>

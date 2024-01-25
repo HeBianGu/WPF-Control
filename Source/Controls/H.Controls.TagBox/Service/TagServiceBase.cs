@@ -22,6 +22,7 @@ namespace H.Controls.TagBox
             {
                 this.Collection.Add(item);
             }
+            this.OnCollectionChanged();
         }
 
         void IDataSource<ITag>.Add(params ITag[] ts)

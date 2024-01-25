@@ -20,13 +20,13 @@ namespace H.Extensions.Tree
             }
 
             if (parent is DriveInfo drive)
-                return drive.RootDirectory.GetFileSystemInfos(SearchPattern, SearchOption);
+                return drive.RootDirectory.GetFileSystemInfos(SearchPattern, SearchOption).Where(d => !d.Attributes.HasFlag(FileAttributes.Hidden | FileAttributes.System));
 
             if (parent is DirectoryInfo directory)
             {
                 try
                 {
-                    return directory.GetFileSystemInfos();
+                    return directory.GetFileSystemInfos(SearchPattern, SearchOption).Where(d => !d.Attributes.HasFlag(FileAttributes.Hidden | FileAttributes.System));
                 }
                 catch (Exception ex)
                 {

@@ -9,7 +9,10 @@
                        LastChildFill="False">
                 <Button Command="{local:ImportTagsCommand}"
                         CommandParameter="{Binding}"
-                        Content="导入" />
+                        Content="批量输入" />
+                <Button Command="{local:ExportTagsCommand}"
+                        CommandParameter="{Binding}"
+                        Content="导出名称" />
             </DockPanel>
             <ListBox ItemsSource="{Binding Collection}">
                 <ItemsControl.ItemTemplate>
@@ -25,12 +28,13 @@
                                     CommandParameter="{Binding}"
                                     Content="编辑"
                                     DockPanel.Dock="Right" />
-                            <Border Width="10"
+                            <ContentPresenter Content="{Binding}" />
+                            <!--<Border Width="10"
                                     Height="6"
                                     Background="{Binding Background}"
                                     DockPanel.Dock="Left" />
                             <TextBlock VerticalAlignment="Center"
-                                       Text="{Binding Name}" />
+                                       Text="{Binding Name}" />-->
                         </DockPanel>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>

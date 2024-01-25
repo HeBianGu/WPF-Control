@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
+using System.Windows.Threading;
 
 namespace H.Extensions.Tree
 {
@@ -29,7 +31,16 @@ namespace H.Extensions.Tree
                 if (isRecursion)
                 {
                     IEnumerable<TreeNodeBase<object>> childrenNodes = tree.GetTreeNodes(item);
-                    rootNode.Nodes = new ObservableCollection<TreeNodeBase<object>>(childrenNodes);
+                    rootNode.Nodes.Clear();
+                    foreach (var childrenNode in childrenNodes)
+                    {
+                        Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Input, new Action(() =>
+                                  {
+                                      rootNode.Nodes.Add(childrenNode);
+                                  }));
+
+                    }
+                    //rootNode.Nodes = new ObservableCollection<TreeNodeBase<object>>(childrenNodes);
                 }
                 yield return rootNode;
             }

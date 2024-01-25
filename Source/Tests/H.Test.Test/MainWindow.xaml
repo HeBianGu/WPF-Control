@@ -581,7 +581,7 @@
                                             PropertyName="Value1" />
                         </GroupBox>
                     </StackPanel>
-                    <DataGrid SelectedItem="{Binding SelectedTestViewModel}">
+                    <DataGrid SelectedItem="{Binding SelectedTestViewModel}" AutoGenerateColumns="False">
                         <Behaviors:Interaction.Behaviors>
                             <h:DataGridAutoColumnBehavior DataGridLength="*"
                                                           Type="{x:Type h:TestViewModel}"

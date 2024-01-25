@@ -4,12 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace H.Extensions.Common
 {
-    public static class FileExtension
+    public static partial class FileExtension
     {
         public const string ImageExtension = "jpg jpeg png gif pdf tga tif svg tga bmp dds eps webp";
         public const string VedioExtension = "wmv asf asx rm rmvb mpg mpeg mpe 3gp mov mp4 m4v avi dat mkv flv vob dat bdmv";
@@ -82,6 +83,205 @@ namespace H.Extensions.Common
                 }
             }
             return ss;
+        }
+    }
+
+
+    public static partial class FileExtension
+    {
+        public static void BackupDirectory(string sourceFolder, string destFolder, Action<string> logAction=null)
+        {
+            int totalFiles = 0;
+            int totalSubFolders = 0;
+            int totalSuccess = 0;
+            int totalFailed = 0;
+            int totalSkipped = 0;
+            if (!Directory.Exists(destFolder))
+                Directory.CreateDirectory(destFolder);
+            string[] files = null;
+            try
+            {
+                files = Directory.GetFiles(sourceFolder);
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                IocLog.Instance?.Error(ex);
+                logAction?.Invoke($"{sourceFolder}\r\nAccess Denied\r\n");
+            }
+            catch (Exception e)
+            {
+                IocLog.Instance?.Error(e);
+                logAction?.Invoke($"{sourceFolder}\r\n{e.Message}\r\n");
+            }
+
+            if (files != null && files.Length > 0)
+            {
+                totalFiles += files.Length;
+
+                foreach (string file in files)
+                {
+                    try
+                    {
+                        string name = Path.GetFileName(file);
+                        string dest = Path.Combine(destFolder, name);
+
+                        if (File.Exists(dest))
+                        {
+                            DateTime srcWriteTime = File.GetLastWriteTime(file);
+                            DateTime destWriteTime = File.GetLastWriteTime(dest);
+
+                            if (srcWriteTime > destWriteTime)
+                            {
+                                File.Copy(file, dest, true);
+
+                                FileInfo fileInfo = new FileInfo(file);
+                                double fileSize = (double)fileInfo.Length / 1048576.0;  // Convert to MB
+                                logAction?.Invoke($"{fileSize:000.000} MB - (updated) {file}");
+                                totalSuccess++;
+                            }
+                            else
+                            {
+                                totalSkipped++;
+                            }
+                        }
+                        else
+                        {
+                            File.Copy(file, dest, true);
+
+                            FileInfo fileInfo = new FileInfo(file);
+                            double fileSize = (double)fileInfo.Length / 1048576.0;  // Convert to MB
+                            logAction?.Invoke($"{fileSize:000.000} MB - {file}");
+
+                            totalSuccess++;
+                        }
+                    }
+                    catch (UnauthorizedAccessException)
+                    {
+                        logAction?.Invoke($"{file}\r\nAccess Denied\r\n");
+                        totalFailed++;
+                    }
+                    catch (Exception e)
+                    {
+                        totalFailed++;
+                        logAction?.Invoke($"{file}\r\n{e.Message}\r\n");
+                    }
+                }
+            }
+            string[] folders = null;
+
+            try
+            {
+                folders = Directory.GetDirectories(sourceFolder);
+            }
+            catch (UnauthorizedAccessException)
+            {
+                logAction?.Invoke($"{sourceFolder}\r\nAccess denied\r\n");
+
+            }
+            catch (Exception e)
+            {
+                logAction?.Invoke($"{sourceFolder}\r\nAccess {e.Message}\r\n");
+            }
+
+            if (folders != null && folders.Length > 0)
+            {
+                totalSubFolders += folders.Length;
+
+                foreach (string folder in folders)
+                {
+                    try
+                    {
+                        string name = Path.GetFileName(folder);
+                        string dest = Path.Combine(destFolder, name);
+                        BackupDirectory(folder, dest, logAction);
+                    }
+                    catch (UnauthorizedAccessException)
+                    {
+                        logAction?.Invoke($"{folder}\r\nAccess denied\r\n");
+                    }
+                    catch (Exception e)
+                    {
+                        logAction?.Invoke($"{sourceFolder}\r\nAccess {e.Message}\r\n");
+                    }
+                }
+            }
+        }
+
+        public static long GetDirectorySize(this DirectoryInfo dirInfo)
+        {
+            long size = 0;
+            FileInfo[] files;
+            try
+            {
+                files = dirInfo.GetFiles();
+            }
+            catch (UnauthorizedAccessException)
+            {
+                return 0;
+            }
+            catch (Exception e)
+            {
+                return 0;
+            }
+
+            foreach (FileInfo file in files)
+            {
+                try
+                {
+                    size += file.Length;
+                }
+                catch (UnauthorizedAccessException)
+                {
+                  
+                }
+                catch (Exception e)
+                {
+                   
+                }
+            }
+            DirectoryInfo[] subDirs;
+            try
+            {
+                subDirs = dirInfo.GetDirectories();
+            }
+            catch (UnauthorizedAccessException)
+            {
+                return size;
+            }
+            catch (Exception e)
+            {
+                return size;
+            }
+
+            foreach (DirectoryInfo subDir in subDirs)
+            {
+                size += GetDirectorySize(subDir);
+            }
+            return size;
+        }
+
+        public static string GetFileHashSHA256(this string filePath)
+        {
+            using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+            {
+                using (SHA256 sha256 = SHA256.Create())
+                {
+                    byte[] hashBytes = sha256.ComputeHash(fs);
+                    return BitConverter.ToString(hashBytes).Replace("-", "");
+                }
+            }
+        }
+
+        public static string GetFileHashMD5(this string filePath)
+        {
+            using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+            {
+                using (MD5 sha256 = MD5.Create())
+                {
+                    byte[] hashBytes = sha256.ComputeHash(fs);
+                    return BitConverter.ToString(hashBytes).Replace("-", "");
+                }
+            }
         }
     }
 }

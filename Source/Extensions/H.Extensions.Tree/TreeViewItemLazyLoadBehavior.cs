@@ -1,7 +1,12 @@
 ﻿using H.Providers.Mvvm;
 using Microsoft.Xaml.Behaviors;
+using System;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Threading;
 
 namespace H.Extensions.Tree
 {
@@ -37,8 +42,18 @@ namespace H.Extensions.Tree
                     if (node.Nodes.Count > 0)
                         continue;
 
-                    System.Collections.Generic.IEnumerable<TreeNodeBase<object>> chidren = this.Tree.GetTreeNodes(node.Model, false);
-                    node.Nodes = new ObservableCollection<TreeNodeBase<object>>(chidren);
+                    node.IsBuzy = true;
+                    System.Collections.Generic.IEnumerable<TreeNodeBase<object>> chidren = this.Tree.GetTreeNodes(node.Model, false).ToList();
+                    //node.Nodes = new ObservableCollection<TreeNodeBase<object>>(chidren);
+                    node.Nodes.Clear();
+                    foreach (var child in chidren)
+                    {
+                        Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Input, new Action(() =>
+                        {
+                            node.Nodes.Add(child);
+                        }));
+
+                    }
                     System.Diagnostics.Debug.WriteLine(node.Nodes.Count);
                     node.IsLoaded = true;
                 }
