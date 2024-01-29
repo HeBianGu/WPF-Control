@@ -45,9 +45,11 @@ namespace H.Controls.TagBox
         {
             var list = ToArray(value)?.ToList();
             var contain = list?.Contains(tag.Name) == true;
-            if (!contain)
+            if (contain)
                 return value;
-            list.Remove(tag.Name);
+            if (list == null)
+                return tag.Name;
+            list.Add(tag.Name);
             return string.Join(' ', list).Trim(' ');
         }
 

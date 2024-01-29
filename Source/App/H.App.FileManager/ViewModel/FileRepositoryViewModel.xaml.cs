@@ -260,11 +260,11 @@ namespace H.App.FileManager
             if (r != true)
                 return;
 
-            await IocMessage.Dialog.ShowForeach(() => this.Collection.FilterSource.Select(x => x.Model).Where(x => !File.Exists(x.Url)),
+            await IocMessage.Dialog.ShowWait(
                  x =>
                 {
-                    this.Delete(x).Wait();
-                    return Tuple.Create(true, x.Name);
+                    this.Collection.RemoveAll(x => !File.Exists(x.Model.Url));
+                    return true;
                 });
         }, x => this.Collection.FilterSource.Count > 0);
 
