@@ -28,7 +28,7 @@
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
             </Setter.Value>
         </Setter>
-        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListBox">

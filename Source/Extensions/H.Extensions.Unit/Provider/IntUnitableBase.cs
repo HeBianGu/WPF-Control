@@ -4,7 +4,7 @@ namespace H.Extensions.Unit
 {
     public abstract class IntUnitableBase : UnitableBase<int>
     {
-        protected override int ToValue(double value, int unit)
+        protected override int Parse(double value, int unit)
         {
             return (int)(value * unit);
         }

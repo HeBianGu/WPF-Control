@@ -32,7 +32,7 @@ namespace H.Extensions.Unit
             return true;
         }
 
-        public virtual T ToValue(string str)
+        public virtual T Parse(string str)
         {
             if (IsValid(str) == false)
                 return default;
@@ -65,12 +65,12 @@ namespace H.Extensions.Unit
             {
                 KeyValuePair<T, List<string>>? unit = _map.FirstOrDefault(x => x.Value.Contains(result[1], StringComparer.OrdinalIgnoreCase));
                 if (unit != null)
-                    return ToValue((double)t, unit.Value.Key);
+                    return Parse((double)t, unit.Value.Key);
             }
             return (T)Convert.ChangeType(t, typeof(T));
         }
 
-        protected abstract T ToValue(double value, T unit);
+        protected abstract T Parse(double value, T unit);
 
         public virtual string ToString(T value)
         {
@@ -92,7 +92,7 @@ namespace H.Extensions.Unit
 
         string IUnitable.ToString(object value) => ToString((T)value);
 
-        object IUnitable.ToValue(string str) => ToValue(str);
+        object IUnitable.Parse(string str) => Parse(str);
     }
 }
 

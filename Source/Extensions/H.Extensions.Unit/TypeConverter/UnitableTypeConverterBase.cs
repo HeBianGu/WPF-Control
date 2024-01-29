@@ -14,7 +14,7 @@ namespace H.Extensions.Unit
 
         public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
         {
-            return GetUnitable().ToValue(value?.ToString());
+            return GetUnitable().Parse(value?.ToString());
         }
 
         protected abstract IUnitable GetUnitable();

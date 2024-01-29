@@ -4,7 +4,7 @@ namespace H.Extensions.Unit
 {
     public abstract class LongUnitableBase : UnitableBase<long>
     {
-        protected override long ToValue(double value, long unit)
+        protected override long Parse(double value, long unit)
         {
             return (long)(value * unit);
         }

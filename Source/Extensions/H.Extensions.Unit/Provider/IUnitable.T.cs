@@ -4,7 +4,7 @@ namespace H.Extensions.Unit
     public interface IUnitable<T> where T : IComparable<T>
     {
         string ToString(T value);
-        T ToValue(string str);
+        T Parse(string str);
     }
 
 }

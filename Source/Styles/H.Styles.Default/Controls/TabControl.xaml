@@ -15,51 +15,52 @@
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
             </Setter.Value>
         </Setter>
-        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabControl}">
-                    <Grid x:Name="templateRoot"
-                          ClipToBounds="true"
-                          KeyboardNavigation.TabNavigation="Local"
-                          SnapsToDevicePixels="true">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition x:Name="ColumnDefinition0" />
-                            <ColumnDefinition x:Name="ColumnDefinition1"
-                                              Width="0" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition x:Name="RowDefinition0"
-                                           Height="Auto" />
-                            <RowDefinition x:Name="RowDefinition1"
-                                           Height="*" />
-                        </Grid.RowDefinitions>
-                        <ScrollViewer x:Name="headerPanel"
-                                      Margin="0,0,0,1"
-                                      VerticalScrollBarVisibility="Auto">
-                            <TabPanel Grid.Row="0"
-                                      Grid.Column="0"
-                                      Panel.ZIndex="1"
-                                      Background="Transparent"
-                                      IsItemsHost="true"
-                                      KeyboardNavigation.TabIndex="1" />
-                        </ScrollViewer>
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="2">
+                        <Grid ClipToBounds="true"
+                              KeyboardNavigation.TabNavigation="Local"
+                              SnapsToDevicePixels="true">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition x:Name="ColumnDefinition0" />
+                                <ColumnDefinition x:Name="ColumnDefinition1"
+                                                  Width="0" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition x:Name="RowDefinition0"
+                                               Height="Auto" />
+                                <RowDefinition x:Name="RowDefinition1"
+                                               Height="*" />
+                            </Grid.RowDefinitions>
+                            <ScrollViewer x:Name="headerPanel"
+                                          Margin="0,0,0,1"
+                                          VerticalScrollBarVisibility="Auto">
+                                <TabPanel Grid.Row="0"
+                                          Grid.Column="0"
+                                          Panel.ZIndex="1"
+                                          Background="Transparent"
+                                          IsItemsHost="true"
+                                          KeyboardNavigation.TabIndex="1" />
+                            </ScrollViewer>
 
-                        <Border x:Name="contentPanel"
-                                Grid.Row="1"
-                                Grid.Column="0"
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                KeyboardNavigation.DirectionalNavigation="Contained"
-                                KeyboardNavigation.TabIndex="2"
-                                KeyboardNavigation.TabNavigation="Local">
-                            <ContentPresenter x:Name="PART_SelectedContentHost"
-                                              Margin="{TemplateBinding Padding}"
-                                              ContentSource="SelectedContent"
-                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                        </Border>
-                    </Grid>
+                            <Border x:Name="contentPanel"
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    KeyboardNavigation.DirectionalNavigation="Contained"
+                                    KeyboardNavigation.TabIndex="2"
+                                    KeyboardNavigation.TabNavigation="Local">
+                                <ContentPresenter x:Name="PART_SelectedContentHost"
+                                                  Margin="{TemplateBinding Padding}"
+                                                  ContentSource="SelectedContent"
+                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                            </Border>
+                        </Grid>
+                    </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="TabStripPlacement" Value="Bottom">
                             <Setter TargetName="headerPanel" Property="Grid.Row" Value="1" />
@@ -90,9 +91,6 @@
                             <Setter TargetName="RowDefinition1" Property="Height" Value="0" />
                             <Setter TargetName="headerPanel" Property="Margin" Value="0,2,2,2" />
                         </Trigger>
-                        <!--<Trigger Property="IsEnabled" Value="false">
-                            <Setter TargetName="templateRoot" Property="TextElement.Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundDisabled}}" />
-                        </Trigger>-->
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -121,7 +119,7 @@
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
             </Setter.Value>
         </Setter>
-        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabItem}">

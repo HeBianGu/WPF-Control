@@ -4,7 +4,7 @@ namespace H.Extensions.Unit
 {
     public abstract class DoubleUnitableBase : UnitableBase<double>
     {
-        protected override double ToValue(double value, double unit)
+        protected override double Parse(double value, double unit)
         {
             return value * unit;
         }

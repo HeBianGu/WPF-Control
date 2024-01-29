@@ -8,7 +8,7 @@
     <ControlTemplate x:Key="ExpanderToggleButton"
                      TargetType="{x:Type ToggleButton}">
         <Border x:Name="Border"
-                BorderThickness="0,0,1,0"
+                BorderThickness="0"
                 CornerRadius="2,0,0,0">
             <Border.Background>
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />
@@ -97,7 +97,7 @@
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
             </Setter.Value>
         </Setter>
-        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Background">
             <Setter.Value>
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />

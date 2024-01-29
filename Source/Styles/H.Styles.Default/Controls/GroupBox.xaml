@@ -8,7 +8,7 @@
     <Style x:Key="{ComponentResourceKey ResourceId=S.GroupBox.Default,
                                         TypeInTargetAssembly={x:Type local:GroupBoxKeys}}"
            TargetType="GroupBox">
-        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Background">
             <Setter.Value>
                 <SolidColorBrush Color="Transparent" />
@@ -41,7 +41,7 @@
                                 Height="{DynamicResource {x:Static LayoutKeys.ItemHeight}}"
                                 Background="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionBackground)}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="1"
+                                BorderThickness="0"
                                 CornerRadius="2,2,0,0">
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -62,7 +62,7 @@
                         <Border Grid.Row="1"
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="1,0,1,1"
+                                BorderThickness="0"
                                 CornerRadius="0,0,2,2">
                             <ContentPresenter Margin="{TemplateBinding Padding}" />
                         </Border>
