@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Keith Barrett 2021 -->
+<units name="Metric">
+
+  <unit name="Units"                  shortname="1"       dimension="Dimensionless" display="Explicit" CommonCode="C62" />
+  <unit name="Metres"                 shortname="m"       dimension="Length" display="Standard" CommonCode="MTR" />
+  <unit name="SquareMetres"           shortname="m²"      dimension="Area"   display="Standard" CommonCode="MTK" />
+  <unit name="CubicMetres"            shortname="m³"      dimension="Volume" display="Standard" CommonCode="MTQ" />
+  <unit name="Kilograms"              shortname="kg"      dimension="Mass"   display="Standard" CommonCode="KGM" />
+  <unit name="Seconds"                shortname="s"       dimension="Time"   display="Standard" CommonCode="SEC" />
+  <unit name="Ampere"                 shortname="amp"     dimension="Current"   display="Standard" CommonCode="AMP" />
+  <unit name="DegreesKelvin"          shortname="K"       dimension="TemperatureChange"   display="Standard" CommonCode="KEL" />
+  <unit name="Mole"                   shortname="mol"     dimension="AmountOfSubstance"   display="Standard" CommonCode="C34" />
+  <unit name="Candela"                shortname="cd"      dimension="LuminousIntensity"   display="Standard" CommonCode="CDL" />
+  <unit name="Radians"                shortname="rad"     dimension="Angle"  display="Standard" CommonCode="C81" />
+  <unit name="Steradians"             shortname="sr"      dimension="SolidAngle"  display="Standard" CommonCode="D27" />
+
+  <unit name="MetresPerSecond"        shortname="m/s"     dimension="Velocity"      display="Standard" CommonCode="MTS" />
+  <unit name="MetresPerSecondSquared" shortname="m/s²"    dimension="Acceleration"  display="Standard" CommonCode="MSK" />
+  <unit name="KilogramMetresPerSecond" shortname="kg⋅m/s" dimension="Momentum"      display="Standard" CommonCode="B31" />
+  <unit name="KilogramsPerCubicMetre"  shortname="kg/m³"  dimension="Density"       display="Standard" CommonCode="KMQ" />
+  <unit name="KilogramsPerMole"       shortname="kg/mol"  dimension="MolarMass"     display="Standard" CommonCode="D74" />
+  <unit name="MolesPerCubicMetre"     shortname="mol/m3"  dimension="MolarConcentration" display="Standard" CommonCode="C36" />
+  <unit name="Newtons"                shortname="N"       dimension="Force"         display="Standard" CommonCode="NEW" />
+  <unit name="Joules"                 shortname="J"       dimension="Energy"        display="Standard" CommonCode="JOU" />
+  <unit name="Watts"                  shortname="W"       dimension="Power"         display="Standard" CommonCode="WTT" />
+  <unit name="Pascals"                shortname="Pa"      dimension="Pressure"      display="Standard" CommonCode="PAL" />
+  <unit name="Hertz"                  shortname="Hz"      dimension="Frequency"     display="Standard" CommonCode="HTZ" />
+  <unit name="KilogramsPerSecond"     shortname="kg/s"    dimension="MassFlowRate"  display="Standard" CommonCode="KGS" />
+  <unit name="SquareMetresPerSecond"  shortname="m²/s"    dimension="KinematicViscosity"  display="Standard" CommonCode="S4" />
+  <unit name="CubicMetresPerSecond"   shortname="m³/s"    dimension="VolumeFlowRate"  display="Standard" CommonCode="MQS" />
+  <unit name="Volts"                  shortname="volt"    dimension="ElectricPotential"  display="Standard" CommonCode="VLT" />
+  <unit name="Ohms"                   shortname="Ω"       dimension="Resistance"  display="Standard" CommonCode="OHM" />
+
+  <unit name="KilogramMetreSquared" shortname="kg⋅m²" dimension="MomentOfInertia" display="Standard" CommonCode="B32" />
+  <unit name="KilogramMetreSquaredPerSecond" shortname="kg⋅m²/s" dimension="AngularMomentum" display="Standard" CommonCode="B33" />
+
+  <unit name="NewtonsPerMetre"        shortname="N/m"     dimension="SurfaceTension" display="Standard" CommonCode="4P" />
+  <unit name="PascalSeconds"          shortname="Pa⋅s"     dimension="CoefficientOfViscosity" display="Standard" CommonCode="C65" />
+  <unit name="PerDegreeKelvin"        shortname="K⁻¹"     dimension="CoefficientOfThermalExpansion"  display="Standard" CommonCode="C91" />
+  <unit name="JoulesPerDegreeKelvin"  shortname="J/K"     dimension="ThermalCapacity"  display="Standard" CommonCode="JE" />
+  <unit name="JoulesPerKilogramPerDegreeKelvin"  shortname="J⋅kg⁻¹⋅K⁻¹"  dimension="SpecificHeat"  display="Standard" CommonCode="B11" />
+  <unit name="JoulesPerDegreeKelvinPerMole"  shortname="J⋅K⁻¹⋅mol⁻¹"  dimension="MolarSpecificHeat"  display="Standard" CommonCode="B16" />
+  <unit name="WattsPerMetrePerDegree" shortname="W⋅m⁻¹⋅K⁻¹"  dimension="ThermalConductivity"  display="Standard" CommonCode="D53" />
+  <unit name="OhmMetres"              shortname="Ω⋅m" dimension="Resistivity"  display="Standard" CommonCode="C61" />
+  <unit name="Lumen"                  shortname="lm"  dimension="LuminousFlux"   display="Standard" CommonCode="LUM" />
+  <unit name="Lux"                    shortname="lux" dimension="Illuminance"   display="Standard" CommonCode="LUX" />
+
+  <!-- Non Standard Units -->
+  <unit name="Percent"     shortname="%"  dimension="Dimensionless" factor="0.01" display="Explicit" CommonCode="P1" />
+  <unit name="Dozen"       shortname="doz"  dimension="Dimensionless" factor="12" display="Explicit" />
+  <unit name="Hundreds"    shortname="hundred"  dimension="Dimensionless" factor="100" display="Explicit" CommonCode="CEN" />
+  <unit name="Thousands"   shortname="thousand" dimension="Dimensionless" factor="1000" display="Explicit" CommonCode="MIL" />
+  <unit name="Millions"    shortname="million"  dimension="Dimensionless" factor="1000000" display="Explicit" CommonCode="MIO" />
+  <unit name="Billions"    shortname="billion"  dimension="Dimensionless" factor="1000000000" display="Explicit" CommonCode="BIL" />
+  <unit name="Trillions"   shortname="trillion" dimension="Dimensionless" factor="1000000000000" display="Explicit" CommonCode="TRL" />
+  
+  <unit name="Grams"       shortname="g"  dimension="Mass"   factor="0.001" display="Multi" CommonCode="GRM" />
+  <unit name="MilliGrams"  shortname="mg" dimension="Mass"   factor="0.000001" display="Multi" CommonCode="MGM" />
+  <unit name="MicroGrams"  shortname="μg" dimension="Mass"   factor="0.000000001" display="Multi" CommonCode="MC" />
+  <unit name="NanoGrams"   shortname="ng" dimension="Mass"   factor="0.000000000001" display="Multi" />
+  <unit name="Tonnes"      shortname="t"  dimension="Mass"   factor="1000.0" display="Multi" CommonCode="TNE" />
+  <unit name="Daltons"     shortname="Da" dimension="Mass"   factor="1.660539040E-27" display="Explicit" />
+  
+  <unit name="NanoMoles"   shortname="nmol" dimension="AmountOfSubstance"   factor="1e-9" display="Multi" />
+  
+  <unit name="Kilometres"  shortname="km" dimension="Length" factor="1000.0" display="Multi" CommonCode="KMT" />
+  <unit name="Centimetres" shortname="cm" dimension="Length" factor="0.01" display="Multi" CommonCode="CMT" />
+  <unit name="Millimetres" shortname="mm" dimension="Length" factor="0.001" display="Multi" CommonCode="MMT" />
+  <unit name="Micrometres" shortname="μ"  dimension="Length" factor="0.000001" display="Multi" CommonCode="4H" />
+  <unit name="Nanometres"  shortname="nm" dimension="Length" factor="0.000000001" display="Multi" CommonCode="C45" />
+  <unit name="Angstroms"   shortname="Å"  dimension="Length" factor="1e-10" display="Explicit" CommonCode="A11" />
+  <unit name="AstronomicalUnits" shortname="au" dimension="Length" factor="149597870700.0" display="Explicit" CommonCode="A12" />
+  
+  <unit name="SquareCentimetres" shortname="cm²" dimension="Area" factor="0.0001" display="Explicit" CommonCode="CMK" />
+  <unit name="Hectares" shortname="ha" dimension="Area" factor="10000.0" display="Multi" CommonCode="HAR" />
+  
+  <unit name="CubicCentimetres" shortname="cc" dimension="Volume" factor="1e-6" display="Explicit" CommonCode="CMQ" />
+  <unit name="Litres"           shortname="L"  dimension="Volume" factor="0.001" display="Explicit" CommonCode="LTR" />
+  
+  <unit name="CentimetersPerSecond" shortname="cm/s" dimension="Velocity" factor="0.01" display="Explicit" CommonCode="2M" />
+  <unit name="KilometresPerHour" shortname="kph" dimension="Velocity" factor="0.2777777777777778" display="Explicit" CommonCode="KMH" />
+  
+  <unit name="MillimetresOfMercury" shortname="mmHg" dimension="Pressure" factor="133.322368" display="Explicit" CommonCode="HN" />
+  <unit name="AccelerationOfGravity" shortname="g0" dimension="Acceleration"  factor="9.80665" display="Explicit" CommonCode="K40" />
+  <unit name="Colories"  shortname="cal" dimension="Energy" factor="4.184" display="Explicit" CommonCode="K53" />
+  <unit name="ElectronVolts" shortname="eV" dimension="Energy" factor="1.602176634E-19" display="Explicit" CommonCode="A53" />
+  <unit name="Kilowatts"  shortname="kW" dimension="Power" factor="1000.0" display="Multi" CommonCode="KWT" />
+  <unit name="KilowattHours"  shortname="kWh" dimension="Energy" factor="3.6e6" display="Explicit" CommonCode="KWH" />
+  <unit name="TonnesOfOilEquivalent"  shortname="toe" dimension="Energy" factor="41.868e9" display="Explicit" />
+  <unit name="DegreesCelsius" shortname="°C" dimension="TemperatureChange"   display="Explicit" CommonCode="CEL" />
+  <unit name="CaloriesPerDegreeKelvin"  shortname="cal/K" dimension="ThermalCapacity" factor="4.186" display="Explicit" />
+  <unit name="DynesPerCentimetre" shortname="dyne/cm" dimension="SurfaceTension" factor="0.001" display="Explicit" CommonCode="DX" />
+  <unit name="MilliSeconds" shortname="ms" dimension="Time" factor="0.001" display="Multi" CommonCode="C26" />
+  <unit name="SquareCentimetresPerSecond" shortname="cm²/s" dimension="KinematicViscosity" factor="0.0001" display="Explicit" CommonCode="M81"  />
+  <unit name="CubicCentimetresPerSecond" shortname="cc/s" dimension="VolumeFlowRate" factor="1e-6" display="Explicit" CommonCode="2J" />
+  <unit name="GramsPerMole"       shortname="gm/mol"  dimension="MolarMass"  factor="0.001" display="Explicit" CommonCode="A94" />
+  <unit name="MolesPerLitre"      shortname="mol/L"  dimension="MolarConcentration" factor="1000" display="Explicit" CommonCode="C38"  />
+
+  <unit name="Degrees" shortname="°"     dimension="Angle"  factor="0.01745329251994329576923690768489" display="Explicit" CommonCode="DD" />
+  <unit name="SquareDegrees" shortname="°²"     dimension="SolidAngle"  factor="3.0461741978670859934674354937889e-4" display="Explicit" />
+
+  <!-- Obsolete units still used in my Nelkon and Parker -->
+  <unit name="Dynes" shortname="dyn"       dimension="Force" factor="1e-5" display="Explicit" CommonCode="DU" />
+  <unit name="GramWeight" shortname="gm⋅wt"  dimension="Force" factor="0.0098066500286389" display="Explicit"  />
+  <unit name="KilogramWeight" shortname="kg⋅wt"  dimension="Force" factor="9.8066500286389" display="Explicit" CommonCode="B37"  />
+  <unit name="DynesPerSquareCentimetre" shortname="dyn/cm²" dimension="Pressure" factor="0.1" display="Explicit" CommonCode="D9"  />
+  <unit name="GramsPerCC"  shortname="gm/cc"  dimension="Density" factor="1000" display="Explicit" CommonCode="23"  />
+  <unit name="GramsPerLitre"  shortname="gm/Ltr"  dimension="Density" factor="1" display="Explicit" CommonCode="GL"  />
+  <unit name="MilligramsPerCC"  shortname="mg/cc"  dimension="Density" factor="1" display="Explicit"  />
+  <unit name="Ergs" shortname="erg" dimension="Energy" factor="1e-7" display="Explicit" CommonCode="A57" />
+  <unit name="Poises" shortname="P" dimension="CoefficientOfViscosity" factor="0.1" display="Explicit" CommonCode="89" />
+
+</units>

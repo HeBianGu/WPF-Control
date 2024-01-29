@@ -850,7 +850,7 @@
             <TabItem Header="Unit">
                 <StackPanel>
                     <StackPanel.DataContext>
-                        <h:Unit />
+                        <h:UnitTest />
                     </StackPanel.DataContext>
                     <TextBox Text="{Binding Byte, Converter={h:ByteSizeUnitableConverter}}">
                         <Behaviors:Interaction.Behaviors>
@@ -875,7 +875,6 @@
                     <TextBlock Margin="0,5"
                                Text="{Binding Weight}" />
 
-
                     <TextBox Text="{Binding Time, Converter={h:UnitableValueConverter UnitableType={x:Type h:TimeUnitable}}}">
                         <Behaviors:Interaction.Behaviors>
                             <h:TextBoxUpdateSourceOnKeyDownBebavior />
@@ -883,6 +882,23 @@
                     </TextBox>
                     <TextBlock Margin="0,5"
                                Text="{Binding Time}" />
+
+
+                    <TextBox Text="{Binding Lengh, Converter={h:UnitableValueConverter UnitableType={x:Type h:LengthUnitable}}}">
+                        <Behaviors:Interaction.Behaviors>
+                            <h:TextBoxUpdateSourceOnKeyDownBebavior />
+                        </Behaviors:Interaction.Behaviors>
+                    </TextBox>
+                    <TextBlock Margin="0,5"
+                               Text="{Binding Lengh}" />
+
+                    <TextBox Text="{Binding Lengh, Converter={h:UnitableValueConverter UnitableType={x:Type h:FrequencyUnitable}}}">
+                        <Behaviors:Interaction.Behaviors>
+                            <h:TextBoxUpdateSourceOnKeyDownBebavior />
+                        </Behaviors:Interaction.Behaviors>
+                    </TextBox>
+                    <TextBlock Margin="0,5"
+                               Text="{Binding Lengh}" />
                 </StackPanel>
             </TabItem>
             <TabItem Header="QRCoderBox">

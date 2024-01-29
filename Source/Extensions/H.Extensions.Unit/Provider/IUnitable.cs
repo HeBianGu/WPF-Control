@@ -7,7 +7,6 @@ namespace H.Extensions.Unit
     {
         string ToString(object value);
         object Parse(string str);
-        int Digits { get; set; }
     }
 }
 

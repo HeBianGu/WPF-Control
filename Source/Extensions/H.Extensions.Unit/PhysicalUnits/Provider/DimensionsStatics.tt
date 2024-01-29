@@ -1,0 +1,54 @@
+﻿<#@ include file="GenerateTypes.t4"#>  
+<#
+   LoadDimensionInfo("Dimensions.xml"); 
+#>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace H.Extensions.Unit
+{
+	// Generated from Dimensions.xml
+    public partial class Dimensions
+    {
+<#
+	foreach(var di in dimensionList)
+	{
+		if(di.name == "AbsoluteTemperature")
+			continue;
+#>
+        public static readonly Dimensions <#= di.name #> = <#= di.equals ?? "null" #>;
+<#
+	}	// end for ti
+#>
+
+        public static readonly Dimensions[] allDimensions = new Dimensions[]
+		{
+<#
+	foreach(var di in dimensionList)
+	{
+#>
+			<#= di.name #>,
+<#
+	}	// end for di
+#>
+		};
+
+		public static readonly string[] DimensionNames = new string[]
+		{
+<#
+	foreach(var di in dimensionList)
+	{
+#>
+			"<#= di.name #>",
+<#
+	}	// end for di
+#>
+		};
+
+    }
+}
+<#+
+#>

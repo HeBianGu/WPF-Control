@@ -1,0 +1,4 @@
+﻿<#@ include file="GenerateTypes.t4"#>  
+<#
+   GenerateUnits("TimeUnits.xml"); 
+#>

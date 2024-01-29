@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Keith Barrett 2021 -->
+<units name="British">
+
+  <constant name="poundsToKilogrammes" value="0.45359237" />
+  <constant name="feetToMetres" value="0.3048" />
+  <constant name="squareFeetToSquareMetres" value="(feetToMetres * feetToMetres)" />
+  <constant name="cubicFeetToCubicMetres" value="(feetToMetres * feetToMetres * feetToMetres)" />
+  <constant name="litresToCubicMetres" value="0.001" />
+
+  <!-- Mass -->
+  <unit name="LongTons"       shortname="ton" dimension="Mass" factor="poundsToKilogrammes*2240.0" display="Multi" CommonCode="LTN" />
+  <unit name="HundredWeight"  shortname="cwt" dimension="Mass" factor="poundsToKilogrammes*112.0"  display="Multi" CommonCode="CWI" />
+  <unit name="Stones"         shortname="st" dimension="Mass" factor="poundsToKilogrammes*14.0" display="Multi" CommonCode="STI" />
+  <unit name="Pounds"         shortname="lb" dimension="Mass" factor="poundsToKilogrammes" display="Standard" CommonCode="LBR" />
+  <unit name="Ounces"         shortname="oz" dimension="Mass" factor="poundsToKilogrammes/16.0" display="Multi" CommonCode="ONZ" />
+  <unit name="Dram"           shortname="dr" dimension="Mass" factor="0.00177185" display="Explicit" />
+  <unit name="Grain"          shortname="gr" dimension="Mass" factor="6.47989e-5" display="Explicit" CommonCode="GRN" />
+    
+  <!-- Length -->
+  <unit name="Miles"  shortname="mi" dimension="Length" factor="(feetToMetres*5280.0)" display="Multi" CommonCode="SMI" />
+  <unit name="Yards"  shortname="yd" dimension="Length" factor="(feetToMetres*3.0)" display="Multi" CommonCode="YRD" />
+  <unit name="Feet"   shortname="ft" dimension="Length" factor="feetToMetres" display="Standard" CommonCode="FOT" /> 
+  <unit name="Inches" shortname="in" dimension="Length" factor="(feetToMetres/12.0)" display="Multi" CommonCode="INH" />
+  <unit name="NauticalMiles" shortname="nmi" dimension="Length" factor="1852" display="Explicit" CommonCode="NMI" />
+  <unit name="Furlongs" shortname="fur" dimension="Length" factor="201.168" display="Explicit" CommonCode="M50" />
+  <unit name="Rods" shortname="rd" dimension="Length" factor="5.029" display="Explicit" />
+  <unit name="Fathoms" shortname="fth" dimension="Length" factor="1.8288" display="Explicit" CommonCode="AK" />
+     
+  <!-- Time -->
+  <unit name="Fortnights"   shortname="fn" dimension="Time" factor="3600.0*24.0*14.0" display="Explicit" />
+
+  <!-- Area -->
+  <unit name="SquareFeet" shortname="ft²" dimension="Area" factor="squareFeetToSquareMetres" display="Standard" CommonCode="FTK" />
+  <unit name="SquareMiles" shortname="mi²" dimension="Area" factor="2.788e+7*squareFeetToSquareMetres" display="Multi" CommonCode="MIK" />
+  <unit name="Acres" shortname="acre" dimension="Area" factor="43560*squareFeetToSquareMetres" display="Multi" CommonCode="ACR" />
+  <unit name="SquareYards" shortname="yd²" dimension="Area" factor="9*squareFeetToSquareMetres" display="Explicit" CommonCode="YDK" />
+  <unit name="SquareInches" shortname="in²" dimension="Area" factor="0.0069*squareFeetToSquareMetres" display="Explicit" CommonCode="INK" />
+  <unit name="SquareRods" shortname="rd²" dimension="Area" factor="272.25*squareFeetToSquareMetres" display="Explicit" />
+    
+  <!-- Volume -->
+  <unit name="CubicFeet" shortname="ft³" dimension="Volume" factor="cubicFeetToCubicMetres" display="Standard" CommonCode="FTQ" />
+  <unit name="CubicYards" shortname="yd³" dimension="Volume" factor="27*cubicFeetToCubicMetres" display="Standard" CommonCode="YDQ" />
+  <unit name="CubicInches" shortname="in³" dimension="Volume" factor="0.00058*cubicFeetToCubicMetres" display="Multi" CommonCode="INQ" />
+  <!--  British liquid and dry measures -->
+  <unit name="Gallons" shortname="gal" dimension="Volume" factor="4.54609*litresToCubicMetres" display="Multi" CommonCode="GLI" />
+  <unit name="Quarts" shortname="qt" dimension="Volume" factor="1.136*litresToCubicMetres" display="Multi" CommonCode="QTI" />
+  <unit name="Pints" shortname="pt" dimension="Volume" factor="0.568261*litresToCubicMetres" display="Multi" CommonCode="PTI" />
+  <unit name="FluidOunces" shortname="floz" dimension="Volume" factor="0.0284131*litresToCubicMetres" display="Explicit" CommonCode="OZI" />
+  <unit name="FluidDrams" shortname="fldr" dimension="Volume" factor="0.00355163*litresToCubicMetres" display="Explicit" />
+  
+  <unit name="DegreesFahrenheit" shortname="°F" dimension="TemperatureChange" factor="5.0/9.0" display="Standard" CommonCode="FAH" />
+  
+  <!--
+  acre-foot	ac ft	43,560 cubic feet, or 1,613 cubic yards	1,233 cubic metres
+  board foot	bd ft	144 cubic inches, or 1/12 cubic foot	2.36 litresToCubicMetres
+  cord	cd	128 cubic feet	3.62 cubic metres
+  bushel	bu	4 pecks	0.036 cubic metre
+  peck	pk	2 gallons	0.0091 cubic metre
+  gill	gi	5 fluid ounces	142.066 cubic centimetres
+  minim	min	1/60 fluid dram	0.059194 cubic centimetre
+-->
+  
+  <unit name="PoundsPerCubicInch" shortname="lb/in³" dimension="Density" factor="27679.9047" display="Explicit" CommonCode="LA" />
+
+  <unit name="MilesPerHour" shortname="mph" dimension="Velocity" factor="1.0/2.23694" display="Explicit" CommonCode="HM" />
+  <unit name="FeetPerSecond" shortname="ft/s" dimension="Velocity" factor="0.3048" display="Explicit" CommonCode="FS" />
+  <unit name="FeetPerSecondSquared" shortname="ft/s²" dimension="Acceleration" factor="0.3048" display="Explicit" CommonCode="A73" />
+  <unit name="PoundsWeight" shortname="lb⋅wt" dimension="Force" factor="4.4482216282509" display="Explicit" />
+  <unit name="PoundsForce" shortname="lbf" dimension="Force" factor="4.4482216282509" display="Explicit" CommonCode="C78" />
+  <unit name="PoundFootSquared" shortname="lb⋅ft²" dimension="MomentOfInertia" factor="0.0421401101" display="Explicit" CommonCode="K65" />
+  <unit name="PoundFootSquaredPerSecond" shortname="lb⋅ft²/s" dimension="AngularMomentum" factor="0.0421401101" display="Explicit" />
+
+  <unit name="FootCandles" shortname="lm/ft²" dimension="Illuminance" factor="10.76" display="Explicit" CommonCode="P25" />
+
+</units>

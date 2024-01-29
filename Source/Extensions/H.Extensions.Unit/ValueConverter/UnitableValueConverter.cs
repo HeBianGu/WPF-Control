@@ -10,7 +10,9 @@ namespace H.Extensions.Unit
         protected override IUnitable GetUnitable()
         {
             var result = (IUnitable)Activator.CreateInstance(UnitableType);
-            result.Digits = this.Digits;
+
+            if(result is IDigits digits)
+                digits.Digits = this.Digits;
             return result;
         }
     }

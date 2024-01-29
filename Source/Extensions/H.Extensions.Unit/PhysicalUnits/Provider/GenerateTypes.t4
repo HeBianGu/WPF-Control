@@ -1,0 +1,715 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Xml" #>
+<#@ assembly name="System.Xml"#>
+<#@ output extension=".cs" #>
+<#+
+	// Classes to model the types to generate
+	string className;
+	string nameSpace;
+
+    public class ConstantInfo 
+	{
+		public string name;
+		public string value;
+	};
+	List<ConstantInfo> constantList = new List<ConstantInfo>();
+
+	public class DimensionInfo 
+	{
+		public string name;
+		public string note;
+		public string equals;
+		public List<OperatorInfo> operators = new List<OperatorInfo>();
+		public string square;
+		public string cube;
+	};
+
+	List<DimensionInfo> dimensionList = new List<DimensionInfo>();
+	Dictionary<string,DimensionInfo> dimensionDict = new Dictionary<string,DimensionInfo>();
+
+    public class UnitInfo
+    {
+        public string longName;
+        public string shortName;
+		public string CommonCode;
+		public string dimension;
+		public string factor;
+		public string displayOption;
+    };
+
+	public class ConversionInfo
+	{
+		public string from;
+	};
+
+	public class OperatorInfo
+	{
+		public string val;
+		public string op;	// '*' or '/'
+		public string by;
+		public string gives;
+	};
+
+	public class PowersInfo
+	{
+		public string SquareName;
+		public string CubeName;
+	};
+
+	List<UnitInfo> unitInfoList = new List<UnitInfo>();
+
+	private DimensionInfo GetDimensionInfo(string name)
+	{
+        DimensionInfo dimInfo = null;
+        if( !dimensionDict.TryGetValue(name, out dimInfo) )
+        {
+			dimInfo = new DimensionInfo(){
+				name = name,
+				};
+			dimensionList.Add(dimInfo);
+			dimensionDict[name] = dimInfo;
+		}
+		return dimInfo;
+	}
+
+	private void LoadDimensionInfo(string file)
+	{
+		// Open the prototype document.
+		XmlDocument doc = new XmlDocument();
+		string path = this.Host.ResolvePath(file);
+		doc.Load(path);
+		// Inspect all the nodes in the document.
+
+		foreach (XmlNode node in doc.SelectNodes("//dimensions/dimension"))
+		{
+		    string name = node.Attributes["name"].Value;
+			DimensionInfo dimInfo = GetDimensionInfo(name);
+			if(node.Attributes["note"] != null)
+				dimInfo.note  = node.Attributes["note"].Value;
+		    string equals = node.Attributes["equals"].Value;
+			dimInfo.equals = equals;
+			AddOperators(name,equals);
+			foreach(XmlNode andNode in node.SelectNodes("And"))
+			{
+				equals = andNode.Attributes["equals"].Value;
+				AddOperators(name,equals);
+			}
+		}
+	}
+
+	private void AddOperators(string dimension,string equation)
+	{
+        string[] strings = equation.Split(new char[] {' '});
+        if( strings.Length >= 3 )
+        {
+            if (strings[0] == "new")
+                return;
+            string lhs = strings[0];
+            string op = strings[1];
+            string rhs = strings[2];
+			AddOperator(dimension, lhs, op, rhs);
+			// do the conjugations:
+			switch( op )
+			{
+			case "*":
+				if( rhs != lhs )
+				{
+					AddOperator(dimension, rhs, op, lhs);
+					AddOperator(rhs, dimension, "/", lhs);
+				}
+				AddOperator(lhs, dimension, "/", rhs);
+				break;
+			case "/":
+				AddOperator(lhs, dimension, "*", rhs);
+				AddOperator(lhs, rhs, "*", dimension);
+				AddOperator(rhs, lhs, "/", dimension);
+				break;
+			}
+        }
+	}
+
+	private void AddOperator(string dimension, string lhs, string op, string rhs)
+	{
+        DimensionInfo dim = GetDimensionInfo(lhs);
+        if( dim != null )
+        {
+            dim.operators.Add(new OperatorInfo() { val = lhs, op = op, by = rhs, gives = dimension });
+			if(op == "*")
+			{
+				if(lhs == rhs)
+					dim.square = dimension;
+				else
+				{
+					DimensionInfo dim2 = GetDimensionInfo(rhs);
+					if( dim2 != null )
+					{
+						if(dim2.square == lhs)
+							dim2.cube = dimension;
+					}
+				}
+			}
+			else if(op == "/" && lhs == "Dimensionless")
+			{
+				// add extra operator to handle divisions
+				DimensionInfo dim3 = GetDimensionInfo(rhs);
+				dim3.operators.Add(new OperatorInfo() { val = "double", op = op, by = rhs, gives = dimension });
+			}
+        }
+	}
+
+	private void LoadUnitsInfo(string file)
+	{
+		// Open the prototype document.
+		XmlDocument doc = new XmlDocument();
+		string path = this.Host.ResolvePath(file);
+		doc.Load(path);
+		// Inspect all the nodes in the document.
+
+		className = doc.SelectSingleNode("//units").Attributes["name"].Value;
+		XmlAttribute nameSpaceAttr = doc.SelectSingleNode("//units").Attributes["ns"];
+		if( nameSpaceAttr != null)
+			nameSpace = nameSpaceAttr.Value;
+		if(string.IsNullOrEmpty(nameSpace))
+			nameSpace = className;
+
+		foreach (XmlNode node in doc.SelectNodes("//units/constant"))
+		{
+		    string name = node.Attributes["name"].Value;
+		    string value = node.Attributes["value"].Value;
+			ConstantInfo constInfo = new ConstantInfo(){
+				name = name,
+				value = value
+				};
+			constantList.Add(constInfo);
+		}
+
+		foreach (XmlNode node in doc.SelectNodes("//units/unit"))
+		{
+		    string longName = node.Attributes["name"].Value;
+		    string shortName = node.Attributes["shortname"].Value;
+		    string dimension = node.Attributes["dimension"].Value;
+			XmlAttribute factorAttr = node.Attributes["factor"];
+		    string factor = (factorAttr != null) ? factorAttr.Value : "1.0";
+
+			XmlAttribute CommonCodeAttr = node.Attributes["CommonCode"];
+		    string CommonCode = CommonCodeAttr != null ? CommonCodeAttr.Value : shortName;
+
+			XmlAttribute displayAttr = node.Attributes["display"];
+			string displayOpt = displayAttr != null ? displayAttr.Value : "Explicit";
+
+//			XmlAttribute defaultAttr = node.Attributes["default"];
+//			string isDefault = defaultAttr != null ? defaultAttr.Value : "false";
+//			XmlAttribute dontDisplayAttr = node.Attributes["dontDisplay"];
+//			string dontDisplay = dontDisplayAttr != null ? dontDisplayAttr.Value : "false";
+
+			UnitInfo typeInfo = new UnitInfo(){
+				longName = longName,
+				shortName = shortName,
+				CommonCode = CommonCode,
+				dimension = dimension,
+				factor = factor,
+//				isDefault=isDefault,
+//				dontDisplay=dontDisplay
+				displayOption= displayOpt
+				};
+			unitInfoList.Add(typeInfo);
+		}
+
+	}
+
+	private void GenerateQuantities(string file)
+	{
+		LoadDimensionInfo(file);
+		WriteQuantities();
+	}
+
+	private void WriteQuantities()
+	{
+#>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Runtime.CompilerServices;
+
+namespace H.Extensions.Unit
+{
+	// Generated from Dimensions.xml
+<#+
+	foreach(var di in dimensionList)
+	{
+		if(di.name == "AbsoluteTemperature")
+			continue;
+		WriteQuantity(di);
+	}	// end for di
+#>
+    public readonly partial struct PhysicalQuantity : IPhysicalQuantity
+    {
+<#+
+	foreach(var di in dimensionList)
+	{
+#>
+        public static implicit operator <#= di.name #>(PhysicalQuantity q) { return new <#= di.name #>(q); }
+<#+
+	}	// end for di
+#>
+    }
+}
+<#+
+	}
+
+	private void WriteQuantity(DimensionInfo di)
+	{
+		if(!string.IsNullOrEmpty(di.note))
+		{
+		   WriteLine("\t/// <summary>");
+		   WriteLine("\t/// {0}", di.note);
+		   WriteLine("\t/// </summary>");
+		}
+#>
+	public readonly partial struct <#= di.name #>: IPhysicalQuantity
+    {
+        public readonly double Value { get; init; }
+		public readonly Dimensions Dimensions { get { return Dimensions.<#= di.name #>; } }
+
+ 		[MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        public <#= di.name #>(double v)
+        {
+            this.Value = v;
+        }
+
+ 		[MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        public <#= di.name #>(PhysicalQuantity q)
+        {
+			if(q.Dimensions != Dimensions.<#= di.name #>)
+				throw new Exception("Invalid conversion from PhysicalQuantity to <#= di.name #>");
+            this.Value = q.Value;
+        }
+		
+		#region String conversion methods
+        public override string ToString()
+        {
+            return UnitsSystem.ToString(this, UnitsSystem.FormatOption.BestFit);
+        }
+
+        public string ToString(UnitsSystem.FormatOption option)
+        {
+            return UnitsSystem.ToString(this, option);
+        }
+
+		public string ToString(UnitsSystem system, UnitsSystem.FormatOption option)
+		{
+            return UnitsSystem.ToString(this, system, option);
+		}
+
+        public string ToString(params Unit[] units)
+        {
+            return UnitsSystem.ToString(this, units);
+        }
+		
+        public string ToString(int precision, params Unit[] units)
+        {
+            return UnitsSystem.ToString(this, precision, units);
+        }
+		
+		public static <#= di.name #> Parse(string s)
+		{
+		     <#= di.name #> q = UnitsSystem.Parse(s);
+			 return q;
+		}
+
+		public static <#= di.name #> Parse(string s, UnitsSystem system)
+		{
+		     <#= di.name #> q = UnitsSystem.Parse(s, system);
+			 return q;
+		}
+
+		public static bool TryParse(string s, out <#= di.name #> q)
+		{
+			PhysicalQuantity qty;
+		    bool retVal = UnitsSystem.TryParse(s, out qty);
+			q = retVal ? qty : new <#= di.name #>(0);
+			return retVal;
+		}
+
+		public static bool TryParse(string s, UnitsSystem system, out <#= di.name #> q)
+		{
+			PhysicalQuantity qty;
+		    bool retVal = UnitsSystem.TryParse(s, system, out qty);
+			q = retVal ? qty : new <#= di.name #>(0);
+			return retVal;
+		}
+		#endregion
+
+		#region Comparison Operators
+
+		public static int Compare(<#= di.name #> v1, <#= di.name #> v2)
+        {
+            double d1 = v1.Value;
+            double d2 = v2.Value;
+            if (d1 < d2)
+                return -1;
+            else if (d1 > d2)
+                return 1;
+            else
+                return 0;
+        }
+
+		public override bool Equals(object obj)
+        {
+            if (obj != null && obj is IPhysicalQuantity)
+            {
+                PhysicalQuantity pq = new PhysicalQuantity(this);
+                return PhysicalQuantity.Compare(pq, obj as IPhysicalQuantity) == 0;
+            }
+            else
+                return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return (int)Value;
+        }
+
+ 		[MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        public static bool operator ==(<#= di.name #> v1, <#= di.name #> v2)
+        {
+            return Compare(v1, v2) == 0;
+        }
+
+ 		[MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        public static bool operator !=(<#= di.name #> v1, <#= di.name #> v2)
+        {
+            return Compare(v1, v2) != 0;
+        }
+
+ 		[MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        public static bool operator >(<#= di.name #> v1, <#= di.name #> v2)
+        {
+            return Compare(v1, v2) > 0;
+        }
+
+ 		[MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        public static bool operator >=(<#= di.name #> v1, <#= di.name #> v2)
+        {
+            return Compare(v1, v2) >= 0;
+        }
+
+ 		[MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        public static bool operator <=(<#= di.name #> v1, <#= di.name #> v2)
+        {
+            return Compare(v1, v2) <= 0;
+        }
+
+ 		[MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        public static bool operator <(<#= di.name #> v1, <#= di.name #> v2)
+        {
+            return Compare(v1, v2) < 0;
+        }
+
+		#endregion
+
+		#region Maths Operators
+
+ 		[MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        public static <#= di.name #> operator+(<#= di.name #> v1, <#= di.name #> v2)
+        {
+            return new <#= di.name #>(v1.Value + v2.Value);
+        }
+
+ 		[MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        public static <#= di.name #> operator-(<#= di.name #> v1, <#= di.name #> v2)
+        {
+            return new <#= di.name #>(v1.Value - v2.Value);
+        }
+
+ 		[MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        public static <#= di.name #> operator-(<#= di.name #> v)
+        {
+            return new <#= di.name #>(-v.Value);
+        }
+
+ 		[MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        public static <#= di.name #> operator*(<#= di.name #> v1, int v2)
+        {
+            return new <#= di.name #>(v1.Value * (double)v2);
+        }
+
+ 		[MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        public static <#= di.name #> operator*(<#= di.name #> v1, double v2)
+        {
+            return new <#= di.name #>(v1.Value * v2);
+        }
+
+ 		[MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        public static <#= di.name #> operator*(double v1, <#= di.name #> v2)
+        {
+            return new <#= di.name #>(v1 * v2.Value);
+        }
+
+ 		[MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        public static <#= di.name #> operator*(<#= di.name #> v1, Dimensionless v2)
+        {
+            return new <#= di.name #>(v1.Value * v2.Value);
+        }
+
+ 		[MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        public static <#= di.name #> operator/(<#= di.name #> v1, int v2)
+        {
+            return new <#= di.name #>(v1.Value / (double)v2);
+        }
+
+ 		[MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+		public static <#= di.name #> operator/(<#= di.name #> v1, double v2)
+        {
+            return new <#= di.name #>(v1.Value / v2);
+        }
+
+ 		[MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        public static <#= di.name #> operator/(<#= di.name #> v1, Dimensionless v2)
+        {
+            return new <#= di.name #>(v1.Value / v2.Value);
+        }
+
+<#+
+	if( di.name != "Dimensionless")
+	{
+#>
+ 		[MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        public static Dimensionless operator/(<#= di.name #> v1, <#= di.name #> v2)
+        {
+            return new Dimensionless(v1.Value / v2.Value);
+        }
+<#+
+	}
+#>
+
+#if PREFER_RUNTIME_CHECKS
+ 		[MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+		public static PhysicalQuantity operator *(<#= di.name #> v1, IPhysicalQuantity v2)
+        {
+            return new PhysicalQuantity(v1.Value * v2.Value, v1.Dimensions * v2.Dimensions);
+        }
+
+ 		[MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        public static PhysicalQuantity operator /(<#= di.name #> v1, IPhysicalQuantity v2)
+        {
+            return new PhysicalQuantity(v1.Value / v2.Value, v1.Dimensions / v2.Dimensions);
+        }
+#endif
+
+<#+
+	foreach(OperatorInfo opInfo in di.operators)
+	{
+#>
+		// <#= opInfo.val #> <#= opInfo.op #> by <#= opInfo.by #> gives <#= opInfo.gives #> 
+ 		[MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        public static <#= opInfo.gives #> operator<#= opInfo.op #>(<#= opInfo.val #> v1, <#= opInfo.by #> v2)
+        {
+<#+
+	if(opInfo.val == "double")
+	{
+#>
+            return new <#= opInfo.gives #>(v1 <#= opInfo.op #> v2.Value);
+<#+
+	}
+	else
+	{
+#>
+            return new <#= opInfo.gives #>(v1.Value <#= opInfo.op #> v2.Value);
+<#+
+	} // end else
+#>
+        }
+<#+
+	} // end foreach
+#>
+	#endregion
+<#+
+	if(!string.IsNullOrEmpty(di.square) || !string.IsNullOrEmpty(di.cube))
+	{
+#>
+	#region powers
+<#+
+	} // end if
+#>
+<#+
+	if(!string.IsNullOrEmpty(di.square))
+	{
+#>
+        public <#= di.square #> Squared()
+        {
+            return new <#= di.square #>(this.Value * this.Value);
+        }
+<#+
+	} // end if
+#>
+<#+
+	if(!string.IsNullOrEmpty(di.cube))
+	{
+#>
+        public <#= di.cube #> Cubed()
+        {
+            return new <#= di.cube #>(this.Value * this.Value * this.Value);
+        }
+<#+
+	} // end if
+#>
+<#+
+	if(!string.IsNullOrEmpty(di.square) || !string.IsNullOrEmpty(di.cube))
+	{
+#>
+	#endregion
+<#+
+	} // end if
+#>
+
+    }
+
+<#+
+	} // end of WriteInterface
+
+#>
+<#+
+	private void GenerateUnits(string file)
+	{
+		LoadUnitsInfo(file);
+		WriteUnits();
+	}
+
+	private void WriteUnits()
+	{
+#>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace H.Extensions.Unit.<#= nameSpace #>
+{
+    public partial class <#= className #>Units: UnitsSystem
+    {
+        public override string Name => "<#= className #>";
+		public static readonly <#= className #>Units System = new  <#= className #>Units();
+<#+
+	foreach(var c in constantList)
+	{
+#>
+		public static readonly double <#= c.name #> = <#= c.value #>;
+<#+
+	}	// end for c
+	WriteLine("");
+#>
+
+<#+
+	foreach(var ui in unitInfoList)
+	{
+#>
+		public static readonly Unit <#= ui.longName #> = new Unit(System, "<#= ui.longName #>", "<#= ui.shortName #>", "<#= ui.CommonCode #>", Dimensions.<#= ui.dimension #>, <#= ui.factor #>, Unit.DisplayOption.<#= ui.displayOption #>);
+<#+
+	}	// end for ui
+#>
+
+        private static readonly Unit[] allUnits = new Unit[]
+		{
+<#+
+	foreach(var ui in unitInfoList)
+	{
+#>
+			<#= ui.longName #>,
+<#+
+	}	// end for ui
+#>
+		};
+        public override Unit[] GetAllUnits() { return allUnits; }
+
+		private static readonly Unit[] displayUnits = new Unit[]
+		{
+<#+
+	foreach(var ui in unitInfoList)
+	{
+	    if(ui.displayOption == "Standard" || ui.displayOption == "Multi")
+		{
+#>
+			<#= ui.longName #>,
+<#+
+		}
+	}	// end for ui
+#>
+		};
+        protected override Unit[] GetDisplayUnits() { return displayUnits; }
+
+		private static readonly Unit[] defaultUnits = new Unit[]
+		{
+<#+
+	foreach(var ui in unitInfoList)
+	{
+	    if(ui.displayOption == "Standard")
+		{
+#>
+			<#= ui.longName #>,
+<#+
+		}
+	}	// end for ui
+#>
+		};
+        protected override Unit[] GetDefaultUnits() { return defaultUnits; }
+
+    } // end of <#= className #>Units
+
+	public static class <#= className #>UnitsExtensions
+    {
+<#+
+	foreach(var ui in unitInfoList)
+	{
+#>
+        public static <#= ui.dimension #> <#= ui.longName #>(this int v)   {  return ((double)v).<#= ui.longName #>();   }
+        public static <#= ui.dimension #> <#= ui.longName #>(this double v)
+		{
+<#+
+	if(ui.factor != "1.0")
+	{
+#>
+			return new <#= ui.dimension #>(<#= className #>Units.<#= ui.longName #>.ConvertValueToSI(v));
+<#+
+	}
+	else
+	{
+#>
+			return new <#= ui.dimension #>(v);
+<#+
+	}	// end if
+#>
+	    }
+        public static double In<#= ui.longName #>(this <#= ui.dimension #> v)
+		{
+<#+
+	if(ui.factor != "1.0")
+	{
+#>
+			return <#= className #>Units.<#= ui.longName #>.ConvertValueFromSI((IPhysicalQuantity)v);
+<#+
+	}
+	else
+	{
+#>
+			return v.Value;
+<#+
+	}	// end if
+#>
+	    }
+<#+
+	}	// end for ui
+#>
+	}
+}
+<#+
+	} // end of WriteUnits
+#>

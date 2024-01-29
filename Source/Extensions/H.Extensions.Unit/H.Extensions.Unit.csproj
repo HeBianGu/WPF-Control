@@ -3,4 +3,65 @@
     <ProjectReference Include="..\..\Providers\H.Providers.Mvvm\H.Providers.Mvvm.csproj" />
     <ProjectReference Include="..\H.Extensions.ValueConverter\H.Extensions.ValueConverter.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <None Update="PhysicalUnits\Provider\BritishUnits.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BritishUnits.cs</LastGenOutput>
+    </None>
+    <None Update="PhysicalUnits\Provider\DimensionsStatics.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DimensionsStatics.cs</LastGenOutput>
+    </None>
+    <None Update="PhysicalUnits\Provider\MetricUnits.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MetricUnits.cs</LastGenOutput>
+    </None>
+    <None Update="PhysicalUnits\Provider\Quantities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Quantities.cs</LastGenOutput>
+    </None>
+    <None Update="PhysicalUnits\Provider\TimeUnits.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TimeUnits.cs</LastGenOutput>
+    </None>
+    <None Update="PhysicalUnits\Provider\USAUnits.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>USAUnits.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="PhysicalUnits\Provider\BritishUnits.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>BritishUnits.tt</DependentUpon>
+    </Compile>
+    <Compile Update="PhysicalUnits\Provider\DimensionsStatics.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DimensionsStatics.tt</DependentUpon>
+    </Compile>
+    <Compile Update="PhysicalUnits\Provider\MetricUnits.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>MetricUnits.tt</DependentUpon>
+    </Compile>
+    <Compile Update="PhysicalUnits\Provider\Quantities.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Quantities.tt</DependentUpon>
+    </Compile>
+    <Compile Update="PhysicalUnits\Provider\TimeUnits.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TimeUnits.tt</DependentUpon>
+    </Compile>
+    <Compile Update="PhysicalUnits\Provider\USAUnits.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>USAUnits.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Keith Barrett 2021 -->
+<units name="Time" ns="TimeUnits">
+  <!-- Seconds already included in Metric -->
+  <unit name="Minutes" shortname="min" dimension="Time" factor="60.0" CommonCode="MIN" />
+  <unit name="Hours"   shortname="hr" dimension="Time" factor="3600.0" CommonCode="HUR" />
+  <unit name="Days"    shortname="day" dimension="Time" factor="3600.0*24.0" CommonCode="DAY" />
+  <unit name="Weeks"   shortname="week" dimension="Time" factor="3600.0*24.0*7.0" CommonCode="WEE" />
+  <unit name="Months"  shortname="month" dimension="Time" factor="2.6298e4" CommonCode="MON" />
+  <unit name="JulianYears"   shortname="yr" dimension="Time" factor="3600.0*24.0*365.25" CommonCode="ANN" />
+  <unit name="SiderialYears" shortname="aₛ" dimension="Time" factor="3600.0*24.0*365.256363004" dontDisplay="true" CommonCode="L96"  />
+</units>

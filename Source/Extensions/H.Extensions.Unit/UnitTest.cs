@@ -4,7 +4,7 @@ using System.ComponentModel;
 
 namespace H.Extensions.Unit
 {
-    public class Unit : ViewModelBase
+    public class UnitTest : ViewModelBase
     {
         private long _byte = 12535456;
         [TypeConverter(typeof(ByteSizeUnitableTypeConverter))]
@@ -48,6 +48,18 @@ namespace H.Extensions.Unit
             set
             {
                 _time = value;
+                RaisePropertyChanged();
+            }
+        }
+
+
+        private double _lengh = 12535.456;
+        public double Lengh
+        {
+            get { return _lengh; }
+            set
+            {
+                _lengh = value;
                 RaisePropertyChanged();
             }
         }

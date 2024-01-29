@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Keith Barrett 2021 -->
+<dimensions>
+  <dimension name="Dimensionless"     equals="new Dimensions(0, 0, 0)" />
+  <dimension name="Mass"              equals="new Dimensions(1, 0, 0)" />
+  <dimension name="Length"            equals="new Dimensions(0, 1, 0)" />
+  <dimension name="Time"              equals="new Dimensions(0, 0, 1)"/>
+  <dimension name="Current"           equals="new Dimensions(0, 0, 0, 1)"/>
+  <dimension name="TemperatureChange" equals="new Dimensions(0, 0, 0, 0, 1)"/>
+  <!--<dimension name="AbsoluteTemperature" equals="new Dimensions(0, 0, 0, 0, 1)"/>-->
+  <dimension name="AmountOfSubstance" equals="new Dimensions(0, 0, 0, 0, 0, 1)"/>
+  <dimension name="LuminousIntensity" equals="new Dimensions(0, 0, 0, 0, 0, 0, 1)"/>
+  <dimension name="Angle"             equals="new Dimensions(0, 0, 0, 0, 0, 0, 0, 1)" />
+  
+  <dimension name="Area"              equals="Length * Length" />
+  <dimension name="Volume"            equals="Area * Length" />
+  <dimension name="Density"           equals="Mass / Volume" />
+  <dimension name="MolarMass"         equals="Mass / AmountOfSubstance" />
+  <dimension name="MolarConcentration" equals="AmountOfSubstance / Volume" >
+    <And equals="Density / MolarMass" />
+  </dimension>
+  <dimension name="Velocity"          equals="Length / Time" />
+  <dimension name="TangentialVelocity" equals="Velocity" note="Special type introduced to resolve ambiguity with velocity gradient." />
+  <dimension name="AngularVelocity"   equals="Angle / Time" >
+    <And equals="TangentialVelocity / Length" />
+  </dimension>
+  <!-- Solid angle is defined as angle squared -->
+  <dimension name="SolidAngle"        equals="Angle * Angle" />
+
+  <!-- Extra types to help with some calculations -->
+  <dimension name="TimeSquared"       equals="Time * Time" />
+  <dimension name="VelocitySquared"   equals="Velocity * Velocity" />
+  <dimension name="AngularVelocitySquared"   equals="AngularVelocity * AngularVelocity" />
+  <dimension name="ByLength"   equals="Dimensionless / Length" >
+    <And equals="Area / Volume" />
+  </dimension>
+  <dimension name="ByArea"   equals="Dimensionless / Area" >
+    <And equals="Length / Volume" />
+  </dimension>
+  <dimension name="MassByLength"   equals="Mass / Length" />
+  <dimension name="MassByArea"   equals="Mass / Area" >
+    <And equals="Length * Density" />
+  </dimension>
+  <dimension name="FourDimensionalVolume" equals="Volume * Length" note="This is used in Poiselle's formula.">
+    <And equals="Area * Area" />
+  </dimension>
+  <dimension name="MolarConcentrationGradient" equals="MolarConcentration / Length" />
+  <dimension name="AmountOfSubstanceByArea" equals="AmountOfSubstance / Area" />
+  <dimension name="AmountOfSubstanceByTime" equals="AmountOfSubstance / Time" />
+  <dimension name="DiffusionFlux" equals="AmountOfSubstanceByArea / Time " >
+    <And equals="KinematicViscosity * MolarConcentrationGradient" />    <!-- Fick's First Law -->
+    <And equals="AmountOfSubstanceByTime / Area" />
+  </dimension>
+
+  <dimension name="Acceleration"      equals="Velocity / Time" >
+    <And equals="VelocitySquared / Length" />
+    <And equals="Length / TimeSquared" />
+    <And equals="Length * AngularVelocitySquared" />
+  </dimension>
+  <dimension name="Momentum"          equals="Mass * Velocity" />
+  <dimension name="Force"             equals="Mass * Acceleration" >
+    <And equals="Momentum / Time" />
+    <And equals="MassFlowRate * Velocity" />
+  </dimension>
+  <dimension name="MomentOfInertia" equals="Mass * Area" />
+  <dimension name="AngularMomentum"  equals="MomentOfInertia * AngularVelocity" />
+  <dimension name="Energy"            equals="Force * Length" >
+    <And equals="Mass * VelocitySquared" />
+    <And equals="AngularMomentum * AngularVelocitySquared" />
+    <And equals="SurfaceTension * Area" />
+  </dimension>
+  <dimension name="ElectricCharge"    equals="Current * Time" />
+  <dimension name="ElectricPotential" equals="Energy / ElectricCharge" />
+  <dimension name="ElectricPotentialSquared" equals="ElectricPotential * ElectricPotential" />
+  <dimension name="Power"             equals="Energy / Time" >
+    <And equals="ElectricPotential * Current" />
+    <And equals="ElectricPotentialSquared / Resistance" />
+  </dimension>
+  <dimension name="Pressure"          equals="Force / Area" >
+    <And equals="MassByArea * Acceleration" />
+  </dimension>
+  <dimension name="Frequency"         equals="Dimensionless / Time" >
+    <And equals="AngularVelocity / Angle" />
+  </dimension>
+  <!-- VelocityGradient equals velocity/length -->
+  <dimension name="VelocityGradient" equals="Velocity / Length" />
+  <dimension name="KinematicViscosity"    equals="Area / Time" >
+    <And equals="Area * VelocityGradient" />
+  </dimension>
+  <dimension name="MassFlowRate"      equals="Mass / Time">
+    <And equals="CoefficientOfViscosity * Length" />
+  </dimension>
+  <dimension name="VolumeFlowRate"    equals="Volume / Time" >
+    <And equals="Pressure / ResistanceToFlow" />
+  </dimension>
+  <dimension name="ResistanceToFlow" equals="MassFlowRate / FourDimensionalVolume" note="The hydrodymamic equivalent of resistance." />
+  <dimension name="SurfaceTension"    equals ="Force / Length" >
+    <And equals="Length * Pressure" />
+  </dimension>
+  <dimension name="CoefficientOfViscosity"   equals="Force / KinematicViscosity" >
+    <And equals="Pressure / VelocityGradient" />
+    <And equals="Momentum / Area" />
+    <And equals="MassByArea * Velocity" />    <!-- This is used when calculating Reynolds number -->
+    <And equals="MassByAreaByTimeSquared / VelocityByDensity" />    <!-- This is used for stokes law -->
+  </dimension>
+  <dimension name="MassByAreaByTimeSquared" equals="MassByArea / TimeSquared" note="Used for Stokes Law">
+    <And equals="Acceleration * Area" />
+  </dimension>
+  <dimension name="VelocityByDensity" equals="Velocity / Density" note="Used for Stokes Law" />
+  <dimension name="ThermalCapacity"   equals="Energy / TemperatureChange" />
+  <dimension name="SpecificHeat"      equals="ThermalCapacity / Mass" />
+  <dimension name="MolarSpecificHeat" equals="ThermalCapacity / AmountOfSubstance" note="Used in van't Hoff equation.">
+    <And equals="Pressure / MolarConcentrationTimesAbsoluteTemperature" />
+  </dimension>
+  <dimension name="CoefficientOfThermalExpansion"      equals="Dimensionless / TemperatureChange" />
+  <dimension name="ThermalCapacityByVolume"   equals="ThermalCapacity / Volume" note="Used in van't Hoff equation." >
+    <And equals="MolarConcentration * MolarSpecificHeat" />
+    <And equals="Pressure / AbsoluteTemperature" />
+  </dimension>
+  <dimension name="EnergyFlux"    equals="Power / Area" />
+  <dimension name="MolarConcentrationTimesAbsoluteTemperature"    equals="MolarConcentration * AbsoluteTemperature" />
+  <dimension name="PowerGradient"     equals="Power / Length" />
+  <dimension name="TemperatureGradient" equals="TemperatureChange / Length" />
+  <dimension name="ThermalConductivity" equals="EnergyFlux / TemperatureGradient" >
+    <And equals="PowerGradient / TemperatureChange" />
+  </dimension>
+  <dimension name="Resistance"        equals="ElectricPotential / Current" />
+  <dimension name="ResistanceTimesArea" equals="Resistance * Area" />
+  <dimension name="Resistivity"       equals="Resistance * Length" >
+    <And equals="ResistanceTimesArea / Length" />
+  </dimension>
+  <dimension name="LuminousFlux" equals="LuminousIntensity * SolidAngle" />
+  <dimension name="Illuminance" equals="LuminousFlux / Area" />
+
+</dimensions>

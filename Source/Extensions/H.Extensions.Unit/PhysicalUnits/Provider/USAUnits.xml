@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Keith Barrett 2023 -->
+<units name="USA">
+  <constant name="poundsToKilogrammes" value="0.45359237" />
+  <constant name="feetToMetres" value="0.3048" />
+  <constant name="squareFeetToSquareMetres" value="(feetToMetres * feetToMetres)" />
+  <constant name="cubicFeetToCubicMetres" value="(feetToMetres * feetToMetres * feetToMetres)" />
+  <constant name="litresToCubicMetres" value="0.001" />
+
+  <!-- Mass -->
+  <unit name="LongTons"       shortname="ton" dimension="Mass" factor="poundsToKilogrammes*2240.0" display="Multi" CommonCode="LTN" />
+  <unit name="Pounds"         shortname="lb" dimension="Mass" factor="poundsToKilogrammes" display="Standard" CommonCode="LBR" />
+
+  <!-- Length -->
+  <unit name="Yards" shortname="yrd" dimension="Length" factor="(feetToMetres*3.0)" CommonCode="YRD" />
+  <unit name="Feet" shortname="ft" dimension="Length" factor="feetToMetres" default="true" CommonCode="FOT" /> 
+  <unit name="Inches" shortname="in" dimension="Length" factor="(feetToMetres/12.0)" CommonCode="INH" />
+  <unit name="NauticalMiles" shortname="nmi" dimension="Length" factor="1852" display="Explicit" CommonCode="NMI" />
+
+  <!-- Area -->
+  <unit name="SquareFeet" shortname="ft²" dimension="Area" factor="(feetToMetres*feetToMetres)" CommonCode="FTK" />
+  <unit name="Acres" shortname="acre" dimension="Area" factor="43560*squareFeetToSquareMetres" display="Multi" CommonCode="ACR" />
+  <unit name="SquareYards" shortname="yd²" dimension="Area" factor="9*squareFeetToSquareMetres" display="Explicit" CommonCode="YDK" />
+  <unit name="SquareInches" shortname="in²" dimension="Area" factor="0.0069*squareFeetToSquareMetres" display="Explicit" CommonCode="INK" />
+  
+  <!-- Volume -->
+  <unit name="CubicFeet" shortname="ft³" dimension="Volume" factor="cubicFeetToCubicMetres" display="Standard" CommonCode="FTQ" />
+  <unit name="CubicYards" shortname="yd³" dimension="Volume" factor="27*cubicFeetToCubicMetres" display="Standard" CommonCode="YDQ" />
+  <unit name="CubicInches" shortname="in³" dimension="Volume" factor="0.00058*cubicFeetToCubicMetres" display="Multi" CommonCode="INQ" />
+  <!-- US Liquid measures -->
+  <unit name="Gallons" shortname="gal" dimension="Volume" factor="3.78541*litresToCubicMetres" display="Multi" CommonCode="GLL" />
+  <unit name="Quarts" shortname="qt" dimension="Volume" factor="0.946353*litresToCubicMetres" display="Multi" CommonCode="QT" />
+  <!-- US dry measures -->
+  <unit name="DryGallons" shortname="dry gal" dimension="Volume" factor="4.404884*litresToCubicMetres" display="Multi" CommonCode="GLD" />
+  <unit name="DryQuarts" shortname="dry qt" dimension="Volume" factor="1.101221*litresToCubicMetres" display="Multi" CommonCode="QTD" />
+  <unit name="Bushels" shortname="bu" dimension="Volume" factor="35.23907016688*litresToCubicMetres" display="Multi" CommonCode="BUA" />
+  <unit name="Pecks" shortname="pk" dimension="Volume" factor="8.809768e-3" display="Multi" CommonCode="G23" />
+  <unit name="Cups" shortname="cup" dimension="Volume" factor="2.365882e-4" display="Multi" CommonCode="G21" />
+
+  <unit name="DegreesFahrenheit" shortname="°F" dimension="TemperatureChange" factor="5.0/9.0" display="Standard" CommonCode="FAH" />
+
+</units>

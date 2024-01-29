@@ -1,0 +1,107 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Configurations>Debug;Release;Debug Optimised</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Optimised|AnyCPU'">
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Angle.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="BritishUnits.tt" />
+    <None Remove="BritishUnits.xml" />
+    <None Remove="Dimensions.xml" />
+    <None Remove="DimensionsStatics.tt" />
+    <None Remove="MetricUnits.tt" />
+    <None Remove="MetricUnits.xml" />
+    <None Remove="Quantities.tt" />
+    <None Remove="TimeUnits.tt" />
+    <None Remove="TimeUnits.xml" />
+    <None Remove="USAUnits.tt" />
+    <None Remove="USAUnits.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="USAUnits.tt">
+      <LastGenOutput>USAUnits.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </Content>
+    <Content Include="TimeUnits.tt">
+      <LastGenOutput>TimeUnits.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </Content>
+    <Content Include="BritishUnits.tt">
+      <LastGenOutput>BritishUnits.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </Content>
+    <Content Include="BritishUnits.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Dimensions.xml" />
+    <Content Include="DimensionsStatics.tt">
+      <LastGenOutput>DimensionsStatics.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </Content>
+    <Content Include="MetricUnits.tt">
+      <LastGenOutput>MetricUnits.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </Content>
+    <Content Include="MetricUnits.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Quantities.tt">
+      <LastGenOutput>Quantities.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </Content>
+    <Content Include="TimeUnits.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="USAUnits.xml">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="BritishUnits.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>BritishUnits.tt</DependentUpon>
+    </Compile>
+    <Compile Update="USAUnits.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>USAUnits.tt</DependentUpon>
+    </Compile>
+    <Compile Update="TimeUnits.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TimeUnits.tt</DependentUpon>
+    </Compile>
+    <Compile Update="DimensionsStatics.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DimensionsStatics.tt</DependentUpon>
+    </Compile>
+    <Compile Update="MetricUnits.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>MetricUnits.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Quantities.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Quantities.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+</Project>

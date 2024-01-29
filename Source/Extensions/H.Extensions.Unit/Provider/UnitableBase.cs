@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace H.Extensions.Unit
 {
-    public abstract class UnitableBase<T> : IUnitable<T>, IUnitable where T : IComparable<T>
+    public abstract class UnitableBase<T> : IUnitable<T>, IUnitable, IDigits where T : IComparable<T>
     {
         protected readonly Dictionary<T, List<string>> _map = new Dictionary<T, List<string>>();
         public UnitableBase()
@@ -88,7 +88,6 @@ namespace H.Extensions.Unit
         protected abstract T ToAbs(T value);
 
         protected abstract double ToRound(T value, T unit);
-
 
         string IUnitable.ToString(object value) => ToString((T)value);
 
