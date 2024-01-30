@@ -34,4 +34,6 @@ namespace H.Extensions.Geometry
             return typeof(Geometrys).GetFields().Select(x => x.GetValue(null));
         }
     }
+
+
 }
