@@ -581,7 +581,8 @@
                                             PropertyName="Value1" />
                         </GroupBox>
                     </StackPanel>
-                    <DataGrid SelectedItem="{Binding SelectedTestViewModel}" AutoGenerateColumns="False">
+                    <DataGrid AutoGenerateColumns="False"
+                              SelectedItem="{Binding SelectedTestViewModel}">
                         <Behaviors:Interaction.Behaviors>
                             <h:DataGridAutoColumnBehavior DataGridLength="*"
                                                           Type="{x:Type h:TestViewModel}"
@@ -917,7 +918,7 @@
                         <h:ScheduleBox.JobsSource>
                             <h:TestScheduleJob Name="测试1">
                                 <h:TestScheduleJob.Triggers>
-                                    <h:DataTimeTrigger/>
+                                    <h:DataTimeTrigger />
                                     <h:RepeatTrigger Interval="00:00:40"
                                                      RepeatCount="50" />
                                 </h:TestScheduleJob.Triggers>
@@ -928,6 +929,17 @@
                             <h:TestScheduleJob Name="测试5" />
                         </h:ScheduleBox.JobsSource>
                     </h:ScheduleBox>
+                </DockPanel>
+            </TabItem>
+            <TabItem Header="Mail">
+                <DockPanel>
+                    <Button Command="{h:SendMainCommand}"
+                            CommandParameter="{Binding ElementName=mmi}"
+                            Content="发送邮件"
+                            DockPanel.Dock="Bottom" />
+                    <ContentControl>
+                        <h:MailMessageItem x:Name="mmi" />
+                    </ContentControl>
                 </DockPanel>
             </TabItem>
         </TabControl>

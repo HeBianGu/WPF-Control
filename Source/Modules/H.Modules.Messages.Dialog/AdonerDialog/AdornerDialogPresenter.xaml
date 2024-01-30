@@ -4,9 +4,11 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Modules.Messages.Dialog">
     <DataTemplate DataType="{x:Type local:AdornerDialogPresenter}">
-        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid HorizontalAlignment="Stretch"
+              VerticalAlignment="Stretch">
             <Grid.Background>
-                <SolidColorBrush Opacity="0.6" Color="Black" />
+                <SolidColorBrush Opacity="0.6"
+                                 Color="Black" />
             </Grid.Background>
             <Grid Width="{Binding Width}"
                   Height="{Binding Height}"
@@ -22,10 +24,16 @@
                     <RowDefinition />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Grid.Background>
-                    <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.Background}}" />
-                </Grid.Background>
-                <Border Grid.Row="0" Height="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}">
+                <Border Grid.RowSpan="5"
+                        Grid.ColumnSpan="5"
+                        CornerRadius="2">
+                    <Border.Background>
+                        <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.Background}}" />
+                    </Border.Background>
+                </Border>
+
+                <Border Height="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}"
+                        CornerRadius="2">
                     <Grid>
                         <TextBlock Margin="10,0"
                                    VerticalAlignment="Center"
@@ -70,13 +78,16 @@
             </Grid>
         </Grid>
         <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding DialogButton}" Value="Sumit">
+            <DataTrigger Binding="{Binding DialogButton}"
+                         Value="Sumit">
                 <Setter TargetName="btn_sumit" Property="Visibility" Value="Visible" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding DialogButton}" Value="Cancel">
+            <DataTrigger Binding="{Binding DialogButton}"
+                         Value="Cancel">
                 <Setter TargetName="btn_cancel" Property="Visibility" Value="Visible" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding DialogButton}" Value="SumitAndCancel">
+            <DataTrigger Binding="{Binding DialogButton}"
+                         Value="SumitAndCancel">
                 <Setter TargetName="btn_sumit" Property="Visibility" Value="Visible" />
                 <Setter TargetName="btn_cancel" Property="Visibility" Value="Visible" />
             </DataTrigger>

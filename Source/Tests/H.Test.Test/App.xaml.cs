@@ -67,6 +67,7 @@ namespace H.Test.Test
             });
 
             services.AddSchedule();
+            services.AddMail();
         }
 
         protected override void Configure(IApplicationBuilder app)
@@ -77,6 +78,8 @@ namespace H.Test.Test
             {
                 x.LibvlcPath = "G:\\BaiduNetdiskDownload\\libvlc\\win-x64";
             });
+
+            app.UseMail();
         }
     }
 }

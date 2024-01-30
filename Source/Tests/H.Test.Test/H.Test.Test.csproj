@@ -27,6 +27,7 @@
     <ProjectReference Include="..\..\Datas\H.Data.Test\H.Data.Test.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.ApplicationBase\H.Extensions.ApplicationBase.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Log4net\H.Extensions.Log4net.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.Mail\H.Extensions.Mail.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Tree\H.Extensions.Tree.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Unit\H.Extensions.Unit.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.ValueConverter\H.Extensions.ValueConverter.csproj" />

@@ -54,15 +54,19 @@
                                                                FontWeight="Bold"
                                                                Text="{Binding Name}"
                                                                ToolTip="{Binding Description}" />
-
-                                                    <TextBlock Margin="10,0,0,0"
-                                                               VerticalAlignment="Center"
-                                                               FontSize="{DynamicResource {x:Static h:FontSizeKeys.Header7}}"
-                                                               Foreground="{DynamicResource {x:Static h:BrushKeys.ForegroundAssist}}"
-                                                               Text="{Binding Description}" />
                                                 </DockPanel>
                                             </DataTemplate>
                                         </GroupBox.HeaderTemplate>
+                                        <h:Cattach.CaptionRightTemplate>
+                                            <ControlTemplate>
+                                                <TextBlock Margin="10,0"
+                                                           HorizontalAlignment="Right"
+                                                           VerticalAlignment="Center"
+                                                           FontSize="{DynamicResource {x:Static h:FontSizeKeys.Header7}}"
+                                                           Foreground="{DynamicResource {x:Static h:BrushKeys.ForegroundAssist}}"
+                                                           Text="{Binding Description}" />
+                                            </ControlTemplate>
+                                        </h:Cattach.CaptionRightTemplate>
                                         <h:Form ScrollViewer.VerticalScrollBarVisibility="Disabled"
                                                 SelectObject="{Binding}" />
                                     </GroupBox>
