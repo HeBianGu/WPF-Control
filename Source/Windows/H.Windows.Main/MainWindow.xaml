@@ -4,8 +4,8 @@
                     xmlns:local="clr-namespace:H.Windows.Main">
 
     <Style TargetType="{x:Type local:MainWindow}">
-        <Setter Property="h:GridSplitterBox.MenuMaxWidth" Value="300" />
-        <Setter Property="h:GridSplitterBox.MenuMinWidth" Value="0" />
+        <Setter Property="h:GridSplitterBox.MenuMaxWidth" Value="200" />
+        <Setter Property="h:GridSplitterBox.MenuMinWidth" Value="50" />
         <Setter Property="h:GridSplitterBox.IsExpanded" Value="False" />
         <Setter Property="h:GridSplitterBox.Mode" Value="Extend" />
         <Setter Property="h:GridSplitterBox.GridSpliteWidth" Value="2" />
@@ -33,7 +33,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:MainWindow}">
-                    <Border x:Name="PART_Border" BorderThickness="{TemplateBinding BorderThickness}">
+                    <Border x:Name="PART_Border"
+                            BorderThickness="{TemplateBinding BorderThickness}">
                         <Border.BorderBrush>
                             <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
                         </Border.BorderBrush>
@@ -51,11 +52,12 @@
                                 <h:GridSplitterBox.MenuContent>
                                     <Control Template="{TemplateBinding SideTemplate}" />
                                 </h:GridSplitterBox.MenuContent>
-                                <!--<h:GridSplitterBox.ToggleStyle>
-                                    <Style TargetType="ToggleButton" BasedOn="{x:Static h:GridSplitterKeys.to}">
-                                        
+                                <h:GridSplitterBox.ToggleStyle>
+                                    <Style BasedOn="{StaticResource {x:Static h:GridSplitterBox.ToggleKey}}"
+                                           TargetType="ToggleButton">
+                                        <Setter Property="Grid.ColumnSpan" Value="1" />
                                     </Style>
-                                </h:GridSplitterBox.ToggleStyle>-->
+                                </h:GridSplitterBox.ToggleStyle>
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="{Binding RelativeSource={RelativeSource AncestorType=local:MainWindow}, Path=CaptionHeight}" />
@@ -94,10 +96,12 @@
                                                         </ControlTemplate>
                                                     </Button.Template>
                                                 </Button>
-                                                <TextBlock Margin="5,0" Text="{TemplateBinding Title}" />
+                                                <TextBlock Margin="5,0"
+                                                           Text="{TemplateBinding Title}" />
                                             </StackPanel>
 
-                                            <Control Grid.Column="1" Template="{TemplateBinding CaptionTempate}" />
+                                            <Control Grid.Column="1"
+                                                     Template="{TemplateBinding CaptionTempate}" />
 
                                             <StackPanel Grid.Column="2"
                                                         HorizontalAlignment="Right"
@@ -137,7 +141,8 @@
                                             Grid.ColumnSpan="5"
                                             Visibility="Collapsed">
                                         <Border.Background>
-                                            <SolidColorBrush Opacity="0.3" Color="Black" />
+                                            <SolidColorBrush Opacity="0.3"
+                                                             Color="Black" />
                                         </Border.Background>
                                     </Border>
 
