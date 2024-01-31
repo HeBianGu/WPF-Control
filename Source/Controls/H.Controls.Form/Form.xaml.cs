@@ -1310,10 +1310,6 @@ namespace H.Controls.Form
 
     public class StaticForm : Form
     {
-        static StaticForm()
-        {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(StaticForm), new FrameworkPropertyMetadata(typeof(StaticForm)));
-        }
         public override void RefreshObject()
         {
             this.RefreshObjectinternal();
