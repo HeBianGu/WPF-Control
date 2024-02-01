@@ -938,8 +938,14 @@
                             Content="发送邮件"
                             DockPanel.Dock="Bottom" />
                     <ContentControl>
-                        <h:MailMessageItem x:Name="mmi" />
+                        <h:MailMessagePresenter x:Name="mmi" />
                     </ContentControl>
+                </DockPanel>
+            </TabItem>
+            <TabItem Header="Feedback">
+                <DockPanel>
+                    <Button Command="{h:ShowFeedbackCommand}"
+                            Content="用户反馈" />
                 </DockPanel>
             </TabItem>
         </TabControl>

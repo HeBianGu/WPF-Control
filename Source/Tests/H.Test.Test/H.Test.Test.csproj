@@ -32,6 +32,7 @@
     <ProjectReference Include="..\..\Extensions\H.Extensions.Unit\H.Extensions.Unit.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.ValueConverter\H.Extensions.ValueConverter.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.XmlSerialize\H.Extensions.XmlSerialize.csproj" />
+    <ProjectReference Include="..\..\Modules\H.Modules.Feedback\H.Modules.Feedback.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Messages.Dialog\H.Modules.Messages.Dialog.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Messages.Form\H.Modules.Messages.Form.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Setting\H.Modules.Setting.csproj" />

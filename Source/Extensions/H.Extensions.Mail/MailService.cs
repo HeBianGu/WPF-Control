@@ -4,6 +4,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Net.Mime;
 using H.Extensions.Mail;
+using H.Providers.Ioc;
 
 namespace H.Extensions.Mail
 {
@@ -54,11 +55,11 @@ namespace H.Extensions.Mail
             {
                 foreach (var attachment in messageItem.Attachments)
                 {
-                    Attachment data = new(attachment.FullName, MediaTypeNames.Application.Octet);
+                    Attachment data = new(attachment, MediaTypeNames.Application.Octet);
                     var disposition = data.ContentDisposition;
-                    disposition!.CreationDate = File.GetCreationTime(attachment.FullName);
-                    disposition.ModificationDate = File.GetLastWriteTime(attachment.FullName);
-                    disposition.ReadDate = File.GetLastAccessTime(attachment.FullName);
+                    disposition!.CreationDate = File.GetCreationTime(attachment);
+                    disposition.ModificationDate = File.GetLastWriteTime(attachment);
+                    disposition.ReadDate = File.GetLastAccessTime(attachment);
                     msg.Attachments.Add(data);
                 }
             }

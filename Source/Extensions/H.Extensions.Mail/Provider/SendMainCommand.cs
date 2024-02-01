@@ -1,4 +1,5 @@
-﻿using H.Providers.Mvvm;
+﻿using H.Providers.Ioc;
+using H.Providers.Mvvm;
 using System;
 
 namespace H.Extensions.Mail
@@ -9,6 +10,10 @@ namespace H.Extensions.Mail
         {
             if (parameter is MailMessageItem messageItem)
                 Ioc<IMailService>.Instance?.Send(messageItem, SmtpSendOptions.Instance.IsBodyHtml, out string message);
+
+            if (parameter is MailMessagePresenter mailMessagePresenter)
+                Ioc<IMailService>.Instance?.Send(mailMessagePresenter.Model, SmtpSendOptions.Instance.IsBodyHtml, out string message);
+
         }
 
         public override bool CanExecute(object parameter)
@@ -16,5 +21,4 @@ namespace H.Extensions.Mail
             return Ioc<IMailService>.Instance != null;
         }
     }
-
 }

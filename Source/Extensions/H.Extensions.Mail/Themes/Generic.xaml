@@ -4,39 +4,39 @@
     <!--<ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Extensions.Mail;component/DialogWindow.xaml" />
     </ResourceDictionary.MergedDictionaries>-->
-    <DataTemplate DataType="{x:Type local:MailMessageItem}">
+    <DataTemplate DataType="{x:Type local:MailMessagePresenter}">
         <StackPanel Margin="5">
             <BulletDecorator>
                 <BulletDecorator.Bullet>
                     <TextBlock Width="80"
                                Text="发送邮箱" />
                 </BulletDecorator.Bullet>
-                <TextBox Text="{Binding From}" />
+                <TextBox Text="{Binding Model.From}" />
             </BulletDecorator>
             <BulletDecorator>
                 <BulletDecorator.Bullet>
                     <TextBlock Width="80"
                                Text="接收邮箱" />
                 </BulletDecorator.Bullet>
-                <ListBox ItemsSource="{Binding To}" />
+                <ListBox ItemsSource="{Binding Model.To}" />
             </BulletDecorator>
-            <ListBox ItemsSource="{Binding Cc}" />
-            <ListBox ItemsSource="{Binding Bcc}" />
+            <ListBox ItemsSource="{Binding Model.Cc}" />
+            <ListBox ItemsSource="{Binding Model.Bcc}" />
             <BulletDecorator>
                 <BulletDecorator.Bullet>
                     <TextBlock Width="80"
                                Text="主题" />
                 </BulletDecorator.Bullet>
-                <TextBox Text="{Binding Subject}" />
+                <TextBox Text="{Binding Model.Subject}" />
             </BulletDecorator>
             <BulletDecorator>
                 <BulletDecorator.Bullet>
                     <TextBlock Width="80"
                                Text="内容" />
                 </BulletDecorator.Bullet>
-                <TextBox Text="{Binding Body}" />
+                <TextBox Text="{Binding Model.Body}" />
             </BulletDecorator>
-            <ListBox ItemsSource="{Binding Attachments}" />
+            <ListBox ItemsSource="{Binding Model.Attachments}" />
         </StackPanel>
     </DataTemplate>
 </ResourceDictionary>

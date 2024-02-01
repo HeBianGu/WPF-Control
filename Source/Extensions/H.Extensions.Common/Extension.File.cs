@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -84,12 +85,40 @@ namespace H.Extensions.Common
             }
             return ss;
         }
+
+        private const double TB = 1024 * 1024 * 1024 * 1024.0;
+        private const int GB = 1024 * 1024 * 1024;
+        private const int MB = 1024 * 1024;
+        private const int KB = 1024;
+
+        public static string GetFileSizeToDisplay(this string filePath)
+        {
+            if (!File.Exists(filePath))
+                return null;
+            long KSize = new FileInfo(filePath).Length;
+            bool isMinus = KSize < 0;
+            string result;
+            KSize = Math.Abs(KSize);
+            if (KSize / TB >= 1)
+                result = Math.Round(KSize / (float)TB, 2).ToString() + "T";
+            else if (KSize / GB >= 1)
+                result = Math.Round(KSize / (float)GB, 2).ToString() + "G";
+            else if (KSize / MB >= 1)
+
+                result = Math.Round(KSize / (float)MB, 2).ToString() + "MB";
+            else if (KSize / KB >= 1)
+
+                result = Math.Round(KSize / (float)KB, 2).ToString() + "KB";
+            else
+                result = KSize.ToString() + "Byte";
+            return isMinus ? "-" + result : result;
+        }
     }
 
 
     public static partial class FileExtension
     {
-        public static void BackupDirectory(string sourceFolder, string destFolder, Action<string> logAction=null)
+        public static void BackupDirectory(string sourceFolder, string destFolder, Action<string> logAction = null)
         {
             int totalFiles = 0;
             int totalSubFolders = 0;
@@ -232,11 +261,11 @@ namespace H.Extensions.Common
                 }
                 catch (UnauthorizedAccessException)
                 {
-                  
+
                 }
                 catch (Exception e)
                 {
-                   
+
                 }
             }
             DirectoryInfo[] subDirs;

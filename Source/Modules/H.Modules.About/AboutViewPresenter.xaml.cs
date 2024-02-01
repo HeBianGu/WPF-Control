@@ -26,7 +26,7 @@ namespace H.Modules.About
         string WebSet { get; set; }
     }
 
-    [Display(Name = "关于", GroupName = "系统设置", Description = "这是一个关于页面的信息")]
+    [Display(Name = "关于", GroupName = SettingGroupNames.GroupSystem, Description = "这是一个关于页面的信息")]
     public class AboutViewPresenter : Ioc<AboutViewPresenter, IAboutViewPresenter>, IAboutViewPresenter, IAboutViewPresenterOption
     {
         public AboutViewPresenter()

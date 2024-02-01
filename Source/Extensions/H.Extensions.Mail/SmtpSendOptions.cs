@@ -11,7 +11,6 @@ namespace H.Extensions.Mail
         private string _host;
         [Required]
         [DefaultValue("smtp.163.com")]
-        [ReadOnly(true)]
         [Display(Name = "服务器")]
         public string Host
         {
@@ -26,7 +25,6 @@ namespace H.Extensions.Mail
 
         private int _port;
         [DefaultValue(25)]
-        [ReadOnly(true)]
         [Display(Name = "端口号")]
         public int Port
         {
@@ -56,7 +54,6 @@ namespace H.Extensions.Mail
         [Required]
         [DefaultValue("HeBianGu2024@163.com")]
         [Display(Name = "用户名")]
-        [ReadOnly(true)]
         public string User
         {
             get { return _user; }
@@ -71,7 +68,6 @@ namespace H.Extensions.Mail
         private string _password;
         [Required]
         [Display(Name = "密码")]
-        [Browsable(false)]
         public string Password
         {
             get { return _password; }

@@ -1,5 +1,6 @@
 ﻿using System;
 using H.Extensions.Mail;
+using H.Providers.Ioc;
 
 namespace H.Extensions.Mail
 {

@@ -1,4 +1,4 @@
-﻿namespace H.Extensions.Mail
+﻿namespace H.Providers.Ioc
 {
     public interface IMailLogService
     {

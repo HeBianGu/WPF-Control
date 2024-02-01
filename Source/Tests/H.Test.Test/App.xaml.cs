@@ -68,6 +68,7 @@ namespace H.Test.Test
 
             services.AddSchedule();
             services.AddMail();
+            services.AddFeedBack();
         }
 
         protected override void Configure(IApplicationBuilder app)
