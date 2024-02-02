@@ -80,8 +80,22 @@ namespace H.Modules.Identity
             }
         }
 
+        private string _mail;
+        [Display(Name = "邮箱")]
+        [Column("mail", Order = 5)]
+        /// <summary> 说明  </summary>
+        public string Mail
+        {
+            get { return _mail; }
+            set
+            {
+                _mail = value;
+                RaisePropertyChanged();
+            }
+        }
+
         [Browsable(false)]
-        [Column("role_id", Order = 5)]
+        [Column("role_id", Order = 6)]
         //[Binding("Role.ID")]
         public string RoleID { get; set; }
 
@@ -89,7 +103,7 @@ namespace H.Modules.Identity
         [XmlIgnore]
         [Required]
         [Display(Name = "角色")]
-        [Column("role", Order = 6)]
+        [Column("role", Order = 7)]
         [DataGridColumn("*", PropertyPath = "{0}.Name")]
         [BindingGetSelectSourceMethod(nameof(GetRoles))]
         [PropertyItemType(Type = typeof(OnlyComboBoxSelectSourcePropertyItem))]

@@ -83,7 +83,7 @@ namespace H.Modules.Identity
         }
 
         private Random random = new Random();
-        public bool Register(string phone, string password, out string message)
+        public bool Register(string mail, string phone, string password, out string message)
         {
             if (string.IsNullOrEmpty(phone))
             {
@@ -121,7 +121,7 @@ namespace H.Modules.Identity
             return true;
         }
 
-        public bool ResetPassword(string phone, string password, out string message)
+        public bool ResetPassword(string mail, string phone, string password, out string message)
         {
             Thread.Sleep(2000);
             message = "操作超时";

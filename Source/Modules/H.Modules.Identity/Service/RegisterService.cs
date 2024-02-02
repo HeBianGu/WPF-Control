@@ -10,7 +10,7 @@ namespace H.Modules.Identity
     internal class RegisterService : IRegisterService
     {
         private Random random = new Random();
-        public bool Register(string phone, string password, out string message)
+        public bool Register(string mail, string phone, string password, out string message)
         {
             bool result = random.Next(5) == 1;
 
@@ -21,7 +21,7 @@ namespace H.Modules.Identity
             return result;
         }
 
-        public bool ResetPassword(string phone, string password, out string message)
+        public bool ResetPassword(string mail, string phone, string password, out string message)
         {
             bool result = random.Next(5) == 1;
 

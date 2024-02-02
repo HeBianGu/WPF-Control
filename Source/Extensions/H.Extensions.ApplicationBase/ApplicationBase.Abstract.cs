@@ -2,6 +2,7 @@
 using H.Providers.Ioc;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Windows;
@@ -23,6 +24,19 @@ namespace H.Extensions.ApplicationBase
         protected virtual void Configure(IApplicationBuilder app)
         {
 
+        }
+
+        protected virtual IEnumerable<ISplashLoad> GetSplashLoads()
+        {
+            foreach (var item in Ioc.Services.GetServices<IDbConnectService>())
+            {
+                yield return item;
+            }
+
+            foreach (var item in Ioc.Services.GetServices<ISplashLoad>())
+            {
+                yield return item;
+            }
         }
 
         /// <summary>
@@ -47,23 +61,25 @@ namespace H.Extensions.ApplicationBase
 
                 if (c?.IsCancel != true)
                 {
-                    var loads = Ioc.GetAssignableFromServices<ISplashLoad>().ToList();
-                    foreach (ISplashLoad load in loads)
                     {
-                        if (load == null)
-                            continue;
-
-                        if (s != null)
-                            s.Message = $"正在加载{load.Name}...";
-                        bool r = load.Load(out string message);
-                        if (s != null && !string.IsNullOrEmpty(message))
-                            s.Message = message;
-                        if (r == false)
+                        var loads = Ioc.GetAssignableFromServices<ISplashLoad>().Distinct();
+                        foreach (ISplashLoad load in loads)
                         {
+                            if (load == null)
+                                continue;
+
+                            if (s != null)
+                                s.Message = $"正在加载{load.Name}...";
+                            bool r = load.Load(out string message);
+                            if (s != null && !string.IsNullOrEmpty(message))
+                                s.Message = message;
+                            if (r == false)
+                            {
+                                Thread.Sleep(sleep);
+                                return false;
+                            }
                             Thread.Sleep(sleep);
-                            return false;
                         }
-                        Thread.Sleep(sleep);
                     }
                 }
                 if (s != null)

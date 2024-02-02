@@ -3,6 +3,7 @@ using System;
 using H.Modules.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace H.Modules.Identity.Migrations
 {
     [DbContext(typeof(IdentifyDataContext))]
-    partial class IdentifyDataContextModelSnapshot : ModelSnapshot
+    [Migration("20240202111856_init1")]
+    partial class init1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,18 +59,18 @@ namespace H.Modules.Identity.Migrations
                         new
                         {
                             ID = "{63860D6B-BD59-4620-919D-0DE51877676F}",
-                            CDATE = new DateTime(2024, 2, 2, 19, 29, 8, 829, DateTimeKind.Local).AddTicks(9919),
+                            CDATE = new DateTime(2024, 2, 2, 19, 18, 56, 642, DateTimeKind.Local).AddTicks(9421),
                             ISENBLED = 1,
                             Name = "用户管理",
-                            UDATE = new DateTime(2024, 2, 2, 19, 29, 8, 829, DateTimeKind.Local).AddTicks(9919)
+                            UDATE = new DateTime(2024, 2, 2, 19, 18, 56, 642, DateTimeKind.Local).AddTicks(9421)
                         },
                         new
                         {
                             ID = "{DE3B4992-A5BF-4AD2-80D8-2C9654C47A34}",
-                            CDATE = new DateTime(2024, 2, 2, 19, 29, 8, 829, DateTimeKind.Local).AddTicks(9945),
+                            CDATE = new DateTime(2024, 2, 2, 19, 18, 56, 642, DateTimeKind.Local).AddTicks(9450),
                             ISENBLED = 1,
                             Name = "角色管理",
-                            UDATE = new DateTime(2024, 2, 2, 19, 29, 8, 829, DateTimeKind.Local).AddTicks(9945)
+                            UDATE = new DateTime(2024, 2, 2, 19, 18, 56, 642, DateTimeKind.Local).AddTicks(9450)
                         });
                 });
 
@@ -106,20 +109,20 @@ namespace H.Modules.Identity.Migrations
                         new
                         {
                             ID = "{4360CE12-E5F4-4EA6-937C-9FDEA4DF06F6}",
-                            CDATE = new DateTime(2024, 2, 2, 19, 29, 8, 829, DateTimeKind.Local).AddTicks(9958),
+                            CDATE = new DateTime(2024, 2, 2, 19, 18, 56, 642, DateTimeKind.Local).AddTicks(9464),
                             Code = "01",
                             ISENBLED = 1,
                             Name = "管理员",
-                            UDATE = new DateTime(2024, 2, 2, 19, 29, 8, 829, DateTimeKind.Local).AddTicks(9958)
+                            UDATE = new DateTime(2024, 2, 2, 19, 18, 56, 642, DateTimeKind.Local).AddTicks(9464)
                         },
                         new
                         {
                             ID = "{0E465AF1-4C5B-417B-B496-E74E8A0D7E5C}",
-                            CDATE = new DateTime(2024, 2, 2, 19, 29, 8, 829, DateTimeKind.Local).AddTicks(9966),
+                            CDATE = new DateTime(2024, 2, 2, 19, 18, 56, 642, DateTimeKind.Local).AddTicks(9473),
                             Code = "02",
                             ISENBLED = 1,
                             Name = "普通用户",
-                            UDATE = new DateTime(2024, 2, 2, 19, 29, 8, 829, DateTimeKind.Local).AddTicks(9966)
+                            UDATE = new DateTime(2024, 2, 2, 19, 18, 56, 642, DateTimeKind.Local).AddTicks(9473)
                         });
                 });
 
@@ -168,7 +171,7 @@ namespace H.Modules.Identity.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT")
                         .HasColumnName("role_id")
-                        .HasColumnOrder(6);
+                        .HasColumnOrder(5);
 
                     b.Property<DateTime>("UDATE")
                         .HasColumnType("TEXT");
@@ -184,23 +187,23 @@ namespace H.Modules.Identity.Migrations
                         {
                             ID = "{E12E19D6-FDD9-4DCE-B211-55E58FAFC207}",
                             Account = "admin",
-                            CDATE = new DateTime(2024, 2, 2, 19, 29, 8, 829, DateTimeKind.Local).AddTicks(9972),
+                            CDATE = new DateTime(2024, 2, 2, 19, 18, 56, 642, DateTimeKind.Local).AddTicks(9480),
                             ISENBLED = 1,
                             Name = "超级用户",
                             Password = "123456",
                             RoleID = "{4360CE12-E5F4-4EA6-937C-9FDEA4DF06F6}",
-                            UDATE = new DateTime(2024, 2, 2, 19, 29, 8, 829, DateTimeKind.Local).AddTicks(9972)
+                            UDATE = new DateTime(2024, 2, 2, 19, 18, 56, 642, DateTimeKind.Local).AddTicks(9480)
                         },
                         new
                         {
                             ID = "{A8EE1331-0DA7-42F1-80E2-CD2A20D62BC9}",
                             Account = "user",
-                            CDATE = new DateTime(2024, 2, 2, 19, 29, 8, 829, DateTimeKind.Local).AddTicks(9980),
+                            CDATE = new DateTime(2024, 2, 2, 19, 18, 56, 642, DateTimeKind.Local).AddTicks(9503),
                             ISENBLED = 1,
                             Name = "HeBianGu",
                             Password = "123456",
                             RoleID = "{0E465AF1-4C5B-417B-B496-E74E8A0D7E5C}",
-                            UDATE = new DateTime(2024, 2, 2, 19, 29, 8, 829, DateTimeKind.Local).AddTicks(9980)
+                            UDATE = new DateTime(2024, 2, 2, 19, 18, 56, 642, DateTimeKind.Local).AddTicks(9503)
                         });
                 });
 

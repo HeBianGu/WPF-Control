@@ -54,7 +54,7 @@ namespace H.Test.Identify
         protected override void Configure(IApplicationBuilder app)
         {
             base.Configure(app);
-            app.UseLoginSetting();
+            app.UseLogin();
         }
     }
 }

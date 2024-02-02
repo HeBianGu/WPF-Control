@@ -17,7 +17,7 @@ namespace System
                 services.Configure(setupAction);
             return services;
         }
-        public static IApplicationBuilder UseLoginSetting(this IApplicationBuilder builder, Action<RevertibleOptions> option = null)
+        public static IApplicationBuilder UseLogin(this IApplicationBuilder builder, Action<RevertibleOptions> option = null)
         {
             SettingDataManager.Instance.Add(RevertibleOptions.Instance);
             option?.Invoke(RevertibleOptions.Instance);

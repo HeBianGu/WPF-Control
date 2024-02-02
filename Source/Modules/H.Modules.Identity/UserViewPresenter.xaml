@@ -68,6 +68,9 @@
                                         Binding="{Binding Model.DisplayName}"
                                         Header="昵称" />
                     <DataGridTextColumn Width="*"
+                                        Binding="{Binding Model.Mail}"
+                                        Header="邮箱" />
+                    <DataGridTextColumn Width="*"
                                         Binding="{Binding Model.Role}"
                                         Header="角色" />
                     <DataGridTemplateColumn Width="*" Header="权限列表">

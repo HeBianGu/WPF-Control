@@ -73,12 +73,16 @@ namespace System
                 {
                     if (item.ImplementationInstance == null)
                     {
-                        object instance = Ioc.Services.GetService(item.ServiceType);
-                        if (instance is T it)
+                        var instances = Ioc.Services.GetServices(item.ServiceType);
+                        foreach (var instance in instances)
                         {
-                            if (predicate?.Invoke(it) != false)
-                                yield return it;
+                            if (instance is T it)
+                            {
+                                if (predicate?.Invoke(it) != false)
+                                    yield return it;
+                            }
                         }
+                     
                     }
                     else
                     {
