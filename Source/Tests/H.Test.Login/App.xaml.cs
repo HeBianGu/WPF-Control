@@ -23,9 +23,11 @@ namespace H.Test.Login
             services.AddSetting();
             services.AddWindowMessage();
             services.AddAdornerDialogMessage();
-            services.AddLoginViewPresenter();
+            //services.AddLoginViewPresenter();
+            services.AddRegisterLoginViewPresenter();
             services.AddTestLoginService();
-      
+            services.AddTestRegistorService();
+            services.AddMail();
         }
 
         protected override Window CreateMainWindow(StartupEventArgs e)
@@ -36,7 +38,9 @@ namespace H.Test.Login
         protected override void Configure(IApplicationBuilder app)
         {
             base.Configure(app);
-            app.UseLoginSetting();
+            app.UseLogin();
+            app.UseRegistor();
+            app.UseMail();
         }
 
         protected override void OnSplashScreen(StartupEventArgs e)

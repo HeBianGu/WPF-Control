@@ -14,20 +14,48 @@ namespace System
             services.TryAdd(ServiceDescriptor.Singleton<ILoginViewPresenter, LoginViewPresenter>());
             if (setupAction != null)
                 services.Configure(setupAction);
-            //services.TryAdd(ServiceDescriptor.Singleton<ILoginService, LoginService>());
+            return services;
+        }
+
+        public static IServiceCollection AddRegisterLoginViewPresenter(this IServiceCollection services, Action<LoginOptions> setupAction = null)
+        {
+            services.AddOptions();
+            services.TryAdd(ServiceDescriptor.Singleton<ILoginViewPresenter, RigisterLoginViewPresenter>());
+            if (setupAction != null)
+                services.Configure(setupAction);
             return services;
         }
 
         public static IServiceCollection AddTestLoginService(this IServiceCollection services, Action<LoginOptions> setupAction = null)
         {
+            services.AddOptions();
             services.TryAdd(ServiceDescriptor.Singleton<ILoginService, LoginService>());
+            if (setupAction != null)
+                services.Configure(setupAction);
             return services;
         }
 
-        public static IApplicationBuilder UseLoginSetting(this IApplicationBuilder builder, Action<LoginOptions> option = null)
+        public static IServiceCollection AddTestRegistorService(this IServiceCollection services, Action<RegistorOptions> setupAction = null)
+        {
+            services.AddOptions();
+            services.TryAdd(ServiceDescriptor.Singleton<IRegisterService, RegisterService>());
+            if (setupAction != null)
+                services.Configure(setupAction);
+            return services;
+        }
+
+
+        public static IApplicationBuilder UseLogin(this IApplicationBuilder builder, Action<LoginOptions> option = null)
         {
             SettingDataManager.Instance.Add(LoginOptions.Instance);
             option?.Invoke(LoginOptions.Instance);
+            return builder;
+        }
+
+        public static IApplicationBuilder UseRegistor(this IApplicationBuilder builder, Action<RegistorOptions> option = null)
+        {
+            SettingDataManager.Instance.Add(RegistorOptions.Instance);
+            option?.Invoke(RegistorOptions.Instance);
             return builder;
         }
     }

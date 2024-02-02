@@ -22,16 +22,8 @@ namespace H.Extensions.Behvaiors
                     return;
                 if (control.AssociatedObject == null)
                     return;
-                if (e.OldValue is string o)
-                {
-
-                }
-
-                if (e.NewValue is string n)
-                {
-                    if (control.AssociatedObject.Password != n)
-                        control.AssociatedObject.Password = n;
-                }
+    
+                    control.AssociatedObject.Password = e.NewValue?.ToString();
             }));
 
 

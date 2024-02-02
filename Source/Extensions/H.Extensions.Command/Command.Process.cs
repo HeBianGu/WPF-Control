@@ -11,9 +11,9 @@ namespace H.Extensions.Command
     {
         public override bool CanExecute(object parameter)
         {
-            if (parameter == null) return false;
+             if (parameter == null) return false;
             bool result = File.Exists(parameter?.ToString()) || Directory.Exists(parameter?.ToString());
-            if (parameter.ToString().ToUpper().StartsWith("http") == true) return true;
+            if (parameter.ToString().ToLower().StartsWith("http") == true) return true;
             return result;
         }
 

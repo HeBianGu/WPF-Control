@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
+                    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Modules.Login">
     <DataTemplate DataType="{x:Type local:LoginViewPresenter}">
@@ -29,9 +29,9 @@
                         <TextBlock Width="30" Text="密码" />
                     </BulletDecorator.Bullet>
                     <PasswordBox>
-                        <Behaviors:Interaction.Behaviors>
+                        <b:Interaction.Behaviors>
                             <h:PasswordBindingBehavior Password="{Binding Password, Mode=TwoWay}" />
-                        </Behaviors:Interaction.Behaviors>
+                        </b:Interaction.Behaviors>
                     </PasswordBox>
                 </BulletDecorator>
 

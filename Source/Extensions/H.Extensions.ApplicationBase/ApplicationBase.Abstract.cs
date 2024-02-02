@@ -113,9 +113,11 @@ namespace H.Extensions.ApplicationBase
                 return;
             bool? r = IocMessage.Window.Show(presenter, x =>
             {
-                x.Width = 400;
+                x.MinWidth = 400;
                 x.DialogButton = DialogButton.None;
                 x.Title = ApplicationProvider.Version;
+                if(x is Window w)
+                    w.SizeToContent= SizeToContent.WidthAndHeight;
             }).Result;
             if (r == false)
             {

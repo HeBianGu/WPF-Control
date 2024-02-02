@@ -41,7 +41,7 @@ namespace H.Test.Test
                 x.Tags.Add(new Tag() { Name = "运行", Description = "这是一个严重标签", Background = Brushes.Blue });
                 x.Tags.Add(new Tag() { Name = "成功", Description = "这是一个严重标签", Background = Brushes.Green });
 
-                x.Tags.Add(new Tag() { Name = "测试1", GroupName="Test",Description = "这是一个严重标签", Background = Brushes.Purple });
+                x.Tags.Add(new Tag() { Name = "测试1", GroupName = "Test", Description = "这是一个严重标签", Background = Brushes.Purple });
                 x.Tags.Add(new Tag() { Name = "测试2", GroupName = "Test", Description = "这是一个严重标签", Background = Brushes.Red });
                 x.Tags.Add(new Tag() { Name = "测试3", GroupName = "Test", Description = "这是一个严重标签", Background = Brushes.Orange });
                 x.Tags.Add(new Tag() { Name = "测试4", GroupName = "Test", Description = "这是一个严重标签", Background = Brushes.Blue });
@@ -58,7 +58,7 @@ namespace H.Test.Test
 
                 //var r= "1".Contains(System.IO.Path.DirectorySeparatorChar);
 
-               //var ss=  System.IO.Path.GetDirectoryName("2\\1");
+                //var ss=  System.IO.Path.GetDirectoryName("2\\1");
                 //x.Tags.Add(new Tag() { Name = "测试1", GroupName = "Test", Description = "这是一个严重标签", Background = Brushes.Purple });
                 //x.Tags.Add(new Tag() { Name = "测试2", GroupName = "Test", Description = "这是一个严重标签", Background = Brushes.Red });
                 //x.Tags.Add(new Tag() { Name = "测试3", GroupName = "Test", Description = "这是一个严重标签", Background = Brushes.Orange });
@@ -75,7 +75,7 @@ namespace H.Test.Test
         {
             base.Configure(app);
             app.UseAddLog4netSetting();
-            app.UseVlc(x=>
+            app.UseVlc(x =>
             {
                 x.LibvlcPath = "G:\\BaiduNetdiskDownload\\libvlc\\win-x64";
             });

@@ -6,6 +6,4 @@ namespace H.Providers.Ioc
     {
         bool Send(MailMessageItem messageItem, bool isBodyHtml, out string message);
     }
-
-
 }

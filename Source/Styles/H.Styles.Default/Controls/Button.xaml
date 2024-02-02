@@ -31,8 +31,8 @@
         <Setter Property="Cursor" Value="Hand" />
         <!--<Setter Property="OverridesDefaultStyle" Value="true" />-->
         <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}" />
-        <Setter Property="Padding" Value="10,6" />
-        <Setter Property="Margin" Value="2" />
+        <Setter Property="Padding" Value="10 0" />
+        <Setter Property="Margin" Value="0" />
         <Setter Property="Foreground">
             <Setter.Value>
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionForeground}}" />

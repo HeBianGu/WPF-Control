@@ -4,7 +4,7 @@ namespace H.Providers.Ioc
 {
     public interface IRegisterService
     {
-        bool Register(string phone, string password, out string message);
-        bool ResetPassword(string phone, string password, out string message);
+        bool Register(string mail,string account, string password, out string message);
+        bool ResetPassword(string mail, string account, string password, out string message);
     }
 }

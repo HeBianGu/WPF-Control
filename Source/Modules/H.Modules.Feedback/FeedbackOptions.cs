@@ -11,7 +11,7 @@ namespace H.Modules.Feedback
         private string _mailAccount;
         [Required]
         [DefaultValue("HeBianGu2024@163.com")]
-        [Display(Name = "邮箱用户名")]
+        [Display(Name = "接收用户反馈的邮箱")]
         [ReadOnly(true)]
         public string MailAccount
         {

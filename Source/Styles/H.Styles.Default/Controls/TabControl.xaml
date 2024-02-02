@@ -142,7 +142,7 @@
                                 <Condition Property="Selector.IsSelectionActive" Value="True" />
                                 <Condition Property="IsSelected" Value="True" />
                             </MultiTrigger.Conditions>
-                            <Setter Property="TextElement.Foreground" TargetName="ContentSite">
+                            <Setter TargetName="ContentSite" Property="TextElement.Foreground">
                                 <Setter.Value>
                                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundTitle}}" />
                                 </Setter.Value>

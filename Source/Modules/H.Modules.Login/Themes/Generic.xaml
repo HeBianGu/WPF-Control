@@ -3,5 +3,6 @@
                     xmlns:local="clr-namespace:H.Modules.Login">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Modules.Login;component/LoginViewPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Modules.Login;component/RigisterLoginViewPresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
