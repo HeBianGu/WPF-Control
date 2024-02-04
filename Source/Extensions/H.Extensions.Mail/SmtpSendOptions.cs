@@ -53,7 +53,7 @@ namespace H.Extensions.Mail
         private string _user;
         [Required]
         [DefaultValue("HeBianGu2024@163.com")]
-        [Display(Name = "用户名")]
+        [Display(Name = "外发账号")]
         public string User
         {
             get { return _user; }
@@ -67,7 +67,7 @@ namespace H.Extensions.Mail
 
         private string _password;
         [Required]
-        [Display(Name = "密码")]
+        [Display(Name = "授权码")]
         public string Password
         {
             get { return _password; }

@@ -15,14 +15,27 @@ namespace H.Extensions.Behvaiors
             base.OnAttached();
 
             this.AssociatedObject.PreviewMouseWheel += AssociatedObject_PreviewMouseWheel;
+            this.AssociatedObject.MouseWheel += AssociatedObject_MouseWheel;
         }
 
         protected override void OnDetaching()
         {
             base.OnDetaching();
             this.AssociatedObject.PreviewMouseWheel -= AssociatedObject_PreviewMouseWheel;
-
+            this.AssociatedObject.MouseWheel -= AssociatedObject_MouseWheel;
         }
+
+        private void AssociatedObject_MouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)
+        {
+            if (this.UseMouseWheelHijack)
+            {
+                if (this.AssociatedObject.ViewportHeight + this.AssociatedObject.VerticalOffset >= this.AssociatedObject.ExtentHeight && e.Delta <= 0)
+                    e.Handled = true;
+                if (this.AssociatedObject.VerticalOffset == 0 && e.Delta > 0)
+                    e.Handled = true;
+            }
+        }
+
         private void AssociatedObject_PreviewMouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)
         {
             if (e.Handled)
@@ -56,10 +69,14 @@ namespace H.Extensions.Behvaiors
 
                 if (this.UseMouseWheelHijack)
                 {
-                    if (this.AssociatedObject.ViewportHeight + this.AssociatedObject.VerticalOffset >= this.AssociatedObject.ExtentHeight && e.Delta <= 0)
-                        e.Handled = true;
-                    if (this.AssociatedObject.VerticalOffset == 0 && e.Delta > 0)
-                        e.Handled = true;
+                    var pSv = this.AssociatedObject.GetParent<ScrollViewer>();
+                    if (pSv != null)
+                    {
+                        if (this.AssociatedObject.ViewportHeight + this.AssociatedObject.VerticalOffset >= this.AssociatedObject.ExtentHeight && e.Delta <= 0)
+                            pSv.LineDown();
+                        if (this.AssociatedObject.VerticalOffset == 0 && e.Delta > 0)
+                            pSv.LineUp();
+                    }
                 }
             }
         }

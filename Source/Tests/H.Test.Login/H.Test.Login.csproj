@@ -21,7 +21,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Extensions\H.Extensions.ApplicationBase\H.Extensions.ApplicationBase.csproj" />
-    <ProjectReference Include="..\..\Extensions\H.Extensions.BackgroundImage\H.Extensions.BackgroundImage.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Mail\H.Extensions.Mail.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Login\H.Modules.Login.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Messages.Dialog\H.Modules.Messages.Dialog.csproj" />
