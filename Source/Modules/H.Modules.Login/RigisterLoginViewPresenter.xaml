@@ -16,7 +16,7 @@
                 </Grid.ColumnDefinitions>
                 <Border BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
                         BorderThickness="0,0,1,0">
-                    <Image Source="{Binding Source={x:Static local:RegistorOptions.Instance},Path=Image}" />
+                    <Image Source="{Binding Source={x:Static local:RegistorOptions.Instance}, Path=Image}" />
                 </Border>
 
                 <Border Grid.ColumnSpan="2"
@@ -105,7 +105,8 @@
                                     HorizontalAlignment="Left"
                                     Background="Transparent"
                                     Command="{Binding GotoForgetCommand}"
-                                    Content="忘记密码" />
+                                    Content="忘记密码"
+                                    Visibility="{Binding Source={x:Static local:RegistorOptions.Instance}, Path=UseMail, Converter={x:Static h:Converter.GetTrueToVisible}}" />
                         </Grid>
 
 
@@ -314,9 +315,9 @@
                                 Visibility="{Binding Source={x:Static local:RegistorOptions.Instance}, Path=UseMail, Converter={x:Static h:Converter.GetTrueToVisible}}" />
 
                         <h:ProgressButton Width="Auto"
-                                Margin="0,2"
-                                Command="{Binding ChangePasswordCommand}"
-                                Content="修改" />
+                                          Margin="0,2"
+                                          Command="{Binding ChangePasswordCommand}"
+                                          Content="修改" />
 
                         <Button Background="Transparent"
                                 Command="{Binding GotoLoginCommand}"

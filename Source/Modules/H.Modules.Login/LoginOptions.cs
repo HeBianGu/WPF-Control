@@ -17,6 +17,16 @@ namespace H.Modules.Login
             this.Product = ApplicationProvider.Product;
         }
 
+        public override bool Load(out string message)
+        {
+            return base.Load(out message);
+        }
+
+        public override bool Save(out string message)
+        {
+            return base.Save(out message);
+        }
+
         private string _product;
         [Display(Name = "登录标题")]
         public string Product
@@ -43,6 +53,7 @@ namespace H.Modules.Login
         }
         private string _adminName;
         [DefaultValue("admin")]
+        [ReadOnly(true)]
         [Required]
         [Display(Name = "管理员账号")]
         public string AdminName
@@ -58,6 +69,7 @@ namespace H.Modules.Login
         private string _adminPassword;
         [XmlIgnore]
         [JsonIgnore]
+        [Browsable(false)]
         [DefaultValue("123456")]
         [Required]
         [Display(Name = "管理员密码")]
@@ -72,6 +84,7 @@ namespace H.Modules.Login
         }
 
         private string _lastUserName;
+        [ReadOnly(true)]
         [DefaultValue("admin")]
         [Display(Name = "上次登录用户")]
         public string LastUserName
@@ -85,6 +98,7 @@ namespace H.Modules.Login
         }
 
         private string _lastPassword;
+        [Browsable(false)]
         [DefaultValue("123456")]
         [Display(Name = "上次登录密码")]
         public string LastPassword

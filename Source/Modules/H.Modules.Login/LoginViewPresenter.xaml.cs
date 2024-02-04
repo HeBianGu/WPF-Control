@@ -69,7 +69,11 @@ namespace H.Modules.Login
                              LoginOptions.Instance.LastUserName = null;
                              LoginOptions.Instance.LastPassword = null;
                          }
-
+                         if (LoginOptions.Instance.Save(out message) == false)
+                         {
+                             s.Message = message;
+                             Thread.Sleep(1000);
+                         }
                          s.Message = "登录成功";
                          Thread.Sleep(1000);
                          return true;

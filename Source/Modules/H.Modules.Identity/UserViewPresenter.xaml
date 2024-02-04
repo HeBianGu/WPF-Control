@@ -10,7 +10,8 @@
                     <ControlTemplate>
                         <BulletDecorator Margin="5,0">
                             <BulletDecorator.Bullet>
-                                <TextBlock VerticalAlignment="Center" Text="{Binding RelativeSource={RelativeSource AncestorType=ContentPresenter}, Path=DataContext.Value}" />
+                                <TextBlock VerticalAlignment="Center"
+                                           Text="{Binding RelativeSource={RelativeSource AncestorType=ContentPresenter}, Path=DataContext.Value}" />
                             </BulletDecorator.Bullet>
                             <h:SelectionFilterBox x:Name="sfb"
                                                   VerticalAlignment="Center"
@@ -57,29 +58,39 @@
                     <DataGridTextColumn Width="*"
                                         Binding="{Binding Model.Account}"
                                         Header="登陆账号" />
-                    <DataGridTemplateColumn Width="*" Header="登陆密码">
+                    <DataGridTemplateColumn Width="*"
+                                            Header="登陆密码">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Margin="0,5" Text="******" />
+                                <TextBlock Margin="0,5"
+                                           Text="******" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                     <DataGridTextColumn Width="*"
                                         Binding="{Binding Model.DisplayName}"
                                         Header="昵称" />
+                    <DataGridCheckBoxColumn Width="Auto"
+                                            Binding="{Binding Model.Enable}"
+                                            Header="启用/禁用"
+                                            IsReadOnly="True" />
                     <DataGridTextColumn Width="*"
                                         Binding="{Binding Model.Mail}"
                                         Header="邮箱" />
                     <DataGridTextColumn Width="*"
                                         Binding="{Binding Model.Role}"
                                         Header="角色" />
-                    <DataGridTemplateColumn Width="*" Header="权限列表">
+
+
+                    <DataGridTemplateColumn Width="*"
+                                            Header="权限列表">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <ItemsControl ItemsSource="{Binding Model.Role.Authors}">
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
-                                            <TextBlock Margin="0,5" Text="{Binding Name}" />
+                                            <TextBlock Margin="0,5"
+                                                       Text="{Binding Name}" />
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
                                 </ItemsControl>
@@ -90,10 +101,12 @@
             </RepositoryGrid>
         </DockPanel>
         <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding IsVisible}" Value="False">
+            <DataTrigger Binding="{Binding IsVisible}"
+                         Value="False">
                 <Setter Property="Visibility" Value="Collapsed" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding IsAuthority}" Value="False">
+            <DataTrigger Binding="{Binding IsAuthority}"
+                         Value="False">
                 <Setter Property="Visibility" Value="Collapsed" />
             </DataTrigger>
         </DataTemplate.Triggers>

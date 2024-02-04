@@ -14,7 +14,6 @@ namespace H.Modules.Identity
     [Display(Name = "用户管理")]
     public class hi_dd_user : DbModelBase
     {
-
         public hi_dd_user()
         {
             Name = "普通用户";
@@ -76,6 +75,20 @@ namespace H.Modules.Identity
             set
             {
                 _displayName = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        private bool _enable;
+        [Display(Name = "启用")]
+        [Column("enable", Order = 4)]
+        /// <summary> 说明  </summary>
+        public bool Enable
+        {
+            get { return _enable; }
+            set
+            {
+                _enable = value;
                 RaisePropertyChanged();
             }
         }
