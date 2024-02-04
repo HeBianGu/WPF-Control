@@ -191,7 +191,7 @@
                                                                Text="{Binding Model.Name}"
                                                                TextTrimming="CharacterEllipsis"
                                                                ToolTip="{Binding Model.Url}" />
-                                                    <Image Source="{Binding Model, Converter={local:GetFileImageSourceConverter}}"
+                                                    <Image Source="{Binding Model, Converter={local:GetFileToViewImageSourceConverter}}"
                                                            Stretch="{Binding Source={x:Static local:AppSetting.Instance}, Path=Stretch}" />
                                                 </DockPanel>
                                             </Border>
