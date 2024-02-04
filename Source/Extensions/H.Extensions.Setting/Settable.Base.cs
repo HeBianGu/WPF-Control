@@ -27,6 +27,8 @@ namespace H.Extensions.Setting
 
         protected virtual string GetDefaultFolder()
         {
+            if (this is ILoginedSplashLoad)
+                return AppPaths.Instance.UserSetting;
             return AppPaths.Instance.Setting;
         }
 

@@ -23,6 +23,7 @@
     <ProjectReference Include="..\..\Modules\H.Modules.Operation\H.Modules.Operation.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Setting\H.Modules.Setting.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.SplashScreen\H.Modules.SplashScreen.csproj" />
+    <ProjectReference Include="..\..\Modules\H.Modules.Theme\H.Modules.Theme.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Default\H.Themes.Default.csproj" />
     <ProjectReference Include="..\..\Windows\H.Windows.Dialog\H.Windows.Dialog.csproj" />
     <ProjectReference Include="..\..\Windows\H.Windows.Main\H.Windows.Main.csproj" />

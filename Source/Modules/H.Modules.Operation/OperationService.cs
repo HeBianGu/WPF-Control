@@ -15,6 +15,7 @@ namespace H.Modules.Operation
                 return;
             IRepositoryViewModel<hi_dd_operation> vm = Ioc.GetService<IRepositoryViewModel<hi_dd_operation>>();
             string typeName = typeof(T).GetCustomAttribute<DisplayAttribute>()?.Name ?? typeof(T).Name;
+            vm.UseMessage = false;
             hi_dd_operation operation = new hi_dd_operation()
             {
                 Title = title,

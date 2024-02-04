@@ -6,6 +6,7 @@ using H.Controls.FavoriteBox;
 using H.Controls.TagBox;
 using H.DataBases.Share;
 using H.Extensions.ViewModel;
+using H.Modules.Login;
 using H.Modules.Project;
 using H.Providers.Ioc;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +15,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
@@ -34,12 +36,17 @@ namespace H.App.FileManager
             }
         }
 
+        public override string GetFilePath()
+        {
+            return System.IO.Path.Combine(this.Path, this.Title + ".db");
+        }
+
         [Browsable(false)]
         public ObservableCollection<Tag> Tags { get; set; } = new ObservableCollection<Tag>();
 
         [Browsable(false)]
         public ObservableCollection<FavoriteItem> FavoriteItems { get; set; } = new ObservableCollection<FavoriteItem>();
-        
+
 
         private IRepositoryViewModel<fm_dd_file> _file = new RepositoryViewModel<fm_dd_file>();
         [JsonIgnore]
@@ -67,12 +74,15 @@ namespace H.App.FileManager
                 dx.AddDbContext<DataContext>(x =>
                 {
                     IProjectService project = Ioc.GetService<IProjectService>();
-                    string con = project.Current == null ? $"Data Source=default.db" : $"Data Source={System.IO.Path.Combine(project.Current.Path, project.Current.Title)}.db";
+                    string con = project.Current == null ? $"Data Source=default.db" : $"Data Source={this.GetFilePath()}";
                     x.UseLazyLoadingProxies().UseSqlite(con);
                 });
                 dx.AddSingleton<IStringRepository<fm_dd_file>, DbContextRepository<DataContext, fm_dd_file>>();
                 dx.AddSingleton<IRepositoryViewModel<fm_dd_file>, FileRepositoryViewModel>();
             });
+
+            if (!Directory.Exists(System.IO.Path.GetDirectoryName(this.GetFilePath())))
+                Directory.CreateDirectory(System.IO.Path.GetDirectoryName(this.GetFilePath()));
             //  Do ：迁移数据
             DataContext find = DbIoc.Services.GetService<DataContext>();
             find.Database.Migrate();
@@ -113,6 +123,24 @@ namespace H.App.FileManager
                 _setting = value;
                 RaisePropertyChanged();
             }
+        }
+
+        public override bool Delete(out string message)
+        {
+            //  Do ：这块需要释放数据库
+            //var r = this.Close(out message);
+            //if (r == false)
+            //    return false;
+            //if (System.IO.File.Exists(this.Path))
+            //    File.Delete(this.Path);
+            //if (!string.IsNullOrEmpty(this.Path))
+            //{
+            //    var find = this.GetFilePath();
+            //    if (System.IO.File.Exists(find))
+            //        File.Delete(find);
+            //}
+            message = null;
+            return true;
         }
     }
 }

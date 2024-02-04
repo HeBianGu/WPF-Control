@@ -45,7 +45,7 @@ namespace H.Providers.Ioc
             var jsonSerializerOptions = new JsonSerializerOptions();
             jsonSerializerOptions.AllowTrailingCommas = false;
             jsonSerializerOptions.WriteIndented = true;
-            jsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault;//忽略默认的属性或字段
+            jsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.Never;//忽略默认的属性或字段
             jsonSerializerOptions.IncludeFields = true;
             jsonSerializerOptions.Encoder = JavaScriptEncoder.Create(new TextEncoderSettings(UnicodeRanges.All));
             return jsonSerializerOptions;

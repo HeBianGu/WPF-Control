@@ -13,6 +13,7 @@
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
             </Setter.Value>
         </Setter>
+        <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Padding" Value="10,6" />
         <Setter Property="Template">
             <Setter.Value>

@@ -21,6 +21,8 @@ namespace H.Extensions.ViewModel
         TransactionCommand EditTransactionCommand { get; }
         RelayCommand ExportCommand { get; }
         bool IsBusy { get; set; }
+        bool UseMessage { get; set; }
+        bool UseOperationLog { get; set; }
         Type ModelType { get; }
         RelayCommand NextCommand { get; }
         RelayCommand PreviousCommand { get; }

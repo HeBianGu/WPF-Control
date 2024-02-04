@@ -7,6 +7,9 @@ using System;
 using System.Windows;
 using System.Windows.Media;
 using System.Text.Json;
+using H.Modules.Identity;
+using H.DataBases.Share;
+using H.Modules.Operation;
 
 namespace H.App.FileManager
 {
@@ -73,6 +76,28 @@ namespace H.App.FileManager
             });
 
             services.AddSingleton<IScheduledTaskService,ProjectSaveScheduledTaskService>();
+
+
+            //  Do ：身份认证
+            services.AddDbContextBySetting<IdentifyDataContext>();
+            services.AddSingleton<IStringRepository<hi_dd_user>, DbContextRepository<IdentifyDataContext, hi_dd_user>>();
+            services.AddUserViewPresenter();
+
+            services.AddSingleton<IStringRepository<hi_dd_role>, DbContextRepository<IdentifyDataContext, hi_dd_role>>();
+            services.AddRoleViewPresenter();
+
+            services.AddSingleton<IStringRepository<hi_dd_author>, DbContextRepository<IdentifyDataContext, hi_dd_author>>();
+            services.AddAuthorityViewPresenter();
+
+            //  Do ：操作日志
+            services.AddDbContextBySetting<OperationDataContext>();
+            services.AddSingleton<IStringRepository<hi_dd_operation>, DbContextRepository<OperationDataContext, hi_dd_operation>>();
+            services.AddOperationViewPresenter();
+
+            //  Do ：登录和注册页面
+            services.AddRegisterLoginViewPresenter();
+            services.AddLoginService();
+            services.AddRegisterService();
         }
 
         protected override void Configure(IApplicationBuilder app)
@@ -90,6 +115,8 @@ namespace H.App.FileManager
             });
 
             app.UseFFMpeg();
+
+            app.UseLogin();
         }
     }
 }

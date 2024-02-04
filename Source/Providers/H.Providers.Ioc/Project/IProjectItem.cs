@@ -11,5 +11,6 @@ namespace H.Providers.Ioc
         string Title { get; set; }
         string Path { get; set; }
         bool Close(out string message);
+        bool Delete(out string message);
     }
 }

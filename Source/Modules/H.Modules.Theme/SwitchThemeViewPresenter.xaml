@@ -3,17 +3,20 @@
                     xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
                     xmlns:local="clr-namespace:H.Modules.Theme">
     <DataTemplate DataType="{x:Type local:SwitchThemeViewPresenter}">
-        <ToggleButton Command="{Binding SwitchCommand}"
-                      CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=IsChecked}"
-                      IsChecked="{Binding Source={x:Static local:SwitchThemeOptions.Instance}, Path=IsDark}"
+        <ToggleButton IsChecked="{Binding Source={x:Static local:SwitchThemeOptions.Instance}, Path=IsDark}"
                       WindowChrome.IsHitTestVisibleInChrome="True">
+            <!--
+                Command="{Binding SwitchCommand}"
+                CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=IsChecked}"
+            -->
             <b:Interaction.Triggers>
                 <b:EventTrigger EventName="Loaded">
                     <b:InvokeCommandAction Command="{Binding LoadedCommand}" />
                 </b:EventTrigger>
             </b:Interaction.Triggers>
             <ToggleButton.Style>
-                <Style BasedOn="{StaticResource {x:Static ToggleButtonKeys.Geometry}}" TargetType="ToggleButton">
+                <Style BasedOn="{StaticResource {x:Static ToggleButtonKeys.Geometry}}"
+                       TargetType="ToggleButton">
                     <Style.Triggers>
                         <Trigger Property="IsChecked" Value="True">
                             <Setter Property="Content" Value="M797.240093 534.675991l0-47.738928 119.347319 0 0 47.738928L797.240093 534.675991zM704.149184 307.916084 787.692308 224.37296l33.417249 33.417249-83.543124 83.543124L704.149184 307.916084zM510.806527 128.895105l47.738928 0 0 119.347319-47.738928 0L510.806527 128.895105zM773.370629 510.806527c0 131.282051-107.412587 238.694639-238.694639 238.694639-131.282051 0-238.694639-107.412587-238.694639-238.694639 0-131.282051 107.412587-238.694639 238.694639-238.694639C668.344988 272.111888 773.370629 379.524476 773.370629 510.806527zM343.72028 510.806527c0 105.025641 85.93007 190.955711 190.955711 190.955711 105.025641 0 190.955711-85.93007 190.955711-190.955711 0-105.025641-85.93007-190.955711-190.955711-190.955711C429.65035 319.850816 343.72028 405.780886 343.72028 510.806527zM248.242424 257.79021l33.417249-33.417249 83.543124 83.543124-33.417249 33.417249L248.242424 257.79021zM272.111888 534.675991l-119.347319 0 0-47.738928 119.347319 0L272.111888 534.675991zM367.589744 713.69697l-83.543124 83.543124L248.242424 763.822844l83.543124-83.543124L367.589744 713.69697zM558.545455 892.717949l-47.738928 0 0-119.347319 47.738928 0L558.545455 892.717949zM823.496503 763.822844 787.692308 799.62704l-83.543124-83.543124 33.417249-33.417249L823.496503 763.822844z" />

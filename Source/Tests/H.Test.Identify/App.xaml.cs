@@ -32,15 +32,11 @@ namespace H.Test.Identify
             services.AddAdornerDialogMessage();
             services.AddFormMessageService();
             //services.AddLoginViewPresenter();
-            services.AddRegisterLoginViewPresenter();
-            services.AddSplashScreen();
 
+            //  Do ：身份认证
             services.AddDbContextBySetting<IdentifyDataContext>();
-
             services.AddSingleton<IStringRepository<hi_dd_user>, DbContextRepository<IdentifyDataContext, hi_dd_user>>();
             services.AddUserViewPresenter();
-            services.AddLoginService();
-            services.AddRegisterService();
 
             services.AddSingleton<IStringRepository<hi_dd_role>, DbContextRepository<IdentifyDataContext, hi_dd_role>>();
             services.AddRoleViewPresenter();
@@ -48,9 +44,19 @@ namespace H.Test.Identify
             services.AddSingleton<IStringRepository<hi_dd_author>, DbContextRepository<IdentifyDataContext, hi_dd_author>>();
             services.AddAuthorityViewPresenter();
 
+            //  Do ：操作日志
             services.AddDbContextBySetting<OperationDataContext>();
             services.AddSingleton<IStringRepository<hi_dd_operation>, DbContextRepository<OperationDataContext, hi_dd_operation>>();
             services.AddOperationViewPresenter();
+
+            //  Do ：登录和注册页面
+            services.AddRegisterLoginViewPresenter();
+            services.AddLoginService();
+            services.AddRegisterService();
+
+            services.AddSplashScreen();
+
+            services.AddSwitchThemeViewPresenter();
         }
 
         protected override void Configure(IApplicationBuilder app)
@@ -58,6 +64,8 @@ namespace H.Test.Identify
             base.Configure(app);
             app.UseLogin();
             app.UseRegistor(x => x.UseMail = false);
+            app.UseTheme();
+            app.UseSwithTheme();
         }
     }
 }

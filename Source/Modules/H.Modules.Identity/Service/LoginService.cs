@@ -4,8 +4,7 @@
 using H.Modules.Identity;
 using H.Providers.Ioc;
 using H.Providers.Mvvm;
-
-
+using Microsoft.Extensions.Options;
 using System;
 using System.Linq;
 
@@ -13,6 +12,11 @@ namespace H.Modules.Identity
 {
     internal class LoginService : ViewModelBase, ILoginService
     {
+        private readonly IOptions<IdentifyOptions> _options;
+        public LoginService(IOptions<IdentifyOptions> options)
+        {
+            _options = options;
+        }
         private IUser _user;
         public IUser User
         {

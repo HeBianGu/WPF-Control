@@ -16,7 +16,7 @@ using System.Xml.Serialization;
 namespace H.Modules.Theme
 {
     [Display(Name = "主题设置", GroupName = SettingGroupNames.GroupSystem, Description = "登录页面设置的信息")]
-    public class ThemeSetting : Settable<ThemeSetting>
+    public class ThemeSetting : Settable<ThemeSetting>, ILoginedSplashLoad
     {
         public ThemeSetting()
         {
@@ -75,7 +75,7 @@ namespace H.Modules.Theme
 
         public override bool Load(out string message)
         {
-            var r= base.Load(out message);
+            var r = base.Load(out message);
             this.ColorResource = this.ColorResources[this.ColorResourceSelectedIndex];
             this.RefreshTheme();
             return r;
@@ -97,5 +97,11 @@ namespace H.Modules.Theme
                 return this.ColorResources.Any(l => l.Resource.Source == x.Source);
             });
         }
+
+        protected virtual string GetDefaultFolder()
+        {
+            return AppPaths.Instance.UserSetting;
+        }
+
     }
 }

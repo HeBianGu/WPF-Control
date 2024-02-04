@@ -56,23 +56,25 @@ namespace H.Modules.Login
 
         public bool Valid()
         {
-            if (this.Password != this.VerifyPassword)
+            if (string.IsNullOrEmpty(this.UserName))
             {
-                this.Message = "两次输入的密码不匹配";
+                this.Message = "用户名不能为空";
                 return false;
             }
 
-            if (string.IsNullOrEmpty(this.UserName))
-            {
-                this.Message = "密码不能为空";
-                return false;
-            }
 
             if (string.IsNullOrEmpty(this.Password))
             {
                 this.Message = "密码不能为空";
                 return false;
             }
+
+            if (this.Password != this.VerifyPassword)
+            {
+                this.Message = "两次输入的密码不匹配";
+                return false;
+            }
+
             return true;
         }
 

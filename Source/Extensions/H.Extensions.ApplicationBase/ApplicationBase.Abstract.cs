@@ -1,6 +1,5 @@
 ﻿using H.Extensions.Common;
 using H.Providers.Ioc;
-using H.Providers.Ioc.Login;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -54,7 +53,11 @@ namespace H.Extensions.ApplicationBase
                     if (s != null)
                         s.Message = "正在加载设置数据...";
                     //  Do ：加载设置参数
-                    bool r = SettingDataManager.Instance.Load(out string message);
+                    bool r = SettingDataManager.Instance.Load(x =>
+                    {
+                        if (s != null)
+                            s.Message = $"正在加载设置<{x.Name}>数据...";
+                    }, out string message);
                     if (r == false)
                         s.Message = message;
                     Thread.Sleep(sleep);
@@ -113,9 +116,9 @@ namespace H.Extensions.ApplicationBase
             }
             else
             {
-                bool r = SettingDataManager.Instance.Load(out string message);
-                if (r == false)
-                    IocMessage.Window.Show(message);
+                //bool r = SettingDataManager.Instance.Load(null, out string message);
+                //if (r == false)
+                //    IocMessage.Window.Show(message);
                 bool? fr = func.Invoke(null, null);
                 if (fr == false)
                     throw new ArgumentException("初始化数据异常，请看日志");
@@ -148,14 +151,28 @@ namespace H.Extensions.ApplicationBase
             }
 
             {
-                var loads = Ioc.GetAssignableFromServices<ISplashLoad>().Distinct().OfType<ILoginedSplashLoad>();
-                if (loads.Count() == 0)
-                    return;
+             
                 int sleep = 1000;
                 var presenter = Ioc.Services.GetService<ILoginedSplashViewPresenter>();
                 Func<IDialog, ILoginedSplashViewPresenter, bool?> func = (c, s) =>
                 {
+                    if (c?.IsCancel != true)
+                    {
+                        if (s != null)
+                            s.Message = "正在加载用户设置数据...";
+                        //  Do ：加载设置参数
+                        bool r = SettingDataManager.Instance.LoadLoginedLoad(x =>
+                        {
+                            if (s != null)
+                                s.Message = $"正在加载设置<{x.Name}>数据...";
+                            Thread.Sleep(20);
+                        },out string message);
+                        if (r == false)
+                            s.Message = message;
+                        Thread.Sleep(sleep);
+                    }
 
+                    var loads = Ioc.GetAssignableFromServices<ISplashLoad>().Distinct().OfType<ILoginedSplashLoad>();
                     int index = 0;
                     foreach (ILoginedSplashLoad load in loads)
                     {
@@ -188,8 +205,8 @@ namespace H.Extensions.ApplicationBase
                     {
                         return IocMessage.Window.ShowAction(presenter, x =>
                         {
-                            x.DialogButton = DialogButton.Cancel;
-                            x.Title = $"正在加载[{Ioc<ILoginService>.Instance?.User?.Account}]用户数据";
+                            x.DialogButton = DialogButton.None;
+                            x.Title = Ioc<ILoginService>.Instance?.User?.Account;
                             //x.Width = 500;
                             x.MinHeight = 0.0;
                             x.Height = double.NaN;

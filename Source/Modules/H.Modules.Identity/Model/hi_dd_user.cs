@@ -107,8 +107,34 @@ namespace H.Modules.Identity
             }
         }
 
+        private DateTime _lastLoginTime;
+        [Display(Name = "最近登录时间")]
+        [Column("last_login_time", Order = 6)]
+        public DateTime LastLoginTime
+        {
+            get { return _lastLoginTime; }
+            set
+            {
+                _lastLoginTime = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        private DateTime _license_deadline;
+        [Display(Name = "许可截止时间")]
+        [Column("license_deadline", Order = 7)]
+        public DateTime LicenseDeadline
+        {
+            get { return _license_deadline; }
+            set
+            {
+                _license_deadline = value;
+                RaisePropertyChanged();
+            }
+        }
+
         [Browsable(false)]
-        [Column("role_id", Order = 6)]
+        [Column("role_id", Order = 8)]
         //[Binding("Role.ID")]
         public string RoleID { get; set; }
 
@@ -116,7 +142,7 @@ namespace H.Modules.Identity
         [XmlIgnore]
         //[Required]
         [Display(Name = "角色")]
-        [Column("role", Order = 7)]
+        [Column("role", Order = 9)]
         [DataGridColumn("*", PropertyPath = "{0}.Name")]
         [BindingGetSelectSourceMethod(nameof(GetRoles))]
         [PropertyItemType(Type = typeof(OnlyComboBoxSelectSourcePropertyItem))]

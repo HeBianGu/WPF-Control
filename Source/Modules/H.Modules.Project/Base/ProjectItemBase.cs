@@ -1,11 +1,13 @@
 ﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
 
 
+using H.Modules.Login;
 using H.Providers.Ioc;
 using H.Providers.Mvvm;
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 
 namespace H.Modules.Project
 {
@@ -96,6 +98,32 @@ namespace H.Modules.Project
         public virtual bool Close(out string message)
         {
             message = null;
+            return true;
+        }
+
+        public virtual string GetFilePath()
+        {
+            return System.IO.Path.Combine(this.Path, this.Title + "" + ProjectOptions.Instance.Extenstion);
+        }
+
+        public virtual void Dispose()
+        {
+
+        }
+
+        public virtual bool Delete(out string message)
+        {
+            var r = this.Close(out message);
+            if (r == false)
+                return false;
+            if (File.Exists(this.Path))
+                File.Delete(this.Path);
+            if (!string.IsNullOrEmpty(this.Path))
+            {
+                var find = this.GetFilePath();
+                if (File.Exists(find))
+                    File.Delete(find);
+            }
             return true;
         }
     }

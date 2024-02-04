@@ -3,6 +3,7 @@
 
 
 using H.Providers.Ioc;
+using Microsoft.Extensions.Options;
 using System;
 using System.Security.Principal;
 using System.Text.RegularExpressions;
@@ -11,13 +12,14 @@ namespace H.Modules.Identity
 {
     internal class RegisterService : IRegisterService
     {
-        IStringRepository<hi_dd_user> _repository;
-
-        public RegisterService(IStringRepository<hi_dd_user> repository)
+        private readonly IOptions<IdentifyOptions> _options;
+        private readonly IStringRepository<hi_dd_user> _repository;
+        public RegisterService(IStringRepository<hi_dd_user> repository, IOptions<IdentifyOptions> options)
         {
             _repository = repository;
+            _options = options;
         }
-        private Random random = new Random();
+
         public bool Register(string mail, string account, string password, out string message)
         {
             message = null;
@@ -41,7 +43,7 @@ namespace H.Modules.Identity
                 return false;
             }
 
-            if(Regex.Match(account, @"^[a-zA-Z][a-zA-Z0-9_]{4,15}$").Success==false)
+            if (Regex.Match(account, @"^[a-zA-Z][a-zA-Z0-9_]{4,15}$").Success == false)
             {
                 message = "账号不合法，字母开头，允许5-16字节，允许字母数字下划线";
                 return false;
@@ -52,13 +54,14 @@ namespace H.Modules.Identity
                 message = "密码不合法，以字母开头，长度在6~18之间，只能包含字母、数字和下划线";
                 return false;
             }
-            
+
             hi_dd_user user = new hi_dd_user()
             {
                 Account = account,
                 Mail = mail,
-                Password = password
-
+                Password = password,
+                Enable = !_options.Value.UseAdiminCheckOnRegister,
+                LicenseDeadline = DateTime.Now.Add(_options.Value.UserLicenseDefaultTryTime)
             };
             _repository.Insert(user, true);
             Ioc<IOperationService>.Instance?.Log<hi_dd_user>("用户注册", $"{user.Account}");
@@ -99,7 +102,6 @@ namespace H.Modules.Identity
                 return false;
             }
 
-         
             hasUser.Password = password;
             //_repository.Update(hasUser,true);
             _repository.Save();

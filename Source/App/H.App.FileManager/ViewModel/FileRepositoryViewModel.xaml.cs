@@ -25,6 +25,7 @@ namespace H.App.FileManager
         public FileRepositoryViewModel()
         {
             this.UseMessage = false;
+            this.UseOperationLog = false;
             this.Collection.PageCount = 100;
 
             this.UpdateCommands = this.Commands.OfType<IRelayCommand>().Where(x => x.GroupName == "更新").ToObservable();
@@ -304,9 +305,11 @@ namespace H.App.FileManager
             {
                 if (File.Exists(item.Model.Url))
                     File.Delete(item.Model.Url);
-                this.Delete(item).Wait();
+                this.Repository.Delete(item.Model);
+                //this.Delete(item).Wait();
                 return Tuple.Create(true, item.Model.Name);
             });
+            this.Collection.Remove(this.Collection.FilterSource.ToArray());
         }, x => this.Collection.FilterSource.Count > 0);
 
         [Display(Name = "移除当前筛选的文件", GroupName = "更新")]
@@ -318,9 +321,11 @@ namespace H.App.FileManager
 
             await IocMessage.Dialog.ShowForeach(() => this.Collection.FilterSource, item =>
             {
-                this.Delete(item).Wait();
+                this.Repository.Delete(item.Model);
+                //filtersfilters
                 return Tuple.Create(true, item.Model.Name);
             });
+            this.Collection.Remove(this.Collection.FilterSource.ToArray());
         }, x => this.Collection.FilterSource.Count > 0);
 
         [Display(Name = "移除评分低于1的文件", GroupName = "更新")]
@@ -331,9 +336,10 @@ namespace H.App.FileManager
                 return;
             await IocMessage.Dialog.ShowForeach(() => this.Collection.FilterSource.Where(x => x.Model.Score < 1), item =>
             {
-                this.Delete(item).Wait();
+                this.Repository.Delete(item.Model);
                 return Tuple.Create(true, item.Model.Name);
             });
+            this.Collection.RemoveAll(x => x.Model.Score < 1);
         }, x => this.Collection.FilterSource.Where(x => x.Model.Score < 1).Count() > 0);
 
         [Display(Name = "彻底删除评分低于1的文件", GroupName = "更新")]
@@ -346,9 +352,10 @@ namespace H.App.FileManager
             {
                 if (File.Exists(item.Model.Url))
                     File.Delete(item.Model.Url);
-                this.Delete(item).Wait();
+                this.Repository.Delete(item.Model);
                 return Tuple.Create(true, item.Model.Name);
             });
+            this.Collection.RemoveAll(x => x.Model.Score < 1);
         }, x => this.Collection.FilterSource.Where(x => x.Model.Score < 1).Count() > 0);
 
         [Browsable(false)]
@@ -366,7 +373,8 @@ namespace H.App.FileManager
         [Browsable(false)]
         public RelayCommand MouseDoubleClickCommand => new RelayCommand(async (s, e) =>
         {
-            if (e is fm_dd_file file)
+            var file = e is fm_dd_file item ? item : this.Collection.SelectedItem.Model;
+            if (file != null)
             {
                 this.History.Add(file);
                 var view = Ioc.GetService<IFileToViewService>().ToView(file);

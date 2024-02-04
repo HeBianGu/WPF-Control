@@ -5,18 +5,24 @@
                     xmlns:local="clr-namespace:H.App.FileManager">
     <DataTemplate DataType="{x:Type local:FileRepositoryViewModel}">
         <DockPanel>
-            <DockPanel DockPanel.Dock="Top" LastChildFill="False">
-                <DockPanel VerticalAlignment="Center" Background="{DynamicResource {x:Static h:BrushKeys.MouseOver}}">
-                    <Button Command="{Binding RefreshCommand}" Content="加载文件" />
-                    <ToggleButton Content="{x:Static h:Geometrys.Down}" Style="{DynamicResource {x:Static h:ToggleButtonKeys.Geometry}}">
+            <DockPanel DockPanel.Dock="Top"
+                       LastChildFill="False">
+                <DockPanel VerticalAlignment="Center"
+                           Background="{DynamicResource {x:Static h:BrushKeys.MouseOver}}">
+                    <Button Command="{Binding RefreshCommand}"
+                            Content="加载文件" />
+                    <ToggleButton Content="{x:Static h:Geometrys.Down}"
+                                  Style="{DynamicResource {x:Static h:ToggleButtonKeys.Geometry}}">
                         <b:Interaction.Behaviors>
                             <h:MouseOverContextMenuBehavior />
                         </b:Interaction.Behaviors>
                         <Control.ContextMenu>
-                            <ContextMenu ItemsSource="{Binding UpdateCommands}" StaysOpen="True">
+                            <ContextMenu ItemsSource="{Binding UpdateCommands}"
+                                         StaysOpen="True">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <MenuItem Command="{Binding .}" Header="{Binding Name}" />
+                                        <MenuItem Command="{Binding .}"
+                                                  Header="{Binding Name}" />
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
                             </ContextMenu>
@@ -27,8 +33,10 @@
                 <DockPanel Margin="2,0"
                            VerticalAlignment="Center"
                            Background="{DynamicResource {x:Static h:BrushKeys.MouseOver}}">
-                    <Button Command="{Binding RefreshCommand}" Content="更多操作" />
-                    <ToggleButton Content="{x:Static h:Geometrys.Down}" Style="{DynamicResource {x:Static h:ToggleButtonKeys.Geometry}}">
+                    <Button Command="{Binding RefreshCommand}"
+                            Content="更多操作" />
+                    <ToggleButton Content="{x:Static h:Geometrys.Down}"
+                                  Style="{DynamicResource {x:Static h:ToggleButtonKeys.Geometry}}">
                         <b:Interaction.Behaviors>
                             <h:MouseOverContextMenuBehavior />
                         </b:Interaction.Behaviors>
@@ -36,7 +44,8 @@
                             <ContextMenu ItemsSource="{Binding MoreCommands}">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <MenuItem Command="{Binding .}" Header="{Binding Name}" />
+                                        <MenuItem Command="{Binding .}"
+                                                  Header="{Binding Name}" />
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
                             </ContextMenu>
@@ -92,7 +101,8 @@
 
             <!--<ContentPresenter Content="{Ioc Type={x:Type IProjectViewPresenter}}" DockPanel.Dock="Bottom" />-->
 
-            <DockPanel Margin="10" DockPanel.Dock="Bottom">
+            <DockPanel Margin="10"
+                       DockPanel.Dock="Bottom">
                 <TextBlock VerticalAlignment="Center">
                     <Run Text=" 合计：" />
                     <Run Text="{Binding Collection.FilterSource.Count, Mode=OneWay}" />
@@ -107,6 +117,12 @@
 
             <Grid>
                 <Control>
+                    <b:Interaction.Triggers>
+                        <b:EventTrigger EventName="MouseDoubleClick">
+                            <b:InvokeCommandAction Command="{Binding MouseDoubleClickCommand}"
+                                                   CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=SelectedItem.Model}" />
+                        </b:EventTrigger>
+                    </b:Interaction.Triggers>
                     <Control.Template>
                         <ControlTemplate>
                             <Grid Background="Transparent">
@@ -116,11 +132,13 @@
                                                  StaysOpen="True">
                                         <ItemsControl.ItemTemplate>
                                             <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
-                                                <TextBlock VerticalAlignment="Center" Text="{Binding}" />
+                                                <TextBlock VerticalAlignment="Center"
+                                                           Text="{Binding}" />
                                             </HierarchicalDataTemplate>
                                         </ItemsControl.ItemTemplate>
                                         <ContextMenu.ItemContainerStyle>
-                                            <Style BasedOn="{StaticResource {x:Static h:MenuItemKeys.Default}}" TargetType="MenuItem">
+                                            <Style BasedOn="{StaticResource {x:Static h:MenuItemKeys.Default}}"
+                                                   TargetType="MenuItem">
                                                 <Setter Property="Command" Value="{Binding Model}" />
                                                 <Setter Property="Header" Value="{Binding Model.Name}" />
                                                 <Setter Property="IsCheckable" Value="{Binding IsCheckable, Mode=TwoWay}" />
@@ -164,6 +182,7 @@
                                                     BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
                                                     BorderThickness="1"
                                                     CornerRadius="2">
+
                                                 <DockPanel x:Name="dp"
                                                            Width="200"
                                                            Height="200">
@@ -172,27 +191,33 @@
                                                                Text="{Binding Model.Name}"
                                                                TextTrimming="CharacterEllipsis"
                                                                ToolTip="{Binding Model.Url}" />
-                                                    <ContentPresenter Content="{Binding Model}" />
+                                                    <Image Source="{Binding Model, Converter={local:GetFileImageSourceConverter}}"
+                                                           Stretch="{Binding Source={x:Static local:AppSetting.Instance}, Path=Stretch}" />
                                                 </DockPanel>
                                             </Border>
                                             <DataTemplate.Triggers>
-                                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=ViewSizeMode}" Value="Auto">
+                                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=ViewSizeMode}"
+                                                             Value="Auto">
                                                     <Setter TargetName="dp" Property="Width" Value="Auto" />
                                                     <Setter TargetName="dp" Property="Height" Value="Auto" />
                                                 </DataTrigger>
-                                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=ViewSizeMode}" Value="ExtraLarge">
+                                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=ViewSizeMode}"
+                                                             Value="ExtraLarge">
                                                     <Setter TargetName="dp" Property="Width" Value="600" />
                                                     <Setter TargetName="dp" Property="Height" Value="600" />
                                                 </DataTrigger>
-                                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=ViewSizeMode}" Value="Large">
+                                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=ViewSizeMode}"
+                                                             Value="Large">
                                                     <Setter TargetName="dp" Property="Width" Value="400" />
                                                     <Setter TargetName="dp" Property="Height" Value="400" />
                                                 </DataTrigger>
-                                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=ViewSizeMode}" Value="Small">
+                                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=ViewSizeMode}"
+                                                             Value="Small">
                                                     <Setter TargetName="dp" Property="Width" Value="100" />
                                                     <Setter TargetName="dp" Property="Height" Value="100" />
                                                 </DataTrigger>
-                                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=ViewSizeMode}" Value="ExtraSmall">
+                                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=ViewSizeMode}"
+                                                             Value="ExtraSmall">
                                                     <Setter TargetName="dp" Property="Width" Value="50" />
                                                     <Setter TargetName="dp" Property="Height" Value="50" />
                                                 </DataTrigger>
@@ -205,7 +230,8 @@
                                         </ItemsPanelTemplate>
                                     </ItemsControl.ItemsPanel>
                                     <ListBox.ItemContainerStyle>
-                                        <Style BasedOn="{StaticResource {x:Static h:ListBoxItemKeys.Default}}" TargetType="ListBoxItem">
+                                        <Style BasedOn="{StaticResource {x:Static h:ListBoxItemKeys.Default}}"
+                                               TargetType="ListBoxItem">
                                             <Setter Property="Padding" Value="2" />
                                         </Style>
                                     </ListBox.ItemContainerStyle>
@@ -214,7 +240,7 @@
                                 <h:GridSplitterBox x:Name="lb_view"
                                                    MenuMaxWidth="300"
                                                    MenuMinWidth="120"
-                                                   Mode="Extend"
+                                                   Mode="Hidden"
                                                    Visibility="Collapsed">
                                     <h:GridSplitterBox.MenuContent>
                                         <ListBox h:Cattach.ItemHeight="Auto"
@@ -225,14 +251,17 @@
                                                  SelectedItem="{Binding Collection.SelectedItem}">
                                             <b:Interaction.Triggers>
                                                 <b:EventTrigger EventName="SelectionChanged">
-                                                    <b:InvokeCommandAction Command="{Binding SelectionChangedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=SelectedItem.Model}" />
+                                                    <b:InvokeCommandAction Command="{Binding SelectionChangedCommand}"
+                                                                           CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=SelectedItem.Model}" />
                                                 </b:EventTrigger>
                                                 <b:EventTrigger EventName="MouseDoubleClick">
-                                                    <b:InvokeCommandAction Command="{Binding MouseDoubleClickCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=SelectedItem.Model}" />
+                                                    <b:InvokeCommandAction Command="{Binding MouseDoubleClickCommand}"
+                                                                           CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=SelectedItem.Model}" />
                                                 </b:EventTrigger>
                                             </b:Interaction.Triggers>
                                             <ListBox.ItemContainerStyle>
-                                                <Style BasedOn="{StaticResource {x:Static h:ListBoxItemKeys.Default}}" TargetType="ListBoxItem">
+                                                <Style BasedOn="{StaticResource {x:Static h:ListBoxItemKeys.Default}}"
+                                                       TargetType="ListBoxItem">
                                                     <Setter Property="BorderThickness" Value="1" />
                                                     <Setter Property="Margin" Value="1" />
                                                     <Setter Property="Padding" Value="5" />
@@ -258,13 +287,16 @@
                                 </h:GridSplitterBox>
                             </Grid>
                             <ControlTemplate.Triggers>
-                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=DisplayMode}" Value="DataGrid">
+                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=DisplayMode}"
+                                             Value="DataGrid">
                                     <Setter TargetName="dg" Property="Visibility" Value="Visible" />
                                 </DataTrigger>
-                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=DisplayMode}" Value="ListBox">
+                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=DisplayMode}"
+                                             Value="ListBox">
                                     <Setter TargetName="lb" Property="Visibility" Value="Visible" />
                                 </DataTrigger>
-                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=DisplayMode}" Value="View">
+                                <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=DisplayMode}"
+                                             Value="View">
                                     <Setter TargetName="lb_view" Property="Visibility" Value="Visible" />
                                 </DataTrigger>
                             </ControlTemplate.Triggers>

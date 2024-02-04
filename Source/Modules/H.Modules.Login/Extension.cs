@@ -18,13 +18,15 @@ namespace System
             return services;
         }
 
-        public static IServiceCollection AddRegisterLoginViewPresenter(this IServiceCollection services, Action<LoginOptions> setupAction = null)
+        public static IServiceCollection AddRegisterLoginViewPresenter(this IServiceCollection services, Action<LoginOptions> setupAction = null, Action<RegistorOptions> setupRegisterAction = null)
         {
             services.AddOptions();
             services.TryAdd(ServiceDescriptor.Singleton<ILoginViewPresenter, RigisterLoginViewPresenter>());
             services.TryAdd(ServiceDescriptor.Singleton<ILoginedSplashViewPresenter, LoginedSplashViewPresenter>());
             if (setupAction != null)
                 services.Configure(setupAction);
+            if (setupRegisterAction != null)
+                services.Configure(setupRegisterAction);
             return services;
         }
 
@@ -45,7 +47,6 @@ namespace System
                 services.Configure(setupAction);
             return services;
         }
-
 
         public static IApplicationBuilder UseLogin(this IApplicationBuilder builder, Action<LoginOptions> option = null)
         {

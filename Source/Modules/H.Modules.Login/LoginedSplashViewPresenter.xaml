@@ -4,7 +4,7 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Modules.Login">
     <DataTemplate DataType="{x:Type local:LoginedSplashViewPresenter}">
-        <TextBlock Margin="20"
+        <TextBlock Margin="10,6,10,20"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    FontSize="15"

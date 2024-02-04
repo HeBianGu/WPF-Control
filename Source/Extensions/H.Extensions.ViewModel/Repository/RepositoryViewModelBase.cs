@@ -12,6 +12,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -103,7 +104,6 @@ namespace H.Extensions.ViewModel
         }
 
         private bool _useMessage = true;
-        /// <summary> 说明  </summary>
         public bool UseMessage
         {
             get { return _useMessage; }
@@ -113,6 +113,18 @@ namespace H.Extensions.ViewModel
                 RaisePropertyChanged();
             }
         }
+
+        private bool _useoperationLog = true;
+        public bool UseOperationLog
+        {
+            get { return _useoperationLog; }
+            set
+            {
+                _useoperationLog = value;
+                RaisePropertyChanged();
+            }
+        }
+
 
         public IStringRepository<TEntity> Repository => DbIoc.GetService<IStringRepository<TEntity>>();
         //public IStringRepository<TEntity> Repository => ServiceRegistry.Instance.GetAllAssignableFrom<IStringRepository<TEntity>>()?.FirstOrDefault();
@@ -424,7 +436,8 @@ namespace H.Extensions.ViewModel
             {
                 IocMessage.Snack?.ShowInfo("保存失败，数据库保存错误");
             }
-            Ioc<IOperationService>.Instance?.Log<TEntity>($"编辑", entity.ID, OperationType.Update);
+            if (this.UseOperationLog)
+                Ioc<IOperationService>.Instance?.Log<TEntity>($"编辑", entity.ID, OperationType.Update);
         }
 
         public virtual async Task Delete(object obj)
@@ -458,7 +471,8 @@ namespace H.Extensions.ViewModel
             {
                 IocMessage.Snack?.ShowInfo("删除失败,数据库保存错误");
             }
-            Ioc<IOperationService>.Instance?.Log<TEntity>($"新增", entity.ID, OperationType.Delete);
+            if (this.UseOperationLog)
+                Ioc<IOperationService>.Instance?.Log<TEntity>($"新增", entity.ID, OperationType.Delete);
             this.OnCollectionChanged(obj);
         }
 
@@ -489,7 +503,8 @@ namespace H.Extensions.ViewModel
             {
                 IocMessage.Snack?.ShowInfo("清空失败,数据库保存错误");
             }
-            Ioc<IOperationService>.Instance?.Log<TEntity>($"清空", null, OperationType.Delete);
+            if (this.UseOperationLog)
+                Ioc<IOperationService>.Instance?.Log<TEntity>($"清空", null, OperationType.Delete);
             this.OnCollectionChanged(obj);
         }
 
@@ -499,7 +514,8 @@ namespace H.Extensions.ViewModel
             if (entity == null)
                 return;
             await IocMessage.Form.ShowView(this.GetViewModel(entity));
-            Ioc<IOperationService>.Instance?.Log<TEntity>($"查看", entity.ID, OperationType.Search);
+            if (this.UseOperationLog)
+                Ioc<IOperationService>.Instance?.Log<TEntity>($"查看", entity.ID, OperationType.Search);
             this.OnCollectionChanged(obj);
         }
 
@@ -535,21 +551,27 @@ namespace H.Extensions.ViewModel
                 return;
 
             List<TEntity> checks = this.Collection.Where(k => k.IsSelected).Select(x => x.Model)?.ToList();
-            int r = this.Repository == null ? 1 : await this.Repository.DeleteAsync(x => checks.Contains(x));
+            await this.DeleteAll(checks);
+        }
+
+        protected async Task DeleteAll(IEnumerable<TEntity> entities)
+        {
+            int r = this.Repository == null ? 1 : await this.Repository.DeleteAsync(x => entities.Contains(x));
             if (r > 0)
             {
-                IocMessage.Snack?.ShowInfo($"删除成功,共计{checks.Count()}条");
-                this.Collection.RemoveAll(x => checks.Contains(x.Model));
+                IocMessage.Snack?.ShowInfo($"删除成功,共计{entities.Count()}条");
+                this.Collection.RemoveAll(x => entities.Contains(x.Model));
             }
             else
             {
                 IocMessage.Snack?.ShowInfo("删除失败,数据库保存错误");
             }
-            foreach (TEntity item in checks)
-            {
-                Ioc<IOperationService>.Instance?.Log<TEntity>($"删除", item.ID, OperationType.Delete);
-            }
-            this.OnCollectionChanged(obj);
+            if (this.UseOperationLog)
+                foreach (TEntity item in entities)
+                {
+                    Ioc<IOperationService>.Instance?.Log<TEntity>($"删除", item.ID, OperationType.Delete);
+                }
+            this.OnCollectionChanged(entities);
         }
 
         #endregion 

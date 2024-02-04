@@ -8,7 +8,7 @@ using System;
 
 namespace H.App.FileManager
 {
-    public class FileProjectService : ProjectServiceBase<FileProjectItem>, IProjectService
+    public class FileProjectService : ProjectServiceBase<FileProjectItem>, IProjectService, ILoginedSplashLoad
     {
         private readonly IOptions<TagOptions> _tagOptions;
         private readonly IOptions<FavoriteOptions> _favoriteOptions;
@@ -23,9 +23,9 @@ namespace H.App.FileManager
             return new FileProjectItem()
             {
                 Title = DateTime.Now.ToString("yyyyMMddHHmmss"),
-                Path = AppPaths.Instance.Project,
+                Path = this.GetFolderPath(),
                 Tags = _tagOptions.Value.Tags.ToObservable(),
-                FavoriteItems= _favoriteOptions.Value.FavoriteItems.ToObservable()
+                FavoriteItems = _favoriteOptions.Value.FavoriteItems.ToObservable()
             };
         }
     }

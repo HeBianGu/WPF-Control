@@ -90,10 +90,19 @@ namespace H.App.FileManager
             }
         }
 
-
+        private bool _favorite;
         [DataGridColumn("Auto")]
         [Display(Name = "喜欢")]
-        public bool Favorite { get; set; }
+        public bool Favorite
+        {
+            get { return _favorite; }
+            set
+            {
+                _favorite = value;
+                RaisePropertyChanged();
+            }
+        }
+
 
         private string _favoritePath;
         [DataGridColumn("Auto")]

@@ -25,6 +25,8 @@ namespace H.Test.Project
             services.AddFormMessageService();
             services.AddProject<UserProjectService>();
 
+
+            //  Do ：根据登录用户加载不同工程
             //services.AddLoginViewPresenter();
             //services.AddTestLoginService();
             services.AddWindowMessage();

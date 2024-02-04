@@ -15,6 +15,13 @@ namespace System
             return builder;
         }
 
+        public static IApplicationBuilder UseSwithTheme(this IApplicationBuilder builder, Action<SwitchThemeOptions> option = null)
+        {
+            SettingDataManager.Instance.Add(SwitchThemeOptions.Instance);
+            option?.Invoke(SwitchThemeOptions.Instance);
+            return builder;
+        }
+
         public static IServiceCollection AddSwitchThemeViewPresenter(this IServiceCollection services, Action<SwitchThemeOptions> setupAction = null)
         {
             services.AddOptions();

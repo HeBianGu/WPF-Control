@@ -69,7 +69,7 @@ namespace H.Extensions.Common
             if (!Directory.Exists(dirPath))
                 return ss;
             DirectoryInfo dir = new DirectoryInfo(dirPath);
-            foreach (FileSystemInfo d in dir.GetFileSystemInfos())
+            foreach (FileSystemInfo d in dir.GetFileSystemInfos().Where(d => !d.Attributes.HasFlag(FileAttributes.Hidden | FileAttributes.System)))
             {
                 if (d is DirectoryInfo)
                 {

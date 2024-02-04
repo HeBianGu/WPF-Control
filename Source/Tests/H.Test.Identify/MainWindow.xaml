@@ -25,6 +25,7 @@
             <DockPanel HorizontalAlignment="Right"
                        LastChildFill="False">
                 <ContentPresenter Content="{Ioc Type={x:Type ISettingButtonPresenter}}" />
+                <ContentPresenter Content="{Ioc Type={x:Type h:ISwitchThemeViewPresenter}}" />
             </DockPanel>
         </ControlTemplate>
     </h:MainWindow.CaptionTempate>

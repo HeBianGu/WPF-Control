@@ -102,7 +102,7 @@ namespace H.Modules.Project
             }
         }
 
-        public void Add(params T[] ts)
+        public virtual void Add(params T[] ts)
         {
             foreach (var item in ts)
             {
@@ -114,18 +114,19 @@ namespace H.Modules.Project
             }
         }
 
-        public void Delete(params T[] ts)
+        public virtual void Delete(params T[] ts)
         {
             foreach (var item in ts)
             {
-                if (File.Exists(item.Path))
-                    File.Delete(item.Path);
-                if (!string.IsNullOrEmpty(item.Path))
-                {
-                    var find = Path.Combine(item.Path, item.Title + "" + this._options.Value.Extenstion);
-                    if (File.Exists(find))
-                        File.Delete(find);
-                }
+                //if (File.Exists(item.Path))
+                //    File.Delete(item.Path);
+                //if (!string.IsNullOrEmpty(item.Path))
+                //{
+                //    var find = item.GetFilePath();
+                //    if (File.Exists(find))
+                //        File.Delete(find);
+                //}
+                item.Delete(out string message);
                 if (this.Collection is IList list)
                     list.Remove(item);
             }
@@ -147,7 +148,9 @@ namespace H.Modules.Project
             this.Delete(ps.ToArray());
         }
 
-        private string HistoryPath => System.IO.Path.Combine(AppPaths.Instance.UserProject, "Histroy.json");
+        private string HistoryPath => System.IO.Path.Combine(this.GetFolderPath(), "Histroy.json");
+
+        protected virtual string GetFolderPath() => AppPaths.Instance.UserProject;
 
         public virtual bool Load(out string message)
         {

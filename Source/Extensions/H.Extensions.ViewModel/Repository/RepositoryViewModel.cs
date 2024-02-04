@@ -76,7 +76,8 @@ namespace H.Extensions.ViewModel
                 foreach (TEntity m in ms)
                 {
                     this.Collection.Add(new SelectViewModel<TEntity>(m));
-                    Ioc<IOperationService>.Instance?.Log<TEntity>($"新增", m.ID, OperationType.Add);
+                    if (this.UseOperationLog)
+                        Ioc<IOperationService>.Instance?.Log<TEntity>($"新增", m.ID, OperationType.Add);
                 }
                 if (this.UseMessage)
                     IocMessage.Snack?.ShowInfo("新增成功");
@@ -94,10 +95,12 @@ namespace H.Extensions.ViewModel
                 if (this.UseMessage)
                     IocMessage.Snack?.ShowInfo("新增失败,数据库保存错误");
             }
-            foreach (TEntity m in ms)
-            {
-                Ioc<IOperationService>.Instance?.Log<TEntity>($"新增", m.ID, OperationType.Add);
-            }
+
+            if (this.UseOperationLog)
+                foreach (TEntity m in ms)
+                {
+                    Ioc<IOperationService>.Instance?.Log<TEntity>($"新增", m.ID, OperationType.Add);
+                }
         }
     }
 

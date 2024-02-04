@@ -21,7 +21,7 @@ namespace H.Providers.Ioc
             set { _settings = value; }
         }
 
-        public virtual bool Load(out string message)
+        public virtual bool Load(Action<ISettable> action,out string message)
         {
             message = null;
             List<string> list = new List<string>();
@@ -49,9 +49,21 @@ namespace H.Providers.Ioc
             this.Settings = new ObservableCollection<ISettable>(settings);
             foreach (ILoadable item in this.Settings.OfType<ILoadable>())
             {
+                action?.Invoke(item as ISettable);
                 item.Load(out message);
             }
 
+            return true;
+        }
+
+        public bool LoadLoginedLoad(Action<ISettable> action, out string message)
+        {
+            message = null;
+            foreach (ILoginedSplashLoad item in this.Settings.OfType<ILoginedSplashLoad>())
+            {
+                action?.Invoke(item as ISettable);
+                item.Load(out message);
+            }
             return true;
         }
 

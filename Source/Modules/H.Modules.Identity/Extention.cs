@@ -5,6 +5,7 @@ using H.Modules.Identity;
 using H.Providers.Ioc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.Collections.Generic;
 
 namespace System
@@ -30,13 +31,13 @@ namespace System
             service.AddSingleton<ILoginService, LoginService>();
         }
 
-        /// <summary>
-        /// 注册
-        /// </summary>
-        /// <param name="service"></param>
-        public static void AddRegisterService(this IServiceCollection service)
+        public static IServiceCollection AddRegisterService(this IServiceCollection services, Action<IdentifyOptions> setupAction = null)
         {
-            service.AddSingleton<IRegisterService, RegisterService>();
+            services.AddOptions();
+            services.TryAdd(ServiceDescriptor.Singleton<IRegisterService, RegisterService>());
+            if (setupAction != null)
+                services.Configure(setupAction);
+            return services;
         }
 
         /// <summary>
@@ -57,6 +58,13 @@ namespace System
         {
             service.AddSingleton<IRepositoryViewModel<hi_dd_author>, RepositoryViewModel<hi_dd_author>>();
             service.AddSingleton<IAuthorityViewPresenter, AuthorityViewPresenter>();
+        }
+
+        public static IApplicationBuilder UseIdentify(this IApplicationBuilder builder, Action<IdentifyOptions> option = null)
+        {
+            SettingDataManager.Instance.Add(IdentifyOptions.Instance);
+            option?.Invoke(IdentifyOptions.Instance);
+            return builder;
         }
 
         public static void BuildIdentifySeed(this ModelBuilder modelBuilder)
