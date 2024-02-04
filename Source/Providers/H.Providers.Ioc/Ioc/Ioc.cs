@@ -65,6 +65,14 @@ namespace System
             }
         }
 
+        //public static void BuildAll()
+        //{
+        //    foreach (ServiceDescriptor item in _serviceCollection)
+        //    {
+        //       Ioc.Services.GetService(item.ServiceType);
+        //    }
+        //}
+
         public static IEnumerable<T> GetAssignableFromServices<T>(Func<T, bool> predicate = null)
         {
             foreach (ServiceDescriptor item in _serviceCollection)
@@ -95,6 +103,18 @@ namespace System
                 }
             }
         }
+
+        //public static IEnumerable<T> GetImplementationInstances<T>(Func<T, bool> predicate = null)
+        //{
+        //    foreach (ServiceDescriptor item in _serviceCollection)
+        //    {
+        //        if (item.ImplementationInstance is T t)
+        //        {
+        //            if (predicate?.Invoke(t) != false)
+        //                yield return (T)item.ImplementationInstance;
+        //        }
+        //    }
+        //}
     }
 
     public abstract class Ioc<T, Interface> where T : class, Interface, new()

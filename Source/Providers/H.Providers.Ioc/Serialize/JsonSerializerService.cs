@@ -30,6 +30,10 @@ namespace H.Providers.Ioc
 
         public void Save(string filePath, object sourceObj, string xmlRootName = null)
         {
+            if(!Directory.Exists(Path.GetDirectoryName(filePath)))
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+            }
             string txt = JsonSerializer.Serialize(sourceObj, this.GetOptions());
             System.Diagnostics.Debug.WriteLine(txt);
             File.WriteAllText(filePath, txt);

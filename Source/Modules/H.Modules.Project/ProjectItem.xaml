@@ -24,6 +24,7 @@
 
                 </Grid>
                 <TextBlock FontSize="{DynamicResource {x:Static h:FontSizeKeys.Header6}}"
+                           FontWeight="Normal"
                            Foreground="{DynamicResource {x:Static h:BrushKeys.ForegroundAssist}}"
                            Text="{Binding Path}"
                            TextTrimming="CharacterEllipsis"

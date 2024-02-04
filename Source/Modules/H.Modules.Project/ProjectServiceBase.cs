@@ -91,12 +91,13 @@ namespace H.Modules.Project
             message = null;
             try
             {
-                this.GetSerializer().Save(ProjectOptions.Instance.HistoryPath, new ProjectHistroyData<T>() { ProjectItems = this.Collection.ToList() });
+                this.GetSerializer().Save(this.HistoryPath, new ProjectHistroyData<T>() { ProjectItems = this.Collection.ToList() });
                 return true;
             }
             catch (Exception ex)
             {
                 message = ex.Message;
+                IocLog.Instance?.Error(ex);
                 return false;
             }
         }
@@ -146,10 +147,12 @@ namespace H.Modules.Project
             this.Delete(ps.ToArray());
         }
 
+        private string HistoryPath => System.IO.Path.Combine(AppPaths.Instance.UserProject, "Histroy.json");
+
         public virtual bool Load(out string message)
         {
             message = string.Empty;
-            var data = this.GetSerializer().Load<ProjectHistroyData<T>>(ProjectOptions.Instance.HistoryPath);
+            var data = this.GetSerializer().Load<ProjectHistroyData<T>>(this.HistoryPath);
             this.Clear();
             if (data != null)
             {
@@ -172,6 +175,7 @@ namespace H.Modules.Project
         {
             if (this.Collection is IList list)
                 list.Clear();
+            this.Current = null;
         }
 
     }

@@ -10,7 +10,7 @@ namespace H.Modules.Login
     public class RegistorOptions : IocOptionInstance<RegistorOptions>
     {
         private bool _useMail;
-        [DefaultValue(true)]
+        [DefaultValue(false)]
         [Display(Name = "启用邮箱注册", Description = "启用邮箱注册")]
         public bool UseMail
         {

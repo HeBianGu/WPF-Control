@@ -34,23 +34,24 @@ namespace H.Modules.Login
             }
         }
 
-        private string _historyPath;
-        [Display(Name = "历史数据保存位置")]
-        public string HistoryPath
-        {
-            get { return _historyPath; }
-            set
-            {
-                _historyPath = value;
-                RaisePropertyChanged();
-            }
-        }
+        //private string _historyPath;
+        //[ReadOnly(true)]
+        //[Display(Name = "历史数据保存位置")]
+        //public string HistoryPath
+        //{
+        //    get { return _historyPath; }
+        //    set
+        //    {
+        //        _historyPath = value;
+        //        RaisePropertyChanged();
+        //    }
+        //}
 
 
-        public override void LoadDefault()
-        {
-            base.LoadDefault();
-            this.HistoryPath = System.IO.Path.Combine(AppPaths.Instance.Project, "Histroy.json");
-        }
+        //public override void LoadDefault()
+        //{
+        //    base.LoadDefault();
+        //    this.HistoryPath = System.IO.Path.Combine(AppPaths.Instance.UserProject, "Histroy.json");
+        //}
     }
 }

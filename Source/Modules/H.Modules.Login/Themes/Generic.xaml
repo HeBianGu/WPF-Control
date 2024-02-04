@@ -4,5 +4,6 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Modules.Login;component/LoginViewPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Modules.Login;component/RigisterLoginViewPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Modules.Login;component/LoginedSplashViewPresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

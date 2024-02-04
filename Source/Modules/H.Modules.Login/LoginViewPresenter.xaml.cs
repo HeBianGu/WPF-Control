@@ -18,7 +18,6 @@ namespace H.Modules.Login
         }
 
         private string _userName;
-        /// <summary> 说明  </summary>
         public string UserName
         {
             get { return _userName; }
@@ -31,7 +30,6 @@ namespace H.Modules.Login
 
 
         private string _password;
-        /// <summary> 说明  </summary>
         public string Password
         {
             get { return _password; }
@@ -101,9 +99,7 @@ namespace H.Modules.Login
                     }
                     dialog.Sumit();
                 }
-
             }
-
         });
     }
 }

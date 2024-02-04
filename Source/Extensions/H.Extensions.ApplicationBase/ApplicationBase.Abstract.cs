@@ -1,5 +1,6 @@
 ﻿using H.Extensions.Common;
 using H.Providers.Ioc;
+using H.Providers.Ioc.Login;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -59,29 +60,31 @@ namespace H.Extensions.ApplicationBase
                     Thread.Sleep(sleep);
                 }
 
-                if (c?.IsCancel != true)
                 {
+                    int index = 0;
+                    var loads = Ioc.GetAssignableFromServices<ISplashLoad>().Distinct();
+                    foreach (ISplashLoad load in loads)
                     {
-                        var loads = Ioc.GetAssignableFromServices<ISplashLoad>().Distinct();
-                        foreach (ISplashLoad load in loads)
-                        {
-                            if (load == null)
-                                continue;
+                        if (c?.IsCancel == true)
+                            return null;
 
-                            if (s != null)
-                                s.Message = $"正在加载{load.Name}...";
-                            bool r = load.Load(out string message);
-                            if (s != null && !string.IsNullOrEmpty(message))
-                                s.Message = message;
-                            if (r == false)
-                            {
-                                Thread.Sleep(sleep);
-                                return false;
-                            }
+                        if (load == null)
+                            continue;
+                        index++;
+                        if (s != null)
+                            s.Message = $"[{index}/{loads.Count()}]正在加载{load.Name}...";
+                        bool r = load.Load(out string message);
+                        if (s != null && !string.IsNullOrEmpty(message))
+                            s.Message = message;
+                        if (r == false)
+                        {
                             Thread.Sleep(sleep);
+                            return false;
                         }
+                        Thread.Sleep(sleep);
                     }
                 }
+
                 if (s != null)
                     s.Message = "加载完成";
                 Thread.Sleep(sleep);
@@ -124,22 +127,99 @@ namespace H.Extensions.ApplicationBase
         /// </summary>
         protected virtual void OnLogin(StartupEventArgs e)
         {
-            var presenter = Ioc.Services.GetService<ILoginViewPresenter>();
-            if (presenter == null)
-                return;
-            bool? r = IocMessage.Window.Show(presenter, x =>
             {
-                x.MinWidth = 400;
-                x.DialogButton = DialogButton.None;
-                x.Title = ApplicationProvider.Version;
-                if(x is Window w)
-                    w.SizeToContent= SizeToContent.WidthAndHeight;
-            }).Result;
-            if (r == false)
+                var presenter = Ioc.Services.GetService<ILoginViewPresenter>();
+                if (presenter == null)
+                    return;
+                bool? r = IocMessage.Window.Show(presenter, x =>
+                {
+                    x.MinWidth = 400;
+                    x.DialogButton = DialogButton.None;
+                    x.Title = ApplicationProvider.Version;
+                    if (x is Window w)
+                        w.SizeToContent = SizeToContent.WidthAndHeight;
+                }).Result;
+                if (r == false)
+                {
+                    IocLog.Instance?.Info("登录失败程序退出");
+                    this.Shutdown();
+                    return;
+                }
+            }
+
             {
-                IocLog.Instance?.Info("登录失败程序退出");
-                this.Shutdown();
-                return;
+                var loads = Ioc.GetAssignableFromServices<ISplashLoad>().Distinct().OfType<ILoginedSplashLoad>();
+                if (loads.Count() == 0)
+                    return;
+                int sleep = 1000;
+                var presenter = Ioc.Services.GetService<ILoginedSplashViewPresenter>();
+                Func<IDialog, ILoginedSplashViewPresenter, bool?> func = (c, s) =>
+                {
+
+                    int index = 0;
+                    foreach (ILoginedSplashLoad load in loads)
+                    {
+                        if (c?.IsCancel == true)
+                            return null;
+
+                        if (load == null)
+                            continue;
+                        index++;
+                        if (s != null)
+                            s.Message = $"[{index}/{loads.Count()}]正在加载用户数据<{load.Name}>...";
+                        bool r = load.Load(out string message);
+                        if (s != null && !string.IsNullOrEmpty(message))
+                            s.Message = message;
+                        if (r == false)
+                        {
+                            Thread.Sleep(sleep);
+                            return false;
+                        }
+                        Thread.Sleep(sleep);
+                    }
+                    if (s != null)
+                        s.Message = "用户数据加载完成";
+                    Thread.Sleep(sleep);
+                    return true;
+                };
+                if (presenter != null)
+                {
+                    bool? r = Dispatcher.Invoke(() =>
+                    {
+                        return IocMessage.Window.ShowAction(presenter, x =>
+                        {
+                            x.DialogButton = DialogButton.Cancel;
+                            x.Title = $"正在加载[{Ioc<ILoginService>.Instance?.User?.Account}]用户数据";
+                            //x.Width = 500;
+                            x.MinHeight = 0.0;
+                            x.Height = double.NaN;
+                            if (x is Window w)
+                                w.SizeToContent = SizeToContent.Height;
+                        }, func).Result;
+                    });
+                    if (r == false)
+                    {
+                        IocLog.Instance?.Info("加载用户数据异常");
+                        this.Shutdown();
+                        return;
+                    }
+                    if (r == null)
+                    {
+                        IocLog.Instance?.Info("用户取消登录加载用户数据操作");
+                        this.Shutdown();
+                        return;
+                    }
+                }
+                else
+                {
+                    bool? fr = func.Invoke(null, null);
+                    if (fr == false)
+                    {
+                        IocLog.Instance?.Info("加载用户数据异常");
+                        this.Shutdown();
+                        return;
+                    }
+                }
             }
         }
 

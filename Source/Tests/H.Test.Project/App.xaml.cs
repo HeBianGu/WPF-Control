@@ -1,4 +1,7 @@
-﻿using H.Extensions.ApplicationBase;
+﻿using H.DataBases.Share;
+using H.Extensions.ApplicationBase;
+using H.Modules.Identity;
+using H.Providers.Ioc;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -20,12 +23,26 @@ namespace H.Test.Project
         {
             services.AddAdornerDialogMessage();
             services.AddFormMessageService();
-            services.AddProject();
+            services.AddProject<UserProjectService>();
+
+            //services.AddLoginViewPresenter();
+            //services.AddTestLoginService();
+            services.AddWindowMessage();
+            services.AddRegisterLoginViewPresenter();
+            services.AddRegisterService();
+            services.AddLoginService();
+            services.AddDbContextBySetting<IdentifyDataContext>();
+            services.AddSingleton<IStringRepository<hi_dd_user>, DbContextRepository<IdentifyDataContext, hi_dd_user>>();
         }
 
         protected override Window CreateMainWindow(StartupEventArgs e)
         {
             return new MainWindow();
+        }
+
+        protected override void Configure(IApplicationBuilder app)
+        {
+            base.Configure(app);
         }
     }
 }

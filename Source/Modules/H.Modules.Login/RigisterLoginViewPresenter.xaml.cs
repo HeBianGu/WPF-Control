@@ -156,11 +156,12 @@ namespace H.Modules.Login
                     s.IsBusy = true;
                     s.Message = "正在修改密码...";
                     Thread.Sleep(1000);
-                    bool r = Ioc<IRegisterService>.Instance.ResetPassword(this.MailVerify.Mail, this.Registor.UserName, this.Registor.Password, out string message);
+                    bool r = Ioc<IRegisterService>.Instance.ResetPassword(this.MailVerify.Mail, this.UserName, this.Forget.Password, out string message);
                     if (!r)
                     {
                         s.Message = message;
                         Thread.Sleep(1000);
+                        this.Forget.Message=message;
                         return false;
                     }
                     s.Message = "修改成功";
@@ -180,8 +181,7 @@ namespace H.Modules.Login
             });
             if (result)
             {
-                this.UserName = this.Registor.UserName;
-                this.Password = this.Registor.Password;
+                this.Password = this.Forget.Password;
                 this.GotoLogin();
                 this.Clear();
             }
@@ -216,6 +216,7 @@ namespace H.Modules.Login
                     {
                         s.Message = message;
                         Thread.Sleep(1000);
+                        this.Registor.Message = message;
                         return false;
                     }
                     s.Message = "注册成功";

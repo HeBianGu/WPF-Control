@@ -12,6 +12,7 @@ namespace System
         {
             services.AddOptions();
             services.TryAdd(ServiceDescriptor.Singleton<ILoginViewPresenter, LoginViewPresenter>());
+            services.TryAdd(ServiceDescriptor.Singleton<ILoginedSplashViewPresenter, LoginedSplashViewPresenter>());
             if (setupAction != null)
                 services.Configure(setupAction);
             return services;
@@ -21,6 +22,7 @@ namespace System
         {
             services.AddOptions();
             services.TryAdd(ServiceDescriptor.Singleton<ILoginViewPresenter, RigisterLoginViewPresenter>());
+            services.TryAdd(ServiceDescriptor.Singleton<ILoginedSplashViewPresenter, LoginedSplashViewPresenter>());
             if (setupAction != null)
                 services.Configure(setupAction);
             return services;

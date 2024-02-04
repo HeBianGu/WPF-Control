@@ -22,7 +22,7 @@ namespace H.Test.Identify
     {
         protected override Window CreateMainWindow(StartupEventArgs e)
         {
-           return new MainWindow();
+            return new MainWindow();
         }
 
         protected override void ConfigureServices(IServiceCollection services)
@@ -31,7 +31,8 @@ namespace H.Test.Identify
             services.AddWindowMessage();
             services.AddAdornerDialogMessage();
             services.AddFormMessageService();
-            services.AddLoginViewPresenter();
+            //services.AddLoginViewPresenter();
+            services.AddRegisterLoginViewPresenter();
             services.AddSplashScreen();
 
             services.AddDbContextBySetting<IdentifyDataContext>();
@@ -39,6 +40,7 @@ namespace H.Test.Identify
             services.AddSingleton<IStringRepository<hi_dd_user>, DbContextRepository<IdentifyDataContext, hi_dd_user>>();
             services.AddUserViewPresenter();
             services.AddLoginService();
+            services.AddRegisterService();
 
             services.AddSingleton<IStringRepository<hi_dd_role>, DbContextRepository<IdentifyDataContext, hi_dd_role>>();
             services.AddRoleViewPresenter();
@@ -55,6 +57,7 @@ namespace H.Test.Identify
         {
             base.Configure(app);
             app.UseLogin();
+            app.UseRegistor(x => x.UseMail = false);
         }
     }
 }

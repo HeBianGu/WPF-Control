@@ -42,7 +42,7 @@ namespace H.Providers.Ioc
 
         #region - 登录用户目录 -
 
-        public string UserPath => Path.Combine(AppPath, this.GetUserName() ?? Environment.UserName);
+        public string UserPath => Path.Combine(AppPath, this.GetUserName() ?? nameof(Default));
 
         private string GetUserName()
         {

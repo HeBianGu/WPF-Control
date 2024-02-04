@@ -4,32 +4,107 @@
 
 using H.Providers.Ioc;
 using System;
+using System.Security.Principal;
+using System.Text.RegularExpressions;
 
 namespace H.Modules.Identity
 {
     internal class RegisterService : IRegisterService
     {
-        private Random random = new Random();
-        public bool Register(string mail, string phone, string password, out string message)
-        {
-            bool result = random.Next(5) == 1;
+        IStringRepository<hi_dd_user> _repository;
 
-            //Thread.Sleep(2000);
-            message = "当前手机号已经注册";
-            ////Operationner.Instance?.Log(result.ToString(), message);
-            //OparationViewPresenterProxy.Instance?.Log(message, null, null, false);
-            return result;
+        public RegisterService(IStringRepository<hi_dd_user> repository)
+        {
+            _repository = repository;
+        }
+        private Random random = new Random();
+        public bool Register(string mail, string account, string password, out string message)
+        {
+            message = null;
+            if (string.IsNullOrEmpty(account) || string.IsNullOrEmpty(password))
+            {
+                message = "用户和密码不能为空";
+                return false;
+            }
+
+            var hasMail = _repository.FirstOrDefaultAsync(x => x.Mail == mail && !string.IsNullOrEmpty(mail)).Result;
+            if (hasMail != null)
+            {
+                message = "该邮箱已经注册过用户";
+                return false;
+            }
+
+            var hasUser = _repository.FirstOrDefaultAsync(x => x.Account == account).Result;
+            if (hasUser != null)
+            {
+                message = "该账号已经注册";
+                return false;
+            }
+
+            if(Regex.Match(account, @"^[a-zA-Z][a-zA-Z0-9_]{4,15}$").Success==false)
+            {
+                message = "账号不合法，字母开头，允许5-16字节，允许字母数字下划线";
+                return false;
+            }
+
+            if (Regex.Match(password, @"^[0-9]{5,17}$").Success == false)
+            {
+                message = "密码不合法，以字母开头，长度在6~18之间，只能包含字母、数字和下划线";
+                return false;
+            }
+            
+            hi_dd_user user = new hi_dd_user()
+            {
+                Account = account,
+                Mail = mail,
+                Password = password
+
+            };
+            _repository.Insert(user, true);
+            Ioc<IOperationService>.Instance?.Log<hi_dd_user>("用户注册", $"{user.Account}");
+            return true;
+
+
         }
 
-        public bool ResetPassword(string mail, string phone, string password, out string message)
+        public bool ResetPassword(string mail, string account, string password, out string message)
         {
-            bool result = random.Next(5) == 1;
+            message = null;
+            if (string.IsNullOrEmpty(account) || string.IsNullOrEmpty(password))
+            {
+                message = "用户和密码不能为空";
+                return false;
+            }
 
-            //Thread.Sleep(2000);
-            message = "操作超时";
-            ////Operationner.Instance?.Log(result.ToString(), message);
-            //OparationViewPresenterProxy.Instance?.Log(message, message, null, result);
-            return result;
+            if (Regex.Match(password, @"^[0-9]{5,17}$").Success == false)
+            {
+                message = "密码不合法，以字母开头，长度在6~18之间，只能包含字母、数字和下划线";
+                return false;
+            }
+
+            if (!string.IsNullOrEmpty(mail))
+            {
+                var hasMail = _repository.FirstOrDefaultAsync(x => x.Mail == mail).Result;
+                if (hasMail == null)
+                {
+                    message = "邮箱不存在注册用户";
+                    return false;
+                }
+            }
+
+            var hasUser = _repository.FirstOrDefaultAsync(x => x.Account == account).Result;
+            if (hasUser == null)
+            {
+                message = "该账号不存在";
+                return false;
+            }
+
+         
+            hasUser.Password = password;
+            //_repository.Update(hasUser,true);
+            _repository.Save();
+            Ioc<IOperationService>.Instance?.Log<hi_dd_user>("重置密码", $"{hasUser.Account}");
+            return true;
         }
     }
 }
