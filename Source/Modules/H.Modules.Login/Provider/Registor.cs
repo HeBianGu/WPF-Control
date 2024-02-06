@@ -13,6 +13,7 @@ namespace H.Modules.Login
             {
                 _useName = value;
                 RaisePropertyChanged();
+                this.Valid();
             }
         }
 
@@ -26,6 +27,7 @@ namespace H.Modules.Login
             {
                 _password = value;
                 RaisePropertyChanged();
+                this.Valid();
             }
         }
 
@@ -38,6 +40,7 @@ namespace H.Modules.Login
             {
                 _verifyPassword = value;
                 RaisePropertyChanged();
+                this.Valid();
             }
         }
 
@@ -74,7 +77,7 @@ namespace H.Modules.Login
                 this.Message = "两次输入的密码不匹配";
                 return false;
             }
-
+            this.Message = null;
             return true;
         }
 

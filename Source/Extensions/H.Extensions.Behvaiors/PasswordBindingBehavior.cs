@@ -12,7 +12,7 @@ namespace H.Extensions.Behvaiors
             set { SetValue(PasswordProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty PasswordProperty =
             DependencyProperty.Register("Password", typeof(string), typeof(PasswordBindingBehavior), new FrameworkPropertyMetadata(default(string), (d, e) =>
             {
@@ -22,7 +22,8 @@ namespace H.Extensions.Behvaiors
                     return;
                 if (control.AssociatedObject == null)
                     return;
-    
+
+                if (control.AssociatedObject.Password != e.NewValue?.ToString())
                     control.AssociatedObject.Password = e.NewValue?.ToString();
             }));
 

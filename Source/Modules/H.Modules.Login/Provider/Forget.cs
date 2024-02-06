@@ -13,6 +13,7 @@ namespace H.Modules.Login
             {
                 _password = value;
                 RaisePropertyChanged();
+                this.Valid();
             }
         }
 
@@ -25,6 +26,7 @@ namespace H.Modules.Login
             {
                 _verifyPassword = value;
                 RaisePropertyChanged();
+                this.Valid();
             }
         }
 
@@ -66,6 +68,7 @@ namespace H.Modules.Login
                 this.Message = "密码不能为空";
                 return false;
             }
+            this.Message = null;
             return true;
         }
 

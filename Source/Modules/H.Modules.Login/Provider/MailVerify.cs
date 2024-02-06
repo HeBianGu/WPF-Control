@@ -15,6 +15,8 @@ namespace H.Modules.Login
             {
                 _mail = value;
                 RaisePropertyChanged();
+                this.Valid();
+                
             }
         }
 
@@ -27,6 +29,7 @@ namespace H.Modules.Login
             {
                 _verifyCode = value;
                 RaisePropertyChanged();
+                this.Valid();
             }
         }
 
@@ -34,11 +37,12 @@ namespace H.Modules.Login
         /// <summary> 说明  </summary>
         public string InputCode
         {
-            get { return _verifyCode; }
+            get { return _inputCode; }
             set
             {
-                _verifyCode = value;
+                _inputCode = value;
                 RaisePropertyChanged();
+                this.Valid();
             }
         }
 
@@ -51,6 +55,7 @@ namespace H.Modules.Login
             {
                 _agree = value;
                 RaisePropertyChanged();
+                this.Valid();
             }
         }
 
@@ -99,6 +104,13 @@ namespace H.Modules.Login
                 return false;
             }
 
+
+            if (string.IsNullOrEmpty(this.VerifyCode))
+            {
+                this.Message = "请先点击获取验证码";
+                return false;
+            }
+
             if (string.IsNullOrEmpty(this.InputCode))
             {
                 this.Message = "验证码不能为空";
@@ -110,6 +122,7 @@ namespace H.Modules.Login
                 this.Message = "请勾选确认阅读";
                 return false;
             }
+            this.Message = null;
             return true;
         }
     }
