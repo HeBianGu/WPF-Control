@@ -78,7 +78,7 @@ namespace H.App.FileManager
                 int r = await await IocMessage.Dialog.ShowString(async (c, x) =>
                    {
                        x.Value = "正在加载数据...";
-                       List<string> files = projectItem.BaseFolder.GetAllFiles();
+                       List<string> files = projectItem.BaseFolder.ToDirectoryEx().GetAllFiles();
                        //Repository.Clear();
 
                        List<fm_dd_file> dbFiles = new List<fm_dd_file>();
