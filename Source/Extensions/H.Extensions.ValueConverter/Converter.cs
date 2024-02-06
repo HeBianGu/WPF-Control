@@ -24,13 +24,13 @@ namespace H.Extensions.ValueConverter
     public static partial class Converter
     {
         #region - TimeSpan -
-        public static ConverterBase<int, string> GetTimeSpanStrFromSeconds => new ConverterBase<int, string>(x => TimeSpan.FromSeconds(x).TimespanToString());
-        public static ConverterBase<int, string> GetTimeSpanStrFromMilliseconds => new ConverterBase<int, string>(x => TimeSpan.FromMilliseconds(x).TimespanToString());
-        public static ConverterBase<int, string> GetTimeSpanStrFromMinutes => new ConverterBase<int, string>(x => TimeSpan.FromMinutes(x).TimespanToString());
-        public static ConverterBase<int, string> GetTimeSpanStrFromDays => new ConverterBase<int, string>(x => TimeSpan.FromDays(x).TimespanToString());
-        public static ConverterBase<int, string> GetTimeSpanStrFromHours => new ConverterBase<int, string>(x => TimeSpan.FromHours(x).TimespanToString());
-        public static ConverterBase<long, string> GetTimeSpanStrFromTicks => new ConverterBase<long, string>(x => TimeSpan.FromTicks(x).TimespanToString());
-        public static ConverterBase<TimeSpan, string> GetTimeSpanStr => new ConverterBase<TimeSpan, string>(x => x.TimespanToString());
+        public static IValueConverter GetTimeSpanStrFromSeconds => new ConverterBase<int, string>(x => TimeSpan.FromSeconds(x).TimespanToString());
+        public static IValueConverter GetTimeSpanStrFromMilliseconds => new ConverterBase<int, string>(x => TimeSpan.FromMilliseconds(x).TimespanToString());
+        public static IValueConverter GetTimeSpanStrFromMinutes => new ConverterBase<int, string>(x => TimeSpan.FromMinutes(x).TimespanToString());
+        public static IValueConverter GetTimeSpanStrFromDays => new ConverterBase<int, string>(x => TimeSpan.FromDays(x).TimespanToString());
+        public static IValueConverter GetTimeSpanStrFromHours => new ConverterBase<int, string>(x => TimeSpan.FromHours(x).TimespanToString());
+        public static IValueConverter GetTimeSpanStrFromTicks => new ConverterBase<long, string>(x => TimeSpan.FromTicks(x).TimespanToString());
+        public static IValueConverter GetTimeSpanStr => new ConverterBase<TimeSpan, string>(x => x.TimespanToString());
 
         public static string TimespanToDislay(this TimeSpan t)
         {
@@ -65,67 +65,67 @@ namespace H.Extensions.ValueConverter
         #endregion
 
         #region - Math -
-        public static ConverterBase<double, double> GetMathAbs => new ConverterBase<double, double>(x => Math.Abs(x));
-        public static ConverterBase<double, double, double> GetMathPow => new ConverterBase<double, double, double>((x, y) => Math.Pow(x, y));
-        public static ConverterBase<double, double> GetMathSqrt => new ConverterBase<double, double>(x => Math.Sqrt(x));
-        public static ConverterBase<double, double> GetMathFloor => new ConverterBase<double, double>(x => Math.Floor(x));
-        public static ConverterBase<double, double> GetMathExp => new ConverterBase<double, double>(x => Math.Exp(x));
-        public static ConverterBase<double, double> GetMathLog => new ConverterBase<double, double>(x => Math.Log(x));
-        public static ConverterBase<double, double> GetMathSin => new ConverterBase<double, double>(x => Math.Sin(x));
-        public static ConverterBase<double, double> GetMathCos => new ConverterBase<double, double>(x => Math.Cos(x));
-        public static ConverterBase<double, double> GetMathTan => new ConverterBase<double, double>(x => Math.Tan(x));
-        public static ConverterBase<double, double, double> GetMathMin => new ConverterBase<double, double, double>((x, y) => Math.Min(x, y));
-        public static ConverterBase<double, double, double> GetMathMax => new ConverterBase<double, double, double>((x, y) => Math.Max(x, y));
-        public static ConverterBase<double, int, double> GetMathRound => new ConverterBase<double, int, double>((x, y) => Math.Round(x, y));
+        public static IValueConverter GetMathAbs => new ConverterBase<double, double>(x => Math.Abs(x));
+        public static IValueConverter GetMathPow => new ConverterBase<double, double, double>((x, y) => Math.Pow(x, y));
+        public static IValueConverter GetMathSqrt => new ConverterBase<double, double>(x => Math.Sqrt(x));
+        public static IValueConverter GetMathFloor => new ConverterBase<double, double>(x => Math.Floor(x));
+        public static IValueConverter GetMathExp => new ConverterBase<double, double>(x => Math.Exp(x));
+        public static IValueConverter GetMathLog => new ConverterBase<double, double>(x => Math.Log(x));
+        public static IValueConverter GetMathSin => new ConverterBase<double, double>(x => Math.Sin(x));
+        public static IValueConverter GetMathCos => new ConverterBase<double, double>(x => Math.Cos(x));
+        public static IValueConverter GetMathTan => new ConverterBase<double, double>(x => Math.Tan(x));
+        public static IValueConverter GetMathMin => new ConverterBase<double, double, double>((x, y) => Math.Min(x, y));
+        public static IValueConverter GetMathMax => new ConverterBase<double, double, double>((x, y) => Math.Max(x, y));
+        public static IValueConverter GetMathRound => new ConverterBase<double, int, double>((x, y) => Math.Round(x, y));
 
-        public static ConverterBase<double, double, double> GetMathAddition => new ConverterBase<double, double, double>((x, y) => x + y);
-        public static ConverterBase<double, double, double> GetMathMultiplication => new ConverterBase<double, double, double>((x, y) => x * y);
+        public static IValueConverter GetMathAddition => new ConverterBase<double, double, double>((x, y) => x + y);
+        public static IValueConverter GetMathMultiplication => new ConverterBase<double, double, double>((x, y) => x * y);
 
 
         #endregion
 
         #region - Oparetion -
-        public static ConverterBase<double, double, bool> GetGreaterThan => new ConverterBase<double, double, bool>((x, y) => x > y);
-        public static ConverterBase<double, double, bool> GetLessThan => new ConverterBase<double, double, bool>((x, y) => x < y);
+        public static IValueConverter GetGreaterThan => new ConverterBase<double, double, bool>((x, y) => x > y);
+        public static IValueConverter GetLessThan => new ConverterBase<double, double, bool>((x, y) => x < y);
 
         #endregion
 
         #region - String -
-        public static ConverterBase<string, string> GetStringTrim => new ConverterBase<string, string>(x => x.Trim());
-        public static ConverterBase<string, string> GetStringToUpper => new ConverterBase<string, string>(x => x.ToUpper());
-        public static ConverterBase<string, string> GetStringToLower => new ConverterBase<string, string>(x => x.ToLower());
-        public static ConverterBase<string, char[]> GetStringToCharArray => new ConverterBase<string, char[]>(x => x.ToCharArray());
-        public static ConverterBase<string, bool> GetStringIsNullOrEmpty => new ConverterBase<string, bool>(x => string.IsNullOrEmpty(x));
-        public static ConverterBase<string, string, bool> GetStringContains => new ConverterBase<string, string, bool>((x, y) => x.Contains(y));
-        public static ConverterBase<string, string, bool> GetStringEndsWith => new ConverterBase<string, string, bool>((x, y) => x.EndsWith(y));
-        public static ConverterBase<string, string, bool> GetStringStartsWith => new ConverterBase<string, string, bool>((x, y) => x.StartsWith(y));
-        public static ConverterBase<string, int, string> GetStringPadLeft => new ConverterBase<string, int, string>((x, y) => x.PadLeft(y));
-        public static ConverterBase<string, int, string> GetStringPadRight => new ConverterBase<string, int, string>((x, y) => x.PadRight(y));
-        public static ConverterBase<string, char[], string[]> GetStringSplit => new ConverterBase<string, char[], string[]>((x, y) => x.Split(y));
-        public static ConverterBase<string, int, string> GetStringSubstring => new ConverterBase<string, int, string>((x, y) => x.Substring(y));
-        public static ConverterBase<object, string, string> GetStringFormat => new ConverterBase<object, string, string>((x, y) => string.Format(y, x));
-        public static ConverterBase<string[], string, string> GetStringJoin => new ConverterBase<string[], string, string>((x, y) => string.Join(y, x));
+        public static IValueConverter GetStringTrim => new ConverterBase<string, string>(x => x.Trim());
+        public static IValueConverter GetStringToUpper => new ConverterBase<string, string>(x => x.ToUpper());
+        public static IValueConverter GetStringToLower => new ConverterBase<string, string>(x => x.ToLower());
+        public static IValueConverter GetStringToCharArray => new ConverterBase<string, char[]>(x => x.ToCharArray());
+        public static IValueConverter GetStringIsNullOrEmpty => new ConverterBase<string, bool>(x => string.IsNullOrEmpty(x));
+        public static IValueConverter GetStringContains => new ConverterBase<string, string, bool>((x, y) => x.Contains(y));
+        public static IValueConverter GetStringEndsWith => new ConverterBase<string, string, bool>((x, y) => x.EndsWith(y));
+        public static IValueConverter GetStringStartsWith => new ConverterBase<string, string, bool>((x, y) => x.StartsWith(y));
+        public static IValueConverter GetStringPadLeft => new ConverterBase<string, int, string>((x, y) => x.PadLeft(y));
+        public static IValueConverter GetStringPadRight => new ConverterBase<string, int, string>((x, y) => x.PadRight(y));
+        public static IValueConverter GetStringSplit => new ConverterBase<string, char[], string[]>((x, y) => x.Split(y));
+        public static IValueConverter GetStringSubstring => new ConverterBase<string, int, string>((x, y) => x.Substring(y));
+        public static IValueConverter GetStringFormat => new ConverterBase<object, string, string>((x, y) => string.Format(y, x));
+        public static IValueConverter GetStringJoin => new ConverterBase<string[], string, string>((x, y) => string.Join(y, x));
 
-        public static ConverterBase<bool, string> GetBoolenToConnectState => new ConverterBase<bool, string>(x => x ? "已连接" : "未连接");
-        public static ConverterBase<bool?, string> GetBoolenNullToConnectState => new ConverterBase<bool?, string>(x => !x.HasValue ? "未启动" : x.Value ? "已连接" : "未连接") { DefaultR = "未启动" };
-        public static ConverterBase<bool, string> GetBoolenToPassState => new ConverterBase<bool, string>(x => x ? "合格" : "不合格");
+        public static IValueConverter GetBoolenToConnectState => new ConverterBase<bool, string>(x => x ? "已连接" : "未连接");
+        public static IValueConverter GetBoolenNullToConnectState => new ConverterBase<bool?, string>(x => !x.HasValue ? "未启动" : x.Value ? "已连接" : "未连接") { DefaultR = "未启动" };
+        public static IValueConverter GetBoolenToPassState => new ConverterBase<bool, string>(x => x ? "合格" : "不合格");
 
-        public static ConverterBase<int, string, string> GetIntLessZeroString => new ConverterBase<int, string, string>((x, y) => x < 0 ? y : x.ToString());
+        public static IValueConverter GetIntLessZeroString => new ConverterBase<int, string, string>((x, y) => x < 0 ? y : x.ToString());
 
         #endregion
 
         #region - IConvertible -
-        public static IConvertibleConverter GetIConvertibler { get; } = new Lazy<IConvertibleConverter>().Value;
+        public static IValueConverter GetIConvertibler { get; } = new Lazy<IConvertibleConverter>().Value;
         #endregion
 
         #region - IEnumerable -
-        public static IEnumerableConverterBase<object, object> GetIEnumerableMax => new IEnumerableConverterBase<object, object>(x => x.Max());
-        public static IEnumerableConverterBase<object, object> GetIEnumerableMin => new IEnumerableConverterBase<object, object>(x => x.Min());
-        public static IEnumerableConverterBase<object, object> GetIEnumerableCount => new IEnumerableConverterBase<object, object>(x => x.Count());
-        public static IEnumerableConverterBase<object, object> GetIEnumerableFirstOrDefault => new IEnumerableConverterBase<object, object>(x => x.FirstOrDefault());
-        public static IEnumerableConverterBase<object, object> GetIEnumerableLastOrDefault => new IEnumerableConverterBase<object, object>(x => x.LastOrDefault());
+        public static IValueConverter GetIEnumerableMax => new IEnumerableConverterBase<object, object>(x => x.Max());
+        public static IValueConverter GetIEnumerableMin => new IEnumerableConverterBase<object, object>(x => x.Min());
+        public static IValueConverter GetIEnumerableCount => new IEnumerableConverterBase<object, object>(x => x.Count());
+        public static IValueConverter GetIEnumerableFirstOrDefault => new IEnumerableConverterBase<object, object>(x => x.FirstOrDefault());
+        public static IValueConverter GetIEnumerableLastOrDefault => new IEnumerableConverterBase<object, object>(x => x.LastOrDefault());
 
-        public static IEnumerableTypeConverterBase<object, int> GetIEnumerableTake => new IEnumerableTypeConverterBase<object, int>((x, p, t) =>
+        public static IValueConverter GetIEnumerableTake => new IEnumerableTypeConverterBase<object, int>((x, p, t) =>
         {
             IList list = Activator.CreateInstance(x.GetType()) as IList;
 
@@ -135,7 +135,7 @@ namespace H.Extensions.ValueConverter
             }
             return list;
         });
-        public static IEnumerableTypeConverterBase<object, int> GetIEnumerableCast => new IEnumerableTypeConverterBase<object, int>((x, p, t) =>
+        public static IValueConverter GetIEnumerableCast => new IEnumerableTypeConverterBase<object, int>((x, p, t) =>
         {
             IList list = Activator.CreateInstance(x.GetType()) as IList;
             foreach (object item in x)
@@ -144,11 +144,11 @@ namespace H.Extensions.ValueConverter
             }
             return list;
         });
-        public static IEnumerableTypeConverterBase<object, int> GetIEnumerableElementAt => new IEnumerableTypeConverterBase<object, int>((x, p, t) =>
+        public static IValueConverter GetIEnumerableElementAt => new IEnumerableTypeConverterBase<object, int>((x, p, t) =>
         {
             return x.ElementAt(p);
         });
-        public static IEnumerableTypeConverterBase<object> GetIEnumerableDistinct => new IEnumerableTypeConverterBase<object>((x, t) =>
+        public static IValueConverter GetIEnumerableDistinct => new IEnumerableTypeConverterBase<object>((x, t) =>
         {
             IList list = Activator.CreateInstance(x.GetType()) as IList;
             foreach (object item in x.Distinct())
@@ -157,7 +157,7 @@ namespace H.Extensions.ValueConverter
             }
             return list;
         });
-        public static IEnumerableTypeConverterBase<object, IEnumerable<object>> GetIEnumerableExcept => new IEnumerableTypeConverterBase<object, IEnumerable<object>>((x, p, t) =>
+        public static IValueConverter GetIEnumerableExcept => new IEnumerableTypeConverterBase<object, IEnumerable<object>>((x, p, t) =>
         {
             IList list = Activator.CreateInstance(x.GetType()) as IList;
             foreach (object item in x.Except(p))
@@ -166,7 +166,7 @@ namespace H.Extensions.ValueConverter
             }
             return list;
         });
-        public static IEnumerableTypeConverterBase<object> GetIEnumerableReverse => new IEnumerableTypeConverterBase<object>((x, t) =>
+        public static IValueConverter GetIEnumerableReverse => new IEnumerableTypeConverterBase<object>((x, t) =>
         {
             IList list = Activator.CreateInstance(x.GetType()) as IList;
             foreach (object item in x.Reverse())
@@ -175,7 +175,7 @@ namespace H.Extensions.ValueConverter
             }
             return list;
         });
-        public static IEnumerableConverterBase<object, string, object> GetIEnumerablePropertyList => new IEnumerableConverterBase<object, string, object>((x, p) =>
+        public static IValueConverter GetIEnumerablePropertyList => new IEnumerableConverterBase<object, string, object>((x, p) =>
         {
             if (x.GetType().IsGenericType)
             {
@@ -196,29 +196,29 @@ namespace H.Extensions.ValueConverter
         #endregion
 
         #region - ICompare -
-        public static ConverterBase<IComparable, IComparable, int> GetComparable => new ConverterBase<IComparable, IComparable, int>((x, y) => x.CompareTo(y));
+        public static IValueConverter GetComparable => new ConverterBase<IComparable, IComparable, int>((x, y) => x.CompareTo(y));
         #endregion
 
         #region - Type -
-        public static ConverterBase<object, Type> GetObjType => new ConverterBase<object, Type>(x => x.GetType());
-        public static ConverterBase<object, string> GetObjTypeName => new ConverterBase<object, string>(x => x.GetType().Name);
-        public static ConverterBase<object, string> GetObjTypeFullName => new ConverterBase<object, string>(x => x.GetType().FullName);
-        public static ConverterBase<object, string> GetDiaplayName => new ConverterBase<object, string>(x => x.GetType().GetCustomAttribute<DisplayAttribute>()?.Name);
-        public static ConverterBase<object, string> GetDiaplayDescription => new ConverterBase<object, string>(x => x.GetType().GetCustomAttribute<DisplayAttribute>()?.Description);
-        public static ConverterBase<object, Type, bool> GetIsAssignableFrom => new ConverterBase<object, Type, bool>((x, y) =>
+        public static IValueConverter GetObjType => new ConverterBase<object, Type>(x => x.GetType());
+        public static IValueConverter GetObjTypeName => new ConverterBase<object, string>(x => x.GetType().Name);
+        public static IValueConverter GetObjTypeFullName => new ConverterBase<object, string>(x => x.GetType().FullName);
+        public static IValueConverter GetDiaplayName => new ConverterBase<object, string>(x => x.GetType().GetCustomAttribute<DisplayAttribute>()?.Name);
+        public static IValueConverter GetDiaplayDescription => new ConverterBase<object, string>(x => x.GetType().GetCustomAttribute<DisplayAttribute>()?.Description);
+        public static IValueConverter GetIsAssignableFrom => new ConverterBase<object, Type, bool>((x, y) =>
         {
             bool r = y.IsAssignableFrom(x.GetType());
             return r;
         });
-        public static ConverterBase<object, bool> GetIsValueType => new ConverterBase<object, bool>(x => x.GetType().IsValueType);
-        public static ConverterBase<object, bool> GetIsClass => new ConverterBase<object, bool>(x => x.GetType().IsClass);
-        public static ConverterBase<object, bool> GetIsEnum => new ConverterBase<object, bool>(x => x.GetType().IsEnum);
-        public static ConverterBase<object, bool> GetIsGenericType => new ConverterBase<object, bool>(x => x.GetType().IsGenericType);
-        public static ConverterBase<object, bool> IsInterface => new ConverterBase<object, bool>(x => x.GetType().IsInterface);
-        public static ConverterBase<object, bool> GetIsAbstract => new ConverterBase<object, bool>(x => x.GetType().IsAbstract);
-        public static ConverterBase<object, bool> GetIsArray => new ConverterBase<object, bool>(x => x.GetType().IsArray);
+        public static IValueConverter GetIsValueType => new ConverterBase<object, bool>(x => x.GetType().IsValueType);
+        public static IValueConverter GetIsClass => new ConverterBase<object, bool>(x => x.GetType().IsClass);
+        public static IValueConverter GetIsEnum => new ConverterBase<object, bool>(x => x.GetType().IsEnum);
+        public static IValueConverter GetIsGenericType => new ConverterBase<object, bool>(x => x.GetType().IsGenericType);
+        public static IValueConverter IsInterface => new ConverterBase<object, bool>(x => x.GetType().IsInterface);
+        public static IValueConverter GetIsAbstract => new ConverterBase<object, bool>(x => x.GetType().IsAbstract);
+        public static IValueConverter GetIsArray => new ConverterBase<object, bool>(x => x.GetType().IsArray);
 
-        public static ConverterBase<object, IList<ICommand>> GetCommands => new ConverterBase<object, IList<ICommand>>(x =>
+        public static IValueConverter GetCommands => new ConverterBase<object, IList<ICommand>>(x =>
         {
             var ps = x.GetType().GetProperties().Where(k => typeof(ICommand).IsAssignableFrom(k.PropertyType));
             List<ICommand> result = new List<ICommand>();
@@ -244,25 +244,25 @@ namespace H.Extensions.ValueConverter
         #endregion
 
         #region - Path -
-        public static ConverterBase<string, string> GetDirectoryName => new ConverterBase<string, string>(x => System.IO.Path.GetDirectoryName(x));
-        public static ConverterBase<string, string> GetExtension => new ConverterBase<string, string>(x => System.IO.Path.GetExtension(x));
-        public static ConverterBase<string, string> GetFileName => new ConverterBase<string, string>(x => System.IO.Path.GetFileName(x));
-        public static ConverterBase<string, string> GetFileNameWithoutExtension => new ConverterBase<string, string>(x => System.IO.Path.GetFileNameWithoutExtension(x));
-        public static ConverterBase<string, string> GetFullPath => new ConverterBase<string, string>(x => System.IO.Path.GetFullPath(x));
-        public static ConverterBase<string, string> GetPathRoot => new ConverterBase<string, string>(x => System.IO.Path.GetPathRoot(x));
-        public static ConverterBase<string, string, string> GetChangeExtension => new ConverterBase<string, string, string>((x, y) => System.IO.Path.ChangeExtension(x, y));
-        public static ConverterBase<string, bool> GetHasExtension => new ConverterBase<string, bool>(x => System.IO.Path.HasExtension(x));
+        public static IValueConverter GetDirectoryName => new ConverterBase<string, string>(x => System.IO.Path.GetDirectoryName(x));
+        public static IValueConverter GetExtension => new ConverterBase<string, string>(x => System.IO.Path.GetExtension(x));
+        public static IValueConverter GetFileName => new ConverterBase<string, string>(x => System.IO.Path.GetFileName(x));
+        public static IValueConverter GetFileNameWithoutExtension => new ConverterBase<string, string>(x => System.IO.Path.GetFileNameWithoutExtension(x));
+        public static IValueConverter GetFullPath => new ConverterBase<string, string>(x => System.IO.Path.GetFullPath(x));
+        public static IValueConverter GetPathRoot => new ConverterBase<string, string>(x => System.IO.Path.GetPathRoot(x));
+        public static IValueConverter GetChangeExtension => new ConverterBase<string, string, string>((x, y) => System.IO.Path.ChangeExtension(x, y));
+        public static IValueConverter GetHasExtension => new ConverterBase<string, bool>(x => System.IO.Path.HasExtension(x));
         #endregion
 
         #region - File -
-        public static ConverterBase<string, string> GetFileReadAllText => new ConverterBase<string, string>(x => System.IO.File.ReadAllText(x));
-        public static ConverterBase<string, bool> GetFileExists => new ConverterBase<string, bool>(x => System.IO.File.Exists(x)) { DefaultR = false };
-        public static ConverterBase<string, DateTime> GetFileCreationTime => new ConverterBase<string, DateTime>(x => System.IO.File.GetCreationTime(x));
-        public static ConverterBase<string, DateTime> GetFileLastAccessTime => new ConverterBase<string, DateTime>(x => System.IO.File.GetLastAccessTime(x));
-        public static ConverterBase<string, System.IO.FileAttributes> GetFileFileAttributes => new ConverterBase<string, System.IO.FileAttributes>(x => System.IO.File.GetAttributes(x));
-        public static ConverterBase<string, ImageSource> GetFileImageSource => new ConverterBase<string, ImageSource>(x => new BitmapImage(new Uri(x, UriKind.RelativeOrAbsolute)));
-        public static ConverterBase<string, long> GetFileLength => new ConverterBase<string, long>(x => new FileInfo(x).Length);
-        //public static ConverterBase<string, string> GetFileLengthDisplay => new ConverterBase<string, string>(x =>
+        public static IValueConverter GetFileReadAllText => new ConverterBase<string, string>(x => System.IO.File.ReadAllText(x));
+        public static IValueConverter GetFileExists => new ConverterBase<string, bool>(x => System.IO.File.Exists(x)) { DefaultR = false };
+        public static IValueConverter GetFileCreationTime => new ConverterBase<string, DateTime>(x => System.IO.File.GetCreationTime(x));
+        public static IValueConverter GetFileLastAccessTime => new ConverterBase<string, DateTime>(x => System.IO.File.GetLastAccessTime(x));
+        public static IValueConverter GetFileFileAttributes => new ConverterBase<string, System.IO.FileAttributes>(x => System.IO.File.GetAttributes(x));
+        public static IValueConverter GetFileImageSource => new ConverterBase<string, ImageSource>(x => new BitmapImage(new Uri(x, UriKind.RelativeOrAbsolute)));
+        public static IValueConverter GetFileLength => new ConverterBase<string, long>(x => new FileInfo(x).Length);
+        //public static IValueConverter GetFileLengthDisplay => new ConverterBase<string, string>(x =>
         //{
         //    if (x == null) return null;
         //    if (!File.Exists(x.ToString()))
@@ -273,70 +273,70 @@ namespace H.Extensions.ValueConverter
         #endregion
 
         #region - Image -
-        public static ConverterBase<string, string> GetImagePixelDisplay => new ConverterBase<string, string>(x =>
+        public static IValueConverter GetImagePixelDisplay => new ConverterBase<string, string>(x =>
         {
             if (x == null)
                 return null;
             string filePath = x.ToString();
-            var tuple = filePath.GetImagePixel();
+            var tuple = filePath.ToImageEx().GetImagePixel();
             if (tuple == null)
                 return null;
             return tuple.Item1 + "×" + tuple.Item2;
         });
 
-        public static ConverterBase<string, int, ImageSource> GetFileImageSourceInMemory => new ConverterBase<string, int, ImageSource>((x, p) =>
+        public static IValueConverter GetFileImageSourceInMemory => new ConverterBase<string, int, ImageSource>((x, p) =>
         {
             if (x == null)
                 return null;
             string filePath = x.ToString();
-            return filePath.GetImageSource(p, 0, true);
+            return filePath.ToImageEx().GetImageSource(p, 0, true);
         });
 
         #endregion
 
         #region - Directory -
-        public static ConverterBase<string, bool> GetDirectoryExists => new ConverterBase<string, bool>(x => System.IO.Directory.Exists(x));
-        public static ConverterBase<string, string[]> GetDirectoryFiles => new ConverterBase<string, string[]>(x => System.IO.Directory.GetFiles(x));
-        public static ConverterBase<string, DateTime> GetDirectoryCreationTime => new ConverterBase<string, DateTime>(x => System.IO.Directory.GetCreationTime(x));
-        public static ConverterBase<string, string[]> GetDirectoryDirectories => new ConverterBase<string, string[]>(x => System.IO.Directory.GetDirectories(x));
-        public static ConverterBase<string, string[]> GetDirectoryFileSystemEntries => new ConverterBase<string, string[]>(x => System.IO.Directory.GetFileSystemEntries(x));
-        public static ConverterBase<string, DateTime> GetDirectoryLastAccessTime => new ConverterBase<string, DateTime>(x => System.IO.Directory.GetLastAccessTime(x));
-        public static ConverterBase<string, DateTime> GetDirectoryLastWriteTime => new ConverterBase<string, DateTime>(x => System.IO.Directory.GetLastWriteTime(x));
-        public static ConverterBase<string, System.IO.DirectoryInfo> GetDirectoryParent => new ConverterBase<string, System.IO.DirectoryInfo>(x => System.IO.Directory.GetParent(x));
+        public static IValueConverter GetDirectoryExists => new ConverterBase<string, bool>(x => System.IO.Directory.Exists(x));
+        public static IValueConverter GetDirectoryFiles => new ConverterBase<string, string[]>(x => System.IO.Directory.GetFiles(x));
+        public static IValueConverter GetDirectoryCreationTime => new ConverterBase<string, DateTime>(x => System.IO.Directory.GetCreationTime(x));
+        public static IValueConverter GetDirectoryDirectories => new ConverterBase<string, string[]>(x => System.IO.Directory.GetDirectories(x));
+        public static IValueConverter GetDirectoryFileSystemEntries => new ConverterBase<string, string[]>(x => System.IO.Directory.GetFileSystemEntries(x));
+        public static IValueConverter GetDirectoryLastAccessTime => new ConverterBase<string, DateTime>(x => System.IO.Directory.GetLastAccessTime(x));
+        public static IValueConverter GetDirectoryLastWriteTime => new ConverterBase<string, DateTime>(x => System.IO.Directory.GetLastWriteTime(x));
+        public static IValueConverter GetDirectoryParent => new ConverterBase<string, System.IO.DirectoryInfo>(x => System.IO.Directory.GetParent(x));
 
-        public static ConverterBase<string, List<string>> GetAllFile => new ConverterBase<string, List<string>>(x => x.GetAllFiles());
+        public static IValueConverter GetAllFile => new ConverterBase<string, List<string>>(x => x.ToDirectoryEx().GetAllFiles());
 
         #endregion
 
         #region - Bool -
-        public static ConverterBase<bool, bool> GetTrueToFalse => new ConverterBase<bool, bool>(x => !x);
-        public static ConverterBase<int, bool> GetIntToBoolen => new ConverterBase<int, bool>(x => x == 1);
-        public static ConverterBase<object, bool> GetNullToFalse => new ConverterBase<object, bool>(x => x != null);
-        public static ConverterBase<object, bool> GetTrue => new ConverterBase<object, bool>(x => true);
-        public static ConverterBase<object, bool> GetFalse => new ConverterBase<object, bool>(x => false);
+        public static IValueConverter GetTrueToFalse => new ConverterBase<bool, bool>(x => !x);
+        public static IValueConverter GetIntToBoolen => new ConverterBase<int, bool>(x => x == 1);
+        public static IValueConverter GetNullToFalse => new ConverterBase<object, bool>(x => x != null);
+        public static IValueConverter GetTrue => new ConverterBase<object, bool>(x => true);
+        public static IValueConverter GetFalse => new ConverterBase<object, bool>(x => false);
         #endregion
 
         #region - Visibility -
-        public static ConverterBase<bool?, Visibility> GetBoolNullFalseToVisble => new ConverterBase<bool?, Visibility>(x => x != false ? Visibility.Collapsed : Visibility.Visible) { DefaultR = Visibility.Collapsed };
-        public static ConverterBase<bool?, Visibility> GetBoolNullAndTrueToVisble => new ConverterBase<bool?, Visibility>(x => x != false ? Visibility.Visible : Visibility.Collapsed) { DefaultR = Visibility.Visible };
+        public static IValueConverter GetBoolNullFalseToVisble => new ConverterBase<bool?, Visibility>(x => x != false ? Visibility.Collapsed : Visibility.Visible) { DefaultR = Visibility.Collapsed };
+        public static IValueConverter GetBoolNullAndTrueToVisble => new ConverterBase<bool?, Visibility>(x => x != false ? Visibility.Visible : Visibility.Collapsed) { DefaultR = Visibility.Visible };
 
-        public static ConverterBase<bool, Visibility> GetTrueToCollapsed => new ConverterBase<bool, Visibility>(x => x ? Visibility.Collapsed : Visibility.Visible);
-        public static ConverterBase<bool, Visibility> GetTrueToHidden => new ConverterBase<bool, Visibility>(x => x ? Visibility.Hidden : Visibility.Visible);
-        public static ConverterBase<bool, Visibility> GetFalseToHidden => new ConverterBase<bool, Visibility>(x => x ? Visibility.Visible : Visibility.Hidden);
-        public static ConverterBase<bool, Visibility> GetTrueToVisible => new ConverterBase<bool, Visibility>(x => x ? Visibility.Visible : Visibility.Collapsed);
-        public static MultiConverterBase<bool, Visibility> GetTrueAllToVisible => new MultiConverterBase<bool, Visibility>(x => x.All(l => l == true) ? Visibility.Visible : Visibility.Collapsed);
-        public static ConverterBase<object, Visibility> GetNullToCollapsed => new ConverterBase<object, Visibility>(x => x == null ? Visibility.Collapsed : Visibility.Visible) { DefaultR = Visibility.Collapsed };
-        public static ConverterBase<object, Visibility> GetNullToVisible => new ConverterBase<object, Visibility>(x => x == null ? Visibility.Visible : Visibility.Collapsed) { DefaultR = Visibility.Visible };
-        public static ConverterBase<IList, Visibility> GetListEmptyToCollapsed => new ConverterBase<IList, Visibility>(x => x == null || x.Count == 0 ? Visibility.Collapsed : Visibility.Visible) { DefaultR = Visibility.Collapsed };
-        public static ConverterBase<IList, Visibility> GetListEmptyToVisible => new ConverterBase<IList, Visibility>(x => x == null || x.Count == 0 ? Visibility.Visible : Visibility.Collapsed) { DefaultR = Visibility.Visible };
+        public static IValueConverter GetTrueToCollapsed => new ConverterBase<bool, Visibility>(x => x ? Visibility.Collapsed : Visibility.Visible);
+        public static IValueConverter GetTrueToHidden => new ConverterBase<bool, Visibility>(x => x ? Visibility.Hidden : Visibility.Visible);
+        public static IValueConverter GetFalseToHidden => new ConverterBase<bool, Visibility>(x => x ? Visibility.Visible : Visibility.Hidden);
+        public static IValueConverter GetTrueToVisible => new ConverterBase<bool, Visibility>(x => x ? Visibility.Visible : Visibility.Collapsed);
+        public static IMultiValueConverter GetTrueAllToVisible => new MultiConverterBase<bool, Visibility>(x => x.All(l => l == true) ? Visibility.Visible : Visibility.Collapsed);
+        public static IValueConverter GetNullToCollapsed => new ConverterBase<object, Visibility>(x => x == null ? Visibility.Collapsed : Visibility.Visible) { DefaultR = Visibility.Collapsed };
+        public static IValueConverter GetNullToVisible => new ConverterBase<object, Visibility>(x => x == null ? Visibility.Visible : Visibility.Collapsed) { DefaultR = Visibility.Visible };
+        public static IValueConverter GetListEmptyToCollapsed => new ConverterBase<IList, Visibility>(x => x == null || x.Count == 0 ? Visibility.Collapsed : Visibility.Visible) { DefaultR = Visibility.Collapsed };
+        public static IValueConverter GetListEmptyToVisible => new ConverterBase<IList, Visibility>(x => x == null || x.Count == 0 ? Visibility.Visible : Visibility.Collapsed) { DefaultR = Visibility.Visible };
 
-        public static MultiConverterBase<bool, Visibility> GetAllTrueToVisible => new MultiConverterBase<bool, Visibility>(x => x.All(k => k) ? Visibility.Visible : Visibility.Collapsed);
+        public static IMultiValueConverter GetAllTrueToVisible => new MultiConverterBase<bool, Visibility>(x => x.All(k => k) ? Visibility.Visible : Visibility.Collapsed);
 
-        public static ConverterBase<int, int, Visibility> GetIntToCollapsed => new ConverterBase<int, int, Visibility>((x, y) => x == y ? Visibility.Collapsed : Visibility.Visible);
-        public static ConverterBase<int, int, Visibility> GetIntToVisible => new ConverterBase<int, int, Visibility>((x, y) => x == y ? Visibility.Visible : Visibility.Collapsed);
+        public static IValueConverter GetIntToCollapsed => new ConverterBase<int, int, Visibility>((x, y) => x == y ? Visibility.Collapsed : Visibility.Visible);
+        public static IValueConverter GetIntToVisible => new ConverterBase<int, int, Visibility>((x, y) => x == y ? Visibility.Visible : Visibility.Collapsed);
 
 
-        public static MultiConverterBase<object, Visibility> GetAllEqualsToVisible => new MultiConverterBase<object, Visibility>(x =>
+        public static IMultiValueConverter GetAllEqualsToVisible => new MultiConverterBase<object, Visibility>(x =>
         {
             object first = x.FirstOrDefault();
             if (first == null)
@@ -345,7 +345,7 @@ namespace H.Extensions.ValueConverter
             return x.All(l => l.Equals(first)) ? Visibility.Visible : Visibility.Collapsed;
         });
 
-        public static MultiConverterBase<IComparable, Visibility> GetComparableAllTrueToVisible => new MultiConverterBase<IComparable, Visibility>(x =>
+        public static IMultiValueConverter GetComparableAllTrueToVisible => new MultiConverterBase<IComparable, Visibility>(x =>
         {
             IComparable first = x.FirstOrDefault();
             if (first == null)
@@ -356,30 +356,30 @@ namespace H.Extensions.ValueConverter
         #endregion
 
         #region - DateTime -
-        public static ConverterBase<DateTime, string> GetDateTimeToString => new ConverterBase<DateTime, string>(x => x.ToString("yyyy-MM-dd HH:mm:ss"));
-        public static ConverterBase<DateTime, string> GetDateTimeToDateString => new ConverterBase<DateTime, string>(x => x.ToString("yyyy-MM-dd"));
-        public static ConverterBase<DateTime, int> GetDateTimeToAge => new ConverterBase<DateTime, int>(x =>
+        public static IValueConverter GetDateTimeToString => new ConverterBase<DateTime, string>(x => x.ToString("yyyy-MM-dd HH:mm:ss"));
+        public static IValueConverter GetDateTimeToDateString => new ConverterBase<DateTime, string>(x => x.ToString("yyyy-MM-dd"));
+        public static IValueConverter GetDateTimeToAge => new ConverterBase<DateTime, int>(x =>
         {
             TimeSpan span = DateTime.Now - x;
             return (int)(span.TotalDays / 365.0);
         });
 
-        public static ConverterBase<DateTime, DateTime> GetDateTimeToDate => new ConverterBase<DateTime, DateTime>(x => x.Date);
-        public static ConverterBase<DateTime, double, DateTime> GetDateTimeToAddDays => new ConverterBase<DateTime, double, DateTime>((x, y) => x.AddDays(y));
-        public static ConverterBase<DateTime, double, DateTime> GetDateTimeToAddHours => new ConverterBase<DateTime, double, DateTime>((x, y) => x.AddHours(y));
-        public static ConverterBase<DateTime, double, DateTime> GetDateTimeToAddMilliseconds => new ConverterBase<DateTime, double, DateTime>((x, y) => x.AddMilliseconds(y));
-        public static ConverterBase<DateTime, double, DateTime> GetDateTimeToAddSeconds => new ConverterBase<DateTime, double, DateTime>((x, y) => x.AddSeconds(y));
-        public static ConverterBase<DateTime, int, DateTime> GetDateTimeToAddMonths => new ConverterBase<DateTime, int, DateTime>((x, y) => x.AddMonths(y));
-        public static ConverterBase<DateTime, long, DateTime> GetDateTimeToAddTicks => new ConverterBase<DateTime, long, DateTime>((x, y) => x.AddTicks(y));
-        public static ConverterBase<DateTime, int, DateTime> GetDateTimeToAddYears => new ConverterBase<DateTime, int, DateTime>((x, y) => x.AddYears(y));
-        public static ConverterBase<string, DateTime> GetDateTimeParseExact => new ConverterBase<string, DateTime>(x => DateTime.ParseExact(x, "yyyy-MM-dd HH:mm:ss", new CultureInfo("zh-CN")));
-        public static ConverterBase<DateTime, long> GetDateTimeToTicks => new ConverterBase<DateTime, long>(x => x.Ticks);
+        public static IValueConverter GetDateTimeToDate => new ConverterBase<DateTime, DateTime>(x => x.Date);
+        public static IValueConverter GetDateTimeToAddDays => new ConverterBase<DateTime, double, DateTime>((x, y) => x.AddDays(y));
+        public static IValueConverter GetDateTimeToAddHours => new ConverterBase<DateTime, double, DateTime>((x, y) => x.AddHours(y));
+        public static IValueConverter GetDateTimeToAddMilliseconds => new ConverterBase<DateTime, double, DateTime>((x, y) => x.AddMilliseconds(y));
+        public static IValueConverter GetDateTimeToAddSeconds => new ConverterBase<DateTime, double, DateTime>((x, y) => x.AddSeconds(y));
+        public static IValueConverter GetDateTimeToAddMonths => new ConverterBase<DateTime, int, DateTime>((x, y) => x.AddMonths(y));
+        public static IValueConverter GetDateTimeToAddTicks => new ConverterBase<DateTime, long, DateTime>((x, y) => x.AddTicks(y));
+        public static IValueConverter GetDateTimeToAddYears => new ConverterBase<DateTime, int, DateTime>((x, y) => x.AddYears(y));
+        public static IValueConverter GetDateTimeParseExact => new ConverterBase<string, DateTime>(x => DateTime.ParseExact(x, "yyyy-MM-dd HH:mm:ss", new CultureInfo("zh-CN")));
+        public static IValueConverter GetDateTimeToTicks => new ConverterBase<DateTime, long>(x => x.Ticks);
         #endregion
 
         #region - Uri -
-        public static ConverterBase<string, Uri> GetUri => new ConverterBase<string, Uri>(x => Uri.TryCreate(x, UriKind.RelativeOrAbsolute, out Uri uri) ? uri : null);
-        public static ConverterBase<string, Uri> GetUriRelative => new ConverterBase<string, Uri>(x => Uri.TryCreate(x, UriKind.Relative, out Uri uri) ? uri : null);
-        public static ConverterBase<string, Uri> GetUriAbsolute => new ConverterBase<string, Uri>(x => Uri.TryCreate(x, UriKind.Absolute, out Uri uri) ? uri : null);
+        public static IValueConverter GetUri => new ConverterBase<string, Uri>(x => Uri.TryCreate(x, UriKind.RelativeOrAbsolute, out Uri uri) ? uri : null);
+        public static IValueConverter GetUriRelative => new ConverterBase<string, Uri>(x => Uri.TryCreate(x, UriKind.Relative, out Uri uri) ? uri : null);
+        public static IValueConverter GetUriAbsolute => new ConverterBase<string, Uri>(x => Uri.TryCreate(x, UriKind.Absolute, out Uri uri) ? uri : null);
 
         #endregion
 
@@ -428,15 +428,15 @@ namespace H.Extensions.ValueConverter
         //    return (Application.Current.FindResource(BrushKeys.Red) as SolidColorBrush).Color;
         //});
 
-        public static ConverterBase<Color, SolidColorBrush> GetColorToSolidColorBrush => new ConverterBase<Color, SolidColorBrush>(x => new SolidColorBrush(x), x => x.Color);
+        public static IValueConverter GetColorToSolidColorBrush => new ConverterBase<Color, SolidColorBrush>(x => new SolidColorBrush(x), x => x.Color);
 
-        public static ConverterBase<SolidColorBrush, Color> GetSolidColorBrushToColor => new ConverterBase<SolidColorBrush, Color>(x => x.Color, x => new SolidColorBrush(x));
+        public static IValueConverter GetSolidColorBrushToColor => new ConverterBase<SolidColorBrush, Color>(x => x.Color, x => new SolidColorBrush(x));
 
 
         #endregion
 
         #region - TreeViewItem -
-        public static ConverterBase<TreeViewItem, double, Thickness> GetTreeViewItemMargin => new ConverterBase<TreeViewItem, double, Thickness>((x, e) =>
+        public static IValueConverter GetTreeViewItemMargin => new ConverterBase<TreeViewItem, double, Thickness>((x, e) =>
          {
              int level = GetTreeViewItemLevel.Set(x);
              return new Thickness(level * e, 0, 0, 0);
@@ -466,19 +466,19 @@ namespace H.Extensions.ValueConverter
         #endregion
 
         #region - CornerRadius -
-        public static ConverterBase<double, CornerRadius> GetDoubleToCornerRadius => new ConverterBase<double, CornerRadius>(x => new CornerRadius(x, x, x, x));
-        public static ConverterBase<double, CornerRadius> GetDoubleToCornerRadiusLeft => new ConverterBase<double, CornerRadius>(x => new CornerRadius(x, 0, 0, x));
-        public static ConverterBase<double, CornerRadius> GetDoubleToCornerRadiusTop => new ConverterBase<double, CornerRadius>(x => new CornerRadius(x, x, 0, 0));
-        public static ConverterBase<double, CornerRadius> GetDoubleToCornerRadiusRigth => new ConverterBase<double, CornerRadius>(x => new CornerRadius(0, x, x, 0));
-        public static ConverterBase<double, CornerRadius> GetDoubleToCornerRadiusBottm => new ConverterBase<double, CornerRadius>(x => new CornerRadius(0, 0, x, x));
-        public static ConverterBase<double, CornerRadius> GetDoubleToCornerRadiusLeftTop => new ConverterBase<double, CornerRadius>(x => new CornerRadius(x, 0, 0, 0));
-        public static ConverterBase<double, CornerRadius> GetDoubleToCornerRadiusLeftBottom => new ConverterBase<double, CornerRadius>(x => new CornerRadius(0, 0, 0, x));
-        public static ConverterBase<double, CornerRadius> GetDoubleToCornerRadiusRightTop => new ConverterBase<double, CornerRadius>(x => new CornerRadius(0, x, 0, 0));
-        public static ConverterBase<double, CornerRadius> GetDoubleToCornerRadiusRightBottom => new ConverterBase<double, CornerRadius>(x => new CornerRadius(0, 0, x, 0));
+        public static IValueConverter GetDoubleToCornerRadius => new ConverterBase<double, CornerRadius>(x => new CornerRadius(x, x, x, x));
+        public static IValueConverter GetDoubleToCornerRadiusLeft => new ConverterBase<double, CornerRadius>(x => new CornerRadius(x, 0, 0, x));
+        public static IValueConverter GetDoubleToCornerRadiusTop => new ConverterBase<double, CornerRadius>(x => new CornerRadius(x, x, 0, 0));
+        public static IValueConverter GetDoubleToCornerRadiusRigth => new ConverterBase<double, CornerRadius>(x => new CornerRadius(0, x, x, 0));
+        public static IValueConverter GetDoubleToCornerRadiusBottm => new ConverterBase<double, CornerRadius>(x => new CornerRadius(0, 0, x, x));
+        public static IValueConverter GetDoubleToCornerRadiusLeftTop => new ConverterBase<double, CornerRadius>(x => new CornerRadius(x, 0, 0, 0));
+        public static IValueConverter GetDoubleToCornerRadiusLeftBottom => new ConverterBase<double, CornerRadius>(x => new CornerRadius(0, 0, 0, x));
+        public static IValueConverter GetDoubleToCornerRadiusRightTop => new ConverterBase<double, CornerRadius>(x => new CornerRadius(0, x, 0, 0));
+        public static IValueConverter GetDoubleToCornerRadiusRightBottom => new ConverterBase<double, CornerRadius>(x => new CornerRadius(0, 0, x, 0));
         #endregion
 
         #region - Enum -
-        public static ConverterBase<Type, IEnumerable> GetEnumSource => new ConverterBase<Type, IEnumerable>(x =>
+        public static IValueConverter GetEnumSource => new ConverterBase<Type, IEnumerable>(x =>
         {
             if (null == x)
                 throw new InvalidOperationException("This EnumType must be specified.");
