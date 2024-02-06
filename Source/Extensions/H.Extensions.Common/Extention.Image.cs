@@ -11,31 +11,59 @@ namespace System.IO
 {
     public static class ImageExtention
     {
+        public static ImageEx ToImageEx(this string filePath) => new ImageEx(filePath);
+    }
+
+    public class ImageEx
+    {
         private static List<Tuple<string, int, int, BitmapImage>> _fileCache = new List<Tuple<string, int, int, BitmapImage>>();
-        public static ImageSource GetImageSource(this string filePath, int decodePixelWidth = 0, int decodePixelHeight = 0, bool useCache = true)
+
+        public ImageEx(string fullPath)
         {
-            if (!File.Exists(filePath))
+            this.FullPath = fullPath;
+        }
+
+        public void ClearCache()
+        {
+            _fileCache.Clear();
+        }
+
+        public string FullPath { get; }
+
+        public Tuple<int, int> GetImagePixel()
+        {
+            if (!File.Exists(this.FullPath))
+                return null;
+            BitmapImage bmp = new BitmapImage(new Uri(this.FullPath, UriKind.Absolute));
+            if (bmp == null)
+                return null;
+            return Tuple.Create(bmp.PixelWidth, bmp.PixelHeight);
+        }
+
+        public ImageSource GetImageSource(int decodePixelWidth = 0, int decodePixelHeight = 0, bool useCache = true)
+        {
+            if (!File.Exists(this.FullPath))
                 return null;
 
-            if (filePath.IsImage() == false)
+            if (this.FullPath.IsImage() == false)
                 return null;
 
             if (useCache)
             {
-                Tuple<string, int, int, BitmapImage> find = _fileCache.FirstOrDefault(k => k.Item1 == filePath && k.Item2 == decodePixelWidth && k.Item3 == decodePixelHeight);
+                Tuple<string, int, int, BitmapImage> find = _fileCache.FirstOrDefault(k => k.Item1 == this.FullPath && k.Item2 == decodePixelWidth && k.Item3 == decodePixelHeight);
                 if (find != null && find.Item4 != null)
                     return find.Item4;
             }
 
             try
             {
-                using (FileStream filestream = File.Open(filePath, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))
+                using (FileStream filestream = File.Open(this.FullPath, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))
                 {
                     using (BinaryReader reader = new BinaryReader(filestream))
 
                     //using (BinaryReader reader = new BinaryReader(File.Open(filePath, FileMode.Open,FileAccess.ReadWrite, FileShare.ReadWrite)))
                     {
-                        FileInfo fi = new FileInfo(filePath);
+                        FileInfo fi = new FileInfo(this.FullPath);
                         byte[] bytes = reader.ReadBytes((int)fi.Length);
                         reader.Close();
                         BitmapImage bitmapImage = new BitmapImage();
@@ -48,7 +76,7 @@ namespace System.IO
                         bitmapImage.EndInit();
                         bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
                         if (useCache)
-                            _fileCache.Add(Tuple.Create(filePath, decodePixelWidth, decodePixelHeight, bitmapImage));
+                            _fileCache.Add(Tuple.Create(this.FullPath, decodePixelWidth, decodePixelHeight, bitmapImage));
                         return bitmapImage;
                     }
                 }
@@ -66,14 +94,5 @@ namespace System.IO
             }
         }
 
-        public static Tuple<int, int> GetImagePixel(this string filePath)
-        {
-            if (!File.Exists(filePath))
-                return null;
-            BitmapImage bmp = new BitmapImage(new Uri(filePath, UriKind.Absolute));
-            if (bmp == null)
-                return null;
-            return Tuple.Create(bmp.PixelWidth, bmp.PixelHeight);
-        }
     }
 }

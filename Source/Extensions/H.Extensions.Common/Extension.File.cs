@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace H.Extensions.Common
 {
@@ -23,7 +24,7 @@ namespace H.Extensions.Common
 
         public static IEnumerable<string> GetAllImages(this string foldPath)
         {
-            var files = foldPath.GetAllFiles(x => x.FullName.IsImage());
+            var files = foldPath.ToDirectoryEx().GetAllFiles(x => x.FullName.IsImage());
             return files;
         }
 
@@ -34,7 +35,7 @@ namespace H.Extensions.Common
 
         public static IEnumerable<string> GetAllVedios(string foldPath)
         {
-            var files = foldPath.GetAllFiles(x => x.FullName.IsVedio());
+            var files = foldPath.ToDirectoryEx().GetAllFiles(x => x.FullName.IsVedio());
             return files;
         }
 
@@ -46,7 +47,7 @@ namespace H.Extensions.Common
 
         public static IEnumerable<string> GetAllAudios(string foldPath)
         {
-            var files = foldPath.GetAllFiles(x => x.FullName.IsAudio());
+            var files = foldPath.ToDirectoryEx().GetAllFiles(x => x.FullName.IsAudio());
             return files;
         }
         public static bool IsAudio(this string filePath)
@@ -61,65 +62,90 @@ namespace H.Extensions.Common
         {
             return extensions.Select(x => $" *.{x};").Aggregate((x, y) => x + y);
         }
-
-        /// <summary> 获取当前文件夹下所有匹配的文件 </summary>
-        public static List<string> GetAllFiles(this string dirPath, Predicate<FileInfo> match = null)
-        {
-            List<string> ss = new List<string>();
-            if (!Directory.Exists(dirPath))
-                return ss;
-            DirectoryInfo dir = new DirectoryInfo(dirPath);
-            foreach (FileSystemInfo d in dir.GetFileSystemInfos().Where(d => !d.Attributes.HasFlag(FileAttributes.Hidden | FileAttributes.System)))
-            {
-                if (d is DirectoryInfo)
-                {
-                    DirectoryInfo dd = d as DirectoryInfo;
-                    ss.AddRange(dd.FullName.GetAllFiles(match));
-                }
-                else if (d is FileInfo)
-                {
-                    FileInfo dd = d as FileInfo;
-                    if (match == null || match(dd))
-                        ss.Add(d.FullName);
-                }
-            }
-            return ss;
-        }
-
-        private const double TB = 1024 * 1024 * 1024 * 1024.0;
-        private const int GB = 1024 * 1024 * 1024;
-        private const int MB = 1024 * 1024;
-        private const int KB = 1024;
-
-        public static string GetFileSizeToDisplay(this string filePath)
-        {
-            if (!File.Exists(filePath))
-                return null;
-            long KSize = new FileInfo(filePath).Length;
-            bool isMinus = KSize < 0;
-            string result;
-            KSize = Math.Abs(KSize);
-            if (KSize / TB >= 1)
-                result = Math.Round(KSize / (float)TB, 2).ToString() + "T";
-            else if (KSize / GB >= 1)
-                result = Math.Round(KSize / (float)GB, 2).ToString() + "G";
-            else if (KSize / MB >= 1)
-
-                result = Math.Round(KSize / (float)MB, 2).ToString() + "MB";
-            else if (KSize / KB >= 1)
-
-                result = Math.Round(KSize / (float)KB, 2).ToString() + "KB";
-            else
-                result = KSize.ToString() + "Byte";
-            return isMinus ? "-" + result : result;
-        }
     }
 
 
     public static partial class FileExtension
     {
-        public static void BackupDirectory(string sourceFolder, string destFolder, Action<string> logAction = null)
+        public static long GetDirectorySize(this DirectoryInfo dirInfo)
         {
+            long size = 0;
+            FileInfo[] files;
+            try
+            {
+                files = dirInfo.GetFiles();
+            }
+            catch (UnauthorizedAccessException)
+            {
+                return 0;
+            }
+            catch (Exception e)
+            {
+                return 0;
+            }
+
+            foreach (FileInfo file in files)
+            {
+                try
+                {
+                    size += file.Length;
+                }
+                catch (UnauthorizedAccessException)
+                {
+
+                }
+                catch (Exception e)
+                {
+
+                }
+            }
+            DirectoryInfo[] subDirs;
+            try
+            {
+                subDirs = dirInfo.GetDirectories();
+            }
+            catch (UnauthorizedAccessException)
+            {
+                return size;
+            }
+            catch (Exception e)
+            {
+                return size;
+            }
+
+            foreach (DirectoryInfo subDir in subDirs)
+            {
+                size += GetDirectorySize(subDir);
+            }
+            return size;
+        }
+    }
+
+    public static partial class FileExtension
+    {
+        public static DirectoryEx ToDirectoryEx(this string folder)=> new DirectoryEx(folder);
+
+        public static FileEx ToFileEx(this string filePath)=> new FileEx(filePath);
+    }
+
+    public class DirectoryEx
+    {
+        public DirectoryEx(string folder)
+        {
+            this.Folder = folder;
+        }
+        public string Folder { get; }
+
+        public DirectoryEx CreateDirectoryIfNotExsit()
+        {
+            if (!Directory.Exists(Folder))
+                Directory.CreateDirectory(Folder);
+            return this;
+        }
+
+        public void BackupToDirectory(string destFolder, Action<string> logAction = null)
+        {
+            string sourceFolder = this.Folder;
             int totalFiles = 0;
             int totalSubFolders = 0;
             int totalSuccess = 0;
@@ -222,7 +248,7 @@ namespace H.Extensions.Common
                     {
                         string name = Path.GetFileName(folder);
                         string dest = Path.Combine(destFolder, name);
-                        BackupDirectory(folder, dest, logAction);
+                        folder.ToDirectoryEx().BackupToDirectory(dest, logAction);
                     }
                     catch (UnauthorizedAccessException)
                     {
@@ -236,62 +262,60 @@ namespace H.Extensions.Common
             }
         }
 
-        public static long GetDirectorySize(this DirectoryInfo dirInfo)
+        public List<string> GetAllFiles(Predicate<FileInfo> match = null)
         {
-            long size = 0;
-            FileInfo[] files;
-            try
+            List<string> ss = new List<string>();
+            if (!Directory.Exists(this.Folder))
+                return ss;
+            DirectoryInfo dir = new DirectoryInfo(this.Folder);
+            foreach (FileSystemInfo d in dir.GetFileSystemInfos().Where(d => !d.Attributes.HasFlag(FileAttributes.Hidden | FileAttributes.System)))
             {
-                files = dirInfo.GetFiles();
-            }
-            catch (UnauthorizedAccessException)
-            {
-                return 0;
-            }
-            catch (Exception e)
-            {
-                return 0;
-            }
-
-            foreach (FileInfo file in files)
-            {
-                try
+                if (d is DirectoryInfo)
                 {
-                    size += file.Length;
+                    DirectoryInfo dd = d as DirectoryInfo;
+                    ss.AddRange(dd.FullName.ToDirectoryEx().GetAllFiles(match));
                 }
-                catch (UnauthorizedAccessException)
+                else if (d is FileInfo)
                 {
-
-                }
-                catch (Exception e)
-                {
-
+                    FileInfo dd = d as FileInfo;
+                    if (match == null || match(dd))
+                        ss.Add(d.FullName);
                 }
             }
-            DirectoryInfo[] subDirs;
-            try
-            {
-                subDirs = dirInfo.GetDirectories();
-            }
-            catch (UnauthorizedAccessException)
-            {
-                return size;
-            }
-            catch (Exception e)
-            {
-                return size;
-            }
+            return ss;
+        }
+    }
 
-            foreach (DirectoryInfo subDir in subDirs)
-            {
-                size += GetDirectorySize(subDir);
-            }
-            return size;
+    public class FileEx
+    {
+        public FileEx(string fullPath)
+        {
+            this.FullPath = fullPath;
+        }
+        public string FullPath { get; }
+
+        public FileEx CreateDirectoryIfNotExsit()
+        {
+            string folder = Path.GetDirectoryName(FullPath);
+            folder.ToDirectoryEx().CreateDirectoryIfNotExsit();
+            return this;
         }
 
-        public static string GetFileHashSHA256(this string filePath)
+        public string GetFileHashMD5()
         {
-            using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+            using (FileStream fs = new FileStream(this.FullPath, FileMode.Open, FileAccess.Read))
+            {
+                using (MD5 sha256 = MD5.Create())
+                {
+                    byte[] hashBytes = sha256.ComputeHash(fs);
+                    return BitConverter.ToString(hashBytes).Replace("-", "");
+                }
+            }
+        }
+
+        public string GetFileHashSHA256()
+        {
+            using (FileStream fs = new FileStream(this.FullPath, FileMode.Open, FileAccess.Read))
             {
                 using (SHA256 sha256 = SHA256.Create())
                 {
@@ -301,16 +325,32 @@ namespace H.Extensions.Common
             }
         }
 
-        public static string GetFileHashMD5(this string filePath)
+        public string GetFileSizeToDisplay()
         {
-            using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
-            {
-                using (MD5 sha256 = MD5.Create())
-                {
-                    byte[] hashBytes = sha256.ComputeHash(fs);
-                    return BitConverter.ToString(hashBytes).Replace("-", "");
-                }
-            }
+            double TB = 1024 * 1024 * 1024 * 1024.0;
+            int GB = 1024 * 1024 * 1024;
+            int MB = 1024 * 1024;
+            int KB = 1024;
+
+            if (!File.Exists(this.FullPath))
+                return null;
+            long KSize = new FileInfo(this.FullPath).Length;
+            bool isMinus = KSize < 0;
+            string result;
+            KSize = Math.Abs(KSize);
+            if (KSize / TB >= 1)
+                result = Math.Round(KSize / (float)TB, 2).ToString() + "T";
+            else if (KSize / GB >= 1)
+                result = Math.Round(KSize / (float)GB, 2).ToString() + "G";
+            else if (KSize / MB >= 1)
+
+                result = Math.Round(KSize / (float)MB, 2).ToString() + "MB";
+            else if (KSize / KB >= 1)
+
+                result = Math.Round(KSize / (float)KB, 2).ToString() + "KB";
+            else
+                result = KSize.ToString() + "Byte";
+            return isMinus ? "-" + result : result;
         }
     }
 }

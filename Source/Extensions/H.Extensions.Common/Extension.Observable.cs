@@ -54,12 +54,6 @@ namespace System
         /// <summary> 转成 ObservableCollection 集合 </summary>
         public static ObservableCollection<T> ToObservable<T>(this IEnumerable<T> collection)
         {
-
-            //ObservableCollection<T> result = new ObservableCollection<T>();
-            //foreach (var item in collection)
-            //{
-            //    result.Add(item);
-            //}
             return new ObservableCollection<T>(collection);
 
         }
@@ -109,14 +103,10 @@ namespace System
             for (int i = 0; i < collection.Count; i++)
             {
                 int index = random.Next(i, collection.Count - 1);
-
                 temp = collection[i];
-
                 collection[i] = collection[index];
-
                 collection[index] = temp;
             }
-
             return collection;
         }
 
@@ -145,7 +135,6 @@ namespace System
         public static T CreateObservableCollection<T>(this Type t) where T : IEnumerable
         {
             if (t == null) return default(T);
-
             Type type = typeof(ObservableCollection<>);
             type = type.MakeGenericType(t);
             return (T)Activator.CreateInstance(type);
