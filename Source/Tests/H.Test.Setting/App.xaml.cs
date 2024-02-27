@@ -43,7 +43,7 @@ namespace H.Test.Setting
         {
             base.OnSplashScreen(e);
 
-            SettingDataManager.Instance.Load(out var message);
+            SettingDataManager.Instance.Load(null,out var message);
         }
     }
 }

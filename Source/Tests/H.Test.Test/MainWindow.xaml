@@ -6,6 +6,7 @@
               xmlns:h="https://github.com/HeBianGu"
               xmlns:local="clr-namespace:H.Test.Test"
               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+              xmlns:system="clr-namespace:System;assembly=System.Runtime"
               Title="MainWindow"
               Width="1100"
               Height="650"
@@ -947,6 +948,51 @@
                     <Button Command="{h:ShowFeedbackCommand}"
                             Content="用户反馈" />
                 </DockPanel>
+            </TabItem>
+            <TabItem Header="FilterColumnDataGrid">
+                <h:FilterColumnDataGrid AutoGenerateColumns="True"
+                                        CollectionType="{x:Type h:Student}"
+                                        ItemsSource="{Binding Students}"
+                                        PersistentFilter="True">
+                    <!--<h:FilterColumnDataGrid.Columns>
+                        <h:DataGridTemplateColumn Width="*"
+                                                  FieldName="Name"
+                                                  Header="Name"
+                                                  IsColumnFiltered="True"
+                                                  SortMemberPath="Name">
+                            <h:DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate DataType="{x:Type h:Student}">
+                                    <TextBlock Padding="2,0"
+                                               Text="{Binding Name}" />
+                                </DataTemplate>
+                            </h:DataGridTemplateColumn.CellTemplate>
+                        </h:DataGridTemplateColumn>
+
+                        <h:DataGridTextColumn Width="*"
+                                              Binding="{Binding Name}"
+                                              Header="Name"
+                                              IsColumnFiltered="True" />
+
+                        <h:DataGridTextColumn Width="*"
+                                              Binding="{Binding Age}"
+                                              Header="Age"
+                                              IsColumnFiltered="True" />
+
+                    -->
+                    <!--<h:DataGridTextColumn Binding="{Binding Salary}"
+                                              Header="Salary"
+                                              IsColumnFiltered="True" />
+
+                        <h:DataGridCheckBoxColumn Binding="{Binding Manager}"
+                                                  Header="Manager"
+                                                  IsColumnFiltered="True" />
+
+                        <h:DataGridTextColumn Binding="{Binding StartDate}"
+                                              Header="Start Date"
+                                              IsColumnFiltered="True" /-->
+                    <!--
+                    </h:FilterColumnDataGrid.Columns>-->
+                </h:FilterColumnDataGrid>
             </TabItem>
         </TabControl>
     </Grid>
