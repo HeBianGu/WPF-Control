@@ -89,12 +89,13 @@
 
     <Style x:Key="{x:Type GridViewColumnHeader}"
            TargetType="GridViewColumnHeader">
-        <Setter Property="HorizontalContentAlignment" Value="Center" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl}, Path=(Cattach.CaptionMargin)}" />
+        <Setter Property="HorizontalContentAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl}, Path=(Cattach.CaptionHorizontalAlignment)}" />
+        <Setter Property="VerticalContentAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl}, Path=(Cattach.CaptionVerticalAlignment)}" />
         <Setter Property="Height" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
-        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType=ListView}, Path=(Cattach.CaptionForeground)}" />
-        <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource AncestorType=ListView}, Path=(Cattach.CaptionBackground)}" />
-        <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource AncestorType=ListView}, Path=(Cattach.CaptionBackground)}" />
+        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl}, Path=(Cattach.CaptionForeground)}" />
+        <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl}, Path=(Cattach.CaptionBackground)}" />
+        <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl}, Path=(Cattach.CaptionBackground)}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="GridViewColumnHeader">
@@ -109,7 +110,7 @@
                                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />
                             </Border.Background>
                             <ContentPresenter x:Name="HeaderContent"
-                                              Margin="0,0,0,1"
+                                              Margin="{TemplateBinding Padding}"
                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                               RecognizesAccessKey="True"
