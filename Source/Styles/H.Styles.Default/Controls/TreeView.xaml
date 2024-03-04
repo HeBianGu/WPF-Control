@@ -20,11 +20,9 @@
             <Setter.Value>
                 <ControlTemplate TargetType="TreeView">
                     <Border Name="Border"
+                            BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                             BorderThickness="1"
                             CornerRadius="1">
-                        <Border.BorderBrush>
-                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-                        </Border.BorderBrush>
                         <Border.Background>
                             <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
                         </Border.Background>

@@ -15,11 +15,7 @@
                 <SolidColorBrush Color="Transparent" />
             </Setter.Value>
         </Setter>
-        <Setter Property="BorderBrush">
-            <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-            </Setter.Value>
-        </Setter>
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
         <Setter Property="Foreground">
             <Setter.Value>
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
@@ -94,11 +90,13 @@
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
             </Setter.Value>
         </Setter>
-        <Setter Property="BorderBrush">
+        <!--<Setter Property="BorderBrush">
             <Setter.Value>
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
             </Setter.Value>
-        </Setter>
+        </Setter>-->
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
+
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">

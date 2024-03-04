@@ -1,7 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:H.Styles.Default">
-    <Style x:Key="NavWinButtonStyle" TargetType="{x:Type Button}">
+    <Style x:Key="NavWinButtonStyle"
+           TargetType="{x:Type Button}">
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="Command" Value="NavigationCommands.BrowseBack" />
         <Setter Property="Focusable" Value="false" />
@@ -34,25 +35,33 @@
                                 <VisualState x:Name="Normal" />
                                 <VisualState x:Name="MouseOver">
                                     <Storyboard>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Ellipse" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Ellipse"
+                                                                      Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                                                 Value="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Pressed">
                                     <Storyboard>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Ellipse" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.Background}}" />
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Ellipse"
+                                                                      Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                                                 Value="{DynamicResource {x:Static ColorKeys.Background}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Disabled">
                                     <Storyboard>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Ellipse" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.BackgroundDisabled}}" />
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Ellipse"
+                                                                      Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                                                 Value="{DynamicResource {x:Static ColorKeys.BackgroundDisabled}}" />
                                         </ColorAnimationUsingKeyFrames>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Arrow" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Arrow"
+                                                                      Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                                                 Value="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
 
@@ -72,7 +81,8 @@
     </Style>
 
     <!--  NavWin Menu Style  -->
-    <Style x:Key="NavWinMenu" TargetType="{x:Type Menu}">
+    <Style x:Key="NavWinMenu"
+           TargetType="{x:Type Menu}">
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="KeyboardNavigation.TabNavigation" Value="None" />
         <Setter Property="IsMainMenu" Value="false" />
@@ -86,7 +96,8 @@
     </Style>
 
     <!--  NavWin Menu Header Style  -->
-    <Style x:Key="NavWinHeaderMenuItem" TargetType="{x:Type MenuItem}">
+    <Style x:Key="NavWinHeaderMenuItem"
+           TargetType="{x:Type MenuItem}">
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="Template">
             <Setter.Value>
@@ -99,13 +110,12 @@
                                Placement="Bottom"
                                PopupAnimation="Fade"
                                VerticalOffset="2">
-                            <Border x:Name="SubMenuBorder" BorderThickness="1">
+                            <Border x:Name="SubMenuBorder"
+                                    BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                                    BorderThickness="1">
                                 <Border.Background>
                                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
                                 </Border.Background>
-                                <Border.BorderBrush>
-                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-                                </Border.BorderBrush>
                                 <StackPanel Margin="2"
                                             IsItemsHost="true"
                                             KeyboardNavigation.DirectionalNavigation="Cycle"
@@ -120,12 +130,10 @@
                               Background="Transparent">
                             <!--  d:IsHidden="True"  -->
                             <Border x:Name="HighlightBorder"
+                                    BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                                     BorderThickness="1"
                                     CornerRadius="2"
                                     Visibility="Hidden">
-                                <Border.BorderBrush>
-                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-                                </Border.BorderBrush>
                                 <Border.Background>
                                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
                                 </Border.Background>
@@ -167,7 +175,8 @@
 
     <!--  NavWin Menu Item Style  -->
 
-    <Style x:Key="NavWinSubmenuItem" TargetType="{x:Type MenuItem}">
+    <Style x:Key="NavWinSubmenuItem"
+           TargetType="{x:Type MenuItem}">
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="Header" Value="{Binding (JournalEntry.Name)}" />
         <Setter Property="Command" Value="NavigationCommands.NavigateJournal" />
@@ -177,7 +186,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type MenuItem}">
-                    <Border Name="Border" BorderThickness="1">
+                    <Border Name="Border"
+                            BorderThickness="1">
                         <Grid x:Name="Panel"
                               Width="250"
                               Height="35"
@@ -196,7 +206,8 @@
                                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
                                 </Path.Stroke>
                             </Path>
-                            <ContentPresenter Margin="24,5,50,5" ContentSource="Header" />
+                            <ContentPresenter Margin="24,5,50,5"
+                                              ContentSource="Header" />
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
@@ -255,7 +266,9 @@
 
     <!--  SimpleStyles: NavigationWindow  -->
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.NavigationWindow.Default, TypeInTargetAssembly={x:Type local:NavigationWindowKeys}}" TargetType="{x:Type NavigationWindow}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.NavigationWindow.Default,
+                                        TypeInTargetAssembly={x:Type local:NavigationWindowKeys}}"
+           TargetType="{x:Type NavigationWindow}">
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="Template">
             <Setter.Value>
@@ -265,11 +278,9 @@
                             <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
                         </DockPanel.Background>
                         <Border Height="30"
+                                BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                                 BorderThickness="1"
                                 DockPanel.Dock="Top">
-                            <Border.BorderBrush>
-                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-                            </Border.BorderBrush>
                             <Grid>
                                 <Grid.Background>
                                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
@@ -292,8 +303,10 @@
                                               Style="{StaticResource NavWinHeaderMenuItem}">
                                         <MenuItem.ItemsSource>
                                             <MultiBinding Converter="{StaticResource JournalEntryUnifiedViewConverter}">
-                                                <Binding Path="BackStack" RelativeSource="{RelativeSource TemplatedParent}" />
-                                                <Binding Path="ForwardStack" RelativeSource="{RelativeSource TemplatedParent}" />
+                                                <Binding Path="BackStack"
+                                                         RelativeSource="{RelativeSource TemplatedParent}" />
+                                                <Binding Path="ForwardStack"
+                                                         RelativeSource="{RelativeSource TemplatedParent}" />
                                             </MultiBinding>
                                         </MenuItem.ItemsSource>
                                     </MenuItem>
@@ -329,11 +342,11 @@
                         </Border>
                         <Grid>
                             <AdornerDecorator>
-                                <Border BorderThickness="1">
-                                    <Border.BorderBrush>
-                                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-                                    </Border.BorderBrush>
-                                    <ContentPresenter x:Name="PART_NavWinCP" ClipToBounds="true" />
+                                <Border BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                                        BorderThickness="1">
+
+                                    <ContentPresenter x:Name="PART_NavWinCP"
+                                                      ClipToBounds="true" />
                                 </Border>
                             </AdornerDecorator>
 
@@ -353,6 +366,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style BasedOn="{StaticResource {x:Static local:NavigationWindowKeys.Default}}" TargetType="NavigationWindow" />
+    <Style BasedOn="{StaticResource {x:Static local:NavigationWindowKeys.Default}}"
+           TargetType="NavigationWindow" />
 
 </ResourceDictionary>

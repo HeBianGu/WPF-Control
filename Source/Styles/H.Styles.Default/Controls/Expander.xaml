@@ -8,14 +8,12 @@
     <ControlTemplate x:Key="ExpanderToggleButton"
                      TargetType="{x:Type ToggleButton}">
         <Border x:Name="Border"
+                BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                 BorderThickness="0"
                 CornerRadius="2,0,0,0">
             <Border.Background>
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />
             </Border.Background>
-            <Border.BorderBrush>
-                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-            </Border.BorderBrush>
             <Grid>
                 <Path x:Name="CollapsedArrow"
                       HorizontalAlignment="Center"
@@ -103,11 +101,7 @@
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />
             </Setter.Value>
         </Setter>
-        <Setter Property="BorderBrush">
-            <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-            </Setter.Value>
-        </Setter>
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
         <Setter Property="Cattach.CaptionBackground">
             <Setter.Value>
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />

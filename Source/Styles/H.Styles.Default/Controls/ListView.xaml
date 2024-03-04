@@ -80,11 +80,7 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="BorderBrush">
-            <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-            </Setter.Value>
-        </Setter>
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
     </Style>
 
     <Style x:Key="{x:Type GridViewColumnHeader}"
@@ -102,10 +98,8 @@
                     <Grid>
                         <Border x:Name="HeaderBorder"
                                 Padding="2,0,2,0"
+                                BorderBrush="{DynamicResource {x:Static BrushKeys.CaptionBackground}}"
                                 BorderThickness="0,1,0,1">
-                            <Border.BorderBrush>
-                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />
-                            </Border.BorderBrush>
                             <Border.Background>
                                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />
                             </Border.Background>
@@ -160,13 +154,11 @@
                     <Setter.Value>
                         <ControlTemplate TargetType="GridViewColumnHeader">
                             <Border Name="HeaderBorder"
+                                    BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                                     BorderThickness="0,1,0,1">
                                 <Border.Background>
                                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
                                 </Border.Background>
-                                <Border.BorderBrush>
-                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-                                </Border.BorderBrush>
                             </Border>
                         </ControlTemplate>
                     </Setter.Value>
@@ -185,11 +177,11 @@
         <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="AlternationCount" Value="2" />
-        <Setter Property="Cattach.CaptionBackground">
-            <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />
-            </Setter.Value>
-        </Setter>
+        <Setter Property="Cattach.CaptionBackground" Value="{DynamicResource {x:Static BrushKeys.CaptionBackground}}" />
+        <!--<Setter.Value>
+            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />
+        </Setter.Value>-->
+
         <Setter Property="Cattach.CaptionForeground">
             <Setter.Value>
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionForeground}}" />
@@ -200,16 +192,17 @@
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
             </Setter.Value>
         </Setter>
-        <Setter Property="BorderBrush">
+        <!--<Setter Property="BorderBrush">
             <Setter.Value>
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
             </Setter.Value>
-        </Setter>
+        </Setter>-->
         <Setter Property="Background">
             <Setter.Value>
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
             </Setter.Value>
         </Setter>
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
         <Setter Property="Cattach.CaptionVerticalAlignment" Value="Center" />
         <Setter Property="Cattach.CaptionMargin" Value="2 0" />
         <Setter Property="BorderThickness" Value="1" />
@@ -251,11 +244,13 @@
                 <SolidColorBrush Color="Transparent" />
             </Setter.Value>
         </Setter>
-        <Setter Property="BorderBrush">
+        <!--<Setter Property="BorderBrush">
             <Setter.Value>
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
             </Setter.Value>
-        </Setter>
+        </Setter>-->
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
+
         <Setter Property="BorderThickness" Value="0,0,0,1" />
         <Setter Property="MinHeight" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
         <Setter Property="Template">
@@ -293,11 +288,7 @@
                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
                     </Setter.Value>
                 </Setter>
-                <Setter Property="BorderBrush">
-                    <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrushTitle}}" />
-                    </Setter.Value>
-                </Setter>
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>

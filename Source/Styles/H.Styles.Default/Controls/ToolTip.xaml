@@ -17,13 +17,11 @@
                     <Border Name="Border"
                             Width="{TemplateBinding Width}"
                             Height="{TemplateBinding Height}"
+                            BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                             BorderThickness="1">
                         <Border.Background>
                             <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
                         </Border.Background>
-                        <Border.BorderBrush>
-                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-                        </Border.BorderBrush>
                         <ContentPresenter Margin="10,6"
                                           HorizontalAlignment="Left"
                                           VerticalAlignment="Center" />
@@ -38,6 +36,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style BasedOn="{StaticResource {x:Static local:ToolTipKeys.Default}}" TargetType="ToolTip" />
+    <Style BasedOn="{StaticResource {x:Static local:ToolTipKeys.Default}}"
+           TargetType="ToolTip" />
 
 </ResourceDictionary>

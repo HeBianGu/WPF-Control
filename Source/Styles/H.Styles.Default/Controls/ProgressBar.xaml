@@ -16,21 +16,16 @@
                           MinHeight="14"
                           Background="{TemplateBinding Background}">
                         <Border x:Name="PART_Track"
+                                BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                                 BorderThickness="1"
-                                CornerRadius="2">
-                            <Border.BorderBrush>
-                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-                            </Border.BorderBrush>
-                        </Border>
+                                CornerRadius="2" />
                         <Border x:Name="PART_Indicator"
                                 Margin="0,0,0,0"
                                 HorizontalAlignment="Left"
                                 Background="{TemplateBinding Foreground}"
+                                BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                                 BorderThickness="0"
                                 CornerRadius="2 2 0 0">
-                            <Border.BorderBrush>
-                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-                            </Border.BorderBrush>
                             <Grid x:Name="Animation"
                                   ClipToBounds="True">
                                 <Rectangle x:Name="PART_GlowRect"

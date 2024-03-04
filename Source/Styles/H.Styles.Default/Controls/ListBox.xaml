@@ -23,11 +23,7 @@
 
             </Setter.Value>
         </Setter>
-        <Setter Property="BorderBrush">
-            <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-            </Setter.Value>
-        </Setter>
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Template">
             <Setter.Value>
@@ -74,11 +70,7 @@
                 <SolidColorBrush Color="Transparent" />
             </Setter.Value>
         </Setter>
-        <Setter Property="BorderBrush">
-            <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-            </Setter.Value>
-        </Setter>
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
         <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=(Cattach.ItemBorderThickness)}" />
         <Setter Property="Template">
             <Setter.Value>
@@ -104,11 +96,7 @@
                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
                     </Setter.Value>
                 </Setter>
-                <Setter Property="BorderBrush">
-                    <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-                    </Setter.Value>
-                </Setter>
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>

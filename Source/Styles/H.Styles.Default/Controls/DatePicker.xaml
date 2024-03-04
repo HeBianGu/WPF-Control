@@ -32,11 +32,7 @@
                 <SolidColorBrush Color="Transparent" />
             </Setter.Value>
         </Setter>
-        <Setter Property="BorderBrush">
-            <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-            </Setter.Value>
-        </Setter>
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBoxBase}">
@@ -120,45 +116,39 @@
                                     Grid.RowSpan="4"
                                     Grid.ColumnSpan="4"
                                     Margin="-1"
+                                    BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}"
                                     BorderThickness="1"
                                     CornerRadius="0,0,1,1"
                                     Opacity="1">
                                 <Border.Background>
                                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
                                 </Border.Background>
-                                <Border.BorderBrush>
-                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrushTitle}}" />
-                                </Border.BorderBrush>
                             </Border>
                             <Border x:Name="Background"
                                     Grid.Row="1"
                                     Grid.RowSpan="3"
                                     Grid.ColumnSpan="4"
                                     Margin="0,-1,0,0"
+                                    BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}"
                                     BorderThickness="1"
                                     CornerRadius=".5"
                                     Opacity="1">
                                 <Border.Background>
                                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
                                 </Border.Background>
-                                <Border.BorderBrush>
-                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrushTitle}}" />
-                                </Border.BorderBrush>
                             </Border>
                             <Border x:Name="BackgroundGradient"
                                     Grid.Row="1"
                                     Grid.RowSpan="3"
                                     Grid.ColumnSpan="4"
                                     Margin="0,-1,0,0"
+                                    BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}"
                                     BorderThickness="1"
                                     CornerRadius=".5"
                                     Opacity="1">
                                 <Border.Background>
                                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
                                 </Border.Background>
-                                <Border.BorderBrush>
-                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrushTitle}}" />
-                                </Border.BorderBrush>
                             </Border>
                             <Rectangle Grid.RowSpan="1"
                                        Grid.ColumnSpan="4"
@@ -316,10 +306,8 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DatePicker}">
                     <Border Padding="{TemplateBinding Padding}"
+                            BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                             BorderThickness="{TemplateBinding BorderThickness}">
-                        <Border.BorderBrush>
-                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-                        </Border.BorderBrush>
                         <Border.Background>
                             <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
                         </Border.Background>

@@ -82,11 +82,12 @@
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
             </Setter.Value>
         </Setter>
-        <Setter Property="BorderBrush">
+        <!--<Setter Property="BorderBrush">
             <Setter.Value>
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
             </Setter.Value>
-        </Setter>
+        </Setter>-->
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
         <Setter Property="Background">
             <Setter.Value>
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
@@ -107,11 +108,11 @@
                 <SolidColorBrush Color="Transparent" />
             </Setter.Value>
         </Setter>
-        <Setter Property="Cattach.CaptionBackground">
-            <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />
-            </Setter.Value>
-        </Setter>
+        <Setter Property="Cattach.CaptionBackground" Value="{DynamicResource {x:Static BrushKeys.CaptionBackground}}" />
+        <!--<Setter.Value>
+            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />
+        </Setter.Value>-->
+
         <Setter Property="Cattach.CaptionForeground">
             <Setter.Value>
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionForeground}}" />
@@ -318,11 +319,7 @@
                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
                     </Setter.Value>
                 </Setter>
-                <Setter Property="BorderBrush">
-                    <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrushTitle}}" />
-                    </Setter.Value>
-                </Setter>
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -374,11 +371,13 @@
 
     <Style TargetType="{x:Type DataGridRowHeader}">
         <Setter Property="Background" Value="{x:Null}" />
-        <Setter Property="BorderBrush">
+        <!--<Setter Property="BorderBrush">
             <Setter.Value>
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
             </Setter.Value>
-        </Setter>
+        </Setter>-->
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
+
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridRowHeader}">
@@ -462,7 +461,7 @@
         <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=(Cattach.CaptionBackground)}" />
         <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=(Cattach.CaptionBackground)}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridColumnHeader}">

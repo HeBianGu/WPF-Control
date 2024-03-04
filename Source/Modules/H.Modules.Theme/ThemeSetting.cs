@@ -48,10 +48,11 @@ namespace H.Modules.Theme
         [Browsable(false)]
         public int ColorResourceSelectedIndex { get; set; }
 
-        public void OnColorResourceValueChanged(PropertyInfo property, ColorThemeType o, ColorThemeType n)
+        public void OnColorResourceValueChanged(PropertyInfo property, IColorResource o, IColorResource n)
         {
             //this.Color.ChangeThemeType();
-            this.ChangeColorTheme();
+            //this.ChangeColorTheme();
+            this.RefreshTheme();
         }
         public void OnFontSizeValueChanged(PropertyInfo property, FontSizeThemeType o, FontSizeThemeType n)
         {
@@ -64,11 +65,11 @@ namespace H.Modules.Theme
 
         public override bool Save(out string message)
         {
-            this.RefreshTheme();
-            {
-                ResourceDictionary brushResource = new ResourceDictionary() { Source = new Uri("pack://application:,,,/H.Styles.Default;component/ConciseControls.xaml", UriKind.Absolute) };
-                brushResource.ChangeResourceDictionary(x => x.Source.AbsoluteUri == brushResource.Source.AbsoluteUri, true);
-            }
+            //this.RefreshTheme();
+            //{
+            //    ResourceDictionary brushResource = new ResourceDictionary() { Source = new Uri("pack://application:,,,/H.Styles.Default;component/ConciseControls.xaml", UriKind.Absolute) };
+            //    brushResource.ChangeResourceDictionary(x => x.Source.AbsoluteUri == brushResource.Source.AbsoluteUri, true);
+            //}
             this.ColorResourceSelectedIndex = this.ColorResources.IndexOf(this.ColorResource);
             return base.Save(out message);
         }
@@ -87,6 +88,7 @@ namespace H.Modules.Theme
             this.FontSize.ChangeFontSizeThemeType();
             this.Layout.ChangeLayoutThemeType();
             this.ChangeColorTheme();
+            ThemeTypeExtension.RefreshBrushResourceDictionary();
         }
 
         private void ChangeColorTheme()
@@ -98,7 +100,7 @@ namespace H.Modules.Theme
             });
         }
 
-        protected virtual string GetDefaultFolder()
+        protected override string GetDefaultFolder()
         {
             return AppPaths.Instance.UserSetting;
         }

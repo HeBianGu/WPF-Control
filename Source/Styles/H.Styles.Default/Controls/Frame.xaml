@@ -114,13 +114,11 @@
                                PopupAnimation="Fade"
                                VerticalOffset="2">
                             <Border x:Name="SubMenuBorder"
+                                    BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                                     BorderThickness="1">
                                 <Border.Background>
                                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
                                 </Border.Background>
-                                <Border.BorderBrush>
-                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-                                </Border.BorderBrush>
                                 <StackPanel Margin="2"
                                             IsItemsHost="true"
                                             KeyboardNavigation.DirectionalNavigation="Cycle"
@@ -134,12 +132,10 @@
                               Background="Transparent">
 
                             <Border x:Name="HighlightBorder"
+                                    BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}"
                                     BorderThickness="1"
                                     CornerRadius="2"
                                     Visibility="Hidden">
-                                <Border.BorderBrush>
-                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrushTitle}}" />
-                                </Border.BorderBrush>
                                 <Border.Background>
                                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
                                 </Border.Background>
@@ -282,11 +278,9 @@
                 <ControlTemplate TargetType="{x:Type Frame}">
                     <DockPanel>
                         <Border Height="22"
+                                BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                                 BorderThickness="1"
                                 DockPanel.Dock="Top">
-                            <Border.BorderBrush>
-                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-                            </Border.BorderBrush>
                             <Grid>
                                 <Grid.Background>
                                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
@@ -344,10 +338,9 @@
                                         Style="{StaticResource FrameButtonStyle}" />
                             </Grid>
                         </Border>
-                        <Border BorderThickness="1">
-                            <Border.BorderBrush>
-                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-                            </Border.BorderBrush>
+                        <Border BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                                BorderThickness="1">
+
                             <ContentPresenter x:Name="PART_FrameCP"
                                               Width="640"
                                               Height="458" />

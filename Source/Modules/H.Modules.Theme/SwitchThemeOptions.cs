@@ -55,15 +55,11 @@ namespace H.Modules.Theme
                 });
             }
 
-            {
-                ResourceDictionary brushResource = new ResourceDictionary() { Source = new Uri("pack://application:,,,/H.Styles.Default;component/ConciseControls.xaml", UriKind.Absolute) };
-                brushResource.ChangeResourceDictionary(x => x.Source.AbsoluteUri == brushResource.Source.AbsoluteUri, true);
-            }
-
+            ThemeTypeExtension.RefreshBrushResourceDictionary();
             this.Save(out string message);
         }
 
-        protected virtual string GetDefaultFolder()
+        protected override string GetDefaultFolder()
         {
             return AppPaths.Instance.UserSetting;
         }

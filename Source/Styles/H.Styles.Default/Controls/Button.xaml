@@ -31,7 +31,7 @@
         <Setter Property="Cursor" Value="Hand" />
         <!--<Setter Property="OverridesDefaultStyle" Value="true" />-->
         <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}" />
-        <Setter Property="Padding" Value="10 0" />
+        <Setter Property="Padding" Value="10,0" />
         <Setter Property="Margin" Value="0" />
         <Setter Property="Foreground">
             <Setter.Value>
@@ -43,11 +43,7 @@
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
             </Setter.Value>
         </Setter>
-        <Setter Property="BorderBrush">
-            <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
-            </Setter.Value>
-        </Setter>
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.MouseOver}}" />
         <Setter Property="Cattach.CornerRadius" Value="2" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Template">
@@ -68,11 +64,7 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsDefault" Value="true">
-                <Setter Property="BorderBrush">
-                    <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrushTitle}}" />
-                    </Setter.Value>
-                </Setter>
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Opacity" Value="0.6" />

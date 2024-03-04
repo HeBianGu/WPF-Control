@@ -114,11 +114,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Separator}">
-                    <Border BorderThickness="1">
-                        <Border.BorderBrush>
-                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-                        </Border.BorderBrush>
-                    </Border>
+                    <Border BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                            BorderThickness="1" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -142,14 +139,12 @@
                        PopupAnimation="Fade">
                     <Grid>
                         <Border x:Name="SubmenuBorder"
+                                BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                                 BorderThickness="1"
                                 SnapsToDevicePixels="True">
                             <Border.Background>
                                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
                             </Border.Background>
-                            <Border.BorderBrush>
-                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-                            </Border.BorderBrush>
                             <ScrollViewer CanContentScroll="True"
                                           Style="{StaticResource MenuScrollViewer}">
                                 <StackPanel IsItemsHost="True"
@@ -248,11 +243,9 @@
                         Width="13"
                         Height="13"
                         Margin="6,0,6,0"
+                        BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                         BorderThickness="1"
                         Visibility="Collapsed">
-                    <Border.BorderBrush>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-                    </Border.BorderBrush>
                     <Border.Background>
                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
                     </Border.Background>
@@ -362,14 +355,12 @@
                        PopupAnimation="Fade">
                     <Grid>
                         <Border x:Name="SubmenuBorder"
+                                BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                                 BorderThickness="1"
                                 SnapsToDevicePixels="True">
                             <Border.Background>
                                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
                             </Border.Background>
-                            <Border.BorderBrush>
-                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-                            </Border.BorderBrush>
                             <ScrollViewer CanContentScroll="True"
                                           Style="{StaticResource MenuScrollViewer}">
                                 <StackPanel IsItemsHost="True"

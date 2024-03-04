@@ -5,16 +5,17 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Menu.Default, TypeInTargetAssembly={x:Type local:MenuKeys}}" TargetType="{x:Type Menu}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Menu.Default,
+                                        TypeInTargetAssembly={x:Type local:MenuKeys}}"
+           TargetType="{x:Type Menu}">
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Menu}">
-                    <Border BorderThickness="{TemplateBinding BorderThickness}">
-                        <Border.BorderBrush>
-                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-                        </Border.BorderBrush>
+                    <Border BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+
                         <Border.Background>
                             <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
                         </Border.Background>
@@ -26,6 +27,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style BasedOn="{StaticResource {x:Static local:MenuKeys.Default}}" TargetType="Menu" />
+    <Style BasedOn="{StaticResource {x:Static local:MenuKeys.Default}}"
+           TargetType="Menu" />
 
 </ResourceDictionary>

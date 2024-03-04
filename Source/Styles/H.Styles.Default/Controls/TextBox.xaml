@@ -32,11 +32,12 @@
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
             </Setter.Value>
         </Setter>
-        <Setter Property="BorderBrush">
+        <!--<Setter Property="BorderBrush">
             <Setter.Value>
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
             </Setter.Value>
-        </Setter>
+        </Setter>-->
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBoxBase}">
@@ -51,7 +52,7 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
+        <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Validation.Errors)[0].ErrorContent}" />
         <Style.Triggers>
             <Trigger Property="IsEnabled" Value="false">
                 <Setter Property="Opacity" Value="0.5" />

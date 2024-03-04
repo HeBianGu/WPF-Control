@@ -13,11 +13,11 @@
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <!--<Setter Property="OverridesDefaultStyle" Value="true" />-->
         <Setter Property="FocusVisualStyle" Value="{DynamicResource CheckBoxFocusVisual}" />
-        <Setter Property="Foreground">
+        <!--<Setter Property="Foreground">
             <Setter.Value>
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionForeground}}" />
             </Setter.Value>
-        </Setter>
+        </Setter>-->
         <Setter Property="Background" Value="{x:Null}" />
         <Setter Property="BorderBrush" Value="{x:Null}" />
         <Setter Property="Template">
@@ -92,11 +92,11 @@
                 <Setter Property="Opacity" Value="0.6" />
             </Trigger>
             <Trigger Property="IsChecked" Value="true">
-                <!--<Setter Property="Foreground">
+                <Setter Property="Foreground">
                     <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundTitle}}" />
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
                     </Setter.Value>
-                </Setter>-->
+                </Setter>
                 <Setter Property="Background">
                     <Setter.Value>
                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />

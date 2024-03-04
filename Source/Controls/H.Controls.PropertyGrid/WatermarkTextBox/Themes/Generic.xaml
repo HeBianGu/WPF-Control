@@ -21,8 +21,10 @@
         <GradientStop Offset="1" Color="#B7D9ED" />
     </LinearGradientBrush>
 
-    <SolidColorBrush x:Key="TextBox_DisabledBorder" Color="#ADB2B5" />
-    <SolidColorBrush x:Key="TextBox_DisabledBackground" Color="#F4F4F4" />
+    <SolidColorBrush x:Key="TextBox_DisabledBorder"
+                     Color="#ADB2B5" />
+    <SolidColorBrush x:Key="TextBox_DisabledBackground"
+                     Color="#F4F4F4" />
 
     <DataTemplate x:Key="DefaultWatermarkTemplate">
         <ContentControl Content="{Binding}"
@@ -51,14 +53,12 @@
                 <ControlTemplate TargetType="{x:Type local:WatermarkTextBox}">
                     <Border Name="Border"
                             Padding="2"
+                            BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="2">
                         <Border.Background>
                             <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
                         </Border.Background>
-                        <Border.BorderBrush>
-                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-                        </Border.BorderBrush>
 
                         <!--<Border x:Name="Border"
                                 Background="{TemplateBinding Background}"
@@ -66,7 +66,8 @@
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 CornerRadius="1">-->
                         <Grid>
-                            <ScrollViewer x:Name="PART_ContentHost" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                             <ContentPresenter x:Name="PART_WatermarkHost"
                                               Margin="{TemplateBinding Padding}"
                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -81,22 +82,28 @@
                                 <VisualState x:Name="Normal" />
                                 <VisualState x:Name="Disabled">
                                     <Storyboard>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.BackgroundDisabled}}" />
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
+                                                                      Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                                                 Value="{DynamicResource {x:Static ColorKeys.BackgroundDisabled}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="ReadOnly">
                                     <Storyboard>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.Dark0_3}}" />
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
+                                                                      Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                                                 Value="{DynamicResource {x:Static ColorKeys.Dark0_3}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="MouseOver">
                                     <Storyboard>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
+                                                                      Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                                                 Value="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -105,8 +112,10 @@
                                 <VisualState x:Name="Unfocused" />
                                 <VisualState x:Name="Focused">
                                     <Storyboard>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.Selected}}" />
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
+                                                                      Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                                                 Value="{DynamicResource {x:Static ColorKeys.Selected}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -142,6 +151,7 @@
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource WatermarkTextBox}" TargetType="{x:Type local:WatermarkTextBox}" />
+    <Style BasedOn="{StaticResource WatermarkTextBox}"
+           TargetType="{x:Type local:WatermarkTextBox}" />
 
 </ResourceDictionary>

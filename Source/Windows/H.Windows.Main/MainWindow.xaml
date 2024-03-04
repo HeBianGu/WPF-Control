@@ -34,10 +34,8 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:MainWindow}">
                     <Border x:Name="PART_Border"
+                            BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                             BorderThickness="{TemplateBinding BorderThickness}">
-                        <Border.BorderBrush>
-                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-                        </Border.BorderBrush>
                         <Border.Background>
                             <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
                         </Border.Background>

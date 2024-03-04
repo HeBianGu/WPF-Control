@@ -23,13 +23,13 @@
                             <RowDefinition />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <Border Grid.Column="1"
+                        <!--<Border Grid.Column="1"
                                 BorderThickness="01">
                             <Border.BorderBrush>
                                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
                             </Border.BorderBrush>
                             <ScrollContentPresenter />
-                        </Border>
+                        </Border>-->
                         <ScrollBar x:Name="PART_VerticalScrollBar"
                                    Maximum="{TemplateBinding ScrollableHeight}"
                                    ViewportSize="{TemplateBinding ViewportHeight}"

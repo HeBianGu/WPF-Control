@@ -86,5 +86,13 @@ namespace H.Themes.Default
         {
             return GetResource("FontSizes", type.ToString());
         }
+
+
+        public static void RefreshBrushResourceDictionary()
+        {
+            ResourceDictionary brushResource = new ResourceDictionary() { Source = new Uri("pack://application:,,,/H.Themes.Default;component/BrushKeys.xaml", UriKind.Absolute) };
+            brushResource.ChangeResourceDictionary(x => x.Source.AbsoluteUri == brushResource.Source.AbsoluteUri, true);
+        }
+
     }
 }

@@ -7,11 +7,13 @@
                                         TypeInTargetAssembly={x:Type local:TreeListView}}"
            TargetType="{x:Type local:TreeListView}">
         <Setter Property="AlternationCount" Value="1" />
-        <Setter Property="Cattach.CaptionBackground">
+        <!--<Setter Property="Cattach.CaptionBackground">
             <Setter.Value>
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />
             </Setter.Value>
-        </Setter>
+        </Setter>-->
+        <Setter Property="Cattach.CaptionBackground" Value="{DynamicResource {x:Static BrushKeys.CaptionBackground}}"/>
+
         <Setter Property="Cattach.CaptionForeground">
             <Setter.Value>
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionForeground}}" />

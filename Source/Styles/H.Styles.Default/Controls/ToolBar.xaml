@@ -106,11 +106,7 @@
                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
                     </Setter.Value>
                 </Setter>
-                <Setter Property="BorderBrush">
-                    <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrushTitle}}" />
-                    </Setter.Value>
-                </Setter>
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
                 <Setter Property="Foreground">
                     <Setter.Value>
                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundTitle}}" />
@@ -123,11 +119,7 @@
                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
                     </Setter.Value>
                 </Setter>
-                <Setter Property="BorderBrush">
-                    <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrushTitle}}" />
-                    </Setter.Value>
-                </Setter>
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
                 <Setter Property="Foreground">
                     <Setter.Value>
                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundTitle}}" />
@@ -204,11 +196,13 @@
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Dark0_1}}" />
             </Setter.Value>
         </Setter>
-        <Setter Property="BorderBrush">
+        <!--<Setter Property="BorderBrush">
             <Setter.Value>
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
             </Setter.Value>
-        </Setter>
+        </Setter>-->
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
+
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
@@ -333,11 +327,7 @@
                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
                     </Setter.Value>
                 </Setter>
-                <Setter Property="BorderBrush">
-                    <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrushTitle}}" />
-                    </Setter.Value>
-                </Setter>
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
                 <Setter Property="Foreground">
                     <Setter.Value>
                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundTitle}}" />
@@ -366,11 +356,7 @@
                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
                     </Setter.Value>
                 </Setter>
-                <Setter Property="BorderBrush">
-                    <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrushTitle}}" />
-                    </Setter.Value>
-                </Setter>
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
             </MultiTrigger>
             <Trigger Property="IsPressed" Value="True">
                 <Setter Property="Background">
@@ -397,11 +383,9 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToolBar}">
                     <Border x:Name="Border"
+                            BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="2">
-                        <Border.BorderBrush>
-                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-                        </Border.BorderBrush>
                         <Border.Background>
                             <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
                         </Border.Background>
@@ -419,10 +403,8 @@
                                        PopupAnimation="Slide"
                                        StaysOpen="false">
                                     <Border x:Name="DropDownBorder"
+                                            BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                                             BorderThickness="1">
-                                        <Border.BorderBrush>
-                                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-                                        </Border.BorderBrush>
                                         <Border.Background>
                                             <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
                                         </Border.Background>
