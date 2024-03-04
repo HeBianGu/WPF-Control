@@ -384,7 +384,7 @@
         </Border>
         <ControlTemplate.Triggers>
             <Trigger Property="Icon" Value="{x:Null}">
-                <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
+                <Setter TargetName="Icon" Property="Visibility" Value="Hidden" />
             </Trigger>
             <Trigger Property="IsHighlighted" Value="true">
                 <Setter TargetName="Border" Property="Background">
@@ -402,13 +402,6 @@
                 <Setter TargetName="SubmenuBorder" Property="CornerRadius" Value="4" />
                 <Setter TargetName="SubmenuBorder" Property="Padding" Value="0,3,0,3" />
             </Trigger>
-            <!--<Trigger Property="IsEnabled" Value="false">
-                <Setter Property="Foreground">
-                    <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
-                    </Setter.Value>
-                </Setter>
-            </Trigger>-->
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
