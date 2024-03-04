@@ -92,11 +92,11 @@
                 <Setter Property="Opacity" Value="0.6" />
             </Trigger>
             <Trigger Property="IsChecked" Value="true">
-                <Setter Property="Foreground">
+                <!--<Setter Property="Foreground">
                     <Setter.Value>
                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundTitle}}" />
                     </Setter.Value>
-                </Setter>
+                </Setter>-->
                 <Setter Property="Background">
                     <Setter.Value>
                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />

@@ -210,6 +210,8 @@
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
             </Setter.Value>
         </Setter>
+        <Setter Property="Cattach.CaptionVerticalAlignment" Value="Center" />
+        <Setter Property="Cattach.CaptionMargin" Value="2 0" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Template">
             <Setter.Value>

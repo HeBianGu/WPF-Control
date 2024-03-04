@@ -435,7 +435,7 @@
                                         <DockPanel>
                                             <ToggleButton Margin="{Binding Path=Level, Converter={GetLevelToIndentConverter}, RelativeSource={RelativeSource AncestorType={x:Type h:TreeListViewItem}}}"
                                                           Style="{DynamicResource {x:Static h:ToggleButtonKeys.Tree}}" />
-                                            <TextBlock Margin="5,0">
+                                            <TextBlock Margin="2,0">
                                                 <Run Text="{Binding Model.Name, Mode=OneWay}" />
                                             </TextBlock>
                                         </DockPanel>
