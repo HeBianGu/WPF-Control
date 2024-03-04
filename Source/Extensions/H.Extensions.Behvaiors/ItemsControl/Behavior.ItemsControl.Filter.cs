@@ -501,7 +501,7 @@ namespace H.Extensions.Behvaiors
                 return;
             IEnumerable<IFilterable> filters = GetFilters().Where(x => x != null);
             IEnumerable source = filters.Count() == 0 ? ItemsSource
-                : ItemsSource.OfType<object>().Where(x => filters.All(l => l.IsMatch(x)));
+                : ItemsSource.OfType<object>().Where(x => filters.All(l => l.IsMatch(x))).ToList();
             List<IOrderable> orders = GetOrders().ToList();
             foreach (IOrderable item in orders)
             {
