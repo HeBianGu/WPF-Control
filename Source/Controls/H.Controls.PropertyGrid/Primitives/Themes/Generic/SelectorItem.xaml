@@ -34,11 +34,7 @@
                                     <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.MouseOver}}" />
                                 </Setter.Value>
                             </Setter>
-                            <Setter Property="Foreground">
-                                <Setter.Value>
-                                    <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.ForegroundTitle}}" />
-                                </Setter.Value>
-                            </Setter>
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundTitle}}"/>
                         </Trigger>
                         <Trigger Property="IsKeyboardFocusWithin" Value="true">
                             <Setter TargetName="_background" Property="Background">
@@ -46,11 +42,7 @@
                                     <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.Selected}}" />
                                 </Setter.Value>
                             </Setter>
-                            <Setter Property="Foreground">
-                                <Setter.Value>
-                                    <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.ForegroundTitle}}" />
-                                </Setter.Value>
-                            </Setter>
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundTitle}}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

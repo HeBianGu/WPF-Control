@@ -635,11 +635,8 @@
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
             </Setter.Value>
         </Setter>
-        <Setter Property="Foreground">
-            <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
-            </Setter.Value>
-        </Setter>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}"/>
+
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Template">

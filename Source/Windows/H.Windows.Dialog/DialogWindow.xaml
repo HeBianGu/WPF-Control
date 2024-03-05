@@ -5,11 +5,7 @@
     <Style TargetType="{x:Type local:DialogWindow}">
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="WindowChrome.WindowChrome" Value="{DynamicResource {x:Static h:WindowKeys.WindowChrome}}" />
-        <Setter Property="Foreground">
-            <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.Foreground}}" />
-            </Setter.Value>
-        </Setter>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}"/>
         <Setter Property="FontSize" Value="{DynamicResource {x:Static h:FontSizeKeys.Default}}" />
         <Setter Property="ResizeMode" Value="NoResize" />
         <!--<Setter Property="MinWidth" Value="400" />

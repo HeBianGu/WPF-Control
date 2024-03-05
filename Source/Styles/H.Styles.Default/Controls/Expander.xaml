@@ -90,11 +90,7 @@
                                         TypeInTargetAssembly={x:Type local:ExpanderKeys}}"
            TargetType="{x:Type Expander}">
         <Setter Property="IsExpanded" Value="True" />
-        <Setter Property="Foreground">
-            <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
-            </Setter.Value>
-        </Setter>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}"/>
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Background">
             <Setter.Value>

@@ -10,11 +10,8 @@
         <Setter Property="Message" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}" />
         <Setter Property="Height" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="Foreground">
-            <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
-            </Setter.Value>
-        </Setter>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}"/>
+
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Padding" Value="10,6" />
         <Setter Property="Template">

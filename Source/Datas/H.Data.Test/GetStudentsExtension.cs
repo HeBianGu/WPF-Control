@@ -10,7 +10,7 @@ namespace H.Data.Test
 
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
-            return Enumerable.Range(0, this.Count).Select(x => new Student());
+            return Enumerable.Range(0, this.Count).Select(x => new Student()).ToList();
         }
     }
 }

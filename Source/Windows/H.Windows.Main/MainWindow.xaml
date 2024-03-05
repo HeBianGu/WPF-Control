@@ -21,11 +21,7 @@
             </Setter.Value>
         </Setter>
         <Setter Property="WindowStyle" Value="SingleBorderWindow" />
-        <Setter Property="Foreground">
-            <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.Foreground}}" />
-            </Setter.Value>
-        </Setter>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
         <Setter Property="Icon" Value="{h:Logo}" />
         <Setter Property="FontSize" Value="{DynamicResource {x:Static h:FontSizeKeys.Default}}" />
         <Setter Property="ResizeMode" Value="CanResizeWithGrip" />

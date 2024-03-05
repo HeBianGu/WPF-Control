@@ -182,11 +182,7 @@
                 <Setter TargetName="SubmenuBorder" Property="Padding" Value="0,0,0,3" />
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Foreground">
-                    <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
-                    </Setter.Value>
-                </Setter>
+                <Setter Property="Opacity" Value="0.6"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
@@ -210,13 +206,6 @@
                     </Setter.Value>
                 </Setter>
             </Trigger>
-            <!--<Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Foreground">
-                    <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
-                    </Setter.Value>
-                </Setter>
-            </Trigger>-->
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
@@ -297,13 +286,6 @@
                     </Setter.Value>
                 </Setter>
             </Trigger>
-            <!--<Trigger Property="IsEnabled" Value="false">
-                <Setter Property="Foreground">
-                    <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
-                    </Setter.Value>
-                </Setter>
-            </Trigger>-->
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
