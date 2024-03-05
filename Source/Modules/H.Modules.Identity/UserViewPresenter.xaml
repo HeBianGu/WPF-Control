@@ -72,6 +72,7 @@
                                         Header="昵称" />
                     <DataGridCheckBoxColumn Width="Auto"
                                             Binding="{Binding Model.Enable}"
+                                            ElementStyle="{x:Null}"
                                             Header="启用/禁用"
                                             IsReadOnly="True" />
                     <DataGridTextColumn Width="*"
@@ -80,8 +81,6 @@
                     <DataGridTextColumn Width="*"
                                         Binding="{Binding Model.Role}"
                                         Header="角色" />
-
-
                     <DataGridTemplateColumn Width="*"
                                             Header="权限列表">
                         <DataGridTemplateColumn.CellTemplate>

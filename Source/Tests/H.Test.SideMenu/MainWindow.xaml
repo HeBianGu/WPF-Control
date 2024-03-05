@@ -15,7 +15,8 @@
               WindowStartupLocation="CenterScreen"
               mc:Ignorable="d">
     <Window.Resources>
-        <CollectionViewSource x:Key="GroupedStudentDataList" Source="{h:GetStudents Count=100}">
+        <CollectionViewSource x:Key="GroupedStudentDataList"
+                              Source="{h:GetStudents Count=100}">
             <CollectionViewSource.GroupDescriptions>
                 <PropertyGroupDescription PropertyName="Name" />
                 <PropertyGroupDescription PropertyName="Class" />
@@ -25,7 +26,8 @@
         <DataTemplate DataType="{x:Type local:ManagerBase}">
             <DataGrid>
                 <Behaviors:Interaction.Behaviors>
-                    <h:DataGridAutoColumnBehavior DataGridLength="*" Type="{Binding Type}" />
+                    <h:DataGridAutoColumnBehavior DataGridLength="*"
+                                                  Type="{Binding Type}" />
                 </Behaviors:Interaction.Behaviors>
             </DataGrid>
         </DataTemplate>
@@ -50,7 +52,8 @@
                                                                    Margin="5,0,0,0"
                                                                    FontWeight="Bold"
                                                                    Text="{Binding Path=Name}" />
-                                                        <TextBlock FontWeight="Bold" Text="{Binding Path=ItemCount}" />
+                                                        <TextBlock FontWeight="Bold"
+                                                                   Text="{Binding Path=ItemCount}" />
                                                     </DockPanel>
                                                 </Expander.Header>
                                                 <ItemsPresenter />
@@ -72,19 +75,23 @@
                                                Margin="30,6,0,6"
                                                VerticalAlignment="Center"
                                                Text="{Binding Path=Name}" />
-                                    <TextBlock VerticalAlignment="Center" Text="{Binding Path=ItemCount}" />
+                                    <TextBlock VerticalAlignment="Center"
+                                               Text="{Binding Path=ItemCount}" />
                                 </DockPanel>
                             </DataTemplate>
                         </GroupStyle.HeaderTemplate>
                     </GroupStyle>
                 </DataGrid.GroupStyle>
                 <DataGrid.Style>
-                    <Style BasedOn="{StaticResource {x:Type DataGrid}}" TargetType="DataGrid">
+                    <Style BasedOn="{StaticResource {x:Type DataGrid}}"
+                           TargetType="DataGrid">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=UseDataGroup}" Value="True">
+                            <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=UseDataGroup}"
+                                         Value="True">
                                 <Setter Property="ItemsSource" Value="{Binding Source={StaticResource GroupedStudentDataList}}" />
                             </DataTrigger>
-                            <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=UseDataGroup}" Value="False">
+                            <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=UseDataGroup}"
+                                         Value="False">
                                 <Setter Property="ItemsSource" Value="{h:GetStudents Count=100}" />
                             </DataTrigger>
                         </Style.Triggers>
@@ -98,16 +105,19 @@
     </Window.DataContext>
     <h:MainWindow.CaptionTempate>
         <ControlTemplate>
-            <DockPanel HorizontalAlignment="Right" LastChildFill="False">
+            <DockPanel HorizontalAlignment="Right"
+                       LastChildFill="False">
                 <ContentPresenter Content="{Ioc Type={x:Type ISettingButtonPresenter}}" />
             </DockPanel>
         </ControlTemplate>
     </h:MainWindow.CaptionTempate>
     <h:MainWindow.SideTemplate>
         <ControlTemplate>
-            <Border BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}" BorderThickness="0,0,1,0">
+            <Border BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                    BorderThickness="0,0,1,0">
                 <DockPanel Background="{DynamicResource {x:Static h:BrushKeys.Dark0_1}}">
-                    <DockPanel Height="60" DockPanel.Dock="Top">
+                    <DockPanel Height="60"
+                               DockPanel.Dock="Top">
                         <Image Height="30"
                                Margin="10"
                                Source="{h:Logo}" />
@@ -117,7 +127,8 @@
                     </DockPanel>
                     <Grid>
                         <Grid.Resources>
-                            <CollectionViewSource x:Key="GroupedDataList" Source="{Binding Collection}">
+                            <CollectionViewSource x:Key="GroupedDataList"
+                                                  Source="{Binding Collection}">
                                 <CollectionViewSource.GroupDescriptions>
                                     <PropertyGroupDescription PropertyName="GroupName" />
                                 </CollectionViewSource.GroupDescriptions>
@@ -154,11 +165,13 @@
                                                    Text="{Binding Name}" />
                                     </Grid>
                                     <DataTemplate.Triggers>
-                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=h:GridSplitterBox}, Path=MenuWidth.Value, Converter={x:Static h:Converter.GetLessThan}, ConverterParameter=90}" Value="True">
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=h:GridSplitterBox}, Path=MenuWidth.Value, Converter={x:Static h:Converter.GetLessThan}, ConverterParameter=90}"
+                                                     Value="True">
                                             <Setter TargetName="dp_1" Property="Visibility" Value="Visible" />
                                             <Setter TargetName="dp_2" Property="Visibility" Value="Collapsed" />
                                         </DataTrigger>
-                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=h:GridSplitterBox}, Path=MenuWidth.Value, Converter={x:Static h:Converter.GetGreaterThan}, ConverterParameter=90}" Value="True">
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=h:GridSplitterBox}, Path=MenuWidth.Value, Converter={x:Static h:Converter.GetGreaterThan}, ConverterParameter=90}"
+                                                     Value="True">
                                             <Setter TargetName="dp_2" Property="Visibility" Value="Visible" />
                                             <Setter TargetName="dp_1" Property="Visibility" Value="Collapsed" />
                                         </DataTrigger>
@@ -170,13 +183,16 @@
                                     <Setter Property="Background" Value="Transparent" />
                                     <Setter Property="BorderBrush" Value="Transparent" />
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=UseGroup}" Value="True">
+                                        <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=UseGroup}"
+                                                     Value="True">
                                             <Setter Property="ItemsSource" Value="{Binding Source={StaticResource GroupedDataList}}" />
                                         </DataTrigger>
-                                        <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=UseGroup}" Value="False">
+                                        <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=UseGroup}"
+                                                     Value="False">
                                             <Setter Property="ItemsSource" Value="{Binding Collection}" />
                                         </DataTrigger>
-                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=h:GridSplitterBox}, Path=MenuWidth.Value, Converter={x:Static h:Converter.GetLessThan}, ConverterParameter=90}" Value="True">
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=h:GridSplitterBox}, Path=MenuWidth.Value, Converter={x:Static h:Converter.GetLessThan}, ConverterParameter=90}"
+                                                     Value="True">
                                             <Setter Property="ItemsSource" Value="{Binding Collection}" />
                                         </DataTrigger>
                                     </Style.Triggers>
@@ -194,10 +210,12 @@
                                             <Setter Property="Template">
                                                 <Setter.Value>
                                                     <ControlTemplate TargetType="{x:Type GroupItem}">
-                                                        <Expander BorderThickness="0" IsExpanded="True">
+                                                        <Expander BorderThickness="0"
+                                                                  IsExpanded="True">
                                                             <Expander.Header>
                                                                 <StackPanel Orientation="Horizontal">
-                                                                    <TextBlock FontSize="{DynamicResource {x:Static h:FontSizeKeys.Header5}}" Text="{Binding Path=Name}" />
+                                                                    <TextBlock FontWeight="Bold"
+                                                                               Text="{Binding Path=Name}" />
                                                                     <TextBlock>
                                                                         <Run Text="   [" />
                                                                         <Run Text="{Binding Path=ItemCount, Mode=OneWay}" />
@@ -221,8 +239,10 @@
         </ControlTemplate>
     </h:MainWindow.SideTemplate>
     <Grid>
-        <Border BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" BorderThickness="0,1,0,1">
-            <TabControl ItemsSource="{Binding Collection}" SelectedItem="{Binding SelectedManager}">
+        <Border BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
+                BorderThickness="0,1,0,1">
+            <TabControl ItemsSource="{Binding Collection}"
+                        SelectedItem="{Binding SelectedManager}">
                 <TabControl.ItemTemplate>
                     <DataTemplate>
                         <DockPanel>
@@ -232,12 +252,14 @@
                                     Content="{x:Static h:Geometrys.Close}"
                                     DockPanel.Dock="Right"
                                     Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
-                            <TextBlock VerticalAlignment="Center" Text="{Binding Name}" />
+                            <TextBlock VerticalAlignment="Center"
+                                       Text="{Binding Name}" />
                         </DockPanel>
                     </DataTemplate>
                 </TabControl.ItemTemplate>
                 <TabControl.ItemContainerStyle>
-                    <Style BasedOn="{StaticResource {x:Type TabItem}}" TargetType="TabItem">
+                    <Style BasedOn="{StaticResource {x:Type TabItem}}"
+                           TargetType="TabItem">
                         <Setter Property="Padding" Value="5,0,0,0" />
                         <Setter Property="Visibility" Value="{Binding IsVisibleInTab, Converter={x:Static Converter.GetTrueToVisible}}" />
                     </Style>

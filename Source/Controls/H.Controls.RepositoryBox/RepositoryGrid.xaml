@@ -2,7 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.RepositoryBox">
-    <Style BasedOn="{StaticResource {x:Static DataGridKeys.Default}}" TargetType="{x:Type local:RepositoryGrid}">
+    <Style BasedOn="{StaticResource {x:Static DataGridKeys.Default}}"
+           TargetType="{x:Type local:RepositoryGrid}">
         <Setter Property="AutoGenerateColumns" Value="False" />
         <Setter Property="ScrollViewer.CanContentScroll" Value="False" />
         <Setter Property="UseAdd" Value="True" />
@@ -18,37 +19,48 @@
                         <Button Command="{Binding AddCommand}"
                                 Content="新增"
                                 Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:RepositoryGrid}, Path=UseAdd, Converter={x:Static h:Converter.GetTrueToVisible}}" />
-                        <Button Command="{Binding ClearCommand}"
+                        <Button Margin="2,0"
+                                Command="{Binding ClearCommand}"
                                 Content="清空"
                                 Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:RepositoryGrid}, Path=UseClear, Converter={x:Static h:Converter.GetTrueToVisible}}" />
-                        <Button Command="{Binding EditCommand}"
+                        <Button Margin="2,0"
+                                Command="{Binding EditCommand}"
                                 Content="编辑"
                                 Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:RepositoryGrid}, Path=UseEdit, Converter={x:Static h:Converter.GetTrueToVisible}}" />
-                        <Button Command="{Binding DeleteCommand}"
+                        <Button Margin="2,0"
+                                Command="{Binding DeleteCommand}"
                                 Content="删除"
                                 Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:RepositoryGrid}, Path=UseDelete, Converter={x:Static h:Converter.GetTrueToVisible}}" />
-                        <Button Command="{Binding ExportCommand}"
+                        <Button Margin="2,0"
+                                Command="{Binding ExportCommand}"
                                 Content="导出"
                                 Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:RepositoryGrid}, Path=UseExport, Converter={x:Static h:Converter.GetTrueToVisible}}" />
-                        <Button Command="{Binding ViewCommand}"
+                        <Button Margin="2,0"
+                                Command="{Binding ViewCommand}"
                                 Content="查看"
                                 Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:RepositoryGrid}, Path=UseView, Converter={x:Static h:Converter.GetTrueToVisible}}" />
-                        <Button Command="{Binding CheckedAllCommand}"
+                        <Button Margin="2,0"
+                                Command="{Binding CheckedAllCommand}"
                                 Content="全选"
                                 Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:RepositoryGrid}, Path=UseCheckAll, Converter={x:Static h:Converter.GetTrueToVisible}}" />
-                        <Button Command="{Binding DeleteCheckedCommand}"
+                        <Button Margin="2,0"
+                                Command="{Binding DeleteCheckedCommand}"
                                 Content="删除选中"
                                 Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:RepositoryGrid}, Path=UseDeleteChecked, Converter={x:Static h:Converter.GetTrueToVisible}}" />
-                        <Button Command="{Binding NextCommand}"
+                        <Button Margin="2,0"
+                                Command="{Binding NextCommand}"
                                 Content="下一页"
                                 Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:RepositoryGrid}, Path=UseNextPage, Converter={x:Static h:Converter.GetTrueToVisible}}" />
-                        <Button Command="{Binding PreviousCommand}"
+                        <Button Margin="2,0"
+                                Command="{Binding PreviousCommand}"
                                 Content="上一页"
                                 Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:RepositoryGrid}, Path=UsePreviousPage, Converter={x:Static h:Converter.GetTrueToVisible}}" />
-                        <Button Command="{Binding SaveCommand}"
+                        <Button Margin="2,0"
+                                Command="{Binding SaveCommand}"
                                 Content="保存"
                                 Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:RepositoryGrid}, Path=UseSave, Converter={x:Static h:Converter.GetTrueToVisible}}" />
-                        <CheckBox Content="全选"
+                        <CheckBox Margin="2,0"
+                                  Content="全选"
                                   IsChecked="{Binding CheckedAll}"
                                   Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:RepositoryGrid}, Path=UseCheckAll, Converter={x:Static h:Converter.GetTrueToVisible}}" />
                     </DockPanel>
@@ -58,7 +70,8 @@
         <Setter Property="Cattach.BottomTemplate">
             <Setter.Value>
                 <ControlTemplate>
-                    <TextBlock Margin="10" DockPanel.Dock="Bottom">
+                    <TextBlock Margin="10"
+                               DockPanel.Dock="Bottom">
                         <Run Text=" 合计：" />
                         <Run Text="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=ItemsSource.Count, Mode=OneWay}" />
                         <Run Text="/" />

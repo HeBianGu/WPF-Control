@@ -1123,7 +1123,6 @@ namespace H.Controls.Form
                 }
 
                 PropertyInfo[] ps = l.GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-
                 if (ps != null)
                     propertys.AddRange(ps);
 
@@ -1142,7 +1141,9 @@ namespace H.Controls.Form
                 action.Invoke(type);
             }
             List<IPropertyItem> items = new List<IPropertyItem>();
-            foreach (PropertyInfo item in propertys)
+
+            var ss = propertys.Distinct();
+            foreach (PropertyInfo item in propertys.Distinct())
             {
                 if (this.UseCommandOnly && !typeof(ICommand).IsAssignableFrom(item.PropertyType))
                     continue;
