@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 
@@ -6,13 +6,7 @@ namespace H.Modules.License
 {
     internal class BigInteger
     {
-        // maximum length of the BigInteger in uint (4 bytes)
-        // change this to suit the required level of precision.
-
         private const int maxLength = 70;
-
-        // primes smaller than 2000 to test the generated prime number
-
         public static readonly int[] primesBelow2000 = {
         2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97,
         101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199,
@@ -36,33 +30,18 @@ namespace H.Modules.License
     1901, 1907, 1913, 1931, 1933, 1949, 1951, 1973, 1979, 1987, 1993, 1997, 1999 };
 
 
-        private uint[] data = null;             // stores bytes from the Big Integer
-        public int dataLength;                 // number of actual chars used
-
-
-        //***********************************************************************
-        // Constructor (Default value for BigInteger is 0
-        //***********************************************************************
-
+        private uint[] data = null;
+        public int dataLength;
         public BigInteger()
         {
             data = new uint[maxLength];
             dataLength = 1;
         }
 
-
-        //***********************************************************************
-        // Constructor (Default value provided by long)
-        //***********************************************************************
-
         public BigInteger(long value)
         {
             data = new uint[maxLength];
             long tempVal = value;
-
-            // copy bytes from long to BigInteger without any assumption of
-            // the length of the long datatype
-
             dataLength = 0;
             while (value != 0 && dataLength < maxLength)
             {
@@ -71,12 +50,12 @@ namespace H.Modules.License
                 dataLength++;
             }
 
-            if (tempVal > 0)         // overflow check for +ve value
+            if (tempVal > 0)
             {
                 if (value != 0 || (data[maxLength - 1] & 0x80000000) != 0)
                     throw (new ArithmeticException("Positive overflow in constructor."));
             }
-            else if (tempVal < 0)    // underflow check for -ve value
+            else if (tempVal < 0)
             {
                 if (value != -1 || (data[dataLength - 1] & 0x80000000) == 0)
                     throw (new ArithmeticException("Negative underflow in constructor."));
@@ -86,18 +65,9 @@ namespace H.Modules.License
                 dataLength = 1;
         }
 
-
-        //***********************************************************************
-        // Constructor (Default value provided by ulong)
-        //***********************************************************************
-
         public BigInteger(ulong value)
         {
             data = new uint[maxLength];
-
-            // copy bytes from ulong to BigInteger without any assumption of
-            // the length of the ulong datatype
-
             dataLength = 0;
             while (value != 0 && dataLength < maxLength)
             {
@@ -112,13 +82,6 @@ namespace H.Modules.License
             if (dataLength == 0)
                 dataLength = 1;
         }
-
-
-
-        //***********************************************************************
-        // Constructor (Default value provided by BigInteger)
-        //***********************************************************************
-
         public BigInteger(BigInteger bi)
         {
             data = new uint[maxLength];
@@ -128,32 +91,6 @@ namespace H.Modules.License
             for (int i = 0; i < dataLength; i++)
                 data[i] = bi.data[i];
         }
-
-
-        //***********************************************************************
-        // Constructor (Default value provided by a string of digits of the
-        //              specified base)
-        //
-        // Example (base 10)
-        // -----------------
-        // To initialize "a" with the default value of 1234 in base 10
-        //      BigInteger a = new BigInteger("1234", 10)
-        //
-        // To initialize "a" with the default value of -1234
-        //      BigInteger a = new BigInteger("-1234", 10)
-        //
-        // Example (base 16)
-        // -----------------
-        // To initialize "a" with the default value of 0x1D4F in base 16
-        //      BigInteger a = new BigInteger("1D4F", 16)
-        //
-        // To initialize "a" with the default value of -0x1D4F
-        //      BigInteger a = new BigInteger("-1D4F", 16)
-        //
-        // Note that string values are specified in the <sign><magnitude>
-        // format.
-        //
-        //***********************************************************************
 
         public BigInteger(string value, int radix)
         {
@@ -174,7 +111,7 @@ namespace H.Modules.License
                 else if (posVal >= 'A' && posVal <= 'Z')
                     posVal = (posVal - 'A') + 10;
                 else
-                    posVal = 9999999;       // arbitrary large
+                    posVal = 9999999;
 
 
                 if (posVal >= radix)
@@ -191,12 +128,12 @@ namespace H.Modules.License
                 }
             }
 
-            if (value[0] == '-')     // negative values
+            if (value[0] == '-')
             {
                 if ((result.data[maxLength - 1] & 0x80000000) == 0)
                     throw (new ArithmeticException("Negative underflow in constructor."));
             }
-            else    // positive values
+            else
             {
                 if ((result.data[maxLength - 1] & 0x80000000) != 0)
                     throw (new ArithmeticException("Positive overflow in constructor."));
@@ -209,30 +146,12 @@ namespace H.Modules.License
             dataLength = result.dataLength;
         }
 
-
-        //***********************************************************************
-        // Constructor (Default value provided by an array of bytes)
-        //
-        // The lowest index of the input byte array (i.e [0]) should contain the
-        // most significant byte of the number, and the highest index should
-        // contain the least significant byte.
-        //
-        // E.g.
-        // To initialize "a" with the default value of 0x1D4F in base 16
-        //      byte[] temp = { 0x1D, 0x4F };
-        //      BigInteger a = new BigInteger(temp)
-        //
-        // Note that this method of initialization does not allow the
-        // sign to be specified.
-        //
-        //***********************************************************************
-
         public BigInteger(byte[] inData)
         {
             dataLength = inData.Length >> 2;
 
             int leftOver = inData.Length & 0x3;
-            if (leftOver != 0)         // length not multiples of 4
+            if (leftOver != 0)
                 dataLength++;
 
 
@@ -257,22 +176,14 @@ namespace H.Modules.License
 
             while (dataLength > 1 && data[dataLength - 1] == 0)
                 dataLength--;
-
-            //Console.WriteLine("Len = " + dataLength);
         }
-
-
-        //***********************************************************************
-        // Constructor (Default value provided by an array of bytes of the
-        // specified length.)
-        //***********************************************************************
 
         public BigInteger(byte[] inData, int inLen)
         {
             dataLength = inLen >> 2;
 
             int leftOver = inLen & 0x3;
-            if (leftOver != 0)         // length not multiples of 4
+            if (leftOver != 0)
                 dataLength++;
 
             if (dataLength > maxLength || inLen > inData.Length)
@@ -300,15 +211,7 @@ namespace H.Modules.License
 
             while (dataLength > 1 && data[dataLength - 1] == 0)
                 dataLength--;
-
-            //Console.WriteLine("Len = " + dataLength);
         }
-
-
-        //***********************************************************************
-        // Constructor (Default value provided by an array of unsigned integers)
-        //*********************************************************************
-
         public BigInteger(uint[] inData)
         {
             dataLength = inData.Length;
@@ -323,15 +226,7 @@ namespace H.Modules.License
 
             while (dataLength > 1 && data[dataLength - 1] == 0)
                 dataLength--;
-
-            //Console.WriteLine("Len = " + dataLength);
         }
-
-
-        //***********************************************************************
-        // Overloading of the typecast operator.
-        // For BigInteger bi = 10;
-        //***********************************************************************
 
         public static implicit operator BigInteger(long value)
         {
@@ -352,11 +247,6 @@ namespace H.Modules.License
         {
             return (new BigInteger((ulong)value));
         }
-
-
-        //***********************************************************************
-        // Overloading of addition operator
-        //***********************************************************************
 
         public static BigInteger operator +(BigInteger bi1, BigInteger bi2)
         {
@@ -381,8 +271,6 @@ namespace H.Modules.License
             while (result.dataLength > 1 && result.data[result.dataLength - 1] == 0)
                 result.dataLength--;
 
-
-            // overflow check
             int lastPos = maxLength - 1;
             if ((bi1.data[lastPos] & 0x80000000) == (bi2.data[lastPos] & 0x80000000) &&
                (result.data[lastPos] & 0x80000000) != (bi1.data[lastPos] & 0x80000000))
@@ -392,11 +280,6 @@ namespace H.Modules.License
 
             return result;
         }
-
-
-        //***********************************************************************
-        // Overloading of the unary ++ operator
-        //***********************************************************************
 
         public static BigInteger operator ++(BigInteger bi1)
         {
@@ -424,12 +307,7 @@ namespace H.Modules.License
                     result.dataLength--;
             }
 
-            // overflow check
             int lastPos = maxLength - 1;
-
-            // overflow if initial value was +ve but ++ caused a sign
-            // change to negative.
-
             if ((bi1.data[lastPos] & 0x80000000) == 0 &&
                (result.data[lastPos] & 0x80000000) != (bi1.data[lastPos] & 0x80000000))
             {
@@ -438,15 +316,9 @@ namespace H.Modules.License
             return result;
         }
 
-
-        //***********************************************************************
-        // Overloading of subtraction operator
-        //***********************************************************************
-
         public static BigInteger operator -(BigInteger bi1, BigInteger bi2)
         {
             BigInteger result = new BigInteger();
-
             result.dataLength = (bi1.dataLength > bi2.dataLength) ? bi1.dataLength : bi2.dataLength;
 
             long carryIn = 0;
@@ -463,7 +335,6 @@ namespace H.Modules.License
                     carryIn = 0;
             }
 
-            // roll over to negative
             if (carryIn != 0)
             {
                 for (int i = result.dataLength; i < maxLength; i++)
@@ -471,11 +342,8 @@ namespace H.Modules.License
                 result.dataLength = maxLength;
             }
 
-            // fixed in v1.03 to give correct datalength for a - (-b)
             while (result.dataLength > 1 && result.data[result.dataLength - 1] == 0)
                 result.dataLength--;
-
-            // overflow check
 
             int lastPos = maxLength - 1;
             if ((bi1.data[lastPos] & 0x80000000) != (bi2.data[lastPos] & 0x80000000) &&
@@ -486,11 +354,6 @@ namespace H.Modules.License
 
             return result;
         }
-
-
-        //***********************************************************************
-        // Overloading of the unary -- operator
-        //***********************************************************************
 
         public static BigInteger operator --(BigInteger bi1)
         {
@@ -518,13 +381,7 @@ namespace H.Modules.License
 
             while (result.dataLength > 1 && result.data[result.dataLength - 1] == 0)
                 result.dataLength--;
-
-            // overflow check
             int lastPos = maxLength - 1;
-
-            // overflow if initial value was -ve but -- caused a sign
-            // change to positive.
-
             if ((bi1.data[lastPos] & 0x80000000) != 0 &&
                (result.data[lastPos] & 0x80000000) != (bi1.data[lastPos] & 0x80000000))
             {
@@ -534,24 +391,17 @@ namespace H.Modules.License
             return result;
         }
 
-
-        //***********************************************************************
-        // Overloading of multiplication operator
-        //***********************************************************************
-
         public static BigInteger operator *(BigInteger bi1, BigInteger bi2)
         {
             int lastPos = maxLength - 1;
             bool bi1Neg = false, bi2Neg = false;
-
-            // take the absolute value of the inputs
             try
             {
-                if ((bi1.data[lastPos] & 0x80000000) != 0)     // bi1 negative
+                if ((bi1.data[lastPos] & 0x80000000) != 0)
                 {
                     bi1Neg = true; bi1 = -bi1;
                 }
-                if ((bi2.data[lastPos] & 0x80000000) != 0)     // bi2 negative
+                if ((bi2.data[lastPos] & 0x80000000) != 0)
                 {
                     bi2Neg = true; bi2 = -bi2;
                 }
@@ -559,8 +409,6 @@ namespace H.Modules.License
             catch (Exception) { }
 
             BigInteger result = new BigInteger();
-
-            // multiply the absolute values
             try
             {
                 for (int i = 0; i < bi1.dataLength; i++)
@@ -570,7 +418,6 @@ namespace H.Modules.License
                     ulong mcarry = 0;
                     for (int j = 0, k = i; j < bi2.dataLength; j++, k++)
                     {
-                        // k = i + j
                         ulong val = (bi1.data[i] * (ulong)bi2.data[j]) +
                                      result.data[k] + mcarry;
 
@@ -594,15 +441,10 @@ namespace H.Modules.License
 
             while (result.dataLength > 1 && result.data[result.dataLength - 1] == 0)
                 result.dataLength--;
-
-            // overflow check (result is -ve)
             if ((result.data[lastPos] & 0x80000000) != 0)
             {
                 if (bi1Neg != bi2Neg && result.data[lastPos] == 0x80000000)    // different sign
                 {
-                    // handle the special case where multiplication produces
-                    // a max negative number in 2's complement.
-
                     if (result.dataLength == 1)
                         return result;
                     else
@@ -621,19 +463,11 @@ namespace H.Modules.License
 
                 throw (new ArithmeticException("Multiplication overflow."));
             }
-
-            // if input has different signs, then result is -ve
             if (bi1Neg != bi2Neg)
                 return -result;
 
             return result;
         }
-
-
-
-        //***********************************************************************
-        // Overloading of unary << operators
-        //***********************************************************************
 
         public static BigInteger operator <<(BigInteger bi1, int shiftVal)
         {
@@ -642,9 +476,6 @@ namespace H.Modules.License
 
             return result;
         }
-
-
-        // least significant bits at lower part of buffer
 
         private static int shiftLeft(uint[] buffer, int shiftVal)
         {
@@ -658,9 +489,6 @@ namespace H.Modules.License
             {
                 if (count < shiftAmount)
                     shiftAmount = count;
-
-                //Console.WriteLine("shiftAmount = {0}", shiftAmount);
-
                 ulong carry = 0;
                 for (int i = 0; i < bufLen; i++)
                 {
@@ -683,19 +511,11 @@ namespace H.Modules.License
             }
             return bufLen;
         }
-
-
-        //***********************************************************************
-        // Overloading of unary >> operators
-        //***********************************************************************
-
         public static BigInteger operator >>(BigInteger bi1, int shiftVal)
         {
             BigInteger result = new BigInteger(bi1);
             result.dataLength = shiftRight(result.data, shiftVal);
-
-
-            if ((bi1.data[maxLength - 1] & 0x80000000) != 0) // negative
+            if ((bi1.data[maxLength - 1] & 0x80000000) != 0)
             {
                 for (int i = maxLength - 1; i >= result.dataLength; i--)
                     result.data[i] = 0xFFFFFFFF;
@@ -724,9 +544,6 @@ namespace H.Modules.License
 
             while (bufLen > 1 && buffer[bufLen - 1] == 0)
                 bufLen--;
-
-            //Console.WriteLine("bufLen = " + bufLen + " buffer.Length = " + buffer.Length);
-
             for (int count = shiftVal; count > 0;)
             {
                 if (count < shiftAmount)
@@ -734,9 +551,6 @@ namespace H.Modules.License
                     shiftAmount = count;
                     invShift = 32 - shiftAmount;
                 }
-
-                //Console.WriteLine("shiftAmount = {0}", shiftAmount);
-
                 ulong carry = 0;
                 for (int i = bufLen - 1; i >= 0; i--)
                 {
@@ -756,11 +570,6 @@ namespace H.Modules.License
             return bufLen;
         }
 
-
-        //***********************************************************************
-        // Overloading of the NOT operator (1's complement)
-        //***********************************************************************
-
         public static BigInteger operator ~(BigInteger bi1)
         {
             BigInteger result = new BigInteger(bi1);
@@ -776,26 +585,14 @@ namespace H.Modules.License
             return result;
         }
 
-
-        //***********************************************************************
-        // Overloading of the NEGATE operator (2's complement)
-        //***********************************************************************
-
         public static BigInteger operator -(BigInteger bi1)
         {
-            // handle neg of zero separately since it'll cause an overflow
-            // if we proceed.
-
             if (bi1.dataLength == 1 && bi1.data[0] == 0)
                 return (new BigInteger());
 
             BigInteger result = new BigInteger(bi1);
-
-            // 1's complement
             for (int i = 0; i < maxLength; i++)
                 result.data[i] = ~(bi1.data[i]);
-
-            // add one to result of 1's complement
             long val, carry = 1;
             int index = 0;
 
@@ -820,22 +617,15 @@ namespace H.Modules.License
             return result;
         }
 
-
-        //***********************************************************************
-        // Overloading of equality operator
-        //***********************************************************************
-
         public static bool operator ==(BigInteger bi1, BigInteger bi2)
         {
             return bi1.Equals(bi2);
         }
 
-
         public static bool operator !=(BigInteger bi1, BigInteger bi2)
         {
             return !(bi1.Equals(bi2));
         }
-
 
         public override bool Equals(object o)
         {
@@ -858,24 +648,13 @@ namespace H.Modules.License
             return this.ToString().GetHashCode();
         }
 
-
-        //***********************************************************************
-        // Overloading of inequality operator
-        //***********************************************************************
-
         public static bool operator >(BigInteger bi1, BigInteger bi2)
         {
             int pos = maxLength - 1;
-
-            // bi1 is negative, bi2 is positive
             if ((bi1.data[pos] & 0x80000000) != 0 && (bi2.data[pos] & 0x80000000) == 0)
                 return false;
-
-            // bi1 is positive, bi2 is negative
             else if ((bi1.data[pos] & 0x80000000) == 0 && (bi2.data[pos] & 0x80000000) != 0)
                 return true;
-
-            // same sign
             int len = (bi1.dataLength > bi2.dataLength) ? bi1.dataLength : bi2.dataLength;
             for (pos = len - 1; pos >= 0 && bi1.data[pos] == bi2.data[pos]; pos--) ;
 
@@ -892,16 +671,10 @@ namespace H.Modules.License
         public static bool operator <(BigInteger bi1, BigInteger bi2)
         {
             int pos = maxLength - 1;
-
-            // bi1 is negative, bi2 is positive
             if ((bi1.data[pos] & 0x80000000) != 0 && (bi2.data[pos] & 0x80000000) == 0)
                 return true;
-
-            // bi1 is positive, bi2 is negative
             else if ((bi1.data[pos] & 0x80000000) == 0 && (bi2.data[pos] & 0x80000000) != 0)
                 return false;
-
-            // same sign
             int len = (bi1.dataLength > bi2.dataLength) ? bi1.dataLength : bi2.dataLength;
             for (pos = len - 1; pos >= 0 && bi1.data[pos] == bi2.data[pos]; pos--) ;
 
@@ -926,14 +699,6 @@ namespace H.Modules.License
             return (bi1 == bi2 || bi1 < bi2);
         }
 
-
-        //***********************************************************************
-        // Private function that supports the division of two numbers with
-        // a divisor that has more than 1 digit.
-        //
-        // Algorithm taken from [1]
-        //***********************************************************************
-
         private static void multiByteDivide(BigInteger bi1, BigInteger bi2,
                                             BigInteger outQuotient, BigInteger outRemainder)
         {
@@ -950,23 +715,10 @@ namespace H.Modules.License
             {
                 shift++; mask >>= 1;
             }
-
-            //Console.WriteLine("shift = {0}", shift);
-            //Console.WriteLine("Before bi1 Len = {0}, bi2 Len = {1}", bi1.dataLength, bi2.dataLength);
-
             for (int i = 0; i < bi1.dataLength; i++)
                 remainder[i] = bi1.data[i];
             shiftLeft(remainder, shift);
             bi2 = bi2 << shift;
-
-            /*
-            Console.WriteLine("bi1 Len = {0}, bi2 Len = {1}", bi1.dataLength, bi2.dataLength);
-            Console.WriteLine("dividend = " + bi1 + "\ndivisor = " + bi2);
-            for(int q = remainderLen - 1; q >= 0; q--)
-                    Console.Write("{0:x2}", remainder[q]);
-            Console.WriteLine();
-            */
-
             int j = remainderLen - bi2.dataLength;
             int pos = remainderLen - 1;
 
@@ -979,13 +731,8 @@ namespace H.Modules.License
             while (j > 0)
             {
                 ulong dividend = ((ulong)remainder[pos] << 32) + remainder[pos - 1];
-                //Console.WriteLine("dividend = {0}", dividend);
-
                 ulong q_hat = dividend / firstDivisorByte;
                 ulong r_hat = dividend % firstDivisorByte;
-
-                //Console.WriteLine("q_hat = {0:X}, r_hat = {1:X}", q_hat, r_hat);
-
                 bool done = false;
                 while (!done)
                 {
@@ -1007,30 +754,14 @@ namespace H.Modules.License
 
                 BigInteger kk = new BigInteger(dividendPart);
                 BigInteger ss = bi2 * (long)q_hat;
-
-                //Console.WriteLine("ss before = " + ss);
                 while (ss > kk)
                 {
                     q_hat--;
                     ss -= bi2;
-                    //Console.WriteLine(ss);
                 }
                 BigInteger yy = kk - ss;
-
-                //Console.WriteLine("ss = " + ss);
-                //Console.WriteLine("kk = " + kk);
-                //Console.WriteLine("yy = " + yy);
-
                 for (int h = 0; h < divisorLen; h++)
                     remainder[pos - h] = yy.data[bi2.dataLength - h];
-
-                /*
-                Console.WriteLine("dividend = ");
-                for(int q = remainderLen - 1; q >= 0; q--)
-                        Console.Write("{0:x2}", remainder[q]);
-                Console.WriteLine("\n************ q_hat = {0:X}\n", q_hat);
-                */
-
                 result[resultPos++] = (uint)q_hat;
 
                 pos--;
@@ -1058,19 +789,11 @@ namespace H.Modules.License
                 outRemainder.data[y] = 0;
         }
 
-
-        //***********************************************************************
-        // Private function that supports the division of two numbers with
-        // a divisor that has only 1 digit.
-        //***********************************************************************
-
         private static void singleByteDivide(BigInteger bi1, BigInteger bi2,
                                              BigInteger outQuotient, BigInteger outRemainder)
         {
             uint[] result = new uint[maxLength];
             int resultPos = 0;
-
-            // copy dividend to reminder
             for (int i = 0; i < maxLength; i++)
                 outRemainder.data[i] = bi1.data[i];
             outRemainder.dataLength = bi1.dataLength;
@@ -1081,10 +804,6 @@ namespace H.Modules.License
             ulong divisor = bi2.data[0];
             int pos = outRemainder.dataLength - 1;
             ulong dividend = outRemainder.data[pos];
-
-            //Console.WriteLine("divisor = " + divisor + " dividend = " + dividend);
-            //Console.WriteLine("divisor = " + bi2 + "\ndividend = " + bi1);
-
             if (dividend >= divisor)
             {
                 ulong quotient = dividend / divisor;
@@ -1096,15 +815,12 @@ namespace H.Modules.License
 
             while (pos >= 0)
             {
-                //Console.WriteLine(pos);
-
                 dividend = ((ulong)outRemainder.data[pos + 1] << 32) + outRemainder.data[pos];
                 ulong quotient = dividend / divisor;
                 result[resultPos++] = (uint)quotient;
 
                 outRemainder.data[pos + 1] = 0;
                 outRemainder.data[pos--] = (uint)(dividend % divisor);
-                //Console.WriteLine(">>>> " + bi1);
             }
 
             outQuotient.dataLength = resultPos;
@@ -1124,11 +840,6 @@ namespace H.Modules.License
                 outRemainder.dataLength--;
         }
 
-
-        //***********************************************************************
-        // Overloading of division operator
-        //***********************************************************************
-
         public static BigInteger operator /(BigInteger bi1, BigInteger bi2)
         {
             BigInteger quotient = new BigInteger();
@@ -1137,12 +848,12 @@ namespace H.Modules.License
             int lastPos = maxLength - 1;
             bool divisorNeg = false, dividendNeg = false;
 
-            if ((bi1.data[lastPos] & 0x80000000) != 0)     // bi1 negative
+            if ((bi1.data[lastPos] & 0x80000000) != 0)
             {
                 bi1 = -bi1;
                 dividendNeg = true;
             }
-            if ((bi2.data[lastPos] & 0x80000000) != 0)     // bi2 negative
+            if ((bi2.data[lastPos] & 0x80000000) != 0)
             {
                 bi2 = -bi2;
                 divisorNeg = true;
@@ -1167,11 +878,6 @@ namespace H.Modules.License
             }
         }
 
-
-        //***********************************************************************
-        // Overloading of modulus operator
-        //***********************************************************************
-
         public static BigInteger operator %(BigInteger bi1, BigInteger bi2)
         {
             BigInteger quotient = new BigInteger();
@@ -1180,12 +886,12 @@ namespace H.Modules.License
             int lastPos = maxLength - 1;
             bool dividendNeg = false;
 
-            if ((bi1.data[lastPos] & 0x80000000) != 0)     // bi1 negative
+            if ((bi1.data[lastPos] & 0x80000000) != 0)
             {
                 bi1 = -bi1;
                 dividendNeg = true;
             }
-            if ((bi2.data[lastPos] & 0x80000000) != 0)     // bi2 negative
+            if ((bi2.data[lastPos] & 0x80000000) != 0)
                 bi2 = -bi2;
 
             if (bi1 < bi2)
@@ -1207,11 +913,6 @@ namespace H.Modules.License
             }
         }
 
-
-        //***********************************************************************
-        // Overloading of bitwise AND operator
-        //***********************************************************************
-
         public static BigInteger operator &(BigInteger bi1, BigInteger bi2)
         {
             BigInteger result = new BigInteger();
@@ -1231,11 +932,6 @@ namespace H.Modules.License
 
             return result;
         }
-
-
-        //***********************************************************************
-        // Overloading of bitwise OR operator
-        //***********************************************************************
 
         public static BigInteger operator |(BigInteger bi1, BigInteger bi2)
         {
@@ -1257,11 +953,6 @@ namespace H.Modules.License
             return result;
         }
 
-
-        //***********************************************************************
-        // Overloading of bitwise XOR operator
-        //***********************************************************************
-
         public static BigInteger operator ^(BigInteger bi1, BigInteger bi2)
         {
             BigInteger result = new BigInteger();
@@ -1282,11 +973,6 @@ namespace H.Modules.License
             return result;
         }
 
-
-        //***********************************************************************
-        // Returns max(this, bi)
-        //***********************************************************************
-
         public BigInteger max(BigInteger bi)
         {
             if (this > bi)
@@ -1294,11 +980,6 @@ namespace H.Modules.License
             else
                 return (new BigInteger(bi));
         }
-
-
-        //***********************************************************************
-        // Returns min(this, bi)
-        //***********************************************************************
 
         public BigInteger min(BigInteger bi)
         {
@@ -1309,11 +990,6 @@ namespace H.Modules.License
 
         }
 
-
-        //***********************************************************************
-        // Returns the absolute value
-        //***********************************************************************
-
         public BigInteger abs()
         {
             if ((this.data[maxLength - 1] & 0x80000000) != 0)
@@ -1322,27 +998,10 @@ namespace H.Modules.License
                 return (new BigInteger(this));
         }
 
-
-        //***********************************************************************
-        // Returns a string representing the BigInteger in base 10.
-        //***********************************************************************
-
         public override string ToString()
         {
             return ToString(10);
         }
-
-
-        //***********************************************************************
-        // Returns a string representing the BigInteger in sign-and-magnitude
-        // format in the specified radix.
-        //
-        // Example
-        // -------
-        // If the value of BigInteger is -255 in base 10, then
-        // ToString(16) returns "-FF"
-        //
-        //***********************************************************************
 
         public string ToString(int radix)
         {
@@ -1391,21 +1050,6 @@ namespace H.Modules.License
             return result;
         }
 
-
-        //***********************************************************************
-        // Returns a hex string showing the contains of the BigInteger
-        //
-        // Examples
-        // -------
-        // 1) If the value of BigInteger is 255 in base 10, then
-        //    ToHexString() returns "FF"
-        //
-        // 2) If the value of BigInteger is -255 in base 10, then
-        //    ToHexString() returns ".....FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF01",
-        //    which is the 2's complement representation of -255.
-        //
-        //***********************************************************************
-
         public string ToHexString()
         {
             string result = data[dataLength - 1].ToString("X");
@@ -1418,12 +1062,6 @@ namespace H.Modules.License
             return result;
         }
 
-
-
-        //***********************************************************************
-        // Modulo Exponentiation
-        //***********************************************************************
-
         public BigInteger modPow(BigInteger exp, BigInteger n)
         {
             if ((exp.data[maxLength - 1] & 0x80000000) != 0)
@@ -1433,18 +1071,16 @@ namespace H.Modules.License
             BigInteger tempNum;
             bool thisNegative = false;
 
-            if ((this.data[maxLength - 1] & 0x80000000) != 0)   // negative this
+            if ((this.data[maxLength - 1] & 0x80000000) != 0)
             {
                 tempNum = -this % n;
                 thisNegative = true;
             }
             else
-                tempNum = this % n;  // ensures (tempNum * tempNum) < b^(2k)
+                tempNum = this % n;
 
-            if ((n.data[maxLength - 1] & 0x80000000) != 0)   // negative n
+            if ((n.data[maxLength - 1] & 0x80000000) != 0)
                 n = -n;
-
-            // calculate constant = b^(2k) / m
             BigInteger constant = new BigInteger();
 
             int i = n.dataLength << 1;
@@ -1455,11 +1091,9 @@ namespace H.Modules.License
             int totalBits = exp.bitCount();
             int count = 0;
 
-            // perform squaring and multiply exponentiation
             for (int pos = 0; pos < exp.dataLength; pos++)
             {
                 uint mask = 0x01;
-                //Console.WriteLine("pos = " + pos);
 
                 for (int index = 0; index < 32; index++)
                 {
@@ -1473,7 +1107,7 @@ namespace H.Modules.License
 
                     if (tempNum.dataLength == 1 && tempNum.data[0] == 1)
                     {
-                        if (thisNegative && (exp.data[0] & 0x1) != 0)    //odd exp
+                        if (thisNegative && (exp.data[0] & 0x1) != 0)
                             return -resultNum;
                         return resultNum;
                     }
@@ -1483,21 +1117,11 @@ namespace H.Modules.License
                 }
             }
 
-            if (thisNegative && (exp.data[0] & 0x1) != 0)    //odd exp
+            if (thisNegative && (exp.data[0] & 0x1) != 0)
                 return -resultNum;
 
             return resultNum;
         }
-
-
-
-        //***********************************************************************
-        // Fast calculation of modular reduction using Barrett's reduction.
-        // Requires x < b^(2k), where b is the base.  In this case, base is
-        // 2^32 (uint).
-        //
-        // Reference [4]
-        //***********************************************************************
 
         private BigInteger BarrettReduction(BigInteger x, BigInteger n, BigInteger constant)
         {
@@ -1506,8 +1130,6 @@ namespace H.Modules.License
                 kMinusOne = k - 1;
 
             BigInteger q1 = new BigInteger();
-
-            // q1 = x / b^(k-1)
             for (int i = kMinusOne, j = 0; i < x.dataLength; i++, j++)
                 q1.data[j] = x.data[i];
             q1.dataLength = x.dataLength - kMinusOne;
@@ -1517,26 +1139,17 @@ namespace H.Modules.License
 
             BigInteger q2 = q1 * constant;
             BigInteger q3 = new BigInteger();
-
-            // q3 = q2 / b^(k+1)
             for (int i = kPlusOne, j = 0; i < q2.dataLength; i++, j++)
                 q3.data[j] = q2.data[i];
             q3.dataLength = q2.dataLength - kPlusOne;
             if (q3.dataLength <= 0)
                 q3.dataLength = 1;
 
-
-            // r1 = x mod b^(k+1)
-            // i.e. keep the lowest (k+1) words
             BigInteger r1 = new BigInteger();
             int lengthToCopy = (x.dataLength > kPlusOne) ? kPlusOne : x.dataLength;
             for (int i = 0; i < lengthToCopy; i++)
                 r1.data[i] = x.data[i];
             r1.dataLength = lengthToCopy;
-
-
-            // r2 = (q3 * n) mod b^(k+1)
-            // partial multiplication of q3 and n
 
             BigInteger r2 = new BigInteger();
             for (int i = 0; i < q3.dataLength; i++)
@@ -1563,7 +1176,7 @@ namespace H.Modules.License
                 r2.dataLength--;
 
             r1 -= r2;
-            if ((r1.data[maxLength - 1] & 0x80000000) != 0)        // negative
+            if ((r1.data[maxLength - 1] & 0x80000000) != 0) 
             {
                 BigInteger val = new BigInteger();
                 val.data[kPlusOne] = 0x00000001;
@@ -1577,22 +1190,17 @@ namespace H.Modules.License
             return r1;
         }
 
-
-        //***********************************************************************
-        // Returns gcd(this, bi)
-        //***********************************************************************
-
         public BigInteger gcd(BigInteger bi)
         {
             BigInteger x;
             BigInteger y;
 
-            if ((data[maxLength - 1] & 0x80000000) != 0)     // negative
+            if ((data[maxLength - 1] & 0x80000000) != 0) 
                 x = -this;
             else
                 x = this;
 
-            if ((bi.data[maxLength - 1] & 0x80000000) != 0)     // negative
+            if ((bi.data[maxLength - 1] & 0x80000000) != 0)
                 y = -bi;
             else
                 y = bi;
@@ -1608,11 +1216,6 @@ namespace H.Modules.License
 
             return g;
         }
-
-
-        //***********************************************************************
-        // Populates "this" with the specified amount of random bits
-        //***********************************************************************
 
         public void genRandomBits(int bits, Random rand)
         {
@@ -1648,17 +1251,6 @@ namespace H.Modules.License
                 dataLength = 1;
         }
 
-
-        //***********************************************************************
-        // Returns the position of the most significant bit in the BigInteger.
-        //
-        // Eg.  The result is 0, if the value of BigInteger is 0...0000 0000
-        //      The result is 1, if the value of BigInteger is 0...0000 0001
-        //      The result is 2, if the value of BigInteger is 0...0000 0010
-        //      The result is 2, if the value of BigInteger is 0...0000 0011
-        //
-        //***********************************************************************
-
         public int bitCount()
         {
             while (dataLength > 1 && data[dataLength - 1] == 0)
@@ -1678,46 +1270,23 @@ namespace H.Modules.License
             return bits;
         }
 
-
-        //***********************************************************************
-        // Probabilistic prime test based on Fermat's little theorem
-        //
-        // for any a < p (p does not divide a) if
-        //      a^(p-1) mod p != 1 then p is not prime.
-        //
-        // Otherwise, p is probably prime (pseudoprime to the chosen base).
-        //
-        // Returns
-        // -------
-        // True if "this" is a pseudoprime to randomly chosen
-        // bases.  The number of chosen bases is given by the "confidence"
-        // parameter.
-        //
-        // False if "this" is definitely NOT prime.
-        //
-        // Note - this method is fast but fails for Carmichael numbers except
-        // when the randomly chosen base is a factor of the number.
-        //
-        //***********************************************************************
-
         public bool FermatLittleTest(int confidence)
         {
             BigInteger thisVal;
-            if ((this.data[maxLength - 1] & 0x80000000) != 0)        // negative
+            if ((this.data[maxLength - 1] & 0x80000000) != 0) 
                 thisVal = -this;
             else
                 thisVal = this;
 
             if (thisVal.dataLength == 1)
             {
-                // test small numbers
                 if (thisVal.data[0] == 0 || thisVal.data[0] == 1)
                     return false;
                 else if (thisVal.data[0] == 2 || thisVal.data[0] == 3)
                     return true;
             }
 
-            if ((thisVal.data[0] & 0x1) == 0)     // even numbers
+            if ((thisVal.data[0] & 0x1) == 0) 
                 return false;
 
             int bits = thisVal.bitCount();
@@ -1729,11 +1298,10 @@ namespace H.Modules.License
             {
                 bool done = false;
 
-                while (!done)		// generate a < n
+                while (!done)
                 {
                     int testBits = 0;
 
-                    // make sure "a" has at least 2 bits
                     while (testBits < 2)
                         testBits = (int)(rand.NextDouble() * bits);
 
@@ -1741,26 +1309,20 @@ namespace H.Modules.License
 
                     int byteLen = a.dataLength;
 
-                    // make sure "a" is not 0
                     if (byteLen > 1 || (byteLen == 1 && a.data[0] != 1))
                         done = true;
                 }
 
-                // check whether a factor exists (fix for version 1.03)
                 BigInteger gcdTest = a.gcd(thisVal);
                 if (gcdTest.dataLength == 1 && gcdTest.data[0] != 1)
                     return false;
 
-                // calculate a^(p-1) mod p
                 BigInteger expResult = a.modPow(p_sub1, thisVal);
 
                 int resultLen = expResult.dataLength;
 
-                // is NOT prime is a^(p-1) mod p != 1
-
                 if (resultLen > 1 || (resultLen == 1 && expResult.data[0] != 1))
                 {
-                    //Console.WriteLine("a = " + a.ToString());
                     return false;
                 }
             }
@@ -1768,50 +1330,25 @@ namespace H.Modules.License
             return true;
         }
 
-
-        //***********************************************************************
-        // Probabilistic prime test based on Rabin-Miller's
-        //
-        // for any p > 0 with p - 1 = 2^s * t
-        //
-        // p is probably prime (strong pseudoprime) if for any a < p,
-        // 1) a^t mod p = 1 or
-        // 2) a^((2^j)*t) mod p = p-1 for some 0 <= j <= s-1
-        //
-        // Otherwise, p is composite.
-        //
-        // Returns
-        // -------
-        // True if "this" is a strong pseudoprime to randomly chosen
-        // bases.  The number of chosen bases is given by the "confidence"
-        // parameter.
-        //
-        // False if "this" is definitely NOT prime.
-        //
-        //***********************************************************************
-
         public bool RabinMillerTest(int confidence)
         {
             BigInteger thisVal;
-            if ((this.data[maxLength - 1] & 0x80000000) != 0)        // negative
+            if ((this.data[maxLength - 1] & 0x80000000) != 0)  
                 thisVal = -this;
             else
                 thisVal = this;
 
             if (thisVal.dataLength == 1)
             {
-                // test small numbers
                 if (thisVal.data[0] == 0 || thisVal.data[0] == 1)
                     return false;
                 else if (thisVal.data[0] == 2 || thisVal.data[0] == 3)
                     return true;
             }
 
-            if ((thisVal.data[0] & 0x1) == 0)     // even numbers
+            if ((thisVal.data[0] & 0x1) == 0) 
                 return false;
 
-
-            // calculate values of s and t
             BigInteger p_sub1 = thisVal - (new BigInteger(1));
             int s = 0;
 
@@ -1823,7 +1360,7 @@ namespace H.Modules.License
                 {
                     if ((p_sub1.data[index] & mask) != 0)
                     {
-                        index = p_sub1.dataLength;      // to break the outer loop
+                        index = p_sub1.dataLength;
                         break;
                     }
                     mask <<= 1;
@@ -1841,11 +1378,10 @@ namespace H.Modules.License
             {
                 bool done = false;
 
-                while (!done)		// generate a < n
+                while (!done)
                 {
                     int testBits = 0;
 
-                    // make sure "a" has at least 2 bits
                     while (testBits < 2)
                         testBits = (int)(rand.NextDouble() * bits);
 
@@ -1853,33 +1389,24 @@ namespace H.Modules.License
 
                     int byteLen = a.dataLength;
 
-                    // make sure "a" is not 0
                     if (byteLen > 1 || (byteLen == 1 && a.data[0] != 1))
                         done = true;
                 }
 
-                // check whether a factor exists (fix for version 1.03)
                 BigInteger gcdTest = a.gcd(thisVal);
                 if (gcdTest.dataLength == 1 && gcdTest.data[0] != 1)
                     return false;
 
                 BigInteger b = a.modPow(t, thisVal);
 
-                /*
-                Console.WriteLine("a = " + a.ToString(10));
-                Console.WriteLine("b = " + b.ToString(10));
-                Console.WriteLine("t = " + t.ToString(10));
-                Console.WriteLine("s = " + s);
-                */
-
                 bool result = false;
 
-                if (b.dataLength == 1 && b.data[0] == 1)         // a^t mod p = 1
+                if (b.dataLength == 1 && b.data[0] == 1)  
                     result = true;
 
                 for (int j = 0; result == false && j < s; j++)
                 {
-                    if (b == p_sub1)         // a^((2^j)*t) mod p = p-1 for some 0 <= j <= s-1
+                    if (b == p_sub1)
                     {
                         result = true;
                         break;
@@ -1894,31 +1421,10 @@ namespace H.Modules.License
             return true;
         }
 
-
-        //***********************************************************************
-        // Probabilistic prime test based on Solovay-Strassen (Euler Criterion)
-        //
-        // p is probably prime if for any a < p (a is not multiple of p),
-        // a^((p-1)/2) mod p = J(a, p)
-        //
-        // where J is the Jacobi symbol.
-        //
-        // Otherwise, p is composite.
-        //
-        // Returns
-        // -------
-        // True if "this" is a Euler pseudoprime to randomly chosen
-        // bases.  The number of chosen bases is given by the "confidence"
-        // parameter.
-        //
-        // False if "this" is definitely NOT prime.
-        //
-        //***********************************************************************
-
         public bool SolovayStrassenTest(int confidence)
         {
             BigInteger thisVal;
-            if ((this.data[maxLength - 1] & 0x80000000) != 0)        // negative
+            if ((this.data[maxLength - 1] & 0x80000000) != 0) 
                 thisVal = -this;
             else
                 thisVal = this;
@@ -1932,7 +1438,7 @@ namespace H.Modules.License
                     return true;
             }
 
-            if ((thisVal.data[0] & 0x1) == 0)     // even numbers
+            if ((thisVal.data[0] & 0x1) == 0) 
                 return false;
 
 
@@ -1947,81 +1453,48 @@ namespace H.Modules.License
             {
                 bool done = false;
 
-                while (!done)		// generate a < n
+                while (!done)	
                 {
                     int testBits = 0;
-
-                    // make sure "a" has at least 2 bits
                     while (testBits < 2)
                         testBits = (int)(rand.NextDouble() * bits);
 
                     a.genRandomBits(testBits, rand);
 
                     int byteLen = a.dataLength;
-
-                    // make sure "a" is not 0
                     if (byteLen > 1 || (byteLen == 1 && a.data[0] != 1))
                         done = true;
                 }
-
-                // check whether a factor exists (fix for version 1.03)
                 BigInteger gcdTest = a.gcd(thisVal);
                 if (gcdTest.dataLength == 1 && gcdTest.data[0] != 1)
                     return false;
-
-                // calculate a^((p-1)/2) mod p
-
                 BigInteger expResult = a.modPow(p_sub1_shift, thisVal);
                 if (expResult == p_sub1)
                     expResult = -1;
-
-                // calculate Jacobi symbol
                 BigInteger jacob = Jacobi(a, thisVal);
-
-                //Console.WriteLine("a = " + a.ToString(10) + " b = " + thisVal.ToString(10));
-                //Console.WriteLine("expResult = " + expResult.ToString(10) + " Jacob = " + jacob.ToString(10));
-
-                // if they are different then it is not prime
                 if (expResult != jacob)
                     return false;
             }
 
             return true;
         }
-
-
-        //***********************************************************************
-        // Implementation of the Lucas Strong Pseudo Prime test.
-        //
-        // Let n be an odd number with gcd(n,D) = 1, and n - J(D, n) = 2^s * d
-        // with d odd and s >= 0.
-        //
-        // If Ud mod n = 0 or V2^r*d mod n = 0 for some 0 <= r < s, then n
-        // is a strong Lucas pseudoprime with parameters (P, Q).  We select
-        // P and Q based on Selfridge.
-        //
-        // Returns True if number is a strong Lucus pseudo prime.
-        // Otherwise, returns False indicating that number is composite.
-        //***********************************************************************
-
         public bool LucasStrongTest()
         {
             BigInteger thisVal;
-            if ((this.data[maxLength - 1] & 0x80000000) != 0)        // negative
+            if ((this.data[maxLength - 1] & 0x80000000) != 0) 
                 thisVal = -this;
             else
                 thisVal = this;
 
             if (thisVal.dataLength == 1)
             {
-                // test small numbers
                 if (thisVal.data[0] == 0 || thisVal.data[0] == 1)
                     return false;
                 else if (thisVal.data[0] == 2 || thisVal.data[0] == 3)
                     return true;
             }
 
-            if ((thisVal.data[0] & 0x1) == 0)     // even numbers
+            if ((thisVal.data[0] & 0x1) == 0)
                 return false;
 
             return LucasStrongTestHelper(thisVal);
@@ -2030,11 +1503,6 @@ namespace H.Modules.License
 
         private bool LucasStrongTestHelper(BigInteger thisVal)
         {
-            // Do the test (selects D based on Selfridge)
-            // Let D be the first element of the sequence
-            // 5, -7, 9, -11, 13, ... for which J(D,n) = -1
-            // Let P = 1, Q = (1-D) / 4
-
             long D = 5, sign = -1, dCount = 0;
             bool done = false;
 
@@ -2043,21 +1511,19 @@ namespace H.Modules.License
                 int Jresult = BigInteger.Jacobi(D, thisVal);
 
                 if (Jresult == -1)
-                    done = true;    // J(D, this) = 1
+                    done = true;
                 else
                 {
-                    if (Jresult == 0 && Math.Abs(D) < thisVal)       // divisor found
+                    if (Jresult == 0 && Math.Abs(D) < thisVal)
                         return false;
 
                     if (dCount == 20)
                     {
-                        // check for square
                         BigInteger root = thisVal.sqrt();
                         if (root * root == thisVal)
                             return false;
                     }
 
-                    //Console.WriteLine(D);
                     D = (Math.Abs(D) + 2) * sign;
                     sign = -sign;
                 }
@@ -2065,14 +1531,6 @@ namespace H.Modules.License
             }
 
             long Q = (1 - D) >> 2;
-
-            /*
-            Console.WriteLine("D = " + D);
-            Console.WriteLine("Q = " + Q);
-            Console.WriteLine("(n,D) = " + thisVal.gcd(D));
-            Console.WriteLine("(n,Q) = " + thisVal.gcd(Q));
-            Console.WriteLine("J(D|n) = " + BigInteger.Jacobi(D, thisVal));
-            */
 
             BigInteger p_add1 = thisVal + 1;
             int s = 0;
@@ -2085,7 +1543,7 @@ namespace H.Modules.License
                 {
                     if ((p_add1.data[index] & mask) != 0)
                     {
-                        index = p_add1.dataLength;      // to break the outer loop
+                        index = p_add1.dataLength;
                         break;
                     }
                     mask <<= 1;
@@ -2094,9 +1552,6 @@ namespace H.Modules.License
             }
 
             BigInteger t = p_add1 >> s;
-
-            // calculate constant = b^(2k) / m
-            // for Barrett Reduction
             BigInteger constant = new BigInteger();
 
             int nLen = thisVal.dataLength << 1;
@@ -2111,7 +1566,6 @@ namespace H.Modules.License
             if ((lucas[0].dataLength == 1 && lucas[0].data[0] == 0) ||
                (lucas[1].dataLength == 1 && lucas[1].data[0] == 0))
             {
-                // u(t) = 0 or V(t) = 0
                 isPrime = true;
             }
 
@@ -2119,27 +1573,21 @@ namespace H.Modules.License
             {
                 if (!isPrime)
                 {
-                    // doubling of index
                     lucas[1] = thisVal.BarrettReduction(lucas[1] * lucas[1], thisVal, constant);
                     lucas[1] = (lucas[1] - (lucas[2] << 1)) % thisVal;
-
-                    //lucas[1] = ((lucas[1] * lucas[1]) - (lucas[2] << 1)) % thisVal;
 
                     if ((lucas[1].dataLength == 1 && lucas[1].data[0] == 0))
                         isPrime = true;
                 }
 
-                lucas[2] = thisVal.BarrettReduction(lucas[2] * lucas[2], thisVal, constant);     //Q^k
+                lucas[2] = thisVal.BarrettReduction(lucas[2] * lucas[2], thisVal, constant); 
             }
 
 
-            if (isPrime)     // additional checks for composite numbers
+            if (isPrime) 
             {
-                // If n is prime and gcd(n, Q) == 1, then
-                // Q^((n+1)/2) = Q * Q^((n-1)/2) is congruent to (Q * J(Q, n)) mod n
-
                 BigInteger g = thisVal.gcd(Q);
-                if (g.dataLength == 1 && g.data[0] == 1)         // gcd(this, Q) == 1
+                if (g.dataLength == 1 && g.data[0] == 1)
                 {
                     if ((lucas[2].data[maxLength - 1] & 0x80000000) != 0)
                         lucas[2] += thisVal;
@@ -2156,15 +1604,6 @@ namespace H.Modules.License
             return isPrime;
         }
 
-
-        //***********************************************************************
-        // Determines whether a number is probably prime, using the Rabin-Miller's
-        // test.  Before applying the test, the number is tested for divisibility
-        // by primes < 2000
-        //
-        // Returns true if number is probably prime.
-        //***********************************************************************
-
         public bool isProbablePrime(int confidence)
         {
             BigInteger thisVal;
@@ -2173,8 +1612,6 @@ namespace H.Modules.License
             else
                 thisVal = this;
 
-
-            // test for divisibility by primes < 2000
             for (int p = 0; p < primesBelow2000.Length; p++)
             {
                 BigInteger divisor = primesBelow2000[p];
@@ -2185,10 +1622,6 @@ namespace H.Modules.License
                 BigInteger resultNum = thisVal % divisor;
                 if (resultNum.IntValue() == 0)
                 {
-                    /*
-    Console.WriteLine("Not prime!  Divisible by {0}\n",
-                                      primesBelow2000[p]);
-                    */
                     return false;
                 }
             }
@@ -2197,56 +1630,29 @@ namespace H.Modules.License
                 return true;
             else
             {
-                //Console.WriteLine("Not prime!  Failed primality test\n");
                 return false;
             }
         }
 
-
-        //***********************************************************************
-        // Determines whether this BigInteger is probably prime using a
-        // combination of base 2 strong pseudoprime test and Lucas strong
-        // pseudoprime test.
-        //
-        // The sequence of the primality test is as follows,
-        //
-        // 1) Trial divisions are carried out using prime numbers below 2000.
-        //    if any of the primes divides this BigInteger, then it is not prime.
-        //
-        // 2) Perform base 2 strong pseudoprime test.  If this BigInteger is a
-        //    base 2 strong pseudoprime, proceed on to the next step.
-        //
-        // 3) Perform strong Lucas pseudoprime test.
-        //
-        // Returns True if this BigInteger is both a base 2 strong pseudoprime
-        // and a strong Lucas pseudoprime.
-        //
-        // For a detailed discussion of this primality test, see [6].
-        //
-        //***********************************************************************
-
         public bool isProbablePrime()
         {
             BigInteger thisVal;
-            if ((this.data[maxLength - 1] & 0x80000000) != 0)        // negative
+            if ((this.data[maxLength - 1] & 0x80000000) != 0)
                 thisVal = -this;
             else
                 thisVal = this;
 
             if (thisVal.dataLength == 1)
             {
-                // test small numbers
                 if (thisVal.data[0] == 0 || thisVal.data[0] == 1)
                     return false;
                 else if (thisVal.data[0] == 2 || thisVal.data[0] == 3)
                     return true;
             }
 
-            if ((thisVal.data[0] & 0x1) == 0)     // even numbers
+            if ((thisVal.data[0] & 0x1) == 0) 
                 return false;
 
-
-            // test for divisibility by primes < 2000
             for (int p = 0; p < primesBelow2000.Length; p++)
             {
                 BigInteger divisor = primesBelow2000[p];
@@ -2257,16 +1663,9 @@ namespace H.Modules.License
                 BigInteger resultNum = thisVal % divisor;
                 if (resultNum.IntValue() == 0)
                 {
-                    //Console.WriteLine("Not prime!  Divisible by {0}\n",
-                    //                  primesBelow2000[p]);
-
                     return false;
                 }
             }
-
-            // Perform BASE 2 Rabin-Miller Test
-
-            // calculate values of s and t
             BigInteger p_sub1 = thisVal - (new BigInteger(1));
             int s = 0;
 
@@ -2278,7 +1677,7 @@ namespace H.Modules.License
                 {
                     if ((p_sub1.data[index] & mask) != 0)
                     {
-                        index = p_sub1.dataLength;      // to break the outer loop
+                        index = p_sub1.dataLength;
                         break;
                     }
                     mask <<= 1;
@@ -2291,16 +1690,15 @@ namespace H.Modules.License
             int bits = thisVal.bitCount();
             BigInteger a = 2;
 
-            // b = a^t mod p
             BigInteger b = a.modPow(t, thisVal);
             bool result = false;
 
-            if (b.dataLength == 1 && b.data[0] == 1)         // a^t mod p = 1
+            if (b.dataLength == 1 && b.data[0] == 1) 
                 result = true;
 
             for (int j = 0; result == false && j < s; j++)
             {
-                if (b == p_sub1)         // a^((2^j)*t) mod p = p-1 for some 0 <= j <= s-1
+                if (b == p_sub1)
                 {
                     result = true;
                     break;
@@ -2309,28 +1707,16 @@ namespace H.Modules.License
                 b = (b * b) % thisVal;
             }
 
-            // if number is strong pseudoprime to base 2, then do a strong lucas test
             if (result)
                 result = LucasStrongTestHelper(thisVal);
 
             return result;
         }
 
-
-
-        //***********************************************************************
-        // Returns the lowest 4 bytes of the BigInteger as an int.
-        //***********************************************************************
-
         public int IntValue()
         {
             return (int)data[0];
         }
-
-
-        //***********************************************************************
-        // Returns the lowest 8 bytes of the BigInteger as a long.
-        //***********************************************************************
 
         public long LongValue()
         {
@@ -2338,37 +1724,31 @@ namespace H.Modules.License
 
             val = data[0];
             try
-            {       // exception if maxLength = 1
+            {      
                 val |= (long)data[1] << 32;
             }
             catch (Exception)
             {
-                if ((data[0] & 0x80000000) != 0) // negative
+                if ((data[0] & 0x80000000) != 0)
                     val = (int)data[0];
             }
 
             return val;
         }
 
-
-        //***********************************************************************
-        // Computes the Jacobi Symbol for a and b.
-        // Algorithm adapted from [3] and [4] with some optimizations
-        //***********************************************************************
-
         public static int Jacobi(BigInteger a, BigInteger b)
         {
-            // Jacobi defined only for odd integers
+           
             if ((b.data[0] & 0x1) == 0)
                 throw (new ArgumentException("Jacobi defined only for odd integers."));
 
             if (a >= b) a %= b;
-            if (a.dataLength == 1 && a.data[0] == 0) return 0;  // a == 0
-            if (a.dataLength == 1 && a.data[0] == 1) return 1;  // a == 1
+            if (a.dataLength == 1 && a.data[0] == 0) return 0;
+            if (a.dataLength == 1 && a.data[0] == 1) return 1; 
 
             if (a < 0)
             {
-                if ((((b - 1).data[0]) & 0x2) == 0)       //if( (((b-1) >> 1).data[0] & 0x1) == 0)
+                if ((((b - 1).data[0]) & 0x2) == 0)
                     return Jacobi(-a, b);
                 else
                     return -Jacobi(-a, b);
@@ -2383,7 +1763,7 @@ namespace H.Modules.License
                 {
                     if ((a.data[index] & mask) != 0)
                     {
-                        index = a.dataLength;      // to break the outer loop
+                        index = a.dataLength; 
                         break;
                     }
                     mask <<= 1;
@@ -2406,12 +1786,6 @@ namespace H.Modules.License
                 return (s * Jacobi(b % a1, a1));
         }
 
-
-
-        //***********************************************************************
-        // Generates a positive BigInteger that is probably prime.
-        //***********************************************************************
-
         public static BigInteger genPseudoPrime(int bits, int confidence, Random rand)
         {
             BigInteger result = new BigInteger();
@@ -2420,19 +1794,12 @@ namespace H.Modules.License
             while (!done)
             {
                 result.genRandomBits(bits, rand);
-                result.data[0] |= 0x01;		// make it odd
+                result.data[0] |= 0x01;	
 
-                // prime test
                 done = result.isProbablePrime(confidence);
             }
             return result;
         }
-
-
-        //***********************************************************************
-        // Generates a random number with the specified number of bits such
-        // that gcd(number, this) = 1
-        //***********************************************************************
 
         public BigInteger genCoPrime(int bits, Random rand)
         {
@@ -2442,9 +1809,6 @@ namespace H.Modules.License
             while (!done)
             {
                 result.genRandomBits(bits, rand);
-                //Console.WriteLine(result.ToString(16));
-
-                // gcd test
                 BigInteger g = result.gcd(this);
                 if (g.dataLength == 1 && g.data[0] == 1)
                     done = true;
@@ -2453,17 +1817,11 @@ namespace H.Modules.License
             return result;
         }
 
-
-        //***********************************************************************
-        // Returns the modulo inverse of this.  Throws ArithmeticException if
-        // the inverse does not exist.  (i.e. gcd(this, modulus) != 1)
-        //***********************************************************************
-
         public BigInteger modInverse(BigInteger modulus)
         {
             BigInteger[] p = { 0, 1 };
-            BigInteger[] q = new BigInteger[2];    // quotients
-            BigInteger[] r = { 0, 0 };             // remainders
+            BigInteger[] q = new BigInteger[2]; 
+            BigInteger[] r = { 0, 0 };          
 
             int step = 0;
 
@@ -2486,14 +1844,6 @@ namespace H.Modules.License
                     singleByteDivide(a, b, quotient, remainder);
                 else
                     multiByteDivide(a, b, quotient, remainder);
-
-                /*
-                Console.WriteLine(quotient.dataLength);
-                Console.WriteLine("{0} = {1}({2}) + {3}  p = {4}", a.ToString(10),
-                                  b.ToString(10), quotient.ToString(10), remainder.ToString(10),
-                                  p[1].ToString(10));
-                */
-
                 q[0] = q[1];
                 r[0] = r[1];
                 q[1] = quotient; r[1] = remainder;
@@ -2510,16 +1860,10 @@ namespace H.Modules.License
             BigInteger result = ((p[0] - (p[1] * q[0])) % modulus);
 
             if ((result.data[maxLength - 1] & 0x80000000) != 0)
-                result += modulus;  // get the least positive modulus
+                result += modulus; 
 
             return result;
         }
-
-
-        //***********************************************************************
-        // Returns the value of the BigInteger as a byte array.  The lowest
-        // index contains the MSB.
-        //***********************************************************************
 
         public byte[] getBytes()
         {
@@ -2530,8 +1874,6 @@ namespace H.Modules.License
                 numBytes++;
 
             byte[] result = new byte[numBytes];
-
-            //Console.WriteLine(result.Length);
 
             int pos = 0;
             uint tempVal, val = data[dataLength - 1];
@@ -2560,16 +1902,10 @@ namespace H.Modules.License
             return result;
         }
 
-
-        //***********************************************************************
-        // Sets the value of the specified bit to 1
-        // The Least Significant Bit position is 0.
-        //***********************************************************************
-
         public void setBit(uint bitNum)
         {
-            uint bytePos = bitNum >> 5;             // divide by 32
-            byte bitPos = (byte)(bitNum & 0x1F);    // get the lowest 5 bits
+            uint bytePos = bitNum >> 5;       
+            byte bitPos = (byte)(bitNum & 0x1F); 
 
             uint mask = (uint)1 << bitPos;
             this.data[bytePos] |= mask;
@@ -2577,12 +1913,6 @@ namespace H.Modules.License
             if (bytePos >= this.dataLength)
                 this.dataLength = (int)bytePos + 1;
         }
-
-
-        //***********************************************************************
-        // Sets the value of the specified bit to 0
-        // The Least Significant Bit position is 0.
-        //***********************************************************************
 
         public void unsetBit(uint bitNum)
         {
@@ -2602,21 +1932,11 @@ namespace H.Modules.License
             }
         }
 
-
-        //***********************************************************************
-        // Returns a value that is equivalent to the integer square root
-        // of the BigInteger.
-        //
-        // The integer square root of "this" is defined as the largest integer n
-        // such that (n * n) <= this
-        //
-        //***********************************************************************
-
         public BigInteger sqrt()
         {
             uint numBits = (uint)this.bitCount();
 
-            if ((numBits & 0x1) != 0)        // odd number of bits
+            if ((numBits & 0x1) != 0)  
                 numBits = (numBits >> 1) + 1;
             else
                 numBits = (numBits >> 1);
@@ -2640,10 +1960,8 @@ namespace H.Modules.License
             {
                 while (mask != 0)
                 {
-                    // guess
                     result.data[i] ^= mask;
 
-                    // undo the guess if its square is larger than this
                     if ((result * result) > this)
                         result.data[i] ^= mask;
 
@@ -2653,39 +1971,6 @@ namespace H.Modules.License
             }
             return result;
         }
-
-
-        //***********************************************************************
-        // Returns the k_th number in the Lucas Sequence reduced modulo n.
-        //
-        // Uses index doubling to speed up the process.  For example, to calculate V(k),
-        // we maintain two numbers in the sequence V(n) and V(n+1).
-        //
-        // To obtain V(2n), we use the identity
-        //      V(2n) = (V(n) * V(n)) - (2 * Q^n)
-        // To obtain V(2n+1), we first write it as
-        //      V(2n+1) = V((n+1) + n)
-        // and use the identity
-        //      V(m+n) = V(m) * V(n) - Q * V(m-n)
-        // Hence,
-        //      V((n+1) + n) = V(n+1) * V(n) - Q^n * V((n+1) - n)
-        //                   = V(n+1) * V(n) - Q^n * V(1)
-        //                   = V(n+1) * V(n) - Q^n * P
-        //
-        // We use k in its binary expansion and perform index doubling for each
-        // bit position.  For each bit position that is set, we perform an
-        // index doubling followed by an index addition.  This means that for V(n),
-        // we need to update it to V(2n+1).  For V(n+1), we need to update it to
-        // V((2n+1)+1) = V(2*(n+1))
-        //
-        // This function returns
-        // [0] = U(k)
-        // [1] = V(k)
-        // [2] = Q^n
-        //
-        // Where U(0) = 0 % n, U(1) = 1 % n
-        //       V(0) = 2 % n, V(1) = P % n
-        //***********************************************************************
 
         public static BigInteger[] LucasSequence(BigInteger P, BigInteger Q,
                                                  BigInteger k, BigInteger n)
@@ -2697,9 +1982,6 @@ namespace H.Modules.License
                 result[0] = 0; result[1] = 2 % n; result[2] = 1 % n;
                 return result;
             }
-
-            // calculate constant = b^(2k) / m
-            // for Barrett Reduction
             BigInteger constant = new BigInteger();
 
             int nLen = n.dataLength << 1;
@@ -2707,8 +1989,6 @@ namespace H.Modules.License
             constant.dataLength = nLen + 1;
 
             constant = constant / n;
-
-            // calculate values of s and t
             int s = 0;
 
             for (int index = 0; index < k.dataLength; index++)
@@ -2719,7 +1999,7 @@ namespace H.Modules.License
                 {
                     if ((k.data[index] & mask) != 0)
                     {
-                        index = k.dataLength;      // to break the outer loop
+                        index = k.dataLength; 
                         break;
                     }
                     mask <<= 1;
@@ -2728,18 +2008,8 @@ namespace H.Modules.License
             }
 
             BigInteger t = k >> s;
-
-            //Console.WriteLine("s = " + s + " t = " + t);
             return LucasSequenceHelper(P, Q, t, n, constant, s);
         }
-
-
-        //***********************************************************************
-        // Performs the calculation of the kth term in the Lucas Sequence.
-        // For details of the algorithm, see reference [9].
-        //
-        // k must be odd.  i.e LSB == 1
-        //***********************************************************************
 
         private static BigInteger[] LucasSequenceHelper(BigInteger P, BigInteger Q,
                                                         BigInteger k, BigInteger n,
@@ -2753,24 +2023,19 @@ namespace H.Modules.License
             int numbits = k.bitCount();
             uint mask = (uint)0x1 << ((numbits & 0x1F) - 1);
 
-            // v = v0, v1 = v1, u1 = u1, Q_k = Q^0
-
             BigInteger v = 2 % n, Q_k = 1 % n,
                        v1 = P % n, u1 = Q_k;
             bool flag = true;
 
-            for (int i = k.dataLength - 1; i >= 0; i--)     // iterate on the binary expansion of k
+            for (int i = k.dataLength - 1; i >= 0; i--) 
             {
-                //Console.WriteLine("round");
                 while (mask != 0)
                 {
-                    if (i == 0 && mask == 0x00000001)        // last bit
+                    if (i == 0 && mask == 0x00000001)
                         break;
 
-                    if ((k.data[i] & mask) != 0)             // bit is set
+                    if ((k.data[i] & mask) != 0) 
                     {
-                        // index doubling with addition
-
                         u1 = (u1 * v1) % n;
 
                         v = ((v * v1) - (P * Q_k)) % n;
@@ -2786,7 +2051,6 @@ namespace H.Modules.License
                     }
                     else
                     {
-                        // index doubling
                         u1 = ((u1 * v) - Q_k) % n;
 
                         v1 = ((v * v1) - (P * Q_k)) % n;
@@ -2807,9 +2071,6 @@ namespace H.Modules.License
                 mask = 0x80000000;
             }
 
-            // at this point u1 = u(n+1) and v = v(n)
-            // since the last bit always 1, we need to transform u1 to u(2n+1) and v to v(2n+1)
-
             u1 = ((u1 * v) - Q_k) % n;
             v = ((v * v1) - (P * Q_k)) % n;
             if (flag)
@@ -2822,7 +2083,6 @@ namespace H.Modules.License
 
             for (int i = 0; i < s; i++)
             {
-                // index doubling
                 u1 = (u1 * v) % n;
                 v = ((v * v) - (Q_k << 1)) % n;
 
@@ -2842,11 +2102,6 @@ namespace H.Modules.License
             return result;
         }
 
-
-        //***********************************************************************
-        // Tests the correct implementation of the /, %, * and + operators
-        //***********************************************************************
-
         public static void MulDivTest(int rounds)
         {
             Random rand = new Random();
@@ -2855,7 +2110,6 @@ namespace H.Modules.License
 
             for (int count = 0; count < rounds; count++)
             {
-                // generate 2 numbers of random length
                 int t1 = 0;
                 while (t1 == 0)
                     t1 = (int)(rand.NextDouble() * 65);
@@ -2902,18 +2156,10 @@ namespace H.Modules.License
                 Console.WriteLine(count);
                 BigInteger bn1 = new BigInteger(val, t1);
                 BigInteger bn2 = new BigInteger(val2, t2);
-
-
-                // Determine the quotient and remainder by dividing
-                // the first number by the second.
-
                 BigInteger bn3 = bn1 / bn2;
                 BigInteger bn4 = bn1 % bn2;
 
-                // Recalculate the number
                 BigInteger bn5 = (bn3 * bn2) + bn4;
-
-                // Make sure they're the same
                 if (bn5 != bn1)
                 {
                     Console.WriteLine("Error at " + count);
@@ -2927,19 +2173,11 @@ namespace H.Modules.License
             }
         }
 
-
-        //***********************************************************************
-        // Tests the correct implementation of the modulo exponential function
-        // using RSA encryption and decryption (using pre-computed encryption and
-        // decryption keys).
-        //***********************************************************************
-
         public static void RSATest(int rounds)
         {
             Random rand = new Random(1);
             byte[] val = new byte[64];
 
-            // private and public key
             BigInteger bi_e = new BigInteger("a932b948feed4fb2b692609bd22164fc9edb59fae7880cc1eaff7b3c9626b7e5b241c27a974833b2622ebe09beb451917663d47232488f23a117fc97720f1e7", 16);
             BigInteger bi_d = new BigInteger("4adf2f7a89da93248509347d2ae506d683dd3a16357e859a980c4f77a4e2f7a01fae289f13a851df6e9db5adaa60bfd2b162bbbe31f7c8f828261a6839311929d2cef4f864dde65e556ce43c89bbbf9f1ac5511315847ce9cc8dc92470a747b8792d6a83b0092d2e5ebaf852c85cacf34278efa99160f2f8aa7ee7214de07b7", 16);
             BigInteger bi_n = new BigInteger("e8e77781f36a7b3188d711c2190b560f205a52391b3479cdb99fa010745cbeba5f2adc08e1de6bf38398a0487c4a73610d94ec36f17f3f46ad75e17bc1adfec99839589f45f95ccc94cb2a5c500b477eb3323d8cfab0c8458c96f0147a45d27e45a4d11d54d77684f65d48f15fafcc1ba208e71e921b9bd9017c16a5231af7f", 16);
@@ -2950,7 +2188,6 @@ namespace H.Modules.License
 
             for (int count = 0; count < rounds; count++)
             {
-                // generate data of random length
                 int t1 = 0;
                 while (t1 == 0)
                     t1 = (int)(rand.NextDouble() * 65);
@@ -2975,12 +2212,10 @@ namespace H.Modules.License
 
                 Console.Write("Round = " + count);
 
-                // encrypt and decrypt data
                 BigInteger bi_data = new BigInteger(val, t1);
                 BigInteger bi_encrypted = bi_data.modPow(bi_e, bi_n);
                 BigInteger bi_decrypted = bi_encrypted.modPow(bi_d, bi_n);
 
-                // compare
                 if (bi_decrypted != bi_data)
                 {
                     Console.WriteLine("\nError at round " + count);
@@ -2993,12 +2228,6 @@ namespace H.Modules.License
         }
 
 
-        //***********************************************************************
-        // Tests the correct implementation of the modulo exponential and
-        // inverse modulo functions using RSA encryption and decryption.  The two
-        // pseudoprimes p and q are fixed, but the two RSA keys are generated
-        // for each round of testing.
-        //***********************************************************************
 
         public static void RSATest2(int rounds)
         {
@@ -3041,7 +2270,6 @@ namespace H.Modules.License
 
             for (int count = 0; count < rounds; count++)
             {
-                // generate private and public key
                 BigInteger bi_e = bi_pq.genCoPrime(512, rand);
                 BigInteger bi_d = bi_e.modInverse(bi_pq);
 
@@ -3049,7 +2277,6 @@ namespace H.Modules.License
                 Console.WriteLine("\nd =\n" + bi_d.ToString(10));
                 Console.WriteLine("\nn =\n" + bi_n.ToString(10) + "\n");
 
-                // generate data of random length
                 int t1 = 0;
                 while (t1 == 0)
                     t1 = (int)(rand.NextDouble() * 65);
@@ -3074,7 +2301,6 @@ namespace H.Modules.License
 
                 Console.Write("Round = " + count);
 
-                // encrypt and decrypt data
                 BigInteger bi_data = new BigInteger(val, t1);
                 BigInteger bi_encrypted = bi_data.modPow(bi_e, bi_n);
                 BigInteger bi_decrypted = bi_encrypted.modPow(bi_d, bi_n);
@@ -3091,17 +2317,11 @@ namespace H.Modules.License
 
         }
 
-
-        //***********************************************************************
-        // Tests the correct implementation of sqrt() method.
-        //***********************************************************************
-
         public static void SqrtTest(int rounds)
         {
             Random rand = new Random();
             for (int count = 0; count < rounds; count++)
             {
-                // generate data of random length
                 int t1 = 0;
                 while (t1 == 0)
                     t1 = (int)(rand.NextDouble() * 1024);
@@ -3114,7 +2334,6 @@ namespace H.Modules.License
                 BigInteger b = a.sqrt();
                 BigInteger c = (b + 1) * (b + 1);
 
-                // check that b is the largest integer such that b*b <= a
                 if (c <= a)
                 {
                     Console.WriteLine("\nError at round " + count);

@@ -23,7 +23,7 @@ namespace H.Modules.Login
         }
 
         private string _serviceAgreementUri;
-        [DefaultValue("https://github.com/HeBianGu/WPF-ControlBase")]
+        [DefaultValue("https://github.com/HeBianGu/WPF-Control")]
         [Display(Name = "应用许可")]
         public string ServiceAgreementUri
         {
@@ -36,7 +36,7 @@ namespace H.Modules.Login
         }
 
         private string _privacypolicyUri;
-        [DefaultValue("https://github.com/HeBianGu/WPF-ControlBase")]
+        [DefaultValue("https://github.com/HeBianGu/WPF-Control")]
         [Display(Name = "隐私策略")]
         public string PrivacypolicyUri
         {
