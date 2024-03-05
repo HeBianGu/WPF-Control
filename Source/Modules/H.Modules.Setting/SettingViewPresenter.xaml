@@ -120,12 +120,12 @@
                         Content="确定"
                         DockPanel.Dock="Right" />
 
-                <Button MinWidth="100"
+                <!--<Button MinWidth="100"
                         Margin="2,0"
                         Command="{CloseDialogCommand}"
                         CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
                         Content="取消"
-                        DockPanel.Dock="Right" />
+                        DockPanel.Dock="Right" />-->
             </DockPanel>
         </Grid>
     </DataTemplate>

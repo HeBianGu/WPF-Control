@@ -5,8 +5,8 @@
         xmlns:local="clr-namespace:H.Test.SplashScreen"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         Title="MainWindow"
-        Width="800"
-        Height="450"
+        Width="900"
+        Height="550"
         Style="{StaticResource {x:Type Window}}"
         mc:Ignorable="d">
     <UniformGrid>

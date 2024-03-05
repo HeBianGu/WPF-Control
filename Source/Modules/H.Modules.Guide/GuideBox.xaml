@@ -122,11 +122,11 @@
                                 <Button HorizontalAlignment="Left"
                                         Command="{x:Static local:GuideBox.SkipCommand}"
                                         Content="跳过指南&gt;&gt;" />
-
                                 <Button x:Name="bt_next"
                                         Width="100"
                                         HorizontalAlignment="Left"
                                         Background="{DynamicResource {x:Static h:BrushKeys.Orange}}"
+                                        Foreground="White"
                                         Command="{x:Static local:GuideBox.NextCommand}"
                                         Content="下一步" />
                             </DockPanel>

@@ -82,18 +82,22 @@ namespace H.Providers.Ioc
             }
         }
 
-        public void ClearSetting()
+        public bool ClearSetting()
         {
             try
             {
-                Directory.Delete(this.Setting, true);
-                Directory.Delete(this.UserSetting, true);
-                IocMessage.Snack.ShowInfo("操作完成");
+                if (Directory.Exists(this.Setting))
+                    Directory.Delete(this.Setting, true);
+                if (Directory.Exists(this.UserSetting))
+                    Directory.Delete(this.UserSetting, true);
+                IocMessage.Snack?.ShowInfo("操作完成");
+                return true;
             }
             catch (Exception ex)
             {
                 IocMessage.Dialog.Show("清空失败,详情请查看日志");
                 IocLog.Instance?.Error(ex);
+                return false;
             }
         }
 

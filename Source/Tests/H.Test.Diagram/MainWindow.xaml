@@ -49,7 +49,8 @@
                     <Button Command="{x:Static h:DiagramCommands.Previous}"
                             CommandTarget="{Binding ElementName=diagram}"
                             Content="上一个" />
-                    <BulletDecorator Margin="10,0" DockPanel.Dock="Right">
+                    <BulletDecorator Margin="10,0"
+                                     DockPanel.Dock="Right">
                         <BulletDecorator.Bullet>
                             <TextBlock Text="执行流程方式 " />
                         </BulletDecorator.Bullet>
@@ -313,7 +314,8 @@
 
                                 <ItemsControl.ItemsPanel>
                                     <ItemsPanelTemplate>
-                                        <UniformGrid VerticalAlignment="Top" Columns="2" />
+                                        <UniformGrid VerticalAlignment="Top"
+                                                     Columns="2" />
                                     </ItemsPanelTemplate>
                                 </ItemsControl.ItemsPanel>
                             </ItemsControl>
@@ -333,7 +335,8 @@
                             DockPanel.Dock="Right"
                             TabStripPlacement="Bottom">
                     <TabItem Header="画板属性">
-                        <h:PropertyGrid HideInheritedProperties="True" SelectedObject="{Binding ElementName=diagram}" />
+                        <h:PropertyGrid HideInheritedProperties="True"
+                                        SelectedObject="{Binding ElementName=diagram}" />
                     </TabItem>
 
                     <TabItem Header="选中节点属性">
@@ -359,24 +362,6 @@
                                    FlowableZoomMode="Center"
                                    Focusable="True"
                                    UseAnimation="False">
-                            <!--<h:Diagram.InputBindings>
-                                <KeyBinding Key="A"
-                                            Command="{x:Static h:DiagramCommands.SelectAll}"
-                                            CommandTarget="{Binding ElementName=diagram}"
-                                            Modifiers="Ctrl" />
-                                <KeyBinding Key="Tab"
-                                            Command="{x:Static h:DiagramCommands.Next}"
-                                            CommandTarget="{Binding ElementName=diagram}" />
-                                <KeyBinding Key="Delete"
-                                            Command="{x:Static h:DiagramCommands.DeleteSelected}"
-                                            CommandTarget="{Binding ElementName=diagram}" />
-                                <KeyBinding Key="Left"
-                                            Command="{x:Static h:DiagramCommands.Previous}"
-                                            CommandTarget="{Binding ElementName=diagram}" />
-                                <KeyBinding Key="Right"
-                                            Command="{x:Static h:DiagramCommands.Next}"
-                                            CommandTarget="{Binding ElementName=diagram}" />
-                            </h:Diagram.InputBindings>-->
                             <h:Diagram.Layout>
                                 <h:LocationLayout />
                             </h:Diagram.Layout>
@@ -388,10 +373,12 @@
                             </b:Interaction.Behaviors>
                             <b:Interaction.Triggers>
                                 <b:EventTrigger EventName="ItemsChanged">
-                                    <b:InvokeCommandAction Command="{Binding ItemsChangedCommand}" PassEventArgsToCommand="True" />
+                                    <b:InvokeCommandAction Command="{Binding ItemsChangedCommand}"
+                                                           PassEventArgsToCommand="True" />
                                 </b:EventTrigger>
                                 <b:EventTrigger EventName="SelectedPartChanged">
-                                    <b:InvokeCommandAction Command="{Binding SelectedPartChangedCommand}" PassEventArgsToCommand="True" />
+                                    <b:InvokeCommandAction Command="{Binding SelectedPartChangedCommand}"
+                                                           PassEventArgsToCommand="True" />
                                 </b:EventTrigger>
                             </b:Interaction.Triggers>
                         </h:Diagram>
