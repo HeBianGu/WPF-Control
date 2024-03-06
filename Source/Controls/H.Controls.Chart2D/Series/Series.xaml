@@ -25,7 +25,8 @@
         <Setter Property="DisplayName" Value="{Binding RelativeSource={RelativeSource AncestorType=local:ViewLayerGroup}, Path=DisplayName}" />
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:Series.DefaultKey}}" TargetType="{x:Type local:Series}" />
+    <Style BasedOn="{StaticResource {x:Static h:Series.DefaultKey}}"
+           TargetType="{x:Type local:Series}" />
 
     <Style x:Key="{ComponentResourceKey ResourceId=S.Series.Line,
                                         TypeInTargetAssembly={x:Type local:Series}}"
@@ -42,12 +43,14 @@
                                        Foreground="{TemplateBinding Foreground}"
                                        Style="{TemplateBinding ScatterStyle}">
                             <local:Scatter.MarkStyle>
-                                <Style BasedOn="{StaticResource {x:Static h:EllipseMarker.DefaultKey}}" TargetType="local:EllipseMarker">
+                                <Style BasedOn="{StaticResource {x:Static h:EllipseMarker.DefaultKey}}"
+                                       TargetType="local:EllipseMarker">
                                     <Setter Property="StrokeThickness" Value="3" />
                                     <Setter Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.ForegroundWhite}}" />
                                     <Setter Property="Rect">
                                         <Setter.Value>
-                                            <Rect Width="10" Height="10" />
+                                            <Rect Width="10"
+                                                  Height="10" />
                                         </Setter.Value>
                                     </Setter>
                                 </Style>
@@ -69,7 +72,8 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:Series}">
                     <local:LayerGroup>
-                        <local:PolarLine Data="{TemplateBinding yDatas}" Foreground="{TemplateBinding Foreground}" />
+                        <local:PolarLine Data="{TemplateBinding yDatas}"
+                                         Foreground="{TemplateBinding Foreground}" />
                         <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                     </local:LayerGroup>
                 </ControlTemplate>
@@ -120,7 +124,8 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:Series}">
                     <local:LayerGroup>
-                        <local:Area Data="{TemplateBinding yDatas}" Style="{TemplateBinding LineStyle}" />
+                        <local:Area Data="{TemplateBinding yDatas}"
+                                    Style="{TemplateBinding LineStyle}" />
 
                         <!--<local:Scatter Data="{TemplateBinding yDatas}"
                                        Foreground="{TemplateBinding Foreground}"
@@ -141,7 +146,8 @@
                                          To="1.2"
                                          Duration="00:00:02">
                             <DoubleAnimation.EasingFunction>
-                                <ElasticEase Oscillations="6" Springiness="10" />
+                                <ElasticEase Oscillations="6"
+                                             Springiness="10" />
                             </DoubleAnimation.EasingFunction>
                         </DoubleAnimation>
                         <!--<DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
@@ -163,7 +169,8 @@
                                          To="1"
                                          Duration="00:00:02">
                             <DoubleAnimation.EasingFunction>
-                                <ElasticEase Oscillations="6" Springiness="10" />
+                                <ElasticEase Oscillations="6"
+                                             Springiness="10" />
                             </DoubleAnimation.EasingFunction>
                         </DoubleAnimation>
                         <!--<DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"

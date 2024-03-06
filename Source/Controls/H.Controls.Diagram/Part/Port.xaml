@@ -31,7 +31,9 @@
         </DataTemplate.Triggers>
     </DataTemplate>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Port.Default, TypeInTargetAssembly={x:Type local:Port}}" TargetType="{x:Type local:Port}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Port.Default,
+                                        TypeInTargetAssembly={x:Type local:Port}}"
+           TargetType="{x:Type local:Port}">
         <!--<Setter Property="RenderTransform" Value="{DynamicResource {x:Static h:SystemKeys.TransformGroup}}" />-->
         <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
         <Setter Property="Cursor" Value="Hand" />
@@ -100,15 +102,18 @@
                 </MultiDataTrigger.Conditions>
                 <Setter Property="Cursor" Value="Pen" />
             </MultiDataTrigger>
-            <DataTrigger Binding="{Binding State}" Value="Success">
+            <DataTrigger Binding="{Binding State}"
+                         Value="Success">
                 <Setter Property="ToolTip" Value="{Binding Message}" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding State}" Value="Error">
+            <DataTrigger Binding="{Binding State}"
+                         Value="Error">
                 <Setter Property="ToolTip" Value="{Binding Message}" />
             </DataTrigger>
         </Style.Triggers>
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static local:Port.DefaultKey}}" TargetType="{x:Type local:Port}" />
+    <Style BasedOn="{StaticResource {x:Static local:Port.DefaultKey}}"
+           TargetType="{x:Type local:Port}" />
 </ResourceDictionary>
 

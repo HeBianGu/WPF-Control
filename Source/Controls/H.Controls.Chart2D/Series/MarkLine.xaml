@@ -212,6 +212,7 @@
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:MarkLine.HorizontalKey}}" TargetType="{x:Type local:MarkLine}" />
+    <Style BasedOn="{StaticResource {x:Static h:MarkLine.HorizontalKey}}"
+           TargetType="{x:Type local:MarkLine}" />
 </ResourceDictionary>
 

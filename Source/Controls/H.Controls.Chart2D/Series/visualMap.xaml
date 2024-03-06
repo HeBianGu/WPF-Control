@@ -59,7 +59,8 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style BasedOn="{StaticResource {x:Static local:VisualMap.DefaultKey}}" TargetType="{x:Type local:VisualMap}" />
+    <Style BasedOn="{StaticResource {x:Static local:VisualMap.DefaultKey}}"
+           TargetType="{x:Type local:VisualMap}" />
 
 
 </ResourceDictionary>

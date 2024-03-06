@@ -15,7 +15,8 @@
     <!--  DateTimeUpDown  -->
     <!--  ===============================================================================  -->
 
-    <Style x:Key="DateTimeUpDown" TargetType="{x:Type local:DateTimeUpDown}">
+    <Style x:Key="DateTimeUpDown"
+           TargetType="{x:Type local:DateTimeUpDown}">
         <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" />
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static local:ResourceKeys.ControlNormalBorderKey}}" />
         <Setter Property="BorderThickness" Value="1" />
@@ -73,7 +74,8 @@
                             </MultiDataTrigger.Conditions>
                             <Setter TargetName="PART_TextBox" Property="IsReadOnly" Value="True" />
                         </MultiDataTrigger>
-                        <DataTrigger Binding="{Binding IsReadOnly, RelativeSource={RelativeSource Self}}" Value="True">
+                        <DataTrigger Binding="{Binding IsReadOnly, RelativeSource={RelativeSource Self}}"
+                                     Value="True">
                             <Setter TargetName="PART_TextBox" Property="IsReadOnly" Value="True" />
                         </DataTrigger>
                         <Trigger Property="IsEnabled" Value="False">
@@ -85,6 +87,7 @@
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource DateTimeUpDown}" TargetType="{x:Type local:DateTimeUpDown}" />
+    <Style BasedOn="{StaticResource DateTimeUpDown}"
+           TargetType="{x:Type local:DateTimeUpDown}" />
 
 </ResourceDictionary>

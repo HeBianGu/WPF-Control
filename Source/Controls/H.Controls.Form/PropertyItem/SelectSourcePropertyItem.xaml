@@ -7,7 +7,8 @@
         <Expander Padding="0"
                   Header="{Binding Name}"
                   Visibility="{Binding Visibility}">
-            <Border Margin="15,5,0,5" BorderThickness="5,0,0,0">
+            <Border Margin="15,5,0,5"
+                    BorderThickness="5,0,0,0">
                 <Border.BorderBrush>
                     <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.BorderBrush}}" />
                 </Border.BorderBrush>
@@ -18,7 +19,8 @@
                               SelectedItem="{Binding Value}"
                               ToolTip="{Binding Name}" />
 
-                    <local:Form Padding="0" SelectObject="{Binding ElementName=cbx, Path=SelectedItem}" />
+                    <local:Form Padding="0"
+                                SelectObject="{Binding ElementName=cbx, Path=SelectedItem}" />
                 </DockPanel>
             </Border>
         </Expander>
@@ -61,7 +63,8 @@
             <!--<TextBlock Grid.Column="3" Style="{StaticResource S.TextBlock.Error}" />-->
         </Grid>
         <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding Message}" Value="{x:Null}">
+            <DataTrigger Binding="{Binding Message}"
+                         Value="{x:Null}">
                 <Setter TargetName="cb" Property="BorderBrush">
                     <Setter.Value>
                         <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.BorderBrush}}" />
@@ -77,11 +80,13 @@
             <ComboBox DockPanel.Dock="Top"
                       ItemsSource="{Binding Collection}"
                       SelectedItem="{Binding Value}" />
-            <local:Form Padding="0" SelectObject="{Binding Value}" />
+            <local:Form Padding="0"
+                        SelectObject="{Binding Value}" />
         </DockPanel>
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type local:OnlyComboBoxSelectSourcePropertyItem}">
-        <ComboBox ItemsSource="{Binding Collection}" SelectedItem="{Binding Value}" />
+        <ComboBox ItemsSource="{Binding Collection}"
+                  SelectedItem="{Binding Value}" />
     </DataTemplate>
 </ResourceDictionary>

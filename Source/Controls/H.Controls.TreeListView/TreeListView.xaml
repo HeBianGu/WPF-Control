@@ -12,15 +12,15 @@
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />
             </Setter.Value>
         </Setter>-->
-        <Setter Property="Cattach.CaptionBackground" Value="{DynamicResource {x:Static BrushKeys.CaptionBackground}}"/>
+        <Setter Property="Cattach.CaptionBackground" Value="{DynamicResource {x:Static BrushKeys.CaptionBackground}}" />
 
         <Setter Property="Cattach.CaptionForeground">
             <Setter.Value>
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionForeground}}" />
             </Setter.Value>
         </Setter>
-        <Setter Property="Cattach.CaptionVerticalAlignment" Value="Center"/>
-        <Setter Property="Cattach.CaptionMargin" Value="2 0"/>
+        <Setter Property="Cattach.CaptionVerticalAlignment" Value="Center" />
+        <Setter Property="Cattach.CaptionMargin" Value="2 0" />
         <Setter Property="ItemContainerStyle">
             <Setter.Value>
                 <Style TargetType="{x:Type local:TreeListViewItem}">

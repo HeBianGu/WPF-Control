@@ -461,7 +461,8 @@
             <TabItem Header="Step">
                 <TabControl>
                     <TabItem Header="Horizontal">
-                        <h:Step Height="Auto" VerticalAlignment="Center"
+                        <h:Step Height="Auto"
+                                VerticalAlignment="Center"
                                 Cattach.ItemHeight="Auto">
                             <h:StepItemPresenter DisplayName="1"
                                                  Message="成功"

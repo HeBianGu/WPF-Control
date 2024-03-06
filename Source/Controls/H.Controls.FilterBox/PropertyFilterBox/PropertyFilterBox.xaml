@@ -39,7 +39,8 @@
                                                 Content="清空选择过滤器"
                                                 DockPanel.Dock="Bottom"
                                                 Style="{DynamicResource {x:Static h:ButtonKeys.Default}}" />
-                                        <Separator DockPanel.Dock="Bottom" Style="{DynamicResource {x:Static h:SeparatorKeys.Default}}" />
+                                        <Separator DockPanel.Dock="Bottom"
+                                                   Style="{DynamicResource {x:Static h:SeparatorKeys.Default}}" />
                                         <ListBox x:Name="PART_Selector"
                                                  ItemsSource="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=PropertyConfidtions.PropertyConfidtions}"
                                                  SelectedItem="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=PropertyConfidtions.SelectedItem}">
@@ -55,7 +56,8 @@
                                                                    FontSize="15"
                                                                    Text="√"
                                                                    Visibility="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}, Path=IsSelected, Converter={x:Static h:Converter.GetFalseToHidden}}" />
-                                                        <TextBlock VerticalAlignment="Center" Text="{Binding ID}" />
+                                                        <TextBlock VerticalAlignment="Center"
+                                                                   Text="{Binding ID}" />
                                                     </DockPanel>
                                                 </DataTemplate>
                                             </ItemsControl.ItemTemplate>

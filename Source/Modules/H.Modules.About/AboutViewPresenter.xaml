@@ -5,10 +5,10 @@
     <DataTemplate DataType="{x:Type local:AboutViewPresenter}">
         <Grid>
             <h:StaticForm SelectObject="{Binding}"
-                    UseBoolen="False"
-                    UseEnum="False"
-                    UseNull="False"
-                    UsePropertyView="True" />
+                          UseBoolen="False"
+                          UseEnum="False"
+                          UseNull="False"
+                          UsePropertyView="True" />
             <!--<TextBlock Text="关于页面" />-->
         </Grid>
         <DataTemplate.Triggers>

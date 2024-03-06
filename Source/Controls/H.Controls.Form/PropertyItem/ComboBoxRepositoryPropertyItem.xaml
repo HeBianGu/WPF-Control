@@ -3,10 +3,12 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.Form">
     <DataTemplate DataType="{x:Type local:ComboboxRepositoryPropertyItem}">
-        <ComboBox ItemsSource="{Binding ItemsSource}" SelectedItem="{Binding Value}">
+        <ComboBox ItemsSource="{Binding ItemsSource}"
+                  SelectedItem="{Binding Value}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Foreground="{DynamicResource {x:Static h:BrushKeys.Foreground}}" Text="{Binding Name}" />
+                    <TextBlock Foreground="{DynamicResource {x:Static h:BrushKeys.Foreground}}"
+                               Text="{Binding Name}" />
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>

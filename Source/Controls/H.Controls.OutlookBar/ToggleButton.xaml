@@ -2,7 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:h="https://github.com/HeBianGu">
 
-    <Style x:Key="buttonInSection" TargetType="{x:Type ToggleButton}">
+    <Style x:Key="buttonInSection"
+           TargetType="{x:Type ToggleButton}">
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Height" Value="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}" />
         <Setter Property="Cursor" Value="Hand" />

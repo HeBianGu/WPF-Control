@@ -8,7 +8,8 @@
                         HorizontalAlignment="Left"
                         Orientation="Horizontal"
                         Visibility="Collapsed">
-                <Grid x:Name="line1" Margin="0,20,0,0">
+                <Grid x:Name="line1"
+                      Margin="0,20,0,0">
                     <Line Width="Auto"
                           HorizontalAlignment="Stretch"
                           VerticalAlignment="Top"
@@ -125,7 +126,8 @@
                         HorizontalAlignment="Left"
                         Orientation="Horizontal"
                         Visibility="Collapsed">
-                <Grid x:Name="line2" Margin="0,20,0,0">
+                <Grid x:Name="line2"
+                      Margin="0,20,0,0">
                     <Line Width="Auto"
                           HorizontalAlignment="Stretch"
                           VerticalAlignment="Top"
@@ -163,7 +165,8 @@
                         HorizontalAlignment="Left"
                         Orientation="Horizontal"
                         Visibility="Collapsed">
-                <Grid x:Name="line3" Margin="0,20,0,0">
+                <Grid x:Name="line3"
+                      Margin="0,20,0,0">
                     <Line Width="Auto"
                           HorizontalAlignment="Stretch"
                           VerticalAlignment="Top"
@@ -215,7 +218,8 @@
                         HorizontalAlignment="Left"
                         Orientation="Horizontal"
                         Visibility="Collapsed">
-                <Grid x:Name="line4" Margin="0,20,0,0">
+                <Grid x:Name="line4"
+                      Margin="0,20,0,0">
                     <Line Width="Auto"
                           HorizontalAlignment="Stretch"
                           VerticalAlignment="Top"
@@ -263,30 +267,36 @@
         </Grid>
 
         <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}, Converter={h:GetIsFirstItemInItemsControlConverter}}" Value="True">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}, Converter={h:GetIsFirstItemInItemsControlConverter}}"
+                         Value="True">
                 <Setter TargetName="line1" Property="Visibility" Value="Collapsed" />
                 <Setter TargetName="line2" Property="Visibility" Value="Collapsed" />
                 <Setter TargetName="line3" Property="Visibility" Value="Collapsed" />
                 <Setter TargetName="line4" Property="Visibility" Value="Collapsed" />
             </DataTrigger>
 
-            <DataTrigger Binding="{Binding Message}" Value="{x:Null}">
+            <DataTrigger Binding="{Binding Message}"
+                         Value="{x:Null}">
                 <Setter TargetName="txt" Property="Height" Value="0" />
             </DataTrigger>
 
-            <DataTrigger Binding="{Binding State}" Value="-1">
+            <DataTrigger Binding="{Binding State}"
+                         Value="-1">
                 <Setter TargetName="error" Property="Visibility" Value="Visible" />
             </DataTrigger>
 
-            <DataTrigger Binding="{Binding State}" Value="0">
+            <DataTrigger Binding="{Binding State}"
+                         Value="0">
                 <Setter TargetName="unkown" Property="Visibility" Value="Visible" />
             </DataTrigger>
 
-            <DataTrigger Binding="{Binding State}" Value="1">
+            <DataTrigger Binding="{Binding State}"
+                         Value="1">
                 <Setter TargetName="running" Property="Visibility" Value="Visible" />
             </DataTrigger>
 
-            <DataTrigger Binding="{Binding State}" Value="2">
+            <DataTrigger Binding="{Binding State}"
+                         Value="2">
                 <Setter TargetName="success" Property="Visibility" Value="Visible" />
             </DataTrigger>
         </DataTemplate.Triggers>

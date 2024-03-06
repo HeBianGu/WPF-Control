@@ -21,6 +21,7 @@
                         ShowPreview="True"
                         ShowSummary="True"
                         ShowTitle="True" />
-        <Button x:Name="btn" Content="我是按钮" />
+        <Button x:Name="btn"
+                Content="我是按钮" />
     </DockPanel>
 </Window>

@@ -2,7 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Presenters.Design">
-    <Style x:Key="S.ItemsControl.PanelPresenter" TargetType="ItemsControl">
+    <Style x:Key="S.ItemsControl.PanelPresenter"
+           TargetType="ItemsControl">
         <Setter Property="ItemsSource" Value="{Binding Presenters}" />
         <Setter Property="ItemContainerStyle">
             <Setter.Value>

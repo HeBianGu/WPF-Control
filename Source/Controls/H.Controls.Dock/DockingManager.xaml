@@ -29,7 +29,8 @@
 
 
     <DataTemplate x:Key="DocumentHeaderTemplate">
-        <TextBlock Text="{Binding Title}" TextTrimming="CharacterEllipsis" />
+        <TextBlock Text="{Binding Title}"
+                   TextTrimming="CharacterEllipsis" />
     </DataTemplate>
 
     <DataTemplate x:Key="AnchorableHeaderTemplate">
@@ -48,30 +49,39 @@
                        TextTrimming="CharacterEllipsis" />
         </Grid>
         <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding IconSource}" Value="{x:Null}">
+            <DataTrigger Binding="{Binding IconSource}"
+                         Value="{x:Null}">
                 <Setter TargetName="title" Property="Margin" Value="0" />
             </DataTrigger>
         </DataTemplate.Triggers>
     </DataTemplate>
 
     <DataTemplate x:Key="DocumentTitleTemplate">
-        <TextBlock Text="{Binding Title}" TextTrimming="CharacterEllipsis" />
+        <TextBlock Text="{Binding Title}"
+                   TextTrimming="CharacterEllipsis" />
     </DataTemplate>
 
     <DataTemplate x:Key="AnchorableTitleTemplate">
-        <TextBlock Text="{Binding Title}" TextTrimming="CharacterEllipsis" />
+        <TextBlock Text="{Binding Title}"
+                   TextTrimming="CharacterEllipsis" />
     </DataTemplate>
 
 
-    <ContextMenu x:Key="AnchorableContextMenu" Style="{DynamicResource {x:Static h:ContextMenuKeys.Default}}">
-        <MenuItem Command="{Binding Path=FloatCommand}" Header="{x:Static lp:Resources.Anchorable_Float}" />
-        <MenuItem Command="{Binding Path=DockCommand}" Header="{x:Static lp:Resources.Anchorable_Dock}" />
-        <MenuItem Command="{Binding Path=DockAsDocumentCommand}" Header="{x:Static lp:Resources.Anchorable_DockAsDocument}" />
-        <MenuItem Command="{Binding Path=AutoHideCommand}" Header="{x:Static lp:Resources.Anchorable_AutoHide}" />
+    <ContextMenu x:Key="AnchorableContextMenu"
+                 Style="{DynamicResource {x:Static h:ContextMenuKeys.Default}}">
+        <MenuItem Command="{Binding Path=FloatCommand}"
+                  Header="{x:Static lp:Resources.Anchorable_Float}" />
+        <MenuItem Command="{Binding Path=DockCommand}"
+                  Header="{x:Static lp:Resources.Anchorable_Dock}" />
+        <MenuItem Command="{Binding Path=DockAsDocumentCommand}"
+                  Header="{x:Static lp:Resources.Anchorable_DockAsDocument}" />
+        <MenuItem Command="{Binding Path=AutoHideCommand}"
+                  Header="{x:Static lp:Resources.Anchorable_AutoHide}" />
         <MenuItem Command="{Binding Path=CloseCommand}"
                   Header="{x:Static lp:Resources.Document_Close}"
                   Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={lcv:BoolToVisibilityConverter}}" />
-        <MenuItem Command="{Binding Path=HideCommand}" Header="{x:Static lp:Resources.Anchorable_Hide}">
+        <MenuItem Command="{Binding Path=HideCommand}"
+                  Header="{x:Static lp:Resources.Anchorable_Hide}">
             <MenuItem.Visibility>
                 <MultiBinding Converter="{lcv:AnchorableContextMenuHideVisibilityConverter}">
                     <Binding Converter="{lcv:BoolToVisibilityConverter}"
@@ -84,14 +94,19 @@
         </MenuItem>
     </ContextMenu>
 
-    <ContextMenu x:Key="DocumentContextMenu" Style="{DynamicResource {x:Static h:ContextMenuKeys.Default}}">
+    <ContextMenu x:Key="DocumentContextMenu"
+                 Style="{DynamicResource {x:Static h:ContextMenuKeys.Default}}">
         <MenuItem Command="{Binding Path=CloseCommand}"
                   Header="{x:Static lp:Resources.Document_Close}"
                   Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={lcv:BoolToVisibilityConverter}}" />
-        <MenuItem Command="{Binding Path=CloseAllButThisCommand}" Header="{x:Static lp:Resources.Document_CloseAllButThis}" />
-        <MenuItem Command="{Binding Path=CloseAllCommand}" Header="{x:Static lp:Resources.Document_CloseAll}" />
-        <MenuItem Command="{Binding Path=FloatCommand}" Header="{x:Static lp:Resources.Document_Float}" />
-        <MenuItem Command="{Binding Path=DockAsDocumentCommand}" Header="{x:Static lp:Resources.Document_DockAsDocument}" />
+        <MenuItem Command="{Binding Path=CloseAllButThisCommand}"
+                  Header="{x:Static lp:Resources.Document_CloseAllButThis}" />
+        <MenuItem Command="{Binding Path=CloseAllCommand}"
+                  Header="{x:Static lp:Resources.Document_CloseAll}" />
+        <MenuItem Command="{Binding Path=FloatCommand}"
+                  Header="{x:Static lp:Resources.Document_Float}" />
+        <MenuItem Command="{Binding Path=DockAsDocumentCommand}"
+                  Header="{x:Static lp:Resources.Document_DockAsDocument}" />
         <MenuItem Command="{Binding Path=NewHorizontalTabGroupCommand}"
                   Header="{x:Static lp:Resources.Document_NewHorizontalTabGroup}"
                   Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={lcv:BoolToVisibilityConverter}}" />
@@ -107,11 +122,13 @@
     </ContextMenu>
 
     <DataTemplate x:Key="IconContentTemplate">
-        <Image Source="{Binding IconSource, Converter={lcv:NullToDoNothingConverter}}" Stretch="Uniform" />
+        <Image Source="{Binding IconSource, Converter={lcv:NullToDoNothingConverter}}"
+               Stretch="Uniform" />
     </DataTemplate>
 
     <!--  DockingManager  -->
-    <Style x:Key="{x:Type local:DockingManager}" TargetType="{x:Type local:DockingManager}">
+    <Style x:Key="{x:Type local:DockingManager}"
+           TargetType="{x:Type local:DockingManager}">
         <Setter Property="DocumentPaneControlStyle" Value="{StaticResource DocumentPaneControlStyle}" />
         <Setter Property="AnchorablePaneControlStyle" Value="{StaticResource AnchorablePaneControlStyle}" />
         <Setter Property="AnchorSideTemplate" Value="{StaticResource AnchorSideTemplate}" />

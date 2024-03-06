@@ -74,7 +74,7 @@
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
             </Setter.Value>
         </Setter>
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundAssist}}"/>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundAssist}}" />
     </Style>
     <Style BasedOn="{StaticResource {x:Static local:ProgressBarKeys.Default}}"
            TargetType="ProgressBar" />

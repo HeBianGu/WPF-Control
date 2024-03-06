@@ -3,7 +3,9 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.NavigationBox">
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.ScrollIntoView.Default, TypeInTargetAssembly={x:Type local:ScrollIntoView}}" TargetType="{x:Type local:ScrollIntoView}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.ScrollIntoView.Default,
+                                        TypeInTargetAssembly={x:Type local:ScrollIntoView}}"
+           TargetType="{x:Type local:ScrollIntoView}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:ScrollIntoView}">
@@ -37,6 +39,7 @@
         </Setter>-->
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static local:ScrollIntoView.DefaultKey}}" TargetType="{x:Type local:ScrollIntoView}" />
+    <Style BasedOn="{StaticResource {x:Static local:ScrollIntoView.DefaultKey}}"
+           TargetType="{x:Type local:ScrollIntoView}" />
 
 </ResourceDictionary>

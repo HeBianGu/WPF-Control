@@ -32,7 +32,8 @@
                         <StackPanel>
                             <BulletDecorator Margin="10,2">
                                 <BulletDecorator.Bullet>
-                                    <TextBlock VerticalAlignment="Center" Text="操作类型" />
+                                    <TextBlock VerticalAlignment="Center"
+                                               Text="操作类型" />
                                 </BulletDecorator.Bullet>
                                 <h:SelectionFilterBox x:Name="sfb"
                                                       Margin="5,0"
@@ -51,7 +52,8 @@
                             </BulletDecorator>
                             <BulletDecorator Margin="10,2">
                                 <BulletDecorator.Bullet>
-                                    <TextBlock VerticalAlignment="Center" Text="操作方法" />
+                                    <TextBlock VerticalAlignment="Center"
+                                               Text="操作方法" />
                                 </BulletDecorator.Bullet>
                                 <h:SelectionFilterBox x:Name="sfb1"
                                                       Margin="5,0"
@@ -70,7 +72,8 @@
                             </BulletDecorator>
                             <BulletDecorator Margin="10,2">
                                 <BulletDecorator.Bullet>
-                                    <TextBlock VerticalAlignment="Center" Text="操作账号" />
+                                    <TextBlock VerticalAlignment="Center"
+                                               Text="操作账号" />
                                 </BulletDecorator.Bullet>
                                 <h:SelectionFilterBox x:Name="sfb2"
                                                       Margin="5,0"
@@ -94,7 +97,8 @@
                     <ControlTemplate>
                         <BulletDecorator VerticalAlignment="Bottom">
                             <BulletDecorator.Bullet>
-                                <TextBlock VerticalAlignment="Center" Text="搜索 " />
+                                <TextBlock VerticalAlignment="Center"
+                                           Text="搜索 " />
                             </BulletDecorator.Bullet>
                             <h:TextFilterBox x:Name="tfb1"
                                              Width="200"
@@ -114,10 +118,12 @@
             </RepositoryGrid>
         </DockPanel>
         <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding IsVisible}" Value="False">
+            <DataTrigger Binding="{Binding IsVisible}"
+                         Value="False">
                 <Setter Property="Visibility" Value="Collapsed" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding IsAuthority}" Value="False">
+            <DataTrigger Binding="{Binding IsAuthority}"
+                         Value="False">
                 <Setter Property="Visibility" Value="Collapsed" />
             </DataTrigger>
         </DataTemplate.Triggers>

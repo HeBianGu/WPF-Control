@@ -34,8 +34,10 @@
                             SnapsToDevicePixels="True">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition x:Name="firstContentColumn" Width="*" />
-                                <ColumnDefinition x:Name="secondContentColumn" Width="Auto" />
+                                <ColumnDefinition x:Name="firstContentColumn"
+                                                  Width="*" />
+                                <ColumnDefinition x:Name="secondContentColumn"
+                                                  Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <ContentPresenter x:Name="contentPresenter"
                                               Margin="{TemplateBinding Padding}"

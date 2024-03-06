@@ -60,7 +60,8 @@
         </Style.Triggers>
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static local:TreeNode.DefaultKey}}" TargetType="{x:Type local:TreeNode}" />
+    <Style BasedOn="{StaticResource {x:Static local:TreeNode.DefaultKey}}"
+           TargetType="{x:Type local:TreeNode}" />
 
 </ResourceDictionary>
 

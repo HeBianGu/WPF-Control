@@ -24,7 +24,8 @@
                 <Grid.Background>
                     <DrawingBrush>
                         <DrawingBrush.Drawing>
-                            <GeometryDrawing Brush="{DynamicResource {x:Static h:BrushKeys.Foreground}}" Geometry="{Binding Geometry}" />
+                            <GeometryDrawing Brush="{DynamicResource {x:Static h:BrushKeys.Foreground}}"
+                                             Geometry="{Binding Geometry}" />
                         </DrawingBrush.Drawing>
                     </DrawingBrush>
                 </Grid.Background>

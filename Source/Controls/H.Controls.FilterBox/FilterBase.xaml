@@ -3,6 +3,7 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.FilterBox">
     <DataTemplate DataType="{x:Type local:FilterBase}">
-        <TextBlock Text="{Binding Name}" ToolTip="{Binding Description}" />
+        <TextBlock Text="{Binding Name}"
+                   ToolTip="{Binding Description}" />
     </DataTemplate>
 </ResourceDictionary>

@@ -27,14 +27,16 @@
     <local:IsDefaultCategoryConverter x:Key="IsDefaultCategoryConverter" />
     <local:SelectedObjectConverter x:Key="objectConverter" />
 
-    <x:Static x:Key="EmptyString" Member="sys:String.Empty" />
+    <x:Static x:Key="EmptyString"
+              Member="sys:String.Empty" />
 
     <!--  PropertyGrid numeric Editors  -->
     <Style x:Key="PropertyGridNumericUpDown"
            BasedOn="{StaticResource NumericUpDown}"
            TargetType="{x:Type local:InputBase}" />
 
-    <Style BasedOn="{StaticResource PropertyGridNumericUpDown}" TargetType="{x:Type local:PropertyGridEditorByteUpDown}">
+    <Style BasedOn="{StaticResource PropertyGridNumericUpDown}"
+           TargetType="{x:Type local:PropertyGridEditorByteUpDown}">
         <Style.Triggers>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -47,7 +49,8 @@
         </Style.Triggers>
     </Style>
 
-    <Style BasedOn="{StaticResource PropertyGridNumericUpDown}" TargetType="{x:Type local:PropertyGridEditorDecimalUpDown}">
+    <Style BasedOn="{StaticResource PropertyGridNumericUpDown}"
+           TargetType="{x:Type local:PropertyGridEditorDecimalUpDown}">
         <Style.Triggers>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -60,7 +63,8 @@
         </Style.Triggers>
     </Style>
 
-    <Style BasedOn="{StaticResource PropertyGridNumericUpDown}" TargetType="{x:Type local:PropertyGridEditorDoubleUpDown}">
+    <Style BasedOn="{StaticResource PropertyGridNumericUpDown}"
+           TargetType="{x:Type local:PropertyGridEditorDoubleUpDown}">
         <Style.Triggers>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -73,7 +77,8 @@
         </Style.Triggers>
     </Style>
 
-    <Style BasedOn="{StaticResource PropertyGridNumericUpDown}" TargetType="{x:Type local:PropertyGridEditorIntegerUpDown}">
+    <Style BasedOn="{StaticResource PropertyGridNumericUpDown}"
+           TargetType="{x:Type local:PropertyGridEditorIntegerUpDown}">
         <Style.Triggers>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -86,7 +91,8 @@
         </Style.Triggers>
     </Style>
 
-    <Style BasedOn="{StaticResource PropertyGridNumericUpDown}" TargetType="{x:Type local:PropertyGridEditorLongUpDown}">
+    <Style BasedOn="{StaticResource PropertyGridNumericUpDown}"
+           TargetType="{x:Type local:PropertyGridEditorLongUpDown}">
         <Style.Triggers>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -99,7 +105,8 @@
         </Style.Triggers>
     </Style>
 
-    <Style BasedOn="{StaticResource PropertyGridNumericUpDown}" TargetType="{x:Type local:PropertyGridEditorShortUpDown}">
+    <Style BasedOn="{StaticResource PropertyGridNumericUpDown}"
+           TargetType="{x:Type local:PropertyGridEditorShortUpDown}">
         <Style.Triggers>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -112,7 +119,8 @@
         </Style.Triggers>
     </Style>
 
-    <Style BasedOn="{StaticResource PropertyGridNumericUpDown}" TargetType="{x:Type local:PropertyGridEditorSingleUpDown}">
+    <Style BasedOn="{StaticResource PropertyGridNumericUpDown}"
+           TargetType="{x:Type local:PropertyGridEditorSingleUpDown}">
         <Style.Triggers>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -126,7 +134,8 @@
     </Style>
 
     <!--  PropertyGrid DateTime Editors  -->
-    <Style BasedOn="{StaticResource DateTimeUpDown}" TargetType="{x:Type local:PropertyGridEditorDateTimeUpDown}">
+    <Style BasedOn="{StaticResource DateTimeUpDown}"
+           TargetType="{x:Type local:PropertyGridEditorDateTimeUpDown}">
         <Style.Triggers>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -140,7 +149,8 @@
     </Style>
 
     <!--  PropertyGrid TimeSpan Editors  -->
-    <Style BasedOn="{StaticResource TimeSpanUpDown}" TargetType="{x:Type local:PropertyGridEditorTimeSpanUpDown}">
+    <Style BasedOn="{StaticResource TimeSpanUpDown}"
+           TargetType="{x:Type local:PropertyGridEditorTimeSpanUpDown}">
         <Style.Triggers>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -154,7 +164,8 @@
     </Style>
 
     <!--  PropertyGrid ComboBox Editors  -->
-    <Style BasedOn="{StaticResource {x:Static h:ComboBoxKeys.Default}}" TargetType="{x:Type local:PropertyGridEditorComboBox}">
+    <Style BasedOn="{StaticResource {x:Static h:ComboBoxKeys.Default}}"
+           TargetType="{x:Type local:PropertyGridEditorComboBox}">
         <Setter Property="Height" Value="Auto" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Style.Triggers>
@@ -173,13 +184,15 @@
     </Style>
 
     <!--  PropertyGrid CheckBox Editors  -->
-    <Style BasedOn="{StaticResource {x:Static h:CheckBoxKeys.Default}}" TargetType="{x:Type local:PropertyGridEditorCheckBox}">
+    <Style BasedOn="{StaticResource {x:Static h:CheckBoxKeys.Default}}"
+           TargetType="{x:Type local:PropertyGridEditorCheckBox}">
         <Setter Property="Margin" Value="5,0,0,0" />
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 
     <!--  PropertyGrid TextBox Editors  -->
-    <Style BasedOn="{StaticResource WatermarkTextBox}" TargetType="{x:Type local:PropertyGridEditorTextBox}">
+    <Style BasedOn="{StaticResource WatermarkTextBox}"
+           TargetType="{x:Type local:PropertyGridEditorTextBox}">
         <Style.Triggers>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -198,16 +211,19 @@
     </Style>
 
     <!--  PropertyGrid TextBlock Editors  -->
-    <Style BasedOn="{StaticResource {x:Type TextBlock}}" TargetType="{x:Type local:PropertyGridEditorTextBlock}">
+    <Style BasedOn="{StaticResource {x:Type TextBlock}}"
+           TargetType="{x:Type local:PropertyGridEditorTextBlock}">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 
     <!--  PropertyGrid MaskedTextBox Editors  -->
-    <Style BasedOn="{StaticResource {x:Static h:TextBoxKeys.Default}}" TargetType="{x:Type local:PropertyGridEditorMaskedTextBox}" />
+    <Style BasedOn="{StaticResource {x:Static h:TextBoxKeys.Default}}"
+           TargetType="{x:Type local:PropertyGridEditorMaskedTextBox}" />
 
     <!--  PropertyGrid ColorPicker Editors  -->
-    <Style BasedOn="{StaticResource {x:Type local:ColorPicker}}" TargetType="{x:Type local:PropertyGridEditorColorPicker}">
+    <Style BasedOn="{StaticResource {x:Type local:ColorPicker}}"
+           TargetType="{x:Type local:PropertyGridEditorColorPicker}">
         <Style.Triggers>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -222,13 +238,15 @@
 
 
     <!--  PropertyGrid PrimitiveTypeCollectionControl Editors  -->
-    <Style BasedOn="{StaticResource PrimitiveTypeCollectionControl}" TargetType="{x:Type local:PropertyGridEditorPrimitiveTypeCollectionControl}">
+    <Style BasedOn="{StaticResource PrimitiveTypeCollectionControl}"
+           TargetType="{x:Type local:PropertyGridEditorPrimitiveTypeCollectionControl}">
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Content" Value="(Collection)" />
     </Style>
 
     <!--  PropertyGrid CollectionControl Editors  -->
-    <Style BasedOn="{StaticResource CollectionControlButton}" TargetType="{x:Type local:PropertyGridEditorCollectionControl}" />
+    <Style BasedOn="{StaticResource CollectionControlButton}"
+           TargetType="{x:Type local:PropertyGridEditorCollectionControl}" />
 
     <!--  ===============================================================================  -->
     <!--  Style for all internal derived types of NumericUpDown will be done in code-behind  -->
@@ -239,7 +257,8 @@
     <!--  ===============================================================================  -->
 
     <!--  Internal PropertyGrid numeric Editors  -->
-    <Style BasedOn="{StaticResource PropertyGridNumericUpDown}" TargetType="{x:Type local:PropertyGridEditorSByteUpDown}">
+    <Style BasedOn="{StaticResource PropertyGridNumericUpDown}"
+           TargetType="{x:Type local:PropertyGridEditorSByteUpDown}">
         <Style.Triggers>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -252,7 +271,8 @@
         </Style.Triggers>
     </Style>
 
-    <Style BasedOn="{StaticResource PropertyGridNumericUpDown}" TargetType="{x:Type local:PropertyGridEditorUIntegerUpDown}">
+    <Style BasedOn="{StaticResource PropertyGridNumericUpDown}"
+           TargetType="{x:Type local:PropertyGridEditorUIntegerUpDown}">
         <Style.Triggers>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -265,7 +285,8 @@
         </Style.Triggers>
     </Style>
 
-    <Style BasedOn="{StaticResource PropertyGridNumericUpDown}" TargetType="{x:Type local:PropertyGridEditorULongUpDown}">
+    <Style BasedOn="{StaticResource PropertyGridNumericUpDown}"
+           TargetType="{x:Type local:PropertyGridEditorULongUpDown}">
         <Style.Triggers>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -278,7 +299,8 @@
         </Style.Triggers>
     </Style>
 
-    <Style BasedOn="{StaticResource PropertyGridNumericUpDown}" TargetType="{x:Type local:PropertyGridEditorUShortUpDown}">
+    <Style BasedOn="{StaticResource PropertyGridNumericUpDown}"
+           TargetType="{x:Type local:PropertyGridEditorUShortUpDown}">
         <Style.Triggers>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -293,7 +315,8 @@
 
 
 
-    <SolidColorBrush x:Key="MouseOverBorderBrush" Color="{DynamicResource {x:Static h:ColorKeys.BorderBrushTitle}}" />
+    <SolidColorBrush x:Key="MouseOverBorderBrush"
+                     Color="{DynamicResource {x:Static h:ColorKeys.BorderBrushTitle}}" />
     <!--<LinearGradientBrush x:Key="MouseOverBackgroundBrush" StartPoint="0,0" EndPoint="0,1">
         <GradientStop Offset="0" Color="#FFFEFBF4" />
         <GradientStop Offset="0.19" Color="#FFFDE7CE" />
@@ -303,11 +326,14 @@
         <GradientStop Offset="1" Color="#FFFFEBAA" />
     </LinearGradientBrush>-->
 
-    <SolidColorBrush x:Key="MouseOverBackgroundBrush" Color="{DynamicResource {x:Static h:ColorKeys.MouseOver}}" />
+    <SolidColorBrush x:Key="MouseOverBackgroundBrush"
+                     Color="{DynamicResource {x:Static h:ColorKeys.MouseOver}}" />
 
-    <SolidColorBrush x:Key="CheckedBorderBrush" Color="{DynamicResource {x:Static h:ColorKeys.BorderBrushTitle}}" />
+    <SolidColorBrush x:Key="CheckedBorderBrush"
+                     Color="{DynamicResource {x:Static h:ColorKeys.BorderBrushTitle}}" />
 
-    <SolidColorBrush x:Key="CheckedBackgroundBrush" Color="{DynamicResource {x:Static h:ColorKeys.Selected}}" />
+    <SolidColorBrush x:Key="CheckedBackgroundBrush"
+                     Color="{DynamicResource {x:Static h:ColorKeys.Selected}}" />
     <!--<LinearGradientBrush x:Key="CheckedBackgroundBrush" StartPoint="0,0" EndPoint="0,1">
         <GradientStop Offset="0" Color="#FFFFDCA0" />
         <GradientStop Offset="0.18" Color="#FFFFD692" />
@@ -315,9 +341,11 @@
         <GradientStop Offset="1" Color="#FFFFD178" />
     </LinearGradientBrush>-->
 
-    <SolidColorBrush x:Key="PressedBorderBrush" Color="{DynamicResource {x:Static h:ColorKeys.BorderBrushAssist}}" />
+    <SolidColorBrush x:Key="PressedBorderBrush"
+                     Color="{DynamicResource {x:Static h:ColorKeys.BorderBrushAssist}}" />
 
-    <SolidColorBrush x:Key="PressedBackgroundBrush" Color="{DynamicResource {x:Static h:ColorKeys.BackgroundDisabled}}" />
+    <SolidColorBrush x:Key="PressedBackgroundBrush"
+                     Color="{DynamicResource {x:Static h:ColorKeys.BackgroundDisabled}}" />
 
     <!--<LinearGradientBrush x:Key="PressedBackgroundBrush" StartPoint="0,0" EndPoint="0,1">
         <GradientStop Offset="0" Color="#FFE3C085" />
@@ -328,7 +356,8 @@
         <GradientStop Offset="1" Color="#FFF3E28D" />
     </LinearGradientBrush>-->
 
-    <Style x:Key="OptionsToggleButtonStyle" TargetType="{x:Type RadioButton}">
+    <Style x:Key="OptionsToggleButtonStyle"
+           TargetType="{x:Type RadioButton}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="1" />
@@ -358,7 +387,8 @@
                                     BorderBrush="Transparent"
                                     BorderThickness="{TemplateBinding BorderThickness}"
                                     CornerRadius="2">
-                                <StackPanel x:Name="StackPanel" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+                                <StackPanel x:Name="StackPanel"
+                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
                                     <ContentPresenter x:Name="Content"
                                                       Margin="1"
                                                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -416,7 +446,8 @@
         </Setter>
     </Style>
 
-    <Style x:Key="ClearFilterButtonStyle" TargetType="{x:Type Button}">
+    <Style x:Key="ClearFilterButtonStyle"
+           TargetType="{x:Type Button}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="1" />
@@ -445,7 +476,8 @@
                                     BorderBrush="Transparent"
                                     BorderThickness="{TemplateBinding BorderThickness}"
                                     CornerRadius="2">
-                                <StackPanel x:Name="StackPanel" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+                                <StackPanel x:Name="StackPanel"
+                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
                                     <ContentPresenter x:Name="Content"
                                                       Margin="1"
                                                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -482,10 +514,12 @@
     </Style>
 
     <!--<SolidColorBrush x:Key="GlyphBrush" Color="#FF31347C" />-->
-    <SolidColorBrush x:Key="GlyphBrush" Color="{DynamicResource {x:Static h:ColorKeys.Foreground}}" />
+    <SolidColorBrush x:Key="GlyphBrush"
+                     Color="{DynamicResource {x:Static h:ColorKeys.Foreground}}" />
 
 
-    <ControlTemplate x:Key="ExpanderToggleButton" TargetType="{x:Type ToggleButton}">
+    <ControlTemplate x:Key="ExpanderToggleButton"
+                     TargetType="{x:Type ToggleButton}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="20" />
@@ -538,7 +572,8 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <Style x:Key="ExpanderStyle" TargetType="{x:Type Expander}">
+    <Style x:Key="ExpanderStyle"
+           TargetType="{x:Type Expander}">
         <Setter Property="Padding" Value="0" />
         <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Background}}" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
@@ -548,7 +583,8 @@
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
-                            <RowDefinition x:Name="ContentRow" Height="*" />
+                            <RowDefinition x:Name="ContentRow"
+                                           Height="*" />
                         </Grid.RowDefinitions>
                         <Border x:Name="Border"
                                 Height="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}"
@@ -592,7 +628,8 @@
         </Setter>
     </Style>
 
-    <Style x:Key="PropertyExpanderStyle" TargetType="{x:Type Expander}">
+    <Style x:Key="PropertyExpanderStyle"
+           TargetType="{x:Type Expander}">
         <Setter Property="Padding" Value="10,0,0,0" />
         <Setter Property="Template">
             <Setter.Value>
@@ -623,7 +660,8 @@
         </Setter>
     </Style>
 
-    <Style x:Key="PropertyItemGroupContainerStyle" TargetType="{x:Type GroupItem}">
+    <Style x:Key="PropertyItemGroupContainerStyle"
+           TargetType="{x:Type GroupItem}">
         <Style.Resources />
         <Setter Property="Template">
             <Setter.Value>
@@ -657,7 +695,8 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="SingleDefaultCategoryItemGroupContainerStyle" TargetType="{x:Type GroupItem}">
+    <Style x:Key="SingleDefaultCategoryItemGroupContainerStyle"
+           TargetType="{x:Type GroupItem}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
@@ -669,7 +708,8 @@
     </Style>
 
     <ContextMenu x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:PropertyGrid}, ResourceId=SelectedObjectAdvancedOptionsMenu}">
-        <MenuItem Command="local:PropertyItemCommands.ResetValue" Header="Reset Value" />
+        <MenuItem Command="local:PropertyItemCommands.ResetValue"
+                  Header="Reset Value" />
     </ContextMenu>
 
     <local:CategoryGroupStyleSelector x:Key="categoryGroupStyleSelector"
@@ -690,8 +730,10 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:PropertyItemBase}">
-                    <Border ContextMenu="{Binding AdvancedOptionsMenu, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:PropertyGrid}}" ContextMenuService.Placement="Bottom">
-                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <Border ContextMenu="{Binding AdvancedOptionsMenu, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:PropertyGrid}}"
+                            ContextMenuService.Placement="Bottom">
+                        <Grid HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="{Binding NameColumnWidth, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:PropertyGrid}}}" />
                                 <ColumnDefinition Width="*" />
@@ -710,7 +752,8 @@
                                     BorderBrush="{TemplateBinding BorderBrush}"
                                     BorderThickness="{TemplateBinding BorderThickness}"
                                     CornerRadius="2">
-                                <Grid Margin="2,2,2,2" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                <Grid Margin="2,2,2,2"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="Auto" />
@@ -844,22 +887,28 @@
                             <Setter Property="Focusable" Value="False" />
                         </Trigger>
 
-                        <DataTrigger Binding="{Binding ElementName=_optionsImage, Path=ToolTip}" Value="{x:Static local:StringConstants.Local}">
+                        <DataTrigger Binding="{Binding ElementName=_optionsImage, Path=ToolTip}"
+                                     Value="{x:Static local:StringConstants.Local}">
                             <Setter TargetName="_optionsImage" Property="Source" Value="PropertyGrid/Images/Local11.png" />
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding ElementName=_optionsImage, Path=ToolTip}" Value="{x:Static local:StringConstants.Resource}">
+                        <DataTrigger Binding="{Binding ElementName=_optionsImage, Path=ToolTip}"
+                                     Value="{x:Static local:StringConstants.Resource}">
                             <Setter TargetName="_optionsImage" Property="Source" Value="PropertyGrid/Images/Resource11.png" />
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding ElementName=_optionsImage, Path=ToolTip}" Value="{x:Static local:StringConstants.Databinding}">
+                        <DataTrigger Binding="{Binding ElementName=_optionsImage, Path=ToolTip}"
+                                     Value="{x:Static local:StringConstants.Databinding}">
                             <Setter TargetName="_optionsImage" Property="Source" Value="PropertyGrid/Images/Database11.png" />
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding ElementName=_optionsImage, Path=ToolTip}" Value="{x:Static local:StringConstants.Inheritance}">
+                        <DataTrigger Binding="{Binding ElementName=_optionsImage, Path=ToolTip}"
+                                     Value="{x:Static local:StringConstants.Inheritance}">
                             <Setter TargetName="_optionsImage" Property="Source" Value="PropertyGrid/Images/Inheritance11.png" />
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding ElementName=_optionsImage, Path=ToolTip}" Value="{x:Static local:StringConstants.StyleSetter}">
+                        <DataTrigger Binding="{Binding ElementName=_optionsImage, Path=ToolTip}"
+                                     Value="{x:Static local:StringConstants.StyleSetter}">
                             <Setter TargetName="_optionsImage" Property="Source" Value="PropertyGrid/Images/Style11.png" />
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding ElementName=_optionsImage, Path=ToolTip}" Value="{x:Static local:StringConstants.AdvancedProperties}">
+                        <DataTrigger Binding="{Binding ElementName=_optionsImage, Path=ToolTip}"
+                                     Value="{x:Static local:StringConstants.AdvancedProperties}">
                             <Setter TargetName="_optionsImage" Property="Source" Value="PropertyGrid/Images/AdvancedProperties11.png" />
                         </DataTrigger>
                     </ControlTemplate.Triggers>
@@ -895,7 +944,8 @@
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
 
-                            <StackPanel x:Name="selectObjectNamePanel" Orientation="Horizontal">
+                            <StackPanel x:Name="selectObjectNamePanel"
+                                        Orientation="Horizontal">
                                 <Border Width="44"
                                         Height="44"
                                         Margin="6,4,0,4"
@@ -906,7 +956,8 @@
                                         Visibility="{Binding ShowPreview, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}">
                                     <Rectangle>
                                         <Rectangle.Fill>
-                                            <VisualBrush Stretch="Uniform" Visual="{Binding RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ObjectToUIElementConverter}, Path=SelectedObject}" />
+                                            <VisualBrush Stretch="Uniform"
+                                                         Visual="{Binding RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ObjectToUIElementConverter}, Path=SelectedObject}" />
                                         </Rectangle.Fill>
                                     </Rectangle>
                                 </Border>
@@ -924,7 +975,8 @@
                                     <Grid MaxWidth="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource HalfConverter}, ConverterParameter=17}"
                                           Margin="5,0,0,0"
                                           VerticalAlignment="Center">
-                                        <local:TrimmedTextBlock Text="{TemplateBinding SelectedObjectName}" TextTrimming="CharacterEllipsis" />
+                                        <local:TrimmedTextBlock Text="{TemplateBinding SelectedObjectName}"
+                                                                TextTrimming="CharacterEllipsis" />
                                     </Grid>
                                 </StackPanel>
                             </StackPanel>
@@ -941,7 +993,8 @@
                                 <Grid x:Name="sortButtonContainer"
                                       Margin="4"
                                       Visibility="{Binding ShowSortOptions, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}">
-                                    <StackPanel Margin="1" Orientation="Horizontal">
+                                    <StackPanel Margin="1"
+                                                Orientation="Horizontal">
                                         <RadioButton VerticalAlignment="Center"
                                                      IsChecked="{Binding IsCategorized, RelativeSource={RelativeSource TemplatedParent}}"
                                                      Style="{StaticResource OptionsToggleButtonStyle}"
@@ -1003,7 +1056,8 @@
                                 </Border>
                             </Grid>
 
-                            <Grid Grid.Row="2" Background="{DynamicResource {x:Static h:BrushKeys.Background}}">
+                            <Grid Grid.Row="2"
+                                  Background="{DynamicResource {x:Static h:BrushKeys.Background}}">
                                 <local:PropertyItemsControl x:Name="PART_PropertyItemsControl"
                                                             VerticalAlignment="Top"
                                                             Background="{DynamicResource {x:Static h:BrushKeys.Background}}"
@@ -1040,7 +1094,8 @@
                                                 </ScrollViewer>
                                             </Border>
                                             <ControlTemplate.Triggers>
-                                                <DataTrigger Binding="{Binding ShowHorizontalScrollBar, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:PropertyGrid}}" Value="True">
+                                                <DataTrigger Binding="{Binding ShowHorizontalScrollBar, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:PropertyGrid}}"
+                                                             Value="True">
                                                     <Setter TargetName="ScrollBar" Property="HorizontalScrollBarVisibility" Value="Auto" />
                                                 </DataTrigger>
                                             </ControlTemplate.Triggers>

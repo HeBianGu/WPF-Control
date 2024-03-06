@@ -86,7 +86,8 @@
                                                      To="1.5"
                                                      Duration="00:00:02">
                                         <DoubleAnimation.EasingFunction>
-                                            <ElasticEase Oscillations="6" Springiness="10" />
+                                            <ElasticEase Oscillations="6"
+                                                         Springiness="10" />
                                         </DoubleAnimation.EasingFunction>
                                     </DoubleAnimation>
                                     <!--<DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
@@ -108,7 +109,8 @@
                                                      To="1"
                                                      Duration="00:00:02">
                                         <DoubleAnimation.EasingFunction>
-                                            <ElasticEase Oscillations="6" Springiness="10" />
+                                            <ElasticEase Oscillations="6"
+                                                         Springiness="10" />
                                         </DoubleAnimation.EasingFunction>
                                     </DoubleAnimation>
                                     <!--<DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
@@ -150,7 +152,8 @@
                                      To="1"
                                      Duration="00:00:02">
                         <DoubleAnimation.EasingFunction>
-                            <ElasticEase Oscillations="6" Springiness="10" />
+                            <ElasticEase Oscillations="6"
+                                         Springiness="10" />
                         </DoubleAnimation.EasingFunction>
                     </DoubleAnimation>
                 </local:Timelines>
@@ -158,7 +161,8 @@
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:BarBase.DefaultKey}}" TargetType="{x:Type local:BarBase}" />
+    <Style BasedOn="{StaticResource {x:Static h:BarBase.DefaultKey}}"
+           TargetType="{x:Type local:BarBase}" />
 
     <Style x:Key="{ComponentResourceKey ResourceId=S.Bar.Single,
                                         TypeInTargetAssembly={x:Type local:Bar}}"
@@ -181,7 +185,8 @@
            BasedOn="{StaticResource {x:Static h:BarBase.DefaultKey}}"
            TargetType="{x:Type local:Bar}" />
 
-    <Style BasedOn="{StaticResource {x:Static h:Bar.DefaultKey}}" TargetType="{x:Type local:Bar}" />
+    <Style BasedOn="{StaticResource {x:Static h:Bar.DefaultKey}}"
+           TargetType="{x:Type local:Bar}" />
 
     <Style x:Key="{ComponentResourceKey ResourceId=S.StackBarBase.Default,
                                         TypeInTargetAssembly={x:Type local:StackBarBase}}"
@@ -190,9 +195,11 @@
         <Setter Property="xDisplay" Value="First,Second,Thrid,Forth,Fifth" />
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:StackBarBase.DefaultKey}}" TargetType="{x:Type local:StackBar}" />
+    <Style BasedOn="{StaticResource {x:Static h:StackBarBase.DefaultKey}}"
+           TargetType="{x:Type local:StackBar}" />
 
-    <Style BasedOn="{StaticResource {x:Static h:BarBase.DefaultKey}}" TargetType="{x:Type local:yBar}">
+    <Style BasedOn="{StaticResource {x:Static h:BarBase.DefaultKey}}"
+           TargetType="{x:Type local:yBar}">
         <Setter Property="PathStyle">
             <Setter.Value>
                 <Style TargetType="Path">
@@ -262,7 +269,8 @@
                                                      To="1.5"
                                                      Duration="00:00:02">
                                         <DoubleAnimation.EasingFunction>
-                                            <ElasticEase Oscillations="6" Springiness="10" />
+                                            <ElasticEase Oscillations="6"
+                                                         Springiness="10" />
                                         </DoubleAnimation.EasingFunction>
                                     </DoubleAnimation>
                                 </Storyboard>
@@ -284,7 +292,8 @@
                                                      To="1"
                                                      Duration="00:00:02">
                                         <DoubleAnimation.EasingFunction>
-                                            <ElasticEase Oscillations="6" Springiness="10" />
+                                            <ElasticEase Oscillations="6"
+                                                         Springiness="10" />
                                         </DoubleAnimation.EasingFunction>
                                     </DoubleAnimation>
                                 </Storyboard>
@@ -309,7 +318,8 @@
                                      To="1"
                                      Duration="00:00:02">
                         <DoubleAnimation.EasingFunction>
-                            <ElasticEase Oscillations="6" Springiness="10" />
+                            <ElasticEase Oscillations="6"
+                                         Springiness="10" />
                         </DoubleAnimation.EasingFunction>
                     </DoubleAnimation>
                 </local:Timelines>
@@ -317,7 +327,8 @@
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:StackBarBase.DefaultKey}}" TargetType="{x:Type local:yStackBar}">
+    <Style BasedOn="{StaticResource {x:Static h:StackBarBase.DefaultKey}}"
+           TargetType="{x:Type local:yStackBar}">
         <Setter Property="PathStyle">
             <Setter.Value>
                 <Style TargetType="Path">
@@ -371,7 +382,8 @@
                                      To="1"
                                      Duration="00:00:02">
                         <DoubleAnimation.EasingFunction>
-                            <ElasticEase Oscillations="6" Springiness="10" />
+                            <ElasticEase Oscillations="6"
+                                         Springiness="10" />
                         </DoubleAnimation.EasingFunction>
                     </DoubleAnimation>
                 </local:Timelines>
@@ -379,7 +391,8 @@
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:BarBase.DefaultKey}}" TargetType="{x:Type local:yAnimationBar}">
+    <Style BasedOn="{StaticResource {x:Static h:BarBase.DefaultKey}}"
+           TargetType="{x:Type local:yAnimationBar}">
         <Setter Property="yDisplay" Value="{Binding RelativeSource={RelativeSource AncestorType=local:Chart}, Path=yDisplay}" />
         <Setter Property="PathStyle">
             <Setter.Value>
@@ -434,7 +447,8 @@
                                      To="1"
                                      Duration="00:00:02">
                         <DoubleAnimation.EasingFunction>
-                            <ElasticEase Oscillations="6" Springiness="10" />
+                            <ElasticEase Oscillations="6"
+                                         Springiness="10" />
                         </DoubleAnimation.EasingFunction>
                     </DoubleAnimation>
                 </local:Timelines>

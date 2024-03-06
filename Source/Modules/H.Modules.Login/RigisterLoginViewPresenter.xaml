@@ -135,7 +135,7 @@
                                 <TextBlock Width="80"
                                            Text="邮箱地址" />
                             </BulletDecorator.Bullet>
-                            <TextBox Text="{Binding MailVerify.Mail,UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBox Text="{Binding MailVerify.Mail, UpdateSourceTrigger=PropertyChanged}" />
                         </BulletDecorator>
 
                         <BulletDecorator Margin="0,2"
@@ -149,7 +149,7 @@
                                                   Content="获取验证码"
                                                   DockPanel.Dock="Right"
                                                   Message="发送邮件中" />
-                                <TextBox Text="{Binding MailVerify.InputCode,UpdateSourceTrigger=PropertyChanged}" />
+                                <TextBox Text="{Binding MailVerify.InputCode, UpdateSourceTrigger=PropertyChanged}" />
                             </DockPanel>
                         </BulletDecorator>
 
@@ -205,7 +205,7 @@
                                            Text="用户名" />
                             </BulletDecorator.Bullet>
 
-                            <TextBox Text="{Binding Registor.UserName,UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBox Text="{Binding Registor.UserName, UpdateSourceTrigger=PropertyChanged}" />
                         </BulletDecorator>
 
                         <BulletDecorator Margin="0,2"

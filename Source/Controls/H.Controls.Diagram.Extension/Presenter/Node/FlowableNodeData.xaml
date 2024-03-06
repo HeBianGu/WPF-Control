@@ -34,16 +34,20 @@
             </Grid>
         </Grid>
         <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding Foreground}" Value="{x:Null}">
+            <DataTrigger Binding="{Binding Foreground}"
+                         Value="{x:Null}">
                 <Setter TargetName="editor" Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding Stroke}" Value="{x:Null}">
+            <DataTrigger Binding="{Binding Stroke}"
+                         Value="{x:Null}">
                 <Setter TargetName="path" Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding Fill}" Value="{x:Null}">
+            <DataTrigger Binding="{Binding Fill}"
+                         Value="{x:Null}">
                 <Setter TargetName="path" Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Background}}" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding State}" Value="Running">
+            <DataTrigger Binding="{Binding State}"
+                         Value="Running">
                 <Setter TargetName="path" Property="StrokeDashArray" Value="2 2" />
                 <Setter TargetName="path" Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
                 <Setter TargetName="path" Property="StrokeThickness" Value="2" />
@@ -63,15 +67,18 @@
                 </DataTrigger.ExitActions>
             </DataTrigger>
 
-            <DataTrigger Binding="{Binding State}" Value="Success">
+            <DataTrigger Binding="{Binding State}"
+                         Value="Success">
                 <Setter TargetName="path" Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Green}}" />
             </DataTrigger>
 
-            <DataTrigger Binding="{Binding State}" Value="Error">
+            <DataTrigger Binding="{Binding State}"
+                         Value="Error">
                 <Setter TargetName="path" Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Red}}" />
             </DataTrigger>
 
-            <DataTrigger Binding="{Binding State}" Value="Wait">
+            <DataTrigger Binding="{Binding State}"
+                         Value="Wait">
                 <Setter Property="Opacity" Value="0.5" />
             </DataTrigger>
 

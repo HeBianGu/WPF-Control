@@ -6,7 +6,8 @@
     <Style TargetType="{x:Type local:ThumbToolBar}">
         <Setter Property="Foreground">
             <Setter.Value>
-                <SolidColorBrush Opacity="0.5" Color="{DynamicResource {x:Static h:ColorKeys.Accent}}" />
+                <SolidColorBrush Opacity="0.5"
+                                 Color="{DynamicResource {x:Static h:ColorKeys.Accent}}" />
             </Setter.Value>
         </Setter>
         <Setter Property="Background" Value="Transparent" />
@@ -101,12 +102,14 @@
                                                 <Setter Property="Cursor" Value="SizeWE" />
                                             </Trigger>
 
-                                            <DataTrigger Binding="{Binding ElementName=PART_LEFT_THUMB, Path=IsDragging}" Value="true">
+                                            <DataTrigger Binding="{Binding ElementName=PART_LEFT_THUMB, Path=IsDragging}"
+                                                         Value="true">
                                                 <Setter TargetName="border" Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Selected}}" />
                                                 <Setter Property="Cursor" Value="SizeWE" />
                                             </DataTrigger>
 
-                                            <DataTrigger Binding="{Binding ElementName=PART_RIGHT_THUMB, Path=IsDragging}" Value="true">
+                                            <DataTrigger Binding="{Binding ElementName=PART_RIGHT_THUMB, Path=IsDragging}"
+                                                         Value="true">
                                                 <Setter TargetName="border" Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Selected}}" />
                                                 <Setter Property="Cursor" Value="SizeWE" />
                                             </DataTrigger>

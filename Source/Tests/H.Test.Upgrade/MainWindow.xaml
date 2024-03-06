@@ -11,7 +11,9 @@
         Style="{StaticResource {x:Type Window}}"
         mc:Ignorable="d">
     <UniformGrid>
-        <Button Command="{ShowSettingCommand}" Content="设置" />
-        <Button Command="{ShowUpgradeCommand}" Content="检查更新" />
+        <Button Command="{ShowSettingCommand}"
+                Content="设置" />
+        <Button Command="{ShowUpgradeCommand}"
+                Content="检查更新" />
     </UniformGrid>
 </Window>

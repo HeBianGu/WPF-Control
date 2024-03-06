@@ -92,7 +92,7 @@
                 <Setter Property="Opacity" Value="0.6" />
             </Trigger>
             <Trigger Property="IsChecked" Value="true">
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}"/>
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
                 <!--<Setter.Value>
                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
                 </Setter.Value>-->
@@ -105,7 +105,7 @@
             </Trigger>
 
             <Trigger Property="IsMouseOver" Value="true">
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundTitle}}"/>
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundTitle}}" />
                 <Setter Property="Background">
                     <Setter.Value>
                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.MouseOver}}" />

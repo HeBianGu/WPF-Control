@@ -16,10 +16,12 @@
 
     <DataTemplate DataType="{x:Type local:ItemsFormPresenter}">
         <ScrollViewer>
-            <ItemsControl MinWidth="600" ItemsSource="{Binding Objs}">
+            <ItemsControl MinWidth="600"
+                          ItemsSource="{Binding Objs}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Expander Header="{Binding ., Converter={x:Static h:Converter.GetDiaplayName}}" IsExpanded="True">
+                        <Expander Header="{Binding ., Converter={x:Static h:Converter.GetDiaplayName}}"
+                                  IsExpanded="True">
                             <local:Form SelectObject="{Binding}" />
                         </Expander>
                     </DataTemplate>

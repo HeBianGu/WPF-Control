@@ -7,7 +7,8 @@
         <DockPanel MinWidth="900"
                    IsEnabled="{Binding IsEnabled}"
                    Visibility="{Binding IsVisible, Converter={x:Static h:Converter.GetTrueToVisible}}">
-            <RepositoryGrid AutoGenerateColumns="False" Type="{x:Type local:hi_dd_role}">
+            <RepositoryGrid AutoGenerateColumns="False"
+                            Type="{x:Type local:hi_dd_role}">
                 <Behaviors:Interaction.Triggers>
                     <Behaviors:EventTrigger EventName="Loaded">
                         <Behaviors:InvokeCommandAction Command="{Binding LoadedCommand}" />
@@ -20,13 +21,15 @@
                     <DataGridTextColumn Width="*"
                                         Binding="{Binding Model.code}"
                                         Header="角色编码" />
-                    <DataGridTemplateColumn Width="*" Header="用户列表">
+                    <DataGridTemplateColumn Width="*"
+                                            Header="用户列表">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <ItemsControl ItemsSource="{Binding Model.Users}">
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
-                                            <TextBlock Margin="0,5" Text="{Binding Name}" />
+                                            <TextBlock Margin="0,5"
+                                                       Text="{Binding Name}" />
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
                                 </ItemsControl>
@@ -35,13 +38,15 @@
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
 
-                    <DataGridTemplateColumn Width="*" Header="权限列表">
+                    <DataGridTemplateColumn Width="*"
+                                            Header="权限列表">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <ItemsControl ItemsSource="{Binding Model.Authors}">
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
-                                            <TextBlock Margin="0,5" Text="{Binding Name}" />
+                                            <TextBlock Margin="0,5"
+                                                       Text="{Binding Name}" />
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
                                 </ItemsControl>
@@ -53,7 +58,8 @@
                     <ControlTemplate>
                         <BulletDecorator VerticalAlignment="Center">
                             <BulletDecorator.Bullet>
-                                <TextBlock VerticalAlignment="Center" Text="搜索 " />
+                                <TextBlock VerticalAlignment="Center"
+                                           Text="搜索 " />
                             </BulletDecorator.Bullet>
                             <h:TextFilterBox x:Name="tfb1"
                                              Width="200"
@@ -72,10 +78,12 @@
             </RepositoryGrid>
         </DockPanel>
         <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding IsVisible}" Value="False">
+            <DataTrigger Binding="{Binding IsVisible}"
+                         Value="False">
                 <Setter Property="Visibility" Value="Collapsed" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding IsAuthority}" Value="False">
+            <DataTrigger Binding="{Binding IsAuthority}"
+                         Value="False">
                 <Setter Property="Visibility" Value="Collapsed" />
             </DataTrigger>
         </DataTemplate.Triggers>
@@ -83,19 +91,23 @@
 
     <DataTemplate DataType="{x:Type local:RoleEditPresenter}">
         <DockPanel>
-            <BulletDecorator Margin="0,5" DockPanel.Dock="Top">
+            <BulletDecorator Margin="0,5"
+                             DockPanel.Dock="Top">
                 <BulletDecorator.Bullet>
                     <TextBlock Text="角色名称" />
                 </BulletDecorator.Bullet>
-                <TextBox Margin="5,0,0,0" Text="{Binding Model.Name}" />
+                <TextBox Margin="5,0,0,0"
+                         Text="{Binding Model.Name}" />
             </BulletDecorator>
-            <ListBox ItemsSource="{Binding Authors}" SelectionMode="Multiple">
+            <ListBox ItemsSource="{Binding Authors}"
+                     SelectionMode="Multiple">
                 <Behaviors:Interaction.Behaviors>
                     <h:ListBoxBindingSelectedItemsBehavior SelectedItems="{Binding Model.Authors}" />
                 </Behaviors:Interaction.Behaviors>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <CheckBox Content="{Binding Name}" IsChecked="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}, Path=IsSelected}" />
+                        <CheckBox Content="{Binding Name}"
+                                  IsChecked="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}, Path=IsSelected}" />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ListBox>

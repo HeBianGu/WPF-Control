@@ -75,7 +75,8 @@
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:Grid.DefaultKey}}" TargetType="{x:Type local:Grid}" />
+    <Style BasedOn="{StaticResource {x:Static h:Grid.DefaultKey}}"
+           TargetType="{x:Type local:Grid}" />
 
 </ResourceDictionary>
 

@@ -121,7 +121,8 @@
                             <Run Text="{Binding Value.Count, Mode=OneWay}" />
                             <Run Text="]" />
                         </TextBlock>
-                        <TextBlock DockPanel.Dock="Right" Style="{StaticResource S.TextBlock.Error}" />
+                        <TextBlock DockPanel.Dock="Right"
+                                   Style="{StaticResource S.TextBlock.Error}" />
                     </DockPanel>
                 </Expander.Header>
                 <!--<h:Cattach.CaptionRightTemplate>
@@ -157,7 +158,8 @@
                                     <TextBlock Margin="0,0,5,0"
                                                VerticalAlignment="Center"
                                                Text="]" />
-                                    <Button DockPanel.Dock="Right" Visibility="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl}, Path=DataContext.ReadOnly, Converter={x:Static h:Converter.GetTrueToCollapsed}}">
+                                    <Button DockPanel.Dock="Right"
+                                            Visibility="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl}, Path=DataContext.ReadOnly, Converter={x:Static h:Converter.GetTrueToCollapsed}}">
                                         <!--<h:Interaction.Triggers>
                                             <h:EventTrigger EventName="Click">
                                                 <h:CloseItemsAction Item="{Binding RelativeSource={RelativeSource AncestorType=ContentControl, AncestorLevel=2}}" ItemsControl="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl}}" />
@@ -178,7 +180,8 @@
                                     </TextBox>
                                 </DockPanel>
 
-                                <Grid Grid.Column="1" Width="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=MessageWidth}">
+                                <Grid Grid.Column="1"
+                                      Width="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=MessageWidth}">
                                     <TextBlock HorizontalAlignment="Center"
                                                VerticalAlignment="Center"
                                                FontSize="14"
@@ -196,7 +199,8 @@
         </Grid>
 
         <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding Value.Count, Mode=OneWay}" Value="0">
+            <DataTrigger Binding="{Binding Value.Count, Mode=OneWay}"
+                         Value="0">
                 <Setter TargetName="lb_items" Property="Visibility" Value="Collapsed" />
             </DataTrigger>
         </DataTemplate.Triggers>
@@ -204,7 +208,8 @@
 
     <DataTemplate DataType="{x:Type local:ObjectPropertyItem}">
         <Grid Visibility="{Binding Visibility}">
-            <Expander Padding="0" Background="Transparent">
+            <Expander Padding="0"
+                      Background="Transparent">
                 <Expander.Header>
                     <TextBlock>
                         <Run Text="{Binding Name}" />
@@ -241,7 +246,8 @@
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type local:PresenterPropertyItem}">
-        <ContentPresenter VerticalAlignment="Center" Content="{Binding Value}" />
+        <ContentPresenter VerticalAlignment="Center"
+                          Content="{Binding Value}" />
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type local:DictionaryPropertyViewItem}">

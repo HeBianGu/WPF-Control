@@ -32,7 +32,8 @@
         </LinearGradientBrush.GradientStops>
     </LinearGradientBrush>
 
-    <Style x:Key="ToggleButtonStyle" TargetType="ToggleButton">
+    <Style x:Key="ToggleButtonStyle"
+           TargetType="ToggleButton">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ToggleButton">

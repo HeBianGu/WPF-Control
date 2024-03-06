@@ -23,10 +23,11 @@
                         Content="Yellow"
                         d:LayoutOverrides="Width, Height">
                     <b:Interaction.Triggers>
-                        <b:EventTrigger EventName="Click" SourceObject="{Binding ElementName=YellowButton}">
+                        <b:EventTrigger EventName="Click"
+                                        SourceObject="{Binding ElementName=YellowButton}">
                             <b:ChangePropertyAction PropertyName="Background"
-                                                            TargetObject="{Binding ElementName=YellowButton}"
-                                                            Value="LightYellow" />
+                                                    TargetObject="{Binding ElementName=YellowButton}"
+                                                    Value="LightYellow" />
                         </b:EventTrigger>
                     </b:Interaction.Triggers>
                 </Button>
@@ -61,9 +62,11 @@
                                                       Value="25" />
                         </b:Interaction.Behaviors>
                     </TextBlock>
-                    <DataGrid x:Name="dg" ItemsSource="{h:GetStudents Count=500}">
+                    <DataGrid x:Name="dg"
+                              ItemsSource="{h:GetStudents Count=500}">
                         <b:Interaction.Behaviors>
-                            <h:DataGridAutoColumnBehavior DataGridLength="*" Type="{x:Type h:Student}" />
+                            <h:DataGridAutoColumnBehavior DataGridLength="*"
+                                                          Type="{x:Type h:Student}" />
                         </b:Interaction.Behaviors>
                     </DataGrid>
                 </DockPanel>

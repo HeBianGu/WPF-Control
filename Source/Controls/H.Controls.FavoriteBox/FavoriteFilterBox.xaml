@@ -2,10 +2,12 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.FavoriteBox">
-    <Style BasedOn="{StaticResource {x:Static h:TreeViewKeys.Default}}" TargetType="{x:Type local:FavoriteFilterBox}">
+    <Style BasedOn="{StaticResource {x:Static h:TreeViewKeys.Default}}"
+           TargetType="{x:Type local:FavoriteFilterBox}">
         <Setter Property="ItemContainerStyle">
             <Setter.Value>
-                <Style BasedOn="{StaticResource {x:Static h:TreeViewItemKeys.Default}}" TargetType="TreeViewItem">
+                <Style BasedOn="{StaticResource {x:Static h:TreeViewItemKeys.Default}}"
+                       TargetType="TreeViewItem">
                     <Setter Property="IsExpanded" Value="True" />
                     <Setter Property="IsSelected" Value="{Binding Model.IsSelected, Mode=TwoWay}" />
                 </Style>
@@ -19,7 +21,8 @@
                                 Height="10"
                                 Margin="5,0"
                                 Background="{Binding Model.Background}" />
-                        <TextBlock VerticalAlignment="Center" Text="{Binding Model.Path, Converter={x:Static h:Converter.GetFileNameWithoutExtension}}" />
+                        <TextBlock VerticalAlignment="Center"
+                                   Text="{Binding Model.Path, Converter={x:Static h:Converter.GetFileNameWithoutExtension}}" />
                     </DockPanel>
                 </HierarchicalDataTemplate>
             </Setter.Value>
@@ -28,8 +31,10 @@
             <Setter.Value>
                 <ControlTemplate>
                     <UniformGrid Rows="1">
-                        <Button Command="{x:Static h:Commands.Clear}" Content="取消选择" />
-                        <Button Command="{local:ManageFavoriteCommand}" Content="管理收藏夹" />
+                        <Button Command="{x:Static h:Commands.Clear}"
+                                Content="取消选择" />
+                        <Button Command="{local:ManageFavoriteCommand}"
+                                Content="管理收藏夹" />
                     </UniformGrid>
                 </ControlTemplate>
             </Setter.Value>

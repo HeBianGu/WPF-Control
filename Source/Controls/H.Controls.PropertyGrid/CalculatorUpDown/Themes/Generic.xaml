@@ -27,7 +27,8 @@
         </LinearGradientBrush.GradientStops>
     </LinearGradientBrush>
 
-    <Style x:Key="CalculatorToggleButtonStyle" TargetType="ToggleButton">
+    <Style x:Key="CalculatorToggleButtonStyle"
+           TargetType="ToggleButton">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ToggleButton">

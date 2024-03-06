@@ -77,7 +77,8 @@
                                     Orientation="Horizontal">
                             <b:Interaction.Triggers>
                                 <b:EventTrigger EventName="RadioButton.Checked">
-                                    <b:InvokeCommandAction Command="{x:Static h:Commands.Selected}" PassEventArgsToCommand="True" />
+                                    <b:InvokeCommandAction Command="{x:Static h:Commands.Selected}"
+                                                           PassEventArgsToCommand="True" />
                                 </b:EventTrigger>
                             </b:Interaction.Triggers>
 
@@ -92,7 +93,8 @@
                                        VerticalAlignment="Center"
                                        Text="..." />
 
-                            <StackPanel Name="PART_PanelMain" Orientation="Horizontal" />
+                            <StackPanel Name="PART_PanelMain"
+                                        Orientation="Horizontal" />
 
                             <TextBlock Name="PART_TextBlockRight"
                                        Margin="10,0"

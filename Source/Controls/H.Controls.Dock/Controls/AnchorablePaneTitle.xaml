@@ -8,7 +8,8 @@
                     xmlns:lp="clr-namespace:H.Controls.Dock.Properties"
                     xmlns:shell="clr-namespace:Microsoft.Windows.Shell">
 
-    <Style x:Key="AnchorablePaneTitleStyle" TargetType="{x:Type lc:AnchorablePaneTitle}">
+    <Style x:Key="AnchorablePaneTitleStyle"
+           TargetType="{x:Type lc:AnchorablePaneTitle}">
         <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.CaptionBackground}}" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.CaptionForeground}}" />
         <!--<Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
@@ -28,7 +29,8 @@
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
-                            <lc:DropDownControlArea DropDownContextMenu="{Binding Model.Root.Manager.AnchorableContextMenu, RelativeSource={RelativeSource TemplatedParent}}" DropDownContextMenuDataContext="{Binding Path=LayoutItem, RelativeSource={RelativeSource TemplatedParent}}">
+                            <lc:DropDownControlArea DropDownContextMenu="{Binding Model.Root.Manager.AnchorableContextMenu, RelativeSource={RelativeSource TemplatedParent}}"
+                                                    DropDownContextMenuDataContext="{Binding Path=LayoutItem, RelativeSource={RelativeSource TemplatedParent}}">
                                 <ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                                   Content="{Binding Model, RelativeSource={RelativeSource TemplatedParent}}"
                                                   ContentTemplate="{Binding Model.Root.Manager.AnchorableTitleTemplate, RelativeSource={RelativeSource TemplatedParent}}"
@@ -67,14 +69,16 @@
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
-                        <DataTrigger Binding="{Binding Model.IsAutoHidden, RelativeSource={RelativeSource Mode=Self}}" Value="True">
+                        <DataTrigger Binding="{Binding Model.IsAutoHidden, RelativeSource={RelativeSource Mode=Self}}"
+                                     Value="True">
                             <Setter TargetName="PART_AutoHidePin" Property="LayoutTransform">
                                 <Setter.Value>
                                     <RotateTransform Angle="90" />
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Model.CanClose, RelativeSource={RelativeSource Mode=Self}}" Value="True">
+                        <DataTrigger Binding="{Binding Model.CanClose, RelativeSource={RelativeSource Mode=Self}}"
+                                     Value="True">
                             <Setter TargetName="PART_HidePin" Property="Command" Value="{Binding Path=LayoutItem.CloseCommand, RelativeSource={RelativeSource TemplatedParent}}" />
                             <Setter TargetName="PART_HidePin" Property="ToolTip" Value="{x:Static lp:Resources.Document_Close}" />
                         </DataTrigger>
@@ -84,6 +88,7 @@
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource AnchorablePaneTitleStyle}" TargetType="{x:Type lc:AnchorablePaneTitle}" />
+    <Style BasedOn="{StaticResource AnchorablePaneTitleStyle}"
+           TargetType="{x:Type lc:AnchorablePaneTitle}" />
 
 </ResourceDictionary>

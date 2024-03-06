@@ -1,10 +1,11 @@
 ﻿<Window x:Class="H.Test.Design.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:h="https://github.com/HeBianGu"
         xmlns:local="clr-namespace:H.Test.Design"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         Title="MainWindow"
         Width="800"
         Height="450"
@@ -13,16 +14,19 @@
     <DockPanel>
         <ItemsControl Width="250">
             <h:CardPresenter />
-            <h:TextBlockPresenter Text="测试"/>
+            <h:TextBlockPresenter Text="测试" />
         </ItemsControl>
         <Grid>
             <ContentControl>
                 <b:Interaction.Behaviors>
-                    <h:DragOverHitTestAdornerBehavior AdornerDropErrorType="{x:Type h:ErrorAdorner}" AdornerType="{x:Type h:LineAdorner}" />
+                    <h:DragOverHitTestAdornerBehavior AdornerDropErrorType="{x:Type h:ErrorAdorner}"
+                                                      AdornerType="{x:Type h:LineAdorner}" />
                     <h:MouseOverHitTestAdornerBehavior AdornerType="{x:Type h:OverAdorner}" />
-                    <h:SelectedHitTestAdornerBehavior AdornerType="{x:Type h:SelectedControlTemplateAdorner}" IsHitTestVisible="True" />
+                    <h:SelectedHitTestAdornerBehavior AdornerType="{x:Type h:SelectedControlTemplateAdorner}"
+                                                      IsHitTestVisible="True" />
                 </b:Interaction.Behaviors>
-                <h:FixedGridPresenter Rows="5" Columns="5" />
+                <h:FixedGridPresenter Columns="5"
+                                      Rows="5" />
             </ContentControl>
         </Grid>
     </DockPanel>

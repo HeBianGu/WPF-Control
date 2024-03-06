@@ -6,7 +6,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Controls.PagerBox;component/PagerBox.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    
+
     <!--<TextBlock HorizontalAlignment="Left" Style="{DynamicResource {x:Static h:TextBlockKeys.Default}}">
                             <Run Text="第" />
                             <Run Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=MinValue}" />

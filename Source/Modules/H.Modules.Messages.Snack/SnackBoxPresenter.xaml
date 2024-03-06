@@ -5,10 +5,12 @@
         <Grid Margin="50"
               HorizontalAlignment="Center"
               VerticalAlignment="Top">
-            <ItemsControl ItemsSource="{Binding Collection}" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+            <ItemsControl ItemsSource="{Binding Collection}"
+                          ScrollViewer.VerticalScrollBarVisibility="Disabled">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <WrapPanel HorizontalAlignment="Right" Orientation="Vertical" />
+                        <WrapPanel HorizontalAlignment="Right"
+                                   Orientation="Vertical" />
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
             </ItemsControl>

@@ -14,7 +14,8 @@
     <Window.Template>
         <ControlTemplate TargetType="Window">
             <Grid>
-                <AdornerDecorator Grid.Row="1" Margin="3,0,3,3">
+                <AdornerDecorator Grid.Row="1"
+                                  Margin="3,0,3,3">
                     <Grid>
                         <ContentPresenter />
                         <Button HorizontalAlignment="Right"

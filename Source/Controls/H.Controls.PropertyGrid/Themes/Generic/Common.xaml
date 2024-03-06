@@ -5,57 +5,88 @@
                     xmlns:local="clr-namespace:H.Controls.PropertyGrid"
                     xmlns:s="clr-namespace:System;assembly=mscorlib">
 
-    <ImageBrush x:Key="resize_grip" ImageSource="Images/resize_grip.png" />
+    <ImageBrush x:Key="resize_grip"
+                ImageSource="Images/resize_grip.png" />
 
-    <Style x:Key="buttonImageStyle" TargetType="Image">
+    <Style x:Key="buttonImageStyle"
+           TargetType="Image">
         <Setter Property="Stretch" Value="None" />
         <Setter Property="UseLayoutRounding" Value="True" />
         <Setter Property="RenderOptions.EdgeMode" Value="Aliased" />
         <Setter Property="RenderOptions.BitmapScalingMode" Value="NearestNeighbor" />
     </Style>
 
-    <BitmapImage x:Key="minimize_normal" UriSource="Images/minimize_normal.png" />
-    <BitmapImage x:Key="minimize_hover" UriSource="Images/minimize_hover.png" />
-    <BitmapImage x:Key="minimize_pressed" UriSource="Images/minimize_pressed.png" />
-    <BitmapImage x:Key="minimize_inactive" UriSource="Images/minimize_inactive.png" />
+    <BitmapImage x:Key="minimize_normal"
+                 UriSource="Images/minimize_normal.png" />
+    <BitmapImage x:Key="minimize_hover"
+                 UriSource="Images/minimize_hover.png" />
+    <BitmapImage x:Key="minimize_pressed"
+                 UriSource="Images/minimize_pressed.png" />
+    <BitmapImage x:Key="minimize_inactive"
+                 UriSource="Images/minimize_inactive.png" />
 
-    <BitmapImage x:Key="maximize_normal" UriSource="Images/maximize_normal.png" />
-    <BitmapImage x:Key="maximize_hover" UriSource="Images/maximize_hover.png" />
-    <BitmapImage x:Key="maximize_pressed" UriSource="Images/maximize_pressed.png" />
-    <BitmapImage x:Key="maximize_inactive" UriSource="Images/maximize_inactive.png" />
-    <BitmapImage x:Key="maximize_disabled" UriSource="Images/maximize_disabled.png" />
+    <BitmapImage x:Key="maximize_normal"
+                 UriSource="Images/maximize_normal.png" />
+    <BitmapImage x:Key="maximize_hover"
+                 UriSource="Images/maximize_hover.png" />
+    <BitmapImage x:Key="maximize_pressed"
+                 UriSource="Images/maximize_pressed.png" />
+    <BitmapImage x:Key="maximize_inactive"
+                 UriSource="Images/maximize_inactive.png" />
+    <BitmapImage x:Key="maximize_disabled"
+                 UriSource="Images/maximize_disabled.png" />
 
-    <BitmapImage x:Key="restore_normal" UriSource="Images/restore_normal.png" />
-    <BitmapImage x:Key="restore_hover" UriSource="Images/restore_hover.png" />
-    <BitmapImage x:Key="restore_pressed" UriSource="Images/restore_pressed.png" />
-    <BitmapImage x:Key="restore_inactive" UriSource="Images/restore_inactive.png" />
-    <BitmapImage x:Key="restore_disabled" UriSource="Images/restore_disabled.png" />
+    <BitmapImage x:Key="restore_normal"
+                 UriSource="Images/restore_normal.png" />
+    <BitmapImage x:Key="restore_hover"
+                 UriSource="Images/restore_hover.png" />
+    <BitmapImage x:Key="restore_pressed"
+                 UriSource="Images/restore_pressed.png" />
+    <BitmapImage x:Key="restore_inactive"
+                 UriSource="Images/restore_inactive.png" />
+    <BitmapImage x:Key="restore_disabled"
+                 UriSource="Images/restore_disabled.png" />
 
-    <BitmapImage x:Key="close_normal" UriSource="Images/close_normal.png" />
-    <BitmapImage x:Key="close_hover" UriSource="Images/close_hover.png" />
-    <BitmapImage x:Key="close_pressed" UriSource="Images/close_pressed.png" />
-    <BitmapImage x:Key="close_inactive" UriSource="Images/close_inactive.png" />
+    <BitmapImage x:Key="close_normal"
+                 UriSource="Images/close_normal.png" />
+    <BitmapImage x:Key="close_hover"
+                 UriSource="Images/close_hover.png" />
+    <BitmapImage x:Key="close_pressed"
+                 UriSource="Images/close_pressed.png" />
+    <BitmapImage x:Key="close_inactive"
+                 UriSource="Images/close_inactive.png" />
 
-    <BitmapImage x:Key="close_rounded_normal" UriSource="Images/close_rounded_normal.png" />
-    <BitmapImage x:Key="close_rounded_hover" UriSource="Images/close_rounded_hover.png" />
-    <BitmapImage x:Key="close_rounded_pressed" UriSource="Images/close_rounded_pressed.png" />
-    <BitmapImage x:Key="close_rounded_inactive" UriSource="Images/close_rounded_inactive.png" />
+    <BitmapImage x:Key="close_rounded_normal"
+                 UriSource="Images/close_rounded_normal.png" />
+    <BitmapImage x:Key="close_rounded_hover"
+                 UriSource="Images/close_rounded_hover.png" />
+    <BitmapImage x:Key="close_rounded_pressed"
+                 UriSource="Images/close_rounded_pressed.png" />
+    <BitmapImage x:Key="close_rounded_inactive"
+                 UriSource="Images/close_rounded_inactive.png" />
 
-    <BitmapImage x:Key="close_toolwindow_normal" UriSource="Images/close_toolwindow_normal.png" />
-    <BitmapImage x:Key="close_toolwindow_hover" UriSource="Images/close_toolwindow_hover.png" />
-    <BitmapImage x:Key="close_toolwindow_pressed" UriSource="Images/close_toolwindow_pressed.png" />
-    <BitmapImage x:Key="close_toolwindow_inactive" UriSource="Images/close_toolwindow_inactive.png" />
+    <BitmapImage x:Key="close_toolwindow_normal"
+                 UriSource="Images/close_toolwindow_normal.png" />
+    <BitmapImage x:Key="close_toolwindow_hover"
+                 UriSource="Images/close_toolwindow_hover.png" />
+    <BitmapImage x:Key="close_toolwindow_pressed"
+                 UriSource="Images/close_toolwindow_pressed.png" />
+    <BitmapImage x:Key="close_toolwindow_inactive"
+                 UriSource="Images/close_toolwindow_inactive.png" />
 
-    <ControlTemplate x:Key="buttonTemplate" TargetType="Button">
+    <ControlTemplate x:Key="buttonTemplate"
+                     TargetType="Button">
         <Border Name="outerBorder"
                 Background="{TemplateBinding Background}"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}">
-            <Image Source="{TemplateBinding Content}" Style="{StaticResource buttonImageStyle}" />
+            <Image Source="{TemplateBinding Content}"
+                   Style="{StaticResource buttonImageStyle}" />
         </Border>
     </ControlTemplate>
 
-    <Style x:Key="windowButtonBaseStyle" TargetType="Button">
+    <Style x:Key="windowButtonBaseStyle"
+           TargetType="Button">
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="Margin" Value="0,-1,0,0" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
@@ -70,7 +101,8 @@
         <Setter Property="Content" Value="{StaticResource close_normal}" />
         <Style.Triggers>
             <!--  Regular Window  -->
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsActive}" Value="False">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsActive}"
+                         Value="False">
                 <Setter Property="Content" Value="{StaticResource close_inactive}" />
             </DataTrigger>
             <Trigger Property="IsMouseOver" Value="True">
@@ -116,15 +148,18 @@
 
 
 
-    <SolidColorBrush x:Key="Window_WindowBorderBrush" Color="#FF252C33" />
+    <SolidColorBrush x:Key="Window_WindowBorderBrush"
+                     Color="#FF252C33" />
 
     <local:ColorBlendConverter x:Key="Window_WindowBackground_converter"
                                BlendedColor="#FFA0A0A0"
                                BlendedColorRatio="0.35" />
 
-    <SolidColorBrush x:Key="Window_Background" Color="White" />
+    <SolidColorBrush x:Key="Window_Background"
+                     Color="White" />
 
-    <SolidColorBrush x:Key="Window_BorderBrush" Color="#5D6C7A" />
+    <SolidColorBrush x:Key="Window_BorderBrush"
+                     Color="#5D6C7A" />
 
     <s:Double x:Key="Window_CaptionFontSize">15</s:Double>
 
@@ -138,7 +173,8 @@
                                BlendedColor="#FFF0F0F0"
                                BlendedColorRatio="0.67" />
 
-    <SolidColorBrush x:Key="Window_CaptionForeground" Color="Black" />
+    <SolidColorBrush x:Key="Window_CaptionForeground"
+                     Color="Black" />
 
     <Thickness x:Key="Window_WindowBorderThickness">1</Thickness>
 

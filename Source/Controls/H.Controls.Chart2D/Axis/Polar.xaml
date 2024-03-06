@@ -39,7 +39,8 @@
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:Polar.DefaultKey}}" TargetType="{x:Type local:Polar}" />
+    <Style BasedOn="{StaticResource {x:Static h:Polar.DefaultKey}}"
+           TargetType="{x:Type local:Polar}" />
 
 
     <Style x:Key="{ComponentResourceKey ResourceId=S.Radar.Default,
@@ -49,7 +50,8 @@
         <Setter Property="yAxis" Value="{Binding RelativeSource={RelativeSource AncestorType=local:PolarChart}, Path=yAxis}" />
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:Radar.DefaultKey}}" TargetType="{x:Type local:Radar}" />
+    <Style BasedOn="{StaticResource {x:Static h:Radar.DefaultKey}}"
+           TargetType="{x:Type local:Radar}" />
 
 </ResourceDictionary>
 

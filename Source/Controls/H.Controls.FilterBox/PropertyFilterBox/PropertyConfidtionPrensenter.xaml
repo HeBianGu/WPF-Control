@@ -9,7 +9,8 @@
             <DockPanel Margin="0,2"
                        DockPanel.Dock="Top"
                        LastChildFill="False">
-                <TextBox MinWidth="300" Text="{Binding ID}" />
+                <TextBox MinWidth="300"
+                         Text="{Binding ID}" />
             </DockPanel>
             <DockPanel Margin="0,2"
                        DockPanel.Dock="Top"
@@ -40,7 +41,8 @@
 
                                 <Behaviors:Interaction.Triggers>
                                     <Behaviors:EventTrigger EventName="SelectionChanged">
-                                        <Behaviors:InvokeCommandAction Command="{Binding SelectionChangedCommand}" PassEventArgsToCommand="True" />
+                                        <Behaviors:InvokeCommandAction Command="{Binding SelectionChangedCommand}"
+                                                                       PassEventArgsToCommand="True" />
                                     </Behaviors:EventTrigger>
                                 </Behaviors:Interaction.Triggers>
                                 <!--<h:Interaction.Triggers>

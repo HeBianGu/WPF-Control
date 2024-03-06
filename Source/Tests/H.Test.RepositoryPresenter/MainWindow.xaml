@@ -29,7 +29,8 @@
                                                   DataGridLength="*"
                                                   Type="{Binding ModelType}">
                         <h:DataGridAutoColumnBehavior.HomeColumns>
-                            <DataGridCheckBoxColumn Binding="{Binding IsSelected}" Header="全选" />
+                            <DataGridCheckBoxColumn Binding="{Binding IsSelected}"
+                                                    Header="全选" />
                         </h:DataGridAutoColumnBehavior.HomeColumns>
                     </h:DataGridAutoColumnBehavior>
                 </Behaviors:Interaction.Behaviors>
@@ -54,7 +55,8 @@
                 </ItemsControl.ItemTemplate>
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <UniformGrid VerticalAlignment="Top" Columns="4" />
+                        <UniformGrid VerticalAlignment="Top"
+                                     Columns="4" />
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
             </RepositoryBox>

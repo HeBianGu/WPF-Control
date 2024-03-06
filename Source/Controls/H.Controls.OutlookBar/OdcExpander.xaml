@@ -62,7 +62,8 @@
                                                         IsExpanded="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsExpanded}"
                                                         Duration="{StaticResource animTime}">
                                     <Border Padding="{TemplateBinding Padding}">
-                                        <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" />
+                                        <ContentPresenter Content="{TemplateBinding Content}"
+                                                          ContentTemplate="{TemplateBinding ContentTemplate}" />
                                     </Border>
                                 </odc:AnimationDecorator>
                             </Border>
