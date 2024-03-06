@@ -5,9 +5,11 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style x:Key="&#255;" TargetType="{x:Type TextBox}">
+    <Style x:Key="&#255;"
+           TargetType="{x:Type TextBox}">
         <Style.Triggers>
-            <DataTrigger Binding="{Binding Path=(coreInternal:CoreAppContextSwitches.UseNetFx472CompatibleAccessibilityFeatures)}" Value="false">
+            <DataTrigger Binding="{Binding Path=(coreInternal:CoreAppContextSwitches.UseNetFx472CompatibleAccessibilityFeatures)}"
+                         Value="false">
                 <Setter Property="AutomationProperties.Name" Value="{Binding Path=(AutomationProperties.Name), Mode=OneWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type RibbonComboBox}}}" />
                 <Setter Property="AutomationProperties.LabeledBy" Value="{Binding Path=(AutomationProperties.LabeledBy), Mode=OneWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type RibbonComboBox}}}" />
                 <Setter Property="AutomationProperties.HelpText" Value="{Binding Path=(AutomationProperties.HelpText), Mode=OneWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type RibbonComboBox}}}" />
@@ -47,14 +49,16 @@
                                     <ContentPresenter Content="{Binding}" />
                                 </Grid>
                                 <DataTemplate.Triggers>
-                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type ScrollViewer}}, Path=(ScrollViewer.CanContentScroll)}" Value="false">
+                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type ScrollViewer}}, Path=(ScrollViewer.CanContentScroll)}"
+                                                 Value="false">
                                         <Setter TargetName="OpaqueRect" Property="Canvas.Top" Value="{Binding ElementName=PART_SubMenuScrollViewer, Path=VerticalOffset}" />
                                         <Setter TargetName="OpaqueRect" Property="Canvas.Left" Value="{Binding ElementName=PART_SubMenuScrollViewer, Path=HorizontalOffset}" />
                                         <Setter TargetName="OverlayRect" Property="Canvas.Top" Value="{Binding ElementName=PART_SubMenuScrollViewer, Path=VerticalOffset}" />
                                         <Setter TargetName="OverlayRect" Property="Canvas.Left" Value="{Binding ElementName=PART_SubMenuScrollViewer, Path=HorizontalOffset}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+                                    <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
+                                                 Value="True">
 
 
 
@@ -77,7 +81,8 @@
         <GradientStop Offset="1.0" Color="#E8F1FD" />
     </LinearGradientBrush>-->
 
-    <Style x:Key="&#257;" TargetType="{x:Type RibbonToggleButton}">
+    <Style x:Key="&#257;"
+           TargetType="{x:Type RibbonToggleButton}">
         <Setter Property="MouseOverBorderBrush" Value="{Binding RelativeSource={RelativeSource Self}, Path=Ribbon.MouseOverBorderBrush}" />
         <Setter Property="MouseOverBackground" Value="{Binding RelativeSource={RelativeSource Self}, Path=Ribbon.MouseOverBackground}" />
         <Setter Property="PressedBorderBrush" Value="{Binding RelativeSource={RelativeSource Self}, Path=Ribbon.PressedBorderBrush}" />
@@ -94,7 +99,8 @@
                     <Grid Background="Transparent">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" SharedSizeGroup="ToggleButtonGroup" />
+                            <ColumnDefinition Width="Auto"
+                                              SharedSizeGroup="ToggleButtonGroup" />
                         </Grid.ColumnDefinitions>
                         <Border Name="OuterBorder"
                                 Grid.Column="1"
@@ -224,7 +230,8 @@
         </Setter>
     </Style>
 
-    <Style x:Key="&#259;" TargetType="{x:Type RibbonToggleButton}">
+    <Style x:Key="&#259;"
+           TargetType="{x:Type RibbonToggleButton}">
         <Setter Property="MouseOverBorderBrush" Value="{Binding RelativeSource={RelativeSource Self}, Path=Ribbon.MouseOverBorderBrush}" />
         <Setter Property="MouseOverBackground" Value="{Binding RelativeSource={RelativeSource Self}, Path=Ribbon.MouseOverBackground}" />
         <Setter Property="PressedBorderBrush" Value="{Binding RelativeSource={RelativeSource Self}, Path=Ribbon.PressedBorderBrush}" />
@@ -342,12 +349,15 @@
         </Setter>
     </Style>
 
-    <ControlTemplate x:Key="&#260;" TargetType="{x:Type RibbonComboBox}">
+    <ControlTemplate x:Key="&#260;"
+                     TargetType="{x:Type RibbonComboBox}">
         <Border x:Name="MainBorder">
-            <Grid Margin="1,0,1,0" SnapsToDevicePixels="true">
+            <Grid Margin="1,0,1,0"
+                  SnapsToDevicePixels="true">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition x:Name="OuterTextColumn" Width="Auto" />
+                    <ColumnDefinition x:Name="OuterTextColumn"
+                                      Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -371,7 +381,8 @@
                       VerticalAlignment="Top">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition x:Name="TextColumn" Width="Auto" />
+                        <ColumnDefinition x:Name="TextColumn"
+                                          Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <Grid x:Name="TwoLineTextPanel"
                           HorizontalAlignment="Center"
@@ -398,7 +409,8 @@
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}" />
-                    <Grid Grid.Column="1" Height="{StaticResource S.Hight.LargeImage}">
+                    <Grid Grid.Column="1"
+                          Height="{StaticResource S.Hight.LargeImage}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
                             <ColumnDefinition Width="Auto" />
@@ -465,7 +477,8 @@
                                             BorderBrush="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Ribbon.BorderBrush}"
                                             BorderThickness="0,1,0,0"
                                             Visibility="Collapsed">
-                                        <Thumb x:Name="PART_ResizeThumb" Style="{StaticResource S.Thumb.SizeNWSE}" />
+                                        <Thumb x:Name="PART_ResizeThumb"
+                                               Style="{StaticResource S.Thumb.SizeNWSE}" />
                                     </Border>
                                 </Grid>
                             </Border>
@@ -477,7 +490,8 @@
         <ControlTemplate.Triggers>
 
             <!--  Star Variant  -->
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.Width.IsStar}" Value="True">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.Width.IsStar}"
+                         Value="True">
                 <Setter TargetName="TextColumn" Property="Width" Value="*" />
                 <Setter TargetName="OuterTextColumn" Property="Width" Value="*" />
                 <Setter TargetName="PART_EditableTextBox" Property="Width" Value="Auto" />
@@ -485,7 +499,8 @@
             </DataTrigger>
 
             <!--  Large Variant  -->
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}" Value="Large">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}"
+                         Value="Large">
                 <Setter Property="MinWidth" Value="44" />
                 <Setter Property="Height" Value="66" />
                 <Setter TargetName="Image" Property="Height" Value="32" />
@@ -495,7 +510,8 @@
             </DataTrigger>
 
             <!--  Medium or Small Variant  -->
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}" Value="Small">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}"
+                         Value="Small">
                 <Setter Property="Height" Value="{StaticResource S.Hight.SmallImage}" />
                 <Setter TargetName="Image" Property="Source" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SmallImageSource}" />
                 <Setter TargetName="Image" Property="Height" Value="16" />
@@ -508,11 +524,13 @@
                 <Setter TargetName="Image" Property="Grid.Row" Value="1" />
             </DataTrigger>
 
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}" Value="Collapsed">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}"
+                         Value="Collapsed">
                 <Setter TargetName="Image" Property="Visibility" Value="Collapsed" />
             </DataTrigger>
 
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.IsLabelVisible}" Value="False">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.IsLabelVisible}"
+                         Value="False">
                 <Setter TargetName="TwoLineTextPanel" Property="Visibility" Value="Collapsed" />
             </DataTrigger>
 
@@ -614,7 +632,8 @@
 
             <!--  HighContrast  -->
 
-            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
+                         Value="True">
 
 
 
@@ -676,7 +695,8 @@
 
     <Style TargetType="{x:Type RibbonComboBox}">
         <Style.Resources>
-            <Style x:Key="{x:Static MenuItem.SeparatorStyleKey}" TargetType="{x:Type RibbonSeparator}">
+            <Style x:Key="{x:Static MenuItem.SeparatorStyleKey}"
+                   TargetType="{x:Type RibbonSeparator}">
                 <Setter Property="OverridesDefaultStyle" Value="True" />
                 <Setter Property="Focusable" Value="false" />
                 <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type RibbonMenuButton}}, Path=Ribbon.BorderBrush}" />
@@ -689,14 +709,16 @@
                                     Background="{TemplateBinding Background}"
                                     BorderBrush="{TemplateBinding BorderBrush}"
                                     BorderThickness="0,1,0,1">
-                                <Border x:Name="Overlay" Background="{DynamicResource {x:Static BrushKeys.Background}}">
+                                <Border x:Name="Overlay"
+                                        Background="{DynamicResource {x:Static BrushKeys.Background}}">
                                     <TextBlock x:Name="Text"
                                                Margin="2,1,2,1"
                                                Text="{TemplateBinding Label}" />
                                 </Border>
                             </Border>
                             <ControlTemplate.Triggers>
-                                <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+                                <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
+                                             Value="True">
                                     <Setter TargetName="Text" Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
                                     <Setter TargetName="Overlay" Property="Background" Value="Transparent" />
                                     <Setter TargetName="MainBorder" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.Red}}" />
@@ -727,7 +749,8 @@
                                                 Background="{TemplateBinding Background}"
                                                 BorderBrush="{TemplateBinding BorderBrush}"
                                                 BorderThickness="0,0,1,0">
-                                            <Border x:Name="SideBarOverlay" Background="{DynamicResource {x:Static BrushKeys.Background}}" />
+                                            <Border x:Name="SideBarOverlay"
+                                                    Background="{DynamicResource {x:Static BrushKeys.Background}}" />
                                         </Border>
                                         <Line x:Name="Line"
                                               Grid.Column="1"
@@ -743,7 +766,8 @@
                                     </Grid>
 
                                     <ControlTemplate.Triggers>
-                                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+                                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
+                                                     Value="True">
                                             <Setter TargetName="SideBarBorder" Property="Background" Value="Transparent" />
                                             <Setter TargetName="SideBarBorder" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
                                             <Setter TargetName="SideBarOverlay" Property="Background" Value="Transparent" />
@@ -780,17 +804,20 @@
         <Setter Property="ToolTipService.BetweenShowDelay" Value="{StaticResource S.RibbonToolTip.BetweenShowDelay}" />
         <Setter Property="QuickAccessToolBarControlSizeDefinition">
             <Setter.Value>
-                <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="False" />
+                <RibbonControlSizeDefinition ImageSize="Small"
+                                             IsLabelVisible="False" />
             </Setter.Value>
         </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RibbonComboBox}">
                     <Border x:Name="MainBorder">
-                        <Grid Margin="1,0,1,0" SnapsToDevicePixels="true">
+                        <Grid Margin="1,0,1,0"
+                              SnapsToDevicePixels="true">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition x:Name="OuterTextColumn" Width="Auto" />
+                                <ColumnDefinition x:Name="OuterTextColumn"
+                                                  Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
@@ -814,7 +841,8 @@
                                   VerticalAlignment="Top">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition x:Name="TextColumn" Width="Auto" />
+                                    <ColumnDefinition x:Name="TextColumn"
+                                                      Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <Grid x:Name="TwoLineTextPanel"
                                       HorizontalAlignment="Center"
@@ -845,7 +873,8 @@
                                       Grid.IsSharedSizeScope="True">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition />
-                                        <ColumnDefinition Width="Auto" SharedSizeGroup="ToggleButtonGroup" />
+                                        <ColumnDefinition Width="Auto"
+                                                          SharedSizeGroup="ToggleButtonGroup" />
                                     </Grid.ColumnDefinitions>
                                     <Grid Width="{TemplateBinding SelectionBoxWidth}"
                                           Margin="{TemplateBinding Padding}"
@@ -916,7 +945,8 @@
                                                         BorderBrush="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Ribbon.BorderBrush}"
                                                         BorderThickness="0,1,0,0"
                                                         Visibility="Collapsed">
-                                                    <Thumb x:Name="PART_ResizeThumb" Style="{StaticResource S.Thumb.SizeNWSE}" />
+                                                    <Thumb x:Name="PART_ResizeThumb"
+                                                           Style="{StaticResource S.Thumb.SizeNWSE}" />
                                                 </Border>
                                             </Grid>
                                         </Border>
@@ -928,7 +958,8 @@
                     <ControlTemplate.Triggers>
 
                         <!--  Star Variant  -->
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.Width.IsStar}" Value="True">
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.Width.IsStar}"
+                                     Value="True">
                             <Setter TargetName="TextColumn" Property="Width" Value="*" />
                             <Setter TargetName="OuterTextColumn" Property="Width" Value="*" />
                             <Setter TargetName="PART_ContentHost" Property="Width" Value="Auto" />
@@ -937,7 +968,8 @@
                         </DataTrigger>
 
                         <!--  Large Variant  -->
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}" Value="Large">
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}"
+                                     Value="Large">
                             <Setter Property="MinWidth" Value="44" />
                             <Setter Property="Height" Value="66" />
                             <Setter TargetName="Image" Property="Height" Value="32" />
@@ -947,7 +979,8 @@
                         </DataTrigger>
 
                         <!--  Medium or Small Variant  -->
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}" Value="Small">
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}"
+                                     Value="Small">
                             <Setter Property="Height" Value="{StaticResource S.Hight.SmallImage}" />
                             <Setter TargetName="Image" Property="Source" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SmallImageSource}" />
                             <Setter TargetName="Image" Property="Height" Value="16" />
@@ -960,11 +993,13 @@
                             <Setter TargetName="Image" Property="Grid.Row" Value="1" />
                         </DataTrigger>
 
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}" Value="Collapsed">
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}"
+                                     Value="Collapsed">
                             <Setter TargetName="Image" Property="Visibility" Value="Collapsed" />
                         </DataTrigger>
 
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.IsLabelVisible}" Value="False">
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.IsLabelVisible}"
+                                     Value="False">
                             <Setter TargetName="TwoLineTextPanel" Property="Visibility" Value="Collapsed" />
                         </DataTrigger>
 
@@ -1045,7 +1080,8 @@
 
                         <!--  HighContrast  -->
 
-                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
+                                     Value="True">
                             <Setter TargetName="Shadow" Property="Color" Value="Transparent" />
                             <Setter TargetName="PART_Popup" Property="PopupAnimation" Value="None" />
                             <Setter TargetName="MenuBorder" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />

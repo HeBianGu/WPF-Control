@@ -4,13 +4,16 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <ControlTemplate x:Key="&#245;" TargetType="{x:Type RibbonApplicationSplitMenuItem}">
+    <ControlTemplate x:Key="&#245;"
+                     TargetType="{x:Type RibbonApplicationSplitMenuItem}">
         <Grid x:Name="MainGrid"
               Margin="1"
               SnapsToDevicePixels="True">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" SharedSizeGroup="MenuItemIconColumnGroup" />
-                <ColumnDefinition Width="*" MinWidth="44" />
+                <ColumnDefinition Width="Auto"
+                                  SharedSizeGroup="MenuItemIconColumnGroup" />
+                <ColumnDefinition Width="*"
+                                  MinWidth="44" />
                 <ColumnDefinition Width="22" />
             </Grid.ColumnDefinitions>
             <Border x:Name="HighlightLeftBorder"
@@ -180,7 +183,8 @@
                                         BorderBrush="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Ribbon.BorderBrush}"
                                         BorderThickness="0,1,0,0"
                                         Visibility="Collapsed">
-                                    <Thumb x:Name="PART_ResizeThumb" Style="{StaticResource S.Thumb.SizeNWSE}" />
+                                    <Thumb x:Name="PART_ResizeThumb"
+                                           Style="{StaticResource S.Thumb.SizeNWSE}" />
                                 </Border>
                             </Grid>
                         </Border>
@@ -284,7 +288,8 @@
             </Trigger>
 
 
-            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
+                         Value="True">
 
 
 
@@ -362,13 +367,16 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <ControlTemplate x:Key="&#248;" TargetType="{x:Type RibbonApplicationSplitMenuItem}">
+    <ControlTemplate x:Key="&#248;"
+                     TargetType="{x:Type RibbonApplicationSplitMenuItem}">
         <Grid x:Name="MainGrid"
               Margin="1"
               SnapsToDevicePixels="True">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" SharedSizeGroup="MenuItemIconColumnGroup" />
-                <ColumnDefinition Width="*" MinWidth="44" />
+                <ColumnDefinition Width="Auto"
+                                  SharedSizeGroup="MenuItemIconColumnGroup" />
+                <ColumnDefinition Width="*"
+                                  MinWidth="44" />
                 <ColumnDefinition Width="22" />
             </Grid.ColumnDefinitions>
 
@@ -543,7 +551,8 @@
                                         BorderBrush="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Ribbon.BorderBrush}"
                                         BorderThickness="0,1,0,0"
                                         Visibility="Collapsed">
-                                    <Thumb x:Name="PART_ResizeThumb" Style="{StaticResource S.Thumb.SizeNWSE}" />
+                                    <Thumb x:Name="PART_ResizeThumb"
+                                           Style="{StaticResource S.Thumb.SizeNWSE}" />
                                 </Border>
                             </Grid>
                         </Border>
@@ -647,7 +656,8 @@
             </Trigger>
 
 
-            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
+                         Value="True">
 
 
 
@@ -725,12 +735,14 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <ControlTemplate x:Key="&#250;" TargetType="{x:Type RibbonApplicationSplitMenuItem}">
+    <ControlTemplate x:Key="&#250;"
+                     TargetType="{x:Type RibbonApplicationSplitMenuItem}">
         <Grid x:Name="MainGrid"
               Margin="1"
               SnapsToDevicePixels="True">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="44" SharedSizeGroup="MenuItemIconColumnGroup" />
+                <ColumnDefinition Width="44"
+                                  SharedSizeGroup="MenuItemIconColumnGroup" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="22" />
             </Grid.ColumnDefinitions>
@@ -849,7 +861,9 @@
                                 <RowDefinition />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <ScrollViewer x:Name="PART_SubMenuScrollViewer" Style="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type FrameworkElement}, ResourceId=MenuScrollViewer}}">
+                            <ScrollViewer x:Name="PART_SubMenuScrollViewer"
+                                          Style="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type FrameworkElement},
+                                                                                        ResourceId=MenuScrollViewer}}">
 
                                 <Grid RenderOptions.ClearTypeHint="Enabled">
                                     <Canvas x:Name="BackgroundCanvas"
@@ -892,7 +906,8 @@
                                     BorderBrush="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Ribbon.BorderBrush}"
                                     BorderThickness="0,1,0,0"
                                     Visibility="Collapsed">
-                                <Thumb x:Name="PART_ResizeThumb" Style="{StaticResource S.Thumb.SizeNWSE}" />
+                                <Thumb x:Name="PART_ResizeThumb"
+                                       Style="{StaticResource S.Thumb.SizeNWSE}" />
                             </Border>
                         </Grid>
                     </Border>
@@ -1005,7 +1020,8 @@
             </Trigger>
 
 
-            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
+                         Value="True">
 
 
 
@@ -1080,12 +1096,14 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <ControlTemplate x:Key="&#251;" TargetType="{x:Type RibbonApplicationSplitMenuItem}">
+    <ControlTemplate x:Key="&#251;"
+                     TargetType="{x:Type RibbonApplicationSplitMenuItem}">
         <Grid x:Name="MainGrid"
               Margin="1"
               SnapsToDevicePixels="True">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="44" SharedSizeGroup="MenuItemIconColumnGroup" />
+                <ColumnDefinition Width="44"
+                                  SharedSizeGroup="MenuItemIconColumnGroup" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="22" />
             </Grid.ColumnDefinitions>
@@ -1206,7 +1224,9 @@
                                 <RowDefinition />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <ScrollViewer x:Name="PART_SubMenuScrollViewer" Style="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type FrameworkElement}, ResourceId=MenuScrollViewer}}">
+                            <ScrollViewer x:Name="PART_SubMenuScrollViewer"
+                                          Style="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type FrameworkElement},
+                                                                                        ResourceId=MenuScrollViewer}}">
 
                                 <Grid RenderOptions.ClearTypeHint="Enabled">
                                     <Canvas x:Name="BackgroundCanvas"
@@ -1249,7 +1269,8 @@
                                     BorderBrush="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Ribbon.BorderBrush}"
                                     BorderThickness="0,1,0,0"
                                     Visibility="Collapsed">
-                                <Thumb x:Name="PART_ResizeThumb" Style="{StaticResource S.Thumb.SizeNWSE}" />
+                                <Thumb x:Name="PART_ResizeThumb"
+                                       Style="{StaticResource S.Thumb.SizeNWSE}" />
                             </Border>
                         </Grid>
                     </Border>
@@ -1362,7 +1383,8 @@
             </Trigger>
 
 
-            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
+                         Value="True">
 
 
 
@@ -1437,7 +1459,8 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <ControlTemplate x:Key="&#252;" TargetType="{x:Type RibbonApplicationSplitMenuItem}">
+    <ControlTemplate x:Key="&#252;"
+                     TargetType="{x:Type RibbonApplicationSplitMenuItem}">
         <Grid x:Name="MainGrid"
               Margin="1"
               SnapsToDevicePixels="True">
@@ -1562,7 +1585,9 @@
                                 <RowDefinition />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <ScrollViewer x:Name="PART_SubMenuScrollViewer" Style="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type FrameworkElement}, ResourceId=MenuScrollViewer}}">
+                            <ScrollViewer x:Name="PART_SubMenuScrollViewer"
+                                          Style="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type FrameworkElement},
+                                                                                        ResourceId=MenuScrollViewer}}">
 
                                 <Grid RenderOptions.ClearTypeHint="Enabled">
                                     <Canvas x:Name="BackgroundCanvas"
@@ -1605,7 +1630,8 @@
                                     BorderBrush="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Ribbon.BorderBrush}"
                                     BorderThickness="0,1,0,0"
                                     Visibility="Collapsed">
-                                <Thumb x:Name="PART_ResizeThumb" Style="{StaticResource S.Thumb.SizeNWSE}" />
+                                <Thumb x:Name="PART_ResizeThumb"
+                                       Style="{StaticResource S.Thumb.SizeNWSE}" />
                             </Border>
                         </Grid>
                     </Border>
@@ -1718,7 +1744,8 @@
             </Trigger>
 
 
-            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
+                         Value="True">
 
 
 
@@ -1793,7 +1820,8 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <ControlTemplate x:Key="&#253;" TargetType="{x:Type RibbonApplicationSplitMenuItem}">
+    <ControlTemplate x:Key="&#253;"
+                     TargetType="{x:Type RibbonApplicationSplitMenuItem}">
         <Grid x:Name="MainGrid"
               Margin="1"
               SnapsToDevicePixels="True">
@@ -1917,7 +1945,9 @@
                                 <RowDefinition />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <ScrollViewer x:Name="PART_SubMenuScrollViewer" Style="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type FrameworkElement}, ResourceId=MenuScrollViewer}}">
+                            <ScrollViewer x:Name="PART_SubMenuScrollViewer"
+                                          Style="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type FrameworkElement},
+                                                                                        ResourceId=MenuScrollViewer}}">
 
                                 <Grid RenderOptions.ClearTypeHint="Enabled">
                                     <Canvas x:Name="BackgroundCanvas"
@@ -1960,7 +1990,8 @@
                                     BorderBrush="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Ribbon.BorderBrush}"
                                     BorderThickness="0,1,0,0"
                                     Visibility="Collapsed">
-                                <Thumb x:Name="PART_ResizeThumb" Style="{StaticResource S.Thumb.SizeNWSE}" />
+                                <Thumb x:Name="PART_ResizeThumb"
+                                       Style="{StaticResource S.Thumb.SizeNWSE}" />
                             </Border>
                         </Grid>
                     </Border>
@@ -2073,7 +2104,8 @@
             </Trigger>
 
 
-            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
+                         Value="True">
 
 
 
@@ -2148,7 +2180,8 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <Style x:Key="{x:Type RibbonApplicationSplitMenuItem}" TargetType="{x:Type RibbonApplicationSplitMenuItem}">
+    <Style x:Key="{x:Type RibbonApplicationSplitMenuItem}"
+           TargetType="{x:Type RibbonApplicationSplitMenuItem}">
         <Setter Property="Header" Value="RibbonApplicationSplitMenuItem" />
         <Setter Property="ImageSource" Value="{Logo}" />
         <Setter Property="HorizontalContentAlignment" Value="{Binding Path=HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />

@@ -4,7 +4,8 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style x:Key="{x:Type RibbonFilterMenuButton}" TargetType="{x:Type RibbonFilterMenuButton}">
+    <Style x:Key="{x:Type RibbonFilterMenuButton}"
+           TargetType="{x:Type RibbonFilterMenuButton}">
         <!--<Style.Resources>
             <SolidColorBrush x:Key="&#273;" Color="#959595" />
             <SolidColorBrush x:Key="&#274;" Color="#FFD232" />
@@ -24,7 +25,8 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RibbonFilterMenuButton}">
                     <ControlTemplate.Resources>
-                        <ControlTemplate x:Key="&#275;" TargetType="{x:Type RibbonToggleButton}">
+                        <ControlTemplate x:Key="&#275;"
+                                         TargetType="{x:Type RibbonToggleButton}">
                             <Grid SnapsToDevicePixels="True">
                                 <Border x:Name="OuterBorder"
                                         Background="{TemplateBinding Background}"
@@ -177,7 +179,8 @@
                         </Trigger>
                         <!--  HighContrast  -->
 
-                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
+                                     Value="True">
 
 
 
@@ -197,7 +200,8 @@
         </Setter>
         <Style.Triggers>
 
-            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
+                         Value="True">
 
 
 

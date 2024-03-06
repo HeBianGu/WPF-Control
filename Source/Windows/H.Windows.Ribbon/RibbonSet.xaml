@@ -4,11 +4,14 @@
                     xmlns:local="clr-namespace:H.Windows.Ribbon">
 
 
-    <Style x:Key="S.TreeView.RibbonSet" TargetType="TreeView">
+    <Style x:Key="S.TreeView.RibbonSet"
+           TargetType="TreeView">
         <Style.Resources>
-            <HierarchicalDataTemplate DataType="{x:Type local:TabBindable}" ItemsSource="{Binding Path=GroupDataCollection}">
+            <HierarchicalDataTemplate DataType="{x:Type local:TabBindable}"
+                                      ItemsSource="{Binding Path=GroupDataCollection}">
                 <DockPanel>
-                    <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsVisible}" />
+                    <CheckBox VerticalAlignment="Center"
+                              IsChecked="{Binding IsVisible}" />
                     <Button Command="{x:Static local:Commander.MoveNext}"
                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
                             Content="下移"
@@ -17,16 +20,21 @@
                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
                             Content="上移"
                             DockPanel.Dock="Right" />
-                    <TextBox VerticalAlignment="Stretch" Text="{Binding Header, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox VerticalAlignment="Stretch"
+                             Text="{Binding Header, UpdateSourceTrigger=PropertyChanged}" />
                 </DockPanel>
             </HierarchicalDataTemplate>
 
-            <HierarchicalDataTemplate DataType="{x:Type local:GroupBindable}" ItemsSource="{Binding Path=ControlDataCollection}">
+            <HierarchicalDataTemplate DataType="{x:Type local:GroupBindable}"
+                                      ItemsSource="{Binding Path=ControlDataCollection}">
 
                 <DockPanel HorizontalAlignment="Stretch">
-                    <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsVisible}" />
-                    <Image Margin="5" Source="{Binding SmallImage}" />
-                    <Image Margin="5,0" Source="{Binding LargeImage}" />
+                    <CheckBox VerticalAlignment="Center"
+                              IsChecked="{Binding IsVisible}" />
+                    <Image Margin="5"
+                           Source="{Binding SmallImage}" />
+                    <Image Margin="5,0"
+                           Source="{Binding LargeImage}" />
                     <Button Command="{x:Static local:Commander.MoveNext}"
                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
                             Content="下移"
@@ -47,7 +55,8 @@
                               IsChecked="{Binding IsLabelVisible}"
                               Style="{DynamicResource {x:Static h:CheckBoxKeys.Default}}" />
 
-                    <ComboBox DockPanel.Dock="Right" SelectedItem="{Binding ImageSize}">
+                    <ComboBox DockPanel.Dock="Right"
+                              SelectedItem="{Binding ImageSize}">
                         <RibbonImageSize>Small</RibbonImageSize>
                         <RibbonImageSize>Large</RibbonImageSize>
                     </ComboBox>
@@ -60,16 +69,21 @@
                               Style="{DynamicResource {x:Static h:CheckBoxKeys.Default}}" />
 
 
-                    <TextBox VerticalAlignment="Stretch" Text="{Binding Label, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox VerticalAlignment="Stretch"
+                             Text="{Binding Label, UpdateSourceTrigger=PropertyChanged}" />
 
                 </DockPanel>
             </HierarchicalDataTemplate>
 
-            <HierarchicalDataTemplate DataType="{x:Type local:MenuButtonBindable}" ItemsSource="{Binding Path=ControlDataCollection}">
+            <HierarchicalDataTemplate DataType="{x:Type local:MenuButtonBindable}"
+                                      ItemsSource="{Binding Path=ControlDataCollection}">
                 <DockPanel HorizontalAlignment="Stretch">
-                    <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsVisible}" />
-                    <Image Margin="5" Source="{Binding SmallImage}" />
-                    <Image Margin="5,0" Source="{Binding LargeImage}" />
+                    <CheckBox VerticalAlignment="Center"
+                              IsChecked="{Binding IsVisible}" />
+                    <Image Margin="5"
+                           Source="{Binding SmallImage}" />
+                    <Image Margin="5,0"
+                           Source="{Binding LargeImage}" />
                     <Button Command="{x:Static local:Commander.MoveNext}"
                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
                             Content="下移"
@@ -89,21 +103,27 @@
                               DockPanel.Dock="Right"
                               IsChecked="{Binding IsLabelVisible}"
                               Style="{DynamicResource {x:Static h:CheckBoxKeys.Default}}" />
-                    <ComboBox DockPanel.Dock="Right" SelectedItem="{Binding ImageSize}">
+                    <ComboBox DockPanel.Dock="Right"
+                              SelectedItem="{Binding ImageSize}">
                         <RibbonImageSize>Small</RibbonImageSize>
                         <RibbonImageSize>Large</RibbonImageSize>
                     </ComboBox>
 
-                    <TextBox VerticalAlignment="Stretch" Text="{Binding Label, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox VerticalAlignment="Stretch"
+                             Text="{Binding Label, UpdateSourceTrigger=PropertyChanged}" />
 
                 </DockPanel>
             </HierarchicalDataTemplate>
 
-            <HierarchicalDataTemplate DataType="{x:Type local:SplitButtonBindable}" ItemsSource="{Binding Path=ControlDataCollection}">
+            <HierarchicalDataTemplate DataType="{x:Type local:SplitButtonBindable}"
+                                      ItemsSource="{Binding Path=ControlDataCollection}">
                 <DockPanel HorizontalAlignment="Stretch">
-                    <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsVisible}" />
-                    <Image Margin="5" Source="{Binding SmallImage}" />
-                    <Image Margin="5,0" Source="{Binding LargeImage}" />
+                    <CheckBox VerticalAlignment="Center"
+                              IsChecked="{Binding IsVisible}" />
+                    <Image Margin="5"
+                           Source="{Binding SmallImage}" />
+                    <Image Margin="5,0"
+                           Source="{Binding LargeImage}" />
                     <Button Command="{x:Static local:Commander.MoveNext}"
                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
                             Content="下移"
@@ -123,21 +143,27 @@
                               DockPanel.Dock="Right"
                               IsChecked="{Binding IsLabelVisible}"
                               Style="{DynamicResource {x:Static h:CheckBoxKeys.Default}}" />
-                    <ComboBox DockPanel.Dock="Right" SelectedItem="{Binding ImageSize}">
+                    <ComboBox DockPanel.Dock="Right"
+                              SelectedItem="{Binding ImageSize}">
                         <RibbonImageSize>Small</RibbonImageSize>
                         <RibbonImageSize>Large</RibbonImageSize>
                     </ComboBox>
 
-                    <TextBox VerticalAlignment="Stretch" Text="{Binding Label, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox VerticalAlignment="Stretch"
+                             Text="{Binding Label, UpdateSourceTrigger=PropertyChanged}" />
 
                 </DockPanel>
             </HierarchicalDataTemplate>
 
-            <HierarchicalDataTemplate DataType="{x:Type local:MenuItemBindable}" ItemsSource="{Binding Path=ControlDataCollection}">
+            <HierarchicalDataTemplate DataType="{x:Type local:MenuItemBindable}"
+                                      ItemsSource="{Binding Path=ControlDataCollection}">
                 <DockPanel HorizontalAlignment="Stretch">
-                    <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsVisible}" />
-                    <Image Margin="5" Source="{Binding SmallImage}" />
-                    <Image Margin="5,0" Source="{Binding LargeImage}" />
+                    <CheckBox VerticalAlignment="Center"
+                              IsChecked="{Binding IsVisible}" />
+                    <Image Margin="5"
+                           Source="{Binding SmallImage}" />
+                    <Image Margin="5,0"
+                           Source="{Binding LargeImage}" />
                     <Button Command="{x:Static local:Commander.MoveNext}"
                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
                             Content="下移"
@@ -157,12 +183,14 @@
                               DockPanel.Dock="Right"
                               IsChecked="{Binding IsLabelVisible}"
                               Style="{DynamicResource {x:Static h:CheckBoxKeys.Default}}" />
-                    <ComboBox DockPanel.Dock="Right" SelectedItem="{Binding ImageSize}">
+                    <ComboBox DockPanel.Dock="Right"
+                              SelectedItem="{Binding ImageSize}">
                         <RibbonImageSize>Small</RibbonImageSize>
                         <RibbonImageSize>Large</RibbonImageSize>
                     </ComboBox>
 
-                    <TextBox VerticalAlignment="Stretch" Text="{Binding Label, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox VerticalAlignment="Stretch"
+                             Text="{Binding Label, UpdateSourceTrigger=PropertyChanged}" />
 
                 </DockPanel>
             </HierarchicalDataTemplate>
@@ -205,9 +233,12 @@
 
             <DataTemplate DataType="{x:Type local:ToggleButtonBindable}">
                 <DockPanel HorizontalAlignment="Stretch">
-                    <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsVisible}" />
-                    <Image Margin="5" Source="{Binding SmallImage}" />
-                    <Image Margin="5,0" Source="{Binding LargeImage}" />
+                    <CheckBox VerticalAlignment="Center"
+                              IsChecked="{Binding IsVisible}" />
+                    <Image Margin="5"
+                           Source="{Binding SmallImage}" />
+                    <Image Margin="5,0"
+                           Source="{Binding LargeImage}" />
                     <Button Command="{x:Static local:Commander.MoveNext}"
                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
                             Content="下移"
@@ -227,21 +258,26 @@
                               DockPanel.Dock="Right"
                               IsChecked="{Binding IsLabelVisible}"
                               Style="{DynamicResource {x:Static h:CheckBoxKeys.Default}}" />
-                    <ComboBox DockPanel.Dock="Right" SelectedItem="{Binding ImageSize}">
+                    <ComboBox DockPanel.Dock="Right"
+                              SelectedItem="{Binding ImageSize}">
                         <RibbonImageSize>Small</RibbonImageSize>
                         <RibbonImageSize>Large</RibbonImageSize>
                     </ComboBox>
 
-                    <TextBox VerticalAlignment="Stretch" Text="{Binding Label, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox VerticalAlignment="Stretch"
+                             Text="{Binding Label, UpdateSourceTrigger=PropertyChanged}" />
 
                 </DockPanel>
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type local:ControlBindableBase}">
                 <DockPanel HorizontalAlignment="Stretch">
-                    <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsVisible}" />
-                    <Image Margin="5" Source="{Binding SmallImage}" />
-                    <Image Margin="5,0" Source="{Binding LargeImage}" />
+                    <CheckBox VerticalAlignment="Center"
+                              IsChecked="{Binding IsVisible}" />
+                    <Image Margin="5"
+                           Source="{Binding SmallImage}" />
+                    <Image Margin="5,0"
+                           Source="{Binding LargeImage}" />
                     <Button Command="{x:Static local:Commander.MoveNext}"
                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
                             Content="下移" />

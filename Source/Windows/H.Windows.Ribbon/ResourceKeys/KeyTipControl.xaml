@@ -1,5 +1,7 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Style x:Key="{x:Type KeyTipControl}" TargetType="{x:Type KeyTipControl}">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="{x:Type KeyTipControl}"
+           TargetType="{x:Type KeyTipControl}">
         <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Background}}" />
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
         <Setter Property="BorderThickness" Value="1" />
@@ -21,7 +23,8 @@
                         <Border Name="InnerBorder"
                                 Padding="{TemplateBinding Padding}"
                                 Background="{DynamicResource {x:Static BrushKeys.Background}}">
-                            <TextBlock HorizontalAlignment="Center" Text="{TemplateBinding Text}" />
+                            <TextBlock HorizontalAlignment="Center"
+                                       Text="{TemplateBinding Text}" />
                         </Border>
                     </Border>
                     <ControlTemplate.Triggers>
@@ -29,7 +32,8 @@
                             <Setter TargetName="OuterBorder" Property="TextElement.Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
                         </Trigger>
 
-                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
+                                     Value="True">
 
 
 

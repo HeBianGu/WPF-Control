@@ -27,7 +27,9 @@
                   x:Shared="False"
                   CornerRadius="9,9,0,0" />-->
 
-    <Style x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:RibbonWindowKeys}, ResourceId=S.RibbonWindow.Default}" TargetType="{x:Type RibbonWindow}">
+    <Style x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:RibbonWindowKeys},
+                                        ResourceId=S.RibbonWindow.Default}"
+           TargetType="{x:Type RibbonWindow}">
         <Setter Property="WindowChrome.WindowChrome">
             <Setter.Value>
                 <WindowChrome CaptionHeight="35"
@@ -90,8 +92,10 @@
                                     BorderBrush="{TemplateBinding BorderBrush}"
                                     BorderThickness="{TemplateBinding BorderThickness}" />
                         </Border>
-                        <Border BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrushAssist}}" BorderThickness="1,1,0,0" />
-                        <Border BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" BorderThickness="0,0,1,1" />
+                        <Border BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrushAssist}}"
+                                BorderThickness="1,1,0,0" />
+                        <Border BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}"
+                                BorderThickness="0,0,1,1" />
                         <Border Name="WindowHighlightBorder"
                                 Margin="1"
                                 BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
@@ -162,7 +166,8 @@
                                                   StrokeThickness="1">
                                                 <Path.Data>
                                                     <PathGeometry>
-                                                        <PathFigure IsClosed="False" StartPoint="0,3">
+                                                        <PathFigure IsClosed="False"
+                                                                    StartPoint="0,3">
                                                             <LineSegment Point="0,8" />
                                                             <LineSegment Point="5,8" />
                                                             <LineSegment Point="5,3" />
@@ -176,7 +181,8 @@
                                                             <LineSegment Point="2,1" />
                                                             <LineSegment Point="7,1" />
                                                         </PathFigure>
-                                                        <PathFigure IsClosed="False" StartPoint="2,1">
+                                                        <PathFigure IsClosed="False"
+                                                                    StartPoint="2,1">
                                                             <LineSegment Point="2,3" />
                                                         </PathFigure>
                                                     </PathGeometry>
@@ -193,7 +199,8 @@
                                                   StrokeThickness="1">
                                                 <Path.Data>
                                                     <PathGeometry>
-                                                        <PathFigure IsClosed="False" StartPoint="0,0">
+                                                        <PathFigure IsClosed="False"
+                                                                    StartPoint="0,0">
                                                             <LineSegment Point="0,8" />
                                                             <LineSegment Point="8,8" />
                                                             <LineSegment Point="8,0" />
@@ -270,7 +277,8 @@
                             <Setter TargetName="PART_RestoreWindowButton" Property="Visibility" Value="Visible" />
                         </Trigger>
 
-                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
+                                     Value="True">
                             <Setter TargetName="PART_MinimizeWindowButton" Property="Width" Value="18" />
                             <Setter TargetName="PART_MaximizeWindowButton" Property="Width" Value="18" />
                             <Setter TargetName="PART_RestoreWindowButton" Property="Width" Value="18" />
@@ -299,6 +307,7 @@
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static local:RibbonWindowKeys.Default}}" TargetType="{x:Type RibbonWindow}" />
+    <Style BasedOn="{StaticResource {x:Static local:RibbonWindowKeys.Default}}"
+           TargetType="{x:Type RibbonWindow}" />
 
 </ResourceDictionary>

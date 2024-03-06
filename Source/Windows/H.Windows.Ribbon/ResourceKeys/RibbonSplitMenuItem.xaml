@@ -4,11 +4,13 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style x:Key="&#246;" TargetType="{x:Type RibbonButton}">
+    <Style x:Key="&#246;"
+           TargetType="{x:Type RibbonButton}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RibbonButton}">
-                    <Grid Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                    <Grid Background="{TemplateBinding Background}"
+                          SnapsToDevicePixels="True">
                         <Grid.ColumnDefinitions>
                             <!--  Icon or check mark column  -->
                             <ColumnDefinition Width="Auto"
@@ -29,11 +31,13 @@
         </Setter>
     </Style>
 
-    <Style x:Key="&#249;" TargetType="{x:Type RibbonToggleButton}">
+    <Style x:Key="&#249;"
+           TargetType="{x:Type RibbonToggleButton}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RibbonToggleButton}">
-                    <Grid Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                    <Grid Background="{TemplateBinding Background}"
+                          SnapsToDevicePixels="True">
                         <Grid.ColumnDefinitions>
                             <!--  Icon or check mark column  -->
                             <ColumnDefinition Width="Auto"
@@ -54,7 +58,8 @@
         </Setter>
     </Style>
 
-    <Style x:Key="&#247;" TargetType="{x:Type RibbonToggleButton}">
+    <Style x:Key="&#247;"
+           TargetType="{x:Type RibbonToggleButton}">
         <Setter Property="ToolTipService.InitialShowDelay" Value="{StaticResource S.RibbonToolTip.InitialShowDelay}" />
         <Setter Property="ToolTipService.ShowDuration" Value="{StaticResource S.RibbonToolTip.ShowDuration}" />
         <Setter Property="ToolTipService.BetweenShowDelay" Value="{StaticResource S.RibbonToolTip.BetweenShowDelay}" />
@@ -77,7 +82,8 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{x:Type RibbonSplitMenuItem}" TargetType="{x:Type RibbonSplitMenuItem}">
+    <Style x:Key="{x:Type RibbonSplitMenuItem}"
+           TargetType="{x:Type RibbonSplitMenuItem}">
         <Setter Property="Header" Value="RibbonSplitMenuItem" />
         <Setter Property="ImageSource" Value="{Logo}" />
         <Setter Property="HorizontalContentAlignment" Value="{Binding Path=HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
@@ -132,7 +138,8 @@
                                 Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Ribbon.Background}"
                                 BorderBrush="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Ribbon.BorderBrush}"
                                 BorderThickness="0,0,1,0">
-                            <Grid x:Name="SideBarOverlay" Background="{DynamicResource {x:Static BrushKeys.Background}}">
+                            <Grid x:Name="SideBarOverlay"
+                                  Background="{DynamicResource {x:Static BrushKeys.Background}}">
                                 <Image x:Name="Image"
                                        Width="16"
                                        Height="16"
@@ -237,7 +244,9 @@
                                                 <RowDefinition />
                                                 <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
-                                            <ScrollViewer x:Name="PART_SubMenuScrollViewer" Style="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type FrameworkElement}, ResourceId=MenuScrollViewer}}">
+                                            <ScrollViewer x:Name="PART_SubMenuScrollViewer"
+                                                          Style="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type FrameworkElement},
+                                                                                                        ResourceId=MenuScrollViewer}}">
                                                 <Grid RenderOptions.ClearTypeHint="Enabled">
                                                     <Canvas x:Name="BackgroundCanvas"
                                                             Width="0"
@@ -273,7 +282,8 @@
                                                     BorderBrush="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Ribbon.BorderBrush}"
                                                     BorderThickness="0,1,0,0"
                                                     Visibility="Collapsed">
-                                                <Thumb x:Name="PART_ResizeThumb" Style="{StaticResource S.Thumb.SizeNWSE}" />
+                                                <Thumb x:Name="PART_ResizeThumb"
+                                                       Style="{StaticResource S.Thumb.SizeNWSE}" />
                                             </Border>
                                         </Grid>
                                     </Border>
@@ -400,7 +410,8 @@
                         </Trigger>
 
 
-                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
+                                     Value="True">
 
 
 
@@ -542,7 +553,8 @@
                                         Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Ribbon.Background}"
                                         BorderBrush="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Ribbon.BorderBrush}"
                                         BorderThickness="0,0,1,0">
-                                    <Grid x:Name="SideBarOverlay" Background="{DynamicResource {x:Static BrushKeys.Background}}">
+                                    <Grid x:Name="SideBarOverlay"
+                                          Background="{DynamicResource {x:Static BrushKeys.Background}}">
                                         <Image x:Name="Image"
                                                Width="16"
                                                Height="16"
@@ -647,7 +659,9 @@
                                                         <RowDefinition />
                                                         <RowDefinition Height="Auto" />
                                                     </Grid.RowDefinitions>
-                                                    <ScrollViewer x:Name="PART_SubMenuScrollViewer" Style="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type FrameworkElement}, ResourceId=MenuScrollViewer}}">
+                                                    <ScrollViewer x:Name="PART_SubMenuScrollViewer"
+                                                                  Style="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type FrameworkElement},
+                                                                                                                ResourceId=MenuScrollViewer}}">
 
                                                         <Grid RenderOptions.ClearTypeHint="Enabled">
                                                             <Canvas x:Name="BackgroundCanvas"
@@ -684,7 +698,8 @@
                                                             BorderBrush="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Ribbon.BorderBrush}"
                                                             BorderThickness="0,1,0,0"
                                                             Visibility="Collapsed">
-                                                        <Thumb x:Name="PART_ResizeThumb" Style="{StaticResource S.Thumb.SizeNWSE}" />
+                                                        <Thumb x:Name="PART_ResizeThumb"
+                                                               Style="{StaticResource S.Thumb.SizeNWSE}" />
                                                     </Border>
                                                 </Grid>
                                             </Border>
@@ -811,7 +826,8 @@
                                 </Trigger>
 
 
-                                <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+                                <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
+                                             Value="True">
 
 
 

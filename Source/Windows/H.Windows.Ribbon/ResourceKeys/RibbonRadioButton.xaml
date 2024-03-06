@@ -1,5 +1,7 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Style x:Key="{x:Type RibbonRadioButton}" TargetType="{x:Type RibbonRadioButton}">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="{x:Type RibbonRadioButton}"
+           TargetType="{x:Type RibbonRadioButton}">
         <Setter Property="Label" Value="RibbonGroup" />
         <Setter Property="LargeImageSource" Value="{Logo}" />
         <Setter Property="SmallImageSource" Value="{Logo}" />
@@ -22,7 +24,8 @@
         <Setter Property="ToolTipService.BetweenShowDelay" Value="{StaticResource S.RibbonToolTip.BetweenShowDelay}" />
         <Setter Property="QuickAccessToolBarControlSizeDefinition">
             <Setter.Value>
-                <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="False" />
+                <RibbonControlSizeDefinition ImageSize="Small"
+                                             IsLabelVisible="False" />
             </Setter.Value>
         </Setter>
         <Setter Property="Template">
@@ -45,7 +48,8 @@
                                     BorderBrush="Transparent"
                                     BorderThickness="{TemplateBinding BorderThickness}"
                                     CornerRadius="{TemplateBinding CornerRadius}">
-                                <StackPanel x:Name="StackPanel" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+                                <StackPanel x:Name="StackPanel"
+                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
                                     <Image x:Name="PART_Image"
                                            Width="32"
                                            Height="32"
@@ -73,7 +77,8 @@
                     <ControlTemplate.Triggers>
 
                         <!--  Large Variant  -->
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}" Value="Large">
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}"
+                                     Value="Large">
                             <Setter Property="MinWidth" Value="44" />
                             <Setter Property="Height" Value="66" />
                             <Setter TargetName="Grid" Property="MinHeight" Value="26" />
@@ -81,7 +86,8 @@
                         </DataTrigger>
 
                         <!--  Medium or Small Variant  -->
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}" Value="Small">
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}"
+                                     Value="Small">
                             <Setter Property="Height" Value="{StaticResource S.Hight.SmallImage}" />
                             <Setter TargetName="PART_Image" Property="Margin" Value="1,0,1,0" />
                             <Setter TargetName="PART_Image" Property="Source" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SmallImageSource}" />
@@ -100,11 +106,13 @@
                             <Setter Property="VerticalAlignment" Value="Center" />
                         </MultiDataTrigger>
 
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.IsLabelVisible}" Value="False">
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.IsLabelVisible}"
+                                     Value="False">
                             <Setter TargetName="TwoLineText" Property="Text" Value="{x:Null}" />
                         </DataTrigger>
 
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}" Value="Collapsed">
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}"
+                                     Value="Collapsed">
                             <Setter TargetName="PART_Image" Property="Visibility" Value="Collapsed" />
                         </DataTrigger>
 
@@ -177,7 +185,8 @@
                         <!--  HighContrast  -->
 
 
-                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
+                                     Value="True">
 
 
 

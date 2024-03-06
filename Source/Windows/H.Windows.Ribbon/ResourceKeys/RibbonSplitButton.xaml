@@ -7,7 +7,8 @@
 
     <Style TargetType="{x:Type RibbonSplitButton}">
         <Style.Resources>
-            <Style x:Key="{x:Static MenuItem.SeparatorStyleKey}" TargetType="{x:Type RibbonSeparator}">
+            <Style x:Key="{x:Static MenuItem.SeparatorStyleKey}"
+                   TargetType="{x:Type RibbonSeparator}">
                 <Setter Property="OverridesDefaultStyle" Value="True" />
                 <Setter Property="Focusable" Value="false" />
                 <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type RibbonMenuButton}}, Path=Ribbon.BorderBrush}" />
@@ -20,7 +21,8 @@
                                     Background="{TemplateBinding Background}"
                                     BorderBrush="{TemplateBinding BorderBrush}"
                                     BorderThickness="0,1,0,1">
-                                <Border x:Name="Overlay" Background="{DynamicResource {x:Static BrushKeys.Background}}">
+                                <Border x:Name="Overlay"
+                                        Background="{DynamicResource {x:Static BrushKeys.Background}}">
                                     <TextBlock x:Name="Text"
                                                Margin="2,1,2,1"
                                                Text="{TemplateBinding Label}" />
@@ -28,7 +30,8 @@
                             </Border>
                             <ControlTemplate.Triggers>
 
-                                <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+                                <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
+                                             Value="True">
 
 
 
@@ -62,7 +65,8 @@
                                                 Background="{TemplateBinding Background}"
                                                 BorderBrush="{TemplateBinding BorderBrush}"
                                                 BorderThickness="0,0,1,0">
-                                            <Border x:Name="SideBarOverlay" Background="{DynamicResource {x:Static BrushKeys.Background}}" />
+                                            <Border x:Name="SideBarOverlay"
+                                                    Background="{DynamicResource {x:Static BrushKeys.Background}}" />
                                         </Border>
                                         <Line x:Name="Line"
                                               Grid.Column="1"
@@ -79,7 +83,8 @@
 
                                     <ControlTemplate.Triggers>
 
-                                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+                                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
+                                                     Value="True">
 
 
 
@@ -120,20 +125,23 @@
         <Setter Property="ToolTipService.IsEnabled" Value="false" />
         <Setter Property="QuickAccessToolBarControlSizeDefinition">
             <Setter.Value>
-                <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="False" />
+                <RibbonControlSizeDefinition ImageSize="Small"
+                                             IsLabelVisible="False" />
             </Setter.Value>
         </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RibbonSplitButton}">
-                    <Grid x:Name="MainGrid" SnapsToDevicePixels="True">
+                    <Grid x:Name="MainGrid"
+                          SnapsToDevicePixels="True">
                         <Border x:Name="OuterBorder"
                                 Background="{TemplateBinding Background}"
                                 CornerRadius="2">
                             <Border x:Name="InnerBorder"
                                     Background="Transparent"
                                     CornerRadius="2">
-                                <StackPanel x:Name="StackPanel" Orientation="Horizontal">
+                                <StackPanel x:Name="StackPanel"
+                                            Orientation="Horizontal">
                                     <!--  Please note that the setter for the Style property is only so that this ToggleButton doesn't accidentally pick up some styles defined at the app level.  -->
                                     <RibbonButton x:Name="PART_HeaderButton"
                                                   Padding="{TemplateBinding Padding}"
@@ -169,10 +177,12 @@
                                                   ToolTipService.ShowDuration="{StaticResource S.RibbonToolTip.ShowDuration}"
                                                   ToolTipTitle="{TemplateBinding ToolTipTitle}">
                                         <RibbonButton.ControlSizeDefinition>
-                                            <RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="False" />
+                                            <RibbonControlSizeDefinition ImageSize="Large"
+                                                                         IsLabelVisible="False" />
                                         </RibbonButton.ControlSizeDefinition>
                                         <RibbonButton.QuickAccessToolBarControlSizeDefinition>
-                                            <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="False" />
+                                            <RibbonControlSizeDefinition ImageSize="Small"
+                                                                         IsLabelVisible="False" />
                                         </RibbonButton.QuickAccessToolBarControlSizeDefinition>
                                         <RibbonButton.Resources>
                                             <Thickness x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type Ribbon},
@@ -221,7 +231,8 @@
                                                             ToolTipService.ShowDuration="{StaticResource S.RibbonToolTip.ShowDuration}"
                                                             ToolTipTitle="{TemplateBinding DropDownToolTipTitle}">
                                             <RibbonToggleButton.ControlSizeDefinition>
-                                                <RibbonControlSizeDefinition ImageSize="Collapsed" IsLabelVisible="False" />
+                                                <RibbonControlSizeDefinition ImageSize="Collapsed"
+                                                                             IsLabelVisible="False" />
                                             </RibbonToggleButton.ControlSizeDefinition>
                                         </RibbonToggleButton>
                                     </Grid>
@@ -296,7 +307,8 @@
                                                     BorderBrush="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Ribbon.BorderBrush}"
                                                     BorderThickness="0,1,0,0"
                                                     Visibility="Collapsed">
-                                                <Thumb x:Name="PART_ResizeThumb" Style="{StaticResource S.Thumb.SizeNWSE}" />
+                                                <Thumb x:Name="PART_ResizeThumb"
+                                                       Style="{StaticResource S.Thumb.SizeNWSE}" />
                                             </Border>
                                         </Grid>
                                     </Border>
@@ -323,7 +335,8 @@
                         </Trigger>
 
                         <!--  Large Variant  -->
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}" Value="Large">
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}"
+                                     Value="Large">
                             <Setter Property="MinWidth" Value="44" />
                             <Setter TargetName="PART_HeaderButton" Property="Height" Value="37" />
                             <Setter TargetName="PART_ToggleButton" Property="Height" Value="29" />
@@ -339,7 +352,8 @@
                             </MultiDataTrigger.Conditions>
                             <Setter TargetName="PART_ToggleButton" Property="ControlSizeDefinition">
                                 <Setter.Value>
-                                    <RibbonControlSizeDefinition ImageSize="Collapsed" IsLabelVisible="True" />
+                                    <RibbonControlSizeDefinition ImageSize="Collapsed"
+                                                                 IsLabelVisible="True" />
                                 </Setter.Value>
                             </Setter>
                         </MultiDataTrigger>
@@ -352,7 +366,8 @@
                             </MultiDataTrigger.Conditions>
                             <Setter TargetName="PART_HeaderButton" Property="ControlSizeDefinition">
                                 <Setter.Value>
-                                    <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="False" />
+                                    <RibbonControlSizeDefinition ImageSize="Small"
+                                                                 IsLabelVisible="False" />
                                 </Setter.Value>
                             </Setter>
                         </MultiDataTrigger>
@@ -364,12 +379,14 @@
                             </MultiDataTrigger.Conditions>
                             <Setter TargetName="PART_HeaderButton" Property="ControlSizeDefinition">
                                 <Setter.Value>
-                                    <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="False" />
+                                    <RibbonControlSizeDefinition ImageSize="Small"
+                                                                 IsLabelVisible="False" />
                                 </Setter.Value>
                             </Setter>
                             <Setter TargetName="PART_ToggleButton" Property="ControlSizeDefinition">
                                 <Setter.Value>
-                                    <RibbonControlSizeDefinition ImageSize="Collapsed" IsLabelVisible="True" />
+                                    <RibbonControlSizeDefinition ImageSize="Collapsed"
+                                                                 IsLabelVisible="True" />
                                 </Setter.Value>
                             </Setter>
                         </MultiDataTrigger>
@@ -381,11 +398,13 @@
                             </MultiDataTrigger.Conditions>
                             <Setter TargetName="PART_HeaderButton" Property="ControlSizeDefinition">
                                 <Setter.Value>
-                                    <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True" />
+                                    <RibbonControlSizeDefinition ImageSize="Small"
+                                                                 IsLabelVisible="True" />
                                 </Setter.Value>
                             </Setter>
                         </MultiDataTrigger>
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsInQuickAccessToolBar}" Value="True">
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsInQuickAccessToolBar}"
+                                     Value="True">
                             <Setter TargetName="PART_HeaderButton" Property="Height" Value="Auto" />
                             <Setter TargetName="PART_ToggleButton" Property="Height" Value="Auto" />
                             <Setter TargetName="PART_HeaderButton" Property="VerticalAlignment" Value="Center" />
@@ -401,7 +420,8 @@
                             </MultiDataTrigger.Conditions>
                             <Setter TargetName="PART_HeaderButton" Property="ControlSizeDefinition">
                                 <Setter.Value>
-                                    <RibbonControlSizeDefinition ImageSize="Collapsed" IsLabelVisible="False" />
+                                    <RibbonControlSizeDefinition ImageSize="Collapsed"
+                                                                 IsLabelVisible="False" />
                                 </Setter.Value>
                             </Setter>
                         </MultiDataTrigger>
@@ -413,12 +433,14 @@
                             </MultiDataTrigger.Conditions>
                             <Setter TargetName="PART_HeaderButton" Property="ControlSizeDefinition">
                                 <Setter.Value>
-                                    <RibbonControlSizeDefinition ImageSize="Collapsed" IsLabelVisible="False" />
+                                    <RibbonControlSizeDefinition ImageSize="Collapsed"
+                                                                 IsLabelVisible="False" />
                                 </Setter.Value>
                             </Setter>
                             <Setter TargetName="PART_ToggleButton" Property="ControlSizeDefinition">
                                 <Setter.Value>
-                                    <RibbonControlSizeDefinition ImageSize="Collapsed" IsLabelVisible="True" />
+                                    <RibbonControlSizeDefinition ImageSize="Collapsed"
+                                                                 IsLabelVisible="True" />
                                 </Setter.Value>
                             </Setter>
                         </MultiDataTrigger>
@@ -430,7 +452,8 @@
                             </MultiDataTrigger.Conditions>
                             <Setter TargetName="PART_HeaderButton" Property="ControlSizeDefinition">
                                 <Setter.Value>
-                                    <RibbonControlSizeDefinition ImageSize="Collapsed" IsLabelVisible="True" />
+                                    <RibbonControlSizeDefinition ImageSize="Collapsed"
+                                                                 IsLabelVisible="True" />
                                 </Setter.Value>
                             </Setter>
                         </MultiDataTrigger>
@@ -533,7 +556,8 @@
 
                         <!--  HighContrast  -->
 
-                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
+                                     Value="True">
 
 
 
@@ -659,14 +683,16 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type RibbonSplitButton}">
-                            <Grid x:Name="MainGrid" SnapsToDevicePixels="True">
+                            <Grid x:Name="MainGrid"
+                                  SnapsToDevicePixels="True">
                                 <Border x:Name="OuterBorder"
                                         Background="{TemplateBinding Background}"
                                         CornerRadius="2">
                                     <Border x:Name="InnerBorder"
                                             Background="Transparent"
                                             CornerRadius="2">
-                                        <StackPanel x:Name="StackPanel" Orientation="Horizontal">
+                                        <StackPanel x:Name="StackPanel"
+                                                    Orientation="Horizontal">
                                             <!--  Please note that the setter for the Style property is only so that this ToggleButton doesn't accidentally pick up some styles defined at the app level.  -->
                                             <RibbonToggleButton x:Name="PART_HeaderButton"
                                                                 Padding="{TemplateBinding Padding}"
@@ -705,10 +731,12 @@
                                                                 ToolTipService.ShowDuration="{StaticResource S.RibbonToolTip.ShowDuration}"
                                                                 ToolTipTitle="{TemplateBinding ToolTipTitle}">
                                                 <RibbonToggleButton.ControlSizeDefinition>
-                                                    <RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="False" />
+                                                    <RibbonControlSizeDefinition ImageSize="Large"
+                                                                                 IsLabelVisible="False" />
                                                 </RibbonToggleButton.ControlSizeDefinition>
                                                 <RibbonToggleButton.QuickAccessToolBarControlSizeDefinition>
-                                                    <RibbonControlSizeDefinition ImageSize="Collapsed" IsLabelVisible="False" />
+                                                    <RibbonControlSizeDefinition ImageSize="Collapsed"
+                                                                                 IsLabelVisible="False" />
                                                 </RibbonToggleButton.QuickAccessToolBarControlSizeDefinition>
                                                 <RibbonToggleButton.Resources>
                                                     <Thickness x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type Ribbon},
@@ -757,7 +785,8 @@
                                                                     ToolTipService.ShowDuration="{StaticResource S.RibbonToolTip.ShowDuration}"
                                                                     ToolTipTitle="{TemplateBinding DropDownToolTipTitle}">
                                                     <RibbonToggleButton.ControlSizeDefinition>
-                                                        <RibbonControlSizeDefinition ImageSize="Collapsed" IsLabelVisible="False" />
+                                                        <RibbonControlSizeDefinition ImageSize="Collapsed"
+                                                                                     IsLabelVisible="False" />
                                                     </RibbonToggleButton.ControlSizeDefinition>
                                                 </RibbonToggleButton>
                                                 <Border x:Name="OverlayBottomBorder"
@@ -839,7 +868,8 @@
                                                             BorderBrush="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Ribbon.BorderBrush}"
                                                             BorderThickness="0,1,0,0"
                                                             Visibility="Collapsed">
-                                                        <Thumb x:Name="PART_ResizeThumb" Style="{StaticResource S.Thumb.SizeNWSE}" />
+                                                        <Thumb x:Name="PART_ResizeThumb"
+                                                               Style="{StaticResource S.Thumb.SizeNWSE}" />
                                                     </Border>
                                                 </Grid>
                                             </Border>
@@ -866,7 +896,8 @@
                                 </Trigger>
 
                                 <!--  Large Variant  -->
-                                <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}" Value="Large">
+                                <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}"
+                                             Value="Large">
                                     <Setter Property="MinWidth" Value="44" />
                                     <Setter TargetName="PART_HeaderButton" Property="Height" Value="37" />
                                     <Setter TargetName="PART_ToggleButton" Property="Height" Value="29" />
@@ -883,7 +914,8 @@
                                     </MultiDataTrigger.Conditions>
                                     <Setter TargetName="PART_ToggleButton" Property="ControlSizeDefinition">
                                         <Setter.Value>
-                                            <RibbonControlSizeDefinition ImageSize="Collapsed" IsLabelVisible="True" />
+                                            <RibbonControlSizeDefinition ImageSize="Collapsed"
+                                                                         IsLabelVisible="True" />
                                         </Setter.Value>
                                     </Setter>
                                 </MultiDataTrigger>
@@ -896,7 +928,8 @@
                                     </MultiDataTrigger.Conditions>
                                     <Setter TargetName="PART_HeaderButton" Property="ControlSizeDefinition">
                                         <Setter.Value>
-                                            <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="False" />
+                                            <RibbonControlSizeDefinition ImageSize="Small"
+                                                                         IsLabelVisible="False" />
                                         </Setter.Value>
                                     </Setter>
                                 </MultiDataTrigger>
@@ -908,12 +941,14 @@
                                     </MultiDataTrigger.Conditions>
                                     <Setter TargetName="PART_HeaderButton" Property="ControlSizeDefinition">
                                         <Setter.Value>
-                                            <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="False" />
+                                            <RibbonControlSizeDefinition ImageSize="Small"
+                                                                         IsLabelVisible="False" />
                                         </Setter.Value>
                                     </Setter>
                                     <Setter TargetName="PART_ToggleButton" Property="ControlSizeDefinition">
                                         <Setter.Value>
-                                            <RibbonControlSizeDefinition ImageSize="Collapsed" IsLabelVisible="True" />
+                                            <RibbonControlSizeDefinition ImageSize="Collapsed"
+                                                                         IsLabelVisible="True" />
                                         </Setter.Value>
                                     </Setter>
                                 </MultiDataTrigger>
@@ -925,11 +960,13 @@
                                     </MultiDataTrigger.Conditions>
                                     <Setter TargetName="PART_HeaderButton" Property="ControlSizeDefinition">
                                         <Setter.Value>
-                                            <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True" />
+                                            <RibbonControlSizeDefinition ImageSize="Small"
+                                                                         IsLabelVisible="True" />
                                         </Setter.Value>
                                     </Setter>
                                 </MultiDataTrigger>
-                                <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsInQuickAccessToolBar}" Value="True">
+                                <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsInQuickAccessToolBar}"
+                                             Value="True">
                                     <Setter TargetName="PART_HeaderButton" Property="Height" Value="Auto" />
                                     <Setter TargetName="PART_ToggleButton" Property="Height" Value="Auto" />
                                     <Setter TargetName="PART_HeaderButton" Property="VerticalAlignment" Value="Center" />
@@ -944,7 +981,8 @@
                                     </MultiDataTrigger.Conditions>
                                     <Setter TargetName="PART_HeaderButton" Property="ControlSizeDefinition">
                                         <Setter.Value>
-                                            <RibbonControlSizeDefinition ImageSize="Collapsed" IsLabelVisible="False" />
+                                            <RibbonControlSizeDefinition ImageSize="Collapsed"
+                                                                         IsLabelVisible="False" />
                                         </Setter.Value>
                                     </Setter>
                                 </MultiDataTrigger>
@@ -956,12 +994,14 @@
                                     </MultiDataTrigger.Conditions>
                                     <Setter TargetName="PART_HeaderButton" Property="ControlSizeDefinition">
                                         <Setter.Value>
-                                            <RibbonControlSizeDefinition ImageSize="Collapsed" IsLabelVisible="False" />
+                                            <RibbonControlSizeDefinition ImageSize="Collapsed"
+                                                                         IsLabelVisible="False" />
                                         </Setter.Value>
                                     </Setter>
                                     <Setter TargetName="PART_ToggleButton" Property="ControlSizeDefinition">
                                         <Setter.Value>
-                                            <RibbonControlSizeDefinition ImageSize="Collapsed" IsLabelVisible="True" />
+                                            <RibbonControlSizeDefinition ImageSize="Collapsed"
+                                                                         IsLabelVisible="True" />
                                         </Setter.Value>
                                     </Setter>
                                 </MultiDataTrigger>
@@ -973,7 +1013,8 @@
                                     </MultiDataTrigger.Conditions>
                                     <Setter TargetName="PART_HeaderButton" Property="ControlSizeDefinition">
                                         <Setter.Value>
-                                            <RibbonControlSizeDefinition ImageSize="Collapsed" IsLabelVisible="True" />
+                                            <RibbonControlSizeDefinition ImageSize="Collapsed"
+                                                                         IsLabelVisible="True" />
                                         </Setter.Value>
                                     </Setter>
                                 </MultiDataTrigger>
@@ -1076,7 +1117,8 @@
 
                                 <!--  HighContrast  -->
 
-                                <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+                                <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
+                                             Value="True">
 
 
 
