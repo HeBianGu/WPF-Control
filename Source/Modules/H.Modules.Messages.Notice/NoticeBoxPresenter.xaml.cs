@@ -6,7 +6,7 @@ using System.Collections.ObjectModel;
 
 namespace H.Modules.Messages.Notice
 {
-    public class NoticeBoxPresenter : ViewModelBase
+    public class NoticeBoxPresenter : BindableBase
     {
         private ObservableCollection<INoticeItem> _collection = new ObservableCollection<INoticeItem>();
         public ObservableCollection<INoticeItem> Collection

@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace H.Presenters.Common
 {
-    public class SelectItemPresenter : DisplayViewModelBase
+    public class SelectItemPresenter : DisplayBindableBase
     {
         public SelectItemPresenter(IEnumerable source, object selectedItem)
         {

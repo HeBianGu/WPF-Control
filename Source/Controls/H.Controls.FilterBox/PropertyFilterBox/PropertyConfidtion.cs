@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 
 namespace H.Controls.FilterBox
 {
-    public class PropertyConfidtion : ViewModel, IConditionable, IPropertyConfidtion
+    public class PropertyConfidtion : Bindable, IConditionable, IPropertyConfidtion
     {
         public PropertyConfidtion()
         {
@@ -48,7 +48,7 @@ namespace H.Controls.FilterBox
         {
             if (obj == null)
                 return false;
-            if(obj is IModelViewModel mv)
+            if(obj is IModelBindable mv)
                 return Filter.IsMatch(mv.GetModel());
             return Filter.IsMatch(obj);
         }

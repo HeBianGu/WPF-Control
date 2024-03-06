@@ -7,7 +7,7 @@ using System.Threading;
 
 namespace H.Modules.Login
 {
-    internal class LoginService : ViewModelBase, ILoginService
+    internal class LoginService : BindableBase, ILoginService
     {
         private Random random = new Random();
         private IUser _user;

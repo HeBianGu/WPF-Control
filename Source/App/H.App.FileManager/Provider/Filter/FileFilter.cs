@@ -12,7 +12,7 @@ namespace H.App.FileManager
         public string Extensions { get; set; }
         public override bool IsMatch(object obj)
         {
-            if (obj is ModelViewModel<fm_dd_file> file)
+            if (obj is ModelBindable<fm_dd_file> file)
             {
                 return Extensions.Split(' ').Any(x => x.Equals(file.Model.Extend?.Trim('.'), StringComparison.OrdinalIgnoreCase));
             }

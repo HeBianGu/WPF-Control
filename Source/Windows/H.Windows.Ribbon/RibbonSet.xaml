@@ -6,7 +6,7 @@
 
     <Style x:Key="S.TreeView.RibbonSet" TargetType="TreeView">
         <Style.Resources>
-            <HierarchicalDataTemplate DataType="{x:Type local:TabData}" ItemsSource="{Binding Path=GroupDataCollection}">
+            <HierarchicalDataTemplate DataType="{x:Type local:TabBindable}" ItemsSource="{Binding Path=GroupDataCollection}">
                 <DockPanel>
                     <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsVisible}" />
                     <Button Command="{x:Static local:Commander.MoveNext}"
@@ -21,7 +21,7 @@
                 </DockPanel>
             </HierarchicalDataTemplate>
 
-            <HierarchicalDataTemplate DataType="{x:Type local:GroupData}" ItemsSource="{Binding Path=ControlDataCollection}">
+            <HierarchicalDataTemplate DataType="{x:Type local:GroupBindable}" ItemsSource="{Binding Path=ControlDataCollection}">
 
                 <DockPanel HorizontalAlignment="Stretch">
                     <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsVisible}" />
@@ -65,7 +65,7 @@
                 </DockPanel>
             </HierarchicalDataTemplate>
 
-            <HierarchicalDataTemplate DataType="{x:Type local:MenuButtonData}" ItemsSource="{Binding Path=ControlDataCollection}">
+            <HierarchicalDataTemplate DataType="{x:Type local:MenuButtonBindable}" ItemsSource="{Binding Path=ControlDataCollection}">
                 <DockPanel HorizontalAlignment="Stretch">
                     <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsVisible}" />
                     <Image Margin="5" Source="{Binding SmallImage}" />
@@ -99,7 +99,7 @@
                 </DockPanel>
             </HierarchicalDataTemplate>
 
-            <HierarchicalDataTemplate DataType="{x:Type local:SplitButtonData}" ItemsSource="{Binding Path=ControlDataCollection}">
+            <HierarchicalDataTemplate DataType="{x:Type local:SplitButtonBindable}" ItemsSource="{Binding Path=ControlDataCollection}">
                 <DockPanel HorizontalAlignment="Stretch">
                     <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsVisible}" />
                     <Image Margin="5" Source="{Binding SmallImage}" />
@@ -133,7 +133,7 @@
                 </DockPanel>
             </HierarchicalDataTemplate>
 
-            <HierarchicalDataTemplate DataType="{x:Type local:MenuItemData}" ItemsSource="{Binding Path=ControlDataCollection}">
+            <HierarchicalDataTemplate DataType="{x:Type local:MenuItemBindable}" ItemsSource="{Binding Path=ControlDataCollection}">
                 <DockPanel HorizontalAlignment="Stretch">
                     <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsVisible}" />
                     <Image Margin="5" Source="{Binding SmallImage}" />
@@ -174,7 +174,7 @@
                             </DockPanel>
                         </HierarchicalDataTemplate>-->
 
-            <!--<DataTemplate DataType="{x:Type local:MenuButtonData}">
+            <!--<DataTemplate DataType="{x:Type local:MenuButtonBindable}">
                         <DockPanel   >
                             <CheckBox IsChecked="{Binding IsVisible}" VerticalAlignment="Center"/>
                             <Image Source="{Binding SmallImage}" Margin="5"/>
@@ -185,7 +185,7 @@
                             <Button Content="设置图片" Command="{x:Static local:Commander.ChangedImage}" CommandParameter="{Binding}"/>
                         </DockPanel>
                     </DataTemplate>-->
-            <!--<DataTemplate DataType="{x:Type local:ToggleButtonData}">
+            <!--<DataTemplate DataType="{x:Type local:ToggleButtonBindable}">
                         <DockPanel  HorizontalAlignment="Stretch" >
                             <CheckBox IsChecked="{Binding IsVisible}" VerticalAlignment="Center"/>
                             <Image Source="{Binding SmallImage}" Margin="5"/>
@@ -203,7 +203,7 @@
                         </DockPanel>
                     </DataTemplate>-->
 
-            <DataTemplate DataType="{x:Type local:ToggleButtonData}">
+            <DataTemplate DataType="{x:Type local:ToggleButtonBindable}">
                 <DockPanel HorizontalAlignment="Stretch">
                     <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsVisible}" />
                     <Image Margin="5" Source="{Binding SmallImage}" />
@@ -237,7 +237,7 @@
                 </DockPanel>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type local:ControlData}">
+            <DataTemplate DataType="{x:Type local:ControlBindableBase}">
                 <DockPanel HorizontalAlignment="Stretch">
                     <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsVisible}" />
                     <Image Margin="5" Source="{Binding SmallImage}" />

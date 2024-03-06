@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 
 namespace H.Controls.TagBox
 {
-    public class TagsPresenter : ViewModelBase
+    public class TagsPresenter : BindableBase
     {
         private ObservableCollection<ITag> _collection = new ObservableCollection<ITag>();
         /// <summary> 说明  </summary>

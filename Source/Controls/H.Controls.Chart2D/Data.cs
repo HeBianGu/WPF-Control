@@ -11,7 +11,7 @@ using System.Windows.Media;
 namespace H.Controls.Chart2D
 {
     /// <summary> 说明</summary>
-    public class ChartData : ViewModelBase
+    public class ChartData : BindableBase
     {
         private ObservableCollection<string> _xDisplay = new ObservableCollection<string>();
         /// <summary> 说明  </summary>
@@ -135,7 +135,7 @@ namespace H.Controls.Chart2D
     }
 
 
-    public class PointData : ViewModelBase, ISeriesData
+    public class PointData : BindableBase, ISeriesData
     {
         private DoubleCollection _yDatas = new DoubleCollection();
         public DoubleCollection yDatas
@@ -199,7 +199,7 @@ namespace H.Controls.Chart2D
         }
     }
 
-    public class DoubleData : ViewModelBase, ISeriesData
+    public class DoubleData : BindableBase, ISeriesData
     {
         private DoubleCollection _data = new DoubleCollection();
         public DoubleCollection Data

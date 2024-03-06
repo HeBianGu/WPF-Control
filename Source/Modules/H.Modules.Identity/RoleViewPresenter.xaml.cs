@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace H.Modules.Identity
 {
-    public class RoleEditPresenter : ModelViewModel<hi_dd_role>
+    public class RoleEditPresenter : ModelBindable<hi_dd_role>
     {
         public RoleEditPresenter(hi_dd_role model) : base(model)
         {
@@ -28,7 +28,7 @@ namespace H.Modules.Identity
         }
     }
 
-    public class RoleRepositoryViewModel : RepositoryViewModel<hi_dd_role>
+    public class RoleRepositoryViewModel : RepositoryBindable<hi_dd_role>
     {
         public override async Task Add(object obj)
         {

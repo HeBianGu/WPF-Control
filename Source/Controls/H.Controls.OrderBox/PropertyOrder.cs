@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace H.Controls.OrderBox
 {
-    public class PropertyOrder : ViewModelBase, IProperty
+    public class PropertyOrder : BindableBase, IProperty
     {
         public PropertyOrder()
         {

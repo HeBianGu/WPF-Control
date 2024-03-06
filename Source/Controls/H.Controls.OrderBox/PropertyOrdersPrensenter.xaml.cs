@@ -13,7 +13,7 @@ using System.Xml.Serialization;
 
 namespace H.Controls.OrderBox
 {
-    public class PropertyOrdersPrensenter : DisplayViewModelBase, IOrderable, IMetaSetting
+    public class PropertyOrdersPrensenter : DisplayBindableBase, IOrderable, IMetaSetting
     {
         public PropertyOrdersPrensenter()
         {

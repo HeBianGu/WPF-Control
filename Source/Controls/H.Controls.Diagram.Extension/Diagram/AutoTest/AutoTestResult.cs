@@ -4,7 +4,7 @@ using H.Providers.Mvvm;
 
 namespace H.Controls.Diagram.Extension
 {
-    public class AutoTestResult : SelectViewModel<ats_dd_result>
+    public class AutoTestResult : SelectBindable<ats_dd_result>
     {
         public AutoTestResult() : base(new ats_dd_result())
         {

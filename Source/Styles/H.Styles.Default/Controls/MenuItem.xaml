@@ -182,7 +182,7 @@
                 <Setter TargetName="SubmenuBorder" Property="Padding" Value="0,0,0,3" />
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Opacity" Value="0.6"/>
+                <Setter Property="Opacity" Value="0.6" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
@@ -258,7 +258,9 @@
                 <TextBlock x:Name="InputGestureText"
                            Grid.Column="2"
                            Margin="5,2,0,2"
+                           VerticalAlignment="Center"
                            DockPanel.Dock="Right"
+                           FontSize="10"
                            Text="{TemplateBinding InputGestureText}" />
             </Grid>
         </Border>
@@ -315,6 +317,7 @@
                 <TextBlock x:Name="InputGestureText"
                            Grid.Column="2"
                            Margin="5,2,2,2"
+                           VerticalAlignment="Center"
                            DockPanel.Dock="Right"
                            Text="{TemplateBinding InputGestureText}" />
                 <Path Grid.Column="3"

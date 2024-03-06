@@ -8,7 +8,7 @@ using System.Windows;
 
 namespace H.Providers.Mvvm
 {
-    public partial class TreeNodeBase<T> : SelectViewModel<T>, ITreeNode, ISearchable
+    public partial class TreeNodeBase<T> : SelectBindable<T>, ITreeNode, ISearchable
     {
         public TreeNodeBase(T t) : base(t)
         {

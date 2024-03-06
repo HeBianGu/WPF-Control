@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace H.Controls.TagBox
 {
-    public abstract class TagServiceBase<T> : ViewModelBase, ITagService<T>, ITagService where T : ITag, new()
+    public abstract class TagServiceBase<T> : BindableBase, ITagService<T>, ITagService where T : ITag, new()
     {
         public abstract IList<T> Collection { get; }
 

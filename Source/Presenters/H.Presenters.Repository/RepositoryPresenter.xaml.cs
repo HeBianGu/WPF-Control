@@ -5,12 +5,12 @@ namespace H.Presenters.Repository
 {
     public class RepositoryPresenter
     {
-        private readonly IRepositoryViewModel _viewModel;
+        private readonly IRepositoryBindable _viewModel;
         public RepositoryPresenter(Type type)
         {
-            Type gType = typeof(IRepositoryViewModel<>).MakeGenericType(type);
-            this._viewModel = Ioc.GetService<IRepositoryViewModel>(gType, true);
+            Type gType = typeof(IRepositoryBindable<>).MakeGenericType(type);
+            this._viewModel = Ioc.GetService<IRepositoryBindable>(gType, true);
         }
-        public IRepositoryViewModel ViewModel => _viewModel;
+        public IRepositoryBindable ViewModel => _viewModel;
     }
 }

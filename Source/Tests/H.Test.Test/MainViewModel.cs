@@ -12,7 +12,7 @@ namespace H.Test.Test
 {
 
     /// <summary> 说明</summary>
-    public class MainViewModel : ViewModel
+    public class MainViewModel : Bindable
     {
         private Students _students = Student.Randoms(100);
         /// <summary> 说明  </summary>
@@ -65,9 +65,9 @@ namespace H.Test.Test
             }
         }
 
-        private TestViewModels _testViewModels= TestViewModel.Randoms(100);
+        private TestBindables _testViewModels= TestBindable.Randoms(100);
         /// <summary> 说明  </summary>
-        public TestViewModels TestViewModels
+        public TestBindables TestViewModels
         {
             get { return _testViewModels; }
             set
@@ -77,9 +77,9 @@ namespace H.Test.Test
             }
         }
 
-        private TestViewModel _selectedTestViewModel;
+        private TestBindable _selectedTestViewModel;
         /// <summary> 说明  </summary>
-        public TestViewModel SelectedTestViewModel
+        public TestBindable SelectedTestViewModel
         {
             get { return _selectedTestViewModel; }
             set

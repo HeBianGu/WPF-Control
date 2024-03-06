@@ -4,7 +4,7 @@ using System.ComponentModel;
 
 namespace H.Extensions.Unit
 {
-    public class UnitTest : ViewModelBase
+    public class UnitTest : BindableBase
     {
         private long _byte = 12535456;
         [TypeConverter(typeof(ByteSizeUnitableTypeConverter))]

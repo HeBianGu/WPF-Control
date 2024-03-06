@@ -10,8 +10,8 @@
             <SolidColorBrush x:Key="&#274;" Color="#FFD232" />
         </Style.Resources>-->
         <Setter Property="Label" Value="RibbonCheckBox" />
-        <Setter Property="LargeImageSource" Value="/Resources/CropImage32.png" />
-        <Setter Property="SmallImageSource" Value="/Resources/CropImage16.png" />
+        <Setter Property="LargeImageSource" Value="{Logo}" />
+        <Setter Property="SmallImageSource" Value="{Logo}" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Background}}" />

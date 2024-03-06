@@ -264,7 +264,7 @@ namespace H.Controls.FilterBox
                 if (data == null)
                     continue;
                 object model = data;
-                if (data is IModelViewModel mv)
+                if (data is IModelBindable mv)
                     model = mv.GetModel();
                 if (!this.Type.IsAssignableFrom(model.GetType()))
                     continue;
@@ -369,7 +369,7 @@ namespace H.Controls.FilterBox
                 //object value = obj is IModelViewModel model ? _propertyInfo.GetValue(model.GetModel())
                 //    : _propertyInfo.GetValue(obj);
                 object model = obj;
-                if (obj is IModelViewModel mv)
+                if (obj is IModelBindable mv)
                     model = mv.GetModel();
                 if (!this._selectionFilterBox.Type.IsAssignableFrom(model.GetType()))
                     continue;

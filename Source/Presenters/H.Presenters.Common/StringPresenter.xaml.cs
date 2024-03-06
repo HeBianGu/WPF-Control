@@ -3,7 +3,7 @@ using H.Providers.Mvvm;
 
 namespace H.Presenters.Common
 {
-    public class StringPresenter : DisplayViewModelBase, IStringPresenter
+    public class StringPresenter : DisplayBindableBase, IStringPresenter
     {
         private string _value;
         public string Value

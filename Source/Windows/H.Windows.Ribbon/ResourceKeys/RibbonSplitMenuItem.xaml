@@ -79,7 +79,7 @@
 
     <Style x:Key="{x:Type RibbonSplitMenuItem}" TargetType="{x:Type RibbonSplitMenuItem}">
         <Setter Property="Header" Value="RibbonSplitMenuItem" />
-        <Setter Property="ImageSource" Value="/Resources/CropImage16.png" />
+        <Setter Property="ImageSource" Value="{Logo}" />
         <Setter Property="HorizontalContentAlignment" Value="{Binding Path=HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
         <Setter Property="VerticalContentAlignment" Value="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
         <Setter Property="Background" Value="Transparent" />

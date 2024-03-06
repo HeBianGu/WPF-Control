@@ -7,7 +7,7 @@ using H.Providers.Mvvm;
 
 namespace H.Modules.Project
 {
-    public class ProjectItemViewModel : SelectViewModel<IProjectItem>
+    public class ProjectItemViewModel : SelectBindable<IProjectItem>
     {
         public ProjectItemViewModel(IProjectItem project) : base(project)
         {

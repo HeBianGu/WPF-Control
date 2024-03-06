@@ -11,7 +11,7 @@ using System.Windows.Documents;
 
 namespace H.Controls.PrintBox
 {
-    public class DocumentViewPresenter : ViewModelBase
+    public class DocumentViewPresenter : BindableBase
     {
         private IDocumentPaginatorSource _document;
         public IDocumentPaginatorSource Document

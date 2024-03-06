@@ -4,7 +4,7 @@
 
     <Style x:Key="{x:Type RibbonToolTip}" TargetType="{x:Type RibbonToolTip}">
         <Setter Property="Title" Value="RibbonToolTip" />
-        <Setter Property="ImageSource" Value="/Resources/CropImage32.png" />
+        <Setter Property="ImageSource" Value="{Logo}" />
         <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Self}, Path=Ribbon.Background}" />
         <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Self}, Path=Ribbon.BorderBrush}" />
         <Setter Property="BorderThickness" Value="1" />

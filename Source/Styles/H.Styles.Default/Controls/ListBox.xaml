@@ -17,6 +17,7 @@
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
         <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
         <Setter Property="Cattach.ItemHeight" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
+        <Setter Property="Cattach.ItemPadding" Value="10 0" />
         <Setter Property="Background">
             <Setter.Value>
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
@@ -63,7 +64,7 @@
         <Setter Property="Height" Value="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=(Cattach.ItemHeight)}" />
         <Setter Property="MinHeight" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="Padding" Value="10,0" />
+        <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource AncestorType=ListBox},Path=(Cattach.ItemPadding)}" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Background">
             <Setter.Value>

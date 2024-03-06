@@ -40,8 +40,8 @@ namespace H.Controls.RepositoryBox
 
         private void RefreshType(Type type)
         {
-            Type gType = typeof(IRepositoryViewModel<>).MakeGenericType(type);
-            this.DataContext = Ioc.GetService<IRepositoryViewModel>(gType, true);
+            Type gType = typeof(IRepositoryBindable<>).MakeGenericType(type);
+            this.DataContext = Ioc.GetService<IRepositoryBindable>(gType, true);
         }
 
 

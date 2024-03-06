@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 
 namespace H.Extensions.Revertible
 {
-    public abstract class RevertiblePropertyChangedBase : ViewModelBase
+    public abstract class RevertiblePropertyChangedBase : BindableBase
     {
         protected bool SetRevertiableProperty<T>(Action<T> setValue, T oldValue, T newValue, [CallerMemberName] string propertyName = null)
         {

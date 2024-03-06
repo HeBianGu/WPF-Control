@@ -11,7 +11,7 @@ using System.Xml.Serialization;
 
 namespace H.Providers.Mvvm
 {
-    public abstract class DesignPresenterBase : DisplayViewModelBase, IDesignPresenterBase
+    public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresenterBase
     {
         private bool _isSelected;
         [Browsable(false)]

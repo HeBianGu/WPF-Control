@@ -10,7 +10,7 @@ using System.Linq;
 namespace H.Extensions.Validation
 {
 
-    public class ValidationSelectedViewModel<T> : SelectViewModel<T>, IDataErrorInfo
+    public class ValidationSelectedViewModel<T> : SelectBindable<T>, IDataErrorInfo
     {
         public ValidationSelectedViewModel(T t) : base(t)
         {

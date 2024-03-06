@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace H.Modules.Login
 {
-    public class MailVerify : ViewModelBase, IDataErrorInfo
+    public class MailVerify : BindableBase, IDataErrorInfo
     {
         private string _mail;
         /// <summary> 说明  </summary>

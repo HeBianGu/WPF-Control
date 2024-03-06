@@ -9,7 +9,7 @@ using System.Runtime.CompilerServices;
 
 namespace H.Extensions.Validation
 {
-    public class ValidationModelViewModel<T> : ModelViewModel<T>
+    public class ValidationModelViewModel<T> : ModelBindable<T>
     {
 
         public ValidationModelViewModel(T t) : base(t)

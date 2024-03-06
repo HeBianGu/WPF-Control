@@ -9,7 +9,7 @@ using H.Providers.Mvvm;
 namespace H.Controls.PrintBox
 {
     [Display(Name = "纸张设置", GroupName = SettingGroupNames.GroupControl, Description = "纸张设置")]
-    public class PagerSizeViewPresenter : ViewModelBase, IPagerSizeViewPresenter
+    public class PagerSizeViewPresenter : BindableBase, IPagerSizeViewPresenter
     {
         public PagerSizeViewPresenter()
         {

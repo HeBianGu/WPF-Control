@@ -164,7 +164,7 @@ namespace H.Controls.FavoriteBox
             if (this._favoriteBox.SelectedItem == null)
                 return true;
             object model = obj;
-            if (obj is IModelViewModel viewModel)
+            if (obj is IModelBindable viewModel)
             {
                 model = viewModel.GetModel();
             }

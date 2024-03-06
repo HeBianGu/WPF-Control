@@ -7,7 +7,7 @@ using System.Windows.Media;
 
 namespace H.Modules.Messages.Snack
 {
-    public abstract class MessagePresenterBase : ViewModelBase, ISnackItem
+    public abstract class MessagePresenterBase : BindableBase, ISnackItem
     {
         public string Time { get; } = DateTime.Now.ToString("HH:mm:ss");
         public Geometry Geometry { get; set; }

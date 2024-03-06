@@ -32,7 +32,7 @@ namespace H.App.FileManager
         protected override IEnumerable<IFileView> CreateMore()
         {
             List<IFileView> mores = new List<IFileView>();
-            IEnumerable<fm_dd_file> files = FileRepositoryViewModel.Instance.Collection.Select(x => x.Model);
+            IEnumerable<fm_dd_file> files = FileRepositoryBindable.Instance.Collection.Select(x => x.Model);
 
             var t = this.Model as fm_dd_image;
             if (this.UseImageOnly)

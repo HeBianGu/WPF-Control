@@ -2,7 +2,7 @@
 
 namespace H.Presenters.Common
 {
-    public class WaitPresenter : DisplayViewModelBase
+    public class WaitPresenter : DisplayBindableBase
     {
 
     }

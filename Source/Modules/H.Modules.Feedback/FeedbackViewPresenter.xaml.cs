@@ -10,7 +10,7 @@ using System.IO;
 namespace H.Modules.Feedback
 {
     [Display(Name = "意见反馈", GroupName = SettingGroupNames.GroupSystem, Description = "点击显示意见反馈")]
-    public class FeedbackViewPresenter : ViewModelBase, IFeedbackViewPresenter
+    public class FeedbackViewPresenter : BindableBase, IFeedbackViewPresenter
     {
         private string _title;
         [Display(Name = "您的称呼")]

@@ -16,7 +16,7 @@ namespace System
         public static void AddOperationViewPresenter(this IServiceCollection service)
         {
             service.AddOperationService();
-            service.AddSingleton<IRepositoryViewModel<hi_dd_operation>, RepositoryViewModel<hi_dd_operation>>();
+            service.AddSingleton<IRepositoryBindable<hi_dd_operation>, RepositoryBindable<hi_dd_operation>>();
             service.AddSingleton<IOperationViewPresenter, OperationViewPresenter>();
         }
 

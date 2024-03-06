@@ -4,7 +4,7 @@ using System.Collections;
 
 namespace H.Controls.OrderBox
 {
-    public abstract class OrderBase : DisplayViewModelBase, IOrderable
+    public abstract class OrderBase : DisplayBindableBase, IOrderable
     {
         private bool _useDesc;
         public bool UseDesc

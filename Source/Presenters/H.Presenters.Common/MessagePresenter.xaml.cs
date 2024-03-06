@@ -2,7 +2,7 @@
 
 namespace H.Presenters.Common
 {
-    public class MessagePresenter : DisplayViewModelBase
+    public class MessagePresenter : DisplayBindableBase
     {
         private string _value;
         public string Value

@@ -557,8 +557,8 @@
 
     <Style x:Key="{x:Type RibbonGroup}" TargetType="{x:Type RibbonGroup}">
         <Setter Property="Header" Value="RibbonGroup" />
-        <Setter Property="LargeImageSource" Value="/Resources/CropImage32.png" />
-        <Setter Property="SmallImageSource" Value="/Resources/CropImage16.png" />
+        <Setter Property="LargeImageSource" Value="{Logo}" />
+        <Setter Property="SmallImageSource" Value="{Logo}" />
         <Setter Property="Margin" Value="1" />
         <Setter Property="Padding" Value="3,0,3,0" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />

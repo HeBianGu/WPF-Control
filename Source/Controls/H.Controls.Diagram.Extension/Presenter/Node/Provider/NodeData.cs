@@ -15,7 +15,7 @@ using System.Xml.Serialization;
 
 namespace H.Controls.Diagram.Extension
 {
-    public abstract class NodeDataBase : DisplayViewModelBase, ICloneable
+    public abstract class NodeDataBase : DisplayBindableBase, ICloneable
     {
         public NodeDataBase()
         {

@@ -17,7 +17,7 @@ using System.Xml.Serialization;
 namespace H.Controls.OrderBox
 {
     [Display(Name = "设置规则")]
-    public class PropertyOrderPrensenter : DisplayViewModelBase, IOrderable, IMetaSetting
+    public class PropertyOrderPrensenter : DisplayBindableBase, IOrderable, IMetaSetting
     {
         public PropertyOrderPrensenter()
         {
@@ -125,7 +125,7 @@ namespace H.Controls.OrderBox
 
         public IEnumerable Where(IEnumerable from)
         {
-            Func<object, object> convert = x => x is IModelViewModel m ? m.GetModel() : x;
+            Func<object, object> convert = x => x is IModelBindable m ? m.GetModel() : x;
             List<PropertyOrder> selecteds = this.Conditions.Where(x => x.IsSelected).ToList();
             if (selecteds.Count == 0)
                 return from;

@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace H.Extensions.Setting
 {
-    public abstract class SettableBase : DisplayViewModelBase, ISettable, ILoadable, ISaveable, IDefaultable
+    public abstract class SettableBase : DisplayBindableBase, ISettable, ILoadable, ISaveable, IDefaultable
     {
         //[XmlIgnore]
         //[JsonIgnore]

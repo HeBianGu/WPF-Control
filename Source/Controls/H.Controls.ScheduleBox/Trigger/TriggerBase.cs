@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace H.Controls.ScheduleBox
 {
-    public abstract class TriggerBase : DisplayViewModelBase, IScheduleTrigger
+    public abstract class TriggerBase : DisplayBindableBase, IScheduleTrigger
     {
         private string _key = Guid.NewGuid().ToString();
         [Display(Name = "唯一标识")]

@@ -10,7 +10,7 @@ using System.Xml.Serialization;
 
 namespace H.Modules.Identity
 {
-    public class User : SelectViewModel<hi_dd_user>, IUser
+    public class User : SelectBindable<hi_dd_user>, IUser
     {
         public User() : base(new hi_dd_user())
         {

@@ -11,7 +11,7 @@ namespace H.Test.SideMenu
         bool IsVisibleInTab { get; set; }
     }
 
-    public abstract class ManagerBase : DisplayViewModelBase, IManager
+    public abstract class ManagerBase : DisplayBindableBase, IManager
     {
         private bool _isVisibleInTab;
         public bool IsVisibleInTab

@@ -51,7 +51,7 @@ namespace H.Windows.Ribbon
 
         public void Execute(object parameter)
         {
-            if (parameter is ControlData data)
+            if (parameter is ControlBindableBase data)
             {
                 OpenFileDialog openFileDialog = new OpenFileDialog();
                 openFileDialog.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory; //设置初始路径

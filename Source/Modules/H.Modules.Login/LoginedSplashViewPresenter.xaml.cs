@@ -5,7 +5,7 @@ using H.Providers.Mvvm;
 
 namespace H.Modules.Login
 {
-    public class LoginedSplashViewPresenter : ViewModelBase, ILoginedSplashViewPresenter
+    public class LoginedSplashViewPresenter : BindableBase, ILoginedSplashViewPresenter
     {
         private string _message;
         public string Message

@@ -15,7 +15,7 @@ using System.Xml.Serialization;
 
 namespace H.Controls.FilterBox
 {
-    public abstract class PropertyFilterBase<T> : ViewModel, IPropertyFilter
+    public abstract class PropertyFilterBase<T> : Bindable, IPropertyFilter
     {
         public PropertyFilterBase()
         {

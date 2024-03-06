@@ -15,8 +15,8 @@
 
     <Style x:Key="{x:Type RibbonTextBox}" TargetType="{x:Type RibbonTextBox}">
         <Setter Property="Label" Value="RibbonTextBox" />
-        <Setter Property="LargeImageSource" Value="/Resources/CropImage32.png" />
-        <Setter Property="SmallImageSource" Value="/Resources/CropImage16.png" />
+        <Setter Property="LargeImageSource" Value="{Logo}" />
+        <Setter Property="SmallImageSource" Value="{Logo}" />
         <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Background}}" />
         <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Self}, Path=Ribbon.BorderBrush}" />
         <Setter Property="BorderThickness" Value="1" />

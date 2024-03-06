@@ -11,7 +11,7 @@ using System.IO;
 
 namespace H.Modules.Project
 {
-    public abstract class ProjectItemBase : ViewModelBase, IProjectItem
+    public abstract class ProjectItemBase : BindableBase, IProjectItem
     {
         private string _title;
         [Required]
