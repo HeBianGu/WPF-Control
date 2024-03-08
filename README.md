@@ -75,12 +75,8 @@ https://github.com/ravibpatel/AutoUpdater.NET
 [图片打不开？](https://gitee.com/hebiangu/wpf-document/blob/master/WPF-Controls/Images/w.jpg)
 
 ## 博客
-[https://blog.csdn.net/u010975589?type=blog](https://blog.csdn.net/u010975589?type=blog)
-
 [https://space.bilibili.com/370266611](https://space.bilibili.com/370266611)
 
-
 ## 参考项目
-https://github.com/HeBianGu/WPF-Control
-
+https://github.com/HeBianGu/WPF-ControlBase
 QQ:908293466
