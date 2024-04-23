@@ -59,6 +59,69 @@ https://github.com/HeBianGu/WPF-ControlBase
 ## AutoUpdater.NET
 https://github.com/ravibpatel/AutoUpdater.NET
 
+## 示例图片
+### 基础控件样式
+![qrcode](https://raw.githubusercontent.com/HeBianGu/WPF-Control/main/Document/Controls.png)
+### 流程图控件
+![qrcode](https://raw.githubusercontent.com/HeBianGu/WPF-Control/main/Document/Diagram.png)
+### 图表控件
+![qrcode](https://raw.githubusercontent.com/HeBianGu/WPF-Control/main/Document/Chart2D.png)
+### 设计器控件
+![qrcode](https://raw.githubusercontent.com/HeBianGu/WPF-Control/main/Document/Design.png)
+### Dock控件
+![qrcode](https://raw.githubusercontent.com/HeBianGu/WPF-Control/main/Document/Dock.png)
+### 收藏夹控件
+![qrcode](https://raw.githubusercontent.com/HeBianGu/WPF-Control/main/Document/FavoriteBox.png)
+### 列头带过滤器的表格控件
+![qrcode](https://raw.githubusercontent.com/HeBianGu/WPF-Control/main/Document/FilterDataGrid.png)
+### 过滤器控件
+![qrcode](https://raw.githubusercontent.com/HeBianGu/WPF-Control/main/Document/FiltterBox.png)
+### 表单控件
+![qrcode](https://raw.githubusercontent.com/HeBianGu/WPF-Control/main/Document/Form.png)
+### 分割区域控件
+![qrcode](https://raw.githubusercontent.com/HeBianGu/WPF-Control/main/Document/GridSpliterBox.png)
+### 向导控件
+![qrcode](https://raw.githubusercontent.com/HeBianGu/WPF-Control/main/Document/Guide.png)
+### 身份认证控件(用户，角色，权限和操作日志管理)
+![qrcode](https://raw.githubusercontent.com/HeBianGu/WPF-Control/main/Document/Identify.png)
+### 许可和会员管理控件
+![qrcode](https://raw.githubusercontent.com/HeBianGu/WPF-Control/main/Document/License.png)
+### 登录和注册控件
+![qrcode](https://raw.githubusercontent.com/HeBianGu/WPF-Control/main/Document/Login.png)
+### 通知消息控件
+![qrcode](https://raw.githubusercontent.com/HeBianGu/WPF-Control/main/Document/NotifyMessage.png)
+### 排序器控件
+![qrcode](https://raw.githubusercontent.com/HeBianGu/WPF-Control/main/Document/OrderBox.png)
+### OutlookBar控件
+![qrcode](https://raw.githubusercontent.com/HeBianGu/WPF-Control/main/Document/OutlookBar.png)
+### PDF控件
+![qrcode](https://raw.githubusercontent.com/HeBianGu/WPF-Control/main/Document/PDFBox.png)
+### 打印控件
+![qrcode](https://raw.githubusercontent.com/HeBianGu/WPF-Control/main/Document/PrintBox.png)
+### 项目管理控件
+![qrcode](https://raw.githubusercontent.com/HeBianGu/WPF-Control/main/Document/Project.png)
+### PropertyGrid控件
+![qrcode](https://raw.githubusercontent.com/HeBianGu/WPF-Control/main/Document/PropertyGrid.png)
+### 二维码控件
+![qrcode](https://raw.githubusercontent.com/HeBianGu/WPF-Control/main/Document/QRCode.png)
+### 仓储控件(可以直接绑定Model，根据仓储模型自动生成页面)
+![qrcode](https://raw.githubusercontent.com/HeBianGu/WPF-Control/main/Document/Repository.png)
+### Ribbon控件样式
+![qrcode](https://raw.githubusercontent.com/HeBianGu/WPF-Control/main/Document/Ribbon.png)
+### 系统设置控件
+![qrcode](https://raw.githubusercontent.com/HeBianGu/WPF-Control/main/Document/Setting.png)
+### 侧边菜单控件
+![qrcode](https://raw.githubusercontent.com/HeBianGu/WPF-Control/main/Document/SideMenu.png)
+### 进度消息控件
+![qrcode](https://raw.githubusercontent.com/HeBianGu/WPF-Control/main/Document/StepMessage.png)
+### Tag标签控件
+![qrcode](https://raw.githubusercontent.com/HeBianGu/WPF-Control/main/Document/TagBox.png)
+### 主题设置控件
+![qrcode](https://raw.githubusercontent.com/HeBianGu/WPF-Control/main/Document/Theme.png)
+### 系统升级更新控件
+![qrcode](https://raw.githubusercontent.com/HeBianGu/WPF-Control/main/Document/Upgrade.png)
+### Vlc视频控件
+![qrcode](https://raw.githubusercontent.com/HeBianGu/WPF-Control/main/Document/Vlc.png)
 
 ## 作者
 <a href="https://github.com/HeBianGu" target="_blank"><img style="height:auto;" alt="" width="40" height="40" class="avatar avatar-user width-full border color-bg-default" src="https://avatars.githubusercontent.com/u/20257332?v=4"></a>
