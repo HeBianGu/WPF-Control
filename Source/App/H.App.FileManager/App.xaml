@@ -19,7 +19,7 @@
                 <ResourceDictionary Source="pack://application:,,,/H.App.FileManager;component/Presenter/MoreImageView.xaml" />
 
                 <ResourceDictionary Source="pack://application:,,,/H.App.FileManager;component/Project/FileProjectItem.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/H.App.FileManager;component/ViewModel/FileRepositoryViewModel.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/H.App.FileManager;component/ViewModel/FileRepositoryBindable.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <!--<DataTemplate DataType="{x:Type local:fm_dd_video_image}">
                 <DockPanel>
