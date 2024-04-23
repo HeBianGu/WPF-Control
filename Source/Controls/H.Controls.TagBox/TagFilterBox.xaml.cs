@@ -232,7 +232,7 @@ namespace H.Controls.TagBox
             if (selectedTags.Count() == 0)
                 return true;
             object model = obj;
-            if (obj is IModelViewModel viewModel)
+            if (obj is IModelBindable viewModel)
             {
                 model = viewModel.GetModel();
             }

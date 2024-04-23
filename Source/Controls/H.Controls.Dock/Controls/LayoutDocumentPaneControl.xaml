@@ -19,8 +19,10 @@
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                         <!--  Following border is required to catch mouse events  -->
-                        <Border Grid.RowSpan="2" Background="Transparent" />
-                        <Grid Panel.ZIndex="1" Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type lc:LayoutDocumentPaneControl}}, Path=Model.ShowHeader, Converter={lcv:BoolToVisibilityConverter}}">
+                        <Border Grid.RowSpan="2"
+                                Background="Transparent" />
+                        <Grid Panel.ZIndex="1"
+                              Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type lc:LayoutDocumentPaneControl}}, Path=Model.ShowHeader, Converter={lcv:BoolToVisibilityConverter}}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
                                 <ColumnDefinition Width="Auto" />
@@ -37,9 +39,11 @@
                                                Focusable="False"
                                                Style="{DynamicResource {x:Static h:ToggleButtonKeys.Geometry}}">
                                 <lc:DropDownButton.DropDownContextMenu>
-                                    <lc:ContextMenuEx ItemsSource="{Binding Model.ChildrenSorted, RelativeSource={RelativeSource TemplatedParent}}" Style="{DynamicResource {x:Static h:ContextMenuKeys.Default}}">
+                                    <lc:ContextMenuEx ItemsSource="{Binding Model.ChildrenSorted, RelativeSource={RelativeSource TemplatedParent}}"
+                                                      Style="{DynamicResource {x:Static h:ContextMenuKeys.Default}}">
                                         <lc:ContextMenuEx.ItemContainerStyle>
-                                            <Style BasedOn="{StaticResource {x:Static h:MenuItemKeys.Default}}" TargetType="{x:Type lc:MenuItemEx}">
+                                            <Style BasedOn="{StaticResource {x:Static h:MenuItemKeys.Default}}"
+                                                   TargetType="{x:Type lc:MenuItemEx}">
                                                 <Setter Property="HeaderTemplate" Value="{Binding Path=Root.Manager.DocumentPaneMenuItemHeaderTemplate}" />
                                                 <Setter Property="HeaderTemplateSelector" Value="{Binding Path=Root.Manager.DocumentPaneMenuItemHeaderTemplateSelector}" />
                                                 <Setter Property="IconTemplate" Value="{Binding Path=Root.Manager.IconContentTemplate}" />
@@ -72,7 +76,8 @@
                         <!--<Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrushTitle}}" />
                         </Trigger>-->
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Model.ChildrenCount}" Value="0">
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Model.ChildrenCount}"
+                                     Value="0">
                             <Setter TargetName="MenuDropDownButton" Property="Visibility" Value="Collapsed" />
                         </DataTrigger>
                     </ControlTemplate.Triggers>
@@ -81,7 +86,8 @@
         </Setter>
         <Setter Property="ItemContainerStyle">
             <Setter.Value>
-                <Style BasedOn="{StaticResource {x:Static h:TabItemKeys.Default}}" TargetType="{x:Type TabItem}">
+                <Style BasedOn="{StaticResource {x:Static h:TabItemKeys.Default}}"
+                       TargetType="{x:Type TabItem}">
                     <Setter Property="Visibility" Value="{Binding IsVisible, Converter={lcv:BoolToVisibilityConverter}}" />
                     <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
                     <Setter Property="IsEnabled" Value="{Binding IsEnabled}" />

@@ -7,7 +7,7 @@ using System.Windows.Media;
 
 namespace H.Controls.FavoriteBox
 {
-    public class FavoriteItem : ViewModelBase, IFavoriteItem
+    public class FavoriteItem : BindableBase, IFavoriteItem
     {
         private string _name;
         [Required]

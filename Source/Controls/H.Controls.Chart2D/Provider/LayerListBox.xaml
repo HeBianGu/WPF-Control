@@ -4,7 +4,9 @@
                     xmlns:local="clr-namespace:H.Controls.Chart2D"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.LayerListBox.Default, TypeInTargetAssembly={x:Type local:LayerListBox}}" TargetType="{x:Type local:LayerListBox}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.LayerListBox.Default,
+                                        TypeInTargetAssembly={x:Type local:LayerListBox}}"
+           TargetType="{x:Type local:LayerListBox}">
         <Setter Property="Height" Value="{Binding RelativeSource={RelativeSource AncestorType=Canvas}, Path=ActualHeight}" />
         <Setter Property="Width" Value="{Binding RelativeSource={RelativeSource AncestorType=Canvas}, Path=ActualWidth}" />
         <Setter Property="Background" Value="Transparent" />
@@ -42,7 +44,8 @@
         <Setter Property="ItemTemplate">
             <Setter.Value>
                 <DataTemplate>
-                    <Grid Width="100" Height="50">
+                    <Grid Width="100"
+                          Height="50">
                         <Ellipse x:Name="ellipse"
                                  Width="20"
                                  Height="20"
@@ -54,11 +57,13 @@
                                    Text="{Binding}" />
                     </Grid>
                     <DataTemplate.Triggers>
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}, Path=IsMouseOver}" Value="True">
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}, Path=IsMouseOver}"
+                                     Value="True">
                             <Setter TargetName="ellipse" Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.ForegroundAssist}}" />
                         </DataTrigger>
 
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}, Path=IsSelected}" Value="True">
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}, Path=IsSelected}"
+                                     Value="True">
                             <Setter TargetName="ellipse" Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.ForegroundTitle}}" />
                         </DataTrigger>
                     </DataTemplate.Triggers>
@@ -69,7 +74,8 @@
         <Setter Property="ItemContainerStyle" Value="{StaticResource S.LayerListBox.ListBoxItem.Point}" />
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:LayerListBox.DefaultKey}}" TargetType="{x:Type local:LayerListBox}" />
+    <Style BasedOn="{StaticResource {x:Static h:LayerListBox.DefaultKey}}"
+           TargetType="{x:Type local:LayerListBox}" />
 
 
 </ResourceDictionary>

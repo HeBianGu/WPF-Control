@@ -8,7 +8,7 @@ namespace H.App.FileManager
         public bool Value { get; set; }
         public override bool IsMatch(object obj)
         {
-            if (obj is ModelViewModel<fm_dd_file> file)
+            if (obj is ModelBindable<fm_dd_file> file)
             {
                 return file.Model.SeeLater == Value;
             }

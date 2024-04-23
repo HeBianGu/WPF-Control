@@ -14,13 +14,13 @@ namespace H.App.FileManager
         public override IEnumerable Where(IEnumerable from)
         {
             if (this.UseDesc)
-                return from.OfType<IModelViewModel<fm_dd_file>>().OrderByDescending(x =>
+                return from.OfType<IModelBindable<fm_dd_file>>().OrderByDescending(x =>
                 {
                     if (x.Model is fm_dd_video video)
                         return video.Images.Count;
                     return 0;
                 });
-            return from.OfType<IModelViewModel<fm_dd_file>>().OrderBy(x =>
+            return from.OfType<IModelBindable<fm_dd_file>>().OrderBy(x =>
             {
                 if (x.Model is fm_dd_video video)
                     return video.Images.Count;

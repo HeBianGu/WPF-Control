@@ -2,17 +2,27 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.PrintBox">
-    <Style x:Key="{ComponentResourceKey ResourceId=S.PrintBox.Default, TypeInTargetAssembly={x:Type local:PrintBox}}" TargetType="{x:Type local:PrintBox}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.PrintBox.Default,
+                                        TypeInTargetAssembly={x:Type local:PrintBox}}"
+           TargetType="{x:Type local:PrintBox}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:PrintBox">
-                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
                         <DockPanel>
-                            <Control DockPanel.Dock="Top" Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:Cattach.TopTemplate)}" />
-                            <Control DockPanel.Dock="Right" Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:Cattach.RightTemplate)}" Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UseRight, Converter={x:Static h:Converter.GetTrueToVisible}}" />
-                            <Control DockPanel.Dock="Left" Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:Cattach.LeftTemplate)}" />
+                            <Control DockPanel.Dock="Top"
+                                     Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:Cattach.TopTemplate)}" />
+                            <Control DockPanel.Dock="Right"
+                                     Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:Cattach.RightTemplate)}"
+                                     Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UseRight, Converter={x:Static h:Converter.GetTrueToVisible}}" />
+                            <Control DockPanel.Dock="Left"
+                                     Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:Cattach.LeftTemplate)}" />
                             <ScrollViewer HorizontalScrollBarVisibility="Auto">
-                                <ItemsPresenter Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                <ItemsPresenter Margin="{TemplateBinding Padding}"
+                                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                             </ScrollViewer>
                         </DockPanel>
                     </Border>
@@ -29,8 +39,12 @@
             <Setter.Value>
                 <ControlTemplate>
                     <DockPanel Background="{DynamicResource {x:Static h:BrushKeys.Dark0_5}}">
-                        <ToggleButton Margin="5,0" DockPanel.Dock="Right" IsChecked="{Binding RelativeSource={RelativeSource AncestorType=local:PrintBox}, Path=UseRight}" />
-                        <ItemsControl Margin="0,2" HorizontalAlignment="Left" ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=local:PrintBox}, Path=CommandBindings}">
+                        <ToggleButton Margin="5,0"
+                                      DockPanel.Dock="Right"
+                                      IsChecked="{Binding RelativeSource={RelativeSource AncestorType=local:PrintBox}, Path=UseRight}" />
+                        <ItemsControl Margin="0,2"
+                                      HorizontalAlignment="Left"
+                                      ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=local:PrintBox}, Path=CommandBindings}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <Button MinWidth="80"
@@ -60,8 +74,9 @@
                                       ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=h:PrintBox}, Path=ItemsSource}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Expander Header="{Binding ., Converter={x:Static h:Converter.GetDiaplayName}}" IsExpanded="False">
-                                        <h:Form SelectObject="{Binding}"/>
+                                    <Expander Header="{Binding ., Converter={x:Static h:Converter.GetDiaplayName}}"
+                                              IsExpanded="False">
+                                        <h:Form SelectObject="{Binding}" />
                                     </Expander>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
@@ -96,6 +111,7 @@
             </Setter.Value>
         </Setter>-->
     </Style>
-    <Style BasedOn="{StaticResource {x:Static local:PrintBox.DefaultKey}}" TargetType="{x:Type local:PrintBox}" />
+    <Style BasedOn="{StaticResource {x:Static local:PrintBox.DefaultKey}}"
+           TargetType="{x:Type local:PrintBox}" />
 </ResourceDictionary>
 

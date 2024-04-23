@@ -6,7 +6,8 @@
 
     <local:CalculatorMemoryToVisibilityConverter x:Key="CalculatorMemoryToVisibilityConverter" />
 
-    <Style x:Key="CalculatorOperatorButtonStyle" TargetType="{x:Type Button}">
+    <Style x:Key="CalculatorOperatorButtonStyle"
+           TargetType="{x:Type Button}">
         <Setter Property="Focusable" Value="False" />
         <Setter Property="Foreground" Value="#FF5B636E" />
         <Setter Property="Template">
@@ -70,7 +71,8 @@
                                 </Grid>
                             </Border>
                         </Grid>
-                        <Grid x:Name="PART_MouseOver" Opacity="0">
+                        <Grid x:Name="PART_MouseOver"
+                              Opacity="0">
                             <Border Background="#FF9CA2AB"
                                     BorderThickness="0"
                                     CornerRadius="2">
@@ -86,7 +88,8 @@
                                 </Border>
                             </Border>
                         </Grid>
-                        <Grid x:Name="PART_Pressed" Opacity="0">
+                        <Grid x:Name="PART_Pressed"
+                              Opacity="0">
                             <Border Background="#FF90959D"
                                     BorderThickness="0"
                                     CornerRadius="2">
@@ -162,7 +165,8 @@
         </Setter>
     </Style>
 
-    <Style x:Key="CalculatorClearButtonStyle" TargetType="{x:Type Button}">
+    <Style x:Key="CalculatorClearButtonStyle"
+           TargetType="{x:Type Button}">
         <Setter Property="Focusable" Value="False" />
         <Setter Property="Foreground" Value="#FFBF5254" />
         <Setter Property="Template">
@@ -176,7 +180,8 @@
                                 CornerRadius="2"
                                 Opacity="0.5" />
                         <Grid x:Name="PART_Default">
-                            <Border BorderThickness="0" CornerRadius="2">
+                            <Border BorderThickness="0"
+                                    CornerRadius="2">
                                 <Border.Background>
                                     <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                         <GradientStop Offset="0" Color="#FFC19497" />
@@ -195,8 +200,10 @@
                                 </Border>
                             </Border>
                         </Grid>
-                        <Grid x:Name="PART_MouseOver" Opacity="0">
-                            <Border BorderThickness="0" CornerRadius="2">
+                        <Grid x:Name="PART_MouseOver"
+                              Opacity="0">
+                            <Border BorderThickness="0"
+                                    CornerRadius="2">
                                 <Border.Background>
                                     <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                         <GradientStop Offset="0" Color="#FFC19497" />
@@ -215,7 +222,8 @@
                                 </Border>
                             </Border>
                         </Grid>
-                        <Grid x:Name="PART_Pressed" Opacity="0">
+                        <Grid x:Name="PART_Pressed"
+                              Opacity="0">
                             <Border Background="#FF9B6F72"
                                     BorderThickness="0"
                                     CornerRadius="2">
@@ -276,7 +284,8 @@
         </Setter>
     </Style>
 
-    <Style x:Key="CalculatorDigitButtonStyle" TargetType="{x:Type Button}">
+    <Style x:Key="CalculatorDigitButtonStyle"
+           TargetType="{x:Type Button}">
         <Setter Property="Focusable" Value="False" />
         <Setter Property="Foreground" Value="#FF2A313A" />
         <Setter Property="Template">
@@ -290,7 +299,8 @@
                                 CornerRadius="3"
                                 Opacity="0.5" />
                         <Grid x:Name="PART_Default">
-                            <Border BorderThickness="0" CornerRadius="2">
+                            <Border BorderThickness="0"
+                                    CornerRadius="2">
                                 <Border.Background>
                                     <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                         <GradientStop Offset="0" Color="#FFA9AAAB" />
@@ -309,8 +319,10 @@
                                 </Border>
                             </Border>
                         </Grid>
-                        <Grid x:Name="PART_MouseOver" Opacity="0">
-                            <Border BorderThickness="0" CornerRadius="2">
+                        <Grid x:Name="PART_MouseOver"
+                              Opacity="0">
+                            <Border BorderThickness="0"
+                                    CornerRadius="2">
                                 <Border.Background>
                                     <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                         <GradientStop Offset="0" Color="#FFA9AAAB" />
@@ -329,7 +341,8 @@
                                 </Border>
                             </Border>
                         </Grid>
-                        <Grid x:Name="PART_Pressed" Opacity="0">
+                        <Grid x:Name="PART_Pressed"
+                              Opacity="0">
                             <Border Background="#FF87888A"
                                     BorderThickness="0"
                                     CornerRadius="2">
@@ -391,7 +404,8 @@
     </Style>
 
 
-    <ControlTemplate x:Key="CalculatorButtonPanel" TargetType="{x:Type ContentControl}">
+    <ControlTemplate x:Key="CalculatorButtonPanel"
+                     TargetType="{x:Type ContentControl}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />

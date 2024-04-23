@@ -3,6 +3,7 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Presenters.Common">
     <DataTemplate DataType="{x:Type local:WaitPresenter}">
-        <ProgressBar Height="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}" IsIndeterminate="True" />
+        <ProgressBar Height="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}"
+                     IsIndeterminate="True" />
     </DataTemplate>
 </ResourceDictionary>

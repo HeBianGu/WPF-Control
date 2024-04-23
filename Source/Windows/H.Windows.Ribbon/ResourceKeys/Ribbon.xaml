@@ -5,7 +5,9 @@
                     xmlns:primitives="clr-namespace:System.Windows.Controls.Ribbon.Primitives;assembly=System.Windows.Controls.Ribbon"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-    <Style x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:RibbonKeys}, ResourceId=S.Ribbon.Default}" TargetType="{x:Type Ribbon}">
+    <Style x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:RibbonKeys},
+                                        ResourceId=S.Ribbon.Default}"
+           TargetType="{x:Type Ribbon}">
         <Style.Resources>
             <PopupAnimation x:Key="{x:Static SystemParameters.MenuPopupAnimationKey}">Fade</PopupAnimation>
         </Style.Resources>
@@ -51,7 +53,8 @@
                                 BorderBrush="{TemplateBinding BorderBrush}" />
 
                         <!--  Popup hosting the groups when IsMinimized=true  -->
-                        <Border Grid.Row="1" Grid.ColumnSpan="3">
+                        <Border Grid.Row="1"
+                                Grid.ColumnSpan="3">
                             <Popup x:Name="PART_ITEMSPRESENTERPOPUP"
                                    AllowsTransparency="True"
                                    IsOpen="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}"
@@ -62,7 +65,8 @@
                                                                 Focusable="True"
                                                                 RenderOptions.ClearTypeHint="Enabled"
                                                                 Color="Transparent">
-                                    <Border Name="CollapsedPopupBackgroundBorder" Background="{TemplateBinding Background}">
+                                    <Border Name="CollapsedPopupBackgroundBorder"
+                                            Background="{TemplateBinding Background}">
                                         <ContentControl x:Name="popupItemsPresenterHost"
                                                         Margin="0,1,0,0"
                                                         Focusable="False"
@@ -204,11 +208,13 @@
                                                     </Setter>-->
                                                 </MultiDataTrigger>
 
-                                                <DataTrigger Binding="{Binding Path=(SystemParameters.IsGlassEnabled)}" Value="False">
+                                                <DataTrigger Binding="{Binding Path=(SystemParameters.IsGlassEnabled)}"
+                                                             Value="False">
                                                     <Setter TargetName="titleTextBlock" Property="Margin" Value="0" />
                                                     <Setter TargetName="titleTextBlock" Property="VerticalAlignment" Value="Center" />
                                                 </DataTrigger>
-                                                <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+                                                <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
+                                                             Value="True">
                                                     <Setter TargetName="titleTextBlock" Property="Margin" Value="0,1,0,0" />
                                                 </DataTrigger>
                                                 <!--  The Title is drawn slightly differently in AeroLite.  -->
@@ -326,7 +332,8 @@
                             </MultiDataTrigger.Conditions>
                             <Setter TargetName="PART_TitleHost" Property="TextElement.Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundAssist}}" />
                         </MultiDataTrigger>
-                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
+                                     Value="True">
                             <Setter TargetName="BackgroundBorder" Property="Background" Value="{DynamicResource {x:Static BrushKeys.MouseOver}}" />
                             <Setter TargetName="BackgroundBorder" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.Red}}" />
                             <Setter TargetName="groupsBorder" Property="Background" Value="Transparent" />
@@ -351,7 +358,8 @@
 
                         <!--  The Title & separators that surround the QAT are drawn slightly differently in Aero.  -->
 
-                        <DataTrigger Binding="{Binding Path=(SystemParameters.UxThemeName)}" Value="Aero">
+                        <DataTrigger Binding="{Binding Path=(SystemParameters.UxThemeName)}"
+                                     Value="Aero">
                             <Setter TargetName="QatTopHost" Property="Margin" Value="0,-3,0,0" />
                             <Setter TargetName="QatTopHostLeftBorder" Property="Margin" Value="3,3,0,5" />
                             <Setter TargetName="QatTopHostLeftBorder" Property="Background" Value="{DynamicResource {x:Static BrushKeys.Background}}" />
@@ -373,5 +381,6 @@
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static local:RibbonKeys.Default}}" TargetType="{x:Type Ribbon}" />
+    <Style BasedOn="{StaticResource {x:Static local:RibbonKeys.Default}}"
+           TargetType="{x:Type Ribbon}" />
 </ResourceDictionary>

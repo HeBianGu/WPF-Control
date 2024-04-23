@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace H.Modules.Login
 {
-    public class LoginViewPresenter : ViewModelBase, ILoginViewPresenter
+    public class LoginViewPresenter : BindableBase, ILoginViewPresenter
     {
         private IOptions<LoginOptions> _options;
         public LoginViewPresenter(IOptions<LoginOptions> options)

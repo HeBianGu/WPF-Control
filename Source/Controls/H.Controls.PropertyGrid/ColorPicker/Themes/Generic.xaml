@@ -9,11 +9,16 @@
         <ResourceDictionary Source="..\..\Themes\Generic\Glyphs.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <SolidColorBrush x:Key="ButtonHover" Color="#C2E0FF" />
-    <SolidColorBrush x:Key="ButtonHoverBorder" Color="#3399FF" />
-    <SolidColorBrush x:Key="ButtonChecked" Color="#E6F0FA" />
-    <SolidColorBrush x:Key="ButtonPressed" Color="#99CCFF" />
-    <SolidColorBrush x:Key="ButtonPressedBorder" Color="#3399FF" />
+    <SolidColorBrush x:Key="ButtonHover"
+                     Color="#C2E0FF" />
+    <SolidColorBrush x:Key="ButtonHoverBorder"
+                     Color="#3399FF" />
+    <SolidColorBrush x:Key="ButtonChecked"
+                     Color="#E6F0FA" />
+    <SolidColorBrush x:Key="ButtonPressed"
+                     Color="#99CCFF" />
+    <SolidColorBrush x:Key="ButtonPressedBorder"
+                     Color="#3399FF" />
 
     <!--  ===============================================================================  -->
     <!--  ColorPicker  -->
@@ -41,12 +46,14 @@
         </LinearGradientBrush.GradientStops>
     </LinearGradientBrush>
 
-    <Style x:Key="ColorItemContainerStyle" TargetType="{x:Type ListBoxItem}">
+    <Style x:Key="ColorItemContainerStyle"
+           TargetType="{x:Type ListBoxItem}">
         <Setter Property="ToolTip" Value="{Binding Name}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                    <Grid x:Name="mainGrid" ToolTip="{Binding Name}">
+                    <Grid x:Name="mainGrid"
+                          ToolTip="{Binding Name}">
                         <Grid.Resources>
                             <Style TargetType="ToolTip">
                                 <Style.Triggers>
@@ -56,7 +63,8 @@
                                 </Style.Triggers>
                             </Style>
                         </Grid.Resources>
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center" />
                         <Border x:Name="_outerBorder"
                                 HorizontalAlignment="Stretch"
                                 VerticalAlignment="Stretch"
@@ -80,7 +88,8 @@
                             <Setter TargetName="_outerBorder" Property="BorderBrush" Value="#FFFF0000" />
                             <Setter TargetName="_innerBorder" Property="BorderBrush" Value="#FFFFFF00" />
                         </Trigger>
-                        <DataTrigger Binding="{Binding DisplayColorTooltip, RelativeSource={RelativeSource AncestorType={x:Type local:ColorPicker}}}" Value="False">
+                        <DataTrigger Binding="{Binding DisplayColorTooltip, RelativeSource={RelativeSource AncestorType={x:Type local:ColorPicker}}}"
+                                     Value="False">
                             <Setter TargetName="mainGrid" Property="ToolTip" Value="{x:Static sys:String.Empty}" />
                         </DataTrigger>
                     </ControlTemplate.Triggers>
@@ -95,7 +104,8 @@
                     Background="{StaticResource CheckerBrush}"
                     BorderBrush="Black"
                     BorderThickness="1">
-                <Rectangle Width="14" Height="14">
+                <Rectangle Width="14"
+                           Height="14">
                     <Rectangle.Style>
                         <Style TargetType="Rectangle">
                             <Setter Property="Fill" Value="{Binding Color, Converter={StaticResource ColorToSolidColorBrushConverter}}" />
@@ -106,7 +116,8 @@
         </Grid>
     </DataTemplate>
 
-    <Style x:Key="ColorPickerToggleButtonStyle" TargetType="ToggleButton">
+    <Style x:Key="ColorPickerToggleButtonStyle"
+           TargetType="ToggleButton">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ToggleButton">
@@ -164,7 +175,8 @@
         </Setter>
     </Style>
 
-    <Style x:Key="ColorDisplayStyle" TargetType="ContentControl">
+    <Style x:Key="ColorDisplayStyle"
+           TargetType="ContentControl">
         <Setter Property="Focusable" Value="False" />
         <Setter Property="ContentTemplate">
             <Setter.Value>
@@ -176,13 +188,15 @@
             </Setter.Value>
         </Setter>
         <Style.Triggers>
-            <DataTrigger Binding="{Binding SelectedColor, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ColorPicker}}" Value="{x:Null}">
+            <DataTrigger Binding="{Binding SelectedColor, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ColorPicker}}"
+                         Value="{x:Null}">
                 <Setter Property="Visibility" Value="Collapsed" />
             </DataTrigger>
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="ColorListStyle" TargetType="ListBox">
+    <Style x:Key="ColorListStyle"
+           TargetType="ListBox">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="MaxHeight" Value="500" />
@@ -199,8 +213,10 @@
         <Setter Property="SelectionMode" Value="Single" />
     </Style>
 
-    <ControlTemplate x:Key="TabItemTemplate" TargetType="{x:Type local:ColorPickerTabItem}">
-        <Grid x:Name="templateRoot" SnapsToDevicePixels="true">
+    <ControlTemplate x:Key="TabItemTemplate"
+                     TargetType="{x:Type local:ColorPickerTabItem}">
+        <Grid x:Name="templateRoot"
+              SnapsToDevicePixels="true">
             <Border x:Name="mainBorder"
                     Margin="0"
                     Background="#FFF0F0F0"
@@ -260,7 +276,8 @@
                                       IsTabStop="True"
                                       Style="{TemplateBinding ButtonStyle}">
                             <Grid Margin="2">
-                                <ContentControl x:Name="ColorOnly" Style="{StaticResource ColorDisplayStyle}" />
+                                <ContentControl x:Name="ColorOnly"
+                                                Style="{StaticResource ColorDisplayStyle}" />
 
                                 <Border x:Name="ColorAndName"
                                         Background="White"
@@ -272,7 +289,8 @@
                                                         BorderBrush="#FFC9CACA"
                                                         BorderThickness="1"
                                                         Style="{StaticResource ColorDisplayStyle}" />
-                                        <TextBlock VerticalAlignment="Center" Text="{Binding SelectedColorText, RelativeSource={RelativeSource TemplatedParent}}" />
+                                        <TextBlock VerticalAlignment="Center"
+                                                   Text="{Binding SelectedColorText, RelativeSource={RelativeSource TemplatedParent}}" />
                                     </StackPanel>
                                 </Border>
                             </Grid>
@@ -307,7 +325,8 @@
                                     <local:ColorPickerTabItem x:Name="StandardTabItem"
                                                               Header="{Binding StandardButtonHeader, RelativeSource={RelativeSource TemplatedParent}}"
                                                               Template="{StaticResource TabItemTemplate}">
-                                        <Grid x:Name="_colorPaletteHost" Margin="4">
+                                        <Grid x:Name="_colorPaletteHost"
+                                              Margin="4">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto" />
                                                 <RowDefinition Height="Auto" />
@@ -316,7 +335,9 @@
                                             </Grid.RowDefinitions>
 
                                             <!--  Available Colors  -->
-                                            <Grid Grid.Row="1" Visibility="{TemplateBinding ShowAvailableColors, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            <Grid Grid.Row="1"
+                                                  Visibility="{TemplateBinding ShowAvailableColors,
+                                                                               Converter={StaticResource BooleanToVisibilityConverter}}">
                                                 <Grid>
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="Auto" />
@@ -334,7 +355,9 @@
                                             </Grid>
 
                                             <!--  Standard Colors  -->
-                                            <Grid Grid.Row="2" Visibility="{TemplateBinding ShowStandardColors, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            <Grid Grid.Row="2"
+                                                  Visibility="{TemplateBinding ShowStandardColors,
+                                                                               Converter={StaticResource BooleanToVisibilityConverter}}">
                                                 <Grid>
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="Auto" />

@@ -5,8 +5,10 @@
                     xmlns:local="clr-namespace:H.Controls.Chart2D"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-    <DataTemplate x:Key="S.Series.Template.LegendItem" DataType="{x:Type local:LegendItem}">
-        <Grid x:Name="grid" Background="Transparent">
+    <DataTemplate x:Key="S.Series.Template.LegendItem"
+                  DataType="{x:Type local:LegendItem}">
+        <Grid x:Name="grid"
+              Background="Transparent">
             <ToggleButton MinWidth="10"
                           HorizontalAlignment="Left"
                           h:Cattach.CheckedIcon=""
@@ -30,27 +32,33 @@
                 </StackPanel>
                 <b:Interaction.Triggers>
                     <b:EventTrigger EventName="Checked">
-                        <b:CallMethodAction MethodName="ForceDraw" TargetObject="{Binding Series}" />
+                        <b:CallMethodAction MethodName="ForceDraw"
+                                            TargetObject="{Binding Series}" />
                     </b:EventTrigger>
                 </b:Interaction.Triggers>
             </ToggleButton>
         </Grid>
         <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding ElementName=grid, Path=IsMouseOver}" Value="True">
+            <DataTrigger Binding="{Binding ElementName=grid, Path=IsMouseOver}"
+                         Value="True">
                 <Setter TargetName="txt" Property="Foreground" Value="{Binding Series.Foreground}" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding Series.Visibility}" Value="Collapsed">
+            <DataTrigger Binding="{Binding Series.Visibility}"
+                         Value="Collapsed">
                 <Setter Property="Opacity" Value="0.4" />
             </DataTrigger>
 
-            <DataTrigger Binding="{Binding Series.IsMouseOver}" Value="True">
+            <DataTrigger Binding="{Binding Series.IsMouseOver}"
+                         Value="True">
                 <Setter TargetName="txt" Property="Foreground" Value="{Binding Series.Foreground}" />
                 <Setter Property="Opacity" Value="0.9" />
             </DataTrigger>
         </DataTemplate.Triggers>
     </DataTemplate>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Legend.Default, TypeInTargetAssembly={x:Type local:Legend}}" TargetType="{x:Type local:Legend}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Legend.Default,
+                                        TypeInTargetAssembly={x:Type local:Legend}}"
+           TargetType="{x:Type local:Legend}">
         <Setter Property="ItemTemplate" Value="{StaticResource S.Series.Template.LegendItem}" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Top" />
@@ -74,7 +82,9 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Legend.Vertical, TypeInTargetAssembly={x:Type local:Legend}}" TargetType="{x:Type local:Legend}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Legend.Vertical,
+                                        TypeInTargetAssembly={x:Type local:Legend}}"
+           TargetType="{x:Type local:Legend}">
         <Setter Property="ItemTemplate" Value="{StaticResource S.Series.Template.LegendItem}" />
         <Setter Property="HorizontalAlignment" Value="Right" />
         <Setter Property="VerticalAlignment" Value="Top" />
@@ -99,10 +109,13 @@
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:Legend.DefaultKey}}" TargetType="{x:Type local:Legend}" />
+    <Style BasedOn="{StaticResource {x:Static h:Legend.DefaultKey}}"
+           TargetType="{x:Type local:Legend}" />
 
-    <DataTemplate x:Key="S.Series.Template.PathLegendItem" DataType="{x:Type local:ShapeLegendItem}">
-        <Grid x:Name="grid" Background="Transparent">
+    <DataTemplate x:Key="S.Series.Template.PathLegendItem"
+                  DataType="{x:Type local:ShapeLegendItem}">
+        <Grid x:Name="grid"
+              Background="Transparent">
             <ToggleButton HorizontalAlignment="Left"
                           h:Cattach.CheckedIcon=""
                           h:Cattach.UncheckedIcon=""
@@ -125,19 +138,23 @@
                 </StackPanel>
                 <b:Interaction.Triggers>
                     <b:EventTrigger EventName="Checked">
-                        <b:CallMethodAction MethodName="Checked" TargetObject="{Binding}" />
+                        <b:CallMethodAction MethodName="Checked"
+                                            TargetObject="{Binding}" />
                     </b:EventTrigger>
                     <b:EventTrigger EventName="Unchecked">
-                        <b:CallMethodAction MethodName="Unchecked" TargetObject="{Binding}" />
+                        <b:CallMethodAction MethodName="Unchecked"
+                                            TargetObject="{Binding}" />
                     </b:EventTrigger>
                 </b:Interaction.Triggers>
             </ToggleButton>
         </Grid>
         <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding ElementName=grid, Path=IsMouseOver}" Value="True">
+            <DataTrigger Binding="{Binding ElementName=grid, Path=IsMouseOver}"
+                         Value="True">
                 <Setter TargetName="txt" Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding IsChecked}" Value="False">
+            <DataTrigger Binding="{Binding IsChecked}"
+                         Value="False">
                 <Setter Property="Opacity" Value="0.4" />
             </DataTrigger>
         </DataTemplate.Triggers>
@@ -150,10 +167,13 @@
         <Setter Property="ItemTemplate" Value="{StaticResource S.Series.Template.PathLegendItem}" />
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:PathLegend.DefaultKey}}" TargetType="{x:Type local:PathLegend}" />
+    <Style BasedOn="{StaticResource {x:Static h:PathLegend.DefaultKey}}"
+           TargetType="{x:Type local:PathLegend}" />
 
-    <DataTemplate x:Key="S.Series.Template.StackLegendItem" DataType="{x:Type local:StackLegendItem}">
-        <Grid x:Name="grid" Background="Transparent">
+    <DataTemplate x:Key="S.Series.Template.StackLegendItem"
+                  DataType="{x:Type local:StackLegendItem}">
+        <Grid x:Name="grid"
+              Background="Transparent">
             <ToggleButton HorizontalAlignment="Left"
                           h:Cattach.CheckedIcon=""
                           h:Cattach.UncheckedIcon=""
@@ -174,23 +194,28 @@
                 </StackPanel>
                 <b:Interaction.Triggers>
                     <b:EventTrigger EventName="Checked">
-                        <b:CallMethodAction MethodName="Checked" TargetObject="{Binding}" />
+                        <b:CallMethodAction MethodName="Checked"
+                                            TargetObject="{Binding}" />
                     </b:EventTrigger>
                     <b:EventTrigger EventName="Unchecked">
-                        <b:CallMethodAction MethodName="Unchecked" TargetObject="{Binding}" />
+                        <b:CallMethodAction MethodName="Unchecked"
+                                            TargetObject="{Binding}" />
                     </b:EventTrigger>
                 </b:Interaction.Triggers>
             </ToggleButton>
         </Grid>
         <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding ElementName=grid, Path=IsMouseOver}" Value="True">
+            <DataTrigger Binding="{Binding ElementName=grid, Path=IsMouseOver}"
+                         Value="True">
                 <Setter TargetName="txt" Property="Foreground" Value="{Binding Brush}" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding IsChecked}" Value="False">
+            <DataTrigger Binding="{Binding IsChecked}"
+                         Value="False">
                 <Setter Property="Opacity" Value="0.4" />
             </DataTrigger>
 
-            <DataTrigger Binding="{Binding Layer.IsMouseOver}" Value="True">
+            <DataTrigger Binding="{Binding Layer.IsMouseOver}"
+                         Value="True">
                 <Setter TargetName="txt" Property="Foreground" Value="{Binding Brush}" />
                 <Setter Property="Opacity" Value="0.9" />
             </DataTrigger>
@@ -203,7 +228,8 @@
            TargetType="{x:Type local:StackLegend}">
         <Setter Property="ItemTemplate" Value="{StaticResource S.Series.Template.StackLegendItem}" />
     </Style>
-    <Style BasedOn="{StaticResource {x:Static h:StackLegend.DefaultKey}}" TargetType="{x:Type local:StackLegend}" />
+    <Style BasedOn="{StaticResource {x:Static h:StackLegend.DefaultKey}}"
+           TargetType="{x:Type local:StackLegend}" />
 
 
 </ResourceDictionary>

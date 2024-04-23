@@ -19,7 +19,8 @@
     <Geometry x:Key="S.Geometry.240">M 0,0 L 4,3.5 L 0,7 Z</Geometry>
 
     <!--  Used in DropDown controls that can resize both Horizontally and Vertically  -->
-    <Style x:Key="S.Thumb.SizeNWSE" TargetType="{x:Type Thumb}">
+    <Style x:Key="S.Thumb.SizeNWSE"
+           TargetType="{x:Type Thumb}">
         <Setter Property="Width" Value="11" />
         <Setter Property="Height" Value="11" />
         <Setter Property="VerticalAlignment" Value="Bottom" />
@@ -43,7 +44,8 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="S.Thumb.SizeNESW.Left" TargetType="{x:Type Thumb}">
+    <Style x:Key="S.Thumb.SizeNESW.Left"
+           TargetType="{x:Type Thumb}">
         <Setter Property="Width" Value="11" />
         <Setter Property="Height" Value="11" />
         <Setter Property="VerticalAlignment" Value="Bottom" />
@@ -67,7 +69,8 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="S.Thumb.SizeNESW.Right" TargetType="{x:Type Thumb}">
+    <Style x:Key="S.Thumb.SizeNESW.Right"
+           TargetType="{x:Type Thumb}">
         <Setter Property="Width" Value="11" />
         <Setter Property="Height" Value="11" />
         <Setter Property="VerticalAlignment" Value="Top" />
@@ -92,7 +95,8 @@
     </Style>
 
     <!--  Used in DropDown controls that can resize only Vertically  -->
-    <Style x:Key="S.Thumb.SizeNs" TargetType="{x:Type Thumb}">
+    <Style x:Key="S.Thumb.SizeNs"
+           TargetType="{x:Type Thumb}">
         <Setter Property="Height" Value="11" />
         <Setter Property="Cursor" Value="SizeNS" />
         <Setter Property="Template">
@@ -113,8 +117,10 @@
         </Setter>
     </Style>
 
-    <ControlTemplate x:Key="S.RibbonToggleButton.Down" TargetType="{x:Type RibbonToggleButton}">
-        <Grid x:Name="MainGrid" SnapsToDevicePixels="True">
+    <ControlTemplate x:Key="S.RibbonToggleButton.Down"
+                     TargetType="{x:Type RibbonToggleButton}">
+        <Grid x:Name="MainGrid"
+              SnapsToDevicePixels="True">
             <Border x:Name="OuterBorder"
                     Background="{TemplateBinding Background}"
                     BorderBrush="{TemplateBinding BorderBrush}"
@@ -165,7 +171,8 @@
         <ControlTemplate.Triggers>
 
             <!--  Large Variant  -->
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}" Value="Large">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}"
+                         Value="Large">
                 <Setter Property="MinWidth" Value="44" />
                 <Setter Property="Height" Value="66" />
                 <Setter TargetName="Grid" Property="MinHeight" Value="26" />
@@ -173,7 +180,8 @@
             </DataTrigger>
 
             <!--  Medium or Small Variant  -->
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}" Value="Small">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}"
+                         Value="Small">
                 <Setter Property="Height" Value="{StaticResource S.Hight.SmallImage}" />
                 <Setter TargetName="PART_Image" Property="Margin" Value="1,0,1,0" />
                 <Setter TargetName="PART_Image" Property="Source" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SmallImageSource}" />
@@ -192,12 +200,14 @@
                 <Setter Property="VerticalAlignment" Value="Center" />
             </MultiDataTrigger>
 
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.IsLabelVisible}" Value="False">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.IsLabelVisible}"
+                         Value="False">
                 <Setter TargetName="TwoLineText" Property="Text" Value="{x:Null}" />
                 <Setter TargetName="TwoLineText" Property="Margin" Value="0" />
             </DataTrigger>
 
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}" Value="Collapsed">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}"
+                         Value="Collapsed">
                 <Setter TargetName="PART_Image" Property="Visibility" Value="Collapsed" />
             </DataTrigger>
 
@@ -269,7 +279,8 @@
 
             <!--  HighContrast  -->
 
-            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
+                         Value="True">
 
 
 
@@ -456,7 +467,8 @@
     </ControlTemplate>
 
 
-    <ControlTemplate x:Key="S.RibbonButton.Template" TargetType="{x:Type RibbonButton}">
+    <ControlTemplate x:Key="S.RibbonButton.Template"
+                     TargetType="{x:Type RibbonButton}">
         <Border x:Name="OuterBorder"
                 Background="{TemplateBinding Background}"
                 BorderBrush="{TemplateBinding BorderBrush}"
@@ -496,14 +508,16 @@
 
         <ControlTemplate.Triggers>
             <!--  Large Variant  -->
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}" Value="Large">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}"
+                         Value="Large">
                 <Setter Property="MinWidth" Value="44" />
                 <Setter Property="Height" Value="66" />
                 <Setter TargetName="Grid" Property="MinHeight" Value="26" />
                 <Setter TargetName="TwoLineText" Property="HasTwoLines" Value="True" />
             </DataTrigger>
             <!--  Medium or Small Variant  -->
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}" Value="Small">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}"
+                         Value="Small">
                 <Setter Property="Height" Value="22" />
                 <Setter TargetName="PART_Image" Property="Margin" Value="1,0,1,0" />
                 <Setter TargetName="PART_Image" Property="Source" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SmallImageSource}" />
@@ -521,11 +535,13 @@
                 <Setter Property="Height" Value="Auto" />
                 <Setter Property="VerticalAlignment" Value="Center" />
             </MultiDataTrigger>
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.IsLabelVisible}" Value="False">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.IsLabelVisible}"
+                         Value="False">
                 <Setter TargetName="TwoLineText" Property="Visibility" Value="Collapsed" />
             </DataTrigger>
 
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}" Value="Collapsed">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}"
+                         Value="Collapsed">
                 <Setter TargetName="PART_Image" Property="Visibility" Value="Collapsed" />
             </DataTrigger>
             <!--  IsMouseOver  -->
@@ -562,7 +578,8 @@
                 <Setter TargetName="PART_Image" Property="Opacity" Value="0.5" />
                 <Setter TargetName="OuterBorder" Property="TextElement.Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
             </Trigger>
-            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
+                         Value="True">
                 <Setter TargetName="OuterBorder" Property="TextElement.Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
                 <Setter TargetName="OuterBorder" Property="Background" Value="Transparent" />
                 <Setter TargetName="OuterBorder" Property="BorderBrush" Value="Transparent" />

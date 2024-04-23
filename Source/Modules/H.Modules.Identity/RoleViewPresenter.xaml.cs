@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 using H.Extensions.ViewModel;
 using H.Providers.Ioc;
 using H.Providers.Mvvm;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace H.Modules.Identity
 {
-    public class RoleEditPresenter : ModelViewModel<hi_dd_role>
+    public class RoleEditPresenter : ModelBindable<hi_dd_role>
     {
         public RoleEditPresenter(hi_dd_role model) : base(model)
         {
@@ -28,7 +28,7 @@ namespace H.Modules.Identity
         }
     }
 
-    public class RoleRepositoryViewModel : RepositoryViewModel<hi_dd_role>
+    public class RoleRepositoryViewModel : RepositoryBindable<hi_dd_role>
     {
         public override async Task Add(object obj)
         {

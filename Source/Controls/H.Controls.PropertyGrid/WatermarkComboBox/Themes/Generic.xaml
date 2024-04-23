@@ -13,11 +13,14 @@
     <!--  ===============================================================================  -->
     <!--  WatermarkTextBox Template  -->
     <!--  ===============================================================================  -->
-    <ControlTemplate x:Key="WatermarkComboBoxTemplate" TargetType="{x:Type local:WatermarkComboBox}">
-        <Grid x:Name="templateRoot" SnapsToDevicePixels="True">
+    <ControlTemplate x:Key="WatermarkComboBoxTemplate"
+                     TargetType="{x:Type local:WatermarkComboBox}">
+        <Grid x:Name="templateRoot"
+              SnapsToDevicePixels="True">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="0" MinWidth="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" />
+                <ColumnDefinition Width="0"
+                                  MinWidth="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" />
             </Grid.ColumnDefinitions>
             <Popup x:Name="PART_Popup"
                    Grid.ColumnSpan="2"
@@ -293,7 +296,8 @@
     <!--  WatermarkTextBox Style  -->
     <!--  ===============================================================================  -->
 
-    <Style x:Key="WatermarkComboBox" TargetType="{x:Type local:WatermarkComboBox}">
+    <Style x:Key="WatermarkComboBox"
+           TargetType="{x:Type local:WatermarkComboBox}">
         <Setter Property="FocusVisualStyle">
             <Setter.Value>
                 <Style>
@@ -330,6 +334,7 @@
         <Setter Property="Template" Value="{StaticResource WatermarkComboBoxTemplate}" />
     </Style>
 
-    <Style BasedOn="{StaticResource WatermarkComboBox}" TargetType="{x:Type local:WatermarkComboBox}" />
+    <Style BasedOn="{StaticResource WatermarkComboBox}"
+           TargetType="{x:Type local:WatermarkComboBox}" />
 
 </ResourceDictionary>

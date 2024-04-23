@@ -38,7 +38,8 @@
                         <Setter.Value>
                             <ControlTemplate TargetType="Label">
                                 <Grid>
-                                    <Border Background="{TemplateBinding Background}" Opacity="0.8" />
+                                    <Border Background="{TemplateBinding Background}"
+                                            Opacity="0.8" />
 
                                     <TextBlock Margin="20,6"
                                                HorizontalAlignment="Center"
@@ -70,6 +71,7 @@
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:Title.DefaultKey}}" TargetType="{x:Type local:Title}" />
+    <Style BasedOn="{StaticResource {x:Static h:Title.DefaultKey}}"
+           TargetType="{x:Type local:Title}" />
 </ResourceDictionary>
 

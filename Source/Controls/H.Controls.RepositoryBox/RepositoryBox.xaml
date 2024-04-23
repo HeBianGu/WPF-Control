@@ -3,7 +3,8 @@
                     xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.RepositoryBox">
-    <Style BasedOn="{StaticResource {x:Static h:ListBoxKeys.Default}}" TargetType="{x:Type local:RepositoryBox}">
+    <Style BasedOn="{StaticResource {x:Static h:ListBoxKeys.Default}}"
+           TargetType="{x:Type local:RepositoryBox}">
         <Setter Property="ItemsSource" Value="{Binding Collection.Source}" />
         <Setter Property="SelectedItem" Value="{Binding Collection.SelectedItem}" />
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
@@ -62,11 +63,13 @@
                                     <CheckBox Content="全选"
                                               IsChecked="{Binding CheckedAll}"
                                               Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:RepositoryBox}, Path=UseCheckAll, Converter={x:Static h:Converter.GetTrueToVisible}}" />
-                                    <BulletDecorator DockPanel.Dock="Right" Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:RepositoryBox}, Path=UseAdd, Converter={x:Static h:Converter.GetTrueToVisible}}">
+                                    <BulletDecorator DockPanel.Dock="Right"
+                                                     Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:RepositoryBox}, Path=UseAdd, Converter={x:Static h:Converter.GetTrueToVisible}}">
                                         <BulletDecorator.Bullet>
                                             <TextBlock Text="搜索" />
                                         </BulletDecorator.Bullet>
-                                        <TextBox Width="200" Margin="5,0" />
+                                        <TextBox Width="200"
+                                                 Margin="5,0" />
                                     </BulletDecorator>
                                 </DockPanel>
                                 <ScrollViewer VerticalScrollBarVisibility="Visible">

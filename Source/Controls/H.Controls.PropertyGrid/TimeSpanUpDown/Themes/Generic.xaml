@@ -15,7 +15,8 @@
     <!--  TimeSpanUpDown  -->
     <!--  ===============================================================================  -->
 
-    <Style x:Key="TimeSpanUpDown" TargetType="{x:Type local:TimeSpanUpDown}">
+    <Style x:Key="TimeSpanUpDown"
+           TargetType="{x:Type local:TimeSpanUpDown}">
         <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Background}}" />
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
         <Setter Property="BorderThickness" Value="1" />
@@ -70,7 +71,8 @@
                             </MultiDataTrigger.Conditions>
                             <Setter TargetName="PART_TextBox" Property="IsReadOnly" Value="True" />
                         </MultiDataTrigger>
-                        <DataTrigger Binding="{Binding IsReadOnly, RelativeSource={RelativeSource Self}}" Value="True">
+                        <DataTrigger Binding="{Binding IsReadOnly, RelativeSource={RelativeSource Self}}"
+                                     Value="True">
                             <Setter TargetName="PART_TextBox" Property="IsReadOnly" Value="True" />
                         </DataTrigger>
                         <Trigger Property="IsFocused" Value="True">
@@ -85,6 +87,7 @@
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource TimeSpanUpDown}" TargetType="{x:Type local:TimeSpanUpDown}" />
+    <Style BasedOn="{StaticResource TimeSpanUpDown}"
+           TargetType="{x:Type local:TimeSpanUpDown}" />
 
 </ResourceDictionary>

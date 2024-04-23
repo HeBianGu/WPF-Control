@@ -15,12 +15,16 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:HexItem">
-                    <Grid Name="hexBorder" Background="{TemplateBinding BorderBrush}">
+                    <Grid Name="hexBorder"
+                          Background="{TemplateBinding BorderBrush}">
                         <Grid.Clip>
                             <MultiBinding Converter="{StaticResource ClipConverter}">
-                                <Binding ElementName="hexBorder" Path="ActualWidth" />
-                                <Binding ElementName="hexBorder" Path="ActualHeight" />
-                                <Binding Path="Orientation" RelativeSource="{RelativeSource TemplatedParent}" />
+                                <Binding ElementName="hexBorder"
+                                         Path="ActualWidth" />
+                                <Binding ElementName="hexBorder"
+                                         Path="ActualHeight" />
+                                <Binding Path="Orientation"
+                                         RelativeSource="{RelativeSource TemplatedParent}" />
                             </MultiBinding>
                         </Grid.Clip>
 
@@ -31,9 +35,12 @@
                               Background="{TemplateBinding Background}">
                             <Grid.Clip>
                                 <MultiBinding Converter="{StaticResource ClipConverter}">
-                                    <Binding ElementName="hexContent" Path="ActualWidth" />
-                                    <Binding ElementName="hexContent" Path="ActualHeight" />
-                                    <Binding Path="Orientation" RelativeSource="{RelativeSource TemplatedParent}" />
+                                    <Binding ElementName="hexContent"
+                                             Path="ActualWidth" />
+                                    <Binding ElementName="hexContent"
+                                             Path="ActualHeight" />
+                                    <Binding Path="Orientation"
+                                             RelativeSource="{RelativeSource TemplatedParent}" />
                                 </MultiBinding>
                             </Grid.Clip>
 
@@ -59,7 +66,9 @@
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>
-                    <local:HexGrid Background="{Binding Path=Background, RelativeSource={RelativeSource AncestorType=ListBox}}" ColumnCount="{Binding Path=ColumnCount, RelativeSource={RelativeSource AncestorType=ListBox}}" RowCount="{Binding Path=RowCount, RelativeSource={RelativeSource AncestorType=ListBox}}" />
+                    <local:HexGrid Background="{Binding Path=Background, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                   ColumnCount="{Binding Path=ColumnCount, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                   RowCount="{Binding Path=RowCount, RelativeSource={RelativeSource AncestorType=ListBox}}" />
                 </ItemsPanelTemplate>
             </Setter.Value>
         </Setter>

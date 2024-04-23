@@ -60,7 +60,7 @@
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="WindowChrome.WindowChrome" Value="{DynamicResource {x:Static local:WindowKeys.WindowChrome}}" />
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}"/>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
         <Setter Property="WindowStyle" Value="SingleBorderWindow" />
         <Setter Property="FontSize" Value="{DynamicResource {x:Static FontSizeKeys.Default}}" />
         <Setter Property="ResizeMode" Value="CanResizeWithGrip" />

@@ -7,7 +7,8 @@
                     xmlns:local="clr-namespace:H.Controls.Dock"
                     xmlns:lp="clr-namespace:H.Controls.Dock.Properties"
                     xmlns:shell="clr-namespace:Microsoft.Windows.Shell">
-    <ControlTemplate x:Key="AnchorGroupTemplate" TargetType="{x:Type lc:LayoutAnchorGroupControl}">
+    <ControlTemplate x:Key="AnchorGroupTemplate"
+                     TargetType="{x:Type lc:LayoutAnchorGroupControl}">
         <ItemsControl Height="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}"
                       VerticalContentAlignment="Center"
                       ItemsSource="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Children}">
@@ -22,10 +23,12 @@
                         <RotateTransform x:Key="LeftRightAnchorSideRotateTransform" Angle="90" />
                     </Style.Resources>
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding Path=Model.Parent.Side, RelativeSource={RelativeSource TemplatedParent}}" Value="Left">
+                        <DataTrigger Binding="{Binding Path=Model.Parent.Side, RelativeSource={RelativeSource TemplatedParent}}"
+                                     Value="Left">
                             <Setter Property="LayoutTransform" Value="{StaticResource LeftRightAnchorSideRotateTransform}" />
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Path=Model.Parent.Side, RelativeSource={RelativeSource TemplatedParent}}" Value="Right">
+                        <DataTrigger Binding="{Binding Path=Model.Parent.Side, RelativeSource={RelativeSource TemplatedParent}}"
+                                     Value="Right">
                             <Setter Property="LayoutTransform" Value="{StaticResource LeftRightAnchorSideRotateTransform}" />
                         </DataTrigger>
                     </Style.Triggers>

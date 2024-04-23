@@ -14,8 +14,8 @@ namespace H.App.FileManager
         public override IEnumerable Where(IEnumerable from)
         {
             if (this.UseDesc)
-                return from.OfType<IModelViewModel<fm_dd_file>>().OrderByDescending(x => x.Model.Size);
-            return from.OfType<IModelViewModel<fm_dd_file>>().OrderBy(x => x.Model.Size);
+                return from.OfType<IModelBindable<fm_dd_file>>().OrderByDescending(x => x.Model.Size);
+            return from.OfType<IModelBindable<fm_dd_file>>().OrderBy(x => x.Model.Size);
         }
     }
 }

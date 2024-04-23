@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 using H.Providers.Ioc;
@@ -13,7 +13,7 @@ using System.Xml.Serialization;
 
 namespace H.Controls.OrderBox
 {
-    public class PropertyOrdersPrensenter : DisplayViewModelBase, IOrderable, IMetaSetting
+    public class PropertyOrdersPrensenter : DisplayBindableBase, IOrderable, IMetaSetting
     {
         public PropertyOrdersPrensenter()
         {

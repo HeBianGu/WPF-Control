@@ -8,7 +8,8 @@
                     xmlns:lp="clr-namespace:H.Controls.Dock.Properties"
                     xmlns:shell="clr-namespace:Microsoft.Windows.Shell">
 
-    <Style x:Key="{x:Type lc:LayoutAnchorableFloatingWindowControl}" TargetType="{x:Type lc:LayoutAnchorableFloatingWindowControl}">
+    <Style x:Key="{x:Type lc:LayoutAnchorableFloatingWindowControl}"
+           TargetType="{x:Type lc:LayoutAnchorableFloatingWindowControl}">
         <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Background}}" />
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
@@ -32,11 +33,13 @@
                                 BorderThickness="{TemplateBinding BorderThickness}">
                             <Grid Margin="3">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" MinHeight="16" />
+                                    <RowDefinition Height="Auto"
+                                                   MinHeight="16" />
                                     <!--  https://github.com/xceedsoftware/wpftoolkit/issues/1203  -->
                                     <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
-                                <Grid Height="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}" UseLayoutRounding="True">
+                                <Grid Height="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}"
+                                      UseLayoutRounding="True">
                                     <Grid.Background>
                                         <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.CaptionBackground}}" />
                                     </Grid.Background>
@@ -48,7 +51,8 @@
                                     </Grid.ColumnDefinitions>
 
                                     <Border Visibility="{Binding Path=Model.IsSinglePane, RelativeSource={RelativeSource TemplatedParent}, Converter={lcv:BoolToVisibilityConverter}}">
-                                        <lc:DropDownControlArea DropDownContextMenu="{Binding Model.Root.Manager.AnchorableContextMenu, RelativeSource={RelativeSource TemplatedParent}}" DropDownContextMenuDataContext="{Binding Path=SingleContentLayoutItem, RelativeSource={RelativeSource TemplatedParent}}">
+                                        <lc:DropDownControlArea DropDownContextMenu="{Binding Model.Root.Manager.AnchorableContextMenu, RelativeSource={RelativeSource TemplatedParent}}"
+                                                                DropDownContextMenuDataContext="{Binding Path=SingleContentLayoutItem, RelativeSource={RelativeSource TemplatedParent}}">
                                             <ContentPresenter VerticalAlignment="Center"
                                                               Content="{Binding Model.SinglePane.SelectedContent, RelativeSource={RelativeSource TemplatedParent}}"
                                                               ContentTemplate="{Binding Model.Root.Manager.AnchorableTitleTemplate, RelativeSource={RelativeSource TemplatedParent}}"
@@ -104,7 +108,8 @@
                                             ToolTip="{x:Static lp:Resources.Anchorable_BtnClose_Hint}"
                                             Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={lcv:BoolToVisibilityConverter}}" />
                                 </Grid>
-                                <ContentPresenter Grid.Row="1" Content="{TemplateBinding Content}" />
+                                <ContentPresenter Grid.Row="1"
+                                                  Content="{TemplateBinding Content}" />
                             </Grid>
                         </Border>
                     </Grid>
@@ -112,10 +117,12 @@
                         <Trigger Property="WindowState" Value="Maximized">
                             <Setter TargetName="WindowBorder" Property="Padding" Value="3" />
                         </Trigger>
-                        <DataTrigger Binding="{Binding Model.SinglePane.SelectedContent.IsActive, RelativeSource={RelativeSource Self}}" Value="True">
+                        <DataTrigger Binding="{Binding Model.SinglePane.SelectedContent.IsActive, RelativeSource={RelativeSource Self}}"
+                                     Value="True">
                             <Setter TargetName="WindowBorder" Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Model.SinglePane.SelectedContent.CanClose, RelativeSource={RelativeSource Mode=Self}}" Value="True">
+                        <DataTrigger Binding="{Binding Model.SinglePane.SelectedContent.CanClose, RelativeSource={RelativeSource Mode=Self}}"
+                                     Value="True">
                             <Setter TargetName="CloseButton" Property="Command" Value="{Binding CloseWindowCommand, RelativeSource={RelativeSource TemplatedParent}}" />
                             <Setter TargetName="CloseButton" Property="ToolTip" Value="{x:Static lp:Resources.Document_Close}" />
 

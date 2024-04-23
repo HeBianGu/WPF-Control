@@ -3,7 +3,8 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.Diagram">
 
-    <Style x:Key="S.Thumb.Resize" TargetType="{x:Type Thumb}">
+    <Style x:Key="S.Thumb.Resize"
+           TargetType="{x:Type Thumb}">
         <Setter Property="Height" Value="10" />
         <Setter Property="Width" Value="10" />
         <Setter Property="Margin" Value="-5" />
@@ -30,8 +31,11 @@
         </Setter>
     </Style>
 
-    <ControlTemplate x:Key="{ComponentResourceKey ResourceId=S.NoteResizeAdorner.Template.Default, TypeInTargetAssembly={x:Type local:NoteResizeAdorner}}" TargetType="ContentControl">
-        <Grid Margin="0,0,10,10" Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:Node}, Path=IsSelected, Converter={x:Static h:Converter.GetTrueToVisible}}">
+    <ControlTemplate x:Key="{ComponentResourceKey ResourceId=S.NoteResizeAdorner.Template.Default,
+                                                  TypeInTargetAssembly={x:Type local:NoteResizeAdorner}}"
+                     TargetType="ContentControl">
+        <Grid Margin="0,0,10,10"
+              Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:Node}, Path=IsSelected, Converter={x:Static h:Converter.GetTrueToVisible}}">
             <Thumb x:Name="PART_Move"
                    HorizontalAlignment="Stretch"
                    VerticalContentAlignment="Stretch"

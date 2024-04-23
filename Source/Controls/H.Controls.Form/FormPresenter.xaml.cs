@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 
 namespace H.Controls.Form
 {
-    public class FormPresenter : DisplayViewModelBase
+    public class FormPresenter : DisplayBindableBase
     {
         public FormPresenter(object value)
         {
@@ -41,7 +41,7 @@ namespace H.Controls.Form
         }
     }
 
-    public class ItemsFormPresenter : DisplayViewModelBase
+    public class ItemsFormPresenter : DisplayBindableBase
     {
         private ObservableCollection<object> _objs = new ObservableCollection<object>();
 

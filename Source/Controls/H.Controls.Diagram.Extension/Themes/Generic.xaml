@@ -185,7 +185,8 @@
 
     <DataTemplate DataType="{x:Type local:DiagramBase}">
         <Grid>
-            <Grid x:Name="grid_snapshoot" Background="{DynamicResource {x:Static h:BrushKeys.Dark0_2}}">
+            <Grid x:Name="grid_snapshoot"
+                  Background="{DynamicResource {x:Static h:BrushKeys.Dark0_2}}">
                 <Grid.ContextMenu>
                     <ContextMenu>
                         <ContextMenu.Template>
@@ -376,7 +377,8 @@
 
     <DataTemplate DataType="{x:Type local:AutoTestReportViewPresenter}">
         <DockPanel>
-            <GroupBox DockPanel.Dock="Top" Header="最近测试次数">
+            <GroupBox DockPanel.Dock="Top"
+                      Header="最近测试次数">
                 <h:Chart Height="300"
                          Padding="20,20,20,40"
                          Style="{DynamicResource {x:Static h:Chart.BarKey}}"
@@ -393,13 +395,16 @@
                               ScatterStyle="{StaticResource {x:Static h:Scatter.AlignmentCenterKey}}"
                               Style="{StaticResource {x:Static h:Series.LineKey}}"
                               yDatas="{Binding LoginData.SeriesDatas[0].yDatas}">
-                        <h:MarkPosition AlignmentCenter="True" MarkValueType="Max" />
-                        <h:MarkPosition AlignmentCenter="True" MarkValueType="Min" />
+                        <h:MarkPosition AlignmentCenter="True"
+                                        MarkValueType="Max" />
+                        <h:MarkPosition AlignmentCenter="True"
+                                        MarkValueType="Min" />
                     </h:Series>
                 </h:Chart>
             </GroupBox>
 
-            <GroupBox DockPanel.Dock="Top" Header="合格比例">
+            <GroupBox DockPanel.Dock="Top"
+                      Header="合格比例">
                 <h:Chart Height="300"
                          Padding="20,20"
                          UseRefreshButton="False">

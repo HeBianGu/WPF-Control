@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace H.Data.Test
 {
-    public class Student :ViewModelBase,ICloneable
+    public class Student :BindableBase,ICloneable
     {
         [Display(Name = "姓名", GroupName = "基础信息")]
         [Required()]

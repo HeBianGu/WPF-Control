@@ -23,7 +23,8 @@
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <!--  Following border is required to catch mouse events  -->
-                        <Border Grid.RowSpan="2" Background="Transparent" />
+                        <Border Grid.RowSpan="2"
+                                Background="Transparent" />
                         <Border x:Name="ContentPanel"
                                 Grid.Row="0"
                                 Grid.Column="0"
@@ -56,7 +57,8 @@
 
         <Setter Property="ItemContainerStyle">
             <Setter.Value>
-                <Style BasedOn="{StaticResource {x:Static h:TabItemKeys.Default}}" TargetType="{x:Type TabItem}">
+                <Style BasedOn="{StaticResource {x:Static h:TabItemKeys.Default}}"
+                       TargetType="{x:Type TabItem}">
                     <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
                     <Setter Property="IsEnabled" Value="{Binding IsEnabled}" />
                     <Setter Property="ToolTip" Value="{Binding ToolTip}" />
@@ -102,7 +104,8 @@
                         </Setter.Value>
                     </Setter>-->
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TabControl}}, Path=Items.Count, FallbackValue=1}" Value="1">
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TabControl}}, Path=Items.Count, FallbackValue=1}"
+                                     Value="1">
                             <Setter Property="Visibility" Value="Collapsed" />
                         </DataTrigger>
                     </Style.Triggers>

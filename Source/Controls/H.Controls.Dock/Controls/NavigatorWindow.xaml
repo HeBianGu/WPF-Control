@@ -7,7 +7,8 @@
                     xmlns:local="clr-namespace:H.Controls.Dock"
                     xmlns:lp="clr-namespace:H.Controls.Dock.Properties"
                     xmlns:shell="clr-namespace:Microsoft.Windows.Shell">
-    <Style x:Key="{x:Type lc:NavigatorWindow}" TargetType="{x:Type lc:NavigatorWindow}">
+    <Style x:Key="{x:Type lc:NavigatorWindow}"
+           TargetType="{x:Type lc:NavigatorWindow}">
         <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Background}}" />
         <Setter Property="SizeToContent" Value="WidthAndHeight" />
         <Setter Property="ResizeMode" Value="NoResize" />
@@ -44,7 +45,8 @@
                                             <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition />
                                         </Grid.ColumnDefinitions>
-                                        <Image Source="{Binding SelectedDocument.LayoutElement.IconSource, Converter={lcv:NullToDoNothingConverter}}" Stretch="None" />
+                                        <Image Source="{Binding SelectedDocument.LayoutElement.IconSource, Converter={lcv:NullToDoNothingConverter}}"
+                                               Stretch="None" />
                                         <TextBlock x:Name="selectedElementTitle"
                                                    Grid.Column="1"
                                                    Margin="4,0,0,0"
@@ -99,7 +101,8 @@
                                                             <ColumnDefinition Width="Auto" />
                                                             <ColumnDefinition />
                                                         </Grid.ColumnDefinitions>
-                                                        <Image Source="{Binding LayoutElement.IconSource, Converter={lcv:NullToDoNothingConverter}}" Stretch="None" />
+                                                        <Image Source="{Binding LayoutElement.IconSource, Converter={lcv:NullToDoNothingConverter}}"
+                                                               Stretch="None" />
                                                         <TextBlock Grid.Column="1"
                                                                    Margin="4,2,0,2"
                                                                    Text="{Binding LayoutElement.Title}"
@@ -109,7 +112,8 @@
                                             </ListBox.ItemTemplate>
                                         </ListBox>
                                     </Grid>
-                                    <Grid Grid.Column="1" Margin="5">
+                                    <Grid Grid.Column="1"
+                                          Margin="5">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto" />
                                             <RowDefinition />
@@ -144,7 +148,8 @@
                                                             <ColumnDefinition Width="Auto" />
                                                             <ColumnDefinition />
                                                         </Grid.ColumnDefinitions>
-                                                        <Image Source="{Binding LayoutElement.IconSource, Converter={lcv:NullToDoNothingConverter}}" Stretch="None" />
+                                                        <Image Source="{Binding LayoutElement.IconSource, Converter={lcv:NullToDoNothingConverter}}"
+                                                               Stretch="None" />
                                                         <TextBlock Grid.Column="1"
                                                                    Margin="4,2,0,2"
                                                                    Text="{Binding LayoutElement.Title}"
@@ -162,7 +167,8 @@
                                 </Grid>
 
                                 <Grid Grid.Row="2">
-                                    <TextBlock VerticalAlignment="Center" Text="{Binding SelectedDocument.LayoutElement.ToolTip}" />
+                                    <TextBlock VerticalAlignment="Center"
+                                               Text="{Binding SelectedDocument.LayoutElement.ToolTip}" />
                                 </Grid>
                             </Grid>
                         </Border>

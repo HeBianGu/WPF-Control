@@ -7,12 +7,14 @@
                     xmlns:local="clr-namespace:H.Controls.Dock"
                     xmlns:lp="clr-namespace:H.Controls.Dock.Properties"
                     xmlns:shell="clr-namespace:Microsoft.Windows.Shell">
-    <Style x:Key="{x:Type lc:OverlayWindow}" TargetType="{x:Type lc:OverlayWindow}">
+    <Style x:Key="{x:Type lc:OverlayWindow}"
+           TargetType="{x:Type lc:OverlayWindow}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type lc:OverlayWindow}">
-                    <Canvas x:Name="PART_DropTargetsContainer" Opacity="0.9">
+                    <Canvas x:Name="PART_DropTargetsContainer"
+                            Opacity="0.9">
                         <Path x:Name="PART_PreviewBox"
                               Fill="AliceBlue"
                               Stroke="{DynamicResource {x:Static h:BrushKeys.Accent}}"
@@ -61,27 +63,32 @@
                                 <Border Name="PART_AnchorablePaneDropTargetTop"
                                         Grid.Row="0"
                                         Grid.Column="1">
-                                    <Image Source="/H.Controls.Dock;component/Themes/Generic/Images/InnerDockPaneTop.png" Stretch="None" />
+                                    <Image Source="/H.Controls.Dock;component/Themes/Generic/Images/InnerDockPaneTop.png"
+                                           Stretch="None" />
                                 </Border>
                                 <Border Name="PART_AnchorablePaneDropTargetRight"
                                         Grid.Row="1"
                                         Grid.Column="2">
-                                    <Image Source="/H.Controls.Dock;component/Themes/Generic/Images/InnerDockPaneRight.png" Stretch="None" />
+                                    <Image Source="/H.Controls.Dock;component/Themes/Generic/Images/InnerDockPaneRight.png"
+                                           Stretch="None" />
                                 </Border>
                                 <Border Name="PART_AnchorablePaneDropTargetBottom"
                                         Grid.Row="2"
                                         Grid.Column="1">
-                                    <Image Source="/H.Controls.Dock;component/Themes/Generic/Images/InnerDockPaneBottom.png" Stretch="None" />
+                                    <Image Source="/H.Controls.Dock;component/Themes/Generic/Images/InnerDockPaneBottom.png"
+                                           Stretch="None" />
                                 </Border>
                                 <Border Name="PART_AnchorablePaneDropTargetLeft"
                                         Grid.Row="1"
                                         Grid.Column="0">
-                                    <Image Source="/H.Controls.Dock;component/Themes/Generic/Images/InnerDockPaneLeft.png" Stretch="None" />
+                                    <Image Source="/H.Controls.Dock;component/Themes/Generic/Images/InnerDockPaneLeft.png"
+                                           Stretch="None" />
                                 </Border>
                                 <Border Name="PART_AnchorablePaneDropTargetInto"
                                         Grid.Row="1"
                                         Grid.Column="1">
-                                    <Image Source="/H.Controls.Dock;component/Themes/Generic/Images/InnerDockPaneInside.png" Stretch="None" />
+                                    <Image Source="/H.Controls.Dock;component/Themes/Generic/Images/InnerDockPaneInside.png"
+                                           Stretch="None" />
                                 </Border>
                             </Grid>
                         </Grid>
@@ -107,27 +114,32 @@
                                 <Border Name="PART_DocumentPaneDropTargetTop"
                                         Grid.Row="0"
                                         Grid.Column="1">
-                                    <Image Source="/H.Controls.Dock;component/Themes/Generic/Images/InnerDockDocPaneTop.png" Stretch="None" />
+                                    <Image Source="/H.Controls.Dock;component/Themes/Generic/Images/InnerDockDocPaneTop.png"
+                                           Stretch="None" />
                                 </Border>
                                 <Border Name="PART_DocumentPaneDropTargetRight"
                                         Grid.Row="1"
                                         Grid.Column="2">
-                                    <Image Source="/H.Controls.Dock;component/Themes/Generic/Images/InnerDockDocPaneRight.png" Stretch="None" />
+                                    <Image Source="/H.Controls.Dock;component/Themes/Generic/Images/InnerDockDocPaneRight.png"
+                                           Stretch="None" />
                                 </Border>
                                 <Border Name="PART_DocumentPaneDropTargetBottom"
                                         Grid.Row="2"
                                         Grid.Column="1">
-                                    <Image Source="/H.Controls.Dock;component/Themes/Generic/Images/InnerDockDocPaneBottom.png" Stretch="None" />
+                                    <Image Source="/H.Controls.Dock;component/Themes/Generic/Images/InnerDockDocPaneBottom.png"
+                                           Stretch="None" />
                                 </Border>
                                 <Border Name="PART_DocumentPaneDropTargetLeft"
                                         Grid.Row="1"
                                         Grid.Column="0">
-                                    <Image Source="/H.Controls.Dock;component/Themes/Generic/Images/InnerDockDocPaneLeft.png" Stretch="None" />
+                                    <Image Source="/H.Controls.Dock;component/Themes/Generic/Images/InnerDockDocPaneLeft.png"
+                                           Stretch="None" />
                                 </Border>
                                 <Border Name="PART_DocumentPaneDropTargetInto"
                                         Grid.Row="1"
                                         Grid.Column="1">
-                                    <Image Source="/H.Controls.Dock;component/Themes/Generic/Images/InnerDockPaneInside.png" Stretch="None" />
+                                    <Image Source="/H.Controls.Dock;component/Themes/Generic/Images/InnerDockPaneInside.png"
+                                           Stretch="None" />
                                 </Border>
                             </Grid>
                         </Grid>

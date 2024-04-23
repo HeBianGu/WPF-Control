@@ -21,14 +21,16 @@
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.MouseOver}}" />
             </Trigger>
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Model.IsActive}" Value="True">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Model.IsActive}"
+                         Value="True">
                 <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Selected}}" />
                 <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.ForegroundTitle}}" />
             </DataTrigger>
         </Style.Triggers>
     </Style>
 
-    <ControlTemplate x:Key="AnchorTemplate" TargetType="{x:Type lc:LayoutAnchorControl}">
+    <ControlTemplate x:Key="AnchorTemplate"
+                     TargetType="{x:Type lc:LayoutAnchorControl}">
         <Border Background="{TemplateBinding Background}"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}">

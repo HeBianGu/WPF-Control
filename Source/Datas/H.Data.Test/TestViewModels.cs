@@ -3,13 +3,13 @@ using System.Collections.ObjectModel;
 
 namespace H.Data.Test
 {
-    public class TestViewModels : ObservableCollection<TestViewModel>
+    public class TestBindables : ObservableCollection<TestBindable>
     {
-        public TestViewModels()
+        public TestBindables()
         {
 
         }
-        public TestViewModels(IEnumerable<TestViewModel> collection) : base(collection)
+        public TestBindables(IEnumerable<TestBindable> collection) : base(collection)
         {
 
         }

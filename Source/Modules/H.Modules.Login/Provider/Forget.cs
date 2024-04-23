@@ -2,7 +2,7 @@
 
 namespace H.Modules.Login
 {
-    public class Forget : ViewModelBase
+    public class Forget : BindableBase
     {
         private string _password;
         /// <summary> 说明  </summary>

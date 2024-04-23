@@ -2,7 +2,7 @@
 
 namespace H.App.FileManager
 {
-    public abstract class FileView<T> : SelectViewModel<T>, IFileView where T : fm_dd_file
+    public abstract class FileView<T> : SelectBindable<T>, IFileView where T : fm_dd_file
     {
         protected FileView(T t) : base(t)
         {

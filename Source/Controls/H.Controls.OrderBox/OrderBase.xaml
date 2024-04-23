@@ -11,7 +11,8 @@
                           DockPanel.Dock="Right"
                           IsChecked="{Binding UseDesc}">
                 <ToggleButton.Style>
-                    <Style BasedOn="{StaticResource {x:Static h:ToggleButtonKeys.Geometry}}" TargetType="ToggleButton">
+                    <Style BasedOn="{StaticResource {x:Static h:ToggleButtonKeys.Geometry}}"
+                           TargetType="ToggleButton">
                         <Style.Triggers>
                             <Trigger Property="IsChecked" Value="False">
                                 <Setter Property="Content" Value="M490.581333 664.234667V128H394.624v768l288-289.152-67.925333-67.84z" />
@@ -23,7 +24,8 @@
                     </Style>
                 </ToggleButton.Style>
             </ToggleButton>
-            <TextBlock VerticalAlignment="Center" Text="{Binding Name}" />
+            <TextBlock VerticalAlignment="Center"
+                       Text="{Binding Name}" />
         </DockPanel>
     </DataTemplate>
 </ResourceDictionary>

@@ -17,7 +17,8 @@
             <StackPanel Margin="{Binding TextMargin}"
                         HorizontalAlignment="Center"
                         Orientation="Horizontal">
-                <TextBlock x:Name="icon" Text="{Binding Icon}" />
+                <TextBlock x:Name="icon"
+                           Text="{Binding Icon}" />
                 <TextBlock x:Name="txt"
                            Margin="2"
                            FontFamily="{Binding FontFamily}"
@@ -30,15 +31,18 @@
             </StackPanel>
         </Grid>
         <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding Foreground}" Value="{x:Null}">
+            <DataTrigger Binding="{Binding Foreground}"
+                         Value="{x:Null}">
                 <Setter TargetName="txt" Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
                 <Setter TargetName="icon" Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
 
             </DataTrigger>
-            <DataTrigger Binding="{Binding Stroke}" Value="{x:Null}">
+            <DataTrigger Binding="{Binding Stroke}"
+                         Value="{x:Null}">
                 <Setter TargetName="path" Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding Fill}" Value="{x:Null}">
+            <DataTrigger Binding="{Binding Fill}"
+                         Value="{x:Null}">
                 <Setter TargetName="path" Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Background}}" />
             </DataTrigger>
             <Trigger Property="IsMouseOver" Value="True">

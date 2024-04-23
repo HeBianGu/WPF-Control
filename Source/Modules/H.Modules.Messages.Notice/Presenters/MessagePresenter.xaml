@@ -23,7 +23,8 @@
                 <Grid.Background>
                     <DrawingBrush>
                         <DrawingBrush.Drawing>
-                            <GeometryDrawing Brush="{Binding ElementName=g, Path=(TextElement.Foreground)}" Geometry="{Binding Geometry}" />
+                            <GeometryDrawing Brush="{Binding ElementName=g, Path=(TextElement.Foreground)}"
+                                             Geometry="{Binding Geometry}" />
                         </DrawingBrush.Drawing>
                     </DrawingBrush>
                 </Grid.Background>
@@ -49,19 +50,24 @@
             </Button>
         </Grid>
         <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding Level}" Value="5">
+            <DataTrigger Binding="{Binding Level}"
+                         Value="5">
                 <Setter TargetName="g" Property="TextElement.Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Purple}}" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding Level}" Value="4">
+            <DataTrigger Binding="{Binding Level}"
+                         Value="4">
                 <Setter TargetName="g" Property="TextElement.Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Red}}" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding Level}" Value="3">
+            <DataTrigger Binding="{Binding Level}"
+                         Value="3">
                 <Setter TargetName="g" Property="TextElement.Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Orange}}" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding Level}" Value="2">
+            <DataTrigger Binding="{Binding Level}"
+                         Value="2">
                 <Setter TargetName="g" Property="TextElement.Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding Level}" Value="1">
+            <DataTrigger Binding="{Binding Level}"
+                         Value="1">
                 <Setter TargetName="g" Property="TextElement.Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Green}}" />
             </DataTrigger>
         </DataTemplate.Triggers>

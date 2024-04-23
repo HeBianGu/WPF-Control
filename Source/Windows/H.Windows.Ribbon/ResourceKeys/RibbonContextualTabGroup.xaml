@@ -1,7 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
-    <Style x:Key="{x:Type RibbonContextualTabGroup}" TargetType="{x:Type RibbonContextualTabGroup}">
+    <Style x:Key="{x:Type RibbonContextualTabGroup}"
+           TargetType="{x:Type RibbonContextualTabGroup}">
         <Setter Property="Height" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Focusable" Value="False" />
@@ -11,7 +12,8 @@
                 <ControlTemplate TargetType="{x:Type RibbonContextualTabGroup}">
                     <ControlTemplate.Resources>
                         <DataTemplate DataType="{x:Type system:String}">
-                            <TextBlock Text="{TemplateBinding Content}" TextTrimming="CharacterEllipsis" />
+                            <TextBlock Text="{TemplateBinding Content}"
+                                       TextTrimming="CharacterEllipsis" />
                         </DataTemplate>
                     </ControlTemplate.Resources>
                     <Border x:Name="OuterBorder"
@@ -33,7 +35,8 @@
                     </Border>
                     <ControlTemplate.Triggers>
 
-                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
+                                     Value="True">
 
 
 

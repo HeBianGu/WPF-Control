@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 using H.Providers.Ioc;
@@ -15,7 +15,7 @@ using System.Xml.Serialization;
 
 namespace H.Controls.FilterBox
 {
-    public abstract class PropertyFilterBase<T> : ViewModel, IPropertyFilter
+    public abstract class PropertyFilterBase<T> : Bindable, IPropertyFilter
     {
         public PropertyFilterBase()
         {

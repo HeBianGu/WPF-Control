@@ -18,11 +18,13 @@
                     BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
                     BorderThickness="1"
                     CornerRadius="2" />
-            <Grid Width="25" Height="25">
+            <Grid Width="25"
+                  Height="25">
                 <Grid.Background>
                     <DrawingBrush>
                         <DrawingBrush.Drawing>
-                            <GeometryDrawing Brush="{DynamicResource {x:Static h:BrushKeys.Foreground}}" Geometry="{Binding Geometry}" />
+                            <GeometryDrawing Brush="{DynamicResource {x:Static h:BrushKeys.Foreground}}"
+                                             Geometry="{Binding Geometry}" />
                         </DrawingBrush.Drawing>
                     </DrawingBrush>
                 </Grid.Background>
@@ -35,7 +37,8 @@
                            Text="{Binding Message}"
                            TextTrimming="CharacterEllipsis" />
                 <DockPanel LastChildFill="False">
-                    <TextBlock VerticalAlignment="Center" Text="{Binding Time}" />
+                    <TextBlock VerticalAlignment="Center"
+                               Text="{Binding Time}" />
                     <Button Height="Auto"
                             Padding="5,2"
                             Command="{Binding CancelCommand}"

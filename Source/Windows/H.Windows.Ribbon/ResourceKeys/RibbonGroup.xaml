@@ -6,7 +6,8 @@
         <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="&#291;" TargetType="{x:Type RibbonToggleButton}">
+    <Style x:Key="&#291;"
+           TargetType="{x:Type RibbonToggleButton}">
         <Setter Property="RenderOptions.BitmapScalingMode" Value="NearestNeighbor" />
         <Setter Property="Focusable" Value="True" />
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
@@ -103,7 +104,8 @@
                         </MultiDataTrigger>
 
 
-                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
+                                     Value="True">
 
 
 
@@ -151,7 +153,8 @@
         </Setter>
     </Style>
 
-    <Style x:Key="&#290;" TargetType="{x:Type RibbonToggleButton}">
+    <Style x:Key="&#290;"
+           TargetType="{x:Type RibbonToggleButton}">
         <Setter Property="Focusable" Value="True" />
         <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type RibbonGroup}}, Path=BorderBrush}" />
         <Setter Property="MouseOverBorderBrush" Value="Transparent" />
@@ -177,7 +180,8 @@
                                                TextAlignment="Center" />
                         </DataTemplate>
                     </ControlTemplate.Resources>
-                    <Grid x:Name="MainGrid" SnapsToDevicePixels="True">
+                    <Grid x:Name="MainGrid"
+                          SnapsToDevicePixels="True">
                         <Border x:Name="ButtonInnerBorder"
                                 Margin="1"
                                 BorderBrush="{TemplateBinding BorderBrush}"
@@ -199,7 +203,8 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition />
                             </Grid.RowDefinitions>
-                            <Border x:Name="ImageOuterBorder" Grid.Row="0">
+                            <Border x:Name="ImageOuterBorder"
+                                    Grid.Row="0">
                                 <Border x:Name="ImageMiddleBorder"
                                         Width="32"
                                         Height="32"
@@ -228,7 +233,8 @@
                                     Grid.Row="1"
                                     Grid.RowSpan="2"
                                     Background="{DynamicResource {x:Static BrushKeys.Background}}">
-                                <ContentPresenter RibbonTwoLineText.HasTwoLines="True" RibbonTwoLineText.PathData="{StaticResource S.Geometry.208}" />
+                                <ContentPresenter RibbonTwoLineText.HasTwoLines="True"
+                                                  RibbonTwoLineText.PathData="{StaticResource S.Geometry.208}" />
                             </Border>
                         </Grid>
                     </Grid>
@@ -247,7 +253,8 @@
                             <Setter TargetName="MainGrid" Property="TextElement.Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
                         </Trigger>
 
-                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
+                                     Value="True">
                             <Setter TargetName="MainGrid" Property="TextElement.Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
                             <Setter TargetName="ImageMiddleBorder" Property="Background" Value="Transparent" />
                             <Setter TargetName="ImageMiddleBorder" Property="BorderThickness" Value="0" />
@@ -346,7 +353,8 @@
         </Setter>
     </Style>
 
-    <ControlTemplate x:Key="&#292;" TargetType="{x:Type RibbonGroup}">
+    <ControlTemplate x:Key="&#292;"
+                     TargetType="{x:Type RibbonGroup}">
         <Border Name="GroupBorder"
                 Margin="1,2,0,0"
                 Background="{TemplateBinding Background}">
@@ -354,7 +362,8 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" MinHeight="16" />
+                    <RowDefinition Height="Auto"
+                                   MinHeight="16" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -376,7 +385,8 @@
                         VerticalAlignment="Center"
                         Background="{TemplateBinding BorderBrush}"
                         SnapsToDevicePixels="True" />
-                <Border Margin="2,1,2,0" Padding="3,0,3,0">
+                <Border Margin="2,1,2,0"
+                        Padding="3,0,3,0">
                     <Grid>
                         <ItemsPresenter Name="ItemsPresenter" />
                         <ContentControl Name="PART_TemplateContentControl"
@@ -388,7 +398,8 @@
                         Grid.Row="1"
                         Height="1"
                         Margin="5,1,5,-1" />
-                <Grid Grid.Row="2" Margin="2,0,2,0">
+                <Grid Grid.Row="2"
+                      Margin="2,0,2,0">
                     <ContentPresenter Name="PART_Header"
                                       MaxHeight="16"
                                       Margin="2,0,2,0"
@@ -405,7 +416,8 @@
             </Trigger>
 
 
-            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
+                         Value="True">
 
 
 
@@ -432,7 +444,8 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <ControlTemplate x:Key="&#293;" TargetType="{x:Type RibbonGroup}">
+    <ControlTemplate x:Key="&#293;"
+                     TargetType="{x:Type RibbonGroup}">
         <Grid x:Name="MainGrid">
             <RibbonToggleButton x:Name="PART_ToggleButton"
                                 Margin="0,3,0,0"
@@ -465,7 +478,8 @@
                           Margin="0,1.5,0,0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
-                            <RowDefinition Height="Auto" MinHeight="16" />
+                            <RowDefinition Height="Auto"
+                                           MinHeight="16" />
                         </Grid.RowDefinitions>
                         <Border Name="PopupBorder"
                                 Grid.RowSpan="2"
@@ -480,7 +494,8 @@
                                 CornerRadius="2"
                                 Opacity="0"
                                 SnapsToDevicePixels="True" />
-                        <Border Margin="2,3.5,2,0" Padding="3,0,3,0">
+                        <Border Margin="2,3.5,2,0"
+                                Padding="3,0,3,0">
                             <Grid>
                                 <ItemsPresenter Name="ItemsPresenter"
                                                 Grid.IsSharedSizeScope="true"
@@ -492,7 +507,8 @@
                                                 Visibility="Collapsed" />
                             </Grid>
                         </Border>
-                        <Grid Grid.Row="1" Margin="2,0,2,1">
+                        <Grid Grid.Row="1"
+                              Margin="2,0,2,1">
                             <ContentPresenter Name="PART_Header"
                                               MaxHeight="15"
                                               Margin="2,0,2,0"
@@ -516,7 +532,8 @@
             <Trigger Property="IsEnabled" Value="False">
                 <Setter TargetName="MainGrid" Property="TextElement.Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
             </Trigger>
-            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
+                         Value="True">
                 <Setter TargetName="MainGrid" Property="TextElement.Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
                 <Setter TargetName="PART_HotBackground" Property="Background" Value="Transparent" />
                 <Setter TargetName="PART_Popup" Property="PopupAnimation" Value="None" />
@@ -555,10 +572,11 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <Style x:Key="{x:Type RibbonGroup}" TargetType="{x:Type RibbonGroup}">
+    <Style x:Key="{x:Type RibbonGroup}"
+           TargetType="{x:Type RibbonGroup}">
         <Setter Property="Header" Value="RibbonGroup" />
-        <Setter Property="LargeImageSource" Value="/Resources/CropImage32.png" />
-        <Setter Property="SmallImageSource" Value="/Resources/CropImage16.png" />
+        <Setter Property="LargeImageSource" Value="{Logo}" />
+        <Setter Property="SmallImageSource" Value="{Logo}" />
         <Setter Property="Margin" Value="1" />
         <Setter Property="Padding" Value="3,0,3,0" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />

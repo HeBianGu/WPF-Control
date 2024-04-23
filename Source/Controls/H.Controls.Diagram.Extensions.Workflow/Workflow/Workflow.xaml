@@ -17,7 +17,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Grid x:Name="grid" Background="Transparent">
+                    <Grid x:Name="grid"
+                          Background="Transparent">
                         <Path x:Name="txt"
                               Width="10"
                               Height="10"
@@ -38,7 +39,8 @@
                                              Background="{DynamicResource {x:Static h:BrushKeys.Background}}"
                                              ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=h:Diagram}, Path=DataContext.NodeGroups[0]}">
                                         <ItemsControl.ItemContainerStyle>
-                                            <Style BasedOn="{StaticResource {x:Static h:ListBoxItemKeys.Default}}" TargetType="ListBoxItem">
+                                            <Style BasedOn="{StaticResource {x:Static h:ListBoxItemKeys.Default}}"
+                                                   TargetType="ListBoxItem">
                                                 <Setter Property="Height" Value="Auto" />
                                             </Style>
                                         </ItemsControl.ItemContainerStyle>
@@ -57,13 +59,15 @@
                                         <ListBox.ItemTemplate>
                                             <DataTemplate>
                                                 <Viewbox Margin="2">
-                                                    <ContentControl Background="Transparent" Content="{Binding}">
+                                                    <ContentControl Background="Transparent"
+                                                                    Content="{Binding}">
                                                         <b:Interaction.Triggers>
                                                             <b:EventTrigger EventName="MouseUp">
                                                                 <b:ChangePropertyAction PropertyName="IsOpen"
                                                                                         TargetObject="{Binding ElementName=popup}"
                                                                                         Value="False" />
-                                                                <b:InvokeCommandAction Command="{local:AddWorkflowNodeFromTemplateCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ContentControl}}" />
+                                                                <b:InvokeCommandAction Command="{local:AddWorkflowNodeFromTemplateCommand}"
+                                                                                       CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ContentControl}}" />
                                                             </b:EventTrigger>
                                                         </b:Interaction.Triggers>
                                                     </ContentControl>
@@ -120,8 +124,10 @@
     </Style>
 
     <DataTemplate DataType="{x:Type local:WorkflowNodeBase}">
-        <Grid x:Name="grid" Background="Transparent">
-            <AdornerDecorator HorizontalAlignment="Left" VerticalAlignment="Top">
+        <Grid x:Name="grid"
+              Background="Transparent">
+            <AdornerDecorator HorizontalAlignment="Left"
+                              VerticalAlignment="Top">
                 <Grid Width="{Binding Width, Converter={x:Static h:Converter.GetMathAddition}, ConverterParameter=1}"
                       Height="{Binding Height, Converter={x:Static h:Converter.GetMathAddition}, ConverterParameter=1}"
                       Margin="5"
@@ -160,8 +166,10 @@
                              Foreground="{Binding Foreground}"
                              Style="{DynamicResource {x:Static h:DiagramKeys.TextKey}}" />
                     <b:Interaction.Behaviors>
-                        <h:LoadedAdornerBehavior AdornerType="{x:Type local:WorkflowNodeAdorner}" IsUse="{Binding IsTemplate, Converter={x:Static h:Converter.GetTrueToFalse}}" />
-                        <h:LoadedAdornerBehavior AdornerType="{x:Type h:NoteResizeAdorner}" IsUse="{Binding IsTemplate, Converter={x:Static h:Converter.GetTrueToFalse}}" />
+                        <h:LoadedAdornerBehavior AdornerType="{x:Type local:WorkflowNodeAdorner}"
+                                                 IsUse="{Binding IsTemplate, Converter={x:Static h:Converter.GetTrueToFalse}}" />
+                        <h:LoadedAdornerBehavior AdornerType="{x:Type h:NoteResizeAdorner}"
+                                                 IsUse="{Binding IsTemplate, Converter={x:Static h:Converter.GetTrueToFalse}}" />
                     </b:Interaction.Behaviors>
                     <local:WorkflowNodeAdorner.Template>
                         <ControlTemplate TargetType="ContentControl">
@@ -202,25 +210,31 @@
             </AdornerDecorator>
         </Grid>
         <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding Foreground}" Value="{x:Null}">
+            <DataTrigger Binding="{Binding Foreground}"
+                         Value="{x:Null}">
                 <Setter TargetName="editor" Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding Fill}" Value="{x:Null}">
+            <DataTrigger Binding="{Binding Fill}"
+                         Value="{x:Null}">
                 <Setter TargetName="path" Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Background}}" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding Stroke}" Value="{x:Null}">
+            <DataTrigger Binding="{Binding Stroke}"
+                         Value="{x:Null}">
                 <Setter TargetName="path" Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding IsTemplate}" Value="True">
+            <DataTrigger Binding="{Binding IsTemplate}"
+                         Value="True">
                 <Setter TargetName="grid" Property="ToolTip" Value="{Binding Description}" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding State}" Value="Running">
+            <DataTrigger Binding="{Binding State}"
+                         Value="Running">
                 <Setter TargetName="path" Property="StrokeDashArray" Value="2 2" />
                 <Setter TargetName="path" Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
                 <Setter TargetName="path" Property="StrokeThickness" Value="2" />
                 <DataTrigger.EnterActions>
                     <BeginStoryboard x:Name="start">
-                        <Storyboard Storyboard.TargetName="path" Storyboard.TargetProperty="StrokeDashOffset">
+                        <Storyboard Storyboard.TargetName="path"
+                                    Storyboard.TargetProperty="StrokeDashOffset">
                             <DoubleAnimation From="0"
                                              To="100"
                                              Duration="00:00:05" />
@@ -232,23 +246,27 @@
                 </DataTrigger.ExitActions>
             </DataTrigger>
 
-            <DataTrigger Binding="{Binding State}" Value="Success">
+            <DataTrigger Binding="{Binding State}"
+                         Value="Success">
                 <!--<Setter TargetName="path" Property="StrokeThickness" Value="3" />-->
                 <Setter TargetName="path" Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Green}}" />
             </DataTrigger>
 
-            <DataTrigger Binding="{Binding State}" Value="Error">
+            <DataTrigger Binding="{Binding State}"
+                         Value="Error">
                 <!--<Setter TargetName="path" Property="StrokeThickness" Value="3" />-->
                 <Setter TargetName="path" Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Red}}" />
             </DataTrigger>
 
-            <DataTrigger Binding="{Binding State}" Value="Wait">
+            <DataTrigger Binding="{Binding State}"
+                         Value="Wait">
                 <Setter Property="Opacity" Value="0.5" />
             </DataTrigger>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter TargetName="path" Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.MouseOver}}" />
             </Trigger>
-            <DataTrigger Binding="{Binding IsSelected}" Value="True">
+            <DataTrigger Binding="{Binding IsSelected}"
+                         Value="True">
                 <Setter TargetName="path" Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Selected}}" />
             </DataTrigger>
         </DataTemplate.Triggers>

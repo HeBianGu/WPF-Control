@@ -14,7 +14,8 @@
     <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter" />
     <local:CenterTitleConverter x:Key="CenterTitleConverter" />
 
-    <ControlTemplate x:Key="WindowControlTemplate" TargetType="{x:Type local:WindowControl}">
+    <ControlTemplate x:Key="WindowControlTemplate"
+                     TargetType="{x:Type local:WindowControl}">
         <Grid>
             <Border x:Name="PART_WindowRoot"
                     Width="{TemplateBinding Width}"
@@ -24,8 +25,10 @@
                     CornerRadius="6">
                 <Border.Background>
                     <MultiBinding Converter="{StaticResource WindowControlBackgroundConverter}">
-                        <Binding Path="WindowBackground" RelativeSource="{RelativeSource TemplatedParent}" />
-                        <Binding Path="WindowOpacity" RelativeSource="{RelativeSource TemplatedParent}" />
+                        <Binding Path="WindowBackground"
+                                 RelativeSource="{RelativeSource TemplatedParent}" />
+                        <Binding Path="WindowOpacity"
+                                 RelativeSource="{RelativeSource TemplatedParent}" />
                     </MultiBinding>
                 </Border.Background>
                 <Border x:Name="WindowRootInnerBorder"
@@ -44,10 +47,12 @@
                                 <ColumnDefinition Width="{Binding WindowThickness.Left, RelativeSource={RelativeSource TemplatedParent}}" />
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
-                                <ColumnDefinition x:Name="HeaderButtonsColumn" Width="Auto" />
+                                <ColumnDefinition x:Name="HeaderButtonsColumn"
+                                                  Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
-                                <RowDefinition x:Name="HeaderRow" MinHeight="28" />
+                                <RowDefinition x:Name="HeaderRow"
+                                               MinHeight="28" />
                                 <RowDefinition Height="{Binding WindowThickness.Top, RelativeSource={RelativeSource TemplatedParent}}" />
                             </Grid.RowDefinitions>
 
@@ -96,9 +101,12 @@
                                         VerticalAlignment="Top"
                                         Orientation="Horizontal">
                                 <StackPanel.Margin>
-                                    <MultiBinding Converter="{StaticResource WindowContentBorderMarginConverter}" ConverterParameter="2">
-                                        <Binding Path="WindowThickness.Right" RelativeSource="{RelativeSource TemplatedParent}" />
-                                        <Binding Path="WindowThickness.Right" RelativeSource="{RelativeSource TemplatedParent}" />
+                                    <MultiBinding Converter="{StaticResource WindowContentBorderMarginConverter}"
+                                                  ConverterParameter="2">
+                                        <Binding Path="WindowThickness.Right"
+                                                 RelativeSource="{RelativeSource TemplatedParent}" />
+                                        <Binding Path="WindowThickness.Right"
+                                                 RelativeSource="{RelativeSource TemplatedParent}" />
                                         <!--  not used  -->
                                     </MultiBinding>
                                 </StackPanel.Margin>
@@ -117,9 +125,12 @@
                                     VerticalAlignment="Top"
                                     Visibility="Collapsed">
                                 <Border.Margin>
-                                    <MultiBinding Converter="{StaticResource WindowContentBorderMarginConverter}" ConverterParameter="2">
-                                        <Binding Path="WindowThickness.Right" RelativeSource="{RelativeSource TemplatedParent}" />
-                                        <Binding Path="WindowThickness.Right" RelativeSource="{RelativeSource TemplatedParent}" />
+                                    <MultiBinding Converter="{StaticResource WindowContentBorderMarginConverter}"
+                                                  ConverterParameter="2">
+                                        <Binding Path="WindowThickness.Right"
+                                                 RelativeSource="{RelativeSource TemplatedParent}" />
+                                        <Binding Path="WindowThickness.Right"
+                                                 RelativeSource="{RelativeSource TemplatedParent}" />
                                         <!--  not used  -->
                                     </MultiBinding>
                                 </Border.Margin>
@@ -138,11 +149,15 @@
                         </Grid>
 
                         <!--  Content Border  -->
-                        <Border x:Name="ContentOuterBorder" Grid.Row="1">
+                        <Border x:Name="ContentOuterBorder"
+                                Grid.Row="1">
                             <Border.Margin>
-                                <MultiBinding Converter="{StaticResource WindowContentBorderMarginConverter}" ConverterParameter="0">
-                                    <Binding Path="WindowThickness.Left" RelativeSource="{RelativeSource TemplatedParent}" />
-                                    <Binding Path="WindowThickness.Bottom" RelativeSource="{RelativeSource TemplatedParent}" />
+                                <MultiBinding Converter="{StaticResource WindowContentBorderMarginConverter}"
+                                              ConverterParameter="0">
+                                    <Binding Path="WindowThickness.Left"
+                                             RelativeSource="{RelativeSource TemplatedParent}" />
+                                    <Binding Path="WindowThickness.Bottom"
+                                             RelativeSource="{RelativeSource TemplatedParent}" />
                                 </MultiBinding>
                             </Border.Margin>
                             <Border x:Name="ContentBorder"
@@ -220,9 +235,12 @@
             <DataTrigger Value="1">
                 <DataTrigger.Binding>
                     <MultiBinding Converter="{StaticResource CenterTitleConverter}">
-                        <Binding ElementName="TitleText" Path="DesiredSize" />
-                        <Binding ElementName="PART_HeaderGrid" Path="ActualWidth" />
-                        <Binding ElementName="PART_HeaderGrid" Path="ColumnDefinitions" />
+                        <Binding ElementName="TitleText"
+                                 Path="DesiredSize" />
+                        <Binding ElementName="PART_HeaderGrid"
+                                 Path="ActualWidth" />
+                        <Binding ElementName="PART_HeaderGrid"
+                                 Path="ColumnDefinitions" />
                     </MultiBinding>
                 </DataTrigger.Binding>
                 <Setter TargetName="Title" Property="Column" Value="0" />
@@ -234,9 +252,12 @@
             <DataTrigger Value="2">
                 <DataTrigger.Binding>
                     <MultiBinding Converter="{StaticResource CenterTitleConverter}">
-                        <Binding ElementName="TitleText" Path="DesiredSize" />
-                        <Binding ElementName="PART_HeaderGrid" Path="ActualWidth" />
-                        <Binding ElementName="PART_HeaderGrid" Path="ColumnDefinitions" />
+                        <Binding ElementName="TitleText"
+                                 Path="DesiredSize" />
+                        <Binding ElementName="PART_HeaderGrid"
+                                 Path="ActualWidth" />
+                        <Binding ElementName="PART_HeaderGrid"
+                                 Path="ColumnDefinitions" />
                     </MultiBinding>
                 </DataTrigger.Binding>
                 <Setter TargetName="TitleGrid" Property="HorizontalAlignment" Value="Center" />

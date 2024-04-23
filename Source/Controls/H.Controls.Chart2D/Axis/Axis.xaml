@@ -51,7 +51,8 @@
         <Setter Property="xConvert" Value="{Binding RelativeSource={RelativeSource AncestorType=local:Chart}, Path=xConvert}" />
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:xAxis.DefaultKey}}" TargetType="{x:Type local:xAxis}" />
+    <Style BasedOn="{StaticResource {x:Static h:xAxis.DefaultKey}}"
+           TargetType="{x:Type local:xAxis}" />
 
     <Style x:Key="{ComponentResourceKey ResourceId=S.yAxis.Default,
                                         TypeInTargetAssembly={x:Type local:yAxis}}"
@@ -61,7 +62,8 @@
         <Setter Property="yConvert" Value="{Binding RelativeSource={RelativeSource AncestorType=local:Chart}, Path=yConvert}" />
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:yAxis.DefaultKey}}" TargetType="{x:Type local:yAxis}" />
+    <Style BasedOn="{StaticResource {x:Static h:yAxis.DefaultKey}}"
+           TargetType="{x:Type local:yAxis}" />
 
     <Style x:Key="{ComponentResourceKey ResourceId=S.RadiusAxis.Default,
                                         TypeInTargetAssembly={x:Type local:RadiusAxis}}"
@@ -74,7 +76,8 @@
         <Setter Property="Len" Value="{Binding RelativeSource={RelativeSource AncestorType=local:PolarChart}, Path=Len}" />
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:RadiusAxis.DefaultKey}}" TargetType="{x:Type local:RadiusAxis}" />
+    <Style BasedOn="{StaticResource {x:Static h:RadiusAxis.DefaultKey}}"
+           TargetType="{x:Type local:RadiusAxis}" />
 
 
     <Style x:Key="{ComponentResourceKey ResourceId=S.AngleAxis.Default,
@@ -96,7 +99,8 @@
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:AngleAxis.DefaultKey}}" TargetType="{x:Type local:AngleAxis}" />
+    <Style BasedOn="{StaticResource {x:Static h:AngleAxis.DefaultKey}}"
+           TargetType="{x:Type local:AngleAxis}" />
 
     <Style x:Key="{ComponentResourceKey ResourceId=S.RadarAxis.Default,
                                         TypeInTargetAssembly={x:Type local:RadarAxis}}"
@@ -105,6 +109,7 @@
         <Setter Property="yAxis" Value="{Binding RelativeSource={RelativeSource AncestorType=local:PolarChart}, Path=yAxis}" />
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:RadarAxis.DefaultKey}}" TargetType="{x:Type local:RadarAxis}" />
+    <Style BasedOn="{StaticResource {x:Static h:RadarAxis.DefaultKey}}"
+           TargetType="{x:Type local:RadarAxis}" />
 </ResourceDictionary>
 

@@ -1,11 +1,13 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style x:Key="{x:Type RibbonButton}" TargetType="{x:Type RibbonButton}">
+    <Style x:Key="{x:Type RibbonButton}"
+           TargetType="{x:Type RibbonButton}">
         <Setter Property="Label" Value="RibbonButton" />
-        <Setter Property="LargeImageSource" Value="/Resources/CropImage32.png" />
-        <Setter Property="SmallImageSource" Value="/Resources/CropImage16.png" />
+        <Setter Property="LargeImageSource" Value="{Logo}" />
+        <Setter Property="SmallImageSource" Value="{Logo}" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="1" />
@@ -24,7 +26,8 @@
         <Setter Property="Template" Value="{StaticResource S.RibbonButton.Template}" />
         <Setter Property="QuickAccessToolBarControlSizeDefinition">
             <Setter.Value>
-                <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="False" />
+                <RibbonControlSizeDefinition ImageSize="Small"
+                                             IsLabelVisible="False" />
             </Setter.Value>
         </Setter>
         <Style.Resources>

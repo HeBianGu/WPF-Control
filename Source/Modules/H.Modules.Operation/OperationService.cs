@@ -13,7 +13,7 @@ namespace H.Modules.Operation
         {
             if (typeof(hi_dd_operation) == typeof(T))
                 return;
-            IRepositoryViewModel<hi_dd_operation> vm = Ioc.GetService<IRepositoryViewModel<hi_dd_operation>>();
+            IRepositoryBindable<hi_dd_operation> vm = Ioc.GetService<IRepositoryBindable<hi_dd_operation>>();
             string typeName = typeof(T).GetCustomAttribute<DisplayAttribute>()?.Name ?? typeof(T).Name;
             vm.UseMessage = false;
             hi_dd_operation operation = new hi_dd_operation()

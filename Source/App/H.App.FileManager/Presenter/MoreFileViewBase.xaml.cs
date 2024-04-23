@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace H.App.FileManager
 {
-    public abstract class MoreFileViewBase : ModelViewModel<fm_dd_file>
+    public abstract class MoreFileViewBase : ModelBindable<fm_dd_file>
     {
         protected MoreFileViewBase(fm_dd_file t) : base(t)
         {
@@ -63,7 +63,7 @@ namespace H.App.FileManager
         protected virtual IEnumerable<IFileView> CreateMore()
         {
             List<IFileView> mores = new List<IFileView>();
-            IEnumerable<fm_dd_file> files = FileRepositoryViewModel.Instance.Collection.Select(x => x.Model);
+            IEnumerable<fm_dd_file> files = FileRepositoryBindable.Instance.Collection.Select(x => x.Model);
 
             var t = this.Model;
             var filtToView = Ioc.GetService<IFileToViewService>();

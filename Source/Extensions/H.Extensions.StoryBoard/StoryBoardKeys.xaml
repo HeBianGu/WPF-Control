@@ -10,7 +10,9 @@
         <TranslateTransform />
     </TransformGroup>
 
-    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.OpacityForever, TypeInTargetAssembly={x:Type local:StoryBoardKeys}}" Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
+    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.OpacityForever,
+                                             TypeInTargetAssembly={x:Type local:StoryBoardKeys}}"
+                Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
         <DoubleAnimation AutoReverse="True"
                          BeginTime="00:00:00"
                          RepeatBehavior="Forever"
@@ -20,7 +22,9 @@
                          Duration="00:00:01" />
     </Storyboard>
 
-    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.RotateForever, TypeInTargetAssembly={x:Type local:StoryBoardKeys}}" Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
+    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.RotateForever,
+                                             TypeInTargetAssembly={x:Type local:StoryBoardKeys}}"
+                Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
         <DoubleAnimation BeginTime="00:00:00"
                          RepeatBehavior="Forever"
                          Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)"
@@ -29,8 +33,11 @@
                          Duration="00:00:01" />
     </Storyboard>
 
-    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.Window.Load.Opacity, TypeInTargetAssembly={x:Type local:StoryBoardKeys}}" Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
-        <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Visibility)">
+    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.Window.Load.Opacity,
+                                             TypeInTargetAssembly={x:Type local:StoryBoardKeys}}"
+                Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
+        <ObjectAnimationUsingKeyFrames BeginTime="00:00:00"
+                                       Storyboard.TargetProperty="(UIElement.Visibility)">
             <DiscreteObjectKeyFrame KeyTime="0:0:0">
                 <DiscreteObjectKeyFrame.Value>
                     <Visibility>Visible</Visibility>
@@ -38,14 +45,19 @@
             </DiscreteObjectKeyFrame>
         </ObjectAnimationUsingKeyFrames>
 
-        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)">
-            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0" />
-            <SplineDoubleKeyFrame KeyTime="00:00:01" Value="1" />
+        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
+                                       Storyboard.TargetProperty="(UIElement.Opacity)">
+            <SplineDoubleKeyFrame KeyTime="00:00:00"
+                                  Value="0" />
+            <SplineDoubleKeyFrame KeyTime="00:00:01"
+                                  Value="1" />
         </DoubleAnimationUsingKeyFrames>
     </Storyboard>
 
 
-    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.RotateForever.2, TypeInTargetAssembly={x:Type local:StoryBoardKeys}}" Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
+    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.RotateForever.2,
+                                             TypeInTargetAssembly={x:Type local:StoryBoardKeys}}"
+                Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
         <DoubleAnimation BeginTime="00:00:00"
                          RepeatBehavior="Forever"
                          Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)"
@@ -54,7 +66,9 @@
                          Duration="00:00:02" />
     </Storyboard>
 
-    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.RotateForever.3, TypeInTargetAssembly={x:Type local:StoryBoardKeys}}" Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
+    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.RotateForever.3,
+                                             TypeInTargetAssembly={x:Type local:StoryBoardKeys}}"
+                Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
         <DoubleAnimation BeginTime="00:00:00"
                          RepeatBehavior="Forever"
                          Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)"
@@ -64,7 +78,9 @@
     </Storyboard>
 
 
-    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.RotateForever.4, TypeInTargetAssembly={x:Type local:StoryBoardKeys}}" Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
+    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.RotateForever.4,
+                                             TypeInTargetAssembly={x:Type local:StoryBoardKeys}}"
+                Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
         <DoubleAnimation BeginTime="00:00:00"
                          RepeatBehavior="Forever"
                          Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)"
@@ -74,7 +90,9 @@
     </Storyboard>
 
 
-    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.RotateForever.5, TypeInTargetAssembly={x:Type local:StoryBoardKeys}}" Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
+    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.RotateForever.5,
+                                             TypeInTargetAssembly={x:Type local:StoryBoardKeys}}"
+                Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
         <DoubleAnimation BeginTime="00:00:00"
                          RepeatBehavior="Forever"
                          Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)"
@@ -83,7 +101,9 @@
                          Duration="00:00:05" />
     </Storyboard>
 
-    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.OpacityForever.0, TypeInTargetAssembly={x:Type local:StoryBoardKeys}}" Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
+    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.OpacityForever.0,
+                                             TypeInTargetAssembly={x:Type local:StoryBoardKeys}}"
+                Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
         <DoubleAnimation AutoReverse="True"
                          BeginTime="00:00:00"
                          RepeatBehavior="Forever"
@@ -93,7 +113,9 @@
                          Duration="00:00:01" />
     </Storyboard>
 
-    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.ScaleTransform.XY, TypeInTargetAssembly={x:Type local:StoryBoardKeys}}" Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
+    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.ScaleTransform.XY,
+                                             TypeInTargetAssembly={x:Type local:StoryBoardKeys}}"
+                Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
         <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"
                          From="0"
                          To="1" />
@@ -102,20 +124,27 @@
                          To="1" />
     </Storyboard>
 
-    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.ScaleTransform.X, TypeInTargetAssembly={x:Type local:StoryBoardKeys}}" Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
+    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.ScaleTransform.X,
+                                             TypeInTargetAssembly={x:Type local:StoryBoardKeys}}"
+                Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
         <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
                          From="0"
                          To="1" />
     </Storyboard>
 
-    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.ScaleTransform.Y, TypeInTargetAssembly={x:Type local:StoryBoardKeys}}" Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
+    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.ScaleTransform.Y,
+                                             TypeInTargetAssembly={x:Type local:StoryBoardKeys}}"
+                Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
         <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"
                          From="0"
                          To="1" />
     </Storyboard>
 
-    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.Close.Opacity, TypeInTargetAssembly={x:Type local:StoryBoardKeys}}" Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
-        <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Visibility)">
+    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.Close.Opacity,
+                                             TypeInTargetAssembly={x:Type local:StoryBoardKeys}}"
+                Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
+        <ObjectAnimationUsingKeyFrames BeginTime="00:00:00"
+                                       Storyboard.TargetProperty="(UIElement.Visibility)">
             <DiscreteObjectKeyFrame KeyTime="0:0:0">
                 <DiscreteObjectKeyFrame.Value>
                     <Visibility>Visible</Visibility>
@@ -128,139 +157,219 @@
             </DiscreteObjectKeyFrame>
         </ObjectAnimationUsingKeyFrames>
 
-        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)">
-            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1" />
-            <SplineDoubleKeyFrame KeyTime="00:00:01" Value="0" />
+        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
+                                       Storyboard.TargetProperty="(UIElement.Opacity)">
+            <SplineDoubleKeyFrame KeyTime="00:00:00"
+                                  Value="1" />
+            <SplineDoubleKeyFrame KeyTime="00:00:01"
+                                  Value="0" />
         </DoubleAnimationUsingKeyFrames>
     </Storyboard>
 
-    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.Load.Scale.XY, TypeInTargetAssembly={x:Type local:StoryBoardKeys}}" Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
-        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
-            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0" />
+    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.Load.Scale.XY,
+                                             TypeInTargetAssembly={x:Type local:StoryBoardKeys}}"
+                Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
+        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
+                                       Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+            <SplineDoubleKeyFrame KeyTime="00:00:00"
+                                  Value="0" />
             <SplineDoubleKeyFrame KeySpline="0,0.500999987125397,0.504000008106232,1"
                                   KeyTime="00:00:01"
                                   Value="1" />
         </DoubleAnimationUsingKeyFrames>
 
-        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
-            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0" />
-            <SplineDoubleKeyFrame KeySpline="0,0.500999987125397,0.504000008106232,1"
-                                  KeyTime="00:00:01"
-                                  Value="1" />
-        </DoubleAnimationUsingKeyFrames>
-    </Storyboard>
-
-    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.Load.Scale.X, TypeInTargetAssembly={x:Type local:StoryBoardKeys}}" Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
-        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
-            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0" />
-            <SplineDoubleKeyFrame KeySpline="0,0.500999987125397,0.504000008106232,1"
-                                  KeyTime="00:00:01"
-                                  Value="1" />
-        </DoubleAnimationUsingKeyFrames>
-    </Storyboard>
-
-    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.Load.Scale.Y, TypeInTargetAssembly={x:Type local:StoryBoardKeys}}" Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
-        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
-            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0" />
+        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
+                                       Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+            <SplineDoubleKeyFrame KeyTime="00:00:00"
+                                  Value="0" />
             <SplineDoubleKeyFrame KeySpline="0,0.500999987125397,0.504000008106232,1"
                                   KeyTime="00:00:01"
                                   Value="1" />
         </DoubleAnimationUsingKeyFrames>
     </Storyboard>
 
-    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.Load.OpacityLeftToRight, TypeInTargetAssembly={x:Type local:StoryBoardKeys}}" Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
-        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)">
-            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0" />
-            <SplineDoubleKeyFrame KeyTime="00:00:01" Value="1" />
-        </DoubleAnimationUsingKeyFrames>
-
-        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
-            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="-50" />
-            <SplineDoubleKeyFrame KeyTime="00:00:01" Value="0" />
-        </DoubleAnimationUsingKeyFrames>
-    </Storyboard>
-
-    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.Load.OpacityRightToLeft, TypeInTargetAssembly={x:Type local:StoryBoardKeys}}" Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
-        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)">
-            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0" />
-            <SplineDoubleKeyFrame KeyTime="00:00:01" Value="1" />
-        </DoubleAnimationUsingKeyFrames>
-
-        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
-            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="50" />
-            <SplineDoubleKeyFrame KeyTime="00:00:01" Value="0" />
+    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.Load.Scale.X,
+                                             TypeInTargetAssembly={x:Type local:StoryBoardKeys}}"
+                Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
+        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
+                                       Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+            <SplineDoubleKeyFrame KeyTime="00:00:00"
+                                  Value="0" />
+            <SplineDoubleKeyFrame KeySpline="0,0.500999987125397,0.504000008106232,1"
+                                  KeyTime="00:00:01"
+                                  Value="1" />
         </DoubleAnimationUsingKeyFrames>
     </Storyboard>
 
-    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.Load.OpacityDownToUp, TypeInTargetAssembly={x:Type local:StoryBoardKeys}}" Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
-        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)">
-            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0" />
-            <SplineDoubleKeyFrame KeyTime="00:00:03" Value="1" />
+    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.Load.Scale.Y,
+                                             TypeInTargetAssembly={x:Type local:StoryBoardKeys}}"
+                Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
+        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
+                                       Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+            <SplineDoubleKeyFrame KeyTime="00:00:00"
+                                  Value="0" />
+            <SplineDoubleKeyFrame KeySpline="0,0.500999987125397,0.504000008106232,1"
+                                  KeyTime="00:00:01"
+                                  Value="1" />
+        </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+
+    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.Load.OpacityLeftToRight,
+                                             TypeInTargetAssembly={x:Type local:StoryBoardKeys}}"
+                Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
+        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
+                                       Storyboard.TargetProperty="(UIElement.Opacity)">
+            <SplineDoubleKeyFrame KeyTime="00:00:00"
+                                  Value="0" />
+            <SplineDoubleKeyFrame KeyTime="00:00:01"
+                                  Value="1" />
         </DoubleAnimationUsingKeyFrames>
 
-        <PointAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)">
-            <SplinePointKeyFrame KeyTime="00:00:00" Value="0.1,0" />
-            <SplinePointKeyFrame KeyTime="00:00:03" Value="0.5,0" />
+        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
+                                       Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+            <SplineDoubleKeyFrame KeyTime="00:00:00"
+                                  Value="-50" />
+            <SplineDoubleKeyFrame KeyTime="00:00:01"
+                                  Value="0" />
+        </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+
+    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.Load.OpacityRightToLeft,
+                                             TypeInTargetAssembly={x:Type local:StoryBoardKeys}}"
+                Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
+        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
+                                       Storyboard.TargetProperty="(UIElement.Opacity)">
+            <SplineDoubleKeyFrame KeyTime="00:00:00"
+                                  Value="0" />
+            <SplineDoubleKeyFrame KeyTime="00:00:01"
+                                  Value="1" />
+        </DoubleAnimationUsingKeyFrames>
+
+        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
+                                       Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+            <SplineDoubleKeyFrame KeyTime="00:00:00"
+                                  Value="50" />
+            <SplineDoubleKeyFrame KeyTime="00:00:01"
+                                  Value="0" />
+        </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+
+    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.Load.OpacityDownToUp,
+                                             TypeInTargetAssembly={x:Type local:StoryBoardKeys}}"
+                Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
+        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
+                                       Storyboard.TargetProperty="(UIElement.Opacity)">
+            <SplineDoubleKeyFrame KeyTime="00:00:00"
+                                  Value="0" />
+            <SplineDoubleKeyFrame KeyTime="00:00:03"
+                                  Value="1" />
+        </DoubleAnimationUsingKeyFrames>
+
+        <PointAnimationUsingKeyFrames BeginTime="00:00:00"
+                                      Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)">
+            <SplinePointKeyFrame KeyTime="00:00:00"
+                                 Value="0.1,0" />
+            <SplinePointKeyFrame KeyTime="00:00:03"
+                                 Value="0.5,0" />
         </PointAnimationUsingKeyFrames>
-        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
-            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="304.47500610351562" />
-            <SplineDoubleKeyFrame KeyTime="00:00:01" Value="0" />
+        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
+                                       Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+            <SplineDoubleKeyFrame KeyTime="00:00:00"
+                                  Value="304.47500610351562" />
+            <SplineDoubleKeyFrame KeyTime="00:00:01"
+                                  Value="0" />
         </DoubleAnimationUsingKeyFrames>
     </Storyboard>
 
-    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.Load.WaitDownToUp, TypeInTargetAssembly={x:Type local:StoryBoardKeys}}" Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
-        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)">
-            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0" />
-            <SplineDoubleKeyFrame KeyTime="00:00:01" Value="0" />
-            <SplineDoubleKeyFrame KeyTime="00:00:01" Value="1" />
+    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.Load.WaitDownToUp,
+                                             TypeInTargetAssembly={x:Type local:StoryBoardKeys}}"
+                Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
+        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
+                                       Storyboard.TargetProperty="(UIElement.Opacity)">
+            <SplineDoubleKeyFrame KeyTime="00:00:00"
+                                  Value="0" />
+            <SplineDoubleKeyFrame KeyTime="00:00:01"
+                                  Value="0" />
+            <SplineDoubleKeyFrame KeyTime="00:00:01"
+                                  Value="1" />
         </DoubleAnimationUsingKeyFrames>
 
-        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
-            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="304.47500610351562" />
-            <SplineDoubleKeyFrame KeyTime="00:00:02" Value="0" />
+        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
+                                       Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+            <SplineDoubleKeyFrame KeyTime="00:00:00"
+                                  Value="304.47500610351562" />
+            <SplineDoubleKeyFrame KeyTime="00:00:02"
+                                  Value="0" />
         </DoubleAnimationUsingKeyFrames>
     </Storyboard>
 
-    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.Load.OpacityUpToDwon, TypeInTargetAssembly={x:Type local:StoryBoardKeys}}" Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
-        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)">
-            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0" />
-            <SplineDoubleKeyFrame KeyTime="00:00:01" Value="1" />
+    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.Load.OpacityUpToDwon,
+                                             TypeInTargetAssembly={x:Type local:StoryBoardKeys}}"
+                Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
+        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
+                                       Storyboard.TargetProperty="(UIElement.Opacity)">
+            <SplineDoubleKeyFrame KeyTime="00:00:00"
+                                  Value="0" />
+            <SplineDoubleKeyFrame KeyTime="00:00:01"
+                                  Value="1" />
         </DoubleAnimationUsingKeyFrames>
 
-        <PointAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)">
-            <SplinePointKeyFrame KeyTime="00:00:00" Value="0.5,0" />
-            <SplinePointKeyFrame KeyTime="00:00:00.5000000" Value="0.5,0" />
-            <SplinePointKeyFrame KeyTime="00:00:01" Value="0.5,0" />
+        <PointAnimationUsingKeyFrames BeginTime="00:00:00"
+                                      Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)">
+            <SplinePointKeyFrame KeyTime="00:00:00"
+                                 Value="0.5,0" />
+            <SplinePointKeyFrame KeyTime="00:00:00.5000000"
+                                 Value="0.5,0" />
+            <SplinePointKeyFrame KeyTime="00:00:01"
+                                 Value="0.5,0" />
         </PointAnimationUsingKeyFrames>
-        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
-            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="-304.47500610351562" />
-            <SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="0" />
-            <SplineDoubleKeyFrame KeyTime="00:00:01" Value="0" />
+        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
+                                       Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+            <SplineDoubleKeyFrame KeyTime="00:00:00"
+                                  Value="-304.47500610351562" />
+            <SplineDoubleKeyFrame KeyTime="00:00:00.5000000"
+                                  Value="0" />
+            <SplineDoubleKeyFrame KeyTime="00:00:01"
+                                  Value="0" />
         </DoubleAnimationUsingKeyFrames>
     </Storyboard>
 
-    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.Load.Fountain, TypeInTargetAssembly={x:Type local:StoryBoardKeys}}" Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
+    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.Load.Fountain,
+                                             TypeInTargetAssembly={x:Type local:StoryBoardKeys}}"
+                Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
-            <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0" />
-            <EasingDoubleKeyFrame KeyTime="0:0:5" Value="5" />
-            <EasingDoubleKeyFrame KeyTime="0:0:10" Value="1" />
+            <EasingDoubleKeyFrame KeyTime="0:0:0"
+                                  Value="0" />
+            <EasingDoubleKeyFrame KeyTime="0:0:5"
+                                  Value="5" />
+            <EasingDoubleKeyFrame KeyTime="0:0:10"
+                                  Value="1" />
         </DoubleAnimationUsingKeyFrames>
         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
-            <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0" />
-            <EasingDoubleKeyFrame KeyTime="0:0:5" Value="5" />
-            <EasingDoubleKeyFrame KeyTime="0:0:10" Value="1" />
+            <EasingDoubleKeyFrame KeyTime="0:0:0"
+                                  Value="0" />
+            <EasingDoubleKeyFrame KeyTime="0:0:5"
+                                  Value="5" />
+            <EasingDoubleKeyFrame KeyTime="0:0:10"
+                                  Value="1" />
         </DoubleAnimationUsingKeyFrames>
         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
-            <EasingDoubleKeyFrame KeyTime="0:0:5" Value="186.5" />
-            <EasingDoubleKeyFrame KeyTime="0:0:10" Value="0" />
+            <EasingDoubleKeyFrame KeyTime="0:0:5"
+                                  Value="186.5" />
+            <EasingDoubleKeyFrame KeyTime="0:0:10"
+                                  Value="0" />
         </DoubleAnimationUsingKeyFrames>
         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
-            <EasingDoubleKeyFrame KeyTime="0:0:5" Value="107" />
-            <EasingDoubleKeyFrame KeyTime="0:0:10" Value="0" />
+            <EasingDoubleKeyFrame KeyTime="0:0:5"
+                                  Value="107" />
+            <EasingDoubleKeyFrame KeyTime="0:0:10"
+                                  Value="0" />
         </DoubleAnimationUsingKeyFrames>
     </Storyboard>
 
-    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.SlowHide, TypeInTargetAssembly={x:Type local:StoryBoardKeys}}" Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
+    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.SlowHide,
+                                             TypeInTargetAssembly={x:Type local:StoryBoardKeys}}"
+                Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
         <DoubleAnimation Storyboard.TargetProperty="Opacity"
                          From="1"
                          To="0"
@@ -271,7 +380,9 @@
                             Duration="0:0:0.3" />
     </Storyboard>
 
-    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.SlowShow, TypeInTargetAssembly={x:Type local:StoryBoardKeys}}" Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
+    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.SlowShow,
+                                             TypeInTargetAssembly={x:Type local:StoryBoardKeys}}"
+                Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
         <DoubleAnimation Storyboard.TargetProperty="Opacity"
                          From="0"
                          To="1"
@@ -282,8 +393,11 @@
                             Duration="0:0:0.2" />
     </Storyboard>
 
-    <Storyboard x:Key="{ComponentResourceKey ResourceId=Show, TypeInTargetAssembly={x:Type local:StoryBoardKeys}}" Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
-        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Duration="0:0:0.1">
+    <Storyboard x:Key="{ComponentResourceKey ResourceId=Show,
+                                             TypeInTargetAssembly={x:Type local:StoryBoardKeys}}"
+                Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility"
+                                       Duration="0:0:0.1">
             <ObjectAnimationUsingKeyFrames.KeyFrames>
                 <DiscreteObjectKeyFrame KeyTime="1%">
                     <DiscreteObjectKeyFrame.Value>
@@ -294,34 +408,48 @@
         </ObjectAnimationUsingKeyFrames>
     </Storyboard>
 
-    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.Scale.Recovery, TypeInTargetAssembly={x:Type local:StoryBoardKeys}}" Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
+    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.Scale.Recovery,
+                                             TypeInTargetAssembly={x:Type local:StoryBoardKeys}}"
+                Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.LayoutTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
-            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1" />
+            <EasingDoubleKeyFrame KeyTime="0:0:0.3"
+                                  Value="1" />
         </DoubleAnimationUsingKeyFrames>
         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.LayoutTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
-            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1" />
+            <EasingDoubleKeyFrame KeyTime="0:0:0.3"
+                                  Value="1" />
         </DoubleAnimationUsingKeyFrames>
     </Storyboard>
 
-    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.Scale.Recovery.1.2, TypeInTargetAssembly={x:Type local:StoryBoardKeys}}" Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
+    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.Scale.Recovery.1.2,
+                                             TypeInTargetAssembly={x:Type local:StoryBoardKeys}}"
+                Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.LayoutTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
-            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.2" />
+            <EasingDoubleKeyFrame KeyTime="0:0:0.3"
+                                  Value="1.2" />
         </DoubleAnimationUsingKeyFrames>
         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.LayoutTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
-            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.2" />
+            <EasingDoubleKeyFrame KeyTime="0:0:0.3"
+                                  Value="1.2" />
         </DoubleAnimationUsingKeyFrames>
     </Storyboard>
 
-    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.Scale.Recovery.1.4, TypeInTargetAssembly={x:Type local:StoryBoardKeys}}" Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
+    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.Scale.Recovery.1.4,
+                                             TypeInTargetAssembly={x:Type local:StoryBoardKeys}}"
+                Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.LayoutTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
-            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.4" />
+            <EasingDoubleKeyFrame KeyTime="0:0:0.3"
+                                  Value="1.4" />
         </DoubleAnimationUsingKeyFrames>
         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.LayoutTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
-            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.4" />
+            <EasingDoubleKeyFrame KeyTime="0:0:0.3"
+                                  Value="1.4" />
         </DoubleAnimationUsingKeyFrames>
     </Storyboard>
 
-    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.Scale.Enlarge.1.2, TypeInTargetAssembly={x:Type local:StoryBoardKeys}}" Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
+    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.Scale.Enlarge.1.2,
+                                             TypeInTargetAssembly={x:Type local:StoryBoardKeys}}"
+                Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
         <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"
                          From="1"
                          To="1.2"
@@ -332,7 +460,9 @@
                          Duration="00:00:00.2" />
     </Storyboard>
 
-    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.Scale.Enlarge.1.2.Recovery, TypeInTargetAssembly={x:Type local:StoryBoardKeys}}" Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
+    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.Scale.Enlarge.1.2.Recovery,
+                                             TypeInTargetAssembly={x:Type local:StoryBoardKeys}}"
+                Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
         <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"
                          From="1.2"
                          To="1"
@@ -343,7 +473,9 @@
                          Duration="00:00:00.2" />
     </Storyboard>
 
-    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.FontSize.Rebound, TypeInTargetAssembly={x:Type local:StoryBoardKeys}}" Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
+    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.FontSize.Rebound,
+                                             TypeInTargetAssembly={x:Type local:StoryBoardKeys}}"
+                Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
         <DoubleAnimation RepeatBehavior="Forever"
                          Storyboard.TargetProperty="FontSize"
                          From="5"
@@ -355,7 +487,9 @@
         </DoubleAnimation>
     </Storyboard>
 
-    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.Color.Flash, TypeInTargetAssembly={x:Type local:StoryBoardKeys}}" Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
+    <Storyboard x:Key="{ComponentResourceKey ResourceId=S.Storyboard.Color.Flash,
+                                             TypeInTargetAssembly={x:Type local:StoryBoardKeys}}"
+                Timeline.DesiredFrameRate="{x:Static h:StoryboardSetting.DesiredFrameRate}">
         <ColorAnimation AutoReverse="True"
                         RepeatBehavior="Forever"
                         Storyboard.TargetProperty="(Control.Foreground).(SolidColorBrush.Color)"

@@ -33,7 +33,8 @@
 
         <Setter Property="Background">
             <Setter.Value>
-                <SolidColorBrush Opacity="{Binding Source={x:Static local:GuideOptions.Instance}, Path=CoverOpacity, Mode=TwoWay}" Color="{Binding Source={x:Static local:GuideOptions.Instance}, Path=CoverColor, Mode=TwoWay}" />
+                <SolidColorBrush Opacity="{Binding Source={x:Static local:GuideOptions.Instance}, Path=CoverOpacity, Mode=TwoWay}"
+                                 Color="{Binding Source={x:Static local:GuideOptions.Instance}, Path=CoverColor, Mode=TwoWay}" />
             </Setter.Value>
         </Setter>
         <!--<Setter Property="ContentControl">
@@ -126,9 +127,9 @@
                                         Width="100"
                                         HorizontalAlignment="Left"
                                         Background="{DynamicResource {x:Static h:BrushKeys.Orange}}"
-                                        Foreground="White"
                                         Command="{x:Static local:GuideBox.NextCommand}"
-                                        Content="下一步" />
+                                        Content="下一步"
+                                        Foreground="White" />
                             </DockPanel>
 
                             <DockPanel DockPanel.Dock="Top">

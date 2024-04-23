@@ -61,7 +61,7 @@
                            VerticalAlignment="Center"
                            FontWeight="Bold"
                            Foreground="{DynamicResource {x:Static h:BrushKeys.Orange}}"
-                           Text="{Binding Level,StringFormat=v{0}}" />
+                           Text="{Binding Level, StringFormat=v{0}}" />
             </StackPanel>
 
             <Grid DockPanel.Dock="Bottom"

@@ -10,7 +10,9 @@
         Style="{StaticResource {x:Type Window}}"
         mc:Ignorable="d">
     <UniformGrid>
-        <Button Click="Button_Click" Content="测试" />
-        <Button Command="{ShowDialogIocCommand Type={x:Type IAboutViewPresenter}}" Content="关于" />
+        <Button Click="Button_Click"
+                Content="测试" />
+        <Button Command="{ShowDialogIocCommand Type={x:Type IAboutViewPresenter}}"
+                Content="关于" />
     </UniformGrid>
 </Window>

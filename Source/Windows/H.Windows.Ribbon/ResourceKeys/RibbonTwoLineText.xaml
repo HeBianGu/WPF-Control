@@ -1,6 +1,8 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <Style x:Key="{x:Type RibbonTwoLineText}" TargetType="{x:Type RibbonTwoLineText}">
+    <Style x:Key="{x:Type RibbonTwoLineText}"
+           TargetType="{x:Type RibbonTwoLineText}">
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="Background" Value="Transparent" />
@@ -25,7 +27,8 @@
                                    TextEffects="{TemplateBinding TextEffects}"
                                    TextTrimming="None"
                                    TextWrapping="NoWrap" />
-                        <DockPanel Grid.Row="1" HorizontalAlignment="{TemplateBinding HorizontalAlignment}">
+                        <DockPanel Grid.Row="1"
+                                   HorizontalAlignment="{TemplateBinding HorizontalAlignment}">
                             <Grid x:Name="pathGrid"
                                   MinHeight="{TemplateBinding LineHeight}"
                                   Margin="2,0,0,0"

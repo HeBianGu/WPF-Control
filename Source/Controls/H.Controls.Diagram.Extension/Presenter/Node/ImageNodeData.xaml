@@ -4,8 +4,10 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.Diagram.Extension">
     <DataTemplate DataType="{x:Type local:ImageNodeDataBase}">
-        <Border x:Name="boder" Background="Transparent">
-            <AdornerDecorator HorizontalAlignment="Left" VerticalAlignment="Top">
+        <Border x:Name="boder"
+                Background="Transparent">
+            <AdornerDecorator HorizontalAlignment="Left"
+                              VerticalAlignment="Top">
                 <Grid Width="{Binding Width, Converter={x:Static h:Converter.GetMathAddition}, ConverterParameter=1}"
                       Height="{Binding Height, Converter={x:Static h:Converter.GetMathAddition}, ConverterParameter=1}"
                       Margin="5"
@@ -68,24 +70,28 @@
                     </TextBlock>
 
                     <b:Interaction.Behaviors>
-                        <h:LoadedAdornerBehavior AdornerType="{x:Type h:NoteResizeAdorner}" IsUse="{Binding IsTemplate, Converter={x:Static h:Converter.GetTrueToFalse}}" />
+                        <h:LoadedAdornerBehavior AdornerType="{x:Type h:NoteResizeAdorner}"
+                                                 IsUse="{Binding IsTemplate, Converter={x:Static h:Converter.GetTrueToFalse}}" />
                     </b:Interaction.Behaviors>
                 </Grid>
             </AdornerDecorator>
         </Border>
 
         <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding State}" Value="Success">
+            <DataTrigger Binding="{Binding State}"
+                         Value="Success">
                 <Setter TargetName="boder" Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.Green}}" />
                 <Setter TargetName="boder" Property="BorderThickness" Value="1" />
             </DataTrigger>
 
-            <DataTrigger Binding="{Binding State}" Value="Error">
+            <DataTrigger Binding="{Binding State}"
+                         Value="Error">
                 <Setter TargetName="boder" Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.Red}}" />
                 <Setter TargetName="boder" Property="BorderThickness" Value="1" />
             </DataTrigger>
 
-            <DataTrigger Binding="{Binding State}" Value="Running">
+            <DataTrigger Binding="{Binding State}"
+                         Value="Running">
                 <Setter TargetName="boder" Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
                 <Setter TargetName="boder" Property="BorderThickness" Value="1" />
             </DataTrigger>
@@ -97,7 +103,8 @@
                 </MultiDataTrigger.Conditions>
                 <MultiDataTrigger.EnterActions>
                     <BeginStoryboard x:Name="start">
-                        <Storyboard AutoReverse="True" RepeatBehavior="Forever">
+                        <Storyboard AutoReverse="True"
+                                    RepeatBehavior="Forever">
                             <DoubleAnimation Storyboard.TargetName="boder"
                                              Storyboard.TargetProperty="Opacity"
                                              From="0.7"

@@ -4,8 +4,10 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <ControlTemplate x:Key="&#215;" TargetType="{x:Type RibbonMenuButton}">
-        <Grid x:Name="MainGrid" SnapsToDevicePixels="True">
+    <ControlTemplate x:Key="&#215;"
+                     TargetType="{x:Type RibbonMenuButton}">
+        <Grid x:Name="MainGrid"
+              SnapsToDevicePixels="True">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition Width="Auto" />
@@ -109,7 +111,8 @@
                                         BorderBrush="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Ribbon.BorderBrush}"
                                         BorderThickness="0,1,0,0"
                                         Visibility="Collapsed">
-                                    <Thumb x:Name="PART_ResizeThumb" Style="{StaticResource S.Thumb.SizeNWSE}" />
+                                    <Thumb x:Name="PART_ResizeThumb"
+                                           Style="{StaticResource S.Thumb.SizeNWSE}" />
                                 </Border>
                             </Grid>
                         </Border>
@@ -125,7 +128,8 @@
                 <Setter TargetName="OverlayRect" Property="Canvas.Left" Value="{Binding ElementName=PART_SubMenuScrollViewer, Path=HorizontalOffset}" />
             </Trigger>
 
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsInQuickAccessToolBar}" Value="True">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsInQuickAccessToolBar}"
+                         Value="True">
                 <Setter TargetName="PART_ToggleButton" Property="Height" Value="Auto" />
                 <Setter TargetName="PART_ToggleButton" Property="VerticalAlignment" Value="Center" />
             </DataTrigger>
@@ -176,7 +180,8 @@
 
             <!--  HighContrast  -->
 
-            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
+                         Value="True">
 
 
 
@@ -210,9 +215,11 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <Style x:Key="{x:Type RibbonMenuButton}" TargetType="{x:Type RibbonMenuButton}">
+    <Style x:Key="{x:Type RibbonMenuButton}"
+           TargetType="{x:Type RibbonMenuButton}">
         <Style.Resources>
-            <Style x:Key="{x:Static MenuItem.SeparatorStyleKey}" TargetType="{x:Type RibbonSeparator}">
+            <Style x:Key="{x:Static MenuItem.SeparatorStyleKey}"
+                   TargetType="{x:Type RibbonSeparator}">
                 <Setter Property="OverridesDefaultStyle" Value="True" />
                 <Setter Property="Focusable" Value="false" />
                 <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type RibbonMenuButton}}, Path=Ribbon.BorderBrush}" />
@@ -226,7 +233,8 @@
                                     BorderBrush="{TemplateBinding BorderBrush}"
                                     BorderThickness="0,1,0,1"
                                     SnapsToDevicePixels="True">
-                                <Border x:Name="Overlay" Background="{DynamicResource {x:Static BrushKeys.Background}}">
+                                <Border x:Name="Overlay"
+                                        Background="{DynamicResource {x:Static BrushKeys.Background}}">
                                     <TextBlock x:Name="Text"
                                                Margin="2,1,2,1"
                                                Text="{TemplateBinding Label}" />
@@ -234,7 +242,8 @@
                             </Border>
                             <ControlTemplate.Triggers>
 
-                                <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+                                <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
+                                             Value="True">
 
 
 
@@ -268,7 +277,8 @@
                                                 Background="{TemplateBinding Background}"
                                                 BorderBrush="{TemplateBinding BorderBrush}"
                                                 BorderThickness="0,0,1,0">
-                                            <Border x:Name="SideBarOverlay" Background="{DynamicResource {x:Static BrushKeys.Background}}" />
+                                            <Border x:Name="SideBarOverlay"
+                                                    Background="{DynamicResource {x:Static BrushKeys.Background}}" />
                                         </Border>
                                         <Line x:Name="Line"
                                               Grid.Column="1"
@@ -285,7 +295,8 @@
 
                                     <ControlTemplate.Triggers>
 
-                                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+                                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
+                                                     Value="True">
 
 
 
@@ -303,8 +314,8 @@
             </Style>
         </Style.Resources>
         <Setter Property="Label" Value="RibbonMenuButton" />
-        <Setter Property="LargeImageSource" Value="/Resources/CropImage32.png" />
-        <Setter Property="SmallImageSource" Value="/Resources/CropImage16.png" />
+        <Setter Property="LargeImageSource" Value="{Logo}" />
+        <Setter Property="SmallImageSource" Value="{Logo}" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="1" />
@@ -323,7 +334,8 @@
         <Setter Property="RibbonTwoLineText.PathData" Value="{StaticResource S.Geometry.208}" />
         <Setter Property="QuickAccessToolBarControlSizeDefinition">
             <Setter.Value>
-                <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="False" />
+                <RibbonControlSizeDefinition ImageSize="Small"
+                                             IsLabelVisible="False" />
             </Setter.Value>
         </Setter>
         <Setter Property="Template" Value="{StaticResource &#215;}" />

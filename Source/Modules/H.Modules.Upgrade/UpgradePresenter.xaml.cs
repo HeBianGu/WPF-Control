@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 
@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 namespace H.Modules.Upgrade
 {
     [Display(Name = "软件更新", GroupName = SettingGroupNames.GroupSystem, Description = "应用此功能检查软件更新")]
-    internal class UpgradePresenter : ViewModelBase
+    internal class UpgradePresenter : BindableBase
     {
         private readonly VersionData _args;
         public UpgradePresenter(VersionData args)

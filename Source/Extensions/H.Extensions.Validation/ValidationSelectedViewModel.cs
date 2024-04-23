@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using H.Providers.Mvvm;
 
@@ -10,7 +10,7 @@ using System.Linq;
 namespace H.Extensions.Validation
 {
 
-    public class ValidationSelectedViewModel<T> : SelectViewModel<T>, IDataErrorInfo
+    public class ValidationSelectedViewModel<T> : SelectBindable<T>, IDataErrorInfo
     {
         public ValidationSelectedViewModel(T t) : base(t)
         {

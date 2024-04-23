@@ -17,7 +17,7 @@ using System.Xml.Serialization;
 
 namespace H.Controls.Diagram.Extension
 {
-    public abstract class DiagramBase : DisplayViewModelBase, IDiagram
+    public abstract class DiagramBase : DisplayBindableBase, IDiagram
     {
         public DiagramBase()
         {

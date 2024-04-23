@@ -2,7 +2,7 @@
 
 namespace H.Modules.Login
 {
-    public class Registor : ViewModelBase
+    public class Registor : BindableBase
     {
         private string _useName;
         /// <summary> 说明  </summary>

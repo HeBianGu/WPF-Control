@@ -207,7 +207,7 @@ namespace H.Controls.FilterBox
                 return searchable.Filter(txt);
             if (obj == null)
                 return false;
-            obj = obj is IModelViewModel model ? model.GetModel() : obj;
+            obj = obj is IModelBindable model ? model.GetModel() : obj;
             string[] propertyNames = this._textFilterBox.PropertyNames?.Split(',');
             IEnumerable<PropertyInfo> ps = obj.GetType().GetProperties().Where(x => propertyNames?.Contains(x.Name) != false);
             foreach (PropertyInfo p in ps)

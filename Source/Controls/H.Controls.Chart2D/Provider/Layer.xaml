@@ -4,7 +4,9 @@
                     xmlns:local="clr-namespace:H.Controls.Chart2D"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.XyLayer.Default, TypeInTargetAssembly={x:Type local:XyLayer}}" TargetType="{x:Type local:XyLayer}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.XyLayer.Default,
+                                        TypeInTargetAssembly={x:Type local:XyLayer}}"
+           TargetType="{x:Type local:XyLayer}">
         <Setter Property="xAxis" Value="{Binding RelativeSource={RelativeSource AncestorType=local:ViewLayerGroup}, Path=xAxis}" />
         <Setter Property="yAxis" Value="{Binding RelativeSource={RelativeSource AncestorType=local:ViewLayerGroup}, Path=yAxis}" />
         <Setter Property="Margin" Value="{Binding RelativeSource={RelativeSource AncestorType=local:ViewLayerGroup}, Path=Padding}" />
@@ -12,7 +14,8 @@
         <Setter Property="TryFreeze" Value="{Binding RelativeSource={RelativeSource AncestorType=local:ViewLayerGroup}, Path=UseDrawOnce}" />
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:XyLayer.DefaultKey}}" TargetType="{x:Type local:XyLayer}" />
+    <Style BasedOn="{StaticResource {x:Static h:XyLayer.DefaultKey}}"
+           TargetType="{x:Type local:XyLayer}" />
 
     <Style x:Key="{ComponentResourceKey ResourceId=S.Layer.Default,
                                         TypeInTargetAssembly={x:Type local:Layer}}"
@@ -35,6 +38,7 @@
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:Layer.DefaultKey}}" TargetType="{x:Type local:Layer}" />
+    <Style BasedOn="{StaticResource {x:Static h:Layer.DefaultKey}}"
+           TargetType="{x:Type local:Layer}" />
 </ResourceDictionary>
 

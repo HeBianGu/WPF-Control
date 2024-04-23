@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 using H.Extensions.XmlSerialize;
 using H.Modules.Login;
 using H.Providers.Ioc;
@@ -18,7 +18,7 @@ using System.Xml.Serialization;
 namespace H.Modules.Project
 {
     [Display(Name = "工程数据", GroupName = SettingGroupNames.GroupData)]
-    public abstract class ProjectServiceBase<T> : ViewModelBase, IProjectService, IDataSource<T> where T : IProjectItem
+    public abstract class ProjectServiceBase<T> : BindableBase, IProjectService, IDataSource<T> where T : IProjectItem
     {
         IOptions<ProjectOptions> _options;
         public ProjectServiceBase(IOptions<ProjectOptions> options)

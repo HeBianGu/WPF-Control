@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using H.Providers.Mvvm;
 using System.ComponentModel;
@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 namespace H.Presenters.Design
 {
     [Display(Name = "列头设置")]
-    public class ColumnPropertyInfo : ViewModelBase
+    public class ColumnPropertyInfo : BindableBase
     {
         public ColumnPropertyInfo(PropertyInfo t)
         {

@@ -53,7 +53,8 @@
         </Border>
 
         <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding Foreground}" Value="{x:Null}">
+            <DataTrigger Binding="{Binding Foreground}"
+                         Value="{x:Null}">
                 <Setter TargetName="txt" Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
             </DataTrigger>
             <!--<Trigger Property="IsMouseOver" Value="True">

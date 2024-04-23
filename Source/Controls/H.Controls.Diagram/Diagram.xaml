@@ -3,7 +3,9 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.Diagram">
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Diagram.Default, TypeInTargetAssembly={x:Type local:Diagram}}" TargetType="{x:Type local:Diagram}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Diagram.Default,
+                                        TypeInTargetAssembly={x:Type local:Diagram}}"
+           TargetType="{x:Type local:Diagram}">
         <Setter Property="Background">
             <Setter.Value>
                 <DrawingBrush RenderOptions.CachingHint="Cache"
@@ -46,8 +48,10 @@
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}">
                             <Grid>
-                                <local:NodeLayer x:Name="NodeLayer" Duration="{TemplateBinding Duration}" />
-                                <local:LinkLayer x:Name="LinkLayer" Duration="{TemplateBinding Duration}" />
+                                <local:NodeLayer x:Name="NodeLayer"
+                                                 Duration="{TemplateBinding Duration}" />
+                                <local:LinkLayer x:Name="LinkLayer"
+                                                 Duration="{TemplateBinding Duration}" />
                                 <local:LinkLayer x:Name="DynamicLayer" />
                             </Grid>
                         </Border>
@@ -66,6 +70,7 @@
         <Setter Property="LinkStyle" Value="{DynamicResource {x:Static local:Link.DefaultKey}}" />
         <Setter Property="DynamicLinkStyle" Value="{DynamicResource {x:Static local:Link.DashKey}}" />
     </Style>
-    <Style BasedOn="{StaticResource {x:Static local:Diagram.DefaultKey}}" TargetType="{x:Type local:Diagram}" />
+    <Style BasedOn="{StaticResource {x:Static local:Diagram.DefaultKey}}"
+           TargetType="{x:Type local:Diagram}" />
 </ResourceDictionary>
 

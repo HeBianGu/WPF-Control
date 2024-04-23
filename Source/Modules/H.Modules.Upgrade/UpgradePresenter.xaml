@@ -37,7 +37,8 @@
                     Background="{DynamicResource {x:Static h:BrushKeys.Background}}"
                     CornerRadius="0,0,4,4" />-->
 
-            <Grid Grid.Row="1" Visibility="{Binding IsDownLoading, Converter={x:Static h:Converter.GetTrueToCollapsed}}">
+            <Grid Grid.Row="1"
+                  Visibility="{Binding IsDownLoading, Converter={x:Static h:Converter.GetTrueToCollapsed}}">
                 <Button Width="180"
                         Height="40"
                         HorizontalAlignment="Center"

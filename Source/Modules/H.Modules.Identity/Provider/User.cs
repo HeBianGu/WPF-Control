@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 using H.Controls.Form;
@@ -10,7 +10,7 @@ using System.Xml.Serialization;
 
 namespace H.Modules.Identity
 {
-    public class User : SelectViewModel<hi_dd_user>, IUser
+    public class User : SelectBindable<hi_dd_user>, IUser
     {
         public User() : base(new hi_dd_user())
         {

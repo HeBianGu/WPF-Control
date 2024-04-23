@@ -28,7 +28,8 @@
             <StackPanel Margin="{Binding TextMargin}"
                         HorizontalAlignment="Center"
                         Orientation="Horizontal">
-                <TextBlock x:Name="icon" Text="{Binding Icon}" />
+                <TextBlock x:Name="icon"
+                           Text="{Binding Icon}" />
                 <TextBlock x:Name="txt"
                            Margin="2"
                            FontFamily="{Binding FontFamily}"
@@ -42,15 +43,18 @@
         </Grid>
 
         <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding Foreground}" Value="{x:Null}">
+            <DataTrigger Binding="{Binding Foreground}"
+                         Value="{x:Null}">
                 <Setter TargetName="txt" Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
                 <Setter TargetName="icon" Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
 
             </DataTrigger>
-            <DataTrigger Binding="{Binding Stroke}" Value="{x:Null}">
+            <DataTrigger Binding="{Binding Stroke}"
+                         Value="{x:Null}">
                 <Setter TargetName="path" Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding Fill}" Value="{x:Null}">
+            <DataTrigger Binding="{Binding Fill}"
+                         Value="{x:Null}">
                 <Setter TargetName="path" Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Background}}" />
             </DataTrigger>
 
@@ -73,17 +77,20 @@
                 <Setter TargetName="path" Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Yellow}}" />
             </DataTrigger>
 
-            <DataTrigger Binding="{Binding State}" Value="Success">
+            <DataTrigger Binding="{Binding State}"
+                         Value="Success">
                 <!--<Setter TargetName="boder" Property="BorderThickness" Value="3" />-->
                 <Setter TargetName="path" Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Green}}" />
             </DataTrigger>
 
-            <DataTrigger Binding="{Binding State}" Value="Error">
+            <DataTrigger Binding="{Binding State}"
+                         Value="Error">
                 <!--<Setter TargetName="boder" Property="BorderThickness" Value="3" />-->
                 <Setter TargetName="path" Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Red}}" />
             </DataTrigger>
 
-            <DataTrigger Binding="{Binding State}" Value="Wait">
+            <DataTrigger Binding="{Binding State}"
+                         Value="Wait">
                 <Setter Property="Opacity" Value="0.5" />
             </DataTrigger>
 
@@ -95,7 +102,8 @@
                 <Setter TargetName="path" Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Green}}" />
             </Trigger>
 
-            <DataTrigger Binding="{Binding HasError}" Value="True">
+            <DataTrigger Binding="{Binding HasError}"
+                         Value="True">
                 <Setter TargetName="path" Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Red}}" />
             </DataTrigger>
             <!--<DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=h:Port}, Path=HasError}" Value="True">

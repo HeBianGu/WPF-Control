@@ -124,7 +124,7 @@ namespace H.Controls.FavoriteBox
         protected override void OnSelectedItemChanged(RoutedPropertyChangedEventArgs<object> e)
         {
             base.OnSelectedItemChanged(e);
-            if (e.NewValue is IModelViewModel viewModel && viewModel.GetModel() is IFavoriteItem favorite)
+            if (e.NewValue is IModelBindable viewModel && viewModel.GetModel() is IFavoriteItem favorite)
                 this.SelectedFavoritePath = favorite.Path;
             else
                 this.SelectedFavoritePath=null;

@@ -20,13 +20,15 @@
                         VerticalAlignment="Center">
                 <BulletDecorator Margin="5">
                     <BulletDecorator.Bullet>
-                        <TextBlock Width="30" Text="账号" />
+                        <TextBlock Width="30"
+                                   Text="账号" />
                     </BulletDecorator.Bullet>
                     <TextBox Text="{Binding UserName}" />
                 </BulletDecorator>
                 <BulletDecorator Margin="5">
                     <BulletDecorator.Bullet>
-                        <TextBlock Width="30" Text="密码" />
+                        <TextBlock Width="30"
+                                   Text="密码" />
                     </BulletDecorator.Bullet>
                     <PasswordBox>
                         <b:Interaction.Behaviors>

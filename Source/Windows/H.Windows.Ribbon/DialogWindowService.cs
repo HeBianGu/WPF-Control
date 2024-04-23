@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using Microsoft.Win32;
 using System;
@@ -51,7 +51,7 @@ namespace H.Windows.Ribbon
 
         public void Execute(object parameter)
         {
-            if (parameter is ControlData data)
+            if (parameter is ControlBindableBase data)
             {
                 OpenFileDialog openFileDialog = new OpenFileDialog();
                 openFileDialog.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory; //设置初始路径

@@ -17,7 +17,8 @@
     <DataTemplate DataType="{x:Type local:ClearPathTextPropertyItem}">
         <BulletDecorator>
             <BulletDecorator.Bullet>
-                <TextBox IsReadOnly="{Binding ReadOnly, Converter={x:Static h:Converter.GetTrueToFalse}}" Text="{Binding Value, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+                <TextBox IsReadOnly="{Binding ReadOnly, Converter={x:Static h:Converter.GetTrueToFalse}}"
+                         Text="{Binding Value, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
             </BulletDecorator.Bullet>
             <Button Width="auto"
                     Command="{Binding ClearCommand}"
@@ -28,7 +29,8 @@
     <DataTemplate DataType="{x:Type local:OpenPathTextPropertyItem}">
         <BulletDecorator>
             <BulletDecorator.Bullet>
-                <TextBox IsReadOnly="{Binding ReadOnly, Converter={x:Static h:Converter.GetTrueToFalse}}" Text="{Binding Value, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+                <TextBox IsReadOnly="{Binding ReadOnly, Converter={x:Static h:Converter.GetTrueToFalse}}"
+                         Text="{Binding Value, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
             </BulletDecorator.Bullet>
             <Button Width="auto"
                     Command="{Binding OpenCommand}"
@@ -43,7 +45,8 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <TextBox IsReadOnly="{Binding ReadOnly, Converter={x:Static h:Converter.GetTrueToFalse}}" Text="{Binding Value, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+            <TextBox IsReadOnly="{Binding ReadOnly, Converter={x:Static h:Converter.GetTrueToFalse}}"
+                     Text="{Binding Value, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
             <Button Grid.Column="1"
                     Width="Auto"
                     Command="{Binding ClearCommand}"

@@ -462,6 +462,7 @@
                 <TabControl>
                     <TabItem Header="Horizontal">
                         <h:Step Height="Auto"
+                                VerticalAlignment="Center"
                                 Cattach.ItemHeight="Auto">
                             <h:StepItemPresenter DisplayName="1"
                                                  Message="成功"
@@ -586,7 +587,7 @@
                               SelectedItem="{Binding SelectedTestViewModel}">
                         <Behaviors:Interaction.Behaviors>
                             <h:DataGridAutoColumnBehavior DataGridLength="*"
-                                                          Type="{x:Type h:TestViewModel}"
+                                                          Type="{x:Type h:TestBindable}"
                                                           UsePropertyNames="Value Value1" />
                             <h:ItemsControlFilterBehavior Filter="{Binding ElementName=tagfb, Path=Filter}"
                                                           Filter1="{Binding ElementName=tagfb1, Path=Filter}"
@@ -607,7 +608,7 @@
                     <DataGrid SelectedItem="{Binding SelectedTestViewModel}">
                         <Behaviors:Interaction.Behaviors>
                             <h:DataGridAutoColumnBehavior DataGridLength="*"
-                                                          Type="{x:Type h:TestViewModel}"
+                                                          Type="{x:Type h:TestBindable}"
                                                           UsePropertyNames="Value2 Value3" />
                             <h:ItemsControlFilterBehavior Filter="{Binding ElementName=favoritefb, Path=Filter}"
                                                           Filter1="{Binding ElementName=favoritefb1, Path=Filter}"

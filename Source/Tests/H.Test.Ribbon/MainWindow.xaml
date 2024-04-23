@@ -12,127 +12,13 @@
               Style="{DynamicResource {x:Static h:RibbonWindowKeys.Default}}"
               WindowStartupLocation="CenterScreen"
               mc:Ignorable="d">
-
-    <!--<Window.Resources>
-        <Style TargetType="RibbonButton" BasedOn="{StaticResource {x:Type RibbonButton}}">
-            <Setter Property="Label" Value="{Binding Label}" />
-            <Setter Property="LargeImageSource" Value="/Resources/CropImage32.png" />
-            <Setter Property="SmallImageSource" Value="/Resources/CropImage16.png" />
-            <Setter Property="Label" Value="RibbonButton"/>
-            <Setter Property="ControlSizeDefinition">
-                <Setter.Value>
-                    <RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True" />
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style TargetType="RibbonCheckBox">
-            <Setter Property="Label" Value="自动保存" />
-            <Setter Property="LargeImageSource" Value="/Resources/CropImage32.png" />
-            <Setter Property="SmallImageSource" Value="/Resources/CropImage16.png" />
-
-            <Setter Property="ControlSizeDefinition">
-                <Setter.Value>
-                    <RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True" />
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style TargetType="RibbonSplitButton"  BasedOn="{StaticResource {x:Type RibbonSplitButton}}" >
-            <Setter Property="Label" Value="自动保存" />
-            <Setter Property="LargeImageSource" Value="/Resources/CropImage32.png" />
-            <Setter Property="SmallImageSource" Value="/Resources/CropImage16.png" />
-
-            <Setter Property="ControlSizeDefinition">
-                <Setter.Value>
-                    <RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True" />
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style TargetType="RibbonMenuItem"  BasedOn="{StaticResource {x:Type RibbonMenuItem}}">
-            <Setter Property="Header" Value="放大" />
-            <Setter Property="ImageSource" Value="/Resources/CropImage32.png" />
-        </Style>
-
-        <Style TargetType="RibbonComboBox">
-            <Setter Property="Label" Value="选择:" />
-            <Setter Property="LargeImageSource" Value="/Resources/CropImage32.png" />
-            <Setter Property="SmallImageSource" Value="/Resources/CropImage16.png" />
-
-            <Setter Property="ControlSizeDefinition">
-                <Setter.Value>
-                    <RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True" />
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style TargetType="RibbonTextBox">
-            <Setter Property="Label" Value="选择:" />
-            <Setter Property="LargeImageSource" Value="/Resources/CropImage32.png" />
-            <Setter Property="SmallImageSource" Value="/Resources/CropImage16.png" />
-
-            <Setter Property="ControlSizeDefinition">
-                <Setter.Value>
-                    <RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True" />
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style TargetType="RibbonToggleButton"  BasedOn="{StaticResource {x:Type RibbonToggleButton}}">
-            <Setter Property="Label" Value="选择:" />
-            <Setter Property="LargeImageSource" Value="/Resources/CropImage32.png" />
-            <Setter Property="SmallImageSource" Value="/Resources/CropImage16.png" />
-
-            <Setter Property="ControlSizeDefinition">
-                <Setter.Value>
-                    <RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True" />
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style TargetType="RibbonSplitMenuItem">
-            <Setter Property="Header" Value="放大" />
-            <Setter Property="ImageSource" Value="/Resources/CropImage32.png" />
-        </Style>
-
-        <Style TargetType="Ribbon" BasedOn="{StaticResource {x:Static h:RibbonKeys.Default}}">
-            <Setter Property="MouseOverBackground" Value="{DynamicResource {x:Static h:BrushKeys.MouseOver}}" />
-            <Setter Property="MouseOverBorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
-            <Setter Property="CheckedBackground" Value="{DynamicResource {x:Static h:BrushKeys.Selected}}" />
-            <Setter Property="CheckedBorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrushTitle}}" />
-            <Setter Property="PressedBackground" Value="{DynamicResource {x:Static h:BrushKeys.Background}}" />
-            <Setter Property="PressedBorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
-            <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Background}}" />
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
-        </Style>
-
-        <Style TargetType="RibbonMenuButton">
-            <Setter Property="Label" Value="选择:" />
-            <Setter Property="LargeImageSource" Value="/Resources/CropImage32.png" />
-            <Setter Property="SmallImageSource" Value="/Resources/CropImage16.png" />
-
-            <Setter Property="ControlSizeDefinition">
-                <Setter.Value>
-                    <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True" />
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style TargetType="RibbonGroup">
-            <Setter Property="Header" Value="RibbonGroup" />
-            <Setter Property="LargeImageSource" Value="/Resources/CropImage32.png" />
-            <Setter Property="SmallImageSource" Value="/Resources/CropImage16.png" />
-        </Style>
-
-    </Window.Resources>-->
-
     <DockPanel>
         <Ribbon Title="文件"
                 DockPanel.Dock="Top"
                 Visibility="Visible">
             <Ribbon.ApplicationMenu>
-                <RibbonApplicationMenu Label="文件" SmallImageSource="/Resources/CropImage32.png">
+                <RibbonApplicationMenu Label="文件"
+                                       SmallImageSource="{h:Logo}">
                     <RibbonApplicationMenu.AuxiliaryPaneContent>
                         <TabControl>
                             <TabControl.ItemTemplate>
@@ -143,7 +29,7 @@
                             <TabItem Header="Header1">
                                 <Grid Width="600"
                                       Height="600"
-                                      Background="Orange" />
+                                      Background="Transparent" />
                             </TabItem>
                             <TabItem Header="Header1" />
                             <TabItem Header="Header1" />
@@ -176,7 +62,8 @@
                     <RibbonButton />
                     <RibbonMenuButton>
                         <RibbonMenuButton.ControlSizeDefinition>
-                            <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True" />
+                            <RibbonControlSizeDefinition ImageSize="Small"
+                                                         IsLabelVisible="True" />
                         </RibbonMenuButton.ControlSizeDefinition>
                         <RibbonSplitMenuItem StaysOpenOnClick="True">
                             <RibbonMenuItem Header="ss" />
@@ -251,51 +138,59 @@
                     </RibbonGroup.GroupSizeDefinitions>
                     <RibbonButton Label="Ribbon Button">
                         <RibbonButton.ControlSizeDefinition>
-                            <RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True" />
+                            <RibbonControlSizeDefinition ImageSize="Large"
+                                                         IsLabelVisible="True" />
                         </RibbonButton.ControlSizeDefinition>
-                        >
+                        &gt;
                     </RibbonButton>
                     <RibbonButton Label="Ribbon Button">
                         <RibbonButton.ControlSizeDefinition>
-                            <RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True" />
+                            <RibbonControlSizeDefinition ImageSize="Large"
+                                                         IsLabelVisible="True" />
                         </RibbonButton.ControlSizeDefinition>
-                        >
+                        &gt;
                     </RibbonButton>
                     <RibbonButton Label="Ribbon Button">
                         <RibbonButton.ControlSizeDefinition>
-                            <RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True" />
+                            <RibbonControlSizeDefinition ImageSize="Large"
+                                                         IsLabelVisible="True" />
                         </RibbonButton.ControlSizeDefinition>
-                        >
+                        &gt;
                     </RibbonButton>
                     <RibbonButton Label="Ribbon Button">
                         <RibbonButton.ControlSizeDefinition>
-                            <RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True" />
+                            <RibbonControlSizeDefinition ImageSize="Large"
+                                                         IsLabelVisible="True" />
                         </RibbonButton.ControlSizeDefinition>
-                        >
+                        &gt;
                     </RibbonButton>
                     <RibbonButton Label="Ribbon Button">
                         <RibbonButton.ControlSizeDefinition>
-                            <RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True" />
+                            <RibbonControlSizeDefinition ImageSize="Large"
+                                                         IsLabelVisible="True" />
                         </RibbonButton.ControlSizeDefinition>
-                        >
+                        &gt;
                     </RibbonButton>
                     <RibbonButton Label="Ribbon Button">
                         <RibbonButton.ControlSizeDefinition>
-                            <RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True" />
+                            <RibbonControlSizeDefinition ImageSize="Large"
+                                                         IsLabelVisible="True" />
                         </RibbonButton.ControlSizeDefinition>
-                        >
+                        &gt;
                     </RibbonButton>
                     <RibbonButton Label="Ribbon Button">
                         <RibbonButton.ControlSizeDefinition>
-                            <RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True" />
+                            <RibbonControlSizeDefinition ImageSize="Large"
+                                                         IsLabelVisible="True" />
                         </RibbonButton.ControlSizeDefinition>
-                        >
+                        &gt;
                     </RibbonButton>
                     <RibbonButton Label="Ribbon Button">
                         <RibbonButton.ControlSizeDefinition>
-                            <RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True" />
+                            <RibbonControlSizeDefinition ImageSize="Large"
+                                                         IsLabelVisible="True" />
                         </RibbonButton.ControlSizeDefinition>
-                        >
+                        &gt;
                     </RibbonButton>
                 </RibbonGroup>
             </RibbonTab>
@@ -338,13 +233,8 @@
                 </RibbonGroup>
             </RibbonTab>
 
-            <RibbonTab Header="布局111">
+            <RibbonTab Header="布局">
                 <RibbonGroup Header="剪贴板" />
-                <!--<RibbonGroup Header="剪贴板"
-                         IsEnabled="False"
-                         ItemsSource="{Binding Collection}"
-                         Style="{x:Null}" />-->
-
                 <RibbonControlGroup>
                     <RibbonButton Content="复制" />
                     <RibbonButton Content="复制" />

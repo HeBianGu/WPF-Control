@@ -91,7 +91,8 @@
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:MarkPosition.DefaultKey}}" TargetType="{x:Type local:MarkPosition}" />
+    <Style BasedOn="{StaticResource {x:Static h:MarkPosition.DefaultKey}}"
+           TargetType="{x:Type local:MarkPosition}" />
 
 </ResourceDictionary>
 

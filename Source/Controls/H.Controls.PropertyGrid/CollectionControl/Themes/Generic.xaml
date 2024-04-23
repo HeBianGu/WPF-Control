@@ -12,7 +12,8 @@
     <local:ObjectTypeToNameConverter x:Key="ObjectTypeToNameConverter" />
     <local:NewItemTypesComboBoxConverter x:Key="NewItemTypesComboBoxConverter" />
 
-    <Style x:Key="CollectionControlButtonStyle" TargetType="{x:Type Button}">
+    <Style x:Key="CollectionControlButtonStyle"
+           TargetType="{x:Type Button}">
         <Style.Triggers>
             <Trigger Property="IsEnabled" Value="false">
                 <Setter Property="Opacity" Value="0.6" />
@@ -58,7 +59,8 @@
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition />
                                 </Grid.RowDefinitions>
-                                <TextBlock Margin="0,0,0,5" Text="Select type:" />
+                                <TextBlock Margin="0,0,0,5"
+                                           Text="Select type:" />
                                 <ComboBox x:Name="PART_NewItemTypesComboBox"
                                           Grid.Row="1"
                                           Margin="0,0,0,3"
@@ -66,8 +68,10 @@
                                           DisplayMemberPath="Name">
                                     <ComboBox.ItemsSource>
                                         <MultiBinding Converter="{StaticResource NewItemTypesComboBoxConverter}">
-                                            <Binding Path="ItemsSourceType" RelativeSource="{RelativeSource TemplatedParent}" />
-                                            <Binding Path="NewItemTypes" RelativeSource="{RelativeSource TemplatedParent}" />
+                                            <Binding Path="ItemsSourceType"
+                                                     RelativeSource="{RelativeSource TemplatedParent}" />
+                                            <Binding Path="NewItemTypes"
+                                                     RelativeSource="{RelativeSource TemplatedParent}" />
                                         </MultiBinding>
                                     </ComboBox.ItemsSource>
                                 </ComboBox>
@@ -119,12 +123,14 @@
                                     </Button>
                                 </StackPanel>
                             </Grid>
-                            <Grid Margin="20,0,0,0" Column="1">
+                            <Grid Margin="20,0,0,0"
+                                  Column="1">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition />
                                 </Grid.RowDefinitions>
-                                <TextBlock Grid.Column="1" Text="Properties:" />
+                                <TextBlock Grid.Column="1"
+                                           Text="Properties:" />
                                 <local:PropertyGrid x:Name="PART_PropertyGrid"
                                                     Grid.Row="1"
                                                     Grid.Column="1"
@@ -146,7 +152,8 @@
         </Setter>
     </Style>
 
-    <Style x:Key="PrimitiveTypeCollectionControl" TargetType="{x:Type local:PrimitiveTypeCollectionControl}">
+    <Style x:Key="PrimitiveTypeCollectionControl"
+           TargetType="{x:Type local:PrimitiveTypeCollectionControl}">
         <Setter Property="BorderBrush">
             <Setter.Value>
                 <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
@@ -182,9 +189,11 @@
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource PrimitiveTypeCollectionControl}" TargetType="{x:Type local:PrimitiveTypeCollectionControl}" />
+    <Style BasedOn="{StaticResource PrimitiveTypeCollectionControl}"
+           TargetType="{x:Type local:PrimitiveTypeCollectionControl}" />
 
-    <Style x:Key="CollectionControlButton" TargetType="{x:Type local:CollectionControlButton}">
+    <Style x:Key="CollectionControlButton"
+           TargetType="{x:Type local:CollectionControlButton}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
@@ -249,6 +258,7 @@
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource CollectionControlButton}" TargetType="{x:Type local:CollectionControlButton}" />
+    <Style BasedOn="{StaticResource CollectionControlButton}"
+           TargetType="{x:Type local:CollectionControlButton}" />
 
 </ResourceDictionary>

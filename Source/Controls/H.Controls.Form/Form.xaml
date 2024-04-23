@@ -18,7 +18,7 @@
         <Setter Property="Width" Value="10" />
         <Setter Property="Grid.Column" Value="1" />
         <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Red}}"/>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Red}}" />
     </Style>
 
     <Style x:Key="S.TextBlock.Error"
@@ -33,7 +33,7 @@
         <Setter Property="Width" Value="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=MessageWidth}" />
         <Setter Property="TextAlignment" Value="Center" />
         <Setter Property="Grid.Column" Value="4" />
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Red}}"/>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Red}}" />
     </Style>
 
     <Style TargetType="local:Form">

@@ -4,9 +4,11 @@
                     xmlns:local="clr-namespace:H.Controls.Form">
     <DataTemplate DataType="{x:Type local:IEnumerablePropertyItem}">
         <Grid Visibility="{Binding Visibility}">
-            <Expander Padding="0" Background="Transparent">
+            <Expander Padding="0"
+                      Background="Transparent">
                 <Expander.Header>
-                    <DockPanel HorizontalAlignment="Stretch" LastChildFill="False">
+                    <DockPanel HorizontalAlignment="Stretch"
+                               LastChildFill="False">
                         <TextBlock>
                             <Run Text="{Binding Name}" />
                             <Run Text="[" />
@@ -83,7 +85,8 @@
         </Grid>
 
         <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding Value.Count, Mode=OneWay}" Value="0">
+            <DataTrigger Binding="{Binding Value.Count, Mode=OneWay}"
+                         Value="0">
                 <Setter TargetName="lb_items" Property="Visibility" Value="Collapsed" />
             </DataTrigger>
         </DataTemplate.Triggers>
@@ -91,9 +94,11 @@
 
     <DataTemplate DataType="{x:Type local:ListPresenterPropertyItem}">
         <Grid Visibility="{Binding Visibility}">
-            <Expander Padding="0" Background="Transparent">
+            <Expander Padding="0"
+                      Background="Transparent">
                 <Expander.Header>
-                    <DockPanel HorizontalAlignment="Stretch" LastChildFill="False">
+                    <DockPanel HorizontalAlignment="Stretch"
+                               LastChildFill="False">
                         <TextBlock>
                             <Run Text="{Binding Name}" />
                             <Run Text="[" />
@@ -150,7 +155,8 @@
         </Grid>
 
         <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding Value.Count, Mode=OneWay}" Value="0">
+            <DataTrigger Binding="{Binding Value.Count, Mode=OneWay}"
+                         Value="0">
                 <Setter TargetName="lb_items" Property="Visibility" Value="Collapsed" />
             </DataTrigger>
         </DataTemplate.Triggers>

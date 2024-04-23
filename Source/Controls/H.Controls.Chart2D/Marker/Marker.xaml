@@ -5,13 +5,16 @@
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.EllipseMarker.Default, TypeInTargetAssembly={x:Type local:EllipseMarker}}" TargetType="local:EllipseMarker">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.EllipseMarker.Default,
+                                        TypeInTargetAssembly={x:Type local:EllipseMarker}}"
+           TargetType="local:EllipseMarker">
         <Setter Property="StrokeThickness" Value="1" />
         <Setter Property="Fill" Value="{Binding RelativeSource={RelativeSource AncestorType=local:Layer}, Path=Foreground}" />
         <Setter Property="Stroke" Value="{Binding RelativeSource={RelativeSource AncestorType=local:Layer}, Path=Foreground}" />
         <Setter Property="Rect">
             <Setter.Value>
-                <Rect Width="15" Height="15" />
+                <Rect Width="15"
+                      Height="15" />
             </Setter.Value>
         </Setter>
     </Style>
@@ -63,7 +66,8 @@
         <Setter Property="StrokeThickness" Value="2" />
         <Setter Property="Rect">
             <Setter.Value>
-                <Rect Width="10" Height="10" />
+                <Rect Width="10"
+                      Height="10" />
             </Setter.Value>
         </Setter>
     </Style>
@@ -75,7 +79,8 @@
         <Setter Property="StrokeThickness" Value="2" />
         <Setter Property="Rect">
             <Setter.Value>
-                <Rect Width="5" Height="5" />
+                <Rect Width="5"
+                      Height="5" />
             </Setter.Value>
         </Setter>
     </Style>
@@ -87,7 +92,8 @@
         <Setter Property="Fill" Value="White" />
         <Setter Property="Rect">
             <Setter.Value>
-                <Rect Width="4" Height="4" />
+                <Rect Width="4"
+                      Height="4" />
             </Setter.Value>
         </Setter>
     </Style>
@@ -98,7 +104,8 @@
            TargetType="local:EllipseMarker">
         <Setter Property="Rect">
             <Setter.Value>
-                <Rect Width="2" Height="2" />
+                <Rect Width="2"
+                      Height="2" />
             </Setter.Value>
         </Setter>
     </Style>
@@ -111,7 +118,8 @@
         <Setter Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.ForegroundWhite}}" />
         <Setter Property="Rect">
             <Setter.Value>
-                <Rect Width="10" Height="10" />
+                <Rect Width="10"
+                      Height="10" />
             </Setter.Value>
         </Setter>
 
@@ -139,6 +147,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:EllipseMarker.DefaultKey}}" TargetType="local:EllipseMarker" />
+    <Style BasedOn="{StaticResource {x:Static h:EllipseMarker.DefaultKey}}"
+           TargetType="local:EllipseMarker" />
 </ResourceDictionary>
 

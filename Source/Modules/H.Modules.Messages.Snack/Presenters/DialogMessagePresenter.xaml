@@ -26,7 +26,8 @@
                 <Grid.Background>
                     <DrawingBrush>
                         <DrawingBrush.Drawing>
-                            <GeometryDrawing Brush="{DynamicResource {x:Static h:BrushKeys.Foreground}}" Geometry="{Binding Geometry}" />
+                            <GeometryDrawing Brush="{DynamicResource {x:Static h:BrushKeys.Foreground}}"
+                                             Geometry="{Binding Geometry}" />
                         </DrawingBrush.Drawing>
                     </DrawingBrush>
                 </Grid.Background>
@@ -47,7 +48,8 @@
                        TextTrimming="CharacterEllipsis"
                        TextWrapping="Wrap" />
 
-            <DockPanel Grid.Column="3" LastChildFill="False">
+            <DockPanel Grid.Column="3"
+                       LastChildFill="False">
                 <Button Height="30"
                         Padding="5,2"
                         Command="{Binding CancelCommand}"

@@ -87,7 +87,8 @@
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:Line.DefaultKey}}" TargetType="{x:Type local:Line}" />
+    <Style BasedOn="{StaticResource {x:Static h:Line.DefaultKey}}"
+           TargetType="{x:Type local:Line}" />
 
     <Style x:Key="{ComponentResourceKey ResourceId=S.Area.Default,
                                         TypeInTargetAssembly={x:Type local:Area}}"
@@ -197,7 +198,8 @@
         <Setter Property="AreaBackground" Value="{Binding RelativeSource={RelativeSource AncestorType=local:Area}, Path=Foreground}" />
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:Area.DefaultKey}}" TargetType="{x:Type local:Area}" />
+    <Style BasedOn="{StaticResource {x:Static h:Area.DefaultKey}}"
+           TargetType="{x:Type local:Area}" />
 
 
     <Style x:Key="{ComponentResourceKey ResourceId=S.PolarLine.Default,
@@ -237,7 +239,8 @@
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:PolarLine.DefaultKey}}" TargetType="{x:Type local:PolarLine}" />
+    <Style BasedOn="{StaticResource {x:Static h:PolarLine.DefaultKey}}"
+           TargetType="{x:Type local:PolarLine}" />
 
     <Style x:Key="{ComponentResourceKey ResourceId=S.RadarLine.Default,
                                         TypeInTargetAssembly={x:Type local:RadarLine}}"
@@ -262,7 +265,8 @@
                     <!--<Setter Property="Fill" Value="{Binding RelativeSource={RelativeSource AncestorType=local:Layer}, Path=Foreground}" />-->
                     <Setter Property="Fill">
                         <Setter.Value>
-                            <SolidColorBrush Opacity="0.2" Color="{Binding RelativeSource={RelativeSource AncestorType=local:Layer}, Path=Foreground.Color}" />
+                            <SolidColorBrush Opacity="0.2"
+                                             Color="{Binding RelativeSource={RelativeSource AncestorType=local:Layer}, Path=Foreground.Color}" />
                         </Setter.Value>
                     </Setter>
                     <!--<Setter Property="Opacity" Value="0.5" />-->
@@ -298,7 +302,8 @@
                                                      To="1.2"
                                                      Duration="00:00:02">
                                         <DoubleAnimation.EasingFunction>
-                                            <ElasticEase Oscillations="6" Springiness="10" />
+                                            <ElasticEase Oscillations="6"
+                                                         Springiness="10" />
                                         </DoubleAnimation.EasingFunction>
                                     </DoubleAnimation>
                                     <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
@@ -306,7 +311,8 @@
                                                      To="1.2"
                                                      Duration="00:00:02">
                                         <DoubleAnimation.EasingFunction>
-                                            <ElasticEase Oscillations="6" Springiness="10" />
+                                            <ElasticEase Oscillations="6"
+                                                         Springiness="10" />
                                         </DoubleAnimation.EasingFunction>
                                     </DoubleAnimation>
                                 </Storyboard>
@@ -321,7 +327,8 @@
                                                      To="1"
                                                      Duration="00:00:02">
                                         <DoubleAnimation.EasingFunction>
-                                            <ElasticEase Oscillations="6" Springiness="10" />
+                                            <ElasticEase Oscillations="6"
+                                                         Springiness="10" />
                                         </DoubleAnimation.EasingFunction>
                                     </DoubleAnimation>
                                     <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
@@ -329,7 +336,8 @@
                                                      To="1"
                                                      Duration="00:00:02">
                                         <DoubleAnimation.EasingFunction>
-                                            <ElasticEase Oscillations="6" Springiness="10" />
+                                            <ElasticEase Oscillations="6"
+                                                         Springiness="10" />
                                         </DoubleAnimation.EasingFunction>
                                     </DoubleAnimation>
                                 </Storyboard>
@@ -355,7 +363,8 @@
                                      To="1"
                                      Duration="00:00:02">
                         <DoubleAnimation.EasingFunction>
-                            <ElasticEase Oscillations="5" Springiness="9" />
+                            <ElasticEase Oscillations="5"
+                                         Springiness="9" />
                         </DoubleAnimation.EasingFunction>
                     </DoubleAnimation>
 
@@ -364,7 +373,8 @@
                                      To="1"
                                      Duration="00:00:02">
                         <DoubleAnimation.EasingFunction>
-                            <ElasticEase Oscillations="5" Springiness="9" />
+                            <ElasticEase Oscillations="5"
+                                         Springiness="9" />
                         </DoubleAnimation.EasingFunction>
                     </DoubleAnimation>
                 </local:Timelines>
@@ -372,14 +382,16 @@
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:RadarLine.DefaultKey}}" TargetType="{x:Type local:RadarLine}" />
+    <Style BasedOn="{StaticResource {x:Static h:RadarLine.DefaultKey}}"
+           TargetType="{x:Type local:RadarLine}" />
 
     <Style x:Key="{ComponentResourceKey ResourceId=S.SmoothLine.Default,
                                         TypeInTargetAssembly={x:Type local:SmoothLine}}"
            BasedOn="{StaticResource {x:Static h:LineBase.DefaultKey}}"
            TargetType="{x:Type local:SmoothLine}" />
 
-    <Style BasedOn="{StaticResource {x:Static h:SmoothLine.DefaultKey}}" TargetType="{x:Type local:SmoothLine}" />
+    <Style BasedOn="{StaticResource {x:Static h:SmoothLine.DefaultKey}}"
+           TargetType="{x:Type local:SmoothLine}" />
 
     <Style x:Key="{ComponentResourceKey ResourceId=S.SmoothLine.AlignmentCenter,
                                         TypeInTargetAssembly={x:Type local:SmoothLine}}"
@@ -388,9 +400,11 @@
         <Setter Property="AlignmentCenter" Value="True" />
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:LineBase.DefaultKey}}" TargetType="{x:Type local:StepLine}" />
+    <Style BasedOn="{StaticResource {x:Static h:LineBase.DefaultKey}}"
+           TargetType="{x:Type local:StepLine}" />
 
-    <Style BasedOn="{StaticResource {x:Static h:LineBase.DefaultKey}}" TargetType="{x:Type local:Candlestick}">
+    <Style BasedOn="{StaticResource {x:Static h:LineBase.DefaultKey}}"
+           TargetType="{x:Type local:Candlestick}">
         <Setter Property="Foreground" Value="Red" />
         <Setter Property="ForegroundContrarty" Value="Green" />
         <Setter Property="AlignmentCenter" Value="True" />
@@ -429,7 +443,8 @@
                                      To="1"
                                      Duration="00:00:02">
                         <DoubleAnimation.EasingFunction>
-                            <ElasticEase Oscillations="6" Springiness="10" />
+                            <ElasticEase Oscillations="6"
+                                         Springiness="10" />
                         </DoubleAnimation.EasingFunction>
                     </DoubleAnimation>
                 </local:Timelines>

@@ -3,7 +3,8 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.Diagram.Extension">
     <DataTemplate DataType="{x:Type local:TitleCardNodeData}">
-        <Grid h:DragAdornerBehavior.IsUse="{Binding IsTemplate}" Background="Transparent">
+        <Grid h:DragAdornerBehavior.IsUse="{Binding IsTemplate}"
+              Background="Transparent">
             <Grid Width="{Binding Width, Converter={x:Static h:Converter.GetMathAddition}, ConverterParameter=1}"
                   Height="{Binding Height, Converter={x:Static h:Converter.GetMathAddition}, ConverterParameter=1}"
                   Margin="5"
@@ -38,26 +39,32 @@
             </Grid>
         </Grid>
         <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding Foreground}" Value="{x:Null}">
+            <DataTrigger Binding="{Binding Foreground}"
+                         Value="{x:Null}">
                 <Setter TargetName="editor" Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding Stroke}" Value="{x:Null}">
+            <DataTrigger Binding="{Binding Stroke}"
+                         Value="{x:Null}">
                 <Setter TargetName="bd" Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding TitleForeground}" Value="{x:Null}">
+            <DataTrigger Binding="{Binding TitleForeground}"
+                         Value="{x:Null}">
                 <Setter TargetName="icon" Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
                 <Setter TargetName="txt" Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding Fill}" Value="{x:Null}">
+            <DataTrigger Binding="{Binding Fill}"
+                         Value="{x:Null}">
                 <Setter TargetName="bd" Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Background}}" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding State}" Value="Running">
+            <DataTrigger Binding="{Binding State}"
+                         Value="Running">
                 <Setter TargetName="icon" Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
                 <Setter TargetName="txt" Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
                 <Setter TargetName="bd" Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
                 <DataTrigger.EnterActions>
                     <BeginStoryboard x:Name="start">
-                        <Storyboard AutoReverse="True" RepeatBehavior="Forever">
+                        <Storyboard AutoReverse="True"
+                                    RepeatBehavior="Forever">
                             <DoubleAnimation Storyboard.TargetName="icon"
                                              Storyboard.TargetProperty="Opacity"
                                              From="0.2"
@@ -76,25 +83,29 @@
                 </DataTrigger.ExitActions>
             </DataTrigger>
 
-            <DataTrigger Binding="{Binding State}" Value="Success">
+            <DataTrigger Binding="{Binding State}"
+                         Value="Success">
                 <Setter TargetName="icon" Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Green}}" />
                 <Setter TargetName="txt" Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Green}}" />
                 <Setter TargetName="bd" Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.Green}}" />
             </DataTrigger>
 
-            <DataTrigger Binding="{Binding State}" Value="Error">
+            <DataTrigger Binding="{Binding State}"
+                         Value="Error">
                 <Setter TargetName="bd" Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.Red}}" />
                 <Setter TargetName="icon" Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Red}}" />
                 <Setter TargetName="txt" Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Red}}" />
             </DataTrigger>
 
-            <DataTrigger Binding="{Binding State}" Value="Wait">
+            <DataTrigger Binding="{Binding State}"
+                         Value="Wait">
                 <Setter Property="Opacity" Value="0.5" />
             </DataTrigger>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter TargetName="bd" Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.MouseOver}}" />
             </Trigger>
-            <DataTrigger Binding="{Binding IsSelected}" Value="True">
+            <DataTrigger Binding="{Binding IsSelected}"
+                         Value="True">
                 <Setter TargetName="bd" Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Selected}}" />
             </DataTrigger>
         </DataTemplate.Triggers>

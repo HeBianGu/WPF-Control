@@ -44,6 +44,7 @@
         </ControlTemplate>
     </h:MainWindow.SideTemplate>
     <Grid Background="Red">
-        <ListBox Cattach.ItemHeight="Auto" ItemsSource="{h:GetStudents Count=100}" />
+        <ListBox Cattach.ItemHeight="Auto"
+                 ItemsSource="{h:GetStudents Count=100}" />
     </Grid>
 </h:MainWindow>

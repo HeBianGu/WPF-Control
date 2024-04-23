@@ -3,5 +3,6 @@
                     xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.FilterBox">
-    <Style BasedOn="{StaticResource {x:Static h:TextBoxKeys.Default}}" TargetType="{x:Type local:TextFilterBox}" />
+    <Style BasedOn="{StaticResource {x:Static h:TextBoxKeys.Default}}"
+           TargetType="{x:Type local:TextFilterBox}" />
 </ResourceDictionary>

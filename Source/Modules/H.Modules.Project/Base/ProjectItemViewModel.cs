@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 
@@ -7,7 +7,7 @@ using H.Providers.Mvvm;
 
 namespace H.Modules.Project
 {
-    public class ProjectItemViewModel : SelectViewModel<IProjectItem>
+    public class ProjectItemViewModel : SelectBindable<IProjectItem>
     {
         public ProjectItemViewModel(IProjectItem project) : base(project)
         {

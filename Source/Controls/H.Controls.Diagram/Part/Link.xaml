@@ -6,7 +6,8 @@
 
     <!--  节点的默认样式  -->
     <DataTemplate DataType="{x:Type local:DefaultLinkData}">
-        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid HorizontalAlignment="Center"
+              VerticalAlignment="Center">
             <TextBlock x:Name="txt"
                        Margin="10,6"
                        HorizontalAlignment="Center"
@@ -54,7 +55,9 @@
         </DataTemplate.Triggers>
     </DataTemplate>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Link.Default, TypeInTargetAssembly={x:Type local:Link}}" TargetType="{x:Type local:Link}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Link.Default,
+                                        TypeInTargetAssembly={x:Type local:Link}}"
+           TargetType="{x:Type local:Link}">
         <!--<Setter Property="RenderTransform" Value="{DynamicResource {x:Static h:SystemKeys.TransformGroup}}" />-->
         <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
         <Setter Property="IsHitTestVisible" Value="True" />
@@ -87,15 +90,18 @@
                             <Setter Property="StrokeThickness" Value="3" />
                         </DataTrigger>-->
 
-                        <DataTrigger Binding="{Binding Stroke}" Value="{x:Null}">
+                        <DataTrigger Binding="{Binding Stroke}"
+                                     Value="{x:Null}">
                             <Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
                             <!--<Setter Property="StrokeThickness" Value="3" />-->
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Stroke}" Value="{x:Null}">
+                        <DataTrigger Binding="{Binding Stroke}"
+                                     Value="{x:Null}">
                             <Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
                             <!--<Setter Property="StrokeThickness" Value="3" />-->
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Fill}" Value="{x:Null}">
+                        <DataTrigger Binding="{Binding Fill}"
+                                     Value="{x:Null}">
                             <Setter Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
                             <!--<Setter Property="StrokeThickness" Value="3" />-->
                         </DataTrigger>
@@ -108,18 +114,21 @@
                             <!--<Setter Property="Fill" Value="Orange" />-->
                         </Trigger>
 
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=h:Link}, Path=IsSelected}" Value="True">
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=h:Link}, Path=IsSelected}"
+                                     Value="True">
                             <!--<Setter Property="StrokeDashArray" Value="2 2" />-->
                             <Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
                             <Setter Property="Effect" Value="{DynamicResource {x:Static h:DiagramEffectKey.IsSelected}}" />
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=h:Link}, Path=State}" Value="Running">
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=h:Link}, Path=State}"
+                                     Value="Running">
                             <Setter Property="StrokeDashArray" Value="4 4" />
                             <Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
                             <Setter Property="StrokeThickness" Value="2" />
                             <DataTrigger.EnterActions>
                                 <BeginStoryboard x:Name="start">
-                                    <Storyboard RepeatBehavior="Forever" Storyboard.TargetProperty="StrokeDashOffset">
+                                    <Storyboard RepeatBehavior="Forever"
+                                                Storyboard.TargetProperty="StrokeDashOffset">
                                         <DoubleAnimation From="100"
                                                          To="0"
                                                          Duration="00:00:05" />
@@ -130,11 +139,13 @@
                                 <RemoveStoryboard BeginStoryboardName="start" />
                             </DataTrigger.ExitActions>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=h:Link}, Path=State}" Value="Success">
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=h:Link}, Path=State}"
+                                     Value="Success">
                             <Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Green}}" />
                             <!--<Setter Property="StrokeThickness" Value="3" />-->
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=h:Link}, Path=State}" Value="Error">
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=h:Link}, Path=State}"
+                                     Value="Error">
                             <Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Red}}" />
                             <!--<Setter Property="StrokeThickness" Value="3" />-->
                         </DataTrigger>
@@ -142,11 +153,13 @@
                             <Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Gray}}" />
                         </DataTrigger>-->
 
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=h:Link}, Path=State}" Value="Wait">
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=h:Link}, Path=State}"
+                                     Value="Wait">
                             <Setter Property="Opacity" Value="0.5" />
                         </DataTrigger>
 
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=h:Link}, Path=Content, Converter={x:Static h:Converter.GetIsAssignableFrom}, ConverterParameter={x:Type local:IFlowable}}" Value="False">
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=h:Link}, Path=Content, Converter={x:Static h:Converter.GetIsAssignableFrom}, ConverterParameter={x:Type local:IFlowable}}"
+                                     Value="False">
                             <Setter Property="StrokeDashArray" Value="5 5" />
                         </DataTrigger>
                     </Style.Triggers>
@@ -193,10 +206,12 @@
         </Setter>-->
         <Setter Property="ToolTip" Value="{Binding Description}" />
         <Style.Triggers>
-            <DataTrigger Binding="{Binding State}" Value="Success">
+            <DataTrigger Binding="{Binding State}"
+                         Value="Success">
                 <Setter Property="ToolTip" Value="{Binding Message}" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding State}" Value="Error">
+            <DataTrigger Binding="{Binding State}"
+                         Value="Error">
                 <Setter Property="ToolTip" Value="{Binding Message}" />
             </DataTrigger>
         </Style.Triggers>
@@ -220,21 +235,24 @@
                     <Setter Property="StrokeDashCap" Value="Round" />
                     <Setter Property="StrokeLineJoin" Value="Round" />
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=local:Link}, Path=(local:Part.IsDragEnter)}" Value="True">
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=local:Link}, Path=(local:Part.IsDragEnter)}"
+                                     Value="True">
                             <!--<Setter Property="Opacity" Value="0.6" />-->
                             <Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Orange}}" />
                             <Setter Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Orange}}" />
                             <Setter Property="StrokeThickness" Value="1" />
                         </DataTrigger>
 
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=local:Link}, Path=(local:Part.IsCanDrop)}" Value="True">
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=local:Link}, Path=(local:Part.IsCanDrop)}"
+                                     Value="True">
                             <Setter Property="Opacity" Value="1" />
                             <Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Green}}" />
                             <Setter Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Green}}" />
                             <!--<Setter Property="Effect" Value="{DynamicResource {x:Static h:EffectShadowKeys.Default3}}" />-->
                             <Setter Property="StrokeThickness" Value="1" />
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=local:Link}, Path=HasError}" Value="True">
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=local:Link}, Path=HasError}"
+                                     Value="True">
                             <Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Red}}" />
                             <Setter Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Red}}" />
                             <Setter Property="StrokeThickness" Value="1" />
@@ -257,20 +275,24 @@
             </Setter.Value>
         </Setter>-->
         <Style.Triggers>
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(local:Part.IsDragEnter)}" Value="True">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(local:Part.IsDragEnter)}"
+                         Value="True">
                 <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Orange}}" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(local:Part.IsCanDrop)}" Value="True">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(local:Part.IsCanDrop)}"
+                         Value="True">
                 <Setter Property="Opacity" Value="1" />
                 <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Green}}" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=HasError}" Value="True">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=HasError}"
+                         Value="True">
                 <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Red}}" />
             </DataTrigger>
         </Style.Triggers>
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static local:Link.DefaultKey}}" TargetType="{x:Type local:Link}" />
+    <Style BasedOn="{StaticResource {x:Static local:Link.DefaultKey}}"
+           TargetType="{x:Type local:Link}" />
 
 </ResourceDictionary>
 

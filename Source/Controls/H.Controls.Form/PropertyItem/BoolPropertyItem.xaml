@@ -4,7 +4,9 @@
                     xmlns:local="clr-namespace:H.Controls.Form">
 
     <DataTemplate DataType="{x:Type local:BoolPropertyItem}">
-        <CheckBox IsChecked="{Binding Value, Mode=TwoWay}" Content="{Binding Description}" IsEnabled="{Binding ReadOnly, Converter={x:Static h:Converter.GetTrueToFalse}}" />
+        <CheckBox Content="{Binding Description}"
+                  IsChecked="{Binding Value, Mode=TwoWay}"
+                  IsEnabled="{Binding ReadOnly, Converter={x:Static h:Converter.GetTrueToFalse}}" />
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type local:BoolNullablePropertyItem}">

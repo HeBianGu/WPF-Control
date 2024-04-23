@@ -11,7 +11,7 @@ using System.Xml.Serialization;
 
 namespace H.Controls.Diagram.Extension
 {
-    public abstract class LinkDataBase : DisplayViewModelBase, ILinkData
+    public abstract class LinkDataBase : DisplayBindableBase, ILinkData
     {
         public LinkDataBase()
         {

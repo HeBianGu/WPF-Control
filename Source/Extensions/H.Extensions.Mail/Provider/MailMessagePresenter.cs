@@ -3,7 +3,7 @@ using H.Providers.Mvvm;
 
 namespace H.Extensions.Mail
 {
-    public class MailMessagePresenter : ModelViewModel<MailMessageItem>
+    public class MailMessagePresenter : ModelBindable<MailMessageItem>
     {
         public MailMessagePresenter() : base(new MailMessageItem())
         {

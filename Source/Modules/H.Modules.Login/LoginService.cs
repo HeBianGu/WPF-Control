@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using H.Providers.Ioc;
 using H.Providers.Mvvm;
@@ -7,7 +7,7 @@ using System.Threading;
 
 namespace H.Modules.Login
 {
-    internal class LoginService : ViewModelBase, ILoginService
+    internal class LoginService : BindableBase, ILoginService
     {
         private Random random = new Random();
         private IUser _user;

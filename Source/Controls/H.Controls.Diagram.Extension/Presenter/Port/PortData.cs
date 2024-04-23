@@ -58,7 +58,7 @@ namespace H.Controls.Diagram.Extension
         }
     }
 
-    public abstract class PortDataBase : DisplayViewModelBase, IPortData
+    public abstract class PortDataBase : DisplayBindableBase, IPortData
     {
         public PortDataBase()
         {

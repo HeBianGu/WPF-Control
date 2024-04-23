@@ -22,7 +22,8 @@
                     <ControlTemplate>
                         <BulletDecorator VerticalAlignment="Center">
                             <BulletDecorator.Bullet>
-                                <TextBlock VerticalAlignment="Center" Text="搜索 " />
+                                <TextBlock VerticalAlignment="Center"
+                                           Text="搜索 " />
                             </BulletDecorator.Bullet>
                             <h:TextFilterBox x:Name="tfb1"
                                              Width="200"
@@ -46,13 +47,15 @@
                     <DataGridTextColumn Width="*"
                                         Binding="{Binding Model.Code}"
                                         Header="权限编码" />
-                    <DataGridTemplateColumn Width="*" Header="角色列表">
+                    <DataGridTemplateColumn Width="*"
+                                            Header="角色列表">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <ItemsControl ItemsSource="{Binding Model.Roles}">
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
-                                            <TextBlock Margin="0,5" Text="{Binding Name}" />
+                                            <TextBlock Margin="0,5"
+                                                       Text="{Binding Name}" />
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
                                 </ItemsControl>
@@ -61,7 +64,8 @@
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
 
-                    <DataGridTemplateColumn Width="*" Header="用户列表">
+                    <DataGridTemplateColumn Width="*"
+                                            Header="用户列表">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <ItemsControl ItemsSource="{Binding Model.Roles}">
@@ -70,7 +74,8 @@
                                             <ItemsControl ItemsSource="{Binding Users}">
                                                 <ItemsControl.ItemTemplate>
                                                     <DataTemplate>
-                                                        <TextBlock Margin="0,5" Text="{Binding Name}" />
+                                                        <TextBlock Margin="0,5"
+                                                                   Text="{Binding Name}" />
                                                     </DataTemplate>
                                                 </ItemsControl.ItemTemplate>
                                             </ItemsControl>
@@ -84,10 +89,12 @@
             </RepositoryGrid>
         </DockPanel>
         <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding IsVisible}" Value="False">
+            <DataTrigger Binding="{Binding IsVisible}"
+                         Value="False">
                 <Setter Property="Visibility" Value="Collapsed" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding IsAuthority}" Value="False">
+            <DataTrigger Binding="{Binding IsAuthority}"
+                         Value="False">
                 <Setter Property="Visibility" Value="Collapsed" />
             </DataTrigger>
         </DataTemplate.Triggers>

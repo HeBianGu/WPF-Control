@@ -1,5 +1,7 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Style x:Key="{x:Type RibbonGalleryItem}" TargetType="{x:Type RibbonGalleryItem}">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="{x:Type RibbonGalleryItem}"
+           TargetType="{x:Type RibbonGalleryItem}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="1" />
@@ -27,7 +29,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RibbonGalleryItem}">
-                    <Grid x:Name="MainGrid" SnapsToDevicePixels="True">
+                    <Grid x:Name="MainGrid"
+                          SnapsToDevicePixels="True">
                         <Border x:Name="OuterBorder"
                                 Padding="{TemplateBinding Padding}"
                                 Background="{TemplateBinding Background}"
@@ -59,7 +62,8 @@
 
                         <!--  HighContrast  -->
 
-                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
+                                     Value="True">
                             <Setter TargetName="MainGrid" Property="TextElement.Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
                             <Setter TargetName="OuterBorder" Property="Background" Value="Transparent" />
                             <Setter TargetName="OuterBorder" Property="BorderBrush" Value="Transparent" />

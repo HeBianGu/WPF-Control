@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using H.Providers.Ioc;
 using H.Providers.Mvvm;
@@ -11,7 +11,7 @@ using System.Windows.Threading;
 
 namespace H.Extensions.ViewModel
 {
-    public class ObservableSource<T> : Providers.Mvvm.ViewModel, IObservableSource<T>
+    public class ObservableSource<T> : Providers.Mvvm.Bindable, IObservableSource<T>
     {
         public int Count => this.Cache.Count;
         private ObservableCollection<T> _cache = new ObservableCollection<T>();

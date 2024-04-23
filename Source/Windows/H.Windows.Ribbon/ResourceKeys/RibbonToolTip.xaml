@@ -2,9 +2,10 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:classic="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Classic">
 
-    <Style x:Key="{x:Type RibbonToolTip}" TargetType="{x:Type RibbonToolTip}">
+    <Style x:Key="{x:Type RibbonToolTip}"
+           TargetType="{x:Type RibbonToolTip}">
         <Setter Property="Title" Value="RibbonToolTip" />
-        <Setter Property="ImageSource" Value="/Resources/CropImage32.png" />
+        <Setter Property="ImageSource" Value="{Logo}" />
         <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Self}, Path=Ribbon.Background}" />
         <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Self}, Path=Ribbon.BorderBrush}" />
         <Setter Property="BorderThickness" Value="1" />
@@ -131,7 +132,8 @@
                             <Setter TargetName="Shadow" Property="Color" Value="Black" />
                         </Trigger>
 
-                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
+                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
+                                     Value="True">
 
 
 

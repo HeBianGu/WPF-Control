@@ -3,7 +3,7 @@ using H.Providers.Mvvm;
 
 namespace H.Modules.SplashScreen
 {
-    public class SplashScreenViewPresenter : ViewModelBase, ISplashScreenViewPresenter
+    public class SplashScreenViewPresenter : BindableBase, ISplashScreenViewPresenter
     {
         private string _message;
         /// <summary> 说明  </summary>

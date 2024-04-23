@@ -9,7 +9,7 @@ using System.Linq;
 namespace H.Controls.FavoriteBox
 {
     [Display(Name = "收藏夹管理")]
-    public class FavoriteService : ViewModelBase, IFavoriteService
+    public class FavoriteService : BindableBase, IFavoriteService
     {
         IOptions<FavoriteOptions> _options;
 

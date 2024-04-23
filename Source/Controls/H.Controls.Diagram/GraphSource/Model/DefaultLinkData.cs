@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 
@@ -9,7 +9,7 @@ namespace H.Controls.Diagram
     /// <summary>
     /// 默认端口要显示的效果
     /// </summary>
-    public class DefaultLinkData : ViewModel, ILinkData
+    public class DefaultLinkData : Bindable, ILinkData
     {
         private string _message;
         /// <summary> 说明  </summary>

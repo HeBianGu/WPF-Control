@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 using H.Providers.Mvvm;
@@ -133,7 +133,7 @@ namespace H.Controls.Chart2D
         }
     }
 
-    internal class LegendItem : ViewModel
+    internal class LegendItem : Bindable
     {
         private Series _series;
         /// <summary> 说明  </summary>
@@ -148,7 +148,7 @@ namespace H.Controls.Chart2D
         }
     }
 
-    internal class ShapeLegendItem : ViewModel
+    internal class ShapeLegendItem : Bindable
     {
         private DataLayer _layer;
         /// <summary> 说明  </summary>
@@ -222,7 +222,7 @@ namespace H.Controls.Chart2D
         }
     }
 
-    internal class StackLegendItem : ViewModel
+    internal class StackLegendItem : Bindable
     {
         private LayerBase _layer;
         /// <summary> 说明  </summary>

@@ -40,13 +40,15 @@
                     <Setter Property="Visibility" Value="Collapsed" />
                 </Style>
             </local:Chart.LegendStyle>
-            <local:Series Foreground="{DynamicResource {x:Static h:BrushKeys.Foreground}}" yDatas="{Binding Data}">
+            <local:Series Foreground="{DynamicResource {x:Static h:BrushKeys.Foreground}}"
+                          yDatas="{Binding Data}">
                 <local:Area AreaBackground="{DynamicResource {x:Static h:BrushKeys.Foreground}}"
                             Opacity="0.1"
                             Style="{DynamicResource {x:Static local:Area.SingleKey}}"
                             TryFreeze="False"
                             UseSmooth="False" />
-                <local:Line Style="{DynamicResource {x:Static local:Line.SingleKey}}" TryFreeze="False" />
+                <local:Line Style="{DynamicResource {x:Static local:Line.SingleKey}}"
+                            TryFreeze="False" />
                 <local:MarkLine Data=""
                                 Foreground="{DynamicResource {x:Static h:BrushKeys.Red}}"
                                 Style="{DynamicResource {x:Static local:MarkLine.SingleKey}}"

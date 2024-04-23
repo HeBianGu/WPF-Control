@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
 using System.Management;
@@ -15,7 +15,7 @@ namespace H.Modules.License
 
         private SystemInfo()
         {
-            HostID = GetHostId();   //"BTSOTURGTNSQMDQX"
+            HostID = GetHostId();
             HostName = Dns.GetHostName();
             OSVersion = Environment.OSVersion.ToString();
             Ipv4 = GetLocalIp(AddressFamily.InterNetwork);
@@ -41,11 +41,6 @@ namespace H.Modules.License
 
         public string OSVersion { get; private set; }
 
-        /// <summary>
-        /// Gets the local ip. Currently work correctly for 1 NIC in Host.
-        /// </summary>
-        /// <param name="family">The family.</param>
-        /// <returns>System.String.</returns>
         private string GetLocalIp(AddressFamily family)
         {
             string name = Dns.GetHostName();
@@ -103,7 +98,6 @@ namespace H.Modules.License
             {
                 if (mo[wmiMustBeTrue].ToString() == "True")
                 {
-                    //Only get the first one
                     if (result == "")
                     {
                         try
@@ -127,7 +121,6 @@ namespace H.Modules.License
             ManagementObjectCollection moc = mc.GetInstances();
             foreach (ManagementObject mo in moc)
             {
-                //Only get the first one
                 if (result == "")
                 {
                     try
@@ -145,35 +138,27 @@ namespace H.Modules.License
 
         private static string cpuId()
         {
-            //Uses first CPU identifier available in order of preference
-            //Don't get all identifiers, as it is very time consuming
             string retVal = identifier("Win32_Processor", "UniqueId");
-            if (retVal == "") //If no UniqueID, use ProcessorID
+            if (retVal == "") 
             {
                 retVal = identifier("Win32_Processor", "ProcessorId");
-                if (retVal == "") //If no ProcessorId, use Name
+                if (retVal == "")
                 {
                     retVal = identifier("Win32_Processor", "Name");
-                    if (retVal == "") //If no Name, use Manufacturer
+                    if (retVal == "")
                     {
                         retVal = identifier("Win32_Processor", "Manufacturer");
                     }
-                    //Add clock speed for extra security
                     retVal += identifier("Win32_Processor", "MaxClockSpeed");
                 }
             }
             return retVal;
         }
 
-        //Main physical hard drive ID
         private static string diskId()
         {
             return identifier("Win32_DiskDrive", "Model") + "_"
             + identifier("Win32_DiskDrive", "Signature");
-            /*return identifier("Win32_DiskDrive", "Model") + ";"
-            + identifier("Win32_DiskDrive", "Manufacturer") + ";"
-            + identifier("Win32_DiskDrive", "Signature") + ";"
-            + identifier("Win32_DiskDrive", "TotalHeads");*/
         }
 
         private static string macId()
@@ -181,10 +166,5 @@ namespace H.Modules.License
             return identifier("Win32_NetworkAdapterConfiguration",
                 "MACAddress", "IPEnabled");
         }
-
-        //public string GetIdn()
-        //{
-        //    return $"{Config.CompanyName},{productName},{serialNumber},{appVersion}";
-        //}
     }
 }

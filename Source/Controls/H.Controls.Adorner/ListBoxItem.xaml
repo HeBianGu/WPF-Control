@@ -15,7 +15,8 @@
         <Setter Property="h:BehvaiorAttach.Behaviors">
             <Setter.Value>
                 <h:Behaviors>
-                    <local:ElementAllowDragBehavior DragDropEffects="Move" DropAdornerMode="OnlyY" />
+                    <local:ElementAllowDragBehavior DragDropEffects="Move"
+                                                    DropAdornerMode="OnlyY" />
                 </h:Behaviors>
             </Setter.Value>
         </Setter>
@@ -29,7 +30,8 @@
         <Setter Property="h:BehvaiorAttach.Behaviors">
             <Setter.Value>
                 <h:Behaviors>
-                    <local:ElementAllowDragBehavior DragDropEffects="Move" DropAdornerMode="Both" />
+                    <local:ElementAllowDragBehavior DragDropEffects="Move"
+                                                    DropAdornerMode="Both" />
                 </h:Behaviors>
             </Setter.Value>
         </Setter>

@@ -9,7 +9,8 @@
             <DockPanel Margin="0,2"
                        DockPanel.Dock="Top"
                        LastChildFill="False">
-                <TextBox MinWidth="300" Text="{Binding ID}" />
+                <TextBox MinWidth="300"
+                         Text="{Binding ID}" />
             </DockPanel>
             <DockPanel Margin="0,2"
                        DockPanel.Dock="Top"

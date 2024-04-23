@@ -5,13 +5,16 @@
                     xmlns:wpf="clr-namespace:Vlc.DotNet.Wpf;assembly=Vlc.DotNet.Wpf">
 
 
-    <RoutedUICommand x:Key="Resource.RouteCommand.Play" Text="播放" />
+    <RoutedUICommand x:Key="Resource.RouteCommand.Play"
+                     Text="播放" />
 
-    <Style x:Key="Style.Tool.Button" TargetType="{x:Type Button}">
+    <Style x:Key="Style.Tool.Button"
+           TargetType="{x:Type Button}">
         <Setter Property="Width" Value="100" />
         <Setter Property="Height" Value="30" />
     </Style>
-    <Style x:Key="Style.Slider.Button" TargetType="{x:Type Button}">
+    <Style x:Key="Style.Slider.Button"
+           TargetType="{x:Type Button}">
         <Setter Property="Width" Value="30" />
         <Setter Property="Height" Value="20" />
     </Style>
@@ -26,7 +29,9 @@
     </Style>
 
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.VlcPlayer.Default, TypeInTargetAssembly={x:Type local:VlcPlayer}}" TargetType="{x:Type local:VlcPlayer}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.VlcPlayer.Default,
+                                        TypeInTargetAssembly={x:Type local:VlcPlayer}}"
+           TargetType="{x:Type local:VlcPlayer}">
         <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Background}}" />
         <Setter Property="ClipToBounds" Value="True" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
@@ -63,8 +68,10 @@
                                       ToolTip="播放"
                                       Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsPlaying, Converter={x:Static h:Converter.GetTrueToHidden}}" />
 
-                                <DockPanel DockPanel.Dock="Right" Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:VlcPlayer}, Path=UseRight, Converter={x:Static h:Converter.GetTrueToVisible}}">
-                                    <ContentControl HorizontalAlignment="Right" Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:Cattach.RightTemplate)}" />
+                                <DockPanel DockPanel.Dock="Right"
+                                           Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:VlcPlayer}, Path=UseRight, Converter={x:Static h:Converter.GetTrueToVisible}}">
+                                    <ContentControl HorizontalAlignment="Right"
+                                                    Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:Cattach.RightTemplate)}" />
                                 </DockPanel>
 
                                 <DockPanel HorizontalAlignment="Left"
@@ -75,8 +82,10 @@
                                                     Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:Cattach.LeftTemplate)}" />
                                 </DockPanel>
 
-                                <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Top">
-                                    <ContentControl HorizontalAlignment="Stretch" Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:Cattach.TopTemplate)}" />
+                                <DockPanel HorizontalAlignment="Stretch"
+                                           VerticalAlignment="Top">
+                                    <ContentControl HorizontalAlignment="Stretch"
+                                                    Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:Cattach.TopTemplate)}" />
                                 </DockPanel>
 
                                 <Button HorizontalAlignment="Left"
@@ -103,8 +112,10 @@
                                 <DockPanel x:Name="dp_bottom"
                                            Margin="0,0,0,20"
                                            VerticalAlignment="Bottom">
-                                    <ContentControl DockPanel.Dock="Bottom" Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:Cattach.BottomTemplate)}" />
-                                    <DockPanel HorizontalAlignment="Stretch" DockPanel.Dock="Bottom">
+                                    <ContentControl DockPanel.Dock="Bottom"
+                                                    Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:Cattach.BottomTemplate)}" />
+                                    <DockPanel HorizontalAlignment="Stretch"
+                                               DockPanel.Dock="Bottom">
                                         <Button VerticalAlignment="Center"
                                                 Command="{x:Static local:VlcPlayerCommands.PreviousFrame}"
                                                 Content="上一帧"
@@ -167,7 +178,8 @@
                                                                 HorizontalAlignment="Center"
                                                                 Background="{Binding RelativeSource={RelativeSource AncestorType=Slider}, Path=(h:Cattach.CaptionBackground)}"
                                                                 CornerRadius="{TemplateBinding h:Cattach.CornerRadius}">
-                                                            <TextBlock Foreground="{Binding RelativeSource={RelativeSource AncestorType=Slider}, Path=(h:Cattach.CaptionForeground)}" Text="{Binding RelativeSource={RelativeSource AncestorType=Slider}, Path=Value, Converter={x:Static h:Converter.GetTimeSpanStrFromMilliseconds}}" />
+                                                            <TextBlock Foreground="{Binding RelativeSource={RelativeSource AncestorType=Slider}, Path=(h:Cattach.CaptionForeground)}"
+                                                                       Text="{Binding RelativeSource={RelativeSource AncestorType=Slider}, Path=Value, Converter={x:Static h:Converter.GetTimeSpanStrFromMilliseconds}}" />
                                                         </Border>
 
                                                         <Polygon Margin="0,50,0,0"
@@ -236,7 +248,8 @@
                                     Style="{StaticResource Style.Slider.FButton}"
                                     ToolTip="打开文件"
                                     Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:VlcPlayer}, Path=UseOpenFile, Converter={x:Static h:Converter.GetTrueToVisible}}" />
-                            <Button Content="音量" Style="{StaticResource Style.Slider.FButton}" />
+                            <Button Content="音量"
+                                    Style="{StaticResource Style.Slider.FButton}" />
 
                             <Slider x:Name="slider_sound"
                                     Width="100"
@@ -354,7 +367,8 @@
         <Setter Property="h:Cattach.TopTemplate">
             <Setter.Value>
                 <ControlTemplate>
-                    <Grid Height="{DynamicResource {x:Static h:LayoutKeys.RowHeight}}" Background="Transparent">
+                    <Grid Height="{DynamicResource {x:Static h:LayoutKeys.RowHeight}}"
+                          Background="Transparent">
                         <TextBlock Margin="10,0"
                                    VerticalAlignment="Center"
                                    Foreground="{DynamicResource {x:Static h:BrushKeys.ForegroundWhite}}"
@@ -598,7 +612,8 @@
         </Setter>-->
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static local:VlcPlayer.DefaultKey}}" TargetType="{x:Type local:VlcPlayer}" />
+    <Style BasedOn="{StaticResource {x:Static local:VlcPlayer.DefaultKey}}"
+           TargetType="{x:Type local:VlcPlayer}" />
 
 </ResourceDictionary>
 

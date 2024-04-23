@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
+﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
 using H.Providers.Mvvm;
@@ -11,7 +11,7 @@ using System.Windows.Documents;
 
 namespace H.Controls.PrintBox
 {
-    public class DocumentViewPresenter : ViewModelBase
+    public class DocumentViewPresenter : BindableBase
     {
         private IDocumentPaginatorSource _document;
         public IDocumentPaginatorSource Document

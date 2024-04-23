@@ -15,7 +15,7 @@ using System.Xml.Serialization;
 namespace H.Controls.ScheduleBox
 {
 
-    public abstract class ScheduleJobBase : DisplayViewModelBase, IScheduleJob, IJob
+    public abstract class ScheduleJobBase : DisplayBindableBase, IScheduleJob, IJob
     {
         public ScheduleJobBase()
         {

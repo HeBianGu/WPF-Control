@@ -1,4 +1,4 @@
-﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using H.Extensions.ViewModel;
 using H.Modules.Identity;
@@ -18,7 +18,7 @@ namespace System
         /// <param name="service"></param>
         public static void AddUserViewPresenter(this IServiceCollection service)
         {
-            service.AddSingleton<IRepositoryViewModel<hi_dd_user>, RepositoryViewModel<hi_dd_user>>();
+            service.AddSingleton<IRepositoryBindable<hi_dd_user>, RepositoryBindable<hi_dd_user>>();
             service.AddSingleton<IUserViewPresenter, UserViewPresenter>();
         }
 
@@ -46,7 +46,7 @@ namespace System
         /// <param name="service"></param>
         public static void AddRoleViewPresenter(this IServiceCollection service)
         {
-            service.AddSingleton<IRepositoryViewModel<hi_dd_role>, RoleRepositoryViewModel>();
+            service.AddSingleton<IRepositoryBindable<hi_dd_role>, RoleRepositoryViewModel>();
             service.AddSingleton<IRoleViewPresenter, RoleViewPresenter>();
         }
 
@@ -56,7 +56,7 @@ namespace System
         /// <param name="service"></param>
         public static void AddAuthorityViewPresenter(this IServiceCollection service)
         {
-            service.AddSingleton<IRepositoryViewModel<hi_dd_author>, RepositoryViewModel<hi_dd_author>>();
+            service.AddSingleton<IRepositoryBindable<hi_dd_author>, RepositoryBindable<hi_dd_author>>();
             service.AddSingleton<IAuthorityViewPresenter, AuthorityViewPresenter>();
         }
 

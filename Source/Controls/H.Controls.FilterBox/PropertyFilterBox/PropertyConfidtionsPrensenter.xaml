@@ -5,7 +5,8 @@
                     xmlns:local="clr-namespace:H.Controls.FilterBox"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
     <DataTemplate DataType="{x:Type local:PropertyConfidtionsPrensenter}">
-        <DockPanel MinWidth="800" MinHeight="400">
+        <DockPanel MinWidth="800"
+                   MinHeight="400">
             <DockPanel Margin="0,5"
                        DockPanel.Dock="Top"
                        LastChildFill="False">
@@ -17,6 +18,7 @@
                      Padding="0,2"
                      BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
                      BorderThickness="1"
+                     Cattach.ItemPadding="10 0 0 0"
                      DockPanel.Dock="Left"
                      ItemsSource="{Binding PropertyConfidtions}"
                      SelectedItem="{Binding SelectedItem}">
@@ -24,7 +26,7 @@
                     <DataTemplate>
                         <DockPanel>
                             <Button Height="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}"
-                                    Padding="10"
+                                    Padding="15"
                                     Content="{x:Static h:Geometrys.Close}"
                                     DockPanel.Dock="Right"
                                     Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}">
@@ -32,7 +34,8 @@
                                     <h:ButtonRemoveItemBehavior />
                                 </Behaviors:Interaction.Behaviors>
                             </Button>
-                            <TextBlock VerticalAlignment="Center" Text="{Binding ID}" />
+                            <TextBlock VerticalAlignment="Center"
+                                       Text="{Binding ID}" />
                         </DockPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
@@ -40,7 +43,8 @@
             <Border Margin="5,0"
                     BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
                     BorderThickness="1">
-                <ContentControl Margin="2" Content="{Binding SelectedItem}" />
+                <ContentControl Margin="2"
+                                Content="{Binding SelectedItem}" />
             </Border>
         </DockPanel>
     </DataTemplate>

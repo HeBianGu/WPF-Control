@@ -168,12 +168,12 @@
                                             </b:Interaction.Triggers>
                                         </Button>
                                         <DockPanel DockPanel.Dock="Top">
-                                            <Button Content="清空" 
-                                                    Command="{h:TextBoxClearTextCommand}"
+                                            <Button Command="{h:TextBoxClearTextCommand}"
                                                     CommandParameter="{Binding ElementName=tb_search}"
-                                                    DockPanel.Dock="Right" >
-                                            </Button>
-                                            <TextBox Margin="2" x:Name="tb_search"
+                                                    Content="清空"
+                                                    DockPanel.Dock="Right" />
+                                            <TextBox x:Name="tb_search"
+                                                     Margin="2"
                                                      Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=SearchText, UpdateSourceTrigger=PropertyChanged}" />
                                         </DockPanel>
                                         <ScrollViewer HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
