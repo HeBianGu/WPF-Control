@@ -4,7 +4,6 @@ using H.Extensions.ValueConverter;
 using System;
 using System.Globalization;
 using System.Windows;
-using System.Windows.Data;
 
 namespace H.Controls.TreeListView
 {
@@ -29,7 +28,7 @@ namespace H.Controls.TreeListView
 
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return new Thickness((int)value * IndentSize, 0, 0, 0);
+            return new Thickness((int)value * this.IndentSize, 0, 0, 0);
         }
     }
 }

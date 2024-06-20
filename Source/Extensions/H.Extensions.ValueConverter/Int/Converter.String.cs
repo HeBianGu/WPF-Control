@@ -23,21 +23,21 @@ namespace H.Extensions.ValueConverter
                 return null;
             int v = (int)value;
             if (v == -2)
-                return F2;
+                return this.F2;
             if (v == -1)
-                return F1;
+                return this.F1;
             if (v == 0)
-                return Zore;
+                return this.Zore;
             if (v == 1)
-                return Z1;
+                return this.Z1;
             if (v == 2)
-                return Z2;
+                return this.Z2;
             if (v == 3)
-                return Z3;
+                return this.Z3;
             if (v == 4)
-                return Z4;
+                return this.Z4;
             if (v == 5)
-                return Z5;
+                return this.Z5;
             return DependencyProperty.UnsetValue;
         }
     }
@@ -70,8 +70,8 @@ namespace H.Extensions.ValueConverter
             if (value == null)
                 return null;
             if (parameter == null)
-                return value.ToString().Split(' ')[Index];
-            return value.ToString().Split(parameter.ToString().ToCharArray())[Index];
+                return value.ToString().Split(' ')[this.Index];
+            return value.ToString().Split(parameter.ToString().ToCharArray())[this.Index];
         }
     }
 

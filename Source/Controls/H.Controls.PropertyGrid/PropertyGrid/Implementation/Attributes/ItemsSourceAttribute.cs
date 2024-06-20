@@ -18,7 +18,7 @@ namespace H.Controls.PropertyGrid
             if (valueSourceInterface == null)
                 throw new ArgumentException("Type must implement the IItemsSource interface.", "type");
 
-            Type = type;
+            this.Type = type;
         }
     }
 }

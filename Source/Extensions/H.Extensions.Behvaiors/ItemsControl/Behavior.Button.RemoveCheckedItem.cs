@@ -10,15 +10,15 @@ namespace H.Extensions.Behvaiors
 
     public class ButtonRemoveCheckedItemBehavior : ButtonBehaviorBase
     {
-        protected ListBox ListBox => ItemsControl as ListBox;
+        protected ListBox ListBox => this.ItemsControl as ListBox;
         protected override void OnClick()
         {
-            if (ListBox == null)
+            if (this.ListBox == null)
                 return;
             List<object> objs = new List<object>();
-            foreach (object item in ListBox.Items)
+            foreach (object item in this.ListBox.Items)
             {
-                DependencyObject find = ListBox.ItemContainerGenerator.ContainerFromItem(item);
+                DependencyObject find = this.ListBox.ItemContainerGenerator.ContainerFromItem(item);
                 if (find is ListBoxItem listBoxItem)
                 {
                     if (!listBoxItem.IsSelected)
@@ -26,7 +26,7 @@ namespace H.Extensions.Behvaiors
                     objs.Add(item);
                 }
             }
-            if (ItemsSource is IList list)
+            if (this.ItemsSource is IList list)
             {
                 foreach (object item in objs)
                 {

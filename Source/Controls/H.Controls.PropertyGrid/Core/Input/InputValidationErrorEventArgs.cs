@@ -12,7 +12,7 @@ namespace H.Controls.PropertyGrid
 
         public InputValidationErrorEventArgs(Exception e)
         {
-            Exception = e;
+            this.Exception = e;
         }
 
         #endregion

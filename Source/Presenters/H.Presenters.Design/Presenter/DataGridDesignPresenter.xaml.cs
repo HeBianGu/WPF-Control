@@ -1,6 +1,4 @@
-﻿
-using H.Providers.Mvvm;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace H.Presenters.Design
 {
@@ -9,7 +7,7 @@ namespace H.Presenters.Design
     {
         public DataGridDesignPresenter()
         {
-            ColumnSpan = 12;
+            this.ColumnSpan = 12;
         }
     }
 }

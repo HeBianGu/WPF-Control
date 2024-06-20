@@ -69,7 +69,7 @@ namespace H.Extensions.Behvaiors
             set { SetValue(Filter1Property, value); }
         }
 
-        
+
         public static readonly DependencyProperty Filter1Property =
             DependencyProperty.Register("Filter1", typeof(IFilterable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IFilterable), (d, e) =>
             {
@@ -96,7 +96,7 @@ namespace H.Extensions.Behvaiors
             set { SetValue(Filter2Property, value); }
         }
 
-        
+
         public static readonly DependencyProperty Filter2Property =
             DependencyProperty.Register("Filter2", typeof(IFilterable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IFilterable), (d, e) =>
             {
@@ -123,7 +123,7 @@ namespace H.Extensions.Behvaiors
             set { SetValue(Filter3Property, value); }
         }
 
-        
+
         public static readonly DependencyProperty Filter3Property =
             DependencyProperty.Register("Filter3", typeof(IFilterable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IFilterable), (d, e) =>
             {
@@ -150,7 +150,7 @@ namespace H.Extensions.Behvaiors
             set { SetValue(Filter4Property, value); }
         }
 
-        
+
         public static readonly DependencyProperty Filter4Property =
             DependencyProperty.Register("Filter4", typeof(IDisplayFilter), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IDisplayFilter), (d, e) =>
             {
@@ -177,7 +177,7 @@ namespace H.Extensions.Behvaiors
             set { SetValue(Filter5Property, value); }
         }
 
-        
+
         public static readonly DependencyProperty Filter5Property =
             DependencyProperty.Register("Filter5", typeof(IFilterable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IFilterable), (d, e) =>
             {
@@ -204,7 +204,7 @@ namespace H.Extensions.Behvaiors
             set { SetValue(Filter6Property, value); }
         }
 
-        
+
         public static readonly DependencyProperty Filter6Property =
             DependencyProperty.Register("Filter6", typeof(IFilterable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IFilterable), (d, e) =>
             {
@@ -231,7 +231,7 @@ namespace H.Extensions.Behvaiors
             set { SetValue(Filter7Property, value); }
         }
 
-        
+
         public static readonly DependencyProperty Filter7Property =
             DependencyProperty.Register("Filter7", typeof(IFilterable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IFilterable), (d, e) =>
             {
@@ -258,7 +258,7 @@ namespace H.Extensions.Behvaiors
             set { SetValue(Filter8Property, value); }
         }
 
-        
+
         public static readonly DependencyProperty Filter8Property =
             DependencyProperty.Register("Filter8", typeof(IFilterable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IFilterable), (d, e) =>
             {
@@ -285,7 +285,7 @@ namespace H.Extensions.Behvaiors
             set { SetValue(Filter9Property, value); }
         }
 
-        
+
         public static readonly DependencyProperty Filter9Property =
             DependencyProperty.Register("Filter9", typeof(IFilterable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IFilterable), (d, e) =>
             {
@@ -313,7 +313,7 @@ namespace H.Extensions.Behvaiors
             set { SetValue(OrderProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty OrderProperty =
             DependencyProperty.Register("Order", typeof(IOrderable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrderable), (d, e) =>
             {
@@ -340,7 +340,7 @@ namespace H.Extensions.Behvaiors
             set { SetValue(Order2Property, value); }
         }
 
-        
+
         public static readonly DependencyProperty Order2Property =
             DependencyProperty.Register("Order2", typeof(IOrderable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrderable), (d, e) =>
             {
@@ -367,7 +367,7 @@ namespace H.Extensions.Behvaiors
             set { SetValue(Order1Property, value); }
         }
 
-        
+
         public static readonly DependencyProperty Order1Property =
             DependencyProperty.Register("Order1", typeof(IOrderable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrderable), (d, e) =>
             {
@@ -394,7 +394,7 @@ namespace H.Extensions.Behvaiors
             set { SetValue(Order3Property, value); }
         }
 
-        
+
         public static readonly DependencyProperty Order3Property =
             DependencyProperty.Register("Order3", typeof(IOrderable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrderable), (d, e) =>
             {
@@ -421,7 +421,7 @@ namespace H.Extensions.Behvaiors
             set { SetValue(Order4Property, value); }
         }
 
-        
+
         public static readonly DependencyProperty Order4Property =
             DependencyProperty.Register("Order4", typeof(IOrderable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrderable), (d, e) =>
             {
@@ -448,7 +448,7 @@ namespace H.Extensions.Behvaiors
             set { SetValue(Order5Property, value); }
         }
 
-        
+
         public static readonly DependencyProperty Order5Property =
             DependencyProperty.Register("Order5", typeof(IOrderable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrderable), (d, e) =>
             {
@@ -472,36 +472,36 @@ namespace H.Extensions.Behvaiors
 
         private IEnumerable<IFilterable> GetFilters()
         {
-            yield return Filter;
-            yield return Filter1;
-            yield return Filter2;
-            yield return Filter3;
-            yield return Filter4;
-            yield return Filter5;
-            yield return Filter6;
-            yield return Filter7;
-            yield return Filter8;
-            yield return Filter9;
+            yield return this.Filter;
+            yield return this.Filter1;
+            yield return this.Filter2;
+            yield return this.Filter3;
+            yield return this.Filter4;
+            yield return this.Filter5;
+            yield return this.Filter6;
+            yield return this.Filter7;
+            yield return this.Filter8;
+            yield return this.Filter9;
         }
         private IEnumerable<IOrderable> GetOrders()
         {
-            yield return Order;
-            yield return Order1;
-            yield return Order2;
-            yield return Order3;
-            yield return Order4;
-            yield return Order5;
+            yield return this.Order;
+            yield return this.Order1;
+            yield return this.Order2;
+            yield return this.Order3;
+            yield return this.Order4;
+            yield return this.Order5;
         }
 
         private void RefreshData()
         {
-            if (ItemsSource == null)
+            if (this.ItemsSource == null)
                 return;
-            if (AssociatedObject == null)
+            if (this.AssociatedObject == null)
                 return;
             IEnumerable<IFilterable> filters = GetFilters().Where(x => x != null);
-            IEnumerable source = filters.Count() == 0 ? ItemsSource
-                : ItemsSource.OfType<object>().Where(x => filters.All(l => l.IsMatch(x))).ToList();
+            IEnumerable source = filters.Count() == 0 ? this.ItemsSource
+                : this.ItemsSource.OfType<object>().Where(x => filters.All(l => l.IsMatch(x))).ToList();
             List<IOrderable> orders = GetOrders().ToList();
             foreach (IOrderable item in orders)
             {
@@ -509,12 +509,12 @@ namespace H.Extensions.Behvaiors
                     continue;
                 source = item.Where(source);
             }
-            AssociatedObject.ItemsSource = source;
+            this.AssociatedObject.ItemsSource = source;
         }
 
         protected override void OnAttached()
         {
-            AssociatedObject.Loaded += AssociatedObject_Loaded;
+            this.AssociatedObject.Loaded += AssociatedObject_Loaded;
         }
 
         private void AssociatedObject_Loaded(object sender, RoutedEventArgs e)
@@ -524,7 +524,7 @@ namespace H.Extensions.Behvaiors
 
         protected override void OnDetaching()
         {
-            AssociatedObject.Loaded -= AssociatedObject_Loaded;
+            this.AssociatedObject.Loaded -= AssociatedObject_Loaded;
         }
     }
 

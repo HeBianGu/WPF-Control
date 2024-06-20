@@ -1,11 +1,9 @@
 ﻿using H.Extensions.Setting;
 using H.Providers.Ioc;
 using H.Themes.Default;
-using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
-using System.Windows;
 using System.Xml.Serialization;
 
 namespace H.Modules.Theme
@@ -13,7 +11,7 @@ namespace H.Modules.Theme
     [Display(Name = "主题设置", GroupName = SettingGroupNames.GroupSystem, Description = "登录页面设置的信息")]
     public class SwitchThemeOptions : IocOptionInstance<SwitchThemeOptions>, ILoginedSplashLoad
     {
-        private bool _isDark=true;
+        private bool _isDark = true;
         //[DefaultValue(true)]
         [Display(Name = "深主题")]
         public bool IsDark

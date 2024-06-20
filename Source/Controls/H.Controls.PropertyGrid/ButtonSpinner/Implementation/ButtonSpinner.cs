@@ -185,8 +185,8 @@ namespace H.Controls.PropertyGrid
         {
             base.OnApplyTemplate();
 
-            IncreaseButton = GetTemplateChild(PART_IncreaseButton) as ButtonBase;
-            DecreaseButton = GetTemplateChild(PART_DecreaseButton) as ButtonBase;
+            this.IncreaseButton = GetTemplateChild(PART_IncreaseButton) as ButtonBase;
+            this.DecreaseButton = GetTemplateChild(PART_DecreaseButton) as ButtonBase;
 
             SetButtonUsage();
         }
@@ -201,21 +201,21 @@ namespace H.Controls.PropertyGrid
             base.OnMouseLeftButtonUp(e);
 
             Point mousePosition;
-            if (IncreaseButton != null && IncreaseButton.IsEnabled == false)
+            if (this.IncreaseButton != null && this.IncreaseButton.IsEnabled == false)
             {
-                mousePosition = e.GetPosition(IncreaseButton);
-                if (mousePosition.X > 0 && mousePosition.X < IncreaseButton.ActualWidth &&
-                    mousePosition.Y > 0 && mousePosition.Y < IncreaseButton.ActualHeight)
+                mousePosition = e.GetPosition(this.IncreaseButton);
+                if (mousePosition.X > 0 && mousePosition.X < this.IncreaseButton.ActualWidth &&
+                    mousePosition.Y > 0 && mousePosition.Y < this.IncreaseButton.ActualHeight)
                 {
                     e.Handled = true;
                 }
             }
 
-            if (DecreaseButton != null && DecreaseButton.IsEnabled == false)
+            if (this.DecreaseButton != null && this.DecreaseButton.IsEnabled == false)
             {
-                mousePosition = e.GetPosition(DecreaseButton);
-                if (mousePosition.X > 0 && mousePosition.X < DecreaseButton.ActualWidth &&
-                    mousePosition.Y > 0 && mousePosition.Y < DecreaseButton.ActualHeight)
+                mousePosition = e.GetPosition(this.DecreaseButton);
+                if (mousePosition.X > 0 && mousePosition.X < this.DecreaseButton.ActualWidth &&
+                    mousePosition.Y > 0 && mousePosition.Y < this.DecreaseButton.ActualHeight)
                 {
                     e.Handled = true;
                 }
@@ -297,9 +297,9 @@ namespace H.Controls.PropertyGrid
         /// <param name="e">Event args.</param>
         private void OnButtonClick(object sender, RoutedEventArgs e)
         {
-            if (AllowSpin)
+            if (this.AllowSpin)
             {
-                SpinDirection direction = sender == IncreaseButton ? SpinDirection.Increase : SpinDirection.Decrease;
+                SpinDirection direction = sender == this.IncreaseButton ? SpinDirection.Increase : SpinDirection.Decrease;
                 OnSpin(new SpinEventArgs(Spinner.SpinnerSpinEvent, direction));
             }
         }
@@ -328,14 +328,14 @@ namespace H.Controls.PropertyGrid
         private void SetButtonUsage()
         {
             // buttonspinner adds buttons that spin, so disable accordingly.
-            if (IncreaseButton != null)
+            if (this.IncreaseButton != null)
             {
-                IncreaseButton.IsEnabled = AllowSpin && ((ValidSpinDirection & ValidSpinDirections.Increase) == ValidSpinDirections.Increase);
+                this.IncreaseButton.IsEnabled = this.AllowSpin && ((this.ValidSpinDirection & ValidSpinDirections.Increase) == ValidSpinDirections.Increase);
             }
 
-            if (DecreaseButton != null)
+            if (this.DecreaseButton != null)
             {
-                DecreaseButton.IsEnabled = AllowSpin && ((ValidSpinDirection & ValidSpinDirections.Decrease) == ValidSpinDirections.Decrease);
+                this.DecreaseButton.IsEnabled = this.AllowSpin && ((this.ValidSpinDirection & ValidSpinDirections.Decrease) == ValidSpinDirections.Decrease);
             }
         }
 

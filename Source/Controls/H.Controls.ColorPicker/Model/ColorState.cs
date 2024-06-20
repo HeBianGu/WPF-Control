@@ -20,7 +20,7 @@
             _RGB_R = rGB_R;
             _RGB_G = rGB_G;
             _RGB_B = rGB_B;
-            A = a;
+            this.A = a;
             _HSV_H = hSV_H;
             _HSV_S = hSV_S;
             _HSV_V = hSV_V;
@@ -31,7 +31,7 @@
 
         public void SetARGB(double a, double r, double g, double b)
         {
-            A = a;
+            this.A = a;
             _RGB_R = r;
             _RGB_G = g;
             _RGB_B = b;

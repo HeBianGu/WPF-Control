@@ -20,7 +20,7 @@ namespace H.Controls.Diagram
             set { SetValue(OrientationProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty OrientationProperty =
             DependencyProperty.Register("Orientation", typeof(Orientation), typeof(ArcLinkDrawer), new FrameworkPropertyMetadata(default(Orientation), (d, e) =>
              {
@@ -48,7 +48,7 @@ namespace H.Controls.Diagram
             Vector v = end - start;
             center = new Point((v.X / 2) + start.X, (v.Y / 2) + start.Y);
 
-            Point point = Orientation == Orientation.Vertical ? new Point(start.X, end.Y) : new Point(end.X, start.Y);
+            Point point = this.Orientation == Orientation.Vertical ? new Point(start.X, end.Y) : new Point(end.X, start.Y);
 
             if (this.IsLinkCrossBound == true)
             {

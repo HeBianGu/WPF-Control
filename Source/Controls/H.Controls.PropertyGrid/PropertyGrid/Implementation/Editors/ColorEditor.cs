@@ -13,12 +13,12 @@ namespace H.Controls.PropertyGrid
 
         protected override void SetControlProperties(PropertyItem propertyItem)
         {
-            Editor.BorderThickness = new System.Windows.Thickness(0);
-            Editor.DisplayColorAndName = true;
+            this.Editor.BorderThickness = new System.Windows.Thickness(0);
+            this.Editor.DisplayColorAndName = true;
         }
         protected override void SetValueDependencyProperty()
         {
-            ValueProperty = ColorPicker.SelectedColorProperty;
+            this.ValueProperty = ColorPicker.SelectedColorProperty;
         }
     }
 

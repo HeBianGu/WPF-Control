@@ -1,7 +1,6 @@
 ﻿using H.Providers.Ioc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace H.Controls.TagBox
 {

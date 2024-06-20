@@ -120,7 +120,7 @@ namespace H.Controls.Dock.Controls
             }
             if (currentActiveContent == null)
                 return;
-            Dispatcher.BeginInvoke(new Action(() =>
+            this.Dispatcher.BeginInvoke(new Action(() =>
                 {
                     currentActiveContent.IsSelected = false;
                     currentActiveContent.IsActive = false;
@@ -137,12 +137,12 @@ namespace H.Controls.Dock.Controls
 
         public void DragEnter()
         {
-            SetIsDraggingOver(TargetElement, true);
+            SetIsDraggingOver(this.TargetElement, true);
         }
 
         public void DragLeave()
         {
-            SetIsDraggingOver(TargetElement, false);
+            SetIsDraggingOver(this.TargetElement, false);
         }
 
         #endregion Public Methods

@@ -27,7 +27,7 @@ namespace H.Controls.Chart2D
             set { SetValue(RectProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty RectProperty =
             DependencyProperty.Register("Rect", typeof(Rect), typeof(EllipseMarker), new PropertyMetadata(default(Rect), (d, e) =>
             {
@@ -42,7 +42,7 @@ namespace H.Controls.Chart2D
         {
             get
             {
-                EllipseGeometry e = new EllipseGeometry(ScreenPoint, this.Rect.Width / 2, this.Rect.Height / 2);
+                EllipseGeometry e = new EllipseGeometry(this.ScreenPoint, this.Rect.Width / 2, this.Rect.Height / 2);
                 return e;
             }
         }
@@ -53,7 +53,7 @@ namespace H.Controls.Chart2D
 
             Pen p = new Pen(this.Stroke, this.StrokeThickness);
 
-            drawingContext.DrawGeometry(this.Fill, p, DefiningGeometry);
+            drawingContext.DrawGeometry(this.Fill, p, this.DefiningGeometry);
 
             //drawingContext.DrawGeometry(this.Fill, this.Pen, DefiningGeometry);
 

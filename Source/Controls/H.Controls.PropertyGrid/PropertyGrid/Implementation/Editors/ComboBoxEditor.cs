@@ -9,7 +9,7 @@ namespace H.Controls.PropertyGrid
     {
         protected override void SetValueDependencyProperty()
         {
-            ValueProperty = System.Windows.Controls.ComboBox.SelectedItemProperty;
+            this.ValueProperty = System.Windows.Controls.ComboBox.SelectedItemProperty;
         }
 
         protected override System.Windows.Controls.ComboBox CreateEditor()
@@ -27,7 +27,7 @@ namespace H.Controls.PropertyGrid
 
         private void SetItemsSource(PropertyItem propertyItem)
         {
-            Editor.ItemsSource = CreateItemsSource(propertyItem);
+            this.Editor.ItemsSource = CreateItemsSource(propertyItem);
         }
     }
 

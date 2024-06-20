@@ -13,12 +13,12 @@ namespace H.Providers.Ioc
             IocMessage.Dialog.Show(p, x =>
             {
                 x.DialogButton = DialogButton.Sumit;
-                x.Title = Title;
+                x.Title = this.Title;
             });
         }
         public override bool CanExecute(object parameter)
         {
-            return Type != null;
+            return this.Type != null;
         }
     }
 }

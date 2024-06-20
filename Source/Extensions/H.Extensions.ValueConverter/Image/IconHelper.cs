@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
-using System.Windows.Media.Imaging;
-using System.Windows.Media;
 using System.Windows;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace HeBianGu.App.Tool
 {
@@ -64,8 +64,8 @@ namespace HeBianGu.App.Tool
 
         public static ImageSource GetIconToImageSource(Icon icon)
         {
-            if (icon == null) 
-                return null;  
+            if (icon == null)
+                return null;
             ImageSource imageSource =
                 System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(
                 icon.Handle,

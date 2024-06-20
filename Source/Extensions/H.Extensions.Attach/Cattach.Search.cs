@@ -19,7 +19,7 @@ namespace H.Extensions.Attach
             obj.SetValue(UseSearchProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty UseSearchProperty =
             DependencyProperty.RegisterAttached("UseSearch", typeof(bool), typeof(Cattach), new FrameworkPropertyMetadata(false, OnUseSearchChanged));
 
@@ -43,7 +43,7 @@ namespace H.Extensions.Attach
             obj.SetValue(SearchWidthProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty SearchWidthProperty =
             DependencyProperty.RegisterAttached("SearchWidth", typeof(double), typeof(Cattach), new FrameworkPropertyMetadata(default(double), OnSearchWidthChanged));
 
@@ -67,7 +67,7 @@ namespace H.Extensions.Attach
             obj.SetValue(SearchDockProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty SearchDockProperty =
             DependencyProperty.RegisterAttached("SearchDock", typeof(Dock), typeof(Cattach), new FrameworkPropertyMetadata(Dock.Right, OnSearchDockChanged));
 
@@ -91,7 +91,7 @@ namespace H.Extensions.Attach
             obj.SetValue(SearchUseHistoryProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty SearchUseHistoryProperty =
             DependencyProperty.RegisterAttached("SearchUseHistory", typeof(bool), typeof(Cattach), new FrameworkPropertyMetadata(false, OnSearchUseHistoryChanged));
 
@@ -115,7 +115,7 @@ namespace H.Extensions.Attach
             obj.SetValue(SearchHeightProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty SearchHeightProperty =
             DependencyProperty.RegisterAttached("SearchHeight", typeof(double), typeof(Cattach), new PropertyMetadata(default(double), OnSearchHeightChanged));
 
@@ -139,7 +139,7 @@ namespace H.Extensions.Attach
             obj.SetValue(SearchVerticalAlignmentProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty SearchVerticalAlignmentProperty =
             DependencyProperty.RegisterAttached("SearchVerticalAlignment", typeof(VerticalAlignment), typeof(Cattach), new PropertyMetadata(default(VerticalAlignment), OnSearchVerticalAlignmentChanged));
 
@@ -163,7 +163,7 @@ namespace H.Extensions.Attach
             obj.SetValue(SearchHorizontalAlignmentProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty SearchHorizontalAlignmentProperty =
             DependencyProperty.RegisterAttached("SearchHorizontalAlignment", typeof(HorizontalAlignment), typeof(Cattach), new PropertyMetadata(default(HorizontalAlignment), OnSearchHorizontalAlignmentChanged));
 
@@ -187,7 +187,7 @@ namespace H.Extensions.Attach
             obj.SetValue(SearchMarginProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty SearchMarginProperty =
             DependencyProperty.RegisterAttached("SearchMargin", typeof(Thickness), typeof(Cattach), new PropertyMetadata(default(Thickness), OnSearchMarginChanged));
 
@@ -211,7 +211,7 @@ namespace H.Extensions.Attach
             obj.SetValue(SearchTextProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty SearchTextProperty =
             DependencyProperty.RegisterAttached("SearchText", typeof(string), typeof(Cattach), new PropertyMetadata(default(string), OnSearchTextChanged));
 

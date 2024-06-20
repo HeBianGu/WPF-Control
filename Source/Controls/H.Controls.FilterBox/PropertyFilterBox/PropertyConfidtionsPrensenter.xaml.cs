@@ -24,9 +24,9 @@ namespace H.Controls.FilterBox
         {
             ObservableCollection<PropertyInfo> ps = modelTyle.GetProperties().Where(x => x.PropertyType.IsPrimitive || x.PropertyType == typeof(DateTime) || x.PropertyType == typeof(string)).ToObservable();
             if (predicate != null)
-                Properties = ps.Where(predicate).ToObservable();
+                this.Properties = ps.Where(predicate).ToObservable();
             else
-                Properties = ps.ToObservable();
+                this.Properties = ps.ToObservable();
         }
 
         private ObservableCollection<PropertyInfo> _properties = new ObservableCollection<PropertyInfo>();
@@ -83,38 +83,38 @@ namespace H.Controls.FilterBox
         public RelayCommand AddCommand => new RelayCommand(l =>
         {
             PropertyConfidtionPrensenter item = new PropertyConfidtionPrensenter() { ID = DateTime.Now.ToString("yyyyMMddHHmmssfff") };
-            item.Properties = Properties;
+            item.Properties = this.Properties;
             item.Load();
-            PropertyConfidtions.Add(item);
-            if (SelectedItem == null)
-                SelectedItem = item;
+            this.PropertyConfidtions.Add(item);
+            if (this.SelectedItem == null)
+                this.SelectedItem = item;
         });
 
         [JsonIgnore]
         [XmlIgnore]
         public RelayCommand ClearSelectionCommand => new RelayCommand(l =>
         {
-            SelectedItem = null;
+            this.SelectedItem = null;
             this.Save(out string message);
-        }, x => SelectedItem != null);
+        }, x => this.SelectedItem != null);
 
         public bool IsMatch(object obj)
         {
-            if (SelectedItem == null)
+            if (this.SelectedItem == null)
                 return true;
-            return SelectedItem.IsMatch(obj);
+            return this.SelectedItem.IsMatch(obj);
         }
 
         public bool Save(out string message)
         {
             message = null;
-            if (string.IsNullOrEmpty(ID))
+            if (string.IsNullOrEmpty(this.ID))
             {
                 message = "ID为空";
                 return false;
             }
-            SelectedIndex = PropertyConfidtions.IndexOf(SelectedItem);
-            MetaSettingService?.Serilize(this, ID);
+            this.SelectedIndex = this.PropertyConfidtions.IndexOf(this.SelectedItem);
+            this.MetaSettingService?.Serilize(this, this.ID);
             return true;
         }
 
@@ -127,16 +127,16 @@ namespace H.Controls.FilterBox
         {
             if (_loaded == true)
                 return;
-            PropertyConfidtionsPrensenter find = MetaSettingService?.Deserilize<PropertyConfidtionsPrensenter>(ID);
+            PropertyConfidtionsPrensenter find = this.MetaSettingService?.Deserilize<PropertyConfidtionsPrensenter>(this.ID);
             if (find == null)
                 return;
-            PropertyConfidtions = find.PropertyConfidtions;
+            this.PropertyConfidtions = find.PropertyConfidtions;
             if (find.SelectedIndex >= 0)
-                SelectedItem = find.PropertyConfidtions[find.SelectedIndex];
+                this.SelectedItem = find.PropertyConfidtions[find.SelectedIndex];
 
             foreach (PropertyConfidtionPrensenter item in find.PropertyConfidtions)
             {
-                item.Properties = Properties;
+                item.Properties = this.Properties;
                 foreach (IPropertyConfidtion confidtion in item.Conditions)
                 {
                     PropertyInfo propertyInfo = item.Properties.FirstOrDefault(x => x.Name == confidtion.Filter.Name);

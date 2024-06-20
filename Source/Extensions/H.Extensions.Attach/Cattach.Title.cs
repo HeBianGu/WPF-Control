@@ -115,7 +115,7 @@ namespace H.Extensions.Attach
             obj.SetValue(TitleMinWidthProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty TitleMinWidthProperty =
             DependencyProperty.RegisterAttached("TitleMinWidth", typeof(double), typeof(Cattach), new PropertyMetadata(default(double), OnTitleMinWidthChanged));
 
@@ -289,7 +289,7 @@ namespace H.Extensions.Attach
             obj.SetValue(TitleFontSizeProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty TitleFontSizeProperty =
             DependencyProperty.RegisterAttached("TitleFontSize", typeof(double), typeof(Cattach), new PropertyMetadata(0.0, OnTitleFontSizeChanged));
 

@@ -17,7 +17,7 @@ namespace H.Modules.License
         public DateTime EndTime { get; set; }
         public override string ToString()
         {
-            return (HostID + "|" + EndTime.ToString("yyyy-MM-dd HH:mm:ss") + "|" + this.Module + "|" + this.Level);
+            return (this.HostID + "|" + this.EndTime.ToString("yyyy-MM-dd HH:mm:ss") + "|" + this.Module + "|" + this.Level);
         }
 
         public bool IsMatch(string str, out string error)

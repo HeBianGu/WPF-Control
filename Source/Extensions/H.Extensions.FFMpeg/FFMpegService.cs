@@ -1,6 +1,5 @@
 ﻿using FFMpegCore;
 using System;
-using System.Linq;
 
 namespace H.Extensions.FFMpeg
 {

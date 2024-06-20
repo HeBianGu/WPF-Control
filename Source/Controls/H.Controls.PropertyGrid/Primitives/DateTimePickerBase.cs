@@ -2,7 +2,6 @@
 
 using System;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 
@@ -47,7 +46,7 @@ namespace H.Controls.PropertyGrid
         protected virtual void OnIsOpenChanged(bool oldValue, bool newValue)
         {
             if (newValue)
-                _initialValue = Value;
+                _initialValue = this.Value;
         }
 
         #endregion //IsOpen
@@ -106,11 +105,11 @@ namespace H.Controls.PropertyGrid
 
         protected virtual void HandleKeyDown(object sender, KeyEventArgs e)
         {
-            if (!IsOpen)
+            if (!this.IsOpen)
             {
                 if (KeyboardUtilities.IsKeyModifyingPopupState(e))
                 {
-                    IsOpen = true;
+                    this.IsOpen = true;
                     // Calendar will get focus in Calendar_Loaded().
                     e.Handled = true;
                 }
@@ -157,15 +156,15 @@ namespace H.Controls.PropertyGrid
 
         protected void ClosePopup(bool isFocusOnTextBox)
         {
-            if (IsOpen)
+            if (this.IsOpen)
             {
-                IsOpen = false;
+                this.IsOpen = false;
             }
 
             ReleaseMouseCapture();
 
-            if (isFocusOnTextBox && (TextBox != null))
-                TextBox.Focus();
+            if (isFocusOnTextBox && (this.TextBox != null))
+                this.TextBox.Focus();
         }
 
         #endregion //Methods

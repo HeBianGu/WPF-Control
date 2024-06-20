@@ -101,13 +101,13 @@ namespace H.Controls.PropertyGrid
         public CollectionControlDialog(Type itemsourceType)
           : this()
         {
-            ItemsSourceType = itemsourceType;
+            this.ItemsSourceType = itemsourceType;
         }
 
         public CollectionControlDialog(Type itemsourceType, IList<Type> newItemTypes)
           : this(itemsourceType)
         {
-            NewItemTypes = newItemTypes;
+            this.NewItemTypes = newItemTypes;
         }
 
         #endregion //Constructors

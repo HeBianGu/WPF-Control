@@ -3,7 +3,6 @@
 using H.Extensions.Common;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -81,7 +80,7 @@ namespace System.IO
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
                 //var result = new BitmapImage(new Uri(filePath, UriKind.Absolute));

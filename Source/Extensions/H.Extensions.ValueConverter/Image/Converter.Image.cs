@@ -4,7 +4,6 @@ using HeBianGu.App.Tool;
 using System;
 using System.Drawing;
 using System.Globalization;
-using System.IO;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Media;

@@ -49,27 +49,27 @@ namespace H.Controls.ColorPicker.Behaviors
         protected override void OnAttached()
         {
             base.OnAttached();
-            AssociatedObject.GotKeyboardFocus += AssociatedObjectGotKeyboardFocus;
-            AssociatedObject.GotMouseCapture += AssociatedObjectGotMouseCapture;
-            AssociatedObject.LostFocus += AssociatedObject_LostFocus;
-            AssociatedObject.PreviewMouseLeftButtonDown += AssociatedObjectPreviewMouseLeftButtonDown;
-            AssociatedObject.KeyUp += AssociatedObject_KeyUp;
+            this.AssociatedObject.GotKeyboardFocus += AssociatedObjectGotKeyboardFocus;
+            this.AssociatedObject.GotMouseCapture += AssociatedObjectGotMouseCapture;
+            this.AssociatedObject.LostFocus += AssociatedObject_LostFocus;
+            this.AssociatedObject.PreviewMouseLeftButtonDown += AssociatedObjectPreviewMouseLeftButtonDown;
+            this.AssociatedObject.KeyUp += AssociatedObject_KeyUp;
         }
 
         protected override void OnDetaching()
         {
             base.OnDetaching();
-            AssociatedObject.GotKeyboardFocus -= AssociatedObjectGotKeyboardFocus;
-            AssociatedObject.GotMouseCapture -= AssociatedObjectGotMouseCapture;
-            AssociatedObject.LostFocus -= AssociatedObject_LostFocus;
-            AssociatedObject.PreviewMouseLeftButtonDown -= AssociatedObjectPreviewMouseLeftButtonDown;
-            AssociatedObject.KeyUp -= AssociatedObject_KeyUp;
+            this.AssociatedObject.GotKeyboardFocus -= AssociatedObjectGotKeyboardFocus;
+            this.AssociatedObject.GotMouseCapture -= AssociatedObjectGotMouseCapture;
+            this.AssociatedObject.LostFocus -= AssociatedObject_LostFocus;
+            this.AssociatedObject.PreviewMouseLeftButtonDown -= AssociatedObjectPreviewMouseLeftButtonDown;
+            this.AssociatedObject.KeyUp -= AssociatedObject_KeyUp;
         }
 
         // Converts number to proper format if enter is clicked and moves focus to next object
         private void AssociatedObject_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.Key != Key.Enter || !ConfirmOnEnter)
+            if (e.Key != Key.Enter || !this.ConfirmOnEnter)
                 return;
 
             RemoveFocus();
@@ -77,8 +77,8 @@ namespace H.Controls.ColorPicker.Behaviors
 
         private void RemoveFocus()
         {
-            var scope = FocusManager.GetFocusScope(AssociatedObject);
-            var parent = (FrameworkElement)AssociatedObject.Parent;
+            var scope = FocusManager.GetFocusScope(this.AssociatedObject);
+            var parent = (FrameworkElement)this.AssociatedObject.Parent;
 
             while (parent != null && parent is IInputElement element && !element.Focusable)
                 parent = (FrameworkElement)parent.Parent;
@@ -91,32 +91,32 @@ namespace H.Controls.ColorPicker.Behaviors
             object sender,
             KeyboardFocusChangedEventArgs e)
         {
-            if (SelectOnMouseClick || e.KeyboardDevice.IsKeyDown(Key.Tab))
-                AssociatedObject.SelectAll();
+            if (this.SelectOnMouseClick || e.KeyboardDevice.IsKeyDown(Key.Tab))
+                this.AssociatedObject.SelectAll();
         }
 
         private void AssociatedObjectGotMouseCapture(
             object sender,
             MouseEventArgs e)
         {
-            if (SelectOnMouseClick)
-                AssociatedObject.SelectAll();
+            if (this.SelectOnMouseClick)
+                this.AssociatedObject.SelectAll();
         }
 
         private void AssociatedObject_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (DeselectOnFocusLoss)
-                AssociatedObject.Select(0, 0);
+            if (this.DeselectOnFocusLoss)
+                this.AssociatedObject.Select(0, 0);
         }
 
         private void AssociatedObjectPreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (!SelectOnMouseClick)
+            if (!this.SelectOnMouseClick)
                 return;
 
-            if (!AssociatedObject.IsKeyboardFocusWithin)
+            if (!this.AssociatedObject.IsKeyboardFocusWithin)
             {
-                AssociatedObject.Focus();
+                this.AssociatedObject.Focus();
                 e.Handled = true;
             }
         }

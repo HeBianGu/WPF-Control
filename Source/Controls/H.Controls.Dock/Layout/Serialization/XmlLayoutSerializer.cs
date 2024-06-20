@@ -44,7 +44,7 @@ namespace H.Controls.Dock.Layout.Serialization
                 StartDeserialization();
                 LayoutRoot layout = function();
                 FixupLayout(layout);
-                Manager.Layout = layout;
+                this.Manager.Layout = layout;
             }
             finally
             {
@@ -61,21 +61,21 @@ namespace H.Controls.Dock.Layout.Serialization
         /// <param name="writer"></param>
         public void Serialize(XmlWriter writer)
         {
-            _serializer.Serialize(writer, Manager.Layout);
+            _serializer.Serialize(writer, this.Manager.Layout);
         }
 
         /// <summary>Serialize the layout into a <see cref="TextWriter"/>.</summary>
         /// <param name="writer"></param>
         public void Serialize(TextWriter writer)
         {
-            _serializer.Serialize(writer, Manager.Layout);
+            _serializer.Serialize(writer, this.Manager.Layout);
         }
 
         /// <summary>Serialize the layout into a <see cref="Stream"/>.</summary>
         /// <param name="stream"></param>
         public void Serialize(Stream stream)
         {
-            _serializer.Serialize(stream, Manager.Layout);
+            _serializer.Serialize(stream, this.Manager.Layout);
         }
 
         /// <summary>Serialize the layout into a file using a <see cref="StreamWriter"/>.</summary>

@@ -11,7 +11,7 @@ namespace H.Extensions.ApplicationBase
 {
     public abstract partial class ApplicationBase : Application
     {
-       public ApplicationBase()
+        public ApplicationBase()
         {
             this.OnExcetion();
             this.OnRefreshIoc();

@@ -49,7 +49,7 @@ namespace Standard
                 gcHandle = GCHandle.Alloc(this);
                 IntPtr pinnedThisPtr = (IntPtr)gcHandle;
 
-                Handle = NativeMethods.CreateWindowEx(
+                this.Handle = NativeMethods.CreateWindowEx(
                     exStyle,
                     _className,
                     name,
@@ -88,21 +88,21 @@ namespace Standard
             // Block against reentrancy.
             if (_isDisposed) return;
             _isDisposed = true;
-            IntPtr hwnd = Handle;
+            IntPtr hwnd = this.Handle;
             string className = _className;
 
             if (isHwndBeingDestroyed)
-                Dispatcher.BeginInvoke(DispatcherPriority.Normal, (DispatcherOperationCallback)(arg => _DestroyWindow(IntPtr.Zero, className)));
-            else if (Handle != IntPtr.Zero)
+                this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (DispatcherOperationCallback)(arg => _DestroyWindow(IntPtr.Zero, className)));
+            else if (this.Handle != IntPtr.Zero)
             {
                 if (CheckAccess())
                     _DestroyWindow(hwnd, className);
                 else
-                    Dispatcher.BeginInvoke(DispatcherPriority.Normal, (DispatcherOperationCallback)(arg => _DestroyWindow(hwnd, className)));
+                    this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (DispatcherOperationCallback)(arg => _DestroyWindow(hwnd, className)));
             }
             s_windowLookup.Remove(hwnd);
             _className = null;
-            Handle = IntPtr.Zero;
+            this.Handle = IntPtr.Zero;
         }
 
         [SuppressMessage("Microsoft.Usage", "CA1816:CallGCSuppressFinalizeCorrectly")]

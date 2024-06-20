@@ -25,11 +25,11 @@ namespace H.Controls.ColorPicker.UIExtensions
 
         public PreviewColorSlider()
         {
-            Minimum = 0;
-            Maximum = 255;
-            SmallChange = 1;
-            LargeChange = 10;
-            MinHeight = 12;
+            this.Minimum = 0;
+            this.Maximum = 255;
+            this.SmallChange = 1;
+            this.LargeChange = 10;
+            this.MinHeight = 12;
             PreviewMouseWheel += OnPreviewMouseWheel;
         }
 
@@ -59,7 +59,7 @@ namespace H.Controls.ColorPicker.UIExtensions
             set
             {
                 _leftCapColor = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(LeftCapColor)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.LeftCapColor)));
             }
         }
 
@@ -69,7 +69,7 @@ namespace H.Controls.ColorPicker.UIExtensions
             set
             {
                 _rightCapColor = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(RightCapColor)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.RightCapColor)));
             }
         }
 
@@ -78,7 +78,7 @@ namespace H.Controls.ColorPicker.UIExtensions
         public override void EndInit()
         {
             base.EndInit();
-            Background = backgroundBrush;
+            this.Background = backgroundBrush;
             GenerateBackground();
         }
 
@@ -98,7 +98,7 @@ namespace H.Controls.ColorPicker.UIExtensions
 
         private void OnPreviewMouseWheel(object sender, MouseWheelEventArgs args)
         {
-            Value = MathHelper.Clamp(Value + SmallChange * args.Delta / 120, Minimum, Maximum);
+            this.Value = MathHelper.Clamp(this.Value + this.SmallChange * args.Delta / 120, this.Minimum, this.Maximum);
             args.Handled = true;
         }
     }

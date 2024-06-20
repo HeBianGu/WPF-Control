@@ -128,8 +128,8 @@ namespace H.Controls.Dock.Controls
         private void OnSizeChanged(object sender, SizeChangedEventArgs e)
         {
             ILayoutPositionableElementWithActualSize modelWithAtcualSize = _model;
-            modelWithAtcualSize.ActualWidth = ActualWidth;
-            modelWithAtcualSize.ActualHeight = ActualHeight;
+            modelWithAtcualSize.ActualWidth = this.ActualWidth;
+            modelWithAtcualSize.ActualHeight = this.ActualHeight;
         }
 
         #endregion Private Methods

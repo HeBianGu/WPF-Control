@@ -47,8 +47,8 @@ namespace H.Controls.PropertyGrid
 
         public PropertyOrderAttribute(int order, UsageContextEnum usageContext)
         {
-            Order = order;
-            UsageContext = usageContext;
+            this.Order = order;
+            this.UsageContext = usageContext;
         }
 
         #endregion

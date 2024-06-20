@@ -17,7 +17,7 @@ namespace H.Extensions.Attach
             obj.SetValue(BottomTemplateProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty BottomTemplateProperty =
             DependencyProperty.RegisterAttached("BottomTemplate", typeof(ControlTemplate), typeof(Cattach), new PropertyMetadata(default(ControlTemplate), OnBottomTemplateChanged));
 
@@ -40,7 +40,7 @@ namespace H.Extensions.Attach
             obj.SetValue(TopTemplateProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty TopTemplateProperty =
             DependencyProperty.RegisterAttached("TopTemplate", typeof(ControlTemplate), typeof(Cattach), new PropertyMetadata(default(ControlTemplate), OnTopTemplateChanged));
 
@@ -63,7 +63,7 @@ namespace H.Extensions.Attach
             obj.SetValue(LeftTemplateProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty LeftTemplateProperty =
             DependencyProperty.RegisterAttached("LeftTemplate", typeof(ControlTemplate), typeof(Cattach), new PropertyMetadata(default(ControlTemplate), OnLeftTemplateChanged));
 
@@ -86,7 +86,7 @@ namespace H.Extensions.Attach
             obj.SetValue(RightTemplateProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty RightTemplateProperty =
             DependencyProperty.RegisterAttached("RightTemplate", typeof(ControlTemplate), typeof(Cattach), new PropertyMetadata(default(ControlTemplate), OnRightTemplateChanged));
 
@@ -110,7 +110,7 @@ namespace H.Extensions.Attach
             obj.SetValue(CenterTemplateProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty CenterTemplateProperty =
             DependencyProperty.RegisterAttached("CenterTemplate", typeof(ControlTemplate), typeof(Cattach), new PropertyMetadata(default(ControlTemplate), OnCenterTemplateChanged));
 

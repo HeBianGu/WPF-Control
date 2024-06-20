@@ -144,19 +144,19 @@
             var currentValue = storage.ColorState;
             if (isUpdating) return;
             isUpdating = true;
-            if (currentValue.A != oldValue.A) RaisePropertyChanged(nameof(A));
+            if (currentValue.A != oldValue.A) RaisePropertyChanged(nameof(this.A));
 
-            if (currentValue.RGB_R != oldValue.RGB_R) RaisePropertyChanged(nameof(RGB_R));
-            if (currentValue.RGB_G != oldValue.RGB_G) RaisePropertyChanged(nameof(RGB_G));
-            if (currentValue.RGB_B != oldValue.RGB_B) RaisePropertyChanged(nameof(RGB_B));
+            if (currentValue.RGB_R != oldValue.RGB_R) RaisePropertyChanged(nameof(this.RGB_R));
+            if (currentValue.RGB_G != oldValue.RGB_G) RaisePropertyChanged(nameof(this.RGB_G));
+            if (currentValue.RGB_B != oldValue.RGB_B) RaisePropertyChanged(nameof(this.RGB_B));
 
-            if (currentValue.HSV_H != oldValue.HSV_H) RaisePropertyChanged(nameof(HSV_H));
-            if (currentValue.HSV_S != oldValue.HSV_S) RaisePropertyChanged(nameof(HSV_S));
-            if (currentValue.HSV_V != oldValue.HSV_V) RaisePropertyChanged(nameof(HSV_V));
+            if (currentValue.HSV_H != oldValue.HSV_H) RaisePropertyChanged(nameof(this.HSV_H));
+            if (currentValue.HSV_S != oldValue.HSV_S) RaisePropertyChanged(nameof(this.HSV_S));
+            if (currentValue.HSV_V != oldValue.HSV_V) RaisePropertyChanged(nameof(this.HSV_V));
 
-            if (currentValue.HSL_H != oldValue.HSL_H) RaisePropertyChanged(nameof(HSL_H));
-            if (currentValue.HSL_S != oldValue.HSL_S) RaisePropertyChanged(nameof(HSL_S));
-            if (currentValue.HSL_L != oldValue.HSL_L) RaisePropertyChanged(nameof(HSL_L));
+            if (currentValue.HSL_H != oldValue.HSL_H) RaisePropertyChanged(nameof(this.HSL_H));
+            if (currentValue.HSL_S != oldValue.HSL_S) RaisePropertyChanged(nameof(this.HSL_S));
+            if (currentValue.HSL_L != oldValue.HSL_L) RaisePropertyChanged(nameof(this.HSL_L));
             isUpdating = false;
         }
     }

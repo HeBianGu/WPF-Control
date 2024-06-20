@@ -7,7 +7,7 @@ namespace H.Controls.Dock
     {
         public LayoutFloatingWindowControlCreatedEventArgs(LayoutFloatingWindowControl layoutFloatingWindowControl)
         {
-            LayoutFloatingWindowControl = layoutFloatingWindowControl;
+            this.LayoutFloatingWindowControl = layoutFloatingWindowControl;
         }
 
         public LayoutFloatingWindowControl LayoutFloatingWindowControl { get; }

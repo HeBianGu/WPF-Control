@@ -18,7 +18,7 @@ namespace H.Controls.FilterBox
 
         public PropertyConfidtion(PropertyInfo propertyInfo)
         {
-            Filter = FilterFactory.Create(propertyInfo, null) as IPropertyFilter;
+            this.Filter = FilterFactory.Create(propertyInfo, null) as IPropertyFilter;
         }
 
         private IPropertyFilter _filter;
@@ -39,7 +39,7 @@ namespace H.Controls.FilterBox
             if (l is SelectionChangedEventArgs arg)
             {
                 if (arg.AddedItems[0] is PropertyInfo info)
-                    Filter = FilterFactory.Create(info, null) as IPropertyFilter;
+                    this.Filter = FilterFactory.Create(info, null) as IPropertyFilter;
 
             }
         });
@@ -48,9 +48,9 @@ namespace H.Controls.FilterBox
         {
             if (obj == null)
                 return false;
-            if(obj is IModelBindable mv)
-                return Filter.IsMatch(mv.GetModel());
-            return Filter.IsMatch(obj);
+            if (obj is IModelBindable mv)
+                return this.Filter.IsMatch(mv.GetModel());
+            return this.Filter.IsMatch(obj);
         }
     }
 }

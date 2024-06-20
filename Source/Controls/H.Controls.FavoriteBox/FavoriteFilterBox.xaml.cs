@@ -2,8 +2,6 @@
 using H.Providers.Ioc;
 using H.Providers.Mvvm;
 using System;
-using System.Collections;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -32,7 +30,7 @@ namespace H.Controls.FavoriteBox
             {
                 this.SelectNone();
             };
-            bingding.CanExecute +=(l, k) =>
+            bingding.CanExecute += (l, k) =>
             {
                 k.CanExecute = this.SelectedItem != null;
             };
@@ -174,7 +172,7 @@ namespace H.Controls.FavoriteBox
             var value = property.GetValue(model);
             if (value == null)
                 return false;
-            if (this._favoriteBox.SelectedItem is TreeNodeBase<object> node &&node.Model is IFavoriteItem favorite)
+            if (this._favoriteBox.SelectedItem is TreeNodeBase<object> node && node.Model is IFavoriteItem favorite)
             {
                 return value.Equals(favorite.Path);
             }

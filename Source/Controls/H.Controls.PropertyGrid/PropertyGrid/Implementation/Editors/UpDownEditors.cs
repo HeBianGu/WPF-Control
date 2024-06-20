@@ -13,11 +13,11 @@ namespace H.Controls.PropertyGrid
     {
         protected override void SetControlProperties(PropertyItem propertyItem)
         {
-            Editor.TextAlignment = System.Windows.TextAlignment.Left;
+            this.Editor.TextAlignment = System.Windows.TextAlignment.Left;
         }
         protected override void SetValueDependencyProperty()
         {
-            ValueProperty = UpDownBase<TType>.ValueProperty;
+            this.ValueProperty = UpDownBase<TType>.ValueProperty;
         }
 
 #if !VS2008
@@ -29,8 +29,8 @@ namespace H.Controls.PropertyGrid
             RangeAttribute rangeAttribute = PropertyGridUtilities.GetAttribute<RangeAttribute>(propertyDescriptor);
             if (rangeAttribute != null)
             {
-                Editor.Maximum = (TType)converter.ConvertFrom(rangeAttribute.Maximum.ToString());
-                Editor.Minimum = (TType)converter.ConvertFrom(rangeAttribute.Minimum.ToString());
+                this.Editor.Maximum = (TType)converter.ConvertFrom(rangeAttribute.Maximum.ToString());
+                this.Editor.Minimum = (TType)converter.ConvertFrom(rangeAttribute.Minimum.ToString());
             }
         }
 #endif
@@ -78,7 +78,7 @@ namespace H.Controls.PropertyGrid
         protected override void SetControlProperties(PropertyItem propertyItem)
         {
             base.SetControlProperties(propertyItem);
-            Editor.AllowInputSpecialValues = AllowedSpecialValues.Any;
+            this.Editor.AllowInputSpecialValues = AllowedSpecialValues.Any;
 #if !VS2008
             this.SetMinMaxFromRangeAttribute(propertyItem.PropertyDescriptor, TypeDescriptor.GetConverter(typeof(double)));
 #endif
@@ -143,7 +143,7 @@ namespace H.Controls.PropertyGrid
         protected override void SetControlProperties(PropertyItem propertyItem)
         {
             base.SetControlProperties(propertyItem);
-            Editor.AllowInputSpecialValues = AllowedSpecialValues.Any;
+            this.Editor.AllowInputSpecialValues = AllowedSpecialValues.Any;
 #if !VS2008
             this.SetMinMaxFromRangeAttribute(propertyItem.PropertyDescriptor, TypeDescriptor.GetConverter(typeof(float)));
 #endif

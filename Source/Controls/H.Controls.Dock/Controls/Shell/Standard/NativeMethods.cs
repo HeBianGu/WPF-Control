@@ -2071,7 +2071,7 @@ namespace Standard
         public POINT Position => new POINT { x = _left, y = _top };
 
         [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        public SIZE Size => new SIZE { cx = Width, cy = Height };
+        public SIZE Size => new SIZE { cx = this.Width, cy = this.Height };
 
         public static RECT Union(RECT rect1, RECT rect2)
         {

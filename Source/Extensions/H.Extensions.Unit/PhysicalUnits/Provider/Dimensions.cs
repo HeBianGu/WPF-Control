@@ -1,10 +1,5 @@
 ﻿
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using H.Extensions.Unit;
 
 namespace H.Extensions.Unit
 {
@@ -22,7 +17,7 @@ namespace H.Extensions.Unit
         public readonly short N; // Amount of Substance
         public readonly short J; // Luminous Intensity
         public readonly short A; // Angle. Strictly this is dimensionless, but it is convenient to treat it as a distinct dimension
- 
+
         public Dimensions(short m, short l, short t)
         {
             M = m; L = l; T = t;
@@ -33,12 +28,12 @@ namespace H.Extensions.Unit
             M = (short)m; L = (short)l; T = (short)t;
         }
 
-        public Dimensions(short m, short l, short t, short i, short th=0, short n=0, short j=0, short a=0)
+        public Dimensions(short m, short l, short t, short i, short th = 0, short n = 0, short j = 0, short a = 0)
         {
             M = m; L = l; T = t; I = i; Θ = th; N = n; J = j; A = a;
         }
 
-        public Dimensions(int m, int l, int t, int i, int th=0, int n=0, int j=0, int a=0)
+        public Dimensions(int m, int l, int t, int i, int th = 0, int n = 0, int j = 0, int a = 0)
         {
             M = (short)m; L = (short)l; T = (short)t; I = (short)i; Θ = (short)th; N = (short)n; J = (short)j; A = (short)a;
         }
@@ -71,7 +66,7 @@ namespace H.Extensions.Unit
 
         public static Dimensions operator *(Dimensions d1, Dimensions d2)
         {
-            return new Dimensions(d1.M+d2.M, d1.L+d2.L, d1.T+d2.T, d1.I+d2.I, d1.Θ+d2.Θ, d1.N+d2.N, d1.J+d2.J, d1.A+d2.A);
+            return new Dimensions(d1.M + d2.M, d1.L + d2.L, d1.T + d2.T, d1.I + d2.I, d1.Θ + d2.Θ, d1.N + d2.N, d1.J + d2.J, d1.A + d2.A);
         }
 
         public static Dimensions operator /(Dimensions d1, Dimensions d2)
@@ -95,7 +90,7 @@ namespace H.Extensions.Unit
             Check.True((N % 2) == 0, "N is not even");
             Check.True((J % 2) == 0, "J is not even");
             Check.True((A % 2) == 0, "A is not even");
-            return new Dimensions((short)(M/2), (short)(L / 2), (short)(T / 2), (short)(I / 2), (short)(Θ / 2), (short)(N / 2), (short)(J / 2), (short)(A / 2));
+            return new Dimensions((short)(M / 2), (short)(L / 2), (short)(T / 2), (short)(I / 2), (short)(Θ / 2), (short)(N / 2), (short)(J / 2), (short)(A / 2));
         }
 
         public override string ToString()
@@ -120,5 +115,5 @@ namespace H.Extensions.Unit
             return text;
         }
 
-   }
+    }
 }

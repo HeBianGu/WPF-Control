@@ -1,8 +1,8 @@
 ﻿using H.Providers.Ioc;
 using H.Providers.Mvvm;
 using Microsoft.Extensions.Options;
-using System.Threading;
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace H.Modules.Login
@@ -161,7 +161,7 @@ namespace H.Modules.Login
                     {
                         s.Message = message;
                         Thread.Sleep(1000);
-                        this.Forget.Message=message;
+                        this.Forget.Message = message;
                         return false;
                     }
                     s.Message = "修改成功";

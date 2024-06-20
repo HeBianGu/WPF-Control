@@ -13,8 +13,8 @@ namespace H.Windows.Ribbon
 
         public QATItem(object instance, bool isSplitHeader)
         {
-            Instance = instance;
-            IsSplitHeader = isSplitHeader;
+            this.Instance = instance;
+            this.IsSplitHeader = isSplitHeader;
         }
 
         public int TabIndex { get; set; }

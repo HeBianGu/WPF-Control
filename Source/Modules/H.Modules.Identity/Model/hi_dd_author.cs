@@ -13,7 +13,7 @@ namespace H.Modules.Identity
     {
         public hi_dd_author()
         {
-            Name = "默认权限";
+            this.Name = "默认权限";
         }
 
         private string _name;

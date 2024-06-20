@@ -115,7 +115,7 @@ namespace H.Controls.Dock.Controls
             _model.PropertyChanged += _model_PropertyChanged;
             SetLayoutTransform();
             StartListeningToViewboxZoomChange();
-            Visibility = Visibility.Visible;
+            this.Visibility = Visibility.Visible;
             InvalidateMeasure();
             UpdateWindowPos();
             Win32Helper.BringWindowToTop(_internalHwndSource.Handle);
@@ -131,7 +131,7 @@ namespace H.Controls.Dock.Controls
             _anchor = null;
             _model = null;
             _manager = null;
-            Visibility = Visibility.Hidden;
+            this.Visibility = Visibility.Hidden;
         }
 
         internal bool IsWin32MouseOver
@@ -144,8 +144,8 @@ namespace H.Controls.Dock.Controls
                 Rect rectWindow = this.GetScreenArea();
                 if (rectWindow.Contains(new Point(ptMouse.X, ptMouse.Y))) return true;
 
-                DockingManager manager = Model?.Root.Manager;
-                LayoutAnchorControl anchor = manager?.FindVisualChildren<LayoutAnchorControl>().Where(c => c.Model == Model).FirstOrDefault();
+                DockingManager manager = this.Model?.Root.Manager;
+                LayoutAnchorControl anchor = manager?.FindVisualChildren<LayoutAnchorControl>().Where(c => c.Model == this.Model).FirstOrDefault();
 
                 return anchor != null && anchor.IsMouseOver;
                 //location = anchor.PointToScreenDPI(new Point());
@@ -248,9 +248,9 @@ namespace H.Controls.Dock.Controls
             // 2) An ancestor Viewbox changes its zoom (the Viewbox or its child changes size)
             // We would also want to refresh when the visual tree changes such that an ancestor Viewbox is added, removed, or changed. However, this is completely unnecessary
             // because the LayoutAutoHideWindowControl closes if a visual ancestor is changed: DockingManager.Unloaded handler calls _autoHideWindowManager?.HideAutoWindow()
-            if (ChildLayoutTransform is Transform transform && _internalHostPresenter.LayoutTransform.Value != transform.Value)
+            if (this.ChildLayoutTransform is Transform transform && _internalHostPresenter.LayoutTransform.Value != transform.Value)
             {
-                LayoutTransform = (Transform)transform.Inverse;
+                this.LayoutTransform = (Transform)transform.Inverse;
                 _internalHostPresenter.LayoutTransform = transform;
             }
         }
@@ -275,7 +275,7 @@ namespace H.Controls.Dock.Controls
             _internalGrid = new Grid { FlowDirection = FlowDirection.LeftToRight };
             _internalGrid.SetBinding(Panel.BackgroundProperty, new Binding(nameof(Grid.Background)) { Source = this });
 
-            _internalHost = new LayoutAnchorableControl { Model = _model, Style = AnchorableStyle };
+            _internalHost = new LayoutAnchorableControl { Model = _model, Style = this.AnchorableStyle };
             _internalHost.SetBinding(FlowDirectionProperty, new Binding("Model.Root.Manager.FlowDirection") { Source = this });
 
             KeyboardNavigation.SetTabNavigation(_internalGrid, KeyboardNavigationMode.Cycle);
@@ -293,8 +293,8 @@ namespace H.Controls.Dock.Controls
                     Grid.SetColumn(_resizer, 0);
                     Grid.SetColumn(_internalHost, 1);
                     _resizer.Cursor = Cursors.SizeWE;
-                    HorizontalAlignment = HorizontalAlignment.Right;
-                    VerticalAlignment = VerticalAlignment.Stretch;
+                    this.HorizontalAlignment = HorizontalAlignment.Right;
+                    this.VerticalAlignment = VerticalAlignment.Stretch;
                     break;
 
                 case AnchorSide.Left:
@@ -303,8 +303,8 @@ namespace H.Controls.Dock.Controls
                     Grid.SetColumn(_internalHost, 0);
                     Grid.SetColumn(_resizer, 1);
                     _resizer.Cursor = Cursors.SizeWE;
-                    HorizontalAlignment = HorizontalAlignment.Left;
-                    VerticalAlignment = VerticalAlignment.Stretch;
+                    this.HorizontalAlignment = HorizontalAlignment.Left;
+                    this.VerticalAlignment = VerticalAlignment.Stretch;
                     break;
 
                 case AnchorSide.Top:
@@ -313,8 +313,8 @@ namespace H.Controls.Dock.Controls
                     Grid.SetRow(_internalHost, 0);
                     Grid.SetRow(_resizer, 1);
                     _resizer.Cursor = Cursors.SizeNS;
-                    VerticalAlignment = VerticalAlignment.Top;
-                    HorizontalAlignment = HorizontalAlignment.Stretch;
+                    this.VerticalAlignment = VerticalAlignment.Top;
+                    this.HorizontalAlignment = HorizontalAlignment.Stretch;
                     break;
 
                 case AnchorSide.Bottom:
@@ -323,8 +323,8 @@ namespace H.Controls.Dock.Controls
                     Grid.SetRow(_resizer, 0);
                     Grid.SetRow(_internalHost, 1);
                     _resizer.Cursor = Cursors.SizeNS;
-                    VerticalAlignment = VerticalAlignment.Bottom;
-                    HorizontalAlignment = HorizontalAlignment.Stretch;
+                    this.VerticalAlignment = VerticalAlignment.Bottom;
+                    this.HorizontalAlignment = HorizontalAlignment.Stretch;
                     break;
             }
             _internalGrid.Children.Add(_resizer);
@@ -407,7 +407,7 @@ namespace H.Controls.Dock.Controls
             GeneralTransform trToWnd = TransformToAncestor(rootVisual);
             //var transformedDelta = trToWnd.Transform(new Point(e.HorizontalChange, e.VerticalChange)) - trToWnd.Transform(new Point());
 
-            Point deltaPoint = ChildLayoutTransform.Inverse.Transform(new Point(Canvas.GetLeft(_resizerGhost) - _initialStartPoint.X, Canvas.GetTop(_resizerGhost) - _initialStartPoint.Y));
+            Point deltaPoint = this.ChildLayoutTransform.Inverse.Transform(new Point(Canvas.GetLeft(_resizerGhost) - _initialStartPoint.X, Canvas.GetTop(_resizerGhost) - _initialStartPoint.Y));
 
             double delta;
             if (_side == AnchorSide.Right || _side == AnchorSide.Left)
@@ -447,7 +447,7 @@ namespace H.Controls.Dock.Controls
                     }
             }
             HideResizerOverlayWindow();
-            IsResizing = false;
+            this.IsResizing = false;
             InvalidateMeasure();
         }
 
@@ -458,7 +458,7 @@ namespace H.Controls.Dock.Controls
 
             GeneralTransform trToWnd = TransformToAncestor(rootVisual);
             Vector transformedDelta = trToWnd.Transform(new Point(e.HorizontalChange, e.VerticalChange)) - trToWnd.Transform(new Point());
-            if (ChildLayoutTransform is Transform transform && !transform.Value.IsIdentity)
+            if (this.ChildLayoutTransform is Transform transform && !transform.Value.IsIdentity)
             {
                 transformedDelta = transform.Transform(new Point() + transformedDelta) - new Point();
             }
@@ -475,7 +475,7 @@ namespace H.Controls.Dock.Controls
         private void OnResizerDragStarted(object sender, System.Windows.Controls.Primitives.DragStartedEventArgs e)
         {
             ShowResizerOverlayWindow(sender as LayoutGridResizerControl);
-            IsResizing = true;
+            this.IsResizing = true;
         }
 
         #endregion Private Methods

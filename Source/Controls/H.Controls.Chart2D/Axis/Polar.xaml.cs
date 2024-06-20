@@ -23,7 +23,7 @@ namespace H.Controls.Chart2D
             set { SetValue(LenProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty LenProperty =
             DependencyProperty.Register("Len", typeof(double), typeof(Polar), new PropertyMetadata(200.0, (d, e) =>
              {

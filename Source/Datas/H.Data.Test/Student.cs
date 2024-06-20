@@ -1,13 +1,12 @@
 ﻿using H.Providers.Mvvm;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace H.Data.Test
 {
-    public class Student :BindableBase,ICloneable
+    public class Student : BindableBase, ICloneable
     {
         [Display(Name = "姓名", GroupName = "基础信息")]
         [Required()]
@@ -46,7 +45,7 @@ namespace H.Data.Test
         [RegularExpression(@"^1[3|4|5|7|8][0-9]{9}$", ErrorMessage = "手机号码不合法！")]
         public string Tel { get; set; }
 
-        private string _tag=string.Empty;
+        private string _tag = string.Empty;
         [Display(Name = "标签", GroupName = "基础信息")]
         [Required]
         public string Tag

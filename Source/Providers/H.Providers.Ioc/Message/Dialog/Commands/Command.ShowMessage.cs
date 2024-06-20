@@ -7,7 +7,7 @@ namespace H.Providers.Ioc
         public string Message { get; set; }
         public override void Execute(object parameter)
         {
-            IocMessage.Dialog.Show(Message, x =>
+            IocMessage.Dialog.Show(this.Message, x =>
             {
                 x.DialogButton = this.DialogButton;
                 x.Title = this.Title;
@@ -15,7 +15,7 @@ namespace H.Providers.Ioc
         }
         public override bool CanExecute(object parameter)
         {
-            return !string.IsNullOrEmpty(Message);
+            return !string.IsNullOrEmpty(this.Message);
         }
     }
 }

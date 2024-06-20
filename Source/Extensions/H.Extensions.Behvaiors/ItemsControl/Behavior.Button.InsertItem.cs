@@ -36,7 +36,7 @@ namespace H.Extensions.Behvaiors
             object addItem = CreateNewItem();
             if (addItem == null)
                 return;
-            ItemsSource.Insert(Index, addItem);
+            this.ItemsSource.Insert(this.Index, addItem);
         }
     }
 

@@ -7,7 +7,7 @@ namespace H.Providers.Ioc
         public object Value { get; set; }
         public override void Execute(object parameter)
         {
-            IocMessage.Form.ShowView(Value);
+            IocMessage.Form.ShowView(this.Value);
         }
     }
 }

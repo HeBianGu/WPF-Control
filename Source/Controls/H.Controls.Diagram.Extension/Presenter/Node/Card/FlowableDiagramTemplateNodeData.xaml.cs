@@ -47,7 +47,7 @@ namespace H.Controls.Diagram.Extension
 
         [XmlIgnore]
         [Display(Name = "查看模板", GroupName = "操作")]
-        public RelayCommand ShowTemplateCommand => new RelayCommand(async (s, e) =>
+        public RelayCommand ShowTemplateCommand => new RelayCommand((s, e) =>
         {
             //    await IocMessage.Dialog.Show(this.Template, null, this.Name, x =>
             //    {

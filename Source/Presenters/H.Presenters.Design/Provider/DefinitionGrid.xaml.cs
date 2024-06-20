@@ -72,16 +72,16 @@ namespace H.Presenters.Design
 
         protected override void Refresh()
         {
-            RowDefinitions.Clear();
-            ColumnDefinitions.Clear();
+            this.RowDefinitions.Clear();
+            this.ColumnDefinitions.Clear();
 
-            foreach (var item in Rows)
+            foreach (var item in this.Rows)
             {
-                RowDefinitions.Add(new RowDefinition() { Height = item, MinHeight = MinRowHeight });
+                this.RowDefinitions.Add(new RowDefinition() { Height = item, MinHeight = this.MinRowHeight });
             }
-            foreach (var item in Columns)
+            foreach (var item in this.Columns)
             {
-                ColumnDefinitions.Add(new ColumnDefinition() { Width = item });
+                this.ColumnDefinitions.Add(new ColumnDefinition() { Width = item });
             }
         }
     }

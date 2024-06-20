@@ -1,5 +1,4 @@
-﻿using H.Presenters.Common;
-using H.Providers.Ioc;
+﻿using H.Providers.Ioc;
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -67,7 +66,7 @@ namespace H.Windows.Dialog
         protected override void OnSourceInitialized(EventArgs e)
         {
             base.OnSourceInitialized(e);
-            if (SizeToContent == SizeToContent.WidthAndHeight && System.Windows.Shell.WindowChrome.GetWindowChrome(this) != null)
+            if (this.SizeToContent == SizeToContent.WidthAndHeight && System.Windows.Shell.WindowChrome.GetWindowChrome(this) != null)
             {
                 InvalidateMeasure();
             }

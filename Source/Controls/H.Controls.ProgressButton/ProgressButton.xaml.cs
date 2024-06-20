@@ -26,7 +26,7 @@ namespace H.Controls.ProgressButton
             set { SetValue(IsIndeterminateProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty IsIndeterminateProperty =
             DependencyProperty.Register("IsIndeterminate", typeof(bool), typeof(ProgressButton), new FrameworkPropertyMetadata(default(bool), (d, e) =>
              {
@@ -53,7 +53,7 @@ namespace H.Controls.ProgressButton
             set { SetValue(IsBusyProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty IsBusyProperty =
             DependencyProperty.Register("IsBusy", typeof(bool), typeof(ProgressButton), new FrameworkPropertyMetadata(default(bool), (d, e) =>
              {
@@ -80,7 +80,7 @@ namespace H.Controls.ProgressButton
             set { SetValue(PercentProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty PercentProperty =
             DependencyProperty.Register("Percent", typeof(double), typeof(ProgressButton), new FrameworkPropertyMetadata(default(double), (d, e) =>
              {
@@ -107,7 +107,7 @@ namespace H.Controls.ProgressButton
             set { SetValue(MessageProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty MessageProperty =
             DependencyProperty.Register("Message", typeof(string), typeof(ProgressButton), new FrameworkPropertyMetadata(default(string), (d, e) =>
              {
@@ -134,7 +134,7 @@ namespace H.Controls.ProgressButton
             set { SetValue(ProgressOpacityProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty ProgressOpacityProperty =
             DependencyProperty.Register("ProgressOpacity", typeof(double), typeof(ProgressButton), new FrameworkPropertyMetadata(0.5, (d, e) =>
              {

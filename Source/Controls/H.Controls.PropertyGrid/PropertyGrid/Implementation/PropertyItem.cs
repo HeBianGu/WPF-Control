@@ -58,8 +58,8 @@ namespace H.Controls.PropertyGrid
         {
             get
             {
-                return (PropertyDescriptor != null)
-                  ? PropertyDescriptor.PropertyType
+                return (this.PropertyDescriptor != null)
+                  ? this.PropertyDescriptor.PropertyType
                   : null;
             }
         }
@@ -204,7 +204,7 @@ namespace H.Controls.PropertyGrid
             {
                 // This withholds the generation of all PropertyItem instances (recursively)
                 // until the PropertyItem is expanded.
-                ObjectContainerHelperBase objectContainerHelper = ContainerHelper as ObjectContainerHelperBase;
+                ObjectContainerHelperBase objectContainerHelper = this.ContainerHelper as ObjectContainerHelperBase;
                 if (objectContainerHelper != null)
                 {
                     objectContainerHelper.GenerateProperties();

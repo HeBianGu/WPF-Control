@@ -37,7 +37,7 @@ namespace H.Controls.Dock.Layout
         /// <summary>Class constructor from <paramref name="documentPane"/> that is added into the children collection of this object.</summary>
         public LayoutDocumentPaneGroup(LayoutDocumentPane documentPane)
         {
-            Children.Add(documentPane);
+            this.Children.Add(documentPane);
         }
 
         #endregion Constructors
@@ -51,9 +51,9 @@ namespace H.Controls.Dock.Layout
             set
             {
                 if (value == _orientation) return;
-                RaisePropertyChanging(nameof(Orientation));
+                RaisePropertyChanging(nameof(this.Orientation));
                 _orientation = value;
-                RaisePropertyChanged(nameof(Orientation));
+                RaisePropertyChanged(nameof(this.Orientation));
             }
         }
 
@@ -67,14 +67,14 @@ namespace H.Controls.Dock.Layout
         /// <inheritdoc />
         public override void WriteXml(System.Xml.XmlWriter writer)
         {
-            writer.WriteAttributeString(nameof(Orientation), Orientation.ToString());
+            writer.WriteAttributeString(nameof(this.Orientation), this.Orientation.ToString());
             base.WriteXml(writer);
         }
 
         /// <inheritdoc />
         public override void ReadXml(System.Xml.XmlReader reader)
         {
-            if (reader.MoveToAttribute(nameof(Orientation))) Orientation = (Orientation)Enum.Parse(typeof(Orientation), reader.Value, true);
+            if (reader.MoveToAttribute(nameof(this.Orientation))) this.Orientation = (Orientation)Enum.Parse(typeof(Orientation), reader.Value, true);
             base.ReadXml(reader);
         }
 
@@ -83,9 +83,9 @@ namespace H.Controls.Dock.Layout
         public override void ConsoleDump(int tab)
         {
             System.Diagnostics.Trace.Write(new string(' ', tab * 4));
-            System.Diagnostics.Trace.WriteLine(string.Format("DocumentPaneGroup({0})", Orientation));
+            System.Diagnostics.Trace.WriteLine(string.Format("DocumentPaneGroup({0})", this.Orientation));
 
-            foreach (LayoutElement child in Children)
+            foreach (LayoutElement child in this.Children)
                 child.ConsoleDump(tab + 1);
         }
 #endif

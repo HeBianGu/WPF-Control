@@ -95,7 +95,7 @@ namespace H.Controls.Chart2D
         {
             base.OnRender(drawingContext);
 
-            drawingContext.DrawGeometry(Fill, Pen, DefiningGeometry);
+            drawingContext.DrawGeometry(this.Fill, this.Pen, this.DefiningGeometry);
 
         }
     }

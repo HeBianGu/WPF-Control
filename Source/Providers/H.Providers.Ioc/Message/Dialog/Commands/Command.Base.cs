@@ -41,8 +41,8 @@ namespace H.Providers.Ioc
         {
             if (w is Control c)
             {
-                c.Width = Width;
-                c.Height = Height;
+                c.Width = this.Width;
+                c.Height = this.Height;
             }
         }
     }

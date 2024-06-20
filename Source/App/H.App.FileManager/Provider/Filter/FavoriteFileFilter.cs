@@ -1,6 +1,5 @@
 ﻿using H.Controls.FilterBox;
 using H.Providers.Mvvm;
-using System.ComponentModel.DataAnnotations;
 
 namespace H.App.FileManager
 {
@@ -11,7 +10,7 @@ namespace H.App.FileManager
         {
             if (obj is ModelBindable<fm_dd_file> file)
             {
-                return file.Model.Favorite == Value;
+                return file.Model.Favorite == this.Value;
             }
             return false;
         }

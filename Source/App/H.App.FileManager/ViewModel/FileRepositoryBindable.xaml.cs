@@ -1,5 +1,4 @@
-﻿using H.Controls.PropertyGrid;
-using H.Controls.TagBox;
+﻿using H.Controls.TagBox;
 using H.Extensions.Common;
 using H.Extensions.FFMpeg;
 using H.Extensions.ViewModel;
@@ -14,7 +13,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text.Json.Serialization;
-using System.Threading;
 using System.Windows;
 using System.Xml.Serialization;
 
@@ -38,9 +36,9 @@ namespace H.App.FileManager
         public override void RefreshData(params string[] includes)
         {
             includes = includes ?? GetIncludes()?.ToArray();
-            IEnumerable<SelectBindable<fm_dd_file>> collection = includes == null ? Repository.GetList().Select(x => new SelectBindable<fm_dd_file>(x))
-            : Repository.GetList(includes).Select(x => new SelectBindable<fm_dd_file>(x));
-            Collection.Load(collection);
+            IEnumerable<SelectBindable<fm_dd_file>> collection = includes == null ? this.Repository.GetList().Select(x => new SelectBindable<fm_dd_file>(x))
+            : this.Repository.GetList(includes).Select(x => new SelectBindable<fm_dd_file>(x));
+            this.Collection.Load(collection);
         }
 
         private ObservableCollection<fm_dd_file> _hisotry = new ObservableCollection<fm_dd_file>();

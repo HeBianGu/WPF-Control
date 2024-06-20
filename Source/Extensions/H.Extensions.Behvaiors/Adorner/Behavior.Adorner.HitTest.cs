@@ -21,7 +21,7 @@ namespace H.Extensions.Behvaiors
             obj.SetValue(HitTestAdornerTypeProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty HitTestAdornerTypeProperty =
             DependencyProperty.RegisterAttached("HitTestAdornerType", typeof(Type), typeof(HitTestAdornerBehavior), new PropertyMetadata(default(Type), OnHitTestAdornerTypeChanged));
 
@@ -48,7 +48,7 @@ namespace H.Extensions.Behvaiors
             obj.SetValue(IsHitTestProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty IsHitTestProperty =
             DependencyProperty.RegisterAttached("IsHitTest", typeof(bool), typeof(HitTestAdornerBehavior), new PropertyMetadata(default(bool), OnIsHitTestChanged));
 
@@ -63,7 +63,7 @@ namespace H.Extensions.Behvaiors
 
         protected virtual void Clear()
         {
-            _temp?.ClearAdorner(x => x.GetType() == AdornerType);
+            _temp?.ClearAdorner(x => x.GetType() == this.AdornerType);
             if (_temp != null)
                 MouseOverHitTestAdornerBehavior.SetIsMouseOver(_temp, false);
             if (_temp.GetDataContext() is IGetDropAdorner drop)
@@ -99,18 +99,18 @@ namespace H.Extensions.Behvaiors
         {
             if (_temp == elment)
                 return;
-            if (AdornerType == null)
+            if (this.AdornerType == null)
                 return;
 
             if (CheckAdorner(elment) == false)
                 return;
 
-            if (IsUse)
+            if (this.IsUse)
             {
                 Adorner adorner = GetAdorner(elment);
                 if (adorner == null)
                     return;
-                adorner.IsHitTestVisible = IsHitTestVisible;
+                adorner.IsHitTestVisible = this.IsHitTestVisible;
 
                 System.Diagnostics.Debug.WriteLine("IsHitTestVisible:" + adorner.IsHitTestVisible);
 
@@ -123,7 +123,7 @@ namespace H.Extensions.Behvaiors
             Type custom = GetHitTestAdornerType(elment);
             if (custom != null)
                 return elment.GetAdorner(x => x.GetType() == custom) == null;
-            return elment.GetAdorner(x => x.GetType() == AdornerType) == null;
+            return elment.GetAdorner(x => x.GetType() == this.AdornerType) == null;
         }
 
         protected virtual Adorner GetAdorner(UIElement elment)
@@ -131,7 +131,7 @@ namespace H.Extensions.Behvaiors
             Type custom = GetHitTestAdornerType(elment);
             if (custom != null)
                 return Activator.CreateInstance(custom, elment) as Adorner;
-            return Activator.CreateInstance(AdornerType, elment) as Adorner;
+            return Activator.CreateInstance(this.AdornerType, elment) as Adorner;
         }
 
         protected override void OnDetaching()

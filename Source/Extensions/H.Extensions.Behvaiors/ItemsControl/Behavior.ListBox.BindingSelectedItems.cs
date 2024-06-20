@@ -14,7 +14,7 @@ namespace H.Extensions.Behvaiors
             set { SetValue(SelectedItemsProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty SelectedItemsProperty =
             DependencyProperty.Register("SelectedItems", typeof(IList), typeof(ListBoxBindingSelectedItemsBehavior), new FrameworkPropertyMetadata(default(IList), (d, e) =>
             {
@@ -29,15 +29,15 @@ namespace H.Extensions.Behvaiors
 
         private void RefreshData()
         {
-            if (AssociatedObject.SelectionMode == SelectionMode.Single)
+            if (this.AssociatedObject.SelectionMode == SelectionMode.Single)
                 return;
-            AssociatedObject.SelectionChanged -= AssociatedObject_SelectionChanged;
-            AssociatedObject.SelectedItems.Clear();
-            foreach (object item in SelectedItems)
+            this.AssociatedObject.SelectionChanged -= AssociatedObject_SelectionChanged;
+            this.AssociatedObject.SelectedItems.Clear();
+            foreach (object item in this.SelectedItems)
             {
-                AssociatedObject.SelectedItems.Add(item);
+                this.AssociatedObject.SelectedItems.Add(item);
             }
-            AssociatedObject.SelectionChanged += AssociatedObject_SelectionChanged;
+            this.AssociatedObject.SelectionChanged += AssociatedObject_SelectionChanged;
         }
 
 
@@ -48,7 +48,7 @@ namespace H.Extensions.Behvaiors
 
         private void AssociatedObject_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            IList dataSource = SelectedItems;
+            IList dataSource = this.SelectedItems;
             foreach (object item in e.AddedItems)
             {
                 dataSource.Add(item);
@@ -61,7 +61,7 @@ namespace H.Extensions.Behvaiors
 
         protected override void OnDetaching()
         {
-            AssociatedObject.SelectionChanged -= AssociatedObject_SelectionChanged;
+            this.AssociatedObject.SelectionChanged -= AssociatedObject_SelectionChanged;
         }
     }
 }

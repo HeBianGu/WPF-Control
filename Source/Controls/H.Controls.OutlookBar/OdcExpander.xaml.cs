@@ -302,7 +302,7 @@ namespace H.Controls.OutlookBar
             this.IsExpanded ^= true;
             if (this.IsExpanded)
             {
-                FrameworkElement e = Content as FrameworkElement;
+                FrameworkElement e = this.Content as FrameworkElement;
                 if (e != null && e.Focusable) e.Focus();
             }
         }

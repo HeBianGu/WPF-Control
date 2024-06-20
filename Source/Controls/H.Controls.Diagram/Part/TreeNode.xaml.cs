@@ -28,7 +28,7 @@ namespace H.Controls.Diagram
             set { SetValue(IsExpandedProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty IsExpandedProperty =
             DependencyProperty.Register("IsExpanded", typeof(bool), typeof(TreeNode), new PropertyMetadata(true, (d, e) =>
             {
@@ -194,7 +194,7 @@ namespace H.Controls.Diagram
             set { SetValue(SpanProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty SpanProperty =
             DependencyProperty.Register("Span", typeof(double), typeof(TreeNode), new FrameworkPropertyMetadata(110.0, (d, e) =>
              {

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace H.Extensions.Unit
 {
@@ -99,7 +95,7 @@ namespace H.Extensions.Unit
             {
                 if (value != _unit)
                 {
-                    System = Unit.System;
+                    this.System = this.Unit.System;
                     _unit = value;
                     OnPropertyChanged();
                     OnPropertyChanged("CurrentUnitIndex");
@@ -114,8 +110,8 @@ namespace H.Extensions.Unit
             {
                 if (value.Dimensions != _dimensions || value.Value != _quantity)
                 {
-                    Dimensions = value.Dimensions;
-                    Quantity = value.Value;
+                    this.Dimensions = value.Dimensions;
+                    this.Quantity = value.Value;
                     OnPropertyChanged();
                 }
             }

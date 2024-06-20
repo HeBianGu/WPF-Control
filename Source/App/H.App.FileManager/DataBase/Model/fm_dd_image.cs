@@ -64,7 +64,7 @@ namespace H.App.FileManager
         /// <summary> 宽高比 1920x1080 </summary>
         [Display(Name = "宽高比")]
         [NotMapped]
-        public string Aspect => $"{PixelWidth}x{PixelHeight}";
+        public string Aspect => $"{this.PixelWidth}x{this.PixelHeight}";
 
     }
 }

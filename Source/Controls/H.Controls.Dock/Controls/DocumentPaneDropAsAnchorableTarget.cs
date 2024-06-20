@@ -70,7 +70,7 @@ namespace H.Controls.Dock.Controls
             LayoutPanel parentGroupPanel;
             FindParentLayoutDocumentPane(targetModel, out parentGroup, out parentGroupPanel);
 
-            switch (Type)
+            switch (this.Type)
             {
                 case DropTargetType.DocumentPaneDockAsAnchorableBottom:
 
@@ -240,7 +240,7 @@ namespace H.Controls.Dock.Controls
             FrameworkElement documentPaneControl = manager.FindLogicalChildren<FrameworkElement>().OfType<ILayoutControl>().First(d => parentGroup != null ? d.Model == parentGroup : d.Model == parentGroupPanel) as FrameworkElement;
             targetScreenRect = documentPaneControl.GetScreenArea();
 
-            switch (Type)
+            switch (this.Type)
             {
                 case DropTargetType.DocumentPaneDockAsAnchorableBottom:
                     {

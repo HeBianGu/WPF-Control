@@ -3,8 +3,6 @@ using H.Providers.Ioc;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
-using System.Xml.Serialization;
 
 namespace H.Controls.FavoriteBox
 {

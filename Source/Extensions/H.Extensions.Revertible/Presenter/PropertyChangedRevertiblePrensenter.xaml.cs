@@ -8,9 +8,9 @@
     {
         public PropertyChangedRevertiblePrensenter(string perpertyName, T oldValue, T newValue)
         {
-            PropertyName = perpertyName;
-            OldValue = oldValue;
-            NewValue = newValue;
+            this.PropertyName = perpertyName;
+            this.OldValue = oldValue;
+            this.NewValue = newValue;
         }
         public string PropertyName { get; set; }
         public T OldValue { get; set; }

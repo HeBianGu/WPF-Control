@@ -12,7 +12,7 @@ namespace H.Providers.Mvvm
     {
         public ModelBindable(T t)
         {
-            Model = t;
+            this.Model = t;
 
         }
 
@@ -107,7 +107,7 @@ namespace H.Providers.Mvvm
                 PropertyInfo find = typeof(T).GetProperty(property.Name);
                 if (find == null)
                     continue;
-                property.SetValue(this, find.GetValue(Model));
+                property.SetValue(this, find.GetValue(this.Model));
             }
             return true;
         }
@@ -123,7 +123,7 @@ namespace H.Providers.Mvvm
                 PropertyInfo find = typeof(T).GetProperty(property.Name);
                 if (find == null)
                     continue;
-                find.SetValue(this, property.GetValue(Model));
+                find.SetValue(this, property.GetValue(this.Model));
             }
             return true;
         }
@@ -135,9 +135,9 @@ namespace H.Providers.Mvvm
 
             string[] ands = txt.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             {
-                IEnumerable<PropertyInfo> ps = Model.GetType().GetProperties().Where(x => x.CanRead).Where(l => l.PropertyType == typeof(string) || l.PropertyType.IsPrimitive || l.PropertyType == typeof(DateTime));
+                IEnumerable<PropertyInfo> ps = this.Model.GetType().GetProperties().Where(x => x.CanRead).Where(l => l.PropertyType == typeof(string) || l.PropertyType.IsPrimitive || l.PropertyType == typeof(DateTime));
                 ps = ps.Where(x => x.Name != "Item" && x.GetCustomAttribute<BrowsableAttribute>()?.Browsable != false);
-                IEnumerable<string> list = ps.Select(x => x.GetValue(Model)?.ToString());
+                IEnumerable<string> list = ps.Select(x => x.GetValue(this.Model)?.ToString());
                 if (ands.All(x => list.Any(l => l?.Contains(x) == true)))
                 {
                     return true;
@@ -152,7 +152,7 @@ namespace H.Providers.Mvvm
                     return true;
                 }
             }
-            Visible = false;
+            this.Visible = false;
             return false;
         }
     }

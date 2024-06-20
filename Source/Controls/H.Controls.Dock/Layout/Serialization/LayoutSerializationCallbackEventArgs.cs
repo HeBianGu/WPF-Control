@@ -24,9 +24,9 @@ namespace H.Controls.Dock.Layout.Serialization
         /// <param name="previousContent">The content if it was available in previous layout.</param>
         public LayoutSerializationCallbackEventArgs(LayoutContent model, object previousContent)
         {
-            Cancel = false;            // reloading an item is not by cancelled by default
-            Model = model;
-            Content = previousContent;
+            this.Cancel = false;            // reloading an item is not by cancelled by default
+            this.Model = model;
+            this.Content = previousContent;
         }
 
         #endregion constructors

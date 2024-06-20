@@ -1,5 +1,4 @@
 ﻿using H.Extensions.ValueConverter;
-using H.Providers.Mvvm;
 using System;
 using System.Globalization;
 using System.Linq;
@@ -94,14 +93,14 @@ namespace H.Controls.TagBox
             if (this._flag)
                 return;
 
-            if(e.AddedItems!=null)
+            if (e.AddedItems != null)
             {
                 foreach (var item in e.AddedItems.OfType<ITag>())
                 {
                     item.Order++;
                 }
             }
-          
+
             var tags = this.SelectedItems.OfType<ITag>();
             this._flag = true;
             this.Tags = string.Join(",", tags.Select(x => x.Name));

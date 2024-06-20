@@ -22,7 +22,7 @@ namespace H.Controls.Adorner
             obj.SetValue(PenProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty PenProperty =
             DependencyProperty.RegisterAttached("Pen", typeof(Pen), typeof(AdornerBase), new PropertyMetadata(new Pen(Brushes.DeepSkyBlue, 1), OnPenChanged));
 
@@ -46,7 +46,7 @@ namespace H.Controls.Adorner
             obj.SetValue(FillProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty FillProperty =
             DependencyProperty.RegisterAttached("Fill", typeof(Brush), typeof(AdornerBase), new PropertyMetadata(default(Brush), OnFillChanged));
 

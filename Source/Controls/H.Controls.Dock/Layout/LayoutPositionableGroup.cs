@@ -75,9 +75,9 @@ namespace H.Controls.Dock.Layout
             {
                 if (value == _dockWidth || !(value.Value > 0)) return;
                 if (value.IsAbsolute) _resizableAbsoluteDockWidth = value.Value;
-                RaisePropertyChanging(nameof(DockWidth));
+                RaisePropertyChanging(nameof(this.DockWidth));
                 _dockWidth = value;
-                RaisePropertyChanged(nameof(DockWidth));
+                RaisePropertyChanged(nameof(this.DockWidth));
                 OnDockWidthChanged();
             }
         }
@@ -92,9 +92,9 @@ namespace H.Controls.Dock.Layout
                 if (!_dockWidth.IsAbsolute) return;
                 if (value <= _dockWidth.Value && value > 0)
                 {
-                    RaisePropertyChanging(nameof(DockWidth));
+                    RaisePropertyChanging(nameof(this.DockWidth));
                     _resizableAbsoluteDockWidth = value;
-                    RaisePropertyChanged(nameof(DockWidth));
+                    RaisePropertyChanged(nameof(this.DockWidth));
                     OnDockWidthChanged();
                 }
                 else if (value > _dockWidth.Value && _resizableAbsoluteDockWidth < _dockWidth.Value)
@@ -114,9 +114,9 @@ namespace H.Controls.Dock.Layout
             {
                 if (_dockHeight == value || !(value.Value > 0)) return;
                 if (value.IsAbsolute) _resizableAbsoluteDockHeight = value.Value;
-                RaisePropertyChanging(nameof(DockHeight));
+                RaisePropertyChanging(nameof(this.DockHeight));
                 _dockHeight = value;
-                RaisePropertyChanged(nameof(DockHeight));
+                RaisePropertyChanged(nameof(this.DockHeight));
                 OnDockHeightChanged();
             }
         }
@@ -131,14 +131,14 @@ namespace H.Controls.Dock.Layout
                 if (!_dockHeight.IsAbsolute) return;
                 if (value < _dockHeight.Value && value > 0)
                 {
-                    RaisePropertyChanging(nameof(DockHeight));
+                    RaisePropertyChanging(nameof(this.DockHeight));
                     _resizableAbsoluteDockHeight = value;
-                    RaisePropertyChanged(nameof(DockHeight));
+                    RaisePropertyChanged(nameof(this.DockHeight));
                     OnDockHeightChanged();
                 }
                 else if (value > _dockHeight.Value && _resizableAbsoluteDockHeight < _dockHeight.Value)
                     _resizableAbsoluteDockHeight = _dockHeight.Value;
-                else if (value == 0) _resizableAbsoluteDockHeight = DockMinHeight;
+                else if (value == 0) _resizableAbsoluteDockHeight = this.DockMinHeight;
             }
         }
 
@@ -156,9 +156,9 @@ namespace H.Controls.Dock.Layout
             set
             {
                 if (value == _allowDuplicateContent) return;
-                RaisePropertyChanging(nameof(AllowDuplicateContent));
+                RaisePropertyChanging(nameof(this.AllowDuplicateContent));
                 _allowDuplicateContent = value;
-                RaisePropertyChanged(nameof(AllowDuplicateContent));
+                RaisePropertyChanged(nameof(this.AllowDuplicateContent));
             }
         }
 
@@ -168,21 +168,21 @@ namespace H.Controls.Dock.Layout
             set
             {
                 if (value == _canRepositionItems) return;
-                RaisePropertyChanging(nameof(CanRepositionItems));
+                RaisePropertyChanging(nameof(this.CanRepositionItems));
                 _canRepositionItems = value;
-                RaisePropertyChanged(nameof(CanRepositionItems));
+                RaisePropertyChanged(nameof(this.CanRepositionItems));
             }
         }
 
         public double CalculatedDockMinWidth()
         {
             double childrenDockMinWidth = 0.0;
-            System.Collections.Generic.List<ILayoutPositionableElement> visibleChildren = Children.OfType<ILayoutPositionableElement>().Where(child => child.IsVisible).ToList();
+            System.Collections.Generic.List<ILayoutPositionableElement> visibleChildren = this.Children.OfType<ILayoutPositionableElement>().Where(child => child.IsVisible).ToList();
             if (this is ILayoutOrientableGroup orientableGroup && visibleChildren.Any())
             {
                 childrenDockMinWidth = orientableGroup.Orientation == Orientation.Vertical ?
                     visibleChildren.Max(child => child.CalculatedDockMinWidth())
-                  : visibleChildren.Sum(child => child.CalculatedDockMinWidth() + ((Root?.Manager?.GridSplitterWidth ?? 0) * (visibleChildren.Count - 1)));
+                  : visibleChildren.Sum(child => child.CalculatedDockMinWidth() + ((this.Root?.Manager?.GridSplitterWidth ?? 0) * (visibleChildren.Count - 1)));
             }
             return Math.Max(this._dockMinWidth, childrenDockMinWidth);
         }
@@ -200,20 +200,20 @@ namespace H.Controls.Dock.Layout
             {
                 if (value == _dockMinWidth) return;
                 MathHelper.AssertIsPositiveOrZero(value);
-                RaisePropertyChanging(nameof(DockMinWidth));
+                RaisePropertyChanging(nameof(this.DockMinWidth));
                 _dockMinWidth = value;
-                RaisePropertyChanged(nameof(DockMinWidth));
+                RaisePropertyChanged(nameof(this.DockMinWidth));
             }
         }
 
         public double CalculatedDockMinHeight()
         {
             double childrenDockMinHeight = 0.0;
-            System.Collections.Generic.List<ILayoutPositionableElement> visibleChildren = Children.OfType<ILayoutPositionableElement>().Where(child => child.IsVisible).ToList();
+            System.Collections.Generic.List<ILayoutPositionableElement> visibleChildren = this.Children.OfType<ILayoutPositionableElement>().Where(child => child.IsVisible).ToList();
             if (this is ILayoutOrientableGroup orientableGroup && visibleChildren.Any())
             {
                 childrenDockMinHeight = orientableGroup.Orientation == Orientation.Vertical ?
-                    visibleChildren.Sum(child => child.CalculatedDockMinHeight() + ((Root?.Manager?.GridSplitterHeight ?? 0) * (visibleChildren.Count - 1)))
+                    visibleChildren.Sum(child => child.CalculatedDockMinHeight() + ((this.Root?.Manager?.GridSplitterHeight ?? 0) * (visibleChildren.Count - 1)))
                   : visibleChildren.Max(child => child.CalculatedDockMinHeight());
             }
 
@@ -233,9 +233,9 @@ namespace H.Controls.Dock.Layout
             {
                 if (value == _dockMinHeight) return;
                 MathHelper.AssertIsPositiveOrZero(value);
-                RaisePropertyChanging(nameof(DockMinHeight));
+                RaisePropertyChanging(nameof(this.DockMinHeight));
                 _dockMinHeight = value;
-                RaisePropertyChanged(nameof(DockMinHeight));
+                RaisePropertyChanged(nameof(this.DockMinHeight));
             }
         }
 
@@ -245,9 +245,9 @@ namespace H.Controls.Dock.Layout
             set
             {
                 if (value == _floatingWidth) return;
-                RaisePropertyChanging(nameof(FloatingWidth));
+                RaisePropertyChanging(nameof(this.FloatingWidth));
                 _floatingWidth = value;
-                RaisePropertyChanged(nameof(FloatingWidth));
+                RaisePropertyChanged(nameof(this.FloatingWidth));
             }
         }
 
@@ -257,9 +257,9 @@ namespace H.Controls.Dock.Layout
             set
             {
                 if (_floatingHeight == value) return;
-                RaisePropertyChanging(nameof(FloatingHeight));
+                RaisePropertyChanging(nameof(this.FloatingHeight));
                 _floatingHeight = value;
-                RaisePropertyChanged(nameof(FloatingHeight));
+                RaisePropertyChanged(nameof(this.FloatingHeight));
             }
         }
 
@@ -269,9 +269,9 @@ namespace H.Controls.Dock.Layout
             set
             {
                 if (value == _floatingLeft) return;
-                RaisePropertyChanging(nameof(FloatingLeft));
+                RaisePropertyChanging(nameof(this.FloatingLeft));
                 _floatingLeft = value;
-                RaisePropertyChanged(nameof(FloatingLeft));
+                RaisePropertyChanged(nameof(this.FloatingLeft));
             }
         }
 
@@ -281,9 +281,9 @@ namespace H.Controls.Dock.Layout
             set
             {
                 if (value == _floatingTop) return;
-                RaisePropertyChanging(nameof(FloatingTop));
+                RaisePropertyChanging(nameof(this.FloatingTop));
                 _floatingTop = value;
-                RaisePropertyChanged(nameof(FloatingTop));
+                RaisePropertyChanged(nameof(this.FloatingTop));
             }
         }
 
@@ -294,7 +294,7 @@ namespace H.Controls.Dock.Layout
             {
                 if (value == _isMaximized) return;
                 _isMaximized = value;
-                RaisePropertyChanged(nameof(IsMaximized));
+                RaisePropertyChanged(nameof(this.IsMaximized));
             }
         }
 
@@ -322,31 +322,31 @@ namespace H.Controls.Dock.Layout
 
         public override void WriteXml(System.Xml.XmlWriter writer)
         {
-            if (DockWidth.Value != 1.0 || !DockWidth.IsStar)
-                writer.WriteAttributeString(nameof(DockWidth), _gridLengthConverter.ConvertToInvariantString(DockWidth.IsAbsolute ? new GridLength(FixedDockWidth) : DockWidth));
-            if (DockHeight.Value != 1.0 || !DockHeight.IsStar)
-                writer.WriteAttributeString(nameof(DockHeight), _gridLengthConverter.ConvertToInvariantString(DockHeight.IsAbsolute ? new GridLength(FixedDockHeight) : DockHeight));
-            if (DockMinWidth != 25.0) writer.WriteAttributeString(nameof(DockMinWidth), DockMinWidth.ToString(CultureInfo.InvariantCulture));
-            if (DockMinHeight != 25.0) writer.WriteAttributeString(nameof(DockMinHeight), DockMinHeight.ToString(CultureInfo.InvariantCulture));
-            if (FloatingWidth != 0.0) writer.WriteAttributeString(nameof(FloatingWidth), FloatingWidth.ToString(CultureInfo.InvariantCulture));
-            if (FloatingHeight != 0.0) writer.WriteAttributeString(nameof(FloatingHeight), FloatingHeight.ToString(CultureInfo.InvariantCulture));
-            if (FloatingLeft != 0.0) writer.WriteAttributeString(nameof(FloatingLeft), FloatingLeft.ToString(CultureInfo.InvariantCulture));
-            if (FloatingTop != 0.0) writer.WriteAttributeString(nameof(FloatingTop), FloatingTop.ToString(CultureInfo.InvariantCulture));
-            if (IsMaximized) writer.WriteAttributeString(nameof(IsMaximized), IsMaximized.ToString());
+            if (this.DockWidth.Value != 1.0 || !this.DockWidth.IsStar)
+                writer.WriteAttributeString(nameof(this.DockWidth), _gridLengthConverter.ConvertToInvariantString(this.DockWidth.IsAbsolute ? new GridLength(this.FixedDockWidth) : this.DockWidth));
+            if (this.DockHeight.Value != 1.0 || !this.DockHeight.IsStar)
+                writer.WriteAttributeString(nameof(this.DockHeight), _gridLengthConverter.ConvertToInvariantString(this.DockHeight.IsAbsolute ? new GridLength(this.FixedDockHeight) : this.DockHeight));
+            if (this.DockMinWidth != 25.0) writer.WriteAttributeString(nameof(this.DockMinWidth), this.DockMinWidth.ToString(CultureInfo.InvariantCulture));
+            if (this.DockMinHeight != 25.0) writer.WriteAttributeString(nameof(this.DockMinHeight), this.DockMinHeight.ToString(CultureInfo.InvariantCulture));
+            if (this.FloatingWidth != 0.0) writer.WriteAttributeString(nameof(this.FloatingWidth), this.FloatingWidth.ToString(CultureInfo.InvariantCulture));
+            if (this.FloatingHeight != 0.0) writer.WriteAttributeString(nameof(this.FloatingHeight), this.FloatingHeight.ToString(CultureInfo.InvariantCulture));
+            if (this.FloatingLeft != 0.0) writer.WriteAttributeString(nameof(this.FloatingLeft), this.FloatingLeft.ToString(CultureInfo.InvariantCulture));
+            if (this.FloatingTop != 0.0) writer.WriteAttributeString(nameof(this.FloatingTop), this.FloatingTop.ToString(CultureInfo.InvariantCulture));
+            if (this.IsMaximized) writer.WriteAttributeString(nameof(this.IsMaximized), this.IsMaximized.ToString());
             base.WriteXml(writer);
         }
 
         public override void ReadXml(System.Xml.XmlReader reader)
         {
-            if (reader.MoveToAttribute(nameof(DockWidth))) _dockWidth = (GridLength)_gridLengthConverter.ConvertFromInvariantString(reader.Value);
-            if (reader.MoveToAttribute(nameof(DockHeight))) _dockHeight = (GridLength)_gridLengthConverter.ConvertFromInvariantString(reader.Value);
-            if (reader.MoveToAttribute(nameof(DockMinWidth))) _dockMinWidth = double.Parse(reader.Value, CultureInfo.InvariantCulture);
-            if (reader.MoveToAttribute(nameof(DockMinHeight))) _dockMinHeight = double.Parse(reader.Value, CultureInfo.InvariantCulture);
-            if (reader.MoveToAttribute(nameof(FloatingWidth))) _floatingWidth = double.Parse(reader.Value, CultureInfo.InvariantCulture);
-            if (reader.MoveToAttribute(nameof(FloatingHeight))) _floatingHeight = double.Parse(reader.Value, CultureInfo.InvariantCulture);
-            if (reader.MoveToAttribute(nameof(FloatingLeft))) _floatingLeft = double.Parse(reader.Value, CultureInfo.InvariantCulture);
-            if (reader.MoveToAttribute(nameof(FloatingTop))) _floatingTop = double.Parse(reader.Value, CultureInfo.InvariantCulture);
-            if (reader.MoveToAttribute(nameof(IsMaximized))) _isMaximized = bool.Parse(reader.Value);
+            if (reader.MoveToAttribute(nameof(this.DockWidth))) _dockWidth = (GridLength)_gridLengthConverter.ConvertFromInvariantString(reader.Value);
+            if (reader.MoveToAttribute(nameof(this.DockHeight))) _dockHeight = (GridLength)_gridLengthConverter.ConvertFromInvariantString(reader.Value);
+            if (reader.MoveToAttribute(nameof(this.DockMinWidth))) _dockMinWidth = double.Parse(reader.Value, CultureInfo.InvariantCulture);
+            if (reader.MoveToAttribute(nameof(this.DockMinHeight))) _dockMinHeight = double.Parse(reader.Value, CultureInfo.InvariantCulture);
+            if (reader.MoveToAttribute(nameof(this.FloatingWidth))) _floatingWidth = double.Parse(reader.Value, CultureInfo.InvariantCulture);
+            if (reader.MoveToAttribute(nameof(this.FloatingHeight))) _floatingHeight = double.Parse(reader.Value, CultureInfo.InvariantCulture);
+            if (reader.MoveToAttribute(nameof(this.FloatingLeft))) _floatingLeft = double.Parse(reader.Value, CultureInfo.InvariantCulture);
+            if (reader.MoveToAttribute(nameof(this.FloatingTop))) _floatingTop = double.Parse(reader.Value, CultureInfo.InvariantCulture);
+            if (reader.MoveToAttribute(nameof(this.IsMaximized))) _isMaximized = bool.Parse(reader.Value);
             base.ReadXml(reader);
         }
 

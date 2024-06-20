@@ -62,7 +62,7 @@ namespace H.Controls.TagBox
         {
             if (this.UseCheckAll)
                 yield return "全选";
-            foreach (object value in IocTagService.Instance.Collection.Where(x => x.GroupName == this.GroupName).OrderByDescending(x=>x.Order))
+            foreach (object value in IocTagService.Instance.Collection.Where(x => x.GroupName == this.GroupName).OrderByDescending(x => x.Order))
             {
                 yield return value;
             }

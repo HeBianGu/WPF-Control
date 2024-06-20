@@ -15,7 +15,7 @@ namespace H.Extensions.Behvaiors
 
         public MousePressTrigger()
         {
-            _timer.Interval = Interval;
+            _timer.Interval = this.Interval;
             _timer.Elapsed += (l, k) =>
             {
                 Application.Current.Dispatcher.Invoke(() =>
@@ -133,13 +133,13 @@ namespace H.Extensions.Behvaiors
 
         private void OnMouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.ChangedButton != MouseButton)
+            if (e.ChangedButton != this.MouseButton)
                 return;
             if (e.ButtonState == MouseButtonState.Released)
                 return;
             _timer.Start();
 
-            if (UseInvokeOnDown)
+            if (this.UseInvokeOnDown)
                 this.InvokeActions(e);
         }
 

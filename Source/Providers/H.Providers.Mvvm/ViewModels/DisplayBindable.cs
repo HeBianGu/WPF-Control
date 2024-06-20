@@ -7,7 +7,7 @@ namespace H.Providers.Mvvm
     {
         public DisplayBindable(T t)
         {
-            Model = t;
+            this.Model = t;
 
         }
 

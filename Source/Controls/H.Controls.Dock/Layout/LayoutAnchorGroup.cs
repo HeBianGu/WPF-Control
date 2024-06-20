@@ -23,7 +23,7 @@ namespace H.Controls.Dock.Layout
         #region Overrides
 
         /// <inheritdoc />
-        protected override bool GetVisibility() => Children.Count > 0;
+        protected override bool GetVisibility() => this.Children.Count > 0;
 
         /// <inheritdoc />
         public override void WriteXml(System.Xml.XmlWriter writer)

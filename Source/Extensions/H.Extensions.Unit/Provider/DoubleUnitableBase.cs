@@ -16,7 +16,7 @@ namespace H.Extensions.Unit
 
         protected override double ToRound(double value, double unit)
         {
-            return Math.Round(value / unit, Digits);
+            return Math.Round(value / unit, this.Digits);
         }
     }
 }

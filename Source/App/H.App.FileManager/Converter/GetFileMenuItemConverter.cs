@@ -48,7 +48,7 @@ namespace H.App.FileManager
                 })
                 { Name = "喜欢" })
                 { IsCheckable = true, IsChecked = file.Favorite };
-                if (FileProjectItem.Setting.UseFavorite)
+                if (this.FileProjectItem.Setting.UseFavorite)
                     result.Add(favorite);
             }
 
@@ -61,12 +61,12 @@ namespace H.App.FileManager
                 })
                 { Name = "稍后观看" })
                 { IsCheckable = true, IsChecked = file.SeeLater };
-                if (FileProjectItem.Setting.UseSeeLater)
+                if (this.FileProjectItem.Setting.UseSeeLater)
                     result.Add(later);
             }
 
             TreeNodeBase<ICommand> scoreNode = new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x => file.Score = 9) { Name = $"评分" });
-            if (FileProjectItem.Setting.UseScore)
+            if (this.FileProjectItem.Setting.UseScore)
                 result.Add(scoreNode);
 
             foreach (int item in Enumerable.Range(0, 11).Reverse())
@@ -125,7 +125,7 @@ namespace H.App.FileManager
             {
                 {
                     TreeNodeBase<ICommand> tagNode = new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x => { }) { Name = "对象" });
-                    if (FileProjectItem.Setting.UseObjectTag)
+                    if (this.FileProjectItem.Setting.UseObjectTag)
                         result.Add(tagNode);
                     {
                         IEnumerable<ITag> tags = tagService.Collection.Where(x => x.GroupName == "Object");
@@ -154,7 +154,7 @@ namespace H.App.FileManager
 
                 {
                     TreeNodeBase<ICommand> tagNode = new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x => { }) { Name = "国家" });
-                    if (FileProjectItem.Setting.UseAreaTag)
+                    if (this.FileProjectItem.Setting.UseAreaTag)
                         result.Add(tagNode);
                     {
                         IEnumerable<ITag> tags = tagService.Collection.Where(x => x.GroupName == "Area");
@@ -183,7 +183,7 @@ namespace H.App.FileManager
 
                 {
                     TreeNodeBase<ICommand> tagNode = new TreeNodeBase<ICommand>(new DisplayCommand<fm_dd_file>(x => { }) { Name = "清晰度" });
-                    if (FileProjectItem.Setting.UseArticulationTag)
+                    if (this.FileProjectItem.Setting.UseArticulationTag)
                         result.Add(tagNode);
                     {
                         IEnumerable<ITag> tags = tagService.Collection.Where(x => x.GroupName == "Articulation");

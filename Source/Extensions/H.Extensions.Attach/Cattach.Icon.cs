@@ -17,7 +17,7 @@ namespace H.Extensions.Attach
             obj.SetValue(OpacityProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty OpacityProperty =
             DependencyProperty.RegisterAttached("Opacity", typeof(double), typeof(Cattach), new PropertyMetadata(1.0, OnOpacityChanged));
 
@@ -93,7 +93,7 @@ namespace H.Extensions.Attach
             obj.SetValue(IconForegroundProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty IconForegroundProperty =
             DependencyProperty.RegisterAttached("IconForeground", typeof(Brush), typeof(Cattach), new PropertyMetadata(default(Brush), OnIconForegroundChanged));
 

@@ -78,16 +78,16 @@ namespace H.Presenters.Design
         private int GetRow(UIElement e)
         {
             int row = (int)e.GetValue(Grid.RowProperty);
-            if (row >= RowCount)
-                row = RowCount - 1;
+            if (row >= this.RowCount)
+                row = this.RowCount - 1;
             return row;
         }
 
         private int GetColumn(UIElement e)
         {
             int column = (int)e.GetValue(Grid.ColumnProperty);
-            if (column >= ColumnCount)
-                column = ColumnCount - 1;
+            if (column >= this.ColumnCount)
+                column = this.ColumnCount - 1;
             return column;
         }
 
@@ -102,7 +102,7 @@ namespace H.Presenters.Design
                 // determine maximum desired size
                 h = 0;
                 w = 0;
-                foreach (UIElement e in InternalChildren)
+                foreach (UIElement e in this.InternalChildren)
                 {
                     e.Measure(availableSize);
                     Size s = e.DesiredSize;
@@ -113,10 +113,10 @@ namespace H.Presenters.Design
                 }
 
                 // multiply maximum size to RowCount and ColumnCount to get total size
-                if (Orientation == Orientation.Horizontal)
-                    return new Size(w * (ColumnCount * 3 + 1) / 4, h * (RowCount * 2 + 1) / 2);
+                if (this.Orientation == Orientation.Horizontal)
+                    return new Size(w * (this.ColumnCount * 3 + 1) / 4, h * (this.RowCount * 2 + 1) / 2);
 
-                return new Size(w * (ColumnCount * 2 + 1) / 2, h * (RowCount * 3 + 1) / 4);
+                return new Size(w * (this.ColumnCount * 2 + 1) / 2, h * (this.RowCount * 3 + 1) / 4);
             }
 
             return availableSize;
@@ -125,7 +125,7 @@ namespace H.Presenters.Design
         #region HasShift
         private void HasShift(out bool first, out bool last)
         {
-            if (Orientation == Orientation.Horizontal)
+            if (this.Orientation == Orientation.Horizontal)
                 HasRowShift(out first, out last);
             else
                 HasColumnShift(out first, out last);
@@ -135,7 +135,7 @@ namespace H.Presenters.Design
         {
             firstRow = lastRow = true;
 
-            UIElementCollection elements = InternalChildren;
+            UIElementCollection elements = this.InternalChildren;
             for (int i = 0; i < elements.Count && (firstRow || lastRow); i++)
             {
                 UIElement e = elements[i];
@@ -150,7 +150,7 @@ namespace H.Presenters.Design
                 if (row == 0 && mod == 0)
                     firstRow = false;
 
-                if (row == RowCount - 1 && mod == 1)
+                if (row == this.RowCount - 1 && mod == 1)
                     lastRow = false;
             }
         }
@@ -159,7 +159,7 @@ namespace H.Presenters.Design
         {
             firstColumn = lastColumn = true;
 
-            UIElementCollection elements = InternalChildren;
+            UIElementCollection elements = this.InternalChildren;
             for (int i = 0; i < elements.Count && (firstColumn || lastColumn); i++)
             {
                 UIElement e = elements[i];
@@ -174,7 +174,7 @@ namespace H.Presenters.Design
                 if (column == 0 && mod == 0)
                     firstColumn = false;
 
-                if (column == ColumnCount - 1 && mod == 1)
+                if (column == this.ColumnCount - 1 && mod == 1)
                     lastColumn = false;
             }
         }
@@ -186,7 +186,7 @@ namespace H.Presenters.Design
             double minH = 0;
             double minW = 0;
 
-            foreach (UIElement e in InternalChildren)
+            foreach (UIElement e in this.InternalChildren)
             {
                 FrameworkElement f = e as FrameworkElement;
                 if (f != null)
@@ -216,7 +216,7 @@ namespace H.Presenters.Design
             bool first, last;
             HasShift(out first, out last);
 
-            if (Orientation == Orientation.Horizontal)
+            if (this.Orientation == Orientation.Horizontal)
                 return GetPossibleSizeHorizontal(gridSize, first, last);
 
             return GetPossibleSizeVertical(gridSize, first, last);
@@ -224,10 +224,10 @@ namespace H.Presenters.Design
 
         private Size GetPossibleSizeVertical(Size gridSize, bool first, bool last)
         {
-            int columns = (first ? 0 : 1) + 2 * ColumnCount - (last ? 1 : 0);
+            int columns = (first ? 0 : 1) + 2 * this.ColumnCount - (last ? 1 : 0);
             double w = 2 * (gridSize.Width / columns);
 
-            int rows = 1 + 3 * RowCount;
+            int rows = 1 + 3 * this.RowCount;
             double h = 4 * (gridSize.Height / rows);
 
             return new Size(w, h);
@@ -235,10 +235,10 @@ namespace H.Presenters.Design
 
         private Size GetPossibleSizeHorizontal(Size gridSize, bool first, bool last)
         {
-            int columns = 1 + 3 * ColumnCount;
+            int columns = 1 + 3 * this.ColumnCount;
             double w = 4 * (gridSize.Width / columns);
 
-            int rows = (first ? 0 : 1) + 2 * RowCount - (last ? 1 : 0);
+            int rows = (first ? 0 : 1) + 2 * this.RowCount - (last ? 1 : 0);
             double h = 2 * (gridSize.Height / rows);
 
             return new Size(w, h);
@@ -256,7 +256,7 @@ namespace H.Presenters.Design
 
             // compute arrange line sizes
             double columnWidth, rowHeight;
-            if (Orientation == Orientation.Horizontal)
+            if (this.Orientation == Orientation.Horizontal)
             {
                 rowHeight = 0.50 * hexSize.Height;
                 columnWidth = 0.25 * hexSize.Width;
@@ -270,7 +270,7 @@ namespace H.Presenters.Design
 
 
             // arrange elements
-            UIElementCollection elements = InternalChildren;
+            UIElementCollection elements = this.InternalChildren;
             for (int i = 0; i < elements.Count; i++)
             {
                 if (elements[i].Visibility == Visibility.Collapsed)
@@ -289,7 +289,7 @@ namespace H.Presenters.Design
             double x;
             double y;
 
-            if (Orientation == Orientation.Horizontal)
+            if (this.Orientation == Orientation.Horizontal)
             {
                 x = 3 * columnWidth * column;
                 y = rowHeight * (2 * row + (column % 2 == 1 ? 1 : 0) + (shift ? -1 : 0));

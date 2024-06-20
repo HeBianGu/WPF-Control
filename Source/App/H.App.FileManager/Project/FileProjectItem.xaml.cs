@@ -6,7 +6,6 @@ using H.Controls.FavoriteBox;
 using H.Controls.TagBox;
 using H.DataBases.Share;
 using H.Extensions.ViewModel;
-using H.Modules.Login;
 using H.Modules.Project;
 using H.Providers.Ioc;
 using Microsoft.EntityFrameworkCore;
@@ -87,8 +86,8 @@ namespace H.App.FileManager
             DataContext find = DbIoc.Services.GetService<DataContext>();
             find.Database.Migrate();
             //  Do ：刷新数据
-            File = DbIoc.GetService<IRepositoryBindable<fm_dd_file>>();
-            File.RefreshData();
+            this.File = DbIoc.GetService<IRepositoryBindable<fm_dd_file>>();
+            this.File.RefreshData();
             IocTagService.Instance.Load(out message);
             IocFavoriteService.Instance.Load(out message);
             SettingDataManager.Instance.Add(this.Setting);
@@ -97,7 +96,7 @@ namespace H.App.FileManager
 
         public override bool Save(out string message)
         {
-            File?.Save();
+            this.File?.Save();
             DataContext context = DbIoc.Services.GetService<DataContext>();
             context?.SaveChanges();
             //context?.Dispose();

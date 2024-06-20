@@ -14,9 +14,9 @@ namespace H.Extensions.ValueConverter
             if (parameter is IList list)
             {
                 if (list.Contains(value))
-                    return Visibility;
+                    return this.Visibility;
             }
-            return Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+            return this.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
         }
     }
 
@@ -28,9 +28,9 @@ namespace H.Extensions.ValueConverter
             if (value != null && parameter != null)
             {
                 if (value.Equals(parameter))
-                    return Visibility;
+                    return this.Visibility;
             }
-            return Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+            return this.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
 
         }
     }

@@ -38,7 +38,7 @@ namespace H.Extensions.MarkupExtension
 
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
-            return new Point(X, Y);
+            return new Point(this.X, this.Y);
         }
     }
 
@@ -67,7 +67,7 @@ namespace H.Extensions.MarkupExtension
 
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
-            return new Rect(X, Y, Width, Height);
+            return new Rect(this.X, this.Y, this.Width, this.Height);
         }
     }
 

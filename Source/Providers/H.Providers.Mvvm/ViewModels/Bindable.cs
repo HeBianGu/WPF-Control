@@ -35,8 +35,8 @@ namespace H.Providers.Mvvm
 
         public Bindable()
         {
-            RelayCommand = new RelayCommand(RelayMethod);
-            CallMethodCommand = new RelayCommand(CallMethod);
+            this.RelayCommand = new RelayCommand(RelayMethod);
+            this.CallMethodCommand = new RelayCommand(CallMethod);
             RelayMethod("init");
         }
 

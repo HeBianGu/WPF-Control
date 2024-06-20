@@ -49,33 +49,33 @@ namespace H.Controls.Dock.Layout
                 if (_rootPanel != null) _rootPanel.Parent = this;
                 if (_rootPanel != null) _rootPanel.ChildrenTreeChanged += _rootPanel_ChildrenTreeChanged;
 
-                RaisePropertyChanged(nameof(RootPanel));
-                RaisePropertyChanged(nameof(IsSinglePane));
-                RaisePropertyChanged(nameof(SinglePane));
-                RaisePropertyChanged(nameof(Children));
-                RaisePropertyChanged(nameof(ChildrenCount));
+                RaisePropertyChanged(nameof(this.RootPanel));
+                RaisePropertyChanged(nameof(this.IsSinglePane));
+                RaisePropertyChanged(nameof(this.SinglePane));
+                RaisePropertyChanged(nameof(this.Children));
+                RaisePropertyChanged(nameof(this.ChildrenCount));
                 ((ILayoutElementWithVisibility)this).ComputeVisibility();
             }
         }
 
         private void _rootPanel_ChildrenTreeChanged(object sender, ChildrenTreeChangedEventArgs e)
         {
-            RaisePropertyChanged(nameof(IsSinglePane));
-            RaisePropertyChanged(nameof(SinglePane));
+            RaisePropertyChanged(nameof(this.IsSinglePane));
+            RaisePropertyChanged(nameof(this.SinglePane));
         }
 
         #endregion RootPanel
 
         #region IsSinglePane
 
-        public bool IsSinglePane => RootPanel?.Descendents().OfType<LayoutDocumentPane>().Count(p => p.IsVisible) == 1;
+        public bool IsSinglePane => this.RootPanel?.Descendents().OfType<LayoutDocumentPane>().Count(p => p.IsVisible) == 1;
 
         public LayoutDocumentPane SinglePane
         {
             get
             {
-                if (!IsSinglePane) return null;
-                LayoutDocumentPane singlePane = RootPanel.Descendents().OfType<LayoutDocumentPane>().Single(p => p.IsVisible);
+                if (!this.IsSinglePane) return null;
+                LayoutDocumentPane singlePane = this.RootPanel.Descendents().OfType<LayoutDocumentPane>().Single(p => p.IsVisible);
                 //singlePane.UpdateIsDirectlyHostedInFloatingWindow();
                 return singlePane;
             }
@@ -90,9 +90,9 @@ namespace H.Controls.Dock.Layout
             private set
             {
                 if (_isVisible == value) return;
-                RaisePropertyChanging(nameof(IsVisible));
+                RaisePropertyChanging(nameof(this.IsVisible));
                 _isVisible = value;
-                RaisePropertyChanged(nameof(IsVisible));
+                RaisePropertyChanged(nameof(this.IsVisible));
                 IsVisibleChanged?.Invoke(this, EventArgs.Empty);
             }
         }
@@ -104,30 +104,30 @@ namespace H.Controls.Dock.Layout
         /// <inheritdoc />
         public override IEnumerable<ILayoutElement> Children
         {
-            get { if (ChildrenCount == 1) yield return RootPanel; }
+            get { if (this.ChildrenCount == 1) yield return this.RootPanel; }
         }
 
         /// <inheritdoc />
         public override void RemoveChild(ILayoutElement element)
         {
-            Debug.Assert(element == RootPanel && element != null);
-            RootPanel = null;
+            Debug.Assert(element == this.RootPanel && element != null);
+            this.RootPanel = null;
         }
 
         /// <inheritdoc />
         public override void ReplaceChild(ILayoutElement oldElement, ILayoutElement newElement)
         {
-            Debug.Assert(oldElement == RootPanel && oldElement != null);
-            RootPanel = newElement as LayoutDocumentPaneGroup;
+            Debug.Assert(oldElement == this.RootPanel && oldElement != null);
+            this.RootPanel = newElement as LayoutDocumentPaneGroup;
         }
 
         /// <inheritdoc />
-        public override int ChildrenCount => RootPanel == null ? 0 : 1;
+        public override int ChildrenCount => this.RootPanel == null ? 0 : 1;
 
-        void ILayoutElementWithVisibility.ComputeVisibility() => IsVisible = RootPanel != null && RootPanel.IsVisible;
+        void ILayoutElementWithVisibility.ComputeVisibility() => this.IsVisible = this.RootPanel != null && this.RootPanel.IsVisible;
 
         /// <inheritdoc />
-        public override bool IsValid => RootPanel != null;
+        public override bool IsValid => this.RootPanel != null;
 
         /// <inheritdoc />
         public override void ReadXml(XmlReader reader)
@@ -160,7 +160,7 @@ namespace H.Controls.Dock.Layout
                     if (type == null) throw new ArgumentException("H.Controls.Dock.LayoutDocumentFloatingWindow doesn't know how to deserialize " + reader.LocalName);
                     serializer = XmlSerializersCache.GetSerializer(type);
                 }
-                RootPanel = (LayoutDocumentPaneGroup)serializer.Deserialize(reader);
+                this.RootPanel = (LayoutDocumentPaneGroup)serializer.Deserialize(reader);
             }
 
             reader.ReadEndElement();
@@ -172,7 +172,7 @@ namespace H.Controls.Dock.Layout
             System.Diagnostics.Trace.Write(new string(' ', tab * 4));
             System.Diagnostics.Trace.WriteLine("FloatingDocumentWindow()");
 
-            RootPanel.ConsoleDump(tab + 1);
+            this.RootPanel.ConsoleDump(tab + 1);
         }
 #endif
 

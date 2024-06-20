@@ -29,7 +29,7 @@ namespace H.Extensions.Attach
             obj.SetValue(FocusBorderThicknessProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty FocusBorderThicknessProperty =
             DependencyProperty.RegisterAttached("FocusBorderThickness", typeof(Thickness), typeof(Cattach), new FrameworkPropertyMetadata(new Thickness(1), OnFocusBorderThicknessChanged));
 

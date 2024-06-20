@@ -24,7 +24,7 @@ namespace H.Controls.Dock
         /// <param name="document"></param>
         public DocumentClosingEventArgs(LayoutDocument document)
         {
-            Document = document;
+            this.Document = document;
         }
 
         /// <summary>

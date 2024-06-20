@@ -33,7 +33,7 @@ namespace H.Controls.Dock.Layout
         /// <summary>Class constructor</summary>
         public ChildrenTreeChangedEventArgs(ChildrenTreeChange change)
         {
-            Change = change;
+            this.Change = change;
         }
 
         /// <summary>Gets the type of <see cref="ChildrenTreeChange"/> for this event.</summary>

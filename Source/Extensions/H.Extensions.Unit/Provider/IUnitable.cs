@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace H.Extensions.Unit
+﻿namespace H.Extensions.Unit
 {
 
     public interface IUnitable

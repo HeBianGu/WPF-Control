@@ -8,7 +8,7 @@ namespace H.Modules.Messages.Snack
     {
         public StringMessagePresenter()
         {
-            Geometry = GeometryFactory.Create(Geometrys.Wait);
+            this.Geometry = GeometryFactory.Create(Geometrys.Wait);
         }
     }
 }

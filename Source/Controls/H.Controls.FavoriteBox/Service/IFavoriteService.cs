@@ -1,5 +1,4 @@
-﻿using H.Extensions.Tree;
-using H.Providers.Ioc;
+﻿using H.Providers.Ioc;
 
 namespace H.Controls.FavoriteBox
 {

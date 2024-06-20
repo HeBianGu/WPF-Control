@@ -19,7 +19,7 @@ namespace H.Controls.Adorner
         protected override void OnRender(DrawingContext dc)
         {
             Rect rect = new Rect(this.AdornedElement.RenderSize);
-            dc.DrawRectangle(this.Fill, this.Pen, new Rect(rect.Left - ScaleLen, rect.Top - ScaleLen, rect.Width + (2 * ScaleLen), rect.Height + (2 * ScaleLen)));
+            dc.DrawRectangle(this.Fill, this.Pen, new Rect(rect.Left - this.ScaleLen, rect.Top - this.ScaleLen, rect.Width + (2 * this.ScaleLen), rect.Height + (2 * this.ScaleLen)));
         }
     }
 }

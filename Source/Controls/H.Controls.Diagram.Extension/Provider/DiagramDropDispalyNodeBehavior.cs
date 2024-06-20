@@ -14,7 +14,7 @@ namespace H.Controls.Diagram.Extension
             set { SetValue(NodeTypeProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty NodeTypeProperty =
             DependencyProperty.Register("NodeType", typeof(Type), typeof(DiagramDropTextNodeBehavior), new FrameworkPropertyMetadata(typeof(Node), (d, e) =>
              {

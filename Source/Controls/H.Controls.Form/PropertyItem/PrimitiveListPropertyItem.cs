@@ -25,7 +25,7 @@ namespace H.Controls.Form
         {
             object to = this.ChangeType(value);
 
-            this.PropertyInfo.SetValue(Obj, to);
+            this.PropertyInfo.SetValue(this.Obj, to);
         }
 
         private object ChangeType(ObservableCollection<StringHost> value)

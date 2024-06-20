@@ -67,19 +67,19 @@ namespace H.Controls.Dock.Controls
             // if there are multiple documents, select the next document.
             // if there is only one document, select that document.
             // if there are no documents, select the first anchorable.
-            if (Documents.Length > 1)
+            if (this.Documents.Length > 1)
             {
-                InternalSetSelectedDocument(Documents[1]);
+                InternalSetSelectedDocument(this.Documents[1]);
                 _isSelectingDocument = true;
             }
-            else if (Documents.Length == 1)
+            else if (this.Documents.Length == 1)
             {
-                InternalSetSelectedDocument(Documents[0]);
+                InternalSetSelectedDocument(this.Documents[0]);
                 _isSelectingDocument = true;
             }
             else
             {
-                LayoutAnchorableItem anchorable = Anchorables.FirstOrDefault();
+                LayoutAnchorableItem anchorable = this.Anchorables.FirstOrDefault();
                 if (anchorable != null)
                 {
                     InternalSetSelectedAnchorable(anchorable);
@@ -87,7 +87,7 @@ namespace H.Controls.Dock.Controls
                 }
             }
 
-            DataContext = this;
+            this.DataContext = this;
             Loaded += OnLoaded;
             Unloaded += OnUnloaded;
             UpdateThemeResources();
@@ -145,18 +145,18 @@ namespace H.Controls.Dock.Controls
         /// <summary>Provides derived classes an opportunity to handle changes to the <see cref="SelectedDocument"/> property.</summary>
         protected virtual void OnSelectedDocumentChanged(DependencyPropertyChangedEventArgs e)
         {
-            if (_internalSetSelectedDocument || SelectedDocument == null)
+            if (_internalSetSelectedDocument || this.SelectedDocument == null)
             {
                 return;
             }
 
-            if (!SelectedDocument.ActivateCommand.CanExecute(null))
+            if (!this.SelectedDocument.ActivateCommand.CanExecute(null))
             {
                 return;
             }
 
             Close();
-            SelectedDocument.ActivateCommand.Execute(null);
+            this.SelectedDocument.ActivateCommand.Execute(null);
         }
 
         #endregion SelectedDocument
@@ -184,10 +184,10 @@ namespace H.Controls.Dock.Controls
             if (_internalSetSelectedAnchorable) return;
             // TODO: What goes on here??
             LayoutAnchorableItem selectedAnchorable = e.NewValue as LayoutAnchorableItem;
-            if (SelectedAnchorable != null && SelectedAnchorable.ActivateCommand.CanExecute(null))
+            if (this.SelectedAnchorable != null && this.SelectedAnchorable.ActivateCommand.CanExecute(null))
             {
                 Close();
-                SelectedAnchorable.ActivateCommand.Execute(null);
+                this.SelectedAnchorable.ActivateCommand.Execute(null);
             }
         }
 
@@ -218,7 +218,7 @@ namespace H.Controls.Dock.Controls
         private void ItemContainerGenerator_StatusChanged(object sender, EventArgs e)
         {
             bool isListOfDocuments = sender == _documentListBox.ItemContainerGenerator;
-            IEnumerable itemsCollection = isListOfDocuments ? Documents : Anchorables.ToArray();
+            IEnumerable itemsCollection = isListOfDocuments ? this.Documents : this.Anchorables.ToArray();
             ItemContainerGenerator generator = (ItemContainerGenerator)sender;
             switch (generator.Status)
             {
@@ -278,8 +278,8 @@ namespace H.Controls.Dock.Controls
                 case Key.Right:
                     if (_isSelectingDocument)
                     {
-                        LayoutAnchorableItem anchorable = Anchorables.ElementAtOrDefault(Documents.IndexOf(SelectedDocument))
-                            ?? Anchorables.LastOrDefault();
+                        LayoutAnchorableItem anchorable = this.Anchorables.ElementAtOrDefault(this.Documents.IndexOf(this.SelectedDocument))
+                            ?? this.Anchorables.LastOrDefault();
                         if (anchorable != null)
                         {
                             _isSelectingDocument = false;
@@ -290,9 +290,9 @@ namespace H.Controls.Dock.Controls
                     else
                     {
                         int index = _anchorableListBox?.SelectedIndex
-                            ?? Anchorables.ToArray().IndexOf(SelectedAnchorable);
-                        LayoutDocumentItem document = Documents.ElementAtOrDefault(index)
-                            ?? Documents.LastOrDefault();
+                            ?? this.Anchorables.ToArray().IndexOf(this.SelectedAnchorable);
+                        LayoutDocumentItem document = this.Documents.ElementAtOrDefault(index)
+                            ?? this.Documents.LastOrDefault();
                         if (document != null)
                         {
                             _isSelectingDocument = true;
@@ -321,7 +321,7 @@ namespace H.Controls.Dock.Controls
                 // Selecting LayoutDocuments
                 if (_isSelectingDocument)
                 {
-                    if (SelectedDocument != null)
+                    if (this.SelectedDocument != null)
                     {
                         // Jump to previous/next LayoutDocument
                         if (next)
@@ -334,15 +334,15 @@ namespace H.Controls.Dock.Controls
                         }
                     }
                     // There is no SelectedDocument, select the first one.
-                    else if (Documents.Length > 0)
+                    else if (this.Documents.Length > 0)
                     {
-                        InternalSetSelectedDocument(Documents[0]);
+                        InternalSetSelectedDocument(this.Documents[0]);
                     }
                 }
                 // Selecting LayoutAnchorables
                 else
                 {
-                    if (SelectedAnchorable != null)
+                    if (this.SelectedAnchorable != null)
                     {
                         // Jump to previous/next LayoutAnchorable
                         if (next)
@@ -357,7 +357,7 @@ namespace H.Controls.Dock.Controls
                     // There is no SelectedAnchorable, select the first one.
                     else
                     {
-                        LayoutAnchorableItem anchorable = Anchorables.FirstOrDefault();
+                        LayoutAnchorableItem anchorable = this.Anchorables.FirstOrDefault();
                         if (anchorable != null)
                         {
                             InternalSetSelectedAnchorable(anchorable);
@@ -373,10 +373,10 @@ namespace H.Controls.Dock.Controls
             if (!(e.Key == Key.Tab || e.Key == Key.Left || e.Key == Key.Right || e.Key == Key.Up || e.Key == Key.Down))
             {
                 Close();
-                if (SelectedDocument != null && SelectedDocument.ActivateCommand.CanExecute(null))
-                    SelectedDocument.ActivateCommand.Execute(null);
-                if (SelectedDocument == null && SelectedAnchorable != null && SelectedAnchorable.ActivateCommand.CanExecute(null))
-                    SelectedAnchorable.ActivateCommand.Execute(null);
+                if (this.SelectedDocument != null && this.SelectedDocument.ActivateCommand.CanExecute(null))
+                    this.SelectedDocument.ActivateCommand.Execute(null);
+                if (this.SelectedDocument == null && this.SelectedAnchorable != null && this.SelectedAnchorable.ActivateCommand.CanExecute(null))
+                    this.SelectedAnchorable.ActivateCommand.Execute(null);
                 e.Handled = true;
             }
             base.OnKeyUp(e);
@@ -410,14 +410,14 @@ namespace H.Controls.Dock.Controls
                 {
                     if (currentThemeResourceDictionary != null)
                     {
-                        Resources.MergedDictionaries.Remove(currentThemeResourceDictionary);
+                        this.Resources.MergedDictionaries.Remove(currentThemeResourceDictionary);
                         currentThemeResourceDictionary = null;
                     }
                 }
                 else
                 {
-                    ResourceDictionary resourceDictionaryToRemove = Resources.MergedDictionaries.FirstOrDefault(r => r.Source == oldTheme.GetResourceUri());
-                    if (resourceDictionaryToRemove != null) Resources.MergedDictionaries.Remove(resourceDictionaryToRemove);
+                    ResourceDictionary resourceDictionaryToRemove = this.Resources.MergedDictionaries.FirstOrDefault(r => r.Source == oldTheme.GetResourceUri());
+                    if (resourceDictionaryToRemove != null) this.Resources.MergedDictionaries.Remove(resourceDictionaryToRemove);
                 }
             }
 
@@ -426,26 +426,26 @@ namespace H.Controls.Dock.Controls
             if (_manager.Theme is DictionaryTheme dictionaryTheme)
             {
                 currentThemeResourceDictionary = dictionaryTheme.ThemeResourceDictionary;
-                Resources.MergedDictionaries.Add(currentThemeResourceDictionary);
+                this.Resources.MergedDictionaries.Add(currentThemeResourceDictionary);
             }
             else
-                Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = _manager.Theme.GetResourceUri() });
+                this.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = _manager.Theme.GetResourceUri() });
         }
 
         internal void SelectNextDocument()
         {
-            if (SelectedDocument == null) return;
-            int docIndex = Documents.IndexOf(SelectedDocument);
+            if (this.SelectedDocument == null) return;
+            int docIndex = this.Documents.IndexOf(this.SelectedDocument);
             docIndex++;
-            if (docIndex == Documents.Length) docIndex = 0;
-            InternalSetSelectedDocument(Documents[docIndex]);
+            if (docIndex == this.Documents.Length) docIndex = 0;
+            InternalSetSelectedDocument(this.Documents[docIndex]);
         }
 
         internal void SelectNextAnchorable()
         {
-            if (SelectedAnchorable == null) return;
-            LayoutAnchorableItem[] anchorablesArray = Anchorables.ToArray();
-            int anchorableIndex = anchorablesArray.IndexOf(SelectedAnchorable);
+            if (this.SelectedAnchorable == null) return;
+            LayoutAnchorableItem[] anchorablesArray = this.Anchorables.ToArray();
+            int anchorableIndex = anchorablesArray.IndexOf(this.SelectedAnchorable);
             anchorableIndex++;
             if (anchorableIndex == anchorablesArray.Length) anchorableIndex = 0;
             InternalSetSelectedAnchorable(anchorablesArray[anchorableIndex]);
@@ -453,18 +453,18 @@ namespace H.Controls.Dock.Controls
 
         internal void SelectPreviousDocument()
         {
-            if (SelectedDocument == null) return;
-            int docIndex = Documents.IndexOf(SelectedDocument);
+            if (this.SelectedDocument == null) return;
+            int docIndex = this.Documents.IndexOf(this.SelectedDocument);
             docIndex--;
-            if (docIndex < 0) docIndex = Documents.Length - 1;
-            InternalSetSelectedDocument(Documents[docIndex]);
+            if (docIndex < 0) docIndex = this.Documents.Length - 1;
+            InternalSetSelectedDocument(this.Documents[docIndex]);
         }
 
         internal void SelectPreviousAnchorable()
         {
-            if (SelectedAnchorable == null) return;
-            LayoutAnchorableItem[] anchorablesArray = Anchorables.ToArray();
-            int anchorableIndex = anchorablesArray.IndexOf(SelectedAnchorable);
+            if (this.SelectedAnchorable == null) return;
+            LayoutAnchorableItem[] anchorablesArray = this.Anchorables.ToArray();
+            int anchorableIndex = anchorablesArray.IndexOf(this.SelectedAnchorable);
             anchorableIndex--;
             if (anchorableIndex < 0) anchorableIndex = anchorablesArray.Length - 1;
             InternalSetSelectedAnchorable(anchorablesArray[anchorableIndex]);
@@ -477,7 +477,7 @@ namespace H.Controls.Dock.Controls
         private void InternalSetSelectedAnchorable(LayoutAnchorableItem anchorableToSelect)
         {
             _internalSetSelectedAnchorable = true;
-            SelectedAnchorable = anchorableToSelect;
+            this.SelectedAnchorable = anchorableToSelect;
             _internalSetSelectedAnchorable = false;
             if (_anchorableListBox != null)
             {
@@ -488,7 +488,7 @@ namespace H.Controls.Dock.Controls
         private void InternalSetSelectedDocument(LayoutDocumentItem documentToSelect)
         {
             _internalSetSelectedDocument = true;
-            SelectedDocument = documentToSelect;
+            this.SelectedDocument = documentToSelect;
             _internalSetSelectedDocument = false;
             if (_documentListBox != null)
             {
@@ -499,15 +499,15 @@ namespace H.Controls.Dock.Controls
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             Loaded -= OnLoaded;
-            if (_documentListBox != null && SelectedDocument != null)
+            if (_documentListBox != null && this.SelectedDocument != null)
             {
                 FocusSelectedItem(_documentListBox);
             }
-            else if (_anchorableListBox != null && SelectedAnchorable != null)
+            else if (_anchorableListBox != null && this.SelectedAnchorable != null)
             {
                 FocusSelectedItem(_anchorableListBox);
             }
-            WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            this.WindowStartupLocation = WindowStartupLocation.CenterOwner;
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e) => Unloaded -= OnUnloaded;

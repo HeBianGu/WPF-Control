@@ -34,8 +34,8 @@ namespace H.Controls.FilterBox
 
         public PropertyFilterBox()
         {
-            Filter = new PropertyFilterBoxFilter(this);
-            ID = GetType().Name;
+            this.Filter = new PropertyFilterBoxFilter(this);
+            this.ID = GetType().Name;
         }
 
         public string ID { get; set; }
@@ -44,13 +44,13 @@ namespace H.Controls.FilterBox
         {
             base.OnApplyTemplate();
 
-            _button = Template.FindName("PART_Button", this) as Button;
+            _button = this.Template.FindName("PART_Button", this) as Button;
             _button.Click += (l, k) =>
             {
                 ShowConfig();
             };
 
-            _selector = Template.FindName("PART_Selector", this) as Selector;
+            _selector = this.Template.FindName("PART_Selector", this) as Selector;
             _selector.SelectionChanged += (l, k) =>
             {
                 if (l is Popup popup && popup.IsOpen == false)
@@ -184,11 +184,11 @@ namespace H.Controls.FilterBox
                 return;
             Func<PropertyInfo, bool> predicate = x =>
             {
-                return PropertyNames?.Split(',').Contains(x.Name) != false;
+                return this.PropertyNames?.Split(',').Contains(x.Name) != false;
             };
             _propertyConfidtions = new PropertyConfidtionsPrensenter(type, predicate)
             {
-                ID = ID
+                ID = this.ID
             };
             _propertyConfidtions.Load();
             this.OnFilterChanged();
@@ -213,7 +213,7 @@ namespace H.Controls.FilterBox
         private void Save()
         {
             _propertyConfidtions.Save(out string message);
-            Filter = new PropertyFilterBoxFilter(this);
+            this.Filter = new PropertyFilterBoxFilter(this);
             this.OnFilterChanged();
         }
 

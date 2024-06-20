@@ -55,7 +55,7 @@ namespace H.Controls.PropertyGrid
 
             _spectrumDisplay = (Rectangle)GetTemplateChild(PART_SpectrumDisplay);
             CreateSpectrum();
-            OnValueChanged(Double.NaN, Value);
+            OnValueChanged(Double.NaN, this.Value);
         }
 
         protected override void OnValueChanged(double oldValue, double newValue)
@@ -63,7 +63,7 @@ namespace H.Controls.PropertyGrid
             base.OnValueChanged(oldValue, newValue);
 
             Color color = ColorUtilities.ConvertHsvToRgb(360 - newValue, 1, 1);
-            SelectedColor = color;
+            this.SelectedColor = color;
         }
 
         #endregion //Base Class Overrides

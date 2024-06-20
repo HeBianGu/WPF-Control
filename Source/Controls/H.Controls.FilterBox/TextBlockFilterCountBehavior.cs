@@ -19,7 +19,7 @@ namespace H.Controls.FilterBox
             set { SetValue(DisplayFilterProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty DisplayFilterProperty =
             DependencyProperty.Register("DisplayFilter", typeof(IDisplayFilter), typeof(TextBlockFilterCountBehavior), new FrameworkPropertyMetadata(default(IDisplayFilter), (d, e) =>
             {
@@ -66,7 +66,7 @@ namespace H.Controls.FilterBox
             set { SetValue(HeaderProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty HeaderProperty =
             DependencyProperty.Register("Header", typeof(string), typeof(TextBlockFilterCountBehavior), new FrameworkPropertyMetadata("合计：", (d, e) =>
             {
@@ -92,7 +92,7 @@ namespace H.Controls.FilterBox
             set { SetValue(FormatProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty FormatProperty =
             DependencyProperty.Register("Format", typeof(string), typeof(TextBlockFilterCountBehavior), new FrameworkPropertyMetadata("[{0}] {1}", (d, e) =>
             {

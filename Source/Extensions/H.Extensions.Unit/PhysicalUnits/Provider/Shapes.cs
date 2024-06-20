@@ -10,12 +10,12 @@ namespace H.Extensions.Unit
 
         public Circle(Length r)
         {
-            Radius = r;
+            this.Radius = r;
         }
 
-        public Length Diameter { get { return 2 * Radius; } }
-        public Length Circumference { get { return 2 * Math.PI * Radius; } }
-        public Area Area { get { return Math.PI * Radius.Squared(); } }
+        public Length Diameter { get { return 2 * this.Radius; } }
+        public Length Circumference { get { return 2 * Math.PI * this.Radius; } }
+        public Area Area { get { return Math.PI * this.Radius.Squared(); } }
 
         public static Circle OfRadius(Length r)
         {
@@ -34,11 +34,11 @@ namespace H.Extensions.Unit
         public Length Width { get; init; }
         public Rectangle(Length h, Length w)
         {
-            Height = h;
-            Width = w;
+            this.Height = h;
+            this.Width = w;
         }
 
-        public Area Area { get { return Height * Width; } }
+        public Area Area { get { return this.Height * this.Width; } }
     }
 
     #endregion
@@ -51,18 +51,18 @@ namespace H.Extensions.Unit
         public Length Height { get; set; }
         public Cylinder(Length r, Length h)
         {
-            Radius = r;
-            Height = h;
+            this.Radius = r;
+            this.Height = h;
         }
-        public Circle EndCap { get { return Circle.OfRadius(Radius); } }
+        public Circle EndCap { get { return Circle.OfRadius(this.Radius); } }
 
         public Area Area
         {
             get
             {
-                Circle endCap = EndCap;
+                Circle endCap = this.EndCap;
                 Length circumference = endCap.Circumference;
-                return circumference * Height + 2 * endCap.Area;
+                return circumference * this.Height + 2 * endCap.Area;
             }
         }
 
@@ -70,8 +70,8 @@ namespace H.Extensions.Unit
         {
             get
             {
-                Circle endCap = EndCap;
-                return endCap.Area * Height;
+                Circle endCap = this.EndCap;
+                return endCap.Area * this.Height;
             }
         }
 
@@ -83,12 +83,12 @@ namespace H.Extensions.Unit
 
         public Sphere(Length radius)
         {
-            Radius = radius;
+            this.Radius = radius;
         }
 
-        public Area Area { get { return 4 * Math.PI * Radius.Squared(); } }
+        public Area Area { get { return 4 * Math.PI * this.Radius.Squared(); } }
 
-        public Volume Volume { get { return 4.0 / 3.0 * Math.PI * Radius.Cubed(); } }
+        public Volume Volume { get { return 4.0 / 3.0 * Math.PI * this.Radius.Cubed(); } }
     }
     #endregion
 
@@ -102,7 +102,7 @@ namespace H.Extensions.Unit
 
         protected SolidShape(Mass m)
         {
-            Mass = m;
+            this.Mass = m;
         }
 
         public abstract Area SurfaceArea { get; }
@@ -114,10 +114,10 @@ namespace H.Extensions.Unit
         /// The volume of material in the shape, which we can use to calculate the density.
         /// Assumed to be the same as the external volume by default.
         /// </summary>
-        public virtual Volume MaterialVolume { get { return ExternalVolume; } }
-        public Density Density { get { return Mass / MaterialVolume; } }
+        public virtual Volume MaterialVolume { get { return this.ExternalVolume; } }
+        public Density Density { get { return this.Mass / this.MaterialVolume; } }
         public abstract Length RadiusOfGyration { get; }
-        public MomentOfInertia MomentOfInertia { get { return Mass * RadiusOfGyration.Squared(); } }
+        public MomentOfInertia MomentOfInertia { get { return this.Mass * this.RadiusOfGyration.Squared(); } }
     }
 
     public class SolidCylinder : SolidShape
@@ -131,15 +131,15 @@ namespace H.Extensions.Unit
 
         public SolidCylinder(Mass m, Length r, Length h) : base(m)
         {
-            Radius = r;
-            Height = h;
+            this.Radius = r;
+            this.Height = h;
         }
 
-        public override Area SurfaceArea { get { return new Cylinder(Radius, Height).Area; } }
+        public override Area SurfaceArea { get { return new Cylinder(this.Radius, this.Height).Area; } }
 
-        public override Volume ExternalVolume { get { return new Cylinder(Radius, Height).Volume; } }
+        public override Volume ExternalVolume { get { return new Cylinder(this.Radius, this.Height).Volume; } }
 
-        public override Length RadiusOfGyration { get { return Math.Sqrt(0.5) * Radius; } }
+        public override Length RadiusOfGyration { get { return Math.Sqrt(0.5) * this.Radius; } }
     }
 
     public class SolidSphere : SolidShape
@@ -152,14 +152,14 @@ namespace H.Extensions.Unit
 
         public SolidSphere(Mass m, Length r) : base(m)
         {
-            Radius = r;
+            this.Radius = r;
         }
 
-        public override Area SurfaceArea { get { return new Sphere(Radius).Area; } }
+        public override Area SurfaceArea { get { return new Sphere(this.Radius).Area; } }
 
-        public override Volume ExternalVolume { get { return new Sphere(Radius).Volume; } }
+        public override Volume ExternalVolume { get { return new Sphere(this.Radius).Volume; } }
 
-        public override Length RadiusOfGyration { get { return Math.Sqrt(2.0 / 5.0) * Radius; } }
+        public override Length RadiusOfGyration { get { return Math.Sqrt(2.0 / 5.0) * this.Radius; } }
     }
 
     #endregion

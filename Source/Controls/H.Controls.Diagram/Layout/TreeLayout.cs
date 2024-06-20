@@ -21,7 +21,7 @@ namespace H.Controls.Diagram
             set { SetValue(SpanProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty SpanProperty =
             DependencyProperty.Register("Span", typeof(double), typeof(TreeLayout), new PropertyMetadata(200.0, (d, e) =>
              {
@@ -42,7 +42,7 @@ namespace H.Controls.Diagram
             set { SetValue(AlignmentProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty AlignmentProperty =
             DependencyProperty.Register("Alignment", typeof(HorizontalAlignment), typeof(TreeLayout), new PropertyMetadata(HorizontalAlignment.Center, (d, e) =>
              {
@@ -63,7 +63,7 @@ namespace H.Controls.Diagram
             set { SetValue(OrientationProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty OrientationProperty =
             DependencyProperty.Register("Orientation", typeof(Orientation), typeof(TreeLayout), new PropertyMetadata(default(Orientation), (d, e) =>
              {

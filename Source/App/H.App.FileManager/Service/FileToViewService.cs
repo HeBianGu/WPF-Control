@@ -1,6 +1,4 @@
-﻿using H.Extensions.Torrent;
-
-namespace H.App.FileManager
+﻿namespace H.App.FileManager
 {
     public class FileToViewService : IFileToViewService
     {

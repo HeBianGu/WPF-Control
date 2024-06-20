@@ -7,7 +7,6 @@ using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
-using System.Reflection;
 using System.Windows;
 
 namespace H.Controls.Vlc

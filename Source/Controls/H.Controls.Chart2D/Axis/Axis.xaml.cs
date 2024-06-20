@@ -23,7 +23,7 @@ namespace H.Controls.Chart2D
             set { SetValue(AlignLenghtProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty AlignLenghtProperty =
             DependencyProperty.Register("AlignLenght", typeof(int), typeof(Axis), new PropertyMetadata(5, (d, e) =>
              {
@@ -42,7 +42,7 @@ namespace H.Controls.Chart2D
             set { SetValue(LabelStyleProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty LabelStyleProperty =
             DependencyProperty.Register("LabelStyle", typeof(Style), typeof(Axis), new PropertyMetadata(default(Style), (d, e) =>
              {
@@ -60,7 +60,7 @@ namespace H.Controls.Chart2D
             set { SetValue(TextAlignmentCenterProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty TextAlignmentCenterProperty =
             DependencyProperty.Register("TextAlignmentCenter", typeof(bool), typeof(Axis), new PropertyMetadata(default(bool), (d, e) =>
             {
@@ -81,7 +81,7 @@ namespace H.Controls.Chart2D
             set { SetValue(AlignAlignmentCenterProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty AlignAlignmentCenterProperty =
             DependencyProperty.Register("AlignAlignmentCenter", typeof(bool), typeof(Axis), new PropertyMetadata(default(bool), (d, e) =>
             {
@@ -99,7 +99,7 @@ namespace H.Controls.Chart2D
             set { SetValue(ValueProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty ValueProperty =
             DependencyProperty.Register("Value", typeof(double), typeof(Axis), new PropertyMetadata(0.0, (d, e) =>
              {
@@ -121,7 +121,7 @@ namespace H.Controls.Chart2D
             set { SetValue(DockAlignmentProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty DockAlignmentProperty =
             DependencyProperty.Register("DockAlignment", typeof(Dock), typeof(Axis), new PropertyMetadata(Dock.Left, (d, e) =>
              {
@@ -375,7 +375,7 @@ namespace H.Controls.Chart2D
             set { SetValue(LenProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty LenProperty =
             DependencyProperty.Register("Len", typeof(double), typeof(RadiusAxis), new PropertyMetadata(default(double), (d, e) =>
              {
@@ -402,7 +402,7 @@ namespace H.Controls.Chart2D
                 //  Do ：底线
                 System.Windows.Shapes.Line yright = new System.Windows.Shapes.Line();
                 yright.X1 = this.ActualWidth / 2;
-                yright.X2 = (this.ActualWidth / 2) + Len;
+                yright.X2 = (this.ActualWidth / 2) + this.Len;
                 yright.Y1 = 0;
                 yright.Y2 = 0;
                 yright.Style = this.LineStyle;
@@ -453,7 +453,7 @@ namespace H.Controls.Chart2D
             set { SetValue(LenProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty LenProperty =
             DependencyProperty.Register("Len", typeof(double), typeof(AngleAxis), new PropertyMetadata(default(double), (d, e) =>
             {

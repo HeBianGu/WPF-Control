@@ -67,7 +67,7 @@ namespace H.Controls.Dock.Controls
             ILayoutAnchorablePane targetModel = _targetPane.Model as ILayoutAnchorablePane;
             LayoutAnchorable anchorableActive = floatingWindow.Descendents().OfType<LayoutAnchorable>().FirstOrDefault();
 
-            switch (Type)
+            switch (this.Type)
             {
                 case DropTargetType.AnchorablePaneDockBottom:
 
@@ -292,11 +292,11 @@ namespace H.Controls.Dock.Controls
         public override Geometry GetPreviewPath(OverlayWindow overlayWindow,
                                                 LayoutFloatingWindow floatingWindowModel)
         {
-            switch (Type)
+            switch (this.Type)
             {
                 case DropTargetType.AnchorablePaneDockBottom:
                     {
-                        Rect targetScreenRect = TargetElement.GetScreenArea();
+                        Rect targetScreenRect = this.TargetElement.GetScreenArea();
                         targetScreenRect.Offset(-overlayWindow.Left, -overlayWindow.Top);
 
                         targetScreenRect.Offset(0.0, targetScreenRect.Height / 2.0);
@@ -307,7 +307,7 @@ namespace H.Controls.Dock.Controls
 
                 case DropTargetType.AnchorablePaneDockTop:
                     {
-                        Rect targetScreenRect = TargetElement.GetScreenArea();
+                        Rect targetScreenRect = this.TargetElement.GetScreenArea();
                         targetScreenRect.Offset(-overlayWindow.Left, -overlayWindow.Top);
 
                         targetScreenRect.Height /= 2.0;
@@ -317,7 +317,7 @@ namespace H.Controls.Dock.Controls
 
                 case DropTargetType.AnchorablePaneDockLeft:
                     {
-                        Rect targetScreenRect = TargetElement.GetScreenArea();
+                        Rect targetScreenRect = this.TargetElement.GetScreenArea();
                         targetScreenRect.Offset(-overlayWindow.Left, -overlayWindow.Top);
 
                         targetScreenRect.Width /= 2.0;
@@ -327,7 +327,7 @@ namespace H.Controls.Dock.Controls
 
                 case DropTargetType.AnchorablePaneDockRight:
                     {
-                        Rect targetScreenRect = TargetElement.GetScreenArea();
+                        Rect targetScreenRect = this.TargetElement.GetScreenArea();
                         targetScreenRect.Offset(-overlayWindow.Left, -overlayWindow.Top);
 
                         targetScreenRect.Offset(targetScreenRect.Width / 2.0, 0.0);
@@ -338,14 +338,14 @@ namespace H.Controls.Dock.Controls
 
                 case DropTargetType.AnchorablePaneDockInside:
                     {
-                        Rect targetScreenRect = TargetElement.GetScreenArea();
+                        Rect targetScreenRect = this.TargetElement.GetScreenArea();
                         targetScreenRect.Offset(-overlayWindow.Left, -overlayWindow.Top);
 
                         if (_tabIndex == -1)
                             return new RectangleGeometry(targetScreenRect);
                         else
                         {
-                            Rect translatedDetectionRect = new Rect(DetectionRects[0].TopLeft, DetectionRects[0].BottomRight);
+                            Rect translatedDetectionRect = new Rect(this.DetectionRects[0].TopLeft, this.DetectionRects[0].BottomRight);
                             translatedDetectionRect.Offset(-overlayWindow.Left, -overlayWindow.Top);
 
                             PathFigure pathFigure = new PathFigure();

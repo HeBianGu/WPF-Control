@@ -27,9 +27,9 @@ namespace H.Controls.FilterBox
         {
             ObservableCollection<PropertyInfo> ps = modelTyle.GetProperties().Where(x => x.PropertyType.IsPrimitive || x.PropertyType == typeof(DateTime) || x.PropertyType == typeof(string)).ToObservable();
             if (predicate != null)
-                Properties = ps.Where(predicate).ToObservable();
+                this.Properties = ps.Where(predicate).ToObservable();
             else
-                Properties = ps.ToObservable();
+                this.Properties = ps.ToObservable();
         }
 
         private ObservableCollection<IPropertyConfidtion> _conditions = new ObservableCollection<IPropertyConfidtion>();
@@ -60,18 +60,18 @@ namespace H.Controls.FilterBox
         [XmlIgnore]
         public RelayCommand AddConditionCommand => new RelayCommand(l =>
         {
-            PropertyInfo first = Properties.FirstOrDefault();
+            PropertyInfo first = this.Properties.FirstOrDefault();
             PropertyConfidtion confidtion = new PropertyConfidtion(first);
             confidtion.Filter.IsSelected = true;
-            Conditions.Add(confidtion);
+            this.Conditions.Add(confidtion);
         });
 
         [JsonIgnore]
         [XmlIgnore]
         public RelayCommand ClearConditionCommand => new RelayCommand(l =>
         {
-            Conditions.Clear();
-        }, l => Conditions.Count > 0);
+            this.Conditions.Clear();
+        }, l => this.Conditions.Count > 0);
 
         [JsonIgnore]
         [XmlIgnore]
@@ -95,13 +95,13 @@ namespace H.Controls.FilterBox
 
         public bool IsMatch(object obj)
         {
-            if (ConditionOperate == ConditionOperate.All)
-                return Conditions.All(x => x.IsMatch(obj));
-            if (ConditionOperate == ConditionOperate.Any)
-                return Conditions.Any(x => x.IsMatch(obj));
-            if (ConditionOperate == ConditionOperate.AnyNot)
-                return Conditions.Any(x => !x.IsMatch(obj));
-            return !Conditions.All(x => x.IsMatch(obj));
+            if (this.ConditionOperate == ConditionOperate.All)
+                return this.Conditions.All(x => x.IsMatch(obj));
+            if (this.ConditionOperate == ConditionOperate.Any)
+                return this.Conditions.Any(x => x.IsMatch(obj));
+            if (this.ConditionOperate == ConditionOperate.AnyNot)
+                return this.Conditions.Any(x => !x.IsMatch(obj));
+            return !this.Conditions.All(x => x.IsMatch(obj));
         }
 
         [JsonIgnore]
@@ -111,12 +111,12 @@ namespace H.Controls.FilterBox
         public bool Save(out string message)
         {
             message = null;
-            if (string.IsNullOrEmpty(ID))
+            if (string.IsNullOrEmpty(this.ID))
             {
                 message = "ID为空";
                 return false;
             }
-            MetaSettingService?.Serilize(this, ID);
+            this.MetaSettingService?.Serilize(this, this.ID);
             return true;
         }
 
@@ -125,9 +125,9 @@ namespace H.Controls.FilterBox
         {
             if (_isLoaded)
                 return;
-            if (string.IsNullOrEmpty(ID))
+            if (string.IsNullOrEmpty(this.ID))
                 return;
-            PropertyConfidtionPrensenter find = MetaSettingService?.Deserilize<PropertyConfidtionPrensenter>(ID);
+            PropertyConfidtionPrensenter find = this.MetaSettingService?.Deserilize<PropertyConfidtionPrensenter>(this.ID);
             if (find == null)
                 return;
 
@@ -137,9 +137,9 @@ namespace H.Controls.FilterBox
                 PropertyConfidtion pc = new PropertyConfidtion();
                 //item.Filter.PropertyInfo = propertyInfo;
                 pc.Filter = item.Filter;
-                Conditions.Add(pc);
+                this.Conditions.Add(pc);
             }
-            ConditionOperate = find.ConditionOperate;
+            this.ConditionOperate = find.ConditionOperate;
             _isLoaded = true;
         }
     }

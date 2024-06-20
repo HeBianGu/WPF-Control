@@ -23,7 +23,7 @@ namespace H.Extensions.Behvaiors
             obj.SetValue(IsMouseOverProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty IsMouseOverProperty =
             DependencyProperty.RegisterAttached("IsMouseOver", typeof(bool), typeof(MouseOverHitTestAdornerBehavior), new PropertyMetadata(default(bool), OnIsMouseOverChanged));
 
@@ -38,17 +38,17 @@ namespace H.Extensions.Behvaiors
 
         protected override void OnAttached()
         {
-            AssociatedObject.MouseMove += AssociatedObject_MouseMove;
+            this.AssociatedObject.MouseMove += AssociatedObject_MouseMove;
         }
 
         private void AssociatedObject_MouseMove(object sender, MouseEventArgs e)
         {
-            if (AdornerType == null)
+            if (this.AdornerType == null)
                 return;
-            if (AdornerVisual == null)
-                AdornerVisual = AssociatedObject;
-            Point point = e.GetPosition(AssociatedObject);
-            UIElement visualHit = AssociatedObject.HitTest<UIElement>(point, x => GetIsHitTest(x));
+            if (this.AdornerVisual == null)
+                this.AdornerVisual = this.AssociatedObject;
+            Point point = e.GetPosition(this.AssociatedObject);
+            UIElement visualHit = this.AssociatedObject.HitTest<UIElement>(point, x => GetIsHitTest(x));
             if (visualHit == null)
             {
                 Clear();
@@ -65,7 +65,7 @@ namespace H.Extensions.Behvaiors
 
         protected override void OnDetaching()
         {
-            AssociatedObject.MouseMove -= AssociatedObject_MouseMove;
+            this.AssociatedObject.MouseMove -= AssociatedObject_MouseMove;
             Clear();
         }
 

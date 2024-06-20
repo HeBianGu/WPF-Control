@@ -42,11 +42,11 @@ namespace H.Controls.OutlookBar
             SetValue(OutlookBar.OverflowMenuItemsPropertyKey, overflowMenu);
             SetValue(OutlookBar.OptionButtonsPropertyKey, new Collection<ButtonBase>());
 
-            CommandBindings.Add(new CommandBinding(CollapseCommand, CollapseCommandExecuted));
-            CommandBindings.Add(new CommandBinding(StartDraggingCommand, StartDraggingCommandExecuted));
-            CommandBindings.Add(new CommandBinding(ShowPopupCommand, ShowPopupCommandExecuted));
-            CommandBindings.Add(new CommandBinding(ResizeCommand, ResizeCommandExecuted));
-            CommandBindings.Add(new CommandBinding(CloseCommand, CloseCommandExecuted));
+            this.CommandBindings.Add(new CommandBinding(CollapseCommand, CollapseCommandExecuted));
+            this.CommandBindings.Add(new CommandBinding(StartDraggingCommand, StartDraggingCommandExecuted));
+            this.CommandBindings.Add(new CommandBinding(ShowPopupCommand, ShowPopupCommandExecuted));
+            this.CommandBindings.Add(new CommandBinding(ResizeCommand, ResizeCommandExecuted));
+            this.CommandBindings.Add(new CommandBinding(CloseCommand, CloseCommandExecuted));
 
             maximizedSections = new Collection<OutlookSection>();
             minimizedSections = new Collection<OutlookSection>();
@@ -71,14 +71,14 @@ namespace H.Controls.OutlookBar
 
         private void CollapseCommandExecuted(object sender, ExecutedRoutedEventArgs e)
         {
-            IsMaximized ^= true;
+            this.IsMaximized ^= true;
         }
 
         private void ShowPopupCommandExecuted(object sender, ExecutedRoutedEventArgs e)
         {
-            if (!IsMaximized)
+            if (!this.IsMaximized)
             {
-                IsPopupVisible = true;
+                this.IsPopupVisible = true;
             }
         }
 
@@ -102,7 +102,7 @@ namespace H.Controls.OutlookBar
             System.Windows.Controls.Control c = e.OriginalSource as System.Windows.Controls.Control;
             if (e.LeftButton == MouseButtonState.Pressed)
             {
-                if (DockPosition == HorizontalAlignment.Left)
+                if (this.DockPosition == HorizontalAlignment.Left)
                 {
                     ResizeFromRight(e);
                 }
@@ -122,14 +122,14 @@ namespace H.Controls.OutlookBar
             if (w < 80)
             {
                 w = double.NaN;
-                IsMaximized = false;
+                this.IsMaximized = false;
             }
             else
             {
-                IsMaximized = true;
+                this.IsMaximized = true;
             }
-            if (MaxWidth != double.NaN && w > MaxWidth) w = MaxWidth;
-            Width = w;
+            if (this.MaxWidth != double.NaN && w > this.MaxWidth) w = this.MaxWidth;
+            this.Width = w;
         }
         private void ResizeFromRight(MouseEventArgs e)
         {
@@ -139,14 +139,14 @@ namespace H.Controls.OutlookBar
             if (w < 80)
             {
                 w = double.NaN;
-                IsMaximized = false;
+                this.IsMaximized = false;
             }
             else
             {
-                IsMaximized = true;
+                this.IsMaximized = true;
             }
-            if (MaxWidth != double.NaN && w > MaxWidth) w = MaxWidth;
-            Width = w;
+            if (this.MaxWidth != double.NaN && w > this.MaxWidth) w = this.MaxWidth;
+            this.Width = w;
         }
 
         private void StartDraggingCommandExecuted(object sender, ExecutedRoutedEventArgs e)
@@ -178,8 +178,8 @@ namespace H.Controls.OutlookBar
             if (e.LeftButton == MouseButtonState.Pressed)
             {
                 Point pos = e.GetPosition(this);
-                double h = this.ActualHeight - 1 - ButtonHeight - pos.Y;
-                MaxNumberOfButtons = (int)(h / ButtonHeight);
+                double h = this.ActualHeight - 1 - this.ButtonHeight - pos.Y;
+                this.MaxNumberOfButtons = (int)(h / this.ButtonHeight);
             }
             else this.PreviewMouseMove -= PreviewMouseMoveButtons;
         }
@@ -201,9 +201,9 @@ namespace H.Controls.OutlookBar
             {
                 maximizedSections = new Collection<OutlookSection>();
                 minimizedSections = new Collection<OutlookSection>();
-                int max = MaxNumberOfButtons;
+                int max = this.MaxNumberOfButtons;
                 int index = 0;
-                int selectedIndex = SelectedSectionIndex;
+                int selectedIndex = this.SelectedSectionIndex;
                 OutlookSection selectedContent = null;
 
                 int n = GetNumberOfMinimizedButtons();
@@ -211,7 +211,7 @@ namespace H.Controls.OutlookBar
                 foreach (OutlookSection e in sections)
                 {
                     e.OutlookBar = this;
-                    e.Height = ButtonHeight;
+                    e.Height = this.ButtonHeight;
                     if (max-- > 0)
                     {
                         e.IsMaximized = true;
@@ -231,7 +231,7 @@ namespace H.Controls.OutlookBar
                 }
                 SetValue(OutlookBar.MaximizedSectionsPropertyKey, maximizedSections);
                 SetValue(OutlookBar.MinimizedSectionsPropertyKey, minimizedSections);
-                SelectedSection = selectedContent;
+                this.SelectedSection = selectedContent;
             }
 
         }
@@ -259,16 +259,14 @@ namespace H.Controls.OutlookBar
         private void ApplyOverflowMenu()
         {
             Collection<object> overflowItems = new Collection<object>();
-            if (OverflowMenuItems.Count > 0)
+            if (this.OverflowMenuItems.Count > 0)
             {
-                foreach (object item in OverflowMenuItems)
+                foreach (object item in this.OverflowMenuItems)
                 {
                     overflowItems.Add(item);
                 }
             }
-
-            bool separatorAdded = false;
-            int visibleButtons = maximizedSections.Count + (IsMaximized ? minimizedSections.Count : 0);
+            int visibleButtons = maximizedSections.Count + (this.IsMaximized ? minimizedSections.Count : 0);
 
             for (int i = visibleButtons; i < sections.Count; i++)
             {
@@ -304,7 +302,7 @@ namespace H.Controls.OutlookBar
                 const double overflowWidth = 18;
                 double fraction = (minimizedButtonContainer.ActualWidth - overflowWidth) / width;
                 int minimizedButtons = (int)Math.Truncate(fraction);
-                int visibleButtons = MaxNumberOfButtons + minimizedButtons;
+                int visibleButtons = this.MaxNumberOfButtons + minimizedButtons;
                 return visibleButtons;
             }
             return 0;
@@ -369,13 +367,13 @@ namespace H.Controls.OutlookBar
 
         protected virtual void OnPopupOpened(object sender, EventArgs e)
         {
-            IsPopupVisible = true;
+            this.IsPopupVisible = true;
             Mouse.Capture(this, CaptureMode.SubTree);
         }
 
         protected virtual void OnPopupClosed(object sender, EventArgs e)
         {
-            IsPopupVisible = false;
+            this.IsPopupVisible = false;
             Mouse.Capture(null);
         }
 
@@ -446,18 +444,18 @@ namespace H.Controls.OutlookBar
         /// <param name="isExpanded"></param>
         protected virtual void OnMaximizedChanged(bool isExpanded)
         {
-            if (isExpanded) IsPopupVisible = false;
+            if (isExpanded) this.IsPopupVisible = false;
             EnsureSectionContentIsVisible();
 
             if (isExpanded)
             {
-                MaxWidth = previousMaxWidth;
+                this.MaxWidth = previousMaxWidth;
                 RaiseEvent(new RoutedEventArgs(ExpandedEvent));
             }
             else
             {
-                previousMaxWidth = MaxWidth;
-                MaxWidth = MinimizedWidth + (CanResize ? 4 : 0);
+                previousMaxWidth = this.MaxWidth;
+                this.MaxWidth = this.MinimizedWidth + (this.CanResize ? 4 : 0);
                 RaiseEvent(new RoutedEventArgs(CollapsedEvent));
             }
         }
@@ -494,10 +492,10 @@ namespace H.Controls.OutlookBar
         /// </summary>
         private void EnsureSectionContentIsVisible()
         {
-            object content = SelectedSection != null ? SelectedSection.Content : null;
-            SectionContent = null;  // set temporarily to null, so resetting to the current content will have an effect.
-            CollapsedSectionContent = IsMaximized ? null : content;
-            SectionContent = IsMaximized ? content : null;
+            object content = this.SelectedSection != null ? this.SelectedSection.Content : null;
+            this.SectionContent = null;  // set temporarily to null, so resetting to the current content will have an effect.
+            this.CollapsedSectionContent = this.IsMaximized ? null : content;
+            this.SectionContent = this.IsMaximized ? content : null;
         }
 
 
@@ -688,9 +686,9 @@ namespace H.Controls.OutlookBar
                 section.IsSelected = newSection == section;
                 if (selected)
                 {
-                    SelectedSectionIndex = index;
-                    SectionContent = IsMaximized ? section.Content : null;
-                    CollapsedSectionContent = IsMaximized ? null : section.Content;
+                    this.SelectedSectionIndex = index;
+                    this.SectionContent = this.IsMaximized ? section.Content : null;
+                    this.CollapsedSectionContent = this.IsMaximized ? null : section.Content;
                 }
             }
             RaiseEvent(new RoutedPropertyChangedEventArgs<OutlookSection>(oldSection, newSection, SelectedSectionChangedEvent));
@@ -946,8 +944,8 @@ namespace H.Controls.OutlookBar
 
         protected virtual IEnumerable GetLogicalChildren()
         {
-            foreach (OutlookSection section in Sections) yield return section;
-            if (SelectedSection != null) yield return SelectedSection.Content;
+            foreach (OutlookSection section in this.Sections) yield return section;
+            if (this.SelectedSection != null) yield return this.SelectedSection.Content;
         }
 
 

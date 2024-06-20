@@ -14,13 +14,13 @@ namespace H.Controls.PropertyGrid
 
         protected override void SetValueDependencyProperty()
         {
-            ValueProperty = TextBlock.TextProperty;
+            this.ValueProperty = TextBlock.TextProperty;
         }
 
         protected override void SetControlProperties(PropertyItem propertyItem)
         {
-            Editor.Margin = new System.Windows.Thickness(5, 0, 0, 0);
-            Editor.TextTrimming = TextTrimming.CharacterEllipsis;
+            this.Editor.Margin = new System.Windows.Thickness(5, 0, 0, 0);
+            this.Editor.TextTrimming = TextTrimming.CharacterEllipsis;
         }
     }
 

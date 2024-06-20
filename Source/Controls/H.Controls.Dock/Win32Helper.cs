@@ -265,7 +265,7 @@ namespace H.Controls.Dock
             {
                 get
                 {
-                    return new Size(Width, Height);
+                    return new Size(this.Width, this.Height);
                 }
             }
 
@@ -290,7 +290,7 @@ namespace H.Controls.Dock
 
             public override int GetHashCode()
             {
-                return Left ^ ((Top << 13) | (Top >> 0x13)) ^ ((Width << 0x1a) | (Width >> 6)) ^ ((Height << 7) | (Height >> 0x19));
+                return Left ^ ((Top << 13) | (Top >> 0x13)) ^ ((this.Width << 0x1a) | (this.Width >> 6)) ^ ((this.Height << 7) | (this.Height >> 0x19));
             }
 
             #region Operator overloads

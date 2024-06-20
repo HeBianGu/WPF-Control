@@ -20,34 +20,34 @@ namespace H.Extensions.Color
         public int A { get { return a; } set { a = value < 0 ? 0 : value > 255 ? 255 : value; } }
 
         /// <summary> 亮度 0 - 100 </summary>
-        public int Y { get { return Utility.GetBrightness(R, G, B); } }
+        public int Y { get { return Utility.GetBrightness(this.R, this.G, this.B); } }
 
-        public RgbaColor() { R = 255; G = 255; B = 255; A = 255; }
+        public RgbaColor() { this.R = 255; this.G = 255; this.B = 255; this.A = 255; }
 
-        public RgbaColor(int r, int g, int b, int a = 255) { R = r; G = g; B = b; A = a; }
+        public RgbaColor(int r, int g, int b, int a = 255) { this.R = r; this.G = g; this.B = b; this.A = a; }
 
         public RgbaColor(Brush brush)
         {
             if (brush != null)
             {
-                R = ((SolidColorBrush)brush).Color.R;
-                G = ((SolidColorBrush)brush).Color.G;
-                B = ((SolidColorBrush)brush).Color.B;
-                A = ((SolidColorBrush)brush).Color.A;
+                this.R = ((SolidColorBrush)brush).Color.R;
+                this.G = ((SolidColorBrush)brush).Color.G;
+                this.B = ((SolidColorBrush)brush).Color.B;
+                this.A = ((SolidColorBrush)brush).Color.A;
             }
             else
             {
-                R = G = B = A = 255;
+                this.R = this.G = this.B = this.A = 255;
             }
         }
 
         public RgbaColor(double h, double s, double b, double a = 1)
         {
             RgbaColor rgba = Utility.HsbaToRgba(new HsbaColor(h, s, b, a));
-            R = rgba.R;
-            G = rgba.G;
-            B = rgba.B;
-            A = rgba.A;
+            this.R = rgba.R;
+            this.G = rgba.G;
+            this.B = rgba.B;
+            this.A = rgba.A;
 
         }
 
@@ -58,10 +58,10 @@ namespace H.Extensions.Color
                 System.Windows.Media.Color color;
                 if (hexColor.Substring(0, 1) == "#") color = (System.Windows.Media.Color)ColorConverter.ConvertFromString(hexColor);
                 else color = (System.Windows.Media.Color)ColorConverter.ConvertFromString("#" + hexColor);
-                R = color.R;
-                G = color.G;
-                B = color.B;
-                A = color.A;
+                this.R = color.R;
+                this.G = color.G;
+                this.B = color.B;
+                this.A = color.A;
             }
             catch
             {
@@ -69,17 +69,17 @@ namespace H.Extensions.Color
             }
         }
 
-        public System.Windows.Media.Color Color { get { return System.Windows.Media.Color.FromArgb((byte)A, (byte)R, (byte)G, (byte)B); } }
+        public System.Windows.Media.Color Color { get { return System.Windows.Media.Color.FromArgb((byte)this.A, (byte)this.R, (byte)this.G, (byte)this.B); } }
 
-        public System.Windows.Media.Color OpaqueColor { get { return System.Windows.Media.Color.FromArgb((byte)255.0, (byte)R, (byte)G, (byte)B); } }
+        public System.Windows.Media.Color OpaqueColor { get { return System.Windows.Media.Color.FromArgb((byte)255.0, (byte)this.R, (byte)this.G, (byte)this.B); } }
 
-        public SolidColorBrush SolidColorBrush { get { return new SolidColorBrush(Color); } }
+        public SolidColorBrush SolidColorBrush { get { return new SolidColorBrush(this.Color); } }
 
-        public SolidColorBrush OpaqueSolidColorBrush { get { return new SolidColorBrush(OpaqueColor); } }
+        public SolidColorBrush OpaqueSolidColorBrush { get { return new SolidColorBrush(this.OpaqueColor); } }
 
-        public string HexString { get { return Color.ToString(); } }
+        public string HexString { get { return this.Color.ToString(); } }
 
-        public string RgbaString { get { return R + "," + G + "," + B + "," + A; } }
+        public string RgbaString { get { return this.R + "," + this.G + "," + this.B + "," + this.A; } }
 
         public HsbaColor HsbaColor { get { return Utility.RgbaToHsba(this); } }
     }

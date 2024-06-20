@@ -47,14 +47,14 @@ namespace H.Controls.Dock.Commands
                 {
                     // Keep a reference to the target to control the
                     // WeakAction's lifetime.
-                    Reference = new WeakReference(target);
+                    this.Reference = new WeakReference(target);
                 }
 
                 return;
             }
-            Method = action.Method;
-            ActionReference = new WeakReference(action.Target);
-            Reference = new WeakReference(target);
+            this.Method = action.Method;
+            this.ActionReference = new WeakReference(action.Target);
+            this.Reference = new WeakReference(target);
         }
 
         #endregion Public Constructors
@@ -82,22 +82,22 @@ namespace H.Controls.Dock.Commands
             get
             {
                 if (_staticAction == null
-                    && Reference == null)
+                    && this.Reference == null)
                 {
                     return false;
                 }
 
                 if (_staticAction != null)
                 {
-                    if (Reference != null)
+                    if (this.Reference != null)
                     {
-                        return Reference.IsAlive;
+                        return this.Reference.IsAlive;
                     }
 
                     return true;
                 }
 
-                return Reference.IsAlive;
+                return this.Reference.IsAlive;
             }
         }
 
@@ -130,7 +130,7 @@ namespace H.Controls.Dock.Commands
                 {
                     return _staticAction.Method.Name;
                 }
-                return Method.Name;
+                return this.Method.Name;
             }
         }
 
@@ -143,12 +143,12 @@ namespace H.Controls.Dock.Commands
         {
             get
             {
-                if (Reference == null)
+                if (this.Reference == null)
                 {
                     return null;
                 }
 
-                return Reference.Target;
+                return this.Reference.Target;
             }
         }
 
@@ -177,12 +177,12 @@ namespace H.Controls.Dock.Commands
         {
             get
             {
-                if (ActionReference == null)
+                if (this.ActionReference == null)
                 {
                     return null;
                 }
 
-                return ActionReference.Target;
+                return this.ActionReference.Target;
             }
         }
 
@@ -226,24 +226,24 @@ namespace H.Controls.Dock.Commands
                 return;
             }
 
-            object actionTarget = ActionTarget;
+            object actionTarget = this.ActionTarget;
 
-            if (IsAlive)
+            if (this.IsAlive)
             {
-                if (Method != null
-                    && ActionReference != null
+                if (this.Method != null
+                    && this.ActionReference != null
                     && actionTarget != null)
                 {
-                    int paras = Method.GetParameters().Count();
+                    int paras = this.Method.GetParameters().Count();
                     try
                     {
                         if (paras > 0)
                         {
-                            Method.Invoke(actionTarget, new object[] { param });
+                            this.Method.Invoke(actionTarget, new object[] { param });
                         }
                         else
                         {
-                            Method.Invoke(actionTarget, null);
+                            this.Method.Invoke(actionTarget, null);
                         }
                     }
                     catch { }
@@ -266,9 +266,9 @@ namespace H.Controls.Dock.Commands
         /// </summary>
         public void MarkForDeletion()
         {
-            Reference = null;
-            ActionReference = null;
-            Method = null;
+            this.Reference = null;
+            this.ActionReference = null;
+            this.Method = null;
             _staticAction = null;
 
 #if SILVERLIGHT

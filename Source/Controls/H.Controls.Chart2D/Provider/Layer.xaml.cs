@@ -32,7 +32,7 @@ namespace H.Controls.Chart2D
             set { SetValue(UseVisualProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty UseVisualProperty =
             DependencyProperty.Register("UseVisual", typeof(bool), typeof(DrawingCanvas), new PropertyMetadata(default(bool), (d, e) =>
              {
@@ -52,7 +52,7 @@ namespace H.Controls.Chart2D
         {
             get
             {
-                if (UseVisual)
+                if (this.UseVisual)
                 {
                     return visuals.Count;
                 }
@@ -66,7 +66,7 @@ namespace H.Controls.Chart2D
         //获取Visual
         protected override Visual GetVisualChild(int index)
         {
-            if (UseVisual)
+            if (this.UseVisual)
             {
                 return visuals[index];
             }
@@ -232,7 +232,7 @@ namespace H.Controls.Chart2D
             set { SetValue(TryFreezeProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty TryFreezeProperty =
             DependencyProperty.Register("TryFreeze", typeof(bool), typeof(LayerBase), new PropertyMetadata(true, (d, e) =>
              {
@@ -314,7 +314,7 @@ namespace H.Controls.Chart2D
 
     public class AnimationLayer : LayerBase
     {
-        public static ComponentResourceKey DefaultKey => new ComponentResourceKey(typeof(AnimationLayer), "S.AnimationLayer.Default");
+        public static new ComponentResourceKey DefaultKey => new ComponentResourceKey(typeof(AnimationLayer), "S.AnimationLayer.Default");
 
         static AnimationLayer()
         {
@@ -332,7 +332,7 @@ namespace H.Controls.Chart2D
             set { SetValue(TimelinesProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty TimelinesProperty =
             DependencyProperty.Register("Timelines", typeof(Timelines), typeof(AnimationLayer), new PropertyMetadata(new Timelines(), (d, e) =>
             {
@@ -348,7 +348,7 @@ namespace H.Controls.Chart2D
 
         private void AssociatedObject_Drawed(object sender, RoutedEventArgs e)
         {
-            if (Timelines == null) return;
+            if (this.Timelines == null) return;
             IEnumerable<UIElement> items = this.GetChildren<UIElement>().Where(l => l.RenderTransform is TransformGroup);
 
             items = items.Where(l => (l.RenderTransform as TransformGroup).Children.Count == 4);
@@ -361,9 +361,9 @@ namespace H.Controls.Chart2D
 
             for (int i = 0; i < controls.Count; i++)
             {
-                foreach (DoubleAnimation item in Timelines.OfType<DoubleAnimation>())
+                foreach (DoubleAnimation item in this.Timelines.OfType<DoubleAnimation>())
                 {
-                    TimeSpan span = TimeSpan.FromMilliseconds(i * (SplitMilliSecond + item.Duration.TimeSpan.TotalMilliseconds));
+                    TimeSpan span = TimeSpan.FromMilliseconds(i * (this.SplitMilliSecond + item.Duration.TimeSpan.TotalMilliseconds));
 
                     TimeSpan end = item.Duration.TimeSpan + span;
 
@@ -383,9 +383,9 @@ namespace H.Controls.Chart2D
                     storyboard.Children.Add(animation);
                 }
 
-                foreach (ThicknessAnimation item in Timelines.OfType<ThicknessAnimation>())
+                foreach (ThicknessAnimation item in this.Timelines.OfType<ThicknessAnimation>())
                 {
-                    TimeSpan span = TimeSpan.FromMilliseconds(i * (SplitMilliSecond + item.Duration.TimeSpan.TotalMilliseconds));
+                    TimeSpan span = TimeSpan.FromMilliseconds(i * (this.SplitMilliSecond + item.Duration.TimeSpan.TotalMilliseconds));
 
                     TimeSpan end = item.Duration.TimeSpan + span;
 
@@ -416,7 +416,7 @@ namespace H.Controls.Chart2D
             set { SetValue(SplitMilliSecondProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty SplitMilliSecondProperty =
             DependencyProperty.Register("SplitMilliSecond", typeof(double), typeof(AnimationLayer), new PropertyMetadata(5.0, (d, e) =>
             {
@@ -434,7 +434,7 @@ namespace H.Controls.Chart2D
             set { SetValue(IsUseAnimationProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty IsUseAnimationProperty =
             DependencyProperty.Register("IsUseAnimation", typeof(bool), typeof(AnimationLayer), new PropertyMetadata(true, (d, e) =>
              {
@@ -452,11 +452,11 @@ namespace H.Controls.Chart2D
         /// </summary>
         protected void RunPath(Path path, double MilliSecond = 1000)
         {
-            if (!this.IsUseAnimation) 
+            if (!this.IsUseAnimation)
                 return;
 
             double _pathLength = path.Data.GetTotalLength(new Size(path.ActualWidth, path.ActualHeight), path.StrokeThickness) * 2;
-            if (Math.Abs(_pathLength) < 1E-06) 
+            if (Math.Abs(_pathLength) < 1E-06)
                 return;
             path.StrokeDashOffset = _pathLength;
             path.StrokeDashArray = new DoubleCollection(new List<double>
@@ -510,7 +510,7 @@ namespace H.Controls.Chart2D
             set { SetValue(ForegroundProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty ForegroundProperty =
             DependencyProperty.Register("Foreground", typeof(Brush), typeof(XyLayer), new PropertyMetadata(Brushes.Black, (d, e) =>
             {
@@ -604,7 +604,7 @@ namespace H.Controls.Chart2D
             set { SetValue(LineStyleProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty LineStyleProperty =
             DependencyProperty.Register("LineStyle", typeof(Style), typeof(XyLayer), new PropertyMetadata(default(Style), (d, e) =>
             {
@@ -625,7 +625,7 @@ namespace H.Controls.Chart2D
             set { SetValue(xAxisProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty xAxisProperty =
             DependencyProperty.Register("xAxis", typeof(DoubleCollection), typeof(XyLayer), new FrameworkPropertyMetadata(new DoubleCollection(), FrameworkPropertyMetadataOptions.Inherits, (d, e) =>
             {
@@ -646,7 +646,7 @@ namespace H.Controls.Chart2D
             set { SetValue(yAxisProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty yAxisProperty =
             DependencyProperty.Register("yAxis", typeof(DoubleCollection), typeof(XyLayer), new FrameworkPropertyMetadata(new DoubleCollection(), FrameworkPropertyMetadataOptions.Inherits, (d, e) =>
             {
@@ -668,7 +668,7 @@ namespace H.Controls.Chart2D
             set { SetValue(xDisplayProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty xDisplayProperty =
             DependencyProperty.Register("xDisplay", typeof(ObservableCollection<string>), typeof(XyLayer), new PropertyMetadata(new ObservableCollection<string>(), (d, e) =>
             {
@@ -690,7 +690,7 @@ namespace H.Controls.Chart2D
             set { SetValue(yDisplayProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty yDisplayProperty =
             DependencyProperty.Register("yDisplay", typeof(ObservableCollection<string>), typeof(XyLayer), new PropertyMetadata(new ObservableCollection<string>(), (d, e) =>
              {
@@ -711,7 +711,7 @@ namespace H.Controls.Chart2D
             set { SetValue(xMapProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty xMapProperty =
             DependencyProperty.Register("xMap", typeof(ObservableCollection<double[]>), typeof(XyLayer), new PropertyMetadata(default(ObservableCollection<double[]>), (d, e) =>
              {
@@ -730,7 +730,7 @@ namespace H.Controls.Chart2D
             set { SetValue(yMapProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty yMapProperty =
             DependencyProperty.Register("yMap", typeof(ObservableCollection<double[]>), typeof(XyLayer), new PropertyMetadata(default(ObservableCollection<double[]>), (d, e) =>
              {
@@ -750,7 +750,7 @@ namespace H.Controls.Chart2D
             set { SetValue(xConvertProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty xConvertProperty =
             DependencyProperty.Register("xConvert", typeof(Func<double, string>), typeof(XyLayer), new PropertyMetadata(default(Func<double, string>), (d, e) =>
             {
@@ -769,7 +769,7 @@ namespace H.Controls.Chart2D
             set { SetValue(yConvertProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty yConvertProperty =
             DependencyProperty.Register("yConvert", typeof(Func<double, string>), typeof(XyLayer), new PropertyMetadata(default(Func<double, string>), (d, e) =>
             {
@@ -800,7 +800,7 @@ namespace H.Controls.Chart2D
             set { SetValue(DataProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty DataProperty =
             DependencyProperty.Register("Data", typeof(DoubleCollection), typeof(DataLayer), new PropertyMetadata(new DoubleCollection(), (d, e) =>
             {
@@ -827,7 +827,7 @@ namespace H.Controls.Chart2D
             set { SetValue(DataBooleanProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty DataBooleanProperty =
             DependencyProperty.Register("DataBoolean", typeof(ObservableCollection<bool>), typeof(DataLayer), new PropertyMetadata(new ObservableCollection<bool>(), (d, e) =>
              {
@@ -846,7 +846,7 @@ namespace H.Controls.Chart2D
             set { SetValue(DataMapProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty DataMapProperty =
             DependencyProperty.Register("DataMap", typeof(ObservableCollection<double[]>), typeof(DataLayer), new PropertyMetadata(default(ObservableCollection<double[]>), (d, e) =>
              {
@@ -892,7 +892,7 @@ namespace H.Controls.Chart2D
             set { SetValue(yAxisesProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty yAxisesProperty =
             DependencyProperty.Register("yAxises", typeof(ObservableCollection<yAxis>), typeof(MapLayer), new PropertyMetadata(default(ObservableCollection<yAxis>), (d, e) =>
             {
@@ -911,7 +911,7 @@ namespace H.Controls.Chart2D
             set { SetValue(xAxisesProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty xAxisesProperty =
             DependencyProperty.Register("xAxises", typeof(ObservableCollection<xAxis>), typeof(MapLayer), new PropertyMetadata(default(ObservableCollection<xAxis>), (d, e) =>
             {
@@ -971,7 +971,7 @@ namespace H.Controls.Chart2D
             set { SetValue(MarkStyleProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty MarkStyleProperty =
             DependencyProperty.Register("MarkStyle", typeof(Style), typeof(Layer), new PropertyMetadata(default(Style), (d, e) =>
             {
@@ -992,7 +992,7 @@ namespace H.Controls.Chart2D
             set { SetValue(LabelStyleProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty LabelStyleProperty =
             DependencyProperty.Register("LabelStyle", typeof(Style), typeof(Layer), new PropertyMetadata(default(Style), (d, e) =>
              {
@@ -1033,7 +1033,7 @@ namespace H.Controls.Chart2D
             set { SetValue(PathStyleProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty PathStyleProperty =
             DependencyProperty.Register("PathStyle", typeof(Style), typeof(Layer), new PropertyMetadata(default(Style), (d, e) =>
             {

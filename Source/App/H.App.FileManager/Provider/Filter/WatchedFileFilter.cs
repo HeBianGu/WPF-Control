@@ -12,7 +12,7 @@ namespace H.App.FileManager
         {
             if (obj is ModelBindable<fm_dd_file> file)
             {
-                return file.Model.Watched == Value;
+                return file.Model.Watched == this.Value;
             }
             return false;
         }

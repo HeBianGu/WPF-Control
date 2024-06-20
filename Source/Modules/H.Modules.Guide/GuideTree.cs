@@ -23,7 +23,7 @@ namespace H.Modules.Guide
 
         public GuideTreeNode Next()
         {
-            CurrentIndex++;
+            this.CurrentIndex++;
             if (this.Current == null) return null;
             GuideTreeNode next = this.Current.GetNext();
             if (next == null)

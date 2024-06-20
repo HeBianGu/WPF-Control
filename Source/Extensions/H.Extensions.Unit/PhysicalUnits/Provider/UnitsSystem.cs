@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace H.Extensions.Unit
 {
@@ -279,7 +277,7 @@ namespace H.Extensions.Unit
                 qty = system.DoParse(s);
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 qty = new PhysicalQuantity(0.0, null);
                 return false;

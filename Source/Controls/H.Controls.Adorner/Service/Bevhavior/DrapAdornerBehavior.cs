@@ -28,7 +28,7 @@ namespace H.Controls.Adorner
             set { SetValue(OpacityProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty OpacityProperty =
             DependencyProperty.Register("Opacity", typeof(double), typeof(DragAdornerBehavior), new PropertyMetadata(0.5, (d, e) =>
              {
@@ -47,7 +47,7 @@ namespace H.Controls.Adorner
             set { SetValue(AncestorTypeProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty AncestorTypeProperty =
             DependencyProperty.Register("AncestorType", typeof(Type), typeof(DragAdornerBehavior), new PropertyMetadata(typeof(ScrollViewer), (d, e) =>
              {
@@ -65,7 +65,7 @@ namespace H.Controls.Adorner
             set { SetValue(DragGroupProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty DragGroupProperty =
             DependencyProperty.Register("DragGroup", typeof(string), typeof(DragAdornerBehavior), new PropertyMetadata("DragGroup", (d, e) =>
             {
@@ -84,7 +84,7 @@ namespace H.Controls.Adorner
             set { SetValue(DragDropEffectsProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty DragDropEffectsProperty =
             DependencyProperty.Register("DragDropEffects", typeof(DragDropEffects), typeof(DragAdornerBehavior), new PropertyMetadata(DragDropEffects.Copy, (d, e) =>
              {
@@ -102,39 +102,39 @@ namespace H.Controls.Adorner
 
         protected override void OnAttached()
         {
-            AssociatedObject.AllowDrop = true;
-            if (RoutingStrategy == RoutingStrategy.Bubble)
+            this.AssociatedObject.AllowDrop = true;
+            if (this.RoutingStrategy == RoutingStrategy.Bubble)
             {
-                AssociatedObject.PreviewMouseDown += AssociatedObject_MouseDown;
-                AssociatedObject.PreviewMouseUp += AssociatedObject_MouseUp;
-                AssociatedObject.PreviewMouseMove += AssociatedObject_MouseMove;
+                this.AssociatedObject.PreviewMouseDown += AssociatedObject_MouseDown;
+                this.AssociatedObject.PreviewMouseUp += AssociatedObject_MouseUp;
+                this.AssociatedObject.PreviewMouseMove += AssociatedObject_MouseMove;
             }
             else
             {
-                AssociatedObject.MouseDown += AssociatedObject_MouseDown;
-                AssociatedObject.MouseUp += AssociatedObject_MouseUp;
-                AssociatedObject.MouseMove += AssociatedObject_MouseMove;
+                this.AssociatedObject.MouseDown += AssociatedObject_MouseDown;
+                this.AssociatedObject.MouseUp += AssociatedObject_MouseUp;
+                this.AssociatedObject.MouseMove += AssociatedObject_MouseMove;
             }
 
-            AssociatedObject.MouseLeave += AssociatedObject_MouseLeave;
-            AssociatedObject.GiveFeedback += AssociatedObject_GiveFeedback;
+            this.AssociatedObject.MouseLeave += AssociatedObject_MouseLeave;
+            this.AssociatedObject.GiveFeedback += AssociatedObject_GiveFeedback;
         }
 
         protected override void OnDetaching()
         {
-            AssociatedObject.AllowDrop = false;
+            this.AssociatedObject.AllowDrop = false;
 
-            AssociatedObject.PreviewMouseDown -= AssociatedObject_MouseDown;
-            AssociatedObject.PreviewMouseUp -= AssociatedObject_MouseUp;
-            AssociatedObject.PreviewMouseMove -= AssociatedObject_MouseMove;
+            this.AssociatedObject.PreviewMouseDown -= AssociatedObject_MouseDown;
+            this.AssociatedObject.PreviewMouseUp -= AssociatedObject_MouseUp;
+            this.AssociatedObject.PreviewMouseMove -= AssociatedObject_MouseMove;
 
-            AssociatedObject.MouseDown -= AssociatedObject_MouseDown;
-            AssociatedObject.MouseUp -= AssociatedObject_MouseUp;
-            AssociatedObject.MouseMove -= AssociatedObject_MouseMove;
+            this.AssociatedObject.MouseDown -= AssociatedObject_MouseDown;
+            this.AssociatedObject.MouseUp -= AssociatedObject_MouseUp;
+            this.AssociatedObject.MouseMove -= AssociatedObject_MouseMove;
 
-            AssociatedObject.MouseLeave -= AssociatedObject_MouseLeave;
+            this.AssociatedObject.MouseLeave -= AssociatedObject_MouseLeave;
 
-            AssociatedObject.GiveFeedback -= AssociatedObject_GiveFeedback;
+            this.AssociatedObject.GiveFeedback -= AssociatedObject_GiveFeedback;
         }
 
         private void AssociatedObject_GiveFeedback(object sender, GiveFeedbackEventArgs e)
@@ -215,7 +215,7 @@ namespace H.Controls.Adorner
         protected virtual void DoDragDrop()
         {
             DataObject dragData = new DataObject(this.DragGroup, adorner);
-            DragDrop.DoDragDrop(this.AssociatedObject, dragData, DragDropEffects);
+            DragDrop.DoDragDrop(this.AssociatedObject, dragData, this.DragDropEffects);
         }
 
         private bool _isCapture;
@@ -324,7 +324,7 @@ namespace H.Controls.Adorner
     {
         public DragGridAdorner(UIElement adornedElement) : base(adornedElement)
         {
-            vbrush = new VisualBrush(AdornedElement);
+            vbrush = new VisualBrush(this.AdornedElement);
             vbrush.Opacity = .5;
         }
 

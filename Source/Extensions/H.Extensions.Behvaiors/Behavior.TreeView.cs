@@ -41,17 +41,17 @@ namespace H.Extensions.Behvaiors
 
         protected override void OnAttached()
         {
-            AssociatedObject.AddHandler(TreeViewItem.UnselectedEvent, new RoutedEventHandler(OnTreeViewItemUnselected), true);
-            AssociatedObject.AddHandler(TreeViewItem.SelectedEvent, new RoutedEventHandler(OnTreeViewItemSelected), true);
-            AssociatedObject.AddHandler(UIElement.KeyDownEvent, new KeyEventHandler(OnKeyDown), true);
+            this.AssociatedObject.AddHandler(TreeViewItem.UnselectedEvent, new RoutedEventHandler(OnTreeViewItemUnselected), true);
+            this.AssociatedObject.AddHandler(TreeViewItem.SelectedEvent, new RoutedEventHandler(OnTreeViewItemSelected), true);
+            this.AssociatedObject.AddHandler(UIElement.KeyDownEvent, new KeyEventHandler(OnKeyDown), true);
             base.OnAttached();
         }
 
         protected override void OnDetaching()
         {
-            AssociatedObject.RemoveHandler(UIElement.KeyDownEvent, new KeyEventHandler(OnKeyDown));
-            AssociatedObject.RemoveHandler(TreeViewItem.UnselectedEvent, new RoutedEventHandler(OnTreeViewItemUnselected));
-            AssociatedObject.RemoveHandler(TreeViewItem.SelectedEvent, new RoutedEventHandler(OnTreeViewItemSelected));
+            this.AssociatedObject.RemoveHandler(UIElement.KeyDownEvent, new KeyEventHandler(OnKeyDown));
+            this.AssociatedObject.RemoveHandler(TreeViewItem.UnselectedEvent, new RoutedEventHandler(OnTreeViewItemUnselected));
+            this.AssociatedObject.RemoveHandler(TreeViewItem.SelectedEvent, new RoutedEventHandler(OnTreeViewItemSelected));
             base.OnDetaching();
         }
 
@@ -120,7 +120,7 @@ namespace H.Extensions.Behvaiors
         private void OnKeyDown(object sender, KeyEventArgs e)
         {
             TreeView tree = (TreeView)sender;
-            Debug.Assert(tree == AssociatedObject);
+            Debug.Assert(tree == this.AssociatedObject);
 
             // If you press CTRL+A, do a full select.
             if (e.Key == Key.A && e.KeyboardDevice.Modifiers == ModifierKeys.Control)
@@ -136,7 +136,7 @@ namespace H.Extensions.Behvaiors
         private IEnumerable<TreeViewItem> GetExpandedTreeViewItems(ItemsControl container = null)
         {
             if (container == null)
-                container = AssociatedObject;
+                container = this.AssociatedObject;
 
             for (int i = 0; i < container.Items.Count; i++)
             {

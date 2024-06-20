@@ -95,12 +95,12 @@ namespace H.Controls.OrderBox
         public bool Save(out string message)
         {
             message = null;
-            if (string.IsNullOrEmpty(ID))
+            if (string.IsNullOrEmpty(this.ID))
             {
                 message = "ID为空";
                 return false;
             }
-            MetaSettingService?.Serilize(this, ID);
+            this.MetaSettingService?.Serilize(this, this.ID);
             return true;
         }
         private bool _isLoaded = false;

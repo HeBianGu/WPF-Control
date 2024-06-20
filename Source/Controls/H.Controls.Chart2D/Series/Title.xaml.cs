@@ -20,7 +20,7 @@ namespace H.Controls.Chart2D
             set { SetValue(TextProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty TextProperty =
             DependencyProperty.Register("Text", typeof(string), typeof(Title), new PropertyMetadata(default(string), (d, e) =>
              {
@@ -39,7 +39,7 @@ namespace H.Controls.Chart2D
             set { SetValue(DescriptionProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty DescriptionProperty =
             DependencyProperty.Register("Description", typeof(string), typeof(Title), new PropertyMetadata(default(string), (d, e) =>
              {
@@ -57,7 +57,7 @@ namespace H.Controls.Chart2D
             base.Draw(canvas);
 
             //  Do ：显示文本
-            Label label = new Label() { Content = Text };
+            Label label = new Label() { Content = this.Text };
 
             label.Style = this.LabelStyle;
 

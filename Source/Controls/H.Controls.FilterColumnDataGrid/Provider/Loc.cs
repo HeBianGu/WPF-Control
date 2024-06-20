@@ -124,16 +124,16 @@ namespace H.Controls.FilterColumnDataGrid
         public Loc()
         {
             language = Local.English;
-            SelectedLanguage = English;
+            this.SelectedLanguage = English;
         }
 
         #endregion Public Constructors
 
         #region Public Properties
 
-        public CultureInfo Culture => SelectedLanguage.Culture;
-        public string DisplayName => SelectedLanguage.Culture.DisplayName;
-        public string EnglishName => SelectedLanguage.Language;
+        public CultureInfo Culture => this.SelectedLanguage.Culture;
+        public string DisplayName => this.SelectedLanguage.Culture.DisplayName;
+        public string EnglishName => this.SelectedLanguage.Language;
 
         public Local Language
         {
@@ -148,7 +148,7 @@ namespace H.Controls.FilterColumnDataGrid
                         BindingFlags.Static | BindingFlags.NonPublic);
 
                 if (propertyInfo == null) return;
-                SelectedLanguage = (ILanguageDictionary)propertyInfo.GetValue(null);
+                this.SelectedLanguage = (ILanguageDictionary)propertyInfo.GetValue(null);
             }
         }
 
@@ -161,7 +161,7 @@ namespace H.Controls.FilterColumnDataGrid
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        private string Translate(TranslatableElements key) => SelectedLanguage == null ? "unknow" : SelectedLanguage.Dictionary[key];
+        private string Translate(TranslatableElements key) => this.SelectedLanguage == null ? "unknow" : this.SelectedLanguage.Dictionary[key];
 
         #endregion Private Methods
 
@@ -471,9 +471,9 @@ namespace H.Controls.FilterColumnDataGrid
         public LanguageDictionary(string language, CultureInfo culture,
             Dictionary<TranslatableElements, string> dictionary)
         {
-            Language = language;
-            Culture = culture;
-            Dictionary = dictionary;
+            this.Language = language;
+            this.Culture = culture;
+            this.Dictionary = dictionary;
         }
 
         #endregion Public Constructors

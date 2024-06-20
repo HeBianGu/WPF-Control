@@ -1,7 +1,5 @@
 ﻿using H.Extensions.Tree;
 using H.Providers.Mvvm;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -24,7 +22,7 @@ namespace H.Controls.FavoriteBox
             bingding.Executed += (s, e) =>
             {
                 this.SelectNone();
-            }; 
+            };
             bingding.CanExecute += (l, k) =>
             {
                 k.CanExecute = this.SelectedItem != null;
@@ -127,7 +125,7 @@ namespace H.Controls.FavoriteBox
             if (e.NewValue is IModelBindable viewModel && viewModel.GetModel() is IFavoriteItem favorite)
                 this.SelectedFavoritePath = favorite.Path;
             else
-                this.SelectedFavoritePath=null;
+                this.SelectedFavoritePath = null;
         }
 
     }

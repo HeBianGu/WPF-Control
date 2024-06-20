@@ -2,7 +2,6 @@
 
 using H.Providers.Mvvm;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 
 namespace H.Windows.Ribbon
 {

@@ -89,7 +89,7 @@ namespace H.Controls.Dock.Controls
             ILayoutOrientableGroup paneGroupOrientaion = paneGroup;
 
 
-            switch (Type)
+            switch (this.Type)
             {
                 case DropTargetType.DocumentPaneDockBottom:
 
@@ -244,7 +244,7 @@ namespace H.Controls.Dock.Controls
         {
             ILayoutDocumentPane targetModel = _targetPane.Model as ILayoutDocumentPane;
 
-            switch (Type)
+            switch (this.Type)
             {
                 case DropTargetType.DocumentPaneDockBottom:
 
@@ -472,11 +472,11 @@ namespace H.Controls.Dock.Controls
         public override Geometry GetPreviewPath(OverlayWindow overlayWindow,
                                                 LayoutFloatingWindow floatingWindowModel)
         {
-            switch (Type)
+            switch (this.Type)
             {
                 case DropTargetType.DocumentPaneDockInside:
                     {
-                        Rect targetScreenRect = TargetElement.GetScreenArea();
+                        Rect targetScreenRect = this.TargetElement.GetScreenArea();
                         targetScreenRect.Offset(-overlayWindow.Left, -overlayWindow.Top);
 
                         if (_tabIndex == -1)
@@ -485,7 +485,7 @@ namespace H.Controls.Dock.Controls
                         }
                         else
                         {
-                            Rect translatedDetectionRect = new Rect(DetectionRects[0].TopLeft, DetectionRects[0].BottomRight);
+                            Rect translatedDetectionRect = new Rect(this.DetectionRects[0].TopLeft, this.DetectionRects[0].BottomRight);
                             translatedDetectionRect.Offset(-overlayWindow.Left, -overlayWindow.Top);
 
                             PathFigure pathFigure = new PathFigure();
@@ -506,7 +506,7 @@ namespace H.Controls.Dock.Controls
 
                 case DropTargetType.DocumentPaneDockBottom:
                     {
-                        Rect targetScreenRect = TargetElement.GetScreenArea();
+                        Rect targetScreenRect = this.TargetElement.GetScreenArea();
                         targetScreenRect.Offset(-overlayWindow.Left, -overlayWindow.Top);
                         targetScreenRect.Offset(0.0, targetScreenRect.Height / 2.0);
                         targetScreenRect.Height /= 2.0;
@@ -515,7 +515,7 @@ namespace H.Controls.Dock.Controls
 
                 case DropTargetType.DocumentPaneDockTop:
                     {
-                        Rect targetScreenRect = TargetElement.GetScreenArea();
+                        Rect targetScreenRect = this.TargetElement.GetScreenArea();
                         targetScreenRect.Offset(-overlayWindow.Left, -overlayWindow.Top);
                         targetScreenRect.Height /= 2.0;
                         return new RectangleGeometry(targetScreenRect);
@@ -523,7 +523,7 @@ namespace H.Controls.Dock.Controls
 
                 case DropTargetType.DocumentPaneDockLeft:
                     {
-                        Rect targetScreenRect = TargetElement.GetScreenArea();
+                        Rect targetScreenRect = this.TargetElement.GetScreenArea();
                         targetScreenRect.Offset(-overlayWindow.Left, -overlayWindow.Top);
                         targetScreenRect.Width /= 2.0;
                         return new RectangleGeometry(targetScreenRect);
@@ -531,7 +531,7 @@ namespace H.Controls.Dock.Controls
 
                 case DropTargetType.DocumentPaneDockRight:
                     {
-                        Rect targetScreenRect = TargetElement.GetScreenArea();
+                        Rect targetScreenRect = this.TargetElement.GetScreenArea();
                         targetScreenRect.Offset(-overlayWindow.Left, -overlayWindow.Top);
                         targetScreenRect.Offset(targetScreenRect.Width / 2.0, 0.0);
                         targetScreenRect.Width /= 2.0;

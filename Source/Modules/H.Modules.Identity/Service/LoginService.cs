@@ -1,7 +1,6 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
-using H.Modules.Identity;
 using H.Providers.Ioc;
 using H.Providers.Mvvm;
 using Microsoft.Extensions.Options;
@@ -77,7 +76,7 @@ namespace H.Modules.Identity
         {
             message = null;
             Ioc<IOperationService>.Instance?.Log<hi_dd_user>("登录", "退出登录");
-            User = null;
+            this.User = null;
             return true;
         }
     }

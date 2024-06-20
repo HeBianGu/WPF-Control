@@ -72,7 +72,7 @@ namespace H.Controls.Diagram.Extension
                  //WindowMessageViewPresenter.Instance.IsVisible = false;
 
              });
-        }, (s, e) => State != DiagramFlowableState.Running && this.State != DiagramFlowableState.Canceling);
+        }, (s, e) => this.State != DiagramFlowableState.Running && this.State != DiagramFlowableState.Canceling);
 
 
         [Display(Name = "停止", GroupName = "操作", Order = 0)]
@@ -96,7 +96,7 @@ namespace H.Controls.Diagram.Extension
                     part.State = FlowableState.Canceling;
                 }
             }
-        }, (s, e) => State == DiagramFlowableState.Running && this.State != DiagramFlowableState.Canceling);
+        }, (s, e) => this.State == DiagramFlowableState.Running && this.State != DiagramFlowableState.Canceling);
 
         [Display(Name = "重置", GroupName = "操作", Order = 0)]
         public RelayCommand CancelCommand => new RelayCommand((s, e) =>
@@ -109,7 +109,7 @@ namespace H.Controls.Diagram.Extension
                     flowable.State = FlowableState.Ready;
             }
             this.State = DiagramFlowableState.None;
-        }, (s, e) => State != DiagramFlowableState.None && this.State != DiagramFlowableState.Canceling);
+        }, (s, e) => this.State != DiagramFlowableState.None && this.State != DiagramFlowableState.Canceling);
 
 
         public RelayCommand StartNodeCommand => new RelayCommand(async (s, e) =>

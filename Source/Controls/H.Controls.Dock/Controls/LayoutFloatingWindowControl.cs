@@ -76,7 +76,7 @@ namespace H.Controls.Dock.Controls
         protected LayoutFloatingWindowControl(ILayoutElement model, bool isContentImmutable)
           : this(model)
         {
-            IsContentImmutable = isContentImmutable;
+            this.IsContentImmutable = isContentImmutable;
         }
 
         #endregion Constructors
@@ -218,7 +218,7 @@ namespace H.Controls.Dock.Controls
         protected override void OnStateChanged(EventArgs e)
         {
             if (!_isInternalChange)
-                UpdateMaximizedState(WindowState == WindowState.Maximized);
+                UpdateMaximizedState(this.WindowState == WindowState.Maximized);
 
             base.OnStateChanged(e);
         }
@@ -299,16 +299,16 @@ namespace H.Controls.Dock.Controls
                 {
                     if (currentThemeResourceDictionary != null)
                     {
-                        Resources.MergedDictionaries.Remove(currentThemeResourceDictionary);
+                        this.Resources.MergedDictionaries.Remove(currentThemeResourceDictionary);
                         currentThemeResourceDictionary = null;
                     }
                 }
                 else
                 {
                     ResourceDictionary resourceDictionaryToRemove =
-                        Resources.MergedDictionaries.FirstOrDefault(r => r.Source == oldTheme.GetResourceUri());
+                        this.Resources.MergedDictionaries.FirstOrDefault(r => r.Source == oldTheme.GetResourceUri());
                     if (resourceDictionaryToRemove != null)
-                        Resources.MergedDictionaries.Remove(
+                        this.Resources.MergedDictionaries.Remove(
                             resourceDictionaryToRemove);
                 }
             }
@@ -319,10 +319,10 @@ namespace H.Controls.Dock.Controls
             if (manager.Theme is DictionaryTheme dictionaryTheme)
             {
                 currentThemeResourceDictionary = dictionaryTheme.ThemeResourceDictionary;
-                Resources.MergedDictionaries.Add(currentThemeResourceDictionary);
+                this.Resources.MergedDictionaries.Add(currentThemeResourceDictionary);
             }
             else
-                Resources.MergedDictionaries.Add(new ResourceDictionary { Source = manager.Theme.GetResourceUri() });
+                this.Resources.MergedDictionaries.Add(new ResourceDictionary { Source = manager.Theme.GetResourceUri() });
         }
 
         internal void AttachDrag(bool onActivated = true)
@@ -336,7 +336,7 @@ namespace H.Controls.Dock.Controls
             {
                 CaptureMouse();
                 IntPtr windowHandle = new WindowInteropHelper(this).Handle;
-                IntPtr lParam = new IntPtr(((int)Left & 0xFFFF) | ((int)Top << 16));
+                IntPtr lParam = new IntPtr(((int)this.Left & 0xFFFF) | ((int)this.Top << 16));
                 Win32Helper.SendMessage(windowHandle, Win32Helper.WM_NCLBUTTONDOWN, new IntPtr(Win32Helper.HT_CAPTION), lParam);
             }
         }
@@ -367,7 +367,7 @@ namespace H.Controls.Dock.Controls
                 case Win32Helper.WM_MOVING:
                     {
                         UpdateDragPosition();
-                        if (IsMaximized) UpdateMaximizedState(false);
+                        if (this.IsMaximized) UpdateMaximizedState(false);
                     }
                     break;
 
@@ -432,7 +432,7 @@ namespace H.Controls.Dock.Controls
                 Thickness margin = frameworkElements.Sum(f => f.Margin);
                 margin = margin.Add(padding).Add(border).Add(grid.Margin);
                 margin.Top = grid.RowDefinitions[0].MinHeight;
-                TotalMargin = margin;
+                this.TotalMargin = margin;
                 _isTotalMarginSet = true;
             }
         }
@@ -458,8 +458,8 @@ namespace H.Controls.Dock.Controls
                     System.Collections.Generic.IEnumerable<FrameworkElement> contents = layoutContents.OfType<FrameworkElement>();
                     foreach (FrameworkElement content in contents)
                     {
-                        ContentMinHeight = Math.Max(content.MinHeight, ContentMinHeight);
-                        ContentMinWidth = Math.Max(content.MinWidth, ContentMinWidth);
+                        this.ContentMinHeight = Math.Max(content.MinHeight, this.ContentMinHeight);
+                        this.ContentMinWidth = Math.Max(content.MinWidth, this.ContentMinWidth);
                         if ((this.Model?.Root?.Manager?.AutoWindowSizeWhenOpened).GetValueOrDefault())
                         {
                             FrameworkElement parent = content.GetParents()
@@ -469,13 +469,13 @@ namespace H.Controls.Dock.Controls
                             if (content.ActualHeight < content.MinHeight ||
                                 (parent != null && parent.ActualHeight < content.MinHeight))
                             {
-                                Height = content.MinHeight + TotalMargin.Top + TotalMargin.Bottom;
+                                this.Height = content.MinHeight + this.TotalMargin.Top + this.TotalMargin.Bottom;
                             }
 
                             if (content.ActualWidth < content.MinWidth ||
                                 (parent != null && parent.ActualWidth < content.MinWidth))
                             {
-                                Width = content.MinWidth + TotalMargin.Left + TotalMargin.Right;
+                                this.Width = content.MinWidth + this.TotalMargin.Left + this.TotalMargin.Right;
                             }
                         }
                     }
@@ -499,9 +499,9 @@ namespace H.Controls.Dock.Controls
         protected override void OnClosed(EventArgs e)
         {
             SizeChanged -= OnSizeChanged;
-            if (Content != null)
+            if (this.Content != null)
             {
-                (Content as FloatingWindowContentHost)?.Dispose();
+                (this.Content as FloatingWindowContentHost)?.Dispose();
                 if (_hwndSrc != null)
                 {
                     _hwndSrc.RemoveHook(_hwndSrcHook);
@@ -515,13 +515,13 @@ namespace H.Controls.Dock.Controls
         /// <inheritdoc />
         protected override void OnInitialized(EventArgs e)
         {
-            CommandBindings.Add(new CommandBinding(Microsoft.Windows.Shell.SystemCommands.CloseWindowCommand,
+            this.CommandBindings.Add(new CommandBinding(Microsoft.Windows.Shell.SystemCommands.CloseWindowCommand,
                 (s, args) => Microsoft.Windows.Shell.SystemCommands.CloseWindow((Window)args.Parameter)));
-            CommandBindings.Add(new CommandBinding(Microsoft.Windows.Shell.SystemCommands.MaximizeWindowCommand,
+            this.CommandBindings.Add(new CommandBinding(Microsoft.Windows.Shell.SystemCommands.MaximizeWindowCommand,
                 (s, args) => Microsoft.Windows.Shell.SystemCommands.MaximizeWindow((Window)args.Parameter)));
-            CommandBindings.Add(new CommandBinding(Microsoft.Windows.Shell.SystemCommands.MinimizeWindowCommand,
+            this.CommandBindings.Add(new CommandBinding(Microsoft.Windows.Shell.SystemCommands.MinimizeWindowCommand,
                 (s, args) => Microsoft.Windows.Shell.SystemCommands.MinimizeWindow((Window)args.Parameter)));
-            CommandBindings.Add(new CommandBinding(Microsoft.Windows.Shell.SystemCommands.RestoreWindowCommand,
+            this.CommandBindings.Add(new CommandBinding(Microsoft.Windows.Shell.SystemCommands.RestoreWindowCommand,
                 (s, args) => Microsoft.Windows.Shell.SystemCommands.RestoreWindow((Window)args.Parameter)));
             //Debug.Assert(this.Owner != null);
             base.OnInitialized(e);
@@ -540,7 +540,7 @@ namespace H.Controls.Dock.Controls
         {
             try
             {
-                Owner?.Activate();
+                this.Owner?.Activate();
             }
             catch (Exception)
             {
@@ -568,7 +568,7 @@ namespace H.Controls.Dock.Controls
             _hwndSrcHook = FilterMessage;
             _hwndSrc.AddHook(_hwndSrcHook);
             // Restore maximize state
-            bool maximized = Model.Descendents().OfType<ILayoutElementForFloatingWindow>().Any(l => l.IsMaximized);
+            bool maximized = this.Model.Descendents().OfType<ILayoutElementForFloatingWindow>().Any(l => l.IsMaximized);
             UpdateMaximizedState(maximized);
         }
 
@@ -576,8 +576,8 @@ namespace H.Controls.Dock.Controls
         {
             // Determine whether the child window should be owned by the parent or act independently
             // according to OwnedByDockingManagerWindow property.
-            DockingManager manager = Model?.Root?.Manager;
-            if (OwnedByDockingManagerWindow && manager != null)
+            DockingManager manager = this.Model?.Root?.Manager;
+            if (this.OwnedByDockingManagerWindow && manager != null)
                 this.SetParentToMainWindowOf(manager);
             else
                 this.SetParentWindowToNull();
@@ -602,10 +602,10 @@ namespace H.Controls.Dock.Controls
 
         private void OnSizeChanged(object sender, SizeChangedEventArgs e)
         {
-            foreach (ILayoutElementForFloatingWindow posElement in Model.Descendents().OfType<ILayoutElementForFloatingWindow>())
+            foreach (ILayoutElementForFloatingWindow posElement in this.Model.Descendents().OfType<ILayoutElementForFloatingWindow>())
             {
-                posElement.FloatingWidth = ActualWidth;
-                posElement.FloatingHeight = ActualHeight;
+                posElement.FloatingWidth = this.ActualWidth;
+                posElement.FloatingHeight = this.ActualHeight;
                 posElement.RaiseFloatingPropertiesUpdated();
             }
         }
@@ -623,15 +623,15 @@ namespace H.Controls.Dock.Controls
             // BugFix Issue #6
             // This code is initializes the drag when content (document or toolwindow) is dragged
             // A second chance back up plan if DragDelta is not set
-            if (DragDelta == default) DragDelta = new Point(3, 3);
-            Left = mousePosition.X - DragDelta.X;                 // BugFix Issue #6
-            Top = mousePosition.Y - DragDelta.Y;
+            if (this.DragDelta == default) this.DragDelta = new Point(3, 3);
+            this.Left = mousePosition.X - this.DragDelta.X;                 // BugFix Issue #6
+            this.Top = mousePosition.Y - this.DragDelta.Y;
 
             if (this.GetScreenArea().Size != area.Size) // setting the top/left co-ordinates has changed the size - this means moving to a screen with a different DPI. Recalculate mouse position based on new DPI to avoid wrong drag location
             {
                 mousePosition = this.PointToScreenDPI(Mouse.GetPosition(this));
-                Left = mousePosition.X - DragDelta.X;
-                Top = mousePosition.Y - DragDelta.Y;
+                this.Left = mousePosition.X - this.DragDelta.X;
+                this.Top = mousePosition.Y - this.DragDelta.Y;
             }
 
             _attachDrag = false;
@@ -642,32 +642,32 @@ namespace H.Controls.Dock.Controls
 
         private void UpdatePositionAndSizeOfPanes()
         {
-            foreach (ILayoutElementForFloatingWindow posElement in Model.Descendents().OfType<ILayoutElementForFloatingWindow>())
+            foreach (ILayoutElementForFloatingWindow posElement in this.Model.Descendents().OfType<ILayoutElementForFloatingWindow>())
             {
-                posElement.FloatingLeft = Left;
-                posElement.FloatingTop = Top;
-                posElement.FloatingWidth = Width;
-                posElement.FloatingHeight = Height;
+                posElement.FloatingLeft = this.Left;
+                posElement.FloatingTop = this.Top;
+                posElement.FloatingWidth = this.Width;
+                posElement.FloatingHeight = this.Height;
                 posElement.RaiseFloatingPropertiesUpdated();
             }
         }
 
         private void UpdateMaximizedState(bool isMaximized)
         {
-            foreach (ILayoutElementForFloatingWindow posElement in Model.Descendents().OfType<ILayoutElementForFloatingWindow>())
+            foreach (ILayoutElementForFloatingWindow posElement in this.Model.Descendents().OfType<ILayoutElementForFloatingWindow>())
                 posElement.IsMaximized = isMaximized;
-            IsMaximized = isMaximized;
+            this.IsMaximized = isMaximized;
             _isInternalChange = true;
 
             if (isMaximized)
             {
-                WindowState = WindowState.Maximized;
+                this.WindowState = WindowState.Maximized;
             }
             else if (!this.AllowMinimize || this.WindowState != WindowState.Minimized)
             {
                 // If minimize is not supported, this prevents the window from being minimized.
                 // by resetting it to the normal state.
-                WindowState = WindowState.Normal;
+                this.WindowState = WindowState.Normal;
             }
 
             _isInternalChange = false;
@@ -712,7 +712,7 @@ namespace H.Controls.Dock.Controls
             public FloatingWindowContentHost(LayoutFloatingWindowControl owner)
             {
                 _owner = owner;
-                Binding binding = new Binding(nameof(SizeToContent)) { Source = _owner };
+                Binding binding = new Binding(nameof(this.SizeToContent)) { Source = _owner };
                 BindingOperations.SetBinding(this, SizeToContentProperty, binding);
             }
 
@@ -744,7 +744,7 @@ namespace H.Controls.Dock.Controls
             /// <summary>Provides derived classes an opportunity to handle changes to the <see cref="Content"/> property.</summary>
             protected virtual void OnContentChanged(UIElement oldValue, UIElement newValue)
             {
-                if (_rootPresenter != null) _rootPresenter.Child = Content;
+                if (_rootPresenter != null) _rootPresenter.Child = this.Content;
                 if (oldValue is FrameworkElement oldContent) oldContent.SizeChanged -= Content_SizeChanged;
                 if (newValue is FrameworkElement newContent) newContent.SizeChanged += Content_SizeChanged;
             }
@@ -791,7 +791,7 @@ namespace H.Controls.Dock.Controls
                     UsesPerPixelOpacity = true,
                 });
 
-                _rootPresenter = new Border { Child = new AdornerDecorator { Child = Content }, Focusable = true };
+                _rootPresenter = new Border { Child = new AdornerDecorator { Child = this.Content }, Focusable = true };
                 AutomationProperties.SetName(_rootPresenter, "FloatingWindowHost");
                 _rootPresenter.SetBinding(Border.BackgroundProperty, new Binding(nameof(Background)) { Source = _owner });
                 _wpfContentHost.RootVisual = _rootPresenter;
@@ -812,9 +812,9 @@ namespace H.Controls.Dock.Controls
             /// <inheritdoc />
             protected override Size MeasureOverride(Size constraint)
             {
-                if (Content == null) return base.MeasureOverride(constraint);
-                Content.Measure(constraint);
-                return Content.DesiredSize;
+                if (this.Content == null) return base.MeasureOverride(constraint);
+                this.Content.Measure(constraint);
+                return this.Content.DesiredSize;
             }
 
             #endregion Overrides

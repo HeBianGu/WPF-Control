@@ -111,7 +111,7 @@ namespace H.Controls.PropertyGrid
             ListCollectionView lcv = (ListCollectionView)CollectionViewSource.GetDefaultView(this.AvailableColors);
             if (lcv != null)
             {
-                lcv.CustomSort = (AvailableColorsSortingMode == ColorSortingMode.HueSaturationBrightness)
+                lcv.CustomSort = (this.AvailableColorsSortingMode == ColorSortingMode.HueSaturationBrightness)
                                   ? new ColorSorter()
                                   : null;
             }
@@ -326,7 +326,7 @@ namespace H.Controls.PropertyGrid
 
         private void OnSelectedColorChanged(Color? oldValue, Color? newValue)
         {
-            SelectedColorText = GetFormatedColorString(newValue);
+            this.SelectedColorText = GetFormatedColorString(newValue);
 
             RoutedPropertyChangedEventArgs<Color?> args = new RoutedPropertyChangedEventArgs<Color?>(oldValue, newValue);
             args.RoutedEvent = ColorPicker.SelectedColorChangedEvent;
@@ -512,7 +512,7 @@ namespace H.Controls.PropertyGrid
 
         private void OnUsingAlphaChannelChanged()
         {
-            SelectedColorText = GetFormatedColorString(SelectedColor);
+            this.SelectedColorText = GetFormatedColorString(this.SelectedColor);
         }
 
         #endregion //UsingAlphaChannel
@@ -596,11 +596,11 @@ namespace H.Controls.PropertyGrid
 
         private void OnKeyDown(object sender, KeyEventArgs e)
         {
-            if (!IsOpen)
+            if (!this.IsOpen)
             {
                 if (KeyboardUtilities.IsKeyModifyingPopupState(e))
                 {
-                    IsOpen = true;
+                    this.IsOpen = true;
                     // Focus will be on ListBoxItem in Popup_Opened().
                     e.Handled = true;
                 }
@@ -633,7 +633,7 @@ namespace H.Controls.PropertyGrid
             if (e.AddedItems.Count > 0)
             {
                 ColorItem colorItem = (ColorItem)e.AddedItems[0];
-                SelectedColor = colorItem.Color;
+                this.SelectedColor = colorItem.Color;
                 if (!string.IsNullOrEmpty(colorItem.Name))
                 {
                     this.SelectedColorText = colorItem.Name;
@@ -646,13 +646,13 @@ namespace H.Controls.PropertyGrid
 
         private void Popup_Opened(object sender, EventArgs e)
         {
-            if ((_availableColors != null) && ShowAvailableColors)
+            if ((_availableColors != null) && this.ShowAvailableColors)
             {
                 FocusOnListBoxItem(_availableColors);
             }
-            else if ((_standardColors != null) && ShowStandardColors)
+            else if ((_standardColors != null) && this.ShowStandardColors)
                 FocusOnListBoxItem(_standardColors);
-            else if ((_recentColors != null) && ShowRecentColors)
+            else if ((_recentColors != null) && this.ShowRecentColors)
                 FocusOnListBoxItem(_recentColors);
         }
 
@@ -726,22 +726,22 @@ namespace H.Controls.PropertyGrid
 
         private void CloseColorPicker(bool isFocusOnColorPicker)
         {
-            if (IsOpen)
-                IsOpen = false;
+            if (this.IsOpen)
+                this.IsOpen = false;
             ReleaseMouseCapture();
 
             if (isFocusOnColorPicker && (_toggleButton != null))
                 _toggleButton.Focus();
-            this.UpdateRecentColors(new ColorItem(SelectedColor, SelectedColorText));
+            this.UpdateRecentColors(new ColorItem(this.SelectedColor, this.SelectedColorText));
         }
 
         private void UpdateRecentColors(ColorItem colorItem)
         {
-            if (!RecentColors.Contains(colorItem))
-                RecentColors.Add(colorItem);
+            if (!this.RecentColors.Contains(colorItem))
+                this.RecentColors.Add(colorItem);
 
-            if (RecentColors.Count > 10) //don't allow more than ten, maybe make a property that can be set by the user.
-                RecentColors.RemoveAt(0);
+            if (this.RecentColors.Count > 10) //don't allow more than ten, maybe make a property that can be set by the user.
+                this.RecentColors.RemoveAt(0);
         }
 
         private string GetFormatedColorString(Color? colorToFormat)
@@ -749,7 +749,7 @@ namespace H.Controls.PropertyGrid
             if ((colorToFormat == null) || !colorToFormat.HasValue)
                 return string.Empty;
 
-            return ColorUtilities.FormatColorString(colorToFormat.Value.GetColorName(), UsingAlphaChannel);
+            return ColorUtilities.FormatColorString(colorToFormat.Value.GetColorName(), this.UsingAlphaChannel);
         }
 
         private static ObservableCollection<ColorItem> CreateStandardColors()

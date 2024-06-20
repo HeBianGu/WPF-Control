@@ -30,7 +30,7 @@ namespace H.Controls.Diagram
             set { SetValue(IsLinkCrossBoundProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty IsLinkCrossBoundProperty =
             DependencyProperty.Register("IsLinkCrossBound", typeof(bool), typeof(LinkDrawer), new PropertyMetadata(true, (d, e) =>
             {
@@ -54,7 +54,7 @@ namespace H.Controls.Diagram
             set { SetValue(IsUseArrowProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty IsUseArrowProperty =
             DependencyProperty.Register("IsUseArrow", typeof(bool), typeof(LinkDrawer), new FrameworkPropertyMetadata(true, (d, e) =>
              {
@@ -86,7 +86,7 @@ namespace H.Controls.Diagram
             set { SetValue(ArrowAngleProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty ArrowAngleProperty =
             DependencyProperty.Register("ArrowAngle", typeof(double), typeof(LinkDrawer), new FrameworkPropertyMetadata(Math.PI / 6, (d, e) =>
              {
@@ -115,7 +115,7 @@ namespace H.Controls.Diagram
             set { SetValue(ArrowLengthProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty ArrowLengthProperty =
             DependencyProperty.Register("ArrowLength", typeof(double), typeof(LinkDrawer), new FrameworkPropertyMetadata(5.0, (d, e) =>
              {
@@ -145,7 +145,7 @@ namespace H.Controls.Diagram
         {
             Point point1 = new Point(x1, y1);     // 箭头起点
             Point point2 = new Point(x2, y2);     // 箭头终点
-            if (!IsUseArrow) return new Point[] { point1, point2 };
+            if (!this.IsUseArrow) return new Point[] { point1, point2 };
             Point[] arrows = this.GetArrowPoints(x1, y1, x2, y2);
             return new Point[] { point1, point2, arrows[0], arrows[1], arrows[2] };
         }

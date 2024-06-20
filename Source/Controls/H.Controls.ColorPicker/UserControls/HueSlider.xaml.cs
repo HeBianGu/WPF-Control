@@ -68,12 +68,12 @@ namespace H.Controls.ColorPicker.UserControls
             if (y < 0)
                 angle = -angle;
             angle = angle * 360 / (Math.PI * 2) + 180;
-            Value = MathHelper.Clamp(angle, 0, 360);
+            this.Value = MathHelper.Clamp(angle, 0, 360);
         }
 
         private void OnPreviewMouseWheel(object sender, MouseWheelEventArgs args)
         {
-            Value = MathHelper.Mod(Value + SmallChange * args.Delta / 120, 360);
+            this.Value = MathHelper.Mod(this.Value + this.SmallChange * args.Delta / 120, 360);
             args.Handled = true;
         }
     }

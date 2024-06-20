@@ -81,7 +81,7 @@ namespace H.Controls.PropertyGrid
 
             string propertyStr = item as string;
             if (propertyStr != null)
-                return PropertyItems.FirstOrDefault((prop) => propertyStr == prop.PropertyDescriptor.Name);
+                return this.PropertyItems.FirstOrDefault((prop) => propertyStr == prop.PropertyDescriptor.Name);
 
             return null;
         }
@@ -99,7 +99,7 @@ namespace H.Controls.PropertyGrid
 
         public override void UpdateValuesFromSource()
         {
-            foreach (PropertyItem item in PropertyItems)
+            foreach (PropertyItem item in this.PropertyItems)
             {
                 item.DescriptorDefinition.UpdateValueFromSource();
                 item.ContainerHelper.UpdateValuesFromSource();
@@ -108,7 +108,7 @@ namespace H.Controls.PropertyGrid
 
         public void GenerateProperties()
         {
-            if (PropertyItems.Count == 0
+            if (this.PropertyItems.Count == 0
               )
             {
                 this.RegenerateProperties();
@@ -216,7 +216,7 @@ namespace H.Controls.PropertyGrid
                 if (this.ChildrenItemsControl.ItemContainerGenerator.Status != GeneratorStatus.GeneratingContainers
                   && !_isPreparingItemFlag)
                 {
-                    PropertyItems.RefreshView();
+                    this.PropertyItems.RefreshView();
                 }
             }
         }
@@ -235,15 +235,15 @@ namespace H.Controls.PropertyGrid
             }
 
             //Remove the event callback from the previous children (if any)
-            foreach (PropertyItem propertyItem in PropertyItems)
+            foreach (PropertyItem propertyItem in this.PropertyItems)
             {
                 propertyItem.PropertyChanged -= OnChildrenPropertyChanged;
             }
 
-            PropertyItems.UpdateItems(subProperties);
+            this.PropertyItems.UpdateItems(subProperties);
 
             //Add the event callback to the new childrens
-            foreach (PropertyItem propertyItem in PropertyItems)
+            foreach (PropertyItem propertyItem in this.PropertyItems)
             {
                 propertyItem.PropertyChanged += OnChildrenPropertyChanged;
             }

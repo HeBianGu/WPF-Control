@@ -16,7 +16,7 @@ namespace H.Providers.Ioc
                 {
                     if (c.IsCancel)
                         break;
-                    p.Value = string.Format(Format, i);
+                    p.Value = string.Format(this.Format, i);
                     Thread.Sleep(100);
                 }
                 p.Value = c.IsCancel ? "取消操作" : "加载完成";

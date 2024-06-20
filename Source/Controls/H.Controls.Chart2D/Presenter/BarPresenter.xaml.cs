@@ -21,7 +21,7 @@ namespace H.Controls.Chart2D
 
         public BarPresenter(IChartDataProvider dataProvider) : base(dataProvider)
         {
-          
+
         }
     }
 }

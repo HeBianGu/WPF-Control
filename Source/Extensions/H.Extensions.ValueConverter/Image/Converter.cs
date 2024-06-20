@@ -15,7 +15,7 @@ namespace HeBianGu.App.Tool
     {
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value == null) 
+            if (value == null)
                 return null;
             Icon icon = (Icon)value;
             ImageSource imageSource =

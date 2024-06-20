@@ -1,10 +1,5 @@
-﻿
-using H.Controls.TagBox;
-using H.Providers.Ioc;
-using H.Providers.Mvvm;
+﻿using H.Providers.Mvvm;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 
@@ -14,7 +9,7 @@ namespace H.App.FileManager
     //{
     //    public MoreVideoView(fm_dd_video t) : base(t)
     //    {
-            
+
     //        //List<VideoView> moreVideos = new List<VideoView>();
     //        //this.SelectedItem = new VideoView(t);
     //        //moreVideos.Add(this.SelectedItem);

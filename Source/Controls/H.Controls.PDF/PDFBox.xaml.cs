@@ -1,5 +1,4 @@
 ﻿using H.Providers.Ioc;
-using H.Providers.Mvvm;
 using Microsoft.Win32;
 using PdfiumViewer;
 using PdfiumViewer.Core;
@@ -8,7 +7,6 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -168,10 +166,10 @@ namespace H.Controls.PDF
                     try
                     {
                         var pageStep = this._renderer.PagesDisplayMode == PdfViewerPagesDisplayMode.BookMode ? 2 : 1;
-                        Dispatcher.Invoke(() => this._renderer.GotoPage(0));
+                        this.Dispatcher.Invoke(() => this._renderer.GotoPage(0));
                         while (this._renderer.PageNo < this._renderer.PageCount - pageStep)
                         {
-                            Dispatcher.Invoke(() => this._renderer.NextPage());
+                            this.Dispatcher.Invoke(() => this._renderer.NextPage());
                             await Task.Delay(1);
                         }
                     }
@@ -290,9 +288,9 @@ namespace H.Controls.PDF
                 CommandBinding binding = new CommandBinding(PDFBoxCommands.ShowBookmarks);
                 binding.Executed += (l, k) =>
                 {
-                    Bookmarks = Renderer.Bookmarks;
-                    if (Bookmarks?.Count > 0)
-                        ShowBookmarks = !ShowBookmarks;
+                    this.Bookmarks = Renderer.Bookmarks;
+                    if (this.Bookmarks?.Count > 0)
+                        this.ShowBookmarks = !this.ShowBookmarks;
                 };
                 binding.CanExecute += (l, k) =>
                 {
@@ -365,7 +363,7 @@ namespace H.Controls.PDF
                 CommandBinding binding = new CommandBinding(PDFBoxCommands.Searchterm);
                 binding.Executed += (l, k) =>
                 {
-                    IsSearchOpen = !IsSearchOpen;
+                    this.IsSearchOpen = !this.IsSearchOpen;
                 };
                 binding.CanExecute += (l, k) =>
                 {
@@ -441,9 +439,9 @@ namespace H.Controls.PDF
                 CommandBinding binding = new CommandBinding(PDFBoxCommands.FindNext);
                 binding.Executed += (l, k) =>
                 {
-                    if (SearchMatchItemNo > 1)
+                    if (this.SearchMatchItemNo > 1)
                     {
-                        SearchMatchItemNo--;
+                        this.SearchMatchItemNo--;
                         // DisplayTextSpan(SearchMatches.Items[SearchMatchItemNo - 1].TextSpan);
                         _searchManager.FindNext(false);
                     }
@@ -459,9 +457,9 @@ namespace H.Controls.PDF
                 CommandBinding binding = new CommandBinding(PDFBoxCommands.FindPrevious);
                 binding.Executed += (l, k) =>
                 {
-                    if (SearchMatchesCount > SearchMatchItemNo)
+                    if (this.SearchMatchesCount > this.SearchMatchItemNo)
                     {
-                        SearchMatchItemNo++;
+                        this.SearchMatchItemNo++;
                         //DisplayTextSpan(SearchMatches.Items[SearchMatchItemNo - 1].TextSpan);
                         _searchManager.FindNext(true);
                     }
@@ -855,18 +853,18 @@ namespace H.Controls.PDF
 
         public async void Search()
         {
-            SearchMatchItemNo = 0;
+            this.SearchMatchItemNo = 0;
             _searchManager.MatchCase = this.UseMatchCase;
             _searchManager.MatchWholeWord = this.UseWholeWordOnly;
             _searchManager.HighlightAllMatches = this.UseHighlightAllMatches;
             //SearchMatchesTextBlock.Visibility = Visibility.Visible;
-            if (!_searchManager.Search(SearchTerm))
-            { 
+            if (!_searchManager.Search(this.SearchTerm))
+            {
                 await IocMessage.ShowDialogMessage("未搜索到数据");
             }
             else
 
-                SearchMatchesCount = _searchManager.MatchesCount;
+                this.SearchMatchesCount = _searchManager.MatchesCount;
 
             if (!_searchManager.FindNext(true))
                 await IocMessage.ShowDialogMessage("到达了搜索的起点");

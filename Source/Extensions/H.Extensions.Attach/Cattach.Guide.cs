@@ -19,7 +19,7 @@ namespace H.Extensions.Attach
             obj.SetValue(UseGuideProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty UseGuideProperty =
             DependencyProperty.RegisterAttached("UseGuide", typeof(bool), typeof(Cattach), new PropertyMetadata(false, OnUseGuideChanged));
 
@@ -40,7 +40,7 @@ namespace H.Extensions.Attach
             obj.SetValue(GuideTitleProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty GuideTitleProperty =
             DependencyProperty.RegisterAttached("GuideTitle", typeof(object), typeof(Cattach), new PropertyMetadata(null, OnGuideTitleChanged));
 
@@ -64,7 +64,7 @@ namespace H.Extensions.Attach
             obj.SetValue(GuideParentTitleProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty GuideParentTitleProperty =
             DependencyProperty.RegisterAttached("GuideParentTitle", typeof(string), typeof(Cattach), new PropertyMetadata(null, OnGuideParentTitleChanged));
 
@@ -88,7 +88,7 @@ namespace H.Extensions.Attach
             obj.SetValue(GuideDataProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty GuideDataProperty =
             DependencyProperty.RegisterAttached("GuideData", typeof(object), typeof(Cattach), new PropertyMetadata(null, OnGuideDataChanged));
 
@@ -112,7 +112,7 @@ namespace H.Extensions.Attach
             obj.SetValue(GuideDataTemplateProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty GuideDataTemplateProperty =
             DependencyProperty.RegisterAttached("GuideDataTemplate", typeof(DataTemplate), typeof(Cattach), new PropertyMetadata(null, OnGuideDataTemplateChanged));
 
@@ -136,7 +136,7 @@ namespace H.Extensions.Attach
             obj.SetValue(IsGuideProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty IsGuideProperty =
             DependencyProperty.RegisterAttached("IsGuide", typeof(bool), typeof(Cattach), new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnIsGuideChanged));
 
@@ -159,7 +159,7 @@ namespace H.Extensions.Attach
             obj.SetValue(GuideUseClickProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty GuideUseClickProperty =
             DependencyProperty.RegisterAttached("GuideUseClick", typeof(bool), typeof(Cattach), new PropertyMetadata(false, OnGuideUseClickChanged));
 

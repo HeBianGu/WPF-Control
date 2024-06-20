@@ -14,7 +14,7 @@ namespace H.Extensions.Revertible
         public Revertible(string name, object data)
         {
             this.Name = name;
-            Data = data;
+            this.Data = data;
         }
         public string Name { get; }
         public object Data { get; }

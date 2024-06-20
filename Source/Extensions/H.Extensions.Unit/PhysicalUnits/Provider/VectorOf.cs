@@ -93,7 +93,7 @@ namespace H.Extensions.Unit
         }
 
         public PhysicalQuantity Magnitude { get { return Functions.Sqrt(X * X + Y * Y + Z * Z); } }
-        public Angle Inclination { get { return Functions.Acos((Z / Magnitude).Value); } }
+        public Angle Inclination { get { return Functions.Acos((Z / this.Magnitude).Value); } }
         public Angle Azimuth { get { return new Angle(Math.Atan2(Y.Value, X.Value)); } }
 
         public static VectorOf<T> operator +(VectorOf<T> v1, VectorOf<T> v2)
@@ -132,7 +132,7 @@ namespace H.Extensions.Unit
         /// <summary>
         /// Direction is the same as Azimuth
         /// </summary>
-        public Angle Direction { get { return Azimuth; } }
+        public Angle Direction { get { return this.Azimuth; } }
 
         public override string ToString()
         {

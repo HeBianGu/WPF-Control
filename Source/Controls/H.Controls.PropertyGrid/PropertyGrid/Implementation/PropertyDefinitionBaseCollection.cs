@@ -25,7 +25,7 @@ namespace H.Controls.PropertyGrid
         {
             get
             {
-                foreach (T item in Items)
+                foreach (T item in this.Items)
                 {
                     if (item.TargetProperties.Contains(propertyId))
                         return item;

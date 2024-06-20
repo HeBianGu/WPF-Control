@@ -4,10 +4,6 @@ using System.Data.Entity;
 
 #if NETCOREAPP
 #endif
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.EntityFrameworkCore.Infrastructure.Internal;
-
 namespace H.DataBases.Sqlite
 {
     //public class DataContextFactory<T> : IDesignTimeDbContextFactory<T> where T : DbContext

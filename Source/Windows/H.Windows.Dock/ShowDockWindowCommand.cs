@@ -16,7 +16,7 @@ namespace H.Windows.Dock
             {
                 HorizontalDock = this.Horizontal,
                 VerticalDock = this.Vertical,
-                Content = this.Content?? parameter
+                Content = this.Content ?? parameter
             };
             w.Show();
         }

@@ -77,11 +77,11 @@ namespace H.Controls.PropertyGrid
             if (newValue == null)
                 return;
 
-            if (ItemsSourceType == null)
-                ItemsSourceType = newValue.GetType();
+            if (this.ItemsSourceType == null)
+                this.ItemsSourceType = newValue.GetType();
 
-            if (ItemType == null && newValue.GetType().ContainsGenericParameters)
-                ItemType = newValue.GetType().GetGenericArguments()[0];
+            if (this.ItemType == null && newValue.GetType().ContainsGenericParameters)
+                this.ItemType = newValue.GetType().GetGenericArguments()[0];
 
             SetText(newValue);
         }
@@ -221,10 +221,10 @@ namespace H.Controls.PropertyGrid
         {
             IList items = new List<object>();
 
-            if (ItemType == null)
+            if (this.ItemType == null)
                 return items;
 
-            string[] textArray = Text.Split('\n');
+            string[] textArray = this.Text.Split('\n');
 
             foreach (string s in textArray)
             {
@@ -234,13 +234,13 @@ namespace H.Controls.PropertyGrid
                     object value = null;
                     try
                     {
-                        if (ItemType.IsEnum)
+                        if (this.ItemType.IsEnum)
                         {
-                            value = Enum.Parse(ItemType, valueString);
+                            value = Enum.Parse(this.ItemType, valueString);
                         }
                         else
                         {
-                            value = Convert.ChangeType(valueString, ItemType);
+                            value = Convert.ChangeType(valueString, this.ItemType);
                         }
                     }
                     catch
@@ -259,24 +259,24 @@ namespace H.Controls.PropertyGrid
 
         private IList ComputeItemsSource()
         {
-            if (ItemsSource == null)
+            if (this.ItemsSource == null)
             {
                 // Save current text since creating the ItemsSource will reset it
                 string currentText = this.Text;
-                ItemsSource = CreateItemsSource();
+                this.ItemsSource = CreateItemsSource();
                 this.Text = currentText;
             }
 
-            return ItemsSource;
+            return this.ItemsSource;
         }
 
         private IList CreateItemsSource()
         {
             IList list = null;
 
-            if (ItemsSourceType != null)
+            if (this.ItemsSourceType != null)
             {
-                ConstructorInfo constructor = ItemsSourceType.GetConstructor(Type.EmptyTypes);
+                ConstructorInfo constructor = this.ItemsSourceType.GetConstructor(Type.EmptyTypes);
                 list = (IList)constructor.Invoke(null);
             }
 
@@ -292,7 +292,7 @@ namespace H.Controls.PropertyGrid
                 builder.Append(obj2.ToString());
                 builder.AppendLine();
             }
-            Text = builder.ToString().Trim();
+            this.Text = builder.ToString().Trim();
             _surpressTextChanged = false;
         }
 

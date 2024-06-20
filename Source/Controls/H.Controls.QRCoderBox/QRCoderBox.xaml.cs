@@ -1,7 +1,5 @@
-﻿using QRCoder.Xaml;
-using QRCoder;
-using System;
-using System.Linq;
+﻿using QRCoder;
+using QRCoder.Xaml;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;

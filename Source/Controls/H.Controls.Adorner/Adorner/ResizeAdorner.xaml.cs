@@ -37,7 +37,7 @@ namespace H.Controls.Adorner
                 if (thumb != null)
                     thumb.DragDelta += (s, e) =>
                     {
-                        FrameworkElement element = AdornedElement as FrameworkElement;
+                        FrameworkElement element = this.AdornedElement as FrameworkElement;
                         if (element == null)
                             return;
                         this.DragMoveHorizontal(e.HorizontalChange);
@@ -100,7 +100,7 @@ namespace H.Controls.Adorner
 
             double ElementMiniSize = thumb.DesiredSize.Width;
 
-            FrameworkElement element = AdornedElement as FrameworkElement;
+            FrameworkElement element = this.AdornedElement as FrameworkElement;
             if (element == null) return;
             Resize(element);
 
@@ -189,13 +189,13 @@ namespace H.Controls.Adorner
         public double MinValue { get; set; } = 10;
         protected virtual void SetHeight(double change)
         {
-            FrameworkElement element = AdornedElement as FrameworkElement;
-            element.Height = Math.Max(MinValue, element.Height + change);
+            FrameworkElement element = this.AdornedElement as FrameworkElement;
+            element.Height = Math.Max(this.MinValue, element.Height + change);
         }
         protected virtual void SetWidth(double change)
         {
-            FrameworkElement element = AdornedElement as FrameworkElement;
-            element.Width = Math.Max(MinValue, element.Width + change);
+            FrameworkElement element = this.AdornedElement as FrameworkElement;
+            element.Width = Math.Max(this.MinValue, element.Width + change);
         }
 
         private void Resize(FrameworkElement fElement)

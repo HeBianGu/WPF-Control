@@ -11,9 +11,9 @@ namespace H.Extensions.Tree
         {
             ExploreTree tree = new ExploreTree()
             {
-                Root = Root
+                Root = this.Root
             };
-            System.Collections.Generic.IEnumerable<Providers.Mvvm.ITreeNode> result = tree.GetTreeNodes(IsRecursion);
+            System.Collections.Generic.IEnumerable<Providers.Mvvm.ITreeNode> result = tree.GetTreeNodes(this.IsRecursion);
             return result;
         }
     }

@@ -15,7 +15,7 @@ namespace H.Extensions.Behvaiors
     {
         protected override void OnAttached()
         {
-            AssociatedObject.Loaded += AssociatedObject_Loaded;
+            this.AssociatedObject.Loaded += AssociatedObject_Loaded;
         }
 
         private void AssociatedObject_Loaded(object sender, RoutedEventArgs e)
@@ -25,15 +25,15 @@ namespace H.Extensions.Behvaiors
 
         private void Refresh()
         {
-            if (AdornerType == null) return;
+            if (this.AdornerType == null) return;
 
-            if (AdornerVisual == null)
-                AdornerVisual = AssociatedObject;
+            if (this.AdornerVisual == null)
+                this.AdornerVisual = this.AssociatedObject;
 
-            AdornerLayer layer = AdornerLayer.GetAdornerLayer(AdornerVisual);
+            AdornerLayer layer = AdornerLayer.GetAdornerLayer(this.AdornerVisual);
             if (layer == null) return;
 
-            IEnumerable<Adorner> adorners = layer.GetAdorners(AdornerVisual as UIElement)?.Where(l => l.GetType() == AdornerType);
+            IEnumerable<Adorner> adorners = layer.GetAdorners(this.AdornerVisual as UIElement)?.Where(l => l.GetType() == this.AdornerType);
 
             if (adorners != null)
             {
@@ -43,9 +43,9 @@ namespace H.Extensions.Behvaiors
                 }
             }
 
-            if (IsUse)
+            if (this.IsUse)
             {
-                Adorner adorner = Activator.CreateInstance(AdornerType, AssociatedObject) as Adorner;
+                Adorner adorner = Activator.CreateInstance(this.AdornerType, this.AssociatedObject) as Adorner;
                 if (adorner == null)
                     return;
                 layer.Add(adorner);
@@ -54,7 +54,7 @@ namespace H.Extensions.Behvaiors
 
         protected override void OnDetaching()
         {
-            AssociatedObject.Loaded -= AssociatedObject_Loaded;
+            this.AssociatedObject.Loaded -= AssociatedObject_Loaded;
         }
 
     }
