@@ -277,11 +277,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Modules.Feedback", "..\So
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Controls.FilterColumnDataGrid", "..\Source\Controls\H.Controls.FilterColumnDataGrid\H.Controls.FilterColumnDataGrid.csproj", "{F735E512-F64E-472E-B154-2FBA0931E2AD}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".sln", ".sln", "{45238888-7B45-4268-A751-3D87C759D70F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".sln", ".sln", "{8C583732-150E-4428-B5AC-815FBE168F78}"
 	ProjectSection(SolutionItems) = preProject
-		..\.editorconfig = ..\.editorconfig
 		..\Directory.Build.Props = ..\Directory.Build.Props
-		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
 Global
