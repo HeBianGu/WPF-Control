@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-
+    <GeneratePackageOnBuild>Flase</GeneratePackageOnBuild>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>

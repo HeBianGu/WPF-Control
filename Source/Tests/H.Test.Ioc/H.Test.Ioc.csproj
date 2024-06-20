@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-
+    <GeneratePackageOnBuild>Flase</GeneratePackageOnBuild>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 

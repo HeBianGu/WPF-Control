@@ -4,6 +4,7 @@
     <OutputType>WinExe</OutputType>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <GeneratePackageOnBuild>Flase</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>

@@ -6,7 +6,7 @@
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>-->
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <TargetFrameworks>net7.0-windows</TargetFrameworks>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <LangVersion>10.0</LangVersion>
     <Version>1.0.1</Version>
     <FileVersion>1.0.1</FileVersion>
@@ -15,6 +15,7 @@
     <Authors>HeBianGu </Authors>
     <RepositoryUrl>https://github.com/HeBianGu/WPF-Control</RepositoryUrl>
     <PackageProjectUrl>https://github.com/HeBianGu/WPF-Control</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
   
   <ItemGroup>

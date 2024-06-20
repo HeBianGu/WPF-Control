@@ -4,6 +4,7 @@
     <OutputType>WinExe</OutputType>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>logo.ico</ApplicationIcon>
+    <GeneratePackageOnBuild>Flase</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>

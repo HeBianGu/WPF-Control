@@ -3,6 +3,7 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <UseWPF>true</UseWPF>
+    <GeneratePackageOnBuild>Flase</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>

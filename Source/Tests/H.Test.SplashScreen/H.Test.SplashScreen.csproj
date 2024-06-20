@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-
+    <GeneratePackageOnBuild>Flase</GeneratePackageOnBuild>
     <UseWPF>true</UseWPF>
     <Product>H大师</Product>
     <Description>电脑参数：可以查看处理器、内存、硬盘、网卡、显卡、操作系统、安装软件等</Description>

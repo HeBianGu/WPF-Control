@@ -13,6 +13,7 @@
     <PackageProjectUrl>https://github.com/HeBianGu</PackageProjectUrl>    
     <Title>H文件管理器</Title>
     <Version>1.0.0</Version>
+    <GeneratePackageOnBuild>Flase</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
