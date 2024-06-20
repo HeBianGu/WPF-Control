@@ -22,7 +22,7 @@ namespace H.Controls.Chart2D
             set { SetValue(HorizontalLineStyleProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty HorizontalLineStyleProperty =
             DependencyProperty.Register("HorizontalLineStyle", typeof(Style), typeof(Grid), new PropertyMetadata(default(Style), (d, e) =>
              {
@@ -42,7 +42,7 @@ namespace H.Controls.Chart2D
             set { SetValue(VerticalLineStyleProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty VerticalLineStyleProperty =
             DependencyProperty.Register("VerticalLineStyle", typeof(Style), typeof(Grid), new PropertyMetadata(default(Style), (d, e) =>
              {

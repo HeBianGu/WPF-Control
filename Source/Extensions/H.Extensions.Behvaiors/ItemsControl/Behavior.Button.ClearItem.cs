@@ -6,9 +6,9 @@ namespace H.Extensions.Behvaiors
     {
         protected override void OnClick()
         {
-            if (ItemsSource == null)
+            if (this.ItemsSource == null)
                 return;
-            ItemsSource.Clear();
+            this.ItemsSource.Clear();
         }
     }
 

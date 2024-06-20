@@ -37,7 +37,7 @@ namespace H.Extensions.Behvaiors
 
         protected override void OnAttached()
         {
-            AssociatedObject.PreviewMouseDown += AssociatedObject_MouseDown; ;
+            this.AssociatedObject.PreviewMouseDown += AssociatedObject_MouseDown; ;
         }
 
         private void AssociatedObject_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -50,7 +50,7 @@ namespace H.Extensions.Behvaiors
 
         protected override void OnDetaching()
         {
-            AssociatedObject.PreviewMouseDown -= AssociatedObject_MouseDown;
+            this.AssociatedObject.PreviewMouseDown -= AssociatedObject_MouseDown;
         }
     }
 
@@ -81,8 +81,8 @@ namespace H.Extensions.Behvaiors
 
         protected override void OnAttached()
         {
-            AssociatedObject.Selected += AssociatedObject_Selected;
-            AssociatedObject.Unselected += AssociatedObject_Unselected;
+            this.AssociatedObject.Selected += AssociatedObject_Selected;
+            this.AssociatedObject.Unselected += AssociatedObject_Unselected;
         }
 
         private void AssociatedObject_Unselected(object sender, RoutedEventArgs e)

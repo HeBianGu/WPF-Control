@@ -42,7 +42,7 @@ namespace H.Controls.Chart2D
             set { SetValue(ForegroundProperty, value); }
         }
 
-        
+
         public static new readonly DependencyProperty ForegroundProperty =
             DependencyProperty.Register("Foreground", typeof(ObservableCollection<Color>), typeof(Pie), new PropertyMetadata(new ObservableCollection<Color>(), (d, e) =>
             {
@@ -62,7 +62,7 @@ namespace H.Controls.Chart2D
             set { SetValue(LenProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty LenProperty =
             DependencyProperty.Register("Len", typeof(double), typeof(Pie), new PropertyMetadata(double.NaN, (d, e) =>
              {
@@ -83,7 +83,7 @@ namespace H.Controls.Chart2D
             set { SetValue(CircleLenProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty CircleLenProperty =
             DependencyProperty.Register("CircleLen", typeof(double), typeof(Pie), new PropertyMetadata(0.0, (d, e) =>
              {
@@ -105,7 +105,7 @@ namespace H.Controls.Chart2D
             set { SetValue(IsCustomizedProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty IsCustomizedProperty =
             DependencyProperty.Register("IsCustomized", typeof(bool), typeof(Pie), new PropertyMetadata(default(bool), (d, e) =>
              {
@@ -127,7 +127,7 @@ namespace H.Controls.Chart2D
             set { SetValue(EllipseStyleProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty EllipseStyleProperty =
             DependencyProperty.Register("EllipseStyle", typeof(Style), typeof(Pie), new PropertyMetadata(default(Style), (d, e) =>
              {
@@ -172,7 +172,7 @@ namespace H.Controls.Chart2D
                 bool use = this.DataBoolean.Count > i ? this.DataBoolean[i] : true;
 
                 //  Do ：半径
-                double len = Len == double.NaN ? min / 2 : Len;
+                double len = this.Len == double.NaN ? min / 2 : this.Len;
 
                 double y = use ? this.Data[i] : 0;
 

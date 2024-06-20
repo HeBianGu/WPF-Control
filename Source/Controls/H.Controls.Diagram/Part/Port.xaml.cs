@@ -33,7 +33,7 @@ namespace H.Controls.Diagram
             set { SetValue(DockProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty DockProperty =
             DependencyProperty.Register("Dock", typeof(Dock), typeof(Port), new PropertyMetadata(default(Dock), (d, e) =>
             {

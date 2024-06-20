@@ -1,7 +1,5 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-using H.Extensions.ValueConverter;
-using H.Providers.Mvvm;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -49,7 +47,7 @@ namespace H.Controls.TreeListView
         {
             base.OnSelectedItemChanged(e);
 
-            SelectItem = e.NewValue;
+            this.SelectItem = e.NewValue;
         }
 
 

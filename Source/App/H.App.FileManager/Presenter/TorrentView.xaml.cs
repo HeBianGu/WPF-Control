@@ -1,5 +1,4 @@
 ﻿using H.Extensions.Torrent;
-using H.Providers.Mvvm;
 
 namespace H.App.FileManager
 {

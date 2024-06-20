@@ -80,7 +80,7 @@ namespace H.Controls.Dock.Controls
         {
             if (_document?.Root != null)
             {
-                _document.IsVisible = Visibility == Visibility.Visible;
+                _document.IsVisible = this.Visibility == Visibility.Visible;
                 if (_document.Parent is LayoutDocumentPane layoutDocumentPane) layoutDocumentPane.ComputeVisibility();
             }
             base.OnVisibilityChanged();
@@ -102,7 +102,7 @@ namespace H.Controls.Dock.Controls
 
         protected override bool CanExecuteDockAsDocumentCommand()
         {
-            return LayoutElement != null && LayoutElement.FindParent<LayoutDocumentPane>() != null && LayoutElement.IsFloating;
+            return this.LayoutElement != null && this.LayoutElement.FindParent<LayoutDocumentPane>() != null && this.LayoutElement.IsFloating;
         }
 
         #endregion Overrides

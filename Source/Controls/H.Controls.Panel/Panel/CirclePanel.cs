@@ -53,7 +53,7 @@ namespace H.Controls.Panel
         {
             System.Collections.Generic.List<UIElement> children = this.GetChildren();
             Point center = new Point(finalSize.Width / 2, finalSize.Height / 2);
-            Point start = new Point(finalSize.Width / 2 + Len, finalSize.Height / 2);
+            Point start = new Point(finalSize.Width / 2 + this.Len, finalSize.Height / 2);
             for (int i = 0; i < children.Count; i++)
             {
                 UIElement elment = children[i];

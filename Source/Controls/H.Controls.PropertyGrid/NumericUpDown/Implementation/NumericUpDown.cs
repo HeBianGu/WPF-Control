@@ -77,7 +77,7 @@ namespace H.Controls.PropertyGrid
 
         protected virtual void OnFormatStringChanged(string oldValue, string newValue)
         {
-            if (IsInitialized)
+            if (this.IsInitialized)
             {
                 this.SyncTextAndValueProperties(false, null);
             }

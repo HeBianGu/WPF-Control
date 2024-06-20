@@ -22,9 +22,9 @@ namespace H.Controls.Dock.Layout.Serialization
         /// <param name="manager"></param>
         public LayoutSerializer(DockingManager manager)
         {
-            Manager = manager ?? throw new ArgumentNullException(nameof(manager));
-            _previousAnchorables = Manager.Layout.Descendents().OfType<LayoutAnchorable>().ToArray();
-            _previousDocuments = Manager.Layout.Descendents().OfType<LayoutDocument>().ToArray();
+            this.Manager = manager ?? throw new ArgumentNullException(nameof(manager));
+            _previousAnchorables = this.Manager.Layout.Descendents().OfType<LayoutAnchorable>().ToArray();
+            _previousDocuments = this.Manager.Layout.Descendents().OfType<LayoutDocument>().ToArray();
         }
 
         #endregion Constructors
@@ -128,14 +128,14 @@ namespace H.Controls.Dock.Layout.Serialization
 
         protected void StartDeserialization()
         {
-            Manager.SuspendDocumentsSourceBinding = true;
-            Manager.SuspendAnchorablesSourceBinding = true;
+            this.Manager.SuspendDocumentsSourceBinding = true;
+            this.Manager.SuspendAnchorablesSourceBinding = true;
         }
 
         protected void EndDeserialization()
         {
-            Manager.SuspendDocumentsSourceBinding = false;
-            Manager.SuspendAnchorablesSourceBinding = false;
+            this.Manager.SuspendDocumentsSourceBinding = false;
+            this.Manager.SuspendAnchorablesSourceBinding = false;
         }
 
         #endregion Methods

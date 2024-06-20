@@ -32,7 +32,7 @@ namespace H.Controls.Chart2D
             set { SetValue(TrangleStyleProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty TrangleStyleProperty =
             DependencyProperty.Register("TrangleStyle", typeof(Style), typeof(MarkLine), new PropertyMetadata(default(Style), (d, e) =>
              {
@@ -53,7 +53,7 @@ namespace H.Controls.Chart2D
             set { SetValue(OrientationProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty OrientationProperty =
             DependencyProperty.Register("Orientation", typeof(Orientation), typeof(MarkLine), new PropertyMetadata(default(Orientation), (d, e) =>
              {
@@ -73,7 +73,7 @@ namespace H.Controls.Chart2D
             set { SetValue(MarkBrushesProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty MarkBrushesProperty =
             DependencyProperty.Register("MarkBrushes", typeof(ObservableCollection<Color>), typeof(MarkLine), new PropertyMetadata(new ObservableCollection<Color>(), (d, e) =>
              {
@@ -94,7 +94,7 @@ namespace H.Controls.Chart2D
             set { SetValue(StartProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty StartProperty =
             DependencyProperty.Register("Start", typeof(Point), typeof(MarkLine), new PropertyMetadata(default(Point), (d, e) =>
              {
@@ -114,7 +114,7 @@ namespace H.Controls.Chart2D
             set { SetValue(EndProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty EndProperty =
             DependencyProperty.Register("End", typeof(Point), typeof(MarkLine), new PropertyMetadata(default(Point), (d, e) =>
              {
@@ -336,7 +336,7 @@ namespace H.Controls.Chart2D
             set { SetValue(MarkLineTypeProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty MarkLineTypeProperty =
             DependencyProperty.Register("MarkLineType", typeof(MarkLineType), typeof(MarkLine), new PropertyMetadata(default(MarkLineType), (d, e) =>
              {
@@ -389,7 +389,7 @@ namespace H.Controls.Chart2D
             set { SetValue(ValueProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty ValueProperty =
             DependencyProperty.Register("Value", typeof(double), typeof(MarkLine), new FrameworkPropertyMetadata(double.NaN, (d, e) =>
             {

@@ -11,13 +11,13 @@ namespace H.Presenters.Design
     {
         public GridPresenterBase()
         {
-            Background = Brushes.Transparent;
+            this.Background = Brushes.Transparent;
         }
 
         public override void LoadDefault()
         {
             base.LoadDefault();
-            MinRowHeight = (double)Application.Current.FindResource(LayoutKeys.RowHeight);
+            this.MinRowHeight = (double)Application.Current.FindResource(LayoutKeys.RowHeight);
         }
         private Brush _lineBrush = Brushes.LightGray;
         [Display(Name = "网线颜色", GroupName = "常用,样式")]
@@ -99,7 +99,7 @@ namespace H.Presenters.Design
                         value.Column = c;
                         value.Opacity = 0.5;
                     }
-                    Presenters.Add(value);
+                    this.Presenters.Add(value);
                     _dropBackup = value;
                 }
             }

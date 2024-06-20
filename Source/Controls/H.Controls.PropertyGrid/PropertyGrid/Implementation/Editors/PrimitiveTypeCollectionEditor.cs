@@ -8,13 +8,13 @@ namespace H.Controls.PropertyGrid
     {
         protected override void SetControlProperties(PropertyItem propertyItem)
         {
-            Editor.BorderThickness = new System.Windows.Thickness(0);
-            Editor.Content = "(Collection)";
+            this.Editor.BorderThickness = new System.Windows.Thickness(0);
+            this.Editor.Content = "(Collection)";
         }
 
         protected override void SetValueDependencyProperty()
         {
-            ValueProperty = PrimitiveTypeCollectionControl.ItemsSourceProperty;
+            this.ValueProperty = PrimitiveTypeCollectionControl.ItemsSourceProperty;
         }
 
         protected override PrimitiveTypeCollectionControl CreateEditor()
@@ -25,18 +25,18 @@ namespace H.Controls.PropertyGrid
         protected override void ResolveValueBinding(PropertyItem propertyItem)
         {
             System.Type type = propertyItem.PropertyType;
-            Editor.ItemsSourceType = type;
+            this.Editor.ItemsSourceType = type;
 
             if (type.BaseType == typeof(System.Array))
             {
-                Editor.ItemType = type.GetElementType();
+                this.Editor.ItemType = type.GetElementType();
             }
             else
             {
                 System.Type[] typeArguments = type.GetGenericArguments();
                 if (typeArguments.Length > 0)
                 {
-                    Editor.ItemType = typeArguments[0];
+                    this.Editor.ItemType = typeArguments[0];
                 }
             }
 

@@ -7,7 +7,7 @@ namespace H.Controls.Form
     {
         public BindingGetSelectSourceMethodAttribute(string methodName)
         {
-            MethodName = methodName;
+            this.MethodName = methodName;
         }
 
         public string MethodName { get; }

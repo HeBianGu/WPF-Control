@@ -268,9 +268,9 @@ namespace H.Windows.Ribbon
                 {
                     _sizeDefinition = value;
 
-                    RaisePropertyChanged(nameof(SizeDefinition));
-                    RaisePropertyChanged(nameof(IsLabelVisible));
-                    RaisePropertyChanged(nameof(ImageSize));
+                    RaisePropertyChanged(nameof(this.SizeDefinition));
+                    RaisePropertyChanged(nameof(this.IsLabelVisible));
+                    RaisePropertyChanged(nameof(this.ImageSize));
                 }
             }
         }

@@ -72,15 +72,15 @@ namespace H.Controls.Dock.Layout
                 if (_parent == value) return;
                 ILayoutContainer oldValue = _parent;
                 ILayoutRoot oldRoot = _root;
-                RaisePropertyChanging(nameof(Parent));
+                RaisePropertyChanging(nameof(this.Parent));
                 OnParentChanging(oldValue, value);
                 _parent = value;
                 OnParentChanged(oldValue, value);
 
-                _root = Root;
+                _root = this.Root;
                 if (oldRoot != _root) OnRootChanged(oldRoot, _root);
-                RaisePropertyChanged(nameof(Parent));
-                if (Root is LayoutRoot root) root.FireLayoutUpdated();
+                RaisePropertyChanged(nameof(this.Parent));
+                if (this.Root is LayoutRoot root) root.FireLayoutUpdated();
             }
         }
 
@@ -89,7 +89,7 @@ namespace H.Controls.Dock.Layout
         {
             get
             {
-                ILayoutContainer parent = Parent;
+                ILayoutContainer parent = this.Parent;
                 while (parent != null && (!(parent is ILayoutRoot))) parent = parent.Parent;
                 return parent as ILayoutRoot;
             }
@@ -118,7 +118,7 @@ namespace H.Controls.Dock.Layout
         internal void FixCachedRootOnDeserialize()
         {
             if (_root == null)
-                _root = Root;
+                _root = this.Root;
         }
 
         #endregion Internal Methods

@@ -27,7 +27,7 @@ namespace H.Controls.Chart2D
             set { SetValue(ThinningTypeProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty ThinningTypeProperty =
             DependencyProperty.Register("ThinningType", typeof(ThinningType), typeof(LineBase), new PropertyMetadata(default(ThinningType), (d, e) =>
              {
@@ -46,7 +46,7 @@ namespace H.Controls.Chart2D
             set { SetValue(ThresholdProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty ThresholdProperty =
             DependencyProperty.Register("Threshold", typeof(int), typeof(LineBase), new PropertyMetadata(10, (d, e) =>
              {
@@ -65,7 +65,7 @@ namespace H.Controls.Chart2D
             set { SetValue(AlignmentCenterProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty AlignmentCenterProperty =
             DependencyProperty.Register("AlignmentCenter", typeof(bool), typeof(LineBase), new PropertyMetadata(default(bool), (d, e) =>
             {
@@ -219,7 +219,7 @@ namespace H.Controls.Chart2D
 
                 }
 
-                IEnumerable<Setter> setters = PathStyle?.Setters.OfType<Setter>();
+                IEnumerable<Setter> setters = this.PathStyle?.Setters.OfType<Setter>();
 
                 object st = setters?.FirstOrDefault(l => l.Property.Name == "StrokeThickness")?.Value;
 
@@ -297,7 +297,7 @@ namespace H.Controls.Chart2D
             set { SetValue(UseSmoothProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty UseSmoothProperty =
             DependencyProperty.Register("UseSmooth", typeof(bool), typeof(Area), new FrameworkPropertyMetadata(default(bool), (d, e) =>
              {
@@ -326,7 +326,7 @@ namespace H.Controls.Chart2D
             set { SetValue(PathAreaStyleProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty PathAreaStyleProperty =
             DependencyProperty.Register("PathAreaStyle", typeof(Style), typeof(Area), new FrameworkPropertyMetadata(default(Style), (d, e) =>
              {
@@ -353,7 +353,7 @@ namespace H.Controls.Chart2D
             set { SetValue(AreaBackgroundProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty AreaBackgroundProperty =
             DependencyProperty.Register("AreaBackground", typeof(Brush), typeof(Area), new FrameworkPropertyMetadata(default(Brush), (d, e) =>
              {
@@ -484,7 +484,7 @@ namespace H.Controls.Chart2D
             set { SetValue(LenProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty LenProperty =
             DependencyProperty.Register("Len", typeof(double), typeof(PolarLine), new PropertyMetadata(200.0, (d, e) =>
              {
@@ -674,7 +674,7 @@ namespace H.Controls.Chart2D
 
     public class StepLine : LineBase
     {
-        public static ComponentResourceKey DefaultKey => new ComponentResourceKey(typeof(StepLine), "S.StepLine.Default");
+        public static new ComponentResourceKey DefaultKey => new ComponentResourceKey(typeof(StepLine), "S.StepLine.Default");
 
         static StepLine()
         {
@@ -687,7 +687,7 @@ namespace H.Controls.Chart2D
             set { SetValue(StepTypeProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty StepTypeProperty =
             DependencyProperty.Register("StepType", typeof(StepType), typeof(StepLine), new PropertyMetadata(default(StepType), (d, e) =>
              {
@@ -819,7 +819,7 @@ namespace H.Controls.Chart2D
             set { SetValue(ForegroundContrartyProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty ForegroundContrartyProperty =
             DependencyProperty.Register("ForegroundContrarty", typeof(Brush), typeof(Candlestick), new PropertyMetadata(default(Brush), (d, e) =>
              {
@@ -843,7 +843,7 @@ namespace H.Controls.Chart2D
             set { SetValue(DataProperty, value); }
         }
 
-        
+
         public static new readonly DependencyProperty DataProperty =
             DependencyProperty.Register("Data", typeof(ObservableCollection<double[]>), typeof(Candlestick), new PropertyMetadata(default(ObservableCollection<double[]>), (d, e) =>
              {
@@ -861,7 +861,7 @@ namespace H.Controls.Chart2D
             set { SetValue(WidthPercentProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty WidthPercentProperty =
             DependencyProperty.Register("WidthPercent", typeof(double), typeof(Candlestick), new PropertyMetadata(0.5, (d, e) =>
              {

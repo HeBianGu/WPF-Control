@@ -17,7 +17,7 @@ namespace H.Extensions.Attach
             obj.SetValue(FromDoubleProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty FromDoubleProperty =
             DependencyProperty.RegisterAttached("FromDouble", typeof(double), typeof(Cattach), new PropertyMetadata(default(double), OnFromDoubleChanged));
 
@@ -41,7 +41,7 @@ namespace H.Extensions.Attach
             obj.SetValue(ToDoubleProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty ToDoubleProperty =
             DependencyProperty.RegisterAttached("ToDouble", typeof(double), typeof(Cattach), new PropertyMetadata(default(double), OnToDoubleChanged));
 

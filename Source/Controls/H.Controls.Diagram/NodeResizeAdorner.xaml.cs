@@ -84,8 +84,8 @@ namespace H.Controls.Diagram
 
         protected override void SetHeight(double change)
         {
-            FrameworkElement element = AdornedElement as FrameworkElement;
-            element.Height = Math.Max(MinValue, element.Height + change);
+            FrameworkElement element = this.AdornedElement as FrameworkElement;
+            element.Height = Math.Max(this.MinValue, element.Height + change);
 
 
             Node node = this.AdornedElement.GetParent<Node>();
@@ -95,8 +95,8 @@ namespace H.Controls.Diagram
         }
         protected override void SetWidth(double change)
         {
-            FrameworkElement element = AdornedElement as FrameworkElement;
-            element.Width = Math.Max(MinValue, element.Width + change);
+            FrameworkElement element = this.AdornedElement as FrameworkElement;
+            element.Width = Math.Max(this.MinValue, element.Width + change);
 
             Node node = this.AdornedElement.GetParent<Node>();
             Point point = NodeLayer.GetPosition(node);

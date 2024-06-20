@@ -14,7 +14,7 @@ namespace H.Extensions.MarkupExtension
 
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
-            if (TypeArgument == null)
+            if (this.TypeArgument == null)
                 return this.GenericType.MakeGenericType(this.TypeArguments);
             return this.GenericType.MakeGenericType(this.TypeArgument);
         }

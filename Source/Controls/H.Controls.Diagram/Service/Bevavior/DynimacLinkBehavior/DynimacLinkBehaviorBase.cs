@@ -13,6 +13,7 @@ namespace H.Controls.Diagram
 {
     public abstract class DynimacLinkBehaviorBase<T> : Behavior<Diagram> where T : FrameworkElement
     {
+        [Obsolete]
         protected override void OnAttached()
         {
             this.AssociatedObject.PreviewMouseRightButtonDown += Diagram_PreviewMouseDown;
@@ -31,6 +32,7 @@ namespace H.Controls.Diagram
 
         }
 
+        [Obsolete]
         protected override void OnDetaching()
         {
             this.AssociatedObject.PreviewMouseRightButtonDown -= Diagram_PreviewMouseDown;
@@ -81,6 +83,8 @@ namespace H.Controls.Diagram
         protected Point point;
         protected Point previous;
         private PointHitTestParameters parameters;
+
+        [Obsolete]
         private void Diagram_PreviewMouseMove(object sender, MouseEventArgs e)
         {
             if (this.AssociatedObject._dynamicLink.Visibility != Visibility.Visible) return;

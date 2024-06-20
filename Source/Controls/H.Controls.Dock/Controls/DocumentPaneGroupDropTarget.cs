@@ -47,7 +47,7 @@ namespace H.Controls.Dock.Controls
         {
             ILayoutPane targetModel = _targetPane.Model as ILayoutPane;
 
-            switch (Type)
+            switch (this.Type)
             {
                 case DropTargetType.DocumentPaneGroupDockInside:
 
@@ -77,7 +77,7 @@ namespace H.Controls.Dock.Controls
         {
             ILayoutPane targetModel = _targetPane.Model as ILayoutPane;
 
-            switch (Type)
+            switch (this.Type)
             {
                 case DropTargetType.DocumentPaneGroupDockInside:
 
@@ -117,14 +117,14 @@ namespace H.Controls.Dock.Controls
         public override Geometry GetPreviewPath(OverlayWindow overlayWindow,
                                                 LayoutFloatingWindow floatingWindowModel)
         {
-            switch (Type)
+            switch (this.Type)
             {
                 case DropTargetType.DocumentPaneGroupDockInside:
 
                     #region DropTargetType.DocumentPaneGroupDockInside
 
                     {
-                        Rect targetScreenRect = TargetElement.GetScreenArea();
+                        Rect targetScreenRect = this.TargetElement.GetScreenArea();
                         targetScreenRect.Offset(-overlayWindow.Left, -overlayWindow.Top);
 
                         return new RectangleGeometry(targetScreenRect);

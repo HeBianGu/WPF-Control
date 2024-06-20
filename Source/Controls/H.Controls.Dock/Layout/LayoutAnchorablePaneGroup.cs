@@ -39,7 +39,7 @@ namespace H.Controls.Dock.Layout
         /// <summary>Class constructor <paramref name="firstChild"/> to be inserted into collection of children models.</summary>
         public LayoutAnchorablePaneGroup(LayoutAnchorablePane firstChild)
         {
-            Children.Add(firstChild);
+            this.Children.Add(firstChild);
         }
 
         #endregion Constructors
@@ -55,9 +55,9 @@ namespace H.Controls.Dock.Layout
             set
             {
                 if (value == _orientation) return;
-                RaisePropertyChanging(nameof(Orientation));
+                RaisePropertyChanging(nameof(this.Orientation));
                 _orientation = value;
-                RaisePropertyChanged(nameof(Orientation));
+                RaisePropertyChanged(nameof(this.Orientation));
             }
         }
 
@@ -66,7 +66,7 @@ namespace H.Controls.Dock.Layout
         #region Overrides
 
         /// <inheritdoc />
-        protected override bool GetVisibility() => Children.Count > 0 && Children.Any(c => c.IsVisible);
+        protected override bool GetVisibility() => this.Children.Count > 0 && this.Children.Any(c => c.IsVisible);
 
         /// <inheritdoc />
         protected override void OnIsVisibleChanged()
@@ -78,41 +78,41 @@ namespace H.Controls.Dock.Layout
         /// <inheritdoc />
         protected override void OnDockWidthChanged()
         {
-            if (DockWidth.IsAbsolute && ChildrenCount == 1)
-                ((ILayoutPositionableElement)Children[0]).DockWidth = DockWidth;
+            if (this.DockWidth.IsAbsolute && this.ChildrenCount == 1)
+                ((ILayoutPositionableElement)this.Children[0]).DockWidth = this.DockWidth;
             base.OnDockWidthChanged();
         }
 
         /// <inheritdoc />
         protected override void OnDockHeightChanged()
         {
-            if (DockHeight.IsAbsolute && ChildrenCount == 1)
-                ((ILayoutPositionableElement)Children[0]).DockHeight = DockHeight;
+            if (this.DockHeight.IsAbsolute && this.ChildrenCount == 1)
+                ((ILayoutPositionableElement)this.Children[0]).DockHeight = this.DockHeight;
             base.OnDockHeightChanged();
         }
 
         /// <inheritdoc />
         protected override void OnChildrenCollectionChanged()
         {
-            if (DockWidth.IsAbsolute && ChildrenCount == 1)
-                ((ILayoutPositionableElement)Children[0]).DockWidth = DockWidth;
-            if (DockHeight.IsAbsolute && ChildrenCount == 1)
-                ((ILayoutPositionableElement)Children[0]).DockHeight = DockHeight;
+            if (this.DockWidth.IsAbsolute && this.ChildrenCount == 1)
+                ((ILayoutPositionableElement)this.Children[0]).DockWidth = this.DockWidth;
+            if (this.DockHeight.IsAbsolute && this.ChildrenCount == 1)
+                ((ILayoutPositionableElement)this.Children[0]).DockHeight = this.DockHeight;
             base.OnChildrenCollectionChanged();
         }
 
         /// <inheritdoc />
         public override void WriteXml(System.Xml.XmlWriter writer)
         {
-            writer.WriteAttributeString(nameof(Orientation), Orientation.ToString());
+            writer.WriteAttributeString(nameof(this.Orientation), this.Orientation.ToString());
             base.WriteXml(writer);
         }
 
         /// <inheritdoc />
         public override void ReadXml(System.Xml.XmlReader reader)
         {
-            if (reader.MoveToAttribute(nameof(Orientation)))
-                Orientation = (Orientation)Enum.Parse(typeof(Orientation), reader.Value, true);
+            if (reader.MoveToAttribute(nameof(this.Orientation)))
+                this.Orientation = (Orientation)Enum.Parse(typeof(Orientation), reader.Value, true);
             base.ReadXml(reader);
         }
 
@@ -121,9 +121,9 @@ namespace H.Controls.Dock.Layout
         public override void ConsoleDump(int tab)
         {
             System.Diagnostics.Trace.Write(new string(' ', tab * 4));
-            System.Diagnostics.Trace.WriteLine(string.Format("AnchorablePaneGroup({0})", Orientation));
+            System.Diagnostics.Trace.WriteLine(string.Format("AnchorablePaneGroup({0})", this.Orientation));
 
-            foreach (LayoutElement child in Children)
+            foreach (LayoutElement child in this.Children)
                 child.ConsoleDump(tab + 1);
         }
 #endif
@@ -134,7 +134,7 @@ namespace H.Controls.Dock.Layout
 
         private void UpdateParentVisibility()
         {
-            if (Parent is ILayoutElementWithVisibility parentPane) parentPane.ComputeVisibility();
+            if (this.Parent is ILayoutElementWithVisibility parentPane) parentPane.ComputeVisibility();
         }
 
         #endregion Private Methods

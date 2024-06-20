@@ -61,7 +61,7 @@ namespace H.Controls.PropertyGrid
             if (!(value is Visibility))
                 throw new InvalidOperationException(ErrorMessages.GetMessage("SuppliedValueWasNotVisibility"));
 
-            return (((Visibility)value) == Visibility.Visible) ^ Not;
+            return (((Visibility)value) == Visibility.Visible) ^ this.Not;
         }
 
         private object BoolToVisibility(object value)
@@ -69,7 +69,7 @@ namespace H.Controls.PropertyGrid
             if (!(value is bool))
                 throw new InvalidOperationException(ErrorMessages.GetMessage("SuppliedValueWasNotBool"));
 
-            return ((bool)value ^ Not) ? Visibility.Visible : Visibility.Collapsed;
+            return ((bool)value ^ this.Not) ? Visibility.Visible : Visibility.Collapsed;
         }
     }
 }

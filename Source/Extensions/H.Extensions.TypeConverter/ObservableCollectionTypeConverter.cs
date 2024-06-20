@@ -15,7 +15,7 @@ namespace H.Extensions.TypeConverter
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
         {
             if (value is ObservableCollection<Item> obs)
-                return string.Join(" ", obs.Select(x => ItemTypeConverter.ConvertToString(x)));
+                return string.Join(" ", obs.Select(x => this.ItemTypeConverter.ConvertToString(x)));
             return null;
         }
 
@@ -28,7 +28,7 @@ namespace H.Extensions.TypeConverter
                     return result;
                 foreach (string item in str.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries))
                 {
-                    result.Add((Item)ItemTypeConverter.ConvertFrom(item));
+                    result.Add((Item)this.ItemTypeConverter.ConvertFrom(item));
                 }
                 return result;
             }

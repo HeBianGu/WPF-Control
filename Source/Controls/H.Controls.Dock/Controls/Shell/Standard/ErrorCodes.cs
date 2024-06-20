@@ -369,7 +369,7 @@ namespace Standard
             }
 
             // Try Win32 error codes also
-            if (Facility == Facility.Win32)
+            if (this.Facility == Facility.Win32)
             {
                 foreach (FieldInfo publicStaticField in typeof(Win32Error).GetFields(BindingFlags.Static | BindingFlags.Public))
                 {
@@ -419,7 +419,7 @@ namespace Standard
          SuppressMessage("Microsoft.Security", "CA2122:DoNotIndirectlyExposeMethodsWithLinkDemands")]
         public void ThrowIfFailed(string message)
         {
-            if (!Failed) return;
+            if (!this.Failed) return;
             if (string.IsNullOrEmpty(message))
                 message = ToString();
 #if DEBUG
@@ -449,9 +449,9 @@ namespace Standard
             // then at least check the facility and attempt to do better ourselves.
             if (e.GetType() == typeof(COMException))
             {
-                switch (Facility)
+                switch (this.Facility)
                 {
-                    case Facility.Win32: e = new Win32Exception(Code, message); break;
+                    case Facility.Win32: e = new Win32Exception(this.Code, message); break;
                     default: e = new COMException(message, (int)_value); break;
                 }
             }

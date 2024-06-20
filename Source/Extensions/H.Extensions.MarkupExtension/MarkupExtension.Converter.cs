@@ -13,7 +13,7 @@ namespace H.Extensions.MarkupExtension
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
             TypeConverter converter = Activator.CreateInstance(this.Type) as TypeConverter;
-            return converter.ConvertFromString(Value);
+            return converter.ConvertFromString(this.Value);
         }
     }
 
@@ -24,7 +24,7 @@ namespace H.Extensions.MarkupExtension
     {
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
-            return Convert.ChangeType(Value, Type);
+            return Convert.ChangeType(this.Value, this.Type);
         }
     }
 }

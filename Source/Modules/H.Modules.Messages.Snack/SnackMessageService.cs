@@ -21,7 +21,7 @@ namespace H.Modules.Messages.Snack
               {
                   UIElement child = Application.Current.MainWindow?.Content as UIElement;
 
-                  if(child==null)
+                  if (child == null)
                       return false;
                   AdornerLayer layer = AdornerLayer.GetAdornerLayer(child);
                   if (layer == null)

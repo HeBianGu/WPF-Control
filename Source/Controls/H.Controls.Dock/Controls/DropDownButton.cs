@@ -47,7 +47,7 @@ namespace H.Controls.Dock.Controls
         /// <summary>Provides derived classes an opportunity to handle changes to the <see cref="DropDownContextMenu"/> property.</summary>
         protected virtual void OnDropDownContextMenuChanged(DependencyPropertyChangedEventArgs e)
         {
-            if (e.OldValue is ContextMenu oldContextMenu && IsChecked.GetValueOrDefault())
+            if (e.OldValue is ContextMenu oldContextMenu && this.IsChecked.GetValueOrDefault())
                 oldContextMenu.Closed -= OnContextMenuClosed;
         }
 
@@ -76,14 +76,14 @@ namespace H.Controls.Dock.Controls
         /// <inheritdoc />
         protected override void OnClick()
         {
-            if (DropDownContextMenu != null)
+            if (this.DropDownContextMenu != null)
             {
                 //IsChecked = true;
-                DropDownContextMenu.PlacementTarget = this;
-                DropDownContextMenu.Placement = PlacementMode.Bottom;
-                DropDownContextMenu.DataContext = DropDownContextMenuDataContext;
-                DropDownContextMenu.Closed += OnContextMenuClosed;
-                DropDownContextMenu.IsOpen = true;
+                this.DropDownContextMenu.PlacementTarget = this;
+                this.DropDownContextMenu.Placement = PlacementMode.Bottom;
+                this.DropDownContextMenu.DataContext = this.DropDownContextMenuDataContext;
+                this.DropDownContextMenu.Closed += OnContextMenuClosed;
+                this.DropDownContextMenu.IsOpen = true;
             }
             base.OnClick();
         }
@@ -97,14 +97,14 @@ namespace H.Controls.Dock.Controls
             //Debug.Assert(IsChecked.GetValueOrDefault());
             ContextMenu ctxMenu = sender as ContextMenu;
             ctxMenu.Closed -= OnContextMenuClosed;
-            IsChecked = false;
+            this.IsChecked = false;
         }
 
         private void DropDownButton_Unloaded(object sender, RoutedEventArgs e)
         {
             // When changing theme, Unloaded event is called, erasing the DropDownContextMenu.
             // Prevent this on theme changes.
-            if (IsLoaded) DropDownContextMenu = null;
+            if (this.IsLoaded) this.DropDownContextMenu = null;
         }
 
         #endregion Private Methods

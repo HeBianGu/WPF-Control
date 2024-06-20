@@ -50,7 +50,7 @@ namespace H.Controls.Dock.Controls
         /// <param name="floatingWindow"></param>
         protected override void Drop(LayoutAnchorableFloatingWindow floatingWindow)
         {
-            switch (Type)
+            switch (this.Type)
             {
                 case DropTargetType.DockingManagerDockLeft:
 
@@ -227,9 +227,9 @@ namespace H.Controls.Dock.Controls
             ILayoutPositionableElement layoutAnchorablePane = anchorableFloatingWindowModel.RootPanel;
             ILayoutPositionableElementWithActualSize layoutAnchorablePaneWithActualSize = anchorableFloatingWindowModel.RootPanel;
 
-            Rect targetScreenRect = TargetElement.GetScreenArea();
+            Rect targetScreenRect = this.TargetElement.GetScreenArea();
 
-            switch (Type)
+            switch (this.Type)
             {
                 case DropTargetType.DockingManagerDockLeft:
                     {

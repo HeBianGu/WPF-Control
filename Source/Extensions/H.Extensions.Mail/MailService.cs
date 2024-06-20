@@ -1,10 +1,9 @@
-﻿using System;
+﻿using H.Providers.Ioc;
+using System;
 using System.IO;
 using System.Net;
 using System.Net.Mail;
 using System.Net.Mime;
-using H.Extensions.Mail;
-using H.Providers.Ioc;
 
 namespace H.Extensions.Mail
 {

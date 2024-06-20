@@ -79,7 +79,7 @@ namespace H.Controls.PropertyGrid
             Binding binding = new Binding(propertyName)
             {
                 Source = this.GetValueInstance(selectedObject),
-                Mode = PropertyDescriptor.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay,
+                Mode = this.PropertyDescriptor.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay,
                 ValidatesOnDataErrors = true,
                 ValidatesOnExceptions = true,
                 ConverterCulture = CultureInfo.CurrentCulture
@@ -90,23 +90,23 @@ namespace H.Controls.PropertyGrid
 
         protected override bool ComputeIsReadOnly()
         {
-            return PropertyDescriptor.IsReadOnly;
+            return this.PropertyDescriptor.IsReadOnly;
         }
 
         internal override ITypeEditor CreateDefaultEditor(PropertyItem propertyItem)
         {
-            return PropertyGridUtilities.CreateDefaultEditor(PropertyDescriptor.PropertyType, PropertyDescriptor.Converter, propertyItem);
+            return PropertyGridUtilities.CreateDefaultEditor(this.PropertyDescriptor.PropertyType, this.PropertyDescriptor.Converter, propertyItem);
         }
 
         protected override bool ComputeCanResetValue()
         {
-            if (!PropertyDescriptor.IsReadOnly)
+            if (!this.PropertyDescriptor.IsReadOnly)
             {
                 object defaultValue = this.ComputeDefaultValueAttribute();
                 if (defaultValue != null)
                     return true;
 
-                return PropertyDescriptor.CanResetValue(SelectedObject);
+                return this.PropertyDescriptor.CanResetValue(this.SelectedObject);
             }
 
             return false;
@@ -115,7 +115,7 @@ namespace H.Controls.PropertyGrid
         protected override object ComputeAdvancedOptionsTooltip()
         {
             object tooltip;
-            UpdateAdvanceOptionsForItem(_markupObject, SelectedObject as DependencyObject, _dpDescriptor, out tooltip);
+            UpdateAdvanceOptionsForItem(_markupObject, this.SelectedObject as DependencyObject, _dpDescriptor, out tooltip);
 
             return tooltip;
         }
@@ -125,24 +125,24 @@ namespace H.Controls.PropertyGrid
 #if VS2008
         return PropertyDescriptor.Category;
 #else
-            DisplayAttribute displayAttribute = PropertyGridUtilities.GetAttribute<DisplayAttribute>(PropertyDescriptor);
-            return ((displayAttribute != null) && (displayAttribute.GetGroupName() != null)) ? displayAttribute.GetGroupName() : PropertyDescriptor.Category;
+            DisplayAttribute displayAttribute = PropertyGridUtilities.GetAttribute<DisplayAttribute>(this.PropertyDescriptor);
+            return ((displayAttribute != null) && (displayAttribute.GetGroupName() != null)) ? displayAttribute.GetGroupName() : this.PropertyDescriptor.Category;
 #endif
         }
 
         protected override string ComputeCategoryValue()
         {
-            return PropertyDescriptor.Category;
+            return this.PropertyDescriptor.Category;
         }
 
         protected override bool ComputeExpandableAttribute()
         {
-            return (bool)this.ComputeExpandableAttributeForItem(PropertyDescriptor);
+            return (bool)this.ComputeExpandableAttributeForItem(this.PropertyDescriptor);
         }
 
         protected override object ComputeDefaultValueAttribute()
         {
-            return this.ComputeDefaultValueAttributeForItem(PropertyDescriptor);
+            return this.ComputeDefaultValueAttributeForItem(this.PropertyDescriptor);
         }
 
         protected override bool ComputeIsExpandable()
@@ -153,22 +153,22 @@ namespace H.Controls.PropertyGrid
 
         protected override IList<Type> ComputeNewItemTypes()
         {
-            return (IList<Type>)ComputeNewItemTypesForItem(PropertyDescriptor);
+            return (IList<Type>)ComputeNewItemTypesForItem(this.PropertyDescriptor);
         }
         protected override string ComputeDescription()
         {
-            return (string)ComputeDescriptionForItem(PropertyDescriptor);
+            return (string)ComputeDescriptionForItem(this.PropertyDescriptor);
         }
 
         protected override int ComputeDisplayOrder(bool isPropertyGridCategorized)
         {
             this.IsPropertyGridCategorized = isPropertyGridCategorized;
-            return (int)ComputeDisplayOrderForItem(PropertyDescriptor);
+            return (int)ComputeDisplayOrderForItem(this.PropertyDescriptor);
         }
 
         protected override void ResetValue()
         {
-            PropertyDescriptor.ResetValue(SelectedObject);
+            this.PropertyDescriptor.ResetValue(this.SelectedObject);
         }
 
         internal override ITypeEditor CreateAttributeEditor()
@@ -218,7 +218,7 @@ namespace H.Controls.PropertyGrid
 
         private T GetAttribute<T>() where T : Attribute
         {
-            return PropertyGridUtilities.GetAttribute<T>(PropertyDescriptor);
+            return PropertyGridUtilities.GetAttribute<T>(this.PropertyDescriptor);
         }
 
         private void Init(PropertyDescriptor propertyDescriptor, object selectedObject)
@@ -232,7 +232,7 @@ namespace H.Controls.PropertyGrid
             _propertyDescriptor = propertyDescriptor;
             _selectedObject = selectedObject;
             _dpDescriptor = DependencyPropertyDescriptor.FromProperty(propertyDescriptor);
-            _markupObject = MarkupWriter.GetMarkupObjectFor(SelectedObject);
+            _markupObject = MarkupWriter.GetMarkupObjectFor(this.SelectedObject);
         }
 
         #endregion //Private Methods

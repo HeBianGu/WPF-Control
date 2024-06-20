@@ -1,7 +1,6 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 
 namespace H.Windows.Ribbon
 {
@@ -14,7 +13,7 @@ namespace H.Windows.Ribbon
 
         public TabBindable(string header)
         {
-            Header = header;
+            this.Header = header;
         }
 
         public string Header

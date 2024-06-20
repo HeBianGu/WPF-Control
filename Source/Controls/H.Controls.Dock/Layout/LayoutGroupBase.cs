@@ -45,7 +45,7 @@ namespace H.Controls.Dock.Layout
         internal void RaiseChildrenTreeChanged()
         {
             OnChildrenTreeChanged(ChildrenTreeChange.DirectChildrenChanged);
-            LayoutGroupBase parentGroup = Parent as LayoutGroupBase;
+            LayoutGroupBase parentGroup = this.Parent as LayoutGroupBase;
             if (parentGroup != null)
                 parentGroup.RaiseChildrenTreeChanged();
         }
@@ -68,7 +68,7 @@ namespace H.Controls.Dock.Layout
         protected void NotifyChildrenTreeChanged(ChildrenTreeChange change)
         {
             OnChildrenTreeChanged(change);
-            LayoutGroupBase parentGroup = Parent as LayoutGroupBase;
+            LayoutGroupBase parentGroup = this.Parent as LayoutGroupBase;
             if (parentGroup != null)
                 parentGroup.NotifyChildrenTreeChanged(ChildrenTreeChange.TreeChanged);
         }

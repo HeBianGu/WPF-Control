@@ -1,5 +1,4 @@
-﻿using H.Providers.Mvvm;
-using H.Themes.Default;
+﻿using H.Themes.Default;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Windows;
@@ -12,18 +11,18 @@ namespace H.Presenters.Design
     {
         public TitlePresenter()
         {
-            Title = "我是标题：";
-            Text = "我是数据";
+            this.Title = "我是标题：";
+            this.Text = "我是数据";
 
         }
 
         public override void LoadDefault()
         {
             base.LoadDefault();
-            TitleFontSize = (double)Application.Current.FindResource(FontSizeKeys.Default);
-            TitleFontWeight = FontWeights.Normal;
+            this.TitleFontSize = (double)Application.Current.FindResource(FontSizeKeys.Default);
+            this.TitleFontWeight = FontWeights.Normal;
             //this.TitleForeground = Application.Current.FindResource(BrushKeys.ForegroundDefault) as Brush;
-            TitleForeground = Brushes.Black;
+            this.TitleForeground = Brushes.Black;
 
         }
 

@@ -48,7 +48,7 @@ namespace H.Controls.Dock.Layout
         /// <param name="firstChild"></param>
         public LayoutDocumentPane(LayoutContent firstChild)
         {
-            Children.Add(firstChild);
+            this.Children.Add(firstChild);
         }
 
         #endregion Constructors
@@ -63,7 +63,7 @@ namespace H.Controls.Dock.Layout
             {
                 if (value == _showHeader) return;
                 _showHeader = value;
-                RaisePropertyChanged(nameof(ShowHeader));
+                RaisePropertyChanged(nameof(this.ShowHeader));
             }
         }
 
@@ -73,20 +73,20 @@ namespace H.Controls.Dock.Layout
             get => _selectedIndex;
             set
             {
-                if (value < 0 || value >= Children.Count) value = -1;
+                if (value < 0 || value >= this.Children.Count) value = -1;
                 if (value == _selectedIndex) return;
-                RaisePropertyChanging(nameof(SelectedContentIndex));
-                RaisePropertyChanging(nameof(SelectedContent));
-                if (_selectedIndex >= 0 && _selectedIndex < Children.Count) Children[_selectedIndex].IsSelected = false;
+                RaisePropertyChanging(nameof(this.SelectedContentIndex));
+                RaisePropertyChanging(nameof(this.SelectedContent));
+                if (_selectedIndex >= 0 && _selectedIndex < this.Children.Count) this.Children[_selectedIndex].IsSelected = false;
                 _selectedIndex = value;
-                if (_selectedIndex >= 0 && _selectedIndex < Children.Count) Children[_selectedIndex].IsSelected = true;
-                RaisePropertyChanged(nameof(SelectedContentIndex));
-                RaisePropertyChanged(nameof(SelectedContent));
+                if (_selectedIndex >= 0 && _selectedIndex < this.Children.Count) this.Children[_selectedIndex].IsSelected = true;
+                RaisePropertyChanged(nameof(this.SelectedContentIndex));
+                RaisePropertyChanged(nameof(this.SelectedContent));
             }
         }
 
         /// <inheritdoc cref="ILayoutContentSelector"/>
-        public LayoutContent SelectedContent => _selectedIndex == -1 ? null : Children[_selectedIndex];
+        public LayoutContent SelectedContent => _selectedIndex == -1 ? null : this.Children[_selectedIndex];
 
         /// <inheritdoc />
         string ILayoutPaneSerializable.Id
@@ -103,7 +103,7 @@ namespace H.Controls.Dock.Layout
         {
             get
             {
-                List<LayoutContent> listSorted = Children.ToList();
+                List<LayoutContent> listSorted = this.Children.ToList();
                 listSorted.Sort();
                 return listSorted;
             }
@@ -116,8 +116,8 @@ namespace H.Controls.Dock.Layout
         /// <inheritdoc />
         protected override bool GetVisibility()
         {
-            if (Parent is LayoutDocumentPaneGroup)
-                return ChildrenCount > 0 && Children.Any(c => (c is LayoutDocument document && document.IsVisible) || c is LayoutAnchorable);
+            if (this.Parent is LayoutDocumentPaneGroup)
+                return this.ChildrenCount > 0 && this.Children.Any(c => (c is LayoutDocument document && document.IsVisible) || c is LayoutAnchorable);
             return true;
         }
 
@@ -126,9 +126,9 @@ namespace H.Controls.Dock.Layout
         {
             if (_selectedIndex == oldIndex)
             {
-                RaisePropertyChanging(nameof(SelectedContentIndex));
+                RaisePropertyChanging(nameof(this.SelectedContentIndex));
                 _selectedIndex = newIndex;
-                RaisePropertyChanged(nameof(SelectedContentIndex));
+                RaisePropertyChanged(nameof(this.SelectedContentIndex));
             }
             base.ChildMoved(oldIndex, newIndex);
         }
@@ -137,25 +137,25 @@ namespace H.Controls.Dock.Layout
         protected override void OnChildrenCollectionChanged()
         {
             AutoFixSelectedContent();
-            for (int i = 0; i < Children.Count; i++)
+            for (int i = 0; i < this.Children.Count; i++)
             {
-                if (!Children[i].IsSelected) continue;
-                SelectedContentIndex = i;
+                if (!this.Children[i].IsSelected) continue;
+                this.SelectedContentIndex = i;
                 break;
             }
             // TODO: MK who's properties are these??
             //RaisePropertyChanged(nameof(CanClose));
             //RaisePropertyChanged(nameof(CanHide));
-            RaisePropertyChanged(nameof(IsDirectlyHostedInFloatingWindow));
+            RaisePropertyChanged(nameof(this.IsDirectlyHostedInFloatingWindow));
             base.OnChildrenCollectionChanged();
-            RaisePropertyChanged(nameof(ChildrenSorted));
+            RaisePropertyChanged(nameof(this.ChildrenSorted));
         }
 
         private void AutoFixSelectedContent()
         {
             if (!_autoFixSelectedContent) return;
-            if (SelectedContentIndex >= ChildrenCount) SelectedContentIndex = Children.Count - 1;
-            if (SelectedContentIndex == -1 && ChildrenCount > 0) SetLastActivatedIndex();
+            if (this.SelectedContentIndex >= this.ChildrenCount) this.SelectedContentIndex = this.Children.Count - 1;
+            if (this.SelectedContentIndex == -1 && this.ChildrenCount > 0) SetLastActivatedIndex();
         }
 
         /// <summary>
@@ -175,7 +175,7 @@ namespace H.Controls.Dock.Layout
         public override void WriteXml(System.Xml.XmlWriter writer)
         {
             if (_id != null) writer.WriteAttributeString(nameof(ILayoutPaneSerializable.Id), _id);
-            if (!_showHeader) writer.WriteAttributeString(nameof(ShowHeader), _showHeader.ToString());
+            if (!_showHeader) writer.WriteAttributeString(nameof(this.ShowHeader), _showHeader.ToString());
             base.WriteXml(writer);
         }
 
@@ -183,7 +183,7 @@ namespace H.Controls.Dock.Layout
         public override void ReadXml(System.Xml.XmlReader reader)
         {
             if (reader.MoveToAttribute(nameof(ILayoutPaneSerializable.Id))) _id = reader.Value;
-            if (reader.MoveToAttribute(nameof(ShowHeader))) _showHeader = bool.Parse(reader.Value);
+            if (reader.MoveToAttribute(nameof(this.ShowHeader))) _showHeader = bool.Parse(reader.Value);
             base.ReadXml(reader);
         }
 
@@ -194,7 +194,7 @@ namespace H.Controls.Dock.Layout
             System.Diagnostics.Trace.Write(new string(' ', tab * 4));
             System.Diagnostics.Trace.WriteLine("DocumentPane()");
 
-            foreach (LayoutElement child in Children)
+            foreach (LayoutElement child in this.Children)
                 child.ConsoleDump(tab + 1);
         }
 #endif
@@ -208,17 +208,17 @@ namespace H.Controls.Dock.Layout
         /// <returns></returns>
         public int IndexOf(LayoutContent content)
         {
-            return !(content is LayoutDocument documentChild) ? -1 : Children.IndexOf(documentChild);
+            return !(content is LayoutDocument documentChild) ? -1 : this.Children.IndexOf(documentChild);
         }
 
         /// <summary>Invalidates the current <see cref="SelectedContentIndex"/> and sets the index for the next avialable child with IsEnabled == true.</summary>
         internal void SetNextSelectedIndex()
         {
-            SelectedContentIndex = -1;
-            for (int i = 0; i < Children.Count; ++i)
+            this.SelectedContentIndex = -1;
+            for (int i = 0; i < this.Children.Count; ++i)
             {
-                if (!Children[i].IsEnabled) continue;
-                SelectedContentIndex = i;
+                if (!this.Children[i].IsEnabled) continue;
+                this.SelectedContentIndex = i;
                 return;
             }
         }
@@ -226,24 +226,24 @@ namespace H.Controls.Dock.Layout
         /// <summary>Sets the current <see cref="SelectedContentIndex"/> to the last activated child with IsEnabled == true</summary>
         private void SetLastActivatedIndex()
         {
-            LayoutContent lastActivatedDocument = Children.Where(c => c.IsEnabled).OrderByDescending(c => c.LastActivationTimeStamp.GetValueOrDefault()).FirstOrDefault();
-            SelectedContentIndex = Children.IndexOf(lastActivatedDocument);
+            LayoutContent lastActivatedDocument = this.Children.Where(c => c.IsEnabled).OrderByDescending(c => c.LastActivationTimeStamp.GetValueOrDefault()).FirstOrDefault();
+            this.SelectedContentIndex = this.Children.IndexOf(lastActivatedDocument);
         }
 
         /// <summary>Updates the <see cref="IsDirectlyHostedInFloatingWindow"/> property of this object.</summary>
-        internal void UpdateIsDirectlyHostedInFloatingWindow() => RaisePropertyChanged(nameof(IsDirectlyHostedInFloatingWindow));
+        internal void UpdateIsDirectlyHostedInFloatingWindow() => RaisePropertyChanged(nameof(this.IsDirectlyHostedInFloatingWindow));
 
         /// <inheritdoc/>
         protected override void OnParentChanged(ILayoutContainer oldValue, ILayoutContainer newValue)
         {
             if (oldValue is ILayoutGroup oldGroup) oldGroup.ChildrenCollectionChanged -= OnParentChildrenCollectionChanged;
-            RaisePropertyChanged(nameof(IsDirectlyHostedInFloatingWindow));
+            RaisePropertyChanged(nameof(this.IsDirectlyHostedInFloatingWindow));
             if (newValue is ILayoutGroup newGroup) newGroup.ChildrenCollectionChanged += OnParentChildrenCollectionChanged;
             base.OnParentChanged(oldValue, newValue);
         }
 
         /// <inheritdoc/>
-        private void OnParentChildrenCollectionChanged(object sender, EventArgs e) => RaisePropertyChanged(nameof(IsDirectlyHostedInFloatingWindow));
+        private void OnParentChildrenCollectionChanged(object sender, EventArgs e) => RaisePropertyChanged(nameof(this.IsDirectlyHostedInFloatingWindow));
 
         #endregion methods
     }

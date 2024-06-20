@@ -83,8 +83,6 @@ namespace H.Extensions.Excel
                 ISheet sheet = wk.GetSheetAt(0);
 
                 IRow row = sheet.GetRow(0);  //读取当前行数据
-                                             //LastRowNum 是当前表的总行数-1（注意）
-                int offset = 0;
                 for (int i = 0; i <= sheet.LastRowNum; i++)
                 {
                     row = sheet.GetRow(i);  //读取当前行数据

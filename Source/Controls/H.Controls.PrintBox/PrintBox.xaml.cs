@@ -2,7 +2,6 @@
 using H.Providers.Ioc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Printing;
 using System.Windows;
 using System.Windows.Controls;
@@ -29,10 +28,10 @@ namespace H.Controls.PrintBox
             {
                 capabilities = _printDialog.PrintQueue.GetPrintCapabilities(_printDialog.PrintTicket);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 IocMessage.Dialog.Show("请先设置系统默认打印机");
-                throw ex;
+                throw;
             }
             this.PrintableAreaWidth = _printDialog.PrintableAreaWidth;
             this.PrintableAreaHeight = _printDialog.PrintableAreaHeight;
@@ -69,7 +68,7 @@ namespace H.Controls.PrintBox
             }
             {
                 CommandBinding binding = new CommandBinding(PrintCommands.Print);
-                binding.Executed += async (l, k) =>
+                binding.Executed += (l, k) =>
                 {
                     FixedDocument fixedDoc = this.GetFixedDocument();
                     IocMessage.Snack?.ShowInfo("正在打印..");

@@ -1,6 +1,5 @@
 ﻿using H.Extensions.Setting;
 using H.Providers.Ioc;
-using H.Providers.Mvvm;
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;

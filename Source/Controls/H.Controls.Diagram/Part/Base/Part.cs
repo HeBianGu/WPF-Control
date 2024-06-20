@@ -82,7 +82,7 @@ namespace H.Controls.Diagram
             set { SetValue(IsSelectedProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty IsSelectedProperty =
             DependencyProperty.Register("IsSelected", typeof(bool), typeof(Part), new PropertyMetadata(default(bool), (d, e) =>
              {
@@ -131,7 +131,7 @@ namespace H.Controls.Diagram
             set { SetValue(StateProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty StateProperty =
             DependencyProperty.Register("State", typeof(FlowableState), typeof(Part), new FrameworkPropertyMetadata(default(FlowableState), (d, e) =>
              {
@@ -227,7 +227,7 @@ namespace H.Controls.Diagram
             set { SetValue(HasErrorProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty HasErrorProperty =
             DependencyProperty.Register("HasError", typeof(bool), typeof(Part), new FrameworkPropertyMetadata(default(bool), (d, e) =>
             {

@@ -104,17 +104,17 @@ namespace H.Controls.PropertyGrid
 
         private bool HandleNullSpin()
         {
-            if (!Value.HasValue)
+            if (!this.Value.HasValue)
             {
-                T forcedValue = DefaultValue.HasValue
-                  ? DefaultValue.Value
+                T forcedValue = this.DefaultValue.HasValue
+                  ? this.DefaultValue.Value
                   : default(T);
 
-                Value = CoerceValueMinMax(forcedValue);
+                this.Value = CoerceValueMinMax(forcedValue);
 
                 return true;
             }
-            else if (!Increment.HasValue)
+            else if (!this.Increment.HasValue)
             {
                 return true;
             }
@@ -124,15 +124,15 @@ namespace H.Controls.PropertyGrid
 
         internal bool IsValid(T? value)
         {
-            return !IsLowerThan(value, Minimum) && !IsGreaterThan(value, Maximum);
+            return !IsLowerThan(value, this.Minimum) && !IsGreaterThan(value, this.Maximum);
         }
 
         private T? CoerceValueMinMax(T value)
         {
-            if (IsLowerThan(value, Minimum))
-                return Minimum;
-            else if (IsGreaterThan(value, Maximum))
-                return Maximum;
+            if (IsLowerThan(value, this.Minimum))
+                return this.Minimum;
+            else if (IsGreaterThan(value, this.Maximum))
+                return this.Maximum;
             else
                 return value;
         }
@@ -148,13 +148,13 @@ namespace H.Controls.PropertyGrid
                 if (this.UpdateValueOnEnterKey)
                 {
                     T? currentValue = this.ConvertTextToValue(this.TextBox.Text);
-                    T result = this.IncrementValue(currentValue.Value, Increment.Value);
+                    T result = this.IncrementValue(currentValue.Value, this.Increment.Value);
                     T? newValue = this.CoerceValueMinMax(result);
                     this.TextBox.Text = newValue.Value.ToString(this.FormatString, this.CultureInfo);
                 }
                 else
                 {
-                    T result = this.IncrementValue(Value.Value, Increment.Value);
+                    T result = this.IncrementValue(this.Value.Value, this.Increment.Value);
                     this.Value = this.CoerceValueMinMax(result);
                 }
             }
@@ -169,13 +169,13 @@ namespace H.Controls.PropertyGrid
                 if (this.UpdateValueOnEnterKey)
                 {
                     T? currentValue = this.ConvertTextToValue(this.TextBox.Text);
-                    T result = this.DecrementValue(currentValue.Value, Increment.Value);
+                    T result = this.DecrementValue(currentValue.Value, this.Increment.Value);
                     T? newValue = this.CoerceValueMinMax(result);
                     this.TextBox.Text = newValue.Value.ToString(this.FormatString, this.CultureInfo);
                 }
                 else
                 {
-                    T result = this.DecrementValue(Value.Value, Increment.Value);
+                    T result = this.DecrementValue(this.Value.Value, this.Increment.Value);
                     this.Value = this.CoerceValueMinMax(result);
                 }
             }
@@ -228,14 +228,14 @@ namespace H.Controls.PropertyGrid
 
         protected override string ConvertValueToText()
         {
-            if (Value == null)
+            if (this.Value == null)
                 return string.Empty;
 
             //Manage FormatString of type "{}{0:N2} °" (in xaml) or "{0:N2} °" in code-behind.
-            if (FormatString.Contains("{0"))
-                return string.Format(CultureInfo, FormatString, Value.Value);
+            if (this.FormatString.Contains("{0"))
+                return string.Format(this.CultureInfo, this.FormatString, this.Value.Value);
 
-            return Value.Value.ToString(FormatString, CultureInfo);
+            return this.Value.Value.ToString(this.FormatString, this.CultureInfo);
         }
 
         protected override void SetValidSpinDirection()
@@ -243,17 +243,17 @@ namespace H.Controls.PropertyGrid
             ValidSpinDirections validDirections = ValidSpinDirections.None;
 
             // Null increment always prevents spin.
-            if ((this.Increment != null) && !IsReadOnly)
+            if ((this.Increment != null) && !this.IsReadOnly)
             {
-                if (IsLowerThan(Value, Maximum) || !Value.HasValue || !Maximum.HasValue)
+                if (IsLowerThan(this.Value, this.Maximum) || !this.Value.HasValue || !this.Maximum.HasValue)
                     validDirections = validDirections | ValidSpinDirections.Increase;
 
-                if (IsGreaterThan(Value, Minimum) || !Value.HasValue || !Minimum.HasValue)
+                if (IsGreaterThan(this.Value, this.Minimum) || !this.Value.HasValue || !this.Minimum.HasValue)
                     validDirections = validDirections | ValidSpinDirections.Decrease;
             }
 
-            if (Spinner != null)
-                Spinner.ValidSpinDirection = validDirections;
+            if (this.Spinner != null)
+                this.Spinner.ValidSpinDirection = validDirections;
         }
 
         private bool IsPercent(string stringToTest)
@@ -263,7 +263,7 @@ namespace H.Controls.PropertyGrid
             {
                 //stringToTest contains a "P" between 2 "'", it's considered as text, not percent
                 bool isText = stringToTest.Substring(0, PIndex).Contains("'")
-                              && stringToTest.Substring(PIndex, FormatString.Length - PIndex).Contains("'");
+                              && stringToTest.Substring(PIndex, this.FormatString.Length - PIndex).Contains("'");
 
                 return !isText;
             }
@@ -276,20 +276,20 @@ namespace H.Controls.PropertyGrid
 
             if (this.IsPercent(this.FormatString))
             {
-                result = _fromDecimal(ParsePercent(text, CultureInfo));
+                result = _fromDecimal(ParsePercent(text, this.CultureInfo));
             }
             else
             {
                 T outputValue = new T();
                 // Problem while converting new text
-                if (!_fromText(text, this.ParsingNumberStyle, CultureInfo, out outputValue))
+                if (!_fromText(text, this.ParsingNumberStyle, this.CultureInfo, out outputValue))
                 {
                     bool shouldThrow = true;
 
                     // case 164198: Throw when replacing only the digit part of 99° through UI.
                     // Check if CurrentValueText is also failing => it also contains special characters. ex : 90°
                     T currentValueTextOutputValue;
-                    if (!_fromText(currentValueText, this.ParsingNumberStyle, CultureInfo, out currentValueTextOutputValue))
+                    if (!_fromText(currentValueText, this.ParsingNumberStyle, this.CultureInfo, out currentValueTextOutputValue))
                     {
                         // extract non-digit characters
                         System.Collections.Generic.IEnumerable<char> currentValueTextSpecialCharacters = currentValueText.Where(c => !Char.IsDigit(c));
@@ -302,7 +302,7 @@ namespace H.Controls.PropertyGrid
                                 text = text.Replace(character.ToString(), string.Empty);
                             }
                             // if without the special characters, parsing is good, do not throw
-                            if (_fromText(text, this.ParsingNumberStyle, CultureInfo, out outputValue))
+                            if (_fromText(text, this.ParsingNumberStyle, this.CultureInfo, out outputValue))
                             {
                                 shouldThrow = false;
                             }
@@ -329,13 +329,13 @@ namespace H.Controls.PropertyGrid
         private void ValidateDefaultMinMax(T? value)
         {
             // DefaultValue is always accepted.
-            if (object.Equals(value, DefaultValue))
+            if (object.Equals(value, this.DefaultValue))
                 return;
 
-            if (IsLowerThan(value, Minimum))
-                throw new ArgumentOutOfRangeException("Minimum", String.Format("Value must be greater than MinValue of {0}", Minimum));
-            else if (IsGreaterThan(value, Maximum))
-                throw new ArgumentOutOfRangeException("Maximum", String.Format("Value must be less than MaxValue of {0}", Maximum));
+            if (IsLowerThan(value, this.Minimum))
+                throw new ArgumentOutOfRangeException("Minimum", String.Format("Value must be greater than MinValue of {0}", this.Minimum));
+            else if (IsGreaterThan(value, this.Maximum))
+                throw new ArgumentOutOfRangeException("Maximum", String.Format("Value must be less than MaxValue of {0}", this.Maximum));
         }
 
         #endregion //Base Class Overrides

@@ -46,12 +46,12 @@ namespace H.Controls.ZoomBox
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return Inverted ? BoolToVisibility(value) : VisibilityToBool(value);
+            return this.Inverted ? BoolToVisibility(value) : VisibilityToBool(value);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return Inverted ? VisibilityToBool(value) : BoolToVisibility(value);
+            return this.Inverted ? VisibilityToBool(value) : BoolToVisibility(value);
         }
 
         private object VisibilityToBool(object value)
@@ -59,7 +59,7 @@ namespace H.Controls.ZoomBox
             if (!(value is Visibility))
                 throw new InvalidOperationException(ErrorMessages.GetMessage("SuppliedValueWasNotVisibility"));
 
-            return (Visibility)value == Visibility.Visible ^ Not;
+            return (Visibility)value == Visibility.Visible ^ this.Not;
         }
 
         private object BoolToVisibility(object value)
@@ -67,7 +67,7 @@ namespace H.Controls.ZoomBox
             if (!(value is bool))
                 throw new InvalidOperationException(ErrorMessages.GetMessage("SuppliedValueWasNotBool"));
 
-            return (bool)value ^ Not ? Visibility.Visible : Visibility.Collapsed;
+            return (bool)value ^ this.Not ? Visibility.Visible : Visibility.Collapsed;
         }
     }
 }

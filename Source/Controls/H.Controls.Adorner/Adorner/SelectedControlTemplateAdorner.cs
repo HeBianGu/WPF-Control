@@ -22,7 +22,7 @@ namespace H.Controls.Adorner
             base.OnRender(drawingContext);
 
             Rect rect = new Rect(this.AdornedElement.RenderSize);
-            drawingContext.DrawRectangle(this.Fill, this.Pen, new Rect(rect.Left - ScaleLen, rect.Top - ScaleLen, rect.Width + (2 * ScaleLen), rect.Height + (2 * ScaleLen)));
+            drawingContext.DrawRectangle(this.Fill, this.Pen, new Rect(rect.Left - this.ScaleLen, rect.Top - this.ScaleLen, rect.Width + (2 * this.ScaleLen), rect.Height + (2 * this.ScaleLen)));
         }
     }
 }

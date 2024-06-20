@@ -121,10 +121,10 @@ namespace H.Controls.PropertyGrid
             {
                 case Key.Enter:
                     {
-                        if (!IsReadOnly)
+                        if (!this.IsReadOnly)
                         {
                             _fireSelectionChangedEvent = false;
-                            BindingExpression binding = BindingOperations.GetBindingExpression(TextBox, System.Windows.Controls.TextBox.TextProperty);
+                            BindingExpression binding = BindingOperations.GetBindingExpression(this.TextBox, System.Windows.Controls.TextBox.TextProperty);
                             binding.UpdateSource();
                             _fireSelectionChangedEvent = true;
                         }
@@ -204,7 +204,7 @@ namespace H.Controls.PropertyGrid
 
         protected virtual void PerformMouseSelection()
         {
-            DateTimeInfo dateTimeInfo = this.GetDateTimeInfo(TextBox.SelectionStart);
+            DateTimeInfo dateTimeInfo = this.GetDateTimeInfo(this.TextBox.SelectionStart);
             if ((dateTimeInfo != null) && (dateTimeInfo.Type == DateTimePart.Other))
             {
                 this.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() =>

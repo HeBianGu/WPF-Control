@@ -81,9 +81,9 @@ namespace H.Controls.PropertyGrid
             // container. Fortunately, the ItemsContainer will not re-prepare the items yet
             // (i.e., probably made on next measure pass), allowing us to set up the new
             // parent helper.
-            if (ChildrenItemsControl != null)
+            if (this.ChildrenItemsControl != null)
             {
-                ((IItemContainerGenerator)ChildrenItemsControl.ItemContainerGenerator).RemoveAll();
+                ((IItemContainerGenerator)this.ChildrenItemsControl.ItemContainerGenerator).RemoveAll();
             }
             this.IsCleaning = false;
         }

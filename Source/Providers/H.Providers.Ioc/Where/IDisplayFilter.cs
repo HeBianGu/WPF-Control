@@ -2,6 +2,6 @@
 {
     public interface IDisplayFilter : IFilterable, IDisplayable
     {
-        
+
     }
 }

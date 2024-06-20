@@ -8,8 +8,8 @@ namespace H.Modules.Messages.Notice
     {
         public FatalMessagePresenter()
         {
-            Geometry = GeometryFactory.Create(Geometrys.Fatal);
-            Level = 5;
+            this.Geometry = GeometryFactory.Create(Geometrys.Fatal);
+            this.Level = 5;
         }
     }
 }

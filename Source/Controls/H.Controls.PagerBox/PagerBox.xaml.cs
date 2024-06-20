@@ -4,11 +4,9 @@ using H.Providers.Mvvm;
 
 
 using System;
-using System.Collections;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Threading;
 
 namespace H.Controls.PagerBox
 {
@@ -75,11 +73,11 @@ namespace H.Controls.PagerBox
 
         public PagerBox()
         {
-            CommandBindings.Add(new CommandBinding(Commands.Prev, ButtonPrev_OnClick));
-            CommandBindings.Add(new CommandBinding(Commands.Next, ButtonNext_OnClick));
-            CommandBindings.Add(new CommandBinding(Commands.Selected, ToggleButton_OnChecked));
+            this.CommandBindings.Add(new CommandBinding(Commands.Prev, ButtonPrev_OnClick));
+            this.CommandBindings.Add(new CommandBinding(Commands.Next, ButtonNext_OnClick));
+            this.CommandBindings.Add(new CommandBinding(Commands.Selected, ToggleButton_OnChecked));
             //this.VisibilityWith(MaxPageCount > 1);
-            this.Visibility = MaxPageCount > 1 ? Visibility.Visible : Visibility.Collapsed;
+            this.Visibility = this.MaxPageCount > 1 ? Visibility.Visible : Visibility.Collapsed;
         }
 
         #region Public Properties
@@ -279,16 +277,16 @@ namespace H.Controls.PagerBox
         private void Update()
         {
             if (!_appliedTemplate) return;
-            _buttonLeft.IsEnabled = PageIndex > 1;
-            _buttonRight.IsEnabled = PageIndex < MaxPageCount;
-            if (MaxPageInterval == 0)
+            _buttonLeft.IsEnabled = this.PageIndex > 1;
+            _buttonRight.IsEnabled = this.PageIndex < this.MaxPageCount;
+            if (this.MaxPageInterval == 0)
             {
                 _buttonFirst.Visibility = Visibility.Collapsed;
                 _buttonLast.Visibility = Visibility.Collapsed;
                 _textBlockLeft.Visibility = Visibility.Collapsed;
                 _textBlockRight.Visibility = Visibility.Collapsed;
                 _panelMain.Children.Clear();
-                RadioButton selectButton = CreateButton(PageIndex);
+                RadioButton selectButton = CreateButton(this.PageIndex);
                 _panelMain.Children.Add(selectButton);
                 selectButton.IsChecked = true;
                 return;
@@ -299,31 +297,31 @@ namespace H.Controls.PagerBox
             _textBlockRight.Visibility = Visibility.Visible;
 
             //更新最后一页
-            if (MaxPageCount == 1)
+            if (this.MaxPageCount == 1)
             {
                 _buttonLast.Visibility = Visibility.Collapsed;
             }
             else
             {
                 _buttonLast.Visibility = Visibility.Visible;
-                _buttonLast.Tag = MaxPageCount.ToString();
+                _buttonLast.Tag = this.MaxPageCount.ToString();
             }
 
             //更新省略号
-            int right = MaxPageCount - PageIndex;
-            int left = PageIndex - 1;
-            _textBlockRight.Visibility = right > MaxPageInterval ? Visibility.Visible : Visibility.Collapsed;
-            _textBlockLeft.Visibility = left > MaxPageInterval ? Visibility.Visible : Visibility.Collapsed;
+            int right = this.MaxPageCount - this.PageIndex;
+            int left = this.PageIndex - 1;
+            _textBlockRight.Visibility = right > this.MaxPageInterval ? Visibility.Visible : Visibility.Collapsed;
+            _textBlockLeft.Visibility = left > this.MaxPageInterval ? Visibility.Visible : Visibility.Collapsed;
 
             //更新中间部分
             _panelMain.Children.Clear();
-            if (PageIndex > 1 && PageIndex < MaxPageCount)
+            if (this.PageIndex > 1 && this.PageIndex < this.MaxPageCount)
             {
-                RadioButton selectButton = CreateButton(PageIndex);
+                RadioButton selectButton = CreateButton(this.PageIndex);
                 _panelMain.Children.Add(selectButton);
                 selectButton.IsChecked = true;
             }
-            else if (PageIndex == 1)
+            else if (this.PageIndex == 1)
             {
                 _buttonFirst.IsChecked = true;
             }
@@ -332,8 +330,8 @@ namespace H.Controls.PagerBox
                 _buttonLast.IsChecked = true;
             }
 
-            int sub = PageIndex;
-            for (int i = 0; i < MaxPageInterval - 1; i++)
+            int sub = this.PageIndex;
+            for (int i = 0; i < this.MaxPageInterval - 1; i++)
             {
                 if (--sub > 1)
                 {
@@ -344,10 +342,10 @@ namespace H.Controls.PagerBox
                     break;
                 }
             }
-            int add = PageIndex;
-            for (int i = 0; i < MaxPageInterval - 1; i++)
+            int add = this.PageIndex;
+            for (int i = 0; i < this.MaxPageInterval - 1; i++)
             {
-                if (++add < MaxPageCount)
+                if (++add < this.MaxPageCount)
                 {
                     _panelMain.Children.Add(CreateButton(add));
                 }
@@ -358,9 +356,9 @@ namespace H.Controls.PagerBox
             }
         }
 
-        private void ButtonPrev_OnClick(object sender, RoutedEventArgs e) => PageIndex--;
+        private void ButtonPrev_OnClick(object sender, RoutedEventArgs e) => this.PageIndex--;
 
-        private void ButtonNext_OnClick(object sender, RoutedEventArgs e) => PageIndex++;
+        private void ButtonNext_OnClick(object sender, RoutedEventArgs e) => this.PageIndex++;
 
         private RadioButton CreateButton(int page)
         {
@@ -375,7 +373,7 @@ namespace H.Controls.PagerBox
         {
             if (!(e.OriginalSource is RadioButton button)) return;
             if (button.IsChecked == false) return;
-            PageIndex = int.Parse(button.Tag.ToString());
+            this.PageIndex = int.Parse(button.Tag.ToString());
         }
 
         #endregion Private Methods       

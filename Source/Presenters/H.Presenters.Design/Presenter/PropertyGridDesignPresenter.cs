@@ -1,6 +1,4 @@
-﻿
-using H.Providers.Mvvm;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace H.Presenters.Design
 {

@@ -22,7 +22,7 @@ namespace H.Controls.ScheduleBox
                 //IocSchedule.Instance.OnLogMessaged($"【触发时间】：{context.ScheduledFireTimeUtc?.LocalDateTime}");
                 //IocSchedule.Instance.OnLogMessaged($"【下次触发时间】：{context.NextFireTimeUtc?.LocalDateTime}");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
 

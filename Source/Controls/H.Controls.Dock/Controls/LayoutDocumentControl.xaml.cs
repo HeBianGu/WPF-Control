@@ -51,10 +51,10 @@ namespace H.Controls.Dock.Controls
         protected virtual void OnModelChanged(DependencyPropertyChangedEventArgs e)
         {
             if (e.OldValue != null) ((LayoutContent)e.OldValue).PropertyChanged -= Model_PropertyChanged;
-            if (Model != null)
+            if (this.Model != null)
             {
-                Model.PropertyChanged += Model_PropertyChanged;
-                SetLayoutItem(Model?.Root?.Manager?.GetLayoutItemFromModel(Model));
+                this.Model.PropertyChanged += Model_PropertyChanged;
+                SetLayoutItem(this.Model?.Root?.Manager?.GetLayoutItemFromModel(this.Model));
             }
             else
                 SetLayoutItem(null);
@@ -63,10 +63,10 @@ namespace H.Controls.Dock.Controls
         private void Model_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName != nameof(LayoutContent.IsEnabled)) return;
-            if (Model == null) return;
-            IsEnabled = Model.IsEnabled;
-            if (IsEnabled || !Model.IsActive) return;
-            if (Model.Parent is LayoutDocumentPane layoutDocumentPane) layoutDocumentPane.SetNextSelectedIndex();
+            if (this.Model == null) return;
+            this.IsEnabled = this.Model.IsEnabled;
+            if (this.IsEnabled || !this.Model.IsActive) return;
+            if (this.Model.Parent is LayoutDocumentPane layoutDocumentPane) layoutDocumentPane.SetNextSelectedIndex();
         }
 
         #endregion Model
@@ -101,7 +101,7 @@ namespace H.Controls.Dock.Controls
         /// <inheritdoc />
         protected override void OnPreviewMouseLeftButtonUp(MouseButtonEventArgs e)
         {
-            Debug.WriteLine($"{nameof(OnPreviewMouseLeftButtonUp)}: {LayoutItem.ContentId}");
+            Debug.WriteLine($"{nameof(OnPreviewMouseLeftButtonUp)}: {this.LayoutItem.ContentId}");
             SetIsActive();
             base.OnPreviewMouseLeftButtonUp(e);
         }
@@ -126,7 +126,7 @@ namespace H.Controls.Dock.Controls
 
         private void SetIsActive()
         {
-            if (Model != null && !Model.IsActive) Model.IsActive = true;
+            if (this.Model != null && !this.Model.IsActive) this.Model.IsActive = true;
         }
 
         #endregion Private Methods

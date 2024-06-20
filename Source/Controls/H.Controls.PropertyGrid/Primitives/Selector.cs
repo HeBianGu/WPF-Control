@@ -119,10 +119,10 @@ namespace H.Controls.PropertyGrid
                 return;
 
             _ignoreSelectedItemsCollectionChanged++;
-            SelectedItems.Clear();
+            this.SelectedItems.Clear();
             if (newValue != null)
             {
-                SelectedItems.Add(newValue);
+                this.SelectedItems.Add(newValue);
             }
             this.UpdateFromSelectedItems();
             _ignoreSelectedItemsCollectionChanged--;
@@ -295,7 +295,7 @@ namespace H.Controls.PropertyGrid
         {
             get
             {
-                return ItemsSource ?? (IEnumerable)Items ?? (new object[0]);
+                return this.ItemsSource ?? (IEnumerable)this.Items ?? (new object[0]);
             }
         }
 
@@ -322,7 +322,7 @@ namespace H.Controls.PropertyGrid
             _surpressItemSelectionChanged = true;
             FrameworkElement selectorItem = element as FrameworkElement;
 
-            selectorItem.SetValue(SelectorItem.IsSelectedProperty, SelectedItems.Contains(item));
+            selectorItem.SetValue(SelectorItem.IsSelectedProperty, this.SelectedItems.Contains(item));
 
             _surpressItemSelectionChanged = false;
         }
@@ -436,11 +436,11 @@ namespace H.Controls.PropertyGrid
 
         protected object ResolveItemByValue(string value)
         {
-            if (!String.IsNullOrEmpty(ValueMemberPath))
+            if (!String.IsNullOrEmpty(this.ValueMemberPath))
             {
-                foreach (object item in ItemsCollection)
+                foreach (object item in this.ItemsCollection)
                 {
-                    PropertyInfo property = item.GetType().GetProperty(ValueMemberPath);
+                    PropertyInfo property = item.GetType().GetProperty(this.ValueMemberPath);
                     if (property != null)
                     {
                         object propertyValue = property.GetValue(item, null);
@@ -458,13 +458,13 @@ namespace H.Controls.PropertyGrid
             _ignoreSelectedItemsCollectionChanged++;
             // Just update the SelectedItems collection content 
             // and let the synchronization be made from UpdateFromSelectedItems();
-            SelectedItems.Clear();
+            this.SelectedItems.Clear();
 
             if ((selectedValues != null) && (selectedValues.Count > 0))
             {
                 ValueEqualityComparer comparer = new ValueEqualityComparer();
 
-                foreach (object item in ItemsCollection)
+                foreach (object item in this.ItemsCollection)
                 {
                     object itemValue = GetItemfunction(item);
 
@@ -473,7 +473,7 @@ namespace H.Controls.PropertyGrid
 
                     if (isSelected)
                     {
-                        SelectedItems.Add(item);
+                        this.SelectedItems.Add(item);
                     }
                 }
             }
@@ -585,13 +585,13 @@ namespace H.Controls.PropertyGrid
 
             if (unselected)
             {
-                while (SelectedItems.Contains(item))
-                    SelectedItems.Remove(item);
+                while (this.SelectedItems.Contains(item))
+                    this.SelectedItems.Remove(item);
             }
             else
             {
-                if (!SelectedItems.Contains(item))
-                    SelectedItems.Add(item);
+                if (!this.SelectedItems.Contains(item))
+                    this.SelectedItems.Add(item);
             }
 
             OnItemSelectionChanged(
@@ -634,13 +634,13 @@ namespace H.Controls.PropertyGrid
 
         private void UpdateSelectedMemberPathValuesBindings()
         {
-            _selectedMemberPathValuesHelper.UpdateValueSource(ItemsCollection, SelectedMemberPath);
+            _selectedMemberPathValuesHelper.UpdateValueSource(this.ItemsCollection, this.SelectedMemberPath);
             this.UpdateFromSelectedMemberPathValues();
         }
 
         private void UpdateValueMemberPathValuesBindings()
         {
-            _valueMemberPathValuesHelper.UpdateValueSource(ItemsCollection, ValueMemberPath);
+            _valueMemberPathValuesHelper.UpdateValueSource(this.ItemsCollection, this.ValueMemberPath);
         }
 
         /// <summary>
@@ -655,8 +655,8 @@ namespace H.Controls.PropertyGrid
 
             RaiseEvent(args);
 
-            if (Command != null)
-                Command.Execute(args.Item);
+            if (this.Command != null)
+                this.Command.Execute(args.Item);
         }
 
         /// <summary>
@@ -667,12 +667,12 @@ namespace H.Controls.PropertyGrid
 #if VS2008
       string newValue = String.Join( Delimiter, SelectedItems.Cast<object>().Select( x => GetItemValue( x ).ToString() ).ToArray() );
 #else
-            string newValue = String.Join(Delimiter, SelectedItems.Cast<object>().Select(x => GetItemValue(x)));
+            string newValue = String.Join(this.Delimiter, this.SelectedItems.Cast<object>().Select(x => GetItemValue(x)));
 #endif
-            if (String.IsNullOrEmpty(SelectedValue) || !SelectedValue.Equals(newValue))
+            if (String.IsNullOrEmpty(this.SelectedValue) || !this.SelectedValue.Equals(newValue))
             {
                 _ignoreSelectedValueChanged = true;
-                SelectedValue = newValue;
+                this.SelectedValue = newValue;
                 _ignoreSelectedValueChanged = false;
             }
         }
@@ -682,10 +682,10 @@ namespace H.Controls.PropertyGrid
         /// </summary>
         private void UpdateSelectedItem()
         {
-            if (!SelectedItems.Contains(SelectedItem))
+            if (!this.SelectedItems.Contains(this.SelectedItem))
             {
                 _ignoreSelectedItemChanged = true;
-                SelectedItem = (SelectedItems.Count > 0) ? SelectedItems[0] : null;
+                this.SelectedItem = (this.SelectedItems.Count > 0) ? this.SelectedItems[0] : null;
                 _ignoreSelectedItemChanged = false;
             }
         }
@@ -697,23 +697,23 @@ namespace H.Controls.PropertyGrid
         private void UpdateFromSelectedMemberPathValues()
         {
             _ignoreSelectedItemsCollectionChanged++;
-            foreach (object item in ItemsCollection)
+            foreach (object item in this.ItemsCollection)
             {
                 bool? isSelected = this.GetSelectedMemberPathValue(item);
                 if (isSelected != null)
                 {
                     if (isSelected.Value)
                     {
-                        if (!SelectedItems.Contains(item))
+                        if (!this.SelectedItems.Contains(item))
                         {
-                            SelectedItems.Add(item);
+                            this.SelectedItems.Add(item);
                         }
                     }
                     else
                     {
-                        if (SelectedItems.Contains(item))
+                        if (this.SelectedItems.Contains(item))
                         {
-                            SelectedItems.Remove(item);
+                            this.SelectedItems.Remove(item);
                         }
                     }
                 }
@@ -752,15 +752,15 @@ namespace H.Controls.PropertyGrid
         /// </summary>
         private void UpdateFromSelectedItems()
         {
-            foreach (object o in ItemsCollection)
+            foreach (object o in this.ItemsCollection)
             {
-                bool isSelected = SelectedItems.Contains(o);
+                bool isSelected = this.SelectedItems.Contains(o);
 
                 _ignoreSelectedMemberPathValuesChanged++;
                 this.SetSelectedMemberPathValue(o, isSelected);
                 _ignoreSelectedMemberPathValuesChanged--;
 
-                SelectorItem selectorItem = ItemContainerGenerator.ContainerFromItem(o) as SelectorItem;
+                SelectorItem selectorItem = this.ItemContainerGenerator.ContainerFromItem(o) as SelectorItem;
                 if (selectorItem != null)
                 {
                     selectorItem.IsSelected = isSelected;
@@ -777,14 +777,14 @@ namespace H.Controls.PropertyGrid
         private void RemoveUnavailableSelectedItems()
         {
             _ignoreSelectedItemsCollectionChanged++;
-            HashSet<object> hash = new HashSet<object>(ItemsCollection.Cast<object>());
+            HashSet<object> hash = new HashSet<object>(this.ItemsCollection.Cast<object>());
 
-            for (int i = 0; i < SelectedItems.Count; i++)
+            for (int i = 0; i < this.SelectedItems.Count; i++)
             {
-                if (!hash.Contains(SelectedItems[i]))
+                if (!hash.Contains(this.SelectedItems[i]))
                 {
-                    _removedItems.Add(SelectedItems[i]);
-                    SelectedItems.RemoveAt(i);
+                    _removedItems.Add(this.SelectedItems[i]);
+                    this.SelectedItems.RemoveAt(i);
                     i--;
                 }
             }
@@ -796,13 +796,13 @@ namespace H.Controls.PropertyGrid
 
         private void AddAvailableRemovedItems()
         {
-            HashSet<object> hash = new HashSet<object>(ItemsCollection.Cast<object>());
+            HashSet<object> hash = new HashSet<object>(this.ItemsCollection.Cast<object>());
 
             for (int i = 0; i < _removedItems.Count; i++)
             {
                 if (hash.Contains(_removedItems[i]))
                 {
-                    SelectedItems.Add(_removedItems[i]);
+                    this.SelectedItems.Add(_removedItems[i]);
                     _removedItems.RemoveAt(i);
                     i--;
                 }
@@ -816,9 +816,9 @@ namespace H.Controls.PropertyGrid
         private void UpdateFromSelectedValue()
         {
             List<string> selectedValues = null;
-            if (!String.IsNullOrEmpty(SelectedValue))
+            if (!String.IsNullOrEmpty(this.SelectedValue))
             {
-                selectedValues = SelectedValue.Split(new string[] { Delimiter }, StringSplitOptions.RemoveEmptyEntries).ToList();
+                selectedValues = this.SelectedValue.Split(new string[] { this.Delimiter }, StringSplitOptions.RemoveEmptyEntries).ToList();
             }
 
             this.UpdateFromList(selectedValues, this.GetItemValue);
@@ -837,7 +837,7 @@ namespace H.Controls.PropertyGrid
                     this.OnSelectedItemsCollectionChanged(sender, (NotifyCollectionChangedEventArgs)e);
                     return true;
                 }
-                else if (object.ReferenceEquals(ItemsCollection, sender))
+                else if (object.ReferenceEquals(this.ItemsCollection, sender))
                 {
                     this.OnItemsSourceCollectionChanged(sender, (NotifyCollectionChangedEventArgs)e);
                     return true;
@@ -885,8 +885,8 @@ namespace H.Controls.PropertyGrid
         public ItemSelectionChangedEventArgs(RoutedEvent routedEvent, object source, object item, bool isSelected)
           : base(routedEvent, source)
         {
-            Item = item;
-            IsSelected = isSelected;
+            this.Item = item;
+            this.IsSelected = isSelected;
         }
     }
 }

@@ -20,7 +20,7 @@ namespace H.Controls.Chart2D
             set { SetValue(AlignmentCenterProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty AlignmentCenterProperty =
             DependencyProperty.Register("AlignmentCenter", typeof(bool), typeof(ScatterBase), new PropertyMetadata(default(bool), (d, e) =>
             {
@@ -56,7 +56,7 @@ namespace H.Controls.Chart2D
             set { SetValue(ShowCountProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty ShowCountProperty =
             DependencyProperty.Register("ShowCount", typeof(int), typeof(ScatterBase), new PropertyMetadata(500, (d, e) =>
              {
@@ -137,7 +137,7 @@ namespace H.Controls.Chart2D
             set { SetValue(DataProperty, value); }
         }
 
-        
+
         public static new readonly DependencyProperty DataProperty =
             DependencyProperty.Register("Data", typeof(ObservableCollection<double[]>), typeof(AreaScatter), new PropertyMetadata(new ObservableCollection<double[]>(), (d, e) =>
             {
@@ -196,7 +196,7 @@ namespace H.Controls.Chart2D
             set { SetValue(BubbleDataProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty BubbleDataProperty =
             DependencyProperty.Register("BubbleData", typeof(DoubleCollection), typeof(Bubble), new PropertyMetadata(default(DoubleCollection), (d, e) =>
              {
@@ -262,7 +262,7 @@ namespace H.Controls.Chart2D
             set { SetValue(LenProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty LenProperty =
             DependencyProperty.Register("Len", typeof(double), typeof(PolarScatter), new PropertyMetadata(200.0, (d, e) =>
             {
@@ -327,7 +327,7 @@ namespace H.Controls.Chart2D
             set { SetValue(BubbleDataProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty BubbleDataProperty =
             DependencyProperty.Register("BubbleData", typeof(DoubleCollection), typeof(PolarBubble), new PropertyMetadata(default(DoubleCollection), (d, e) =>
             {
@@ -346,7 +346,7 @@ namespace H.Controls.Chart2D
             set { SetValue(LenProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty LenProperty =
             DependencyProperty.Register("Len", typeof(double), typeof(PolarBubble), new PropertyMetadata(200.0, (d, e) =>
             {

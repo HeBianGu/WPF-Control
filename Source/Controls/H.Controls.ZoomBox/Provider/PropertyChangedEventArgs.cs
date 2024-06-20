@@ -13,7 +13,7 @@ namespace H.Controls.ZoomBox
         {
             _oldValue = oldValue;
             _newValue = newValue;
-            RoutedEvent = Event;
+            this.RoutedEvent = Event;
         }
 
         #endregion

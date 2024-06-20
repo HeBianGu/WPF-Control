@@ -1,9 +1,8 @@
 ﻿using BencodeNET.Parsing;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using H.Extensions.Torrent;
 
 namespace H.Extensions.Torrent
 {

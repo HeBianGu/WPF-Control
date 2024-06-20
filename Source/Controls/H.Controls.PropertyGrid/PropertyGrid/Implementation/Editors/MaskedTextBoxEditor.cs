@@ -26,7 +26,7 @@ namespace H.Controls.PropertyGrid
 
         protected override void SetControlProperties(PropertyItem propertyItem)
         {
-            Editor.BorderThickness = new System.Windows.Thickness(0);
+            this.Editor.BorderThickness = new System.Windows.Thickness(0);
             this.Editor.ValueDataType = this.ValueDataType;
             this.Editor.Mask = this.Mask;
         }

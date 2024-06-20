@@ -29,7 +29,7 @@ namespace H.Controls.PropertyGrid
 
         protected override void SetValueDependencyProperty()
         {
-            ValueProperty = TextBox.TextProperty;
+            this.ValueProperty = TextBox.TextProperty;
         }
     }
 

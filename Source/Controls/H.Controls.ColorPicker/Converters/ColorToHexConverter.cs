@@ -33,7 +33,7 @@ namespace H.Controls.ColorPicker.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             Color c = (Color)value;
-            return HexHelper.RgbaValuesToString(c.R, c.G, c.B, c.A, ShowAlpha, HexRepresentation) ?? DependencyProperty.UnsetValue;
+            return HexHelper.RgbaValuesToString(c.R, c.G, c.B, c.A, this.ShowAlpha, this.HexRepresentation) ?? DependencyProperty.UnsetValue;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -41,7 +41,7 @@ namespace H.Controls.ColorPicker.Converters
             if (!(value is string))
                 return DependencyProperty.UnsetValue;
 
-            var values = HexHelper.ParseInputtedHexStringToRgbaValues((string)value, ShowAlpha, HexRepresentation);
+            var values = HexHelper.ParseInputtedHexStringToRgbaValues((string)value, this.ShowAlpha, this.HexRepresentation);
             if (values is null)
                 return DependencyProperty.UnsetValue;
 

@@ -50,7 +50,7 @@ namespace H.Controls.FilterBox
             set { SetValue(HeaderProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty HeaderProperty =
             DependencyProperty.Register("Header", typeof(string), typeof(TextBlockFiltersCountBehavior), new FrameworkPropertyMetadata("合计：", (d, e) =>
             {
@@ -77,7 +77,7 @@ namespace H.Controls.FilterBox
             set { SetValue(FormatProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty FormatProperty =
             DependencyProperty.Register("Format", typeof(string), typeof(TextBlockFiltersCountBehavior), new FrameworkPropertyMetadata("[{0}] {1}", (d, e) =>
             {
@@ -104,7 +104,7 @@ namespace H.Controls.FilterBox
             set { SetValue(ConditionOperateProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty ConditionOperateProperty =
             DependencyProperty.Register("ConditionOperate", typeof(ConditionOperate), typeof(TextBlockFiltersCountBehavior), new FrameworkPropertyMetadata(ConditionOperate.All, (d, e) =>
             {

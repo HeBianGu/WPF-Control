@@ -27,14 +27,14 @@ namespace H.Controls.ColorPicker
 
         public PickerControlBase()
         {
-            Color = new NotifyableColor(this);
-            Color.PropertyChanged += (sender, args) =>
+            this.Color = new NotifyableColor(this);
+            this.Color.PropertyChanged += (sender, args) =>
             {
                 var newColor = System.Windows.Media.Color.FromArgb(
-                    (byte)Math.Round(Color.A),
-                    (byte)Math.Round(Color.RGB_R),
-                    (byte)Math.Round(Color.RGB_G),
-                    (byte)Math.Round(Color.RGB_B));
+                    (byte)Math.Round(this.Color.A),
+                    (byte)Math.Round(this.Color.RGB_R),
+                    (byte)Math.Round(this.Color.RGB_G),
+                    (byte)Math.Round(this.Color.RGB_B));
                 if (newColor != previousColor)
                 {
                     RaiseEvent(new ColorRoutedEventArgs(ColorChangedEvent, newColor));
@@ -46,7 +46,7 @@ namespace H.Controls.ColorPicker
                 if (!ignoreColorChange)
                 {
                     ignoreColorPropertyChange = true;
-                    SelectedColor = ((ColorRoutedEventArgs)newColor).Color;
+                    this.SelectedColor = ((ColorRoutedEventArgs)newColor).Color;
                     ignoreColorPropertyChange = false;
                 }
             };

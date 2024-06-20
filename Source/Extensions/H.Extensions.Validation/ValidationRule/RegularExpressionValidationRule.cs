@@ -12,12 +12,12 @@ namespace H.Extensions.Validation
 
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
-            if (value == null) 
+            if (value == null)
                 return new ValidationResult(false, "数据不能为空");
-            if (Regex.IsMatch(value.ToString(), Pattern))
+            if (Regex.IsMatch(value.ToString(), this.Pattern))
                 return new ValidationResult(true, null);
             else
-                return new ValidationResult(false, ErrorMessage);
+                return new ValidationResult(false, this.ErrorMessage);
 
         }
     }

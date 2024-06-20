@@ -4,8 +4,6 @@ using System;
 using System.Globalization;
 using System.Windows;
 
-using System.Windows.Controls;
-
 
 namespace H.Controls.PropertyGrid
 {
@@ -185,7 +183,7 @@ namespace H.Controls.PropertyGrid
 
         public override bool CommitInput()
         {
-            bool isSyncValid = this.SyncTextAndValueProperties(true, Text);
+            bool isSyncValid = this.SyncTextAndValueProperties(true, this.Text);
             _lastValidDate = this.Value;
             return isSyncValid;
         }
@@ -254,17 +252,17 @@ namespace H.Controls.PropertyGrid
 
         protected override string ConvertValueToText()
         {
-            if (Value == null)
+            if (this.Value == null)
                 return string.Empty;
 
-            return Value.Value.ToString(GetFormatString(Format), CultureInfo);
+            return this.Value.Value.ToString(GetFormatString(this.Format), this.CultureInfo);
         }
 
         protected override void SetValidSpinDirection()
         {
             ValidSpinDirections validDirections = ValidSpinDirections.None;
 
-            if (!IsReadOnly)
+            if (!this.IsReadOnly)
             {
                 if (this.IsLowerThan(this.Value, this.Maximum) || !this.Value.HasValue || !this.Maximum.HasValue)
                     validDirections = validDirections | ValidSpinDirections.Increase;
@@ -315,11 +313,11 @@ namespace H.Controls.PropertyGrid
                 _lastValidDate = newValue;
             }
 
-            if (TextBox != null)
+            if (this.TextBox != null)
             {
                 //we loose our selection when the Value is set so we need to reselect it without firing the selection changed event
                 _fireSelectionChangedEvent = false;
-                TextBox.Select(info.StartPosition, info.Length);
+                this.TextBox.Select(info.StartPosition, info.Length);
                 _fireSelectionChangedEvent = true;
             }
         }
@@ -380,7 +378,7 @@ namespace H.Controls.PropertyGrid
             _dateTimeInfoList.Clear();
             _selectedDateTimeInfo = null;
 
-            string format = GetFormatString(Format);
+            string format = GetFormatString(this.Format);
 
             if (string.IsNullOrEmpty(format))
                 return;
@@ -657,14 +655,14 @@ namespace H.Controls.PropertyGrid
         public void SelectAll()
         {
             _fireSelectionChangedEvent = false;
-            TextBox.SelectAll();
+            this.TextBox.SelectAll();
             _fireSelectionChangedEvent = true;
         }
 
         private void FormatUpdated()
         {
             InitializeDateTimeInfoList(this.Value);
-            if (Value != null)
+            if (this.Value != null)
                 ParseValueIntoDateTimeInfo(this.Value);
 
             // Update the Text representation of the value.
@@ -716,7 +714,7 @@ namespace H.Controls.PropertyGrid
                 {
                     DateTime date = newDate.Value;
                     info.StartPosition = text.Length;
-                    info.Content = date.ToString(info.Format, CultureInfo.DateTimeFormat);
+                    info.Content = date.ToString(info.Format, this.CultureInfo.DateTimeFormat);
                     info.Length = info.Content.Length;
                     text += info.Content;
                 }
@@ -728,57 +726,57 @@ namespace H.Controls.PropertyGrid
             switch (dateTimeFormat)
             {
                 case DateTimeFormat.ShortDate:
-                    return CultureInfo.DateTimeFormat.ShortDatePattern;
+                    return this.CultureInfo.DateTimeFormat.ShortDatePattern;
                 case DateTimeFormat.LongDate:
-                    return CultureInfo.DateTimeFormat.LongDatePattern;
+                    return this.CultureInfo.DateTimeFormat.LongDatePattern;
                 case DateTimeFormat.ShortTime:
-                    return CultureInfo.DateTimeFormat.ShortTimePattern;
+                    return this.CultureInfo.DateTimeFormat.ShortTimePattern;
                 case DateTimeFormat.LongTime:
-                    return CultureInfo.DateTimeFormat.LongTimePattern;
+                    return this.CultureInfo.DateTimeFormat.LongTimePattern;
                 case DateTimeFormat.FullDateTime:
-                    return CultureInfo.DateTimeFormat.FullDateTimePattern;
+                    return this.CultureInfo.DateTimeFormat.FullDateTimePattern;
                 case DateTimeFormat.MonthDay:
-                    return CultureInfo.DateTimeFormat.MonthDayPattern;
+                    return this.CultureInfo.DateTimeFormat.MonthDayPattern;
                 case DateTimeFormat.RFC1123:
-                    return CultureInfo.DateTimeFormat.RFC1123Pattern;
+                    return this.CultureInfo.DateTimeFormat.RFC1123Pattern;
                 case DateTimeFormat.SortableDateTime:
-                    return CultureInfo.DateTimeFormat.SortableDateTimePattern;
+                    return this.CultureInfo.DateTimeFormat.SortableDateTimePattern;
                 case DateTimeFormat.UniversalSortableDateTime:
-                    return CultureInfo.DateTimeFormat.UniversalSortableDateTimePattern;
+                    return this.CultureInfo.DateTimeFormat.UniversalSortableDateTimePattern;
                 case DateTimeFormat.YearMonth:
-                    return CultureInfo.DateTimeFormat.YearMonthPattern;
+                    return this.CultureInfo.DateTimeFormat.YearMonthPattern;
                 case DateTimeFormat.Custom:
                     {
                         switch (this.FormatString)
                         {
                             case "d":
-                                return CultureInfo.DateTimeFormat.ShortDatePattern;
+                                return this.CultureInfo.DateTimeFormat.ShortDatePattern;
                             case "t":
-                                return CultureInfo.DateTimeFormat.ShortTimePattern;
+                                return this.CultureInfo.DateTimeFormat.ShortTimePattern;
                             case "T":
-                                return CultureInfo.DateTimeFormat.LongTimePattern;
+                                return this.CultureInfo.DateTimeFormat.LongTimePattern;
                             case "D":
-                                return CultureInfo.DateTimeFormat.LongDatePattern;
+                                return this.CultureInfo.DateTimeFormat.LongDatePattern;
                             case "f":
-                                return CultureInfo.DateTimeFormat.LongDatePattern + " " + CultureInfo.DateTimeFormat.ShortTimePattern;
+                                return this.CultureInfo.DateTimeFormat.LongDatePattern + " " + this.CultureInfo.DateTimeFormat.ShortTimePattern;
                             case "F":
-                                return CultureInfo.DateTimeFormat.FullDateTimePattern;
+                                return this.CultureInfo.DateTimeFormat.FullDateTimePattern;
                             case "g":
-                                return CultureInfo.DateTimeFormat.ShortDatePattern + " " + CultureInfo.DateTimeFormat.ShortTimePattern;
+                                return this.CultureInfo.DateTimeFormat.ShortDatePattern + " " + this.CultureInfo.DateTimeFormat.ShortTimePattern;
                             case "G":
-                                return CultureInfo.DateTimeFormat.ShortDatePattern + " " + CultureInfo.DateTimeFormat.LongTimePattern;
+                                return this.CultureInfo.DateTimeFormat.ShortDatePattern + " " + this.CultureInfo.DateTimeFormat.LongTimePattern;
                             case "m":
-                                return CultureInfo.DateTimeFormat.MonthDayPattern;
+                                return this.CultureInfo.DateTimeFormat.MonthDayPattern;
                             case "y":
-                                return CultureInfo.DateTimeFormat.YearMonthPattern;
+                                return this.CultureInfo.DateTimeFormat.YearMonthPattern;
                             case "r":
-                                return CultureInfo.DateTimeFormat.RFC1123Pattern;
+                                return this.CultureInfo.DateTimeFormat.RFC1123Pattern;
                             case "s":
-                                return CultureInfo.DateTimeFormat.SortableDateTimePattern;
+                                return this.CultureInfo.DateTimeFormat.SortableDateTimePattern;
                             case "u":
-                                return CultureInfo.DateTimeFormat.UniversalSortableDateTimePattern;
+                                return this.CultureInfo.DateTimeFormat.UniversalSortableDateTimePattern;
                             default:
-                                return FormatString;
+                                return this.FormatString;
                         }
                     }
                 default:
@@ -871,7 +869,7 @@ namespace H.Controls.PropertyGrid
                             ? this.Value.Value
                             : DateTime.Parse(this.ContextNow.ToString(), this.CultureInfo.DateTimeFormat);
 
-                isValid = DateTimeParser.TryParse(text, this.GetFormatString(Format), current, this.CultureInfo, out result);
+                isValid = DateTimeParser.TryParse(text, this.GetFormatString(this.Format), current, this.CultureInfo, out result);
             }
             catch (FormatException)
             {

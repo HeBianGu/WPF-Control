@@ -17,7 +17,7 @@ namespace H.Controls.Diagram
             set { SetValue(SpanProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty SpanProperty =
             DependencyProperty.Register("Span", typeof(double), typeof(BezierLinkDrawer), new FrameworkPropertyMetadata(50.0, (d, e) =>
              {

@@ -1,16 +1,27 @@
 ﻿
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Runtime.CompilerServices;
-using H.Extensions.Unit;
 
 namespace H.Extensions.Unit
 {
     public partial class Dimensions
     {
         public static readonly Dimensions AbsoluteTemperature = new Dimensions(0, 0, 0, 0, 1);
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(this, obj))
+                return true;
+            if (ReferenceEquals(obj, null))
+                return false;
+            throw new NotImplementedException();
+        }
+
+        public override int GetHashCode()
+        {
+            throw new NotImplementedException();
+        }
     }
 
     public readonly partial struct AbsoluteTemperature : IPhysicalQuantity
@@ -34,16 +45,16 @@ namespace H.Extensions.Unit
         #region String conversion methods
         public override string ToString()
         {
-            string result = string.Format("{0:0.##} K", Value);
+            string result = string.Format("{0:0.##} K", this.Value);
             return result;
         }
 
         public string ToString(UnitWithOffset unit)
         {
             Check.True(object.ReferenceEquals(unit.Dimensions, Dimensions.AbsoluteTemperature), "Dimensions must match");
-            double v = unit.ConvertValueFromSI(Value);
+            double v = unit.ConvertValueFromSI(this.Value);
             string shortName = unit.ShortName;
-             string result = string.Format("{0:0.##} {1}", v, shortName);
+            string result = string.Format("{0:0.##} {1}", v, shortName);
             return result;
         }
 
@@ -55,7 +66,7 @@ namespace H.Extensions.Unit
         public static AbsoluteTemperature Parse(string s)
         {
             string[] parts = s.Split(' ');
-            if(parts.Count() != 2)
+            if (parts.Count() != 2)
                 throw new Exception($"Parsing error: invalid format: {s} ");
             string number = parts[0];
             double value = 0.0;
@@ -63,7 +74,7 @@ namespace H.Extensions.Unit
                 throw new Exception($"Parsing error: Not a number: {number} ");
             string unitString = parts[1];
             Unit unit = TemperatureUnits.System.FindUnit(unitString);
-            if(unit == null)
+            if (unit == null)
                 throw new Exception($"Parsing error: invalid units: {unitString} ");
             value = unit.ConvertValueToSI(value);
             AbsoluteTemperature t = new AbsoluteTemperature(value);
@@ -99,7 +110,7 @@ namespace H.Extensions.Unit
 
         public override int GetHashCode()
         {
-            return (int)Value;
+            return (int)this.Value;
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -208,7 +219,7 @@ namespace H.Extensions.Unit
 
         public static UnitWithOffset Kelvin = new UnitWithOffset(System, "Kelvin", "K", "KEL", Dimensions.AbsoluteTemperature, 1.0, 0.0, Unit.DisplayOption.Standard);
         public static UnitWithOffset Celsius = new UnitWithOffset(System, "Celsius", "°C", "CEL", Dimensions.AbsoluteTemperature, 1.0, 273.15, Unit.DisplayOption.Explicit);
-        public static UnitWithOffset Fahrenheit = new UnitWithOffset(System, "Fahrenheit", "°F", "FAH", Dimensions.AbsoluteTemperature, 5.0/9.0, 255.37, Unit.DisplayOption.Explicit);
+        public static UnitWithOffset Fahrenheit = new UnitWithOffset(System, "Fahrenheit", "°F", "FAH", Dimensions.AbsoluteTemperature, 5.0 / 9.0, 255.37, Unit.DisplayOption.Explicit);
 
         private static readonly Unit[] allTemperatureUnits = new Unit[]
         {

@@ -48,8 +48,8 @@ namespace H.Controls.FilterColumnDataGrid
             set
             {
                 isChecked = value;
-                IsChanged = value != initialState;
-                OnPropertyChanged(nameof(IsChecked));
+                this.IsChanged = value != initialState;
+                OnPropertyChanged(nameof(this.IsChecked));
             }
         }
         public object Label { get; set; }
@@ -113,29 +113,29 @@ namespace H.Controls.FilterColumnDataGrid
             if (value == isChecked)
                 return;
             isChecked = value;
-            IsChanged = initialState != isChecked;
-            if (Item != null)
+            this.IsChanged = initialState != isChecked;
+            if (this.Item != null)
             {
-                Item.IsChanged = IsChanged;
-                Item.Initialize = IsChecked == true;
+                this.Item.IsChanged = this.IsChanged;
+                this.Item.Initialize = this.IsChecked == true;
             }
-            if (Level == 0)
-                Tree?.Skip(1).ToList().ForEach(c => { c.SetIsChecked(value, true, true); });
-            if (updateChildren && isChecked.HasValue && Level > 0)
-                Children?.ForEach(c => { c.SetIsChecked(value, true, false); });
+            if (this.Level == 0)
+                this.Tree?.Skip(1).ToList().ForEach(c => { c.SetIsChecked(value, true, true); });
+            if (updateChildren && isChecked.HasValue && this.Level > 0)
+                this.Children?.ForEach(c => { c.SetIsChecked(value, true, false); });
 
-            if (updateParent) Parent?.VerifyCheckedState();
+            if (updateParent) this.Parent?.VerifyCheckedState();
 
-            OnPropertyChanged(nameof(IsChecked));
+            OnPropertyChanged(nameof(this.IsChecked));
         }
 
         private void VerifyCheckedState()
         {
             bool? b = null;
 
-            for (var i = 0; i < Children.Count; ++i)
+            for (var i = 0; i < this.Children.Count; ++i)
             {
-                var item = Children[i];
+                var item = this.Children[i];
                 var current = item.IsChecked;
 
                 if (i == 0)

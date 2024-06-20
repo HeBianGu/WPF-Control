@@ -27,8 +27,8 @@ namespace H.Providers.Mvvm
 
         public RelayCommand(Action<T> executeCommand, Predicate<T> canExecuteCommand)
         {
-            ExecuteCommand = executeCommand;
-            CanExecuteCommand = canExecuteCommand;
+            this.ExecuteCommand = executeCommand;
+            this.CanExecuteCommand = canExecuteCommand;
         }
 
         public RelayCommand(Action<T> executeCommand)
@@ -36,19 +36,19 @@ namespace H.Providers.Mvvm
 
         public void Execute(object parameter)
         {
-            if (ExecuteCommand != null) ExecuteCommand((T)parameter);
+            if (this.ExecuteCommand != null) this.ExecuteCommand((T)parameter);
         }
 
         public bool CanExecute(object parameter)
         {
-            return CanExecuteCommand == null || CanExecuteCommand((T)parameter);
+            return this.CanExecuteCommand == null || this.CanExecuteCommand((T)parameter);
         }
 
 
         public event EventHandler CanExecuteChanged
         {
-            add { if (CanExecuteCommand != null) CommandManager.RequerySuggested += value; }
-            remove { if (CanExecuteCommand != null) CommandManager.RequerySuggested -= value; }
+            add { if (this.CanExecuteCommand != null) CommandManager.RequerySuggested += value; }
+            remove { if (this.CanExecuteCommand != null) CommandManager.RequerySuggested -= value; }
         }
     }
 

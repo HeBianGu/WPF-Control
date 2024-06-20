@@ -196,7 +196,7 @@ namespace H.Controls.PropertyGrid
 
         protected override void OnTextInput(TextCompositionEventArgs e)
         {
-            if (IsOpen && EnterClosesCalculator)
+            if (this.IsOpen && this.EnterClosesCalculator)
             {
                 Calculator.CalculatorButtonType buttonType = CalculatorUtilities.GetCalculatorButtonTypeFromText(e.Text);
                 if (buttonType == Calculator.CalculatorButtonType.Equal)
@@ -208,11 +208,11 @@ namespace H.Controls.PropertyGrid
 
         private void OnKeyDown(object sender, KeyEventArgs e)
         {
-            if (!IsOpen)
+            if (!this.IsOpen)
             {
                 if (KeyboardUtilities.IsKeyModifyingPopupState(e))
                 {
-                    IsOpen = true;
+                    this.IsOpen = true;
                     // Calculator will get focus in CalculatorPopup_Opened().
                     e.Handled = true;
                 }
@@ -226,7 +226,7 @@ namespace H.Controls.PropertyGrid
                 }
                 else if (e.Key == Key.Escape)
                 {
-                    if (EnterClosesCalculator)
+                    if (this.EnterClosesCalculator)
                     {
                         if (this.UpdateValueOnEnterKey)
                         {
@@ -254,12 +254,12 @@ namespace H.Controls.PropertyGrid
 
         private void CloseCalculatorUpDown(bool isFocusOnTextBox)
         {
-            if (IsOpen)
-                IsOpen = false;
+            if (this.IsOpen)
+                this.IsOpen = false;
             ReleaseMouseCapture();
 
-            if (isFocusOnTextBox && (TextBox != null))
-                TextBox.Focus();
+            if (isFocusOnTextBox && (this.TextBox != null))
+                this.TextBox.Focus();
         }
 
         #endregion //Methods

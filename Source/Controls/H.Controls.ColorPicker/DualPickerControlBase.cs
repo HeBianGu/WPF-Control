@@ -44,32 +44,32 @@ namespace H.Controls.ColorPicker
             secondColorDecorator = new SecondColorDecorator(this);
             hintColorDecorator = new HintColorDecorator(this);
 
-            SecondColor = new NotifyableColor(secondColorDecorator);
-            SecondColor.PropertyChanged += (sender, args) =>
+            this.SecondColor = new NotifyableColor(secondColorDecorator);
+            this.SecondColor.PropertyChanged += (sender, args) =>
             {
                 if (!ignoreSecondaryColorChange)
                 {
                     ignoreSecondaryColorPropertyChange = true;
-                    SecondaryColor = System.Windows.Media.Color.FromArgb(
-                        (byte)Math.Round(SecondColor.A),
-                        (byte)Math.Round(SecondColor.RGB_R),
-                        (byte)Math.Round(SecondColor.RGB_G),
-                        (byte)Math.Round(SecondColor.RGB_B));
+                    this.SecondaryColor = System.Windows.Media.Color.FromArgb(
+                        (byte)Math.Round(this.SecondColor.A),
+                        (byte)Math.Round(this.SecondColor.RGB_R),
+                        (byte)Math.Round(this.SecondColor.RGB_G),
+                        (byte)Math.Round(this.SecondColor.RGB_B));
                     ignoreSecondaryColorPropertyChange = false;
                 }
             };
 
-            HintNotifyableColor = new NotifyableColor(hintColorDecorator);
-            HintNotifyableColor.PropertyChanged += (sender, args) =>
+            this.HintNotifyableColor = new NotifyableColor(hintColorDecorator);
+            this.HintNotifyableColor.PropertyChanged += (sender, args) =>
             {
                 if (!ignoreHintNotifyableColorChange)
                 {
                     ignoreHintColorPropertyChange = true;
-                    HintColor = System.Windows.Media.Color.FromArgb(
-                        (byte)Math.Round(HintNotifyableColor.A),
-                        (byte)Math.Round(HintNotifyableColor.RGB_R),
-                        (byte)Math.Round(HintNotifyableColor.RGB_G),
-                        (byte)Math.Round(HintNotifyableColor.RGB_B));
+                    this.HintColor = System.Windows.Media.Color.FromArgb(
+                        (byte)Math.Round(this.HintNotifyableColor.A),
+                        (byte)Math.Round(this.HintNotifyableColor.RGB_R),
+                        (byte)Math.Round(this.HintNotifyableColor.RGB_G),
+                        (byte)Math.Round(this.HintNotifyableColor.RGB_B));
                     ignoreHintColorPropertyChange = false;
                 }
             };
@@ -111,14 +111,14 @@ namespace H.Controls.ColorPicker
 
         public void SwapColors()
         {
-            var temp = ColorState;
-            ColorState = SecondColorState;
-            SecondColorState = temp;
+            var temp = this.ColorState;
+            this.ColorState = this.SecondColorState;
+            this.SecondColorState = temp;
         }
 
         public void SetMainColorFromHintColor()
         {
-            ColorState = HintColorState;
+            this.ColorState = this.HintColorState;
         }
 
         private static void OnSecondColorStatePropertyChange(DependencyObject d,

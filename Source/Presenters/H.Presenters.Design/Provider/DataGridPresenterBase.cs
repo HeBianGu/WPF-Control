@@ -1,6 +1,5 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-using H.Providers.Mvvm;
 using System.Collections;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -16,18 +15,18 @@ namespace H.Presenters.Design
         public override void LoadDefault()
         {
             base.LoadDefault();
-            GridHeaderBackground = Brushes.Black;
-            GridHeaderForeground = Brushes.White;
-            HorizontalGridLinesBrush = Brushes.LightGray;
-            VerticalGridLinesBrush = Brushes.LightGray;
-            GridForeground = Brushes.Black;
-            GridBackground = Brushes.White;
-            AlternatingRowBackground = Brushes.WhiteSmoke;
-            ColumnHeaderHeight = 40;
-            RowHeight = 35;
-            GridBorderBrush = Brushes.LightGray;
-            ColumnHorizontalContentAlignment = HorizontalAlignment.Left;
-            CellHorizontalContentAlignment = HorizontalAlignment.Left;
+            this.GridHeaderBackground = Brushes.Black;
+            this.GridHeaderForeground = Brushes.White;
+            this.HorizontalGridLinesBrush = Brushes.LightGray;
+            this.VerticalGridLinesBrush = Brushes.LightGray;
+            this.GridForeground = Brushes.Black;
+            this.GridBackground = Brushes.White;
+            this.AlternatingRowBackground = Brushes.WhiteSmoke;
+            this.ColumnHeaderHeight = 40;
+            this.RowHeight = 35;
+            this.GridBorderBrush = Brushes.LightGray;
+            this.ColumnHorizontalContentAlignment = HorizontalAlignment.Left;
+            this.CellHorizontalContentAlignment = HorizontalAlignment.Left;
         }
 
         private Brush _gridForeground;
@@ -210,7 +209,7 @@ namespace H.Presenters.Design
 
         public void Refresh()
         {
-            ColumnPropertyInfos = new ObservableCollection<ColumnPropertyInfo>(ColumnPropertyInfos);
+            this.ColumnPropertyInfos = new ObservableCollection<ColumnPropertyInfo>(this.ColumnPropertyInfos);
         }
     }
 }

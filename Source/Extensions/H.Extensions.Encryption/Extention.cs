@@ -1,10 +1,8 @@
 ﻿
 
 using H.Extensions.Encryption;
-using System.Reflection;
-using System.Linq;
-using Microsoft.Extensions.DependencyInjection;
 using H.Providers.Ioc;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace System
 {

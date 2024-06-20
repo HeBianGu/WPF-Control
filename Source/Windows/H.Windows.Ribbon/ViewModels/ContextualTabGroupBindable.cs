@@ -15,7 +15,7 @@ namespace H.Windows.Ribbon
 
         public ContextualTabGroupBindable(string header)
         {
-            Header = header;
+            this.Header = header;
         }
 
 

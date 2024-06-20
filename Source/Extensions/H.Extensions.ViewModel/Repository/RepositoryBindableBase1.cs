@@ -2,7 +2,6 @@
 
 
 using H.Providers.Ioc;
-using H.Providers.Ioc;
 using H.Providers.Mvvm;
 using Microsoft.Win32;
 using System;
@@ -11,7 +10,6 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
@@ -120,7 +118,6 @@ namespace H.Extensions.ViewModel
         {
             if (e is TEntity project)
             {
-                TEntity temp;
                 bool r = await s.BeginEditAsync(() =>
                 {
                     if (project.ModelState(out List<string> message) == false)
@@ -288,7 +285,7 @@ namespace H.Extensions.ViewModel
         [Display(Name = "表格设置", GroupName = "操作")]
         public RelayCommand GridSetCommand => new RelayCommand(GridSet);
 
-        protected async void GridSet(object obj)
+        protected void GridSet(object obj)
         {
             //if (obj is IList source)
             //{

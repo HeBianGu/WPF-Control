@@ -99,7 +99,7 @@ namespace H.Controls.HorseTextBlock
             set { SetValue(RepeatBehaviorProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty RepeatBehaviorProperty =
             DependencyProperty.Register("RepeatBehavior", typeof(RepeatBehavior), typeof(HorseTextBlock), new FrameworkPropertyMetadata(new RepeatBehavior(3), (d, e) =>
             {

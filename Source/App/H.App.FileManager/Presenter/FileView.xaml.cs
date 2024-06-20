@@ -1,6 +1,4 @@
-﻿using H.Extensions.Torrent;
-using H.Providers.Mvvm;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
 

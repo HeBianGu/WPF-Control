@@ -15,9 +15,9 @@ namespace H.Controls.Chart2D
             get
             {
                 double Size = 5;
-                Point pt0 = Point.Add(ScreenPoint, new Vector(-Size / 2, -Size / 2));
-                Point pt1 = Point.Add(ScreenPoint, new Vector(0, Size / 2));
-                Point pt2 = Point.Add(ScreenPoint, new Vector(Size / 2, -Size / 2));
+                Point pt0 = Point.Add(this.ScreenPoint, new Vector(-Size / 2, -Size / 2));
+                Point pt1 = Point.Add(this.ScreenPoint, new Vector(0, Size / 2));
+                Point pt2 = Point.Add(this.ScreenPoint, new Vector(Size / 2, -Size / 2));
 
                 StreamGeometry streamGeom = new StreamGeometry();
                 using (StreamGeometryContext context = streamGeom.Open())
@@ -36,7 +36,7 @@ namespace H.Controls.Chart2D
         {
             base.OnRender(drawingContext);
 
-            drawingContext.DrawGeometry(Fill, Pen, DefiningGeometry);
+            drawingContext.DrawGeometry(this.Fill, this.Pen, this.DefiningGeometry);
         }
     }
 }

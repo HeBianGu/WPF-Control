@@ -16,7 +16,7 @@ namespace H.Modules.Login
                 _mail = value;
                 RaisePropertyChanged();
                 this.Valid();
-                
+
             }
         }
 

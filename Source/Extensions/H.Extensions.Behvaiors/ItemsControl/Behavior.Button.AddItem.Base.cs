@@ -3,7 +3,6 @@
 using System;
 using System.Collections;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace H.Extensions.Behvaiors
 {
@@ -15,7 +14,7 @@ namespace H.Extensions.Behvaiors
             set { SetValue(DefaultValueProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty DefaultValueProperty =
             DependencyProperty.Register("DefaultValue", typeof(object), typeof(AddItemButtonBehaviorBase), new FrameworkPropertyMetadata(default, (d, e) =>
             {
@@ -37,13 +36,13 @@ namespace H.Extensions.Behvaiors
 
         protected object CreateNewItem()
         {
-            if (DefaultValue == null && ItemsSource == null)
+            if (this.DefaultValue == null && this.ItemsSource == null)
                 return null;
-            if (ItemsSource == null)
-                ItemsControl.ItemsSource = DefaultValue.GetType().CreateObservableCollection<IList>();
-            if (DefaultValue is ICloneable cloneable)
+            if (this.ItemsSource == null)
+                this.ItemsControl.ItemsSource = this.DefaultValue.GetType().CreateObservableCollection<IList>();
+            if (this.DefaultValue is ICloneable cloneable)
                 return cloneable.Clone();
-            if (ItemsSource.TryCreateItem(out object instance))
+            if (this.ItemsSource.TryCreateItem(out object instance))
                 return instance;
             return null;
         }

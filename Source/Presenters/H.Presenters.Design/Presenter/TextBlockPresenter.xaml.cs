@@ -1,6 +1,4 @@
-﻿
-using H.Providers.Mvvm;
-using H.Themes.Default;
+﻿using H.Themes.Default;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Windows;
@@ -13,21 +11,21 @@ namespace H.Presenters.Design
     {
         public TextBlockPresenter()
         {
-            Text = Name;
+            this.Text = this.Name;
         }
         public override void LoadDefault()
         {
             base.LoadDefault();
-            FontSize = (double)Application.Current.FindResource(FontSizeKeys.Default);
+            this.FontSize = (double)Application.Current.FindResource(FontSizeKeys.Default);
             //this.FontFamily = Application.Current.FindResource(SystemKeys.FontFamily) as FontFamily;
-            FontStyle = FontStyles.Normal;
-            FontWeight = FontWeights.Normal;
-            FontStretch = FontStretches.Normal;
+            this.FontStyle = FontStyles.Normal;
+            this.FontWeight = FontWeights.Normal;
+            this.FontStretch = FontStretches.Normal;
             //this.Foreground = Application.Current.FindResource(BrushKeys.Foreground) as Brush;
             //this.Height = (double)Application.Current.FindResource(SystemKeys.ItemHeight);
-            Foreground = Brushes.Black;
-            Height = (double)Application.Current.FindResource(LayoutKeys.RowHeight);
-            VerticalContentAlignment = VerticalAlignment.Center;
+            this.Foreground = Brushes.Black;
+            this.Height = (double)Application.Current.FindResource(LayoutKeys.RowHeight);
+            this.VerticalContentAlignment = VerticalAlignment.Center;
         }
         private string _text;
         [Display(Name = "文本", GroupName = "常用,数据")]

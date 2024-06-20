@@ -21,7 +21,7 @@ namespace H.Providers.Ioc
             set { _settings = value; }
         }
 
-        public virtual bool Load(Action<ISettable> action,out string message)
+        public virtual bool Load(Action<ISettable> action, out string message)
         {
             message = null;
             List<string> list = new List<string>();

@@ -7,7 +7,7 @@ namespace H.Controls.Form
     {
         public BindingGetSelectSourcePropertyAttribute(string propertyName)
         {
-            PropertyName = propertyName;
+            this.PropertyName = propertyName;
         }
 
         public string PropertyName { get; }

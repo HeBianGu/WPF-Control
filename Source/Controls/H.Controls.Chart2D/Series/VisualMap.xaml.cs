@@ -28,7 +28,7 @@ namespace H.Controls.Chart2D
             set { SetValue(MarkBrushesProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty MarkBrushesProperty =
             DependencyProperty.Register("MarkBrushes", typeof(ObservableCollection<Color>), typeof(VisualMap), new PropertyMetadata(new ObservableCollection<Color>(), (d, e) =>
              {

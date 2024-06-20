@@ -117,7 +117,7 @@ namespace H.Controls.PropertyGrid
                     {
                         if (item != null)
                         {
-                            Items.Add(item);
+                            this.Items.Add(item);
                         }
                     }
                 }
@@ -234,11 +234,11 @@ namespace H.Controls.PropertyGrid
 
         public CollectionControl()
         {
-            Items = new ObservableCollection<object>();
-            CommandBindings.Add(new CommandBinding(ApplicationCommands.New, AddNew, CanAddNew));
-            CommandBindings.Add(new CommandBinding(ApplicationCommands.Delete, Delete, CanDelete));
-            CommandBindings.Add(new CommandBinding(ComponentCommands.MoveDown, MoveDown, CanMoveDown));
-            CommandBindings.Add(new CommandBinding(ComponentCommands.MoveUp, MoveUp, CanMoveUp));
+            this.Items = new ObservableCollection<object>();
+            this.CommandBindings.Add(new CommandBinding(ApplicationCommands.New, AddNew, CanAddNew));
+            this.CommandBindings.Add(new CommandBinding(ApplicationCommands.Delete, Delete, CanDelete));
+            this.CommandBindings.Add(new CommandBinding(ComponentCommands.MoveDown, MoveDown, CanMoveDown));
+            this.CommandBindings.Add(new CommandBinding(ComponentCommands.MoveUp, MoveUp, CanMoveUp));
         }
 
         #endregion //Constructors
@@ -401,11 +401,11 @@ namespace H.Controls.PropertyGrid
                 return;
             newItem = eventArgs.Item;
 
-            Items.Add(newItem);
+            this.Items.Add(newItem);
 
             this.RaiseEvent(new ItemEventArgs(ItemAddedEvent, newItem));
 
-            SelectedItem = newItem;
+            this.SelectedItem = newItem;
         }
 
         private void CanAddNew(object sender, CanExecuteRoutedEventArgs e)
@@ -429,49 +429,49 @@ namespace H.Controls.PropertyGrid
             if (eventArgs.Cancel)
                 return;
 
-            Items.Remove(e.Parameter);
+            this.Items.Remove(e.Parameter);
 
             this.RaiseEvent(new ItemEventArgs(ItemDeletedEvent, e.Parameter));
         }
 
         private void CanDelete(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = e.Parameter != null && !IsReadOnly;
+            e.CanExecute = e.Parameter != null && !this.IsReadOnly;
         }
 
         private void MoveDown(object sender, ExecutedRoutedEventArgs e)
         {
             object selectedItem = e.Parameter;
-            int index = Items.IndexOf(selectedItem);
-            Items.RemoveAt(index);
-            Items.Insert(++index, selectedItem);
+            int index = this.Items.IndexOf(selectedItem);
+            this.Items.RemoveAt(index);
+            this.Items.Insert(++index, selectedItem);
 
             this.RaiseEvent(new ItemEventArgs(ItemMovedDownEvent, selectedItem));
 
-            SelectedItem = selectedItem;
+            this.SelectedItem = selectedItem;
         }
 
         private void CanMoveDown(object sender, CanExecuteRoutedEventArgs e)
         {
-            if (e.Parameter != null && Items.IndexOf(e.Parameter) < (Items.Count - 1) && !IsReadOnly)
+            if (e.Parameter != null && this.Items.IndexOf(e.Parameter) < (this.Items.Count - 1) && !this.IsReadOnly)
                 e.CanExecute = true;
         }
 
         private void MoveUp(object sender, ExecutedRoutedEventArgs e)
         {
             object selectedItem = e.Parameter;
-            int index = Items.IndexOf(selectedItem);
-            Items.RemoveAt(index);
-            Items.Insert(--index, selectedItem);
+            int index = this.Items.IndexOf(selectedItem);
+            this.Items.RemoveAt(index);
+            this.Items.Insert(--index, selectedItem);
 
             this.RaiseEvent(new ItemEventArgs(ItemMovedUpEvent, selectedItem));
 
-            SelectedItem = selectedItem;
+            this.SelectedItem = selectedItem;
         }
 
         private void CanMoveUp(object sender, CanExecuteRoutedEventArgs e)
         {
-            if (e.Parameter != null && Items.IndexOf(e.Parameter) > 0 && !IsReadOnly)
+            if (e.Parameter != null && this.Items.IndexOf(e.Parameter) > 0 && !this.IsReadOnly)
                 e.CanExecute = true;
         }
 
@@ -560,16 +560,16 @@ namespace H.Controls.PropertyGrid
         {
             IEnumerable collection = null;
 
-            if (ItemsSourceType != null)
+            if (this.ItemsSourceType != null)
             {
-                System.Reflection.ConstructorInfo constructor = ItemsSourceType.GetConstructor(Type.EmptyTypes);
+                System.Reflection.ConstructorInfo constructor = this.ItemsSourceType.GetConstructor(Type.EmptyTypes);
                 if (constructor != null)
                 {
                     collection = (IEnumerable)constructor.Invoke(null);
                 }
-                else if (ItemsSourceType.IsArray)
+                else if (this.ItemsSourceType.IsArray)
                 {
-                    collection = Array.CreateInstance(ItemsSourceType.GetElementType(), Items.Count);
+                    collection = Array.CreateInstance(this.ItemsSourceType.GetElementType(), this.Items.Count);
                 }
             }
 
@@ -583,10 +583,10 @@ namespace H.Controls.PropertyGrid
 
         private IEnumerable ComputeItemsSource()
         {
-            if (ItemsSource == null)
-                ItemsSource = CreateItemsSource();
+            if (this.ItemsSource == null)
+                this.ItemsSource = CreateItemsSource();
 
-            return ItemsSource;
+            return this.ItemsSource;
         }
 
         #endregion //Methods

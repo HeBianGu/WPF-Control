@@ -4,7 +4,6 @@
 
 using H.Modules.Login;
 using H.Providers.Ioc;
-using H.Providers.Mvvm;
 using Microsoft.Extensions.Options;
 
 namespace H.Modules.Project

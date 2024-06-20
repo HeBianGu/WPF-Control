@@ -38,7 +38,7 @@ namespace H.Controls.PropertyGrid
                                                                  Math.Max(0, newValue.BottomRight - 1),
                                                                  Math.Max(0, newValue.BottomLeft - 1));
 
-            InnerCornerRadius = newInnerCornerRadius;
+            this.InnerCornerRadius = newInnerCornerRadius;
         }
 
         #endregion //CornerRadius

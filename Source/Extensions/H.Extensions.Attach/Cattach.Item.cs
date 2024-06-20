@@ -133,7 +133,7 @@ namespace H.Extensions.Attach
             obj.SetValue(ItemBorderThicknessProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty ItemBorderThicknessProperty =
             DependencyProperty.RegisterAttached("ItemBorderThickness", typeof(Thickness), typeof(Cattach), new FrameworkPropertyMetadata(default(Thickness), FrameworkPropertyMetadataOptions.Inherits, OnItemBorderThicknessChanged));
 
@@ -157,7 +157,7 @@ namespace H.Extensions.Attach
             obj.SetValue(ItemHorizontalAlignmentProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty ItemHorizontalAlignmentProperty =
             DependencyProperty.RegisterAttached("ItemHorizontalAlignment", typeof(HorizontalAlignment), typeof(Cattach), new PropertyMetadata(default(HorizontalAlignment), OnItemHorizontalAlignmentChanged));
 
@@ -181,7 +181,7 @@ namespace H.Extensions.Attach
             obj.SetValue(ItemVerticalAlignmentProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty ItemVerticalAlignmentProperty =
             DependencyProperty.RegisterAttached("ItemVerticalAlignment", typeof(VerticalAlignment), typeof(Cattach), new PropertyMetadata(default(VerticalAlignment), OnItemVerticalAlignmentChanged));
 
@@ -207,7 +207,7 @@ namespace H.Extensions.Attach
             obj.SetValue(ItemMinHeightProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty ItemMinHeightProperty =
             DependencyProperty.RegisterAttached("ItemMinHeight", typeof(double), typeof(Cattach), new PropertyMetadata(default(double), OnItemMinHeightChanged));
 
@@ -232,7 +232,7 @@ namespace H.Extensions.Attach
             obj.SetValue(ItemMinWidthProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty ItemMinWidthProperty =
             DependencyProperty.RegisterAttached("ItemMinWidth", typeof(double), typeof(Cattach), new PropertyMetadata(default(double), OnItemMinWidthChanged));
 
@@ -256,7 +256,7 @@ namespace H.Extensions.Attach
             obj.SetValue(ItemMarginProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty ItemMarginProperty =
             DependencyProperty.RegisterAttached("ItemMargin", typeof(Thickness), typeof(Cattach), new PropertyMetadata(default(Thickness), OnItemMarginChanged));
 
@@ -280,7 +280,7 @@ namespace H.Extensions.Attach
             obj.SetValue(ItemPaddingProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty ItemPaddingProperty =
             DependencyProperty.RegisterAttached("ItemPadding", typeof(Thickness), typeof(Cattach), new PropertyMetadata(default(Thickness), OnItemPaddingChanged));
 
@@ -304,7 +304,7 @@ namespace H.Extensions.Attach
             obj.SetValue(ItemHorizontalContentAlignmentProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty ItemHorizontalContentAlignmentProperty =
             DependencyProperty.RegisterAttached("ItemHorizontalContentAlignment", typeof(HorizontalAlignment), typeof(Cattach), new PropertyMetadata(default(HorizontalAlignment), OnItemHorizontalContentAlignmentChanged));
 
@@ -328,7 +328,7 @@ namespace H.Extensions.Attach
             obj.SetValue(ItemVerticalContentAlignmentProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty ItemVerticalContentAlignmentProperty =
             DependencyProperty.RegisterAttached("ItemVerticalContentAlignment", typeof(VerticalAlignment), typeof(Cattach), new PropertyMetadata(default(VerticalAlignment), OnItemVerticalContentAlignmentChanged));
 
@@ -351,7 +351,7 @@ namespace H.Extensions.Attach
             obj.SetValue(ItemOverTemplateProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty ItemOverTemplateProperty =
             DependencyProperty.RegisterAttached("ItemOverTemplate", typeof(ControlTemplate), typeof(Cattach), new PropertyMetadata(default(ControlTemplate), OnItemOverTemplateChanged));
 
@@ -375,7 +375,7 @@ namespace H.Extensions.Attach
             obj.SetValue(ItemsContianerWidthProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty ItemsContianerWidthProperty =
             DependencyProperty.RegisterAttached("ItemsContianerWidth", typeof(double), typeof(Cattach), new PropertyMetadata(default(double), OnItemsContianerWidthChanged));
 
@@ -399,7 +399,7 @@ namespace H.Extensions.Attach
             obj.SetValue(SelectedItemTemplateProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty SelectedItemTemplateProperty =
             DependencyProperty.RegisterAttached("SelectedItemTemplate", typeof(DataTemplate), typeof(Cattach), new PropertyMetadata(default(DataTemplate), OnSelectedItemTemplateChanged));
 

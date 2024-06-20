@@ -86,7 +86,7 @@ namespace H.Controls.PropertyGrid
             if (_textBox != null)
             {
                 // Focus the content of the popup, after its loaded
-                Dispatcher.BeginInvoke(new Action(() => _textBox.Focus()), DispatcherPriority.Background);
+                this.Dispatcher.BeginInvoke(new Action(() => _textBox.Focus()), DispatcherPriority.Background);
             }
         }
 
@@ -225,11 +225,11 @@ namespace H.Controls.PropertyGrid
 
         private void OnKeyDown(object sender, KeyEventArgs e)
         {
-            if (!IsOpen)
+            if (!this.IsOpen)
             {
                 if (KeyboardUtilities.IsKeyModifyingPopupState(e))
                 {
-                    IsOpen = true;
+                    this.IsOpen = true;
                     e.Handled = true;
                 }
             }
@@ -252,13 +252,13 @@ namespace H.Controls.PropertyGrid
 
         private void ResizeThumb_DragDelta(object sender, DragDeltaEventArgs e)
         {
-            double yadjust = DropDownHeight + e.VerticalChange;
-            double xadjust = DropDownWidth + e.HorizontalChange;
+            double yadjust = this.DropDownHeight + e.VerticalChange;
+            double xadjust = this.DropDownWidth + e.HorizontalChange;
 
             if ((xadjust >= 0) && (yadjust >= 0))
             {
-                DropDownWidth = xadjust;
-                DropDownHeight = yadjust;
+                this.DropDownWidth = xadjust;
+                this.DropDownHeight = yadjust;
             }
         }
 
@@ -268,8 +268,8 @@ namespace H.Controls.PropertyGrid
 
         private void CloseEditor()
         {
-            if (IsOpen)
-                IsOpen = false;
+            if (this.IsOpen)
+                this.IsOpen = false;
             ReleaseMouseCapture();
 
             if (_toggleButton != null)

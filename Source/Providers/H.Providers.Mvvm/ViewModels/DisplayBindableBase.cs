@@ -14,20 +14,20 @@ namespace H.Providers.Mvvm
     {
         public DisplayBindableBase()
         {
-            Name = GetType().Name;
+            this.Name = GetType().Name;
             DisplayAttribute display = GetType().GetCustomAttribute<DisplayAttribute>(true);
             if (display != null)
             {
-                Name = display.Name ?? Name;
-                GroupName = display.GroupName;
-                Description = display.Description;
+                this.Name = display.Name ?? this.Name;
+                this.GroupName = display.GroupName;
+                this.Description = display.Description;
                 int? od = display.GetOrder();
                 if (od.HasValue)
-                    Order = od.Value;
-                ShortName = display.ShortName;
+                    this.Order = od.Value;
+                this.ShortName = display.ShortName;
             }
             IDAttribute id = GetType().GetCustomAttribute<IDAttribute>(true);
-            ID = id?.ID ?? GetType().Name;
+            this.ID = id?.ID ?? GetType().Name;
 
             System.Collections.Generic.IEnumerable<PropertyInfo> cmdps = GetType().GetProperties().Where(x => typeof(ICommand).IsAssignableFrom(x.PropertyType));
             foreach (PropertyInfo cmdp in cmdps)
@@ -37,7 +37,7 @@ namespace H.Providers.Mvvm
                 if (cmdp.GetCustomAttribute<BrowsableAttribute>()?.Browsable == false)
                     continue;
                 ICommand command = cmdp.GetValue(this) as ICommand;
-                Commands.Add(command);
+                this.Commands.Add(command);
             }
             LoadDefault();
         }
@@ -57,7 +57,7 @@ namespace H.Providers.Mvvm
         public bool IsLoaded { get; set; }
         protected virtual void Loaded(object obj)
         {
-            IsLoaded = true;
+            this.IsLoaded = true;
         }
 
         private string _id;

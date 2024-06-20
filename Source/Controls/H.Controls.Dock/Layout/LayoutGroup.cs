@@ -59,10 +59,10 @@ namespace H.Controls.Dock.Layout
             protected set
             {
                 if (value == _isVisible) return;
-                RaisePropertyChanging(nameof(IsVisible));
+                RaisePropertyChanging(nameof(this.IsVisible));
                 _isVisible = value;
                 OnIsVisibleChanged();
-                RaisePropertyChanged(nameof(IsVisible));
+                RaisePropertyChanged(nameof(this.IsVisible));
             }
         }
 
@@ -71,7 +71,7 @@ namespace H.Controls.Dock.Layout
         #region Public Methods
 
         /// <inheritdoc cref="ILayoutElementWithVisibility" />
-        public void ComputeVisibility() => IsVisible = GetVisibility();
+        public void ComputeVisibility() => this.IsVisible = GetVisibility();
 
         /// <inheritdoc cref="ILayoutPane" />
         public void MoveChild(int oldIndex, int newIndex)
@@ -160,7 +160,7 @@ namespace H.Controls.Dock.Layout
                     throw new ArgumentException("H.Controls.Dock.LayoutGroup doesn't know how to deserialize " + reader.LocalName);
 
                 XmlSerializer serializer = XmlSerializersCache.GetSerializer(typeForSerializer);
-                Children.Add((T)serializer.Deserialize(reader));
+                this.Children.Add((T)serializer.Deserialize(reader));
             }
 
             reader.ReadEndElement();
@@ -170,7 +170,7 @@ namespace H.Controls.Dock.Layout
         /// <summary>provides a standard overridable implementation for deriving classes.</summary>
         public virtual void WriteXml(System.Xml.XmlWriter writer)
         {
-            foreach (T child in Children)
+            foreach (T child in this.Children)
             {
                 Type type = child.GetType();
                 XmlSerializer serializer = XmlSerializersCache.GetSerializer(type);
@@ -239,12 +239,12 @@ namespace H.Controls.Dock.Layout
                 RaiseChildrenTreeChanged();
             else
                 NotifyChildrenTreeChanged(ChildrenTreeChange.DirectChildrenChanged);
-            RaisePropertyChanged(nameof(ChildrenCount));
+            RaisePropertyChanged(nameof(this.ChildrenCount));
         }
 
         private void UpdateParentVisibility()
         {
-            if (Parent is ILayoutElementWithVisibility parentPane)
+            if (this.Parent is ILayoutElementWithVisibility parentPane)
                 parentPane.ComputeVisibility();
         }
 

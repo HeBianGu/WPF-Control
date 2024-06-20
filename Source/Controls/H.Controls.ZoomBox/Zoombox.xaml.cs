@@ -993,7 +993,7 @@ namespace H.Controls.ZoomBox
             if (!this.IsUpdatingView)
             {
                 int viewIndex = this.ViewStackIndex;
-                if (viewIndex >= 0 && viewIndex < ViewStack.Count)
+                if (viewIndex >= 0 && viewIndex < this.ViewStack.Count)
                 {
                     // update the current view, but don't allow the new view 
                     // to be added to the view stack
@@ -1089,7 +1089,7 @@ namespace H.Controls.ZoomBox
         {
             get
             {
-                return (_viewStack == null) ? null : ViewStack.Source;
+                return (_viewStack == null) ? null : this.ViewStack.Source;
             }
             set
             {
@@ -1718,7 +1718,7 @@ namespace H.Controls.ZoomBox
 
         private void PanDownExecuted(object sender, ExecutedRoutedEventArgs e)
         {
-            this.Position = new Point(_basePosition.X, _basePosition.Y + PanDistance);
+            this.Position = new Point(_basePosition.X, _basePosition.Y + this.PanDistance);
         }
 
         #endregion
@@ -2191,7 +2191,7 @@ namespace H.Controls.ZoomBox
             this.InvalidateVisual();
 
             // temporarily disable animations
-            bool oldAnimated = IsAnimated;
+            bool oldAnimated = this.IsAnimated;
             this.IsAnimated = false;
             try
             {
@@ -2239,7 +2239,7 @@ namespace H.Controls.ZoomBox
                     if (!isInitialViewSet)
                     {
                         // set initial view according to the scale and position values and push it on the stack, as necessary
-                        ZoomboxView initialView = new ZoomboxView(DoubleHelper.IsNaN(Scale) ? 1.0 : Scale,
+                        ZoomboxView initialView = new ZoomboxView(DoubleHelper.IsNaN(this.Scale) ? 1.0 : this.Scale,
                           PointHelper.IsEmpty(position) ? new Point() : position);
 
                         if (this.EffectiveViewStackMode == ZoomboxViewStackMode.Auto)
@@ -2256,13 +2256,13 @@ namespace H.Controls.ZoomBox
                 else
                 {
                     // just set initial view according to the scale and position values
-                    ZoomboxView initialView = new ZoomboxView(DoubleHelper.IsNaN(Scale) ? 1.0 : this.Scale, position);
+                    ZoomboxView initialView = new ZoomboxView(DoubleHelper.IsNaN(this.Scale) ? 1.0 : this.Scale, position);
                     this.UpdateView(initialView, false, false);
                 }
             }
             finally
             {
-                IsAnimated = oldAnimated;
+                this.IsAnimated = oldAnimated;
             }
             //When ViewFinder is modified, this will refresh the ZoomboxViewFinderDisplay
             this.ZoomTo(this.Scale);
@@ -2895,13 +2895,13 @@ namespace H.Controls.ZoomBox
                         {   // USING ABSOLUTE POSITION AND SCALE VALUES
 
                             // ensure that the scale value falls within the valid range
-                            if (newRelativeScale > MaxScale)
+                            if (newRelativeScale > this.MaxScale)
                             {
-                                newRelativeScale = MaxScale;
+                                newRelativeScale = this.MaxScale;
                             }
-                            else if (newRelativeScale < MinScale)
+                            else if (newRelativeScale < this.MinScale)
                             {
-                                newRelativeScale = MinScale;
+                                newRelativeScale = this.MinScale;
                             }
                         }
 
@@ -2923,7 +2923,7 @@ namespace H.Controls.ZoomBox
                             currentY = tt.Y;
                         }
 
-                        if (KeepContentInBounds == true)
+                        if (this.KeepContentInBounds == true)
                         {
                             Rect boundsRect = new Rect(new Size(this.ContentRect.Width * newRelativeScale, this.ContentRect.Height * newRelativeScale));
 
@@ -3016,17 +3016,17 @@ namespace H.Controls.ZoomBox
                         Size initialContentSize = (_content is Viewbox) && ((Viewbox)_content).Child != null ? ((Viewbox)_content).Child.DesiredSize : this.RenderSize;
                         Size scaledContentSize = new Size(initialContentSize.Width * newRelativeScale, initialContentSize.Height * newRelativeScale);
 
-                        if (allowAnimation && IsAnimated)
+                        if (allowAnimation && this.IsAnimated)
                         {
-                            DoubleAnimation daScale = new DoubleAnimation(currentScale, newRelativeScale / _viewboxFactor, AnimationDuration);
+                            DoubleAnimation daScale = new DoubleAnimation(currentScale, newRelativeScale / _viewboxFactor, this.AnimationDuration);
                             daScale.AccelerationRatio = this.AnimationAccelerationRatio;
                             daScale.DecelerationRatio = this.AnimationDecelerationRatio;
 
-                            DoubleAnimation daTranslateX = new DoubleAnimation(currentX, newRelativePosition.X, AnimationDuration);
+                            DoubleAnimation daTranslateX = new DoubleAnimation(currentX, newRelativePosition.X, this.AnimationDuration);
                             daTranslateX.AccelerationRatio = this.AnimationAccelerationRatio;
                             daTranslateX.DecelerationRatio = this.AnimationDecelerationRatio;
 
-                            DoubleAnimation daTranslateY = new DoubleAnimation(currentY, newRelativePosition.Y, AnimationDuration);
+                            DoubleAnimation daTranslateY = new DoubleAnimation(currentY, newRelativePosition.Y, this.AnimationDuration);
                             daTranslateY.AccelerationRatio = this.AnimationAccelerationRatio;
                             daTranslateY.DecelerationRatio = this.AnimationDecelerationRatio;
                             daTranslateY.CurrentTimeInvalidated += new EventHandler(this.UpdateViewport);
@@ -3046,13 +3046,13 @@ namespace H.Controls.ZoomBox
                                 DoubleAnimation verticalMaxAnimation = new DoubleAnimation();
                                 verticalMaxAnimation.From = _verticalScrollBar.Maximum;
                                 verticalMaxAnimation.To = scaledContentSize.Height - _verticalScrollBar.ViewportSize;
-                                verticalMaxAnimation.Duration = AnimationDuration;
+                                verticalMaxAnimation.Duration = this.AnimationDuration;
                                 _verticalScrollBar.BeginAnimation(ScrollBar.MaximumProperty, verticalMaxAnimation);
 
                                 DoubleAnimation verticalValueAnimation = new DoubleAnimation();
                                 verticalValueAnimation.From = _verticalScrollBar.Value;
                                 verticalValueAnimation.To = -newRelativePosition.Y;
-                                verticalValueAnimation.Duration = AnimationDuration;
+                                verticalValueAnimation.Duration = this.AnimationDuration;
                                 verticalValueAnimation.Completed += this.VerticalValueAnimation_Completed;
                                 _verticalScrollBar.BeginAnimation(ScrollBar.ValueProperty, verticalValueAnimation);
 
@@ -3060,13 +3060,13 @@ namespace H.Controls.ZoomBox
                                 DoubleAnimation horizontalMaxAnimation = new DoubleAnimation();
                                 horizontalMaxAnimation.From = _horizontalScrollBar.Maximum;
                                 horizontalMaxAnimation.To = scaledContentSize.Width - _horizontalScrollBar.ViewportSize;
-                                horizontalMaxAnimation.Duration = AnimationDuration;
+                                horizontalMaxAnimation.Duration = this.AnimationDuration;
                                 _horizontalScrollBar.BeginAnimation(ScrollBar.MaximumProperty, horizontalMaxAnimation);
 
                                 DoubleAnimation horizontalValueAnimation = new DoubleAnimation();
                                 horizontalValueAnimation.From = _horizontalScrollBar.Value;
                                 horizontalValueAnimation.To = -newRelativePosition.X;
-                                horizontalValueAnimation.Duration = AnimationDuration;
+                                horizontalValueAnimation.Duration = this.AnimationDuration;
                                 horizontalValueAnimation.Completed += this.HorizontalValueAnimation_Completed;
                                 _horizontalScrollBar.BeginAnimation(ScrollBar.ValueProperty, horizontalValueAnimation);
                             }
@@ -3214,7 +3214,7 @@ namespace H.Controls.ZoomBox
                     horizontalOffset = this.RenderSize.Width - (region.Width * newRelativeScale);
                     break;
             }
-            switch (VerticalContentAlignment)
+            switch (this.VerticalContentAlignment)
             {
                 case VerticalAlignment.Center:
                 case VerticalAlignment.Stretch:
@@ -3296,7 +3296,7 @@ namespace H.Controls.ZoomBox
                 Rect viewport =
                   new Rect(
                     this.TranslatePoint(new Point(0d, 0d), _trueContent),
-                    this.TranslatePoint(new Point(RenderSize.Width, RenderSize.Height), _trueContent));
+                    this.TranslatePoint(new Point(this.RenderSize.Width, this.RenderSize.Height), _trueContent));
 
                 // if the viewport has changed, set the Viewport dependency property
                 if (!DoubleHelper.AreVirtuallyEqual(viewport, this.Viewport))
@@ -3389,7 +3389,7 @@ namespace H.Controls.ZoomBox
                     double scale = _viewFinderDisplay.Scale;
                     Rect contentRect = _viewFinderDisplay.ContentBounds;
                     Vector minVector = new Vector(direction.X * ARBITRARY_LARGE_VALUE, direction.Y * ARBITRARY_LARGE_VALUE);
-                    Vector maxVector = new Vector(direction.X * contentRect.Width / MaxScale, direction.Y * contentRect.Height / MaxScale);
+                    Vector maxVector = new Vector(direction.X * contentRect.Width / this.MaxScale, direction.Y * contentRect.Height / this.MaxScale);
                     _resizeViewportBounds = new Rect(_resizeAnchorPoint + minVector, _resizeAnchorPoint + maxVector);
                 }
 
@@ -3623,7 +3623,7 @@ namespace H.Controls.ZoomBox
         {
             Point zoomPoint;
 
-            if (ZoomOn == ZoomboxZoomOn.View)
+            if (this.ZoomOn == ZoomboxZoomOn.View)
             {
                 // Transform the viewport point to the content
                 Point viewportZoomOrigin = new Point();
@@ -3655,7 +3655,7 @@ namespace H.Controls.ZoomBox
             }
             else
             {
-                zoomPoint = new Point(_content.RenderSize.Width * ZoomOrigin.X, _content.RenderSize.Height * ZoomOrigin.Y);
+                zoomPoint = new Point(_content.RenderSize.Width * this.ZoomOrigin.X, _content.RenderSize.Height * this.ZoomOrigin.Y);
             }
 
             return zoomPoint;
@@ -3995,7 +3995,7 @@ namespace H.Controls.ZoomBox
 
             protected override void OnRender(DrawingContext drawingContext)
             {
-                drawingContext.DrawRectangle(Brush, Pen, Rect);
+                drawingContext.DrawRectangle(this.Brush, this.Pen, this.Rect);
             }
 
             private Point _cachedPosition;

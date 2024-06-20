@@ -227,11 +227,11 @@ namespace H.Controls.ZoomBox
                     {
                         case ZoomboxViewKind.Absolute:
                             result = DoubleHelper.AreVirtuallyEqual(_scaleWidth, other._scaleWidth)
-                                  && DoubleHelper.AreVirtuallyEqual(Position, other.Position);
+                                  && DoubleHelper.AreVirtuallyEqual(this.Position, other.Position);
                             break;
 
                         case ZoomboxViewKind.Region:
-                            result = DoubleHelper.AreVirtuallyEqual(Region, other.Region);
+                            result = DoubleHelper.AreVirtuallyEqual(this.Region, other.Region);
                             break;
 
                         default:
@@ -245,7 +245,7 @@ namespace H.Controls.ZoomBox
 
         public override string ToString()
         {
-            switch (ViewKind)
+            switch (this.ViewKind)
             {
                 case ZoomboxViewKind.Empty:
                     return "ZoomboxView: Empty";

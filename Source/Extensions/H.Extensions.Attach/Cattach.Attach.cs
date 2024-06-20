@@ -240,7 +240,7 @@ namespace H.Extensions.Attach
             obj.SetValue(AttachDockProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty AttachDockProperty =
             DependencyProperty.RegisterAttached("AttachDock", typeof(Dock), typeof(Cattach), new PropertyMetadata(default(Dock), OnAttachDockChanged));
 

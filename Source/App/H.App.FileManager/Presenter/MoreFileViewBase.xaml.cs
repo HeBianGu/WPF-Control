@@ -74,7 +74,7 @@ namespace H.App.FileManager
             }
 
             {
-                IEnumerable<fm_dd_file> finds = files.Where(x => Path.GetDirectoryName(x.Url) == Path.GetDirectoryName(t.Url) && x.Url != t.Url).OrderBy(x=>
+                IEnumerable<fm_dd_file> finds = files.Where(x => Path.GetDirectoryName(x.Url) == Path.GetDirectoryName(t.Url) && x.Url != t.Url).OrderBy(x =>
                 {
                     if (x.Name == this.Model.Name)
                         return -1;

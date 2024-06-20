@@ -7,7 +7,7 @@ namespace H.Controls.Dock.Controls
     {
         public WindowActivateEventArgs(IntPtr hwndActivating)
         {
-            HwndActivating = hwndActivating;
+            this.HwndActivating = hwndActivating;
         }
 
         public IntPtr HwndActivating { get; private set; }

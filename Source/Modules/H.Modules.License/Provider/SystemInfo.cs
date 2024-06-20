@@ -15,11 +15,11 @@ namespace H.Modules.License
 
         private SystemInfo()
         {
-            HostID = GetHostId();
-            HostName = Dns.GetHostName();
-            OSVersion = Environment.OSVersion.ToString();
-            Ipv4 = GetLocalIp(AddressFamily.InterNetwork);
-            Ipv6 = GetLocalIp(AddressFamily.InterNetworkV6);
+            this.HostID = GetHostId();
+            this.HostName = Dns.GetHostName();
+            this.OSVersion = Environment.OSVersion.ToString();
+            this.Ipv4 = GetLocalIp(AddressFamily.InterNetwork);
+            this.Ipv6 = GetLocalIp(AddressFamily.InterNetworkV6);
         }
         public string AppVersion { get; private set; }
 
@@ -139,7 +139,7 @@ namespace H.Modules.License
         private static string cpuId()
         {
             string retVal = identifier("Win32_Processor", "UniqueId");
-            if (retVal == "") 
+            if (retVal == "")
             {
                 retVal = identifier("Win32_Processor", "ProcessorId");
                 if (retVal == "")

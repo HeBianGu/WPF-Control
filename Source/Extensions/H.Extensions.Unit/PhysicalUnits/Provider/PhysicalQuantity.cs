@@ -1,10 +1,5 @@
 ﻿// https://www.codeproject.com/Articles/5306824/Taking-Your-Brain-to-Another-Dimension-A-Csharp-li
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using H.Extensions.Unit;
 
 namespace H.Extensions.Unit
 {
@@ -17,7 +12,7 @@ namespace H.Extensions.Unit
 
     }
 
-    public readonly partial struct PhysicalQuantity: IPhysicalQuantity
+    public readonly partial struct PhysicalQuantity : IPhysicalQuantity
     {
         public double Value { get; init; }
         public Dimensions Dimensions { get; init; }
@@ -73,7 +68,7 @@ namespace H.Extensions.Unit
 
         public override int GetHashCode()
         {
-            return (int)Value;
+            return (int)this.Value;
         }
 
         public static bool operator ==(PhysicalQuantity v1, IPhysicalQuantity v2)
@@ -106,9 +101,9 @@ namespace H.Extensions.Unit
             return Compare(v1, v2) < 0;
         }
 
-#endregion
+        #endregion
 
-#region Maths Operators
+        #region Maths Operators
 
         public static PhysicalQuantity operator +(PhysicalQuantity v1, IPhysicalQuantity v2)
         {
@@ -155,7 +150,7 @@ namespace H.Extensions.Unit
         }
 
 
-#endregion
+        #endregion
     }
 
 

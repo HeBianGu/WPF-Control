@@ -37,7 +37,7 @@ namespace H.Controls.ColorPicker.UserControls
 
         public SquareSlider()
         {
-            GradientBitmap = new WriteableBitmap(32, 32, 96, 96, PixelFormats.Rgb24, null);
+            this.GradientBitmap = new WriteableBitmap(32, 32, 96, 96, PixelFormats.Rgb24, null);
             InitializeComponent();
             RecalculateGradient();
         }
@@ -72,7 +72,7 @@ namespace H.Controls.ColorPicker.UserControls
             set
             {
                 _rangeX = value;
-                RaisePropertyChanged(nameof(RangeX));
+                RaisePropertyChanged(nameof(this.RangeX));
             }
         }
 
@@ -82,7 +82,7 @@ namespace H.Controls.ColorPicker.UserControls
             set
             {
                 _rangeY = value;
-                RaisePropertyChanged(nameof(RangeY));
+                RaisePropertyChanged(nameof(this.RangeY));
             }
         }
 
@@ -92,7 +92,7 @@ namespace H.Controls.ColorPicker.UserControls
             set
             {
                 _gradientBitmap = value;
-                RaisePropertyChanged(nameof(GradientBitmap));
+                RaisePropertyChanged(nameof(this.GradientBitmap));
             }
         }
 
@@ -100,9 +100,9 @@ namespace H.Controls.ColorPicker.UserControls
 
         private void RecalculateGradient()
         {
-            var w = GradientBitmap.PixelWidth;
-            var h = GradientBitmap.PixelHeight;
-            var hue = Hue;
+            var w = this.GradientBitmap.PixelWidth;
+            var h = this.GradientBitmap.PixelHeight;
+            var hue = this.Hue;
             var pixels = new byte[w * h * 3];
             for (var j = 0; j < h; j++)
                 for (var i = 0; i < w; i++)
@@ -115,7 +115,7 @@ namespace H.Controls.ColorPicker.UserControls
                     pixels[pos + 2] = (byte)(b * 255);
                 }
 
-            GradientBitmap.WritePixels(new Int32Rect(0, 0, w, h), pixels, w * 3, 0);
+            this.GradientBitmap.WritePixels(new Int32Rect(0, 0, w, h), pixels, w * 3, 0);
         }
 
         private static void OnColorSpaceChanged(DependencyObject d, DependencyPropertyChangedEventArgs args)
@@ -149,8 +149,8 @@ namespace H.Controls.ColorPicker.UserControls
 
         private void UpdatePos(Point pos)
         {
-            HeadX = MathHelper.Clamp(pos.X / ActualWidth, 0, 1) * RangeX;
-            HeadY = (1 - MathHelper.Clamp(pos.Y / ActualHeight, 0, 1)) * RangeY;
+            this.HeadX = MathHelper.Clamp(pos.X / this.ActualWidth, 0, 1) * this.RangeX;
+            this.HeadY = (1 - MathHelper.Clamp(pos.Y / this.ActualHeight, 0, 1)) * this.RangeY;
         }
 
         private void OnMouseUp(object sender, MouseButtonEventArgs e)

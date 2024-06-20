@@ -19,7 +19,7 @@ namespace H.Controls.Diagram.Extension
     {
         public NodeDataBase()
         {
-            ID = Guid.NewGuid().ToString();
+            this.ID = Guid.NewGuid().ToString();
             InitPort();
         }
 
@@ -47,7 +47,7 @@ namespace H.Controls.Diagram.Extension
         public NodeData()
         {
             NodeTypeAttribute type = GetType().GetCustomAttributes<NodeTypeAttribute>()?.FirstOrDefault();
-            Columns = type?.GroupColumns ?? 4;
+            this.Columns = type?.GroupColumns ?? 4;
         }
 
         [XmlIgnore]
@@ -357,10 +357,10 @@ namespace H.Controls.Diagram.Extension
                 return;
             //node.Width = this.Width;
             //node.Height = this.Height;
-            node.Fill = Fill;
-            node.Stroke = Stroke;
-            node.StrokeThickness = StrokeThickness;
-            node.Stretch = Stretch;
+            node.Fill = this.Fill;
+            node.Stroke = this.Stroke;
+            node.StrokeThickness = this.StrokeThickness;
+            node.Stretch = this.Stretch;
             //node.BlurRadius = this.BlurRadius;
             //node.EffectColor = this.EffectColor;
             //node.Direction = this.Direction;
@@ -380,12 +380,12 @@ namespace H.Controls.Diagram.Extension
 
         public virtual ILinkData CreateLinkData()
         {
-            return new DefaultLinkData() { FromNodeID = ID };
+            return new DefaultLinkData() { FromNodeID = this.ID };
         }
 
         public virtual IPortData CreatePortData()
         {
-            return new TextPortData(ID, PortType.Both);
+            return new TextPortData(this.ID, PortType.Both);
         }
     }
 }

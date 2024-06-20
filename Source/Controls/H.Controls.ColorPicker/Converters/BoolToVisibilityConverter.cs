@@ -20,7 +20,7 @@ namespace H.Controls.ColorPicker.Converters
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var actualValue = (bool)value ^ Invert;
+            var actualValue = (bool)value ^ this.Invert;
             return actualValue ? Visibility.Visible : Visibility.Hidden;
         }
 

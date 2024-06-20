@@ -12,7 +12,7 @@ namespace H.App.FileManager
         {
             if (obj is ModelBindable<fm_dd_file> file)
             {
-                return file.Model.Score == Value;
+                return file.Model.Score == this.Value;
             }
             return false;
         }

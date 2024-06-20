@@ -148,7 +148,7 @@ namespace H.Controls.PropertyGrid
 
         public bool Contains(Point point)
         {
-            if (IsEmpty)
+            if (this.IsEmpty)
                 return false;
 
             // if the point is an endpoint, ensure that it is not excluded
@@ -161,7 +161,7 @@ namespace H.Controls.PropertyGrid
             bool result = false;
 
             // ensure that a line through P1 and the point is parallel to the current segment
-            if (DoubleHelper.AreVirtuallyEqual(Slope, new Segment(_p1, point).Slope))
+            if (DoubleHelper.AreVirtuallyEqual(this.Slope, new Segment(_p1, point).Slope))
             {
                 // finally, ensure that the point is between the segment's endpoints
                 result = (point.X >= Math.Min(_p1.X, _p2.X))
@@ -238,7 +238,7 @@ namespace H.Controls.PropertyGrid
             double xProd = Vector.CrossProduct(v1, v2);
 
             // if segments are not parallel, then look for intersection on each segment
-            if (!DoubleHelper.AreVirtuallyEqual(Slope, segment.Slope))
+            if (!DoubleHelper.AreVirtuallyEqual(this.Slope, segment.Slope))
             {
                 // check for intersection on other segment
                 double s = Vector.CrossProduct(endpointVector, v1) / xProd;

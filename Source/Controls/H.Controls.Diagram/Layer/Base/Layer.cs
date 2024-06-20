@@ -16,7 +16,7 @@ namespace H.Controls.Diagram
             set { SetValue(UseAnimationProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty UseAnimationProperty =
             DependencyProperty.Register("UseAnimation", typeof(bool), typeof(Layer), new PropertyMetadata(true, (d, e) =>
             {
@@ -36,7 +36,7 @@ namespace H.Controls.Diagram
             set { SetValue(DurationProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty DurationProperty =
             DependencyProperty.Register("Duration", typeof(TimeSpan), typeof(Layer), new PropertyMetadata(TimeSpan.FromMilliseconds(200), (d, e) =>
             {

@@ -1,19 +1,17 @@
-﻿
-using H.Providers.Mvvm;
-using H.Styles.Default;
+﻿using H.Styles.Default;
 using System.ComponentModel.DataAnnotations;
 using System.Windows.Media;
 
 namespace H.Presenters.Design
 {
-    [Display(Name = "图片")]  
+    [Display(Name = "图片")]
     public class ImagePresenter : CommandsDesignPresenterBase
     {
         public ImagePresenter()
         {
-            ImageSource = LogoDataProvider.Logo;
-            Width = 200;
-            Height = 80;
+            this.ImageSource = LogoDataProvider.Logo;
+            this.Width = 200;
+            this.Height = 80;
         }
         private ImageSource _imageSource;
         [Display(Name = "图像资源", GroupName = "常用,数据")]

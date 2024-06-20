@@ -38,7 +38,7 @@ namespace H.Controls.Dock.Layout
             {
                 if (value == _canMove) return;
                 _canMove = value;
-                RaisePropertyChanged(nameof(CanMove));
+                RaisePropertyChanged(nameof(this.CanMove));
             }
         }
 
@@ -62,7 +62,7 @@ namespace H.Controls.Dock.Layout
             {
                 if (_description == value) return;
                 _description = value;
-                RaisePropertyChanged(nameof(Description));
+                RaisePropertyChanged(nameof(this.Description));
             }
         }
 
@@ -85,24 +85,24 @@ namespace H.Controls.Dock.Layout
         public override void WriteXml(System.Xml.XmlWriter writer)
         {
             base.WriteXml(writer);
-            if (!string.IsNullOrWhiteSpace(Description)) writer.WriteAttributeString(nameof(Description), Description);
-            if (!CanMove) writer.WriteAttributeString(nameof(CanMove), CanMove.ToString());
+            if (!string.IsNullOrWhiteSpace(this.Description)) writer.WriteAttributeString(nameof(this.Description), this.Description);
+            if (!this.CanMove) writer.WriteAttributeString(nameof(this.CanMove), this.CanMove.ToString());
         }
 
         /// <inheritdoc />
         public override void ReadXml(System.Xml.XmlReader reader)
         {
-            if (reader.MoveToAttribute(nameof(Description))) Description = reader.Value;
-            if (reader.MoveToAttribute(nameof(CanMove))) CanMove = bool.Parse(reader.Value);
+            if (reader.MoveToAttribute(nameof(this.Description))) this.Description = reader.Value;
+            if (reader.MoveToAttribute(nameof(this.CanMove))) this.CanMove = bool.Parse(reader.Value);
             base.ReadXml(reader);
         }
 
         /// <inheritdoc />
         public override void Close()
         {
-            if (Root?.Manager != null)
+            if (this.Root?.Manager != null)
             {
-                DockingManager dockingManager = Root.Manager;
+                DockingManager dockingManager = this.Root.Manager;
                 dockingManager.ExecuteCloseCommand(this);
             }
             else
@@ -119,7 +119,7 @@ namespace H.Controls.Dock.Layout
 
         protected override void InternalDock()
         {
-            LayoutRoot root = Root as LayoutRoot;
+            LayoutRoot root = this.Root as LayoutRoot;
             LayoutDocumentPane documentPane = null;
             if (root?.LastFocusedDocument != null && root.LastFocusedDocument != this) documentPane = root.LastFocusedDocument.Parent as LayoutDocumentPane;
             if (documentPane == null) documentPane = root.Descendents().OfType<LayoutDocumentPane>().FirstOrDefault();

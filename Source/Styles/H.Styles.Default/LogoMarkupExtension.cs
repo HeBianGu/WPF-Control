@@ -14,7 +14,7 @@ namespace H.Styles.Default
 
     public class LogoDataProvider
     {
-       public static ImageSource Logo
+        public static ImageSource Logo
         {
             get
             {

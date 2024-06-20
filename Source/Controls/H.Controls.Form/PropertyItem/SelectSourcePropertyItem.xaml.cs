@@ -110,7 +110,7 @@ namespace H.Controls.Form
 
         protected override void SetValue(object value)
         {
-            this.PropertyInfo.SetValue(Obj, value);
+            this.PropertyInfo.SetValue(this.Obj, value);
         }
     }
 

@@ -21,16 +21,16 @@ namespace H.Modules.Identity
 
 
         [Browsable(false)]
-        public string ID => Model.ID;
+        public string ID => this.Model.ID;
         //private string _name;
         [Required]
         [Display(Name = "角色名称")]
         public string Name
         {
-            get { return Model.Name; }
+            get { return this.Model.Name; }
             set
             {
-                Model.Name = value;
+                this.Model.Name = value;
                 RaisePropertyChanged();
             }
         }

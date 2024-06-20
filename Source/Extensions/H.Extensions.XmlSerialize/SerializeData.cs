@@ -91,7 +91,7 @@ namespace H.Extensions.XmlSerialize
 
         public object ToObject()
         {
-            Type type = Type.GetType(AssemblyQualifiedName);
+            Type type = Type.GetType(this.AssemblyQualifiedName);
             object obj = Activator.CreateInstance(type);
             return this.ToObject(obj);
         }

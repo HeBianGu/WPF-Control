@@ -24,7 +24,7 @@ namespace H.Controls.FavoriteBox
 
         public virtual void Add(params IFavoriteItem[] ts)
         {
-            if(this.Collection is IList list)
+            if (this.Collection is IList list)
             {
                 foreach (var item in ts.OfType<FavoriteItem>())
                 {
@@ -44,7 +44,7 @@ namespace H.Controls.FavoriteBox
             var favorites = ts.OfType<FavoriteItem>();
             foreach (var t in favorites)
             {
-                if(this.Collection is IList list)
+                if (this.Collection is IList list)
                     list.Remove(t);
             }
             this.CollectionChanged?.Invoke(this, EventArgs.Empty);

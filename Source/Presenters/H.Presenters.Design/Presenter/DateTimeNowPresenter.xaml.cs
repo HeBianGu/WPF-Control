@@ -1,5 +1,4 @@
-﻿using H.Providers.Mvvm;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace H.Presenters.Design
@@ -9,8 +8,8 @@ namespace H.Presenters.Design
     {
         public DateTimeNowPresenter()
         {
-            Title = "当前日期：";
-            Text = DateTime.Now.ToString(Format);
+            this.Title = "当前日期：";
+            this.Text = DateTime.Now.ToString(this.Format);
         }
         public override void LoadDefault()
         {

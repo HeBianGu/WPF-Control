@@ -33,7 +33,7 @@ namespace H.Modules.Project
 
         [Browsable(false)]
         [XmlIgnore]
-        public RelayCommand NewOrListCommand => new RelayCommand(async (s, e) =>
+        public RelayCommand NewOrListCommand => new RelayCommand((s, e) =>
         {
             if (this._projectService.Where().Count() == 0)
             {

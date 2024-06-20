@@ -35,9 +35,9 @@ namespace H.Controls.Chart2D
         {
             base.OnApplyTemplate();
 
-            this._center_thumb = Template.FindName("PART_CENTER_THUMB", this) as ThumbBar;
+            this._center_thumb = this.Template.FindName("PART_CENTER_THUMB", this) as ThumbBar;
 
-            this._center = Template.FindName("PART_CENTER", this) as Canvas;
+            this._center = this.Template.FindName("PART_CENTER", this) as Canvas;
 
             this._center_thumb.DragDeltaChanged += (l, k) =>
               {
@@ -99,7 +99,7 @@ namespace H.Controls.Chart2D
             set { SetValue(MaxValueProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty MaxValueProperty =
             DependencyProperty.Register("MaxValue", typeof(double), typeof(ThumbToolBar), new PropertyMetadata(100.0, (d, e) =>
              {
@@ -127,11 +127,11 @@ namespace H.Controls.Chart2D
 
                 if (thumb == ThumbType.Left)
                 {
-                    this.LeftPercent = ((left * MaxValue) - (left * MaxValue % minSplite)) / MaxValue;
+                    this.LeftPercent = ((left * this.MaxValue) - (left * this.MaxValue % minSplite)) / this.MaxValue;
                 }
                 else if (thumb == ThumbType.Right)
                 {
-                    this.RightPercent = ((right * MaxValue) - (right * MaxValue % minSplite) + minSplite) / MaxValue;
+                    this.RightPercent = ((right * this.MaxValue) - (right * this.MaxValue % minSplite) + minSplite) / this.MaxValue;
                 }
                 else
                 {
@@ -139,8 +139,8 @@ namespace H.Controls.Chart2D
 
                     //this.RightPercent = Convert.ToDouble((int)(right * MaxValue)) / MaxValue;
 
-                    this.LeftPercent = ((left * MaxValue) - (left * MaxValue % minSplite)) / MaxValue;
-                    this.RightPercent = ((right * MaxValue) - (right * MaxValue % minSplite)) / MaxValue;
+                    this.LeftPercent = ((left * this.MaxValue) - (left * this.MaxValue % minSplite)) / this.MaxValue;
+                    this.RightPercent = ((right * this.MaxValue) - (right * this.MaxValue % minSplite)) / this.MaxValue;
 
                 }
 

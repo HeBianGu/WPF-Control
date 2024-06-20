@@ -14,21 +14,21 @@ namespace H.Extensions.Tree
         {
             if (parent == null)
             {
-                if (!Directory.Exists(Root))
+                if (!Directory.Exists(this.Root))
                     return DriveInfo.GetDrives();
-                return new DirectoryInfo[] { new DirectoryInfo(Root) };
+                return new DirectoryInfo[] { new DirectoryInfo(this.Root) };
             }
 
             if (parent is DriveInfo drive)
-                return drive.RootDirectory.GetFileSystemInfos(SearchPattern, SearchOption).Where(d => !d.Attributes.HasFlag(FileAttributes.Hidden | FileAttributes.System));
+                return drive.RootDirectory.GetFileSystemInfos(this.SearchPattern, this.SearchOption).Where(d => !d.Attributes.HasFlag(FileAttributes.Hidden | FileAttributes.System));
 
             if (parent is DirectoryInfo directory)
             {
                 try
                 {
-                    return directory.GetFileSystemInfos(SearchPattern, SearchOption).Where(d => !d.Attributes.HasFlag(FileAttributes.Hidden | FileAttributes.System));
+                    return directory.GetFileSystemInfos(this.SearchPattern, this.SearchOption).Where(d => !d.Attributes.HasFlag(FileAttributes.Hidden | FileAttributes.System));
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
 

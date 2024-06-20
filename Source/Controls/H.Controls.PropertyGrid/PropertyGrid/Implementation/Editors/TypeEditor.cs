@@ -27,11 +27,11 @@ namespace H.Controls.PropertyGrid
 
         public virtual FrameworkElement ResolveEditor(PropertyItem propertyItem)
         {
-            Editor = this.CreateEditor();
+            this.Editor = this.CreateEditor();
             SetValueDependencyProperty();
             SetControlProperties(propertyItem);
             ResolveValueBinding(propertyItem);
-            return Editor;
+            return this.Editor;
         }
 
         #endregion //ITypeEditor Members
@@ -52,10 +52,10 @@ namespace H.Controls.PropertyGrid
         {
             Binding _binding = new Binding("Value");
             _binding.Source = propertyItem;
-            _binding.UpdateSourceTrigger = (Editor is InputBase) ? UpdateSourceTrigger.PropertyChanged : UpdateSourceTrigger.Default;
+            _binding.UpdateSourceTrigger = (this.Editor is InputBase) ? UpdateSourceTrigger.PropertyChanged : UpdateSourceTrigger.Default;
             _binding.Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay;
             _binding.Converter = CreateValueConverter();
-            BindingOperations.SetBinding(Editor, ValueProperty, _binding);
+            BindingOperations.SetBinding(this.Editor, this.ValueProperty, _binding);
         }
 
         protected virtual void SetControlProperties(PropertyItem propertyItem)

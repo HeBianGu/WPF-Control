@@ -19,7 +19,7 @@ namespace H.Extensions.Attach
             obj.SetValue(InnerSourceProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty InnerSourceProperty =
             DependencyProperty.RegisterAttached("InnerSource", typeof(IEnumerable), typeof(ItemsControlService), new PropertyMetadata(default(IEnumerable), OnInnerSourceChanged));
 
@@ -45,7 +45,7 @@ namespace H.Extensions.Attach
             obj.SetValue(ToolsProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty ToolsProperty =
             DependencyProperty.RegisterAttached("Tools", typeof(object), typeof(ItemsControlService), new PropertyMetadata(default(object), OnToolsChanged));
 
@@ -71,7 +71,7 @@ namespace H.Extensions.Attach
             obj.SetValue(HomeToolProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty HomeToolProperty =
             DependencyProperty.RegisterAttached("HomeTool", typeof(ControlTemplate), typeof(ItemsControlService), new PropertyMetadata(null, OnHomeToolChanged));
 
@@ -94,7 +94,7 @@ namespace H.Extensions.Attach
             obj.SetValue(EndToolProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty EndToolProperty =
             DependencyProperty.RegisterAttached("EndTool", typeof(ControlTemplate), typeof(ItemsControlService), new PropertyMetadata(null, OnEndToolChanged));
 

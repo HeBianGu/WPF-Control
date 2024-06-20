@@ -4,11 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 
 namespace H.Extensions.Common
 {
@@ -79,7 +75,7 @@ namespace H.Extensions.Common
             {
                 return 0;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return 0;
             }
@@ -94,7 +90,7 @@ namespace H.Extensions.Common
                 {
 
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
 
                 }
@@ -108,7 +104,7 @@ namespace H.Extensions.Common
             {
                 return size;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return size;
             }
@@ -123,9 +119,9 @@ namespace H.Extensions.Common
 
     public static partial class FileExtension
     {
-        public static DirectoryEx ToDirectoryEx(this string folder)=> new DirectoryEx(folder);
+        public static DirectoryEx ToDirectoryEx(this string folder) => new DirectoryEx(folder);
 
-        public static FileEx ToFileEx(this string filePath)=> new FileEx(filePath);
+        public static FileEx ToFileEx(this string filePath) => new FileEx(filePath);
     }
 
     public class DirectoryEx
@@ -138,8 +134,8 @@ namespace H.Extensions.Common
 
         public DirectoryEx CreateDirectoryIfNotExsit()
         {
-            if (!Directory.Exists(Folder))
-                Directory.CreateDirectory(Folder);
+            if (!Directory.Exists(this.Folder))
+                Directory.CreateDirectory(this.Folder);
             return this;
         }
 
@@ -296,7 +292,7 @@ namespace H.Extensions.Common
 
         public FileEx CreateDirectoryIfNotExsit()
         {
-            string folder = Path.GetDirectoryName(FullPath);
+            string folder = Path.GetDirectoryName(this.FullPath);
             folder.ToDirectoryEx().CreateDirectoryIfNotExsit();
             return this;
         }

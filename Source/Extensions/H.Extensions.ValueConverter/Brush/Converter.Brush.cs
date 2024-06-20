@@ -22,7 +22,7 @@ namespace H.Extensions.ValueConverter
                 return null;
             Color color = solidColorBrush.Color;
             double brightness = (0.3 * color.R) + (0.59 * color.G) + (0.11 * color.B);
-            return brightness < 123 ? LowValue : HighValue;
+            return brightness < 123 ? this.LowValue : this.HighValue;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

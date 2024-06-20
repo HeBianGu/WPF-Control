@@ -36,7 +36,7 @@ namespace H.Extensions.Behvaiors
             set { SetValue(AdornerVisualProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty AdornerVisualProperty =
             DependencyProperty.Register("AdornerVisual", typeof(Visual), typeof(AdornerBehaviorBase), new FrameworkPropertyMetadata(default(Visual), (d, e) =>
             {
@@ -61,7 +61,7 @@ namespace H.Extensions.Behvaiors
             set { SetValue(IsUseProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty IsUseProperty =
             DependencyProperty.Register("IsUse", typeof(bool), typeof(AdornerBehaviorBase), new FrameworkPropertyMetadata(true, (d, e) =>
             {
@@ -87,7 +87,7 @@ namespace H.Extensions.Behvaiors
             set { SetValue(IsHitTestVisibleProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty IsHitTestVisibleProperty =
             DependencyProperty.Register("IsHitTestVisible", typeof(bool), typeof(AdornerBehaviorBase), new FrameworkPropertyMetadata(default(bool), (d, e) =>
             {

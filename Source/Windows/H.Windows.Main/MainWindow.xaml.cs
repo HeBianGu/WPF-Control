@@ -35,7 +35,7 @@ namespace H.Windows.Main
             set { SetValue(CaptionHeightProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty CaptionHeightProperty =
             DependencyProperty.Register("CaptionHeight", typeof(double), typeof(MainWindow), new FrameworkPropertyMetadata(45.0, (d, e) =>
             {
@@ -62,7 +62,7 @@ namespace H.Windows.Main
             set { SetValue(CaptionTempateProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty CaptionTempateProperty =
             DependencyProperty.Register("CaptionTempate", typeof(ControlTemplate), typeof(MainWindow), new FrameworkPropertyMetadata(default(ControlTemplate), (d, e) =>
             {
@@ -90,7 +90,7 @@ namespace H.Windows.Main
             set { SetValue(SideTemplateProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty SideTemplateProperty =
             DependencyProperty.Register("SideTemplate", typeof(ControlTemplate), typeof(MainWindow), new FrameworkPropertyMetadata(default(ControlTemplate), (d, e) =>
             {

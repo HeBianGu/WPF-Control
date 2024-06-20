@@ -1,11 +1,7 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
-using Microsoft.VisualBasic.FileIO;
 using System;
 using System.IO;
-using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -30,7 +26,7 @@ namespace H.Providers.Ioc
 
         public void Save(string filePath, object sourceObj, string xmlRootName = null)
         {
-            if(!Directory.Exists(Path.GetDirectoryName(filePath)))
+            if (!Directory.Exists(Path.GetDirectoryName(filePath)))
             {
                 Directory.CreateDirectory(Path.GetDirectoryName(filePath));
             }

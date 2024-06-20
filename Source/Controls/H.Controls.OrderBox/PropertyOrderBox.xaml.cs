@@ -127,7 +127,7 @@ namespace H.Controls.OrderBox
 
         public static readonly RoutedEvent OrderChangedRoutedEvent =
             EventManager.RegisterRoutedEvent("OrderChanged", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(PropertyOrderBox));
-  
+
         public event RoutedEventHandler OrderChanged
         {
             add { this.AddHandler(OrderChangedRoutedEvent, value); }

@@ -134,7 +134,7 @@ namespace H.Controls.Chart2D
             set { SetValue(XProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty XProperty =
             DependencyProperty.Register("X", typeof(Path), typeof(FlagTip), new PropertyMetadata(default(Path), (d, e) =>
             {
@@ -152,7 +152,7 @@ namespace H.Controls.Chart2D
             set { SetValue(YProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty YProperty =
             DependencyProperty.Register("Y", typeof(Path), typeof(FlagTip), new PropertyMetadata(default(Path), (d, e) =>
             {
@@ -171,7 +171,7 @@ namespace H.Controls.Chart2D
             set { SetValue(LabelXProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty LabelXProperty =
             DependencyProperty.Register("LabelX", typeof(Label), typeof(FlagTip), new PropertyMetadata(default(Label), (d, e) =>
             {
@@ -190,7 +190,7 @@ namespace H.Controls.Chart2D
             set { SetValue(LabelYProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty LabelYProperty =
             DependencyProperty.Register("LabelY", typeof(Label), typeof(FlagTip), new PropertyMetadata(default(Label), (d, e) =>
             {
@@ -209,7 +209,7 @@ namespace H.Controls.Chart2D
             set { SetValue(MarkerProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty MarkerProperty =
             DependencyProperty.Register("Marker", typeof(Shape), typeof(FlagTip), new PropertyMetadata(default(Shape), (d, e) =>
              {
@@ -296,7 +296,7 @@ namespace H.Controls.Chart2D
             set { SetValue(FlagTipTypeProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty FlagTipTypeProperty =
             DependencyProperty.Register("FlagTipType", typeof(FlagTipType), typeof(FlagTip), new PropertyMetadata(default(FlagTipType), (d, e) =>
             {

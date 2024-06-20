@@ -84,11 +84,11 @@ namespace H.Controls.Dock
         /// </summary>
         public DockingManager()
         {
-            IsVirtualizingDocument = true;
-            IsVirtualizingAnchorable = true;
+            this.IsVirtualizingDocument = true;
+            this.IsVirtualizingAnchorable = true;
 
 #if !VS2008
-            Layout = new LayoutRoot { RootPanel = new LayoutPanel(new LayoutDocumentPaneGroup(new LayoutDocumentPane())) };
+            this.Layout = new LayoutRoot { RootPanel = new LayoutPanel(new LayoutDocumentPaneGroup(new LayoutDocumentPane())) };
 #else
 		  this.SetCurrentValue( DockingManager.LayoutProperty, new LayoutRoot() { RootPanel = new LayoutPanel(new LayoutDocumentPaneGroup(new LayoutDocumentPane())) } );
 #endif
@@ -196,8 +196,8 @@ namespace H.Controls.Dock
             }
 
             _fwHiddenList.Clear();
-            DetachDocumentsSource(oldLayout, DocumentsSource);
-            DetachAnchorablesSource(oldLayout, AnchorablesSource);
+            DetachDocumentsSource(oldLayout, this.DocumentsSource);
+            DetachAnchorablesSource(oldLayout, this.AnchorablesSource);
 
             if (oldLayout != null && oldLayout.Manager == this)
                 oldLayout.Manager = null;
@@ -205,21 +205,21 @@ namespace H.Controls.Dock
             ClearLogicalChildrenList();
             DetachLayoutItems();
 
-            Layout.Manager = this;
+            this.Layout.Manager = this;
 
             AttachLayoutItems();
-            AttachDocumentsSource(newLayout, DocumentsSource);
-            AttachAnchorablesSource(newLayout, AnchorablesSource);
+            AttachDocumentsSource(newLayout, this.DocumentsSource);
+            AttachAnchorablesSource(newLayout, this.AnchorablesSource);
 
-            if (IsLoaded)
+            if (this.IsLoaded)
             {
-                LayoutRootPanel = CreateUIElementForModel(Layout.RootPanel) as LayoutPanelControl;
-                LeftSidePanel = CreateUIElementForModel(Layout.LeftSide) as LayoutAnchorSideControl;
-                TopSidePanel = CreateUIElementForModel(Layout.TopSide) as LayoutAnchorSideControl;
-                RightSidePanel = CreateUIElementForModel(Layout.RightSide) as LayoutAnchorSideControl;
-                BottomSidePanel = CreateUIElementForModel(Layout.BottomSide) as LayoutAnchorSideControl;
+                this.LayoutRootPanel = CreateUIElementForModel(this.Layout.RootPanel) as LayoutPanelControl;
+                this.LeftSidePanel = CreateUIElementForModel(this.Layout.LeftSide) as LayoutAnchorSideControl;
+                this.TopSidePanel = CreateUIElementForModel(this.Layout.TopSide) as LayoutAnchorSideControl;
+                this.RightSidePanel = CreateUIElementForModel(this.Layout.RightSide) as LayoutAnchorSideControl;
+                this.BottomSidePanel = CreateUIElementForModel(this.Layout.BottomSide) as LayoutAnchorSideControl;
 
-                foreach (LayoutFloatingWindow fw in Layout.FloatingWindows.ToArray())
+                foreach (LayoutFloatingWindow fw in this.Layout.FloatingWindows.ToArray())
                     if (fw.IsValid)
                         _fwList.Add(CreateUIElementForModel(fw) as LayoutFloatingWindowControl);
 
@@ -482,10 +482,10 @@ namespace H.Controls.Dock
         /// <summary>Provides derived classes an opportunity to handle changes to the <see cref="DocumentHeaderTemplateSelector"/> property.</summary>
         protected virtual void OnDocumentHeaderTemplateSelectorChanged(DependencyPropertyChangedEventArgs e)
         {
-            if (e.NewValue != null && DocumentHeaderTemplate != null)
-                DocumentHeaderTemplate = null;
-            if (DocumentPaneMenuItemHeaderTemplateSelector == null)
-                DocumentPaneMenuItemHeaderTemplateSelector = DocumentHeaderTemplateSelector;
+            if (e.NewValue != null && this.DocumentHeaderTemplate != null)
+                this.DocumentHeaderTemplate = null;
+            if (this.DocumentPaneMenuItemHeaderTemplateSelector == null)
+                this.DocumentPaneMenuItemHeaderTemplateSelector = this.DocumentHeaderTemplateSelector;
         }
 
         /// <summary>Coerces the <see cref="DocumentHeaderTemplateSelector"/> value.</summary>
@@ -546,7 +546,7 @@ namespace H.Controls.Dock
         protected virtual void OnDocumentTitleTemplateSelectorChanged(DependencyPropertyChangedEventArgs e)
         {
             if (e.NewValue != null)
-                DocumentTitleTemplate = null;
+                this.DocumentTitleTemplate = null;
         }
 
         /// <summary>Coerces the <see cref="DocumentTitleTemplateSelector"/> value.</summary>
@@ -606,8 +606,8 @@ namespace H.Controls.Dock
         /// <summary>Provides derived classes an opportunity to handle changes to the <see cref="AnchorableTitleTemplateSelector"/> property.</summary>
         protected virtual void OnAnchorableTitleTemplateSelectorChanged(DependencyPropertyChangedEventArgs e)
         {
-            if (e.NewValue != null && AnchorableTitleTemplate != null)
-                AnchorableTitleTemplate = null;
+            if (e.NewValue != null && this.AnchorableTitleTemplate != null)
+                this.AnchorableTitleTemplate = null;
         }
 
         #endregion AnchorableTitleTemplateSelector
@@ -665,7 +665,7 @@ namespace H.Controls.Dock
         protected virtual void OnAnchorableHeaderTemplateSelectorChanged(DependencyPropertyChangedEventArgs e)
         {
             if (e.NewValue != null)
-                AnchorableHeaderTemplate = null;
+                this.AnchorableHeaderTemplate = null;
         }
 
         #endregion AnchorableHeaderTemplateSelector
@@ -945,8 +945,8 @@ namespace H.Controls.Dock
         /// <summary>Provides derived classes an opportunity to handle changes to the <see cref="DocumentsSource"/> property.</summary>
         protected virtual void OnDocumentsSourceChanged(DependencyPropertyChangedEventArgs e)
         {
-            DetachDocumentsSource(Layout, e.OldValue as IEnumerable);
-            AttachDocumentsSource(Layout, e.NewValue as IEnumerable);
+            DetachDocumentsSource(this.Layout, e.OldValue as IEnumerable);
+            AttachDocumentsSource(this.Layout, e.NewValue as IEnumerable);
         }
 
         #endregion DocumentsSource
@@ -987,8 +987,8 @@ namespace H.Controls.Dock
         /// <summary>Provides derived classes an opportunity to handle changes to the <see cref="AnchorablesSource"/> property.</summary>
         protected virtual void OnAnchorablesSourceChanged(DependencyPropertyChangedEventArgs e)
         {
-            DetachAnchorablesSource(Layout, e.OldValue as IEnumerable);
-            AttachAnchorablesSource(Layout, e.NewValue as IEnumerable);
+            DetachAnchorablesSource(this.Layout, e.OldValue as IEnumerable);
+            AttachAnchorablesSource(this.Layout, e.NewValue as IEnumerable);
         }
 
         #endregion AnchorablesSource
@@ -1056,7 +1056,7 @@ namespace H.Controls.Dock
         protected virtual void OnThemeChanged(DependencyPropertyChangedEventArgs e)
         {
             Theme oldTheme = e.OldValue as Theme;
-            ResourceDictionary resources = Resources;
+            ResourceDictionary resources = this.Resources;
             if (oldTheme != null)        // remove old theme from resource dictionary if present
             {
                 if (oldTheme is DictionaryTheme)  // We are using H.Controls.Dock's own DictionaryTheme class
@@ -1234,8 +1234,8 @@ namespace H.Controls.Dock
         /// <summary>Provides derived classes an opportunity to handle changes to the <see cref="DocumentPaneMenuItemHeaderTemplateSelector"/> property.</summary>
         protected virtual void OnDocumentPaneMenuItemHeaderTemplateSelectorChanged(DependencyPropertyChangedEventArgs e)
         {
-            if (e.NewValue != null && DocumentPaneMenuItemHeaderTemplate != null)
-                DocumentPaneMenuItemHeaderTemplate = null;
+            if (e.NewValue != null && this.DocumentPaneMenuItemHeaderTemplate != null)
+                this.DocumentPaneMenuItemHeaderTemplate = null;
         }
 
         /// <summary>Coerces the <see cref="DocumentPaneMenuItemHeaderTemplateSelector"/> value.</summary>
@@ -1392,7 +1392,7 @@ namespace H.Controls.Dock
         /// <inheritdoc />
         protected override IEnumerator LogicalChildren => _logicalChildren.Select(ch => ch.GetValueOrDefault<object>()).GetEnumerator();
 
-        public IEnumerator LogicalChildrenPublic => LogicalChildren;
+        public IEnumerator LogicalChildrenPublic => this.LogicalChildren;
 
         internal void InternalAddLogicalChild(object element)
         {
@@ -1627,13 +1627,13 @@ namespace H.Controls.Dock
 
             if (model is LayoutDocumentPane)
             {
-                LayoutDocumentPaneControl templateModelView = new LayoutDocumentPaneControl(model as LayoutDocumentPane, IsVirtualizingDocument);
+                LayoutDocumentPaneControl templateModelView = new LayoutDocumentPaneControl(model as LayoutDocumentPane, this.IsVirtualizingDocument);
                 templateModelView.SetBinding(StyleProperty, new Binding(DocumentPaneControlStyleProperty.Name) { Source = this });
                 return templateModelView;
             }
             if (model is LayoutAnchorablePane)
             {
-                LayoutAnchorablePaneControl templateModelView = new LayoutAnchorablePaneControl(model as LayoutAnchorablePane, IsVirtualizingAnchorable);
+                LayoutAnchorablePaneControl templateModelView = new LayoutAnchorablePaneControl(model as LayoutAnchorablePane, this.IsVirtualizingAnchorable);
                 templateModelView.SetBinding(StyleProperty, new Binding(AnchorablePaneControlStyleProperty.Name) { Source = this });
                 return templateModelView;
             }
@@ -1668,7 +1668,7 @@ namespace H.Controls.Dock
 
                 newFW.ShowInTaskbar = false;
 
-                Dispatcher.BeginInvoke(new Action(() =>
+                this.Dispatcher.BeginInvoke(new Action(() =>
                 {
                     if (newFW.Content != null || (newFW.Model as LayoutAnchorableFloatingWindow)?.IsVisible == true)
                         newFW.Show();
@@ -1769,7 +1769,7 @@ namespace H.Controls.Dock
 
             if (fwc != null)
             {
-                Dispatcher.BeginInvoke(new Action(() =>
+                this.Dispatcher.BeginInvoke(new Action(() =>
                 {
                     // Activate only inactive document
                     if (startDrag) fwc.AttachDrag();
@@ -1946,13 +1946,13 @@ namespace H.Controls.Dock
 
         internal void ExecuteCloseAllButThisCommand(LayoutContent contentSelected)
         {
-            foreach (LayoutContent contentToClose in Layout.Descendents().OfType<LayoutContent>().Where(d => d != contentSelected && (d.Parent is LayoutDocumentPane || d.Parent is LayoutDocumentFloatingWindow)).ToArray())
+            foreach (LayoutContent contentToClose in this.Layout.Descendents().OfType<LayoutContent>().Where(d => d != contentSelected && (d.Parent is LayoutDocumentPane || d.Parent is LayoutDocumentFloatingWindow)).ToArray())
                 Close(contentToClose);
         }
 
         internal void ExecuteCloseAllCommand(LayoutContent contentSelected)
         {
-            foreach (LayoutContent contentToClose in Layout.Descendents().OfType<LayoutContent>().Where(d => d.Parent is LayoutDocumentPane || d.Parent is LayoutDocumentFloatingWindow).ToArray())
+            foreach (LayoutContent contentToClose in this.Layout.Descendents().OfType<LayoutContent>().Where(d => d.Parent is LayoutDocumentPane || d.Parent is LayoutDocumentFloatingWindow).ToArray())
                 Close(contentToClose);
         }
 
@@ -2028,7 +2028,7 @@ namespace H.Controls.Dock
             {
                 if (e.IsDown && e.Key == Key.Tab)
                 {
-                    if (CanShowNavigatorWindow && !IsNavigatorWindowActive)
+                    if (this.CanShowNavigatorWindow && !this.IsNavigatorWindowActive)
                     {
                         ShowNavigatorWindow();
                         e.Handled = true;
@@ -2062,10 +2062,10 @@ namespace H.Controls.Dock
             {
                 case nameof(LayoutRoot.RootPanel):
                     {
-                        if (IsInitialized)
+                        if (this.IsInitialized)
                         {
-                            LayoutPanelControl layoutRootPanel = CreateUIElementForModel(Layout.RootPanel) as LayoutPanelControl;
-                            LayoutRootPanel = layoutRootPanel;
+                            LayoutPanelControl layoutRootPanel = CreateUIElementForModel(this.Layout.RootPanel) as LayoutPanelControl;
+                            this.LayoutRootPanel = layoutRootPanel;
                         }
                         break;
                     }
@@ -2077,14 +2077,14 @@ namespace H.Controls.Dock
                         //{
                         //    _setFocusAsyncOperation = Dispatcher.BeginInvoke(new Action(() =>
                         // {
-                        if (Layout.ActiveContent != null)
-                            FocusElementManager.SetFocusOnLastElement(Layout.ActiveContent);
+                        if (this.Layout.ActiveContent != null)
+                            FocusElementManager.SetFocusOnLastElement(this.Layout.ActiveContent);
                         //_setFocusAsyncOperation = null;
                         //  } ), DispatcherPriority.Input );
                         //}
 
                         if (!_insideInternalSetActiveContent)
-                            ActiveContent = Layout.ActiveContent?.Content;
+                            this.ActiveContent = this.Layout.ActiveContent?.Content;
                         break;
                     }
             }
@@ -2097,13 +2097,13 @@ namespace H.Controls.Dock
         private void DockingManager_Loaded(object sender, RoutedEventArgs e)
         {
             if (DesignerProperties.GetIsInDesignMode(this)) return;
-            if (Layout.Manager == this)
+            if (this.Layout.Manager == this)
             {
-                LayoutRootPanel = CreateUIElementForModel(Layout.RootPanel) as LayoutPanelControl;
-                LeftSidePanel = CreateUIElementForModel(Layout.LeftSide) as LayoutAnchorSideControl;
-                TopSidePanel = CreateUIElementForModel(Layout.TopSide) as LayoutAnchorSideControl;
-                RightSidePanel = CreateUIElementForModel(Layout.RightSide) as LayoutAnchorSideControl;
-                BottomSidePanel = CreateUIElementForModel(Layout.BottomSide) as LayoutAnchorSideControl;
+                this.LayoutRootPanel = CreateUIElementForModel(this.Layout.RootPanel) as LayoutPanelControl;
+                this.LeftSidePanel = CreateUIElementForModel(this.Layout.LeftSide) as LayoutAnchorSideControl;
+                this.TopSidePanel = CreateUIElementForModel(this.Layout.TopSide) as LayoutAnchorSideControl;
+                this.RightSidePanel = CreateUIElementForModel(this.Layout.RightSide) as LayoutAnchorSideControl;
+                this.BottomSidePanel = CreateUIElementForModel(this.Layout.BottomSide) as LayoutAnchorSideControl;
 
                 // In order to prevent resource leaks, unsubscribe from SizeChanged event for case when we have no stored Layout settings.
                 SizeChanged -= OnSizeChanged;
@@ -2126,12 +2126,12 @@ namespace H.Controls.Dock
             _fwHiddenList.Clear();
 
             // load floating windows not already loaded! (issue #59 & #254)
-            List<LayoutFloatingWindow> items = new List<LayoutFloatingWindow>(Layout.FloatingWindows.Where(fw => !_fwList.Any(fwc => fwc.Model == fw)));
+            List<LayoutFloatingWindow> items = new List<LayoutFloatingWindow>(this.Layout.FloatingWindows.Where(fw => !_fwList.Any(fwc => fwc.Model == fw)));
             foreach (LayoutFloatingWindow fw in items)
                 CreateUIElementForModel(fw);
 
             //create the overlaywindow if it's possible
-            if (IsVisible)
+            if (this.IsVisible)
                 CreateOverlayWindow();
             FocusElementManager.SetupFocusManagement(this);
         }
@@ -2142,10 +2142,10 @@ namespace H.Controls.Dock
         private void OnSizeChanged(object sender, SizeChangedEventArgs e)
         {
             // Lets make sure this always remains non-negative to avoid crach in layout system
-            double width = Math.Max(ActualWidth - GridSplitterWidth - RightSidePanel.ActualWidth - LeftSidePanel.ActualWidth, 0);
-            double height = Math.Max(ActualHeight - GridSplitterHeight - TopSidePanel.ActualHeight - BottomSidePanel.ActualHeight, 0);
+            double width = Math.Max(this.ActualWidth - this.GridSplitterWidth - this.RightSidePanel.ActualWidth - this.LeftSidePanel.ActualWidth, 0);
+            double height = Math.Max(this.ActualHeight - this.GridSplitterHeight - this.TopSidePanel.ActualHeight - this.BottomSidePanel.ActualHeight, 0);
 
-            LayoutRootPanel.AdjustFixedChildrenPanelSizes(new Size(width, height));
+            this.LayoutRootPanel.AdjustFixedChildrenPanelSizes(new Size(width, height));
         }
 
         private void DockingManager_Unloaded(object sender, RoutedEventArgs e)
@@ -2155,7 +2155,7 @@ namespace H.Controls.Dock
             if (DesignerProperties.GetIsInDesignMode(this)) return;
             _autoHideWindowManager?.HideAutoWindow();
 
-            AutoHideWindow?.Dispose();
+            this.AutoHideWindow?.Dispose();
 
             foreach (LayoutFloatingWindowControl fw in _fwList.ToArray())
             {
@@ -2190,7 +2190,7 @@ namespace H.Controls.Dock
             else
                 _autoHideWindowManager = new AutoHideWindowManager(this);
 
-            AutoHideWindow?.Dispose();
+            this.AutoHideWindow?.Dispose();
             SetAutoHideWindow(new LayoutAutoHideWindowControl());
         }
 
@@ -2257,8 +2257,8 @@ namespace H.Controls.Dock
                 LayoutDocument documentToImport = new LayoutDocument { Content = documentContentToImport };
 
                 bool added = false;
-                if (LayoutUpdateStrategy != null)
-                    added = LayoutUpdateStrategy.BeforeInsertDocument(layout, documentToImport, documentPane);
+                if (this.LayoutUpdateStrategy != null)
+                    added = this.LayoutUpdateStrategy.BeforeInsertDocument(layout, documentToImport, documentPane);
 
                 if (!added)
                 {
@@ -2268,7 +2268,7 @@ namespace H.Controls.Dock
                     documentPane.Children.Add(documentToImport);
                 }
 
-                LayoutUpdateStrategy?.AfterInsertDocument(layout, documentToImport);
+                this.LayoutUpdateStrategy?.AfterInsertDocument(layout, documentToImport);
                 CreateDocumentLayoutItem(documentToImport);
             }
             _suspendLayoutItemCreation = false;
@@ -2278,7 +2278,7 @@ namespace H.Controls.Dock
 
         private void DocumentsSourceElementsChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            if (Layout == null) return;
+            if (this.Layout == null) return;
             //When deserializing documents are created automatically by the deserializer
             if (SuspendDocumentsSourceBinding) return;
 
@@ -2288,7 +2288,7 @@ namespace H.Controls.Dock
             {
                 if (e.OldItems != null)
                 {
-                    LayoutDocument[] documentsToRemove = Layout.Descendents().OfType<LayoutDocument>().Where(d => e.OldItems.Contains(d.Content)).ToArray();
+                    LayoutDocument[] documentsToRemove = this.Layout.Descendents().OfType<LayoutDocument>().Where(d => e.OldItems.Contains(d.Content)).ToArray();
                     foreach (LayoutDocument documentToRemove in documentsToRemove)
                     {
                         documentToRemove.Content = null;
@@ -2304,13 +2304,13 @@ namespace H.Controls.Dock
                 if (e.NewItems != null)
                 {
                     LayoutDocumentPane documentPane = null;
-                    if (Layout.LastFocusedDocument != null)
+                    if (this.Layout.LastFocusedDocument != null)
                     {
-                        documentPane = Layout.LastFocusedDocument.Parent as LayoutDocumentPane;
+                        documentPane = this.Layout.LastFocusedDocument.Parent as LayoutDocumentPane;
                     }
                     if (documentPane == null)
                     {
-                        documentPane = Layout.Descendents().OfType<LayoutDocumentPane>().FirstOrDefault();
+                        documentPane = this.Layout.Descendents().OfType<LayoutDocumentPane>().FirstOrDefault();
                     }
                     //if (documentPane == null)
                     //    throw new InvalidOperationException("Layout must contains at least one LayoutDocumentPane in order to host documents");
@@ -2323,9 +2323,9 @@ namespace H.Controls.Dock
                         };
 
                         bool added = false;
-                        if (LayoutUpdateStrategy != null)
+                        if (this.LayoutUpdateStrategy != null)
                         {
-                            added = LayoutUpdateStrategy.BeforeInsertDocument(Layout, documentToImport, documentPane);
+                            added = this.LayoutUpdateStrategy.BeforeInsertDocument(this.Layout, documentToImport, documentPane);
                         }
 
                         if (!added)
@@ -2337,7 +2337,7 @@ namespace H.Controls.Dock
                             added = true;
                         }
 
-                        LayoutUpdateStrategy?.AfterInsertDocument(Layout, documentToImport);
+                        this.LayoutUpdateStrategy?.AfterInsertDocument(this.Layout, documentToImport);
                         ILayoutRoot root = documentToImport.Root;
                         if (root != null && root.Manager == this)
                         {
@@ -2351,7 +2351,7 @@ namespace H.Controls.Dock
             if (e.Action == NotifyCollectionChangedAction.Reset)
             {
                 //Remove documents that are no longer in the DocumentSource.
-                LayoutDocument[] documentsToRemove = GetItemsToRemoveAfterReset<LayoutDocument>(DocumentsSource);
+                LayoutDocument[] documentsToRemove = GetItemsToRemoveAfterReset<LayoutDocument>(this.DocumentsSource);
                 foreach (LayoutDocument documentToRemove in documentsToRemove)
                 {
                     documentToRemove.Parent.RemoveChild(
@@ -2360,7 +2360,7 @@ namespace H.Controls.Dock
                 }
             }
 
-            Layout?.CollectGarbage();
+            this.Layout?.CollectGarbage();
         }
 
         /// <summary>
@@ -2380,7 +2380,7 @@ namespace H.Controls.Dock
             //Find remaining items in source
             HashSet<object> itemsThatRemain = new HashSet<object>(source.Cast<object>(), ReferenceEqualityComparer.Default);
             //Find the removed items that are not in the remaining collection
-            return Layout.Descendents()
+            return this.Layout.Descendents()
                          .OfType<TLayoutType>()
                          .Where(x => !itemsThatRemain.Contains(x.Content))
                          .ToArray();
@@ -2461,8 +2461,8 @@ namespace H.Controls.Dock
             {
                 LayoutAnchorable anchorableToImport = new LayoutAnchorable { Content = anchorableContentToImport };
                 bool added = false;
-                if (LayoutUpdateStrategy != null)
-                    added = LayoutUpdateStrategy.BeforeInsertAnchorable(layout, anchorableToImport, anchorablePane);
+                if (this.LayoutUpdateStrategy != null)
+                    added = this.LayoutUpdateStrategy.BeforeInsertAnchorable(layout, anchorableToImport, anchorablePane);
 
                 if (!added)
                 {
@@ -2483,7 +2483,7 @@ namespace H.Controls.Dock
                     added = true;
                 }
 
-                LayoutUpdateStrategy?.AfterInsertAnchorable(layout, anchorableToImport);
+                this.LayoutUpdateStrategy?.AfterInsertAnchorable(layout, anchorableToImport);
                 CreateAnchorableLayoutItem(anchorableToImport);
             }
             _suspendLayoutItemCreation = false;
@@ -2493,7 +2493,7 @@ namespace H.Controls.Dock
 
         private void AnchorablesSourceElementsChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            if (Layout == null) return;
+            if (this.Layout == null) return;
 
             //When deserializing documents are created automatically by the deserializer
             if (SuspendAnchorablesSourceBinding) return;
@@ -2503,7 +2503,7 @@ namespace H.Controls.Dock
             {
                 if (e.OldItems != null)
                 {
-                    LayoutAnchorable[] anchorablesToRemove = Layout.Descendents().OfType<LayoutAnchorable>().Where(d => e.OldItems.Contains(d.Content)).ToArray();
+                    LayoutAnchorable[] anchorablesToRemove = this.Layout.Descendents().OfType<LayoutAnchorable>().Where(d => e.OldItems.Contains(d.Content)).ToArray();
                     foreach (LayoutAnchorable anchorableToRemove in anchorablesToRemove)
                     {
                         anchorableToRemove.Content = null;
@@ -2519,45 +2519,45 @@ namespace H.Controls.Dock
                 if (e.NewItems != null)
                 {
                     LayoutAnchorablePane anchorablePane = null;
-                    if (Layout.ActiveContent != null)
+                    if (this.Layout.ActiveContent != null)
                     {
                         //look for active content parent pane
-                        anchorablePane = Layout.ActiveContent.Parent as LayoutAnchorablePane;
+                        anchorablePane = this.Layout.ActiveContent.Parent as LayoutAnchorablePane;
                     }
                     if (anchorablePane == null)
                     {
                         //look for a pane on the right side
-                        anchorablePane = Layout.Descendents().OfType<LayoutAnchorablePane>().FirstOrDefault(pane => !pane.IsHostedInFloatingWindow && pane.GetSide() == AnchorSide.Right);
+                        anchorablePane = this.Layout.Descendents().OfType<LayoutAnchorablePane>().FirstOrDefault(pane => !pane.IsHostedInFloatingWindow && pane.GetSide() == AnchorSide.Right);
                     }
                     if (anchorablePane == null)
                     {
                         //look for an available pane
-                        anchorablePane = Layout.Descendents().OfType<LayoutAnchorablePane>().FirstOrDefault();
+                        anchorablePane = this.Layout.Descendents().OfType<LayoutAnchorablePane>().FirstOrDefault();
                     }
                     _suspendLayoutItemCreation = true;
                     foreach (object anchorableContentToImport in e.NewItems)
                     {
                         LayoutAnchorable anchorableToImport = new LayoutAnchorable { Content = anchorableContentToImport };
                         bool added = false;
-                        if (LayoutUpdateStrategy != null)
-                            added = LayoutUpdateStrategy.BeforeInsertAnchorable(Layout, anchorableToImport, anchorablePane);
+                        if (this.LayoutUpdateStrategy != null)
+                            added = this.LayoutUpdateStrategy.BeforeInsertAnchorable(this.Layout, anchorableToImport, anchorablePane);
                         if (!added)
                         {
                             if (anchorablePane == null)
                             {
                                 LayoutPanel mainLayoutPanel = new LayoutPanel { Orientation = Orientation.Horizontal };
-                                if (Layout.RootPanel != null)
+                                if (this.Layout.RootPanel != null)
                                 {
-                                    mainLayoutPanel.Children.Add(Layout.RootPanel);
+                                    mainLayoutPanel.Children.Add(this.Layout.RootPanel);
                                 }
-                                Layout.RootPanel = mainLayoutPanel;
+                                this.Layout.RootPanel = mainLayoutPanel;
                                 anchorablePane = new LayoutAnchorablePane { DockWidth = new GridLength(200.0, GridUnitType.Pixel) };
                                 mainLayoutPanel.Children.Add(anchorablePane);
                             }
                             anchorablePane.Children.Add(anchorableToImport);
                             added = true;
                         }
-                        LayoutUpdateStrategy?.AfterInsertAnchorable(Layout, anchorableToImport);
+                        this.LayoutUpdateStrategy?.AfterInsertAnchorable(this.Layout, anchorableToImport);
                         ILayoutRoot root = anchorableToImport.Root;
                         if (root != null && root.Manager == this)
                             CreateAnchorableLayoutItem(anchorableToImport);
@@ -2569,7 +2569,7 @@ namespace H.Controls.Dock
             if (e.Action == NotifyCollectionChangedAction.Reset)
             {
                 //Remove anchorables that are no longer in the AnchorablesSource.
-                LayoutAnchorable[] anchorablesToRemove = GetItemsToRemoveAfterReset<LayoutAnchorable>(AnchorablesSource);
+                LayoutAnchorable[] anchorablesToRemove = GetItemsToRemoveAfterReset<LayoutAnchorable>(this.AnchorablesSource);
                 foreach (LayoutAnchorable anchorableToRemove in anchorablesToRemove)
                 {
                     anchorableToRemove.Parent.RemoveChild(
@@ -2578,7 +2578,7 @@ namespace H.Controls.Dock
                 }
             }
 
-            Layout?.CollectGarbage();
+            this.Layout?.CollectGarbage();
         }
 
         private void DetachAnchorablesSource(LayoutRoot layout, IEnumerable anchorablesSource)
@@ -2610,10 +2610,10 @@ namespace H.Controls.Dock
         private void InternalSetActiveContent(object contentObject)
         {
             // BugFix for first issue in #59
-            List<LayoutContent> list = Layout.Descendents().OfType<LayoutContent>().ToList();
+            List<LayoutContent> list = this.Layout.Descendents().OfType<LayoutContent>().ToList();
             LayoutContent layoutContent = list.FirstOrDefault(lc => lc == contentObject || lc.Content == contentObject);
             _insideInternalSetActiveContent = true;
-            Layout.ActiveContent = layoutContent;
+            this.Layout.ActiveContent = layoutContent;
             _insideInternalSetActiveContent = false;
         }
 
@@ -2638,7 +2638,7 @@ namespace H.Controls.Dock
         private void Layout_ElementAdded(object sender, LayoutElementEventArgs e)
         {
             if (_suspendLayoutItemCreation) return;
-            foreach (LayoutContent content in Layout.Descendents().OfType<LayoutContent>().ToList())
+            foreach (LayoutContent content in this.Layout.Descendents().OfType<LayoutContent>().ToList())
             {
                 if (content is LayoutDocument)
                     CreateDocumentLayoutItem(content as LayoutDocument);
@@ -2654,10 +2654,10 @@ namespace H.Controls.Dock
         private void CollectLayoutItemsDeleted()
         {
             if (_collectLayoutItemsOperations != null) return;
-            _collectLayoutItemsOperations = Dispatcher.BeginInvoke(new Action(() =>
+            _collectLayoutItemsOperations = this.Dispatcher.BeginInvoke(new Action(() =>
             {
                 _collectLayoutItemsOperations = null;
-                foreach (LayoutItem itemToRemove in _layoutItems.Where(item => item.LayoutElement.Root != Layout).ToArray())
+                foreach (LayoutItem itemToRemove in _layoutItems.Where(item => item.LayoutElement.Root != this.Layout).ToArray())
                 {
                     itemToRemove.Detach();
                     _layoutItems.Remove(itemToRemove);
@@ -2670,11 +2670,11 @@ namespace H.Controls.Dock
         /// </summary>
         private void DetachLayoutItems()
         {
-            if (Layout == null) return;
+            if (this.Layout == null) return;
             _layoutItems.ForEach<LayoutItem>(i => i.Detach());
             _layoutItems.Clear();
-            Layout.ElementAdded -= Layout_ElementAdded;
-            Layout.ElementRemoved -= Layout_ElementRemoved;
+            this.Layout.ElementAdded -= Layout_ElementAdded;
+            this.Layout.ElementRemoved -= Layout_ElementRemoved;
         }
 
         /// <summary>
@@ -2686,15 +2686,15 @@ namespace H.Controls.Dock
         /// </summary>
         private void AttachLayoutItems()
         {
-            if (Layout == null) return;
-            foreach (LayoutDocument document in Layout.Descendents().OfType<LayoutDocument>().ToArray())
+            if (this.Layout == null) return;
+            foreach (LayoutDocument document in this.Layout.Descendents().OfType<LayoutDocument>().ToArray())
                 CreateDocumentLayoutItem(document);
 
-            foreach (LayoutAnchorable anchorable in Layout.Descendents().OfType<LayoutAnchorable>().ToArray())
+            foreach (LayoutAnchorable anchorable in this.Layout.Descendents().OfType<LayoutAnchorable>().ToArray())
                 CreateAnchorableLayoutItem(anchorable);
 
-            Layout.ElementAdded += Layout_ElementAdded;
-            Layout.ElementRemoved += Layout_ElementRemoved;
+            this.Layout.ElementAdded += Layout_ElementAdded;
+            this.Layout.ElementRemoved += Layout_ElementRemoved;
         }
 
         /// <summary>
@@ -2706,10 +2706,10 @@ namespace H.Controls.Dock
         private void ApplyStyleToLayoutItem(LayoutItem layoutItem)
         {
             layoutItem._ClearDefaultBindings();
-            if (LayoutItemContainerStyle != null)
-                layoutItem.Style = LayoutItemContainerStyle;
-            else if (LayoutItemContainerStyleSelector != null)
-                layoutItem.Style = LayoutItemContainerStyleSelector.SelectStyle(layoutItem.Model, layoutItem);
+            if (this.LayoutItemContainerStyle != null)
+                layoutItem.Style = this.LayoutItemContainerStyle;
+            else if (this.LayoutItemContainerStyleSelector != null)
+                layoutItem.Style = this.LayoutItemContainerStyleSelector.SelectStyle(layoutItem.Model, layoutItem);
             layoutItem._SetDefaultBindings();
         }
 
@@ -2822,7 +2822,7 @@ namespace H.Controls.Dock
                 }
             };
 
-            Layout.FloatingWindows.Add(fw);
+            this.Layout.FloatingWindows.Add(fw);
 
             fwc = new LayoutAnchorableFloatingWindowControl((LayoutAnchorableFloatingWindow)fw, isContentImmutable)
             {
@@ -2834,7 +2834,7 @@ namespace H.Controls.Dock
             //fwc.Owner = Window.GetWindow(this);
             //fwc.SetParentToMainWindowOf(this);
             _fwList.Add(fwc);
-            Layout.CollectGarbage();
+            this.Layout.CollectGarbage();
             InvalidateArrange();
             return fwc;
         }
@@ -2891,7 +2891,7 @@ namespace H.Controls.Dock
                     })
                 };
 
-                Layout.FloatingWindows.Add(fw);
+                this.Layout.FloatingWindows.Add(fw);
                 fwc = new LayoutAnchorableFloatingWindowControl((LayoutAnchorableFloatingWindow)fw, isContentImmutable)
                 {
                     Width = fwWidth,
@@ -2918,7 +2918,7 @@ namespace H.Controls.Dock
                     })
                 };
 
-                Layout.FloatingWindows.Add(fw);
+                this.Layout.FloatingWindows.Add(fw);
                 fwc = new LayoutDocumentFloatingWindowControl((LayoutDocumentFloatingWindow)fw, isContentImmutable)
                 {
                     Width = fwWidth,
@@ -2930,7 +2930,7 @@ namespace H.Controls.Dock
             //fwc.Owner = Window.GetWindow(this);
             //fwc.SetParentToMainWindowOf(this);
             _fwList.Add(fwc);
-            Layout.CollectGarbage();
+            this.Layout.CollectGarbage();
             UpdateLayout();
             return fwc;
         }

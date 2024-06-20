@@ -1,9 +1,6 @@
 ﻿// Copyright ? 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using Microsoft.Xaml.Behaviors.Core;
-using System.Globalization;
-using System.Reflection;
-using System;
 
 namespace H.Extensions.Behvaiors
 {

@@ -29,7 +29,7 @@ namespace H.Controls.Dock.Controls
         protected override Size MeasureOverride(Size availableSize)
         {
             Size desideredSize = new Size();
-            foreach (FrameworkElement child in Children)
+            foreach (FrameworkElement child in this.Children)
             {
                 child.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
                 desideredSize.Width += child.DesiredSize.Width;
@@ -42,7 +42,7 @@ namespace H.Controls.Dock.Controls
 
         protected override Size ArrangeOverride(Size finalSize)
         {
-            System.Collections.Generic.IEnumerable<UIElement> visibleChildren = Children.Cast<UIElement>().Where(ch => ch.Visibility != System.Windows.Visibility.Collapsed);
+            System.Collections.Generic.IEnumerable<UIElement> visibleChildren = this.Children.Cast<UIElement>().Where(ch => ch.Visibility != System.Windows.Visibility.Collapsed);
             double offset = 0.0;
             bool skipAllOthers = false;
             foreach (TabItem doc in visibleChildren)

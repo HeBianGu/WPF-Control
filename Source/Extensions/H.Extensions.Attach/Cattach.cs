@@ -871,7 +871,7 @@ namespace H.Extensions.Attach
             obj.SetValue(DateTimeFormatProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty DateTimeFormatProperty =
             DependencyProperty.RegisterAttached("DateTimeFormat", typeof(string), typeof(Cattach), new FrameworkPropertyMetadata("YYYY-MM-dd", OnDateTimeFormatChanged));
 
@@ -938,7 +938,7 @@ namespace H.Extensions.Attach
             obj.SetValue(DockProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty DockProperty =
             DependencyProperty.RegisterAttached("Dock", typeof(Dock), typeof(Cattach), new PropertyMetadata(default(Dock), OnDockChanged));
 

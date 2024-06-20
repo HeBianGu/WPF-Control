@@ -17,7 +17,7 @@ namespace H.Extensions.Torrent
             if (value == null || value.Length != Length)
                 throw new ArgumentException(string.Format("Value must be {0} bytes.", Length));
 
-            Value = value;
+            this.Value = value;
         }
 
         public byte[] Value { get; }
@@ -47,7 +47,7 @@ namespace H.Extensions.Torrent
             if (obj is Sha1Hash)
             {
                 Sha1Hash other = (Sha1Hash)obj;
-                return Value.SequenceEqual(other.Value);
+                return this.Value.SequenceEqual(other.Value);
             }
             else
             {
@@ -60,7 +60,7 @@ namespace H.Extensions.Torrent
             unchecked
             {
                 int hash = 17;
-                foreach (byte el in Value)
+                foreach (byte el in this.Value)
                     hash = hash * 31 + el.GetHashCode();
                 return hash;
             }
@@ -68,7 +68,7 @@ namespace H.Extensions.Torrent
 
         public override string ToString()
         {
-            string base64 = Convert.ToBase64String(Value);
+            string base64 = Convert.ToBase64String(this.Value);
             return base64.Substring(0, 8);
         }
     }

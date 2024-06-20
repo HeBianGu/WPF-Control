@@ -12,7 +12,7 @@ namespace H.Controls.Chart2D
         {
             get
             {
-                EllipseGeometry e = new EllipseGeometry(ScreenPoint, this.Size / 2, this.Size / 2);
+                EllipseGeometry e = new EllipseGeometry(this.ScreenPoint, this.Size / 2, this.Size / 2);
                 return e;
             }
         }
@@ -23,7 +23,7 @@ namespace H.Controls.Chart2D
 
             Pen p = new Pen(this.Fill, 1);
 
-            drawingContext.DrawGeometry(Brushes.White, p, DefiningGeometry);
+            drawingContext.DrawGeometry(Brushes.White, p, this.DefiningGeometry);
 
             //drawingContext.DrawGeometry(this.Fill, this.Pen, DefiningGeometry);
         }

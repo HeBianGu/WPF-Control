@@ -29,16 +29,16 @@ namespace System.Windows.Media
         /// <returns></returns>
         public static double GetTotalLength(this Geometry geometry, Size size, double strokeThickness = 1)
         {
-            if (geometry == null) 
+            if (geometry == null)
                 return 0;
             Predicate<double> match = l =>
               {
                   return Math.Abs(l) < 1E-06;
               };
 
-            if (match(size.Width) || match(size.Height)) 
+            if (match(size.Width) || match(size.Height))
                 return 0;
-            if(geometry.Bounds.Width==0||geometry.Bounds.Height==0)
+            if (geometry.Bounds.Width == 0 || geometry.Bounds.Height == 0)
                 return 0;
 
             double length = GetTotalLength(geometry);
@@ -46,7 +46,7 @@ namespace System.Windows.Media
             double sh = geometry.Bounds.Height / size.Height;
             double min = Math.Min(sw, sh);
 
-            if (match(min) || match(strokeThickness)) 
+            if (match(min) || match(strokeThickness))
                 return 0;
 
             length /= min;

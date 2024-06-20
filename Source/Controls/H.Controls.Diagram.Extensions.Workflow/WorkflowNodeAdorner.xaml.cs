@@ -34,7 +34,7 @@ namespace H.Controls.Diagram.Extensions.Workflow
             obj.SetValue(TemplateProperty, value);
         }
 
-       
+
         public static new readonly DependencyProperty TemplateProperty =
             DependencyProperty.RegisterAttached("Template", typeof(ControlTemplate), typeof(WorkflowNodeAdorner), new PropertyMetadata(default(ControlTemplate), OnTemplateChanged));
 

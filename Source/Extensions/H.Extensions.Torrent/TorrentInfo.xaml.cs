@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
 
 namespace H.Extensions.Torrent
@@ -16,15 +15,15 @@ namespace H.Extensions.Torrent
                         IEnumerable<IEnumerable<Uri>> trackers,
                         IReadOnlyList<byte> metadata)
         {
-            Name = name;
+            this.Name = name;
             _pieces = new ReadOnlyCollection<Piece>(pieces.ToList());
-            InfoHash = infoHash;
-            Files = new List<TorrentFile>();
-            Files.AddRange(files);
-            TotalSize = Files.Any() ? Files.Sum(f => f.Size) : 0;
-            Trackers = trackers.Select(x => (IReadOnlyList<Uri>)new ReadOnlyCollection<Uri>(x.ToList())).ToList().AsReadOnly();
-            PieceSize = _pieces.First().Size;
-            Metadata = metadata;
+            this.InfoHash = infoHash;
+            this.Files = new List<TorrentFile>();
+            this.Files.AddRange(files);
+            this.TotalSize = this.Files.Any() ? this.Files.Sum(f => f.Size) : 0;
+            this.Trackers = trackers.Select(x => (IReadOnlyList<Uri>)new ReadOnlyCollection<Uri>(x.ToList())).ToList().AsReadOnly();
+            this.PieceSize = _pieces.First().Size;
+            this.Metadata = metadata;
         }
         public string Name { get; }
 
@@ -44,7 +43,7 @@ namespace H.Extensions.Torrent
 
         public long PieceOffset(Piece piece)
         {
-            return (long)piece.Index * (long)PieceSize;
+            return (long)piece.Index * (long)this.PieceSize;
         }
 
         public int FileIndex(long offset)
@@ -58,17 +57,17 @@ namespace H.Extensions.Torrent
             if (offset < 0)
                 throw new IndexOutOfRangeException();
 
-            if (Files.Count == 0)
+            if (this.Files.Count == 0)
                 throw new IndexOutOfRangeException();
 
             int fileIndex = 0;
-            while (offset > Files[fileIndex].Size)
+            while (offset > this.Files[fileIndex].Size)
             {
-                TorrentFile result = Files[fileIndex];
+                TorrentFile result = this.Files[fileIndex];
                 offset -= result.Size;
                 fileIndex++;
 
-                if (fileIndex > Files.Count)
+                if (fileIndex > this.Files.Count)
                     throw new IndexOutOfRangeException();
             }
 
@@ -80,7 +79,7 @@ namespace H.Extensions.Torrent
         {
             long offset = 0;
             for (int i = 0; i < fileIndex; i++)
-                offset += Files[i].Size;
+                offset += this.Files[i].Size;
             return offset;
         }
     }

@@ -35,9 +35,9 @@ namespace H.Controls.Dock.Layout
             private set
             {
                 if (value == _side) return;
-                RaisePropertyChanging(nameof(Side));
+                RaisePropertyChanging(nameof(this.Side));
                 _side = value;
-                RaisePropertyChanged(nameof(Side));
+                RaisePropertyChanged(nameof(this.Side));
             }
         }
 
@@ -46,7 +46,7 @@ namespace H.Controls.Dock.Layout
         #region Overrides
 
         /// <inheritdoc />
-        protected override bool GetVisibility() => Children.Count > 0;
+        protected override bool GetVisibility() => this.Children.Count > 0;
 
         /// <inheritdoc />
         protected override void OnParentChanged(ILayoutContainer oldValue, ILayoutContainer newValue)
@@ -61,10 +61,10 @@ namespace H.Controls.Dock.Layout
 
         private void UpdateSide()
         {
-            if (this == Root.LeftSide) Side = AnchorSide.Left;
-            else if (this == Root.TopSide) Side = AnchorSide.Top;
-            else if (this == Root.RightSide) Side = AnchorSide.Right;
-            else if (this == Root.BottomSide) Side = AnchorSide.Bottom;
+            if (this == this.Root.LeftSide) this.Side = AnchorSide.Left;
+            else if (this == this.Root.TopSide) this.Side = AnchorSide.Top;
+            else if (this == this.Root.RightSide) this.Side = AnchorSide.Right;
+            else if (this == this.Root.BottomSide) this.Side = AnchorSide.Bottom;
         }
 
         #endregion Private Methods

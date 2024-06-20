@@ -47,7 +47,7 @@ namespace Microsoft.Windows.Shell
 
         private void _InitializeIsGlassEnabled()
         {
-            IsGlassEnabled = NativeMethods.DwmIsCompositionEnabled();
+            this.IsGlassEnabled = NativeMethods.DwmIsCompositionEnabled();
         }
 
         private void _UpdateIsGlassEnabled(IntPtr wParam, IntPtr lParam)
@@ -60,10 +60,10 @@ namespace Microsoft.Windows.Shell
         {
             NativeMethods.DwmGetColorizationColor(out uint color, out bool isOpaque);
             color |= isOpaque ? 0xFF000000 : 0;
-            WindowGlassColor = Utility.ColorFromArgbDword(color);
-            SolidColorBrush glassBrush = new SolidColorBrush(WindowGlassColor);
+            this.WindowGlassColor = Utility.ColorFromArgbDword(color);
+            SolidColorBrush glassBrush = new SolidColorBrush(this.WindowGlassColor);
             glassBrush.Freeze();
-            WindowGlassBrush = glassBrush;
+            this.WindowGlassBrush = glassBrush;
         }
 
         private void _UpdateGlassColor(IntPtr wParam, IntPtr lParam)
@@ -71,16 +71,16 @@ namespace Microsoft.Windows.Shell
             bool isOpaque = lParam != IntPtr.Zero;
             uint color = unchecked((uint)(int)wParam.ToInt64());
             color |= isOpaque ? 0xFF000000 : 0;
-            WindowGlassColor = Utility.ColorFromArgbDword(color);
-            SolidColorBrush glassBrush = new SolidColorBrush(WindowGlassColor);
+            this.WindowGlassColor = Utility.ColorFromArgbDword(color);
+            SolidColorBrush glassBrush = new SolidColorBrush(this.WindowGlassColor);
             glassBrush.Freeze();
-            WindowGlassBrush = glassBrush;
+            this.WindowGlassBrush = glassBrush;
         }
 
         private void _InitializeCaptionHeight()
         {
             Point ptCaption = new Point(0, NativeMethods.GetSystemMetrics(SM.CYCAPTION));
-            WindowCaptionHeight = DpiHelper.DevicePixelsToLogical(ptCaption).Y;
+            this.WindowCaptionHeight = DpiHelper.DevicePixelsToLogical(ptCaption).Y;
         }
 
         private void _UpdateCaptionHeight(IntPtr wParam, IntPtr lParam)
@@ -92,7 +92,7 @@ namespace Microsoft.Windows.Shell
         {
             Size frameSize = new Size(NativeMethods.GetSystemMetrics(SM.CXSIZEFRAME), NativeMethods.GetSystemMetrics(SM.CYSIZEFRAME));
             Size frameSizeInDips = DpiHelper.DeviceSizeToLogical(frameSize);
-            WindowResizeBorderThickness = new Thickness(frameSizeInDips.Width, frameSizeInDips.Height, frameSizeInDips.Width, frameSizeInDips.Height);
+            this.WindowResizeBorderThickness = new Thickness(frameSizeInDips.Width, frameSizeInDips.Height, frameSizeInDips.Width, frameSizeInDips.Height);
         }
 
         private void _UpdateWindowResizeBorderThickness(IntPtr wParam, IntPtr lParam)
@@ -106,7 +106,7 @@ namespace Microsoft.Windows.Shell
             Size frameSizeInDips = DpiHelper.DeviceSizeToLogical(frameSize);
             int captionHeight = NativeMethods.GetSystemMetrics(SM.CYCAPTION);
             double captionHeightInDips = DpiHelper.DevicePixelsToLogical(new Point(0, captionHeight)).Y;
-            WindowNonClientFrameThickness = new Thickness(frameSizeInDips.Width, frameSizeInDips.Height + captionHeightInDips, frameSizeInDips.Width, frameSizeInDips.Height);
+            this.WindowNonClientFrameThickness = new Thickness(frameSizeInDips.Width, frameSizeInDips.Height + captionHeightInDips, frameSizeInDips.Width, frameSizeInDips.Height);
         }
 
         private void _UpdateWindowNonClientFrameThickness(IntPtr wParam, IntPtr lParam)
@@ -116,7 +116,7 @@ namespace Microsoft.Windows.Shell
 
         private void _InitializeSmallIconSize()
         {
-            SmallIconSize = new Size(NativeMethods.GetSystemMetrics(SM.CXSMICON), NativeMethods.GetSystemMetrics(SM.CYSMICON));
+            this.SmallIconSize = new Size(NativeMethods.GetSystemMetrics(SM.CXSMICON), NativeMethods.GetSystemMetrics(SM.CYSMICON));
         }
 
         private void _UpdateSmallIconSize(IntPtr wParam, IntPtr lParam)
@@ -137,7 +137,7 @@ namespace Microsoft.Windows.Shell
             Rect captionRect = new Rect(0, 0, captionX * 3, captionY);
             captionRect.Offset(-frameX - captionRect.Width, frameY);
 
-            WindowCaptionButtonsLocation = captionRect;
+            this.WindowCaptionButtonsLocation = captionRect;
         }
 
         [SuppressMessage("Microsoft.Security", "CA2122:DoNotIndirectlyExposeMethodsWithLinkDemands")]
@@ -182,7 +182,7 @@ namespace Microsoft.Windows.Shell
                 rcAllCaptionButtons.Width,
                 rcAllCaptionButtons.Height);
             Rect logicalCaptionLocation = DpiHelper.DeviceRectToLogical(deviceCaptionLocation);
-            WindowCaptionButtonsLocation = logicalCaptionLocation;
+            this.WindowCaptionButtonsLocation = logicalCaptionLocation;
         }
 
         private void _UpdateCaptionButtonLocation(IntPtr wParam, IntPtr lParam)
@@ -193,7 +193,7 @@ namespace Microsoft.Windows.Shell
         private void _InitializeHighContrast()
         {
             HIGHCONTRAST hc = NativeMethods.SystemParameterInfo_GetHIGHCONTRAST();
-            HighContrast = (hc.dwFlags & HCF.HIGHCONTRASTON) != 0;
+            this.HighContrast = (hc.dwFlags & HCF.HIGHCONTRASTON) != 0;
         }
 
         private void _UpdateHighContrast(IntPtr wParam, IntPtr lParam)
@@ -205,16 +205,16 @@ namespace Microsoft.Windows.Shell
         {
             if (!NativeMethods.IsThemeActive())
             {
-                UxThemeName = "Classic";
-                UxThemeColor = "";
+                this.UxThemeName = "Classic";
+                this.UxThemeColor = "";
                 return;
             }
 
             NativeMethods.GetCurrentThemeName(out string name, out string color, out _);
 
             // Consider whether this is the most useful way to expose this...
-            UxThemeName = System.IO.Path.GetFileNameWithoutExtension(name);
-            UxThemeColor = color;
+            this.UxThemeName = System.IO.Path.GetFileNameWithoutExtension(name);
+            this.UxThemeColor = color;
         }
 
         private void _UpdateThemeInfo(IntPtr wParam, IntPtr lParam)
@@ -227,7 +227,7 @@ namespace Microsoft.Windows.Shell
             // The radius of window corners isn't exposed as a true system parameter.
             // It instead is a logical size that we're approximating based on the current theme.
             // There aren't any known variations based on theme color.
-            Assert.IsNeitherNullNorEmpty(UxThemeName);
+            Assert.IsNeitherNullNorEmpty(this.UxThemeName);
 
             // These radii are approximate.  The way WPF does rounding is different than how
             //     rounded-rectangle HRGNs are created, which is also different than the actual
@@ -240,7 +240,7 @@ namespace Microsoft.Windows.Shell
             // "Zune" and "Royale", but WPF doesn't know about these either.
             // If a new theme was to replace Aero, then this will fall back on "classic" behaviors.
             // This isn't ideal, but it's not the end of the world.  WPF will generally have problems anyways.
-            switch (UxThemeName.ToUpperInvariant())
+            switch (this.UxThemeName.ToUpperInvariant())
             {
                 case "LUNA":
                     cornerRadius = new CornerRadius(6, 6, 0, 0);
@@ -266,7 +266,7 @@ namespace Microsoft.Windows.Shell
                     break;
             }
 
-            WindowCornerRadius = cornerRadius;
+            this.WindowCornerRadius = cornerRadius;
         }
 
         private void _UpdateWindowCornerRadius(IntPtr wParam, IntPtr lParam)
@@ -347,7 +347,7 @@ namespace Microsoft.Windows.Shell
             {
                 if (value == _isGlassEnabled) return;
                 _isGlassEnabled = value;
-                _NotifyPropertyChanged(nameof(IsGlassEnabled));
+                _NotifyPropertyChanged(nameof(this.IsGlassEnabled));
             }
         }
 
@@ -358,7 +358,7 @@ namespace Microsoft.Windows.Shell
             {
                 if (value == _glassColor) return;
                 _glassColor = value;
-                _NotifyPropertyChanged(nameof(WindowGlassColor));
+                _NotifyPropertyChanged(nameof(this.WindowGlassColor));
             }
         }
 
@@ -371,7 +371,7 @@ namespace Microsoft.Windows.Shell
                 Assert.IsTrue(value.IsFrozen);
                 if (_glassColorBrush != null && value.Color == _glassColorBrush.Color) return;
                 _glassColorBrush = value;
-                _NotifyPropertyChanged(nameof(WindowGlassBrush));
+                _NotifyPropertyChanged(nameof(this.WindowGlassBrush));
             }
         }
 
@@ -382,7 +382,7 @@ namespace Microsoft.Windows.Shell
             {
                 if (value == _windowResizeBorderThickness) return;
                 _windowResizeBorderThickness = value;
-                _NotifyPropertyChanged(nameof(WindowResizeBorderThickness));
+                _NotifyPropertyChanged(nameof(this.WindowResizeBorderThickness));
             }
         }
 
@@ -393,7 +393,7 @@ namespace Microsoft.Windows.Shell
             {
                 if (value == _windowNonClientFrameThickness) return;
                 _windowNonClientFrameThickness = value;
-                _NotifyPropertyChanged(nameof(WindowNonClientFrameThickness));
+                _NotifyPropertyChanged(nameof(this.WindowNonClientFrameThickness));
             }
         }
 
@@ -404,7 +404,7 @@ namespace Microsoft.Windows.Shell
             {
                 if (value == _captionHeight) return;
                 _captionHeight = value;
-                _NotifyPropertyChanged(nameof(WindowCaptionHeight));
+                _NotifyPropertyChanged(nameof(this.WindowCaptionHeight));
             }
         }
 
@@ -415,7 +415,7 @@ namespace Microsoft.Windows.Shell
             {
                 if (value == _smallIconSize) return;
                 _smallIconSize = value;
-                _NotifyPropertyChanged(nameof(SmallIconSize));
+                _NotifyPropertyChanged(nameof(this.SmallIconSize));
             }
         }
 
@@ -428,7 +428,7 @@ namespace Microsoft.Windows.Shell
             {
                 if (value == _uxThemeName) return;
                 _uxThemeName = value;
-                _NotifyPropertyChanged(nameof(UxThemeName));
+                _NotifyPropertyChanged(nameof(this.UxThemeName));
             }
         }
 
@@ -441,7 +441,7 @@ namespace Microsoft.Windows.Shell
             {
                 if (value == _uxThemeColor) return;
                 _uxThemeColor = value;
-                _NotifyPropertyChanged(nameof(UxThemeColor));
+                _NotifyPropertyChanged(nameof(this.UxThemeColor));
             }
         }
 
@@ -452,7 +452,7 @@ namespace Microsoft.Windows.Shell
             {
                 if (value == _isHighContrast) return;
                 _isHighContrast = value;
-                _NotifyPropertyChanged(nameof(HighContrast));
+                _NotifyPropertyChanged(nameof(this.HighContrast));
             }
         }
 
@@ -463,7 +463,7 @@ namespace Microsoft.Windows.Shell
             {
                 if (value == _windowCornerRadius) return;
                 _windowCornerRadius = value;
-                _NotifyPropertyChanged(nameof(WindowCornerRadius));
+                _NotifyPropertyChanged(nameof(this.WindowCornerRadius));
             }
         }
 
@@ -474,7 +474,7 @@ namespace Microsoft.Windows.Shell
             {
                 if (value == _captionButtonLocation) return;
                 _captionButtonLocation = value;
-                _NotifyPropertyChanged(nameof(WindowCaptionButtonsLocation));
+                _NotifyPropertyChanged(nameof(this.WindowCaptionButtonsLocation));
             }
         }
 

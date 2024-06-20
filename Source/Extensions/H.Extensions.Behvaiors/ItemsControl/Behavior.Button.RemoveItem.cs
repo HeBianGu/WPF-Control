@@ -6,11 +6,11 @@ namespace H.Extensions.Behvaiors
     {
         protected override void OnClick()
         {
-            if (ItemsSource == null)
+            if (this.ItemsSource == null)
                 return;
-            if (Item == null)
+            if (this.Item == null)
                 return;
-            ItemsSource.Remove(Item);
+            this.ItemsSource.Remove(this.Item);
         }
     }
 

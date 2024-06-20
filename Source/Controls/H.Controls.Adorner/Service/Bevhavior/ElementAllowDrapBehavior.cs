@@ -16,13 +16,13 @@ namespace H.Controls.Adorner
     {
         protected override void OnAttached()
         {
-            AssociatedObject.AllowDrop = true;
+            this.AssociatedObject.AllowDrop = true;
 
-            AssociatedObject.Drop += AssociatedObjectOnDrop;
+            this.AssociatedObject.Drop += AssociatedObjectOnDrop;
 
-            AssociatedObject.DragEnter += AssociatedObject_DragEnter;
+            this.AssociatedObject.DragEnter += AssociatedObject_DragEnter;
 
-            AssociatedObject.DragLeave += AssociatedObject_DragLeave;
+            this.AssociatedObject.DragLeave += AssociatedObject_DragLeave;
 
             base.OnAttached();
 
@@ -30,13 +30,13 @@ namespace H.Controls.Adorner
 
         protected override void OnDetaching()
         {
-            AssociatedObject.AllowDrop = false;
+            this.AssociatedObject.AllowDrop = false;
 
-            AssociatedObject.Drop -= AssociatedObjectOnDrop;
+            this.AssociatedObject.Drop -= AssociatedObjectOnDrop;
 
-            AssociatedObject.DragEnter -= AssociatedObject_DragEnter;
+            this.AssociatedObject.DragEnter -= AssociatedObject_DragEnter;
 
-            AssociatedObject.DragLeave -= AssociatedObject_DragLeave;
+            this.AssociatedObject.DragLeave -= AssociatedObject_DragLeave;
 
             base.OnDetaching();
         }
@@ -53,7 +53,7 @@ namespace H.Controls.Adorner
 
                 int index = items.Items.IndexOf(this.AssociatedObject);
 
-                DragDropEffects result = DragDrop.DoDragDrop(this.AssociatedObject, dragData, DragDropEffects);
+                DragDropEffects result = DragDrop.DoDragDrop(this.AssociatedObject, dragData, this.DragDropEffects);
 
                 //  Do ：移动成功清理数据
                 if (result == DragDropEffects.Move)
@@ -83,7 +83,7 @@ namespace H.Controls.Adorner
 
                 int index = (items.ItemsSource as IList).IndexOf(data);
 
-                DragDropEffects result = DragDrop.DoDragDrop(this.AssociatedObject, dragData, DragDropEffects);
+                DragDropEffects result = DragDrop.DoDragDrop(this.AssociatedObject, dragData, this.DragDropEffects);
 
                 //  Do ：移动成功清理数据
 

@@ -16,7 +16,7 @@ namespace H.Extensions.XmlSerialize
 
             if (!File.Exists(path)) return default(T);
 
-            return XmlSerializer.Load<T>(path);
+            return this.XmlSerializer.Load<T>(path);
         }
 
         public void Serilize(object setting, string id)
@@ -25,7 +25,7 @@ namespace H.Extensions.XmlSerialize
                        {
                            string path = Path.Combine(AppPaths.Instance.Cache, setting.GetType().Name, id + ".xml");
 
-                           XmlSerializer.Save(path, setting);
+                           this.XmlSerializer.Save(path, setting);
                        }));
 
         }

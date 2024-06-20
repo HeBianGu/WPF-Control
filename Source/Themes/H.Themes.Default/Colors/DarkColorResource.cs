@@ -12,7 +12,7 @@ namespace H.Themes.Default
         };
         public override string ToString()
         {
-            return Name;
+            return this.Name;
         }
     }
 }

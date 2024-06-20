@@ -11,10 +11,10 @@ namespace H.Controls.PrintBox
     {
         public PageSize(PageMediaSizeName sizeName, Size size, string name)
         {
-            Name = name;
-            SizeName = sizeName;
-            SizeInInch = new Size(size.Width / 25.4, size.Height / 25.4);
-            SizeDesc = size.Width.ToString() + " x " + size.Height.ToString() + " mm";
+            this.Name = name;
+            this.SizeName = sizeName;
+            this.SizeInInch = new Size(size.Width / 25.4, size.Height / 25.4);
+            this.SizeDesc = size.Width.ToString() + " x " + size.Height.ToString() + " mm";
         }
 
         public string Name { get; set; }

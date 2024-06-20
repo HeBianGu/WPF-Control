@@ -1,5 +1,4 @@
 ﻿using H.Controls.Adorner;
-using H.Providers.Mvvm;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -16,7 +15,7 @@ namespace H.Presenters.Design
         public PanelPresenterBase()
         {
             //this.MinHeight = 100;
-            MinWidth = 300;
+            this.MinWidth = 300;
         }
         private ObservableCollection<IDesignPresenter> _presenters = new ObservableCollection<IDesignPresenter>();
         [Browsable(false)]
@@ -60,7 +59,7 @@ namespace H.Presenters.Design
             IDragAdorner adorner = e.Data.GetData("DragGroup") as IDragAdorner;
             if (adorner.GetData() is DesignPresenter value)
             {
-                Presenters.Add(value);
+                this.Presenters.Add(value);
                 _dropBackup = value;
                 _dropBackup.Opacity = 0.5;
             }
@@ -69,15 +68,15 @@ namespace H.Presenters.Design
         protected IDesignPresenter _dropBackup;
         public override void Drop(UIElement element, DragEventArgs e)
         {
-            Presenters.Remove(_dropBackup);
+            this.Presenters.Remove(_dropBackup);
             _dropBackup.Opacity = 1;
-            Presenters.Add(_dropBackup.Clone() as DesignPresenter);
+            this.Presenters.Add(_dropBackup.Clone() as DesignPresenter);
             _dropBackup = null;
         }
 
         public override void DragLeave(UIElement element, DragEventArgs e)
         {
-            Presenters.Remove(_dropBackup);
+            this.Presenters.Remove(_dropBackup);
             _dropBackup = null;
 
         }
