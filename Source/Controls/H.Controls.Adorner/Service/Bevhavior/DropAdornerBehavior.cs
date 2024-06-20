@@ -20,7 +20,7 @@ namespace H.Controls.Adorner
             set { SetValue(DragGroupProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty DragGroupProperty =
             DependencyProperty.Register("DragGroup", typeof(string), typeof(DropAdornerBehavior<T>), new PropertyMetadata("DragGroup", (d, e) =>
             {

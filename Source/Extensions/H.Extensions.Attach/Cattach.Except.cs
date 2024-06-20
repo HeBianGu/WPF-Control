@@ -16,7 +16,7 @@ namespace H.Extensions.Attach
             obj.SetValue(IsExceptSelfProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty IsExceptSelfProperty =
             DependencyProperty.RegisterAttached("IsExceptSelf", typeof(bool), typeof(Cattach), new PropertyMetadata(false, OnIsExceptSelfChanged));
 
@@ -40,7 +40,7 @@ namespace H.Extensions.Attach
             obj.SetValue(IsExcepChildrenProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty IsExcepChildrenProperty =
             DependencyProperty.RegisterAttached("IsExcepChildren", typeof(bool), typeof(Cattach), new PropertyMetadata(false, OnIsExcepChildrenChanged));
 

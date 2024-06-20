@@ -45,7 +45,7 @@ namespace H.Extensions.Behvaiors
 
         private void AssociatedObject_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            if(e.Key==this.Key)
+            if (e.Key == this.Key)
             {
                 this.AssociatedObject.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             }

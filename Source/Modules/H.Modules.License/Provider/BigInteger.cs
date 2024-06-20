@@ -1176,7 +1176,7 @@ namespace H.Modules.License
                 r2.dataLength--;
 
             r1 -= r2;
-            if ((r1.data[maxLength - 1] & 0x80000000) != 0) 
+            if ((r1.data[maxLength - 1] & 0x80000000) != 0)
             {
                 BigInteger val = new BigInteger();
                 val.data[kPlusOne] = 0x00000001;
@@ -1195,7 +1195,7 @@ namespace H.Modules.License
             BigInteger x;
             BigInteger y;
 
-            if ((data[maxLength - 1] & 0x80000000) != 0) 
+            if ((data[maxLength - 1] & 0x80000000) != 0)
                 x = -this;
             else
                 x = this;
@@ -1273,7 +1273,7 @@ namespace H.Modules.License
         public bool FermatLittleTest(int confidence)
         {
             BigInteger thisVal;
-            if ((this.data[maxLength - 1] & 0x80000000) != 0) 
+            if ((this.data[maxLength - 1] & 0x80000000) != 0)
                 thisVal = -this;
             else
                 thisVal = this;
@@ -1286,7 +1286,7 @@ namespace H.Modules.License
                     return true;
             }
 
-            if ((thisVal.data[0] & 0x1) == 0) 
+            if ((thisVal.data[0] & 0x1) == 0)
                 return false;
 
             int bits = thisVal.bitCount();
@@ -1333,7 +1333,7 @@ namespace H.Modules.License
         public bool RabinMillerTest(int confidence)
         {
             BigInteger thisVal;
-            if ((this.data[maxLength - 1] & 0x80000000) != 0)  
+            if ((this.data[maxLength - 1] & 0x80000000) != 0)
                 thisVal = -this;
             else
                 thisVal = this;
@@ -1346,7 +1346,7 @@ namespace H.Modules.License
                     return true;
             }
 
-            if ((thisVal.data[0] & 0x1) == 0) 
+            if ((thisVal.data[0] & 0x1) == 0)
                 return false;
 
             BigInteger p_sub1 = thisVal - (new BigInteger(1));
@@ -1401,7 +1401,7 @@ namespace H.Modules.License
 
                 bool result = false;
 
-                if (b.dataLength == 1 && b.data[0] == 1)  
+                if (b.dataLength == 1 && b.data[0] == 1)
                     result = true;
 
                 for (int j = 0; result == false && j < s; j++)
@@ -1424,7 +1424,7 @@ namespace H.Modules.License
         public bool SolovayStrassenTest(int confidence)
         {
             BigInteger thisVal;
-            if ((this.data[maxLength - 1] & 0x80000000) != 0) 
+            if ((this.data[maxLength - 1] & 0x80000000) != 0)
                 thisVal = -this;
             else
                 thisVal = this;
@@ -1438,7 +1438,7 @@ namespace H.Modules.License
                     return true;
             }
 
-            if ((thisVal.data[0] & 0x1) == 0) 
+            if ((thisVal.data[0] & 0x1) == 0)
                 return false;
 
 
@@ -1453,7 +1453,7 @@ namespace H.Modules.License
             {
                 bool done = false;
 
-                while (!done)	
+                while (!done)
                 {
                     int testBits = 0;
                     while (testBits < 2)
@@ -1481,7 +1481,7 @@ namespace H.Modules.License
         public bool LucasStrongTest()
         {
             BigInteger thisVal;
-            if ((this.data[maxLength - 1] & 0x80000000) != 0) 
+            if ((this.data[maxLength - 1] & 0x80000000) != 0)
                 thisVal = -this;
             else
                 thisVal = this;
@@ -1580,11 +1580,11 @@ namespace H.Modules.License
                         isPrime = true;
                 }
 
-                lucas[2] = thisVal.BarrettReduction(lucas[2] * lucas[2], thisVal, constant); 
+                lucas[2] = thisVal.BarrettReduction(lucas[2] * lucas[2], thisVal, constant);
             }
 
 
-            if (isPrime) 
+            if (isPrime)
             {
                 BigInteger g = thisVal.gcd(Q);
                 if (g.dataLength == 1 && g.data[0] == 1)
@@ -1650,7 +1650,7 @@ namespace H.Modules.License
                     return true;
             }
 
-            if ((thisVal.data[0] & 0x1) == 0) 
+            if ((thisVal.data[0] & 0x1) == 0)
                 return false;
 
             for (int p = 0; p < primesBelow2000.Length; p++)
@@ -1693,7 +1693,7 @@ namespace H.Modules.License
             BigInteger b = a.modPow(t, thisVal);
             bool result = false;
 
-            if (b.dataLength == 1 && b.data[0] == 1) 
+            if (b.dataLength == 1 && b.data[0] == 1)
                 result = true;
 
             for (int j = 0; result == false && j < s; j++)
@@ -1724,7 +1724,7 @@ namespace H.Modules.License
 
             val = data[0];
             try
-            {      
+            {
                 val |= (long)data[1] << 32;
             }
             catch (Exception)
@@ -1738,13 +1738,13 @@ namespace H.Modules.License
 
         public static int Jacobi(BigInteger a, BigInteger b)
         {
-           
+
             if ((b.data[0] & 0x1) == 0)
                 throw (new ArgumentException("Jacobi defined only for odd integers."));
 
             if (a >= b) a %= b;
             if (a.dataLength == 1 && a.data[0] == 0) return 0;
-            if (a.dataLength == 1 && a.data[0] == 1) return 1; 
+            if (a.dataLength == 1 && a.data[0] == 1) return 1;
 
             if (a < 0)
             {
@@ -1763,7 +1763,7 @@ namespace H.Modules.License
                 {
                     if ((a.data[index] & mask) != 0)
                     {
-                        index = a.dataLength; 
+                        index = a.dataLength;
                         break;
                     }
                     mask <<= 1;
@@ -1794,7 +1794,7 @@ namespace H.Modules.License
             while (!done)
             {
                 result.genRandomBits(bits, rand);
-                result.data[0] |= 0x01;	
+                result.data[0] |= 0x01;
 
                 done = result.isProbablePrime(confidence);
             }
@@ -1820,8 +1820,8 @@ namespace H.Modules.License
         public BigInteger modInverse(BigInteger modulus)
         {
             BigInteger[] p = { 0, 1 };
-            BigInteger[] q = new BigInteger[2]; 
-            BigInteger[] r = { 0, 0 };          
+            BigInteger[] q = new BigInteger[2];
+            BigInteger[] r = { 0, 0 };
 
             int step = 0;
 
@@ -1860,7 +1860,7 @@ namespace H.Modules.License
             BigInteger result = ((p[0] - (p[1] * q[0])) % modulus);
 
             if ((result.data[maxLength - 1] & 0x80000000) != 0)
-                result += modulus; 
+                result += modulus;
 
             return result;
         }
@@ -1904,8 +1904,8 @@ namespace H.Modules.License
 
         public void setBit(uint bitNum)
         {
-            uint bytePos = bitNum >> 5;       
-            byte bitPos = (byte)(bitNum & 0x1F); 
+            uint bytePos = bitNum >> 5;
+            byte bitPos = (byte)(bitNum & 0x1F);
 
             uint mask = (uint)1 << bitPos;
             this.data[bytePos] |= mask;
@@ -1936,7 +1936,7 @@ namespace H.Modules.License
         {
             uint numBits = (uint)this.bitCount();
 
-            if ((numBits & 0x1) != 0)  
+            if ((numBits & 0x1) != 0)
                 numBits = (numBits >> 1) + 1;
             else
                 numBits = (numBits >> 1);
@@ -1999,7 +1999,7 @@ namespace H.Modules.License
                 {
                     if ((k.data[index] & mask) != 0)
                     {
-                        index = k.dataLength; 
+                        index = k.dataLength;
                         break;
                     }
                     mask <<= 1;
@@ -2027,14 +2027,14 @@ namespace H.Modules.License
                        v1 = P % n, u1 = Q_k;
             bool flag = true;
 
-            for (int i = k.dataLength - 1; i >= 0; i--) 
+            for (int i = k.dataLength - 1; i >= 0; i--)
             {
                 while (mask != 0)
                 {
                     if (i == 0 && mask == 0x00000001)
                         break;
 
-                    if ((k.data[i] & mask) != 0) 
+                    if ((k.data[i] & mask) != 0)
                     {
                         u1 = (u1 * v1) % n;
 

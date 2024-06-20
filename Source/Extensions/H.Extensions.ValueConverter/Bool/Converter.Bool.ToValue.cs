@@ -12,8 +12,8 @@ namespace H.Extensions.ValueConverter
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value is bool b)
-                return b ? TrueValue : FalseValue;
-            return DefaultValue;
+                return b ? this.TrueValue : this.FalseValue;
+            return this.DefaultValue;
         }
     }
 }

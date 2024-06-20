@@ -15,15 +15,15 @@ namespace H.Extensions.StoryBoard
         public Duration Duration { get; set; }
         public void Dispose()
         {
-            Storyboard.Completed -= CompletedEvent;
+            this.Storyboard.Completed -= this.CompletedEvent;
         }
 
         public abstract StoryboardEngineBase Start(UIElement element, Action<UIElement> Completed = null, Action<StoryboardEngineBase> init = null);
         public abstract StoryboardEngineBase Stop();
         public StoryboardEngineBase(double second, string property)
         {
-            PropertyPath = new PropertyPath(property);
-            Duration = new Duration(TimeSpan.FromSeconds(second));
+            this.PropertyPath = new PropertyPath(property);
+            this.Duration = new Duration(TimeSpan.FromSeconds(second));
         }
     }
 
@@ -31,8 +31,8 @@ namespace H.Extensions.StoryBoard
     {
         public StoryboardEngineBase(T from, T to, double second, string property) : base(second, property)
         {
-            FromValue = from;
-            ToValue = to;
+            this.FromValue = from;
+            this.ToValue = to;
         }
         public T FromValue { get; set; }
         public T ToValue { get; set; }

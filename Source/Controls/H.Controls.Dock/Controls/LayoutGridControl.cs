@@ -49,7 +49,7 @@ namespace H.Controls.Dock.Controls
         {
             _model = model ?? throw new ArgumentNullException(nameof(model));
             _orientation = orientation;
-            FlowDirection = System.Windows.FlowDirection.LeftToRight;
+            this.FlowDirection = System.Windows.FlowDirection.LeftToRight;
             Unloaded += OnUnloaded;
         }
 
@@ -76,7 +76,7 @@ namespace H.Controls.Dock.Controls
                 if (args.Change != ChildrenTreeChange.DirectChildrenChanged) return;
                 if (_asyncRefreshCalled.HasValue && _asyncRefreshCalled.Value == args.Change) return;
                 _asyncRefreshCalled = args.Change;
-                Dispatcher.BeginInvoke(new Action(() =>
+                this.Dispatcher.BeginInvoke(new Action(() =>
                 {
                     _asyncRefreshCalled = null;
                     UpdateChildren();
@@ -104,8 +104,8 @@ namespace H.Controls.Dock.Controls
         private void OnSizeChanged(object sender, SizeChangedEventArgs e)
         {
             ILayoutPositionableElementWithActualSize modelWithAtcualSize = _model;
-            modelWithAtcualSize.ActualWidth = ActualWidth;
-            modelWithAtcualSize.ActualHeight = ActualHeight;
+            modelWithAtcualSize.ActualWidth = this.ActualWidth;
+            modelWithAtcualSize.ActualHeight = this.ActualHeight;
             if (!_initialized)
             {
                 _initialized = true;
@@ -128,21 +128,21 @@ namespace H.Controls.Dock.Controls
 
         private void UpdateChildren()
         {
-            ILayoutControl[] alreadyContainedChildren = Children.OfType<ILayoutControl>().ToArray();
+            ILayoutControl[] alreadyContainedChildren = this.Children.OfType<ILayoutControl>().ToArray();
             DetachOldSplitters();
             DetachPropertyChangeHandler();
-            Children.Clear();
-            ColumnDefinitions.Clear();
-            RowDefinitions.Clear();
+            this.Children.Clear();
+            this.ColumnDefinitions.Clear();
+            this.RowDefinitions.Clear();
             DockingManager manager = _model?.Root?.Manager;
             if (manager == null) return;
             foreach (T child in _model.Children)
             {
                 ILayoutControl foundContainedChild = alreadyContainedChildren.FirstOrDefault(chVM => chVM.Model == child);
                 if (foundContainedChild != null)
-                    Children.Add(foundContainedChild as UIElement);
+                    this.Children.Add(foundContainedChild as UIElement);
                 else
-                    Children.Add(manager.CreateUIElementForModel(child));
+                    this.Children.Add(manager.CreateUIElementForModel(child));
             }
             CreateSplitters();
             UpdateRowColDefinitions();
@@ -152,34 +152,34 @@ namespace H.Controls.Dock.Controls
 
         private void AttachPropertyChangeHandler()
         {
-            foreach (ILayoutControl child in InternalChildren.OfType<ILayoutControl>())
+            foreach (ILayoutControl child in this.InternalChildren.OfType<ILayoutControl>())
                 child.Model.PropertyChanged += this.OnChildModelPropertyChanged;
         }
 
         private void DetachPropertyChangeHandler()
         {
-            foreach (ILayoutControl child in InternalChildren.OfType<ILayoutControl>())
+            foreach (ILayoutControl child in this.InternalChildren.OfType<ILayoutControl>())
                 child.Model.PropertyChanged -= this.OnChildModelPropertyChanged;
         }
 
         private void OnChildModelPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (AsyncRefreshCalled) return;
-            if (_fixingChildrenDockLengths.CanEnter && e.PropertyName == nameof(ILayoutPositionableElement.DockWidth) && Orientation == System.Windows.Controls.Orientation.Horizontal)
+            if (this.AsyncRefreshCalled) return;
+            if (_fixingChildrenDockLengths.CanEnter && e.PropertyName == nameof(ILayoutPositionableElement.DockWidth) && this.Orientation == System.Windows.Controls.Orientation.Horizontal)
             {
-                if (ColumnDefinitions.Count != InternalChildren.Count) return;
+                if (this.ColumnDefinitions.Count != this.InternalChildren.Count) return;
                 ILayoutPositionableElement changedElement = sender as ILayoutPositionableElement;
-                UIElement childFromModel = InternalChildren.OfType<ILayoutControl>().First(ch => ch.Model == changedElement) as UIElement;
-                int indexOfChild = InternalChildren.IndexOf(childFromModel);
-                ColumnDefinitions[indexOfChild].Width = changedElement.DockWidth;
+                UIElement childFromModel = this.InternalChildren.OfType<ILayoutControl>().First(ch => ch.Model == changedElement) as UIElement;
+                int indexOfChild = this.InternalChildren.IndexOf(childFromModel);
+                this.ColumnDefinitions[indexOfChild].Width = changedElement.DockWidth;
             }
-            else if (_fixingChildrenDockLengths.CanEnter && e.PropertyName == nameof(ILayoutPositionableElement.DockHeight) && Orientation == System.Windows.Controls.Orientation.Vertical)
+            else if (_fixingChildrenDockLengths.CanEnter && e.PropertyName == nameof(ILayoutPositionableElement.DockHeight) && this.Orientation == System.Windows.Controls.Orientation.Vertical)
             {
-                if (RowDefinitions.Count != InternalChildren.Count) return;
+                if (this.RowDefinitions.Count != this.InternalChildren.Count) return;
                 ILayoutPositionableElement changedElement = sender as ILayoutPositionableElement;
-                UIElement childFromModel = InternalChildren.OfType<ILayoutControl>().First(ch => ch.Model == changedElement) as UIElement;
-                int indexOfChild = InternalChildren.IndexOf(childFromModel);
-                RowDefinitions[indexOfChild].Height = changedElement.DockHeight;
+                UIElement childFromModel = this.InternalChildren.OfType<ILayoutControl>().First(ch => ch.Model == changedElement) as UIElement;
+                int indexOfChild = this.InternalChildren.IndexOf(childFromModel);
+                this.RowDefinitions[indexOfChild].Height = changedElement.DockHeight;
             }
             else if (e.PropertyName == nameof(ILayoutPositionableElement.IsVisible))
                 UpdateRowColDefinitions();
@@ -195,25 +195,25 @@ namespace H.Controls.Dock.Controls
 
             #region Setup GridRows/Cols
 
-            RowDefinitions.Clear();
-            ColumnDefinitions.Clear();
-            if (Orientation == Orientation.Horizontal)
+            this.RowDefinitions.Clear();
+            this.ColumnDefinitions.Clear();
+            if (this.Orientation == Orientation.Horizontal)
             {
                 int iColumn = 0;
                 int iChild = 0;
                 // BD: 24.08.2020 added check for iChild against InternalChildren.Count
-                for (int iChildModel = 0; iChildModel < _model.Children.Count && iChild < InternalChildren.Count; iChildModel++, iColumn++, iChild++)
+                for (int iChildModel = 0; iChildModel < _model.Children.Count && iChild < this.InternalChildren.Count; iChildModel++, iColumn++, iChild++)
                 {
                     ILayoutPositionableElement childModel = _model.Children[iChildModel] as ILayoutPositionableElement;
-                    ColumnDefinitions.Add(new ColumnDefinition
+                    this.ColumnDefinitions.Add(new ColumnDefinition
                     {
                         Width = childModel.IsVisible ? childModel.DockWidth : new GridLength(0.0, GridUnitType.Pixel),
                         MinWidth = childModel.IsVisible ? childModel.CalculatedDockMinWidth() : 0.0
                     });
-                    Grid.SetColumn(InternalChildren[iChild], iColumn);
+                    Grid.SetColumn(this.InternalChildren[iChild], iColumn);
 
                     //append column for splitter
-                    if (iChild >= InternalChildren.Count - 1) continue;
+                    if (iChild >= this.InternalChildren.Count - 1) continue;
                     iChild++;
                     iColumn++;
 
@@ -226,11 +226,11 @@ namespace H.Controls.Dock.Controls
                         break;
                     }
 
-                    ColumnDefinitions.Add(new ColumnDefinition
+                    this.ColumnDefinitions.Add(new ColumnDefinition
                     {
                         Width = childModel.IsVisible && nextChildModelVisibleExist ? new GridLength(manager.GridSplitterWidth) : new GridLength(0.0, GridUnitType.Pixel)
                     });
-                    Grid.SetColumn(InternalChildren[iChild], iColumn);
+                    Grid.SetColumn(this.InternalChildren[iChild], iColumn);
                 }
             }
             else //if (_model.Orientation == Orientation.Vertical)
@@ -238,21 +238,21 @@ namespace H.Controls.Dock.Controls
                 int iRow = 0;
                 int iChild = 0;
                 // BD: 24.08.2020 added check for iChild against InternalChildren.Count
-                for (int iChildModel = 0; iChildModel < _model.Children.Count && iChild < InternalChildren.Count; iChildModel++, iRow++, iChild++)
+                for (int iChildModel = 0; iChildModel < _model.Children.Count && iChild < this.InternalChildren.Count; iChildModel++, iRow++, iChild++)
                 {
                     ILayoutPositionableElement childModel = _model.Children[iChildModel] as ILayoutPositionableElement;
-                    RowDefinitions.Add(new RowDefinition
+                    this.RowDefinitions.Add(new RowDefinition
                     {
                         Height = childModel.IsVisible ? childModel.DockHeight : new GridLength(0.0, GridUnitType.Pixel),
                         MinHeight = childModel.IsVisible ? childModel.CalculatedDockMinHeight() : 0.0
                     });
-                    Grid.SetRow(InternalChildren[iChild], iRow);
+                    Grid.SetRow(this.InternalChildren[iChild], iRow);
 
                     //if (RowDefinitions.Last().Height.Value == 0.0)
                     //    System.Diagnostics.Debugger.Break();
 
                     //append row for splitter (if necessary)
-                    if (iChild >= InternalChildren.Count - 1) continue;
+                    if (iChild >= this.InternalChildren.Count - 1) continue;
                     iChild++;
                     iRow++;
 
@@ -265,13 +265,13 @@ namespace H.Controls.Dock.Controls
                         break;
                     }
 
-                    RowDefinitions.Add(new RowDefinition
+                    this.RowDefinitions.Add(new RowDefinition
                     {
                         Height = childModel.IsVisible && nextChildModelVisibleExist ? new GridLength(manager.GridSplitterHeight) : new GridLength(0.0, GridUnitType.Pixel)
                     });
                     //if (RowDefinitions.Last().Height.Value == 0.0)
                     //    System.Diagnostics.Debugger.Break();
-                    Grid.SetRow(InternalChildren[iChild], iRow);
+                    Grid.SetRow(this.InternalChildren[iChild], iRow);
                 }
             }
 
@@ -282,11 +282,11 @@ namespace H.Controls.Dock.Controls
         /// (and splitter style if optional splitter style is set) to Grid Resizer Control.</summary>
         private void CreateSplitters()
         {
-            for (int iChild = 1; iChild < Children.Count; iChild++)
+            for (int iChild = 1; iChild < this.Children.Count; iChild++)
             {
                 LayoutGridResizerControl splitter = new LayoutGridResizerControl();
 
-                if (Orientation == Orientation.Horizontal)
+                if (this.Orientation == Orientation.Horizontal)
                 {
                     splitter.Cursor = Cursors.SizeWE;
                     splitter.Style = _model.Root?.Manager?.GridSplitterVerticalStyle;
@@ -298,7 +298,7 @@ namespace H.Controls.Dock.Controls
                 }
 
 
-                Children.Insert(iChild, splitter);
+                this.Children.Insert(iChild, splitter);
                 // TODO: MK Is this a bug????
                 iChild++;
             }
@@ -306,7 +306,7 @@ namespace H.Controls.Dock.Controls
 
         private void DetachOldSplitters()
         {
-            foreach (LayoutGridResizerControl splitter in Children.OfType<LayoutGridResizerControl>())
+            foreach (LayoutGridResizerControl splitter in this.Children.OfType<LayoutGridResizerControl>())
             {
                 splitter.DragStarted -= OnSplitterDragStarted;
                 splitter.DragDelta -= OnSplitterDragDelta;
@@ -316,7 +316,7 @@ namespace H.Controls.Dock.Controls
 
         private void AttachNewSplitters()
         {
-            foreach (LayoutGridResizerControl splitter in Children.OfType<LayoutGridResizerControl>())
+            foreach (LayoutGridResizerControl splitter in this.Children.OfType<LayoutGridResizerControl>())
             {
                 splitter.DragStarted += OnSplitterDragStarted;
                 splitter.DragDelta += OnSplitterDragDelta;
@@ -331,7 +331,7 @@ namespace H.Controls.Dock.Controls
             Visual rootVisual = this.FindVisualTreeRoot() as Visual;
             GeneralTransform trToWnd = TransformToAncestor(rootVisual);
             Vector transformedDelta = trToWnd.Transform(new Point(e.HorizontalChange, e.VerticalChange)) - trToWnd.Transform(new Point());
-            if (Orientation == System.Windows.Controls.Orientation.Horizontal)
+            if (this.Orientation == System.Windows.Controls.Orientation.Horizontal)
                 Canvas.SetLeft(_resizerGhost, MathHelper.MinMax(_initialStartPoint.X + transformedDelta.X, 0.0, _resizerWindowHost.Width - _resizerGhost.Width));
             else
                 Canvas.SetTop(_resizerGhost, MathHelper.MinMax(_initialStartPoint.Y + transformedDelta.Y, 0.0, _resizerWindowHost.Height - _resizerGhost.Height));
@@ -346,14 +346,14 @@ namespace H.Controls.Dock.Controls
             Vector transformedDelta = trToWnd.Transform(new Point(e.HorizontalChange, e.VerticalChange)) - trToWnd.Transform(new Point());
 
             double delta;
-            if (Orientation == System.Windows.Controls.Orientation.Horizontal)
+            if (this.Orientation == System.Windows.Controls.Orientation.Horizontal)
                 delta = Canvas.GetLeft(_resizerGhost) - _initialStartPoint.X;
             else
                 delta = Canvas.GetTop(_resizerGhost) - _initialStartPoint.Y;
 
-            int indexOfResizer = InternalChildren.IndexOf(splitter);
+            int indexOfResizer = this.InternalChildren.IndexOf(splitter);
 
-            FrameworkElement prevChild = InternalChildren[indexOfResizer - 1] as FrameworkElement;
+            FrameworkElement prevChild = this.InternalChildren[indexOfResizer - 1] as FrameworkElement;
             FrameworkElement nextChild = GetNextVisibleChild(indexOfResizer);
 
             Size prevChildActualSize = prevChild.TransformActualSizeToAncestor();
@@ -362,7 +362,7 @@ namespace H.Controls.Dock.Controls
             ILayoutPositionableElement prevChildModel = (ILayoutPositionableElement)(prevChild as ILayoutControl).Model;
             ILayoutPositionableElement nextChildModel = (ILayoutPositionableElement)(nextChild as ILayoutControl).Model;
 
-            if (Orientation == System.Windows.Controls.Orientation.Horizontal)
+            if (this.Orientation == System.Windows.Controls.Orientation.Horizontal)
             {
                 if (prevChildModel.DockWidth.IsStar)
                     prevChildModel.DockWidth = new GridLength(prevChildModel.DockWidth.Value * (prevChildActualSize.Width + delta) / prevChildActualSize.Width, GridUnitType.Star);
@@ -421,13 +421,13 @@ namespace H.Controls.Dock.Controls
             List<ILayoutPositionableElementWithActualSize> relativePanels;
 
             // Get current available size of panel.
-            Size availableSize = parentSize ?? new Size(ActualWidth, ActualHeight);
+            Size availableSize = parentSize ?? new Size(this.ActualWidth, this.ActualHeight);
 
             // Calculate minimum required size and current size of children.
             Size minimumSize = new Size(0, 0);
             Size currentSize = new Size(0, 0);
             Size preferredMinimumSize = new Size(0, 0);
-            if (Orientation == Orientation.Vertical)
+            if (this.Orientation == Orientation.Vertical)
             {
                 fixedPanels = layoutChildrenModels.Where(child => child.DockHeight.IsAbsolute).ToList();
                 relativePanels = layoutChildrenModels.Where(child => !child.DockHeight.IsAbsolute).ToList();
@@ -455,7 +455,7 @@ namespace H.Controls.Dock.Controls
             }
 
             // Apply corrected sizes for fixed panels.
-            if (Orientation == Orientation.Vertical)
+            if (this.Orientation == Orientation.Vertical)
             {
                 double delta = availableSize.Height - currentSize.Height;
                 double relativeDelta = relativePanels.Sum(child => child.ActualHeight - child.CalculatedDockMinHeight());
@@ -526,16 +526,16 @@ namespace H.Controls.Dock.Controls
                 }
             }
 
-            foreach (IAdjustableSizeLayout child in InternalChildren.OfType<IAdjustableSizeLayout>())
+            foreach (IAdjustableSizeLayout child in this.InternalChildren.OfType<IAdjustableSizeLayout>())
                 child.AdjustFixedChildrenPanelSizes(availableSize);
         }
 
         private FrameworkElement GetNextVisibleChild(int index)
         {
-            for (int i = index + 1; i < InternalChildren.Count; i++)
+            for (int i = index + 1; i < this.InternalChildren.Count; i++)
             {
-                if (InternalChildren[i] is LayoutGridResizerControl) continue;
-                if (IsChildVisible(i)) return InternalChildren[i] as FrameworkElement;
+                if (this.InternalChildren[i] is LayoutGridResizerControl) continue;
+                if (IsChildVisible(i)) return this.InternalChildren[i] as FrameworkElement;
             }
             return null;
         }
@@ -543,23 +543,23 @@ namespace H.Controls.Dock.Controls
         private List<FrameworkElement> GetVisibleChildren()
         {
             List<FrameworkElement> visibleChildren = new List<FrameworkElement>();
-            for (int i = 0; i < InternalChildren.Count; i++)
+            for (int i = 0; i < this.InternalChildren.Count; i++)
             {
-                if (IsChildVisible(i) && InternalChildren[i] is FrameworkElement)
-                    visibleChildren.Add(InternalChildren[i] as FrameworkElement);
+                if (IsChildVisible(i) && this.InternalChildren[i] is FrameworkElement)
+                    visibleChildren.Add(this.InternalChildren[i] as FrameworkElement);
             }
             return visibleChildren;
         }
 
         private bool IsChildVisible(int index)
         {
-            if (Orientation == Orientation.Horizontal)
+            if (this.Orientation == Orientation.Horizontal)
             {
-                if (index < ColumnDefinitions.Count)
-                    return ColumnDefinitions[index].Width.IsStar || ColumnDefinitions[index].Width.Value > 0;
+                if (index < this.ColumnDefinitions.Count)
+                    return this.ColumnDefinitions[index].Width.IsStar || this.ColumnDefinitions[index].Width.Value > 0;
             }
-            else if (index < RowDefinitions.Count)
-                return RowDefinitions[index].Height.IsStar || RowDefinitions[index].Height.Value > 0;
+            else if (index < this.RowDefinitions.Count)
+                return this.RowDefinitions[index].Height.IsStar || this.RowDefinitions[index].Height.Value > 0;
 
             return false;
         }
@@ -568,9 +568,9 @@ namespace H.Controls.Dock.Controls
         {
             _resizerGhost = new Border { Background = splitter.BackgroundWhileDragging, Opacity = splitter.OpacityWhileDragging };
 
-            int indexOfResizer = InternalChildren.IndexOf(splitter);
+            int indexOfResizer = this.InternalChildren.IndexOf(splitter);
 
-            FrameworkElement prevChild = InternalChildren[indexOfResizer - 1] as FrameworkElement;
+            FrameworkElement prevChild = this.InternalChildren[indexOfResizer - 1] as FrameworkElement;
             FrameworkElement nextChild = GetNextVisibleChild(indexOfResizer);
 
             Size prevChildActualSize = prevChild.TransformActualSizeToAncestor();
@@ -583,7 +583,7 @@ namespace H.Controls.Dock.Controls
 
             Size actualSize;
 
-            if (Orientation == System.Windows.Controls.Orientation.Horizontal)
+            if (this.Orientation == System.Windows.Controls.Orientation.Horizontal)
             {
                 actualSize = new Size(
                     prevChildActualSize.Width - prevChildModel.CalculatedDockMinWidth() + splitter.ActualWidth + nextChildActualSize.Width - nextChildModel.CalculatedDockMinWidth(),
@@ -607,7 +607,7 @@ namespace H.Controls.Dock.Controls
 
             _initialStartPoint = splitter.PointToScreenDPIWithoutFlowDirection(new Point()) - ptTopLeftScreen;
 
-            if (Orientation == System.Windows.Controls.Orientation.Horizontal)
+            if (this.Orientation == System.Windows.Controls.Orientation.Horizontal)
                 Canvas.SetLeft(_resizerGhost, _initialStartPoint.X);
             else
                 Canvas.SetTop(_resizerGhost, _initialStartPoint.Y);

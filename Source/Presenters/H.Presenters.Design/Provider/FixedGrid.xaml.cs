@@ -1,11 +1,6 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -74,20 +69,20 @@ namespace H.Presenters.Design
         {
             base.OnRender(dc);
 
-            if (GridLinePen == null)
+            if (this.GridLinePen == null)
                 return;
 
-            foreach (var item in RowDefinitions)
+            foreach (var item in this.RowDefinitions)
             {
-                dc.DrawLine(GridLinePen, new Point(0, item.Offset), new Point(ActualWidth, item.Offset));
+                dc.DrawLine(this.GridLinePen, new Point(0, item.Offset), new Point(this.ActualWidth, item.Offset));
             }
-            dc.DrawLine(GridLinePen, new Point(0, ActualHeight), new Point(ActualWidth, ActualHeight));
+            dc.DrawLine(this.GridLinePen, new Point(0, this.ActualHeight), new Point(this.ActualWidth, this.ActualHeight));
 
-            foreach (var item in ColumnDefinitions)
+            foreach (var item in this.ColumnDefinitions)
             {
-                dc.DrawLine(GridLinePen, new Point(item.Offset, 0), new Point(item.Offset, ActualHeight));
+                dc.DrawLine(this.GridLinePen, new Point(item.Offset, 0), new Point(item.Offset, this.ActualHeight));
             }
-            dc.DrawLine(GridLinePen, new Point(ActualWidth, 0), new Point(ActualWidth, ActualHeight));
+            dc.DrawLine(this.GridLinePen, new Point(this.ActualWidth, 0), new Point(this.ActualWidth, this.ActualHeight));
         }
 
         protected override Size ArrangeOverride(Size arrangeSize)
@@ -225,15 +220,15 @@ namespace H.Presenters.Design
 
         protected override void Refresh()
         {
-            RowDefinitions.Clear();
-            ColumnDefinitions.Clear();
-            for (int i = 0; i < Rows; i++)
+            this.RowDefinitions.Clear();
+            this.ColumnDefinitions.Clear();
+            for (int i = 0; i < this.Rows; i++)
             {
-                RowDefinitions.Add(new RowDefinition() { Height = RowGridLength, MinHeight = MinRowHeight });
+                this.RowDefinitions.Add(new RowDefinition() { Height = this.RowGridLength, MinHeight = this.MinRowHeight });
             }
-            for (int j = 0; j < Columns; j++)
+            for (int j = 0; j < this.Columns; j++)
             {
-                ColumnDefinitions.Add(new ColumnDefinition() { Width = ColumnGridLength });
+                this.ColumnDefinitions.Add(new ColumnDefinition() { Width = this.ColumnGridLength });
             }
         }
     }

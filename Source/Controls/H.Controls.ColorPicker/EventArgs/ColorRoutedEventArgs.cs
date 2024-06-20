@@ -7,7 +7,7 @@ namespace H.Controls.ColorPicker.Models
     {
         public ColorRoutedEventArgs(RoutedEvent routedEvent, Color color) : base(routedEvent)
         {
-            Color = color;
+            this.Color = color;
         }
 
         public Color Color { get; private set; }

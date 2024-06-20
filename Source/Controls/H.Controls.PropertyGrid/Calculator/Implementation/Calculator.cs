@@ -231,7 +231,7 @@ namespace H.Controls.PropertyGrid
 
         public Calculator()
         {
-            CommandBindings.Add(new CommandBinding(CalculatorCommands.CalculatorButtonClick, ExecuteCalculatorButtonClick));
+            this.CommandBindings.Add(new CommandBinding(CalculatorCommands.CalculatorButtonClick, ExecuteCalculatorButtonClick));
             AddHandler(MouseDownEvent, new MouseButtonEventHandler(Calculator_OnMouseDown), true);
         }
 
@@ -265,7 +265,7 @@ namespace H.Controls.PropertyGrid
 
         private void Calculator_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (!IsFocused)
+            if (!this.IsFocused)
             {
                 Focus();
                 e.Handled = true;
@@ -298,7 +298,7 @@ namespace H.Controls.PropertyGrid
             _previousValue = 0;
             _lastOperation = Operation.None;
             _showNewNumber = true;
-            Value = value;
+            this.Value = value;
             // Since the display text may be out of sync
             // with "Value", this call will force the
             // text update if Value was already equal to
@@ -313,22 +313,22 @@ namespace H.Controls.PropertyGrid
 
             try
             {
-                Value = Decimal.Round(CalculateValue(_lastOperation), Precision);
-                SetDisplayText(Value); //Set DisplayText even when Value doesn't change
+                this.Value = Decimal.Round(CalculateValue(_lastOperation), this.Precision);
+                SetDisplayText(this.Value); //Set DisplayText even when Value doesn't change
             }
             catch
             {
-                Value = null;
-                DisplayText = "ERROR";
+                this.Value = null;
+                this.DisplayText = "ERROR";
             }
         }
 
         private void SetDisplayText(decimal? newValue)
         {
             if (newValue.HasValue && (newValue.Value != 0))
-                DisplayText = newValue.ToString();
+                this.DisplayText = newValue.ToString();
             else
-                DisplayText = "0";
+                this.DisplayText = "0";
         }
 
         private void Calculate(Operation newOperation)
@@ -349,7 +349,7 @@ namespace H.Controls.PropertyGrid
         private decimal CalculateValue(Operation operation)
         {
             decimal newValue = decimal.Zero;
-            decimal currentValue = CalculatorUtilities.ParseDecimal(DisplayText);
+            decimal currentValue = CalculatorUtilities.ParseDecimal(this.DisplayText);
 
             switch (operation)
             {
@@ -388,9 +388,9 @@ namespace H.Controls.PropertyGrid
         private void ProcessBackKey()
         {
             string displayText;
-            if (DisplayText.Length > 1 && !(DisplayText.Length == 2 && DisplayText[0] == '-'))
+            if (this.DisplayText.Length > 1 && !(this.DisplayText.Length == 2 && this.DisplayText[0] == '-'))
             {
-                displayText = DisplayText.Remove(DisplayText.Length - 1, 1);
+                displayText = this.DisplayText.Remove(this.DisplayText.Length - 1, 1);
             }
             else
             {
@@ -398,7 +398,7 @@ namespace H.Controls.PropertyGrid
                 _showNewNumber = true;
             }
 
-            DisplayText = displayText;
+            this.DisplayText = displayText;
         }
 
         private void ProcessCalculatorButton(CalculatorButtonType buttonType)
@@ -414,36 +414,36 @@ namespace H.Controls.PropertyGrid
         private void ProcessDigitKey(CalculatorButtonType buttonType)
         {
             if (_showNewNumber)
-                DisplayText = CalculatorUtilities.GetCalculatorButtonContent(buttonType);
+                this.DisplayText = CalculatorUtilities.GetCalculatorButtonContent(buttonType);
             else
-                DisplayText += CalculatorUtilities.GetCalculatorButtonContent(buttonType);
+                this.DisplayText += CalculatorUtilities.GetCalculatorButtonContent(buttonType);
 
             _showNewNumber = false;
         }
 
         private void ProcessMemoryKey(Calculator.CalculatorButtonType buttonType)
         {
-            decimal currentValue = CalculatorUtilities.ParseDecimal(DisplayText);
+            decimal currentValue = CalculatorUtilities.ParseDecimal(this.DisplayText);
 
             _showNewNumber = true;
 
             switch (buttonType)
             {
                 case Calculator.CalculatorButtonType.MAdd:
-                    Memory += currentValue;
+                    this.Memory += currentValue;
                     break;
                 case Calculator.CalculatorButtonType.MC:
-                    Memory = decimal.Zero;
+                    this.Memory = decimal.Zero;
                     break;
                 case Calculator.CalculatorButtonType.MR:
-                    DisplayText = Memory.ToString();
+                    this.DisplayText = this.Memory.ToString();
                     _showNewNumber = false;
                     break;
                 case Calculator.CalculatorButtonType.MS:
-                    Memory = currentValue;
+                    this.Memory = currentValue;
                     break;
                 case Calculator.CalculatorButtonType.MSub:
-                    Memory -= currentValue;
+                    this.Memory -= currentValue;
                     break;
                 default:
                     break;
@@ -469,13 +469,13 @@ namespace H.Controls.PropertyGrid
                 case CalculatorButtonType.Percent:
                     if (_lastOperation != Operation.None)
                     {
-                        decimal currentValue = CalculatorUtilities.ParseDecimal(DisplayText);
+                        decimal currentValue = CalculatorUtilities.ParseDecimal(this.DisplayText);
                         decimal newValue = CalculatorUtilities.Percent(_previousValue, currentValue);
-                        DisplayText = newValue.ToString();
+                        this.DisplayText = newValue.ToString();
                     }
                     else
                     {
-                        DisplayText = "0";
+                        this.DisplayText = "0";
                         _showNewNumber = true;
                     }
                     return;
@@ -495,7 +495,7 @@ namespace H.Controls.PropertyGrid
                     Calculate(Operation.Clear, Operation.None);
                     break;
                 case CalculatorButtonType.Cancel:
-                    DisplayText = _previousValue.ToString();
+                    this.DisplayText = _previousValue.ToString();
                     _lastOperation = Operation.None;
                     _showNewNumber = true;
                     return;
@@ -506,7 +506,7 @@ namespace H.Controls.PropertyGrid
                     break;
             }
 
-            Decimal.TryParse(DisplayText, out _previousValue);
+            Decimal.TryParse(this.DisplayText, out _previousValue);
             _showNewNumber = true;
         }
 

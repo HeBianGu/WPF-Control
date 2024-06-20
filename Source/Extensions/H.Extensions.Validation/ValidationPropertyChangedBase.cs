@@ -22,7 +22,7 @@ namespace H.Extensions.Validation
                 List<string> results = new List<string>();
                 System.Reflection.PropertyInfo property = this.GetType().GetProperty(columnName);
                 IEnumerable<ValidationAttribute> attrs = property.GetCustomAttributes(true)?.OfType<ValidationAttribute>();
-                if (attrs == null || attrs.Count() == 0) 
+                if (attrs == null || attrs.Count() == 0)
                     return string.Empty;
                 DisplayAttribute display = property.GetCustomAttributes(true)?.OfType<DisplayAttribute>()?.FirstOrDefault();
                 object value = property.GetValue(this);
@@ -48,7 +48,7 @@ namespace H.Extensions.Validation
                 IEnumerable<ValidationAttribute> collection = item.GetCustomAttributes(false)?.OfType<ValidationAttribute>();
 
                 //  Do：检验数据有效性
-                if (collection == null || collection.Count() == 0) 
+                if (collection == null || collection.Count() == 0)
                     continue;
 
                 object value = item.GetValue(this);

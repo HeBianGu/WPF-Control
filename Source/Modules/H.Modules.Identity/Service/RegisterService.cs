@@ -5,7 +5,6 @@
 using H.Providers.Ioc;
 using Microsoft.Extensions.Options;
 using System;
-using System.Security.Principal;
 using System.Text.RegularExpressions;
 
 namespace H.Modules.Identity

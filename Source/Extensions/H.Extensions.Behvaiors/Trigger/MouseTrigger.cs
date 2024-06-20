@@ -3,13 +3,8 @@ using Microsoft.Xaml.Behaviors;
 using Microsoft.Xaml.Behaviors.Input;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading;
-using System.Timers;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
 namespace H.Extensions.Behvaiors
 {
     /// <summary>
@@ -169,7 +164,7 @@ namespace H.Extensions.Behvaiors
 
         protected override void OnEvent(EventArgs eventArgs)
         {
-            if (FiredOn == KeyTriggerFiredOn.KeyDown)
+            if (this.FiredOn == KeyTriggerFiredOn.KeyDown)
             {
                 this.Source.AddHandler(UIElement.MouseDownEvent, new MouseButtonEventHandler(OnMousePress), true);
             }
@@ -184,34 +179,34 @@ namespace H.Extensions.Behvaiors
         {
             System.Diagnostics.Debug.WriteLine(e.ClickCount);
             System.Diagnostics.Debug.WriteLine(e.ChangedButton);
-            if (e.ClickCount != ClickCount)
+            if (e.ClickCount != this.ClickCount)
                 return;
-            if (e.ChangedButton != MouseButton)
+            if (e.ChangedButton != this.MouseButton)
                 return;
             if (e.Handled && this.UseHandle)
                 return;
 
-            if (AssociatedObject is FrameworkElement element)
+            if (this.AssociatedObject is FrameworkElement element)
             {
                 Point point = e.GetPosition(element);
-                if (Mode == MouseTriggerMode.Left && point.X > element.ActualWidth / 2)
+                if (this.Mode == MouseTriggerMode.Left && point.X > element.ActualWidth / 2)
                     return;
-                if (Mode == MouseTriggerMode.Right && point.X < element.ActualWidth / 2)
+                if (this.Mode == MouseTriggerMode.Right && point.X < element.ActualWidth / 2)
                     return;
-                if (Mode == MouseTriggerMode.Top && point.Y > element.ActualHeight / 2)
+                if (this.Mode == MouseTriggerMode.Top && point.Y > element.ActualHeight / 2)
                     return;
-                if (Mode == MouseTriggerMode.Bottom && point.Y < element.ActualHeight / 2)
+                if (this.Mode == MouseTriggerMode.Bottom && point.Y < element.ActualHeight / 2)
                     return;
             }
             this.InvokeActions(e);
-            e.Handled = Handled;
+            e.Handled = this.Handled;
         }
 
         protected override void OnDetaching()
         {
             if (this.Source != null)
             {
-                if (FiredOn == KeyTriggerFiredOn.KeyDown)
+                if (this.FiredOn == KeyTriggerFiredOn.KeyDown)
                 {
                     this.Source.RemoveHandler(UIElement.MouseDownEvent, new MouseButtonEventHandler(OnMousePress));
                 }

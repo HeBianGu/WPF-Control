@@ -9,7 +9,7 @@ namespace H.Extensions.MarkupExtension
         public Type Type { get; set; }
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
-            return Activator.CreateInstance(Type);
+            return Activator.CreateInstance(this.Type);
         }
     }
 }

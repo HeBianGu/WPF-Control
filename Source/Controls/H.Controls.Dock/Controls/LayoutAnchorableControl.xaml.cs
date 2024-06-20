@@ -56,10 +56,10 @@ namespace H.Controls.Dock.Controls
         protected virtual void OnModelChanged(DependencyPropertyChangedEventArgs e)
         {
             if (e.OldValue != null) ((LayoutContent)e.OldValue).PropertyChanged -= Model_PropertyChanged;
-            if (Model != null)
+            if (this.Model != null)
             {
-                Model.PropertyChanged += Model_PropertyChanged;
-                SetLayoutItem(Model?.Root?.Manager?.GetLayoutItemFromModel(Model));
+                this.Model.PropertyChanged += Model_PropertyChanged;
+                SetLayoutItem(this.Model?.Root?.Manager?.GetLayoutItemFromModel(this.Model));
             }
             else
                 SetLayoutItem(null);
@@ -68,10 +68,10 @@ namespace H.Controls.Dock.Controls
         private void Model_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             if (e.PropertyName != nameof(LayoutAnchorable.IsEnabled)) return;
-            if (Model == null) return;
-            IsEnabled = Model.IsEnabled;
-            if (IsEnabled || !Model.IsActive) return;
-            if (Model.Parent != null && Model.Parent is LayoutAnchorablePane layoutAnchorablePane)
+            if (this.Model == null) return;
+            this.IsEnabled = this.Model.IsEnabled;
+            if (this.IsEnabled || !this.Model.IsActive) return;
+            if (this.Model.Parent != null && this.Model.Parent is LayoutAnchorablePane layoutAnchorablePane)
                 layoutAnchorablePane.SetNextSelectedIndex();
         }
 
@@ -105,8 +105,8 @@ namespace H.Controls.Dock.Controls
         /// <inheritdoc/>
         protected override void OnGotKeyboardFocus(System.Windows.Input.KeyboardFocusChangedEventArgs e)
         {
-            if (Model != null)
-                Model.IsActive = true;
+            if (this.Model != null)
+                this.Model.IsActive = true;
             base.OnGotKeyboardFocus(e);
         }
 
@@ -118,8 +118,8 @@ namespace H.Controls.Dock.Controls
         private void LayoutAnchorableControl_Unloaded(object sender, RoutedEventArgs e)
         {
             // prevent memory leak via event handler
-            if (Model != null)
-                Model.PropertyChanged -= Model_PropertyChanged;
+            if (this.Model != null)
+                this.Model.PropertyChanged -= Model_PropertyChanged;
 
             Unloaded -= LayoutAnchorableControl_Unloaded;
         }

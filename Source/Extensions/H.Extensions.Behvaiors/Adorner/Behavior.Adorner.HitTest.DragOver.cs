@@ -17,7 +17,7 @@ namespace H.Extensions.Behvaiors
             set { SetValue(AdornerDropErrorTypeProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty AdornerDropErrorTypeProperty =
             DependencyProperty.Register("AdornerDropErrorType", typeof(Type), typeof(DragOverHitTestAdornerBehavior), new FrameworkPropertyMetadata(default(Type), (d, e) =>
             {
@@ -39,8 +39,8 @@ namespace H.Extensions.Behvaiors
 
         protected override void OnAttached()
         {
-            AssociatedObject.DragOver += AssociatedObject_DragOver;
-            AssociatedObject.Drop += AssociatedObject_Drop;
+            this.AssociatedObject.DragOver += AssociatedObject_DragOver;
+            this.AssociatedObject.Drop += AssociatedObject_Drop;
             //AssociatedObject.DragEnter += AssociatedObject_DragEnter;
             //AssociatedObject.DragLeave += AssociatedObject_DragLeave;
         }
@@ -56,7 +56,7 @@ namespace H.Extensions.Behvaiors
             obj.SetValue(IsPreviewingProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty IsPreviewingProperty =
             DependencyProperty.RegisterAttached("IsPreviewing", typeof(bool), typeof(DragOverHitTestAdornerBehavior), new PropertyMetadata(default(bool), OnIsPreviewingChanged));
 
@@ -87,7 +87,7 @@ namespace H.Extensions.Behvaiors
                 if (drag.CanDrop(_temp, e))
                     drag.Drop(_temp, e);
             }
-            else if (AssociatedObject is IHitTestElementDrop drop)
+            else if (this.AssociatedObject is IHitTestElementDrop drop)
             {
                 if (drop.CanDrop(_temp, e))
                     drop.Drop(_temp, e);
@@ -102,13 +102,13 @@ namespace H.Extensions.Behvaiors
 
         private void AssociatedObject_DragOver(object sender, DragEventArgs e)
         {
-            if (AdornerType == null)
+            if (this.AdornerType == null)
                 return;
-            if (AdornerVisual == null)
-                AdornerVisual = AssociatedObject;
+            if (this.AdornerVisual == null)
+                this.AdornerVisual = this.AssociatedObject;
 
-            Point point = e.GetPosition(AssociatedObject);
-            UIElement visualHit = AssociatedObject.HitTest<UIElement>(point, x =>
+            Point point = e.GetPosition(this.AssociatedObject);
+            UIElement visualHit = this.AssociatedObject.HitTest<UIElement>(point, x =>
             {
                 if (GetIsHitTest(x) == false)
                     return false;
@@ -119,12 +119,12 @@ namespace H.Extensions.Behvaiors
             if (visualHit == null)
             {
                 Clear();
-                if (AssociatedObject != _temp)
+                if (this.AssociatedObject != _temp)
                 {
-                    DragEnter(AssociatedObject, e);
+                    DragEnter(this.AssociatedObject, e);
                     DragLeave(_temp, e);
                 }
-                _temp = AssociatedObject;
+                _temp = this.AssociatedObject;
             }
             else
             {
@@ -162,8 +162,8 @@ namespace H.Extensions.Behvaiors
 
         protected override void OnDetaching()
         {
-            AssociatedObject.DragOver -= AssociatedObject_DragOver;
-            AssociatedObject.Drop -= AssociatedObject_Drop;
+            this.AssociatedObject.DragOver -= AssociatedObject_DragOver;
+            this.AssociatedObject.Drop -= AssociatedObject_Drop;
             //AssociatedObject.DragEnter -= AssociatedObject_DragEnter;
             //AssociatedObject.DragLeave -= AssociatedObject_DragLeave;
             Clear();
@@ -171,19 +171,19 @@ namespace H.Extensions.Behvaiors
 
         protected override bool CheckAdorner(UIElement elment)
         {
-            return elment.GetAdorner(x => x.GetType() == AdornerType) == null;
+            return elment.GetAdorner(x => x.GetType() == this.AdornerType) == null;
         }
 
         protected override Adorner GetAdorner(UIElement elment)
         {
-            Adorner adorner = Activator.CreateInstance(AdornerType, elment) as Adorner;
+            Adorner adorner = Activator.CreateInstance(this.AdornerType, elment) as Adorner;
             object data = elment.GetDataContext();
             if (data is IHitTestElementDrag drag)
             {
                 if (drag.CanDrop(elment, null))
                     adorner = drag.GetDragAdorner(elment);
                 else
-                    adorner = Activator.CreateInstance(AdornerDropErrorType, elment) as Adorner;
+                    adorner = Activator.CreateInstance(this.AdornerDropErrorType, elment) as Adorner;
             }
 
             if (data is IGetDropAdorner gdrag)

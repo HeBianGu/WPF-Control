@@ -45,35 +45,35 @@ namespace H.Providers.Mvvm
 
         private void RefreshParentCheckState()
         {
-            if (Parent == null)
+            if (this.Parent == null)
                 return;
 
-            bool allChecked = Parent.Nodes.All(l => l.IsChecked == true);
+            bool allChecked = this.Parent.Nodes.All(l => l.IsChecked == true);
             if (allChecked)
             {
-                Parent.CheckOnlyCurrent(true);
-                Parent.RefreshParentCheckState();
+                this.Parent.CheckOnlyCurrent(true);
+                this.Parent.RefreshParentCheckState();
                 return;
             }
 
-            bool allUnChecked = Parent.Nodes.All(l => l.IsChecked == false);
+            bool allUnChecked = this.Parent.Nodes.All(l => l.IsChecked == false);
             if (allUnChecked)
             {
-                Parent.CheckOnlyCurrent(false);
-                Parent.RefreshParentCheckState();
+                this.Parent.CheckOnlyCurrent(false);
+                this.Parent.RefreshParentCheckState();
                 return;
             }
 
-            Parent.CheckOnlyCurrent(null);
-            Parent.RefreshParentCheckState();
+            this.Parent.CheckOnlyCurrent(null);
+            this.Parent.RefreshParentCheckState();
 
         }
 
         private void RefreshChildrenCheckState()
         {
-            foreach (TreeNodeBase<T> item in Nodes)
+            foreach (TreeNodeBase<T> item in this.Nodes)
             {
-                item.CheckOnlyCurrent(IsChecked);
+                item.CheckOnlyCurrent(this.IsChecked);
                 item.RefreshChildrenCheckState();
             }
         }
@@ -92,26 +92,26 @@ namespace H.Providers.Mvvm
 
         private void SetParentVisible(bool value)
         {
-            if (Parent == null) return;
+            if (this.Parent == null) return;
 
-            if (Visibility == Visibility.Visible)
+            if (this.Visibility == Visibility.Visible)
             {
                 //  Do ：递归设置父节点选中
-                Parent.SetIsVisible(true);
-                Parent.SetParentVisible(true);
+                this.Parent.SetIsVisible(true);
+                this.Parent.SetParentVisible(true);
             }
             else
             {
 
-                bool isAllFalse = !Parent.Nodes.All(l => l.Visibility != Visibility.Visible);
-                Parent.SetIsVisible(isAllFalse);
-                Parent.SetParentVisible(isAllFalse);
+                bool isAllFalse = !this.Parent.Nodes.All(l => l.Visibility != Visibility.Visible);
+                this.Parent.SetIsVisible(isAllFalse);
+                this.Parent.SetParentVisible(isAllFalse);
             }
         }
 
         private void SetChildVisible(bool value)
         {
-            foreach (TreeNodeBase<T> item in Nodes)
+            foreach (TreeNodeBase<T> item in this.Nodes)
             {
                 item.SetIsVisible(value);
                 item.SetChildVisible(value);
@@ -160,12 +160,12 @@ namespace H.Providers.Mvvm
         public void AddNode(TreeNodeBase<T> node)
         {
             node.Parent = this;
-            Nodes.Add(node);
+            this.Nodes.Add(node);
         }
 
         public void Foreach(Action<TreeNodeBase<T>> action)
         {
-            foreach (TreeNodeBase<T> node in Nodes)
+            foreach (TreeNodeBase<T> node in this.Nodes)
             {
                 action?.Invoke(node);
                 node.Foreach(action);
@@ -174,7 +174,7 @@ namespace H.Providers.Mvvm
 
         public IEnumerable<TreeNodeBase<T>> FindAll(Predicate<TreeNodeBase<T>> action = null)
         {
-            foreach (TreeNodeBase<T> node in Nodes)
+            foreach (TreeNodeBase<T> node in this.Nodes)
             {
                 if (action?.Invoke(node) != false)
                     yield return node;
@@ -190,22 +190,22 @@ namespace H.Providers.Mvvm
 
         public IEnumerable<TreeNodeBase<T>> FindAllParent(Predicate<TreeNodeBase<T>> action = null)
         {
-            if (Parent != null)
+            if (this.Parent != null)
             {
-                if (action?.Invoke(Parent) != false)
-                    yield return Parent;
-                Parent.FindAllParent(action);
+                if (action?.Invoke(this.Parent) != false)
+                    yield return this.Parent;
+                this.Parent.FindAllParent(action);
             }
         }
 
         public override bool Filter(string txt)
         {
-            foreach (TreeNodeBase<T> item in Nodes)
+            foreach (TreeNodeBase<T> item in this.Nodes)
             {
                 item.Filter(txt);
             }
-            bool r = Nodes.Any(x => x.Visibility == Visibility.Visible) || base.Filter(txt);
-            Visibility = r ? Visibility.Visible : Visibility.Collapsed;
+            bool r = this.Nodes.Any(x => x.Visibility == Visibility.Visible) || base.Filter(txt);
+            this.Visibility = r ? Visibility.Visible : Visibility.Collapsed;
             return r;
         }
     }

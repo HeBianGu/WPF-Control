@@ -10,7 +10,7 @@ namespace H.Extensions.Command
     {
         public override bool CanExecute(object parameter)
         {
-            return parameter is ScrollViewer sv && sv.VerticalOffset >0;
+            return parameter is ScrollViewer sv && sv.VerticalOffset > 0;
         }
         public override void Execute(object parameter)
         {

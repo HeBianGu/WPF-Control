@@ -30,8 +30,8 @@ namespace H.Controls.PDF
         protected override void OnAttached()
         {
             base.OnAttached();
-            AssociatedObject.PreviewTextInput += OnPreviewTextInput;
-            DataObject.AddPastingHandler(AssociatedObject, OnPaste);
+            this.AssociatedObject.PreviewTextInput += OnPreviewTextInput;
+            DataObject.AddPastingHandler(this.AssociatedObject, OnPaste);
         }
 
         private void OnPaste(object sender, DataObjectPastingEventArgs e)
@@ -59,20 +59,20 @@ namespace H.Controls.PDF
         protected override void OnDetaching()
         {
             base.OnDetaching();
-            AssociatedObject.PreviewTextInput -= OnPreviewTextInput;
-            DataObject.RemovePastingHandler(AssociatedObject, OnPaste);
+            this.AssociatedObject.PreviewTextInput -= OnPreviewTextInput;
+            DataObject.RemovePastingHandler(this.AssociatedObject, OnPaste);
         }
 
         private bool IsValid(string newText, bool paste)
         {
-            return !ExceedsMaxLength(newText, paste) && Regex.IsMatch(newText, RegularExpression);
+            return !ExceedsMaxLength(newText, paste) && Regex.IsMatch(newText, this.RegularExpression);
         }
 
         private bool ExceedsMaxLength(string newText, bool paste)
         {
-            if (MaxLength == 0) return false;
+            if (this.MaxLength == 0) return false;
 
-            return LengthOfModifiedText(newText, paste) > MaxLength;
+            return LengthOfModifiedText(newText, paste) > this.MaxLength;
         }
 
         private int LengthOfModifiedText(string newText, bool paste)

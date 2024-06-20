@@ -94,10 +94,10 @@ namespace H.Controls.Dock.Layout
             set
             {
                 if (value == _content) return;
-                RaisePropertyChanging(nameof(Content));
+                RaisePropertyChanging(nameof(this.Content));
                 _content = value;
-                RaisePropertyChanged(nameof(Content));
-                if (ContentId == null) SetContentIdFromContent();
+                RaisePropertyChanged(nameof(this.Content));
+                if (this.ContentId == null) SetContentIdFromContent();
             }
         }
 
@@ -127,7 +127,7 @@ namespace H.Controls.Dock.Layout
 
         private void OnContentIdPropertyChanged(string oldValue, string newValue)
         {
-            if (oldValue != newValue) RaisePropertyChanged(nameof(ContentId));
+            if (oldValue != newValue) RaisePropertyChanged(nameof(this.ContentId));
         }
 
         private void SetContentIdFromContent()
@@ -149,11 +149,11 @@ namespace H.Controls.Dock.Layout
             {
                 if (value == _isSelected) return;
                 bool oldValue = _isSelected;
-                RaisePropertyChanging(nameof(IsSelected));
+                RaisePropertyChanging(nameof(this.IsSelected));
                 _isSelected = value;
-                if (Parent is ILayoutContentSelector parentSelector) parentSelector.SelectedContentIndex = _isSelected ? parentSelector.IndexOf(this) : -1;
+                if (this.Parent is ILayoutContentSelector parentSelector) parentSelector.SelectedContentIndex = _isSelected ? parentSelector.IndexOf(this) : -1;
                 OnIsSelectedChanged(oldValue, value);
-                RaisePropertyChanged(nameof(IsSelected));
+                RaisePropertyChanged(nameof(this.IsSelected));
                 LayoutAnchorableTabItem.CancelMouseLeave();
             }
         }
@@ -179,18 +179,18 @@ namespace H.Controls.Dock.Layout
             set
             {
                 if (value == _isActive) return;
-                RaisePropertyChanging(nameof(IsActive));
+                RaisePropertyChanging(nameof(this.IsActive));
                 bool oldValue = _isActive;
                 _isActive = value;
-                ILayoutRoot root = Root;
+                ILayoutRoot root = this.Root;
                 if (root != null)
                 {
-                    if (root.ActiveContent != this && value) Root.ActiveContent = this;
+                    if (root.ActiveContent != this && value) this.Root.ActiveContent = this;
                     if (_isActive && root.ActiveContent != this) root.ActiveContent = this;
                 }
-                if (_isActive) IsSelected = true;
+                if (_isActive) this.IsSelected = true;
                 OnIsActiveChanged(oldValue, value);
-                RaisePropertyChanged(nameof(IsActive));
+                RaisePropertyChanged(nameof(this.IsActive));
             }
         }
 
@@ -199,7 +199,7 @@ namespace H.Controls.Dock.Layout
         /// </summary>
         protected virtual void OnIsActiveChanged(bool oldValue, bool newValue)
         {
-            if (newValue) LastActivationTimeStamp = DateTime.Now;
+            if (newValue) this.LastActivationTimeStamp = DateTime.Now;
             IsActiveChanged?.Invoke(this, EventArgs.Empty);
         }
 
@@ -217,9 +217,9 @@ namespace H.Controls.Dock.Layout
             internal set
             {
                 if (value == _isLastFocusedDocument) return;
-                RaisePropertyChanging(nameof(IsLastFocusedDocument));
+                RaisePropertyChanging(nameof(this.IsLastFocusedDocument));
                 _isLastFocusedDocument = value;
-                RaisePropertyChanged(nameof(IsLastFocusedDocument));
+                RaisePropertyChanged(nameof(this.IsLastFocusedDocument));
             }
         }
 
@@ -238,7 +238,7 @@ namespace H.Controls.Dock.Layout
             {
                 if (value == _previousContainer) return;
                 _previousContainer = value;
-                RaisePropertyChanged(nameof(PreviousContainer));
+                RaisePropertyChanged(nameof(this.PreviousContainer));
                 if (_previousContainer is ILayoutPaneSerializable paneSerializable && paneSerializable.Id == null)
                     paneSerializable.Id = Guid.NewGuid().ToString();
             }
@@ -274,7 +274,7 @@ namespace H.Controls.Dock.Layout
             {
                 if (value == _previousContainerIndex) return;
                 _previousContainerIndex = value;
-                RaisePropertyChanged(nameof(PreviousContainerIndex));
+                RaisePropertyChanged(nameof(this.PreviousContainerIndex));
             }
         }
 
@@ -291,7 +291,7 @@ namespace H.Controls.Dock.Layout
             {
                 if (value == _lastActivationTimeStamp) return;
                 _lastActivationTimeStamp = value;
-                RaisePropertyChanged(nameof(LastActivationTimeStamp));
+                RaisePropertyChanged(nameof(this.LastActivationTimeStamp));
             }
         }
 
@@ -307,9 +307,9 @@ namespace H.Controls.Dock.Layout
             set
             {
                 if (value == _floatingWidth) return;
-                RaisePropertyChanging(nameof(FloatingWidth));
+                RaisePropertyChanging(nameof(this.FloatingWidth));
                 _floatingWidth = value;
-                RaisePropertyChanged(nameof(FloatingWidth));
+                RaisePropertyChanged(nameof(this.FloatingWidth));
             }
         }
 
@@ -325,9 +325,9 @@ namespace H.Controls.Dock.Layout
             set
             {
                 if (value == _floatingHeight) return;
-                RaisePropertyChanging(nameof(FloatingHeight));
+                RaisePropertyChanging(nameof(this.FloatingHeight));
                 _floatingHeight = value;
-                RaisePropertyChanged(nameof(FloatingHeight));
+                RaisePropertyChanged(nameof(this.FloatingHeight));
             }
         }
 
@@ -343,9 +343,9 @@ namespace H.Controls.Dock.Layout
             set
             {
                 if (value == _floatingLeft) return;
-                RaisePropertyChanging(nameof(FloatingLeft));
+                RaisePropertyChanging(nameof(this.FloatingLeft));
                 _floatingLeft = value;
-                RaisePropertyChanged(nameof(FloatingLeft));
+                RaisePropertyChanged(nameof(this.FloatingLeft));
             }
         }
 
@@ -361,9 +361,9 @@ namespace H.Controls.Dock.Layout
             set
             {
                 if (value == _floatingTop) return;
-                RaisePropertyChanging(nameof(FloatingTop));
+                RaisePropertyChanging(nameof(this.FloatingTop));
                 _floatingTop = value;
-                RaisePropertyChanged(nameof(FloatingTop));
+                RaisePropertyChanged(nameof(this.FloatingTop));
             }
         }
 
@@ -379,9 +379,9 @@ namespace H.Controls.Dock.Layout
             set
             {
                 if (value == _isMaximized) return;
-                RaisePropertyChanging(nameof(IsMaximized));
+                RaisePropertyChanging(nameof(this.IsMaximized));
                 _isMaximized = value;
-                RaisePropertyChanged(nameof(IsMaximized));
+                RaisePropertyChanged(nameof(this.IsMaximized));
             }
         }
 
@@ -398,7 +398,7 @@ namespace H.Controls.Dock.Layout
             {
                 if (value == _toolTip) return;
                 _toolTip = value;
-                RaisePropertyChanged(nameof(ToolTip));
+                RaisePropertyChanged(nameof(this.ToolTip));
             }
         }
 
@@ -419,7 +419,7 @@ namespace H.Controls.Dock.Layout
             {
                 if (value == _iconSource) return;
                 _iconSource = value;
-                RaisePropertyChanged(nameof(IconSource));
+                RaisePropertyChanged(nameof(this.IconSource));
             }
         }
 
@@ -439,7 +439,7 @@ namespace H.Controls.Dock.Layout
             {
                 if (_canClose == value) return;
                 _canClose = value;
-                RaisePropertyChanged(nameof(CanClose));
+                RaisePropertyChanged(nameof(this.CanClose));
             }
         }
 
@@ -456,7 +456,7 @@ namespace H.Controls.Dock.Layout
             {
                 if (value == _canFloat) return;
                 _canFloat = value;
-                RaisePropertyChanged(nameof(CanFloat));
+                RaisePropertyChanged(nameof(this.CanFloat));
             }
         }
 
@@ -480,7 +480,7 @@ namespace H.Controls.Dock.Layout
             {
                 if (value == _canShowOnHover) return;
                 _canShowOnHover = value;
-                RaisePropertyChanged(nameof(CanShowOnHover));
+                RaisePropertyChanged(nameof(this.CanShowOnHover));
             }
         }
 
@@ -497,7 +497,7 @@ namespace H.Controls.Dock.Layout
             {
                 if (value == _isEnabled) return;
                 _isEnabled = value;
-                RaisePropertyChanged(nameof(IsEnabled));
+                RaisePropertyChanged(nameof(this.IsEnabled));
             }
         }
 
@@ -523,40 +523,40 @@ namespace H.Controls.Dock.Layout
         /// <inheritdoc />
         public virtual void ReadXml(System.Xml.XmlReader reader)
         {
-            if (reader.MoveToAttribute(nameof(Title)))
-                Title = reader.Value;
+            if (reader.MoveToAttribute(nameof(this.Title)))
+                this.Title = reader.Value;
             //if (reader.MoveToAttribute("IconSource"))
             //    IconSource = new Uri(reader.Value, UriKind.RelativeOrAbsolute);
 
-            if (reader.MoveToAttribute(nameof(IsSelected)))
-                IsSelected = bool.Parse(reader.Value);
-            if (reader.MoveToAttribute(nameof(ContentId)))
-                ContentId = reader.Value;
-            if (reader.MoveToAttribute(nameof(IsLastFocusedDocument)))
-                IsLastFocusedDocument = bool.Parse(reader.Value);
-            if (reader.MoveToAttribute(nameof(PreviousContainerId)))
-                PreviousContainerId = reader.Value;
-            if (reader.MoveToAttribute(nameof(PreviousContainerIndex)))
-                PreviousContainerIndex = int.Parse(reader.Value);
+            if (reader.MoveToAttribute(nameof(this.IsSelected)))
+                this.IsSelected = bool.Parse(reader.Value);
+            if (reader.MoveToAttribute(nameof(this.ContentId)))
+                this.ContentId = reader.Value;
+            if (reader.MoveToAttribute(nameof(this.IsLastFocusedDocument)))
+                this.IsLastFocusedDocument = bool.Parse(reader.Value);
+            if (reader.MoveToAttribute(nameof(this.PreviousContainerId)))
+                this.PreviousContainerId = reader.Value;
+            if (reader.MoveToAttribute(nameof(this.PreviousContainerIndex)))
+                this.PreviousContainerIndex = int.Parse(reader.Value);
 
-            if (reader.MoveToAttribute(nameof(FloatingLeft)))
-                FloatingLeft = double.Parse(reader.Value, CultureInfo.InvariantCulture);
-            if (reader.MoveToAttribute(nameof(FloatingTop)))
-                FloatingTop = double.Parse(reader.Value, CultureInfo.InvariantCulture);
-            if (reader.MoveToAttribute(nameof(FloatingWidth)))
-                FloatingWidth = double.Parse(reader.Value, CultureInfo.InvariantCulture);
-            if (reader.MoveToAttribute(nameof(FloatingHeight)))
-                FloatingHeight = double.Parse(reader.Value, CultureInfo.InvariantCulture);
-            if (reader.MoveToAttribute(nameof(IsMaximized)))
-                IsMaximized = bool.Parse(reader.Value);
-            if (reader.MoveToAttribute(nameof(CanClose)))
-                CanClose = bool.Parse(reader.Value);
-            if (reader.MoveToAttribute(nameof(CanFloat)))
-                CanFloat = bool.Parse(reader.Value);
-            if (reader.MoveToAttribute(nameof(LastActivationTimeStamp)))
-                LastActivationTimeStamp = DateTime.Parse(reader.Value, CultureInfo.InvariantCulture);
-            if (reader.MoveToAttribute(nameof(CanShowOnHover)))
-                CanShowOnHover = bool.Parse(reader.Value);
+            if (reader.MoveToAttribute(nameof(this.FloatingLeft)))
+                this.FloatingLeft = double.Parse(reader.Value, CultureInfo.InvariantCulture);
+            if (reader.MoveToAttribute(nameof(this.FloatingTop)))
+                this.FloatingTop = double.Parse(reader.Value, CultureInfo.InvariantCulture);
+            if (reader.MoveToAttribute(nameof(this.FloatingWidth)))
+                this.FloatingWidth = double.Parse(reader.Value, CultureInfo.InvariantCulture);
+            if (reader.MoveToAttribute(nameof(this.FloatingHeight)))
+                this.FloatingHeight = double.Parse(reader.Value, CultureInfo.InvariantCulture);
+            if (reader.MoveToAttribute(nameof(this.IsMaximized)))
+                this.IsMaximized = bool.Parse(reader.Value);
+            if (reader.MoveToAttribute(nameof(this.CanClose)))
+                this.CanClose = bool.Parse(reader.Value);
+            if (reader.MoveToAttribute(nameof(this.CanFloat)))
+                this.CanFloat = bool.Parse(reader.Value);
+            if (reader.MoveToAttribute(nameof(this.LastActivationTimeStamp)))
+                this.LastActivationTimeStamp = DateTime.Parse(reader.Value, CultureInfo.InvariantCulture);
+            if (reader.MoveToAttribute(nameof(this.CanShowOnHover)))
+                this.CanShowOnHover = bool.Parse(reader.Value);
 
             reader.Read();
         }
@@ -564,39 +564,39 @@ namespace H.Controls.Dock.Layout
         /// <inheritdoc />
         public virtual void WriteXml(System.Xml.XmlWriter writer)
         {
-            if (!string.IsNullOrWhiteSpace(Title))
-                writer.WriteAttributeString(nameof(Title), Title);
+            if (!string.IsNullOrWhiteSpace(this.Title))
+                writer.WriteAttributeString(nameof(this.Title), this.Title);
 
             //if (IconSource != null)
             //    writer.WriteAttributeString("IconSource", IconSource.ToString());
 
-            if (IsSelected)
-                writer.WriteAttributeString(nameof(IsSelected), IsSelected.ToString());
+            if (this.IsSelected)
+                writer.WriteAttributeString(nameof(this.IsSelected), this.IsSelected.ToString());
 
-            if (IsLastFocusedDocument)
-                writer.WriteAttributeString(nameof(IsLastFocusedDocument), IsLastFocusedDocument.ToString());
+            if (this.IsLastFocusedDocument)
+                writer.WriteAttributeString(nameof(this.IsLastFocusedDocument), this.IsLastFocusedDocument.ToString());
 
-            if (!string.IsNullOrWhiteSpace(ContentId))
-                writer.WriteAttributeString(nameof(ContentId), ContentId);
+            if (!string.IsNullOrWhiteSpace(this.ContentId))
+                writer.WriteAttributeString(nameof(this.ContentId), this.ContentId);
 
-            if (ToolTip is string toolTip && !string.IsNullOrWhiteSpace(toolTip))
-                writer.WriteAttributeString(nameof(ToolTip), toolTip);
+            if (this.ToolTip is string toolTip && !string.IsNullOrWhiteSpace(toolTip))
+                writer.WriteAttributeString(nameof(this.ToolTip), toolTip);
 
-            if (FloatingLeft != 0.0) writer.WriteAttributeString(nameof(FloatingLeft), FloatingLeft.ToString(CultureInfo.InvariantCulture));
-            if (FloatingTop != 0.0) writer.WriteAttributeString(nameof(FloatingTop), FloatingTop.ToString(CultureInfo.InvariantCulture));
-            if (FloatingWidth != 0.0) writer.WriteAttributeString(nameof(FloatingWidth), FloatingWidth.ToString(CultureInfo.InvariantCulture));
-            if (FloatingHeight != 0.0) writer.WriteAttributeString(nameof(FloatingHeight), FloatingHeight.ToString(CultureInfo.InvariantCulture));
+            if (this.FloatingLeft != 0.0) writer.WriteAttributeString(nameof(this.FloatingLeft), this.FloatingLeft.ToString(CultureInfo.InvariantCulture));
+            if (this.FloatingTop != 0.0) writer.WriteAttributeString(nameof(this.FloatingTop), this.FloatingTop.ToString(CultureInfo.InvariantCulture));
+            if (this.FloatingWidth != 0.0) writer.WriteAttributeString(nameof(this.FloatingWidth), this.FloatingWidth.ToString(CultureInfo.InvariantCulture));
+            if (this.FloatingHeight != 0.0) writer.WriteAttributeString(nameof(this.FloatingHeight), this.FloatingHeight.ToString(CultureInfo.InvariantCulture));
 
-            if (IsMaximized) writer.WriteAttributeString(nameof(IsMaximized), IsMaximized.ToString());
+            if (this.IsMaximized) writer.WriteAttributeString(nameof(this.IsMaximized), this.IsMaximized.ToString());
             // BD: 14.08.2020 changed to check CanClose value against the default in _canCloseDefault
             //     thus CanClose property will be serialized only when not equal to its default for given class
             //     With previous code it was not possible to serialize CanClose if set to true for LayoutAnchorable instance
-            if (CanClose != _canCloseDefault) writer.WriteAttributeString(nameof(CanClose), CanClose.ToString());
-            if (!CanFloat) writer.WriteAttributeString(nameof(CanFloat), CanFloat.ToString());
+            if (this.CanClose != _canCloseDefault) writer.WriteAttributeString(nameof(this.CanClose), this.CanClose.ToString());
+            if (!this.CanFloat) writer.WriteAttributeString(nameof(this.CanFloat), this.CanFloat.ToString());
 
-            if (LastActivationTimeStamp != null) writer.WriteAttributeString(nameof(LastActivationTimeStamp), LastActivationTimeStamp.Value.ToString(CultureInfo.InvariantCulture));
+            if (this.LastActivationTimeStamp != null) writer.WriteAttributeString(nameof(this.LastActivationTimeStamp), this.LastActivationTimeStamp.Value.ToString(CultureInfo.InvariantCulture));
 
-            if (!CanShowOnHover) writer.WriteAttributeString(nameof(CanShowOnHover), CanShowOnHover.ToString());
+            if (!this.CanShowOnHover) writer.WriteAttributeString(nameof(this.CanShowOnHover), this.CanShowOnHover.ToString());
 
             if (_previousContainer is ILayoutPaneSerializable paneSerializable)
             {
@@ -607,48 +607,48 @@ namespace H.Controls.Dock.Layout
 
         public int CompareTo(LayoutContent other)
         {
-            if (Content is IComparable contentAsComparable)
+            if (this.Content is IComparable contentAsComparable)
                 return contentAsComparable.CompareTo(other.Content);
-            return string.Compare(Title, other.Title);
+            return string.Compare(this.Title, other.Title);
         }
 
         /// <summary>Float the content in a popup window</summary>
         public void Float()
         {
-            if (PreviousContainer != null && PreviousContainer.FindParent<LayoutFloatingWindow>() != null)
+            if (this.PreviousContainer != null && this.PreviousContainer.FindParent<LayoutFloatingWindow>() != null)
             {
-                ILayoutPane currentContainer = Parent as ILayoutPane;
+                ILayoutPane currentContainer = this.Parent as ILayoutPane;
                 int currentContainerIndex = (currentContainer as ILayoutGroup).IndexOfChild(this);
-                ILayoutGroup previousContainerAsLayoutGroup = PreviousContainer as ILayoutGroup;
+                ILayoutGroup previousContainerAsLayoutGroup = this.PreviousContainer as ILayoutGroup;
 
-                if (PreviousContainerIndex < previousContainerAsLayoutGroup.ChildrenCount)
-                    previousContainerAsLayoutGroup.InsertChildAt(PreviousContainerIndex, this);
+                if (this.PreviousContainerIndex < previousContainerAsLayoutGroup.ChildrenCount)
+                    previousContainerAsLayoutGroup.InsertChildAt(this.PreviousContainerIndex, this);
                 else
                     previousContainerAsLayoutGroup.InsertChildAt(previousContainerAsLayoutGroup.ChildrenCount, this);
 
-                PreviousContainer = currentContainer;
-                PreviousContainerIndex = currentContainerIndex;
-                IsSelected = true;
-                IsActive = true;
-                Root.CollectGarbage();
+                this.PreviousContainer = currentContainer;
+                this.PreviousContainerIndex = currentContainerIndex;
+                this.IsSelected = true;
+                this.IsActive = true;
+                this.Root.CollectGarbage();
             }
             else
             {
-                Root.Manager.StartDraggingFloatingWindowForContent(this, false);
-                IsSelected = true;
-                IsActive = true;
+                this.Root.Manager.StartDraggingFloatingWindowForContent(this, false);
+                this.IsSelected = true;
+                this.IsActive = true;
             }
 
             // BD: 14.08.2020 raise IsFloating property changed
-            RaisePropertyChanged(nameof(IsFloating));
+            RaisePropertyChanged(nameof(this.IsFloating));
         }
 
         /// <summary>Dock the content as document.</summary>
         public void DockAsDocument()
         {
-            if (!(Root is LayoutRoot root)) throw new InvalidOperationException();
+            if (!(this.Root is LayoutRoot root)) throw new InvalidOperationException();
 
-            if (PreviousContainer is LayoutDocumentPane)
+            if (this.PreviousContainer is LayoutDocumentPane)
             {
                 Dock();
                 return;
@@ -665,48 +665,48 @@ namespace H.Controls.Dock.Layout
                 newParentPane.Children.Add(this);
                 root.CollectGarbage();
             }
-            IsSelected = true;
-            IsActive = true;
+            this.IsSelected = true;
+            this.IsActive = true;
 
             // BD: 14.08.2020 raise IsFloating property changed
-            RaisePropertyChanged(nameof(IsFloating));
+            RaisePropertyChanged(nameof(this.IsFloating));
         }
 
         /// <summary>Re-dock the content to its previous container</summary>
         public void Dock()
         {
-            if (PreviousContainer != null)
+            if (this.PreviousContainer != null)
             {
-                ILayoutContainer currentContainer = Parent;
+                ILayoutContainer currentContainer = this.Parent;
                 int currentContainerIndex = currentContainer is ILayoutGroup ? (currentContainer as ILayoutGroup).IndexOfChild(this) : -1;
-                ILayoutGroup previousContainerAsLayoutGroup = PreviousContainer as ILayoutGroup;
+                ILayoutGroup previousContainerAsLayoutGroup = this.PreviousContainer as ILayoutGroup;
 
-                if (PreviousContainerIndex < previousContainerAsLayoutGroup.ChildrenCount)
-                    previousContainerAsLayoutGroup.InsertChildAt(PreviousContainerIndex, this);
+                if (this.PreviousContainerIndex < previousContainerAsLayoutGroup.ChildrenCount)
+                    previousContainerAsLayoutGroup.InsertChildAt(this.PreviousContainerIndex, this);
                 else
                     previousContainerAsLayoutGroup.InsertChildAt(previousContainerAsLayoutGroup.ChildrenCount, this);
 
                 if (currentContainerIndex > -1)
                 {
-                    PreviousContainer = currentContainer;
-                    PreviousContainerIndex = currentContainerIndex;
+                    this.PreviousContainer = currentContainer;
+                    this.PreviousContainerIndex = currentContainerIndex;
                 }
                 else
                 {
-                    PreviousContainer = null;
-                    PreviousContainerIndex = 0;
+                    this.PreviousContainer = null;
+                    this.PreviousContainerIndex = 0;
                 }
 
-                IsSelected = true;
-                IsActive = true;
+                this.IsSelected = true;
+                this.IsActive = true;
             }
             else
                 InternalDock();
 
-            Root.CollectGarbage();
+            this.Root.CollectGarbage();
 
             // BD: 14.08.2020 raise IsFloating property changed
-            RaisePropertyChanged(nameof(IsFloating));
+            RaisePropertyChanged(nameof(this.IsFloating));
         }
 
         #endregion Public Methods
@@ -716,7 +716,7 @@ namespace H.Controls.Dock.Layout
         /// <inheritdoc />
         protected override void OnParentChanging(ILayoutContainer oldValue, ILayoutContainer newValue)
         {
-            if (oldValue != null) IsSelected = false;
+            if (oldValue != null) this.IsSelected = false;
 
             base.OnParentChanging(oldValue, newValue);
         }
@@ -724,9 +724,9 @@ namespace H.Controls.Dock.Layout
         /// <inheritdoc />
         protected override void OnParentChanged(ILayoutContainer oldValue, ILayoutContainer newValue)
         {
-            if (IsSelected && Parent is ILayoutContentSelector)
+            if (this.IsSelected && this.Parent is ILayoutContentSelector)
             {
-                ILayoutContentSelector parentSelector = Parent as ILayoutContentSelector;
+                ILayoutContentSelector parentSelector = this.Parent as ILayoutContentSelector;
                 parentSelector.SelectedContentIndex = parentSelector.IndexOf(this);
             }
 
@@ -748,29 +748,29 @@ namespace H.Controls.Dock.Layout
 
         internal void CloseInternal()
         {
-            ILayoutRoot root = Root;
-            ILayoutContainer parentAsContainer = Parent;
+            ILayoutRoot root = this.Root;
+            ILayoutContainer parentAsContainer = this.Parent;
 
-            if (PreviousContainer == null)
+            if (this.PreviousContainer == null)
             {
-                ILayoutGroup parentAsGroup = Parent as ILayoutGroup;
-                PreviousContainer = parentAsContainer;
-                PreviousContainerIndex = parentAsGroup.IndexOfChild(this);
+                ILayoutGroup parentAsGroup = this.Parent as ILayoutGroup;
+                this.PreviousContainer = parentAsContainer;
+                this.PreviousContainerIndex = parentAsGroup.IndexOfChild(this);
 
                 if (parentAsGroup is ILayoutPaneSerializable layoutPaneSerializable)
                 {
-                    PreviousContainerId = layoutPaneSerializable.Id;
+                    this.PreviousContainerId = layoutPaneSerializable.Id;
                     // This parentAsGroup will be removed in the GarbageCollection below
-                    if (parentAsGroup.Children.Count() == 1 && parentAsGroup.Parent != null && Root.Manager != null)
+                    if (parentAsGroup.Children.Count() == 1 && parentAsGroup.Parent != null && this.Root.Manager != null)
                     {
-                        Parent = Root.Manager.Layout;
-                        PreviousContainer = parentAsGroup.Parent;
-                        PreviousContainerIndex = -1;
+                        this.Parent = this.Root.Manager.Layout;
+                        this.PreviousContainer = parentAsGroup.Parent;
+                        this.PreviousContainerIndex = -1;
 
                         if (parentAsGroup.Parent is ILayoutPaneSerializable paneSerializable)
-                            PreviousContainerId = paneSerializable.Id;
+                            this.PreviousContainerId = paneSerializable.Id;
                         else
-                            PreviousContainerId = null;
+                            this.PreviousContainerId = null;
                     }
                 }
             }

@@ -1,9 +1,6 @@
 ﻿using H.Providers.Mvvm;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
 using System.Windows;
 using System.Windows.Threading;
 
@@ -18,7 +15,10 @@ namespace H.Extensions.Tree
             {
                 TreeNodeBase<object> rootNode = new TreeNodeBase<object>(root);
                 IEnumerable<TreeNodeBase<object>> childrenNodes = tree.GetTreeNodes(root, isRecursion);
-                rootNode.Nodes = new ObservableCollection<TreeNodeBase<object>>(childrenNodes);
+                foreach (var item in childrenNodes)
+                {
+                    rootNode.AddNode(item);
+                }
                 yield return rootNode;
             }
         }
@@ -36,7 +36,7 @@ namespace H.Extensions.Tree
                     {
                         Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Input, new Action(() =>
                                   {
-                                      rootNode.Nodes.Add(childrenNode);
+                                      rootNode.AddNode(childrenNode);
                                   }));
 
                     }

@@ -272,8 +272,8 @@ namespace H.Controls.PropertyGrid
         {
             get
             {
-                return (ParentNode != null)
-                ? ParentNode.PropertyContainerStyle
+                return (this.ParentNode != null)
+                ? this.ParentNode.PropertyContainerStyle
                 : null;
             }
         }
@@ -417,7 +417,7 @@ namespace H.Controls.PropertyGrid
 
         protected override void OnMouseDown(MouseButtonEventArgs e)
         {
-            IsSelected = true;
+            this.IsSelected = true;
             if (!this.IsKeyboardFocusWithin)
             {
                 this.Focus();
@@ -430,7 +430,7 @@ namespace H.Controls.PropertyGrid
 
         private void PropertyItemBase_GotFocus(object sender, RoutedEventArgs e)
         {
-            IsSelected = true;
+            this.IsSelected = true;
             // Handle the event; otherwise, the possible 
             // parent property item will select itself too.
             e.Handled = true;

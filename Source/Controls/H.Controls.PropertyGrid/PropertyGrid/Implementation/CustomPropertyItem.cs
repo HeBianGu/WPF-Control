@@ -128,7 +128,7 @@ namespace H.Controls.PropertyGrid
 
         protected virtual void OnValueChanged(object oldValue, object newValue)
         {
-            if (IsInitialized)
+            if (this.IsInitialized)
             {
                 RaiseEvent(new PropertyValueChangedEventArgs(PropertyGrid.PropertyValueChangedEvent, this, oldValue, newValue));
             }

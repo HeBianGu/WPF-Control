@@ -18,7 +18,7 @@ namespace H.Extensions.Attach
             obj.SetValue(IsCheckedProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty IsCheckedProperty =
             DependencyProperty.RegisterAttached("IsChecked", typeof(bool?), typeof(Cattach), new PropertyMetadata(default(bool?), OnIsCheckedChanged));
 
@@ -42,7 +42,7 @@ namespace H.Extensions.Attach
             obj.SetValue(CheckedIconProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty CheckedIconProperty =
             DependencyProperty.RegisterAttached("CheckedIcon", typeof(string), typeof(Cattach), new PropertyMetadata(default(string), OnCheckedIconChanged));
 
@@ -66,7 +66,7 @@ namespace H.Extensions.Attach
             obj.SetValue(UncheckedIconProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty UncheckedIconProperty =
             DependencyProperty.RegisterAttached("UncheckedIcon", typeof(string), typeof(Cattach), new PropertyMetadata(default(string), OnUncheckedIconChanged));
 
@@ -114,7 +114,7 @@ namespace H.Extensions.Attach
             obj.SetValue(CheckedTextProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty CheckedTextProperty =
             DependencyProperty.RegisterAttached("CheckedText", typeof(string), typeof(Cattach), new PropertyMetadata(default(string), OnCheckedTextChanged));
 
@@ -138,7 +138,7 @@ namespace H.Extensions.Attach
             obj.SetValue(UncheckedTextProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty UncheckedTextProperty =
             DependencyProperty.RegisterAttached("UncheckedText", typeof(string), typeof(Cattach), new PropertyMetadata(default(string), OnUncheckedTextChanged));
 
@@ -188,7 +188,7 @@ namespace H.Extensions.Attach
             obj.SetValue(CheckedForegroundProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty CheckedForegroundProperty =
             DependencyProperty.RegisterAttached("CheckedForeground", typeof(Brush), typeof(Cattach), new PropertyMetadata(default(Brush), OnCheckedForegroundChanged));
 
@@ -211,7 +211,7 @@ namespace H.Extensions.Attach
             obj.SetValue(UncheckForegroundProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty UncheckForegroundProperty =
             DependencyProperty.RegisterAttached("UncheckForeground", typeof(Brush), typeof(Cattach), new PropertyMetadata(default(Brush), OnUncheckForegroundChanged));
 
@@ -259,7 +259,7 @@ namespace H.Extensions.Attach
             obj.SetValue(CheckedBackgroundProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty CheckedBackgroundProperty =
             DependencyProperty.RegisterAttached("CheckedBackground", typeof(Brush), typeof(Cattach), new PropertyMetadata(default(Brush), OnCheckedBackgroundChanged));
 
@@ -283,7 +283,7 @@ namespace H.Extensions.Attach
             obj.SetValue(UncheckedBackgroundProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty UncheckedBackgroundProperty =
             DependencyProperty.RegisterAttached("UncheckedBackground", typeof(Brush), typeof(Cattach), new PropertyMetadata(default(Brush), OnUncheckedBackgroundChanged));
 
@@ -331,7 +331,7 @@ namespace H.Extensions.Attach
             obj.SetValue(CheckedBorderBrushProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty CheckedBorderBrushProperty =
             DependencyProperty.RegisterAttached("CheckedBorderBrush", typeof(Brush), typeof(Cattach), new PropertyMetadata(default(Brush), OnCheckedBorderBrushChanged));
 
@@ -355,7 +355,7 @@ namespace H.Extensions.Attach
             obj.SetValue(UnCheckedBorderBrushProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty UnCheckedBorderBrushProperty =
             DependencyProperty.RegisterAttached("UnCheckedBorderBrush", typeof(Brush), typeof(Cattach), new PropertyMetadata(default(Brush), OnUnCheckedBorderBrushChanged));
 
@@ -403,7 +403,7 @@ namespace H.Extensions.Attach
             obj.SetValue(CheckedBorderThicknessProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty CheckedBorderThicknessProperty =
             DependencyProperty.RegisterAttached("CheckedBorderThickness", typeof(Thickness), typeof(Cattach), new PropertyMetadata(default(Thickness), OnCheckedBorderThicknessChanged));
 
@@ -427,7 +427,7 @@ namespace H.Extensions.Attach
             obj.SetValue(UnCheckedBorderThicknessProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty UnCheckedBorderThicknessProperty =
             DependencyProperty.RegisterAttached("UnCheckedBorderThickness", typeof(Thickness), typeof(Cattach), new PropertyMetadata(default(Thickness), OnUnCheckedBorderThicknessChanged));
 
@@ -475,7 +475,7 @@ namespace H.Extensions.Attach
             obj.SetValue(CheckedOpacityProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty CheckedOpacityProperty =
             DependencyProperty.RegisterAttached("CheckedOpacity", typeof(double), typeof(Cattach), new PropertyMetadata(1.0, OnCheckedOpacityChanged));
 
@@ -499,7 +499,7 @@ namespace H.Extensions.Attach
             obj.SetValue(UncheckedOpacityProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty UncheckedOpacityProperty =
             DependencyProperty.RegisterAttached("UncheckedOpacity", typeof(double), typeof(Cattach), new PropertyMetadata(1.0, OnUncheckedOpacityChanged));
 

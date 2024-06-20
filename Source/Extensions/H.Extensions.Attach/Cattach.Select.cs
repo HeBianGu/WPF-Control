@@ -53,7 +53,7 @@ namespace H.Extensions.Attach
             obj.SetValue(SelectBorderThicknessProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty SelectBorderThicknessProperty =
             DependencyProperty.RegisterAttached("SelectBorderThickness", typeof(Thickness), typeof(Cattach), new FrameworkPropertyMetadata(default(Thickness), OnSelectBorderThicknessChanged));
 
@@ -76,7 +76,7 @@ namespace H.Extensions.Attach
             obj.SetValue(SelectEffectProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty SelectEffectProperty =
             DependencyProperty.RegisterAttached("SelectEffect", typeof(Effect), typeof(Cattach), new FrameworkPropertyMetadata(default(Effect), FrameworkPropertyMetadataOptions.Inherits, OnSelectEffectChanged));
 

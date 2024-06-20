@@ -309,7 +309,7 @@ namespace Microsoft.Windows.Shell
             // NativeMethods.DwmGetCompositionTimingInfo swallows E_PENDING.
             // If the call wasn't successful, try again later.
             if (!success)
-                Dispatcher.BeginInvoke(DispatcherPriority.Loaded, (_Action)_FixupWindows7Issues);
+                this.Dispatcher.BeginInvoke(DispatcherPriority.Loaded, (_Action)_FixupWindows7Issues);
             else
                 // Reset this.  We will want to force this again if DWM composition changes.
                 _blackGlassFixupAttemptCount = 0;
@@ -535,7 +535,7 @@ namespace Microsoft.Windows.Shell
             {
                 // Check for the docked window case.  The window can still be restored when it's in this position so
                 // try to account for that and not update the start position.
-                if (!_IsWindowDocked)
+                if (!this._IsWindowDocked)
                 {
                     _windowPosAtStartOfUserMove = new Point(_window.Left, _window.Top);
                 }

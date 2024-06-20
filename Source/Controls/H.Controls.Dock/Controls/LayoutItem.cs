@@ -74,11 +74,11 @@ namespace H.Controls.Dock.Controls
             {
                 if (_view != null) return _view;
                 _view = new ContentPresenter();
-                _view.SetBinding(ContentPresenter.ContentProperty, new Binding(nameof(ContentPresenter.Content)) { Source = LayoutElement });
-                if (LayoutElement?.Root == null) return _view;
-                _view.SetBinding(ContentPresenter.ContentTemplateProperty, new Binding(nameof(DockingManager.LayoutItemTemplate)) { Source = LayoutElement.Root.Manager });
-                _view.SetBinding(ContentPresenter.ContentTemplateSelectorProperty, new Binding(nameof(DockingManager.LayoutItemTemplateSelector)) { Source = LayoutElement.Root.Manager });
-                LayoutElement.Root.Manager?.InternalAddLogicalChild(_view);
+                _view.SetBinding(ContentPresenter.ContentProperty, new Binding(nameof(ContentPresenter.Content)) { Source = this.LayoutElement });
+                if (this.LayoutElement?.Root == null) return _view;
+                _view.SetBinding(ContentPresenter.ContentTemplateProperty, new Binding(nameof(DockingManager.LayoutItemTemplate)) { Source = this.LayoutElement.Root.Manager });
+                _view.SetBinding(ContentPresenter.ContentTemplateSelectorProperty, new Binding(nameof(DockingManager.LayoutItemTemplateSelector)) { Source = this.LayoutElement.Root.Manager });
+                this.LayoutElement.Root.Manager?.InternalAddLogicalChild(_view);
                 return _view;
             }
         }
@@ -105,7 +105,7 @@ namespace H.Controls.Dock.Controls
         /// <summary>Provides derived classes an opportunity to handle changes to the <see cref="Title"/> property.</summary>
         protected virtual void OnTitleChanged(DependencyPropertyChangedEventArgs e)
         {
-            if (LayoutElement != null) LayoutElement.Title = (string)e.NewValue;
+            if (this.LayoutElement != null) this.LayoutElement.Title = (string)e.NewValue;
         }
 
         #endregion Title
@@ -130,7 +130,7 @@ namespace H.Controls.Dock.Controls
         /// <summary>Provides derived classes an opportunity to handle changes to the <see cref="IconSource"/> property.</summary>
         protected virtual void OnIconSourceChanged(DependencyPropertyChangedEventArgs e)
         {
-            if (LayoutElement != null) LayoutElement.IconSource = IconSource;
+            if (this.LayoutElement != null) this.LayoutElement.IconSource = this.IconSource;
         }
 
         #endregion IconSource
@@ -155,7 +155,7 @@ namespace H.Controls.Dock.Controls
         /// <summary>Provides derived classes an opportunity to handle changes to the <see cref="ContentId"/> property.</summary>
         protected virtual void OnContentIdChanged(DependencyPropertyChangedEventArgs e)
         {
-            if (LayoutElement != null) LayoutElement.ContentId = (string)e.NewValue;
+            if (this.LayoutElement != null) this.LayoutElement.ContentId = (string)e.NewValue;
         }
 
         #endregion ContentId
@@ -183,7 +183,7 @@ namespace H.Controls.Dock.Controls
             if (!_isSelectedReentrantFlag.CanEnter) return;
             using (_isSelectedReentrantFlag.Enter())
             {
-                if (LayoutElement != null) LayoutElement.IsSelected = (bool)e.NewValue;
+                if (this.LayoutElement != null) this.LayoutElement.IsSelected = (bool)e.NewValue;
             }
         }
 
@@ -212,7 +212,7 @@ namespace H.Controls.Dock.Controls
             if (!_isActiveReentrantFlag.CanEnter) return;
             using (_isActiveReentrantFlag.Enter())
             {
-                if (LayoutElement != null) LayoutElement.IsActive = (bool)e.NewValue;
+                if (this.LayoutElement != null) this.LayoutElement.IsActive = (bool)e.NewValue;
             }
         }
 
@@ -238,7 +238,7 @@ namespace H.Controls.Dock.Controls
         /// <summary>Provides derived classes an opportunity to handle changes to the <see cref="CanClose"/> property.</summary>
         protected virtual void OnCanCloseChanged(DependencyPropertyChangedEventArgs e)
         {
-            if (LayoutElement != null) LayoutElement.CanClose = (bool)e.NewValue;
+            if (this.LayoutElement != null) this.LayoutElement.CanClose = (bool)e.NewValue;
         }
 
         #endregion CanClose
@@ -263,7 +263,7 @@ namespace H.Controls.Dock.Controls
         /// <summary>Provides derived classes an opportunity to handle changes to the <see cref="CanFloat"/> property.</summary>
         protected virtual void OnCanFloatChanged(DependencyPropertyChangedEventArgs e)
         {
-            if (LayoutElement != null) LayoutElement.CanFloat = (bool)e.NewValue;
+            if (this.LayoutElement != null) this.LayoutElement.CanFloat = (bool)e.NewValue;
         }
 
         #endregion CanFloat
@@ -293,7 +293,7 @@ namespace H.Controls.Dock.Controls
         /// <summary>Coerces the <see cref="CloseCommand"/>  value.</summary>
         private static object CoerceCloseCommandValue(DependencyObject d, object value) => value;
 
-        private bool CanExecuteCloseCommand(object parameter) => LayoutElement != null && LayoutElement.CanClose;
+        private bool CanExecuteCloseCommand(object parameter) => this.LayoutElement != null && this.LayoutElement.CanClose;
 
         private void ExecuteCloseCommand(object parameter) => Close();
 
@@ -328,11 +328,11 @@ namespace H.Controls.Dock.Controls
         /// <summary>Coerces the <see cref="FloatCommand"/> value.</summary>
         private static object CoerceFloatCommandValue(DependencyObject d, object value) => value;
 
-        private bool CanExecuteFloatCommand(object anchorable) => LayoutElement != null && LayoutElement.CanFloat && LayoutElement.FindParent<LayoutFloatingWindow>() == null;
+        private bool CanExecuteFloatCommand(object anchorable) => this.LayoutElement != null && this.LayoutElement.CanFloat && this.LayoutElement.FindParent<LayoutFloatingWindow>() == null;
 
         /// <summary>Executes to float the content of this LayoutItem in a separate <see cref="LayoutFloatingWindowControl"/>.</summary>
         /// <param name="parameter"></param>
-        private void ExecuteFloatCommand(object parameter) => LayoutElement.Root.Manager.ExecuteFloatCommand(LayoutElement);
+        private void ExecuteFloatCommand(object parameter) => this.LayoutElement.Root.Manager.ExecuteFloatCommand(this.LayoutElement);
 
         #endregion FloatCommand
 
@@ -362,11 +362,11 @@ namespace H.Controls.Dock.Controls
         /// <summary>Coerces the <see cref="DockAsDocumentCommand"/> value.</summary>
         private static object CoerceDockAsDocumentCommandValue(DependencyObject d, object value) => value;
 
-        protected virtual bool CanExecuteDockAsDocumentCommand() => LayoutElement != null && LayoutElement.FindParent<LayoutDocumentPane>() == null;
+        protected virtual bool CanExecuteDockAsDocumentCommand() => this.LayoutElement != null && this.LayoutElement.FindParent<LayoutDocumentPane>() == null;
 
         private bool CanExecuteDockAsDocumentCommand(object parameter) => CanExecuteDockAsDocumentCommand();
 
-        private void ExecuteDockAsDocumentCommand(object parameter) => LayoutElement.Root.Manager.ExecuteDockAsDocumentCommand(LayoutElement);
+        private void ExecuteDockAsDocumentCommand(object parameter) => this.LayoutElement.Root.Manager.ExecuteDockAsDocumentCommand(this.LayoutElement);
 
         #endregion DockAsDocumentCommand
 
@@ -397,12 +397,12 @@ namespace H.Controls.Dock.Controls
 
         private bool CanExecuteCloseAllButThisCommand(object parameter)
         {
-            ILayoutRoot root = LayoutElement?.Root;
+            ILayoutRoot root = this.LayoutElement?.Root;
             if (root == null) return false;
-            return LayoutElement.Root.Manager.Layout.Descendents().OfType<LayoutContent>().Any(d => d != LayoutElement && (d.Parent is LayoutDocumentPane || d.Parent is LayoutDocumentFloatingWindow));
+            return this.LayoutElement.Root.Manager.Layout.Descendents().OfType<LayoutContent>().Any(d => d != this.LayoutElement && (d.Parent is LayoutDocumentPane || d.Parent is LayoutDocumentFloatingWindow));
         }
 
-        private void ExecuteCloseAllButThisCommand(object parameter) => LayoutElement.Root.Manager.ExecuteCloseAllButThisCommand(LayoutElement);
+        private void ExecuteCloseAllButThisCommand(object parameter) => this.LayoutElement.Root.Manager.ExecuteCloseAllButThisCommand(this.LayoutElement);
 
         #endregion CloseAllButThisCommand
 
@@ -433,12 +433,12 @@ namespace H.Controls.Dock.Controls
 
         private bool CanExecuteCloseAllCommand(object parameter)
         {
-            ILayoutRoot root = LayoutElement?.Root;
+            ILayoutRoot root = this.LayoutElement?.Root;
             if (root == null) return false;
-            return LayoutElement.Root.Manager.Layout.Descendents().OfType<LayoutContent>().Any(d => d.Parent is LayoutDocumentPane || d.Parent is LayoutDocumentFloatingWindow);
+            return this.LayoutElement.Root.Manager.Layout.Descendents().OfType<LayoutContent>().Any(d => d.Parent is LayoutDocumentPane || d.Parent is LayoutDocumentFloatingWindow);
         }
 
-        private void ExecuteCloseAllCommand(object parameter) => LayoutElement.Root.Manager.ExecuteCloseAllCommand(LayoutElement);
+        private void ExecuteCloseAllCommand(object parameter) => this.LayoutElement.Root.Manager.ExecuteCloseAllCommand(this.LayoutElement);
 
         #endregion CloseAllCommand
 
@@ -467,9 +467,9 @@ namespace H.Controls.Dock.Controls
         /// <summary>Coerces the <see cref="ActivateCommand"/> value.</summary>
         private static object CoerceActivateCommandValue(DependencyObject d, object value) => value;
 
-        private bool CanExecuteActivateCommand(object parameter) => LayoutElement != null;
+        private bool CanExecuteActivateCommand(object parameter) => this.LayoutElement != null;
 
-        private void ExecuteActivateCommand(object parameter) => LayoutElement.Root.Manager.ExecuteContentActivateCommand(LayoutElement);
+        private void ExecuteActivateCommand(object parameter) => this.LayoutElement.Root.Manager.ExecuteContentActivateCommand(this.LayoutElement);
 
         #endregion ActivateCommand
 
@@ -497,20 +497,20 @@ namespace H.Controls.Dock.Controls
 
         private bool CanExecuteNewVerticalTabGroupCommand(object parameter)
         {
-            if (LayoutElement == null) return false;
-            if (LayoutElement is LayoutDocument layoutDocument && !layoutDocument.CanMove) return false;
-            LayoutDocumentPaneGroup parentDocumentGroup = LayoutElement.FindParent<LayoutDocumentPaneGroup>();
+            if (this.LayoutElement == null) return false;
+            if (this.LayoutElement is LayoutDocument layoutDocument && !layoutDocument.CanMove) return false;
+            LayoutDocumentPaneGroup parentDocumentGroup = this.LayoutElement.FindParent<LayoutDocumentPaneGroup>();
             return (parentDocumentGroup == null ||
                       parentDocumentGroup.ChildrenCount == 1 ||
                       parentDocumentGroup.Root.Manager.AllowMixedOrientation ||
                       parentDocumentGroup.Orientation == Orientation.Horizontal) &&
-                     LayoutElement.Parent is LayoutDocumentPane parentDocumentPane &&
+                     this.LayoutElement.Parent is LayoutDocumentPane parentDocumentPane &&
                      parentDocumentPane.ChildrenCount > 1;
         }
 
         private void ExecuteNewVerticalTabGroupCommand(object parameter)
         {
-            LayoutContent layoutElement = LayoutElement;
+            LayoutContent layoutElement = this.LayoutElement;
             LayoutDocumentPaneGroup parentDocumentGroup = layoutElement.FindParent<LayoutDocumentPaneGroup>();
             LayoutDocumentPane parentDocumentPane = layoutElement.Parent as LayoutDocumentPane;
 
@@ -554,20 +554,20 @@ namespace H.Controls.Dock.Controls
 
         private bool CanExecuteNewHorizontalTabGroupCommand(object parameter)
         {
-            if (LayoutElement == null) return false;
-            if (LayoutElement is LayoutDocument layoutDocument && !layoutDocument.CanMove) return false;
-            LayoutDocumentPaneGroup parentDocumentGroup = LayoutElement.FindParent<LayoutDocumentPaneGroup>();
+            if (this.LayoutElement == null) return false;
+            if (this.LayoutElement is LayoutDocument layoutDocument && !layoutDocument.CanMove) return false;
+            LayoutDocumentPaneGroup parentDocumentGroup = this.LayoutElement.FindParent<LayoutDocumentPaneGroup>();
             return (parentDocumentGroup == null ||
                       parentDocumentGroup.ChildrenCount == 1 ||
                       parentDocumentGroup.Root.Manager.AllowMixedOrientation ||
                       parentDocumentGroup.Orientation == Orientation.Vertical) &&
-                     LayoutElement.Parent is LayoutDocumentPane parentDocumentPane &&
+                     this.LayoutElement.Parent is LayoutDocumentPane parentDocumentPane &&
                      parentDocumentPane.ChildrenCount > 1;
         }
 
         private void ExecuteNewHorizontalTabGroupCommand(object parameter)
         {
-            LayoutContent layoutElement = LayoutElement;
+            LayoutContent layoutElement = this.LayoutElement;
             LayoutDocumentPaneGroup parentDocumentGroup = layoutElement.FindParent<LayoutDocumentPaneGroup>();
             LayoutDocumentPane parentDocumentPane = layoutElement.Parent as LayoutDocumentPane;
 
@@ -611,10 +611,10 @@ namespace H.Controls.Dock.Controls
 
         private bool CanExecuteMoveToNextTabGroupCommand(object parameter)
         {
-            if (LayoutElement == null) return false;
-            LayoutDocumentPaneGroup parentDocumentGroup = LayoutElement.FindParent<LayoutDocumentPaneGroup>();
+            if (this.LayoutElement == null) return false;
+            LayoutDocumentPaneGroup parentDocumentGroup = this.LayoutElement.FindParent<LayoutDocumentPaneGroup>();
             return parentDocumentGroup != null &&
-                     LayoutElement.Parent is LayoutDocumentPane parentDocumentPane &&
+                     this.LayoutElement.Parent is LayoutDocumentPane parentDocumentPane &&
                      parentDocumentGroup.ChildrenCount > 1 &&
                      parentDocumentGroup.IndexOfChild(parentDocumentPane) < parentDocumentGroup.ChildrenCount - 1 &&
                      parentDocumentGroup.Children[parentDocumentGroup.IndexOfChild(parentDocumentPane) + 1] is LayoutDocumentPane;
@@ -622,7 +622,7 @@ namespace H.Controls.Dock.Controls
 
         private void ExecuteMoveToNextTabGroupCommand(object parameter)
         {
-            LayoutContent layoutElement = LayoutElement;
+            LayoutContent layoutElement = this.LayoutElement;
             LayoutDocumentPaneGroup parentDocumentGroup = layoutElement.FindParent<LayoutDocumentPaneGroup>();
             LayoutDocumentPane parentDocumentPane = layoutElement.Parent as LayoutDocumentPane;
             int indexOfParentPane = parentDocumentGroup.IndexOfChild(parentDocumentPane);
@@ -658,10 +658,10 @@ namespace H.Controls.Dock.Controls
 
         private bool CanExecuteMoveToPreviousTabGroupCommand(object parameter)
         {
-            if (LayoutElement == null) return false;
-            LayoutDocumentPaneGroup parentDocumentGroup = LayoutElement.FindParent<LayoutDocumentPaneGroup>();
+            if (this.LayoutElement == null) return false;
+            LayoutDocumentPaneGroup parentDocumentGroup = this.LayoutElement.FindParent<LayoutDocumentPaneGroup>();
             return parentDocumentGroup != null &&
-                     LayoutElement.Parent is LayoutDocumentPane parentDocumentPane &&
+                     this.LayoutElement.Parent is LayoutDocumentPane parentDocumentPane &&
                      parentDocumentGroup.ChildrenCount > 1 &&
                      parentDocumentGroup.IndexOfChild(parentDocumentPane) > 0 &&
                      parentDocumentGroup.Children[parentDocumentGroup.IndexOfChild(parentDocumentPane) - 1] is LayoutDocumentPane;
@@ -669,7 +669,7 @@ namespace H.Controls.Dock.Controls
 
         private void ExecuteMoveToPreviousTabGroupCommand(object parameter)
         {
-            LayoutContent layoutElement = LayoutElement;
+            LayoutContent layoutElement = this.LayoutElement;
             LayoutDocumentPaneGroup parentDocumentGroup = layoutElement.FindParent<LayoutDocumentPaneGroup>();
             LayoutDocumentPane parentDocumentPane = layoutElement.Parent as LayoutDocumentPane;
             int indexOfParentPane = parentDocumentGroup.IndexOfChild(parentDocumentPane);
@@ -701,78 +701,78 @@ namespace H.Controls.Dock.Controls
 
         protected virtual void ClearDefaultBindings()
         {
-            if (CloseCommand == _defaultCloseCommand)
+            if (this.CloseCommand == _defaultCloseCommand)
                 BindingOperations.ClearBinding(this, CloseCommandProperty);
-            if (FloatCommand == _defaultFloatCommand)
+            if (this.FloatCommand == _defaultFloatCommand)
                 BindingOperations.ClearBinding(this, FloatCommandProperty);
-            if (DockAsDocumentCommand == _defaultDockAsDocumentCommand)
+            if (this.DockAsDocumentCommand == _defaultDockAsDocumentCommand)
                 BindingOperations.ClearBinding(this, DockAsDocumentCommandProperty);
-            if (CloseAllButThisCommand == _defaultCloseAllButThisCommand)
+            if (this.CloseAllButThisCommand == _defaultCloseAllButThisCommand)
                 BindingOperations.ClearBinding(this, CloseAllButThisCommandProperty);
-            if (CloseAllCommand == _defaultCloseAllCommand)
+            if (this.CloseAllCommand == _defaultCloseAllCommand)
                 BindingOperations.ClearBinding(this, CloseAllCommandProperty);
-            if (ActivateCommand == _defaultActivateCommand)
+            if (this.ActivateCommand == _defaultActivateCommand)
                 BindingOperations.ClearBinding(this, ActivateCommandProperty);
-            if (NewVerticalTabGroupCommand == _defaultNewVerticalTabGroupCommand)
+            if (this.NewVerticalTabGroupCommand == _defaultNewVerticalTabGroupCommand)
                 BindingOperations.ClearBinding(this, NewVerticalTabGroupCommandProperty);
-            if (NewHorizontalTabGroupCommand == _defaultNewHorizontalTabGroupCommand)
+            if (this.NewHorizontalTabGroupCommand == _defaultNewHorizontalTabGroupCommand)
                 BindingOperations.ClearBinding(this, NewHorizontalTabGroupCommandProperty);
-            if (MoveToNextTabGroupCommand == _defaultMoveToNextTabGroupCommand)
+            if (this.MoveToNextTabGroupCommand == _defaultMoveToNextTabGroupCommand)
                 BindingOperations.ClearBinding(this, MoveToNextTabGroupCommandProperty);
-            if (MoveToPreviousTabGroupCommand == _defaultMoveToPreviousTabGroupCommand)
+            if (this.MoveToPreviousTabGroupCommand == _defaultMoveToPreviousTabGroupCommand)
                 BindingOperations.ClearBinding(this, MoveToPreviousTabGroupCommandProperty);
         }
 
         protected virtual void SetDefaultBindings()
         {
-            if (CloseCommand == null)
-                CloseCommand = _defaultCloseCommand;
-            if (FloatCommand == null)
-                FloatCommand = _defaultFloatCommand;
-            if (DockAsDocumentCommand == null)
-                DockAsDocumentCommand = _defaultDockAsDocumentCommand;
-            if (CloseAllButThisCommand == null)
-                CloseAllButThisCommand = _defaultCloseAllButThisCommand;
-            if (CloseAllCommand == null)
-                CloseAllCommand = _defaultCloseAllCommand;
-            if (ActivateCommand == null)
-                ActivateCommand = _defaultActivateCommand;
-            if (NewVerticalTabGroupCommand == null)
-                NewVerticalTabGroupCommand = _defaultNewVerticalTabGroupCommand;
-            if (NewHorizontalTabGroupCommand == null)
-                NewHorizontalTabGroupCommand = _defaultNewHorizontalTabGroupCommand;
-            if (MoveToNextTabGroupCommand == null)
-                MoveToNextTabGroupCommand = _defaultMoveToNextTabGroupCommand;
-            if (MoveToPreviousTabGroupCommand == null)
-                MoveToPreviousTabGroupCommand = _defaultMoveToPreviousTabGroupCommand;
+            if (this.CloseCommand == null)
+                this.CloseCommand = _defaultCloseCommand;
+            if (this.FloatCommand == null)
+                this.FloatCommand = _defaultFloatCommand;
+            if (this.DockAsDocumentCommand == null)
+                this.DockAsDocumentCommand = _defaultDockAsDocumentCommand;
+            if (this.CloseAllButThisCommand == null)
+                this.CloseAllButThisCommand = _defaultCloseAllButThisCommand;
+            if (this.CloseAllCommand == null)
+                this.CloseAllCommand = _defaultCloseAllCommand;
+            if (this.ActivateCommand == null)
+                this.ActivateCommand = _defaultActivateCommand;
+            if (this.NewVerticalTabGroupCommand == null)
+                this.NewVerticalTabGroupCommand = _defaultNewVerticalTabGroupCommand;
+            if (this.NewHorizontalTabGroupCommand == null)
+                this.NewHorizontalTabGroupCommand = _defaultNewHorizontalTabGroupCommand;
+            if (this.MoveToNextTabGroupCommand == null)
+                this.MoveToNextTabGroupCommand = _defaultMoveToNextTabGroupCommand;
+            if (this.MoveToPreviousTabGroupCommand == null)
+                this.MoveToPreviousTabGroupCommand = _defaultMoveToPreviousTabGroupCommand;
 
-            IsSelected = LayoutElement.IsSelected;
-            IsActive = LayoutElement.IsActive;
-            CanClose = LayoutElement.CanClose;
+            this.IsSelected = this.LayoutElement.IsSelected;
+            this.IsActive = this.LayoutElement.IsActive;
+            this.CanClose = this.LayoutElement.CanClose;
         }
 
         protected virtual void OnVisibilityChanged()
         {
-            if (LayoutElement != null && Visibility == Visibility.Collapsed)
-                LayoutElement.Close();
+            if (this.LayoutElement != null && this.Visibility == Visibility.Collapsed)
+                this.LayoutElement.Close();
         }
 
         internal virtual void Attach(LayoutContent model)
         {
-            LayoutElement = model;
-            Model = model.Content;
+            this.LayoutElement = model;
+            this.Model = model.Content;
             InitDefaultCommands();
-            LayoutElement.IsSelectedChanged += LayoutElement_IsSelectedChanged;
-            LayoutElement.IsActiveChanged += LayoutElement_IsActiveChanged;
-            DataContext = this;
+            this.LayoutElement.IsSelectedChanged += LayoutElement_IsSelectedChanged;
+            this.LayoutElement.IsActiveChanged += LayoutElement_IsActiveChanged;
+            this.DataContext = this;
         }
 
         internal virtual void Detach()
         {
-            LayoutElement.IsSelectedChanged -= LayoutElement_IsSelectedChanged;
-            LayoutElement.IsActiveChanged -= LayoutElement_IsActiveChanged;
-            LayoutElement = null;
-            Model = null;
+            this.LayoutElement.IsSelectedChanged -= LayoutElement_IsSelectedChanged;
+            this.LayoutElement.IsActiveChanged -= LayoutElement_IsActiveChanged;
+            this.LayoutElement = null;
+            this.Model = null;
         }
 
         internal void _ClearDefaultBindings() => ClearDefaultBindings();
@@ -791,7 +791,7 @@ namespace H.Controls.Dock.Controls
             using (_isActiveReentrantFlag.Enter())
             {
                 Binding bnd = BindingOperations.GetBinding(this, IsActiveProperty);
-                IsActive = LayoutElement.IsActive;
+                this.IsActive = this.LayoutElement.IsActive;
                 Binding bnd2 = BindingOperations.GetBinding(this, IsActiveProperty);
             }
         }
@@ -801,7 +801,7 @@ namespace H.Controls.Dock.Controls
             if (!_isSelectedReentrantFlag.CanEnter) return;
             using (_isSelectedReentrantFlag.Enter())
             {
-                IsSelected = LayoutElement.IsSelected;
+                this.IsSelected = this.LayoutElement.IsSelected;
             }
         }
 
@@ -809,7 +809,7 @@ namespace H.Controls.Dock.Controls
 
         private void OnToolTipChanged()
         {
-            if (LayoutElement != null) LayoutElement.ToolTip = ToolTip;
+            if (this.LayoutElement != null) this.LayoutElement.ToolTip = this.ToolTip;
         }
 
         private static void OnVisibilityChanged(DependencyObject s, DependencyPropertyChangedEventArgs e) => ((LayoutItem)s).OnVisibilityChanged();

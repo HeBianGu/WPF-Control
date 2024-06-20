@@ -1,6 +1,4 @@
-﻿using H.Extensions.Unit;
-
-namespace H.Extensions.Unit
+﻿namespace H.Extensions.Unit
 {
     public abstract class PhysicalQuantityUnitableBase : IUnitable
     {

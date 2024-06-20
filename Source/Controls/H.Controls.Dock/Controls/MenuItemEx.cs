@@ -87,13 +87,13 @@ namespace H.Controls.Dock.Controls
         {
             if (_reentrantFlag) return;
             _reentrantFlag = true;
-            if (IconTemplateSelector != null)
+            if (this.IconTemplateSelector != null)
             {
-                DataTemplate dataTemplateToUse = IconTemplateSelector.SelectTemplate(Icon, this);
-                if (dataTemplateToUse != null) Icon = dataTemplateToUse.LoadContent();
+                DataTemplate dataTemplateToUse = this.IconTemplateSelector.SelectTemplate(this.Icon, this);
+                if (dataTemplateToUse != null) this.Icon = dataTemplateToUse.LoadContent();
             }
-            else if (IconTemplate != null)
-                Icon = IconTemplate.LoadContent();
+            else if (this.IconTemplate != null)
+                this.Icon = this.IconTemplate.LoadContent();
             _reentrantFlag = false;
         }
 

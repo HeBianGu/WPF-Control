@@ -1,10 +1,8 @@
-﻿using H.Presenters.Common;
-using H.Providers.Ioc;
+﻿using H.Providers.Ioc;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using System.Threading.Tasks;
-using System.Windows;
 
 namespace H.Modules.Messages.Dialog
 {

@@ -42,30 +42,30 @@ namespace H.Extensions.StoryBoard
                 Completed?.Invoke(element);
                 return this;
             }
-            DoubleAnimation animation = new DoubleAnimation(FromValue, ToValue, Duration);
-            Storyboard.Children.Add(animation);
+            DoubleAnimation animation = new DoubleAnimation(this.FromValue, this.ToValue, this.Duration);
+            this.Storyboard.Children.Add(animation);
             Storyboard.SetTarget(animation, element);
-            Storyboard.SetTargetProperty(animation, PropertyPath);
-            if (CompletedEvent != null)
+            Storyboard.SetTargetProperty(animation, this.PropertyPath);
+            if (this.CompletedEvent != null)
             {
-                Storyboard.Completed += CompletedEvent;
+                this.Storyboard.Completed += this.CompletedEvent;
             }
             if (Completed != null)
             {
-                Storyboard.Completed += (l, k) =>
+                this.Storyboard.Completed += (l, k) =>
                 {
                     Completed?.Invoke(element);
                 };
             }
-            Timeline.SetDesiredFrameRate(Storyboard, StoryboardSetting.DesiredFrameRate);
+            Timeline.SetDesiredFrameRate(this.Storyboard, StoryboardSetting.DesiredFrameRate);
             init?.Invoke(this);
-            animation.EasingFunction = Easing;
-            Storyboard.Begin();
+            animation.EasingFunction = this.Easing;
+            this.Storyboard.Begin();
             return this;
         }
         public override StoryboardEngineBase Stop()
         {
-            Storyboard.Stop();
+            this.Storyboard.Stop();
             return this;
         }
     }

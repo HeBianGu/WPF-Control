@@ -10,7 +10,7 @@ namespace H.App.FileManager
         {
             if (obj is ModelBindable<fm_dd_file> file)
             {
-                return file.Model.SeeLater == Value;
+                return file.Model.SeeLater == this.Value;
             }
             return false;
         }

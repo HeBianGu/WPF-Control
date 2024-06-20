@@ -24,7 +24,7 @@ namespace H.Controls.Dock
         /// <param name="document"></param>
         public AnchorableHiddenEventArgs(LayoutAnchorable anchorable)
         {
-            Anchorable = anchorable;
+            this.Anchorable = anchorable;
         }
 
         /// <summary>

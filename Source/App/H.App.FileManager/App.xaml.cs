@@ -1,15 +1,14 @@
 ﻿using H.Controls.FavoriteBox;
 using H.Controls.TagBox;
+using H.DataBases.Share;
 using H.Extensions.ApplicationBase;
+using H.Modules.Identity;
+using H.Modules.Operation;
 using H.Providers.Ioc;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Windows;
 using System.Windows.Media;
-using System.Text.Json;
-using H.Modules.Identity;
-using H.DataBases.Share;
-using H.Modules.Operation;
 
 namespace H.App.FileManager
 {
@@ -70,12 +69,12 @@ namespace H.App.FileManager
             services.AddSetting();
             services.AddAppService();
             services.AddTorrent();
-            services.AddFFMpeg(x=>
+            services.AddFFMpeg(x =>
             {
                 x.WorkingDirectory = "D:\\ffmpeg";
             });
 
-            services.AddSingleton<IScheduledTaskService,ProjectSaveScheduledTaskService>();
+            services.AddSingleton<IScheduledTaskService, ProjectSaveScheduledTaskService>();
 
 
             //  Do ：身份认证

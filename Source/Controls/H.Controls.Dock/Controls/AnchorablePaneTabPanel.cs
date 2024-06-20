@@ -27,7 +27,7 @@ namespace H.Controls.Dock.Controls
         {
             double totWidth = 0;
             double maxHeight = 0;
-            System.Collections.Generic.IEnumerable<UIElement> visibleChildren = Children.Cast<UIElement>().Where(ch => ch.Visibility != System.Windows.Visibility.Collapsed);
+            System.Collections.Generic.IEnumerable<UIElement> visibleChildren = this.Children.Cast<UIElement>().Where(ch => ch.Visibility != System.Windows.Visibility.Collapsed);
             foreach (FrameworkElement child in visibleChildren)
             {
                 child.Measure(new Size(double.PositiveInfinity, availableSize.Height));
@@ -49,7 +49,7 @@ namespace H.Controls.Dock.Controls
 
         protected override Size ArrangeOverride(Size finalSize)
         {
-            System.Collections.Generic.IEnumerable<UIElement> visibleChildren = Children.Cast<UIElement>().Where(ch => ch.Visibility != System.Windows.Visibility.Collapsed);
+            System.Collections.Generic.IEnumerable<UIElement> visibleChildren = this.Children.Cast<UIElement>().Where(ch => ch.Visibility != System.Windows.Visibility.Collapsed);
 
             double finalWidth = finalSize.Width;
             double desideredWidth = visibleChildren.Sum(ch => ch.DesiredSize.Width);

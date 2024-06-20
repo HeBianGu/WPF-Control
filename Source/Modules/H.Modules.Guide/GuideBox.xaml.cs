@@ -198,7 +198,7 @@ namespace H.Modules.Guide
             set { SetValue(BackgroundProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty BackgroundProperty =
             DependencyProperty.Register("Background", typeof(Brush), typeof(GuideBox), new FrameworkPropertyMetadata(default(Brush), (d, e) =>
             {

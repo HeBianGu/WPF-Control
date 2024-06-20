@@ -45,7 +45,7 @@ namespace H.Extensions.ValueConverter
         {
             if (value == null)
                 return null;
-           return value.ToString().ToFileEx().GetFileSizeToDisplay();
+            return value.ToString().ToFileEx().GetFileSizeToDisplay();
         }
     }
 }

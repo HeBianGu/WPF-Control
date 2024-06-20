@@ -39,7 +39,7 @@ namespace H.Controls.ColorPicker.Converters
             if (!double.TryParse(((string)value).Replace(',', '.'), NumberStyles.Float, CultureInfo.InvariantCulture,
                     out var result))
                 return DependencyProperty.UnsetValue;
-            return MathHelper.Clamp(result, Min, Max);
+            return MathHelper.Clamp(result, this.Min, this.Max);
         }
     }
 }

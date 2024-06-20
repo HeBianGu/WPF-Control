@@ -11,7 +11,7 @@ namespace H.Controls.PropertyGrid
         public ItemAddingEventArgs(RoutedEvent itemAddingEvent, object itemAdding)
           : base(itemAddingEvent)
         {
-            Item = itemAdding;
+            this.Item = itemAdding;
         }
 
         #endregion

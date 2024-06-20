@@ -91,7 +91,7 @@ namespace H.Controls.Chart2D
             set { SetValue(DisplayNameProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty DisplayNameProperty =
             DependencyProperty.Register("DisplayName", typeof(string), typeof(LayerGroup), new FrameworkPropertyMetadata(default(string), FrameworkPropertyMetadataOptions.Inherits, (d, e) =>
             {
@@ -150,7 +150,7 @@ namespace H.Controls.Chart2D
             set { SetValue(UseDrawOnceProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty UseDrawOnceProperty =
             DependencyProperty.Register("UseDrawOnce", typeof(bool), typeof(ViewLayerGroup), new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.Inherits, (d, e) =>
             {
@@ -177,7 +177,7 @@ namespace H.Controls.Chart2D
             set { SetValue(xAxisProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty xAxisProperty =
             DependencyProperty.Register("xAxis", typeof(DoubleCollection), typeof(ViewLayerGroup), new FrameworkPropertyMetadata(new DoubleCollection(), FrameworkPropertyMetadataOptions.Inherits, (d, e) =>
             {
@@ -199,7 +199,7 @@ namespace H.Controls.Chart2D
             set { SetValue(yAxisProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty yAxisProperty =
             DependencyProperty.Register("yAxis", typeof(DoubleCollection), typeof(ViewLayerGroup), new FrameworkPropertyMetadata(new DoubleCollection(), FrameworkPropertyMetadataOptions.Inherits, (d, e) =>
             {
@@ -222,7 +222,7 @@ namespace H.Controls.Chart2D
             set { SetValue(xDatasProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty xDatasProperty =
             DependencyProperty.Register("xDatas", typeof(DoubleCollection), typeof(ViewLayerGroup), new FrameworkPropertyMetadata(new DoubleCollection(), FrameworkPropertyMetadataOptions.Inherits, (d, e) =>
             {
@@ -246,7 +246,7 @@ namespace H.Controls.Chart2D
             set { SetValue(yDatasProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty yDatasProperty =
             DependencyProperty.Register("yDatas", typeof(DoubleCollection), typeof(ViewLayerGroup), new FrameworkPropertyMetadata(new DoubleCollection(), FrameworkPropertyMetadataOptions.Inherits, (d, e) =>
             {
@@ -269,7 +269,7 @@ namespace H.Controls.Chart2D
             set { SetValue(yAxisCountProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty yAxisCountProperty =
             DependencyProperty.Register("yAxisCount", typeof(int), typeof(ViewLayerGroup), new PropertyMetadata(5, (d, e) =>
             {
@@ -289,7 +289,7 @@ namespace H.Controls.Chart2D
             set { SetValue(xAxisCountProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty xAxisCountProperty =
             DependencyProperty.Register("xAxisCount", typeof(int), typeof(ViewLayerGroup), new PropertyMetadata(10, (d, e) =>
             {
@@ -309,7 +309,7 @@ namespace H.Controls.Chart2D
             set { SetValue(yAxisAutoProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty yAxisAutoProperty =
             DependencyProperty.Register("yAxisAuto", typeof(bool), typeof(ViewLayerGroup), new PropertyMetadata(false, (d, e) =>
              {
@@ -328,7 +328,7 @@ namespace H.Controls.Chart2D
             set { SetValue(xAxisAutoProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty xAxisAutoProperty =
             DependencyProperty.Register("xAxisAuto", typeof(bool), typeof(ViewLayerGroup), new PropertyMetadata(false, (d, e) =>
              {
@@ -431,7 +431,7 @@ namespace H.Controls.Chart2D
             set { SetValue(DrawOnceProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty DrawOnceProperty =
             DependencyProperty.Register("DrawOnce", typeof(bool), typeof(ViewLayerGroup), new PropertyMetadata(default(bool), (d, e) =>
             {
@@ -487,7 +487,7 @@ namespace H.Controls.Chart2D
             set { SetValue(DataMapProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty DataMapProperty =
             DependencyProperty.Register("DataMap", typeof(ObservableCollection<double[]>), typeof(DataLayerGroup), new PropertyMetadata(default(ObservableCollection<double[]>), (d, e) =>
             {

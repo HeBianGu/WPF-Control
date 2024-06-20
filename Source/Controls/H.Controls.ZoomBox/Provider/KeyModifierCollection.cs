@@ -16,7 +16,7 @@ namespace H.Controls.ZoomBox
         {
             get
             {
-                if (Count == 0)
+                if (this.Count == 0)
                     return true;
 
                 // if the Blocked modifier is present, then the action is not allowed

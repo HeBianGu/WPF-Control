@@ -17,7 +17,7 @@ namespace H.Modules.License
             public string PrivateKey { get; set; }
         }
 
-  
+
         public static RSAKey GetRASKey()
         {
             RSACryptoServiceProvider.UseMachineKeyStore = true;

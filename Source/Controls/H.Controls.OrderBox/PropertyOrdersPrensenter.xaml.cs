@@ -100,7 +100,7 @@ namespace H.Controls.OrderBox
         public bool Save(out string message)
         {
             message = null;
-            if (string.IsNullOrEmpty(ID))
+            if (string.IsNullOrEmpty(this.ID))
             {
                 message = "ID为空";
                 return false;

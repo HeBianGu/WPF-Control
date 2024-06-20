@@ -56,7 +56,7 @@ namespace H.Controls.Dock.Controls
         /// <summary>Provides derived classes an opportunity to handle changes to the <see cref="Model"/> property.</summary>
         protected virtual void OnModelChanged(DependencyPropertyChangedEventArgs e)
         {
-            SetLayoutItem(Model?.Root.Manager.GetLayoutItemFromModel(Model));
+            SetLayoutItem(this.Model?.Root.Manager.GetLayoutItemFromModel(this.Model));
             //UpdateLogicalParent();
         }
 
@@ -133,7 +133,7 @@ namespace H.Controls.Dock.Controls
         {
             _isMouseDown = false;
             base.OnMouseLeftButtonUp(e);
-            Model.IsActive = true;
+            this.Model.IsActive = true;
         }
 
         /// <inheritdoc />
@@ -155,7 +155,7 @@ namespace H.Controls.Dock.Controls
         {
             base.OnMouseEnter(e);
             if (_draggingItem == null || _draggingItem == this || e.LeftButton != MouseButtonState.Pressed) return;
-            LayoutContent model = Model;
+            LayoutContent model = this.Model;
             ILayoutContainer container = model.Parent;
             ILayoutPane containerPane = model.Parent as ILayoutPane;
             if (containerPane is LayoutAnchorablePane layoutAnchorablePane && !layoutAnchorablePane.CanRepositionItems) return;

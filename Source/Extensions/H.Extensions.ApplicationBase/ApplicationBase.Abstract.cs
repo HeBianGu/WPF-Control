@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace H.Extensions.ApplicationBase
 {
@@ -95,7 +94,7 @@ namespace H.Extensions.ApplicationBase
             };
             if (presenter != null)
             {
-                bool? r = Dispatcher.Invoke(() =>
+                bool? r = this.Dispatcher.Invoke(() =>
                 {
                     return IocMessage.Window.ShowAction(presenter, x =>
                      {
@@ -151,7 +150,7 @@ namespace H.Extensions.ApplicationBase
             }
 
             {
-             
+
                 int sleep = 1000;
                 var presenter = Ioc.Services.GetService<ILoginedSplashViewPresenter>();
                 Func<IDialog, ILoginedSplashViewPresenter, bool?> func = (c, s) =>
@@ -166,7 +165,7 @@ namespace H.Extensions.ApplicationBase
                             if (s != null)
                                 s.Message = $"正在加载设置<{x.Name}>数据...";
                             Thread.Sleep(20);
-                        },out string message);
+                        }, out string message);
                         if (r == false)
                             s.Message = message;
                         Thread.Sleep(sleep);
@@ -201,7 +200,7 @@ namespace H.Extensions.ApplicationBase
                 };
                 if (presenter != null)
                 {
-                    bool? r = Dispatcher.Invoke(() =>
+                    bool? r = this.Dispatcher.Invoke(() =>
                     {
                         return IocMessage.Window.ShowAction(presenter, x =>
                         {

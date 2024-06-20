@@ -1,6 +1,5 @@
 ﻿using H.Providers.Ioc;
 using H.Providers.Mvvm;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Threading;
 
 namespace H.Controls.Step

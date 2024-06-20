@@ -14,8 +14,8 @@ namespace H.Presenters.Design
         public ColumnPropertyInfo(PropertyInfo t)
         {
             DisplayAttribute display = t.GetCustomAttribute<DisplayAttribute>();
-            Header = display?.Name ?? t.Name;
-            PropertyInfo = t;
+            this.Header = display?.Name ?? t.Name;
+            this.PropertyInfo = t;
         }
         [XmlIgnore]
         [Browsable(false)]
@@ -71,8 +71,8 @@ namespace H.Presenters.Design
 
         public override string ToString()
         {
-            string v = IsVisible ? "[显示]" : "[隐藏]";
-            return $"列名：{v} {Header}";
+            string v = this.IsVisible ? "[显示]" : "[隐藏]";
+            return $"列名：{v} {this.Header}";
         }
     }
 }

@@ -19,7 +19,7 @@ namespace H.Controls.FilterColumnDataGrid
 
         public FilterCommon()
         {
-            PreviouslyFilteredItems = new HashSet<object>(EqualityComparer<object>.Default);
+            this.PreviouslyFilteredItems = new HashSet<object>(EqualityComparer<object>.Default);
         }
 
         #endregion Public Constructors
@@ -41,7 +41,7 @@ namespace H.Controls.FilterColumnDataGrid
             set
             {
                 isFiltered = value;
-                OnPropertyChanged(nameof(IsFiltered));
+                OnPropertyChanged(nameof(this.IsFiltered));
             }
         }
 
@@ -50,19 +50,19 @@ namespace H.Controls.FilterColumnDataGrid
         #region Public Methods
         public void AddFilter(Dictionary<string, Predicate<object>> criteria)
         {
-            if (IsFiltered)
+            if (this.IsFiltered)
                 return;
             bool Predicate(object o)
             {
-                var value = FieldType == typeof(DateTime)
-                    ? ((DateTime?)o.GetPropertyValue(FieldName))?.Date
-                    : o.GetPropertyValue(FieldName);
+                var value = this.FieldType == typeof(DateTime)
+                    ? ((DateTime?)o.GetPropertyValue(this.FieldName))?.Date
+                    : o.GetPropertyValue(this.FieldName);
 
-                return !PreviouslyFilteredItems.Contains(value);
+                return !this.PreviouslyFilteredItems.Contains(value);
             }
-            criteria.Add(FieldName, Predicate);
+            criteria.Add(this.FieldName, Predicate);
 
-            IsFiltered = true;
+            this.IsFiltered = true;
         }
 
         #endregion Public Methods

@@ -5,7 +5,7 @@ namespace H.Controls.PDF
 {
     public class PDFBoxCommands
     {
-        public static RoutedUICommand Open { get; } = new RoutedUICommand("打开",nameof(Open), typeof(Commands)) ;
+        public static RoutedUICommand Open { get; } = new RoutedUICommand("打开", nameof(Open), typeof(Commands));
         public static RoutedUICommand SaveAsImages { get; } = new RoutedUICommand("另存为图片", nameof(SaveAsImages), typeof(Commands));
         public static RoutedUICommand RenderToMemory { get; } = new RoutedUICommand("加载数据", nameof(RenderToMemory), typeof(Commands));
         public static RoutedUICommand ShowBookmarks { get; } = new RoutedUICommand("显示标签", nameof(ShowBookmarks), typeof(Commands));

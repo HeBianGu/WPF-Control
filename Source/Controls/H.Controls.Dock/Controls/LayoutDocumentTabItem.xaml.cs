@@ -63,10 +63,10 @@ namespace H.Controls.Dock.Controls
         /// <summary>Provides derived classes an opportunity to handle changes to the <see cref="Model"/> property.</summary>
         protected virtual void OnModelChanged(DependencyPropertyChangedEventArgs e)
         {
-            LayoutItem layoutItem = (Model?.Root?.Manager)?.GetLayoutItemFromModel(Model);
+            LayoutItem layoutItem = (this.Model?.Root?.Manager)?.GetLayoutItemFromModel(this.Model);
             SetLayoutItem(layoutItem);
             if (layoutItem != null)
-                Model.TabItem = this;
+                this.Model.TabItem = this;
             //UpdateLogicalParent();
         }
 
@@ -103,8 +103,8 @@ namespace H.Controls.Dock.Controls
             base.OnMouseLeftButtonDown(e);
             CaptureMouse();
             _allowDrag = false;
-            Model.IsActive = true;
-            if (Model is LayoutDocument layoutDocument && !layoutDocument.CanMove) return;
+            this.Model.IsActive = true;
+            if (this.Model is LayoutDocument layoutDocument && !layoutDocument.CanMove) return;
             if (e.ClickCount != 1) return;
             _mouseDownPoint = e.GetPosition(this);
             _isMouseDown = true;
@@ -126,7 +126,7 @@ namespace H.Controls.Dock.Controls
                     _allowDrag = true;
                 }
             }
-            if (!IsMouseCaptured || !_allowDrag) return;
+            if (!this.IsMouseCaptured || !_allowDrag) return;
             Point mousePosInScreenCoord = this.PointToScreenDPI(e.GetPosition(this));
             if (!_parentDocumentTabPanelScreenArea.Contains(mousePosInScreenCoord))
                 StartDraggingFloatingWindowForContent();
@@ -135,15 +135,15 @@ namespace H.Controls.Dock.Controls
                 int indexOfTabItemWithMouseOver = _otherTabsScreenArea.FindIndex(r => r.Contains(mousePosInScreenCoord));
                 if (indexOfTabItemWithMouseOver < 0) return;
                 LayoutContent targetModel = _otherTabs[indexOfTabItemWithMouseOver].Content as LayoutContent;
-                ILayoutContainer container = Model.Parent;
-                ILayoutPane containerPane = Model.Parent as ILayoutPane;
+                ILayoutContainer container = this.Model.Parent;
+                ILayoutPane containerPane = this.Model.Parent as ILayoutPane;
 
                 if (containerPane is LayoutDocumentPane layoutDocumentPane && !layoutDocumentPane.CanRepositionItems) return;
                 if (containerPane.Parent is LayoutDocumentPaneGroup layoutDocumentPaneGroup && !layoutDocumentPaneGroup.CanRepositionItems) return;
 
                 List<ILayoutElement> childrenList = container.Children.ToList();
-                containerPane.MoveChild(childrenList.IndexOf(Model), childrenList.IndexOf(targetModel));
-                Model.IsActive = true;
+                containerPane.MoveChild(childrenList.IndexOf(this.Model), childrenList.IndexOf(targetModel));
+                this.Model.IsActive = true;
                 _parentDocumentTabPanel.UpdateLayout();
                 UpdateDragDetails();
             }
@@ -154,7 +154,7 @@ namespace H.Controls.Dock.Controls
         {
             _isMouseDown = false;
             _allowDrag = false;
-            if (IsMouseCaptured) ReleaseMouseCapture();
+            if (this.IsMouseCaptured) ReleaseMouseCapture();
             base.OnMouseLeftButtonUp(e);
         }
 
@@ -175,9 +175,9 @@ namespace H.Controls.Dock.Controls
         /// <inheritdoc />
         protected override void OnMouseDown(MouseButtonEventArgs e)
         {
-            if (LayoutItem != null && e.ChangedButton == MouseButton.Middle && LayoutItem.CloseCommand.CanExecute(null))
+            if (this.LayoutItem != null && e.ChangedButton == MouseButton.Middle && this.LayoutItem.CloseCommand.CanExecute(null))
             {
-                LayoutItem.CloseCommand.Execute(null);
+                this.LayoutItem.CloseCommand.Execute(null);
             }
 
             base.OnMouseDown(e);
@@ -210,8 +210,8 @@ namespace H.Controls.Dock.Controls
             ReleaseMouseCapture();
             // BD: 17.08.2020 Remove that bodge and handle CanClose=false && CanHide=true in XAML
             //if (Model is LayoutAnchorable layoutAnchorable) layoutAnchorable.ResetCanCloseInternal();
-            DockingManager manager = Model.Root.Manager;
-            manager.StartDraggingFloatingWindowForContent(Model);
+            DockingManager manager = this.Model.Root.Manager;
+            manager.StartDraggingFloatingWindowForContent(this.Model);
         }
 
         #endregion Private Methods

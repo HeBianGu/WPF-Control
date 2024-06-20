@@ -28,7 +28,7 @@ namespace H.Controls.Chart2D
             set { SetValue(WidthPercentProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty WidthPercentProperty =
             DependencyProperty.Register("WidthPercent", typeof(double), typeof(BarBase), new PropertyMetadata(0.8, (d, e) =>
             {
@@ -49,7 +49,7 @@ namespace H.Controls.Chart2D
             set { SetValue(ItemPercentProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty ItemPercentProperty =
             DependencyProperty.Register("ItemPercent", typeof(double), typeof(BarBase), new PropertyMetadata(1.0, (d, e) =>
             {
@@ -69,7 +69,7 @@ namespace H.Controls.Chart2D
             set { SetValue(MulCountProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty MulCountProperty =
             DependencyProperty.Register("MulCount", typeof(int), typeof(BarBase), new PropertyMetadata(1, (d, e) =>
             {
@@ -90,7 +90,7 @@ namespace H.Controls.Chart2D
             set { SetValue(MulIndexProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty MulIndexProperty =
             DependencyProperty.Register("MulIndex", typeof(int), typeof(BarBase), new PropertyMetadata(0, (d, e) =>
             {
@@ -187,7 +187,7 @@ namespace H.Controls.Chart2D
             set { SetValue(DataProperty, value); }
         }
 
-        
+
         public static new readonly DependencyProperty DataProperty =
             DependencyProperty.Register("Data", typeof(ObservableCollection<double[]>), typeof(StackBarBase), new PropertyMetadata(new ObservableCollection<double[]>(), (d, e) =>
             {
@@ -216,7 +216,7 @@ namespace H.Controls.Chart2D
             set { SetValue(ForegroundProperty, value); }
         }
 
-        
+
         public static new readonly DependencyProperty ForegroundProperty =
             DependencyProperty.Register("Foreground", typeof(ObservableCollection<Color>), typeof(StackBarBase), new PropertyMetadata(new ObservableCollection<Color>(), (d, e) =>
             {
@@ -479,7 +479,7 @@ namespace H.Controls.Chart2D
             set { SetValue(AnimationDataDataProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty AnimationDataDataProperty =
             DependencyProperty.Register("AnimationData", typeof(DoubleCollection), typeof(yAnimationBar), new PropertyMetadata(default(DoubleCollection), (d, e) =>
              {
@@ -499,7 +499,7 @@ namespace H.Controls.Chart2D
             set { SetValue(DurationProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty DurationProperty =
             DependencyProperty.Register("Duration", typeof(double), typeof(yAnimationBar), new PropertyMetadata(500.0, (d, e) =>
              {

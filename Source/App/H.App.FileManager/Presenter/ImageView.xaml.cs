@@ -1,6 +1,4 @@
-﻿using H.Providers.Mvvm;
-
-namespace H.App.FileManager
+﻿namespace H.App.FileManager
 {
 
 

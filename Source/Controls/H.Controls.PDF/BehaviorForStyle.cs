@@ -1,6 +1,6 @@
-﻿using System.Linq;
+﻿using Microsoft.Xaml.Behaviors;
+using System.Linq;
 using System.Windows;
-using Microsoft.Xaml.Behaviors;
 
 namespace H.Controls.PDF
 {

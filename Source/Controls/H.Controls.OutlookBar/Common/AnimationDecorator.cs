@@ -16,7 +16,7 @@ namespace H.Controls.OutlookBar
         public AnimationDecorator()
             : base()
         {
-            ClipToBounds = true;
+            this.ClipToBounds = true;
         }
 
 
@@ -103,9 +103,9 @@ namespace H.Controls.OutlookBar
 
         private void UnanimatedExpandedChanged(bool expanded)
         {
-            if (Child != null)
+            if (this.Child != null)
             {
-                YOffset = expanded ? 0 : -Child.DesiredSize.Height;
+                this.YOffset = expanded ? 0 : -this.Child.DesiredSize.Height;
             }
         }
 
@@ -115,19 +115,19 @@ namespace H.Controls.OutlookBar
         /// <param name="expanded"></param>
         private void AnimateExpandedChanged(bool expanded)
         {
-            if (Child != null)
+            if (this.Child != null)
             {
-                if (YOffset > 0) YOffset = 0;
-                if (-YOffset > Child.DesiredSize.Height) YOffset = -Child.DesiredSize.Height;
-                DoubleAnimation animation = HeightAnimation;
+                if (this.YOffset > 0) this.YOffset = 0;
+                if (-this.YOffset > this.Child.DesiredSize.Height) this.YOffset = -this.Child.DesiredSize.Height;
+                DoubleAnimation animation = this.HeightAnimation;
                 if (animation == null) animation = CreateDoubleAnimation();
                 animation.From = null;
-                animation.To = expanded ? 0 : -Child.DesiredSize.Height;
+                animation.To = expanded ? 0 : -this.Child.DesiredSize.Height;
                 animation.Completed += new EventHandler(animation_Completed);
                 animating = true;
                 this.BeginAnimation(AnimationDecorator.YOffsetProperty, animation);
 
-                if (OpacityAnimation)
+                if (this.OpacityAnimation)
                 {
                     animation.From = null;
                     animation.To = expanded ? 1 : 0;
@@ -136,7 +136,7 @@ namespace H.Controls.OutlookBar
             }
             else
             {
-                YOffset = int.MinValue;
+                this.YOffset = int.MinValue;
             }
         }
 
@@ -144,7 +144,7 @@ namespace H.Controls.OutlookBar
         {
             DoubleAnimation animation = new DoubleAnimation();
             animation.DecelerationRatio = 0.8;
-            animation.Duration = Duration;
+            animation.Duration = this.Duration;
             return animation;
         }
 
@@ -162,7 +162,7 @@ namespace H.Controls.OutlookBar
         private Double AnimatedResize(Double h)
         {
             Double delta = targetHeight - h;
-            DoubleAnimation animation = HeightAnimation;
+            DoubleAnimation animation = this.HeightAnimation;
             if (animation == null) animation = CreateDoubleAnimation();
             targetHeight = h;
             animation.From = delta;
@@ -225,38 +225,38 @@ namespace H.Controls.OutlookBar
         /// </returns>
         protected override Size MeasureOverride(Size constraint)
         {
-            if (Child == null) return new Size(0, 0);
+            if (this.Child == null) return new Size(0, 0);
             Size size;
 
             if (double.IsInfinity(constraint.Height))
             {
-                Child.Measure(new Size(constraint.Width, Double.PositiveInfinity));
-                Double childHeight = Child.DesiredSize.Height;
+                this.Child.Measure(new Size(constraint.Width, Double.PositiveInfinity));
+                Double childHeight = this.Child.DesiredSize.Height;
                 Double deltaHeight = 0;
-                if (this.AnimateOnContentHeightChanged && this.IsLoaded && IsVisible && CanAnimate)
+                if (this.AnimateOnContentHeightChanged && this.IsLoaded && this.IsVisible && this.CanAnimate)
                 {
                     if (targetHeight != childHeight)
                     {
                         deltaHeight = AnimatedResize(childHeight);
                         if (animating)
                         {
-                            AnimateExpandedChanged(IsExpanded);
+                            AnimateExpandedChanged(this.IsExpanded);
                         }
                     }
                 }
                 else targetHeight = childHeight;
 
-                double w = IsExpanded ? Child.DesiredSize.Width : 0;
-                size = new Size(w, Math.Max(0d, childHeight + YOffset + HeightOffset + deltaHeight));
+                double w = this.IsExpanded ? this.Child.DesiredSize.Width : 0;
+                size = new Size(w, Math.Max(0d, childHeight + this.YOffset + this.HeightOffset + deltaHeight));
 
             }
             else
             {
                 size = base.MeasureOverride(constraint);
             }
-            if (Child != null)
+            if (this.Child != null)
             {
-                Child.IsEnabled = size.Height > 0;
+                this.Child.IsEnabled = size.Height > 0;
             }
             if (size.Height == 0) this.AnimationOpacity = 0;
             return size;
@@ -272,10 +272,10 @@ namespace H.Controls.OutlookBar
         /// </returns>
         protected override Size ArrangeOverride(Size arrangeSize)
         {
-            if (Child == null) return arrangeSize;
+            if (this.Child == null) return arrangeSize;
 
-            Child.Arrange(new Rect(0d, YOffset, arrangeSize.Width, Child.DesiredSize.Height));
-            Double h = Math.Max(0, Child.DesiredSize.Height + YOffset);
+            this.Child.Arrange(new Rect(0d, this.YOffset, arrangeSize.Width, this.Child.DesiredSize.Height));
+            Double h = Math.Max(0, this.Child.DesiredSize.Height + this.YOffset);
             return new Size(arrangeSize.Width, h);
         }
 

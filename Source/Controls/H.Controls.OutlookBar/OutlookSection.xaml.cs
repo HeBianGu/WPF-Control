@@ -19,7 +19,7 @@ namespace H.Controls.OutlookBar
 
         private void buttonClickedEvent(object sender, RoutedEventArgs e)
         {
-            OutlookBar bar = OutlookBar;
+            OutlookBar bar = this.OutlookBar;
             ToggleButton b = e.OriginalSource as ToggleButton;
             if (b != null) b.IsChecked = true;
             if (bar != null)
@@ -60,7 +60,7 @@ namespace H.Controls.OutlookBar
 
         protected virtual void OnSelectedPropertyChanged(bool oldValue, bool newValue)
         {
-            if (newValue) OutlookBar.SelectedSection = this;
+            if (newValue) this.OutlookBar.SelectedSection = this;
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace H.Controls.OutlookBar
 
         void IKeyTipControl.ExecuteKeyTip()
         {
-            IsSelected = true;
+            this.IsSelected = true;
         }
 
         #endregion

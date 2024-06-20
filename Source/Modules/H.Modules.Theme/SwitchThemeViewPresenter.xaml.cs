@@ -1,9 +1,6 @@
 ﻿using H.Providers.Ioc;
 using H.Providers.Mvvm;
-using H.Themes.Default;
 using Microsoft.Extensions.Options;
-using System;
-using System.Windows;
 
 namespace H.Modules.Theme
 {

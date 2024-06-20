@@ -23,28 +23,28 @@ namespace H.Controls.Diagram.Extension
                 IPortData port = CreatePortData();
                 port.Dock = Dock.Left;
                 port.PortType = PortType.Both;
-                PortDatas.Add(port);
+                this.PortDatas.Add(port);
             }
 
             {
                 IPortData port = CreatePortData();
                 port.Dock = Dock.Right;
                 port.PortType = PortType.Both;
-                PortDatas.Add(port);
+                this.PortDatas.Add(port);
             }
 
             {
                 IPortData port = CreatePortData();
                 port.Dock = Dock.Top;
                 port.PortType = PortType.Both;
-                PortDatas.Add(port);
+                this.PortDatas.Add(port);
             }
 
             {
                 IPortData port = CreatePortData();
                 port.Dock = Dock.Bottom;
                 port.PortType = PortType.Both;
-                PortDatas.Add(port);
+                this.PortDatas.Add(port);
             }
         }
 

@@ -18,20 +18,20 @@ namespace H.Modules.Identity
         }
         public User(hi_dd_user model) : base(model)
         {
-            Role = new Role(model.Role);
+            this.Role = new Role(model.Role);
         }
 
         [Browsable(false)]
-        public string ID => Model.ID;
+        public string ID => this.Model.ID;
 
         [Required]
         [Display(Name = "用户名称")]
         public string Name
         {
-            get { return Model.Name; }
+            get { return this.Model.Name; }
             set
             {
-                Model.Name = value;
+                this.Model.Name = value;
                 RaisePropertyChanged();
             }
         }
@@ -41,10 +41,10 @@ namespace H.Modules.Identity
         [Display(Name = "登录名称")]
         public string Account
         {
-            get { return Model.Account; }
+            get { return this.Model.Account; }
             set
             {
-                Model.Account = value;
+                this.Model.Account = value;
                 RaisePropertyChanged();
             }
         }
@@ -54,10 +54,10 @@ namespace H.Modules.Identity
         [Display(Name = "登录密码")]
         public string Password
         {
-            get { return Model.Password; }
+            get { return this.Model.Password; }
             set
             {
-                Model.Password = value;
+                this.Model.Password = value;
                 RaisePropertyChanged();
             }
         }
@@ -77,16 +77,16 @@ namespace H.Modules.Identity
             {
                 _role = value;
                 //this.RoleID = value?.ID;
-                Model.Role = value?.Model;
-                Model.RoleID = value?.Model?.ID;
+                this.Model.Role = value?.Model;
+                this.Model.RoleID = value?.Model?.ID;
                 RaisePropertyChanged();
             }
         }
 
         public virtual bool IsValid(string authorId)
         {
-            if (Role == null) return false;
-            return Role.IsValid(authorId);
+            if (this.Role == null) return false;
+            return this.Role.IsValid(authorId);
         }
     }
 }

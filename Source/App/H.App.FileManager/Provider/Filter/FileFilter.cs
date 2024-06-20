@@ -14,7 +14,7 @@ namespace H.App.FileManager
         {
             if (obj is ModelBindable<fm_dd_file> file)
             {
-                return Extensions.Split(' ').Any(x => x.Equals(file.Model.Extend?.Trim('.'), StringComparison.OrdinalIgnoreCase));
+                return this.Extensions.Split(' ').Any(x => x.Equals(file.Model.Extend?.Trim('.'), StringComparison.OrdinalIgnoreCase));
             }
             return false;
         }

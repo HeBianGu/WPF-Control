@@ -34,7 +34,7 @@ namespace H.Controls.PropertyGrid
         public PropertyItemCollection(ObservableCollection<PropertyItem> editableCollection)
           : base(editableCollection)
         {
-            EditableCollection = editableCollection;
+            this.EditableCollection = editableCollection;
         }
 
         internal Predicate<object> FilterPredicate
@@ -82,7 +82,7 @@ namespace H.Controls.PropertyGrid
             _preventNotification = true;
             using (GetDefaultView().DeferRefresh())
             {
-                EditableCollection.Clear();
+                this.EditableCollection.Clear();
                 foreach (PropertyItem item in newItems)
                 {
                     this.EditableCollection.Add(item);

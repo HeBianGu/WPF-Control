@@ -53,68 +53,57 @@
                             <h:GridSplitterBox ID="Left">
                                 <Border>
                                     <Grid Background="Red">
-                                        <TextBlock FontSize="100"
-                                                   Text="Center" />
+                                        <TextBlock FontSize="100" Text="Center" />
                                     </Grid>
                                 </Border>
                                 <h:GridSplitterBox.MenuContent>
                                     <Border Background="Yellow">
-                                        <TextBlock FontSize="100"
-                                                   Text="Menu" />
+                                        <TextBlock FontSize="100" Text="Menu" />
                                     </Border>
                                 </h:GridSplitterBox.MenuContent>
                             </h:GridSplitterBox>
                         </TabItem>
 
                         <TabItem Header="right">
-                            <h:GridSplitterBox ID="right"
-                                               Style="{DynamicResource {x:Static h:GridSplitterBox.RightKey}}">
+                            <h:GridSplitterBox ID="right" Style="{DynamicResource {x:Static h:GridSplitterBox.RightKey}}">
                                 <Border>
                                     <Grid>
-                                        <TextBlock FontSize="100"
-                                                   Text="Center" />
+                                        <TextBlock FontSize="100" Text="Center" />
                                     </Grid>
                                 </Border>
                                 <h:GridSplitterBox.MenuContent>
                                     <Border>
-                                        <TextBlock FontSize="100"
-                                                   Text="Menu" />
+                                        <TextBlock FontSize="100" Text="Menu" />
                                     </Border>
                                 </h:GridSplitterBox.MenuContent>
                             </h:GridSplitterBox>
                         </TabItem>
 
                         <TabItem Header="top">
-                            <h:GridSplitterBox ID="top"
-                                               Style="{DynamicResource {x:Static h:GridSplitterBox.TopKey}}">
+                            <h:GridSplitterBox ID="top" Style="{DynamicResource {x:Static h:GridSplitterBox.TopKey}}">
                                 <Border>
                                     <Grid>
-                                        <TextBlock FontSize="100"
-                                                   Text="Center" />
+                                        <TextBlock FontSize="100" Text="Center" />
                                     </Grid>
                                 </Border>
                                 <h:GridSplitterBox.MenuContent>
                                     <Border>
-                                        <TextBlock FontSize="100"
-                                                   Text="Menu" />
+                                        <TextBlock FontSize="100" Text="Menu" />
                                     </Border>
                                 </h:GridSplitterBox.MenuContent>
                             </h:GridSplitterBox>
                         </TabItem>
 
                         <TabItem Header="bottom">
-                            <h:GridSplitterBox ID="bottom"
-                                               Style="{DynamicResource {x:Static h:GridSplitterBox.BottomKey}}">
+                            <h:GridSplitterBox ID="bottom" Style="{DynamicResource {x:Static h:GridSplitterBox.BottomKey}}">
                                 <Border>
                                     <Grid>
-                                        <TextBlock FontSize="100"
-                                                   Text="Center" />
+                                        <TextBlock FontSize="100" Text="Center" />
                                     </Grid>
                                 </Border>
                                 <h:GridSplitterBox.MenuContent>
                                     <Border>
-                                        <TextBlock FontSize="100"
-                                                   Text="Menu" />
+                                        <TextBlock FontSize="100" Text="Menu" />
                                     </Border>
                                 </h:GridSplitterBox.MenuContent>
                             </h:GridSplitterBox>
@@ -124,8 +113,7 @@
             </TabItem>
             <TabItem Header="HorseTextBlock">
                 <DockPanel>
-                    <TextBox DockPanel.Dock="Bottom"
-                             Text="{Binding ElementName=hourse, Path=Text, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox DockPanel.Dock="Bottom" Text="{Binding ElementName=hourse, Path=Text, UpdateSourceTrigger=PropertyChanged}" />
                     <h:HorseTextBlock x:Name="hourse"
                                       ClipToBounds="True"
                                       FontSize="55"
@@ -140,8 +128,7 @@
             </TabItem>
             <TabItem Header="FilterBox">
                 <DockPanel>
-                    <DockPanel DockPanel.Dock="Top"
-                               LastChildFill="False">
+                    <DockPanel DockPanel.Dock="Top" LastChildFill="False">
                         <h:PropertyFilterBox x:Name="fb"
                                              Margin="5"
                                              Type="{x:Type h:Student}" />
@@ -152,8 +139,7 @@
                     <DockPanel DockPanel.Dock="Top">
                         <BulletDecorator Margin="5,0">
                             <BulletDecorator.Bullet>
-                                <TextBlock VerticalAlignment="Center"
-                                           Text="用户姓名  " />
+                                <TextBlock VerticalAlignment="Center" Text="用户姓名  " />
                             </BulletDecorator.Bullet>
                             <h:SelectionFilterBox x:Name="sfb"
                                                   MaxHeight="100"
@@ -170,8 +156,7 @@
                     <DockPanel DockPanel.Dock="Top">
                         <BulletDecorator Margin="5,0">
                             <BulletDecorator.Bullet>
-                                <TextBlock VerticalAlignment="Center"
-                                           Text="用户班级  " />
+                                <TextBlock VerticalAlignment="Center" Text="用户班级  " />
                             </BulletDecorator.Bullet>
                             <h:SelectionFilterBox x:Name="sfb1"
                                                   MaxHeight="100"
@@ -187,8 +172,7 @@
                     <DockPanel DockPanel.Dock="Top">
                         <BulletDecorator Margin="5,0">
                             <BulletDecorator.Bullet>
-                                <TextBlock VerticalAlignment="Center"
-                                           Text="是否启用  " />
+                                <TextBlock VerticalAlignment="Center" Text="是否启用  " />
                             </BulletDecorator.Bullet>
 
                             <h:SelectionFilterBox x:Name="sfb2"
@@ -208,14 +192,12 @@
                             </h:SelectionFilterBox>
                         </BulletDecorator>
                     </DockPanel>
-                    <TextBlock Margin="10"
-                               DockPanel.Dock="Bottom">
+                    <TextBlock Margin="10" DockPanel.Dock="Bottom">
                         <Run Text=" 合计：" />
                         <Run Text="{Binding ElementName=dg, Path=ItemsSource.Count, Mode=OneWay}" />
                     </TextBlock>
 
-                    <TextBlock Margin="10"
-                               DockPanel.Dock="Bottom">
+                    <TextBlock Margin="10" DockPanel.Dock="Bottom">
                         <Behaviors:Interaction.Behaviors>
                             <h:TextBlockCountBehavior ItemsSource="{Binding ElementName=dg, Path=ItemsSource}"
                                                       PropertyName="Name"
@@ -224,16 +206,13 @@
                         </Behaviors:Interaction.Behaviors>
                     </TextBlock>
 
-                    <TextBlock Margin="10"
-                               DockPanel.Dock="Bottom">
+                    <TextBlock Margin="10" DockPanel.Dock="Bottom">
                         <Behaviors:Interaction.Behaviors>
-                            <h:TextBlockFilterCountBehavior DisplayFilter="{Binding ElementName=sfb, Path=Filter}"
-                                                            ItemsSource="{Binding ElementName=dg, Path=ItemsSource}" />
+                            <h:TextBlockFilterCountBehavior DisplayFilter="{Binding ElementName=sfb, Path=Filter}" ItemsSource="{Binding ElementName=dg, Path=ItemsSource}" />
                         </Behaviors:Interaction.Behaviors>
                     </TextBlock>
 
-                    <TextBlock Margin="10"
-                               DockPanel.Dock="Bottom">
+                    <TextBlock Margin="10" DockPanel.Dock="Bottom">
                         <Behaviors:Interaction.Behaviors>
                             <h:TextBlockFilterCountBehavior ItemsSource="{Binding ElementName=dg, Path=ItemsSource}">
                                 <h:TextBlockFilterCountBehavior.DisplayFilter>
@@ -245,8 +224,7 @@
                             </h:TextBlockFilterCountBehavior>
                         </Behaviors:Interaction.Behaviors>
                     </TextBlock>
-                    <TextBlock Margin="10"
-                               DockPanel.Dock="Bottom">
+                    <TextBlock Margin="10" DockPanel.Dock="Bottom">
                         <Behaviors:Interaction.Behaviors>
                             <h:TextBlockFiltersCountBehavior ItemsSource="{Binding ElementName=dg, Path=ItemsSource}">
                                 <h:TextBlockFiltersCountBehavior.DisplayFilters>
@@ -264,8 +242,7 @@
                     </TextBlock>
                     <DataGrid x:Name="dg">
                         <Behaviors:Interaction.Behaviors>
-                            <h:DataGridAutoColumnBehavior DataGridLength="*"
-                                                          Type="{x:Type h:Student}" />
+                            <h:DataGridAutoColumnBehavior DataGridLength="*" Type="{x:Type h:Student}" />
                             <h:ItemsControlFilterBehavior Filter="{Binding ElementName=fb, Path=Filter}"
                                                           Filter1="{Binding ElementName=tfb, Path=Filter}"
                                                           Filter2="{Binding ElementName=sfb, Path=Filter}"
@@ -278,18 +255,15 @@
             </TabItem>
             <TabItem Header="OrderBox">
                 <DockPanel>
-                    <DockPanel DockPanel.Dock="Top"
-                               LastChildFill="False">
+                    <DockPanel DockPanel.Dock="Top" LastChildFill="False">
                         <h:PropertyOrderBox x:Name="ob"
                                             Margin="5"
                                             Type="{x:Type h:Student}" />
                     </DockPanel>
                     <DataGrid>
                         <Behaviors:Interaction.Behaviors>
-                            <h:DataGridAutoColumnBehavior DataGridLength="*"
-                                                          Type="{x:Type h:Student}" />
-                            <h:ItemsControlFilterBehavior ItemsSource="{Binding Students}"
-                                                          Order="{Binding ElementName=ob, Path=Order}" />
+                            <h:DataGridAutoColumnBehavior DataGridLength="*" Type="{x:Type h:Student}" />
+                            <h:ItemsControlFilterBehavior ItemsSource="{Binding Students}" Order="{Binding ElementName=ob, Path=Order}" />
                         </Behaviors:Interaction.Behaviors>
                     </DataGrid>
                 </DockPanel>
@@ -324,19 +298,15 @@
                             <h:ZoomboxView>10 10 100 100</h:ZoomboxView>
                             <h:ZoomboxView>2.0</h:ZoomboxView>-->
                         </h:Zoombox.ViewStack>
-                        <Grid Width="300"
-                              Height="300">
+                        <Grid Width="300" Height="300">
                             <Grid.Background>
                                 <DrawingBrush>
                                     <DrawingBrush.Drawing>
                                         <DrawingGroup>
                                             <DrawingGroup.Children>
-                                                <GeometryDrawing Brush="#00FFFFFF"
-                                                                 Geometry="F1M16,16L0,16 0,0 16,0z" />
-                                                <GeometryDrawing Brush="#FFF6F6F6"
-                                                                 Geometry="F1M16,8L16,13 0,13 0,8 2.632,8 4.303,3 6.716,3 8,6.826 8,3.023 10.838,3.023C11.25,3.023 11.625,3.077 11.951,3.184 12.298,3.295 12.601,3.458 12.848,3.667 13.12,3.899 13.321,4.17 13.452,4.477 13.576,4.764 13.641,5.076 13.641,5.4 13.641,5.676 13.596,5.944 13.508,6.197 13.454,6.346 13.391,6.483 13.316,6.612 13.508,6.82 13.661,7.077 13.766,7.365 13.838,7.563 13.875,7.778 13.895,8z" />
-                                                <GeometryDrawing Brush="#FF424242"
-                                                                 Geometry="F1M4,12L5,12 5,11 4,11z M14,9L14,11 12,11 12,12 15,12 15,9z M11.893,8.234C11.893,7.95 11.792,7.728 11.591,7.564 11.39,7.402 11.092,7.32 10.696,7.32L10,7.32 10,9.18 10.781,9.18C10.968,9.18 11.131,9.156 11.271,9.107 11.409,9.057 11.525,8.992 11.617,8.907 11.71,8.822 11.778,8.722 11.824,8.606 11.871,8.492 11.893,8.367 11.893,8.234 M10,4.844L10,6.5 10.587,6.5C10.913,6.5 11.168,6.42 11.347,6.262 11.527,6.104 11.617,5.879 11.617,5.587 11.617,5.351 11.53,5.168 11.357,5.038 11.185,4.91 10.931,4.844 10.595,4.844z M12.916,8.259C12.916,8.537 12.863,8.784 12.758,8.999 12.652,9.215 12.508,9.395 12.325,9.545 12.144,9.693 11.929,9.807 11.685,9.885 11.439,9.961 11.18,10 10.903,10L10,10 9,10 9,4.023 10,4.023 10.838,4.023C11.146,4.023 11.415,4.061 11.642,4.134 11.868,4.208 12.057,4.308 12.204,4.432 12.351,4.557 12.461,4.703 12.532,4.87 12.605,5.036 12.641,5.213 12.641,5.4 12.641,5.566 12.614,5.722 12.564,5.868 12.511,6.014 12.44,6.146 12.348,6.264 12.256,6.382 12.146,6.485 12.017,6.575 11.889,6.664 11.748,6.733 11.593,6.784L11.593,6.8C11.796,6.827 11.979,6.881 12.144,6.96 12.307,7.04 12.446,7.142 12.561,7.267 12.677,7.391 12.765,7.537 12.825,7.705 12.886,7.871 12.916,8.055 12.916,8.259 M6.394,8L5.511,5.124 4.628,8z M6.7,9L4.321,9 4.021,10 3.019,10 5.023,4 5.997,4 8.01,10 7,10z M8,12L9,12 9,11 8,11z M10,12L11,12 11,11 10,11z M6,12L7,12 7,11 6,11z M2,11L3,11 3,12 1,12 1,9 2,9z" />
+                                                <GeometryDrawing Brush="#00FFFFFF" Geometry="F1M16,16L0,16 0,0 16,0z" />
+                                                <GeometryDrawing Brush="#FFF6F6F6" Geometry="F1M16,8L16,13 0,13 0,8 2.632,8 4.303,3 6.716,3 8,6.826 8,3.023 10.838,3.023C11.25,3.023 11.625,3.077 11.951,3.184 12.298,3.295 12.601,3.458 12.848,3.667 13.12,3.899 13.321,4.17 13.452,4.477 13.576,4.764 13.641,5.076 13.641,5.4 13.641,5.676 13.596,5.944 13.508,6.197 13.454,6.346 13.391,6.483 13.316,6.612 13.508,6.82 13.661,7.077 13.766,7.365 13.838,7.563 13.875,7.778 13.895,8z" />
+                                                <GeometryDrawing Brush="#FF424242" Geometry="F1M4,12L5,12 5,11 4,11z M14,9L14,11 12,11 12,12 15,12 15,9z M11.893,8.234C11.893,7.95 11.792,7.728 11.591,7.564 11.39,7.402 11.092,7.32 10.696,7.32L10,7.32 10,9.18 10.781,9.18C10.968,9.18 11.131,9.156 11.271,9.107 11.409,9.057 11.525,8.992 11.617,8.907 11.71,8.822 11.778,8.722 11.824,8.606 11.871,8.492 11.893,8.367 11.893,8.234 M10,4.844L10,6.5 10.587,6.5C10.913,6.5 11.168,6.42 11.347,6.262 11.527,6.104 11.617,5.879 11.617,5.587 11.617,5.351 11.53,5.168 11.357,5.038 11.185,4.91 10.931,4.844 10.595,4.844z M12.916,8.259C12.916,8.537 12.863,8.784 12.758,8.999 12.652,9.215 12.508,9.395 12.325,9.545 12.144,9.693 11.929,9.807 11.685,9.885 11.439,9.961 11.18,10 10.903,10L10,10 9,10 9,4.023 10,4.023 10.838,4.023C11.146,4.023 11.415,4.061 11.642,4.134 11.868,4.208 12.057,4.308 12.204,4.432 12.351,4.557 12.461,4.703 12.532,4.87 12.605,5.036 12.641,5.213 12.641,5.4 12.641,5.566 12.614,5.722 12.564,5.868 12.511,6.014 12.44,6.146 12.348,6.264 12.256,6.382 12.146,6.485 12.017,6.575 11.889,6.664 11.748,6.733 11.593,6.784L11.593,6.8C11.796,6.827 11.979,6.881 12.144,6.96 12.307,7.04 12.446,7.142 12.561,7.267 12.677,7.391 12.765,7.537 12.825,7.705 12.886,7.871 12.916,8.055 12.916,8.259 M6.394,8L5.511,5.124 4.628,8z M6.7,9L4.321,9 4.021,10 3.019,10 5.023,4 5.997,4 8.01,10 7,10z M8,12L9,12 9,11 8,11z M10,12L11,12 11,11 10,11z M6,12L7,12 7,11 6,11z M2,11L3,11 3,12 1,12 1,9 2,9z" />
                                             </DrawingGroup.Children>
                                         </DrawingGroup>
                                     </DrawingBrush.Drawing>
@@ -353,21 +323,11 @@
             </TabItem>
             <TabItem Header="日志测试">
                 <UniformGrid>
-                    <Button Command="{LogCommand Message=运行日志,
-                                                 Type=Info}"
-                            Content="Info" />
-                    <Button Command="{LogCommand Message=错误日志,
-                                                 Type=Error}"
-                            Content="Error" />
-                    <Button Command="{LogCommand Message=调试日志,
-                                                 Type=Debug}"
-                            Content="Debug" />
-                    <Button Command="{LogCommand Message=警告日志,
-                                                 Type=Warn}"
-                            Content="Warn" />
-                    <Button Command="{LogCommand Message=严重日志,
-                                                 Type=Fatal}"
-                            Content="Fatal" />
+                    <Button Command="{LogCommand Message=运行日志, Type=Info}" Content="Info" />
+                    <Button Command="{LogCommand Message=错误日志, Type=Error}" Content="Error" />
+                    <Button Command="{LogCommand Message=调试日志, Type=Debug}" Content="Debug" />
+                    <Button Command="{LogCommand Message=警告日志, Type=Warn}" Content="Warn" />
+                    <Button Command="{LogCommand Message=严重日志, Type=Fatal}" Content="Fatal" />
                 </UniformGrid>
             </TabItem>
             <TabItem Header="ITree">
@@ -382,8 +342,7 @@
                                 </HierarchicalDataTemplate>
                             </TreeView.ItemTemplate>
                             <TreeView.ItemContainerStyle>
-                                <Style BasedOn="{StaticResource {x:Static h:TreeViewItemKeys.Default}}"
-                                       TargetType="TreeViewItem">
+                                <Style BasedOn="{StaticResource {x:Static h:TreeViewItemKeys.Default}}" TargetType="TreeViewItem">
                                     <Setter Property="h:BehvaiorAttach.Behaviors">
                                         <Setter.Value>
                                             <h:Behaviors>
@@ -405,8 +364,7 @@
                                 </HierarchicalDataTemplate>
                             </TreeView.ItemTemplate>
                             <TreeView.ItemContainerStyle>
-                                <Style BasedOn="{StaticResource {x:Static h:TreeViewItemKeys.Default}}"
-                                       TargetType="TreeViewItem">
+                                <Style BasedOn="{StaticResource {x:Static h:TreeViewItemKeys.Default}}" TargetType="TreeViewItem">
                                     <Setter Property="h:BehvaiorAttach.Behaviors">
                                         <Setter.Value>
                                             <h:Behaviors>
@@ -422,19 +380,35 @@
                             </TreeView.ItemContainerStyle>
                         </TreeView>
                     </TabItem>
+                    <TabItem Header="TreeView - 级联勾选">
+                        <TreeView ItemsSource="{h:ClassTypeTreeDataProvider IsRecursion=True, Type={x:Type FrameworkElement}}">
+                            <TreeView.ItemTemplate>
+                                <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
+                                    <DockPanel>
+                                        <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsChecked, Mode=TwoWay}" />
+                                        <TextBlock x:Name="a"
+                                                   VerticalAlignment="Center"
+                                                   Text="{Binding Model.Name}" />
+                                    </DockPanel>
+
+                                </HierarchicalDataTemplate>
+                            </TreeView.ItemTemplate>
+                            <TreeView.ItemContainerStyle>
+                                <Style BasedOn="{StaticResource {x:Static h:TreeViewItemKeys.Default}}" TargetType="TreeViewItem" />
+                            </TreeView.ItemContainerStyle>
+                        </TreeView>
+                    </TabItem>
                 </TabControl>
             </TabItem>
             <TabItem Header="TreeListView">
                 <h:TreeListView ItemsSource="{ClassTypeTreeDataProvider Type={x:Type FrameworkElement}, IsRecursion=True}">
                     <h:TreeListView.Columns>
                         <GridViewColumnCollection>
-                            <GridViewColumn Width="300"
-                                            Header="Name">
+                            <GridViewColumn Width="300" Header="Name">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <DockPanel>
-                                            <ToggleButton Margin="{Binding Path=Level, Converter={GetLevelToIndentConverter}, RelativeSource={RelativeSource AncestorType={x:Type h:TreeListViewItem}}}"
-                                                          Style="{DynamicResource {x:Static h:ToggleButtonKeys.Tree}}" />
+                                            <ToggleButton Margin="{Binding Path=Level, Converter={GetLevelToIndentConverter}, RelativeSource={RelativeSource AncestorType={x:Type h:TreeListViewItem}}}" Style="{DynamicResource {x:Static h:ToggleButtonKeys.Tree}}" />
                                             <TextBlock Margin="2,0">
                                                 <Run Text="{Binding Model.Name, Mode=OneWay}" />
                                             </TextBlock>
@@ -442,18 +416,14 @@
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn DisplayMemberBinding="{Binding Model.IsClass, Mode=OneWay}"
-                                            Header="IsClass" />
-                            <GridViewColumn DisplayMemberBinding="{Binding Model.IsInterface, Mode=OneWay}"
-                                            Header="IsInterface" />
-                            <GridViewColumn DisplayMemberBinding="{Binding Model.Assembly, Mode=OneWay}"
-                                            Header="Assembly" />
+                            <GridViewColumn DisplayMemberBinding="{Binding Model.IsClass, Mode=OneWay}" Header="IsClass" />
+                            <GridViewColumn DisplayMemberBinding="{Binding Model.IsInterface, Mode=OneWay}" Header="IsInterface" />
+                            <GridViewColumn DisplayMemberBinding="{Binding Model.Assembly, Mode=OneWay}" Header="Assembly" />
                         </GridViewColumnCollection>
                     </h:TreeListView.Columns>
                     <TreeView.ItemTemplate>
                         <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
-                            <TextBlock VerticalAlignment="Center"
-                                       Text="{Binding Model.Name}" />
+                            <TextBlock VerticalAlignment="Center" Text="{Binding Model.Name}" />
                         </HierarchicalDataTemplate>
                     </TreeView.ItemTemplate>
                 </h:TreeListView>
@@ -525,8 +495,7 @@
                         <h:ColorBox ItemsSource="{GetDepthColors}" />
                     </TabItem>
                     <TabItem Header="Available">
-                        <h:ColorBox Height="Auto"
-                                    ItemsSource="{GetAvailableColors}">
+                        <h:ColorBox Height="Auto" ItemsSource="{GetAvailableColors}">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <UniformGrid />
@@ -538,8 +507,7 @@
                         <h:ColorBox ItemsSource="{GetStandardColors}" />
                     </TabItem>
                     <TabItem Header="System">
-                        <h:ColorBox Height="Auto"
-                                    ItemsSource="{GetSystemColors}">
+                        <h:ColorBox Height="Auto" ItemsSource="{GetSystemColors}">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <UniformGrid />
@@ -560,22 +528,18 @@
             </TabItem>
             <TabItem Header="TagBox">
                 <DockPanel>
-                    <StackPanel Width="250"
-                                DockPanel.Dock="Right">
+                    <StackPanel Width="250" DockPanel.Dock="Right">
                         <GroupBox Header="默认标签">
                             <h:TagBox Tags="{Binding SelectedTestViewModel.Value, Mode=TwoWay}" />
                         </GroupBox>
 
                         <GroupBox Header="分组标签">
-                            <h:TagBox GroupName="Test"
-                                      Tags="{Binding SelectedTestViewModel.Value1, Mode=TwoWay}" />
+                            <h:TagBox GroupName="Test" Tags="{Binding SelectedTestViewModel.Value1, Mode=TwoWay}" />
                         </GroupBox>
                     </StackPanel>
-                    <StackPanel Width="250"
-                                DockPanel.Dock="Left">
+                    <StackPanel Width="250" DockPanel.Dock="Left">
                         <GroupBox Header="默认标签">
-                            <h:TagFilterBox x:Name="tagfb"
-                                            PropertyName="Value" />
+                            <h:TagFilterBox x:Name="tagfb" PropertyName="Value" />
                         </GroupBox>
                         <GroupBox Header="分组标签">
                             <h:TagFilterBox x:Name="tagfb1"
@@ -583,8 +547,7 @@
                                             PropertyName="Value1" />
                         </GroupBox>
                     </StackPanel>
-                    <DataGrid AutoGenerateColumns="False"
-                              SelectedItem="{Binding SelectedTestViewModel}">
+                    <DataGrid AutoGenerateColumns="False" SelectedItem="{Binding SelectedTestViewModel}">
                         <Behaviors:Interaction.Behaviors>
                             <h:DataGridAutoColumnBehavior DataGridLength="*"
                                                           Type="{x:Type h:TestBindable}"
@@ -716,12 +679,10 @@
                                                    Height="20"
                                                    ColorState="{Binding ElementName=maindisplay, Path=ColorState, Mode=TwoWay, Delay=10}"
                                                    SecondColorState="{Binding ElementName=maindisplay, Path=SecondColorState, Mode=TwoWay}" />
-                            <TextBlock Margin="5"
-                                       TextWrapping="Wrap">
+                            <TextBlock Margin="5" TextWrapping="Wrap">
                                 Portable Color Picker, styled, alpha hidden, transparent hint color, hsv/hsl fractional part hidden
                             </TextBlock>
-                            <Grid Width="40"
-                                  Height="40">
+                            <Grid Width="40" Height="40">
                                 <h:PortableColorPicker ColorState="{Binding ElementName=maindisplay, Path=ColorState, Mode=TwoWay, Delay=10}"
                                                        HintColor="Transparent"
                                                        SecondColorState="{Binding ElementName=maindisplay, Path=SecondColorState, Mode=TwoWay}"
@@ -762,8 +723,7 @@
                                     ColorState="{Binding ElementName=maindisplay, Path=ColorState, Mode=TwoWay, Delay=10}"
                                     ShowAlpha="False" />
 
-                    <Label Grid.Row="1"
-                           Grid.Column="1">
+                    <Label Grid.Row="1" Grid.Column="1">
                         Color Display, CadetBlue hint color
                     </Label>
                     <h:ColorDisplay x:Name="maindisplay"
@@ -773,8 +733,7 @@
                                     HintColor="CadetBlue"
                                     UseHintColor="True" />
 
-                    <Label Grid.Row="2"
-                           Grid.Column="1">
+                    <Label Grid.Row="2" Grid.Column="1">
                         Color Picker
                     </Label>
                     <ComboBox x:Name="combobox"
@@ -793,8 +752,7 @@
                                     Margin="5"
                                     ColorState="{Binding ElementName=maindisplay, Path=ColorState, Mode=TwoWay, Delay=10}" />
 
-                    <Label Grid.Row="3"
-                           Grid.Column="1">
+                    <Label Grid.Row="3" Grid.Column="1">
                         Color as hex, formatted as either RGBA or ARGB
                     </Label>
                     <StackPanel Grid.Row="3"
@@ -829,8 +787,7 @@
                         </StackPanel>
                     </Border>
 
-                    <Label Grid.Row="0"
-                           Grid.Column="2">
+                    <Label Grid.Row="0" Grid.Column="2">
                         Standard Color Picker, styled, scalable, transparent hint color
                     </Label>
                     <h:StandardColorPicker x:Name="standard_picker"
@@ -860,31 +817,27 @@
                             <h:TextBoxUpdateSourceOnKeyDownBebavior />
                         </Behaviors:Interaction.Behaviors>
                     </TextBox>
-                    <TextBlock Margin="0,5"
-                               Text="{Binding Byte}" />
+                    <TextBlock Margin="0,5" Text="{Binding Byte}" />
                     <TextBox Text="{Binding Millimeter, Converter={h:MillimeterUnitableConverter}}">
                         <Behaviors:Interaction.Behaviors>
                             <h:TextBoxUpdateSourceOnKeyDownBebavior />
                         </Behaviors:Interaction.Behaviors>
                     </TextBox>
-                    <TextBlock Margin="0,5"
-                               Text="{Binding Millimeter}" />
+                    <TextBlock Margin="0,5" Text="{Binding Millimeter}" />
 
                     <TextBox Text="{Binding Weight, Converter={h:UnitableValueConverter UnitableType={x:Type h:WeightUnitable}, Digits=3}}">
                         <Behaviors:Interaction.Behaviors>
                             <h:TextBoxUpdateSourceOnKeyDownBebavior />
                         </Behaviors:Interaction.Behaviors>
                     </TextBox>
-                    <TextBlock Margin="0,5"
-                               Text="{Binding Weight}" />
+                    <TextBlock Margin="0,5" Text="{Binding Weight}" />
 
                     <TextBox Text="{Binding Time, Converter={h:UnitableValueConverter UnitableType={x:Type h:TimeUnitable}}}">
                         <Behaviors:Interaction.Behaviors>
                             <h:TextBoxUpdateSourceOnKeyDownBebavior />
                         </Behaviors:Interaction.Behaviors>
                     </TextBox>
-                    <TextBlock Margin="0,5"
-                               Text="{Binding Time}" />
+                    <TextBlock Margin="0,5" Text="{Binding Time}" />
 
 
                     <TextBox Text="{Binding Lengh, Converter={h:UnitableValueConverter UnitableType={x:Type h:LengthUnitable}}}">
@@ -892,16 +845,14 @@
                             <h:TextBoxUpdateSourceOnKeyDownBebavior />
                         </Behaviors:Interaction.Behaviors>
                     </TextBox>
-                    <TextBlock Margin="0,5"
-                               Text="{Binding Lengh}" />
+                    <TextBlock Margin="0,5" Text="{Binding Lengh}" />
 
                     <TextBox Text="{Binding Lengh, Converter={h:UnitableValueConverter UnitableType={x:Type h:FrequencyUnitable}}}">
                         <Behaviors:Interaction.Behaviors>
                             <h:TextBoxUpdateSourceOnKeyDownBebavior />
                         </Behaviors:Interaction.Behaviors>
                     </TextBox>
-                    <TextBlock Margin="0,5"
-                               Text="{Binding Lengh}" />
+                    <TextBlock Margin="0,5" Text="{Binding Lengh}" />
                 </StackPanel>
             </TabItem>
             <TabItem Header="QRCoderBox">
@@ -910,8 +861,7 @@
                                     DockPanel.Dock="Right"
                                     HideInheritedProperties="True"
                                     SelectedObject="{Binding ElementName=qrb}" />
-                    <h:QRCoderBox x:Name="qrb"
-                                  PlainText="123456789" />
+                    <h:QRCoderBox x:Name="qrb" PlainText="123456789" />
                 </DockPanel>
             </TabItem>
             <TabItem Header="ScheduleBox">
@@ -921,8 +871,7 @@
                             <h:TestScheduleJob Name="测试1">
                                 <h:TestScheduleJob.Triggers>
                                     <h:DataTimeTrigger />
-                                    <h:RepeatTrigger Interval="00:00:40"
-                                                     RepeatCount="50" />
+                                    <h:RepeatTrigger Interval="00:00:40" RepeatCount="50" />
                                 </h:TestScheduleJob.Triggers>
                             </h:TestScheduleJob>
                             <h:TestScheduleJob Name="测试2" />
@@ -946,8 +895,7 @@
             </TabItem>
             <TabItem Header="Feedback">
                 <DockPanel>
-                    <Button Command="{h:ShowFeedbackCommand}"
-                            Content="用户反馈" />
+                    <Button Command="{h:ShowFeedbackCommand}" Content="用户反馈" />
                 </DockPanel>
             </TabItem>
             <TabItem Header="FilterColumnDataGrid">

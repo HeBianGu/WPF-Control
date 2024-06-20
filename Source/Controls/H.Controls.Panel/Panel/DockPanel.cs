@@ -241,7 +241,7 @@ namespace H.Controls.Panel
 
                 Func<int, double> GetLen = index =>
                    {
-                       if (IsFull && (children.Count - 1) % 2 == 1 && index >= count)
+                       if (this.IsFull && (children.Count - 1) % 2 == 1 && index >= count)
                        {
                            return finalSize.Width / (count - 1);
                        }
@@ -404,7 +404,7 @@ namespace H.Controls.Panel
 
                 Func<int, double> GetLen = index =>
                 {
-                    if (IsFull && (children.Count - 1) % 2 == 1 && index >= count)
+                    if (this.IsFull && (children.Count - 1) % 2 == 1 && index >= count)
                     {
                         return finalSize.Height / (count - 1);
                     }

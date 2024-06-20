@@ -82,7 +82,7 @@ namespace H.Controls.Form
         protected override void SetValue(ObservableCollection<object> value)
         {
             object to = this.ChangeType(value);
-            this.PropertyInfo.SetValue(Obj, to);
+            this.PropertyInfo.SetValue(this.Obj, to);
         }
 
         protected abstract object ChangeType(ObservableCollection<object> value);

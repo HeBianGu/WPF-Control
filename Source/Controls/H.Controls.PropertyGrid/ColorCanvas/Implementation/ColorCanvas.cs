@@ -219,7 +219,7 @@ namespace H.Controls.PropertyGrid
         protected virtual void OnHexadecimalStringChanged(string oldValue, string newValue)
         {
             string newColorString = GetFormatedColorString(newValue);
-            string currentColorString = GetFormatedColorString(SelectedColor);
+            string currentColorString = GetFormatedColorString(this.SelectedColor);
             if (!currentColorString.Equals(newColorString))
             {
                 Color? col = null;
@@ -295,7 +295,7 @@ namespace H.Controls.PropertyGrid
 
         protected virtual void OnUsingAlphaChannelChanged()
         {
-            SetHexadecimalStringProperty(GetFormatedColorString(SelectedColor), false);
+            SetHexadecimalStringProperty(GetFormatedColorString(this.SelectedColor), false);
         }
 
         #endregion //UsingAlphaChannel
@@ -356,11 +356,11 @@ namespace H.Controls.PropertyGrid
             if (_hexadecimalTextBox != null)
                 _hexadecimalTextBox.LostFocus += new RoutedEventHandler(HexadecimalTextBox_LostFocus);
 
-            UpdateRGBValues(SelectedColor);
-            UpdateColorShadeSelectorPosition(SelectedColor);
+            UpdateRGBValues(this.SelectedColor);
+            UpdateColorShadeSelectorPosition(this.SelectedColor);
 
             // When changing theme, HexadecimalString needs to be set since it is not binded.
-            SetHexadecimalTextBoxTextProperty(GetFormatedColorString(SelectedColor));
+            SetHexadecimalTextBoxTextProperty(GetFormatedColorString(this.SelectedColor));
         }
 
         protected override void OnKeyDown(KeyEventArgs e)
@@ -467,12 +467,12 @@ namespace H.Controls.PropertyGrid
 
         private void UpdateSelectedColor()
         {
-            SelectedColor = Color.FromArgb(A, R, G, B);
+            this.SelectedColor = Color.FromArgb(this.A, this.R, this.G, this.B);
         }
 
         private void UpdateSelectedColor(Color? color)
         {
-            SelectedColor = ((color != null) && color.HasValue)
+            this.SelectedColor = ((color != null) && color.HasValue)
                             ? Color.FromArgb(color.Value.A, color.Value.R, color.Value.G, color.Value.B)
                             : null;
         }
@@ -484,10 +484,10 @@ namespace H.Controls.PropertyGrid
 
             _surpressPropertyChanged = true;
 
-            A = color.Value.A;
-            R = color.Value.R;
-            G = color.Value.G;
-            B = color.Value.B;
+            this.A = color.Value.A;
+            this.R = color.Value.R;
+            this.G = color.Value.G;
+            this.B = color.Value.B;
 
             _surpressPropertyChanged = false;
         }
@@ -554,23 +554,23 @@ namespace H.Controls.PropertyGrid
                 V = 1 - p.Y
             };
             Color currentColor = ColorUtilities.ConvertHsvToRgb(hsv.H, hsv.S, hsv.V);
-            currentColor.A = A;
+            currentColor.A = this.A;
             _updateSpectrumSliderValue = false;
-            SelectedColor = currentColor;
+            this.SelectedColor = currentColor;
             _updateSpectrumSliderValue = true;
-            SetHexadecimalStringProperty(GetFormatedColorString(SelectedColor), false);
+            SetHexadecimalStringProperty(GetFormatedColorString(this.SelectedColor), false);
         }
 
         private string GetFormatedColorString(Color? colorToFormat)
         {
             if ((colorToFormat == null) || !colorToFormat.HasValue)
                 return string.Empty;
-            return ColorUtilities.FormatColorString(colorToFormat.ToString(), UsingAlphaChannel);
+            return ColorUtilities.FormatColorString(colorToFormat.ToString(), this.UsingAlphaChannel);
         }
 
         private string GetFormatedColorString(string stringToFormat)
         {
-            return ColorUtilities.FormatColorString(stringToFormat, UsingAlphaChannel);
+            return ColorUtilities.FormatColorString(stringToFormat, this.UsingAlphaChannel);
         }
 
         private void SetHexadecimalStringProperty(string newValue, bool modifyFromUI)
@@ -589,18 +589,18 @@ namespace H.Controls.PropertyGrid
                         }
                         ColorConverter.ConvertFromString(newValue);
                     }
-                    HexadecimalString = newValue;
+                    this.HexadecimalString = newValue;
                 }
                 catch
                 {
                     //When HexadecimalString is changed via UI and hexadecimal format is bad, keep the previous HexadecimalString.
-                    SetHexadecimalTextBoxTextProperty(HexadecimalString);
+                    SetHexadecimalTextBoxTextProperty(this.HexadecimalString);
                 }
             }
             else
             {
                 //When HexadecimalString is changed via Code-Behind, hexadecimal format will be evaluated in OnCoerceHexadecimalString()
-                HexadecimalString = newValue;
+                this.HexadecimalString = newValue;
             }
         }
 

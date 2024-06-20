@@ -34,7 +34,7 @@ namespace H.Modules.Identity
         {
             hi_dd_role m = new hi_dd_role();
             RoleEditPresenter roleViewModel = new RoleEditPresenter(m);
-            bool? dialog = await IocMessage.Dialog.Show(roleViewModel,x =>
+            bool? dialog = await IocMessage.Dialog.Show(roleViewModel, x =>
             {
                 x.DialogButton = DialogButton.Sumit;
                 x.Title = "新增";
@@ -54,7 +54,7 @@ namespace H.Modules.Identity
             if (entity == null)
                 return;
             RoleEditPresenter roleViewModel = new RoleEditPresenter(entity);
-            bool? r = await IocMessage.Dialog.Show(roleViewModel,x=>
+            bool? r = await IocMessage.Dialog.Show(roleViewModel, x =>
             {
                 x.DialogButton = DialogButton.Sumit;
                 x.Title = "编辑";

@@ -704,7 +704,7 @@ namespace H.Extensions.XmlSerialize
         {
             for (int i = 0; i < 11; i++)
             {
-                MyProperty.Add(i);
+                this.MyProperty.Add(i);
             }
         }
         public string Name { get; set; } = "Name";

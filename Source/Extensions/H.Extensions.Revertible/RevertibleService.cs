@@ -115,7 +115,7 @@ namespace H.Extensions.Revertible
         {
             if (this.CanRedo)
             {
-                IRevertible revertible = this._revertibles[++Position];
+                IRevertible revertible = this._revertibles[++this.Position];
                 revertible.Redo();
             }
         }
@@ -124,7 +124,7 @@ namespace H.Extensions.Revertible
         {
             if (this.CanUndo)
             {
-                IRevertible revertible = this._revertibles[Position--];
+                IRevertible revertible = this._revertibles[this.Position--];
                 revertible.Undo();
             }
         }

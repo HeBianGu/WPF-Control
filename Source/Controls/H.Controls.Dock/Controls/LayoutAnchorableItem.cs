@@ -71,7 +71,7 @@ namespace H.Controls.Dock.Controls
         /// <summary>Coerces the <see cref="HideCommand"/> value.</summary>
         private static object CoerceHideCommandValue(DependencyObject d, object value) => value;
 
-        private bool CanExecuteHideCommand(object parameter) => LayoutElement != null && _anchorable.CanHide;
+        private bool CanExecuteHideCommand(object parameter) => this.LayoutElement != null && _anchorable.CanHide;
 
         private void ExecuteHideCommand(object parameter) => _anchorable?.Root?.Manager?.ExecuteHideCommand(_anchorable);
 
@@ -105,8 +105,8 @@ namespace H.Controls.Dock.Controls
 
         private bool CanExecuteAutoHideCommand(object parameter)
         {
-            if (LayoutElement == null) return false;
-            if (LayoutElement.FindParent<LayoutAnchorableFloatingWindow>() != null) return false;//is floating
+            if (this.LayoutElement == null) return false;
+            if (this.LayoutElement.FindParent<LayoutAnchorableFloatingWindow>() != null) return false;//is floating
             return _anchorable.CanAutoHide;
         }
 
@@ -140,9 +140,9 @@ namespace H.Controls.Dock.Controls
         /// <summary>Coerces the <see cref="DockCommand"/> value.</summary>
         private static object CoerceDockCommandValue(DependencyObject d, object value) => value;
 
-        private bool CanExecuteDockCommand(object parameter) => LayoutElement?.FindParent<LayoutAnchorableFloatingWindow>() != null;
+        private bool CanExecuteDockCommand(object parameter) => this.LayoutElement?.FindParent<LayoutAnchorableFloatingWindow>() != null;
 
-        private void ExecuteDockCommand(object parameter) => LayoutElement.Root.Manager.ExecuteDockCommand(_anchorable);
+        private void ExecuteDockCommand(object parameter) => this.LayoutElement.Root.Manager.ExecuteDockCommand(_anchorable);
 
         #endregion DockCommand
 
@@ -242,19 +242,19 @@ namespace H.Controls.Dock.Controls
         /// <inheritdoc />
         protected override void ClearDefaultBindings()
         {
-            if (HideCommand == _defaultHideCommand) BindingOperations.ClearBinding(this, HideCommandProperty);
-            if (AutoHideCommand == _defaultAutoHideCommand) BindingOperations.ClearBinding(this, AutoHideCommandProperty);
-            if (DockCommand == _defaultDockCommand) BindingOperations.ClearBinding(this, DockCommandProperty);
+            if (this.HideCommand == _defaultHideCommand) BindingOperations.ClearBinding(this, HideCommandProperty);
+            if (this.AutoHideCommand == _defaultAutoHideCommand) BindingOperations.ClearBinding(this, AutoHideCommandProperty);
+            if (this.DockCommand == _defaultDockCommand) BindingOperations.ClearBinding(this, DockCommandProperty);
             base.ClearDefaultBindings();
         }
 
         /// <inheritdoc />
         protected override void SetDefaultBindings()
         {
-            if (HideCommand == null) HideCommand = _defaultHideCommand;
-            if (AutoHideCommand == null) AutoHideCommand = _defaultAutoHideCommand;
-            if (DockCommand == null) DockCommand = _defaultDockCommand;
-            Visibility = _anchorable.IsVisible ? Visibility.Visible : Visibility.Hidden;
+            if (this.HideCommand == null) this.HideCommand = _defaultHideCommand;
+            if (this.AutoHideCommand == null) this.AutoHideCommand = _defaultAutoHideCommand;
+            if (this.DockCommand == null) this.DockCommand = _defaultDockCommand;
+            this.Visibility = _anchorable.IsVisible ? Visibility.Visible : Visibility.Hidden;
             base.SetDefaultBindings();
         }
 
@@ -265,7 +265,7 @@ namespace H.Controls.Dock.Controls
             {
                 using (_visibilityReentrantFlag.Enter())
                 {
-                    switch (Visibility)
+                    switch (this.Visibility)
                     {
                         case Visibility.Hidden: case Visibility.Collapsed: _anchorable.HideAnchorable(false); break;
                         case Visibility.Visible: _anchorable.Show(); break;
@@ -284,7 +284,7 @@ namespace H.Controls.Dock.Controls
             if (_anchorable?.Root == null || !_anchorableVisibilityReentrantFlag.CanEnter) return;
             using (_anchorableVisibilityReentrantFlag.Enter())
             {
-                Visibility = _anchorable.IsVisible ? Visibility.Visible : Visibility.Hidden;
+                this.Visibility = _anchorable.IsVisible ? Visibility.Visible : Visibility.Hidden;
             }
         }
 

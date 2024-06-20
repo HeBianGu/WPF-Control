@@ -83,16 +83,16 @@ namespace H.Controls.Dock.Controls
         // so no further processing occurs.
         private void PreviewMouseRightButtonUpCallback(MouseButtonEventArgs e)
         {
-            if (!e.Handled && DropDownContextMenu != null)
+            if (!e.Handled && this.DropDownContextMenu != null)
             {
                 // Fix for multi-dpi aware aplications
-                DropDownContextMenu.PlacementTarget = e.Source as UIElement;
+                this.DropDownContextMenu.PlacementTarget = e.Source as UIElement;
                 //DropDownContextMenu.PlacementTarget = null;
-                DropDownContextMenu.Placement = PlacementMode.MousePoint;
-                DropDownContextMenu.HorizontalOffset = 0d;
-                DropDownContextMenu.VerticalOffset = 0d;
-                DropDownContextMenu.DataContext = DropDownContextMenuDataContext;
-                DropDownContextMenu.IsOpen = true;
+                this.DropDownContextMenu.Placement = PlacementMode.MousePoint;
+                this.DropDownContextMenu.HorizontalOffset = 0d;
+                this.DropDownContextMenu.VerticalOffset = 0d;
+                this.DropDownContextMenu.DataContext = this.DropDownContextMenuDataContext;
+                this.DropDownContextMenu.IsOpen = true;
 
                 e.Handled = true;
             }

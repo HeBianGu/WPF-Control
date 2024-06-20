@@ -58,7 +58,7 @@ namespace H.Controls.Dock.Layout
         /// <inheritdoc cref="IXmlSerializable"/>
         public virtual void WriteXml(XmlWriter writer)
         {
-            foreach (ILayoutElement child in Children)
+            foreach (ILayoutElement child in this.Children)
             {
                 Type type = child.GetType();
                 XmlSerializer serializer = XmlSerializersCache.GetSerializer(type);

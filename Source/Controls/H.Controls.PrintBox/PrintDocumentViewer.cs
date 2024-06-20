@@ -1,10 +1,7 @@
 ﻿
 
-using System.Windows.Controls;
-using System.Windows.Documents.Serialization;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Printing;
+using System.Windows.Controls;
 
 namespace H.Controls.PrintBox
 {

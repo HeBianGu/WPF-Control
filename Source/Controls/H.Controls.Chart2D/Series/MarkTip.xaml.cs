@@ -139,7 +139,7 @@ namespace H.Controls.Chart2D
             set { SetValue(MarkTipTypeProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty MarkTipTypeProperty =
             DependencyProperty.Register("MarkTipType", typeof(MarkTipType), typeof(FlagTip), new PropertyMetadata(default(MarkTipType), (d, e) =>
             {

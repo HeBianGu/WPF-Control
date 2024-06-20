@@ -20,7 +20,7 @@ namespace H.Extensions.Attach
             obj.SetValue(CaptionCornerRadiusProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty CaptionCornerRadiusProperty =
             DependencyProperty.RegisterAttached("CaptionCornerRadius", typeof(CornerRadius), typeof(Cattach), new FrameworkPropertyMetadata(default(CornerRadius), FrameworkPropertyMetadataOptions.Inherits, OnCaptionCornerRadiusChanged));
 
@@ -44,7 +44,7 @@ namespace H.Extensions.Attach
             obj.SetValue(CaptionBackgroundProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty CaptionBackgroundProperty =
             DependencyProperty.RegisterAttached("CaptionBackground", typeof(Brush), typeof(Cattach), new FrameworkPropertyMetadata(default(Brush), FrameworkPropertyMetadataOptions.Inherits, OnCaptionBackgroundChanged));
 
@@ -68,7 +68,7 @@ namespace H.Extensions.Attach
             obj.SetValue(CaptionForegroundProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty CaptionForegroundProperty =
             DependencyProperty.RegisterAttached("CaptionForeground", typeof(Brush), typeof(Cattach), new FrameworkPropertyMetadata(default(Brush), FrameworkPropertyMetadataOptions.Inherits, OnCaptionForegroundChanged));
 
@@ -92,7 +92,7 @@ namespace H.Extensions.Attach
             obj.SetValue(CaptionBorderBrushProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty CaptionBorderBrushProperty =
             DependencyProperty.RegisterAttached("CaptionBorderBrush", typeof(Brush), typeof(Cattach), new FrameworkPropertyMetadata(default(Brush), FrameworkPropertyMetadataOptions.Inherits, OnCaptionBorderBrushChanged));
 
@@ -116,7 +116,7 @@ namespace H.Extensions.Attach
             obj.SetValue(CaptionHeightProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty CaptionHeightProperty =
             DependencyProperty.RegisterAttached("CaptionHeight", typeof(double), typeof(Cattach), new FrameworkPropertyMetadata(default(double), FrameworkPropertyMetadataOptions.Inherits, OnCaptionHeightChanged));
 
@@ -140,7 +140,7 @@ namespace H.Extensions.Attach
             obj.SetValue(CaptionBorderThicknessProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty CaptionBorderThicknessProperty =
             DependencyProperty.RegisterAttached("CaptionBorderThickness", typeof(Thickness), typeof(Cattach), new FrameworkPropertyMetadata(default(Thickness), FrameworkPropertyMetadataOptions.Inherits, OnCaptionBorderThicknessChanged));
 
@@ -164,7 +164,7 @@ namespace H.Extensions.Attach
             obj.SetValue(CaptionHorizontalAlignmentProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty CaptionHorizontalAlignmentProperty =
             DependencyProperty.RegisterAttached("CaptionHorizontalAlignment", typeof(HorizontalAlignment), typeof(Cattach), new PropertyMetadata(default(HorizontalAlignment), OnCaptionHorizontalAlignmentChanged));
 
@@ -188,7 +188,7 @@ namespace H.Extensions.Attach
             obj.SetValue(CaptionVerticalAlignmentProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty CaptionVerticalAlignmentProperty =
             DependencyProperty.RegisterAttached("CaptionVerticalAlignment", typeof(VerticalAlignment), typeof(Cattach), new PropertyMetadata(default(VerticalAlignment), OnCaptionVerticalAlignmentChanged));
 
@@ -212,7 +212,7 @@ namespace H.Extensions.Attach
             obj.SetValue(CaptionMarginProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty CaptionMarginProperty =
             DependencyProperty.RegisterAttached("CaptionMargin", typeof(Thickness), typeof(Cattach), new PropertyMetadata(default(Thickness), OnCaptionMarginChanged));
 
@@ -236,7 +236,7 @@ namespace H.Extensions.Attach
             obj.SetValue(CaptionFontSizeProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty CaptionFontSizeProperty =
             DependencyProperty.RegisterAttached("CaptionFontSize", typeof(double), typeof(Cattach), new PropertyMetadata(15.0, OnCaptionFontSizeChanged));
 
@@ -260,7 +260,7 @@ namespace H.Extensions.Attach
             obj.SetValue(CaptionLeftTemplateProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty CaptionLeftTemplateProperty =
             DependencyProperty.RegisterAttached("CaptionLeftTemplate", typeof(ControlTemplate), typeof(Cattach), new PropertyMetadata(default(ControlTemplate), OnCaptionLeftTemplateChanged));
 
@@ -284,7 +284,7 @@ namespace H.Extensions.Attach
             obj.SetValue(CaptionRightTemplateProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty CaptionRightTemplateProperty =
             DependencyProperty.RegisterAttached("CaptionRightTemplate", typeof(ControlTemplate), typeof(Cattach), new PropertyMetadata(default(ControlTemplate), OnCaptionRightTemplateChanged));
 
@@ -308,7 +308,7 @@ namespace H.Extensions.Attach
             obj.SetValue(CaptionCenterTemplateProperty, value);
         }
 
-       
+
         public static readonly DependencyProperty CaptionCenterTemplateProperty =
             DependencyProperty.RegisterAttached("CaptionCenterTemplate", typeof(ControlTemplate), typeof(Cattach), new PropertyMetadata(default(ControlTemplate), OnCaptionCenterTemplateChanged));
 

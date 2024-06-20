@@ -8,8 +8,8 @@ namespace H.Modules.Messages.Notice
     {
         public SuccessMessagePresenter()
         {
-            Geometry = GeometryFactory.Create(Geometrys.Success);
-            Level = 1;
+            this.Geometry = GeometryFactory.Create(Geometrys.Success);
+            this.Level = 1;
         }
     }
 }

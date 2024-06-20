@@ -77,9 +77,9 @@ namespace H.Controls.PropertyGrid
 
         protected override void SetValidSpinDirection()
         {
-            if (Value.HasValue && double.IsInfinity(Value.Value) && (Spinner != null))
+            if (this.Value.HasValue && double.IsInfinity(this.Value.Value) && (this.Spinner != null))
             {
-                Spinner.ValidSpinDirection = ValidSpinDirections.None;
+                this.Spinner.ValidSpinDirection = ValidSpinDirections.None;
             }
             else
             {

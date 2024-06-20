@@ -4,14 +4,14 @@
     {
         public Piece(int index)
         {
-            Index = index;
+            this.Index = index;
         }
 
         public Piece(int index, int size, Sha1Hash hash)
         {
-            Index = index;
-            Size = size;
-            Hash = hash;
+            this.Index = index;
+            this.Size = size;
+            this.Hash = hash;
         }
 
         public int Index { get; }

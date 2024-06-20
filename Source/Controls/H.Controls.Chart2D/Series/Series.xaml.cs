@@ -25,7 +25,7 @@ namespace H.Controls.Chart2D
             set { SetValue(LineStyleProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty LineStyleProperty =
             DependencyProperty.Register("LineStyle", typeof(Style), typeof(Series), new PropertyMetadata(default(Style), (d, e) =>
              {
@@ -44,7 +44,7 @@ namespace H.Controls.Chart2D
             set { SetValue(ScatterStyleProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty ScatterStyleProperty =
             DependencyProperty.Register("ScatterStyle", typeof(Style), typeof(Series), new PropertyMetadata(default(Style), (d, e) =>
              {
@@ -64,7 +64,7 @@ namespace H.Controls.Chart2D
             set { SetValue(BarStyleProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty BarStyleProperty =
             DependencyProperty.Register("BarStyle", typeof(Style), typeof(Series), new PropertyMetadata(default(Style), (d, e) =>
              {

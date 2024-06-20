@@ -64,11 +64,11 @@ namespace H.Controls.Dock.Layout
         /// <summary>Standard class constructor</summary>
         public LayoutRoot()
         {
-            RightSide = new LayoutAnchorSide();
-            LeftSide = new LayoutAnchorSide();
-            TopSide = new LayoutAnchorSide();
-            BottomSide = new LayoutAnchorSide();
-            RootPanel = new LayoutPanel(new LayoutDocumentPane());
+            this.RightSide = new LayoutAnchorSide();
+            this.LeftSide = new LayoutAnchorSide();
+            this.TopSide = new LayoutAnchorSide();
+            this.BottomSide = new LayoutAnchorSide();
+            this.RootPanel = new LayoutPanel(new LayoutDocumentPane());
         }
 
         #endregion Constructors
@@ -98,21 +98,21 @@ namespace H.Controls.Dock.Layout
             set
             {
                 if (_rootPanel == value) return;
-                RaisePropertyChanging(nameof(RootPanel));
-                LayoutContent activeContent = ActiveContent;
+                RaisePropertyChanging(nameof(this.RootPanel));
+                LayoutContent activeContent = this.ActiveContent;
                 ILayoutRoot activeRoot = activeContent?.Root;
                 if (_rootPanel != null && _rootPanel.Parent == this) _rootPanel.Parent = null;
                 _rootPanel = value ?? new LayoutPanel(new LayoutDocumentPane());
                 _rootPanel.Parent = this;
-                if (ActiveContent == null && activeRoot == this && activeContent != null)
+                if (this.ActiveContent == null && activeRoot == this && activeContent != null)
                 {
-                    ActiveContent = activeContent;
-                    if (ActiveContent != activeContent)
+                    this.ActiveContent = activeContent;
+                    if (this.ActiveContent != activeContent)
                     {
-                        ActiveContent = activeContent;
+                        this.ActiveContent = activeContent;
                     }
                 }
-                RaisePropertyChanged(nameof(RootPanel));
+                RaisePropertyChanged(nameof(this.RootPanel));
             }
         }
 
@@ -123,10 +123,10 @@ namespace H.Controls.Dock.Layout
             set
             {
                 if (_topSide == value) return;
-                RaisePropertyChanging(nameof(TopSide));
+                RaisePropertyChanging(nameof(this.TopSide));
                 _topSide = value;
                 if (_topSide != null) _topSide.Parent = this;
-                RaisePropertyChanged(nameof(TopSide));
+                RaisePropertyChanged(nameof(this.TopSide));
             }
         }
 
@@ -137,10 +137,10 @@ namespace H.Controls.Dock.Layout
             set
             {
                 if (_rightSide == value) return;
-                RaisePropertyChanging(nameof(RightSide));
+                RaisePropertyChanging(nameof(this.RightSide));
                 _rightSide = value;
                 if (_rightSide != null) _rightSide.Parent = this;
-                RaisePropertyChanged(nameof(RightSide));
+                RaisePropertyChanged(nameof(this.RightSide));
             }
         }
 
@@ -151,10 +151,10 @@ namespace H.Controls.Dock.Layout
             set
             {
                 if (value == _leftSide) return;
-                RaisePropertyChanging(nameof(LeftSide));
+                RaisePropertyChanging(nameof(this.LeftSide));
                 _leftSide = value;
                 if (_leftSide != null) _leftSide.Parent = this;
-                RaisePropertyChanged(nameof(LeftSide));
+                RaisePropertyChanged(nameof(this.LeftSide));
             }
         }
 
@@ -165,10 +165,10 @@ namespace H.Controls.Dock.Layout
             set
             {
                 if (value == _bottomSide) return;
-                RaisePropertyChanging(nameof(BottomSide));
+                RaisePropertyChanging(nameof(this.BottomSide));
                 _bottomSide = value;
                 if (_bottomSide != null) _bottomSide.Parent = this;
-                RaisePropertyChanged(nameof(BottomSide));
+                RaisePropertyChanged(nameof(this.BottomSide));
             }
         }
 
@@ -209,21 +209,21 @@ namespace H.Controls.Dock.Layout
         {
             get
             {
-                if (RootPanel != null)
-                    yield return RootPanel;
+                if (this.RootPanel != null)
+                    yield return this.RootPanel;
                 if (_floatingWindows != null)
                 {
                     foreach (LayoutFloatingWindow floatingWindow in _floatingWindows)
                         yield return floatingWindow;
                 }
-                if (TopSide != null)
-                    yield return TopSide;
-                if (RightSide != null)
-                    yield return RightSide;
-                if (BottomSide != null)
-                    yield return BottomSide;
-                if (LeftSide != null)
-                    yield return LeftSide;
+                if (this.TopSide != null)
+                    yield return this.TopSide;
+                if (this.RightSide != null)
+                    yield return this.RightSide;
+                if (this.BottomSide != null)
+                    yield return this.BottomSide;
+                if (this.LeftSide != null)
+                    yield return this.LeftSide;
                 if (_hiddenAnchorables != null)
                 {
                     foreach (LayoutAnchorable hiddenAnchorable in _hiddenAnchorables)
@@ -247,7 +247,7 @@ namespace H.Controls.Dock.Layout
             }
             set
             {
-                LayoutContent currentValue = ActiveContent;
+                LayoutContent currentValue = this.ActiveContent;
                 if (currentValue != value)
                 {
                     InternalSetActiveContent(currentValue, value);
@@ -261,15 +261,15 @@ namespace H.Controls.Dock.Layout
             get => _lastFocusedDocument.GetValueOrDefault<LayoutContent>();
             private set
             {
-                LayoutContent currentValue = LastFocusedDocument;
+                LayoutContent currentValue = this.LastFocusedDocument;
                 if (currentValue != value)
                 {
-                    RaisePropertyChanging(nameof(LastFocusedDocument));
+                    RaisePropertyChanging(nameof(this.LastFocusedDocument));
                     if (currentValue != null) currentValue.IsLastFocusedDocument = false;
                     _lastFocusedDocument = new WeakReference(value);
-                    currentValue = LastFocusedDocument;
+                    currentValue = this.LastFocusedDocument;
                     if (currentValue != null) currentValue.IsLastFocusedDocument = true;
-                    RaisePropertyChanged(nameof(LastFocusedDocument));
+                    RaisePropertyChanged(nameof(this.LastFocusedDocument));
                 }
             }
         }
@@ -282,9 +282,9 @@ namespace H.Controls.Dock.Layout
             internal set
             {
                 if (value == _manager) return;
-                RaisePropertyChanging(nameof(Manager));
+                RaisePropertyChanging(nameof(this.Manager));
                 _manager = value;
-                RaisePropertyChanged(nameof(Manager));
+                RaisePropertyChanged(nameof(this.Manager));
             }
         }
 
@@ -298,18 +298,18 @@ namespace H.Controls.Dock.Layout
             System.Diagnostics.Trace.Write(new string(' ', tab * 4));
             System.Diagnostics.Trace.WriteLine("RootPanel()");
 
-            RootPanel.ConsoleDump(tab + 1);
+            this.RootPanel.ConsoleDump(tab + 1);
 
             System.Diagnostics.Trace.Write(new string(' ', tab * 4));
             System.Diagnostics.Trace.WriteLine("FloatingWindows()");
 
-            foreach (LayoutFloatingWindow fw in FloatingWindows)
+            foreach (LayoutFloatingWindow fw in this.FloatingWindows)
                 fw.ConsoleDump(tab + 1);
 
             System.Diagnostics.Trace.Write(new string(' ', tab * 4));
             System.Diagnostics.Trace.WriteLine("Hidden()");
 
-            foreach (LayoutAnchorable hidden in Hidden)
+            foreach (LayoutAnchorable hidden in this.Hidden)
                 hidden.ConsoleDump(tab + 1);
         }
 #endif
@@ -320,26 +320,26 @@ namespace H.Controls.Dock.Layout
 
         public void RemoveChild(ILayoutElement element)
         {
-            if (element == RootPanel)
-                RootPanel = null;
+            if (element == this.RootPanel)
+                this.RootPanel = null;
             else if (_floatingWindows != null && _floatingWindows.Contains(element))
                 _floatingWindows.Remove(element as LayoutFloatingWindow);
             else if (_hiddenAnchorables != null && _hiddenAnchorables.Contains(element))
                 _hiddenAnchorables.Remove(element as LayoutAnchorable);
-            else if (element == TopSide)
-                TopSide = null;
-            else if (element == RightSide)
-                RightSide = null;
-            else if (element == BottomSide)
-                BottomSide = null;
-            else if (element == LeftSide)
-                LeftSide = null;
+            else if (element == this.TopSide)
+                this.TopSide = null;
+            else if (element == this.RightSide)
+                this.RightSide = null;
+            else if (element == this.BottomSide)
+                this.BottomSide = null;
+            else if (element == this.LeftSide)
+                this.LeftSide = null;
         }
 
         public void ReplaceChild(ILayoutElement oldElement, ILayoutElement newElement)
         {
-            if (oldElement == RootPanel)
-                RootPanel = (LayoutPanel)newElement;
+            if (oldElement == this.RootPanel)
+                this.RootPanel = (LayoutPanel)newElement;
             else if (_floatingWindows != null && _floatingWindows.Contains(oldElement))
             {
                 int index = _floatingWindows.IndexOf(oldElement as LayoutFloatingWindow);
@@ -352,14 +352,14 @@ namespace H.Controls.Dock.Layout
                 _hiddenAnchorables.Remove(oldElement as LayoutAnchorable);
                 _hiddenAnchorables.Insert(index, newElement as LayoutAnchorable);
             }
-            else if (oldElement == TopSide)
-                TopSide = (LayoutAnchorSide)newElement;
-            else if (oldElement == RightSide)
-                RightSide = (LayoutAnchorSide)newElement;
-            else if (oldElement == BottomSide)
-                BottomSide = (LayoutAnchorSide)newElement;
-            else if (oldElement == LeftSide)
-                LeftSide = (LayoutAnchorSide)newElement;
+            else if (oldElement == this.TopSide)
+                this.TopSide = (LayoutAnchorSide)newElement;
+            else if (oldElement == this.RightSide)
+                this.RightSide = (LayoutAnchorSide)newElement;
+            else if (oldElement == this.BottomSide)
+                this.BottomSide = (LayoutAnchorSide)newElement;
+            else if (oldElement == this.LeftSide)
+                this.LeftSide = (LayoutAnchorSide)newElement;
         }
 
         /// <summary>Removes any empty container not directly referenced by other layout items.</summary>
@@ -437,13 +437,13 @@ namespace H.Controls.Dock.Layout
                     {
                         ILayoutContainer parentGroup = emptyLayoutDocumentPane.Parent;
                         if (!(parentGroup.Parent is LayoutDocumentFloatingWindow)) continue;
-                        int index = RootPanel.IndexOfChild(this.Descendents().OfType<LayoutDocumentPaneGroup>().First());
+                        int index = this.RootPanel.IndexOfChild(this.Descendents().OfType<LayoutDocumentPaneGroup>().First());
                         parentGroup.RemoveChild(emptyLayoutDocumentPane);
                         if (!this.Descendents().OfType<LayoutDocumentPane>().Any())
                         {
                             // Now the last Pane container is deleted, at least one is required for documents to be added.
                             // We did not want to keep an empty window floating, but add a new one to the main window
-                            RootPanel.Children.Insert(index < 0 ? 0 : index, emptyLayoutDocumentPane);
+                            this.RootPanel.Children.Insert(index < 0 ? 0 : index, emptyLayoutDocumentPane);
                         }
                         exitFlag = false;
                         break;
@@ -553,7 +553,7 @@ namespace H.Controls.Dock.Layout
             Debug.Assert(!this.Descendents().OfType<LayoutAnchorablePane>().Any(a => a.ChildrenCount == 0 && a.IsVisible));
             //DumpTree(true);
 #if TRACE
-            RootPanel.ConsoleDump(4);
+            this.RootPanel.ConsoleDump(4);
 #endif
 #endif
         }
@@ -576,27 +576,27 @@ namespace H.Controls.Dock.Layout
             List<ILayoutPanelElement> layoutPanelElements = ReadRootPanel(reader, out Orientation orientation, out bool canDock);
             if (layoutPanelElements != null)
             {
-                RootPanel = new LayoutPanel { Orientation = orientation, CanDock = canDock };
+                this.RootPanel = new LayoutPanel { Orientation = orientation, CanDock = canDock };
                 //Add all children to RootPanel
-                foreach (ILayoutPanelElement panel in layoutPanelElements) RootPanel.Children.Add(panel);
+                foreach (ILayoutPanelElement panel in layoutPanelElements) this.RootPanel.Children.Add(panel);
             }
 
-            TopSide = new LayoutAnchorSide();
-            if (ReadElement(reader) != null) FillLayoutAnchorSide(reader, TopSide);
-            RightSide = new LayoutAnchorSide();
-            if (ReadElement(reader) != null) FillLayoutAnchorSide(reader, RightSide);
-            LeftSide = new LayoutAnchorSide();
-            if (ReadElement(reader) != null) FillLayoutAnchorSide(reader, LeftSide);
-            BottomSide = new LayoutAnchorSide();
-            if (ReadElement(reader) != null) FillLayoutAnchorSide(reader, BottomSide);
+            this.TopSide = new LayoutAnchorSide();
+            if (ReadElement(reader) != null) FillLayoutAnchorSide(reader, this.TopSide);
+            this.RightSide = new LayoutAnchorSide();
+            if (ReadElement(reader) != null) FillLayoutAnchorSide(reader, this.RightSide);
+            this.LeftSide = new LayoutAnchorSide();
+            if (ReadElement(reader) != null) FillLayoutAnchorSide(reader, this.LeftSide);
+            this.BottomSide = new LayoutAnchorSide();
+            if (ReadElement(reader) != null) FillLayoutAnchorSide(reader, this.BottomSide);
 
-            FloatingWindows.Clear();
+            this.FloatingWindows.Clear();
             List<object> floatingWindows = ReadElementList(reader, true);
-            foreach (object floatingWindow in floatingWindows) FloatingWindows.Add((LayoutFloatingWindow)floatingWindow);
+            foreach (object floatingWindow in floatingWindows) this.FloatingWindows.Add((LayoutFloatingWindow)floatingWindow);
 
-            Hidden.Clear();
+            this.Hidden.Clear();
             List<object> hidden = ReadElementList(reader, false);
-            foreach (object hiddenObject in hidden) Hidden.Add((LayoutAnchorable)hiddenObject);
+            foreach (object hiddenObject in hidden) this.Hidden.Add((LayoutAnchorable)hiddenObject);
 
             //Read the closing end element of LayoutRoot
             reader.ReadEndElement();
@@ -605,30 +605,30 @@ namespace H.Controls.Dock.Layout
         /// <inheritdoc />
         void IXmlSerializable.WriteXml(XmlWriter writer)
         {
-            writer.WriteStartElement(nameof(RootPanel));
-            RootPanel?.WriteXml(writer);
+            writer.WriteStartElement(nameof(this.RootPanel));
+            this.RootPanel?.WriteXml(writer);
             writer.WriteEndElement();
 
-            writer.WriteStartElement(nameof(TopSide));
-            TopSide?.WriteXml(writer);
+            writer.WriteStartElement(nameof(this.TopSide));
+            this.TopSide?.WriteXml(writer);
             writer.WriteEndElement();
 
-            writer.WriteStartElement(nameof(RightSide));
-            RightSide?.WriteXml(writer);
+            writer.WriteStartElement(nameof(this.RightSide));
+            this.RightSide?.WriteXml(writer);
             writer.WriteEndElement();
 
-            writer.WriteStartElement(nameof(LeftSide));
-            LeftSide?.WriteXml(writer);
+            writer.WriteStartElement(nameof(this.LeftSide));
+            this.LeftSide?.WriteXml(writer);
             writer.WriteEndElement();
 
-            writer.WriteStartElement(nameof(BottomSide));
-            BottomSide?.WriteXml(writer);
+            writer.WriteStartElement(nameof(this.BottomSide));
+            this.BottomSide?.WriteXml(writer);
             writer.WriteEndElement();
 
             // Write all floating windows (can be LayoutDocumentFloatingWindow or LayoutAnchorableFloatingWindow).
             // To prevent "can not create instance of abstract type", the type is retrieved with GetType().Name
-            writer.WriteStartElement(nameof(FloatingWindows));
-            foreach (LayoutFloatingWindow layoutFloatingWindow in FloatingWindows)
+            writer.WriteStartElement(nameof(this.FloatingWindows));
+            foreach (LayoutFloatingWindow layoutFloatingWindow in this.FloatingWindows)
             {
                 writer.WriteStartElement(layoutFloatingWindow.GetType().Name);
                 layoutFloatingWindow.WriteXml(writer);
@@ -636,8 +636,8 @@ namespace H.Controls.Dock.Layout
             }
             writer.WriteEndElement();
 
-            writer.WriteStartElement(nameof(Hidden));
-            foreach (LayoutAnchorable layoutAnchorable in Hidden)
+            writer.WriteStartElement(nameof(this.Hidden));
+            foreach (LayoutAnchorable layoutAnchorable in this.Hidden)
             {
                 writer.WriteStartElement(layoutAnchorable.GetType().Name);
                 layoutAnchorable.WriteXml(writer);
@@ -676,10 +676,10 @@ namespace H.Controls.Dock.Layout
 
         internal void OnLayoutElementRemoved(LayoutElement element)
         {
-            if (element.Descendents().OfType<LayoutContent>().Any(c => c == LastFocusedDocument))
-                LastFocusedDocument = null;
-            if (element.Descendents().OfType<LayoutContent>().Any(c => c == ActiveContent))
-                ActiveContent = null;
+            if (element.Descendents().OfType<LayoutContent>().Any(c => c == this.LastFocusedDocument))
+                this.LastFocusedDocument = null;
+            if (element.Descendents().OfType<LayoutContent>().Any(c => c == this.ActiveContent))
+                this.ActiveContent = null;
             ElementRemoved?.Invoke(this, new LayoutElementEventArgs(element));
         }
 
@@ -718,12 +718,12 @@ namespace H.Controls.Dock.Layout
             {
                 case System.Collections.Specialized.NotifyCollectionChangedAction.Remove:
                 case System.Collections.Specialized.NotifyCollectionChangedAction.Add:
-                    RaisePropertyChanged(nameof(Children));
-                    RaisePropertyChanged(nameof(ChildrenCount));
+                    RaisePropertyChanged(nameof(this.Children));
+                    RaisePropertyChanged(nameof(this.ChildrenCount));
                     break;
 
                 case System.Collections.Specialized.NotifyCollectionChangedAction.Replace:
-                    RaisePropertyChanged(nameof(Children));
+                    RaisePropertyChanged(nameof(this.Children));
                     break;
             }
         }
@@ -767,37 +767,37 @@ namespace H.Controls.Dock.Layout
             {
                 case System.Collections.Specialized.NotifyCollectionChangedAction.Remove:
                 case System.Collections.Specialized.NotifyCollectionChangedAction.Add:
-                    RaisePropertyChanged(nameof(Children));
-                    RaisePropertyChanged(nameof(ChildrenCount));
+                    RaisePropertyChanged(nameof(this.Children));
+                    RaisePropertyChanged(nameof(this.ChildrenCount));
                     break;
 
                 case System.Collections.Specialized.NotifyCollectionChangedAction.Replace:
-                    RaisePropertyChanged(nameof(Children));
+                    RaisePropertyChanged(nameof(this.Children));
                     break;
             }
         }
 
         private void InternalSetActiveContent(LayoutContent currentValue, LayoutContent newActiveContent)
         {
-            RaisePropertyChanging(nameof(ActiveContent));
+            RaisePropertyChanging(nameof(this.ActiveContent));
             if (currentValue != null && currentValue.IsActive) currentValue.IsActive = false;
             _activeContent = new WeakReference(newActiveContent);
-            currentValue = ActiveContent;
+            currentValue = this.ActiveContent;
             if (currentValue != null && !currentValue.IsActive) currentValue.IsActive = true;
-            RaisePropertyChanged(nameof(ActiveContent));
+            RaisePropertyChanged(nameof(this.ActiveContent));
             _activeContentSet = currentValue != null;
             if (currentValue != null)
             {
                 if (currentValue.Parent is LayoutDocumentPane || currentValue is LayoutDocument)
-                    LastFocusedDocument = currentValue;
+                    this.LastFocusedDocument = currentValue;
             }
             else
-                LastFocusedDocument = null;
+                this.LastFocusedDocument = null;
         }
 
         private void UpdateActiveContentProperty()
         {
-            LayoutContent activeContent = ActiveContent;
+            LayoutContent activeContent = this.ActiveContent;
             if (_activeContentSet && (activeContent == null || activeContent.Root != this))
             {
                 _activeContentSet = false;
@@ -844,7 +844,7 @@ namespace H.Controls.Dock.Layout
 
             while (reader.NodeType == XmlNodeType.Whitespace) reader.Read();
 
-            if (reader.LocalName.Equals(nameof(RootPanel)))
+            if (reader.LocalName.Equals(nameof(this.RootPanel)))
             {
                 orientation = (Orientation)Enum.Parse(typeof(Orientation), reader.GetAttribute(nameof(Orientation)), true);
 
@@ -949,10 +949,10 @@ namespace H.Controls.Dock.Layout
                     typeToSerialize = typeof(LayoutAnchorableFloatingWindow);
                     break;
 
-                case nameof(LeftSide):
-                case nameof(RightSide):
-                case nameof(TopSide):
-                case nameof(BottomSide):
+                case nameof(this.LeftSide):
+                case nameof(this.RightSide):
+                case nameof(this.TopSide):
+                case nameof(this.BottomSide):
                     if (reader.IsEmptyElement)
                     {
                         reader.Read();

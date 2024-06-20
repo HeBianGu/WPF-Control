@@ -21,7 +21,7 @@ namespace H.Extensions.Behvaiors
             set { SetValue(PropertyNameProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty PropertyNameProperty =
             DependencyProperty.Register("PropertyName", typeof(string), typeof(TextBlockCountBehavior), new FrameworkPropertyMetadata(default(string), (d, e) =>
             {
@@ -48,7 +48,7 @@ namespace H.Extensions.Behvaiors
             set { SetValue(ValueProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty ValueProperty =
             DependencyProperty.Register("Value", typeof(object), typeof(TextBlockCountBehavior), new FrameworkPropertyMetadata(default(object), (d, e) =>
             {
@@ -74,7 +74,7 @@ namespace H.Extensions.Behvaiors
             set { SetValue(TypeProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty TypeProperty =
             DependencyProperty.Register("Type", typeof(Type), typeof(TextBlockCountBehavior), new FrameworkPropertyMetadata(default(Type), (d, e) =>
             {
@@ -121,7 +121,7 @@ namespace H.Extensions.Behvaiors
             set { SetValue(HeaderProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty HeaderProperty =
             DependencyProperty.Register("Header", typeof(string), typeof(TextBlockCountBehavior), new FrameworkPropertyMetadata("合计：", (d, e) =>
             {
@@ -148,7 +148,7 @@ namespace H.Extensions.Behvaiors
             set { SetValue(FormatProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty FormatProperty =
             DependencyProperty.Register("Format", typeof(string), typeof(TextBlockCountBehavior), new FrameworkPropertyMetadata("[{0}] {1}={2}", (d, e) =>
             {

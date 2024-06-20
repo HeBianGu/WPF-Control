@@ -21,7 +21,7 @@ namespace H.Controls.Diagram.Extension
                 Diagram diagram = node.GetParent<Diagram>();
                 if (node.Content is NodeData data)
                 {
-                    if (UseApplayToAll)
+                    if (this.UseApplayToAll)
                     {
                         diagram.Nodes.ForEach(x =>
                         {

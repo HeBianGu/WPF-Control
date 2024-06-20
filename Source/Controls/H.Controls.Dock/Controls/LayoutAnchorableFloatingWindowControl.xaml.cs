@@ -42,12 +42,12 @@ namespace H.Controls.Dock.Controls
            : base(model, isContentImmutable)
         {
             _model = model;
-            HideWindowCommand = new RelayCommand<object>((p) => OnExecuteHideWindowCommand(p), (p) => CanExecuteHideWindowCommand(p));
-            CloseWindowCommand = new RelayCommand<object>((p) => OnExecuteCloseWindowCommand(p), (p) => CanExecuteCloseWindowCommand(p));
+            this.HideWindowCommand = new RelayCommand<object>((p) => OnExecuteHideWindowCommand(p), (p) => CanExecuteHideWindowCommand(p));
+            this.CloseWindowCommand = new RelayCommand<object>((p) => OnExecuteCloseWindowCommand(p), (p) => CanExecuteCloseWindowCommand(p));
             Activated += LayoutAnchorableFloatingWindowControl_Activated;
             UpdateThemeResources();
-            MinWidth = _model.RootPanel.CalculatedDockMinWidth();
-            MinHeight = _model.RootPanel.CalculatedDockMinHeight();
+            this.MinWidth = _model.RootPanel.CalculatedDockMinWidth();
+            this.MinHeight = _model.RootPanel.CalculatedDockMinHeight();
             if (_model.Root is LayoutRoot root) root.Updated += OnRootUpdated;
             _model.IsVisibleChanged += _model_IsVisibleChanged;
         }
@@ -55,15 +55,15 @@ namespace H.Controls.Dock.Controls
         private void OnRootUpdated(object sender, EventArgs e)
         {
             if (_model?.RootPanel == null) return;
-            MinWidth = _model.RootPanel.CalculatedDockMinWidth();
-            MinHeight = _model.RootPanel.CalculatedDockMinHeight();
+            this.MinWidth = _model.RootPanel.CalculatedDockMinWidth();
+            this.MinHeight = _model.RootPanel.CalculatedDockMinHeight();
         }
 
         private void LayoutAnchorableFloatingWindowControl_Activated(object sender, EventArgs e)
         {
             // Issue similar to: http://avalondock.codeplex.com/workitem/15036
             BindingExpression visibilityBinding = GetBindingExpression(VisibilityProperty);
-            if (visibilityBinding == null && Visibility == Visibility.Visible) SetVisibilityBinding();
+            if (visibilityBinding == null && this.Visibility == Visibility.Visible) SetVisibilityBinding();
         }
 
         internal LayoutAnchorableFloatingWindowControl(LayoutAnchorableFloatingWindow model)
@@ -117,14 +117,14 @@ namespace H.Controls.Dock.Controls
         {
             _model.PropertyChanged += _model_PropertyChanged;
             SetVisibilityBinding();
-            if (Model.Root is LayoutRoot layoutRoot) layoutRoot.Updated += OnRootUpdated;
+            if (this.Model.Root is LayoutRoot layoutRoot) layoutRoot.Updated += OnRootUpdated;
             base.EnableBindings();
         }
 
         /// <inheritdoc />
         public override void DisableBindings()
         {
-            if (Model.Root is LayoutRoot layoutRoot) layoutRoot.Updated -= OnRootUpdated;
+            if (this.Model.Root is LayoutRoot layoutRoot) layoutRoot.Updated -= OnRootUpdated;
             BindingOperations.ClearBinding(_model, VisibilityProperty);
             _model.PropertyChanged -= _model_PropertyChanged;
             base.DisableBindings();
@@ -165,7 +165,7 @@ namespace H.Controls.Dock.Controls
             if (_dropAreas != null) return _dropAreas;
             _dropAreas = new List<IDropArea>();
             if (draggingWindow.Model is LayoutDocumentFloatingWindow) return _dropAreas;
-            System.Windows.Media.Visual rootVisual = (Content as FloatingWindowContentHost).RootVisual;
+            System.Windows.Media.Visual rootVisual = (this.Content as FloatingWindowContentHost).RootVisual;
             foreach (LayoutAnchorablePaneControl areaHost in rootVisual.FindVisualChildren<LayoutAnchorablePaneControl>())
                 _dropAreas.Add(new DropArea<LayoutAnchorablePaneControl>(areaHost, DropAreaType.AnchorablePane));
             foreach (LayoutDocumentPaneControl areaHost in rootVisual.FindVisualChildren<LayoutDocumentPaneControl>())
@@ -184,7 +184,7 @@ namespace H.Controls.Dock.Controls
         {
             base.OnInitialized(e);
             DockingManager manager = _model.Root.Manager;
-            Content = manager.CreateUIElementForModel(_model.RootPanel);
+            this.Content = manager.CreateUIElementForModel(_model.RootPanel);
             //SetBinding(VisibilityProperty, new Binding("IsVisible") { Source = _model, Converter = new BoolToVisibilityConverter(), Mode = BindingMode.OneWay, ConverterParameter = Visibility.Hidden });
 
             //Issue: http://avalondock.codeplex.com/workitem/15036
@@ -196,7 +196,7 @@ namespace H.Controls.Dock.Controls
         /// <inheritdoc />
         protected override void OnClosed(EventArgs e)
         {
-            ILayoutRoot root = Model.Root;
+            ILayoutRoot root = this.Model.Root;
             if (root != null)
             {
                 if (root is LayoutRoot layoutRoot) layoutRoot.Updated -= OnRootUpdated;
@@ -209,7 +209,7 @@ namespace H.Controls.Dock.Controls
                 _overlayWindow = null;
             }
             base.OnClosed(e);
-            if (!CloseInitiatedByUser) root?.FloatingWindows.Remove(_model);
+            if (!this.CloseInitiatedByUser) root?.FloatingWindows.Remove(_model);
 
             // We have to clear binding instead of creating a new empty binding.
             BindingOperations.ClearBinding(_model, VisibilityProperty);
@@ -225,8 +225,8 @@ namespace H.Controls.Dock.Controls
         /// <inheritdoc />
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
-            bool canHide = HideWindowCommand.CanExecute(null);
-            if (CloseInitiatedByUser && !KeepContentVisibleOnClose && !canHide) e.Cancel = true;
+            bool canHide = this.HideWindowCommand.CanExecute(null);
+            if (this.CloseInitiatedByUser && !this.KeepContentVisibleOnClose && !canHide) e.Cancel = true;
             base.OnClosing(e);
         }
 
@@ -284,15 +284,15 @@ namespace H.Controls.Dock.Controls
                     break;
 
                 case nameof(LayoutAnchorableFloatingWindow.IsVisible):
-                    if (_model.IsVisible != IsVisible)
-                        Visibility = _model.IsVisible ? Visibility.Visible : Visibility.Hidden;
+                    if (_model.IsVisible != this.IsVisible)
+                        this.Visibility = _model.IsVisible ? Visibility.Visible : Visibility.Hidden;
                     break;
             }
         }
 
         private void _model_IsVisibleChanged(object sender, EventArgs e)
         {
-            if (!IsVisible && _model.IsVisible) Show();
+            if (!this.IsVisible && _model.IsVisible) Show();
         }
 
         private void CreateOverlayWindow(LayoutFloatingWindowControl draggingWindow)
@@ -317,10 +317,10 @@ namespace H.Controls.Dock.Controls
         private bool OpenContextMenu()
         {
             System.Windows.Controls.ContextMenu ctxMenu = _model.Root.Manager.AnchorableContextMenu;
-            if (ctxMenu == null || SingleContentLayoutItem == null) return false;
+            if (ctxMenu == null || this.SingleContentLayoutItem == null) return false;
             ctxMenu.PlacementTarget = null;
             ctxMenu.Placement = PlacementMode.MousePoint;
-            ctxMenu.DataContext = SingleContentLayoutItem;
+            ctxMenu.DataContext = this.SingleContentLayoutItem;
             ctxMenu.IsOpen = true;
             return true;
         }
@@ -329,7 +329,7 @@ namespace H.Controls.Dock.Controls
         {
             SetBinding(
               VisibilityProperty,
-              new Binding(nameof(IsVisible))
+              new Binding(nameof(this.IsVisible))
               {
                   Source = _model,
                   Converter = new BoolToVisibilityConverter(),
@@ -343,8 +343,8 @@ namespace H.Controls.Dock.Controls
         private void LayoutAnchorableFloatingWindowControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             BindingExpression visibilityBinding = GetBindingExpression(VisibilityProperty);
-            if (IsVisible && visibilityBinding == null)
-                SetBinding(VisibilityProperty, new Binding(nameof(IsVisible))
+            if (this.IsVisible && visibilityBinding == null)
+                SetBinding(VisibilityProperty, new Binding(nameof(this.IsVisible))
                 { Source = _model, Converter = new BoolToVisibilityConverter(), Mode = BindingMode.OneWay, ConverterParameter = Visibility.Hidden });
         }
 
@@ -352,10 +352,10 @@ namespace H.Controls.Dock.Controls
 
         private bool CanExecuteHideWindowCommand(object parameter)
         {
-            DockingManager manager = Model?.Root?.Manager;
+            DockingManager manager = this.Model?.Root?.Manager;
             if (manager == null) return false;
             bool canExecute = false;
-            foreach (LayoutAnchorable anchorable in Model.Descendents().OfType<LayoutAnchorable>().ToArray())
+            foreach (LayoutAnchorable anchorable in this.Model.Descendents().OfType<LayoutAnchorable>().ToArray())
             {
                 if (!anchorable.CanHide)
                 {
@@ -375,8 +375,8 @@ namespace H.Controls.Dock.Controls
 
         private void OnExecuteHideWindowCommand(object parameter)
         {
-            DockingManager manager = Model.Root.Manager;
-            foreach (LayoutAnchorable anchorable in Model.Descendents().OfType<LayoutAnchorable>().ToArray())
+            DockingManager manager = this.Model.Root.Manager;
+            foreach (LayoutAnchorable anchorable in this.Model.Descendents().OfType<LayoutAnchorable>().ToArray())
             {
                 LayoutAnchorableItem anchorableLayoutItem = manager.GetLayoutItemFromModel(anchorable) as LayoutAnchorableItem;
                 anchorableLayoutItem.HideCommand.Execute(parameter);
@@ -390,10 +390,10 @@ namespace H.Controls.Dock.Controls
 
         private bool CanExecuteCloseWindowCommand(object parameter)
         {
-            DockingManager manager = Model?.Root?.Manager;
+            DockingManager manager = this.Model?.Root?.Manager;
             if (manager == null) return false;
             bool canExecute = false;
-            foreach (LayoutAnchorable anchorable in Model.Descendents().OfType<LayoutAnchorable>().ToArray())
+            foreach (LayoutAnchorable anchorable in this.Model.Descendents().OfType<LayoutAnchorable>().ToArray())
             {
                 if (!anchorable.CanClose)
                 {
@@ -413,8 +413,8 @@ namespace H.Controls.Dock.Controls
 
         private void OnExecuteCloseWindowCommand(object parameter)
         {
-            DockingManager manager = Model.Root.Manager;
-            foreach (LayoutAnchorable anchorable in Model.Descendents().OfType<LayoutAnchorable>().ToArray())
+            DockingManager manager = this.Model.Root.Manager;
+            foreach (LayoutAnchorable anchorable in this.Model.Descendents().OfType<LayoutAnchorable>().ToArray())
             {
                 LayoutAnchorableItem anchorableLayoutItem = manager.GetLayoutItemFromModel(anchorable) as LayoutAnchorableItem;
                 anchorableLayoutItem.CloseCommand.Execute(parameter);

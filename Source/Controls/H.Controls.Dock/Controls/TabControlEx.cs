@@ -39,7 +39,7 @@ namespace H.Controls.Dock.Controls
             _IsVirtualizing = true;
 
             // This is necessary so that we get the initial databound selected item
-            ItemContainerGenerator.StatusChanged += ItemContainerGenerator_StatusChanged;
+            this.ItemContainerGenerator.StatusChanged += ItemContainerGenerator_StatusChanged;
         }
 
         #endregion constructors

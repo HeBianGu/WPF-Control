@@ -13,7 +13,7 @@ namespace H.Controls.Form
         }
         public PropertyItemTypeAttribute(Type type)
         {
-            Type = type;
+            this.Type = type;
         }
         public Type Type { get; set; }
     }

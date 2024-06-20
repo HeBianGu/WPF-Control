@@ -2,8 +2,6 @@
 
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Input;
@@ -80,7 +78,7 @@ namespace H.Controls.Form
             //CustomValidationAttribute attr = info.GetCustomAttribute<CustomValidationAttribute>();
             //if (attr == null || string.IsNullOrEmpty(attr.Method))
             //{
-                return new ObjectPropertyItem<object>(info, obj);
+            return new ObjectPropertyItem<object>(info, obj);
             //}
             //else
             //{
@@ -147,7 +145,7 @@ namespace H.Controls.Form
 
             //if (attr == null || string.IsNullOrEmpty(attr.Method))
             //{
-                return new ObjectPropertyItem<object>(info, obj);
+            return new ObjectPropertyItem<object>(info, obj);
             //}
             //else
             //{

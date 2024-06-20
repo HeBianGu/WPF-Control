@@ -14,12 +14,12 @@ namespace H.Controls.PropertyGrid
 
         protected override void SetControlProperties(PropertyItem propertyItem)
         {
-            Editor.Margin = new Thickness(5, 0, 0, 0);
+            this.Editor.Margin = new Thickness(5, 0, 0, 0);
         }
 
         protected override void SetValueDependencyProperty()
         {
-            ValueProperty = CheckBox.IsCheckedProperty;
+            this.ValueProperty = CheckBox.IsCheckedProperty;
         }
     }
 

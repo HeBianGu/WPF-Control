@@ -20,22 +20,22 @@ namespace H.Controls.Adorner
         protected override void OnRender(DrawingContext dc)
         {
             Rect rect = new Rect(this.AdornedElement.RenderSize);
-            rect = new Rect(rect.Left - ScaleLen, rect.Top - ScaleLen, rect.Width + (2 * ScaleLen), rect.Height + (2 * ScaleLen));
+            rect = new Rect(rect.Left - this.ScaleLen, rect.Top - this.ScaleLen, rect.Width + (2 * this.ScaleLen), rect.Height + (2 * this.ScaleLen));
             dc.DrawRectangle(this.Fill, null, rect);
 
-            if (Dock == Dock.Left)
+            if (this.Dock == Dock.Left)
             {
                 dc.DrawLine(this.Pen, rect.TopLeft, rect.BottomLeft);
             }
-            if (Dock == Dock.Top)
+            if (this.Dock == Dock.Top)
             {
                 dc.DrawLine(this.Pen, rect.TopLeft, rect.TopRight);
             }
-            if (Dock == Dock.Right)
+            if (this.Dock == Dock.Right)
             {
                 dc.DrawLine(this.Pen, rect.BottomRight, rect.TopRight);
             }
-            if (Dock == Dock.Bottom)
+            if (this.Dock == Dock.Bottom)
             {
                 dc.DrawLine(this.Pen, rect.BottomLeft, rect.BottomRight);
             }

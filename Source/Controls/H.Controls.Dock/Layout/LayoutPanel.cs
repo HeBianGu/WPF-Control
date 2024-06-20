@@ -37,7 +37,7 @@ namespace H.Controls.Dock.Layout
         /// <param name="firstChild"></param>
         public LayoutPanel(ILayoutPanelElement firstChild)
         {
-            Children.Add(firstChild);
+            this.Children.Add(firstChild);
         }
 
         #endregion Constructors
@@ -51,9 +51,9 @@ namespace H.Controls.Dock.Layout
             set
             {
                 if (value == _orientation) return;
-                RaisePropertyChanging(nameof(Orientation));
+                RaisePropertyChanging(nameof(this.Orientation));
                 _orientation = value;
-                RaisePropertyChanged(nameof(Orientation));
+                RaisePropertyChanged(nameof(this.Orientation));
             }
         }
 
@@ -90,15 +90,15 @@ namespace H.Controls.Dock.Layout
         #region Overrides
 
         /// <inheritdoc />
-        protected override bool GetVisibility() => Children.Any(c => c.IsVisible);
+        protected override bool GetVisibility() => this.Children.Any(c => c.IsVisible);
 
         /// <inheritdoc />
         public override void WriteXml(System.Xml.XmlWriter writer)
         {
-            writer.WriteAttributeString(nameof(Orientation), Orientation.ToString());
+            writer.WriteAttributeString(nameof(this.Orientation), this.Orientation.ToString());
 
-            if (CanDock == false)
-                writer.WriteAttributeString(nameof(CanDock), CanDock.ToString());
+            if (this.CanDock == false)
+                writer.WriteAttributeString(nameof(this.CanDock), this.CanDock.ToString());
 
             base.WriteXml(writer);
         }
@@ -110,13 +110,13 @@ namespace H.Controls.Dock.Layout
         /// </summary>
         public override void ReadXml(System.Xml.XmlReader reader)
         {
-            if (reader.MoveToAttribute(nameof(Orientation)))
-                Orientation = (Orientation)Enum.Parse(typeof(Orientation), reader.Value, true);
-            if (reader.MoveToAttribute(nameof(CanDock)))
+            if (reader.MoveToAttribute(nameof(this.Orientation)))
+                this.Orientation = (Orientation)Enum.Parse(typeof(Orientation), reader.Value, true);
+            if (reader.MoveToAttribute(nameof(this.CanDock)))
             {
                 string canDockStr = reader.GetAttribute("CanDock");
                 if (canDockStr != null)
-                    CanDock = bool.Parse(canDockStr);
+                    this.CanDock = bool.Parse(canDockStr);
             }
             base.ReadXml(reader);
         }
@@ -126,9 +126,9 @@ namespace H.Controls.Dock.Layout
         public override void ConsoleDump(int tab)
         {
             System.Diagnostics.Trace.Write(new string(' ', tab * 4));
-            System.Diagnostics.Trace.WriteLine(string.Format("Panel({0})", Orientation));
+            System.Diagnostics.Trace.WriteLine(string.Format("Panel({0})", this.Orientation));
 
-            foreach (LayoutElement child in Children)
+            foreach (LayoutElement child in this.Children)
                 child.ConsoleDump(tab + 1);
         }
 #endif

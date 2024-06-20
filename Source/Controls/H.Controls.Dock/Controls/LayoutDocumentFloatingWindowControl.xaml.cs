@@ -42,9 +42,9 @@ namespace H.Controls.Dock.Controls
             : base(model, isContentImmutable)
         {
             _model = model;
-            HideWindowCommand = new RelayCommand<object>(OnExecuteHideWindowCommand, CanExecuteHideWindowCommand);
-            CloseWindowCommand = new RelayCommand<object>(OnExecuteCloseWindowCommand, CanExecuteCloseWindowCommand);
-            Closed += (sender, args) => { Owner?.Focus(); };
+            this.HideWindowCommand = new RelayCommand<object>(OnExecuteHideWindowCommand, CanExecuteHideWindowCommand);
+            this.CloseWindowCommand = new RelayCommand<object>(OnExecuteCloseWindowCommand, CanExecuteCloseWindowCommand);
+            Closed += (sender, args) => { this.Owner?.Focus(); };
             UpdateThemeResources();
         }
 
@@ -94,7 +94,7 @@ namespace H.Controls.Dock.Controls
         {
             base.OnInitialized(e);
             DockingManager manager = _model.Root.Manager;
-            Content = manager.CreateUIElementForModel(_model.RootPanel);
+            this.Content = manager.CreateUIElementForModel(_model.RootPanel);
             // TODO IsVisibleChanged
             //SetBinding(SingleContentLayoutItemProperty, new Binding("Model.SinglePane.SelectedContent") { Source = this, Converter = new LayoutItemFromLayoutModelConverter() });
             _model.RootPanel.ChildrenCollectionChanged += RootPanelOnChildrenCollectionChanged;
@@ -130,7 +130,7 @@ namespace H.Controls.Dock.Controls
         private LayoutDocumentPaneControl FindDocumentPaneControlByMousePoint()
         {
             Point mousePosition = Win32Helper.GetMousePosition();
-            System.Windows.Media.Visual rootVisual = ((FloatingWindowContentHost)Content).RootVisual;
+            System.Windows.Media.Visual rootVisual = ((FloatingWindowContentHost)this.Content).RootVisual;
             IEnumerable<LayoutDocumentPaneControl> areaHosts = rootVisual.FindVisualChildren<LayoutDocumentPaneControl>();
 
             foreach (LayoutDocumentPaneControl areaHost in areaHosts)
@@ -255,7 +255,7 @@ namespace H.Controls.Dock.Controls
                     break;
 
                 case Win32Helper.WM_CLOSE:
-                    if (CloseInitiatedByUser)
+                    if (this.CloseInitiatedByUser)
                     {
                         // We want to force the window to go through our standard logic for closing.
                         // So, if the window close is initiated outside of our code (such as from the taskbar),
@@ -271,7 +271,7 @@ namespace H.Controls.Dock.Controls
         /// <inheritdoc />
         protected override void OnClosed(EventArgs e)
         {
-            ILayoutRoot root = Model.Root;
+            ILayoutRoot root = this.Model.Root;
             // MK sometimes root is null, prevent crash, or should it always be set??
             if (root != null)
             {
@@ -284,7 +284,7 @@ namespace H.Controls.Dock.Controls
                 _overlayWindow = null;
             }
             base.OnClosed(e);
-            if (!CloseInitiatedByUser) root?.FloatingWindows.Remove(_model);
+            if (!this.CloseInitiatedByUser) root?.FloatingWindows.Remove(_model);
             _model.PropertyChanged -= Model_PropertyChanged;
         }
 
@@ -300,10 +300,10 @@ namespace H.Controls.Dock.Controls
         private bool OpenContextMenu()
         {
             System.Windows.Controls.ContextMenu ctxMenu = _model.Root.Manager.DocumentContextMenu;
-            if (ctxMenu == null || SingleContentLayoutItem == null) return false;
+            if (ctxMenu == null || this.SingleContentLayoutItem == null) return false;
             ctxMenu.PlacementTarget = null;
             ctxMenu.Placement = PlacementMode.MousePoint;
-            ctxMenu.DataContext = SingleContentLayoutItem;
+            ctxMenu.DataContext = this.SingleContentLayoutItem;
             ctxMenu.IsOpen = true;
             return true;
         }
@@ -312,7 +312,7 @@ namespace H.Controls.Dock.Controls
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
             // TODO
-            if (CloseInitiatedByUser && !KeepContentVisibleOnClose)
+            if (this.CloseInitiatedByUser && !this.KeepContentVisibleOnClose)
             {
                 e.Cancel = true;
                 //_model.Descendents().OfType<LayoutDocument>().ToArray().ForEach<LayoutDocument>((a) => a.Hide());
@@ -392,7 +392,7 @@ namespace H.Controls.Dock.Controls
                 }
             }
 
-            System.Windows.Media.Visual rootVisual = ((FloatingWindowContentHost)Content).RootVisual;
+            System.Windows.Media.Visual rootVisual = ((FloatingWindowContentHost)this.Content).RootVisual;
 
             foreach (LayoutAnchorablePaneControl areaHost in rootVisual.FindVisualChildren<LayoutAnchorablePaneControl>())
                 _dropAreas.Add(new DropArea<LayoutAnchorablePaneControl>(areaHost, DropAreaType.AnchorablePane));
@@ -451,7 +451,7 @@ namespace H.Controls.Dock.Controls
 
         private bool CanExecuteHideWindowCommand(object parameter)
         {
-            ILayoutRoot root = Model?.Root;
+            ILayoutRoot root = this.Model?.Root;
             DockingManager manager = root?.Manager;
             if (manager == null) return false;
 
@@ -484,7 +484,7 @@ namespace H.Controls.Dock.Controls
 
         private void OnExecuteHideWindowCommand(object parameter)
         {
-            DockingManager manager = Model.Root.Manager;
+            DockingManager manager = this.Model.Root.Manager;
             foreach (LayoutContent anchorable in this.Model.Descendents().OfType<LayoutContent>().ToArray())
             {
                 //if (manager.GetLayoutItemFromModel(anchorable) is LayoutAnchorableItem layoutAnchorableItem) layoutAnchorableItem.HideCommand.Execute(parameter);
@@ -501,7 +501,7 @@ namespace H.Controls.Dock.Controls
 
         private bool CanExecuteCloseWindowCommand(object parameter)
         {
-            DockingManager manager = Model?.Root?.Manager;
+            DockingManager manager = this.Model?.Root?.Manager;
             if (manager == null) return false;
 
             bool canExecute = false;
@@ -525,7 +525,7 @@ namespace H.Controls.Dock.Controls
 
         private void OnExecuteCloseWindowCommand(object parameter)
         {
-            DockingManager manager = Model.Root.Manager;
+            DockingManager manager = this.Model.Root.Manager;
             foreach (LayoutDocument document in this.Model.Descendents().OfType<LayoutDocument>().ToArray())
             {
                 LayoutDocumentItem documentLayoutItem = manager.GetLayoutItemFromModel(document) as LayoutDocumentItem;

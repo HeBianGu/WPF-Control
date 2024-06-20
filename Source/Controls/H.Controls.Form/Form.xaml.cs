@@ -4,7 +4,6 @@
 
 
 using H.Providers.Ioc;
-using H.Providers.Mvvm;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -124,7 +123,7 @@ namespace H.Controls.Form
             set { SetValue(ItemHeaderTemplateProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty ItemHeaderTemplateProperty =
             DependencyProperty.Register("ItemHeaderTemplate", typeof(DataTemplate), typeof(Form), new FrameworkPropertyMetadata(default(DataTemplate), (d, e) =>
             {
@@ -217,7 +216,7 @@ namespace H.Controls.Form
             set { SetValue(UseDisplayOnlyProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty UseDisplayOnlyProperty =
             DependencyProperty.Register("UseDisplayOnly", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(true, (d, e) =>
             {
@@ -245,7 +244,7 @@ namespace H.Controls.Form
             set { SetValue(UseDeclaredOnlyProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty UseDeclaredOnlyProperty =
             DependencyProperty.Register("UseDeclaredOnly", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(default(bool), (d, e) =>
              {
@@ -272,7 +271,7 @@ namespace H.Controls.Form
             set { SetValue(ExceptPropertyNamesProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty ExceptPropertyNamesProperty =
             DependencyProperty.Register("ExceptPropertyNames", typeof(string), typeof(Form), new FrameworkPropertyMetadata(default(string), (d, e) =>
              {
@@ -300,7 +299,7 @@ namespace H.Controls.Form
             set { SetValue(UsePropertyNamesProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty UsePropertyNamesProperty =
             DependencyProperty.Register("UsePropertyNames", typeof(string), typeof(Form), new FrameworkPropertyMetadata(default(string), (d, e) =>
              {
@@ -328,7 +327,7 @@ namespace H.Controls.Form
             set { SetValue(UsePropertyViewProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty UsePropertyViewProperty =
             DependencyProperty.Register("UsePropertyView", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(default(bool), FrameworkPropertyMetadataOptions.Inherits, (d, e) =>
               {
@@ -358,7 +357,7 @@ namespace H.Controls.Form
             set { SetValue(UsePresenterProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty UsePresenterProperty =
             DependencyProperty.Register("UsePresenter", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(default(bool), (d, e) =>
              {
@@ -412,7 +411,7 @@ namespace H.Controls.Form
             set { SetValue(UseTypeConverterOnlyProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty UseTypeConverterOnlyProperty =
             DependencyProperty.Register("UseTypeConverterOnly", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(default(bool), (d, e) =>
              {
@@ -490,7 +489,7 @@ namespace H.Controls.Form
             set { SetValue(UseBoolenProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty UseBoolenProperty =
             DependencyProperty.Register("UseBoolen", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(true, (d, e) =>
              {
@@ -518,7 +517,7 @@ namespace H.Controls.Form
             set { SetValue(UseOrderByTypeProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty UseOrderByTypeProperty =
             DependencyProperty.Register("UseOrderByType", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(default(bool), (d, e) =>
              {
@@ -545,7 +544,7 @@ namespace H.Controls.Form
             set { SetValue(UseOrderByNameProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty UseOrderByNameProperty =
             DependencyProperty.Register("UseOrderByName", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(default(bool), (d, e) =>
              {
@@ -573,7 +572,7 @@ namespace H.Controls.Form
             set { SetValue(UseOrderProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty UseOrderProperty =
             DependencyProperty.Register("UseOrder", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(true, (d, e) =>
              {
@@ -599,7 +598,7 @@ namespace H.Controls.Form
             set { SetValue(UseEnumProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty UseEnumProperty =
             DependencyProperty.Register("UseEnum", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(true, (d, e) =>
              {
@@ -625,7 +624,7 @@ namespace H.Controls.Form
             set { SetValue(UseStringProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty UseStringProperty =
             DependencyProperty.Register("UseString", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(true, (d, e) =>
              {
@@ -651,7 +650,7 @@ namespace H.Controls.Form
             set { SetValue(UseDateTimeProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty UseDateTimeProperty =
             DependencyProperty.Register("UseDateTime", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(true, (d, e) =>
              {
@@ -680,7 +679,7 @@ namespace H.Controls.Form
             set { SetValue(UseCommandOnlyProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty UseCommandOnlyProperty =
             DependencyProperty.Register("UseCommandOnly", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(default(bool), (d, e) =>
             {
@@ -707,7 +706,7 @@ namespace H.Controls.Form
             set { SetValue(UseCommandProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty UseCommandProperty =
             DependencyProperty.Register("UseCommand", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(true, (d, e) =>
              {
@@ -734,7 +733,7 @@ namespace H.Controls.Form
             set { SetValue(UseClassProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty UseClassProperty =
             DependencyProperty.Register("UseClass", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(true, (d, e) =>
              {
@@ -761,7 +760,7 @@ namespace H.Controls.Form
             set { SetValue(UseArrayProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty UseArrayProperty =
             DependencyProperty.Register("UseArray", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(true, (d, e) =>
              {
@@ -788,7 +787,7 @@ namespace H.Controls.Form
             set { SetValue(UseInterfaceProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty UseInterfaceProperty =
             DependencyProperty.Register("UseInterface", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(true, (d, e) =>
              {
@@ -816,7 +815,7 @@ namespace H.Controls.Form
             set { SetValue(UsePrimitiveProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty UsePrimitiveProperty =
             DependencyProperty.Register("UsePrimitive", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(true, (d, e) =>
              {
@@ -842,7 +841,7 @@ namespace H.Controls.Form
             set { SetValue(MapperProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty MapperProperty =
             DependencyProperty.Register("Mapper", typeof(Func<PropertyInfo, object, IPropertyItem>), typeof(Form), new FrameworkPropertyMetadata(default(Func<PropertyInfo, object, IPropertyItem>), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, (d, e) =>
                  {
@@ -894,7 +893,7 @@ namespace H.Controls.Form
             set { SetValue(UseGroupProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty UseGroupProperty =
             DependencyProperty.Register("UseGroup", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(default(bool), (d, e) =>
              {
@@ -923,7 +922,7 @@ namespace H.Controls.Form
             set { SetValue(UseGroupNamesProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty UseGroupNamesProperty =
             DependencyProperty.Register("UseGroupNames", typeof(string), typeof(Form), new FrameworkPropertyMetadata(default(string), (d, e) =>
              {
@@ -1020,13 +1019,13 @@ namespace H.Controls.Form
             //    }
             //}
 
-            if(this.CheckAccess())
+            if (this.CheckAccess())
             {
                 this.RaiseEvent(args);
             }
             else
             {
-                this.Dispatcher.Invoke(()=> this.RaiseEvent(args));
+                this.Dispatcher.Invoke(() => this.RaiseEvent(args));
             }
         }
 
@@ -1037,7 +1036,7 @@ namespace H.Controls.Form
             set { SetValue(MessageWidthProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty MessageWidthProperty =
             DependencyProperty.Register("MessageWidth", typeof(double), typeof(Form), new PropertyMetadata(default(double), (d, e) =>
              {
@@ -1074,7 +1073,7 @@ namespace H.Controls.Form
             set { SetValue(UseAsyncProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty UseAsyncProperty =
             DependencyProperty.Register("UseAsync", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(default(bool), (d, e) =>
             {
@@ -1173,8 +1172,8 @@ namespace H.Controls.Form
 
                 if (!this.UseNull)
                 {
-                    if(item.Name!="Item")
-                    if (item.GetValue(o) == null) continue;
+                    if (item.Name != "Item")
+                        if (item.GetValue(o) == null) continue;
                 }
 
                 //  Do ：筛选条件

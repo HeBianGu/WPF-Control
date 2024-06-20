@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows;
 
 namespace H.Windows.Dock
 {
@@ -15,7 +12,7 @@ namespace H.Windows.Dock
         public DockWindow()
         {
             this.Loaded += DockWindow_Loaded;
-            this.AllowsTransparency =true;
+            this.AllowsTransparency = true;
             this.WindowStyle = WindowStyle.None;
         }
 

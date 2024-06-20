@@ -23,8 +23,8 @@ namespace H.Extensions.Behvaiors
 
         protected override void OnAttached()
         {
-            AssociatedObject.MouseEnter += AssociatedObject_MouseEnter;
-            AssociatedObject.MouseLeave += AssociatedObject_MouseLeave;
+            this.AssociatedObject.MouseEnter += AssociatedObject_MouseEnter;
+            this.AssociatedObject.MouseLeave += AssociatedObject_MouseLeave;
         }
 
         private void AssociatedObject_MouseLeave(object sender, MouseEventArgs e)
@@ -37,20 +37,20 @@ namespace H.Extensions.Behvaiors
         {
             System.Diagnostics.Debug.WriteLine("AssociatedObject_MouseEnter");
 
-            if (AdornerType == null)
+            if (this.AdornerType == null)
                 return;
 
-            if (AdornerVisual == null)
-                AdornerVisual = AssociatedObject;
+            if (this.AdornerVisual == null)
+                this.AdornerVisual = this.AssociatedObject;
 
             if (_adorner != null)
                 return;
 
-            AdornerLayer layer = AdornerLayer.GetAdornerLayer(AssociatedObject);
+            AdornerLayer layer = AdornerLayer.GetAdornerLayer(this.AssociatedObject);
             if (layer == null)
                 return;
 
-            IEnumerable<Adorner> adorners = layer.GetAdorners(AssociatedObject)?.Where(l => l.GetType() == AdornerType);
+            IEnumerable<Adorner> adorners = layer.GetAdorners(this.AssociatedObject)?.Where(l => l.GetType() == this.AdornerType);
             if (adorners != null)
             {
                 foreach (Adorner item in adorners)
@@ -58,9 +58,9 @@ namespace H.Extensions.Behvaiors
                     layer.Remove(item);
                 }
             }
-            if (IsUse)
+            if (this.IsUse)
             {
-                Adorner adorner = Activator.CreateInstance(AdornerType, AdornerVisual) as Adorner;
+                Adorner adorner = Activator.CreateInstance(this.AdornerType, this.AdornerVisual) as Adorner;
                 if (adorner == null)
                     return;
                 adorner.MouseLeave -= AssociatedObject_MouseLeave;
@@ -73,8 +73,8 @@ namespace H.Extensions.Behvaiors
 
         protected override void OnDetaching()
         {
-            AssociatedObject.MouseEnter -= AssociatedObject_MouseEnter;
-            AssociatedObject.MouseLeave -= AssociatedObject_MouseLeave;
+            this.AssociatedObject.MouseEnter -= AssociatedObject_MouseEnter;
+            this.AssociatedObject.MouseLeave -= AssociatedObject_MouseLeave;
             ClearAdorner();
         }
 
@@ -82,7 +82,7 @@ namespace H.Extensions.Behvaiors
         {
             if (_adorner == null)
                 return;
-            AdornerLayer layer = AdornerLayer.GetAdornerLayer(AdornerVisual);
+            AdornerLayer layer = AdornerLayer.GetAdornerLayer(this.AdornerVisual);
             if (layer == null)
                 return;
             _adorner.MouseLeave -= AssociatedObject_MouseLeave;

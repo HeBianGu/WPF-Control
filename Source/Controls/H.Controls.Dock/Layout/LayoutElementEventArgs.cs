@@ -22,7 +22,7 @@ namespace H.Controls.Dock.Layout
         /// </summary>
         public LayoutElementEventArgs(LayoutElement element)
         {
-            Element = element;
+            this.Element = element;
         }
 
         /// <summary>Gets the particular <see cref="LayoutElement"/> for which this event has been raised.</summary>

@@ -9,7 +9,7 @@ namespace H.Extensions.Behvaiors
             object addItem = CreateNewItem();
             if (addItem == null)
                 return;
-            ItemsSource.Add(addItem);
+            this.ItemsSource.Add(addItem);
         }
     }
 

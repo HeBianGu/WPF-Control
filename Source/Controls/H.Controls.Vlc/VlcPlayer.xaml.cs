@@ -1,20 +1,19 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
+using H.Providers.Mvvm;
 using Microsoft.Win32;
 using System;
 using System.IO;
-using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using Vlc.DotNet.Core;
+using Vlc.DotNet.Core.Interops.Signatures;
 using Vlc.DotNet.Wpf;
 using Path = System.IO.Path;
-using System.Windows.Media;
-using Vlc.DotNet.Core.Interops.Signatures;
-using H.Providers.Mvvm;
 
 namespace H.Controls.Vlc
 {
@@ -68,7 +67,7 @@ namespace H.Controls.Vlc
             }
 
             {
-                CommandBinding binding = new CommandBinding(VlcPlayerCommands.FullScreen, async (l, k) =>
+                CommandBinding binding = new CommandBinding(VlcPlayerCommands.FullScreen, (l, k) =>
                 {
                     Style temp = this.Style;
 
@@ -219,7 +218,7 @@ namespace H.Controls.Vlc
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            this._media_slider = Template.FindName("media_slider", this) as Slider;
+            this._media_slider = this.Template.FindName("media_slider", this) as Slider;
             this._media_slider.ValueChanged += media_slider_ValueChanged;
         }
 
@@ -484,7 +483,7 @@ namespace H.Controls.Vlc
         {
             this.Dispatcher.Invoke(() =>
             {
-                if (this.IsPlaying == false|| this._vlc.IsLoaded==false)
+                if (this.IsPlaying == false || this._vlc.IsLoaded == false)
                     return;
                 this._media_slider.ValueChanged -= this.media_slider_ValueChanged;
                 this._media_slider.Value = this._vlc.SourceProvider.MediaPlayer == null ? 0 : this._vlc.SourceProvider.MediaPlayer.Time;

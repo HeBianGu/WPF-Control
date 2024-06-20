@@ -25,10 +25,10 @@ namespace H.Controls.NavigationBox
         {
             base.OnApplyTemplate();
 
-            this._navigation = Template.FindName("PART_NAVIGATION", this) as ListBox;
+            this._navigation = this.Template.FindName("PART_NAVIGATION", this) as ListBox;
 
 
-            this._contain = Template.FindName("PART_CONTAINT", this) as ListBox;
+            this._contain = this.Template.FindName("PART_CONTAINT", this) as ListBox;
 
             this._navigation.SelectionChanged += (l, k) =>
               {
@@ -42,7 +42,7 @@ namespace H.Controls.NavigationBox
             set { SetValue(NavigationDataTemplateProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty NavigationDataTemplateProperty =
             DependencyProperty.Register("NavigationDataTemplate", typeof(DataTemplate), typeof(ScrollIntoView), new PropertyMetadata(default(DataTemplate), (d, e) =>
              {
@@ -61,7 +61,7 @@ namespace H.Controls.NavigationBox
             set { SetValue(ContainDataTemplateProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty ContainDataTemplateProperty =
             DependencyProperty.Register("ContainDataTemplate", typeof(DataTemplate), typeof(ScrollIntoView), new PropertyMetadata(default(DataTemplate), (d, e) =>
              {
@@ -80,7 +80,7 @@ namespace H.Controls.NavigationBox
             set { SetValue(SourceProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty SourceProperty =
             DependencyProperty.Register("Source", typeof(IEnumerable), typeof(ScrollIntoView), new PropertyMetadata(default(IEnumerable), (d, e) =>
              {

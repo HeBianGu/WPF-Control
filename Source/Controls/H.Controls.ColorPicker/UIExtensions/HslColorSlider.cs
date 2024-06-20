@@ -10,7 +10,7 @@ namespace H.Controls.ColorPicker.UIExtensions
             DependencyProperty.Register(nameof(SliderHslType), typeof(string), typeof(HslColorSlider),
                 new PropertyMetadata(""));
 
-        protected override bool RefreshGradient => SliderHslType != "H";
+        protected override bool RefreshGradient => this.SliderHslType != "H";
 
         public string SliderHslType
         {
@@ -20,13 +20,13 @@ namespace H.Controls.ColorPicker.UIExtensions
 
         protected override void GenerateBackground()
         {
-            if (SliderHslType == "H")
+            if (this.SliderHslType == "H")
             {
                 var colorStart = GetColorForSelectedArgb(0);
                 var colorEnd = GetColorForSelectedArgb(360);
-                LeftCapColor.Color = colorStart;
-                RightCapColor.Color = colorEnd;
-                BackgroundGradient = new GradientStopCollection
+                this.LeftCapColor.Color = colorStart;
+                this.RightCapColor.Color = colorEnd;
+                this.BackgroundGradient = new GradientStopCollection
                 {
                     new GradientStop(colorStart, 0),
                     new GradientStop(GetColorForSelectedArgb(60), 1 / 6.0),
@@ -39,13 +39,13 @@ namespace H.Controls.ColorPicker.UIExtensions
                 return;
             }
 
-            if (SliderHslType == "L")
+            if (this.SliderHslType == "L")
             {
                 var colorStart = GetColorForSelectedArgb(0);
                 var colorEnd = GetColorForSelectedArgb(255);
-                LeftCapColor.Color = colorStart;
-                RightCapColor.Color = colorEnd;
-                BackgroundGradient = new GradientStopCollection
+                this.LeftCapColor.Color = colorStart;
+                this.RightCapColor.Color = colorEnd;
+                this.BackgroundGradient = new GradientStopCollection
                 {
                     new GradientStop(colorStart, 0),
                     new GradientStop(GetColorForSelectedArgb(128), 0.5),
@@ -57,9 +57,9 @@ namespace H.Controls.ColorPicker.UIExtensions
             {
                 var colorStart = GetColorForSelectedArgb(0);
                 var colorEnd = GetColorForSelectedArgb(255);
-                LeftCapColor.Color = colorStart;
-                RightCapColor.Color = colorEnd;
-                BackgroundGradient = new GradientStopCollection
+                this.LeftCapColor.Color = colorStart;
+                this.RightCapColor.Color = colorEnd;
+                this.BackgroundGradient = new GradientStopCollection
                 {
                     new GradientStop(colorStart, 0.0),
                     new GradientStop(colorEnd, 1)
@@ -69,7 +69,7 @@ namespace H.Controls.ColorPicker.UIExtensions
 
         private Color GetColorForSelectedArgb(int value)
         {
-            switch (SliderHslType)
+            switch (this.SliderHslType)
             {
                 case "H":
                     {
@@ -79,21 +79,21 @@ namespace H.Controls.ColorPicker.UIExtensions
                     }
                 case "S":
                     {
-                        var rgbtuple = ColorSpaceHelper.HslToRgb(CurrentColorState.HSL_H, value / 255.0,
-                            CurrentColorState.HSL_L);
+                        var rgbtuple = ColorSpaceHelper.HslToRgb(this.CurrentColorState.HSL_H, value / 255.0,
+                            this.CurrentColorState.HSL_L);
                         double r = rgbtuple.Item1, g = rgbtuple.Item2, b = rgbtuple.Item3;
                         return Color.FromArgb(255, (byte)(r * 255), (byte)(g * 255), (byte)(b * 255));
                     }
                 case "L":
                     {
-                        var rgbtuple = ColorSpaceHelper.HslToRgb(CurrentColorState.HSL_H, CurrentColorState.HSL_S,
+                        var rgbtuple = ColorSpaceHelper.HslToRgb(this.CurrentColorState.HSL_H, this.CurrentColorState.HSL_S,
                             value / 255.0);
                         double r = rgbtuple.Item1, g = rgbtuple.Item2, b = rgbtuple.Item3;
                         return Color.FromArgb(255, (byte)(r * 255), (byte)(g * 255), (byte)(b * 255));
                     }
                 default:
-                    return Color.FromArgb(255, (byte)(CurrentColorState.RGB_R * 255),
-                        (byte)(CurrentColorState.RGB_G * 255), (byte)(CurrentColorState.RGB_B * 255));
+                    return Color.FromArgb(255, (byte)(this.CurrentColorState.RGB_R * 255),
+                        (byte)(this.CurrentColorState.RGB_G * 255), (byte)(this.CurrentColorState.RGB_B * 255));
             }
         }
     }

@@ -43,7 +43,7 @@ namespace H.Controls.Dock.Layout
         /// <summary>Class constructor from <see cref="LayoutAnchorable"/> which will be added into its children collection.</summary>
         public LayoutAnchorablePane(LayoutAnchorable anchorable)
         {
-            Children.Add(anchorable);
+            this.Children.Add(anchorable);
         }
 
         #endregion Constructors
@@ -51,10 +51,10 @@ namespace H.Controls.Dock.Layout
         #region Properties
 
         /// <summary>Gets whether the pane can be hidden.</summary>
-        public bool CanHide => Children.All(a => a.CanHide);
+        public bool CanHide => this.Children.All(a => a.CanHide);
 
         /// <summary>Gets whether the pane can be closed.</summary>
-        public bool CanClose => Children.All(a => a.CanClose);
+        public bool CanClose => this.Children.All(a => a.CanClose);
 
         /// <summary>Gets whether the pane is hosted in a floating window.</summary>
         public bool IsHostedInFloatingWindow => this.FindParent<LayoutFloatingWindow>() != null;
@@ -67,7 +67,7 @@ namespace H.Controls.Dock.Layout
             {
                 if (value == _name) return;
                 _name = value;
-                RaisePropertyChanged(nameof(Name));
+                RaisePropertyChanged(nameof(this.Name));
             }
         }
 
@@ -77,22 +77,22 @@ namespace H.Controls.Dock.Layout
             get => _selectedIndex;
             set
             {
-                if (value < 0 || value >= Children.Count) value = -1;
+                if (value < 0 || value >= this.Children.Count) value = -1;
                 if (value == _selectedIndex) return;
-                RaisePropertyChanging(nameof(SelectedContentIndex));
-                RaisePropertyChanging(nameof(SelectedContent));
-                if (_selectedIndex >= 0 && _selectedIndex < Children.Count)
-                    Children[_selectedIndex].IsSelected = false;
+                RaisePropertyChanging(nameof(this.SelectedContentIndex));
+                RaisePropertyChanging(nameof(this.SelectedContent));
+                if (_selectedIndex >= 0 && _selectedIndex < this.Children.Count)
+                    this.Children[_selectedIndex].IsSelected = false;
                 _selectedIndex = value;
-                if (_selectedIndex >= 0 && _selectedIndex < Children.Count)
-                    Children[_selectedIndex].IsSelected = true;
-                RaisePropertyChanged(nameof(SelectedContentIndex));
-                RaisePropertyChanged(nameof(SelectedContent));
+                if (_selectedIndex >= 0 && _selectedIndex < this.Children.Count)
+                    this.Children[_selectedIndex].IsSelected = true;
+                RaisePropertyChanged(nameof(this.SelectedContentIndex));
+                RaisePropertyChanged(nameof(this.SelectedContent));
             }
         }
 
         /// <summary>Gets the selected content in the pane or null.</summary>
-        public LayoutContent SelectedContent => _selectedIndex == -1 ? null : Children[_selectedIndex];
+        public LayoutContent SelectedContent => _selectedIndex == -1 ? null : this.Children[_selectedIndex];
 
         /// <summary>Gets/sets the unique id that is used for the serialization of this panel.</summary>
         string ILayoutPaneSerializable.Id
@@ -106,16 +106,16 @@ namespace H.Controls.Dock.Layout
         #region Overrides
 
         /// <inheritdoc />
-        protected override bool GetVisibility() => Children.Count > 0 && Children.Any(c => c.IsVisible);
+        protected override bool GetVisibility() => this.Children.Count > 0 && this.Children.Any(c => c.IsVisible);
 
         /// <inheritdoc />
         protected override void ChildMoved(int oldIndex, int newIndex)
         {
             if (_selectedIndex == oldIndex)
             {
-                RaisePropertyChanging(nameof(SelectedContentIndex));
+                RaisePropertyChanging(nameof(this.SelectedContentIndex));
                 _selectedIndex = newIndex;
-                RaisePropertyChanged(nameof(SelectedContentIndex));
+                RaisePropertyChanged(nameof(this.SelectedContentIndex));
             }
             base.ChildMoved(oldIndex, newIndex);
         }
@@ -124,15 +124,15 @@ namespace H.Controls.Dock.Layout
         protected override void OnChildrenCollectionChanged()
         {
             AutoFixSelectedContent();
-            for (int i = 0; i < Children.Count; i++)
+            for (int i = 0; i < this.Children.Count; i++)
             {
-                if (!Children[i].IsSelected) continue;
-                SelectedContentIndex = i;
+                if (!this.Children[i].IsSelected) continue;
+                this.SelectedContentIndex = i;
                 break;
             }
-            RaisePropertyChanged(nameof(CanClose));
-            RaisePropertyChanged(nameof(CanHide));
-            RaisePropertyChanged(nameof(IsDirectlyHostedInFloatingWindow));
+            RaisePropertyChanged(nameof(this.CanClose));
+            RaisePropertyChanged(nameof(this.CanHide));
+            RaisePropertyChanged(nameof(this.IsDirectlyHostedInFloatingWindow));
             base.OnChildrenCollectionChanged();
         }
 
@@ -140,7 +140,7 @@ namespace H.Controls.Dock.Layout
         protected override void OnParentChanged(ILayoutContainer oldValue, ILayoutContainer newValue)
         {
             if (oldValue is ILayoutGroup oldGroup) oldGroup.ChildrenCollectionChanged -= OnParentChildrenCollectionChanged;
-            RaisePropertyChanged(nameof(IsDirectlyHostedInFloatingWindow));
+            RaisePropertyChanged(nameof(this.IsDirectlyHostedInFloatingWindow));
             if (newValue is ILayoutGroup newGroup) newGroup.ChildrenCollectionChanged += OnParentChildrenCollectionChanged;
             base.OnParentChanged(oldValue, newValue);
         }
@@ -149,7 +149,7 @@ namespace H.Controls.Dock.Layout
         public override void WriteXml(System.Xml.XmlWriter writer)
         {
             if (_id != null) writer.WriteAttributeString(nameof(ILayoutPaneSerializable.Id), _id);
-            if (_name != null) writer.WriteAttributeString(nameof(Name), _name);
+            if (_name != null) writer.WriteAttributeString(nameof(this.Name), _name);
             base.WriteXml(writer);
         }
 
@@ -157,7 +157,7 @@ namespace H.Controls.Dock.Layout
         public override void ReadXml(System.Xml.XmlReader reader)
         {
             if (reader.MoveToAttribute(nameof(ILayoutPaneSerializable.Id))) _id = reader.Value;
-            if (reader.MoveToAttribute(nameof(Name))) _name = reader.Value;
+            if (reader.MoveToAttribute(nameof(this.Name))) _name = reader.Value;
             _autoFixSelectedContent = false;
             base.ReadXml(reader);
             _autoFixSelectedContent = true;
@@ -171,7 +171,7 @@ namespace H.Controls.Dock.Layout
             System.Diagnostics.Trace.Write(new string(' ', tab * 4));
             System.Diagnostics.Trace.WriteLine("AnchorablePane()");
 
-            foreach (LayoutElement child in Children)
+            foreach (LayoutElement child in this.Children)
                 child.ConsoleDump(tab + 1);
         }
 #endif
@@ -188,7 +188,7 @@ namespace H.Controls.Dock.Layout
         public int IndexOf(LayoutContent content)
         {
             if (!(content is LayoutAnchorable anchorableChild)) return -1;
-            return Children.IndexOf(anchorableChild);
+            return this.Children.IndexOf(anchorableChild);
         }
 
         /// <summary>
@@ -213,11 +213,11 @@ namespace H.Controls.Dock.Layout
         /// <summary>Invalidates the current <see cref="SelectedContentIndex"/> and sets the index for the next avialable child with IsEnabled == true.</summary>
         internal void SetNextSelectedIndex()
         {
-            SelectedContentIndex = -1;
-            for (int i = 0; i < Children.Count; ++i)
+            this.SelectedContentIndex = -1;
+            for (int i = 0; i < this.Children.Count; ++i)
             {
-                if (!Children[i].IsEnabled) continue;
-                SelectedContentIndex = i;
+                if (!this.Children[i].IsEnabled) continue;
+                this.SelectedContentIndex = i;
                 return;
             }
         }
@@ -225,7 +225,7 @@ namespace H.Controls.Dock.Layout
         /// <summary>
         /// Updates whether this object is hosted at the root level of a floating window control or not.
         /// </summary>
-        internal void UpdateIsDirectlyHostedInFloatingWindow() => RaisePropertyChanged(nameof(IsDirectlyHostedInFloatingWindow));
+        internal void UpdateIsDirectlyHostedInFloatingWindow() => RaisePropertyChanged(nameof(this.IsDirectlyHostedInFloatingWindow));
 
         #endregion Internal Methods
 
@@ -234,18 +234,18 @@ namespace H.Controls.Dock.Layout
         private void AutoFixSelectedContent()
         {
             if (!_autoFixSelectedContent) return;
-            if (SelectedContentIndex >= ChildrenCount) SelectedContentIndex = Children.Count - 1;
-            if (SelectedContentIndex == -1 && ChildrenCount > 0) SetLastActivatedIndex();
+            if (this.SelectedContentIndex >= this.ChildrenCount) this.SelectedContentIndex = this.Children.Count - 1;
+            if (this.SelectedContentIndex == -1 && this.ChildrenCount > 0) SetLastActivatedIndex();
         }
 
         /// <summary>Sets the current <see cref="SelectedContentIndex"/> to the last activated child with IsEnabled == true</summary>
         private void SetLastActivatedIndex()
         {
-            LayoutAnchorable lastActivatedDocument = Children.Where(c => c.IsEnabled).OrderByDescending(c => c.LastActivationTimeStamp.GetValueOrDefault()).FirstOrDefault();
-            SelectedContentIndex = Children.IndexOf(lastActivatedDocument);
+            LayoutAnchorable lastActivatedDocument = this.Children.Where(c => c.IsEnabled).OrderByDescending(c => c.LastActivationTimeStamp.GetValueOrDefault()).FirstOrDefault();
+            this.SelectedContentIndex = this.Children.IndexOf(lastActivatedDocument);
         }
 
-        private void OnParentChildrenCollectionChanged(object sender, EventArgs e) => RaisePropertyChanged(nameof(IsDirectlyHostedInFloatingWindow));
+        private void OnParentChildrenCollectionChanged(object sender, EventArgs e) => RaisePropertyChanged(nameof(this.IsDirectlyHostedInFloatingWindow));
 
         #endregion Private Methods
     }

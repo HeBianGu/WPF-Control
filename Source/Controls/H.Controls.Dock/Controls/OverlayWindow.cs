@@ -172,16 +172,16 @@ namespace H.Controls.Dock.Controls
                 {
                     if (currentThemeResourceDictionary != null)
                     {
-                        Resources.MergedDictionaries.Remove(currentThemeResourceDictionary);
+                        this.Resources.MergedDictionaries.Remove(currentThemeResourceDictionary);
                         currentThemeResourceDictionary = null;
                     }
                 }
                 else
                 {
                     ResourceDictionary resourceDictionaryToRemove =
-                        Resources.MergedDictionaries.FirstOrDefault(r => r.Source == oldTheme.GetResourceUri());
+                        this.Resources.MergedDictionaries.FirstOrDefault(r => r.Source == oldTheme.GetResourceUri());
                     if (resourceDictionaryToRemove != null)
-                        Resources.MergedDictionaries.Remove(
+                        this.Resources.MergedDictionaries.Remove(
                             resourceDictionaryToRemove);
                 }
             }
@@ -191,11 +191,11 @@ namespace H.Controls.Dock.Controls
                 if (_host.Manager.Theme is DictionaryTheme theme)
                 {
                     currentThemeResourceDictionary = theme.ThemeResourceDictionary;
-                    Resources.MergedDictionaries.Add(currentThemeResourceDictionary);
+                    this.Resources.MergedDictionaries.Add(currentThemeResourceDictionary);
                 }
                 else
                 {
-                    Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = _host.Manager.Theme.GetResourceUri() });
+                    this.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = _host.Manager.Theme.GetResourceUri() });
                 }
             }
         }
@@ -505,7 +505,7 @@ namespace H.Controls.Dock.Controls
         /// <inheritdoc cref="IOverlayWindow"/>
         void IOverlayWindow.DragLeave(LayoutFloatingWindowControl floatingWindow)
         {
-            Visibility = System.Windows.Visibility.Hidden;
+            this.Visibility = System.Windows.Visibility.Hidden;
             _floatingWindow = null;
         }
 
@@ -723,8 +723,8 @@ namespace H.Controls.Dock.Controls
                     break;
             }
 
-            Canvas.SetLeft(areaElement, area.DetectionRect.Left - Left);
-            Canvas.SetTop(areaElement, area.DetectionRect.Top - Top);
+            Canvas.SetLeft(areaElement, area.DetectionRect.Left - this.Left);
+            Canvas.SetTop(areaElement, area.DetectionRect.Top - this.Top);
             areaElement.Width = area.DetectionRect.Width;
             areaElement.Height = area.DetectionRect.Height;
             areaElement.Visibility = System.Windows.Visibility.Visible;

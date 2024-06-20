@@ -1,6 +1,4 @@
-﻿
-using H.Extensions.ValueConverter;
-using H.Providers.Ioc;
+﻿using H.Providers.Ioc;
 using H.Providers.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -164,7 +162,7 @@ namespace H.Controls.Diagram.Extension
                 //data.Order = type?.Order ?? 0;
                 int? od = type.GetOrder();
                 if (od.HasValue)
-                    Order = od.Value;
+                    this.Order = od.Value;
                 datas.Add(data);
             }
             IEnumerable<IGrouping<string, NodeData>> groups = datas.OrderBy(x => x.Order).GroupBy(x => x.GroupName);

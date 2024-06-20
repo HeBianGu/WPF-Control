@@ -25,7 +25,7 @@ namespace H.Controls.ZoomBox
             get
             {
                 int currentIndex = this.Zoombox.ViewStackIndex;
-                return (currentIndex < 0 || currentIndex > Count - 1) ? ZoomboxView.Empty : this[currentIndex];
+                return (currentIndex < 0 || currentIndex > this.Count - 1) ? ZoomboxView.Empty : this[currentIndex];
             }
         }
 
@@ -163,7 +163,7 @@ namespace H.Controls.ZoomBox
             int currentIndex = this.Zoombox.ViewStackIndex;
             while (this.Count - 1 > currentIndex)
             {
-                this.RemoveAt(Count - 1);
+                this.RemoveAt(this.Count - 1);
             }
             this.Add(view);
         }
@@ -187,7 +187,7 @@ namespace H.Controls.ZoomBox
 
             bool currentDeleted = this.Zoombox.CurrentViewIndex >= 0;
             base.ClearItems();
-            this.Zoombox.SetViewStackCount(Count);
+            this.Zoombox.SetViewStackCount(this.Count);
 
             // if resetting the views due to a change in the view source collection, just return
             if (this.IsResettingViews)
@@ -244,7 +244,7 @@ namespace H.Controls.ZoomBox
             }
 
             base.InsertItem(index, view);
-            this.Zoombox.SetViewStackCount(Count);
+            this.Zoombox.SetViewStackCount(this.Count);
         }
 
         protected override void RemoveItem(int index)
@@ -295,7 +295,7 @@ namespace H.Controls.ZoomBox
                 this.Zoombox.RefocusView();
             }
 
-            this.Zoombox.SetViewStackCount(Count);
+            this.Zoombox.SetViewStackCount(this.Count);
         }
 
         protected override void SetItem(int index, ZoomboxView view)

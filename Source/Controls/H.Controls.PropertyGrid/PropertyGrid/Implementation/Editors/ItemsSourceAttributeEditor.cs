@@ -16,7 +16,7 @@ namespace H.Controls.PropertyGrid
 
         protected override void SetValueDependencyProperty()
         {
-            ValueProperty = System.Windows.Controls.ComboBox.SelectedValueProperty;
+            this.ValueProperty = System.Windows.Controls.ComboBox.SelectedValueProperty;
         }
 
         protected override System.Windows.Controls.ComboBox CreateEditor()
@@ -32,13 +32,13 @@ namespace H.Controls.PropertyGrid
 
         protected override void SetControlProperties(PropertyItem propertyItem)
         {
-            Editor.DisplayMemberPath = "DisplayName";
-            Editor.SelectedValuePath = "Value";
+            this.Editor.DisplayMemberPath = "DisplayName";
+            this.Editor.SelectedValuePath = "Value";
         }
 
         private void SetItemsSource()
         {
-            Editor.ItemsSource = CreateItemsSource();
+            this.Editor.ItemsSource = CreateItemsSource();
         }
 
         private System.Collections.IEnumerable CreateItemsSource()

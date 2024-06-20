@@ -144,7 +144,7 @@ namespace H.Controls.PropertyGrid
             bool isResource = false;
             bool isDynamicResource = false;
 
-            MarkupProperty markupProperty = markupObject.Properties.FirstOrDefault(p => p.Name == PropertyName);
+            MarkupProperty markupProperty = markupObject.Properties.FirstOrDefault(p => p.Name == this.PropertyName);
             if (markupProperty != null)
             {
                 //TODO: need to find a better way to determine if a StaticResource has been applied to any property not just a style(maybe with StaticResourceExtension)
@@ -258,7 +258,7 @@ namespace H.Controls.PropertyGrid
         {
             PropertyDescriptor pd = item as PropertyDescriptor;
 #if !VS2008
-            DisplayAttribute displayAttribute = PropertyGridUtilities.GetAttribute<DisplayAttribute>(PropertyDescriptor);
+            DisplayAttribute displayAttribute = PropertyGridUtilities.GetAttribute<DisplayAttribute>(this.PropertyDescriptor);
             if (displayAttribute != null)
             {
                 int? order = displayAttribute.GetOrder();
@@ -310,7 +310,7 @@ namespace H.Controls.PropertyGrid
         {
             ICustomTypeDescriptor customTypeDescriptor = sourceObject as ICustomTypeDescriptor;
             if (customTypeDescriptor != null)
-                sourceObject = customTypeDescriptor.GetPropertyOwner(PropertyDescriptor);
+                sourceObject = customTypeDescriptor.GetPropertyOwner(this.PropertyDescriptor);
 
             return sourceObject;
         }
@@ -343,11 +343,11 @@ namespace H.Controls.PropertyGrid
 #if VS2008
         var displayName = PropertyDescriptor.DisplayName;
 #else
-            DisplayAttribute displayAttribute = PropertyGridUtilities.GetAttribute<DisplayAttribute>(PropertyDescriptor);
-            string displayName = (displayAttribute != null) ? displayAttribute.GetName() : PropertyDescriptor.DisplayName;
+            DisplayAttribute displayAttribute = PropertyGridUtilities.GetAttribute<DisplayAttribute>(this.PropertyDescriptor);
+            string displayName = (displayAttribute != null) ? displayAttribute.GetName() : this.PropertyDescriptor.DisplayName;
 #endif
 
-            ParenthesizePropertyNameAttribute attribute = PropertyGridUtilities.GetAttribute<ParenthesizePropertyNameAttribute>(PropertyDescriptor);
+            ParenthesizePropertyNameAttribute attribute = PropertyGridUtilities.GetAttribute<ParenthesizePropertyNameAttribute>(this.PropertyDescriptor);
             if ((attribute != null) && attribute.NeedParenthesis)
             {
                 displayName = "(" + displayName + ")";
@@ -534,7 +534,7 @@ namespace H.Controls.PropertyGrid
             get
             {
                 // A common property which is present in all selectedObjects will always have the same name.
-                return PropertyDescriptor.Name;
+                return this.PropertyDescriptor.Name;
             }
         }
 
@@ -542,7 +542,7 @@ namespace H.Controls.PropertyGrid
         {
             get
             {
-                return PropertyDescriptor.PropertyType;
+                return this.PropertyDescriptor.PropertyType;
             }
         }
 

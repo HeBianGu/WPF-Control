@@ -1,5 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 namespace H.Controls.PDF
@@ -28,7 +27,7 @@ namespace H.Controls.PDF
             {
                 if (sender is BindSelectedItemBehavior behavior)
                 {
-                    var treeitem = behavior.AssociatedObject.GetChild<TreeViewItem>(x => x.DataContext == e.NewValue); 
+                    var treeitem = behavior.AssociatedObject.GetChild<TreeViewItem>(x => x.DataContext == e.NewValue);
                     if (treeitem != null)
                     {
                         treeitem.IsSelected = true;
@@ -42,22 +41,22 @@ namespace H.Controls.PDF
         protected override void OnAttached()
         {
             base.OnAttached();
-            AssociatedObject.SelectedItemChanged += OnTreeViewSelectedItemChanged;
+            this.AssociatedObject.SelectedItemChanged += OnTreeViewSelectedItemChanged;
         }
 
         protected override void OnDetaching()
         {
             base.OnDetaching();
 
-            if (AssociatedObject != null)
+            if (this.AssociatedObject != null)
             {
-                AssociatedObject.SelectedItemChanged -= OnTreeViewSelectedItemChanged;
+                this.AssociatedObject.SelectedItemChanged -= OnTreeViewSelectedItemChanged;
             }
         }
 
         private void OnTreeViewSelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
-            SelectedItem = e.NewValue;
+            this.SelectedItem = e.NewValue;
         }
     }
 }

@@ -801,14 +801,14 @@ namespace H.Controls.PropertyGrid
             _propertyDefinitionsListener = new WeakEventListener<NotifyCollectionChangedEventArgs>(this.OnPropertyDefinitionsCollectionChanged);
             _editorDefinitionsListener = new WeakEventListener<NotifyCollectionChangedEventArgs>(this.OnEditorDefinitionsCollectionChanged);
             UpdateContainerHelper();
-            EditorDefinitions = new EditorDefinitionCollection();
-            PropertyDefinitions = new PropertyDefinitionCollection();
+            this.EditorDefinitions = new EditorDefinitionCollection();
+            this.PropertyDefinitions = new PropertyDefinitionCollection();
             this.PropertyValueChanged += this.PropertyGrid_PropertyValueChanged;
 
             AddHandler(PropertyItemBase.ItemSelectionChangedEvent, new RoutedEventHandler(OnItemSelectionChanged));
             AddHandler(PropertyItemsControl.PreparePropertyItemEvent, new PropertyItemEventHandler(OnPreparePropertyItemInternal));
             AddHandler(PropertyItemsControl.ClearPropertyItemEvent, new PropertyItemEventHandler(OnClearPropertyItemInternal));
-            CommandBindings.Add(new CommandBinding(PropertyGridCommands.ClearFilter, ClearFilter, CanClearFilter));
+            this.CommandBindings.Add(new CommandBinding(PropertyGridCommands.ClearFilter, ClearFilter, CanClearFilter));
         }
 
         #endregion //Constructors
@@ -838,7 +838,7 @@ namespace H.Controls.PropertyGrid
             //binding when it receives expected target type during visual tree traversal
             //ref : http://www.codeproject.com/Tips/124556/How-to-suppress-the-System-Windows-Data-Error-warn
             TranslateTransform _moveTransform = new TranslateTransform();
-            _moveTransform.X = NameColumnWidth;
+            _moveTransform.X = this.NameColumnWidth;
             if (_dragThumb != null)
             {
                 _dragThumb.RenderTransform = _moveTransform;
@@ -886,13 +886,13 @@ namespace H.Controls.PropertyGrid
             PropertyItemBase item = (PropertyItemBase)args.OriginalSource;
             if (item.IsSelected)
             {
-                SelectedPropertyItem = item;
+                this.SelectedPropertyItem = item;
             }
             else
             {
-                if (object.ReferenceEquals(item, SelectedPropertyItem))
+                if (object.ReferenceEquals(item, this.SelectedPropertyItem))
                 {
-                    SelectedPropertyItem = null;
+                    this.SelectedPropertyItem = null;
                 }
             }
         }
@@ -917,7 +917,7 @@ namespace H.Controls.PropertyGrid
 
         private void DragThumb_DragDelta(object sender, DragDeltaEventArgs e)
         {
-            NameColumnWidth = Math.Max(0, NameColumnWidth + e.HorizontalChange);
+            this.NameColumnWidth = Math.Max(0, this.NameColumnWidth + e.HorizontalChange);
         }
 
 
@@ -949,12 +949,12 @@ namespace H.Controls.PropertyGrid
 
         private void ClearFilter(object sender, ExecutedRoutedEventArgs e)
         {
-            Filter = String.Empty;
+            this.Filter = String.Empty;
         }
 
         private void CanClearFilter(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = !String.IsNullOrEmpty(Filter);
+            e.CanExecute = !String.IsNullOrEmpty(this.Filter);
         }
 
         #endregion //Commands
@@ -1097,9 +1097,9 @@ namespace H.Controls.PropertyGrid
 
 
 
-            if (SelectedObject != null)
+            if (this.SelectedObject != null)
             {
-                _containerHelper = new ObjectContainerHelper(this, SelectedObject);
+                _containerHelper = new ObjectContainerHelper(this, this.SelectedObject);
                 ((ObjectContainerHelper)_containerHelper).GenerateProperties();
             }
 
@@ -1133,7 +1133,7 @@ namespace H.Controls.PropertyGrid
         {
             if (_dragThumb != null)
             {
-                if (IsCategorized)
+                if (this.IsCategorized)
                     _dragThumb.Margin = new Thickness(6, 0, 0, 0);
                 else
                     _dragThumb.Margin = new Thickness(-1, 0, 0, 0);
@@ -1443,8 +1443,8 @@ namespace H.Controls.PropertyGrid
         public PropertyValueChangedEventArgs(RoutedEvent routedEvent, object source, object oldValue, object newValue)
           : base(routedEvent, source)
         {
-            NewValue = newValue;
-            OldValue = oldValue;
+            this.NewValue = newValue;
+            this.OldValue = oldValue;
         }
     }
     #endregion

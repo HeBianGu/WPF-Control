@@ -1,6 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using H.Extensions.Setting;
 using H.Providers.Ioc;
-using H.Extensions.Setting;
+using System.ComponentModel.DataAnnotations;
 
 namespace H.Controls.PrintBox
 {

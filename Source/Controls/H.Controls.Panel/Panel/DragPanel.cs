@@ -32,7 +32,7 @@ namespace H.Controls.Panel
 
         private UIElement GetChildThatHasMouseOver()
         {
-            return GetParent(Mouse.DirectlyOver as DependencyObject, (ve) => Children.Contains(ve as UIElement)) as UIElement;
+            return GetParent(Mouse.DirectlyOver as DependencyObject, (ve) => this.Children.Contains(ve as UIElement)) as UIElement;
         }
 
         private Point GetItemVisualPoint(UIElement element)
@@ -45,8 +45,8 @@ namespace H.Controls.Panel
 
         private int GetIndexFromPoint(double x, double y)
         {
-            int columnIndex = (int)Math.Truncate(x / itemContainterWidth);
-            int rowIndex = (int)Math.Truncate(y / itemContainterHeight);
+            int columnIndex = (int)Math.Truncate(x / this.itemContainterWidth);
+            int rowIndex = (int)Math.Truncate(y / this.itemContainterHeight);
             return columns * rowIndex + columnIndex;
         }
 
@@ -108,11 +108,11 @@ namespace H.Controls.Panel
         }
         private double itemContainterHeight
         {
-            get { return ItemSeparation.Top + ItemsHeight + ItemSeparation.Bottom; }
+            get { return this.ItemSeparation.Top + this.ItemsHeight + this.ItemSeparation.Bottom; }
         }
         private double itemContainterWidth
         {
-            get { return ItemSeparation.Left + ItemsWidth + ItemSeparation.Right; }
+            get { return this.ItemSeparation.Left + this.ItemsWidth + this.ItemSeparation.Right; }
         }
         public ICommand SwapCommand
         {
@@ -127,16 +127,16 @@ namespace H.Controls.Panel
             //Apply exactly the same algorithm, but instide of Arrange a call AnimateTo method
             double colPosition = 0;
             double rowPosition = 0;
-            foreach (UIElement child in Children)
+            foreach (UIElement child in this.Children)
             {
-                if (child != _draggedElement)
-                    AnimateTo(child, colPosition + ItemSeparation.Left, rowPosition + ItemSeparation.Top, _isNotFirstArrange ? AnimationMilliseconds : 0);
+                if (child != this._draggedElement)
+                    AnimateTo(child, colPosition + this.ItemSeparation.Left, rowPosition + this.ItemSeparation.Top, _isNotFirstArrange ? this.AnimationMilliseconds : 0);
                 //drag will locate dragged element
-                colPosition += itemContainterWidth;
+                colPosition += this.itemContainterWidth;
                 if (colPosition + 1 > _calculatedSize.Width)
                 {
                     colPosition = 0;
-                    rowPosition += itemContainterHeight;
+                    rowPosition += this.itemContainterHeight;
                 }
             }
         }
@@ -161,22 +161,22 @@ namespace H.Controls.Panel
         #region measure
         protected override Size MeasureOverride(Size availableSize)
         {
-            Size itemContainerSize = new Size(itemContainterWidth, itemContainterHeight);
+            Size itemContainerSize = new Size(this.itemContainterWidth, this.itemContainterHeight);
             int count = 0;  //for not call it again
-            foreach (UIElement child in Children)
+            foreach (UIElement child in this.Children)
             {
                 child.Measure(itemContainerSize);
                 count++;
             }
-            if (availableSize.Width < itemContainterWidth)
-                _calculatedSize = new Size(itemContainterWidth, count * itemContainterHeight);  //the size of nX1
+            if (availableSize.Width < this.itemContainterWidth)
+                _calculatedSize = new Size(this.itemContainterWidth, count * this.itemContainterHeight);  //the size of nX1
             else
             {
-                columns = (int)Math.Truncate(availableSize.Width / itemContainterWidth);
+                columns = (int)Math.Truncate(availableSize.Width / this.itemContainterWidth);
                 rows = count / columns;
                 if (count % columns != 0)
                     rows++;
-                _calculatedSize = new Size(columns * itemContainterWidth, rows * itemContainterHeight);
+                _calculatedSize = new Size(columns * this.itemContainterWidth, rows * this.itemContainterHeight);
             }
             return _calculatedSize;
         }
@@ -185,9 +185,9 @@ namespace H.Controls.Panel
         #region arrange
         protected override Size ArrangeOverride(Size finalSize)
         {
-            Size _finalItemSize = new Size(ItemsWidth, ItemsHeight);
+            Size _finalItemSize = new Size(this.ItemsWidth, this.ItemsHeight);
             //if is animated then arrange elements to 0,0, and then put them on its location using the transform
-            foreach (UIElement child in InternalChildren)
+            foreach (UIElement child in this.InternalChildren)
             {
                 // If this is the first time we've seen this child, add our transforms
                 if (child.RenderTransform as TransformGroup == null)
@@ -275,9 +275,9 @@ namespace H.Controls.Panel
 
         private void OnMouseMove(object sender, MouseEventArgs e)
         {
-            if (e.LeftButton == MouseButtonState.Pressed && _draggedElement == null && !this.IsMouseCaptured)
+            if (e.LeftButton == MouseButtonState.Pressed && this._draggedElement == null && !this.IsMouseCaptured)
                 StartDrag(e);
-            else if (_draggedElement != null)
+            else if (this._draggedElement != null)
                 OnDragOver(e);
         }
 
@@ -295,38 +295,38 @@ namespace H.Controls.Panel
 
                 if (_x + difX < _rectOnDrag.Location.X)
                     _x = 0;
-                else if (ItemsWidth + _x + difX > _rectOnDrag.Location.X + _rectOnDrag.Width)
-                    _x = _rectOnDrag.Location.X + _rectOnDrag.Width - ItemsWidth;
+                else if (this.ItemsWidth + _x + difX > _rectOnDrag.Location.X + _rectOnDrag.Width)
+                    _x = _rectOnDrag.Location.X + _rectOnDrag.Width - this.ItemsWidth;
                 else if (mousePos.X > _rectOnDrag.Location.X && mousePos.X < _rectOnDrag.Location.X + _rectOnDrag.Width)
                     _x += difX;
                 if (_y + difY < _rectOnDrag.Location.Y)
                     _y = 0;
-                else if (ItemsHeight + _y + difY > _rectOnDrag.Location.Y + _rectOnDrag.Height)
-                    _y = _rectOnDrag.Location.Y + _rectOnDrag.Height - ItemsHeight;
+                else if (this.ItemsHeight + _y + difY > _rectOnDrag.Location.Y + _rectOnDrag.Height)
+                    _y = _rectOnDrag.Location.Y + _rectOnDrag.Height - this.ItemsHeight;
                 else if (mousePos.Y > _rectOnDrag.Location.Y && mousePos.Y < _rectOnDrag.Location.Y + _rectOnDrag.Height)
                     _y += difY;
                 //lines ends
 
-                AnimateTo(_draggedElement, _x, _y, 0);
+                AnimateTo(this._draggedElement, _x, _y, 0);
                 _lastMousePosX = mousePos.X;
                 _lastMousePosY = mousePos.Y;
                 _lastMouseMoveTime = e.Timestamp;
-                SwapElement(_x + ItemsWidth / 2, _y + ItemsHeight / 2);
+                SwapElement(_x + this.ItemsWidth / 2, _y + this.ItemsHeight / 2);
             }
         }
 
         private void StartDrag(MouseEventArgs e)
         {
             Point mousePos = Mouse.GetPosition(this);
-            _draggedElement = GetChildThatHasMouseOver();
-            if (_draggedElement == null)
+            this._draggedElement = GetChildThatHasMouseOver();
+            if (this._draggedElement == null)
                 return;
-            _draggedIndex = Children.IndexOf(_draggedElement);
+            _draggedIndex = this.Children.IndexOf(this._draggedElement);
             _rectOnDrag = VisualTreeHelper.GetDescendantBounds(this);
-            Point p = GetItemVisualPoint(_draggedElement);
+            Point p = GetItemVisualPoint(this._draggedElement);
             _x = p.X;
             _y = p.Y;
-            SetZIndex(_draggedElement, 1000);
+            SetZIndex(this._draggedElement, 1000);
             _lastMousePosX = mousePos.X;
             _lastMousePosY = mousePos.Y;
             _lastMouseMoveTime = e.Timestamp;
@@ -347,19 +347,19 @@ namespace H.Controls.Panel
 
             if (index == _draggedIndex || index < 0) return;
 
-            if (index >= Children.Count)
-                index = Children.Count - 1;
+            if (index >= this.Children.Count)
+                index = this.Children.Count - 1;
 
             int[] parameter = new int[] { _draggedIndex, index };
 
-            if (SwapCommand != null && SwapCommand.CanExecute(parameter))
+            if (this.SwapCommand != null && this.SwapCommand.CanExecute(parameter))
             {
-                SwapCommand.Execute(parameter);
+                this.SwapCommand.Execute(parameter);
 
-                _draggedElement = Children[index];
+                this._draggedElement = this.Children[index];
 
                 //this is bcause after changing the collection the element is other			
-                FillNewDraggedChild(_draggedElement);
+                FillNewDraggedChild(this._draggedElement);
 
                 _draggedIndex = index;
             }
@@ -368,10 +368,10 @@ namespace H.Controls.Panel
                 //  Do ：设置更新ListBox数据
                 if (this.AutoSwapItems(_draggedIndex, index))
                 {
-                    _draggedElement = Children[index];
+                    this._draggedElement = this.Children[index];
 
                     //this is bcause after changing the collection the element is other			
-                    FillNewDraggedChild(_draggedElement);
+                    FillNewDraggedChild(this._draggedElement);
 
                     _draggedIndex = index;
                 }
@@ -437,38 +437,38 @@ namespace H.Controls.Panel
 
         private void FinishDrag()
         {
-            if (_draggedElement != null)
+            if (this._draggedElement != null)
             {
-                SetZIndex(_draggedElement, 0);
-                _draggedElement = null;
+                SetZIndex(this._draggedElement, 0);
+                this._draggedElement = null;
                 this.InvalidateArrange();
             }
         }
 
         private void DoScroll()
         {
-            if (scrollViewer != null)
+            if (this.scrollViewer != null)
             {
-                Point position = Mouse.GetPosition(scrollViewer);
-                double scrollMargin = Math.Min(scrollViewer.FontSize * 2, scrollViewer.ActualHeight / 2);
+                Point position = Mouse.GetPosition(this.scrollViewer);
+                double scrollMargin = Math.Min(this.scrollViewer.FontSize * 2, this.scrollViewer.ActualHeight / 2);
 
-                if (position.X >= scrollViewer.ActualWidth - scrollMargin &&
-                    scrollViewer.HorizontalOffset < scrollViewer.ExtentWidth - scrollViewer.ViewportWidth)
+                if (position.X >= this.scrollViewer.ActualWidth - scrollMargin &&
+                    this.scrollViewer.HorizontalOffset < this.scrollViewer.ExtentWidth - this.scrollViewer.ViewportWidth)
                 {
-                    scrollViewer.LineRight();
+                    this.scrollViewer.LineRight();
                 }
-                else if (position.X < scrollMargin && scrollViewer.HorizontalOffset > 0)
+                else if (position.X < scrollMargin && this.scrollViewer.HorizontalOffset > 0)
                 {
-                    scrollViewer.LineLeft();
+                    this.scrollViewer.LineLeft();
                 }
-                else if (position.Y >= scrollViewer.ActualHeight - scrollMargin &&
-                    scrollViewer.VerticalOffset < scrollViewer.ExtentHeight - scrollViewer.ViewportHeight)
+                else if (position.Y >= this.scrollViewer.ActualHeight - scrollMargin &&
+                    this.scrollViewer.VerticalOffset < this.scrollViewer.ExtentHeight - this.scrollViewer.ViewportHeight)
                 {
-                    scrollViewer.LineDown();
+                    this.scrollViewer.LineDown();
                 }
-                else if (position.Y < scrollMargin && scrollViewer.VerticalOffset > 0)
+                else if (position.Y < scrollMargin && this.scrollViewer.VerticalOffset > 0)
                 {
-                    scrollViewer.LineUp();
+                    this.scrollViewer.LineUp();
                 }
             }
         }

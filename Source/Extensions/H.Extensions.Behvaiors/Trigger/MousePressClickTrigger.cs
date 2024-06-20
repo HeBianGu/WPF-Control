@@ -8,7 +8,7 @@ namespace H.Extensions.Behvaiors
     {
         public MousePressClickTrigger()
         {
-            UseInvokeOnDown = false;
+            this.UseInvokeOnDown = false;
         }
         protected override void ElapsedInvokeActions()
         {

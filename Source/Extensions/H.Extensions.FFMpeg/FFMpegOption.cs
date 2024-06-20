@@ -100,7 +100,7 @@ namespace H.Extensions.FFMpeg
 
         public override bool Load(out string message)
         {
-            var r= base.Load(out message);
+            var r = base.Load(out message);
             this.Applay();
             return r;
         }

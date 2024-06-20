@@ -19,7 +19,7 @@ namespace H.Extensions.StoryBoard
 
         protected override double EaseInCore(double normalizedTime)
         {
-            return Math.Pow(normalizedTime, Pow);
+            return Math.Pow(normalizedTime, this.Pow);
         }
 
         protected override Freezable CreateInstanceCore()

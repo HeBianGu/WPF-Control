@@ -4,8 +4,8 @@
     {
         public TorrentFile(string name, long size)
         {
-            Name = name;
-            Size = size;
+            this.Name = name;
+            this.Size = size;
         }
 
         public string Name { get; }

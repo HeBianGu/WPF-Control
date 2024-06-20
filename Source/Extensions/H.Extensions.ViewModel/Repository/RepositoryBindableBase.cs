@@ -34,7 +34,7 @@ namespace H.Extensions.ViewModel
                         relay.GroupName = relay.GroupName ?? display?.GroupName;
                     }
                 }
-                Commands.Add(command);
+                this.Commands.Add(command);
             }
         }
 

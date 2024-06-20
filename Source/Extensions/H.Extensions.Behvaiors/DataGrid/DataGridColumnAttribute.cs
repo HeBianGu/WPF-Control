@@ -10,14 +10,14 @@ namespace H.Extensions.Behvaiors
         public DataGridColumnAttribute(string width)
         {
             DataGridLengthConverter converter = new DataGridLengthConverter();
-            Width = (DataGridLength)converter.ConvertFromString(width);
+            this.Width = (DataGridLength)converter.ConvertFromString(width);
         }
         public DataGridColumnAttribute()
         {
 
         }
         public DataGridLength Width { get; set; } = DataGridLength.Auto;
-        public Type Template { get; set; } = typeof(DataGridTextColumn); 
+        public Type Template { get; set; } = typeof(DataGridTextColumn);
         public Type ConvertyType { get; set; }
         /// <summary>
         /// "{0}.Property"
@@ -25,23 +25,23 @@ namespace H.Extensions.Behvaiors
         public string PropertyPath { get; set; } = "{0}";
         public virtual DataGridColumn GetDataGridColumn(PropertyInfo propertyInfo)
         {
-            DataGridColumn dataGridColumn = Activator.CreateInstance(Template) as DataGridColumn;
+            DataGridColumn dataGridColumn = Activator.CreateInstance(this.Template) as DataGridColumn;
             if (dataGridColumn == null)
             {
                 if (propertyInfo.PropertyType == typeof(bool))
                 {
-                    return new DataGridCheckBoxColumn() { Width = Width, IsReadOnly = false };
+                    return new DataGridCheckBoxColumn() { Width = this.Width, IsReadOnly = false };
                 }
                 else if (propertyInfo.PropertyType.IsEnum)
                 {
-                    return new DataGridComboBoxColumn() { Width = Width, IsReadOnly = false };
+                    return new DataGridComboBoxColumn() { Width = this.Width, IsReadOnly = false };
                 }
                 else
                 {
-                    return new DataGridTextColumn() { Width = Width, IsReadOnly = false };
+                    return new DataGridTextColumn() { Width = this.Width, IsReadOnly = false };
                 }
             }
-            dataGridColumn.Width = Width;
+            dataGridColumn.Width = this.Width;
             return dataGridColumn;
         }
     }

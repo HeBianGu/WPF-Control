@@ -130,9 +130,9 @@ namespace H.Controls.PropertyGrid
 
         private void OnDisplayDefaultValueOnEmptyTextChanged(bool oldValue, bool newValue)
         {
-            if (this.IsInitialized && string.IsNullOrEmpty(Text))
+            if (this.IsInitialized && string.IsNullOrEmpty(this.Text))
             {
-                this.SyncTextAndValueProperties(false, Text);
+                this.SyncTextAndValueProperties(false, this.Text);
             }
         }
 
@@ -162,9 +162,9 @@ namespace H.Controls.PropertyGrid
 
         private void OnDefaultValueChanged(T oldValue, T newValue)
         {
-            if (this.IsInitialized && string.IsNullOrEmpty(Text))
+            if (this.IsInitialized && string.IsNullOrEmpty(this.Text))
             {
-                this.SyncTextAndValueProperties(true, Text);
+                this.SyncTextAndValueProperties(true, this.Text);
             }
         }
 
@@ -453,8 +453,8 @@ namespace H.Controls.PropertyGrid
 
         protected override void OnAccessKey(AccessKeyEventArgs e)
         {
-            if (TextBox != null)
-                TextBox.Focus();
+            if (this.TextBox != null)
+                this.TextBox.Focus();
 
             base.OnAccessKey(e);
         }
@@ -463,28 +463,28 @@ namespace H.Controls.PropertyGrid
         {
             base.OnApplyTemplate();
 
-            if (TextBox != null)
+            if (this.TextBox != null)
             {
-                TextBox.TextChanged -= new TextChangedEventHandler(TextBox_TextChanged);
-                TextBox.RemoveHandler(Mouse.PreviewMouseDownEvent, new MouseButtonEventHandler(this.TextBox_PreviewMouseDown));
+                this.TextBox.TextChanged -= new TextChangedEventHandler(TextBox_TextChanged);
+                this.TextBox.RemoveHandler(Mouse.PreviewMouseDownEvent, new MouseButtonEventHandler(this.TextBox_PreviewMouseDown));
             }
 
-            TextBox = GetTemplateChild(PART_TextBox) as TextBox;
+            this.TextBox = GetTemplateChild(PART_TextBox) as TextBox;
 
-            if (TextBox != null)
+            if (this.TextBox != null)
             {
-                TextBox.Text = Text;
-                TextBox.TextChanged += new TextChangedEventHandler(TextBox_TextChanged);
-                TextBox.AddHandler(Mouse.PreviewMouseDownEvent, new MouseButtonEventHandler(this.TextBox_PreviewMouseDown), true);
+                this.TextBox.Text = this.Text;
+                this.TextBox.TextChanged += new TextChangedEventHandler(TextBox_TextChanged);
+                this.TextBox.AddHandler(Mouse.PreviewMouseDownEvent, new MouseButtonEventHandler(this.TextBox_PreviewMouseDown), true);
             }
 
-            if (Spinner != null)
-                Spinner.Spin -= OnSpinnerSpin;
+            if (this.Spinner != null)
+                this.Spinner.Spin -= OnSpinnerSpin;
 
-            Spinner = GetTemplateChild(PART_Spinner) as Spinner;
+            this.Spinner = GetTemplateChild(PART_Spinner) as Spinner;
 
-            if (Spinner != null)
-                Spinner.Spin += OnSpinnerSpin;
+            if (this.Spinner != null)
+                this.Spinner.Spin += OnSpinnerSpin;
 
             SetValidSpinDirection();
         }
@@ -514,19 +514,19 @@ namespace H.Controls.PropertyGrid
                 {
                     if (!_isTextChangedFromUI)
                     {
-                        this.SyncTextAndValueProperties(true, Text);
+                        this.SyncTextAndValueProperties(true, this.Text);
                     }
                 }
                 else
                 {
-                    this.SyncTextAndValueProperties(true, Text);
+                    this.SyncTextAndValueProperties(true, this.Text);
                 }
             }
         }
 
         protected override void OnCultureInfoChanged(CultureInfo oldValue, CultureInfo newValue)
         {
-            if (IsInitialized)
+            if (this.IsInitialized)
             {
                 SyncTextAndValueProperties(false, null);
             }
@@ -569,13 +569,13 @@ namespace H.Controls.PropertyGrid
 
         private void OnSpinnerSpin(object sender, SpinEventArgs e)
         {
-            if (AllowSpin && !IsReadOnly)
+            if (this.AllowSpin && !this.IsReadOnly)
             {
                 MouseWheelActiveTrigger activeTrigger = this.MouseWheelActiveTrigger;
                 bool spin = !e.UsingMouseWheel;
                 spin |= activeTrigger == MouseWheelActiveTrigger.MouseOver;
-                spin |= (TextBox != null) && TextBox.IsFocused && (activeTrigger == MouseWheelActiveTrigger.FocusedMouseOver);
-                spin |= (TextBox != null) && TextBox.IsFocused && (activeTrigger == MouseWheelActiveTrigger.Focused) && (Mouse.Captured is Spinner);
+                spin |= (this.TextBox != null) && this.TextBox.IsFocused && (activeTrigger == MouseWheelActiveTrigger.FocusedMouseOver);
+                spin |= (this.TextBox != null) && this.TextBox.IsFocused && (activeTrigger == MouseWheelActiveTrigger.Focused) && (Mouse.Captured is Spinner);
 
                 if (spin)
                 {
@@ -653,7 +653,7 @@ namespace H.Controls.PropertyGrid
               && (BindingOperations.GetBinding(this, ValueProperty) == null)
               && object.Equals(this.Value, ValueProperty.DefaultMetadata.DefaultValue);
 
-            this.SyncTextAndValueProperties(updateValueFromText, Text, !updateValueFromText);
+            this.SyncTextAndValueProperties(updateValueFromText, this.Text, !updateValueFromText);
         }
 
         /// <summary>
@@ -661,7 +661,7 @@ namespace H.Controls.PropertyGrid
         /// </summary>
         internal void DoDecrement()
         {
-            if (Spinner == null || (Spinner.ValidSpinDirection & ValidSpinDirections.Decrease) == ValidSpinDirections.Decrease)
+            if (this.Spinner == null || (this.Spinner.ValidSpinDirection & ValidSpinDirections.Decrease) == ValidSpinDirections.Decrease)
             {
                 OnDecrement();
             }
@@ -672,7 +672,7 @@ namespace H.Controls.PropertyGrid
         /// </summary>
         internal void DoIncrement()
         {
-            if (Spinner == null || (Spinner.ValidSpinDirection & ValidSpinDirections.Increase) == ValidSpinDirections.Increase)
+            if (this.Spinner == null || (this.Spinner.ValidSpinDirection & ValidSpinDirections.Increase) == ValidSpinDirections.Increase)
             {
                 OnIncrement();
             }
@@ -686,7 +686,7 @@ namespace H.Controls.PropertyGrid
             try
             {
                 _isTextChangedFromUI = true;
-                Text = ((TextBox)sender).Text;
+                this.Text = ((TextBox)sender).Text;
             }
             finally
             {
@@ -717,7 +717,7 @@ namespace H.Controls.PropertyGrid
 
         public virtual bool CommitInput()
         {
-            return this.SyncTextAndValueProperties(true, Text);
+            return this.SyncTextAndValueProperties(true, this.Text);
         }
 
         protected bool SyncTextAndValueProperties(bool updateValueFromText, string text)
@@ -770,19 +770,19 @@ namespace H.Controls.PropertyGrid
                 if (!_isTextChangedFromUI)
                 {
                     // Don't replace the empty Text with the non-empty representation of DefaultValue.
-                    bool shouldKeepEmpty = !forceTextUpdate && string.IsNullOrEmpty(Text) && object.Equals(Value, DefaultValue) && !this.DisplayDefaultValueOnEmptyText;
+                    bool shouldKeepEmpty = !forceTextUpdate && string.IsNullOrEmpty(this.Text) && object.Equals(this.Value, this.DefaultValue) && !this.DisplayDefaultValueOnEmptyText;
                     if (!shouldKeepEmpty)
                     {
                         string newText = ConvertValueToText();
                         if (!object.Equals(this.Text, newText))
                         {
-                            Text = newText;
+                            this.Text = newText;
                         }
                     }
 
                     // Sync Text and textBox
-                    if (TextBox != null)
-                        TextBox.Text = Text;
+                    if (this.TextBox != null)
+                        this.TextBox.Text = this.Text;
                 }
 
                 if (_isTextChangedFromUI && !parsedTextIsValid)
@@ -790,9 +790,9 @@ namespace H.Controls.PropertyGrid
                     // Text input was made from the user and the text
                     // repesents an invalid value. Disable the spinner
                     // in this case.
-                    if (Spinner != null)
+                    if (this.Spinner != null)
                     {
-                        Spinner.ValidSpinDirection = ValidSpinDirections.None;
+                        this.Spinner.ValidSpinDirection = ValidSpinDirections.None;
                     }
                 }
                 else

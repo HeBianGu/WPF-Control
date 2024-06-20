@@ -82,7 +82,7 @@ namespace H.Controls.PropertyGrid
             ValidSpinDirections valid = e.Direction == SpinDirection.Increase ? ValidSpinDirections.Increase : ValidSpinDirections.Decrease;
 
             //Only raise the event if spin is allowed.
-            if ((ValidSpinDirection & valid) == valid)
+            if ((this.ValidSpinDirection & valid) == valid)
             {
                 EventHandler<SpinEventArgs> handler = Spin;
                 if (handler != null)

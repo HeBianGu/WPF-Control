@@ -52,14 +52,14 @@ namespace H.Controls.Dock.Commands
                 {
                     // Keep a reference to the target to control the
                     // WeakAction's lifetime.
-                    Reference = new WeakReference(target);
+                    this.Reference = new WeakReference(target);
                 }
 
                 return;
             }
-            Method = func.Method;
-            FuncReference = new WeakReference(func.Target);
-            Reference = new WeakReference(target);
+            this.Method = func.Method;
+            this.FuncReference = new WeakReference(func.Target);
+            this.Reference = new WeakReference(target);
         }
 
         #endregion Public Constructors
@@ -76,22 +76,22 @@ namespace H.Controls.Dock.Commands
             get
             {
                 if (_staticFunc == null
-                    && Reference == null)
+                    && this.Reference == null)
                 {
                     return false;
                 }
 
                 if (_staticFunc != null)
                 {
-                    if (Reference != null)
+                    if (this.Reference != null)
                     {
-                        return Reference.IsAlive;
+                        return this.Reference.IsAlive;
                     }
 
                     return true;
                 }
 
-                return Reference.IsAlive;
+                return this.Reference.IsAlive;
             }
         }
 
@@ -107,7 +107,7 @@ namespace H.Controls.Dock.Commands
                 {
                     return _staticFunc.Method.Name;
                 }
-                return Method.Name;
+                return this.Method.Name;
             }
         }
 
@@ -138,15 +138,15 @@ namespace H.Controls.Dock.Commands
                 return _staticFunc(parameter);
             }
 
-            object funcTarget = FuncTarget;
+            object funcTarget = this.FuncTarget;
 
-            if (IsAlive)
+            if (this.IsAlive)
             {
-                if (Method != null
-                    && FuncReference != null
+                if (this.Method != null
+                    && this.FuncReference != null
                     && funcTarget != null)
                 {
-                    return (TResult)Method.Invoke(
+                    return (TResult)this.Method.Invoke(
                         funcTarget,
                         new object[]
                         {

@@ -63,9 +63,9 @@ namespace H.Modules.Login
     {
         public TestUser(string account, string password, string name)
         {
-            Account = account;
-            Password = password;
-            Name = name;
+            this.Account = account;
+            this.Password = password;
+            this.Name = name;
         }
 
         public string ID => "{C44465C0-AFBC-405D-ADA8-94A7825E7699}";

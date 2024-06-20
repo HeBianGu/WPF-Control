@@ -1,5 +1,4 @@
 ﻿using H.Providers.Ioc;
-using H.Providers.Mvvm;
 using System;
 using System.ComponentModel.DataAnnotations;
 
@@ -10,8 +9,8 @@ namespace H.Presenters.Design
     {
         public UserPresenter()
         {
-            Title = "当前用户：";
-            Text = Ioc<ILoginService>.Instance?.User?.Name;
+            this.Title = "当前用户：";
+            this.Text = Ioc<ILoginService>.Instance?.User?.Name;
         }
         public override void LoadDefault()
         {

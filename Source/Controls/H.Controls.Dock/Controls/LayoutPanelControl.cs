@@ -32,7 +32,7 @@ namespace H.Controls.Dock.Controls
 
         protected override void OnFixChildrenDockLengths()
         {
-            if (ActualWidth == 0.0 || ActualHeight == 0.0) return;
+            if (this.ActualWidth == 0.0 || this.ActualHeight == 0.0) return;
 
             #region Setup DockWidth/Height for children
 
@@ -55,7 +55,7 @@ namespace H.Controls.Dock.Controls
                             double childDockMinWidth = (_model.Children[i] as ILayoutPositionableElement).CalculatedDockMinWidth();
                             double widthToSet = Math.Max(childPositionableModelWidthActualSize.ActualWidth, childDockMinWidth);
 
-                            widthToSet = Math.Min(widthToSet, ActualWidth / 2.0);
+                            widthToSet = Math.Min(widthToSet, this.ActualWidth / 2.0);
                             widthToSet = Math.Max(widthToSet, childDockMinWidth);
                             (_model.Children[i] as ILayoutPositionableElement).DockWidth = new GridLength(widthToSet, GridUnitType.Pixel);
                         }
@@ -92,7 +92,7 @@ namespace H.Controls.Dock.Controls
                             ILayoutPositionableElementWithActualSize childPositionableModelWidthActualSize = _model.Children[i] as ILayoutPositionableElement as ILayoutPositionableElementWithActualSize;
                             double childDockMinHeight = (_model.Children[i] as ILayoutPositionableElement).CalculatedDockMinHeight();
                             double heightToSet = Math.Max(childPositionableModelWidthActualSize.ActualHeight, childDockMinHeight);
-                            heightToSet = Math.Min(heightToSet, ActualHeight / 2.0);
+                            heightToSet = Math.Min(heightToSet, this.ActualHeight / 2.0);
                             heightToSet = Math.Max(heightToSet, childDockMinHeight);
                             (_model.Children[i] as ILayoutPositionableElement).DockHeight = new GridLength(heightToSet, GridUnitType.Pixel);
                         }

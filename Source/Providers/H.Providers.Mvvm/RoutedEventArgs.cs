@@ -8,7 +8,7 @@ namespace H.Providers.Mvvm
     {
         public RoutedEventArgs(T entity)
         {
-            Entity = entity;
+            this.Entity = entity;
         }
 
         public RoutedEventArgs(RoutedEvent routedEvent, object source) : base(routedEvent, source)
@@ -16,7 +16,7 @@ namespace H.Providers.Mvvm
         }
         public RoutedEventArgs(RoutedEvent routedEvent, object source, T entity) : base(routedEvent, source)
         {
-            Entity = entity;
+            this.Entity = entity;
         }
 
 

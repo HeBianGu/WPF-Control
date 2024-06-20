@@ -19,8 +19,8 @@ namespace H.Controls.PropertyGrid
 
         public ColorItem(Color? color, string name)
         {
-            Color = color;
-            Name = name;
+            this.Color = color;
+            this.Name = name;
         }
 
         public override bool Equals(object obj)
@@ -28,7 +28,7 @@ namespace H.Controls.PropertyGrid
             ColorItem ci = obj as ColorItem;
             if (ci == null)
                 return false;
-            return ci.Color.Equals(Color) && ci.Name.Equals(Name);
+            return ci.Color.Equals(this.Color) && ci.Name.Equals(this.Name);
         }
 
         public override int GetHashCode()

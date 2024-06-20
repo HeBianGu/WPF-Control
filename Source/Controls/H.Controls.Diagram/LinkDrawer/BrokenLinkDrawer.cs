@@ -32,7 +32,7 @@ namespace H.Controls.Diagram
             set { SetValue(InnerSpanProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty InnerSpanProperty =
             DependencyProperty.Register("InnerSpan", typeof(int), typeof(BrokenLinkDrawer), new FrameworkPropertyMetadata(30, (d, e) =>
              {

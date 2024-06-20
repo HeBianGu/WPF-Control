@@ -32,21 +32,21 @@ namespace H.Controls.PropertyGrid
 
         protected override string GetDefaultPropertyName()
         {
-            object selectedObject = SelectedObject;
-            return (selectedObject != null) ? ObjectContainerHelperBase.GetDefaultPropertyName(SelectedObject) : null;
+            object selectedObject = this.SelectedObject;
+            return (selectedObject != null) ? ObjectContainerHelperBase.GetDefaultPropertyName(this.SelectedObject) : null;
         }
 
         protected override IEnumerable<PropertyItem> GenerateSubPropertiesCore()
         {
             List<PropertyItem> propertyItems = new List<PropertyItem>();
 
-            if (SelectedObject != null)
+            if (this.SelectedObject != null)
             {
                 try
                 {
                     List<PropertyDescriptor> descriptors = new List<PropertyDescriptor>();
                     {
-                        descriptors = ObjectContainerHelperBase.GetPropertyDescriptors(SelectedObject, this.PropertyContainer.HideInheritedProperties);
+                        descriptors = ObjectContainerHelperBase.GetPropertyDescriptors(this.SelectedObject, this.PropertyContainer.HideInheritedProperties);
                     }
 
                     foreach (PropertyDescriptor descriptor in descriptors)
@@ -105,13 +105,13 @@ namespace H.Controls.PropertyGrid
 
         private PropertyItem CreatePropertyItem(PropertyDescriptor property, PropertyDefinition propertyDef)
         {
-            DescriptorPropertyDefinition definition = new DescriptorPropertyDefinition(property, SelectedObject, this.PropertyContainer);
+            DescriptorPropertyDefinition definition = new DescriptorPropertyDefinition(property, this.SelectedObject, this.PropertyContainer);
             definition.InitProperties();
 
             this.InitializeDescriptorDefinition(definition, propertyDef);
             PropertyItem propertyItem = new PropertyItem(definition);
-            Debug.Assert(SelectedObject != null);
-            propertyItem.Instance = SelectedObject;
+            Debug.Assert(this.SelectedObject != null);
+            propertyItem.Instance = this.SelectedObject;
             propertyItem.CategoryOrder = this.GetCategoryOrder(definition.CategoryValue);
 
             propertyItem.WillRefreshPropertyGrid = this.GetWillRefreshPropertyGrid(property);
@@ -120,13 +120,13 @@ namespace H.Controls.PropertyGrid
 
         private int GetCategoryOrder(object categoryValue)
         {
-            Debug.Assert(SelectedObject != null);
+            Debug.Assert(this.SelectedObject != null);
 
             if (categoryValue == null)
                 return int.MaxValue;
 
             int order = int.MaxValue;
-            object selectedObject = SelectedObject;
+            object selectedObject = this.SelectedObject;
             CategoryOrderAttribute[] orderAttributes = (selectedObject != null)
               ? (CategoryOrderAttribute[])selectedObject.GetType().GetCustomAttributes(typeof(CategoryOrderAttribute), true)
               : new CategoryOrderAttribute[0];

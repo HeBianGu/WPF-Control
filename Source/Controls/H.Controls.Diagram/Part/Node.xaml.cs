@@ -59,7 +59,7 @@ namespace H.Controls.Diagram
             set { SetValue(LocationProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty LocationProperty =
             DependencyProperty.Register("Location", typeof(Point), typeof(Node), new FrameworkPropertyMetadata(default(Point), (d, e) =>
              {

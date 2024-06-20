@@ -71,7 +71,7 @@ namespace H.Controls.Form
                     this.Message = ex.Message;
                 }
 
-                return this.Error = Message;
+                return this.Error = this.Message;
             }
         }
     }

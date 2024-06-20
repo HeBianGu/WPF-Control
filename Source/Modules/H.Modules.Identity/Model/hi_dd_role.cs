@@ -12,7 +12,7 @@ namespace H.Modules.Identity
     {
         public hi_dd_role()
         {
-            Name = "普通角色";
+            this.Name = "普通角色";
         }
 
         private string _name;

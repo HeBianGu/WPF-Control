@@ -4,7 +4,7 @@
     {
         public override string ToString(double value)
         {
-            return new Length(value).ToString( );
+            return new Length(value).ToString();
         }
 
         public override double Parse(string str)

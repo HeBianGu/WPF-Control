@@ -91,7 +91,7 @@ namespace H.Controls.Diagram
                 //child.Draw(start, end);
                 child.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
                 child.Arrange(new Rect(new Point(0, 0), child.DesiredSize));
-                if (UseAnimation)
+                if (this.UseAnimation)
                 {
                     //child.BeginAnimationOpacity(0, 1, this.Duration.TotalMilliseconds * 3);
                 }

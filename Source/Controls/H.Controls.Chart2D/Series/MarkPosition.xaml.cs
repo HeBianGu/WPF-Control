@@ -23,7 +23,7 @@ namespace H.Controls.Chart2D
             set { SetValue(WidthPercentProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty WidthPercentProperty =
             DependencyProperty.Register("WidthPercent", typeof(double), typeof(MarkPosition), new PropertyMetadata(0.8, (d, e) =>
             {
@@ -43,7 +43,7 @@ namespace H.Controls.Chart2D
             set { SetValue(ItemPercentProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty ItemPercentProperty =
             DependencyProperty.Register("ItemPercent", typeof(double), typeof(MarkPosition), new PropertyMetadata(1.0, (d, e) =>
             {
@@ -63,7 +63,7 @@ namespace H.Controls.Chart2D
             set { SetValue(MulCountProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty MulCountProperty =
             DependencyProperty.Register("MulCount", typeof(int), typeof(MarkPosition), new PropertyMetadata(1, (d, e) =>
             {
@@ -84,7 +84,7 @@ namespace H.Controls.Chart2D
             set { SetValue(MulIndexProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty MulIndexProperty =
             DependencyProperty.Register("MulIndex", typeof(int), typeof(MarkPosition), new PropertyMetadata(0, (d, e) =>
             {
@@ -103,7 +103,7 @@ namespace H.Controls.Chart2D
             set { SetValue(AlignmentCenterProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty AlignmentCenterProperty =
             DependencyProperty.Register("AlignmentCenter", typeof(bool), typeof(MarkPosition), new PropertyMetadata(default(bool), (d, e) =>
             {
@@ -124,7 +124,7 @@ namespace H.Controls.Chart2D
             set { SetValue(MarkForegroundProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty MarkForegroundProperty =
             DependencyProperty.Register("MarkForeground", typeof(Brush), typeof(MarkPosition), new FrameworkPropertyMetadata(Brushes.White, (d, e) =>
             {
@@ -165,7 +165,7 @@ namespace H.Controls.Chart2D
             set { SetValue(MarkValueTypeProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty MarkValueTypeProperty =
             DependencyProperty.Register("MarkValueType", typeof(MarkValueType), typeof(MarkPosition), new PropertyMetadata(default(MarkValueType), (d, e) =>
              {
@@ -187,7 +187,7 @@ namespace H.Controls.Chart2D
             set { SetValue(PointProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty PointProperty =
             DependencyProperty.Register("Point", typeof(Point), typeof(MarkPosition), new PropertyMetadata(default(Point), (d, e) =>
              {

@@ -17,7 +17,7 @@ namespace H.Controls.Form
         public ObjectPropertyItem(PropertyInfo property, object obj) : base(property, obj)
         {
             List<RequiredAttribute> required = property.GetCustomAttributes<RequiredAttribute>()?.ToList();
-            Validations = property.GetCustomAttributes<ValidationAttribute>()?.ToList();
+            this.Validations = property.GetCustomAttributes<ValidationAttribute>()?.ToList();
             ////  Do ：这两个特性用在通知，本控件默认不可用于验证属性定义
             //Validations.RemoveAll(l => l is CustomValidationAttribute);
             //Validations.RemoveAll(l => l is CompareAttribute);
@@ -75,9 +75,9 @@ namespace H.Controls.Form
 
                 this.Error = null;
                 //  Do：检验数据有效性
-                if (Validations != null)
+                if (this.Validations != null)
                 {
-                    foreach (ValidationAttribute item in Validations)
+                    foreach (ValidationAttribute item in this.Validations)
                     {
                         if (!item.IsValid(value))
                         {
@@ -204,17 +204,17 @@ namespace H.Controls.Form
         protected virtual void SetValue(T value)
         {
             object to = this.ConverToObject(value);
-            object from = this.PropertyInfo.GetValue(Obj);
+            object from = this.PropertyInfo.GetValue(this.Obj);
             if (to == from)
                 return;
             if (to?.Equals(from) == true)
                 return;
-            this.PropertyInfo.SetValue(Obj, to);
+            this.PropertyInfo.SetValue(this.Obj, to);
         }
 
         protected virtual T GetValue()
         {
-            return (T)this.PropertyInfo.GetValue(Obj);
+            return (T)this.PropertyInfo.GetValue(this.Obj);
         }
 
         protected R GetValue<R>()
@@ -282,8 +282,8 @@ namespace H.Controls.Form
 
         public ObjectPropertyItem(PropertyInfo property, object obj)
         {
-            PropertyInfo = property;
-            Obj = obj;
+            this.PropertyInfo = property;
+            this.Obj = obj;
             DisplayAttribute display = property.GetCustomAttribute<DisplayAttribute>();
             this.Name = property.Name;
             if (display != null)

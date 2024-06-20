@@ -20,7 +20,7 @@ namespace H.Controls.Adorner
         public DragAdorner(UIElement adornedElement, Point offset) : base(adornedElement)
         {
             this.Offset = offset;
-            vbrush = new VisualBrush(AdornedElement);
+            vbrush = new VisualBrush(this.AdornedElement);
             vbrush.Opacity = AdornerSetting.Instance.DragAornerOpacity;
         }
 
@@ -36,16 +36,16 @@ namespace H.Controls.Adorner
             if (this.DropAdornerMode == DrapAdornerMode.OnlyY)
             {
                 p = new Point(0, p.Y);
-                p.Offset(0, -Offset.Y);
+                p.Offset(0, -this.Offset.Y);
             }
             else if (this.DropAdornerMode == DrapAdornerMode.OnlyX)
             {
                 p = new Point(p.X, 0);
-                p.Offset(-Offset.X, 0);
+                p.Offset(-this.Offset.X, 0);
             }
             else
             {
-                p.Offset(-Offset.X, -Offset.Y);
+                p.Offset(-this.Offset.X, -this.Offset.Y);
             }
 
             dc.DrawRectangle(vbrush, null, new Rect(p, this.RenderSize));

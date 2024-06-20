@@ -1,5 +1,4 @@
-﻿using H.Providers.Mvvm;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -11,28 +10,28 @@ namespace H.Presenters.Design
     {
         public CardPresenter()
         {
-            Title = "总计：";
-            Text = "80.34%";
-            Height = 80.0;
+            this.Title = "总计：";
+            this.Text = "80.34%";
+            this.Height = 80.0;
         }
         public override void LoadDefault()
         {
             base.LoadDefault();
-            FromColor = Colors.Orange;
-            ToColor = Colors.OrangeRed;
-            DropShadowEffectOpacity = 0.5;
-            Height = 80;
-            Width = 200;
-            Padding = new Thickness(10);
-            Margin = new Thickness(10);
-            CornerRadius = new CornerRadius(5);
-            Foreground = Brushes.White;
-            TitleForeground = Brushes.White;
-            FontSize = 25;
-            TitleFontSize = 15;
-            HorizontalContentAlignment = HorizontalAlignment.Center;
-            VerticalContentAlignment = VerticalAlignment.Center;
-            Orientation = Orientation.Horizontal;
+            this.FromColor = Colors.Orange;
+            this.ToColor = Colors.OrangeRed;
+            this.DropShadowEffectOpacity = 0.5;
+            this.Height = 80;
+            this.Width = 200;
+            this.Padding = new Thickness(10);
+            this.Margin = new Thickness(10);
+            this.CornerRadius = new CornerRadius(5);
+            this.Foreground = Brushes.White;
+            this.TitleForeground = Brushes.White;
+            this.FontSize = 25;
+            this.TitleFontSize = 15;
+            this.HorizontalContentAlignment = HorizontalAlignment.Center;
+            this.VerticalContentAlignment = VerticalAlignment.Center;
+            this.Orientation = Orientation.Horizontal;
         }
         private Color _fromColor;
         [Display(Name = "起始颜色", GroupName = "常用,样式")]

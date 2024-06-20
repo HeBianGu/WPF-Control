@@ -11,7 +11,7 @@ namespace H.Controls.PropertyGrid
     {
         protected override void SetValueDependencyProperty()
         {
-            ValueProperty = CollectionControlButton.ItemsSourceProperty;
+            this.ValueProperty = CollectionControlButton.ItemsSourceProperty;
         }
 
         protected override CollectionControlButton CreateEditor()
@@ -24,11 +24,11 @@ namespace H.Controls.PropertyGrid
         {
             Type type = propertyItem.PropertyType;
 
-            Editor.ItemsSourceType = type;
+            this.Editor.ItemsSourceType = type;
 
             if (type.BaseType == typeof(System.Array))
             {
-                Editor.NewItemTypes = new List<Type>() { type.GetElementType() };
+                this.Editor.NewItemTypes = new List<Type>() { type.GetElementType() };
             }
             else
             {
@@ -36,7 +36,7 @@ namespace H.Controls.PropertyGrid
                     && (propertyItem.DescriptorDefinition.NewItemTypes != null)
                     && (propertyItem.DescriptorDefinition.NewItemTypes.Count > 0))
                 {
-                    Editor.NewItemTypes = propertyItem.DescriptorDefinition.NewItemTypes;
+                    this.Editor.NewItemTypes = propertyItem.DescriptorDefinition.NewItemTypes;
                 }
                 else
                 {
@@ -48,7 +48,7 @@ namespace H.Controls.PropertyGrid
                         // We need to create EditableKeyValuePairs.
                         // Create a EditableKeyValuePair< TKey, TValue> type from dictionary generic arguments type
                         Type editableKeyValuePairType = ListUtilities.CreateEditableKeyValuePairType(dictionaryTypes[0], dictionaryTypes[1]);
-                        Editor.NewItemTypes = new List<Type>() { editableKeyValuePairType };
+                        this.Editor.NewItemTypes = new List<Type>() { editableKeyValuePairType };
                     }
                     else
                     {
@@ -56,7 +56,7 @@ namespace H.Controls.PropertyGrid
                         Type listType = ListUtilities.GetListItemType(type);
                         if (listType != null)
                         {
-                            Editor.NewItemTypes = new List<Type>() { listType };
+                            this.Editor.NewItemTypes = new List<Type>() { listType };
                         }
                         else
                         {
@@ -64,7 +64,7 @@ namespace H.Controls.PropertyGrid
                             Type colType = ListUtilities.GetCollectionItemType(type);
                             if (colType != null)
                             {
-                                Editor.NewItemTypes = new List<Type>() { colType };
+                                this.Editor.NewItemTypes = new List<Type>() { colType };
                             }
                         }
                     }

@@ -16,9 +16,9 @@ namespace H.Modules.Identity
     {
         public hi_dd_user()
         {
-            Name = "普通用户";
-            Account = "user";
-            Password = "123456";
+            this.Name = "普通用户";
+            this.Account = "user";
+            this.Password = "123456";
         }
         private string _name;
         [Display(Name = "用户名称")]

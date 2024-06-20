@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 
@@ -120,7 +119,7 @@ namespace H.Controls.PropertyGrid
             if (newValue)
             {
                 _initialValue.Clear();
-                foreach (object o in SelectedItems)
+                foreach (object o in this.SelectedItems)
                     _initialValue.Add(o);
             }
             else
@@ -209,11 +208,11 @@ namespace H.Controls.PropertyGrid
 
         private void OnKeyDown(object sender, KeyEventArgs e)
         {
-            if (!IsDropDownOpen)
+            if (!this.IsDropDownOpen)
             {
                 if (KeyboardUtilities.IsKeyModifyingPopupState(e))
                 {
-                    IsDropDownOpen = true;
+                    this.IsDropDownOpen = true;
                     // Popup_Opened() will Focus on ComboBoxItem.
                     e.Handled = true;
                 }
@@ -232,9 +231,9 @@ namespace H.Controls.PropertyGrid
                 }
                 else if (e.Key == Key.Escape)
                 {
-                    SelectedItems.Clear();
+                    this.SelectedItems.Clear();
                     foreach (object o in _initialValue)
-                        SelectedItems.Add(o);
+                        this.SelectedItems.Add(o);
                     CloseDropDown(true);
                     e.Handled = true;
                 }
@@ -243,9 +242,9 @@ namespace H.Controls.PropertyGrid
 
         private void Popup_Opened(object sender, EventArgs e)
         {
-            UIElement item = ItemContainerGenerator.ContainerFromItem(SelectedItem) as UIElement;
-            if ((item == null) && (Items.Count > 0))
-                item = ItemContainerGenerator.ContainerFromItem(Items[0]) as UIElement;
+            UIElement item = this.ItemContainerGenerator.ContainerFromItem(this.SelectedItem) as UIElement;
+            if ((item == null) && (this.Items.Count > 0))
+                item = this.ItemContainerGenerator.ContainerFromItem(this.Items[0]) as UIElement;
             if (item != null)
                 item.Focus();
         }
@@ -259,10 +258,10 @@ namespace H.Controls.PropertyGrid
 #if VS2008
       string newValue = String.Join( Delimiter, SelectedItems.Cast<object>().Select( x => GetItemDisplayValue( x ).ToString() ).ToArray() ); 
 #else
-            string newValue = String.Join(Delimiter, SelectedItems.Cast<object>().Select(x => GetItemDisplayValue(x)));
+            string newValue = String.Join(this.Delimiter, this.SelectedItems.Cast<object>().Select(x => GetItemDisplayValue(x)));
 #endif
 
-            if (String.IsNullOrEmpty(Text) || !Text.Equals(newValue))
+            if (String.IsNullOrEmpty(this.Text) || !this.Text.Equals(newValue))
             {
                 _ignoreTextValueChanged = true;
 #if VS2008
@@ -276,7 +275,7 @@ namespace H.Controls.PropertyGrid
 
         private void UpdateDisplayMemberPathValuesBindings()
         {
-            _displayMemberPathValuesChangeHelper.UpdateValueSource(ItemsCollection, this.DisplayMemberPath);
+            _displayMemberPathValuesChangeHelper.UpdateValueSource(this.ItemsCollection, this.DisplayMemberPath);
         }
 
         private void OnDisplayMemberPathValuesChanged()
@@ -293,7 +292,7 @@ namespace H.Controls.PropertyGrid
             List<string> selectedValues = null;
             if (!String.IsNullOrEmpty(this.Text))
             {
-                selectedValues = this.Text.Replace(" ", string.Empty).Split(new string[] { Delimiter }, StringSplitOptions.RemoveEmptyEntries).ToList();
+                selectedValues = this.Text.Replace(" ", string.Empty).Split(new string[] { this.Delimiter }, StringSplitOptions.RemoveEmptyEntries).ToList();
             }
 
             this.UpdateFromList(selectedValues, this.GetItemDisplayValue);
@@ -336,8 +335,8 @@ namespace H.Controls.PropertyGrid
 
         private void CloseDropDown(bool isFocusOnComboBox)
         {
-            if (IsDropDownOpen)
-                IsDropDownOpen = false;
+            if (this.IsDropDownOpen)
+                this.IsDropDownOpen = false;
             ReleaseMouseCapture();
 
             if (isFocusOnComboBox)

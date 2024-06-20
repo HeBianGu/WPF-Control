@@ -21,13 +21,13 @@ namespace H.Controls.Adorner
         public ControlTemplateAdorner(UIElement adornedElement) : base(adornedElement)
         {
             //visualCollection = new VisualCollection(this);
-            _contentControl.HorizontalAlignment = HorizontalAlignment.Stretch;
-            _contentControl.VerticalAlignment = VerticalAlignment.Stretch;
-            _contentControl.HorizontalContentAlignment = HorizontalAlignment.Stretch;
-            _contentControl.VerticalContentAlignment = VerticalAlignment.Stretch;
-            _visualCollection.Add(_contentControl);
-            _contentControl.Template = this.CreateTemplate();
-            _contentControl.Content = adornedElement.GetContent();
+            this._contentControl.HorizontalAlignment = HorizontalAlignment.Stretch;
+            this._contentControl.VerticalAlignment = VerticalAlignment.Stretch;
+            this._contentControl.HorizontalContentAlignment = HorizontalAlignment.Stretch;
+            this._contentControl.VerticalContentAlignment = VerticalAlignment.Stretch;
+            _visualCollection.Add(this._contentControl);
+            this._contentControl.Template = this.CreateTemplate();
+            this._contentControl.Content = adornedElement.GetContent();
         }
 
         protected virtual ControlTemplate CreateTemplate()

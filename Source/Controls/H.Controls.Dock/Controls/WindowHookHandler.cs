@@ -9,8 +9,8 @@ namespace H.Controls.Dock.Controls
 
         public FocusChangeEventArgs(IntPtr gotFocusWinHandle, IntPtr lostFocusWinHandle)
         {
-            GotFocusWinHandle = gotFocusWinHandle;
-            LostFocusWinHandle = lostFocusWinHandle;
+            this.GotFocusWinHandle = gotFocusWinHandle;
+            this.LostFocusWinHandle = lostFocusWinHandle;
         }
 
         #endregion Constructors

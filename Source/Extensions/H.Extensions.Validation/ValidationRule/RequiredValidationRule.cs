@@ -21,7 +21,7 @@ namespace H.Extensions.Validation
             }
             else
             {
-                return new ValidationResult(false, ErrorMessage);
+                return new ValidationResult(false, this.ErrorMessage);
             }
         }
     }

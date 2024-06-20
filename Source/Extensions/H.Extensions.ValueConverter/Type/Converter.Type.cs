@@ -17,7 +17,7 @@ namespace H.Extensions.ValueConverter
             if (value == null)
                 return null;
             Type type = value is Type t ? t : value.GetType();
-            object[] attributes = type.GetCustomAttributes(AttributeType, false);
+            object[] attributes = type.GetCustomAttributes(this.AttributeType, false);
             if (attributes == null || attributes.Count() == 0)
                 return DependencyProperty.UnsetValue;
             return attributes[0];

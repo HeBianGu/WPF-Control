@@ -49,9 +49,9 @@ namespace H.Controls.Dock.Controls
         /// <param name="type">the type of drop area for this drop target.</param>
         internal DropArea(T areaElement, DropAreaType type)
         {
-            AreaElement = areaElement;
-            DetectionRect = areaElement.GetScreenArea();
-            Type = type;
+            this.AreaElement = areaElement;
+            this.DetectionRect = areaElement.GetScreenArea();
+            this.Type = type;
         }
 
         #endregion Constructors
@@ -66,7 +66,7 @@ namespace H.Controls.Dock.Controls
 
         public Point TransformToDeviceDPI(Point dragPosition)
         {
-            return AreaElement.TransformToDeviceDPI(dragPosition);
+            return this.AreaElement.TransformToDeviceDPI(dragPosition);
         }
 
         #endregion IDropArea

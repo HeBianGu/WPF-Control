@@ -19,9 +19,9 @@ namespace H.Controls.ColorPicker.UIExtensions
         {
             var colorStart = GetColorForSelectedArgb(0);
             var colorEnd = GetColorForSelectedArgb(255);
-            LeftCapColor.Color = colorStart;
-            RightCapColor.Color = colorEnd;
-            BackgroundGradient = new GradientStopCollection
+            this.LeftCapColor.Color = colorStart;
+            this.RightCapColor.Color = colorEnd;
+            this.BackgroundGradient = new GradientStopCollection
             {
                 new GradientStop(colorStart, 0.0),
                 new GradientStop(colorEnd, 1)
@@ -30,11 +30,11 @@ namespace H.Controls.ColorPicker.UIExtensions
 
         private Color GetColorForSelectedArgb(int value)
         {
-            var a = (byte)(CurrentColorState.A * 255);
-            var r = (byte)(CurrentColorState.RGB_R * 255);
-            var g = (byte)(CurrentColorState.RGB_G * 255);
-            var b = (byte)(CurrentColorState.RGB_B * 255);
-            switch (SliderArgbType)
+            var a = (byte)(this.CurrentColorState.A * 255);
+            var r = (byte)(this.CurrentColorState.RGB_R * 255);
+            var g = (byte)(this.CurrentColorState.RGB_G * 255);
+            var b = (byte)(this.CurrentColorState.RGB_B * 255);
+            switch (this.SliderArgbType)
             {
                 case "A": return Color.FromArgb((byte)value, r, g, b);
                 case "R": return Color.FromArgb(255, (byte)value, g, b);

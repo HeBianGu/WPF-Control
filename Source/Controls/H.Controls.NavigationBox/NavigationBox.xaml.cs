@@ -24,9 +24,9 @@ namespace H.Controls.NavigationBox
         {
             base.OnApplyTemplate();
 
-            this._navigation = Template.FindName("PART_NAVIGATION", this) as ListBox;
+            this._navigation = this.Template.FindName("PART_NAVIGATION", this) as ListBox;
 
-            this._scrollviewer = Template.FindName("PART_SCROLLVIEWER", this) as ScrollViewer;
+            this._scrollviewer = this.Template.FindName("PART_SCROLLVIEWER", this) as ScrollViewer;
 
             this._navigation.SelectionChanged += (l, k) =>
             {
@@ -90,7 +90,7 @@ namespace H.Controls.NavigationBox
             set { SetValue(HitTestPointProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty HitTestPointProperty =
             DependencyProperty.Register("HitTestPoint", typeof(Point), typeof(NavigationBox), new FrameworkPropertyMetadata(new Point(10, 10), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, (d, e) =>
             {
@@ -148,7 +148,7 @@ namespace H.Controls.NavigationBox
             set { SetValue(NavigationDataTemplateProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty NavigationDataTemplateProperty =
             DependencyProperty.Register("NavigationDataTemplate", typeof(DataTemplate), typeof(NavigationBox), new PropertyMetadata(default(DataTemplate), (d, e) =>
             {
@@ -167,7 +167,7 @@ namespace H.Controls.NavigationBox
             set { SetValue(ContainDataTemplateProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty ContainDataTemplateProperty =
             DependencyProperty.Register("ContainDataTemplate", typeof(DataTemplate), typeof(NavigationBox), new PropertyMetadata(default(DataTemplate), (d, e) =>
             {
@@ -186,7 +186,7 @@ namespace H.Controls.NavigationBox
             set { SetValue(NavigationSourceProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty NavigationSourceProperty =
             DependencyProperty.Register("NavigationSource", typeof(IEnumerable), typeof(NavigationBox), new PropertyMetadata(default(IEnumerable), (d, e) =>
             {
@@ -206,7 +206,7 @@ namespace H.Controls.NavigationBox
             set { SetValue(NavigationStyleProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty NavigationStyleProperty =
             DependencyProperty.Register("NavigationStyle", typeof(Style), typeof(NavigationBox), new FrameworkPropertyMetadata(default(Style), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, (d, e) =>
             {

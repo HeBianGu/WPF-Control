@@ -25,7 +25,7 @@ namespace H.Controls.PropertyGrid
         {
             get
             {
-                return CategoryValue;
+                return this.CategoryValue;
             }
         }
 
@@ -52,8 +52,8 @@ namespace H.Controls.PropertyGrid
         public CategoryOrderAttribute(string categoryName, int order)
           : this()
         {
-            CategoryValue = categoryName;
-            Order = order;
+            this.CategoryValue = categoryName;
+            this.Order = order;
         }
 
         #endregion

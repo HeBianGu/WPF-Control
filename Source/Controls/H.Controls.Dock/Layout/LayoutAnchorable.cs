@@ -71,10 +71,10 @@ namespace H.Controls.Dock.Layout
             set
             {
                 if (value == _autohideWidth) return;
-                RaisePropertyChanging(nameof(AutoHideWidth));
+                RaisePropertyChanging(nameof(this.AutoHideWidth));
                 value = Math.Max(value, _autohideMinWidth);
                 _autohideWidth = value;
-                RaisePropertyChanged(nameof(AutoHideWidth));
+                RaisePropertyChanged(nameof(this.AutoHideWidth));
             }
         }
 
@@ -85,10 +85,10 @@ namespace H.Controls.Dock.Layout
             set
             {
                 if (value == _autohideMinWidth) return;
-                RaisePropertyChanging(nameof(AutoHideMinWidth));
+                RaisePropertyChanging(nameof(this.AutoHideMinWidth));
                 if (value < 0) throw new ArgumentOutOfRangeException("Negative value is not allowed.", nameof(value));
                 _autohideMinWidth = value;
-                RaisePropertyChanged(nameof(AutoHideMinWidth));
+                RaisePropertyChanged(nameof(this.AutoHideMinWidth));
             }
         }
 
@@ -99,10 +99,10 @@ namespace H.Controls.Dock.Layout
             set
             {
                 if (value == _autohideHeight) return;
-                RaisePropertyChanging(nameof(AutoHideHeight));
+                RaisePropertyChanging(nameof(this.AutoHideHeight));
                 value = Math.Max(value, _autohideMinHeight);
                 _autohideHeight = value;
-                RaisePropertyChanged(nameof(AutoHideHeight));
+                RaisePropertyChanged(nameof(this.AutoHideHeight));
             }
         }
 
@@ -113,11 +113,11 @@ namespace H.Controls.Dock.Layout
             set
             {
                 if (value == _autohideMinHeight) return;
-                RaisePropertyChanging(nameof(AutoHideMinHeight));
+                RaisePropertyChanging(nameof(this.AutoHideMinHeight));
                 if (value < 0) throw new ArgumentOutOfRangeException("Negative value is not allowed.", nameof(value));
 
                 _autohideMinHeight = value;
-                RaisePropertyChanged(nameof(AutoHideMinHeight));
+                RaisePropertyChanged(nameof(this.AutoHideMinHeight));
             }
         }
 
@@ -129,7 +129,7 @@ namespace H.Controls.Dock.Layout
             {
                 if (value == _canHide) return;
                 _canHide = value;
-                RaisePropertyChanged(nameof(CanHide));
+                RaisePropertyChanged(nameof(this.CanHide));
             }
         }
 
@@ -141,7 +141,7 @@ namespace H.Controls.Dock.Layout
             {
                 if (value == _canAutoHide) return;
                 _canAutoHide = value;
-                RaisePropertyChanged(nameof(CanAutoHide));
+                RaisePropertyChanged(nameof(this.CanAutoHide));
             }
         }
 
@@ -153,7 +153,7 @@ namespace H.Controls.Dock.Layout
             {
                 if (_canDockAsTabbedDocument == value) return;
                 _canDockAsTabbedDocument = value;
-                RaisePropertyChanged(nameof(CanDockAsTabbedDocument));
+                RaisePropertyChanged(nameof(this.CanDockAsTabbedDocument));
             }
         }
 
@@ -167,22 +167,22 @@ namespace H.Controls.Dock.Layout
             {
                 if (value == _canMove) return;
                 _canMove = value;
-                RaisePropertyChanged(nameof(CanMove));
+                RaisePropertyChanged(nameof(this.CanMove));
             }
         }
 
         /// <summary>Get a value indicating if the anchorable is anchored to an achor side in an AutoHide status or not.</summary>
-        public bool IsAutoHidden => Parent is LayoutAnchorGroup;
+        public bool IsAutoHidden => this.Parent is LayoutAnchorGroup;
 
         /// <summary>Gets whether this object is in a state where it is not visible in the UI or not.</summary>
         [XmlIgnore]
-        public bool IsHidden => Parent is LayoutRoot;
+        public bool IsHidden => this.Parent is LayoutRoot;
 
         /// <summary>Gets/sets whether this object is in a state where it is visible in the UI or not.</summary>
         [XmlIgnore]
         public bool IsVisible
         {
-            get => Parent != null && !(Parent is LayoutRoot);
+            get => this.Parent != null && !(this.Parent is LayoutRoot);
             set { if (value) Show(); else Hide(); }
         }
 
@@ -194,17 +194,17 @@ namespace H.Controls.Dock.Layout
         protected override void OnParentChanged(ILayoutContainer oldValue, ILayoutContainer newValue)
         {
             UpdateParentVisibility();
-            RaisePropertyChanged(nameof(IsVisible));
+            RaisePropertyChanged(nameof(this.IsVisible));
             NotifyIsVisibleChanged();
-            RaisePropertyChanged(nameof(IsHidden));
-            RaisePropertyChanged(nameof(IsAutoHidden));
+            RaisePropertyChanged(nameof(this.IsHidden));
+            RaisePropertyChanged(nameof(this.IsAutoHidden));
             base.OnParentChanged(oldValue, newValue);
         }
 
         /// <inheritdoc />
         protected override void InternalDock()
         {
-            LayoutRoot root = Root as LayoutRoot;
+            LayoutRoot root = this.Root as LayoutRoot;
             LayoutAnchorablePane anchorablePane = null;
 
             //look for active content parent pane
@@ -238,53 +238,53 @@ namespace H.Controls.Dock.Layout
         /// <inheritdoc />
         public override void ReadXml(System.Xml.XmlReader reader)
         {
-            if (reader.MoveToAttribute(nameof(CanHide)))
-                CanHide = bool.Parse(reader.Value);
-            if (reader.MoveToAttribute(nameof(CanAutoHide)))
-                CanAutoHide = bool.Parse(reader.Value);
-            if (reader.MoveToAttribute(nameof(AutoHideWidth)))
-                AutoHideWidth = double.Parse(reader.Value, CultureInfo.InvariantCulture);
-            if (reader.MoveToAttribute(nameof(AutoHideHeight)))
-                AutoHideHeight = double.Parse(reader.Value, CultureInfo.InvariantCulture);
-            if (reader.MoveToAttribute(nameof(AutoHideMinWidth)))
-                AutoHideMinWidth = double.Parse(reader.Value, CultureInfo.InvariantCulture);
-            if (reader.MoveToAttribute(nameof(AutoHideMinHeight)))
-                AutoHideMinHeight = double.Parse(reader.Value, CultureInfo.InvariantCulture);
-            if (reader.MoveToAttribute(nameof(CanDockAsTabbedDocument)))
-                CanDockAsTabbedDocument = bool.Parse(reader.Value);
-            if (reader.MoveToAttribute(nameof(CanMove)))
-                CanMove = bool.Parse(reader.Value);
+            if (reader.MoveToAttribute(nameof(this.CanHide)))
+                this.CanHide = bool.Parse(reader.Value);
+            if (reader.MoveToAttribute(nameof(this.CanAutoHide)))
+                this.CanAutoHide = bool.Parse(reader.Value);
+            if (reader.MoveToAttribute(nameof(this.AutoHideWidth)))
+                this.AutoHideWidth = double.Parse(reader.Value, CultureInfo.InvariantCulture);
+            if (reader.MoveToAttribute(nameof(this.AutoHideHeight)))
+                this.AutoHideHeight = double.Parse(reader.Value, CultureInfo.InvariantCulture);
+            if (reader.MoveToAttribute(nameof(this.AutoHideMinWidth)))
+                this.AutoHideMinWidth = double.Parse(reader.Value, CultureInfo.InvariantCulture);
+            if (reader.MoveToAttribute(nameof(this.AutoHideMinHeight)))
+                this.AutoHideMinHeight = double.Parse(reader.Value, CultureInfo.InvariantCulture);
+            if (reader.MoveToAttribute(nameof(this.CanDockAsTabbedDocument)))
+                this.CanDockAsTabbedDocument = bool.Parse(reader.Value);
+            if (reader.MoveToAttribute(nameof(this.CanMove)))
+                this.CanMove = bool.Parse(reader.Value);
             base.ReadXml(reader);
         }
 
         /// <inheritdoc />
         public override void WriteXml(System.Xml.XmlWriter writer)
         {
-            if (!CanHide)
-                writer.WriteAttributeString(nameof(CanHide), CanHide.ToString());
-            if (!CanAutoHide)
-                writer.WriteAttributeString(nameof(CanAutoHide), CanAutoHide.ToString(CultureInfo.InvariantCulture));
-            if (AutoHideWidth > 0)
-                writer.WriteAttributeString(nameof(AutoHideWidth), AutoHideWidth.ToString(CultureInfo.InvariantCulture));
-            if (AutoHideHeight > 0)
-                writer.WriteAttributeString(nameof(AutoHideHeight), AutoHideHeight.ToString(CultureInfo.InvariantCulture));
-            if (AutoHideMinWidth != 25.0)
-                writer.WriteAttributeString(nameof(AutoHideMinWidth), AutoHideMinWidth.ToString(CultureInfo.InvariantCulture));
-            if (AutoHideMinHeight != 25.0)
-                writer.WriteAttributeString(nameof(AutoHideMinHeight), AutoHideMinHeight.ToString(CultureInfo.InvariantCulture));
-            if (!CanDockAsTabbedDocument)
-                writer.WriteAttributeString(nameof(CanDockAsTabbedDocument), CanDockAsTabbedDocument.ToString(CultureInfo.InvariantCulture));
-            if (!CanMove)
-                writer.WriteAttributeString(nameof(CanMove), CanMove.ToString());
+            if (!this.CanHide)
+                writer.WriteAttributeString(nameof(this.CanHide), this.CanHide.ToString());
+            if (!this.CanAutoHide)
+                writer.WriteAttributeString(nameof(this.CanAutoHide), this.CanAutoHide.ToString(CultureInfo.InvariantCulture));
+            if (this.AutoHideWidth > 0)
+                writer.WriteAttributeString(nameof(this.AutoHideWidth), this.AutoHideWidth.ToString(CultureInfo.InvariantCulture));
+            if (this.AutoHideHeight > 0)
+                writer.WriteAttributeString(nameof(this.AutoHideHeight), this.AutoHideHeight.ToString(CultureInfo.InvariantCulture));
+            if (this.AutoHideMinWidth != 25.0)
+                writer.WriteAttributeString(nameof(this.AutoHideMinWidth), this.AutoHideMinWidth.ToString(CultureInfo.InvariantCulture));
+            if (this.AutoHideMinHeight != 25.0)
+                writer.WriteAttributeString(nameof(this.AutoHideMinHeight), this.AutoHideMinHeight.ToString(CultureInfo.InvariantCulture));
+            if (!this.CanDockAsTabbedDocument)
+                writer.WriteAttributeString(nameof(this.CanDockAsTabbedDocument), this.CanDockAsTabbedDocument.ToString(CultureInfo.InvariantCulture));
+            if (!this.CanMove)
+                writer.WriteAttributeString(nameof(this.CanMove), this.CanMove.ToString());
             base.WriteXml(writer);
         }
 
         /// <inheritdoc />
         public override void Close()
         {
-            if (Root?.Manager != null)
+            if (this.Root?.Manager != null)
             {
-                DockingManager dockingManager = Root.Manager;
+                DockingManager dockingManager = this.Root.Manager;
                 dockingManager.ExecuteCloseCommand(this);
             }
             else
@@ -309,7 +309,7 @@ namespace H.Controls.Dock.Layout
         #region Public Methods
         public void Hide()
         {
-            if (Root?.Manager is DockingManager dockingManager)
+            if (this.Root?.Manager is DockingManager dockingManager)
                 dockingManager.ExecuteHideCommand(this);
             else
                 HideAnchorable(true);
@@ -320,10 +320,10 @@ namespace H.Controls.Dock.Layout
         /// <param name="cancelable"></param>
         internal bool HideAnchorable(bool cancelable)
         {
-            if (!IsVisible)
+            if (!this.IsVisible)
             {
-                IsSelected = true;
-                IsActive = true;
+                this.IsSelected = true;
+                this.IsActive = true;
                 return false;
             }
 
@@ -334,17 +334,17 @@ namespace H.Controls.Dock.Layout
                 if (args.Cancel) return false;
             }
 
-            RaisePropertyChanging(nameof(IsHidden));
-            RaisePropertyChanging(nameof(IsVisible));
-            if (Parent is ILayoutGroup)
+            RaisePropertyChanging(nameof(this.IsHidden));
+            RaisePropertyChanging(nameof(this.IsVisible));
+            if (this.Parent is ILayoutGroup)
             {
-                ILayoutGroup parentAsGroup = Parent as ILayoutGroup;
-                PreviousContainer = parentAsGroup;
-                PreviousContainerIndex = parentAsGroup.IndexOfChild(this);
+                ILayoutGroup parentAsGroup = this.Parent as ILayoutGroup;
+                this.PreviousContainer = parentAsGroup;
+                this.PreviousContainerIndex = parentAsGroup.IndexOfChild(this);
             }
-            Root?.Hidden?.Add(this);
-            RaisePropertyChanged(nameof(IsVisible));
-            RaisePropertyChanged(nameof(IsHidden));
+            this.Root?.Hidden?.Add(this);
+            RaisePropertyChanged(nameof(this.IsVisible));
+            RaisePropertyChanged(nameof(this.IsHidden));
             NotifyIsVisibleChanged();
 
             return true;
@@ -354,33 +354,33 @@ namespace H.Controls.Dock.Layout
         /// <remarks>Try to show the content where it was previously hidden.</remarks>
         public void Show()
         {
-            if (IsVisible) return;
-            if (!IsHidden) throw new InvalidOperationException();
-            RaisePropertyChanging(nameof(IsHidden));
-            RaisePropertyChanging(nameof(IsVisible));
+            if (this.IsVisible) return;
+            if (!this.IsHidden) throw new InvalidOperationException();
+            RaisePropertyChanging(nameof(this.IsHidden));
+            RaisePropertyChanging(nameof(this.IsVisible));
             bool added = false;
-            ILayoutRoot root = Root;
+            ILayoutRoot root = this.Root;
             if (root?.Manager?.LayoutUpdateStrategy != null)
-                added = root.Manager.LayoutUpdateStrategy.BeforeInsertAnchorable(root as LayoutRoot, this, PreviousContainer);
+                added = root.Manager.LayoutUpdateStrategy.BeforeInsertAnchorable(root as LayoutRoot, this, this.PreviousContainer);
 
-            if (!added && PreviousContainer != null)
+            if (!added && this.PreviousContainer != null)
             {
-                ILayoutGroup previousContainerAsLayoutGroup = PreviousContainer as ILayoutGroup;
-                if (PreviousContainerIndex < previousContainerAsLayoutGroup.ChildrenCount)
-                    previousContainerAsLayoutGroup.InsertChildAt(PreviousContainerIndex, this);
+                ILayoutGroup previousContainerAsLayoutGroup = this.PreviousContainer as ILayoutGroup;
+                if (this.PreviousContainerIndex < previousContainerAsLayoutGroup.ChildrenCount)
+                    previousContainerAsLayoutGroup.InsertChildAt(this.PreviousContainerIndex, this);
                 else
                     previousContainerAsLayoutGroup.InsertChildAt(previousContainerAsLayoutGroup.ChildrenCount, this);
 
-                Parent = previousContainerAsLayoutGroup;
-                IsSelected = true;
-                IsActive = true;
+                this.Parent = previousContainerAsLayoutGroup;
+                this.IsSelected = true;
+                this.IsActive = true;
             }
 
             root?.Manager?.LayoutUpdateStrategy?.AfterInsertAnchorable(root as LayoutRoot, this);
-            PreviousContainer = null;
-            PreviousContainerIndex = -1;
-            RaisePropertyChanged(nameof(IsVisible));
-            RaisePropertyChanged(nameof(IsHidden));
+            this.PreviousContainer = null;
+            this.PreviousContainerIndex = -1;
+            RaisePropertyChanged(nameof(this.IsVisible));
+            RaisePropertyChanged(nameof(this.IsHidden));
             NotifyIsVisibleChanged();
         }
 
@@ -389,7 +389,7 @@ namespace H.Controls.Dock.Layout
         /// <param name="strategy"></param>
         public void AddToLayout(DockingManager manager, AnchorableShowStrategy strategy)
         {
-            if (IsVisible || IsHidden) throw new InvalidOperationException();
+            if (this.IsVisible || this.IsHidden) throw new InvalidOperationException();
 
             bool most = (strategy & AnchorableShowStrategy.Most) == AnchorableShowStrategy.Most;
             bool left = (strategy & AnchorableShowStrategy.Left) == AnchorableShowStrategy.Left;
@@ -446,9 +446,9 @@ namespace H.Controls.Dock.Layout
         {
             #region Anchorable is already auto hidden
 
-            if (IsAutoHidden)
+            if (this.IsAutoHidden)
             {
-                LayoutAnchorGroup parentGroup = Parent as LayoutAnchorGroup;
+                LayoutAnchorGroup parentGroup = this.Parent as LayoutAnchorGroup;
                 LayoutAnchorSide parentSide = parentGroup.Parent as LayoutAnchorSide;
                 LayoutAnchorablePane previousContainer = ((ILayoutPreviousContainer)parentGroup).PreviousContainer as LayoutAnchorablePane;
 
@@ -462,8 +462,8 @@ namespace H.Controls.Dock.Layout
                             {
                                 previousContainer = new LayoutAnchorablePane
                                 {
-                                    DockMinWidth = AutoHideMinWidth,
-                                    DockMinHeight = AutoHideMinHeight
+                                    DockMinWidth = this.AutoHideMinWidth,
+                                    DockMinHeight = this.AutoHideMinHeight
                                 };
                                 parentGroup.Root.RootPanel.Children.Add(previousContainer);
                             }
@@ -471,8 +471,8 @@ namespace H.Controls.Dock.Layout
                             {
                                 previousContainer = new LayoutAnchorablePane
                                 {
-                                    DockMinHeight = AutoHideMinHeight,
-                                    DockMinWidth = AutoHideMinWidth
+                                    DockMinHeight = this.AutoHideMinHeight,
+                                    DockMinWidth = this.AutoHideMinWidth
                                 };
                                 LayoutPanel panel = new LayoutPanel { Orientation = Orientation.Horizontal };
                                 LayoutRoot root = parentGroup.Root as LayoutRoot;
@@ -488,8 +488,8 @@ namespace H.Controls.Dock.Layout
                             {
                                 previousContainer = new LayoutAnchorablePane
                                 {
-                                    DockMinWidth = AutoHideMinWidth,
-                                    DockMinHeight = AutoHideMinHeight
+                                    DockMinWidth = this.AutoHideMinWidth,
+                                    DockMinHeight = this.AutoHideMinHeight
                                 };
                                 parentGroup.Root.RootPanel.Children.Insert(0, previousContainer);
                             }
@@ -497,8 +497,8 @@ namespace H.Controls.Dock.Layout
                             {
                                 previousContainer = new LayoutAnchorablePane
                                 {
-                                    DockMinHeight = AutoHideMinHeight,
-                                    DockMinWidth = AutoHideMinWidth
+                                    DockMinHeight = this.AutoHideMinHeight,
+                                    DockMinWidth = this.AutoHideMinWidth
                                 };
                                 LayoutPanel panel = new LayoutPanel { Orientation = Orientation.Horizontal };
                                 LayoutRoot root = parentGroup.Root as LayoutRoot;
@@ -514,8 +514,8 @@ namespace H.Controls.Dock.Layout
                             {
                                 previousContainer = new LayoutAnchorablePane
                                 {
-                                    DockMinHeight = AutoHideMinHeight,
-                                    DockMinWidth = AutoHideMinWidth
+                                    DockMinHeight = this.AutoHideMinHeight,
+                                    DockMinWidth = this.AutoHideMinWidth
                                 };
                                 parentGroup.Root.RootPanel.Children.Insert(0, previousContainer);
                             }
@@ -523,8 +523,8 @@ namespace H.Controls.Dock.Layout
                             {
                                 previousContainer = new LayoutAnchorablePane
                                 {
-                                    DockMinWidth = AutoHideMinWidth,
-                                    DockMinHeight = AutoHideMinHeight
+                                    DockMinWidth = this.AutoHideMinWidth,
+                                    DockMinHeight = this.AutoHideMinHeight
                                 };
                                 LayoutPanel panel = new LayoutPanel { Orientation = Orientation.Vertical };
                                 LayoutRoot root = parentGroup.Root as LayoutRoot;
@@ -540,8 +540,8 @@ namespace H.Controls.Dock.Layout
                             {
                                 previousContainer = new LayoutAnchorablePane
                                 {
-                                    DockMinHeight = AutoHideMinHeight,
-                                    DockMinWidth = AutoHideMinWidth
+                                    DockMinHeight = this.AutoHideMinHeight,
+                                    DockMinWidth = this.AutoHideMinWidth
                                 };
                                 parentGroup.Root.RootPanel.Children.Add(previousContainer);
                             }
@@ -549,8 +549,8 @@ namespace H.Controls.Dock.Layout
                             {
                                 previousContainer = new LayoutAnchorablePane
                                 {
-                                    DockMinWidth = AutoHideMinWidth,
-                                    DockMinHeight = AutoHideMinHeight
+                                    DockMinWidth = this.AutoHideMinWidth,
+                                    DockMinHeight = this.AutoHideMinHeight
                                 };
                                 LayoutPanel panel = new LayoutPanel { Orientation = Orientation.Vertical };
                                 LayoutRoot root = parentGroup.Root as LayoutRoot;
@@ -597,10 +597,10 @@ namespace H.Controls.Dock.Layout
 
             #region Anchorable is docked
 
-            else if (Parent is LayoutAnchorablePane)
+            else if (this.Parent is LayoutAnchorablePane)
             {
-                ILayoutRoot root = Root;
-                LayoutAnchorablePane parentPane = Parent as LayoutAnchorablePane;
+                ILayoutRoot root = this.Root;
+                LayoutAnchorablePane parentPane = this.Parent as LayoutAnchorablePane;
                 LayoutAnchorGroup newAnchorGroup = new LayoutAnchorGroup();
                 ((ILayoutPreviousContainer)newAnchorGroup).PreviousContainer = parentPane;
 
@@ -629,7 +629,7 @@ namespace H.Controls.Dock.Layout
         internal bool CloseAnchorable()
         {
             if (!TestCanClose()) return false;
-            if (IsAutoHidden) ToggleAutoHide();
+            if (this.IsAutoHidden) ToggleAutoHide();
             CloseInternal();
             return true;
         }
@@ -655,14 +655,14 @@ namespace H.Controls.Dock.Layout
         private void UpdateParentVisibility()
         {
             // Element is Hidden since it has no parent but a previous parent
-            if (PreviousContainer != null && Parent == null)
+            if (this.PreviousContainer != null && this.Parent == null)
             {
                 // Go back to using previous parent
-                Parent = PreviousContainer;
+                this.Parent = this.PreviousContainer;
                 ////        PreviousContainer = null;
             }
 
-            if (Parent is ILayoutElementWithVisibility parentPane)
+            if (this.Parent is ILayoutElementWithVisibility parentPane)
                 parentPane.ComputeVisibility();
         }
 
