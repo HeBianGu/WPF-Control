@@ -41,8 +41,11 @@ namespace H.Modules.Messages.Dialog
         public bool? DialogResult { get; set; }
         public void Sumit()
         {
-            this.DialogResult = true;
-            this.Close();
+            if(this.CanSumit?.Invoke()!=false)
+            {
+                this.DialogResult = true;
+                this.Close();
+            }
         }
 
         public void Cancel()

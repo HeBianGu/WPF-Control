@@ -2,9 +2,11 @@
 
 using System;
 using System.Windows;
+using System.Windows.Markup;
 
 namespace H.Extensions.MarkupExtension
 {
+    [MarkupExtensionReturnType(typeof(Visibility))]
     public class GetVisibilityExtension : GetValueExtensionBase
     {
         public override object ProvideValue(IServiceProvider serviceProvider)

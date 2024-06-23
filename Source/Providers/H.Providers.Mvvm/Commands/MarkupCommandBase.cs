@@ -4,6 +4,7 @@ using System.Windows.Markup;
 
 namespace H.Providers.Mvvm
 {
+    [MarkupExtensionReturnType(typeof(ICommand))]
     public abstract class MarkupCommandBase : MarkupExtension, ICommand
     {
         public event EventHandler CanExecuteChanged

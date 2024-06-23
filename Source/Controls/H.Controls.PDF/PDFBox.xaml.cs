@@ -52,11 +52,20 @@ namespace H.Controls.PDF
                         return;
                     this.PageIndex = 0;
                     this.Bookmarks?.Clear();
-                    var mem = await IocMessage.Dialog.ShowWait(x =>
-                       {
-                           var bytes = File.ReadAllBytes(openFileDialog.FileName);
-                           return new MemoryStream(bytes);
-                       });
+                    Stream mem;
+                    if (IocMessage.Dialog == null)
+                    {
+                        var bytes = File.ReadAllBytes(openFileDialog.FileName);
+                        mem = new MemoryStream(bytes);
+                    }
+                    else
+                    {
+                        mem = await IocMessage.Dialog.ShowWait(x =>
+                        {
+                            var bytes = File.ReadAllBytes(openFileDialog.FileName);
+                            return new MemoryStream(bytes);
+                        });
+                    }
                     this._renderer.OpenPdf(mem);
                     this._renderer.Bookmarks.OrderBy(x => x.PageIndex);
                     this.Bookmarks = this._renderer.Bookmarks;

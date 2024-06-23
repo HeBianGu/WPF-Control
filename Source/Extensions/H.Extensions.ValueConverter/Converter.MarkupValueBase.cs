@@ -3,11 +3,13 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
+using System.Windows.Input;
 using System.Windows.Markup;
 
 
 namespace H.Extensions.ValueConverter
 {
+    [MarkupExtensionReturnType(typeof(IValueConverter))]
     public abstract class MarkupValueConverterBase : MarkupExtension, IValueConverter, INotifyPropertyChanged
     {
         public abstract object Convert(object value, Type targetType, object parameter, CultureInfo culture);

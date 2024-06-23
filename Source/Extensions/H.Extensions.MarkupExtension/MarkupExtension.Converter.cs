@@ -2,6 +2,8 @@
 
 using System;
 using System.ComponentModel;
+using System.Windows.Markup;
+using System.Windows;
 
 namespace H.Extensions.MarkupExtension
 {

@@ -2,9 +2,11 @@
 
 using System;
 using System.Linq;
+using System.Windows.Markup;
 
 namespace H.Extensions.MarkupExtension
 {
+    [MarkupExtensionReturnType(typeof(TimeSpan))]
     public class TimeSpanParseExtension : System.Windows.Markup.MarkupExtension
     {
         public string Input { get; set; }
@@ -15,6 +17,7 @@ namespace H.Extensions.MarkupExtension
         }
     }
 
+    [MarkupExtensionReturnType(typeof(TimeSpan))]
     public class TimeSpanFromMethodExtension : System.Windows.Markup.MarkupExtension
     {
         public string Param { get; set; }

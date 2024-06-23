@@ -11,6 +11,7 @@ using System.Windows.Documents;
 
 namespace H.Modules.Messages.Notice
 {
+
     public class NoticeMessageService : INoticeMessageService
     {
         private NoticeBoxPresenter _noticeBox = new NoticeBoxPresenter();

@@ -2,6 +2,7 @@
 
 using System;
 using System.Windows;
+using System.Windows.Markup;
 
 namespace H.Extensions.MarkupExtension
 {
@@ -14,6 +15,7 @@ namespace H.Extensions.MarkupExtension
         public static Random random = new Random();
     }
 
+    [MarkupExtensionReturnType(typeof(int))]
     public class IntRandowmExtension : RandomExtension<int>
     {
         public override object ProvideValue(IServiceProvider serviceProvider)
@@ -21,7 +23,7 @@ namespace H.Extensions.MarkupExtension
             return random.Next(this.From, this.To);
         }
     }
-
+    [MarkupExtensionReturnType(typeof(double))]
     public class DoubleRandowmExtension : RandomExtension<double>
     {
         public override object ProvideValue(IServiceProvider serviceProvider)
@@ -29,7 +31,7 @@ namespace H.Extensions.MarkupExtension
             return (random.NextDouble() * (this.To - this.From)) + this.From;
         }
     }
-
+    [MarkupExtensionReturnType(typeof(Point))]
     public class PointExtension : System.Windows.Markup.MarkupExtension
     {
         public double X { get; set; }
@@ -41,7 +43,7 @@ namespace H.Extensions.MarkupExtension
             return new Point(this.X, this.Y);
         }
     }
-
+    [MarkupExtensionReturnType(typeof(Point))]
     public class PointRandomExtension : RandomExtension<Point>
     {
         public override object ProvideValue(IServiceProvider serviceProvider)
@@ -54,7 +56,7 @@ namespace H.Extensions.MarkupExtension
         }
     }
 
-
+    [MarkupExtensionReturnType(typeof(Rect))]
     public class RectMarkupExtension : System.Windows.Markup.MarkupExtension
     {
         public double X { get; set; }
@@ -71,6 +73,7 @@ namespace H.Extensions.MarkupExtension
         }
     }
 
+    [MarkupExtensionReturnType(typeof(Rect))]
     public class RectRandomExtension : RandomExtension<Rect>
     {
         public override object ProvideValue(IServiceProvider serviceProvider)
