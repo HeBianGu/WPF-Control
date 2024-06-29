@@ -250,8 +250,12 @@
         </Style.Triggers>
     </Style>
     <Style BasedOn="{StaticResource {x:Static local:TreeViewKeys.Default}}"
-           TargetType="TreeView" />
+           TargetType="TreeView">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+    </Style>
     <Style BasedOn="{StaticResource {x:Static local:TreeViewItemKeys.Default}}"
-           TargetType="TreeViewItem" />
+           TargetType="TreeViewItem">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+    </Style>
 
 </ResourceDictionary>

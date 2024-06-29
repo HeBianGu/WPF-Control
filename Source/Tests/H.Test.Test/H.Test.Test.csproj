@@ -23,6 +23,7 @@
     <ProjectReference Include="..\..\Controls\H.Controls.ScheduleBox\H.Controls.ScheduleBox.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.Step\H.Controls.Step.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.TagBox\H.Controls.TagBox.csproj" />
+    <ProjectReference Include="..\..\Controls\H.Controls.TreeLayoutBox\H.Controls.TreeLayoutBox.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.TreeListView\H.Controls.TreeListView.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.Vlc\H.Controls.Vlc.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.ZoomBox\H.Controls.ZoomBox.csproj" />
