@@ -1,12 +1,12 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:H.Styles.Default">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:H.Styles.Default">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="ScrollBarLineButton"
-           TargetType="{x:Type RepeatButton}">
+    <Style x:Key="ScrollBarLineButton" TargetType="{x:Type RepeatButton}">
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="Focusable" Value="false" />
@@ -21,15 +21,17 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RepeatButton}">
-                    <Border Margin="1"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            CornerRadius="2">
-                        <Path HorizontalAlignment="Center"
-                              VerticalAlignment="Center"
-                              Data="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}"
-                              Fill="{TemplateBinding Foreground}" />
+                    <Border
+                        Margin="1"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="2">
+                        <Path
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Data="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}"
+                            Fill="{TemplateBinding Foreground}" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
@@ -56,8 +58,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="ScrollBarPageButton"
-           TargetType="{x:Type RepeatButton}">
+    <Style x:Key="ScrollBarPageButton" TargetType="{x:Type RepeatButton}">
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <!--<Setter Property="OverridesDefaultStyle" Value="true" />-->
         <Setter Property="IsTabStop" Value="false" />
@@ -71,8 +72,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="ScrollBarThumb"
-           TargetType="{x:Type Thumb}">
+    <Style x:Key="ScrollBarThumb" TargetType="{x:Type Thumb}">
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="IsTabStop" Value="false" />
@@ -92,10 +92,11 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
-                    <Border Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="1"
-                            CornerRadius="2" />
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="1"
+                        CornerRadius="2" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -110,36 +111,36 @@
         </Style.Triggers>
     </Style>
 
-    <ControlTemplate x:Key="VerticalScrollBar"
-                     TargetType="{x:Type ScrollBar}">
+    <ControlTemplate x:Key="VerticalScrollBar" TargetType="{x:Type ScrollBar}">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition MaxHeight="18" />
                 <RowDefinition Height="0.00001*" />
                 <RowDefinition MaxHeight="18" />
             </Grid.RowDefinitions>
-            <Border x:Name="Border"
-                    Grid.RowSpan="3"
-                    CornerRadius="2">
+            <Border
+                x:Name="Border"
+                Grid.RowSpan="3"
+                CornerRadius="2">
                 <Border.Background>
                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Dark0_1}}" />
                 </Border.Background>
             </Border>
-            <RepeatButton Grid.Row="0"
-                          Height="18"
-                          Command="ScrollBar.LineUpCommand"
-                          Content="M 0 4 L 8 4 L 4 0 Z"
-                          Style="{StaticResource ScrollBarLineButton}" />
-            <Track x:Name="PART_Track"
-                   Grid.Row="1"
-                   IsDirectionReversed="true">
+            <RepeatButton
+                Grid.Row="0"
+                Height="18"
+                Command="ScrollBar.LineUpCommand"
+                Content="M 0 4 L 8 4 L 4 0 Z"
+                Style="{StaticResource ScrollBarLineButton}" />
+            <Track
+                x:Name="PART_Track"
+                Grid.Row="1"
+                IsDirectionReversed="true">
                 <Track.DecreaseRepeatButton>
-                    <RepeatButton Command="ScrollBar.PageUpCommand"
-                                  Style="{StaticResource ScrollBarPageButton}" />
+                    <RepeatButton Command="ScrollBar.PageUpCommand" Style="{StaticResource ScrollBarPageButton}" />
                 </Track.DecreaseRepeatButton>
                 <Track.Thumb>
-                    <Thumb Margin="1,0,1,0"
-                           Style="{StaticResource ScrollBarThumb}">
+                    <Thumb Margin="1,0,1,0" Style="{StaticResource ScrollBarThumb}">
                         <!--<Thumb.BorderBrush>
                             <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
                         </Thumb.BorderBrush>
@@ -149,47 +150,45 @@
                     </Thumb>
                 </Track.Thumb>
                 <Track.IncreaseRepeatButton>
-                    <RepeatButton Command="ScrollBar.PageDownCommand"
-                                  Style="{StaticResource ScrollBarPageButton}" />
+                    <RepeatButton Command="ScrollBar.PageDownCommand" Style="{StaticResource ScrollBarPageButton}" />
                 </Track.IncreaseRepeatButton>
             </Track>
-            <RepeatButton Grid.Row="3"
-                          Height="18"
-                          Command="ScrollBar.LineDownCommand"
-                          Content="M 0 0 L 4 4 L 8 0 Z"
-                          Style="{StaticResource ScrollBarLineButton}" />
+            <RepeatButton
+                Grid.Row="3"
+                Height="18"
+                Command="ScrollBar.LineDownCommand"
+                Content="M 0 0 L 4 4 L 8 0 Z"
+                Style="{StaticResource ScrollBarLineButton}" />
         </Grid>
     </ControlTemplate>
 
-    <ControlTemplate x:Key="HorizontalScrollBar"
-                     TargetType="{x:Type ScrollBar}">
+    <ControlTemplate x:Key="HorizontalScrollBar" TargetType="{x:Type ScrollBar}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition MaxWidth="18" />
                 <ColumnDefinition Width="0.00001*" />
                 <ColumnDefinition MaxWidth="18" />
             </Grid.ColumnDefinitions>
-            <Border Grid.ColumnSpan="3"
-                    CornerRadius="2">
+            <Border Grid.ColumnSpan="3" CornerRadius="2">
                 <Border.Background>
                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
                 </Border.Background>
             </Border>
-            <RepeatButton Grid.Column="0"
-                          Width="18"
-                          Command="ScrollBar.LineLeftCommand"
-                          Content="M 4 0 L 4 8 L 0 4 Z"
-                          Style="{StaticResource ScrollBarLineButton}" />
-            <Track x:Name="PART_Track"
-                   Grid.Column="1"
-                   IsDirectionReversed="False">
+            <RepeatButton
+                Grid.Column="0"
+                Width="18"
+                Command="ScrollBar.LineLeftCommand"
+                Content="M 4 0 L 4 8 L 0 4 Z"
+                Style="{StaticResource ScrollBarLineButton}" />
+            <Track
+                x:Name="PART_Track"
+                Grid.Column="1"
+                IsDirectionReversed="False">
                 <Track.DecreaseRepeatButton>
-                    <RepeatButton Command="ScrollBar.PageLeftCommand"
-                                  Style="{StaticResource ScrollBarPageButton}" />
+                    <RepeatButton Command="ScrollBar.PageLeftCommand" Style="{StaticResource ScrollBarPageButton}" />
                 </Track.DecreaseRepeatButton>
                 <Track.Thumb>
-                    <Thumb Margin="0,1,0,1"
-                           Style="{StaticResource ScrollBarThumb}">
+                    <Thumb Margin="0,1,0,1" Style="{StaticResource ScrollBarThumb}">
                         <Thumb.BorderBrush>
                             <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
                         </Thumb.BorderBrush>
@@ -199,21 +198,19 @@
                     </Thumb>
                 </Track.Thumb>
                 <Track.IncreaseRepeatButton>
-                    <RepeatButton Command="ScrollBar.PageRightCommand"
-                                  Style="{StaticResource ScrollBarPageButton}" />
+                    <RepeatButton Command="ScrollBar.PageRightCommand" Style="{StaticResource ScrollBarPageButton}" />
                 </Track.IncreaseRepeatButton>
             </Track>
-            <RepeatButton Grid.Column="3"
-                          Width="18"
-                          Command="ScrollBar.LineRightCommand"
-                          Content="M 0 0 L 4 4 L 0 8 Z"
-                          Style="{StaticResource ScrollBarLineButton}" />
+            <RepeatButton
+                Grid.Column="3"
+                Width="18"
+                Command="ScrollBar.LineRightCommand"
+                Content="M 0 0 L 4 4 L 0 8 Z"
+                Style="{StaticResource ScrollBarLineButton}" />
         </Grid>
     </ControlTemplate>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.ScrollBar.Default,
-                                        TypeInTargetAssembly={x:Type local:ScrollBarKeys}}"
-           TargetType="{x:Type ScrollBar}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.ScrollBar.Default, TypeInTargetAssembly={x:Type local:ScrollBarKeys}}" TargetType="{x:Type ScrollBar}">
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <!--<Setter Property="OverridesDefaultStyle" Value="true" />-->
         <Style.Triggers>
@@ -229,7 +226,6 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    <Style BasedOn="{StaticResource {x:Static local:ScrollBarKeys.Default}}"
-           TargetType="ScrollBar" />
+    <Style BasedOn="{StaticResource {x:Static local:ScrollBarKeys.Default}}" TargetType="ScrollBar" />
 
 </ResourceDictionary>

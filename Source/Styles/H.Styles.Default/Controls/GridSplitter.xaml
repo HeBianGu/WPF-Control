@@ -1,10 +1,9 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:H.Styles.Default">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:H.Styles.Default">
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.GridSplitter.Default,
-                                        TypeInTargetAssembly={x:Type local:GridSplitterKeys}}"
-           TargetType="GridSplitter">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.GridSplitter.Default, TypeInTargetAssembly={x:Type local:GridSplitterKeys}}" TargetType="GridSplitter">
         <!--<Setter Property="OverridesDefaultStyle" Value="true" />-->
         <Setter Property="Background">
             <Setter.Value>
@@ -12,6 +11,5 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style BasedOn="{StaticResource {x:Static local:GridSplitterKeys.Default}}"
-           TargetType="GridSplitter" />
+    <Style BasedOn="{StaticResource {x:Static local:GridSplitterKeys.Default}}" TargetType="GridSplitter" />
 </ResourceDictionary>

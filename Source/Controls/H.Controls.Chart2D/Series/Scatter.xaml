@@ -1,8 +1,9 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:h="https://github.com/HeBianGu"
-                    xmlns:local="clr-namespace:H.Controls.Chart2D"
-                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:h="https://github.com/HeBianGu"
+    xmlns:local="clr-namespace:H.Controls.Chart2D"
+    xmlns:system="clr-namespace:System;assembly=mscorlib">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="../Provider/Layer.xaml" />
@@ -10,37 +11,39 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Storyboard x:Key="sss">
-        <DoubleAnimation Storyboard.TargetProperty="Opacity"
-                         From="0"
-                         To="1"
-                         Duration="00:00:03" />
+        <DoubleAnimation
+            Storyboard.TargetProperty="Opacity"
+            From="0"
+            To="1"
+            Duration="00:00:03" />
     </Storyboard>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.ScatterBase.Default,
-                                        TypeInTargetAssembly={x:Type local:ScatterBase}}"
-           BasedOn="{StaticResource {x:Static h:Layer.DefaultKey}}"
-           TargetType="{x:Type local:ScatterBase}">
+    <Style
+        x:Key="{ComponentResourceKey ResourceId=S.ScatterBase.Default,
+                                     TypeInTargetAssembly={x:Type local:ScatterBase}}"
+        BasedOn="{StaticResource {x:Static h:Layer.DefaultKey}}"
+        TargetType="{x:Type local:ScatterBase}">
         <Setter Property="AlignmentCenter" Value="False" />
         <Setter Property="SplitMilliSecond" Value="-1900" />
         <Setter Property="Timelines">
             <Setter.Value>
                 <local:Timelines>
-                    <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"
-                                     From="0"
-                                     To="1"
-                                     Duration="00:00:02">
+                    <DoubleAnimation
+                        Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"
+                        From="0"
+                        To="1"
+                        Duration="00:00:02">
                         <DoubleAnimation.EasingFunction>
-                            <ElasticEase Oscillations="6"
-                                         Springiness="10" />
+                            <ElasticEase Oscillations="6" Springiness="10" />
                         </DoubleAnimation.EasingFunction>
                     </DoubleAnimation>
-                    <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
-                                     From="0"
-                                     To="1"
-                                     Duration="00:00:02">
+                    <DoubleAnimation
+                        Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
+                        From="0"
+                        To="1"
+                        Duration="00:00:02">
                         <DoubleAnimation.EasingFunction>
-                            <ElasticEase Oscillations="6"
-                                         Springiness="10" />
+                            <ElasticEase Oscillations="6" Springiness="10" />
                         </DoubleAnimation.EasingFunction>
                     </DoubleAnimation>
                 </local:Timelines>
@@ -48,31 +51,32 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Scatter.Default,
-                                        TypeInTargetAssembly={x:Type local:Scatter}}"
-           BasedOn="{StaticResource {x:Static h:ScatterBase.DefaultKey}}"
-           TargetType="{x:Type local:Scatter}">
+    <Style
+        x:Key="{ComponentResourceKey ResourceId=S.Scatter.Default,
+                                     TypeInTargetAssembly={x:Type local:Scatter}}"
+        BasedOn="{StaticResource {x:Static h:ScatterBase.DefaultKey}}"
+        TargetType="{x:Type local:Scatter}">
         <Setter Property="MarkStyle" Value="{StaticResource {x:Static h:EllipseMarker.CircleKey}}" />
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Scatter.AlignmentCenter,
-                                        TypeInTargetAssembly={x:Type local:Scatter}}"
-           BasedOn="{StaticResource {x:Static h:ScatterBase.DefaultKey}}"
-           TargetType="{x:Type local:Scatter}">
+    <Style
+        x:Key="{ComponentResourceKey ResourceId=S.Scatter.AlignmentCenter,
+                                     TypeInTargetAssembly={x:Type local:Scatter}}"
+        BasedOn="{StaticResource {x:Static h:ScatterBase.DefaultKey}}"
+        TargetType="{x:Type local:Scatter}">
         <Setter Property="AlignmentCenter" Value="True" />
     </Style>
-    <Style BasedOn="{StaticResource {x:Static h:Scatter.DefaultKey}}"
-           TargetType="{x:Type local:Scatter}" />
+    <Style BasedOn="{StaticResource {x:Static h:Scatter.DefaultKey}}" TargetType="{x:Type local:Scatter}" />
 
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.AreaScatter.Default,
-                                        TypeInTargetAssembly={x:Type local:AreaScatter}}"
-           BasedOn="{StaticResource {x:Static h:ScatterBase.DefaultKey}}"
-           TargetType="{x:Type local:AreaScatter}">
+    <Style
+        x:Key="{ComponentResourceKey ResourceId=S.AreaScatter.Default,
+                                     TypeInTargetAssembly={x:Type local:AreaScatter}}"
+        BasedOn="{StaticResource {x:Static h:ScatterBase.DefaultKey}}"
+        TargetType="{x:Type local:AreaScatter}">
         <Setter Property="MarkStyle">
             <Setter.Value>
-                <Style BasedOn="{StaticResource {x:Static h:EllipseMarker.DefaultKey}}"
-                       TargetType="local:EllipseMarker">
+                <Style BasedOn="{StaticResource {x:Static h:EllipseMarker.DefaultKey}}" TargetType="local:EllipseMarker">
                     <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Tag}" />
                     <Setter Property="Fill" Value="{Binding RelativeSource={RelativeSource AncestorType=local:Layer}, Path=Foreground}" />
                     <Setter Property="Stroke" Value="{Binding RelativeSource={RelativeSource AncestorType=local:Layer}, Path=Foreground}" />
@@ -89,8 +93,7 @@
                     <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
                     <Setter Property="Rect">
                         <Setter.Value>
-                            <Rect Width="15"
-                                  Height="15" />
+                            <Rect Width="15" Height="15" />
                         </Setter.Value>
                     </Setter>
                     <Setter Property="Opacity" Value="0.6" />
@@ -112,17 +115,16 @@
         <Setter Property="SplitMilliSecond" Value="-1990" />
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:AreaScatter.DefaultKey}}"
-           TargetType="{x:Type local:AreaScatter}" />
+    <Style BasedOn="{StaticResource {x:Static h:AreaScatter.DefaultKey}}" TargetType="{x:Type local:AreaScatter}" />
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Bubble.Default,
-                                        TypeInTargetAssembly={x:Type local:Bubble}}"
-           BasedOn="{StaticResource {x:Static h:ScatterBase.DefaultKey}}"
-           TargetType="{x:Type local:Bubble}">
+    <Style
+        x:Key="{ComponentResourceKey ResourceId=S.Bubble.Default,
+                                     TypeInTargetAssembly={x:Type local:Bubble}}"
+        BasedOn="{StaticResource {x:Static h:ScatterBase.DefaultKey}}"
+        TargetType="{x:Type local:Bubble}">
         <Setter Property="MarkStyle">
             <Setter.Value>
-                <Style BasedOn="{StaticResource {x:Static h:EllipseMarker.DefaultKey}}"
-                       TargetType="local:EllipseMarker">
+                <Style BasedOn="{StaticResource {x:Static h:EllipseMarker.DefaultKey}}" TargetType="local:EllipseMarker">
                     <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Rect.Height}" />
                     <Setter Property="Fill" Value="{Binding RelativeSource={RelativeSource AncestorType=local:Layer}, Path=Foreground}" />
                     <Setter Property="Stroke" Value="{Binding RelativeSource={RelativeSource AncestorType=local:Layer}, Path=Foreground}" />
@@ -139,8 +141,7 @@
                     <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
                     <Setter Property="Rect">
                         <Setter.Value>
-                            <Rect Width="15"
-                                  Height="15" />
+                            <Rect Width="15" Height="15" />
                         </Setter.Value>
                     </Setter>
 
@@ -169,13 +170,13 @@
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:Bubble.DefaultKey}}"
-           TargetType="{x:Type local:Bubble}" />
+    <Style BasedOn="{StaticResource {x:Static h:Bubble.DefaultKey}}" TargetType="{x:Type local:Bubble}" />
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.PolarScatter.Default,
-                                        TypeInTargetAssembly={x:Type local:PolarScatter}}"
-           BasedOn="{StaticResource {x:Static h:ScatterBase.DefaultKey}}"
-           TargetType="{x:Type local:PolarScatter}">
+    <Style
+        x:Key="{ComponentResourceKey ResourceId=S.PolarScatter.Default,
+                                     TypeInTargetAssembly={x:Type local:PolarScatter}}"
+        BasedOn="{StaticResource {x:Static h:ScatterBase.DefaultKey}}"
+        TargetType="{x:Type local:PolarScatter}">
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="MarkStyle" Value="{StaticResource {x:Static h:EllipseMarker.DefaultKey}}" />
@@ -190,20 +191,19 @@
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:PolarScatter.DefaultKey}}"
-           TargetType="{x:Type local:PolarScatter}" />
+    <Style BasedOn="{StaticResource {x:Static h:PolarScatter.DefaultKey}}" TargetType="{x:Type local:PolarScatter}" />
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.PolarBubble.Default,
-                                        TypeInTargetAssembly={x:Type local:PolarBubble}}"
-           BasedOn="{StaticResource {x:Static h:ScatterBase.DefaultKey}}"
-           TargetType="{x:Type local:PolarBubble}">
+    <Style
+        x:Key="{ComponentResourceKey ResourceId=S.PolarBubble.Default,
+                                     TypeInTargetAssembly={x:Type local:PolarBubble}}"
+        BasedOn="{StaticResource {x:Static h:ScatterBase.DefaultKey}}"
+        TargetType="{x:Type local:PolarBubble}">
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Len" Value="{Binding RelativeSource={RelativeSource AncestorType=local:PolarChart}, Path=Len}" />
         <Setter Property="MarkStyle">
             <Setter.Value>
-                <Style BasedOn="{StaticResource {x:Static h:EllipseMarker.DefaultKey}}"
-                       TargetType="local:EllipseMarker">
+                <Style BasedOn="{StaticResource {x:Static h:EllipseMarker.DefaultKey}}" TargetType="local:EllipseMarker">
                     <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Rect.Height}" />
                     <Setter Property="Fill" Value="{Binding RelativeSource={RelativeSource AncestorType=local:Layer}, Path=Foreground}" />
                     <Setter Property="Stroke" Value="{Binding RelativeSource={RelativeSource AncestorType=local:Layer}, Path=Foreground}" />
@@ -229,8 +229,7 @@
                     </Setter>
                     <Setter Property="Rect">
                         <Setter.Value>
-                            <Rect Width="15"
-                                  Height="15" />
+                            <Rect Width="15" Height="15" />
                         </Setter.Value>
                     </Setter>
                     <Style.Triggers>
@@ -250,8 +249,7 @@
 
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:PolarBubble.DefaultKey}}"
-           TargetType="{x:Type local:PolarBubble}" />
+    <Style BasedOn="{StaticResource {x:Static h:PolarBubble.DefaultKey}}" TargetType="{x:Type local:PolarBubble}" />
 
 </ResourceDictionary>
 

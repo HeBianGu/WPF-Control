@@ -1,9 +1,11 @@
-﻿using System;
+﻿using H.Themes.Default;
+using System;
 using System.Windows.Markup;
 using System.Windows.Media;
 
 namespace H.Styles.Default
 {
+
     public class LogoExtension : MarkupExtension
     {
         public override object ProvideValue(IServiceProvider serviceProvider)
