@@ -14,8 +14,9 @@ namespace H.Providers.Mvvm
     {
         public DisplayBindableBase()
         {
-            this.Name = GetType().Name;
-            DisplayAttribute display = GetType().GetCustomAttribute<DisplayAttribute>(true);
+            var type=this.GetType();
+            this.Name = type.Name;
+            DisplayAttribute display = type.GetCustomAttribute<DisplayAttribute>(true);
             if (display != null)
             {
                 this.Name = display.Name ?? this.Name;
@@ -26,10 +27,10 @@ namespace H.Providers.Mvvm
                     this.Order = od.Value;
                 this.ShortName = display.ShortName;
             }
-            IDAttribute id = GetType().GetCustomAttribute<IDAttribute>(true);
-            this.ID = id?.ID ?? GetType().Name;
-
-            System.Collections.Generic.IEnumerable<PropertyInfo> cmdps = GetType().GetProperties().Where(x => typeof(ICommand).IsAssignableFrom(x.PropertyType));
+            IDAttribute id = type.GetCustomAttribute<IDAttribute>(true);
+            this.ID = id?.ID ?? type.Name;
+            
+            System.Collections.Generic.IEnumerable<PropertyInfo> cmdps = type.GetProperties().Where(x => typeof(ICommand).IsAssignableFrom(x.PropertyType));
             foreach (PropertyInfo cmdp in cmdps)
             {
                 if (cmdp.CanRead == false)
