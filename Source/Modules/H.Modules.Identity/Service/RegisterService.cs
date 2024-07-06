@@ -6,6 +6,7 @@ using H.Providers.Ioc;
 using Microsoft.Extensions.Options;
 using System;
 using System.Text.RegularExpressions;
+using H.Extensions.DataBase;
 
 namespace H.Modules.Identity
 {

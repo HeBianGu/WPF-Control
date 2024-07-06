@@ -13,7 +13,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
-
+using H.Extensions.DataBase;
 namespace H.Test.RepositoryPresenter
 {
     /// <summary>

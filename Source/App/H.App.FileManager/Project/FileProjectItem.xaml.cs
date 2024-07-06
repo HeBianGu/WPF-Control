@@ -17,6 +17,7 @@ using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
+using H.Extensions.DataBase;
 
 namespace H.App.FileManager
 {

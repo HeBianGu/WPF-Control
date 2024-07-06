@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore.Design;
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using H.Extensions.DataBase;
 
 namespace H.App.FileManager
 {

@@ -1,4 +1,4 @@
-﻿namespace H.Providers.Ioc
+﻿namespace H.Extensions.DataBase
 {
     public interface IEntityBase<TPrimaryKey>
     {

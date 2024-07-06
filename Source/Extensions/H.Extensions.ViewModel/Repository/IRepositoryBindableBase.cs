@@ -5,6 +5,7 @@ using H.Providers.Ioc;
 using H.Providers.Mvvm;
 using System;
 using System.Threading.Tasks;
+using H.Extensions.DataBase;
 
 namespace H.Extensions.ViewModel
 {

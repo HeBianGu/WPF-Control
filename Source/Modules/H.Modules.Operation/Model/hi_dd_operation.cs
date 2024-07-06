@@ -4,6 +4,7 @@ using H.Providers.Ioc;
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using H.Extensions.DataBase;
 
 namespace H.Modules.Operation
 {

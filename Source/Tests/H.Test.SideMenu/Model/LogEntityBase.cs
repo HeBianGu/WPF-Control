@@ -3,6 +3,7 @@
 using H.Providers.Ioc;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using H.Extensions.DataBase;
 
 namespace HeBianGu.Systems.Logger
 {

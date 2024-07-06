@@ -6,7 +6,7 @@ using System.Data.Entity;
 
 #if NETCOREAPP
 
-using H.Providers.Ioc;
+using H.Extensions.DataBase;
 using Microsoft.EntityFrameworkCore;
 #endif
 

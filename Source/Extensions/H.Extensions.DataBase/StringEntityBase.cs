@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace H.Providers.Ioc
+namespace H.Extensions.DataBase
 {
     /// <summary>
     /// 定义默认主键类型为Guid的实体基类

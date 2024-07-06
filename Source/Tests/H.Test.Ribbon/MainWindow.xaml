@@ -13,14 +13,14 @@
     Style="{DynamicResource {x:Static h:RibbonWindowKeys.Default}}"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
-    <h:MainWindow.CaptionTempate>
+    <!--<h:Cattach.CaptionRightTemplate>
         <ControlTemplate>
             <DockPanel LastChildFill="False">
                 <ContentPresenter Content="{Ioc Type={x:Type ISettingButtonPresenter}}" />
                 <ContentPresenter Content="{Ioc Type={x:Type h:ISwitchThemeViewPresenter}}" />
             </DockPanel>
         </ControlTemplate>
-    </h:MainWindow.CaptionTempate>
+    </h:Cattach.CaptionRightTemplate>-->
     <DockPanel>
         <Ribbon
             Title="文件"

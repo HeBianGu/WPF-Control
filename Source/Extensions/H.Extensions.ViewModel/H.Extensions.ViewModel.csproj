@@ -3,6 +3,7 @@
     <ProjectReference Include="..\..\Providers\H.Providers.Ioc\H.Providers.Ioc.csproj" />
     <ProjectReference Include="..\..\Providers\H.Providers.Mvvm\H.Providers.Mvvm.csproj" />
     <ProjectReference Include="..\H.Extensions.Common\H.Extensions.Common.csproj" />
+    <ProjectReference Include="..\H.Extensions.DataBase\H.Extensions.DataBase.csproj" />
   </ItemGroup>
 
 </Project>

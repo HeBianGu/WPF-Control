@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace H.Providers.Ioc
+namespace H.Extensions.DataBase
 {
     public abstract class EntityBase<TPrimaryKey> : IEntityBase<TPrimaryKey>
     {

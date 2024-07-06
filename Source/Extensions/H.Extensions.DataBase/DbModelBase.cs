@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
-namespace H.Providers.Ioc
+namespace H.Extensions.DataBase
 {
     public abstract class DbModelBase : StringEntityBase, INotifyPropertyChanged, IDataErrorInfo
     {

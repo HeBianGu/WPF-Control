@@ -12,6 +12,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using H.Extensions.DataBase;
 
 namespace H.Test.Identify
 {

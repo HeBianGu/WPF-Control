@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace H.Providers.Ioc
+namespace H.Extensions.DataBase
 {
     public abstract class GuidEntityBase : EntityBase<Guid>
     {

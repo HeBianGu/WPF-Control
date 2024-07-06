@@ -4,7 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace H.Providers.Ioc
+namespace H.Extensions.DataBase
 {
     public interface IRepository
     {

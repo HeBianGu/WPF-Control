@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Windows;
 using System.Windows.Media;
+using H.Extensions.DataBase;
 
 namespace H.App.FileManager
 {
