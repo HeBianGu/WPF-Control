@@ -29,6 +29,8 @@ namespace H.Test.RepositoryPresenter
             services.AddDbContextBySetting<MyDataContext>();
             services.AddSingleton<IStringRepository<mbc_dv_image>, DbContextRepository<MyDataContext, mbc_dv_image>>();
             services.AddSingleton<IRepositoryBindable<mbc_dv_image>, RepositoryBindable<mbc_dv_image>>();
+
+            services.AddFormMessageService();
         }
 
         protected override Window CreateMainWindow(StartupEventArgs e)

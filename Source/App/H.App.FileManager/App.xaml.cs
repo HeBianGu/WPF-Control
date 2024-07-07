@@ -104,10 +104,10 @@ namespace H.App.FileManager
         {
             base.Configure(app);
 
-            app.UseSetting(x =>
-            {
-                x.Add(AppSetting.Instance);
-            });
+            //app.UseSetting(x =>
+            //{
+            //    x.Add(AppSetting.Instance);
+            //});
 
             app.UseVlc(x =>
             {

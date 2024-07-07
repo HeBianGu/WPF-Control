@@ -25,6 +25,7 @@
     <ProjectReference Include="..\..\Extensions\H.Extensions.ViewModel\H.Extensions.ViewModel.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.About\H.Modules.About.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Messages.Dialog\H.Modules.Messages.Dialog.csproj" />
+    <ProjectReference Include="..\..\Modules\H.Modules.Messages.Form\H.Modules.Messages.Form.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Setting\H.Modules.Setting.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.SplashScreen\H.Modules.SplashScreen.csproj" />
     <ProjectReference Include="..\..\Presenters\H.Presenters.Repository\H.Presenters.Repository.csproj" />
