@@ -291,6 +291,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Extensions.DataBase", "..
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Ioc", "..\Source\Providers\H.Ioc\H.Ioc.csproj", "{52342BAE-9016-44AE-9625-BB5268F5AF18}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Services", "4 - Services", "{AAADF39B-3716-4820-897C-0E5953B5696D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Services.Logger", "..\Source\Services\H.Services.Logger\H.Services.Logger.csproj", "{22C769F5-46F2-47BC-93CC-192F41A45F58}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -795,6 +799,10 @@ Global
 		{52342BAE-9016-44AE-9625-BB5268F5AF18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52342BAE-9016-44AE-9625-BB5268F5AF18}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52342BAE-9016-44AE-9625-BB5268F5AF18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22C769F5-46F2-47BC-93CC-192F41A45F58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22C769F5-46F2-47BC-93CC-192F41A45F58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22C769F5-46F2-47BC-93CC-192F41A45F58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22C769F5-46F2-47BC-93CC-192F41A45F58}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -927,6 +935,7 @@ Global
 		{368FB013-D164-475C-8485-7D7812AB477D} = {9E63ED70-6F96-4CB2-8B9D-EAEC77D0548E}
 		{5D832425-1B69-4959-925C-D226370F7754} = {09F8FD00-E76A-4D72-AAB4-7FA06DBE12D4}
 		{52342BAE-9016-44AE-9625-BB5268F5AF18} = {93892A11-5FF0-4EB2-AA73-F330E1F9515E}
+		{22C769F5-46F2-47BC-93CC-192F41A45F58} = {AAADF39B-3716-4820-897C-0E5953B5696D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF825C3D-F4F4-4E62-BBFF-B42A5E81112F}

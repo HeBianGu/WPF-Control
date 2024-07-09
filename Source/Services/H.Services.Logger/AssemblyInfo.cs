@@ -1,18 +1,6 @@
-global using System;
-global using System.Collections;
-global using System.Collections.Generic;
-global using System.Collections.ObjectModel;
-global using System.Linq;
-global using System.Reflection;
-global using System.Text;
-global using System.Threading;
-global using System.Threading.Tasks;
-global using System.Windows;
-global using System.Windows.Controls;
-global using System.Windows.Controls.Primitives;
-global using System.Windows.Input;
-global using System.Windows.Markup;
-global using System.Windows.Media;
+using System.Windows;
+using System.Windows.Markup;
+
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None, //where theme specific resource dictionaries are located
                                      //(used if a resource is not found in the page,
@@ -22,13 +10,13 @@ global using System.Windows.Media;
                                               // app, or any theme specific resource dictionaries)
 )]
 
-[assembly: XmlnsDefinition("QQ:908293466", "H.Ioc")]
+[assembly: XmlnsDefinition("QQ:908293466", "H.Services.Logger")]
 [assembly: XmlnsPrefix("QQ:908293466", "h")]
 
-[assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Ioc")]
+[assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Services.Logger")]
 [assembly: XmlnsPrefix("https://github.com/HeBianGu", "h")]
 
-[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Ioc")]
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Services.Logger")]
 [assembly: XmlnsPrefix("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "h")]
 
 
