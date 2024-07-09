@@ -2,7 +2,7 @@
 
 using System.Xml;
 
-namespace H.Services.Common
+namespace H.Services.Serializable
 {
     public interface IXmlable
     {

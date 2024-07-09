@@ -1,4 +1,4 @@
-﻿namespace H.Services.Common
+﻿namespace H.Services.Revertible
 {
     public class UndoCommand : IocMarkupCommandBase
     {

@@ -1,0 +1,6 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\..\Providers\H.Ioc\H.Ioc.csproj" />
+    <ProjectReference Include="..\H.Services.Logger\H.Services.Logger.csproj" />
+  </ItemGroup>
+</Project>

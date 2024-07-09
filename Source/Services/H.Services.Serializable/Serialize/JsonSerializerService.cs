@@ -6,7 +6,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.Unicode;
 
-namespace H.Services.Common
+namespace H.Services.Serializable
 {
     public class JsonSerializerService : IJsonSerializerService
     {

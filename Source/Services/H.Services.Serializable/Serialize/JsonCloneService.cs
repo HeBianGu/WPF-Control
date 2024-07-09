@@ -2,7 +2,7 @@
 
 using System.Text.Json;
 
-namespace H.Services.Common
+namespace H.Services.Serializable
 {
     public class JsonCloneService : ICloneService
     {
