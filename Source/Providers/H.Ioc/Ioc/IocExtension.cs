@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Markup;
 
-namespace H.Providers.Ioc
+namespace H.Ioc
 {
     public class IocExtension : MarkupExtension
     {

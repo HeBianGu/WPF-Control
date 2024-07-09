@@ -3,8 +3,9 @@
 using System;
 using System.Threading.Tasks;
 using System.Windows;
+using H.Providers.Ioc;
 
-namespace H.Providers.Ioc
+namespace System
 {
     public static class IocMessage
     {
