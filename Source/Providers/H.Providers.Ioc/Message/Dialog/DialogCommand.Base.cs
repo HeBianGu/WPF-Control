@@ -1,7 +1,5 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-using System.Windows;
-
 namespace H.Providers.Ioc
 {
     public abstract class DialogCommandBase : IocMarkupCommandBase
@@ -13,10 +11,7 @@ namespace H.Providers.Ioc
                 if (element is IDialog)
                     return element as IDialog;
                 FrameworkElement parent = element.GetParent<FrameworkElement>(x => x?.DataContext is IDialog || x is IDialog);
-                if (parent is IDialog dialog)
-                    return dialog;
-                else
-                    return parent.DataContext as IDialog;
+                return parent is IDialog dialog ? dialog : parent.DataContext as IDialog;
 
             }
             return null;

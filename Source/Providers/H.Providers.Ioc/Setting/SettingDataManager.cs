@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-
-namespace H.Providers.Ioc
+﻿namespace H.Providers.Ioc
 {
     public interface ISettingDataManagerOption
     {
@@ -37,11 +31,11 @@ namespace H.Providers.Ioc
             list.Add(SettingGroupNames.GroupOther);
             Comparison<ISettable> comparison = (x, y) =>
             {
-                if (x == null) return -1;
-                if (y == null) return 1;
-                if (x.GroupName == y.GroupName)
-                    return x.Order.CompareTo(y.Order);
-                return list.IndexOf(x.GroupName).CompareTo(list.IndexOf(y.GroupName));
+                return x == null
+                    ? -1
+                    : y == null
+                    ? 1
+                    : x.GroupName == y.GroupName ? x.Order.CompareTo(y.Order) : list.IndexOf(x.GroupName).CompareTo(list.IndexOf(y.GroupName));
             };
             List<ISettable> settings = this.Settings.ToList();
             settings.RemoveAll(x => x == null);

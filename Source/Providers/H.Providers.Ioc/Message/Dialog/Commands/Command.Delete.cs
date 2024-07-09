@@ -1,9 +1,5 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-using System.Collections;
-using System.Windows;
-using System.Windows.Controls;
-
 namespace H.Providers.Ioc
 {
     public class DeleteCommand : IocMarkupCommandBase
@@ -29,9 +25,7 @@ namespace H.Providers.Ioc
                 if (element.DataContext == null)
                     return false;
                 ItemsControl items = element.GetParent<ItemsControl>();
-                if (items == null)
-                    return false;
-                return true;
+                return items != null;
             }
             return false;
         }

@@ -1,6 +1,5 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-using System;
 using System.IO;
 using System.Text.Encodings.Web;
 using System.Text.Json;
@@ -38,7 +37,7 @@ namespace H.Providers.Ioc
 
         protected virtual JsonSerializerOptions GetOptions()
         {
-            var jsonSerializerOptions = new JsonSerializerOptions();
+            JsonSerializerOptions jsonSerializerOptions = new JsonSerializerOptions();
             jsonSerializerOptions.AllowTrailingCommas = false;
             jsonSerializerOptions.WriteIndented = true;
             jsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.Never;//忽略默认的属性或字段

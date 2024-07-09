@@ -1,9 +1,4 @@
-﻿using System;
-using System.Windows.Data;
-using System.Windows.Input;
-using System.Windows.Markup;
-
-namespace H.Providers.Ioc
+﻿namespace H.Providers.Ioc
 {
     [MarkupExtensionReturnType(typeof(ICommand))]
     public abstract class IocMarkupCommandBase : MarkupExtension, ICommand

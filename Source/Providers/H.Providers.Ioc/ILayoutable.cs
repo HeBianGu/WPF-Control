@@ -1,7 +1,4 @@
-﻿using System.Windows;
-using System.Windows.Media;
-
-namespace H.Providers.Ioc
+﻿namespace H.Providers.Ioc
 {
     public interface ILayoutable
     {

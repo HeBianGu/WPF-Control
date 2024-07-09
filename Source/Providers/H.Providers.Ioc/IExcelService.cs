@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace H.Providers.Ioc
+﻿namespace H.Providers.Ioc
 {
     public interface IExcelService
     {

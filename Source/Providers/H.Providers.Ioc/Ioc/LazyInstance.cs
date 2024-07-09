@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace H.Providers.Ioc
+﻿namespace H.Providers.Ioc
 {
     public class LazyInstance<T> where T : new()
     {

@@ -1,16 +1,11 @@
-﻿
-
-using System;
-using System.Linq;
-
-namespace H.Providers.Ioc
+﻿namespace H.Providers.Ioc
 {
     public class ShowFeedbackCommand : IocMarkupCommandBase
     {
         public override async void Execute(object parameter)
         {
-            var presenter = System.Ioc.GetService<IFeedbackViewPresenter>();
-            var r = await IocMessage.Dialog?.Show(presenter);
+            IFeedbackViewPresenter presenter = System.Ioc.GetService<IFeedbackViewPresenter>();
+            bool? r = await IocMessage.Dialog?.Show(presenter);
             if (r != true)
                 return;
             MailMessageItem messageItem = new MailMessageItem();
@@ -20,7 +15,7 @@ namespace H.Providers.Ioc
             messageItem.To = new string[] { messageItem.From };
             messageItem.Attachments = presenter.Files.ToArray();
             string message = null;
-            var mr = Ioc<IMailService>.Instance?.Send(messageItem, false, out message);
+            bool? mr = Ioc<IMailService>.Instance?.Send(messageItem, false, out message);
             if (mr == false)
                 await IocMessage.ShowDialogMessage(message);
 

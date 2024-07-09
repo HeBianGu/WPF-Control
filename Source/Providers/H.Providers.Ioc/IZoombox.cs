@@ -1,6 +1,4 @@
-﻿using System.Windows;
-
-namespace H.Providers.Ioc
+﻿namespace H.Providers.Ioc
 {
     public interface IZoombox
     {

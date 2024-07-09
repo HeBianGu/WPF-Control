@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using System;
 using System.Collections.Generic;
 
 namespace System
@@ -19,10 +18,7 @@ namespace System
         {
             if (_services == null)
             {
-                if (throwIfNone)
-                    throw new ArgumentNullException($"请先注册使用ApplicationBase注册<IServiceCollection>接口");
-                else
-                    return default(T);
+                return throwIfNone ? throw new ArgumentNullException($"请先注册使用ApplicationBase注册<IServiceCollection>接口") : default(T);
             }
             T r = (T)_services.GetService(typeof(T));
             if (r == null && throwIfNone)
@@ -82,8 +78,8 @@ namespace System
                 {
                     if (item.ImplementationInstance == null)
                     {
-                        var instances = Ioc.Services.GetServices(item.ServiceType);
-                        foreach (var instance in instances)
+                        IEnumerable<object> instances = Ioc.Services.GetServices(item.ServiceType);
+                        foreach (object instance in instances)
                         {
                             if (instance is T it)
                             {

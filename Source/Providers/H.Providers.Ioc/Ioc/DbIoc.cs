@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using System;
 
 namespace H.Providers.Ioc
 {
@@ -23,13 +22,7 @@ namespace H.Providers.Ioc
         public static T GetService<T>(bool throwIfNone = true)
         {
             T r = (T)_services?.GetService(typeof(T));
-            if (r == null && throwIfNone)
-            {
-                return System.Ioc.GetService<T>(throwIfNone);
-                //System.Diagnostics.Debug.WriteLine(typeof(T));
-                //throw new ArgumentNullException($"请先注册<{typeof(T)}>接口");
-            }
-            return r;
+            return r == null && throwIfNone ? System.Ioc.GetService<T>(throwIfNone) : r;
         }
     }
 }

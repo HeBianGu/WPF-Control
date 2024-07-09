@@ -1,8 +1,5 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-using System;
-using System.Threading.Tasks;
-using System.Windows;
 using H.Providers.Ioc;
 
 namespace System
@@ -30,9 +27,7 @@ namespace System
                 if (dialogButton == DialogButton.SumitAndCancel)
                     boxButton = MessageBoxButton.OKCancel;
                 MessageBoxResult r = MessageBox.Show(message, title, boxButton);
-                if (r == MessageBoxResult.None)
-                    return new Nullable<bool>();
-                return new Nullable<bool>(r == MessageBoxResult.OK);
+                return r == MessageBoxResult.None ? new Nullable<bool>() : new Nullable<bool>(r == MessageBoxResult.OK);
             }
             else
             {
@@ -56,9 +51,7 @@ namespace System
                 if (dialogButton == DialogButton.SumitAndCancel)
                     boxButton = MessageBoxButton.OKCancel;
                 MessageBoxResult r = MessageBox.Show(message, title, boxButton);
-                if (r == MessageBoxResult.None)
-                    return new Nullable<bool>();
-                return new Nullable<bool>(r == MessageBoxResult.OK);
+                return r == MessageBoxResult.None ? new Nullable<bool>() : new Nullable<bool>(r == MessageBoxResult.OK);
             }
             else
             {
