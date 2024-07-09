@@ -1,5 +1,5 @@
 ﻿using H.Controls.TagBox;
-using H.Providers.Ioc;
+using H.Services.Common;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.Collections.Generic;

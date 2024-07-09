@@ -4,7 +4,7 @@ using System.IO;
 using System.Net.Http;
 using System.Xml.Serialization;
 
-namespace H.Providers.Ioc
+namespace H.Services.Common
 {
     public class XmlWebSerializerService : IWebXmlSerializerService
     {

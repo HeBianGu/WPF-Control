@@ -1,6 +1,6 @@
 ﻿using H.Extensions.Tree;
-using H.Providers.Ioc;
-using H.Providers.Mvvm;
+using H.Services.Common;
+using H.Mvvm;
 using System;
 using System.Windows;
 using System.Windows.Controls;

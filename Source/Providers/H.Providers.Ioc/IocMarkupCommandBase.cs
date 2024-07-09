@@ -1,4 +1,4 @@
-﻿namespace H.Providers.Ioc
+﻿namespace H.Services.Common
 {
     [MarkupExtensionReturnType(typeof(ICommand))]
     public abstract class IocMarkupCommandBase : MarkupExtension, ICommand

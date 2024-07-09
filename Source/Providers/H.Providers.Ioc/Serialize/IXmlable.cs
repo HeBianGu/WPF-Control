@@ -2,7 +2,7 @@
 
 using System.Xml;
 
-namespace H.Providers.Ioc
+namespace H.Services.Common
 {
     public interface IXmlable
     {

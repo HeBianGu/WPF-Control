@@ -2,7 +2,7 @@
 
 
 using H.Extensions.TypeConverter;
-using H.Providers.Mvvm;
+using H.Mvvm;
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;

@@ -293,17 +293,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Ioc", "..\Source\Provider
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Services", "4 - Services", "{AAADF39B-3716-4820-897C-0E5953B5696D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Services.Logger", "..\Source\Services\H.Services.Logger\H.Services.Logger.csproj", "{22C769F5-46F2-47BC-93CC-192F41A45F58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Services.Logger", "..\Source\Services\H.Services.Logger\H.Services.Logger.csproj", "{22C769F5-46F2-47BC-93CC-192F41A45F58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Services.Common", "..\Source\Services\H.Services.Common\H.Services.Common.csproj", "{A6326DDD-525F-4F7C-A377-3E6D46D49649}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Services.Common", "..\Source\Services\H.Services.Common\H.Services.Common.csproj", "{A6326DDD-525F-4F7C-A377-3E6D46D49649}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Services.Operation", "..\Source\Services\H.Services.Operation\H.Services.Operation.csproj", "{7CAB86DD-D8C7-47E9-A66A-2C283ECF4461}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Services.Operation", "..\Source\Services\H.Services.Operation\H.Services.Operation.csproj", "{7CAB86DD-D8C7-47E9-A66A-2C283ECF4461}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Services.Mail", "..\Source\Services\H.Services.Mail\H.Services.Mail.csproj", "{2F51C6F8-8C66-4C50-ADD1-4846D7B7674D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Services.Mail", "..\Source\Services\H.Services.Mail\H.Services.Mail.csproj", "{2F51C6F8-8C66-4C50-ADD1-4846D7B7674D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Services.Revertible", "..\Source\Services\H.Services.Revertible\H.Services.Revertible.csproj", "{C1239EF5-630B-4217-8732-E7DAE249DB40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Services.Revertible", "..\Source\Services\H.Services.Revertible\H.Services.Revertible.csproj", "{C1239EF5-630B-4217-8732-E7DAE249DB40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Services.Serializable", "..\Source\Services\H.Services.Serializable\H.Services.Serializable.csproj", "{94AFFDCF-A119-40E8-B7D5-31AABFFE1A27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Services.Serializable", "..\Source\Services\H.Services.Serializable\H.Services.Serializable.csproj", "{94AFFDCF-A119-40E8-B7D5-31AABFFE1A27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Mvvm", "..\Source\Providers\H.Mvvm\H.Mvvm.csproj", "{7F071588-05FE-40A2-89E1-487CC5B1B220}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -833,6 +835,10 @@ Global
 		{94AFFDCF-A119-40E8-B7D5-31AABFFE1A27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94AFFDCF-A119-40E8-B7D5-31AABFFE1A27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94AFFDCF-A119-40E8-B7D5-31AABFFE1A27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F071588-05FE-40A2-89E1-487CC5B1B220}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F071588-05FE-40A2-89E1-487CC5B1B220}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F071588-05FE-40A2-89E1-487CC5B1B220}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F071588-05FE-40A2-89E1-487CC5B1B220}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -971,6 +977,7 @@ Global
 		{2F51C6F8-8C66-4C50-ADD1-4846D7B7674D} = {AAADF39B-3716-4820-897C-0E5953B5696D}
 		{C1239EF5-630B-4217-8732-E7DAE249DB40} = {AAADF39B-3716-4820-897C-0E5953B5696D}
 		{94AFFDCF-A119-40E8-B7D5-31AABFFE1A27} = {AAADF39B-3716-4820-897C-0E5953B5696D}
+		{7F071588-05FE-40A2-89E1-487CC5B1B220} = {93892A11-5FF0-4EB2-AA73-F330E1F9515E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF825C3D-F4F4-4E62-BBFF-B42A5E81112F}

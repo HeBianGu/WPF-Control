@@ -1,4 +1,4 @@
-﻿using H.Providers.Mvvm;
+﻿using H.Mvvm;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using System.Xml.Serialization;

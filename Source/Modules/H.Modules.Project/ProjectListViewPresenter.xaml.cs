@@ -2,8 +2,8 @@
 
 
 
-using H.Providers.Ioc;
-using H.Providers.Mvvm;
+using H.Services.Common;
+using H.Mvvm;
 
 namespace H.Modules.Project
 {

@@ -1,4 +1,4 @@
-﻿using H.Providers.Mvvm;
+﻿using H.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

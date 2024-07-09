@@ -1,7 +1,8 @@
 // Copyright ? 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-using System.Windows;
-using System.Windows.Markup;
+global using System.Windows;
+global using System.Windows.Markup;
+global using H.Services.Serializable;
 
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None, //where theme specific resource dictionaries are located

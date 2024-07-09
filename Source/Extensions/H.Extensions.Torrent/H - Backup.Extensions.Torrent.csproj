@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <PackageReference Include="BencodeNET" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Providers\H.Services.Common\H.Services.Common.csproj" />
+    <ProjectReference Include="..\..\Providers\H.Providers.Mvvm\H.Providers.Mvvm.csproj" />
+    <ProjectReference Include="..\H.Extensions.ValueConverter\H.Extensions.ValueConverter.csproj" />
+  </ItemGroup>
+
+</Project>

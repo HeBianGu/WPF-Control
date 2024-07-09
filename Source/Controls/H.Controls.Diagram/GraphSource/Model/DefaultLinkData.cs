@@ -2,7 +2,7 @@
 
 
 
-using H.Providers.Mvvm;
+using H.Mvvm;
 
 namespace H.Controls.Diagram
 {

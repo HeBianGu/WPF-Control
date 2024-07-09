@@ -1,5 +1,5 @@
 ﻿
-using H.Providers.Ioc;
+using H.Services.Common;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;

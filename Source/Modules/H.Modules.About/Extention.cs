@@ -1,6 +1,6 @@
 ﻿
 using H.Modules.About;
-using H.Providers.Ioc;
+using H.Services.Common;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace System

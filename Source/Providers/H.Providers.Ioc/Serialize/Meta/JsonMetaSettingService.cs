@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Text.Json;
 
-namespace H.Providers.Ioc
+namespace H.Services.Common
 {
     public class JsonMetaSettingService : IMetaSettingService
     {

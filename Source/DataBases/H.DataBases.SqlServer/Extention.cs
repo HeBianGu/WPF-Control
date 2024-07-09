@@ -9,7 +9,7 @@ using System.Data.Entity;
 #if NETCOREAPP
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using H.Providers.Ioc;
+using H.Services.Common;
 using H.DataBases.Share;
 
 

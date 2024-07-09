@@ -2,7 +2,7 @@
 
 using H.Extensions.Encryption;
 using H.Extensions.Setting;
-using H.Providers.Ioc;
+using H.Services.Common;
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;

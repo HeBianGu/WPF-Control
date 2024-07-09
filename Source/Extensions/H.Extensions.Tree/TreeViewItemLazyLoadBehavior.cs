@@ -1,4 +1,4 @@
-﻿using H.Providers.Mvvm;
+﻿using H.Mvvm;
 using Microsoft.Xaml.Behaviors;
 using System;
 using System.Linq;

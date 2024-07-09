@@ -1,6 +1,6 @@
 ﻿
 
-namespace H.Providers.Ioc
+namespace H.Services.Common
 {
     public interface IMailService
     {

@@ -1,6 +1,6 @@
 ﻿
 using H.Controls.OrderBox;
-using H.Providers.Mvvm;
+using H.Mvvm;
 using System;
 using System.Collections;
 using System.ComponentModel.DataAnnotations;

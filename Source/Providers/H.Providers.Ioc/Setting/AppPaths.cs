@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.IO;
 
-namespace H.Providers.Ioc
+namespace H.Services.Common
 {
     [Display(Name = "系统路径", GroupName = SettingGroupNames.GroupSystem)]
     public class AppPaths : LazyInstance<AppPaths>, IAppPaths

@@ -1,5 +1,5 @@
 ﻿using H.DataBases.Share;
-using H.Providers.Ioc;
+using H.Services.Common;
 using System.ComponentModel.DataAnnotations;
 using H.Extensions.DataBase;
 namespace H.Test.SqlServer

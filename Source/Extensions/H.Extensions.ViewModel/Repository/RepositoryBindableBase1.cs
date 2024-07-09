@@ -1,8 +1,6 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-
-
-using H.Providers.Ioc;
-using H.Providers.Mvvm;
+using H.Services.Common;
+using H.Mvvm;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -14,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 using H.Extensions.DataBase;
+
 
 namespace H.Extensions.ViewModel
 {
@@ -299,7 +298,7 @@ namespace H.Extensions.ViewModel
 
         public virtual async Task Export(string path)
         {
-            Ioc.GetService<IOperationService>().Log<TEntity>($"导出");
+            System.Ioc.GetService<IOperationService>().Log<TEntity>($"导出");
             IEnumerable<TEntity> collection = this.Collection.Select(x => x.Model);
             string message = null;
             bool? r = Ioc<IExcelService>.Instance?.Export(collection, path, typeof(TEntity).Name, out message);

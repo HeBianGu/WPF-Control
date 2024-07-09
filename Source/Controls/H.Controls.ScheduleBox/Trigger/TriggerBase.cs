@@ -1,4 +1,4 @@
-﻿using H.Providers.Mvvm;
+﻿using H.Mvvm;
 using Quartz;
 using System;
 using System.ComponentModel;

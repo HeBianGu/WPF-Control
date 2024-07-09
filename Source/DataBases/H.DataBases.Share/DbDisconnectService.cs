@@ -3,7 +3,7 @@
 
 
 using System;
-using H.Providers.Ioc;
+using H.Services.Common;
 
 #if NETFRAMEWORK
 using System.Data.Entity;

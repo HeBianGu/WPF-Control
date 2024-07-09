@@ -1,4 +1,4 @@
-﻿using H.Providers.Mvvm;
+﻿using H.Mvvm;
 using System.Collections;
 
 namespace H.Presenters.Common

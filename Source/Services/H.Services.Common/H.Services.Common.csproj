@@ -6,5 +6,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Providers\H.Ioc\H.Ioc.csproj" />
     <ProjectReference Include="..\H.Services.Logger\H.Services.Logger.csproj" />
+    <ProjectReference Include="..\H.Services.Mail\H.Services.Mail.csproj" />
   </ItemGroup>
 </Project>

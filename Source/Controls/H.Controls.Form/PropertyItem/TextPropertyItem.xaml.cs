@@ -2,7 +2,7 @@
 
 
 
-using H.Providers.Mvvm;
+using H.Mvvm;
 using Microsoft.Win32;
 using System;
 using System.ComponentModel;

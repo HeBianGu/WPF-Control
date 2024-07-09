@@ -2,7 +2,7 @@
 
 using System.Windows.Shell;
 
-namespace H.Providers.Ioc
+namespace H.Services.Common
 {
     public interface ITaskBarMessage
     {

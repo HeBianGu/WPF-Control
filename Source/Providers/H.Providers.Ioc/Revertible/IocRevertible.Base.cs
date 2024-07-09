@@ -1,4 +1,4 @@
-﻿namespace H.Providers.Ioc
+﻿namespace H.Services.Common
 {
     public abstract class IocRevertibleBase<T> : Ioc<T> where T : IRevertibleService
     {

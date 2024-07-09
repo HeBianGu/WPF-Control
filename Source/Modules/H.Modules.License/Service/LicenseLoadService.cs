@@ -2,7 +2,7 @@
 
 
 
-using H.Providers.Ioc;
+using H.Services.Common;
 using Microsoft.Extensions.Options;
 using System.Windows;
 

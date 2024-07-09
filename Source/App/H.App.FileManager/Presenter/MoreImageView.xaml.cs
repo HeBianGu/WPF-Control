@@ -1,8 +1,8 @@
 ﻿
 using H.Controls.TagBox;
 using H.Extensions.Common;
-using H.Providers.Ioc;
-using H.Providers.Mvvm;
+using H.Services.Common;
+using H.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.IO;

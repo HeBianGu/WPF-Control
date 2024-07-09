@@ -1,5 +1,6 @@
-using System.Windows;
-using System.Windows.Markup;
+global using System.Windows;
+global using System.Windows.Markup;
+global using H.Services.Operation;
 
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None, //where theme specific resource dictionaries are located

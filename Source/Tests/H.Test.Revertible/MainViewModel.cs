@@ -1,7 +1,7 @@
 ﻿using H.Extensions.Revertible;
 using H.Extensions.ViewModel;
-using H.Providers.Ioc;
-using H.Providers.Mvvm;
+using H.Services.Common;
+using H.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Linq;

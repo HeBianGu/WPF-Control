@@ -1,5 +1,5 @@
-﻿using H.Providers.Ioc;
-using H.Providers.Mvvm;
+﻿using H.Services.Common;
+using H.Mvvm;
 using Microsoft.Extensions.Options;
 
 namespace H.Modules.Theme

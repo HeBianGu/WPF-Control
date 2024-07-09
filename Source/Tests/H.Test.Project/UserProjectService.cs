@@ -1,6 +1,6 @@
 ﻿using H.Modules.Login;
 using H.Modules.Project;
-using H.Providers.Ioc;
+using H.Services.Common;
 using Microsoft.Extensions.Options;
 
 namespace H.Test.Project

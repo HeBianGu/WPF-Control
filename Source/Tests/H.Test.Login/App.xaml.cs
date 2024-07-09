@@ -1,6 +1,6 @@
 ﻿using H.Extensions.ApplicationBase;
 using H.Modules.Login;
-using H.Providers.Ioc;
+using H.Services.Common;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;

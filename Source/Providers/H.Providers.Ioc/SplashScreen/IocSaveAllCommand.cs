@@ -2,7 +2,7 @@
 
 using Microsoft.Extensions.DependencyInjection;
 
-namespace H.Providers.Ioc
+namespace H.Services.Common
 {
     public class IocSaveAllCommand : IocMarkupCommandBase
     {

@@ -1,6 +1,6 @@
 ﻿
 using H.Controls.Chart2D;
-using H.Providers.Mvvm;
+using H.Mvvm;
 
 
 using System;

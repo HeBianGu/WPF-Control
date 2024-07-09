@@ -1,8 +1,9 @@
-﻿using H.Providers.Ioc;
-using H.Providers.Mvvm;
+﻿using H.Services.Common;
+using H.Mvvm;
 using System.IO;
 using System.Reflection;
 using System.Xml.Serialization;
+using H.Services.Serializable;
 
 namespace H.Extensions.Setting
 {

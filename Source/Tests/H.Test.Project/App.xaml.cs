@@ -1,7 +1,7 @@
 ﻿using H.DataBases.Share;
 using H.Extensions.ApplicationBase;
 using H.Modules.Identity;
-using H.Providers.Ioc;
+using H.Services.Common;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;

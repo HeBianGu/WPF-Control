@@ -8,7 +8,7 @@ using System.Data.Entity;
 #if NETCOREAPP
 #endif
 using H.DataBases.Share;
-using H.Providers.Ioc;
+using H.Services.Common;
 using System.ComponentModel.DataAnnotations;
 
 namespace H.DataBases.Sqlite

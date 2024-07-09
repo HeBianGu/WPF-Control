@@ -1,5 +1,5 @@
 ﻿using H.Controls.FilterBox;
-using H.Providers.Mvvm;
+using H.Mvvm;
 
 namespace H.App.FileManager
 {

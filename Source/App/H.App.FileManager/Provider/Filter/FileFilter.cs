@@ -1,5 +1,5 @@
 ﻿using H.Controls.FilterBox;
-using H.Providers.Mvvm;
+using H.Mvvm;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;

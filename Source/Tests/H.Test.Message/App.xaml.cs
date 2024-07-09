@@ -1,7 +1,7 @@
 ﻿using H.Extensions.ApplicationBase;
 using H.Modules.Messages.Dialog;
 using H.Modules.Messages.Form;
-using H.Providers.Ioc;
+using H.Services.Common;
 using H.Styles.Default;
 using Microsoft.Extensions.DependencyInjection;
 using System;

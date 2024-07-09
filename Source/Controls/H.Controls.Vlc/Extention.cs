@@ -2,7 +2,7 @@
 
 
 using H.Controls.Vlc;
-using H.Providers.Ioc;
+using H.Services.Common;
 
 namespace System
 {

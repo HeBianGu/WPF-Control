@@ -2,8 +2,8 @@
 
 
 using H.Extensions.XmlSerialize;
-using H.Providers.Ioc;
-using H.Providers.Mvvm;
+using H.Services.Common;
+using H.Mvvm;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;

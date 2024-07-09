@@ -2,7 +2,7 @@
 
 
 using H.Extensions.Setting;
-using H.Providers.Ioc;
+using H.Services.Common;
 using H.Themes.Default;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;

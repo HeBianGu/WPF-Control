@@ -3,7 +3,7 @@
 using System.Net.Http;
 using System.Text.Json;
 
-namespace H.Providers.Ioc
+namespace H.Services.Common
 {
     internal class JsonWebSerializerService : IWebJsonSerializerService
     {

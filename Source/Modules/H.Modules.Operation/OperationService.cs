@@ -1,5 +1,5 @@
 ﻿using H.Extensions.ViewModel;
-using H.Providers.Ioc;
+using H.Services.Common;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;

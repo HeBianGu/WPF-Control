@@ -2,7 +2,7 @@
 
 
 
-using H.Providers.Ioc;
+using H.Services.Common;
 using System;
 
 namespace H.Modules.License

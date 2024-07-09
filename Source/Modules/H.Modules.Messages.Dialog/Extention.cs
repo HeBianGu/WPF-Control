@@ -1,5 +1,5 @@
 ﻿using H.Modules.Messages.Dialog;
-using H.Providers.Ioc;
+using H.Services.Common;
 
 using Microsoft.Extensions.DependencyInjection;
 
