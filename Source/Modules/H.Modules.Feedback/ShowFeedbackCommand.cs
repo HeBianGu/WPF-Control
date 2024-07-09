@@ -1,4 +1,9 @@
-﻿namespace H.Services.Common
+﻿using H.Services.Common;
+using H.Services.Mail;
+using System;
+using System.Linq;
+
+namespace H.Modules.Feedback
 {
     public class ShowFeedbackCommand : IocMarkupCommandBase
     {

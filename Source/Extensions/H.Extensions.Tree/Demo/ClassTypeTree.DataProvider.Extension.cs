@@ -10,7 +10,7 @@ namespace H.Extensions.Tree
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
             ClassTypeTree tree = new ClassTypeTree(this.Type);
-            System.Collections.Generic.IEnumerable<Providers.Mvvm.ITreeNode> result = tree.GetTreeNodes(this.IsRecursion);
+            System.Collections.Generic.IEnumerable<ITreeNode> result = tree.GetTreeNodes(this.IsRecursion);
             return result;
         }
     }
