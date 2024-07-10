@@ -1,5 +1,4 @@
-﻿using System;
-namespace H.Services.Logger
+﻿namespace H.Services.Logger
 {
     public class LogCommand : IocMarkupCommandBase
     {

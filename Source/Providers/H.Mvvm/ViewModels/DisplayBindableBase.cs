@@ -14,7 +14,7 @@ namespace H.Mvvm
     {
         public DisplayBindableBase()
         {
-            var type=this.GetType();
+            var type = this.GetType();
             this.Name = type.Name;
             DisplayAttribute display = type.GetCustomAttribute<DisplayAttribute>(true);
             if (display != null)
@@ -29,7 +29,7 @@ namespace H.Mvvm
             }
             IDAttribute id = type.GetCustomAttribute<IDAttribute>(true);
             this.ID = id?.ID ?? type.Name;
-            
+
             System.Collections.Generic.IEnumerable<PropertyInfo> cmdps = type.GetProperties().Where(x => typeof(ICommand).IsAssignableFrom(x.PropertyType));
             foreach (PropertyInfo cmdp in cmdps)
             {

@@ -1,20 +1,8 @@
-global using System;
-global using System.Collections;
-global using System.Collections.Generic;
-global using System.Collections.ObjectModel;
-global using System.Linq;
-global using System.Reflection;
-global using System.Text;
-global using System.Threading;
-global using System.Threading.Tasks;
-global using System.Windows;
-global using System.Windows.Controls;
-global using System.Windows.Controls.Primitives;
-global using System.Windows.Input;
-global using System.Windows.Markup;
-global using System.Windows.Media;
 global using H.Iocable;
 global using H.Services.Logger;
+global using System;
+global using System.Windows;
+global using System.Windows.Markup;
 
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None, //where theme specific resource dictionaries are located
