@@ -1,7 +1,4 @@
-﻿using System;
-using System.Windows.Markup;
-
-namespace H.Iocable
+﻿namespace H.Iocable
 {
     public class IocExtension : MarkupExtension
     {
