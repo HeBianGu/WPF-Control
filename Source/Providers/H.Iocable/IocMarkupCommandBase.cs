@@ -1,4 +1,4 @@
-﻿namespace H.Iocs
+﻿namespace H.Iocable
 {
     [MarkupExtensionReturnType(typeof(ICommand))]
     public abstract class IocMarkupCommandBase : MarkupExtension, ICommand

@@ -298,7 +298,7 @@ namespace H.Extensions.ViewModel
 
         public virtual async Task Export(string path)
         {
-            System.Ioc.GetService<IOperationService>().Log<TEntity>($"导出");
+            Ioc.GetService<IOperationService>().Log<TEntity>($"导出");
             IEnumerable<TEntity> collection = this.Collection.Select(x => x.Model);
             string message = null;
             bool? r = Ioc<IExcelService>.Instance?.Export(collection, path, typeof(TEntity).Name, out message);

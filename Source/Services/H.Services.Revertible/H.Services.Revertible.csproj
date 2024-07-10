@@ -1,5 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
-    <ProjectReference Include="..\..\Providers\H.Ioc\H.Ioc.csproj" />
+    <ProjectReference Include="..\..\Providers\H.Iocable\H.Iocable.csproj" />
   </ItemGroup>
 </Project>

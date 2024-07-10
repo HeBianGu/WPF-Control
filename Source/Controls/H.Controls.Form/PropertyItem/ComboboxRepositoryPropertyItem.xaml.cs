@@ -1,7 +1,7 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
+global using System;
 using H.Extensions.DataBase;
-using System;
 using System.Collections;
 using System.Reflection;
 

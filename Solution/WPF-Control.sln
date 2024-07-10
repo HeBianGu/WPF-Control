@@ -305,7 +305,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Services.Revertible", "..
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Services.Serializable", "..\Source\Services\H.Services.Serializable\H.Services.Serializable.csproj", "{94AFFDCF-A119-40E8-B7D5-31AABFFE1A27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Mvvm", "..\Source\Providers\H.Mvvm\H.Mvvm.csproj", "{7F071588-05FE-40A2-89E1-487CC5B1B220}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Mvvm", "..\Source\Providers\H.Mvvm\H.Mvvm.csproj", "{7F071588-05FE-40A2-89E1-487CC5B1B220}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Iocable", "..\Source\Providers\H.Iocable\H.Iocable.csproj", "{22CC8D3B-A5AF-4713-A83E-58E61F0A9D07}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -839,6 +841,10 @@ Global
 		{7F071588-05FE-40A2-89E1-487CC5B1B220}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F071588-05FE-40A2-89E1-487CC5B1B220}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F071588-05FE-40A2-89E1-487CC5B1B220}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22CC8D3B-A5AF-4713-A83E-58E61F0A9D07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22CC8D3B-A5AF-4713-A83E-58E61F0A9D07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22CC8D3B-A5AF-4713-A83E-58E61F0A9D07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22CC8D3B-A5AF-4713-A83E-58E61F0A9D07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -978,6 +984,7 @@ Global
 		{C1239EF5-630B-4217-8732-E7DAE249DB40} = {AAADF39B-3716-4820-897C-0E5953B5696D}
 		{94AFFDCF-A119-40E8-B7D5-31AABFFE1A27} = {AAADF39B-3716-4820-897C-0E5953B5696D}
 		{7F071588-05FE-40A2-89E1-487CC5B1B220} = {93892A11-5FF0-4EB2-AA73-F330E1F9515E}
+		{22CC8D3B-A5AF-4713-A83E-58E61F0A9D07} = {93892A11-5FF0-4EB2-AA73-F330E1F9515E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF825C3D-F4F4-4E62-BBFF-B42A5E81112F}

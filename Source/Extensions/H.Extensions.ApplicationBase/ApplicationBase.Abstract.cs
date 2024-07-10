@@ -32,7 +32,7 @@ namespace H.Extensions.ApplicationBase
                 yield return item;
             }
 
-            foreach (var item in System.Ioc.Services.GetServices<ISplashLoad>())
+            foreach (var item in Ioc.Services.GetServices<ISplashLoad>())
             {
                 yield return item;
             }
@@ -130,7 +130,7 @@ namespace H.Extensions.ApplicationBase
         protected virtual void OnLogin(StartupEventArgs e)
         {
             {
-                var presenter = System.Ioc.Services.GetService<ILoginViewPresenter>();
+                var presenter = Ioc.Services.GetService<ILoginViewPresenter>();
                 if (presenter == null)
                     return;
                 bool? r = IocMessage.Window.Show(presenter, x =>

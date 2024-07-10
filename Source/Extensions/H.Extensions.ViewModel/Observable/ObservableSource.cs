@@ -9,7 +9,7 @@ using System.Windows.Threading;
 
 namespace H.Extensions.ViewModel
 {
-    public class ObservableSource<T> : Providers.Mvvm.Bindable, IObservableSource<T>
+    public class ObservableSource<T> : Bindable, IObservableSource<T>
     {
         public int Count => this.Cache.Count;
         private ObservableCollection<T> _cache = new ObservableCollection<T>();

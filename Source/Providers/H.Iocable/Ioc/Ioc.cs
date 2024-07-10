@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
 
-namespace System
+namespace H.Iocable
 {
     public static class Ioc
     {

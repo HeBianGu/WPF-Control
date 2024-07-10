@@ -30,7 +30,7 @@ namespace H.Test.Login
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var test = System.Ioc.Services.GetService<ITest>();
+            var test = Ioc.Services.GetService<ITest>();
         }
     }
 

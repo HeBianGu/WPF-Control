@@ -6,14 +6,14 @@ namespace System
 {
     public static class IocMessage
     {
-        public static IAdornerDialogMessageService Adorner => System.Ioc.GetService<IAdornerDialogMessageService>(throwIfNone: false);
-        public static IWindowDialogMessageService Window => System.Ioc.GetService<IWindowDialogMessageService>(throwIfNone: false);
-        public static IDialogMessageService Dialog => System.Ioc.GetService<IDialogMessageService>(throwIfNone: false);
-        public static ISnackMessageService Snack => System.Ioc.GetService<ISnackMessageService>(throwIfNone: false);
-        public static ITaskBarMessage TaskBar => System.Ioc.GetService<ITaskBarMessage>(throwIfNone: false);
-        public static ISystemNotifyMessage SystemNotify => System.Ioc.GetService<ISystemNotifyMessage>(throwIfNone: false);
-        public static INoticeMessageService Notify => System.Ioc.GetService<INoticeMessageService>(throwIfNone: false);
-        public static IFormMessageService Form => System.Ioc.GetService<IFormMessageService>(throwIfNone: false);
+        public static IAdornerDialogMessageService Adorner => Ioc.GetService<IAdornerDialogMessageService>(throwIfNone: false);
+        public static IWindowDialogMessageService Window => Ioc.GetService<IWindowDialogMessageService>(throwIfNone: false);
+        public static IDialogMessageService Dialog => Ioc.GetService<IDialogMessageService>(throwIfNone: false);
+        public static ISnackMessageService Snack => Ioc.GetService<ISnackMessageService>(throwIfNone: false);
+        public static ITaskBarMessage TaskBar => Ioc.GetService<ITaskBarMessage>(throwIfNone: false);
+        public static ISystemNotifyMessage SystemNotify => Ioc.GetService<ISystemNotifyMessage>(throwIfNone: false);
+        public static INoticeMessageService Notify => Ioc.GetService<INoticeMessageService>(throwIfNone: false);
+        public static IFormMessageService Form => Ioc.GetService<IFormMessageService>(throwIfNone: false);
 
         public static async Task<bool?> ShowDialogMessage(string message, string title = "提示", DialogButton dialogButton = DialogButton.Sumit)
         {

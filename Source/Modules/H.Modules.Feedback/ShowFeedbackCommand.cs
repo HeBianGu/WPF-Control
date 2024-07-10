@@ -9,7 +9,7 @@ namespace H.Modules.Feedback
     {
         public override async void Execute(object parameter)
         {
-            IFeedbackViewPresenter presenter = System.Ioc.GetService<IFeedbackViewPresenter>();
+            IFeedbackViewPresenter presenter = Ioc.GetService<IFeedbackViewPresenter>();
             bool? r = await IocMessage.Dialog?.Show(presenter);
             if (r != true)
                 return;

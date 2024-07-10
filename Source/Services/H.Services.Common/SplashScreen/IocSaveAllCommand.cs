@@ -8,7 +8,7 @@ namespace H.Services.Common
     {
         public override async void Execute(object parameter)
         {
-            System.Collections.Generic.IEnumerable<ISplashSave> saves = System.Ioc.Services.GetServices<ISplashSave>();
+            System.Collections.Generic.IEnumerable<ISplashSave> saves = Ioc.Services.GetServices<ISplashSave>();
             if (saves.Count() > 0)
             {
                 bool r = await IocMessage.Dialog.ShowString((f, x) =>
@@ -35,7 +35,7 @@ namespace H.Services.Common
 
         public override bool CanExecute(object parameter)
         {
-            return System.Ioc.Services != null && System.Ioc.Services.GetServices<ISplashSave>().Count() > 0;
+            return Ioc.Services != null && Ioc.Services.GetServices<ISplashSave>().Count() > 0;
         }
     }
 }

@@ -22,7 +22,7 @@ namespace H.Services.Common
         public static T GetService<T>(bool throwIfNone = true)
         {
             T r = (T)_services?.GetService(typeof(T));
-            return r == null && throwIfNone ? System.Ioc.GetService<T>(throwIfNone) : r;
+            return r == null && throwIfNone ? Ioc.GetService<T>(throwIfNone) : r;
         }
     }
 }

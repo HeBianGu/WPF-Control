@@ -13,7 +13,7 @@ using System.Xml.Serialization;
 
 namespace H.Extensions.ViewModel
 {
-    public class RepositoryBindableBase : Providers.Mvvm.Bindable
+    public class RepositoryBindableBase : Bindable
     {
         public RepositoryBindableBase()
         {

@@ -13,7 +13,7 @@ namespace H.Extensions.Tree
             {
                 Root = this.Root
             };
-            System.Collections.Generic.IEnumerable<Providers.Mvvm.ITreeNode> result = tree.GetTreeNodes(this.IsRecursion);
+            System.Collections.Generic.IEnumerable<ITreeNode> result = tree.GetTreeNodes(this.IsRecursion);
             return result;
         }
     }

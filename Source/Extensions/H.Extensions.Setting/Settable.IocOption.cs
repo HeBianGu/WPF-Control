@@ -10,7 +10,7 @@ namespace H.Extensions.Setting
 {
     public abstract class IocOptionInstance<Setting> : SettableBase, IOptions<Setting> where Setting : class, new()
     {
-        public static Setting Instance => System.Ioc.GetService<IOptions<Setting>>().Value;
+        public static Setting Instance => Ioc.GetService<IOptions<Setting>>().Value;
 
         [Browsable(false)]
         [XmlIgnore]

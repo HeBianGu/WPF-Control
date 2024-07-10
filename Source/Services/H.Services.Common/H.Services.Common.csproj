@@ -4,7 +4,7 @@
     <PackageReference Include="Microsoft.Extensions.Options" Version="7.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Providers\H.Ioc\H.Ioc.csproj" />
+    <ProjectReference Include="..\..\Providers\H.Iocable\H.Iocable.csproj" />
     <ProjectReference Include="..\H.Services.Logger\H.Services.Logger.csproj" />
   </ItemGroup>
 </Project>

@@ -7,7 +7,7 @@ namespace H.Services.Common
         public Type Type { get; set; }
         public override void Execute(object parameter)
         {
-            object p = System.Ioc.Services.GetService(this.Type);
+            object p = Ioc.Services.GetService(this.Type);
             IocMessage.Dialog.Show(p, x =>
             {
                 x.DialogButton = DialogButton.Sumit;

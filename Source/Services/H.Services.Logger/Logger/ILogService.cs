@@ -1,4 +1,6 @@
-﻿namespace System
+﻿using System;
+
+namespace H.Services.Logger
 {
     public interface ILogService
     {

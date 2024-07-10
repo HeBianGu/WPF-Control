@@ -1,3 +1,4 @@
+global using H.Mvvm;
 global using System.Windows;
 global using System.Windows.Markup;
 global using H.Services.Operation;
