@@ -1,4 +1,6 @@
-﻿namespace H.Services.Revertible
+﻿using System.Collections.Generic;
+
+namespace H.Services.Revertible
 {
     public interface IRevertibleService
     {
