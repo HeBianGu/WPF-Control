@@ -4,6 +4,7 @@ using Microsoft.Extensions.Options;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using H.Services.Mail;
 
 namespace H.Modules.Login
 {

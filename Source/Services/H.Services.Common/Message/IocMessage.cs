@@ -2,7 +2,7 @@
 
 using H.Services.Common;
 
-namespace System
+namespace H.Services.Common
 {
     public static class IocMessage
     {

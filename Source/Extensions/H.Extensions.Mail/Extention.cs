@@ -1,4 +1,5 @@
-﻿
+﻿global using H.Iocable;
+global using H.Services.Logger;
 using H.Extensions.Mail;
 using H.Services.Common;
 using Microsoft.Extensions.DependencyInjection;

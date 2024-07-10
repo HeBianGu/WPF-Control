@@ -2,7 +2,6 @@
 using H.Mvvm;
 using System;
 using System.IO;
-using H.Ioc.Iocs;
 namespace H.Controls.FavoriteBox
 {
     public class EditFavoriteCommand : MarkupCommandBase

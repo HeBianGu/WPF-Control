@@ -2,7 +2,6 @@
 using System;
 using System.IO;
 using System.Linq;
-using H.Iocs;
 namespace H.Controls.FavoriteBox
 {
     public class DeleteFavoriteCommand : MarkupCommandBase

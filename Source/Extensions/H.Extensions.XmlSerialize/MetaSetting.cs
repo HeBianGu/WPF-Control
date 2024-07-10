@@ -5,7 +5,6 @@ using H.Services.Common;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Windows.Threading;
-using H.Ioc;
 
 namespace H.Extensions.XmlSerialize
 {

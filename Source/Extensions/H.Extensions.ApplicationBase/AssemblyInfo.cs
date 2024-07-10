@@ -1,5 +1,5 @@
 global using H.Services.Operation;
-global using H.Ioc;
+global using H.Iocable;
 global using H.Services.Logger;
 using System.Windows;
 using System.Windows.Markup;

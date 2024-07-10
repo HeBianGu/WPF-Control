@@ -1,4 +1,5 @@
-﻿using H.Mvvm;
+﻿global using H.Services.Common;
+using H.Mvvm;
 using System;
 using System.IO;
 

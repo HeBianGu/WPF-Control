@@ -1,3 +1,5 @@
+global using H.Iocable;
+global using H.Services.Logger;
 global using H.Mvvm;
 global using System.Windows;
 global using System.Windows.Markup;

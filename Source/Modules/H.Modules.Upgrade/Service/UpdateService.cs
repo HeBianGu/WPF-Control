@@ -2,6 +2,7 @@
 
 
 using H.Services.Common;
+using H.Services.Serializable;
 using Microsoft.Extensions.Options;
 using System;
 using System.Linq;

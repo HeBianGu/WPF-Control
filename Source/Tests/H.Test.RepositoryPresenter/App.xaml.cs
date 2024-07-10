@@ -1,4 +1,5 @@
-﻿using H.DataBases.Share;
+﻿global using H.Iocable;
+using H.DataBases.Share;
 using H.DataBases.Sqlite;
 using H.Extensions.ApplicationBase;
 using H.Extensions.ViewModel;

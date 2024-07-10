@@ -12,6 +12,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
+using H.Services.Serializable;
 
 namespace H.Modules.Project
 {

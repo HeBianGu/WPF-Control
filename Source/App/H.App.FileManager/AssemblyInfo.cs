@@ -1,3 +1,5 @@
+global using H.Iocable;
+global using H.Services.Serializable;
 using System.Windows;
 
 [assembly: ThemeInfo(

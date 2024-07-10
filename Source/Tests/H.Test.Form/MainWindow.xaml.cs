@@ -1,4 +1,5 @@
-﻿using H.Modules.About;
+﻿global using H.Iocable;
+using H.Modules.About;
 using H.Windows.Dialog;
 using Microsoft.Extensions.DependencyInjection;
 using System;

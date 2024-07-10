@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using H.Services.Revertible;
 
 namespace H.Test.Revertible
 {
@@ -19,7 +20,7 @@ namespace H.Test.Revertible
             set
             {
                 string oldValue = _value;
-                var persenter = new PropertyChangedRevertiblePrensenter<string>(nameof(Value), _value, value);
+                var persenter = new PropertyChangedRevertiblePrensenter<string>(nameof(this.Value), _value, value);
                 IocRevertible.Commit(() =>
                 {
                     _value = value;

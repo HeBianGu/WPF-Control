@@ -4,6 +4,7 @@
 
 
 using H.Services.Common;
+using H.Services.Serializable;
 using System;
 using System.Collections.Generic;
 using System.Linq;
