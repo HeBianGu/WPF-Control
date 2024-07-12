@@ -131,6 +131,11 @@ namespace H.App.FileManager
         [Display(Name = "更新视频信息[时长、清晰度、比特率、编码格式]", GroupName = "更新")]
         public RelayCommand UpdateVieoInfoCommand => new RelayCommand(async l =>
         {
+            if(string.IsNullOrEmpty(FFMpegOption.Instance.BinaryFolder))
+            {
+               await IocMessage.Dialog.Show("请先配置FFMpeg路径");
+                return;
+            }
             await IocMessage.Dialog.ShowForeach(() => this.Collection.FilterSource.Select(x => x.Model).OfType<fm_dd_video>(), item =>
             {
                 var mediaInfo = IocFFMpeg.Instance.GetMediaAnalysis(item.Url);

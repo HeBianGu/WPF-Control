@@ -402,7 +402,9 @@ namespace H.Controls.Vlc
 
         private void InitVlc()
         {
-
+            DirectoryInfo libDirectory = new DirectoryInfo(VlcSetting.Instance.LibvlcPath);
+            if (!libDirectory.Exists)
+                throw new FileNotFoundException("Libvlc文件不存在", VlcSetting.Instance.LibvlcPath);
             if (this._vlc?.SourceProvider?.MediaPlayer != null)
             {
                 this._vlc.SourceProvider.MediaPlayer.PositionChanged -= MediaPlayer_PositionChanged;
@@ -416,7 +418,7 @@ namespace H.Controls.Vlc
             this._vlc = new VlcControl();
             this.Content = this._vlc;
 
-            DirectoryInfo libDirectory = new DirectoryInfo(VlcSetting.Instance.LibvlcPath);
+           
 
             this._vlc.SourceProvider.CreatePlayer(libDirectory/* pass your player parameters here */);
 

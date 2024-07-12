@@ -16,6 +16,8 @@
     <Version>1.0.0</Version>
     <GeneratePackageOnBuild>Flase</GeneratePackageOnBuild>
     <Platforms>AnyCPU;x86</Platforms>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>H:\Github\WPF-Control\Key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -63,5 +65,6 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.8" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.77" />
+    <PackageReference Include="VideoLAN.LibVLC.Windows" Version="3.0.20" />
   </ItemGroup>
 </Project>

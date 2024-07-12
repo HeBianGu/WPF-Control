@@ -75,10 +75,10 @@ namespace H.Test.Test
         {
             base.Configure(app);
             app.UseAddLog4netSetting();
-            app.UseVlc(x =>
-            {
-                x.LibvlcPath = "G:\\BaiduNetdiskDownload\\libvlc\\win-x64";
-            });
+            //app.UseVlc(x =>
+            //{
+            //    x.LibvlcPath = "G:\\BaiduNetdiskDownload\\libvlc\\win-x64";
+            //});
 
             app.UseMail();
         }

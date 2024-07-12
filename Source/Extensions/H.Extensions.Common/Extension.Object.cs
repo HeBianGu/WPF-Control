@@ -234,12 +234,18 @@ namespace System
         public static bool ModelStateDeep(this object obj, out string error)
         {
             error = null;
+            if (obj == null)
+                return true;
             PropertyInfo[] propertys = obj.GetType().GetProperties();
+
+            var type = obj.GetType();
+            if (type.FullName.StartsWith("System."))
+                return true;
             foreach (PropertyInfo item in propertys)
             {
                 if (item.Name == "Item")
                     continue;
-                List<ValidationAttribute> collection = item.GetCustomAttributes<ValidationAttribute>()?.ToList();
+                List<ValidationAttribute> collection = item.GetCustomAttributes<ValidationAttribute>(false)?.ToList();
                 object value = item.GetValue(obj);
                 if (collection.Count > 0)
                 {

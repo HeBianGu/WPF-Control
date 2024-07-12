@@ -1,6 +1,8 @@
 ﻿using H.Controls.Form;
 using H.Services.Common;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -12,9 +14,9 @@ namespace H.Modules.Messages.Form
         {
             Func<bool> canSumit = () =>
             {
-                if (value.ModelStateDeep(out string error) == false)
+                if (value.ModelState(out List<string> errors) == false)
                 {
-                    IocMessage.Dialog.Show(error);
+                    IocMessage.Dialog.Show(errors.FirstOrDefault());
                     return false;
                 }
                 return match?.Invoke(value) != false;

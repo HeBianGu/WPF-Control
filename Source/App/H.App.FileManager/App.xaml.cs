@@ -104,19 +104,20 @@ namespace H.App.FileManager
         {
             base.Configure(app);
 
-            //app.UseSetting(x =>
-            //{
-            //    x.Add(AppSetting.Instance);
-            //});
-
-            app.UseVlc(x =>
+            app.UseSetting(x =>
             {
-                x.LibvlcPath = "G:\\BaiduNetdiskDownload\\libvlc\\win-x64";
+                x.Add(AppSetting.Instance);
             });
+
+            //app.UseVlc(x =>
+            //{
+            //    //x.LibvlcPath = "G:\\BaiduNetdiskDownload\\libvlc\\win-x64";
+            //});
 
             app.UseFFMpeg();
 
             app.UseLogin();
+
         }
     }
 }

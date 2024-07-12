@@ -1,0 +1,5 @@
+
+https://appcenter-filemanagement-distrib3ede6f06e.azureedge.net/ad8f9cc5-935d-4316-a160-53043a498d02/H.Setup.FileManager.msi?sv=2019-07-07&sr=c&sig=8juMNhAnEbr7xbpBijeywIXMe%2F1pZIHmuZ6C2xQtSYM%3D&se=2024-07-13T08%3A47%3A52Z&sp=r
+
+
+https://appcenter-filemanagement-distrib4ede6f06e.azureedge.net/f01702bb-8b3e-40f6-9c2e-9fe05adb54cf/H.Setup.FileManager.msi?sv=2019-07-07&sr=c&sig=uV2Uym7lOLOqTOD6Qg6JQJBvsH2dt8H6SnZv%2BAaITsY%3D&se=2024-07-13T14%3A57%3A44Z&sp=r&download_origin=appcenter
