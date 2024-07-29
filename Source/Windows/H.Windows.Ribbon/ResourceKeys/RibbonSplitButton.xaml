@@ -29,12 +29,8 @@
                                 </Border>
                             </Border>
                             <ControlTemplate.Triggers>
-
                                 <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
                                              Value="True">
-
-
-
                                     <Setter TargetName="Text" Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
                                     <Setter TargetName="Overlay" Property="Background" Value="Transparent" />
                                     <Setter TargetName="MainBorder" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.Red}}" />
@@ -85,9 +81,6 @@
 
                                         <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
                                                      Value="True">
-
-
-
                                             <Setter TargetName="SideBarBorder" Property="Background" Value="Transparent" />
                                             <Setter TargetName="SideBarBorder" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
                                             <Setter TargetName="SideBarOverlay" Property="Background" Value="Transparent" />
@@ -585,11 +578,7 @@
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" Value="True" />
                                 <Condition Binding="{Binding ElementName=PART_HeaderButton, Path=IsEnabled}" Value="True" />
-
                                 <Condition Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True" />
-
-
-
                             </MultiDataTrigger.Conditions>
                             <Setter TargetName="OuterBorder" Property="Background" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
                         </MultiDataTrigger>
@@ -597,11 +586,7 @@
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" Value="True" />
                                 <Condition Binding="{Binding ElementName=PART_HeaderButton, Path=IsEnabled}" Value="False" />
-
                                 <Condition Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True" />
-
-
-
                             </MultiDataTrigger.Conditions>
                             <Setter TargetName="UnderlayBorder" Property="Opacity" Value="1" />
                             <Setter TargetName="UnderlayBorder" Property="Background" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
@@ -609,11 +594,7 @@
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding ElementName=PART_ToggleButton, Path=IsKeyboardFocused}" Value="True" />
-
                                 <Condition Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True" />
-
-
-
                             </MultiDataTrigger.Conditions>
                             <Setter TargetName="OuterBorder" Property="Background" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
                             <Setter TargetName="PART_HeaderButton" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushAssist}}" />
@@ -622,10 +603,7 @@
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked}" Value="True" />
-
                                 <Condition Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True" />
-
-
 
                             </MultiDataTrigger.Conditions>
                             <Setter TargetName="OuterBorder" Property="Background" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
@@ -635,11 +613,7 @@
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" Value="True" />
                                 <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked}" Value="True" />
-
                                 <Condition Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True" />
-
-
-
                             </MultiDataTrigger.Conditions>
                             <Setter TargetName="PART_ToggleButton" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushAssist}}" />
                         </MultiDataTrigger>
@@ -648,11 +622,7 @@
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding ElementName=PART_ToggleButton, Path=IsKeyboardFocused}" Value="True" />
                                 <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked}" Value="True" />
-
                                 <Condition Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True" />
-
-
-
                             </MultiDataTrigger.Conditions>
                             <Setter TargetName="PART_HeaderButton" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
                             <Setter TargetName="PART_ToggleButton" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
@@ -665,11 +635,7 @@
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsEnabled}" Value="False" />
-
                                 <Condition Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True" />
-
-
-
                             </MultiDataTrigger.Conditions>
                             <Setter TargetName="MainGrid" Property="TextElement.Foreground" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
                         </MultiDataTrigger>

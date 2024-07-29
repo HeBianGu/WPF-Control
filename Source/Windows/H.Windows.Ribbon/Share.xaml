@@ -478,7 +478,7 @@
             <Border x:Name="InnerBorder"
                     Padding="{TemplateBinding Padding}"
                     BorderBrush="Transparent"
-                    BorderThickness="{TemplateBinding BorderThickness}"
+                    BorderThickness="0"
                     CornerRadius="{TemplateBinding CornerRadius}">
                 <StackPanel x:Name="StackPanel">
                     <Image x:Name="PART_Image"
