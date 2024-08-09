@@ -1,10 +1,13 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
+using System.ComponentModel;
+using System.Formats.Asn1;
 using System.IO;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.Unicode;
+using System.Windows.Threading;
 
 namespace H.Services.Serializable
 {
@@ -38,13 +41,104 @@ namespace H.Services.Serializable
         protected virtual JsonSerializerOptions GetOptions()
         {
             JsonSerializerOptions jsonSerializerOptions = new JsonSerializerOptions();
+            // 是否允许 JSON 中的尾随逗号
             jsonSerializerOptions.AllowTrailingCommas = false;
+            // 是否格式化输出的 JSON，使其更具可读性
             jsonSerializerOptions.WriteIndented = true;
-            jsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.Never;//忽略默认的属性或字段
+            // 忽略默认值的属性或字段
+            jsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.Never;
+            // 是否包含字段（不仅仅是属性）
             jsonSerializerOptions.IncludeFields = true;
+            // 设置编码器，支持所有 Unicode 范围
             jsonSerializerOptions.Encoder = JavaScriptEncoder.Create(new TextEncoderSettings(UnicodeRanges.All));
+
+            jsonSerializerOptions.Converters.Add(new DateTimeConverter());
+            jsonSerializerOptions.Converters.Add(new TypeConverterJsonConverter());
             return jsonSerializerOptions;
         }
 
+    }
+
+    public class DateTimeConverter : JsonConverter<DateTime>
+    {
+        private readonly string _format = "yyyy-MM-dd HH:mm:ss";
+
+        public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        {
+            return DateTime.ParseExact(reader.GetString(), _format, null);
+        }
+
+        public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
+        {
+            writer.WriteStringValue(value.ToString(_format));
+        }
+    }
+
+    public class TypeConverterJsonConverter : JsonConverter<object>
+    {
+        public override bool CanConvert(Type objectType)
+        {
+            // 检查是否存在能够转换到字符串和从字符串转换回来的 TypeConverter
+            TypeConverter converter = TypeDescriptor.GetConverter(objectType);
+            return converter != null && converter.CanConvertFrom(typeof(string)) && converter.CanConvertTo(typeof(string));
+        }
+
+        public override object Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        {
+            //Action action = () =>
+            //{
+            //    var converter = TypeDescriptor.GetConverter(value.GetType());
+            //    writer.WriteStringValue(converter.ConvertToInvariantString(value));
+            //};
+
+            //if (value is DispatcherObject dispatcherObject)
+            //{
+            //    if (dispatcherObject.CheckAccess())
+            //    {
+            //        action.Invoke();
+            //    }
+            //    else
+            //    {
+            //        dispatcherObject.Dispatcher.Invoke(() =>
+            //        {
+            //            action.Invoke();
+            //        });
+            //    }
+            //}
+            //else
+            //{
+            //    action.Invoke();
+            //}
+            var converter = TypeDescriptor.GetConverter(typeToConvert);
+            return converter.ConvertFromInvariantString(reader.GetString());
+        }
+
+        public override void Write(Utf8JsonWriter writer, object value, JsonSerializerOptions options)
+        {
+            Action action = () =>
+            {
+                var converter = TypeDescriptor.GetConverter(value.GetType());
+                writer.WriteStringValue(converter.ConvertToInvariantString(value));
+            };
+
+            if (value is DispatcherObject dispatcherObject)
+            {
+                if (dispatcherObject.CheckAccess())
+                {
+                    action.Invoke();
+                }
+                else
+                {
+                    dispatcherObject.Dispatcher.Invoke(() =>
+                    {
+                        action.Invoke();
+                    });
+                }
+            }
+            else
+            {
+                action.Invoke();
+            }
+        }
     }
 }
