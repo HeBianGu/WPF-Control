@@ -53,7 +53,7 @@ namespace H.Services.Serializable
             jsonSerializerOptions.Encoder = JavaScriptEncoder.Create(new TextEncoderSettings(UnicodeRanges.All));
 
             jsonSerializerOptions.Converters.Add(new DateTimeConverter());
-            jsonSerializerOptions.Converters.Add(new TypeConverterJsonConverter());
+            //jsonSerializerOptions.Converters.Add(new TypeConverterJsonConverter());
             return jsonSerializerOptions;
         }
 
