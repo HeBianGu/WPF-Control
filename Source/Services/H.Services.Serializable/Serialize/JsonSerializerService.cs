@@ -109,8 +109,17 @@ namespace H.Services.Serializable
             //{
             //    action.Invoke();
             //}
+            string str = reader.GetString();
+            if (typeToConvert.IsAssignableTo(typeof(DispatcherObject)) && Application.Current?.Dispatcher != null)
+            {
+                return Application.Current.Dispatcher.Invoke(() =>
+                {
+                    var converter = TypeDescriptor.GetConverter(typeToConvert);
+                    return converter.ConvertFromInvariantString(str);
+                });
+            }
             var converter = TypeDescriptor.GetConverter(typeToConvert);
-            return converter.ConvertFromInvariantString(reader.GetString());
+            return converter.ConvertFromInvariantString(str);
         }
 
         public override void Write(Utf8JsonWriter writer, object value, JsonSerializerOptions options)
