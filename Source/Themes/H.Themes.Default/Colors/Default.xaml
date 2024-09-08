@@ -50,7 +50,7 @@
     <!--  使用0.4  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush.Assist, TypeInTargetAssembly={x:Type local:ColorKeys}}">#EAEAEA</Color>
 
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush.Disabled, TypeInTargetAssembly={x:Type local:ColorKeys}}">##FFE0E0E0</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush.Disabled, TypeInTargetAssembly={x:Type local:ColorKeys}}">#FFE0E0E0</Color>
 
     <!--  Accent  -->
     <!--<Color x:Key="{ComponentResourceKey ResourceId=S.Color.Accent.MouseOver.Background, TypeInTargetAssembly={x:Type local:ColorKeys}}" Opacity="0.2" Color="{DynamicResource {x:Static local:SystemKeys.ColorAccent}}" />
