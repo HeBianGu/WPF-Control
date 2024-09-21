@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 
 namespace System.Windows
 {
+
     public static class ElementExtention
     {
         public static void BindCommand(this UIElement @ui, ICommand com, Action<object, ExecutedRoutedEventArgs> call)
