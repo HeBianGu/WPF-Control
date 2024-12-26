@@ -1,0 +1,60 @@
+﻿using H.Extensions.ApplicationBase;
+using H.Modules.Messages.Dialog;
+using H.Modules.Messages.Form;
+using H.Services.Common;
+using H.Themes.Colors.Accent;
+using H.Themes.Colors.Gray;
+using H.Themes.Colors.Purple;
+using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Windows;
+
+namespace H.NugetTemplates.Default;
+/// <summary>
+/// Interaction logic for App.xaml
+/// </summary>
+public partial class App : ApplicationBase
+{
+    protected override void ConfigureServices(IServiceCollection services)
+    {
+        services.AddAbout();
+        services.AddAdornerDialogMessage();
+        //services.AddWindowDialogMessage();
+        services.AddSetting();
+        services.AddSwitchThemeViewPresenter(x =>
+        {
+            x.Dark = new GrayDarkColorResource();
+        });
+        services.AddSingleton<IDialogMessageService, AdornerDialogMessageService>();
+        services.AddSingleton<IFormMessageService, FormMessageService>();
+        services.AddNoticeMessage();
+        services.AddSnackMessage();
+    }
+
+    protected override void Configure(IApplicationBuilder app)
+    {
+        //app.UseSetting(x =>
+        //{
+        //    x.Add(LoginSetting.Instance);
+        //});
+        //app.UseSettingDefault();
+        app.UseTheme(x =>
+        {
+            x.ColorResources.Add(new PurpleDarkColorResource());
+            x.ColorResources.Add(new GrayDarkColorResource());
+            x.ColorResources.Add(new AccentLightColorResource());
+        });
+    }
+
+    protected override Window CreateMainWindow(StartupEventArgs e)
+    {
+        return new MainWindow();
+    }
+
+    protected override void OnSplashScreen(StartupEventArgs e)
+    {
+        base.OnSplashScreen(e);
+
+        SettingDataManager.Instance.Load(null, out string message);
+    }
+}
