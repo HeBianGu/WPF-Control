@@ -26,11 +26,26 @@ namespace H.Services.Common
                             return false;
                         }
                     }
+
+                    {
+                        if (f.IsCancel)
+                            return false;
+                        x.Value = "正在保存系统配置";
+                        var r = SettingDataManager.Instance.Save(out string message);
+                        if (r == false)
+                        {
+                            x.Value = message;
+                            Thread.Sleep(1000);
+                            return false;
+                        }
+                    }
                     return true;
                 }, x => x.DialogButton = DialogButton.Cancel);
                 if (r != true)
                     return;
             }
+
+
         }
 
         public override bool CanExecute(object parameter)
