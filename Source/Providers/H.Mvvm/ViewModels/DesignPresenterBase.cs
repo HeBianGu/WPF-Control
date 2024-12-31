@@ -96,7 +96,7 @@ namespace H.Mvvm
             }
         }
 
-        private Thickness _margin = new Thickness();
+        private Thickness _margin = new Thickness(10,6,10,6);
         [Display(Name = "外部间距", GroupName = "布局")]
         /// <summary> 说明  </summary>
         public Thickness Margin
@@ -109,7 +109,7 @@ namespace H.Mvvm
             }
         }
 
-        private Thickness _padding;
+        private Thickness _padding = new Thickness(10, 6, 10, 6);
         [Display(Name = "内部间距", GroupName = "布局")]
         /// <summary> 说明  </summary>
         public Thickness Padding

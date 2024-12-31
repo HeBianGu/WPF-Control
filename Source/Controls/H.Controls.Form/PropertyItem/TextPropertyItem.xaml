@@ -1,40 +1,48 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:h="https://github.com/HeBianGu"
-                    xmlns:local="clr-namespace:H.Controls.Form">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:h="https://github.com/HeBianGu"
+    xmlns:local="clr-namespace:H.Controls.Form">
     <DataTemplate DataType="{x:Type local:TextPropertyItem}">
-        <TextBox Height="Auto"
-                 MinHeight="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}"
-                 Margin="0,2"
-                 VerticalContentAlignment="Center"
-                 IsReadOnly="{Binding ReadOnly}"
-                 Text="{Binding Value, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                 TextWrapping="{Binding TextWrapping}"
-                 ToolTip="{Binding Message}" />
+        <TextBox
+            Height="Auto"
+            MinHeight="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}"
+            Margin="0,1"
+            VerticalContentAlignment="Center"
+            IsReadOnly="{Binding ReadOnly}"
+            Text="{Binding Value, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            TextWrapping="{Binding TextWrapping}"
+            ToolTip="{Binding Message}" />
     </DataTemplate>
 
 
     <DataTemplate DataType="{x:Type local:ClearPathTextPropertyItem}">
         <BulletDecorator>
             <BulletDecorator.Bullet>
-                <TextBox IsReadOnly="{Binding ReadOnly, Converter={x:Static h:Converter.GetTrueToFalse}}"
-                         Text="{Binding Value, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+                <TextBox
+                    Margin="0,1"
+                    IsReadOnly="{Binding ReadOnly, Converter={x:Static h:Converter.GetTrueToFalse}}"
+                    Text="{Binding Value, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
             </BulletDecorator.Bullet>
-            <Button Width="auto"
-                    Command="{Binding ClearCommand}"
-                    Content="清空" />
+            <Button
+                Width="auto"
+                Command="{Binding ClearCommand}"
+                Content="清空" />
         </BulletDecorator>
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type local:OpenPathTextPropertyItem}">
         <BulletDecorator>
             <BulletDecorator.Bullet>
-                <TextBox IsReadOnly="{Binding ReadOnly, Converter={x:Static h:Converter.GetTrueToFalse}}"
-                         Text="{Binding Value, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+                <TextBox
+                    Margin="0,1"
+                    IsReadOnly="{Binding ReadOnly, Converter={x:Static h:Converter.GetTrueToFalse}}"
+                    Text="{Binding Value, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
             </BulletDecorator.Bullet>
-            <Button Width="auto"
-                    Command="{Binding OpenCommand}"
-                    Content="打开" />
+            <Button
+                Width="auto"
+                Command="{Binding OpenCommand}"
+                Content="打开" />
         </BulletDecorator>
     </DataTemplate>
 
@@ -45,16 +53,20 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <TextBox IsReadOnly="{Binding ReadOnly, Converter={x:Static h:Converter.GetTrueToFalse}}"
-                     Text="{Binding Value, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
-            <Button Grid.Column="1"
-                    Width="Auto"
-                    Command="{Binding ClearCommand}"
-                    Content="清空" />
-            <Button Grid.Column="2"
-                    Width="Auto"
-                    Command="{Binding OpenCommand}"
-                    Content="打开" />
+            <TextBox
+                Margin="0,1"
+                IsReadOnly="{Binding ReadOnly, Converter={x:Static h:Converter.GetTrueToFalse}}"
+                Text="{Binding Value, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+            <Button
+                Grid.Column="1"
+                Width="Auto"
+                Command="{Binding ClearCommand}"
+                Content="清空" />
+            <Button
+                Grid.Column="2"
+                Width="Auto"
+                Command="{Binding OpenCommand}"
+                Content="打开" />
         </Grid>
     </DataTemplate>
 

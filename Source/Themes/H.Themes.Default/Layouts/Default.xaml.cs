@@ -10,6 +10,10 @@ namespace H.Themes.Default
         public static ComponentResourceKey ItemHeight => new ComponentResourceKey(typeof(LayoutKeys), "S.Layout.ItemHeight");
         public static ComponentResourceKey WindowCaptionHeight => new ComponentResourceKey(typeof(LayoutKeys), "S.Layout.WindowCaptionHeight");
         public static ComponentResourceKey CornerRadius => new ComponentResourceKey(typeof(LayoutKeys), "S.Layout.CornerRadius");
+
+        public static ComponentResourceKey Padding => new ComponentResourceKey(typeof(LayoutKeys), "S.Layout.Padding");
+
+        public static ComponentResourceKey Margin => new ComponentResourceKey(typeof(LayoutKeys), "S.Layout.Margin");
     }
 
     //public class SystemParametersExtension : MarkupExtension

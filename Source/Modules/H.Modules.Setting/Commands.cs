@@ -17,6 +17,8 @@ namespace H.Modules.Setting
             {
                 x.Width = 800;
                 x.Height = 500;
+                x.HorizontalContentAlignment = HorizontalAlignment.Stretch;
+                x.VerticalContentAlignment = VerticalAlignment.Stretch;
                 x.DialogButton = DialogButton.None;
                 if (x is Window window)
                 {

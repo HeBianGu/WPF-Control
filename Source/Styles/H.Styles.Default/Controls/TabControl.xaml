@@ -107,7 +107,7 @@
         TargetType="{x:Type TabItem}">
         <Setter Property="Height" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
-        <Setter Property="Padding" Value="5,2,0,2" />
+        <Setter Property="Padding" Value="5,0" />
         <Setter Property="Background">
             <Setter.Value>
                 <SolidColorBrush Color="Transparent" />

@@ -65,7 +65,8 @@ namespace H.Services.Serializable
 
         public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            return DateTime.ParseExact(reader.GetString(), _format, null);
+            var r= DateTime.TryParseExact(reader.GetString(), _format, null,System.Globalization.DateTimeStyles.None,out DateTime dateTime);
+            return dateTime;
         }
 
         public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
