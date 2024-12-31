@@ -17,7 +17,7 @@ namespace H.Modules.Messages.Dialog
             this.Presenter = presenter;
             this.HorizontalContentAlignment = HorizontalAlignment.Center;
             this.VerticalContentAlignment = VerticalAlignment.Center;
-            this.Padding = new Thickness(20);
+            this.Padding = new Thickness(10,6,10,6);
         }
         public string Title { get; set; } = "提示";
         public object Presenter { get; set; }
