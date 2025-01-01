@@ -47,7 +47,7 @@
 
                             <h:NavigationBox.ItemTemplate>
                                 <DataTemplate DataType="{x:Type h:ISettable}">
-                                    <GroupBox BorderBrush="Transparent" Header="{Binding}">
+                                    <GroupBox Header="{Binding}">
                                         <GroupBox.HeaderTemplate>
                                             <DataTemplate>
                                                 <DockPanel>
