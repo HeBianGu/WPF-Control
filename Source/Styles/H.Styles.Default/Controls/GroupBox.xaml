@@ -14,6 +14,8 @@
             </Setter.Value>
         </Setter>
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.CaptionBackground}}" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         <Setter Property="Cattach.CaptionBackground">
             <Setter.Value>
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />
@@ -27,6 +29,13 @@
         <Setter Property="Cattach.CaptionHeight" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
         <Setter Property="Cattach.CaptionCornerRadius" Value="2,2,0,0" />
         <Setter Property="Cattach.CornerRadius" Value="0,0,2,2" />
+        <Setter Property="Cattach.CaptionHorizontalAlignment" Value="Stretch" />
+        <Setter Property="Cattach.CaptionVerticalAlignment" Value="Center" />
+        <Setter Property="Cattach.CaptionBorderBrush" Value="{x:Null}" />
+        <Setter Property="Cattach.CaptionBorderThickness" Value="0" />
+        <Setter Property="Cattach.CaptionFontSize" Value="{DynamicResource {x:Static FontSizeKeys.Default}}" />
+        <Setter Property="Cattach.CaptionMargin" Value="5 0" />
+
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="GroupBox">
@@ -35,36 +44,22 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
-                        <Border
-                            Grid.Row="0"
-                            Height="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionHeight)}"
-                            Background="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionBackground)}"
-                            BorderBrush="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionBorderBrush)}"
-                            BorderThickness="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionBorderThickness)}"
-                            CornerRadius="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionCornerRadius)}">
+                        <Border Grid.Row="0" Style="{StaticResource S.Border.Caption}">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <ContentPresenter
-                                    Margin="4,0"
                                     VerticalAlignment="Center"
                                     ContentSource="Header"
                                     RecognizesAccessKey="True"
                                     TextElement.Foreground="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionForeground)}" />
                                 <Control Grid.Column="2" Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionRightTemplate)}" />
                             </Grid>
-
                         </Border>
-
-                        <Border
-                            Grid.Row="1"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            CornerRadius="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CornerRadius)}">
-                            <ContentPresenter Margin="{TemplateBinding Padding}" />
+                        <Border Grid.Row="1" Style="{StaticResource S.Border.TemplatedParent}">
+                            <ContentPresenter Style="{StaticResource S.ContentPresenter.TemplatedParent}" />
                         </Border>
                     </Grid>
                 </ControlTemplate>

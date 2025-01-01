@@ -9,6 +9,7 @@
     <Style x:Key="{ComponentResourceKey ResourceId=S.Menu.Default, TypeInTargetAssembly={x:Type local:MenuKeys}}" TargetType="{x:Type Menu}">
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Cattach.ItemMinWidth" Value="100" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Menu}">

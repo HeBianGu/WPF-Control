@@ -34,10 +34,7 @@
                                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
                             </Rectangle.Fill>
                         </Rectangle>
-                        <Border
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}" />
+                        <Border Style="{StaticResource S.Border.TemplatedParent}" />
                         <Rectangle
                             x:Name="HighlightBackground"
                             Opacity="0"
@@ -495,6 +492,7 @@
 
     <Style x:Key="CalendarItemStyle" TargetType="{x:Type CalendarItem}">
         <Setter Property="Margin" Value="0,3,0,3" />
+        <Setter Property="Cattach.CornerRadius" Value="2" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type CalendarItem}">
@@ -518,16 +516,11 @@
                         <Grid.Resources>
                             <SolidColorBrush x:Key="DisabledColor" Color="{DynamicResource {x:Static ColorKeys.BackgroundDisabled}}" />
                         </Grid.Resources>
-                        <Border
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            CornerRadius="1">
+                        <Border Style="{StaticResource S.Border.TemplatedParent}">
                             <Border
                                 BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                                 BorderThickness="1"
                                 CornerRadius="1">
-
                                 <Grid>
                                     <Grid.Resources />
                                     <Grid.ColumnDefinitions>
@@ -673,7 +666,6 @@
             </Setter.Value>
         </Setter>
         <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
-
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Template">

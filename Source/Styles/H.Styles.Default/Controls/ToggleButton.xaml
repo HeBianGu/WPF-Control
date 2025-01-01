@@ -93,15 +93,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
-                    <Border
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
-                        <ContentPresenter
-                            Margin="{TemplateBinding Padding}"
-                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                            RecognizesAccessKey="True" />
+                    <Border Style="{StaticResource S.Border.TemplatedParent}">
+                        <ContentPresenter RecognizesAccessKey="True" Style="{StaticResource S.ContentPresenter.TemplatedParent}" />
                     </Border>
 
                 </ControlTemplate>
@@ -171,17 +164,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
-                    <Border
-                        x:Name="Border"
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
-                        <Path
-                            Margin="{TemplateBinding Padding}"
-                            Data="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Content}"
-                            Fill="{TemplateBinding Foreground}"
-                            Stretch="Uniform"
-                            Stroke="{TemplateBinding Foreground}" />
+                    <Border x:Name="Border" Style="{StaticResource S.Border.TemplatedParent}">
+                        <Path Style="{StaticResource S.Path.Geometry}" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

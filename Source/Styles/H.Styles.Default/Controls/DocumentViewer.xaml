@@ -7,7 +7,6 @@
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
     <Style x:Key="{ComponentResourceKey ResourceId=S.DocumentViewer.Default, TypeInTargetAssembly={x:Type local:DocumentViewerKeys}}" TargetType="{x:Type DocumentViewer}">
-
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
         <Setter Property="Background">
@@ -20,11 +19,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DocumentViewer}">
-                    <Border
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        Focusable="False">
+                    <Border Focusable="False" Style="{StaticResource S.Border.TemplatedParent}">
                         <Grid KeyboardNavigation.TabNavigation="Local">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
@@ -87,5 +82,4 @@
         </Setter>
     </Style>
     <Style BasedOn="{StaticResource {x:Static local:DocumentViewerKeys.Default}}" TargetType="DocumentViewer" />
-
 </ResourceDictionary>

@@ -45,20 +45,13 @@
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.MouseOver}}" />
         <Setter Property="Cattach.CornerRadius" Value="2" />
         <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CornerRadius)}"
-                        TextBlock.Foreground="{TemplateBinding Foreground}">
-                        <ContentPresenter
-                            Margin="{TemplateBinding Padding}"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            RecognizesAccessKey="True" />
+                    <Border Style="{StaticResource S.Border.TemplatedParent}" TextBlock.Foreground="{TemplateBinding Foreground}">
+                        <ContentPresenter RecognizesAccessKey="True" Style="{StaticResource S.ContentPresenter.TemplatedParent}" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
@@ -102,17 +95,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CornerRadius)}"
-                        TextBlock.Foreground="{TemplateBinding Foreground}">
-                        <ContentPresenter
-                            Margin="{TemplateBinding Padding}"
-                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                            RecognizesAccessKey="True" />
+                    <Border Style="{StaticResource S.Border.TemplatedParent}" TextBlock.Foreground="{TemplateBinding Foreground}">
+                        <ContentPresenter RecognizesAccessKey="True" Style="{StaticResource S.ContentPresenter.TemplatedParent}" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
@@ -136,18 +120,14 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CornerRadius)}"
-                        TextBlock.Foreground="{TemplateBinding Foreground}">
-                        <Path
+                    <Border Style="{StaticResource S.Border.TemplatedParent}" TextBlock.Foreground="{TemplateBinding Foreground}">
+                        <!--<Path
                             Margin="{TemplateBinding Padding}"
                             Data="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Content}"
                             Fill="{TemplateBinding Foreground}"
                             Stretch="Uniform"
-                            Stroke="{TemplateBinding Foreground}" />
+                            Stroke="{TemplateBinding Foreground}" />-->
+                        <Path Style="{StaticResource S.Path.Geometry}" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

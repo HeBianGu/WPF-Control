@@ -12,13 +12,34 @@
             </Setter.Value>
         </Setter>-->
         <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
+        <Setter Property="Cattach.CornerRadius" Value="2" />
     </Style>
 
     <Style x:Key="S.Border.TemplatedParent" TargetType="{x:Type Border}">
+        <!--<Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Margin}" />-->
         <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Background}" />
         <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=BorderBrush}" />
         <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=BorderThickness}" />
         <Setter Property="CornerRadius" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CornerRadius)}" />
+    </Style>
+
+    <Style x:Key="S.ContentPresenter.TemplatedParent" TargetType="{x:Type ContentPresenter}">
+        <Setter Property="HorizontalAlignment" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=HorizontalContentAlignment}" />
+        <Setter Property="VerticalAlignment" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=VerticalContentAlignment}" />
+        <Setter Property="Margin" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Padding}" />
+    </Style>
+
+    <Style x:Key="S.Border.Caption" TargetType="{x:Type Border}">
+        <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionBackground)}" />
+        <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionBorderBrush)}" />
+        <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionBorderThickness)}" />
+        <Setter Property="CornerRadius" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionCornerRadius)}" />
+        <Setter Property="TextBlock.FontSize" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionFontSize)}" />
+        <Setter Property="TextBlock.Foreground" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionForeground)}" />
+        <Setter Property="Height" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionHeight)}" />
+        <Setter Property="HorizontalAlignment" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionHorizontalAlignment)}" />
+        <Setter Property="VerticalAlignment" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionVerticalAlignment)}" />
+        <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionMargin)}" />
     </Style>
 
     <Style x:Key="S.Border.Title" TargetType="{x:Type Border}">
@@ -84,5 +105,13 @@
                 <Setter Property="Visibility" Value="Collapsed" />
             </DataTrigger>
         </Style.Triggers>
+    </Style>
+
+    <Style x:Key="S.Path.Geometry" TargetType="{x:Type Path}">
+        <Setter Property="Margin" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Padding}" />
+        <Setter Property="Data" Value="{Binding RelativeSource={RelativeSource AncestorType=ContentControl}, Path=Content}" />
+        <Setter Property="Stretch" Value="Uniform" />
+        <Setter Property="Stroke" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Foreground}" />
+        <Setter Property="Fill" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Foreground}" />
     </Style>
 </ResourceDictionary>

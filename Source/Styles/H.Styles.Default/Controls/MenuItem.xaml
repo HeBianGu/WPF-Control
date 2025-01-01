@@ -122,7 +122,7 @@
         <Border x:Name="Border" Background="Transparent">
             <Grid>
                 <ContentPresenter
-                    Margin="6,3,6,3"
+                    Margin="5,0"
                     VerticalAlignment="Center"
                     ContentSource="Header"
                     RecognizesAccessKey="True" />
@@ -175,8 +175,8 @@
                 </Setter>
             </Trigger>
             <Trigger SourceName="Popup" Property="AllowsTransparency" Value="True">
-                <Setter TargetName="SubmenuBorder" Property="CornerRadius" Value="0,0,4,4" />
-                <Setter TargetName="SubmenuBorder" Property="Padding" Value="0,0,0,3" />
+                <Setter TargetName="SubmenuBorder" Property="CornerRadius" Value="1" />
+                <Setter TargetName="SubmenuBorder" Property="Padding" Value="1" />
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Opacity" Value="0.6" />
@@ -189,7 +189,7 @@
         <Border x:Name="Border">
             <Grid Background="Transparent">
                 <ContentPresenter
-                    Margin="6,3,6,3"
+                    Margin="5,0"
                     VerticalAlignment="Center"
                     ContentSource="Header"
                     RecognizesAccessKey="True" />
@@ -221,14 +221,14 @@
                 </Grid.ColumnDefinitions>
                 <ContentPresenter
                     x:Name="Icon"
-                    Margin="6,0,6,0"
+                    Margin="5,0"
                     VerticalAlignment="Center"
                     ContentSource="Icon" />
                 <Border
                     x:Name="Check"
                     Width="13"
                     Height="13"
-                    Margin="6,0,6,0"
+                    Margin="5,0"
                     BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                     BorderThickness="1"
                     Visibility="Collapsed">
@@ -305,7 +305,7 @@
                 </Grid.ColumnDefinitions>
                 <ContentPresenter
                     x:Name="Icon"
-                    Margin="6,0,6,0"
+                    Margin="5,0"
                     VerticalAlignment="Center"
                     ContentSource="Icon" />
                 <ContentPresenter
@@ -388,8 +388,8 @@
                 </Setter>
             </Trigger>
             <Trigger SourceName="Popup" Property="AllowsTransparency" Value="True">
-                <Setter TargetName="SubmenuBorder" Property="CornerRadius" Value="4" />
-                <Setter TargetName="SubmenuBorder" Property="Padding" Value="0,3,0,3" />
+                <Setter TargetName="SubmenuBorder" Property="CornerRadius" Value="1" />
+                <Setter TargetName="SubmenuBorder" Property="Padding" Value="1" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
@@ -401,6 +401,7 @@
         BasedOn="{StaticResource S.Control.Base}"
         TargetType="{x:Type MenuItem}">
         <!--<Setter Property="OverridesDefaultStyle" Value="True" />-->
+        <Setter Property="Cattach.ItemMinWidth" Value="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl}, Path=(Cattach.ItemMinWidth)}" />
         <Style.Triggers>
             <Trigger Property="Role" Value="TopLevelHeader">
                 <Setter Property="Template" Value="{StaticResource {x:Static MenuItem.TopLevelHeaderTemplateKey}}" />
@@ -411,9 +412,11 @@
             </Trigger>
             <Trigger Property="Role" Value="SubmenuHeader">
                 <Setter Property="Template" Value="{StaticResource {x:Static MenuItem.SubmenuHeaderTemplateKey}}" />
+                <Setter Property="MinWidth" Value="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl}, Path=(Cattach.ItemMinWidth)}" />
             </Trigger>
             <Trigger Property="Role" Value="SubmenuItem">
                 <Setter Property="Template" Value="{StaticResource {x:Static MenuItem.SubmenuItemTemplateKey}}" />
+                <Setter Property="MinWidth" Value="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl}, Path=(Cattach.ItemMinWidth)}" />
             </Trigger>
             <Trigger Property="IsEnabled" Value="false">
                 <Setter Property="Opacity" Value="0.5" />

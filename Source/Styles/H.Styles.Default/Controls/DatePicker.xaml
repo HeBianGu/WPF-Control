@@ -38,12 +38,8 @@
                 <ControlTemplate TargetType="{x:Type TextBoxBase}">
                     <Border
                         Name="Border"
-                        Padding="0"
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="2">
-                        <ScrollViewer x:Name="PART_ContentHost" Margin="0" />
+                         Style="{StaticResource S.Border.TemplatedParent}">
+                        <ScrollViewer x:Name="PART_ContentHost" Margin="{TemplateBinding Padding}" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
