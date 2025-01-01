@@ -88,7 +88,7 @@
                                          Tag="1" />
 
                             <TextBlock Name="PART_TextBlockLeft"
-                                       Margin="10,0"
+                                       Margin="5,0"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"
                                        Text="..." />
@@ -97,7 +97,7 @@
                                         Orientation="Horizontal" />
 
                             <TextBlock Name="PART_TextBlockRight"
-                                       Margin="10,0"
+                                       Margin="5,0"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"
                                        Text="..." />

@@ -172,7 +172,7 @@
                                 <ContentPresenter x:Name="PART_TitleHost"
                                                   MinWidth="75"
                                                   MinHeight="{DynamicResource {x:Static LayoutKeys.ItemHeight}}"
-                                                  Margin="10,0"
+                                                  Margin="5,0"
                                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                                   ContentSource="Title"
                                                   ContentTemplate="{TemplateBinding TitleTemplate}"

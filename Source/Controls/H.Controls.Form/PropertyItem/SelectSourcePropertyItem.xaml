@@ -16,7 +16,7 @@
                 <DockPanel>
                     <ComboBox
                         x:Name="cbx"
-                        Margin="0,1"
+                        Margin="0,0,0,1"
                         DockPanel.Dock="Top"
                         ItemsSource="{Binding Collection}"
                         SelectedItem="{Binding Value}"
@@ -80,7 +80,7 @@
     <DataTemplate DataType="{x:Type local:ComboBoxSelectSourcePropertyItem}">
         <DockPanel>
             <ComboBox
-                Margin="0,1"
+                Margin="0,0,0,1"
                 DockPanel.Dock="Top"
                 ItemsSource="{Binding Collection}"
                 SelectedItem="{Binding Value}" />
@@ -90,7 +90,7 @@
 
     <DataTemplate DataType="{x:Type local:OnlyComboBoxSelectSourcePropertyItem}">
         <ComboBox
-            Margin="0,1"
+            Margin="0,0,0,1"
             ItemsSource="{Binding Collection}"
             SelectedItem="{Binding Value}" />
     </DataTemplate>

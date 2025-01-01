@@ -261,7 +261,7 @@
     <Style x:Key="{x:Type RibbonTabHeader}"
            TargetType="{x:Type RibbonTabHeader}">
         <Setter Property="Margin" Value="0,0,0,0" />
-        <Setter Property="Padding" Value="10,0" />
+        <Setter Property="Padding" Value="5,0" />
         <Setter Property="MinHeight" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
         <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Self}, Path=Ribbon.Background}" />
         <Setter Property="BorderBrush" Value="Transparent" />

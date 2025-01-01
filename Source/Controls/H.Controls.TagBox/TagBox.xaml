@@ -45,7 +45,7 @@
                                         BorderBrush="{TemplateBinding BorderBrush}"
                                         BorderThickness="{TemplateBinding BorderThickness}"
                                         SnapsToDevicePixels="true">
-                                    <DockPanel Margin="10,0">
+                                    <DockPanel Margin="5,0">
                                         <CheckBox IsChecked="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}, Path=IsSelected}"
                                                   IsHitTestVisible="False"
                                                   Style="{DynamicResource {x:Static h:CheckBoxKeys.Default}}" />

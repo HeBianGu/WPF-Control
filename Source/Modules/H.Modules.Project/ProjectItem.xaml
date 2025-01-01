@@ -16,7 +16,7 @@
                 <Grid>
 
                     <TextBlock Text="{Binding Title}" />
-                    <TextBlock Margin="10,0"
+                    <TextBlock Margin="5,0"
                                HorizontalAlignment="Right"
                                VerticalAlignment="Center"
                                DockPanel.Dock="Right"

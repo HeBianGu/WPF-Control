@@ -34,7 +34,7 @@
         <Setter Property="Cursor" Value="Hand" />
         <!--<Setter Property="OverridesDefaultStyle" Value="true" />-->
         <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}" />
-        <Setter Property="Padding" Value="10,0" />
+        <Setter Property="Padding" Value="5,0" />
         <Setter Property="Margin" Value="0" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.CaptionForeground}}" />
         <Setter Property="Background">

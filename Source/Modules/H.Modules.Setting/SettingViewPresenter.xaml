@@ -47,7 +47,7 @@
 
                             <h:NavigationBox.ItemTemplate>
                                 <DataTemplate DataType="{x:Type h:ISettable}">
-                                    <GroupBox Header="{Binding}">
+                                    <GroupBox Margin="0,0,0,1" Header="{Binding}">
                                         <GroupBox.HeaderTemplate>
                                             <DataTemplate>
                                                 <DockPanel>
@@ -80,7 +80,7 @@
                 </TabControl.ContentTemplate>
                 <TabControl.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Margin="5,0" Text="{Binding Key}" />
+                        <TextBlock Text="{Binding Key}" />
                     </DataTemplate>
                 </TabControl.ItemTemplate>
                 <!--<TabControl.ItemContainerStyle>
@@ -101,7 +101,6 @@
                 Background="Transparent"
                 DockPanel.Dock="Bottom"
                 LastChildFill="False">
-
                 <Button
                     Margin="0"
                     BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"

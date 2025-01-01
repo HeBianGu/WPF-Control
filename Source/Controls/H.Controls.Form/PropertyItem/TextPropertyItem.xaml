@@ -7,7 +7,7 @@
         <TextBox
             Height="Auto"
             MinHeight="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}"
-            Margin="0,1"
+            Margin="0,0,0,1"
             VerticalContentAlignment="Center"
             IsReadOnly="{Binding ReadOnly}"
             Text="{Binding Value, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
@@ -20,7 +20,7 @@
         <BulletDecorator>
             <BulletDecorator.Bullet>
                 <TextBox
-                    Margin="0,1"
+                    Margin="0,0,0,1"
                     IsReadOnly="{Binding ReadOnly, Converter={x:Static h:Converter.GetTrueToFalse}}"
                     Text="{Binding Value, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
             </BulletDecorator.Bullet>
@@ -35,7 +35,7 @@
         <BulletDecorator>
             <BulletDecorator.Bullet>
                 <TextBox
-                    Margin="0,1"
+                    Margin="0,0,0,1"
                     IsReadOnly="{Binding ReadOnly, Converter={x:Static h:Converter.GetTrueToFalse}}"
                     Text="{Binding Value, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
             </BulletDecorator.Bullet>
@@ -54,7 +54,7 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <TextBox
-                Margin="0,1"
+                Margin="0,0,0,1"
                 IsReadOnly="{Binding ReadOnly, Converter={x:Static h:Converter.GetTrueToFalse}}"
                 Text="{Binding Value, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
             <Button

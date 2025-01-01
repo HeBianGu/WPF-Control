@@ -6,7 +6,7 @@
 
     <DataTemplate DataType="{x:Type local:BoolPropertyItem}">
         <CheckBox
-            Margin="0,1"
+            Margin="0,0,0,1"
             Content="{Binding Description}"
             IsChecked="{Binding Value, Mode=TwoWay}"
             IsEnabled="{Binding ReadOnly, Converter={x:Static h:Converter.GetTrueToFalse}}" />
@@ -15,7 +15,7 @@
     <DataTemplate DataType="{x:Type local:BoolNullablePropertyItem}">
         <CheckBox
             Grid.Column="2"
-            Margin="0,1"
+            Margin="0,0,0,1"
             IsChecked="{Binding Value, Mode=TwoWay}"
             IsEnabled="{Binding ReadOnly, Converter={x:Static h:Converter.GetTrueToFalse}}" />
     </DataTemplate>

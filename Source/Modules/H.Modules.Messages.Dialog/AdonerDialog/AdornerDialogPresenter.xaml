@@ -37,7 +37,7 @@
                 <Border Height="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}" CornerRadius="2">
                     <Grid>
                         <TextBlock
-                            Margin="10,0"
+                            Margin="5,0"
                             VerticalAlignment="Center"
                             Text="{Binding Title}" />
                         <Button

@@ -5,7 +5,7 @@
     xmlns:local="clr-namespace:H.Controls.Form">
     <DataTemplate DataType="{x:Type local:ComboboxRepositoryPropertyItem}">
         <ComboBox
-            Margin="0,1"
+            Margin="0,0,0,1"
             ItemsSource="{Binding ItemsSource}"
             SelectedItem="{Binding Value}">
             <ComboBox.ItemTemplate>

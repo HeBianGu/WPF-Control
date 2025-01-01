@@ -38,7 +38,8 @@
                 <ControlTemplate TargetType="{x:Type TextBoxBase}">
                     <Border
                         Name="Border"
-                         Style="{StaticResource S.Border.TemplatedParent}">
+                        BorderBrush="Red"
+                        Style="{StaticResource S.Border.TemplatedParent}">
                         <ScrollViewer x:Name="PART_ContentHost" Margin="{TemplateBinding Padding}" />
                     </Border>
                 </ControlTemplate>
@@ -292,21 +293,17 @@
         <Setter Property="IsTodayHighlighted" Value="True" />
         <Setter Property="SelectedDateFormat" Value="Short" />
         <Setter Property="Padding" Value="2" />
-        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <!--  Set CalendarStyle to DatePickerCalendarStyle.  -->
         <Setter Property="CalendarStyle" Value="{StaticResource {x:Type Calendar}}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Background}}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
+        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DatePicker}">
-                    <Border
-                        Padding="{TemplateBinding Padding}"
-                        BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
-                        <Border.Background>
-                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
-                        </Border.Background>
+                    <Border Style="{StaticResource S.Border.TemplatedParent}">
                         <Grid x:Name="PART_Root" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -316,7 +313,7 @@
                                 x:Name="PART_Button"
                                 Grid.Row="0"
                                 Grid.Column="1"
-                                Margin="3,0,3,0"
+                                Margin="2,0,2,0"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Center"
                                 Focusable="False"
@@ -354,7 +351,7 @@
                                     Grid.Column="1"
                                     Width="19"
                                     Height="18"
-                                    Margin="3,0,3,0"
+                                    Margin="2,0,2,0"
                                     RadiusX="1"
                                     RadiusY="1">
                                     <Rectangle.Fill>

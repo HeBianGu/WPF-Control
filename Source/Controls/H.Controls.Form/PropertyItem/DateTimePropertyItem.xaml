@@ -6,7 +6,7 @@
     <DataTemplate DataType="{x:Type local:DateTimePropertyItem}">
         <DatePicker
             Height="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}"
-            Margin="0,1"
+            Margin="0,0,0,1"
             VerticalAlignment="Stretch"
             VerticalContentAlignment="Center"
             IsEnabled="{Binding ReadOnly, Converter={x:Static h:Converter.GetTrueToFalse}}"

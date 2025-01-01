@@ -14,7 +14,7 @@
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="HasDropShadow" Value="True" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Background" Value="{DynamicResource {x:Static ColorKeys.Background}}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Background}}" />
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
         <Setter Property="Padding" Value="5,0" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
@@ -33,7 +33,7 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="HasDropShadow" Value="true">
-                            <Setter TargetName="Border" Property="CornerRadius" Value="4" />
+                            <Setter TargetName="Border" Property="CornerRadius" Value="2" />
                             <Setter TargetName="Border" Property="SnapsToDevicePixels" Value="true" />
                         </Trigger>
                     </ControlTemplate.Triggers>

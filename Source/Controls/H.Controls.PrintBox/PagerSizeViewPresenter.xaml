@@ -10,7 +10,7 @@
                     <TextBlock VerticalAlignment="Center"
                                Text="纸张类型" />
                 </BulletDecorator.Bullet>
-                <ComboBox Margin="10,0"
+                <ComboBox Margin="5,0"
                           h:Cattach.BackgroundColumn="1"
                           h:Cattach.Title="纸张类型"
                           ItemsSource="{Binding Collection}"

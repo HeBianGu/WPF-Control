@@ -145,7 +145,7 @@
                                                Text="{Binding RelativeSource={RelativeSource AncestorType=local:GuideBox}, Path=CurrentIndex}" />
                                 </Border>
 
-                                <TextBlock Margin="10,0"
+                                <TextBlock Margin="5,0"
                                            VerticalAlignment="Center"
                                            DockPanel.Dock="Top"
                                            FontSize="{StaticResource {x:Static h:FontSizeKeys.Header3}}"
