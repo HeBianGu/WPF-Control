@@ -7,21 +7,58 @@ namespace H.Extensions.Attach
 {
     public static partial class Cattach
     {
-        public static double GetOpacity(DependencyObject obj)
+        public static readonly DependencyProperty IconHorizontalAlignmentProperty = DependencyProperty.RegisterAttached(
+    "IconHorizontalAlignment", typeof(HorizontalAlignment), typeof(Cattach), new FrameworkPropertyMetadata(default(HorizontalAlignment), FrameworkPropertyMetadataOptions.Inherits, OnIconHorizontalAlignmentChanged));
+
+        public static HorizontalAlignment GetIconHorizontalAlignment(DependencyObject d)
         {
-            return (double)obj.GetValue(OpacityProperty);
+            return (HorizontalAlignment)d.GetValue(IconHorizontalAlignmentProperty);
         }
 
-        public static void SetOpacity(DependencyObject obj, double value)
+        public static void SetIconHorizontalAlignment(DependencyObject obj, HorizontalAlignment value)
         {
-            obj.SetValue(OpacityProperty, value);
+            obj.SetValue(IconHorizontalAlignmentProperty, value);
+        }
+
+        private static void OnIconHorizontalAlignmentChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args)
+        {
+
+        }
+
+        public static readonly DependencyProperty IconVerticalAlignmentProperty = DependencyProperty.RegisterAttached(
+            "IconVerticalAlignment", typeof(VerticalAlignment), typeof(Cattach), new FrameworkPropertyMetadata(VerticalAlignment.Center, FrameworkPropertyMetadataOptions.Inherits, OnIconVerticalAlignmentChanged));
+
+        public static VerticalAlignment GetIconVerticalAlignment(DependencyObject d)
+        {
+            return (VerticalAlignment)d.GetValue(IconVerticalAlignmentProperty);
+        }
+
+        public static void SetIconVerticalAlignment(DependencyObject obj, VerticalAlignment value)
+        {
+            obj.SetValue(IconVerticalAlignmentProperty, value);
+        }
+
+        private static void OnIconVerticalAlignmentChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args)
+        {
+
         }
 
 
-        public static readonly DependencyProperty OpacityProperty =
-            DependencyProperty.RegisterAttached("Opacity", typeof(double), typeof(Cattach), new PropertyMetadata(1.0, OnOpacityChanged));
+        public static double GetIconOpacity(DependencyObject obj)
+        {
+            return (double)obj.GetValue(IconOpacityProperty);
+        }
 
-        public static void OnOpacityChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void SetIconOpacity(DependencyObject obj, double value)
+        {
+            obj.SetValue(IconOpacityProperty, value);
+        }
+
+
+        public static readonly DependencyProperty IconOpacityProperty =
+            DependencyProperty.RegisterAttached("IconOpacity", typeof(double), typeof(Cattach), new PropertyMetadata(1.0, OnIconOpacityChanged));
+
+        public static void OnIconOpacityChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             DependencyObject control = d;
 
@@ -31,30 +68,18 @@ namespace H.Extensions.Attach
         }
 
         public static readonly DependencyProperty IconProperty = DependencyProperty.RegisterAttached(
-            "Icon", typeof(string), typeof(Cattach), new FrameworkPropertyMetadata(""));
+            "Icon", typeof(object), typeof(Cattach), new FrameworkPropertyMetadata(null));
 
-        public static string GetIcon(DependencyObject d)
+        public static object GetIcon(DependencyObject d)
         {
-            return (string)d.GetValue(IconProperty);
+            return (object)d.GetValue(IconProperty);
         }
 
-        public static void SetIcon(DependencyObject obj, string value)
+        public static void SetIcon(DependencyObject obj, object value)
         {
             obj.SetValue(IconProperty, value);
         }
 
-        public static readonly DependencyProperty FIconChangedProperty = DependencyProperty.RegisterAttached(
-            "FIconChanged", typeof(string), typeof(Cattach), new FrameworkPropertyMetadata(""));
-
-        public static string GetFIconChanged(DependencyObject d)
-        {
-            return (string)d.GetValue(FIconChangedProperty);
-        }
-
-        public static void SetFIconChanged(DependencyObject obj, string value)
-        {
-            obj.SetValue(FIconChangedProperty, value);
-        }
 
         public static readonly DependencyProperty IconSizeProperty = DependencyProperty.RegisterAttached(
             "IconSize", typeof(double), typeof(Cattach), new FrameworkPropertyMetadata(12D));

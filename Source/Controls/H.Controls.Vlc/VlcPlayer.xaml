@@ -171,7 +171,7 @@
                                                 Maximum="0"
                                                 Minimum="0"
                                                 Value="0">
-                                            <h:Cattach.AttachContent>
+                                            <h:Cattach.AttachControlTemplate>
                                                 <ControlTemplate>
                                                     <Grid Margin="0,-80,0,0">
                                                         <Border Height="{DynamicResource {x:Static h:LayoutKeys.RowHeight}}"
@@ -191,7 +191,7 @@
                                                                  Stroke="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
                                                     </Grid>
                                                 </ControlTemplate>
-                                            </h:Cattach.AttachContent>
+                                            </h:Cattach.AttachControlTemplate>
                                         </Slider>
                                     </DockPanel>
                                 </DockPanel>
@@ -571,7 +571,7 @@
                                                 Minimum="0"
 
                                                 Value="0">
-                                            <h:Cattach.AttachContent>
+                                            <h:Cattach.AttachControlTemplate>
                                                 <ControlTemplate>
         -->
         <!--<TextBlock Text="{Binding RelativeSource={RelativeSource Mode=Self},Path=Value,StringFormat=0}"/>-->
@@ -595,7 +595,7 @@
                                                                  Stroke="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
                                                     </Grid>
                                                 </ControlTemplate>
-                                            </h:Cattach.AttachContent>
+                                            </h:Cattach.AttachControlTemplate>
                                         </Slider>
                                     </DockPanel>
                                 </DockPanel>

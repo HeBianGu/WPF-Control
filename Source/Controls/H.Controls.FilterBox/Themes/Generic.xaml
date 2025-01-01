@@ -22,7 +22,7 @@
                       Style="{DynamicResource {x:Static h:ComboBoxKeys.Default}}" />
             <TextBox Style="{DynamicResource {x:Static h:TextBoxKeys.Default}}"
                      Text="{Binding Value}">
-                <!--<h:Cattach.AttachContent>
+                <!--<h:Cattach.AttachControlTemplate>
                     <ControlTemplate>
                         <ToggleButton Margin="2,0"
                                       h:Cattach.CheckedIcon="Aa"
@@ -33,7 +33,7 @@
                                       Style="{DynamicResource {x:Static h:ToggleButtonKeys.Dynamic}}"
                                       ToolTip="忽略大小写" />
                     </ControlTemplate>
-                </h:Cattach.AttachContent>-->
+                </h:Cattach.AttachControlTemplate>-->
             </TextBox>
         </UniformGrid>
 

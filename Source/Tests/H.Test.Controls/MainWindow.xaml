@@ -317,11 +317,44 @@
                 <DataGrid ItemsSource="{h:GetStudents Count=50}" SelectedIndex="0" />
             </TabItem>
             <TabItem Header="TextBox">
-                <StackPanel>
-                    <TextBox Text="12345566" />
-                    <TextBox IsReadOnly="True" Text="12345566" />
-                    <TextBox IsEnabled="False" Text="12345566" />
-                </StackPanel>
+                <TabControl>
+                    <TabItem Header="Default">
+                        <StackPanel>
+                            <TextBox Text="12345566" />
+                            <TextBox IsReadOnly="True" Text="12345566" />
+                            <TextBox IsEnabled="False" Text="12345566" />
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem Header="Attacth">
+                        <StackPanel>
+                            <TextBox Style="{DynamicResource {x:Static TextBoxKeys.Attacth}}" Text="12345566" />
+                            <TextBox
+                                Cattach.Title="Title"
+                                Style="{DynamicResource {x:Static TextBoxKeys.Attacth}}"
+                                Text="12345566" />
+                            <TextBox Style="{DynamicResource {x:Static TextBoxKeys.Attacth}}" Text="12345566">
+                                <Cattach.Attach>
+                                    <Button Height="Auto" Content="Button" />
+                                </Cattach.Attach>
+                            </TextBox>
+
+                            <TextBox
+                                Cattach.Icon="{x:Static Geometrys.Info}"
+                                Style="{DynamicResource {x:Static TextBoxKeys.Attacth}}"
+                                Text="12345566" />
+                            <TextBox
+                                Cattach.Icon="{x:Static Geometrys.Info}"
+                                Cattach.Title="Title"
+                                Style="{DynamicResource {x:Static TextBoxKeys.Attacth}}"
+                                Text="12345566">
+                                <Cattach.Attach>
+                                    <Button Height="Auto" Content="Button" />
+                                </Cattach.Attach>
+                            </TextBox>
+                            <TextBox Style="{DynamicResource {x:Static TextBoxKeys.Delete}}" Text="12345566" />
+                        </StackPanel>
+                    </TabItem>
+                </TabControl>
             </TabItem>
             <TabItem Header="ListBox">
                 <ListBox

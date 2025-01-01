@@ -9,19 +9,42 @@ namespace H.Extensions.Attach
 {
     public static partial class Cattach
     {
-        public static readonly DependencyProperty AttachContentProperty = DependencyProperty.RegisterAttached(
-            "AttachContent", typeof(ControlTemplate), typeof(Cattach), new FrameworkPropertyMetadata(null));
-
-        public static ControlTemplate GetAttachContent(DependencyObject d)
+        public static readonly DependencyProperty AttachProperty = DependencyProperty.RegisterAttached("Attach", typeof(object), typeof(Cattach), new FrameworkPropertyMetadata(false, Attach));
+        public static void SetAttach(DependencyObject dp, object value)
         {
-            return (ControlTemplate)d.GetValue(AttachContentProperty);
+            dp.SetValue(AttachProperty, value);
+        }
+        public static object GetAttach(DependencyObject dp)
+        {
+            return (object)dp.GetValue(AttachProperty);
         }
 
-        public static void SetAttachContent(DependencyObject obj, ControlTemplate value)
+        public static readonly DependencyProperty AttachControlTemplateProperty = DependencyProperty.RegisterAttached(
+            "AttachControlTemplate", typeof(ControlTemplate), typeof(Cattach), new FrameworkPropertyMetadata(null));
+
+        public static ControlTemplate GetAttachControlTemplate(DependencyObject d)
         {
-            obj.SetValue(AttachContentProperty, value);
+            return (ControlTemplate)d.GetValue(AttachControlTemplateProperty);
         }
 
+        public static void SetAttachControlTemplate(DependencyObject obj, ControlTemplate value)
+        {
+            obj.SetValue(AttachControlTemplateProperty, value);
+        }
+
+
+        public static readonly DependencyProperty AttachTemplateProperty = DependencyProperty.RegisterAttached(
+            "AttachTemplate", typeof(DataTemplate), typeof(Cattach), new FrameworkPropertyMetadata(default(DataTemplate), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+
+        public static DataTemplate GetAttachTemplate(DependencyObject d)
+        {
+            return (DataTemplate)d.GetValue(AttachTemplateProperty);
+        }
+
+        public static void SetAttachTemplate(DependencyObject obj, DataTemplate value)
+        {
+            obj.SetValue(AttachTemplateProperty, value);
+        }
 
         public static Brush GetAttachForeground(DependencyObject obj)
         {
@@ -90,12 +113,12 @@ namespace H.Extensions.Attach
 
             Brush o = (Brush)e.OldValue;
         }
-
+        [TypeConverter(typeof(LengthConverter))]
         public static double GetAttachWidth(DependencyObject obj)
         {
             return (double)obj.GetValue(AttachWidthProperty);
         }
-
+        [TypeConverter(typeof(LengthConverter))]
         public static void SetAttachWidth(DependencyObject obj, double value)
         {
             obj.SetValue(AttachWidthProperty, value);
@@ -160,6 +183,21 @@ namespace H.Extensions.Attach
             HorizontalAlignment o = (HorizontalAlignment)e.OldValue;
         }
 
+        public static void SetAttachCornerRaius(DependencyObject obj, CornerRadius value)
+        {
+            obj.SetValue(AttachCornerRaiusProperty, value);
+        }
+        public static readonly DependencyProperty AttachCornerRaiusProperty =
+            DependencyProperty.RegisterAttached("AttachCornerRaius", typeof(CornerRadius), typeof(Cattach), new FrameworkPropertyMetadata(default(CornerRadius), FrameworkPropertyMetadataOptions.Inherits, OnAttachCornerRaiusChanged));
+
+        public static void OnAttachCornerRaiusChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            DependencyObject control = d;
+
+            CornerRadius n = (CornerRadius)e.NewValue;
+
+            CornerRadius o = (CornerRadius)e.OldValue;
+        }
 
         public static VerticalAlignment GetAttachVerticalAlignment(DependencyObject obj)
         {

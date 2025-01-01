@@ -306,18 +306,7 @@ namespace H.Extensions.Attach
           DependencyProperty.RegisterAttached("Password",
           typeof(string), typeof(Cattach),
           new FrameworkPropertyMetadata(string.Empty, OnPasswordPropertyChanged));
-        public static readonly DependencyProperty AttachProperty = DependencyProperty.RegisterAttached("Attach", typeof(bool), typeof(Cattach), new FrameworkPropertyMetadata(false, Attach));
-
         private static readonly DependencyProperty IsUpdatingProperty = DependencyProperty.RegisterAttached("IsUpdating", typeof(bool), typeof(Cattach));
-
-        public static void SetAttach(DependencyObject dp, bool value)
-        {
-            dp.SetValue(AttachProperty, value);
-        }
-        public static bool GetAttach(DependencyObject dp)
-        {
-            return (bool)dp.GetValue(AttachProperty);
-        }
         public static string GetPassword(DependencyObject dp)
         {
             return (string)dp.GetValue(PasswordProperty);
