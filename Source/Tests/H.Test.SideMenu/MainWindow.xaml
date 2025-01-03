@@ -138,6 +138,10 @@
                             </CollectionViewSource>
                         </Grid.Resources>
                         <ListBox Cattach.ItemBorderThickness="0"
+                                 Cattach.ItemHeight="Auto"
+                                 Cattach.ItemHorizontalContentAlignment="Center"
+                                 Cattach.ItemPadding="5"
+                                 Cattach.ItemVerticalContentAlignment="Center"
                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                                  ScrollViewer.VerticalScrollBarVisibility="Disabled"
                                  SelectedItem="{Binding SelectedManager}">
@@ -147,8 +151,9 @@
                                         <DockPanel x:Name="dp_1"
                                                    Margin="-20,0"
                                                    ToolTip="{Binding Name}">
-                                            <TextBlock Margin="0,2,0,0"
+                                            <TextBlock Margin="0,5,0,0"
                                                        HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center"
                                                        DockPanel.Dock="Bottom"
                                                        FontSize="8"
                                                        Text="{Binding Name}" />
@@ -161,7 +166,7 @@
                                                   ToolTip="{Binding Name}" />
                                         </DockPanel>
                                         <TextBlock x:Name="dp_2"
-                                                   Margin="20,0"
+                                                   Margin="5,0"
                                                    Text="{Binding Name}" />
                                     </Grid>
                                     <DataTemplate.Triggers>

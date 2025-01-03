@@ -23,7 +23,7 @@ namespace H.Modules.Messages.Dialog
                 x.VerticalContentAlignment = VerticalAlignment.Center;
                 if (data is StringPresenter)
                 {
-                    x.MinWidth = 300;
+                    x.MinWidth = 400;
                     x.Padding = new Thickness(20);
                 }
                 builder?.Invoke(x);

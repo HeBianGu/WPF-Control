@@ -8,6 +8,7 @@ using System.Windows;
 using System.Xml.Linq;
 using Microsoft.Extensions.DependencyInjection;
 using H.Extensions.ApplicationBase;
+using H.Styles.Default;
 
 namespace H.Test.SideMenu
 {
@@ -28,6 +29,8 @@ namespace H.Test.SideMenu
             {
                 x.Add(AppSetting.Instance);
             });
+
+            app.UseWindowSetting();
         }
 
         protected override Window CreateMainWindow(StartupEventArgs e)
