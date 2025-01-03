@@ -19,7 +19,7 @@
         <!--<Setter Property="MinHeight" Value="20" />-->
         <Setter Property="AllowDrop" Value="true" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Padding" Value="2" />
+        <Setter Property="Padding" Value="2 0" />
         <Setter Property="Cattach.CornerRadius" Value="2" />
         <Setter Property="CaretBrush">
             <Setter.Value>
@@ -75,7 +75,7 @@
                 <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
                 <Setter Property="Background">
                     <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Dark0_1}}" />
                     </Setter.Value>
                 </Setter>
             </Trigger>
@@ -83,7 +83,7 @@
     </Style>
 
     <Style
-        x:Key="{ComponentResourceKey ResourceId=S.TextBox.Attacth,
+        x:Key="{ComponentResourceKey ResourceId=S.TextBox.Attach,
                                      TypeInTargetAssembly={x:Type local:TextBoxKeys}}"
         BasedOn="{StaticResource {x:Static local:TextBoxKeys.Default}}"
         TargetType="{x:Type TextBox}">
@@ -143,7 +143,7 @@
     <Style
         x:Key="{ComponentResourceKey ResourceId=S.TextBox.Delete,
                                      TypeInTargetAssembly={x:Type local:TextBoxKeys}}"
-        BasedOn="{StaticResource {x:Static local:TextBoxKeys.Attacth}}"
+        BasedOn="{StaticResource {x:Static local:TextBoxKeys.Attach}}"
         TargetType="{x:Type TextBox}">
         <Setter Property="Cattach.Attach">
             <Setter.Value>

@@ -8,7 +8,7 @@ namespace H.Styles.Default
     {
         public static ComponentResourceKey Default => new ComponentResourceKey(typeof(TextBoxKeys), "S.TextBox.Default");
 
-        public static ComponentResourceKey Attacth => new ComponentResourceKey(typeof(TextBoxKeys), "S.TextBox.Attacth");
+        public static ComponentResourceKey Attach => new ComponentResourceKey(typeof(TextBoxKeys), "S.TextBox.Attach");
 
         public static ComponentResourceKey Delete => new ComponentResourceKey(typeof(TextBoxKeys), "S.TextBox.Delete");
 
