@@ -11,8 +11,7 @@
             VerticalContentAlignment="Center"
             IsReadOnly="{Binding ReadOnly}"
             Text="{Binding Value, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-            TextWrapping="{Binding TextWrapping}"
-            ToolTip="{Binding Message}" />
+            TextWrapping="{Binding TextWrapping}" />
     </DataTemplate>
 
 

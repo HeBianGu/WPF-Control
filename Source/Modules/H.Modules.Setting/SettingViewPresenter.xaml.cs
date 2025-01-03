@@ -15,7 +15,10 @@ namespace H.Modules.Setting
         public SettingViewPresenter()
         {
             this.Data = SettingDataManager.Instance.Settings?.GroupBy(l => l.GroupName);
+            this.Title = "系统设置";
         }
+
+        public string Title { get; set; }
 
         private IEnumerable<IGrouping<string, ISettable>> _data;
         public IEnumerable<IGrouping<string, ISettable>> Data

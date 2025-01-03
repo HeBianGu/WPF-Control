@@ -1,15 +1,11 @@
 ﻿using H.Extensions.ApplicationBase;
+using H.Modules.Messages.Dialog;
+using H.Services.Common;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 using System.Windows;
 
-namespace H.Test.Mvp
+namespace H.Test.Presenter
 {
     /// <summary>
     /// Interaction logic for App.xaml
@@ -18,15 +14,8 @@ namespace H.Test.Mvp
     {
         protected override void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<IDialogMessageService, AdornerDialogMessageService>();
             services.AddAbout();
-        }
-
-        protected override void Configure(IApplicationBuilder app)
-        {
-            app.UseAbout(x=>
-            {
-                x.ProductName = "设置标题";
-            });
         }
 
         protected override Window CreateMainWindow(StartupEventArgs e)

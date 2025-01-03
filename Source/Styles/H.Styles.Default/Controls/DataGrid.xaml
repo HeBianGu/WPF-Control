@@ -203,7 +203,7 @@
     <Style TargetType="{x:Type DataGridCell}">
         <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=Foreground}" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="Padding" Value="5,0" />
+        <Setter Property="Padding" Value="2,0" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridCell}">
@@ -213,7 +213,9 @@
                         BorderBrush="Transparent"
                         BorderThickness="1"
                         SnapsToDevicePixels="True">
-                        <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Style="{StaticResource S.ContentPresenter.TemplatedParent}" />
+                        <ContentPresenter
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                            Style="{StaticResource S.ContentPresenter.TemplatedParent}" />
                         <!--<VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="FocusStates">
                                 <VisualState x:Name="Unfocused" />
@@ -455,7 +457,7 @@
                 <ControlTemplate TargetType="{x:Type DataGridColumnHeader}">
                     <Grid>
                         <Border x:Name="columnHeaderBorder" Style="{StaticResource S.Border.TemplatedParent}">
-                            <ContentPresenter Style="{StaticResource S.ContentPresenter.TemplatedParent}" />
+                            <ContentPresenter Margin="5,0" Style="{StaticResource S.ContentPresenter.TemplatedParent}" />
                         </Border>
                         <Thumb
                             x:Name="PART_LeftHeaderGripper"

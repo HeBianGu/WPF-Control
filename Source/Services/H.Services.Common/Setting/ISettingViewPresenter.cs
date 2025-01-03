@@ -1,6 +1,6 @@
 ﻿namespace H.Services.Common
 {
-    public interface ISettingViewPresenter
+    public interface ISettingViewPresenter : ITitleable
     {
 
     }

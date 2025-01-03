@@ -1,4 +1,5 @@
 ﻿
+using H.Mvvm;
 using H.Presenters.Common;
 using H.Services.Common;
 using System;
@@ -26,6 +27,13 @@ namespace H.Modules.Messages.Dialog
                     x.MinWidth = 400;
                     x.Padding = new Thickness(20);
                 }
+                if (data is ITitleable titlePresenter)
+                    x.Title = titlePresenter.Title;
+
+                if (presenter is ILayoutable layoutable)
+                    layoutable.CopyTo(x);
+                if (presenter is IDesignPresenterBase designPresenter)
+                    x.CopyFrom(designPresenter);
                 builder?.Invoke(x);
             }, canSumit);
         }
@@ -95,6 +103,28 @@ namespace H.Modules.Messages.Dialog
                 x.MinWidth = 400;
                 build?.Invoke(x);
             });
+        }
+    }
+
+    public static class LayoutableExtension
+    {
+        public static void CopyFrom(this ILayoutable layoutable, IDesignPresenterBase from)
+        {
+            layoutable.HorizontalAlignment = from.HorizontalAlignment;
+            layoutable.VerticalAlignment = from.VerticalAlignment;
+            layoutable.HorizontalContentAlignment = from.HorizontalContentAlignment;
+            layoutable.VerticalContentAlignment = from.VerticalContentAlignment;
+            layoutable.Height = from.Height;
+            layoutable.Width = from.Width;
+            layoutable.Padding = from.Padding;
+            layoutable.Margin = from.Margin;
+            layoutable.MinWidth = from.MinWidth;
+            layoutable.MinHeight = from.MinHeight;
+            layoutable.BorderBrush = from.BorderBrush;
+            layoutable.BorderThickness = from.BorderThickness;
+            layoutable.Background = from.Background;
+            layoutable.IsEnabled = from.IsEnabled;
+            layoutable.Opacity = from.Opacity;
         }
     }
 }

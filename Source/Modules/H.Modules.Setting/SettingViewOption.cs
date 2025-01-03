@@ -12,7 +12,7 @@ namespace H.Modules.Setting
     {
         private Thickness _margin = new Thickness(20);
         [DefaultValue(typeof(Thickness), "20,20,20,20")]
-        [Display(Name = "页面边距")]
+        [Display(Name = "页面边距",Description = "设置页面边距")]
         public Thickness Margin
         {
             get { return _margin; }
@@ -25,7 +25,7 @@ namespace H.Modules.Setting
 
         private bool _usePassword;
         [DefaultValue(false)]
-        [Display(Name = "启用密码")]
+        [Display(Name = "启用密码", Description = "设置是否启用密码，启用后进入设置页面需要输入预设管理员密码")]
         public bool UsePassword
         {
             get { return _usePassword; }
@@ -37,7 +37,7 @@ namespace H.Modules.Setting
 
         private double _titleWidth = 120.0;
         [DefaultValue(120.0)]
-        [Display(Name = "标题宽度")]
+        [Display(Name = "标题宽度", Description = "设置页面标题宽度")]
         public double TitleWidth
         {
             get { return _titleWidth; }
@@ -49,7 +49,7 @@ namespace H.Modules.Setting
 
         private double _navigationTitleWidth = 120.0;
         [DefaultValue(120.0)]
-        [Display(Name = "导航最小宽度")]
+        [Display(Name = "导航最小宽度", Description = "设置页面导航最小宽度")]
         public double NavigationiTitleWidth
         {
             get { return _navigationTitleWidth; }
@@ -62,7 +62,7 @@ namespace H.Modules.Setting
         private double _width = double.NaN;
         [TypeConverter(typeof(LengthConverter))]
         [DefaultValue(double.NaN)]
-        [Display(Name = "页面宽度")]
+        [Display(Name = "页面宽度", Description = "设置页面宽度")]
         public double Width
         {
             get { return _width; }
@@ -75,7 +75,7 @@ namespace H.Modules.Setting
         private double _minWidth = 100;
         [TypeConverter(typeof(LengthConverter))]
         [DefaultValue(100)]
-        [Display(Name = "最小宽度")]
+        [Display(Name = "最小宽度", Description = "设置页面最小宽度")]
         public double MinWidth
         {
             get { return _minWidth; }
@@ -88,7 +88,7 @@ namespace H.Modules.Setting
         private double _height = double.NaN;
         [DefaultValue(double.NaN)]
         [TypeConverter(typeof(LengthConverter))]
-        [Display(Name = "页面高度")]
+        [Display(Name = "页面高度", Description = "设置页面高度")]
         public double Height
         {
             get { return _height; }
@@ -101,7 +101,7 @@ namespace H.Modules.Setting
         private double _minHeight = 100;
         [DefaultValue(100)]
         [TypeConverter(typeof(LengthConverter))]
-        [Display(Name = "最小高度")]
+        [Display(Name = "最小高度", Description = "设置页面最小高度")]
         public double MinHeight
         {
             get { return _minHeight; }

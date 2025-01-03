@@ -41,10 +41,5 @@
         <Setter Property="Padding" Value="{Binding Padding}" />
     </Style>
 
-    <DataTemplate DataType="{x:Type local:ImagePresenter}">
-        <local:DesignBorder>
-            <Image Source="{Binding ImageSource}"
-                   Stretch="{Binding Stretch}" />
-        </local:DesignBorder>
-    </DataTemplate>
+
 </ResourceDictionary>

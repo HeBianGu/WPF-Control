@@ -20,7 +20,7 @@ namespace H.Modules.About
         string FileVersion { get; set; }
         string Privacy { get; set; }
         string ProductDescription { get; set; }
-        string Title { get; set; }
+        string ProductName { get; set; }
         string Trademark { get; set; }
         string Version { get; set; }
         string WebSet { get; set; }
@@ -31,7 +31,7 @@ namespace H.Modules.About
     {
         public AboutViewPresenter()
         {
-            this._title = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyTitleAttribute>()?.Title;
+            this._ProductName = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyTitleAttribute>()?.Title;
             this._productDescription = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyDescriptionAttribute>()?.Description;
             this._company = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyCompanyAttribute>()?.Company;
             this._culture = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyCultureAttribute>()?.Culture;
@@ -40,18 +40,20 @@ namespace H.Modules.About
             this._copyright = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyCopyrightAttribute>()?.Copyright;
             this._version = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyVersionAttribute>()?.Version;
             this._fileVersion = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyFileVersionAttribute>()?.Version;
+            this.Title = "关于";
         }
+        public string Title { get; set; }
 
-        private string _title;
+        private string _ProductName;
         [XmlIgnore]
         [ReadOnly(true)]
         [Display(Name = "产品名称")]
-        public string Title
+        public string ProductName
         {
-            get { return _title; }
+            get { return _ProductName; }
             set
             {
-                _title = value;
+                _ProductName = value;
             }
         }
 

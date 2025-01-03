@@ -7,7 +7,7 @@ namespace H.Services.Common
         public object Presnter { get; set; }
         public override void Execute(object parameter)
         {
-            IocMessage.Dialog.Show(this.Presnter, x =>
+            IocMessage.Dialog.Show(this.Presnter ?? parameter, x =>
             {
                 x.DialogButton = this.DialogButton;
                 x.Title = this.Title;
@@ -15,7 +15,7 @@ namespace H.Services.Common
         }
         public override bool CanExecute(object parameter)
         {
-            return this.Presnter != null;
+            return this.Presnter != null || parameter != null;
         }
     }
 }
