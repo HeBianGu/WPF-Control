@@ -31,11 +31,11 @@
             to.Width = from.Width;
             to.Padding = from.Padding;
             to.Margin = from.Margin;
-            to.MinWidth=from.MinWidth;
-            to.MinHeight=from.MinHeight;
-            to.BorderBrush=from.BorderBrush;
-            to.BorderThickness=from.BorderThickness;
-            to.Background=from.Background;
+            to.MinWidth = from.MinWidth;
+            to.MinHeight = from.MinHeight;
+            to.BorderBrush = from.BorderBrush;
+            to.BorderThickness = from.BorderThickness;
+            to.Background = from.Background;
             to.IsEnabled = from.IsEnabled;
             to.Opacity = from.Opacity;
         }

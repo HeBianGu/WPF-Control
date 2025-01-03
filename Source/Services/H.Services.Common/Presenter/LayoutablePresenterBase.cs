@@ -1,7 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel;
-
-namespace H.Services.Common
+﻿namespace H.Services.Common
 {
     public class LayoutablePresenterBase<T, Interface> : TitleablePresenterBase<T, Interface>, ILayoutable where T : class, Interface, new()
     {
