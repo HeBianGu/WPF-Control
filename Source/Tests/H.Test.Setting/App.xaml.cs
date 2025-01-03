@@ -27,10 +27,11 @@ namespace H.Test.Setting
 
         protected override void Configure(IApplicationBuilder app)
         {
-            app.UseSetting(x =>
+            app.UseSettingDataManager(x =>
             {
                 x.Add(LoginSetting.Instance);
             });
+            app.UseSetting();
             app.UseSettingDefault();
         }
 
@@ -43,7 +44,7 @@ namespace H.Test.Setting
         {
             base.OnSplashScreen(e);
 
-            SettingDataManager.Instance.Load(null,out var message);
+            SettingDataManager.Instance.Load(null, out var message);
         }
     }
 }

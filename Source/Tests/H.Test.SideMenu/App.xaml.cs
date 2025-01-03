@@ -24,7 +24,7 @@ namespace H.Test.SideMenu
 
         protected override void Configure(IApplicationBuilder app)
         {
-            app.UseSetting(x =>
+            app.UseSettingDataManager(x =>
             {
                 x.Add(AppSetting.Instance);
             });

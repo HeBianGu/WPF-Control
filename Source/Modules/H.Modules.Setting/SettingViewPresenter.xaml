@@ -71,7 +71,9 @@
                                                     Text="{Binding Description}" />
                                             </ControlTemplate>
                                         </h:Cattach.CaptionRightTemplate>
-                                        <h:Form ScrollViewer.VerticalScrollBarVisibility="Disabled" SelectObject="{Binding}" />
+                                        <h:Form ScrollViewer.VerticalScrollBarVisibility="Disabled" 
+                                                TitleWidth="{Binding Source={x:Static local:SettingViewOption.Instance},Path=TitleWidth}"
+                                                SelectObject="{Binding}" />
                                     </GroupBox>
                                 </DataTemplate>
                             </h:NavigationBox.ItemTemplate>

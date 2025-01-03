@@ -1049,6 +1049,34 @@ namespace H.Controls.Form
              }));
 
 
+        [TypeConverter(typeof(LengthConverter))]
+        public double TitleWidth
+        {
+            get { return (double)GetValue(TitleWidthProperty); }
+            set { SetValue(TitleWidthProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TitleWidthProperty =
+            DependencyProperty.Register("TitleWidth", typeof(double), typeof(Form), new FrameworkPropertyMetadata(100.0, (d, e) =>
+            {
+                Form control = d as Form;
+
+                if (control == null) return;
+
+                if (e.OldValue is double o)
+                {
+
+                }
+
+                if (e.NewValue is double n)
+                {
+
+                }
+
+            }));
+
+
     }
 
     public partial class Form

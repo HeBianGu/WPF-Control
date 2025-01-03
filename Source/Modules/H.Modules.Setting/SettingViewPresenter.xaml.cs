@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace H.Modules.Setting
 {
-    public class SettingViewPresenter : Ioc<SettingViewPresenter, ISettingViewPresenter>, ISettingViewPresenter, ISettingViewPresenterOption
+    public class SettingViewPresenter : Ioc<SettingViewPresenter, ISettingViewPresenter>, ISettingViewPresenter, ISettingDataManagerOption
     {
         public SettingViewPresenter()
         {
@@ -24,30 +24,6 @@ namespace H.Modules.Setting
             private set
             {
                 _data = value;
-            }
-        }
-
-        private bool _usePassword;
-        [DefaultValue(false)]
-        [Display(Name = "启用密码")]
-        public bool UsePassword
-        {
-            get { return _usePassword; }
-            set
-            {
-                _usePassword = value;
-            }
-        }
-
-        private double _titleWidth = double.NaN;
-        [DefaultValue(double.NaN)]
-        [Display(Name = "标题宽度")]
-        public double TitleWidth
-        {
-            get { return _titleWidth; }
-            set
-            {
-                _titleWidth = value;
             }
         }
 

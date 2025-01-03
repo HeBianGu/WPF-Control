@@ -15,8 +15,13 @@ namespace H.Modules.Setting
             SettingViewPresenter setting = new SettingViewPresenter();
             bool? r = await IocMessage.Dialog.Show(setting, x =>
             {
-                x.Width = 800;
-                x.Height = 500;
+                x.Width = SettingViewOption.Instance.Width;
+                x.Height = SettingViewOption.Instance.Height;
+                x.Margin = SettingViewOption.Instance.Margin;
+                x.MinWidth = SettingViewOption.Instance.MinWidth;
+                x.MinHeight = SettingViewOption.Instance.MinHeight;
+                x.HorizontalAlignment = HorizontalAlignment.Stretch;
+                x.VerticalAlignment = VerticalAlignment.Stretch;
                 x.HorizontalContentAlignment = HorizontalAlignment.Stretch;
                 x.VerticalContentAlignment = VerticalAlignment.Stretch;
                 x.DialogButton = DialogButton.None;

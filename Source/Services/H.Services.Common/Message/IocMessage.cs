@@ -32,6 +32,7 @@ namespace H.Services.Common
                 return await Dialog.Show(message, x =>
                  {
                      x.DialogButton = dialogButton;
+                     x.Padding = new Thickness(40);
                      x.Title = title;
                  });
             }

@@ -77,7 +77,7 @@
         <Setter Property="ItemHeaderTemplate">
             <Setter.Value>
                 <DataTemplate>
-                    <TextBlock Width="100"
+                    <TextBlock Width="{Binding RelativeSource={RelativeSource AncestorType=local:Form},Path=TitleWidth}"
                                Margin="10,6"
                                VerticalAlignment="Center"
                                Text="{Binding}" />
