@@ -213,9 +213,7 @@
                         BorderBrush="Transparent"
                         BorderThickness="1"
                         SnapsToDevicePixels="True">
-                        <ContentPresenter
-                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                            Style="{StaticResource S.ContentPresenter.TemplatedParent}" />
+                        <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Style="{StaticResource S.ContentPresenter.TemplatedParent}" />
                         <!--<VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="FocusStates">
                                 <VisualState x:Name="Unfocused" />
