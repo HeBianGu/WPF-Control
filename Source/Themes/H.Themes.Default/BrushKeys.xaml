@@ -15,7 +15,7 @@
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.CaptionForeground, TypeInTargetAssembly={x:Type local:BrushKeys}}" Color="{DynamicResource {x:Static local:ColorKeys.CaptionForeground}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.TextForeground.Title, TypeInTargetAssembly={x:Type local:BrushKeys}}" Color="{DynamicResource {x:Static local:ColorKeys.ForegroundTitle}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.TextForeground, TypeInTargetAssembly={x:Type local:BrushKeys}}" Color="{DynamicResource {x:Static local:ColorKeys.Foreground}}" />
-    <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.TextForeground.Disabled, TypeInTargetAssembly={x:Type local:BrushKeys}}" Color="{DynamicResource {x:Static local:ColorKeys.ForegroundDisabled}}" />
+    <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.TextForeground.Select, TypeInTargetAssembly={x:Type local:BrushKeys}}" Color="{DynamicResource {x:Static local:ColorKeys.ForegroundSelect}}" />
 
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.TextMouseOver, TypeInTargetAssembly={x:Type local:BrushKeys}}" Color="{DynamicResource {x:Static local:ColorKeys.MouseOver}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.TextSelected, TypeInTargetAssembly={x:Type local:BrushKeys}}" Color="{DynamicResource {x:Static local:ColorKeys.Selected}}" />

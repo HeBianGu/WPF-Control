@@ -130,7 +130,7 @@
                                         <ColorAnimation
                                             Storyboard.TargetName="NormalText"
                                             Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
-                                            To="{DynamicResource {x:Static ColorKeys.ForegroundTitle}}"
+                                            To="{DynamicResource {x:Static ColorKeys.ForegroundSelect}}"
                                             Duration="0" />
                                     </Storyboard>
                                 </VisualState>
@@ -374,7 +374,7 @@
                     Data="M288.75,232.25 L288.75,240.625 L283,236.625 z"
                     Stretch="Fill">
                     <Path.Fill>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionForeground}}" />
                     </Path.Fill>
                 </Path>
             </Grid>
@@ -418,7 +418,7 @@
                     Data="M282.875,231.875 L282.875,240.375 L288.625,236 z"
                     Stretch="Fill">
                     <Path.Fill>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionForeground}}" />
                     </Path.Fill>
                 </Path>
             </Grid>
@@ -459,7 +459,7 @@
                 Content="{TemplateBinding Content}"
                 ContentTemplate="{TemplateBinding ContentTemplate}">
                 <TextElement.Foreground>
-                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
+                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionForeground}}" />
                 </TextElement.Foreground>
             </ContentPresenter>
             <VisualStateManager.VisualStateGroups>

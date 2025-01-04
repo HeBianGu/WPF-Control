@@ -17,7 +17,7 @@ namespace H.Themes.Default
         public static ComponentResourceKey CaptionForeground => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.CaptionForeground");
         public static ComponentResourceKey Foreground => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.TextForeground");
         public static ComponentResourceKey ForegroundTitle => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.TextForeground.Title");
-        public static ComponentResourceKey ForegroundDisabled => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.TextForeground.Disabled");
+        public static ComponentResourceKey ForegroundSelect => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.TextForeground.Select");
 
         #region - Foreground -
 

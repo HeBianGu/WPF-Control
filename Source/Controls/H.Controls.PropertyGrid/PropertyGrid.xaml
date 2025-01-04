@@ -178,7 +178,7 @@
                 <Setter Property="Background" Value="Transparent" />
             </MultiTrigger>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.ForegroundDisabled}}" />
+                <Setter Property="Opacity" Value="0.6" />
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -408,7 +408,8 @@
 
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="Content" Property="Opacity" Value="0.5" />
-                            <Setter TargetName="OuterBorder" Property="TextElement.Foreground" Value="{DynamicResource {x:Static h:BrushKeys.ForegroundDisabled}}" />
+                            <Setter TargetName="OuterBorder" Property="Opacity" Value="0.5" />
+                            <!--<Setter TargetName="OuterBorder" Property="TextElement.Foreground" Value="{DynamicResource {x:Static h:BrushKeys.ForegroundDisabled}}" />-->
                         </Trigger>
 
                         <Trigger Property="IsChecked" Value="True">
@@ -499,7 +500,7 @@
 
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="Content" Property="Opacity" Value="0.5" />
-                            <Setter TargetName="OuterBorder" Property="TextElement.Foreground" Value="{DynamicResource {x:Static h:BrushKeys.ForegroundDisabled}}" />
+                            <!--<Setter TargetName="OuterBorder" Property="TextElement.Foreground" Value="{DynamicResource {x:Static h:BrushKeys.ForegroundDisabled}}" />-->
                         </Trigger>
 
                         <Trigger Property="IsPressed" Value="True">
@@ -870,8 +871,10 @@
                             <Setter TargetName="PART_Name" Property="TextElement.Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter TargetName="PART_ValueContainer" Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.ForegroundDisabled}}" />
-                            <Setter TargetName="_text" Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.ForegroundDisabled}}" />
+                            <!--<Setter TargetName="PART_ValueContainer" Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.ForegroundDisabled}}" />
+                            <Setter TargetName="_text" Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.ForegroundDisabled}}" />-->
+                            <Setter TargetName="PART_ValueContainer" Property="Opacity" Value="0.5" />
+                            <Setter TargetName="_text" Property="Opacity" Value="0.5" />
                         </Trigger>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>

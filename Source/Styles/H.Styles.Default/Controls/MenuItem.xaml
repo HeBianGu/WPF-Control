@@ -172,6 +172,16 @@
                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
                     </Setter.Value>
                 </Setter>
+                <Setter TargetName="Border" Property="TextBlock.Foreground">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundSelect}}" />
+                    </Setter.Value>
+                </Setter>
+                <!--<Setter TargetName="Border" Property="BorderBrush">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrushTitle}}" />
+                    </Setter.Value>
+                </Setter>-->
             </Trigger>
             <Trigger SourceName="Popup" Property="AllowsTransparency" Value="True">
                 <Setter TargetName="SubmenuBorder" Property="CornerRadius" Value="1" />
@@ -196,11 +206,22 @@
         </Border>
         <ControlTemplate.Triggers>
             <Trigger Property="IsHighlighted" Value="true">
+                <Setter TargetName="Border" Property="BorderBrush" Value="Transparent" />
                 <Setter TargetName="Border" Property="Background">
                     <Setter.Value>
                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
                     </Setter.Value>
                 </Setter>
+                <Setter TargetName="Border" Property="TextBlock.Foreground">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundSelect}}" />
+                    </Setter.Value>
+                </Setter>
+                <!--<Setter TargetName="Border" Property="BorderBrush">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrushTitle}}" />
+                    </Setter.Value>
+                </Setter>-->
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
@@ -228,7 +249,7 @@
                     Width="13"
                     Height="13"
                     Margin="5,0"
-                    BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                    BorderBrush="{x:Null}"
                     BorderThickness="1"
                     Visibility="Collapsed">
                     <Border.Background>
@@ -281,11 +302,16 @@
                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
                     </Setter.Value>
                 </Setter>
-                <Setter TargetName="Border" Property="BorderBrush">
+                <Setter TargetName="Border" Property="TextBlock.Foreground">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundSelect}}" />
+                    </Setter.Value>
+                </Setter>
+                <!--<Setter TargetName="Border" Property="BorderBrush">
                     <Setter.Value>
                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrushTitle}}" />
                     </Setter.Value>
-                </Setter>
+                </Setter>-->
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
@@ -321,6 +347,7 @@
                     DockPanel.Dock="Right"
                     Text="{TemplateBinding InputGestureText}" />
                 <Path
+                    x:Name="arrow"
                     Grid.Column="3"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
@@ -328,9 +355,9 @@
                     <Path.Fill>
                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
                     </Path.Fill>
-                    <Path.Stroke>
+                    <!--<Path.Stroke>
                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
-                    </Path.Stroke>
+                    </Path.Stroke>-->
                 </Path>
                 <Popup
                     x:Name="Popup"
@@ -379,11 +406,22 @@
                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
                     </Setter.Value>
                 </Setter>
-                <Setter TargetName="Border" Property="BorderBrush">
+                <Setter TargetName="Border" Property="TextBlock.Foreground">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundSelect}}" />
+                    </Setter.Value>
+                </Setter>
+                <!--<Setter TargetName="Border" Property="BorderBrush">
                     <Setter.Value>
                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrushTitle}}" />
                     </Setter.Value>
+                </Setter>-->
+                <Setter TargetName="arrow" Property="Fill">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundSelect}}" />
+                    </Setter.Value>
                 </Setter>
+
             </Trigger>
             <Trigger SourceName="Popup" Property="AllowsTransparency" Value="True">
                 <Setter TargetName="SubmenuBorder" Property="CornerRadius" Value="1" />

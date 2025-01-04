@@ -19,16 +19,16 @@
         <!--<Setter Property="MinHeight" Value="20" />-->
         <Setter Property="AllowDrop" Value="true" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Padding" Value="2 0" />
+        <Setter Property="Padding" Value="2,0" />
         <Setter Property="Cattach.CornerRadius" Value="2" />
         <Setter Property="CaretBrush">
             <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
+                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundSelect}}" />
             </Setter.Value>
         </Setter>
         <Setter Property="SelectionBrush">
             <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
+                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundSelect}}" />
             </Setter.Value>
         </Setter>
         <Setter Property="Background">
@@ -64,7 +64,7 @@
                 </Setter>
             </Trigger>
             <Trigger Property="IsFocused" Value="true">
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundTitle}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundSelect}}" />
                 <Setter Property="Background">
                     <Setter.Value>
                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
