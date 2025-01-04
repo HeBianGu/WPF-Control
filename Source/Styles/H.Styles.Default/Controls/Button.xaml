@@ -39,10 +39,10 @@
         <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.CaptionForeground}}" />
         <Setter Property="Background">
             <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
+                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />
             </Setter.Value>
         </Setter>
-        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.MouseOver}}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.CaptionBackground}}" />
         <Setter Property="Cattach.CornerRadius" Value="2" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -114,7 +114,7 @@
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="{x:Null}" />
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.CaptionForeground}}" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Cattach.CornerRadius" Value="0" />
         <Setter Property="Template">

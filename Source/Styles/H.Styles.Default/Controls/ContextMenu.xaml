@@ -32,10 +32,9 @@
                             <Border
                                 IsHitTestVisible="False"
                                 Opacity="{Binding Source={x:Static local:WindowSetting.Instance}, Path=Opacity}"
-                                Visibility="{Binding ElementName=ib, Path=ImageSource, Converter={x:Static Converter.GetNullToCollapsed}}">
+                                Visibility="{Binding Source={x:Static local:WindowSetting.Instance}, Path=UseBackImage, Converter={x:Static Converter.GetTrueToVisible}}">
                                 <Border.Background>
                                     <ImageBrush
-                                        x:Name="ib"
                                         ImageSource="{Binding Source={x:Static local:WindowSetting.Instance}, Path=BackImagePath}"
                                         RenderOptions.BitmapScalingMode="LowQuality"
                                         Stretch="{Binding Source={x:Static local:WindowSetting.Instance}, Path=Stretch}" />

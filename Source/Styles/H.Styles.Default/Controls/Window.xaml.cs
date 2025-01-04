@@ -15,7 +15,7 @@ namespace H.Styles.Default
     }
 
     [Display(Name = "窗口设置", GroupName = SettingGroupNames.GroupSystem, Description = "设置窗口参数")]
-    public class WindowSetting : Settable<WindowSetting>
+    public class WindowSetting : Extensions.Setting.Settable<WindowSetting>
     {
         private string _backImagePath;
         [DefaultValue("pack://application:,,,/H.Extensions.BackgroundImage;component/b41.png")]
@@ -29,6 +29,20 @@ namespace H.Styles.Default
                 RaisePropertyChanged();
             }
         }
+
+        private bool _useBackImage;
+        [DefaultValue(true)]
+        [Display(Name = "启用窗口背景图片")]
+        public bool UseBackImage
+        {
+            get { return _useBackImage; }
+            set
+            {
+                _useBackImage = value;
+                RaisePropertyChanged();
+            }
+        }
+
 
         private double _opacity;
         [DefaultValue(0.3)]

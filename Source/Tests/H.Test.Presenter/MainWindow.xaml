@@ -28,7 +28,7 @@
 
         <Button Command="{h:ShowCommand}" Content="CardPresenter">
             <Button.CommandParameter>
-                <CardPresenter />
+                <CardPresenter Width="500" Height="500" />
             </Button.CommandParameter>
         </Button>
 

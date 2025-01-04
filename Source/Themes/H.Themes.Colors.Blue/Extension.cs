@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Windows.Markup;
 
-namespace H.Themes.Colors.Gray
+namespace H.Themes.Colors.Blue
 {
-    public class GrayDarkThemeExtension : MarkupExtension
+    public class BlueDarkThemeExtension : MarkupExtension
     {
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
-            return new GrayDarkColorResource().Resource;
+            return new BlueDarkColorResource().Resource;
         }
     }
 
-    public class GrayLightThemeExtension : MarkupExtension
+    public class BlueLightThemeExtension : MarkupExtension
     {
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
-            return new GrayLightColorResource().Resource;
+            return new BlueLightColorResource().Resource;
         }
     }
 }
