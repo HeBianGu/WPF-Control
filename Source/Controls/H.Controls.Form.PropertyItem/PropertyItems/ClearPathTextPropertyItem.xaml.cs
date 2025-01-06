@@ -2,7 +2,7 @@
 
 using System.Reflection;
 
-namespace H.Controls.Form
+namespace H.Controls.Form.PropertyItem.PropertyItems
 {
     public class ClearPathTextPropertyItem : OpenClearPathTextPropertyItem
     {

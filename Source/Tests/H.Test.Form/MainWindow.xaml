@@ -11,6 +11,13 @@
         Style="{StaticResource {x:Type Window}}"
         mc:Ignorable="d">
     <TabControl>
+        <TabItem Header="FormDemoModel">
+            <h:Form>
+                <h:Form.SelectObject>
+                    <h:FormDemoModel />
+                </h:Form.SelectObject>
+            </h:Form>
+        </TabItem>
         <TabItem Header="Student">
             <h:Form>
                 <h:Form.SelectObject>

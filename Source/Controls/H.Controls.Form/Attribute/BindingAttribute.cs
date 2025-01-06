@@ -23,15 +23,10 @@ namespace H.Controls.Form
         public object GetValue(object obj)
         {
             string[] paths = this.GetPaths();
-
             if (obj == null) return null;
-
             if (paths == null) return null;
-
             if (paths.Length == 1) return obj;
-
             string propertyName = paths[1];
-
             //  ToDo：后面修改未递归兼容多级别
             return obj.GetType().GetProperty(propertyName).GetValue(obj);
         }

@@ -69,7 +69,7 @@ namespace H.Modules.Identity
         [XmlIgnore]
         [Required]
         [Display(Name = "用户角色")]
-        [PropertyItemType(Type = typeof(RoleComboBoxPropertyItem))]
+        [PropertyItem(Type = typeof(RoleComboBoxPropertyItem))]
         public Role Role
         {
             get { return _role; }

@@ -5,7 +5,7 @@ using H.Extensions.DataBase;
 using System.Collections;
 using System.Reflection;
 
-namespace H.Controls.Form
+namespace H.Controls.Form.PropertyItem.PropertyItems
 {
     public class ComboboxRepositoryPropertyItem : ObjectPropertyItem<object>
     {
@@ -20,9 +20,7 @@ namespace H.Controls.Form
             object v = property.GetValue(obj);
 
             if (v == null && source is IList list)
-            {
                 this.Value = list.Count > 0 ? list[0] : null;
-            }
             this.Value = v ?? source;
         }
 

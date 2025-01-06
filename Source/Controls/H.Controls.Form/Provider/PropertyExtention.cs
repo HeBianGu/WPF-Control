@@ -12,7 +12,7 @@ namespace H.Controls.Form
     {
         public static IPropertyItem Create(this PropertyInfo info, object obj)
         {
-            PropertyItemTypeAttribute editor = info.GetCustomAttribute<PropertyItemTypeAttribute>();
+            PropertyItemAttribute editor = info.GetCustomAttribute<PropertyItemAttribute>();
             if (editor?.Type != null)
             {
                 if (typeof(IPropertyItem).IsAssignableFrom(editor.Type))
@@ -166,7 +166,7 @@ namespace H.Controls.Form
 
         public static IPropertyItem CreateView(this PropertyInfo info, object obj)
         {
-            PropertyItemTypeAttribute editor = info.GetCustomAttribute<PropertyItemTypeAttribute>();
+            PropertyItemAttribute editor = info.GetCustomAttribute<PropertyItemAttribute>();
             if (editor?.Type != null)
             {
                 if (typeof(IPropertyViewItem).IsAssignableFrom(editor.Type))

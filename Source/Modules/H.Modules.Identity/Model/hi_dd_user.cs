@@ -146,7 +146,7 @@ namespace H.Modules.Identity
         [Column("role", Order = 9)]
         [DataGridColumn("*", PropertyPath = "{0}.Name")]
         [BindingGetSelectSourceMethod(nameof(GetRoles))]
-        [PropertyItemType(Type = typeof(OnlyComboBoxSelectSourcePropertyItem))]
+        [PropertyItem(typeof(OnlyComboBoxSelectSourcePropertyItem))]
         public virtual hi_dd_role Role
         {
             get { return _role; }

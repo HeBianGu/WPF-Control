@@ -34,7 +34,7 @@ namespace H.Modules.Theme
         [XmlIgnore]
         [JsonIgnore]
         [BindingGetSelectSourceProperty(nameof(ColorResources))]
-        [PropertyItemType(typeof(OnlyComboBoxSelectSourcePropertyItem))]
+        [PropertyItem(typeof(OnlyComboBoxSelectSourcePropertyItem))]
         [Display(Name = "颜色主题")]
         public IColorResource ColorResource { get; set; }
 

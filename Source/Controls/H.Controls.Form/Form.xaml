@@ -80,7 +80,7 @@
             <Setter.Value>
                 <DataTemplate>
                     <TextBlock Width="{Binding RelativeSource={RelativeSource AncestorType=local:Form},Path=TitleWidth}"
-                               Margin="10,6"
+                               Margin="5 0"
                                VerticalAlignment="Center"
                                Text="{Binding}" />
                 </DataTemplate>

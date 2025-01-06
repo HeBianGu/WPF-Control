@@ -318,7 +318,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.NugetTemplates.Default", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Test.Presenter", "..\Source\Tests\H.Test.Presenter\H.Test.Presenter.csproj", "{CA3185BD-51A3-4D22-85D0-8C74CD4CD2EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Themes.Colors.Blue", "..\Source\Themes\H.Themes.Colors.Blue\H.Themes.Colors.Blue.csproj", "{8CDFBA50-8BD4-4F44-92A1-00296DCEA2F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Themes.Colors.Blue", "..\Source\Themes\H.Themes.Colors.Blue\H.Themes.Colors.Blue.csproj", "{8CDFBA50-8BD4-4F44-92A1-00296DCEA2F4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Controls.Form.PropertyItem", "..\Source\Controls\H.Controls.Form.PropertyItem\H.Controls.Form.PropertyItem.csproj", "{DB2E55DD-6BAE-44A9-8A34-39136E02FEC2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -3052,6 +3054,26 @@ Global
 		{8CDFBA50-8BD4-4F44-92A1-00296DCEA2F4}.Release|x64.Build.0 = Release|Any CPU
 		{8CDFBA50-8BD4-4F44-92A1-00296DCEA2F4}.Release|x86.ActiveCfg = Release|Any CPU
 		{8CDFBA50-8BD4-4F44-92A1-00296DCEA2F4}.Release|x86.Build.0 = Release|Any CPU
+		{DB2E55DD-6BAE-44A9-8A34-39136E02FEC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB2E55DD-6BAE-44A9-8A34-39136E02FEC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB2E55DD-6BAE-44A9-8A34-39136E02FEC2}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{DB2E55DD-6BAE-44A9-8A34-39136E02FEC2}.Debug|ARM.Build.0 = Debug|Any CPU
+		{DB2E55DD-6BAE-44A9-8A34-39136E02FEC2}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{DB2E55DD-6BAE-44A9-8A34-39136E02FEC2}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{DB2E55DD-6BAE-44A9-8A34-39136E02FEC2}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{DB2E55DD-6BAE-44A9-8A34-39136E02FEC2}.Debug|x64.Build.0 = Debug|Any CPU
+		{DB2E55DD-6BAE-44A9-8A34-39136E02FEC2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DB2E55DD-6BAE-44A9-8A34-39136E02FEC2}.Debug|x86.Build.0 = Debug|Any CPU
+		{DB2E55DD-6BAE-44A9-8A34-39136E02FEC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB2E55DD-6BAE-44A9-8A34-39136E02FEC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB2E55DD-6BAE-44A9-8A34-39136E02FEC2}.Release|ARM.ActiveCfg = Release|Any CPU
+		{DB2E55DD-6BAE-44A9-8A34-39136E02FEC2}.Release|ARM.Build.0 = Release|Any CPU
+		{DB2E55DD-6BAE-44A9-8A34-39136E02FEC2}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{DB2E55DD-6BAE-44A9-8A34-39136E02FEC2}.Release|ARM64.Build.0 = Release|Any CPU
+		{DB2E55DD-6BAE-44A9-8A34-39136E02FEC2}.Release|x64.ActiveCfg = Release|Any CPU
+		{DB2E55DD-6BAE-44A9-8A34-39136E02FEC2}.Release|x64.Build.0 = Release|Any CPU
+		{DB2E55DD-6BAE-44A9-8A34-39136E02FEC2}.Release|x86.ActiveCfg = Release|Any CPU
+		{DB2E55DD-6BAE-44A9-8A34-39136E02FEC2}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -3195,6 +3217,7 @@ Global
 		{AAD4F312-B1B6-4FC7-B601-3D3146BBAA35} = {395464D5-4164-454F-9BCD-CDB5FF080730}
 		{CA3185BD-51A3-4D22-85D0-8C74CD4CD2EC} = {E2C0B11D-5ED5-4F22-8E56-F68982B6E59B}
 		{8CDFBA50-8BD4-4F44-92A1-00296DCEA2F4} = {64C710EF-95D0-4811-A72E-58B2AC79E2B8}
+		{DB2E55DD-6BAE-44A9-8A34-39136E02FEC2} = {9E63ED70-6F96-4CB2-8B9D-EAEC77D0548E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF825C3D-F4F4-4E62-BBFF-B42A5E81112F}

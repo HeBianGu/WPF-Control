@@ -64,7 +64,7 @@ namespace H.Controls.ScheduleBox
 
         private TimeZoneInfo _timeZoneInfo = TimeZoneInfo.Utc;
         [Display(Name = "时区")]
-        [PropertyItemType(Type = typeof(ComboBoxSelectSourcePropertyItem))]
+        [PropertyItem(Type = typeof(ComboBoxSelectSourcePropertyItem))]
         [BindingGetSelectSourceMethod(nameof(GetTimeZoneInfos))]
         public TimeZoneInfo TimeZoneInfo
         {

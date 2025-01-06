@@ -1,0 +1,39 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:local="clr-namespace:H.Controls.Form.PropertyItem.PropertyItems"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DataTemplate DataType="{x:Type local:BrushPropertyItem}">
+        <!--<h:ComboSelector Grid.Column="2" h:Cattach.UseTitle="False" SelectedItem="{Binding Value, Mode=TwoWay}">
+                <h:ComboSelector.Control>
+                    <ListBox h:Cattach.ItemMinHeight="20"
+                             h:Cattach.ItemPadding="0"
+                             Background="{DynamicResource {x:Static h:BrushKeys.BackgroundDefault}}"
+                             ItemsSource="{h:GetColorMarkup MethodName=GetAvailableColors}"
+                             SelectedItem="{Binding RelativeSource={RelativeSource AncestorType=h:ComboSelector}, Path=SelectedItem, Converter={x:Static h:Converter.GetSolidColorBrushToColor}, Mode=TwoWay}"
+                             Style="{DynamicResource {x:Static h:ListBoxKeys.Clear}}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="8" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Background="Transparent">
+                                    <Border Margin="2" CornerRadius="2" Style="{DynamicResource {x:Static h:BorderKeys.CardBorderBrush}}">
+                                        <Border.Background>
+                                            <SolidColorBrush Color="{Binding}" />
+                                        </Border.Background>
+                                    </Border>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </h:ComboSelector.Control>
+                <h:ComboSelector.SelectedTemplate>
+                    <DataTemplate>
+                        <Border Height="20" Background="{Binding}" />
+                    </DataTemplate>
+                </h:ComboSelector.SelectedTemplate>
+            </h:ComboSelector>-->
+    </DataTemplate>
+
+</ResourceDictionary>

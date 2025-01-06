@@ -5,7 +5,6 @@
     xmlns:local="clr-namespace:H.Controls.Form">
     <DataTemplate DataType="{x:Type local:DateTimePropertyItem}">
         <DatePicker
-            Height="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}"
             Margin="0,0,0,1"
             VerticalAlignment="Stretch"
             VerticalContentAlignment="Center"

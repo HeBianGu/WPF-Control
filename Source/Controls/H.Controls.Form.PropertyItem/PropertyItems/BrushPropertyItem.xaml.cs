@@ -3,7 +3,7 @@
 using System.Reflection;
 using System.Windows.Media;
 
-namespace H.Controls.Form
+namespace H.Controls.Form.PropertyItem.PropertyItems
 {
     public class BrushPropertyItem : ObjectPropertyItem<SolidColorBrush>
     {

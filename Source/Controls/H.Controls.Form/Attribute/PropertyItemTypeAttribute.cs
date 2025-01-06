@@ -5,16 +5,12 @@ using System;
 namespace H.Controls.Form
 {
     [AttributeUsage(AttributeTargets.Property, Inherited = true, AllowMultiple = false)]
-    public class PropertyItemTypeAttribute : Attribute
+    public class PropertyItemAttribute : Attribute
     {
-        public PropertyItemTypeAttribute()
-        {
-
-        }
-        public PropertyItemTypeAttribute(Type type)
+        public PropertyItemAttribute(Type type)
         {
             this.Type = type;
         }
-        public Type Type { get; set; }
+        public Type Type { get; private set; }
     }
 }

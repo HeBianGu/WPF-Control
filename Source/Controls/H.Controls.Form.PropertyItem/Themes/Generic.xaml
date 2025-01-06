@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Controls.Form.PropertyItem">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/PropertyItems/BrushPropertyItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/PropertyItems/ClearPathTextPropertyItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/PropertyItems/ColorPropertyItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/PropertyItems/ComboboxRepositoryPropertyItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/PropertyItems/OpenClearPathTextPropertyItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/PropertyItems/OpenFileDialogPropertyItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/PropertyItems/OpenPathTextPropertyItem.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>
