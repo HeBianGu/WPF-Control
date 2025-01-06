@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -29,7 +30,17 @@ namespace H.Mvvm
             }
             IDAttribute id = type.GetCustomAttribute<IDAttribute>(true);
             this.ID = id?.ID ?? type.Name;
+            this.Commands = new ObservableCollection<ICommand>(this.CreateCommands());
+            LoadDefault();
+        }
+        [Browsable(false)]
+        [JsonIgnore]
+        [XmlIgnore]
+        public ObservableCollection<ICommand> Commands { get; } = new ObservableCollection<ICommand>();
 
+        protected virtual IEnumerable<ICommand> CreateCommands()
+        {
+            var type = this.GetType();
             System.Collections.Generic.IEnumerable<PropertyInfo> cmdps = type.GetProperties().Where(x => typeof(ICommand).IsAssignableFrom(x.PropertyType));
             foreach (PropertyInfo cmdp in cmdps)
             {
@@ -38,14 +49,10 @@ namespace H.Mvvm
                 if (cmdp.GetCustomAttribute<BrowsableAttribute>()?.Browsable == false)
                     continue;
                 ICommand command = cmdp.GetValue(this) as ICommand;
-                this.Commands.Add(command);
+                //this.Commands.Add(command);
+                yield return command;
             }
-            LoadDefault();
         }
-        [Browsable(false)]
-        [JsonIgnore]
-        [XmlIgnore]
-        public ObservableCollection<ICommand> Commands { get; } = new ObservableCollection<ICommand>();
 
         [Browsable(false)]
         [JsonIgnore]

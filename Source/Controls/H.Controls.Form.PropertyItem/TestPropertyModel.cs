@@ -9,5 +9,18 @@ namespace H.Controls.Form.PropertyItem
         [Display(Name = "路径", Description = "演示应用PropertyItemAttribute自定义显示样式")]
         [PropertyItem(typeof(OpenFileDialogPropertyItem))]
         public string Path { get; set; }
+
+        [Display(Name = "路径", Description = "演示应用PropertyItemAttribute自定义显示样式")]
+        [PropertyItem(typeof(OpenDeleteSystemPathTextPropertyItem))]
+        public string Path1 { get; set; }
+
+        [Display(Name = "路径", Description = "演示应用PropertyItemAttribute自定义显示样式")]
+        [PropertyItem(typeof(ClearPathTextPropertyItem))]
+        public string Path2 { get; set; }
+
+        [Display(Name = "路径", Description = "演示应用PropertyItemAttribute自定义显示样式")]
+        [PropertyItem(typeof(OpenSystemPathTextPropertyItem))]
+        public string Path3 { get; set; }
+
     }
 }

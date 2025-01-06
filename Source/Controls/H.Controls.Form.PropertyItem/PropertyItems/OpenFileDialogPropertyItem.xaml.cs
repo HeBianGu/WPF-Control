@@ -2,6 +2,7 @@
 
 
 
+using H.Controls.Form.PropertyItem.PropertyItems.Base;
 using H.Mvvm;
 using Microsoft.Win32;
 using System.ComponentModel.DataAnnotations;
@@ -10,7 +11,7 @@ using System.Reflection;
 
 namespace H.Controls.Form.PropertyItem.PropertyItems
 {
-    public class OpenFileDialogPropertyItem : TextPropertyItem
+    public class OpenFileDialogPropertyItem : CommandsTextPropertyItemBase
     {
         public OpenFileDialogPropertyItem(PropertyInfo property, object obj) : base(property, obj)
         {
@@ -31,7 +32,8 @@ namespace H.Controls.Form.PropertyItem.PropertyItems
             if (openFileDialog.ShowDialog() != true)
                 return;
             this.Value = openFileDialog.FileName;
-        });
+        })
+        { Name = "浏览" };
     }
 
 }

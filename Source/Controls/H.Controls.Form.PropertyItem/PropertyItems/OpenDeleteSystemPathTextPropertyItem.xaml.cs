@@ -1,17 +1,16 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-
-
-
+using H.Controls.Form.PropertyItem.PropertyItems.Base;
 using H.Mvvm;
+using H.Services.Common;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 
 namespace H.Controls.Form.PropertyItem.PropertyItems
 {
-    public class OpenClearPathTextPropertyItem : TextPropertyItem
+    public class OpenDeleteSystemPathTextPropertyItem : CommandsTextPropertyItemBase
     {
-        public OpenClearPathTextPropertyItem(PropertyInfo property, object obj) : base(property, obj)
+        public OpenDeleteSystemPathTextPropertyItem(PropertyInfo property, object obj) : base(property, obj)
         {
 
         }
@@ -19,16 +18,28 @@ namespace H.Controls.Form.PropertyItem.PropertyItems
         public RelayCommand OpenCommand => new RelayCommand(l =>
         {
             Process.Start(new ProcessStartInfo(this.Value) { UseShellExecute = true });
-
-            //Process.Start(this.Value);
         }, l =>
         {
             return File.Exists(this.Value) | Directory.Exists(this.Value);
-        });
+        })
+        { Name = "打开文件" };
 
-
-        public RelayCommand ClearCommand => new RelayCommand(l =>
+        public RelayCommand OpenFolderCommand => new RelayCommand(l =>
         {
+            var folder = System.IO.Path.GetDirectoryName(this.Value);
+            if (Directory.Exists(folder))
+                Process.Start(new ProcessStartInfo(folder) { UseShellExecute = true });
+        }, l =>
+        {
+            return File.Exists(this.Value) | Directory.Exists(this.Value);
+        })
+        { Name = "打开文件夹" };
+
+        public RelayCommand ClearCommand => new RelayCommand(async l =>
+        {
+            var r = await IocMessage.ShowDialogMessage("删除文件无法恢复，确定删除?");
+            if (r != true)
+                return;
             //try
             //{
             if (File.Exists(this.Value))
@@ -47,8 +58,10 @@ namespace H.Controls.Form.PropertyItem.PropertyItems
         }, l =>
         {
             return File.Exists(this.Value) | Directory.Exists(this.Value);
-        });
+        })
+        {
+            Name = "删除"
+        };
 
     }
-
 }
