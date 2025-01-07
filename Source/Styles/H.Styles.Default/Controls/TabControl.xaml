@@ -18,6 +18,7 @@
         <Setter Property="Cattach.CaptionBackground" Value="Transparent" />
         <Setter Property="Cattach.CaptionBorderThickness" Value="0" />
         <Setter Property="Cattach.CaptionMargin" Value="5 0" />
+        <Setter Property="Cattach.CaptionCornerRadius" Value="2" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabControl}">
@@ -113,6 +114,7 @@
         <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=(Cattach.CaptionBackground)}" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="Cattach.CornerRadius" Value="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=(Cattach.CaptionCornerRadius)}" />
         <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=(Cattach.CaptionBorderBrush)}" />
         <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=(Cattach.CaptionBorderThickness)}" />
         <Setter Property="Cattach.CaptionHorizontalAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=(Cattach.CaptionHorizontalAlignment)}" />
@@ -210,6 +212,35 @@
         </Style.Triggers>
     </Style>
 
+
+    <Style
+        x:Key="{ComponentResourceKey ResourceId=S.TabItem.Line,
+                                     TypeInTargetAssembly={x:Type local:TabItemKeys}}"
+        BasedOn="{StaticResource {x:Static local:TabItemKeys.Default}}"
+        TargetType="{x:Type TabItem}">
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=TabControl},Path=TabStripPlacement}" Value="Top">
+                <Setter Property="BorderThickness" Value="0,0,0,2" />
+                <Setter Property="Cattach.CornerRadius" Value="2,2,0,0" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=TabControl},Path=TabStripPlacement}" Value="Bottom">
+                <Setter Property="BorderThickness" Value="0,2,0,0" />
+                <Setter Property="Cattach.CornerRadius" Value="0,0,2,2" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=TabControl},Path=TabStripPlacement}" Value="Left">
+                <Setter Property="BorderThickness" Value="0,0,2,0" />
+                <Setter Property="Cattach.CornerRadius" Value="2,0,0,2" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=TabControl},Path=TabStripPlacement}" Value="Right">
+                <Setter Property="BorderThickness" Value="2,0,0,0" />
+                <Setter Property="Cattach.CornerRadius" Value="0,2,2,0" />
+            </DataTrigger>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.ForegroundSelect}}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
     <Style BasedOn="{StaticResource {x:Static local:TabControlKeys.Default}}" TargetType="TabControl" />
     <Style BasedOn="{StaticResource {x:Static local:TabItemKeys.Default}}" TargetType="TabItem" />
 

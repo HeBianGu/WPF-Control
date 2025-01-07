@@ -31,7 +31,7 @@ namespace H.Styles.Default
         }
 
         private bool _useBackImage;
-        [DefaultValue(true)]
+        [DefaultValue(false)]
         [Display(Name = "启用窗口背景图片")]
         public bool UseBackImage
         {

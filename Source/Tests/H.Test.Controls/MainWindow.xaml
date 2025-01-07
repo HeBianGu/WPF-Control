@@ -311,6 +311,16 @@
             <Separator Style="{StaticResource {x:Static StatusBar.SeparatorStyleKey}}" />
         </StatusBar>
         <TabControl TabStripPlacement="Left">
+            <TabItem Header="TabControl">
+                <TabControl ItemContainerStyle="{DynamicResource {x:Static TabItemKeys.Line}}"
+                            ItemsSource="{GetStudents Count=10}">
+                    <TabControl.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}" />
+                        </DataTemplate>
+                    </TabControl.ItemTemplate>
+                </TabControl>
+            </TabItem>
             <TabItem Header="Button">
                 <UniformGrid>
                     <Button Content="Button" />
