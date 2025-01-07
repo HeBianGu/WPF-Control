@@ -5,11 +5,8 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/PropertyItems/Base/CommandsTextPropertyItemBase.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/PropertyItems/BrushPropertyItem.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/PropertyItems/ClearPathTextPropertyItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/PropertyItems/ColorPropertyItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/PropertyItems/ComboboxRepositoryPropertyItem.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/PropertyItems/OpenClearPathTextPropertyItem.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/PropertyItems/OpenFileDialogPropertyItem.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/PropertyItems/OpenPathTextPropertyItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/PropertyItems/PasswordTextPropertyItem.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

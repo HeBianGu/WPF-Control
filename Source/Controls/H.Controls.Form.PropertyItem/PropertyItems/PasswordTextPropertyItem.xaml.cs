@@ -6,11 +6,12 @@ using System.Reflection;
 
 namespace H.Controls.Form.PropertyItem.PropertyItems.Base
 {
-    public abstract class CommandsTextPropertyItemBase : TextPropertyItem
+    public class PasswordTextPropertyItem : TextPropertyItem
     {
-        public CommandsTextPropertyItemBase(PropertyInfo property, object obj) : base(property, obj)
+        public PasswordTextPropertyItem(PropertyInfo property, object obj) : base(property, obj)
         {
 
         }
     }
+
 }
