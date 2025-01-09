@@ -1,9 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:h="https://github.com/HeBianGu"
-                    xmlns:local="clr-namespace:H.Controls.Form">
-    <DataTemplate DataType="{x:Type local:ObjectPropertyItem}">
-        <ContentPresenter VerticalAlignment="Center"
+                    xmlns:local="clr-namespace:H.Controls.Form.Base">
+    <DataTemplate DataType="{x:Type local:ObjectPropertyItemBase}">
+        <ContentPresenter MinHeight="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}"
                           Content="{Binding Value}" />
         <!--<Grid Visibility="{Binding Visibility}">
             <Expander Padding="0"

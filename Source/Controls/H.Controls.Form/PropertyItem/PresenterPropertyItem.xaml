@@ -3,7 +3,6 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.Form">
     <DataTemplate DataType="{x:Type local:PresenterPropertyItem}">
-        <ContentPresenter VerticalAlignment="Center"
-                          Content="{Binding Value}" />
+        <ContentPresenter Content="{Binding Value}" />
     </DataTemplate>
 </ResourceDictionary>

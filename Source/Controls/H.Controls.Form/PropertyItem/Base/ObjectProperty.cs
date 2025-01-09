@@ -11,7 +11,7 @@ using System.Windows;
 
 namespace H.Controls.Form
 {
-    public class ObjectPropertyItem<T> : ObjectPropertyItem, IDataErrorInfo
+    public class ObjectPropertyItem<T> : BindingVisiblablePropertyItemBase, IDataErrorInfo
     {
         public ObjectPropertyItem(PropertyInfo property, object obj) : base(property, obj)
         {

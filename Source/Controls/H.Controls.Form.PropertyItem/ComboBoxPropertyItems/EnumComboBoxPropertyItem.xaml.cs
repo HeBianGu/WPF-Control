@@ -16,8 +16,8 @@ namespace H.Controls.Form.PropertyItem.ComboBoxPropertyItems
         {
             if (!this.PropertyInfo.PropertyType.IsEnum)
                 yield break;
-            var result = this.PropertyInfo.PropertyType.GetEnumValues();
-            foreach (var item in result)
+            Array result = this.PropertyInfo.PropertyType.GetEnumValues();
+            foreach (object item in result)
             {
                 if (item is Enum @enum)
                     yield return @enum;

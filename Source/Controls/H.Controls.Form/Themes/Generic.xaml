@@ -10,9 +10,10 @@
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form;component/PropertyItem/DateTimePropertyItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form;component/PropertyItem/BoolPropertyItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form;component/PropertyItem/CommandPropertyItem.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form;component/PropertyItem/ObjectPropertyItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form;component/PropertyItem/Base/ObjectPropertyItemBase.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form;component/PropertyItem/PresenterPropertyItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form;component/PropertyItem/FormPropertyItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form;component/PropertyItem/ExpanderFormPropertyItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form;component/PropertyItem/DictionaryPropertyViewItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form;component/FormPresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>

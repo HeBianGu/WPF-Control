@@ -11,6 +11,13 @@
         Style="{StaticResource {x:Type Window}}"
         mc:Ignorable="d">
     <TabControl TabStripPlacement="Left">
+        <TabItem Header="BindingVisibablePropertyItem">
+            <h:Form TitleWidth="200">
+                <h:Form.SelectObject>
+                    <h:BindingVisibablePropertyItemDemoModel />
+                </h:Form.SelectObject>
+            </h:Form>
+        </TabItem>
         <TabItem Header="FormPropertyItemDemoModel">
             <h:Form TitleWidth="200">
                 <h:Form.SelectObject>
@@ -90,6 +97,17 @@
                     <h:Student />
                 </h:Form.SelectObject>
             </h:Form>
+        </TabItem>
+
+        <TabItem Header="SearchText">
+            <DockPanel>
+                <TextBox x:Name="txt" DockPanel.Dock="Top"/>
+                <h:Form SearchText="{Binding ElementName=txt,Path=Text}">
+                    <h:Form.SelectObject>
+                        <h:Student />
+                    </h:Form.SelectObject>
+                </h:Form>
+            </DockPanel>
         </TabItem>
         <TabItem Header="TypeCTestModel">
             <h:Form UseDisplayOnly="False">

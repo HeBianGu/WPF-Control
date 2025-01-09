@@ -8,10 +8,11 @@ using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using System.Windows;
 
-namespace H.Controls.Form
+namespace H.Controls.Form.Base
 {
+
     /// <summary> 类型基类 </summary>
-    public abstract class ObjectPropertyItem : DisplayBindableBase, IPropertyItem
+    public abstract class ObjectPropertyItemBase : DisplayBindableBase, IPropertyItem, IValueChangeable
     {
         public string TabGroup { get; set; }
         public PropertyInfo PropertyInfo { get; set; }
@@ -20,13 +21,13 @@ namespace H.Controls.Form
         public Visibility Visibility { get; set; }
         public Action<object> ValueChanged { get; set; }
         public string Unit { get; set; }
-        public int Vip { get; set; }
+        //public int Vip { get; set; }
         //~ObjectPropertyItem()
         //{
         //    ValueChanged = null; 
         //}
 
-        public ObjectPropertyItem(PropertyInfo property, object obj)
+        public ObjectPropertyItemBase(PropertyInfo property, object obj)
         {
             this.PropertyInfo = property;
             this.Obj = obj;
@@ -40,15 +41,6 @@ namespace H.Controls.Form
                 this.Description = display?.Description;
                 this.Order = display == null ? 999 : display.GetOrder().HasValue ? display.GetOrder().Value : 999;
             }
-            //DisplayAttribute displayer = property.GetCustomAttribute<DisplayAttribute>();
-            //if (displayer != null)
-            //{
-            //    this.Name = displayer == null ? displayer.Name : displayer.Name;
-            //    this.GroupName = displayer?.GroupName;
-            //    this.Description = displayer?.Description;
-            //    this.Order = displayer == null ? 999 : displayer.Order;
-            //    this.Icon = displayer?.Icon;
-            //}
 
             ReadOnlyAttribute readyOnly = property.GetCustomAttribute<ReadOnlyAttribute>();
             this.ReadOnly = readyOnly?.IsReadOnly == true;
@@ -63,35 +55,13 @@ namespace H.Controls.Form
             UnitAttribute unit = property.GetCustomAttribute<UnitAttribute>();
             if (unit != null)
                 this.Unit = unit.Unit;
-
-            //var vip = property.GetCustomAttribute<VipAttribute>();
-            //if (vip != null)
-            //    this.Vip = vip.Level;
         }
 
         /// <summary>
         /// 从实体中加载数据到页面
         /// </summary>
         public abstract void LoadValue();
+
+
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-    ///// <summary> Double属性类型 </summary>
-    //public class DoubleArrayPropertyItem : ObjectPropertyItem<double[]>
-    //{
-    //    public DoubleArrayPropertyItem(PropertyInfo property, object obj) : base(property, obj)
-    //    {
-    //    }
-    //}
 }

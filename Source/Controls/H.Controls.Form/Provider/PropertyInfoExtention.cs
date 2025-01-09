@@ -6,7 +6,7 @@ using System.Windows.Input;
 
 namespace H.Controls.Form
 {
-    public static class PropertyExtention
+    public static class PropertyInfoExtention
     {
         public static IPropertyItem Create(this PropertyInfo info, object obj)
         {
@@ -75,7 +75,7 @@ namespace H.Controls.Form
             return new ObjectPropertyItem<object>(info, obj);
         }
 
-        public static ObjectPropertyItem CreateByType(this PropertyInfo info, object obj)
+        public static IPropertyItem CreateByType(this PropertyInfo info, object obj)
         {
             if (info.PropertyType == typeof(int)) return new TextPropertyItem(info, obj);
             if (info.PropertyType == typeof(double)) return new TextPropertyItem(info, obj);
@@ -143,10 +143,9 @@ namespace H.Controls.Form
                 }
             }
 
-            if (TextPropertyItem.IsTypeConverter(info))
-                return new TextPropertyViewItem(info, obj);
-
-            return TextPropertyItem.IsIConvertible(info)
+            return TextPropertyItem.IsTypeConverter(info)
+                ? new TextPropertyViewItem(info, obj)
+                : TextPropertyItem.IsIConvertible(info)
                 ? new TextPropertyViewItem(info, obj)
                 : info.PropertyType.IsClass && info.PropertyType != typeof(string)
                 ? new ObjectPropertyItem<object>(info, obj)
