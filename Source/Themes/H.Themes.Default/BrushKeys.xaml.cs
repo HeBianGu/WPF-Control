@@ -101,15 +101,15 @@ namespace H.Themes.Default
         public static ComponentResourceKey Pink => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.Pink");
 
         public static ComponentResourceKey White => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.White");
-        public static ComponentResourceKey WhiteOpactiy9 => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.White.Opactiy.9");
-        public static ComponentResourceKey WhiteOpactiy8 => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.White.Opactiy.8");
-        public static ComponentResourceKey WhiteOpactiy7 => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.White.Opactiy.7");
-        public static ComponentResourceKey WhiteOpactiy6 => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.White.Opactiy.6");
-        public static ComponentResourceKey WhiteOpactiy5 => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.White.Opactiy.5");
-        public static ComponentResourceKey WhiteOpactiy4 => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.White.Opactiy.4");
-        public static ComponentResourceKey WhiteOpactiy3 => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.White.Opactiy.3");
-        public static ComponentResourceKey WhiteOpactiy2 => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.White.Opactiy.2");
-        public static ComponentResourceKey WhiteOpactiy1 => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.White.Opactiy.1");
+        //public static ComponentResourceKey WhiteOpactiy9 => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.White.Opactiy.9");
+        //public static ComponentResourceKey WhiteOpactiy8 => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.White.Opactiy.8");
+        //public static ComponentResourceKey WhiteOpactiy7 => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.White.Opactiy.7");
+        //public static ComponentResourceKey WhiteOpactiy6 => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.White.Opactiy.6");
+        //public static ComponentResourceKey WhiteOpactiy5 => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.White.Opactiy.5");
+        //public static ComponentResourceKey WhiteOpactiy4 => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.White.Opactiy.4");
+        //public static ComponentResourceKey WhiteOpactiy3 => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.White.Opactiy.3");
+        //public static ComponentResourceKey WhiteOpactiy2 => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.White.Opactiy.2");
+        //public static ComponentResourceKey WhiteOpactiy1 => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.White.Opactiy.1");
 
         #endregion
 
