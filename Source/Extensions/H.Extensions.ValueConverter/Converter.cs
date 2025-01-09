@@ -203,7 +203,7 @@ namespace H.Extensions.ValueConverter
         public static IValueConverter GetObjType => new ConverterBase<object, Type>(x => x.GetType());
         public static IValueConverter GetObjTypeName => new ConverterBase<object, string>(x => x.GetType().Name);
         public static IValueConverter GetObjTypeFullName => new ConverterBase<object, string>(x => x.GetType().FullName);
-        public static IValueConverter GetDiaplayName => new ConverterBase<object, string>(x => x.GetType().GetCustomAttribute<DisplayAttribute>()?.Name);
+        public static IValueConverter GetDiaplayName => new ConverterBase<object, string>(x => x.GetType().GetCustomAttribute<DisplayAttribute>()?.Name ?? x.GetType().Name);
         public static IValueConverter GetDiaplayDescription => new ConverterBase<object, string>(x => x.GetType().GetCustomAttribute<DisplayAttribute>()?.Description);
         public static IValueConverter GetIsAssignableFrom => new ConverterBase<object, Type, bool>((x, y) =>
         {

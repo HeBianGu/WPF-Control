@@ -51,13 +51,7 @@ namespace H.Controls.Form
         protected override string GetValue()
         {
             object value = this.PropertyInfo.GetValue(this.Obj);
-            if (value == null)
-                return null;
-            if (IsTypeConverter(this.PropertyInfo))
-            {
-                return TypeConverterToString(value);
-            }
-            return value?.ToString();
+            return value == null ? null : IsTypeConverter(this.PropertyInfo) ? TypeConverterToString(value) : (value?.ToString());
         }
 
 
@@ -72,9 +66,7 @@ namespace H.Controls.Form
             if (propertyConvert != null)
                 return true;
             TypeConverterAttribute typeConvert = info.PropertyType.GetCustomAttribute<TypeConverterAttribute>();
-            if (typeConvert != null)
-                return true;
-            return false;
+            return typeConvert != null;
         }
 
         private string TypeConverterToString(object value)

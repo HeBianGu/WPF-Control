@@ -1,0 +1,9 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:p="clr-namespace:H.Controls.Form.PropertyItem"
+                    xmlns:local="clr-namespace:H.Controls.Form">
+    <DataTemplate DataType="{x:Type p:FormPropertyItem}">
+        <local:Form Margin="0,0,0,1"
+                    SelectObject="{Binding Value}" />
+    </DataTemplate>
+</ResourceDictionary>

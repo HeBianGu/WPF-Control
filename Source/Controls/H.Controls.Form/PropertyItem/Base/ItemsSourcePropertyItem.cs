@@ -12,7 +12,6 @@ namespace H.Controls.Form
         {
 
         }
-
         private ObservableCollection<T> _collection = new ObservableCollection<T>();
         public ObservableCollection<T> Collection
         {
@@ -24,5 +23,4 @@ namespace H.Controls.Form
             }
         }
     }
-
 }

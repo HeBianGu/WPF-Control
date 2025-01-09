@@ -1,4 +1,6 @@
 ﻿using H.Controls.Form;
+using H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem;
+using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
 using H.Extensions.Setting;
 using H.Services.Common;
 using H.Themes.Default;
@@ -33,8 +35,7 @@ namespace H.Modules.Theme
 
         [XmlIgnore]
         [JsonIgnore]
-        [BindingGetSelectSourceProperty(nameof(ColorResources))]
-        [PropertyItem(typeof(OnlyComboBoxSelectSourcePropertyItem))]
+        [PropertyNameSourcePropertyItem(typeof(ComboBoxPropertyItem), nameof(ColorResources))]
         [Display(Name = "颜色主题")]
         public IColorResource ColorResource { get; set; }
 

@@ -93,7 +93,6 @@
                 <!--<Setter.Value>
                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
                 </Setter.Value>-->
-
                 <Setter Property="Background">
                     <Setter.Value>
                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />

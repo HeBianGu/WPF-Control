@@ -1,4 +1,6 @@
 ﻿using H.Controls.Form;
+using H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem;
+using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
 using Quartz;
 using System;
 using System.Collections.Generic;
@@ -51,8 +53,7 @@ namespace H.Controls.ScheduleBox
 
         private TimeZoneInfo _timeZoneInfo = TimeZoneInfo.Utc;
         [Display(Name = "时区")]
-        [PropertyItem(Type = typeof(ComboBoxSelectSourcePropertyItem))]
-        [BindingGetSelectSourceMethod(nameof(GetTimeZoneInfos))]
+        [MethodNameSourcePropertyItem(typeof(FormComboBoxPropertyItem), nameof(GetTimeZoneInfos))]
         public TimeZoneInfo TimeZoneInfo
         {
             get { return _timeZoneInfo; }

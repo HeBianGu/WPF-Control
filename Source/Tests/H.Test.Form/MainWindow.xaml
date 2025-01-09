@@ -6,15 +6,81 @@
         xmlns:local="clr-namespace:H.Test.Form"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         Title="MainWindow"
-        Width="800" 
+        Width="800"
         Height="450"
         Style="{StaticResource {x:Type Window}}"
         mc:Ignorable="d">
-    <TabControl>
-        <TabItem Header="FormDemoModel">
-            <h:Form>
+    <TabControl TabStripPlacement="Left">
+        <TabItem Header="FormPropertyItemDemoModel">
+            <h:Form TitleWidth="200">
                 <h:Form.SelectObject>
-                    <h:FormDemoModel />
+                    <h:FormPropertyItemDemoModel />
+                </h:Form.SelectObject>
+            </h:Form>
+        </TabItem>
+        <TabItem Header="EnumerablePropertyItem">
+            <h:Form TitleWidth="200">
+                <h:Form.Resources>
+                    <DataTemplate DataType="{x:Type h:DemoModelItem}">
+                        <CheckBox Margin="0,0"
+                                   Foreground="{DynamicResource {x:Static h:BrushKeys.Foreground}}"
+                                  VerticalAlignment="Center"
+                                  Content="{Binding Name}" />
+                    </DataTemplate>
+                </h:Form.Resources>
+                <h:Form.SelectObject>
+                    <h:EnumerablePropertyItemDemoModel />
+                </h:Form.SelectObject>
+            </h:Form>
+        </TabItem>
+
+        <TabItem Header="MultiListBoxPropertyItem">
+            <h:Form TitleWidth="200">
+                <h:Form.SelectObject>
+                    <h:MultiListBoxPropertyItemDemoModel />
+                </h:Form.SelectObject>
+            </h:Form>
+        </TabItem>
+
+        <TabItem Header="ListBoxPropertyItem">
+            <h:Form TitleWidth="200">
+                <h:Form.Resources>
+                    <DataTemplate DataType="{x:Type h:DemoModelItem}">
+                        <RadioButton Margin="0,0"
+                                     VerticalAlignment="Center"
+                                     Foreground="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}, Path=Foreground}"
+                                     IsChecked="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}, Path=IsSelected}"
+                                     IsHitTestVisible="False">
+                            <Run Text="{Binding Name}" />
+                        </RadioButton>
+                    </DataTemplate>
+                </h:Form.Resources>
+                <h:Form.SelectObject>
+                    <h:ListBoxPropertyItemDemoModel />
+                </h:Form.SelectObject>
+            </h:Form>
+        </TabItem>
+        <TabItem Header="ComboBoxPropertyItem">
+            <h:Form TitleWidth="200">
+                <h:Form.Resources>
+                    <DataTemplate DataType="{x:Type h:DemoModelItem}">
+                        <TextBlock Margin="0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="Red">
+                            <Run Text="名称：" />
+                            <Run Text="{Binding Name}" />
+                        </TextBlock>
+                    </DataTemplate>
+                </h:Form.Resources>
+                <h:Form.SelectObject>
+                    <h:ComboBoxPropertyItemDemoModel />
+                </h:Form.SelectObject>
+            </h:Form>
+        </TabItem>
+        <TabItem Header="TextPropertyItem">
+            <h:Form TitleWidth="200">
+                <h:Form.SelectObject>
+                    <h:TextPropertyItemDemoModel />
                 </h:Form.SelectObject>
             </h:Form>
         </TabItem>

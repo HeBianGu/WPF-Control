@@ -1,0 +1,9 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Controls.Form">
+    <DataTemplate DataType="{x:Type local:PresenterPropertyItem}">
+        <ContentPresenter VerticalAlignment="Center"
+                          Content="{Binding Value}" />
+    </DataTemplate>
+</ResourceDictionary>

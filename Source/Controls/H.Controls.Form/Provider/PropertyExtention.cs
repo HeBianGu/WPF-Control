@@ -1,8 +1,6 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System;
-using System.Collections;
-using System.Linq;
 using System.Reflection;
 using System.Windows.Input;
 
@@ -45,49 +43,36 @@ namespace H.Controls.Form
             //  Do ：其他基元类型
             else if (info.PropertyType.IsPrimitive || info.PropertyType == typeof(string)) return new TextPropertyItem(info, obj);
 
-            if (typeof(IEnumerable).IsAssignableFrom(info.PropertyType) && info.PropertyType.IsGenericType)
-            {
-                Type[] args = info.PropertyType.GetGenericArguments();
-
-                if (args.Count() == 1 && args.First().IsPrimitive)
-                {
-                    //  Do ：List<double>
-                    return new PrimitiveListPropertyItem(info, obj);
-                }
-                else
-                {    //  Do ：泛型集合
-                    return new ListPropertyItem(info, obj);
-                }
-            }
-
-            if (info.PropertyType.IsArray)
-            {
-                Type elementType = info.PropertyType.GetElementType();
-
-                if (elementType.IsPrimitive || elementType == typeof(string) || elementType == typeof(DateTime))
-                {
-                    //  Do ：数组
-                    return new PrimitiveArrayPropertyItem(info, obj);
-                }
-                else
-                {
-                    return new ArrayPropertyItem(info, obj);
-                }
-            }
-
-            //CustomValidationAttribute attr = info.GetCustomAttribute<CustomValidationAttribute>();
-            //if (attr == null || string.IsNullOrEmpty(attr.Method))
+            //if (typeof(IEnumerable).IsAssignableFrom(info.PropertyType) && info.PropertyType.IsGenericType)
             //{
+            //    Type[] args = info.PropertyType.GetGenericArguments();
+
+            //    if (args.Count() == 1 && args.First().IsPrimitive)
+            //    {
+            //        //  Do ：List<double>
+            //        return new PrimitiveListPropertyItem(info, obj);
+            //    }
+            //    else
+            //    {    //  Do ：泛型集合
+            //        return new ListPropertyItem(info, obj);
+            //    }
+            //}
+
+            //if (info.PropertyType.IsArray)
+            //{
+            //    Type elementType = info.PropertyType.GetElementType();
+
+            //    if (elementType.IsPrimitive || elementType == typeof(string) || elementType == typeof(DateTime))
+            //    {
+            //        //  Do ：数组
+            //        return new PrimitiveArrayPropertyItem(info, obj);
+            //    }
+            //    else
+            //    {
+            //        return new ArrayPropertyItem(info, obj);
+            //    }
+            //}
             return new ObjectPropertyItem<object>(info, obj);
-            //}
-            //else
-            //{
-            //    MethodInfo ms = obj.GetType().GetMethod(attr.Method);
-            //    IEnumerable<object> source = ms.Invoke(obj, null) as IEnumerable<object>;
-            //    if (source == null)
-            //        new ObjectPropertyItem<object>(info, obj);
-            //    return new SelectSourcePropertyItem(info, obj);
-            //}
         }
 
         public static ObjectPropertyItem CreateByType(this PropertyInfo info, object obj)
@@ -107,56 +92,39 @@ namespace H.Controls.Form
 
             if (TextPropertyItem.IsTypeConverter(info)) return new TextPropertyItem(info, obj);
 
-
-            if (typeof(IEnumerable).IsAssignableFrom(info.PropertyType) && info.PropertyType.IsGenericType)
-            {
-                Type[] args = info.PropertyType.GetGenericArguments();
-
-                if (args.Count() == 1 && args.First().IsPrimitive)
-                {
-                    //  Do ：List<double>
-                    return new PrimitiveListPropertyItem(info, obj);
-                }
-                else
-                {    //  Do ：泛型集合
-                    return new ListPropertyItem(info, obj);
-                }
-
-                throw new ArgumentException();
-            }
-
-            if (info.PropertyType.IsArray)
-            {
-                Type elementType = info.PropertyType.GetElementType();
-
-                if (elementType.IsPrimitive || elementType == typeof(string) || elementType == typeof(DateTime))
-                {
-                    //  Do ：数组
-                    return new PrimitiveArrayPropertyItem(info, obj);
-                }
-                else
-                {
-                    return new ArrayPropertyItem(info, obj);
-                }
-
-            }
-
-            //CustomValidationAttribute attr = info.GetCustomAttribute<CustomValidationAttribute>();
-
-            //if (attr == null || string.IsNullOrEmpty(attr.Method))
+            //if (typeof(IEnumerable).IsAssignableFrom(info.PropertyType) && info.PropertyType.IsGenericType)
             //{
+            //    Type[] args = info.PropertyType.GetGenericArguments();
+            //    if (args.Count() == 1 && args.First().IsPrimitive)
+            //    {
+            //        //  Do ：List<double>
+            //        return new PrimitiveListPropertyItem(info, obj);
+            //    }
+            //    else
+            //    {    //  Do ：泛型集合
+            //        return new ListPropertyItem(info, obj);
+            //    }
+
+            //    throw new ArgumentException();
+            //}
+
+            //if (info.PropertyType.IsArray)
+            //{
+            //    Type elementType = info.PropertyType.GetElementType();
+
+            //    if (elementType.IsPrimitive || elementType == typeof(string) || elementType == typeof(DateTime))
+            //    {
+            //        //  Do ：数组
+            //        return new PrimitiveArrayPropertyItem(info, obj);
+            //    }
+            //    else
+            //    {
+            //        return new ArrayPropertyItem(info, obj);
+            //    }
+
+            //}
+
             return new ObjectPropertyItem<object>(info, obj);
-            //}
-            //else
-            //{
-            //    MethodInfo ms = obj.GetType().GetMethod(attr.Method);
-
-            //    IEnumerable<object> source = ms.Invoke(obj, null) as IEnumerable<object>;
-
-            //    if (source == null) return new ObjectPropertyItem<object>(info, obj);
-
-            //    return new SelectSourcePropertyItem(info, obj);
-            //}
         }
 
         public static T ChangeType<T>(this object obj)
@@ -178,14 +146,11 @@ namespace H.Controls.Form
             if (TextPropertyItem.IsTypeConverter(info))
                 return new TextPropertyViewItem(info, obj);
 
-            if (TextPropertyItem.IsIConvertible(info))
-                return new TextPropertyViewItem(info, obj);
-
-            if (info.PropertyType.IsClass && info.PropertyType != typeof(string))
-            {
-                return new ObjectPropertyItem<object>(info, obj);
-            }
-            return new TextPropertyViewItem(info, obj);
+            return TextPropertyItem.IsIConvertible(info)
+                ? new TextPropertyViewItem(info, obj)
+                : info.PropertyType.IsClass && info.PropertyType != typeof(string)
+                ? new ObjectPropertyItem<object>(info, obj)
+                : new TextPropertyViewItem(info, obj);
 
             //if (typeof(ICommand).IsAssignableFrom(info.PropertyType))
             //{

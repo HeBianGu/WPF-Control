@@ -3,10 +3,23 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.Form.PropertyItem">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/PropertyItems/Base/CommandsTextPropertyItemBase.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/ComboBoxPropertyItems/ComboBoxPropertyItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/ComboBoxPropertyItems/EnumComboBoxPropertyItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/ComboBoxPropertyItems/FormComboBoxPropertyItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/ComboBoxPropertyItems/PresenterComboBoxPropertyItem.xaml" />
+
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/ListBoxPropertyItems/ListBoxPropertyItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/ListBoxPropertyItems/MultiListBoxPropertyItem.xaml" />
+
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/EnumerablePropertyItems/EnumerablePropertyItem.xaml" />
+
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/ObservableCollectionPropertyItems/Base/PrimitivesPropertyItemBase.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/ObservableCollectionPropertyItems/ObservableCollectionPropertyItem.xaml" />
+
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/TextPropertyItems/Base/CommandsTextPropertyItemBase.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/TextPropertyItems/PasswordTextPropertyItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/PropertyItems/BrushPropertyItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/PropertyItems/ColorPropertyItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/PropertyItems/ComboboxRepositoryPropertyItem.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/PropertyItems/PasswordTextPropertyItem.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

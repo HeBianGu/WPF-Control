@@ -45,6 +45,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Controls\H.Controls.FilterBox\H.Controls.FilterBox.csproj" />
+    <ProjectReference Include="..\..\Controls\H.Controls.Form.PropertyItem\H.Controls.Form.PropertyItem.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.Form\H.Controls.Form.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.RepositoryBox\H.Controls.RepositoryBox.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Behvaiors\H.Extensions.Behvaiors.csproj" />

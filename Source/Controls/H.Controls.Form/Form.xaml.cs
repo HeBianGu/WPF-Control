@@ -1,8 +1,5 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-
-
-
 using H.Services.Common;
 using System;
 using System.Collections;
@@ -943,12 +940,6 @@ namespace H.Controls.Form
                  control.RefreshObject();
              }));
 
-        public bool ModelState(out List<string> errors)
-        {
-            return this.SelectObject.ModelState(out errors);
-        }
-
-
         //声明和注册路由事件
         public static readonly RoutedEvent ValueChangedRoutedEvent =
             EventManager.RegisterRoutedEvent("ValueChanged", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(Form));
@@ -1169,7 +1160,7 @@ namespace H.Controls.Form
             }
             List<IPropertyItem> items = new List<IPropertyItem>();
 
-            var ss = propertys.Distinct();
+            IEnumerable<PropertyInfo> ss = propertys.Distinct();
             foreach (PropertyInfo item in propertys.Distinct())
             {
                 if (this.UseCommandOnly && !typeof(ICommand).IsAssignableFrom(item.PropertyType))
@@ -1297,17 +1288,9 @@ namespace H.Controls.Form
             {
                 result = items.OrderBy(x => x.Order);
             }
-            else if (this.UseOrderByName)
-            {
-                result = items.OrderBy(x => x.Name);
-            }
-            else if (this.UseOrderByType)
-            {
-                result = items.OrderBy(x => x.GetType().Name);
-            }
             else
             {
-                result = items;
+                result = this.UseOrderByName ? items.OrderBy(x => x.Name) : this.UseOrderByType ? items.OrderBy(x => x.GetType().Name) : items;
             }
 
             if (this.UseAsync)

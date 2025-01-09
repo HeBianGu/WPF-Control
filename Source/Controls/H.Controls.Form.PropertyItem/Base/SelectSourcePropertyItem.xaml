@@ -1,0 +1,27 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Controls.Form.PropertyItem.Base">
+    <DataTemplate DataType="{x:Type local:SelectSourcePropertyItem}">
+        <Expander Padding="0"
+                  Header="{Binding Name}"
+                  Visibility="{Binding Visibility}">
+            <Border Margin="15,2,0,2"
+                    BorderThickness="5,0,0,0">
+                <Border.BorderBrush>
+                    <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.BorderBrush}}" />
+                </Border.BorderBrush>
+                <DockPanel>
+                    <ComboBox x:Name="cbx"
+                              Margin="0,0,0,1"
+                              DockPanel.Dock="Top"
+                              ItemsSource="{Binding Collection}"
+                              SelectedItem="{Binding Value}"
+                              ToolTip="{Binding Name}" />
+                    <Form Padding="0"
+                                SelectObject="{Binding ElementName=cbx, Path=SelectedItem}" />
+                </DockPanel>
+            </Border>
+        </Expander>
+    </DataTemplate>
+</ResourceDictionary>
