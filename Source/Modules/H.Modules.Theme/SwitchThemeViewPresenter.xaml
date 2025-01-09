@@ -4,6 +4,7 @@
                     xmlns:local="clr-namespace:H.Modules.Theme">
     <DataTemplate DataType="{x:Type local:SwitchThemeViewPresenter}">
         <ToggleButton IsChecked="{Binding Source={x:Static local:SwitchThemeOptions.Instance}, Path=IsDark}"
+                      ToolTip="切换明/暗主题"
                       WindowChrome.IsHitTestVisibleInChrome="True">
             <!--
                 Command="{Binding SwitchCommand}"

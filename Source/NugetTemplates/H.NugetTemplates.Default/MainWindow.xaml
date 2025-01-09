@@ -15,7 +15,7 @@
     </Window.DataContext>
     <h:MainWindow.CaptionTempate>
         <ControlTemplate>
-            <DockPanel LastChildFill="False">
+            <DockPanel LastChildFill="False" HorizontalAlignment="Right">
                 <ContentPresenter Content="{Ioc Type={x:Type ISettingButtonPresenter}}" />
                 <ContentPresenter Content="{Ioc Type={x:Type h:ISwitchThemeViewPresenter}}" />
                 <ContentPresenter Content="{Ioc Type={x:Type IAboutButtonPresenter}}" />

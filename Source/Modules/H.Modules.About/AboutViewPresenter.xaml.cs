@@ -7,8 +7,6 @@ using System.Xml.Serialization;
 
 namespace H.Modules.About
 {
-
-
     public interface IAboutViewPresenterOption
     {
         string Agreement { get; set; }
@@ -217,11 +215,5 @@ namespace H.Modules.About
                 _contact = value;
             }
         }
-    }
-
-
-    public class AboutButtonPresenter : IAboutButtonPresenter
-    {
-
     }
 }

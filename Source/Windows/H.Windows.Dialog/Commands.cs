@@ -1,4 +1,5 @@
-﻿using System;
+﻿using H.Services.Common;
+using System;
 using System.Windows.Input;
 using System.Windows.Markup;
 
@@ -34,13 +35,15 @@ namespace H.Windows.Dialog
     }
 
 
-    public class ShowDialogIocCommand : DialogCommandBase
+    public class ShowIocDialogCommand : DialogCommandBase
     {
         public Type Type { get; set; }
 
         public override void Execute(object parameter)
         {
-            var value = Ioc.Services.GetService(typeof(Type));
+            var value = Ioc.Services.GetService(this.Type);
+            if (value == null)
+                throw new ArgumentNullException(this.Type.FullName);
             DialogWindow.ShowPresenter(value, x =>
             {
                 x.Width = this.Width;

@@ -3,5 +3,6 @@
                     xmlns:local="clr-namespace:H.Modules.About">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Modules.About;component/AboutViewPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Modules.About;component/AboutButtonPresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

@@ -2,6 +2,7 @@
 using H.Modules.Messages.Dialog;
 using H.Modules.Messages.Form;
 using H.Services.Common;
+using H.Styles.Default;
 using H.Themes.Colors.Accent;
 using H.Themes.Colors.Gray;
 using H.Themes.Colors.Purple;
@@ -41,9 +42,16 @@ public partial class App : ApplicationBase
         app.UseTheme(x =>
         {
             x.ColorResources.Add(new PurpleDarkColorResource());
+            //x.ColorResources.Add(new PurpleLightColorResource());
             x.ColorResources.Add(new GrayDarkColorResource());
+            //x.ColorResources.Add(new GrayLightColorResource());
+            //x.ColorResources.Add(new BlueDarkColorResource());
+            //x.ColorResources.Add(new BlueLightColorResource());
             x.ColorResources.Add(new AccentLightColorResource());
+            //x.ColorResources.Add(new AccentDarkColorResource());
         });
+
+        app.UseWindowSetting();
     }
 
     protected override Window CreateMainWindow(StartupEventArgs e)

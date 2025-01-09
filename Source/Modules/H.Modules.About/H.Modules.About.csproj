@@ -5,8 +5,15 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Controls\H.Controls.Form\H.Controls.Form.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.Geometry\H.Extensions.Geometry.csproj" />
     <ProjectReference Include="..\..\Services\H.Services.Common\H.Services.Common.csproj" />
     <ProjectReference Include="..\..\Windows\H.Windows.Dialog\H.Windows.Dialog.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="AboutButtonPresenter.xaml">
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
 
 </Project>
