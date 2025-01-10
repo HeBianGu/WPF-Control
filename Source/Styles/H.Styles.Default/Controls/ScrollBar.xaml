@@ -22,7 +22,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RepeatButton}">
-                    <Border Style="{StaticResource S.Border.TemplatedParent}">
+                    <Border CornerRadius="1" Style="{StaticResource S.Border.TemplatedParent}">
                         <Path
                             Margin="{TemplateBinding Padding}"
                             HorizontalAlignment="Center"
@@ -74,18 +74,8 @@
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="IsTabStop" Value="false" />
         <Setter Property="Focusable" Value="false" />
-        <Setter Property="Background">
-            <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-            </Setter.Value>
-        </Setter>
-        <!--<Setter Property="BorderBrush">
-            <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-            </Setter.Value>
-        </Setter>-->
-        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
-
+        <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Dark0_8}}" />
+        <Setter Property="BorderBrush" Value="{x:Null}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
@@ -99,11 +89,10 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="true">
-                <Setter Property="Background">
-                    <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrushTitle}}" />
-                    </Setter.Value>
-                </Setter>
+                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.ForegroundAssist}}" />
+            </Trigger>
+            <Trigger Property="IsDragging" Value="true">
+                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -111,9 +100,9 @@
     <ControlTemplate x:Key="VerticalScrollBar" TargetType="{x:Type ScrollBar}">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition MaxHeight="18" />
-                <RowDefinition Height="0.00001*" />
-                <RowDefinition MaxHeight="18" />
+                <RowDefinition Height="Auto" MaxHeight="18" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" MaxHeight="18" />
             </Grid.RowDefinitions>
             <Border
                 x:Name="Border"
@@ -125,13 +114,14 @@
             </Border>
             <RepeatButton
                 Grid.Row="0"
-                Height="18"
+                Height="12"
                 Command="ScrollBar.LineUpCommand"
-                Content="M 0 4 L 8 4 L 4 0 Z"
+                Content="M 0 3 L 6 3 L 3 0 Z"
                 Style="{StaticResource ScrollBarLineButton}" />
             <Track
                 x:Name="PART_Track"
                 Grid.Row="1"
+                Margin="2,0"
                 IsDirectionReversed="true">
                 <Track.DecreaseRepeatButton>
                     <RepeatButton Command="ScrollBar.PageUpCommand" Style="{StaticResource ScrollBarPageButton}" />
@@ -152,9 +142,9 @@
             </Track>
             <RepeatButton
                 Grid.Row="3"
-                Height="18"
+                Height="12"
                 Command="ScrollBar.LineDownCommand"
-                Content="M 0 0 L 4 4 L 8 0 Z"
+                Content="M 0 0 L 3 3 L 6 0 Z"
                 Style="{StaticResource ScrollBarLineButton}" />
         </Grid>
     </ControlTemplate>
@@ -162,36 +152,37 @@
     <ControlTemplate x:Key="HorizontalScrollBar" TargetType="{x:Type ScrollBar}">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition MaxWidth="18" />
-                <ColumnDefinition Width="0.00001*" />
-                <ColumnDefinition MaxWidth="18" />
+                <ColumnDefinition Width="Auto" MaxWidth="18" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" MaxWidth="18" />
             </Grid.ColumnDefinitions>
             <Border Grid.ColumnSpan="3" CornerRadius="2">
                 <Border.Background>
-                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
+                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Dark0_1}}" />
                 </Border.Background>
             </Border>
             <RepeatButton
                 Grid.Column="0"
-                Width="18"
+                Width="12"
                 Command="ScrollBar.LineLeftCommand"
-                Content="M 4 0 L 4 8 L 0 4 Z"
+                Content="M 3 0 L 3 6 L 0 3 Z"
                 Style="{StaticResource ScrollBarLineButton}" />
             <Track
                 x:Name="PART_Track"
                 Grid.Column="1"
+                Margin="0,2"
                 IsDirectionReversed="False">
                 <Track.DecreaseRepeatButton>
                     <RepeatButton Command="ScrollBar.PageLeftCommand" Style="{StaticResource ScrollBarPageButton}" />
                 </Track.DecreaseRepeatButton>
                 <Track.Thumb>
                     <Thumb Margin="0,1,0,1" Style="{StaticResource ScrollBarThumb}">
-                        <Thumb.BorderBrush>
+                        <!--<Thumb.BorderBrush>
                             <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
                         </Thumb.BorderBrush>
                         <Thumb.Background>
                             <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-                        </Thumb.Background>
+                        </Thumb.Background>-->
                     </Thumb>
                 </Track.Thumb>
                 <Track.IncreaseRepeatButton>
@@ -200,9 +191,9 @@
             </Track>
             <RepeatButton
                 Grid.Column="3"
-                Width="18"
+                Width="12"
                 Command="ScrollBar.LineRightCommand"
-                Content="M 0 0 L 4 4 L 0 8 Z"
+                Content="M 0 0 L 3 3 L 0 6 Z"
                 Style="{StaticResource ScrollBarLineButton}" />
         </Grid>
     </ControlTemplate>
