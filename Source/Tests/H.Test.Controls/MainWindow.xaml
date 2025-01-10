@@ -512,11 +512,17 @@
                 </RepeatButton>
             </TabItem>
             <TabItem Header="ScrollViewer">
-                <ScrollViewer>
-                    <ListBox
-                        h:Cattach.ItemHeight="Auto"
-                        ItemsSource="{h:GetStudents Count=50}"
-                        SelectedIndex="0" />
+                <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                    <Border Width="1000" Height="1000">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <LinearGradientBrush.GradientStops>
+                                    <GradientStop Offset="0" Color="Red" />
+                                    <GradientStop Offset="1" Color="Green" />
+                                </LinearGradientBrush.GradientStops>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                    </Border>
                 </ScrollViewer>
             </TabItem>
             <TabItem Header="Slider">

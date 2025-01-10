@@ -6,31 +6,35 @@
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.ScrollViewer.Left, TypeInTargetAssembly={x:Type local:ScrollViewerKeys}}" TargetType="{x:Type ScrollViewer}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.ScrollViewer.Default, TypeInTargetAssembly={x:Type local:ScrollViewerKeys}}" TargetType="{x:Type ScrollViewer}">
         <!--<Setter Property="OverridesDefaultStyle" Value="True" />-->
         <!--  延迟滚动  -->
         <!--<Setter Property="ScrollViewer.IsDeferredScrollingEnabled" Value="False" />-->
+        <!--<Setter Property="BorderBrush" Value="{x:Null}"/>
+        <Setter Property="Background" Value="{x:Null}"/>-->
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ScrollViewer}">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
                             <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <!--<Border Grid.Column="1"
-                                BorderThickness="01">
-                            <Border.BorderBrush>
+                        <Border Grid.Column="0">
+                            <!--<Border.BorderBrush>
                                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-                            </Border.BorderBrush>
-                            <ScrollContentPresenter />
-                        </Border>-->
+                            </Border.BorderBrush>-->
+                            <ScrollContentPresenter CanContentScroll="{TemplateBinding CanContentScroll}" />
+                        </Border>
                         <ScrollBar
                             x:Name="PART_VerticalScrollBar"
+                            Grid.Column="1"
+                            Width="12"
+                            MinWidth="12"
                             Maximum="{TemplateBinding ScrollableHeight}"
                             ViewportSize="{TemplateBinding ViewportHeight}"
                             Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
@@ -38,7 +42,10 @@
                         <ScrollBar
                             x:Name="PART_HorizontalScrollBar"
                             Grid.Row="1"
-                            Grid.Column="1"
+                            Grid.Column="0"
+                            Height="12"
+                            MinHeight="12"
+                            Padding="0"
                             Maximum="{TemplateBinding ScrollableWidth}"
                             Orientation="Horizontal"
                             ViewportSize="{TemplateBinding ViewportWidth}"
@@ -48,5 +55,10 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+
+
     </Style>
+
+    <Style BasedOn="{StaticResource {x:Static local:ScrollViewerKeys.Default}}" TargetType="ScrollViewer" />
+
 </ResourceDictionary>
