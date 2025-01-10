@@ -94,7 +94,7 @@
                             <Border
                                 IsHitTestVisible="False"
                                 Opacity="{Binding Source={x:Static h:WindowSetting.Instance}, Path=Opacity}"
-                                Visibility="{Binding Source={x:Static local:WindowSetting.Instance}, Path=UseBackImage, Converter={x:Static Converter.GetTrueToVisible}}">
+                                Visibility="{Binding Source={x:Static h:WindowSetting.Instance}, Path=UseBackImage, Converter={x:Static Converter.GetTrueToVisible}}">
                                 <Border.Background>
                                     <ImageBrush ImageSource="{Binding Source={x:Static h:WindowSetting.Instance}, Path=BackImagePath}" Stretch="{Binding Source={x:Static h:WindowSetting.Instance}, Path=Stretch}" />
                                 </Border.Background>
