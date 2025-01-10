@@ -74,7 +74,7 @@
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="IsTabStop" Value="false" />
         <Setter Property="Focusable" Value="false" />
-        <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Dark0_8}}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
         <Setter Property="BorderBrush" Value="{x:Null}" />
         <Setter Property="Template">
             <Setter.Value>
