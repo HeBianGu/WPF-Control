@@ -14,8 +14,8 @@
             </Setter.Value>
         </Setter>
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.CaptionBackground}}" />
-        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="Cattach.CaptionBackground">
             <Setter.Value>
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />
@@ -50,10 +50,10 @@
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <ContentPresenter
+                                    Margin="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionMargin)}"
                                     VerticalAlignment="Center"
                                     ContentSource="Header"
                                     RecognizesAccessKey="True"
-                                    Margin="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=(Cattach.CaptionMargin)}"
                                     TextElement.Foreground="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionForeground)}" />
                                 <Control Grid.Column="2" Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionRightTemplate)}" />
                             </Grid>

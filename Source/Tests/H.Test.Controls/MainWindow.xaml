@@ -385,6 +385,20 @@
                             <TextBox Text="12345566" />
                             <TextBox IsReadOnly="True" Text="IsReadOnly" />
                             <TextBox IsEnabled="False" Text="IsEnabled" />
+                            <TextBox DataContext="{GetStudent}" ToolTip="Class">
+                                <TextBox.Text>
+                                    <Binding
+                                        Mode="TwoWay"
+                                        Path="Class"
+                                        UpdateSourceTrigger="PropertyChanged"
+                                        ValidatesOnDataErrors="True">
+                                        <Binding.ValidationRules>
+                                            <h:RequiredValidationRule ErrorMessage="数据不能为空" />
+                                            <h:RegularExpressionValidationRule ErrorMessage="只能输入汉字" Pattern="^[\u4e00-\u9fa5]{0,}$" />
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
                         </StackPanel>
                     </TabItem>
                     <TabItem Header="Attach">
@@ -415,9 +429,7 @@
                             </TextBox>
                             <TextBox Style="{DynamicResource {x:Static TextBoxKeys.Delete}}" Text="Delete" />
 
-                            <TextBox
-                                Cattach.Watermark="Watermark"
-                                Style="{DynamicResource {x:Static TextBoxKeys.Attach}}" />
+                            <TextBox Cattach.Watermark="Watermark" Style="{DynamicResource {x:Static TextBoxKeys.Attach}}" />
                         </StackPanel>
                     </TabItem>
                 </TabControl>

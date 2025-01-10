@@ -174,7 +174,7 @@
                                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
                                 </Setter.Value>
                             </Setter>-->
-                            <Setter TargetName="Arrow" Property="Opacity" Value="0.5"/>
+                            <Setter TargetName="Arrow" Property="Opacity" Value="0.5" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

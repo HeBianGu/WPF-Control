@@ -51,7 +51,29 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Validation.Errors)[0].ErrorContent}" />
+        <Setter Property="Validation.ErrorTemplate">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border
+                        Background="Transparent"
+                        BorderBrush="{DynamicResource {x:Static BrushKeys.Red}}"
+                        BorderThickness="1"
+                        CornerRadius="2"
+                        ToolTipService.InitialShowDelay="0"
+                        ToolTipService.ShowOnDisabled="True">
+                        <Border.ToolTip>
+                            <ToolTip
+                                Background="{DynamicResource {x:Static BrushKeys.Red}}"
+                                BorderBrush="{x:Null}"
+                                Content="{Binding [0].ErrorContent}"
+                                Foreground="{DynamicResource {x:Static BrushKeys.White}}" />
+                        </Border.ToolTip>
+                        <AdornedElementPlaceholder Margin="-4" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <!--<Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Validation.Errors)[0].ErrorContent}" />-->
         <Style.Triggers>
             <Trigger Property="IsEnabled" Value="false">
                 <Setter Property="Opacity" Value="0.5" />

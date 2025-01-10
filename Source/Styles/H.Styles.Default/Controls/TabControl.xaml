@@ -220,19 +220,19 @@
         TargetType="{x:Type TabItem}">
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
         <Style.Triggers>
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=TabControl},Path=TabStripPlacement}" Value="Top">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=TabStripPlacement}" Value="Top">
                 <Setter Property="BorderThickness" Value="0,0,0,2" />
                 <Setter Property="Cattach.CornerRadius" Value="2,2,0,0" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=TabControl},Path=TabStripPlacement}" Value="Bottom">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=TabStripPlacement}" Value="Bottom">
                 <Setter Property="BorderThickness" Value="0,2,0,0" />
                 <Setter Property="Cattach.CornerRadius" Value="0,0,2,2" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=TabControl},Path=TabStripPlacement}" Value="Left">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=TabStripPlacement}" Value="Left">
                 <Setter Property="BorderThickness" Value="0,0,2,0" />
                 <Setter Property="Cattach.CornerRadius" Value="2,0,0,2" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=TabControl},Path=TabStripPlacement}" Value="Right">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=TabStripPlacement}" Value="Right">
                 <Setter Property="BorderThickness" Value="2,0,0,0" />
                 <Setter Property="Cattach.CornerRadius" Value="0,2,2,0" />
             </DataTrigger>
