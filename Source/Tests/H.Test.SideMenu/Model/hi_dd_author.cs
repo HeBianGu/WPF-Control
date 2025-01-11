@@ -12,7 +12,7 @@ namespace H.Test.SideMenu
     {
         public hi_dd_author()
         {
-            Name = "默认权限";
+            this.Name = "默认权限";
         }
         [Required]
         [Display(Name = "权限名称")]

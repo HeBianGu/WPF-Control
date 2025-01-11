@@ -13,7 +13,7 @@ namespace H.Test.SideMenu
     {
         public hi_dd_role()
         {
-            Name = "普通角色";
+            this.Name = "普通角色";
         }
         [Display(Name = "角色名称")]
         [Column("role_name", Order = 1)]

@@ -9,9 +9,10 @@
     <BooleanToVisibilityConverter x:Key="bool2VisibilityConverter" />
 
     <Style x:Key="{ComponentResourceKey ResourceId=DataGridSelectAllButtonStyle, TypeInTargetAssembly={x:Type DataGrid}}" TargetType="{x:Type Button}">
-        <Setter Property="BorderThickness" Value="0,0,1,1" />
+        <Setter Property="BorderThickness" Value="1,0,1,1" />
         <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=(Cattach.CaptionBackground)}" />
         <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=HorizontalGridLinesBrush}" />
+        <!--<Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=(Cattach.CaptionForeground)}" />-->
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -29,18 +30,21 @@
                                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
                             </Rectangle.Fill>-->
                         </Border>
-                        <Polygon
+                        <!--<Polygon
                             x:Name="Arrow"
-                            Margin="8,8,3,3"
+                            Margin="2,2"
                             HorizontalAlignment="Right"
                             VerticalAlignment="Bottom"
-                            Opacity="1.15"
-                            Points="0,10 10,10 10,0"
+                            Fill="{TemplateBinding Foreground}"
+                            Opacity="0.2"
+                            Points="0,5 5,5 5,0"
                             Stretch="Uniform">
-                            <Polygon.Fill>
+                        -->
+                        <!--<Polygon.Fill>
                                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
-                            </Polygon.Fill>
-                        </Polygon>
+                            </Polygon.Fill>-->
+                        <!--
+                        </Polygon>-->
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal" />
@@ -353,7 +357,7 @@
     </Style>
 
     <Style x:Key="RowHeaderGripperStyle" TargetType="{x:Type Thumb}">
-        <Setter Property="Height" Value="8" />
+        <Setter Property="Height" Value="4" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Cursor" Value="SizeNS" />
         <Setter Property="Template">
@@ -373,7 +377,7 @@
             </Setter.Value>
         </Setter>-->
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
-        <Setter Property="BorderThickness" Value="0,0,1,1" />
+        <Setter Property="BorderThickness" Value="1,0,1,1" />
         <Setter Property="Margin" Value="0" />
         <Setter Property="Template">
             <Setter.Value>

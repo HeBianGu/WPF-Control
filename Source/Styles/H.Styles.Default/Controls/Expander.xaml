@@ -118,10 +118,7 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition x:Name="ContentRow" Height="0" />
                         </Grid.RowDefinitions>
-                        <Border
-                            Grid.Row="0"
-                            Padding="0"
-                            Style="{StaticResource S.Border.Caption}">
+                        <Border Grid.Row="0" Style="{StaticResource S.Border.Caption}">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="20" />
@@ -143,8 +140,11 @@
                                 <Control Grid.Column="2" Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionRightTemplate)}" />
                             </Grid>
                         </Border>
-                        <Border Grid.Row="1" Style="{StaticResource S.Border.TemplatedParent}">
-                            <ContentPresenter Style="{StaticResource S.ContentPresenter.TemplatedParent}" />
+                        <Border
+                            Grid.Row="1"
+                            Padding="0"
+                            Style="{StaticResource S.Border.TemplatedParent}">
+                            <ContentPresenter Margin="0" Style="{StaticResource S.ContentPresenter.TemplatedParent}" />
                         </Border>
                     </Grid>
                     <ControlTemplate.Triggers>

@@ -299,7 +299,12 @@
                 </ComboBox>
             </TabItem>
             <TabItem Header="DataGrid">
-                <DataGrid ItemsSource="{h:GetStudents Count=50}" SelectedIndex="0" />
+                <DataGrid ItemsSource="{h:GetStudents Count=50}" SelectedIndex="0">
+                    <DataGrid.Columns>
+                        <DataGridCheckBoxColumn EditingElementStyle="{x:Null}" ElementStyle="{x:Null}" />
+                        <h:DataGridCheckBoxColumn />
+                    </DataGrid.Columns>
+                </DataGrid>
             </TabItem>
             <TabItem Header="TextBox">
                 <StackPanel>
