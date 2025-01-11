@@ -40,7 +40,7 @@
                 <ItemsControl ItemsSource="{Binding Conditions}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate DataType="{x:Type local:PropertyConfidtion}">
-                            <DockPanel Margin="1">
+                            <DockPanel>
                                 <CheckBox Margin="2,0,0,0" IsChecked="{Binding Filter.IsSelected}" />
                                 <ComboBox
                                     Width="120"
@@ -65,6 +65,7 @@
                                 <Button
                                     BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
                                     BorderThickness="1"
+                                    Cattach.CornerRadius="2"
                                     Content="{x:Static h:Geometrys.Close}"
                                     DockPanel.Dock="Right"
                                     Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}">

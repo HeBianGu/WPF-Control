@@ -152,7 +152,7 @@
                             x:Name="fb"
                             Margin="5"
                             Type="{x:Type h:Student}">
-                            <h:PropertyFilterBox.DefinesPropertyConditions>
+                            <h:PropertyFilterBox.DefinePropertyConditionPrensenters>
                                 <PropertyConditionPrensenter ID="名称值为Tom">
                                     <PropertyConfidtion>
                                         <StringPropertyFilter
@@ -175,7 +175,7 @@
                                             Value="10" />
                                     </PropertyConfidtion>
                                 </PropertyConditionPrensenter>
-                            </h:PropertyFilterBox.DefinesPropertyConditions>
+                            </h:PropertyFilterBox.DefinePropertyConditionPrensenters>
                         </h:PropertyFilterBox>
                         <h:TextFilterBox
                             x:Name="tfb"
@@ -313,7 +313,19 @@
                         <h:PropertyOrderBox
                             x:Name="ob"
                             Margin="5"
-                            Type="{x:Type h:Student}" />
+                            Type="{x:Type h:Student}">
+                            <h:PropertyOrderBox.DefinePropertyOrderPrensenters>
+                                <PropertyOrderPrensenter ID="按名字排序">
+                                    <PropertyOrder PropertyName="Name" />
+                                </PropertyOrderPrensenter>
+                                <PropertyOrderPrensenter ID="按分数正序">
+                                    <PropertyOrder PropertyName="Score" UseDesc="False" />
+                                </PropertyOrderPrensenter>
+                                <PropertyOrderPrensenter ID="按分数倒叙">
+                                    <PropertyOrder PropertyName="Score" UseDesc="True" />
+                                </PropertyOrderPrensenter>
+                            </h:PropertyOrderBox.DefinePropertyOrderPrensenters>
+                        </h:PropertyOrderBox>
                     </DockPanel>
                     <DataGrid>
                         <Behaviors:Interaction.Behaviors>

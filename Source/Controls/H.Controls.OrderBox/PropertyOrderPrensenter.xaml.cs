@@ -13,9 +13,11 @@ using System.Linq;
 using System.Reflection;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
+using System.Windows.Markup;
 
 namespace H.Controls.OrderBox
 {
+    [ContentProperty(nameof(Conditions))]
     [Display(Name = "设置规则")]
     public class PropertyOrderPrensenter : DisplayBindableBase, IOrderable, IMetaSetting
     {
