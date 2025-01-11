@@ -50,6 +50,8 @@ namespace H.Test.Theme
                 x.ColorResources.Add(new AccentLightColorResource());
                 x.ColorResources.Add(new AccentDarkColorResource());
             });
+
+            app.UseSwithTheme();
             app.UseWindowSetting(x =>
             {
                 x.BackImagePath = "pack://application:,,,/H.Extensions.BackgroundImage;component/b13.png";
