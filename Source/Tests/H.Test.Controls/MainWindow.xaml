@@ -351,9 +351,9 @@
                     <ToggleButton Content="ToggleButton" />
                     <ToggleButton Content="{x:Static h:Geometrys.Left}" Style="{DynamicResource {x:Static h:ToggleButtonKeys.Geometry}}" />
                     <ToggleButton
-                        h:Cattach.CheckedIcon="{x:Static h:Geometrys.Left}"
-                        h:Cattach.UncheckedIcon="{x:Static h:Geometrys.Right}"
-                        Style="{DynamicResource {x:Static h:ToggleButtonKeys.Switch}}" />
+                        h:Cattach.CheckedGeometry="{x:Static h:Geometrys.Left}"
+                        h:Cattach.UnCheckedGeometry="{x:Static h:Geometrys.Right}"
+                        Style="{DynamicResource {x:Static h:ToggleButtonKeys.SwitchGeometry}}" />
 
                 </UniformGrid>
             </TabItem>

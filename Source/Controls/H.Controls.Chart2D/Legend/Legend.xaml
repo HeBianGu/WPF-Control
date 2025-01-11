@@ -11,8 +11,8 @@
               Background="Transparent">
             <ToggleButton MinWidth="10"
                           HorizontalAlignment="Left"
-                          h:Cattach.CheckedIcon=""
-                          h:Cattach.UncheckedIcon=""
+                          h:Cattach.CheckedGeometry=""
+                          h:Cattach.UnCheckedGeometry=""
                           IsChecked="{Binding Series.Visibility, Converter={x:Static h:Converter.GetTrueToVisible}}"
                           Style="{DynamicResource {x:Static h:ToggleButtonKeys.Default}}">
                 <StackPanel Orientation="Horizontal">
@@ -117,8 +117,8 @@
         <Grid x:Name="grid"
               Background="Transparent">
             <ToggleButton HorizontalAlignment="Left"
-                          h:Cattach.CheckedIcon=""
-                          h:Cattach.UncheckedIcon=""
+                          h:Cattach.CheckedGeometry=""
+                          h:Cattach.UnCheckedGeometry=""
                           IsChecked="{Binding IsChecked}"
                           Style="{DynamicResource {x:Static h:ToggleButtonKeys.Default}}">
                 <StackPanel Orientation="Horizontal">
@@ -175,8 +175,8 @@
         <Grid x:Name="grid"
               Background="Transparent">
             <ToggleButton HorizontalAlignment="Left"
-                          h:Cattach.CheckedIcon=""
-                          h:Cattach.UncheckedIcon=""
+                          h:Cattach.CheckedGeometry=""
+                          h:Cattach.UnCheckedGeometry=""
                           IsChecked="{Binding IsChecked}"
                           Style="{DynamicResource {x:Static h:ToggleButtonKeys.Default}}">
                 <StackPanel Orientation="Horizontal">

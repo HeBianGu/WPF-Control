@@ -16,80 +16,83 @@
     </ResourceDictionary.MergedDictionaries>
 
     <DataTemplate DataType="{x:Type local:StringPropertyFilter}">
-        <UniformGrid Rows="1">
+        <DockPanel>
             <ComboBox
+                Width="120"
                 Margin="0,0,1,0"
                 ItemsSource="{Binding Source={h:GetEnumGroupSource EnumType={x:Type local:FilterOperate}, GroupName=String}}"
                 SelectedItem="{Binding Operate}"
                 Style="{DynamicResource {x:Static h:ComboBoxKeys.Default}}" />
-            <TextBox Style="{DynamicResource {x:Static h:TextBoxKeys.Default}}" Text="{Binding Value}">
-                <!--<h:Cattach.AttachControlTemplate>
-                    <ControlTemplate>
-                        <ToggleButton Margin="0,0,1,0"
-                                      h:Cattach.CheckedIcon="Aa"
-                                      h:Cattach.IconSize="12"
-                                      h:Cattach.UncheckedIcon="AA"
-                                      Background="Transparent"
-                                      IsChecked="{Binding OrdinalIgnoreCase}"
-                                      Style="{DynamicResource {x:Static h:ToggleButtonKeys.Dynamic}}"
-                                      ToolTip="忽略大小写" />
-                    </ControlTemplate>
-                </h:Cattach.AttachControlTemplate>-->
+            <TextBox Style="{DynamicResource {x:Static h:TextBoxKeys.Attach}}" Text="{Binding Value}">
+                <h:Cattach.Attach>
+                    <ToggleButton
+                        Width="30"
+                        Height="Auto"
+                        h:Cattach.CheckedContent="Aa"
+                        h:Cattach.UnCheckedContent="AA"
+                        IsChecked="{Binding OrdinalIgnoreCase}"
+                        Style="{DynamicResource {x:Static h:ToggleButtonKeys.Switch}}"
+                        ToolTip="忽略大小写" />
+                </h:Cattach.Attach>
             </TextBox>
-        </UniformGrid>
+        </DockPanel>
 
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type local:IntPropertyFilter}">
-        <UniformGrid Rows="1">
+        <DockPanel>
             <ComboBox
+                Width="120"
                 Margin="0,0,1,0"
                 ItemsSource="{Binding Source={h:GetEnumGroupSource EnumType={x:Type local:FilterOperate}, GroupName=Int}}"
                 SelectedItem="{Binding Operate}"
                 Style="{DynamicResource {x:Static h:ComboBoxKeys.Default}}" />
 
             <TextBox Style="{DynamicResource {x:Static h:TextBoxKeys.Default}}" Text="{Binding Value}" />
-        </UniformGrid>
+        </DockPanel>
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type local:LongPropertyFilter}">
-        <UniformGrid Rows="1">
+        <DockPanel>
             <ComboBox
+                Width="120"
                 Margin="0,0,1,0"
                 ItemsSource="{Binding Source={h:GetEnumGroupSource EnumType={x:Type local:FilterOperate}, GroupName=Int}}"
                 SelectedItem="{Binding Operate}"
                 Style="{DynamicResource {x:Static h:ComboBoxKeys.Default}}" />
 
             <TextBox Style="{DynamicResource {x:Static h:TextBoxKeys.Default}}" Text="{Binding Value}" />
-        </UniformGrid>
+        </DockPanel>
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type local:DoublePropertyFilter}">
-        <UniformGrid Rows="1">
+        <DockPanel>
             <ComboBox
+                Width="120"
                 Margin="0,0,1,0"
                 ItemsSource="{Binding Source={h:GetEnumGroupSource EnumType={x:Type local:FilterOperate}, GroupName=Double}}"
                 SelectedItem="{Binding Operate}"
                 Style="{DynamicResource {x:Static h:ComboBoxKeys.Default}}" />
             <TextBox Style="{DynamicResource {x:Static h:TextBoxKeys.Default}}" Text="{Binding Value}" />
-        </UniformGrid>
+        </DockPanel>
 
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type local:DateTimePropertyFilter}">
-        <UniformGrid Rows="1">
+        <DockPanel>
+            <CheckBox
+                Margin="2,0"
+                Content="仅比较日期"
+                DockPanel.Dock="Right"
+                IsChecked="{Binding OnlyDate}" />
             <ComboBox
+                Width="120"
                 Margin="0,0,1,0"
                 ItemsSource="{Binding Source={h:GetEnumGroupSource EnumType={x:Type local:FilterOperate}, GroupName=DateTime}}"
                 SelectedItem="{Binding Operate}"
                 Style="{DynamicResource {x:Static h:ComboBoxKeys.Default}}" />
             <DatePicker SelectedDate="{Binding Value}" Style="{DynamicResource {x:Static h:DatePickerKeys.Default}}" />
-            <CheckBox
-                Margin="0,0"
-                Content="仅比较日期"
-                IsChecked="{Binding OnlyDate}" />
-        </UniformGrid>
-
+        </DockPanel>
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type local:BooleanPropertyFilter}">

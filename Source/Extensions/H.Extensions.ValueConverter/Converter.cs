@@ -210,6 +210,8 @@ namespace H.Extensions.ValueConverter
             bool r = y.IsAssignableFrom(x.GetType());
             return r;
         });
+
+        public static IValueConverter GetPropertyInfoDiaplayName => new ConverterBase<PropertyInfo, string>(x => x.GetCustomAttribute<DisplayAttribute>()?.Name ?? x.Name);
         public static IValueConverter GetIsValueType => new ConverterBase<object, bool>(x => x.GetType().IsValueType);
         public static IValueConverter GetIsClass => new ConverterBase<object, bool>(x => x.GetType().IsClass);
         public static IValueConverter GetIsEnum => new ConverterBase<object, bool>(x => x.GetType().IsEnum);

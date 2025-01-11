@@ -174,16 +174,31 @@
 
 
     <Style
-        x:Key="{ComponentResourceKey ResourceId=S.ToggleButton.Switch,
+        x:Key="{ComponentResourceKey ResourceId=S.ToggleButton.SwitchGeometry,
                                      TypeInTargetAssembly={x:Type local:ToggleButtonKeys}}"
         BasedOn="{StaticResource {x:Static local:ToggleButtonKeys.Geometry}}"
         TargetType="ToggleButton">
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Content" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Cattach.CheckedIcon)}" />
+                <Setter Property="Content" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Cattach.CheckedGeometry)}" />
             </Trigger>
             <Trigger Property="IsChecked" Value="False">
-                <Setter Property="Content" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Cattach.UncheckedIcon)}" />
+                <Setter Property="Content" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Cattach.UnCheckedGeometry)}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style
+        x:Key="{ComponentResourceKey ResourceId=S.ToggleButton.Switch,
+                                     TypeInTargetAssembly={x:Type local:ToggleButtonKeys}}"
+        BasedOn="{StaticResource {x:Static local:ToggleButtonKeys.Default}}"
+        TargetType="ToggleButton">
+        <Style.Triggers>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Content" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Cattach.CheckedContent)}" />
+            </Trigger>
+            <Trigger Property="IsChecked" Value="False">
+                <Setter Property="Content" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Cattach.UnCheckedContent)}" />
             </Trigger>
         </Style.Triggers>
     </Style>

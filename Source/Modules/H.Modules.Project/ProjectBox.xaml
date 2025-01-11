@@ -19,12 +19,12 @@
                                     Content="{x:Static h:Geometrys.Close}"
                                     DockPanel.Dock="Right"
                                     Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
-                            <ToggleButton h:Cattach.CheckedIcon="{x:Static h:Geometrys.Fixed}"
-                                          h:Cattach.UncheckedIcon="{x:Static h:Geometrys.UnFixed}"
+                            <ToggleButton h:Cattach.CheckedGeometry="{x:Static h:Geometrys.Fixed}"
+                                          h:Cattach.UnCheckedGeometry="{x:Static h:Geometrys.UnFixed}"
                                           Command="{x:Static h:Commands.Refresh}"
                                           DockPanel.Dock="Right"
                                           IsChecked="{Binding Model.IsFixed}"
-                                          Style="{DynamicResource {x:Static h:ToggleButtonKeys.Switch}}" />
+                                          Style="{DynamicResource {x:Static h:ToggleButtonKeys.SwitchGeometry}}" />
                             <ContentPresenter Content="{Binding Model}" />
                         </DockPanel>
                     </Grid>
