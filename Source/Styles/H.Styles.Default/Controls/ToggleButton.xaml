@@ -86,7 +86,7 @@
         BasedOn="{StaticResource S.Control.Base}"
         TargetType="ToggleButton">
         <Setter Property="Cursor" Value="Hand" />
-        <Setter Property="Padding" Value="5" />
+        <Setter Property="Padding" Value="0" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="{x:Null}" />
