@@ -24,7 +24,9 @@ namespace H.Test.SideMenu
         [Column("author_code", Order = 2)]
         public string AuthorCode { get; set; }
 
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [Display(Name = "角色列表")]
         //[PropertyItemType(Type = typeof(MultiSelectRepositoryPropertyItem))]
         public ICollection<hi_dd_role> Roles { get; set; }

@@ -17,7 +17,9 @@ namespace H.Presenters.Design
             this.Header = display?.Name ?? t.Name;
             this.PropertyInfo = t;
         }
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         public PropertyInfo PropertyInfo { get; }
 

@@ -213,7 +213,9 @@ namespace H.Mvvm
         }
 
         private string _groupName;
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         public string GroupName
         {

@@ -198,6 +198,8 @@ namespace H.Controls.Diagram.Extension
 
         private string _message;
         [Browsable(false)]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
         [XmlIgnore]
         public string Message
         {

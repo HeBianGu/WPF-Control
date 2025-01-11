@@ -33,14 +33,16 @@ namespace H.Modules.Theme
         [Display(Name = "布局")]
         public LayoutThemeType Layout { get; set; }
 
-        [XmlIgnore]
-        [JsonIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [PropertyNameSourcePropertyItem(typeof(ComboBoxPropertyItem), nameof(ColorResources))]
         [Display(Name = "颜色主题")]
         public IColorResource ColorResource { get; set; }
 
-        [XmlIgnore]
-        [JsonIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         public List<IColorResource> ColorResources { get; } = new List<IColorResource>();
 

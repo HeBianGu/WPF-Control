@@ -27,13 +27,15 @@ namespace H.Modules.Theme
 
 
         [Browsable(false)]
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public IColorResource Dark { get; set; } = new DarkColorResource();
 
         [Browsable(false)]
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public IColorResource Light { get; set; } = new LightColorResource();
 
         internal void Refresh()

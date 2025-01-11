@@ -10,6 +10,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
+using H.Extensions.NewtonsoftJson;
 
 namespace H.Controls.FilterBox
 {
@@ -30,8 +31,9 @@ namespace H.Controls.FilterBox
         }
 
         private ObservableCollection<PropertyInfo> _properties = new ObservableCollection<PropertyInfo>();
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public ObservableCollection<PropertyInfo> Properties
         {
             get { return _properties; }
@@ -54,8 +56,9 @@ namespace H.Controls.FilterBox
         }
 
         private PropertyConfidtionPrensenter _selectedItem;
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public PropertyConfidtionPrensenter SelectedItem
         {
             get { return _selectedItem; }
@@ -78,8 +81,9 @@ namespace H.Controls.FilterBox
             }
         }
 
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public RelayCommand AddCommand => new RelayCommand(l =>
         {
             PropertyConfidtionPrensenter item = new PropertyConfidtionPrensenter() { ID = DateTime.Now.ToString("yyyyMMddHHmmssfff") };
@@ -90,8 +94,9 @@ namespace H.Controls.FilterBox
                 this.SelectedItem = item;
         });
 
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public RelayCommand ClearSelectionCommand => new RelayCommand(l =>
         {
             this.SelectedItem = null;
@@ -118,9 +123,10 @@ namespace H.Controls.FilterBox
             return true;
         }
 
-        [JsonIgnore]
-        [XmlIgnore]
-        public IMetaSettingService MetaSettingService => new XmlMetaSettingService();
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
+        public IMetaSettingService MetaSettingService => new NewtonsoftJsonMetaSettingService();
 
         private bool _loaded = false;
         public void Load()

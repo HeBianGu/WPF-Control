@@ -95,8 +95,9 @@ namespace H.Controls.ScheduleBox
                 this.Triggers.Remove(scheduleTrigger);
             }
         });
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [Browsable(true)]
         [Display(Name = "任务分组")]
         public override string GroupName { get => base.GroupName; set => base.GroupName = value; }

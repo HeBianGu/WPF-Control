@@ -27,8 +27,9 @@ namespace H.DataBases.Share
     {
         public abstract string GetConnect();
 
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         [Display(Name = "测试连接")]
         public RelayCommand ConnectCommand => new RelayCommand(async (s, e) =>
@@ -60,8 +61,9 @@ namespace H.DataBases.Share
                 await IocMessage.Window.Show(r.Item2, x => x.Title = "连接失败");
         });
 
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         [Display(Name = "保存配置")]
         public RelayCommand SaveCommand => new RelayCommand((s, e) =>

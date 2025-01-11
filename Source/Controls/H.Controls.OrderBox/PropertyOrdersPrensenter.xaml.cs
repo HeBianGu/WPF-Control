@@ -30,8 +30,9 @@ namespace H.Controls.OrderBox
         }
 
         private ObservableCollection<PropertyInfo> _properties = new ObservableCollection<PropertyInfo>();
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public ObservableCollection<PropertyInfo> Properties
         {
             get { return _properties; }
@@ -54,8 +55,9 @@ namespace H.Controls.OrderBox
         }
 
         private PropertyOrderPrensenter _selectedItem;
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public PropertyOrderPrensenter SelectedItem
         {
             get { return _selectedItem; }
@@ -77,8 +79,9 @@ namespace H.Controls.OrderBox
                 RaisePropertyChanged();
             }
         }
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public RelayCommand AddCommand => new RelayCommand(l =>
         {
             PropertyOrderPrensenter item = new PropertyOrderPrensenter() { ID = DateTime.Now.ToString("yyyyMMddHHmmssfff") };
@@ -89,8 +92,9 @@ namespace H.Controls.OrderBox
                 this.SelectedItem = item;
         });
 
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public RelayCommand ClearSelectionCommand => new RelayCommand(l =>
         {
             this.SelectedItem = null;
@@ -110,10 +114,10 @@ namespace H.Controls.OrderBox
             return true;
         }
 
-
-        [JsonIgnore]
-        [XmlIgnore]
-        public IMetaSettingService MetaSettingService => new JsonMetaSettingService();
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
+        public IMetaSettingService MetaSettingService => new TextJsonMetaSettingService();
 
         private bool _loaded = false;
         public void Load()

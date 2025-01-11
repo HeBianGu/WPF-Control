@@ -55,16 +55,19 @@ namespace H.App.FileManager
 
         [Browsable(false)]
         [JsonIgnore]
+        
         [XmlIgnore]
         public ObservableCollection<IRelayCommand> UpdateCommands { get; } = new ObservableCollection<IRelayCommand>();
 
         [Browsable(false)]
         [JsonIgnore]
+        
         [XmlIgnore]
         public ObservableCollection<IRelayCommand> MoreCommands { get; private set; } = new ObservableCollection<IRelayCommand>();
 
         [Browsable(false)]
         [JsonIgnore]
+        
         [XmlIgnore]
         public ObservableCollection<IRelayCommand> MenuCommands { get; private set; } = new ObservableCollection<IRelayCommand>();
 

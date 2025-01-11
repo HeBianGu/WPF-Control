@@ -174,6 +174,8 @@ namespace H.Controls.Diagram.Extension
         #region - 属性 -
 
         private ObservableCollection<DiagramThemeGroup> _diagramThemeGroups = new ObservableCollection<DiagramThemeGroup>();
+        [System.Text.Json.Serialization.JsonIgnore]
+        
         [XmlIgnore]
         public ObservableCollection<DiagramThemeGroup> DiagramThemeGroups
         {
@@ -186,6 +188,8 @@ namespace H.Controls.Diagram.Extension
         }
 
         private ObservableCollection<FlowableDiagramTemplateNodeData> _referenceTemplateNodeDatas = new ObservableCollection<FlowableDiagramTemplateNodeData>();
+        [System.Text.Json.Serialization.JsonIgnore]
+        
         [XmlIgnore]
         public ObservableCollection<FlowableDiagramTemplateNodeData> ReferenceTemplateNodeDatas
         {
@@ -198,6 +202,8 @@ namespace H.Controls.Diagram.Extension
         }
 
         private TreeNodeBase<Part> _root = new TreeNodeBase<Part>(null);
+        [System.Text.Json.Serialization.JsonIgnore]
+        
         [XmlIgnore]
         public TreeNodeBase<Part> Root
         {
@@ -270,6 +276,8 @@ namespace H.Controls.Diagram.Extension
 
         private ObservableCollection<NodeGroup> _nodeGroups = new ObservableCollection<NodeGroup>();
         /// <summary> 数据源  </summary>
+        [System.Text.Json.Serialization.JsonIgnore]
+        
         [XmlIgnore]
         public ObservableCollection<NodeGroup> NodeGroups
         {
@@ -283,6 +291,8 @@ namespace H.Controls.Diagram.Extension
 
         private ObservableCollection<Node> _nodes = new ObservableCollection<Node>();
         /// <summary> 工具拖动数据源  </summary>
+        [System.Text.Json.Serialization.JsonIgnore]
+        
         [XmlIgnore]
         public ObservableCollection<Node> Nodes
         {
@@ -296,6 +306,8 @@ namespace H.Controls.Diagram.Extension
 
 
         private Part _selectedPart;
+        [System.Text.Json.Serialization.JsonIgnore]
+        
         [XmlIgnore]
         public Part SelectedPart
         {
@@ -310,6 +322,8 @@ namespace H.Controls.Diagram.Extension
 
         private ILinkDrawer _linkDrawer = new BrokenLinkDrawer();
         /// <summary> 说明  </summary>
+        [System.Text.Json.Serialization.JsonIgnore]
+        
         [XmlIgnore]
         public ILinkDrawer LinkDrawer
         {
@@ -322,7 +336,8 @@ namespace H.Controls.Diagram.Extension
         }
 
         private ObservableCollection<ILinkDrawer> _lLinkDrawers = new ObservableCollection<ILinkDrawer>();
-        /// <summary> 说明  </summary>
+        [System.Text.Json.Serialization.JsonIgnore]
+        
         [XmlIgnore]
         [Browsable(false)]
         public ObservableCollection<ILinkDrawer> LinkDrawers
@@ -336,6 +351,8 @@ namespace H.Controls.Diagram.Extension
         }
 
         private ObservableCollection<ILayout> _layouts = new ObservableCollection<ILayout>();
+        [System.Text.Json.Serialization.JsonIgnore]
+        
         [XmlIgnore]
         [Browsable(false)]
         public ObservableCollection<ILayout> Layouts
@@ -350,7 +367,8 @@ namespace H.Controls.Diagram.Extension
 
 
         private ILayout _layout = new LocationLayout();
-        /// <summary> 说明  </summary>
+        [System.Text.Json.Serialization.JsonIgnore]
+        
         [XmlIgnore]
         public ILayout Layout
         {
@@ -363,6 +381,8 @@ namespace H.Controls.Diagram.Extension
         }
 
         private Type _nodeType = typeof(Node);
+        [System.Text.Json.Serialization.JsonIgnore]
+        
         [XmlIgnore]
         public Type NodeType
         {
@@ -560,6 +580,8 @@ namespace H.Controls.Diagram.Extension
             this.Clear();
         }, (s, e) => this.Nodes.Count > 0);
 
+        [System.Text.Json.Serialization.JsonIgnore]
+        
         [XmlIgnore]
         [Display(Name = "自动对齐", GroupName = "操作", Order = 5)]
         public virtual RelayCommand AlignmentCommand => new RelayCommand((s, e) =>
@@ -568,6 +590,8 @@ namespace H.Controls.Diagram.Extension
         }, (s, e) => this.Nodes.Count > 0);
 
 
+        [System.Text.Json.Serialization.JsonIgnore]
+        
         [XmlIgnore]
         [Display(Name = "上一个", GroupName = "操作", Order = 5)]
         public virtual RelayCommand ProviewCommand => new RelayCommand((s, e) =>
@@ -576,6 +600,8 @@ namespace H.Controls.Diagram.Extension
             this.LocateCenter(this.SelectedPart);
         }, (s, e) => this.SelectedPart?.GetPrevious() != null);
 
+        [System.Text.Json.Serialization.JsonIgnore]
+        
         [XmlIgnore]
         [Display(Name = "下一个", GroupName = "操作", Order = 5)]
         public virtual RelayCommand NextCommand => new RelayCommand((s, e) =>
@@ -682,6 +708,8 @@ namespace H.Controls.Diagram.Extension
         }, (s, e) => this.Nodes.Count > 0);
 
         private Action<Point> _locateCenterCallBack;
+        [System.Text.Json.Serialization.JsonIgnore]
+        
         [XmlIgnore]
         public Action<Point> LocateCenterCallBack
         {
@@ -696,6 +724,8 @@ namespace H.Controls.Diagram.Extension
         }
 
         private Action<Rect> _locateRectCallBack;
+        [System.Text.Json.Serialization.JsonIgnore]
+        
         [XmlIgnore]
         public Action<Rect> LocateRectCallBack
         {

@@ -67,8 +67,9 @@ namespace H.Modules.Login
         }
 
         private string _adminPassword;
-        [XmlIgnore]
-        [JsonIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         [DefaultValue("123456")]
         [Required]

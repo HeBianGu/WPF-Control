@@ -44,7 +44,9 @@ namespace H.Modules.Identity
             }
         }
 
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [Display(Name = "角色列表")]
         //[PropertyItemType(Type = typeof(MultiSelectRepositoryPropertyItem))]
         public virtual ICollection<hi_dd_role> Roles { get; set; } = new ObservableCollection<hi_dd_role>();

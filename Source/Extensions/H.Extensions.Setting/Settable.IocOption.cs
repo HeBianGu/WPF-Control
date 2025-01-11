@@ -13,8 +13,9 @@ namespace H.Extensions.Setting
         public static Setting Instance => Ioc.GetService<IOptions<Setting>>().Value;
 
         [Browsable(false)]
-        [XmlIgnore]
-        [JsonIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         Setting IOptions<Setting>.Value
         {
             get { return Instance; }

@@ -40,9 +40,9 @@ namespace H.Modules.Project
         private IProjectItem _current;
 
         public event EventHandler CollectionChanged;
-
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         public IProjectItem Current
         {
@@ -61,8 +61,9 @@ namespace H.Modules.Project
             }
         }
 
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         public Action<IProjectItem, IProjectItem> CurrentChanged { get; set; }
 

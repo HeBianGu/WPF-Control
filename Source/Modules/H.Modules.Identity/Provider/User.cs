@@ -66,10 +66,12 @@ namespace H.Modules.Identity
         //public string RoleID { get; set; }
 
         private Role _role;
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [Required]
         [Display(Name = "用户角色")]
-        [PropertyItem(Type = typeof(RoleComboBoxPropertyItem))]
+        [PropertyItem(typeof(RoleComboBoxPropertyItem))]
         public Role Role
         {
             get { return _role; }

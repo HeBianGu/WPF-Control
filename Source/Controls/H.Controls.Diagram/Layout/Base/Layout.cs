@@ -11,6 +11,8 @@ namespace H.Controls.Diagram
     /// <summary> 布局  设置排列方式 </summary>
     public abstract class Layout : FrameworkElement, ILayout
     {
+        [System.Text.Json.Serialization.JsonIgnore]
+        
         [XmlIgnore]
         public Diagram Diagram { get; set; }
 

@@ -20,6 +20,8 @@ namespace H.Controls.Diagram
 
     public abstract class LinkDrawer : DependencyObject, ILinkDrawer
     {
+        [System.Text.Json.Serialization.JsonIgnore]
+        
         [XmlIgnore]
         public Diagram Diagram { get; set; }
 

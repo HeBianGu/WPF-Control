@@ -194,7 +194,6 @@ namespace H.Controls.FilterBox
             this.OnFilterChanged();
         }
 
-
         public async void ShowConfig()
         {
             bool? r = await IocMessage.Dialog.Show(_propertyConfidtions, x =>

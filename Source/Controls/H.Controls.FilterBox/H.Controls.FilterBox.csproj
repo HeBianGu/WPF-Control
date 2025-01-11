@@ -3,6 +3,7 @@
     <ProjectReference Include="..\..\Extensions\H.Extensions.Behvaiors\H.Extensions.Behvaiors.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Geometry\H.Extensions.Geometry.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.MarkupExtension\H.Extensions.MarkupExtension.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.NewtonsoftJson\H.Extensions.NewtonsoftJson.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.ValueConverter\H.Extensions.ValueConverter.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.XmlSerialize\H.Extensions.XmlSerialize.csproj" />
     <ProjectReference Include="..\..\Services\H.Services.Common\H.Services.Common.csproj" />

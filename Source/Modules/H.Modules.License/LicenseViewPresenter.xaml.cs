@@ -34,7 +34,9 @@ namespace H.Modules.License
         }
 
         private bool _isTrail;
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         public bool IsTrail
         {
@@ -60,7 +62,9 @@ namespace H.Modules.License
         }
 
         private string _lic;
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         [Display(Name = "注册码")]
         public string Lic
@@ -102,7 +106,9 @@ namespace H.Modules.License
 
 
         private string _message;
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         public string Message
         {
@@ -162,7 +168,9 @@ namespace H.Modules.License
             Ioc<ILicenseFlagViewPresenter>.Instance?.Refresh();
         }, (s, e) => string.IsNullOrEmpty(this.Error));
 
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         public string Error { get; private set; }
 

@@ -11,6 +11,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
+using H.Extensions.NewtonsoftJson;
 
 namespace H.Controls.FilterBox
 {
@@ -33,7 +34,6 @@ namespace H.Controls.FilterBox
         }
 
         private ObservableCollection<IPropertyConfidtion> _conditions = new ObservableCollection<IPropertyConfidtion>();
-        /// <summary> 说明  </summary>
         public ObservableCollection<IPropertyConfidtion> Conditions
         {
             get { return _conditions; }
@@ -56,8 +56,9 @@ namespace H.Controls.FilterBox
         }
 
 
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public RelayCommand AddConditionCommand => new RelayCommand(l =>
         {
             PropertyInfo first = this.Properties.FirstOrDefault();
@@ -66,23 +67,26 @@ namespace H.Controls.FilterBox
             this.Conditions.Add(confidtion);
         });
 
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public RelayCommand ClearConditionCommand => new RelayCommand(l =>
         {
             this.Conditions.Clear();
         }, l => this.Conditions.Count > 0);
 
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public RelayCommand SaveCommand => new RelayCommand(l =>
         {
             this.Save(out string message);
         });
 
         private ObservableCollection<PropertyInfo> _properties = new ObservableCollection<PropertyInfo>();
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public ObservableCollection<PropertyInfo> Properties
         {
             get { return _properties; }
@@ -104,9 +108,10 @@ namespace H.Controls.FilterBox
             return !this.Conditions.All(x => x.IsMatch(obj));
         }
 
-        [JsonIgnore]
-        [XmlIgnore]
-        public IMetaSettingService MetaSettingService => new XmlMetaSettingService();
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
+        public IMetaSettingService MetaSettingService => new NewtonsoftJsonMetaSettingService();
 
         public bool Save(out string message)
         {

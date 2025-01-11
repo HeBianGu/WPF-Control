@@ -45,7 +45,9 @@ namespace H.Test.SideMenu
         //[Binding("Role.ID")]
         public string RoleID { get; set; }
 
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [Required]
         [Display(Name = "角色")]
         [Column("role", Order = 6)]

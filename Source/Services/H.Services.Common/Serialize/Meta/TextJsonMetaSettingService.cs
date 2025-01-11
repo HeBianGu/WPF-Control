@@ -3,10 +3,10 @@ using System.Text.Json;
 
 namespace H.Services.Common
 {
-    public class JsonMetaSettingService : IMetaSettingService
+
+    public class TextJsonMetaSettingService : JsonMetaSettingServiceBase
     {
-        private string GetFilePath(string typeName, string id) => Path.Combine(AppPaths.Instance.Cache, id + ".json");
-        public T Deserilize<T>(string id)
+        public override T Deserilize<T>(string id)
         {
             if (!File.Exists(this.GetFilePath(typeof(T).Name, id)))
                 return default;
@@ -14,7 +14,7 @@ namespace H.Services.Common
             return (T)JsonSerializer.Deserialize(txt, typeof(T));
         }
 
-        public void Serilize(object setting, string id)
+        public override void Serilize(object setting, string id)
         {
             string txt = JsonSerializer.Serialize(setting);
             File.WriteAllText(this.GetFilePath(setting.GetType().Name, id), txt);

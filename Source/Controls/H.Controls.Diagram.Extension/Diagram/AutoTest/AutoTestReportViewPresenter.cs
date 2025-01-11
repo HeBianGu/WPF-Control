@@ -51,6 +51,8 @@ namespace H.Controls.Diagram.Extension
         }
         private ChartData _loginData = new ChartData();
         [Browsable(false)]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
         [XmlIgnore]
         public ChartData LoginData
         {
@@ -64,6 +66,8 @@ namespace H.Controls.Diagram.Extension
 
         private ChartData _userData = new ChartData();
         [Browsable(false)]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
         [XmlIgnore]
         public ChartData UserData
         {

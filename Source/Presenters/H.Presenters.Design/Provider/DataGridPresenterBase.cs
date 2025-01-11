@@ -181,7 +181,9 @@ namespace H.Presenters.Design
 
 
         private IEnumerable _itemsSource;
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         public IEnumerable ItemsSource
         {
@@ -194,7 +196,9 @@ namespace H.Presenters.Design
         }
 
         private ObservableCollection<ColumnPropertyInfo> _columnPropertyInfos = new ObservableCollection<ColumnPropertyInfo>();
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [Display(Name = "列头设置", GroupName = "常用,数据")]
         public ObservableCollection<ColumnPropertyInfo> ColumnPropertyInfos

@@ -20,7 +20,9 @@ namespace H.Modules.Project
             this._projectService = projectService;
         }
         [Browsable(false)]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public RelayCommand NewCommand => new RelayCommand(async (s, e) =>
         {
             var project = this._projectService.Create();
@@ -32,7 +34,9 @@ namespace H.Modules.Project
         }, (s, e) => this._projectService != null);
 
         [Browsable(false)]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public RelayCommand NewOrListCommand => new RelayCommand((s, e) =>
         {
             if (this._projectService.Where().Count() == 0)
@@ -45,7 +49,9 @@ namespace H.Modules.Project
         }, (s, e) => this._projectService != null);
 
         [Browsable(false)]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public RelayCommand ListCommand => new RelayCommand(async (s, e) =>
         {
             var project = new ProjectListViewPresenter();

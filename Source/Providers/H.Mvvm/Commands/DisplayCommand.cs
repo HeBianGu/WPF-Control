@@ -30,7 +30,9 @@ namespace H.Mvvm
         }
 
         private string _description;
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         public virtual string Description
         {
@@ -44,7 +46,9 @@ namespace H.Mvvm
 
 
         private int _order;
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         public virtual int Order
         {

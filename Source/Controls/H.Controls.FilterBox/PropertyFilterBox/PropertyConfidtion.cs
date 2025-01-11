@@ -32,8 +32,9 @@ namespace H.Controls.FilterBox
             }
         }
 
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public RelayCommand SelectionChangedCommand => new RelayCommand(l =>
         {
             if (l is SelectionChangedEventArgs arg)

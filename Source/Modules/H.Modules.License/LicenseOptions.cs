@@ -14,8 +14,9 @@ namespace H.Modules.License
     public class LicenseOptions : IocOptionInstance<LicenseOptions>
     {
         private bool _useTipTrialOnLoad = false;
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         [DefaultValue(true)]
         [Display(Name = "不提示试用许可")]
@@ -31,8 +32,9 @@ namespace H.Modules.License
 
         private bool _useVailLicenceOnLoad = true;
         [Browsable(false)]
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [Display(Name = "启动时是否启用许可验证")]
         public bool UseVailLicenceOnLoad
         {
@@ -46,8 +48,9 @@ namespace H.Modules.License
 
 
         private bool _useTrial = true;
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         [Display(Name = "启用试用")]
         public bool UseTrial
@@ -74,8 +77,9 @@ namespace H.Modules.License
         }
 
         private string _filePath = AppPaths.Instance.License;
-        [Browsable(false)]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [Display(Name = "许可路径")]
         public string FilePath

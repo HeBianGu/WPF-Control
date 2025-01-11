@@ -44,12 +44,16 @@ namespace H.Modules.Identity
             }
         }
 
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [Display(Name = "权限列表")]
         //[PropertyItemType(Type = typeof(MultiSelectRepositoryPropertyItem))] 
         public virtual ICollection<hi_dd_author> Authors { get; set; } = new ObservableCollection<hi_dd_author>();
 
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [Display(Name = "用户列表")]
         //[PropertyItemType(Type = typeof(MultiSelectRepositoryPropertyItem))]
         public virtual ICollection<hi_dd_user> Users { get; set; } = new ObservableCollection<hi_dd_user>();

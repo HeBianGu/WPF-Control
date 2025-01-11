@@ -9,6 +9,8 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Xml.Serialization;
 using H.Extensions.DataBase;
+using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
+using H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem;
 
 namespace H.Modules.Identity
 {
@@ -140,13 +142,14 @@ namespace H.Modules.Identity
         public string RoleID { get; set; }
 
         private hi_dd_role _role;
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         //[Required]
         [Display(Name = "角色")]
         [Column("role", Order = 9)]
         [DataGridColumn("*", PropertyPath = "{0}.Name")]
-        [BindingGetSelectSourceMethod(nameof(GetRoles))]
-        [PropertyItem(typeof(ComboBoxPropertyItem))]
+        [MethodNameSourcePropertyItem(typeof(ComboBoxPropertyItem), nameof(GetRoles))]
         public virtual hi_dd_role Role
         {
             get { return _role; }

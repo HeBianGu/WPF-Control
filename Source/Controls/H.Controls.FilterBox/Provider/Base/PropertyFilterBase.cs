@@ -12,6 +12,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 using System.Xml.Serialization;
+using System.Text.Json.Serialization;
 
 namespace H.Controls.FilterBox
 {
@@ -23,7 +24,9 @@ namespace H.Controls.FilterBox
         }
 
         private ObservableCollection<T> _source = new ObservableCollection<T>();
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public ObservableCollection<T> Source
         {
             get { return _source; }
@@ -35,7 +38,9 @@ namespace H.Controls.FilterBox
         }
 
         private ObservableCollection<T> _selectedSource = new ObservableCollection<T>();
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public ObservableCollection<T> SelectedSource
         {
             get { return _selectedSource; }
@@ -47,7 +52,9 @@ namespace H.Controls.FilterBox
         }
 
         private PropertyInfo _propertyInfo;
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public PropertyInfo PropertyInfo
         {
             get { return _propertyInfo; }
@@ -92,7 +99,6 @@ namespace H.Controls.FilterBox
         #region - 属性 -
 
         private string _name;
-        /// <summary> 说明  </summary>
         public string Name
         {
             get { return _name; }
@@ -105,7 +111,9 @@ namespace H.Controls.FilterBox
 
 
         private string _displayName;
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public string DisplayName
         {
             get { return _displayName; }
@@ -130,7 +138,6 @@ namespace H.Controls.FilterBox
         }
 
         private T _value;
-        /// <summary> 说明  </summary>
         public T Value
         {
             get { return _value; }
@@ -142,7 +149,6 @@ namespace H.Controls.FilterBox
         }
 
         private bool _isSelected = true;
-        /// <summary> 说明  </summary>
         public bool IsSelected
         {
             get { return _isSelected; }

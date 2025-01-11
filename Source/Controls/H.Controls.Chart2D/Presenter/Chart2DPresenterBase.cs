@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Windows.Media;
 using System.Xml.Serialization;
 
@@ -32,6 +33,8 @@ namespace H.Controls.Chart2D
 
         private bool _drawOnce;
         [Browsable(false)]
+        [JsonIgnore]
+        
         [XmlIgnore]
         public bool drawOnce
         {

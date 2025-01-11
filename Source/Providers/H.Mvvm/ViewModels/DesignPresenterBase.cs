@@ -15,7 +15,9 @@ namespace H.Mvvm
     {
         private bool _isSelected;
         [Browsable(false)]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public bool IsSelected
         {
             get { return _isSelected; }
@@ -28,7 +30,9 @@ namespace H.Mvvm
 
         private bool _isMouseOver;
         [Browsable(false)]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public bool IsMouseOver
         {
             get { return _isMouseOver; }

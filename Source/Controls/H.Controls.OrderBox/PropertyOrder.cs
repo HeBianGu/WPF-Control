@@ -44,10 +44,9 @@ namespace H.Controls.OrderBox
         }
 
         public string PropertyName { get; set; }
-
         private PropertyInfo _propertyInfo;
-        [XmlIgnore]
-        [JsonIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        [System.Xml.Serialization.XmlIgnore]
         public PropertyInfo PropertyInfo
         {
             get { return _propertyInfo; }

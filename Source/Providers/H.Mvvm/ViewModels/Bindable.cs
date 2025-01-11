@@ -9,18 +9,21 @@ namespace H.Mvvm
     public abstract class Bindable : BindableBase
     {
         [Browsable(false)]
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public RelayCommand RelayCommand { get; set; }
 
         [Browsable(false)]
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public RelayCommand LoadedCommand => new RelayCommand(Loaded);
 
         [Browsable(false)]
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public RelayCommand CallMethodCommand { get; set; }
 
 

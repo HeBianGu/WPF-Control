@@ -43,7 +43,9 @@ namespace H.Modules.About
         public string Title { get; set; }
 
         private string _ProductName;
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [Display(Name = "产品名称")]
         public string ProductName
@@ -56,7 +58,9 @@ namespace H.Modules.About
         }
 
         private string _productDescription;
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [Display(Name = "产品信息")]
         public string ProductDescription
@@ -69,7 +73,9 @@ namespace H.Modules.About
         }
 
         private string _company;
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [Display(Name = "公司信息")]
         public string Company
@@ -83,7 +89,9 @@ namespace H.Modules.About
 
 
         private string _culture;
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [Display(Name = "产品区域")]
         public string Culture
@@ -96,7 +104,9 @@ namespace H.Modules.About
         }
 
         private string _trademark;
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [Display(Name = "产品商标")]
         public string Trademark
@@ -109,7 +119,9 @@ namespace H.Modules.About
         }
 
         private string _configuration;
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [Display(Name = "产品配置")]
         public string Configuration
@@ -122,7 +134,9 @@ namespace H.Modules.About
         }
 
         private string _privacy;
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [DefaultValue("https://github.com/HeBianGu/WPF-Control")]
         [Display(Name = "隐私政策")]
@@ -136,7 +150,9 @@ namespace H.Modules.About
         }
 
         private string _agreement;
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [DefaultValue("https://github.com/HeBianGu/WPF-Control")]
         [Display(Name = "服务协议")]
@@ -150,7 +166,9 @@ namespace H.Modules.About
         }
 
         private string _copyright;
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [Display(Name = "许可证书")]
         public string Copyright
@@ -164,7 +182,9 @@ namespace H.Modules.About
 
         private string _version;
         [ReadOnly(true)]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [Display(Name = "产品版本")]
         public string Version
         {
@@ -176,7 +196,9 @@ namespace H.Modules.About
         }
 
         private string _fileVersion;
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [Display(Name = "文件版本")]
         public string FileVersion
@@ -189,7 +211,9 @@ namespace H.Modules.About
         }
 
         private string _webSet;
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [DefaultValue("https://github.com/HeBianGu/WPF-Control")]
         [Display(Name = "官方网站")]
@@ -203,7 +227,9 @@ namespace H.Modules.About
         }
 
         private string _contact;
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [DefaultValue("QQ:908293466")]
         [Display(Name = "联系方式")]

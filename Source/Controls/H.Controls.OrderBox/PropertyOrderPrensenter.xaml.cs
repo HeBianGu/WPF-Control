@@ -55,30 +55,34 @@ namespace H.Controls.OrderBox
                 RaisePropertyChanged();
             }
         }
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public RelayCommand AddConditionCommand => new RelayCommand(l =>
         {
             PropertyInfo first = this.Properties.FirstOrDefault();
             PropertyOrder Order = new PropertyOrder(first);
             this.Conditions.Add(Order);
         });
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public RelayCommand ClearConditionCommand => new RelayCommand(l =>
         {
             this.Conditions.Clear();
         }, l => this.Conditions.Count > 0);
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public RelayCommand SaveCommand => new RelayCommand(l =>
         {
             this.Save(out string message);
         });
 
         private ObservableCollection<PropertyInfo> _properties = new ObservableCollection<PropertyInfo>();
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public ObservableCollection<PropertyInfo> Properties
         {
             get { return _properties; }
@@ -88,9 +92,10 @@ namespace H.Controls.OrderBox
                 RaisePropertyChanged();
             }
         }
-        [JsonIgnore]
-        [XmlIgnore]
-        public IMetaSettingService MetaSettingService => new JsonMetaSettingService();
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
+        public IMetaSettingService MetaSettingService => new TextJsonMetaSettingService();
 
         public bool Save(out string message)
         {
