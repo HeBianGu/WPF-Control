@@ -60,6 +60,7 @@
                                     x:Name="PART_SelectedContentHost"
                                     Margin="{TemplateBinding Padding}"
                                     Content="{TemplateBinding SelectedContent}"
+                                    ContentTemplate="{TemplateBinding SelectedContentTemplate}"
                                     Foreground="{TemplateBinding Foreground}"
                                     SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                                 <!--<ContentPresenter
