@@ -1,5 +1,6 @@
 ﻿using H.Services.Common;
 using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
@@ -25,6 +26,12 @@ namespace H.Controls.OrderBox
         {
             this.ID = this.GetType().Name;
             this.Order = new PropertyOrderBoxOrder(this);
+
+            this.DefinePropertyOrderPrensenters.CollectionChanged +=(l, k) =>
+            {
+                this.RefreshType(this.Type);
+            };
+
         }
 
         public string ID { get; set; }
@@ -196,9 +203,25 @@ namespace H.Controls.OrderBox
                 ID = this.ID
             };
             this._propertyOrders.Load();
+
+                    if (this._propertyOrders.PropertyOrders.Count > 0)
+                return;
+            //加载预定义的条件
+            foreach (var item in this.DefinePropertyOrderPrensenters)
+            {
+                item.Properties = this._propertyOrders.Properties;
+                foreach (PropertyOrder Order in item.Conditions)
+                {
+                    PropertyInfo propertyInfo = item.Properties.FirstOrDefault(x => x.Name == Order.PropertyName);
+                    Order.PropertyInfo = propertyInfo;
+                }
+                _propertyOrders.PropertyOrders.Add(item);
+            }
+            this.OnOrderChanged();
         }
 
-        public async void ShowConfig()
+        public ObservableCollection<PropertyOrderPrensenter> DefinePropertyOrderPrensenters { get; } = new ObservableCollection<PropertyOrderPrensenter>();
+public async void ShowConfig()
         {
             bool? r = await IocMessage.Dialog.Show(_propertyOrders, x =>
             {

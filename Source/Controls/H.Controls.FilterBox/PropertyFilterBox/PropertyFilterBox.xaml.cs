@@ -38,7 +38,7 @@ namespace H.Controls.FilterBox
             this.Filter = new PropertyFilterBoxFilter(this);
             this.ID = GetType().Name;
 
-            this.DefinesPropertyConditions.CollectionChanged += (l, k) =>
+            this.DefinePropertyConditionPrensenters.CollectionChanged += (l, k) =>
             {
                 this.RefreshType(this.Type);
             };
@@ -199,7 +199,7 @@ namespace H.Controls.FilterBox
             if (this._propertyConfidtions.PropertyConfidtions.Count > 0)
                 return;
             //加载预定义的条件
-            foreach (PropertyConditionPrensenter item in this.DefinesPropertyConditions)
+            foreach (PropertyConditionPrensenter item in this.DefinePropertyConditionPrensenters)
             {
                 item.Properties = _propertyConfidtions.Properties;
                 foreach (IPropertyConfidtion confidtion in item.Conditions)
@@ -212,7 +212,7 @@ namespace H.Controls.FilterBox
             this.OnFilterChanged();
         }
 
-        public ObservableCollection<PropertyConditionPrensenter> DefinesPropertyConditions { get; } = new ObservableCollection<PropertyConditionPrensenter>();
+        public ObservableCollection<PropertyConditionPrensenter> DefinePropertyConditionPrensenters { get; } = new ObservableCollection<PropertyConditionPrensenter>();
 
         public async void ShowConfig()
         {
