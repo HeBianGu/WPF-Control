@@ -14,14 +14,14 @@ using H.Extensions.NewtonsoftJson;
 
 namespace H.Controls.FilterBox
 {
-    public class PropertyConfidtionsPrensenter : DisplayBindableBase, IConditionable, IMetaSetting
+    public class PropertyConditionsPrensenter : DisplayBindableBase, IConditionable, IMetaSetting
     {
-        public PropertyConfidtionsPrensenter()
+        public PropertyConditionsPrensenter()
         {
 
         }
 
-        public PropertyConfidtionsPrensenter(Type modelTyle, Func<PropertyInfo, bool> predicate = null)
+        public PropertyConditionsPrensenter(Type modelTyle, Func<PropertyInfo, bool> predicate = null)
         {
             ObservableCollection<PropertyInfo> ps = modelTyle.GetProperties().Where(x => x.PropertyType.IsPrimitive || x.PropertyType == typeof(DateTime) || x.PropertyType == typeof(string)).ToObservable();
             if (predicate != null)
@@ -44,8 +44,8 @@ namespace H.Controls.FilterBox
             }
         }
 
-        private ObservableCollection<PropertyConfidtionPrensenter> _propertyConfidtions = new ObservableCollection<PropertyConfidtionPrensenter>();
-        public ObservableCollection<PropertyConfidtionPrensenter> PropertyConfidtions
+        private ObservableCollection<PropertyConditionPrensenter> _propertyConfidtions = new ObservableCollection<PropertyConditionPrensenter>();
+        public ObservableCollection<PropertyConditionPrensenter> PropertyConfidtions
         {
             get { return _propertyConfidtions; }
             set
@@ -55,11 +55,11 @@ namespace H.Controls.FilterBox
             }
         }
 
-        private PropertyConfidtionPrensenter _selectedItem;
+        private PropertyConditionPrensenter _selectedItem;
         [System.Text.Json.Serialization.JsonIgnore]
         
         [System.Xml.Serialization.XmlIgnore]
-        public PropertyConfidtionPrensenter SelectedItem
+        public PropertyConditionPrensenter SelectedItem
         {
             get { return _selectedItem; }
             set
@@ -86,7 +86,7 @@ namespace H.Controls.FilterBox
         [System.Xml.Serialization.XmlIgnore]
         public RelayCommand AddCommand => new RelayCommand(l =>
         {
-            PropertyConfidtionPrensenter item = new PropertyConfidtionPrensenter() { ID = DateTime.Now.ToString("yyyyMMddHHmmssfff") };
+            PropertyConditionPrensenter item = new PropertyConditionPrensenter() { ID = DateTime.Now.ToString("yyyyMMddHHmmssfff") };
             item.Properties = this.Properties;
             item.Load();
             this.PropertyConfidtions.Add(item);
@@ -133,19 +133,19 @@ namespace H.Controls.FilterBox
         {
             if (_loaded == true)
                 return;
-            PropertyConfidtionsPrensenter find = this.MetaSettingService?.Deserilize<PropertyConfidtionsPrensenter>(this.ID);
+            PropertyConditionsPrensenter find = this.MetaSettingService?.Deserilize<PropertyConditionsPrensenter>(this.ID);
             if (find == null)
                 return;
             this.PropertyConfidtions = find.PropertyConfidtions;
             if (find.SelectedIndex >= 0)
                 this.SelectedItem = find.PropertyConfidtions[find.SelectedIndex];
 
-            foreach (PropertyConfidtionPrensenter item in find.PropertyConfidtions)
+            foreach (PropertyConditionPrensenter item in find.PropertyConfidtions)
             {
                 item.Properties = this.Properties;
                 foreach (IPropertyConfidtion confidtion in item.Conditions)
                 {
-                    PropertyInfo propertyInfo = item.Properties.FirstOrDefault(x => x.Name == confidtion.Filter.Name);
+                    PropertyInfo propertyInfo = item.Properties.FirstOrDefault(x => x.Name == confidtion.Filter.PropertyName);
                     confidtion.Filter.PropertyInfo = propertyInfo;
                 }
             }

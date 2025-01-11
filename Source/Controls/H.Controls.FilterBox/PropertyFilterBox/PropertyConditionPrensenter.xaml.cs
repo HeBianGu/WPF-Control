@@ -12,19 +12,21 @@ using System.Reflection;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using H.Extensions.NewtonsoftJson;
+using System.Windows.Markup;
+using System.ComponentModel;
 
 namespace H.Controls.FilterBox
 {
-
+    [ContentProperty(nameof(Conditions))]
     [Display(Name = "设置条件")]
-    public class PropertyConfidtionPrensenter : DisplayBindableBase, IConditionable, IMetaSetting
+    public class PropertyConditionPrensenter : DisplayBindableBase, IConditionable, IMetaSetting
     {
-        public PropertyConfidtionPrensenter()
+        public PropertyConditionPrensenter()
         {
 
         }
 
-        public PropertyConfidtionPrensenter(Type modelTyle, Func<PropertyInfo, bool> predicate = null)
+        public PropertyConditionPrensenter(Type modelTyle, Func<PropertyInfo, bool> predicate = null)
         {
             ObservableCollection<PropertyInfo> ps = modelTyle.GetProperties().Where(x => x.PropertyType.IsPrimitive || x.PropertyType == typeof(DateTime) || x.PropertyType == typeof(string)).ToObservable();
             if (predicate != null)
@@ -45,6 +47,7 @@ namespace H.Controls.FilterBox
         }
 
         private ConditionOperate _conditionOperate = ConditionOperate.All;
+        [TypeConverter(typeof(EnumConverter))]
         public ConditionOperate ConditionOperate
         {
             get { return _conditionOperate; }
@@ -57,7 +60,6 @@ namespace H.Controls.FilterBox
 
 
         [System.Text.Json.Serialization.JsonIgnore]
-        
         [System.Xml.Serialization.XmlIgnore]
         public RelayCommand AddConditionCommand => new RelayCommand(l =>
         {
@@ -68,7 +70,6 @@ namespace H.Controls.FilterBox
         });
 
         [System.Text.Json.Serialization.JsonIgnore]
-        
         [System.Xml.Serialization.XmlIgnore]
         public RelayCommand ClearConditionCommand => new RelayCommand(l =>
         {
@@ -76,7 +77,6 @@ namespace H.Controls.FilterBox
         }, l => this.Conditions.Count > 0);
 
         [System.Text.Json.Serialization.JsonIgnore]
-        
         [System.Xml.Serialization.XmlIgnore]
         public RelayCommand SaveCommand => new RelayCommand(l =>
         {
@@ -85,7 +85,6 @@ namespace H.Controls.FilterBox
 
         private ObservableCollection<PropertyInfo> _properties = new ObservableCollection<PropertyInfo>();
         [System.Text.Json.Serialization.JsonIgnore]
-        
         [System.Xml.Serialization.XmlIgnore]
         public ObservableCollection<PropertyInfo> Properties
         {
@@ -132,7 +131,7 @@ namespace H.Controls.FilterBox
                 return;
             if (string.IsNullOrEmpty(this.ID))
                 return;
-            PropertyConfidtionPrensenter find = this.MetaSettingService?.Deserilize<PropertyConfidtionPrensenter>(this.ID);
+            PropertyConditionPrensenter find = this.MetaSettingService?.Deserilize<PropertyConditionPrensenter>(this.ID);
             if (find == null)
                 return;
 

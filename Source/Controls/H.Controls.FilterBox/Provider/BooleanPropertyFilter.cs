@@ -5,25 +5,25 @@ using System.Reflection;
 
 namespace H.Controls.FilterBox
 {
-    public class BooleanFilter : PropertyFilterBase<bool>
+    public class BooleanPropertyFilter : PropertyFilterBase<bool>
     {
-        public BooleanFilter()
+        public BooleanPropertyFilter()
         {
 
         }
-        public BooleanFilter(PropertyInfo property) : base(property)
+        public BooleanPropertyFilter(PropertyInfo property) : base(property)
         {
 
         }
 
         public override IFilterable Copy()
         {
-            return new BooleanFilter(this.PropertyInfo) { Operate = this.Operate, Value = this.Value };
+            return new BooleanPropertyFilter(this.PropertyInfo) { Operate = this.Operate, Value = this.Value };
         }
 
         public override bool IsMatch(object obj)
         {
-            PropertyInfo p = obj.GetType().GetProperty(this.Name);
+            PropertyInfo p = obj.GetType().GetProperty(this.PropertyName);
             if (p == null || !p.CanRead)
                 return false;
             bool v = (bool)p.GetValue(obj);

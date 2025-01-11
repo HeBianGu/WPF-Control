@@ -5,10 +5,12 @@ using H.Mvvm;
 using System.Reflection;
 using System.Text.Json.Serialization;
 using System.Windows.Controls;
+using System.Windows.Markup;
 using System.Xml.Serialization;
 
 namespace H.Controls.FilterBox
 {
+    [ContentProperty(nameof(Filter))]
     public class PropertyConfidtion : Bindable, IConditionable, IPropertyConfidtion
     {
         public PropertyConfidtion()

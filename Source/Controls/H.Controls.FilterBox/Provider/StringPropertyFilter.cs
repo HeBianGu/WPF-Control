@@ -9,20 +9,19 @@ using System.Reflection;
 
 namespace H.Controls.FilterBox
 {
-
-    public class StringFilter : PropertyFilterBase<string>
+    public class StringPropertyFilter : PropertyFilterBase<string>
     {
-        public StringFilter()
+        public StringPropertyFilter()
         {
 
         }
-        public StringFilter(PropertyInfo property) : base(property)
+        public StringPropertyFilter(PropertyInfo property) : base(property)
         {
             this.Operate = FilterOperate.Equals;
 
         }
 
-        public StringFilter(PropertyInfo property, IEnumerable source) : base(property, source)
+        public StringPropertyFilter(PropertyInfo property, IEnumerable source) : base(property, source)
         {
             this.Operate = FilterOperate.Equals;
         }
@@ -40,7 +39,7 @@ namespace H.Controls.FilterBox
 
         public override IFilterable Copy()
         {
-            StringFilter result = new StringFilter(this.PropertyInfo)
+            StringPropertyFilter result = new StringPropertyFilter(this.PropertyInfo)
             {
                 Operate = this.Operate,
                 Value = this.Value,
@@ -58,7 +57,7 @@ namespace H.Controls.FilterBox
 
         public override bool IsMatch(object obj)
         {
-            PropertyInfo p = obj.GetType().GetProperty(this.Name);
+            PropertyInfo p = obj.GetType().GetProperty(this.PropertyName);
             if (p == null || !p.CanRead)
                 return false;
 
@@ -77,10 +76,14 @@ namespace H.Controls.FilterBox
             }
             else if (this.Operate == FilterOperate.Equals)
             {
+                if (string.IsNullOrEmpty(this.Value))
+                    return string.IsNullOrEmpty(v);
                 return string.Compare(v, this.Value, this.OrdinalIgnoreCase) == 0;
             }
             else if (this.Operate == FilterOperate.UnEquals)
             {
+                if (string.IsNullOrEmpty(this.Value))
+                    return !string.IsNullOrEmpty(v);
                 return string.Compare(v, this.Value, this.OrdinalIgnoreCase) != 0;
             }
             else if (this.Operate == FilterOperate.SelectSource)

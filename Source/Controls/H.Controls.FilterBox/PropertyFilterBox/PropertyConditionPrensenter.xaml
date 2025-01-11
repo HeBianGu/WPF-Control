@@ -5,7 +5,7 @@
     xmlns:h="https://github.com/HeBianGu"
     xmlns:local="clr-namespace:H.Controls.FilterBox"
     xmlns:system="clr-namespace:System;assembly=mscorlib">
-    <DataTemplate DataType="{x:Type local:PropertyConfidtionPrensenter}">
+    <DataTemplate DataType="{x:Type local:PropertyConditionPrensenter}">
         <DockPanel MinWidth="600">
             <DockPanel
                 Margin="0,0"

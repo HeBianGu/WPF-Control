@@ -18,27 +18,27 @@ namespace H.Controls.FilterBox
 
             if (property.PropertyType.FullName == typeof(string).FullName)
             {
-                return new StringFilter(property, source);
+                return new StringPropertyFilter(property, source);
             }
             else if (property.PropertyType.FullName == typeof(int).FullName)
             {
-                return new IntFilter(property);
+                return new IntPropertyFilter(property);
             }
             else if (property.PropertyType.FullName == typeof(long).FullName)
             {
-                return new LongFilter(property);
+                return new LongPropertyFilter(property);
             }
             else if (property.PropertyType.FullName == typeof(double).FullName)
             {
-                return new DoubleFilter(property);
+                return new DoublePropertyFilter(property);
             }
             else if (property.PropertyType.FullName == typeof(bool).FullName)
             {
-                return new BooleanFilter(property);
+                return new BooleanPropertyFilter(property);
             }
             else if (property.PropertyType.FullName == typeof(DateTime).FullName)
             {
-                return new DateTimeFilter(property);
+                return new DateTimePropertyFilter(property);
             }
 
             throw new NotImplementedException($"{property.PropertyType.FullName} 类型没有实现，请先实现该类型方法");

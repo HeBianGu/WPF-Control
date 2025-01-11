@@ -18,6 +18,7 @@ namespace H.Extensions.NewtonsoftJson
             var textIgnored = member.GetCustomAttribute<System.Text.Json.Serialization.JsonIgnoreAttribute>();
             var xmlIgnored = member.GetCustomAttribute<System.Xml.Serialization.XmlIgnoreAttribute>();
             property.ShouldDeserialize = x => textIgnored == null && xmlIgnored == null;
+            property.ShouldSerialize = x => textIgnored == null && xmlIgnored == null;
             return property;
         }
     }

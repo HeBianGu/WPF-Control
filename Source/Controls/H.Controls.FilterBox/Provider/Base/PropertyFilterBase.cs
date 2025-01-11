@@ -53,7 +53,6 @@ namespace H.Controls.FilterBox
 
         private PropertyInfo _propertyInfo;
         [System.Text.Json.Serialization.JsonIgnore]
-        
         [System.Xml.Serialization.XmlIgnore]
         public PropertyInfo PropertyInfo
         {
@@ -70,7 +69,7 @@ namespace H.Controls.FilterBox
         {
             this.PropertyInfo = propertyInfo;
 
-            this.Name = propertyInfo.Name;
+            this.PropertyName = propertyInfo.Name;
 
             string display = propertyInfo.GetCustomAttribute<DisplayAttribute>()?.Name;
 
@@ -80,7 +79,7 @@ namespace H.Controls.FilterBox
         public PropertyFilterBase(PropertyInfo property, IEnumerable source)
         {
             this.PropertyInfo = property;
-            this.Name = property.Name;
+            this.PropertyName = property.Name;
             string display = property.GetCustomAttribute<DisplayAttribute>()?.Name;
             this.DisplayName = display ?? property.Name;
             this.Source.Clear();
@@ -98,21 +97,20 @@ namespace H.Controls.FilterBox
 
         #region - 属性 -
 
-        private string _name;
-        public string Name
+        private string _propertyName;
+        public string PropertyName
         {
-            get { return _name; }
+            get { return _propertyName; }
             set
             {
-                _name = value;
-                RaisePropertyChanged("Name");
+                _propertyName = value;
+                RaisePropertyChanged();
             }
         }
 
 
         private string _displayName;
         [System.Text.Json.Serialization.JsonIgnore]
-        
         [System.Xml.Serialization.XmlIgnore]
         public string DisplayName
         {
@@ -125,7 +123,6 @@ namespace H.Controls.FilterBox
         }
 
         private FilterOperate _operate;
-        /// <summary> 说明  </summary>
         [TypeConverter(typeof(EnumConverter))]
         public FilterOperate Operate
         {

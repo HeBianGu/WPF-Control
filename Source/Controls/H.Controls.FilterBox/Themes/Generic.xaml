@@ -7,15 +7,15 @@
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Controls.FilterBox;component/PropertyFilterBox/PropertyFilterBox.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Controls.FilterBox;component/PropertyFilterBox/PropertyConfidtionPrensenter.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Controls.FilterBox;component/PropertyFilterBox/PropertyConfidtionsPrensenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.FilterBox;component/PropertyFilterBox/PropertyConditionPrensenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.FilterBox;component/PropertyFilterBox/PropertyConditionsPrensenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.FilterBox;component/TextFilterBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.FilterBox;component/SelectionFilterBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.FilterBox;component/FilterBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.FilterBox;component/FilterBase.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <DataTemplate DataType="{x:Type local:StringFilter}">
+    <DataTemplate DataType="{x:Type local:StringPropertyFilter}">
         <UniformGrid Rows="1">
             <ComboBox
                 Margin="0,0,1,0"
@@ -40,7 +40,7 @@
 
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type local:IntFilter}">
+    <DataTemplate DataType="{x:Type local:IntPropertyFilter}">
         <UniformGrid Rows="1">
             <ComboBox
                 Margin="0,0,1,0"
@@ -52,7 +52,7 @@
         </UniformGrid>
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type local:LongFilter}">
+    <DataTemplate DataType="{x:Type local:LongPropertyFilter}">
         <UniformGrid Rows="1">
             <ComboBox
                 Margin="0,0,1,0"
@@ -64,7 +64,7 @@
         </UniformGrid>
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type local:DoubleFilter}">
+    <DataTemplate DataType="{x:Type local:DoublePropertyFilter}">
         <UniformGrid Rows="1">
             <ComboBox
                 Margin="0,0,1,0"
@@ -76,7 +76,7 @@
 
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type local:DateTimeFilter}">
+    <DataTemplate DataType="{x:Type local:DateTimePropertyFilter}">
         <UniformGrid Rows="1">
             <ComboBox
                 Margin="0,0,1,0"
@@ -92,7 +92,7 @@
 
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type local:BooleanFilter}">
+    <DataTemplate DataType="{x:Type local:BooleanPropertyFilter}">
         <ComboBox
             Margin="0,0,1,0"
             SelectedItem="{Binding Value}"

@@ -6,13 +6,13 @@ using System.Reflection;
 
 namespace H.Controls.FilterBox
 {
-    public class DateTimeFilter : MathValueFilter<DateTime>
+    public class DateTimePropertyFilter : ComparablePropertyFilterBase<DateTime>
     {
-        public DateTimeFilter()
+        public DateTimePropertyFilter()
         {
 
         }
-        public DateTimeFilter(PropertyInfo property) : base(property)
+        public DateTimePropertyFilter(PropertyInfo property) : base(property)
         {
             this.Value = DateTime.Now;
         }
@@ -32,7 +32,7 @@ namespace H.Controls.FilterBox
 
         public override IFilterable Copy()
         {
-            return new DateTimeFilter(this.PropertyInfo) { Operate = this.Operate, Value = this.Value };
+            return new DateTimePropertyFilter(this.PropertyInfo) { Operate = this.Operate, Value = this.Value };
         }
 
         public override DateTime ConvertValue()

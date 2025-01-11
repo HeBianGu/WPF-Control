@@ -5,21 +5,21 @@ using System.Reflection;
 
 namespace H.Controls.FilterBox
 {
-    public class DoubleFilter : MathValueFilter<double>
+    public class IntPropertyFilter : ComparablePropertyFilterBase<int>
     {
-        public DoubleFilter()
+        public IntPropertyFilter()
         {
 
         }
-        public DoubleFilter(PropertyInfo property) : base(property)
+
+        public IntPropertyFilter(PropertyInfo property) : base(property)
         {
 
         }
 
         public override IFilterable Copy()
         {
-            return new DoubleFilter(this.PropertyInfo) { Operate = this.Operate, Value = this.Value };
+            return new IntPropertyFilter(this.PropertyInfo) { Operate = this.Operate, Value = this.Value };
         }
     }
-
 }

@@ -151,7 +151,32 @@
                         <h:PropertyFilterBox
                             x:Name="fb"
                             Margin="5"
-                            Type="{x:Type h:Student}" />
+                            Type="{x:Type h:Student}">
+                            <h:PropertyFilterBox.DefinesPropertyConditions>
+                                <PropertyConditionPrensenter ID="名称值为Tom">
+                                    <PropertyConfidtion>
+                                        <StringPropertyFilter
+                                            Operate="Equals"
+                                            PropertyName="Name"
+                                            Value="Tom" />
+                                    </PropertyConfidtion>
+                                </PropertyConditionPrensenter>
+                                <PropertyConditionPrensenter ConditionOperate="Any" ID="分数大于80或小于10">
+                                    <PropertyConfidtion>
+                                        <DoublePropertyFilter
+                                            Operate="Greater"
+                                            PropertyName="Score"
+                                            Value="80.0" />
+                                    </PropertyConfidtion>
+                                    <PropertyConfidtion>
+                                        <DoublePropertyFilter
+                                            Operate="Less"
+                                            PropertyName="Score"
+                                            Value="10" />
+                                    </PropertyConfidtion>
+                                </PropertyConditionPrensenter>
+                            </h:PropertyFilterBox.DefinesPropertyConditions>
+                        </h:PropertyFilterBox>
                         <h:TextFilterBox
                             x:Name="tfb"
                             Width="200"
@@ -241,10 +266,10 @@
                         <Behaviors:Interaction.Behaviors>
                             <h:TextBlockFilterCountBehavior ItemsSource="{Binding ElementName=dg, Path=ItemsSource}">
                                 <h:TextBlockFilterCountBehavior.DisplayFilter>
-                                    <h:StringFilter
-                                        Name="Name"
+                                    <h:StringPropertyFilter
                                         DisplayName="姓名=Tom"
                                         Operate="{x:Static h:FilterOperate.Equals}"
+                                        PropertyName="Name"
                                         Value="Tom" />
                                 </h:TextBlockFilterCountBehavior.DisplayFilter>
                             </h:TextBlockFilterCountBehavior>
@@ -254,15 +279,15 @@
                         <Behaviors:Interaction.Behaviors>
                             <h:TextBlockFiltersCountBehavior ItemsSource="{Binding ElementName=dg, Path=ItemsSource}">
                                 <h:TextBlockFiltersCountBehavior.DisplayFilters>
-                                    <h:IntFilter
-                                        Name="Age"
+                                    <h:IntPropertyFilter
                                         DisplayName="年龄大于20岁"
                                         Operate="{x:Static h:FilterOperate.Greater}"
+                                        PropertyName="Age"
                                         Value="20" />
-                                    <h:StringFilter
-                                        Name="Class"
+                                    <h:StringPropertyFilter
                                         DisplayName="班级=3班"
                                         Operate="{x:Static h:FilterOperate.Equals}"
+                                        PropertyName="Class"
                                         Value="3班" />
                                 </h:TextBlockFiltersCountBehavior.DisplayFilters>
                             </h:TextBlockFiltersCountBehavior>

@@ -2,24 +2,25 @@
 
 using System;
 using System.Reflection;
+using System.Reflection.Metadata;
 
 namespace H.Controls.FilterBox
 {
 
-    public abstract class MathValueFilter<T> : PropertyFilterBase<T> where T : IComparable
+    public abstract class ComparablePropertyFilterBase<T> : PropertyFilterBase<T> where T : IComparable
     {
-        public MathValueFilter()
+        public ComparablePropertyFilterBase()
         {
 
         }
-        public MathValueFilter(PropertyInfo property) : base(property)
+        public ComparablePropertyFilterBase(PropertyInfo property) : base(property)
         {
             this.Operate = FilterOperate.Equals;
         }
 
         public override bool IsMatch(object obj)
         {
-            PropertyInfo p = obj.GetType().GetProperty(this.Name);
+            PropertyInfo p = obj.GetType().GetProperty(this.PropertyName);
 
             if (p == null || !p.CanRead) return false;
 
