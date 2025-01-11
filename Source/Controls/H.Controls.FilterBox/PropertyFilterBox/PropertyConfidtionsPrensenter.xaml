@@ -18,9 +18,10 @@
             </DockPanel>
             <ListBox
                 MinWidth="200"
-                Padding="0,2"
+                Padding="1"
                 BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
                 BorderThickness="1"
+                Cattach.ItemMargin="1 0"
                 Cattach.ItemPadding="10 0 0 0"
                 DockPanel.Dock="Left"
                 ItemsSource="{Binding PropertyConfidtions}"
@@ -43,7 +44,7 @@
                 </ListBox.ItemTemplate>
             </ListBox>
             <Border
-                Margin="5,0"
+                Margin="1,0"
                 BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
                 BorderThickness="1">
                 <ContentControl Margin="2" Content="{Binding SelectedItem}" />

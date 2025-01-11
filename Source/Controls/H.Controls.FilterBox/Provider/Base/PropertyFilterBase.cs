@@ -141,7 +141,7 @@ namespace H.Controls.FilterBox
             }
         }
 
-        private bool _isSelected;
+        private bool _isSelected = true;
         /// <summary> 说明  </summary>
         public bool IsSelected
         {

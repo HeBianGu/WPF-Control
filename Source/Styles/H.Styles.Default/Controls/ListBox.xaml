@@ -40,8 +40,8 @@
             <Setter.Value>
                 <ControlTemplate TargetType="ListBox">
                     <Border Style="{DynamicResource S.Border.TemplatedParent}">
-                        <ScrollViewer Padding="{TemplateBinding Padding}" Focusable="false">
-                            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        <ScrollViewer Focusable="false">
+                            <ItemsPresenter Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                         </ScrollViewer>
                     </Border>
                 </ControlTemplate>

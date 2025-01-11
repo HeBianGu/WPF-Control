@@ -84,6 +84,8 @@
                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
                     </Setter.Value>
                 </Setter>
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
+
             </Trigger>
             <Trigger Property="IsFocused" Value="true">
                 <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundSelect}}" />
@@ -92,6 +94,7 @@
                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
                     </Setter.Value>
                 </Setter>
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.ForegroundAssist}}" />
             </Trigger>
             <Trigger Property="IsReadOnly" Value="true">
                 <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
