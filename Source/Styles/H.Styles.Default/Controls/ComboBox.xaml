@@ -117,7 +117,7 @@
         <!--<Setter Property="MinWidth" Value="120" />
         <Setter Property="MinHeight" Value="20" />-->
         <Setter Property="Padding" Value="6,0" />
-        <Setter Property="Cattach.ItemPadding" Value="2 0" />
+        <Setter Property="Cattach.ItemPadding" Value="4 0" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBox}">
@@ -175,7 +175,7 @@
                                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
                                     </Border.Background>
                                 </Border>
-                                <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
+                                <ScrollViewer Margin="2,4" SnapsToDevicePixels="True">
                                     <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />
                                 </ScrollViewer>
                                 <Border

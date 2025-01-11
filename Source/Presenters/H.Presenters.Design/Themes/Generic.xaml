@@ -40,6 +40,4 @@
         <Setter Property="VerticalAlignment" Value="{Binding VerticalAlignment}" />
         <Setter Property="Padding" Value="{Binding Padding}" />
     </Style>
-
-
 </ResourceDictionary>
