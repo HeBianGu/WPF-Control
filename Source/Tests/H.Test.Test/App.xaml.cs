@@ -26,7 +26,7 @@ namespace H.Test.Test
             bool r = LicenseManager.IsValid(this.GetType(), this, out License license);
             if (license is IValidLicense validLicense)
                 r = validLicense.IsValid<App>(out string message);
-            license.Dispose();
+            license?.Dispose();
             return new MainWindow();
         }
 

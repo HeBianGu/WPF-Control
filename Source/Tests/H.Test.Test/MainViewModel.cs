@@ -26,7 +26,7 @@ namespace H.Test.Test
 
             {
                 bool r = LicenseManager.IsValid(this.GetType(), this, out License license);
-                license.Dispose();
+                license?.Dispose();
                 System.Diagnostics.Debug.WriteLine("MainViewModel License:" + (r ? "true" : "false"));
             }
         }
