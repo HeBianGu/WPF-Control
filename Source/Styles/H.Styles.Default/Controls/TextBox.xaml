@@ -59,6 +59,7 @@
                         BorderBrush="{DynamicResource {x:Static BrushKeys.Red}}"
                         BorderThickness="1"
                         CornerRadius="2"
+                        IsHitTestVisible="False"
                         ToolTipService.InitialShowDelay="0"
                         ToolTipService.ShowOnDisabled="True">
                         <Border.ToolTip>

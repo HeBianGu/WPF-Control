@@ -35,6 +35,11 @@
                 </Border>
 
                 <Border Height="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}" CornerRadius="2">
+                    <!--  Background="{DynamicResource {x:Static h:BrushKeys.CaptionBackground}}"  -->
+                    <!--
+                        BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                        BorderThickness="0,0,0,1"
+                    -->
                     <Grid>
                         <TextBlock
                             Margin="5,0"
