@@ -1,4 +1,6 @@
 ﻿
+using H.Extensions.ApplicationBase;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -13,8 +15,25 @@ namespace H.Test.Ribbon
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : Application
+    public partial class App : ApplicationBase
     {
+        protected override void ConfigureServices(IServiceCollection services)
+        {
+            services.AddAdornerDialogMessage();
+            //services.AddWindowDialogMessage();
+            services.AddSetting();
+            services.AddSwitchThemeViewPresenter();
+        }
 
+        protected override void Configure(IApplicationBuilder app)
+        {
+            app.UseSetting();
+            app.UseSettingDefault();
+        }
+
+        protected override Window CreateMainWindow(StartupEventArgs e)
+        {
+            return new MainWindow();
+        }
     }
 }

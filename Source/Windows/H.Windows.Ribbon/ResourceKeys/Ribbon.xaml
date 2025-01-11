@@ -1,13 +1,12 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:classic="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Classic"
-                    xmlns:local="clr-namespace:H.Windows.Ribbon"
-                    xmlns:primitives="clr-namespace:System.Windows.Controls.Ribbon.Primitives;assembly=System.Windows.Controls.Ribbon"
-                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:classic="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Classic"
+    xmlns:local="clr-namespace:H.Windows.Ribbon"
+    xmlns:primitives="clr-namespace:System.Windows.Controls.Ribbon.Primitives;assembly=System.Windows.Controls.Ribbon"
+    xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-    <Style x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:RibbonKeys},
-                                        ResourceId=S.Ribbon.Default}"
-           TargetType="{x:Type Ribbon}">
+    <Style x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:RibbonKeys}, ResourceId=S.Ribbon.Default}" TargetType="{x:Type Ribbon}">
         <Style.Resources>
             <PopupAnimation x:Key="{x:Static SystemParameters.MenuPopupAnimationKey}">Fade</PopupAnimation>
         </Style.Resources>
@@ -45,99 +44,111 @@
                         </Grid.RowDefinitions>
 
                         <!--  Ribbon Background  -->
-                        <Border Name="BackgroundBorder"
-                                Grid.Row="1"
-                                Grid.RowSpan="3"
-                                Grid.ColumnSpan="3"
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}" />
+                        <Border
+                            Name="BackgroundBorder"
+                            Grid.Row="1"
+                            Grid.RowSpan="3"
+                            Grid.ColumnSpan="3"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}" />
 
                         <!--  Popup hosting the groups when IsMinimized=true  -->
-                        <Border Grid.Row="1"
-                                Grid.ColumnSpan="3">
-                            <Popup x:Name="PART_ITEMSPRESENTERPOPUP"
-                                   AllowsTransparency="True"
-                                   IsOpen="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}"
-                                   PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}">
-                                <classic:SystemDropShadowChrome Name="Shdw"
-                                                                Margin="0,0,5,5"
-                                                                FocusVisualStyle="{x:Null}"
-                                                                Focusable="True"
-                                                                RenderOptions.ClearTypeHint="Enabled"
-                                                                Color="Transparent">
-                                    <Border Name="CollapsedPopupBackgroundBorder"
-                                            Background="{TemplateBinding Background}">
-                                        <ContentControl x:Name="popupItemsPresenterHost"
-                                                        Margin="0,1,0,0"
-                                                        Focusable="False"
-                                                        KeyboardNavigation.DirectionalNavigation="Cycle"
-                                                        KeyboardNavigation.TabNavigation="Cycle" />
+                        <Border Grid.Row="1" Grid.ColumnSpan="3">
+                            <Popup
+                                x:Name="PART_ITEMSPRESENTERPOPUP"
+                                AllowsTransparency="True"
+                                IsOpen="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                                PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}">
+                                <classic:SystemDropShadowChrome
+                                    Name="Shdw"
+                                    Margin="0,0,5,5"
+                                    FocusVisualStyle="{x:Null}"
+                                    Focusable="True"
+                                    RenderOptions.ClearTypeHint="Enabled"
+                                    Color="Transparent">
+                                    <Border Name="CollapsedPopupBackgroundBorder" Background="{TemplateBinding Background}">
+                                        <ContentControl
+                                            x:Name="popupItemsPresenterHost"
+                                            Margin="0,1,0,0"
+                                            Focusable="False"
+                                            KeyboardNavigation.DirectionalNavigation="Cycle"
+                                            KeyboardNavigation.TabNavigation="Cycle" />
                                     </Border>
                                 </classic:SystemDropShadowChrome>
                             </Popup>
                         </Border>
 
-                        <ContentControl x:Name="mainItemsPresenterHost"
-                                        Grid.Row="2"
-                                        Grid.ColumnSpan="3"
-                                        Focusable="False">
-                            <Border x:Name="groupsBorder"
-                                    Height="100"
-                                    Background="{DynamicResource {x:Static BrushKeys.Background}}"
-                                    BorderBrush="{TemplateBinding BorderBrush}"
-                                    BorderThickness="1,0,1,1"
+                        <ContentControl
+                            x:Name="mainItemsPresenterHost"
+                            Grid.Row="2"
+                            Grid.ColumnSpan="3"
+                            Focusable="False">
+                            <Border
+                                x:Name="groupsBorder"
+                                Height="100"
+                                Background="{DynamicResource {x:Static BrushKeys.Background}}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="1,0,1,1"
+                                SnapsToDevicePixels="True">
+                                <Border
+                                    Margin="0,0,0,1"
+                                    BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                                    BorderThickness="0,0,0,0"
                                     SnapsToDevicePixels="True">
-                                <Border Margin="0,0,0,1"
-                                        BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
-                                        BorderThickness="0,0,0,0"
-                                        SnapsToDevicePixels="True">
                                     <ItemsPresenter Name="ItemsPresenter" />
                                 </Border>
                             </Border>
                         </ContentControl>
 
                         <!--  QuickAccessToolbar bottom placeholder  -->
-                        <Border x:Name="QatBottomHost"
-                                Grid.Row="3"
-                                Grid.ColumnSpan="3"
-                                BorderBrush="{TemplateBinding BorderBrush}">
-                            <ContentPresenter x:Name="QatBottomHostContentPresenter"
-                                              HorizontalAlignment="Left"
-                                              VerticalAlignment="Center"
-                                              IsHitTestVisible="True" />
+                        <Border
+                            x:Name="QatBottomHost"
+                            Grid.Row="3"
+                            Grid.ColumnSpan="3"
+                            BorderBrush="{TemplateBinding BorderBrush}">
+                            <ContentPresenter
+                                x:Name="QatBottomHostContentPresenter"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                IsHitTestVisible="True" />
                         </Border>
 
                         <!--  TitleBar  -->
-                        <Border Name="titleBarBackground"
-                                Grid.ColumnSpan="3"
-                                Background="{DynamicResource {x:Static BrushKeys.Background}}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="0,0,0,1"
-                                Visibility="Collapsed" />
+                        <Border
+                            Name="titleBarBackground"
+                            Grid.ColumnSpan="3"
+                            VerticalAlignment="Center"
+                            Background="{DynamicResource {x:Static BrushKeys.Background}}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="0,0,0,1"
+                            Visibility="Collapsed" />
 
-                        <DockPanel Grid.Column="0"
-                                   Grid.ColumnSpan="3"
-                                   Height="{DynamicResource {x:Static LayoutKeys.ItemHeight}}"
-                                   LastChildFill="True">
+                        <DockPanel
+                            Grid.Column="0"
+                            Grid.ColumnSpan="3"
+                            Height="{Binding RelativeSource={RelativeSource AncestorType=RibbonWindow}, Path=(Cattach.CaptionHeight)}"
+                            LastChildFill="True">
 
                             <!--  Height="{DynamicResource {x:Static LayoutKeys.ItemHeight}}"  -->
 
                             <!--  This makes sure that the title and QAT does not overlap the close minimize and restore buttons.  -->
-                            <ContentControl x:Name="windowButtonPlaceHolder"
-                                            Width="{DynamicResource {x:Static LayoutKeys.ItemHeight}}"
-                                            Margin="3,0,0,0"
-                                            DockPanel.Dock="Right"
-                                            Focusable="False"
-                                            IsHitTestVisible="False"
-                                            Visibility="{TemplateBinding IsHostedInRibbonWindow,
-                                                                         Converter={x:Static Converter.GetTrueToVisible}}" />
-                            <ContentControl x:Name="windowIconPadding"
-                                            Width="{DynamicResource {x:Static LayoutKeys.ItemHeight}}"
-                                            Margin="0,0,3,0"
-                                            DockPanel.Dock="Left"
-                                            Focusable="False"
-                                            IsHitTestVisible="False" />
-                            <primitives:RibbonTitlePanel x:Name="PART_TitlePanel">
+                            <ContentControl
+                                x:Name="windowButtonPlaceHolder"
+                                Width="{DynamicResource {x:Static LayoutKeys.ItemHeight}}"
+                                Margin="3,0,0,0"
+                                DockPanel.Dock="Right"
+                                Focusable="False"
+                                IsHitTestVisible="False"
+                                Visibility="{TemplateBinding IsHostedInRibbonWindow,
+                                                             Converter={x:Static Converter.GetTrueToVisible}}" />
+                            <ContentControl
+                                x:Name="windowIconPadding"
+                                Width="{DynamicResource {x:Static LayoutKeys.ItemHeight}}"
+                                Margin="0,0,3,0"
+                                DockPanel.Dock="Left"
+                                Focusable="False"
+                                IsHitTestVisible="False" />
+                            <primitives:RibbonTitlePanel x:Name="PART_TitlePanel" VerticalAlignment="Center">
                                 <Grid x:Name="QatTopHost">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto" />
@@ -145,39 +156,42 @@
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
 
-                                    <Border x:Name="QatTopHostLeftBorder"
-                                            Grid.Column="0"
-                                            Width="3"
-                                            Margin="8,2,0,2"
-                                            Background="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
-                                            BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
-                                            BorderThickness="1,0,1,0.9"
-                                            CornerRadius="0,0,2,2" />
+                                    <Border
+                                        x:Name="QatTopHostLeftBorder"
+                                        Grid.Column="0"
+                                        Width="3"
+                                        Margin="8,2,0,2"
+                                        BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                                        BorderThickness="1,0,0,0"
+                                        CornerRadius="0,0,2,2" />
 
-                                    <ContentPresenter x:Name="QatTopHostContentPresenter"
-                                                      Grid.Column="1"
-                                                      Content="{TemplateBinding QuickAccessToolBar}"
-                                                      IsHitTestVisible="True" />
+                                    <ContentPresenter
+                                        x:Name="QatTopHostContentPresenter"
+                                        Grid.Column="1"
+                                        VerticalAlignment="Center"
+                                        Content="{TemplateBinding QuickAccessToolBar}"
+                                        IsHitTestVisible="True" />
 
-                                    <Border x:Name="QatTopHostRightBorder"
-                                            Grid.Column="2"
-                                            Width="3"
-                                            Margin="0,2,1,2"
-                                            Background="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
-                                            BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
-                                            BorderThickness="1,0,1,0.9"
-                                            CornerRadius="0,0,2,2" />
+                                    <Border
+                                        x:Name="QatTopHostRightBorder"
+                                        Grid.Column="2"
+                                        Width="3"
+                                        Margin="0,2,1,2"
+                                        BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                                        BorderThickness="1,0,0,0"
+                                        CornerRadius="0,0,2,2" />
 
                                 </Grid>
-                                <ContentPresenter x:Name="PART_TitleHost"
-                                                  MinWidth="75"
-                                                  MinHeight="{DynamicResource {x:Static LayoutKeys.ItemHeight}}"
-                                                  Margin="5,0"
-                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                  ContentSource="Title"
-                                                  ContentTemplate="{TemplateBinding TitleTemplate}"
-                                                  IsHitTestVisible="False"
-                                                  TextBlock.FontSize="{DynamicResource {x:Static FontSizeKeys.Default}}">
+                                <ContentPresenter
+                                    x:Name="PART_TitleHost"
+                                    MinWidth="75"
+                                    MinHeight="{DynamicResource {x:Static LayoutKeys.ItemHeight}}"
+                                    Margin="5,0"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    ContentSource="Title"
+                                    ContentTemplate="{TemplateBinding TitleTemplate}"
+                                    IsHitTestVisible="False"
+                                    TextBlock.FontSize="{DynamicResource {x:Static FontSizeKeys.Default}}">
                                     <!--
                                         TextBlock.FontFamily="{DynamicResource {x:Static SystemFonts.CaptionFontFamilyKey}}"
                                         TextBlock.FontSize="{DynamicResource {x:Static FontSizeKeys.Default}}"
@@ -187,12 +201,13 @@
                                     <ContentPresenter.Resources>
                                         <!--  Glowing effect around Title in Aero glass theme  -->
                                         <DataTemplate DataType="{x:Type system:String}">
-                                            <TextBlock x:Name="titleTextBlock"
-                                                       Margin="0,0,0,0"
-                                                       HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
-                                                       VerticalAlignment="Center"
-                                                       Text="{TemplateBinding Content}"
-                                                       TextTrimming="CharacterEllipsis" />
+                                            <TextBlock
+                                                x:Name="titleTextBlock"
+                                                Margin="0,0,0,0"
+                                                HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                                VerticalAlignment="Center"
+                                                Text="{TemplateBinding Content}"
+                                                TextTrimming="CharacterEllipsis" />
                                             <DataTemplate.Triggers>
                                                 <MultiDataTrigger>
                                                     <MultiDataTrigger.Conditions>
@@ -208,13 +223,11 @@
                                                     </Setter>-->
                                                 </MultiDataTrigger>
 
-                                                <DataTrigger Binding="{Binding Path=(SystemParameters.IsGlassEnabled)}"
-                                                             Value="False">
+                                                <DataTrigger Binding="{Binding Path=(SystemParameters.IsGlassEnabled)}" Value="False">
                                                     <Setter TargetName="titleTextBlock" Property="Margin" Value="0" />
                                                     <Setter TargetName="titleTextBlock" Property="VerticalAlignment" Value="Center" />
                                                 </DataTrigger>
-                                                <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
-                                                             Value="True">
+                                                <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
                                                     <Setter TargetName="titleTextBlock" Property="Margin" Value="0,1,0,0" />
                                                 </DataTrigger>
                                                 <!--  The Title is drawn slightly differently in AeroLite.  -->
@@ -232,35 +245,38 @@
                                         </DataTemplate>
                                     </ContentPresenter.Resources>
                                 </ContentPresenter>
-                                <RibbonContextualTabGroupItemsControl x:Name="PART_ContextualTabGroupItemsControl"
-                                                                      HorizontalAlignment="Center"
-                                                                      IsHitTestVisible="True"
-                                                                      WindowChrome.IsHitTestVisibleInChrome="True" />
+                                <RibbonContextualTabGroupItemsControl
+                                    x:Name="PART_ContextualTabGroupItemsControl"
+                                    HorizontalAlignment="Center"
+                                    IsHitTestVisible="True"
+                                    WindowChrome.IsHitTestVisibleInChrome="True" />
                             </primitives:RibbonTitlePanel>
                         </DockPanel>
 
                         <!--  Application Menu  -->
-                        <ContentPresenter x:Name="applicationMenu"
-                                          Grid.Row="1"
-                                          VerticalAlignment="Top"
-                                          Content="{TemplateBinding ApplicationMenu}" />
+                        <ContentPresenter
+                            x:Name="applicationMenu"
+                            Grid.Row="1"
+                            VerticalAlignment="Top"
+                            Content="{TemplateBinding ApplicationMenu}" />
 
-                        <RibbonTabHeaderItemsControl x:Name="TabHeaderItemsControl"
-                                                     Grid.Row="1"
-                                                     Grid.Column="1"
-                                                     Margin="1,1,1,0"
-                                                     HorizontalAlignment="Left"
-                                                     VerticalAlignment="Top" />
+                        <RibbonTabHeaderItemsControl
+                            x:Name="TabHeaderItemsControl"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="1,1,1,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top" />
 
                         <!--  HelpPane appears to the right of TabsPanel  -->
-                        <ContentPresenter x:Name="PART_HelpPane"
-                                          Grid.Row="1"
-                                          Grid.Column="2"
-                                          HorizontalAlignment="Right"
-                                          VerticalAlignment="Top"
-                                          ContentSource="HelpPaneContent"
-                                          ContentTemplate="{TemplateBinding HelpPaneContentTemplate}" />
-
+                        <ContentPresenter
+                            x:Name="PART_HelpPane"
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            ContentSource="HelpPaneContent"
+                            ContentTemplate="{TemplateBinding HelpPaneContentTemplate}" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsCollapsed" Value="true">
@@ -332,8 +348,7 @@
                             </MultiDataTrigger.Conditions>
                             <Setter TargetName="PART_TitleHost" Property="TextElement.Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundAssist}}" />
                         </MultiDataTrigger>
-                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
-                                     Value="True">
+                        <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
                             <Setter TargetName="BackgroundBorder" Property="Background" Value="{DynamicResource {x:Static BrushKeys.MouseOver}}" />
                             <Setter TargetName="BackgroundBorder" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.Red}}" />
                             <Setter TargetName="groupsBorder" Property="Background" Value="Transparent" />
@@ -358,8 +373,7 @@
 
                         <!--  The Title & separators that surround the QAT are drawn slightly differently in Aero.  -->
 
-                        <DataTrigger Binding="{Binding Path=(SystemParameters.UxThemeName)}"
-                                     Value="Aero">
+                        <DataTrigger Binding="{Binding Path=(SystemParameters.UxThemeName)}" Value="Aero">
                             <Setter TargetName="QatTopHost" Property="Margin" Value="0,-3,0,0" />
                             <Setter TargetName="QatTopHostLeftBorder" Property="Margin" Value="3,3,0,5" />
                             <Setter TargetName="QatTopHostLeftBorder" Property="Background" Value="{DynamicResource {x:Static BrushKeys.Background}}" />
@@ -381,6 +395,5 @@
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static local:RibbonKeys.Default}}"
-           TargetType="{x:Type Ribbon}" />
+    <Style BasedOn="{StaticResource {x:Static local:RibbonKeys.Default}}" TargetType="{x:Type Ribbon}" />
 </ResourceDictionary>

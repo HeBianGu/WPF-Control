@@ -1,6 +1,5 @@
 ﻿using H.Modules.Messages.Dialog;
 using H.Services.Common;
-
 using Microsoft.Extensions.DependencyInjection;
 
 namespace System

@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:H.Themes.Default"
     xmlns:system="clr-namespace:System;assembly=mscorlib">
-    <system:Double x:Key="{ComponentResourceKey ResourceId=S.Layout.WindowCaptionHeight, TypeInTargetAssembly={x:Type local:LayoutKeys}}">25</system:Double>
+    <system:Double x:Key="{ComponentResourceKey ResourceId=S.Layout.WindowCaptionHeight, TypeInTargetAssembly={x:Type local:LayoutKeys}}">50</system:Double>
     <system:Double x:Key="{ComponentResourceKey ResourceId=S.Layout.ItemHeight, TypeInTargetAssembly={x:Type local:LayoutKeys}}">40</system:Double>
     <system:Double x:Key="{ComponentResourceKey ResourceId=S.Layout.RowHeight, TypeInTargetAssembly={x:Type local:LayoutKeys}}">45</system:Double>
     <CornerRadius x:Key="{ComponentResourceKey ResourceId=S.Layout.CornerRadius, TypeInTargetAssembly={x:Type local:LayoutKeys}}">4</CornerRadius>

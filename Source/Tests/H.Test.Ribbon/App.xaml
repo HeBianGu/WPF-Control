@@ -1,9 +1,9 @@
-﻿<Application x:Class="H.Test.Ribbon.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:h="https://github.com/HeBianGu"
-             xmlns:local="clr-namespace:H.Test.Ribbon"
-             StartupUri="MainWindow.xaml">
+﻿<ApplicationBase
+    x:Class="H.Test.Ribbon.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:h="https://github.com/HeBianGu"
+    xmlns:local="clr-namespace:H.Test.Ribbon">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -15,4 +15,4 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
-</Application>
+</ApplicationBase>

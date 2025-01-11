@@ -32,7 +32,7 @@
         <Setter Property="WindowChrome.WindowChrome">
             <Setter.Value>
                 <WindowChrome
-                    CaptionHeight="35"
+                    CaptionHeight="{Binding RelativeSource={RelativeSource AncestorType=RibbonWindow}, Path=(Cattach.CaptionHeight)}"
                     GlassFrameThickness="0"
                     NonClientFrameEdges="None"
                     ResizeBorderThickness="8"
@@ -43,8 +43,21 @@
         <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Background}}" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
         <Setter Property="Icon" Value="{Logo}" />
-        <Setter Property="BorderBrush" Value="{x:Null}" />
-        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Cattach.CornerRadius" Value="2" />
+        <!--<Setter Property="Cattach.CaptionHeight" Value="{DynamicResource {x:Static LayoutKeys.WindowCaptionHeight}}" />     会不显示-->
+        <Setter Property="Cattach.CaptionHeight" Value="{DynamicResource {x:Static LayoutKeys.RowHeight}}" />
+        <Setter Property="Cattach.CaptionBackground">
+            <Setter.Value>
+                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Cattach.CaptionForeground">
+            <Setter.Value>
+                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionForeground}}" />
+            </Setter.Value>
+        </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RibbonWindow}">
@@ -87,16 +100,18 @@
                         <Border
                             Name="NonClientAreaBorder"
                             BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
-                            BorderThickness="1">
+                            BorderThickness="1"
+                            CornerRadius="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CornerRadius)}">
                             <Border
                                 Name="PART_ClientAreaBorder"
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}" />
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CornerRadius)}" />
                         </Border>
-                        <Border BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrushAssist}}" BorderThickness="1,1,0,0" />
-                        <Border BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" BorderThickness="0,0,1,1" />
-                        <Border
+                        <!--<Border BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrushAssist}}" BorderThickness="1,1,0,0" />
+                        <Border BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" BorderThickness="0,0,1,1" />-->
+                        <!--<Border
                             Name="WindowHighlightBorder"
                             Margin="1"
                             BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
@@ -110,153 +125,80 @@
                             Name="MiddleBorder"
                             Margin="2"
                             BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
-                            BorderThickness="1" />
-                        <Grid
+                            BorderThickness="1" />-->
+                        <Border
                             Name="ButtonPanel"
+                            Grid.ColumnSpan="10"
                             Height="{Binding Path=(WindowChrome.WindowChrome).CaptionHeight, RelativeSource={RelativeSource TemplatedParent}}"
-                            Margin="0"
+                            Margin="1"
+                            HorizontalAlignment="Stretch"
                             VerticalAlignment="Top"
-                            Background="{DynamicResource {x:Static BrushKeys.CaptionBackground}}">
-                            <Image
-                                Name="PART_Icon"
-                                Width="{Binding Path=(SystemParameters.SmallIconWidth)}"
-                                Height="{Binding Path=(SystemParameters.SmallIconHeight)}"
-                                Margin="10,0,0,0"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Center"
-                                Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Icon, Converter={StaticResource &#304;}}"
-                                WindowChrome.IsHitTestVisibleInChrome="True" />
-                            <Grid HorizontalAlignment="Right">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="2" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <Border
-                                    Grid.Column="0"
-                                    Width="{DynamicResource {x:Static LayoutKeys.ItemHeight}}"
-                                    Margin="4,2,-4,3"
-                                    Padding="0,0,2,0">
+                            CornerRadius="2 2 0 0"
+                            Style="{StaticResource S.Border.Caption}">
+                            <!--  Height="{Binding Path=(WindowChrome.WindowChrome).CaptionHeight, RelativeSource={RelativeSource TemplatedParent}}"  -->
+                            <DockPanel>
+                                <Image
+                                    Name="PART_Icon"
+                                    Width="{Binding Path=(SystemParameters.SmallIconWidth)}"
+                                    Height="{Binding Path=(SystemParameters.SmallIconHeight)}"
+                                    Margin="10,0,0,0"
+                                    VerticalAlignment="Center"
+                                    DockPanel.Dock="Left"
+                                    Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Icon, Converter={StaticResource &#304;}}"
+                                    WindowChrome.IsHitTestVisibleInChrome="True" />
+                                <Grid DockPanel.Dock="Right">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
                                     <Button
                                         Name="PART_MinimizeWindowButton"
+                                        Grid.Column="0"
                                         Command="windows:SystemCommands.MinimizeWindowCommand"
+                                        Content="F1M3,8L13,8 13,7 3,7z"
                                         Focusable="False"
-                                        Style="{StaticResource {x:Static ButtonKeys.Tool}}"
-                                        WindowChrome.IsHitTestVisibleInChrome="True">
-                                        <Path
-                                            x:Name="MinimizeWindowButtonGlyph"
-                                            Stroke="{DynamicResource {x:Static BrushKeys.Foreground}}"
-                                            StrokeThickness="2">
-                                            <Path.Data>
-                                                <PathGeometry>
-                                                    <PathFigure StartPoint="0,6">
-                                                        <LineSegment Point="6,6" />
-                                                    </PathFigure>
-                                                </PathGeometry>
-                                            </Path.Data>
-                                        </Path>
-                                    </Button>
-                                </Border>
-                                <Border
-                                    Grid.Column="1"
-                                    Width="{DynamicResource {x:Static LayoutKeys.ItemHeight}}"
-                                    Margin="2,2,-2,3"
-                                    Padding="0,0,2,0">
-                                    <Grid>
+                                        Style="{DynamicResource {x:Static h:WindowKeys.Button}}"
+                                        WindowChrome.IsHitTestVisibleInChrome="True" />
+                                    <Grid Grid.Column="1">
                                         <Button
                                             Name="PART_RestoreWindowButton"
                                             Command="windows:SystemCommands.RestoreWindowCommand"
+                                            Content="F1M11.999,10.002L10.998,10.002 10.998,5.002 5.998,5.002 5.998,4.001 11.999,4.001z M10.002,11.999L4.001,11.999 4.001,5.998 10.002,5.998z M5.002,3L5.002,5.002 3,5.002 3,13 10.998,13 10.998,10.998 13,10.998 13,3z"
                                             Focusable="False"
-                                            Style="{StaticResource {x:Static ButtonKeys.Tool}}"
+                                            Style="{DynamicResource {x:Static h:WindowKeys.Button}}"
+                                            ToolTip="还原"
                                             Visibility="Collapsed"
-                                            WindowChrome.IsHitTestVisibleInChrome="True">
-                                            <Path
-                                                x:Name="RestoreWindowButtonGlyph"
-                                                Stroke="{DynamicResource {x:Static BrushKeys.Foreground}}"
-                                                StrokeThickness="1">
-                                                <Path.Data>
-                                                    <PathGeometry>
-                                                        <PathFigure IsClosed="False" StartPoint="0,3">
-                                                            <LineSegment Point="0,8" />
-                                                            <LineSegment Point="5,8" />
-                                                            <LineSegment Point="5,3" />
-                                                            <LineSegment Point="0,3" />
-                                                            <LineSegment Point="0,4" />
-                                                            <LineSegment Point="5,4" />
-                                                            <LineSegment Point="5,5" />
-                                                            <LineSegment Point="7,5" />
-                                                            <LineSegment Point="7,0" />
-                                                            <LineSegment Point="2,0" />
-                                                            <LineSegment Point="2,1" />
-                                                            <LineSegment Point="7,1" />
-                                                        </PathFigure>
-                                                        <PathFigure IsClosed="False" StartPoint="2,1">
-                                                            <LineSegment Point="2,3" />
-                                                        </PathFigure>
-                                                    </PathGeometry>
-                                                </Path.Data>
-                                            </Path>
-                                        </Button>
+                                            WindowChrome.IsHitTestVisibleInChrome="True" />
                                         <Button
                                             Name="PART_MaximizeWindowButton"
                                             Command="windows:SystemCommands.MaximizeWindowCommand"
+                                            Content="F1M12,12L4,12 4,4 12,4z M3,13L13,13 13,3 3,3z"
                                             Focusable="False"
-                                            Style="{StaticResource {x:Static ButtonKeys.Tool}}"
-                                            WindowChrome.IsHitTestVisibleInChrome="True">
-                                            <Path
-                                                x:Name="MaximizeWindowButtonGlyph"
-                                                Stroke="{DynamicResource {x:Static BrushKeys.Foreground}}"
-                                                StrokeThickness="1">
-                                                <Path.Data>
-                                                    <PathGeometry>
-                                                        <PathFigure IsClosed="False" StartPoint="0,0">
-                                                            <LineSegment Point="0,8" />
-                                                            <LineSegment Point="8,8" />
-                                                            <LineSegment Point="8,0" />
-                                                            <LineSegment Point="0,0" />
-                                                        </PathFigure>
-                                                        <PathFigure StartPoint="0.5,1">
-                                                            <LineSegment Point="7.5,1" />
-                                                        </PathFigure>
-                                                    </PathGeometry>
-                                                </Path.Data>
-                                            </Path>
-                                        </Button>
+                                            Style="{DynamicResource {x:Static h:WindowKeys.Button}}"
+                                            ToolTip="最大化"
+                                            WindowChrome.IsHitTestVisibleInChrome="True" />
                                     </Grid>
-                                </Border>
-                                <Border
-                                    Grid.Column="3"
-                                    Width="{DynamicResource {x:Static LayoutKeys.ItemHeight}}"
-                                    Margin="0,2,0,3"
-                                    Padding="0,0,2,0">
                                     <Button
                                         Name="PART_CloseWindowButton"
-                                        Command="windows:SystemCommands.CloseWindowCommand"
+                                        Grid.Column="2"
+                                        Command="{h:CloseAfterSaveWindowCommand}"
+                                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                        Content="F1M8.583,8L13,12.424 12.424,13 8,8.583 3.576,13 3,12.424 7.417,8 3,3.576 3.576,3 8,7.417 12.424,3 13,3.576z"
                                         Focusable="False"
-                                        Style="{StaticResource {x:Static ButtonKeys.Tool}}"
-                                        WindowChrome.IsHitTestVisibleInChrome="True">
-                                        <Path
-                                            x:Name="CloseWindowButtonGlyph"
-                                            Stroke="{DynamicResource {x:Static BrushKeys.Foreground}}"
-                                            StrokeThickness="1.5">
-                                            <Path.Data>
-                                                <PathGeometry>
-                                                    <PathFigure StartPoint="0,0">
-                                                        <LineSegment Point="8,7" />
-                                                    </PathFigure>
-                                                    <PathFigure StartPoint="8,0">
-                                                        <LineSegment Point="0,7" />
-                                                    </PathFigure>
-                                                </PathGeometry>
-                                            </Path.Data>
-                                        </Path>
-                                    </Button>
-                                </Border>
-                            </Grid>
-                        </Grid>
+                                        Style="{DynamicResource {x:Static h:WindowKeys.Button}}"
+                                        ToolTip="关闭"
+                                        WindowChrome.IsHitTestVisibleInChrome="True" />
+                                </Grid>
+                                <Control
+                                    HorizontalAlignment="Right"
+                                    Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionRightTemplate)}"
+                                    WindowChrome.IsHitTestVisibleInChrome="True" />
+                            </DockPanel>
+                        </Border>
 
-                        <Border BorderThickness="1">
+
+                        <Border Margin="1" BorderThickness="1">
                             <Grid>
                                 <AdornerDecorator>
                                     <ContentPresenter Name="PART_RootContentPresenter" />
@@ -274,7 +216,7 @@
                         <Border
                             IsHitTestVisible="False"
                             Opacity="{Binding Source={x:Static h:WindowSetting.Instance}, Path=Opacity}"
-                            Visibility="{Binding Source={x:Static local:WindowSetting.Instance}, Path=UseBackImage, Converter={x:Static Converter.GetTrueToVisible}}">
+                            Visibility="{Binding Source={x:Static h:WindowSetting.Instance}, Path=UseBackImage, Converter={x:Static Converter.GetTrueToVisible}}">
                             <Border.Background>
                                 <ImageBrush ImageSource="{Binding Source={x:Static h:WindowSetting.Instance}, Path=BackImagePath}" Stretch="{Binding Source={x:Static h:WindowSetting.Instance}, Path=Stretch}" />
                             </Border.Background>
@@ -282,8 +224,8 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsActive" Value="False">
-                            <Setter TargetName="ButtonPanel" Property="Background" Value="{DynamicResource {x:Static BrushKeys.Background}}" />
-                            <Setter TargetName="MiddleBorder" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushAssist}}" />
+                            <!--<Setter TargetName="ButtonPanel" Property="Background" Value="{DynamicResource {x:Static BrushKeys.Background}}" />-->
+                            <!--<Setter TargetName="MiddleBorder" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushAssist}}" />-->
                         </Trigger>
                         <Trigger Property="WindowState" Value="Maximized">
                             <Setter TargetName="PART_MaximizeWindowButton" Property="Visibility" Value="Collapsed" />
