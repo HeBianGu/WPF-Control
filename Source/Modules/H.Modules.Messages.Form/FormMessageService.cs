@@ -14,12 +14,16 @@ namespace H.Modules.Messages.Form
         {
             Func<bool> canSumit = () =>
             {
+                //如果传入验证方式则不用ModelState
+                if (match != null)
+                    return match.Invoke(value);
+
                 if (value.ModelState(out List<string> errors) == false)
                 {
                     IocMessage.Dialog.Show(errors.FirstOrDefault());
                     return false;
                 }
-                return match?.Invoke(value) != false;
+                return true;
             };
             StaticFormPresenter presenter = new StaticFormPresenter(value);
             return await IocMessage.Dialog.Show(presenter, x =>
