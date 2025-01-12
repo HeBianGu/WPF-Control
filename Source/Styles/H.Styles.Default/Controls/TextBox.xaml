@@ -200,6 +200,8 @@
         <Setter Property="Cattach.Attach">
             <Setter.Value>
                 <Button
+                    Height="Auto"
+                    Margin="1"
                     Command="{local:DeleteTextTextBoxCommand}"
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type TextBoxBase}}}"
                     Content="删除" />

@@ -28,26 +28,25 @@
                 <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.Foreground}}" />
             </Setter.Value>
         </Setter>
+        <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Background}}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
+        <Setter Property="Cattach.CornerRadius" Value="2" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:DialogWindow}">
                     <Border
                         x:Name="PART_Border"
+                        Background="{TemplateBinding Background}"
                         BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrushAssist}}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
-                        <Border.Background>
-                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
-                        </Border.Background>
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CornerRadius)}">
                         <Grid x:Name="grid">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <Grid.Background>
-                                <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.Background}}" />
-                            </Grid.Background>
                             <Border
                                 Grid.Row="0"
                                 Background="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=(h:Cattach.CaptionBackground)}"

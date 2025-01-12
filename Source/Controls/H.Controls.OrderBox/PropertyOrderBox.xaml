@@ -25,6 +25,7 @@
                             <DockPanel>
                                 <ToggleButton
                                     x:Name="tb_order"
+                                    Height="Auto"
                                     Padding="10"
                                     Background="{DynamicResource {x:Static h:BrushKeys.MouseOver}}"
                                     BorderThickness="0"
@@ -33,8 +34,9 @@
                                     Style="{DynamicResource {x:Static h:ToggleButtonKeys.Geometry}}" />
                                 <Button
                                     x:Name="PART_Button"
-                                    Margin="1,0"
-                                    Content="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=PropertyOrders.SelectedItem.ID, FallbackValue=数据排序器}" />
+                                    Height="Auto"
+                                    Margin="1"
+                                    Content="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=PropertyOrders.SelectedItem.ID, FallbackValue=设置排序器}" />
                             </DockPanel>
 
                             <Popup

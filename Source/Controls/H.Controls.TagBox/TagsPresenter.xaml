@@ -1,33 +1,46 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
-                    xmlns:h="https://github.com/HeBianGu"
-                    xmlns:local="clr-namespace:H.Controls.TagBox">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:h="https://github.com/HeBianGu"
+    xmlns:local="clr-namespace:H.Controls.TagBox">
     <DataTemplate DataType="{x:Type local:TagsPresenter}">
-        <DockPanel>
-            <DockPanel DockPanel.Dock="Top"
-                       LastChildFill="False">
-                <Button Command="{local:ImportTagsCommand}"
-                        CommandParameter="{Binding}"
-                        Content="批量输入" />
-                <Button Command="{local:ExportTagsCommand}"
-                        CommandParameter="{Binding}"
-                        Content="导出名称" />
+        <DockPanel MinWidth="400">
+            <DockPanel
+                Margin="0,1"
+                DockPanel.Dock="Top"
+                LastChildFill="False">
+                <Button
+                    Command="{local:ImportTagsCommand}"
+                    CommandParameter="{Binding}"
+                    Content="批量输入" />
+                <Button
+                    Margin="1,0"
+                    Command="{local:ExportTagsCommand}"
+                    CommandParameter="{Binding}"
+                    Content="导出名称" />
             </DockPanel>
-            <ListBox ItemsSource="{Binding Collection}">
+            <ListBox
+                BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                BorderThickness="1"
+                ItemsSource="{Binding Collection}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <DockPanel>
-                            <Button Background="Transparent"
-                                    Command="{h:DeleteCommand}"
-                                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
-                                    Content="删除"
-                                    DockPanel.Dock="Right" />
-                            <Button Background="Transparent"
-                                    Command="{h:ShowEditCommand}"
-                                    CommandParameter="{Binding}"
-                                    Content="编辑"
-                                    DockPanel.Dock="Right" />
+                            <Button
+                                Height="Auto"
+                                Background="Transparent"
+                                Command="{h:DeleteCommand}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
+                                Content="删除"
+                                DockPanel.Dock="Right" />
+                            <Button
+                                Height="Auto"
+                                Background="Transparent"
+                                Command="{h:ShowEditCommand}"
+                                CommandParameter="{Binding}"
+                                Content="编辑"
+                                DockPanel.Dock="Right" />
                             <ContentPresenter Content="{Binding}" />
                             <!--<Border Width="10"
                                     Height="6"

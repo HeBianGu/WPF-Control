@@ -370,8 +370,8 @@ namespace H.App.FileManager
             if (e is fm_dd_file file)
             {
                 file.Watched = true;
-                file.LastPlayTime = DateTime.Now;
-                file.PlayCount = file.PlayCount + 1;
+                //file.LastPlayTime = DateTime.Now;
+                //file.PlayCount = file.PlayCount + 1;
                 this.History.Add(file);
             }
         });

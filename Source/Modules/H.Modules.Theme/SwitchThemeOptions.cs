@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace H.Modules.Theme
 {
-    [Display(Name = "主题设置", GroupName = SettingGroupNames.GroupSystem, Description = "登录页面设置的信息")]
+    [Display(Name = "明暗主题设置", GroupName = SettingGroupNames.GroupSystem, Description = "登录页面设置的信息")]
     public class SwitchThemeOptions : IocOptionInstance<SwitchThemeOptions>, ILoginedSplashLoad
     {
         private bool _isDark = true;

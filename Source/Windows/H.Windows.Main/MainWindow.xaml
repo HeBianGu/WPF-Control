@@ -73,10 +73,10 @@
                                     <Grid.Background>
                                         <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.Background}}" />
                                     </Grid.Background>
-
                                     <Border
                                         Grid.Row="0"
                                         Background="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionBackground)}"
+                                        CornerRadius="2 2 0 0"
                                         TextElement.Foreground="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionForeground)}">
                                         <!--<Border.Background>
                                             <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.Background}}" />
@@ -186,7 +186,6 @@
                                 </Border.Background>
                             </Border>
                         </Grid>
-
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="ResizeMode" Value="CanResizeWithGrip">

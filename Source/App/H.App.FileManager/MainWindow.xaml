@@ -10,14 +10,15 @@
     Title="MainWindow"
     Width="1300"
     Height="750"
-    CaptionHeight="50"
+    CaptionHeight="45"
     WindowStartupLocation="CenterScreen"
     WindowState="Maximized"
     mc:Ignorable="d">
     <h:MainWindow.CaptionTempate>
         <ControlTemplate>
-            <DockPanel LastChildFill="False">
+            <DockPanel HorizontalAlignment="Right" LastChildFill="False">
                 <ContentPresenter Content="{Ioc Type={x:Type ISettingButtonPresenter}}" />
+                <ContentPresenter Content="{Ioc Type={x:Type ISwitchThemeViewPresenter}}" />
             </DockPanel>
         </ControlTemplate>
     </h:MainWindow.CaptionTempate>
@@ -99,7 +100,7 @@
                                                 <TextBlock Text="{Binding Model.Title}" />
                                                 <TextBlock
                                                     FontSize="{DynamicResource {x:Static h:FontSizeKeys.Header6}}"
-                                                    Foreground="{DynamicResource {x:Static h:BrushKeys.ForegroundAssist}}"
+                                                    Opacity="0.5"
                                                     Text="{Binding Model.BaseFolder}"
                                                     TextTrimming="CharacterEllipsis"
                                                     ToolTip="{Binding Model.BaseFolder}" />
@@ -459,7 +460,7 @@
             </h:OutlookBar>
             <h:OutlookBar
                 Width="250"
-                Margin="0,4,4,4"
+                Margin="0,0,1,0"
                 DockPanel.Dock="Right"
                 DockPosition="Right"
                 IsCloseButtonVisible="False"
@@ -496,6 +497,7 @@
                             <h:Form
                                 Foreground="{DynamicResource {x:Static h:BrushKeys.Foreground}}"
                                 SelectObject="{Binding Collection.SelectedItem.Model, Mode=TwoWay}"
+                                TitleWidth="50"
                                 UseNull="False"
                                 UsePropertyView="True" />
                         </DockPanel>
@@ -517,7 +519,10 @@
                                 </DrawingImage.Drawing>
                             </DrawingImage>
                         </h:OutlookSection.Image>
-                        <h:Form Foreground="{DynamicResource {x:Static h:BrushKeys.Foreground}}" SelectObject="{Binding Collection.SelectedItem.Model, Mode=TwoWay}" />
+                        <h:Form
+                            Foreground="{DynamicResource {x:Static h:BrushKeys.Foreground}}"
+                            SelectObject="{Binding Collection.SelectedItem.Model, Mode=TwoWay}"
+                            TitleWidth="50" />
                     </h:OutlookSection>
                     <h:OutlookSection Header="标签设置">
                         <h:OutlookSection.Image>

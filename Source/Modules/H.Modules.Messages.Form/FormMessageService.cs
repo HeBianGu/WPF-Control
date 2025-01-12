@@ -30,6 +30,8 @@ namespace H.Modules.Messages.Form
             {
                 x.DialogButton = DialogButton.Sumit;
                 x.Title = title;
+                x.HorizontalContentAlignment = HorizontalAlignment.Stretch;
+                x.MinWidth=400;
                 action?.Invoke(x);
             }, canSumit);
         }
@@ -45,6 +47,8 @@ namespace H.Modules.Messages.Form
             {
                 x.DialogButton = DialogButton.Sumit;
                 x.Title = title;
+                x.HorizontalContentAlignment = HorizontalAlignment.Stretch;
+                x.MinWidth = 400;
                 action?.Invoke(x);
             }, canSumit);
         }

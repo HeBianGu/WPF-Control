@@ -34,6 +34,7 @@
         <Setter Property="Cattach.ItemBackground" Value="Transparent" />
         <Setter Property="Cattach.ItemHeight" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
         <Setter Property="Cattach.ItemPadding" Value="5 3" />
+        <Setter Property="Cattach.ItemMargin" Value="0" />
         <Setter Property="Cattach.ItemBorderThickness" Value="0" />
         <Setter Property="Cattach.ItemBorderBrush" Value="Transparent" />
         <Setter Property="Template">
@@ -72,6 +73,7 @@
         <Setter Property="MinHeight" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
         <Setter Property="HorizontalContentAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=(Cattach.ItemHorizontalContentAlignment)}" />
         <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=(Cattach.ItemPadding)}" />
+        <Setter Property="Margin" Value="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=(Cattach.ItemMargin)}" />
         <Setter Property="VerticalContentAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=(Cattach.ItemVerticalContentAlignment)}" />
         <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=(Cattach.ItemBackground)}" />
         <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=(Cattach.ItemBorderBrush)}" />

@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace H.Controls.OrderBox
 {
@@ -47,7 +48,6 @@ namespace H.Controls.OrderBox
         }
 
         public ObservableCollection<IOrderable> Orders { get; } = new ObservableCollection<IOrderable>();
-
 
         public bool UseCheckAll
         {
@@ -153,12 +153,11 @@ namespace H.Controls.OrderBox
         }
 
 
-        protected void OnOrderChanged()
+        public void OnOrderChanged()
         {
             RoutedEventArgs args = new RoutedEventArgs(OrderChangedRoutedEvent, this);
             this.RaiseEvent(args);
         }
-
     }
 
     public class OrderBoxOrder : IOrderable
