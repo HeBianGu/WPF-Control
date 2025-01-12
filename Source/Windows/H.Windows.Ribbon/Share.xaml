@@ -492,7 +492,7 @@
                             x:Name="TwoLineText"
                             Margin="1,1,1,0"
                             HorizontalAlignment="Center"
-                            VerticalAlignment="Top"
+                            VerticalAlignment="Center"
                             LineHeight="13px"
                             LineStackingStrategy="BlockLineHeight"
                             Text="{TemplateBinding Label}"
@@ -507,6 +507,7 @@
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}" Value="Large">
                 <Setter Property="MinWidth" Value="44" />
                 <Setter Property="Height" Value="66" />
+                <Setter Property="Height" Value="Auto" />
                 <Setter TargetName="Grid" Property="MinHeight" Value="26" />
                 <Setter TargetName="TwoLineText" Property="HasTwoLines" Value="True" />
             </DataTrigger>
@@ -518,7 +519,7 @@
                 <Setter TargetName="PART_Image" Property="Width" Value="16" />
                 <Setter TargetName="PART_Image" Property="Height" Value="16" />
                 <Setter TargetName="TwoLineText" Property="HorizontalAlignment" Value="Left" />
-                <Setter TargetName="TwoLineText" Property="Margin" Value="1" />
+                <Setter TargetName="TwoLineText" Property="Margin" Value="-1" />
                 <Setter TargetName="StackPanel" Property="Orientation" Value="Horizontal" />
             </DataTrigger>
             <MultiDataTrigger>

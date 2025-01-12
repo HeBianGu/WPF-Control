@@ -212,11 +212,11 @@
                                     <Rectangle x:Name="OverlayRect"
                                                Width="{Binding ElementName=ScrollViewer, Path=ActualWidth}"
                                                Height="{Binding ElementName=ScrollViewer, Path=ActualHeight}"
-                                               Fill="{DynamicResource {x:Static BrushKeys.Background}}" />
+                                               Fill="{Binding RelativeSource={RelativeSource Self}, Path=(RibbonControlService.Ribbon).Background}" />
                                     <Rectangle x:Name="InnerOverlayRect"
                                                Width="{Binding ElementName=ScrollViewer, Path=ActualWidth}"
                                                Height="{Binding ElementName=ScrollViewer, Path=ActualHeight}"
-                                               Fill="{DynamicResource {x:Static BrushKeys.Background}}" />
+                                               Fill="{Binding RelativeSource={RelativeSource Self}, Path=(RibbonControlService.Ribbon).Background}" />
                                 </Canvas>
 
                                 <ItemsPresenter x:Name="ItemsPresenter" />

@@ -34,4 +34,7 @@
         <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/ResourceKeys/RibbonTwoLineText.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/ResourceKeys/RibbonWindow.xaml" />
     </ResourceDictionary.MergedDictionaries>
+
+    <!--<Thickness x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type Ribbon},
+                                              ResourceId=LargeImageMargin}">20</Thickness>-->
 </ResourceDictionary>

@@ -282,7 +282,7 @@
                                                             x:Name="OverlayRect"
                                                             Width="{Binding ElementName=MenuBorder, Path=ActualWidth}"
                                                             Height="{Binding ElementName=MenuBorder, Path=ActualHeight}"
-                                                            Fill="{DynamicResource {x:Static BrushKeys.Background}}"
+                                                            Fill="{Binding ElementName=MenuBorder, Path=Background}"
                                                             RadiusX="2"
                                                             RadiusY="2" />
                                                     </Canvas>
@@ -714,7 +714,7 @@
                                                                     x:Name="OverlayRect"
                                                                     Width="{Binding ElementName=MenuBorder, Path=ActualWidth}"
                                                                     Height="{Binding ElementName=MenuBorder, Path=ActualHeight}"
-                                                                    Fill="{DynamicResource {x:Static BrushKeys.Foreground}}"
+                                                                    Fill="{Binding ElementName=MenuBorder, Path=Background}"
                                                                     RadiusX="2"
                                                                     RadiusY="2" />
                                                             </Canvas>

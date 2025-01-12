@@ -139,7 +139,6 @@
                                                 <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
                                             <ScrollViewer x:Name="PART_SubMenuScrollViewer" Style="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type FrameworkElement}, ResourceId=MenuScrollViewer}}">
-
                                                 <Grid RenderOptions.ClearTypeHint="Enabled">
                                                     <Canvas
                                                         x:Name="BackgroundCanvas"
@@ -158,7 +157,7 @@
                                                             x:Name="OverlayRect"
                                                             Width="{Binding ElementName=MenuBorder, Path=ActualWidth}"
                                                             Height="{Binding ElementName=MenuBorder, Path=ActualHeight}"
-                                                            Fill="{DynamicResource {x:Static BrushKeys.Foreground}}"
+                                                            Fill="{Binding ElementName=MenuBorder, Path=Background}"
                                                             RadiusX="2"
                                                             RadiusY="2" />
                                                     </Canvas>
@@ -187,7 +186,6 @@
                         </Popup>
                     </Grid>
                     <ControlTemplate.Triggers>
-
                         <Trigger SourceName="PART_SubMenuScrollViewer" Property="ScrollViewer.CanContentScroll" Value="false">
                             <Setter TargetName="OpaqueRect" Property="Canvas.Top" Value="{Binding ElementName=PART_SubMenuScrollViewer, Path=VerticalOffset}" />
                             <Setter TargetName="OpaqueRect" Property="Canvas.Left" Value="{Binding ElementName=PART_SubMenuScrollViewer, Path=HorizontalOffset}" />

@@ -886,7 +886,7 @@
                                         <Rectangle x:Name="InnerOverlayRect"
                                                    Width="{Binding ElementName=PopupBorder, Path=ActualWidth}"
                                                    Height="{Binding ElementName=PopupBorder, Path=ActualHeight}"
-                                                   Fill="{DynamicResource {x:Static BrushKeys.Foreground}}"
+                                                   Fill="{Binding ElementName=PopupOverlayBorder, Path=Background}"
                                                    RadiusX="2"
                                                    RadiusY="2" />
                                     </Canvas>
@@ -1249,7 +1249,7 @@
                                         <Rectangle x:Name="InnerOverlayRect"
                                                    Width="{Binding ElementName=PopupBorder, Path=ActualWidth}"
                                                    Height="{Binding ElementName=PopupBorder, Path=ActualHeight}"
-                                                   Fill="{DynamicResource {x:Static BrushKeys.Foreground}}"
+                                                   Fill="{Binding ElementName=PopupOverlayBorder, Path=Background}"
                                                    RadiusX="2"
                                                    RadiusY="2" />
                                     </Canvas>
@@ -1610,7 +1610,7 @@
                                         <Rectangle x:Name="InnerOverlayRect"
                                                    Width="{Binding ElementName=PopupBorder, Path=ActualWidth}"
                                                    Height="{Binding ElementName=PopupBorder, Path=ActualHeight}"
-                                                   Fill="{DynamicResource {x:Static BrushKeys.Foreground}}"
+                                                   Fill="{Binding ElementName=PopupOverlayBorder, Path=Background}"
                                                    RadiusX="2"
                                                    RadiusY="2" />
                                     </Canvas>
@@ -1970,7 +1970,7 @@
                                         <Rectangle x:Name="InnerOverlayRect"
                                                    Width="{Binding ElementName=PopupBorder, Path=ActualWidth}"
                                                    Height="{Binding ElementName=PopupBorder, Path=ActualHeight}"
-                                                   Fill="{DynamicResource {x:Static BrushKeys.Foreground}}"
+                                                   Fill="{Binding ElementName=PopupOverlayBorder, Path=Background}"
                                                    RadiusX="2"
                                                    RadiusY="2" />
                                     </Canvas>
