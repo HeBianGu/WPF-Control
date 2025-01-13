@@ -4,10 +4,14 @@ using System.Threading;
 
 namespace H.Controls.Step
 {
-    public class ShowStepCommand : MarkupCommandBase
+    public class ShowStepCommand : MessageCommandBase
     {
+        public ShowStepCommand()
+        {
+            this.Width = 80;
+            this.Height = double.NaN;
+        }
         public int Count { get; set; } = 5;
-        public double Width { get; set; } = 80;
         public override async void Execute(object parameter)
         {
             StepPresenter presenter = new StepPresenter();
@@ -19,7 +23,11 @@ namespace H.Controls.Step
                     Width = this.Width,
                 });
             }
-            await IocMessage.Dialog.ShowAction(presenter, x => x.DialogButton = DialogButton.None, (d, p) =>
+            await IocMessage.Dialog.ShowAction(presenter, x =>
+            {
+                x.DialogButton = DialogButton.None;
+                this.Build(x);
+            }, (d, p) =>
               {
                   foreach (var item in p.Collection)
                   {

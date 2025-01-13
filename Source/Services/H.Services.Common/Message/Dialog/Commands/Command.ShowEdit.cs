@@ -8,7 +8,7 @@ namespace H.Services.Common
         public object Value { get; set; }
         public override void Execute(object parameter)
         {
-            IocMessage.Form.ShowEdit(this.Value ?? parameter, this.UseModelState ? null : x => true);
+            IocMessage.Form.ShowEdit(this.Value ?? parameter, this.UseModelState ? null : x => true, x => this.Build(x));
         }
     }
 }

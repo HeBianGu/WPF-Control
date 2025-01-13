@@ -11,9 +11,36 @@ namespace H.Windows.Dialog
 {
     public partial class DialogWindow : Window, IDialog
     {
+        public DialogWindow()
+        {
+            this.Loaded += async (l, k) =>
+            {//  ToDo：用动画显示
+                await TransitionShow();
+            };
+
+        }
         static DialogWindow()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(DialogWindow), new FrameworkPropertyMetadata(typeof(DialogWindow)));
+        }
+
+        public async Task TransitionShow()
+        {
+            await this.Show(this);
+
+            if (this.Transitionable == null && this.Content is ITransitionHostable hostable)
+                await hostable.Show(this);
+            else
+                await this.Show(this);
+        }
+
+        public async Task TransitionClose()
+        {
+            if (this.Transitionable == null && this.Content is ITransitionHostable hostable)
+                await hostable.Close(this);
+            else
+                await this.Close(this);
+            this.Close();
         }
 
         protected override void OnClosing(CancelEventArgs e)
@@ -23,7 +50,12 @@ namespace H.Windows.Dialog
                 e.Cancel = true;
                 return;
             }
-            base.OnClosing(e);
+            //  ToDo：用动画关闭
+            var task = this.Close(this);
+            task.ContinueWith(x =>
+            {
+                base.OnClosing(e);
+            });
         }
 
         public void Sumit()
@@ -43,6 +75,7 @@ namespace H.Windows.Dialog
         }
 
         public DialogButton DialogButton { get; set; } = DialogButton.Sumit;
+        public ITransitionable Transitionable { get; set; }
 
         public static readonly DependencyProperty BottomTemplateProperty =
             DependencyProperty.Register("BottomTemplate", typeof(ControlTemplate), typeof(DialogWindow), new FrameworkPropertyMetadata(default(ControlTemplate), (d, e) =>

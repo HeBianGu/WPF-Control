@@ -14,6 +14,7 @@ namespace H.Controls.Adorner
             _visualCollection.Add(_contentPresenter);
         }
 
+        public ContentPresenter ContentPresenter => this._contentPresenter;
         public object Presenter => this._contentPresenter.Content;
         protected override Size MeasureOverride(Size constraint)
         {

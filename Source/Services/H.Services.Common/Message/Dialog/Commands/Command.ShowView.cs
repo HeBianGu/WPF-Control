@@ -7,7 +7,7 @@ namespace H.Services.Common
         public object Value { get; set; }
         public override void Execute(object parameter)
         {
-            IocMessage.Form.ShowView(this.Value);
+            IocMessage.Form.ShowView(this.Value, null, x => this.Build(x));
         }
     }
 }

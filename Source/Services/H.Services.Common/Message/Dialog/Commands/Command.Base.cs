@@ -5,9 +5,10 @@ namespace H.Services.Common
     public abstract class MessageCommandBase : MarkupExtension, ICommand
     {
         public string Title { get; set; }
-        public int Width { get; set; } = 500;
-        public int Height { get; set; } = 300;
+        public double Width { get; set; } = 500;
+        public double Height { get; set; } = 300;
         public DialogButton DialogButton { get; set; }
+        public ITransitionable Transitionable { get; set; }
 
         public event EventHandler CanExecuteChanged
         {
@@ -32,13 +33,14 @@ namespace H.Services.Common
             return this;
         }
 
-        protected void Build(IDialog w)
+        protected virtual void Build(IDialog w)
         {
             if (w is Control c)
             {
                 c.Width = this.Width;
                 c.Height = this.Height;
             }
+            w.Transitionable = this.Transitionable;
         }
     }
 }

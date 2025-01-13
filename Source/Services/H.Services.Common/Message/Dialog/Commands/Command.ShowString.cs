@@ -20,7 +20,7 @@ namespace H.Services.Common
                 Thread.Sleep(1000);
                 return true;
             };
-            IocMessage.Dialog.ShowString(func);
+            IocMessage.Dialog.ShowString(func, x => this.Build(x));
         }
     }
 }

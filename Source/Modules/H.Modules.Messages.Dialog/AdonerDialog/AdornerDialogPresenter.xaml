@@ -60,7 +60,7 @@
                     Margin="{Binding Padding}"
                     HorizontalAlignment="{Binding HorizontalContentAlignment}"
                     VerticalAlignment="{Binding VerticalContentAlignment}">
-                    <ContentPresenter
+                    <ContentPresenter x:Name="PART_Presenter"
                         Grid.Row="1"
                         Grid.ColumnSpan="3"
                         HorizontalAlignment="Stretch"

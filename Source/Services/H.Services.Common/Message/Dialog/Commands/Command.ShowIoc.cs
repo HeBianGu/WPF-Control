@@ -12,6 +12,7 @@ namespace H.Services.Common
             {
                 x.DialogButton = DialogButton.Sumit;
                 x.Title = this.Title;
+                this.Build(x);
             });
         }
         public override bool CanExecute(object parameter)

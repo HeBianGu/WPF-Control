@@ -19,7 +19,7 @@ namespace H.Services.Common
                     }
                     return true;
                 };
-            IocMessage.Dialog.ShowPercent(func);
+            IocMessage.Dialog.ShowPercent(func, x => this.Build(x));
         }
     }
 }

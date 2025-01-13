@@ -1,6 +1,7 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using H.Services.Common;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace H.Styles.Default
@@ -13,14 +14,44 @@ namespace H.Styles.Default
         {
             if (parameter is Window window)
             {
-                bool isMain = Application.Current.MainWindow == window && WindowSetting.Instance.UseNoticeOnMainWindowClose;
-                if (isMain || this.UseDialog)
-                {
-                    var r = await IocMessage.ShowDialogMessage(this.Message, "提示", DialogButton.SumitAndCancel);
-                    if (r != true)
-                        return;
-                }
+                var r = await this.ShowDialogMessage(window);
+                if (r != true)
+                    return;
                 SystemCommands.CloseWindow(window);
+            }
+        }
+
+        protected async Task<bool> ShowDialogMessage(Window window)
+        {
+            bool isMain = Application.Current.MainWindow == window && WindowSetting.Instance.UseNoticeOnMainWindowClose;
+            if (isMain || this.UseDialog)
+            {
+                var r = await IocMessage.ShowDialogMessage(this.Message, "提示", DialogButton.SumitAndCancel);
+                if (r != true)
+                    return false;
+            }
+            return true;
+        }
+    }
+
+    public class TranslationCloseWindowCommand : CloseWindowCommand
+    {
+        public override async void Execute(object parameter)
+        {
+            if (parameter is Window window)
+            {
+                var r = await this.ShowDialogMessage(window);
+                if (r != true)
+                    return;
+
+                if (window is ITransitionHostable hostable)
+                {
+                    var task = hostable.Close(window);
+                    await task.ContinueWith(x =>
+                      {
+                          SystemCommands.CloseWindow(window);
+                      });
+                }
             }
         }
     }

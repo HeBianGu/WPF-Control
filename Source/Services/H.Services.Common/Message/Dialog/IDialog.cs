@@ -1,6 +1,6 @@
 ﻿namespace H.Services.Common
 {
-    public interface IDialog : ILayoutable, ICancelable
+    public interface IDialog : ILayoutable, ICancelable, ITransitionHostable
     {
         Func<bool> CanSumit { get; set; }
         void Sumit();
