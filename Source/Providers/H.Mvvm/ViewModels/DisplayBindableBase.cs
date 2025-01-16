@@ -85,7 +85,6 @@ namespace H.Mvvm
 
         private string _name;
         [System.Text.Json.Serialization.JsonIgnore]
-        
         [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         public virtual string Name

@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace H.Modules.Feedback
 {
-    public class ShowFeedbackCommand : IocMarkupCommandBase
+    public class ShowFeedbackCommand : IocAsyncMarkupCommandBase
     {
         public override async void Execute(object parameter)
         {

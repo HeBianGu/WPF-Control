@@ -34,7 +34,8 @@
                                     x:Name="PART_Button"
                                     Height="Auto"
                                     Margin="1"
-                                    Content="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=PropertyConfidtions.SelectedItem.ID, FallbackValue=设置过滤器}" />
+                                    ContentTemplate="{TemplateBinding SelectedDataTemplate}"
+                                    Content="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=PropertyConfidtions.SelectedItem}" />
                             </DockPanel>
 
                             <Popup
@@ -87,6 +88,14 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-
+        <Setter Property="SelectedDataTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock>
+                        <Run Text="{Binding ID,FallbackValue=设置过滤器}"/>
+                    </TextBlock>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 </ResourceDictionary>

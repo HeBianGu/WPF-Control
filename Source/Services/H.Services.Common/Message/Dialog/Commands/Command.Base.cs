@@ -2,36 +2,13 @@
 
 namespace H.Services.Common
 {
-    public abstract class MessageCommandBase : MarkupExtension, ICommand
+    public abstract class MessageCommandBase : IocAsyncMarkupCommandBase, ICommand
     {
         public string Title { get; set; }
         public double Width { get; set; } = 500;
         public double Height { get; set; } = 300;
         public DialogButton DialogButton { get; set; }
         public ITransitionable Transitionable { get; set; }
-
-        public event EventHandler CanExecuteChanged
-        {
-            add
-            {
-                CommandManager.RequerySuggested += value;
-            }
-            remove
-            {
-                CommandManager.RequerySuggested -= value;
-            }
-        }
-        public virtual bool CanExecute(object parameter)
-        {
-            return true;
-        }
-
-        public abstract void Execute(object parameter);
-
-        public override object ProvideValue(IServiceProvider serviceProvider)
-        {
-            return this;
-        }
 
         protected virtual void Build(IDialog w)
         {

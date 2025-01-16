@@ -44,6 +44,34 @@ namespace H.Controls.FilterBox
             };
         }
 
+
+        public DataTemplate SelectedDataTemplate
+        {
+            get { return (DataTemplate)GetValue(SelectedDataTemplateProperty); }
+            set { SetValue(SelectedDataTemplateProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty SelectedDataTemplateProperty =
+            DependencyProperty.Register("SelectedDataTemplate", typeof(DataTemplate), typeof(PropertyFilterBox), new FrameworkPropertyMetadata(default(DataTemplate), (d, e) =>
+            {
+                PropertyFilterBox control = d as PropertyFilterBox;
+
+                if (control == null) return;
+
+                if (e.OldValue is DataTemplate o)
+                {
+
+                }
+
+                if (e.NewValue is DataTemplate n)
+                {
+
+                }
+
+            }));
+
+
         public string ID { get; set; }
 
         public override void OnApplyTemplate()

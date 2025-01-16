@@ -83,7 +83,6 @@ namespace H.Styles.Default
                 RaisePropertyChanged();
             }
         }
-
     }
 
     public static partial class Extension

@@ -1,6 +1,7 @@
 ﻿using H.Services.Common;
 using H.Mvvm;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace H.Controls.Step
 {
@@ -12,7 +13,8 @@ namespace H.Controls.Step
             this.Height = double.NaN;
         }
         public int Count { get; set; } = 5;
-        public override async void Execute(object parameter)
+
+        public override async Task ExecuteAsync(object parameter)
         {
             StepPresenter presenter = new StepPresenter();
             presenter.Orientation = System.Windows.Controls.Orientation.Vertical;

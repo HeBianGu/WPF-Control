@@ -40,9 +40,4 @@ namespace H.Modules.Setting
             SettingDataManager.Instance.Remove(settings);
         }
     }
-
-    public class SettingButtonPresenter : ISettingButtonPresenter
-    {
-
-    }
 }

@@ -5,12 +5,13 @@ using H.Services.Common;
 
 using H.Mvvm;
 using System.Windows;
+using System.Threading.Tasks;
 
 namespace H.Modules.Setting
 {
-    public class ShowSettingCommand : MarkupCommandBase
+    public class ShowSettingCommand : AsyncMarkupCommandBase
     {
-        public override async void Execute(object parameter)
+        public override async Task ExecuteAsync(object parameter)
         {
             SettingViewPresenter setting = new SettingViewPresenter();
             bool? r = await IocMessage.Dialog.Show(setting, x =>
@@ -35,7 +36,6 @@ namespace H.Modules.Setting
             });
             if (r != true)
                 return;
-
             bool sr = SettingDataManager.Instance.Save(out string error);
             if (sr == false)
             {

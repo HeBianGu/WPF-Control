@@ -43,7 +43,7 @@ namespace H.Windows.Dialog
             this.Close();
         }
 
-        protected override void OnClosing(CancelEventArgs e)
+        protected override async void OnClosing(CancelEventArgs e)
         {
             if (this.CanSumit?.Invoke() == false)
             {
@@ -51,11 +51,12 @@ namespace H.Windows.Dialog
                 return;
             }
             //  ToDo：用动画关闭
-            var task = this.Close(this);
-            task.ContinueWith(x =>
-            {
-                base.OnClosing(e);
-            });
+            await this.Close(this);
+            base.OnClosing(e);
+            //task.ContinueWith(x =>
+            //{
+            //    this.Dispatcher.Invoke(() => base.OnClosing(e));
+            //});
         }
 
         public void Sumit()

@@ -6,6 +6,7 @@
     <ProjectReference Include="..\..\Extensions\H.Extensions.NewtonsoftJson\H.Extensions.NewtonsoftJson.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.ValueConverter\H.Extensions.ValueConverter.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.XmlSerialize\H.Extensions.XmlSerialize.csproj" />
+    <ProjectReference Include="..\..\Providers\H.Mvvm\H.Mvvm.csproj" />
     <ProjectReference Include="..\..\Services\H.Services.Common\H.Services.Common.csproj" />
     <ProjectReference Include="..\..\Styles\H.Styles.Default\H.Styles.Default.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Default\H.Themes.Default.csproj" />

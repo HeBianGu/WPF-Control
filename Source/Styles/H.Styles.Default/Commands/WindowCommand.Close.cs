@@ -10,7 +10,7 @@ namespace H.Styles.Default
     {
         public bool UseDialog { get; set; } = false;
         public string Message { get; set; } = "确认退出系统?";
-        public override async void Execute(object parameter)
+        public override async Task ExecuteAsync(object parameter)
         {
             if (parameter is Window window)
             {

@@ -4,6 +4,7 @@ global using H.Services.Common;
 using System;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace H.Styles.Default
@@ -11,7 +12,7 @@ namespace H.Styles.Default
     public class CloseAfterSaveWindowCommand : CloseWindowCommand
     {
         public bool UseSave { get; set; } = true;
-        public override async void Execute(object parameter)
+        public override async Task ExecuteAsync(object parameter)
         {
             string SaveSetting()
             {

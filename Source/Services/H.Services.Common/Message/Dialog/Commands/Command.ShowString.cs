@@ -1,11 +1,12 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
+
 namespace H.Services.Common
 {
     public class ShowStringCommand : MessageCommandBase
     {
         public string Format { get; set; } = "正在加载数据第{0}/100条";
-        public override void Execute(object parameter)
+        public override async Task ExecuteAsync(object parameter)
         {
             Func<ICancelable, IStringPresenter, bool> func = (c, p) =>
             {
@@ -20,7 +21,7 @@ namespace H.Services.Common
                 Thread.Sleep(1000);
                 return true;
             };
-            IocMessage.Dialog.ShowString(func, x => this.Build(x));
+            await IocMessage.Dialog.ShowString(func, x => this.Build(x));
         }
     }
 }

@@ -4,11 +4,11 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace H.Services.Common
 {
-    public class IocSaveAllCommand : IocMarkupCommandBase
+    public class IocSaveAllCommand : IocAsyncMarkupCommandBase
     {
-        public override async void Execute(object parameter)
+        public override async Task ExecuteAsync(object parameter)
         {
-            System.Collections.Generic.IEnumerable<ISplashSave> saves = Ioc.Services.GetServices<ISplashSave>();
+            IEnumerable<ISplashSave> saves = Ioc.Services.GetServices<ISplashSave>();
             if (saves.Count() > 0)
             {
                 bool r = await IocMessage.Dialog.ShowString((f, x) =>

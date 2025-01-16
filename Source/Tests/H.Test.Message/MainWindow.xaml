@@ -65,7 +65,6 @@
                         Content="ShowDialog" />
             </UniformGrid>
         </TabItem>
-
         <TabItem Header="Snack">
             <UniformGrid>
                 <Button Command="{h:ShowInfoSnackMessageCommand Message=我是Info消息}"
@@ -84,6 +83,15 @@
                         Content="ShowString" />
                 <Button Command="{h:ShowDialogSnackMessageCommand Message=我是Dialog消息}"
                         Content="ShowDialog" />
+            </UniformGrid>
+        </TabItem>
+        <TabItem Header="CommandMessage">
+            <UniformGrid>
+                <Button Content="{Binding RelativeSource={RelativeSource Mode=Self},Path=Command.Message}" 
+                        Command="{h:AsyncMessageCommand Message=点击执行}"/>
+
+                <Button Content="{Binding RelativeSource={RelativeSource Mode=Self},Path=Command.Value}" 
+                  Command="{h:AsyncPercentCommand Value=0.0}"/>
             </UniformGrid>
         </TabItem>
     </TabControl>

@@ -1,12 +1,14 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Input;
 using System.Windows.Markup;
 
 namespace H.Mvvm
 {
     [MarkupExtensionReturnType(typeof(ICommand))]
-    public abstract class MarkupCommandBase : MarkupExtension, ICommand
+    public abstract class MarkupCommandBase : MarkupExtension, ICommand, INotifyPropertyChanged
     {
+        #region - ICommand -
         public event EventHandler CanExecuteChanged
         {
             add
@@ -22,13 +24,27 @@ namespace H.Mvvm
         {
             return true;
         }
-
         public abstract void Execute(object parameter);
+        #endregion
 
+        #region - MarkupExtension -
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
             return this;
         }
-    }
 
+        #endregion
+
+        #region - INotifyPropertyChanged -
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public virtual void RaisePropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = "")
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+
+        }
+        #endregion
+
+    }
 }
