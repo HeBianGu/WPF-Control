@@ -2,12 +2,13 @@
 using H.Services.Mail;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace H.Modules.Feedback
 {
     public class ShowFeedbackCommand : IocAsyncMarkupCommandBase
     {
-        public override async void Execute(object parameter)
+        public override async Task ExecuteAsync(object parameter)
         {
             IFeedbackViewPresenter presenter = Ioc.GetService<IFeedbackViewPresenter>();
             bool? r = await IocMessage.Dialog?.Show(presenter);
@@ -23,7 +24,6 @@ namespace H.Modules.Feedback
             bool? mr = Ioc<IMailService>.Instance?.Send(messageItem, false, out message);
             if (mr == false)
                 await IocMessage.ShowDialogMessage(message);
-
         }
     }
 }

@@ -33,9 +33,10 @@ namespace H.Extensions.ApplicationBase
             this.Configure(bulder);
             this.OnSingleton(e);
             base.OnStartup(e);
-            this.CreateMainWindow(e);
+            var window = this.CreateMainWindow(e);
             this.OnSplashScreen(e);
             this.OnLogin(e);
+            Ioc<IMainWindowSavableService>.Instance?.Load(window);
             this.MainWindow.Show();
             this.ILogger?.Info("系统启动");
             Ioc<IScheduledTaskService>.Instance?.Start();

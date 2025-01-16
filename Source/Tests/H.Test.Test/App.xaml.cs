@@ -2,6 +2,7 @@
 using H.Controls.TagBox;
 using H.Extensions.ApplicationBase;
 using H.Extensions.TypeLicense.LicenseProviders;
+using H.Styles.Default;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -39,6 +40,7 @@ namespace H.Test.Test
             services.AddLog4net();
             services.AddSetting();
             services.AddXmlMetaSettingService();
+            services.AddMainWindowSavableService();
             services.AddTag(x =>
             {
                 x.Tags.Add(new Tag() { Name = "严重", Description = "这是一个严重标签", Background = Brushes.Purple });
@@ -85,7 +87,7 @@ namespace H.Test.Test
             //{
             //    x.LibvlcPath = "G:\\BaiduNetdiskDownload\\libvlc\\win-x64";
             //});
-
+            app.UseMainWindowSetting();
             app.UseMail();
         }
     }

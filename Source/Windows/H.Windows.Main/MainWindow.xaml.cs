@@ -1,15 +1,16 @@
-﻿ using System.Windows;
+﻿using System.ComponentModel;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace H.Windows.Main
 {
     public interface IMainWindow
     {
-        void CloseOver();
-        void ShowOver();
+        //void CloseOver();
+        //void ShowOver();
     }
 
-    [TemplatePart(Name = "PART_Over")]
+    //[TemplatePart(Name = "PART_Over")]
     public class MainWindow : System.Windows.Window, IMainWindow
     {
         private Border _boderOver = null;
@@ -17,17 +18,11 @@ namespace H.Windows.Main
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(MainWindow), new FrameworkPropertyMetadata(typeof(MainWindow)));
         }
-
-        public MainWindow()
-        {
-            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-        }
-        public override void OnApplyTemplate()
-        {
-            base.OnApplyTemplate();
-            this._boderOver = this.Template.FindName("PART_Over", this) as Border;
-        }
-
+        //public override void OnApplyTemplate()
+        //{
+        //    base.OnApplyTemplate();
+        //    this._boderOver = this.Template.FindName("PART_Over", this) as Border;
+        //}
 
         public double CaptionHeight
         {
@@ -107,20 +102,16 @@ namespace H.Windows.Main
                 {
 
                 }
-
             }));
 
+        //public void ShowOver()
+        //{
+        //    this._boderOver.Visibility = Visibility.Visible;
+        //}
 
-        public void ShowOver()
-        {
-            this._boderOver.Visibility = Visibility.Visible;
-        }
-
-        public void CloseOver()
-        {
-            this._boderOver.Visibility = Visibility.Collapsed;
-        }
-
-
+        //public void CloseOver()
+        //{
+        //    this._boderOver.Visibility = Visibility.Collapsed;
+        //}
     }
 }

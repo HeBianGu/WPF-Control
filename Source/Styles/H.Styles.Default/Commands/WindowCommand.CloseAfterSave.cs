@@ -14,6 +14,10 @@ namespace H.Styles.Default
         public bool UseSave { get; set; } = true;
         public override async Task ExecuteAsync(object parameter)
         {
+            Window window = parameter as Window;
+            if (window == null)
+                return;
+            bool isMainWindow = window == Application.Current.MainWindow;
             string SaveSetting()
             {
                 if (this.UseSave == false)
@@ -38,7 +42,7 @@ namespace H.Styles.Default
                 {
                     foreach (var save in saves)
                     {
-                        if (d?.IsCancel == false)
+                        if (d?.IsCancel == true)
                             return null;
                         if (s != null)
                             s.Value = "正在保存" + save.Name;
@@ -54,46 +58,44 @@ namespace H.Styles.Default
                 return null;
             }
 
-            if(IocMessage.Dialog!=null)
+            if (WindowSetting.Instance.UseSaveOnMainWindowClose && isMainWindow)
             {
-                var r = await IocMessage.Dialog?.ShowString((d, s) =>
+                if (IocMessage.Dialog != null)
                 {
-                    if (this.UseSave)
+                    var r = await IocMessage.Dialog?.ShowString((d, s) =>
+                    {
+                        if (Ioc.Services != null && this.UseSave)
+                        {
+                            SaveSplash(d, s);
+                        }
+                        if (d.IsCancel)
+                            return false;
+                        s.Value = "正在保存系统设置";
+                        var m = SaveSetting();
+                        if (m != null)
+                        {
+                            s.Value = m;
+                            Thread.Sleep(1000);
+                        }
                         return true;
-                    if (Ioc.Services != null && this.UseSave)
-                    {
-                        SaveSplash(d, s);
-                    }
-                    if (d.IsCancel)
-                        return false;
-                    s.Value = "正在保存系统设置";
-                    var m = SaveSetting();
-                    if (m != null)
-                    {
-                        s.Value = m;
-                        Thread.Sleep(1000);
-                    }
-                    return true;
 
-                }, x => x.DialogButton = DialogButton.Cancel);
-                if (r != true)
-                    return;
-            }
-            else
-            {
-                SaveSetting();
-                SaveSplash(null, null);
-            }
-
-            if (parameter is Window window)
-            {
-                bool isMain = Application.Current.MainWindow == window && WindowSetting.Instance.UseNoticeOnMainWindowClose;
-                if (isMain || this.UseDialog)
-                {
-                    var dr = await IocMessage.ShowDialogMessage(this.Message, "提示", DialogButton.SumitAndCancel);
-                    if (dr != true)
+                    }, x => x.DialogButton = DialogButton.Cancel);
+                    if (r != true)
                         return;
                 }
+                else
+                {
+                    SaveSetting();
+                    SaveSplash(null, null);
+                }
+            }
+
+            bool isNotice = isMainWindow && WindowSetting.Instance.UseNoticeOnMainWindowClose;
+            if (isNotice || this.UseDialog)
+            {
+                var dr = await IocMessage.ShowDialogMessage(this.Message, "提示", DialogButton.SumitAndCancel);
+                if (dr != true)
+                    return;
             }
             if (parameter is Window window1)
                 SystemCommands.CloseWindow(window1);

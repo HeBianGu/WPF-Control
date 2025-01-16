@@ -156,7 +156,7 @@
                                     <AdornerDecorator Grid.Row="1">
                                         <ContentPresenter />
                                     </AdornerDecorator>
-                                    <Border
+                                    <!--<Border
                                         x:Name="PART_Over"
                                         Grid.RowSpan="5"
                                         Grid.ColumnSpan="5"
@@ -164,7 +164,7 @@
                                         <Border.Background>
                                             <SolidColorBrush Opacity="0.3" Color="Black" />
                                         </Border.Background>
-                                    </Border>
+                                    </Border>-->
 
                                     <ResizeGrip
                                         x:Name="WindowResizeGrip"
