@@ -48,6 +48,13 @@ namespace System
             return builder;
         }
 
+        public static IApplicationBuilder UseSettingSecurity(this IApplicationBuilder builder, Action<SettingSecurityViewOption> option = null)
+        {
+            SettingDataManager.Instance.Add(SettingSecurityViewOption.Instance);
+            option?.Invoke(SettingSecurityViewOption.Instance);
+            return builder;
+        }
+
         /// <summary>
         /// 设置系统路径
         /// </summary>  

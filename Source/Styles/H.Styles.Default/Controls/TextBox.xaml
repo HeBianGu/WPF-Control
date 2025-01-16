@@ -158,7 +158,6 @@
                             <Border Style="{StaticResource S.Border.Attach}">
                                 <ContentPresenter Style="{StaticResource S.ContentPresenter.Attach}" />
                             </Border>
-                            <Control Template="{Binding RE}" />
                             <Grid Margin="{TemplateBinding Padding}">
                                 <ScrollViewer x:Name="PART_ContentHost" />
                                 <Control Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CenterTemplate)}" />

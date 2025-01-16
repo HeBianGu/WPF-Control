@@ -1,9 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <ItemGroup>
+    <ProjectReference Include="..\..\Controls\H.Controls.Form.PropertyItem\H.Controls.Form.PropertyItem.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.Form\H.Controls.Form.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.NavigationBox\H.Controls.NavigationBox.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Common\H.Extensions.Common.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Setting\H.Extensions.Setting.csproj" />
+    <ProjectReference Include="..\..\Presenters\H.Presenters.Common\H.Presenters.Common.csproj" />
     <ProjectReference Include="..\..\Styles\H.Styles.Default\H.Styles.Default.csproj" />
   </ItemGroup>
 

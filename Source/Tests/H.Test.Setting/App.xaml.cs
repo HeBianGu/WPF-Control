@@ -21,6 +21,7 @@ namespace H.Test.Setting
         protected override void ConfigureServices(IServiceCollection services)
         {
             services.AddAdornerDialogMessage();
+            services.AddSnackMessage();
             //services.AddWindowDialogMessage();
             services.AddSetting();
         }
@@ -32,6 +33,7 @@ namespace H.Test.Setting
                 x.Add(LoginSetting.Instance);
             });
             app.UseSetting();
+            app.UseSettingSecurity();
             app.UseSettingDefault();
         }
 
