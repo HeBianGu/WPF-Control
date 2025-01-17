@@ -38,6 +38,9 @@ namespace H.Mvvm
             return this.IsExecuting == false;
         }
 
-        public abstract Task ExecuteAsync(object parameter);
+        public virtual Task ExecuteAsync(object parameter)
+        {
+            return Task.CompletedTask;
+        }
     }
 }

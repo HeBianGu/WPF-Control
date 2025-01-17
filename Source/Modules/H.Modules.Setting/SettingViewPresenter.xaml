@@ -11,7 +11,7 @@
                 <RowDefinition />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <TabControl ItemsSource="{Binding Data}">
+            <TabControl ItemsSource="{Binding Groups}" SelectedItem="{Binding SelectedGroup}">
                 <TabControl.ContentTemplate>
                     <DataTemplate>
                         <h:NavigationBox
@@ -21,8 +21,9 @@
                             BorderBrush="{DynamicResource {x:Static h:BrushKeys.Dark0_1}}"
                             BorderThickness="1"
                             HitTestPoint="55 10"
-                            ItemsSource="{Binding}"
-                            NavigationSource="{Binding}"
+                            ItemsSource="{Binding Collection}"
+                            SelectedItem="{Binding SelectedSettable,Mode=TwoWay}"
+                            NavigationSource="{Binding Collection}"
                             ScrollViewer.CanContentScroll="False"
                             ScrollViewer.VerticalScrollBarVisibility="Auto">
                             <h:NavigationBox.NavigationDataTemplate>
@@ -41,6 +42,7 @@
                                     <Setter Property="Margin" Value="5" />
                                     <Setter Property="ToolTip" Value="{Binding Description}" />
                                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                    <Setter Property="SelectedItem" Value="{Binding SelectedSettable}"/>
                                     <!--<Setter Property="h:Cattach.GuideTitle" Value="{Binding Name}" />
                                 <Setter Property="h:Cattach.GuideData" Value="{Binding Description}" />
                                 <Setter Property="h:Cattach.UseGuide" Value="True" />
@@ -90,7 +92,7 @@
                         <TextBlock
                             Margin="10,0"
                             FontSize="{DynamicResource {x:Static FontSizeKeys.Header5}}"
-                            Text="{Binding Key}" />
+                            Text="{Binding Name}" />
                     </DataTemplate>
                 </TabControl.ItemTemplate>
                 <!--<TabControl.ItemContainerStyle>
@@ -123,7 +125,7 @@
                     Margin="5,0"
                     BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
                     Command="{ClearSettingDataCommand}"
-                    Content="初始化配置(重启以生效)"
+                    Content="初始化配置(重启生效)"
                     DockPanel.Dock="Left"
                     ToolTip="此功能会清空配置文件，重启后重新加载" />
 
@@ -135,12 +137,12 @@
                     Content="确定"
                     DockPanel.Dock="Right" />
 
-                <!--<Button MinWidth="100"
+                <Button MinWidth="100"
                         Margin="2,0"
-                        Command="{CloseDialogCommand}"
+                        Command="{CancelSettingDataCommand}"
                         CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
                         Content="取消"
-                        DockPanel.Dock="Right" />-->
+                        DockPanel.Dock="Right" />
             </DockPanel>
         </Grid>
     </DataTemplate>

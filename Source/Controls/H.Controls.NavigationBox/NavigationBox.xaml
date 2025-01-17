@@ -46,6 +46,7 @@
                                 <ListBox
                                     x:Name="PART_NAVIGATION"
                                     ItemTemplate="{TemplateBinding NavigationDataTemplate}"
+                                    SelectedItem="{TemplateBinding SelectedItem}"
                                     ItemsSource="{TemplateBinding NavigationSource}" />
 
                                 <ScrollViewer

@@ -12,7 +12,7 @@ namespace System
         /// <summary>
         /// 设置系统路径
         /// </summary>  
-        public static IServiceCollection AddSetting(this IServiceCollection services, Action<ISettingViewPresenterOption> setupAction = null)
+        public static IServiceCollection AddSetting(this IServiceCollection services, Action<H.Services.Common.ISettingViewOption> setupAction = null)
         {
             services.AddOptions();
             services.TryAdd(ServiceDescriptor.Singleton<ISettingViewPresenter, SettingViewPresenter>());
@@ -41,14 +41,14 @@ namespace System
             return builder;
         }
 
-        public static IApplicationBuilder UseSetting(this IApplicationBuilder builder, Action<ISettingViewPresenterOption> option = null)
+        public static IApplicationBuilder UseSetting(this IApplicationBuilder builder, Action<H.Services.Common.ISettingViewOption> option = null)
         {
             SettingDataManager.Instance.Add(SettingViewOption.Instance);
             option?.Invoke(SettingViewOption.Instance);
             return builder;
         }
 
-        public static IApplicationBuilder UseSettingSecurity(this IApplicationBuilder builder, Action<SettingSecurityViewOption> option = null)
+        public static IApplicationBuilder UseSettingSecurity(this IApplicationBuilder builder, Action<ISettingSecurityViewOption> option = null)
         {
             SettingDataManager.Instance.Add(SettingSecurityViewOption.Instance);
             option?.Invoke(SettingSecurityViewOption.Instance);

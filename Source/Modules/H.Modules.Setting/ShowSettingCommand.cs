@@ -8,6 +8,7 @@ using System.Windows;
 using System.Threading.Tasks;
 using H.Controls.Form;
 using H.Presenters.Common;
+using System;
 
 namespace H.Modules.Setting
 {
@@ -15,6 +16,8 @@ namespace H.Modules.Setting
     {
         private int _count = 0;
         private bool _successed;
+
+        public Type SwitchToType { get; set; }
         public override async Task ExecuteAsync(object parameter)
         {
             bool needInput = SettingSecurityViewOption.Instance.RememberPassword && this._successed;
@@ -47,7 +50,12 @@ namespace H.Modules.Setting
                 if (SettingSecurityViewOption.Instance.RememberPassword)
                     this._successed = true;
             }
-            SettingViewPresenter setting = new SettingViewPresenter();
+            //SettingViewPresenter setting = new SettingViewPresenter();
+            var setting = Ioc.GetService<ISettingViewPresenter>();
+            if (this.SwitchToType != null)
+                setting.SwitchTo(this.SwitchToType);
+            if (parameter != null)
+                setting.SwitchTo(parameter.GetType());
             bool? r = await IocMessage.Dialog.Show(setting, x =>
             {
                 x.Width = SettingViewOption.Instance.Width;
@@ -75,22 +83,6 @@ namespace H.Modules.Setting
             {
                 await IocMessage.Dialog.Show(error);
             }
-        }
-    }
-
-    public class SettingDefaultCommand : MarkupCommandBase
-    {
-        public override void Execute(object parameter)
-        {
-            SettingDataManager.Instance.SetDefault();
-        }
-    }
-
-    public class CancelSettingCommand : MarkupCommandBase
-    {
-        public override void Execute(object parameter)
-        {
-            SettingDataManager.Instance.Cancel();
         }
     }
 }

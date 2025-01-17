@@ -1,13 +1,17 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
-namespace H.Services.Common
+using H.Services.Common;
+
+using H.Mvvm;
+
+namespace H.Modules.Setting
 {
-    public class CancelDialogCommand : DialogCommandBase
+    public class CancelSettingCommand : MarkupCommandBase
     {
         public override void Execute(object parameter)
         {
-            this.Cancel(parameter);
+            SettingDataManager.Instance.Cancel();
         }
     }
 }
