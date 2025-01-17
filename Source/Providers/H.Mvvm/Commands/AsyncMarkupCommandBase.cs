@@ -18,8 +18,20 @@ namespace H.Mvvm
         public override async void Execute(object parameter)
         {
             this.IsExecuting = true;
-            await this.ExecuteAsync(parameter);
-            this.IsExecuting = false;
+            try
+            {
+                await this.ExecuteAsync(parameter);
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                this.IsExecuting = false;
+            }
             //try
             //{
             //    await this.SingletonExecute(parameter);

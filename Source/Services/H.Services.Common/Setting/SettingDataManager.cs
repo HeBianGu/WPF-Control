@@ -77,11 +77,11 @@
                 }
                 catch (Exception ex)
                 {
+                    IocLog.Instance?.Error(ex);
                     sb.AppendLine(ex.Message);
                 }
             }
             message = sb.ToString();
-            IocLog.Instance?.Error(message);
             return string.IsNullOrEmpty(message);
         }
 

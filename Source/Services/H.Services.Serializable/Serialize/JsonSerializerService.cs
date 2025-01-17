@@ -32,6 +32,7 @@ namespace H.Services.Serializable
             {
                 Directory.CreateDirectory(Path.GetDirectoryName(filePath));
             }
+            System.Diagnostics.Debug.WriteLine(filePath);
             string txt = JsonSerializer.Serialize(sourceObj, this.GetOptions());
             System.Diagnostics.Debug.WriteLine(txt);
             File.WriteAllText(filePath, txt);
@@ -51,7 +52,8 @@ namespace H.Services.Serializable
             jsonSerializerOptions.IncludeFields = true;
             // 设置编码器，支持所有 Unicode 范围
             jsonSerializerOptions.Encoder = JavaScriptEncoder.Create(new TextEncoderSettings(UnicodeRanges.All));
-
+            // 以允许命名的浮点文字
+            jsonSerializerOptions.NumberHandling = JsonNumberHandling.AllowNamedFloatingPointLiterals; 
             jsonSerializerOptions.Converters.Add(new DateTimeConverter());
             //jsonSerializerOptions.Converters.Add(new TypeConverterJsonConverter());
             return jsonSerializerOptions;
