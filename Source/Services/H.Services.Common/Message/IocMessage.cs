@@ -63,11 +63,11 @@ namespace H.Services.Common
         }
 
 
-        public static void ShowSnackMessage(string message)
+        public static async void ShowSnackMessage(string message)
         {
             if (Snack == null)
             {
-
+               await ShowDialogMessage(message);
             }
             else
             {
