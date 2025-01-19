@@ -1086,9 +1086,9 @@ namespace H.Controls.Form
                 //System.Diagnostics.Debug.WriteLine($"PropertyGrid {o.GetType()} - {item.Name} - {item.PropertyType} - {item.GetValue(o)}");
 
                 IPropertyItem from = this.CreatePropertyItem(item, o);
-                if (from is IValueChangeable obj)
+                if (from is IValueChangeable changeable)
                 {
-                    obj.ValueChanged = l =>
+                    changeable.ValueChanged = l =>
                     {
                         this.OnValueChanged(Tuple.Create(from, l));
                     };

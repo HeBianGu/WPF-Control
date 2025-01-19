@@ -11,37 +11,22 @@ using System.Windows;
 
 namespace H.Controls.Form
 {
-    public class ObjectPropertyItem<T> : BindingVisiblablePropertyItemBase, IDataErrorInfo
+    public class ObjectPropertyItem<T> : BindingVisiblablePropertyItemBase, IDataErrorInfo, IDisposable
     {
+        private readonly MethodInfo _notifyMethodInfo;
         public ObjectPropertyItem(PropertyInfo property, object obj) : base(property, obj)
         {
             List<RequiredAttribute> required = property.GetCustomAttributes<RequiredAttribute>()?.ToList();
             this.Validations = property.GetCustomAttributes<ValidationAttribute>()?.ToList();
-            ////  Do ：这两个特性用在通知，本控件默认不可用于验证属性定义
-            //Validations.RemoveAll(l => l is CustomValidationAttribute);
-            //Validations.RemoveAll(l => l is CompareAttribute);
             if (required != null && required.Count > 0)
-            {
                 this.Flag = "*";
-            }
+            this.AddValueChanged();
+            this.LoadValue();
+            this._notifyMethodInfo = this.GetNotifyMethodInfo();
+        }
 
-            if (obj is INotifyPropertyChanged notify)
-            {
-                notify.PropertyChanged += Notify_PropertyChanged;
-            }
-
-            if (obj is DependencyObject dependencyObject)
-            {
-                DependencyPropertyDescriptor descriptor = DependencyPropertyDescriptor.FromName(this.PropertyInfo.Name, this.PropertyInfo.DeclaringType, this.PropertyInfo.DeclaringType);
-                if (descriptor != null)
-                {
-                    descriptor.AddValueChanged(obj, new EventHandler((s, e) =>
-                    {
-                        this.LoadValue();
-                    }));
-                }
-
-            }
+        public void DependencyProperty_ValueChanged(object sender, EventArgs e)
+        {
             this.LoadValue();
         }
 
@@ -112,20 +97,21 @@ namespace H.Controls.Form
 
         protected virtual void OnValueChanged(T o, T n)
         {
+            object[] parameters = new object[3];
+            parameters[0] = this.PropertyInfo;
+            parameters[1] = o;
+            parameters[2] = n;
+            if (this._notifyMethodInfo != null)
+            {
+                this._notifyMethodInfo.Invoke(this.Obj, parameters);
+                return;
+            }
+
             string methodName = this.PropertyInfo.Name;
             Type[] types = new Type[3];
             types[0] = typeof(PropertyInfo);
             types[1] = this.PropertyInfo.PropertyType;
             types[2] = this.PropertyInfo.PropertyType;
-            object[] parameters = new object[3];
-            parameters[0] = this.PropertyInfo;
-            parameters[1] = o;
-            parameters[2] = n;
-            {
-                MethodInfo method = this.Obj.GetType().GetMethod($"On{methodName}ValueChanged", types);
-                method?.Invoke(this.Obj, parameters);
-            }
-
             if (this.Obj is IPropertyValueChanged changed)
                 changed.OnPropertyValueChanged(this.PropertyInfo, o, n);
             else if (this.Obj is IPropertyValueChanged<T> typechanged)
@@ -137,13 +123,24 @@ namespace H.Controls.Form
             }
         }
 
+        private MethodInfo GetNotifyMethodInfo()
+        {
+            var find = this.PropertyInfo.GetCustomAttribute<NotifyMethodNameAttribute>()?.MethodName;
+            string methodName = find ?? this.PropertyInfo.Name;
+            Type[] types = new Type[3];
+            types[0] = typeof(PropertyInfo);
+            types[1] = this.PropertyInfo.PropertyType;
+            types[2] = this.PropertyInfo.PropertyType;
+            object[] parameters = new object[3];
+            return this.Obj.GetType().GetMethod($"On{methodName}ValueChanged", types);
+        }
+
         private List<ValidationAttribute> Validations { get; }
 
         /// <summary> 验证数据类型是否合法 </summary>
         protected virtual bool CheckType(T value, out string error)
         {
             error = null;
-
             try
             {
                 object to = this.ConverToObject(value);
@@ -160,6 +157,9 @@ namespace H.Controls.Form
         {
             if (value == null)
                 return null;
+            if (value?.GetType() == this.PropertyInfo.PropertyType)
+                return value;
+
             TypeConverterAttribute propertyConvert = this.PropertyInfo.GetCustomAttribute<TypeConverterAttribute>();
             if (propertyConvert != null)
             {
@@ -211,6 +211,49 @@ namespace H.Controls.Form
         {
             this.Value = this.GetValue();
         }
+
+        public void Dispose()
+        {
+            this.RemoveValueChanged();
+        }
+
+
+        public void AddValueChanged()
+        {
+            //  ToDo：这部分需要测试是否会产生内存泄漏
+            if (this.Obj is INotifyPropertyChanged notify)
+            {
+                notify.PropertyChanged += Notify_PropertyChanged;
+            }
+
+            if (this.Obj is DependencyObject dependencyObject)
+            {
+                DependencyPropertyDescriptor descriptor = DependencyPropertyDescriptor.FromName(this.PropertyInfo.Name, this.PropertyInfo.DeclaringType, this.PropertyInfo.DeclaringType);
+                if (descriptor != null)
+                {
+                    descriptor.AddValueChanged(dependencyObject, DependencyProperty_ValueChanged);
+                }
+            }
+        }
+
+        public void RemoveValueChanged()
+        {
+            //  ToDo：这部分需要测试是否会产生内存泄漏
+            if (this.Obj is INotifyPropertyChanged notify)
+            {
+                notify.PropertyChanged -= Notify_PropertyChanged;
+            }
+
+            if (this.Obj is DependencyObject dependencyObject)
+            {
+                DependencyPropertyDescriptor descriptor = DependencyPropertyDescriptor.FromName(this.PropertyInfo.Name, this.PropertyInfo.DeclaringType, this.PropertyInfo.DeclaringType);
+                if (descriptor != null)
+                {
+                    descriptor.RemoveValueChanged(dependencyObject, DependencyProperty_ValueChanged);
+                }
+            }
+        }
+
 
         private string _message;
         /// <summary> 说明  </summary>

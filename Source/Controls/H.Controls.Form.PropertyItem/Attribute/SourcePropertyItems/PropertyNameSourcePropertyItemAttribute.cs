@@ -7,6 +7,7 @@ namespace H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem
 {
     public class PropertyNameSourcePropertyItemAttribute : SourcePropertyItemBaseAttribute
     {
+        private PropertyInfo _sourcePropertyInfo;
         public PropertyNameSourcePropertyItemAttribute(Type type, string propertyName) : base(type)
         {
             this.PropertyName = propertyName;
@@ -16,8 +17,9 @@ namespace H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem
 
         public override IEnumerable GetSource(PropertyInfo propertyInfo, object obj)
         {
-            PropertyInfo p = obj.GetType().GetProperty(this.PropertyName);
-            return p.GetValue(obj) as IEnumerable;
+            if(_sourcePropertyInfo==null)
+                _sourcePropertyInfo = obj.GetType().GetProperty(this.PropertyName);
+            return _sourcePropertyInfo.GetValue(obj) as IEnumerable;
         }
     }
 }

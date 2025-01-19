@@ -66,6 +66,7 @@
         <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
         <Setter Property="WindowStyle" Value="SingleBorderWindow" />
         <Setter Property="FontSize" Value="{DynamicResource {x:Static FontSizeKeys.Default}}" />
+        <Setter Property="FontFamily" Value="{DynamicResource {x:Static SystemKeys.FontFamily}}" />
         <Setter Property="ResizeMode" Value="CanResizeWithGrip" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Background">

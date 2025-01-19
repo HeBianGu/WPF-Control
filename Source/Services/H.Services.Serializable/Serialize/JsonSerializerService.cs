@@ -1,5 +1,4 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-
+﻿using System;
 using System.ComponentModel;
 using System.Formats.Asn1;
 using System.IO;
@@ -53,9 +52,10 @@ namespace H.Services.Serializable
             // 设置编码器，支持所有 Unicode 范围
             jsonSerializerOptions.Encoder = JavaScriptEncoder.Create(new TextEncoderSettings(UnicodeRanges.All));
             // 以允许命名的浮点文字
-            jsonSerializerOptions.NumberHandling = JsonNumberHandling.AllowNamedFloatingPointLiterals; 
+            jsonSerializerOptions.NumberHandling = JsonNumberHandling.AllowNamedFloatingPointLiterals;
             jsonSerializerOptions.Converters.Add(new DateTimeConverter());
-            //jsonSerializerOptions.Converters.Add(new TypeConverterJsonConverter());
+            jsonSerializerOptions.Converters.Add(new TypeConverterJsonConverter());//把类型按TypeConverter序列化成文本
+            jsonSerializerOptions.Converters.Add(new EnumConverter());
             return jsonSerializerOptions;
         }
 
@@ -67,7 +67,7 @@ namespace H.Services.Serializable
 
         public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            var r= DateTime.TryParseExact(reader.GetString(), _format, null,System.Globalization.DateTimeStyles.None,out DateTime dateTime);
+            var r = DateTime.TryParseExact(reader.GetString(), _format, null, System.Globalization.DateTimeStyles.None, out DateTime dateTime);
             return dateTime;
         }
 
@@ -81,6 +81,12 @@ namespace H.Services.Serializable
     {
         public override bool CanConvert(Type objectType)
         {
+            if (objectType.IsPrimitive)
+                return false;
+            if (objectType.IsEnum)
+                return false;
+            //if (!objectType.IsClass)
+            //    return false;
             // 检查是否存在能够转换到字符串和从字符串转换回来的 TypeConverter
             TypeConverter converter = TypeDescriptor.GetConverter(objectType);
             return converter != null && converter.CanConvertFrom(typeof(string)) && converter.CanConvertTo(typeof(string));
@@ -88,30 +94,6 @@ namespace H.Services.Serializable
 
         public override object Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            //Action action = () =>
-            //{
-            //    var converter = TypeDescriptor.GetConverter(value.GetType());
-            //    writer.WriteStringValue(converter.ConvertToInvariantString(value));
-            //};
-
-            //if (value is DispatcherObject dispatcherObject)
-            //{
-            //    if (dispatcherObject.CheckAccess())
-            //    {
-            //        action.Invoke();
-            //    }
-            //    else
-            //    {
-            //        dispatcherObject.Dispatcher.Invoke(() =>
-            //        {
-            //            action.Invoke();
-            //        });
-            //    }
-            //}
-            //else
-            //{
-            //    action.Invoke();
-            //}
             string str = reader.GetString();
             if (typeToConvert.IsAssignableTo(typeof(DispatcherObject)) && Application.Current?.Dispatcher != null)
             {
@@ -151,6 +133,20 @@ namespace H.Services.Serializable
             {
                 action.Invoke();
             }
+        }
+    }
+
+    public class EnumConverter : JsonConverter<Enum>
+    {
+        public override Enum Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        {
+            string str = reader.GetString();
+            return (Enum)Enum.Parse(typeToConvert, str);
+        }
+
+        public override void Write(Utf8JsonWriter writer, Enum value, JsonSerializerOptions options)
+        {
+            writer.WriteStringValue(value.ToString());
         }
     }
 }

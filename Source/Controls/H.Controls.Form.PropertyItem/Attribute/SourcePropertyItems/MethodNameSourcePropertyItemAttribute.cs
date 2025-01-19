@@ -7,6 +7,7 @@ namespace H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem
 {
     public class MethodNameSourcePropertyItemAttribute : SourcePropertyItemBaseAttribute
     {
+        private MethodInfo _sourceMethodInfo;
         public MethodNameSourcePropertyItemAttribute(Type type, string methodName) : base(type)
         {
             this.MethodName = methodName;
@@ -16,8 +17,9 @@ namespace H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem
 
         public override IEnumerable GetSource(PropertyInfo propertyInfo, object obj)
         {
-            MethodInfo p = obj.GetType().GetMethod(this.MethodName);
-            return p.Invoke(obj, null) as IEnumerable;
+            if (_sourceMethodInfo == null)
+                _sourceMethodInfo = obj.GetType().GetMethod(this.MethodName);
+            return _sourceMethodInfo.Invoke(obj, null) as IEnumerable;
         }
     }
 }

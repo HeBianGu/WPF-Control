@@ -87,6 +87,10 @@ namespace H.Themes.Default
             return GetResource("FontSizes", type.ToString());
         }
 
+        public static ResourceDictionary GetSystemsResource()
+        {
+            return GetResource("Systems", "Default");
+        }
 
         public static void RefreshBrushResourceDictionary()
         {

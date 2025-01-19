@@ -2,6 +2,7 @@
 using H.Services.Common;
 using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace H.Extensions.NewtonsoftJson
@@ -25,8 +26,11 @@ namespace H.Extensions.NewtonsoftJson
                 NullValueHandling = NullValueHandling.Ignore,
                 DefaultValueHandling = DefaultValueHandling.Ignore,//默认值不保存,如果不加DefaultValue则跟类型默认值关连，加了之后就会根据DefaultValue关联
                 Formatting = Formatting.Indented,// 增加格式化选项
-                                                 //ReferenceLoopHandling = ReferenceLoopHandling.Ignore //忽略循环引用
-                ContractResolver = new CustomContractResolver() // 使用自定义的ContractResolver忽略字段 
+                                                 // 以允许命名的浮点文字
+                //NumberHandling = JsonNumberHandling.AllowNamedFloatingPointLiterals，
+                //ReferenceLoopHandling = ReferenceLoopHandling.Ignore //忽略循环引用
+                ContractResolver = new CustomContractResolver(), // 使用自定义的ContractResolver忽略字段
+                                                                Converters= { new TypeConverterJsonConverter() }
 
             };
             return setting;

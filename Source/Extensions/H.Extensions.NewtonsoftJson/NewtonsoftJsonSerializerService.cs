@@ -5,7 +5,7 @@ using System.IO;
 
 namespace H.Extensions.NewtonsoftJson
 {
-    public class JsonSerializerService : IJsonSerializerService
+    public class NewtonsoftJsonSerializerService : IJsonSerializerService
     {
         public object Load(string filePath, Type type)
         {

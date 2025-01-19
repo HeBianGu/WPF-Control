@@ -2,6 +2,9 @@
 
 namespace H.Controls.Form
 {
+    /// <summary>
+    /// 用于属性联动显示隐藏
+    /// </summary>
     public interface IBindingVisibleable
     {
         bool GetVisible();
