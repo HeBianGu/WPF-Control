@@ -21,11 +21,17 @@ namespace H.Modules.Messages.Notice
             UIElement child = Application.Current.MainWindow.Content as UIElement;
             AdornerLayer layer = AdornerLayer.GetAdornerLayer(child);
             System.Collections.Generic.IEnumerable<PresenterAdorner> adorners = layer.GetAdorners(child)?.OfType<PresenterAdorner>().Where(x => x.Presenter == this._noticeBox);
-            if (adorners == null || adorners.Count() == 0)
+            //if (adorners == null || adorners.Count() == 0)
+            //{
+            //    PresenterAdorner adorner = new PresenterAdorner(child, this._noticeBox);
+            //    layer.Add(adorner);
+            //}
+            foreach (var item in adorners)
             {
-                PresenterAdorner adorner = new PresenterAdorner(child, this._noticeBox);
-                layer.Add(adorner);
+                layer.Remove(item);
             }
+            PresenterAdorner adorner = new PresenterAdorner(child, this._noticeBox);
+            layer.Add(adorner);
         }
 
         public async void ShowInfo(string message)

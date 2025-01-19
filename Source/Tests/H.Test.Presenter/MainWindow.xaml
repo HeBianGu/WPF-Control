@@ -20,6 +20,11 @@
                 <TextBoxPresenter Text="TextBoxPresenter" />
             </Button.CommandParameter>
         </Button>
+        <Button Command="{h:ShowCommand}" Content="PasswordBoxPresenter">
+            <Button.CommandParameter>
+                <PasswordBoxPresenter Password="TextBoxPresenter" />
+            </Button.CommandParameter>
+        </Button>
         <Button Command="{h:ShowCommand}" Content="WaitPresenter">
             <Button.CommandParameter>
                 <WaitPresenter />
