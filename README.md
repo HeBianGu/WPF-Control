@@ -147,6 +147,11 @@ https://github.com/ravibpatel/AutoUpdater.NET
 ## 博客
 [https://space.bilibili.com/370266611](https://space.bilibili.com/370266611)
 
+## 参考视频
+https://www.bilibili.com/video/BV1HhqTYxEDd
+
+https://www.bilibili.com/video/BV1qy421i74b
+
 ## 参考项目
 https://github.com/HeBianGu/WPF-ControlBase
 QQ:908293466
