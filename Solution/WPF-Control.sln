@@ -279,6 +279,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".sln", ".sln", "{8C583732-1
 		..\Directory.Build.Props = ..\Directory.Build.Props
 		..\Key.snk = ..\Key.snk
 		..\LICENSE = ..\LICENSE
+		..\.github\workflows\main.yml = ..\.github\workflows\main.yml
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
@@ -322,13 +323,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Controls.Form.PropertyIte
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Extensions.NewtonsoftJson", "..\Source\Extensions\H.Extensions.NewtonsoftJson\H.Extensions.NewtonsoftJson.csproj", "{20BD0A46-8234-43DD-AC3C-528B9E1A9572}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Extensions.Animations", "..\Source\Extensions\H.Extensions.Animations\H.Extensions.Animations.csproj", "{4F4890D2-CAF6-44CC-9DD7-FDCC509D6B48}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Extensions.Animations", "..\Source\Extensions\H.Extensions.Animations\H.Extensions.Animations.csproj", "{4F4890D2-CAF6-44CC-9DD7-FDCC509D6B48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Test.Animation", "..\Source\Tests\H.Test.Animation\H.Test.Animation.csproj", "{CC5DD9D4-125A-45CF-B8CB-74D6C52D6DBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Test.Animation", "..\Source\Tests\H.Test.Animation\H.Test.Animation.csproj", "{CC5DD9D4-125A-45CF-B8CB-74D6C52D6DBD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Controls.TransitionBox", "..\Source\Controls\H.Controls.TransitionBox\H.Controls.TransitionBox.csproj", "{A4E6F9C2-7D90-4E5D-BA75-72D6E4435953}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Controls.TransitionBox", "..\Source\Controls\H.Controls.TransitionBox\H.Controls.TransitionBox.csproj", "{A4E6F9C2-7D90-4E5D-BA75-72D6E4435953}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Controls.DrawerBox", "..\Source\Controls\H.Controls.DrawerBox\H.Controls.DrawerBox.csproj", "{E214D454-B158-48BE-9511-DCB71AD7FC32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Controls.DrawerBox", "..\Source\Controls\H.Controls.DrawerBox\H.Controls.DrawerBox.csproj", "{E214D454-B158-48BE-9511-DCB71AD7FC32}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

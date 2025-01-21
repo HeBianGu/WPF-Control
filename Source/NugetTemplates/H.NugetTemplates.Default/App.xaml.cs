@@ -42,27 +42,26 @@ public partial class App : ApplicationBase
         app.UseTheme(x =>
         {
             x.ColorResources.Add(new PurpleDarkColorResource());
-            //x.ColorResources.Add(new PurpleLightColorResource());
+            x.ColorResources.Add(new PurpleLightColorResource());
             x.ColorResources.Add(new GrayDarkColorResource());
-            //x.ColorResources.Add(new GrayLightColorResource());
+            x.ColorResources.Add(new GrayLightColorResource());
             //x.ColorResources.Add(new BlueDarkColorResource());
             //x.ColorResources.Add(new BlueLightColorResource());
             x.ColorResources.Add(new AccentLightColorResource());
-            //x.ColorResources.Add(new AccentDarkColorResource());
+            x.ColorResources.Add(new AccentDarkColorResource());
         });
 
+        app.UseWindowSetting();
+        app.UseAbout();
+        app.UseSwithTheme();
+        app.UseSettingSecurity();
+        app.UseMainWindowSetting();
+        app.UseAdorner();
         app.UseWindowSetting();
     }
 
     protected override Window CreateMainWindow(StartupEventArgs e)
     {
         return new MainWindow();
-    }
-
-    protected override void OnSplashScreen(StartupEventArgs e)
-    {
-        base.OnSplashScreen(e);
-
-        SettingDataManager.Instance.Load(null, out string message);
     }
 }
