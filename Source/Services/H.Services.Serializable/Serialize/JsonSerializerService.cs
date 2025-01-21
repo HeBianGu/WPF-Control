@@ -61,7 +61,7 @@ namespace H.Services.Serializable
 
     }
 
-    public class DateTimeConverter : JsonConverter<DateTime>
+    internal class DateTimeConverter : JsonConverter<DateTime>
     {
         private readonly string _format = "yyyy-MM-dd HH:mm:ss";
 
@@ -79,6 +79,11 @@ namespace H.Services.Serializable
 
     public class TypeConverterJsonConverter : JsonConverter<object>
     {
+        TypeConverter CreateTypeConverter(Type objectType)
+        {
+            var result = TypeDescriptor.GetConverter(objectType);
+            return result.GetType() == typeof(TypeConverter) ? null : result;
+        }
         public override bool CanConvert(Type objectType)
         {
             if (objectType.IsPrimitive)
@@ -88,22 +93,21 @@ namespace H.Services.Serializable
             //if (!objectType.IsClass)
             //    return false;
             // 检查是否存在能够转换到字符串和从字符串转换回来的 TypeConverter
-            TypeConverter converter = TypeDescriptor.GetConverter(objectType);
+            TypeConverter converter = CreateTypeConverter(objectType);
             return converter != null && converter.CanConvertFrom(typeof(string)) && converter.CanConvertTo(typeof(string));
         }
 
         public override object Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
             string str = reader.GetString();
+            TypeConverter converter = CreateTypeConverter(typeToConvert);
             if (typeToConvert.IsAssignableTo(typeof(DispatcherObject)) && Application.Current?.Dispatcher != null)
             {
                 return Application.Current.Dispatcher.Invoke(() =>
                 {
-                    var converter = TypeDescriptor.GetConverter(typeToConvert);
                     return converter.ConvertFromInvariantString(str);
                 });
             }
-            var converter = TypeDescriptor.GetConverter(typeToConvert);
             return converter.ConvertFromInvariantString(str);
         }
 
@@ -111,7 +115,7 @@ namespace H.Services.Serializable
         {
             Action action = () =>
             {
-                var converter = TypeDescriptor.GetConverter(value.GetType());
+                TypeConverter converter = CreateTypeConverter(value.GetType());
                 writer.WriteStringValue(converter.ConvertToInvariantString(value));
             };
 
@@ -136,7 +140,7 @@ namespace H.Services.Serializable
         }
     }
 
-    public class EnumConverter : JsonConverter<Enum>
+    internal class EnumConverter : JsonConverter<Enum>
     {
         public override Enum Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {

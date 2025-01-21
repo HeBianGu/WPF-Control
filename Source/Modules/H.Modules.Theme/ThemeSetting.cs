@@ -25,7 +25,8 @@ namespace H.Modules.Theme
             this.ColorResources.Add(new DefaultColorResource());
             this.ColorResources.Add(new LightColorResource());
             this.FontFamilys = Fonts.SystemFontFamilies.ToList();
-            this.FontFamilys.Insert(0, null);
+            //this.FontFamilys.Add(new FontFamily("微软雅黑"));
+            this.FontFamilys.Insert(0, new FontFamily("微软雅黑"));
         }
 
         public override void LoadDefault()

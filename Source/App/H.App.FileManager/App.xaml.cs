@@ -124,6 +124,7 @@ namespace H.App.FileManager
             app.UseTheme();
             app.UseSwithTheme();
             //app.UseSetting();
+            app.UseSettingSecurity();
 
         }
     }

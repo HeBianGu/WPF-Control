@@ -41,7 +41,7 @@ namespace H.Extensions.NewtonsoftJson
 
     }
 
-    public class TypeConverterJsonConverter : JsonConverter
+    internal class TypeConverterJsonConverter : JsonConverter
     {
         TypeConverter CreateTypeConverter(Type objectType)
         {
@@ -50,9 +50,15 @@ namespace H.Extensions.NewtonsoftJson
         }
         public override bool CanConvert(Type objectType)
         {
-            return true;
-            //TypeConverter converter = CreateTypeConverter(objectType);
-            //return converter != null && converter.CanConvertFrom(typeof(string)) && converter.CanConvertTo(typeof(string));
+            if (objectType.IsPrimitive)
+                return false;
+            if (objectType.IsEnum)
+                return false;
+            //if (!objectType.IsClass)
+            //    return false;
+            //return true;
+            TypeConverter converter = CreateTypeConverter(objectType);
+            return converter != null && converter.CanConvertFrom(typeof(string)) && converter.CanConvertTo(typeof(string));
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
