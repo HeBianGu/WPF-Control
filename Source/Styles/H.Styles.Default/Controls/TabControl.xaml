@@ -11,14 +11,18 @@
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
         <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Cattach.CaptionHorizontalAlignment" Value="Stretch" />
+        <Setter Property="Cattach.CaptionVerticalAlignment" Value="Center" />
+        <Setter Property="Cattach.CaptionHeight" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
+        <Setter Property="Cattach.CaptionBorderBrush" Value="{x:Null}" />
+        <Setter Property="Cattach.CaptionBackground" Value="Transparent" />
+        <Setter Property="Cattach.CaptionBorderThickness" Value="0" />
+        <Setter Property="Cattach.CaptionMargin" Value="5 0" />
+        <Setter Property="Cattach.CaptionCornerRadius" Value="2" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabControl}">
-                    <Border
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="2">
+                    <Border Style="{StaticResource S.Border.TemplatedParent}">
                         <Grid
                             ClipToBounds="true"
                             KeyboardNavigation.TabNavigation="Local"
@@ -51,11 +55,19 @@
                                 KeyboardNavigation.DirectionalNavigation="Contained"
                                 KeyboardNavigation.TabIndex="2"
                                 KeyboardNavigation.TabNavigation="Local">
-                                <ContentPresenter
+                                <!--  Foreground继承,不从TabItem继承，TabItem选中为高亮  -->
+                                <ContentControl
                                     x:Name="PART_SelectedContentHost"
                                     Margin="{TemplateBinding Padding}"
-                                    ContentSource="SelectedContent"
+                                    Content="{TemplateBinding SelectedContent}"
+                                    ContentTemplate="{TemplateBinding SelectedContentTemplate}"
+                                    Foreground="{TemplateBinding Foreground}"
                                     SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                <!--<ContentPresenter
+x:Name="PART_SelectedContentHost"
+Margin="{TemplateBinding Padding}"
+ContentSource="SelectedContent"
+SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>-->
                             </Border>
                         </Grid>
                     </Border>
@@ -105,35 +117,31 @@
                                      TypeInTargetAssembly={x:Type local:TabItemKeys}}"
         BasedOn="{StaticResource S.Control.Base}"
         TargetType="{x:Type TabItem}">
-        <Setter Property="Height" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
+        <Setter Property="Height" Value="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=(Cattach.CaptionHeight)}" />
+        <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=(Cattach.CaptionMargin)}" />
+        <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=(Cattach.CaptionBackground)}" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
-        <Setter Property="Padding" Value="5,2,0,2" />
-        <Setter Property="Background">
-            <Setter.Value>
-                <SolidColorBrush Color="Transparent" />
-            </Setter.Value>
-        </Setter>
-        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
-        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="Cattach.CornerRadius" Value="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=(Cattach.CaptionCornerRadius)}" />
+        <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=(Cattach.CaptionBorderBrush)}" />
+        <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=(Cattach.CaptionBorderThickness)}" />
+        <Setter Property="Cattach.CaptionHorizontalAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=(Cattach.CaptionHorizontalAlignment)}" />
+        <Setter Property="Cattach.CaptionVerticalAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=(Cattach.CaptionVerticalAlignment)}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabItem}">
                     <Grid>
-                        <Border
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            CornerRadius="2">
+                        <Border Style="{StaticResource S.Border.TemplatedParent}">
                             <ContentPresenter
                                 x:Name="ContentSite"
-                                Margin="{TemplateBinding Padding}"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
+                                HorizontalAlignment="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionHorizontalAlignment)}"
+                                VerticalAlignment="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionVerticalAlignment)}"
                                 ContentSource="Header"
-                                RecognizesAccessKey="True" />
+                                RecognizesAccessKey="True"
+                                Style="{StaticResource S.ContentPresenter.TemplatedParent}" />
                         </Border>
                     </Grid>
-                    <ControlTemplate.Triggers>
+                    <!--<ControlTemplate.Triggers>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="Selector.IsSelectionActive" Value="True" />
@@ -141,11 +149,11 @@
                             </MultiTrigger.Conditions>
                             <Setter TargetName="ContentSite" Property="TextElement.Foreground">
                                 <Setter.Value>
-                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundTitle}}" />
+                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundSelect}}" />
                                 </Setter.Value>
                             </Setter>
                         </MultiTrigger>
-                    </ControlTemplate.Triggers>
+                    </ControlTemplate.Triggers>-->
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -161,7 +169,7 @@
                 </Setter>
                 <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
             </MultiTrigger>
-            <MultiTrigger>
+            <!--<MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="Selector.IsSelectionActive" Value="False" />
                     <Condition Property="IsSelected" Value="True" />
@@ -169,6 +177,11 @@
                 <Setter Property="Background">
                     <Setter.Value>
                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextElement.Foreground">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundSelect}}" />
                     </Setter.Value>
                 </Setter>
             </MultiTrigger>
@@ -182,16 +195,59 @@
                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
                     </Setter.Value>
                 </Setter>
-            </MultiTrigger>
-            <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Opacity" Value="0.6" />
-            </Trigger>
+                <Setter Property="TextElement.Foreground">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundSelect}}" />
+                    </Setter.Value>
+                </Setter>
+            </MultiTrigger>-->
             <Trigger Property="IsSelected" Value="True">
                 <Setter Property="Panel.ZIndex" Value="100" />
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Foreground">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundSelect}}" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.6" />
             </Trigger>
         </Style.Triggers>
     </Style>
 
+    <Style
+        x:Key="{ComponentResourceKey ResourceId=S.TabItem.Line,
+                                     TypeInTargetAssembly={x:Type local:TabItemKeys}}"
+        BasedOn="{StaticResource {x:Static local:TabItemKeys.Default}}"
+        TargetType="{x:Type TabItem}">
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=TabStripPlacement}" Value="Top">
+                <Setter Property="BorderThickness" Value="0,0,0,2" />
+                <Setter Property="Cattach.CornerRadius" Value="2,2,0,0" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=TabStripPlacement}" Value="Bottom">
+                <Setter Property="BorderThickness" Value="0,2,0,0" />
+                <Setter Property="Cattach.CornerRadius" Value="0,0,2,2" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=TabStripPlacement}" Value="Left">
+                <Setter Property="BorderThickness" Value="0,0,2,0" />
+                <Setter Property="Cattach.CornerRadius" Value="2,0,0,2" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=TabStripPlacement}" Value="Right">
+                <Setter Property="BorderThickness" Value="2,0,0,0" />
+                <Setter Property="Cattach.CornerRadius" Value="0,2,2,0" />
+            </DataTrigger>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.ForegroundSelect}}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
     <Style BasedOn="{StaticResource {x:Static local:TabControlKeys.Default}}" TargetType="TabControl" />
     <Style BasedOn="{StaticResource {x:Static local:TabItemKeys.Default}}" TargetType="TabItem" />
 

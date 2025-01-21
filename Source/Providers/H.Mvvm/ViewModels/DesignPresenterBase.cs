@@ -15,7 +15,9 @@ namespace H.Mvvm
     {
         private bool _isSelected;
         [Browsable(false)]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public bool IsSelected
         {
             get { return _isSelected; }
@@ -28,7 +30,9 @@ namespace H.Mvvm
 
         private bool _isMouseOver;
         [Browsable(false)]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public bool IsMouseOver
         {
             get { return _isMouseOver; }
@@ -96,7 +100,7 @@ namespace H.Mvvm
             }
         }
 
-        private Thickness _margin = new Thickness();
+        private Thickness _margin = new Thickness(10,6,10,6);
         [Display(Name = "外部间距", GroupName = "布局")]
         /// <summary> 说明  </summary>
         public Thickness Margin
@@ -109,7 +113,7 @@ namespace H.Mvvm
             }
         }
 
-        private Thickness _padding;
+        private Thickness _padding = new Thickness(10, 6, 10, 6);
         [Display(Name = "内部间距", GroupName = "布局")]
         /// <summary> 说明  </summary>
         public Thickness Padding

@@ -20,7 +20,7 @@
                 <Run Text="new" />
             </TextBlock>
 
-            <TextBlock Margin="10,0"
+            <TextBlock Margin="5,0"
                        VerticalAlignment="Center"
                        FontSize="10"
                        Foreground="{DynamicResource {x:Static h:BrushKeys.Green}}"

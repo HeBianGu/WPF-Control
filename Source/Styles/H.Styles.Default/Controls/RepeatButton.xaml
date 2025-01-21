@@ -22,15 +22,11 @@
         <Setter Property="BorderBrush" Value="{x:Null}" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.CaptionForeground}}" />
         <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Cattach.CornerRadius" Value="0" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="RepeatButton">
-                    <Border
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="0"
-                        TextBlock.Foreground="{TemplateBinding Foreground}">
+                    <Border Style="{StaticResource S.Border.TemplatedParent}" TextBlock.Foreground="{TemplateBinding Foreground}">
                         <Path
                             Margin="{TemplateBinding Padding}"
                             Data="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Content}"
@@ -49,7 +45,7 @@
                 <Setter Property="Opacity" Value="0.6" />
             </Trigger>
             <Trigger Property="IsMouseOver" Value="true">
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundTitle}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundSelect}}" />
                 <Setter Property="Background">
                     <Setter.Value>
                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />

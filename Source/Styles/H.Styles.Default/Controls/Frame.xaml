@@ -48,14 +48,14 @@
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
-                                <VisualState x:Name="Pressed">
+                                <!--<VisualState x:Name="Pressed">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Ellipse" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
                                             <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Disabled">
+                                </VisualState>-->
+                                <!--<VisualState x:Name="Disabled">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Ellipse" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
                                             <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
@@ -64,7 +64,7 @@
                                             <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
-                                </VisualState>
+                                </VisualState>-->
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
                     </Grid>
@@ -169,11 +169,12 @@
                             </Setter>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter TargetName="Arrow" Property="Fill">
+                            <!--<Setter TargetName="Arrow" Property="Fill">
                                 <Setter.Value>
                                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
                                 </Setter.Value>
-                            </Setter>
+                            </Setter>-->
+                            <Setter TargetName="Arrow" Property="Opacity" Value="0.5" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

@@ -11,6 +11,7 @@ using H.Services.Common;
 */
 using H.Services.Common;
 using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
@@ -23,8 +24,8 @@ namespace H.Controls.FilterBox
     [TemplatePart(Name = "PART_Selector")]
     public class PropertyFilterBox : Control
     {
-        private PropertyConfidtionsPrensenter _propertyConfidtions;
-        public PropertyConfidtionsPrensenter PropertyConfidtions => _propertyConfidtions;
+        private PropertyConditionsPrensenter _propertyConfidtions;
+        public PropertyConditionsPrensenter PropertyConfidtions => _propertyConfidtions;
         private Button _button = null;
         private Selector _selector = null;
         static PropertyFilterBox()
@@ -36,7 +37,40 @@ namespace H.Controls.FilterBox
         {
             this.Filter = new PropertyFilterBoxFilter(this);
             this.ID = GetType().Name;
+
+            this.DefinePropertyConditionPrensenters.CollectionChanged += (l, k) =>
+            {
+                this.RefreshType(this.Type);
+            };
         }
+
+
+        public DataTemplate SelectedDataTemplate
+        {
+            get { return (DataTemplate)GetValue(SelectedDataTemplateProperty); }
+            set { SetValue(SelectedDataTemplateProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty SelectedDataTemplateProperty =
+            DependencyProperty.Register("SelectedDataTemplate", typeof(DataTemplate), typeof(PropertyFilterBox), new FrameworkPropertyMetadata(default(DataTemplate), (d, e) =>
+            {
+                PropertyFilterBox control = d as PropertyFilterBox;
+
+                if (control == null) return;
+
+                if (e.OldValue is DataTemplate o)
+                {
+
+                }
+
+                if (e.NewValue is DataTemplate n)
+                {
+
+                }
+
+            }));
+
 
         public string ID { get; set; }
 
@@ -164,7 +198,6 @@ namespace H.Controls.FilterBox
             }));
 
 
-
         public static readonly RoutedEvent SelectedChangedRoutedEvent =
             EventManager.RegisterRoutedEvent("SelectedChanged", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(PropertyFilterBox));
         public event RoutedEventHandler SelectedChanged
@@ -186,14 +219,28 @@ namespace H.Controls.FilterBox
             {
                 return this.PropertyNames?.Split(',').Contains(x.Name) != false;
             };
-            _propertyConfidtions = new PropertyConfidtionsPrensenter(type, predicate)
+            _propertyConfidtions = new PropertyConditionsPrensenter(type, predicate)
             {
                 ID = this.ID
             };
             _propertyConfidtions.Load();
+            if (this._propertyConfidtions.PropertyConfidtions.Count > 0)
+                return;
+            //加载预定义的条件
+            foreach (PropertyConditionPrensenter item in this.DefinePropertyConditionPrensenters)
+            {
+                item.Properties = _propertyConfidtions.Properties;
+                foreach (IPropertyConfidtion confidtion in item.Conditions)
+                {
+                    PropertyInfo propertyInfo = item.Properties.FirstOrDefault(x => x.Name == confidtion.Filter.PropertyName);
+                    confidtion.Filter.PropertyInfo = propertyInfo;
+                }
+                _propertyConfidtions.PropertyConfidtions.Add(item);
+            }
             this.OnFilterChanged();
         }
 
+        public ObservableCollection<PropertyConditionPrensenter> DefinePropertyConditionPrensenters { get; } = new ObservableCollection<PropertyConditionPrensenter>();
 
         public async void ShowConfig()
         {

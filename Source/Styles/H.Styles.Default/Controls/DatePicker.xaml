@@ -36,22 +36,16 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBoxBase}">
-                    <Border
-                        Name="Border"
-                        Padding="0"
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="2">
-                        <ScrollViewer x:Name="PART_ContentHost" Margin="0" />
+                    <Border Name="Border" Style="{StaticResource S.Border.TemplatedParent}">
+                        <ScrollViewer x:Name="PART_ContentHost" Margin="{TemplateBinding Padding}" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
         <Style.Triggers>
-            <Trigger Property="IsEnabled" Value="false">
+            <!--<Trigger Property="IsEnabled" Value="false">
                 <Setter Property="Opacity" Value="0.5" />
-            </Trigger>
+            </Trigger>-->
             <Trigger Property="IsMouseOver" Value="true">
                 <Setter Property="Background">
                     <Setter.Value>
@@ -60,7 +54,7 @@
                 </Setter>
             </Trigger>
             <Trigger Property="IsFocused" Value="true">
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundTitle}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundSelect}}" />
                 <Setter Property="Background">
                     <Setter.Value>
                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
@@ -71,7 +65,7 @@
                 <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
                 <Setter Property="Background">
                     <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Dark0_1}}" />
                     </Setter.Value>
                 </Setter>
             </Trigger>
@@ -294,23 +288,19 @@
         BasedOn="{StaticResource S.Control.Base}"
         TargetType="{x:Type DatePicker}">
         <Setter Property="IsTodayHighlighted" Value="True" />
-        <Setter Property="SelectedDateFormat" Value="Short" />
+        <Setter Property="SelectedDateFormat" Value="Long" />
         <Setter Property="Padding" Value="2" />
-        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <!--  Set CalendarStyle to DatePickerCalendarStyle.  -->
         <Setter Property="CalendarStyle" Value="{StaticResource {x:Type Calendar}}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Background}}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
+        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DatePicker}">
-                    <Border
-                        Padding="{TemplateBinding Padding}"
-                        BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
-                        <Border.Background>
-                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
-                        </Border.Background>
+                    <Border Style="{StaticResource S.Border.TemplatedParent}">
                         <Grid x:Name="PART_Root" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -320,7 +310,7 @@
                                 x:Name="PART_Button"
                                 Grid.Row="0"
                                 Grid.Column="1"
-                                Margin="3,0,3,0"
+                                Margin="2,0,2,0"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Center"
                                 Focusable="False"
@@ -330,67 +320,69 @@
                                 x:Name="PART_TextBox"
                                 Grid.Row="0"
                                 Grid.Column="0"
+                                Padding="{TemplateBinding Padding}"
                                 HorizontalContentAlignment="Stretch"
                                 Focusable="{TemplateBinding Focusable}"
                                 Foreground="{TemplateBinding Foreground}" />
-                            <Grid
-                                x:Name="PART_DisabledVisual"
-                                Grid.Row="0"
-                                Grid.Column="0"
-                                Grid.ColumnSpan="2"
-                                IsHitTestVisible="False"
-                                Opacity="0">
+                            <!--<Grid x:Name="PART_DisabledVisual"
+                                  Grid.Row="0"
+                                  Grid.Column="0"
+                                  Grid.ColumnSpan="2"
+                                  IsHitTestVisible="False"
+                                  Opacity="0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <Rectangle
-                                    Grid.Row="0"
-                                    Grid.Column="0"
-                                    RadiusX="1"
-                                    RadiusY="1">
+                                <Rectangle Grid.Row="0"
+                                           Grid.Column="0"
+                                           RadiusX="1"
+                                           RadiusY="1">
                                     <Rectangle.Fill>
                                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
                                     </Rectangle.Fill>
                                 </Rectangle>
-                                <Rectangle
-                                    Grid.Row="0"
-                                    Grid.Column="1"
-                                    Width="19"
-                                    Height="18"
-                                    Margin="3,0,3,0"
-                                    RadiusX="1"
-                                    RadiusY="1">
+                                <Rectangle Grid.Row="0"
+                                           Grid.Column="1"
+                                           Width="19"
+                                           Height="18"
+                                           Margin="2,0,2,0"
+                                           RadiusX="1"
+                                           RadiusY="1">
                                     <Rectangle.Fill>
                                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
                                     </Rectangle.Fill>
                                 </Rectangle>
-                                <Popup
-                                    x:Name="PART_Popup"
-                                    AllowsTransparency="True"
-                                    Placement="Bottom"
-                                    PlacementTarget="{Binding ElementName=PART_TextBox}"
-                                    StaysOpen="False" />
-                            </Grid>
+                            </Grid>-->
+                            <Popup
+                                x:Name="PART_Popup"
+                                AllowsTransparency="True"
+                                Placement="Bottom"
+                                PlacementTarget="{Binding ElementName=PART_TextBox}"
+                                StaysOpen="False" />
                         </Grid>
-                        <VisualStateManager.VisualStateGroups>
+                        <!--<VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal" />
                                 <VisualState x:Name="Disabled">
                                     <Storyboard>
-                                        <DoubleAnimation
-                                            Storyboard.TargetName="PART_DisabledVisual"
-                                            Storyboard.TargetProperty="Opacity"
-                                            To="1"
-                                            Duration="0" />
+                                        <DoubleAnimation Storyboard.TargetName="PART_DisabledVisual"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="0" />
                                     </Storyboard>
                                 </VisualState>
                             </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
+                        </VisualStateManager.VisualStateGroups>-->
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="Opacity" Value="0.5" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
     <Style BasedOn="{StaticResource {x:Static local:DatePickerKeys.Default}}" TargetType="DatePicker" />
 

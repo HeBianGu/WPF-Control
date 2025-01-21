@@ -13,14 +13,15 @@
     Style="{DynamicResource {x:Static h:RibbonWindowKeys.Default}}"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
-    <!--<h:Cattach.CaptionRightTemplate>
+    <h:Cattach.CaptionRightTemplate>
         <ControlTemplate>
-            <DockPanel LastChildFill="False">
+            <DockPanel>
                 <ContentPresenter Content="{Ioc Type={x:Type ISettingButtonPresenter}}" />
                 <ContentPresenter Content="{Ioc Type={x:Type h:ISwitchThemeViewPresenter}}" />
+                <Button HorizontalAlignment="Right" Content="自定义按钮" />
             </DockPanel>
         </ControlTemplate>
-    </h:Cattach.CaptionRightTemplate>-->
+    </h:Cattach.CaptionRightTemplate>
     <DockPanel>
         <Ribbon
             Title="文件"
@@ -78,12 +79,24 @@
                             <RibbonMenuItem Header="ss" />
                             <RibbonMenuItem />
                             <RibbonMenuItem />
-                            <RibbonMenuItem />
+                            <RibbonMenuItem>
+                                <RibbonMenuItem />
+                                <RibbonMenuItem />
+                                <RibbonMenuItem />
+                                <RibbonMenuItem />
+                                <RibbonMenuItem />
+                            </RibbonMenuItem>
                             <RibbonMenuItem />
                             <RibbonMenuItem />
                         </RibbonSplitMenuItem>
                         <RibbonMenuItem />
-                        <RibbonMenuItem />
+                        <RibbonMenuItem>
+                            <RibbonMenuItem />
+                            <RibbonMenuItem />
+                            <RibbonMenuItem />
+                            <RibbonMenuItem />
+                            <RibbonMenuItem />
+                        </RibbonMenuItem>
                         <RibbonMenuItem />
                         <RibbonMenuItem />
                         <RibbonMenuItem />

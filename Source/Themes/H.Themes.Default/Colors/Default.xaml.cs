@@ -16,7 +16,7 @@ namespace H.Themes.Default
         public static ComponentResourceKey CaptionForeground => new ComponentResourceKey(typeof(ColorKeys), "S.Color.CaptionForeground");
         public static ComponentResourceKey Foreground => new ComponentResourceKey(typeof(ColorKeys), "S.Color.TextForeground");
         public static ComponentResourceKey ForegroundTitle => new ComponentResourceKey(typeof(ColorKeys), "S.Color.TextForeground.Title");
-        public static ComponentResourceKey ForegroundDisabled => new ComponentResourceKey(typeof(ColorKeys), "S.Color.TextForeground.Disabled");
+        public static ComponentResourceKey ForegroundSelect => new ComponentResourceKey(typeof(ColorKeys), "S.Color.TextForeground.Select");
 
         #region - Foreground -
 
@@ -45,7 +45,6 @@ namespace H.Themes.Default
         public static ComponentResourceKey BorderBrushAssist => new ComponentResourceKey(typeof(ColorKeys), "S.Color.TextBorderBrush.Assist");
         public static ComponentResourceKey BorderBrushDisabled => new ComponentResourceKey(typeof(ColorKeys), "S.Color.TextBorderBrush.Disabled");
         #endregion
-
 
         #region - Accent -
         public static ComponentResourceKey Accent => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Accent");

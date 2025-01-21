@@ -22,18 +22,11 @@ namespace H.Test.Message
     {
         protected override void ConfigureServices(IServiceCollection services)
         {
-            //services.AddSingleton<IDialogMessage, WindowDialogMessage>();
             services.AddSingleton<IDialogMessageService, AdornerDialogMessageService>();
             services.AddSingleton<IFormMessageService, FormMessageService>();
             services.AddNoticeMessage();
             services.AddSnackMessage();
             services.AddAbout();
-
-
-            //var sss= SystemColors.ControlDarkColor.ToString();
-            // System.Diagnostics.Debug.WriteLine(sss);
-         var ss=   SystemParameters.WindowCaptionButtonHeight;
-
         }
 
         protected override Window CreateMainWindow(StartupEventArgs e)

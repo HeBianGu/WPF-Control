@@ -24,6 +24,7 @@ namespace H.Test.Sqlite
         protected override void ConfigureServices(IServiceCollection services)
         {
             services.AddSetting();
+            services.AddWindowMessage();
             services.AddWindowDialogMessage();
             services.AddDbContextBySetting<MyDataContext>();
             services.AddLogging(configure =>

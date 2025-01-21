@@ -9,7 +9,7 @@
     <Style x:Key="CalendarDayButtonStyle" TargetType="CalendarDayButton">
         <Setter Property="MinWidth" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
         <Setter Property="MinHeight" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
-        <Setter Property="FontSize" Value="10" />
+        <!--<Setter Property="FontSize" Value="10" />-->
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Template">
@@ -34,10 +34,7 @@
                                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
                             </Rectangle.Fill>
                         </Rectangle>
-                        <Border
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}" />
+                        <Border Style="{StaticResource S.Border.TemplatedParent}" />
                         <Rectangle
                             x:Name="HighlightBackground"
                             Opacity="0"
@@ -133,7 +130,7 @@
                                         <ColorAnimation
                                             Storyboard.TargetName="NormalText"
                                             Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
-                                            To="{DynamicResource {x:Static ColorKeys.ForegroundTitle}}"
+                                            To="{DynamicResource {x:Static ColorKeys.ForegroundSelect}}"
                                             Duration="0" />
                                     </Storyboard>
                                 </VisualState>
@@ -232,7 +229,7 @@
     <Style x:Key="CalendarButtonStyle" TargetType="CalendarButton">
         <Setter Property="MinWidth" Value="40" />
         <Setter Property="MinHeight" Value="42" />
-        <Setter Property="FontSize" Value="10" />
+        <!--<Setter Property="FontSize" Value="10" />-->
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Template">
@@ -372,13 +369,12 @@
                     x:Name="path"
                     Width="6"
                     Height="10"
-                    Margin="14,-6,0,0"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
                     Data="M288.75,232.25 L288.75,240.625 L283,236.625 z"
                     Stretch="Fill">
                     <Path.Fill>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionForeground}}" />
                     </Path.Fill>
                 </Path>
             </Grid>
@@ -417,13 +413,12 @@
                     x:Name="path"
                     Width="6"
                     Height="10"
-                    Margin="0,-6,14,0"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"
                     Data="M282.875,231.875 L282.875,240.375 L288.625,236 z"
                     Stretch="Fill">
                     <Path.Fill>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionForeground}}" />
                     </Path.Fill>
                 </Path>
             </Grid>
@@ -458,13 +453,13 @@
         <Grid Cursor="Hand">
             <ContentPresenter
                 x:Name="buttonContent"
-                Margin="1,4,1,9"
+                Margin="0"
                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                 Content="{TemplateBinding Content}"
                 ContentTemplate="{TemplateBinding ContentTemplate}">
                 <TextElement.Foreground>
-                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
+                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionForeground}}" />
                 </TextElement.Foreground>
             </ContentPresenter>
             <VisualStateManager.VisualStateGroups>
@@ -495,17 +490,20 @@
 
     <Style x:Key="CalendarItemStyle" TargetType="{x:Type CalendarItem}">
         <Setter Property="Margin" Value="0,3,0,3" />
+        <Setter Property="Cattach.CornerRadius" Value="2" />
+        <!--<Setter Property="Cattach.CaptionCornerRadius" Value="0 2 2 0" />
+        <Setter Property="Cattach.CaptionHeight" Value="{DynamicResource {x:Static LayoutKeys.RowHeight}}" />
+        <Setter Property="Cattach.CaptionFontSize" Value="{DynamicResource {x:Static FontSizeKeys.Header5}}" />
+        <Setter Property="Cattach.CaptionBackground" Value="{DynamicResource {x:Static BrushKeys.CaptionBackground}}" />-->
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type CalendarItem}">
                     <ControlTemplate.Resources>
                         <DataTemplate x:Key="{x:Static CalendarItem.DayTitleTemplateResourceKey}">
                             <TextBlock
-                                Margin="0,6,0,6"
+                                Margin="5"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
-                                FontFamily="Verdana"
-                                FontSize="9.5"
                                 FontWeight="Bold"
                                 Text="{Binding}">
                                 <TextBlock.Foreground>
@@ -518,107 +516,105 @@
                         <Grid.Resources>
                             <SolidColorBrush x:Key="DisabledColor" Color="{DynamicResource {x:Static ColorKeys.BackgroundDisabled}}" />
                         </Grid.Resources>
-                        <Border
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            CornerRadius="1">
-                            <Border
-                                BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
-                                BorderThickness="1"
-                                CornerRadius="1">
-
-                                <Grid>
-                                    <Grid.Resources />
+                        <Border Style="{StaticResource S.Border.TemplatedParent}">
+                            <Grid>
+                                <Grid.Resources />
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Border
+                                    Grid.ColumnSpan="3"
+                                    Height="{DynamicResource {x:Static LayoutKeys.RowHeight}}"
+                                    Background="{DynamicResource {x:Static BrushKeys.CaptionBackground}}"
+                                    CornerRadius="0 2 2 0" />
+                                <Button
+                                    x:Name="PART_PreviousButton"
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Width="{DynamicResource {x:Static LayoutKeys.ItemHeight}}"
+                                    Height="{DynamicResource {x:Static LayoutKeys.ItemHeight}}"
+                                    Margin="10,0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Focusable="False"
+                                    Template="{StaticResource PreviousButtonTemplate}" />
+                                <Button
+                                    x:Name="PART_HeaderButton"
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    Focusable="False"
+                                    FontSize="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionFontSize)}"
+                                    FontWeight="Bold"
+                                    Template="{StaticResource HeaderButtonTemplate}" />
+                                <Button
+                                    x:Name="PART_NextButton"
+                                    Grid.Row="0"
+                                    Grid.Column="2"
+                                    Width="{DynamicResource {x:Static LayoutKeys.ItemHeight}}"
+                                    Height="{DynamicResource {x:Static LayoutKeys.ItemHeight}}"
+                                    Margin="10,0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Focusable="False"
+                                    Template="{StaticResource NextButtonTemplate}" />
+                                <Grid
+                                    x:Name="PART_MonthView"
+                                    Grid.Row="1"
+                                    Grid.ColumnSpan="3"
+                                    Margin="0"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    Visibility="Visible">
                                     <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                </Grid>
+                                <Grid
+                                    x:Name="PART_YearView"
+                                    Grid.Row="1"
+                                    Grid.ColumnSpan="3"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    Visibility="Hidden">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
-                                    <Border Grid.ColumnSpan="3">
-                                        <Border.Background>
-                                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
-                                        </Border.Background>
-                                    </Border>
-                                    <Button
-                                        x:Name="PART_PreviousButton"
-                                        Grid.Row="0"
-                                        Grid.Column="0"
-                                        Width="{DynamicResource {x:Static LayoutKeys.ItemHeight}}"
-                                        Height="{DynamicResource {x:Static LayoutKeys.ItemHeight}}"
-                                        HorizontalAlignment="Left"
-                                        Focusable="False"
-                                        Template="{StaticResource PreviousButtonTemplate}" />
-                                    <Button
-                                        x:Name="PART_HeaderButton"
-                                        Grid.Row="0"
-                                        Grid.Column="1"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"
-                                        Focusable="False"
-                                        FontSize="10.5"
-                                        FontWeight="Bold"
-                                        Template="{StaticResource HeaderButtonTemplate}" />
-                                    <Button
-                                        x:Name="PART_NextButton"
-                                        Grid.Row="0"
-                                        Grid.Column="2"
-                                        Width="{DynamicResource {x:Static LayoutKeys.ItemHeight}}"
-                                        Height="{DynamicResource {x:Static LayoutKeys.ItemHeight}}"
-                                        HorizontalAlignment="Right"
-                                        Focusable="False"
-                                        Template="{StaticResource NextButtonTemplate}" />
-                                    <Grid
-                                        x:Name="PART_MonthView"
-                                        Grid.Row="1"
-                                        Grid.ColumnSpan="3"
-                                        Margin="6,-1,6,6"
-                                        HorizontalAlignment="Center"
-                                        Visibility="Visible">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="Auto" />
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
-                                    </Grid>
-                                    <Grid
-                                        x:Name="PART_YearView"
-                                        Grid.Row="1"
-                                        Grid.ColumnSpan="3"
-                                        Margin="6,-3,7,6"
-                                        HorizontalAlignment="Center"
-                                        Visibility="Hidden">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="Auto" />
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
-                                    </Grid>
                                 </Grid>
-                            </Border>
+                            </Grid>
+                            <!--</Border>-->
                         </Border>
                         <Rectangle
                             x:Name="PART_DisabledVisual"
@@ -673,7 +669,6 @@
             </Setter.Value>
         </Setter>
         <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
-
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Template">
@@ -689,9 +684,10 @@
                                 Style="{TemplateBinding CalendarItemStyle}" />
                         </StackPanel>
                         <Border
-                            Grid.RowSpan="3"
+                            x:Name="bm"
                             IsHitTestVisible="False"
-                            Opacity="{Binding Source={x:Static local:WindowSetting.Instance}, Path=Opacity}">
+                            Opacity="{Binding Source={x:Static local:WindowSetting.Instance}, Path=Opacity}"
+                            Visibility="{Binding Source={x:Static local:WindowSetting.Instance}, Path=UseBackImage, Converter={x:Static Converter.GetTrueToVisible}}">
                             <Border.Background>
                                 <ImageBrush ImageSource="{Binding Source={x:Static local:WindowSetting.Instance}, Path=BackImagePath}" Stretch="{Binding Source={x:Static local:WindowSetting.Instance}, Path=Stretch}" />
                             </Border.Background>

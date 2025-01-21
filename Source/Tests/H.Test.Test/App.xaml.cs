@@ -1,12 +1,16 @@
 ﻿using H.Controls.FavoriteBox;
 using H.Controls.TagBox;
 using H.Extensions.ApplicationBase;
+using H.Extensions.TypeLicense.LicenseProviders;
+using H.Styles.Default;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
@@ -14,13 +18,16 @@ using System.Windows.Shapes;
 
 namespace H.Test.Test
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
+    [LicenseProvider(typeof(EndTimeTypeFileLicenseProvider))]
     public partial class App : ApplicationBase
     {
         protected override Window CreateMainWindow(StartupEventArgs e)
         {
+            //var licenseText = JsonSerializer.Serialize(new EndTimeTypeLicense() { EndTime = DateTime.Now.AddDays(1) });
+            bool r = LicenseManager.IsValid(this.GetType(), this, out License license);
+            if (license is IValidLicense validLicense)
+                r = validLicense.IsValid<App>(out string message);
+            license?.Dispose();
             return new MainWindow();
         }
 
@@ -33,6 +40,7 @@ namespace H.Test.Test
             services.AddLog4net();
             services.AddSetting();
             services.AddXmlMetaSettingService();
+            services.AddMainWindowSavableService();
             services.AddTag(x =>
             {
                 x.Tags.Add(new Tag() { Name = "严重", Description = "这是一个严重标签", Background = Brushes.Purple });
@@ -75,11 +83,11 @@ namespace H.Test.Test
         {
             base.Configure(app);
             app.UseAddLog4netSetting();
-            app.UseVlc(x =>
-            {
-                x.LibvlcPath = "G:\\BaiduNetdiskDownload\\libvlc\\win-x64";
-            });
-
+            //app.UseVlc(x =>
+            //{
+            //    x.LibvlcPath = "G:\\BaiduNetdiskDownload\\libvlc\\win-x64";
+            //});
+            app.UseMainWindowSetting();
             app.UseMail();
         }
     }

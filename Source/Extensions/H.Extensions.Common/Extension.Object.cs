@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using H.Mvvm;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -234,12 +235,18 @@ namespace System
         public static bool ModelStateDeep(this object obj, out string error)
         {
             error = null;
+            if (obj == null)
+                return true;
             PropertyInfo[] propertys = obj.GetType().GetProperties();
+
+            var type = obj.GetType();
+            if (type.FullName.StartsWith("System."))
+                return true;
             foreach (PropertyInfo item in propertys)
             {
                 if (item.Name == "Item")
                     continue;
-                List<ValidationAttribute> collection = item.GetCustomAttributes<ValidationAttribute>()?.ToList();
+                List<ValidationAttribute> collection = item.GetCustomAttributes<ValidationAttribute>(false)?.ToList();
                 object value = item.GetValue(obj);
                 if (collection.Count > 0)
                 {
@@ -305,10 +312,16 @@ namespace System
 
         public static bool IsMacth(this object obj, string searchText)
         {
-            if (string.IsNullOrEmpty(searchText)) return true;
+            if (string.IsNullOrEmpty(searchText))
+                return true;
+
+            if (obj is ISearchable searchable)
+                return searchable.Filter(searchText);
 
             Func<PropertyInfo, object, bool> match = (p, o) =>
             {
+                if (p.Name == "Item")
+                    return false;
                 if (p.PropertyType.IsValueType || p.PropertyType == typeof(string))
                 {
                     return p.GetValue(obj)?.ToString()?.Contains(searchText) == true;
@@ -318,7 +331,6 @@ namespace System
             };
             return obj.IsMacth(match);
         }
-
 
         public static T TryChangeType<T>(this object obj)
         {

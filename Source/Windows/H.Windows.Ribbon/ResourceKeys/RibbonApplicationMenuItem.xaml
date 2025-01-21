@@ -1,73 +1,77 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:classic="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Classic">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:classic="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Classic">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Windows.Ribbon;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <ControlTemplate x:Key="&#238;"
-                     TargetType="{x:Type RibbonApplicationMenuItem}">
-        <Border x:Name="Border"
-                Background="{TemplateBinding Background}"
-                BorderBrush="{TemplateBinding BorderBrush}"
-                BorderThickness="{TemplateBinding BorderThickness}"
-                CornerRadius="2"
-                SnapsToDevicePixels="True">
+    <ControlTemplate x:Key="&#238;" TargetType="{x:Type RibbonApplicationMenuItem}">
+        <Border
+            x:Name="Border"
+            Background="{TemplateBinding Background}"
+            BorderBrush="{TemplateBinding BorderBrush}"
+            BorderThickness="{TemplateBinding BorderThickness}"
+            CornerRadius="2"
+            SnapsToDevicePixels="True">
             <Grid Margin="1">
                 <Grid.ColumnDefinitions>
                     <!--  Icon or check mark column  -->
-                    <ColumnDefinition Width="Auto"
-                                      SharedSizeGroup="MenuItemIconColumnGroup" />
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="MenuItemIconColumnGroup" />
                     <!--  Header column  -->
-                    <ColumnDefinition Width="*"
-                                      MinWidth="44" />
+                    <ColumnDefinition Width="*" MinWidth="44" />
                     <!--  Submenu arrow column  -->
                     <ColumnDefinition Width="22" />
                 </Grid.ColumnDefinitions>
-                <Image x:Name="Image"
-                       Margin="10,6"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       RenderOptions.BitmapScalingMode="NearestNeighbor"
-                       Source="{TemplateBinding ImageSource}" />
-                <Border x:Name="CheckMarkBorder"
-                        Margin="10,6"
+                <Image
+                    x:Name="Image"
+                    Margin="10,6"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    RenderOptions.BitmapScalingMode="NearestNeighbor"
+                    Source="{TemplateBinding ImageSource}" />
+                <Border
+                    x:Name="CheckMarkBorder"
+                    Margin="10,6"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Background="{TemplateBinding CheckedBackground}"
+                    BorderBrush="{TemplateBinding CheckedBorderBrush}"
+                    BorderThickness="1"
+                    CornerRadius="2"
+                    Visibility="Hidden">
+                    <Path
+                        x:Name="CheckMark"
+                        Margin="4,0,6,0"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Background="{TemplateBinding CheckedBackground}"
-                        BorderBrush="{TemplateBinding CheckedBorderBrush}"
-                        BorderThickness="1"
-                        CornerRadius="2"
+                        Data="{StaticResource S.Geometry.239}"
+                        Fill="{TemplateBinding Foreground}"
+                        FlowDirection="LeftToRight"
                         Visibility="Hidden">
-                    <Path x:Name="CheckMark"
-                          Margin="4,0,6,0"
-                          HorizontalAlignment="Center"
-                          VerticalAlignment="Center"
-                          Data="{StaticResource S.Geometry.239}"
-                          Fill="{TemplateBinding Foreground}"
-                          FlowDirection="LeftToRight"
-                          Visibility="Hidden">
                         <Path.RenderTransform>
                             <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
                         </Path.RenderTransform>
                     </Path>
                 </Border>
 
-                <ContentPresenter Grid.Column="1"
-                                  Margin="{TemplateBinding Padding}"
-                                  HorizontalAlignment="Left"
-                                  VerticalAlignment="Center"
-                                  ContentSource="Header"
-                                  RecognizesAccessKey="True" />
+                <ContentPresenter
+                    Grid.Column="1"
+                    Margin="{TemplateBinding Padding}"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    ContentSource="Header"
+                    RecognizesAccessKey="True" />
 
-                <Path x:Name="Arrow"
-                      Grid.Column="2"
-                      HorizontalAlignment="Center"
-                      VerticalAlignment="Center"
-                      Data="{StaticResource S.Geometry.240}"
-                      Fill="{TemplateBinding Foreground}"
-                      Visibility="{TemplateBinding HasItems,
-                                                   Converter={x:Static Converter.GetTrueToVisible}}" />
+                <Path
+                    x:Name="Arrow"
+                    Grid.Column="2"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Data="{StaticResource S.Geometry.240}"
+                    Fill="{TemplateBinding Foreground}"
+                    Visibility="{TemplateBinding HasItems,
+                                                 Converter={x:Static Converter.GetTrueToVisible}}" />
 
                 <!--
                     Note that it is important to enable PopupAnimation for the top level MenuItems even though they aren't of relevance.
@@ -75,76 +79,85 @@
                     important to be able to guarantee that the SubmenuClosed event fires correctly. Please see Dev10 bug# 913562
                 -->
 
-                <Popup x:Name="PART_Popup"
-                       AllowsTransparency="True"
-                       Focusable="False"
-                       IsOpen="{Binding Path=IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
-                       Placement="Relative"
-                       PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}"
-                       SnapsToDevicePixels="True">
-                    <classic:SystemDropShadowChrome x:Name="Shadow"
-                                                    KeyTipService.IsKeyTipScope="True"
-                                                    RenderOptions.ClearTypeHint="Enabled"
-                                                    Color="Transparent">
+                <Popup
+                    x:Name="PART_Popup"
+                    AllowsTransparency="True"
+                    Focusable="False"
+                    IsOpen="{Binding Path=IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                    Placement="Relative"
+                    PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}"
+                    SnapsToDevicePixels="True">
+                    <classic:SystemDropShadowChrome
+                        x:Name="Shadow"
+                        KeyTipService.IsKeyTipScope="True"
+                        RenderOptions.ClearTypeHint="Enabled"
+                        Color="Transparent">
                         <Grid>
-                            <Border x:Name="PopupBorder"
-                                    Background="{Binding Path=Ribbon.Background, RelativeSource={RelativeSource TemplatedParent}}"
-                                    BorderBrush="{Binding Path=Ribbon.BorderBrush, RelativeSource={RelativeSource TemplatedParent}}"
-                                    BorderThickness="{TemplateBinding BorderThickness}"
-                                    CornerRadius="2" />
-                            <Border x:Name="PopupOverlayBorder"
-                                    Background="{TemplateBinding Background}"
-                                    BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
-                                    BorderThickness="{TemplateBinding BorderThickness}"
-                                    CornerRadius="2">
+                            <Border
+                                x:Name="PopupBorder"
+                                Background="{Binding Path=Ribbon.Background, RelativeSource={RelativeSource TemplatedParent}}"
+                                BorderBrush="{Binding Path=Ribbon.BorderBrush, RelativeSource={RelativeSource TemplatedParent}}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="2" />
+                            <Border
+                                x:Name="PopupOverlayBorder"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="2">
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition />
                                         <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
-                                    <ScrollViewer x:Name="PART_SubMenuScrollViewer"
-                                                  CanContentScroll="True"
-                                                  HorizontalScrollBarVisibility="Disabled"
-                                                  Style="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type FrameworkElement},
-                                                                                                ResourceId=MenuScrollViewer}}">
+                                    <ScrollViewer
+                                        x:Name="PART_SubMenuScrollViewer"
+                                        CanContentScroll="True"
+                                        HorizontalScrollBarVisibility="Disabled"
+                                        Style="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type FrameworkElement},
+                                                                                      ResourceId=MenuScrollViewer}}">
 
                                         <Grid RenderOptions.ClearTypeHint="Enabled">
-                                            <Canvas x:Name="BackgroundCanvas"
-                                                    Width="0"
-                                                    Height="0"
-                                                    HorizontalAlignment="Left"
-                                                    VerticalAlignment="Top">
-                                                <Rectangle x:Name="OpaqueRect"
-                                                           Width="{Binding ElementName=PopupBorder, Path=ActualWidth}"
-                                                           Height="{Binding ElementName=PopupBorder, Path=ActualHeight}"
-                                                           Fill="{Binding ElementName=PopupBorder, Path=Background}"
-                                                           RadiusX="2"
-                                                           RadiusY="2" />
-                                                <Rectangle x:Name="OverlayRect"
-                                                           Width="{Binding ElementName=PopupBorder, Path=ActualWidth}"
-                                                           Height="{Binding ElementName=PopupBorder, Path=ActualHeight}"
-                                                           Fill="{Binding ElementName=PopupOverlayBorder, Path=Background}"
-                                                           RadiusX="2"
-                                                           RadiusY="2" />
+                                            <Canvas
+                                                x:Name="BackgroundCanvas"
+                                                Width="0"
+                                                Height="0"
+                                                HorizontalAlignment="Left"
+                                                VerticalAlignment="Top">
+                                                <Rectangle
+                                                    x:Name="OpaqueRect"
+                                                    Width="{Binding ElementName=PopupBorder, Path=ActualWidth}"
+                                                    Height="{Binding ElementName=PopupBorder, Path=ActualHeight}"
+                                                    Fill="{Binding ElementName=PopupBorder, Path=Background}"
+                                                    RadiusX="2"
+                                                    RadiusY="2" />
+                                                <Rectangle
+                                                    x:Name="OverlayRect"
+                                                    Width="{Binding ElementName=PopupBorder, Path=ActualWidth}"
+                                                    Height="{Binding ElementName=PopupBorder, Path=ActualHeight}"
+                                                    Fill="{Binding ElementName=PopupOverlayBorder, Path=Background}"
+                                                    RadiusX="2"
+                                                    RadiusY="2" />
                                             </Canvas>
 
-                                            <ItemsPresenter x:Name="ItemsPresenter"
-                                                            Margin="2"
-                                                            Grid.IsSharedSizeScope="True"
-                                                            KeyboardNavigation.DirectionalNavigation="Cycle"
-                                                            KeyboardNavigation.TabNavigation="Cycle" />
+                                            <ItemsPresenter
+                                                x:Name="ItemsPresenter"
+                                                Margin="2"
+                                                Grid.IsSharedSizeScope="True"
+                                                KeyboardNavigation.DirectionalNavigation="Cycle"
+                                                KeyboardNavigation.TabNavigation="Cycle" />
 
                                         </Grid>
 
                                     </ScrollViewer>
-                                    <Border Name="ResizeControl"
-                                            Grid.Row="1"
-                                            Background="{DynamicResource {x:Static BrushKeys.Background}}"
-                                            BorderBrush="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Ribbon.BorderBrush}"
-                                            BorderThickness="0,1,0,0"
-                                            Visibility="Collapsed">
-                                        <Thumb x:Name="PART_ResizeThumb"
-                                               Style="{StaticResource S.Thumb.SizeNWSE}" />
+                                    <Border
+                                        Name="ResizeControl"
+                                        Grid.Row="1"
+                                        Background="{DynamicResource {x:Static BrushKeys.Background}}"
+                                        BorderBrush="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Ribbon.BorderBrush}"
+                                        BorderThickness="0,1,0,0"
+                                        Visibility="Collapsed">
+                                        <Thumb x:Name="PART_ResizeThumb" Style="{StaticResource S.Thumb.SizeNWSE}" />
                                     </Border>
                                 </Grid>
                             </Border>
@@ -212,8 +225,7 @@
                 <Setter TargetName="Border" Property="TextElement.Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
             </Trigger>
 
-            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
-                         Value="True">
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
                 <Setter TargetName="BackgroundCanvas" Property="Visibility" Value="Collapsed" />
                 <Setter TargetName="Border" Property="TextElement.Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
                 <Setter TargetName="Border" Property="CornerRadius" Value="0" />
@@ -268,150 +280,163 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <ControlTemplate x:Key="&#242;"
-                     TargetType="{x:Type RibbonApplicationMenuItem}">
-        <Grid x:Name="MainGrid"
-              SnapsToDevicePixels="True">
-            <Border x:Name="Border"
-                    Background="{TemplateBinding Background}"
-                    BorderBrush="{TemplateBinding BorderBrush}"
-                    BorderThickness="{TemplateBinding BorderThickness}"
-                    CornerRadius="2">
+    <ControlTemplate x:Key="&#242;" TargetType="{x:Type RibbonApplicationMenuItem}">
+        <Grid x:Name="MainGrid" SnapsToDevicePixels="True">
+            <Border
+                x:Name="Border"
+                Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                CornerRadius="2">
                 <Grid Margin="1">
                     <Grid.ColumnDefinitions>
                         <!--  Icon or check mark column  -->
-                        <ColumnDefinition Width="44"
-                                          SharedSizeGroup="MenuItemIconColumnGroup" />
+                        <ColumnDefinition Width="44" SharedSizeGroup="MenuItemIconColumnGroup" />
                         <!--  Header column  -->
                         <ColumnDefinition Width="*" />
                         <!--  Submenu arrow column  -->
                         <ColumnDefinition Width="22" />
                     </Grid.ColumnDefinitions>
 
-                    <Image x:Name="Image"
-                           Margin="10,6"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           RenderOptions.BitmapScalingMode="NearestNeighbor"
-                           Source="{TemplateBinding ImageSource}" />
-                    <Border x:Name="CheckMarkBorder"
-                            Margin="10,6"
+                    <Image
+                        x:Name="Image"
+                        Margin="10,6"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        RenderOptions.BitmapScalingMode="NearestNeighbor"
+                        Source="{TemplateBinding ImageSource}" />
+                    <Border
+                        x:Name="CheckMarkBorder"
+                        Margin="10,6"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Background="{TemplateBinding CheckedBackground}"
+                        BorderBrush="{TemplateBinding CheckedBorderBrush}"
+                        BorderThickness="1"
+                        CornerRadius="2"
+                        Visibility="Hidden">
+                        <Path
+                            x:Name="CheckMark"
+                            Margin="4,0,6,0"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            Background="{TemplateBinding CheckedBackground}"
-                            BorderBrush="{TemplateBinding CheckedBorderBrush}"
-                            BorderThickness="1"
-                            CornerRadius="2"
+                            Data="{StaticResource S.Geometry.239}"
+                            Fill="{TemplateBinding Foreground}"
+                            FlowDirection="LeftToRight"
                             Visibility="Hidden">
-                        <Path x:Name="CheckMark"
-                              Margin="4,0,6,0"
-                              HorizontalAlignment="Center"
-                              VerticalAlignment="Center"
-                              Data="{StaticResource S.Geometry.239}"
-                              Fill="{TemplateBinding Foreground}"
-                              FlowDirection="LeftToRight"
-                              Visibility="Hidden">
                             <Path.RenderTransform>
                                 <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
                             </Path.RenderTransform>
                         </Path>
                     </Border>
 
-                    <ContentPresenter Grid.Column="1"
-                                      Margin="{TemplateBinding Padding}"
-                                      HorizontalAlignment="Left"
-                                      VerticalAlignment="Center"
-                                      ContentSource="Header"
-                                      RecognizesAccessKey="True" />
+                    <ContentPresenter
+                        Grid.Column="1"
+                        Margin="{TemplateBinding Padding}"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        ContentSource="Header"
+                        RecognizesAccessKey="True" />
 
-                    <Path x:Name="Arrow"
-                          Grid.Column="2"
-                          HorizontalAlignment="Center"
-                          VerticalAlignment="Center"
-                          Data="{StaticResource S.Geometry.240}"
-                          Fill="{TemplateBinding Foreground}"
-                          Visibility="{TemplateBinding HasItems,
-                                                       Converter={x:Static Converter.GetTrueToVisible}}" />
+                    <Path
+                        x:Name="Arrow"
+                        Grid.Column="2"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Data="{StaticResource S.Geometry.240}"
+                        Fill="{TemplateBinding Foreground}"
+                        Visibility="{TemplateBinding HasItems,
+                                                     Converter={x:Static Converter.GetTrueToVisible}}" />
                 </Grid>
             </Border>
-            <Popup x:Name="PART_Popup"
-                   AllowsTransparency="True"
-                   Focusable="False"
-                   IsOpen="{Binding Path=IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
-                   Placement="Custom"
-                   PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}"
-                   SnapsToDevicePixels="True"
-                   VerticalOffset="-1">
-                <classic:SystemDropShadowChrome x:Name="Shadow"
-                                                KeyTipService.IsKeyTipScope="True"
-                                                RenderOptions.ClearTypeHint="Enabled"
-                                                Color="Transparent">
+            <Popup
+                x:Name="PART_Popup"
+                AllowsTransparency="True"
+                Focusable="False"
+                IsOpen="{Binding Path=IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                Placement="Custom"
+                PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}"
+                SnapsToDevicePixels="True"
+                VerticalOffset="-1">
+                <classic:SystemDropShadowChrome
+                    x:Name="Shadow"
+                    KeyTipService.IsKeyTipScope="True"
+                    RenderOptions.ClearTypeHint="Enabled"
+                    Color="Transparent">
                     <Grid>
-                        <Border x:Name="PopupBorder"
-                                Background="{Binding Path=Ribbon.Background, RelativeSource={RelativeSource TemplatedParent}}"
-                                BorderBrush="{Binding Path=Ribbon.BorderBrush, RelativeSource={RelativeSource TemplatedParent}}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="2" />
-                        <Border x:Name="PopupOverlayBorder"
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="2">
+                        <Border
+                            x:Name="PopupBorder"
+                            Background="{Binding Path=Ribbon.Background, RelativeSource={RelativeSource TemplatedParent}}"
+                            BorderBrush="{Binding Path=Ribbon.BorderBrush, RelativeSource={RelativeSource TemplatedParent}}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="2" />
+                        <Border
+                            x:Name="PopupOverlayBorder"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="2">
 
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition />
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
-                                <ScrollViewer x:Name="PART_SubMenuScrollViewer"
-                                              CanContentScroll="True"
-                                              HorizontalScrollBarVisibility="Disabled"
-                                              Style="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type FrameworkElement},
-                                                                                            ResourceId=MenuScrollViewer}}">
+                                <ScrollViewer
+                                    x:Name="PART_SubMenuScrollViewer"
+                                    CanContentScroll="True"
+                                    HorizontalScrollBarVisibility="Disabled"
+                                    Style="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type FrameworkElement},
+                                                                                  ResourceId=MenuScrollViewer}}">
 
                                     <Grid RenderOptions.ClearTypeHint="Enabled">
-                                        <Canvas x:Name="BackgroundCanvas"
-                                                Width="0"
-                                                Height="0"
-                                                HorizontalAlignment="Left"
-                                                VerticalAlignment="Top">
-                                            <Rectangle x:Name="OpaqueRect"
-                                                       Width="{Binding ElementName=PopupBorder, Path=ActualWidth}"
-                                                       Height="{Binding ElementName=PopupBorder, Path=ActualHeight}"
-                                                       Fill="{Binding ElementName=PopupBorder, Path=Background}"
-                                                       RadiusX="2"
-                                                       RadiusY="2" />
-                                            <Rectangle x:Name="OverlayRect"
-                                                       Width="{Binding ElementName=PopupBorder, Path=ActualWidth}"
-                                                       Height="{Binding ElementName=PopupBorder, Path=ActualHeight}"
-                                                       Fill="{Binding ElementName=PopupOverlayBorder, Path=Background}"
-                                                       RadiusX="2"
-                                                       RadiusY="2" />
-                                            <Rectangle x:Name="InnerOverlayRect"
-                                                       Width="{Binding ElementName=PopupBorder, Path=ActualWidth}"
-                                                       Height="{Binding ElementName=PopupBorder, Path=ActualHeight}"
-                                                       Fill="{DynamicResource {x:Static BrushKeys.Background}}"
-                                                       RadiusX="2"
-                                                       RadiusY="2" />
+                                        <Canvas
+                                            x:Name="BackgroundCanvas"
+                                            Width="0"
+                                            Height="0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Top">
+                                            <Rectangle
+                                                x:Name="OpaqueRect"
+                                                Width="{Binding ElementName=PopupBorder, Path=ActualWidth}"
+                                                Height="{Binding ElementName=PopupBorder, Path=ActualHeight}"
+                                                Fill="{Binding ElementName=PopupBorder, Path=Background}"
+                                                RadiusX="2"
+                                                RadiusY="2" />
+                                            <Rectangle
+                                                x:Name="OverlayRect"
+                                                Width="{Binding ElementName=PopupBorder, Path=ActualWidth}"
+                                                Height="{Binding ElementName=PopupBorder, Path=ActualHeight}"
+                                                Fill="{Binding ElementName=PopupOverlayBorder, Path=Background}"
+                                                RadiusX="2"
+                                                RadiusY="2" />
+                                            <Rectangle
+                                                x:Name="InnerOverlayRect"
+                                                Width="{Binding ElementName=PopupBorder, Path=ActualWidth}"
+                                                Height="{Binding ElementName=PopupBorder, Path=ActualHeight}"
+                                                Fill="{DynamicResource {x:Static BrushKeys.Background}}"
+                                                RadiusX="2"
+                                                RadiusY="2" />
                                         </Canvas>
 
-                                        <ItemsPresenter x:Name="ItemsPresenter"
-                                                        Margin="2"
-                                                        Grid.IsSharedSizeScope="True"
-                                                        KeyboardNavigation.DirectionalNavigation="Cycle"
-                                                        KeyboardNavigation.TabNavigation="Cycle" />
+                                        <ItemsPresenter
+                                            x:Name="ItemsPresenter"
+                                            Margin="2"
+                                            Grid.IsSharedSizeScope="True"
+                                            KeyboardNavigation.DirectionalNavigation="Cycle"
+                                            KeyboardNavigation.TabNavigation="Cycle" />
 
                                     </Grid>
 
                                 </ScrollViewer>
-                                <Border Name="ResizeControl"
-                                        Grid.Row="1"
-                                        Background="{DynamicResource {x:Static BrushKeys.Background}}"
-                                        BorderBrush="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Ribbon.BorderBrush}"
-                                        BorderThickness="0,1,0,0"
-                                        Visibility="Collapsed">
-                                    <Thumb x:Name="PART_ResizeThumb"
-                                           Style="{StaticResource S.Thumb.SizeNWSE}" />
+                                <Border
+                                    Name="ResizeControl"
+                                    Grid.Row="1"
+                                    Background="{DynamicResource {x:Static BrushKeys.Background}}"
+                                    BorderBrush="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Ribbon.BorderBrush}"
+                                    BorderThickness="0,1,0,0"
+                                    Visibility="Collapsed">
+                                    <Thumb x:Name="PART_ResizeThumb" Style="{StaticResource S.Thumb.SizeNWSE}" />
                                 </Border>
                             </Grid>
                         </Border>
@@ -492,8 +517,7 @@
             </Trigger>
 
 
-            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
-                         Value="True">
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
 
 
 
@@ -563,141 +587,156 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <ControlTemplate x:Key="&#244;"
-                     TargetType="{x:Type RibbonApplicationMenuItem}">
-        <Grid x:Name="MainGrid"
-              SnapsToDevicePixels="True">
-            <Border x:Name="Border"
-                    Background="{TemplateBinding Background}"
-                    BorderBrush="{TemplateBinding BorderBrush}"
-                    BorderThickness="{TemplateBinding BorderThickness}"
-                    CornerRadius="2">
+    <ControlTemplate x:Key="&#244;" TargetType="{x:Type RibbonApplicationMenuItem}">
+        <Grid x:Name="MainGrid" SnapsToDevicePixels="True">
+            <Border
+                x:Name="Border"
+                Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                CornerRadius="2">
                 <Grid Margin="1">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"
-                                          MinWidth="24"
-                                          SharedSizeGroup="MenuItemIconColumnGroup" />
+                        <ColumnDefinition
+                            Width="Auto"
+                            MinWidth="24"
+                            SharedSizeGroup="MenuItemIconColumnGroup" />
                         <ColumnDefinition Width="4" />
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="37" />
                         <ColumnDefinition Width="17" />
                     </Grid.ColumnDefinitions>
 
-                    <Image x:Name="Image"
-                           Margin="10,6"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           RenderOptions.BitmapScalingMode="NearestNeighbor"
-                           Source="{TemplateBinding ImageSource}" />
-                    <Border x:Name="CheckMarkBorder"
-                            Margin="10,6"
+                    <Image
+                        x:Name="Image"
+                        Margin="10,6"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        RenderOptions.BitmapScalingMode="NearestNeighbor"
+                        Source="{TemplateBinding ImageSource}" />
+                    <Border
+                        x:Name="CheckMarkBorder"
+                        Margin="10,6"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Background="{TemplateBinding CheckedBackground}"
+                        BorderBrush="{TemplateBinding CheckedBorderBrush}"
+                        BorderThickness="1"
+                        CornerRadius="2"
+                        Visibility="Hidden">
+                        <Path
+                            x:Name="CheckMark"
+                            Margin="4,0,6,0"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            Background="{TemplateBinding CheckedBackground}"
-                            BorderBrush="{TemplateBinding CheckedBorderBrush}"
-                            BorderThickness="1"
-                            CornerRadius="2"
-                            Visibility="Hidden">
-                        <Path x:Name="CheckMark"
-                              Margin="4,0,6,0"
-                              HorizontalAlignment="Center"
-                              VerticalAlignment="Center"
-                              Data="{StaticResource S.Geometry.239}"
-                              Fill="{TemplateBinding Foreground}"
-                              FlowDirection="LeftToRight"
-                              Visibility="Hidden" />
+                            Data="{StaticResource S.Geometry.239}"
+                            Fill="{TemplateBinding Foreground}"
+                            FlowDirection="LeftToRight"
+                            Visibility="Hidden" />
                     </Border>
 
-                    <ContentPresenter Grid.Column="2"
-                                      Margin="{TemplateBinding Padding}"
-                                      HorizontalAlignment="Left"
-                                      VerticalAlignment="Center"
-                                      ContentSource="Header"
-                                      RecognizesAccessKey="True" />
-                    <Path x:Name="Arrow"
-                          Grid.Column="5"
-                          Margin="4,0,0,0"
-                          VerticalAlignment="Center"
-                          Data="{StaticResource S.Geometry.240}"
-                          Fill="{TemplateBinding Foreground}"
-                          Visibility="{TemplateBinding HasItems,
-                                                       Converter={x:Static Converter.GetTrueToVisible}}" />
+                    <ContentPresenter
+                        Grid.Column="2"
+                        Margin="{TemplateBinding Padding}"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        ContentSource="Header"
+                        RecognizesAccessKey="True" />
+                    <Path
+                        x:Name="Arrow"
+                        Grid.Column="5"
+                        Margin="4,0,0,0"
+                        VerticalAlignment="Center"
+                        Data="{StaticResource S.Geometry.240}"
+                        Fill="{TemplateBinding Foreground}"
+                        Visibility="{TemplateBinding HasItems,
+                                                     Converter={x:Static Converter.GetTrueToVisible}}" />
                 </Grid>
             </Border>
-            <Popup x:Name="PART_Popup"
-                   AllowsTransparency="True"
-                   Focusable="False"
-                   IsOpen="{Binding Path=IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
-                   Placement="Custom"
-                   PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}"
-                   SnapsToDevicePixels="True"
-                   VerticalOffset="-1">
-                <classic:SystemDropShadowChrome x:Name="Shadow"
-                                                KeyTipService.IsKeyTipScope="True"
-                                                RenderOptions.ClearTypeHint="Enabled"
-                                                Color="Transparent">
+            <Popup
+                x:Name="PART_Popup"
+                AllowsTransparency="True"
+                Focusable="False"
+                IsOpen="{Binding Path=IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                Placement="Custom"
+                PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}"
+                SnapsToDevicePixels="True"
+                VerticalOffset="-1">
+                <classic:SystemDropShadowChrome
+                    x:Name="Shadow"
+                    KeyTipService.IsKeyTipScope="True"
+                    RenderOptions.ClearTypeHint="Enabled"
+                    Color="Transparent">
                     <Grid>
-                        <Border x:Name="PopupBorder"
-                                Background="{Binding Path=Ribbon.Background, RelativeSource={RelativeSource TemplatedParent}}"
-                                BorderBrush="{Binding Path=Ribbon.BorderBrush, RelativeSource={RelativeSource TemplatedParent}}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="2" />
-                        <Border x:Name="PopupOverlayBorder"
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="2">
+                        <Border
+                            x:Name="PopupBorder"
+                            Background="{Binding Path=Ribbon.Background, RelativeSource={RelativeSource TemplatedParent}}"
+                            BorderBrush="{Binding Path=Ribbon.BorderBrush, RelativeSource={RelativeSource TemplatedParent}}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="2" />
+                        <Border
+                            x:Name="PopupOverlayBorder"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="2">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition />
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
-                                <ScrollViewer x:Name="PART_SubMenuScrollViewer"
-                                              CanContentScroll="True"
-                                              Style="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type FrameworkElement},
-                                                                                            ResourceId=MenuScrollViewer}}">
+                                <ScrollViewer
+                                    x:Name="PART_SubMenuScrollViewer"
+                                    CanContentScroll="True"
+                                    Style="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type FrameworkElement},
+                                                                                  ResourceId=MenuScrollViewer}}">
 
                                     <Grid RenderOptions.ClearTypeHint="Enabled">
-                                        <Canvas x:Name="BackgroundCanvas"
-                                                Width="0"
-                                                Height="0"
-                                                HorizontalAlignment="Left"
-                                                VerticalAlignment="Top">
-                                            <Rectangle x:Name="OpaqueRect"
-                                                       Width="{Binding ElementName=PopupBorder, Path=ActualWidth}"
-                                                       Height="{Binding ElementName=PopupBorder, Path=ActualHeight}"
-                                                       Fill="{Binding ElementName=PopupBorder, Path=Background}"
-                                                       RadiusX="2"
-                                                       RadiusY="2" />
-                                            <Rectangle x:Name="OverlayRect"
-                                                       Width="{Binding ElementName=PopupBorder, Path=ActualWidth}"
-                                                       Height="{Binding ElementName=PopupBorder, Path=ActualHeight}"
-                                                       Fill="{Binding ElementName=PopupOverlayBorder, Path=Background}"
-                                                       RadiusX="2"
-                                                       RadiusY="2" />
-                                            <Rectangle x:Name="InnerOverlayRect"
-                                                       Width="{Binding ElementName=PopupBorder, Path=ActualWidth}"
-                                                       Height="{Binding ElementName=PopupBorder, Path=ActualHeight}"
-                                                       Fill="{DynamicResource {x:Static BrushKeys.Background}}"
-                                                       RadiusX="2"
-                                                       RadiusY="2" />
+                                        <Canvas
+                                            x:Name="BackgroundCanvas"
+                                            Width="0"
+                                            Height="0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Top">
+                                            <Rectangle
+                                                x:Name="OpaqueRect"
+                                                Width="{Binding ElementName=PopupBorder, Path=ActualWidth}"
+                                                Height="{Binding ElementName=PopupBorder, Path=ActualHeight}"
+                                                Fill="{Binding ElementName=PopupBorder, Path=Background}"
+                                                RadiusX="2"
+                                                RadiusY="2" />
+                                            <Rectangle
+                                                x:Name="OverlayRect"
+                                                Width="{Binding ElementName=PopupBorder, Path=ActualWidth}"
+                                                Height="{Binding ElementName=PopupBorder, Path=ActualHeight}"
+                                                Fill="{Binding ElementName=PopupOverlayBorder, Path=Background}"
+                                                RadiusX="2"
+                                                RadiusY="2" />
+                                            <Rectangle
+                                                x:Name="InnerOverlayRect"
+                                                Width="{Binding ElementName=PopupBorder, Path=ActualWidth}"
+                                                Height="{Binding ElementName=PopupBorder, Path=ActualHeight}"
+                                                Fill="{Binding ElementName=PopupOverlayBorder, Path=Background}"
+                                                RadiusX="2"
+                                                RadiusY="2" />
                                         </Canvas>
 
-                                        <ItemsPresenter x:Name="ItemsPresenter"
-                                                        Margin="2"
-                                                        Grid.IsSharedSizeScope="True"
-                                                        KeyboardNavigation.DirectionalNavigation="Cycle"
-                                                        KeyboardNavigation.TabNavigation="Cycle" />
+                                        <ItemsPresenter
+                                            x:Name="ItemsPresenter"
+                                            Margin="2"
+                                            Grid.IsSharedSizeScope="True"
+                                            KeyboardNavigation.DirectionalNavigation="Cycle"
+                                            KeyboardNavigation.TabNavigation="Cycle" />
                                     </Grid>
                                 </ScrollViewer>
-                                <Border Name="ResizeControl"
-                                        Grid.Row="1"
-                                        Background="{DynamicResource {x:Static BrushKeys.Background}}"
-                                        BorderBrush="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Ribbon.BorderBrush}"
-                                        BorderThickness="0,1,0,0"
-                                        Visibility="Collapsed">
-                                    <Thumb x:Name="PART_ResizeThumb"
-                                           Style="{StaticResource S.Thumb.SizeNWSE}" />
+                                <Border
+                                    Name="ResizeControl"
+                                    Grid.Row="1"
+                                    Background="{DynamicResource {x:Static BrushKeys.Background}}"
+                                    BorderBrush="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Ribbon.BorderBrush}"
+                                    BorderThickness="0,1,0,0"
+                                    Visibility="Collapsed">
+                                    <Thumb x:Name="PART_ResizeThumb" Style="{StaticResource S.Thumb.SizeNWSE}" />
                                 </Border>
                             </Grid>
                         </Border>
@@ -776,8 +815,7 @@
                 <Setter TargetName="MainGrid" Property="TextElement.Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
             </Trigger>
 
-            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
-                         Value="True">
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
                 <Setter TargetName="BackgroundCanvas" Property="Visibility" Value="Collapsed" />
                 <Setter TargetName="MainGrid" Property="TextElement.Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
                 <Setter TargetName="Border" Property="CornerRadius" Value="0" />
@@ -838,8 +876,7 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <Style x:Key="{x:Type RibbonApplicationMenuItem}"
-           TargetType="{x:Type RibbonApplicationMenuItem}">
+    <Style x:Key="{x:Type RibbonApplicationMenuItem}" TargetType="{x:Type RibbonApplicationMenuItem}">
         <Setter Property="Header" Value="RibbonApplicationMenuItem" />
         <Setter Property="ImageSource" Value="{Logo}" />
         <Setter Property="HorizontalContentAlignment" Value="{Binding Path=HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />

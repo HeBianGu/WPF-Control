@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -29,7 +30,18 @@ namespace H.Mvvm
             }
             IDAttribute id = type.GetCustomAttribute<IDAttribute>(true);
             this.ID = id?.ID ?? type.Name;
+            this.Commands = new ObservableCollection<ICommand>(this.CreateCommands());
+            LoadDefault();
+        }
+        [Browsable(false)]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
+        public ObservableCollection<ICommand> Commands { get; } = new ObservableCollection<ICommand>();
 
+        protected virtual IEnumerable<ICommand> CreateCommands()
+        {
+            var type = this.GetType();
             System.Collections.Generic.IEnumerable<PropertyInfo> cmdps = type.GetProperties().Where(x => typeof(ICommand).IsAssignableFrom(x.PropertyType));
             foreach (PropertyInfo cmdp in cmdps)
             {
@@ -38,23 +50,21 @@ namespace H.Mvvm
                 if (cmdp.GetCustomAttribute<BrowsableAttribute>()?.Browsable == false)
                     continue;
                 ICommand command = cmdp.GetValue(this) as ICommand;
-                this.Commands.Add(command);
+                //this.Commands.Add(command);
+                yield return command;
             }
-            LoadDefault();
         }
-        [Browsable(false)]
-        [JsonIgnore]
-        [XmlIgnore]
-        public ObservableCollection<ICommand> Commands { get; } = new ObservableCollection<ICommand>();
 
         [Browsable(false)]
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public RelayCommand LoadedCommand => new RelayCommand(Loaded);
 
         [Browsable(false)]
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public bool IsLoaded { get; set; }
         protected virtual void Loaded(object obj)
         {
@@ -74,8 +84,8 @@ namespace H.Mvvm
         }
 
         private string _name;
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         public virtual string Name
         {
@@ -89,8 +99,9 @@ namespace H.Mvvm
 
 
         private string _icon;
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         public virtual string Icon
         {
@@ -103,8 +114,9 @@ namespace H.Mvvm
         }
 
         private string _shortName;
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         public virtual string ShortName
         {
@@ -117,8 +129,9 @@ namespace H.Mvvm
         }
 
         private string _groupName;
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         public virtual string GroupName
         {
@@ -131,8 +144,9 @@ namespace H.Mvvm
         }
 
         private string _description;
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         public virtual string Description
         {
@@ -146,8 +160,9 @@ namespace H.Mvvm
 
 
         private int _order;
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         public virtual int Order
         {
@@ -159,8 +174,9 @@ namespace H.Mvvm
             }
         }
 
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [Display(Name = "恢复默认")]
         [Browsable(false)]
         public virtual RelayCommand LoadDefaultCommand => new RelayCommand((s, e) =>

@@ -7,8 +7,6 @@ using System.Xml.Serialization;
 
 namespace H.Modules.About
 {
-
-
     public interface IAboutViewPresenterOption
     {
         string Agreement { get; set; }
@@ -20,7 +18,7 @@ namespace H.Modules.About
         string FileVersion { get; set; }
         string Privacy { get; set; }
         string ProductDescription { get; set; }
-        string Title { get; set; }
+        string ProductName { get; set; }
         string Trademark { get; set; }
         string Version { get; set; }
         string WebSet { get; set; }
@@ -31,7 +29,7 @@ namespace H.Modules.About
     {
         public AboutViewPresenter()
         {
-            this._title = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyTitleAttribute>()?.Title;
+            this._ProductName = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyTitleAttribute>()?.Title;
             this._productDescription = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyDescriptionAttribute>()?.Description;
             this._company = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyCompanyAttribute>()?.Company;
             this._culture = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyCultureAttribute>()?.Culture;
@@ -40,23 +38,29 @@ namespace H.Modules.About
             this._copyright = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyCopyrightAttribute>()?.Copyright;
             this._version = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyVersionAttribute>()?.Version;
             this._fileVersion = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyFileVersionAttribute>()?.Version;
+            this.Title = "关于";
         }
+        public string Title { get; set; }
 
-        private string _title;
-        [XmlIgnore]
+        private string _ProductName;
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [Display(Name = "产品名称")]
-        public string Title
+        public string ProductName
         {
-            get { return _title; }
+            get { return _ProductName; }
             set
             {
-                _title = value;
+                _ProductName = value;
             }
         }
 
         private string _productDescription;
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [Display(Name = "产品信息")]
         public string ProductDescription
@@ -69,7 +73,9 @@ namespace H.Modules.About
         }
 
         private string _company;
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [Display(Name = "公司信息")]
         public string Company
@@ -83,7 +89,9 @@ namespace H.Modules.About
 
 
         private string _culture;
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [Display(Name = "产品区域")]
         public string Culture
@@ -96,7 +104,9 @@ namespace H.Modules.About
         }
 
         private string _trademark;
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [Display(Name = "产品商标")]
         public string Trademark
@@ -109,7 +119,9 @@ namespace H.Modules.About
         }
 
         private string _configuration;
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [Display(Name = "产品配置")]
         public string Configuration
@@ -122,7 +134,9 @@ namespace H.Modules.About
         }
 
         private string _privacy;
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [DefaultValue("https://github.com/HeBianGu/WPF-Control")]
         [Display(Name = "隐私政策")]
@@ -136,7 +150,9 @@ namespace H.Modules.About
         }
 
         private string _agreement;
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [DefaultValue("https://github.com/HeBianGu/WPF-Control")]
         [Display(Name = "服务协议")]
@@ -150,7 +166,9 @@ namespace H.Modules.About
         }
 
         private string _copyright;
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [Display(Name = "许可证书")]
         public string Copyright
@@ -164,7 +182,9 @@ namespace H.Modules.About
 
         private string _version;
         [ReadOnly(true)]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [Display(Name = "产品版本")]
         public string Version
         {
@@ -176,7 +196,9 @@ namespace H.Modules.About
         }
 
         private string _fileVersion;
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [Display(Name = "文件版本")]
         public string FileVersion
@@ -189,7 +211,9 @@ namespace H.Modules.About
         }
 
         private string _webSet;
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [DefaultValue("https://github.com/HeBianGu/WPF-Control")]
         [Display(Name = "官方网站")]
@@ -203,7 +227,9 @@ namespace H.Modules.About
         }
 
         private string _contact;
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [DefaultValue("QQ:908293466")]
         [Display(Name = "联系方式")]
@@ -215,11 +241,5 @@ namespace H.Modules.About
                 _contact = value;
             }
         }
-    }
-
-
-    public class AboutButtonPresenter : IAboutButtonPresenter
-    {
-
     }
 }

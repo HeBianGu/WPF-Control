@@ -7,7 +7,7 @@ namespace H.Services.Common
     {
         public const string GroupBase = "基本设置";
         public const string GroupApp = "应用设置";
-        public const string GroupStyle = "样式设置";
+        public const string GroupStyle = "显示设置";
         public const string GroupSecurity = "安全设置";
         public const string GroupAuthority = "权限设置";
         public const string GroupSystem = "系统设置";

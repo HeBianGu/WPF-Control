@@ -67,7 +67,7 @@
                                             <Rectangle x:Name="OverlayRect"
                                                        Width="{Binding ElementName=Border, Path=ActualWidth}"
                                                        Height="{Binding ElementName=Border, Path=ActualHeight}"
-                                                       Fill="{DynamicResource {x:Static BrushKeys.Foreground}}" />
+                                                       Fill="{Binding ElementName=PopupOverlayBorder, Path=Background}" />
                                         </Canvas>
 
                                         <ItemsPresenter x:Name="ItemsPresenter"

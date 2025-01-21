@@ -1,6 +1,8 @@
 ﻿using H.Services.Common;
 using H.Mvvm;
 using System.Collections;
+using System.Windows;
+using System;
 
 namespace H.Controls.OrderBox
 {
@@ -14,6 +16,7 @@ namespace H.Controls.OrderBox
             {
                 _useDesc = value;
                 RaisePropertyChanged();
+                //this.OrderChanged?.Invoke()
             }
         }
         public abstract IEnumerable Where(IEnumerable from);
@@ -22,6 +25,12 @@ namespace H.Controls.OrderBox
         {
             return this.Name ?? base.ToString();
         }
+
+        //public event EventHandler<EventArgs> OrderChanged
+        //{
+        //    add { WeakEventManager<OrderBase, EventArgs>.AddHandler(this, nameof(OrderChanged), value); }
+        //    remove { WeakEventManager<OrderBase, EventArgs>.RemoveHandler(this, nameof(OrderChanged), value); }
+        //}
     }
 
 }

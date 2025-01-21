@@ -30,6 +30,7 @@ namespace H.Test.ApplicationBase
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var test = Ioc.Services.GetService<ITest>();
+            MessageBox.Show(test.GetType().ToString());
         }
     }
 

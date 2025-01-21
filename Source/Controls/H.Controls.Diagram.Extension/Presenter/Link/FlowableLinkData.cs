@@ -42,6 +42,8 @@ namespace H.Controls.Diagram.Extension
         }
 
         private bool _isBuzy;
+        [System.Text.Json.Serialization.JsonIgnore]
+        
         [XmlIgnore]
         [Browsable(false)]
         public bool IsBuzy
@@ -56,6 +58,8 @@ namespace H.Controls.Diagram.Extension
 
 
         private bool _useInfoLogger = true;
+        [System.Text.Json.Serialization.JsonIgnore]
+        
         [XmlIgnore]
         [Browsable(false)]
         public bool UseInfoLogger

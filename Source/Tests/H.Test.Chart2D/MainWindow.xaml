@@ -251,6 +251,11 @@
 
                         </h:Chart>
                     </GroupBox>
+
+                    <GroupBox Height="470"
+                              Header="LinePresenter">
+                        <h:LinePresenter />
+                    </GroupBox>
                 </StackPanel>
             </ScrollViewer>
         </TabItem>

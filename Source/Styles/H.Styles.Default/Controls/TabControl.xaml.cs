@@ -9,5 +9,7 @@ namespace H.Styles.Default
     public class TabItemKeys
     {
         public static ComponentResourceKey Default => new ComponentResourceKey(typeof(TabItemKeys), "S.TabItem.Default");
+
+        public static ComponentResourceKey Line => new ComponentResourceKey(typeof(TabItemKeys), "S.TabItem.Line");
     }
 }

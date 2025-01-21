@@ -9,11 +9,9 @@ namespace H.Controls.FilterBox
     public interface IPropertyFilter : IDisplayFilter
     {
         bool IsSelected { get; set; }
-        string Name { get; set; }
+        string PropertyName { get; set; }
         FilterOperate Operate { get; set; }
         PropertyInfo PropertyInfo { get; set; }
-        //void SetValue(object value);
-        //object GetValue();
         IFilterable Copy();
     }
 }

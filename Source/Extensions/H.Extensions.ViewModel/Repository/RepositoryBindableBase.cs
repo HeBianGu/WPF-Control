@@ -39,8 +39,9 @@ namespace H.Extensions.ViewModel
         }
 
         [Browsable(false)]
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public ObservableCollection<ICommand> Commands { get; } = new ObservableCollection<ICommand>();
 
     }

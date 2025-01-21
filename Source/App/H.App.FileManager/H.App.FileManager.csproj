@@ -3,9 +3,10 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <UseWPF>true</UseWPF>
+    <TargetFrameworks>net7.0-windows</TargetFrameworks>
     <ApplicationIcon>logo.ico</ApplicationIcon>
     <Product>H文件管理器</Product>
-    <Description>电脑文件管理器：收藏、评分、标签，图片、视频等</Description>
+    <Description>电脑文件管理器：包括对文件的收藏、评分、打标签和按工程管理，支持多种预览方式（表格，缩率图，预览图等），对图片、视频支持预览，放大，缩小，对视频支持播放、截图、全屏播放、放大、缩小，定位到截图时间位置等，自定义收藏夹、标签夹</Description>
     <AssemblyVersion>1.0.0</AssemblyVersion>
     <FileVersion>1.0.0</FileVersion>
     <Copyright>Copyright © HeBianGu 2024-2024</Copyright>
@@ -14,6 +15,9 @@
     <Title>H文件管理器</Title>
     <Version>1.0.0</Version>
     <GeneratePackageOnBuild>Flase</GeneratePackageOnBuild>
+    <Platforms>AnyCPU;x86</Platforms>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>H:\Github\WPF-Control\Key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -40,6 +44,7 @@
     <ProjectReference Include="..\..\Modules\H.Modules.Messages.Snack\H.Modules.Messages.Snack.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Operation\H.Modules.Operation.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Project\H.Modules.Project.csproj" />
+    <ProjectReference Include="..\..\Modules\H.Modules.Theme\H.Modules.Theme.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Default\H.Themes.Default.csproj" />
     <ProjectReference Include="..\..\Windows\H.Windows.Dialog\H.Windows.Dialog.csproj" />
     <ProjectReference Include="..\..\Windows\H.Windows.Main\H.Windows.Main.csproj" />
@@ -61,5 +66,6 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.8" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.77" />
+    <PackageReference Include="VideoLAN.LibVLC.Windows" Version="3.0.20" />
   </ItemGroup>
 </Project>

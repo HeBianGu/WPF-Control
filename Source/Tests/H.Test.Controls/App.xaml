@@ -1,9 +1,10 @@
-﻿<Application x:Class="H.Test.Controls.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:h="https://github.com/HeBianGu"
-             xmlns:local="clr-namespace:H.Test.Controls"
-             StartupUri="MainWindow.xaml">
+﻿<Application
+    x:Class="H.Test.Controls.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:h="https://github.com/HeBianGu"
+    xmlns:local="clr-namespace:H.Test.Controls"
+    StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

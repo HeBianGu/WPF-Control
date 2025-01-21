@@ -4,11 +4,11 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace H.Services.Common
 {
-    public class IocSaveAllCommand : IocMarkupCommandBase
+    public class IocSaveAllCommand : IocAsyncMarkupCommandBase
     {
-        public override async void Execute(object parameter)
+        public override async Task ExecuteAsync(object parameter)
         {
-            System.Collections.Generic.IEnumerable<ISplashSave> saves = Ioc.Services.GetServices<ISplashSave>();
+            IEnumerable<ISplashSave> saves = Ioc.Services.GetServices<ISplashSave>();
             if (saves.Count() > 0)
             {
                 bool r = await IocMessage.Dialog.ShowString((f, x) =>
@@ -26,11 +26,26 @@ namespace H.Services.Common
                             return false;
                         }
                     }
+
+                    {
+                        if (f.IsCancel)
+                            return false;
+                        x.Value = "正在保存系统配置";
+                        var r = SettingDataManager.Instance.Save(out string message);
+                        if (r == false)
+                        {
+                            x.Value = message;
+                            Thread.Sleep(1000);
+                            return false;
+                        }
+                    }
                     return true;
                 }, x => x.DialogButton = DialogButton.Cancel);
                 if (r != true)
                     return;
             }
+
+
         }
 
         public override bool CanExecute(object parameter)

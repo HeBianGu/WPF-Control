@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace H.Modules.Theme
 {
-    [Display(Name = "主题设置", GroupName = SettingGroupNames.GroupSystem, Description = "登录页面设置的信息")]
+    [Display(Name = "明暗主题设置", GroupName = SettingGroupNames.GroupSystem, Description = "登录页面设置的信息")]
     public class SwitchThemeOptions : IocOptionInstance<SwitchThemeOptions>, ILoginedSplashLoad
     {
         private bool _isDark = true;
@@ -27,13 +27,15 @@ namespace H.Modules.Theme
 
 
         [Browsable(false)]
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public IColorResource Dark { get; set; } = new DarkColorResource();
 
         [Browsable(false)]
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public IColorResource Light { get; set; } = new LightColorResource();
 
         internal void Refresh()

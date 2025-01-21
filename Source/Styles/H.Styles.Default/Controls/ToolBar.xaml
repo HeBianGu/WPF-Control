@@ -12,12 +12,15 @@
         TargetType="{x:Type ButtonBase}">
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Width" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
-        <Setter Property="Padding" Value="0" />
+        <Setter Property="Padding" Value="7" />
+        <Setter Property="Margin" Value="0.5" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
-        <Setter Property="Padding" Value="7" />
+        <Setter Property="Cattach.CornerRadius" Value="1" />
+        <!--<Setter Property="Padding" Value="7" />-->
         <Setter Property="Background">
             <Setter.Value>
                 <SolidColorBrush Color="Transparent" />
@@ -32,15 +35,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ButtonBase}">
-                    <Border
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="1">
-                        <ContentPresenter
-                            Margin="{TemplateBinding Padding}"
-                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                            RecognizesAccessKey="True" />
+                    <Border Style="{StaticResource S.Border.TemplatedParent}">
+                        <ContentPresenter RecognizesAccessKey="True" Style="{StaticResource S.ContentPresenter.TemplatedParent}" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
@@ -67,6 +63,7 @@
         x:Key="{x:Static ToolBar.ButtonStyleKey}"
         BasedOn="{StaticResource ToolBarButtonBaseStyle}"
         TargetType="{x:Type Button}" />
+
     <Style
         x:Key="{x:Static ToolBar.ToggleButtonStyleKey}"
         BasedOn="{StaticResource ToolBarButtonBaseStyle}"
@@ -82,19 +79,12 @@
             </Setter.Value>
         </Setter>
         <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="7" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
-                    <Border
-                        x:Name="Border"
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
-                        <ContentPresenter
-                            Margin="{TemplateBinding Padding}"
-                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                            RecognizesAccessKey="True" />
+                    <Border x:Name="Border" Style="{StaticResource S.Border.TemplatedParent}">
+                        <ContentPresenter RecognizesAccessKey="True" Style="{StaticResource S.ContentPresenter.TemplatedParent}" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
@@ -107,7 +97,7 @@
                     </Setter.Value>
                 </Setter>
                 <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundTitle}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundSelect}}" />
             </Trigger>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background">
@@ -138,6 +128,7 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+
     <Style
         x:Key="{x:Static ToolBar.CheckBoxStyleKey}"
         BasedOn="{StaticResource {x:Static ToolBar.ToggleButtonStyleKey}}"
@@ -176,12 +167,12 @@
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="CaretBrush">
             <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
+                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundSelect}}" />
             </Setter.Value>
         </Setter>
         <Setter Property="SelectionBrush">
             <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
+                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundSelect}}" />
             </Setter.Value>
         </Setter>
         <Setter Property="Background">
@@ -195,15 +186,11 @@
             </Setter.Value>
         </Setter>-->
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
-
+        <Setter Property="Padding" Value="2" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
-                    <Border
-                        Padding="2"
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
+                    <Border Style="{StaticResource S.Border.TemplatedParent}">
                         <ScrollViewer x:Name="PART_ContentHost" Margin="0" />
                     </Border>
                 </ControlTemplate>
@@ -221,7 +208,7 @@
                 </Setter>
             </Trigger>
             <Trigger Property="IsFocused" Value="true">
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundTitle}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundSelect}}" />
                 <Setter Property="Background">
                     <Setter.Value>
                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
@@ -232,7 +219,7 @@
                 <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
                 <Setter Property="Background">
                     <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Dark0_1}}" />
                     </Setter.Value>
                 </Setter>
             </Trigger>
@@ -309,7 +296,7 @@
                     </Setter.Value>
                 </Setter>
                 <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundTitle}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundSelect}}" />
             </Trigger>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background">
@@ -350,17 +337,12 @@
         <Setter Property="Padding" Value="0" />
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="Cattach.CornerRadius" Value="2" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Background}}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToolBar}">
-                    <Border
-                        x:Name="Border"
-                        BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="2">
-                        <Border.Background>
-                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
-                        </Border.Background>
+                    <Border x:Name="Border" Style="{StaticResource S.Border.TemplatedParent}">
                         <DockPanel>
                             <ToggleButton
                                 ClickMode="Press"

@@ -31,7 +31,7 @@
                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
                     </Setter.Value>
                 </Setter>
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundTitle}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundSelect}}" />
             </MultiTrigger>
 
             <Trigger Property="IsMouseDirectlyOver" Value="True">

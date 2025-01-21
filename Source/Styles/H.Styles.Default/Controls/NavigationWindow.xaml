@@ -58,11 +58,11 @@
                                             <EasingColorKeyFrame KeyTime="0"
                                                                  Value="{DynamicResource {x:Static ColorKeys.BackgroundDisabled}}" />
                                         </ColorAnimationUsingKeyFrames>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Arrow"
+                                        <!--<ColorAnimationUsingKeyFrames Storyboard.TargetName="Arrow"
                                                                       Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
                                             <EasingColorKeyFrame KeyTime="0"
                                                                  Value="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
-                                        </ColorAnimationUsingKeyFrames>
+                                        </ColorAnimationUsingKeyFrames>-->
                                     </Storyboard>
 
                                 </VisualState>

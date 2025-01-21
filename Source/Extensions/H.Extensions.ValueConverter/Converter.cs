@@ -203,13 +203,15 @@ namespace H.Extensions.ValueConverter
         public static IValueConverter GetObjType => new ConverterBase<object, Type>(x => x.GetType());
         public static IValueConverter GetObjTypeName => new ConverterBase<object, string>(x => x.GetType().Name);
         public static IValueConverter GetObjTypeFullName => new ConverterBase<object, string>(x => x.GetType().FullName);
-        public static IValueConverter GetDiaplayName => new ConverterBase<object, string>(x => x.GetType().GetCustomAttribute<DisplayAttribute>()?.Name);
+        public static IValueConverter GetDiaplayName => new ConverterBase<object, string>(x => x.GetType().GetCustomAttribute<DisplayAttribute>()?.Name ?? x.GetType().Name);
         public static IValueConverter GetDiaplayDescription => new ConverterBase<object, string>(x => x.GetType().GetCustomAttribute<DisplayAttribute>()?.Description);
         public static IValueConverter GetIsAssignableFrom => new ConverterBase<object, Type, bool>((x, y) =>
         {
             bool r = y.IsAssignableFrom(x.GetType());
             return r;
         });
+
+        public static IValueConverter GetPropertyInfoDiaplayName => new ConverterBase<PropertyInfo, string>(x => x.GetCustomAttribute<DisplayAttribute>()?.Name ?? x.Name);
         public static IValueConverter GetIsValueType => new ConverterBase<object, bool>(x => x.GetType().IsValueType);
         public static IValueConverter GetIsClass => new ConverterBase<object, bool>(x => x.GetType().IsClass);
         public static IValueConverter GetIsEnum => new ConverterBase<object, bool>(x => x.GetType().IsEnum);
@@ -324,6 +326,8 @@ namespace H.Extensions.ValueConverter
         public static IValueConverter GetTrueToHidden => new ConverterBase<bool, Visibility>(x => x ? Visibility.Hidden : Visibility.Visible);
         public static IValueConverter GetFalseToHidden => new ConverterBase<bool, Visibility>(x => x ? Visibility.Visible : Visibility.Hidden);
         public static IValueConverter GetTrueToVisible => new ConverterBase<bool, Visibility>(x => x ? Visibility.Visible : Visibility.Collapsed);
+
+        public static IValueConverter GetVisibleToTrue => new ConverterBase<Visibility, bool>(x => x == Visibility.Visible, x => x ? Visibility.Visible : Visibility.Collapsed);
         public static IMultiValueConverter GetTrueAllToVisible => new MultiConverterBase<bool, Visibility>(x => x.All(l => l == true) ? Visibility.Visible : Visibility.Collapsed);
         public static IValueConverter GetNullToCollapsed => new ConverterBase<object, Visibility>(x => x == null ? Visibility.Collapsed : Visibility.Visible) { DefaultR = Visibility.Collapsed };
         public static IValueConverter GetNullToVisible => new ConverterBase<object, Visibility>(x => x == null ? Visibility.Visible : Visibility.Collapsed) { DefaultR = Visibility.Visible };
@@ -334,7 +338,6 @@ namespace H.Extensions.ValueConverter
 
         public static IValueConverter GetIntToCollapsed => new ConverterBase<int, int, Visibility>((x, y) => x == y ? Visibility.Collapsed : Visibility.Visible);
         public static IValueConverter GetIntToVisible => new ConverterBase<int, int, Visibility>((x, y) => x == y ? Visibility.Visible : Visibility.Collapsed);
-
 
         public static IMultiValueConverter GetAllEqualsToVisible => new MultiConverterBase<object, Visibility>(x =>
         {

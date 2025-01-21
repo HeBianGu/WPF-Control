@@ -1,4 +1,5 @@
 ﻿
+using H.Mvvm;
 using H.Presenters.Common;
 using H.Services.Common;
 using System;
@@ -15,7 +16,26 @@ namespace H.Modules.Messages.Dialog
         public async Task<bool?> Show(object presenter, Action<IDialog> builder = null, Func<bool> canSumit = null)
         {
             var data = presenter is string str ? new StringPresenter() { Value = str } : presenter;
-            return await AdornerDialog.ShowPresenter(data, builder, canSumit);
+            return await AdornerDialog.ShowPresenter(data, x =>
+            {
+                x.HorizontalAlignment = HorizontalAlignment.Center;
+                x.VerticalAlignment = VerticalAlignment.Center;
+                x.HorizontalContentAlignment = HorizontalAlignment.Center;
+                x.VerticalContentAlignment = VerticalAlignment.Center;
+                if (data is StringPresenter)
+                {
+                    x.MinWidth = 400;
+                    x.Padding = new Thickness(20);
+                }
+                if (data is ITitleable titlePresenter)
+                    x.Title = titlePresenter.Title;
+
+                if (presenter is ILayoutable layoutable)
+                    layoutable.CopyTo(x);
+                if (presenter is IDesignPresenterBase designPresenter)
+                    x.CopyFrom(designPresenter);
+                builder?.Invoke(x);
+            }, canSumit);
         }
 
         public async Task<T> ShowAction<P, T>(P presenter, Action<IDialog> builder = null, Func<IDialog, P, T> action = null)
@@ -29,6 +49,10 @@ namespace H.Modules.Messages.Dialog
             return await AdornerDialog.ShowAction(p, action, x =>
             {
                 x.DialogButton = DialogButton.Cancel;
+                x.HorizontalContentAlignment = HorizontalAlignment.Stretch;
+                x.HorizontalAlignment = HorizontalAlignment.Center;
+                x.VerticalAlignment = VerticalAlignment.Center;
+                x.MinWidth = 400;
                 build?.Invoke(x);
             });
         }
@@ -40,6 +64,8 @@ namespace H.Modules.Messages.Dialog
             {
                 x.DialogButton = DialogButton.Cancel;
                 x.HorizontalContentAlignment = HorizontalAlignment.Center;
+                x.Padding = new Thickness(20);
+                x.MinWidth = 300;
                 build?.Invoke(x);
             });
         }
@@ -70,8 +96,35 @@ namespace H.Modules.Messages.Dialog
             return await AdornerDialog.ShowAction(new WaitPresenter(), (d, p) => action.Invoke(d), x =>
             {
                 x.DialogButton = DialogButton.Cancel;
+                x.HorizontalAlignment = HorizontalAlignment.Center;
+                x.VerticalAlignment = VerticalAlignment.Center;
+                x.HorizontalContentAlignment = HorizontalAlignment.Stretch;
+                x.VerticalContentAlignment = VerticalAlignment.Center;
+                x.Width = 400;
                 build?.Invoke(x);
             });
+        }
+    }
+
+    public static class LayoutableExtension
+    {
+        public static void CopyFrom(this ILayoutable layoutable, IDesignPresenterBase from)
+        {
+            layoutable.HorizontalAlignment = from.HorizontalAlignment;
+            layoutable.VerticalAlignment = from.VerticalAlignment;
+            layoutable.HorizontalContentAlignment = from.HorizontalContentAlignment;
+            layoutable.VerticalContentAlignment = from.VerticalContentAlignment;
+            layoutable.Height = from.Height;
+            layoutable.Width = from.Width;
+            layoutable.Padding = from.Padding;
+            layoutable.Margin = from.Margin;
+            layoutable.MinWidth = from.MinWidth;
+            layoutable.MinHeight = from.MinHeight;
+            layoutable.BorderBrush = from.BorderBrush;
+            layoutable.BorderThickness = from.BorderThickness;
+            layoutable.Background = from.Background;
+            layoutable.IsEnabled = from.IsEnabled;
+            layoutable.Opacity = from.Opacity;
         }
     }
 }

@@ -13,6 +13,14 @@
         TargetType="ToolTip">
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="HasDropShadow" Value="True" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Background}}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
+        <Setter Property="Padding" Value="5,0" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Height" Value="Auto" />
+        <Setter Property="MinHeight" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ToolTip">
@@ -20,19 +28,12 @@
                         Name="Border"
                         Width="{TemplateBinding Width}"
                         Height="{TemplateBinding Height}"
-                        BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
-                        BorderThickness="1">
-                        <Border.Background>
-                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
-                        </Border.Background>
-                        <ContentPresenter
-                            Margin="10,6"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center" />
+                        Style="{StaticResource S.Border.TemplatedParent}">
+                        <ContentPresenter Style="{StaticResource S.ContentPresenter.TemplatedParent}" />
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="HasDropShadow" Value="true">
-                            <Setter TargetName="Border" Property="CornerRadius" Value="4" />
+                            <Setter TargetName="Border" Property="CornerRadius" Value="2" />
                             <Setter TargetName="Border" Property="SnapsToDevicePixels" Value="true" />
                         </Trigger>
                     </ControlTemplate.Triggers>

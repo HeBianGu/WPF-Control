@@ -10,4 +10,12 @@ namespace H.Themes.Colors.Accent
             return new AccentLightColorResource().Resource;
         }
     }
+
+    public class AccentDarkThemeExtension : MarkupExtension
+    {
+        public override object ProvideValue(IServiceProvider serviceProvider)
+        {
+            return new AccentDarkColorResource().Resource;
+        }
+    }
 }

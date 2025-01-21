@@ -4,12 +4,13 @@ using H.Services.Common;
 using H.Mvvm;
 using System.Windows;
 using System;
+using System.Threading.Tasks;
 
 namespace H.Extensions.Setting
 {
-    public class ClearSettingDataCommand : MarkupCommandBase
+    public class ClearSettingDataCommand : AsyncMarkupCommandBase
     {
-        public override async void Execute(object parameter)
+        public override async Task ExecuteAsync(object parameter)
         {
             var r = await IocMessage.ShowDialogMessage("清空配置数据无法恢复，确认清空配置？");
             if (r == false)

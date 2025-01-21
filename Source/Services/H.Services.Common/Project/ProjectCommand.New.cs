@@ -2,9 +2,9 @@
 
 namespace H.Services.Common
 {
-    public class ProjectNewCommand : IocMarkupCommandBase
+    public class ProjectNewCommand : IocAsyncMarkupCommandBase
     {
-        public override async void Execute(object parameter)
+        public override async Task ExecuteAsync(object parameter)
         {
             IProjectItem project = IocProject.Instance.Create();
             bool? r = await IocMessage.Form.ShowEdit(project, null, null, null, "新建工程");
@@ -15,7 +15,7 @@ namespace H.Services.Common
         }
         public override bool CanExecute(object parameter)
         {
-            return IocProject.Instance != null;
+            return IocProject.Instance != null && base.CanExecute(parameter);
         }
     }
 

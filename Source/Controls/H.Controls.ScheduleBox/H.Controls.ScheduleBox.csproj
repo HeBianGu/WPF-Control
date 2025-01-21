@@ -14,6 +14,7 @@
     <ProjectReference Include="..\..\Services\H.Services.Common\H.Services.Common.csproj" />
     <ProjectReference Include="..\..\Providers\H.Mvvm\H.Mvvm.csproj" />
     <ProjectReference Include="..\..\Styles\H.Styles.Default\H.Styles.Default.csproj" />
+    <ProjectReference Include="..\H.Controls.Form.PropertyItem\H.Controls.Form.PropertyItem.csproj" />
     <ProjectReference Include="..\H.Controls.Form\H.Controls.Form.csproj" />
     <!--<ProjectReference Include="..\..\Styles\H.Styles.Default\H.Styles.Default.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Default\H.Themes.Default.csproj" />-->

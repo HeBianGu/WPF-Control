@@ -10,6 +10,7 @@
         <!--<Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Red}}" />-->
         <Setter Property="Grid.Column" Value="4" />
         <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="ToolTip" Value="{Binding Unit}"/>
     </Style>
 
     <Style x:Key="S.TextBlock.Flag"
@@ -19,6 +20,7 @@
         <Setter Property="Grid.Column" Value="1" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Red}}" />
+        <Setter Property="ToolTip" Value="该值不能为空"/>
     </Style>
 
     <Style x:Key="S.TextBlock.Error"
@@ -77,8 +79,8 @@
         <Setter Property="ItemHeaderTemplate">
             <Setter.Value>
                 <DataTemplate>
-                    <TextBlock Width="100"
-                               Margin="10,6"
+                    <TextBlock Width="{Binding RelativeSource={RelativeSource AncestorType=local:Form},Path=TitleWidth}"
+                               Margin="5 0"
                                VerticalAlignment="Center"
                                Text="{Binding}" />
                 </DataTemplate>

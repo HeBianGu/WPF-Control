@@ -123,8 +123,7 @@
                                 <Button HorizontalAlignment="Left"
                                         Command="{x:Static local:GuideBox.SkipCommand}"
                                         Content="跳过指南&gt;&gt;" />
-                                <Button x:Name="bt_next"
-                                        Width="100"
+                                <Button x:Name="bt_next" Margin="5 0"
                                         HorizontalAlignment="Left"
                                         Background="{DynamicResource {x:Static h:BrushKeys.Orange}}"
                                         Command="{x:Static local:GuideBox.NextCommand}"
@@ -145,7 +144,7 @@
                                                Text="{Binding RelativeSource={RelativeSource AncestorType=local:GuideBox}, Path=CurrentIndex}" />
                                 </Border>
 
-                                <TextBlock Margin="10,0"
+                                <TextBlock Margin="5,0"
                                            VerticalAlignment="Center"
                                            DockPanel.Dock="Top"
                                            FontSize="{StaticResource {x:Static h:FontSizeKeys.Header3}}"

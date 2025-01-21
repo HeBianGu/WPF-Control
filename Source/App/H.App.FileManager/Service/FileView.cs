@@ -1,4 +1,5 @@
 ﻿using H.Mvvm;
+using System;
 
 namespace H.App.FileManager
 {
@@ -9,5 +10,11 @@ namespace H.App.FileManager
         }
 
         public string Description { get; set; }
+
+        //public RelayCommand UpdateTimeCommand => new RelayCommand((s, e) =>
+        //{
+        //    this.Model.LastPlayTime = DateTime.Now;
+        //    this.Model.PlayCount= this.Model.PlayCount+1;
+        //});
     }
 }

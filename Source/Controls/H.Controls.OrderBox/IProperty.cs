@@ -12,8 +12,9 @@ namespace H.Controls.OrderBox
         bool UseDesc { get; }
         bool IsSelected { get; }
         string PropertyName { get; }
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         PropertyInfo PropertyInfo { get; set; }
     }
 }

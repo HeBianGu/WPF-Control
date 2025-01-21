@@ -25,19 +25,21 @@
                             CornerRadius="2" />
                         <Border
                             x:Name="PART_Indicator"
-                            Margin="0,0,0,0"
+                            Margin="5"
                             HorizontalAlignment="Left"
                             Background="{TemplateBinding Foreground}"
                             BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                             BorderThickness="0"
-                            CornerRadius="2 2 0 0">
+                            CornerRadius="2">
                             <Grid x:Name="Animation" ClipToBounds="True">
-                                <Rectangle
+                                <Border
                                     x:Name="PART_GlowRect"
                                     Width="100"
                                     Margin="-100,0,0,0"
-                                    HorizontalAlignment="Left">
-                                    <Rectangle.Fill>
+                                    HorizontalAlignment="Left"
+                                    Background="{DynamicResource {x:Static BrushKeys.ForegroundTitle}}"
+                                    CornerRadius="2">
+                                    <!--<Rectangle.Fill>
                                         <LinearGradientBrush Opacity="0.5" StartPoint="0,0" EndPoint="1,0">
                                             <LinearGradientBrush.GradientStops>
                                                 <GradientStopCollection>
@@ -48,8 +50,8 @@
                                                 </GradientStopCollection>
                                             </LinearGradientBrush.GradientStops>
                                         </LinearGradientBrush>
-                                    </Rectangle.Fill>
-                                </Rectangle>
+                                    </Rectangle.Fill>-->
+                                </Border>
                             </Grid>
                         </Border>
                         <VisualStateManager.VisualStateGroups>

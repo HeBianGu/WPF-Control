@@ -10,7 +10,7 @@
                     <TextBlock VerticalAlignment="Center"
                                Text="纸张类型" />
                 </BulletDecorator.Bullet>
-                <ComboBox Margin="10,0"
+                <ComboBox Margin="5,0"
                           h:Cattach.BackgroundColumn="1"
                           h:Cattach.Title="纸张类型"
                           ItemsSource="{Binding Collection}"
@@ -18,8 +18,8 @@
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock>
-                                <Run Text="{Binding Name}" />
-                                <Run Text="{Binding SizeDesc}" />
+                                <Run Text="{Binding Name,Mode=OneWay}" />
+                                <Run Text="{Binding SizeDesc,Mode=OneWay}" />
                             </TextBlock>
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
@@ -31,7 +31,7 @@
                     <TextBlock VerticalAlignment="Center"
                                Text="布局方式" />
                 </BulletDecorator.Bullet>
-                <ComboBox Margin="10,5"
+                <ComboBox Margin="5,1"
                           h:Cattach.BackgroundColumn="1"
                           h:Cattach.Title="布局方式"
                           SelectedIndex="{Binding LayoutSelectedIndex}">

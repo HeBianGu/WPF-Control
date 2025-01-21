@@ -12,6 +12,9 @@
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d">
     <Grid>
-        <ContentPresenter Content="{Ioc Type={x:Type ISettingButtonPresenter}}" />
+        <UniformGrid>
+            <ContentPresenter Content="{Ioc Type={x:Type ISettingButtonPresenter}}" />
+            <Button Content="ISettingSecurityViewOption" Command="{ShowSettingCommand SwitchToType={x:Type h:ISettingSecurityViewOption}}"/>
+        </UniformGrid>
     </Grid>
 </Window>

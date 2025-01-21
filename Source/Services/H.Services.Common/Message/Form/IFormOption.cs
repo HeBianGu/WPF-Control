@@ -5,7 +5,6 @@ namespace H.Services.Common
     public interface IFormOption
     {
         string ExceptPropertyNames { get; set; }
-        Predicate<PropertyInfo> Filter { get; set; }
         double MessageWidth { get; set; }
         object SelectObject { get; set; }
         string Title { get; set; }

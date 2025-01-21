@@ -156,7 +156,7 @@
                                    Text="{Binding DisplayName}" />
                     </Grid>
 
-                    <TextBlock Margin="10,0"
+                    <TextBlock Margin="5,0"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                Foreground="{DynamicResource {x:Static h:BrushKeys.ForegroundAssist}}"
@@ -208,7 +208,7 @@
                                    Text="{Binding DisplayName}" />
                     </Grid>
 
-                    <TextBlock Margin="10,0"
+                    <TextBlock Margin="5,0"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                Foreground="{DynamicResource {x:Static h:BrushKeys.Red}}"
@@ -261,7 +261,7 @@
                                    Text="{Binding DisplayName}" />
                     </Grid>
 
-                    <TextBlock Margin="10,0"
+                    <TextBlock Margin="5,0"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                Foreground="{DynamicResource {x:Static h:BrushKeys.Green}}"

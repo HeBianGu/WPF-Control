@@ -2,24 +2,25 @@
 
 
 
+
 namespace H.Services.Common
 {
     public class ShowPercentCommand : MessageCommandBase
     {
-        public override void Execute(object parameter)
+        public override async Task ExecuteAsync(object parameter)
         {
             Func<ICancelable, IPercentPresenter, bool> func = (c, p) =>
+            {
+                for (int i = 0; i <= 100; i++)
                 {
-                    for (int i = 0; i <= 100; i++)
-                    {
-                        if (c.IsCancel)
-                            break;
-                        p.Value = i;
-                        Thread.Sleep(50);
-                    }
-                    return true;
-                };
-            IocMessage.Dialog.ShowPercent(func);
+                    if (c.IsCancel)
+                        break;
+                    p.Value = i;
+                    Thread.Sleep(50);
+                }
+                return true;
+            };
+            await IocMessage.Dialog.ShowPercent(func, x => this.Build(x));
         }
     }
 }

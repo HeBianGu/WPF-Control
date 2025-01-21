@@ -13,7 +13,7 @@ namespace H.Test.SideMenu
     {
         public hi_dd_role()
         {
-            Name = "普通角色";
+            this.Name = "普通角色";
         }
         [Display(Name = "角色名称")]
         [Column("role_name", Order = 1)]
@@ -25,12 +25,16 @@ namespace H.Test.SideMenu
         [Column("role_code", Order = 2)]
         public string Code { get; set; }
 
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [Display(Name = "权限列表")]
         //[PropertyItemType(Type = typeof(MultiSelectRepositoryPropertyItem))]
         public ICollection<hi_dd_author> Authors { get; set; }=new ObservableCollection<hi_dd_author>();
 
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         [Display(Name = "用户列表")]
         //[PropertyItemType(Type = typeof(MultiSelectRepositoryPropertyItem))]
         public ICollection<hi_dd_user> Users { get; set; }=new ObservableCollection<hi_dd_user>();

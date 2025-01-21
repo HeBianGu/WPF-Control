@@ -1,6 +1,7 @@
 ﻿using H.Services.Common;
 using H.Mvvm;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 
 namespace H.App.FileManager
 {
@@ -95,7 +96,8 @@ namespace H.App.FileManager
         }
 
 
-        private bool _useHistory = false;
+        private bool _useHistory = true;
+        [DefaultValue(true)]
         [Display(Name = "启用历史记录")]
         public bool UseHistory
         {

@@ -15,7 +15,7 @@
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.CaptionForeground, TypeInTargetAssembly={x:Type local:BrushKeys}}" Color="{DynamicResource {x:Static local:ColorKeys.CaptionForeground}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.TextForeground.Title, TypeInTargetAssembly={x:Type local:BrushKeys}}" Color="{DynamicResource {x:Static local:ColorKeys.ForegroundTitle}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.TextForeground, TypeInTargetAssembly={x:Type local:BrushKeys}}" Color="{DynamicResource {x:Static local:ColorKeys.Foreground}}" />
-    <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.TextForeground.Disabled, TypeInTargetAssembly={x:Type local:BrushKeys}}" Color="{DynamicResource {x:Static local:ColorKeys.ForegroundDisabled}}" />
+    <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.TextForeground.Select, TypeInTargetAssembly={x:Type local:BrushKeys}}" Color="{DynamicResource {x:Static local:ColorKeys.ForegroundSelect}}" />
 
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.TextMouseOver, TypeInTargetAssembly={x:Type local:BrushKeys}}" Color="{DynamicResource {x:Static local:ColorKeys.MouseOver}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.TextSelected, TypeInTargetAssembly={x:Type local:BrushKeys}}" Color="{DynamicResource {x:Static local:ColorKeys.Selected}}" />
@@ -101,9 +101,8 @@
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Blue, TypeInTargetAssembly={x:Type local:BrushKeys}}" Color="{DynamicResource {x:Static local:ColorKeys.Blue}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.LightBlue, TypeInTargetAssembly={x:Type local:BrushKeys}}" Color="{DynamicResource {x:Static local:ColorKeys.LightBlue}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Pink, TypeInTargetAssembly={x:Type local:BrushKeys}}" Color="{DynamicResource {x:Static local:ColorKeys.Pink}}" />
-
-    <!--<SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.White, TypeInTargetAssembly={x:Type local:BrushKeys}}">#000000</SolidColorBrush>
-    <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.White.Opactiy.9, TypeInTargetAssembly={x:Type local:BrushKeys}}" Opacity="0.9" SolidColorBrush="#000000" />
+    <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.White, TypeInTargetAssembly={x:Type local:BrushKeys}}">#FFFFFF</SolidColorBrush>
+    <!--<SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.White.Opactiy.9, TypeInTargetAssembly={x:Type local:BrushKeys}}" Opacity="0.9" SolidColorBrush="#000000" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.White.Opactiy.8, TypeInTargetAssembly={x:Type local:BrushKeys}}" Opacity="0.8" SolidColorBrush="#000000" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.White.Opactiy.7, TypeInTargetAssembly={x:Type local:BrushKeys}}" Opacity="0.7" SolidColorBrush="#000000" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.White.Opactiy.6, TypeInTargetAssembly={x:Type local:BrushKeys}}" Opacity="0.6" SolidColorBrush="#000000" />

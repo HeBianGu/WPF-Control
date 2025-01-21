@@ -7,7 +7,7 @@ using System;
 
 namespace H.Modules.License
 {
-    public class ShowLicenseCommand : IocMarkupCommandBase
+    public class ShowLicenseCommand : IocAsyncMarkupCommandBase
     {
         public override bool CanExecute(object parameter)
         {

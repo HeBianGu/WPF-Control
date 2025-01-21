@@ -13,11 +13,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Label">
-                    <Border>
-                        <ContentPresenter
-                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                            RecognizesAccessKey="True" />
+                    <Border Style="{StaticResource S.Border.TemplatedParent}">
+                        <ContentPresenter RecognizesAccessKey="True" Style="{StaticResource S.ContentPresenter.TemplatedParent}" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

@@ -17,10 +17,10 @@
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="1"
-                            CornerRadius="3,0,0,3">
+                            CornerRadius="2,0,0,2">
                         <Border Name="InnerBorder"
                                 Background="{TemplateBinding Background}"
-                                CornerRadius="3,0,0,3">
+                                CornerRadius="2,0,0,2">
                             <Path Name="GlyphPath"
                                   HorizontalAlignment="Center"
                                   VerticalAlignment="Center"
@@ -31,8 +31,8 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="HorizontalContentAlignment" Value="Right">
                             <Setter TargetName="GlyphPath" Property="Data" Value="M 0,0 L 4,3.5 L 0,7" />
-                            <Setter TargetName="OuterBorder" Property="CornerRadius" Value="0,3,3,0" />
-                            <Setter TargetName="InnerBorder" Property="CornerRadius" Value="0,3,3,0" />
+                            <Setter TargetName="OuterBorder" Property="CornerRadius" Value="0,2,2,0" />
+                            <Setter TargetName="InnerBorder" Property="CornerRadius" Value="0,2,2,0" />
                         </Trigger>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
@@ -212,11 +212,11 @@
                                     <Rectangle x:Name="OverlayRect"
                                                Width="{Binding ElementName=ScrollViewer, Path=ActualWidth}"
                                                Height="{Binding ElementName=ScrollViewer, Path=ActualHeight}"
-                                               Fill="{DynamicResource {x:Static BrushKeys.Background}}" />
+                                               Fill="{Binding RelativeSource={RelativeSource Self}, Path=(RibbonControlService.Ribbon).Background}" />
                                     <Rectangle x:Name="InnerOverlayRect"
                                                Width="{Binding ElementName=ScrollViewer, Path=ActualWidth}"
                                                Height="{Binding ElementName=ScrollViewer, Path=ActualHeight}"
-                                               Fill="{DynamicResource {x:Static BrushKeys.Background}}" />
+                                               Fill="{Binding RelativeSource={RelativeSource Self}, Path=(RibbonControlService.Ribbon).Background}" />
                                 </Canvas>
 
                                 <ItemsPresenter x:Name="ItemsPresenter" />
@@ -261,7 +261,7 @@
     <Style x:Key="{x:Type RibbonTabHeader}"
            TargetType="{x:Type RibbonTabHeader}">
         <Setter Property="Margin" Value="0,0,0,0" />
-        <Setter Property="Padding" Value="10,0" />
+        <Setter Property="Padding" Value="5,0" />
         <Setter Property="MinHeight" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
         <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Self}, Path=Ribbon.Background}" />
         <Setter Property="BorderBrush" Value="Transparent" />
@@ -281,7 +281,7 @@
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="1,1,1,0"
-                                CornerRadius="3,3,0,0">
+                                CornerRadius="2,2,0,0">
                             <Border x:Name="InnerBorder"
                                     Padding="{TemplateBinding Padding}"
                                     BorderThickness="1,1,1,0"

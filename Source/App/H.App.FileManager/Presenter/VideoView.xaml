@@ -1,89 +1,101 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
-                    xmlns:h="https://github.com/HeBianGu"
-                    xmlns:local="clr-namespace:H.App.FileManager">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:h="https://github.com/HeBianGu"
+    xmlns:local="clr-namespace:H.App.FileManager">
 
     <DataTemplate DataType="{x:Type local:fm_dd_video}">
         <Grid>
             <DockPanel>
-                <Border BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
-                        BorderThickness="1">
+                <Border BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" BorderThickness="1">
                     <Grid Margin="5">
-                        <Image Width="100"
-                               Source="{Binding ., Converter={local:GetVideoImageConverter}, ConverterParameter=200, IsAsync=True}" />
-                        <Image Width="30"
-                               Height="30"
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Bottom"
-                               Source="{Binding Url, Converter={h:GetFilePathToSystemInfoIconConverter}, IsAsync=True, ConverterParameter=200}" />
+                        <Image Width="100" Source="{Binding ., Converter={local:GetVideoImageConverter}, ConverterParameter=200, IsAsync=True}" />
+                        <Image
+                            Width="30"
+                            Height="30"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"
+                            Source="{Binding Url, Converter={h:GetFilePathToSystemInfoIconConverter}, IsAsync=True, ConverterParameter=200}" />
                     </Grid>
                 </Border>
-                <ItemsControl MinWidth="50"
-                              Margin="5"
-                              ToolTip="{Binding Url}">
-                    <TextBlock MaxHeight="50"
-                               FontWeight="Bold"
-                               Text="{Binding Name}"
-                               TextTrimming="CharacterEllipsis"
-                               TextWrapping="Wrap"
-                               ToolTip="{Binding Name}" />
-                    <TextBlock Foreground="{DynamicResource {x:Static h:BrushKeys.Orange}}"
-                               Text="{Binding FavoritePath}"
-                               ToolTip="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text}" />
-                    <TextBlock Foreground="{DynamicResource {x:Static h:BrushKeys.Green}}"
-                               Text="{Binding Object}"
-                               ToolTip="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text}" />
-                    <TextBlock Foreground="{DynamicResource {x:Static h:BrushKeys.Orange}}"
-                               Text="{Binding Tags}"
-                               ToolTip="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text}" />
-                    <TextBlock Foreground="{DynamicResource {x:Static h:BrushKeys.Pink}}"
-                               Text="{Binding Area}"
-                               ToolTip="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text}" />
-                    <TextBlock Foreground="{DynamicResource {x:Static h:BrushKeys.LightBlue}}"
-                               Text="{Binding Articulation}"
-                               ToolTip="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text}" />
+                <ItemsControl
+                    MinWidth="50"
+                    Margin="5"
+                    ToolTip="{Binding Url}">
+                    <TextBlock
+                        MaxHeight="50"
+                        FontWeight="Bold"
+                        Text="{Binding Name}"
+                        TextTrimming="CharacterEllipsis"
+                        TextWrapping="Wrap"
+                        ToolTip="{Binding Name}" />
+                    <TextBlock
+                        Foreground="{DynamicResource {x:Static h:BrushKeys.Orange}}"
+                        Text="{Binding FavoritePath}"
+                        ToolTip="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text}" />
+                    <TextBlock
+                        Foreground="{DynamicResource {x:Static h:BrushKeys.Green}}"
+                        Text="{Binding Object}"
+                        ToolTip="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text}" />
+                    <TextBlock
+                        Foreground="{DynamicResource {x:Static h:BrushKeys.Orange}}"
+                        Text="{Binding Tags}"
+                        ToolTip="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text}" />
+                    <TextBlock
+                        Foreground="{DynamicResource {x:Static h:BrushKeys.Pink}}"
+                        Text="{Binding Area}"
+                        ToolTip="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text}" />
+                    <TextBlock
+                        Foreground="{DynamicResource {x:Static h:BrushKeys.LightBlue}}"
+                        Text="{Binding Articulation}"
+                        ToolTip="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text}" />
                 </ItemsControl>
             </DockPanel>
-            <Border HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    Background="{DynamicResource {x:Static h:BrushKeys.Red}}"
-                    CornerRadius="2"
-                    Visibility="{Binding Watched, Converter={x:Static h:Converter.GetTrueToCollapsed}}">
-                <TextBlock Margin="5,3"
-                           Foreground="White"
-                           Text="New" />
+            <Border
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Background="{DynamicResource {x:Static h:BrushKeys.Red}}"
+                CornerRadius="2"
+                Visibility="{Binding Watched, Converter={x:Static h:Converter.GetTrueToCollapsed}}">
+                <TextBlock
+                    Margin="5,3"
+                    Foreground="White"
+                    Text="New" />
             </Border>
 
-            <Border Height="15"
-                    MinWidth="15"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Top"
-                    Background="{DynamicResource {x:Static h:BrushKeys.Red}}"
-                    CornerRadius="10"
-                    Visibility="{Binding Watched, Converter={x:Static h:Converter.GetTrueToCollapsed}}">
-                <TextBlock HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           FontSize="8"
-                           Foreground="White"
-                           Text="{Binding Images.Count, Mode=OneWay}" />
+            <Border
+                Height="15"
+                MinWidth="15"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Background="{DynamicResource {x:Static h:BrushKeys.Red}}"
+                CornerRadius="10"
+                Visibility="{Binding Watched, Converter={x:Static h:Converter.GetTrueToCollapsed}}">
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="8"
+                    Foreground="White"
+                    Text="{Binding Images.Count, Mode=OneWay}" />
             </Border>
 
-            <TextBlock HorizontalAlignment="Left"
-                       VerticalAlignment="Bottom"
-                       FontWeight="Bold"
-                       Foreground="{DynamicResource {x:Static h:BrushKeys.Orange}}">
+            <TextBlock
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                FontWeight="Bold"
+                Foreground="{DynamicResource {x:Static h:BrushKeys.Orange}}">
                 <Run Text="{Binding Score}" /><Run Text="分" />
             </TextBlock>
 
-            <ToggleButton HorizontalAlignment="Right"
-                          VerticalAlignment="Bottom"
-                          BorderThickness="0"
-                          Content="M655.58253 161.724518c-54.76554 0-104.459127 20.519015-145.894532 59.815819-41.652156-39.730304-90.543766-59.815819-145.865632-59.815819-132.116447 0-239.60285 115.079884-239.60285 256.531038 0 82.834686 36.948677 140.454103 64.042447 182.705934 63.421096 99.755648 194.670543 203.253849 267.267396 256.068638l3.366852 2.456502c14.450011 11.234883 31.862273 17.188288 50.372737 17.188287 17.433938 0 34.45605-5.657179 49.231186-16.335737l0.946476-0.700825c0.599675-0.455175 1.784576-1.322176 3.496902-2.564877 72.575178-52.923164 203.867974-156.551415 267.881522-256.299838 26.970945-42.071206 63.919622-99.683398 63.919621-182.525309-0.007225-141.443929-107.291329-256.523813-239.162125-256.523813z"
-                          IsChecked="{Binding Favorite}">
+            <ToggleButton
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                BorderThickness="0"
+                Content="M655.58253 161.724518c-54.76554 0-104.459127 20.519015-145.894532 59.815819-41.652156-39.730304-90.543766-59.815819-145.865632-59.815819-132.116447 0-239.60285 115.079884-239.60285 256.531038 0 82.834686 36.948677 140.454103 64.042447 182.705934 63.421096 99.755648 194.670543 203.253849 267.267396 256.068638l3.366852 2.456502c14.450011 11.234883 31.862273 17.188288 50.372737 17.188287 17.433938 0 34.45605-5.657179 49.231186-16.335737l0.946476-0.700825c0.599675-0.455175 1.784576-1.322176 3.496902-2.564877 72.575178-52.923164 203.867974-156.551415 267.881522-256.299838 26.970945-42.071206 63.919622-99.683398 63.919621-182.525309-0.007225-141.443929-107.291329-256.523813-239.162125-256.523813z"
+                IsChecked="{Binding Favorite}">
                 <ToggleButton.Style>
-                    <Style BasedOn="{StaticResource {x:Static h:ToggleButtonKeys.Geometry}}"
-                           TargetType="ToggleButton">
+                    <Style BasedOn="{StaticResource {x:Static h:ToggleButtonKeys.Geometry}}" TargetType="ToggleButton">
                         <Style.Triggers>
                             <Trigger Property="IsChecked" Value="True">
                                 <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Red}}" />
@@ -97,19 +109,18 @@
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type local:fm_dd_video_image}">
-        <Border BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
-                BorderThickness="1">
+        <Border BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" BorderThickness="1">
             <DockPanel Margin="2">
                 <Grid>
                     <Image Source="{Binding Url, Converter={x:Static h:Converter.GetFileImageSourceInMemory}, ConverterParameter=200, IsAsync=True}" />
-                    <TextBlock HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               FontSize="15"
-                               FontWeight="Bold"
-                               Foreground="Black">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        FontSize="15"
+                        FontWeight="Bold"
+                        Foreground="Black">
                         <TextBlock.Effect>
-                            <DropShadowEffect ShadowDepth="0"
-                                              Color="White" />
+                            <DropShadowEffect ShadowDepth="0" Color="White" />
                         </TextBlock.Effect>
                         <Run Text="{Binding TimeStamp, Converter={x:Static h:Converter.GetTimeSpanStrFromTicks}}" />
                         <Run Text="{Binding DisplayName}" />
@@ -120,20 +131,21 @@
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type local:VideoView}">
-        <h:GridSplitterBox GridSpliteWidth="5"
-                           MenuMaxWidth="500"
-                           MenuMinWidth="50"
-                           MenuWidth="100"
-                           Mode="Hidden"
-                           Style="{DynamicResource {x:Static h:GridSplitterBox.RightKey}}">
+        <h:GridSplitterBox
+            GridSpliteWidth="5"
+            MenuMaxWidth="500"
+            MenuMinWidth="50"
+            MenuWidth="100"
+            Mode="Hidden"
+            Style="{DynamicResource {x:Static h:GridSplitterBox.RightKey}}">
             <h:GridSplitterBox.MenuContent>
-                <ListBox Cattach.ItemHeight="Auto"
-                         DockPanel.Dock="Top"
-                         ItemsSource="{Binding Model.Images}"
-                         SelectedIndex="{Binding Model.SelectedImageIndex, IsAsync=True}">
+                <ListBox
+                    Cattach.ItemHeight="Auto"
+                    DockPanel.Dock="Top"
+                    ItemsSource="{Binding Model.Images}"
+                    SelectedIndex="{Binding Model.SelectedImageIndex, IsAsync=True}">
                     <ListBox.ItemContainerStyle>
-                        <Style BasedOn="{StaticResource {x:Static h:ListBoxItemKeys.Default}}"
-                               TargetType="ListBoxItem">
+                        <Style BasedOn="{StaticResource {x:Static h:ListBoxItemKeys.Default}}" TargetType="ListBoxItem">
                             <Setter Property="BorderThickness" Value="1" />
                             <Setter Property="Margin" Value="1" />
                             <Setter Property="Padding" Value="5" />
@@ -146,19 +158,21 @@
                     </ItemsControl.ItemsPanel>
                     <b:Interaction.Triggers>
                         <b:EventTrigger EventName="MouseDoubleClick">
-                            <b:ChangePropertyAction PropertyName="Time"
-                                                    TargetObject="{Binding ElementName=vlc}"
-                                                    Value="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=SelectedItem.TimeStamp, Converter={local:GetTickToMillisecond}}" />
+                            <b:ChangePropertyAction
+                                PropertyName="Time"
+                                TargetObject="{Binding ElementName=vlc}"
+                                Value="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=SelectedItem.TimeStamp, Converter={local:GetTickToMillisecond}}" />
                         </b:EventTrigger>
                     </b:Interaction.Triggers>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Grid>
                                 <ContentPresenter Content="{Binding}" />
-                                <Button HorizontalAlignment="Right"
-                                        VerticalAlignment="Top"
-                                        Content="{x:Static h:Geometrys.Close}"
-                                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}">
+                                <Button
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Top"
+                                    Content="{x:Static h:Geometrys.Close}"
+                                    Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}">
                                     <b:Interaction.Behaviors>
                                         <h:ButtonRemoveItemBehavior />
                                     </b:Interaction.Behaviors>
@@ -171,98 +185,109 @@
             <Grid Background="Transparent">
                 <DockPanel>
                     <Grid DockPanel.Dock="Bottom">
-                        <DockPanel HorizontalAlignment="Stretch"
-                                   DockPanel.Dock="Bottom">
-                            <Button VerticalAlignment="Center"
-                                    Background="Transparent"
-                                    Command="{x:Static h:VlcPlayerCommands.PreviousFrame}"
-                                    CommandTarget="{Binding ElementName=vlc}"
-                                    Content="上一帧"
-                                    DockPanel.Dock="Left"
-                                    ToolTip="上一帧" />
-                            <Button VerticalAlignment="Center"
-                                    Background="Transparent"
-                                    Command="{x:Static h:VlcPlayerCommands.SpeedDown}"
-                                    CommandTarget="{Binding ElementName=vlc}"
-                                    Content="减速"
-                                    DockPanel.Dock="Left"
-                                    ToolTip="减速" />
-                            <TextBlock Margin="3,0"
-                                       VerticalAlignment="Center"
-                                       DockPanel.Dock="Left"
-                                       Text="{Binding ElementName=media_slider, Path=Value, Converter={x:Static h:Converter.GetTimeSpanStrFromMilliseconds}}" />
-                            <Button VerticalAlignment="Center"
-                                    Background="Transparent"
-                                    Command="{x:Static h:VlcPlayerCommands.Stop}"
-                                    CommandTarget="{Binding ElementName=vlc}"
-                                    Content="停止"
-                                    DockPanel.Dock="Right"
-                                    ToolTip="停止" />
-                            <Button VerticalAlignment="Center"
-                                    Background="Transparent"
-                                    Command="{x:Static h:VlcPlayerCommands.NextFrame}"
-                                    CommandTarget="{Binding ElementName=vlc}"
-                                    Content="下一帧"
-                                    DockPanel.Dock="Right"
-                                    ToolTip="下一帧" />
-                            <Button VerticalAlignment="Center"
-                                    Background="Transparent"
-                                    Command="{x:Static h:VlcPlayerCommands.SpeedUp}"
-                                    CommandTarget="{Binding ElementName=vlc}"
-                                    Content="加速"
-                                    DockPanel.Dock="Right"
-                                    ToolTip="加速" />
-                            <TextBlock Margin="3,0"
-                                       VerticalAlignment="Center"
-                                       DockPanel.Dock="Right"
-                                       Text="{Binding ElementName=media_slider, Path=Maximum, Converter={x:Static h:Converter.GetTimeSpanStrFromMilliseconds}}" />
-                            <Slider x:Name="media_slider"
-                                    VerticalAlignment="Center"
-                                    IsMoveToPointEnabled="True"
-                                    IsSnapToTickEnabled="True"
-                                    Maximum="{Binding ElementName=vlc, Path=Maxinum}"
-                                    Minimum="0"
-                                    Value="{Binding ElementName=vlc, Path=Time}" />
+                        <DockPanel HorizontalAlignment="Stretch" DockPanel.Dock="Bottom">
+                            <Button
+                                VerticalAlignment="Center"
+                                Background="Transparent"
+                                Command="{x:Static h:VlcPlayerCommands.PreviousFrame}"
+                                CommandTarget="{Binding ElementName=vlc}"
+                                Content="上一帧"
+                                DockPanel.Dock="Left"
+                                ToolTip="上一帧" />
+                            <Button
+                                VerticalAlignment="Center"
+                                Background="Transparent"
+                                Command="{x:Static h:VlcPlayerCommands.SpeedDown}"
+                                CommandTarget="{Binding ElementName=vlc}"
+                                Content="减速"
+                                DockPanel.Dock="Left"
+                                ToolTip="减速" />
+                            <TextBlock
+                                Margin="3,0"
+                                VerticalAlignment="Center"
+                                DockPanel.Dock="Left"
+                                Text="{Binding ElementName=media_slider, Path=Value, Converter={x:Static h:Converter.GetTimeSpanStrFromMilliseconds}}" />
+                            <Button
+                                VerticalAlignment="Center"
+                                Background="Transparent"
+                                Command="{x:Static h:VlcPlayerCommands.Stop}"
+                                CommandTarget="{Binding ElementName=vlc}"
+                                Content="停止"
+                                DockPanel.Dock="Right"
+                                ToolTip="停止" />
+                            <Button
+                                VerticalAlignment="Center"
+                                Background="Transparent"
+                                Command="{x:Static h:VlcPlayerCommands.NextFrame}"
+                                CommandTarget="{Binding ElementName=vlc}"
+                                Content="下一帧"
+                                DockPanel.Dock="Right"
+                                ToolTip="下一帧" />
+                            <Button
+                                VerticalAlignment="Center"
+                                Background="Transparent"
+                                Command="{x:Static h:VlcPlayerCommands.SpeedUp}"
+                                CommandTarget="{Binding ElementName=vlc}"
+                                Content="加速"
+                                DockPanel.Dock="Right"
+                                ToolTip="加速" />
+                            <TextBlock
+                                Margin="3,0"
+                                VerticalAlignment="Center"
+                                DockPanel.Dock="Right"
+                                Text="{Binding ElementName=media_slider, Path=Maximum, Converter={x:Static h:Converter.GetTimeSpanStrFromMilliseconds}}" />
+                            <Slider
+                                x:Name="media_slider"
+                                VerticalAlignment="Center"
+                                IsMoveToPointEnabled="True"
+                                IsSnapToTickEnabled="True"
+                                Maximum="{Binding ElementName=vlc, Path=Maxinum}"
+                                Minimum="0"
+                                Value="{Binding ElementName=vlc, Path=Time}" />
                         </DockPanel>
                     </Grid>
                     <!--<TextBlock Margin="5"
                                DockPanel.Dock="Top"
                                Text="{Binding Model.Url}" />-->
-                    <DockPanel DockPanel.Dock="Top"
-                               LastChildFill="False">
-                        <Button Command="{x:Static h:VlcPlayerCommands.ShootCut}"
-                                CommandTarget="{Binding ElementName=vlc}"
-                                Content="截图" />
-                        <Button Command="{x:Static h:VlcPlayerCommands.FullScreen}"
-                                CommandTarget="{Binding ElementName=vlc}"
-                                Content="全屏" />
+                    <DockPanel DockPanel.Dock="Top" LastChildFill="False">
+                        <Button
+                            Command="{x:Static h:VlcPlayerCommands.ShootCut}"
+                            CommandTarget="{Binding ElementName=vlc}"
+                            Content="截图" />
+                        <Button
+                            Command="{x:Static h:VlcPlayerCommands.FullScreen}"
+                            CommandTarget="{Binding ElementName=vlc}"
+                            Content="全屏" />
                         <Button Content="加速" />
                         <Button Content="减速" />
                         <Button Content="上一帧" />
                         <Button Content="下一帧" />
                         <Button Content="停止" />
 
-                        <Button Command="{x:Static h:Zoombox.Fit}"
-                                CommandTarget="{Binding ElementName=zoomview}"
-                                Content="适配"
-                                DockPanel.Dock="Right" />
+                        <Button
+                            Command="{x:Static h:Zoombox.Fit}"
+                            CommandTarget="{Binding ElementName=zoomview}"
+                            Content="适配"
+                            DockPanel.Dock="Right" />
 
-                        <Button Command="{x:Static h:Zoombox.Fill}"
-                                CommandTarget="{Binding ElementName=zoomview}"
-                                Content="填充"
-                                DockPanel.Dock="Right" />
+                        <Button
+                            Command="{x:Static h:Zoombox.Fill}"
+                            CommandTarget="{Binding ElementName=zoomview}"
+                            Content="填充"
+                            DockPanel.Dock="Right" />
                     </DockPanel>
 
-                    <h:Zoombox x:Name="zoomview"
-                               Background="Transparent"
-                               DragModifiers="Ctrl"
-                               DragOnPreview="True"
-                               Focusable="True"
-                               IsTabStop="True"
-                               NavigateOnPreview="True"
-                               RelativeZoomModifiers=""
-                               ViewStackIndex="0"
-                               ZoomOn="Content">
+                    <h:Zoombox
+                        x:Name="zoomview"
+                        Background="Transparent"
+                        DragModifiers="Ctrl"
+                        DragOnPreview="True"
+                        Focusable="True"
+                        IsTabStop="True"
+                        NavigateOnPreview="True"
+                        RelativeZoomModifiers=""
+                        ViewStackIndex="0"
+                        ZoomOn="Content">
                         <h:Zoombox.ViewStack>
                             <!--<h:ZoomboxView>Empty</h:ZoomboxView>-->
                             <h:ZoomboxView>Fit</h:ZoomboxView>
@@ -272,43 +297,40 @@
                     <h:ZoomboxView>2.0</h:ZoomboxView>-->
                         </h:Zoombox.ViewStack>
                         <b:Interaction.Triggers>
-                            <h:MouseTrigger ClickCount="2"
-                                            Mode="Right"
-                                            MouseButton="Left"
-                                            UseHandle="False">
-                                <h:CallMethodActionEx MethodName="FitToBounds"
-                                                      TargetObject="{Binding ElementName=zoomview}" />
+                            <h:MouseTrigger
+                                ClickCount="2"
+                                Mode="Right"
+                                MouseButton="Left"
+                                UseHandle="False">
+                                <h:CallMethodActionEx MethodName="FitToBounds" TargetObject="{Binding ElementName=zoomview}" />
                             </h:MouseTrigger>
-                            <h:MouseTrigger ClickCount="2"
-                                            Mode="Left"
-                                            MouseButton="Left"
-                                            UseHandle="False">
-                                <h:CallMethodActionEx MethodName="FitToBounds"
-                                                      TargetObject="{Binding ElementName=zoomview}" />
+                            <h:MouseTrigger
+                                ClickCount="2"
+                                Mode="Left"
+                                MouseButton="Left"
+                                UseHandle="False">
+                                <h:CallMethodActionEx MethodName="FitToBounds" TargetObject="{Binding ElementName=zoomview}" />
                             </h:MouseTrigger>
                         </b:Interaction.Triggers>
                         <Grid>
-                            <h:VlcPlayer x:Name="vlc"
-                                         VerticalAlignment="Center"
-                                         Cattach.BottomTemplate="{x:Null}"
-                                         UseAutoPlayOnVedioSource="False"
-                                         VedioSource="{Binding Model.Url, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}">
+                            <h:VlcPlayer
+                                x:Name="vlc"
+                                VerticalAlignment="Center"
+                                Cattach.BottomTemplate="{x:Null}"
+                                UseAutoPlayOnVedioSource="False"
+                                VedioSource="{Binding Model.Url, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}">
                                 <b:Interaction.Triggers>
                                     <b:EventTrigger EventName="ShootCut">
-                                        <b:InvokeCommandAction Command="{Binding ShootCutCommand}"
-                                                               PassEventArgsToCommand="True" />
+                                        <b:InvokeCommandAction Command="{Binding ShootCutCommand}" PassEventArgsToCommand="True" />
                                     </b:EventTrigger>
                                     <b:EventTrigger EventName="SourceUpdated">
-                                        <h:CallMethodActionEx MethodName="FitToBounds"
-                                                              TargetObject="{Binding ElementName=zoomview}" />
+                                        <h:CallMethodActionEx MethodName="FitToBounds" TargetObject="{Binding ElementName=zoomview}" />
                                     </b:EventTrigger>
                                     <b:EventTrigger EventName="TargetUpdated">
-                                        <h:CallMethodActionEx MethodName="FitToBounds"
-                                                              TargetObject="{Binding ElementName=zoomview}" />
+                                        <h:CallMethodActionEx MethodName="FitToBounds" TargetObject="{Binding ElementName=zoomview}" />
                                     </b:EventTrigger>
                                     <b:EventTrigger EventName="Loaded">
-                                        <h:CallMethodActionEx MethodName="FitToBounds"
-                                                              TargetObject="{Binding ElementName=zoomview}" />
+                                        <h:CallMethodActionEx MethodName="FitToBounds" TargetObject="{Binding ElementName=zoomview}" />
                                     </b:EventTrigger>
                                 </b:Interaction.Triggers>
                             </h:VlcPlayer>

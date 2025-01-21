@@ -33,11 +33,9 @@
                 </Grid.Background>
             </Grid>
             <TextBlock Grid.Column="1"
-                       Margin="5,0"
+                       Margin="0,0"
                        VerticalAlignment="Center">
-                <Run Text="[" />
-                <Run Text="{Binding Time, Mode=OneWay}" />
-                <Run Text="]" />
+                <Run Text="[" /><Run Text="{Binding Time, Mode=OneWay}" /><Run Text="] " />
             </TextBlock>
             <TextBlock Grid.Column="2"
                        Margin="0,2"

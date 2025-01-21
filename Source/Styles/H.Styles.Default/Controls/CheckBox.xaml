@@ -33,20 +33,17 @@
                                 Height="13"
                                 BorderBrush="{TemplateBinding Foreground}"
                                 BorderThickness="1"
-                                CornerRadius="0">
+                                CornerRadius="1">
                                 <Grid>
                                     <Path
                                         x:Name="CheckMark"
-                                        Width="8"
-                                        Height="8"
-                                        ClipToBounds="False"
-                                        Data="M 0 2 L 2 7 L 2 7 L 8 0"
+                                        Width="10"
+                                        Height="10"
+                                        Data="M 0,5.1 L 1.7,5.2 L 3.4,7.1 L 8,0.4 L 9.2,0 L 3.3,10.8 Z"
+                                        Fill="{TemplateBinding Foreground}"
                                         SnapsToDevicePixels="False"
                                         Stroke="{TemplateBinding Foreground}"
-                                        StrokeDashCap="Round"
-                                        StrokeEndLineCap="Triangle"
-                                        StrokeStartLineCap="Triangle"
-                                        StrokeThickness="1.5"
+                                        StrokeThickness="0.4"
                                         Visibility="Collapsed" />
                                     <Path
                                         x:Name="InderminateMark"
@@ -97,7 +94,6 @@
                 <!--<Setter.Value>
                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
                 </Setter.Value>-->
-
                 <Setter Property="Background">
                     <Setter.Value>
                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />

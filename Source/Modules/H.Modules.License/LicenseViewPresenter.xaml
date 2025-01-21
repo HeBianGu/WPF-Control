@@ -8,7 +8,8 @@
     <DataTemplate DataType="{x:Type local:LicenseViewPresenter}">
         <DockPanel MinWidth="500"
                    Margin="0">
-            <StackPanel DockPanel.Dock="Top"
+            <StackPanel Height="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}"
+                        DockPanel.Dock="Top"
                         Orientation="Horizontal">
                 <TextBlock Margin="0,5"
                            HorizontalAlignment="Left"
@@ -17,8 +18,7 @@
                 </TextBlock>
                 <TextBlock Margin="2,0"
                            HorizontalAlignment="Left"
-                           VerticalAlignment="Center"
-                           FontWeight="Bold">
+                           VerticalAlignment="Center">
                     <TextBlock.Style>
                         <Style TargetType="TextBlock">
                             <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
@@ -40,7 +40,7 @@
                                 </DataTrigger>
                                 <DataTrigger Binding="{Binding IsTrail}"
                                              Value="True">
-                                    <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.ForegroundAssist}}" />
+                                    <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
                                 </DataTrigger>
                             </Style.Triggers>
                         </Style>
@@ -48,7 +48,8 @@
                 </TextBlock>
             </StackPanel>
 
-            <StackPanel DockPanel.Dock="Top"
+            <StackPanel Margin="0,0,0,5"
+                        DockPanel.Dock="Top"
                         Orientation="Horizontal"
                         Visibility="{Binding UseVip, Converter={x:Static h:Converter.GetTrueToVisible}}">
                 <TextBlock Margin="0,5"
@@ -59,12 +60,12 @@
                 <TextBlock Margin="2,0"
                            HorizontalAlignment="Left"
                            VerticalAlignment="Center"
-                           FontWeight="Bold"
                            Foreground="{DynamicResource {x:Static h:BrushKeys.Orange}}"
                            Text="{Binding Level, StringFormat=v{0}}" />
             </StackPanel>
 
-            <Grid DockPanel.Dock="Bottom"
+            <Grid Margin="0,0,0,5"
+                  DockPanel.Dock="Bottom"
                   Visibility="{Binding IsTrail, Converter={x:Static h:Converter.GetTrueToVisible}}">
                 <TextBlock HorizontalAlignment="Left"
                            Foreground="{DynamicResource {x:Static h:BrushKeys.Red}}">
@@ -79,41 +80,48 @@
             </Grid>
 
             <StackPanel DockPanel.Dock="Top">
-                <Grid>
+                <Grid Margin="0,0,0,5">
                     <BulletDecorator>
                         <BulletDecorator.Bullet>
                             <TextBlock Text="机器编码：" />
                         </BulletDecorator.Bullet>
-                        <DockPanel>
-                            <Button Command="{ClipBoardCopyTextCommand}"
-                                    CommandParameter="{Binding HostID}"
-                                    Content="复制"
-                                    DockPanel.Dock="Right" />
-                            <TextBox IsReadOnly="True"
-                                     Text="{Binding HostID}" />
-                        </DockPanel>
+                        <TextBox IsReadOnly="True"
+                                 Style="{DynamicResource {x:Static h:TextBoxKeys.Attach}}"
+                                 Text="{Binding HostID}">
+                            <Cattach.Attach>
+                                <Button Height="Auto"
+                                        Command="{ClipBoardCopyTextCommand}"
+                                        CommandParameter="{Binding HostID}"
+                                        Content="复制"
+                                        DockPanel.Dock="Right" />
+                            </Cattach.Attach>
+                        </TextBox>
                     </BulletDecorator>
                 </Grid>
 
-                <Grid>
+                <Grid Margin="0,0,0,5">
                     <BulletDecorator>
                         <BulletDecorator.Bullet>
                             <TextBlock Text="产品名称：" />
                         </BulletDecorator.Bullet>
-                        <DockPanel>
-                            <Button Command="{ClipBoardCopyTextCommand}"
-                                    CommandParameter="{Binding Module}"
-                                    Content="复制"
-                                    DockPanel.Dock="Right" />
-                            <TextBox IsReadOnly="True"
-                                     Text="{Binding Module}" />
-                        </DockPanel>
+                        <TextBox IsReadOnly="True"
+                                 Style="{DynamicResource {x:Static h:TextBoxKeys.Attach}}"
+                                 Text="{Binding Module}">
+                            <Cattach.Attach>
+                                <Button Height="Auto"
+                                        Command="{ClipBoardCopyTextCommand}"
+                                        CommandParameter="{Binding Module}"
+                                        Content="复制"
+                                        DockPanel.Dock="Right" />
+                            </Cattach.Attach>
+                        </TextBox>
                     </BulletDecorator>
                 </Grid>
                 <!--<Label Content="注:机器编码用于申请License，请将Licens提供给管理员！" HorizontalAlignment="Left" Margin="100,0" Foreground="Red" Style="{DynamicResource S.Label.Flash}"/>-->
             </StackPanel>
 
-            <Grid DockPanel.Dock="Bottom">
+            <Grid Margin="0,0,0,5"
+                  DockPanel.Dock="Bottom">
                 <TextBlock HorizontalAlignment="Left"
                            VerticalAlignment="Center"
                            Text="{Binding Source={x:Static local:LicenseOptions.Instance}, Path=Contract, StringFormat=联系客服：{0}}" />
@@ -126,20 +134,24 @@
                         Content="注册" />
             </Grid>
 
-            <BulletDecorator>
+            <BulletDecorator Margin="0,0,0,5">
                 <BulletDecorator.Bullet>
                     <TextBlock Text="输入许可：" />
                 </BulletDecorator.Bullet>
-                <DockPanel>
-                    <Button Command="{ClipBoardPasteTextCommand}"
-                            CommandParameter="{Binding ElementName=tb}"
-                            Content="粘贴"
-                            DockPanel.Dock="Right" />
-                    <TextBox x:Name="tb"
-                             Height="Auto"
-                             Text="{Binding Lic, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
-                             TextWrapping="Wrap" />
-                </DockPanel>
+                <TextBox x:Name="tb"
+                         Height="Auto"
+                         MinHeight="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}"
+                         Style="{DynamicResource {x:Static h:TextBoxKeys.Attach}}"
+                         Text="{Binding Lic, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                         TextWrapping="Wrap">
+                    <Cattach.Attach>
+                        <Button Height="Auto"
+                                Command="{ClipBoardPasteTextCommand}"
+                                CommandParameter="{Binding ElementName=tb}"
+                                Content="粘贴"
+                                DockPanel.Dock="Right" />
+                    </Cattach.Attach>
+                </TextBox>
             </BulletDecorator>
         </DockPanel>
     </DataTemplate>

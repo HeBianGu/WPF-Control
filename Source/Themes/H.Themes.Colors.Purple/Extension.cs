@@ -10,4 +10,12 @@ namespace H.Themes.Colors.Purple
             return new PurpleDarkColorResource().Resource;
         }
     }
+
+    public class PurpleLightThemeExtension : MarkupExtension
+    {
+        public override object ProvideValue(IServiceProvider serviceProvider)
+        {
+            return new PurpleLightColorResource().Resource;
+        }
+    }
 }

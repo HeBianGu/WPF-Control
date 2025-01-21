@@ -15,8 +15,9 @@ namespace H.Controls.TagBox
         public ObservableCollection<Tag> Tags { get; set; } = new ObservableCollection<Tag>();
 
         [ReadOnly(true)]
-        [JsonIgnore]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public string SplitChars { get; set; } = ", \n \r";
     }
 }

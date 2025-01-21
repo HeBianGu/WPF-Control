@@ -1,4 +1,6 @@
 ﻿using H.Controls.Form;
+using H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem;
+using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
 using H.Extensions.Setting;
 using H.Services.Common;
 using H.Themes.Default;
@@ -9,6 +11,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text.Json.Serialization;
 using System.Windows;
+using System.Windows.Media;
 using System.Xml.Serialization;
 
 namespace H.Modules.Theme
@@ -21,31 +24,88 @@ namespace H.Modules.Theme
             this.ColorResources.Add(new DarkColorResource());
             this.ColorResources.Add(new DefaultColorResource());
             this.ColorResources.Add(new LightColorResource());
+            this.FontFamilys = Fonts.SystemFontFamilies.ToList();
+            //this.FontFamilys.Add(new FontFamily("微软雅黑"));
+            this.FontFamilys.Insert(0, new FontFamily("微软雅黑"));
         }
 
-        [DefaultValue(FontSizeThemeType.Default)]
-        [Display(Name = "字体")]
-        public FontSizeThemeType FontSize { get; set; }
+        public override void LoadDefault()
+        {
+            base.LoadDefault();
+            //this.FontFamily = new FontFamily("微软雅黑");
+            this.FontFamily = null;
+        }
 
+        private FontSizeThemeType _fontSize;
+        [DefaultValue(FontSizeThemeType.Default)]
+        [Display(Name = "字号")]
+        public FontSizeThemeType FontSize
+        {
+            get { return _fontSize; }
+            set
+            {
+                _fontSize = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        private LayoutThemeType _layout;
         [DefaultValue(LayoutThemeType.Default)]
         [Display(Name = "布局")]
-        public LayoutThemeType Layout { get; set; }
+        public LayoutThemeType Layout
+        {
+            get { return _layout; }
+            set
+            {
+                _layout = value;
+                RaisePropertyChanged();
+            }
+        }
 
-        [XmlIgnore]
-        [JsonIgnore]
-        [BindingGetSelectSourceProperty(nameof(ColorResources))]
-        [PropertyItemType(typeof(OnlyComboBoxSelectSourcePropertyItem))]
+
+        private IColorResource _ColorResource;
+        [System.Text.Json.Serialization.JsonIgnore]
+        [System.Xml.Serialization.XmlIgnore]
+        [PropertyNameSourcePropertyItem(typeof(ComboBoxPropertyItem), nameof(ColorResources))]
         [Display(Name = "颜色主题")]
-        public IColorResource ColorResource { get; set; }
+        public IColorResource ColorResource
+        {
+            get { return _ColorResource; }
+            set
+            {
+                _ColorResource = value;
+                RaisePropertyChanged();
+            }
+        }
 
-        [XmlIgnore]
-        [JsonIgnore]
+
+        [System.Text.Json.Serialization.JsonIgnore]
+        [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         public List<IColorResource> ColorResources { get; } = new List<IColorResource>();
 
+      
+        private FontFamily _fontFamily;
+        [PropertyNameSourcePropertyItem(typeof(ComboBoxPropertyItem), nameof(FontFamilys))]
+        [Display(Name = "字体")]
+        [TypeConverter(typeof(FontFamilyConverter))]
+        public FontFamily FontFamily
+        {
+            get { return _fontFamily; }
+            set
+            {
+                _fontFamily = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        [System.Text.Json.Serialization.JsonIgnore]
+        [System.Xml.Serialization.XmlIgnore]
+        [Browsable(false)]
+        public List<FontFamily> FontFamilys { get; } = new List<FontFamily>();
+
         [Browsable(false)]
         public int ColorResourceSelectedIndex { get; set; }
-
         public void OnColorResourceValueChanged(PropertyInfo property, IColorResource o, IColorResource n)
         {
             //this.Color.ChangeThemeType();
@@ -59,6 +119,14 @@ namespace H.Modules.Theme
         public void OnLayoutValueChanged(PropertyInfo property, LayoutThemeType o, LayoutThemeType n)
         {
             this.Layout.ChangeLayoutThemeType();
+        }
+
+        public void OnFontFamilyValueChanged(PropertyInfo property, FontFamily o, FontFamily n)
+        {
+            //var find= ThemeTypeExtension.GetSystemsResource();
+            //if (find != null)
+            //    find[SystemKeys.FontFamily] = n;
+            Application.Current.Resources[SystemKeys.FontFamily] = n;
         }
 
         public override bool Save(out string message)
@@ -86,6 +154,7 @@ namespace H.Modules.Theme
             this.FontSize.ChangeFontSizeThemeType();
             this.Layout.ChangeLayoutThemeType();
             this.ChangeColorTheme();
+            this.ChangeSystem();
             ThemeTypeExtension.RefreshBrushResourceDictionary();
         }
 
@@ -96,6 +165,11 @@ namespace H.Modules.Theme
             {
                 return this.ColorResources.Any(l => l.Resource.Source == x.Source);
             });
+        }
+
+        private void ChangeSystem()
+        {
+            Application.Current.Resources[SystemKeys.FontFamily] = this.FontFamily;
         }
 
         protected override string GetDefaultFolder()

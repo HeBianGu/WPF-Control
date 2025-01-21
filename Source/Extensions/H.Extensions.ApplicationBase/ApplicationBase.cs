@@ -1,4 +1,5 @@
-﻿using H.Services.Common;
+﻿using H.Iocable;
+using H.Services.Common;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Diagnostics;
@@ -32,9 +33,10 @@ namespace H.Extensions.ApplicationBase
             this.Configure(bulder);
             this.OnSingleton(e);
             base.OnStartup(e);
-            this.CreateMainWindow(e);
+            var window = this.CreateMainWindow(e);
             this.OnSplashScreen(e);
             this.OnLogin(e);
+            Ioc<IMainWindowSavableService>.Instance?.Load(window);
             this.MainWindow.Show();
             this.ILogger?.Info("系统启动");
             Ioc<IScheduledTaskService>.Instance?.Start();

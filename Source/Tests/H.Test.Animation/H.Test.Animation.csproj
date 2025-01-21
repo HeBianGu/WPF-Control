@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <GeneratePackageOnBuild>Flase</GeneratePackageOnBuild>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Controls\H.Controls.Adorner\H.Controls.Adorner.csproj" />
+    <ProjectReference Include="..\..\Controls\H.Controls.DrawerBox\H.Controls.DrawerBox.csproj" />
+    <ProjectReference Include="..\..\Controls\H.Controls.Step\H.Controls.Step.csproj" />
+    <ProjectReference Include="..\..\Datas\H.Data.Test\H.Data.Test.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.Animations\H.Extensions.Animations.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.ApplicationBase\H.Extensions.ApplicationBase.csproj" />
+    <ProjectReference Include="..\..\Modules\H.Modules.About\H.Modules.About.csproj" />
+    <ProjectReference Include="..\..\Modules\H.Modules.Messages.Dialog\H.Modules.Messages.Dialog.csproj" />
+    <ProjectReference Include="..\..\Modules\H.Modules.Messages.Form\H.Modules.Messages.Form.csproj" />
+    <ProjectReference Include="..\..\Modules\H.Modules.Messages.Notice\H.Modules.Messages.Notice.csproj" />
+    <ProjectReference Include="..\..\Modules\H.Modules.Messages.Snack\H.Modules.Messages.Snack.csproj" />
+    <ProjectReference Include="..\..\Themes\H.Themes.Default\H.Themes.Default.csproj" />
+    <ProjectReference Include="..\..\Windows\H.Windows.Dialog\H.Windows.Dialog.csproj" />
+  </ItemGroup>
+
+</Project>

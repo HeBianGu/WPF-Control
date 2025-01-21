@@ -21,6 +21,7 @@
                 <Style BasedOn="{StaticResource {x:Static h:ListBoxItemKeys.Default}}"
                        TargetType="ListBoxItem">
                     <Setter Property="BorderThickness" Value="1" />
+                    <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
                     <Setter Property="Margin" Value="1" />
                 </Style>
             </Setter.Value>

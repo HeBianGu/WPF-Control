@@ -19,7 +19,9 @@ namespace H.Presenters.Design
         }
         private ObservableCollection<IDesignPresenter> _presenters = new ObservableCollection<IDesignPresenter>();
         [Browsable(false)]
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public ObservableCollection<IDesignPresenter> Presenters
         {
             get { return _presenters; }

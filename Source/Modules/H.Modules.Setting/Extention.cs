@@ -3,20 +3,22 @@
 using H.Modules.Setting;
 using H.Services.Common;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace System
 {
-
     public static class SystemSettingExtention
     {
-
         /// <summary>
         /// 设置系统路径
         /// </summary>  
-        public static IServiceCollection AddSetting(this IServiceCollection services)
+        public static IServiceCollection AddSetting(this IServiceCollection services, Action<H.Services.Common.ISettingViewOption> setupAction = null)
         {
-            services.AddSingleton<ISettingViewPresenter, SettingViewPresenter>();
-            services.AddSingleton<ISettingButtonPresenter, SettingButtonPresenter>();
+            services.AddOptions();
+            services.TryAdd(ServiceDescriptor.Singleton<ISettingViewPresenter, SettingViewPresenter>());
+            services.TryAdd(ServiceDescriptor.Singleton<ISettingButtonPresenter, SettingButtonPresenter>());
+            if (setupAction != null)
+                services.Configure(setupAction);
             return services;
         }
 
@@ -33,12 +35,23 @@ namespace System
         //    return services;
         //}
 
-        /// <summary>
-        /// 设置系统路径
-        /// </summary>  
-        public static IApplicationBuilder UseSetting(this IApplicationBuilder builder, Action<ISettingViewPresenterOption> option = null)
+        public static IApplicationBuilder UseSettingDataManager(this IApplicationBuilder builder, Action<ISettingDataManagerOption> option = null)
         {
-            option?.Invoke(SettingViewPresenter.Instance);
+            option?.Invoke(SettingDataManager.Instance);
+            return builder;
+        }
+
+        public static IApplicationBuilder UseSetting(this IApplicationBuilder builder, Action<H.Services.Common.ISettingViewOption> option = null)
+        {
+            SettingDataManager.Instance.Add(SettingViewOption.Instance);
+            option?.Invoke(SettingViewOption.Instance);
+            return builder;
+        }
+
+        public static IApplicationBuilder UseSettingSecurity(this IApplicationBuilder builder, Action<ISettingSecurityViewOption> option = null)
+        {
+            SettingDataManager.Instance.Add(SettingSecurityViewOption.Instance);
+            option?.Invoke(SettingSecurityViewOption.Instance);
             return builder;
         }
 
@@ -59,6 +72,7 @@ namespace System
             SettingDataManager.Instance.Settings.Add(PasswordSetting.Instance);
             SettingDataManager.Instance.Settings.Add(MessageSetting.Instance);
             SettingDataManager.Instance.Settings.Add(PersonalSetting.Instance);
+            builder.UseSettingDataManager(option);
             return builder;
         }
     }

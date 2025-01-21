@@ -12,6 +12,17 @@
             <Setter.Value>
                 <DataTemplate>
                     <Grid>
+                        <Grid.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="打开" Command="{x:Static Commands.Open}" CommandParameter="{Binding Model}" />
+                                <MenuItem Header="从列表中删除"  Command="{x:Static Commands.Delete}" CommandParameter="{Binding Model}"/>
+                                <MenuItem Header="新建"  Command="{x:Static Commands.New}"/>
+                                <MenuItem Header="刷新"  Command="{x:Static Commands.Refresh}"/>
+                                <!--<MenuItem Header="将路径复制到剪贴板(_C)"/>
+                                <MenuItem Header="固定至列表(_P)"/>
+                                <MenuItem Header="清楚已取消固定的文档(_E)"/>-->
+                            </ContextMenu>
+                        </Grid.ContextMenu>
                         <DockPanel Margin="0,10">
                             <Button Margin="0"
                                     Command="{x:Static h:Commands.Delete}"
@@ -19,12 +30,12 @@
                                     Content="{x:Static h:Geometrys.Close}"
                                     DockPanel.Dock="Right"
                                     Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
-                            <ToggleButton h:Cattach.CheckedIcon="{x:Static h:Geometrys.Fixed}"
-                                          h:Cattach.UncheckedIcon="{x:Static h:Geometrys.UnFixed}"
+                            <ToggleButton h:Cattach.CheckedGeometry="{x:Static h:Geometrys.Fixed}"
+                                          h:Cattach.UnCheckedGeometry="{x:Static h:Geometrys.UnFixed}"
                                           Command="{x:Static h:Commands.Refresh}"
                                           DockPanel.Dock="Right"
                                           IsChecked="{Binding Model.IsFixed}"
-                                          Style="{DynamicResource {x:Static h:ToggleButtonKeys.Switch}}" />
+                                          Style="{DynamicResource {x:Static h:ToggleButtonKeys.SwitchGeometry}}" />
                             <ContentPresenter Content="{Binding Model}" />
                         </DockPanel>
                     </Grid>
@@ -52,27 +63,10 @@
                 </Style>
             </Setter.Value>
         </Setter>
-        <Setter Property="ContextMenu">
+        <!--<Setter Property="ContextMenu">
             <Setter.Value>
-                <ContextMenu>
-                    <ContextMenu.Resources>
-                        <Style TargetType="MenuItem" />
-                    </ContextMenu.Resources>
-                    <MenuItem Header="打开(_O)"
-                              Icon="&#xeada;" />
-                    <MenuItem Header="打开副本(_N)"
-                              Icon="&#xeadb;" />
-                    <MenuItem Header="将路径复制到剪贴板(_C)"
-                              Icon="&#xe83e;" />
-
-                    <MenuItem Header="固定至列表(_P)"
-                              Icon="&#xe7f2;" />
-                    <MenuItem Header="从列表中删除(_R)"
-                              Icon="&#xe62d;" />
-                    <MenuItem Header="清楚已取消固定的文档(_E)"
-                              Icon="&#xe618;" />
-                </ContextMenu>
+            
             </Setter.Value>
-        </Setter>
+        </Setter>-->
     </Style>
 </ResourceDictionary>

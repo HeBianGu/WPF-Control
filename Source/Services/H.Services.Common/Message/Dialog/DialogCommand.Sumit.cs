@@ -6,9 +6,7 @@ namespace H.Services.Common
     {
         public override void Execute(object parameter)
         {
-            IDialog dialog = this.GetDialog(parameter);
-            dialog.DialogResult = true;
-            dialog.Close();
+            this.Sumit(parameter);
         }
     }
 }

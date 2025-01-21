@@ -1,8 +1,6 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-
-
-
+using H.Controls.Form.Base;
 using H.Services.Common;
 using System;
 using System.Collections;
@@ -25,96 +23,6 @@ namespace H.Controls.Form
         static Form()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(Form), new FrameworkPropertyMetadata(typeof(Form)));
-        }
-
-        public Form()
-        {
-            //this.BindCommand(Commander.Sure, (l, k) =>
-            // {
-            //     this.TrySumit(out string message);
-            // });
-
-            //this.BindCommand(Commander.Close, (l, k) =>
-            //{
-            //    this.OnClose();
-            //});
-
-            this.RefreshMapper();
-        }
-
-        //public void TransitionSumit()
-        //{
-        //    if (this.TrySumit(out string error))
-        //    {
-        //        TransitionService.SetIsVisible(this, false);
-        //    }
-        //}
-
-        //public bool TrySumit(out string message)
-        //{
-        //    message = null;
-        //    if (!this.SelectObject.ModelState(out List<string> error))
-        //    {
-        //        message = error?.FirstOrDefault();
-        //        MessageProxy.Snacker.ShowTime(message);
-        //        return false;
-        //    }
-        //    this.Result = true;
-        //    this.OnSumit();
-        //    return true;
-        //}
-
-        private void RefreshMapper()
-        {
-            this.Mapper = (l, k) =>
-            {
-                if (l.PropertyType.IsClass && l.PropertyType != typeof(string))
-                {
-                    bool? current = l.GetCustomAttribute<PropertyAttribute>()?.UsePresenter;
-                    if (this.UsePresenter && current != false)
-                    {
-                        return new PresenterPropertyItem(l, k);
-                    }
-                    else
-                    {
-                        if (current == true)
-                        {
-                            return new PresenterPropertyItem(l, k);
-                        }
-                    }
-                }
-
-                return this.UsePropertyView ? l.CreateView(k) : l.Create(k);
-            };
-        }
-
-
-        public bool Result { get; set; }
-
-        public static readonly RoutedEvent SumitRoutedEvent =
-            EventManager.RegisterRoutedEvent("Sumit", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(Form));
-
-        public event RoutedEventHandler Sumit
-        {
-            add { this.AddHandler(SumitRoutedEvent, value); }
-            remove { this.RemoveHandler(SumitRoutedEvent, value); }
-        }
-        protected void OnSumit()
-        {
-            RoutedEventArgs args = new RoutedEventArgs(SumitRoutedEvent, this);
-            this.RaiseEvent(args);
-        }
-        public static readonly RoutedEvent CloseRoutedEvent =
-            EventManager.RegisterRoutedEvent("Close", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(Form));
-        public event RoutedEventHandler Close
-        {
-            add { this.AddHandler(CloseRoutedEvent, value); }
-            remove { this.RemoveHandler(CloseRoutedEvent, value); }
-        }
-        protected void OnClose()
-        {
-            RoutedEventArgs args = new RoutedEventArgs(CloseRoutedEvent, this);
-            this.RaiseEvent(args);
         }
 
         public DataTemplate ItemHeaderTemplate
@@ -150,17 +58,7 @@ namespace H.Controls.Form
         }
 
         public static readonly DependencyProperty TitleProperty =
-            DependencyProperty.Register("Title", typeof(string), typeof(Form), new PropertyMetadata(default(string), (d, e) =>
-             {
-                 Form control = d as Form;
-
-                 if (control == null) return;
-
-                 string config = e.NewValue as string;
-
-                 //control.RefreshDisplayer();
-
-             }));
+            DependencyProperty.Register("Title", typeof(string), typeof(Form), new PropertyMetadata(default(string)));
 
         public object SelectObject
         {
@@ -177,37 +75,10 @@ namespace H.Controls.Form
                  control.RefreshObject();
              }));
 
-        public object BottomContent
+        public virtual bool FilterPropertyInfo(PropertyInfo propertyInfo)
         {
-            get { return GetValue(BottomContentProperty); }
-            set { SetValue(BottomContentProperty, value); }
+            return true;
         }
-
-        public static readonly DependencyProperty BottomContentProperty =
-            DependencyProperty.Register("BottomContent", typeof(object), typeof(Form), new PropertyMetadata(default(object), (d, e) =>
-             {
-                 Form control = d as Form;
-
-                 if (control == null) return;
-
-                 object config = e.NewValue;
-
-             }));
-
-        public Predicate<PropertyInfo> Filter
-        {
-            get { return (Predicate<PropertyInfo>)GetValue(FilterProperty); }
-            set { SetValue(FilterProperty, value); }
-        }
-
-        public static readonly DependencyProperty FilterProperty =
-            DependencyProperty.Register("Filter", typeof(Predicate<PropertyInfo>), typeof(Form), new PropertyMetadata(default(Predicate<PropertyInfo>), (d, e) =>
-             {
-                 Form control = d as Form;
-                 if (control == null) return;
-                 Predicate<PropertyInfo> config = e.NewValue as Predicate<PropertyInfo>;
-
-             }));
 
 
         public bool UseDisplayOnly
@@ -215,7 +86,6 @@ namespace H.Controls.Form
             get { return (bool)GetValue(UseDisplayOnlyProperty); }
             set { SetValue(UseDisplayOnlyProperty, value); }
         }
-
 
         public static readonly DependencyProperty UseDisplayOnlyProperty =
             DependencyProperty.Register("UseDisplayOnly", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(true, (d, e) =>
@@ -261,7 +131,6 @@ namespace H.Controls.Form
                  {
                      control.RefreshObject();
                  }
-
              }));
 
 
@@ -319,8 +188,6 @@ namespace H.Controls.Form
 
              }));
 
-
-
         public bool UsePropertyView
         {
             get { return (bool)GetValue(UsePropertyViewProperty); }
@@ -344,10 +211,7 @@ namespace H.Controls.Form
                   {
 
                   }
-
-                  control.RefreshMapper();
                   control.RefreshObject();
-
               }));
 
 
@@ -835,58 +699,6 @@ namespace H.Controls.Form
                  control.RefreshObject();
              }));
 
-        public Func<PropertyInfo, object, IPropertyItem> Mapper
-        {
-            get { return (Func<PropertyInfo, object, IPropertyItem>)GetValue(MapperProperty); }
-            set { SetValue(MapperProperty, value); }
-        }
-
-
-        public static readonly DependencyProperty MapperProperty =
-            DependencyProperty.Register("Mapper", typeof(Func<PropertyInfo, object, IPropertyItem>), typeof(Form), new FrameworkPropertyMetadata(default(Func<PropertyInfo, object, IPropertyItem>), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, (d, e) =>
-                 {
-                     Form control = d as Form;
-
-                     if (control == null) return;
-
-                     if (e.OldValue is Func<PropertyInfo, object, IPropertyItem> o)
-                     {
-
-                     }
-
-                     if (e.NewValue is Func<PropertyInfo, object, IPropertyItem> n)
-                     {
-
-                     }
-                 }));
-
-        //public string FilterGroup
-        //{
-        //    get { return (string)GetValue(FilterGroupProperty); }
-        //    set { SetValue(FilterGroupProperty, value); }
-        //}
-
-        //
-        //public static readonly DependencyProperty FilterGroupProperty =
-        //    DependencyProperty.Register("FilterGroup", typeof(string), typeof(PropertyGrid), new FrameworkPropertyMetadata(default(string), (d, e) =>
-        //     {
-        //         PropertyGrid control = d as PropertyGrid;
-
-        //         if (control == null) return;
-
-        //         if (e.OldValue is string o)
-        //         {
-
-        //         }
-
-        //         if (e.NewValue is string n)
-        //         {
-
-        //         }
-
-        //     }));
-
-
         public bool UseGroup
         {
             get { return (bool)GetValue(UseGroupProperty); }
@@ -943,12 +755,6 @@ namespace H.Controls.Form
                  control.RefreshObject();
              }));
 
-        public bool ModelState(out List<string> errors)
-        {
-            return this.SelectObject.ModelState(out errors);
-        }
-
-
         //声明和注册路由事件
         public static readonly RoutedEvent ValueChangedRoutedEvent =
             EventManager.RegisterRoutedEvent("ValueChanged", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(Form));
@@ -961,10 +767,13 @@ namespace H.Controls.Form
 
         //激发路由事件,借用Click事件的激发方法
 
-        protected void OnValueChanged(Tuple<IPropertyItem, object> tuple)
+        protected virtual void OnValueChanged(Tuple<IPropertyItem, object> tuple)
         {
             RoutedEventArgs args = new RoutedEventArgs(ValueChangedRoutedEvent, this);
             args.Source = tuple;
+
+            if (tuple.Item1 is IRefreshOnValueChanged refreshOnValueChanged && refreshOnValueChanged.CanRefresh)
+                this.RefreshItemsFilter();
             ////  Do ：触发通知方法
             //CustomValidationAttribute attribute = tuple.Item1.PropertyInfo.GetCustomAttribute<CustomValidationAttribute>();
 
@@ -1047,6 +856,34 @@ namespace H.Controls.Form
                  //double config = e.NewValue as double;
 
              }));
+
+
+        [TypeConverter(typeof(LengthConverter))]
+        public double TitleWidth
+        {
+            get { return (double)GetValue(TitleWidthProperty); }
+            set { SetValue(TitleWidthProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TitleWidthProperty =
+            DependencyProperty.Register("TitleWidth", typeof(double), typeof(Form), new FrameworkPropertyMetadata(100.0, (d, e) =>
+            {
+                Form control = d as Form;
+
+                if (control == null) return;
+
+                if (e.OldValue is double o)
+                {
+
+                }
+
+                if (e.NewValue is double n)
+                {
+
+                }
+
+            }));
 
 
     }
@@ -1141,7 +978,7 @@ namespace H.Controls.Form
             }
             List<IPropertyItem> items = new List<IPropertyItem>();
 
-            var ss = propertys.Distinct();
+            IEnumerable<PropertyInfo> ss = propertys.Distinct();
             foreach (PropertyInfo item in propertys.Distinct())
             {
                 if (this.UseCommandOnly && !typeof(ICommand).IsAssignableFrom(item.PropertyType))
@@ -1177,10 +1014,8 @@ namespace H.Controls.Form
                 }
 
                 //  Do ：筛选条件
-                if (this.Filter != null && !this.Filter.Invoke(item))
-                {
+                if (!this.FilterPropertyInfo(item))
                     continue;
-                }
 
                 if (this.UseTypeConverterOnly)
                 {
@@ -1252,10 +1087,10 @@ namespace H.Controls.Form
 
                 //System.Diagnostics.Debug.WriteLine($"PropertyGrid {o.GetType()} - {item.Name} - {item.PropertyType} - {item.GetValue(o)}");
 
-                IPropertyItem from = this.Mapper?.Invoke(item, o);
-                if (from is ObjectPropertyItem obj)
+                IPropertyItem from = this.CreatePropertyItem(item, o);
+                if (from is IValueChangeable changeable)
                 {
-                    obj.ValueChanged = l =>
+                    changeable.ValueChanged = l =>
                     {
                         this.OnValueChanged(Tuple.Create(from, l));
                     };
@@ -1263,25 +1098,9 @@ namespace H.Controls.Form
                 items.Add(from);
             }
 
-            IEnumerable<IPropertyItem> result;
-
-            if (this.UseOrder)
-            {
-                result = items.OrderBy(x => x.Order);
-            }
-            else if (this.UseOrderByName)
-            {
-                result = items.OrderBy(x => x.Name);
-            }
-            else if (this.UseOrderByType)
-            {
-                result = items.OrderBy(x => x.GetType().Name);
-            }
-            else
-            {
-                result = items;
-            }
-
+            IEnumerable<IPropertyItem> result = this.UseOrder
+                ? items.OrderBy(x => x.Order)
+                : this.UseOrderByName ? items.OrderBy(x => x.Name) : this.UseOrderByType ? items.OrderBy(x => x.GetType().Name) : items;
             if (this.UseAsync)
             {
                 ObservableCollection<IPropertyItem> observable = new ObservableCollection<IPropertyItem>();
@@ -1292,12 +1111,15 @@ namespace H.Controls.Form
                     Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Input, new Action(() =>
                               {
                                   observable.Add(item);
+                                  //  ToDo ：需要注意性能
+                                  this.RefreshItemsFilter();
                               }));
                 }
             }
             else
             {
                 this.ItemsSource = result;
+                this.RefreshItemsFilter();
             }
 
             if (this.UseGroup)
@@ -1306,6 +1128,62 @@ namespace H.Controls.Form
                 view.GroupDescriptions.Add(new PropertyGroupDescription("GroupName"));
             }
         }
+
+        protected virtual IPropertyItem CreatePropertyItem(PropertyInfo propertyInfo, object obj)
+        {
+            if (propertyInfo.PropertyType.IsClass && propertyInfo.PropertyType != typeof(string))
+            {
+                bool? current = propertyInfo.GetCustomAttribute<PropertyAttribute>()?.UsePresenter;
+                if (this.UsePresenter && current != false)
+                {
+                    return new PresenterPropertyItem(propertyInfo, obj);
+                }
+                else
+                {
+                    if (current == true)
+                    {
+                        return new PresenterPropertyItem(propertyInfo, obj);
+                    }
+                }
+            }
+
+            return this.UsePropertyView ? propertyInfo.CreateView(obj) : propertyInfo.Create(obj);
+        }
+
+
+        public void RefreshItemsFilter()
+        {
+            this.Items.Filter = x =>
+            {
+                return x.IsMacth(this.SearchText) == false ? false : x is not IBindingVisibleable visibleable || visibleable.GetVisible() != false;
+            };
+        }
+
+
+        public string SearchText
+        {
+            get { return (string)GetValue(SearchTextProperty); }
+            set { SetValue(SearchTextProperty, value); }
+        }
+
+        public static readonly DependencyProperty SearchTextProperty =
+            DependencyProperty.Register("SearchText", typeof(string), typeof(Form), new FrameworkPropertyMetadata(default(string), (d, e) =>
+            {
+                Form control = d as Form;
+
+                if (control == null) return;
+
+                if (e.OldValue is string o)
+                {
+
+                }
+
+                if (e.NewValue is string n)
+                {
+
+                }
+                control.RefreshItemsFilter();
+            }));
     }
 
     public class StaticForm : Form

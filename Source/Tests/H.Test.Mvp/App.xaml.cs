@@ -25,7 +25,7 @@ namespace H.Test.Mvp
         {
             app.UseAbout(x=>
             {
-                x.Title = "设置标题";
+                x.ProductName = "设置标题";
             });
         }
 

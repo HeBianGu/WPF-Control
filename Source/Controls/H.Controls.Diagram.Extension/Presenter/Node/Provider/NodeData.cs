@@ -12,6 +12,7 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Media;
 using System.Xml.Serialization;
+using H.Controls.Form.PropertyItem.PropertyItems;
 
 namespace H.Controls.Diagram.Extension
 {
@@ -206,7 +207,7 @@ namespace H.Controls.Diagram.Extension
         }
 
         private Brush _fill;
-        [PropertyItemType(Type = typeof(BrushPropertyItem))]
+        [PropertyItem(typeof(BrushPropertyItem))]
         [DefaultValue(null)]
         [Display(Name = "背景颜色", GroupName = "常用")]
         public Brush Fill
@@ -220,7 +221,7 @@ namespace H.Controls.Diagram.Extension
         }
 
         private Brush _stroke;
-        [PropertyItemType(Type = typeof(BrushPropertyItem))]
+        [PropertyItem(typeof(BrushPropertyItem))]
         [DefaultValue(null)]
         [Display(Name = "边框颜色", GroupName = "常用")]
         public Brush Stroke

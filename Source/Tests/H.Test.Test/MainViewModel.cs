@@ -7,13 +7,29 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
+using H.Extensions.TypeLicense.LicenseProviders;
 
 namespace H.Test.Test
 {
 
-    /// <summary> 说明</summary>
+    [LicenseProvider(typeof(DefaultTypeFileLicenseProvider))]
     public class MainViewModel : Bindable
     {
+        public MainViewModel()
+        {
+
+            {
+                bool r = LicenseManager.IsValid(this.GetType());
+                System.Diagnostics.Debug.WriteLine("MainViewModel License:" + (r ? "true" : "false"));
+            }
+
+            {
+                bool r = LicenseManager.IsValid(this.GetType(), this, out License license);
+                license?.Dispose();
+                System.Diagnostics.Debug.WriteLine("MainViewModel License:" + (r ? "true" : "false"));
+            }
+        }
         private Students _students = Student.Randoms(100);
         /// <summary> 说明  </summary>
         public Students Students
@@ -27,7 +43,7 @@ namespace H.Test.Test
         }
 
 
-        private IFilterable  _filter;
+        private IFilterable _filter;
         /// <summary> 说明  </summary>
         public IFilterable Filter
         {
@@ -65,7 +81,7 @@ namespace H.Test.Test
             }
         }
 
-        private TestBindables _testViewModels= TestBindable.Randoms(100);
+        private TestBindables _testViewModels = TestBindable.Randoms(100);
         /// <summary> 说明  </summary>
         public TestBindables TestViewModels
         {

@@ -27,12 +27,12 @@
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="1"
-                            CornerRadius="3">
+                            CornerRadius="2">
                         <Grid>
                             <Border Name="InnerBorder"
                                     Background="{TemplateBinding MouseOverBackground}"
                                     BorderBrush="{TemplateBinding MouseOverBorderBrush}"
-                                    CornerRadius="3"
+                                    CornerRadius="2"
                                     Opacity="0" />
                             <Image Name="GroupImage"
                                    Width="16"
@@ -213,12 +213,12 @@
                                         VerticalAlignment="Top"
                                         BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                                         BorderThickness="0"
-                                        CornerRadius="3">
+                                        CornerRadius="2">
                                     <Grid>
                                         <Border x:Name="ImageInnerBorder"
                                                 BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                                                 BorderThickness="0"
-                                                CornerRadius="3" />
+                                                CornerRadius="2" />
                                         <Image x:Name="GroupImage"
                                                Width="32"
                                                Height="32"

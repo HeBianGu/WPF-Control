@@ -79,14 +79,27 @@
                                    Text="用户登录" />
                         <BulletDecorator Margin="0,2">
                             <BulletDecorator.Bullet>
-                                <TextBlock Width="80"
+                                <TextBlock Width="60"
                                            Text="账号" />
                             </BulletDecorator.Bullet>
                             <TextBox Text="{Binding UserName}" />
                         </BulletDecorator>
+                        <!--<TextBox
+                            Cattach.Title="账号"
+                            Cattach.TitleWidth="60"
+                            Cattach.Watermark="输入账号"
+                            Style="{DynamicResource {x:Static TextBoxKeys.Attach}}"
+                            Text="{Binding UserName}" />
+                        <PasswordBox
+                            Cattach.Title="密码"
+                            Cattach.TitleWidth="60"
+                            Cattach.Watermark="输入密码"
+                            Style="{DynamicResource {x:Static PasswordBoxKeys.Attach}}"
+                            Text="{Binding UserName}" />-->
+
                         <BulletDecorator Margin="0,2">
                             <BulletDecorator.Bullet>
-                                <TextBlock Width="80"
+                                <TextBlock Width="60"
                                            Text="密码" />
                             </BulletDecorator.Bullet>
                             <PasswordBox>
@@ -187,6 +200,7 @@
                                    DockPanel.Dock="Bottom"
                                    Foreground="{DynamicResource {x:Static h:BrushKeys.Red}}"
                                    Text="{Binding MailVerify.Message}"
+                                   TextWrapping="Wrap"
                                    ToolTip="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text}" />
                     </StackPanel>
 
@@ -204,7 +218,6 @@
                                 <TextBlock Width="80"
                                            Text="用户名" />
                             </BulletDecorator.Bullet>
-
                             <TextBox Text="{Binding Registor.UserName, UpdateSourceTrigger=PropertyChanged}" />
                         </BulletDecorator>
 
@@ -331,6 +344,7 @@
                                    Text="{Binding Forget.Message}"
                                    ToolTip="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text}" />
                     </StackPanel>
+
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <Grid IsItemsHost="True" />

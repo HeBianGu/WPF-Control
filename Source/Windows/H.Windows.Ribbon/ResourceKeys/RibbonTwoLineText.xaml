@@ -1,8 +1,6 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <Style x:Key="{x:Type RibbonTwoLineText}"
-           TargetType="{x:Type RibbonTwoLineText}">
+    <Style x:Key="{x:Type RibbonTwoLineText}" TargetType="{x:Type RibbonTwoLineText}">
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="Background" Value="Transparent" />
@@ -15,43 +13,46 @@
                             <RowDefinition />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <TextBlock Name="PART_TextBlock1"
-                                   Grid.Row="0"
-                                   Padding="{TemplateBinding Padding}"
-                                   VerticalAlignment="{TemplateBinding VerticalAlignment}"
-                                   BaselineOffset="{TemplateBinding BaselineOffset}"
-                                   LineHeight="{TemplateBinding LineHeight}"
-                                   LineStackingStrategy="{TemplateBinding LineStackingStrategy}"
-                                   TextAlignment="{TemplateBinding TextAlignment}"
-                                   TextDecorations="{TemplateBinding TextDecorations}"
-                                   TextEffects="{TemplateBinding TextEffects}"
-                                   TextTrimming="None"
-                                   TextWrapping="NoWrap" />
-                        <DockPanel Grid.Row="1"
-                                   HorizontalAlignment="{TemplateBinding HorizontalAlignment}">
-                            <Grid x:Name="pathGrid"
-                                  MinHeight="{TemplateBinding LineHeight}"
-                                  Margin="2,0,0,0"
-                                  DockPanel.Dock="Right">
-                                <Path Name="PART_Path"
-                                      VerticalAlignment="Center"
-                                      Data="{TemplateBinding PathData}"
-                                      Fill="{TemplateBinding PathFill}"
-                                      Stroke="{TemplateBinding PathStroke}" />
+                        <TextBlock
+                            Name="PART_TextBlock1"
+                            Grid.Row="0"
+                            Padding="{TemplateBinding Padding}"
+                            VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                            BaselineOffset="{TemplateBinding BaselineOffset}"
+                            LineHeight="{TemplateBinding LineHeight}"
+                            LineStackingStrategy="{TemplateBinding LineStackingStrategy}"
+                            TextAlignment="{TemplateBinding TextAlignment}"
+                            TextDecorations="{TemplateBinding TextDecorations}"
+                            TextEffects="{TemplateBinding TextEffects}"
+                            TextTrimming="None"
+                            TextWrapping="NoWrap" />
+                        <DockPanel Grid.Row="1" HorizontalAlignment="{TemplateBinding HorizontalAlignment}">
+                            <Grid
+                                x:Name="pathGrid"
+                                MinHeight="{TemplateBinding LineHeight}"
+                                Margin="2,0,0,0"
+                                DockPanel.Dock="Right">
+                                <Path
+                                    Name="PART_Path"
+                                    VerticalAlignment="Center"
+                                    Data="{TemplateBinding PathData}"
+                                    Fill="{TemplateBinding PathFill}"
+                                    Stroke="{TemplateBinding PathStroke}" />
                             </Grid>
-                            <TextBlock Name="PART_TextBlock2"
-                                       Margin="0,0,2,0"
-                                       Padding="{TemplateBinding Padding}"
-                                       VerticalAlignment="{TemplateBinding VerticalAlignment}"
-                                       BaselineOffset="{TemplateBinding BaselineOffset}"
-                                       DockPanel.Dock="Left"
-                                       LineHeight="{TemplateBinding LineHeight}"
-                                       LineStackingStrategy="{TemplateBinding LineStackingStrategy}"
-                                       TextAlignment="{TemplateBinding TextAlignment}"
-                                       TextDecorations="{TemplateBinding TextDecorations}"
-                                       TextEffects="{TemplateBinding TextEffects}"
-                                       TextTrimming="{TemplateBinding TextTrimming}"
-                                       TextWrapping="NoWrap" />
+                            <TextBlock
+                                Name="PART_TextBlock2"
+                                Margin="0,0,2,0"
+                                Padding="{TemplateBinding Padding}"
+                                VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                                BaselineOffset="{TemplateBinding BaselineOffset}"
+                                DockPanel.Dock="Left"
+                                LineHeight="{TemplateBinding LineHeight}"
+                                LineStackingStrategy="{TemplateBinding LineStackingStrategy}"
+                                TextAlignment="{TemplateBinding TextAlignment}"
+                                TextDecorations="{TemplateBinding TextDecorations}"
+                                TextEffects="{TemplateBinding TextEffects}"
+                                TextTrimming="{TemplateBinding TextTrimming}"
+                                TextWrapping="NoWrap" />
                         </DockPanel>
                     </Grid>
                     <ControlTemplate.Triggers>

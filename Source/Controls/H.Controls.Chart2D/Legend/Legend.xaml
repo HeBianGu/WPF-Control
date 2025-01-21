@@ -1,70 +1,74 @@
-﻿<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
-    xmlns:h="https://github.com/HeBianGu"
-    xmlns:local="clr-namespace:H.Controls.Chart2D"
-    xmlns:system="clr-namespace:System;assembly=mscorlib">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Controls.Chart2D"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-    <DataTemplate x:Key="S.Series.Template.LegendItem" DataType="{x:Type local:LegendItem}">
-        <Grid x:Name="grid" Background="Transparent">
-            <ToggleButton
-                MinWidth="10"
-                HorizontalAlignment="Left"
-                h:Cattach.CheckedIcon=""
-                h:Cattach.UncheckedIcon=""
-                IsChecked="{Binding Series.Visibility, Converter={x:Static h:Converter.GetTrueToVisible}}"
-                Style="{DynamicResource {x:Static h:ToggleButtonKeys.Default}}">
-                <StackPanel Orientation="Horizontal">
-                    <Ellipse
-                        Width="10"
-                        Height="10"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Fill="{Binding Series.Foreground}"
-                        Opacity="{Binding Series.Opacity}"
-                        OpacityMask="{Binding Series.OpacityMask}" />
-                    <TextBlock
-                        x:Name="txt"
-                        Margin="10,-10"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Foreground="{DynamicResource {x:Static h:BrushKeys.ForegroundTitle}}"
-                        Text="{Binding Series.DisplayName}" />
+    <DataTemplate x:Key="S.Series.Template.LegendItem"
+                  DataType="{x:Type local:LegendItem}">
+        <Grid x:Name="grid"
+              Background="Transparent">
+            <ToggleButton MinWidth="10"
+                          HorizontalAlignment="Left"
+                          h:Cattach.CheckedGeometry=""
+                          h:Cattach.UnCheckedGeometry=""
+                          IsChecked="{Binding Series.Visibility, Converter={x:Static h:Converter.GetVisibleToTrue}}"
+                          Style="{DynamicResource {x:Static h:ToggleButtonKeys.Default}}">
+                <StackPanel Margin="5,0"
+                            Orientation="Horizontal">
+                    <Ellipse Width="10"
+                             Height="10"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center"
+                             Fill="{Binding Series.Foreground}"
+                             Opacity="{Binding Series.Opacity}"
+                             OpacityMask="{Binding Series.OpacityMask}" />
+                    <TextBlock x:Name="txt"
+                               Margin="5,0"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Foreground="{DynamicResource {x:Static h:BrushKeys.ForegroundTitle}}"
+                               Text="{Binding Series.DisplayName}" />
                 </StackPanel>
                 <b:Interaction.Triggers>
                     <b:EventTrigger EventName="Checked">
-                        <b:CallMethodAction MethodName="ForceDraw" TargetObject="{Binding Series}" />
+                        <b:CallMethodAction MethodName="ForceDraw"
+                                            TargetObject="{Binding Series}" />
                     </b:EventTrigger>
                 </b:Interaction.Triggers>
             </ToggleButton>
         </Grid>
         <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding ElementName=grid, Path=IsMouseOver}" Value="True">
+            <DataTrigger Binding="{Binding ElementName=grid, Path=IsMouseOver}"
+                         Value="True">
                 <Setter TargetName="txt" Property="Foreground" Value="{Binding Series.Foreground}" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding Series.Visibility}" Value="Collapsed">
+            <DataTrigger Binding="{Binding Series.Visibility}"
+                         Value="Collapsed">
                 <Setter Property="Opacity" Value="0.4" />
             </DataTrigger>
 
-            <DataTrigger Binding="{Binding Series.IsMouseOver}" Value="True">
+            <DataTrigger Binding="{Binding Series.IsMouseOver}"
+                         Value="True">
                 <Setter TargetName="txt" Property="Foreground" Value="{Binding Series.Foreground}" />
                 <Setter Property="Opacity" Value="0.9" />
             </DataTrigger>
         </DataTemplate.Triggers>
     </DataTemplate>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Legend.Default, TypeInTargetAssembly={x:Type local:Legend}}" TargetType="{x:Type local:Legend}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Legend.Default,
+                                        TypeInTargetAssembly={x:Type local:Legend}}"
+           TargetType="{x:Type local:Legend}">
         <Setter Property="ItemTemplate" Value="{StaticResource S.Series.Template.LegendItem}" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Top" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:Legend}">
-                    <Border
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
                         <ItemsPresenter />
                     </Border>
                 </ControlTemplate>
@@ -79,7 +83,9 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Legend.Vertical, TypeInTargetAssembly={x:Type local:Legend}}" TargetType="{x:Type local:Legend}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Legend.Vertical,
+                                        TypeInTargetAssembly={x:Type local:Legend}}"
+           TargetType="{x:Type local:Legend}">
         <Setter Property="ItemTemplate" Value="{StaticResource S.Series.Template.LegendItem}" />
         <Setter Property="HorizontalAlignment" Value="Right" />
         <Setter Property="VerticalAlignment" Value="Top" />
@@ -87,10 +93,9 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:Legend}">
-                    <Border
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
                         <ItemsPresenter />
                     </Border>
                 </ControlTemplate>
@@ -105,119 +110,128 @@
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:Legend.DefaultKey}}" TargetType="{x:Type local:Legend}" />
+    <Style BasedOn="{StaticResource {x:Static h:Legend.DefaultKey}}"
+           TargetType="{x:Type local:Legend}" />
 
-    <DataTemplate x:Key="S.Series.Template.PathLegendItem" DataType="{x:Type local:ShapeLegendItem}">
-        <Grid x:Name="grid" Background="Transparent">
-            <ToggleButton
-                HorizontalAlignment="Left"
-                h:Cattach.CheckedIcon=""
-                h:Cattach.UncheckedIcon=""
-                IsChecked="{Binding IsChecked}"
-                Style="{DynamicResource {x:Static h:ToggleButtonKeys.Default}}">
-                <StackPanel Orientation="Horizontal">
-                    <Rectangle
-                        Width="10"
-                        Height="10"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Fill="{Binding Shape.Stroke}"
-                        Opacity="{Binding Shape.Opacity}"
-                        OpacityMask="{Binding Shape.OpacityMask}" />
-                    <TextBlock
-                        x:Name="txt"
-                        Margin="10,-20"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Foreground="{DynamicResource {x:Static h:BrushKeys.ForegroundTitle}}"
-                        Text="{Binding Shape.Tag}" />
+    <DataTemplate x:Key="S.Series.Template.PathLegendItem"
+                  DataType="{x:Type local:ShapeLegendItem}">
+        <Grid x:Name="grid"
+              Background="Transparent">
+            <ToggleButton HorizontalAlignment="Left"
+                          h:Cattach.CheckedGeometry=""
+                          h:Cattach.UnCheckedGeometry=""
+                          IsChecked="{Binding IsChecked}"
+                          Style="{DynamicResource {x:Static h:ToggleButtonKeys.Default}}">
+                <StackPanel Margin="5,0"
+                            Orientation="Horizontal">
+                    <Rectangle Width="10"
+                               Height="10"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Fill="{Binding Shape.Stroke}"
+                               Opacity="{Binding Shape.Opacity}"
+                               OpacityMask="{Binding Shape.OpacityMask}" />
+                    <TextBlock x:Name="txt"
+                               Margin="10,-20"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Foreground="{DynamicResource {x:Static h:BrushKeys.ForegroundTitle}}"
+                               Text="{Binding Shape.Tag}" />
                 </StackPanel>
                 <b:Interaction.Triggers>
                     <b:EventTrigger EventName="Checked">
-                        <b:CallMethodAction MethodName="Checked" TargetObject="{Binding}" />
+                        <b:CallMethodAction MethodName="Checked"
+                                            TargetObject="{Binding}" />
                     </b:EventTrigger>
                     <b:EventTrigger EventName="Unchecked">
-                        <b:CallMethodAction MethodName="Unchecked" TargetObject="{Binding}" />
+                        <b:CallMethodAction MethodName="Unchecked"
+                                            TargetObject="{Binding}" />
                     </b:EventTrigger>
                 </b:Interaction.Triggers>
             </ToggleButton>
         </Grid>
         <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding ElementName=grid, Path=IsMouseOver}" Value="True">
+            <DataTrigger Binding="{Binding ElementName=grid, Path=IsMouseOver}"
+                         Value="True">
                 <Setter TargetName="txt" Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding IsChecked}" Value="False">
+            <DataTrigger Binding="{Binding IsChecked}"
+                         Value="False">
                 <Setter Property="Opacity" Value="0.4" />
             </DataTrigger>
         </DataTemplate.Triggers>
     </DataTemplate>
 
-    <Style
-        x:Key="{ComponentResourceKey ResourceId=S.PathLegend.Default,
-                                     TypeInTargetAssembly={x:Type local:PathLegend}}"
-        BasedOn="{StaticResource {x:Static h:Legend.VerticalKey}}"
-        TargetType="{x:Type local:PathLegend}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.PathLegend.Default,
+                                        TypeInTargetAssembly={x:Type local:PathLegend}}"
+           BasedOn="{StaticResource {x:Static h:Legend.VerticalKey}}"
+           TargetType="{x:Type local:PathLegend}">
         <Setter Property="ItemTemplate" Value="{StaticResource S.Series.Template.PathLegendItem}" />
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:PathLegend.DefaultKey}}" TargetType="{x:Type local:PathLegend}" />
+    <Style BasedOn="{StaticResource {x:Static h:PathLegend.DefaultKey}}"
+           TargetType="{x:Type local:PathLegend}" />
 
-    <DataTemplate x:Key="S.Series.Template.StackLegendItem" DataType="{x:Type local:StackLegendItem}">
-        <Grid x:Name="grid" Background="Transparent">
-            <ToggleButton
-                HorizontalAlignment="Left"
-                h:Cattach.CheckedIcon=""
-                h:Cattach.UncheckedIcon=""
-                IsChecked="{Binding IsChecked}"
-                Style="{DynamicResource {x:Static h:ToggleButtonKeys.Default}}">
+    <DataTemplate x:Key="S.Series.Template.StackLegendItem"
+                  DataType="{x:Type local:StackLegendItem}">
+        <Grid x:Name="grid"
+              Background="Transparent">
+            <ToggleButton HorizontalAlignment="Left"
+                          h:Cattach.CheckedGeometry=""
+                          h:Cattach.UnCheckedGeometry=""
+                          IsChecked="{Binding IsChecked}"
+                          Style="{DynamicResource {x:Static h:ToggleButtonKeys.Default}}">
                 <StackPanel Orientation="Horizontal">
-                    <Rectangle
-                        Width="30"
-                        Height="20"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Fill="{Binding Brush}" />
-                    <TextBlock
-                        x:Name="txt"
-                        Margin="10"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Foreground="{DynamicResource {x:Static h:BrushKeys.ForegroundTitle}}"
-                        Text="{Binding Text}" />
+                    <Rectangle Width="30"
+                               Height="20"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Fill="{Binding Brush}" />
+                    <TextBlock x:Name="txt"
+                               Margin="10"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Foreground="{DynamicResource {x:Static h:BrushKeys.ForegroundTitle}}"
+                               Text="{Binding Text}" />
                 </StackPanel>
                 <b:Interaction.Triggers>
                     <b:EventTrigger EventName="Checked">
-                        <b:CallMethodAction MethodName="Checked" TargetObject="{Binding}" />
+                        <b:CallMethodAction MethodName="Checked"
+                                            TargetObject="{Binding}" />
                     </b:EventTrigger>
                     <b:EventTrigger EventName="Unchecked">
-                        <b:CallMethodAction MethodName="Unchecked" TargetObject="{Binding}" />
+                        <b:CallMethodAction MethodName="Unchecked"
+                                            TargetObject="{Binding}" />
                     </b:EventTrigger>
                 </b:Interaction.Triggers>
             </ToggleButton>
         </Grid>
         <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding ElementName=grid, Path=IsMouseOver}" Value="True">
+            <DataTrigger Binding="{Binding ElementName=grid, Path=IsMouseOver}"
+                         Value="True">
                 <Setter TargetName="txt" Property="Foreground" Value="{Binding Brush}" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding IsChecked}" Value="False">
+            <DataTrigger Binding="{Binding IsChecked}"
+                         Value="False">
                 <Setter Property="Opacity" Value="0.4" />
             </DataTrigger>
 
-            <DataTrigger Binding="{Binding Layer.IsMouseOver}" Value="True">
+            <DataTrigger Binding="{Binding Layer.IsMouseOver}"
+                         Value="True">
                 <Setter TargetName="txt" Property="Foreground" Value="{Binding Brush}" />
                 <Setter Property="Opacity" Value="0.9" />
             </DataTrigger>
         </DataTemplate.Triggers>
     </DataTemplate>
 
-    <Style
-        x:Key="{ComponentResourceKey ResourceId=S.StackLegend.Default,
-                                     TypeInTargetAssembly={x:Type local:StackLegend}}"
-        BasedOn="{StaticResource {x:Static h:Legend.VerticalKey}}"
-        TargetType="{x:Type local:StackLegend}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.StackLegend.Default,
+                                        TypeInTargetAssembly={x:Type local:StackLegend}}"
+           BasedOn="{StaticResource {x:Static h:Legend.VerticalKey}}"
+           TargetType="{x:Type local:StackLegend}">
         <Setter Property="ItemTemplate" Value="{StaticResource S.Series.Template.StackLegendItem}" />
     </Style>
-    <Style BasedOn="{StaticResource {x:Static h:StackLegend.DefaultKey}}" TargetType="{x:Type local:StackLegend}" />
+    <Style BasedOn="{StaticResource {x:Static h:StackLegend.DefaultKey}}"
+           TargetType="{x:Type local:StackLegend}" />
 
 
 </ResourceDictionary>

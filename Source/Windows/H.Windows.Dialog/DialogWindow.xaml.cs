@@ -11,19 +11,52 @@ namespace H.Windows.Dialog
 {
     public partial class DialogWindow : Window, IDialog
     {
+        public DialogWindow()
+        {
+            this.Loaded += async (l, k) =>
+            {//  ToDo：用动画显示
+                await TransitionShow();
+            };
+
+        }
         static DialogWindow()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(DialogWindow), new FrameworkPropertyMetadata(typeof(DialogWindow)));
         }
 
-        protected override void OnClosing(CancelEventArgs e)
+        public async Task TransitionShow()
+        {
+            await this.Show(this);
+
+            if (this.Transitionable == null && this.Content is ITransitionHostable hostable)
+                await hostable.Show(this);
+            else
+                await this.Show(this);
+        }
+
+        public async Task TransitionClose()
+        {
+            if (this.Transitionable == null && this.Content is ITransitionHostable hostable)
+                await hostable.Close(this);
+            else
+                await this.Close(this);
+            this.Close();
+        }
+
+        protected override async void OnClosing(CancelEventArgs e)
         {
             if (this.CanSumit?.Invoke() == false)
             {
                 e.Cancel = true;
                 return;
             }
+            //  ToDo：用动画关闭
+            await this.Close(this);
             base.OnClosing(e);
+            //task.ContinueWith(x =>
+            //{
+            //    this.Dispatcher.Invoke(() => base.OnClosing(e));
+            //});
         }
 
         public void Sumit()
@@ -43,6 +76,7 @@ namespace H.Windows.Dialog
         }
 
         public DialogButton DialogButton { get; set; } = DialogButton.Sumit;
+        public ITransitionable Transitionable { get; set; }
 
         public static readonly DependencyProperty BottomTemplateProperty =
             DependencyProperty.Register("BottomTemplate", typeof(ControlTemplate), typeof(DialogWindow), new FrameworkPropertyMetadata(default(ControlTemplate), (d, e) =>

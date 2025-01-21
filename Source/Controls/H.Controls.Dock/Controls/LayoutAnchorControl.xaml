@@ -10,7 +10,7 @@
 
     <Style TargetType="{x:Type lc:LayoutAnchorControl}">
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="Padding" Value="10,0" />
+        <Setter Property="Padding" Value="5,0" />
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
         <Setter Property="BorderThickness" Value="1" />
         <!--<Setter Property="h:Cattach.MouseOverBackground" Value="Red"/>

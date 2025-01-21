@@ -171,7 +171,7 @@
                                                 Maximum="0"
                                                 Minimum="0"
                                                 Value="0">
-                                            <h:Cattach.AttachContent>
+                                            <h:Cattach.AttachControlTemplate>
                                                 <ControlTemplate>
                                                     <Grid Margin="0,-80,0,0">
                                                         <Border Height="{DynamicResource {x:Static h:LayoutKeys.RowHeight}}"
@@ -191,7 +191,7 @@
                                                                  Stroke="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
                                                     </Grid>
                                                 </ControlTemplate>
-                                            </h:Cattach.AttachContent>
+                                            </h:Cattach.AttachControlTemplate>
                                         </Slider>
                                     </DockPanel>
                                 </DockPanel>
@@ -281,7 +281,7 @@
                                           ToolTip="隐藏/显示右侧列表"
                                           Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:VlcPlayer}, Path=(h:Cattach.RightTemplate), Converter={x:Static h:Converter.GetNullToCollapsed}}" />
 
-                            <Button Margin="10,0"
+                            <Button Margin="5,0"
                                     Command="{x:Static local:VlcPlayerCommands.ShootCut}"
                                     Content="截图"
                                     DockPanel.Dock="Right"
@@ -303,7 +303,7 @@
                                    VerticalAlignment="Center"
                                    Background="Transparent">
 
-                            <Button Margin="10,0"
+                            <Button Margin="5,0"
                                     Content="上一个"
                                     IsEnabled="False"
                                     Style="{StaticResource Style.Slider.FButton}"
@@ -312,7 +312,7 @@
 
                             <ToggleButton x:Name="toggle_play"
                                           Height="Auto"
-                                          Margin="10,0"
+                                          Margin="5,0"
                                           Background="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
                                           Foreground="{DynamicResource {x:Static h:BrushKeys.ForegroundTitle}}"
                                           IsChecked="{Binding RelativeSource={RelativeSource AncestorType=local:VlcPlayer}, Path=IsPlaying}"
@@ -351,7 +351,7 @@
                                 </ToggleButton.Template>
                             </ToggleButton>
 
-                            <Button Margin="10,0"
+                            <Button Margin="5,0"
                                     Content="下一个"
                                     IsEnabled="False"
                                     Style="{StaticResource Style.Slider.FButton}"
@@ -369,7 +369,7 @@
                 <ControlTemplate>
                     <Grid Height="{DynamicResource {x:Static h:LayoutKeys.RowHeight}}"
                           Background="Transparent">
-                        <TextBlock Margin="10,0"
+                        <TextBlock Margin="5,0"
                                    VerticalAlignment="Center"
                                    Foreground="{DynamicResource {x:Static h:BrushKeys.ForegroundWhite}}"
                                    Text="{Binding RelativeSource={RelativeSource AncestorType=local:VlcPlayer}, Path=VedioSource}" />
@@ -571,7 +571,7 @@
                                                 Minimum="0"
 
                                                 Value="0">
-                                            <h:Cattach.AttachContent>
+                                            <h:Cattach.AttachControlTemplate>
                                                 <ControlTemplate>
         -->
         <!--<TextBlock Text="{Binding RelativeSource={RelativeSource Mode=Self},Path=Value,StringFormat=0}"/>-->
@@ -595,7 +595,7 @@
                                                                  Stroke="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
                                                     </Grid>
                                                 </ControlTemplate>
-                                            </h:Cattach.AttachContent>
+                                            </h:Cattach.AttachControlTemplate>
                                         </Slider>
                                     </DockPanel>
                                 </DockPanel>

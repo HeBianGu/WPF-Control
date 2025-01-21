@@ -8,5 +8,6 @@
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/MessagePresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/TextBoxPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/SelectItemPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/PasswordBoxPresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

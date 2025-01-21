@@ -1,8 +1,11 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
+using System.Data.Common;
+using System.Reflection.Metadata;
+
 namespace H.Services.Common
 {
-    public abstract class DialogCommandBase : IocMarkupCommandBase
+    public abstract class DialogCommandBase : IocAsyncMarkupCommandBase
     {
         protected virtual IDialog GetDialog(object parameter)
         {
@@ -16,5 +19,27 @@ namespace H.Services.Common
             }
             return null;
         }
+
+        protected void Close(object parameter)
+        {
+            IDialog dialog = this.GetDialog(parameter);
+            dialog.Close();
+        }
+
+        protected void Cancel(object parameter)
+        {
+            IDialog dialog = this.GetDialog(parameter);
+            dialog.DialogResult = false;
+            dialog.Close();
+        }
+
+        protected void Sumit(object parameter)
+        {
+            IDialog dialog = this.GetDialog(parameter);
+            dialog.DialogResult = true;
+            dialog.Close();
+        }
+
+
     }
 }

@@ -55,16 +55,19 @@ namespace H.App.FileManager
 
         [Browsable(false)]
         [JsonIgnore]
+        
         [XmlIgnore]
         public ObservableCollection<IRelayCommand> UpdateCommands { get; } = new ObservableCollection<IRelayCommand>();
 
         [Browsable(false)]
         [JsonIgnore]
+        
         [XmlIgnore]
         public ObservableCollection<IRelayCommand> MoreCommands { get; private set; } = new ObservableCollection<IRelayCommand>();
 
         [Browsable(false)]
         [JsonIgnore]
+        
         [XmlIgnore]
         public ObservableCollection<IRelayCommand> MenuCommands { get; private set; } = new ObservableCollection<IRelayCommand>();
 
@@ -131,6 +134,11 @@ namespace H.App.FileManager
         [Display(Name = "更新视频信息[时长、清晰度、比特率、编码格式]", GroupName = "更新")]
         public RelayCommand UpdateVieoInfoCommand => new RelayCommand(async l =>
         {
+            if(string.IsNullOrEmpty(FFMpegOption.Instance.BinaryFolder))
+            {
+               await IocMessage.Dialog.Show("请先配置FFMpeg路径");
+                return;
+            }
             await IocMessage.Dialog.ShowForeach(() => this.Collection.FilterSource.Select(x => x.Model).OfType<fm_dd_video>(), item =>
             {
                 var mediaInfo = IocFFMpeg.Instance.GetMediaAnalysis(item.Url);
@@ -362,8 +370,8 @@ namespace H.App.FileManager
             if (e is fm_dd_file file)
             {
                 file.Watched = true;
-                file.LastPlayTime = DateTime.Now;
-                file.PlayCount = file.PlayCount + 1;
+                //file.LastPlayTime = DateTime.Now;
+                //file.PlayCount = file.PlayCount + 1;
                 this.History.Add(file);
             }
         });

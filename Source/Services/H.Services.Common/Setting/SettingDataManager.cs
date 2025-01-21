@@ -44,7 +44,9 @@
             foreach (ILoadable item in this.Settings.OfType<ILoadable>())
             {
                 action?.Invoke(item as ISettable);
-                item.Load(out message);
+                var r = item.Load(out message);
+                if (r == false)
+                    IocLog.Instance?.Error(message);
             }
 
             return true;
@@ -75,6 +77,7 @@
                 }
                 catch (Exception ex)
                 {
+                    IocLog.Instance?.Error(ex);
                     sb.AppendLine(ex.Message);
                 }
             }

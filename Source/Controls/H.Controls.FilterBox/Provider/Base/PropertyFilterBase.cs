@@ -12,6 +12,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 using System.Xml.Serialization;
+using System.Text.Json.Serialization;
 
 namespace H.Controls.FilterBox
 {
@@ -23,7 +24,9 @@ namespace H.Controls.FilterBox
         }
 
         private ObservableCollection<T> _source = new ObservableCollection<T>();
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public ObservableCollection<T> Source
         {
             get { return _source; }
@@ -35,7 +38,9 @@ namespace H.Controls.FilterBox
         }
 
         private ObservableCollection<T> _selectedSource = new ObservableCollection<T>();
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public ObservableCollection<T> SelectedSource
         {
             get { return _selectedSource; }
@@ -47,7 +52,8 @@ namespace H.Controls.FilterBox
         }
 
         private PropertyInfo _propertyInfo;
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        [System.Xml.Serialization.XmlIgnore]
         public PropertyInfo PropertyInfo
         {
             get { return _propertyInfo; }
@@ -63,7 +69,7 @@ namespace H.Controls.FilterBox
         {
             this.PropertyInfo = propertyInfo;
 
-            this.Name = propertyInfo.Name;
+            this.PropertyName = propertyInfo.Name;
 
             string display = propertyInfo.GetCustomAttribute<DisplayAttribute>()?.Name;
 
@@ -73,7 +79,7 @@ namespace H.Controls.FilterBox
         public PropertyFilterBase(PropertyInfo property, IEnumerable source)
         {
             this.PropertyInfo = property;
-            this.Name = property.Name;
+            this.PropertyName = property.Name;
             string display = property.GetCustomAttribute<DisplayAttribute>()?.Name;
             this.DisplayName = display ?? property.Name;
             this.Source.Clear();
@@ -91,21 +97,21 @@ namespace H.Controls.FilterBox
 
         #region - 属性 -
 
-        private string _name;
-        /// <summary> 说明  </summary>
-        public string Name
+        private string _propertyName;
+        public string PropertyName
         {
-            get { return _name; }
+            get { return _propertyName; }
             set
             {
-                _name = value;
-                RaisePropertyChanged("Name");
+                _propertyName = value;
+                RaisePropertyChanged();
             }
         }
 
 
         private string _displayName;
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        [System.Xml.Serialization.XmlIgnore]
         public string DisplayName
         {
             get { return _displayName; }
@@ -117,7 +123,6 @@ namespace H.Controls.FilterBox
         }
 
         private FilterOperate _operate;
-        /// <summary> 说明  </summary>
         [TypeConverter(typeof(EnumConverter))]
         public FilterOperate Operate
         {
@@ -130,7 +135,6 @@ namespace H.Controls.FilterBox
         }
 
         private T _value;
-        /// <summary> 说明  </summary>
         public T Value
         {
             get { return _value; }
@@ -141,8 +145,7 @@ namespace H.Controls.FilterBox
             }
         }
 
-        private bool _isSelected;
-        /// <summary> 说明  </summary>
+        private bool _isSelected = true;
         public bool IsSelected
         {
             get { return _isSelected; }

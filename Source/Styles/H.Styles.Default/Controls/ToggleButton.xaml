@@ -51,7 +51,7 @@
                         </Storyboard>
                     </VisualState>
                     <VisualState x:Name="Pressed" />
-                    <VisualState x:Name="Disabled">
+                    <!--<VisualState x:Name="Disabled">
                         <Storyboard>
                             <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
                                 <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
@@ -63,7 +63,7 @@
                                 <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
                             </ColorAnimationUsingKeyFrames>
                         </Storyboard>
-                    </VisualState>
+                    </VisualState>-->
                 </VisualStateGroup>
                 <VisualStateGroup x:Name="CheckStates">
                     <VisualState x:Name="Checked">
@@ -86,22 +86,15 @@
         BasedOn="{StaticResource S.Control.Base}"
         TargetType="ToggleButton">
         <Setter Property="Cursor" Value="Hand" />
-        <Setter Property="Padding" Value="5" />
+        <Setter Property="Padding" Value="0" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="{x:Null}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
-                    <Border
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
-                        <ContentPresenter
-                            Margin="{TemplateBinding Padding}"
-                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                            RecognizesAccessKey="True" />
+                    <Border Style="{StaticResource S.Border.TemplatedParent}">
+                        <ContentPresenter RecognizesAccessKey="True" Style="{StaticResource S.ContentPresenter.TemplatedParent}" />
                     </Border>
 
                 </ControlTemplate>
@@ -115,7 +108,7 @@
                     </Setter.Value>
                 </Setter>
                 <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundTitle}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundSelect}}" />
             </Trigger>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background">
@@ -171,17 +164,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
-                    <Border
-                        x:Name="Border"
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
-                        <Path
-                            Margin="{TemplateBinding Padding}"
-                            Data="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Content}"
-                            Fill="{TemplateBinding Foreground}"
-                            Stretch="Uniform"
-                            Stroke="{TemplateBinding Foreground}" />
+                    <Border x:Name="Border" Style="{StaticResource S.Border.TemplatedParent}">
+                        <Path Style="{StaticResource S.Path.Geometry}" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
@@ -190,16 +174,31 @@
 
 
     <Style
-        x:Key="{ComponentResourceKey ResourceId=S.ToggleButton.Switch,
+        x:Key="{ComponentResourceKey ResourceId=S.ToggleButton.SwitchGeometry,
                                      TypeInTargetAssembly={x:Type local:ToggleButtonKeys}}"
         BasedOn="{StaticResource {x:Static local:ToggleButtonKeys.Geometry}}"
         TargetType="ToggleButton">
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Content" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Cattach.CheckedIcon)}" />
+                <Setter Property="Content" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Cattach.CheckedGeometry)}" />
             </Trigger>
             <Trigger Property="IsChecked" Value="False">
-                <Setter Property="Content" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Cattach.UncheckedIcon)}" />
+                <Setter Property="Content" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Cattach.UnCheckedGeometry)}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style
+        x:Key="{ComponentResourceKey ResourceId=S.ToggleButton.Switch,
+                                     TypeInTargetAssembly={x:Type local:ToggleButtonKeys}}"
+        BasedOn="{StaticResource {x:Static local:ToggleButtonKeys.Default}}"
+        TargetType="ToggleButton">
+        <Style.Triggers>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Content" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Cattach.CheckedContent)}" />
+            </Trigger>
+            <Trigger Property="IsChecked" Value="False">
+                <Setter Property="Content" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Cattach.UnCheckedContent)}" />
             </Trigger>
         </Style.Triggers>
     </Style>

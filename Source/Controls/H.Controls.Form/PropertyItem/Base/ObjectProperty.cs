@@ -1,7 +1,6 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
-using H.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,37 +11,22 @@ using System.Windows;
 
 namespace H.Controls.Form
 {
-    public class ObjectPropertyItem<T> : ObjectPropertyItem, IDataErrorInfo
+    public class ObjectPropertyItem<T> : BindingVisiblablePropertyItemBase, IDataErrorInfo, IDisposable
     {
+        private readonly MethodInfo _notifyMethodInfo;
         public ObjectPropertyItem(PropertyInfo property, object obj) : base(property, obj)
         {
             List<RequiredAttribute> required = property.GetCustomAttributes<RequiredAttribute>()?.ToList();
             this.Validations = property.GetCustomAttributes<ValidationAttribute>()?.ToList();
-            ////  Do ：这两个特性用在通知，本控件默认不可用于验证属性定义
-            //Validations.RemoveAll(l => l is CustomValidationAttribute);
-            //Validations.RemoveAll(l => l is CompareAttribute);
             if (required != null && required.Count > 0)
-            {
                 this.Flag = "*";
-            }
+            this.AddValueChanged();
+            this.LoadValue();
+            this._notifyMethodInfo = this.GetNotifyMethodInfo();
+        }
 
-            if (obj is INotifyPropertyChanged notify)
-            {
-                notify.PropertyChanged += Notify_PropertyChanged;
-            }
-
-            if (obj is DependencyObject dependencyObject)
-            {
-                var descriptor = DependencyPropertyDescriptor.FromName(this.PropertyInfo.Name, this.PropertyInfo.DeclaringType, this.PropertyInfo.DeclaringType);
-                if (descriptor != null)
-                {
-                    descriptor.AddValueChanged(obj, new EventHandler((s, e) =>
-                    {
-                        this.LoadValue();
-                    }));
-                }
-
-            }
+        public void DependencyProperty_ValueChanged(object sender, EventArgs e)
+        {
             this.LoadValue();
         }
 
@@ -81,14 +65,7 @@ namespace H.Controls.Form
                     {
                         if (!item.IsValid(value))
                         {
-                            if (item is RequiredAttribute required)
-                            {
-                                this.Message = item.ErrorMessage ?? this.Name + "数据不能为空";
-                            }
-                            else
-                            {
-                                this.Message = item.ErrorMessage ?? this.Name + "数据校验失败";
-                            }
+                            this.Message = item is RequiredAttribute required ? item.ErrorMessage ?? this.Name + "数据不能为空" : item.ErrorMessage ?? this.Name + "数据校验失败";
                         }
                     }
                 }
@@ -120,20 +97,21 @@ namespace H.Controls.Form
 
         protected virtual void OnValueChanged(T o, T n)
         {
+            object[] parameters = new object[3];
+            parameters[0] = this.PropertyInfo;
+            parameters[1] = o;
+            parameters[2] = n;
+            if (this._notifyMethodInfo != null)
+            {
+                this._notifyMethodInfo.Invoke(this.Obj, parameters);
+                return;
+            }
+
             string methodName = this.PropertyInfo.Name;
             Type[] types = new Type[3];
             types[0] = typeof(PropertyInfo);
             types[1] = this.PropertyInfo.PropertyType;
             types[2] = this.PropertyInfo.PropertyType;
-            object[] parameters = new object[3];
-            parameters[0] = this.PropertyInfo;
-            parameters[1] = o;
-            parameters[2] = n;
-            {
-                MethodInfo method = this.Obj.GetType().GetMethod($"On{methodName}ValueChanged", types);
-                method?.Invoke(this.Obj, parameters);
-            }
-
             if (this.Obj is IPropertyValueChanged changed)
                 changed.OnPropertyValueChanged(this.PropertyInfo, o, n);
             else if (this.Obj is IPropertyValueChanged<T> typechanged)
@@ -145,13 +123,24 @@ namespace H.Controls.Form
             }
         }
 
+        private MethodInfo GetNotifyMethodInfo()
+        {
+            var find = this.PropertyInfo.GetCustomAttribute<NotifyMethodNameAttribute>()?.MethodName;
+            string methodName = find ?? this.PropertyInfo.Name;
+            Type[] types = new Type[3];
+            types[0] = typeof(PropertyInfo);
+            types[1] = this.PropertyInfo.PropertyType;
+            types[2] = this.PropertyInfo.PropertyType;
+            object[] parameters = new object[3];
+            return this.Obj.GetType().GetMethod($"On{methodName}ValueChanged", types);
+        }
+
         private List<ValidationAttribute> Validations { get; }
 
         /// <summary> 验证数据类型是否合法 </summary>
         protected virtual bool CheckType(T value, out string error)
         {
             error = null;
-
             try
             {
                 object to = this.ConverToObject(value);
@@ -168,6 +157,9 @@ namespace H.Controls.Form
         {
             if (value == null)
                 return null;
+            if (value?.GetType() == this.PropertyInfo.PropertyType)
+                return value;
+
             TypeConverterAttribute propertyConvert = this.PropertyInfo.GetCustomAttribute<TypeConverterAttribute>();
             if (propertyConvert != null)
             {
@@ -191,14 +183,7 @@ namespace H.Controls.Form
                     }
                 }
             }
-            if (value is IConvertible convertible)
-            {
-                return Convert.ChangeType(value, this.PropertyInfo.PropertyType);
-            }
-            else
-            {
-                return value;
-            }
+            return value is IConvertible convertible ? Convert.ChangeType(value, this.PropertyInfo.PropertyType) : value;
         }
 
         protected virtual void SetValue(T value)
@@ -227,6 +212,49 @@ namespace H.Controls.Form
             this.Value = this.GetValue();
         }
 
+        public void Dispose()
+        {
+            this.RemoveValueChanged();
+        }
+
+
+        public void AddValueChanged()
+        {
+            //  ToDo：这部分需要测试是否会产生内存泄漏
+            if (this.Obj is INotifyPropertyChanged notify)
+            {
+                notify.PropertyChanged += Notify_PropertyChanged;
+            }
+
+            if (this.Obj is DependencyObject dependencyObject)
+            {
+                DependencyPropertyDescriptor descriptor = DependencyPropertyDescriptor.FromName(this.PropertyInfo.Name, this.PropertyInfo.DeclaringType, this.PropertyInfo.DeclaringType);
+                if (descriptor != null)
+                {
+                    descriptor.AddValueChanged(dependencyObject, DependencyProperty_ValueChanged);
+                }
+            }
+        }
+
+        public void RemoveValueChanged()
+        {
+            //  ToDo：这部分需要测试是否会产生内存泄漏
+            if (this.Obj is INotifyPropertyChanged notify)
+            {
+                notify.PropertyChanged -= Notify_PropertyChanged;
+            }
+
+            if (this.Obj is DependencyObject dependencyObject)
+            {
+                DependencyPropertyDescriptor descriptor = DependencyPropertyDescriptor.FromName(this.PropertyInfo.Name, this.PropertyInfo.DeclaringType, this.PropertyInfo.DeclaringType);
+                if (descriptor != null)
+                {
+                    descriptor.RemoveValueChanged(dependencyObject, DependencyProperty_ValueChanged);
+                }
+            }
+        }
+
+
         private string _message;
         /// <summary> 说明  </summary>
         public string Message
@@ -253,99 +281,4 @@ namespace H.Controls.Form
         }
 
     }
-
-    public interface IPropertyValueChanged
-    {
-        void OnPropertyValueChanged(PropertyInfo propertyInfo, object o, object n);
-    }
-
-    public interface IPropertyValueChanged<PropertyType>
-    {
-        void OnPropertyValueChanged(PropertyInfo propertyInfo, PropertyType o, PropertyType n);
-    }
-
-    /// <summary> 类型基类 </summary>
-    public abstract class ObjectPropertyItem : DisplayBindableBase, IPropertyItem
-    {
-        public string TabGroup { get; set; }
-        public PropertyInfo PropertyInfo { get; set; }
-        public object Obj { get; set; }
-        public bool ReadOnly { get; set; }
-        public Visibility Visibility { get; set; }
-        public Action<object> ValueChanged { get; set; }
-        public string Unit { get; set; }
-        public int Vip { get; set; }
-        //~ObjectPropertyItem()
-        //{
-        //    ValueChanged = null; 
-        //}
-
-        public ObjectPropertyItem(PropertyInfo property, object obj)
-        {
-            this.PropertyInfo = property;
-            this.Obj = obj;
-            DisplayAttribute display = property.GetCustomAttribute<DisplayAttribute>();
-            this.Name = property.Name;
-            if (display != null)
-            {
-                this.Name = display == null ? property.Name : display.Name;
-                this.TabGroup = display?.Prompt;
-                this.GroupName = display?.GroupName;
-                this.Description = display?.Description;
-                this.Order = display == null ? 999 : display.GetOrder().HasValue ? display.GetOrder().Value : 999;
-            }
-            //DisplayAttribute displayer = property.GetCustomAttribute<DisplayAttribute>();
-            //if (displayer != null)
-            //{
-            //    this.Name = displayer == null ? displayer.Name : displayer.Name;
-            //    this.GroupName = displayer?.GroupName;
-            //    this.Description = displayer?.Description;
-            //    this.Order = displayer == null ? 999 : displayer.Order;
-            //    this.Icon = displayer?.Icon;
-            //}
-
-            ReadOnlyAttribute readyOnly = property.GetCustomAttribute<ReadOnlyAttribute>();
-            this.ReadOnly = readyOnly?.IsReadOnly == true;
-            if (!this.PropertyInfo.CanWrite)
-            {
-                this.ReadOnly = true;
-            }
-            //  Do ：用于控制显示和隐藏
-            BrowsableAttribute browsable = property.GetCustomAttribute<BrowsableAttribute>();
-            this.Visibility = browsable == null || browsable.Browsable ? Visibility.Visible : Visibility.Collapsed;
-
-            UnitAttribute unit = property.GetCustomAttribute<UnitAttribute>();
-            if (unit != null)
-                this.Unit = unit.Unit;
-
-            //var vip = property.GetCustomAttribute<VipAttribute>();
-            //if (vip != null)
-            //    this.Vip = vip.Level;
-        }
-
-        /// <summary>
-        /// 从实体中加载数据到页面
-        /// </summary>
-        public abstract void LoadValue();
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-    ///// <summary> Double属性类型 </summary>
-    //public class DoubleArrayPropertyItem : ObjectPropertyItem<double[]>
-    //{
-    //    public DoubleArrayPropertyItem(PropertyInfo property, object obj) : base(property, obj)
-    //    {
-    //    }
-    //}
 }

@@ -35,7 +35,9 @@ namespace H.Modules.Setting
 
         public string DisplayName { get; set; }
 
-        [XmlIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        
+        [System.Xml.Serialization.XmlIgnore]
         public ICommand Command { get; set; }
     }
 

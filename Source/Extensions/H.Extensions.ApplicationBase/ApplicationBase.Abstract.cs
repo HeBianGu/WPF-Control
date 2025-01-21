@@ -139,7 +139,11 @@ namespace H.Extensions.ApplicationBase
                     x.DialogButton = DialogButton.None;
                     x.Title = ApplicationProvider.Version;
                     if (x is Window w)
+                    {
                         w.SizeToContent = SizeToContent.WidthAndHeight;
+                        w.ShowInTaskbar = true;
+                    }
+                       
                 }).Result;
                 if (r == false)
                 {

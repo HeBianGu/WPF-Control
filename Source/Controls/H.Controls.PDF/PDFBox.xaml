@@ -274,7 +274,7 @@
                                             <TextBlock Grid.Column="0"
                                                        Text="{Binding Title, Mode=OneWay}" />
                                             <TextBlock Grid.Column="1"
-                                                       Margin="10,0"
+                                                       Margin="5,0"
                                                        HorizontalAlignment="Right"
                                                        Text="{Binding PageIndex, Mode=OneWay}" />
                                         </Grid>

@@ -28,7 +28,7 @@ namespace H.Extensions.Attach
         }
 
         public static readonly DependencyProperty TitleVerticalAlignmentProperty = DependencyProperty.RegisterAttached(
-            "TitleVerticalAlignment", typeof(VerticalAlignment), typeof(Cattach), new FrameworkPropertyMetadata(default(VerticalAlignment), FrameworkPropertyMetadataOptions.Inherits, OnTitleVerticalAlignmentChanged));
+            "TitleVerticalAlignment", typeof(VerticalAlignment), typeof(Cattach), new FrameworkPropertyMetadata(VerticalAlignment.Center, FrameworkPropertyMetadataOptions.Inherits, OnTitleVerticalAlignmentChanged));
 
         public static VerticalAlignment GetTitleVerticalAlignment(DependencyObject d)
         {
@@ -169,14 +169,14 @@ namespace H.Extensions.Attach
 
 
         public static readonly DependencyProperty TitleTemplateProperty = DependencyProperty.RegisterAttached(
-            "TitleTemplate", typeof(ControlTemplate), typeof(Cattach), new FrameworkPropertyMetadata(default(ControlTemplate), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnTitleTemplateChanged));
+            "TitleTemplate", typeof(DataTemplate), typeof(Cattach), new FrameworkPropertyMetadata(default(DataTemplate), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnTitleTemplateChanged));
 
-        public static ControlTemplate GetTitleTemplate(DependencyObject d)
+        public static DataTemplate GetTitleTemplate(DependencyObject d)
         {
-            return (ControlTemplate)d.GetValue(TitleTemplateProperty);
+            return (DataTemplate)d.GetValue(TitleTemplateProperty);
         }
 
-        public static void SetTitleTemplate(DependencyObject obj, ControlTemplate value)
+        public static void SetTitleTemplate(DependencyObject obj, DataTemplate value)
         {
             obj.SetValue(TitleTemplateProperty, value);
         }

@@ -3,11 +3,10 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Modules.Setting"
                     xmlns:system="clr-namespace:System;assembly=netstandard">
-
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Modules.Setting;component/SettingViewPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Modules.Setting;component/SettingButtonPresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
-
     <DataTemplate DataType="{x:Type local:StateSetting}">
         <DockPanel>
             <TextBlock Width="100"

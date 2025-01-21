@@ -1,6 +1,7 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=mscorlib">
     <!--  RibbonComboBox  -->
     <system:Double x:Key="S.Hight.LargeImage">20.0</system:Double>
     <system:Double x:Key="S.Hight.SmallImage">22.0</system:Double>
@@ -19,8 +20,7 @@
     <Geometry x:Key="S.Geometry.240">M 0,0 L 4,3.5 L 0,7 Z</Geometry>
 
     <!--  Used in DropDown controls that can resize both Horizontally and Vertically  -->
-    <Style x:Key="S.Thumb.SizeNWSE"
-           TargetType="{x:Type Thumb}">
+    <Style x:Key="S.Thumb.SizeNWSE" TargetType="{x:Type Thumb}">
         <Setter Property="Width" Value="11" />
         <Setter Property="Height" Value="11" />
         <Setter Property="VerticalAlignment" Value="Bottom" />
@@ -30,9 +30,10 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
                     <Border Background="Transparent">
-                        <Path Margin="0,0,2,2"
-                              Data="M 9,0 L 11,0 L 11,11 L 0,11 L 0,9 L 3,9 L 3,6 L 6,6 L 6,3 L 9,3 z"
-                              Fill="{DynamicResource {x:Static BrushKeys.Foreground}}" />
+                        <Path
+                            Margin="0,0,2,2"
+                            Data="M 9,0 L 11,0 L 11,11 L 0,11 L 0,9 L 3,9 L 3,6 L 6,6 L 6,3 L 9,3 z"
+                            Fill="{DynamicResource {x:Static BrushKeys.Foreground}}" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
@@ -44,8 +45,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="S.Thumb.SizeNESW.Left"
-           TargetType="{x:Type Thumb}">
+    <Style x:Key="S.Thumb.SizeNESW.Left" TargetType="{x:Type Thumb}">
         <Setter Property="Width" Value="11" />
         <Setter Property="Height" Value="11" />
         <Setter Property="VerticalAlignment" Value="Bottom" />
@@ -55,9 +55,10 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
                     <Border Background="Transparent">
-                        <Path Margin="2,0,0,2"
-                              Data="M 0,0 L 2,0 L 2,3 L 5,3 L 5,6 L 8,6 L 8,9 L 11,9 L 11,11 L 0,11 z"
-                              Fill="{DynamicResource {x:Static BrushKeys.Background}}" />
+                        <Path
+                            Margin="2,0,0,2"
+                            Data="M 0,0 L 2,0 L 2,3 L 5,3 L 5,6 L 8,6 L 8,9 L 11,9 L 11,11 L 0,11 z"
+                            Fill="{DynamicResource {x:Static BrushKeys.Background}}" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
@@ -69,8 +70,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="S.Thumb.SizeNESW.Right"
-           TargetType="{x:Type Thumb}">
+    <Style x:Key="S.Thumb.SizeNESW.Right" TargetType="{x:Type Thumb}">
         <Setter Property="Width" Value="11" />
         <Setter Property="Height" Value="11" />
         <Setter Property="VerticalAlignment" Value="Top" />
@@ -80,9 +80,10 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
                     <Border Background="Transparent">
-                        <Path Margin="0,2,2,0"
-                              Data="M 0,0 L 0,3 L 3,3 L 3,6 L 6,6 L 6,9 L 9,9 L 9,11 L 11,11 L 11,0 z"
-                              Fill="{DynamicResource {x:Static BrushKeys.Background}}" />
+                        <Path
+                            Margin="0,2,2,0"
+                            Data="M 0,0 L 0,3 L 3,3 L 3,6 L 6,6 L 6,9 L 9,9 L 9,11 L 11,11 L 11,0 z"
+                            Fill="{DynamicResource {x:Static BrushKeys.Background}}" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
@@ -95,18 +96,18 @@
     </Style>
 
     <!--  Used in DropDown controls that can resize only Vertically  -->
-    <Style x:Key="S.Thumb.SizeNs"
-           TargetType="{x:Type Thumb}">
+    <Style x:Key="S.Thumb.SizeNs" TargetType="{x:Type Thumb}">
         <Setter Property="Height" Value="11" />
         <Setter Property="Cursor" Value="SizeNS" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
                     <Border Background="Transparent">
-                        <Path Margin="0,0,2,2"
-                              HorizontalAlignment="Center"
-                              VerticalAlignment="Bottom"
-                              Fill="{DynamicResource {x:Static BrushKeys.Background}}">
+                        <Path
+                            Margin="0,0,2,2"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom"
+                            Fill="{DynamicResource {x:Static BrushKeys.Background}}">
                             <Path.Data>
                                 <RectangleGeometry Rect="0,0,11,3" />
                             </Path.Data>
@@ -117,62 +118,70 @@
         </Setter>
     </Style>
 
-    <ControlTemplate x:Key="S.RibbonToggleButton.Down"
-                     TargetType="{x:Type RibbonToggleButton}">
-        <Grid x:Name="MainGrid"
-              SnapsToDevicePixels="True">
-            <Border x:Name="OuterBorder"
-                    Background="{TemplateBinding Background}"
-                    BorderBrush="{TemplateBinding BorderBrush}"
-                    BorderThickness="{TemplateBinding BorderThickness}"
-                    CornerRadius="{TemplateBinding CornerRadius}" />
-            <Border x:Name="MiddleBorder"
+    <ControlTemplate x:Key="S.RibbonToggleButton.Down" TargetType="{x:Type RibbonToggleButton}">
+        <Grid x:Name="MainGrid" SnapsToDevicePixels="True">
+            <Border
+                x:Name="OuterBorder"
+                Padding="{TemplateBinding Padding}"
+                Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                CornerRadius="{TemplateBinding CornerRadius}">
+
+
+                <!--<Border
+                x:Name="MiddleBorder"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                CornerRadius="{TemplateBinding CornerRadius}">-->
+                <!--<Border
+                    x:Name="InnerBorder"
+                    Padding="{TemplateBinding Padding}"
                     Background="Transparent"
                     BorderBrush="Transparent"
                     BorderThickness="{TemplateBinding BorderThickness}"
-                    CornerRadius="{TemplateBinding CornerRadius}">
-                <Border x:Name="InnerBorder"
-                        Padding="{TemplateBinding Padding}"
-                        Background="Transparent"
-                        BorderBrush="Transparent"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="{TemplateBinding CornerRadius}">
-                    <StackPanel x:Name="StackPanel"
-                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
-                        <Image x:Name="PART_Image"
-                               Width="32"
-                               Height="32"
-                               Margin="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type Ribbon},
-                                                                              ResourceId=LargeImageMargin}}"
-                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                               VerticalAlignment="Center"
-                               RenderOptions.BitmapScalingMode="NearestNeighbor"
-                               Source="{TemplateBinding LargeImageSource}" />
-                        <Grid x:Name="Grid"
-                              HorizontalAlignment="Center"
-                              VerticalAlignment="Center">
-                            <RibbonTwoLineText x:Name="TwoLineText"
-                                               Margin="1,1,1,0"
-                                               HorizontalAlignment="Center"
-                                               VerticalAlignment="Top"
-                                               HasTwoLines="{TemplateBinding RibbonTwoLineText.HasTwoLines}"
-                                               LineHeight="13px"
-                                               LineStackingStrategy="BlockLineHeight"
-                                               PathData="{TemplateBinding RibbonTwoLineText.PathData}"
-                                               PathFill="{TemplateBinding Foreground}"
-                                               Text="{TemplateBinding Label}"
-                                               TextAlignment="Center" />
-                        </Grid>
-                    </StackPanel>
-                </Border>
+                    CornerRadius="{TemplateBinding CornerRadius}">-->
+                <StackPanel
+                    x:Name="StackPanel"
+                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                    <Image
+                        x:Name="PART_Image"
+                        Width="32"
+                        Height="32"
+                        Margin="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type Ribbon},
+                                                                       ResourceId=LargeImageMargin}}"
+                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalAlignment="Center"
+                        RenderOptions.BitmapScalingMode="NearestNeighbor"
+                        Source="{TemplateBinding LargeImageSource}" />
+                    <Grid
+                        x:Name="Grid"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                        <RibbonTwoLineText
+                            x:Name="TwoLineText"
+                            Margin="1,1,1,0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            HasTwoLines="{TemplateBinding RibbonTwoLineText.HasTwoLines}"
+                            LineHeight="13px"
+                            LineStackingStrategy="BlockLineHeight"
+                            PathData="{TemplateBinding RibbonTwoLineText.PathData}"
+                            PathFill="{TemplateBinding Foreground}"
+                            Text="{TemplateBinding Label}"
+                            TextAlignment="Center" />
+                    </Grid>
+                </StackPanel>
+                <!--</Border>-->
+                <!--</Border>-->
             </Border>
         </Grid>
         <ControlTemplate.Triggers>
 
             <!--  Large Variant  -->
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}"
-                         Value="Large">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}" Value="Large">
                 <Setter Property="MinWidth" Value="44" />
                 <Setter Property="Height" Value="66" />
                 <Setter TargetName="Grid" Property="MinHeight" Value="26" />
@@ -180,8 +189,7 @@
             </DataTrigger>
 
             <!--  Medium or Small Variant  -->
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}"
-                         Value="Small">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}" Value="Small">
                 <Setter Property="Height" Value="{StaticResource S.Hight.SmallImage}" />
                 <Setter TargetName="PART_Image" Property="Margin" Value="1,0,1,0" />
                 <Setter TargetName="PART_Image" Property="Source" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SmallImageSource}" />
@@ -200,14 +208,12 @@
                 <Setter Property="VerticalAlignment" Value="Center" />
             </MultiDataTrigger>
 
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.IsLabelVisible}"
-                         Value="False">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.IsLabelVisible}" Value="False">
                 <Setter TargetName="TwoLineText" Property="Text" Value="{x:Null}" />
                 <Setter TargetName="TwoLineText" Property="Margin" Value="0" />
             </DataTrigger>
 
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}"
-                         Value="Collapsed">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}" Value="Collapsed">
                 <Setter TargetName="PART_Image" Property="Visibility" Value="Collapsed" />
             </DataTrigger>
 
@@ -215,14 +221,14 @@
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter TargetName="OuterBorder" Property="Background" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=MouseOverBackground}" />
                 <Setter TargetName="OuterBorder" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=MouseOverBorderBrush}" />
-                <Setter TargetName="InnerBorder" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
+                <!--<Setter TargetName="InnerBorder" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />-->
             </Trigger>
 
             <!--  IsFocused  -->
             <Trigger Property="IsKeyboardFocused" Value="True">
                 <Setter TargetName="OuterBorder" Property="Background" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=FocusedBackground}" />
                 <Setter TargetName="OuterBorder" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=FocusedBorderBrush}" />
-                <Setter TargetName="InnerBorder" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
+                <!--<Setter TargetName="InnerBorder" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />-->
             </Trigger>
 
             <!--  IsEnabled  -->
@@ -236,14 +242,14 @@
             <Trigger Property="IsChecked" Value="True">
                 <Setter TargetName="OuterBorder" Property="Background" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=CheckedBackground}" />
                 <Setter TargetName="OuterBorder" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=CheckedBorderBrush}" />
-                <Setter TargetName="InnerBorder" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
+                <!--<Setter TargetName="InnerBorder" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />-->
             </Trigger>
 
             <!--  IsPressed  -->
             <Trigger Property="IsPressed" Value="True">
                 <Setter TargetName="OuterBorder" Property="Background" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=PressedBackground}" />
                 <Setter TargetName="OuterBorder" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=PressedBorderBrush}" />
-                <Setter TargetName="InnerBorder" Property="BorderBrush" Value="Transparent" />
+                <!--<Setter TargetName="InnerBorder" Property="BorderBrush" Value="Transparent" />-->
             </Trigger>
 
             <!--  (IsMouseOver || IsKeyboardFocused) && (IsChecked || IsPressed)  -->
@@ -252,21 +258,21 @@
                     <Condition Property="IsChecked" Value="True" />
                     <Condition Property="IsMouseOver" Value="True" />
                 </MultiTrigger.Conditions>
-                <Setter TargetName="MiddleBorder" Property="Background" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
+                <Setter TargetName="OuterBorder" Property="Background" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="IsChecked" Value="True" />
                     <Condition Property="IsKeyboardFocused" Value="True" />
                 </MultiTrigger.Conditions>
-                <Setter TargetName="MiddleBorder" Property="Background" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
+                <Setter TargetName="OuterBorder" Property="Background" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="IsPressed" Value="True" />
                     <Condition Property="IsKeyboardFocused" Value="True" />
                 </MultiTrigger.Conditions>
-                <Setter TargetName="MiddleBorder" Property="Background" Value="{DynamicResource {x:Static BrushKeys.Background}}" />
+                <Setter TargetName="OuterBorder" Property="Background" Value="{DynamicResource {x:Static BrushKeys.Background}}" />
             </MultiTrigger>
 
             <!--  IsInControlGroup  -->
@@ -274,13 +280,12 @@
                 <Setter TargetName="OuterBorder" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Ribbon.BorderBrush}" />
                 <Setter TargetName="OuterBorder" Property="BorderThickness" Value="0,0,1,0" />
                 <Setter TargetName="OuterBorder" Property="CornerRadius" Value="0" />
-                <Setter TargetName="InnerBorder" Property="CornerRadius" Value="0" />
+                <!--<Setter TargetName="InnerBorder" Property="CornerRadius" Value="0" />-->
             </Trigger>
 
             <!--  HighContrast  -->
 
-            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
-                         Value="True">
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
 
 
 
@@ -302,8 +307,8 @@
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="OuterBorder" Property="Background" Value="{DynamicResource {x:Static BrushKeys.Selected}}" />
                 <Setter TargetName="OuterBorder" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.Selected}}" />
-                <Setter TargetName="InnerBorder" Property="BorderBrush" Value="Transparent" />
-                <Setter TargetName="MiddleBorder" Property="Background" Value="Transparent" />
+                <!--<Setter TargetName="InnerBorder" Property="BorderBrush" Value="Transparent" />
+                <Setter TargetName="MiddleBorder" Property="Background" Value="Transparent" />-->
                 <Setter TargetName="MainGrid" Property="TextElement.Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundTitle}}" />
                 <Setter TargetName="TwoLineText" Property="PathFill" Value="{DynamicResource {x:Static BrushKeys.ForegroundTitle}}" />
             </MultiDataTrigger>
@@ -376,7 +381,7 @@
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="OuterBorder" Property="Background" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
                 <Setter TargetName="OuterBorder" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushAssist}}" />
-                <Setter TargetName="InnerBorder" Property="BorderBrush" Value="Transparent" />
+                <!--<Setter TargetName="InnerBorder" Property="BorderBrush" Value="Transparent" />-->
                 <Setter TargetName="MainGrid" Property="TextElement.Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundTitle}}" />
                 <Setter TargetName="TwoLineText" Property="PathFill" Value="{DynamicResource {x:Static BrushKeys.ForegroundTitle}}" />
             </MultiDataTrigger>
@@ -392,7 +397,7 @@
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="OuterBorder" Property="Background" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
                 <Setter TargetName="OuterBorder" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushAssist}}" />
-                <Setter TargetName="InnerBorder" Property="BorderBrush" Value="Transparent" />
+                <!--<Setter TargetName="InnerBorder" Property="BorderBrush" Value="Transparent" />-->
                 <Setter TargetName="MainGrid" Property="TextElement.Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundTitle}}" />
                 <Setter TargetName="TwoLineText" Property="PathFill" Value="{DynamicResource {x:Static BrushKeys.ForegroundTitle}}" />
             </MultiDataTrigger>
@@ -426,15 +431,11 @@
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsPressed}" Value="True" />
-
                     <Condition Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True" />
-
-
-
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="OuterBorder" Property="Background" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
                 <Setter TargetName="OuterBorder" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.Red}}" />
-                <Setter TargetName="MiddleBorder" Property="Background" Value="Transparent" />
+                <!--<Setter TargetName="MiddleBorder" Property="Background" Value="Transparent" />-->
                 <Setter TargetName="MainGrid" Property="TextElement.Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundTitle}}" />
                 <Setter TargetName="TwoLineText" Property="PathFill" Value="{DynamicResource {x:Static BrushKeys.ForegroundTitle}}" />
             </MultiDataTrigger>
@@ -442,11 +443,7 @@
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsInControlGroup}" Value="True" />
-
                     <Condition Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True" />
-
-
-
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="OuterBorder" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
             </MultiDataTrigger>
@@ -454,11 +451,7 @@
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsEnabled}" Value="False" />
-
                     <Condition Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True" />
-
-
-
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="MainGrid" Property="TextElement.Foreground" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
                 <Setter TargetName="TwoLineText" Property="PathFill" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
@@ -467,40 +460,43 @@
     </ControlTemplate>
 
 
-    <ControlTemplate x:Key="S.RibbonButton.Template"
-                     TargetType="{x:Type RibbonButton}">
-        <Border x:Name="OuterBorder"
-                Background="{TemplateBinding Background}"
-                BorderBrush="{TemplateBinding BorderBrush}"
-                BorderThickness="{TemplateBinding BorderThickness}"
-                CornerRadius="{TemplateBinding CornerRadius}"
-                SnapsToDevicePixels="True">
-            <Border x:Name="InnerBorder"
-                    Padding="{TemplateBinding Padding}"
-                    BorderBrush="Transparent"
-                    BorderThickness="{TemplateBinding BorderThickness}"
-                    CornerRadius="{TemplateBinding CornerRadius}">
+    <ControlTemplate x:Key="S.RibbonButton.Template" TargetType="{x:Type RibbonButton}">
+        <Border
+            x:Name="OuterBorder"
+            BorderBrush="{TemplateBinding BorderBrush}"
+            BorderThickness="{TemplateBinding BorderThickness}"
+            CornerRadius="{TemplateBinding CornerRadius}"
+            SnapsToDevicePixels="True">
+            <Border
+                x:Name="InnerBorder"
+                Padding="{TemplateBinding Padding}"
+                BorderBrush="Transparent"
+                BorderThickness="0"
+                CornerRadius="{TemplateBinding CornerRadius}">
                 <StackPanel x:Name="StackPanel">
-                    <Image x:Name="PART_Image"
-                           Width="32"
-                           Height="32"
-                           Margin="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type Ribbon},
-                                                                          ResourceId=LargeImageMargin}}"
-                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                           VerticalAlignment="Center"
-                           RenderOptions.BitmapScalingMode="NearestNeighbor"
-                           Source="{TemplateBinding LargeImageSource}" />
-                    <Grid x:Name="Grid"
-                          HorizontalAlignment="Center"
-                          VerticalAlignment="Center">
-                        <RibbonTwoLineText x:Name="TwoLineText"
-                                           Margin="1,1,1,0"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Top"
-                                           LineHeight="13px"
-                                           LineStackingStrategy="BlockLineHeight"
-                                           Text="{TemplateBinding Label}"
-                                           TextAlignment="Center" />
+                    <Image
+                        x:Name="PART_Image"
+                        Width="32"
+                        Height="32"
+                        Margin="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type Ribbon},
+                                                                       ResourceId=LargeImageMargin}}"
+                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalAlignment="Center"
+                        RenderOptions.BitmapScalingMode="NearestNeighbor"
+                        Source="{TemplateBinding LargeImageSource}" />
+                    <Grid
+                        x:Name="Grid"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                        <RibbonTwoLineText
+                            x:Name="TwoLineText"
+                            Margin="1,1,1,0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            LineHeight="13px"
+                            LineStackingStrategy="BlockLineHeight"
+                            Text="{TemplateBinding Label}"
+                            TextAlignment="Center" />
                     </Grid>
                 </StackPanel>
             </Border>
@@ -508,23 +504,22 @@
 
         <ControlTemplate.Triggers>
             <!--  Large Variant  -->
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}"
-                         Value="Large">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}" Value="Large">
                 <Setter Property="MinWidth" Value="44" />
                 <Setter Property="Height" Value="66" />
+                <Setter Property="Height" Value="Auto" />
                 <Setter TargetName="Grid" Property="MinHeight" Value="26" />
                 <Setter TargetName="TwoLineText" Property="HasTwoLines" Value="True" />
             </DataTrigger>
             <!--  Medium or Small Variant  -->
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}"
-                         Value="Small">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}" Value="Small">
                 <Setter Property="Height" Value="22" />
                 <Setter TargetName="PART_Image" Property="Margin" Value="1,0,1,0" />
                 <Setter TargetName="PART_Image" Property="Source" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SmallImageSource}" />
                 <Setter TargetName="PART_Image" Property="Width" Value="16" />
                 <Setter TargetName="PART_Image" Property="Height" Value="16" />
                 <Setter TargetName="TwoLineText" Property="HorizontalAlignment" Value="Left" />
-                <Setter TargetName="TwoLineText" Property="Margin" Value="1" />
+                <Setter TargetName="TwoLineText" Property="Margin" Value="-1" />
                 <Setter TargetName="StackPanel" Property="Orientation" Value="Horizontal" />
             </DataTrigger>
             <MultiDataTrigger>
@@ -535,13 +530,11 @@
                 <Setter Property="Height" Value="Auto" />
                 <Setter Property="VerticalAlignment" Value="Center" />
             </MultiDataTrigger>
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.IsLabelVisible}"
-                         Value="False">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.IsLabelVisible}" Value="False">
                 <Setter TargetName="TwoLineText" Property="Visibility" Value="Collapsed" />
             </DataTrigger>
 
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}"
-                         Value="Collapsed">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ControlSizeDefinition.ImageSize}" Value="Collapsed">
                 <Setter TargetName="PART_Image" Property="Visibility" Value="Collapsed" />
             </DataTrigger>
             <!--  IsMouseOver  -->
@@ -578,8 +571,7 @@
                 <Setter TargetName="PART_Image" Property="Opacity" Value="0.5" />
                 <Setter TargetName="OuterBorder" Property="TextElement.Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
             </Trigger>
-            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}"
-                         Value="True">
+            <DataTrigger Binding="{Binding Path=(SystemParameters.HighContrast)}" Value="True">
                 <Setter TargetName="OuterBorder" Property="TextElement.Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
                 <Setter TargetName="OuterBorder" Property="Background" Value="Transparent" />
                 <Setter TargetName="OuterBorder" Property="BorderBrush" Value="Transparent" />

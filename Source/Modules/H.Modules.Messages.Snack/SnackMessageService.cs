@@ -27,11 +27,20 @@ namespace H.Modules.Messages.Snack
                   if (layer == null)
                       return false;
                   System.Collections.Generic.IEnumerable<PresenterAdorner> adorners = layer.GetAdorners(child)?.OfType<PresenterAdorner>().Where(x => x.Presenter == this._snackBox);
-                  if (adorners == null || adorners.Count() == 0)
+                  //if (adorners == null || adorners.Count() == 0)
+                  //{
+                  //    PresenterAdorner adorner = new PresenterAdorner(child, this._snackBox);
+                  //    layer.Add(adorner);
+                  //}
+                  if (adorners != null)
                   {
-                      PresenterAdorner adorner = new PresenterAdorner(child, this._snackBox);
-                      layer.Add(adorner);
+                      foreach (var item in adorners)
+                      {
+                          layer.Remove(item);
+                      }
                   }
+                  PresenterAdorner adorner = new PresenterAdorner(child, this._snackBox);
+                  layer.Add(adorner);
                   return true;
               });
         }

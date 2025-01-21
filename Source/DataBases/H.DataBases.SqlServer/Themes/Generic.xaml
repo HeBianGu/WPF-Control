@@ -23,7 +23,7 @@
                         DockPanel.Dock="Right"
                         IsEnabled="{Binding Message, Converter={x:Static h:Converter.GetStringContains}, ConverterParameter=保存成功}" />
                 <Button Width="80"
-                        Margin="10,0"
+                        Margin="5,0"
                         Command="{Binding SaveCommand}"
                         Content="保存配置"
                         DockPanel.Dock="Right"

@@ -19,4 +19,12 @@ namespace H.Controls.FilterBox
         [Display(Name = "全部不满足条件")]
         None
     }
+
+    public static class ConditionOperates
+    {
+        public static ConditionOperate All = ConditionOperate.All;
+        public static ConditionOperate Any = ConditionOperate.Any;
+        public static ConditionOperate AnyNot = ConditionOperate.AnyNot;
+        public static ConditionOperate None = ConditionOperate.None;
+    }
 }

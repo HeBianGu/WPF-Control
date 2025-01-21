@@ -1,22 +1,22 @@
-﻿<h:MainWindow x:Class="H.Test.SideMenu.MainWindow"
-              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-              xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
-              xmlns:componentModel="clr-namespace:System.ComponentModel;assembly=WindowsBase"
-              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-              xmlns:h="https://github.com/HeBianGu"
-              xmlns:local="clr-namespace:H.Test.SideMenu"
-              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-              Title=""
-              Width="1100"
-              Height="650"
-              CaptionHeight="50"
-              Icon="{x:Null}"
-              WindowStartupLocation="CenterScreen"
-              mc:Ignorable="d">
+﻿<h:MainWindow
+    x:Class="H.Test.SideMenu.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:componentModel="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:h="https://github.com/HeBianGu"
+    xmlns:local="clr-namespace:H.Test.SideMenu"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title=""
+    Width="1100"
+    Height="650"
+    CaptionHeight="50"
+    Icon="{x:Null}"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
     <Window.Resources>
-        <CollectionViewSource x:Key="GroupedStudentDataList"
-                              Source="{h:GetStudents Count=100}">
+        <CollectionViewSource x:Key="GroupedStudentDataList" Source="{h:GetStudents Count=100}">
             <CollectionViewSource.GroupDescriptions>
                 <PropertyGroupDescription PropertyName="Name" />
                 <PropertyGroupDescription PropertyName="Class" />
@@ -26,8 +26,7 @@
         <DataTemplate DataType="{x:Type local:ManagerBase}">
             <DataGrid>
                 <Behaviors:Interaction.Behaviors>
-                    <h:DataGridAutoColumnBehavior DataGridLength="*"
-                                                  Type="{Binding Type}" />
+                    <h:DataGridAutoColumnBehavior DataGridLength="*" Type="{Binding Type}" />
                 </Behaviors:Interaction.Behaviors>
             </DataGrid>
         </DataTemplate>
@@ -41,19 +40,19 @@
                     <GroupStyle>
                         <GroupStyle.ContainerStyle>
                             <Style TargetType="{x:Type GroupItem}">
-                                <Setter Property="Margin" Value="0,0,0,5" />
+                                <Setter Property="Margin" Value="0,0,0,1" />
                                 <Setter Property="Template">
                                     <Setter.Value>
                                         <ControlTemplate TargetType="{x:Type GroupItem}">
-                                            <Expander IsExpanded="True">
+                                            <Expander Padding="0" IsExpanded="True">
                                                 <Expander.Header>
                                                     <DockPanel>
-                                                        <TextBlock Width="100"
-                                                                   Margin="5,0,0,0"
-                                                                   FontWeight="Bold"
-                                                                   Text="{Binding Path=Name}" />
-                                                        <TextBlock FontWeight="Bold"
-                                                                   Text="{Binding Path=ItemCount}" />
+                                                        <TextBlock
+                                                            Width="100"
+                                                            Margin="5,0,0,0"
+                                                            FontWeight="Bold"
+                                                            Text="{Binding Path=Name}" />
+                                                        <TextBlock FontWeight="Bold" Text="{Binding Path=ItemCount}" />
                                                     </DockPanel>
                                                 </Expander.Header>
                                                 <ItemsPresenter />
@@ -71,27 +70,24 @@
                                     <DockPanel.Background>
                                         <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.BorderBrush}}" />
                                     </DockPanel.Background>
-                                    <TextBlock Width="100"
-                                               Margin="30,6,0,6"
-                                               VerticalAlignment="Center"
-                                               Text="{Binding Path=Name}" />
-                                    <TextBlock VerticalAlignment="Center"
-                                               Text="{Binding Path=ItemCount}" />
+                                    <TextBlock
+                                        Width="100"
+                                        Margin="30,6,0,6"
+                                        VerticalAlignment="Center"
+                                        Text="{Binding Path=Name}" />
+                                    <TextBlock VerticalAlignment="Center" Text="{Binding Path=ItemCount}" />
                                 </DockPanel>
                             </DataTemplate>
                         </GroupStyle.HeaderTemplate>
                     </GroupStyle>
                 </DataGrid.GroupStyle>
                 <DataGrid.Style>
-                    <Style BasedOn="{StaticResource {x:Type DataGrid}}"
-                           TargetType="DataGrid">
+                    <Style BasedOn="{StaticResource {x:Type DataGrid}}" TargetType="DataGrid">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=UseDataGroup}"
-                                         Value="True">
+                            <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=UseDataGroup}" Value="True">
                                 <Setter Property="ItemsSource" Value="{Binding Source={StaticResource GroupedStudentDataList}}" />
                             </DataTrigger>
-                            <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=UseDataGroup}"
-                                         Value="False">
+                            <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=UseDataGroup}" Value="False">
                                 <Setter Property="ItemsSource" Value="{h:GetStudents Count=100}" />
                             </DataTrigger>
                         </Style.Triggers>
@@ -105,30 +101,28 @@
     </Window.DataContext>
     <h:MainWindow.CaptionTempate>
         <ControlTemplate>
-            <DockPanel HorizontalAlignment="Right"
-                       LastChildFill="False">
+            <DockPanel HorizontalAlignment="Right" LastChildFill="False">
                 <ContentPresenter Content="{Ioc Type={x:Type ISettingButtonPresenter}}" />
             </DockPanel>
         </ControlTemplate>
     </h:MainWindow.CaptionTempate>
     <h:MainWindow.SideTemplate>
         <ControlTemplate>
-            <Border BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
-                    BorderThickness="0,0,1,0">
+            <Border BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}" BorderThickness="0,0,1,0">
                 <DockPanel Background="{DynamicResource {x:Static h:BrushKeys.Dark0_1}}">
-                    <DockPanel Height="60"
-                               DockPanel.Dock="Top">
-                        <Image Height="30"
-                               Margin="10"
-                               Source="{h:Logo}" />
-                        <TextBlock VerticalAlignment="Center"
-                                   FontSize="{DynamicResource {x:Static h:FontSizeKeys.Header2}}"
-                                   Text="企业管理系统" />
+                    <DockPanel Height="60" DockPanel.Dock="Top">
+                        <Image
+                            Height="30"
+                            Margin="10"
+                            Source="{h:Logo}" />
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontSize="{DynamicResource {x:Static h:FontSizeKeys.Header2}}"
+                            Text="企业管理系统" />
                     </DockPanel>
                     <Grid>
                         <Grid.Resources>
-                            <CollectionViewSource x:Key="GroupedDataList"
-                                                  Source="{Binding Collection}">
+                            <CollectionViewSource x:Key="GroupedDataList" Source="{Binding Collection}">
                                 <CollectionViewSource.GroupDescriptions>
                                     <PropertyGroupDescription PropertyName="GroupName" />
                                 </CollectionViewSource.GroupDescriptions>
@@ -137,41 +131,49 @@
                                 </CollectionViewSource.SortDescriptions>
                             </CollectionViewSource>
                         </Grid.Resources>
-                        <ListBox Cattach.ItemBorderThickness="0"
-                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                 ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                                 SelectedItem="{Binding SelectedManager}">
+                        <ListBox
+                            Cattach.ItemBorderThickness="0"
+                            Cattach.ItemHeight="Auto"
+                            Cattach.ItemHorizontalContentAlignment="Center"
+                            Cattach.ItemPadding="5"
+                            Cattach.ItemVerticalContentAlignment="Center"
+                            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                            ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                            SelectedItem="{Binding SelectedManager}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <Grid>
-                                        <DockPanel x:Name="dp_1"
-                                                   Margin="-20,0"
-                                                   ToolTip="{Binding Name}">
-                                            <TextBlock Margin="0,2,0,0"
-                                                       HorizontalAlignment="Center"
-                                                       DockPanel.Dock="Bottom"
-                                                       FontSize="8"
-                                                       Text="{Binding Name}" />
-                                            <Path Width="15"
-                                                  Height="15"
-                                                  Data="M631.119772 619.422812l0.344028-16.685369c79.298505-55.388544 117.829666-153.092558 117.829666-297.756425 0-139.503444-87.211154-222.758273-233.423148-222.758273l-7.912649 0c-146.03998 0-233.423148 83.254829-233.423148 222.758273 0 143.975811 38.875189 241.679825 118.86175 297.412397l0 16.857383c-133.138922 17.889467-266.621871 70.869814-266.621871 151.88846 0 113.357299 129.526625 170.810012 385.139593 170.810012s385.139593-57.452713 385.139593-170.810012C897.053586 690.292626 763.914665 637.31228 631.119772 619.422812z"
-                                                  Fill="{DynamicResource {x:Static h:BrushKeys.Foreground}}"
-                                                  Stretch="Uniform"
-                                                  Stroke="{DynamicResource {x:Static h:BrushKeys.Foreground}}"
-                                                  ToolTip="{Binding Name}" />
+                                        <DockPanel
+                                            x:Name="dp_1"
+                                            Margin="-20,0"
+                                            ToolTip="{Binding Name}">
+                                            <TextBlock
+                                                Margin="0,5,0,0"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                DockPanel.Dock="Bottom"
+                                                FontSize="8"
+                                                Text="{Binding Name}" />
+                                            <Path
+                                                Width="15"
+                                                Height="15"
+                                                Data="M631.119772 619.422812l0.344028-16.685369c79.298505-55.388544 117.829666-153.092558 117.829666-297.756425 0-139.503444-87.211154-222.758273-233.423148-222.758273l-7.912649 0c-146.03998 0-233.423148 83.254829-233.423148 222.758273 0 143.975811 38.875189 241.679825 118.86175 297.412397l0 16.857383c-133.138922 17.889467-266.621871 70.869814-266.621871 151.88846 0 113.357299 129.526625 170.810012 385.139593 170.810012s385.139593-57.452713 385.139593-170.810012C897.053586 690.292626 763.914665 637.31228 631.119772 619.422812z"
+                                                Fill="{DynamicResource {x:Static h:BrushKeys.Foreground}}"
+                                                Stretch="Uniform"
+                                                Stroke="{DynamicResource {x:Static h:BrushKeys.Foreground}}"
+                                                ToolTip="{Binding Name}" />
                                         </DockPanel>
-                                        <TextBlock x:Name="dp_2"
-                                                   Margin="20,0"
-                                                   Text="{Binding Name}" />
+                                        <TextBlock
+                                            x:Name="dp_2"
+                                            Margin="5,0"
+                                            Text="{Binding Name}" />
                                     </Grid>
                                     <DataTemplate.Triggers>
-                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=h:GridSplitterBox}, Path=MenuWidth.Value, Converter={x:Static h:Converter.GetLessThan}, ConverterParameter=90}"
-                                                     Value="True">
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=h:GridSplitterBox}, Path=MenuWidth.Value, Converter={x:Static h:Converter.GetLessThan}, ConverterParameter=90}" Value="True">
                                             <Setter TargetName="dp_1" Property="Visibility" Value="Visible" />
                                             <Setter TargetName="dp_2" Property="Visibility" Value="Collapsed" />
                                         </DataTrigger>
-                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=h:GridSplitterBox}, Path=MenuWidth.Value, Converter={x:Static h:Converter.GetGreaterThan}, ConverterParameter=90}"
-                                                     Value="True">
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=h:GridSplitterBox}, Path=MenuWidth.Value, Converter={x:Static h:Converter.GetGreaterThan}, ConverterParameter=90}" Value="True">
                                             <Setter TargetName="dp_2" Property="Visibility" Value="Visible" />
                                             <Setter TargetName="dp_1" Property="Visibility" Value="Collapsed" />
                                         </DataTrigger>
@@ -183,16 +185,13 @@
                                     <Setter Property="Background" Value="Transparent" />
                                     <Setter Property="BorderBrush" Value="Transparent" />
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=UseGroup}"
-                                                     Value="True">
+                                        <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=UseGroup}" Value="True">
                                             <Setter Property="ItemsSource" Value="{Binding Source={StaticResource GroupedDataList}}" />
                                         </DataTrigger>
-                                        <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=UseGroup}"
-                                                     Value="False">
+                                        <DataTrigger Binding="{Binding Source={x:Static local:AppSetting.Instance}, Path=UseGroup}" Value="False">
                                             <Setter Property="ItemsSource" Value="{Binding Collection}" />
                                         </DataTrigger>
-                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=h:GridSplitterBox}, Path=MenuWidth.Value, Converter={x:Static h:Converter.GetLessThan}, ConverterParameter=90}"
-                                                     Value="True">
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=h:GridSplitterBox}, Path=MenuWidth.Value, Converter={x:Static h:Converter.GetLessThan}, ConverterParameter=90}" Value="True">
                                             <Setter Property="ItemsSource" Value="{Binding Collection}" />
                                         </DataTrigger>
                                     </Style.Triggers>
@@ -210,12 +209,10 @@
                                             <Setter Property="Template">
                                                 <Setter.Value>
                                                     <ControlTemplate TargetType="{x:Type GroupItem}">
-                                                        <Expander BorderThickness="0"
-                                                                  IsExpanded="True">
+                                                        <Expander BorderThickness="0" IsExpanded="True">
                                                             <Expander.Header>
                                                                 <StackPanel Orientation="Horizontal">
-                                                                    <TextBlock FontWeight="Bold"
-                                                                               Text="{Binding Path=Name}" />
+                                                                    <TextBlock FontWeight="Bold" Text="{Binding Path=Name}" />
                                                                     <TextBlock>
                                                                         <Run Text="   [" />
                                                                         <Run Text="{Binding Path=ItemCount, Mode=OneWay}" />
@@ -239,27 +236,24 @@
         </ControlTemplate>
     </h:MainWindow.SideTemplate>
     <Grid>
-        <Border BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
-                BorderThickness="0,1,0,1">
-            <TabControl ItemsSource="{Binding Collection}"
-                        SelectedItem="{Binding SelectedManager}">
+        <Border BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" BorderThickness="0,1,0,1">
+            <TabControl ItemsSource="{Binding Collection}" SelectedItem="{Binding SelectedManager}">
                 <TabControl.ItemTemplate>
                     <DataTemplate>
                         <DockPanel>
-                            <Button Padding="12"
-                                    Command="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.HideItemCommand}"
-                                    CommandParameter="{Binding}"
-                                    Content="{x:Static h:Geometrys.Close}"
-                                    DockPanel.Dock="Right"
-                                    Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
-                            <TextBlock VerticalAlignment="Center"
-                                       Text="{Binding Name}" />
+                            <Button
+                                Padding="2" Width="15" Height="15" Margin="2 0"
+                                Command="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.HideItemCommand}"
+                                CommandParameter="{Binding}"
+                                Content="{x:Static h:Geometrys.Close}"
+                                DockPanel.Dock="Right"
+                                Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
+                            <TextBlock VerticalAlignment="Center" Text="{Binding Name}" />
                         </DockPanel>
                     </DataTemplate>
                 </TabControl.ItemTemplate>
                 <TabControl.ItemContainerStyle>
-                    <Style BasedOn="{StaticResource {x:Type TabItem}}"
-                           TargetType="TabItem">
+                    <Style BasedOn="{StaticResource {x:Type TabItem}}" TargetType="TabItem">
                         <Setter Property="Padding" Value="5,0,0,0" />
                         <Setter Property="Visibility" Value="{Binding IsVisibleInTab, Converter={x:Static Converter.GetTrueToVisible}}" />
                     </Style>

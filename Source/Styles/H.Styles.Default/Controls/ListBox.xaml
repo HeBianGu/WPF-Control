@@ -18,8 +18,8 @@
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
         <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
-        <Setter Property="Cattach.ItemHeight" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
-        <Setter Property="Cattach.ItemPadding" Value="10 0" />
+
+        <Setter Property="Cattach.CornerRadius" Value="2" />
         <Setter Property="Background">
             <Setter.Value>
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
@@ -28,16 +28,21 @@
         </Setter>
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
         <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Cattach.ItemHorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="Cattach.ItemVerticalContentAlignment" Value="Center" />
+        <Setter Property="Cattach.ItemMinHeight" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
+        <Setter Property="Cattach.ItemBackground" Value="Transparent" />
+        <Setter Property="Cattach.ItemHeight" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
+        <Setter Property="Cattach.ItemPadding" Value="5 3" />
+        <Setter Property="Cattach.ItemMargin" Value="0" />
+        <Setter Property="Cattach.ItemBorderThickness" Value="0" />
+        <Setter Property="Cattach.ItemBorderBrush" Value="Transparent" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListBox">
-                    <Border
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="2">
-                        <ScrollViewer Padding="{TemplateBinding Padding}" Focusable="false">
-                            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                    <Border Style="{DynamicResource S.Border.TemplatedParent}">
+                        <ScrollViewer Focusable="false">
+                            <ItemsPresenter Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                         </ScrollViewer>
                     </Border>
                 </ControlTemplate>
@@ -66,28 +71,18 @@
         <!--<Setter Property="OverridesDefaultStyle" Value="true" />-->
         <Setter Property="Height" Value="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=(Cattach.ItemHeight)}" />
         <Setter Property="MinHeight" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
-        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=(Cattach.ItemHorizontalContentAlignment)}" />
         <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=(Cattach.ItemPadding)}" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="Background">
-            <Setter.Value>
-                <SolidColorBrush Color="Transparent" />
-            </Setter.Value>
-        </Setter>
-        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
+        <Setter Property="Margin" Value="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=(Cattach.ItemMargin)}" />
+        <Setter Property="VerticalContentAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=(Cattach.ItemVerticalContentAlignment)}" />
+        <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=(Cattach.ItemBackground)}" />
+        <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=(Cattach.ItemBorderBrush)}" />
         <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=(Cattach.ItemBorderThickness)}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListBoxItem">
-                    <Border
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        SnapsToDevicePixels="true">
-                        <ContentPresenter
-                            Margin="{TemplateBinding Padding}"
-                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    <Border SnapsToDevicePixels="true" Style="{StaticResource S.Border.TemplatedParent}">
+                        <ContentPresenter Style="{StaticResource S.ContentPresenter.TemplatedParent}" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
@@ -106,7 +101,7 @@
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="Selector.IsSelectionActive" Value="False" />
+                    <!--<Condition Property="Selector.IsSelectionActive" Value="False" />-->
                     <Condition Property="IsSelected" Value="True" />
                 </MultiTrigger.Conditions>
                 <Setter Property="Background">
@@ -117,7 +112,7 @@
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="Selector.IsSelectionActive" Value="True" />
+                    <!--<Condition Property="Selector.IsSelectionActive" Value="True" />-->
                     <Condition Property="IsSelected" Value="True" />
                 </MultiTrigger.Conditions>
                 <Setter Property="Background">
@@ -125,7 +120,7 @@
                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
                     </Setter.Value>
                 </Setter>
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundTitle}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundSelect}}" />
             </MultiTrigger>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Opacity" Value="0.6" />

@@ -40,7 +40,7 @@ namespace H.App.FileManager
         public string Extension => this._file.Extension;
 
         [Display(Name = "大小")]
-        public long Length => this._file.Length;
+        public long Length => this.Exists ? this._file.Length : 0;
 
         //public UnixFileMode UnixFileMode => this._file.GetAccessControl().GetOwner;
         [Display(Name = "特性")]

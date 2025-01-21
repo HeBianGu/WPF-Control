@@ -66,6 +66,7 @@
         <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
         <Setter Property="WindowStyle" Value="SingleBorderWindow" />
         <Setter Property="FontSize" Value="{DynamicResource {x:Static FontSizeKeys.Default}}" />
+        <Setter Property="FontFamily" Value="{DynamicResource {x:Static SystemKeys.FontFamily}}" />
         <Setter Property="ResizeMode" Value="CanResizeWithGrip" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Background">
@@ -87,11 +88,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Window}">
-                    <Border
-                        x:Name="PART_Border"
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
+                    <Border x:Name="PART_Border" Style="{StaticResource S.Border.TemplatedParent}">
                         <Grid x:Name="grid">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
@@ -160,7 +157,7 @@
                                             ToolTip="还原" />
                                         <Button
                                             x:Name="Btn_Close"
-                                            Command="{local:CloseWindowCommand}"
+                                            Command="{local:CloseAfterSaveWindowCommand}"
                                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                             Content="F1M8.583,8L13,12.424 12.424,13 8,8.583 3.576,13 3,12.424 7.417,8 3,3.576 3.576,3 8,7.417 12.424,3 13,3.576z"
                                             Style="{DynamicResource {x:Static local:WindowKeys.Button}}" />
@@ -176,12 +173,9 @@
                                 Grid.RowSpan="3"
                                 IsHitTestVisible="False"
                                 Opacity="{Binding Source={x:Static local:WindowSetting.Instance}, Path=Opacity}"
-                                Visibility="{Binding ElementName=ib, Path=ImageSource, Converter={x:Static Converter.GetNullToCollapsed}}">
+                                Visibility="{Binding Source={x:Static local:WindowSetting.Instance}, Path=UseBackImage, Converter={x:Static Converter.GetTrueToVisible}}">
                                 <Border.Background>
-                                    <ImageBrush
-                                        x:Name="ib"
-                                        ImageSource="{Binding Source={x:Static local:WindowSetting.Instance}, Path=BackImagePath}"
-                                        Stretch="{Binding Source={x:Static local:WindowSetting.Instance}, Path=Stretch}" />
+                                    <ImageBrush ImageSource="{Binding Source={x:Static local:WindowSetting.Instance}, Path=BackImagePath}" Stretch="{Binding Source={x:Static local:WindowSetting.Instance}, Path=Stretch}" />
                                 </Border.Background>
                             </Border>
 
