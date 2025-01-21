@@ -171,8 +171,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Presenters.Design", "Sour
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Controls.Panel", "Source\Controls\H.Controls.Panel\H.Controls.Panel.csproj", "{8634791D-536C-424F-B6D5-8986A4C6EF3B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.App.FileManager", "Source\App\H.App.FileManager\H.App.FileManager.csproj", "{3C56A343-0550-4C60-8F8A-063CDDD830E6}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Controls.TagBox", "Source\Controls\H.Controls.TagBox\H.Controls.TagBox.csproj", "{8AFD266F-EB72-4886-AF74-60507C64E5AE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Controls.FavoriteBox", "Source\Controls\H.Controls.FavoriteBox\H.Controls.FavoriteBox.csproj", "{9667A8AC-ECEC-493C-BD6B-22DB01E9FDAD}"
