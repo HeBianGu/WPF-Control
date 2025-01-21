@@ -26,9 +26,12 @@ namespace H.Modules.Messages.Notice
             //    PresenterAdorner adorner = new PresenterAdorner(child, this._noticeBox);
             //    layer.Add(adorner);
             //}
-            foreach (var item in adorners)
+            if (adorners != null)
             {
-                layer.Remove(item);
+                foreach (var item in adorners)
+                {
+                    layer.Remove(item);
+                }
             }
             PresenterAdorner adorner = new PresenterAdorner(child, this._noticeBox);
             layer.Add(adorner);

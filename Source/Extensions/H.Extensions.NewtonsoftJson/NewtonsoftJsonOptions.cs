@@ -30,7 +30,7 @@ namespace H.Extensions.NewtonsoftJson
                 //NumberHandling = JsonNumberHandling.AllowNamedFloatingPointLiterals，
                 //ReferenceLoopHandling = ReferenceLoopHandling.Ignore //忽略循环引用
                 ContractResolver = new CustomContractResolver(), // 使用自定义的ContractResolver忽略字段
-                                                                Converters= { new TypeConverterJsonConverter() }
+                //Converters= { new TypeConverterJsonConverter() }//这部分序列化是会逻辑有问题用FilterBox测试
 
             };
             return setting;

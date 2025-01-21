@@ -18,8 +18,7 @@
                 </TextBlock>
                 <TextBlock Margin="2,0"
                            HorizontalAlignment="Left"
-                           VerticalAlignment="Center"
-                           FontWeight="Bold">
+                           VerticalAlignment="Center">
                     <TextBlock.Style>
                         <Style TargetType="TextBlock">
                             <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
@@ -41,7 +40,7 @@
                                 </DataTrigger>
                                 <DataTrigger Binding="{Binding IsTrail}"
                                              Value="True">
-                                    <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.ForegroundAssist}}" />
+                                    <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
                                 </DataTrigger>
                             </Style.Triggers>
                         </Style>
@@ -49,7 +48,7 @@
                 </TextBlock>
             </StackPanel>
 
-            <StackPanel Margin="0,0,0,1"
+            <StackPanel Margin="0,0,0,5"
                         DockPanel.Dock="Top"
                         Orientation="Horizontal"
                         Visibility="{Binding UseVip, Converter={x:Static h:Converter.GetTrueToVisible}}">
@@ -61,12 +60,11 @@
                 <TextBlock Margin="2,0"
                            HorizontalAlignment="Left"
                            VerticalAlignment="Center"
-                           FontWeight="Bold"
                            Foreground="{DynamicResource {x:Static h:BrushKeys.Orange}}"
                            Text="{Binding Level, StringFormat=v{0}}" />
             </StackPanel>
 
-            <Grid Margin="0,0,0,1"
+            <Grid Margin="0,0,0,5"
                   DockPanel.Dock="Bottom"
                   Visibility="{Binding IsTrail, Converter={x:Static h:Converter.GetTrueToVisible}}">
                 <TextBlock HorizontalAlignment="Left"
@@ -82,7 +80,7 @@
             </Grid>
 
             <StackPanel DockPanel.Dock="Top">
-                <Grid Margin="0,0,0,1">
+                <Grid Margin="0,0,0,5">
                     <BulletDecorator>
                         <BulletDecorator.Bullet>
                             <TextBlock Text="机器编码：" />
@@ -101,7 +99,7 @@
                     </BulletDecorator>
                 </Grid>
 
-                <Grid Margin="0,0,0,1">
+                <Grid Margin="0,0,0,5">
                     <BulletDecorator>
                         <BulletDecorator.Bullet>
                             <TextBlock Text="产品名称：" />
@@ -122,7 +120,7 @@
                 <!--<Label Content="注:机器编码用于申请License，请将Licens提供给管理员！" HorizontalAlignment="Left" Margin="100,0" Foreground="Red" Style="{DynamicResource S.Label.Flash}"/>-->
             </StackPanel>
 
-            <Grid Margin="0,0,0,1"
+            <Grid Margin="0,0,0,5"
                   DockPanel.Dock="Bottom">
                 <TextBlock HorizontalAlignment="Left"
                            VerticalAlignment="Center"
@@ -136,7 +134,7 @@
                         Content="注册" />
             </Grid>
 
-            <BulletDecorator Margin="0,0,0,1">
+            <BulletDecorator Margin="0,0,0,5">
                 <BulletDecorator.Bullet>
                     <TextBlock Text="输入许可：" />
                 </BulletDecorator.Bullet>

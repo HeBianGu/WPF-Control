@@ -3,12 +3,12 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Modules.Project">
     <DataTemplate DataType="{x:Type local:ProjectViewPresenter}">
-        <StackPanel Margin="5,0"
+        <StackPanel Margin="2"
                     Background="Transparent"
                     Orientation="Horizontal">
             <TextBlock VerticalAlignment="Center"
-                       Text="当前工程 - " />
-            <TextBlock Margin="5,0"
+                       Text="当前工程[" />
+            <TextBlock Margin="2,0"
                        VerticalAlignment="Center"
                        h:Cattach.GuideData="当前选中的工程"
                        h:Cattach.GuideTitle="当前工程"
@@ -17,13 +17,15 @@
                     <Run Text="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Title, FallbackValue=选择工程}" />
                 </Hyperlink>
             </TextBlock>
-            <Button h:Cattach.GuideData="点击此按钮新建工程"
+            <TextBlock VerticalAlignment="Center"
+                       Text="]" />
+            <Button Margin="2,0"
+                    h:Cattach.GuideData="点击此按钮新建工程"
                     h:Cattach.GuideTitle="新建工程"
                     h:Cattach.UseGuide="True"
                     Command="{Binding NewCommand}"
                     Content="新建工程" />
-            <Button Margin="0"
-                    h:Cattach.GuideData="点击此按钮浏览工程列表，切换工程"
+            <Button h:Cattach.GuideData="点击此按钮浏览工程列表，切换工程"
                     h:Cattach.GuideTitle="工程列表"
                     h:Cattach.UseGuide="True"
                     Command="{Binding ListCommand}"

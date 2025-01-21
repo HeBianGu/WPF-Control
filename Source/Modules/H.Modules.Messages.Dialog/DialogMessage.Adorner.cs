@@ -100,7 +100,7 @@ namespace H.Modules.Messages.Dialog
                 x.VerticalAlignment = VerticalAlignment.Center;
                 x.HorizontalContentAlignment = HorizontalAlignment.Stretch;
                 x.VerticalContentAlignment = VerticalAlignment.Center;
-                x.MinWidth = 400;
+                x.Width = 400;
                 build?.Invoke(x);
             });
         }

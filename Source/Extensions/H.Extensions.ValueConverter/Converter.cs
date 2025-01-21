@@ -326,6 +326,8 @@ namespace H.Extensions.ValueConverter
         public static IValueConverter GetTrueToHidden => new ConverterBase<bool, Visibility>(x => x ? Visibility.Hidden : Visibility.Visible);
         public static IValueConverter GetFalseToHidden => new ConverterBase<bool, Visibility>(x => x ? Visibility.Visible : Visibility.Hidden);
         public static IValueConverter GetTrueToVisible => new ConverterBase<bool, Visibility>(x => x ? Visibility.Visible : Visibility.Collapsed);
+
+        public static IValueConverter GetVisibleToTrue => new ConverterBase<Visibility, bool>(x => x == Visibility.Visible, x => x ? Visibility.Visible : Visibility.Collapsed);
         public static IMultiValueConverter GetTrueAllToVisible => new MultiConverterBase<bool, Visibility>(x => x.All(l => l == true) ? Visibility.Visible : Visibility.Collapsed);
         public static IValueConverter GetNullToCollapsed => new ConverterBase<object, Visibility>(x => x == null ? Visibility.Collapsed : Visibility.Visible) { DefaultR = Visibility.Collapsed };
         public static IValueConverter GetNullToVisible => new ConverterBase<object, Visibility>(x => x == null ? Visibility.Visible : Visibility.Collapsed) { DefaultR = Visibility.Visible };
@@ -336,7 +338,6 @@ namespace H.Extensions.ValueConverter
 
         public static IValueConverter GetIntToCollapsed => new ConverterBase<int, int, Visibility>((x, y) => x == y ? Visibility.Collapsed : Visibility.Visible);
         public static IValueConverter GetIntToVisible => new ConverterBase<int, int, Visibility>((x, y) => x == y ? Visibility.Visible : Visibility.Collapsed);
-
 
         public static IMultiValueConverter GetAllEqualsToVisible => new MultiConverterBase<object, Visibility>(x =>
         {

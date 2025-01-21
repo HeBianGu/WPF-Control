@@ -53,14 +53,24 @@
                                  Margin="5,0" />
                     </BulletDecorator>
                 </DockPanel>
-                <DataGrid ItemsSource="{Binding Collection.Source}">
+                <DataGrid ItemsSource="{Binding Collection.Source}" SelectedItem="{Binding Collection.SelectedItem}">
                     <Behaviors:Interaction.Behaviors>
                         <h:DataGridAutoColumnBehavior BindingPath="Model.{0}"
                                                       DataGridLength="*"
                                                       Type="{Binding ModelType}">
                             <h:DataGridAutoColumnBehavior.HomeColumns>
-                                <DataGridCheckBoxColumn Binding="{Binding IsSelected}"
-                                                        Header="全选" />
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox IsChecked="{Binding IsSelected}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <CheckBox IsChecked="{Binding RelativeSource={RelativeSource AncestorType=DataGrid},Path=DataContext.CheckedAll}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                </DataGridTemplateColumn>
                             </h:DataGridAutoColumnBehavior.HomeColumns>
                         </h:DataGridAutoColumnBehavior>
                     </Behaviors:Interaction.Behaviors>

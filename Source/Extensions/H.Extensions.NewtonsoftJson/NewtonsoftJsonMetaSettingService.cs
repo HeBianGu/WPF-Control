@@ -8,9 +8,12 @@ namespace H.Extensions.NewtonsoftJson
     {
         public override T Deserilize<T>(string id)
         {
-            if (!File.Exists(this.GetFilePath(typeof(T).Name, id)))
+            string path = this.GetFilePath(typeof(T).Name, id);
+            if (!File.Exists(path))
                 return default;
-            string txt = File.ReadAllText(this.GetFilePath(typeof(T).Name, id));
+
+            System.Diagnostics.Debug.WriteLine(path);
+            string txt = File.ReadAllText(path);
             var obj = JsonConvert.DeserializeObject(txt, typeof(T), GetSerializerSettings());
             return (T)obj;
         }

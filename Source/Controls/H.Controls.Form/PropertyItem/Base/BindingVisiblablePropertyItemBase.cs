@@ -6,7 +6,12 @@ using System.Reflection;
 
 namespace H.Controls.Form
 {
-    public abstract class BindingVisiblablePropertyItemBase : ObjectPropertyItemBase, IBindingVisibleable
+    public interface IRefreshOnValueChanged
+    {
+        bool CanRefresh { get; }
+    }
+
+    public abstract class BindingVisiblablePropertyItemBase : ObjectPropertyItemBase, IBindingVisibleable, IRefreshOnValueChanged
     {
         private readonly MethodInfo _methodInfo;
         protected BindingVisiblablePropertyItemBase(PropertyInfo property, object obj) : base(property, obj)
@@ -27,5 +32,21 @@ namespace H.Controls.Form
         {
             return this._methodInfo?.Invoke(this.Obj, null) is not bool l || l != false;
         }
+
+        #region - IRefreshOnValueChanged -
+
+        private bool? _canRefresh;
+        public bool CanRefresh
+        {
+            get
+            {
+                if (this._canRefresh == null)
+                {
+                    this._canRefresh = this.PropertyInfo.GetCustomAttribute<RefreshOnValueChangedAttribute>()?.CanRefresh == true;
+                }
+                return this._canRefresh.Value;
+            }
+        }
+        #endregion
     }
 }

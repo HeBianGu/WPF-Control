@@ -242,7 +242,7 @@
                     <DataTemplate>
                         <DockPanel>
                             <Button
-                                Padding="12"
+                                Padding="2" Width="15" Height="15" Margin="2 0"
                                 Command="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.HideItemCommand}"
                                 CommandParameter="{Binding}"
                                 Content="{x:Static h:Geometrys.Close}"

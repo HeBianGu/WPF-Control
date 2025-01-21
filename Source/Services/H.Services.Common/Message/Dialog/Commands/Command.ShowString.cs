@@ -21,7 +21,7 @@ namespace H.Services.Common
                 Thread.Sleep(1000);
                 return true;
             };
-            await IocMessage.Dialog.ShowString(func, x => this.Build(x));
+            await IocMessage.Dialog.ShowString(func);
         }
     }
 }

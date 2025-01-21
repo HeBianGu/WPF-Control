@@ -13,9 +13,10 @@
                           HorizontalAlignment="Left"
                           h:Cattach.CheckedGeometry=""
                           h:Cattach.UnCheckedGeometry=""
-                          IsChecked="{Binding Series.Visibility, Converter={x:Static h:Converter.GetTrueToVisible}}"
+                          IsChecked="{Binding Series.Visibility, Converter={x:Static h:Converter.GetVisibleToTrue}}"
                           Style="{DynamicResource {x:Static h:ToggleButtonKeys.Default}}">
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Margin="5,0"
+                            Orientation="Horizontal">
                     <Ellipse Width="10"
                              Height="10"
                              HorizontalAlignment="Center"
@@ -24,7 +25,7 @@
                              Opacity="{Binding Series.Opacity}"
                              OpacityMask="{Binding Series.OpacityMask}" />
                     <TextBlock x:Name="txt"
-                               Margin="10,-10"
+                               Margin="5,0"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                Foreground="{DynamicResource {x:Static h:BrushKeys.ForegroundTitle}}"
@@ -121,7 +122,8 @@
                           h:Cattach.UnCheckedGeometry=""
                           IsChecked="{Binding IsChecked}"
                           Style="{DynamicResource {x:Static h:ToggleButtonKeys.Default}}">
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Margin="5,0"
+                            Orientation="Horizontal">
                     <Rectangle Width="10"
                                Height="10"
                                HorizontalAlignment="Center"

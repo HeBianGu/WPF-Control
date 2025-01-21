@@ -771,7 +771,9 @@ namespace H.Controls.Form
         {
             RoutedEventArgs args = new RoutedEventArgs(ValueChangedRoutedEvent, this);
             args.Source = tuple;
-            this.RefreshItemsFilter();
+
+            if (tuple.Item1 is IRefreshOnValueChanged refreshOnValueChanged && refreshOnValueChanged.CanRefresh)
+                this.RefreshItemsFilter();
             ////  Do ：触发通知方法
             //CustomValidationAttribute attribute = tuple.Item1.PropertyInfo.GetCustomAttribute<CustomValidationAttribute>();
 

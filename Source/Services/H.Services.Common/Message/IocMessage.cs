@@ -17,15 +17,27 @@ namespace H.Services.Common
         {
             if (Dialog == null)
             {
-                MessageBoxButton boxButton = MessageBoxButton.OK;
-                if (dialogButton == DialogButton.Sumit)
-                    boxButton = MessageBoxButton.OK;
-                if (dialogButton == DialogButton.Cancel)
-                    boxButton = MessageBoxButton.OK;
-                if (dialogButton == DialogButton.SumitAndCancel)
-                    boxButton = MessageBoxButton.OKCancel;
-                MessageBoxResult r = MessageBox.Show(message, title, boxButton);
-                return r == MessageBoxResult.None ? new Nullable<bool>() : new Nullable<bool>(r == MessageBoxResult.OK);
+                if (Window == null)
+                {
+                    MessageBoxButton boxButton = MessageBoxButton.OK;
+                    if (dialogButton == DialogButton.Sumit)
+                        boxButton = MessageBoxButton.OK;
+                    if (dialogButton == DialogButton.Cancel)
+                        boxButton = MessageBoxButton.OK;
+                    if (dialogButton == DialogButton.SumitAndCancel)
+                        boxButton = MessageBoxButton.OKCancel;
+                    MessageBoxResult r = MessageBox.Show(message, title, boxButton);
+                    return r == MessageBoxResult.None ? new Nullable<bool>() : new Nullable<bool>(r == MessageBoxResult.OK);
+                }
+                else
+                {
+                    return await Window.Show(message, x =>
+                    {
+                        x.DialogButton = dialogButton;
+                        x.Padding = new Thickness(40);
+                        x.Title = title;
+                    });
+                }
             }
             else
             {
@@ -35,6 +47,25 @@ namespace H.Services.Common
                      x.Padding = new Thickness(40);
                      x.Title = title;
                  });
+            }
+        }
+
+        public static async Task<bool?> ShowDialog(object presenter, Action<IDialog> builder = null)
+        {
+            if (Dialog == null)
+            {
+                if (Window == null)
+                {
+                    return new Window() { Content = presenter, Title = "提示" }.ShowDialog();
+                }
+                else
+                {
+                    return await Window.Show(presenter, builder);
+                }
+            }
+            else
+            {
+                return await Dialog.Show(presenter, builder);
             }
         }
 
@@ -67,7 +98,7 @@ namespace H.Services.Common
         {
             if (Snack == null)
             {
-               await ShowDialogMessage(message);
+                await ShowDialogMessage(message);
             }
             else
             {

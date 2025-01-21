@@ -6,6 +6,12 @@ namespace H.Services.Common
     {
         public abstract T Deserilize<T>(string id);
         public abstract void Serilize(object setting, string id);
-        protected string GetFilePath(string typeName, string id) => Path.Combine(AppPaths.Instance.Cache, id + ".json");
+        protected string GetFilePath(string typeName, string id)
+        {
+            string path = Path.Combine(AppPaths.Instance.Cache, typeName, id + ".json");
+            if (!Directory.Exists(Path.GetDirectoryName(path)))
+                Directory.CreateDirectory(Path.GetDirectoryName(path));
+            return path;
+        }
     }
 }

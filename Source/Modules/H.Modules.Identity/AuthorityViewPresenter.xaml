@@ -20,24 +20,24 @@
                 </Behaviors:Interaction.Triggers>
                 <h:Cattach.CaptionRightTemplate>
                     <ControlTemplate>
-                        <BulletDecorator VerticalAlignment="Center">
+                        <!--<BulletDecorator VerticalAlignment="Center">
                             <BulletDecorator.Bullet>
                                 <TextBlock VerticalAlignment="Center"
                                            Text="搜索 " />
-                            </BulletDecorator.Bullet>
-                            <h:TextFilterBox x:Name="tfb1"
-                                             Width="200"
-                                             Margin="0,5"
-                                             DockPanel.Dock="Top">
-                                <Behaviors:Interaction.Triggers>
-                                    <Behaviors:EventTrigger EventName="FilterChanged">
-                                        <Behaviors:ChangePropertyAction PropertyName="Filter1"
-                                                                        TargetObject="{Binding Collection}"
-                                                                        Value="{Binding ElementName=tfb1, Path=Filter}" />
-                                    </Behaviors:EventTrigger>
-                                </Behaviors:Interaction.Triggers>
-                            </h:TextFilterBox>
-                        </BulletDecorator>
+                            </BulletDecorator.Bullet>-->
+                        <h:TextFilterBox x:Name="tfb1"
+                                         Width="200"
+                                         Margin="0,5"
+                                         DockPanel.Dock="Top">
+                            <Behaviors:Interaction.Triggers>
+                                <Behaviors:EventTrigger EventName="FilterChanged">
+                                    <Behaviors:ChangePropertyAction PropertyName="Filter1"
+                                                                    TargetObject="{Binding Collection}"
+                                                                    Value="{Binding ElementName=tfb1, Path=Filter}" />
+                                </Behaviors:EventTrigger>
+                            </Behaviors:Interaction.Triggers>
+                        </h:TextFilterBox>
+                        <!--</BulletDecorator>-->
                     </ControlTemplate>
                 </h:Cattach.CaptionRightTemplate>
                 <DataGrid.Columns>

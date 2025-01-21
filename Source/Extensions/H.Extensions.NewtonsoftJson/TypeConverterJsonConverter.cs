@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.ComponentModel;
+using System.Reflection;
 
 namespace H.Extensions.NewtonsoftJson
 {
@@ -40,11 +41,12 @@ namespace H.Extensions.NewtonsoftJson
 
     }
 
-    public class TypeConverterJsonConverter: JsonConverter
+    public class TypeConverterJsonConverter : JsonConverter
     {
         TypeConverter CreateTypeConverter(Type objectType)
         {
-            return TypeDescriptor.GetConverter(objectType);
+            var result = TypeDescriptor.GetConverter(objectType);
+            return result.GetType() == typeof(TypeConverter) ? null : result;
         }
         public override bool CanConvert(Type objectType)
         {
@@ -59,11 +61,10 @@ namespace H.Extensions.NewtonsoftJson
             {
                 return null;
             }
-
             TypeConverter converter = CreateTypeConverter(objectType);
-            if(converter==null)
-                return reader.Value;
-            return converter.ConvertFromInvariantString((string)reader.Value);
+            if (reader?.Value is string str && converter != null)
+                return converter.ConvertFromInvariantString(str);
+            return reader.Value;
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)

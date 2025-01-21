@@ -17,7 +17,6 @@ namespace H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem
         public override IEnumerable GetSource(PropertyInfo propertyInfo, object obj)
         {
             return this.Source;
-
         }
     }
 }

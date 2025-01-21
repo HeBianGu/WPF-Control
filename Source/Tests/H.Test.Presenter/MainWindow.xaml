@@ -1,114 +1,128 @@
-﻿<Window
-    x:Class="H.Test.Presenter.MainWindow"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:h="https://github.com/HeBianGu"
-    xmlns:local="clr-namespace:H.Test.Presenter"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="MainWindow"
-    Width="800"
-    Height="450"
-    Style="{StaticResource {x:Type Window}}"
-    mc:Ignorable="d">
+﻿<Window x:Class="H.Test.Presenter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:h="https://github.com/HeBianGu"
+        xmlns:local="clr-namespace:H.Test.Presenter"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Title="MainWindow"
+        Width="800"
+        Height="450"
+        Style="{StaticResource {x:Type Window}}"
+        mc:Ignorable="d">
     <UniformGrid>
-        <Button Command="{h:ShowCommand Presnter={GetStudent}}" Content="Student" />
-        <Button Command="{h:ShowCommand Presnter=String}" Content="String" />
-        <Button Command="{h:ShowCommand Presnter={x:Static h:AboutViewPresenter.Instance}}" Content="About" />
-        <Button Command="{h:ShowCommand}" Content="TextBoxPresenter">
+        <Button Command="{h:ShowCommand Presnter={GetStudent}}"
+                Content="Student" />
+        <Button Command="{h:ShowCommand Presnter=String}"
+                Content="String" />
+        <Button Command="{h:ShowCommand Presnter={x:Static h:AboutViewPresenter.Instance}}"
+                Content="About" />
+        <Button Command="{h:ShowCommand}"
+                Content="TextBoxPresenter">
             <Button.CommandParameter>
                 <TextBoxPresenter Text="TextBoxPresenter" />
             </Button.CommandParameter>
         </Button>
-        <Button Command="{h:ShowCommand}" Content="PasswordBoxPresenter">
+        <Button Command="{h:ShowCommand}"
+                Content="PasswordBoxPresenter">
             <Button.CommandParameter>
                 <PasswordBoxPresenter Password="TextBoxPresenter" />
             </Button.CommandParameter>
         </Button>
-        <Button Command="{h:ShowCommand}" Content="WaitPresenter">
+        <Button Command="{h:ShowCommand}"
+                Content="WaitPresenter">
             <Button.CommandParameter>
                 <WaitPresenter />
             </Button.CommandParameter>
         </Button>
 
-        <Button Command="{h:ShowCommand}" Content="CardPresenter">
+        <Button Command="{h:ShowCommand}"
+                Content="CardPresenter">
             <Button.CommandParameter>
-                <CardPresenter Width="500" Height="500" />
+                <CardPresenter Width="500"
+                               Height="500" />
             </Button.CommandParameter>
         </Button>
 
-        <Button Command="{h:ShowCommand}" Content="DefinitionGridPresenter">
+        <Button Command="{h:ShowCommand}"
+                Content="DefinitionGridPresenter">
             <Button.CommandParameter>
-                <DefinitionGridPresenter
-                    Width="500"
-                    Height="500"
-                    Columns="5"
-                    Rows="5" />
+                <DefinitionGridPresenter Width="500"
+                                         Height="500"
+                                         Columns="5"
+                                         Rows="5" />
             </Button.CommandParameter>
         </Button>
-        <Button Command="{h:ShowCommand}" Content="ImagePresenter">
+        <Button Command="{h:ShowCommand}"
+                Content="ImagePresenter">
             <Button.CommandParameter>
-                <ImagePresenter ImageSource="{h:Logo}" />
+                <ImagePresenter Width="Auto"
+                                Height="Auto" HorizontalContentAlignment="Center"
+                                ImageSource="{h:Logo}" />
             </Button.CommandParameter>
         </Button>
-        <Button Command="{h:ShowCommand}" Content="ImagePresenter-Layout">
+        <Button Command="{h:ShowCommand}"
+                Content="ImagePresenter-Layout">
             <Button.CommandParameter>
-                <ImagePresenter
-                    Width="200"
-                    Height="200"
-                    Margin="0"
-                    Padding="0"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Top"
-                    HorizontalContentAlignment="Center"
-                    VerticalContentAlignment="Center"
-                    ImageSource="{h:Logo}"
-                    Stretch="Uniform" />
+                <ImagePresenter Width="200"
+                                Height="200"
+                                Margin="0"
+                                Padding="0"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Top"
+                                HorizontalContentAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                ImageSource="{h:Logo}"
+                                Stretch="Uniform" />
             </Button.CommandParameter>
         </Button>
-        <Button Command="{h:ShowCommand}" Content="ImagePresenter-Layout">
+        <Button Command="{h:ShowCommand}"
+                Content="ImagePresenter-Layout">
             <Button.CommandParameter>
-                <ImagePresenter
-                    Width="250"
-                    Height="Auto"
-                    Margin="0"
-                    Padding="0"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Stretch"
-                    HorizontalContentAlignment="Center"
-                    VerticalContentAlignment="Center"
-                    ImageSource="{h:Logo}" />
+                <ImagePresenter Width="250"
+                                Height="Auto"
+                                Margin="0"
+                                Padding="0"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Stretch"
+                                HorizontalContentAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                ImageSource="{h:Logo}" />
             </Button.CommandParameter>
         </Button>
-        <Button Command="{h:ShowCommand}" Content="TextBlockPresenter">
+        <Button Command="{h:ShowCommand}"
+                Content="TextBlockPresenter">
             <Button.CommandParameter>
-                <TextBlockPresenter
-                    Height="Auto"
-                    FontSize="100"
-                    FontWeight="Bold"
-                    Text="TextBlockPresenter" />
-            </Button.CommandParameter>
-        </Button>
-
-        <Button Command="{h:ShowCommand}" Content="UniformGridPresenter">
-            <Button.CommandParameter>
-                <UniformGridPresenter
-                    Width="500"
-                    Height="500"
-                    Columns="5"
-                    Rows="5" />
+                <TextBlockPresenter Height="Auto"
+                                    FontSize="100"
+                                    FontWeight="Bold"
+                                    Text="TextBlockPresenter" />
             </Button.CommandParameter>
         </Button>
 
-        <Button Command="{h:ShowCommand}" Content="PasswordBox">
+        <Button Command="{h:ShowCommand}"
+                Content="UniformGridPresenter">
             <Button.CommandParameter>
-                <PasswordBox Width="200" Password="123456" />
+                <UniformGridPresenter Width="500"
+                                      Height="500"
+                                      Columns="5"
+                                      Rows="5" />
             </Button.CommandParameter>
         </Button>
 
-        <Button Command="{h:ShowCommand}" Content="TextBox">
+        <Button Command="{h:ShowCommand}"
+                Content="PasswordBox">
             <Button.CommandParameter>
-                <TextBox Width="200" Text="123456" />
+                <PasswordBox Width="200"
+                             Password="123456" />
+            </Button.CommandParameter>
+        </Button>
+
+        <Button Command="{h:ShowCommand}"
+                Content="TextBox">
+            <Button.CommandParameter>
+                <TextBox Width="200"
+                         Text="123456" />
             </Button.CommandParameter>
         </Button>
     </UniformGrid>
