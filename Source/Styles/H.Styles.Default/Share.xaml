@@ -91,7 +91,18 @@
         <Setter Property="TextBlock.Foreground" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.AttachForeground)}" />
     </Style>
 
+
     <Style x:Key="S.Path.Icon" TargetType="{x:Type Path}">
+        <!--<Setter Property="Margin" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Padding}" />-->
+        <Setter Property="Data" Value="{Binding RelativeSource={RelativeSource AncestorType=ContentControl}, Path=Content}" />
+        <Setter Property="Stroke" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Foreground}" />
+        <Setter Property="Fill" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Foreground}" />
+        <Setter Property="Height" Value="{DynamicResource {x:Static LayoutKeys.IconHeight}}" />
+        <Setter Property="Width" Value="{DynamicResource {x:Static LayoutKeys.IconHeight}}" />
+        <Setter Property="Stretch" Value="Uniform" />
+    </Style>
+
+    <Style x:Key="S.Path.Icon.Cattachable" TargetType="{x:Type Path}" BasedOn="{StaticResource S.Path.Icon}">
         <Setter Property="HorizontalAlignment" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.IconHorizontalAlignment)}" />
         <Setter Property="VerticalAlignment" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.IconVerticalAlignment)}" />
         <Setter Property="Opacity" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.IconOpacity)}" />
@@ -107,11 +118,5 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="S.Path.Geometry" TargetType="{x:Type Path}">
-        <Setter Property="Margin" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Padding}" />
-        <Setter Property="Data" Value="{Binding RelativeSource={RelativeSource AncestorType=ContentControl}, Path=Content}" />
-        <Setter Property="Stretch" Value="Uniform" />
-        <Setter Property="Stroke" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Foreground}" />
-        <Setter Property="Fill" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Foreground}" />
-    </Style>
+
 </ResourceDictionary>

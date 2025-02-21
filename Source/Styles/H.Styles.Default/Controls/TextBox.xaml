@@ -154,7 +154,7 @@
                             <Border Style="{StaticResource S.Border.Title}">
                                 <ContentPresenter Style="{StaticResource S.ContentPresenter.Title}" />
                             </Border>
-                            <Path Style="{StaticResource S.Path.Icon}" />
+                            <Path Style="{StaticResource S.Path.Icon.Cattachable}" />
                             <Border Style="{StaticResource S.Border.Attach}">
                                 <ContentPresenter Style="{StaticResource S.ContentPresenter.Attach}" />
                             </Border>

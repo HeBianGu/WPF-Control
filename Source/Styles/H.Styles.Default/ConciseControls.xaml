@@ -39,5 +39,6 @@
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Controls/TreeView.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Controls/Window.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Controls/ResizeGrip.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Controls/Path.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

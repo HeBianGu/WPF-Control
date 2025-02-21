@@ -11,6 +11,7 @@ namespace H.Styles.Default
         public static ComponentResourceKey Error => new ComponentResourceKey(typeof(ButtonKeys), "S.Button.Error");
 
         public static ComponentResourceKey Geometry => new ComponentResourceKey(typeof(ButtonKeys), "S.Button.Geometry");
+        public static ComponentResourceKey Icon => new ComponentResourceKey(typeof(ButtonKeys), "S.Button.Icon");
 
         public static ComponentResourceKey GeometryError => new ComponentResourceKey(typeof(ButtonKeys), "S.Button.Geometry.Error");
 

@@ -163,8 +163,9 @@
         BasedOn="{StaticResource {x:Static local:ButtonKeys.Default}}"
         TargetType="Button">
         <Setter Property="Width" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
-        <Setter Property="Padding" Value="10" />
+        <!--<Setter Property="Padding" Value="10" />-->
         <Setter Property="Height" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
+        <Setter Property="Padding" Value="0" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="{x:Null}" />
@@ -175,11 +176,22 @@
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Border Style="{StaticResource S.Border.TemplatedParent}" TextBlock.Foreground="{TemplateBinding Foreground}">
-                        <Path Style="{StaticResource S.Path.Geometry}" />
+                        <Path Style="{StaticResource S.Path.Icon}" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+
+    <Style
+        x:Key="{ComponentResourceKey ResourceId=S.Button.Icon,
+                                     TypeInTargetAssembly={x:Type local:ButtonKeys}}"
+        BasedOn="{StaticResource {x:Static local:ButtonKeys.Geometry}}"
+        TargetType="Button">
+        <Setter Property="Width" Value="Auto" />
+        <Setter Property="Padding" Value="10" />
+        <Setter Property="Height" Value="Auto" />
+        <Setter Property="Margin" Value="2 0" />
     </Style>
 
     <Style
