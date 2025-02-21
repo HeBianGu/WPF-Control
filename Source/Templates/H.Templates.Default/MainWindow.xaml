@@ -1,0 +1,109 @@
+﻿<h:MainWindow x:Class="H.Templates.Default.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:H.Templates.Default"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Title="MainWindow"
+        xmlns:h="https://github.com/HeBianGu"
+        Width="1200"
+        Height="750"
+        d:DesignInstance="{d:Type local:MainViewModel}"
+        mc:Ignorable="d">
+    <Window.DataContext>
+        <local:MainViewModel/>
+    </Window.DataContext>
+    <h:MainWindow.CaptionTempate>
+        <ControlTemplate>
+            <DockPanel LastChildFill="False" HorizontalAlignment="Right">
+                <ContentPresenter Content="{Ioc Type={x:Type ISettingButtonPresenter}}" />
+                <ContentPresenter Content="{Ioc Type={x:Type h:ISwitchThemeViewPresenter}}" />
+                <ContentPresenter Content="{Ioc Type={x:Type IAboutButtonPresenter}}" />
+            </DockPanel>
+        </ControlTemplate>
+    </h:MainWindow.CaptionTempate>
+    <Grid>
+        <!--<Button Click="Button_Click"
+                Content="Text" />
+
+        <DockPanel>
+            <TextBlock />
+        </DockPanel>-->
+
+        <TabControl>
+            <TabItem Header="Dialog">
+                <UniformGrid>
+                    <Button Command="{ShowIocCommand Type={x:Type IAboutViewPresenter}}"
+                        Content="ShowIocCommand" />
+                    <Button Command="{ShowMessageCommand Message=我是消息,
+                                                     Title=我是标题,
+                                                     Height=150,
+                                                     Width=300}"
+                        Content="ShowMessageCommand" />
+                    <Button Command="{ShowCommand Presnter={h:GetStudent}}"
+                        Content="ShowCommand" />
+                    <Button Command="{ShowPercentCommand}"
+                        Content="ShowPercentCommand" />
+                    <Button Command="{ShowStringCommand}"
+                        Content="ShowStringCommand" />
+                    <Button Command="{ShowWaitCommand}"
+                        Content="ShowWaitCommand" />
+                    <Button Command="{ShowEditCommand Value={h:GetStudent}}"
+                        Content="ShowEditCommand" />
+                    <Button Command="{ShowViewCommand Value={h:GetStudent}}"
+                        Content="ShowViewCommand" />
+                    <Button Command="{h:ShowAdornerDialogCommand}"
+                        CommandParameter="{h:GetStudent}"
+                        Content="内嵌弹窗" />
+                    <Button Command="{h:ShowStepCommand Count=6}"
+                        Content="ShowStepCommand" />
+                    <Button Command="{h:ShowVerticalStepCommand Count=36,
+                                                            Width=40}"
+                        Content="ShowVerticalStepCommand" />
+
+                </UniformGrid>
+            </TabItem>
+            <TabItem Header="Notice">
+                <UniformGrid>
+                    <Button Command="{h:ShowInfoNoticeMessageCommand Message=我是Info消息}"
+                        Content="ShowInfo" />
+                    <Button Command="{h:ShowErrorNoticeMessageCommand Message=我是Error消息}"
+                        Content="ShowError" />
+                    <Button Command="{h:ShowSuccessNoticeMessageCommand Message=我是Success消息}"
+                        Content="ShowSuccess" />
+                    <Button Command="{h:ShowWarnNoticeMessageCommand Message=我是Warn消息}"
+                        Content="ShowWarn" />
+                    <Button Command="{h:ShowFatalNoticeMessageCommand Message=我是Fatal消息}"
+                        Content="ShowFatal" />
+                    <Button Command="{h:ShowProgressNoticeMessageCommand Message=我是Progress消息}"
+                        Content="ShowProgress" />
+                    <Button Command="{h:ShowStringNoticeMessageCommand Message=我是String消息}"
+                        Content="ShowString" />
+                    <Button Command="{h:ShowDialogNoticeMessageCommand Message=我是Dialog消息}"
+                        Content="ShowDialog" />
+                </UniformGrid>
+            </TabItem>
+
+            <TabItem Header="Snack">
+                <UniformGrid>
+                    <Button Command="{h:ShowInfoSnackMessageCommand Message=我是Info消息}"
+                        Content="ShowInfo" />
+                    <Button Command="{h:ShowErrorSnackMessageCommand Message=我是Error消息}"
+                        Content="ShowError" />
+                    <Button Command="{h:ShowSuccessSnackMessageCommand Message=我是Success消息}"
+                        Content="ShowSuccess" />
+                    <Button Command="{h:ShowWarnSnackMessageCommand Message=我是Warn消息}"
+                        Content="ShowWarn" />
+                    <Button Command="{h:ShowFatalSnackMessageCommand Message=我是Fatal消息}"
+                        Content="ShowFatal" />
+                    <Button Command="{h:ShowProgressSnackMessageCommand Message=我是Progress消息}"
+                        Content="ShowProgress" />
+                    <Button Command="{h:ShowStringSnackMessageCommand Message=我是String消息}"
+                        Content="ShowString" />
+                    <Button Command="{h:ShowDialogSnackMessageCommand Message=我是Dialog消息}"
+                        Content="ShowDialog" />
+                </UniformGrid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</h:MainWindow>
