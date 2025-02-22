@@ -1,0 +1,77 @@
+﻿<Window
+    x:Class="H.Test.Icon.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:H.Test.Icon"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <Window.Resources />
+    <TabControl TabStripPlacement="Left">
+        <!--  https://learn.microsoft.com/zh-cn/windows/apps/design/style/segoe-fluent-icons-font  -->
+        <!--  前缀介于“E0-”到“E5-”（例如 E001、E5B1）的字形当前被标记为旧版，因此不推荐使用。  -->
+        <TabItem Header="PUA E700-E900">
+            <ContentPresenter Content="{GetIconSegoes}" />
+        </TabItem>
+        <TabItem Header="PUA EA00-EC00">
+            <ContentPresenter Content="{GetIconSegoes From=0xEA00, To=0xEC00}" />
+        </TabItem>
+        <TabItem Header="PUA ED00-EF00">
+            <ContentPresenter Content="{GetIconSegoes From=0xED00, To=0xEF00}" />
+        </TabItem>
+        <TabItem Header="PUA F000-F200">
+            <ContentPresenter Content="{GetIconSegoes From=0xF000, To=0xF200}" />
+        </TabItem>
+        <TabItem Header="PUA F300-F500">
+            <ContentPresenter Content="{GetIconSegoes From=0xF300, To=0xF500}" />
+        </TabItem>
+        <TabItem Header="PUA F600-F800">
+            <ContentPresenter Content="{GetIconSegoes From=0xF600, To=0xF800}" />
+        </TabItem>
+        <TabItem Header="PUA E000-EFFF">
+            <ContentPresenter Content="{GetIconSegoes From=0xE000, To=0xEFFF}" />
+        </TabItem>
+        <TabItem Header="PUA F000-FFFF">
+            <ContentPresenter Content="{GetIconSegoes From=0xF000, To=0xFFFF}" />
+        </TabItem>
+        <TabItem Header="Button">
+            <ItemsControl>
+                <Button Content="&#xE77B;" FontFamily="Segoe MDL2 Assets" />
+                <Button Content="&#xE77B;" FontFamily="Segoe Fluent Icons" />
+                <Button Style="{DynamicResource {x:Static ButtonKeys.Default}}">
+                    <FontIcon />
+                </Button>
+            </ItemsControl>
+        </TabItem>
+
+        <TabItem Header="TextBlock">
+            <ItemsControl>
+                <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE710;" />
+                <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xE77B;" />
+            </ItemsControl>
+        </TabItem>
+
+        <TabItem Header="FontIcon">
+            <ItemsControl>
+                <FontIcon Text="&#xE710;" />
+            </ItemsControl>
+        </TabItem>
+        <TabItem Header="FontIconButton">
+            <ItemsControl>
+                <FontIconButton Content="&#xE710;" />
+            </ItemsControl>
+        </TabItem>
+
+        <TabItem Header="FontIconToggleButton">
+            <ItemsControl>
+                <FontIconToggleButton />
+                <FontIconToggleButton
+                    CheckedGlyph="&#xEDB5;"
+                    UncheckedGlyph="&#xEF3B;" />
+            </ItemsControl>
+        </TabItem>
+    </TabControl>
+</Window>

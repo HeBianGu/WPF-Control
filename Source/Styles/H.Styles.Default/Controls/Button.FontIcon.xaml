@@ -1,0 +1,15 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:H.Styles.Default">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Controls/Button.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    <Style BasedOn="{StaticResource {x:Static local:ButtonKeys.Default}}" TargetType="{x:Type local:FontIconButton}">
+        <Setter Property="FontFamily" Value="Segoe MDL2 Assets" />
+        <Setter Property="Content" Value="&#xE700;" />
+        <Setter Property="Width" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
+        <Setter Property="Height" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
+</ResourceDictionary>

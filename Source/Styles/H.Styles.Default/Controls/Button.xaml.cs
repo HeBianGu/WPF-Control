@@ -2,7 +2,7 @@
 
 namespace H.Styles.Default
 {
-    public class ButtonKeys
+    public partial class ButtonKeys
     {
         public static ComponentResourceKey Default => new ComponentResourceKey(typeof(ButtonKeys), "S.Button.Default");
 

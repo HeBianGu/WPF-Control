@@ -94,7 +94,7 @@
                                                         <MouseOverContextMenuBehavior />
                                                     </b:Interaction.Behaviors>
                                                     <Border.ContextMenu>
-                                                        <ContextMenu HorizontalOffset="20">
+                                                        <ContextMenu Placement="Right">
                                                             <ContextMenu.Template>
                                                                 <ControlTemplate>
                                                                     <GroupBox
@@ -113,12 +113,12 @@
                                                             </ContextMenu.Template>
                                                         </ContextMenu>
                                                     </Border.ContextMenu>
-                                                    <Path
-                                                        Width="25"
-                                                        Height="25"
+                                                    <FontIconToggleButton
                                                         Margin="0,5"
-                                                        Data="{Binding Source={x:Static Geometrys.Dalog}}"
-                                                        Style="{DynamicResource {x:Static PathKeys.Icon}}" />
+                                                        CheckedGlyph="&#xE12D;"
+                                                        FontSize="25"
+                                                        IsChecked="{Binding RelativeSource={RelativeSource AncestorType=Border}, Path=ContextMenu.IsOpen}"
+                                                        UncheckedGlyph="&#xE722;" />
                                                 </Border>
                                             </DataTemplate>
                                         </ItemsControl.ItemTemplate>
@@ -156,18 +156,9 @@
                             <TabControl.ItemTemplate>
                                 <DataTemplate>
                                     <DockPanel>
-                                        <Path
-                                            Margin="5,0"
-                                            Data="{Binding Source={x:Static Geometrys.Info}}"
-                                            Style="{DynamicResource {x:Static PathKeys.Icon}}" />
-                                        <Button
-                                            Content="{x:Static Geometrys.Info}"
-                                            DockPanel.Dock="Right"
-                                            Style="{DynamicResource {x:Static ButtonKeys.Icon}}" />
-                                        <Button
-                                            Content="{x:Static Geometrys.Error}"
-                                            DockPanel.Dock="Right"
-                                            Style="{DynamicResource {x:Static ButtonKeys.Icon}}" />
+                                        <FontIcon />
+                                        <FontIconButton Content="&#xEDB4;" DockPanel.Dock="Right" />
+                                        <FontIconButton Content="&#xEC57;" DockPanel.Dock="Right" />
                                         <TextBlock
                                             Margin="10,0"
                                             VerticalAlignment="Center"
@@ -195,14 +186,8 @@
                                                 Margin="0,0,0,1"
                                                 VerticalScrollBarVisibility="Auto">
                                                 <DockPanel LastChildFill="False">
-                                                    <Path
-                                                        Margin="10,0"
-                                                        Data="{Binding Source={x:Static Geometrys.Info}}"
-                                                        Style="{DynamicResource {x:Static PathKeys.Icon}}" />
-                                                    <Path
-                                                        Margin="10,0"
-                                                        Data="{Binding Source={x:Static Geometrys.Info}}"
-                                                        Style="{DynamicResource {x:Static PathKeys.Icon}}" />
+                                                    <FontIcon Margin="5,0" Text="&#xE790;" />
+                                                    <FontIcon Margin="5,0" Text="&#xE803;" />
                                                     <TabPanel
                                                         Grid.Row="0"
                                                         Grid.Column="0"
@@ -210,7 +195,7 @@
                                                         Background="Transparent"
                                                         IsItemsHost="true"
                                                         KeyboardNavigation.TabIndex="1" />
-                                                    <Button Content="{x:Static Geometrys.Fatal}" Style="{DynamicResource {x:Static ButtonKeys.Geometry}}" />
+                                                    <FontIconButton Content="&#xE710;" SnapsToDevicePixels="True" />
                                                 </DockPanel>
                                             </ScrollViewer>
 
@@ -294,13 +279,13 @@
                             <GroupBox DockPanel.Dock="Bottom" Header="图像源">
                                 <Cattach.CaptionRightTemplate>
                                     <ControlTemplate>
-                                        <ToggleButton
+                                        <FontIconToggleButton
                                             x:Name="tb_s"
-                                            Cattach.CheckedGeometry="{x:Static Geometrys.Fixed}"
-                                            Cattach.UnCheckedGeometry="{x:Static Geometrys.UnFixed}"
+                                            CheckedGlyph="&#xE018;"
                                             DockPanel.Dock="Right"
                                             IsChecked="True"
-                                            Style="{DynamicResource {x:Static ToggleButtonKeys.SwitchGeometry}}" />
+                                            Style="{DynamicResource {x:Static FontIconToggleButtonKeys.Switch}}"
+                                            UncheckedGlyph="&#xE019;" />
                                     </ControlTemplate>
                                 </Cattach.CaptionRightTemplate>
                                 <ListBox
@@ -325,7 +310,24 @@
                             <TabControl Cattach.CaptionHorizontalAlignment="Center" ItemContainerStyle="{DynamicResource {x:Static TabItemKeys.Line}}">
                                 <TabItem MinWidth="100" Header="图像">
                                     <Grid>
-                                        <Image Source="{h:Logo}" />
+                                        <h:Zoombox
+                                            x:Name="zoomview"
+                                            Background="Transparent"
+                                            DragModifiers=""
+                                            Focusable="True"
+                                            IsTabStop="True"
+                                            NavigateOnPreview="False"
+                                            RelativeZoomModifiers=""
+                                            ViewStackIndex="0"
+                                            ZoomOn="Content">
+                                            <h:Zoombox.ViewStack>
+                                                <h:ZoomboxView>0 0 1000 1000</h:ZoomboxView>
+                                            </h:Zoombox.ViewStack>
+                                            <Image
+                                                Width="1000"
+                                                Height="1000"
+                                                Source="{h:Logo}" />
+                                        </h:Zoombox>
                                         <Border Height="35" VerticalAlignment="Bottom">
                                             <Border.Background>
                                                 <SolidColorBrush Opacity="0.3" Color="Black" />
@@ -379,13 +381,13 @@
                                                 Margin="0,0,0,1"
                                                 VerticalScrollBarVisibility="Auto">
                                                 <DockPanel>
-                                                    <ToggleButton
+                                                    <FontIconToggleButton
                                                         x:Name="tb"
-                                                        Cattach.CheckedGeometry="{x:Static Geometrys.Fixed}"
-                                                        Cattach.UnCheckedGeometry="{x:Static Geometrys.UnFixed}"
+                                                        CheckedGlyph="&#xE018;"
                                                         DockPanel.Dock="Right"
                                                         IsChecked="True"
-                                                        Style="{DynamicResource {x:Static ToggleButtonKeys.SwitchGeometry}}">
+                                                        Style="{DynamicResource {x:Static FontIconToggleButtonKeys.Switch}}"
+                                                        UncheckedGlyph="&#xE019;">
                                                         <b:Interaction.Triggers>
                                                             <b:EventTrigger EventName="Unchecked">
                                                                 <b:ChangePropertyAction
@@ -400,7 +402,7 @@
                                                                     Value="200" />
                                                             </b:EventTrigger>
                                                         </b:Interaction.Triggers>
-                                                    </ToggleButton>
+                                                    </FontIconToggleButton>
                                                     <TabPanel
                                                         Grid.Row="0"
                                                         Grid.Column="0"

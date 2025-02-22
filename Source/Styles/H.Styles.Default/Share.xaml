@@ -102,7 +102,10 @@
         <Setter Property="Stretch" Value="Uniform" />
     </Style>
 
-    <Style x:Key="S.Path.Icon.Cattachable" TargetType="{x:Type Path}" BasedOn="{StaticResource S.Path.Icon}">
+    <Style
+        x:Key="S.Path.Icon.Cattachable"
+        BasedOn="{StaticResource S.Path.Icon}"
+        TargetType="{x:Type Path}">
         <Setter Property="HorizontalAlignment" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.IconHorizontalAlignment)}" />
         <Setter Property="VerticalAlignment" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.IconVerticalAlignment)}" />
         <Setter Property="Opacity" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.IconOpacity)}" />
@@ -117,6 +120,4 @@
             </DataTrigger>
         </Style.Triggers>
     </Style>
-
-
 </ResourceDictionary>

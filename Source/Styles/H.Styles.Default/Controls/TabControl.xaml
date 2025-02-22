@@ -1,13 +1,12 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:H.Styles.Default">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:H.Styles.Default">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style x:Key="{ComponentResourceKey ResourceId=S.TabControl.Default,
-                                        TypeInTargetAssembly={x:Type local:TabControlKeys}}"
-           TargetType="{x:Type TabControl}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.TabControl.Default, TypeInTargetAssembly={x:Type local:TabControlKeys}}" TargetType="{x:Type TabControl}">
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
@@ -24,44 +23,46 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabControl}">
                     <Border Style="{StaticResource S.Border.TemplatedParent}">
-                        <Grid ClipToBounds="true"
-                              KeyboardNavigation.TabNavigation="Local"
-                              SnapsToDevicePixels="true">
+                        <Grid
+                            ClipToBounds="true"
+                            KeyboardNavigation.TabNavigation="Local"
+                            SnapsToDevicePixels="true">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition x:Name="ColumnDefinition0" />
-                                <ColumnDefinition x:Name="ColumnDefinition1"
-                                                  Width="0" />
+                                <ColumnDefinition x:Name="ColumnDefinition1" Width="0" />
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
-                                <RowDefinition x:Name="RowDefinition0"
-                                               Height="Auto" />
-                                <RowDefinition x:Name="RowDefinition1"
-                                               Height="*" />
+                                <RowDefinition x:Name="RowDefinition0" Height="Auto" />
+                                <RowDefinition x:Name="RowDefinition1" Height="*" />
                             </Grid.RowDefinitions>
-                            <ScrollViewer x:Name="headerPanel"
-                                          Margin="0,0,0,1"
-                                          VerticalScrollBarVisibility="Auto">
-                                <TabPanel Grid.Row="0"
-                                          Grid.Column="0"
-                                          Panel.ZIndex="1"
-                                          Background="Transparent"
-                                          IsItemsHost="true"
-                                          KeyboardNavigation.TabIndex="1" />
+                            <ScrollViewer
+                                x:Name="headerPanel"
+                                Margin="0,0,0,1"
+                                VerticalScrollBarVisibility="Auto">
+                                <TabPanel
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Panel.ZIndex="1"
+                                    Background="Transparent"
+                                    IsItemsHost="true"
+                                    KeyboardNavigation.TabIndex="1" />
                             </ScrollViewer>
 
-                            <Border x:Name="contentPanel"
-                                    Grid.Row="1"
-                                    Grid.Column="0"
-                                    KeyboardNavigation.DirectionalNavigation="Contained"
-                                    KeyboardNavigation.TabIndex="2"
-                                    KeyboardNavigation.TabNavigation="Local">
+                            <Border
+                                x:Name="contentPanel"
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                KeyboardNavigation.DirectionalNavigation="Contained"
+                                KeyboardNavigation.TabIndex="2"
+                                KeyboardNavigation.TabNavigation="Local">
                                 <!--  Foreground继承,不从TabItem继承，TabItem选中为高亮  -->
-                                <ContentControl x:Name="PART_SelectedContentHost"
-                                                Margin="{TemplateBinding Padding}"
-                                                Content="{TemplateBinding SelectedContent}"
-                                                ContentTemplate="{TemplateBinding SelectedContentTemplate}"
-                                                Foreground="{TemplateBinding Foreground}"
-                                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                <ContentControl
+                                    x:Name="PART_SelectedContentHost"
+                                    Margin="{TemplateBinding Padding}"
+                                    Content="{TemplateBinding SelectedContent}"
+                                    ContentTemplate="{TemplateBinding SelectedContentTemplate}"
+                                    Foreground="{TemplateBinding Foreground}"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                                 <!--<ContentPresenter
 x:Name="PART_SelectedContentHost"
 Margin="{TemplateBinding Padding}"
@@ -111,10 +112,11 @@ SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>-->
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.TabItem.Default,
-                                        TypeInTargetAssembly={x:Type local:TabItemKeys}}"
-           BasedOn="{StaticResource S.Control.Base}"
-           TargetType="{x:Type TabItem}">
+    <Style
+        x:Key="{ComponentResourceKey ResourceId=S.TabItem.Default,
+                                     TypeInTargetAssembly={x:Type local:TabItemKeys}}"
+        BasedOn="{StaticResource S.Control.Base}"
+        TargetType="{x:Type TabItem}">
         <Setter Property="Height" Value="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=(Cattach.CaptionHeight)}" />
         <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=(Cattach.CaptionMargin)}" />
         <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=(Cattach.CaptionBackground)}" />
@@ -130,12 +132,13 @@ SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>-->
                 <ControlTemplate TargetType="{x:Type TabItem}">
                     <Grid>
                         <Border Style="{StaticResource S.Border.TemplatedParent}">
-                            <ContentPresenter x:Name="ContentSite"
-                                              HorizontalAlignment="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionHorizontalAlignment)}"
-                                              VerticalAlignment="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionVerticalAlignment)}"
-                                              ContentSource="Header"
-                                              RecognizesAccessKey="True"
-                                              Style="{StaticResource S.ContentPresenter.TemplatedParent}" />
+                            <ContentPresenter
+                                x:Name="ContentSite"
+                                HorizontalAlignment="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionHorizontalAlignment)}"
+                                VerticalAlignment="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionVerticalAlignment)}"
+                                ContentSource="Header"
+                                RecognizesAccessKey="True"
+                                Style="{StaticResource S.ContentPresenter.TemplatedParent}" />
                         </Border>
                     </Grid>
                     <!--<ControlTemplate.Triggers>
@@ -217,29 +220,26 @@ SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>-->
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.TabItem.Line,
-                                        TypeInTargetAssembly={x:Type local:TabItemKeys}}"
-           BasedOn="{StaticResource {x:Static local:TabItemKeys.Default}}"
-           TargetType="{x:Type TabItem}">
+    <Style
+        x:Key="{ComponentResourceKey ResourceId=S.TabItem.Line,
+                                     TypeInTargetAssembly={x:Type local:TabItemKeys}}"
+        BasedOn="{StaticResource {x:Static local:TabItemKeys.Default}}"
+        TargetType="{x:Type TabItem}">
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
         <Style.Triggers>
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=TabStripPlacement}"
-                         Value="Top">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=TabStripPlacement}" Value="Top">
                 <Setter Property="BorderThickness" Value="0,0,0,2" />
                 <Setter Property="Cattach.CornerRadius" Value="2,2,0,0" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=TabStripPlacement}"
-                         Value="Bottom">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=TabStripPlacement}" Value="Bottom">
                 <Setter Property="BorderThickness" Value="0,2,0,0" />
                 <Setter Property="Cattach.CornerRadius" Value="0,0,2,2" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=TabStripPlacement}"
-                         Value="Left">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=TabStripPlacement}" Value="Left">
                 <Setter Property="BorderThickness" Value="0,0,2,0" />
                 <Setter Property="Cattach.CornerRadius" Value="2,0,0,2" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=TabStripPlacement}"
-                         Value="Right">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=TabStripPlacement}" Value="Right">
                 <Setter Property="BorderThickness" Value="2,0,0,0" />
                 <Setter Property="Cattach.CornerRadius" Value="0,2,2,0" />
             </DataTrigger>
@@ -248,9 +248,7 @@ SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>-->
             </Trigger>
         </Style.Triggers>
     </Style>
-    <Style BasedOn="{StaticResource {x:Static local:TabControlKeys.Default}}"
-           TargetType="TabControl" />
-    <Style BasedOn="{StaticResource {x:Static local:TabItemKeys.Default}}"
-           TargetType="TabItem" />
+    <Style BasedOn="{StaticResource {x:Static local:TabControlKeys.Default}}" TargetType="TabControl" />
+    <Style BasedOn="{StaticResource {x:Static local:TabItemKeys.Default}}" TargetType="TabItem" />
 
 </ResourceDictionary>

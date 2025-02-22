@@ -1,0 +1,22 @@
+﻿using H.Mvvm;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Reflection.Metadata;
+using System.Runtime.CompilerServices;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Markup;
+
+namespace H.Styles.Default
+{
+    //https://learn.microsoft.com/zh-cn/windows/apps/design/style/segoe-ui-symbol-font?WT.mc_id=MVP_380318
+    public class TextBlockIconKeys
+    {
+        //public static ComponentResourceKey SegoeFluent => new ComponentResourceKey(typeof(TextBlockIconKeys), "S.TextBlock.Icon.Segoe.Fluent");
+
+        //public static ComponentResourceKey SegoeMDL2 => new ComponentResourceKey(typeof(TextBlockIconKeys), "S.TextBlock.Icon.Segoe.MDL2");
+    }
+}
