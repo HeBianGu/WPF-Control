@@ -14,7 +14,7 @@
     Cattach.TitleMargin="10 20"
     mc:Ignorable="d">
     <Window.DataContext>
-        <local:MainViewModel />
+        <local:MainViewModel x:Name="vm" />
     </Window.DataContext>
     <h:MainWindow.CaptionTempate>
         <ControlTemplate>
@@ -69,16 +69,21 @@
                 <Control>
                     <Control.Template>
                         <ControlTemplate>
-                            <GroupBox Header="流程资源">
-                                <Grid Margin="0,1">
-                                    <ItemsControl x:Name="dp_2" ItemsSource="{Binding NodeDataGroups}">
+                            <Grid Margin="0,1">
+                                <GroupBox x:Name="dp_2" Header="流程资源">
+                                    <ItemsControl ItemsSource="{Binding NodeDataGroups}">
                                         <ItemsControl.ItemTemplate>
                                             <DataTemplate>
                                                 <Expander Margin="0,0,0,1" Header="{Binding Name}">
+                                                    <h:Cattach.CaptionRightTemplate>
+                                                        <ControlTemplate>
+                                                            <FontIcon Margin="5,0" Text="{Binding Icon}" />
+                                                        </ControlTemplate>
+                                                    </h:Cattach.CaptionRightTemplate>
                                                     <ItemsControl ItemsSource="{Binding NodeDatas}">
                                                         <ItemsControl.ItemsPanel>
                                                             <ItemsPanelTemplate>
-                                                                <WrapPanel />
+                                                                <UniformGrid HorizontalAlignment="Center" Columns="1" />
                                                             </ItemsPanelTemplate>
                                                         </ItemsControl.ItemsPanel>
                                                     </ItemsControl>
@@ -86,45 +91,46 @@
                                             </DataTemplate>
                                         </ItemsControl.ItemTemplate>
                                     </ItemsControl>
-                                    <ItemsControl x:Name="dp_1" ItemsSource="{Binding NodeDataGroups}">
-                                        <ItemsControl.ItemTemplate>
-                                            <DataTemplate>
-                                                <Border Background="Transparent">
-                                                    <b:Interaction.Behaviors>
-                                                        <MouseOverContextMenuBehavior />
-                                                    </b:Interaction.Behaviors>
-                                                    <Border.ContextMenu>
-                                                        <ContextMenu Placement="Right">
-                                                            <ContextMenu.Template>
-                                                                <ControlTemplate>
-                                                                    <GroupBox
-                                                                        Background="{DynamicResource {x:Static BrushKeys.Background}}"
-                                                                        BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
-                                                                        Header="{Binding Name}">
-                                                                        <ItemsControl ItemsSource="{Binding NodeDatas}">
-                                                                            <ItemsControl.ItemsPanel>
-                                                                                <ItemsPanelTemplate>
-                                                                                    <UniformGrid Columns="4" />
-                                                                                </ItemsPanelTemplate>
-                                                                            </ItemsControl.ItemsPanel>
-                                                                        </ItemsControl>
-                                                                    </GroupBox>
-                                                                </ControlTemplate>
-                                                            </ContextMenu.Template>
-                                                        </ContextMenu>
-                                                    </Border.ContextMenu>
-                                                    <FontIconToggleButton
-                                                        Margin="0,5"
-                                                        CheckedGlyph="&#xE12D;"
-                                                        FontSize="25"
-                                                        IsChecked="{Binding RelativeSource={RelativeSource AncestorType=Border}, Path=ContextMenu.IsOpen}"
-                                                        UncheckedGlyph="&#xE722;" />
-                                                </Border>
-                                            </DataTemplate>
-                                        </ItemsControl.ItemTemplate>
-                                    </ItemsControl>
-                                </Grid>
-                            </GroupBox>
+                                </GroupBox>
+                                <ItemsControl x:Name="dp_1" ItemsSource="{Binding NodeDataGroups}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border Background="Transparent">
+                                                <b:Interaction.Behaviors>
+                                                    <MouseOverContextMenuBehavior />
+                                                </b:Interaction.Behaviors>
+                                                <Border.ContextMenu>
+                                                    <ContextMenu Placement="Right">
+                                                        <ContextMenu.Template>
+                                                            <ControlTemplate>
+                                                                <GroupBox
+                                                                    Background="{DynamicResource {x:Static BrushKeys.Background}}"
+                                                                    BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                                                                    Header="{Binding Name}">
+                                                                    <ItemsControl ItemsSource="{Binding NodeDatas}">
+                                                                        <ItemsControl.ItemsPanel>
+                                                                            <ItemsPanelTemplate>
+                                                                                <UniformGrid Columns="2" />
+                                                                            </ItemsPanelTemplate>
+                                                                        </ItemsControl.ItemsPanel>
+                                                                    </ItemsControl>
+                                                                </GroupBox>
+                                                            </ControlTemplate>
+                                                        </ContextMenu.Template>
+                                                    </ContextMenu>
+                                                </Border.ContextMenu>
+                                                <FontIconToggleButton
+                                                    Margin="0,5"
+                                                    CheckedGlyph="&#xE725;"
+                                                    FontSize="25"
+                                                    IsChecked="{Binding RelativeSource={RelativeSource AncestorType=Border}, Path=ContextMenu.IsOpen}"
+                                                    IsHitTestVisible="False"
+                                                    UncheckedGlyph="{Binding Icon}" />
+                                            </Border>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </Grid>
                             <ControlTemplate.Triggers>
                                 <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=h:GridSplitterBox}, Path=MenuWidth.Value, Converter={x:Static h:Converter.GetLessThan}, ConverterParameter=90}" Value="True">
                                     <Setter TargetName="dp_1" Property="Visibility" Value="Visible" />
@@ -157,8 +163,18 @@
                                 <DataTemplate>
                                     <DockPanel>
                                         <FontIcon />
-                                        <FontIconButton Content="&#xEDB4;" DockPanel.Dock="Right" />
-                                        <FontIconButton Content="&#xEC57;" DockPanel.Dock="Right" />
+                                        <FontIconButton
+                                            Width="Auto"
+                                            Command="{Binding ElementName=vm, Path=StopCommand}"
+                                            CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=TabControl}}"
+                                            Content="&#xE81D;"
+                                            DockPanel.Dock="Right" />
+                                        <FontIconButton
+                                            Width="Auto"
+                                            Command="{Binding ElementName=vm, Path=StartCommand}"
+                                            CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=TabControl}}"
+                                            Content="&#xEC58;"
+                                            DockPanel.Dock="Right" />
                                         <TextBlock
                                             Margin="10,0"
                                             VerticalAlignment="Center"
@@ -235,14 +251,15 @@
                                             ViewStackIndex="0"
                                             ZoomOn="Content">
                                             <h:Zoombox.ViewStack>
-                                                <h:ZoomboxView>0 0 200 300</h:ZoomboxView>
+                                                <h:ZoomboxView>500 500 200 300</h:ZoomboxView>
                                             </h:Zoombox.ViewStack>
                                             <h:Diagram
                                                 x:Name="diagram"
-                                                Width="1000"
-                                                Height="1000"
+                                                Width="2000"
+                                                Height="2000"
                                                 FlowableZoomMode="Center"
                                                 Focusable="True"
+                                                NodesSource="{Binding ElementName=vm, Path=Nodes}"
                                                 UseAnimation="False">
                                                 <h:Diagram.Layout>
                                                     <h:LocationLayout />
@@ -267,7 +284,6 @@
                                 </DataTemplate>
                             </TabControl.ContentTemplate>
                         </TabControl>
-
                     </h:GridSplitterBox.MenuContent>
                     <Grid>
                         <Grid.RowDefinitions>

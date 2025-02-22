@@ -11,6 +11,15 @@ using System.Xml.Serialization;
 
 namespace H.Mvvm
 {
+    public class IconAttribute : Attribute
+    {
+        public IconAttribute(string icon)
+        {
+            this.Icon = icon;
+        }
+        public string Icon { get; set; }
+    }
+
     public abstract class DisplayBindableBase : BindableBase, IDable
     {
         public DisplayBindableBase()
@@ -31,11 +40,13 @@ namespace H.Mvvm
             IDAttribute id = type.GetCustomAttribute<IDAttribute>(true);
             this.ID = id?.ID ?? type.Name;
             this.Commands = new ObservableCollection<ICommand>(this.CreateCommands());
+            IconAttribute icon = type.GetCustomAttribute<IconAttribute>(true);
+            this.Icon = icon?.Icon;
             LoadDefault();
         }
         [Browsable(false)]
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         public ObservableCollection<ICommand> Commands { get; } = new ObservableCollection<ICommand>();
 
@@ -57,13 +68,13 @@ namespace H.Mvvm
 
         [Browsable(false)]
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         public RelayCommand LoadedCommand => new RelayCommand(Loaded);
 
         [Browsable(false)]
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         public bool IsLoaded { get; set; }
         protected virtual void Loaded(object obj)
@@ -100,7 +111,6 @@ namespace H.Mvvm
 
         private string _icon;
         [System.Text.Json.Serialization.JsonIgnore]
-        
         [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         public virtual string Icon
@@ -115,7 +125,7 @@ namespace H.Mvvm
 
         private string _shortName;
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         public virtual string ShortName
@@ -130,7 +140,7 @@ namespace H.Mvvm
 
         private string _groupName;
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         public virtual string GroupName
@@ -145,7 +155,7 @@ namespace H.Mvvm
 
         private string _description;
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         public virtual string Description
@@ -161,7 +171,7 @@ namespace H.Mvvm
 
         private int _order;
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         public virtual int Order
@@ -175,7 +185,7 @@ namespace H.Mvvm
         }
 
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         [Display(Name = "恢复默认")]
         [Browsable(false)]

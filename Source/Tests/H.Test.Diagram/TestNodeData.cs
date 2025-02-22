@@ -38,7 +38,7 @@ namespace H.Test.Diagram
                     IPortData port = CreatePortData();
                     port.Dock = Dock.Left;
                     port.PortType = (PortType)i;
-                    PortDatas.Add(port);
+                    this.PortDatas.Add(port);
 
                 }
 
@@ -46,21 +46,21 @@ namespace H.Test.Diagram
                     IPortData port = CreatePortData();
                     port.Dock = Dock.Right;
                     port.PortType = (PortType)i;
-                    PortDatas.Add(port);
+                    this.PortDatas.Add(port);
                 }
 
                 {
                     IPortData port = CreatePortData();
                     port.Dock = Dock.Top;
                     port.PortType = (PortType)i;
-                    PortDatas.Add(port);
+                    this.PortDatas.Add(port);
                 }
 
                 {
                     IPortData port = CreatePortData();
                     port.Dock = Dock.Bottom;
                     port.PortType = (PortType)i;
-                    PortDatas.Add(port);
+                    this.PortDatas.Add(port);
                 }
             }
 

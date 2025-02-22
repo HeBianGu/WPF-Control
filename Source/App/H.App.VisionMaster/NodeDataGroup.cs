@@ -9,9 +9,9 @@ public interface INodeDataGroup
     ObservableCollection<INodeData> NodeDatas { get; set; }
 }
 
+[Icon("\xE722")]
 public class NodeDataGroup : DisplayBindableBase, INodeDataGroup
 {
-    public string Icon { get; set; }
     private ObservableCollection<INodeData> _nodeDatas = new ObservableCollection<INodeData>();
     public ObservableCollection<INodeData> NodeDatas
     {

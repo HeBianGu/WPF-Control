@@ -5,7 +5,7 @@ using System.Windows.Controls;
 
 namespace H.Controls.Diagram.Extension
 {
-    public interface ISystemNodeData : INodeData
+    public interface ISystemNodeData : ILinkDataCreator
     {
         public List<IPortData> PortDatas { get; set; }
     }

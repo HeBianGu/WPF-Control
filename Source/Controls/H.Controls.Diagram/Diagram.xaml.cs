@@ -52,22 +52,11 @@ namespace H.Controls.Diagram
                 CommandBinding binding = new CommandBinding(DiagramCommands.Start);
                 binding.Executed += async (l, k) =>
                 {
-                    Node start = this.GetStartNode(out string message);
-                    if (start == null)
-                    {
-                        IocMessage.ShowDialogMessage(message);
-                        return;
-                    }
-
-                    this.State = DiagramFlowableState.Running;
-                    bool? b = await Start(start);
-                    this.State = b == null ? DiagramFlowableState.Canceled : b == true ? DiagramFlowableState.Success : DiagramFlowableState.Error;
-                    IocMessage.Snack?.ShowInfo(b == null ? "用户取消" : b == true ? "运行成功" : "运行失败");
-                    Commands.InvalidateRequerySuggested();
+                    await this.Start();
                 };
                 binding.CanExecute += (l, k) =>
                 {
-                    k.CanExecute = this.State != DiagramFlowableState.Running && this.State != DiagramFlowableState.Canceling;
+                    k.CanExecute = this.CanStart();
                 };
                 this.CommandBindings.Add(binding);
             }
@@ -76,26 +65,11 @@ namespace H.Controls.Diagram
                 CommandBinding binding = new CommandBinding(DiagramCommands.Stop);
                 binding.Executed += (l, k) =>
                 {
-                    IEnumerable<Part> parts = this.Nodes.SelectMany(x => x.GetParts());
-                    foreach (Part part in parts)
-                    {
-                        IFlowable data = part.GetContent<IFlowable>();
-                        {
-                            if (data != null)
-                            {
-                                if (data.State == FlowableState.Running || data.State == FlowableState.Wait)
-                                    data.State = FlowableState.Canceling;
-                            }
-                        }
-                        if (part.State == FlowableState.Running || part.State == FlowableState.Wait)
-                        {
-                            part.State = FlowableState.Canceling;
-                        }
-                    };
+                    this.Stop();
                 };
                 binding.CanExecute += (l, k) =>
                 {
-                    k.CanExecute = this.State == DiagramFlowableState.Running && this.State != DiagramFlowableState.Canceling;
+                    k.CanExecute = this.CanStop();
                 };
                 this.CommandBindings.Add(binding);
             }
@@ -197,19 +171,7 @@ namespace H.Controls.Diagram
                 CommandBinding binding = new CommandBinding(DiagramCommands.Aligment);
                 binding.Executed += (l, k) =>
                 {
-                    Action<IEnumerable<Node>> action = null;
-                    action = nodes =>
-                    {
-                        foreach (Node node in nodes)
-                        {
-                            node.Aligment();
-                            List<Node> fromNodes = node.GetFromNodes();
-                            action.Invoke(fromNodes);
-                        }
-                    };
-
-                    IEnumerable<Node> nodes = this.Nodes.Where(x => x.LinksOutOf.Count == 0);
-                    action.Invoke(nodes);
+                    this.AligmentNodes();
                 };
                 this.CommandBindings.Add(binding);
             }
@@ -559,24 +521,17 @@ namespace H.Controls.Diagram
             DependencyProperty.Register("Layout", typeof(ILayout), typeof(Diagram), new FrameworkPropertyMetadata(default(ILayout), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, (d, e) =>
             {
                 Diagram control = d as Diagram;
-
-                if (control == null) return;
-
+                if (control == null)
+                    return;
                 ILayout config = e.NewValue as ILayout;
-
-                if (config == null) return;
-
+                if (config == null)
+                    return;
                 config.Diagram = control;
-
                 //  Do ：切换布局时动画显示
                 bool temp = config.Diagram.UseAnimation;
-
                 config.Diagram.UseAnimation = true;
-
                 //control.RefreshData();
-
                 control.RefreshLayout();
-
                 config.Diagram.UseAnimation = temp;
 
             }));
@@ -642,9 +597,7 @@ namespace H.Controls.Diagram
             DependencyProperty.Register("NodesSource", typeof(IList), typeof(Diagram), new PropertyMetadata(new ObservableCollection<Node>(), (d, e) =>
             {
                 Diagram control = d as Diagram;
-
                 if (control == null) return;
-
                 IList config = e.NewValue as IList;
 
                 //if (e.OldValue is INotifyCollectionChanged old)
@@ -728,6 +681,14 @@ namespace H.Controls.Diagram
             remove { this.RemoveHandler(AddLinkedRoutedEvent, value); }
         }
 
+        public void AddLink(Link link)
+        {
+            this.LinkLayer.Children.Add(link);
+            this.Layout.DoLayoutLink(link);
+            this.OnAddLinked(link);
+            this.OnItemsChanged();
+        }
+
         internal void OnAddLinked(Link link)
         {
             RoutedEventArgs<Link> args = new RoutedEventArgs<Link>(AddLinkedRoutedEvent, this, link);
@@ -792,6 +753,21 @@ namespace H.Controls.Diagram
                 part.IsSelected = true;
         }
 
+
+        public static readonly RoutedEvent AddNodedRoutedEvent =
+            EventManager.RegisterRoutedEvent("AddNoded", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(Diagram));
+        public event RoutedEventHandler AddNoded
+        {
+            add { this.AddHandler(AddNodedRoutedEvent, value); }
+            remove { this.RemoveHandler(AddNodedRoutedEvent, value); }
+        }
+
+        protected void OnAddNoded(IEnumerable<Node> nodes)
+        {
+            var args = new RoutedEventArgs<IEnumerable<Node>>(AddNodedRoutedEvent, this, nodes);
+            this.RaiseEvent(args);
+        }
+
         public void ZoomToFit()
         {
             if (this.Nodes.Count == 0)
@@ -845,6 +821,53 @@ namespace H.Controls.Diagram
             if (this.FlowableMode == DiagramFlowableMode.Port)
                 return await startNode.StartPort(builder);
             return await startNode.StartNode(builder);
+        }
+
+
+        public void Stop()
+        {
+            IEnumerable<Part> parts = this.Nodes.SelectMany(x => x.GetParts());
+            foreach (Part part in parts)
+            {
+                IFlowable data = part.GetContent<IFlowable>();
+                {
+                    if (data != null)
+                    {
+                        if (data.State == FlowableState.Running || data.State == FlowableState.Wait)
+                            data.State = FlowableState.Canceling;
+                    }
+                }
+                if (part.State == FlowableState.Running || part.State == FlowableState.Wait)
+                {
+                    part.State = FlowableState.Canceling;
+                }
+            };
+        }
+
+        public bool CanStop()
+        {
+            return this.State == DiagramFlowableState.Running && this.State != DiagramFlowableState.Canceling;
+        }
+
+        public async Task Start()
+        {
+            Node start = this.GetStartNode(out string message);
+            if (start == null)
+            {
+                await IocMessage.ShowDialogMessage(message);
+                return;
+            }
+
+            this.State = DiagramFlowableState.Running;
+            bool? b = await Start(start);
+            this.State = b == null ? DiagramFlowableState.Canceled : b == true ? DiagramFlowableState.Success : DiagramFlowableState.Error;
+            IocMessage.Snack?.ShowInfo(b == null ? "用户取消" : b == true ? "运行成功" : "运行失败");
+            Commands.InvalidateRequerySuggested();
+        }
+
+        public bool CanStart()
+        {
+            return this.State != DiagramFlowableState.Running && this.State != DiagramFlowableState.Canceling;
         }
 
         protected virtual Node GetStartNode(out string message)
@@ -949,8 +972,20 @@ namespace H.Controls.Diagram
             }
         }
 
+
+
+        public bool UseAutoAddLinkOnEnd
+        {
+            get { return (bool)GetValue(UseAutoAddLinkOnEndProperty); }
+            set { SetValue(UseAutoAddLinkOnEndProperty, value); }
+        }
+
+        public static readonly DependencyProperty UseAutoAddLinkOnEndProperty =
+            DependencyProperty.Register("UseAutoAddLinkOnEnd", typeof(bool), typeof(Diagram), new FrameworkPropertyMetadata(true));
+
         public void AddNode(params Node[] nodes)
         {
+            var endNode = this.Nodes.Where(x => x.LinksOutOf.Count == 0).ToList();
             foreach (Node node in nodes)
             {
                 this.NodesSource.Add(node);
@@ -960,6 +995,15 @@ namespace H.Controls.Diagram
 
             this.Layout.AddNode(nodes);
             this.OnItemsChanged();
+            this.OnAddNoded(nodes);
+
+            if (this.UseAutoAddLinkOnEnd && endNode.Count == 1 && nodes.Length == 1)
+            {
+                var firstFrom = endNode.First();
+                var firstTo = nodes.First();
+                this.LinkNodes(firstFrom, firstTo);
+                this.AligmentNodes();
+            }
         }
 
         public void RemoveNode(params Node[] nodes)

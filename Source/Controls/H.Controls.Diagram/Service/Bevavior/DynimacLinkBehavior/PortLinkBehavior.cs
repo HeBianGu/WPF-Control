@@ -264,10 +264,11 @@ namespace H.Controls.Diagram
             Node fromNode = diagram._dynamicLink.FromPort.ParentNode;
             Port fromPort = diagram._dynamicLink.FromPort;
             Link link = Link.Create(fromNode, item.ParentNode, fromPort, item);
-            diagram.LinkLayer.Children.Add(link);
-            diagram.Layout.DoLayoutLink(link);
-            diagram.OnAddLinked(link);
-            diagram.OnItemsChanged();
+            //diagram.LinkLayer.Children.Add(link);
+            //diagram.Layout.DoLayoutLink(link);
+            //diagram.OnAddLinked(link);
+            //diagram.OnItemsChanged();
+            diagram.AddLink(link);
 
             this.Dispatcher.BeginInvoke(DispatcherPriority.SystemIdle, new Action(() =>
                        {

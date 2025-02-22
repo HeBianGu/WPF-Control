@@ -32,14 +32,6 @@ namespace H.Controls.Diagram.Extension
         public double OffSet { get; set; } = 90.0;
         public Type NodeType { get; set; } = typeof(Node);
         public bool IsCreateLink { get; set; } = true;
-        protected Dock GetRevertDock()
-        {
-            if (this.Dock == Dock.Left) return Dock.Right;
-            if (this.Dock == Dock.Right) return Dock.Left;
-            if (this.Dock == Dock.Top) return Dock.Bottom;
-            return Dock.Top;
-        }
-
 
         protected virtual double GetOffSet(Node fromNode, Node toNode)
         {
@@ -123,9 +115,9 @@ namespace H.Controls.Diagram.Extension
 
         protected virtual void CreateLink(Diagram diagram, Node from, Node to)
         {
-            if (!this.IsCreateLink) return;
-            Link link = Link.Create(from, to, from.GetPorts(x => x.Dock == this.Dock).FirstOrDefault(), to.GetPorts(x => x.Dock == this.GetRevertDock()).FirstOrDefault());
-            diagram.LinkLayer.Children.Add(link);
+            if (!this.IsCreateLink) 
+                return;
+            diagram.LinkNodes(from, to, this.Dock);
         }
     }
 
