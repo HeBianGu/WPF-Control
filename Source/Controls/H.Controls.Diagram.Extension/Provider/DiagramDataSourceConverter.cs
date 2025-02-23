@@ -24,7 +24,7 @@ namespace H.Controls.Diagram.Extension
             //node.Id = unit.ID;
             node.Location = unit.Location;
 
-            if (unit is ISystemNodeData systemNodeData)
+            if (unit is IPortableNodeData systemNodeData)
             {
                 foreach (IPortData socket in systemNodeData.PortDatas)
                 {
@@ -62,7 +62,7 @@ namespace H.Controls.Diagram.Extension
             {
                 INodeData unit = node.GetContent<INodeData>(); ;
                 IEnumerable<IPortData> sockets = node.GetPorts().Select(l => l.GetContent<IPortData>());
-                if (unit is ISystemNodeData systemNodeData)
+                if (unit is IPortableNodeData systemNodeData)
                 {
                     systemNodeData.PortDatas = sockets.ToList();
                 }

@@ -8,6 +8,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Controls;
+using System.Windows;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace H.Controls.Diagram
 {
@@ -29,6 +31,19 @@ namespace H.Controls.Diagram
             action.Invoke(ns);
         }
 
+        public static Link CreateLinkToNodes(this Node fromNode, Node toNode)
+        {
+            if (fromNode == null || toNode == null)
+                return null;
+            return fromNode.CreateLinkTo(toNode, null, null);
+        }
+
+        public static Link CreateLinkToPorts(this Node fromNode, Node toNode, Port fromPort, Port toPort)
+        {
+            if (fromPort == null || toPort == null)
+                return null;
+            return fromNode.CreateLinkTo(toNode, fromPort, toPort);
+        }
         public static Link CreateLinkTo(this Node fromNode, Node toNode, Port fromPort, Port toPort)
         {
             Link link = new Link();
@@ -62,7 +77,49 @@ namespace H.Controls.Diagram
             return link;
         }
     }
+    public static class DockExtension
+    {
+        public static Dock GetRevert(this Dock dock)
+        {
+            if (dock == Dock.Left) return Dock.Right;
+            if (dock == Dock.Right) return Dock.Left;
+            if (dock == Dock.Top) return Dock.Bottom;
+            return Dock.Top;
+        }
 
+        public static Thickness GetTextMargin(this Dock dock, int offset = -30)
+        {
+            //return new Thickness(0, 0, 0, 0);
+            if (dock == Dock.Left) return new Thickness(offset, 0, 0, 0);
+            if (dock == Dock.Right) return new Thickness(0, 0, offset, 0);
+            if (dock == Dock.Top) return new Thickness(0, offset, 0, 0);
+            return new Thickness(0, 0, 0, offset);
+        }
+
+        public static string GetIcon(this IPortData portData)
+        {
+            string down = "\xE74B";
+            string up = "\xE74A";
+            if (portData.Dock == Dock.Top)
+            {
+                return portData.PortType == PortType.Input ? down : up;
+            }
+            else if (portData.Dock == Dock.Bottom)
+            {
+                return portData.PortType == PortType.Input ? up : down;
+            }
+            else if (portData.Dock == Dock.Left)
+            {
+                return portData.PortType == PortType.Input ? up : down;
+            }
+            else if (portData.Dock == Dock.Right)
+            {
+                return portData.PortType == PortType.Input ? up : down;
+            }
+            return null;
+        }
+
+    }
     public static class DiagramExtension
     {
         public static void AligmentNodes(this Diagram diagram)
@@ -70,17 +127,16 @@ namespace H.Controls.Diagram
             diagram.Nodes.Aligment();
         }
 
-        public static Dock GetRevertDock(this Dock dock)
-        {
-            if (dock == Dock.Left) return Dock.Right;
-            if (dock == Dock.Right) return Dock.Left;
-            if (dock == Dock.Top) return Dock.Bottom;
-            return Dock.Top;
-        }
         public static void LinkNodes(this Diagram diagram, Node from, Node to, Dock dock = Dock.Bottom)
         {
-            Link link = from.CreateLinkTo(to, from.GetPorts(x => x.Dock == dock).FirstOrDefault(),
-                to.GetPorts(x => x.Dock == dock.GetRevertDock()).FirstOrDefault());
+            var fromPort = from.GetPorts(x => x.Dock == dock && x.PortType.HasFlag(PortType.OutPut)).FirstOrDefault();
+            var toPort = to.GetPorts(x => x.Dock == dock.GetRevert() && x.PortType.HasFlag(PortType.Input)).FirstOrDefault();
+
+            if (fromPort == null && toPort != null)
+                return;
+            if (fromPort != null && toPort == null)
+                return;
+            Link link = from.CreateLinkTo(to, fromPort, toPort);
             diagram.AddLink(link);
         }
     }

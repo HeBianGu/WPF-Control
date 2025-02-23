@@ -278,6 +278,8 @@ namespace H.Controls.Diagram
                 double x = link.FromNode.Location.X;
                 double y = link.FromNode.Location.Y;
 
+                if (link.ToPort == null)
+                    continue;
                 {
                     if (link.ToPort.Dock == Dock.Left)
                     {

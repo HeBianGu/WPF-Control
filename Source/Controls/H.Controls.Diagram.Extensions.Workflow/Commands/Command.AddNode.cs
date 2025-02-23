@@ -21,7 +21,7 @@ namespace H.Controls.Diagram.Extensions.Workflow
         {
             if (parameter is Node node)
             {
-                bool r = node.LinksInto.Any(x => x.FromPort?.Dock == x.FromPort?.Dock.GetRevertDock());
+                bool r = node.LinksInto.Any(x => x.FromPort?.Dock == x.FromPort?.Dock.GetRevert());
                 return !r;
             }
             return true;

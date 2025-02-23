@@ -183,6 +183,5 @@ namespace H.Controls.Diagram.Extension
                 RaisePropertyChanged();
             }
         }
-
     }
 }

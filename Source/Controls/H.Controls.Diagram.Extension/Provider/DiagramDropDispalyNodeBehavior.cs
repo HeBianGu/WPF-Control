@@ -37,7 +37,7 @@ namespace H.Controls.Diagram.Extension
 
         protected override Node Create(INodeData nodeData)
         {
-            ISystemNodeData componentNode = nodeData as ISystemNodeData;
+            IPortableNodeData componentNode = nodeData as IPortableNodeData;
             Node node = Activator.CreateInstance(this.NodeType) as Node;
             foreach (IPortData p in componentNode.PortDatas)
             {

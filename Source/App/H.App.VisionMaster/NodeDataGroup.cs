@@ -1,7 +1,10 @@
 ﻿
 using H.Controls.Diagram;
+using H.Controls.Diagram.Extension;
 using H.Mvvm;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Windows.Controls;
 
 namespace H.App.VisionMaster;
 public interface INodeDataGroup
@@ -22,5 +25,47 @@ public class NodeDataGroup : DisplayBindableBase, INodeDataGroup
             RaisePropertyChanged();
         }
     }
+}
 
+public class ImageImportNodeData : ActionNodeDataBase
+{
+    public string ImagePath { get; set; }
+    public string ImageName { get; set; }
+    public string ImageDescription { get; set; }
+
+    protected override IEnumerable<IPortData> CreatePortDatas()
+    {
+        {
+            IPortData port = CreatePortData();
+            port.Dock = Dock.Bottom;
+            port.PortType = PortType.OutPut;
+            yield return port;
+        }
+    }
+}
+
+public class ActionNodeData : ActionNodeDataBase
+{
+
+}
+
+public abstract class ActionNodeDataBase : LineCardNodeData
+{
+    protected override IEnumerable<IPortData> CreatePortDatas()
+    {
+        {
+            IPortData port = CreatePortData();
+            port.Dock = Dock.Top;
+            port.PortType = PortType.Input;
+            yield return port;
+        }
+        {
+            IPortData port = CreatePortData();
+            port.Dock = Dock.Bottom;
+            port.PortType = PortType.OutPut;
+            yield return port;
+        }
+
+
+    }
 }

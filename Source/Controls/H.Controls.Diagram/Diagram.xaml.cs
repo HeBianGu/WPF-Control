@@ -683,6 +683,8 @@ namespace H.Controls.Diagram
 
         public void AddLink(Link link)
         {
+            if (link == null)
+                return;
             this.LinkLayer.Children.Add(link);
             this.Layout.DoLayoutLink(link);
             this.OnAddLinked(link);

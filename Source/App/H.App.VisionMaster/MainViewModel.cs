@@ -19,13 +19,16 @@ public class MainViewModel : BindableBase
             {
                 var group = new NodeDataGroup();
                 group.Name = $"Group {i}";
+                group.NodeDatas.Add(new ImageImportNodeData());
                 for (int j = 0; j < 20; j++)
                 {
-                    group.NodeDatas.Add(new LineCardNodeData());
+                    group.NodeDatas.Add(new ActionNodeData());
                 }
                 this.NodeDataGroups.Add(group);
             }
         }
+
+       
     }
     private ObservableCollection<INodeDataGroup> _nodeDataGroups = new ObservableCollection<INodeDataGroup>();
     public ObservableCollection<INodeDataGroup> NodeDataGroups

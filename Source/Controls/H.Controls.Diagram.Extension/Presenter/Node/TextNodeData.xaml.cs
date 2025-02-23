@@ -10,7 +10,7 @@ using System.Windows.Media;
 
 namespace H.Controls.Diagram.Extension
 {
-    public class TextNodeData : SystemNodeData
+    public class TextNodeData : PortableNodeData
     {
         public TextNodeData()
         {

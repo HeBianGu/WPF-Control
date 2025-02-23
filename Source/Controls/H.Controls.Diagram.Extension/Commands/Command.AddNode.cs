@@ -90,7 +90,7 @@ namespace H.Controls.Diagram.Extension
             Node node = Activator.CreateInstance(this.NodeType) as Node;
             node.Content = nodeData;
 
-            if (nodeData is ISystemNodeData displayNodeData)
+            if (nodeData is IPortableNodeData displayNodeData)
             {
                 foreach (IPortData p in displayNodeData.PortDatas)
                 {

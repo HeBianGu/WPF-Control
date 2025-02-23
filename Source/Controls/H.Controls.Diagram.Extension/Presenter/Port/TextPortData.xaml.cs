@@ -1,17 +1,29 @@
-﻿
-using H.Extensions.Geometry;
+﻿using H.Extensions.Geometry;
 using H.Themes.Default;
-
-
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 using System.Xml.Serialization;
 
 namespace H.Controls.Diagram.Extension
 {
-    public class TextPortData : PortData
+    public interface ITextPortData : IPortData
+    {
+        FontFamily FontFamily { get; set; }
+        double FontSize { get; set; }
+        FontStretch FontStretch { get; set; }
+        FontStyle FontStyle { get; set; }
+        FontWeight FontWeight { get; set; }
+        Brush Foreground { get; set; }
+        string Icon { get; set; }
+        Brush Stroke { get; set; }
+        string Text { get; set; }
+        Thickness TextMargin { get; set; }
+    }
+
+    public class TextPortData : PortData, ITextPortData
     {
         public TextPortData()
         {
@@ -245,6 +257,21 @@ namespace H.Controls.Diagram.Extension
                 textNodeData.Stroke = this.Stroke;
                 textNodeData.StrokeThickness = this.StrokeThickness;
             }
+        }
+    }
+
+    public static class TextPortDataExtension
+    {
+        public static void BuildData(this ITextPortData text, int offset = -30)
+        {
+            text.Icon = text.GetIcon();
+            text.TextMargin = text.Dock.GetTextMargin(offset);
+        }
+
+        public static void BuildTextData(this IPortData port, int offset = -30)
+        {
+            if(port is ITextPortData text)
+                text.BuildData(offset);
         }
     }
 }
