@@ -3,13 +3,11 @@
 
 
 
-using OpenCvSharp;
 using OpenCvSharp.XFeatures2D;
-using System.ComponentModel.DataAnnotations;
 
 namespace HeBianGu.Diagram.OpenCV
 {
-    
+
     [Display(Name = "FREAK", GroupName = "特征提取", Order = 0)]
     public class FreakFeatureDetector : OpenCVNodeData
     {

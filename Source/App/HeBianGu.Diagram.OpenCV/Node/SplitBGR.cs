@@ -1,17 +1,9 @@
 ﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
 
-
-
-
-using OpenCvSharp;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Xml.Linq;
-
 namespace HeBianGu.Diagram.OpenCV
 {
-    
-    
+
+
     [Display(Name = "通道分割", GroupName = "基础函数", Order = 0)]
     public class SplitBGR : OpenCVNodeData
     {

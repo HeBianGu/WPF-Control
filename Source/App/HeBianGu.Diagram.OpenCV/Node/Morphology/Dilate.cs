@@ -1,7 +1,7 @@
 ﻿namespace HeBianGu.Diagram.OpenCV
 {
-    
-    
+
+
     [Display(Name = "膨胀", GroupName = "形态学", Description = "使边缘更清晰", Order = 0)]
     public class Dilate : MorphologyBase
     {

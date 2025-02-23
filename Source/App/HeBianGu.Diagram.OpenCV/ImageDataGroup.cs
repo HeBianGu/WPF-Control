@@ -1,11 +1,6 @@
-﻿using H.App.VisionMaster.Morphology;
-using H.Controls.Diagram;
-using H.Mvvm;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
+﻿using H.Mvvm;
 
-namespace H.App.VisionMaster;
+namespace HeBianGu.Diagram.OpenCV;
 
 [Icon("\xE722")]
 [Display(Name = "采集", GroupName = "设置输入图像", Order = 0)]

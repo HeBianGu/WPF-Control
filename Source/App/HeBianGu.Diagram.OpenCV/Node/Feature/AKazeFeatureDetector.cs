@@ -3,14 +3,11 @@
 
 
 
-using OpenCvSharp;
-using System;
-using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 
 namespace HeBianGu.Diagram.OpenCV
 {
-    
+
     [Display(Name = "AKAZE", GroupName = "特征提取", Order = 0)]
     public class AKazeFeatureDetector : OpenCVNodeData
     {

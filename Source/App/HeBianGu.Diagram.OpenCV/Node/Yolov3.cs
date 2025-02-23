@@ -18,8 +18,8 @@ namespace HeBianGu.Diagram.OpenCV
     /// https://github.com/pjreddie/darknet
     /// https://pjreddie.com/darknet/yolo/
     /// </summary>
-    
-    
+
+
     [Display(Name = "Yolov3", GroupName = "多目标检测", Description = "目标检测", Order = 0)]
     public class Yolov3 : OpenCVNodeData
     {

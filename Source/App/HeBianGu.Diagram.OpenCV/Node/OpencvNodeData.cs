@@ -1,17 +1,7 @@
-﻿
-using H.Controls.Diagram;
-using H.Controls.Diagram.Extension;
+﻿using H.Controls.Diagram.Extension;
 using H.Services.Logger;
-using OpenCvSharp;
-using OpenCvSharp.WpfExtensions;
-using System;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Media;
-using System.Windows.Shapes;
 using System.Xml.Serialization;
 
 namespace HeBianGu.Diagram.OpenCV

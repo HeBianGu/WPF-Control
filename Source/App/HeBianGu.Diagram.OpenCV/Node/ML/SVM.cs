@@ -3,14 +3,11 @@
 
 
 
-using OpenCvSharp;
-using System;
-using System.ComponentModel.DataAnnotations;
 using System.Threading;
 
 namespace HeBianGu.Diagram.OpenCV
 {
-    
+
     [Display(Name = "支持向量机", GroupName = "机器学习", Description = "降噪成黑白色", Order = 0)]
     public class SVM : OpenCVNodeData
     {
@@ -52,7 +49,7 @@ namespace HeBianGu.Diagram.OpenCV
                     pointsPlot.Line(x - 1, y1, x, y2, Scalar.LightBlue, 1);
                 }
 
-                Mat = pointsPlot;
+                this.Mat = pointsPlot;
                 RefreshMatToView();
                 Thread.Sleep(1000);
             }
@@ -93,7 +90,7 @@ namespace HeBianGu.Diagram.OpenCV
                         retPlot.Rectangle(plotRect, Scalar.GreenYellow);
                 }
             }
-            Mat = retPlot;
+            this.Mat = retPlot;
             RefreshMatToView();
             return base.Invoke(previors, current);
         }

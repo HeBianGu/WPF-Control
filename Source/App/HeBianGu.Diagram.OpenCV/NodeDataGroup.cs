@@ -1,14 +1,7 @@
-﻿
-using H.Controls.Diagram;
-using H.Mvvm;
-using System;
-using System.Collections.Generic;
+﻿using H.Mvvm;
 using System.Collections.ObjectModel;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Reflection;
 
-namespace H.App.VisionMaster;
+namespace HeBianGu.Diagram.OpenCV;
 public interface INodeDataGroup : IDisplayBindable
 {
     ObservableCollection<INodeData> NodeDatas { get; set; }

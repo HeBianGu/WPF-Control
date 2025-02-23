@@ -1,14 +1,8 @@
 ﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
 
-
-
-
-using OpenCvSharp;
-using System.ComponentModel.DataAnnotations;
-
 namespace HeBianGu.Diagram.OpenCV
 {
-    
+
     [Display(Name = "BRISK", GroupName = "特征提取", Order = 0)]
     public class BriskFeatureDetector : OpenCVNodeData
     {

@@ -3,8 +3,8 @@ global using H.Extensions.TypeConverter;
 
 namespace HeBianGu.Diagram.OpenCV
 {
-    
-    
+
+
     [Display(Name = "HAAR", GroupName = "人脸检测", Order = 0)]
     public class HaarCascade : CascadeBase
     {

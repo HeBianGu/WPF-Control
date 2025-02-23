@@ -1,10 +1,7 @@
-﻿
-using H.Controls.Diagram;
-using H.Controls.Diagram.Extension;
-using System.Collections.Generic;
+﻿using H.Controls.Diagram.Extension;
 using System.Windows.Controls;
 
-namespace H.App.VisionMaster;
+namespace HeBianGu.Diagram.OpenCV;
 
 public abstract class ActionNodeDataBase : LineCardNodeData
 {

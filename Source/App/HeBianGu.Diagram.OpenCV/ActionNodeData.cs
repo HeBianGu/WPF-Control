@@ -1,4 +1,4 @@
-﻿namespace H.App.VisionMaster;
+﻿namespace HeBianGu.Diagram.OpenCV;
 
 public class ActionNodeData : ActionNodeDataBase
 {

@@ -1,16 +1,8 @@
 ﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
 
-
-
-
-using OpenCvSharp;
-using System;
-using System.ComponentModel.DataAnnotations;
-using System.Diagnostics;
-
 namespace HeBianGu.Diagram.OpenCV
 {
-    
+
     [Display(Name = "MSER", GroupName = "特征提取", Order = 0)]
     public class MserFeatureDetector : OpenCVNodeData
     {

@@ -1,7 +1,7 @@
 ﻿
 namespace HeBianGu.Diagram.OpenCV
 {
-    
+
     [Display(Name = "标准直线检测", GroupName = "基础检测", Order = 0)]
     public class HoughLines : OpenCVNodeData
     {

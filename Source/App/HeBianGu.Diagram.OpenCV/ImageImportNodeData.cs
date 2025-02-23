@@ -1,7 +1,6 @@
 ﻿using H.Mvvm;
-using System.ComponentModel.DataAnnotations;
 
-namespace H.App.VisionMaster;
+namespace HeBianGu.Diagram.OpenCV;
 
 [Icon("\xE722")]
 [Display(Name = "图像源")]

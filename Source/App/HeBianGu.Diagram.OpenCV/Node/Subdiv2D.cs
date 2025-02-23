@@ -1,17 +1,8 @@
 ﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
 
-
-
-
-using OpenCvSharp;
-using System;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-
 namespace HeBianGu.Diagram.OpenCV
 {
-    
+
     [Display(Name = "平面细分", GroupName = "基础函数", Description = "降噪成黑白色", Order = 0)]
     public class Subdiv2D : OpenCVNodeData
     {
@@ -89,7 +80,7 @@ namespace HeBianGu.Diagram.OpenCV
                 this.Mat = delaunay;
             }
             this.RefreshMatToView();
-           return base.Refresh();
+            return base.Refresh();
         }
 
         //public override IFlowableResult Invoke(Part previors, Node current)

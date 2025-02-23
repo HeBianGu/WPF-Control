@@ -1,15 +1,9 @@
 ﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
 
-
-
-
-using OpenCvSharp;
-using System.ComponentModel.DataAnnotations;
-
 namespace HeBianGu.Diagram.OpenCV
 {
-    
-    
+
+
     [Display(Name = "直方图均计算", GroupName = "其他", Order = 0)]
     public class Hist : OpenCVNodeData
     {

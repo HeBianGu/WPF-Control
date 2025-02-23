@@ -3,16 +3,8 @@
 
 
 
-using OpenCvSharp;
-using OpenCvSharp.WpfExtensions;
-using System;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Threading;
-using System.Xml.Linq;
 
 namespace HeBianGu.Diagram.OpenCV
 {
@@ -23,7 +15,7 @@ namespace HeBianGu.Diagram.OpenCV
         void End();
     }
 
-    
+
     [Display(Name = "视频读取", GroupName = "数据源", Description = "降噪成黑白色", Order = 0)]
     public class VideoCapture : StartNodeDataBase
     {

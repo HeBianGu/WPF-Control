@@ -1,7 +1,4 @@
-﻿
-using OpenCvSharp;
-using OpenCvSharp.XFeatures2D;
-using System.ComponentModel.DataAnnotations;
+﻿using OpenCvSharp.XFeatures2D;
 
 namespace HeBianGu.Diagram.OpenCV
 {

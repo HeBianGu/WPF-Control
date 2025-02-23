@@ -1,18 +1,10 @@
 ﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
 
-
-
-
-using OpenCvSharp;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-
 namespace HeBianGu.Diagram.OpenCV
 {
-    
-    
-    
+
+
+
     [Display(Name = "边缘检测", GroupName = "基础函数", Order = 0)]
     public class Canny : OpenCVNodeData
     {
@@ -78,7 +70,7 @@ namespace HeBianGu.Diagram.OpenCV
             Cv2.Canny(preMat, preMat, 50, 200, 3, false);
             this.Mat = preMat;
             this.RefreshMatToView();
-           return base.Refresh();
+            return base.Refresh();
         }
     }
 }

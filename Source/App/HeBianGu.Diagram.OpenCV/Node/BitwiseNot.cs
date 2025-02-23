@@ -7,9 +7,9 @@
 
 namespace HeBianGu.Diagram.OpenCV
 {
-    
-    
-    
+
+
+
     [Display(Name = "反转黑白", GroupName = "基础函数", Description = "二指图片的效果反转既黑色变白色，白色变黑色", Order = 0)]
     public class BitwiseNot : OpenCVNodeData
     {

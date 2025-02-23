@@ -5,8 +5,8 @@
 
 namespace HeBianGu.Diagram.OpenCV
 {
-    
-    
+
+
     [Display(Name = "笔迹", GroupName = "数据源", Order = 0)]
     public class Cvmorph : StartNodeDataBase
     {

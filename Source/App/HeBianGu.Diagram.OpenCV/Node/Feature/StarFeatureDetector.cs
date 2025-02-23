@@ -3,13 +3,11 @@
 
 
 
-using OpenCvSharp;
 using OpenCvSharp.XFeatures2D;
-using System.ComponentModel.DataAnnotations;
 
 namespace HeBianGu.Diagram.OpenCV
 {
-    
+
     [Display(Name = "STAR", GroupName = "特征提取", Order = 0)]
     public class StarFeatureDetector : OpenCVNodeData
     {

@@ -3,16 +3,11 @@
 
 
 
-using OpenCvSharp;
-using OpenCvSharp.XFeatures2D;
-using System;
-using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
-using System.Security.Cryptography;
 
 namespace HeBianGu.Diagram.OpenCV
 {
-    
+
     [Display(Name = "KAZE", GroupName = "特征提取", Order = 0)]
     public class KazeFeatureDetector : OpenCVNodeData
     {

@@ -1,8 +1,4 @@
-﻿
-using OpenCvSharp;
-using OpenCvSharp.Features2D;
-using System.ComponentModel.DataAnnotations;
-using System.Security.Cryptography;
+﻿using OpenCvSharp.Features2D;
 
 namespace HeBianGu.Diagram.OpenCV
 {
@@ -131,7 +127,7 @@ namespace HeBianGu.Diagram.OpenCV
             }
         }
 
-         
+
         protected override IFlowableResult Refresh()
         {
             var src1 = new Mat(this.DetectFilePath, ImreadModes.Color);

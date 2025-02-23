@@ -1,15 +1,8 @@
 ﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
 
-
-
-
-using OpenCvSharp;
-using System;
-using System.ComponentModel.DataAnnotations;
-
 namespace HeBianGu.Diagram.OpenCV
 {
-    
+
     [Display(Name = "直线概率检测", GroupName = "基础检测", Order = 0)]
     public class HoughLinesP : OpenCVNodeData
     {
@@ -89,7 +82,7 @@ namespace HeBianGu.Diagram.OpenCV
                 imgProb.Line(s.P1, s.P2, Scalar.Red, 3, LineTypes.AntiAlias, 0);
             }
             RefreshMatToView(imgProb);
-           return base.Refresh();
+            return base.Refresh();
         }
     }
 }

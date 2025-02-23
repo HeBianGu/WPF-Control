@@ -1,16 +1,9 @@
 ﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
 
-
-
-
-using OpenCvSharp;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-
 namespace HeBianGu.Diagram.OpenCV
 {
-    
-    
+
+
     [Display(Name = "素描", GroupName = "滤波/降噪/模糊", Order = 0)]
     public class PencilSketch : OpenCVNodeData
     {
@@ -71,7 +64,7 @@ namespace HeBianGu.Diagram.OpenCV
             }
         }
 
-         
+
 
         protected override IFlowableResult Refresh()
         {

@@ -1,7 +1,7 @@
 ﻿
 namespace HeBianGu.Diagram.OpenCV
 {
-    
+
     [Display(Name = "识别连通区域", GroupName = "基础检测", Order = 0)]
     public class RenderBlobs : OpenCVNodeData
     {

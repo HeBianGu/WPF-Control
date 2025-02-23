@@ -1,12 +1,4 @@
-﻿
-using OpenCvSharp;
-using System;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Security.Cryptography;
-using System.Threading.Tasks;
-
-namespace HeBianGu.Diagram.OpenCV
+﻿namespace HeBianGu.Diagram.OpenCV
 {
     [Display(Name = "无缝融合", GroupName = "基础函数", Description = "将一幅图像中的指定目标复制后粘贴到另一幅图像中，并自然的融合", Order = 0)]
     public class SeamlessClone : OpenCVNodeData

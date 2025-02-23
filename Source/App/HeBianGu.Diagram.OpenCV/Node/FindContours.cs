@@ -1,21 +1,10 @@
 ﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
 
-
-
-
-using OpenCvSharp;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Xml.Linq;
-
 namespace HeBianGu.Diagram.OpenCV
 {
-    
-    
-    
+
+
+
     [Display(Name = "查找轮廓", GroupName = "基础函数", Description = "二指图片的效果反转既黑色变白色，白色变黑色", Order = 0)]
     public class FindContours : OpenCVNodeData
     {

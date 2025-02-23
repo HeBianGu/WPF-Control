@@ -1,11 +1,7 @@
-﻿
-using H.Controls.Diagram;
-using H.Mvvm;
-using H.Services.Common;
-using System.Collections.Generic;
+﻿using H.Mvvm;
 using System.Windows.Controls;
 
-namespace H.App.VisionMaster;
+namespace HeBianGu.Diagram.OpenCV;
 
 public interface IImageImportNodeData : INodeData, IDisplayBindable
 {

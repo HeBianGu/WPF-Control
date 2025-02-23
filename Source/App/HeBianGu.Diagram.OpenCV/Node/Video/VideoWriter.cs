@@ -3,15 +3,11 @@
 
 
 
-using OpenCvSharp;
-using System;
-using System.ComponentModel.DataAnnotations;
 using System.Windows.Media;
-using System.Xml.Linq;
 
 namespace HeBianGu.Diagram.OpenCV
 {
-    
+
     [Display(Name = "视频写入", GroupName = "视频操作", Description = "降噪成黑白色", Order = 0)]
     public class VideoWriter : StartNodeDataBase
     {

@@ -1,14 +1,8 @@
 ﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
 
-
-
-
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-
 namespace HeBianGu.Diagram.OpenCV
 {
-    
+
     [Display(Name = "加减运算", GroupName = "基础函数", Description = "饱和度设置", Order = 0)]
     public class AddSutract : OpenCVNodeData
     {

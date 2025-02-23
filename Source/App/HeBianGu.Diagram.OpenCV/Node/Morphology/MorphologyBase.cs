@@ -2,16 +2,12 @@
 
 
 
-using OpenCvSharp;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Windows.Media;
 using System.Windows.Threading;
 
 namespace HeBianGu.Diagram.OpenCV
 {
-    public abstract class MorphologyBase : OpenCVNodeData
+    public abstract class MorphologyBase : OpenCVNodeData, IMorphology
     {
         public override void LoadDefault()
         {

@@ -6,8 +6,8 @@
 namespace HeBianGu.Diagram.OpenCV
 {
 
-    
-    
+
+
     [Display(Name = "头像", GroupName = "数据源", Order = 0)]
     public class Lenna : StartNodeDataBase
     {

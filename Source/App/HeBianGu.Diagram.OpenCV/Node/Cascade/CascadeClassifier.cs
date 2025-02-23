@@ -1,11 +1,5 @@
 ﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
 
-using OpenCvSharp;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading;
-
 namespace HeBianGu.Diagram.OpenCV
 {
     public abstract class CascadeBase : OpenCVNodeData

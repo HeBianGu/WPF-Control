@@ -1,10 +1,6 @@
-﻿using H.Controls.Diagram;
-using H.Mvvm;
-using System.ComponentModel;
-using System;
-using System.ComponentModel.DataAnnotations;
+﻿using H.Mvvm;
 
-namespace H.App.VisionMaster;
+namespace HeBianGu.Diagram.OpenCV;
 
 public interface IFilterActionNodeData : INodeData, IDisplayBindable
 {

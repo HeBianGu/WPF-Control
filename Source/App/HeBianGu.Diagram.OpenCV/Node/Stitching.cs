@@ -1,17 +1,8 @@
 ﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
 
-
-
-
-using OpenCvSharp;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-
 namespace HeBianGu.Diagram.OpenCV
 {
-    
+
     [Display(Name = "图像拼接", GroupName = "基础函数", Description = "降噪成黑白色", Order = 0)]
     public class Stitching : OpenCVNodeData
     {
@@ -57,7 +48,7 @@ namespace HeBianGu.Diagram.OpenCV
             {
                 image.Dispose();
             }
-           return base.Refresh();
+            return base.Refresh();
         }
 
         Mat[] SelectStitchingImages(int width, int height, int count, string path)

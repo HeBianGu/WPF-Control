@@ -3,17 +3,12 @@
 
 
 
-using OpenCvSharp;
-using System;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
 namespace HeBianGu.Diagram.OpenCV
 {
-    
+
     [Display(Name = "摄像头", GroupName = "数据源", Description = "降噪成黑白色", Order = 0)]
     public class CameraCapture : StartNodeDataBase
     {
@@ -114,7 +109,7 @@ namespace HeBianGu.Diagram.OpenCV
                         //this.RefreshMatToView(frameMat);
                         this.Message = $"{index++}/{capture.FrameCount}";
                         this.Mat = frameMat;
-                        this.SrcMat= frameMat;
+                        this.SrcMat = frameMat;
                         //this.Mat = image.Clone().CvtColor(ColorConversionCodes.BGR2GRAY, 0).Threshold(0, 255, ThresholdTypes.Otsu | ThresholdTypes.Binary);
                         RefreshMatToView();
                         if (this.State == FlowableState.Canceling)

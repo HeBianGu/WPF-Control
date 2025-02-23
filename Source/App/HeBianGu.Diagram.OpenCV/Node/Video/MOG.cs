@@ -1,16 +1,8 @@
 ﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
 
-
-
-
-using OpenCvSharp;
-using System.ComponentModel.DataAnnotations;
-using System.Windows.Controls;
-using System.Xml.Linq;
-
 namespace HeBianGu.Diagram.OpenCV
 {
-    
+
     [Display(Name = "前景提取", GroupName = "视频操作", Order = 0)]
     public class MOG : OpenCVNodeData, IVideoFlowable
     {

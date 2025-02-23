@@ -1,17 +1,10 @@
 ﻿// Copyright © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-ControlBase
 
-
-
-
-using OpenCvSharp;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-
 namespace HeBianGu.Diagram.OpenCV
 {
-    
-    
-    
+
+
+
     [Display(Name = "乘除运算", GroupName = "基础函数", Description = "图片亮度设置", Order = 0)]
     public class MultiplayDivide : OpenCVNodeData
     {

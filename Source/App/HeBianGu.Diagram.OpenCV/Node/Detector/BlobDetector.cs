@@ -2,7 +2,7 @@
 
 namespace HeBianGu.Diagram.OpenCV
 {
-    
+
     [Display(Name = "Blob检测", GroupName = "基础检测", Description = "降噪成黑白色", Order = 0)]
     public class BlobDetector : OpenCVNodeData
     {
@@ -275,7 +275,7 @@ namespace HeBianGu.Diagram.OpenCV
             var circleKeyPoints = circleDetector.Detect(src);
             var detectedCircles = new Mat();
             Cv2.DrawKeypoints(src, circleKeyPoints, detectedCircles, Scalar.HotPink, DrawMatchesFlags.DrawRichKeypoints);
-            Mat = detectedCircles;
+            this.Mat = detectedCircles;
             RefreshMatToView();
             return base.Invoke(previors, current);
         }
@@ -283,7 +283,7 @@ namespace HeBianGu.Diagram.OpenCV
 
         void RefreshData()
         {
-            if (BlobType == BlobType.Circle)
+            if (this.BlobType == BlobType.Circle)
             {
                 var p = new SimpleBlobDetector.Params
                 {
@@ -311,7 +311,7 @@ namespace HeBianGu.Diagram.OpenCV
                 CopyFrom(p);
             }
 
-            if (BlobType == BlobType.Oval)
+            if (this.BlobType == BlobType.Oval)
             {
                 var p = new SimpleBlobDetector.Params
                 {
