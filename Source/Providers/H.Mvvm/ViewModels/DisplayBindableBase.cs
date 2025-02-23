@@ -20,7 +20,18 @@ namespace H.Mvvm
         public string Icon { get; set; }
     }
 
-    public abstract class DisplayBindableBase : BindableBase, IDable
+    public interface IDisplayBindable
+    {
+        string Description { get; set; }
+        string GroupName { get; set; }
+        string Icon { get; set; }
+        string ID { get; set; }
+        string Name { get; set; }
+        int Order { get; set; }
+        string ShortName { get; set; }
+    }
+
+    public abstract class DisplayBindableBase : BindableBase, IDable, IDisplayBindable
     {
         public DisplayBindableBase()
         {

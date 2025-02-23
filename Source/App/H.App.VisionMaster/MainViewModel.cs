@@ -3,6 +3,8 @@ using H.Controls.Diagram.Extension;
 using H.Controls.Diagram.Extensions.Workflow;
 using H.Controls.ZoomBox;
 using H.Mvvm;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
@@ -14,22 +16,27 @@ public class MainViewModel : BindableBase
 {
     public MainViewModel()
     {
-        for (int i = 0; i < 5; i++)
-        {
-            {
-                var group = new NodeDataGroup();
-                group.Name = $"Group {i}";
-                group.NodeDatas.Add(new ImageImportNodeData());
-                for (int j = 0; j < 20; j++)
-                {
-                    group.NodeDatas.Add(new ActionNodeData());
-                }
-                this.NodeDataGroups.Add(group);
-            }
-        }
-
-       
+        //for (int i = 0; i < 5; i++)
+        //{
+        //    {
+        //        var group = new NodeDataGroup();
+        //        group.Name = $"Group {i}";
+        //        group.NodeDatas.Add(new ImageImportNodeData());
+        //        for (int j = 0; j < 20; j++)
+        //        {
+        //            group.NodeDatas.Add(new ActionNodeData());
+        //        }
+        //        this.NodeDataGroups.Add(group);
+        //    }
+        //}
+        this.NodeDataGroups = this.CreateNodeDataGroups().ToObservable();
     }
+
+    public IEnumerable<INodeDataGroup> CreateNodeDataGroups()
+    {
+        return typeof(INodeDataGroup).Assembly.GetInstances<INodeDataGroup>().OrderBy(x => x.Order);
+    }
+
     private ObservableCollection<INodeDataGroup> _nodeDataGroups = new ObservableCollection<INodeDataGroup>();
     public ObservableCollection<INodeDataGroup> NodeDataGroups
     {
