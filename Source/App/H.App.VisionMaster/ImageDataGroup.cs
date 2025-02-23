@@ -1,4 +1,5 @@
-﻿using H.Controls.Diagram;
+﻿using H.App.VisionMaster.Morphology;
+using H.Controls.Diagram;
 using H.Mvvm;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -23,6 +24,16 @@ public class FilterDataGroup : NodeDataGroupBase
     protected override IEnumerable<INodeData> CreateNodeDatas()
     {
         return typeof(IFilterActionNodeData).Assembly.GetInstances<IFilterActionNodeData>().OrderBy(x => x.Order); ;
+    }
+}
+
+[Icon("\xE722")]
+[Display(Name = "形态", GroupName = "对图像进行腐蚀、膨胀、开运算和闭运算", Order = 2)]
+public class MorphologyDataGroup : NodeDataGroupBase
+{
+    protected override IEnumerable<INodeData> CreateNodeDatas()
+    {
+        return typeof(IMorphology).Assembly.GetInstances<IMorphology>().OrderBy(x => x.Order); ;
     }
 }
 

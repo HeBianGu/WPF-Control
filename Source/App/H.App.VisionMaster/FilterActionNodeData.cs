@@ -1,5 +1,7 @@
 ﻿using H.Controls.Diagram;
 using H.Mvvm;
+using System.ComponentModel;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace H.App.VisionMaster;
@@ -8,6 +10,7 @@ public interface IFilterActionNodeData : INodeData, IDisplayBindable
 {
 
 }
+
 [Icon("\xE722")]
 [Display(Name = "滤波、降噪，模糊")]
 public abstract class FilterActionNodeDataBase : ActionNodeDataBase, IFilterActionNodeData

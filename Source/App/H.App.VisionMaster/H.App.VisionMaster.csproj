@@ -28,4 +28,8 @@
     <ProjectReference Include="..\..\Controls\H.Controls.ZoomBox\H.Controls.ZoomBox.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Geometry\H.Extensions.Geometry.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="OpenCvSharp4.runtime.win" Version="4.6.0.20220608" />
+    <PackageReference Include="OpenCvSharp4.WpfExtensions" Version="4.6.0.20220608" />
+  </ItemGroup>
 </Project>
