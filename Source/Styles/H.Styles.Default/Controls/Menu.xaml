@@ -13,11 +13,10 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Menu}">
-                    <Border BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}" BorderThickness="{TemplateBinding BorderThickness}">
-
-                        <Border.Background>
-                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
-                        </Border.Background>
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
                         <StackPanel
                             ClipToBounds="True"
                             IsItemsHost="True"

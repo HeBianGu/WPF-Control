@@ -26,6 +26,7 @@ namespace H.Modules.Messages.Form
                 return true;
             };
             StaticFormPresenter presenter = new StaticFormPresenter(value);
+            option?.Invoke(presenter);
             return await IocMessage.Dialog.Show(presenter, x =>
             {
                 x.DialogButton = DialogButton.Sumit;
@@ -42,6 +43,7 @@ namespace H.Modules.Messages.Form
                 return match?.Invoke(value) != false;
             };
             StaticFormPresenter presenter = new StaticFormPresenter(value);
+            option?.Invoke(presenter);
             presenter.UsePropertyView = true;
             return await IocMessage.Dialog.Show(presenter, x =>
             {

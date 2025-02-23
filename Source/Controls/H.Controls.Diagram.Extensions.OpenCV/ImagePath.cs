@@ -1,4 +1,6 @@
-﻿namespace H.Controls.Diagram.Extensions.OpenCV;
+﻿using System.Windows.Markup;
+
+namespace H.Controls.Diagram.Extensions.OpenCV;
 
 /// <summary>
 /// Image file Paths
@@ -17,7 +19,7 @@ public static class ImagePath
     public const string Penguin1b = "Data/Image/penguin1b.png";
     public const string Penguin2 = "Data/Image/penguin2.png";
     public const string Distortion = "Data/Image/Calibration/01.jpg";
-    public const string Calibration = "Data/Image/Calibration/{0:D2}.jpg";
+    public const string Calibration = "Data/Image/Calibration/00.jpg";
     public const string SurfBox = "Data/Image/box.png";
     public const string SurfBoxinscene = "Data/Image/box_in_scene.png";
     public const string TsukubaLeft = "Data/Image/tsukuba_left.png";
@@ -45,45 +47,28 @@ public static class ImagePath
     public const string Cvmorph = "Data/Image/cvmorph.png";
 }
 
-/// <summary>
-/// Text file paths
-/// </summary>
-public static class TextPath
+public class GetOpenCVImagesExtension : MarkupExtension
 {
-    public const string Camera = "Data/Text/camera.xml";
-    public const string HaarCascade = "Data/Text/haarcascade_frontalface_default.xml";
-    public const string HaarCascadeAlt = "Data/Text/haarcascade_frontalface_alt.xml";
-    public const string LatentSvmCat = "Data/Text/cat.xml";
-    public const string Mushroom = "Data/Text/agaricus-lepiota.data";
-    public const string LetterRecog = "Data/Text/letter-recognition.data";
-    public const string LbpCascade = "Data/Text/lbpcascade_frontalface.xml";
+    public override object ProvideValue(IServiceProvider serviceProvider)
+    {
+        return OpenCVImages.GetImageSources();
+    }
 }
 
-/// <summary>
-/// Text file paths
-/// </summary>
-public static class CascadeData
+public class OpenCVImages
 {
-    public const string Eye = "Data/Cascade/haarcascades/haarcascade_eye.xml";
-    public const string Eyeglasses = "Data/Cascade/haarcascades/haarcascade_eye_tree_eyeglasses.xml";
-    public const string Frontalcatface = "Data/Cascade/haarcascades/haarcascade_frontalcatface.xml";
-    public const string Frontalface = "Data/Cascade/haarcascades/haarcascade_frontalface_default.xml";
-    public const string Fullbody = "Data/Cascade/haarcascades/haarcascade_fullbody.xml";
-    public const string Lefteye = "Data/Cascade/haarcascades/haarcascade_lefteye_2splits.xml";
-    public const string Licence_plate = "Data/Cascade/haarcascades/haarcascade_licence_plate_rus_16stages.xml";
-    public const string Lowerbody = "Data/Cascade/haarcascades/haarcascade_lowerbody.xml";
-    public const string Profileface = "Data/Cascade/haarcascades/haarcascade_profileface.xml";
-    public const string Righteye = "Data/Cascade/haarcascades/haarcascade_righteye_2splits.xml";
-    public const string Russian_plate_number = "Data/Cascade/haarcascades/haarcascade_russian_plate_number.xml";
-    public const string Smile = "Data/Cascade/haarcascades/haarcascade_smile.xml";
-    public const string Upperbody = "Data/Cascade/haarcascades/haarcascade_upperbody.xml";
-}
-
-/// <summary>
-/// Movie file paths
-/// </summary>
-public static class MoviePath
-{
-    public const string Hara = "Data/Movie/hara.flv";
-    public const string Bach = "Data/Movie/bach.mp4";
+    public static IEnumerable<ImageSource> GetImageSources()
+    {
+        var ms = typeof(ImagePath).GetFields();
+        var c = TypeDescriptor.GetConverter(typeof(ImageSource));
+        //string format = "pack://application:,,,/{0}";
+        string format = "pack://application:,,,/H.Controls.Diagram.Extensions.OpenCV;component/{0}";
+        foreach (var item in ms)
+        {
+            var v = item.GetValue(null);
+            var s=string.Format(format, v);
+            System.Diagnostics.Debug.WriteLine(s);
+            yield return (ImageSource)c.ConvertFrom(s);
+        }
+    }
 }

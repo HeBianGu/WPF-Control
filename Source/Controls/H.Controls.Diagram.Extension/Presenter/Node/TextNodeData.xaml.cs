@@ -10,7 +10,19 @@ using System.Windows.Media;
 
 namespace H.Controls.Diagram.Extension
 {
-    public class TextNodeData : PortableNodeData
+    public interface ITextNodeData
+    {
+        FontFamily FontFamily { get; set; }
+        double FontSize { get; set; }
+        FontStretch FontStretch { get; set; }
+        FontStyle FontStyle { get; set; }
+        FontWeight FontWeight { get; set; }
+        Brush Foreground { get; set; }
+        string Text { get; set; }
+        Thickness TextMargin { get; set; }
+    }
+
+    public class TextNodeData : PortableNodeData, ITextNodeData
     {
         public TextNodeData()
         {

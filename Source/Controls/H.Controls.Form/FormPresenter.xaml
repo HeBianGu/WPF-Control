@@ -1,27 +1,30 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:h="https://github.com/HeBianGu"
-                    xmlns:local="clr-namespace:H.Controls.Form">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:h="https://github.com/HeBianGu"
+    xmlns:local="clr-namespace:H.Controls.Form">
     <DataTemplate DataType="{x:Type local:FormPresenter}">
-        <local:Form SelectObject="{Binding Value}"
-                    UseAsync="False"
-                    UsePropertyView="{Binding UsePropertyView}" />
+        <local:Form
+            SelectObject="{Binding Value}"
+            UseAsync="False"
+            UseGroupNames="{Binding UseGroupNames}"
+            UsePropertyView="{Binding UsePropertyView}" />
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type local:StaticFormPresenter}">
-        <local:StaticForm SelectObject="{Binding Value}"
-                          UseAsync="False"
-                          UsePropertyView="{Binding UsePropertyView}" />
+        <local:StaticForm
+            SelectObject="{Binding Value}"
+            UseAsync="False"
+            UseGroupNames="{Binding UseGroupNames}"
+            UsePropertyView="{Binding UsePropertyView}" />
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type local:ItemsFormPresenter}">
         <ScrollViewer>
-            <ItemsControl MinWidth="600"
-                          ItemsSource="{Binding Objs}">
+            <ItemsControl MinWidth="600" ItemsSource="{Binding Objs}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Expander Header="{Binding ., Converter={x:Static h:Converter.GetDiaplayName}}"
-                                  IsExpanded="True">
+                        <Expander Header="{Binding ., Converter={x:Static h:Converter.GetDiaplayName}}" IsExpanded="True">
                             <local:Form SelectObject="{Binding}" />
                         </Expander>
                     </DataTemplate>

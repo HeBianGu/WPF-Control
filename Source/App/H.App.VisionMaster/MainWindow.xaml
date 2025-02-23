@@ -29,12 +29,13 @@
                     <ContentPresenter Content="{Ioc Type={x:Type IAboutButtonPresenter}}" />
                 </DockPanel>
                 <!--<Separator Style="{DynamicResource {x:Static SeparatorKeys.Vertical}}" />-->
-                <UniformGrid
-                    Margin="0,2"
-                    Rows="2"
-                    WindowChrome.IsHitTestVisibleInChrome="True">
-                    <Menu Margin="0,1">
-                        <MenuItem Header="文件">
+                <UniformGrid Margin="0,2" Rows="2">
+                    <Menu
+                        Margin="0,1"
+                        HorizontalAlignment="Left"
+                        Background="Transparent"
+                        WindowChrome.IsHitTestVisibleInChrome="True">
+                        <MenuItem Background="Transparent" Header="文件">
                             <MenuItem Header="新建" />
                         </MenuItem>
                         <MenuItem Header="运行">
@@ -47,11 +48,32 @@
                             <MenuItem Header="新建" />
                         </MenuItem>
                     </Menu>
-                    <Border BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}" BorderThickness="0,1,0,0">
+                    <Border
+                        BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                        BorderThickness="0,1,0,0"
+                        WindowChrome.IsHitTestVisibleInChrome="True">
                         <DockPanel Margin="0,1" LastChildFill="False">
-                            <ContentPresenter Content="{Ioc Type={x:Type ISettingButtonPresenter}}" />
-                            <ContentPresenter Content="{Ioc Type={x:Type h:ISwitchThemeViewPresenter}}" />
-                            <ContentPresenter Content="{Ioc Type={x:Type IAboutButtonPresenter}}" DockPanel.Dock="Right" />
+                            <FontIconButton Content="&#xE105;" />
+                            <FontIconButton Content="&#xE7C3;" />
+                            <FontIconButton Content="&#xE8C8;" />
+                            <FontIconButton Content="&#xED25;" />
+                            <Separator Style="{DynamicResource {x:Static SeparatorKeys.Vertical}}" />
+                            <FontIconButton Content="&#xE768;" />
+                            <FontIconButton Content="&#xE7C8;" />
+                            <FontIconButton Content="&#xE7E8;" />
+                            <FontIconButton Content="&#xE7A6;" />
+                            <FontIconButton Content="&#xE7A7;" />
+                            <Separator Style="{DynamicResource {x:Static SeparatorKeys.Vertical}}" />
+                            <FontIconButton Content="&#xE17A;" />
+                            <FontIconButton Content="&#xE1A3;" />
+                            <FontIconButton Content="&#xE1A4;" />
+                            <FontIconButton Content="&#xE1D2;" />
+                            <FontIconButton Content="&#xE1CD;" />
+                            <FontIconButton Content="&#xE9D9;" />
+                            <FontIconButton Content="&#xEC58;" />
+                            <FontIconButton Content="&#xEF15;" />
+                            <FontIconButton Content="&#xEF3B;" />
+                            <FontIconButton Content="&#xEF90;" />
                         </DockPanel>
                     </Border>
                 </UniformGrid>
@@ -71,28 +93,36 @@
                         <ControlTemplate>
                             <Grid Margin="0,1">
                                 <GroupBox x:Name="dp_2" Header="流程资源">
-                                    <ScrollViewer>
-                                        <ItemsControl ItemsSource="{Binding NodeDataGroups}">
-                                            <ItemsControl.ItemTemplate>
-                                                <DataTemplate>
-                                                    <Expander Margin="0,0,0,1" Header="{Binding Name}">
-                                                        <h:Cattach.CaptionRightTemplate>
-                                                            <ControlTemplate>
-                                                                <FontIcon Margin="5,0" Text="{Binding Icon}" />
-                                                            </ControlTemplate>
-                                                        </h:Cattach.CaptionRightTemplate>
-                                                        <ItemsControl ItemsSource="{Binding NodeDatas}">
-                                                            <ItemsControl.ItemsPanel>
-                                                                <ItemsPanelTemplate>
-                                                                    <UniformGrid HorizontalAlignment="Center" Columns="1" />
-                                                                </ItemsPanelTemplate>
-                                                            </ItemsControl.ItemsPanel>
-                                                        </ItemsControl>
-                                                    </Expander>
-                                                </DataTemplate>
-                                            </ItemsControl.ItemTemplate>
-                                        </ItemsControl>
-                                    </ScrollViewer>
+                                    <Border
+                                        Margin="0,0,0,40"
+                                        BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                                        BorderThickness="0,0,0,1">
+                                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                            <ItemsControl ItemsSource="{Binding NodeDataGroups}">
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Expander
+                                                            Margin="0,0,0,1"
+                                                            Header="{Binding Name}"
+                                                            IsExpanded="False">
+                                                            <h:Cattach.CaptionRightTemplate>
+                                                                <ControlTemplate>
+                                                                    <FontIcon Margin="5,0" Text="{Binding Icon}" />
+                                                                </ControlTemplate>
+                                                            </h:Cattach.CaptionRightTemplate>
+                                                            <ItemsControl ItemsSource="{Binding NodeDatas}">
+                                                                <ItemsControl.ItemsPanel>
+                                                                    <ItemsPanelTemplate>
+                                                                        <UniformGrid HorizontalAlignment="Center" Columns="1" />
+                                                                    </ItemsPanelTemplate>
+                                                                </ItemsControl.ItemsPanel>
+                                                            </ItemsControl>
+                                                        </Expander>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                        </ScrollViewer>
+                                    </Border>
                                 </GroupBox>
                                 <ItemsControl x:Name="dp_1" ItemsSource="{Binding NodeDataGroups}">
                                     <ItemsControl.ItemTemplate>
@@ -204,8 +234,8 @@
                                                 Margin="0,0,0,1"
                                                 VerticalScrollBarVisibility="Auto">
                                                 <DockPanel LastChildFill="False">
-                                                    <FontIcon Margin="5,0" Text="&#xE790;" />
-                                                    <FontIcon Margin="5,0" Text="&#xE803;" />
+                                                    <FontIcon Margin="5,0" Text="&#xE8A2;" />
+                                                    <FontIcon Margin="5,0" Text="&#xE839;" />
                                                     <TabPanel
                                                         Grid.Row="0"
                                                         Grid.Column="0"
@@ -279,6 +309,9 @@
                                                     <b:EventTrigger EventName="SelectedPartChanged">
                                                         <b:InvokeCommandAction Command="{Binding SelectedPartChangedCommand}" PassEventArgsToCommand="True" />
                                                     </b:EventTrigger>
+                                                    <b:EventTrigger EventName="MouseDoubleClick">
+                                                        <b:InvokeCommandAction Command="{Binding ElementName=vm, Path=MouseDoubleClickCommand}" PassEventArgsToCommand="True" />
+                                                    </b:EventTrigger>
                                                 </b:Interaction.Triggers>
                                             </h:Diagram>
                                         </h:Zoombox>
@@ -309,7 +342,8 @@
                                 <ListBox
                                     Height="80"
                                     Cattach.ItemHeight="Auto"
-                                    ItemsSource="{h:GetStudents Count=20}"
+                                    ItemsSource="{Binding Images}"
+                                    SelectedItem="{Binding SelectedImage}"
                                     Visibility="{Binding ElementName=tb_s, Path=IsChecked, Converter={x:Static Converter.GetTrueToVisible}}">
                                     <ItemsControl.ItemsPanel>
                                         <ItemsPanelTemplate>
@@ -319,7 +353,7 @@
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
                                             <Border Width="75" Height="75">
-                                                <Image Source="{h:Logo}" />
+                                                <Image Source="{Binding}" />
                                             </Border>
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
@@ -339,12 +373,38 @@
                                             ViewStackIndex="0"
                                             ZoomOn="Content">
                                             <h:Zoombox.ViewStack>
-                                                <h:ZoomboxView>0 0 1000 1000</h:ZoomboxView>
+                                                <!--<h:ZoomboxView>0 0 1000 1000</h:ZoomboxView>-->
+                                                <h:ZoomboxView>Fit</h:ZoomboxView>
+                                                <!--<h:ZoomboxView>Fill</h:ZoomboxView>-->
                                             </h:Zoombox.ViewStack>
-                                            <Image
-                                                Width="1000"
-                                                Height="1000"
-                                                Source="{h:Logo}" />
+                                            <b:Interaction.Triggers>
+                                                <h:MouseTrigger
+                                                    ClickCount="2"
+                                                    Mode="Right"
+                                                    MouseButton="Left"
+                                                    UseHandle="False">
+                                                    <!--<b:InvokeCommandAction Command="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.File.NextCommand}" />-->
+                                                    <h:CallMethodActionEx MethodName="FitToBounds" TargetObject="{Binding ElementName=zoomview}" />
+                                                </h:MouseTrigger>
+                                                <h:MouseTrigger
+                                                    ClickCount="2"
+                                                    Mode="Left"
+                                                    MouseButton="Left"
+                                                    UseHandle="False">
+                                                    <!--<b:InvokeCommandAction Command="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.File.PreviousCommand}" />-->
+                                                    <h:CallMethodActionEx MethodName="FitToBounds" TargetObject="{Binding ElementName=zoomview}" />
+                                                </h:MouseTrigger>
+                                            </b:Interaction.Triggers>
+                                            <Image Source="{Binding SelectedImage, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}">
+                                                <b:Interaction.Triggers>
+                                                    <b:EventTrigger EventName="SourceUpdated">
+                                                        <h:CallMethodActionEx MethodName="FitToBounds" TargetObject="{Binding ElementName=zoomview}" />
+                                                    </b:EventTrigger>
+                                                    <b:EventTrigger EventName="TargetUpdated">
+                                                        <h:CallMethodActionEx MethodName="FitToBounds" TargetObject="{Binding ElementName=zoomview}" />
+                                                    </b:EventTrigger>
+                                                </b:Interaction.Triggers>
+                                            </Image>
                                         </h:Zoombox>
                                         <Border Height="35" VerticalAlignment="Bottom">
                                             <Border.Background>
