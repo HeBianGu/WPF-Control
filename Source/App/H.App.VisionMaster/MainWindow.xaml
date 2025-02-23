@@ -71,26 +71,28 @@
                         <ControlTemplate>
                             <Grid Margin="0,1">
                                 <GroupBox x:Name="dp_2" Header="流程资源">
-                                    <ItemsControl ItemsSource="{Binding NodeDataGroups}">
-                                        <ItemsControl.ItemTemplate>
-                                            <DataTemplate>
-                                                <Expander Margin="0,0,0,1" Header="{Binding Name}">
-                                                    <h:Cattach.CaptionRightTemplate>
-                                                        <ControlTemplate>
-                                                            <FontIcon Margin="5,0" Text="{Binding Icon}" />
-                                                        </ControlTemplate>
-                                                    </h:Cattach.CaptionRightTemplate>
-                                                    <ItemsControl ItemsSource="{Binding NodeDatas}">
-                                                        <ItemsControl.ItemsPanel>
-                                                            <ItemsPanelTemplate>
-                                                                <UniformGrid HorizontalAlignment="Center" Columns="1" />
-                                                            </ItemsPanelTemplate>
-                                                        </ItemsControl.ItemsPanel>
-                                                    </ItemsControl>
-                                                </Expander>
-                                            </DataTemplate>
-                                        </ItemsControl.ItemTemplate>
-                                    </ItemsControl>
+                                    <ScrollViewer>
+                                        <ItemsControl ItemsSource="{Binding NodeDataGroups}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Expander Margin="0,0,0,1" Header="{Binding Name}">
+                                                        <h:Cattach.CaptionRightTemplate>
+                                                            <ControlTemplate>
+                                                                <FontIcon Margin="5,0" Text="{Binding Icon}" />
+                                                            </ControlTemplate>
+                                                        </h:Cattach.CaptionRightTemplate>
+                                                        <ItemsControl ItemsSource="{Binding NodeDatas}">
+                                                            <ItemsControl.ItemsPanel>
+                                                                <ItemsPanelTemplate>
+                                                                    <UniformGrid HorizontalAlignment="Center" Columns="1" />
+                                                                </ItemsPanelTemplate>
+                                                            </ItemsControl.ItemsPanel>
+                                                        </ItemsControl>
+                                                    </Expander>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </ScrollViewer>
                                 </GroupBox>
                                 <ItemsControl x:Name="dp_1" ItemsSource="{Binding NodeDataGroups}">
                                     <ItemsControl.ItemTemplate>

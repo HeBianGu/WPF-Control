@@ -1,7 +1,6 @@
 ﻿using H.Controls.Diagram;
-using H.Controls.Diagram.Extension;
-using H.Controls.Diagram.Extensions.Workflow;
-using H.Controls.ZoomBox;
+using H.Controls.Diagram.Extensions.OpenCV.NodeDataGroup;
+using H.Extensions.Common;
 using H.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -16,19 +15,6 @@ public class MainViewModel : BindableBase
 {
     public MainViewModel()
     {
-        //for (int i = 0; i < 5; i++)
-        //{
-        //    {
-        //        var group = new NodeDataGroup();
-        //        group.Name = $"Group {i}";
-        //        group.NodeDatas.Add(new ImageImportNodeData());
-        //        for (int j = 0; j < 20; j++)
-        //        {
-        //            group.NodeDatas.Add(new ActionNodeData());
-        //        }
-        //        this.NodeDataGroups.Add(group);
-        //    }
-        //}
         this.NodeDataGroups = this.CreateNodeDataGroups().ToObservable();
     }
 

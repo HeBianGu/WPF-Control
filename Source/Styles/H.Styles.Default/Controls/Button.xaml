@@ -191,7 +191,7 @@
         <Setter Property="Width" Value="Auto" />
         <Setter Property="Padding" Value="10" />
         <Setter Property="Height" Value="Auto" />
-        <Setter Property="Margin" Value="2 0" />
+        <Setter Property="Margin" Value="2,0" />
     </Style>
 
     <Style
