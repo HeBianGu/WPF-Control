@@ -21,12 +21,12 @@ namespace H.Modules.Project
         }
         [Browsable(false)]
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         public RelayCommand NewCommand => new RelayCommand(async (s, e) =>
         {
             var project = this._projectService.Create();
-            var r = await IocMessage.Form.ShowEdit(project, null, null, null, "新建工程");
+            var r = await IocMessage.Form.ShowEdit(project, x => x.Title = "新建工程");
             if (r != true)
                 return;
             this._projectService.Add(project);
@@ -35,7 +35,7 @@ namespace H.Modules.Project
 
         [Browsable(false)]
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         public RelayCommand NewOrListCommand => new RelayCommand((s, e) =>
         {
@@ -50,7 +50,7 @@ namespace H.Modules.Project
 
         [Browsable(false)]
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         public RelayCommand ListCommand => new RelayCommand(async (s, e) =>
         {

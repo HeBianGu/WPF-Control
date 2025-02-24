@@ -3,6 +3,8 @@
 
 
 using System.Windows;
+using System.Windows.Documents;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace H.Controls.Adorner
@@ -17,11 +19,13 @@ namespace H.Controls.Adorner
         public Point Offset { get; set; }
         public DrapAdornerMode DropAdornerMode { get; set; }
 
+        private readonly object _data;
         public DragAdorner(UIElement adornedElement, Point offset) : base(adornedElement)
         {
             this.Offset = offset;
             vbrush = new VisualBrush(this.AdornedElement);
             vbrush.Opacity = AdornerSetting.Instance.DragAornerOpacity;
+            this._data = adornedElement.GetDataContext();
         }
 
         public void UpdatePosition(Point location)
@@ -52,7 +56,8 @@ namespace H.Controls.Adorner
         }
         public object GetData()
         {
-            return this.AdornedElement.GetDataContext();
+            //return this.AdornedElement.GetDataContext();
+            return this._data;
         }
     }
 
@@ -72,6 +77,11 @@ namespace H.Controls.Adorner
             this.Offset = offset;
         }
 
+        public DragDataTemplateAdorner(UIElement adornedElement, object data, Point offset) : base(adornedElement, data)
+        {
+            this.Offset = offset;
+        }
+
         public void UpdatePosition(Point location)
         {
             this.location = location;
@@ -83,7 +93,21 @@ namespace H.Controls.Adorner
             Point point = new Point();
             point.X = this.location.X + ((this.AdornedElement.DesiredSize.Width - this._contentPresenter.DesiredSize.Width) / 2);
             point.Y = this.location.Y + ((this.AdornedElement.DesiredSize.Height - this._contentPresenter.DesiredSize.Height) / 2);
+            point.Offset(-Offset.X, -Offset.Y);
             this._contentPresenter.Arrange(new Rect(point, this._contentPresenter.DesiredSize));
+
+            ////var asss = AdornerLayer.GetAdornerLayer(this.AdornedElement);
+            ////var p = this.PointFromScreen();
+            //var p = Mouse.GetPosition(this.AdornedElement);
+            //System.Diagnostics.Debug.WriteLine(p);
+
+            ////this.AdornedElement.TranslatePoint(p)
+            ////var p = Mouse.GetPosition(this);
+            ////p.Offset(this.location.X, this.location.Y);
+            ////p.Offset(this.Offset.X, this.Offset.Y);
+            //this._contentPresenter.Arrange(new Rect(p, this._contentPresenter.DesiredSize));
+            ////this._contentPresenter.Arrange(new Rect(p, this._contentPresenter.DesiredSize));
+
         }
 
         public object GetData()
@@ -115,6 +139,7 @@ namespace H.Controls.Adorner
             Point point = new Point();
             point.X = this.location.X + ((this.AdornedElement.DesiredSize.Width - this._contentControl.DesiredSize.Width) / 2);
             point.Y = this.location.Y + ((this.AdornedElement.DesiredSize.Height - this._contentControl.DesiredSize.Height) / 2);
+            point.Offset(-Offset.X, -Offset.Y);
             this._contentControl.Arrange(new Rect(point, this._contentControl.DesiredSize));
         }
 

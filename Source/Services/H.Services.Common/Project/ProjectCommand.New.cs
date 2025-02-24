@@ -7,7 +7,7 @@ namespace H.Services.Common
         public override async Task ExecuteAsync(object parameter)
         {
             IProjectItem project = IocProject.Instance.Create();
-            bool? r = await IocMessage.Form.ShowEdit(project, null, null, null, "新建工程");
+            bool? r = await IocMessage.Form.ShowEdit(project, x => x.Title = "新建工程");
             if (r != true)
                 return;
             IocProject.Instance.Add(project);

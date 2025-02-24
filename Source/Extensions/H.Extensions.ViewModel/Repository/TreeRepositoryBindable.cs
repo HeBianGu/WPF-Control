@@ -135,7 +135,7 @@ namespace H.Extensions.ViewModel
             TEntity m = new TEntity();
             if (this.SelectedTreeItem != null)
                 m.SetPath(this.SelectedTreeItem.Model.GetFullPath());
-            bool? dialog = await IocMessage.Form.ShowEdit(this.GetAddModel(m), null, null, null, "新增");
+            bool? dialog = await IocMessage.Form.ShowEdit(this.GetAddModel(m),x => x.Title = "新增");
             if (dialog != true)
             {
                 IocMessage.Snack?.ShowInfo("取消操作");

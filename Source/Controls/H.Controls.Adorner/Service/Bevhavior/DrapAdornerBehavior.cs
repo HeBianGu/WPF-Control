@@ -9,6 +9,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -16,7 +17,7 @@ using System.Windows.Media;
 namespace H.Controls.Adorner
 {
     /// <summary> 具有控件跟随效果的拖动样式 </summary>
-    public class DragAdornerBehavior : Behavior<UIElement>
+    public abstract class DragAdornerBehaviorBase : Behavior<UIElement>
     {
         private Point startPoint;
         private IDragAdorner adorner;
@@ -31,14 +32,14 @@ namespace H.Controls.Adorner
 
         public static readonly DependencyProperty OpacityProperty =
             DependencyProperty.Register("Opacity", typeof(double), typeof(DragAdornerBehavior), new PropertyMetadata(0.5, (d, e) =>
-             {
-                 DragAdornerBehavior control = d as DragAdornerBehavior;
+            {
+                DragAdornerBehavior control = d as DragAdornerBehavior;
 
-                 if (control == null) return;
+                if (control == null) return;
 
-                 //double config = e.NewValue as double;
+                //double config = e.NewValue as double;
 
-             }));
+            }));
 
 
         public Type AncestorType
@@ -50,13 +51,13 @@ namespace H.Controls.Adorner
 
         public static readonly DependencyProperty AncestorTypeProperty =
             DependencyProperty.Register("AncestorType", typeof(Type), typeof(DragAdornerBehavior), new PropertyMetadata(typeof(ScrollViewer), (d, e) =>
-             {
-                 DragAdornerBehavior control = d as DragAdornerBehavior;
+            {
+                DragAdornerBehavior control = d as DragAdornerBehavior;
 
-                 if (control == null) return;
+                if (control == null) return;
 
-                 Type config = e.NewValue as Type;
-             }));
+                Type config = e.NewValue as Type;
+            }));
 
         /// <summary> 判断可否放置的分组 </summary>
         public string DragGroup
@@ -87,14 +88,14 @@ namespace H.Controls.Adorner
 
         public static readonly DependencyProperty DragDropEffectsProperty =
             DependencyProperty.Register("DragDropEffects", typeof(DragDropEffects), typeof(DragAdornerBehavior), new PropertyMetadata(DragDropEffects.Copy, (d, e) =>
-             {
-                 DragAdornerBehavior control = d as DragAdornerBehavior;
+            {
+                DragAdornerBehavior control = d as DragAdornerBehavior;
 
-                 if (control == null) return;
+                if (control == null) return;
 
-                 //DragDropEffects config = e.NewValue as DragDropEffects;
+                //DragDropEffects config = e.NewValue as DragDropEffects;
 
-             }));
+            }));
 
         public RoutingStrategy RoutingStrategy { get; set; } = RoutingStrategy.Bubble;
 
@@ -171,6 +172,10 @@ namespace H.Controls.Adorner
                 {
                     UIElement control = this.AncestorType == null ? element : element.GetParent(this.AncestorType) as UIElement;
                     control = control == null ? element : control;
+
+                    var popup = control.GetParent<Popup>();
+                    if (popup != null)
+                        control = popup.PlacementTarget;
                     AdornerLayer layer = AdornerLayer.GetAdornerLayer(control);
                     IEnumerable<System.Windows.Documents.Adorner> find = layer.GetAdorners(element)?.Where(l => l == adorner);
 
@@ -198,15 +203,7 @@ namespace H.Controls.Adorner
             }
         }
 
-        protected virtual IDragAdorner CreateDragAdorner(UIElement element, Point point)
-        {
-            return new DragAdorner(element, point)
-            {
-                IsHitTestVisible = false,
-                Opacity = this.Opacity,
-                DropAdornerMode = this.DropAdornerMode
-            };
-        }
+        protected abstract IDragAdorner CreateDragAdorner(UIElement element, Point point);
 
         /// <summary>
         /// 用于子类重写拖拽时放入的数据
@@ -257,6 +254,19 @@ namespace H.Controls.Adorner
             GetCursorPos(ref w32Mouse);
             return new Point(w32Mouse.X, w32Mouse.Y);
         }
+    }
+
+    public class DragAdornerBehavior : DragAdornerBehaviorBase
+    {
+        protected override IDragAdorner CreateDragAdorner(UIElement element, Point point)
+        {
+            return new DragAdorner(element, point)
+            {
+                IsHitTestVisible = false,
+                Opacity = this.Opacity,
+                DropAdornerMode = this.DropAdornerMode
+            };
+        }
 
         public static bool GetIsUse(DependencyObject obj)
         {
@@ -283,7 +293,7 @@ namespace H.Controls.Adorner
         {
             BehaviorCollection bevaviors = Interaction.GetBehaviors(d);
             IEnumerable<Behavior> finds = bevaviors.Where(x => x.GetType() == typeof(DragAdornerBehavior));
-            foreach (Behavior item in finds)
+            foreach (Behavior item in finds.ToList())
             {
                 bevaviors.Remove(item);
             }
@@ -294,20 +304,69 @@ namespace H.Controls.Adorner
         }
     }
 
-    public class DragDataTempalteAdornerBehaviour : DragAdornerBehavior
+    public class DragDataTempalteAdornerBehaviour : DragAdornerBehaviorBase
     {
         protected override IDragAdorner CreateDragAdorner(UIElement element, Point point)
         {
-            return new DragDataTemplateAdorner(element, point)
+            var popup = element.GetParent<Popup>();
+            if (popup == null)
+            {
+                return new DragDataTemplateAdorner(element, point)
+                {
+                    IsHitTestVisible = false,
+                    Opacity = this.Opacity,
+                    DropAdornerMode = this.DropAdornerMode
+                };
+            }
+            var d = element.GetContent();
+            //var p = Mouse.GetPosition(popup.PlacementTarget);
+            //point.Offset(-p.X, -p.Y);
+            return new DragDataTemplateAdorner(popup.PlacementTarget, d, point)
             {
                 IsHitTestVisible = false,
                 Opacity = this.Opacity,
                 DropAdornerMode = this.DropAdornerMode
             };
+
+        }
+
+        public static bool GetIsUse(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(IsUseProperty);
+        }
+
+        public static void SetIsUse(DependencyObject obj, bool value)
+        {
+            obj.SetValue(IsUseProperty, value);
+        }
+
+        public static readonly DependencyProperty IsUseProperty =
+            DependencyProperty.RegisterAttached("IsUse", typeof(bool), typeof(DragDataTempalteAdornerBehaviour), new PropertyMetadata(default(bool), OnIsUseChanged));
+
+        public static void OnIsUseChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            DependencyObject control = d;
+            bool n = (bool)e.NewValue;
+            bool o = (bool)e.OldValue;
+            RefreshUse(d, n);
+        }
+
+        private static void RefreshUse(DependencyObject d, bool use)
+        {
+            BehaviorCollection bevaviors = Interaction.GetBehaviors(d);
+            IEnumerable<Behavior> finds = bevaviors.Where(x => x.GetType() == typeof(DragDataTempalteAdornerBehaviour));
+            foreach (Behavior item in finds.ToList())
+            {
+                bevaviors.Remove(item);
+            }
+            if (use)
+            {
+                bevaviors.Add(new DragDataTempalteAdornerBehaviour());
+            }
         }
     }
 
-    public class DragControlTempalteAdornerBehaviour : DragAdornerBehavior
+    public class DragControlTempalteAdornerBehaviour : DragAdornerBehaviorBase
     {
         protected override IDragAdorner CreateDragAdorner(UIElement element, Point point)
         {
@@ -317,6 +376,41 @@ namespace H.Controls.Adorner
                 Opacity = this.Opacity,
                 DropAdornerMode = this.DropAdornerMode
             };
+        }
+
+        public static bool GetIsUse(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(IsUseProperty);
+        }
+
+        public static void SetIsUse(DependencyObject obj, bool value)
+        {
+            obj.SetValue(IsUseProperty, value);
+        }
+
+        public static readonly DependencyProperty IsUseProperty =
+            DependencyProperty.RegisterAttached("IsUse", typeof(bool), typeof(DragControlTempalteAdornerBehaviour), new PropertyMetadata(default(bool), OnIsUseChanged));
+
+        public static void OnIsUseChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            DependencyObject control = d;
+            bool n = (bool)e.NewValue;
+            bool o = (bool)e.OldValue;
+            RefreshUse(d, n);
+        }
+
+        private static void RefreshUse(DependencyObject d, bool use)
+        {
+            BehaviorCollection bevaviors = Interaction.GetBehaviors(d);
+            IEnumerable<Behavior> finds = bevaviors.Where(x => x.GetType() == typeof(DragControlTempalteAdornerBehaviour));
+            foreach (Behavior item in finds.ToList())
+            {
+                bevaviors.Remove(item);
+            }
+            if (use)
+            {
+                bevaviors.Add(new DragControlTempalteAdornerBehaviour());
+            }
         }
     }
 

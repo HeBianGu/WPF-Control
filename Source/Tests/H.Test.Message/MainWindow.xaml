@@ -30,6 +30,10 @@
                         Content="ShowWaitCommand" />
                 <Button Command="{ShowEditCommand Value={h:GetStudent}}"
                         Content="ShowEditCommand" />
+                <Button Command="{ShowTabEditCommand Value={h:GetStudent}}"
+                    Content="ShowTabEditCommand" />
+                <Button Command="{ShowTabEditCommand Value={h:GetStudent}, TabNames=基础信息}"
+                    Content="ShowTabEditCommand-基础信息" />
                 <Button Command="{ShowViewCommand Value={h:GetStudent}}"
                         Content="ShowViewCommand" />
                 <Button Click="Button_Click"

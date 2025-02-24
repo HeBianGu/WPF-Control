@@ -3,8 +3,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:h="https://github.com/HeBianGu"
     xmlns:local="clr-namespace:H.Controls.Form">
-    <DataTemplate DataType="{x:Type local:FormPresenter}">
-        <local:Form
+    <DataTemplate DataType="{x:Type local:StaticFormPresenter}">
+        <local:StaticForm
             SelectObject="{Binding SelectObject}"
             UseAsync="False"
             UseGroupNames="{Binding UseGroupNames}"

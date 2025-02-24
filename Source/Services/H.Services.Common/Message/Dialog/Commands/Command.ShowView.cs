@@ -9,7 +9,7 @@ namespace H.Services.Common
 
         public override async Task ExecuteAsync(object parameter)
         {
-            await IocMessage.Form.ShowView(this.Value, null, x => this.Build(x));
+            await IocMessage.Form.ShowView(this.Value, x => this.Build(x));
         }
     }
 }

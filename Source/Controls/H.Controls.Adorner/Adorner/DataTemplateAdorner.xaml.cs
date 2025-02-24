@@ -21,19 +21,14 @@ namespace H.Controls.Adorner
         }
 
         protected ContentPresenter _contentPresenter = new ContentPresenter();
-
         public DataTemplateAdorner(UIElement adornedElement) : base(adornedElement)
         {
             _visualCollection.Add(_contentPresenter);
             object data = DataTemplateAdorner.GetData(adornedElement);
             if (data != null)
-            {
                 _contentPresenter.Content = data;
-            }
             else
-            {
                 _contentPresenter.Content = adornedElement.GetContent();
-            }
         }
 
         public DataTemplateAdorner(UIElement adornedElement, object data) : base(adornedElement)

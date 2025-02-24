@@ -1,6 +1,9 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+
 namespace H.Services.Common
 {
     public class ShowEditCommand : MessageCommandBase
@@ -10,7 +13,20 @@ namespace H.Services.Common
 
         public override async Task ExecuteAsync(object parameter)
         {
-            await IocMessage.Form.ShowEdit(this.Value ?? parameter, this.UseModelState ? null : x => true, x => this.Build(x));
+            await IocMessage.Form.ShowEdit(this.Value ?? parameter, x => this.Build(x), this.UseModelState ? null : x => true);
+        }
+    }
+
+    public class ShowTabEditCommand : MessageCommandBase
+    {
+        public bool UseModelState { get; set; } = true;
+        public object Value { get; set; }
+        public string TabNames { get; set; }
+
+        public override async Task ExecuteAsync(object parameter)
+        {
+            var tabs = this.TabNames.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+            await IocMessage.Form.ShowTabEdit(this.Value ?? parameter, x => this.Build(x), this.UseModelState ? null : x => true, x => x.TabNames = new ObservableCollection<string>(tabs));
         }
     }
 }

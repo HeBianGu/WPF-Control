@@ -16,5 +16,8 @@
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form;component/PropertyItem/ExpanderFormPropertyItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form;component/PropertyItem/DictionaryPropertyViewItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form;component/FormPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form;component/ItemsFormPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form;component/StaticFormPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form;component/TabFormPresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

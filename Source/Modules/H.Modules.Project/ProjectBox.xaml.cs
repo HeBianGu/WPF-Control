@@ -63,7 +63,7 @@ namespace H.Modules.Project
                 commandBinding.Executed += async (l, k) =>
                 {
                     var project = IocProject.Instance.Create();
-                    var r = await IocMessage.Form.ShowEdit(project, null, null, null, "新建工程");
+                    var r = await IocMessage.Form.ShowEdit(project, x => x.Title = "新建工程");
                     if (r != true)
                         return;
                     IocProject.Instance.Add(project);

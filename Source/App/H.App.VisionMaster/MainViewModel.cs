@@ -89,13 +89,14 @@ public class MainViewModel : BindableBase
         {
             if (framework?.DataContext is ITextNodeData nodeData)
             {
-                IocMessage.Form?.ShowEdit(nodeData, x => true, x =>
+                IocMessage.Form?.ShowTabEdit(nodeData, x =>
                 {
                     x.Title = nodeData.Text;
-                }, x =>
+                }, null, x =>
                 {
                     x.UseGroupNames = "数据";
                     x.UseCommand = false;
+                    x.TabNames = new ObservableCollection<string>() { "数据", "样式", "工具", "常用" };
                 });
             }
         }

@@ -7,18 +7,22 @@ namespace H.Controls.Form
 {
     public class FormPresenter : DisplayBindableBase, IFormOption
     {
+        public FormPresenter()
+        {
+
+        }
         public FormPresenter(object value)
         {
-            this._value = value;
+            this._selectObject = value;
         }
 
-        private object _value;
-        public object Value
+        private object _selectObject;
+        public object SelectObject
         {
-            get { return _value; }
+            get { return _selectObject; }
             set
             {
-                _value = value;
+                _selectObject = value;
                 RaisePropertyChanged();
             }
         }
@@ -36,7 +40,6 @@ namespace H.Controls.Form
 
         public string ExceptPropertyNames { get; set; }
         public double MessageWidth { get; set; }
-        public object SelectObject { get; set; }
         public string Title { get; set; }
         public bool UseArray { get; set; }
         public bool UseAsync { get; set; }
@@ -70,26 +73,4 @@ namespace H.Controls.Form
         public VerticalAlignment VerticalAlignment { get; set; }
     }
 
-    public class StaticFormPresenter : FormPresenter
-    {
-        public StaticFormPresenter(object value) : base(value)
-        {
-
-        }
-    }
-
-    public class ItemsFormPresenter : DisplayBindableBase
-    {
-        private ObservableCollection<object> _objs = new ObservableCollection<object>();
-
-        public ObservableCollection<object> Objs
-        {
-            get { return _objs; }
-            set
-            {
-                _objs = value;
-                RaisePropertyChanged("Objs");
-            }
-        }
-    }
 }

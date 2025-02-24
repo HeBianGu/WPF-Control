@@ -349,7 +349,7 @@ namespace H.Extensions.ViewModel
         public virtual async Task Add(object obj)
         {
             TEntity m = new TEntity();
-            bool? dialog = await IocMessage.Form.ShowEdit(this.GetAddModel(m), null, null, null, "新增");
+            bool? dialog = await IocMessage.Form.ShowEdit(this.GetAddModel(m), x => x.Title = "新增");
             if (dialog != true)
             {
                 IocMessage.Snack?.ShowInfo("取消操作");
