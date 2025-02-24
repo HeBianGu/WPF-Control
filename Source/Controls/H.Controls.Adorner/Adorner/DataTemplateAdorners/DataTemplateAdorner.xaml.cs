@@ -1,18 +1,14 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
+using H.Controls.Adorner.Adorner.Base;
+using H.Controls.Adorner.Adorner.ControlTemplateAdorners;
 using System;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace H.Controls.Adorner
+namespace H.Controls.Adorner.Adorner.DataTemplateAdorners
 {
-    public interface IDynimacAdorner
-    {
-        Point Offset { get; set; }
-        void UpdatePosition(Point location);
-    }
-
     public class DataTemplateAdorner : VisualCollectionAdornerBase
     {
         static DataTemplateAdorner()
@@ -24,7 +20,7 @@ namespace H.Controls.Adorner
         public DataTemplateAdorner(UIElement adornedElement) : base(adornedElement)
         {
             _visualCollection.Add(_contentPresenter);
-            object data = DataTemplateAdorner.GetData(adornedElement);
+            object data = GetData(adornedElement);
             if (data != null)
                 _contentPresenter.Content = data;
             else
@@ -35,9 +31,7 @@ namespace H.Controls.Adorner
         {
             _visualCollection.Add(_contentPresenter);
             if (data != null)
-            {
                 _contentPresenter.Content = data;
-            }
             else
             {
                 _contentPresenter.Content = adornedElement.GetContent();
@@ -61,7 +55,7 @@ namespace H.Controls.Adorner
 
 
         public static readonly DependencyProperty DataProperty =
-            DependencyProperty.RegisterAttached("Data", typeof(object), typeof(DataTemplateAdorner), new PropertyMetadata(default(object), OnDataChanged));
+            DependencyProperty.RegisterAttached("Data", typeof(object), typeof(DataTemplateAdorner), new PropertyMetadata(default, OnDataChanged));
 
         public static void OnDataChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -90,37 +84,6 @@ namespace H.Controls.Adorner
             point.X = (this.AdornedElement.DesiredSize.Width - this._contentPresenter.DesiredSize.Width) / 2;
             point.Y = (this.AdornedElement.DesiredSize.Height - this._contentPresenter.DesiredSize.Height) / 2;
             this._contentPresenter.Arrange(new Rect(point, this._contentPresenter.DesiredSize));
-        }
-    }
-
-
-    public class DynimacDataTempateAdorner : DataTemplateAdorner, IDynimacAdorner
-    {
-        private Point location;
-        public Point Offset { get; set; }
-        public DynimacDataTempateAdorner(UIElement adornedElement) : base(adornedElement)
-        {
-
-        }
-
-        public DynimacDataTempateAdorner(UIElement adornedElement, object data) : base(adornedElement, data)
-        {
-
-        }
-
-        public void UpdatePosition(Point location)
-        {
-            this.location = location;
-            this._contentPresenter.Arrange(new Rect(this.location, this._contentPresenter.DesiredSize));
-        }
-
-
-        protected override Size ArrangeOverride(Size finalSize)
-        {
-            Size size = base.ArrangeOverride(finalSize);
-            this.UpdatePosition(this.location);
-            return size;
-
         }
     }
 }

@@ -2,6 +2,7 @@
 
 
 
+using H.Controls.Adorner.Adorner.ControlTemplateAdorners;
 using System;
 using System.Windows;
 using System.Windows.Controls;

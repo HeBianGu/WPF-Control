@@ -1,4 +1,4 @@
-﻿using H.Controls.Adorner;
+﻿using H.Controls.Adorner.Draggable;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -58,7 +58,7 @@ namespace H.Presenters.Design
 
         public override void DragEnter(UIElement element, DragEventArgs e)
         {
-            IDragAdorner adorner = e.Data.GetData("DragGroup") as IDragAdorner;
+            IDraggableAdorner adorner = e.Data.GetData("DragGroup") as IDraggableAdorner;
             if (adorner.GetData() is DesignPresenter value)
             {
                 this.Presenters.Add(value);

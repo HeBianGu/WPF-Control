@@ -2,11 +2,12 @@
 
 
 
+using H.Controls.Adorner.Adorner.Base;
 using System;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace H.Controls.Adorner
+namespace H.Controls.Adorner.Adorner.ControlTemplateAdorners
 {
     public class ControlTemplateAdorner : VisualCollectionAdornerBase
     {
@@ -32,7 +33,7 @@ namespace H.Controls.Adorner
 
         protected virtual ControlTemplate CreateTemplate()
         {
-            return ControlTemplateAdorner.GetTemplate(this.AdornedElement);
+            return GetTemplate(this.AdornedElement);
         }
 
         public static ControlTemplate GetTemplate(DependencyObject obj)

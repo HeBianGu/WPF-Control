@@ -15,5 +15,16 @@ using System.Windows.Markup;
 [assembly: XmlnsDefinition("QQ:908293466", "H.Controls.Adorner")]
 [assembly: XmlnsPrefix("QQ:908293466", "h")]
 
+[assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Controls.Adorner.Adorner.DataTemplateAdorners")]
+[assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Controls.Adorner.Adorner.ControlTemplateAdorners")]
+[assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Controls.Adorner.Draggable")]
+[assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Controls.Adorner.Draggable.Bevhavior")]
 [assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Controls.Adorner")]
 [assembly: XmlnsPrefix("https://github.com/HeBianGu", "h")]
+
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Controls.Adorner")]
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Controls.Adorner.Adorner.DataTemplateAdorners")]
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Controls.Adorner.Adorner.ControlTemplateAdorners")]
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Controls.Adorner.Draggable")]
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Controls.Adorner.Draggable.Bevhavior")]
+[assembly: XmlnsPrefix("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "h")]

@@ -2,7 +2,7 @@
 
 
 
-using H.Controls.Adorner;
+using H.Controls.Adorner.Draggable;
 using Microsoft.Xaml.Behaviors;
 using System;
 using System.Windows;
@@ -19,7 +19,7 @@ namespace H.Controls.Diagram
 
         private void AssociatedObject_Drop(object sender, DragEventArgs e)
         {
-            IDragAdorner adorner = e.Data.GetData("DragGroup") as IDragAdorner;
+            IDraggableAdorner adorner = e.Data.GetData("DragGroup") as IDraggableAdorner;
             if (adorner == null)
                 return;
             Point offset = adorner.Offset;

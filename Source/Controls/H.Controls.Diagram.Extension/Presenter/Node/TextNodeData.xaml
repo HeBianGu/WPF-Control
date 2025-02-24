@@ -3,7 +3,7 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.Diagram.Extension">
     <DataTemplate DataType="{x:Type local:TextNodeData}">
-        <Grid h:DragAdornerBehavior.IsUse="{Binding IsTemplate}"
+        <Grid h:DraggableAdornerBehavior.IsUse="{Binding IsTemplate}"
               Background="Transparent"
               ToolTip="{Binding Description}">
             <Grid Width="100"

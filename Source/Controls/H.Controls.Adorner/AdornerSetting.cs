@@ -9,16 +9,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace H.Controls.Adorner
 {
-    public class Service : IService
-    {
-
-    }
-
-    public interface IService
-    {
-
-    }
-
     [Display(Name = "装饰层配置", GroupName = SettingGroupNames.GroupStyle)]
     public class AdornerSetting : LazySettableInstance<AdornerSetting>
     {

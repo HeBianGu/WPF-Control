@@ -2,17 +2,14 @@
 
 
 using H.Extensions.Attach;
-using Microsoft.Xaml.Behaviors;
-using System;
 using System.Collections;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace H.Controls.Adorner
+namespace H.Controls.Adorner.Draggable.Bevhavior
 {
     /// <summary> 用于显示ListBoxItem拖拽进行时的效果，通过附加属性Bool修改样式 </summary>
-    public class ElementAllowDragBehavior : DragAdornerBehavior
+    public class ElementAllowDraggableBehavior : DraggableAdornerBehavior
     {
         protected override void OnAttached()
         {
@@ -49,7 +46,7 @@ namespace H.Controls.Adorner
 
             if (items.ItemsSource == null)
             {
-                DataObject dragData = new DataObject(this.DragGroup, (this.AssociatedObject is ListBoxItem item) ? item.Content : this.AssociatedObject);
+                DataObject dragData = new DataObject(this.DragGroup, this.AssociatedObject is ListBoxItem item ? item.Content : this.AssociatedObject);
 
                 int index = items.Items.IndexOf(this.AssociatedObject);
 
@@ -63,10 +60,8 @@ namespace H.Controls.Adorner
                         int index1 = items.Items.IndexOf(this.AssociatedObject);
 
                         if (index == index1)
-                        {
                             //  Do ：下移 
                             items.Items.RemoveAt(index);
-                        }
                         else
                         {
                             //  Do ：上移
@@ -94,10 +89,8 @@ namespace H.Controls.Adorner
                         int index1 = (items.ItemsSource as IList).IndexOf(data);
 
                         if (index == index1)
-                        {
                             //  Do ：下移 
                             (items.ItemsSource as IList).RemoveAt(index);
-                        }
                         else
                         {
                             //  Do ：上移
@@ -121,40 +114,6 @@ namespace H.Controls.Adorner
         private void AssociatedObjectOnDrop(object sender, DragEventArgs dragEventArgs)
         {
             Cattach.SetIsDragEnter(this.AssociatedObject, false);
-        }
-    }
-
-    //  ToDo：目前不好用 后面测试
-    public abstract class ActiveBehavior<B, T> : Behavior<T> where T : DependencyObject where B : Behavior, new()
-    {
-        public static readonly DependencyProperty IsActiveProperty =
-            DependencyProperty.RegisterAttached("IsActive", typeof(bool), typeof(B),
-                new PropertyMetadata(default(bool), OnIsActiveChanged));
-
-        public static bool GetIsActive(DependencyObject obj)
-        {
-            return (bool)obj.GetValue(ActiveBehavior<B, T>.IsActiveProperty);
-        }
-
-        public static void SetIsActive(DependencyObject obj, bool value)
-        {
-            obj.SetValue(ActiveBehavior<B, T>.IsActiveProperty, value);
-        }
-
-        private static void OnIsActiveChanged(DependencyObject dpo, DependencyPropertyChangedEventArgs e)
-        {
-            BehaviorCollection bc = Interaction.GetBehaviors(dpo);
-
-            if (Convert.ToBoolean(e.NewValue))
-            {
-                bc.Add(new B());
-            }
-            else
-            {
-                Behavior behavior = bc.FirstOrDefault(beh => beh.GetType() == typeof(B));
-                if (behavior != null)
-                    bc.Remove(behavior);
-            }
         }
     }
 }

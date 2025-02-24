@@ -4,14 +4,13 @@
 using Microsoft.Xaml.Behaviors;
 using System.IO;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Markup;
 using System.Xml;
 
-namespace H.Controls.Adorner
+namespace H.Controls.Adorner.Draggable.Bevhavior
 {
     /// <summary> 用于显示ListBoxItem拖拽进行时的效果，通过附加属性Bool修改样式 </summary>
-    public abstract class DropAdornerBehavior<T> : Behavior<T> where T : UIElement
+    public abstract class DropableAdornerBehavior<T> : Behavior<T> where T : UIElement
     {
         /// <summary> 判断可否放置的分组 </summary>
         public string DragGroup
@@ -22,9 +21,9 @@ namespace H.Controls.Adorner
 
 
         public static readonly DependencyProperty DragGroupProperty =
-            DependencyProperty.Register("DragGroup", typeof(string), typeof(DropAdornerBehavior<T>), new PropertyMetadata("DragGroup", (d, e) =>
+            DependencyProperty.Register("DragGroup", typeof(string), typeof(DropableAdornerBehavior<T>), new PropertyMetadata("DragGroup", (d, e) =>
             {
-                DropAdornerBehavior<T> control = d as DropAdornerBehavior<T>;
+                DropableAdornerBehavior<T> control = d as DropableAdornerBehavior<T>;
 
                 if (control == null) return;
 
@@ -39,7 +38,7 @@ namespace H.Controls.Adorner
 
         private void AssociatedObject_Drop(object sender, DragEventArgs e)
         {
-            DragAdorner adorner = e.Data.GetData("DragGroup") as DragAdorner;
+            DraggableAdorner adorner = e.Data.GetData("DragGroup") as DraggableAdorner;
 
             if (adorner == null) return;
 
@@ -64,19 +63,6 @@ namespace H.Controls.Adorner
         }
 
         protected abstract void DropElement(UIElement element, Point location, Point offset);
-    }
-
-
-    public class DropAdornerCanvasBehavior : DropAdornerBehavior<Canvas>
-    {
-        protected override void DropElement(UIElement element, Point location, Point offset)
-        {
-            this.AssociatedObject.Children.Add(element);
-
-            Canvas.SetLeft(element, location.X - offset.X);
-
-            Canvas.SetTop(element, location.Y - offset.Y);
-        }
     }
 }
 

@@ -67,7 +67,7 @@
             <Ellipse Fill="{Binding Background}"/>
             <TextBlock Text="{Binding Name}" Foreground="{Binding Foreground}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <h:Interaction.Behaviors>
-                <h:DragAdornerBehavior/>
+                <h:DraggableAdornerBehavior/>
             </h:Interaction.Behaviors>
         </Grid>
     </DataTemplate>-->
@@ -77,7 +77,7 @@
             <Rectangle Width="{Binding Width}" Height="{Binding Height}" Fill="{Binding Background}"/>
             <TextBlock Text="{Binding Name}" Foreground="{Binding Foreground}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <h:Interaction.Behaviors>
-                <h:DragAdornerBehavior/>
+                <h:DraggableAdornerBehavior/>
             </h:Interaction.Behaviors>
         </Grid>
     </DataTemplate>-->
@@ -92,7 +92,7 @@
             </Polygon>
             <TextBlock Text="{Binding Name}" Foreground="{Binding Foreground}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <h:Interaction.Behaviors>
-                <h:DragAdornerBehavior/>
+                <h:DraggableAdornerBehavior/>
             </h:Interaction.Behaviors>
         </Grid>
 
@@ -108,7 +108,7 @@
             </Polygon>
             <TextBlock Text="{Binding Name}" Foreground="{Binding Foreground}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <h:Interaction.Behaviors>
-                <h:DragAdornerBehavior/>
+                <h:DraggableAdornerBehavior/>
             </h:Interaction.Behaviors>
         </Grid>
     </DataTemplate>-->

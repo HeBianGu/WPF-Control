@@ -3,7 +3,7 @@
 using System.Windows;
 using System.Windows.Media;
 
-namespace H.Controls.Adorner
+namespace H.Controls.Adorner.Adorner.Base
 {
     public abstract class AdornerBase : System.Windows.Documents.Adorner
     {

@@ -1,4 +1,4 @@
-﻿using H.Controls.Adorner;
+﻿using H.Controls.Adorner.Draggable;
 using H.Themes.Default;
 using System.ComponentModel.DataAnnotations;
 using System.Windows;
@@ -90,7 +90,7 @@ namespace H.Presenters.Design
             var grid = element.GetChild<Grid>();
             if (_dropBackup == null)
             {
-                IDragAdorner adorner = e.Data.GetData("DragGroup") as IDragAdorner;
+                IDraggableAdorner adorner = e.Data.GetData("DragGroup") as IDraggableAdorner;
                 if (adorner.GetData() is IDesignPresenter value)
                 {
                     if (grid.HitTestRow(p, out int r) && grid.HitTestColumn(p, out int c))

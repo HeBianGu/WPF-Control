@@ -108,7 +108,7 @@
 
 
     <!--<DataTemplate DataType="{x:Type local:PropertyNodeData}">
-        <Grid Margin="5,5,5,30" h:DragAdornerBehavior.IsUse="{Binding IsTemplate}" Background="Transparent">
+        <Grid Margin="5,5,5,30" h:DraggableAdornerBehavior.IsUse="{Binding IsTemplate}" Background="Transparent">
     -->
     <!--<Grid.ContextMenu>
                 <ContextMenu>

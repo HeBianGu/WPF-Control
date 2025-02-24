@@ -3,9 +3,9 @@
 
 using System.Windows;
 
-namespace H.Controls.Adorner
+namespace H.Controls.Adorner.Draggable
 {
-    public interface IDragAdorner
+    public interface IDraggableAdorner
     {
         Point Offset { get; set; }
         void UpdatePosition(Point location);

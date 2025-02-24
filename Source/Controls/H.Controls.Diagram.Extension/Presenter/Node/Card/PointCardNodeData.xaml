@@ -3,7 +3,7 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.Diagram.Extension">
     <DataTemplate DataType="{x:Type local:PointCardNodeData}">
-        <Grid h:DragAdornerBehavior.IsUse="{Binding IsTemplate}"
+        <Grid h:DraggableAdornerBehavior.IsUse="{Binding IsTemplate}"
               Background="Transparent">
             <Grid Width="{Binding Width, Converter={x:Static h:Converter.GetMathAddition}, ConverterParameter=1}"
                   Height="{Binding Height, Converter={x:Static h:Converter.GetMathAddition}, ConverterParameter=1}"

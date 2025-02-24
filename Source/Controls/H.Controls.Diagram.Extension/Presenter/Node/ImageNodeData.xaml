@@ -13,7 +13,7 @@
                       Margin="5"
                       HorizontalAlignment="Center"
                       VerticalAlignment="Center"
-                      h:DragAdornerBehavior.IsUse="{Binding IsTemplate}"
+                      h:DraggableAdornerBehavior.IsUse="{Binding IsTemplate}"
                       Background="Transparent"
                       ClipToBounds="False">
                     <!--    -->

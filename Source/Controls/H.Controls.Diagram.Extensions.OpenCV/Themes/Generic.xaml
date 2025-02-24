@@ -18,7 +18,7 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 h:DataTemplateAdorner.Data="{Binding}"
-                h:DragDataTempalteAdornerBehaviour.IsUse="{Binding IsTemplate}"
+                h:DraggableDataTempalteAdornerBehaviour.IsUse="{Binding IsTemplate}"
                 ClipToBounds="False">
                 <Grid>
                     <Border

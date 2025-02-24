@@ -4,7 +4,7 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.Diagram.Extension">
     <DataTemplate DataType="{x:Type local:GeometryNodeDataBase}">
-        <Grid h:DragAdornerBehavior.IsUse="{Binding IsTemplate}"
+        <Grid h:DraggableAdornerBehavior.IsUse="{Binding IsTemplate}"
               Background="Transparent">
             <AdornerDecorator HorizontalAlignment="Left"
                               VerticalAlignment="Top">
@@ -13,7 +13,7 @@
                       Margin="5"
                       HorizontalAlignment="Center"
                       VerticalAlignment="Center"
-                      h:DragAdornerBehavior.IsUse="{Binding IsTemplate}"
+                      h:DraggableAdornerBehavior.IsUse="{Binding IsTemplate}"
                       ClipToBounds="False">
                     <!--    -->
                     <!--<h:StoryService.Storys>
