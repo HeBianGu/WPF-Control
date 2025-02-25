@@ -68,7 +68,7 @@
                             <FontIconButton Content="&#xE1A4;" />
                             <FontIconButton Content="&#xE1D2;" />
                             <FontIconButton Content="&#xE1CD;" />
-                            <FontIconButton Content="&#xE9D9;" />
+                            <FontIconButton Content="&#xF000;" />
                             <FontIconButton Content="&#xEC58;" />
                             <FontIconButton Content="&#xEF15;" />
                             <FontIconButton Content="&#xEF3B;" />
@@ -193,7 +193,7 @@
                             <TabControl.ItemTemplate>
                                 <DataTemplate>
                                     <DockPanel>
-                                        <FontIcon />
+                                        <FontIcon Text="&#xF003;"/>
                                         <FontIconButton Width="Auto"
                                                         Command="{Binding ElementName=vm, Path=StopCommand}"
                                                         CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=TabControl}}"
@@ -232,7 +232,7 @@
                                                           VerticalScrollBarVisibility="Auto">
                                                 <DockPanel LastChildFill="False">
                                                     <FontIcon Margin="5,0"
-                                                              Text="&#xE8A2;" />
+                                                              Text="&#xF003;" />
                                                     <FontIcon Margin="5,0"
                                                               Text="&#xE839;" />
                                                     <TabPanel Grid.Row="0"
@@ -331,16 +331,25 @@
                                            MinHeight="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}" />
                         </Grid.RowDefinitions>
                         <DockPanel>
-                            <GroupBox DockPanel.Dock="Bottom"
-                                      Header="图像源">
+                            <Expander DockPanel.Dock="Bottom"
+                                      Header="图像源"
+                                      Style="{DynamicResource {x:Static ExpanderKeys.ToggleRight}}">
                                 <Cattach.CaptionRightTemplate>
                                     <ControlTemplate>
-                                        <FontIconToggleButton x:Name="tb_s"
-                                                              CheckedGlyph="&#xE018;"
-                                                              DockPanel.Dock="Right"
-                                                              IsChecked="True"
-                                                              Style="{DynamicResource {x:Static FontIconToggleButtonKeys.Switch}}"
-                                                              UncheckedGlyph="&#xE019;" />
+                                        <DockPanel HorizontalAlignment="Right">
+                                            <FontIconButton DockPanel.Dock="Right" Content="&#xE74D;"/>
+                                            <FontIconButton DockPanel.Dock="Right" Content="&#xED25;"/>
+                                            <FontIconButton DockPanel.Dock="Right" Content="&#xF12B;"/>
+                                            <FontIconButton DockPanel.Dock="Right" Content="&#xF407;"/>
+                                            <FontIconButton DockPanel.Dock="Right" Content="&#xF463;"/>
+                                            <FontIconButton DockPanel.Dock="Right" Content="&#xF61B;"/>
+                                            <FontIconButton DockPanel.Dock="Right" Content="&#xF618;"/>
+                                            <FontIconButton DockPanel.Dock="Right" Content="&#xE710;"/>
+                                            <FontIconButton DockPanel.Dock="Right" Content="&#xE312;"/>
+                                            <FontIconButton DockPanel.Dock="Right" Content="&#xE9A6;"/>
+                                            <FontIconButton DockPanel.Dock="Right" Content="&#xED14;"/>
+                                        </DockPanel>
+
                                     </ControlTemplate>
                                 </Cattach.CaptionRightTemplate>
                                 <ListBox Height="80"
@@ -362,7 +371,7 @@
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
                                 </ListBox>
-                            </GroupBox>
+                            </Expander>
                             <TabControl Cattach.CaptionHorizontalAlignment="Center"
                                         ItemContainerStyle="{DynamicResource {x:Static TabItemKeys.Line}}">
                                 <TabItem MinWidth="100"
@@ -373,10 +382,10 @@
                                                    DragModifiers=""
                                                    Focusable="True"
                                                    IsTabStop="True"
+                                                   MinScale="0.2"
                                                    NavigateOnPreview="False"
                                                    RelativeZoomModifiers=""
                                                    ViewStackIndex="0"
-                                                   MinScale="0.2"
                                                    ZoomOn="Content">
                                             <b:Interaction.Behaviors>
                                                 <h:ZoomBoxFitOnLoadedBehavior />

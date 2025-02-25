@@ -29,7 +29,21 @@ public abstract class GeometryNodeDataBase : FlowableNodeData, IGeometryNodeData
         }
     }
 
+    private Stretch _stretch = Stretch.Uniform;
+    [XmlIgnore]
+    [Browsable(false)]
+    public Stretch Stretch
+    {
+        get { return _stretch; }
+        set
+        {
+            _stretch = value;
+            RaisePropertyChanged();
+        }
+    }
+
     protected abstract Geometry GetGeometry();
+
 }
 
 public class GeometryNodeData : GeometryNodeDataBase

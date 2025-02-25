@@ -10,6 +10,7 @@
     <Resource Remove="VisionMaster.bmp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Controls\H.Controls.Diagram.Presenters.OpenCV\H.Controls.Diagram.Presenters.OpenCV.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.Form\H.Controls.Form.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.Step\H.Controls.Step.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.ZoomBox.Extension\H.Controls.ZoomBox.Extension.csproj" />

@@ -22,6 +22,5 @@
                         Visibility="{Binding UseRight, Converter={x:Static h:Converter.GetTrueToVisible}}" />
             </Grid>
         </Border>
-
     </DataTemplate>
 </ResourceDictionary>

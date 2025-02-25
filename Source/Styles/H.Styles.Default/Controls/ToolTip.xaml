@@ -20,6 +20,9 @@
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Height" Value="Auto" />
+        <!--FontIcon会覆盖FontFamily-->
+        <Setter Property="FontSize" Value="{DynamicResource {x:Static FontSizeKeys.Default}}" />
+        <Setter Property="FontFamily" Value="{DynamicResource {x:Static SystemKeys.FontFamily}}" />
         <Setter Property="MinHeight" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
         <Setter Property="Template">
             <Setter.Value>

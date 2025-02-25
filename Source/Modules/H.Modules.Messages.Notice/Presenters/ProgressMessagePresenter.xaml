@@ -43,15 +43,14 @@
                              Value="{Binding Value}" />
                 <TextBlock Text="{Binding Time}" />
             </StackPanel>
-            <Button Grid.Column="2"
+            <FontIconButton Grid.Column="2"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"
-                    Content="{x:Static h:Geometrys.Close}"
-                    Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}">
+                    Content="&#xE624;">
                 <b:Interaction.Behaviors>
                     <h:ButtonRemoveItemBehavior />
                 </b:Interaction.Behaviors>
-            </Button>
+            </FontIconButton>
         </Grid>
     </DataTemplate>
 

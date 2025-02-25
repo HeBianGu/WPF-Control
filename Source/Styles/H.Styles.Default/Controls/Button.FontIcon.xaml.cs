@@ -10,4 +10,10 @@ namespace H.Styles.Default
             DefaultStyleKeyProperty.OverrideMetadata(typeof(FontIconButton), new FrameworkPropertyMetadata(typeof(FontIconButton)));
         }
     }
+
+    public class FontIconButtonKeys
+    {
+        public static ComponentResourceKey Default => new ComponentResourceKey(typeof(FontIconButtonKeys), "S.FontIconButton.Default");
+
+    }
 }

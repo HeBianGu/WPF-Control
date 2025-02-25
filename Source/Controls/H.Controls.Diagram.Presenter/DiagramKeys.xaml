@@ -129,11 +129,15 @@
         <Setter Property="Fill" Value="{Binding Fill}" />
         <Setter Property="Stroke" Value="{Binding Stroke}" />
         <Setter Property="Data" Value="{Binding Data}" />
-        <Setter Property="Stretch" Value="Uniform"/>
+        <Setter Property="Stretch" Value="{Binding Stretch}"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <!--<Setter Property="h:DraggableDataTemplateAdornerBehavior.IsUse" Value="{Binding IsTemplate}"/>-->
         <Style.Triggers>
+            <DataTrigger Binding="{Binding IsTemplate}"
+                 Value="True">
+                <Setter Property="ToolTip" Value="{Binding Description}" />
+            </DataTrigger>
             <DataTrigger Binding="{Binding Stroke}"
                          Value="{x:Null}">
                 <Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />

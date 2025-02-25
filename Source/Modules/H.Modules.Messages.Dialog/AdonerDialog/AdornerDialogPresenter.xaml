@@ -45,13 +45,12 @@
                             Margin="5,0"
                             VerticalAlignment="Center"
                             Text="{Binding Title}" />
-                        <Button
+                        <FontIconButton
                             Grid.Column="1"
                             HorizontalAlignment="Right"
                             Command="{local:CloseAdornerDialogCommand}"
                             CommandParameter="{Binding}"
-                            Content="{x:Static Geometrys.Close}"
-                            Style="{DynamicResource {x:Static ButtonKeys.Geometry}}" />
+                            Content="&#xE624;"/>
                     </Grid>
                 </Border>
                 <Grid

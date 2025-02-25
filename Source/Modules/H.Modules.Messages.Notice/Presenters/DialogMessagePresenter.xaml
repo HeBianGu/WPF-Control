@@ -54,12 +54,12 @@
                                ToolTip="{Binding Time}" />
                 </DockPanel>
             </StackPanel>
-            <Button Grid.Column="2"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Center"
-                    Command="{Binding CloseCommand}"
-                    Content="{x:Static h:Geometrys.Close}"
-                    Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
+            <FontIconButton Grid.Column="2"
+                            Margin="5,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Command="{Binding CloseCommand}"
+                            Content="&#xE624;" />
         </Grid>
     </DataTemplate>
 </ResourceDictionary>

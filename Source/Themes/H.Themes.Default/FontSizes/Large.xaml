@@ -13,4 +13,5 @@
     <system:Double x:Key="{ComponentResourceKey ResourceId=S.FontSize.Header.7, TypeInTargetAssembly={x:Type local:FontSizeKeys}}">12</system:Double>
     <system:Double x:Key="{ComponentResourceKey ResourceId=S.FontSize.Header.8, TypeInTargetAssembly={x:Type local:FontSizeKeys}}">10</system:Double>
     <system:Double x:Key="{ComponentResourceKey ResourceId=S.FontSize.Header.9, TypeInTargetAssembly={x:Type local:FontSizeKeys}}">8</system:Double>
+    <system:Double x:Key="{ComponentResourceKey ResourceId=S.FontSize.Icon, TypeInTargetAssembly={x:Type local:FontSizeKeys}}">18</system:Double>
 </ResourceDictionary>

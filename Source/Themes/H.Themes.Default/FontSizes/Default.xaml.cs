@@ -17,5 +17,7 @@ namespace H.Themes.Default
         public static ComponentResourceKey Header8 => new ComponentResourceKey(typeof(FontSizeKeys), "S.FontSize.Header.8");
         public static ComponentResourceKey Header9 => new ComponentResourceKey(typeof(FontSizeKeys), "S.FontSize.Header.9");
         public static ComponentResourceKey Default => new ComponentResourceKey(typeof(FontSizeKeys), "S.FontSize.Default");
+
+        public static ComponentResourceKey Icon => new ComponentResourceKey(typeof(FontSizeKeys), "S.FontSize.Icon");
     }
 }

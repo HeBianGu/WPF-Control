@@ -1,4 +1,7 @@
-﻿using System;
+﻿using H.Extensions.ApplicationBase;
+using H.Styles.Default;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -11,7 +14,26 @@ namespace H.Test.Controls
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : Application
+    public partial class App : ApplicationBase
     {
+        protected override Window CreateMainWindow(StartupEventArgs e)
+        {
+            return new MainWindow();
+        }
+
+        protected override void ConfigureServices(IServiceCollection services)
+        {
+            services.AddAdornerDialogMessage();
+            services.AddSnackMessage();
+            //services.AddWindowDialogMessage();
+            services.AddSetting();
+        }
+
+        protected override void Configure(IApplicationBuilder app)
+        {
+            app.UseWindowSetting();
+            app.UseScrollViewerSetting();
+        }
+
     }
 }

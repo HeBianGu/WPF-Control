@@ -15,10 +15,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Datas\H.Data.Test\H.Data.Test.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.ApplicationBase\H.Extensions.ApplicationBase.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Geometry\H.Extensions.Geometry.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Validation\H.Extensions.Validation.csproj" />
     <ProjectReference Include="..\..\Styles\H.Styles.Default\H.Styles.Default.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Default\H.Themes.Default.csproj" />
+    <ProjectReference Include="..\..\Modules\H.Modules.Setting\H.Modules.Setting.csproj" />
+     <ProjectReference Include="..\..\Modules\H.Modules.Messages.Snack\H.Modules.Messages.Snack.csproj" />
+    <ProjectReference Include="..\..\Modules\H.Modules.Messages.Dialog\H.Modules.Messages.Dialog.csproj" />
   </ItemGroup>
-
 </Project>

@@ -183,20 +183,6 @@ public abstract class NodeData : NodeDataBase, INodeData, ITemplate, ILinkDataCr
         }
     }
 
-    private Stretch _stretch = Stretch.Fill;
-    [XmlIgnore]
-    [Browsable(false)]
-    public Stretch Stretch
-    {
-        get { return _stretch; }
-        set
-        {
-            _stretch = value;
-            RaisePropertyChanged();
-        }
-    }
-
-
     private double _strokeThickness = 1;
     [DefaultValue(1)]
     [Display(Name = "边框宽度", GroupName = "常用")]
@@ -212,7 +198,6 @@ public abstract class NodeData : NodeDataBase, INodeData, ITemplate, ILinkDataCr
 
 
     private bool _isSelected;
-    /// <summary> 说明  </summary>
     public bool IsSelected
     {
         get { return _isSelected; }
@@ -322,7 +307,7 @@ public abstract class NodeData : NodeDataBase, INodeData, ITemplate, ILinkDataCr
         node.Fill = this.Fill;
         node.Stroke = this.Stroke;
         node.StrokeThickness = this.StrokeThickness;
-        node.Stretch = this.Stretch;
+        //node.Stretch = this.Stretch;
         //node.BlurRadius = this.BlurRadius;
         //node.EffectColor = this.EffectColor;
         //node.Direction = this.Direction;

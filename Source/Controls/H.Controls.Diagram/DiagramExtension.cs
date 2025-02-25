@@ -102,6 +102,8 @@ namespace H.Controls.Diagram
             string up = "\xE74A";
             string left = "\xE72B";
             string right = "\xE72A";
+            if (portData.PortType == PortType.Both)
+                return null;
             if (portData.Dock == Dock.Top)
                 return portData.PortType == PortType.Input ? down : up;
             else if (portData.Dock == Dock.Bottom)

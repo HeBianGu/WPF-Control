@@ -74,17 +74,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="ViewFinderToggleButtonStyle"
-           BasedOn="{StaticResource TransparentButton}"
-           TargetType="{x:Type ToggleButton}">
-        <Setter Property="Visibility" Value="Visible" />
-        <Style.Triggers>
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Zoombox}}, Path=ViewFinderVisibility}"
-                         Value="Hidden">
-                <Setter Property="Visibility" Value="Collapsed" />
-            </DataTrigger>
-        </Style.Triggers>
-    </Style>
+
 
     <DrawingImage x:Key="ShowViewFinderGlyph">
         <DrawingImage.Drawing>
@@ -494,25 +484,39 @@
                                                                 ViewportPen="{StaticResource ViewportPen}" />
                             </Grid>
                         </Border>
-                        <ToggleButton Name="ShowViewFinder"
-                                      Width="22"
-                                      Height="22"
-                                      Margin="5"
-                                      HorizontalAlignment="Right"
-                                      VerticalAlignment="Bottom"
-                                      Background="Transparent"
-                                      FocusVisualStyle="{x:Null}"
-                                      Foreground="Transparent"
-                                      IsChecked="{Binding Path=ViewFinderVisibility, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource TrueIfVisibleConverter}}"
-                                      IsTabStop="False"
-                                      Style="{StaticResource ViewFinderToggleButtonStyle}"
-                                      ToolTip="Show View Finder">
-                            <Grid Name="ShowViewFinderGlyph"
-                                  Opacity="0">
-                                <Image x:Name="ShowViewFinderGlyphImage"
-                                       Source="{StaticResource ShowViewFinderGlyph}" />
-                            </Grid>
-                        </ToggleButton>
+                        <Grid Name="ShowViewFinderGlyph"
+                              HorizontalAlignment="Right"
+                              VerticalAlignment="Bottom"
+                              Opacity="0">
+                            <FontIconToggleButton Name="ShowViewFinder"
+                                                  Margin="5"
+                                                  HorizontalAlignment="Right"
+                                                  VerticalAlignment="Bottom"
+                                                  CheckedGlyph="&#xE741;"
+                                                  IsChecked="{Binding Path=ViewFinderVisibility, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource TrueIfVisibleConverter}}"
+                                                  IsTabStop="False"
+                                                  ToolTip="Show View Finder"
+                                                  UncheckedGlyph="&#xE7C2;">
+                                <Control.Style>
+                                    <Style BasedOn="{StaticResource {x:Static FontIconToggleButtonKeys.Default}}"
+                                           TargetType="{x:Type FontIconToggleButton}">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:Zoombox}}, Path=ViewFinderVisibility}"
+                                                         Value="Hidden">
+                                                <Setter Property="Visibility" Value="Collapsed" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Control.Style>
+                                <!--<Grid Name="ShowViewFinderGlyph"
+               Opacity="0">
+             <Image x:Name="ShowViewFinderGlyphImage"
+                    Source="{StaticResource ShowViewFinderGlyph}" />
+         </Grid>-->
+                            </FontIconToggleButton>
+                        </Grid>
+
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="EffectiveViewStackMode" Value="Manual">

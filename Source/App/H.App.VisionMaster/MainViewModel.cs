@@ -1,7 +1,8 @@
 ﻿using H.Controls.Diagram;
-using H.Controls.Diagram.Extension;
-using H.Controls.Diagram.Extensions.OpenCV;
-using H.Controls.Diagram.Extensions.OpenCV.NodeDataGroup;
+using H.Controls.Diagram.Presenter.DiagramDatas;
+using H.Controls.Diagram.Presenter.NodeDatas;
+using H.Controls.Diagram.Presenters.OpenCV;
+using H.Controls.Diagram.Presenters.OpenCV.NodeDataGroups;
 using H.Extensions.Common;
 using H.Mvvm;
 using H.Services.Common;
@@ -27,7 +28,7 @@ public class MainViewModel : BindableBase
 
     public IEnumerable<INodeDataGroup> CreateNodeDataGroups()
     {
-        return typeof(INodeDataGroup).Assembly.GetInstances<INodeDataGroup>().OrderBy(x => x.Order);
+        return typeof(BasicDataGroup).Assembly.GetInstances<INodeDataGroup>().OrderBy(x => x.Order);
     }
 
     private ObservableCollection<INodeDataGroup> _nodeDataGroups = new ObservableCollection<INodeDataGroup>();

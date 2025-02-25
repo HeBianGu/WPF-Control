@@ -12,11 +12,14 @@ namespace H.Styles.Default
 {
     public class WindowKeys
     {
+        [Obsolete("用FontIconButton替换")]
         public static ComponentResourceKey Button => new ComponentResourceKey(typeof(WindowKeys), "S.Window.Button");
+        public static ComponentResourceKey FontIconButton => new ComponentResourceKey(typeof(WindowKeys), "S.Window.FontIconButton");
+
         public static ComponentResourceKey WindowChrome => new ComponentResourceKey(typeof(WindowKeys), "S.Window.WindowChrome");
     }
 
-    [Display(Name = "窗口设置", GroupName = SettingGroupNames.GroupSystem, Description = "设置窗口参数")]
+    [Display(Name = "窗口设置", GroupName = SettingGroupNames.GroupControl, Description = "设置窗口参数")]
     public class WindowSetting : Extensions.Setting.Settable<WindowSetting>
     {
         private string _backImagePath;
@@ -106,7 +109,7 @@ namespace H.Styles.Default
     {
         private double _width;
         [ReadOnly(true)]
-        [Display(Name = "主窗口关闭提示", Description = "当主窗口点击关闭时会提示是否关闭窗口")]
+        [Display(Name = "宽度", Description = "设置主窗口高度")]
         [DefaultValue(1100.0)]
         public double Width
         {
@@ -120,7 +123,7 @@ namespace H.Styles.Default
 
         private double _height;
         [ReadOnly(true)]
-        [Display(Name = "主窗口关闭提示", Description = "当主窗口点击关闭时会提示是否关闭窗口")]
+        [Display(Name = "高度", Description = "设置主窗口高度")]
         [DefaultValue(700.0)]
         public double Height
         {
@@ -134,7 +137,7 @@ namespace H.Styles.Default
 
         private WindowStartupLocation _WindowStartupLocation;
         [ReadOnly(true)]
-        [Display(Name = "主窗口关闭提示", Description = "当主窗口点击关闭时会提示是否关闭窗口")]
+        [Display(Name = "位置", Description = "设置主窗口居中位置")]
         [DefaultValue(WindowStartupLocation.CenterScreen)]
         public WindowStartupLocation WindowStartupLocation
         {
@@ -148,7 +151,7 @@ namespace H.Styles.Default
 
         private WindowState _windowState;
         [ReadOnly(true)]
-        [Display(Name = "主窗口关闭提示", Description = "当主窗口点击关闭时会提示是否关闭窗口")]
+        [Display(Name = "状态", Description = "设置主窗口状态，最大、最小和常规")]
         [DefaultValue(WindowState.Normal)]
         public WindowState WindowState
         {

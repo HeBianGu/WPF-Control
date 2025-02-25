@@ -4,6 +4,6 @@ public class NodeGroup : NodeDataGroupBase
 {
     protected override IEnumerable<INodeData> CreateNodeDatas()
     {
-        return null;
+        return Enumerable.Empty<INodeData>();
     }
 }

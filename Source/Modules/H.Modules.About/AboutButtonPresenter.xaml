@@ -3,11 +3,10 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Modules.About">
     <DataTemplate DataType="{x:Type local:AboutButtonPresenter}">
-        <Button Padding="10"
-                Command="{ShowIocDialogCommand Type={x:Type IAboutViewPresenter}}"
-                Content="{x:Static h:Geometrys.Info}"
-                Style="{StaticResource {x:Static WindowKeys.Button}}"
-                ToolTip="关于" />
+        <FontIconButton Command="{ShowIocDialogCommand Type={x:Type IAboutViewPresenter}}"
+                        Content="&#xEDE3;"
+                        Style="{DynamicResource {x:Static WindowKeys.FontIconButton}}"
+                        ToolTip="关于" />
         <DataTemplate.Triggers>
             <DataTrigger Binding="{Binding IsVisible}"
                          Value="False">

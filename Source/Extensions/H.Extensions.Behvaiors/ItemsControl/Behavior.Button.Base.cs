@@ -27,7 +27,7 @@ namespace H.Extensions.Behvaiors
         protected abstract void OnClick();
 
         protected ItemsControl ItemsControl => this.AssociatedObject.GetParent<ItemsControl>();
-        protected IList ItemsSource => this.ItemsControl.ItemsSource as IList;
+        protected IList ItemsSource => this.ItemsControl?.ItemsSource as IList;
         protected object Item => this.AssociatedObject.DataContext;
     }
 
