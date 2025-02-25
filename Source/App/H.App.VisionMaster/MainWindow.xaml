@@ -93,7 +93,7 @@
                             <Grid Margin="0,1">
                                 <GroupBox x:Name="dp_2"
                                           Header="流程资源">
-                                    <Border Margin="0,0,0,40"
+                                    <Border Margin="0,1,0,40"
                                             BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                                             BorderThickness="0,0,0,1">
                                         <ScrollViewer VerticalScrollBarVisibility="Auto">
@@ -105,8 +105,11 @@
                                                                   IsExpanded="False">
                                                             <h:Cattach.CaptionRightTemplate>
                                                                 <ControlTemplate>
-                                                                    <FontIcon Margin="5,0"
-                                                                              Text="{Binding Icon}" />
+                                                                    <Grid>
+                                                                        <FontIcon Margin="5,0"
+                                                                                  HorizontalAlignment="Right"
+                                                                                  Text="{Binding Icon}" />
+                                                                    </Grid>
                                                                 </ControlTemplate>
                                                             </h:Cattach.CaptionRightTemplate>
                                                             <ItemsControl ItemsSource="{Binding NodeDatas}">
@@ -125,6 +128,7 @@
                                     </Border>
                                 </GroupBox>
                                 <ItemsControl x:Name="dp_1"
+                                              Margin="0,20,0,0"
                                               ItemsSource="{Binding NodeDataGroups}">
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
@@ -179,9 +183,6 @@
                 </Control>
             </h:GridSplitterBox.MenuContent>
             <DockPanel>
-                <StatusBar BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
-                           BorderThickness="0,1,0,0"
-                           DockPanel.Dock="Bottom" />
                 <h:GridSplitterBox GridSpliterBackground="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                                    MenuMaxWidth="1000"
                                    MenuMinWidth="200"
@@ -189,360 +190,411 @@
                                    ToggleVerticalAlignment="Bottom"
                                    UseToggle="False">
                     <h:GridSplitterBox.MenuContent>
-                        <TabControl>
-                            <TabControl.ItemTemplate>
-                                <DataTemplate>
-                                    <DockPanel>
-                                        <FontIcon Text="&#xF003;"/>
-                                        <FontIconButton Width="Auto"
-                                                        Command="{Binding ElementName=vm, Path=StopCommand}"
-                                                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=TabControl}}"
-                                                        Content="&#xE81D;"
-                                                        DockPanel.Dock="Right" />
-                                        <FontIconButton Width="Auto"
-                                                        Command="{Binding ElementName=vm, Path=StartCommand}"
-                                                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=TabControl}}"
-                                                        Content="&#xEC58;"
-                                                        DockPanel.Dock="Right" />
-                                        <TextBlock Margin="10,0"
-                                                   VerticalAlignment="Center"
-                                                   Text="{Binding Value}" />
-                                    </DockPanel>
-                                </DataTemplate>
-                            </TabControl.ItemTemplate>
-                            <TabControl.Template>
-                                <ControlTemplate TargetType="{x:Type TabControl}">
-                                    <Border Style="{StaticResource S.Border.TemplatedParent}">
-                                        <Grid ClipToBounds="true"
-                                              KeyboardNavigation.TabNavigation="Local"
-                                              SnapsToDevicePixels="true">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition x:Name="ColumnDefinition0" />
-                                                <ColumnDefinition x:Name="ColumnDefinition1"
-                                                                  Width="0" />
-                                            </Grid.ColumnDefinitions>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition x:Name="RowDefinition0"
-                                                               Height="Auto" />
-                                                <RowDefinition x:Name="RowDefinition1"
-                                                               Height="*" />
-                                            </Grid.RowDefinitions>
-                                            <ScrollViewer x:Name="headerPanel"
-                                                          Margin="0,0,0,1"
-                                                          VerticalScrollBarVisibility="Auto">
-                                                <DockPanel LastChildFill="False">
-                                                    <FontIcon Margin="5,0"
-                                                              Text="&#xF003;" />
-                                                    <FontIcon Margin="5,0"
-                                                              Text="&#xE839;" />
-                                                    <TabPanel Grid.Row="0"
-                                                              Grid.Column="0"
-                                                              Panel.ZIndex="1"
-                                                              Background="Transparent"
-                                                              IsItemsHost="true"
-                                                              KeyboardNavigation.TabIndex="1" />
-                                                    <FontIconButton Content="&#xE710;"
-                                                                    SnapsToDevicePixels="True" />
-                                                </DockPanel>
-                                            </ScrollViewer>
-
-                                            <Border x:Name="contentPanel"
-                                                    Grid.Row="1"
-                                                    Grid.Column="0"
-                                                    KeyboardNavigation.DirectionalNavigation="Contained"
-                                                    KeyboardNavigation.TabIndex="2"
-                                                    KeyboardNavigation.TabNavigation="Local">
-                                                <!--  Foreground继承,不从TabItem继承，TabItem选中为高亮  -->
-                                                <ContentControl x:Name="PART_SelectedContentHost"
-                                                                Margin="{TemplateBinding Padding}"
-                                                                Content="{TemplateBinding SelectedContent}"
-                                                                ContentTemplate="{TemplateBinding SelectedContentTemplate}"
-                                                                Foreground="{TemplateBinding Foreground}"
-                                                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                                            </Border>
-                                        </Grid>
-                                    </Border>
-                                </ControlTemplate>
-                            </TabControl.Template>
-                            <h:TestBindable Value="流程1" />
-                            <!--<h:TestBindable Value="流程2" />-->
-                            <TabControl.ContentTemplate>
-                                <DataTemplate>
-                                    <Border BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
-                                            BorderThickness="0,1,0,0">
-                                        <h:Zoombox x:Name="zoomview"
-                                                   DragModifiers=""
-                                                   Focusable="True"
-                                                   IsTabStop="True"
-                                                   MinScale="0.2"
-                                                   NavigateOnPreview="False"
-                                                   RelativeZoomModifiers=""
-                                                   ViewStackIndex="0"
-                                                   ZoomOn="Content">
-                                            <h:Zoombox.ViewStack>
-                                                <h:ZoomboxView>500 500 200 300</h:ZoomboxView>
-                                            </h:Zoombox.ViewStack>
-                                            <h:Diagram x:Name="diagram"
-                                                       Width="2000"
-                                                       Height="2000"
-                                                       Background="Transparent"
-                                                       BorderBrush="{DynamicResource {x:Static BrushKeys.Blue}}"
-                                                       BorderThickness="2"
-                                                       FlowableZoomMode="Center"
-                                                       Focusable="True"
-                                                       NodesSource="{Binding ElementName=vm, Path=Nodes}"
-                                                       UseAnimation="False">
-                                                <h:Diagram.Layout>
-                                                    <h:LocationLayout />
-                                                </h:Diagram.Layout>
-                                                <h:Diagram.LinkDrawer>
-                                                    <h:BrokenLinkDrawer />
-                                                </h:Diagram.LinkDrawer>
-                                                <b:Interaction.Behaviors>
-                                                    <h:DiagramDropTextNodeBehavior NodeType="{Binding NodeType}" />
-                                                </b:Interaction.Behaviors>
-                                                <b:Interaction.Triggers>
-                                                    <b:EventTrigger EventName="ItemsChanged">
-                                                        <b:InvokeCommandAction Command="{Binding ItemsChangedCommand}"
-                                                                               PassEventArgsToCommand="True" />
-                                                    </b:EventTrigger>
-                                                    <b:EventTrigger EventName="SelectedPartChanged">
-                                                        <b:InvokeCommandAction Command="{Binding SelectedPartChangedCommand}"
-                                                                               PassEventArgsToCommand="True" />
-                                                    </b:EventTrigger>
-                                                    <b:EventTrigger EventName="MouseDoubleClick">
-                                                        <b:InvokeCommandAction Command="{Binding ElementName=vm, Path=MouseDoubleClickCommand}"
-                                                                               PassEventArgsToCommand="True" />
-                                                    </b:EventTrigger>
-                                                </b:Interaction.Triggers>
-                                            </h:Diagram>
-                                        </h:Zoombox>
-                                    </Border>
-                                </DataTemplate>
-                            </TabControl.ContentTemplate>
-                        </TabControl>
-                    </h:GridSplitterBox.MenuContent>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="2*"
-                                           MinHeight="300" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition x:Name="r_d"
-                                           MinHeight="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}" />
-                        </Grid.RowDefinitions>
                         <DockPanel>
-                            <Expander DockPanel.Dock="Bottom"
-                                      Header="图像源"
-                                      Style="{DynamicResource {x:Static ExpanderKeys.ToggleRight}}">
-                                <Cattach.CaptionRightTemplate>
-                                    <ControlTemplate>
-                                        <DockPanel HorizontalAlignment="Right">
-                                            <FontIconButton DockPanel.Dock="Right" Content="&#xE74D;"/>
-                                            <FontIconButton DockPanel.Dock="Right" Content="&#xED25;"/>
-                                            <FontIconButton DockPanel.Dock="Right" Content="&#xF12B;"/>
-                                            <FontIconButton DockPanel.Dock="Right" Content="&#xF407;"/>
-                                            <FontIconButton DockPanel.Dock="Right" Content="&#xF463;"/>
-                                            <FontIconButton DockPanel.Dock="Right" Content="&#xF61B;"/>
-                                            <FontIconButton DockPanel.Dock="Right" Content="&#xF618;"/>
-                                            <FontIconButton DockPanel.Dock="Right" Content="&#xE710;"/>
-                                            <FontIconButton DockPanel.Dock="Right" Content="&#xE312;"/>
-                                            <FontIconButton DockPanel.Dock="Right" Content="&#xE9A6;"/>
-                                            <FontIconButton DockPanel.Dock="Right" Content="&#xED14;"/>
+                            <StatusBar BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                                       BorderThickness="0,1,0,0"
+                                       DockPanel.Dock="Bottom">
+                                <FontIcon Foreground="{DynamicResource {x:Static BrushKeys.Green}}"
+                                          Text="&#xEC58;" />
+                                <TextBlock Text="组件配置完成" />
+                                <TextBlock>
+                                    <Run Text="流程" />
+                                    <Run Text="42.57ms" />
+                                </TextBlock>
+                                <Separator Margin="10,0"
+                                           Style="{DynamicResource {x:Static SeparatorKeys.Vertical}}" />
+                                <TextBlock>
+                                    <Run Text="工具" />
+                                    <Run Text="0.00ms" />
+                                </TextBlock>
+                                <Separator Margin="10,0"
+                                           Style="{DynamicResource {x:Static SeparatorKeys.Vertical}}" />
+                                <TextBlock>
+                                    <Run Text="算法" />
+                                    <Run Text="0.00ms" />
+                                </TextBlock>
+                            </StatusBar>
+                            <TabControl>
+                                <TabControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <DockPanel>
+                                            <FontIcon Text="&#xF003;" />
+                                            <FontIconButton Width="Auto"
+                                                            Command="{Binding ElementName=vm, Path=StopCommand}"
+                                                            CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=TabControl}}"
+                                                            Content="&#xE81D;"
+                                                            DockPanel.Dock="Right" />
+                                            <FontIconButton Width="Auto"
+                                                            Command="{Binding ElementName=vm, Path=StartCommand}"
+                                                            CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=TabControl}}"
+                                                            Content="&#xEC58;"
+                                                            DockPanel.Dock="Right" />
+                                            <TextBlock Margin="10,0"
+                                                       VerticalAlignment="Center"
+                                                       Text="{Binding Value}" />
                                         </DockPanel>
+                                    </DataTemplate>
+                                </TabControl.ItemTemplate>
+                                <TabControl.Template>
+                                    <ControlTemplate TargetType="{x:Type TabControl}">
+                                        <Border Style="{StaticResource S.Border.TemplatedParent}">
+                                            <Grid ClipToBounds="true"
+                                                  KeyboardNavigation.TabNavigation="Local"
+                                                  SnapsToDevicePixels="true">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition x:Name="ColumnDefinition0" />
+                                                    <ColumnDefinition x:Name="ColumnDefinition1"
+                                                                      Width="0" />
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition x:Name="RowDefinition0"
+                                                                   Height="Auto" />
+                                                    <RowDefinition x:Name="RowDefinition1"
+                                                                   Height="*" />
+                                                </Grid.RowDefinitions>
+                                                <ScrollViewer x:Name="headerPanel"
+                                                              Margin="0,0,0,1"
+                                                              VerticalScrollBarVisibility="Auto">
+                                                    <DockPanel LastChildFill="False">
+                                                        <FontIcon Margin="10,0" Foreground="{DynamicResource {x:Static BrushKeys.Green}}"
+                                                                  Text="&#xE839;" />
+                                                        <TabPanel Grid.Row="0"
+                                                                  Grid.Column="0"
+                                                                  Panel.ZIndex="1"
+                                                                  Background="Transparent"
+                                                                  IsItemsHost="true"
+                                                                  KeyboardNavigation.TabIndex="1" />
+                                                        <FontIconButton Content="&#xE710;"
+                                                                        SnapsToDevicePixels="True" />
+                                                    </DockPanel>
+                                                </ScrollViewer>
 
-                                    </ControlTemplate>
-                                </Cattach.CaptionRightTemplate>
-                                <ListBox Height="80"
-                                         Cattach.ItemHeight="Auto"
-                                         ItemsSource="{Binding Images}"
-                                         SelectedItem="{Binding SelectedImage}"
-                                         Visibility="{Binding ElementName=tb_s, Path=IsChecked, Converter={x:Static Converter.GetTrueToVisible}}">
-                                    <ItemsControl.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <WrapPanel />
-                                        </ItemsPanelTemplate>
-                                    </ItemsControl.ItemsPanel>
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <Border Width="75"
-                                                    Height="75">
-                                                <Image Source="{Binding}" />
-                                            </Border>
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ListBox>
-                            </Expander>
-                            <TabControl Cattach.CaptionHorizontalAlignment="Center"
-                                        ItemContainerStyle="{DynamicResource {x:Static TabItemKeys.Line}}">
-                                <TabItem MinWidth="100"
-                                         Header="图像">
-                                    <Grid>
-                                        <h:Zoombox x:Name="zoomview"
-                                                   Background="{DynamicResource {x:Static BrushKeys.Tile25}}"
-                                                   DragModifiers=""
-                                                   Focusable="True"
-                                                   IsTabStop="True"
-                                                   MinScale="0.2"
-                                                   NavigateOnPreview="False"
-                                                   RelativeZoomModifiers=""
-                                                   ViewStackIndex="0"
-                                                   ZoomOn="Content">
-                                            <b:Interaction.Behaviors>
-                                                <h:ZoomBoxFitOnLoadedBehavior />
-                                                <h:ZoomBoxFitOnSizeChangedBehavior />
-                                            </b:Interaction.Behaviors>
-                                            <h:Zoombox.ViewStack>
-                                                <!--<h:ZoomboxView>0 0 1000 1000</h:ZoomboxView>-->
-                                                <h:ZoomboxView>Fit</h:ZoomboxView>
-                                                <!--<h:ZoomboxView>Fill</h:ZoomboxView>-->
-                                            </h:Zoombox.ViewStack>
-                                            <b:Interaction.Triggers>
-                                                <h:MouseTrigger ClickCount="2"
-                                                                Mode="Right"
-                                                                MouseButton="Left"
-                                                                UseHandle="False">
-                                                    <!--<b:InvokeCommandAction Command="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.File.NextCommand}" />-->
-                                                    <h:CallMethodActionEx MethodName="FitToBounds"
-                                                                          TargetObject="{Binding ElementName=zoomview}" />
-                                                </h:MouseTrigger>
-                                                <h:MouseTrigger ClickCount="2"
-                                                                Mode="Left"
-                                                                MouseButton="Left"
-                                                                UseHandle="False">
-                                                    <!--<b:InvokeCommandAction Command="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.File.PreviousCommand}" />-->
-                                                    <h:CallMethodActionEx MethodName="FitToBounds"
-                                                                          TargetObject="{Binding ElementName=zoomview}" />
-                                                </h:MouseTrigger>
-                                            </b:Interaction.Triggers>
-                                            <Image Source="{Binding SelectedImage, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}">
-                                                <b:Interaction.Triggers>
-                                                    <b:EventTrigger EventName="SourceUpdated">
-                                                        <h:CallMethodActionEx MethodName="FitToBounds"
-                                                                              TargetObject="{Binding ElementName=zoomview}" />
-                                                    </b:EventTrigger>
-                                                    <b:EventTrigger EventName="TargetUpdated">
-                                                        <h:CallMethodActionEx MethodName="FitToBounds"
-                                                                              TargetObject="{Binding ElementName=zoomview}" />
-                                                    </b:EventTrigger>
-                                                </b:Interaction.Triggers>
-                                            </Image>
-                                        </h:Zoombox>
-                                        <Border Height="35"
-                                                VerticalAlignment="Bottom">
-                                            <Border.Background>
-                                                <SolidColorBrush Opacity="0.3"
-                                                                 Color="Black" />
-                                            </Border.Background>
-                                            <DockPanel VerticalAlignment="Center"
-                                                       LastChildFill="False">
-                                                <TextBlock Text="111.bmp" />
-                                                <TextBlock DockPanel.Dock="Right">
-                                                    <Run Text="3840*2748" />
-                                                    <Run Text="|" />
-                                                    <Run Text="3840*2748" />
-                                                    <Run Text="|" />
-                                                    <Run Text="3840*2748" />
-                                                </TextBlock>
-                                            </DockPanel>
+                                                <Border x:Name="contentPanel"
+                                                        Grid.Row="1"
+                                                        Grid.Column="0"
+                                                        KeyboardNavigation.DirectionalNavigation="Contained"
+                                                        KeyboardNavigation.TabIndex="2"
+                                                        KeyboardNavigation.TabNavigation="Local">
+                                                    <!--  Foreground继承,不从TabItem继承，TabItem选中为高亮  -->
+                                                    <ContentControl x:Name="PART_SelectedContentHost"
+                                                                    Margin="{TemplateBinding Padding}"
+                                                                    Content="{TemplateBinding SelectedContent}"
+                                                                    ContentTemplate="{TemplateBinding SelectedContentTemplate}"
+                                                                    Foreground="{TemplateBinding Foreground}"
+                                                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                                </Border>
+                                            </Grid>
                                         </Border>
-                                    </Grid>
-                                </TabItem>
-                                <TabItem MinWidth="100"
-                                         HorizontalContentAlignment="Center"
-                                         Header="模块结果">
-                                    <Grid Background="Azure" />
-                                </TabItem>
+                                    </ControlTemplate>
+                                </TabControl.Template>
+                                <h:TestBindable Value="流程1" />
+                                <!--<h:TestBindable Value="流程2" />-->
+                                <TabControl.ContentTemplate>
+                                    <DataTemplate>
+                                        <Border BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                                                BorderThickness="0,1,0,0">
+                                            <h:Zoombox x:Name="zoomview"
+                                                       DragModifiers=""
+                                                       Focusable="True"
+                                                       IsTabStop="True"
+                                                       MinScale="0.2"
+                                                       NavigateOnPreview="False"
+                                                       RelativeZoomModifiers=""
+                                                       ViewStackIndex="0"
+                                                       ZoomOn="Content">
+                                                <h:Zoombox.ViewStack>
+                                                    <h:ZoomboxView>500 500 200 300</h:ZoomboxView>
+                                                </h:Zoombox.ViewStack>
+                                                <h:Diagram x:Name="diagram"
+                                                           Width="2000"
+                                                           Height="2000"
+                                                           Background="Transparent"
+                                                           BorderBrush="{DynamicResource {x:Static BrushKeys.Blue}}"
+                                                           BorderThickness="2"
+                                                           FlowableZoomMode="Center"
+                                                           Focusable="True"
+                                                           NodesSource="{Binding ElementName=vm, Path=Nodes}"
+                                                           UseAnimation="False">
+                                                    <h:Diagram.Layout>
+                                                        <h:LocationLayout />
+                                                    </h:Diagram.Layout>
+                                                    <h:Diagram.LinkDrawer>
+                                                        <h:BrokenLinkDrawer />
+                                                    </h:Diagram.LinkDrawer>
+                                                    <b:Interaction.Behaviors>
+                                                        <h:DiagramDropTextNodeBehavior NodeType="{Binding NodeType}" />
+                                                    </b:Interaction.Behaviors>
+                                                    <b:Interaction.Triggers>
+                                                        <b:EventTrigger EventName="ItemsChanged">
+                                                            <b:InvokeCommandAction Command="{Binding ItemsChangedCommand}"
+                                                                                   PassEventArgsToCommand="True" />
+                                                        </b:EventTrigger>
+                                                        <b:EventTrigger EventName="SelectedPartChanged">
+                                                            <b:InvokeCommandAction Command="{Binding SelectedPartChangedCommand}"
+                                                                                   PassEventArgsToCommand="True" />
+                                                        </b:EventTrigger>
+                                                        <b:EventTrigger EventName="MouseDoubleClick">
+                                                            <b:InvokeCommandAction Command="{Binding ElementName=vm, Path=MouseDoubleClickCommand}"
+                                                                                   PassEventArgsToCommand="True" />
+                                                        </b:EventTrigger>
+                                                    </b:Interaction.Triggers>
+                                                </h:Diagram>
+                                            </h:Zoombox>
+                                        </Border>
+                                    </DataTemplate>
+                                </TabControl.ContentTemplate>
                             </TabControl>
                         </DockPanel>
-                        <GridSplitter Grid.Row="1"
-                                      Style="{DynamicResource {x:Static GridSplitterKeys.Horizontal}}" />
-                        <TabControl x:Name="tc"
-                                    Grid.Row="4"
-                                    VerticalAlignment="Stretch"
-                                    BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
-                                    Cattach.CaptionHorizontalAlignment="Center"
-                                    ItemContainerStyle="{DynamicResource {x:Static TabItemKeys.Line}}">
-                            <TabControl.Template>
-                                <ControlTemplate TargetType="{x:Type TabControl}">
-                                    <Border Style="{StaticResource S.Border.TemplatedParent}">
-                                        <Grid ClipToBounds="true"
-                                              KeyboardNavigation.TabNavigation="Local"
-                                              SnapsToDevicePixels="true">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition x:Name="ColumnDefinition0" />
-                                                <ColumnDefinition x:Name="ColumnDefinition1"
-                                                                  Width="0" />
-                                            </Grid.ColumnDefinitions>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition x:Name="RowDefinition0"
-                                                               Height="Auto" />
-                                                <RowDefinition x:Name="RowDefinition1"
-                                                               Height="*" />
-                                            </Grid.RowDefinitions>
-                                            <ScrollViewer x:Name="headerPanel"
-                                                          Margin="0,0,0,1"
-                                                          VerticalScrollBarVisibility="Auto">
-                                                <DockPanel>
-                                                    <FontIconToggleButton x:Name="tb"
-                                                                          CheckedGlyph="&#xE018;"
-                                                                          DockPanel.Dock="Right"
-                                                                          IsChecked="True"
-                                                                          Style="{DynamicResource {x:Static FontIconToggleButtonKeys.Switch}}"
-                                                                          UncheckedGlyph="&#xE019;">
-                                                        <b:Interaction.Triggers>
-                                                            <b:EventTrigger EventName="Unchecked">
-                                                                <b:ChangePropertyAction PropertyName="Height"
-                                                                                        TargetObject="{Binding ElementName=r_d}"
-                                                                                        Value="10" />
-                                                            </b:EventTrigger>
-                                                            <b:EventTrigger EventName="Checked">
-                                                                <b:ChangePropertyAction PropertyName="Height"
-                                                                                        TargetObject="{Binding ElementName=r_d}"
-                                                                                        Value="200" />
-                                                            </b:EventTrigger>
-                                                        </b:Interaction.Triggers>
-                                                    </FontIconToggleButton>
-                                                    <TabPanel Grid.Row="0"
-                                                              Grid.Column="0"
-                                                              Panel.ZIndex="1"
-                                                              Background="Transparent"
-                                                              IsItemsHost="true"
-                                                              KeyboardNavigation.TabIndex="1" />
+                    </h:GridSplitterBox.MenuContent>
+                    <DockPanel>
+                        <StatusBar BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                                   BorderThickness="0,1,0,0"
+                                   DockPanel.Dock="Bottom">
+                            <FontIcon Margin="10,0"
+                                      Foreground="{DynamicResource {x:Static BrushKeys.Green}}"
+                                      Text="&#xEC58;" />
+                            <TextBlock Text="13:00:37" />
+                            <TextBlock>
+                                <Run Text="添加模块" />
+                                <Run Text="流程1 图像源1" />
+                            </TextBlock>
+                        </StatusBar>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*"
+                                               MinHeight="300" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition x:Name="r_d"
+                                               MinHeight="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}" />
+                            </Grid.RowDefinitions>
+                            <DockPanel>
+                                <Expander DockPanel.Dock="Bottom"
+                                          Header="图像源"
+                                          Style="{DynamicResource {x:Static ExpanderKeys.ToggleRight}}">
+                                    <Cattach.CaptionRightTemplate>
+                                        <ControlTemplate>
+                                            <DockPanel HorizontalAlignment="Right">
+                                                <FontIconButton Content="&#xE74D;"
+                                                                DockPanel.Dock="Right" />
+                                                <FontIconButton Content="&#xED25;"
+                                                                DockPanel.Dock="Right" />
+                                                <FontIconButton Content="&#xF12B;"
+                                                                DockPanel.Dock="Right" />
+                                                <FontIconButton Content="&#xF407;"
+                                                                DockPanel.Dock="Right" />
+                                                <FontIconButton Content="&#xF463;"
+                                                                DockPanel.Dock="Right" />
+                                                <FontIconButton Content="&#xF61B;"
+                                                                DockPanel.Dock="Right" />
+                                                <FontIconButton Content="&#xF618;"
+                                                                DockPanel.Dock="Right" />
+                                                <FontIconButton Content="&#xE710;"
+                                                                DockPanel.Dock="Right" />
+                                                <FontIconButton Content="&#xE312;"
+                                                                DockPanel.Dock="Right" />
+                                                <FontIconButton Content="&#xE9A6;"
+                                                                DockPanel.Dock="Right" />
+                                                <FontIconButton Content="&#xED14;"
+                                                                DockPanel.Dock="Right" />
+                                            </DockPanel>
+
+                                        </ControlTemplate>
+                                    </Cattach.CaptionRightTemplate>
+                                    <ListBox Height="80"
+                                             Cattach.ItemHeight="Auto"
+                                             ItemsSource="{Binding Images}"
+                                             SelectedItem="{Binding SelectedImage}"
+                                             Visibility="{Binding ElementName=tb_s, Path=IsChecked, Converter={x:Static Converter.GetTrueToVisible}}">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <WrapPanel />
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border Width="75"
+                                                        Height="75">
+                                                    <Image Source="{Binding}" />
+                                                </Border>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ListBox>
+                                </Expander>
+                                <TabControl Cattach.CaptionHorizontalAlignment="Center"
+                                            ItemContainerStyle="{DynamicResource {x:Static TabItemKeys.Line}}">
+                                    <TabItem MinWidth="100"
+                                             Header="图像">
+                                        <Grid>
+                                            <h:Zoombox x:Name="zoomview"
+                                                       Background="{DynamicResource {x:Static BrushKeys.Tile25}}"
+                                                       DragModifiers=""
+                                                       Focusable="True"
+                                                       IsTabStop="True"
+                                                       MinScale="0.2"
+                                                       NavigateOnPreview="False"
+                                                       RelativeZoomModifiers=""
+                                                       ViewStackIndex="0"
+                                                       ZoomOn="Content">
+                                                <b:Interaction.Behaviors>
+                                                    <h:ZoomBoxFitOnLoadedBehavior />
+                                                    <h:ZoomBoxFitOnSizeChangedBehavior />
+                                                </b:Interaction.Behaviors>
+                                                <h:Zoombox.ViewStack>
+                                                    <!--<h:ZoomboxView>0 0 1000 1000</h:ZoomboxView>-->
+                                                    <h:ZoomboxView>Fit</h:ZoomboxView>
+                                                    <!--<h:ZoomboxView>Fill</h:ZoomboxView>-->
+                                                </h:Zoombox.ViewStack>
+                                                <b:Interaction.Triggers>
+                                                    <h:MouseTrigger ClickCount="2"
+                                                                    Mode="Right"
+                                                                    MouseButton="Left"
+                                                                    UseHandle="False">
+                                                        <!--<b:InvokeCommandAction Command="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.File.NextCommand}" />-->
+                                                        <h:CallMethodActionEx MethodName="FitToBounds"
+                                                                              TargetObject="{Binding ElementName=zoomview}" />
+                                                    </h:MouseTrigger>
+                                                    <h:MouseTrigger ClickCount="2"
+                                                                    Mode="Left"
+                                                                    MouseButton="Left"
+                                                                    UseHandle="False">
+                                                        <!--<b:InvokeCommandAction Command="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.File.PreviousCommand}" />-->
+                                                        <h:CallMethodActionEx MethodName="FitToBounds"
+                                                                              TargetObject="{Binding ElementName=zoomview}" />
+                                                    </h:MouseTrigger>
+                                                </b:Interaction.Triggers>
+                                                <Image Source="{Binding SelectedImage, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}">
+                                                    <b:Interaction.Triggers>
+                                                        <b:EventTrigger EventName="SourceUpdated">
+                                                            <h:CallMethodActionEx MethodName="FitToBounds"
+                                                                                  TargetObject="{Binding ElementName=zoomview}" />
+                                                        </b:EventTrigger>
+                                                        <b:EventTrigger EventName="TargetUpdated">
+                                                            <h:CallMethodActionEx MethodName="FitToBounds"
+                                                                                  TargetObject="{Binding ElementName=zoomview}" />
+                                                        </b:EventTrigger>
+                                                    </b:Interaction.Triggers>
+                                                </Image>
+                                            </h:Zoombox>
+                                            <Border Height="35"
+                                                    VerticalAlignment="Bottom">
+                                                <Border.Background>
+                                                    <SolidColorBrush Opacity="0.3"
+                                                                     Color="Black" />
+                                                </Border.Background>
+                                                <DockPanel VerticalAlignment="Center"
+                                                           LastChildFill="False"
+                                                           TextBlock.Foreground="White">
+                                                    <TextBlock Margin="5,0"
+                                                               Text="111.bmp" />
+                                                    <TextBlock Margin="5,0"
+                                                               DockPanel.Dock="Right">
+                                                        <Run Text="3840*2748" />
+                                                        <Run Text="|" />
+                                                        <Run Text="3840*2748" />
+                                                        <Run Text="|" />
+                                                        <Run Text="3840*2748" />
+                                                    </TextBlock>
                                                 </DockPanel>
-                                            </ScrollViewer>
-                                            <Border x:Name="contentPanel"
-                                                    Grid.Row="1"
-                                                    Grid.Column="0"
-                                                    KeyboardNavigation.DirectionalNavigation="Contained"
-                                                    KeyboardNavigation.TabIndex="2"
-                                                    KeyboardNavigation.TabNavigation="Local">
-                                                <!--  Foreground继承,不从TabItem继承，TabItem选中为高亮  -->
-                                                <ContentControl x:Name="PART_SelectedContentHost"
-                                                                Margin="{TemplateBinding Padding}"
-                                                                Content="{TemplateBinding SelectedContent}"
-                                                                ContentTemplate="{TemplateBinding SelectedContentTemplate}"
-                                                                Foreground="{TemplateBinding Foreground}"
-                                                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                                             </Border>
                                         </Grid>
-                                    </Border>
-                                </ControlTemplate>
-                            </TabControl.Template>
-                            <TabItem MinWidth="100"
-                                     Header="历史结果">
-                                <DataGrid ItemsSource="{h:GetStudents Count=5}">
-                                    <b:Interaction.Behaviors>
-                                        <h:DataGridAutoColumnBehavior DataGridLength="*"
-                                                                      Type="{x:Type h:Student}" />
-                                    </b:Interaction.Behaviors>
-                                </DataGrid>
-                            </TabItem>
-                            <TabItem MinWidth="100"
-                                     Header="帮助">
-                                <Grid Background="Beige" />
-                            </TabItem>
-                        </TabControl>
-                    </Grid>
+                                    </TabItem>
+                                    <TabItem MinWidth="100"
+                                             HorizontalContentAlignment="Center"
+                                             Header="模块结果">
+                                        <Grid Background="Azure" />
+                                    </TabItem>
+                                </TabControl>
+                            </DockPanel>
+                            <GridSplitter Grid.Row="1"
+                                          Style="{DynamicResource {x:Static GridSplitterKeys.Horizontal}}" />
+                            <TabControl x:Name="tc"
+                                        Grid.Row="4"
+                                        VerticalAlignment="Stretch"
+                                        BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                                        Cattach.CaptionHorizontalAlignment="Center"
+                                        ItemContainerStyle="{DynamicResource {x:Static TabItemKeys.Line}}">
+                                <TabControl.Template>
+                                    <ControlTemplate TargetType="{x:Type TabControl}">
+                                        <Border Style="{StaticResource S.Border.TemplatedParent}">
+                                            <Grid ClipToBounds="true"
+                                                  KeyboardNavigation.TabNavigation="Local"
+                                                  SnapsToDevicePixels="true">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition x:Name="ColumnDefinition0" />
+                                                    <ColumnDefinition x:Name="ColumnDefinition1"
+                                                                      Width="0" />
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition x:Name="RowDefinition0"
+                                                                   Height="Auto" />
+                                                    <RowDefinition x:Name="RowDefinition1"
+                                                                   Height="*" />
+                                                </Grid.RowDefinitions>
+                                                <ScrollViewer x:Name="headerPanel"
+                                                              Margin="0,0,0,1"
+                                                              VerticalScrollBarVisibility="Auto">
+                                                    <DockPanel>
+                                                        <FontIconToggleButton x:Name="tb"
+                                                                              CheckedGlyph="&#xE018;"
+                                                                              DockPanel.Dock="Right"
+                                                                              IsChecked="True"
+                                                                              Style="{DynamicResource {x:Static FontIconToggleButtonKeys.Switch}}"
+                                                                              UncheckedGlyph="&#xE019;">
+                                                            <b:Interaction.Triggers>
+                                                                <b:EventTrigger EventName="Unchecked">
+                                                                    <b:ChangePropertyAction PropertyName="Height"
+                                                                                            TargetObject="{Binding ElementName=r_d}"
+                                                                                            Value="10" />
+                                                                </b:EventTrigger>
+                                                                <b:EventTrigger EventName="Checked">
+                                                                    <b:ChangePropertyAction PropertyName="Height"
+                                                                                            TargetObject="{Binding ElementName=r_d}"
+                                                                                            Value="200" />
+                                                                </b:EventTrigger>
+                                                            </b:Interaction.Triggers>
+                                                        </FontIconToggleButton>
+                                                        <TabPanel Grid.Row="0"
+                                                                  Grid.Column="0"
+                                                                  Panel.ZIndex="1"
+                                                                  Background="Transparent"
+                                                                  IsItemsHost="true"
+                                                                  KeyboardNavigation.TabIndex="1" />
+                                                    </DockPanel>
+                                                </ScrollViewer>
+                                                <Border x:Name="contentPanel"
+                                                        Grid.Row="1"
+                                                        Grid.Column="0"
+                                                        KeyboardNavigation.DirectionalNavigation="Contained"
+                                                        KeyboardNavigation.TabIndex="2"
+                                                        KeyboardNavigation.TabNavigation="Local">
+                                                    <!--  Foreground继承,不从TabItem继承，TabItem选中为高亮  -->
+                                                    <ContentControl x:Name="PART_SelectedContentHost"
+                                                                    Margin="{TemplateBinding Padding}"
+                                                                    Content="{TemplateBinding SelectedContent}"
+                                                                    ContentTemplate="{TemplateBinding SelectedContentTemplate}"
+                                                                    Foreground="{TemplateBinding Foreground}"
+                                                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                                </Border>
+                                            </Grid>
+                                        </Border>
+                                    </ControlTemplate>
+                                </TabControl.Template>
+                                <TabItem MinWidth="100"
+                                         Header="历史结果">
+                                    <DataGrid ItemsSource="{h:GetStudents Count=5}">
+                                        <b:Interaction.Behaviors>
+                                            <h:DataGridAutoColumnBehavior DataGridLength="*"
+                                                                          Type="{x:Type h:Student}" />
+                                        </b:Interaction.Behaviors>
+                                    </DataGrid>
+                                </TabItem>
+                                <TabItem MinWidth="100"
+                                         Header="帮助">
+                                    <Grid Background="Beige" />
+                                </TabItem>
+                            </TabControl>
+                        </Grid>
+                    </DockPanel>
                 </h:GridSplitterBox>
             </DockPanel>
         </h:GridSplitterBox>
