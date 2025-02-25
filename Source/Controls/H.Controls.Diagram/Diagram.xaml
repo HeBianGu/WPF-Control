@@ -6,38 +6,7 @@
     <Style x:Key="{ComponentResourceKey ResourceId=S.Diagram.Default,
                                         TypeInTargetAssembly={x:Type local:Diagram}}"
            TargetType="{x:Type local:Diagram}">
-        <Setter Property="Background">
-            <Setter.Value>
-                <DrawingBrush RenderOptions.CachingHint="Cache"
-                              Stretch="Uniform"
-                              TileMode="Tile"
-                              Viewport="0 0 25 25"
-                              ViewportUnits="Absolute">
-                    <DrawingBrush.Drawing>
-                        <DrawingGroup>
-                            <GeometryDrawing Brush="{DynamicResource {x:Static h:BrushKeys.Dark0}}">
-                                <GeometryDrawing.Geometry>
-                                    <RectangleGeometry Rect="0 0 100 100" />
-                                </GeometryDrawing.Geometry>
-                            </GeometryDrawing>
-
-                            <GeometryDrawing Brush="{DynamicResource {x:Static h:BrushKeys.Dark0_1}}">
-                                <GeometryDrawing.Geometry>
-                                    <RectangleGeometry Rect="0 0 50 50" />
-                                </GeometryDrawing.Geometry>
-                            </GeometryDrawing>
-
-                            <GeometryDrawing Brush="{DynamicResource {x:Static h:BrushKeys.Dark0_1}}">
-                                <GeometryDrawing.Geometry>
-                                    <RectangleGeometry Rect="50 50 50 50" />
-                                </GeometryDrawing.Geometry>
-                            </GeometryDrawing>
-                        </DrawingGroup>
-
-                    </DrawingBrush.Drawing>
-                </DrawingBrush>
-            </Setter.Value>
-        </Setter>
+        <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Tile}}" />
         <Setter Property="AllowDrop" Value="True" />
         <Setter Property="Template">
             <Setter.Value>

@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:ln="clr-namespace:H.Controls.Diagram.Presenter.NodeDatas.Card"
+                    xmlns:local="clr-namespace:H.Controls.Diagram.Presenter">
+    <DataTemplate DataType="{x:Type ln:CheckCardNodeData}">
+        <Border Style="{DynamicResource {x:Static local:DiagramKeys.StateBorder}}">
+            <Grid>
+                <TextBox Style="{DynamicResource {x:Static local:DiagramKeys.EditTextBox}}" />
+                <TextBlock x:Name="path"
+                           Margin="5,2"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Bottom"
+                           FontSize="25"
+                           Text="√" />
+            </Grid>
+        </Border>
+    </DataTemplate>
+</ResourceDictionary>

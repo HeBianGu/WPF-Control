@@ -1,0 +1,27 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:ln="clr-namespace:H.Controls.Diagram.Presenter.NodeDatas.Card"
+                    xmlns:local="clr-namespace:H.Controls.Diagram.Presenter">
+    <DataTemplate DataType="{x:Type ln:LineCardNodeData}">
+        <Border Style="{DynamicResource {x:Static local:DiagramKeys.StateBorder}}">
+            <Grid>
+                <TextBox Style="{DynamicResource {x:Static local:DiagramKeys.EditTextBox}}" />
+                <Border Width="{Binding FlagLength}"
+                        Margin="-1"
+                        HorizontalAlignment="Left"
+                        Background="{Binding RelativeSource={RelativeSource AncestorType=Border}, Path=(TextBlock.Foreground)}"
+                        BorderThickness="0"
+                        CornerRadius="{Binding CornerRadius, Converter={x:Static h:Converter.GetDoubleToCornerRadiusLeft}}"
+                        Visibility="{Binding UseLeft, Converter={x:Static h:Converter.GetTrueToVisible}}" />
+                <Border Width="{Binding FlagLength}"
+                        Margin="-1"
+                        HorizontalAlignment="Right"
+                        Background="{Binding RelativeSource={RelativeSource AncestorType=Border}, Path=(TextBlock.Foreground)}"
+                        CornerRadius="{Binding CornerRadius, Converter={x:Static h:Converter.GetDoubleToCornerRadiusRigth}}"
+                        Visibility="{Binding UseRight, Converter={x:Static h:Converter.GetTrueToVisible}}" />
+            </Grid>
+        </Border>
+
+    </DataTemplate>
+</ResourceDictionary>

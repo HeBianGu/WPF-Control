@@ -5,6 +5,7 @@
     <ProjectReference Include="..\..\Themes\H.Themes.Default\H.Themes.Default.csproj" />
     <ProjectReference Include="..\H.Controls.Adorner\H.Controls.Adorner.csproj" />
     <ProjectReference Include="..\H.Controls.Chart2D\H.Controls.Chart2D.csproj" />
+    <ProjectReference Include="..\H.Controls.Diagram.Presenter\H.Controls.Diagram.Presenter.csproj" />
     <ProjectReference Include="..\H.Controls.Diagram\H.Controls.Diagram.csproj" />
     <ProjectReference Include="..\H.Controls.Form.PropertyItem\H.Controls.Form.PropertyItem.csproj" />
     <ProjectReference Include="..\H.Controls.Form\H.Controls.Form.csproj" />

@@ -119,5 +119,8 @@ namespace H.Themes.Default
         #endregion
 
         public static ComponentResourceKey Tranparent => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.Tranparent");
+
+        public static ComponentResourceKey Tile => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.Tile");
+        public static ComponentResourceKey Tile25 => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.Tile.25");
     }
 }

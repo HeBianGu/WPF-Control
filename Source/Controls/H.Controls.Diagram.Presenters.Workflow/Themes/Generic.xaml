@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenters.Workflow;component/WorkflowNodeAdorner.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenters.Workflow;component/Workflows/Workflow.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenters.Workflow;component/Workflows/LaneWorkflow.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

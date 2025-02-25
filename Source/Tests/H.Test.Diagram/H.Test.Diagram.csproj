@@ -5,9 +5,7 @@
     <GeneratePackageOnBuild>Flase</GeneratePackageOnBuild>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Controls\H.Controls.Diagram.Extensions.Workflow\H.Controls.Diagram.Extensions.Workflow.csproj" />
-    <ProjectReference Include="..\..\Controls\H.Controls.Diagram.Extension\H.Controls.Diagram.Extension.csproj" />
-    <ProjectReference Include="..\..\Controls\H.Controls.Diagram\H.Controls.Diagram.csproj" />
+    <ProjectReference Include="..\..\Controls\H.Controls.Diagram.Presenters.Workflow\H.Controls.Diagram.Presenters.Workflow.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.PropertyGrid\H.Controls.PropertyGrid.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.ZoomBox\H.Controls.ZoomBox.csproj" />
     <ProjectReference Include="..\..\Datas\H.Data.Test\H.Data.Test.csproj" />

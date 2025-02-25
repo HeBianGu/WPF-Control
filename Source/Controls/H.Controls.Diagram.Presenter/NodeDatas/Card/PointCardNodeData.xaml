@@ -1,0 +1,22 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:ln="clr-namespace:H.Controls.Diagram.Presenter.NodeDatas.Card"
+                    xmlns:local="clr-namespace:H.Controls.Diagram.Presenter">
+    <DataTemplate DataType="{x:Type ln:PointCardNodeData}">
+        <Border Style="{DynamicResource {x:Static local:DiagramKeys.StateBorder}}">
+            <Grid>
+                <TextBox Style="{DynamicResource {x:Static local:DiagramKeys.EditTextBox}}" />
+                <Border x:Name="path"
+                        Width="{Binding FlagLength}"
+                        Height="{Binding FlagLength}"
+                        Margin="2"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Background="{Binding RelativeSource={RelativeSource AncestorType=Border}, Path=(TextBlock.Foreground)}"
+                        BorderThickness="0"
+                        CornerRadius="200" />
+            </Grid>
+        </Border>
+    </DataTemplate>
+</ResourceDictionary>

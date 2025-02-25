@@ -345,7 +345,6 @@
                 </TabControl>
                 <Border>
                     <h:Zoombox x:Name="zoomview"
-                               Background="Transparent"
                                DragModifiers=""
                                Focusable="True"
                                IsTabStop="True"
@@ -359,6 +358,9 @@
                         <h:Diagram x:Name="diagram"
                                    Width="1500"
                                    Height="1500"
+                                   Background="Transparent"
+                                   BorderBrush="{DynamicResource {x:Static BrushKeys.Blue}}"
+                                   BorderThickness="2"
                                    FlowableZoomMode="Center"
                                    Focusable="True"
                                    UseAnimation="False">

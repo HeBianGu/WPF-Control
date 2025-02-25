@@ -10,9 +10,9 @@
     <Resource Remove="VisionMaster.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Controls\H.Controls.Diagram.Extensions.OpenCV\H.Controls.Diagram.Extensions.OpenCV.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.Form\H.Controls.Form.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.Step\H.Controls.Step.csproj" />
+    <ProjectReference Include="..\..\Controls\H.Controls.ZoomBox.Extension\H.Controls.ZoomBox.Extension.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.ApplicationBase\H.Extensions.ApplicationBase.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.About\H.Modules.About.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Messages.Dialog\H.Modules.Messages.Dialog.csproj" />

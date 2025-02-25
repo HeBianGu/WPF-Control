@@ -100,22 +100,16 @@ namespace H.Controls.Diagram
         {
             string down = "\xE74B";
             string up = "\xE74A";
+            string left = "\xE72B";
+            string right = "\xE72A";
             if (portData.Dock == Dock.Top)
-            {
                 return portData.PortType == PortType.Input ? down : up;
-            }
             else if (portData.Dock == Dock.Bottom)
-            {
                 return portData.PortType == PortType.Input ? up : down;
-            }
             else if (portData.Dock == Dock.Left)
-            {
-                return portData.PortType == PortType.Input ? up : down;
-            }
+                return portData.PortType == PortType.Input ? right : left;
             else if (portData.Dock == Dock.Right)
-            {
-                return portData.PortType == PortType.Input ? up : down;
-            }
+                return portData.PortType == PortType.Input ? left : right;
             return null;
         }
 

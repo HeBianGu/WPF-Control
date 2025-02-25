@@ -1,0 +1,25 @@
+﻿global using H.Controls.Diagram.Presenter.DiagramDatas;
+global using H.Controls.Diagram.Presenter.Provider;
+global using H.Controls.Diagram.Presenter.Provider.Tree;
+global using H.Extensions.Common;
+global using H.Extensions.TypeConverter;
+global using H.Mvvm;
+global using H.Services.Common;
+global using H.Themes.Default;
+global using System;
+global using System.Collections;
+global using System.Collections.Generic;
+global using System.Collections.ObjectModel;
+global using System.ComponentModel;
+global using System.ComponentModel.DataAnnotations;
+global using System.Linq;
+global using System.Reflection;
+global using System.Threading;
+global using System.Threading.Tasks;
+global using System.Windows;
+global using System.Windows.Controls;
+global using System.Windows.Media;
+global using System.Windows.Threading;
+global using System.Xml;
+global using System.Xml.Serialization;
+

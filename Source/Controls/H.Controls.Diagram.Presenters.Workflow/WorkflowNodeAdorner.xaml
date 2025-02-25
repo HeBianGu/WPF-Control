@@ -1,0 +1,48 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Controls.Diagram.Presenters.Workflow">
+
+
+    <!--<Style TargetType="{x:Type local:WorkflowNodeAdorner}">
+        <Setter Property="IsHitTestVisible" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ContentControl">
+                    <Grid>
+                        <DockPanel Background="Transparent"
+                                   LastChildFill="True"
+                                   Opacity="1.2"
+                                   Visibility="{Binding RelativeSource={RelativeSource AncestorType=h:Node}, Path=IsMouseOver, Converter={x:Static h:Converter.GetTrueToVisible}}">
+
+                            <DockPanel DockPanel.Dock="Left">
+                                <Button x:Name="btn_left"
+                                        h:Cattach.Icon="{x:Static h:Icons.LeftFill}"
+                                        DockPanel.Dock="Left"
+                                        Style="{DynamicResource {x:Static h:ButtonKeys.Transparent}}" />
+                            </DockPanel>
+                            <Button h:Cattach.Icon="{x:Static h:Icons.RightFill}" DockPanel.Dock="Right" Style="{DynamicResource {x:Static h:ButtonKeys.Transparent}}" />
+                            <Button h:Cattach.Icon="{x:Static h:Icons.UpFill}" DockPanel.Dock="Top" Style="{DynamicResource {x:Static h:ButtonKeys.Transparent}}" />
+                            <Button h:Cattach.Icon="{x:Static h:Icons.DownFill}" DockPanel.Dock="Bottom" Style="{DynamicResource {x:Static h:ButtonKeys.Transparent}}" />
+
+                            <Grid Width="100" Height="80" />
+                        </DockPanel>
+                        <Popup AllowsTransparency="True"
+                               Focusable="True"
+                               IsOpen="{Binding ElementName=btn_left, Path=IsMouseOver, Mode=OneWay}"
+                               Placement="MousePoint"
+                               PlacementTarget="{Binding ElementName=btn_left}"
+                               PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}"
+                               StaysOpen="True"
+                               VerticalOffset="2">
+                            <Grid Width="100" Height="200" Background="Orange" />
+                        </Popup>
+
+
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>-->
+
+</ResourceDictionary>

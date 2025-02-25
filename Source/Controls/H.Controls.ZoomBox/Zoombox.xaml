@@ -284,7 +284,8 @@
 
     <Style x:Key="{x:Type local:Zoombox}"
            TargetType="{x:Type local:Zoombox}">
-        <Setter Property="Background" Value="Transparent" />
+        <!--<Setter Property="Background" Value="Transparent" />-->
+        <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Tile}}" />
         <Setter Property="Foreground" Value="Black" />
         <Setter Property="PanDistance" Value="5.0" />
         <Setter Property="ZoomOrigin" Value="0.5,0.5" />
@@ -297,7 +298,7 @@
         <Setter Property="ZoomToSelectionModifiers" Value="Alt,Exact" />
         <Setter Property="NavigateOnPreview" Value="False" />
         <Setter Property="ViewFinderVisibility" Value="Collapsed" />
-        <Setter Property="MinScale" Value="0.01" />
+        <Setter Property="MinScale" Value="0.1" />
         <Setter Property="MaxScale" Value="100.0" />
         <Setter Property="Focusable" Value="False" />
         <Setter Property="IsTabStop" Value="False" />
@@ -668,6 +669,4 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-
-
 </ResourceDictionary>
