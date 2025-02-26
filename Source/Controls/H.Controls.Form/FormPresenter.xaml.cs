@@ -5,6 +5,7 @@ using System.Windows;
 
 namespace H.Controls.Form
 {
+    [Icon("")]
     public class FormPresenter : DisplayBindableBase, IFormOption
     {
         public FormPresenter()

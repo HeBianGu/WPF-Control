@@ -46,7 +46,7 @@
                         BorderThickness="0,0,0,1"
                     -->
                     <DockPanel>
-                        <FontIcon Margin="10,0,7,0" Text="{Binding Icon}" />
+                        <FontIconTextBlock Margin="10,0,7,0" Text="{Binding Icon}" />
                         <TextBlock VerticalAlignment="Center" Text="{Binding Title}" />
                         <FontIconButton
                             Grid.Column="1"
@@ -54,7 +54,7 @@
                             Cattach.CornerRadius="2"
                             Command="{local:CloseAdornerDialogCommand}"
                             CommandParameter="{Binding}"
-                            Content="{x:Static FontIcons.Close}"
+                            Content="{x:Static FontIcons.ChromeClose}"
                             DockPanel.Dock="Right" />
                     </DockPanel>
                 </Border>

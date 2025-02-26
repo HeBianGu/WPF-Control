@@ -43,7 +43,7 @@
                 <Button Content="&#xE77B;" FontFamily="Segoe MDL2 Assets" />
                 <Button Content="&#xE77B;" FontFamily="Segoe Fluent Icons" />
                 <Button Style="{DynamicResource {x:Static ButtonKeys.Default}}">
-                    <FontIcon />
+                    <FontIconTextBlock />
                 </Button>
             </ItemsControl>
         </TabItem>
@@ -57,7 +57,7 @@
 
         <TabItem Header="FontIcon">
             <ItemsControl>
-                <FontIcon Text="&#xE710;" />
+                <FontIconTextBlock Text="&#xE710;" />
             </ItemsControl>
         </TabItem>
         <TabItem Header="FontIconButton">
@@ -89,7 +89,7 @@
                                 <DataTemplate>
                                     <GroupBox Header="{Binding Item1}">
                                         <Grid>
-                                            <FontIcon
+                                            <FontIconTextBlock
                                                 Margin="20"
                                                 FontSize="100"
                                                 Text="{Binding Item2}" />
@@ -105,6 +105,19 @@
                                                 Command="{ClipBoardCopyTextCommand}"
                                                 CommandParameter="{Binding Item4}"
                                                 Content="{Binding Item4}" />
+
+                                            <Button
+                                                HorizontalAlignment="Left"
+                                                VerticalAlignment="Top"
+                                                Command="{ClipBoardCopyTextCommand}"
+                                                CommandParameter="{Binding Item5}"
+                                                Content="{Binding Item5}" />
+                                            <Button
+                                                HorizontalAlignment="Left"
+                                                VerticalAlignment="Bottom"
+                                                Command="{ClipBoardCopyTextCommand}"
+                                                CommandParameter="{Binding Item6}"
+                                                Content="{Binding Item6}" />
                                         </Grid>
                                     </GroupBox>
 
@@ -126,7 +139,7 @@
                                 <DataGridTemplateColumn Width="100" Header="Icon">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <FontIcon FontSize="100" Text="{Binding Item2}" />
+                                            <FontIconTextBlock FontSize="100" Text="{Binding Item2}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>

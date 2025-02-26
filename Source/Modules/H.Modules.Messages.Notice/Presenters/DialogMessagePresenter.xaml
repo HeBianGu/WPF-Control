@@ -59,7 +59,7 @@
                             HorizontalAlignment="Right"
                             VerticalAlignment="Center"
                             Command="{Binding CloseCommand}"
-                            Content="{x:Static FontIcons.Close}" />
+                            Content="{x:Static FontIcons.ChromeClose}" />
         </Grid>
     </DataTemplate>
 </ResourceDictionary>

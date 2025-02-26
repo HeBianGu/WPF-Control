@@ -107,7 +107,7 @@
                                                             <h:Cattach.CaptionRightTemplate>
                                                                 <ControlTemplate>
                                                                     <Grid>
-                                                                        <FontIcon Margin="5,0"
+                                                                        <FontIconTextBlock Margin="5,0"
                                                                                   HorizontalAlignment="Right"
                                                                                   Text="{Binding Icon}" />
                                                                     </Grid>
@@ -195,7 +195,7 @@
                             <StatusBar BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                                        BorderThickness="0,1,0,0"
                                        DockPanel.Dock="Bottom">
-                                <FontIcon Foreground="{DynamicResource {x:Static BrushKeys.Green}}"
+                                <FontIconTextBlock Foreground="{DynamicResource {x:Static BrushKeys.Green}}"
                                           Text="&#xEC58;" />
                                 <TextBlock Text="组件配置完成" />
                                 <TextBlock>
@@ -219,7 +219,7 @@
                                 <TabControl.ItemTemplate>
                                     <DataTemplate>
                                         <DockPanel>
-                                            <FontIcon Text="&#xF003;" />
+                                            <FontIconTextBlock Text="&#xF003;" />
                                             <FontIconButton Width="Auto"
                                                             Command="{Binding ElementName=vm, Path=StopCommand}"
                                                             CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=TabControl}}"
@@ -257,7 +257,7 @@
                                                               Margin="0,0,0,1"
                                                               VerticalScrollBarVisibility="Auto">
                                                     <DockPanel LastChildFill="False">
-                                                        <FontIcon Margin="10,0"
+                                                        <FontIconTextBlock Margin="10,0"
                                                                   Foreground="{DynamicResource {x:Static BrushKeys.Green}}"
                                                                   Text="&#xE839;" />
                                                         <TabPanel Grid.Row="0"
@@ -352,7 +352,7 @@
                         <StatusBar BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                                    BorderThickness="0,1,0,0"
                                    DockPanel.Dock="Bottom">
-                            <FontIcon Margin="10,0"
+                            <FontIconTextBlock Margin="10,0"
                                       Foreground="{DynamicResource {x:Static BrushKeys.Green}}"
                                       Text="&#xEC58;" />
                             <TextBlock Text="13:00:37" />

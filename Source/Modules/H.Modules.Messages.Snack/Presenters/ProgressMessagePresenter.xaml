@@ -55,7 +55,7 @@
                 Margin="5,0"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
-                Content="{x:Static FontIcons.Close}">
+                Content="{x:Static FontIcons.ChromeClose}">
                 <b:Interaction.Behaviors>
                     <h:ButtonRemoveItemBehavior />
                 </b:Interaction.Behaviors>
