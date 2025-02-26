@@ -11,6 +11,7 @@ using System.Windows.Controls;
 
 namespace H.Modules.Messages.Dialog
 {
+    [Icon("\xEA8F")]
     public partial class AdornerDialogPresenter : DesignPresenterBase, IDialog, ICancelable
     {
         public AdornerDialogPresenter(object presenter)

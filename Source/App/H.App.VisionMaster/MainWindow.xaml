@@ -6,9 +6,10 @@
               xmlns:h="https://github.com/HeBianGu"
               xmlns:local="clr-namespace:H.App.VisionMaster"
               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-              Title="Vision Master         "
+              Title="Vision Master  "
               Width="1200"
               Height="750"
+              h:Cattach.TitleFontSize="30"
               CaptionHeight="85"
               Cattach.TitleMargin="10 20"
               mc:Ignorable="d">
@@ -256,7 +257,8 @@
                                                               Margin="0,0,0,1"
                                                               VerticalScrollBarVisibility="Auto">
                                                     <DockPanel LastChildFill="False">
-                                                        <FontIcon Margin="10,0" Foreground="{DynamicResource {x:Static BrushKeys.Green}}"
+                                                        <FontIcon Margin="10,0"
+                                                                  Foreground="{DynamicResource {x:Static BrushKeys.Green}}"
                                                                   Text="&#xE839;" />
                                                         <TabPanel Grid.Row="0"
                                                                   Grid.Column="0"

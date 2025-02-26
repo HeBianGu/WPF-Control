@@ -27,8 +27,10 @@ namespace H.Modules.Messages.Dialog
                     x.MinWidth = 400;
                     x.Padding = new Thickness(20);
                 }
-                if (data is ITitleable titlePresenter)
-                    x.Title = titlePresenter.Title;
+                if (data is ITitleable titleable)
+                    x.Title = titleable.Title;
+                if (data is IIconable iconable && !string.IsNullOrEmpty(iconable.Icon))
+                    x.Icon = iconable.Icon;
 
                 if (presenter is ILayoutable layoutable)
                     layoutable.CopyTo(x);

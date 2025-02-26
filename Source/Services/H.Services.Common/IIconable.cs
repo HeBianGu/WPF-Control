@@ -1,0 +1,4 @@
+﻿namespace H.Services.Common
+{
+
+}

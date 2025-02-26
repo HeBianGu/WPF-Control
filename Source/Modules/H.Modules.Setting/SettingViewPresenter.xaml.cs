@@ -37,16 +37,19 @@ namespace H.Modules.Setting
             }
         }
     }
-    public class SettingViewPresenter : IocBindable<SettingViewPresenter, ISettingViewPresenter>, ISettingViewPresenter, ISettingDataManagerOption
+
+    public class SettingViewPresenter : IocBindable<SettingViewPresenter, ISettingViewPresenter>, ISettingViewPresenter, ISettingDataManagerOption, IIconable
     {
         public SettingViewPresenter()
         {
             this.Groups = SettingDataManager.Instance.Settings?.GroupBy(l => l.GroupName).Select(x => new SettableGroup() { Name = x.Key, Collection = x.ToObservable() }).ToObservable();
             this.SelectedGroup = this.Groups?.FirstOrDefault();
             this.Title = "系统设置";
+            this.Icon = "\xE115";
         }
 
         public string Title { get; set; }
+        public string Icon { get; set; }
 
         private ObservableCollection<SettableGroup> _groups = new ObservableCollection<SettableGroup>();
         public ObservableCollection<SettableGroup> Groups

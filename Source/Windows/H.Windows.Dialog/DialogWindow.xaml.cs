@@ -1,4 +1,5 @@
-﻿using H.Services.Common;
+﻿using H.Mvvm;
+using H.Services.Common;
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -77,6 +78,23 @@ namespace H.Windows.Dialog
 
         public DialogButton DialogButton { get; set; } = DialogButton.Sumit;
         public ITransitionable Transitionable { get; set; }
+        string IDialog.Icon
+        {
+            get { return this.FontIcon; }
+            set
+            {
+                this.FontIcon = value;
+            }
+        }
+
+        public string FontIcon
+        {
+            get { return (string)GetValue(FontIconProperty); }
+            set { SetValue(FontIconProperty, value); }
+        }
+
+        public static readonly DependencyProperty FontIconProperty =
+            DependencyProperty.Register("FontIcon", typeof(string), typeof(DialogWindow), new FrameworkPropertyMetadata("\xEA8F"));
 
         public static readonly DependencyProperty BottomTemplateProperty =
             DependencyProperty.Register("BottomTemplate", typeof(ControlTemplate), typeof(DialogWindow), new FrameworkPropertyMetadata(default(ControlTemplate), (d, e) =>
@@ -133,6 +151,8 @@ namespace H.Windows.Dialog
             dialog.Width = 400;
             dialog.SizeToContent = SizeToContent.Height;
             dialog.CanSumit = canSumit;
+            if (presenter is IIconable iconable && !string.IsNullOrEmpty(iconable.Icon))
+                dialog.FontIcon = iconable.Icon;
             action?.Invoke(dialog);
             dialog.Title = dialog.Title ?? presenter.GetType().GetCustomAttribute<DisplayAttribute>()?.Name ?? "提示";
             ResourceKey key = GetResourceKey(dialog.DialogButton);

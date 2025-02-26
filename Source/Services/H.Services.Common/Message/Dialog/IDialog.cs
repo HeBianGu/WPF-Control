@@ -5,6 +5,7 @@
         Func<bool> CanSumit { get; set; }
         void Sumit();
         void Close();
+        string Icon { get; set; }
         string Title { get; set; }
         bool? DialogResult { get; set; }
         DialogButton DialogButton { get; set; }

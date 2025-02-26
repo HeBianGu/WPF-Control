@@ -1,4 +1,5 @@
-﻿using H.Services.Common;
+﻿using H.Mvvm;
+using H.Services.Common;
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -25,7 +26,7 @@ namespace H.Modules.About
     }
 
     [Display(Name = "关于", GroupName = SettingGroupNames.GroupSystem, Description = "这是一个关于页面的信息")]
-    public class AboutViewPresenter : Ioc<AboutViewPresenter, IAboutViewPresenter>, IAboutViewPresenter, IAboutViewPresenterOption
+    public class AboutViewPresenter : Ioc<AboutViewPresenter, IAboutViewPresenter>, IAboutViewPresenter, IAboutViewPresenterOption, IIconable
     {
         public AboutViewPresenter()
         {
@@ -38,13 +39,13 @@ namespace H.Modules.About
             this._copyright = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyCopyrightAttribute>()?.Copyright;
             this._version = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyVersionAttribute>()?.Version;
             this._fileVersion = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyFileVersionAttribute>()?.Version;
-            this.Title = "关于";
         }
-        public string Title { get; set; }
+        public string Title { get; set; } = "关于";
+        public string Icon { get; set; } = "\xEDE3";
 
         private string _ProductName;
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [Display(Name = "产品名称")]
@@ -59,7 +60,7 @@ namespace H.Modules.About
 
         private string _productDescription;
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [Display(Name = "产品信息")]
@@ -74,7 +75,7 @@ namespace H.Modules.About
 
         private string _company;
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [Display(Name = "公司信息")]
@@ -90,7 +91,7 @@ namespace H.Modules.About
 
         private string _culture;
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [Display(Name = "产品区域")]
@@ -105,7 +106,7 @@ namespace H.Modules.About
 
         private string _trademark;
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [Display(Name = "产品商标")]
@@ -120,7 +121,7 @@ namespace H.Modules.About
 
         private string _configuration;
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [Display(Name = "产品配置")]
@@ -135,7 +136,7 @@ namespace H.Modules.About
 
         private string _privacy;
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [DefaultValue("https://github.com/HeBianGu/WPF-Control")]
@@ -151,7 +152,7 @@ namespace H.Modules.About
 
         private string _agreement;
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [DefaultValue("https://github.com/HeBianGu/WPF-Control")]
@@ -167,7 +168,7 @@ namespace H.Modules.About
 
         private string _copyright;
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [Display(Name = "许可证书")]
@@ -183,7 +184,7 @@ namespace H.Modules.About
         private string _version;
         [ReadOnly(true)]
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         [Display(Name = "产品版本")]
         public string Version
@@ -197,7 +198,7 @@ namespace H.Modules.About
 
         private string _fileVersion;
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [Display(Name = "文件版本")]
@@ -212,7 +213,7 @@ namespace H.Modules.About
 
         private string _webSet;
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [DefaultValue("https://github.com/HeBianGu/WPF-Control")]
@@ -228,7 +229,7 @@ namespace H.Modules.About
 
         private string _contact;
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [DefaultValue("QQ:908293466")]
