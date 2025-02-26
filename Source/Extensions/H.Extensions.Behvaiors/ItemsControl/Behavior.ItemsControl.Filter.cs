@@ -527,5 +527,4 @@ namespace H.Extensions.Behvaiors
             this.AssociatedObject.Loaded -= AssociatedObject_Loaded;
         }
     }
-
 }

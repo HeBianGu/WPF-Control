@@ -42,7 +42,7 @@
                             Margin="5,0"
                             HorizontalAlignment="Right"
                             VerticalAlignment="Center"
-                            Content="&#xE624;">
+                            Content="{x:Static FontIcons.Close}">
                 <b:Interaction.Behaviors>
                     <h:ButtonRemoveItemBehavior />
                 </b:Interaction.Behaviors>
