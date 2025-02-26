@@ -10,7 +10,8 @@ namespace H.Modules.License
         void Refresh();
     }
 
-    public class VipFlagViewPresenter : BindableBase, IVipFlagViewPresenter
+    [Icon("\xE72E")]
+    public class VipFlagViewPresenter : DisplayBindableBase, IVipFlagViewPresenter
     {
         public VipFlagViewPresenter()
         {

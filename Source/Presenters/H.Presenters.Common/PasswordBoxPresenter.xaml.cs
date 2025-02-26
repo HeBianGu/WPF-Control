@@ -1,6 +1,9 @@
-﻿namespace H.Presenters.Common
+﻿using H.Mvvm;
+
+namespace H.Presenters.Common
 {
-    public class PasswordBoxPresenter
+    [Icon("\xE875")]
+    public class PasswordBoxPresenter:DisplayBindableBase
     {
         public string Password { get; set; }
     }

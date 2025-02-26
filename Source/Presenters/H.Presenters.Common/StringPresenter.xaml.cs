@@ -3,6 +3,7 @@ using H.Mvvm;
 
 namespace H.Presenters.Common
 {
+    [Icon("\xEDE3")]
     public class StringPresenter : DisplayBindableBase, IStringPresenter
     {
         private string _value;

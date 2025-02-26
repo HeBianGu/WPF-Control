@@ -52,7 +52,7 @@ namespace H.Extensions.Behvaiors
                         return true;
                     if (o == null)
                         return false;
-                    return o.ToString().Contains(control.SearchText);
+                    return o.ToString().Contains(control.SearchText,StringComparison.OrdinalIgnoreCase);
                 };
                 control.AssociatedObject.Items.Filter= predicate;
             }));

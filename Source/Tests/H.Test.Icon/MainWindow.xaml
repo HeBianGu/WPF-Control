@@ -12,6 +12,118 @@
     mc:Ignorable="d">
     <Window.Resources />
     <TabControl TabStripPlacement="Left">
+
+
+        <TabItem Header="GetFontIcons">
+            <DockPanel>
+                <TextBox
+                    x:Name="tx"
+                    DockPanel.Dock="Top"
+                    FontSize="20" />
+                <TabControl>
+                    <TabItem Header="ListBox">
+                        <ListBox ItemsSource="{GetFontIcons}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                            <b:Interaction.Behaviors>
+                                <ItemsControlSearchTextBehavior SearchText="{Binding ElementName=tx, Path=Text, IsAsync=True}" />
+                            </b:Interaction.Behaviors>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <GroupBox>
+                                        <GroupBox.Header>
+                                            <Button
+                                                HorizontalAlignment="Right"
+                                                Command="{ClipBoardCopyTextCommand}"
+                                                CommandParameter="{Binding Item3}"
+                                                Content="{Binding Item3}"
+                                                DockPanel.Dock="Top" />
+                                        </GroupBox.Header>
+                                        <Grid>
+                                            <FontIconTextBlock
+                                                Margin="20"
+                                                FontSize="100"
+                                                Text="{Binding Item2}" />
+                                            <DockPanel
+                                                HorizontalAlignment="Right"
+                                                LastChildFill="False"
+                                                Opacity="0.8">
+
+                                                <Button
+                                                    HorizontalAlignment="Right"
+                                                    Command="{ClipBoardCopyTextCommand}"
+                                                    CommandParameter="{Binding Item5}"
+                                                    Content="{Binding Item5}"
+                                                    DockPanel.Dock="Top" />
+                                                <Button
+                                                    HorizontalAlignment="Right"
+                                                    Command="{ClipBoardCopyTextCommand}"
+                                                    CommandParameter="{Binding Item4}"
+                                                    Content="{Binding Item4}"
+                                                    DockPanel.Dock="Bottom" />
+                                                <Button
+                                                    HorizontalAlignment="Right"
+                                                    Command="{ClipBoardCopyTextCommand}"
+                                                    CommandParameter="{Binding Item6}"
+                                                    Content="{Binding Item6}"
+                                                    DockPanel.Dock="Bottom" />
+
+                                            </DockPanel>
+                                        </Grid>
+                                    </GroupBox>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ListBox>
+                    </TabItem>
+                    <TabItem Header="Grid">
+                        <DataGrid AutoGenerateColumns="False" ItemsSource="{GetFontIcons}">
+                            <b:Interaction.Behaviors>
+                                <ItemsControlSearchTextBehavior SearchText="{Binding ElementName=tx, Path=Text, IsAsync=True}" />
+                            </b:Interaction.Behaviors>
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn Width="100" Header="Icon">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <FontIconTextBlock FontSize="100" Text="{Binding Item2}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="*" Header="Name">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock FontSize="50" Text="{Binding Item1}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="100" Header="Copy">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button
+                                                Command="{ClipBoardCopyTextCommand}"
+                                                CommandParameter="{Binding Item3}"
+                                                Content="{Binding Item3}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="100" Header="Copy">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button
+                                                Command="{ClipBoardCopyTextCommand}"
+                                                CommandParameter="{Binding Item4}"
+                                                Content="{Binding Item4}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                </TabControl>
+            </DockPanel>
+        </TabItem>
         <!--  https://learn.microsoft.com/zh-cn/windows/apps/design/style/segoe-fluent-icons-font  -->
         <!--  前缀介于“E0-”到“E5-”（例如 E001、E5B1）的字形当前被标记为旧版，因此不推荐使用。  -->
         <TabItem Header="PUA E700-E900">
@@ -71,110 +183,6 @@
                 <FontIconToggleButton />
                 <FontIconToggleButton CheckedGlyph="&#xEDB5;" UncheckedGlyph="&#xEF3B;" />
             </ItemsControl>
-        </TabItem>
-
-        <TabItem Header="GetFontIcons">
-            <DockPanel>
-                <TextBox
-                    x:Name="tx"
-                    DockPanel.Dock="Top"
-                    FontSize="20" />
-                <TabControl>
-                    <TabItem Header="ListBox">
-                        <ListBox ItemsSource="{GetFontIcons}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                            <b:Interaction.Behaviors>
-                                <ItemsControlSearchTextBehavior SearchText="{Binding ElementName=tx, Path=Text, IsAsync=True}" />
-                            </b:Interaction.Behaviors>
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <GroupBox Header="{Binding Item1}">
-                                        <Grid>
-                                            <FontIconTextBlock
-                                                Margin="20"
-                                                FontSize="100"
-                                                Text="{Binding Item2}" />
-                                            <Button
-                                                HorizontalAlignment="Right"
-                                                VerticalAlignment="Top"
-                                                Command="{ClipBoardCopyTextCommand}"
-                                                CommandParameter="{Binding Item3}"
-                                                Content="{Binding Item3}" />
-                                            <Button
-                                                HorizontalAlignment="Right"
-                                                VerticalAlignment="Bottom"
-                                                Command="{ClipBoardCopyTextCommand}"
-                                                CommandParameter="{Binding Item4}"
-                                                Content="{Binding Item4}" />
-
-                                            <Button
-                                                HorizontalAlignment="Left"
-                                                VerticalAlignment="Top"
-                                                Command="{ClipBoardCopyTextCommand}"
-                                                CommandParameter="{Binding Item5}"
-                                                Content="{Binding Item5}" />
-                                            <Button
-                                                HorizontalAlignment="Left"
-                                                VerticalAlignment="Bottom"
-                                                Command="{ClipBoardCopyTextCommand}"
-                                                CommandParameter="{Binding Item6}"
-                                                Content="{Binding Item6}" />
-                                        </Grid>
-                                    </GroupBox>
-
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <WrapPanel />
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                        </ListBox>
-                    </TabItem>
-                    <TabItem Header="Grid">
-                        <DataGrid AutoGenerateColumns="False" ItemsSource="{GetFontIcons}">
-                            <b:Interaction.Behaviors>
-                                <ItemsControlSearchTextBehavior SearchText="{Binding ElementName=tx, Path=Text, IsAsync=True}" />
-                            </b:Interaction.Behaviors>
-                            <DataGrid.Columns>
-                                <DataGridTemplateColumn Width="100" Header="Icon">
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <FontIconTextBlock FontSize="100" Text="{Binding Item2}" />
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
-                                <DataGridTemplateColumn Width="*" Header="Name">
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock FontSize="50" Text="{Binding Item1}" />
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
-                                <DataGridTemplateColumn Width="100" Header="Copy">
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <Button
-                                                Command="{ClipBoardCopyTextCommand}"
-                                                CommandParameter="{Binding Item3}"
-                                                Content="{Binding Item3}" />
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
-                                <DataGridTemplateColumn Width="100" Header="Copy">
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <Button
-                                                Command="{ClipBoardCopyTextCommand}"
-                                                CommandParameter="{Binding Item4}"
-                                                Content="{Binding Item4}" />
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    </TabItem>
-                </TabControl>
-            </DockPanel>
         </TabItem>
     </TabControl>
 </Window>

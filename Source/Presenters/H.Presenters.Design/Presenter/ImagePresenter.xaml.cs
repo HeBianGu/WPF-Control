@@ -1,9 +1,11 @@
-﻿using H.Styles.Default;
+﻿using H.Mvvm;
+using H.Styles.Default;
 using System.ComponentModel.DataAnnotations;
 using System.Windows.Media;
 
 namespace H.Presenters.Design
 {
+    [Icon("\xEB9F")]
     [Display(Name = "图片")]
     public class ImagePresenter : CommandsDesignPresenterBase
     {
