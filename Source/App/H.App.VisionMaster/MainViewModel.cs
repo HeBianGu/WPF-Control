@@ -52,6 +52,21 @@ public class MainViewModel : BindableBase
             RaisePropertyChanged();
         }
     }
+
+
+    private ObservableCollection<IDiagramData> _diagramDatas = new ObservableCollection<IDiagramData>();
+    public ObservableCollection<IDiagramData> DiagramDatas
+    {
+        get { return _diagramDatas; }
+        set
+        {
+            _diagramDatas = value;
+            RaisePropertyChanged();
+        }
+    }
+
+
+
     public RelayCommand StartCommand => new RelayCommand((s, e) =>
     {
         if (e is UIElement element)

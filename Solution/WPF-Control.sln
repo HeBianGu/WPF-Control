@@ -337,15 +337,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.App.VisionMaster", "..\So
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Test.Icon", "..\Source\Tests\H.Test.Icon\H.Test.Icon.csproj", "{4DF8B2A4-04BB-4060-B461-D22C7AAEBD63}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Controls.ZoomBox.Extension", "..\Source\Controls\H.Controls.ZoomBox.Extension\H.Controls.ZoomBox.Extension.csproj", "{4E21B7BE-7DA9-48CF-B7C4-60E298ECB742}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Controls.ZoomBox.Extension", "..\Source\Controls\H.Controls.ZoomBox.Extension\H.Controls.ZoomBox.Extension.csproj", "{4E21B7BE-7DA9-48CF-B7C4-60E298ECB742}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Diagram", "Diagram", "{372E5B0C-F03B-4A76-B6C8-ACB052A07237}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Controls.Diagram.Presenter", "..\Source\Controls\H.Controls.Diagram.Presenter\H.Controls.Diagram.Presenter.csproj", "{8602189B-30B8-4F6F-910D-D55A8F717E6F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Controls.Diagram.Presenter", "..\Source\Controls\H.Controls.Diagram.Presenter\H.Controls.Diagram.Presenter.csproj", "{8602189B-30B8-4F6F-910D-D55A8F717E6F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Controls.Diagram.Presenters.Workflow", "..\Source\Controls\H.Controls.Diagram.Presenters.Workflow\H.Controls.Diagram.Presenters.Workflow.csproj", "{9A4D4A50-02CC-4052-BC0C-E6E6D7CBDA6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Controls.Diagram.Presenters.Workflow", "..\Source\Controls\H.Controls.Diagram.Presenters.Workflow\H.Controls.Diagram.Presenters.Workflow.csproj", "{9A4D4A50-02CC-4052-BC0C-E6E6D7CBDA6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Controls.Diagram.Presenters.OpenCV", "..\Source\Controls\H.Controls.Diagram.Presenters.OpenCV\H.Controls.Diagram.Presenters.OpenCV.csproj", "{7650A7FA-6FC4-4996-91E0-3E13B4BD7FF8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Controls.Diagram.Presenters.OpenCV", "..\Source\Controls\H.Controls.Diagram.Presenters.OpenCV\H.Controls.Diagram.Presenters.OpenCV.csproj", "{7650A7FA-6FC4-4996-91E0-3E13B4BD7FF8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Extensions.FontIcon", "..\Source\Extensions\H.Extensions.FontIcon\H.Extensions.FontIcon.csproj", "{E63BC71A-9893-4C32-BF31-22E8A478755B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -3319,6 +3321,26 @@ Global
 		{7650A7FA-6FC4-4996-91E0-3E13B4BD7FF8}.Release|x64.Build.0 = Release|Any CPU
 		{7650A7FA-6FC4-4996-91E0-3E13B4BD7FF8}.Release|x86.ActiveCfg = Release|Any CPU
 		{7650A7FA-6FC4-4996-91E0-3E13B4BD7FF8}.Release|x86.Build.0 = Release|Any CPU
+		{E63BC71A-9893-4C32-BF31-22E8A478755B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E63BC71A-9893-4C32-BF31-22E8A478755B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E63BC71A-9893-4C32-BF31-22E8A478755B}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{E63BC71A-9893-4C32-BF31-22E8A478755B}.Debug|ARM.Build.0 = Debug|Any CPU
+		{E63BC71A-9893-4C32-BF31-22E8A478755B}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{E63BC71A-9893-4C32-BF31-22E8A478755B}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{E63BC71A-9893-4C32-BF31-22E8A478755B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E63BC71A-9893-4C32-BF31-22E8A478755B}.Debug|x64.Build.0 = Debug|Any CPU
+		{E63BC71A-9893-4C32-BF31-22E8A478755B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E63BC71A-9893-4C32-BF31-22E8A478755B}.Debug|x86.Build.0 = Debug|Any CPU
+		{E63BC71A-9893-4C32-BF31-22E8A478755B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E63BC71A-9893-4C32-BF31-22E8A478755B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E63BC71A-9893-4C32-BF31-22E8A478755B}.Release|ARM.ActiveCfg = Release|Any CPU
+		{E63BC71A-9893-4C32-BF31-22E8A478755B}.Release|ARM.Build.0 = Release|Any CPU
+		{E63BC71A-9893-4C32-BF31-22E8A478755B}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{E63BC71A-9893-4C32-BF31-22E8A478755B}.Release|ARM64.Build.0 = Release|Any CPU
+		{E63BC71A-9893-4C32-BF31-22E8A478755B}.Release|x64.ActiveCfg = Release|Any CPU
+		{E63BC71A-9893-4C32-BF31-22E8A478755B}.Release|x64.Build.0 = Release|Any CPU
+		{E63BC71A-9893-4C32-BF31-22E8A478755B}.Release|x86.ActiveCfg = Release|Any CPU
+		{E63BC71A-9893-4C32-BF31-22E8A478755B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -3475,6 +3497,7 @@ Global
 		{8602189B-30B8-4F6F-910D-D55A8F717E6F} = {372E5B0C-F03B-4A76-B6C8-ACB052A07237}
 		{9A4D4A50-02CC-4052-BC0C-E6E6D7CBDA6A} = {372E5B0C-F03B-4A76-B6C8-ACB052A07237}
 		{7650A7FA-6FC4-4996-91E0-3E13B4BD7FF8} = {372E5B0C-F03B-4A76-B6C8-ACB052A07237}
+		{E63BC71A-9893-4C32-BF31-22E8A478755B} = {09F8FD00-E76A-4D72-AAB4-7FA06DBE12D4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF825C3D-F4F4-4E62-BBFF-B42A5E81112F}

@@ -8,35 +8,4 @@
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="FontSize" Value="{DynamicResource {x:Static FontSizeKeys.Icon}}"/>
     </Style>
-
-    <DataTemplate DataType="{x:Type local:IconSegoe}">
-        <GroupBox Header="{Binding Key}">
-            <Grid>
-                <local:FontIconTextBlock
-                    Margin="10"
-                    FontSize="120"
-                    Text="{Binding Value}" />
-                <Button
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Top"
-                    Command="{Binding CopyCommand}"
-                    Content="{Binding Key}" />
-                <Button
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Bottom"
-                    Command="{Binding CopyCodeKeyCommand}"
-                    Content="{Binding CodeKey}" />
-            </Grid>
-        </GroupBox>
-    </DataTemplate>
-
-    <DataTemplate DataType="{x:Type local:IconSegoes}">
-        <ListBox ItemsSource="{Binding}" Style="{DynamicResource {x:Static ListBoxKeys.Default}}">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel />
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-        </ListBox>
-    </DataTemplate>
 </ResourceDictionary>
