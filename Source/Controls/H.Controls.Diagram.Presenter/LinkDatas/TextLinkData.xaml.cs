@@ -1,6 +1,16 @@
 ﻿namespace H.Controls.Diagram.Presenter.LinkDatas;
 
-public class TextLinkData : LinkData
+public interface ITextLinkData : ITextable
+{
+    FontFamily FontFamily { get; set; }
+    double FontSize { get; set; }
+    FontStretch FontStretch { get; set; }
+    FontStyle FontStyle { get; set; }
+    FontWeight FontWeight { get; set; }
+    Brush Foreground { get; set; }
+    string Icon { get; set; }
+}
+public class TextLinkData : LinkData, ITextLinkData
 {
     public override void LoadDefault()
     {

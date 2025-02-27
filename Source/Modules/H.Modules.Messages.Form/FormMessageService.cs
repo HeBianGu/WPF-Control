@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using H.Mvvm;
 
 namespace H.Modules.Messages.Form
 {
@@ -65,14 +66,23 @@ namespace H.Modules.Messages.Form
         {
             var presenter = Activator.CreateInstance<P>();
             presenter.SelectObject = value;
-            option?.Invoke(presenter);
-            return await IocMessage.Dialog.Show(presenter, x =>
+            Action<IDialog> dialogAction = x =>
             {
+                if (value is ITitleable titleable && !string.IsNullOrEmpty(titleable.Title))
+                    x.Title = titleable.Title;
+                else if (value is INameable nameable && !string.IsNullOrEmpty(nameable.Name))
+                    x.Title = nameable.Name;
+                else if (value is ITextable textable && !string.IsNullOrEmpty(textable.Text))
+                    x.Title = textable.Text;
+                if (value is IIconable iconable && !string.IsNullOrEmpty(iconable.Icon))
+                    x.Icon = iconable.Icon;
                 x.DialogButton = DialogButton.Sumit;
                 x.HorizontalContentAlignment = HorizontalAlignment.Stretch;
                 x.MinWidth = 400;
                 action?.Invoke(x);
-            }, canSumit);
+            };
+            option?.Invoke(presenter);
+            return await IocMessage.Dialog.Show(presenter, dialogAction, canSumit);
         }
 
     }

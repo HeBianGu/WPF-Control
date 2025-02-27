@@ -1,4 +1,5 @@
 ﻿global using H.Controls.Diagram.Presenter.NodeDatas.Card;
+using System.Windows.Input;
 namespace H.Controls.Diagram.Presenter.DiagramDatas;
 public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 {
@@ -202,6 +203,20 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
         }
     }
 
+
+    private string _name;
+    [Browsable(true)]
+    [Display(Name = "名称", Order = 0, GroupName = "基础信息")]
+    public override string Name
+    {
+        get { return _name; }
+        set
+        {
+            _name = value;
+            RaisePropertyChanged();
+        }
+    }
+
     private string _typeName;
     public string TypeName
     {
@@ -209,17 +224,6 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
         set
         {
             _typeName = value;
-            RaisePropertyChanged();
-        }
-    }
-
-    private int _vip;
-    public int Vip
-    {
-        get { return _vip; }
-        set
-        {
-            _vip = value;
             RaisePropertyChanged();
         }
     }
@@ -250,21 +254,8 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
         }
     }
 
-    private int _backgroundSelectedIndex = 0;
-    public int BackgroundSelectedIndex
-    {
-        get { return _backgroundSelectedIndex; }
-        set
-        {
-            _backgroundSelectedIndex = value;
-            RaisePropertyChanged();
-        }
-    }
-
     private ObservableCollection<INodeDataGroup> _nodeGroups = new ObservableCollection<INodeDataGroup>();
-    /// <summary> 数据源  </summary>
     [System.Text.Json.Serialization.JsonIgnore]
-
     [XmlIgnore]
     public ObservableCollection<INodeDataGroup> NodeGroups
     {
@@ -277,9 +268,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     }
 
     private ObservableCollection<Node> _nodes = new ObservableCollection<Node>();
-    /// <summary> 工具拖动数据源  </summary>
     [System.Text.Json.Serialization.JsonIgnore]
-
     [XmlIgnore]
     public ObservableCollection<Node> Nodes
     {
@@ -291,10 +280,8 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
         }
     }
 
-
     private Part _selectedPart;
     [System.Text.Json.Serialization.JsonIgnore]
-
     [XmlIgnore]
     public Part SelectedPart
     {
@@ -306,11 +293,8 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
         }
     }
 
-
     private ILinkDrawer _linkDrawer = new BrokenLinkDrawer();
-    /// <summary> 说明  </summary>
     [System.Text.Json.Serialization.JsonIgnore]
-
     [XmlIgnore]
     public ILinkDrawer LinkDrawer
     {
@@ -324,7 +308,6 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
     private ObservableCollection<ILinkDrawer> _lLinkDrawers = new ObservableCollection<ILinkDrawer>();
     [System.Text.Json.Serialization.JsonIgnore]
-
     [XmlIgnore]
     [Browsable(false)]
     public ObservableCollection<ILinkDrawer> LinkDrawers
@@ -339,7 +322,6 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
     private ObservableCollection<ILayout> _layouts = new ObservableCollection<ILayout>();
     [System.Text.Json.Serialization.JsonIgnore]
-
     [XmlIgnore]
     [Browsable(false)]
     public ObservableCollection<ILayout> Layouts
@@ -352,10 +334,8 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
         }
     }
 
-
     private ILayout _layout = new LocationLayout();
     [System.Text.Json.Serialization.JsonIgnore]
-
     [XmlIgnore]
     public ILayout Layout
     {
@@ -369,7 +349,6 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
     private Type _nodeType = typeof(Node);
     [System.Text.Json.Serialization.JsonIgnore]
-
     [XmlIgnore]
     public Type NodeType
     {
@@ -728,6 +707,25 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
         }));
     });
 
+    public RelayCommand MouseDoubleClickCommand => new RelayCommand((s, e) =>
+    {
+        if (e is MouseButtonEventArgs args && args.OriginalSource is FrameworkElement framework)
+        {
+            if (framework?.DataContext == null)
+                return;
+            {
+                IocMessage.Form?.ShowTabEdit(framework?.DataContext, x =>
+                {
+                
+                }, null, x =>
+                {
+                    x.UseGroupNames = "数据";
+                    x.UseCommand = false;
+                    x.TabNames = new ObservableCollection<string>() { "数据", "样式", "工具", "常用" };
+                });
+            }
+        }
+    });
 
     #endregion
 
@@ -814,13 +812,13 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
             Point point1 = LinkLayer.GetStart(link);
             Point point2 = LinkLayer.GetEnd(link);
             Point center = new Point((point1.X + point2.X) / 2, (point1.Y + point2.Y) / 2);
-            this.LocateCenterCallBack.Invoke(center);
+            this.LocateCenterCallBack?.Invoke(center);
         }
         else
         {
             Rect rect = part.Bound;
             Point center = new Point(rect.Left + rect.Width / 2, rect.Top + rect.Height / 2);
-            this.LocateCenterCallBack.Invoke(center);
+            this.LocateCenterCallBack?.Invoke(center);
         }
     }
 

@@ -1,10 +1,12 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
-                    xmlns:h="https://github.com/HeBianGu"
-                    xmlns:local="clr-namespace:H.Controls.Diagram.Presenter"
-                    xmlns:ld="clr-namespace:H.Controls.Diagram.Presenter.DiagramDatas"
-                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:h="https://github.com/HeBianGu"
+    xmlns:lb="clr-namespace:H.Controls.Diagram.Presenter.Behaviors"
+    xmlns:ld="clr-namespace:H.Controls.Diagram.Presenter.DiagramDatas"
+    xmlns:local="clr-namespace:H.Controls.Diagram.Presenter"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/NodeDatas/FlowableNodeData.xaml" />
@@ -20,195 +22,8 @@
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/LinkDatas/TextLinkData.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/PortDatas/FlowablePortData.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/PortDatas/TextPortData.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/DiagramDatas/DiagramData.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/DiagramKeys.xaml" />
     </ResourceDictionary.MergedDictionaries>
-
-    <DataTemplate DataType="{x:Type ld:DiagramDataBase}">
-        <Grid>
-            <Grid x:Name="grid_snapshoot"
-                  Background="{DynamicResource {x:Static h:BrushKeys.Dark0_2}}">
-                <!--<Grid.ContextMenu>
-                    <ContextMenu>
-                        <ContextMenu.Template>
-                            <ControlTemplate>
-                                <h:Form h:Cattach.ItemHorizontalAlignment="Stretch"
-                                        h:Cattach.TitleWidth="0"
-                                        BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
-                                        SelectObject="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}, Path=PlacementTarget.DataContext}"
-                                        UseAsync="True"
-                                        UseGroupNames="操作">
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <MenuItem VerticalAlignment="Center"
-                                                      VerticalContentAlignment="Center"
-                                                      Background="Transparent"
-                                                      Command="{Binding Value}"
-                                                      CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}, Path=PlacementTarget}"
-                                                      Header="{Binding Name}"
-                                                      Icon="{Binding Icon}" />
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </h:Form>
-                            </ControlTemplate>
-                        </ContextMenu.Template>
-                    </ContextMenu>
-                </Grid.ContextMenu>-->
-                <!--<h:DiagraphBox x:Name="db"
-                               AllowDrop="false"
-                               Foreground="{DynamicResource {x:Static h:BrushKeys.ForegroundAssist}}"
-                               GridBackground="{Binding Source={x:Static h:DiagramSetting.Instance}, Path=GridBackground}"
-                               GridLineBrush="{Binding Source={x:Static h:DiagramSetting.Instance}, Path=GridLineBrush}"
-                               GridMargin="{Binding Source={x:Static h:DiagramSetting.Instance}, Path=GridMargin}"
-                               Scale="{Binding ElementName=svt1, Path=Scale}"
-                               SmallSplitValue="{Binding Source={x:Static h:DiagramSetting.Instance}, Path=SmallSplit}"
-                               SplitBrush="{DynamicResource {x:Static h:BrushKeys.ForegroundAssist}}"
-                               SplitValue="{Binding Source={x:Static h:DiagramSetting.Instance}, Path=LargeSplit}"
-                               UseBottom="{Binding Source={x:Static h:DiagramSetting.Instance}, Path=UseBottom}"
-                               UseLeft="{Binding Source={x:Static h:DiagramSetting.Instance}, Path=UseLeft}"
-                               UseRight="{Binding Source={x:Static h:DiagramSetting.Instance}, Path=UseRight}"
-                               UseSmallSplitVerticalLine="{Binding Source={x:Static h:DiagramSetting.Instance}, Path=UseSmallSplitVerticalLine}"
-                               UseSmallSpliteHorizontalLine="{Binding Source={x:Static h:DiagramSetting.Instance}, Path=UseSmallSpliteHorizontalLine}"
-                               UseSplitHorizontalLine="{Binding Source={x:Static h:DiagramSetting.Instance}, Path=UseSplitHorizontalLine}"
-                               UseSplitVerticalLine="{Binding Source={x:Static h:DiagramSetting.Instance}, Path=UseSplitVerticalLine}"
-                               UseText="{Binding Source={x:Static h:DiagramSetting.Instance}, Path=UseText}"
-                               UseTop="{Binding Source={x:Static h:DiagramSetting.Instance}, Path=UseTop}" />-->
-                <Border Margin="{Binding Source={x:Static h:DiagramSetting.Instance}, Path=GridMargin}"
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Stretch"
-                        Background="Transparent">
-                    <!--<h:ScrollViewerTransfor x:Name="svt1"
-                                            AllowDrop="False"
-                                            Background="Transparent"
-                                            IsDeferredScrollingEnabled="True"
-                                            IsFullParent="False"
-                                            LocateCenterCallBack="{Binding LocateCenterCallBack, Mode=TwoWay}"
-                                            LocateRectCallBack="{Binding LocateRectCallBack, Mode=TwoWay}"
-                                            Location="{Binding Location, Mode=TwoWay}"
-                                            MinScale="0.4"
-                                            UseDefaultCenter="False">
-                        <b:Interaction.Behaviors>
-                            <h:MouseGestureScrollViewerBehavior ChangeButton="Middle" />
-                            <h:ViewportSynchronizerBehavior HorizontalOffset="{Binding ElementName=db, Path=StartX}" VerticalOffset="{Binding ElementName=db, Path=StartY}" />
-                        </b:Interaction.Behaviors>
-                        <h:Diagram x:Name="diagram"
-                                   Width="{Binding Width}"
-                                   Height="{Binding Height}"
-                                   Padding="0"
-                                   HorizontalAlignment="Stretch"
-                                   VerticalAlignment="Stretch"
-                                   HorizontalContentAlignment="Stretch"
-                                   VerticalContentAlignment="Stretch"
-                                   h:Cattach.GuideData="从左侧资源列表中拖动元素放置此区域，选中元素在右侧属性栏和上方工具栏执行相应操作，鼠标拖拽、滚轮放大缩小等"
-                                   h:Cattach.GuideTitle="绘图区域"
-                                   h:Cattach.UseGuide="True"
-                                   AllowDrop="True"
-                                   BorderBrush="{DynamicResource {x:Static h:BrushKeys.Accent}}"
-                                   BorderThickness="1"
-                                   Layout="{Binding Layout}"
-                                   LinkDrawer="{Binding LinkDrawer}"
-                                   NodesSource="{Binding Nodes}"
-                                   SelectedPart="{Binding SelectedPart}"
-                                   UseAnimation="False">
-                            <h:Diagram.Background>
-                                <SolidColorBrush Opacity="0.02" Color="Gray" />
-                            </h:Diagram.Background>
-
-                            <b:Interaction.Behaviors>
-                                <local:DiagramDropTextNodeBehavior NodeType="{Binding NodeType}" />
-                            </b:Interaction.Behaviors>
-                            <b:Interaction.Triggers>
-                                <b:EventTrigger EventName="ItemsChanged">
-                                    <b:InvokeCommandAction Command="{Binding ItemsChangedCommand}" PassEventArgsToCommand="True" />
-                                </b:EventTrigger>
-                                <b:EventTrigger EventName="SelectedPartChanged">
-                                    <b:InvokeCommandAction Command="{Binding SelectedPartChangedCommand}" PassEventArgsToCommand="True" />
-                                </b:EventTrigger>
-                            </b:Interaction.Triggers>
-                        </h:Diagram>
-                    </h:ScrollViewerTransfor>-->
-
-                    <!--<h:ZoomBox>
-                        <Grid Background="Red">
-                            <Viewbox>
-                                <h:Diagram x:Name="diagram"
-                                   Width="{Binding Width}"
-                                   Height="{Binding Height}"
-                                   Padding="0"
-                                   HorizontalAlignment="Stretch"
-                                   VerticalAlignment="Stretch"
-                                   HorizontalContentAlignment="Stretch"
-                                   VerticalContentAlignment="Stretch"
-                                   h:Cattach.GuideData="从左侧资源列表中拖动元素放置此区域，选中元素在右侧属性栏和上方工具栏执行相应操作，鼠标拖拽、滚轮放大缩小等"
-                                   h:Cattach.GuideTitle="绘图区域"
-                                   h:Cattach.UseGuide="True"
-                                   AllowDrop="True"
-                                   BorderBrush="{DynamicResource {x:Static h:BrushKeys.Accent}}"
-                                   BorderThickness="1"
-                                   Layout="{Binding Layout}"
-                                   LinkDrawer="{Binding LinkDrawer}"
-                                   NodesSource="{Binding Nodes}"
-                                   SelectedPart="{Binding SelectedPart}"
-                                   UseAnimation="False">
-                                    <h:Diagram.Background>
-                                        <SolidColorBrush Opacity="0.02" Color="Gray" />
-                                    </h:Diagram.Background>
-
-                                    <h:Interaction.Behaviors>
-                                        <local:DiagramDropTextNodeBehavior NodeType="{Binding NodeType}" />
-                                    </h:Interaction.Behaviors>
-                                    <h:Interaction.Triggers>
-                                        <h:EventTrigger EventName="ItemsChanged">
-                                            <h:InvokeCommandAction Command="{Binding ItemsChangedCommand}" PassEventArgsToCommand="True" />
-                                        </h:EventTrigger>
-                                        <h:EventTrigger EventName="SelectedPartChanged">
-                                            <h:InvokeCommandAction Command="{Binding SelectedPartChangedCommand}" PassEventArgsToCommand="True" />
-                                        </h:EventTrigger>
-                                    </h:Interaction.Triggers>
-                                </h:Diagram>
-                            </Viewbox>
-                        </Grid>
-                    </h:ZoomBox>-->
-                </Border>
-                <Border Margin="10"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Bottom"
-                        Background="{DynamicResource {x:Static h:BrushKeys.Background}}"
-                        Visibility="{Binding ElementName=diagram, Path=Message, Converter={x:Static h:Converter.GetNullToCollapsed}}">
-                    <TextBlock Margin="10,6"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               Foreground="{DynamicResource {x:Static h:BrushKeys.Accent}}"
-                               Text="{Binding ElementName=diagram, Path=Message}" />
-                </Border>
-            </Grid>
-
-            <Grid Width="150"
-                  Height="150"
-                  Margin="0,0,0,0"
-                  HorizontalAlignment="Right"
-                  VerticalAlignment="Bottom"
-                  h:Cattach.GuideData="使用点击位置定位绘图、拖动区域平移、点击放大、缩小、定位等操作来操作绘图区域"
-                  h:Cattach.GuideTitle="鹰眼图"
-                  h:Cattach.UseGuide="True">
-                <!--  h:TransitionService.IsVisible="{Binding ProjectData.SystemSet.IsLocatorVisible}"  -->
-                <!--<h:ScrollViewerLocator x:Name="locator" MaskBackground="{DynamicResource {x:Static h:BrushKeys.Background}}" ScrollViewer="{Binding ElementName=svt1}" />
-
-                <h:TransitionService.VisibleActions>
-                    <h:TransitionCollection>
-                        <h:TranslateTransition HiddenOrCollapsed="Collapsed" StartPoint="200,0" EndPoint="100,0" />
-                    </h:TransitionCollection>
-                </h:TransitionService.VisibleActions>-->
-            </Grid>
-        </Grid>
-
-        <!--<DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding Source={x:Static h:DiagramSetting.Instance}, Path=GridBackground}" Value="{x:Null}">
-                <Setter TargetName="db" Property="GridBackground" Value="{DynamicResource {x:Static h:BrushKeys.Background}}" />
-            </DataTrigger>
-            <DataTrigger Binding="{Binding Source={x:Static h:DiagramSetting.Instance}, Path=GridLineBrush}" Value="{x:Null}">
-                <Setter TargetName="db" Property="GridLineBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
-            </DataTrigger>
-        </DataTemplate.Triggers>-->
-    </DataTemplate>
 
 </ResourceDictionary>

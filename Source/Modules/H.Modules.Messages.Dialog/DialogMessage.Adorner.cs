@@ -27,8 +27,12 @@ namespace H.Modules.Messages.Dialog
                     x.MinWidth = 400;
                     x.Padding = new Thickness(20);
                 }
-                if (data is ITitleable titleable)
+                if (data is ITitleable titleable && !string.IsNullOrEmpty(titleable.Title))
                     x.Title = titleable.Title;
+                else if (data is INameable nameable && !string.IsNullOrEmpty(nameable.Name))
+                    x.Title = nameable.Name;
+                else if (data is ITextable textable && !string.IsNullOrEmpty(textable.Text))
+                    x.Title = textable.Text;
                 if (data is IIconable iconable && !string.IsNullOrEmpty(iconable.Icon))
                     x.Icon = iconable.Icon;
 

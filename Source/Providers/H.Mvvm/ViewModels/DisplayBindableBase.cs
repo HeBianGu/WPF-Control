@@ -24,7 +24,14 @@ namespace H.Mvvm
     {
         public string Icon { get; set; }
     }
-    public interface IDisplayBindable : IIconable
+
+    public interface INameable
+    {
+
+        public string Name { get; set; }
+    }
+
+    public interface IDisplayBindable : IIconable, INameable
     {
         string Description { get; set; }
         string GroupName { get; set; }

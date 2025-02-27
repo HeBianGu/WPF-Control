@@ -9,7 +9,6 @@ public abstract class FlowableDiagramDataBase : DiagramDataBase, IFlowableDiagra
     }
 
     private DiagramFlowableState _state = DiagramFlowableState.None;
-    /// <summary> 说明  </summary>
     public DiagramFlowableState State
     {
         get { return _state; }

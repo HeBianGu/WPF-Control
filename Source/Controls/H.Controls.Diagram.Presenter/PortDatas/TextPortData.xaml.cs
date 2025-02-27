@@ -2,7 +2,7 @@
 
 namespace H.Controls.Diagram.Presenter.PortDatas;
 
-public interface ITextPortData : IPortData
+public interface ITextPortData : IPortData, ITextable
 {
     FontFamily FontFamily { get; set; }
     double FontSize { get; set; }
@@ -12,7 +12,6 @@ public interface ITextPortData : IPortData
     Brush Foreground { get; set; }
     string Icon { get; set; }
     Brush Stroke { get; set; }
-    string Text { get; set; }
     Thickness TextMargin { get; set; }
 }
 

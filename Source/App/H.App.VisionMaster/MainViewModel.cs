@@ -24,6 +24,14 @@ public class MainViewModel : BindableBase
         this.NodeDataGroups = this.CreateNodeDataGroups().ToObservable();
         this.Images = OpenCVImages.GetImageSources().ToObservable();
         this.SelectedImage = this.Images.FirstOrDefault();
+
+        this.DiagramDatas.Add(this.CreateDiagramData());
+        this.SelectedDiagramData = this.DiagramDatas.FirstOrDefault();
+    }
+
+    public IDiagramData CreateDiagramData()
+    {
+        return new OpenCVDiagramData() { Width = 1000, Height = 1500 };
     }
 
     public IEnumerable<INodeDataGroup> CreateNodeDataGroups()
@@ -54,6 +62,18 @@ public class MainViewModel : BindableBase
     }
 
 
+    private IDiagramData _selectedDiagramData;
+    public IDiagramData SelectedDiagramData
+    {
+        get { return _selectedDiagramData; }
+        set
+        {
+            _selectedDiagramData = value;
+            RaisePropertyChanged();
+        }
+    }
+
+
     private ObservableCollection<IDiagramData> _diagramDatas = new ObservableCollection<IDiagramData>();
     public ObservableCollection<IDiagramData> DiagramDatas
     {
@@ -65,7 +85,14 @@ public class MainViewModel : BindableBase
         }
     }
 
-
+    public RelayCommand AddDiagramCommand => new RelayCommand(async (s, e) =>
+    {
+        var data = this.CreateDiagramData();
+        var r = await IocMessage.Form.ShowEdit(data, null, null, x => x.UseGroupNames = "基础信息,数据");
+        if (r != true)
+            return;
+        this.DiagramDatas.Add(data);
+    });
 
     public RelayCommand StartCommand => new RelayCommand((s, e) =>
     {
