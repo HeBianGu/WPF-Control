@@ -11,9 +11,9 @@ namespace H.Extensions.ValueConverter
     [Obsolete]
     public class BrushRoundConverter : IValueConverter
     {
-        public System.Windows.Media.Brush HighValue { get; set; } = Brushes.White;
+        public Brush HighValue { get; set; } = Brushes.White;
 
-        public System.Windows.Media.Brush LowValue { get; set; } = Brushes.Black;
+        public Brush LowValue { get; set; } = Brushes.Black;
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -36,12 +36,11 @@ namespace H.Extensions.ValueConverter
     {
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value == null) return Colors.Gray;
-
-            if (string.IsNullOrEmpty(value.ToString().Trim())) return Colors.Gray;
-
+            if (value == null) 
+                return Colors.Gray;
+            if (string.IsNullOrEmpty(value.ToString().Trim())) 
+                return Colors.Gray;
             int v = int.Parse(value.ToString());
-
             switch (v)
             {
                 case 1:
@@ -58,11 +57,6 @@ namespace H.Extensions.ValueConverter
                     return Colors.Gray.ToString();
             }
         }
-
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            throw new Exception();
-        }
     }
 
 
@@ -71,20 +65,16 @@ namespace H.Extensions.ValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-
-            if (value == null) return null;
-
+            if (value == null) 
+                return null;
             Color color = (Color)value;
-
-
             return new SolidColorBrush(color);
         }
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             SolidColorBrush brush = value as SolidColorBrush;
-
-            if (brush == null) return null;
-
+            if (brush == null) 
+                return null;
             return brush.Color;
         }
     }

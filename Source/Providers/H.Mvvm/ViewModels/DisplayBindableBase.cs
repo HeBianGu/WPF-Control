@@ -36,7 +36,6 @@ namespace H.Mvvm
         string Description { get; set; }
         string GroupName { get; set; }
         string ID { get; set; }
-        string Name { get; set; }
         int Order { get; set; }
         string ShortName { get; set; }
     }

@@ -11,8 +11,8 @@
         BasedOn="{StaticResource {x:Static local:ToggleButtonKeys.Default}}"
         TargetType="{x:Type local:FontIconToggleButton}">
         <Setter Property="FontFamily" Value="Segoe MDL2 Assets" />
-        <Setter Property="CheckedGlyph" Value="{x:Static FontIcons.ChevronUp}" />
-        <Setter Property="UncheckedGlyph" Value="{x:Static FontIcons.ChevronDown}" />
+        <Setter Property="CheckedGlyph" Value="\ue70e" />
+        <Setter Property="UncheckedGlyph" Value="\ue70d" />
         <Setter Property="Width" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
         <Setter Property="Height" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
         <Setter Property="Background" Value="Transparent" />

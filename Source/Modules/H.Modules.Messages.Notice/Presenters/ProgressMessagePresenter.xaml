@@ -46,7 +46,7 @@
             <FontIconButton Grid.Column="2"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"
-                    Content="{x:Static FontIcons.ChromeClose}">
+                    Content="{x:Static FontIcons.Clear}">
                 <b:Interaction.Behaviors>
                     <h:ButtonRemoveItemBehavior />
                 </b:Interaction.Behaviors>

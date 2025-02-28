@@ -54,7 +54,7 @@
                             Cattach.CornerRadius="2"
                             Command="{local:CloseAdornerDialogCommand}"
                             CommandParameter="{Binding}"
-                            Content="{x:Static FontIcons.ChromeClose}"
+                            Content="{x:Static FontIcons.Clear}"
                             DockPanel.Dock="Right" />
                     </DockPanel>
                 </Border>
