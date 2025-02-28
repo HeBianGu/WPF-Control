@@ -1,4 +1,6 @@
-﻿namespace H.Controls.Diagram.Presenter.PortDatas;
+﻿global using H.Controls.Diagram.Parts;
+
+namespace H.Controls.Diagram.Presenter.PortDatas;
 
 public class FlowablePortData : TextPortData, IFlowablePort
 {

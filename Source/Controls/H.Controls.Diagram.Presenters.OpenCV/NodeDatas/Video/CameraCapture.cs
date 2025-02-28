@@ -110,7 +110,7 @@ public class CameraCapture : StartNodeDataBase
                     Node to = current.GetToNodes().FirstOrDefault();
                     if (to != null)
                     {
-                        await to.StartNode(x =>
+                        await to.InvokeNode(x =>
                         {
                             OpenCVNodeDataBase data = x.GetContent<OpenCVNodeDataBase>();
                             data.UseInfoLogger = false;

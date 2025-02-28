@@ -1,4 +1,6 @@
-﻿namespace H.Controls.Diagram.Presenter.Provider;
+﻿global using H.Controls.Diagram.GraphSource;
+
+namespace H.Controls.Diagram.Presenter.Provider;
 
 public class DiagramDataSourceConverter : GraphSource<INodeData, ILinkData>
 {

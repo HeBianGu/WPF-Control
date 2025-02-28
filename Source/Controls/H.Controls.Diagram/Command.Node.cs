@@ -6,19 +6,18 @@ using H.Mvvm;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace H.Controls.Diagram
-{
-    public class RemoveNodeCommand : MarkupCommandBase
-    {
-        public override void Execute(object parameter)
-        {
-            if (parameter is Node node)
-                node.Delete();
+namespace H.Controls.Diagram;
 
-            if (parameter is ContextMenu menu)
-            {
-                menu.PlacementTarget.GetParent<Node>()?.Delete();
-            }
+public class RemoveNodeCommand : MarkupCommandBase
+{
+    public override void Execute(object parameter)
+    {
+        if (parameter is Node node)
+            node.Delete();
+
+        if (parameter is ContextMenu menu)
+        {
+            menu.PlacementTarget.GetParent<Node>()?.Delete();
         }
     }
 }

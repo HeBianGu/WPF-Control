@@ -4,7 +4,7 @@
     xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:h="https://github.com/HeBianGu"
     xmlns:lb="clr-namespace:H.Controls.Diagram.Presenter.Behaviors"
-    xmlns:ld="clr-namespace:H.Controls.Diagram.Presenter.DiagramDatas"
+    xmlns:ld="clr-namespace:H.Controls.Diagram.Presenter.DiagramDatas.Base"
     xmlns:local="clr-namespace:H.Controls.Diagram.Presenter"
     xmlns:system="clr-namespace:System;assembly=System.Runtime">
     <DataTemplate DataType="{x:Type ld:DiagramDataBase}">

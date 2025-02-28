@@ -2,10 +2,9 @@
 
 using System.Collections.Generic;
 
-namespace H.Controls.Diagram
+namespace H.Controls.Diagram.GraphSource;
+
+public interface IGraphSource
 {
-    public interface IGraphSource
-    {
-        List<Node> NodeSource { get; }
-    }
+    List<Node> NodeSource { get; }
 }

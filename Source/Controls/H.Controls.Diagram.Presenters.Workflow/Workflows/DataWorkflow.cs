@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-
+﻿global using H.Controls.Diagram.LinkDrawers;
 namespace H.Controls.Diagram.Presenters.Workflow.Workflows;
 
 [Display(Name = "数据流程图", GroupName = "流程图", Order = 5)]

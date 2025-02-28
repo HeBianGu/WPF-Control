@@ -35,7 +35,7 @@
                                                   TypeInTargetAssembly={x:Type local:NoteResizeAdorner}}"
                      TargetType="ContentControl">
         <Grid Margin="0,0,10,10"
-              Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:Node}, Path=IsSelected, Converter={x:Static h:Converter.GetTrueToVisible}}">
+              Visibility="{Binding RelativeSource={RelativeSource AncestorType=lp:Node}, Path=IsSelected, Converter={x:Static h:Converter.GetTrueToVisible}}">
             <Thumb x:Name="PART_Move"
                    HorizontalAlignment="Stretch"
                    VerticalContentAlignment="Stretch"

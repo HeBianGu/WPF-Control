@@ -2,20 +2,19 @@
 
 using System.Xml.Serialization;
 
-namespace H.Controls.Diagram
+namespace H.Controls.Diagram.GraphSource.Model;
+
+public class Wire
 {
-    public class Wire
-    {
-        [XmlAttribute("From")]
-        public string From { get; set; }
+    [XmlAttribute("From")]
+    public string From { get; set; }
 
-        [XmlAttribute("To")]
-        public string To { get; set; }
+    [XmlAttribute("To")]
+    public string To { get; set; }
 
-        [XmlAttribute("FromPort")]
-        public string FromPort { get; set; }
+    [XmlAttribute("FromPort")]
+    public string FromPort { get; set; }
 
-        [XmlAttribute("ToPort")]
-        public string ToPort { get; set; }
-    }
+    [XmlAttribute("ToPort")]
+    public string ToPort { get; set; }
 }

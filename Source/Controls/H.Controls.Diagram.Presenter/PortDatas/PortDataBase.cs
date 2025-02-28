@@ -1,4 +1,6 @@
-﻿namespace H.Controls.Diagram.Presenter.PortDatas;
+﻿using H.Controls.Diagram.Presenter.DiagramDatas.Base;
+
+namespace H.Controls.Diagram.Presenter.PortDatas;
 
 public abstract class PortDataBase : DisplayBindableBase, IPortData
 {
@@ -51,8 +53,8 @@ public abstract class PortDataBase : DisplayBindableBase, IPortData
     {
         if (e is Port node)
         {
-            if (node.GetDiagram().DataContext is DiagramDataBase diagram)
-                diagram.LocateRect(node);
+            if (node.GetDiagram().DataContext is IZoomableDiagramData diagram)
+                diagram.ZoomTo(node);
         }
     });
 
@@ -62,8 +64,8 @@ public abstract class PortDataBase : DisplayBindableBase, IPortData
     {
         if (e is Port node)
         {
-            if (node.GetDiagram().DataContext is DiagramDataBase diagram)
-                diagram.LocateCenter(node);
+            if (node.GetDiagram().DataContext is IZoomableDiagramData diagram)
+                diagram.PanTo(node);
         }
     });
 

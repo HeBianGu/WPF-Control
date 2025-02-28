@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿global using H.Controls.Diagram.Datas;
+using System.Windows.Controls;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 public interface IImageImportNodeData : INodeData, IDisplayBindable

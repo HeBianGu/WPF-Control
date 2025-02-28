@@ -1,4 +1,6 @@
-﻿namespace H.Controls.Diagram.Presenter.NodeDatas.Card;
+﻿using H.Controls.Diagram.Presenter.DiagramDatas.Base;
+
+namespace H.Controls.Diagram.Presenter.NodeDatas.Card;
 
 [Display(Name = "基本流程图", GroupName = "流程图", Order = 0)]
 public class FlowableDiagramTemplateNodeData : TitleCardNodeData

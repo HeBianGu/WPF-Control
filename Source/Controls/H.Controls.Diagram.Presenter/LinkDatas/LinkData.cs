@@ -1,4 +1,6 @@
-﻿namespace H.Controls.Diagram.Presenter.LinkDatas;
+﻿using H.Controls.Diagram.Presenter.DiagramDatas.Base;
+
+namespace H.Controls.Diagram.Presenter.LinkDatas;
 
 public abstract class LinkDataBase : DisplayBindableBase, ILinkData
 {
@@ -51,8 +53,8 @@ public abstract class LinkDataBase : DisplayBindableBase, ILinkData
     {
         if (e is Link node)
         {
-            if (node.GetDiagram().DataContext is DiagramDataBase diagram)
-                diagram.LocateRect(node);
+            if (node.GetDiagram().DataContext is IZoomableDiagramData diagram)
+                diagram.ZoomTo(node);
         }
     });
 
@@ -62,8 +64,8 @@ public abstract class LinkDataBase : DisplayBindableBase, ILinkData
     {
         if (e is Link node)
         {
-            if (node.GetDiagram().DataContext is DiagramDataBase diagram)
-                diagram.LocateCenter(node);
+            if (node.GetDiagram().DataContext is IZoomableDiagramData diagram)
+                diagram.PanTo(node);
         }
     });
 

@@ -6,16 +6,15 @@ using H.Extensions.TypeConverter;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace H.Controls.Diagram
+namespace H.Controls.Diagram;
+
+[TypeConverter(typeof(DisplayEnumConverter))]
+public enum DisplayPortMode
 {
-    [TypeConverter(typeof(DisplayEnumConverter))]
-    public enum DisplayPortMode
-    {
-        [Display(Name = "始终")]
-        Always = 0,
-        [Display(Name = "悬停")]
-        MouseOver,
-        [Display(Name = "选中")]
-        Selected
-    }
+    [Display(Name = "始终")]
+    Always = 0,
+    [Display(Name = "悬停")]
+    MouseOver,
+    [Display(Name = "选中")]
+    Selected
 }

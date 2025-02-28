@@ -1,0 +1,301 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Controls.Diagram"
+                    xmlns:lp="clr-namespace:H.Controls.Diagram.Parts"
+                    xmlns:lpb="clr-namespace:H.Controls.Diagram.Parts.Base"
+                    xmlns:ld="clr-namespace:H.Controls.Diagram.Datas"
+                    xmlns:lf="clr-namespace:H.Controls.Diagram.Flowables"
+                    xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
+
+    <!--  节点的默认样式  -->
+    <DataTemplate DataType="{x:Type ld:DefaultLinkData}">
+        <Grid HorizontalAlignment="Center"
+              VerticalAlignment="Center">
+            <TextBlock x:Name="txt"
+                       Margin="10,6"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Foreground="{Binding RelativeSource={RelativeSource AncestorType=lp:Link}, Path=Foreground}"
+                       Text="{Binding Message}" />
+
+            <Button x:Name="btn"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Content="{x:Static h:Geometrys.Close}"
+                    Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}"
+                    Visibility="Collapsed" />
+
+        </Grid>
+
+
+        <!--<Border x:Name="boder"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Background="Transparent"
+                Effect="{DynamicResource {x:Static h:EffectShadowKeys.Default1}}"
+                Style="{DynamicResource {x:Static h:BorderKeys.Default}}">
+            <TextBlock x:Name="txt"
+                       Margin="{DynamicResource {x:Static h:ThicknessKeys.Padding_10_6}}"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Style="{DynamicResource {x:Static h:TextBlockKeys.Default}}"
+                       Text="{Binding Message}" />
+        </Border>-->
+
+        <DataTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="btn" Property="Visibility" Value="Visible" />
+            </Trigger>
+            <!--<Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="boder" Property="Effect" Value="{DynamicResource {x:Static h:EffectShadowKeys.Default2}}" />
+                <Setter TargetName="txt" Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
+            </Trigger>-->
+
+            <!--<DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=IsSelected}" Value="True">
+                <Setter TargetName="boder" Property="Effect" Value="{DynamicResource {x:Static local:DiagramEffectKey.IsSelected}}" />
+                <Setter TargetName="txt" Property="Foreground" Value="Orange" />
+            </DataTrigger>-->
+        </DataTemplate.Triggers>
+    </DataTemplate>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Link.Default,
+                                        TypeInTargetAssembly={x:Type lp:Link}}"
+           TargetType="{x:Type lp:Link}">
+        <!--<Setter Property="RenderTransform" Value="{DynamicResource {x:Static h:SystemKeys.TransformGroup}}" />-->
+        <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+        <Setter Property="IsHitTestVisible" Value="True" />
+        <Setter Property="DataContext" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="PathStyle">
+            <Setter.Value>
+                <Style TargetType="{x:Type Path}">
+                    <Setter Property="Stroke" Value="{Binding Stroke}" />
+                    <Setter Property="Fill" Value="{Binding Stroke}" />
+                    <!--<Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
+                    <Setter Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />-->
+                    <!--<Setter Property="Fill" Value="Yellow" />-->
+                    <!--<Setter Property="StrokeThickness" Value="1.5" />-->
+                    <Setter Property="StrokeThickness" Value="{Binding StrokeThickness}" />
+                    <Setter Property="StrokeDashCap" Value="{Binding StrokeDashCap}" />
+                    <Setter Property="StrokeLineJoin" Value="{Binding StrokeLineJoin}" />
+                    <Setter Property="StrokeDashArray" Value="{Binding StrokeDashArray}" />
+                    <Setter Property="StrokeDashOffset" Value="{Binding StrokeDashOffset}" />
+                    <Setter Property="StrokeStartLineCap" Value="{Binding StrokeStartLineCap}" />
+                    <Setter Property="StrokeEndLineCap" Value="{Binding StrokeEndLineCap}" />
+                    <Setter Property="StrokeLineJoin" Value="{Binding StrokeLineJoin}" />
+
+                    <Style.Triggers>
+                        <!--<DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type lp:Link}}, Path=IsMouseOver}" Value="True">
+                            <Setter Property="Opacity" Value="1" />
+                            <Setter Property="Stroke" Value="Orange" />
+                            <Setter Property="Fill" Value="Orange" />
+                            <Setter Property="Effect" Value="{DynamicResource {x:Static h:EffectShadowKeys.Default2}}" />
+                            <Setter Property="StrokeThickness" Value="3" />
+                        </DataTrigger>-->
+
+                        <DataTrigger Binding="{Binding Stroke}"
+                                     Value="{x:Null}">
+                            <Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
+                            <!--<Setter Property="StrokeThickness" Value="3" />-->
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Stroke}"
+                                     Value="{x:Null}">
+                            <Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
+                            <!--<Setter Property="StrokeThickness" Value="3" />-->
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Fill}"
+                                     Value="{x:Null}">
+                            <Setter Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
+                            <!--<Setter Property="StrokeThickness" Value="3" />-->
+                        </DataTrigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <!--<Setter Property="StrokeThickness" Value="3" />-->
+                            <!--<Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.AccentMouseOverForeground}}" />-->
+                            <Setter Property="Effect" Value="{DynamicResource {x:Static h:DiagramEffectKey.MouseOver}}" />
+
+                            <!--<Setter Property="StrokeDashArray" Value="1 1" />-->
+                            <!--<Setter Property="Fill" Value="Orange" />-->
+                        </Trigger>
+
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=lp:Link}, Path=IsSelected}"
+                                     Value="True">
+                            <!--<Setter Property="StrokeDashArray" Value="2 2" />-->
+                            <Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
+                            <Setter Property="Effect" Value="{DynamicResource {x:Static h:DiagramEffectKey.IsSelected}}" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=lp:Link}, Path=State}"
+                                     Value="Running">
+                            <Setter Property="StrokeDashArray" Value="4 4" />
+                            <Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
+                            <Setter Property="StrokeThickness" Value="2" />
+                            <DataTrigger.EnterActions>
+                                <BeginStoryboard x:Name="start">
+                                    <Storyboard RepeatBehavior="Forever"
+                                                Storyboard.TargetProperty="StrokeDashOffset">
+                                        <DoubleAnimation From="100"
+                                                         To="0"
+                                                         Duration="00:00:05" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </DataTrigger.EnterActions>
+                            <DataTrigger.ExitActions>
+                                <RemoveStoryboard BeginStoryboardName="start" />
+                            </DataTrigger.ExitActions>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=lp:Link}, Path=State}"
+                                     Value="Success">
+                            <Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Green}}" />
+                            <!--<Setter Property="StrokeThickness" Value="3" />-->
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=lp:Link}, Path=State}"
+                                     Value="Error">
+                            <Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Red}}" />
+                            <!--<Setter Property="StrokeThickness" Value="3" />-->
+                        </DataTrigger>
+                        <!--<DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=lp:Link}, Path=State}" Value="Ready">
+                            <Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Gray}}" />
+                        </DataTrigger>-->
+
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=lp:Link}, Path=State}"
+                                     Value="Wait">
+                            <Setter Property="Opacity" Value="0.5" />
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=lp:Link}, Path=Content, Converter={x:Static h:Converter.GetIsAssignableFrom}, ConverterParameter={x:Type lf:IFlowable}}"
+                                     Value="False">
+                            <Setter Property="StrokeDashArray" Value="5 5" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <!--<Setter Property="ContextMenu">
+            <Setter.Value>
+        -->
+        <!--<ContextMenu ItemContainerStyle="{DynamicResource {x:Static h:MenuItemKeys.Handy}}" PlacementTarget="{Binding RelativeSource={RelativeSource AncestorType=lp:Link}}">
+                    <MenuItem Command="{x:Static local:Part.DeleteCommand}" CommandTarget="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}, Path=PlacementTarget}" Header="删除" />
+                </ContextMenu>-->
+        <!--
+
+                <ContextMenu>
+                    <ContextMenu.Template>
+                        <ControlTemplate>
+                            <h:PropertyGrid MinWidth="200"
+                                            h:Cattach.ItemHorizontalAlignment="Stretch"
+                                            h:Cattach.TitleWidth="0"
+                                            h:Cattach.UseTitle="False"
+                                            BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrushDefault}}"
+                                            SelectObject="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=PlacementTarget.Content}"
+                                            Style="{DynamicResource {x:Static h:PropertyGrid.ClearlyKey}}"
+                                            UseAsync="True"
+                                            UseGroupNames="操作">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <MenuItem VerticalAlignment="Center"
+                                                  VerticalContentAlignment="Center"
+                                                  Background="Transparent"
+                                                  Command="{Binding Value}"
+                                                  CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}, Path=PlacementTarget}"
+                                                  Header="{Binding Name}"
+                                                  Icon="{Binding Icon}"
+                                                  Style="{DynamicResource {x:Static h:MenuItemKeys.Icon}}" />
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </h:PropertyGrid>
+                        </ControlTemplate>
+                    </ContextMenu.Template>
+                </ContextMenu>
+            </Setter.Value>
+        </Setter>-->
+        <Setter Property="ToolTip" Value="{Binding Description}" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding State}"
+                         Value="Success">
+                <Setter Property="ToolTip" Value="{Binding Message}" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding State}"
+                         Value="Error">
+                <Setter Property="ToolTip" Value="{Binding Message}" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Link.Dash,
+                                        TypeInTargetAssembly={x:Type lp:Link}}"
+           BasedOn="{StaticResource {x:Static lp:Link.DefaultKey}}"
+           TargetType="{x:Type lp:Link}">
+        <Setter Property="IsHitTestVisible" Value="False" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
+        <Setter Property="FontSize" Value="{DynamicResource {x:Static h:FontSizeKeys.Default}}" />
+        <Setter Property="PathStyle">
+            <Setter.Value>
+                <Style TargetType="{x:Type Path}">
+                    <Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
+                    <Setter Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
+                    <Setter Property="StrokeDashArray" Value="5 2" />
+                    <Setter Property="StrokeThickness" Value="1" />
+                    <Setter Property="StrokeDashCap" Value="Round" />
+                    <Setter Property="StrokeLineJoin" Value="Round" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=lp:Link}, Path=(lpb:Part.IsDragEnter)}"
+                                     Value="True">
+                            <!--<Setter Property="Opacity" Value="0.6" />-->
+                            <Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Orange}}" />
+                            <Setter Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Orange}}" />
+                            <Setter Property="StrokeThickness" Value="1" />
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=lp:Link}, Path=(lpb:Part.IsCanDrop)}"
+                                     Value="True">
+                            <Setter Property="Opacity" Value="1" />
+                            <Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Green}}" />
+                            <Setter Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Green}}" />
+                            <!--<Setter Property="Effect" Value="{DynamicResource {x:Static h:EffectShadowKeys.Default3}}" />-->
+                            <Setter Property="StrokeThickness" Value="1" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=lp:Link}, Path=HasError}"
+                                     Value="True">
+                            <Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Red}}" />
+                            <Setter Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Red}}" />
+                            <Setter Property="StrokeThickness" Value="1" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Content">
+            <Setter.Value>
+                <ld:DynamicLinkData />
+            </Setter.Value>
+        </Setter>
+
+        <!--<Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="lp:Link">
+                    <ContentPresenter/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>-->
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(lpb:Part.IsDragEnter)}"
+                         Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Orange}}" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(lpb:Part.IsCanDrop)}"
+                         Value="True">
+                <Setter Property="Opacity" Value="1" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Green}}" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=HasError}"
+                         Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Red}}" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style BasedOn="{StaticResource {x:Static lp:Link.DefaultKey}}"
+           TargetType="{x:Type lp:Link}" />
+</ResourceDictionary>
+

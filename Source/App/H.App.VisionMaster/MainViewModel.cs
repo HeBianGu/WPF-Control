@@ -1,5 +1,8 @@
 ﻿using H.Controls.Diagram;
+using H.Controls.Diagram.Flowables;
+using H.Controls.Diagram.Parts;
 using H.Controls.Diagram.Presenter.DiagramDatas;
+using H.Controls.Diagram.Presenter.DiagramDatas.Base;
 using H.Controls.Diagram.Presenter.NodeDatas;
 using H.Controls.Diagram.Presenters.OpenCV;
 using H.Controls.Diagram.Presenters.OpenCV.NodeDataGroups;
@@ -94,37 +97,37 @@ public class MainViewModel : BindableBase
         this.DiagramDatas.Add(data);
     });
 
-    public RelayCommand StartCommand => new RelayCommand((s, e) =>
-    {
-        if (e is UIElement element)
-        {
-            var diagram = GetDiagram(element);
-            diagram?.Start();
-        }
-    }, (s, e) =>
-    {
-        if (e is UIElement element)
-        {
-            return GetDiagram(element)?.CanStart() == true;
-        }
-        return false;
-    });
+    //public RelayCommand StartCommand => new RelayCommand((s, e) =>
+    //{
+    //    if (e is UIElement element)
+    //    {
+    //        var diagram = GetDiagram(element);
+    //        diagram?.Start();
+    //    }
+    //}, (s, e) =>
+    //{
+    //    if (e is UIElement element)
+    //    {
+    //        return GetDiagram(element)?.CanStart() == true;
+    //    }
+    //    return false;
+    //});
 
-    public RelayCommand StopCommand => new RelayCommand((s, e) =>
-    {
-        if (e is UIElement element)
-        {
-            var diagram = GetDiagram(element);
-            diagram?.Stop();
-        }
-    }, (s, e) =>
-    {
-        if (e is UIElement element)
-        {
-            return GetDiagram(element)?.CanStop() == true;
-        }
-        return false;
-    });
+    //public RelayCommand StopCommand => new RelayCommand((s, e) =>
+    //{
+    //    if (e is UIElement element)
+    //    {
+    //        var diagram = GetDiagram(element) as IFlowableDiagram;
+    //        diagram?.Stop();
+    //    }
+    //}, (s, e) =>
+    //{
+    //    if (e is UIElement element)
+    //    {
+    //        return GetDiagram(element)?.CanStop() == true;
+    //    }
+    //    return false;
+    //});
 
     public RelayCommand MouseDoubleClickCommand => new RelayCommand((s, e) =>
     {
@@ -145,11 +148,11 @@ public class MainViewModel : BindableBase
         }
     });
 
-    public Diagram GetDiagram(UIElement element)
-    {
-        var viewbox = element.GetElement<Viewbox>();
-        return viewbox?.Child as Diagram;
-    }
+    //public Diagram GetDiagram(UIElement element)
+    //{
+    //    var viewbox = element.GetElement<Viewbox>();
+    //    return viewbox?.Child as Diagram;
+    //}
 
 
     private ObservableCollection<ImageSource> _images = new ObservableCollection<ImageSource>();

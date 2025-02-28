@@ -1,4 +1,6 @@
-﻿namespace H.Controls.Diagram.Presenter.NodeDatas.Base;
+﻿using H.Controls.Diagram.Presenter.DiagramDatas.Base;
+
+namespace H.Controls.Diagram.Presenter.NodeDatas.Base;
 
 public abstract class NodeData : NodeDataBase, INodeData, ITemplate, ILinkDataCreator, IPortDataCreator
 {
@@ -38,7 +40,7 @@ public abstract class NodeData : NodeDataBase, INodeData, ITemplate, ILinkDataCr
     public RelayCommand AlignmentCommand => new RelayCommand((s, e) =>
     {
         if (e is Node node)
-            node.Aligment();
+            node.AligmentLayout();
     });
 
     [XmlIgnore]
@@ -47,8 +49,8 @@ public abstract class NodeData : NodeDataBase, INodeData, ITemplate, ILinkDataCr
     {
         if (e is Node node)
         {
-            if (node.GetDiagram().DataContext is DiagramDataBase diagram)
-                diagram.LocateRect(node);
+            if (node.GetDiagram().DataContext is IZoomableDiagramData diagram)
+                diagram.ZoomTo(node);
         }
     });
 
@@ -58,8 +60,8 @@ public abstract class NodeData : NodeDataBase, INodeData, ITemplate, ILinkDataCr
     {
         if (e is Node node)
         {
-            if (node.GetDiagram().DataContext is DiagramDataBase diagram)
-                diagram.LocateCenter(node);
+            if (node.GetDiagram().DataContext is IZoomableDiagramData diagram)
+                diagram.PanTo(node);
         }
     });
 

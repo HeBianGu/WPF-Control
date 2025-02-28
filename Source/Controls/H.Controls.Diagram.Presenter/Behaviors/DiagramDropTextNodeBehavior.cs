@@ -1,4 +1,6 @@
-﻿namespace H.Controls.Diagram.Presenter.Behaviors;
+﻿global using H.Controls.Diagram.Bevaviors.DiagramDropBehavior;
+
+namespace H.Controls.Diagram.Presenter.Behaviors;
 
 public class DiagramDropTextNodeBehavior : DiagramDropBehaviorBase
 {

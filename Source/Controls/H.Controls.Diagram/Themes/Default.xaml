@@ -5,10 +5,10 @@
                     xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram;component/Diagram.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram;component/Part/Link.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram;component/Part/Node.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram;component/Part/TreeNode.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram;component/Part/Port.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram;component/Parts/Link.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram;component/Parts/Node.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram;component/Parts/TreeNode.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram;component/Parts/Port.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <DropShadowEffect x:Key="{ComponentResourceKey ResourceId=S.EffectShadow.IsDragEnter,

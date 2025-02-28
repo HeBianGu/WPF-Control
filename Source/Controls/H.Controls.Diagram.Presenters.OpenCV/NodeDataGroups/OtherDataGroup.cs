@@ -1,4 +1,5 @@
-﻿using H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Other;
+﻿using H.Controls.Diagram.Presenter.DiagramDatas.Base;
+using H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Other;
 namespace H.Controls.Diagram.Presenters.OpenCV.NodeDataGroups;
 
 [Icon("\xE15C")]

@@ -1,4 +1,6 @@
-﻿namespace H.Controls.Diagram.Presenter.Provider;
+﻿using H.Controls.Diagram.Presenter.DiagramDatas.Base;
+
+namespace H.Controls.Diagram.Presenter.Provider;
 
 public class DiagramTemplate : DisplayBindableBase, IDiagramTemplate
 {

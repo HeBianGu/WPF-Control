@@ -1,0 +1,98 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:lb="clr-namespace:H.Controls.Diagram.Bevaviors"
+                    xmlns:ld="clr-namespace:H.Controls.Diagram.Datas"
+                    xmlns:lf="clr-namespace:H.Controls.Diagram.Flowables"
+                    xmlns:local="clr-namespace:H.Controls.Diagram"
+                    xmlns:lp="clr-namespace:H.Controls.Diagram.Parts"
+                    xmlns:lpb="clr-namespace:H.Controls.Diagram.Parts.Base"
+                    xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
+
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Node.Default,
+                                        TypeInTargetAssembly={x:Type lp:Node}}"
+           TargetType="{x:Type lp:Node}">
+        <Setter Property="Margin" Value="0" />
+        <!--<Setter Property="RenderTransform" Value="{DynamicResource {x:Static h:SystemKeys.TransformGroup}}" />-->
+        <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+        <Setter Property="Height" Value="Auto" />
+        <Setter Property="Location" Value="{Binding Location, Mode=TwoWay}" />
+        <Setter Property="DataContext" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}" />
+        <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
+        <Setter Property="h:BehvaiorAttach.Behaviors">
+            <Setter.Value>
+                <h:Behaviors>
+                    <lb:NodeMouseDragBehavior />
+                    <!--<local:NodeMouseDragBehavior ConstrainToParentBounds="True" />
+                    <local:NodeSelectionBehavior />
+                    <local:NodeMouseOverBehavior/>
+                    <h:ContextMenuDisplayBehavior />-->
+                </h:Behaviors>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ToolTip" Value="{Binding Description}" />
+        <!--<Setter Property="ContextMenu">
+            <Setter.Value>
+                <ContextMenu>
+                    <ContextMenu.Template>
+                        <ControlTemplate>
+                            <h:PropertyGrid MinWidth="200"
+                                            h:Cattach.ItemHorizontalAlignment="Stretch"
+                                            h:Cattach.TitleWidth="0"
+                                            h:Cattach.UseTitle="False"
+                                            BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrushDefault}}"
+                                            SelectObject="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=PlacementTarget.Content}"
+                                            Style="{DynamicResource {x:Static h:PropertyGrid.ClearlyKey}}"
+                                            UseAsync="True"
+                                            UseGroupNames="操作">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <MenuItem VerticalAlignment="Center"
+                                                  VerticalContentAlignment="Center"
+                                                  Background="Transparent"
+                                                  Command="{Binding Value}"
+                                                  CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}, Path=PlacementTarget}"
+                                                  Header="{Binding Name}"
+                                                  Icon="{Binding Icon}"
+                                                  Style="{DynamicResource {x:Static h:MenuItemKeys.Icon}}" />
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </h:PropertyGrid>
+                        </ControlTemplate>
+                    </ContextMenu.Template>
+                </ContextMenu>
+            </Setter.Value>
+        </Setter>-->
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <!--<Setter Property="Effect" Value="{DynamicResource {x:Static h:EffectShadowKeys.Default1}}" />-->
+                <Setter Property="Cursor" Value="SizeAll" />
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+                <!--<Setter Property="Effect" Value="{DynamicResource {x:Static h:EffectShadowKeys.Default3}}" />-->
+            </Trigger>
+            <Trigger Property="IsDragging" Value="True">
+                <!--<Setter Property="Effect" Value="{DynamicResource {x:Static h:EffectShadowKeys.Default4}}" />-->
+            </Trigger>
+            <Trigger Property="lp:Node.IsDragEnter" Value="True">
+                <!--<Setter Property="Effect" Value="{DynamicResource {x:Static local:DiagramEffectKey.IsDragEnter}}" />-->
+            </Trigger>
+            <Trigger Property="lp:Node.IsCanDrop" Value="True">
+                <!--<Setter Property="Effect" Value="{DynamicResource {x:Static local:DiagramEffectKey.IsCanDrop}}" />-->
+            </Trigger>
+            <DataTrigger Binding="{Binding State}"
+                         Value="Success">
+                <Setter Property="ToolTip" Value="{Binding Message}" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding State}"
+                         Value="Error">
+                <Setter Property="ToolTip" Value="{Binding Message}" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style BasedOn="{StaticResource {x:Static lp:Node.DefaultKey}}"
+           TargetType="{x:Type lp:Node}" />
+
+</ResourceDictionary>
+

@@ -1,5 +1,4 @@
-﻿global using H.Controls.Diagram.Presenter.DiagramDatas;
-global using H.Controls.Diagram.Presenter.Provider;
+﻿global using H.Controls.Diagram.Presenter.Provider;
 global using H.Controls.Diagram.Presenter.Provider.Tree;
 global using H.Extensions.Common;
 global using H.Extensions.TypeConverter;

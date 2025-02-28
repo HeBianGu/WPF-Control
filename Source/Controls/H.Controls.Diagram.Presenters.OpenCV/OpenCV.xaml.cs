@@ -1,4 +1,6 @@
-﻿namespace H.Controls.Diagram.Presenters.OpenCV;
+﻿using H.Controls.Diagram.Presenter.DiagramDatas.Base;
+
+namespace H.Controls.Diagram.Presenters.OpenCV;
 [Display(Name = "OpenCVSharp基础", GroupName = "机器视觉", Order = 0)]
 public class OpenCVDiagramData : FlowableDiagramDataBase
 {

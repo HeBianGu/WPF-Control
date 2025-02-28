@@ -1,5 +1,6 @@
 ﻿global using H.Controls.Diagram.Presenter.DiagramDatas;
 global using H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Cascade;
+global using H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.NodeDataGroups;
 

@@ -1,6 +1,8 @@
-﻿namespace H.Controls.Diagram.Presenter.NodeDatas;
+﻿using H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
-public class FlowableNodeData : TextNodeData, IFlowableNode
+namespace H.Controls.Diagram.Presenter.NodeDatas;
+
+public class FlowableNodeData : TextNodeData, IFlowableNodeData
 {
     [XmlIgnore]
     [Display(Name = "开始", GroupName = "操作")]
@@ -8,8 +10,8 @@ public class FlowableNodeData : TextNodeData, IFlowableNode
     {
         if (e is Node part)
         {
-            if (part.GetParent<Diagram>().DataContext is FlowableDiagramDataBase flowable)
-                await flowable.Start(part);
+            if (part.GetParent<Diagram>().DataContext is IFlowableDiagramData flowable)
+                await flowable.InvokeNode(part);
         }
     }, (s, e) => this.UseStart && this.State != FlowableState.Running && this.State != FlowableState.Canceling);
 

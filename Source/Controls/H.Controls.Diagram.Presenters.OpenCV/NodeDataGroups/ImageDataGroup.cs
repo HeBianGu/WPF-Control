@@ -1,4 +1,6 @@
-﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDataGroups;
+﻿using H.Controls.Diagram.Presenter.DiagramDatas.Base;
+
+namespace H.Controls.Diagram.Presenters.OpenCV.NodeDataGroups;
 [Icon("\xE722")]
 [Display(Name = "采集", GroupName = "设置输入图像", Order = 0)]
 public class ImageDataGroup : NodeDataGroupBase

@@ -3,20 +3,19 @@
 using System.Windows.Controls;
 using System.Xml.Serialization;
 
-namespace H.Controls.Diagram
+namespace H.Controls.Diagram.GraphSource.Model;
+
+public class Socket
 {
-    public class Socket
-    {
-        [XmlAttribute("Name")]
-        public string Name { get; set; }
+    [XmlAttribute("Name")]
+    public string Name { get; set; }
 
-        [XmlAttribute("Dock")]
-        public Dock Dock { get; set; }
+    [XmlAttribute("Dock")]
+    public Dock Dock { get; set; }
 
-        [XmlAttribute("Color")]
-        public string Color { get; set; }
+    [XmlAttribute("Color")]
+    public string Color { get; set; }
 
-        [XmlAttribute("Index")]
-        public int Index { get; set; }
-    }
+    [XmlAttribute("Index")]
+    public int Index { get; set; }
 }
