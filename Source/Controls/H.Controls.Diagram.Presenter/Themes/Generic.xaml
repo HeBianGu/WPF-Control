@@ -5,6 +5,7 @@
     xmlns:h="https://github.com/HeBianGu"
     xmlns:lb="clr-namespace:H.Controls.Diagram.Presenter.Behaviors"
     xmlns:ld="clr-namespace:H.Controls.Diagram.Presenter.DiagramDatas"
+    xmlns:ldb="clr-namespace:H.Controls.Diagram.Presenter.DiagramDatas.Base"
     xmlns:local="clr-namespace:H.Controls.Diagram.Presenter"
     xmlns:system="clr-namespace:System;assembly=System.Runtime">
 
@@ -25,5 +26,4 @@
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/DiagramDatas/DiagramData.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/DiagramKeys.xaml" />
     </ResourceDictionary.MergedDictionaries>
-
 </ResourceDictionary>

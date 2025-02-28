@@ -2,13 +2,10 @@
 
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
-public interface IFlowableDiagramData : IDiagramData
+public interface IFlowableDiagramData : IDiagramData, IMessageable
 {
     DiagramFlowableMode FlowableMode { get; set; }
     DiagramFlowableState State { get; set; }
-    string Message { get; set; }
     Task<bool?> Start();
     Task<bool?> InvokeNode(Node startNode);
-
-
 }

@@ -1,4 +1,7 @@
-﻿using H.Controls.Diagram.Presenter.DiagramDatas.Base;
+﻿global using H.Controls.Diagram;
+global using H.Controls.Diagram.Presenter.DiagramDatas.Base;
+global using System.Diagnostics;
+using H.Controls.Diagram.Flowables;
 
 namespace H.Controls.Diagram.Presenter.NodeDatas;
 
@@ -49,6 +52,17 @@ public class FlowableNodeData : TextNodeData, IFlowableNodeData
         set
         {
             _useStart = value;
+            RaisePropertyChanged();
+        }
+    }
+
+    private TimeSpan _timeSpan;
+    public TimeSpan TimeSpan
+    {
+        get { return _timeSpan; }
+        set
+        {
+            _timeSpan = value;
             RaisePropertyChanged();
         }
     }
@@ -161,13 +175,16 @@ public class FlowableNodeData : TextNodeData, IFlowableNodeData
             this.Clear();
             this.State = FlowableState.Running;
             this.IsBuzy = true;
-            if (this.UseInfoLogger)
-                IocLog.Instance?.Info($"正在执行<{this.GetType().Name}>:{this.Text}");
-            IFlowableResult result = await InvokeAsync(previors, current);
-            if (this.UseInfoLogger)
-                IocLog.Instance?.Info(result.State == FlowableResultState.Error ? $"运行错误<{this.GetType().Name}>:{this.Text} {result.Message}" : $"执行完成<{this.GetType().Name}>:{this.Text} {result.Message}");
-            this.State = result.State == FlowableResultState.OK ? FlowableState.Success : FlowableState.Error;
-            return result;
+            using (var stopwatch = new Stopwatchable(this))
+            {
+                if (this.UseInfoLogger)
+                    IocLog.Instance?.Info($"正在执行<{this.GetType().Name}>:{this.Text}");
+                IFlowableResult result = await InvokeAsync(previors, current);
+                if (this.UseInfoLogger)
+                    IocLog.Instance?.Info(result.State == FlowableResultState.Error ? $"运行错误<{this.GetType().Name}>:{this.Text} {result.Message}" : $"执行完成<{this.GetType().Name}>:{this.Text} {result.Message}");
+                this.State = result.State == FlowableResultState.OK ? FlowableState.Success : FlowableState.Error;
+                return result;
+            }
         }
         catch (Exception ex)
         {

@@ -6,7 +6,7 @@ namespace H.Controls.Diagram.Presenters.OpenCV.NodeDataGroups;
 
 [Icon("\xE11D")]
 [Display(Name = "人脸检测", GroupName = "图像处理的人脸检测", Order = 1)]
-public class CascadeClassifierDataGroup : NodeDataGroupBase
+public class CascadeClassifierDataGroup : BasicDataGroupBase
 {
     protected override IEnumerable<INodeData> CreateNodeDatas()
     {

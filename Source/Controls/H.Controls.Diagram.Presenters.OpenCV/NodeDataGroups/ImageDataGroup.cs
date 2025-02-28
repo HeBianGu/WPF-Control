@@ -3,7 +3,7 @@
 namespace H.Controls.Diagram.Presenters.OpenCV.NodeDataGroups;
 [Icon("\xE722")]
 [Display(Name = "采集", GroupName = "设置输入图像", Order = 0)]
-public class ImageDataGroup : NodeDataGroupBase
+public class ImageDataGroup : BasicDataGroupBase
 {
     protected override IEnumerable<INodeData> CreateNodeDatas()
     {

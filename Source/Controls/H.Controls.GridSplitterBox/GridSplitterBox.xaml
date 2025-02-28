@@ -1,12 +1,14 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:h="https://github.com/HeBianGu"
-                    xmlns:local="clr-namespace:H.Controls.GridSplitterBox">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:h="https://github.com/HeBianGu"
+    xmlns:local="clr-namespace:H.Controls.GridSplitterBox">
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.GridSplitterBox.Toggle,
-                                        TypeInTargetAssembly={x:Type local:GridSplitterBox}}"
-           BasedOn="{StaticResource {x:Static ToggleButtonKeys.Geometry}}"
-           TargetType="ToggleButton">
+    <Style
+        x:Key="{ComponentResourceKey ResourceId=S.GridSplitterBox.Toggle,
+                                     TypeInTargetAssembly={x:Type local:GridSplitterBox}}"
+        BasedOn="{StaticResource {x:Static ToggleButtonKeys.Geometry}}"
+        TargetType="ToggleButton">
         <Setter Property="Padding" Value="8" />
         <Setter Property="Margin" Value="5" />
         <Setter Property="HorizontalAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=h:GridSplitterBox}, Path=ToggleHorizontalAlignment}" />
@@ -25,9 +27,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.GridSplitterBox.Default,
-                                        TypeInTargetAssembly={x:Type local:GridSplitterBox}}"
-           TargetType="{x:Type local:GridSplitterBox}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.GridSplitterBox.Default, TypeInTargetAssembly={x:Type local:GridSplitterBox}}" TargetType="{x:Type local:GridSplitterBox}">
         <Setter Property="GridSpliteWidth" Value="3" />
         <Setter Property="MenuWidth" Value="200" />
         <Setter Property="MenuMinWidth" Value="50" />
@@ -47,33 +47,36 @@
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
 
-                        <Border Grid.ColumnSpan="2"
-                                Margin="{TemplateBinding Padding}"
-                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}" />
+                        <Border
+                            Grid.ColumnSpan="2"
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}" />
 
-                        <Grid x:Name="PART_Menu"
-                              Grid.Column="0">
+                        <Grid x:Name="PART_Menu" Grid.Column="0">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition x:Name="PART_Column_Menu"
-                                                  Width="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=MenuWidth, Mode=TwoWay}"
-                                                  MinWidth="{TemplateBinding MenuMinWidth}"
-                                                  MaxWidth="{TemplateBinding MenuMaxWidth}" />
+                                <ColumnDefinition
+                                    x:Name="PART_Column_Menu"
+                                    Width="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=MenuWidth, Mode=TwoWay}"
+                                    MinWidth="{TemplateBinding MenuMinWidth}"
+                                    MaxWidth="{TemplateBinding MenuMaxWidth}" />
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
 
-                            <GridSplitter x:Name="PART_GridSplitter"
-                                          Grid.Column="1"
-                                          Width="{TemplateBinding GridSpliteWidth}"
-                                          Background="{TemplateBinding GridSpliterBackground}"
-                                          ResizeBehavior="PreviousAndCurrent" />
+                            <GridSplitter
+                                x:Name="PART_GridSplitter"
+                                Grid.Column="1"
+                                Width="{TemplateBinding GridSpliteWidth}"
+                                Background="{TemplateBinding GridSpliterBackground}"
+                                ResizeBehavior="PreviousAndCurrent" />
 
-                            <ContentPresenter Grid.Column="0"
-                                              Content="{TemplateBinding MenuContent}"
-                                              ContentTemplate="{TemplateBinding MenuTempate}" />
+                            <ContentPresenter
+                                Grid.Column="0"
+                                Content="{TemplateBinding MenuContent}"
+                                ContentTemplate="{TemplateBinding MenuTempate}" />
                         </Grid>
                         <ContentPresenter Grid.Column="1" />
                         <ToggleButton Style="{TemplateBinding ToggleStyle}" />
@@ -84,10 +87,11 @@
         <Setter Property="ToggleStyle" Value="{DynamicResource {x:Static local:GridSplitterBox.ToggleKey}}" />
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.GridSplitterBox.Right,
-                                        TypeInTargetAssembly={x:Type local:GridSplitterBox}}"
-           BasedOn="{StaticResource {x:Static local:GridSplitterBox.DefaultKey}}"
-           TargetType="{x:Type local:GridSplitterBox}">
+    <Style
+        x:Key="{ComponentResourceKey ResourceId=S.GridSplitterBox.Right,
+                                     TypeInTargetAssembly={x:Type local:GridSplitterBox}}"
+        BasedOn="{StaticResource {x:Static local:GridSplitterBox.DefaultKey}}"
+        TargetType="{x:Type local:GridSplitterBox}">
         <Setter Property="MenuDock" Value="Right" />
         <Setter Property="ToggleHorizontalAlignment" Value="Right" />
         <Setter Property="ToggleVerticalAlignment" Value="Top" />
@@ -100,32 +104,35 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
-                        <Border Grid.ColumnSpan="2"
-                                Margin="{TemplateBinding Padding}"
-                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}" />
+                        <Border
+                            Grid.ColumnSpan="2"
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}" />
 
                         <ContentPresenter />
 
-                        <Grid x:Name="PART_Menu"
-                              Grid.Column="1">
+                        <Grid x:Name="PART_Menu" Grid.Column="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
-                                <ColumnDefinition x:Name="PART_Column_Menu"
-                                                  Width="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=MenuWidth, Mode=TwoWay}"
-                                                  MinWidth="{TemplateBinding MenuMinWidth}"
-                                                  MaxWidth="{TemplateBinding MenuMaxWidth}" />
+                                <ColumnDefinition
+                                    x:Name="PART_Column_Menu"
+                                    Width="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=MenuWidth, Mode=TwoWay}"
+                                    MinWidth="{TemplateBinding MenuMinWidth}"
+                                    MaxWidth="{TemplateBinding MenuMaxWidth}" />
                             </Grid.ColumnDefinitions>
-                            <GridSplitter x:Name="PART_GridSplitter"
-                                          Width="{TemplateBinding GridSpliteWidth}"
-                                          Background="{TemplateBinding GridSpliterBackground}"
-                                          ResizeBehavior="CurrentAndNext" />
-                            <ContentPresenter Grid.Column="1"
-                                              Content="{TemplateBinding MenuContent}"
-                                              ContentTemplate="{TemplateBinding MenuTempate}" />
+                            <GridSplitter
+                                x:Name="PART_GridSplitter"
+                                Width="{TemplateBinding GridSpliteWidth}"
+                                Background="{TemplateBinding GridSpliterBackground}"
+                                ResizeBehavior="CurrentAndNext" />
+                            <ContentPresenter
+                                Grid.Column="1"
+                                Content="{TemplateBinding MenuContent}"
+                                ContentTemplate="{TemplateBinding MenuTempate}" />
                         </Grid>
                         <ToggleButton Style="{TemplateBinding ToggleStyle}" />
                     </Grid>
@@ -134,18 +141,18 @@
         </Setter>
         <Setter Property="ToggleStyle">
             <Setter.Value>
-                <Style BasedOn="{StaticResource {x:Static local:GridSplitterBox.ToggleKey}}"
-                       TargetType="ToggleButton">
+                <Style BasedOn="{StaticResource {x:Static local:GridSplitterBox.ToggleKey}}" TargetType="ToggleButton">
                     <Setter Property="Grid.Column" Value="1" />
                 </Style>
             </Setter.Value>
         </Setter>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.GridSplitterBox.Top,
-                                        TypeInTargetAssembly={x:Type local:GridSplitterBox}}"
-           BasedOn="{StaticResource {x:Static local:GridSplitterBox.DefaultKey}}"
-           TargetType="{x:Type local:GridSplitterBox}">
+    <Style
+        x:Key="{ComponentResourceKey ResourceId=S.GridSplitterBox.Top,
+                                     TypeInTargetAssembly={x:Type local:GridSplitterBox}}"
+        BasedOn="{StaticResource {x:Static local:GridSplitterBox.DefaultKey}}"
+        TargetType="{x:Type local:GridSplitterBox}">
         <Setter Property="MenuDock" Value="Top" />
         <Setter Property="ToggleHorizontalAlignment" Value="Right" />
         <Setter Property="ToggleVerticalAlignment" Value="Top" />
@@ -158,33 +165,36 @@
                             <RowDefinition />
                         </Grid.RowDefinitions>
 
-                        <Border Grid.RowSpan="2"
-                                Margin="{TemplateBinding Padding}"
-                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}" />
+                        <Border
+                            Grid.RowSpan="2"
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}" />
 
-                        <Grid x:Name="PART_Menu"
-                              Grid.Row="0">
+                        <Grid x:Name="PART_Menu" Grid.Row="0">
                             <Grid.RowDefinitions>
-                                <RowDefinition x:Name="PART_Row_Menu"
-                                               Height="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=MenuWidth, Mode=TwoWay}"
-                                               MinHeight="{TemplateBinding MenuMinWidth}"
-                                               MaxHeight="{TemplateBinding MenuMaxWidth}" />
+                                <RowDefinition
+                                    x:Name="PART_Row_Menu"
+                                    Height="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=MenuWidth, Mode=TwoWay}"
+                                    MinHeight="{TemplateBinding MenuMinWidth}"
+                                    MaxHeight="{TemplateBinding MenuMaxWidth}" />
                                 <RowDefinition />
                             </Grid.RowDefinitions>
-                            <ContentPresenter Grid.Row="0"
-                                              Content="{TemplateBinding MenuContent}"
-                                              ContentTemplate="{TemplateBinding MenuTempate}" />
+                            <ContentPresenter
+                                Grid.Row="0"
+                                Content="{TemplateBinding MenuContent}"
+                                ContentTemplate="{TemplateBinding MenuTempate}" />
 
-                            <GridSplitter x:Name="PART_GridSplitter"
-                                          Grid.Row="1"
-                                          Height="{TemplateBinding GridSpliteWidth}"
-                                          HorizontalAlignment="Stretch"
-                                          Background="{TemplateBinding GridSpliterBackground}"
-                                          ResizeBehavior="PreviousAndCurrent" />
+                            <GridSplitter
+                                x:Name="PART_GridSplitter"
+                                Grid.Row="1"
+                                Height="{TemplateBinding GridSpliteWidth}"
+                                HorizontalAlignment="Stretch"
+                                Background="{TemplateBinding GridSpliterBackground}"
+                                ResizeBehavior="PreviousAndCurrent" />
                         </Grid>
 
                         <ContentPresenter Grid.Row="1" />
@@ -197,56 +207,62 @@
         </Setter>
         <Setter Property="ToggleStyle">
             <Setter.Value>
-                <Style BasedOn="{StaticResource {x:Static local:GridSplitterBox.ToggleKey}}"
-                       TargetType="ToggleButton">
+                <Style BasedOn="{StaticResource {x:Static local:GridSplitterBox.ToggleKey}}" TargetType="ToggleButton">
                     <Setter Property="Grid.Column" Value="1" />
                 </Style>
             </Setter.Value>
         </Setter>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.GridSplitterBox.Bottom,
-                                        TypeInTargetAssembly={x:Type local:GridSplitterBox}}"
-           BasedOn="{StaticResource {x:Static local:GridSplitterBox.DefaultKey}}"
-           TargetType="{x:Type local:GridSplitterBox}">
+    <Style
+        x:Key="{ComponentResourceKey ResourceId=S.GridSplitterBox.Bottom,
+                                     TypeInTargetAssembly={x:Type local:GridSplitterBox}}"
+        BasedOn="{StaticResource {x:Static local:GridSplitterBox.DefaultKey}}"
+        TargetType="{x:Type local:GridSplitterBox}">
         <Setter Property="MenuDock" Value="Bottom" />
         <Setter Property="ToggleHorizontalAlignment" Value="Right" />
         <Setter Property="ToggleVerticalAlignment" Value="Bottom" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:GridSplitterBox}">
-                    <Border Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}">
-                        <Grid Margin="{TemplateBinding Padding}"
-                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                             <Grid.RowDefinitions>
                                 <RowDefinition />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
                             <ContentPresenter Grid.Row="0" />
-                            <Grid x:Name="PART_Menu"
-                                  Grid.Row="1"
-                                  Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=MenuVisiblity}">
+                            <Grid
+                                x:Name="PART_Menu"
+                                Grid.Row="1"
+                                Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=MenuVisiblity}">
                                 <Grid.RowDefinitions>
                                     <RowDefinition />
-                                    <RowDefinition x:Name="PART_Row_Menu"
-                                                   Height="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=MenuWidth, Mode=TwoWay}"
-                                                   MinHeight="{TemplateBinding MenuMinWidth}"
-                                                   MaxHeight="{TemplateBinding MenuMaxWidth}" />
+                                    <RowDefinition
+                                        x:Name="PART_Row_Menu"
+                                        Height="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=MenuWidth, Mode=TwoWay}"
+                                        MinHeight="{TemplateBinding MenuMinWidth}"
+                                        MaxHeight="{TemplateBinding MenuMaxWidth}" />
                                 </Grid.RowDefinitions>
 
-                                <ContentPresenter Grid.Row="1"
-                                                  Content="{TemplateBinding MenuContent}"
-                                                  ContentTemplate="{TemplateBinding MenuTempate}" />
+                                <ContentPresenter
+                                    Grid.Row="1"
+                                    Content="{TemplateBinding MenuContent}"
+                                    ContentTemplate="{TemplateBinding MenuTempate}" />
 
-                                <GridSplitter x:Name="PART_GridSplitter"
-                                              Grid.Row="0"
-                                              Height="{TemplateBinding GridSpliteWidth}"
-                                              HorizontalAlignment="Stretch"
-                                              Background="{TemplateBinding GridSpliterBackground}"
-                                              ResizeBehavior="CurrentAndNext" />
+                                <GridSplitter
+                                    x:Name="PART_GridSplitter"
+                                    Grid.Row="0"
+                                    Height="{TemplateBinding GridSpliteWidth}"
+                                    HorizontalAlignment="Stretch"
+                                    Background="{TemplateBinding GridSpliterBackground}"
+                                    ResizeBehavior="CurrentAndNext" />
 
                             </Grid>
                             <ToggleButton Style="{TemplateBinding ToggleStyle}" />
@@ -257,15 +273,13 @@
         </Setter>
         <Setter Property="ToggleStyle">
             <Setter.Value>
-                <Style BasedOn="{StaticResource {x:Static local:GridSplitterBox.ToggleKey}}"
-                       TargetType="ToggleButton">
+                <Style BasedOn="{StaticResource {x:Static local:GridSplitterBox.ToggleKey}}" TargetType="ToggleButton">
                     <Setter Property="Grid.Row" Value="1" />
                 </Style>
             </Setter.Value>
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static local:GridSplitterBox.DefaultKey}}"
-           TargetType="{x:Type local:GridSplitterBox}" />
+    <Style BasedOn="{StaticResource {x:Static local:GridSplitterBox.DefaultKey}}" TargetType="{x:Type local:GridSplitterBox}" />
 
 </ResourceDictionary>

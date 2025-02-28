@@ -1,5 +1,6 @@
 ﻿global using H.Controls.Diagram.Datas;
 global using H.Controls.Diagram.Flowables;
+using H.Controls.Diagram.Parts;
 
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
@@ -22,7 +23,7 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
         }
     }
 
-    private DiagramFlowableMode _flowableMode = DiagramFlowableMode.Port;
+    private DiagramFlowableMode _flowableMode = DiagramFlowableMode.Node;
     [Display(Name = "运行模式", Order = 0, GroupName = "数据")]
     public DiagramFlowableMode FlowableMode
     {
@@ -72,6 +73,19 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
             part.IsSelected = true;
     }
 
+    protected virtual void OnInvokedPart(Part part)
+    {
+        //if (this.FlowableZoomMode == DiagramFlowableZoomMode.Rect)
+        //    this.ZoomTo(part.Bound);
+        //else if (this.FlowableZoomMode == DiagramFlowableZoomMode.Center)
+        //{
+        //    Point point = part.Bound.GetCenter();
+        //    //zoombox.ZoomToCenter(part.Bound.BottomRight);
+        //}
+        //if (this.UseFlowableSelectToRunning)
+        //    part.IsSelected = true;
+    }
+
     [Display(Name = "开始", GroupName = "操作", Order = 0)]
     public RelayCommand StartCommand => new RelayCommand(async (s, e) =>
     {
@@ -82,13 +96,13 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
     [Display(Name = "停止", GroupName = "操作", Order = 0)]
     public RelayCommand StopCommand => new RelayCommand((s, e) =>
     {
-        this.Nodes.Stop();
+        this.Stop();
     }, (s, e) => this.State.CanStop());
 
     [Display(Name = "重置", GroupName = "操作", Order = 0)]
     public RelayCommand ResetCommand => new RelayCommand((s, e) =>
     {
-        this.Nodes.Reset();
+        this.Reset();
     }, (s, e) => this.State.CanReset());
 
 
@@ -101,9 +115,12 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
         //if (DiagramAppSetting.Instance.UseAutoShowLog)
         //    DiagramAppSetting.Instance.ShowLog = true;
         this.State = DiagramFlowableState.Running;
-        bool? b = await InvokeNode(start);
-        this.State = b == null ? DiagramFlowableState.Canceled : b == true ? DiagramFlowableState.Success : DiagramFlowableState.Error;
-        IocMessage.Snack?.ShowInfo(b == null ? "用户取消" : b == true ? "运行成功" : "运行失败");
+        using (new PartInvokable(start, OnInvokingPart, OnInvokedPart))
+        {
+            bool? b = await InvokeNode(start);
+            this.State = b == null ? DiagramFlowableState.Canceled : b == true ? DiagramFlowableState.Success : DiagramFlowableState.Error;
+            IocMessage.Snack?.ShowInfo(b == null ? "用户取消" : b == true ? "运行成功" : "运行失败");
+        }
         //Commander.InvalidateRequerySuggested();
         s.IsBusy = false;
         //await Task.Delay(2000).ContinueWith(x =>
@@ -115,12 +132,12 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
 
     public virtual async Task<bool?> InvokeNode(Node startNode)
     {
-        return await startNode.InvokeNode(this.FlowableMode, OnInvokingPart);
+        return await startNode.InvokeNode(this.FlowableMode, OnInvokingPart, OnInvokedPart);
     }
 
-    public async Task<bool?> Start()
+    public virtual async Task<bool?> Start()
     {
-        string message = await this.Nodes.Start(this.FlowableMode, x => this.State = x, OnInvokingPart);
+        string message = await this.Nodes.Start(this.FlowableMode, x => this.State = x, OnInvokingPart, OnInvokedPart);
         if (!string.IsNullOrEmpty(message))
         {
             IocMessage.Notify?.ShowInfo(message);
@@ -128,6 +145,17 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
         }
         return true;
     }
+
+    public virtual void Stop()
+    {
+        this.Nodes.Stop();
+    }
+
+    public virtual void Reset()
+    {
+        this.Nodes.Reset();
+    }
+
     private string _message;
     [Browsable(false)]
     [System.Text.Json.Serialization.JsonIgnore]

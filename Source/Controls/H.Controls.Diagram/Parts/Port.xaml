@@ -1,22 +1,24 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:h="https://github.com/HeBianGu"
-                    xmlns:local="clr-namespace:H.Controls.Diagram"
-                    xmlns:lb="clr-namespace:H.Controls.Diagram.Bevaviors"
-                    xmlns:lbl="clr-namespace:H.Controls.Diagram.Bevaviors.DynimacLinkBehavior"
-                    xmlns:ld="clr-namespace:H.Controls.Diagram.Datas"
-                    xmlns:lf="clr-namespace:H.Controls.Diagram.Flowables"
-                    xmlns:lp="clr-namespace:H.Controls.Diagram.Parts"
-                    xmlns:lpb="clr-namespace:H.Controls.Diagram.Parts.Base"
-                    xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:h="https://github.com/HeBianGu"
+    xmlns:lb="clr-namespace:H.Controls.Diagram.Bevaviors"
+    xmlns:lbl="clr-namespace:H.Controls.Diagram.Bevaviors.DynimacLinkBehavior"
+    xmlns:ld="clr-namespace:H.Controls.Diagram.Datas"
+    xmlns:lf="clr-namespace:H.Controls.Diagram.Flowables"
+    xmlns:local="clr-namespace:H.Controls.Diagram"
+    xmlns:lp="clr-namespace:H.Controls.Diagram.Parts"
+    xmlns:lpb="clr-namespace:H.Controls.Diagram.Parts.Base"
+    xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
 
     <DataTemplate DataType="{x:Type ld:DefaultPortData}">
-        <Border x:Name="boder"
-                Width="10"
-                Height="10"
-                Background="{DynamicResource {x:Static h:BrushKeys.Dark4}}"
-                BorderBrush="White"
-                BorderThickness="2">
+        <Border
+            x:Name="boder"
+            Width="10"
+            Height="10"
+            Background="{DynamicResource {x:Static h:BrushKeys.Dark4}}"
+            BorderBrush="White"
+            BorderThickness="2">
             <!--<TextBlock x:Name="tb_unenble" Text="×" Visibility="Collapsed" FontSize="50" Foreground="Black" ClipToBounds="False"/>-->
         </Border>
 
@@ -37,9 +39,7 @@
         </DataTemplate.Triggers>
     </DataTemplate>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Port.Default,
-                                        TypeInTargetAssembly={x:Type lp:Port}}"
-           TargetType="{x:Type lp:Port}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Port.Default, TypeInTargetAssembly={x:Type lp:Port}}" TargetType="{x:Type lp:Port}">
         <!--<Setter Property="RenderTransform" Value="{DynamicResource {x:Static h:SystemKeys.TransformGroup}}" />-->
         <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
         <Setter Property="Cursor" Value="Hand" />
@@ -108,18 +108,15 @@
                 </MultiDataTrigger.Conditions>
                 <Setter Property="Cursor" Value="Pen" />
             </MultiDataTrigger>
-            <DataTrigger Binding="{Binding State}"
-                         Value="Success">
+            <DataTrigger Binding="{Binding State}" Value="Success">
                 <Setter Property="ToolTip" Value="{Binding Message}" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding State}"
-                         Value="Error">
+            <DataTrigger Binding="{Binding State}" Value="Error">
                 <Setter Property="ToolTip" Value="{Binding Message}" />
             </DataTrigger>
         </Style.Triggers>
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static lp:Port.DefaultKey}}"
-           TargetType="{x:Type lp:Port}" />
+    <Style BasedOn="{StaticResource {x:Static lp:Port.DefaultKey}}" TargetType="{x:Type lp:Port}" />
 </ResourceDictionary>
 

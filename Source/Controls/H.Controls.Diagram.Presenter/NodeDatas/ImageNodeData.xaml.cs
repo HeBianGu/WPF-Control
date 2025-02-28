@@ -3,7 +3,12 @@ using System.Windows.Media.Imaging;
 
 namespace H.Controls.Diagram.Presenter.NodeDatas;
 
-public abstract class ImageNodeDataBase : FlowableNodeData
+public interface IImageNodeData
+{
+    ImageSource ImageSource { get; set; }
+}
+
+public abstract class ImageNodeDataBase : FlowableNodeData, IImageNodeData
 {
     public ImageNodeDataBase()
     {

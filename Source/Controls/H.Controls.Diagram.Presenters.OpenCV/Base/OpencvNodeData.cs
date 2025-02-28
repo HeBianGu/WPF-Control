@@ -87,6 +87,8 @@ public abstract class OpenCVNodeData : OpenCVNodeDataBase
 
     protected virtual string GetDataPath(string dataPath)
     {
+        if (string.IsNullOrEmpty(dataPath))
+            return null;
         return System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, dataPath);
     }
 

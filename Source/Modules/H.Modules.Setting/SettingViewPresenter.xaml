@@ -22,10 +22,10 @@
                             BorderThickness="1"
                             HitTestPoint="55 10"
                             ItemsSource="{Binding Collection}"
-                            SelectedItem="{Binding SelectedSettable,Mode=TwoWay}"
                             NavigationSource="{Binding Collection}"
                             ScrollViewer.CanContentScroll="False"
-                            ScrollViewer.VerticalScrollBarVisibility="Auto">
+                            ScrollViewer.VerticalScrollBarVisibility="Auto"
+                            SelectedItem="{Binding SelectedSettable, Mode=TwoWay}">
                             <h:NavigationBox.NavigationDataTemplate>
                                 <DataTemplate>
                                     <TextBlock
@@ -42,7 +42,7 @@
                                     <Setter Property="Margin" Value="5" />
                                     <Setter Property="ToolTip" Value="{Binding Description}" />
                                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                    <Setter Property="SelectedItem" Value="{Binding SelectedSettable}"/>
+                                    <Setter Property="SelectedItem" Value="{Binding SelectedSettable}" />
                                     <!--<Setter Property="h:Cattach.GuideTitle" Value="{Binding Name}" />
                                 <Setter Property="h:Cattach.GuideData" Value="{Binding Description}" />
                                 <Setter Property="h:Cattach.UseGuide" Value="True" />
@@ -137,12 +137,13 @@
                     Content="确定"
                     DockPanel.Dock="Right" />
 
-                <Button MinWidth="100"
-                        Margin="2,0"
-                        Command="{CancelSettingDataCommand}"
-                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
-                        Content="取消"
-                        DockPanel.Dock="Right" />
+                <Button
+                    MinWidth="100"
+                    Margin="2,0"
+                    Command="{CancelSettingDataCommand}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
+                    Content="取消"
+                    DockPanel.Dock="Right" />
             </DockPanel>
         </Grid>
     </DataTemplate>

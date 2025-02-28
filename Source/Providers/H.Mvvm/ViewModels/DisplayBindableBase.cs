@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text.Json.Serialization;
@@ -29,6 +30,31 @@ namespace H.Mvvm
     {
 
         public string Name { get; set; }
+    }
+
+    public interface IMessageable
+    {
+        public string Message { get; set; }
+    }
+
+    public interface IStopwatchable
+    {
+        public TimeSpan TimeSpan { get; set; }
+    }
+    public class Stopwatchable : IDisposable
+    {
+        private readonly Stopwatch _stopwatch;
+        private readonly IStopwatchable _timespan;
+        public Stopwatchable(IStopwatchable timespan)
+        {
+            _timespan = timespan;
+            _stopwatch = Stopwatch.StartNew();
+        }
+        public void Dispose()
+        {
+            _stopwatch.Stop();
+            _timespan.TimeSpan = _stopwatch.Elapsed;
+        }
     }
 
     public interface IDisplayBindable : IIconable, INameable

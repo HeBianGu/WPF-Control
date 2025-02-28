@@ -401,9 +401,9 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
                 }, null, x =>
                 {
-                    x.UseGroupNames = "数据";
+                    //x.UseGroupNames = "数据";
                     x.UseCommand = false;
-                    x.TabNames = new ObservableCollection<string>() { "数据", "样式", "工具", "常用" };
+                    //x.TabNames = new ObservableCollection<string>();
                 });
             }
         }

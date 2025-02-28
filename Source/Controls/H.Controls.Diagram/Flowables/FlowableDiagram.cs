@@ -1,5 +1,4 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-
 using H.Mvvm;
 using H.Services.Common;
 using System;
@@ -136,29 +135,50 @@ public class FlowableDiagram : Diagram, IFlowableDiagram
         remove { this.RemoveHandler(InvokingPartRoutedEvent, value); }
     }
 
+
+    public static readonly RoutedEvent InvokedPartRoutedEvent =
+        EventManager.RegisterRoutedEvent("InvokedPart", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(FlowableDiagram));
+    public event RoutedEventHandler InvokedPart
+    {
+        add { this.AddHandler(InvokedPartRoutedEvent, value); }
+        remove { this.RemoveHandler(InvokedPartRoutedEvent, value); }
+    }
+
+    protected void OnInvokedPart(Part part)
+    {
+        var args = new RoutedEventArgs<Part>(InvokedPartRoutedEvent, this, part);
+        this.RaiseEvent(args);
+    }
+
     protected void OnInvokingPart(Part part)
     {
-        RoutedEventArgs<Part> args = new RoutedEventArgs<Part>(InvokingPartRoutedEvent, this, part);
+        var args = new RoutedEventArgs<Part>(InvokingPartRoutedEvent, this, part);
         this.RaiseEvent(args);
+
+        this.FocusPart(part);
+    }
+
+    private void FocusPart(Part part)
+    {
+        if (this.FlowableZoomMode == DiagramFlowableZoomMode.Rect)
+            this.ZoomTo(part.Bound);
+        else if (this.FlowableZoomMode == DiagramFlowableZoomMode.Center)
+        {
+            Point point = part.Bound.GetCenter();
+            //zoombox.ZoomToCenter(part.Bound.BottomRight);
+        }
+        if (this.UseFlowableSelectToRunning)
+            part.IsSelected = true;
     }
 
     public void Stop() => this.Nodes.Stop();
 
     public async Task<string> Start()
     {
-        return await this.Nodes.Start(this.FlowableMode, x => this.State = x, x =>
-          {
-              this.OnInvokingPart(x);
-              if (this.FlowableZoomMode == DiagramFlowableZoomMode.Rect)
-                  this.ZoomTo(x.Bound);
-              else if (this.FlowableZoomMode == DiagramFlowableZoomMode.Center)
-              {
-                  Point point = x.Bound.GetCenter();
-                  //zoombox.ZoomToCenter(part.Bound.BottomRight);
-              }
-              if (this.UseFlowableSelectToRunning)
-                  x.IsSelected = true;
-          });
+        return await this.Nodes.Start(this.FlowableMode, 
+            x => this.State = x, 
+            OnInvokingPart, 
+            OnInvokedPart);
     }
 
     public void Reset()

@@ -20,13 +20,30 @@ namespace H.Modules.Messages.Form
 
         public async Task<bool?> ShowTabEdit<T>(T value, Action<IDialog> action = null, Predicate<T> match = null, Action<ITabFormOption> option = null, Window owner = null)
         {
+            IEnumerable<string> GetGroups()
+            {
+                foreach (var p in TypeDescriptor.GetProperties(value).OfType<PropertyDescriptor>())
+                {
+                    foreach (var d in p.Attributes.OfType<DisplayAttribute>())
+                    {
+                        if (d.GroupName == null)
+                            continue;
+                        var names = d.GroupName.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+                        foreach (var n in names)
+                        {
+                            yield return n;
+                        }
+                    }
+                }
+            }
+
             Action<ITabFormOption> toption = x =>
             {
                 option?.Invoke(x);
                 if (x.TabNames == null || x.TabNames.Count == 0)
                 {
-                    var ss = TypeDescriptor.GetProperties(value).OfType<PropertyDescriptor>().SelectMany(x => x.Attributes.OfType<DisplayAttribute>()).SelectMany(x => x.GroupName?.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)).Distinct();
-                    x.TabNames = ss.ToObservable();
+                    var names = GetGroups().Distinct();
+                    x.TabNames = names.ToObservable();
                 }
             };
 

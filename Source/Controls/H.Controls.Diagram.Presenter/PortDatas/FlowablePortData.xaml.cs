@@ -27,6 +27,16 @@ public class FlowablePortData : TextPortData, IFlowablePort
         }
     }
 
+    private TimeSpan _timeSpan;
+    public TimeSpan TimeSpan
+    {
+        get { return _timeSpan; }
+        set
+        {
+            _timeSpan = value;
+            RaisePropertyChanged();
+        }
+    }
 
     private string _message;
     //[XmlIgnore]
@@ -121,18 +131,15 @@ public class FlowablePortData : TextPortData, IFlowablePort
         try
         {
             this.State = FlowableState.Running;
-
             this.IsBuzy = true;
-
-            IocLog.Instance?.Info($"正在执行<{this.GetType().Name}>:{this.Text}");
-
-            IFlowableResult result = await InvokeAsync(previors, current);
-
-            IocLog.Instance?.Info(result.State == FlowableResultState.Error ? $"运行错误<{this.GetType().Name}>:{this.Text} {result.Message}" : $"执行完成<{this.GetType().Name}>:{this.Text} {result.Message}");
-
-            this.State = result.State == FlowableResultState.OK ? FlowableState.Success : FlowableState.Error;
-
-            return result;
+            using (var stopwatch = new Stopwatchable(this))
+            {
+                IocLog.Instance?.Info($"正在执行<{this.GetType().Name}>:{this.Text}");
+                IFlowableResult result = await InvokeAsync(previors, current);
+                IocLog.Instance?.Info(result.State == FlowableResultState.Error ? $"运行错误<{this.GetType().Name}>:{this.Text} {result.Message}" : $"执行完成<{this.GetType().Name}>:{this.Text} {result.Message}");
+                this.State = result.State == FlowableResultState.OK ? FlowableState.Success : FlowableState.Error;
+                return result;
+            }
         }
         catch (Exception ex)
         {

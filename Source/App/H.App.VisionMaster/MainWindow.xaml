@@ -99,7 +99,7 @@
                                         BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                                         BorderThickness="0,0,0,1">
                                         <ScrollViewer VerticalScrollBarVisibility="Auto">
-                                            <ItemsControl ItemsSource="{Binding NodeDataGroups}">
+                                            <ItemsControl ItemsSource="{Binding SelectedDiagramData.NodeGroups}">
                                                 <ItemsControl.ItemTemplate>
                                                     <DataTemplate>
                                                         <Expander
@@ -133,7 +133,7 @@
                                 <ItemsControl
                                     x:Name="dp_1"
                                     Margin="0,20,0,0"
-                                    ItemsSource="{Binding NodeDataGroups}">
+                                    ItemsSource="{Binding SelectedDiagramData.NodeGroups}">
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
                                             <Border Background="Transparent">
@@ -385,129 +385,7 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition x:Name="r_d" MinHeight="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}" />
                             </Grid.RowDefinitions>
-                            <DockPanel>
-                                <Expander
-                                    DockPanel.Dock="Bottom"
-                                    Header="图像源"
-                                    Style="{DynamicResource {x:Static ExpanderKeys.ToggleRight}}">
-                                    <Cattach.CaptionRightTemplate>
-                                        <ControlTemplate>
-                                            <DockPanel HorizontalAlignment="Right">
-                                                <FontIconButton Content="&#xE74D;" DockPanel.Dock="Right" />
-                                                <FontIconButton Content="&#xED25;" DockPanel.Dock="Right" />
-                                                <FontIconButton Content="&#xF12B;" DockPanel.Dock="Right" />
-                                                <FontIconButton Content="&#xF407;" DockPanel.Dock="Right" />
-                                                <FontIconButton Content="&#xF463;" DockPanel.Dock="Right" />
-                                                <FontIconButton Content="&#xF61B;" DockPanel.Dock="Right" />
-                                                <FontIconButton Content="&#xF618;" DockPanel.Dock="Right" />
-                                                <FontIconButton Content="&#xE710;" DockPanel.Dock="Right" />
-                                                <FontIconButton Content="&#xE312;" DockPanel.Dock="Right" />
-                                                <FontIconButton Content="&#xE9A6;" DockPanel.Dock="Right" />
-                                                <FontIconButton Content="&#xED14;" DockPanel.Dock="Right" />
-                                            </DockPanel>
-
-                                        </ControlTemplate>
-                                    </Cattach.CaptionRightTemplate>
-                                    <ListBox
-                                        Height="80"
-                                        Cattach.ItemHeight="Auto"
-                                        ItemsSource="{Binding Images}"
-                                        SelectedItem="{Binding SelectedImage}"
-                                        Visibility="{Binding ElementName=tb_s, Path=IsChecked, Converter={x:Static Converter.GetTrueToVisible}}">
-                                        <ItemsControl.ItemsPanel>
-                                            <ItemsPanelTemplate>
-                                                <WrapPanel />
-                                            </ItemsPanelTemplate>
-                                        </ItemsControl.ItemsPanel>
-                                        <ItemsControl.ItemTemplate>
-                                            <DataTemplate>
-                                                <Border Width="75" Height="75">
-                                                    <Image Source="{Binding}" />
-                                                </Border>
-                                            </DataTemplate>
-                                        </ItemsControl.ItemTemplate>
-                                    </ListBox>
-                                </Expander>
-                                <TabControl Cattach.CaptionHorizontalAlignment="Center" ItemContainerStyle="{DynamicResource {x:Static TabItemKeys.Line}}">
-                                    <TabItem MinWidth="100" Header="图像">
-                                        <Grid>
-                                            <h:Zoombox
-                                                x:Name="zoomview"
-                                                Background="{DynamicResource {x:Static BrushKeys.Tile25}}"
-                                                DragModifiers=""
-                                                Focusable="True"
-                                                IsTabStop="True"
-                                                MinScale="0.2"
-                                                NavigateOnPreview="False"
-                                                RelativeZoomModifiers=""
-                                                ViewStackIndex="0"
-                                                ZoomOn="Content">
-                                                <b:Interaction.Behaviors>
-                                                    <h:ZoomBoxFitOnLoadedBehavior />
-                                                    <h:ZoomBoxFitOnSizeChangedBehavior />
-                                                </b:Interaction.Behaviors>
-                                                <h:Zoombox.ViewStack>
-                                                    <!--<h:ZoomboxView>0 0 1000 1000</h:ZoomboxView>-->
-                                                    <h:ZoomboxView>Fit</h:ZoomboxView>
-                                                    <!--<h:ZoomboxView>Fill</h:ZoomboxView>-->
-                                                </h:Zoombox.ViewStack>
-                                                <b:Interaction.Triggers>
-                                                    <h:MouseTrigger
-                                                        ClickCount="2"
-                                                        Mode="Right"
-                                                        MouseButton="Left"
-                                                        UseHandle="False">
-                                                        <!--<b:InvokeCommandAction Command="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.File.NextCommand}" />-->
-                                                        <h:CallMethodActionEx MethodName="FitToBounds" TargetObject="{Binding ElementName=zoomview}" />
-                                                    </h:MouseTrigger>
-                                                    <h:MouseTrigger
-                                                        ClickCount="2"
-                                                        Mode="Left"
-                                                        MouseButton="Left"
-                                                        UseHandle="False">
-                                                        <!--<b:InvokeCommandAction Command="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.File.PreviousCommand}" />-->
-                                                        <h:CallMethodActionEx MethodName="FitToBounds" TargetObject="{Binding ElementName=zoomview}" />
-                                                    </h:MouseTrigger>
-                                                </b:Interaction.Triggers>
-                                                <Image Source="{Binding SelectedImage, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}">
-                                                    <b:Interaction.Triggers>
-                                                        <b:EventTrigger EventName="SourceUpdated">
-                                                            <h:CallMethodActionEx MethodName="FitToBounds" TargetObject="{Binding ElementName=zoomview}" />
-                                                        </b:EventTrigger>
-                                                        <b:EventTrigger EventName="TargetUpdated">
-                                                            <h:CallMethodActionEx MethodName="FitToBounds" TargetObject="{Binding ElementName=zoomview}" />
-                                                        </b:EventTrigger>
-                                                    </b:Interaction.Triggers>
-                                                </Image>
-                                            </h:Zoombox>
-                                            <Border Height="35" VerticalAlignment="Bottom">
-                                                <Border.Background>
-                                                    <SolidColorBrush Opacity="0.3" Color="Black" />
-                                                </Border.Background>
-                                                <DockPanel
-                                                    VerticalAlignment="Center"
-                                                    LastChildFill="False"
-                                                    TextBlock.Foreground="White">
-                                                    <TextBlock Margin="5,0" Text="111.bmp" />
-                                                    <TextBlock Margin="5,0" DockPanel.Dock="Right">
-                                                        <Run Text="3840*2748" />
-                                                        <Run Text="|" />
-                                                        <Run Text="3840*2748" />
-                                                        <Run Text="|" />
-                                                        <Run Text="3840*2748" />
-                                                    </TextBlock>
-                                                </DockPanel>
-                                            </Border>
-                                        </Grid>
-                                    </TabItem>
-                                    <TabItem
-                                        MinWidth="100"
-                                        HorizontalContentAlignment="Center"
-                                        Header="模块结果">
-                                        <Grid Background="Azure" />
-                                    </TabItem>
-                                </TabControl>
-                            </DockPanel>
+                            <ContentPresenter Content="{Binding SelectedDiagramData}" ContentTemplate="{StaticResource S.VisionOpenCVDiagramData.Info}" />
                             <GridSplitter Grid.Row="1" Style="{DynamicResource {x:Static GridSplitterKeys.Horizontal}}" />
                             <TabControl
                                 x:Name="tc"
@@ -588,10 +466,56 @@
                                     </ControlTemplate>
                                 </TabControl.Template>
                                 <TabItem MinWidth="100" Header="历史结果">
-                                    <DataGrid ItemsSource="{h:GetStudents Count=5}">
-                                        <b:Interaction.Behaviors>
-                                            <h:DataGridAutoColumnBehavior DataGridLength="*" Type="{x:Type h:Student}" />
-                                        </b:Interaction.Behaviors>
+                                    <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding SelectedDiagramData.Messages}">
+                                        <!--<b:Interaction.Behaviors>
+                                            <h:DataGridAutoColumnBehavior DataGridLength="*" Type="{x:Type local:VisionMessage}" />
+                                        </b:Interaction.Behaviors>-->
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn
+                                                Width="*"
+                                                Binding="{Binding Index}"
+                                                Header="执行序号" />
+                                            <DataGridTextColumn
+                                                Width="*"
+                                                Binding="{Binding TimeSpan, Converter={x:Static h:Converter.GetTimeSpanStr}}"
+                                                Header="执行时间" />
+                                            <DataGridTextColumn
+                                                Width="*"
+                                                Binding="{Binding Type}"
+                                                Header="模块" />
+                                            <DataGridTemplateColumn Width="3*" Header="数据">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <DockPanel>
+                                                            <FontIconTextBlock
+                                                                x:Name="txt"
+                                                                Margin="5,0"
+                                                                Text="{x:Static FontIcons.Info}" />
+                                                            <TextBlock
+                                                                VerticalAlignment="Center"
+                                                                TextWrapping="Wrap"
+                                                                ToolTip="{Binding Message}">
+                                                                <Run Text="{Binding Message}" />
+                                                            </TextBlock>
+                                                        </DockPanel>
+                                                        <DataTemplate.Triggers>
+                                                            <DataTrigger Binding="{Binding State}" Value="Error">
+                                                                <Setter TargetName="txt" Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Red}}" />
+                                                                <Setter TargetName="txt" Property="Text" Value="{x:Static FontIcons.Error}" />
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding State}" Value="Success">
+                                                                <Setter TargetName="txt" Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Green}}" />
+                                                                <Setter TargetName="txt" Property="Text" Value="{x:Static FontIcons.Completed}" />
+                                                            </DataTrigger>
+                                                        </DataTemplate.Triggers>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <!--<DataGridTextColumn
+                                                Width="*"
+                                                Binding="{Binding State}"
+                                                Header="状态" />-->
+                                        </DataGrid.Columns>
                                     </DataGrid>
                                 </TabItem>
                                 <TabItem MinWidth="100" Header="帮助">

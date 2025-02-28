@@ -71,4 +71,22 @@ public class OpenCVImages
             yield return (ImageSource)c.ConvertFrom(s);
         }
     }
+    public static IEnumerable<ImageSource> GetFileImageSources()
+    {
+        TypeConverter c = TypeDescriptor.GetConverter(typeof(ImageSource));
+        foreach (var item in GetImageFiles())
+        {
+            yield return (ImageSource)c.ConvertFrom(item);
+        }
+    }
+
+    public static IEnumerable<string> GetImageFiles()
+    {
+        System.Reflection.FieldInfo[] ms = typeof(ImagePath).GetFields();
+        foreach (System.Reflection.FieldInfo item in ms)
+        {
+            object v = item.GetValue(null);
+            yield return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, v.ToString());
+        }
+    }
 }

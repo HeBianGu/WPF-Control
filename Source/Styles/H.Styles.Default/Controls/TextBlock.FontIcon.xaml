@@ -6,6 +6,6 @@
         <Setter Property="FontFamily" Value="Segoe MDL2 Assets" />
         <Setter Property="Text" Value="&#xE700;" />
         <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="FontSize" Value="{DynamicResource {x:Static FontSizeKeys.Icon}}"/>
+        <Setter Property="FontSize" Value="{DynamicResource {x:Static FontSizeKeys.Icon}}" />
     </Style>
 </ResourceDictionary>

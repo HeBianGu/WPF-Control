@@ -3,13 +3,14 @@
 
 
 using H.Mvvm;
+using System;
 
 namespace H.Controls.Diagram.Datas;
 
 /// <summary>
 /// 默认端口要显示的效果
 /// </summary>
-public class DefaultLinkData : Bindable, ILinkData
+public class DefaultLinkData : BindableBase, ILinkData
 {
     private string _message;
     /// <summary> 说明  </summary>

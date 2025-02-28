@@ -13,6 +13,9 @@ using System.Windows.Controls;
 
 namespace H.Extensions.Behvaiors
 {
+    /// <summary>
+    /// 统计数据源中，指定属性值的数量
+    /// </summary>
     public class TextBlockCountBehavior : Behavior<TextBlock>
     {
         public string PropertyName

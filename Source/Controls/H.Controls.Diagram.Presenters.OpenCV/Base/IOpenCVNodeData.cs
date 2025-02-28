@@ -1,6 +1,6 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 
-public interface IOpenCVNodeData
+public interface IOpenCVNodeData : IFlowableNodeData
 {
     Mat SrcMat { get; set; }
     Mat Mat { get; set; }

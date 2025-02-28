@@ -1,16 +1,26 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:h="https://github.com/HeBianGu"
-                    xmlns:local="clr-namespace:H.Controls.Form">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:h="https://github.com/HeBianGu"
+    xmlns:local="clr-namespace:H.Controls.Form">
     <DataTemplate DataType="{x:Type local:TabFormPresenter}">
         <TabControl ItemsSource="{Binding TabNames}">
+            <TabControl.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock
+                        MinWidth="50"
+                        HorizontalAlignment="Center"
+                        Text="{Binding}"
+                        TextAlignment="Center" />
+                </DataTemplate>
+            </TabControl.ItemTemplate>
             <TabControl.ContentTemplate>
                 <DataTemplate>
-                    <Border Padding="2"
-                            BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
-                            BorderThickness="1">
-                        <local:Form SelectObject="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.SelectObject}"
-                                    UseGroupNames="{Binding}" />
+                    <Border
+                        Padding="2"
+                        BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                        BorderThickness="1">
+                        <local:Form SelectObject="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.SelectObject}" UseGroupNames="{Binding}" />
                     </Border>
                 </DataTemplate>
             </TabControl.ContentTemplate>

@@ -1,25 +1,26 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:h="https://github.com/HeBianGu"
-                    xmlns:local="clr-namespace:H.Modules.Setting"
-                    xmlns:system="clr-namespace:System;assembly=netstandard">
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:h="https://github.com/HeBianGu"
+    xmlns:local="clr-namespace:H.Modules.Setting"
+    xmlns:system="clr-namespace:System;assembly=netstandard">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Modules.Setting;component/SettingViewPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Modules.Setting;component/SettingButtonPresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
     <DataTemplate DataType="{x:Type local:StateSetting}">
         <DockPanel>
-            <TextBlock Width="100"
-                       Height="{DynamicResource {x:Static h:LayoutKeys.RowHeight}}"
-                       Margin="0,10"
-                       VerticalAlignment="Top"
-                       Text="{Binding Name, StringFormat={}{0}:}" />
+            <TextBlock
+                Width="100"
+                Height="{DynamicResource {x:Static h:LayoutKeys.RowHeight}}"
+                Margin="0,10"
+                VerticalAlignment="Top"
+                Text="{Binding Name, StringFormat={}{0}:}" />
             <DockPanel>
                 <DockPanel DockPanel.Dock="Top">
                     <CheckBox IsChecked="{Binding IsEnabled}" />
                     <TextBlock Text="鼠标键盘无动作 " />
-                    <ComboBox IsEditable="True"
-                              SelectedItem="{Binding DoNotingMinite}">
+                    <ComboBox IsEditable="True" SelectedItem="{Binding DoNotingMinite}">
                         <system:Int32>1</system:Int32>
                         <system:Int32>2</system:Int32>
                         <system:Int32>3</system:Int32>
@@ -40,14 +41,14 @@
 
     <DataTemplate DataType="{x:Type local:HotKeySetting}">
         <DockPanel>
-            <TextBlock Width="100"
-                       Height="{DynamicResource {x:Static h:LayoutKeys.RowHeight}}"
-                       Margin="0,10"
-                       VerticalAlignment="Top"
-                       Text="{Binding Name, StringFormat={}{0}:}" />
+            <TextBlock
+                Width="100"
+                Height="{DynamicResource {x:Static h:LayoutKeys.RowHeight}}"
+                Margin="0,10"
+                VerticalAlignment="Top"
+                Text="{Binding Name, StringFormat={}{0}:}" />
             <DockPanel>
-                <ItemsControl HorizontalAlignment="Stretch"
-                              ItemsSource="{Binding HotKeys}">
+                <ItemsControl HorizontalAlignment="Stretch" ItemsSource="{Binding HotKeys}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <TextBox MinWidth="200" />

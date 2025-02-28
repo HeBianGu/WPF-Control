@@ -4,10 +4,11 @@
     xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:h="https://github.com/HeBianGu"
     xmlns:lb="clr-namespace:H.Controls.Diagram.Presenter.Behaviors"
-    xmlns:ld="clr-namespace:H.Controls.Diagram.Presenter.DiagramDatas.Base"
+    xmlns:ld="clr-namespace:H.Controls.Diagram.Presenter.DiagramDatas"
+    xmlns:ldb="clr-namespace:H.Controls.Diagram.Presenter.DiagramDatas.Base"
     xmlns:local="clr-namespace:H.Controls.Diagram.Presenter"
     xmlns:system="clr-namespace:System;assembly=System.Runtime">
-    <DataTemplate DataType="{x:Type ld:DiagramDataBase}">
+    <DataTemplate DataType="{x:Type ldb:DiagramDataBase}">
         <h:Diagram
             x:Name="diagram"
             Width="{Binding Width}"
@@ -47,5 +48,84 @@
                 <lb:DiagramDropTextNodeBehavior NodeType="{Binding NodeType}" />
             </b:Interaction.Behaviors>
         </h:Diagram>
+    </DataTemplate>
+
+    <!--<DataTemplate x:Key="{ComponentResourceKey ResourceId=S.NodeGroupsDiagramData.NodeGroups.ItemsControl, TypeInTargetAssembly={x:Type ld:NodeGroupsDiagramDataKeys}}" DataType="{x:Type ldb:NodeGroupsDiagramDataBase}">
+        <Border
+            Margin="0,1,0,40"
+            BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+            BorderThickness="0,0,0,1">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <ItemsControl ItemsSource="{Binding NodeGroups}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Expander
+                                Margin="0,0,0,1"
+                                Header="{Binding Name}"
+                                IsExpanded="False">
+                                <h:Cattach.CaptionRightTemplate>
+                                    <ControlTemplate>
+                                        <Grid>
+                                            <FontIconTextBlock
+                                                Margin="5,0"
+                                                HorizontalAlignment="Right"
+                                                Text="{Binding Icon}" />
+                                        </Grid>
+                                    </ControlTemplate>
+                                </h:Cattach.CaptionRightTemplate>
+                                <ItemsControl ItemsSource="{Binding NodeDatas}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <UniformGrid HorizontalAlignment="Center" Columns="1" />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                </ItemsControl>
+                            </Expander>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Border>
+    </DataTemplate>-->
+
+    <DataTemplate x:Key="S.NodeGroupsDiagramData.NodeGroups.Popup" DataType="{x:Type ldb:NodeGroupsDiagramDataBase}">
+        <ItemsControl Margin="0,20,0,0" ItemsSource="{Binding NodeGroups}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border Background="Transparent">
+                        <b:Interaction.Behaviors>
+                            <MouseOverContextMenuBehavior />
+                        </b:Interaction.Behaviors>
+                        <Border.ContextMenu>
+                            <ContextMenu Placement="Right">
+                                <ContextMenu.Template>
+                                    <ControlTemplate>
+                                        <GroupBox
+                                            Background="{DynamicResource {x:Static BrushKeys.Background}}"
+                                            BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                                            Header="{Binding Name}">
+                                            <ItemsControl ItemsSource="{Binding NodeDatas}">
+                                                <ItemsControl.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <UniformGrid Columns="2" />
+                                                    </ItemsPanelTemplate>
+                                                </ItemsControl.ItemsPanel>
+                                            </ItemsControl>
+                                        </GroupBox>
+                                    </ControlTemplate>
+                                </ContextMenu.Template>
+                            </ContextMenu>
+                        </Border.ContextMenu>
+                        <FontIconToggleButton
+                            Margin="0,5"
+                            CheckedGlyph="&#xE725;"
+                            FontSize="25"
+                            IsChecked="{Binding RelativeSource={RelativeSource AncestorType=Border}, Path=ContextMenu.IsOpen}"
+                            IsHitTestVisible="False"
+                            UncheckedGlyph="{Binding Icon}" />
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </DataTemplate>
 </ResourceDictionary>

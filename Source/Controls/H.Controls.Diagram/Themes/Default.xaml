@@ -1,8 +1,9 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:h="https://github.com/HeBianGu"
-                    xmlns:local="clr-namespace:H.Controls.Diagram"
-                    xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:h="https://github.com/HeBianGu"
+    xmlns:local="clr-namespace:H.Controls.Diagram"
+    xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram;component/Diagram.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram;component/Parts/Link.xaml" />
@@ -11,55 +12,60 @@
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram;component/Parts/Port.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <DropShadowEffect x:Key="{ComponentResourceKey ResourceId=S.EffectShadow.IsDragEnter,
-                                                   TypeInTargetAssembly={x:Type local:DiagramEffectKey}}"
-                      po:Freeze="True"
-                      BlurRadius="14"
-                      Direction="270"
-                      Opacity="1.42"
-                      RenderingBias="Performance"
-                      ShadowDepth="1.5"
-                      Color="Orange" />
+    <DropShadowEffect
+        x:Key="{ComponentResourceKey ResourceId=S.EffectShadow.IsDragEnter,
+                                     TypeInTargetAssembly={x:Type local:DiagramEffectKey}}"
+        po:Freeze="True"
+        BlurRadius="14"
+        Direction="270"
+        Opacity="1.42"
+        RenderingBias="Performance"
+        ShadowDepth="1.5"
+        Color="Orange" />
 
-    <DropShadowEffect x:Key="{ComponentResourceKey ResourceId=S.EffectShadow.IsCanDrop,
-                                                   TypeInTargetAssembly={x:Type local:DiagramEffectKey}}"
-                      po:Freeze="True"
-                      BlurRadius="14"
-                      Direction="270"
-                      Opacity="1.42"
-                      RenderingBias="Performance"
-                      ShadowDepth="1.5"
-                      Color="Green" />
+    <DropShadowEffect
+        x:Key="{ComponentResourceKey ResourceId=S.EffectShadow.IsCanDrop,
+                                     TypeInTargetAssembly={x:Type local:DiagramEffectKey}}"
+        po:Freeze="True"
+        BlurRadius="14"
+        Direction="270"
+        Opacity="1.42"
+        RenderingBias="Performance"
+        ShadowDepth="1.5"
+        Color="Green" />
 
-    <DropShadowEffect x:Key="{ComponentResourceKey ResourceId=S.EffectShadow.IsSelected,
-                                                   TypeInTargetAssembly={x:Type local:DiagramEffectKey}}"
-                      po:Freeze="True"
-                      BlurRadius="14"
-                      Direction="270"
-                      Opacity="1.42"
-                      RenderingBias="Performance"
-                      ShadowDepth="1.5"
-                      Color="{DynamicResource {x:Static h:ColorKeys.Accent}}" />
+    <DropShadowEffect
+        x:Key="{ComponentResourceKey ResourceId=S.EffectShadow.IsSelected,
+                                     TypeInTargetAssembly={x:Type local:DiagramEffectKey}}"
+        po:Freeze="True"
+        BlurRadius="14"
+        Direction="270"
+        Opacity="1.42"
+        RenderingBias="Performance"
+        ShadowDepth="1.5"
+        Color="{DynamicResource {x:Static h:ColorKeys.Accent}}" />
 
-    <DropShadowEffect x:Key="{ComponentResourceKey ResourceId=S.EffectShadow.MouseOver,
-                                                   TypeInTargetAssembly={x:Type local:DiagramEffectKey}}"
-                      po:Freeze="True"
-                      BlurRadius="14"
-                      Direction="270"
-                      Opacity="1.42"
-                      RenderingBias="Performance"
-                      ShadowDepth="4.5"
-                      Color="#AA000000" />
+    <DropShadowEffect
+        x:Key="{ComponentResourceKey ResourceId=S.EffectShadow.MouseOver,
+                                     TypeInTargetAssembly={x:Type local:DiagramEffectKey}}"
+        po:Freeze="True"
+        BlurRadius="14"
+        Direction="270"
+        Opacity="1.42"
+        RenderingBias="Performance"
+        ShadowDepth="4.5"
+        Color="#AA000000" />
 
-    <DropShadowEffect x:Key="{ComponentResourceKey ResourceId=S.EffectShadow.IsDragging,
-                                                   TypeInTargetAssembly={x:Type local:DiagramEffectKey}}"
-                      po:Freeze="True"
-                      BlurRadius="25"
-                      Direction="270"
-                      Opacity="1.42"
-                      RenderingBias="Performance"
-                      ShadowDepth="8"
-                      Color="#AA000000" />
+    <DropShadowEffect
+        x:Key="{ComponentResourceKey ResourceId=S.EffectShadow.IsDragging,
+                                     TypeInTargetAssembly={x:Type local:DiagramEffectKey}}"
+        po:Freeze="True"
+        BlurRadius="25"
+        Direction="270"
+        Opacity="1.42"
+        RenderingBias="Performance"
+        ShadowDepth="8"
+        Color="#AA000000" />
 
 
     <!--<DataTemplate DataType="{x:Type local:Circle}">

@@ -8,6 +8,5 @@ namespace H.Controls.Diagram.Flowables;
 public interface IFlowableResult
 {
     string Message { get; }
-
     FlowableResultState State { get; set; }
 }
