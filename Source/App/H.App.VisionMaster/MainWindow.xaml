@@ -262,10 +262,20 @@
                                                             CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=TabControl}}"
                                                             Content="{x:Static FontIcons.Replay}"
                                                             DockPanel.Dock="Right" />
-
                                             <TextBlock Margin="10,0"
                                                        VerticalAlignment="Center"
-                                                       Text="{Binding Name}" />
+                                                       Text="{Binding Name}">
+                                                <TextBlock.ContextMenu>
+                                                    <ContextMenu>
+                                                        <MenuItem Command="{Binding ElementName=vm, Path=DeleteDiagramCommand}"
+                                                                  Header="删除" />
+                                                        <MenuItem Command="{Binding SaveAsDiagramTemplateCommand}"
+                                                                  Header="另存为模板" />
+                                                        <MenuItem Command="{Binding DuplicationDiagramCommand}"
+                                                                  Header="重复" />
+                                                    </ContextMenu>
+                                                </TextBlock.ContextMenu>
+                                            </TextBlock>
                                         </DockPanel>
                                     </DataTemplate>
                                 </TabControl.ItemTemplate>
@@ -604,7 +614,8 @@
                                                             </Image>
                                                         </h:Zoombox>
                                                         <TextBlock HorizontalAlignment="Center"
-                                                                   VerticalAlignment="Center" Foreground="{DynamicResource {x:Static BrushKeys.Orange}}"
+                                                                   VerticalAlignment="Center"
+                                                                   Foreground="{DynamicResource {x:Static BrushKeys.Orange}}"
                                                                    Text="无结果">
                                                             <TextBlock.Style>
                                                                 <Style TargetType="TextBlock">

@@ -19,7 +19,7 @@ using System.Windows.Media;
 
 namespace H.App.VisionMaster;
 
-public class MainViewModel : BindableBase
+public class MainViewModel : DisplayBindableBase
 {
     public MainViewModel()
     {
@@ -79,6 +79,31 @@ public class MainViewModel : BindableBase
         if (r != true)
             return;
         this.DiagramDatas.Add(data);
-        this.SelectedDiagramData=data;
+        this.SelectedDiagramData = data;
     });
+
+    public RelayCommand DeleteDiagramCommand => new RelayCommand((s, e) =>
+    {
+        if (this.SelectedDiagramData == null)
+            return;
+        this.DiagramDatas.Remove(this.SelectedDiagramData);
+    }, (s, e) => this.SelectedDiagramData != null && this.DiagramDatas.Count > 1);
+
+    public RelayCommand SaveDiagramCommand => new RelayCommand((s, e) =>
+    {
+        if (this.SelectedDiagramData == null)
+            return;
+    }, (s, e) => this.SelectedDiagramData != null);
+
+    public RelayCommand SaveAsDiagramTemplateCommand => new RelayCommand((s, e) =>
+    {
+        if (this.SelectedDiagramData == null)
+            return;
+    }, (s, e) => this.SelectedDiagramData != null);
+
+    public RelayCommand DuplicationDiagramCommand => new RelayCommand((s, e) =>
+    {
+        if (this.SelectedDiagramData == null)
+            return;
+    }, (s, e) => this.SelectedDiagramData != null);
 }
