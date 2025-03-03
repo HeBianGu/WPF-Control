@@ -1,21 +1,20 @@
-﻿using H.Controls.Diagram.Datas;
-using H.Controls.Diagram.Flowables;
+﻿using H.Controls.Diagram.Flowables;
 using H.Controls.Diagram.Parts;
 using H.Controls.Diagram.Parts.Base;
 using H.Controls.Diagram.Presenter.DiagramDatas;
-using H.Controls.Diagram.Presenter.DiagramDatas.Base;
 using H.Controls.Diagram.Presenter.NodeDatas;
 using H.Controls.Diagram.Presenters.OpenCV;
 using H.Controls.Diagram.Presenters.OpenCV.Base;
 using H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
+using H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Other;
 using H.Extensions.Common;
-using H.Extensions.FontIcon;
 using H.Mvvm;
 using OpenCvSharp.WpfExtensions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,49 +22,21 @@ using System.Windows.Media;
 
 namespace H.App.VisionMaster;
 
-public interface IVisionImageSourceStartNodeData
-{
-    string FilePath { get; set; }
-}
-
-[Icon(FontIcons.ImageExport)]
-[Display(Name = "图像源")]
-public class VisionImageSourceStartNodeData : StartNodeDataBase, IVisionImageSourceStartNodeData
-{
-
-}
-
-[Icon(FontIcons.ImageExport)]
-public class VisionImageSourceNodeDataGroup : NodeDataGroupBase
-{
-    public VisionImageSourceNodeDataGroup()
-    {
-        this.Name = "图像源";
-        this.Order = 0;
-    }
-
-    protected override IEnumerable<INodeData> CreateNodeDatas()
-    {
-        yield return new VisionImageSourceStartNodeData();
-    }
-}
-
 public class VisionOpenCVDiagramData : OpenCVDiagramData, IVisionOpenCVDiagramData
 {
-
     public VisionOpenCVDiagramData()
     {
-        this.ImageFiles = OpenCVImages.GetImageFiles().ToObservable();
-        this.SelectedImageFile = this.ImageFiles.FirstOrDefault();
+        this.ImageDatas = OpenCVImages.GetImageFiles().Select(x => new ImageData(x)).OfType<IImageData>().ToObservable();
+        this.SelectedImageData = this.ImageDatas.FirstOrDefault();
 
     }
-    private ImageSource _nodeImageSource;
-    public ImageSource NodeImageSource
+    private ImageSource _resultImageSource;
+    public ImageSource ResultImageSource
     {
-        get { return _nodeImageSource; }
+        get { return _resultImageSource; }
         set
         {
-            _nodeImageSource = value;
+            _resultImageSource = value;
             RaisePropertyChanged();
         }
     }
@@ -101,8 +72,10 @@ public class VisionOpenCVDiagramData : OpenCVDiagramData, IVisionOpenCVDiagramDa
         var imageSourceNode = this.Nodes.FirstOrDefault(x => x.GetContent<IVisionImageSourceStartNodeData>() != null);
         if (imageSourceNode != null && imageSourceNode.GetContent() is IVisionImageSourceStartNodeData visionImageSource)
         {
-            visionImageSource.FilePath = this.SelectedImageFile;
+            visionImageSource.FilePath = this.SelectedImageData.FilePath;
             result = await this.InvokeNode(imageSourceNode);
+            var rimage = this.Messages.LastOrDefault()?.ResultImageSource;
+            this.SelectedImageData.ResultImageSource = rimage;
         }
         else
         {
@@ -113,39 +86,50 @@ public class VisionOpenCVDiagramData : OpenCVDiagramData, IVisionOpenCVDiagramDa
     }
 
 
-
     public void LogCurrentMessage()
     {
         var totalTimeSpan = this.Messages.Sum(x => x.TimeSpan.Ticks);
+        var rimage = this.Messages.LastOrDefault()?.ResultImageSource;
         this.CurrentMessage = new VisionMessage()
         {
             TimeSpan = TimeSpan.FromTicks(totalTimeSpan),
-            Message = this.Message
+            Message = this.Message,
+            ResultImageSource = rimage,
         };
     }
 
-    private ObservableCollection<string> _imageFiles = new ObservableCollection<string>();
-    public ObservableCollection<string> ImageFiles
+    private ObservableCollection<IImageData> _imageDatas = new ObservableCollection<IImageData>();
+    public ObservableCollection<IImageData> ImageDatas
     {
-        get { return _imageFiles; }
+        get { return _imageDatas; }
         set
         {
-            _imageFiles = value;
+            _imageDatas = value;
             RaisePropertyChanged();
         }
     }
 
-    private string _selectedImageFile;
-    public string SelectedImageFile
+    private IImageData _selectedImageData;
+    public IImageData SelectedImageData
     {
-        get { return _selectedImageFile; }
+        get { return _selectedImageData; }
         set
         {
-            _selectedImageFile = value;
+            _selectedImageData = value;
             RaisePropertyChanged();
         }
     }
 
+
+    public RelayCommand ImageFileSelectionChangedCommand => new RelayCommand(l =>
+    {
+        if (this.SelectedImageData == null)
+            return;
+
+        //var s = TypeDescriptor.GetConverter(typeof(ImageSource)).ConvertFromString(this.SelectedImageFile.FilePath) as ImageSource;
+        //this.ResultImageSource = this.SelectedImageFile.ToImageEx().GetImageSource();
+        this.ResultImageSource = this.SelectedImageData.ResultImageSource;
+    });
     protected override IEnumerable<INodeDataGroup> CreateNodeGroups()
     {
         yield return new VisionImageSourceNodeDataGroup();
@@ -160,9 +144,19 @@ public class VisionOpenCVDiagramData : OpenCVDiagramData, IVisionOpenCVDiagramDa
     {
         base.OnSelectedPartChanged();
 
-        if (this.SelectedPart is Node node && node.GetContent() is IImageNodeData imageNodeData)
+        if (this.SelectedPart is Node node)
         {
-            this.NodeImageSource = imageNodeData.ImageSource;
+            var data = node.GetContent();
+            if (data is IImageNodeData imageNodeData)
+            {
+                this.ResultImageSource = imageNodeData.ImageSource;
+            }
+            if (data is IFilePathable filePathable)
+            {
+                this.SelectedImageData = this.ImageDatas.FirstOrDefault(x => x.FilePath == filePathable.FilePath);
+            }
+
+            this.SelectedImageTabIndex = 1;
         }
     }
 
@@ -203,18 +197,18 @@ public class VisionOpenCVDiagramData : OpenCVDiagramData, IVisionOpenCVDiagramDa
 
         if (part.GetContent() is IOpenCVNodeData openCVNodeData)
         {
-            this.NodeImageSource = openCVNodeData?.Mat?.ToWriteableBitmap();
+            this.ResultImageSource = openCVNodeData?.Mat?.ToWriteableBitmap();
             var message = new VisionMessage()
             {
                 Index = this.Messages.Count + 1,
                 Message = openCVNodeData.Message,
                 State = openCVNodeData.State,
-                TimeSpan = openCVNodeData.TimeSpan
+                TimeSpan = openCVNodeData.TimeSpan,
+                ResultImageSource = openCVNodeData.Mat?.ToWriteableBitmap()
             };
             if (openCVNodeData is INameable nameable)
                 message.Type = nameable.Name;
             this.Messages.Add(message);
-
             this.LogCurrentMessage();
         }
     }

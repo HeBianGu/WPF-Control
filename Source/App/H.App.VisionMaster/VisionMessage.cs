@@ -2,12 +2,13 @@
 using H.Mvvm;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Windows.Media;
 
 namespace H.App.VisionMaster;
 
 public class VisionMessage : BindableBase, IVisionMessage
 {
-    [Display(Name ="执行序号")]
+    [Display(Name = "执行序号")]
     public int Index { get; set; }
     [Display(Name = "时间")]
     public TimeSpan TimeSpan { get; set; }
@@ -17,4 +18,5 @@ public class VisionMessage : BindableBase, IVisionMessage
     public string Message { get; set; }
     [Display(Name = "状态")]
     public FlowableState State { get; set; }
+    public ImageSource ResultImageSource { get; set; }
 }

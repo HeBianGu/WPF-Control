@@ -1,7 +1,7 @@
 ﻿using System.Xml.Serialization;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
-public abstract class OpenCVNodeDataBase : ActionNodeDataBase, IOpenCVNodeData
+public abstract class OpenCVNodeDataBase : ActionNodeDataBase, IOpenCVNodeData, IFilePathable
 {
     [Browsable(false)]
     [XmlIgnore]

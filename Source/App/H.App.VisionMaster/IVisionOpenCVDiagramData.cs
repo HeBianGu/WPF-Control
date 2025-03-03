@@ -5,7 +5,7 @@ using System.Windows.Media;
 namespace H.App.VisionMaster;
 public interface IVisionOpenCVDiagramData : INodeGroupsDiagramData
 {
-    ImageSource NodeImageSource { get; set; }
+    ImageSource ResultImageSource { get; set; }
 
     ObservableCollection<IVisionMessage> Messages { get; set; }
 }
