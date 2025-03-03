@@ -7,16 +7,16 @@ namespace H.Controls.Diagram.Presenter.NodeDatas;
 
 public class FlowableNodeData : TextNodeData, IFlowableNodeData
 {
-    [XmlIgnore]
-    [Display(Name = "开始", GroupName = "操作")]
-    public RelayCommand StartCommand => new RelayCommand(async (s, e) =>
-    {
-        if (e is Node part)
-        {
-            if (part.GetParent<Diagram>().DataContext is IFlowableDiagramData flowable)
-                await flowable.InvokeNode(part);
-        }
-    }, (s, e) => this.UseStart && this.State != FlowableState.Running && this.State != FlowableState.Canceling);
+    //[XmlIgnore]
+    //[Display(Name = "开始", GroupName = "操作")]
+    //public RelayCommand StartCommand => new RelayCommand(async (s, e) =>
+    //{
+    //    if (e is Node part)
+    //    {
+    //        if (part.GetParent<Diagram>().DataContext is IFlowableDiagramData flowable)
+    //            await flowable.InvokeNode(part);
+    //    }
+    //}, (s, e) => this.UseStart && this.State != FlowableState.Running && this.State != FlowableState.Canceling);
 
     private FlowableState _state = FlowableState.Ready;
     [Browsable(false)]

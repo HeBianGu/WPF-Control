@@ -25,8 +25,7 @@ namespace H.Services.Common
 
         public override async Task ExecuteAsync(object parameter)
         {
-            var tabs = this.TabNames?.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
-            await IocMessage.Form.ShowTabEdit(this.Value ?? parameter, x => this.Build(x), this.UseModelState ? null : x => true, x => x.TabNames = tabs == null ? null : new ObservableCollection<string>(tabs));
+            await IocMessage.Form.ShowTabEdit(this.Value ?? parameter, x => this.Build(x), this.UseModelState ? null : x => true, x => x.UseGroupNames = TabNames);
         }
     }
 }

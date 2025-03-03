@@ -1,5 +1,6 @@
 ﻿using H.Mvvm;
 using H.Services.Common;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 
@@ -55,6 +56,7 @@ namespace H.Controls.Form
         public bool UseEnumerator { get; set; }
         public bool UseGroup { get; set; }
         public string UseGroupNames { get; set; }
+        public IComparer<string> GroupOrderComparer { get; set; }
         public bool UseInterface { get; set; }
         public bool UseNull { get; set; }
         public bool UseOrder { get; set; }

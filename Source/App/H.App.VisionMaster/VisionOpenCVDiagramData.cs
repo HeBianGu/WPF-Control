@@ -81,23 +81,48 @@ public class VisionOpenCVDiagramData : OpenCVDiagramData, IVisionOpenCVDiagramDa
         }
     }
 
+    private IVisionMessage _currentMessage;
+    public IVisionMessage CurrentMessage
+    {
+        get { return _currentMessage; }
+        set
+        {
+            _currentMessage = value;
+            RaisePropertyChanged();
+        }
+    }
+
     public override async Task<bool?> Start()
     {
         this.Messages.Clear();
         this.SelectedImageTabIndex = 1;
-
+        this.CurrentMessage = null;
+        bool? result;
         var imageSourceNode = this.Nodes.FirstOrDefault(x => x.GetContent<IVisionImageSourceStartNodeData>() != null);
         if (imageSourceNode != null && imageSourceNode.GetContent() is IVisionImageSourceStartNodeData visionImageSource)
         {
             visionImageSource.FilePath = this.SelectedImageFile;
-            return await this.InvokeNode(imageSourceNode);
+            result = await this.InvokeNode(imageSourceNode);
         }
         else
         {
-            return await base.Start();
+            result = await base.Start();
         }
+        this.LogCurrentMessage();
+        return result;
     }
 
+
+
+    public void LogCurrentMessage()
+    {
+        var totalTimeSpan = this.Messages.Sum(x => x.TimeSpan.Ticks);
+        this.CurrentMessage = new VisionMessage()
+        {
+            TimeSpan = TimeSpan.FromTicks(totalTimeSpan),
+            Message = this.Message
+        };
+    }
 
     private ObservableCollection<string> _imageFiles = new ObservableCollection<string>();
     public ObservableCollection<string> ImageFiles
@@ -135,7 +160,7 @@ public class VisionOpenCVDiagramData : OpenCVDiagramData, IVisionOpenCVDiagramDa
     {
         base.OnSelectedPartChanged();
 
-        if(this.SelectedPart is Node node&&node.GetContent() is IImageNodeData imageNodeData)
+        if (this.SelectedPart is Node node && node.GetContent() is IImageNodeData imageNodeData)
         {
             this.NodeImageSource = imageNodeData.ImageSource;
         }
@@ -189,6 +214,8 @@ public class VisionOpenCVDiagramData : OpenCVDiagramData, IVisionOpenCVDiagramDa
             if (openCVNodeData is INameable nameable)
                 message.Type = nameable.Name;
             this.Messages.Add(message);
+
+            this.LogCurrentMessage();
         }
     }
 }

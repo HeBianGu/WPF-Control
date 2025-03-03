@@ -12,7 +12,7 @@ namespace H.Controls.Diagram.Flowables;
 public interface IFlowableDiagram
 {
     void Reset();
-    Task<string> Start();
+    Task<bool?> Start();
     void Stop();
 }
 
@@ -25,9 +25,7 @@ public class FlowableDiagram : Diagram, IFlowableDiagram
             CommandBinding binding = new CommandBinding(DiagramCommands.Start);
             binding.Executed += async (l, k) =>
             {
-                string message = await this.Start();
-                if (!string.IsNullOrEmpty(message))
-                    IocMessage.Notify?.ShowInfo(message);
+                await this.Start();
             };
             binding.CanExecute += (l, k) =>
             {
@@ -173,12 +171,30 @@ public class FlowableDiagram : Diagram, IFlowableDiagram
 
     public void Stop() => this.Nodes.Stop();
 
-    public async Task<string> Start()
+    public async Task<bool?> Start()
     {
-        return await this.Nodes.Start(this.FlowableMode, 
-            x => this.State = x, 
-            OnInvokingPart, 
-            OnInvokedPart);
+        Node node = this.Nodes.GetStartNode(out string message);
+        if (node == null)
+        {
+            this.Message = message;
+            IocMessage.Notify?.ShowInfo(message);
+            return false;
+        }
+        this.State = DiagramFlowableState.Running;
+        var b = await node.Start(this.FlowableMode, OnInvokingPart, OnInvokedPart);
+        this.State = b == null ? DiagramFlowableState.Canceled : b == true ? DiagramFlowableState.Success : DiagramFlowableState.Error;
+        this.Message = message;
+        H.Mvvm.Commands.InvalidateRequerySuggested();
+        if (!string.IsNullOrEmpty(message))
+        {
+            IocMessage.Notify?.ShowInfo(message);
+            return false;
+        }
+        return true;
+        //return await this.Nodes.Start(this.FlowableMode, 
+        //    x => this.State = x, 
+        //    OnInvokingPart, 
+        //    OnInvokedPart);
     }
 
     public void Reset()

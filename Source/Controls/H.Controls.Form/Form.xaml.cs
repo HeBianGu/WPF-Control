@@ -755,6 +755,19 @@ namespace H.Controls.Form
                  control.RefreshObject();
              }));
 
+
+        public IComparer<string> GroupOrderComparer
+        {
+            get { return (IComparer<string>)GetValue(GroupOrderComparerProperty); }
+            set { SetValue(GroupOrderComparerProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty GroupOrderComparerProperty =
+            DependencyProperty.Register("GroupOrderComparer", typeof(IComparer<string>), typeof(Form), new FrameworkPropertyMetadata(default(IComparer<string>)));
+
+
+
         //声明和注册路由事件
         public static readonly RoutedEvent ValueChangedRoutedEvent =
             EventManager.RegisterRoutedEvent("ValueChanged", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(Form));
@@ -884,8 +897,6 @@ namespace H.Controls.Form
                 }
 
             }));
-
-
     }
 
     public partial class Form

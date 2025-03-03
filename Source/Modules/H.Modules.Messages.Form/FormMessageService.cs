@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using H.Mvvm;
+using System.Collections;
 
 namespace H.Modules.Messages.Form
 {
@@ -18,7 +19,7 @@ namespace H.Modules.Messages.Form
             return await this.ShowEdit<T, StaticFormPresenter>(value, action, match, option, owner);
         }
 
-        public async Task<bool?> ShowTabEdit<T>(T value, Action<IDialog> action = null, Predicate<T> match = null, Action<ITabFormOption> option = null, Window owner = null)
+        public async Task<bool?> ShowTabEdit<T>(T value, Action<IDialog> action = null, Predicate<T> match = null, Action<IFormOption> option = null, Window owner = null)
         {
             IEnumerable<string> GetGroups()
             {
@@ -37,16 +38,23 @@ namespace H.Modules.Messages.Form
                 }
             }
 
-            Action<ITabFormOption> toption = x =>
+            Action<IFormOption> toption = x =>
             {
                 option?.Invoke(x);
-                if (x.TabNames == null || x.TabNames.Count == 0)
+                if (x is TabFormPresenter tab)
                 {
-                    var names = GetGroups().Distinct();
-                    x.TabNames = names.ToObservable();
+                    var gs = tab.UseGroupNames?.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).Order(x.GroupOrderComparer);
+                    if (gs == null || gs.Count() == 0)
+                    {
+                        var names = GetGroups().Distinct();
+                        tab.TabNames = names.ToObservable();
+                    }
+                    else
+                    {
+                        tab.TabNames = gs.ToObservable();
+                    }
                 }
             };
-
             return await this.ShowEdit<T, TabFormPresenter>(value, action, match, toption, owner);
         }
 

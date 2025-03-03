@@ -7,5 +7,5 @@ public interface IFlowableDiagramData : IDiagramData, IMessageable
     DiagramFlowableMode FlowableMode { get; set; }
     DiagramFlowableState State { get; set; }
     Task<bool?> Start();
-    Task<bool?> InvokeNode(Node startNode);
+    //Task<bool?> InvokeNode(Node startNode);
 }

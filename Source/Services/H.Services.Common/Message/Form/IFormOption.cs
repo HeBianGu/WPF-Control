@@ -21,6 +21,7 @@ namespace H.Services.Common
         bool UseEnumerator { get; set; }
         bool UseGroup { get; set; }
         string UseGroupNames { get; set; }
+        IComparer<string> GroupOrderComparer { get; set; }
         bool UseInterface { get; set; }
         bool UseNull { get; set; }
         bool UseOrder { get; set; }

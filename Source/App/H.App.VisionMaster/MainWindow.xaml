@@ -200,8 +200,28 @@
                                 BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                                 BorderThickness="0,1,0,0"
                                 DockPanel.Dock="Bottom">
-                                <FontIconTextBlock Foreground="{DynamicResource {x:Static BrushKeys.Green}}" Text="&#xEC58;" />
-                                <TextBlock Text="组件配置完成" />
+                                <FontIconTextBlock>
+                                    <FontIconTextBlock.Style>
+                                        <Style TargetType="FontIconTextBlock">
+                                            <Setter Property="Text" Value="&#xEC58;"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding SelectedDiagramData.State}" Value="Error">
+                                                    <Setter Property="Text" Value="{x:Static FontIcons.Error}"/>
+                                                    <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Red}}"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding SelectedDiagramData.State}" Value="Success">
+                                                    <Setter Property="Text" Value="{x:Static FontIcons.Completed}"/>
+                                                    <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Green}}"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding SelectedDiagramData.State}" Value="Running">
+                                                    <Setter Property="Text" Value="&#xEC58;"/>
+                                                    <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Accent}}"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </FontIconTextBlock.Style>
+                                </FontIconTextBlock>
+                                <!--<TextBlock Text="组件配置完成" />
                                 <TextBlock>
                                     <Run Text="流程" />
                                     <Run Text="42.57ms" />
@@ -215,6 +235,12 @@
                                 <TextBlock>
                                     <Run Text="算法" />
                                     <Run Text="0.00ms" />
+                                </TextBlock>-->
+                                <TextBlock>
+                                    <Run Text="{Binding SelectedDiagramData.State}"/>
+                                    <Run Text="{Binding SelectedDiagramData.CurrentMessage.Message}"/>
+                                    <Run Text="用时:"/>
+                                    <Run Text="{Binding SelectedDiagramData.CurrentMessage.TimeSpan,Converter={x:Static h:Converter.GetTimeSpanStr}}"/>
                                 </TextBlock>
                             </StatusBar>
                             <TabControl ItemsSource="{Binding DiagramDatas}" SelectedItem="{Binding SelectedDiagramData}">

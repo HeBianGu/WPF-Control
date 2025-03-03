@@ -38,18 +38,21 @@ public static class FlowableExtension
         return starts.FirstOrDefault();
     }
 
-    public static async Task<string> Start(this IEnumerable<Node> nodes, DiagramFlowableMode flowableMode, Action<DiagramFlowableState> stateAction, Action<Part> invoking = null, Action<Part> invoked = null)
-    {
-        Node node = nodes.GetStartNode(out string message);
-        if (node == null)
-            return message;
-        stateAction?.Invoke(DiagramFlowableState.Running);
-        bool? b = await node.Start(flowableMode, invoking, invoked);
-        DiagramFlowableState state = b == null ? DiagramFlowableState.Canceled : b == true ? DiagramFlowableState.Success : DiagramFlowableState.Error;
-        stateAction?.Invoke(state);
-        Commands.InvalidateRequerySuggested();
-        return b == null ? "用户取消" : b == true ? "运行成功" : "运行失败";
-    }
+    //public static async Task<string> Start(this IEnumerable<Node> nodes, DiagramFlowableMode flowableMode, Action<DiagramFlowableState> stateAction, Action<Part> invoking = null, Action<Part> invoked = null)
+    //{
+    //    Node node = nodes.GetStartNode(out string message);
+    //    if (node == null)
+    //        return message;
+    //    stateAction?.Invoke(DiagramFlowableState.Running);
+    //    bool? b = await node.Start(flowableMode, invoking, invoked);
+    //    DiagramFlowableState state = b == null ? DiagramFlowableState.Canceled : b == true ? DiagramFlowableState.Success : DiagramFlowableState.Error;
+    //    stateAction?.Invoke(state);
+    //    Commands.InvalidateRequerySuggested();
+    //    if (b == null)
+    //        return "用户取消";
+    //    return null;
+    //    //return b == null ? "用户取消" : b == true ? "运行成功" : "运行失败";
+    //}
 
     public static async Task<bool?> Start(this Node startNode, DiagramFlowableMode flowableMode, Action<Part> invoking = null, Action<Part> invoked = null)
     {

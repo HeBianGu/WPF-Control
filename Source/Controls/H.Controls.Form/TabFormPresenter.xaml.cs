@@ -6,7 +6,7 @@ using System.Windows;
 
 namespace H.Controls.Form
 {
-    public class TabFormPresenter : FormPresenter, ITabFormOption
+    public class TabFormPresenter : FormPresenter
     {
         public TabFormPresenter()
         {
