@@ -15,7 +15,7 @@ public abstract class TreeDigramDataBase : NodeGroupsDiagramDataBase, ITreeDigra
         }
     }
 
-    public RelayCommand SelectedTreeNodeChanged => new RelayCommand((s, e) =>
+    public RelayCommand SelectedTreeNodeChanged => new RelayCommand(e=>
     {
         if (e is TreeNodeBase<Part> project)
             project.Model.IsSelected = true;

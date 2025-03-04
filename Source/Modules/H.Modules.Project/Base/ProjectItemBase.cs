@@ -3,11 +3,11 @@
 
 using H.Modules.Login;
 using H.Services.Common;
-using H.Mvvm;
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
+using H.Mvvm.ViewModels.Base;
 
 namespace H.Modules.Project
 {

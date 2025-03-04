@@ -1,4 +1,6 @@
-﻿using H.Mvvm;
+﻿global using H.Mvvm;
+global using H.Mvvm.Attributes;
+global using H.Mvvm.ViewModels.Base;
 
 namespace H.Presenters.Common
 {

@@ -1,5 +1,6 @@
 ﻿
 using H.Mvvm;
+using H.Mvvm.ViewModels.Base;
 using H.Presenters.Common;
 using H.Services.Common;
 using System;

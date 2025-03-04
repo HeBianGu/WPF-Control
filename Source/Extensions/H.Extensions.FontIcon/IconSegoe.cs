@@ -1,4 +1,5 @@
 ﻿using H.Mvvm;
+using H.Mvvm.ViewModels.Base;
 using System.Windows;
 
 namespace H.Extensions.FontIcon
@@ -9,12 +10,12 @@ namespace H.Extensions.FontIcon
         public string Key { get; set; }
         public string Value { get; set; }
         public string CodeKey { get; set; }
-        public RelayCommand CopyCommand => new RelayCommand((s, e) =>
+        public RelayCommand CopyCommand => new RelayCommand(x =>
         {
             Clipboard.SetText(this.Key);
         });
 
-        public RelayCommand CopyCodeKeyCommand => new RelayCommand((s, e) =>
+        public RelayCommand CopyCodeKeyCommand => new RelayCommand(x =>
         {
             Clipboard.SetText(this.CodeKey);
         });

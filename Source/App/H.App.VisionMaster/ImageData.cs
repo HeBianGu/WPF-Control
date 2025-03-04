@@ -1,4 +1,4 @@
-﻿using H.Mvvm;
+﻿using H.Mvvm.ViewModels.Base;
 using System.ComponentModel;
 using System.Windows.Media;
 

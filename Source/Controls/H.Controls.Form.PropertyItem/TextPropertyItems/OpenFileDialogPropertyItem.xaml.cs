@@ -16,7 +16,7 @@ namespace H.Controls.Form.PropertyItem.TextPropertyItems
         }
 
         [Display(Name = "浏览", Order = 2)]
-        public RelayCommand OpenCommand => new RelayCommand(l =>
+        public DisplayCommand OpenCommand => new DisplayCommand(l =>
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (File.Exists(this.Value))

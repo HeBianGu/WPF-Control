@@ -1,6 +1,6 @@
 ﻿using H.Controls.Chart2D;
 using H.Modules.Operation;
-using H.Mvvm;
+using H.Mvvm.ViewModels.Base;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;

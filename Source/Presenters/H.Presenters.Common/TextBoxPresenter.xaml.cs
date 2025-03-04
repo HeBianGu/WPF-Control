@@ -1,4 +1,6 @@
 ﻿using H.Mvvm;
+using H.Mvvm.Attributes;
+using H.Mvvm.ViewModels.Base;
 
 namespace H.Presenters.Common
 {

@@ -1,8 +1,8 @@
 ﻿using H.Services.Common;
-using H.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using H.Mvvm.ViewModels.Base;
 
 namespace H.Extensions.Revertible
 {

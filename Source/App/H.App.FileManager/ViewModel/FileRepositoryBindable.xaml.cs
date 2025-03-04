@@ -365,7 +365,7 @@ namespace H.App.FileManager
         }, x => this.Collection.FilterSource.Where(x => x.Model.Score < 1).Count() > 0);
 
         [Browsable(false)]
-        public RelayCommand SelectionChangedCommand => new RelayCommand((s, e) =>
+        public RelayCommand SelectionChangedCommand => new RelayCommand(e=>
         {
             if (e is fm_dd_file file)
             {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace H.Mvvm
+namespace H.Mvvm.Attributes
 {
     public class IDAttribute : Attribute
     {

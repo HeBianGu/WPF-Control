@@ -2,7 +2,6 @@
 
 
 using H.Services.Common;
-using H.Mvvm;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,6 +12,7 @@ using System.Linq;
 using System.Reflection;
 using System.Xml.Serialization;
 using System.Text.Json.Serialization;
+using H.Mvvm.ViewModels.Base;
 
 namespace H.Controls.FilterBox
 {

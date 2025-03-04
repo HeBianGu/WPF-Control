@@ -1,4 +1,4 @@
-﻿using H.Mvvm;
+﻿using H.Mvvm.ViewModels.Base;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections;

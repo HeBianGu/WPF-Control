@@ -2,6 +2,7 @@
 using H.Controls.Form.PropertyItem.TextPropertyItems.Base;
 using H.Mvvm;
 using H.Services.Common;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
@@ -15,16 +16,17 @@ namespace H.Controls.Form.PropertyItem.TextPropertyItems
 
         }
 
-        public RelayCommand OpenCommand => new RelayCommand(l =>
+        [Display(Name = "打开文件")]
+        public DisplayCommand OpenCommand => new DisplayCommand(l =>
         {
             Process.Start(new ProcessStartInfo(this.Value) { UseShellExecute = true });
         }, l =>
         {
             return File.Exists(this.Value) | Directory.Exists(this.Value);
-        })
-        { Name = "打开文件" };
+        });
 
-        public RelayCommand OpenFolderCommand => new RelayCommand(l =>
+        [Display(Name = "打开文件夹")]
+        public DisplayCommand OpenFolderCommand => new DisplayCommand(l =>
         {
             string folder = Path.GetDirectoryName(this.Value);
             if (Directory.Exists(folder))
@@ -32,10 +34,9 @@ namespace H.Controls.Form.PropertyItem.TextPropertyItems
         }, l =>
         {
             return File.Exists(this.Value) | Directory.Exists(this.Value);
-        })
-        { Name = "打开文件夹" };
-
-        public RelayCommand ClearCommand => new RelayCommand(async l =>
+        });
+        [Display(Name = "删除")]
+        public DisplayCommand ClearCommand => new DisplayCommand(async l =>
         {
             bool? r = await IocMessage.ShowDialogMessage("删除文件无法恢复，确定删除?");
             if (r != true)
@@ -58,10 +59,7 @@ namespace H.Controls.Form.PropertyItem.TextPropertyItems
         }, l =>
         {
             return File.Exists(this.Value) | Directory.Exists(this.Value);
-        })
-        {
-            Name = "删除"
-        };
+        });
 
     }
 }

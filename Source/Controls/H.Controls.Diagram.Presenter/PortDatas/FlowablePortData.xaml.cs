@@ -109,7 +109,7 @@ public class FlowablePortData : TextPortData, IFlowablePort
 
     [XmlIgnore]
     [Display(Name = "执行")]
-    public RelayCommand InvokeCommand => new RelayCommand(async l => await this.TryInvokeAsync(null, null));
+    public DisplayCommand InvokeCommand => new DisplayCommand(async l => await this.TryInvokeAsync(null, null));
 
     public IFlowableResult Invoke(Part previors, Port current)
     {

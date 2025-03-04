@@ -12,12 +12,12 @@ namespace H.Modules.Theme
             _options = options;
         }
 
-        public RelayCommand LoadedCommand => new RelayCommand((s, e) =>
+        public RelayCommand LoadedCommand => new RelayCommand(e=>
         {
             this._options.Value.Refresh();
         });
 
-        //public RelayCommand SwitchCommand => new RelayCommand((s, e) =>
+        //public RelayCommand SwitchCommand => new RelayCommand(e=>
         //{
         //    this.Refresh();
         //    //if (e is bool b)

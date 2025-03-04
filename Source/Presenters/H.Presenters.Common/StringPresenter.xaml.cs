@@ -1,5 +1,4 @@
-﻿using H.Services.Common;
-using H.Mvvm;
+﻿global using H.Services.Common;
 
 namespace H.Presenters.Common
 {

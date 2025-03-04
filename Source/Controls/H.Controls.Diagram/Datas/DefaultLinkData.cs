@@ -2,7 +2,7 @@
 
 
 
-using H.Mvvm;
+using H.Mvvm.ViewModels.Base;
 using System;
 
 namespace H.Controls.Diagram.Datas;

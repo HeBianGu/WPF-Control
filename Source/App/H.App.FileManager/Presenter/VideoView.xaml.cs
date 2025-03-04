@@ -119,7 +119,7 @@ namespace H.App.FileManager
     //    //    }
     //    //}
 
-    //    public RelayCommand ShootCutCommand => new RelayCommand((s, e) =>
+    //    public RelayCommand ShootCutCommand => new RelayCommand(e=>
     //    {
     //        if (e is RoutedEventArgs<Tuple<string, long>> arg)
     //        {
@@ -135,7 +135,7 @@ namespace H.App.FileManager
     //        }
     //    });
 
-    //    //public RelayCommand SelectionChangedCommand => new RelayCommand((s, e) =>
+    //    //public RelayCommand SelectionChangedCommand => new RelayCommand(e=>
     //    //{
     //    //    if (e is fm_dd_file file)
     //    //    {
@@ -161,7 +161,7 @@ namespace H.App.FileManager
         {
         }
 
-        public RelayCommand ShootCutCommand => new RelayCommand((s, e) =>
+        public RelayCommand ShootCutCommand => new RelayCommand(e=>
         {
             if (e is RoutedEventArgs<Tuple<string, long>> arg)
             {

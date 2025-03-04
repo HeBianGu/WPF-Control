@@ -1,4 +1,5 @@
 ﻿using H.Controls.Diagram.Presenter.DiagramDatas.Base;
+using H.Mvvm.ViewModels.Base;
 
 namespace H.Controls.Diagram.Presenter.PortDatas;
 
@@ -24,7 +25,7 @@ public abstract class PortDataBase : DisplayBindableBase, IPortData
 
     [XmlIgnore]
     [Display(Name = "删除", GroupName = "操作")]
-    public RelayCommand DeleteCommand => new RelayCommand((s, e) =>
+    public DisplayCommand DeleteCommand => new DisplayCommand(e=>
     {
         if (e is Part part)
             part.Delete();
@@ -32,14 +33,14 @@ public abstract class PortDataBase : DisplayBindableBase, IPortData
 
     [XmlIgnore]
     [Display(Name = "恢复默认", GroupName = "操作")]
-    public override RelayCommand LoadDefaultCommand => new RelayCommand((s, e) =>
+    public override DisplayCommand LoadDefaultCommand => new DisplayCommand(e=>
     {
         this.LoadDefault();
     });
 
     [XmlIgnore]
     [Display(Name = "保存模板", GroupName = "操作")]
-    public RelayCommand SaveAsTemplateCommand => new RelayCommand((s, e) =>
+    public DisplayCommand SaveAsTemplateCommand => new DisplayCommand(e=>
     {
         if (e is Node node)
         {
@@ -49,7 +50,7 @@ public abstract class PortDataBase : DisplayBindableBase, IPortData
 
     [XmlIgnore]
     [Display(Name = "缩放定位", GroupName = "操作")]
-    public RelayCommand LocateFullCommand => new RelayCommand((s, e) =>
+    public DisplayCommand LocateFullCommand => new DisplayCommand(e=>
     {
         if (e is Port node)
         {
@@ -60,7 +61,7 @@ public abstract class PortDataBase : DisplayBindableBase, IPortData
 
     [XmlIgnore]
     [Display(Name = "平移定位", GroupName = "操作")]
-    public RelayCommand LocateMoveCommand => new RelayCommand((s, e) =>
+    public DisplayCommand LocateMoveCommand => new DisplayCommand(e=>
     {
         if (e is Port node)
         {
@@ -71,7 +72,7 @@ public abstract class PortDataBase : DisplayBindableBase, IPortData
 
     [XmlIgnore]
     [Display(Name = "应用到全部", GroupName = "操作")]
-    public RelayCommand ApplyToAllCommand => new RelayCommand((s, e) =>
+    public DisplayCommand ApplyToAllCommand => new DisplayCommand(e=>
     {
         if (e is Port part)
         {
@@ -86,7 +87,7 @@ public abstract class PortDataBase : DisplayBindableBase, IPortData
 
     [XmlIgnore]
     [Display(Name = "应用到同类型", GroupName = "操作")]
-    public RelayCommand ApplyToTypeCommand => new RelayCommand((s, e) =>
+    public DisplayCommand ApplyToTypeCommand => new DisplayCommand(e=>
     {
         if (e is Port node)
         {

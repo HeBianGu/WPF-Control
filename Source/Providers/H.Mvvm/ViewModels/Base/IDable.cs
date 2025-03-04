@@ -1,4 +1,4 @@
-﻿namespace H.Mvvm
+﻿namespace H.Mvvm.ViewModels.Base
 {
     public interface IDable
     {

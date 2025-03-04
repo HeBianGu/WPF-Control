@@ -1,4 +1,5 @@
-﻿namespace H.Controls.Diagram.Presenter.NodeDatas.Base;
+﻿
+namespace H.Controls.Diagram.Presenter.NodeDatas.Base;
 
 [Icon("\xF0E3")]
 public abstract class NodeDataBase : DisplayBindableBase, ICloneable

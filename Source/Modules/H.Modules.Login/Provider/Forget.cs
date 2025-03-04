@@ -1,4 +1,4 @@
-﻿using H.Mvvm;
+﻿using H.Mvvm.ViewModels.Base;
 
 namespace H.Modules.Login
 {

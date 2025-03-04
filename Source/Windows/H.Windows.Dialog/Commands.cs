@@ -1,10 +1,9 @@
-﻿using H.Services.Common;
-using System;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Reflection;
-using System.Windows.Input;
-using System.Windows.Markup;
+﻿global using H.Services.Common;
+global using System;
+global using System.ComponentModel.DataAnnotations;
+global using System.Reflection;
+global using System.Windows.Input;
+global using System.Windows.Markup;
 
 namespace H.Windows.Dialog
 {

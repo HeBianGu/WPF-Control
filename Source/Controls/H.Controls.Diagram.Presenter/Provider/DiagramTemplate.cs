@@ -1,4 +1,5 @@
 ﻿using H.Controls.Diagram.Presenter.DiagramDatas.Base;
+using H.Mvvm.ViewModels.Base;
 
 namespace H.Controls.Diagram.Presenter.Provider;
 

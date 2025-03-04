@@ -14,6 +14,7 @@ using System.Xml.Serialization;
 using H.Extensions.NewtonsoftJson;
 using System.Windows.Markup;
 using System.ComponentModel;
+using H.Mvvm.ViewModels.Base;
 
 namespace H.Controls.FilterBox
 {

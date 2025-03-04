@@ -37,7 +37,7 @@ namespace H.Modules.Project
         [System.Text.Json.Serialization.JsonIgnore]
 
         [System.Xml.Serialization.XmlIgnore]
-        public RelayCommand NewOrListCommand => new RelayCommand((s, e) =>
+        public RelayCommand NewOrListCommand => new RelayCommand(e=>
         {
             if (this._projectService.Where().Count() == 0)
             {

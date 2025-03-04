@@ -8,6 +8,7 @@ using H.Controls.Diagram.Presenters.OpenCV;
 using H.Controls.Diagram.Presenters.OpenCV.NodeDataGroups;
 using H.Extensions.Common;
 using H.Mvvm;
+using H.Mvvm.ViewModels.Base;
 using H.Services.Common;
 using System;
 using System.Collections.Generic;
@@ -72,7 +73,7 @@ public class MainViewModel : DisplayBindableBase
         }
     }
 
-    public RelayCommand AddDiagramCommand => new RelayCommand(async (s, e) =>
+    public RelayCommand AddDiagramCommand => new RelayCommand(async x =>
     {
         var data = this.CreateDiagramData();
         var r = await IocMessage.Form.ShowEdit(data, null, null, x => x.UseGroupNames = "基础信息,数据");
@@ -82,28 +83,28 @@ public class MainViewModel : DisplayBindableBase
         this.SelectedDiagramData = data;
     });
 
-    public RelayCommand DeleteDiagramCommand => new RelayCommand((s, e) =>
+    public RelayCommand DeleteDiagramCommand => new RelayCommand(e =>
     {
         if (this.SelectedDiagramData == null)
             return;
         this.DiagramDatas.Remove(this.SelectedDiagramData);
-    }, (s, e) => this.SelectedDiagramData != null && this.DiagramDatas.Count > 1);
+    }, e => this.SelectedDiagramData != null && this.DiagramDatas.Count > 1);
 
-    public RelayCommand SaveDiagramCommand => new RelayCommand((s, e) =>
+    public RelayCommand SaveDiagramCommand => new RelayCommand(e =>
     {
         if (this.SelectedDiagramData == null)
             return;
-    }, (s, e) => this.SelectedDiagramData != null);
+    }, e => this.SelectedDiagramData != null);
 
-    public RelayCommand SaveAsDiagramTemplateCommand => new RelayCommand((s, e) =>
+    public RelayCommand SaveAsDiagramTemplateCommand => new RelayCommand(e =>
     {
         if (this.SelectedDiagramData == null)
             return;
-    }, (s, e) => this.SelectedDiagramData != null);
+    }, e => this.SelectedDiagramData != null);
 
-    public RelayCommand DuplicationDiagramCommand => new RelayCommand((s, e) =>
+    public RelayCommand DuplicationDiagramCommand => new RelayCommand(e =>
     {
         if (this.SelectedDiagramData == null)
             return;
-    }, (s, e) => this.SelectedDiagramData != null);
+    }, e => this.SelectedDiagramData != null);
 }

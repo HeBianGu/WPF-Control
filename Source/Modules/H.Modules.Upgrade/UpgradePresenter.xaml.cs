@@ -13,6 +13,7 @@ using System.IO;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
+using H.Mvvm.ViewModels.Base;
 
 
 namespace H.Modules.Upgrade

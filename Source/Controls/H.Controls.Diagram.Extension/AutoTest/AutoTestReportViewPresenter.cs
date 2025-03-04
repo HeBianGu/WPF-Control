@@ -1,7 +1,5 @@
 ﻿using H.Controls.Chart2D;
-using H.Mvvm;
-
-
+using H.Mvvm.ViewModels.Base;
 using System;
 using System.ComponentModel;
 using System.Linq;

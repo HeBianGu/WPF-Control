@@ -22,7 +22,7 @@ public abstract class ImageNodeDataBase : FlowableNodeData, IImageNodeData
 
     [XmlIgnore]
     [Display(Name = "浏览文件", GroupName = "操作,工具")]
-    public RelayCommand OpenCommand => new RelayCommand((s, e) =>
+    public DisplayCommand OpenCommand => new DisplayCommand(e=>
     {
         OpenFileDialog openFileDialog = new OpenFileDialog();
         //openFileDialog.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory; //设置初始路径

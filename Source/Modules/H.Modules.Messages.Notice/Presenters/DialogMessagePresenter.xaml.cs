@@ -15,20 +15,20 @@ namespace H.Modules.Messages.Notice
             this.Geometry = GeometryFactory.Create(Geometrys.Dalog);
         }
         public Predicate<DialogMessagePresenter> IsMatch { get; set; }
-        public RelayCommand SumitCommand => new RelayCommand((s, e) =>
+        public RelayCommand SumitCommand => new RelayCommand(e=>
         {
             this.DialogResult = true;
             this.Close();
         });
 
-        public RelayCommand CancelCommand => new RelayCommand((s, e) =>
+        public RelayCommand CancelCommand => new RelayCommand(e=>
         {
             this.DialogResult = false;
             this.Close();
         });
 
 
-        public RelayCommand CloseCommand => new RelayCommand((s, e) =>
+        public RelayCommand CloseCommand => new RelayCommand(e=>
         {
             this.Close();
         });

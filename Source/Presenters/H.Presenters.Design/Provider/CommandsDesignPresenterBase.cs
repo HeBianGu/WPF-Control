@@ -6,7 +6,7 @@ namespace H.Presenters.Design
     public class CommandsDesignPresenterBase : DesignPresenter, IDesignPresenter
     {
         [Display(Name = "恢复默认")]
-        public RelayCommand DefaultCommand => new RelayCommand((s, e) =>
+        public RelayCommand DefaultCommand => new RelayCommand(e=>
         {
             if (e is string project)
             {
@@ -15,7 +15,7 @@ namespace H.Presenters.Design
         });
 
         [Display(Name = "保存模板")]
-        public RelayCommand SaveTempateCommand => new RelayCommand((s, e) =>
+        public RelayCommand SaveTempateCommand => new RelayCommand(e=>
         {
             if (e is string project)
             {

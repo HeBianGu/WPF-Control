@@ -9,15 +9,15 @@ using System.Windows.Documents;
 using System.Windows.Media;
 using System.Xml.Serialization;
 
-namespace H.Mvvm
+namespace H.Mvvm.ViewModels.Base
 {
     public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresenterBase
     {
         private bool _isSelected;
         [Browsable(false)]
         [System.Text.Json.Serialization.JsonIgnore]
-        
-        [System.Xml.Serialization.XmlIgnore]
+
+        [XmlIgnore]
         public bool IsSelected
         {
             get { return _isSelected; }
@@ -31,8 +31,8 @@ namespace H.Mvvm
         private bool _isMouseOver;
         [Browsable(false)]
         [System.Text.Json.Serialization.JsonIgnore]
-        
-        [System.Xml.Serialization.XmlIgnore]
+
+        [XmlIgnore]
         public bool IsMouseOver
         {
             get { return _isMouseOver; }
@@ -100,7 +100,7 @@ namespace H.Mvvm
             }
         }
 
-        private Thickness _margin = new Thickness(10,6,10,6);
+        private Thickness _margin = new Thickness(10, 6, 10, 6);
         [Display(Name = "外部间距", GroupName = "布局")]
         /// <summary> 说明  </summary>
         public Thickness Margin
@@ -314,7 +314,7 @@ namespace H.Mvvm
         }
 
         [Display(Name = "删除")]
-        public RelayCommand DeleteCommand => new RelayCommand((s, e) =>
+        public RelayCommand DeleteCommand => new RelayCommand(e =>
         {
             Delete(e);
         });
@@ -344,15 +344,11 @@ namespace H.Mvvm
             {
                 DependencyObject newVisualParent = VisualTreeHelper.GetParent(parent);
                 if (newVisualParent != null)
-                {
                     parent = newVisualParent;
-                }
                 else
                 {
                     if (parent is FrameworkElement)
-                    {
                         parent = (parent as FrameworkElement).Parent;
-                    }
                     else
                     {
                         break;

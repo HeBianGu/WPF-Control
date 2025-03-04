@@ -4,26 +4,26 @@ using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
-namespace H.Mvvm
+namespace H.Mvvm.ViewModels.Base
 {
     public abstract class Bindable : BindableBase
     {
         [Browsable(false)]
-        [System.Text.Json.Serialization.JsonIgnore]
-        
-        [System.Xml.Serialization.XmlIgnore]
+        [JsonIgnore]
+
+        [XmlIgnore]
         public RelayCommand RelayCommand { get; set; }
 
         [Browsable(false)]
-        [System.Text.Json.Serialization.JsonIgnore]
-        
-        [System.Xml.Serialization.XmlIgnore]
+        [JsonIgnore]
+
+        [XmlIgnore]
         public RelayCommand LoadedCommand => new RelayCommand(Loaded);
 
         [Browsable(false)]
-        [System.Text.Json.Serialization.JsonIgnore]
-        
-        [System.Xml.Serialization.XmlIgnore]
+        [JsonIgnore]
+
+        [XmlIgnore]
         public RelayCommand CallMethodCommand { get; set; }
 
 
@@ -55,9 +55,7 @@ namespace H.Mvvm
             System.Reflection.MethodInfo method = GetType().GetMethod(methodName);
 
             if (method == null)
-            {
                 throw new ArgumentException("no found method :" + method);
-            }
 
             object[] parameters = method.GetParameters().Select(l => l.RawDefaultValue is DBNull ? null : l.RawDefaultValue).ToArray();
 

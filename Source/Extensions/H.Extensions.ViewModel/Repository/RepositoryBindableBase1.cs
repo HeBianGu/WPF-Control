@@ -107,52 +107,52 @@ namespace H.Extensions.ViewModel
         #region - 命令 -
 
         [Display(Name = "新增", GroupName = "操作")]
-        public RelayCommand AddCommand => new RelayCommand(async l => await Add(l)) { Name = "新增" };
+        public IDisplayCommand AddCommand => new DisplayCommand(async l => await Add(l));
 
         [Display(Name = "编辑", GroupName = "操作")]
-        public RelayCommand EditCommand => new RelayCommand(async l => await Edit(l), l => this.GetEntity(l) != null) { Name = $"编辑" };
+        public IDisplayCommand EditCommand => new DisplayCommand(async l => await Edit(l), l => this.GetEntity(l) != null);
 
         [Display(Name = "编辑", GroupName = "操作")]
         [Browsable(false)]
-        public TransactionCommand EditTransactionCommand => new TransactionCommand(async (s, e) =>
+        public IDisplayCommand EditTransactionCommand => new DisplayCommand(async x =>
         {
-            if (e is TEntity project)
-            {
-                bool r = await s.BeginEditAsync(() =>
-                {
-                    if (project.ModelState(out List<string> message) == false)
-                    {
-                        IocMessage.Snack?.ShowInfo(message?.FirstOrDefault());
-                        return false;
-                    }
-                    return true;
-                });
-                if (r)
-                {
-                    if (this.Repository != null)
-                        this.Repository.Save();
-                }
-                else
-                {
-                    //  Do ：rollback
-                }
-            }
+            //if (e is TEntity project)
+            //{
+            //    bool r = await s.BeginEditAsync(() =>
+            //    {
+            //        if (project.ModelState(out List<string> message) == false)
+            //        {
+            //            IocMessage.Snack?.ShowInfo(message?.FirstOrDefault());
+            //            return false;
+            //        }
+            //        return true;
+            //    });
+            //    if (r)
+            //    {
+            //        if (this.Repository != null)
+            //            this.Repository.Save();
+            //    }
+            //    else
+            //    {
+            //        //  Do ：rollback
+            //    }
+            //}
         });
 
         [Display(Name = "删除", GroupName = "操作")]
-        public RelayCommand DeleteCommand => new RelayCommand(async l => await Delete(l), l => this.GetEntity(l) != null) { Name = $"删除" };
+        public IDisplayCommand DeleteCommand => new DisplayCommand(async l => await Delete(l), l => this.GetEntity(l) != null);
 
         [Display(Name = "查看", GroupName = "操作")]
-        public RelayCommand ViewCommand => new RelayCommand(async l => await View(l), l => this.GetEntity(l) != null) { Name = $"查看" };
+        public IDisplayCommand ViewCommand => new DisplayCommand(async l => await View(l), l => this.GetEntity(l) != null);
 
         [Display(Name = "清空", GroupName = "操作")]
-        public RelayCommand ClearCommand => new RelayCommand(async l => await Clear(l), l => this.Collection != null && this.Collection.Count > 0) { Name = $"清除" };
+        public IDisplayCommand ClearCommand => new DisplayCommand(async l => await Clear(l), l => this.Collection != null && this.Collection.Count > 0);
 
         [Display(Name = "保存", GroupName = "操作")]
-        public RelayCommand SaveCommand => new RelayCommand(async l => await this.Save()) { Name = "保存" };
+        public IDisplayCommand SaveCommand => new DisplayCommand(async l => await this.Save());
 
         [Display(Name = "导出", GroupName = "操作")]
-        public RelayCommand ExportCommand => new RelayCommand(async l =>
+        public IDisplayCommand ExportCommand => new DisplayCommand(async l =>
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Excel(*.xlsx)|*.xlsx|所有文件|*.*";
@@ -167,16 +167,14 @@ namespace H.Extensions.ViewModel
             await this.Export(saveFileDialog.FileName);
 
 
-        }, l => this.Collection != null && this.Collection.Count > 0)
-        { Name = $"导出" };
+        }, l => this.Collection != null && this.Collection.Count > 0);
 
         [Display(Name = "下一个", GroupName = "操作")]
-        public RelayCommand NextCommand => new RelayCommand((s, e) =>
+        public IDisplayCommand NextCommand => new DisplayCommand(x =>
         {
             this.Next();
 
-        }, (s, e) => this.Collection.Count > 0)
-        { Name = "下一个" };
+        }, x => this.Collection.Count > 0);
 
         public virtual void Next()
         {
@@ -184,11 +182,10 @@ namespace H.Extensions.ViewModel
         }
 
         [Display(Name = "上一个", GroupName = "操作")]
-        public RelayCommand PreviousCommand => new RelayCommand((s, e) =>
+        public IDisplayCommand PreviousCommand => new DisplayCommand(x =>
         {
             this.Previous();
-        }, (s, e) => this.Collection.Count > 0)
-        { Name = "上一个" };
+        }, x => this.Collection.Count > 0);
 
 
         public virtual void Previous()
@@ -210,7 +207,7 @@ namespace H.Extensions.ViewModel
         //    await this.Import(openFileDialog.FileName);
         //}); 
         [Display(Name = "全选", GroupName = "操作")]
-        public RelayCommand CheckedAllCommand => new RelayCommand(l =>
+        public IDisplayCommand CheckedAllCommand => new DisplayCommand(l =>
         {
             if (l is Boolean b)
             {
@@ -222,19 +219,17 @@ namespace H.Extensions.ViewModel
                 this.Collection.Foreach(K => K.IsSelected = true);
                 this.CheckedAll = true;
             }
-        }, l => this.Collection != null && this.Collection.Count > 0)
-        { Name = $"全选" };
+        }, l => this.Collection != null && this.Collection.Count > 0);
 
         [Display(Name = "取消选则", GroupName = "操作")]
-        public RelayCommand CheckedNoneCommand => new RelayCommand(l =>
+        public IDisplayCommand CheckedNoneCommand => new DisplayCommand(l =>
         {
             this.Collection.Foreach(K => K.IsSelected = false);
 
-        }, l => this.Collection != null && this.Collection.Count > 0)
-        { Name = $"取消选则" };
+        }, l => this.Collection != null && this.Collection.Count > 0);
 
         [Display(Name = "全选当前页", GroupName = "操作")]
-        public RelayCommand CheckedAllCurrentPageCommand => new RelayCommand(l =>
+        public IDisplayCommand CheckedAllCurrentPageCommand => new DisplayCommand(l =>
         {
             if (l is Boolean b)
             {
@@ -247,12 +242,11 @@ namespace H.Extensions.ViewModel
                 this.Collection.Foreach(x => x.IsSelected = false);
                 this.Collection.Source.Foreach(K => K.IsSelected = true);
             }
-        }, l => this.Collection != null && this.Collection.Count > 0)
-        { Name = $"全选当前页" };
+        }, l => this.Collection != null && this.Collection.Count > 0);
 
 
         [Display(Name = "全选当前过滤器", GroupName = "操作")]
-        public RelayCommand CheckedAllFilterSourceCommand => new RelayCommand(l =>
+        public IDisplayCommand CheckedAllFilterSourceCommand => new DisplayCommand(l =>
         {
             if (l is Boolean b)
             {
@@ -265,11 +259,10 @@ namespace H.Extensions.ViewModel
                 this.Collection.Foreach(x => x.IsSelected = false);
                 this.Collection.FilterSource.Foreach(K => K.IsSelected = true);
             }
-        }, l => this.Collection != null && this.Collection.Count > 0)
-        { Name = $"全选当前页" };
+        }, l => this.Collection != null && this.Collection.Count > 0);
 
         [Display(Name = "删除选中", GroupName = "操作")]
-        public RelayCommand DeleteCheckedCommand => new RelayCommand(async l => await DeleteAllChecked(l), l => this.Collection.Any(k => k.IsSelected)) { Name = $"删除选中" };
+        public IDisplayCommand DeleteCheckedCommand => new DisplayCommand(async l => await DeleteAllChecked(l), l => this.Collection.Any(k => k.IsSelected));
 
         //public RelayCommand PrintCommand => new RelayCommand(async (s, e) =>
         //{
@@ -283,7 +276,7 @@ namespace H.Extensions.ViewModel
         //}
 
         [Display(Name = "表格设置", GroupName = "操作")]
-        public RelayCommand GridSetCommand => new RelayCommand(GridSet);
+        public IDisplayCommand GridSetCommand => new DisplayCommand(GridSet);
 
         protected void GridSet(object obj)
         {

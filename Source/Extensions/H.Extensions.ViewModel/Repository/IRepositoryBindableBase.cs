@@ -12,25 +12,25 @@ namespace H.Extensions.ViewModel
     public interface IRepositoryBindableBase<TEntity> : IRepositoryBindable where TEntity : StringEntityBase, new()
     {
         RelayCommand LoadedCommand { get; }
-        RelayCommand AddCommand { get; }
+        IDisplayCommand AddCommand { get; }
         bool CheckedAll { get; set; }
-        RelayCommand CheckedAllCommand { get; }
-        RelayCommand ClearCommand { get; }
-        RelayCommand DeleteCheckedCommand { get; }
-        RelayCommand DeleteCommand { get; }
-        RelayCommand EditCommand { get; }
-        TransactionCommand EditTransactionCommand { get; }
-        RelayCommand ExportCommand { get; }
+        IDisplayCommand CheckedAllCommand { get; }
+        IDisplayCommand ClearCommand { get; }
+        IDisplayCommand DeleteCheckedCommand { get; }
+        IDisplayCommand DeleteCommand { get; }
+        IDisplayCommand EditCommand { get; }
+        //RelayCommand EditTransactionCommand { get; }
+        IDisplayCommand ExportCommand { get; }
         bool IsBusy { get; set; }
         bool UseMessage { get; set; }
         bool UseOperationLog { get; set; }
         Type ModelType { get; }
-        RelayCommand NextCommand { get; }
-        RelayCommand PreviousCommand { get; }
+        IDisplayCommand NextCommand { get; }
+        IDisplayCommand PreviousCommand { get; }
         IStringRepository<TEntity> Repository { get; }
-        RelayCommand SaveCommand { get; }
-        RelayCommand ViewCommand { get; }
-        RelayCommand GridSetCommand { get; }
+        IDisplayCommand SaveCommand { get; }
+        IDisplayCommand ViewCommand { get; }
+        IDisplayCommand GridSetCommand { get; }
 
         Task Add(object obj);
         Task Add(params TEntity[] ms);

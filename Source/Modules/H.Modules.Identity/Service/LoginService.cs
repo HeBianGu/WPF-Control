@@ -2,12 +2,12 @@
 
 
 using H.Services.Common;
-using H.Mvvm;
 using Microsoft.Extensions.Options;
 using System;
 using System.Linq;
 using H.Extensions.DataBase;
 using H.Services.Operation;
+using H.Mvvm.ViewModels.Base;
 
 namespace H.Modules.Identity
 {

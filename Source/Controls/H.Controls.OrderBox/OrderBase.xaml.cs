@@ -1,8 +1,8 @@
 ﻿using H.Services.Common;
-using H.Mvvm;
 using System.Collections;
 using System.Windows;
 using System;
+using H.Mvvm.ViewModels.Base;
 
 namespace H.Controls.OrderBox
 {

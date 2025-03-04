@@ -1,7 +1,6 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 using H.Modules.Login;
 using H.Services.Common;
-using H.Mvvm;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections;
@@ -13,6 +12,7 @@ using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using H.Services.Serializable;
+using H.Mvvm.ViewModels.Base;
 
 namespace H.Modules.Project
 {

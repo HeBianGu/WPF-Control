@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using H.Mvvm;
 using System.Collections;
+using H.Mvvm.ViewModels.Base;
 
 namespace H.Modules.Messages.Form
 {

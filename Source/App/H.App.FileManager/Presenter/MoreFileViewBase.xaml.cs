@@ -41,7 +41,7 @@ namespace H.App.FileManager
         }
 
 
-        public RelayCommand SelectionChangedCommand => new RelayCommand((s, e) =>
+        public RelayCommand SelectionChangedCommand => new RelayCommand(e=>
         {
             if (e is fm_dd_file file)
             {

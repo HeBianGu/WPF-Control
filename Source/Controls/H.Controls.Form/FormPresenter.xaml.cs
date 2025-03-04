@@ -1,8 +1,10 @@
-﻿using H.Mvvm;
-using H.Services.Common;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Windows;
+﻿global using H.Mvvm;
+global using H.Mvvm.Attributes;
+global using H.Mvvm.ViewModels.Base;
+global using H.Services.Common;
+global using System.Collections.Generic;
+global using System.Collections.ObjectModel;
+global using System.Windows;
 
 namespace H.Controls.Form
 {

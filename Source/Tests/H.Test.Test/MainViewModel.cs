@@ -1,6 +1,5 @@
 ﻿using H.Data.Test;
 using H.Services.Common;
-using H.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using H.Extensions.TypeLicense.LicenseProviders;
+using H.Mvvm.ViewModels.Base;
 
 namespace H.Test.Test
 {

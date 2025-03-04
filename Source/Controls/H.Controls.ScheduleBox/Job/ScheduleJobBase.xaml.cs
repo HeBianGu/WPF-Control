@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using H.Mvvm.ViewModels.Base;
 
 namespace H.Controls.ScheduleBox
 {

@@ -66,7 +66,7 @@ namespace H.DataBases.Share
         [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         [Display(Name = "保存配置")]
-        public RelayCommand SaveCommand => new RelayCommand((s, e) =>
+        public RelayCommand SaveCommand => new RelayCommand(e=>
         {
             bool r = this.Save(out string message);
             if (r)

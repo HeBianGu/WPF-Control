@@ -11,6 +11,7 @@ using System.Reflection;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using H.Extensions.NewtonsoftJson;
+using H.Mvvm.ViewModels.Base;
 
 namespace H.Controls.FilterBox
 {

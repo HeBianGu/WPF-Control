@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace H.Mvvm
+namespace H.Mvvm.ViewModels.Base
 {
     public abstract class GroupDisplayBindableBase<T> : DisplayBindableBase
     {

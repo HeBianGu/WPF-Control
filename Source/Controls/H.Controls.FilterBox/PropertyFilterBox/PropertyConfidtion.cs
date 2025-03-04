@@ -2,6 +2,7 @@
 
 
 using H.Mvvm;
+using H.Mvvm.ViewModels.Base;
 using System.Reflection;
 using System.Text.Json.Serialization;
 using System.Windows.Controls;

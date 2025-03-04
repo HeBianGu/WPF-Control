@@ -1,7 +1,7 @@
 ﻿using H.Services.Common;
-using H.Mvvm;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
+using H.Mvvm.ViewModels.Base;
 
 namespace H.App.FileManager
 {

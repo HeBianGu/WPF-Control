@@ -8,6 +8,8 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using System.Xml.Serialization;
+using H.Mvvm.Base;
+using H.Mvvm.ViewModels.Base;
 
 namespace H.Modules.License
 {
@@ -144,7 +146,7 @@ namespace H.Modules.License
         }
 
 
-        public RelayCommand RegisterCommand => new RelayCommand((s, e) =>
+        public RelayCommand RegisterCommand => new RelayCommand(e=>
         {
             ILicenseService _license = Ioc.GetService<ILicenseService>();
             if (_license == null)

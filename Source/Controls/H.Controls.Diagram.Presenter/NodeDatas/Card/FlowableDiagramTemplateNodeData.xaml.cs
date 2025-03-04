@@ -44,7 +44,7 @@ public class FlowableDiagramTemplateNodeData : TitleCardNodeData
 
     [XmlIgnore]
     [Display(Name = "查看模板", GroupName = "操作")]
-    public RelayCommand ShowTemplateCommand => new RelayCommand((s, e) =>
+    public DisplayCommand ShowTemplateCommand => new DisplayCommand(e=>
     {
         //    await IocMessage.Dialog.Show(this.Template, null, this.Name, x =>
         //    {

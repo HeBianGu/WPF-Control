@@ -1,5 +1,4 @@
-﻿
-using H.Mvvm;
+﻿using H.Mvvm.ViewModels.Base;
 using System.ComponentModel;
 
 namespace H.Extensions.Unit

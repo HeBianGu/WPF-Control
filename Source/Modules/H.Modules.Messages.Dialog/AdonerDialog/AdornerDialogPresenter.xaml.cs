@@ -1,13 +1,15 @@
-﻿using H.Controls.Adorner;
-using H.Services.Common;
-using H.Mvvm;
-using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Documents;
-using System.Windows.Controls;
+﻿global using H.Controls.Adorner;
+global using H.Services.Common;
+global using H.Mvvm;
+global using System;
+global using System.Linq;
+global using System.Threading;
+global using System.Threading.Tasks;
+global using System.Windows;
+global using System.Windows.Documents;
+global using System.Windows.Controls;
+global using H.Mvvm.ViewModels.Base;
+global using H.Mvvm.Attributes;
 
 namespace H.Modules.Messages.Dialog
 {

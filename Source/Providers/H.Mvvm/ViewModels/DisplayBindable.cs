@@ -1,8 +1,8 @@
-﻿using System.ComponentModel;
+﻿using H.Mvvm.ViewModels.Base;
+using System.ComponentModel;
 
 namespace H.Mvvm
 {
-
     public class DisplayBindable<T> : DisplayBindableBase
     {
         public DisplayBindable(T t)

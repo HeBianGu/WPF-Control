@@ -1,4 +1,5 @@
 ﻿using H.Mvvm;
+using H.Mvvm.ViewModels.Base;
 using System.Collections.ObjectModel;
 using System.Linq;
 
@@ -49,7 +50,7 @@ namespace H.Test.SideMenu
             }
         }
 
-        public RelayCommand HideItemCommand => new RelayCommand((s, e) =>
+        public RelayCommand HideItemCommand => new RelayCommand(e=>
         {
             if (e is IManager manager)
                 manager.IsVisibleInTab = false;

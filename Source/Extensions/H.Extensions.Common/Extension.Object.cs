@@ -1,4 +1,4 @@
-﻿using H.Mvvm;
+﻿using H.Mvvm.ViewModels.Base;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;

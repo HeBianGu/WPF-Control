@@ -11,7 +11,7 @@ namespace H.App.FileManager
 
         public string Description { get; set; }
 
-        //public RelayCommand UpdateTimeCommand => new RelayCommand((s, e) =>
+        //public RelayCommand UpdateTimeCommand => new RelayCommand(e=>
         //{
         //    this.Model.LastPlayTime = DateTime.Now;
         //    this.Model.PlayCount= this.Model.PlayCount+1;

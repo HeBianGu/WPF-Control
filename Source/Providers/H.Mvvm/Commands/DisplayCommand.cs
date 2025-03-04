@@ -6,14 +6,9 @@ using System.Xml.Serialization;
 
 namespace H.Mvvm
 {
-    public class DisplayCommand : RelayCommand, IDisplayCommand
+    public class DisplayCommand : RelayCommand, IDisplayCommand, INotifyPropertyChanged
     {
         public DisplayCommand(Action<object> action) : base(action)
-        {
-
-        }
-
-        public DisplayCommand(Action<IRelayCommand, object> action) : base(action)
         {
 
         }
@@ -23,10 +18,7 @@ namespace H.Mvvm
 
         }
 
-        public DisplayCommand(Action<IRelayCommand, object> execute, Func<IRelayCommand, object, bool> canExecute) : base(execute, canExecute)
-        {
-
-        }
+        public string Name { get; set; }
 
         private string _description;
         [System.Text.Json.Serialization.JsonIgnore]
@@ -71,5 +63,26 @@ namespace H.Mvvm
             }
         }
 
+        private string _groupName;
+        [System.Text.Json.Serialization.JsonIgnore]
+        [System.Xml.Serialization.XmlIgnore]
+        [Browsable(false)]
+        public string GroupName
+        {
+            get { return _groupName; }
+            set
+            {
+                _groupName = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void RaisePropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = "")
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

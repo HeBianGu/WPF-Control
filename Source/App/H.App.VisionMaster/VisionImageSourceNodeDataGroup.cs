@@ -2,6 +2,8 @@
 using H.Controls.Diagram.Presenter.DiagramDatas.Base;
 using H.Extensions.FontIcon;
 using H.Mvvm;
+using H.Mvvm.Attributes;
+using H.Mvvm.ViewModels.Base;
 using System.Collections.Generic;
 
 namespace H.App.VisionMaster;

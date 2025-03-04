@@ -3,6 +3,7 @@ global using H.Controls.Diagram.Layouts.Base;
 global using System.Windows.Input;
 global using H.Controls.Diagram.LinkDrawers;
 global using H.Controls.Diagram.Layouts;
+using H.Mvvm.ViewModels.Base;
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
 public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
@@ -289,7 +290,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
     [Display(Name = "默认样式", GroupName = "操作", Order = 6, Description = "点击此功能，恢复所有节点、连线和端口默认样式")]
     //[Command(Icon = "\xe8dc")]
-    public new DisplayCommand LoadDefaultCommand => new DisplayCommand((s, e) =>
+    public new DisplayCommand LoadDefaultCommand => new DisplayCommand(e =>
     {
         foreach (Node node in this.Nodes)
         {
@@ -303,37 +304,37 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
             if (node.Content is IDefaultable displayer)
                 displayer.LoadDefault();
         }
-    }, (s, e) => this.Nodes.Count > 0);
+    }, x => this.Nodes.Count > 0);
 
     [Display(Name = "删除", GroupName = "操作", Order = 4, Description = "点击此功能，删除选中的节点、连线或端口")]
-    public virtual DisplayCommand DeleteCommand => new DisplayCommand((s, e) =>
+    public virtual DisplayCommand DeleteCommand => new DisplayCommand(e =>
     {
         this.SelectedPart.Delete();
-    }, (s, e) => this.SelectedPart != null);
+    }, x => this.SelectedPart != null);
 
     [Display(Name = "清空", GroupName = "操作", Order = 5, Description = "点击此功能，删除所有节点、连线和端口")]
-    public virtual DisplayCommand ClearCommand => new DisplayCommand((s, e) =>
+    public virtual DisplayCommand ClearCommand => new DisplayCommand(e =>
     {
         this.Clear();
-    }, (s, e) => this.Nodes.Count > 0);
+    }, x => this.Nodes.Count > 0);
 
     [System.Text.Json.Serialization.JsonIgnore]
     [XmlIgnore]
     [Display(Name = "自动对齐", GroupName = "操作", Order = 5)]
-    public virtual DisplayCommand AlignmentCommand => new DisplayCommand((s, e) =>
+    public virtual DisplayCommand AlignmentCommand => new DisplayCommand(e =>
     {
         this.Aligment();
-    }, (s, e) => this.Nodes.Count > 0);
+    }, x => this.Nodes.Count > 0);
 
 
     [System.Text.Json.Serialization.JsonIgnore]
 
     [XmlIgnore]
     [Display(Name = "上一个", GroupName = "操作", Order = 5)]
-    public virtual DisplayCommand ProviewCommand => new DisplayCommand((s, e) =>
+    public virtual DisplayCommand ProviewCommand => new DisplayCommand(e =>
     {
         this.OnPreivewPart();
-    }, (s, e) => this.SelectedPart?.GetPrevious() != null);
+    }, x => this.SelectedPart?.GetPrevious() != null);
 
 
     protected virtual void OnPreivewPart()
@@ -345,10 +346,10 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
     [XmlIgnore]
     [Display(Name = "下一个", GroupName = "操作", Order = 5)]
-    public virtual DisplayCommand NextCommand => new DisplayCommand((s, e) =>
+    public virtual DisplayCommand NextCommand => new DisplayCommand(e =>
     {
         this.OnNextPart();
-    }, (s, e) => this.SelectedPart?.GetNext() != null);
+    }, x => this.SelectedPart?.GetNext() != null);
 
     protected virtual void OnNextPart()
     {
@@ -363,7 +364,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
         }
     }
 
-    public RelayCommand ItemsChangedCommand => new RelayCommand((s, e) =>
+    public RelayCommand ItemsChangedCommand => new RelayCommand(e =>
     {
         this.OnItemsChanged();
     });
@@ -373,7 +374,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
     }
 
-    public RelayCommand SelectedPartChangedCommand => new RelayCommand((s, e) =>
+    public RelayCommand SelectedPartChangedCommand => new RelayCommand(e =>
     {
         this.OnSelectedPartChanged();
     });
@@ -384,7 +385,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
     }
 
-    public RelayCommand MouseDoubleClickCommand => new RelayCommand((s, e) =>
+    public RelayCommand MouseDoubleClickCommand => new RelayCommand(e =>
     {
         this.OnMouseDoubleClick(e);
     });

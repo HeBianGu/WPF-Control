@@ -12,7 +12,7 @@ public abstract class NodeData : NodeDataBase, INodeData, ITemplate, ILinkDataCr
 
     [XmlIgnore]
     [Display(Name = "删除", GroupName = "操作")]
-    public RelayCommand DeleteCommand => new RelayCommand((s, e) =>
+    public DisplayCommand DeleteCommand => new DisplayCommand(e=>
     {
         if (e is Part part)
             part.Delete();
@@ -20,14 +20,14 @@ public abstract class NodeData : NodeDataBase, INodeData, ITemplate, ILinkDataCr
 
     [XmlIgnore]
     [Display(Name = "恢复默认", GroupName = "操作")]
-    public override RelayCommand LoadDefaultCommand => new RelayCommand((s, e) =>
+    public override RelayCommand LoadDefaultCommand => new RelayCommand(e=>
     {
         LoadDefault();
     });
 
     [XmlIgnore]
     [Display(Name = "保存模板", GroupName = "操作")]
-    public RelayCommand SaveAsTemplateCommand => new RelayCommand((s, e) =>
+    public DisplayCommand SaveAsTemplateCommand => new DisplayCommand(e=>
     {
         if (e is Node node)
         {
@@ -37,7 +37,7 @@ public abstract class NodeData : NodeDataBase, INodeData, ITemplate, ILinkDataCr
 
     [XmlIgnore]
     [Display(Name = "自动对齐", GroupName = "操作")]
-    public RelayCommand AlignmentCommand => new RelayCommand((s, e) =>
+    public DisplayCommand AlignmentCommand => new DisplayCommand(e=>
     {
         if (e is Node node)
             node.AligmentLayout();
@@ -45,7 +45,7 @@ public abstract class NodeData : NodeDataBase, INodeData, ITemplate, ILinkDataCr
 
     [XmlIgnore]
     [Display(Name = "节点缩放", GroupName = "操作,工具")]
-    public RelayCommand LocateFullCommand => new RelayCommand((s, e) =>
+    public DisplayCommand LocateFullCommand => new DisplayCommand(e=>
     {
         if (e is Node node)
         {
@@ -56,7 +56,7 @@ public abstract class NodeData : NodeDataBase, INodeData, ITemplate, ILinkDataCr
 
     [XmlIgnore]
     [Display(Name = "节点定位", GroupName = "操作,工具")]
-    public RelayCommand LocateMoveCommand => new RelayCommand((s, e) =>
+    public DisplayCommand LocateMoveCommand => new DisplayCommand(e=>
     {
         if (e is Node node)
         {
@@ -67,7 +67,7 @@ public abstract class NodeData : NodeDataBase, INodeData, ITemplate, ILinkDataCr
 
     [XmlIgnore]
     [Display(Name = "应用样式到全部", GroupName = "操作")]
-    public RelayCommand ApplyToAllCommand => new RelayCommand((s, e) =>
+    public DisplayCommand ApplyToAllCommand => new DisplayCommand(e=>
    {
        if (e is Node node)
        {
@@ -82,7 +82,7 @@ public abstract class NodeData : NodeDataBase, INodeData, ITemplate, ILinkDataCr
 
     [XmlIgnore]
     [Display(Name = "应用样式到同类型", GroupName = "操作")]
-    public RelayCommand ApplyToTypeCommand => new RelayCommand((s, e) =>
+    public DisplayCommand ApplyToTypeCommand => new DisplayCommand(e=>
    {
        if (e is Node node)
        {
@@ -99,14 +99,14 @@ public abstract class NodeData : NodeDataBase, INodeData, ITemplate, ILinkDataCr
 
     [XmlIgnore]
     [Display(Name = "设置", GroupName = "操作")]
-    public RelayCommand SettingCommand => new RelayCommand((s, e) =>
+    public DisplayCommand SettingCommand => new DisplayCommand(e=>
     {
         IocMessage.Form.ShowEdit(this);
     });
 
     [XmlIgnore]
     [Display(Name = "详情", GroupName = "操作")]
-    public RelayCommand ViewCommand => new RelayCommand((s, e) =>
+    public DisplayCommand ViewCommand => new DisplayCommand(e=>
     {
         IocMessage.Form.ShowView(this);
     });

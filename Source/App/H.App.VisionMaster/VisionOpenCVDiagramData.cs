@@ -9,6 +9,7 @@ using H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
 using H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Other;
 using H.Extensions.Common;
 using H.Mvvm;
+using H.Mvvm.ViewModels.Base;
 using OpenCvSharp.WpfExtensions;
 using System;
 using System.Collections.Generic;

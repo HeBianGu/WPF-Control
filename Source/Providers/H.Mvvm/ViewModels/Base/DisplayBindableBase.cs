@@ -1,72 +1,16 @@
-﻿using System;
+﻿using H.Mvvm.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
-using System.Text.Json.Serialization;
 using System.Windows.Input;
-using System.Xml.Serialization;
 
-namespace H.Mvvm
+namespace H.Mvvm.ViewModels.Base
 {
-    public class IconAttribute : Attribute
-    {
-        public IconAttribute(string icon)
-        {
-            this.Icon = icon;
-        }
-        public string Icon { get; set; }
-    }
-
-    public interface IIconable
-    {
-        public string Icon { get; set; }
-    }
-
-    public interface INameable
-    {
-
-        public string Name { get; set; }
-    }
-
-    public interface IMessageable
-    {
-        public string Message { get; set; }
-    }
-
-    public interface IStopwatchable
-    {
-        public TimeSpan TimeSpan { get; set; }
-    }
-    public class Stopwatchable : IDisposable
-    {
-        private readonly Stopwatch _stopwatch;
-        private readonly IStopwatchable _timespan;
-        public Stopwatchable(IStopwatchable timespan)
-        {
-            _timespan = timespan;
-            _stopwatch = Stopwatch.StartNew();
-        }
-        public void Dispose()
-        {
-            _stopwatch.Stop();
-            _timespan.TimeSpan = _stopwatch.Elapsed;
-        }
-    }
-
-    public interface IDisplayBindable : IIconable, INameable
-    {
-        string Description { get; set; }
-        string GroupName { get; set; }
-        string ID { get; set; }
-        int Order { get; set; }
-        string ShortName { get; set; }
-    }
-
-    public abstract class DisplayBindableBase : BindableBase, IDable, IDisplayBindable
+    public abstract class DisplayBindableBase : CommandsBindableBase, IDable, IDisplayBindable
     {
         public DisplayBindableBase()
         {
@@ -85,62 +29,16 @@ namespace H.Mvvm
             }
             IDAttribute id = type.GetCustomAttribute<IDAttribute>(true);
             this.ID = id?.ID ?? type.Name;
-            this.Commands = new ObservableCollection<ICommand>(this.CreateCommands());
             IconAttribute icon = type.GetCustomAttribute<IconAttribute>(true);
             this.Icon = icon?.Icon;
             LoadDefault();
         }
-        [Browsable(false)]
-        [System.Text.Json.Serialization.JsonIgnore]
-
-        [System.Xml.Serialization.XmlIgnore]
-        public ObservableCollection<ICommand> Commands { get; } = new ObservableCollection<ICommand>();
-
-        protected virtual IEnumerable<ICommand> CreateCommands()
-        {
-            var type = this.GetType();
-            var cmdps = type.GetProperties().Where(x => typeof(IRelayCommand).IsAssignableFrom(x.PropertyType));
-            foreach (PropertyInfo cmdp in cmdps)
-            {
-                if (cmdp.CanRead == false)
-                    continue;
-                if (cmdp.GetCustomAttribute<BrowsableAttribute>()?.Browsable == false)
-                    continue;
-                ICommand command = cmdp.GetValue(this) as ICommand;
-                if (command is IRelayCommand relayCommand)
-                {
-                    var attr = cmdp.GetCustomAttribute<DisplayAttribute>();
-                    if (attr != null)
-                    {
-                        relayCommand.Name = relayCommand.Name ?? attr.Name;
-                        if (command is IDisplayCommand displayCommand)
-                        {
-                            displayCommand.Description = displayCommand.Description ?? attr.Description;
-                            if (displayCommand.Order <= 0)
-                                displayCommand.Order = attr.GetOrder() ?? 0;
-                            displayCommand.GroupName = displayCommand.GroupName ?? attr.GroupName;
-                            var icon = cmdp.GetCustomAttribute<IconAttribute>();
-                            if (icon != null)
-                                displayCommand.Icon = displayCommand.Icon ?? icon.Icon;
-                        }
-                    }
-                }
-                yield return command;
-            }
-        }
 
         [Browsable(false)]
         [System.Text.Json.Serialization.JsonIgnore]
-
-        [System.Xml.Serialization.XmlIgnore]
-        public RelayCommand LoadedCommand => new RelayCommand(Loaded);
-
-        [Browsable(false)]
-        [System.Text.Json.Serialization.JsonIgnore]
-
         [System.Xml.Serialization.XmlIgnore]
         public bool IsLoaded { get; set; }
-        protected virtual void Loaded(object obj)
+        protected override void Loaded(object obj)
         {
             this.IsLoaded = true;
         }
@@ -188,7 +86,6 @@ namespace H.Mvvm
 
         private string _shortName;
         [System.Text.Json.Serialization.JsonIgnore]
-
         [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         public virtual string ShortName
@@ -203,7 +100,6 @@ namespace H.Mvvm
 
         private string _groupName;
         [System.Text.Json.Serialization.JsonIgnore]
-
         [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         public virtual string GroupName
@@ -218,7 +114,6 @@ namespace H.Mvvm
 
         private string _description;
         [System.Text.Json.Serialization.JsonIgnore]
-
         [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         public virtual string Description
@@ -234,7 +129,6 @@ namespace H.Mvvm
 
         private int _order;
         [System.Text.Json.Serialization.JsonIgnore]
-
         [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         public virtual int Order
@@ -248,11 +142,10 @@ namespace H.Mvvm
         }
 
         [System.Text.Json.Serialization.JsonIgnore]
-
         [System.Xml.Serialization.XmlIgnore]
         [Display(Name = "恢复默认")]
         [Browsable(false)]
-        public virtual RelayCommand LoadDefaultCommand => new RelayCommand((s, e) =>
+        public virtual RelayCommand LoadDefaultCommand => new RelayCommand(x =>
         {
             LoadDefault();
         });

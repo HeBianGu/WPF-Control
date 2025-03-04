@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Windows;
 using System.Windows.Threading;
 
-namespace H.Mvvm
+namespace H.Mvvm.ViewModels.Base
 {
     public abstract class BindableBase : INotifyPropertyChanged
     {

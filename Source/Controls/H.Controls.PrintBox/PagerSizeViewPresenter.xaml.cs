@@ -1,10 +1,10 @@
 ﻿using H.Services.Common;
-using H.Mvvm;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Windows;
+using H.Mvvm.ViewModels.Base;
 
 namespace H.Controls.PrintBox
 {
