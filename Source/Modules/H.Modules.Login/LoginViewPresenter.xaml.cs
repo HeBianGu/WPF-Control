@@ -41,7 +41,7 @@ namespace H.Modules.Login
             }
         }
 
-        public RelayCommand LoginCommand => new RelayCommand(async (s, e) =>
+        public InvokeCommand LoginCommand => new InvokeCommand(async (s, e) =>
         {
             if (e is IDialog dialog)
             {

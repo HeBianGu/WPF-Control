@@ -1,4 +1,5 @@
-﻿using H.Iocable;
+﻿using H.Controls.Diagram.Presenter.DiagramDatas.Base;
+using H.Iocable;
 using H.Modules.Login;
 using H.Modules.Project;
 using H.Mvvm;
@@ -126,8 +127,11 @@ public class VisionProjectItem : ProjectItemBase, IVisionProjectItem
     {
         message = null;
         var path = this.GetFilePath();
-        this.DiagramDatas = this.LoadFile<ObservableCollection<IVisionOpenCVDiagramData>>();
-        this.InitData();
+        if(this.LoadFile<ObservableCollection<IVisionOpenCVDiagramData>>(out ObservableCollection<IVisionOpenCVDiagramData> datas))
+        {
+            this.DiagramDatas = datas;
+            this.InitData();
+        }
         return true;
     }
 }

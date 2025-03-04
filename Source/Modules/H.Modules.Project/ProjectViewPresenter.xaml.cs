@@ -9,6 +9,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Xml.Serialization;
 using System.Threading.Tasks;
+using H.Modules.Login;
 
 namespace H.Modules.Project
 {
@@ -32,6 +33,12 @@ namespace H.Modules.Project
         public async Task<bool?> NewProject()
         {
             var project = this._projectService.Create();
+            if (project == null)
+                return false;
+            if(string.IsNullOrEmpty(project.Title))
+            {
+                project.Title = ProjectOptions.Instance.DefaultProjectName + (this._projectService.Where().Count() + 1).ToString();
+            }
             var r = await IocMessage.Form.ShowEdit(project, x => x.Title = "新建工程");
             if (r != true)
                 return false;

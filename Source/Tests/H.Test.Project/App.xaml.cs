@@ -30,21 +30,16 @@ namespace H.Test.Project
             //services.AddLoginViewPresenter();
             //services.AddTestLoginService();
             services.AddWindowMessage();
-            services.AddRegisterLoginViewPresenter();
-            services.AddRegisterService();
-            services.AddLoginService();
-            services.AddDbContextBySetting<IdentifyDataContext>();
-            services.AddSingleton<IStringRepository<hi_dd_user>, DbContextRepository<IdentifyDataContext, hi_dd_user>>();
+            //services.AddRegisterLoginViewPresenter();
+            //services.AddRegisterService();
+            //services.AddLoginService();
+            //services.AddDbContextBySetting<IdentifyDataContext>();
+            //services.AddSingleton<IStringRepository<hi_dd_user>, DbContextRepository<IdentifyDataContext, hi_dd_user>>();
         }
 
         protected override Window CreateMainWindow(StartupEventArgs e)
         {
             return new MainWindow();
-        }
-
-        protected override void Configure(IApplicationBuilder app)
-        {
-            base.Configure(app);
         }
     }
 }

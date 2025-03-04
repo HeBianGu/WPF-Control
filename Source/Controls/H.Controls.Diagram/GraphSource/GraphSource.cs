@@ -22,16 +22,18 @@ public abstract class GraphSource<NodeDataType, LinkDataType> : IGraphSource, ID
     {
         System.Windows.Application.Current.Dispatcher.Invoke(() =>
         {
-            foreach (NodeDataType unit in nodes)
-            {
-                Node n = this.ConvertToNode(unit);
-                this.NodeSource.Add(n);
-            }
+            if (nodes != null)
+                foreach (NodeDataType unit in nodes)
+                {
+                    Node n = this.ConvertToNode(unit);
+                    this.NodeSource.Add(n);
+                }
 
-            foreach (LinkDataType link in links)
-            {
-                this.ConvertToLink(link);
-            }
+            if (links != null)
+                foreach (LinkDataType link in links)
+                {
+                    this.ConvertToLink(link);
+                }
         });
 
     }

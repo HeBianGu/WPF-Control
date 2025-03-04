@@ -44,7 +44,7 @@ namespace H.Extensions.NewtonsoftJson
 
     }
 
-    internal class DateTimeConverter : Newtonsoft.Json.JsonConverter
+    public class DateTimeConverter : Newtonsoft.Json.JsonConverter
     {
         private readonly string _format = "yyyy-MM-dd HH:mm:ss";
 
@@ -65,7 +65,7 @@ namespace H.Extensions.NewtonsoftJson
             writer.WriteValue(dateTime.ToString(_format));
         }
     }
-    internal class EnumConverter : Newtonsoft.Json.JsonConverter
+    public class EnumConverter : Newtonsoft.Json.JsonConverter
     {
         public override bool CanConvert(Type objectType)
         {

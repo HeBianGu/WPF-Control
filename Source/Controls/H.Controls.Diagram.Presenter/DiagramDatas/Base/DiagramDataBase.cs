@@ -4,8 +4,34 @@ global using System.Windows.Input;
 global using H.Controls.Diagram.LinkDrawers;
 global using H.Controls.Diagram.Layouts;
 using H.Mvvm.ViewModels.Base;
+using System.Text.Json.Serialization;
+using System.Text.Json;
+using System.Runtime.Serialization;
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
+
+//public class NodeJsonConverter : JsonConverter<ObservableCollection<Node>>
+//{
+//    public override ObservableCollection<Node> Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+//    {
+//        string value = reader.GetString();
+//        return value.TryChangeType<T>();
+//    }
+
+//    public override void Write(Utf8JsonWriter writer, ObservableCollection<Node> value, JsonSerializerOptions options)
+//    {
+//        if (value == null)
+//        {
+//            writer.WriteNull(string.Empty);
+//            return;
+//        }
+//        DiagramDataSourceConverter converter = new DiagramDataSourceConverter(value);
+//        string txt = value.TryConvertToString();
+//        writer.WriteStringValue(txt);
+
+//        writer.WriteBase64String
+//    }
+//}
 public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 {
     public DiagramDataBase()
@@ -40,6 +66,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     }
 
     private string _typeName;
+    [JsonIgnore]
     public string TypeName
     {
         get { return _typeName; }
@@ -77,7 +104,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     }
 
     private ObservableCollection<Node> _nodes = new ObservableCollection<Node>();
-    [System.Text.Json.Serialization.JsonIgnore]
+    [JsonIgnore]
     [XmlIgnore]
     public ObservableCollection<Node> Nodes
     {
@@ -85,12 +112,13 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
         set
         {
             _nodes = value;
-            RaisePropertyChanged("Nodes");
+            RaisePropertyChanged();
         }
     }
 
+
     private Part _selectedPart;
-    [System.Text.Json.Serialization.JsonIgnore]
+    [JsonIgnore]
     [XmlIgnore]
     public Part SelectedPart
     {
@@ -144,7 +172,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     }
 
     private ILayout _layout = new LocationLayout();
-    [System.Text.Json.Serialization.JsonIgnore]
+    [JsonIgnore]
     [XmlIgnore]
     public ILayout Layout
     {
@@ -157,7 +185,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     }
 
     private Type _nodeType = typeof(Node);
-    [System.Text.Json.Serialization.JsonIgnore]
+    [JsonIgnore]
     [XmlIgnore]
     public Type NodeType
     {
@@ -179,114 +207,6 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
             RaisePropertyChanged();
         }
     }
-
-    #region - 序列化 -
-
-    public string ToXmlString()
-    {
-        //XmlDocument xmlDoc = XmlableSerializor.Instance.SaveAs(this);
-        //return xmlDoc.OuterXml;
-        return null;
-    }
-
-    public static T CreateFromXml<T>(string xml) where T : class, IDiagramData
-    {
-        T instance = CreateFromXml(xml, typeof(T)) as T;
-        return instance;
-    }
-
-    public static IDiagramData CreateFromXml(string xml, Type type)
-    {
-        IDiagramData instance = Application.Current.Dispatcher.Invoke(() =>
-        {
-            return Activator.CreateInstance(type) as IDiagramData;
-        });
-
-        XmlDocument xmlDoc = new XmlDocument();
-        xmlDoc.LoadXml(xml);
-        //XmlableSerializor.Instance.Load(xmlDoc, instance);
-        return instance;
-    }
-
-    public object Clone()
-    {
-        string xml = this.ToXmlString();
-        return CreateFromXml(xml, this.GetType());
-        //return Application.Current.Dispatcher.Invoke(() =>
-        //  {
-        //      //this._layout.DoLayout(this.Nodes.ToArray());
-        //      return CreateFromXml(xml, this.GetType());
-        //  });
-    }
-
-    protected virtual IEnumerable<Node> LoadNodes(IEnumerable<INodeData> nodeDatas, IEnumerable<ILinkData> linkDatas)
-    {
-        DiagramDataSourceConverter converter = new DiagramDataSourceConverter(nodeDatas, linkDatas);
-        return converter.NodeSource;
-    }
-
-    protected virtual Tuple<IEnumerable<INodeData>, IEnumerable<ILinkData>> SaveDatas(IEnumerable<Node> nodes)
-    {
-        DiagramDataSourceConverter converter = new DiagramDataSourceConverter(nodes.ToList());
-        IEnumerable<ILinkData> linkDatas = converter.GetLinkType();
-        IEnumerable<INodeData> nodeDatas = converter.GetNodeType();
-        return Tuple.Create(nodeDatas, linkDatas);
-    }
-
-    public void FromXml(XmlElement xmlEle, XmlDocument cnt, Func<PropertyInfo, object, bool> match = null)
-    {
-        //XmlDiagramData data = new XmlDiagramData();
-        //XmlableSerializor.Instance.FromXml(xmlEle, this, cnt);
-
-        //Application.Current.Dispatcher.Invoke(() =>
-        //{
-        //    XmlableSerializor.Instance.FromXml(xmlEle, data, cnt);
-        //    var nodeDatas = data.Nodes.ToList();
-        //    var linkDatas = data.Links.ToList();
-        //    this.Nodes = this.LoadNodes(nodeDatas, linkDatas).ToObservable();
-        //});
-
-        //foreach (var file in data.ReferenceTemplates)
-        //{
-        //    if (!File.Exists(file.Value))
-        //    {
-        //        this.ReferenceTemplateNodeDatas.Add(new FlowableDiagramTemplateNodeData() { FilePath = file.Value });
-        //        continue;
-        //    }
-        //    DiagramTemplate template = XmlableSerializor.Instance.Load<DiagramTemplate>(file.Value);
-        //    var nodeData = new FlowableDiagramTemplateNodeData(template);
-        //    this.ReferenceTemplateNodeDatas.Add(nodeData);
-        //}
-    }
-
-    public void ToXml(XmlElement xmlEle, XmlDocument cnt, Func<PropertyInfo, object, bool> match = null)
-    {
-        //XmlableSerializor.Instance.ToXml(xmlEle, this, this.GetType().Name, cnt, null, false);
-        //XmlDiagramData data = new XmlDiagramData();
-        //var ns = Application.Current.Dispatcher.Invoke(() =>
-        //{
-        //    return this.Nodes.ToList();
-        //});
-
-        //DiagramDataSourceConverter converter = new DiagramDataSourceConverter(ns);
-        //var datas = this.SaveDatas(ns);
-        //var links = datas.Item2;
-        //var nodes = datas.Item1;
-
-        //foreach (var node in nodes)
-        //{
-        //    data.Nodes.Add(node);
-        //}
-        //foreach (var link in links)
-        //{
-        //    data.Links.Add(link);
-        //}
-
-        //data.ReferenceTemplates = this.ReferenceTemplateNodeDatas.Select(x => new XmlStringData(x.FilePath)).ToList();
-        //XmlableSerializor.Instance.ToXml(xmlEle, data, this.GetType().Name, cnt, null, false);
-    }
-
-    #endregion
 
     [Display(Name = "默认样式", GroupName = "操作", Order = 6, Description = "点击此功能，恢复所有节点、连线和端口默认样式")]
     //[Command(Icon = "\xe8dc")]
@@ -431,4 +351,153 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
         }
         this.SelectedPart = null;
     }
+
+
+    #region - Serializing -
+
+    private ObservableCollection<INodeData> _nodeDatas = new ObservableCollection<INodeData>();
+    public ObservableCollection<INodeData> NodeDatas
+    {
+        get { return _nodeDatas; }
+        set
+        {
+            _nodeDatas = value;
+            RaisePropertyChanged();
+        }
+    }
+
+
+    private ObservableCollection<ILinkData> _linkDatas = new ObservableCollection<ILinkData>();
+    public ObservableCollection<ILinkData> LinkDatas
+    {
+        get { return _linkDatas; }
+        set
+        {
+            _linkDatas = value;
+            RaisePropertyChanged();
+        }
+    }
+
+    protected virtual IEnumerable<Node> LoadToNodes(IEnumerable<INodeData> nodeDatas, IEnumerable<ILinkData> linkDatas)
+    {
+       return nodeDatas.LoadToNodes(linkDatas);
+    }
+
+    protected virtual Tuple<IEnumerable<INodeData>, IEnumerable<ILinkData>> SaveToDatas(IEnumerable<Node> nodes)
+    {
+       return nodes.SaveToDatas();
+    }
+
+    [OnSerializing]
+    internal void OnSerializingMethod(StreamingContext context)
+    {
+        var tuples = this.SaveToDatas(this.Nodes);
+        this.LinkDatas = tuples.Item2.ToObservable();
+        this.NodeDatas = tuples.Item1.ToObservable();
+    }
+
+    [OnDeserialized]
+    internal void OnDeserializedMethod(StreamingContext context)
+    {
+        this.Nodes = LoadToNodes(this.NodeDatas, this.LinkDatas).ToObservable();
+    }
+    #endregion
+
+    #region - 序列化 -
+
+    //public string ToXmlString()
+    //{
+    //    //XmlDocument xmlDoc = XmlableSerializor.Instance.SaveAs(this);
+    //    //return xmlDoc.OuterXml;
+    //    return null;
+    //}
+
+    //public static T CreateFromXml<T>(string xml) where T : class, IDiagramData
+    //{
+    //    T instance = CreateFromXml(xml, typeof(T)) as T;
+    //    return instance;
+    //}
+
+    //public static IDiagramData CreateFromXml(string xml, Type type)
+    //{
+    //    IDiagramData instance = Application.Current.Dispatcher.Invoke(() =>
+    //    {
+    //        return Activator.CreateInstance(type) as IDiagramData;
+    //    });
+
+    //    XmlDocument xmlDoc = new XmlDocument();
+    //    xmlDoc.LoadXml(xml);
+    //    //XmlableSerializor.Instance.Load(xmlDoc, instance);
+    //    return instance;
+    //}
+
+    public object Clone()
+    {
+        //  ToDo：用序列化复制
+        return this;
+        //this.CloneBy();
+        //string xml = this.ToXmlString();
+        //return CreateFromXml(xml, this.GetType());
+        //return Application.Current.Dispatcher.Invoke(() =>
+        //  {
+        //      //this._layout.DoLayout(this.Nodes.ToArray());
+        //      return CreateFromXml(xml, this.GetType());
+        //  });
+    }
+
+
+    //public void FromXml(XmlElement xmlEle, XmlDocument cnt, Func<PropertyInfo, object, bool> match = null)
+    //{
+    //    //XmlDiagramData data = new XmlDiagramData();
+    //    //XmlableSerializor.Instance.FromXml(xmlEle, this, cnt);
+
+    //    //Application.Current.Dispatcher.Invoke(() =>
+    //    //{
+    //    //    XmlableSerializor.Instance.FromXml(xmlEle, data, cnt);
+    //    //    var nodeDatas = data.Nodes.ToList();
+    //    //    var linkDatas = data.Links.ToList();
+    //    //    this.Nodes = this.LoadNodes(nodeDatas, linkDatas).ToObservable();
+    //    //});
+
+    //    //foreach (var file in data.ReferenceTemplates)
+    //    //{
+    //    //    if (!File.Exists(file.Value))
+    //    //    {
+    //    //        this.ReferenceTemplateNodeDatas.Add(new FlowableDiagramTemplateNodeData() { FilePath = file.Value });
+    //    //        continue;
+    //    //    }
+    //    //    DiagramTemplate template = XmlableSerializor.Instance.Load<DiagramTemplate>(file.Value);
+    //    //    var nodeData = new FlowableDiagramTemplateNodeData(template);
+    //    //    this.ReferenceTemplateNodeDatas.Add(nodeData);
+    //    //}
+    //}
+
+    //public void ToXml(XmlElement xmlEle, XmlDocument cnt, Func<PropertyInfo, object, bool> match = null)
+    //{
+    //    //XmlableSerializor.Instance.ToXml(xmlEle, this, this.GetType().Name, cnt, null, false);
+    //    //XmlDiagramData data = new XmlDiagramData();
+    //    //var ns = Application.Current.Dispatcher.Invoke(() =>
+    //    //{
+    //    //    return this.Nodes.ToList();
+    //    //});
+
+    //    //DiagramDataSourceConverter converter = new DiagramDataSourceConverter(ns);
+    //    //var datas = this.SaveDatas(ns);
+    //    //var links = datas.Item2;
+    //    //var nodes = datas.Item1;
+
+    //    //foreach (var node in nodes)
+    //    //{
+    //    //    data.Nodes.Add(node);
+    //    //}
+    //    //foreach (var link in links)
+    //    //{
+    //    //    data.Links.Add(link);
+    //    //}
+
+    //    //data.ReferenceTemplates = this.ReferenceTemplateNodeDatas.Select(x => new XmlStringData(x.FilePath)).ToList();
+    //    //XmlableSerializor.Instance.ToXml(xmlEle, data, this.GetType().Name, cnt, null, false);
+    //}
+
+    #endregion
 }

@@ -14,6 +14,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Collections.Specialized;
 
 namespace H.Controls.Diagram;
 
@@ -431,6 +432,8 @@ public partial class Diagram : ContentControl
 
             control.RefreshData();
         }));
+ 
+
     public bool UseAutoAddLinkOnEnd
     {
         get { return (bool)GetValue(UseAutoAddLinkOnEndProperty); }

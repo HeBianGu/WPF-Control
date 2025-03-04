@@ -42,7 +42,7 @@ namespace H.Extensions.NewtonsoftJson
 
     }
 
-    internal class TypeConverterJsonConverter : JsonConverter
+    public class TypeConverterJsonConverter : JsonConverter
     {
         TypeConverter CreateTypeConverter(Type objectType)
         {

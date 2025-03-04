@@ -15,7 +15,7 @@ namespace H.Mvvm.ViewModels.Base
         public DisplayBindableBase()
         {
             var type = this.GetType();
-            this.Name = type.Name;
+            //this.Name = type.Name;
             DisplayAttribute display = type.GetCustomAttribute<DisplayAttribute>(true);
             if (display != null)
             {

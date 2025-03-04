@@ -23,7 +23,6 @@ namespace H.Modules.Project
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ProjectBox), new FrameworkPropertyMetadata(typeof(ProjectBox)));
         }
-
         public ProjectBox()
         {
             {
@@ -138,7 +137,6 @@ namespace H.Modules.Project
         protected override void OnSelectionChanged(SelectionChangedEventArgs e)
         {
             base.OnSelectionChanged(e);
-
             this.SelectedProject = (this.SelectedItem as ProjectItemViewModel)?.Model;
         }
 
@@ -151,15 +149,7 @@ namespace H.Modules.Project
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty GroupByProperty =
-            DependencyProperty.Register("GroupBy", typeof(Func<ProjectItem, string>), typeof(ProjectBox), new FrameworkPropertyMetadata(default(Func<ProjectItem, string>), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, (d, e) =>
-               {
-                   ProjectBox control = d as ProjectBox;
-
-                   if (control == null) return;
-
-                   Func<IProjectItem, string> config = e.NewValue as Func<IProjectItem, string>;
-
-               }));
+            DependencyProperty.Register("GroupBy", typeof(Func<ProjectItem, string>), typeof(ProjectBox), new FrameworkPropertyMetadata(default(Func<ProjectItem, string>), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
 
         public void Refresh()

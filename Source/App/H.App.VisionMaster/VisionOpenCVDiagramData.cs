@@ -17,6 +17,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
@@ -29,8 +30,11 @@ public class VisionOpenCVDiagramData : OpenCVDiagramData, IVisionOpenCVDiagramDa
         this.ImageDatas = OpenCVImages.GetImageFiles().Select(x => new ImageData(x)).OfType<IImageData>().ToObservable();
         this.SelectedImageData = this.ImageDatas.FirstOrDefault();
 
+        //this.NodeDatas.Add(new TextNodeData() { Text = "123456" });
+
     }
     private ImageSource _resultImageSource;
+    [JsonIgnore]
     public ImageSource ResultImageSource
     {
         get { return _resultImageSource; }
@@ -42,6 +46,7 @@ public class VisionOpenCVDiagramData : OpenCVDiagramData, IVisionOpenCVDiagramDa
     }
 
     private ObservableCollection<IVisionMessage> _messages = new ObservableCollection<IVisionMessage>();
+    [JsonIgnore]
     public ObservableCollection<IVisionMessage> Messages
     {
         get { return _messages; }
@@ -53,6 +58,7 @@ public class VisionOpenCVDiagramData : OpenCVDiagramData, IVisionOpenCVDiagramDa
     }
 
     private IVisionMessage _currentMessage;
+    [JsonIgnore]
     public IVisionMessage CurrentMessage
     {
         get { return _currentMessage; }
@@ -85,7 +91,6 @@ public class VisionOpenCVDiagramData : OpenCVDiagramData, IVisionOpenCVDiagramDa
         return result;
     }
 
-
     public void LogCurrentMessage()
     {
         var totalTimeSpan = this.Messages.Sum(x => x.TimeSpan.Ticks);
@@ -110,6 +115,7 @@ public class VisionOpenCVDiagramData : OpenCVDiagramData, IVisionOpenCVDiagramDa
     }
 
     private IImageData _selectedImageData;
+    [JsonIgnore]
     public IImageData SelectedImageData
     {
         get { return _selectedImageData; }
@@ -120,7 +126,7 @@ public class VisionOpenCVDiagramData : OpenCVDiagramData, IVisionOpenCVDiagramDa
         }
     }
 
-
+    [JsonIgnore]
     public RelayCommand ImageFileSelectionChangedCommand => new RelayCommand(l =>
     {
         if (this.SelectedImageData == null)
@@ -161,6 +167,7 @@ public class VisionOpenCVDiagramData : OpenCVDiagramData, IVisionOpenCVDiagramDa
     }
 
     private int _selectedImageTabIndex;
+    [JsonIgnore]
     public int SelectedImageTabIndex
     {
         get { return _selectedImageTabIndex; }

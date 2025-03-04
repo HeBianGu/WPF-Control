@@ -71,7 +71,6 @@ public abstract class AddNodeCommand : AddNodeCommandBase
         }
         //nodeSource.Add(toNode);
         //diagram.RefreshData();
-
         diagram.AddNode(toNode);
     }
 

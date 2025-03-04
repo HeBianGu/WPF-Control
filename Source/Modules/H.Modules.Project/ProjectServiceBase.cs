@@ -79,7 +79,7 @@ namespace H.Modules.Project
             return func == null ? this.Collection.OfType<IProjectItem>() : this.Collection.Where(x => func(x)).OfType<IProjectItem>();
         }
 
-        protected virtual ISerializerService GetSerializer() => new TextJsonSerializerService();
+        protected virtual ISerializerService GetSerializer() => ProjectOptions.Instance.JsonSerializerService;
         protected virtual void OnItemChanged()
         {
             if (this._options.Value.SaveMode == ProjectSaveMode.OnProjectChanged)
@@ -168,7 +168,8 @@ namespace H.Modules.Project
             if (this.Current == null)
             {
                 this.Current = this.Create();
-                this.Current.Title = "新建项目";
+                if (string.IsNullOrEmpty(this.Current.Title))
+                    this.Current.Title = ProjectOptions.Instance.DefaultProjectName + (this.Collection.Count() + 1).ToString();
             }
             return true;
         }

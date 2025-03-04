@@ -28,11 +28,10 @@ namespace H.DataBases.Share
         public abstract string GetConnect();
 
         [System.Text.Json.Serialization.JsonIgnore]
-        
         [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         [Display(Name = "测试连接")]
-        public RelayCommand ConnectCommand => new RelayCommand(async (s, e) =>
+        public InvokeCommand ConnectCommand => new InvokeCommand(async (s,e) =>
         {
             Tuple<bool, string> r = await Task.Run(() =>
               {

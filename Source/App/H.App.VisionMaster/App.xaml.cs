@@ -1,4 +1,5 @@
 ﻿using H.Extensions.ApplicationBase;
+using H.Extensions.NewtonsoftJson;
 using H.Modules.Messages.Dialog;
 using H.Modules.Messages.Form;
 using H.Services.Common;
@@ -30,8 +31,11 @@ public partial class App : ApplicationBase
         services.AddSingleton<IFormMessageService, FormMessageService>();
         services.AddNoticeMessage();
         services.AddSnackMessage();
-        services.AddProject<VisionProjectService>(x => x.Extenstion = ".vmp");
-        services.AddTextJsonSerializerService();
+        services.AddProject<VisionProjectService>(x =>
+        {
+            x.Extenstion = ".json";
+            x.JsonSerializerService = new NewtonsoftJsonSerializerService ();
+        });
     }
 
     protected override void Configure(IApplicationBuilder app)

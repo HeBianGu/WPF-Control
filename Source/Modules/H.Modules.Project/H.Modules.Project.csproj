@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <ItemGroup>
     <ProjectReference Include="..\..\Extensions\H.Extensions.Attach\H.Extensions.Attach.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.FontIcon\H.Extensions.FontIcon.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Geometry\H.Extensions.Geometry.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Setting\H.Extensions.Setting.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.ValueConverter\H.Extensions.ValueConverter.csproj" />

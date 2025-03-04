@@ -2,6 +2,7 @@
 
 
 using H.Extensions.Setting;
+using System.Runtime.CompilerServices;
 
 namespace H.Controls.Diagram.Presenter;
 

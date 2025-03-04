@@ -62,7 +62,7 @@ namespace H.Modules.Login
         }
 
         private int _code;
-        public RelayCommand GetVerifyCodeCommand => new RelayCommand(async (s, e) =>
+        public InvokeCommand GetVerifyCodeCommand => new InvokeCommand(async (s, e) =>
         {
             var ms = Ioc.GetService<IMailService>();
             if (ms == null)
@@ -145,7 +145,7 @@ namespace H.Modules.Login
                 this.SelectedIndex = 3;
         }
 
-        public RelayCommand ChangePasswordCommand => new RelayCommand(async (s, e) =>
+        public InvokeCommand ChangePasswordCommand => new InvokeCommand(async (s, e) =>
         {
             if (!this.Forget.Valid())
                 return;
@@ -201,7 +201,7 @@ namespace H.Modules.Login
             this.Forget.VerifyPassword = null;
         }
 
-        public RelayCommand RegisterCommand => new RelayCommand(async (s, e) =>
+        public InvokeCommand RegisterCommand => new InvokeCommand(async (s, e) =>
         {
             if (!this.Registor.Valid())
                 return;

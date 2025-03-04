@@ -1,5 +1,6 @@
 ﻿global using H.Controls.Diagram.Parts.Base;
 global using H.Controls.Diagram.Layers;
+using System.Text.Json.Serialization;
 
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
@@ -38,12 +39,13 @@ public abstract class ZoomableDiagramDataBase : DiagramDataBase, IZoomableDiagra
     //    }
     //}
     //IZoombox
+    [JsonIgnore]
     [Display(Name = "缩放定位", GroupName = "操作", Order = 5)]
     public virtual DisplayCommand ZoomAllCommand => new DisplayCommand(e =>
     {
         this.ZoomToFit();
     }, x => this.Nodes.Count > 0);
-
+    [JsonIgnore]
     [Display(Name = "平移定位", GroupName = "操作", Order = 5)]
     public virtual DisplayCommand PanToCenterCommand => new DisplayCommand(e =>
     {

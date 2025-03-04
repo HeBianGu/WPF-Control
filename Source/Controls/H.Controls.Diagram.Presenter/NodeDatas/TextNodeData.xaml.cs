@@ -23,7 +23,7 @@ public class TextNodeData : PortableNodeData, ITextNodeData
     public override void LoadDefault()
     {
         base.LoadDefault();
-        this.FontSize = (double)Application.Current.FindResource(FontSizeKeys.Default);
+        this.FontSize = Application.Current == null ? 15.0 : (double)Application.Current.FindResource(FontSizeKeys.Default);
         //this.FontFamily = Application.Current.FindResource(LayoutKeys.FontFamily) as FontFamily;
         this.FontStyle = FontStyles.Normal;
         this.FontWeight = FontWeights.Normal;

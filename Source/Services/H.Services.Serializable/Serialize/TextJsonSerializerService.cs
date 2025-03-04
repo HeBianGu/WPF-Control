@@ -17,6 +17,9 @@ namespace H.Services.Serializable
             if (!File.Exists(filePath))
                 return null;
             string txt = File.ReadAllText(filePath);
+            System.Diagnostics.Debug.WriteLine(filePath);
+            if (string.IsNullOrEmpty(txt))
+                return null;
             return JsonSerializer.Deserialize(txt, type, this.GetOptions());
         }
 

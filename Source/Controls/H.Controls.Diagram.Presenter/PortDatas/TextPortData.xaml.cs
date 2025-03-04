@@ -31,7 +31,7 @@ public class TextPortData : PortData, ITextPortData
     public override void LoadDefault()
     {
         base.LoadDefault();
-        this.FontSize = (double)Application.Current.FindResource(FontSizeKeys.Default);
+        this.FontSize = Application.Current == null ? 15.0 : (double)Application.Current.FindResource(FontSizeKeys.Default);
         //this.FontFamily = Application.Current.FindResource(LayoutKeys.FontFamily) as FontFamily;
         this.FontWeight = FontWeights.Normal;
         this.FontStyle = FontStyles.Normal;

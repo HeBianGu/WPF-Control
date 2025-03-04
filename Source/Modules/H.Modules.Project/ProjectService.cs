@@ -17,10 +17,7 @@ namespace H.Modules.Project
 
         public override ProjectItem Create()
         {
-            return new ProjectItem()
-            {
-                Path = AppPaths.Instance.Project
-            };
+            return new ProjectItem();
         }
     }
 }

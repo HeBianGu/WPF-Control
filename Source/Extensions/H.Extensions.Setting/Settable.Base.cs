@@ -1,9 +1,9 @@
-﻿using H.Services.Common;
-using System.IO;
-using System.Reflection;
-using System.Xml.Serialization;
-using H.Services.Serializable;
-using H.Mvvm.ViewModels.Base;
+﻿global using H.Mvvm.ViewModels.Base;
+global using H.Services.Common;
+global using System.IO;
+global using System.Reflection;
+global using System.Xml.Serialization;
+global using H.Services.Serializable;
 
 namespace H.Extensions.Setting
 {

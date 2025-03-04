@@ -29,6 +29,7 @@ public class DiagramDataSourceConverter : GraphSource<INodeData, ILinkData>
                 //port.Id = socket.ID;
                 port.Content = socket;
                 port.Dock = socket.Dock;
+                port.PortType = socket.PortType;
                 port.Margin = socket.PortMargin;
                 //port.Visibility = System.Windows.Visibility.Collapsed;
                 node.AddPort(port);

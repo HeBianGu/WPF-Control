@@ -14,6 +14,10 @@ namespace H.Modules.Project
 {
     public abstract class ProjectItemBase : BindableBase, IProjectItem
     {
+        protected ProjectItemBase()
+        {
+            this.Path = ProjectOptions.Instance.DefaultProjectFolder;
+        }
         private string _title;
         [Required]
         [Display(Name = "标题", Order = 4)]
@@ -97,25 +101,37 @@ namespace H.Modules.Project
         protected void SaveToFile(object data)
         {
             var path = this.GetFilePath();
-            Ioc.GetService<IJsonSerializerService>().Save(path, data);
+            this.GetSerializer()?.Save(path, data);
         }
         public virtual bool Load(out string message)
         {
             message = null;
-            //var path = this.GetFilePath();
-            //Ioc.GetService<IJsonSerializerService>().Load(path, path);
+            //  Do ：测试用
+            if(this.LoadFile<DateTime>(out DateTime time))
+            {
+                DateTime dateTime = time;
+            }
             return true;
         }
 
-        protected virtual T LoadFile<T>()
+        protected virtual ISerializerService GetSerializer() => ProjectOptions.Instance.JsonSerializerService;
+
+        protected virtual bool LoadFile<T>(out T value)
         {
             var path = this.GetFilePath();
-            return Ioc.GetService<IJsonSerializerService>().Load<T>(path);
+            if (!File.Exists(path))
+            {
+                value = default(T); 
+                return false;
+            }
+            value = this.GetSerializer().Load<T>(path);
+            return true;
         }
 
         protected virtual object GetSaveFileData()
         {
-            return null;
+            //  Do ：测试用
+            return DateTime.Now;
         }
 
         public virtual bool Close(out string message)
@@ -126,7 +142,7 @@ namespace H.Modules.Project
 
         public virtual string GetFilePath()
         {
-            return System.IO.Path.Combine(this.Path, this.Title + "" + ProjectOptions.Instance.Extenstion);
+            return System.IO.Path.Combine(this.Path, this.Title + ProjectOptions.Instance.Extenstion);
         }
 
         public virtual void Dispose()

@@ -1,10 +1,11 @@
 ﻿global using H.Controls.Diagram.Datas;
 global using H.Controls.Diagram.Flowables;
+using System.Text.Json.Serialization;
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
 public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowableDiagramData
 {
-    protected override IEnumerable<Node> LoadNodes(IEnumerable<INodeData> nodeDatas, IEnumerable<ILinkData> linkDatas)
+    protected override IEnumerable<Node> LoadToNodes(IEnumerable<INodeData> nodeDatas, IEnumerable<ILinkData> linkDatas)
     {
         DiagramFlowableDataSourceConverter converter = new DiagramFlowableDataSourceConverter(nodeDatas, linkDatas);
         return converter.NodeSource;
@@ -195,7 +196,6 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
     private string _message;
     [Browsable(false)]
     [System.Text.Json.Serialization.JsonIgnore]
-
     [XmlIgnore]
     public string Message
     {

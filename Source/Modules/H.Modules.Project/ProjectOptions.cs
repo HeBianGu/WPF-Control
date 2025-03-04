@@ -1,15 +1,24 @@
 ﻿using H.Extensions.Setting;
+using H.Mvvm;
 using H.Services.Common;
+using H.Services.Serializable;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
+using System.Xml.Serialization;
 
 namespace H.Modules.Login
 {
     [Display(Name = "工程配置", GroupName = SettingGroupNames.GroupSystem, Description = "工程配置的信息")]
     public class ProjectOptions : IocOptionInstance<ProjectOptions>
     {
+        public override void LoadDefault()
+        {
+            base.LoadDefault();
+            this.DefaultProjectFolder = AppPaths.Instance.Project;
+        }
         private string _extenstion;
-        [DefaultValue(".wf")]
+        [DefaultValue(".prj")]
         [Display(Name = "扩展名")]
         public string Extenstion
         {
@@ -33,6 +42,37 @@ namespace H.Modules.Login
                 RaisePropertyChanged();
             }
         }
+
+        private string _defaultProjectFolder;
+        [Display(Name = "文件存储路径")]
+        public string DefaultProjectFolder
+        {
+            get { return _defaultProjectFolder; }
+            set
+            {
+                _defaultProjectFolder = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        private string _defaultProjectName;
+        [DefaultValue("新建文件")]
+        [Display(Name = "默认文件名称")]
+        public string DefaultProjectName
+        {
+            get { return _defaultProjectName; }
+            set
+            {
+                _defaultProjectName = value;
+                RaisePropertyChanged();
+            }
+        }
+
+
+        [XmlIgnore]
+        [JsonIgnore]
+        [Browsable(false)]
+        public IJsonSerializerService JsonSerializerService { get; set; } = new TextJsonSerializerService();
 
         //private string _historyPath;
         //[ReadOnly(true)]
