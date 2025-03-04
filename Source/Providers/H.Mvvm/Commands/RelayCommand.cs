@@ -56,10 +56,8 @@ namespace H.Mvvm
     {
         protected Action<object> _action;
         protected readonly Predicate<object> _canExecute;
-
         protected Action<IRelayCommand, object> _actionCommand;
         protected readonly Func<IRelayCommand, object, bool> _canExecuteCommand;
-
         public RelayCommand(Action<object> action)
         {
             _action = action;
@@ -214,7 +212,7 @@ namespace H.Mvvm
 
         private string _groupName;
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         public string GroupName

@@ -289,7 +289,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
     [Display(Name = "默认样式", GroupName = "操作", Order = 6, Description = "点击此功能，恢复所有节点、连线和端口默认样式")]
     //[Command(Icon = "\xe8dc")]
-    public new RelayCommand LoadDefaultCommand => new RelayCommand((s, e) =>
+    public new DisplayCommand LoadDefaultCommand => new DisplayCommand((s, e) =>
     {
         foreach (Node node in this.Nodes)
         {
@@ -306,13 +306,13 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     }, (s, e) => this.Nodes.Count > 0);
 
     [Display(Name = "删除", GroupName = "操作", Order = 4, Description = "点击此功能，删除选中的节点、连线或端口")]
-    public virtual RelayCommand DeleteCommand => new RelayCommand((s, e) =>
+    public virtual DisplayCommand DeleteCommand => new DisplayCommand((s, e) =>
     {
         this.SelectedPart.Delete();
     }, (s, e) => this.SelectedPart != null);
 
     [Display(Name = "清空", GroupName = "操作", Order = 5, Description = "点击此功能，删除所有节点、连线和端口")]
-    public virtual RelayCommand ClearCommand => new RelayCommand((s, e) =>
+    public virtual DisplayCommand ClearCommand => new DisplayCommand((s, e) =>
     {
         this.Clear();
     }, (s, e) => this.Nodes.Count > 0);
@@ -320,7 +320,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     [System.Text.Json.Serialization.JsonIgnore]
     [XmlIgnore]
     [Display(Name = "自动对齐", GroupName = "操作", Order = 5)]
-    public virtual RelayCommand AlignmentCommand => new RelayCommand((s, e) =>
+    public virtual DisplayCommand AlignmentCommand => new DisplayCommand((s, e) =>
     {
         this.Aligment();
     }, (s, e) => this.Nodes.Count > 0);
@@ -330,7 +330,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
     [XmlIgnore]
     [Display(Name = "上一个", GroupName = "操作", Order = 5)]
-    public virtual RelayCommand ProviewCommand => new RelayCommand((s, e) =>
+    public virtual DisplayCommand ProviewCommand => new DisplayCommand((s, e) =>
     {
         this.OnPreivewPart();
     }, (s, e) => this.SelectedPart?.GetPrevious() != null);
@@ -345,7 +345,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
     [XmlIgnore]
     [Display(Name = "下一个", GroupName = "操作", Order = 5)]
-    public virtual RelayCommand NextCommand => new RelayCommand((s, e) =>
+    public virtual DisplayCommand NextCommand => new DisplayCommand((s, e) =>
     {
         this.OnNextPart();
     }, (s, e) => this.SelectedPart?.GetNext() != null);

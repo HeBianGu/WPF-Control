@@ -27,5 +27,4 @@
         </Setter>
     </Style>
     <Style BasedOn="{StaticResource {x:Static local:MenuKeys.Default}}" TargetType="Menu" />
-
 </ResourceDictionary>

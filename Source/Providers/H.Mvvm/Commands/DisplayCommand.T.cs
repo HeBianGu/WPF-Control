@@ -21,5 +21,6 @@ namespace H.Mvvm
         public string Description { get; set; }
         public string GroupName { get; set; }
         public int Order { get; set; }
+        public string Icon { get; set; }
     }
 }

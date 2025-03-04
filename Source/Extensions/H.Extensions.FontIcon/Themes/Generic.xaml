@@ -29,10 +29,10 @@
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type local:IconSegoes}">
-        <ListBox ItemsSource="{Binding}">
+        <ListBox ItemsSource="{Binding}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <WrapPanel />
+                    <WrapPanel/>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
         </ListBox>

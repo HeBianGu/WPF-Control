@@ -85,20 +85,20 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
     }
 
     [Display(Name = "开始", GroupName = "操作", Order = 0)]
-    public RelayCommand StartCommand => new RelayCommand(async (s, e) =>
+    public DisplayCommand StartCommand => new DisplayCommand(async (s, e) =>
     {
         await this.Start();
     }, (s, e) => this.State.CanStart());
 
 
     [Display(Name = "停止", GroupName = "操作", Order = 0)]
-    public RelayCommand StopCommand => new RelayCommand((s, e) =>
+    public DisplayCommand StopCommand => new DisplayCommand((s, e) =>
     {
         this.Stop();
     }, (s, e) => this.State.CanStop());
 
     [Display(Name = "重置", GroupName = "操作", Order = 0)]
-    public RelayCommand ResetCommand => new RelayCommand((s, e) =>
+    public DisplayCommand ResetCommand => new DisplayCommand((s, e) =>
     {
         this.Reset();
     }, (s, e) => this.State.CanReset());

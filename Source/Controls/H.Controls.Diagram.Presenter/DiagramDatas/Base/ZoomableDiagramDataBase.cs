@@ -39,13 +39,13 @@ public abstract class ZoomableDiagramDataBase : DiagramDataBase, IZoomableDiagra
     //}
     //IZoombox
     [Display(Name = "缩放定位", GroupName = "操作", Order = 5)]
-    public virtual RelayCommand ZoomAllCommand => new RelayCommand((s, e) =>
+    public virtual DisplayCommand ZoomAllCommand => new DisplayCommand((s, e) =>
     {
         this.ZoomToFit();
     }, (s, e) => this.Nodes.Count > 0);
 
     [Display(Name = "平移定位", GroupName = "操作", Order = 5)]
-    public virtual RelayCommand PanToCenterCommand => new RelayCommand((s, e) =>
+    public virtual DisplayCommand PanToCenterCommand => new DisplayCommand((s, e) =>
     {
         this.PanToCenter();
     }, (s, e) => this.Nodes.Count > 0);

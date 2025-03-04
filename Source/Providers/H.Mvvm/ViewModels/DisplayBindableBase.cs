@@ -99,7 +99,7 @@ namespace H.Mvvm
         protected virtual IEnumerable<ICommand> CreateCommands()
         {
             var type = this.GetType();
-            System.Collections.Generic.IEnumerable<PropertyInfo> cmdps = type.GetProperties().Where(x => typeof(ICommand).IsAssignableFrom(x.PropertyType));
+            var cmdps = type.GetProperties().Where(x => typeof(IRelayCommand).IsAssignableFrom(x.PropertyType));
             foreach (PropertyInfo cmdp in cmdps)
             {
                 if (cmdp.CanRead == false)
@@ -107,7 +107,24 @@ namespace H.Mvvm
                 if (cmdp.GetCustomAttribute<BrowsableAttribute>()?.Browsable == false)
                     continue;
                 ICommand command = cmdp.GetValue(this) as ICommand;
-                //this.Commands.Add(command);
+                if (command is IRelayCommand relayCommand)
+                {
+                    var attr = cmdp.GetCustomAttribute<DisplayAttribute>();
+                    if (attr != null)
+                    {
+                        relayCommand.Name = relayCommand.Name ?? attr.Name;
+                        if (command is IDisplayCommand displayCommand)
+                        {
+                            displayCommand.Description = displayCommand.Description ?? attr.Description;
+                            if (displayCommand.Order <= 0)
+                                displayCommand.Order = attr.GetOrder() ?? 0;
+                            displayCommand.GroupName = displayCommand.GroupName ?? attr.GroupName;
+                            var icon = cmdp.GetCustomAttribute<IconAttribute>();
+                            if (icon != null)
+                                displayCommand.Icon = displayCommand.Icon ?? icon.Icon;
+                        }
+                    }
+                }
                 yield return command;
             }
         }

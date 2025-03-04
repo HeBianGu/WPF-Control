@@ -6,7 +6,6 @@ using System.Xml.Serialization;
 
 namespace H.Mvvm
 {
-
     public class DisplayCommand : RelayCommand, IDisplayCommand
     {
         public DisplayCommand(Action<object> action) : base(action)
@@ -31,7 +30,6 @@ namespace H.Mvvm
 
         private string _description;
         [System.Text.Json.Serialization.JsonIgnore]
-        
         [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         public virtual string Description
@@ -47,7 +45,6 @@ namespace H.Mvvm
 
         private int _order;
         [System.Text.Json.Serialization.JsonIgnore]
-        
         [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         public virtual int Order
@@ -59,5 +56,20 @@ namespace H.Mvvm
                 RaisePropertyChanged();
             }
         }
+
+        private string _icon;
+        [System.Text.Json.Serialization.JsonIgnore]
+        [XmlIgnore]
+        [Browsable(false)]
+        public string Icon
+        {
+            get { return _icon; }
+            set
+            {
+                _icon = value;
+                RaisePropertyChanged();
+            }
+        }
+
     }
 }

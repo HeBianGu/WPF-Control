@@ -5,7 +5,6 @@ namespace H.Services.Common
 {
     public class ShowMessageCommand : MessageCommandBase
     {
-        public string Message { get; set; }
         public override bool CanExecute(object parameter)
         {
             return !string.IsNullOrEmpty(this.Message);
