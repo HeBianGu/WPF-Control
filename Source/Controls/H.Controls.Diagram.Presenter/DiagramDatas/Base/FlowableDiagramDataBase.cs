@@ -88,7 +88,7 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
     public DisplayCommand StartCommand => new DisplayCommand(async e =>
     {
         await this.Start();
-    }, e => this.State.CanStart());
+    }, e => this.CanStart());
 
 
     [Display(Name = "停止", GroupName = "操作", Order = 0)]
@@ -174,6 +174,12 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
         //    return false;
         //}
         //return true;
+    }
+
+
+    protected virtual bool CanStart()
+    {
+        return this.State.CanStart() && this.Nodes.Count > 0;
     }
 
     public virtual void Stop()

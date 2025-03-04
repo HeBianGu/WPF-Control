@@ -41,24 +41,26 @@
                         <MenuItem Background="Transparent"
                                   Header="文件">
                             <MenuItem Cattach.Icon="{x:Static FontIcons.Add}"
-                                      Command="{Binding AddDiagramCommand}"
-                                      Header="新建" />
+                                      Command="{Binding NewProjectCommand}"
+                                      Header="新建项目" />
                             <MenuItem Cattach.Icon="{x:Static FontIcons.OpenFolderHorizontal}"
-                                      Command="{Binding AddDiagramCommand}"
-                                      Header="打开" />
+                                      Command="{Binding ShowProjectsCommand}"
+                                      Header="打开项目" />
                             <MenuItem Cattach.Icon="{x:Static FontIcons.Save}"
-                                      Command="{Binding AddDiagramCommand}"
-                                      Header="保存" />
+                                      Command="{Binding SaveProjectCommand}"
+                                      Header="保存项目" />
                             <Separator />
                             <MenuItem Cattach.Icon="{x:Static FontIcons.Cancel}"
                                       Command="{Binding AddDiagramCommand}"
                                       Header="退出" />
                         </MenuItem>
-                        <MenuItem Header="运行" ItemsSource="{Binding SelectedDiagramData.Commands}">
+                        <MenuItem Header="运行"
+                                  ItemsSource="{Binding CurrentProject.SelectedDiagramData.Commands}">
                             <ItemsControl.ItemContainerStyle>
-                                <Style TargetType="MenuItem" BasedOn="{StaticResource {x:Static MenuItemKeys.Default}}">
-                                    <Setter Property="Header" Value="{Binding Name}"/>
-                                    <Setter Property="Command" Value="{Binding}"/>
+                                <Style BasedOn="{StaticResource {x:Static MenuItemKeys.Default}}"
+                                       TargetType="MenuItem">
+                                    <Setter Property="Header" Value="{Binding Name}" />
+                                    <Setter Property="Command" Value="{Binding}" />
                                 </Style>
                             </ItemsControl.ItemContainerStyle>
                             <!--<MenuItem Cattach.Icon="{x:Static FontIcons.Play}"
@@ -169,7 +171,8 @@
         </ControlTemplate>
     </h:MainWindow.CaptionTempate>
     <Border BorderBrush="{DynamicResource {x:Static BrushKeys.Orange}}"
-            BorderThickness="0,1,0,0">
+            BorderThickness="0,1,0,0"
+            DataContext="{Binding CurrentProject}">
         <h:GridSplitterBox GridSpliterBackground="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                            IsExpanded="False"
                            MenuMaxWidth="250"
@@ -440,38 +443,6 @@
                                                     <h:ZoomboxView>250 500 500 500</h:ZoomboxView>
                                                 </h:Zoombox.ViewStack>
                                                 <ContentPresenter Content="{Binding}" />
-                                                <!--<h:Diagram
-                                                    x:Name="diagram"
-                                                    Width="2000"
-                                                    Height="2000"
-                                                    Background="Transparent"
-                                                    BorderBrush="{DynamicResource {x:Static BrushKeys.Blue}}"
-                                                    BorderThickness="2"
-                                                    FlowableZoomMode="Center"
-                                                    Focusable="True"
-                                                    NodesSource="{Binding ElementName=vm, Path=Nodes}"
-                                                    UseAnimation="False">
-                                                    <h:Diagram.Layout>
-                                                        <h:LocationLayout />
-                                                    </h:Diagram.Layout>
-                                                    <h:Diagram.LinkDrawer>
-                                                        <h:BrokenLinkDrawer />
-                                                    </h:Diagram.LinkDrawer>
-                                                    <b:Interaction.Behaviors>
-                                                        <h:DiagramDropTextNodeBehavior NodeType="{Binding NodeType}" />
-                                                    </b:Interaction.Behaviors>
-                                                    <b:Interaction.Triggers>
-                                                        <b:EventTrigger EventName="ItemsChanged">
-                                                            <b:InvokeCommandAction Command="{Binding ItemsChangedCommand}" PassEventArgsToCommand="True" />
-                                                        </b:EventTrigger>
-                                                        <b:EventTrigger EventName="SelectedPartChanged">
-                                                            <b:InvokeCommandAction Command="{Binding SelectedPartChangedCommand}" PassEventArgsToCommand="True" />
-                                                        </b:EventTrigger>
-                                                        <b:EventTrigger EventName="MouseDoubleClick">
-                                                            <b:InvokeCommandAction Command="{Binding ElementName=vm, Path=MouseDoubleClickCommand}" PassEventArgsToCommand="True" />
-                                                        </b:EventTrigger>
-                                                    </b:Interaction.Triggers>
-                                                </h:Diagram>-->
                                             </h:Zoombox>
                                         </Border>
                                     </DataTemplate>
@@ -578,7 +549,7 @@
                                                         SelectedIndex="{Binding SelectedImageTabIndex}">
                                                 <TabItem MinWidth="100"
                                                          Header="图像">
-                                                    <Grid>
+                                                    <!--<Grid>
                                                         <h:Zoombox x:Name="zoomview"
                                                                    Background="{DynamicResource {x:Static BrushKeys.Tile25}}"
                                                                    DragModifiers=""
@@ -594,16 +565,16 @@
                                                                 <h:ZoomBoxFitOnSizeChangedBehavior />
                                                             </b:Interaction.Behaviors>
                                                             <h:Zoombox.ViewStack>
-                                                                <!--<h:ZoomboxView>0 0 1000 1000</h:ZoomboxView>-->
+                                                                --><!--<h:ZoomboxView>0 0 1000 1000</h:ZoomboxView>--><!--
                                                                 <h:ZoomboxView>Fit</h:ZoomboxView>
-                                                                <!--<h:ZoomboxView>Fill</h:ZoomboxView>-->
+                                                                --><!--<h:ZoomboxView>Fill</h:ZoomboxView>--><!--
                                                             </h:Zoombox.ViewStack>
                                                             <b:Interaction.Triggers>
                                                                 <h:MouseTrigger ClickCount="2"
                                                                                 Mode="Right"
                                                                                 MouseButton="Left"
                                                                                 UseHandle="False">
-                                                                    <!--<b:InvokeCommandAction Command="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.File.NextCommand}" />-->
+                                                                    --><!--<b:InvokeCommandAction Command="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.File.NextCommand}" />--><!--
                                                                     <h:CallMethodActionEx MethodName="FitToBounds"
                                                                                           TargetObject="{Binding ElementName=zoomview}" />
                                                                 </h:MouseTrigger>
@@ -611,7 +582,7 @@
                                                                                 Mode="Left"
                                                                                 MouseButton="Left"
                                                                                 UseHandle="False">
-                                                                    <!--<b:InvokeCommandAction Command="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.File.PreviousCommand}" />-->
+                                                                    --><!--<b:InvokeCommandAction Command="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.File.PreviousCommand}" />--><!--
                                                                     <h:CallMethodActionEx MethodName="FitToBounds"
                                                                                           TargetObject="{Binding ElementName=zoomview}" />
                                                                 </h:MouseTrigger>
@@ -649,12 +620,12 @@
                                                                 </TextBlock>
                                                             </DockPanel>
                                                         </Border>
-                                                    </Grid>
+                                                    </Grid>-->
                                                 </TabItem>
                                                 <TabItem MinWidth="100"
                                                          HorizontalContentAlignment="Center"
                                                          Header="模块结果">
-                                                    <Grid>
+                                                    <!--<Grid>
                                                         <h:Zoombox x:Name="zoomview1"
                                                                    Background="{DynamicResource {x:Static BrushKeys.Tile25}}"
                                                                    DragModifiers=""
@@ -718,7 +689,7 @@
                                                             </TextBlock.Style>
                                                         </TextBlock>
 
-                                                    </Grid>
+                                                    </Grid>-->
                                                 </TabItem>
                                             </TabControl>
                                         </DockPanel>

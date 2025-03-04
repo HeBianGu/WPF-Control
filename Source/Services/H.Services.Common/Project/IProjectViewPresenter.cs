@@ -4,6 +4,8 @@ namespace H.Services.Common
 {
     public interface IProjectViewPresenter
     {
+        Task<bool?> NewProject();
 
+        Task<bool?> ShowProjectList();
     }
 }

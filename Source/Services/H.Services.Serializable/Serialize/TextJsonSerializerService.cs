@@ -10,7 +10,7 @@ using System.Windows.Threading;
 
 namespace H.Services.Serializable
 {
-    public class JsonSerializerService : IJsonSerializerService
+    public class TextJsonSerializerService : IJsonSerializerService
     {
         public object Load(string filePath, Type type)
         {

@@ -44,7 +44,7 @@ namespace H.Extensions.Setting
 
         protected virtual ISerializerService GetSerializerService()
         {
-            return new JsonSerializerService();
+            return new TextJsonSerializerService();
         }
 
         public virtual bool Load(out string message)

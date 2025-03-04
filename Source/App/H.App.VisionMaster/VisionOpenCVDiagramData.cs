@@ -22,7 +22,6 @@ using System.Windows;
 using System.Windows.Media;
 
 namespace H.App.VisionMaster;
-
 public class VisionOpenCVDiagramData : OpenCVDiagramData, IVisionOpenCVDiagramData
 {
     public VisionOpenCVDiagramData()

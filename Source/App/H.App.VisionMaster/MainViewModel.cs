@@ -6,7 +6,9 @@ using H.Controls.Diagram.Presenter.DiagramDatas.Base;
 using H.Controls.Diagram.Presenter.NodeDatas;
 using H.Controls.Diagram.Presenters.OpenCV;
 using H.Controls.Diagram.Presenters.OpenCV.NodeDataGroups;
+using H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Other;
 using H.Extensions.Common;
+using H.Iocable;
 using H.Mvvm;
 using H.Mvvm.ViewModels.Base;
 using H.Services.Common;
@@ -25,86 +27,84 @@ public class MainViewModel : DisplayBindableBase
     public MainViewModel()
     {
         //this.NodeDataGroups = this.CreateNodeDataGroups().ToObservable();
-        this.DiagramDatas.Add(this.CreateDiagramData());
-        this.SelectedDiagramData = this.DiagramDatas.FirstOrDefault();
+        //this.DiagramDatas.Add(this.CreateDiagramData());
+        //this.SelectedDiagramData = this.DiagramDatas.FirstOrDefault();
+
+        IocProject.Instance.CurrentChanged = (o, n) =>
+        {
+            //if (n == null)
+            //    return;
+            //this.DiagramDatas = (n as VisionProjectItem).DiagramDatas;
+            //this.SelectedDiagramData = this.DiagramDatas.FirstOrDefault();
+            if (n is IVisionProjectItem vision)
+                this.CurrentProject = vision;
+        };
     }
+
+    private IVisionProjectItem _currentProject;
+    public IVisionProjectItem CurrentProject
+    {
+        get { return _currentProject; }
+        set
+        {
+            _currentProject = value;
+            RaisePropertyChanged();
+        }
+    }
+
 
     public IVisionOpenCVDiagramData CreateDiagramData()
     {
         return new VisionOpenCVDiagramData() { Width = 1000, Height = 1500 };
     }
 
-    //public IEnumerable<INodeDataGroup> CreateNodeDataGroups()
+    //private IVisionOpenCVDiagramData _selectedDiagramData;
+    //public IVisionOpenCVDiagramData SelectedDiagramData
     //{
-    //    return typeof(BasicDataGroup).Assembly.GetInstances<INodeDataGroup>().OrderBy(x => x.Order);
-    //}
-
-    //private ObservableCollection<INodeDataGroup> _nodeDataGroups = new ObservableCollection<INodeDataGroup>();
-    //public ObservableCollection<INodeDataGroup> NodeDataGroups
-    //{
-    //    get { return _nodeDataGroups; }
+    //    get { return _selectedDiagramData; }
     //    set
     //    {
-    //        _nodeDataGroups = value;
+    //        _selectedDiagramData = value;
     //        RaisePropertyChanged();
     //    }
     //}
 
-    private IVisionOpenCVDiagramData _selectedDiagramData;
-    public IVisionOpenCVDiagramData SelectedDiagramData
-    {
-        get { return _selectedDiagramData; }
-        set
-        {
-            _selectedDiagramData = value;
-            RaisePropertyChanged();
-        }
-    }
+    //private ObservableCollection<IVisionOpenCVDiagramData> _diagramDatas = new ObservableCollection<IVisionOpenCVDiagramData>();
+    //public ObservableCollection<IVisionOpenCVDiagramData> DiagramDatas
+    //{
+    //    get { return _diagramDatas; }
+    //    set
+    //    {
+    //        _diagramDatas = value;
+    //        RaisePropertyChanged();
+    //    }
+    //}
 
-
-    private ObservableCollection<IVisionOpenCVDiagramData> _diagramDatas = new ObservableCollection<IVisionOpenCVDiagramData>();
-    public ObservableCollection<IVisionOpenCVDiagramData> DiagramDatas
+    public RelayCommand NewProjectCommand => new RelayCommand(async x =>
     {
-        get { return _diagramDatas; }
-        set
-        {
-            _diagramDatas = value;
-            RaisePropertyChanged();
-        }
-    }
-
-    public RelayCommand AddDiagramCommand => new RelayCommand(async x =>
-    {
-        var data = this.CreateDiagramData();
-        var r = await IocMessage.Form.ShowEdit(data, null, null, x => x.UseGroupNames = "基础信息,数据");
-        if (r != true)
-            return;
-        this.DiagramDatas.Add(data);
-        this.SelectedDiagramData = data;
+        var p = Ioc.GetService<IProjectViewPresenter>();
+        await p.NewProject();
     });
 
-    public RelayCommand DeleteDiagramCommand => new RelayCommand(e =>
+    public RelayCommand SaveProjectCommand => new RelayCommand(async x =>
     {
-        if (this.SelectedDiagramData == null)
+        string message = null;
+        if (this.CurrentProject == null)
             return;
-        this.DiagramDatas.Remove(this.SelectedDiagramData);
-    }, e => this.SelectedDiagramData != null && this.DiagramDatas.Count > 1);
+        var r = await IocMessage.Dialog.ShowWait(x =>
+        {
+            return this.CurrentProject?.Save(out message);
 
-    public RelayCommand SaveDiagramCommand => new RelayCommand(e =>
-    {
-        if (this.SelectedDiagramData == null)
-            return;
-    }, e => this.SelectedDiagramData != null);
+        }, x => x.Title = $"正在保存工程<{this.CurrentProject.Title}>...");
+        if (r == false && !string.IsNullOrEmpty(message))
+            await IocMessage.ShowDialogMessage(message);
+    });
 
-    public RelayCommand SaveAsDiagramTemplateCommand => new RelayCommand(e =>
+    public RelayCommand ShowProjectsCommand => new RelayCommand(async x =>
     {
-        if (this.SelectedDiagramData == null)
-            return;
-    }, e => this.SelectedDiagramData != null);
+        var p = Ioc.GetService<IProjectViewPresenter>();
+        await p.ShowProjectList();
+    });
 
-    public RelayCommand DuplicationDiagramCommand => new RelayCommand(e =>
-    {
-        if (this.SelectedDiagramData == null)
-            return;
-    }, e => this.SelectedDiagramData != null);
+
 }

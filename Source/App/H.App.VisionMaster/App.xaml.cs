@@ -30,6 +30,8 @@ public partial class App : ApplicationBase
         services.AddSingleton<IFormMessageService, FormMessageService>();
         services.AddNoticeMessage();
         services.AddSnackMessage();
+        services.AddProject<VisionProjectService>(x => x.Extenstion = ".vmp");
+        services.AddTextJsonSerializerService();
     }
 
     protected override void Configure(IApplicationBuilder app)

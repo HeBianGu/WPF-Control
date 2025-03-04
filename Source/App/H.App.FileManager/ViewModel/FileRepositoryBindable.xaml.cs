@@ -166,7 +166,7 @@ namespace H.App.FileManager
             await IocMessage.Dialog.ShowForeach(() => this.Collection.FilterSource.Select(x => x.Model).OfType<fm_dd_video>(), item =>
             {
                 string path = Path.ChangeExtension(item.Url, ".json");
-                JsonSerializerService service = new JsonSerializerService();
+                TextJsonSerializerService service = new TextJsonSerializerService();
                 service.Save(path, item);
                 return Tuple.Create(true, item.Name);
             });

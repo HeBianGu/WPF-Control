@@ -20,6 +20,7 @@
     <ProjectReference Include="..\..\Modules\H.Modules.Messages.Form\H.Modules.Messages.Form.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Messages.Notice\H.Modules.Messages.Notice.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Messages.Snack\H.Modules.Messages.Snack.csproj" />
+    <ProjectReference Include="..\..\Modules\H.Modules.Project\H.Modules.Project.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Setting\H.Modules.Setting.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Theme\H.Modules.Theme.csproj" />
     <ProjectReference Include="..\..\Providers\H.Mvvm\H.Mvvm.csproj" />

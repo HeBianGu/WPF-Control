@@ -5,6 +5,7 @@ using System.Reflection;
 
 namespace H.Extensions.NewtonsoftJson
 {
+
     public class TypeConverterJsonConverter<T> : JsonConverter where T : TypeConverter
     {
         T CreateTypeConverter()

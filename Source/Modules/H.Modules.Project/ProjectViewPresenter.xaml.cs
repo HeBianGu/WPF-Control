@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Xml.Serialization;
+using System.Threading.Tasks;
 
 namespace H.Modules.Project
 {
@@ -21,23 +22,28 @@ namespace H.Modules.Project
         }
         [Browsable(false)]
         [System.Text.Json.Serialization.JsonIgnore]
-
         [System.Xml.Serialization.XmlIgnore]
-        public RelayCommand NewCommand => new RelayCommand(async (s, e) =>
+        public RelayCommand NewCommand => new RelayCommand(async e =>
+        {
+            await this.NewProject();
+        }, e => this._projectService != null);
+
+
+        public async Task<bool?> NewProject()
         {
             var project = this._projectService.Create();
             var r = await IocMessage.Form.ShowEdit(project, x => x.Title = "新建工程");
             if (r != true)
-                return;
+                return false;
             this._projectService.Add(project);
             this._projectService.Current = project;
-        }, (s, e) => this._projectService != null);
+            return true;
+        }
 
         [Browsable(false)]
         [System.Text.Json.Serialization.JsonIgnore]
-
         [System.Xml.Serialization.XmlIgnore]
-        public RelayCommand NewOrListCommand => new RelayCommand(e=>
+        public RelayCommand NewOrListCommand => new RelayCommand(e =>
         {
             if (this._projectService.Where().Count() == 0)
             {
@@ -46,13 +52,17 @@ namespace H.Modules.Project
             }
             this.ListCommand.Execute(null);
 
-        }, (s, e) => this._projectService != null);
+        }, e => this._projectService != null);
 
         [Browsable(false)]
         [System.Text.Json.Serialization.JsonIgnore]
-
         [System.Xml.Serialization.XmlIgnore]
-        public RelayCommand ListCommand => new RelayCommand(async (s, e) =>
+        public RelayCommand ListCommand => new RelayCommand(async e =>
+        {
+            await this.ShowProjectList();
+        }, e => this._projectService != null && this._projectService.Where().Count() > 0);
+
+        public async Task<bool?> ShowProjectList()
         {
             var project = new ProjectListViewPresenter();
             project.SelectedItem = this._projectService.Current;
@@ -61,11 +71,15 @@ namespace H.Modules.Project
                 x.Title = "选择工程";
                 x.MinWidth = 600;
                 x.MinHeight = 400;
+                x.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Stretch;
+                x.VerticalContentAlignment = System.Windows.VerticalAlignment.Stretch;
+                x.Padding = new System.Windows.Thickness(2);
             });
             if (project.SelectedItem == null)
-                return;
+                return false;
             if (r == true)
                 this._projectService.Current = project.SelectedItem;
-        }, (s, e) => this._projectService != null && this._projectService.Where().Count() > 0);
+            return true;
+        }
     }
 }

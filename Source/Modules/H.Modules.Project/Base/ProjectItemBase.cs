@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
 using H.Mvvm.ViewModels.Base;
+using H.Services.Serializable;
 
 namespace H.Modules.Project
 {
@@ -86,13 +87,35 @@ namespace H.Modules.Project
         public virtual bool Save(out string message)
         {
             message = null;
+            var data = this.GetSaveFileData();
+            if (data == null)
+                return true;
+            this.SaveToFile(data);
             return true;
         }
 
+        protected void SaveToFile(object data)
+        {
+            var path = this.GetFilePath();
+            Ioc.GetService<IJsonSerializerService>().Save(path, data);
+        }
         public virtual bool Load(out string message)
         {
             message = null;
+            //var path = this.GetFilePath();
+            //Ioc.GetService<IJsonSerializerService>().Load(path, path);
             return true;
+        }
+
+        protected virtual T LoadFile<T>()
+        {
+            var path = this.GetFilePath();
+            return Ioc.GetService<IJsonSerializerService>().Load<T>(path);
+        }
+
+        protected virtual object GetSaveFileData()
+        {
+            return null;
         }
 
         public virtual bool Close(out string message)

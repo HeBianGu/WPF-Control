@@ -2,6 +2,7 @@
 using H.Services.Common;
 using Newtonsoft.Json;
 using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -16,6 +17,7 @@ namespace H.Extensions.NewtonsoftJson
             base.LoadDefault();
             this.JsonSerializerSettings = this.CreateSerializerSettings();
         }
+        [Browsable(false)]
         [JsonInclude]
         public JsonSerializerSettings JsonSerializerSettings { get; set; }
 

@@ -19,7 +19,7 @@ namespace H.Modules.Project
     [Display(Name = "工程数据", GroupName = SettingGroupNames.GroupData)]
     public abstract class ProjectServiceBase<T> : BindableBase, IProjectService, IDataSource<T> where T : IProjectItem
     {
-        IOptions<ProjectOptions> _options;
+        private readonly IOptions<ProjectOptions> _options;
         public ProjectServiceBase(IOptions<ProjectOptions> options)
         {
             _options = options;
@@ -41,7 +41,7 @@ namespace H.Modules.Project
 
         public event EventHandler CollectionChanged;
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         public IProjectItem Current
@@ -62,7 +62,7 @@ namespace H.Modules.Project
         }
 
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         public Action<IProjectItem, IProjectItem> CurrentChanged { get; set; }
@@ -79,7 +79,7 @@ namespace H.Modules.Project
             return func == null ? this.Collection.OfType<IProjectItem>() : this.Collection.Where(x => func(x)).OfType<IProjectItem>();
         }
 
-        protected ISerializerService GetSerializer() => new JsonSerializerService();
+        protected virtual ISerializerService GetSerializer() => new TextJsonSerializerService();
         protected virtual void OnItemChanged()
         {
             if (this._options.Value.SaveMode == ProjectSaveMode.OnProjectChanged)

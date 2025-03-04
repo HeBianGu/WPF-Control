@@ -10,10 +10,9 @@ namespace H.Modules.Project
 {
     public class ProjectService : ProjectServiceBase<ProjectItem>, IProjectService
     {
-        IOptions<ProjectOptions> _options;
         public ProjectService(IOptions<ProjectOptions> options) : base(options)
         {
-            _options = options;
+
         }
 
         public override ProjectItem Create()
