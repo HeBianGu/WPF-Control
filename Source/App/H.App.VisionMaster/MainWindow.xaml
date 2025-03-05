@@ -12,14 +12,15 @@
               h:Cattach.TitleFontSize="30"
               CaptionHeight="85"
               Cattach.TitleMargin="10 20"
+              DataContext="{Binding Source={x:Static IocProject.Instance}, Path=Current}"
               mc:Ignorable="d">
-    <Window.Resources>
+    <!--<Window.Resources>
         <h:BindingProxy x:Key="S.BindingProxy.MainViewModel"
                         Data="{Binding ElementName=vm}" />
-    </Window.Resources>
-    <Window.DataContext>
+    </Window.Resources>-->
+    <!--<Window.DataContext>
         <local:MainViewModel x:Name="vm" />
-    </Window.DataContext>
+    </Window.DataContext>-->
     <h:MainWindow.CaptionTempate>
         <ControlTemplate>
             <DockPanel>
@@ -54,15 +55,16 @@
                                           Command="{ShowCurrentProjectFileCommand}"
                                           Header="打开项目文件" />
                                 <MenuItem Cattach.Icon="{x:Static FontIcons.Calendar}"
-                                          Header="最近的项目" ItemsSource="{Binding Source={x:Static IocProject.Instance},Path=Collection}">
+                                          Header="最近的项目"
+                                          ItemsSource="{Binding Source={x:Static IocProject.Instance}, Path=Collection}">
                                     <!--<MenuItem Cattach.Icon="{x:Static FontIcons.Save}"
                                               Command="{ShowCurrentProjectFileCommand}"
                                               Header="打开项目文件" />-->
                                     <MenuItem.ItemContainerStyle>
                                         <Style TargetType="MenuItem">
-                                            <Setter Property="Command" Value="{ShowOpenProjectDialogCommand}"/>
-                                            <Setter Property="CommandParameter" Value="{Binding}"/>
-                                            <Setter Property="Height" Value="50"/>
+                                            <Setter Property="Command" Value="{ShowOpenProjectDialogCommand}" />
+                                            <Setter Property="CommandParameter" Value="{Binding}" />
+                                            <Setter Property="Height" Value="50" />
                                         </Style>
                                     </MenuItem.ItemContainerStyle>
                                 </MenuItem>
@@ -78,32 +80,10 @@
                                     <Style BasedOn="{StaticResource {x:Static MenuItemKeys.Default}}"
                                            TargetType="MenuItem">
                                         <Setter Property="Header" Value="{Binding Name}" />
+                                        <Setter Property="Cattach.Icon" Value="{Binding Icon}" />
                                         <Setter Property="Command" Value="{Binding}" />
                                     </Style>
                                 </ItemsControl.ItemContainerStyle>
-                                <!--<MenuItem Cattach.Icon="{x:Static FontIcons.Play}"
-                  Command="{Binding SelectedDiagramData.StartCommand}"
-                  Header="启动" />
-        <MenuItem Cattach.Icon="{x:Static FontIcons.Stop}"
-                  Command="{Binding SelectedDiagramData.StartCommand}"
-                  Header="停止" />
-        <MenuItem Cattach.Icon="{x:Static FontIcons.Refresh}"
-                  Command="{Binding SelectedDiagramData.StartCommand}"
-                  Header="重置" />
-        <Separator />
-        <MenuItem Cattach.Icon="{x:Static FontIcons.Delete}"
-                  Command="{Binding SelectedDiagramData.StartCommand}"
-                  Header="清空" />
-        <MenuItem Cattach.Icon="{x:Static FontIcons.CheckMark}"
-                  Command="{Binding SelectedDiagramData.StartCommand}"
-                  Header="全选" />
-        <Separator />
-        <MenuItem Cattach.Icon="{x:Static FontIcons.Next}"
-                  Command="{Binding SelectedDiagramData.NextCommand}"
-                  Header="上一个" />
-        <MenuItem Cattach.Icon="{x:Static FontIcons.Previous}"
-                  Command="{Binding SelectedDiagramData.PreviourCommand}"
-                  Header="下一个" />-->
                             </MenuItem>
                             <MenuItem Header="系统">
                                 <MenuItem Cattach.Icon="{x:Static FontIcons.Setting}"
@@ -146,7 +126,23 @@
                                             Content="&#xE105;"
                                             ToolTip="保存项目" />
                             <Separator Style="{DynamicResource {x:Static SeparatorKeys.Vertical}}" />
-                            <FontIconButton Command="{Binding AddDiagramCommand}"
+                            <!--  选中流程图的操作  -->
+                            <ItemsControl ItemsSource="{Binding SelectedDiagramData.Commands}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <FontIconButton Command="{Binding}"
+                                                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl}, Path=DataContext.SelectedDiagramData.SelectedPart}"
+                                                        Content="{Binding Icon}"
+                                                        ToolTip="{Binding Name}" />
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal" />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                            </ItemsControl>
+                            <!--<FontIconButton Command="{Binding AddDiagramCommand}"
                                             Content="&#xE768;"
                                             ToolTip="启动" />
                             <FontIconButton Command="{Binding AddDiagramCommand}"
@@ -170,8 +166,8 @@
                                             ToolTip="撤销" />
                             <FontIconButton Command="{Binding AddDiagramCommand}"
                                             Content="&#xE7A7;"
-                                            ToolTip="重做" />
-                            <Separator Style="{DynamicResource {x:Static SeparatorKeys.Vertical}}" />
+                                            ToolTip="重做" />-->
+                            <!--<Separator Style="{DynamicResource {x:Static SeparatorKeys.Vertical}}" />
                             <FontIconButton Command="{Binding AddDiagramCommand}"
                                             Content="&#xE17A;"
                                             ToolTip="删除节点" />
@@ -180,7 +176,38 @@
                                             ToolTip="缩小" />
                             <FontIconButton Command="{Binding AddDiagramCommand}"
                                             Content="&#xE1A4;"
-                                            ToolTip="放大" />
+                                            ToolTip="放大" />-->
+
+                            <Separator Style="{DynamicResource {x:Static SeparatorKeys.Vertical}}" />
+                            <!--  选中节点的操作  -->
+                            <!--<FontIconButton Command="{Binding SelectedDiagramData.SelectedPart.DataContext.SettingCommand}"
+                                            Content="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Command.Icon}"
+                                            ToolTip="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Command.Name}" />
+                            <FontIconButton Command="{Binding SelectedDiagramData.SelectedPart.DataContext.ViewCommand}"
+                                            Content="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Command.Icon}"
+                                            ToolTip="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Command.Name}" />-->
+                            <FontIconButton Command="{h:ShowViewCommand}"
+                                            Content="{x:Static FontIcons.View}"
+                                            CommandParameter="{Binding SelectedDiagramData.SelectedPart.DataContext}"
+                                            ToolTip="查看" />
+                            <FontIconButton Command="{h:ShowTabEditCommand}" Content="{x:Static FontIcons.Edit}"
+                                            CommandParameter="{Binding SelectedDiagramData.SelectedPart.DataContext}"
+                                            ToolTip="编辑" />
+                            <!--<ItemsControl ItemsSource="{Binding SelectedDiagramData.SelectedPart.DataContext.Commands}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <FontIconButton Command="{Binding}"
+                                                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl}, Path=DataContext.SelectedDiagramData.SelectedPart}"
+                                                        Content="{Binding Icon}"
+                                                        ToolTip="{Binding Name}" />
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal" />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                            </ItemsControl>-->
                             <!--<FontIconButton Content="&#xE1CD;" />
                             <FontIconButton Content="&#xF000;" />
                             <FontIconButton Content="&#xEC58;" />
@@ -194,8 +221,7 @@
         </ControlTemplate>
     </h:MainWindow.CaptionTempate>
     <Border BorderBrush="{DynamicResource {x:Static BrushKeys.Orange}}"
-            BorderThickness="0,1,0,0"
-            DataContext="{Binding Source={x:Static IocProject.Instance}, Path=Current}">
+            BorderThickness="0,1,0,0">
         <h:GridSplitterBox GridSpliterBackground="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                            IsExpanded="False"
                            MenuMaxWidth="250"
@@ -362,30 +388,33 @@
                                         <DockPanel>
                                             <FontIconTextBlock Text="&#xF003;" />
                                             <FontIconButton Width="Auto"
-                                                            Command="{Binding CancelCommand}"
+                                                            Command="{Binding ResetCommand}"
                                                             CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=TabControl}}"
                                                             Content="&#xE1CD;"
-                                                            DockPanel.Dock="Right" />
+                                                            DockPanel.Dock="Right"
+                                                            ToolTip="重置" />
                                             <FontIconButton Width="Auto"
                                                             Command="{Binding StopCommand}"
                                                             CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=TabControl}}"
                                                             Content="&#xE1D2;"
-                                                            DockPanel.Dock="Right" />
+                                                            DockPanel.Dock="Right"
+                                                            ToolTip="停止" />
                                             <FontIconButton Width="Auto"
                                                             Command="{Binding StartCommand}"
                                                             CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=TabControl}}"
                                                             Content="{x:Static FontIcons.Replay}"
-                                                            DockPanel.Dock="Right" />
+                                                            DockPanel.Dock="Right"
+                                                            ToolTip="启动" />
                                             <TextBlock Margin="10,0"
                                                        VerticalAlignment="Center"
                                                        Text="{Binding Name}">
                                                 <TextBlock.ContextMenu>
                                                     <ContextMenu>
-                                                        <MenuItem Command="{Binding Source={StaticResource S.BindingProxy.MainViewModel}, Path=Data.DeleteDiagramCommand}"
+                                                        <MenuItem Command="{Binding Source={x:Static IocProject.Instance}, Path=Current.DeleteDiagramCommand}"
                                                                   Header="删除" />
-                                                        <MenuItem Command="{Binding Source={StaticResource S.BindingProxy.MainViewModel}, Path=Data.SaveAsDiagramTemplateCommand}"
+                                                        <MenuItem Command="{Binding Source={x:Static IocProject.Instance}, Path=Current.SaveAsDiagramTemplateCommand}"
                                                                   Header="另存为模板" />
-                                                        <MenuItem Command="{Binding Source={StaticResource S.BindingProxy.MainViewModel}, Path=Data.DuplicationDiagramCommand}"
+                                                        <MenuItem Command="{Binding Source={x:Static IocProject.Instance}, Path=Current.DuplicationDiagramCommand}"
                                                                   Header="重复" />
                                                     </ContextMenu>
                                                 </TextBlock.ContextMenu>
@@ -447,8 +476,6 @@
                                         </Border>
                                     </ControlTemplate>
                                 </TabControl.Template>
-                                <!--<h:TestBindable Value="流程1" />-->
-                                <!--<h:TestBindable Value="流程2" />-->
                                 <TabControl.ContentTemplate>
                                     <DataTemplate>
                                         <Border BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
@@ -508,8 +535,8 @@
                                                         <TextBlock>
                                                             <b:Interaction.Behaviors>
                                                                 <h:TextBlockIndexOfBebavior DefaultFromValue="1"
-                                                                                            Item="{Binding SelectedImageFile}"
-                                                                                            Source="{Binding ImageFiles}" />
+                                                                                            Item="{Binding SelectedImageData}"
+                                                                                            Source="{Binding ImageDatas}" />
                                                             </b:Interaction.Behaviors>
                                                         </TextBlock>
                                                     </DockPanel>
@@ -517,15 +544,25 @@
                                                 <Cattach.CaptionRightTemplate>
                                                     <ControlTemplate>
                                                         <DockPanel HorizontalAlignment="Right">
-                                                            <FontIconButton Content="&#xE74D;"
-                                                                            DockPanel.Dock="Right" />
-                                                            <FontIconButton Content="&#xED25;"
-                                                                            DockPanel.Dock="Right" />
-                                                            <FontIconButton Content="&#xF12B;"
-                                                                            DockPanel.Dock="Right" />
-                                                            <FontIconButton Content="&#xF407;"
-                                                                            DockPanel.Dock="Right" />
-                                                            <FontIconButton Content="&#xF463;"
+                                                            <FontIconButton Command="{Binding ClearImageDatasCommand}"
+                                                                            Content="{x:Static FontIcons.Delete}"
+                                                                            DockPanel.Dock="Right"
+                                                                            ToolTip="清空" />
+                                                            <FontIconButton Command="{Binding DeleteImageDataCommand}"
+                                                                            Content="{x:Static FontIcons.Clear}"
+                                                                            DockPanel.Dock="Right"
+                                                                            ToolTip="删除" />
+                                                            <FontIconButton Command="{Binding AddImageDatasCommand}"
+                                                                            Content="{x:Static FontIcons.OpenFolderHorizontal}"
+                                                                            DockPanel.Dock="Right"
+                                                                            ToolTip="添加文件夹" />
+                                                            <!--<FontIconButton Content="&#xF12B;"
+                                                                            DockPanel.Dock="Right" />-->
+                                                            <FontIconButton Command="{Binding AddImageDataCommand}"
+                                                                            Content="&#xF407;"
+                                                                            DockPanel.Dock="Right"
+                                                                            ToolTip="添加文件" />
+                                                            <!--<FontIconButton Content="&#xF463;"
                                                                             DockPanel.Dock="Right" />
                                                             <FontIconButton Content="&#xF61B;"
                                                                             DockPanel.Dock="Right" />
@@ -538,7 +575,20 @@
                                                             <FontIconButton Content="&#xE9A6;"
                                                                             DockPanel.Dock="Right" />
                                                             <FontIconButton Content="&#xED14;"
-                                                                            DockPanel.Dock="Right" />
+                                                                            DockPanel.Dock="Right" />-->
+                                                            <ToggleButton Height="Auto"
+                                                                          Margin="2,0"
+                                                                          Padding="5,3"
+                                                                          VerticalAlignment="Center"
+                                                                          Content="运行全部"
+                                                                          DockPanel.Dock="Right"
+                                                                          IsChecked="{Binding UseAllImage}" />
+                                                            <ToggleButton Height="Auto"
+                                                                          Padding="5,3"
+                                                                          VerticalAlignment="Center"
+                                                                          Content="自动切换"
+                                                                          DockPanel.Dock="Right"
+                                                                          IsChecked="{Binding UseAutoSwitch}" />
                                                         </DockPanel>
                                                     </ControlTemplate>
                                                 </Cattach.CaptionRightTemplate>

@@ -18,7 +18,6 @@ public static class DiagramCommands
     public static RoutedUICommand SelectAll = new RoutedUICommand() { Text = "全选" };
     public static RoutedUICommand Next = new RoutedUICommand() { Text = "下一个" };
     public static RoutedUICommand Previous = new RoutedUICommand() { Text = "上一个" };
-
     public static RoutedUICommand MoveLeft = new RoutedUICommand() { Text = "左移动" };
     public static RoutedUICommand MoveRight = new RoutedUICommand() { Text = "右移动" };
     public static RoutedUICommand MoveUp = new RoutedUICommand() { Text = "上移动" };

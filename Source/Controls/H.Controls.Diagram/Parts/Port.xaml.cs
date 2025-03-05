@@ -134,4 +134,6 @@ public partial class Port : FlowablePart
         int index = ports.IndexOf(this);
         return index == ports.Count - 1 ? ports[0] : ports[index + 1];
     }
+
+    public IPortData Data => this.GetContent<IPortData>();
 }

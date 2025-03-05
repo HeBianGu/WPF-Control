@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using H.Extensions.FontIcon;
+using Microsoft.Win32;
 using System.Windows.Media.Imaging;
 
 namespace H.Controls.Diagram.Presenter.NodeDatas;
@@ -20,7 +21,7 @@ public abstract class ImageNodeDataBase : FlowableNodeData, IImageNodeData
         this.ImageSource = this.CreateImageSource();
     }
 
-    [XmlIgnore]
+    [Icon(FontIcons.OpenFile)]
     [Display(Name = "浏览文件", GroupName = "操作,工具")]
     public DisplayCommand OpenCommand => new DisplayCommand(e=>
     {

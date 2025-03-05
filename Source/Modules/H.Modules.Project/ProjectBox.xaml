@@ -37,10 +37,8 @@
                                 Content="{x:Static FontIcons.Delete}"
                                 DockPanel.Dock="Right" />
                             <FontIconToggleButton
-                                CheckedGlyph="{x:Static FontIcons.StatusCircleBlock2}"
-                                UncheckedGlyph="{x:Static FontIcons.StatusTriangleOuter}"
-                                h:Cattach.CheckedGeometry="{x:Static h:Geometrys.Fixed}"
-                                h:Cattach.UnCheckedGeometry="{x:Static h:Geometrys.UnFixed}"
+                                CheckedGlyph="{x:Static FontIcons.Pinned}"
+                                UncheckedGlyph="{x:Static FontIcons.Pin}"
                                 Command="{x:Static h:Commands.Refresh}"
                                 DockPanel.Dock="Right"
                                 IsChecked="{Binding Model.IsFixed}"

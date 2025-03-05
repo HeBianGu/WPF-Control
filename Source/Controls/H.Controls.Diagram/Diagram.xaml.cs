@@ -432,7 +432,7 @@ public partial class Diagram : ContentControl
 
             control.RefreshData();
         }));
- 
+
 
     public bool UseAutoAddLinkOnEnd
     {

@@ -1,6 +1,7 @@
 ﻿global using H.Controls.Diagram.Parts.Base;
 global using H.Controls.Diagram.Layers;
 using System.Text.Json.Serialization;
+using H.Extensions.FontIcon;
 
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
@@ -39,13 +40,14 @@ public abstract class ZoomableDiagramDataBase : DiagramDataBase, IZoomableDiagra
     //    }
     //}
     //IZoombox
-    [JsonIgnore]
+    [Icon(FontIcons.Zoom)]
     [Display(Name = "缩放定位", GroupName = "操作", Order = 5)]
     public virtual DisplayCommand ZoomAllCommand => new DisplayCommand(e =>
     {
         this.ZoomToFit();
     }, x => this.Nodes.Count > 0);
-    [JsonIgnore]
+
+    [Icon(FontIcons.SIPMove)]
     [Display(Name = "平移定位", GroupName = "操作", Order = 5)]
     public virtual DisplayCommand PanToCenterCommand => new DisplayCommand(e =>
     {
@@ -83,7 +85,7 @@ public abstract class ZoomableDiagramDataBase : DiagramDataBase, IZoomableDiagra
     }
     protected override void OnNextPart()
     {
-        this.SelectedPart.GetNext().IsSelected = true;
+        base.OnNextPart();
         this.PanTo(this.SelectedPart);
     }
 
@@ -136,9 +138,10 @@ public abstract class ZoomableDiagramDataBase : DiagramDataBase, IZoomableDiagra
 
     public void ZoomTo(Point point)
     {
-        //  ToDo：目前显示不正确
-        return;
-        this.GetDiagram().ZoomTo(point);
+        ////  ToDo：目前显示不正确
+        //return;
+        this.GetDiagram().ZoomToFit();
+        //this.GetDiagram().ZoomTo(point);
     }
 
     private Diagram GetDiagram()

@@ -7,6 +7,7 @@ using H.Mvvm.ViewModels.Base;
 using System.Text.Json.Serialization;
 using System.Text.Json;
 using System.Runtime.Serialization;
+using H.Extensions.FontIcon;
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
 public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
@@ -184,39 +185,57 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
             RaisePropertyChanged();
         }
     }
-
+    [Icon(FontIcons.Refresh)]
     [Display(Name = "默认样式", GroupName = "操作", Order = 6, Description = "点击此功能，恢复所有节点、连线和端口默认样式")]
-    //[Command(Icon = "\xe8dc")]
     public new DisplayCommand LoadDefaultCommand => new DisplayCommand(e =>
     {
         foreach (Node node in this.Nodes)
         {
             IEnumerable<IDefaultable> displayers = node.GetParts().Select(x => x.Content).OfType<IDefaultable>();
-
             foreach (IDefaultable item in displayers)
             {
                 item.LoadDefault();
             }
-
             if (node.Content is IDefaultable displayer)
                 displayer.LoadDefault();
         }
     }, x => this.Nodes.Count > 0);
 
+    [Icon(FontIcons.Clear)]
     [Display(Name = "删除", GroupName = "操作", Order = 4, Description = "点击此功能，删除选中的节点、连线或端口")]
-    public virtual DisplayCommand DeleteCommand => new DisplayCommand(e =>
+    public virtual DisplayCommand DeleteCommand => new DisplayCommand(async e =>
     {
-        this.SelectedPart.Delete();
+        await IocMessage.Dialog.ShowDeleteDialog(x =>
+        {
+            this.SelectedPart.Delete();
+        });
     }, x => this.SelectedPart != null);
 
-    [Display(Name = "清空", GroupName = "操作", Order = 5, Description = "点击此功能，删除所有节点、连线和端口")]
-    public virtual DisplayCommand ClearCommand => new DisplayCommand(e =>
+    [Icon(FontIcons.ClearSelection)]
+    [Display(Name = "删除选中", GroupName = "操作", Order = 4, Description = "点击此功能，删除选中的所有节点")]
+    public virtual DisplayCommand DeleteCheckedCommand => new DisplayCommand(async e =>
     {
-        this.Clear();
+        await IocMessage.Dialog.ShowDeleteDialog(x =>
+        {
+            foreach (var item in this.Nodes.Where(x => x.IsSelected).ToList())
+            {
+                item.Delete();
+            }
+        });
+    }, x => this.SelectedPart != null);
+
+    [Icon(FontIcons.Delete)]
+    [Display(Name = "清空", GroupName = "操作", Order = 5, Description = "点击此功能，删除所有节点、连线和端口")]
+    public virtual DisplayCommand ClearCommand => new DisplayCommand(async e =>
+    {
+        await IocMessage.Dialog.ShowDeleteAllDialog(x =>
+             {
+                 this.Clear();
+             });
     }, x => this.Nodes.Count > 0);
 
+    [Icon(FontIcons.AlignCenter)]
     [System.Text.Json.Serialization.JsonIgnore]
-    [XmlIgnore]
     [Display(Name = "自动对齐", GroupName = "操作", Order = 5)]
     public virtual DisplayCommand AlignmentCommand => new DisplayCommand(e =>
     {
@@ -226,7 +245,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
     [System.Text.Json.Serialization.JsonIgnore]
 
-    [XmlIgnore]
+    [Icon(FontIcons.Previous)]
     [Display(Name = "上一个", GroupName = "操作", Order = 5)]
     public virtual DisplayCommand ProviewCommand => new DisplayCommand(e =>
     {
@@ -236,12 +255,15 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
     protected virtual void OnPreivewPart()
     {
-        this.SelectedPart.GetPrevious().IsSelected = true;
+        var find = this.SelectedPart.GetPrevious();
+        this.SelectedPart.IsSelected = false;
+        this.SelectedPart = find;
+        find.IsSelected = true;
     }
 
     [System.Text.Json.Serialization.JsonIgnore]
 
-    [XmlIgnore]
+    [Icon(FontIcons.Next)]
     [Display(Name = "下一个", GroupName = "操作", Order = 5)]
     public virtual DisplayCommand NextCommand => new DisplayCommand(e =>
     {
@@ -250,7 +272,10 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
     protected virtual void OnNextPart()
     {
-        this.SelectedPart.GetNext().IsSelected = true;
+        var find = this.SelectedPart.GetNext();
+        this.SelectedPart.IsSelected = false;
+        this.SelectedPart = find;
+        find.IsSelected = true;
     }
 
     public virtual void Aligment()
@@ -350,16 +375,25 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     }
 
     [OnSerializing]
-    internal void OnSerializingMethod(StreamingContext context)
+    protected void OnSerializingMethod(StreamingContext context)
+    {
+        this.OnSerializing();
+    }
+
+    protected virtual void OnSerializing()
     {
         var tuples = this.SaveToDatas(this.Nodes);
-
         this.Datas.LinkDatas = tuples.Item2.ToList();
         this.Datas.NodeDatas = tuples.Item1.ToList();
     }
 
     [OnDeserialized]
-    internal void OnDeserializedMethod(StreamingContext context)
+    protected void OnDeserializedMethod(StreamingContext context)
+    {
+        this.OnDeserialized();
+    }
+
+    protected virtual void OnDeserialized()
     {
         this.Nodes = LoadToNodes(this.Datas.NodeDatas, this.Datas.LinkDatas).ToObservable();
     }

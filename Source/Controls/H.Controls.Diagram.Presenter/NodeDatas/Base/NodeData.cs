@@ -1,4 +1,5 @@
 ﻿using H.Controls.Diagram.Presenter.DiagramDatas.Base;
+using H.Extensions.FontIcon;
 
 namespace H.Controls.Diagram.Presenter.NodeDatas.Base;
 
@@ -10,64 +11,54 @@ public abstract class NodeData : NodeDataBase, INodeData, ITemplate, ILinkDataCr
         //this.Columns = type?.GroupColumns ?? 4;
     }
 
-    [XmlIgnore]
+    [Icon(FontIcons.Delete)]
     [Display(Name = "删除", GroupName = "操作")]
-    public DisplayCommand DeleteCommand => new DisplayCommand(e=>
+    public DisplayCommand DeleteCommand => new DisplayCommand(async e =>
     {
         if (e is Part part)
-            part.Delete();
-    });
+            await IocMessage.Dialog.ShowDeleteDialog(x => part.Delete());
+    }, x => x is Part);
 
-    [XmlIgnore]
+    [Icon(FontIcons.Refresh)]
     [Display(Name = "恢复默认", GroupName = "操作")]
-    public override RelayCommand LoadDefaultCommand => new RelayCommand(e=>
+    public override RelayCommand LoadDefaultCommand => new RelayCommand(e =>
     {
         LoadDefault();
     });
 
-    [XmlIgnore]
-    [Display(Name = "保存模板", GroupName = "操作")]
-    public DisplayCommand SaveAsTemplateCommand => new DisplayCommand(e=>
-    {
-        if (e is Node node)
-        {
-
-        }
-    });
-
-    [XmlIgnore]
+    [Icon(FontIcons.AlignCenter)]
     [Display(Name = "自动对齐", GroupName = "操作")]
-    public DisplayCommand AlignmentCommand => new DisplayCommand(e=>
+    public DisplayCommand AlignmentCommand => new DisplayCommand(e =>
     {
         if (e is Node node)
             node.AligmentLayout();
-    });
+    }, x => x is Node);
 
-    [XmlIgnore]
+    [Icon(FontIcons.Zoom)]
     [Display(Name = "节点缩放", GroupName = "操作,工具")]
-    public DisplayCommand LocateFullCommand => new DisplayCommand(e=>
+    public DisplayCommand LocateFullCommand => new DisplayCommand(e =>
     {
         if (e is Node node)
         {
             if (node.GetDiagram().DataContext is IZoomableDiagramData diagram)
                 diagram.ZoomTo(node);
         }
-    });
+    }, x => x is Node);
 
-    [XmlIgnore]
+    [Icon(FontIcons.Forward)]
     [Display(Name = "节点定位", GroupName = "操作,工具")]
-    public DisplayCommand LocateMoveCommand => new DisplayCommand(e=>
+    public DisplayCommand LocateMoveCommand => new DisplayCommand(e =>
     {
         if (e is Node node)
         {
             if (node.GetDiagram().DataContext is IZoomableDiagramData diagram)
                 diagram.PanTo(node);
         }
-    });
+    }, x => x is Node);
 
-    [XmlIgnore]
+    [Icon(FontIcons.Color)]
     [Display(Name = "应用样式到全部", GroupName = "操作")]
-    public DisplayCommand ApplyToAllCommand => new DisplayCommand(e=>
+    public DisplayCommand ApplyToAllCommand => new DisplayCommand(e =>
    {
        if (e is Node node)
        {
@@ -78,11 +69,11 @@ public abstract class NodeData : NodeDataBase, INodeData, ITemplate, ILinkDataCr
                    ApplayStyleTo(nodeData);
            });
        }
-   });
+   }, x => x is Node);
 
-    [XmlIgnore]
+    [Icon(FontIcons.FontColor)]
     [Display(Name = "应用样式到同类型", GroupName = "操作")]
-    public DisplayCommand ApplyToTypeCommand => new DisplayCommand(e=>
+    public DisplayCommand ApplyToTypeCommand => new DisplayCommand(e =>
    {
        if (e is Node node)
        {
@@ -95,20 +86,20 @@ public abstract class NodeData : NodeDataBase, INodeData, ITemplate, ILinkDataCr
                ApplayStyleTo(item);
            }
        }
-   });
+   }, x => x is Node);
 
-    [XmlIgnore]
+    [Icon(FontIcons.Setting)]
     [Display(Name = "设置", GroupName = "操作")]
-    public DisplayCommand SettingCommand => new DisplayCommand(e=>
+    public DisplayCommand SettingCommand => new DisplayCommand(e =>
     {
-        IocMessage.Form.ShowEdit(this);
+        IocMessage.Form?.ShowEdit(this);
     });
 
-    [XmlIgnore]
+    [Icon(FontIcons.View)]
     [Display(Name = "详情", GroupName = "操作")]
-    public DisplayCommand ViewCommand => new DisplayCommand(e=>
+    public DisplayCommand ViewCommand => new DisplayCommand(e =>
     {
-        IocMessage.Form.ShowView(this);
+        IocMessage.Form?.ShowView(this);
     });
 
     private Point _location;
@@ -125,11 +116,22 @@ public abstract class NodeData : NodeDataBase, INodeData, ITemplate, ILinkDataCr
         }
     }
 
-    [Browsable(false)]
-    public int Columns { get; set; }
+    //[Browsable(false)]
+    //public int Columns { get; set; }
 
-    [Browsable(false)]
-    public bool IsTemplate { get; set; } = true;
+    //[Browsable(false)]
+    /*    public bool IsTemplate { get; set; } = true*/
+
+    private bool _isTemplate = true;
+    public bool IsTemplate
+    {
+        get { return _isTemplate; }
+        set
+        {
+            _isTemplate = value;
+            RaisePropertyChanged();
+        }
+    }
 
     private double _height;
     [DefaultValue(60)]
@@ -185,8 +187,8 @@ public abstract class NodeData : NodeDataBase, INodeData, ITemplate, ILinkDataCr
         }
     }
 
-    private double _strokeThickness = 1;
-    [DefaultValue(1)]
+    private double _strokeThickness = 1.0;
+    [DefaultValue(1.0)]
     [Display(Name = "边框宽度", GroupName = "常用")]
     public double StrokeThickness
     {
@@ -210,8 +212,8 @@ public abstract class NodeData : NodeDataBase, INodeData, ITemplate, ILinkDataCr
         }
     }
 
-    private double _cornerRadius;
-    [DefaultValue(4)]
+    private double _cornerRadius = 4.0;
+    [DefaultValue(4.0)]
     [Display(Name = "圆角", GroupName = "样式")]
     public double CornerRadius
     {

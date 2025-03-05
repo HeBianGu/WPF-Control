@@ -1,4 +1,6 @@
-﻿using H.Mvvm;
+﻿using H.Extensions.FontIcon;
+using H.Mvvm;
+using H.Mvvm.Attributes;
 using H.Services.Common;
 using System;
 using System.ComponentModel;
@@ -8,23 +10,8 @@ using System.Xml.Serialization;
 
 namespace H.Modules.About
 {
-    public interface IAboutViewPresenterOption
-    {
-        string Agreement { get; set; }
-        string Company { get; set; }
-        string Configuration { get; set; }
-        string Contact { get; set; }
-        string Copyright { get; set; }
-        string Culture { get; set; }
-        string FileVersion { get; set; }
-        string Privacy { get; set; }
-        string ProductDescription { get; set; }
-        string ProductName { get; set; }
-        string Trademark { get; set; }
-        string Version { get; set; }
-        string WebSet { get; set; }
-    }
 
+    [Icon(FontIcons.Info)]
     [Display(Name = "关于", GroupName = SettingGroupNames.GroupSystem, Description = "这是一个关于页面的信息")]
     public class AboutViewPresenter : Ioc<AboutViewPresenter, IAboutViewPresenter>, IAboutViewPresenter, IAboutViewPresenterOption, IIconable
     {
@@ -41,7 +28,7 @@ namespace H.Modules.About
             this._fileVersion = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyFileVersionAttribute>()?.Version;
         }
         public string Title { get; set; } = "关于";
-        public string Icon { get; set; } = "\xEDE3";
+        public string Icon { get; set; } = FontIcons.Info;
 
         private string _ProductName;
         [System.Text.Json.Serialization.JsonIgnore]

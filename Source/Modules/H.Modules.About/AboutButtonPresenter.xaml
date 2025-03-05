@@ -6,7 +6,7 @@
     <DataTemplate DataType="{x:Type local:AboutButtonPresenter}">
         <FontIconButton
             Command="{ShowIocDialogCommand Type={x:Type IAboutViewPresenter}}"
-            Content="&#xEDE3;"
+            Content="{x:Static FontIcons.Info}"
             Style="{DynamicResource {x:Static WindowKeys.FontIconButton}}"
             ToolTip="关于" />
         <DataTemplate.Triggers>

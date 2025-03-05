@@ -2,6 +2,7 @@
 global using H.Controls.Diagram.Presenter.DiagramDatas.Base;
 global using System.Diagnostics;
 using H.Controls.Diagram.Flowables;
+using H.Extensions.FontIcon;
 
 namespace H.Controls.Diagram.Presenter.NodeDatas;
 
@@ -149,9 +150,14 @@ public class FlowableNodeData : TextNodeData, IFlowableNodeData
         return new FlowableResult(message) { State = FlowableResultState.Error };
     }
 
-    [XmlIgnore]
+    [Browsable(false)]
+    [Icon(FontIcons.Play)]
     [Display(Name = "执行")]
-    public DisplayCommand InvokeCommand => new DisplayCommand(async l => await this.TryInvokeAsync(null, null));
+    public DisplayCommand InvokeCommand => new DisplayCommand(async l =>
+    {
+        if (l is Node node)
+            await this.TryInvokeAsync(null, node);
+    }, x => x is Node);
 
     public virtual IFlowableResult Invoke(Part previors, Node current)
     {

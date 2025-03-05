@@ -118,7 +118,6 @@ public partial class Node : FlowablePart, INode
         return true;
     }
 
-
     public IEnumerable<Link> GetAllLinks()
     {
         foreach (Link item in this.LinksInto)
@@ -482,6 +481,8 @@ public partial class Node : FlowablePart, INode
     {
         return this.GetToNodes()?.FirstOrDefault();
     }
+
+    public INodeData Data => this.GetContent<INodeData>();
 }
 
 public partial class Node

@@ -10,6 +10,9 @@ using H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Other;
 using H.Extensions.Common;
 using H.Mvvm;
 using H.Mvvm.ViewModels.Base;
+using H.Services.Common;
+using Microsoft.Win32;
+using Microsoft.WindowsAPICodePack.Dialogs;
 using OpenCvSharp.WpfExtensions;
 using System;
 using System.Collections.Generic;
@@ -17,22 +20,22 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Media;
+using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 
 namespace H.App.VisionMaster;
 public class VisionOpenCVDiagramData : OpenCVDiagramData, IVisionOpenCVDiagramData
 {
-    public VisionOpenCVDiagramData()
-    {
-        this.ImageDatas = OpenCVImages.GetImageFiles().Select(x => new ImageData(x)).OfType<IImageData>().ToObservable();
-        this.SelectedImageData = this.ImageDatas.FirstOrDefault();
-
-        //this.NodeDatas.Add(new TextNodeData() { Text = "123456" });
-
-    }
+    //public VisionOpenCVDiagramData()
+    //{
+    //    this.ImageDatas = OpenCVImages.GetImageFiles().Select(x => new ImageData(x)).OfType<IImageData>().ToObservable();
+    //    this.SelectedImageData = this.ImageDatas.FirstOrDefault();
+    //}
     private ImageSource _resultImageSource;
     [JsonIgnore]
     public ImageSource ResultImageSource
@@ -126,6 +129,89 @@ public class VisionOpenCVDiagramData : OpenCVDiagramData, IVisionOpenCVDiagramDa
         }
     }
 
+
+    public RelayCommand AddImageDataCommand => new RelayCommand(x =>
+    {
+        OpenFileDialog openFileDialog = new OpenFileDialog();
+        openFileDialog.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory; //设置初始路径
+        openFileDialog.Filter = FileExtension.ImageExtensionsFilter; //设置“另存为文件类型”或“文件类型”框中出现的选择内容
+        openFileDialog.FilterIndex = 1; //设置默认显示文件类型为Csv文件(*.csv)|*.csv
+        openFileDialog.Title = "打开文件"; //获取或设置文件对话框标题
+        openFileDialog.RestoreDirectory = true; //设置对话框是否记忆上次打开的目录
+        openFileDialog.Multiselect = true;//设置多选
+        if (openFileDialog.ShowDialog() != true)
+            return;
+
+        foreach (var item in openFileDialog.FileNames)
+        {
+            this.ImageDatas.Add(new ImageData(item));
+        }
+
+    });
+
+
+    public RelayCommand DeleteImageDataCommand => new RelayCommand(async x =>
+    {
+        if (this.SelectedImageData == null)
+            return;
+        await IocMessage.Dialog.ShowDeleteDialog(x =>
+         {
+             var index = this.ImageDatas.IndexOf(this.SelectedImageData);
+             this.ImageDatas.Remove(this.SelectedImageData);
+             var find = this.ImageDatas.ElementAtOrDefault(index);
+             if (find == null)
+                 this.SelectedImageData = this.ImageDatas.FirstOrDefault();
+             else
+                 this.SelectedImageData = find;
+         });
+
+    }, x => this.SelectedImageData != null);
+
+
+    private bool _useAllImage;
+    public bool UseAllImage
+    {
+        get { return _useAllImage; }
+        set
+        {
+            _useAllImage = value;
+            RaisePropertyChanged();
+        }
+    }
+
+    private bool _useAutoSwitch;
+    public bool UseAutoSwitch
+    {
+        get { return _useAutoSwitch; }
+        set
+        {
+            _useAutoSwitch = value;
+            RaisePropertyChanged();
+        }
+    }
+
+    public RelayCommand ClearImageDatasCommand => new RelayCommand(async x =>
+    {
+        if (this.SelectedImageData == null)
+            return;
+        await IocMessage.Dialog.ShowDeleteAllDialog(x =>
+         {
+             this.ImageDatas.Clear();
+         });
+    }, x => this.ImageDatas.Count > 0);
+    public RelayCommand AddImageDatasCommand => new RelayCommand(x =>
+    {
+        var folderDialog = new CommonOpenFileDialog();
+        folderDialog.Title = "请选择一个文件夹";
+        folderDialog.IsFolderPicker = true;
+        if (folderDialog.ShowDialog() == CommonFileDialogResult.Ok)
+        {
+            string selectedFolderPath = folderDialog.FileName;
+            var images = selectedFolderPath.GetAllImages().Select(x => new ImageData(x));
+            this.ImageDatas.AddRange(images);
+        }
+    });
+
     [JsonIgnore]
     public RelayCommand ImageFileSelectionChangedCommand => new RelayCommand(l =>
     {
@@ -218,5 +304,16 @@ public class VisionOpenCVDiagramData : OpenCVDiagramData, IVisionOpenCVDiagramDa
             this.Messages.Add(message);
             this.LogCurrentMessage();
         }
+    }
+
+    protected override void OnSerializing()
+    {
+        base.OnSerializing();
+    }
+
+    protected override void OnDeserialized()
+    {
+        base.OnDeserialized();
+        this.SelectedImageData = this.ImageDatas.FirstOrDefault();
     }
 }

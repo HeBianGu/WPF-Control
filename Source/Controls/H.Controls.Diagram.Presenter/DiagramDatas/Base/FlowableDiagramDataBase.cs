@@ -1,5 +1,6 @@
 ﻿global using H.Controls.Diagram.Datas;
 global using H.Controls.Diagram.Flowables;
+using H.Extensions.FontIcon;
 using System.Text.Json.Serialization;
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
@@ -84,20 +85,21 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
         //if (this.UseFlowableSelectToRunning)
         //    part.IsSelected = true;
     }
-
+    [Icon(FontIcons.Replay)]
     [Display(Name = "开始", GroupName = "操作", Order = 0)]
     public DisplayCommand StartCommand => new DisplayCommand(async e =>
     {
         await this.Start();
     }, e => this.CanStart());
 
-
+    [Icon(FontIcons.Location)]
     [Display(Name = "停止", GroupName = "操作", Order = 0)]
     public DisplayCommand StopCommand => new DisplayCommand(e =>
     {
         this.Stop();
     }, e => this.State.CanStop());
 
+    [Icon(FontIcons.Refresh)]
     [Display(Name = "重置", GroupName = "操作", Order = 0)]
     public DisplayCommand ResetCommand => new DisplayCommand(e =>
     {

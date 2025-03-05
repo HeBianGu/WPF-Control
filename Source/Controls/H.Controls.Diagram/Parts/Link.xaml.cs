@@ -229,6 +229,8 @@ public partial class Link : FlowablePart, ILink
     {
         return this.ToNode;
     }
+
+    public ILinkData Data => this.GetContent<ILinkData>();
 }
 
 public partial class Link
