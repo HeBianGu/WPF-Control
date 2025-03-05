@@ -32,7 +32,7 @@ public class TextNodeData : PortableNodeData, ITextNodeData
 
     private string _text;
     [Display(Name = "文本", GroupName = "常用")]
-    public string Text
+    public virtual string Text
     {
         get { return _text; }
         set

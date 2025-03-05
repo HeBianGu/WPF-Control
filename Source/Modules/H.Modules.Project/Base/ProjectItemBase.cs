@@ -1,169 +1,160 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
-using H.Modules.Login;
-using H.Services.Common;
-using System;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using System.IO;
-using H.Mvvm.ViewModels.Base;
-using H.Services.Serializable;
 
-namespace H.Modules.Project
+namespace H.Modules.Project.Base;
+
+public abstract class ProjectItemBase : BindableBase, IProjectItem
 {
-    public abstract class ProjectItemBase : BindableBase, IProjectItem
+    protected ProjectItemBase()
     {
-        protected ProjectItemBase()
+        this.Path = ProjectOptions.Instance.DefaultProjectFolder;
+    }
+    private string _title;
+    [Required]
+    [Display(Name = "标题", Order = 4)]
+    public string Title
+    {
+        get { return _title; }
+        set
         {
-            this.Path = ProjectOptions.Instance.DefaultProjectFolder;
+            _title = value;
+            RaisePropertyChanged();
         }
-        private string _title;
-        [Required]
-        [Display(Name = "标题", Order = 4)]
-        public string Title
+    }
+
+    private string _path;
+    [ReadOnly(true)]
+    [Required]
+    [Browsable(false)]
+    [Display(Name = "工程文件路径", Order = 4)]
+    public string Path
+    {
+        get { return _path; }
+        set
         {
-            get { return _title; }
-            set
-            {
-                _title = value;
-                RaisePropertyChanged();
-            }
+            _path = value;
+            RaisePropertyChanged();
         }
+    }
 
-        private string _path;
-        [ReadOnly(true)]
-        [Required]
-        [Browsable(false)]
-        [Display(Name = "工程文件路径", Order = 4)]
-        public string Path
+    private bool _isFixed;
+    [Display(Name = "是否固定", Order = 4)]
+    public bool IsFixed
+    {
+        get { return _isFixed; }
+        set
         {
-            get { return _path; }
-            set
-            {
-                _path = value;
-                RaisePropertyChanged();
-            }
+            _isFixed = value;
+            RaisePropertyChanged();
         }
+    }
 
-        private bool _isFixed;
-        [Display(Name = "是否固定", Order = 4)]
-        public bool IsFixed
+    private DateTime _createTime = DateTime.Now;
+    [Browsable(false)]
+    [ReadOnly(true)]
+    [Display(Name = "创建时间", Order = 4)]
+    public DateTime CreateTime
+    {
+        get { return _createTime; }
+        set
         {
-            get { return _isFixed; }
-            set
-            {
-                _isFixed = value;
-                RaisePropertyChanged();
-            }
+            _createTime = value;
+            RaisePropertyChanged();
         }
+    }
 
-        private DateTime _createTime = DateTime.Now;
-        [Browsable(false)]
-        [ReadOnly(true)]
-        [Display(Name = "创建时间", Order = 4)]
-        public DateTime CreateTime
+    private DateTime _updateTime = DateTime.Now;
+    [Browsable(false)]
+    [ReadOnly(true)]
+    [Display(Name = "修改时间", Order = 4)]
+    public DateTime UpdateTime
+    {
+        get { return _updateTime; }
+        set
         {
-            get { return _createTime; }
-            set
-            {
-                _createTime = value;
-                RaisePropertyChanged();
-            }
+            _updateTime = value;
+            RaisePropertyChanged();
         }
+    }
 
-        private DateTime _updateTime = DateTime.Now;
-        [Browsable(false)]
-        [ReadOnly(true)]
-        [Display(Name = "修改时间", Order = 4)]
-        public DateTime UpdateTime
-        {
-            get { return _updateTime; }
-            set
-            {
-                _updateTime = value;
-                RaisePropertyChanged();
-            }
-        }
+    public string Name => this.Title;
 
-        public string Name => this.Title;
-
-        public virtual bool Save(out string message)
-        {
-            message = null;
-            var data = this.GetSaveFileData();
-            if (data == null)
-                return true;
-            this.SaveToFile(data);
+    public virtual bool Save(out string message)
+    {
+        message = null;
+        object data = this.GetSaveFileData();
+        if (data == null)
             return true;
-        }
+        this.SaveToFile(data);
+        return true;
+    }
 
-        protected void SaveToFile(object data)
+    protected void SaveToFile(object data)
+    {
+        string path = this.GetFilePath();
+        this.GetSerializer()?.Save(path, data);
+    }
+    public virtual bool Load(out string message)
+    {
+        message = null;
+        ////  Do ：测试用
+        //if (this.LoadFile(out DateTime time))
+        //    DateTime dateTime = time;
+        return true;
+    }
+
+    protected virtual ISerializerService GetSerializer() => ProjectOptions.Instance.JsonSerializerService;
+
+    protected virtual bool LoadFile<T>(out T value)
+    {
+        string path = this.GetFilePath();
+        if (!File.Exists(path))
         {
-            var path = this.GetFilePath();
-            this.GetSerializer()?.Save(path, data);
+            value = default;
+            return false;
         }
-        public virtual bool Load(out string message)
+        value = this.GetSerializer().Load<T>(path);
+        return true;
+    }
+
+    protected virtual object GetSaveFileData()
+    {
+        return null;
+        ////  Do ：测试用
+        //return DateTime.Now;
+    }
+
+    public virtual bool Close(out string message)
+    {
+        message = null;
+        return true;
+    }
+
+    public virtual string GetFilePath()
+    {
+        return System.IO.Path.Combine(this.Path, this.Title + ProjectOptions.Instance.Extenstion);
+    }
+
+    public virtual void Dispose()
+    {
+
+    }
+
+    public virtual bool Delete(out string message)
+    {
+        bool r = this.Close(out message);
+        if (r == false)
+            return false;
+        if (File.Exists(this.Path))
+            File.Delete(this.Path);
+        if (!string.IsNullOrEmpty(this.Path))
         {
-            message = null;
-            //  Do ：测试用
-            if(this.LoadFile<DateTime>(out DateTime time))
-            {
-                DateTime dateTime = time;
-            }
-            return true;
+            string find = this.GetFilePath();
+            if (File.Exists(find))
+                File.Delete(find);
         }
-
-        protected virtual ISerializerService GetSerializer() => ProjectOptions.Instance.JsonSerializerService;
-
-        protected virtual bool LoadFile<T>(out T value)
-        {
-            var path = this.GetFilePath();
-            if (!File.Exists(path))
-            {
-                value = default(T); 
-                return false;
-            }
-            value = this.GetSerializer().Load<T>(path);
-            return true;
-        }
-
-        protected virtual object GetSaveFileData()
-        {
-            //  Do ：测试用
-            return DateTime.Now;
-        }
-
-        public virtual bool Close(out string message)
-        {
-            message = null;
-            return true;
-        }
-
-        public virtual string GetFilePath()
-        {
-            return System.IO.Path.Combine(this.Path, this.Title + ProjectOptions.Instance.Extenstion);
-        }
-
-        public virtual void Dispose()
-        {
-
-        }
-
-        public virtual bool Delete(out string message)
-        {
-            var r = this.Close(out message);
-            if (r == false)
-                return false;
-            if (File.Exists(this.Path))
-                File.Delete(this.Path);
-            if (!string.IsNullOrEmpty(this.Path))
-            {
-                var find = this.GetFilePath();
-                if (File.Exists(find))
-                    File.Delete(find);
-            }
-            return true;
-        }
+        return true;
     }
 }

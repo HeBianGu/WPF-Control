@@ -2,16 +2,13 @@
 
 namespace H.Services.Common
 {
-    public class ProjectDeleteCommand : IocMarkupCommandBase
+    public class ShowDeleteProjectDialogCommand : IocAsyncMarkupCommandBase
     {
-        public override async void Execute(object parameter)
+        public override async Task ExecuteAsync(object parameter)
         {
             if (parameter is IProjectItem project)
             {
-                bool? r = await IocMessage.Dialog.Show("确定要删除？");
-                if (r != true) return;
-                IocProject.Instance.Delete(x => x == project);
-                IocProject.Instance.Save(out string message);
+                await IocProject.Instance.ShowDeleteProjectDialog(project);
             }
         }
         public override bool CanExecute(object parameter)

@@ -1,23 +1,22 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
+global using H.Mvvm.ViewModels.Base;
+using H.Extensions.FontIcon;
+using H.Mvvm.Attributes;
 
+namespace H.Modules.Project;
 
-using H.Services.Common;
-using H.Mvvm.ViewModels.Base;
-
-namespace H.Modules.Project
+[Icon(FontIcons.List)]
+public class ProjectListViewPresenter : DisplayBindableBase
 {
-    public class ProjectListViewPresenter : BindableBase
+    private IProjectItem _selectedItem;
+    public IProjectItem SelectedItem
     {
-        private IProjectItem _selectedItem;
-        public IProjectItem SelectedItem
+        get { return _selectedItem; }
+        set
         {
-            get { return _selectedItem; }
-            set
-            {
-                _selectedItem = value;
-                RaisePropertyChanged();
-            }
+            _selectedItem = value;
+            RaisePropertyChanged();
         }
     }
 }

@@ -85,8 +85,11 @@ namespace H.Extensions.Behvaiors
 
         private void AssociatedObject_MouseEnter(object sender, MouseEventArgs e)
         {
-            this.AssociatedObject.ContextMenu.PlacementTarget = this.AssociatedObject;
-            this.AssociatedObject.ContextMenu.IsOpen = true;
+            this.AssociatedObject.Dispatcher.BeginInvoke(() =>
+            {
+                this.AssociatedObject.ContextMenu.PlacementTarget = this.AssociatedObject;
+                this.AssociatedObject.ContextMenu.IsOpen = true;
+            });
         }
 
         protected override void OnDetaching()

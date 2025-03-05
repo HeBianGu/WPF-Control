@@ -2,14 +2,13 @@
 
 namespace H.Services.Common
 {
-    public class ProjectOpenCommand : IocMarkupCommandBase
+    public class ShowOpenProjectDialogCommand : IocAsyncMarkupCommandBase
     {
-        public override void Execute(object parameter)
+        public override async Task ExecuteAsync(object parameter)
         {
             if (parameter is IProjectItem project)
             {
-                IocProject.Instance.Current = project;
-                IocProject.Instance.Save(out string message);
+                await IocProject.Instance.ShowOpenProjectDialog(project);
             }
         }
         public override bool CanExecute(object parameter)

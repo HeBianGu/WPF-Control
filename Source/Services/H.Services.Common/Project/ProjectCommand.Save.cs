@@ -1,12 +1,13 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
+
 namespace H.Services.Common
 {
-    public class ProjectSaveCommand : IocMarkupCommandBase
+    public class ShowSaveProjectsDialogCommand : IocAsyncMarkupCommandBase
     {
-        public override void Execute(object parameter)
+        public override async Task ExecuteAsync(object parameter)
         {
-            IocProject.Instance.Save(out string message);
+            await IocProject.Instance.ShowSaveProjectsDialog();
         }
         public override bool CanExecute(object parameter)
         {
@@ -14,4 +15,15 @@ namespace H.Services.Common
         }
     }
 
+    public class ShowSaveCurrentProjectDialogCommand : IocAsyncMarkupCommandBase
+    {
+        public override async Task ExecuteAsync(object parameter)
+        {
+            await IocProject.Instance?.ShowSaveCurrentProjectDialog();
+        }
+        public override bool CanExecute(object parameter)
+        {
+            return IocProject.Instance != null;
+        }
+    }
 }

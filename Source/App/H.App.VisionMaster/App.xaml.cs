@@ -2,6 +2,7 @@
 using H.Extensions.NewtonsoftJson;
 using H.Modules.Messages.Dialog;
 using H.Modules.Messages.Form;
+using H.Modules.Project;
 using H.Services.Common;
 using H.Styles.Default;
 using H.Themes.Colors.Accent;
@@ -34,7 +35,7 @@ public partial class App : ApplicationBase
         services.AddProject<VisionProjectService>(x =>
         {
             x.Extenstion = ".json";
-            x.JsonSerializerService = new NewtonsoftJsonSerializerService ();
+            x.JsonSerializerService = new NewtonsoftJsonSerializerService();
         });
     }
 

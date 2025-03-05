@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:h="https://github.com/HeBianGu"
+                    xmlns:lm="clr-namespace:H.Modules.Project.Commands"
                     xmlns:local="clr-namespace:H.Modules.Project">
     <DataTemplate DataType="{x:Type local:ProjectViewPresenter}">
         <StackPanel Margin="2"
@@ -13,7 +14,7 @@
                        h:Cattach.GuideData="当前选中的工程"
                        h:Cattach.GuideTitle="当前工程"
                        h:Cattach.UseGuide="True">
-                <Hyperlink Command="{Binding NewOrListCommand}">
+                <Hyperlink Command="{lm:ShowProjectsOrNewDialogCommand}">
                     <Run Text="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Title, FallbackValue=选择工程}" />
                 </Hyperlink>
             </TextBlock>
@@ -23,12 +24,12 @@
                     h:Cattach.GuideData="点击此按钮新建工程"
                     h:Cattach.GuideTitle="新建工程"
                     h:Cattach.UseGuide="True"
-                    Command="{Binding NewCommand}"
+                    Command="{ShowNewProjectDialogCommand}"
                     Content="新建工程" />
             <Button h:Cattach.GuideData="点击此按钮浏览工程列表，切换工程"
                     h:Cattach.GuideTitle="工程列表"
                     h:Cattach.UseGuide="True"
-                    Command="{Binding ListCommand}"
+                    Command="{lm:ShowProjectsDialogCommand}"
                     Content="工程列表" />
         </StackPanel>
         <DataTemplate.Triggers>
