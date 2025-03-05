@@ -127,7 +127,7 @@ public class VisionProjectItem : ProjectItemBase, IVisionProjectItem
     {
         message = null;
         var path = this.GetFilePath();
-        if(this.LoadFile<ObservableCollection<IVisionOpenCVDiagramData>>(out ObservableCollection<IVisionOpenCVDiagramData> datas))
+        if(this.LoadFile(out ObservableCollection<IVisionOpenCVDiagramData> datas))
         {
             this.DiagramDatas = datas;
             this.InitData();

@@ -7,14 +7,14 @@ public abstract class NodeDataBase : DisplayBindableBase, ICloneable
     public NodeDataBase()
     {
         this.ID = Guid.NewGuid().ToString();
-        InitPort();
+        //InitPort();
     }
 
 
-    protected virtual void InitPort()
-    {
+    //protected virtual void InitPort()
+    //{
 
-    }
+    //}
 
     public virtual object Clone()
     {

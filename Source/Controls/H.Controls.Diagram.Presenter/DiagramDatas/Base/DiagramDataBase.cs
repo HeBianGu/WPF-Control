@@ -9,29 +9,6 @@ using System.Text.Json;
 using System.Runtime.Serialization;
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
-
-//public class NodeJsonConverter : JsonConverter<ObservableCollection<Node>>
-//{
-//    public override ObservableCollection<Node> Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
-//    {
-//        string value = reader.GetString();
-//        return value.TryChangeType<T>();
-//    }
-
-//    public override void Write(Utf8JsonWriter writer, ObservableCollection<Node> value, JsonSerializerOptions options)
-//    {
-//        if (value == null)
-//        {
-//            writer.WriteNull(string.Empty);
-//            return;
-//        }
-//        DiagramDataSourceConverter converter = new DiagramDataSourceConverter(value);
-//        string txt = value.TryConvertToString();
-//        writer.WriteStringValue(txt);
-
-//        writer.WriteBase64String
-//    }
-//}
 public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 {
     public DiagramDataBase()
@@ -355,51 +332,36 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
     #region - Serializing -
 
-    private ObservableCollection<INodeData> _nodeDatas = new ObservableCollection<INodeData>();
-    public ObservableCollection<INodeData> NodeDatas
-    {
-        get { return _nodeDatas; }
-        set
-        {
-            _nodeDatas = value;
-            RaisePropertyChanged();
-        }
-    }
+    public Datas Datas { get; } = new Datas();
 
+    //List<INodeData> IDiagramSerializable.NodeDatas { get; set; }
+    //List<ILinkData> IDiagramSerializable.LinkDatas { get; set; }
 
-    private ObservableCollection<ILinkData> _linkDatas = new ObservableCollection<ILinkData>();
-    public ObservableCollection<ILinkData> LinkDatas
-    {
-        get { return _linkDatas; }
-        set
-        {
-            _linkDatas = value;
-            RaisePropertyChanged();
-        }
-    }
-
+    //protected List<INodeData> NodeDatas = new List<INodeData>();
+    //protected List<ILinkData> LinkDatas = new List<ILinkData>();
     protected virtual IEnumerable<Node> LoadToNodes(IEnumerable<INodeData> nodeDatas, IEnumerable<ILinkData> linkDatas)
     {
-       return nodeDatas.LoadToNodes(linkDatas);
+        return nodeDatas.LoadToNodes(linkDatas);
     }
 
     protected virtual Tuple<IEnumerable<INodeData>, IEnumerable<ILinkData>> SaveToDatas(IEnumerable<Node> nodes)
     {
-       return nodes.SaveToDatas();
+        return nodes.SaveToDatas();
     }
 
     [OnSerializing]
     internal void OnSerializingMethod(StreamingContext context)
     {
         var tuples = this.SaveToDatas(this.Nodes);
-        this.LinkDatas = tuples.Item2.ToObservable();
-        this.NodeDatas = tuples.Item1.ToObservable();
+
+        this.Datas.LinkDatas = tuples.Item2.ToList();
+        this.Datas.NodeDatas = tuples.Item1.ToList();
     }
 
     [OnDeserialized]
     internal void OnDeserializedMethod(StreamingContext context)
     {
-        this.Nodes = LoadToNodes(this.NodeDatas, this.LinkDatas).ToObservable();
+        this.Nodes = LoadToNodes(this.Datas.NodeDatas, this.Datas.LinkDatas).ToObservable();
     }
     #endregion
 
@@ -500,4 +462,10 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     //}
 
     #endregion
+}
+
+public class Datas
+{
+    public List<INodeData> NodeDatas { get; set; } = new List<INodeData>();
+    public List<ILinkData> LinkDatas { get; set; } = new List<ILinkData>();
 }

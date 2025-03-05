@@ -123,17 +123,17 @@
                         WindowChrome.IsHitTestVisibleInChrome="True">
                         <DockPanel Margin="0,1" LastChildFill="False">
                             <FontIconButton
-                                Command="{Binding AddDiagramCommand}"
+                                Command="{ShowNewProjectCommand}"
                                 Content="&#xE7C3;"
-                                ToolTip="新建" />
+                                ToolTip="新建项目" />
                             <FontIconButton
-                                Command="{Binding AddDiagramCommand}"
+                                Command="{ShowProjectsCommand}"
                                 Content="&#xED25;"
-                                ToolTip="打开" />
+                                ToolTip="打开项目" />
                             <FontIconButton
-                                Command="{Binding AddDiagramCommand}"
+                                Command="{SaveCurrentProjectCommand}"
                                 Content="&#xE105;"
-                                ToolTip="保存" />
+                                ToolTip="保存项目" />
                             <Separator Style="{DynamicResource {x:Static SeparatorKeys.Vertical}}" />
                             <FontIconButton
                                 Command="{Binding AddDiagramCommand}"

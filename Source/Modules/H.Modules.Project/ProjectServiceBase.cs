@@ -148,7 +148,7 @@ namespace H.Modules.Project
             this.Delete(ps.ToArray());
         }
 
-        private string HistoryPath => System.IO.Path.Combine(this.GetFolderPath(), "Histroy.json");
+        private string HistoryPath => System.IO.Path.Combine(this.GetFolderPath(), "projects.json");
 
         protected virtual string GetFolderPath() => AppPaths.Instance.UserProject;
 

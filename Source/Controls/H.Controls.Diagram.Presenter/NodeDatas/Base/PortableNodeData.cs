@@ -1,18 +1,23 @@
-﻿namespace H.Controls.Diagram.Presenter.NodeDatas.Base;
+﻿global using System.Runtime.Serialization;
+namespace H.Controls.Diagram.Presenter.NodeDatas.Base;
 
 public abstract class PortableNodeData : NodeData, IPortableNodeData
 {
-    //[XmlIgnore]
-    [Browsable(false)]
     public List<IPortData> PortDatas { get; set; } = new List<IPortData>();
+    private List<IPortData> _defaultPortDatas;
+    protected PortableNodeData()
+    {
+        this.InitPortDatas();
+    }
 
-    protected override void InitPort()
+    protected virtual void InitPortDatas()
     {
         List<IPortData> ds = this.CreatePortDatas().ToList();
         foreach (IPortData item in ds)
         {
             item.BuildTextData();
         }
+        this._defaultPortDatas = ds.ToList();
         this.PortDatas = ds.ToList();
     }
 
@@ -52,7 +57,23 @@ public abstract class PortableNodeData : NodeData, IPortableNodeData
     {
         PortableNodeData data = base.Clone() as PortableNodeData;
         data.PortDatas.Clear();
-        data.InitPort();
+        data.InitPortDatas();
         return data;
     }
+
+
+    #region - Serializing -
+    [OnSerializing]
+    internal void OnSerializingMethod(StreamingContext context)
+    {
+
+    }
+
+    [OnDeserialized]
+    internal void OnDeserializedMethod(StreamingContext context)
+    {
+        this.PortDatas = this.PortDatas.Except(this._defaultPortDatas).ToList();
+    }
+    #endregion
+
 }
