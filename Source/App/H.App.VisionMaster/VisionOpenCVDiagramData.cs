@@ -77,14 +77,37 @@ public class VisionOpenCVDiagramData : OpenCVDiagramData, IVisionOpenCVDiagramDa
         this.Messages.Clear();
         this.SelectedImageTabIndex = 1;
         this.CurrentMessage = null;
-        bool? result;
+        bool? result = true;
         var imageSourceNode = this.Nodes.FirstOrDefault(x => x.GetContent<IVisionImageSourceStartNodeData>() != null);
         if (imageSourceNode != null && imageSourceNode.GetContent() is IVisionImageSourceStartNodeData visionImageSource)
         {
-            visionImageSource.FilePath = this.SelectedImageData.FilePath;
-            result = await this.InvokeNode(imageSourceNode);
-            var rimage = this.Messages.LastOrDefault()?.ResultImageSource;
-            this.SelectedImageData.ResultImageSource = rimage;
+            if (this.UseAllImage)
+            {
+                foreach (var item in this.ImageDatas)
+                {
+                    if (this.State == DiagramFlowableState.Canceling)
+                    {
+                        result = false;
+                        break;
+                    }
+                    if (this.UseAutoSwitch)
+                    {
+                        item.ResultImageSource = null;
+                        this.SelectedImageData = item;
+                    }
+                    visionImageSource.FilePath = item.FilePath;
+                    result = await this.InvokeNode(imageSourceNode);
+                    var rimage = this.Messages.LastOrDefault()?.ResultImageSource;
+                    item.ResultImageSource = rimage;
+                }
+            }
+            else
+            {
+                visionImageSource.FilePath = this.SelectedImageData.FilePath;
+                result = await this.InvokeNode(imageSourceNode);
+                var rimage = this.Messages.LastOrDefault()?.ResultImageSource;
+                this.SelectedImageData.ResultImageSource = rimage;
+            }
         }
         else
         {
@@ -168,7 +191,7 @@ public class VisionOpenCVDiagramData : OpenCVDiagramData, IVisionOpenCVDiagramDa
     }, x => this.SelectedImageData != null);
 
 
-    private bool _useAllImage;
+    private bool _useAllImage = false;
     public bool UseAllImage
     {
         get { return _useAllImage; }
@@ -179,7 +202,7 @@ public class VisionOpenCVDiagramData : OpenCVDiagramData, IVisionOpenCVDiagramDa
         }
     }
 
-    private bool _useAutoSwitch;
+    private bool _useAutoSwitch = true;
     public bool UseAutoSwitch
     {
         get { return _useAutoSwitch; }

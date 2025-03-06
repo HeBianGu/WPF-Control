@@ -88,12 +88,10 @@ public static class FlowableExtension
         foreach (FlowablePart part in parts)
         {
             IFlowable data = part.GetContent<IFlowable>();
+            if (data != null)
             {
-                if (data != null)
-                {
-                    if (data.State == FlowableState.Running || data.State == FlowableState.Wait)
-                        data.State = FlowableState.Canceling;
-                }
+                if (data.State == FlowableState.Running || data.State == FlowableState.Wait)
+                    data.State = FlowableState.Canceling;
             }
             if (part.State == FlowableState.Running || part.State == FlowableState.Wait)
                 part.State = FlowableState.Canceling;

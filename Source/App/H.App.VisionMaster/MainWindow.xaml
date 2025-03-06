@@ -187,11 +187,12 @@
                                             Content="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Command.Icon}"
                                             ToolTip="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Command.Name}" />-->
                             <FontIconButton Command="{h:ShowViewCommand}"
+                                            CommandParameter="{Binding SelectedDiagramData.SelectedPart.DataContext}"
                                             Content="{x:Static FontIcons.View}"
-                                            CommandParameter="{Binding SelectedDiagramData.SelectedPart.DataContext}"
                                             ToolTip="查看" />
-                            <FontIconButton Command="{h:ShowTabEditCommand}" Content="{x:Static FontIcons.Edit}"
+                            <FontIconButton Command="{h:ShowTabEditCommand}"
                                             CommandParameter="{Binding SelectedDiagramData.SelectedPart.DataContext}"
+                                            Content="{x:Static FontIcons.Edit}"
                                             ToolTip="编辑" />
                             <!--<ItemsControl ItemsSource="{Binding SelectedDiagramData.SelectedPart.DataContext.Commands}">
                                 <ItemsControl.ItemTemplate>

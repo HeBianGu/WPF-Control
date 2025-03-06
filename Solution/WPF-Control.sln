@@ -279,6 +279,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".sln", ".sln", "{8C583732-1
 		..\LICENSE = ..\LICENSE
 		..\.github\workflows\main.yml = ..\.github\workflows\main.yml
 		..\README.md = ..\README.md
+		..\settings.xamlstyler = ..\settings.xamlstyler
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Controls.TreeLayoutBox", "..\Source\Controls\H.Controls.TreeLayoutBox\H.Controls.TreeLayoutBox.csproj", "{368FB013-D164-475C-8485-7D7812AB477D}"
