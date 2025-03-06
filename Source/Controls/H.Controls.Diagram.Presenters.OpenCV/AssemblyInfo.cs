@@ -1,4 +1,4 @@
-using System.Windows;
+global using System.Windows;
 using System.Windows.Markup;
 
 [assembly: ThemeInfo(

@@ -1,4 +1,4 @@
-﻿using H.Controls.Diagram.Presenter.DiagramDatas.Base;
+﻿global using H.Controls.Diagram.Presenter.DiagramDatas.Base;
 using H.Controls.Diagram.Presenters.OpenCV.NodeDataGroups;
 
 namespace H.Controls.Diagram.Presenters.OpenCV;
