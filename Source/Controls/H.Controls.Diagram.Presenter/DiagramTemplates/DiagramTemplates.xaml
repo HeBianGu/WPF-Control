@@ -1,0 +1,22 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:lb="clr-namespace:H.Controls.Diagram.Presenter.Behaviors"
+                    xmlns:ld="clr-namespace:H.Controls.Diagram.Presenter.DiagramDatas"
+                    xmlns:ldb="clr-namespace:H.Controls.Diagram.Presenter.DiagramDatas.Base"
+                    xmlns:local="clr-namespace:H.Controls.Diagram.Presenter"
+                    xmlns:lt="clr-namespace:H.Controls.Diagram.Presenter.DiagramTemplates"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+    <DataTemplate DataType="{x:Type lt:DiagramTemplates}">
+        <ListBox MinWidth="300"
+                 ItemsSource="{Binding Collection}"
+                 SelectedItem="{Binding SelectedDiagramTemplate}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </DataTemplate>
+</ResourceDictionary>

@@ -20,6 +20,10 @@ namespace H.Services.Common
             projectService.Current = project;
             return true;
         }
+        public static async Task<bool?> ShowEidtProjectDialog(this IProjectService projectService,IProjectItem project)
+        {
+            return await IocMessage.Form.ShowEdit(project, x => x.Title = "编辑工程");
+        }
 
         public static async Task<bool?> ShowProjectsDialog(this IProjectService projectService)
         {

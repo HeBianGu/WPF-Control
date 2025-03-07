@@ -32,6 +32,18 @@ public partial class ProjectBox : ListBox
         }
 
         {
+            CommandBinding commandBinding = new CommandBinding(H.Mvvm.Commands.Edit);
+            commandBinding.Executed += async (l, k) =>
+            {
+                if (k.Parameter is IProjectItem project)
+                {
+                    await IocProject.Instance.ShowEidtProjectDialog(project);
+                }
+            };
+            this.CommandBindings.Add(commandBinding);
+        }
+
+        {
             CommandBinding commandBinding = new CommandBinding(H.Mvvm.Commands.Open);
             commandBinding.Executed += async (l, k) =>
             {

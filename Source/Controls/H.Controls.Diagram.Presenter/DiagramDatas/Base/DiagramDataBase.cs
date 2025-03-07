@@ -14,15 +14,8 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 {
     public DiagramDataBase()
     {
-        //var vip = this.GetType().GetCustomAttribute<VipAttribute>(true);
-        //this.Vip = vip == null ? 3 : vip.Level;
-        this.TypeName = this.Name;
-
-        //this.Init();
         this.LinkDrawers = this.CreateLinkDrawerSource()?.ToObservable();
         this.LinkDrawer = this.LinkDrawers?.FirstOrDefault();
-
-
         this.Layouts = this.CreateLayousSource()?.ToObservable();
         this.Layout = this.Layouts?.FirstOrDefault();
 
@@ -39,18 +32,6 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
         set
         {
             _name = value;
-            RaisePropertyChanged();
-        }
-    }
-
-    private string _typeName;
-    [JsonIgnore]
-    public string TypeName
-    {
-        get { return _typeName; }
-        set
-        {
-            _typeName = value;
             RaisePropertyChanged();
         }
     }
@@ -201,6 +182,21 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
         }
     }, x => this.Nodes.Count > 0);
 
+
+    [Icon(FontIcons.EditMirrored)]
+    [Display(Name = "编辑面板", GroupName = "操作", Order = 0, Description = "点击此功能，编辑面板信息")]
+    public virtual DisplayCommand EditCommand => new DisplayCommand(async e =>
+    {
+        await IocMessage.Form.ShowTabEdit(this);
+    });
+
+    [Icon(FontIcons.View)]
+    [Display(Name = "查看面板", GroupName = "操作", Order = 0, Description = "点击此功能，编辑查看面板信息")]
+    public virtual DisplayCommand ShowCommand => new DisplayCommand(async e =>
+    {
+        await IocMessage.Form.ShowTabEdit(this);
+    });
+
     [Icon(FontIcons.Clear)]
     [Display(Name = "删除", GroupName = "操作", Order = 4, Description = "点击此功能，删除选中的节点、连线或端口")]
     public virtual DisplayCommand DeleteCommand => new DisplayCommand(async e =>
@@ -212,7 +208,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     }, x => this.SelectedPart != null);
 
     [Icon(FontIcons.ClearSelection)]
-    [Display(Name = "删除选中", GroupName = "操作", Order = 4, Description = "点击此功能，删除选中的所有节点")]
+    [Display(Name = "删除选中节点", GroupName = "操作", Order = 4, Description = "点击此功能，删除选中的所有节点")]
     public virtual DisplayCommand DeleteCheckedCommand => new DisplayCommand(async e =>
     {
         await IocMessage.Dialog.ShowDeleteDialog(x =>
@@ -225,7 +221,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     }, x => this.SelectedPart != null);
 
     [Icon(FontIcons.Delete)]
-    [Display(Name = "清空", GroupName = "操作", Order = 5, Description = "点击此功能，删除所有节点、连线和端口")]
+    [Display(Name = "清空节点", GroupName = "操作", Order = 5, Description = "点击此功能，删除所有节点、连线和端口")]
     public virtual DisplayCommand ClearCommand => new DisplayCommand(async e =>
     {
         await IocMessage.Dialog.ShowDeleteAllDialog(x =>
@@ -236,7 +232,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
     [Icon(FontIcons.AlignCenter)]
     [System.Text.Json.Serialization.JsonIgnore]
-    [Display(Name = "自动对齐", GroupName = "操作", Order = 5)]
+    [Display(Name = "对齐节点", GroupName = "操作", Order = 5)]
     public virtual DisplayCommand AlignmentCommand => new DisplayCommand(e =>
     {
         this.Aligment();
@@ -246,7 +242,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     [System.Text.Json.Serialization.JsonIgnore]
 
     [Icon(FontIcons.Previous)]
-    [Display(Name = "上一个", GroupName = "操作", Order = 5)]
+    [Display(Name = "上一个节点", GroupName = "操作", Order = 5)]
     public virtual DisplayCommand ProviewCommand => new DisplayCommand(e =>
     {
         this.OnPreivewPart();
@@ -264,7 +260,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     [System.Text.Json.Serialization.JsonIgnore]
 
     [Icon(FontIcons.Next)]
-    [Display(Name = "下一个", GroupName = "操作", Order = 5)]
+    [Display(Name = "下一个节点", GroupName = "操作", Order = 5)]
     public virtual DisplayCommand NextCommand => new DisplayCommand(e =>
     {
         this.OnNextPart();

@@ -18,23 +18,30 @@ namespace H.Services.Common
 
     public static class DialogMessageExtension
     {
-        public static async Task<bool?> ShowDialog(this IDialogMessageService service, object presenter, Action<bool?> invokeAction, Action<IDialog> builder = null, Func<bool> canSumit = null)
+        public static async Task<bool?> ShowDialog(this IDialogMessageService service, object presenter, Action<bool?> sumitAction, Action<IDialog> builder = null, Func<bool> canSumit = null)
         {
             var r = await service.Show(presenter, builder, canSumit);
             if (r != true)
                 return r;
-            invokeAction?.Invoke(r);
+            sumitAction?.Invoke(r);
             return r;
         }
 
-        public static async Task<bool?> ShowDeleteAllDialog(this IDialogMessageService service, Action<bool?> invokeAction)
+        public static async Task<bool?> ShowDialog<T>(this IDialogMessageService dialog, Action<T> option, Action<T> sumitAction, Action<IDialog> builder = null, Func<bool> canSumit = null) where T:new()
         {
-            return await service.ShowDialog("删除数据无法恢复，确定要全部删除？", invokeAction);
+            var presenter = new T();
+            option?.Invoke(presenter);
+            return await dialog.ShowDialog(presenter, x => sumitAction?.Invoke(presenter),builder, canSumit);
+        }
+
+        public static async Task<bool?> ShowDeleteAllDialog(this IDialogMessageService service, Action<bool?> sumitAction)
+        {
+            return await service.ShowDialog("删除数据无法恢复，确定要全部删除？", sumitAction);
 
         }
-        public static async Task<bool?> ShowDeleteDialog(this IDialogMessageService service, Action<bool?> invokeAction)
+        public static async Task<bool?> ShowDeleteDialog(this IDialogMessageService service, Action<bool?> sumitAction)
         {
-            return await service.ShowDialog("删除数据无法恢复，确定要删除？", invokeAction);
+            return await service.ShowDialog("删除数据无法恢复，确定要删除？", sumitAction);
         }
 
         public static async Task<bool?> ShowNotImplementedDialog(this IDialogMessageService service)

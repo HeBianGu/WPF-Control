@@ -81,6 +81,7 @@ public abstract class ProjectServiceBase<T> : BindableBase, IProjectService, IDa
         try
         {
             this.GetSerializer().Save(this.HistoryPath, new ProjectHistroyData<T>() { ProjectItems = this.Collection.ToList() });
+            this.Current?.Save(out message);
             return true;
         }
         catch (Exception ex)
@@ -98,7 +99,12 @@ public abstract class ProjectServiceBase<T> : BindableBase, IProjectService, IDa
             if (this.Collection.Contains(item))
                 return;
             if (this.Collection is IList list)
-                list.Add(item);
+            {
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    list.Add(item);
+                });
+            }
             this.OnItemChanged();
         }
     }

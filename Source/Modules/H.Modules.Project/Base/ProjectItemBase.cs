@@ -5,7 +5,7 @@ using System.IO;
 
 namespace H.Modules.Project.Base;
 
-public abstract class ProjectItemBase : BindableBase, IProjectItem
+public abstract class ProjectItemBase : CommandsBindableBase, IProjectItem
 {
     protected ProjectItemBase()
     {

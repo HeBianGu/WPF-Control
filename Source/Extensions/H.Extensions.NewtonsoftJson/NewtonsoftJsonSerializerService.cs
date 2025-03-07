@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.IO;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace H.Extensions.NewtonsoftJson
 {
@@ -34,6 +35,25 @@ namespace H.Extensions.NewtonsoftJson
         private JsonSerializerSettings GetSerializerSettings()
         {
             return NewtonsoftJsonOptions.Instance.JsonSerializerSettings;
+        }
+    }
+
+    public static class NewtonsoftJsonSerializerServiceExtension
+    {
+        public static T CloneByNewtonsoftJson<T>(this T t)
+        {
+            var txt = t.SerializeObjectByNewtonsoftJson();
+            return txt.DeserializeObjectByNewtonsoftJson<T>();
+        }
+
+        public static string SerializeObjectByNewtonsoftJson<T>(this T t)
+        {
+           return JsonConvert.SerializeObject(t, NewtonsoftJsonOptions.Instance.JsonSerializerSettings);
+        }
+
+        public static T DeserializeObjectByNewtonsoftJson<T>(this string txt)
+        {
+            return (T)JsonConvert.DeserializeObject(txt, NewtonsoftJsonOptions.Instance.JsonSerializerSettings);
         }
     }
 }

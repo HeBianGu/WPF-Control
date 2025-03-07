@@ -59,8 +59,8 @@ public class FindContours : BasicActionNodeDataBase
     }
 
 
-    private int _thickness = 1;
-    [DefaultValue(1)]
+    private int _thickness = 3;
+    [DefaultValue(3)]
     [Display(Name = "Thickness", GroupName = "数据")]
     public int Thickness
     {

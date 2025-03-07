@@ -17,4 +17,21 @@ namespace H.Services.Common
         }
     }
 
+    public class ShowEditProjectDialogCommand : IocAsyncMarkupCommandBase
+    {
+        public override async Task ExecuteAsync(object parameter)
+        {
+            IProjectItem projectItem = IocProject.Instance.Current;
+            if (parameter is IProjectItem project)
+                projectItem = project;
+            if (projectItem == null)
+                return;
+            await IocProject.Instance.ShowEidtProjectDialog(projectItem);
+        }
+        public override bool CanExecute(object parameter)
+        {
+            return IocProject.Instance != null;
+        }
+    }
+
 }

@@ -1,17 +1,26 @@
-﻿using System.Xml.Serialization;
+﻿using System.Text.Json.Serialization;
+using System.Xml.Serialization;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 public abstract class OpenCVNodeDataBase : ActionNodeDataBase, IOpenCVNodeData, IFilePathable
 {
+    ~OpenCVNodeDataBase()
+    {
+        this.Mat?.Dispose();
+        this.SrcMat?.Dispose();
+    }
+    [JsonIgnore]
     [Browsable(false)]
     [XmlIgnore]
     public Mat Mat { get; set; }
 
+    [JsonIgnore]
     [Browsable(false)]
     [XmlIgnore]
     public Mat SrcMat { get; set; }
 
     private bool _useReview = true;
+    [JsonIgnore]
     [Browsable(false)]
     [XmlIgnore]
     public bool UseReview
@@ -25,6 +34,9 @@ public abstract class OpenCVNodeDataBase : ActionNodeDataBase, IOpenCVNodeData, 
     }
 
     private ImageSource _imageSource;
+    [JsonIgnore]
+    [Browsable(false)]
+    [XmlIgnore]
     public ImageSource ImageSource
     {
         get { return _imageSource; }
@@ -34,6 +46,6 @@ public abstract class OpenCVNodeDataBase : ActionNodeDataBase, IOpenCVNodeData, 
             RaisePropertyChanged();
         }
     }
-
+    [JsonIgnore]
     public string SrcFilePath { get; set; }
 }

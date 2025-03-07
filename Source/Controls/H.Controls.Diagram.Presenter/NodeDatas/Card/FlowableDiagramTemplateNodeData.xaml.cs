@@ -1,4 +1,5 @@
-﻿using H.Controls.Diagram.Presenter.DiagramDatas.Base;
+﻿global using H.Controls.Diagram.Presenter.DiagramDatas.Base;
+global using H.Controls.Diagram.Presenter.DiagramTemplates;
 
 namespace H.Controls.Diagram.Presenter.NodeDatas.Card;
 
@@ -13,8 +14,8 @@ public class FlowableDiagramTemplateNodeData : TitleCardNodeData
     {
         this.Template = template;
         this.Text = template.Name;
-        this.Name = template.Name;
-        this.FilePath = template.FilePath;
+        //this.Name = template.Name;
+        //this.FilePath = template.FilePath;
     }
 
     private DiagramTemplate _template;

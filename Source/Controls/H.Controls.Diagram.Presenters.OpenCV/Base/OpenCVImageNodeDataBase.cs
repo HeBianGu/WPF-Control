@@ -27,10 +27,4 @@ public abstract class OpenCVImageNodeDataBase : ImageImportNodeDataBase, IOpenCV
         return null;
     }
 
-    public override IFlowableResult Invoke(Part previors, Node current)
-    {
-        this.Mat = new Mat(this.SrcFilePath, ImreadModes.Color);
-        this.SrcMat = this.Mat;
-        return base.Invoke(previors, current);
-    }
 }

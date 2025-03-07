@@ -19,6 +19,10 @@
                                     CommandParameter="{Binding Model}"
                                     Header="打开" />
                                 <MenuItem
+                                    Command="{x:Static Commands.Edit}"
+                                    CommandParameter="{Binding Model}"
+                                    Header="编辑" />
+                                <MenuItem
                                     Command="{x:Static Commands.Delete}"
                                     CommandParameter="{Binding Model}"
                                     Header="从列表中删除" />
@@ -38,11 +42,11 @@
                                 DockPanel.Dock="Right" />
                             <FontIconToggleButton
                                 CheckedGlyph="{x:Static FontIcons.Pinned}"
-                                UncheckedGlyph="{x:Static FontIcons.Pin}"
                                 Command="{x:Static h:Commands.Refresh}"
                                 DockPanel.Dock="Right"
                                 IsChecked="{Binding Model.IsFixed}"
-                                Style="{DynamicResource {x:Static h:FontIconToggleButtonKeys.Switch}}" />
+                                Style="{DynamicResource {x:Static h:FontIconToggleButtonKeys.Switch}}"
+                                UncheckedGlyph="{x:Static FontIcons.Pin}" />
                             <ContentPresenter Content="{Binding Model}" />
                         </DockPanel>
                     </Grid>
@@ -52,9 +56,9 @@
         <Setter Property="ItemContainerStyle">
             <Setter.Value>
                 <Style BasedOn="{StaticResource {x:Static h:ListBoxItemKeys.Default}}" TargetType="ListBoxItem">
-                    <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}"/>
-                    <Setter Property="BorderThickness" Value="1"/>
-                    <Setter Property="Margin" Value="1"/>
+                    <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
+                    <Setter Property="BorderThickness" Value="1" />
+                    <Setter Property="Margin" Value="1" />
                     <Style.Triggers>
                         <DataTrigger Value="True">
                             <DataTrigger.Binding>

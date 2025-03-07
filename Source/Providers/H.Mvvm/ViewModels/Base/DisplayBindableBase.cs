@@ -28,7 +28,7 @@ namespace H.Mvvm.ViewModels.Base
                 this.ShortName = display.ShortName;
             }
             IDAttribute id = type.GetCustomAttribute<IDAttribute>(true);
-            this.ID = id?.ID ?? type.Name;
+            this.ID = id?.ID ?? Guid.NewGuid().ToString();
             IconAttribute icon = type.GetCustomAttribute<IconAttribute>(true);
             this.Icon = icon?.Icon;
             LoadDefault();
@@ -56,8 +56,8 @@ namespace H.Mvvm.ViewModels.Base
         }
 
         private string _name;
-        [System.Text.Json.Serialization.JsonIgnore]
-        [System.Xml.Serialization.XmlIgnore]
+        //[System.Text.Json.Serialization.JsonIgnore]
+        //[System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         public virtual string Name
         {

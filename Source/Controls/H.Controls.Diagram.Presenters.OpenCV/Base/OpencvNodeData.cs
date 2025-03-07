@@ -7,7 +7,10 @@ using System.Windows.Threading;
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 public abstract class OpenCVNodeData : OpenCVNodeDataBase
 {
-
+    ~OpenCVNodeData()
+    {
+        this.PreviourMat?.Dispose();
+    }
     protected IOpenCVNodeData GetFromData(Node current)
     {
         Node from = current.GetFromNodes().FirstOrDefault();
@@ -20,7 +23,7 @@ public abstract class OpenCVNodeData : OpenCVNodeDataBase
         {
             System.Windows.Application.Current.Dispatcher.Invoke(() =>
             {
-                this.ImageSource = mat.Empty() ? null : (ImageSource)(mat?.ToWriteableBitmap());
+                this.ImageSource = mat.Empty() ? null : mat?.ToWriteableBitmap();
             });
         }
         else
@@ -33,7 +36,7 @@ public abstract class OpenCVNodeData : OpenCVNodeDataBase
             {
                 System.Windows.Application.Current.Dispatcher.Invoke(() =>
                 {
-                    this.ImageSource = mat.Empty() ? null : (ImageSource)(mat?.ToWriteableBitmap());
+                    this.ImageSource = mat.Empty() ? null : mat?.ToWriteableBitmap();
                 });
             }
         }
