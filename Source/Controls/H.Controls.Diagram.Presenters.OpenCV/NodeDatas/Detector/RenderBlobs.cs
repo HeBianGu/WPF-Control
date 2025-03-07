@@ -14,9 +14,9 @@ public class RenderBlobs : DetectorActionNodeDataBase
         }
     }
 
-    protected override IFlowableResult Refresh()
+    protected override IFlowableResult Invoke()
     {
-        Mat preMat = this._preMat;
+        Mat preMat = this.PreviourMat;
         ConnectedComponents cc = Cv2.ConnectedComponentsEx(preMat);
         if (cc.LabelCount <= 1)
             return Error("没有识别出联通区域");
@@ -32,6 +32,6 @@ public class RenderBlobs : DetectorActionNodeDataBase
         }
 
         RefreshMatToView(labelview);
-        return base.Refresh();
+        return base.Invoke();
     }
 }

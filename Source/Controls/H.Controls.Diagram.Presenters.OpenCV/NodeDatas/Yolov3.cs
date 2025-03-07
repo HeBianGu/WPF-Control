@@ -105,7 +105,7 @@ public class Yolov3 : OpenCVNodeData
             : base.Invoke(previors, current);
     }
 
-    protected override IFlowableResult Refresh()
+    protected override IFlowableResult Invoke()
     {
 
         string[] lables = File.ReadAllLines(this.NameFilePath).ToArray();
@@ -116,7 +116,7 @@ public class Yolov3 : OpenCVNodeData
         net.SetPreferableTarget(0); //dnn target cpu
         //var org = Cv2.ImRead(this.FilePath);
 
-        Mat org = this._preMat;
+        Mat org = this.PreviourMat;
         //生成blob, 块尺寸可以是320/416/608
         Mat blob = CvDnn.BlobFromImage(org, 1.0 / 255, new Size(320, 320), new Scalar(), true, false);
         // 输入数据
@@ -197,7 +197,7 @@ public class Yolov3 : OpenCVNodeData
 
         this.Mat = org;
         this.RefreshMatToView();
-        return base.Refresh();
+        return base.Invoke();
     }
 }
 

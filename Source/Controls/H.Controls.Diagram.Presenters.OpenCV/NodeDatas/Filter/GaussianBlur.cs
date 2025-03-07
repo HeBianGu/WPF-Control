@@ -60,12 +60,12 @@ public class GaussianBlur : FeatureDetectorActionNodeDataBase
         }
     }
 
-    protected override IFlowableResult Refresh()
+    protected override IFlowableResult Invoke()
     {
-        Mat preMat = this._preMat;
+        Mat preMat = this.PreviourMat;
         Cv2.GaussianBlur(preMat, preMat, KSize, SigmaX, SigmaY, BorderType);
         Mat = preMat;
         RefreshMatToView();
-        return base.Refresh();
+        return base.Invoke();
     }
 }

@@ -2,15 +2,19 @@
 [Display(Name = "识别匹配图片", GroupName = "基础检测", Order = 0)]
 public class BestMatch : DetectorActionNodeDataBase
 {
-    protected override ImageSource CreateImageSource()
+    public BestMatch()
     {
-        this.FilePath = GetDataPath(ImagePath.Match1);
-        return CreateImage(this.FilePath);
+        this.SrcFilePath = GetDataPath(ImagePath.Match1);
     }
+    //protected override ImageSource CreateImageSource()
+    //{
+    //    this.SrcFilePath = GetDataPath(ImagePath.Match1);
+    //    return CreateImage(this.SrcFilePath);
+    //}
 
-    protected override IFlowableResult Refresh()
+    protected override IFlowableResult Invoke()
     {
-        Mat img2 = this._preMat;
+        Mat img2 = this.PreviourMat;
         Mat img1 = new Mat(GetDataPath(ImagePath.Match1), ImreadModes.Color);
         using ORB orb = ORB.Create(1000);
         using Mat descriptors1 = new Mat();
@@ -51,6 +55,6 @@ public class BestMatch : DetectorActionNodeDataBase
         //}
 
         RefreshMatToView(view.Clone());
-        return base.Refresh();
+        return base.Invoke();
     }
 }

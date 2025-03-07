@@ -111,10 +111,10 @@ public class AKazeFeatureDetector : FeatureDetectorActionNodeDataBase
     //    return base.Invoke(previors, current);
     //}
 
-    protected override IFlowableResult Refresh()
+    protected override IFlowableResult Invoke()
     {
-        string filePath = this._srcFilePath;
-        Mat gray = this._preMat;
+        string filePath = this.SrcFilePath;
+        Mat gray = this.PreviourMat;
         AKAZE akaze = AKAZE.Create(this.DescriptorType, this.DescriptorSize, this.DescriptorChannels, this.Threshold, this.nOctaves, this.nOctaveLayers, this.Diffusivity);
         //var kazeDescriptors = new Mat();
         Mat akazeDescriptors = new Mat();
@@ -124,7 +124,7 @@ public class AKazeFeatureDetector : FeatureDetectorActionNodeDataBase
         Mat dstAkaze = new Mat();
         Cv2.DrawKeypoints(gray, akazeKeyPoints, dstAkaze);
         RefreshMatToView(dstAkaze);
-        return base.Refresh();
+        return base.Invoke();
     }
 
     private TimeSpan MeasureTime(Action action)

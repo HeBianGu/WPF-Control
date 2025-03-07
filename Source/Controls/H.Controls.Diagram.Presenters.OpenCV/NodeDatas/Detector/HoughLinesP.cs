@@ -67,10 +67,10 @@ public class HoughLinesP : DetectorActionNodeDataBase
         }
     }
 
-    protected override IFlowableResult Refresh()
+    protected override IFlowableResult Invoke()
     {
-        Mat imgGray = this._preMat;
-        Mat imgStd = new Mat(this._srcFilePath, ImreadModes.Color);
+        Mat imgGray = this.PreviourMat;
+        Mat imgStd = new Mat(this.SrcFilePath, ImreadModes.Color);
         Mat imgProb = imgStd.Clone();
         LineSegmentPoint[] segProb = Cv2.HoughLinesP(imgGray, Rho, Theta, Threshold, MinLineLength, MaxLineGap);
         foreach (LineSegmentPoint s in segProb)
@@ -78,6 +78,6 @@ public class HoughLinesP : DetectorActionNodeDataBase
             imgProb.Line(s.P1, s.P2, Scalar.Red, 3, LineTypes.AntiAlias, 0);
         }
         RefreshMatToView(imgProb);
-        return base.Refresh();
+        return base.Invoke();
     }
 }

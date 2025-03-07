@@ -46,12 +46,12 @@ public class Blur : FeatureDetectorActionNodeDataBase
     }
 
 
-    protected override IFlowableResult Refresh()
+    protected override IFlowableResult Invoke()
     {
-        Mat preMat = this._preMat;
+        Mat preMat = this.PreviourMat;
         Cv2.Blur(preMat, preMat, KSize, Anchor, BorderType);
         Mat = preMat;
         RefreshMatToView();
-        return base.Refresh();
+        return base.Invoke();
     }
 }

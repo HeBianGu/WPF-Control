@@ -57,13 +57,13 @@ public class Canny : BasicActionNodeDataBase
         }
     }
 
-    protected override IFlowableResult Refresh()
+    protected override IFlowableResult Invoke()
     {
-        Mat preMat = this._preMat;
-        this.FilePath = this._srcFilePath;
+        Mat preMat = this.PreviourMat;
+        this.SrcFilePath = this.SrcFilePath;
         Cv2.Canny(preMat, preMat, 50, 200, 3, false);
         this.Mat = preMat;
         this.RefreshMatToView();
-        return base.Refresh();
+        return base.Invoke();
     }
 }

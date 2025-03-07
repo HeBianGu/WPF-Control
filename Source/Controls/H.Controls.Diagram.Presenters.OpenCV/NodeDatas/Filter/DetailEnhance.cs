@@ -31,13 +31,13 @@ public class DetailEnhance : FeatureDetectorActionNodeDataBase
         }
     }
 
-    protected override IFlowableResult Refresh()
+    protected override IFlowableResult Invoke()
     {
-        Mat src = this._preMat;
+        Mat src = this.PreviourMat;
         Mat detailEnhance = new Mat();
         Cv2.DetailEnhance(src, detailEnhance, this.SigmaS, this.SigmaR);
         this.Mat = detailEnhance;
         this.RefreshMatToView();
-        return base.Refresh();
+        return base.Invoke();
     }
 }

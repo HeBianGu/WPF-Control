@@ -46,13 +46,13 @@ public class EdgePreservingFilter : FeatureDetectorActionNodeDataBase
         }
     }
 
-    protected override IFlowableResult Refresh()
+    protected override IFlowableResult Invoke()
     {
-        Mat src = this._preMat;
+        Mat src = this.PreviourMat;
         Mat normconv = new Mat();
         Cv2.EdgePreservingFilter(src, normconv, this.EdgePreservingMethod, this.SigmaS, this.SigmaR);
         this.Mat = normconv;
         this.RefreshMatToView();
-        return base.Refresh();
+        return base.Invoke();
     }
 }

@@ -21,15 +21,15 @@ public class HaarCascade : CascadeClassifierActionNodeDataBase
         }
     }
 
-    protected override IFlowableResult Refresh()
+    protected override IFlowableResult Invoke()
     {
         string dataPath = this.GetDataPathByName();
         // Load the cascades
         CascadeClassifier haarCascade = new CascadeClassifier(dataPath);
         // Detect faces
-        Mat haarResult = DetectFace(haarCascade, this._preMat);
+        Mat haarResult = DetectFace(haarCascade, this.PreviourMat);
         RefreshMatToView(haarResult);
-        return base.Refresh();
+        return base.Invoke();
     }
 
     private string GetDataPathByName()

@@ -8,7 +8,7 @@ public class BitwiseNot : BasicActionNodeDataBase
 {
     public override IFlowableResult Invoke(Part previors, Node current)
     {
-        if (this._preMat == null)
+        if (this.PreviourMat == null)
             return this.Error("数据源为空");
         Mat src = this.GetFromData(current).Mat;
         Cv2.BitwiseNot(src, src);

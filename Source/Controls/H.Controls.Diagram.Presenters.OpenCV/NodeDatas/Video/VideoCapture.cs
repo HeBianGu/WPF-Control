@@ -14,20 +14,21 @@ public class VideoCapture : StartNodeDataBase
     public VideoCapture()
     {
         this.UseAnimation = true;
+        this.SrcFilePath = GetDataPath(this.GetImagePath());
     }
-    protected override ImageSource CreateImageSource()
-    {
-        this.FilePath = GetDataPath(this.GetImagePath());
-        return null;
-    }
+    //protected override ImageSource CreateImageSource()
+    //{
+    //    this.SrcFilePath = GetDataPath(this.GetImagePath());
+    //    return null;
+    //}
     protected override string GetImagePath()
     {
         return MoviePath.Bach;
     }
 
-    protected override ImageSource CreateImage(string path)
+    protected virtual ImageSource CreateImage(string path)
     {
-        using OpenCvSharp.VideoCapture capture = new OpenCvSharp.VideoCapture(this.FilePath);
+        using OpenCvSharp.VideoCapture capture = new OpenCvSharp.VideoCapture(this.SrcFilePath);
         if (!capture.IsOpened())
             return null;
         Mat image = new Mat();
@@ -46,10 +47,10 @@ public class VideoCapture : StartNodeDataBase
             RaisePropertyChanged();
         }
     }
-    protected override string GetFilter()
-    {
-        return "视频文件|*.asf;*.wav;*.mp4;*.mpg;*wmv;mtv";
-    }
+    //protected override string GetFilter()
+    //{
+    //    return "视频文件|*.asf;*.wav;*.mp4;*.mpg;*wmv;mtv";
+    //}
 
     public override async Task<IFlowableResult> InvokeAsync(Part previors, Node current)
     {
@@ -58,7 +59,7 @@ public class VideoCapture : StartNodeDataBase
         return await Task.Run(async () =>
         {
             // Opens MP4 file (ffmpeg is probably needed)
-            using OpenCvSharp.VideoCapture capture = new OpenCvSharp.VideoCapture(this.FilePath);
+            using OpenCvSharp.VideoCapture capture = new OpenCvSharp.VideoCapture(this.SrcFilePath);
             if (!capture.IsOpened())
                 return this.Error("视频打开失败");
 

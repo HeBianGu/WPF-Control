@@ -8,13 +8,14 @@ public abstract class StartNodeDataBase : ImageImportNodeDataBase, IImageImportN
     {
         this.UseStart = true;
         this.Icon = "\xe843";
+        this.SrcFilePath = GetDataPath(this.GetImagePath());
     }
 
-    protected override ImageSource CreateImageSource()
-    {
-        this.FilePath = GetDataPath(this.GetImagePath());
-        return CreateImage(this.FilePath);
-    }
+    //protected override ImageSource CreateImageSource()
+    //{
+    //    this.SrcFilePath = GetDataPath(this.GetImagePath());
+    //    return CreateImage(this.SrcFilePath);
+    //}
 
     protected virtual string GetImagePath()
     {
@@ -23,7 +24,7 @@ public abstract class StartNodeDataBase : ImageImportNodeDataBase, IImageImportN
 
     public override IFlowableResult Invoke(Part previors, Node current)
     {
-        this.Mat = new Mat(this.FilePath, ImreadModes.Color);
+        this.Mat = new Mat(this.SrcFilePath, ImreadModes.Color);
         this.SrcMat = this.Mat;
         return base.Invoke(previors, current);
     }

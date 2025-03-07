@@ -31,9 +31,9 @@ public class Stitching : BasicActionNodeDataBase
     //    return base.Invoke(previors, current);
     //}
 
-    protected override IFlowableResult Refresh()
+    protected override IFlowableResult Invoke()
     {
-        string path = this._srcFilePath;
+        string path = this.SrcFilePath;
         Mat[] images = SelectStitchingImages(200, 200, 10, path);
         using Stitcher stitcher = Stitcher.Create(this.Mode);
         using Mat pano = new Mat();
@@ -44,7 +44,7 @@ public class Stitching : BasicActionNodeDataBase
         {
             image.Dispose();
         }
-        return base.Refresh();
+        return base.Invoke();
     }
 
     private Mat[] SelectStitchingImages(int width, int height, int count, string path)

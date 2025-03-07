@@ -2,9 +2,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Windows.Media;
 
 namespace H.Extensions.Common
 {
@@ -27,6 +29,13 @@ namespace H.Extensions.Common
         public static bool IsImage(this string filePath)
         {
             return ImageExtensions.Any(x => x.Equals(Path.GetExtension(filePath).Trim('.'), StringComparison.OrdinalIgnoreCase));
+        }
+
+        public static ImageSource ToImageSource(this string filePath)
+        {
+            if (filePath.IsImage())
+                return filePath.ToByTypeConverter<ImageSource>();
+            return null;
         }
 
         public static IEnumerable<string> GetAllVedios(string foldPath)

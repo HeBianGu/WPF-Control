@@ -2,10 +2,9 @@
 [Display(Name = "视频写入", GroupName = "视频操作", Description = "降噪成黑白色", Order = 0)]
 public class VideoWriter : StartNodeDataBase
 {
-    protected override ImageSource CreateImageSource()
+    public VideoWriter()
     {
-        this.FilePath = GetDataPath(this.GetImagePath());
-        return null;
+        this.SrcFilePath = GetDataPath(this.GetImagePath());
     }
     protected override string GetImagePath()
     {
@@ -65,7 +64,7 @@ public class VideoWriter : StartNodeDataBase
         //const string OutVideoFile = "out.avi";
 
         // Opens MP4 file (ffmpeg is probably needed)
-        using OpenCvSharp.VideoCapture capture = new OpenCvSharp.VideoCapture(this.FilePath);
+        using OpenCvSharp.VideoCapture capture = new OpenCvSharp.VideoCapture(this.SrcFilePath);
 
         // Read movie frames and write them to VideoWriter 
         //var dsize = new Size(640, 480);

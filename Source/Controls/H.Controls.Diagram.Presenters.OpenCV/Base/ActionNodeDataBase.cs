@@ -4,7 +4,7 @@ using System.Windows.Controls;
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 
 //  ToDo：这部分后面用LineCardNode代替ImageNodeDataBase，重写显示图片部分逻辑，去掉模板DataTemplate
-public abstract class ActionNodeDataBase : ImageNodeDataBase
+public abstract class ActionNodeDataBase : FlowableNodeData
 {
     private bool _useLeft;
     [DefaultValue(true)]

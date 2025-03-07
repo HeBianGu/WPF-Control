@@ -7,13 +7,13 @@ public class SurfFeatureDetector : FeatureDetectorActionNodeDataBase
     public SurfFeatureDetector()
     {
         this.DetectFilePath = this.GetDataPath(ImagePath.Match1);
-        this.FilePath = this.DetectFilePath;
+        this.SrcFilePath = this.DetectFilePath;
     }
 
-    protected override void OpenFilePath(string name)
-    {
-        this.DetectFilePath = name;
-    }
+    //protected override void OpenFilePath(string name)
+    //{
+    //    this.DetectFilePath = name;
+    //}
 
     private string _detectFilePath;
     [Display(Name = "检测图片路径", GroupName = "数据")]
@@ -127,10 +127,10 @@ public class SurfFeatureDetector : FeatureDetectorActionNodeDataBase
         }
     }
 
-    protected override IFlowableResult Refresh()
+    protected override IFlowableResult Invoke()
     {
         Mat src1 = new Mat(this.DetectFilePath, ImreadModes.Color);
-        Mat src2 = this._preMat;
+        Mat src2 = this.PreviourMat;
         Mat gray1 = new Mat();
         Mat gray2 = new Mat();
         Cv2.CvtColor(src1, gray1, ColorConversionCodes.BGR2GRAY);
@@ -164,6 +164,6 @@ public class SurfFeatureDetector : FeatureDetectorActionNodeDataBase
             this.Mat = flannView;
         }
         RefreshMatToView();
-        return base.Refresh();
+        return base.Invoke();
     }
 }

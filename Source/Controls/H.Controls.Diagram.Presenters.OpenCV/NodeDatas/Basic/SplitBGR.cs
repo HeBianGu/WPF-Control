@@ -31,7 +31,7 @@ public class SplitBGR : BasicActionNodeDataBase
     public override IFlowableResult Invoke(Part previors, Node current)
     {
         //using var src = new Mat(ImagePath.Lenna, ImreadModes.Color);
-        Mat src = this._preMat;
+        Mat src = this.PreviourMat;
         Cv2.Split(src, out Mat[] mats);
 
         if (this.UseMarge)
@@ -65,9 +65,9 @@ public class SplitBGR : BasicActionNodeDataBase
         return base.Invoke(previors, current);
     }
 
-    protected override IFlowableResult Refresh()
+    protected override IFlowableResult Invoke()
     {
-        Mat src = this._preMat;
+        Mat src = this.PreviourMat;
         Cv2.Split(src, out Mat[] mats);
 
         if (this.UseMarge)
@@ -98,7 +98,7 @@ public class SplitBGR : BasicActionNodeDataBase
         }
 
         this.RefreshMatToView();
-        return base.Refresh();
+        return base.Invoke();
     }
 }
 

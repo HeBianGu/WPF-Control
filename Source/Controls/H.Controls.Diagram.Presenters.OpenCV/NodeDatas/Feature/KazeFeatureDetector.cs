@@ -82,10 +82,9 @@ public class KazeFeatureDetector : FeatureDetectorActionNodeDataBase
 
 
 
-    protected override IFlowableResult Refresh()
+    protected override IFlowableResult Invoke()
     {
-        string filePath = this._srcFilePath;
-        Mat gray = this._preMat;
+        Mat gray = this.PreviourMat;
         KAZE kaze = KAZE.Create(this.Extended, this.Upright, this.Threshold, this.nOctaves, this.nOctaveLayers, this.Diffusivity);
         //var akaze = AKAZE.Create();
 
@@ -108,7 +107,7 @@ public class KazeFeatureDetector : FeatureDetectorActionNodeDataBase
         //    Cv2.WaitKey();
         //}
         RefreshMatToView(dstKaze);
-        return base.Refresh();
+        return base.Invoke();
     }
 
     private TimeSpan MeasureTime(Action action)

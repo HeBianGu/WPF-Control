@@ -57,9 +57,9 @@ public class DnnSuperres : BasicActionNodeDataBase
     //    return base.Invoke(previors, current);
     //}
 
-    protected override IFlowableResult Refresh()
+    protected override IFlowableResult Invoke()
     {
-        Mat src = this._preMat;
+        Mat src = this.PreviourMat;
         DnnSuperResImpl dnn = new DnnSuperResImpl("fsrcnn", 4);
         string path = GetDataPath(this.ModelFileName);
         dnn.ReadModel(path);
@@ -67,6 +67,6 @@ public class DnnSuperres : BasicActionNodeDataBase
         Mat dst = new Mat();
         dnn.Upsample(src, dst);
         this.RefreshMatToView(dst);
-        return base.Refresh();
+        return base.Invoke();
     }
 }

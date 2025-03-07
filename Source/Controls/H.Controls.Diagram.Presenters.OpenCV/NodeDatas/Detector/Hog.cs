@@ -4,7 +4,7 @@ public class Hog : DetectorActionNodeDataBase
 {
     public override IFlowableResult Invoke(Part previors, Node current)
     {
-        using Mat img = Cv2.ImRead(this.FilePath, ImreadModes.Color);
+        using Mat img = Cv2.ImRead(this.SrcFilePath, ImreadModes.Color);
 
         using HOGDescriptor hog = new HOGDescriptor();
         hog.SetSVMDetector(HOGDescriptor.GetDefaultPeopleDetector());

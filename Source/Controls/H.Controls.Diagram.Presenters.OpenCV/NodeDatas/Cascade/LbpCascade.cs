@@ -7,7 +7,7 @@ public class LbpCascade : CascadeClassifierActionNodeDataBase
 {
     public override IFlowableResult Invoke(Part previors, Node current)
     {
-        Mat src = this._preMat;
+        Mat src = this.PreviourMat;
         // Load the cascades
         using CascadeClassifier lbpCascade = new CascadeClassifier(TextPath.LbpCascade);
 

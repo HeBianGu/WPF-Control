@@ -6,7 +6,7 @@ namespace H.Controls.Diagram.Presenter.NodeDatas;
 
 public interface IFilePathable
 {
-    string FilePath { get; set; }
+    string SrcFilePath { get; set; }
 }
 
 public interface IImageNodeData
@@ -23,7 +23,7 @@ public abstract class ImageNodeDataBase : FlowableNodeData, IImageNodeData
 
     [Icon(FontIcons.OpenFile)]
     [Display(Name = "浏览文件", GroupName = "操作,工具")]
-    public DisplayCommand OpenCommand => new DisplayCommand(e=>
+    public DisplayCommand OpenCommand => new DisplayCommand(e =>
     {
         OpenFileDialog openFileDialog = new OpenFileDialog();
         //openFileDialog.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory; //设置初始路径

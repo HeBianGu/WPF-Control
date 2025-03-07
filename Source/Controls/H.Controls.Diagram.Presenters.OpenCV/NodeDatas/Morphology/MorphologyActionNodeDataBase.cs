@@ -103,9 +103,9 @@ public abstract class MorphologyActionNodeDataBase : OpenCVNodeData, IMorphology
 
     protected abstract MorphTypes GetMorphType();
 
-    protected override IFlowableResult Refresh()
+    protected override IFlowableResult Invoke()
     {
-        Mat src = this._preMat;
+        Mat src = this.PreviourMat;
         Mat dst = new Mat();
 
         if (this.UseKernel)
@@ -121,6 +121,6 @@ public abstract class MorphologyActionNodeDataBase : OpenCVNodeData, IMorphology
 
         Mat = dst;
         RefreshMatToView();
-        return base.Refresh();
+        return base.Invoke();
     }
 }

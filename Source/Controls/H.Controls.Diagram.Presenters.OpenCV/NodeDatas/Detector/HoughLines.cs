@@ -89,10 +89,10 @@ public class HoughLines : DetectorActionNodeDataBase
     //    return base.Invoke(previors, current);
     //}
 
-    protected override IFlowableResult Refresh()
+    protected override IFlowableResult Invoke()
     {
-        Mat imgGray = this._preMat;
-        Mat imgStd = new Mat(this._srcFilePath, ImreadModes.Color);
+        Mat imgGray = this.PreviourMat;
+        Mat imgStd = new Mat(this.SrcFilePath, ImreadModes.Color);
         LineSegmentPolar[] segStd = Cv2.HoughLines(imgGray, Rho, Theta, Threshold, Srn, Stn);
         int limit = Math.Min(segStd.Length, 10);
         for (int i = 0; i < limit; i++)
@@ -109,6 +109,6 @@ public class HoughLines : DetectorActionNodeDataBase
         }
 
         RefreshMatToView(imgStd);
-        return base.Refresh();
+        return base.Invoke();
     }
 }

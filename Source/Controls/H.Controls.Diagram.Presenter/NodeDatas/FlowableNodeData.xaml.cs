@@ -188,7 +188,7 @@ public class FlowableNodeData : TextNodeData, IFlowableNodeData
                 IFlowableResult result = await InvokeAsync(previors, current);
                 if (this.UseInfoLogger)
                     IocLog.Instance?.Info(result.State == FlowableResultState.Error ? $"运行错误<{this.GetType().Name}>:{this.Text} {result.Message}" : $"执行完成<{this.GetType().Name}>:{this.Text} {result.Message}");
-                this.State = result.State == FlowableResultState.OK ? FlowableState.Success : FlowableState.Error;
+                this.State = result.ToState();
                 return result;
             }
         }

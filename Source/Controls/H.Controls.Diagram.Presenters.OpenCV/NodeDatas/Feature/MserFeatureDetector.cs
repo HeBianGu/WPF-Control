@@ -122,11 +122,10 @@ public class MserFeatureDetector : FeatureDetectorActionNodeDataBase
 
 
 
-    protected override IFlowableResult Refresh()
+    protected override IFlowableResult Invoke()
     {
-        string filePath = this._srcFilePath;
-        Mat gray = this._preMat;
-        Mat dst = new Mat(this._srcFilePath, ImreadModes.Color);
+        Mat gray = this.PreviourMat;
+        Mat dst = new Mat(this.SrcFilePath, ImreadModes.Color);
         MSER mser = MSER.Create(this.Delta, this.MinArea, this.MaxArea, this.MaxVariation, this.MinDiversity, this.MaxEvolution, this.AreaThreshold, this.MinMargin, this.EdgeBlurSize);
         mser.DetectRegions(gray, out Point[][] contours, out _);
         foreach (Point[] pts in contours)
@@ -139,6 +138,6 @@ public class MserFeatureDetector : FeatureDetectorActionNodeDataBase
         }
         this.Mat = dst;
         RefreshMatToView();
-        return base.Refresh();
+        return base.Invoke();
     }
 }

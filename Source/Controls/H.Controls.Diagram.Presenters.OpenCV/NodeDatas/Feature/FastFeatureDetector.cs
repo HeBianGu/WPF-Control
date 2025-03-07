@@ -46,9 +46,9 @@ public class FastFeatureDetector : DetectorActionNodeDataBase
     //    return base.Invoke(previors, current);
     //}
 
-    protected override IFlowableResult Refresh()
+    protected override IFlowableResult Invoke()
     {
-        Mat imgSrc = this._preMat;
+        Mat imgSrc = this.PreviourMat;
         //using Mat imgSrc = new Mat(ImagePath.Lenna, ImreadModes.Color);
         Mat imgGray = new Mat();
         Mat imgDst = imgSrc.Clone();
@@ -59,6 +59,6 @@ public class FastFeatureDetector : DetectorActionNodeDataBase
             imgDst.Circle((Point)kp.Pt, 3, Scalar.Red, -1, LineTypes.AntiAlias, 0);
         }
         RefreshMatToView(imgDst);
-        return base.Refresh();
+        return base.Invoke();
     }
 }

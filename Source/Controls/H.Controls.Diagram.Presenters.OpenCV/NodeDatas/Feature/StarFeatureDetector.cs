@@ -71,12 +71,12 @@ public class StarFeatureDetector : FeatureDetectorActionNodeDataBase
 
 
 
-    protected override IFlowableResult Refresh()
+    protected override IFlowableResult Invoke()
     {
-        string path = this._srcFilePath;
-        this.FilePath = path;
+        string path = this.SrcFilePath;
+        this.SrcFilePath = path;
         Mat dst = new Mat(path, ImreadModes.Color);
-        Mat gray = this._preMat;
+        Mat gray = this.PreviourMat;
 
         StarDetector detector = StarDetector.Create(this.MaxSize, this.ResponseThreshold, this.LineThresholdProjected, this.LineThresholdBinarized, this.SuppressNonmaxSize);
         KeyPoint[] keypoints = detector.Detect(gray);
@@ -100,6 +100,6 @@ public class StarFeatureDetector : FeatureDetectorActionNodeDataBase
         }
         this.Mat = dst;
         RefreshMatToView();
-        return base.Refresh();
+        return base.Invoke();
     }
 }

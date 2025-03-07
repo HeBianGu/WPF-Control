@@ -140,11 +140,11 @@ public class FindContours : BasicActionNodeDataBase
     }
 
 
-    protected override IFlowableResult Refresh()
+    protected override IFlowableResult Invoke()
     {
         Point[][] contours;
         HierarchyIndex[] hierarchly;
-        Cv2.FindContours(this._preMat, out contours, out hierarchly, this.RetrievalMode, this.ContourApproximationMode, this.Offset);
+        Cv2.FindContours(this.PreviourMat, out contours, out hierarchly, this.RetrievalMode, this.ContourApproximationMode, this.Offset);
         //var dst = new Mat(this._srcFilePath, ImreadModes.Color);
         Mat dst = this.SrcMat.Clone();
         if (this.DrawContourType == DrawContourType.DrawContours)
@@ -181,7 +181,7 @@ public class FindContours : BasicActionNodeDataBase
 
         this.Mat = dst;
         this.RefreshMatToView();
-        return base.Refresh();
+        return base.Invoke();
     }
 
 }

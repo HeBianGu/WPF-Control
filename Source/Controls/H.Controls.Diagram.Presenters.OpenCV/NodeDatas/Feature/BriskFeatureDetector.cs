@@ -56,9 +56,9 @@ public class BriskFeatureDetector : DetectorActionNodeDataBase
         }
     }
 
-    protected override IFlowableResult Refresh()
+    protected override IFlowableResult Invoke()
     {
-        string prePath = this._srcFilePath;
+        string prePath = this.SrcFilePath;
         Mat gray = new Mat(prePath, ImreadModes.Grayscale);
         Mat dst = new Mat(prePath, ImreadModes.Color);
         using BRISK brisk = BRISK.Create(Threshold, Octaves);
@@ -83,6 +83,6 @@ public class BriskFeatureDetector : DetectorActionNodeDataBase
         }
 
         RefreshMatToView(dst);
-        return base.Refresh();
+        return base.Invoke();
     }
 }

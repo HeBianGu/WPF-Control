@@ -19,10 +19,10 @@ public class AddSutract : BasicActionNodeDataBase
         }
     }
 
-    protected override IFlowableResult Refresh()
+    protected override IFlowableResult Invoke()
     {
-        this.Mat = this._preMat + this.Value;
+        this.Mat = this.PreviourMat + this.Value;
         this.RefreshMatToView();
-        return base.Refresh();
+        return base.Invoke();
     }
 }

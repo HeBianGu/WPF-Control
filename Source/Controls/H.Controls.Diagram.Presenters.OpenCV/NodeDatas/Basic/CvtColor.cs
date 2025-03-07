@@ -28,18 +28,11 @@ public class CvtColor : BasicActionNodeDataBase
         }
     }
 
-    //public override IFlowableResult Invoke(Part previors, Node current)
-    //{
-    //    this.Mat = this.GetFromMat(current).CvtColor(this.ColorConversionCode, this.DstCn);
-    //    this.RefreshMatToView();
-    //    return base.Invoke(previors, current);
-    //}
-
-    protected override IFlowableResult Refresh()
+    protected override IFlowableResult Invoke()
     {
-        this.Mat = this._preMat.CvtColor(this.ColorConversionCode, this.DstCn);
+        this.Mat = this.PreviourMat.CvtColor(this.ColorConversionCode, this.DstCn);
         this.RefreshMatToView();
-        return base.Refresh();
+        return base.Invoke();
     }
 
 }

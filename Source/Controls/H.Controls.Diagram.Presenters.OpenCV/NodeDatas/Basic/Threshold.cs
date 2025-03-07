@@ -43,10 +43,10 @@ public class Threshold : BasicActionNodeDataBase
     }
 
 
-    protected override IFlowableResult Refresh()
+    protected override IFlowableResult Invoke()
     {
-        this.Mat = this._preMat.Threshold(this.Thresh, this.Maxval, this.ThresholdType);
+        this.Mat = this.PreviourMat.Threshold(this.Thresh, this.Maxval, this.ThresholdType);
         this.RefreshMatToView();
-        return base.Refresh();
+        return base.Invoke();
     }
 }

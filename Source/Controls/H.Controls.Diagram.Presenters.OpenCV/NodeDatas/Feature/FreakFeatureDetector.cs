@@ -171,9 +171,9 @@ public class FreakFeatureDetector : FeatureDetectorActionNodeDataBase
 
 
 
-    protected override IFlowableResult Refresh()
+    protected override IFlowableResult Invoke()
     {
-        string filePath = this._srcFilePath;
+        string filePath = this.SrcFilePath;
         using Mat gray = new Mat(filePath, ImreadModes.Grayscale);
         using Mat dst = new Mat(filePath, ImreadModes.Color);
 
@@ -204,6 +204,6 @@ public class FreakFeatureDetector : FeatureDetectorActionNodeDataBase
             }
         }
         RefreshMatToView(dst);
-        return base.Refresh();
+        return base.Invoke();
     }
 }

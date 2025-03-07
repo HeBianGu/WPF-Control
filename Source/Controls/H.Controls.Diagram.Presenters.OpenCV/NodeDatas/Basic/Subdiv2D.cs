@@ -28,7 +28,7 @@ public class Subdiv2D : BasicActionNodeDataBase
         }
     }
 
-    protected override IFlowableResult Refresh()
+    protected override IFlowableResult Invoke()
     {
         // Creates random point list
         Random rand = new Random();
@@ -76,7 +76,7 @@ public class Subdiv2D : BasicActionNodeDataBase
             this.Mat = delaunay;
         }
         this.RefreshMatToView();
-        return base.Refresh();
+        return base.Invoke();
     }
 
     //public override IFlowableResult Invoke(Part previors, Node current)

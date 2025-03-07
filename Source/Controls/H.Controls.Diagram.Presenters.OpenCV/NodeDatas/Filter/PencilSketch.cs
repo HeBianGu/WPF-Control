@@ -61,9 +61,9 @@ public class PencilSketch : FeatureDetectorActionNodeDataBase
 
 
 
-    protected override IFlowableResult Refresh()
+    protected override IFlowableResult Invoke()
     {
-        Mat src = this._preMat;
+        Mat src = this.PreviourMat;
         //  Do ：输出8位的单通道图像
         Mat pencil1 = new Mat();
         //  Do ：输出与源图像相同大小与类型的图像
@@ -71,7 +71,7 @@ public class PencilSketch : FeatureDetectorActionNodeDataBase
         Cv2.PencilSketch(src, pencil1, pencil2, this.SigmaS, this.SigmaR, this.ShadeFactor);
         this.Mat = this.PencilOutType == PencilOutType.Src ? pencil2 : pencil1;
         this.RefreshMatToView();
-        return base.Refresh();
+        return base.Invoke();
     }
 }
 

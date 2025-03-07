@@ -23,4 +23,17 @@ public abstract class OpenCVNodeDataBase : ActionNodeDataBase, IOpenCVNodeData, 
             RaisePropertyChanged();
         }
     }
+
+    private ImageSource _imageSource;
+    public ImageSource ImageSource
+    {
+        get { return _imageSource; }
+        set
+        {
+            _imageSource = value;
+            RaisePropertyChanged();
+        }
+    }
+
+    public string SrcFilePath { get; set; }
 }

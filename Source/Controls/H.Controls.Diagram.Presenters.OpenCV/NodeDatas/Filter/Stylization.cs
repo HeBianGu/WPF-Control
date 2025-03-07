@@ -33,7 +33,7 @@ public class Stylization : FeatureDetectorActionNodeDataBase
 
     public override IFlowableResult Invoke(Part previors, Node current)
     {
-        Mat src = this._preMat;
+        Mat src = this.PreviourMat;
         Mat stylized = new Mat();
         Cv2.Stylization(src, stylized, this.SigmaS, this.SigmaR);
         this.Mat = stylized;
@@ -41,13 +41,13 @@ public class Stylization : FeatureDetectorActionNodeDataBase
         return base.Invoke(previors, current);
     }
 
-    protected override IFlowableResult Refresh()
+    protected override IFlowableResult Invoke()
     {
-        Mat src = this._preMat;
+        Mat src = this.PreviourMat;
         Mat stylized = new Mat();
         Cv2.Stylization(src, stylized, this.SigmaS, this.SigmaR);
         this.Mat = stylized;
         this.RefreshMatToView();
-        return base.Refresh();
+        return base.Invoke();
     }
 }

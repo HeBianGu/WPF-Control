@@ -131,23 +131,17 @@ namespace System
             try
             {
                 error = null;
-
                 TypeConverterAttribute typeConvert = type.GetCustomAttribute<TypeConverterAttribute>();
-
                 if (typeConvert != null)
                 {
                     Type t = Type.GetType(typeConvert.ConverterTypeName);
-
                     ConstructorInfo constructor = t.GetConstructors().FirstOrDefault(l => l.GetParameters().Count() == 0);
-
                     if (constructor != null)
                     {
                         TypeConverter instance = Activator.CreateInstance(t) as TypeConverter;
-
                         return instance.ConvertFrom(null, System.Globalization.CultureInfo.CurrentUICulture, txt);
                     }
                 }
-
                 if (typeof(IConvertible).IsAssignableFrom(type))
                 {
                     return Convert.ChangeType(txt, type);
@@ -170,23 +164,17 @@ namespace System
         public static string TryConvertToString(this object obj, out string error)
         {
             error = null;
-
-            if (obj == null) return null;
-
+            if (obj == null)
+                return null;
             Type type = obj.GetType();
-
             TypeConverterAttribute typeConvert = type.GetCustomAttribute<TypeConverterAttribute>();
-
             if (typeConvert != null)
             {
                 Type t = Type.GetType(typeConvert.ConverterTypeName);
-
                 ConstructorInfo constructor = t.GetConstructors().FirstOrDefault(l => l.GetParameters().Count() == 0);
-
                 if (constructor != null)
                 {
                     TypeConverter instance = Activator.CreateInstance(t) as TypeConverter;
-
                     if (obj is DispatcherObject dispatcher && dispatcher.Dispatcher != null)
                     {
                         return dispatcher.Dispatcher?.Invoke(() => instance.ConvertToString(null, System.Globalization.CultureInfo.CurrentUICulture, obj));
@@ -199,7 +187,6 @@ namespace System
             {
                 return Convert.ChangeType(obj, typeof(string))?.ToString();
             }
-
             error = "未识别转换方法";
             return null;
         }
@@ -488,7 +475,13 @@ namespace System
                 }
             }
         }
+
+        public static T ToByTypeConverter<T>(this string str)
+        {
+            var converter = TypeDescriptor.GetConverter(typeof(T));
+            return (T)converter.ConvertFromInvariantString(str);
+        }
     }
 
-    
+
 }

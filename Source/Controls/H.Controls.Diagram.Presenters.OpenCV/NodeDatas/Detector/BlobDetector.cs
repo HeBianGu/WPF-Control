@@ -265,7 +265,7 @@ public class BlobDetector : DetectorActionNodeDataBase
 
     public override IFlowableResult Invoke(Part previors, Node current)
     {
-        Mat src = this._preMat;
+        Mat src = this.PreviourMat;
         SimpleBlobDetector.Params param = CopyTo();
         SimpleBlobDetector circleDetector = SimpleBlobDetector.Create(param);
         KeyPoint[] circleKeyPoints = circleDetector.Detect(src);

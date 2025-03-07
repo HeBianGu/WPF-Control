@@ -4,7 +4,7 @@ public class Hist : OtherActionNodeDataBase
 {
     public override IFlowableResult Invoke(Part previors, Node current)
     {
-        using Mat src = Cv2.ImRead(this.FilePath, ImreadModes.Grayscale);
+        using Mat src = Cv2.ImRead(this.SrcFilePath, ImreadModes.Grayscale);
 
         // Histogram view
         const int Width = 260, Height = 200;

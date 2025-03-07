@@ -5,13 +5,13 @@ public class SeamlessClone : BasicActionNodeDataBase
     public SeamlessClone()
     {
         this.DetectFilePath = this.GetDataPath(ImagePath.Girl);
-        this.FilePath = this.DetectFilePath;
+        this.SrcFilePath = this.DetectFilePath;
     }
 
-    protected override void OpenFilePath(string name)
-    {
-        this.DetectFilePath = name;
-    }
+    //protected override void OpenFilePath(string name)
+    //{
+    //    this.DetectFilePath = name;
+    //}
 
     private string _detectFilePath;
     [Display(Name = "检测图片路径", GroupName = "数据")]
@@ -71,11 +71,11 @@ public class SeamlessClone : BasicActionNodeDataBase
     //    return base.Invoke(previors, current);
     //}
 
-    protected override IFlowableResult Refresh()
+    protected override IFlowableResult Invoke()
     {
         string path = this.DetectFilePath;
         Mat src = new Mat(path, ImreadModes.Color);
-        Mat dst = this._preMat;
+        Mat dst = this.PreviourMat;
         Mat src0 = src.Resize(dst.Size(), 0, 0, InterpolationFlags.Lanczos4);
         Mat mask = Mat.Zeros(src0.Size(), MatType.CV_8UC3);
         mask.Circle(200, 200, 100, Scalar.White, -1);
@@ -83,6 +83,6 @@ public class SeamlessClone : BasicActionNodeDataBase
         Cv2.SeamlessClone(src0, dst, mask, this.Point, blend, this.Method);
         this.Mat = blend;
         this.RefreshMatToView();
-        return base.Refresh();
+        return base.Invoke();
     }
 }
