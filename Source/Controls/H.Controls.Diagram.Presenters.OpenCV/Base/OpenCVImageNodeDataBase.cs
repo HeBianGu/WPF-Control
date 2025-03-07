@@ -2,9 +2,14 @@
 
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 
-public abstract class StartNodeDataBase : ImageImportNodeDataBase, IImageImportNodeData
+public interface IOpenCVImageNodeData : INodeData, IOrderable
 {
-    public StartNodeDataBase()
+
+}
+
+public abstract class OpenCVImageNodeDataBase : ImageImportNodeDataBase, IOpenCVImageNodeData
+{
+    public OpenCVImageNodeDataBase()
     {
         this.UseStart = true;
         this.Icon = "\xe843";

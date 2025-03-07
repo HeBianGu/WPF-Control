@@ -9,22 +9,18 @@ public interface IVideoFlowable
 
 
 [Display(Name = "视频读取", GroupName = "数据源", Description = "降噪成黑白色", Order = 0)]
-public class VideoCapture : StartNodeDataBase
+public class VideoCapture : VideoCaptureNodeDataBase
 {
     public VideoCapture()
     {
         this.UseAnimation = true;
-        this.SrcFilePath = GetDataPath(this.GetImagePath());
+        this.SrcFilePath = GetDataPath(MoviePath.Bach);
     }
     //protected override ImageSource CreateImageSource()
     //{
     //    this.SrcFilePath = GetDataPath(this.GetImagePath());
     //    return null;
     //}
-    protected override string GetImagePath()
-    {
-        return MoviePath.Bach;
-    }
 
     protected virtual ImageSource CreateImage(string path)
     {

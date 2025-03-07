@@ -2,12 +2,7 @@
 using System.Windows.Controls;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
-public interface IImageImportNodeData : INodeData, IDisplayBindable
-{
-
-}
-
-public abstract class ImageImportNodeDataBase : OpenCVNodeData, IImageImportNodeData
+public abstract class ImageImportNodeDataBase : OpenCVNodeData
 {
     protected override IEnumerable<IPortData> CreatePortDatas()
     {
@@ -19,3 +14,4 @@ public abstract class ImageImportNodeDataBase : OpenCVNodeData, IImageImportNode
         }
     }
 }
+

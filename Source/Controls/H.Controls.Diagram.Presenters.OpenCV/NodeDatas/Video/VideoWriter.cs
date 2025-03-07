@@ -1,14 +1,10 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Video;
 [Display(Name = "视频写入", GroupName = "视频操作", Description = "降噪成黑白色", Order = 0)]
-public class VideoWriter : StartNodeDataBase
+public class VideoWriter : ImageImportNodeDataBase
 {
     public VideoWriter()
     {
-        this.SrcFilePath = GetDataPath(this.GetImagePath());
-    }
-    protected override string GetImagePath()
-    {
-        return MoviePath.Bach;
+        this.SrcFilePath = GetDataPath(MoviePath.Bach);
     }
 
     private string _outVideoFile = "out.avi";

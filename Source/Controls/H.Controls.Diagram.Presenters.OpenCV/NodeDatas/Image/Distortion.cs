@@ -1,6 +1,6 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Start;
 [Display(Name = "变形网格", GroupName = "数据源", Order = 0)]
-public class Distortion : StartNodeDataBase
+public class Distortion : Base.OpenCVImageNodeDataBase
 {
     protected override string GetImagePath()
     {
