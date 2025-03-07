@@ -75,6 +75,8 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
 
     protected virtual void OnInvokedPart(Part part)
     {
+        if (this.UseFlowableSelectToRunning)
+            part.IsSelected = false;
         //if (this.FlowableZoomMode == DiagramFlowableZoomMode.Rect)
         //    this.ZoomTo(part.Bound);
         //else if (this.FlowableZoomMode == DiagramFlowableZoomMode.Center)
@@ -132,18 +134,18 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
     //    //});
     //});
 
-    protected async Task<bool?> InvokeState(Func<Task<bool?>> action)
-    {
-        this.State = DiagramFlowableState.Running;
-        this.Message = "正在运行";
-        var b = await action?.Invoke();
-        this.State = b == null ? DiagramFlowableState.Canceled : b == true ? DiagramFlowableState.Success : DiagramFlowableState.Error;
-        var message = b == null ? "用户取消" : b == true ? "运行成功" : "运行失败";
-        IocMessage.Snack?.ShowInfo(message);
-        H.Mvvm.Commands.InvalidateRequerySuggested();
-        this.Message = message;
-        return b;
-    }
+    //protected async Task<bool?> InvokeState(Func<Task<bool?>> action)
+    //{
+    //    this.State = DiagramFlowableState.Running;
+    //    this.Message = "正在运行";
+    //    var b = await action?.Invoke();
+    //    this.State = b == null ? DiagramFlowableState.Canceled : b == true ? DiagramFlowableState.Success : DiagramFlowableState.Error;
+    //    var message = b == null ? "用户取消" : b == true ? "运行成功" : "运行失败";
+    //    IocMessage.Snack?.ShowInfo(message);
+    //    H.Mvvm.Commands.InvalidateRequerySuggested();
+    //    this.Message = message;
+    //    return b;
+    //}
 
     protected virtual async Task<bool?> InvokeNode(Node startNode)
     {
@@ -187,12 +189,18 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
 
     public virtual void Stop()
     {
+        this.State = DiagramFlowableState.Canceling;
         this.Nodes.Stop();
     }
 
     public virtual void Reset()
     {
         this.Nodes.Reset();
+    }
+
+    public virtual void Wait()
+    {
+        this.Nodes.Wait();
     }
 
     private string _message;

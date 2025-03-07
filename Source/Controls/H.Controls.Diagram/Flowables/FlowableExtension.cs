@@ -1,9 +1,11 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using H.Mvvm;
+using H.Services.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.Policy;
 using System.Threading.Tasks;
 using System.Windows.Threading;
@@ -18,7 +20,7 @@ public static class FlowableExtension
         var parts = nodes.SelectMany(x => x.GetParts()).OfType<FlowablePart>();
         foreach (FlowablePart part in parts)
         {
-            part.State = FlowableState.Wait;
+            //part.State = FlowableState.Wait;
             if (part.Content is IFlowable flowable)
                 flowable.State = FlowableState.Wait;
         }
@@ -84,28 +86,36 @@ public static class FlowableExtension
 
     public static void Stop(this IEnumerable<Node> nodes)
     {
-        IEnumerable<FlowablePart> parts = nodes.SelectMany(x => x.GetParts()).OfType<FlowablePart>();
-        foreach (FlowablePart part in parts)
+        nodes.GotoState(x =>
         {
-            IFlowable data = part.GetContent<IFlowable>();
-            if (data != null)
-            {
-                if (data.State == FlowableState.Running || data.State == FlowableState.Wait)
-                    data.State = FlowableState.Canceling;
-            }
-            if (part.State == FlowableState.Running || part.State == FlowableState.Wait)
-                part.State = FlowableState.Canceling;
-        }
+            if (x.State == FlowableState.Running || x.State == FlowableState.Wait || x.State == FlowableState.Ready)
+                return FlowableState.Canceling;
+            return null;
+        });
     }
 
     public static void Reset(this IEnumerable<Node> nodes)
     {
+        nodes.GotoState(x => FlowableState.Ready);
+    }
+
+    public static void Wait(this IEnumerable<Node> nodes)
+    {
+        nodes.GotoState(x => FlowableState.Wait);
+    }
+
+    public static void GotoState(this IEnumerable<Node> nodes, Func<IFlowable, FlowableState?> gotoState)
+    {
         var parts = nodes.SelectMany(x => x.GetParts()).OfType<FlowablePart>();
         foreach (var part in parts)
         {
-            part.State = FlowableState.Ready;
             if (part.Content is IFlowable flowable)
-                flowable.State = FlowableState.Ready;
+            {
+                var state = gotoState(flowable);
+                if (state == null)
+                    continue;
+                flowable.State = state.Value;
+            }
         }
     }
 
@@ -116,7 +126,7 @@ public static class FlowableExtension
         {
             if (cNode.GetContent<IFlowableNodeData>() is IFlowableNodeData nodeData)
             {
-                if (node.GetDispatcherValue(x => x.State) == FlowableState.Canceling)
+                if (nodeData.State == FlowableState.Canceling)
                     return null;
                 //this.GetDiagram().OnRunningPartChanged(l);
                 FlowableResult result;
@@ -131,7 +141,8 @@ public static class FlowableExtension
                 IEnumerable<Link> links = cNode.LinksOutOf.Where(x => x.GetContent<IFlowableLink>().IsMatchResult(result));
                 foreach (Link link in links)
                 {
-                    if (link.GetDispatcherValue(x => x.State) == FlowableState.Canceling)
+                    IFlowableLink linkData = link.GetContent<IFlowableLink>();
+                    if (linkData.State == FlowableState.Canceling)
                         return null;
                     invoking?.Invoke(link.FromPort);
                     IFlowablePort portData = link.FromPort?.GetContent<IFlowablePort>();
@@ -143,19 +154,19 @@ public static class FlowableExtension
                             return false;
                     }
 
-                    if (link.GetDispatcherValue(x => x.State) == FlowableState.Canceling)
+                    if (linkData.State == FlowableState.Canceling)
                         return null;
-                    IFlowableLink linkData = link.GetContent<IFlowableLink>();
-                    link.InvokeDispatcher(x => x.State = FlowableState.Running);
-                    //this.GetDiagram().OnRunningPartChanged(link);
+                    //link.InvokeDispatcher(x => x.State = FlowableState.Running);
+                    ////this.GetDiagram().OnRunningPartChanged(link);
+                    linkData.State = FlowableState.Running;
                     using (new PartInvokable(link, invoking, invoked))
                     {
                         IFlowableResult r = await linkData?.TryInvokeAsync(link.FromPort, link);
-                        link.InvokeDispatcher(x => link.State = r?.State == FlowableResultState.OK ? FlowableState.Success : FlowableState.Error);
+                        linkData.State = r?.State == FlowableResultState.OK ? FlowableState.Success : FlowableState.Error;
                         if (r?.State == FlowableResultState.Error)
                             return false;
                     }
-                    if (node.GetDispatcherValue(x => x.State) == FlowableState.Canceling)
+                    if (nodeData.State == FlowableState.Canceling)
                         return null;
                     using (new PartInvokable(link.ToPort, invoking, invoked))
                     {
@@ -182,9 +193,9 @@ public static class FlowableExtension
         Func<Node, Link, Task<bool?>> run = null;
         run = async (cNode, from) =>
         {
-            if (cNode.Content is IFlowableNodeData nodeData)
+            if (cNode.Data is IFlowableNodeData nodeData)
             {
-                if (node.State == FlowableState.Canceling)
+                if (nodeData.State == FlowableState.Canceling)
                     return null;
                 using (new PartInvokable(cNode, invoking, invoked))
                 {
@@ -194,14 +205,14 @@ public static class FlowableExtension
                 }
                 foreach (Link link in cNode.LinksOutOf)
                 {
-                    if (node.State == FlowableState.Canceling)
+                    if (nodeData.State == FlowableState.Canceling)
                         return null;
                     IFlowableLink linkData = link.GetContent<IFlowableLink>();
-                    link.State = FlowableState.Running;
+                    linkData.State = FlowableState.Running;
                     using (new PartInvokable(link, invoking, invoked))
                     {
                         IFlowableResult r = await linkData?.TryInvokeAsync(cNode, link);
-                        link.State = r?.State == FlowableResultState.OK ? FlowableState.Success : FlowableState.Error;
+                        linkData.State = r?.State == FlowableResultState.OK ? FlowableState.Success : FlowableState.Error;
                         if (r?.State == FlowableResultState.Error)
                             return false;
                     }
@@ -230,10 +241,10 @@ public static class FlowableExtension
             List<Node> tos = l.GetToNodes();
             foreach (Node node in tos)
             {
-                if (node.GetDispatcherValue(x => x.State) == FlowableState.Canceling)
-                    return null;
-                if (node.GetContent<IFlowableNodeData>() is IFlowableNodeData data)
+                if (node.Data is IFlowableNodeData data)
                 {
+                    if (data.State == FlowableState.Canceling)
+                        return null;
                     using (new PartInvokable(node, invoking, invoked))
                     {
                         IFlowableResult result = await data.TryInvokeAsync(l, node);
@@ -254,6 +265,27 @@ public static class FlowableExtension
         }
         return await run.Invoke(node);
 
+    }
+
+    public static FlowableState ToState(this IFlowableResult? result)
+    {
+        if (result == null)
+            return FlowableState.Canceling;
+        return result.State == FlowableResultState.OK ? FlowableState.Success : FlowableState.Error;
+    }
+
+
+    public static DiagramFlowableState ToDiagramFlowableState(this bool? value)
+    {
+        if (value == null)
+            return DiagramFlowableState.Canceled;
+        return value == true ? DiagramFlowableState.Success : DiagramFlowableState.Error;
+    }
+    public static FlowableState ToFlowableState(this bool? value)
+    {
+        if (value == null)
+            return FlowableState.Canceled;
+        return value == true ? FlowableState.Success : FlowableState.Error;
     }
 }
 

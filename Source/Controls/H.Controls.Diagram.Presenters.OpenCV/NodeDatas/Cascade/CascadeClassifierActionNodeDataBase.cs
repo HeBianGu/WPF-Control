@@ -1,4 +1,8 @@
-﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Cascade;
+﻿using Point = OpenCvSharp.Point;
+using Rect = OpenCvSharp.Rect;
+using Size = OpenCvSharp.Size;
+
+namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Cascade;
 public abstract class CascadeClassifierActionNodeDataBase : OpenCVNodeData, ICascadeClassifierActionNodeData
 {
     public override void LoadDefault()

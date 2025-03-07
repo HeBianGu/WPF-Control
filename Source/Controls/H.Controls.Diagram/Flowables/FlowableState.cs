@@ -10,6 +10,7 @@ public enum FlowableState
     Success,
     Error,
     Canceling,
+    Canceled,
     Stopped,
     Pause
 }

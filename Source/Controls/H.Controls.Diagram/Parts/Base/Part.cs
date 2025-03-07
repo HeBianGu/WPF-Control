@@ -232,4 +232,6 @@ public abstract class Part : ContentPresenter
     {
         return this;
     }
+
+    public virtual IData Data => this.GetContent<IData>();
 }
