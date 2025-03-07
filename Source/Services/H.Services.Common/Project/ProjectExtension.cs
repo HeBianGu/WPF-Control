@@ -43,18 +43,18 @@ namespace H.Services.Common
             var r = await IocMessage.Dialog.Show("确定要删除？");
             if (r != true)
                 return r;
-            IocProject.Instance.Delete(x => x == project);
-            return IocProject.Instance.Save(out string message);
+            projectService.Delete(x => x == project);
+            return projectService.Save(out string message);
         }
 
         public static async Task<bool?> ShowOpenProjectDialog(this IProjectService projectService, IProjectItem project)
         {
             string message = null;
-            IocProject.Instance.Current = project;
+            projectService.Current = project;
             var r = await IocMessage.Dialog.ShowWait(x =>
            {
                x.Title = "正在打开工程...";
-               return IocProject.Instance.Save(out string message);
+               return projectService.Save(out string message);
            });
             if (r == false && !string.IsNullOrEmpty(message))
                 await IocMessage.ShowDialogMessage(message);
@@ -65,7 +65,7 @@ namespace H.Services.Common
             string message = null;
             var r = await IocMessage.Dialog.ShowWait(x =>
             {
-                return IocProject.Instance?.Save(out message);
+                return projectService.Save(out message);
 
             }, x => x.Title = "正在保存工程列表...");
             if (r == false && !string.IsNullOrEmpty(message))
@@ -76,18 +76,25 @@ namespace H.Services.Common
         public static async Task<bool?> ShowSaveCurrentProjectDialog(this IProjectService projectService)
         {
             string message = null;
-            var c = IocProject.Instance?.Current;
+            var c = projectService.Current;
             if (c == null)
                 return false;
             var r = await IocMessage.Dialog.ShowWait(x =>
             {
                 Thread.Sleep(500);
-                return IocProject.Instance?.Current.Save(out message);
+                if (!projectService.Contain(c))
+                    projectService.Add(c);
+                return projectService.Current.Save(out message);
 
             }, x => x.Title = $"正在保存<{c.Title}>...");
             if (r == false && !string.IsNullOrEmpty(message))
                 await IocMessage.ShowDialogMessage(message);
             return r;
+        }
+
+        public static bool Contain(this IProjectService projectService, IProjectItem projectItem)
+        {
+            return projectService.Where(x => x == projectItem).Count() > 0;
         }
     }
 }
