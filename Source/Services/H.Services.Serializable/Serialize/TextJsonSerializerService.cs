@@ -12,34 +12,17 @@ namespace H.Services.Serializable
 {
     public class TextJsonSerializerService : IJsonSerializerService
     {
-        public object Load(string filePath, Type type)
+        public object DeserializeObject(string txt, Type type)
         {
-            if (!File.Exists(filePath))
-                return null;
-            string txt = File.ReadAllText(filePath);
-            System.Diagnostics.Debug.WriteLine(filePath);
             if (string.IsNullOrEmpty(txt))
                 return null;
             return JsonSerializer.Deserialize(txt, type, this.GetOptions());
         }
 
-        public T Load<T>(string filePath)
+        public string SerializeObject<T>(T t)
         {
-            return (T)Load(filePath, typeof(T));
+            return JsonSerializer.Serialize(t, this.GetOptions());
         }
-
-        public void Save(string filePath, object sourceObj, string xmlRootName = null)
-        {
-            if (!Directory.Exists(Path.GetDirectoryName(filePath)))
-            {
-                Directory.CreateDirectory(Path.GetDirectoryName(filePath));
-            }
-            System.Diagnostics.Debug.WriteLine(filePath);
-            string txt = JsonSerializer.Serialize(sourceObj, this.GetOptions());
-            System.Diagnostics.Debug.WriteLine(txt);
-            File.WriteAllText(filePath, txt);
-        }
-
 
         protected virtual JsonSerializerOptions GetOptions()
         {

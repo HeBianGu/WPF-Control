@@ -7,8 +7,10 @@ using System.Xml.Serialization;
 
 namespace H.Extensions.XmlSerialize
 {
+    [Obsolete]
     public class XmlSystemSerializer : ISerializerService
     {
+        [Obsolete]
         public void Save(string filePath, object sourceObj, string xmlRootName = null)
         {
             if (string.IsNullOrWhiteSpace(filePath)) return;
@@ -39,12 +41,12 @@ namespace H.Extensions.XmlSerialize
                 Trace.Assert(false);
             }
         }
-
+        [Obsolete]
         public T Load<T>(string filePath)
         {
             return (T)this.Load(filePath, typeof(T));
         }
-
+        [Obsolete]
         public object Load(string filePath, Type type)
         {
             if (!File.Exists(filePath)) return null;
@@ -67,6 +69,14 @@ namespace H.Extensions.XmlSerialize
             return null;
         }
 
+        public string SerializeObject<T>(T t)
+        {
+            throw new NotImplementedException();
+        }
 
+        public object DeserializeObject(string txt, Type type)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

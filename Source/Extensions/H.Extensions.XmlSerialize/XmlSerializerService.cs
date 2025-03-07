@@ -7,8 +7,10 @@ using System.Xml.Serialization;
 
 namespace H.Extensions.XmlSerialize
 {
+    [Obsolete("优先使用Json保存")]
     public class XmlSerializerService : ISerializerService
     {
+        [Obsolete]
         public void Save(string filePath, object sourceObj, string xmlRootName = null)
         {
             if (string.IsNullOrWhiteSpace(filePath))
@@ -18,12 +20,9 @@ namespace H.Extensions.XmlSerialize
                 Directory.CreateDirectory(folder);
             XmlableSerializor.Instance.Save(filePath, sourceObj);
         }
+    
 
-        public T Load<T>(string filePath)
-        {
-            return (T)this.Load(filePath, typeof(T));
-        }
-
+        [Obsolete]
         public object Load(string filePath, Type type)
         {
             if (!File.Exists(filePath)) return null;
@@ -49,6 +48,17 @@ namespace H.Extensions.XmlSerialize
             }
 
             return null;
+        }
+
+        public string SerializeObject<T>(T t)
+        {
+            var doc = XmlableSerializor.Instance.SaveAs(t);
+            return doc.OuterXml;
+        }
+
+        public object DeserializeObject(string txt, Type type)
+        {
+            return XmlableSerializor.Instance.Load(txt, type);
         }
     }
 }
