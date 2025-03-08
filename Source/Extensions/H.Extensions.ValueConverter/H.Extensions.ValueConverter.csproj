@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\H.Extensions.Common\H.Extensions.Common.csproj" />
+    <ProjectReference Include="..\H.Extensions.Validation\H.Extensions.Validation.csproj" />
   </ItemGroup>
 
 </Project>
