@@ -2,6 +2,7 @@ using H.Controls.Diagram.Datas;
 using H.Controls.Diagram.Presenter.NodeDatas;
 using H.Controls.Diagram.Presenters.OpenCV;
 using H.Extensions.NewtonsoftJson;
+using H.Extensions.NewtonsoftJson.Jsonable;
 using H.Services.Serializable;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
