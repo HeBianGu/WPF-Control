@@ -1,8 +1,7 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Morphology;
 
 
-
-[Display(Name = "梯度", GroupName = "形态学", Description = " 原图 - 腐蚀  ，求图形的边缘", Order = 0)]
+[Display(Name = "梯度", GroupName = "形态学", Description = " 原图 - 腐蚀  ，求图形的边缘", Order = 50)]
 public class Gradient : MorphologyActionNodeDataBase
 {
     protected override MorphTypes GetMorphType()

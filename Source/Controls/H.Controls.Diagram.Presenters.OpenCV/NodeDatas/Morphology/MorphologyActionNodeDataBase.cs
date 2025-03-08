@@ -1,6 +1,8 @@
 ﻿using System.Windows.Threading;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Morphology;
+
+[Icon(FontIcons.Tablet)]
 public abstract class MorphologyActionNodeDataBase : OpenCVNodeData, IMorphology
 {
     public override void LoadDefault()

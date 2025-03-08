@@ -25,6 +25,10 @@
                         Background="{Binding RelativeSource={RelativeSource AncestorType=Border}, Path=(TextBlock.Foreground)}"
                         CornerRadius="{Binding CornerRadius, Converter={x:Static h:Converter.GetDoubleToCornerRadiusRigth}}"
                         Visibility="{Binding UseRight, Converter={x:Static h:Converter.GetTrueToVisible}}" />
+                <FontIconTextBlock Margin="5,0"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Text="{Binding Icon}" />
             </Grid>
         </Border>
     </DataTemplate>

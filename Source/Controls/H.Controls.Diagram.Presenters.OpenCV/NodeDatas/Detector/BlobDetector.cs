@@ -1,5 +1,5 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Detector;
-[Display(Name = "Blob检测", GroupName = "基础检测", Description = "降噪成黑白色", Order = 0)]
+[Display(Name = "Blob检测", GroupName = "基础检测", Description = "降噪成黑白色", Order = 20)]
 public class BlobDetector : DetectorActionNodeDataBase
 {
     public override void LoadDefault()

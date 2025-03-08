@@ -3,7 +3,7 @@
 namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
 
 
-[Display(Name = "加减运算", GroupName = "基础函数", Description = "饱和度设置", Order = 0)]
+[Display(Name = "加减运算", GroupName = "基础函数", Description = "饱和度设置", Order = 50)]
 public class AddSutract : BasicActionNodeDataBase
 {
     private double _value = 10;

@@ -1,15 +1,19 @@
-﻿<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:h="https://github.com/HeBianGu"
-    xmlns:local="clr-namespace:H.Controls.Form">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Controls.Form">
     <DataTemplate DataType="{x:Type local:ItemsFormPresenter}">
         <ScrollViewer>
-            <ItemsControl MinWidth="600" ItemsSource="{Binding Objs}">
+            <ItemsControl MinWidth="600"
+                          ItemsSource="{Binding Objs}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Expander Header="{Binding ., Converter={x:Static h:Converter.GetDiaplayName}}" IsExpanded="True">
-                            <local:Form SelectObject="{Binding}" />
+                        <Expander Header="{Binding ., Converter={x:Static h:Converter.GetDiaplayName}}"
+                                  IsExpanded="True">
+                            <local:Form SelectObject="{Binding}"
+                                        UseCommand="{Binding UseCommand}"
+                                        UseGroupNames="{Binding UseGroupNames}"
+                                        UsePropertyView="{Binding UsePropertyView}" />
                         </Expander>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>

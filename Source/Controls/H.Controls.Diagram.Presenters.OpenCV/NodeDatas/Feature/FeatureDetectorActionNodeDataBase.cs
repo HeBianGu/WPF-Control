@@ -1,6 +1,8 @@
-﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Feature;
+﻿global using H.Extensions.FontIcon;
 
-public class FeatureDetectorActionNodeDataBase : OpenCVNodeData, IFeatureDetectorActionNodeData
+namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Feature;
+[Icon(FontIcons.Filter)]
+public abstract class FeatureDetectorActionNodeDataBase : OpenCVNodeData, IFeatureDetectorActionNodeData
 {
 
 }

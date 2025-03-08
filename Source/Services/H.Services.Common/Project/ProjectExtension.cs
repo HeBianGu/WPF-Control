@@ -13,16 +13,19 @@ namespace H.Services.Common
             {
                 project.Title = defalultName + (projectService.Where().Count() + 1).ToString();
             }
-            var r = await IocMessage.Form.ShowEdit(project, x => x.Title = "新建工程");
+            var r = await IocMessage.Form.ShowEdit(project, x => x.Title = "新建工程", null, x => x.UseCommand = false);
             if (r != true)
                 return r;
             projectService.Add(project);
             projectService.Current = project;
             return true;
         }
-        public static async Task<bool?> ShowEidtProjectDialog(this IProjectService projectService,IProjectItem project)
+        public static async Task<bool?> ShowEidtProjectDialog(this IProjectService projectService, IProjectItem project)
         {
-            return await IocMessage.Form.ShowEdit(project, x => x.Title = "编辑工程");
+            return await IocMessage.Form.ShowEdit(project, x => x.Title = "编辑工程", null,x =>
+            {
+                x.UseCommand = false;
+            });
         }
 
         public static async Task<bool?> ShowProjectsDialog(this IProjectService projectService)
@@ -34,7 +37,10 @@ namespace H.Services.Common
             {
                 project.Title = "项目" + (projectService.Where().Count() + 1).ToString();
             }
-            var r = await IocMessage.Form.ShowEdit(project, x => x.Title = "新建工程");
+            var r = await IocMessage.Form.ShowEdit(project, x => x.Title = "新建工程", null,x =>
+            {
+                x.UseCommand = false;
+            });
             if (r != true)
                 return r;
             projectService.Add(project);

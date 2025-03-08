@@ -107,6 +107,8 @@ namespace H.Modules.Messages.Form
                 x.MinWidth = 400;
                 action?.Invoke(x);
             };
+
+            //presenter.UseCommand = false;
             option?.Invoke(presenter);
             return await IocMessage.Dialog.Show(presenter, dialogAction, canSumit);
         }

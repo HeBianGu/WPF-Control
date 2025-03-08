@@ -1,7 +1,7 @@
 ﻿using OpenCvSharp.DnnSuperres;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
-[Display(Name = "超分辨率处理", GroupName = "基础函数", Order = 0)]
+[Display(Name = "超分辨率处理", GroupName = "基础函数", Order = 60)]
 public class DnnSuperres : BasicActionNodeDataBase
 {
     private string _algo = "fsrcnn";

@@ -1,6 +1,8 @@
-﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Detector;
+﻿using H.Extensions.FontIcon;
 
-public class DetectorActionNodeDataBase : OpenCVNodeData, IDetectorActionNodeData
+namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Detector;
+[Icon(FontIcons.Photo)]
+public abstract class DetectorActionNodeDataBase : OpenCVNodeData, IDetectorActionNodeData
 {
 
 }

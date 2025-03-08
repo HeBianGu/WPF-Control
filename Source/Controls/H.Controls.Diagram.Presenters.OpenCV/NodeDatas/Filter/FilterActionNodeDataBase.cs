@@ -1,6 +1,6 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Filter;
 
-public class FilterActionNodeDataBase : OpenCVNodeData, IFilterActionNodeData
+public abstract class FilterActionNodeDataBase : OpenCVNodeData, IFilterActionNodeData
 {
 
 }

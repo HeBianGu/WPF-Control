@@ -10,6 +10,7 @@ using System.Windows.Media;
 
 namespace H.Extensions.Common
 {
+
     public static partial class FileExtension
     {
         public const string ImageExtension = "jpg jpeg png gif pdf tga tif svg tga bmp dds eps webp";

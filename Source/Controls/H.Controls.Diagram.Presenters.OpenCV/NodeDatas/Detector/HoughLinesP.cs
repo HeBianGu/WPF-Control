@@ -1,5 +1,5 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Detector;
-[Display(Name = "直线概率检测", GroupName = "基础检测", Order = 0)]
+[Display(Name = "直线概率检测", GroupName = "基础检测", Order = 1)]
 public class HoughLinesP : DetectorActionNodeDataBase
 {
     private double _rho = 1.0;

@@ -102,7 +102,7 @@ public abstract class ProjectServiceBase<T> : BindableBase, IProjectService, IDa
             {
                 Application.Current.Dispatcher.Invoke(() =>
                 {
-                    list.Add(item);
+                    list.Insert(0,item);
                 });
             }
             this.OnItemChanged();
@@ -154,7 +154,7 @@ public abstract class ProjectServiceBase<T> : BindableBase, IProjectService, IDa
         this.Clear();
         if (data != null)
         {
-            foreach (T item in data.ProjectItems)
+            foreach (T item in data.ProjectItems.OrderBy(x => x.UpdateTime))
             {
                 this.Add(data.ProjectItems.ToArray());
             }

@@ -7,6 +7,7 @@
         <local:Form
             SelectObject="{Binding SelectObject}"
             UseAsync="False"
+            UseCommand="{Binding UseCommand}"
             UseGroupNames="{Binding UseGroupNames}"
             UsePropertyView="{Binding UsePropertyView}" />
     </DataTemplate>

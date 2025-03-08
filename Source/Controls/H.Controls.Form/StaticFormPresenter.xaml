@@ -1,13 +1,12 @@
-﻿<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:h="https://github.com/HeBianGu"
-    xmlns:local="clr-namespace:H.Controls.Form">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Controls.Form">
     <DataTemplate DataType="{x:Type local:StaticFormPresenter}">
-        <local:StaticForm
-            SelectObject="{Binding SelectObject}"
-            UseAsync="False"
-            UseGroupNames="{Binding UseGroupNames}"
-            UsePropertyView="{Binding UsePropertyView}" />
+        <local:StaticForm SelectObject="{Binding SelectObject}"
+                          UseAsync="False"
+                          UseCommand="{Binding UseCommand}"
+                          UseGroupNames="{Binding UseGroupNames}"
+                          UsePropertyView="{Binding UsePropertyView}" />
     </DataTemplate>
 </ResourceDictionary>

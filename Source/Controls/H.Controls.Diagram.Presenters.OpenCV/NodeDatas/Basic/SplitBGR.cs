@@ -1,5 +1,5 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
-[Display(Name = "通道分割", GroupName = "基础函数", Order = 0)]
+[Display(Name = "通道分割", GroupName = "基础函数", Order = 30)]
 public class SplitBGR : BasicActionNodeDataBase
 {
     private SplitSelectType _splitSelectType;

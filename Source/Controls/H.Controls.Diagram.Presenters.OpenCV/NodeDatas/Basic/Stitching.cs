@@ -1,5 +1,5 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
-[Display(Name = "图像拼接", GroupName = "基础函数", Description = "降噪成黑白色", Order = 0)]
+[Display(Name = "图像拼接", GroupName = "基础函数", Description = "降噪成黑白色", Order = 71)]
 public class Stitching : BasicActionNodeDataBase
 {
     private Stitcher.Mode _mode = Stitcher.Mode.Scans;

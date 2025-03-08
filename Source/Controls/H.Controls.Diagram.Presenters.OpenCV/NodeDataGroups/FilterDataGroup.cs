@@ -1,9 +1,10 @@
 ﻿global using H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Filter;
 using H.Controls.Diagram.Presenter.DiagramDatas.Base;
+using H.Extensions.FontIcon;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.NodeDataGroups;
 
-[Icon("\xE16E")]
+[Icon(FontIcons.Filter)]
 [Display(Name = "滤波", GroupName = "对图像进行滤波，降噪，模糊处理", Order = 2)]
 public class FilterDataGroup : BasicDataGroupBase
 {

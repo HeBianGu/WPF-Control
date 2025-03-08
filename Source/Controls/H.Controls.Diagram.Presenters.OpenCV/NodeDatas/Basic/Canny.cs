@@ -1,5 +1,5 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
-[Display(Name = "边缘检测", GroupName = "基础函数", Order = 0)]
+[Display(Name = "边缘检测", GroupName = "基础函数", Order = 10)]
 public class Canny : BasicActionNodeDataBase
 {
     private double _threshold1;

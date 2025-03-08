@@ -1,5 +1,5 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Detector;
-[Display(Name = "行人检测", GroupName = "基础检测", Order = 0)]
+[Display(Name = "行人检测", GroupName = "基础检测", Order = 21)]
 public class Hog : DetectorActionNodeDataBase
 {
     public override IFlowableResult Invoke(Part previors, Node current)

@@ -1,5 +1,5 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
-[Display(Name = "色彩变换", GroupName = "基础函数", Order = 0)]
+[Display(Name = "色彩变换", GroupName = "基础函数", Order = 2)]
 public class CvtColor : BasicActionNodeDataBase
 {
     private ColorConversionCodes _colorConversionCode = ColorConversionCodes.BGR2GRAY;

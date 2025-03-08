@@ -1,5 +1,5 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Detector;
-[Display(Name = "识别连通区域", GroupName = "基础检测", Order = 0)]
+[Display(Name = "识别连通区域", GroupName = "基础检测", Order = 3)]
 public class RenderBlobs : DetectorActionNodeDataBase
 {
     private bool _useRectangle = true;
