@@ -63,7 +63,6 @@ public class SurfFeatureDetector : FeatureOpenCVNodeDataBase
         }
     }
 
-
     private double _hessianThreshold = 200;
     [Display(Name = "HessianThreshold", GroupName = "数据")]
     public double HessianThreshold
@@ -75,7 +74,6 @@ public class SurfFeatureDetector : FeatureOpenCVNodeDataBase
             DispatcherRaisePropertyChanged();
         }
     }
-
 
     private int _nOctaves = 4;
     [Display(Name = "nOctaves", GroupName = "数据")]
@@ -89,7 +87,6 @@ public class SurfFeatureDetector : FeatureOpenCVNodeDataBase
         }
     }
 
-
     private int _nOctaveLayers = 2;
     [Display(Name = "nOctaveLayers", GroupName = "数据")]
     public int nOctaveLayers
@@ -101,7 +98,6 @@ public class SurfFeatureDetector : FeatureOpenCVNodeDataBase
             DispatcherRaisePropertyChanged();
         }
     }
-
 
     private bool _extended;
     [Display(Name = "Extended", GroupName = "数据")]

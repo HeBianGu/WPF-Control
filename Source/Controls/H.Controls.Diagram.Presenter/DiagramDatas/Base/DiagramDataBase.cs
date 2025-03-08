@@ -1,13 +1,10 @@
-﻿global using H.Controls.Diagram.Presenter.NodeDatas.Card;
+﻿global using H.Controls.Diagram.Layouts;
 global using H.Controls.Diagram.Layouts.Base;
-global using System.Windows.Input;
 global using H.Controls.Diagram.LinkDrawers;
-global using H.Controls.Diagram.Layouts;
-using H.Mvvm.ViewModels.Base;
-using System.Text.Json.Serialization;
-using System.Text.Json;
-using System.Runtime.Serialization;
+global using H.Controls.Diagram.Presenter.NodeDatas.Card;
+global using System.Windows.Input;
 using H.Extensions.FontIcon;
+using System.Text.Json.Serialization;
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
 public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
@@ -74,7 +71,6 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
             RaisePropertyChanged();
         }
     }
-
 
     private Part _selectedPart;
     [JsonIgnore]
@@ -182,7 +178,6 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
         }
     }, x => this.Nodes.Count > 0);
 
-
     [Icon(FontIcons.EditMirrored)]
     [Display(Name = "编辑面板", GroupName = "操作", Order = 0, Description = "点击此功能，编辑面板信息")]
     public virtual DisplayCommand EditCommand => new DisplayCommand(async e =>
@@ -238,7 +233,6 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
         this.Aligment();
     }, x => this.Nodes.Count > 0);
 
-
     [System.Text.Json.Serialization.JsonIgnore]
 
     [Icon(FontIcons.Previous)]
@@ -247,7 +241,6 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     {
         this.OnPreivewPart();
     }, x => this.SelectedPart?.GetPrevious() != null);
-
 
     protected virtual void OnPreivewPart()
     {
@@ -296,7 +289,6 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     {
         this.OnSelectedPartChanged();
     });
-
 
     protected virtual void OnSelectedPartChanged()
     {
@@ -349,7 +341,6 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
         }
         this.SelectedPart = null;
     }
-
 
     #region - Serializing -
 
@@ -436,7 +427,6 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
         //      return CreateFromXml(xml, this.GetType());
         //  });
     }
-
 
     //public void FromXml(XmlElement xmlEle, XmlDocument cnt, Func<PropertyInfo, object, bool> match = null)
     //{

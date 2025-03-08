@@ -1,7 +1,7 @@
-﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Start;
+﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Image;
 
 [Display(Name = "笔迹", GroupName = "数据源", Order = 0)]
-public class Cvmorph : Base.OpenCVImageNodeDataBase
+public class Cvmorph : OpenCVImageNodeDataBase
 {
     protected override string GetImagePath()
     {

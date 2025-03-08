@@ -12,7 +12,6 @@ public static class NodeFactory
             }
         }
 
-
         //IEnumerable<Type> types = Assembly.GetExecutingAssembly().GetTypes().Where(t => typeof(TextNodeData).IsAssignableFrom(t)).Where(x => !x.IsAbstract);
 
         //foreach (Type item in types)

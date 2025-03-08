@@ -1,5 +1,4 @@
-﻿using H.Controls.Diagram.Presenter.DiagramDatas.Base;
-using H.Extensions.FontIcon;
+﻿using H.Extensions.FontIcon;
 
 namespace H.Controls.Diagram.Presenter.NodeDatas.Base;
 
@@ -200,7 +199,6 @@ public abstract class NodeData : NodeDataBase, INodeData, ITemplate, ILinkDataCr
         }
     }
 
-
     private bool _isSelected;
     public bool IsSelected
     {
@@ -238,7 +236,6 @@ public abstract class NodeData : NodeDataBase, INodeData, ITemplate, ILinkDataCr
     //    }
     //}
 
-
     //private Color _effectColor;
     //[Display(Name = "阴影颜色", GroupName = "阴影")]
     //public Color EffectColor
@@ -250,7 +247,6 @@ public abstract class NodeData : NodeDataBase, INodeData, ITemplate, ILinkDataCr
     //        RaisePropertyChanged();
     //    }
     //}
-
 
     //private double _derection;
     //[Display(Name = "方向", GroupName = "阴影")]
@@ -264,7 +260,6 @@ public abstract class NodeData : NodeDataBase, INodeData, ITemplate, ILinkDataCr
     //    }
     //}
 
-
     //private double _effectOpacity;
     //[Display(Name = "透明度", GroupName = "阴影")]
     //public double EffectOpacity
@@ -276,7 +271,6 @@ public abstract class NodeData : NodeDataBase, INodeData, ITemplate, ILinkDataCr
     //        RaisePropertyChanged();
     //    }
     //}
-
 
     //private RenderingBias _renderingBias;
     //[Display(Name = "偏好", GroupName = "阴影")]

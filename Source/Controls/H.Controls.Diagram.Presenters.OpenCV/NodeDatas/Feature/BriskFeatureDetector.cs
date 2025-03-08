@@ -1,6 +1,4 @@
-﻿global using H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Detector;
-
-namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Feature;
+﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Feature;
 [Display(Name = "BRISK", GroupName = "特征提取", Order = 0)]
 public class BriskFeatureDetector : FeatureOpenCVNodeDataBase
 {
@@ -16,7 +14,6 @@ public class BriskFeatureDetector : FeatureOpenCVNodeDataBase
         }
     }
 
-
     private int _threshold = 30;
     [Range(0, 500)]
     [Display(Name = "Threshold", GroupName = "数据")]
@@ -29,7 +26,6 @@ public class BriskFeatureDetector : FeatureOpenCVNodeDataBase
             DispatcherRaisePropertyChanged();
         }
     }
-
 
     private int _octaves = 3;
     [Range(0, 8)]

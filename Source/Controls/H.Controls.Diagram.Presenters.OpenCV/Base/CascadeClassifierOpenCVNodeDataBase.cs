@@ -25,7 +25,6 @@ public abstract class CascadeClassifierOpenCVNodeDataBase : OpenCVNodeData, ICas
         }
     }
 
-
     private int _minNeighbors = 3;
     [DefaultValue(3)]
     [Display(Name = "MinNeighbors", GroupName = "数据")]
@@ -52,7 +51,6 @@ public abstract class CascadeClassifierOpenCVNodeDataBase : OpenCVNodeData, ICas
         }
     }
 
-
     private Size? _minSize = new Size(30, 30);
     [Display(Name = "MinSize", GroupName = "数据")]
     public Size? MinSize
@@ -64,7 +62,6 @@ public abstract class CascadeClassifierOpenCVNodeDataBase : OpenCVNodeData, ICas
             RaisePropertyChanged();
         }
     }
-
 
     private Size? _maxSize = null;
     [DefaultValue(null)]
@@ -78,7 +75,6 @@ public abstract class CascadeClassifierOpenCVNodeDataBase : OpenCVNodeData, ICas
             RaisePropertyChanged();
         }
     }
-
 
     protected Mat DetectFace(CascadeClassifier cascade, Mat src)
     {

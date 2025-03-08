@@ -1,6 +1,4 @@
 ﻿global using H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Filter;
-using H.Controls.Diagram.Presenter.DiagramDatas.Base;
-using H.Extensions.FontIcon;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.NodeDataGroups;
 

@@ -16,7 +16,6 @@ public class DetailEnhance : FilterActionNodeDataBase
         }
     }
 
-
     private float _sigmaR = 0.15f;
     [DefaultValue(0.15f)]
     [Display(Name = "SigmaR", GroupName = "数据")]

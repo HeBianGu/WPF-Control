@@ -1,6 +1,6 @@
-﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Start;
+﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Image;
 [Display(Name = "一堆书籍", GroupName = "数据源", Order = 0)]
-public class Match : Base.OpenCVImageNodeDataBase
+public class Match : OpenCVImageNodeDataBase
 {
     protected override string GetImagePath()
     {

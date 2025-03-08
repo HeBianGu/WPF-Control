@@ -21,8 +21,6 @@
 //    public XmlClassData Data { get; set; }
 //}
 
-
-
 public class DiagramTemplateGroup : BindableBase
 {
     public DiagramTemplateGroup(IEnumerable<DiagramTemplate> collection)
@@ -31,7 +29,6 @@ public class DiagramTemplateGroup : BindableBase
     }
 
     public string Name { get; set; }
-
 
     private ObservableCollection<DiagramTemplate> _collection = new ObservableCollection<DiagramTemplate>();
     /// <summary> 说明  </summary>
@@ -44,7 +41,6 @@ public class DiagramTemplateGroup : BindableBase
             RaisePropertyChanged();
         }
     }
-
 
     private DiagramTemplate _selectedItem;
     /// <summary> 说明  </summary>

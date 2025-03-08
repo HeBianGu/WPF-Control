@@ -3,5 +3,4 @@
 public interface IDetectorOpenCVNodeData : INodeData, IDisplayBindable
 {
 
-
 }

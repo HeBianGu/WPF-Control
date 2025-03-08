@@ -1,7 +1,6 @@
 ﻿global using H.Controls.Diagram.Datas;
 global using H.Controls.Diagram.Flowables;
 using H.Extensions.FontIcon;
-using System.Text.Json.Serialization;
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
 public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowableDiagramData
@@ -35,7 +34,6 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
         }
     }
 
-
     private DiagramFlowableZoomMode _flowableZoomMode;
     [Display(Name = "执行时节点自动缩放", GroupName = "数据")]
     public DiagramFlowableZoomMode FlowableZoomMode
@@ -58,7 +56,6 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
             RaisePropertyChanged();
         }
     }
-
 
     protected virtual void OnInvokingPart(Part part)
     {
@@ -107,7 +104,6 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
     {
         this.Reset();
     }, e => this.State.CanReset());
-
 
     //public RelayCommand StartNodeCommand => new RelayCommand(async (s, e) =>
     //{
@@ -180,7 +176,6 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
         //}
         //return true;
     }
-
 
     protected virtual bool CanStart()
     {

@@ -1,7 +1,4 @@
-﻿global using H.Controls.Diagram;
-global using H.Controls.Diagram.Presenter.DiagramDatas.Base;
-global using System.Diagnostics;
-using H.Controls.Diagram.Flowables;
+﻿global using H.Controls.Diagram.Presenter.DiagramDatas.Base;
 using H.Extensions.FontIcon;
 
 namespace H.Controls.Diagram.Presenter.NodeDatas;
@@ -106,7 +103,6 @@ public class FlowableNodeData : TextNodeData, IFlowableNodeData
             RaisePropertyChanged();
         }
     }
-
 
     private bool _useInfoLogger = true;
     [XmlIgnore]

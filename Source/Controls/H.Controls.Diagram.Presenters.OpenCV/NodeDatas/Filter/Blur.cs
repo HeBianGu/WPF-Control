@@ -45,7 +45,6 @@ public class Blur : FilterActionNodeDataBase
         }
     }
 
-
     protected override IFlowableResult Invoke()
     {
         Mat preMat = this.PreviourMat;

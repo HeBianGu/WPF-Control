@@ -1,6 +1,5 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-
 using H.Extensions.Setting;
 
 namespace H.Controls.Diagram.Presenter;
@@ -19,7 +18,6 @@ public class DiagramSetting : LazySettableInstance<DiagramSetting>
             RaisePropertyChanged();
         }
     }
-
 
     private Color _nodeDataDefaultFill = (Application.Current.FindResource(BrushKeys.Background) as SolidColorBrush).Color;
     [Display(Name = "节点默认背景色")]
@@ -57,7 +55,6 @@ public class DiagramSetting : LazySettableInstance<DiagramSetting>
         }
     }
 
-
     private bool _useTop;
     [DefaultValue(true)]
     [Display(Name = "启用顶部刻度尺")]
@@ -71,7 +68,6 @@ public class DiagramSetting : LazySettableInstance<DiagramSetting>
         }
     }
 
-
     private bool _useBottom;
     [DefaultValue(false)]
     [Display(Name = "启用底部刻度尺")]
@@ -84,7 +80,6 @@ public class DiagramSetting : LazySettableInstance<DiagramSetting>
             RaisePropertyChanged();
         }
     }
-
 
     private bool _useLeft;
     [DefaultValue(true)]
@@ -112,7 +107,6 @@ public class DiagramSetting : LazySettableInstance<DiagramSetting>
         }
     }
 
-
     private int _largeSplit;
     [Range(10, 1000)]
     [DefaultValue(100)]
@@ -126,7 +120,6 @@ public class DiagramSetting : LazySettableInstance<DiagramSetting>
             RaisePropertyChanged();
         }
     }
-
 
     private int _smallSplit;
     [Range(1, 1000)]
@@ -155,7 +148,6 @@ public class DiagramSetting : LazySettableInstance<DiagramSetting>
         }
     }
 
-
     private bool _useSmallSplitVerticalLine;
     [DefaultValue(true)]
     [Display(Name = "显示刻度尺垂直小网格线")]
@@ -169,7 +161,6 @@ public class DiagramSetting : LazySettableInstance<DiagramSetting>
         }
     }
 
-
     private bool _useSmallSpliteHorizontalLine;
     [DefaultValue(true)]
     [Display(Name = "显示刻度尺水平小网格线")]
@@ -182,7 +173,6 @@ public class DiagramSetting : LazySettableInstance<DiagramSetting>
             RaisePropertyChanged();
         }
     }
-
 
     private bool _useSplitHorizontalLine;
     [DefaultValue(true)]
@@ -209,7 +199,6 @@ public class DiagramSetting : LazySettableInstance<DiagramSetting>
             RaisePropertyChanged();
         }
     }
-
 
     private Brush _gridBackground;
     [DefaultValue(null)]

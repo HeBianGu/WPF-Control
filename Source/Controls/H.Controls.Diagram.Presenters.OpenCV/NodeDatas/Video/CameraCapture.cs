@@ -52,7 +52,6 @@ public class CameraCapture : VideoCaptureImageImportNodeDataBase
     //    //return base.Invoke(previors, current);
     //}
 
-
     public override async Task<IFlowableResult> InvokeAsync(Part previors, Node current)
     {
         using BackgroundSubtractorMOG mog = BackgroundSubtractorMOG.Create();

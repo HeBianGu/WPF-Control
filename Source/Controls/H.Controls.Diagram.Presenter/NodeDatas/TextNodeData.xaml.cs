@@ -66,7 +66,6 @@ public class TextNodeData : PortableNodeData, ITextNodeData
         }
     }
 
-
     private FontStyle _fontStyle;
     [Display(Name = "字体样式", GroupName = "文本")]
     public FontStyle FontStyle

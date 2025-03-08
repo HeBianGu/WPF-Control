@@ -1,7 +1,5 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Cascade;
 
-
-
 [Display(Name = "LBP", GroupName = "人脸检测", Order = 0)]
 public class LbpCascade : CascadeClassifierOpenCVNodeDataBase
 {

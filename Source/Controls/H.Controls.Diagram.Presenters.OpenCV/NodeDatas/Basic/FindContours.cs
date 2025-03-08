@@ -15,7 +15,6 @@ public class FindContours : BasicOpenCVNodeDataBase
         }
     }
 
-
     private ContourApproximationModes _contourApproximationModes = ContourApproximationModes.ApproxNone;
     [DefaultValue(ContourApproximationModes.ApproxNone)]
     [Display(Name = "ContourApproximationMode", GroupName = "数据")]
@@ -28,8 +27,6 @@ public class FindContours : BasicOpenCVNodeDataBase
             DispatcherRaisePropertyChanged();
         }
     }
-
-
 
     private Point? _offset = null;
     [DefaultValue(null)]
@@ -44,7 +41,6 @@ public class FindContours : BasicOpenCVNodeDataBase
         }
     }
 
-
     private int _contourIdx = -1;
     [DefaultValue(-1)]
     [Display(Name = "ContourIdx", GroupName = "数据")]
@@ -57,7 +53,6 @@ public class FindContours : BasicOpenCVNodeDataBase
             DispatcherRaisePropertyChanged();
         }
     }
-
 
     private int _thickness = 3;
     [DefaultValue(3)]
@@ -72,7 +67,6 @@ public class FindContours : BasicOpenCVNodeDataBase
         }
     }
 
-
     private LineTypes _lineType = LineTypes.Link8;
     [DefaultValue(LineTypes.Link8)]
     [Display(Name = "LineType", GroupName = "数据")]
@@ -85,7 +79,6 @@ public class FindContours : BasicOpenCVNodeDataBase
             DispatcherRaisePropertyChanged();
         }
     }
-
 
     private int _maxLevel = int.MaxValue;
     [DefaultValue(int.MaxValue)]
@@ -125,7 +118,6 @@ public class FindContours : BasicOpenCVNodeDataBase
     //    return base.Invoke(previors, current);
     //}
 
-
     private DrawContourType _drawContourType = DrawContourType.DrawContours;
     [DefaultValue(DrawContourType.DrawContours)]
     [Display(Name = "DrawContourType", GroupName = "数据")]
@@ -138,7 +130,6 @@ public class FindContours : BasicOpenCVNodeDataBase
             DispatcherRaisePropertyChanged();
         }
     }
-
 
     protected override IFlowableResult Invoke()
     {

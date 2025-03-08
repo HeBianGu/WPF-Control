@@ -108,7 +108,7 @@ public abstract class ThemeDigramDataBase : TreeDigramDataBase, IThemeDigramData
         }
     }
 
-    public RelayCommand ApplyDiagramThemeCommand => new RelayCommand(e=>
+    public RelayCommand ApplyDiagramThemeCommand => new RelayCommand(e =>
     {
         if (e is DiagramTheme project)
         {
@@ -132,7 +132,7 @@ public abstract class ThemeDigramDataBase : TreeDigramDataBase, IThemeDigramData
         }
     });
 
-    public RelayCommand ApplayNodeStyleCommand => new RelayCommand(e=>
+    public RelayCommand ApplayNodeStyleCommand => new RelayCommand(e =>
     {
         if (e is TextNodeData project)
         {
@@ -141,7 +141,7 @@ public abstract class ThemeDigramDataBase : TreeDigramDataBase, IThemeDigramData
         }
     });
 
-    public RelayCommand ApplayLinkStyleCommand => new RelayCommand(e=>
+    public RelayCommand ApplayLinkStyleCommand => new RelayCommand(e =>
     {
         if (e is TextLinkData project)
         {
@@ -150,7 +150,7 @@ public abstract class ThemeDigramDataBase : TreeDigramDataBase, IThemeDigramData
         }
     });
 
-    public RelayCommand ApplayPortStyleCommand => new RelayCommand(e=>
+    public RelayCommand ApplayPortStyleCommand => new RelayCommand(e =>
     {
         if (e is TextPortData project)
         {

@@ -10,7 +10,6 @@ public abstract class NodeDataBase : DisplayBindableBase, ICloneable
         //InitPort();
     }
 
-
     //protected virtual void InitPort()
     //{
 

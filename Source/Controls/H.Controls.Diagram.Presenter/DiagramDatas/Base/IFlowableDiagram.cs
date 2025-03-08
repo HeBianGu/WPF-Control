@@ -1,7 +1,4 @@
-﻿using H.Controls.Diagram.Flowables;
-using H.Mvvm.ViewModels.Base;
-
-namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
+﻿namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
 public interface IFlowableDiagramData : IDiagramData, IMessageable
 {

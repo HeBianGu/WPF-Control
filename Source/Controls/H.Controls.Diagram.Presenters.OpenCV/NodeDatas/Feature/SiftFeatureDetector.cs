@@ -39,7 +39,6 @@ public class SiftFeatureDetector : FeatureOpenCVNodeDataBase
         }
     }
 
-
     private int _nFeatures = 0;
     [Display(Name = "nFeatures", GroupName = "数据")]
     public int nFeatures
@@ -51,7 +50,6 @@ public class SiftFeatureDetector : FeatureOpenCVNodeDataBase
             DispatcherRaisePropertyChanged();
         }
     }
-
 
     private int _nOctaveLayers = 3;
     [Display(Name = "nOctaveLayers", GroupName = "数据")]
@@ -65,7 +63,6 @@ public class SiftFeatureDetector : FeatureOpenCVNodeDataBase
         }
     }
 
-
     private double _contrastThreshold = 0.04;
     [Display(Name = "ContrastThreshold", GroupName = "数据")]
     public double ContrastThreshold
@@ -77,7 +74,6 @@ public class SiftFeatureDetector : FeatureOpenCVNodeDataBase
             DispatcherRaisePropertyChanged();
         }
     }
-
 
     private double _edgeThreshold = 10;
     [Display(Name = "EdgeThreshold", GroupName = "数据")]
@@ -125,7 +121,6 @@ public class SiftFeatureDetector : FeatureOpenCVNodeDataBase
             DispatcherRaisePropertyChanged();
         }
     }
-
 
     protected override IFlowableResult Invoke()
     {

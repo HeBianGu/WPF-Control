@@ -1,7 +1,5 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Morphology;
 
-
-
 [Display(Name = "腐蚀", GroupName = "形态学", Description = "去除散点", Order = 0)]
 public class Erode : MorphologyOpenCVNodeDataBase
 {
@@ -21,8 +19,6 @@ public class Erode : MorphologyOpenCVNodeDataBase
     //    }
     //}
 
-
-
     //private int _iterations = 1;
     //[Display(Name = "Iterations", GroupName = "数据")]
     //public int Iterations
@@ -34,7 +30,6 @@ public class Erode : MorphologyOpenCVNodeDataBase
     //        RaisePropertyChanged();
     //    }
     //}
-
 
     //private BorderTypes _borderTypes = BorderTypes.Constant;
     //[Display(Name = "BorderType", GroupName = "数据")]
@@ -72,7 +67,6 @@ public class Erode : MorphologyOpenCVNodeDataBase
     //    }
     //}
 
-
     //private int _kernelRows = 3;
     //[Display(Name = "KernelRows", GroupName = "数据")]
     //public int KernelRows
@@ -85,7 +79,6 @@ public class Erode : MorphologyOpenCVNodeDataBase
     //    }
     //}
 
-
     //private int _kernelCols = 3;
     //[Display(Name = "KernelCols", GroupName = "数据")]
     //public int KernelCols
@@ -97,8 +90,6 @@ public class Erode : MorphologyOpenCVNodeDataBase
     //        RaisePropertyChanged();
     //    }
     //}
-
-
 
     //public override IFlowableResult Invoke(Part previors, Node current)
     //{

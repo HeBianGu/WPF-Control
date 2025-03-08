@@ -1,7 +1,4 @@
-﻿using H.Controls.Diagram.Presenter.DiagramDatas.Base;
-using H.Extensions.FontIcon;
-
-namespace H.Controls.Diagram.Presenters.OpenCV.NodeDataGroups;
+﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDataGroups;
 [Icon(FontIcons.Photo2)]
 [Display(Name = "图片数据源", GroupName = "设置输入图像", Order = 0)]
 public class ImageDataGroup : BasicDataGroupBase

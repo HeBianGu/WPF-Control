@@ -12,7 +12,6 @@ public class DiagramDataSourceConverter : GraphSource<INodeData, ILinkData>
     public DiagramDataSourceConverter(IEnumerable<INodeData> nodes, IEnumerable<ILinkData> links) : base(nodes, links)
     {
 
-
     }
 
     protected override Node ConvertToNode(INodeData unit)

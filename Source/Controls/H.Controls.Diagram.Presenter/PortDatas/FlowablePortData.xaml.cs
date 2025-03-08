@@ -78,7 +78,6 @@ public class FlowablePortData : TextPortData, IFlowablePort
         }
     }
 
-
     private bool _useInfoLogger = true;
     [XmlIgnore]
     [Browsable(false)]
@@ -151,7 +150,6 @@ public class FlowablePortData : TextPortData, IFlowablePort
             IocLog.Instance?.Error($"执行错误<{this.GetType().Name}>:{this.Text} {this.Message}");
             IocLog.Instance?.Error(ex);
 
-
             return this.Error();
         }
         finally
@@ -191,7 +189,6 @@ public class FlowablePortData : TextPortData, IFlowablePort
                 return false;
             }
         }
-
 
         if (!(part.Content is IFlowable))
         {

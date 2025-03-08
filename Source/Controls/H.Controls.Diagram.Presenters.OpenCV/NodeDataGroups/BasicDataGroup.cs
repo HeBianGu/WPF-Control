@@ -1,6 +1,4 @@
-﻿global using H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
-global using H.Extensions.Common;
-global using H.Controls.Diagram.Presenter.DiagramDatas.Base;
+﻿global using H.Extensions.Common;
 namespace H.Controls.Diagram.Presenters.OpenCV.NodeDataGroups;
 [Icon("\xE790")]
 [Display(Name = "基础功能", GroupName = "图像处理的基础功能", Order = 1)]

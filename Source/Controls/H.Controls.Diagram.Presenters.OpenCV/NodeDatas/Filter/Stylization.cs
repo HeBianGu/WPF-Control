@@ -16,7 +16,6 @@ public class Stylization : FilterActionNodeDataBase
         }
     }
 
-
     private float _sigmaR = 0.45f;
     [DefaultValue(0.45f)]
     [Display(Name = "SigmaR", GroupName = "数据")]

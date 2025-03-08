@@ -54,7 +54,6 @@ public class FlowableLinkData : TextLinkData, IFlowableLink
         }
     }
 
-
     private bool _useInfoLogger = true;
     [System.Text.Json.Serialization.JsonIgnore]
 
@@ -141,7 +140,6 @@ public class FlowableLinkData : TextLinkData, IFlowableLink
             IocLog.Instance?.Info($"执行错误<{this.GetType().Name}>:{this.Text} {this.Message}");
             IocLog.Instance?.Error($"执行错误<{this.GetType().Name}>:{this.Text} {this.Message}");
             IocLog.Instance?.Error(ex);
-
 
             return this.Error();
         }

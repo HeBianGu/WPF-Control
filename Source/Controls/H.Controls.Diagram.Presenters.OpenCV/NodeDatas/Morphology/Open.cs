@@ -1,7 +1,5 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Morphology;
 
-
-
 [Display(Name = "开运算", GroupName = "形态学", Description = "腐蚀 + 膨胀 ，去除大图形外的小图形", Order = 21)]
 public class Open : MorphologyOpenCVNodeDataBase
 {

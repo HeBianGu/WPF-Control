@@ -14,7 +14,6 @@ public class HoughLinesP : DetectorOpenCVNodeDataBase
         }
     }
 
-
     private double _theta = Math.PI / 180;
     [Display(Name = "Theta", GroupName = "数据")]
     public double Theta
@@ -27,7 +26,6 @@ public class HoughLinesP : DetectorOpenCVNodeDataBase
         }
     }
 
-
     private int _threshold = 50;
     [Display(Name = "Threshold", GroupName = "数据")]
     public int Threshold
@@ -39,9 +37,6 @@ public class HoughLinesP : DetectorOpenCVNodeDataBase
             DispatcherRaisePropertyChanged();
         }
     }
-
-
-
 
     private double _minLineLength = 50;
     [Display(Name = "MinLineLength", GroupName = "数据")]

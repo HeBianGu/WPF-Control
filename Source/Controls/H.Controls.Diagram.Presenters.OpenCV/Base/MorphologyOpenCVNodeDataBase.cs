@@ -36,7 +36,6 @@ public abstract class MorphologyOpenCVNodeDataBase : OpenCVNodeData, IMorphology
         }
     }
 
-
     private BorderTypes _borderTypes = BorderTypes.Constant;
     [DefaultValue(BorderTypes.Constant)]
     [Display(Name = "BorderType", GroupName = "数据")]
@@ -88,7 +87,6 @@ public abstract class MorphologyOpenCVNodeDataBase : OpenCVNodeData, IMorphology
         }
     }
 
-
     private int _kernelCols = 3;
     [DefaultValue(3)]
     [Display(Name = "KernelCols", GroupName = "数据")]
@@ -101,7 +99,6 @@ public abstract class MorphologyOpenCVNodeDataBase : OpenCVNodeData, IMorphology
             DispatcherRaisePropertyChanged();
         }
     }
-
 
     protected abstract MorphTypes GetMorphType();
 

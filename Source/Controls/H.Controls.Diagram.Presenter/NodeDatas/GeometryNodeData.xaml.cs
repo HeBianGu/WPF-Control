@@ -55,7 +55,6 @@ public class GeometryNodeData : GeometryNodeDataBase
     }
 }
 
-
 public class InfoNodeData : GeometryNodeDataBase, ICloneable
 {
     public InfoNodeData()

@@ -19,7 +19,6 @@ public class GaussianBlur : FilterActionNodeDataBase
         }
     }
 
-
     private double _sigmaX;
     [DefaultValue(0.0)]
     [Display(Name = "SigmaX", GroupName = "数据")]
@@ -32,7 +31,6 @@ public class GaussianBlur : FilterActionNodeDataBase
             DispatcherRaisePropertyChanged();
         }
     }
-
 
     private double _sigmaY;
     [DefaultValue(0.0)]

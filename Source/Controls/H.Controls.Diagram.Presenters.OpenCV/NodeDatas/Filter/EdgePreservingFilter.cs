@@ -1,6 +1,4 @@
-﻿global using H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Feature;
-
-namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Filter;
+﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Filter;
 [Display(Name = "边缘保持器", GroupName = "滤波/降噪/模糊", Order = 30)]
 public class EdgePreservingFilter : FilterActionNodeDataBase
 {
@@ -30,7 +28,6 @@ public class EdgePreservingFilter : FilterActionNodeDataBase
             DispatcherRaisePropertyChanged();
         }
     }
-
 
     private float _sigmaR = 0.4f;
     [DefaultValue(0.4f)]

@@ -1,5 +1,4 @@
-﻿using H.Controls.Diagram.Presenter.DiagramDatas.Base;
-namespace H.Controls.Diagram.Presenters.OpenCV.NodeDataGroups;
+﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDataGroups;
 
 [Icon(FontIcons.More)]
 [Display(Name = "其他", GroupName = "图像处理的其他算法", Order = 100)]

@@ -16,7 +16,6 @@ public class PencilSketch : FilterActionNodeDataBase
         }
     }
 
-
     private float _sigmaR = 0.07f;
     [DefaultValue(0.07f)]
     [Display(Name = "SigmaR", GroupName = "数据")]
@@ -45,7 +44,6 @@ public class PencilSketch : FilterActionNodeDataBase
         }
     }
 
-
     private PencilOutType _pencilOutType;
     [DefaultValue(PencilOutType.Src)]
     [Display(Name = "OutType", GroupName = "数据")]
@@ -58,8 +56,6 @@ public class PencilSketch : FilterActionNodeDataBase
             DispatcherRaisePropertyChanged();
         }
     }
-
-
 
     protected override IFlowableResult Invoke()
     {

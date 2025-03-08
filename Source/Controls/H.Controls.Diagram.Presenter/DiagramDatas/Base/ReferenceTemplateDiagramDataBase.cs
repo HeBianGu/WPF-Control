@@ -16,7 +16,7 @@ public abstract class ReferenceTemplateDiagramDataBase : ThemeDigramDataBase, IR
         }
     }
 
-    public RelayCommand DeleteReferenceTemplateCommand => new RelayCommand(e=>
+    public RelayCommand DeleteReferenceTemplateCommand => new RelayCommand(e =>
     {
         if (e is FlowableDiagramTemplateNodeData template)
             this.DeleteReferenceTemplate(template);

@@ -1,6 +1,4 @@
-﻿using H.Controls.Diagram.Presenter.DiagramDatas.Base;
-
-namespace H.Controls.Diagram.Presenter.Provider;
+﻿namespace H.Controls.Diagram.Presenter.Provider;
 
 public class NodeGroup : NodeDataGroupBase
 {

@@ -1,8 +1,6 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-
 using H.Extensions.Setting;
-using System.Runtime.CompilerServices;
 
 namespace H.Controls.Diagram.Presenter;
 
@@ -20,7 +18,6 @@ public class DiagramAppSetting : LazySettableInstance<DiagramAppSetting>
             RaisePropertyChanged();
         }
     }
-
 
     private bool _useAutoLocator = true;
     [Display(Name = "启用运行时自动定位到运行节点")]
@@ -58,7 +55,6 @@ public class DiagramAppSetting : LazySettableInstance<DiagramAppSetting>
         }
     }
 
-
     private bool _useAutoShowLog = true;
     [Display(Name = "启用运行时自动显示日志")]
     public bool UseAutoShowLog
@@ -70,7 +66,6 @@ public class DiagramAppSetting : LazySettableInstance<DiagramAppSetting>
             RaisePropertyChanged();
         }
     }
-
 
     private SelectionMode _propertySelectionMode;
     [Display(Name = "属性栏显示方式")]
@@ -109,6 +104,5 @@ public class DiagramAppSetting : LazySettableInstance<DiagramAppSetting>
             RaisePropertyChanged();
         }
     }
-
 
 }

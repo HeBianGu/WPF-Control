@@ -47,7 +47,6 @@ public abstract class OpenCVNodeData : OpenCVNodeDataBase
         this.RefreshMatToView(this.Mat);
     }
 
-
     protected virtual string GetDataPath(string dataPath)
     {
         if (string.IsNullOrEmpty(dataPath))
@@ -97,7 +96,6 @@ public abstract class OpenCVNodeData : OpenCVNodeDataBase
         Thread.Sleep(500);
         return this.OK();
     }
-
 
     #region - NotifyPropertyChanged -
 

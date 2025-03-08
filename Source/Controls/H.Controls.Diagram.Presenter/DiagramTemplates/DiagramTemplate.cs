@@ -1,7 +1,4 @@
-﻿using H.Controls.Diagram.Presenter.DiagramDatas.Base;
-using H.Mvvm.ViewModels.Base;
-
-namespace H.Controls.Diagram.Presenter.DiagramTemplates;
+﻿namespace H.Controls.Diagram.Presenter.DiagramTemplates;
 
 public class DiagramTemplate : DisplayBindableBase, IDiagramTemplate
 {
@@ -55,7 +52,6 @@ public class DiagramTemplate : DisplayBindableBase, IDiagramTemplate
     //    }
     //}
 
-
     //private string _typeName;
     ///// <summary> 说明  </summary>
     //[ReadOnly(true)]
@@ -69,7 +65,6 @@ public class DiagramTemplate : DisplayBindableBase, IDiagramTemplate
     //        RaisePropertyChanged();
     //    }
     //}
-
 
     //private int _order;
     ///// <summary> 说明  </summary> 
@@ -108,7 +103,6 @@ public class DiagramTemplate : DisplayBindableBase, IDiagramTemplate
     //        RaisePropertyChanged();
     //    }
     //}
-
 
     //private string _filePath;
     //[Browsable(false)]

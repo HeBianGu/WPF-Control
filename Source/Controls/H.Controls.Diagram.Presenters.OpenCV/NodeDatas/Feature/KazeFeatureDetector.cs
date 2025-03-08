@@ -14,7 +14,6 @@ public class KazeFeatureDetector : FeatureOpenCVNodeDataBase
         }
     }
 
-
     private bool _upright = false;
     [Display(Name = "Upright", GroupName = "数据")]
     public bool Upright
@@ -26,7 +25,6 @@ public class KazeFeatureDetector : FeatureOpenCVNodeDataBase
             DispatcherRaisePropertyChanged();
         }
     }
-
 
     private float _threshold = 0.001f;
     [Display(Name = "Threshold", GroupName = "数据")]
@@ -40,8 +38,6 @@ public class KazeFeatureDetector : FeatureOpenCVNodeDataBase
         }
     }
 
-
-
     private int _nOctaves = 4;
     [Display(Name = "nOctaves", GroupName = "数据")]
     public int nOctaves
@@ -53,7 +49,6 @@ public class KazeFeatureDetector : FeatureOpenCVNodeDataBase
             DispatcherRaisePropertyChanged();
         }
     }
-
 
     private int _nOctaveLayers = 4;
     [Display(Name = "nOctaveLayers", GroupName = "数据")]
@@ -67,7 +62,6 @@ public class KazeFeatureDetector : FeatureOpenCVNodeDataBase
         }
     }
 
-
     private KAZEDiffusivityType _diffusivity = KAZEDiffusivityType.DiffPmG2;
     [Display(Name = "Diffusivity", GroupName = "数据")]
     public KAZEDiffusivityType Diffusivity
@@ -79,8 +73,6 @@ public class KazeFeatureDetector : FeatureOpenCVNodeDataBase
             DispatcherRaisePropertyChanged();
         }
     }
-
-
 
     protected override IFlowableResult Invoke()
     {

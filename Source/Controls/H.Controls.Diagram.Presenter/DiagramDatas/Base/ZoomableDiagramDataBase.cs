@@ -1,10 +1,8 @@
-﻿global using H.Controls.Diagram.Parts.Base;
-global using H.Controls.Diagram.Layers;
-using System.Text.Json.Serialization;
+﻿global using H.Controls.Diagram.Layers;
+global using H.Controls.Diagram.Parts.Base;
 using H.Extensions.FontIcon;
 
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
-
 
 public abstract class ZoomableDiagramDataBase : DiagramDataBase, IZoomableDiagramData
 {

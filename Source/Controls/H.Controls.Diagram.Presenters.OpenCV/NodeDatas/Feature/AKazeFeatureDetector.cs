@@ -1,7 +1,6 @@
 ﻿global using System.Diagnostics;
 namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Feature;
 
-
 [Display(Name = "AKAZE", GroupName = "特征提取", Order = 0)]
 public class AKazeFeatureDetector : FeatureOpenCVNodeDataBase
 {
@@ -17,7 +16,6 @@ public class AKazeFeatureDetector : FeatureOpenCVNodeDataBase
         }
     }
 
-
     private int _descriptorSize = 0;
     [Display(Name = "DescriptorSize", GroupName = "数据")]
     public int DescriptorSize
@@ -29,7 +27,6 @@ public class AKazeFeatureDetector : FeatureOpenCVNodeDataBase
             DispatcherRaisePropertyChanged();
         }
     }
-
 
     private int _descriptorChannels = 3;
     [Display(Name = "DescriptorChannels", GroupName = "数据")]
@@ -55,8 +52,6 @@ public class AKazeFeatureDetector : FeatureOpenCVNodeDataBase
         }
     }
 
-
-
     private int _nOctaves = 4;
     [Display(Name = "nOctaves", GroupName = "数据")]
     public int nOctaves
@@ -69,7 +64,6 @@ public class AKazeFeatureDetector : FeatureOpenCVNodeDataBase
         }
     }
 
-
     private int _nOctaveLayers = 4;
     [Display(Name = "nOctaveLayers", GroupName = "数据")]
     public int nOctaveLayers
@@ -81,7 +75,6 @@ public class AKazeFeatureDetector : FeatureOpenCVNodeDataBase
             DispatcherRaisePropertyChanged();
         }
     }
-
 
     private KAZEDiffusivityType _diffusivity = KAZEDiffusivityType.DiffPmG2;
     [Display(Name = "Diffusivity", GroupName = "数据")]

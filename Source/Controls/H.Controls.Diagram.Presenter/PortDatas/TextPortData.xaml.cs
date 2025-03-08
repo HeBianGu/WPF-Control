@@ -27,7 +27,6 @@ public class TextPortData : PortData, ITextPortData
         //this.Text = this.Name;
     }
 
-
     public override void LoadDefault()
     {
         base.LoadDefault();
@@ -57,7 +56,6 @@ public class TextPortData : PortData, ITextPortData
             RaisePropertyChanged();
         }
     }
-
 
     private string _icon;
     [XmlIgnore]
@@ -95,7 +93,6 @@ public class TextPortData : PortData, ITextPortData
             RaisePropertyChanged();
         }
     }
-
 
     private FontStyle _fontStyle;
     [Display(Name = "字体样式", GroupName = "文本")]
@@ -146,7 +143,6 @@ public class TextPortData : PortData, ITextPortData
         }
     }
 
-
     private Brush _foreground;
     [DefaultValue(null)]
     [Display(Name = "文本颜色", GroupName = "样式")]
@@ -173,7 +169,6 @@ public class TextPortData : PortData, ITextPortData
         }
     }
 
-
     private Brush _stroke;
     [DefaultValue(null)]
     [Display(Name = "边框颜色", GroupName = "样式")]
@@ -199,7 +194,6 @@ public class TextPortData : PortData, ITextPortData
     //    }
     //}
 
-
     private double _strokeThickness;
     [DefaultValue(1)]
     [Display(Name = "边框宽度", GroupName = "样式")]
@@ -212,7 +206,6 @@ public class TextPortData : PortData, ITextPortData
             RaisePropertyChanged();
         }
     }
-
 
     private Geometry _data;
     [XmlIgnore]

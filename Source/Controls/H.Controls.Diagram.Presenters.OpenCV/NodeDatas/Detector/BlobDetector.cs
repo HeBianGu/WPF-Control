@@ -59,7 +59,6 @@ public class BlobDetector : DetectorOpenCVNodeDataBase
         }
     }
 
-
     private uint _minRepeatability;
     [Display(Name = "MinRepeatability", GroupName = "数据")]
     public uint MinRepeatability
@@ -71,7 +70,6 @@ public class BlobDetector : DetectorOpenCVNodeDataBase
             RaisePropertyChanged();
         }
     }
-
 
     private float _minDistBetweenBlobs;
     [Display(Name = "MinDistBetweenBlobs", GroupName = "数据")]
@@ -85,7 +83,6 @@ public class BlobDetector : DetectorOpenCVNodeDataBase
         }
     }
 
-
     private bool _filterByColor;
     [Display(Name = "FilterByColor", GroupName = "数据")]
     public bool FilterByColor
@@ -97,7 +94,6 @@ public class BlobDetector : DetectorOpenCVNodeDataBase
             RaisePropertyChanged();
         }
     }
-
 
     private byte _blobColor;
     [Display(Name = "BlobColor", GroupName = "数据")]
@@ -111,7 +107,6 @@ public class BlobDetector : DetectorOpenCVNodeDataBase
         }
     }
 
-
     private bool _filterByArea;
     [Display(Name = "FilterByArea", GroupName = "数据")]
     public bool FilterByArea
@@ -124,7 +119,6 @@ public class BlobDetector : DetectorOpenCVNodeDataBase
         }
     }
 
-
     private float _minArea;
     [Display(Name = "MinArea", GroupName = "数据")]
     public float MinArea
@@ -136,7 +130,6 @@ public class BlobDetector : DetectorOpenCVNodeDataBase
             RaisePropertyChanged();
         }
     }
-
 
     private float _maxArea;
     [Display(Name = "MaxArea", GroupName = "数据")]
@@ -162,7 +155,6 @@ public class BlobDetector : DetectorOpenCVNodeDataBase
         }
     }
 
-
     private float _minCircularity;
     [Display(Name = "MinCircularity", GroupName = "数据")]
     public float MinCircularity
@@ -187,7 +179,6 @@ public class BlobDetector : DetectorOpenCVNodeDataBase
         }
     }
 
-
     private bool _filterByInertia;
     [Display(Name = "FilterByInertia", GroupName = "数据")]
     public bool FilterByInertia
@@ -199,7 +190,6 @@ public class BlobDetector : DetectorOpenCVNodeDataBase
             RaisePropertyChanged();
         }
     }
-
 
     private float _minInertiaRatio;
     [Display(Name = "MinInertiaRatio", GroupName = "数据")]
@@ -213,7 +203,6 @@ public class BlobDetector : DetectorOpenCVNodeDataBase
         }
     }
 
-
     private float _maxInertiaRatio;
     [Display(Name = "MaxInertiaRatio", GroupName = "数据")]
     public float MaxInertiaRatio
@@ -225,7 +214,6 @@ public class BlobDetector : DetectorOpenCVNodeDataBase
             RaisePropertyChanged();
         }
     }
-
 
     private bool _filterByConvexity = true;
     [Display(Name = "FilterByConvexity", GroupName = "数据")]

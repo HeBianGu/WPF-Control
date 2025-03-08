@@ -18,7 +18,6 @@ public class TitleCardNodeData : CardNodeData
         }
     }
 
-
     private Brush _titleForeground;
     [DefaultValue(null)]
     [Display(Name = "标题颜色", GroupName = "样式")]

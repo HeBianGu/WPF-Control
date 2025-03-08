@@ -14,7 +14,6 @@ public class FastFeatureDetector : FeatureOpenCVNodeDataBase
         }
     }
 
-
     private int _threshold;
     [Range(0, 500)]
     [Display(Name = "Threshold", GroupName = "数据")]
@@ -27,8 +26,6 @@ public class FastFeatureDetector : FeatureOpenCVNodeDataBase
             DispatcherRaisePropertyChanged();
         }
     }
-
-
 
     //public override IFlowableResult Invoke(Part previors, Node current)
     //{

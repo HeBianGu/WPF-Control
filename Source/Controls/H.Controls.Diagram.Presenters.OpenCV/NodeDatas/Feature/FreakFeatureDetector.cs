@@ -16,7 +16,6 @@ public class FreakFeatureDetector : FeatureOpenCVNodeDataBase
         }
     }
 
-
     private float _scaleFactor = 1.2f;
     [Display(Name = "ScaleFactor", GroupName = "数据")]
     public float ScaleFactor
@@ -28,7 +27,6 @@ public class FreakFeatureDetector : FeatureOpenCVNodeDataBase
             DispatcherRaisePropertyChanged();
         }
     }
-
 
     private int _nLevels = 8;
     [Display(Name = "nLevels", GroupName = "数据")]
@@ -53,7 +51,6 @@ public class FreakFeatureDetector : FeatureOpenCVNodeDataBase
         }
     }
 
-
     private int _firstLevel = 0;
     [Display(Name = "FirstLevel", GroupName = "数据")]
     public int FirstLevel
@@ -65,7 +62,6 @@ public class FreakFeatureDetector : FeatureOpenCVNodeDataBase
             DispatcherRaisePropertyChanged();
         }
     }
-
 
     private int _wtaK = 2;
     [Display(Name = "WtaK", GroupName = "数据")]
@@ -79,7 +75,6 @@ public class FreakFeatureDetector : FeatureOpenCVNodeDataBase
         }
     }
 
-
     private ORBScoreType _scoreType = ORBScoreType.Harris;
     [Display(Name = "ScoreType", GroupName = "数据")]
     public ORBScoreType ScoreType
@@ -91,7 +86,6 @@ public class FreakFeatureDetector : FeatureOpenCVNodeDataBase
             DispatcherRaisePropertyChanged();
         }
     }
-
 
     private int _patchSize = 31;
     [Display(Name = "PatchSize", GroupName = "数据")]
@@ -117,8 +111,6 @@ public class FreakFeatureDetector : FeatureOpenCVNodeDataBase
         }
     }
 
-
-
     private bool _orientationNormalized = true;
     [Display(Name = "OrientationNormalized", GroupName = "数据")]
     public bool OrientationNormalized
@@ -131,7 +123,6 @@ public class FreakFeatureDetector : FeatureOpenCVNodeDataBase
         }
     }
 
-
     private bool _scaleNormalized = true;
     [Display(Name = "ScaleNormalized", GroupName = "数据")]
     public bool ScaleNormalized
@@ -143,7 +134,6 @@ public class FreakFeatureDetector : FeatureOpenCVNodeDataBase
             DispatcherRaisePropertyChanged();
         }
     }
-
 
     private float _patternScale = 22.0f;
     [Display(Name = "PatternScale", GroupName = "数据")]
@@ -168,8 +158,6 @@ public class FreakFeatureDetector : FeatureOpenCVNodeDataBase
             DispatcherRaisePropertyChanged();
         }
     }
-
-
 
     protected override IFlowableResult Invoke()
     {

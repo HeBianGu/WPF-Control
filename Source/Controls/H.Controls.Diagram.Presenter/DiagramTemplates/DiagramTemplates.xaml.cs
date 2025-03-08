@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace H.Controls.Diagram.Presenter.DiagramTemplates;
 
 [Icon(FontIcons.Preview)]
-[Display(Name ="选择模板")]
+[Display(Name = "选择模板")]
 public class DiagramTemplates : DisplayBindableBase, IDiagramTempaltes
 {
     private ObservableCollection<IDiagramTemplate> _collection = new ObservableCollection<IDiagramTemplate>();

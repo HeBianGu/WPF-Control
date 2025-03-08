@@ -1,5 +1,4 @@
 ﻿global using H.Controls.Diagram.Presenter.PortDatas;
-using H.Mvvm.ViewModels.Base;
 namespace H.Controls.Diagram.Presenter.Provider;
 public class DiagramTheme : BindableBase
 {
@@ -24,7 +23,6 @@ public class DiagramTheme : BindableBase
             RaisePropertyChanged();
         }
     }
-
 
     private TextPortData _port = new TextPortData();
     public TextPortData Port

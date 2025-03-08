@@ -16,7 +16,6 @@ public class Threshold : BasicOpenCVNodeDataBase
         }
     }
 
-
     private double _maxval = 255;
     [Range(0, 255)]
     [Display(Name = "最大阈值", GroupName = "数据")]
@@ -41,7 +40,6 @@ public class Threshold : BasicOpenCVNodeDataBase
             DispatcherRaisePropertyChanged();
         }
     }
-
 
     protected override IFlowableResult Invoke()
     {

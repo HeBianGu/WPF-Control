@@ -1,5 +1,4 @@
-﻿global using H.Controls.Diagram.Presenter.DiagramDatas.Base;
-global using H.Controls.Diagram.Presenter.DiagramTemplates;
+﻿global using H.Controls.Diagram.Presenter.DiagramTemplates;
 
 namespace H.Controls.Diagram.Presenter.NodeDatas.Card;
 
@@ -42,10 +41,9 @@ public class FlowableDiagramTemplateNodeData : TitleCardNodeData
         }
     }
 
-
     [XmlIgnore]
     [Display(Name = "查看模板", GroupName = "操作")]
-    public DisplayCommand ShowTemplateCommand => new DisplayCommand(e=>
+    public DisplayCommand ShowTemplateCommand => new DisplayCommand(e =>
     {
         //    await IocMessage.Dialog.Show(this.Template, null, this.Name, x =>
         //    {

@@ -10,7 +10,6 @@ public class DiagramDropTextNodeBehavior : DiagramDropBehaviorBase
         set { SetValue(NodeTypeProperty, value); }
     }
 
-
     public static readonly DependencyProperty NodeTypeProperty =
         DependencyProperty.Register("NodeType", typeof(Type), typeof(DiagramDropTextNodeBehavior), new FrameworkPropertyMetadata(typeof(Node), (d, e) =>
          {
@@ -29,7 +28,6 @@ public class DiagramDropTextNodeBehavior : DiagramDropBehaviorBase
              }
 
          }));
-
 
     protected override Node Create(INodeData nodeData)
     {

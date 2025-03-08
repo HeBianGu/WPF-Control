@@ -1,9 +1,4 @@
 ﻿
-
-
-
-
-
 global using H.Controls.Form;
 global using H.Controls.Form.PropertyItem.TextPropertyItems;
 global using OpenCvSharp.Dnn;
@@ -17,7 +12,6 @@ namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas;
 /// https://github.com/pjreddie/darknet
 /// https://pjreddie.com/darknet/yolo/
 /// </summary>
-
 
 [Display(Name = "Yolov3", GroupName = "多目标检测", Description = "目标检测", Order = 0)]
 public class Yolov3 : OpenCVNodeData
@@ -44,7 +38,6 @@ public class Yolov3 : OpenCVNodeData
             RaisePropertyChanged();
         }
     }
-
 
     private string _weightFilePath;
     [Display(Name = "Weight路径", GroupName = "数据")]
@@ -200,7 +193,6 @@ public class Yolov3 : OpenCVNodeData
         return base.Invoke();
     }
 }
-
 
 //class Program
 //{

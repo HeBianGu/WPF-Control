@@ -18,7 +18,6 @@ public abstract class ActionNodeDataBase : FlowableNodeData
         }
     }
 
-
     private bool _useRight;
     [DefaultValue(false)]
     [Display(Name = "启用右侧侧", GroupName = "样式")]

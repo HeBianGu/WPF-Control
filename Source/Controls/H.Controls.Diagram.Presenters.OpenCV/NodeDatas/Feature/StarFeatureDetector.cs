@@ -16,7 +16,6 @@ public class StarFeatureDetector : FeatureOpenCVNodeDataBase
         }
     }
 
-
     private int _responseThreshold = 30;
     [Display(Name = "ResponseThreshold", GroupName = "数据")]
     public int ResponseThreshold
@@ -28,7 +27,6 @@ public class StarFeatureDetector : FeatureOpenCVNodeDataBase
             DispatcherRaisePropertyChanged();
         }
     }
-
 
     private int _lineThresholdProjected = 10;
     [Display(Name = "LineThresholdProjected", GroupName = "数据")]
@@ -42,7 +40,6 @@ public class StarFeatureDetector : FeatureOpenCVNodeDataBase
         }
     }
 
-
     private int _lineThresholdBinarized = 8;
     [Display(Name = "LineThresholdBinarized", GroupName = "数据")]
     public int LineThresholdBinarized
@@ -55,7 +52,6 @@ public class StarFeatureDetector : FeatureOpenCVNodeDataBase
         }
     }
 
-
     private int _suppressNonmaxSize = 5;
     [Display(Name = "SuppressNonmaxSize", GroupName = "数据")]
     public int SuppressNonmaxSize
@@ -67,9 +63,6 @@ public class StarFeatureDetector : FeatureOpenCVNodeDataBase
             DispatcherRaisePropertyChanged();
         }
     }
-
-
-
 
     protected override IFlowableResult Invoke()
     {

@@ -15,7 +15,6 @@ public class Canny : BasicOpenCVNodeDataBase
         }
     }
 
-
     private double _threshold2;
     [DefaultValue(0.0)]
     [Display(Name = "Threshold2", GroupName = "数据")]
@@ -29,7 +28,6 @@ public class Canny : BasicOpenCVNodeDataBase
         }
     }
 
-
     private int _apertureSize = 3;
     [DefaultValue(3)]
     [Display(Name = "ApertureSize", GroupName = "数据")]
@@ -42,7 +40,6 @@ public class Canny : BasicOpenCVNodeDataBase
             RaisePropertyChanged();
         }
     }
-
 
     private bool _l2gradient = false;
     [DefaultValue(false)]

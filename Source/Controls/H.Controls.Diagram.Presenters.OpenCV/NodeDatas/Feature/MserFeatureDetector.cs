@@ -14,7 +14,6 @@ public class MserFeatureDetector : FeatureOpenCVNodeDataBase
         }
     }
 
-
     private int _minArea = 60;
     [Display(Name = "MinArea", GroupName = "数据")]
     public int MinArea
@@ -26,7 +25,6 @@ public class MserFeatureDetector : FeatureOpenCVNodeDataBase
             DispatcherRaisePropertyChanged();
         }
     }
-
 
     private int _maxArea = 14400;
     [Display(Name = "MaxArea", GroupName = "数据")]
@@ -40,7 +38,6 @@ public class MserFeatureDetector : FeatureOpenCVNodeDataBase
         }
     }
 
-
     private double _maxVariation = 0.25;
     [Display(Name = "MaxVariation", GroupName = "数据")]
     public double MaxVariation
@@ -52,7 +49,6 @@ public class MserFeatureDetector : FeatureOpenCVNodeDataBase
             DispatcherRaisePropertyChanged();
         }
     }
-
 
     private double _minDiversity = 0.2;
     [Display(Name = "MinDiversity", GroupName = "数据")]
@@ -66,7 +62,6 @@ public class MserFeatureDetector : FeatureOpenCVNodeDataBase
         }
     }
 
-
     private int _maxEvolution = 200;
     [Display(Name = "MaxEvolution", GroupName = "数据")]
     public int MaxEvolution
@@ -78,7 +73,6 @@ public class MserFeatureDetector : FeatureOpenCVNodeDataBase
             DispatcherRaisePropertyChanged();
         }
     }
-
 
     private double _areaThreshold = 1.01;
     [Display(Name = "AreaThreshold", GroupName = "数据")]
@@ -92,7 +86,6 @@ public class MserFeatureDetector : FeatureOpenCVNodeDataBase
         }
     }
 
-
     private double _minMargin = 0.003;
     [Display(Name = "MinMargin", GroupName = "数据")]
     public double MinMargin
@@ -105,7 +98,6 @@ public class MserFeatureDetector : FeatureOpenCVNodeDataBase
         }
     }
 
-
     private int _edgeBlurSize = 5;
     [Display(Name = "EdgeBlurSize", GroupName = "数据")]
     public int EdgeBlurSize
@@ -117,10 +109,6 @@ public class MserFeatureDetector : FeatureOpenCVNodeDataBase
             DispatcherRaisePropertyChanged();
         }
     }
-
-
-
-
 
     protected override IFlowableResult Invoke()
     {

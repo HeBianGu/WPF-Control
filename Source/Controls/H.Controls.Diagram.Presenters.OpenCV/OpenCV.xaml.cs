@@ -11,13 +11,11 @@ public class OpenCVDiagramData : NodeDataGroupsDiagramDataBase
     }
 }
 
-
 [Display(Name = "OpenCV检测", GroupName = "机器视觉", Order = 0)]
 public class OpenCVDetector : FlowableDiagramDataBase
 {
-    
-}
 
+}
 
 [Display(Name = "OpenCV视频处理", GroupName = "机器视觉", Order = 0)]
 public class OpenCVVideo : FlowableDiagramDataBase

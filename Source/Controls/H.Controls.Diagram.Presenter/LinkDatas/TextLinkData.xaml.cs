@@ -46,7 +46,6 @@ public class TextLinkData : LinkData, ITextLinkData
         }
     }
 
-
     private Brush _background;
     [DefaultValue(null)]
     [Display(Name = "文本背景", GroupName = "常用")]
@@ -83,7 +82,6 @@ public class TextLinkData : LinkData, ITextLinkData
             RaisePropertyChanged();
         }
     }
-
 
     private FontStyle _fontStyle;
     [Display(Name = "字体样式", GroupName = "文本")]
