@@ -1,6 +1,6 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Detector;
 [Display(Name = "识别匹配图片", GroupName = "基础检测", Order = 30)]
-public class BestMatch : DetectorActionNodeDataBase
+public class BestMatch : DetectorOpenCVNodeDataBase
 {
     public BestMatch()
     {

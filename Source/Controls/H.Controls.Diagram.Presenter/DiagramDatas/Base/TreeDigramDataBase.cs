@@ -1,6 +1,6 @@
 ﻿namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
-public abstract class TreeDigramDataBase : NodeGroupsDiagramDataBase, ITreeDigramData
+public abstract class TreeDigramDataBase : NodeDataGroupsDiagramDataBase, ITreeDigramData
 {
     private TreeNodeBase<Part> _root = new TreeNodeBase<Part>(null);
     [System.Text.Json.Serialization.JsonIgnore]

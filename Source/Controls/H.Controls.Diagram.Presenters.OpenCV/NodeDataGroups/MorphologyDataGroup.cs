@@ -9,7 +9,7 @@ public class MorphologyDataGroup : BasicDataGroupBase
 {
     protected override IEnumerable<INodeData> CreateNodeDatas()
     {
-        return typeof(IMorphology).Assembly.GetInstances<IMorphology>().OrderBy(x => x.Order); ;
+        return typeof(IMorphologyOpenCVNodeData).Assembly.GetInstances<IMorphologyOpenCVNodeData>().OrderBy(x => x.Order); ;
     }
 }
 

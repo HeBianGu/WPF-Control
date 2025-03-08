@@ -2,7 +2,7 @@
 
 namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Feature;
 [Display(Name = "STAR", GroupName = "特征提取", Order = 0)]
-public class StarFeatureDetector : FeatureDetectorActionNodeDataBase
+public class StarFeatureDetector : FeatureOpenCVNodeDataBase
 {
     private int _maxSize = 45;
     [Display(Name = "MaxSize", GroupName = "数据")]

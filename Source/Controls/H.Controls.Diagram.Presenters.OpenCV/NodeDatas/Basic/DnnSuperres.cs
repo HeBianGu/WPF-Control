@@ -2,7 +2,7 @@
 
 namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
 [Display(Name = "超分辨率处理", GroupName = "基础函数", Order = 60)]
-public class DnnSuperres : BasicActionNodeDataBase
+public class DnnSuperres : BasicOpenCVNodeDataBase
 {
     private string _algo = "fsrcnn";
     [DefaultValue("fsrcnn")]

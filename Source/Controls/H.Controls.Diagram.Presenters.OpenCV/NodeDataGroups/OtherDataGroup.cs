@@ -1,5 +1,4 @@
 ﻿using H.Controls.Diagram.Presenter.DiagramDatas.Base;
-using H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Other;
 namespace H.Controls.Diagram.Presenters.OpenCV.NodeDataGroups;
 
 [Icon(FontIcons.More)]
@@ -8,6 +7,6 @@ public class OtherDataGroup : BasicDataGroupBase
 {
     protected override IEnumerable<INodeData> CreateNodeDatas()
     {
-        return typeof(IOtherActionNodeData).Assembly.GetInstances<IOtherActionNodeData>().OrderBy(x => x.Order);
+        return typeof(IOtherOpenCVNodeData).Assembly.GetInstances<IOtherOpenCVNodeData>().OrderBy(x => x.Order);
     }
 }

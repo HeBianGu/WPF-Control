@@ -3,7 +3,7 @@ namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Feature;
 
 
 [Display(Name = "AKAZE", GroupName = "特征提取", Order = 0)]
-public class AKazeFeatureDetector : FeatureDetectorActionNodeDataBase
+public class AKazeFeatureDetector : FeatureOpenCVNodeDataBase
 {
     private AKAZEDescriptorType _descriptorType = AKAZEDescriptorType.MLDB;
     [Display(Name = "DescriptorType", GroupName = "数据")]

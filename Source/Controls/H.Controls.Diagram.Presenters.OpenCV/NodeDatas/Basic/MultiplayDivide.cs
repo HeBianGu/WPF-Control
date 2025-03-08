@@ -1,6 +1,6 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
 [Display(Name = "乘除运算", GroupName = "基础函数", Description = "图片亮度设置", Order = 51)]
-public class MultiplayDivide : BasicActionNodeDataBase
+public class MultiplayDivide : BasicOpenCVNodeDataBase
 {
     private double _value = 1.2;
     [DefaultValue(1.2)]

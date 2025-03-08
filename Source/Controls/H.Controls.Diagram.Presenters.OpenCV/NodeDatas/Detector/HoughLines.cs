@@ -1,6 +1,6 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Detector;
 [Display(Name = "标准直线检测", GroupName = "基础检测", Order = 0)]
-public class HoughLines : DetectorActionNodeDataBase
+public class HoughLines : DetectorOpenCVNodeDataBase
 {
     private double _rho = 1.0;
     [Display(Name = "Rho", GroupName = "数据")]

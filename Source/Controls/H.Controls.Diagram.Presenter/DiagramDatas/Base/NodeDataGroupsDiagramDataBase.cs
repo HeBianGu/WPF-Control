@@ -1,8 +1,8 @@
 ﻿namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
-public abstract class NodeGroupsDiagramDataBase : FlowableDiagramDataBase, INodeGroupsDiagramData
+public abstract class NodeDataGroupsDiagramDataBase : FlowableDiagramDataBase, INodeDataGroupsDiagramData
 {
-    protected NodeGroupsDiagramDataBase()
+    protected NodeDataGroupsDiagramDataBase()
     {
         ObservableCollection<INodeDataGroup> nodeGroups = this.CreateNodeGroups()?.ToObservable();
         foreach (INodeDataGroup nodeGroup in nodeGroups)

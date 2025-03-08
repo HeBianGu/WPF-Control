@@ -1,6 +1,6 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
 [Display(Name = "通道分割", GroupName = "基础函数", Order = 30)]
-public class SplitBGR : BasicActionNodeDataBase
+public class SplitBGR : BasicOpenCVNodeDataBase
 {
     private SplitSelectType _splitSelectType;
     [DefaultValue(SplitSelectType.B)]

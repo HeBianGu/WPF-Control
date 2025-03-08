@@ -1,6 +1,6 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
 [Display(Name = "二值化", GroupName = "基础函数", Description = "降噪成黑白色", Order = 3)]
-public class Threshold : BasicActionNodeDataBase
+public class Threshold : BasicOpenCVNodeDataBase
 {
     private double _thresh = 0.0;
     [DefaultValue(0.0)]

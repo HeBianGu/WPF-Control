@@ -1,0 +1,40 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:lb="clr-namespace:H.Controls.Diagram.Presenter.Behaviors"
+                    xmlns:ld="clr-namespace:H.Controls.Diagram.Presenter.DiagramDatas"
+                    xmlns:ldb="clr-namespace:H.Controls.Diagram.Presenter.DiagramDatas.Base"
+                    xmlns:local="clr-namespace:H.Controls.Diagram.Presenter">
+    <DataTemplate DataType="{x:Type ld:NodeDataGroupsItemsControlPresenter}">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <ItemsControl ItemsSource="{Binding NodeDataGroups}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Expander Margin="0,0,0,1"
+                                  Header="{Binding Name}"
+                                  IsExpanded="False">
+                            <h:Cattach.CaptionRightTemplate>
+                                <ControlTemplate>
+                                    <Grid>
+                                        <FontIconTextBlock Margin="5,0"
+                                                           HorizontalAlignment="Right"
+                                                           Text="{Binding Icon}" />
+                                    </Grid>
+                                </ControlTemplate>
+                            </h:Cattach.CaptionRightTemplate>
+                            <ItemsControl ItemsSource="{Binding NodeDatas}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <UniformGrid HorizontalAlignment="Center"
+                                                     Columns="1" />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                            </ItemsControl>
+                        </Expander>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </DataTemplate>
+</ResourceDictionary>

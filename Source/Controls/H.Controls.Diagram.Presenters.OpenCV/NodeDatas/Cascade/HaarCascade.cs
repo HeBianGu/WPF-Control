@@ -6,7 +6,7 @@ namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Cascade;
 
 
 [Display(Name = "HAAR", GroupName = "人脸检测", Order = 0)]
-public class HaarCascade : CascadeClassifierActionNodeDataBase
+public class HaarCascade : CascadeClassifierOpenCVNodeDataBase
 {
     private HaarType _haarType = HaarType.FrontalFace;
     [DefaultValue(HaarType.FrontalFace)]

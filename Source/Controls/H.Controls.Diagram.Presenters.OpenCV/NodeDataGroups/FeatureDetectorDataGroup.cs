@@ -8,6 +8,6 @@ public class FeatureDetectorDataGroup : BasicDataGroupBase
 {
     protected override IEnumerable<INodeData> CreateNodeDatas()
     {
-        return typeof(IFeatureDetectorActionNodeData).Assembly.GetInstances<IFeatureDetectorActionNodeData>().OrderBy(x => x.Order);
+        return typeof(IFeatureDetectorOpenCVNodeData).Assembly.GetInstances<IFeatureDetectorOpenCVNodeData>().OrderBy(x => x.Order);
     }
 }

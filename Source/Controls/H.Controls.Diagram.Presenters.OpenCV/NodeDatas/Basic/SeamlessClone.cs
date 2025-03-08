@@ -1,6 +1,6 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
 [Display(Name = "无缝融合", GroupName = "基础函数", Description = "将一幅图像中的指定目标复制后粘贴到另一幅图像中，并自然的融合", Order = 80)]
-public class SeamlessClone : BasicActionNodeDataBase
+public class SeamlessClone : BasicOpenCVNodeDataBase
 {
     public SeamlessClone()
     {

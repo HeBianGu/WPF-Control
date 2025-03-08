@@ -3,7 +3,7 @@
 
 
 [Display(Name = "腐蚀", GroupName = "形态学", Description = "去除散点", Order = 0)]
-public class Erode : MorphologyActionNodeDataBase
+public class Erode : MorphologyOpenCVNodeDataBase
 {
     protected override MorphTypes GetMorphType()
     {

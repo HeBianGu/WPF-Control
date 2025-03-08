@@ -1,6 +1,6 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
 [Display(Name = "平面细分", GroupName = "基础函数", Description = "降噪成黑白色", Order = 72)]
-public class Subdiv2D : BasicActionNodeDataBase
+public class Subdiv2D : BasicOpenCVNodeDataBase
 {
     private Subdiv2DOutType _outType = Subdiv2DOutType.Vonoroi;
     [DefaultValue(Subdiv2DOutType.Vonoroi)]

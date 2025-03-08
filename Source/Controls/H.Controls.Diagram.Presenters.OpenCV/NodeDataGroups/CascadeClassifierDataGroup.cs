@@ -11,6 +11,6 @@ public class CascadeClassifierDataGroup : BasicDataGroupBase
 {
     protected override IEnumerable<INodeData> CreateNodeDatas()
     {
-        return typeof(ICascadeClassifierActionNodeData).Assembly.GetInstances<ICascadeClassifierActionNodeData>().OrderBy(x => x.Order);
+        return typeof(ICascadeClassifierOpenCVNodeData).Assembly.GetInstances<ICascadeClassifierOpenCVNodeData>().OrderBy(x => x.Order);
     }
 }

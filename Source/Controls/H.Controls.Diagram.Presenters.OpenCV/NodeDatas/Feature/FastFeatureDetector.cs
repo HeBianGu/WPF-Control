@@ -1,6 +1,6 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Feature;
 [Display(Name = "FAST", GroupName = "特征提取", Order = 0)]
-public class FastFeatureDetector : FeatureDetectorActionNodeDataBase
+public class FastFeatureDetector : FeatureOpenCVNodeDataBase
 {
     private bool _nonmaxSupression = true;
     [Display(Name = "NonmaxSupression", GroupName = "数据")]

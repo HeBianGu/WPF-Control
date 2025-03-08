@@ -7,6 +7,6 @@ public class DetectorDataGroup : BasicDataGroupBase
 {
     protected override IEnumerable<INodeData> CreateNodeDatas()
     {
-        return typeof(IDetectorActionNodeData).Assembly.GetInstances<IDetectorActionNodeData>().OrderBy(x => x.Order);
+        return typeof(IDetectorOpenCVNodeData).Assembly.GetInstances<IDetectorOpenCVNodeData>().OrderBy(x => x.Order);
     }
 }

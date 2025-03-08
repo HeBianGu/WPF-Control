@@ -8,6 +8,6 @@ public class BasicDataGroup : BasicDataGroupBase
 {
     protected override IEnumerable<INodeData> CreateNodeDatas()
     {
-        return typeof(IBasicActionNodeData).Assembly.GetInstances<IBasicActionNodeData>().OrderBy(x => x.Order);
+        return typeof(IBasicOpenCVNodeData).Assembly.GetInstances<IBasicOpenCVNodeData>().OrderBy(x => x.Order);
     }
 }

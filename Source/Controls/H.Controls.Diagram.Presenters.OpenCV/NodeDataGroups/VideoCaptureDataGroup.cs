@@ -8,6 +8,6 @@ public class VideoCaptureDataGroup : BasicDataGroupBase
 {
     protected override IEnumerable<INodeData> CreateNodeDatas()
     {
-        return typeof(IVideoCaptureNodeData).Assembly.GetInstances<IVideoCaptureNodeData>().OrderBy(x => x.Order); ;
+        return typeof(IVideoCaptureImageImportNodeData).Assembly.GetInstances<IVideoCaptureImageImportNodeData>().OrderBy(x => x.Order); ;
     }
 }

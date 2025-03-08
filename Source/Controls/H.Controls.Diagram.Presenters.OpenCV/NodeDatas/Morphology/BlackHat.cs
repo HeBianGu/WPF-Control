@@ -2,7 +2,7 @@
 
 
 [Display(Name = "黑帽", GroupName = "形态学", Description = " 原图 - 闭运算  ，大图形内的小图形", Order = 40)]
-public class BlackHat : MorphologyActionNodeDataBase
+public class BlackHat : MorphologyOpenCVNodeDataBase
 {
     protected override MorphTypes GetMorphType()
     {

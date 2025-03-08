@@ -2,7 +2,7 @@
 
 namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Feature;
 [Display(Name = "SIFT", GroupName = "特征提取", Order = 0)]
-public class SiftFeatureDetector : FeatureDetectorActionNodeDataBase
+public class SiftFeatureDetector : FeatureOpenCVNodeDataBase
 {
     public SiftFeatureDetector()
     {

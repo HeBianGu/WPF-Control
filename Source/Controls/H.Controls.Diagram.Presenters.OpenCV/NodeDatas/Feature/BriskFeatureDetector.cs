@@ -2,7 +2,7 @@
 
 namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Feature;
 [Display(Name = "BRISK", GroupName = "特征提取", Order = 0)]
-public class BriskFeatureDetector : FeatureDetectorActionNodeDataBase
+public class BriskFeatureDetector : FeatureOpenCVNodeDataBase
 {
     private bool _useRectangle = true;
     [Display(Name = "绘制矩形", GroupName = "数据")]

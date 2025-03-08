@@ -2,7 +2,7 @@
 
 namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Feature;
 [Display(Name = "SURF", GroupName = "特征提取", Order = 0)]
-public class SurfFeatureDetector : FeatureDetectorActionNodeDataBase
+public class SurfFeatureDetector : FeatureOpenCVNodeDataBase
 {
     public SurfFeatureDetector()
     {

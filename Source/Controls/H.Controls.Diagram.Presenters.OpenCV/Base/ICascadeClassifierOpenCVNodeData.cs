@@ -1,7 +1,7 @@
 ﻿global using H.Mvvm;
-namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Cascade;
+namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 
-public interface ICascadeClassifierActionNodeData : INodeData, IDisplayBindable
+public interface ICascadeClassifierOpenCVNodeData : INodeData, IDisplayBindable
 {
     HaarDetectionTypes Flags { get; set; }
     Size? MaxSize { get; set; }

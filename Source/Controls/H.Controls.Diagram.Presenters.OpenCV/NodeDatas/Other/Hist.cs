@@ -1,6 +1,6 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Other;
 [Display(Name = "直方图均计算", GroupName = "其他", Order = 0)]
-public class Hist : OtherActionNodeDataBase
+public class Hist : OtherOpenCVNodeDataBase
 {
     public override IFlowableResult Invoke(Part previors, Node current)
     {

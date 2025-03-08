@@ -1,6 +1,6 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
 [Display(Name = "查找轮廓", GroupName = "基础函数", Description = "二指图片的效果反转既黑色变白色，白色变黑色", Order = 21)]
-public class FindContours : BasicActionNodeDataBase
+public class FindContours : BasicOpenCVNodeDataBase
 {
     private RetrievalModes _retrievalMode = RetrievalModes.Tree;
     [DefaultValue(RetrievalModes.Tree)]

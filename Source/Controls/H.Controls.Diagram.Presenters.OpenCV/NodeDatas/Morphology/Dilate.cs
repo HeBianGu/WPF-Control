@@ -3,7 +3,7 @@
 
 
 [Display(Name = "膨胀", GroupName = "形态学", Description = "使边缘更清晰", Order = 1)]
-public class Dilate : MorphologyActionNodeDataBase
+public class Dilate : MorphologyOpenCVNodeDataBase
 {
     protected override MorphTypes GetMorphType()
     {

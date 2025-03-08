@@ -1,6 +1,6 @@
 ﻿namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
-public interface INodeGroupsDiagramData : IDiagramData
+public interface INodeDataGroupsDiagramData : IDiagramData
 {
     ObservableCollection<INodeDataGroup> NodeGroups { get; set; }
 }

@@ -3,7 +3,7 @@ using H.Controls.Diagram.Presenters.OpenCV.NodeDataGroups;
 
 namespace H.Controls.Diagram.Presenters.OpenCV;
 [Display(Name = "OpenCV基础", GroupName = "机器视觉", Order = 0)]
-public class OpenCVDiagramData : NodeGroupsDiagramDataBase
+public class OpenCVDiagramData : NodeDataGroupsDiagramDataBase
 {
     protected override IEnumerable<INodeDataGroup> CreateNodeGroups()
     {

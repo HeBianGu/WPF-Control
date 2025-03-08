@@ -1,6 +1,6 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Feature;
 [Display(Name = "MSER", GroupName = "特征提取", Order = 0)]
-public class MserFeatureDetector : FeatureDetectorActionNodeDataBase
+public class MserFeatureDetector : FeatureOpenCVNodeDataBase
 {
     private int _delta = 5;
     [Display(Name = "Delta", GroupName = "数据")]

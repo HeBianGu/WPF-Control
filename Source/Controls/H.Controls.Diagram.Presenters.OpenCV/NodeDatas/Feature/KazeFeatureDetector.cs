@@ -1,6 +1,6 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Feature;
 [Display(Name = "KAZE", GroupName = "特征提取", Order = 0)]
-public class KazeFeatureDetector : FeatureDetectorActionNodeDataBase
+public class KazeFeatureDetector : FeatureOpenCVNodeDataBase
 {
     private bool _extended = false;
     [Display(Name = "Extended", GroupName = "数据")]

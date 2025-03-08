@@ -2,10 +2,10 @@
 using Rect = OpenCvSharp.Rect;
 using Size = OpenCvSharp.Size;
 
-namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Cascade;
+namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 
 [Icon("\xE11D")]
-public abstract class CascadeClassifierActionNodeDataBase : OpenCVNodeData, ICascadeClassifierActionNodeData
+public abstract class CascadeClassifierOpenCVNodeDataBase : OpenCVNodeData, ICascadeClassifierOpenCVNodeData
 {
     public override void LoadDefault()
     {

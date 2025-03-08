@@ -2,7 +2,7 @@
 
 namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Feature;
 [Display(Name = "FREAK", GroupName = "特征提取", Order = 0)]
-public class FreakFeatureDetector : FeatureDetectorActionNodeDataBase
+public class FreakFeatureDetector : FeatureOpenCVNodeDataBase
 {
     private int _nFeatures = 1000;
     [Display(Name = "nFeatures", GroupName = "数据")]
