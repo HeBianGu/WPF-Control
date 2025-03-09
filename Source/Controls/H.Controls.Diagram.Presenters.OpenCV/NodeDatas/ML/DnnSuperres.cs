@@ -1,8 +1,8 @@
 ﻿using OpenCvSharp.DnnSuperres;
 
-namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
-[Display(Name = "超分辨率处理", GroupName = "基础函数", Description = "设置饱和度11", Order = 60)]
-public class DnnSuperres : BasicOpenCVNodeDataBase
+namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.ML;
+[Display(Name = "超分辨率处理", GroupName = "基础函数", Description = "超分辨率处理是一项强大的技术，能够显著提升图像和视频的质量", Order = 60)]
+public class DnnSuperres : MLOpenCVNodeDataBase
 {
     private string _algo = "fsrcnn";
     [DefaultValue("fsrcnn")]

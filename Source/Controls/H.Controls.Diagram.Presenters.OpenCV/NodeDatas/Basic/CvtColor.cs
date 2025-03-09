@@ -34,5 +34,4 @@ public class CvtColor : BasicOpenCVNodeDataBase
         this.RefreshMatToView();
         return base.Invoke();
     }
-
 }

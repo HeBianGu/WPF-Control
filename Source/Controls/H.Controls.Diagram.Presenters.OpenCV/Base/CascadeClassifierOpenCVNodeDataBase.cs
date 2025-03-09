@@ -4,7 +4,7 @@ using Size = OpenCvSharp.Size;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 
-[Icon("\xE11D")]
+[Icon(FontIcons.EmojiTabPeople)]
 public abstract class CascadeClassifierOpenCVNodeDataBase : OpenCVNodeData, ICascadeClassifierOpenCVNodeData
 {
     public override void LoadDefault()

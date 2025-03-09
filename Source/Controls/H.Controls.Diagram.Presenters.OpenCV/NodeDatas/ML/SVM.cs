@@ -2,7 +2,7 @@
 
 namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.ML;
 [Display(Name = "支持向量机", GroupName = "机器学习", Description = "降噪成黑白色", Order = 0)]
-public class SVM : OtherOpenCVNodeDataBase
+public class SVM : MLOpenCVNodeDataBase
 {
     private static double Function(double x)
     {
