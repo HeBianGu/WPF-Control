@@ -36,7 +36,7 @@ public class VideoCapture : VideoCaptureImageImportNodeDataBase
     //}
 
     private int _sleepMilliseconds = 1000;
-    [Display(Name = "延迟", GroupName = "数据")]
+    [Display(Name = "等待延迟", GroupName = "数据")]
     public int SleepMilliseconds
     {
         get { return _sleepMilliseconds; }
@@ -47,14 +47,43 @@ public class VideoCapture : VideoCaptureImageImportNodeDataBase
         }
     }
 
-    private int _skipFrame = 5;
-    [Display(Name = "间隔帧", GroupName = "数据")]
-    public int SkipFrame
+
+    private int _startFrame = 0;
+    [DefaultValue(0)]
+    [Display(Name = "采样帧间隔", GroupName = "数据")]
+    public int StartFrame
     {
-        get { return _skipFrame; }
+        get { return _startFrame; }
         set
         {
-            _skipFrame = value;
+            _startFrame = value;
+            RaisePropertyChanged();
+        }
+    }
+
+
+    private int _endFrame = int.MaxValue;
+    [DefaultValue(int.MaxValue)]
+    [Display(Name = "采样帧间隔", GroupName = "数据")]
+    public int EndFrame
+    {
+        get { return _endFrame; }
+        set
+        {
+            _endFrame = value;
+            RaisePropertyChanged();
+        }
+    }
+
+    private int _spanFrame = 60;
+    [DefaultValue(60)]
+    [Display(Name = "采样帧间隔", GroupName = "数据")]
+    public int SpanFrame
+    {
+        get { return _spanFrame; }
+        set
+        {
+            _spanFrame = value;
             RaisePropertyChanged();
         }
     }
@@ -124,8 +153,11 @@ public class VideoCapture : VideoCaptureImageImportNodeDataBase
                 if (image.Empty())
                     break;
                 index++;
-
-                if (index % this.SkipFrame != 0)
+                if (index < this.StartFrame)
+                    continue;
+                if (index > this.EndFrame)
+                    continue;
+                if (index % this.SpanFrame != 0)
                     continue;
                 this.Message = $"{index}/{capture.FrameCount}";
                 this.Mat = image;
@@ -133,9 +165,14 @@ public class VideoCapture : VideoCaptureImageImportNodeDataBase
                 //this.Mat = image.Clone().CvtColor(ColorConversionCodes.BGR2GRAY, 0).Threshold(0, 255, ThresholdTypes.Otsu | ThresholdTypes.Binary);
                 RefreshMatToView();
                 invoked.Invoke(current);
-                Node to = current.GetToNodes().FirstOrDefault();
+                var tos = current.GetToNodes();
+                Node to = tos.FirstOrDefault();
                 if (to != null)
                 {
+                    await to.Dispatcher.InvokeAsync(() =>
+                      {
+                          tos.Wait();
+                      });
                     //await to.Dispatcher.InvokeAsync(async () =>
                     //    {
                     await to.InvokeNode(invoking, invoked);

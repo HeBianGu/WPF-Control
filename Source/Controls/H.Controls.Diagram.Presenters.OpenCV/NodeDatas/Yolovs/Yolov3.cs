@@ -5,7 +5,8 @@ global using OpenCvSharp.Dnn;
 global using System.Collections.Generic;
 global using System.IO;
 
-namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas;
+namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Yolovs;
+
 /// <summary>
 /// https://pjreddie.com/darknet/yolo/
 /// https://www.pudn.com/news/6228dd3e9ddf223e1ad298f1.html
@@ -13,8 +14,8 @@ namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas;
 /// https://pjreddie.com/darknet/yolo/
 /// </summary>
 
-[Display(Name = "Yolov3", GroupName = "多目标检测", Description = "目标检测", Order = 0)]
-public class Yolov3 : OpenCVNodeData
+[Display(Name = "Yolov3模型检测", GroupName = "多目标检测", Description = "目标检测", Order = 0)]
+public class Yolov3 : YolovOpenCVNodeDataBase
 {
     public override void LoadDefault()
     {
