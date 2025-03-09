@@ -77,7 +77,6 @@
     <ProjectReference Include="..\..\Extensions\H.Extensions.Common\H.Extensions.Common.csproj" />
     <ProjectReference Include="..\H.Controls.Diagram.Presenter\H.Controls.Diagram.Presenter.csproj" />
     <ProjectReference Include="..\H.Controls.Form.PropertyItem\H.Controls.Form.PropertyItem.csproj" />
-    <ProjectReference Include="..\H.Controls.Form\H.Controls.Form.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="Data\Image\16bit.png">
@@ -276,6 +275,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Data\Image\yalta.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\Movie\bach.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\Movie\hara.flv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

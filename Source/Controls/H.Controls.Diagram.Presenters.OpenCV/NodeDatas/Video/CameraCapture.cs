@@ -5,7 +5,7 @@ namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Video;
 public class CameraCapture : VideoCaptureImageImportNodeDataBase
 {
     private int _sleepMilliseconds = 30;
-    [Display(Name = "SleepMilliseconds", GroupName = "数据")]
+    [Display(Name = "间隔时间", GroupName = "数据")]
     public int SleepMilliseconds
     {
         get { return _sleepMilliseconds; }
@@ -15,6 +15,31 @@ public class CameraCapture : VideoCaptureImageImportNodeDataBase
             RaisePropertyChanged();
         }
     }
+
+    private VideoCaptureAPIs _videoCaptureAPIs= VideoCaptureAPIs.ANY;
+    [Display(Name = "摄像头API", GroupName = "数据")]
+    public VideoCaptureAPIs VideoCaptureAPIs
+    {
+        get { return _videoCaptureAPIs; }
+        set
+        {
+            _videoCaptureAPIs = value;
+            RaisePropertyChanged();
+        }
+    }
+
+    private int _VideoCaptureIndex;
+    [Display(Name = "摄像头序号", GroupName = "数据")]
+    public int VideoCaptureIndex
+    {
+        get { return _VideoCaptureIndex; }
+        set
+        {
+            _VideoCaptureIndex = value;
+            RaisePropertyChanged();
+        }
+    }
+
 
     //public override IFlowableResult Invoke(Part previors, Node current)
     //{
@@ -62,7 +87,7 @@ public class CameraCapture : VideoCaptureImageImportNodeDataBase
             using OpenCvSharp.VideoCapture capture = new OpenCvSharp.VideoCapture();
             string haarXml = this.GetDataPath(TextPath.HaarCascade);
             //CascadeClassifier cascadeClassifier = new CascadeClassifier(haarXml);
-            capture.Open(0, VideoCaptureAPIs.ANY);
+            capture.Open(this.VideoCaptureIndex, this.VideoCaptureAPIs);
             if (!capture.IsOpened())
                 return this.Error("摄像头打开失败");
 

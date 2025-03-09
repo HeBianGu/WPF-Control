@@ -21,15 +21,15 @@ public class VideoCapture : VideoCaptureImageImportNodeDataBase
     //    return null;
     //}
 
-    protected virtual ImageSource CreateImage(string path)
-    {
-        using OpenCvSharp.VideoCapture capture = new OpenCvSharp.VideoCapture(this.SrcFilePath);
-        if (!capture.IsOpened())
-            return null;
-        Mat image = new Mat();
-        capture.Read(image); // same as cvQueryFrame
-        return image.Empty() ? null : (ImageSource)image.ToBitmapSource();
-    }
+    //protected virtual ImageSource CreateImage(string path)
+    //{
+    //    using OpenCvSharp.VideoCapture capture = new OpenCvSharp.VideoCapture(this.SrcFilePath);
+    //    if (!capture.IsOpened())
+    //        return null;
+    //    Mat image = new Mat();
+    //    capture.Read(image); // same as cvQueryFrame
+    //    return image.Empty() ? null : (ImageSource)image.ToBitmapSource();
+    //}
 
     private int _sleepMilliseconds = 1000;
     [Display(Name = "每帧延迟", GroupName = "数据")]
@@ -55,6 +55,9 @@ public class VideoCapture : VideoCaptureImageImportNodeDataBase
         {
             // Opens MP4 file (ffmpeg is probably needed)
             using OpenCvSharp.VideoCapture capture = new OpenCvSharp.VideoCapture(this.SrcFilePath);
+
+            if(File.Exists(this.SrcFilePath)==false) 
+                return this.Error("视频文件不存在");
             if (!capture.IsOpened())
                 return this.Error("视频打开失败");
 

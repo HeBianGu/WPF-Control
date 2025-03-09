@@ -46,6 +46,8 @@ public abstract class OpenCVNodeDataBase : ActionNodeDataBase, IOpenCVNodeData, 
             RaisePropertyChanged();
         }
     }
-    [JsonIgnore]
+
+    [Display(Name = "源文件地址", GroupName = "数据")]
+    [PropertyItem(typeof(OpenFileDialogPropertyItem))]
     public string SrcFilePath { get; set; }
 }

@@ -261,7 +261,9 @@ public static class FlowableExtension
 
         using (new PartInvokable(node, invoking, invoked))
         {
-            await node.GetContent<IFlowableNodeData>().TryInvokeAsync(null, node);
+            var r = await node.GetContent<IFlowableNodeData>().TryInvokeAsync(null, node);
+            if (r.State == FlowableResultState.Error)
+                return false;
         }
         return await run.Invoke(node);
 

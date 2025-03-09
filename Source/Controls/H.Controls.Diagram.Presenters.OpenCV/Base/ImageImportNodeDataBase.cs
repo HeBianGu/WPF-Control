@@ -4,6 +4,10 @@ using System.Windows.Controls;
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 public abstract class ImageImportNodeDataBase : OpenCVNodeData
 {
+    protected ImageImportNodeDataBase()
+    {
+        this.UseStart = true;
+    }
     protected override IEnumerable<IPortData> CreatePortDatas()
     {
         {

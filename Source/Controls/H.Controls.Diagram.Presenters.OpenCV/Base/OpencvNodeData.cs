@@ -71,8 +71,8 @@ public abstract class OpenCVNodeData : OpenCVNodeDataBase
             //this._srcFilePath = fromData.SrcFilePath;
             this.SrcFilePath = fromData.SrcFilePath;
             this._preMat = fromData.Mat;
-            if (this._preMat.Empty())
-                return this.OK("数据为空");
+            if (this._preMat == null || this._preMat.Empty())
+                return this.Error("传入图像数据为空");
             if (this.UseReview)
             {
                 this.Mat = this._preMat;
