@@ -1,6 +1,7 @@
 ﻿global using H.Controls.Diagram.Datas;
 global using H.Controls.Diagram.Flowables;
 global using H.Extensions.FontIcon;
+using System.Text.Json.Serialization;
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
 public interface IPartInvokeable
@@ -18,6 +19,7 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
     }
 
     private DiagramFlowableState _state = DiagramFlowableState.None;
+    [JsonIgnore]
     public DiagramFlowableState State
     {
         get { return _state; }

@@ -1,22 +1,11 @@
 ﻿using System.Threading.Tasks;
+using System.Windows.Threading;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Video;
 [Display(Name = "摄像头", GroupName = "数据源", Description = "降噪成黑白色", Order = 0)]
 public class CameraCapture : VideoCaptureImageImportNodeDataBase
 {
-    private int _sleepMilliseconds = 30;
-    [Display(Name = "间隔时间", GroupName = "数据")]
-    public int SleepMilliseconds
-    {
-        get { return _sleepMilliseconds; }
-        set
-        {
-            _sleepMilliseconds = value;
-            RaisePropertyChanged();
-        }
-    }
-
-    private VideoCaptureAPIs _videoCaptureAPIs= VideoCaptureAPIs.ANY;
+    private VideoCaptureAPIs _videoCaptureAPIs = VideoCaptureAPIs.ANY;
     [Display(Name = "摄像头API", GroupName = "数据")]
     public VideoCaptureAPIs VideoCaptureAPIs
     {
@@ -79,33 +68,26 @@ public class CameraCapture : VideoCaptureImageImportNodeDataBase
 
     public override async Task<IFlowableResult> InvokeAsync(Part previors, Node current)
     {
-        using BackgroundSubtractorMOG mog = BackgroundSubtractorMOG.Create();
-
+        //using BackgroundSubtractorMOG mog = BackgroundSubtractorMOG.Create();
         return await Task.Run(async () =>
         {
             // Opens MP4 file (ffmpeg is probably needed)
-            using OpenCvSharp.VideoCapture capture = new OpenCvSharp.VideoCapture();
-            string haarXml = this.GetDataPath(TextPath.HaarCascade);
+            using var capture = new OpenCvSharp.VideoCapture();
+            //string haarXml = this.GetDataPath(TextPath.HaarCascade);
             //CascadeClassifier cascadeClassifier = new CascadeClassifier(haarXml);
             capture.Open(this.VideoCaptureIndex, this.VideoCaptureAPIs);
             if (!capture.IsOpened())
                 return this.Error("摄像头打开失败");
-
             int sleepTime = (int)Math.Round(this.SleepMilliseconds / capture.Fps);
-            int index = 0;
-
-            IEnumerable<IVideoFlowable> videos = current.GetAllParts().Select(x => x.GetContent<IFlowable>()).OfType<IVideoFlowable>();
-            foreach (IVideoFlowable video in videos)
+            return await this.InvokeVideoFlowable(current, async () =>
             {
-                video.Begin();
-            }
-
-            while (true)
-            {
-                if (this.State == FlowableState.Canceling)
-                    return this.Error("用户取消");
-                using (Mat frameMat = capture.RetrieveMat())
+                int index = 0;
+                while (true)
                 {
+                    if (this.State == FlowableState.Canceling)
+                        return this.Error("用户取消");
+                    using Mat frameMat = capture.RetrieveMat();
+
                     //var rects = cascadeClassifier.DetectMultiScale(frameMat, 1.1, 5, HaarDetectionTypes.ScaleImage, new OpenCvSharp.Size(30, 30));
 
                     //foreach (var rect in rects)
@@ -115,57 +97,37 @@ public class CameraCapture : VideoCaptureImageImportNodeDataBase
 
                     //this.RefreshMatToView(frameMat);
                     this.Message = $"{index++}/{capture.FrameCount}";
-                    this.Mat = frameMat;
-                    this.SrcMat = frameMat;
-                    //this.Mat = image.Clone().CvtColor(ColorConversionCodes.BGR2GRAY, 0).Threshold(0, 255, ThresholdTypes.Otsu | ThresholdTypes.Binary);
-                    RefreshMatToView();
-                    if (this.State == FlowableState.Canceling)
-                        break;
+                    var r = await this.InvokeFrameMatAsync(previors, current, frameMat);
+                    if (r == null)
+                        return this.Error("用户取消");
+                    else if (r == false)
+                        return this.Error();
 
-                    Node to = current.GetToNodes().FirstOrDefault();
-                    if (to != null)
-                    {
-                        await to.InvokeNode(x =>
-                        {
-                            OpenCVNodeDataBase data = x.GetContent<OpenCVNodeDataBase>();
-                            data.UseInfoLogger = false;
-                            data.UseReview = false;
-                            data.UseAnimation = false;
-                        });
-                    }
+                    //Thread.Sleep(this.SleepMilliseconds);
 
+                    //this.Message = $"{index++}/{capture.FrameCount}";
+                    //Mat = image;
+                    ////this.Mat = image.Clone().CvtColor(ColorConversionCodes.BGR2GRAY, 0).Threshold(0, 255, ThresholdTypes.Otsu | ThresholdTypes.Binary);
+                    //RefreshMatToView();
+                    //if (this.State == FlowableState.Canceling)
+                    //    break;
+
+                    //var to = current.GetToNodes().FirstOrDefault();
+                    //if (to != null)
+                    //{
+                    //    await to.StartNode(x =>
+                    //    {
+                    //        var data = x.GetContent<OpenCVNodeDataBase>();
+                    //        data.UseInfoLogger = false;
+                    //        data.UseReview = false;
+                    //        data.UseAnimation = false;
+                    //    });
+                    //}
+
+                    Cv2.WaitKey(sleepTime);
                 }
+            });
 
-                //Thread.Sleep(this.SleepMilliseconds);
-
-                //this.Message = $"{index++}/{capture.FrameCount}";
-                //Mat = image;
-                ////this.Mat = image.Clone().CvtColor(ColorConversionCodes.BGR2GRAY, 0).Threshold(0, 255, ThresholdTypes.Otsu | ThresholdTypes.Binary);
-                //RefreshMatToView();
-                //if (this.State == FlowableState.Canceling)
-                //    break;
-
-                //var to = current.GetToNodes().FirstOrDefault();
-                //if (to != null)
-                //{
-                //    await to.StartNode(x =>
-                //    {
-                //        var data = x.GetContent<OpenCVNodeDataBase>();
-                //        data.UseInfoLogger = false;
-                //        data.UseReview = false;
-                //        data.UseAnimation = false;
-                //    });
-                //}
-
-                Cv2.WaitKey(sleepTime);
-
-            }
-
-            foreach (IVideoFlowable video in videos)
-            {
-                video.End();
-            }
-            return this.OK("运行成功");
         });
     }
 }

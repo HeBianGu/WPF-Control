@@ -1,5 +1,5 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
-[Display(Name = "边缘检测", GroupName = "基础函数", Order = 10)]
+[Display(Name = "边缘检测", GroupName = "基础函数", Description = "查找图片边缘，图片>灰度>二值化>边缘检测", Order = 10)]
 public class Canny : BasicOpenCVNodeDataBase
 {
     private double _threshold1;

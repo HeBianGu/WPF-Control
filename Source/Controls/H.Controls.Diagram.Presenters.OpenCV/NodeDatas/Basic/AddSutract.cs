@@ -2,11 +2,11 @@
 
 namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
 
-[Display(Name = "加减运算", GroupName = "基础函数", Description = "饱和度设置", Order = 50)]
+[Display(Name = "加减运算(饱和度)", GroupName = "基础函数", Description = "设置饱和度", Order = 50)]
 public class AddSutract : BasicOpenCVNodeDataBase
 {
-    private double _value = 10;
-    [DefaultValue(10.0)]
+    private double _value = 50;
+    [DefaultValue(50.0)]
     [Display(Name = "数值", GroupName = "数据")]
     public double Value
     {

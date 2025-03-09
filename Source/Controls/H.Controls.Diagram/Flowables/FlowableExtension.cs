@@ -77,7 +77,7 @@ public static class FlowableExtension
 
     public static bool CanReset(this DiagramFlowableState state)
     {
-        return state != DiagramFlowableState.None && state != DiagramFlowableState.Canceling;
+        return state != DiagramFlowableState.Canceling;
     }
     public static bool CanClear(this DiagramFlowableState state)
     {

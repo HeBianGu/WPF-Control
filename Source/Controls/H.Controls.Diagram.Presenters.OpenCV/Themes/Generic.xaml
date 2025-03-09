@@ -28,7 +28,8 @@
                 <FontIconTextBlock Margin="5,0"
                                    HorizontalAlignment="Right"
                                    VerticalAlignment="Center"
-                                   Text="{Binding Icon}" />
+                                   Text="{Binding Icon}"
+                                   ToolTip="{Binding Description}" />
             </Grid>
         </Border>
     </DataTemplate>
