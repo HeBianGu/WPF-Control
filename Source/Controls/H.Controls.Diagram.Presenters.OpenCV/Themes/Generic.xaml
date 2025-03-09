@@ -45,4 +45,23 @@
             </Grid>
         </Border>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type b:VideoCaptureImageImportNodeDataBase}">
+        <Border Style="{DynamicResource {x:Static h:DiagramKeys.StateBorder}}">
+            <Grid>
+                <Image Width="40"
+                       Height="40"
+                       Margin="5"
+                       HorizontalAlignment="Left"
+                       Source="{Binding SrcFilePath, Converter={GetFilePathToSystemInfoIconConverter}}" />
+                <TextBox Style="{DynamicResource {x:Static h:DiagramKeys.EditTextBox}}" />
+                <TextBlock Margin="5"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Bottom"
+                           Text="{Binding Message}"
+                           TextTrimming="CharacterEllipsis"
+                           ToolTip="{Binding Message}" />
+            </Grid>
+        </Border>
+    </DataTemplate>
+
 </ResourceDictionary>

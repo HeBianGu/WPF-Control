@@ -7,7 +7,6 @@ namespace H.Services.Common
         string ExceptPropertyNames { get; set; }
         double MessageWidth { get; set; }
         object SelectObject { get; set; }
-        string Title { get; set; }
         bool UseArray { get; set; }
         bool UseAsync { get; set; }
         bool UseBoolen { get; set; }

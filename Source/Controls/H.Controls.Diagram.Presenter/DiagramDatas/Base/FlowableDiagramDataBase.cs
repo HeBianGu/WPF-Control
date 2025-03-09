@@ -1,13 +1,19 @@
 ﻿global using H.Controls.Diagram.Datas;
 global using H.Controls.Diagram.Flowables;
-using H.Extensions.FontIcon;
+global using H.Extensions.FontIcon;
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
-public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowableDiagramData
+public interface IPartInvokeable
+{
+    public void OnInvokingPart(Part part);
+    public void OnInvokedPart(Part part);
+}
+
+public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowableDiagramData, IPartInvokeable
 {
     protected override IEnumerable<Node> LoadToNodes(IEnumerable<INodeData> nodeDatas, IEnumerable<ILinkData> linkDatas)
     {
-        DiagramFlowableDataSourceConverter converter = new DiagramFlowableDataSourceConverter(nodeDatas, linkDatas);
+        var converter = new DiagramFlowableDataSourceConverter(nodeDatas, linkDatas);
         return converter.NodeSource;
     }
 
@@ -57,7 +63,7 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
         }
     }
 
-    protected virtual void OnInvokingPart(Part part)
+    public virtual void OnInvokingPart(Part part)
     {
         if (this.FlowableZoomMode == DiagramFlowableZoomMode.Rect)
             this.ZoomTo(part.Bound);
@@ -70,7 +76,7 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
             part.IsSelected = true;
     }
 
-    protected virtual void OnInvokedPart(Part part)
+    public virtual void OnInvokedPart(Part part)
     {
         if (this.UseFlowableSelectToRunning)
             part.IsSelected = false;

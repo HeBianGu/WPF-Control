@@ -33,32 +33,7 @@ namespace H.Controls.Form
 
 
         public static readonly DependencyProperty ItemHeaderTemplateProperty =
-            DependencyProperty.Register("ItemHeaderTemplate", typeof(DataTemplate), typeof(Form), new FrameworkPropertyMetadata(default(DataTemplate), (d, e) =>
-            {
-                Form control = d as Form;
-
-                if (control == null) return;
-
-                if (e.OldValue is DataTemplate o)
-                {
-
-                }
-
-                if (e.NewValue is DataTemplate n)
-                {
-
-                }
-
-            }));
-
-        public string Title
-        {
-            get { return (string)GetValue(TitleProperty); }
-            set { SetValue(TitleProperty, value); }
-        }
-
-        public static readonly DependencyProperty TitleProperty =
-            DependencyProperty.Register("Title", typeof(string), typeof(Form), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("ItemHeaderTemplate", typeof(DataTemplate), typeof(Form), new FrameworkPropertyMetadata(default(DataTemplate)));
 
         public object SelectObject
         {
@@ -762,23 +737,18 @@ namespace H.Controls.Form
             set { SetValue(GroupOrderComparerProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty GroupOrderComparerProperty =
             DependencyProperty.Register("GroupOrderComparer", typeof(IComparer<string>), typeof(Form), new FrameworkPropertyMetadata(default(IComparer<string>)));
 
 
-
-        //声明和注册路由事件
         public static readonly RoutedEvent ValueChangedRoutedEvent =
             EventManager.RegisterRoutedEvent("ValueChanged", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(Form));
-        //CLR事件包装
+
         public event RoutedEventHandler ValueChanged
         {
             add { this.AddHandler(ValueChangedRoutedEvent, value); }
             remove { this.RemoveHandler(ValueChangedRoutedEvent, value); }
         }
-
-        //激发路由事件,借用Click事件的激发方法
 
         protected virtual void OnValueChanged(Tuple<IPropertyItem, object> tuple)
         {
@@ -860,7 +830,7 @@ namespace H.Controls.Form
 
 
         public static readonly DependencyProperty MessageWidthProperty =
-            DependencyProperty.Register("MessageWidth", typeof(double), typeof(Form), new PropertyMetadata(default(double), (d, e) =>
+            DependencyProperty.Register("MessageWidth", typeof(double), typeof(Form), new PropertyMetadata(15.0, (d, e) =>
              {
                  Form control = d as Form;
 

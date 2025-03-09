@@ -46,6 +46,18 @@ namespace System.Windows.Threading
                 dispatcher.Dispatcher.Invoke(() => func(dispatcher));
             }
         }
+
+        public static R InvokeDispatcher<T, R>(this T dispatcher, Func<T, R> func) where T : DispatcherObject
+        {
+            if (dispatcher.CheckAccess())
+            {
+                return func(dispatcher);
+            }
+            else
+            {
+                return dispatcher.Dispatcher.Invoke(() => func(dispatcher));
+            }
+        }
     }
 
     public static partial class DispatcherExtension

@@ -4,9 +4,30 @@
                     xmlns:local="clr-namespace:H.Controls.Form">
     <DataTemplate DataType="{x:Type local:StaticFormPresenter}">
         <local:StaticForm SelectObject="{Binding SelectObject}"
+                          UseArray="{Binding UseArray}"
                           UseAsync="False"
+                          UseBoolen="{Binding UseBoolen}"
+                          UseClass="{Binding UseClass}"
                           UseCommand="{Binding UseCommand}"
+                          UseCommandOnly="{Binding UseCommandOnly}"
+                          UseDateTime="{Binding UseDateTime}"
+                          UseDeclaredOnly="{Binding UseDeclaredOnly}"
+                          UseDisplayOnly="{Binding UseDisplayOnly}"
+                          UseEnum="{Binding UseEnum}"
+                          UseEnumerator="{Binding UseEnumerator}"
+                          UseGroup="{Binding UseGroup}"
                           UseGroupNames="{Binding UseGroupNames}"
-                          UsePropertyView="{Binding UsePropertyView}" />
+                          UseInterface="{Binding UseInterface}"
+                          UseNull="{Binding UseNull}"
+                          UseOrder="{Binding UseOrder}"
+                          UseOrderByName="{Binding UseOrderByName}"
+                          UseOrderByType="{Binding UseOrderByType}"
+                          UsePresenter="{Binding UsePresenter}"
+                          UsePrimitive="{Binding UsePrimitive}"
+                          UsePropertyNames="{Binding UsePropertyNames}"
+                          UsePropertyView="{Binding UsePropertyView}"
+                          UseString="{Binding UseString}"
+                          UseTypeConverter="{Binding UseTypeConverter}"
+                          UseTypeConverterOnly="{Binding UseTypeConverterOnly}" />
     </DataTemplate>
 </ResourceDictionary>

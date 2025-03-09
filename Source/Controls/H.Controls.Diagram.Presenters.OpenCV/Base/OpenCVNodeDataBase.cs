@@ -1,4 +1,6 @@
-﻿using System.Text.Json.Serialization;
+﻿using H.Services.Common;
+using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
@@ -47,7 +49,31 @@ public abstract class OpenCVNodeDataBase : ActionNodeDataBase, IOpenCVNodeData, 
         }
     }
 
+
+    private string _srcFilePath;
     [Display(Name = "源文件地址", GroupName = "数据")]
     [PropertyItem(typeof(OpenFileDialogPropertyItem))]
-    public string SrcFilePath { get; set; }
+    public string SrcFilePath
+    {
+        get { return _srcFilePath; }
+        set
+        {
+            _srcFilePath = value;
+            RaisePropertyChanged();
+        }
+    }
+
+    protected virtual async Task<IFlowableResult> BeforeInvokeAsync(Part previors, Node current)
+    {
+        if (string.IsNullOrEmpty(this.SrcFilePath))
+        {
+            var r = await IocMessage.Form?.ShowEdit(this, null, null, x =>
+             {
+                 x.UsePropertyNames = nameof(SrcFilePath);
+             });
+            if (r != true)
+                return this.Error("未设置源文件地址");
+        }
+        return this.OK();
+    }
 }

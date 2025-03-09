@@ -13,7 +13,7 @@ namespace H.Controls.Form
     {
         public FormPresenter()
         {
-
+          
         }
         public FormPresenter(object value)
         {
@@ -43,32 +43,33 @@ namespace H.Controls.Form
         }
 
         public string ExceptPropertyNames { get; set; }
-        public double MessageWidth { get; set; }
+        public double MessageWidth { get; set; } = 15.0;
         public string Title { get; set; }
-        public bool UseArray { get; set; }
+        public double TitleWidth { get; set; } = 100;
+        public bool UseArray { get; set; } = true;
         public bool UseAsync { get; set; }
-        public bool UseBoolen { get; set; }
-        public bool UseClass { get; set; }
-        public bool UseCommand { get; set; }
+        public bool UseBoolen { get; set; } = true;
+        public bool UseClass { get; set; } = true;
+        public bool UseCommand { get; set; } = true;
         public bool UseCommandOnly { get; set; }
-        public bool UseDateTime { get; set; }
+        public bool UseDateTime { get; set; } = true;
         public bool UseDeclaredOnly { get; set; }
-        public bool UseDisplayOnly { get; set; }
-        public bool UseEnum { get; set; }
-        public bool UseEnumerator { get; set; }
+        public bool UseDisplayOnly { get; set; } = true;
+        public bool UseEnum { get; set; } = true;
+        public bool UseEnumerator { get; set; } = true;
         public bool UseGroup { get; set; }
         public string UseGroupNames { get; set; }
         public IComparer<string> GroupOrderComparer { get; set; }
-        public bool UseInterface { get; set; }
-        public bool UseNull { get; set; }
-        public bool UseOrder { get; set; }
+        public bool UseInterface { get; set; } = true;
+        public bool UseNull { get; set; } = true;
+        public bool UseOrder { get; set; } = true;
         public bool UseOrderByName { get; set; }
         public bool UseOrderByType { get; set; }
         public bool UsePresenter { get; set; }
-        public bool UsePrimitive { get; set; }
+        public bool UsePrimitive { get; set; } = true;
         public string UsePropertyNames { get; set; }
-        public bool UseString { get; set; }
-        public bool UseTypeConverter { get; set; }
+        public bool UseString { get; set; } = true;
+        public bool UseTypeConverter { get; set; } = true;
         public bool UseTypeConverterOnly { get; set; }
         public double MinWidth { get; set; }
         public double Width { get; set; }
