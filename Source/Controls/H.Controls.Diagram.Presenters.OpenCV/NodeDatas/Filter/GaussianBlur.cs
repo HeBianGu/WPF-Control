@@ -1,6 +1,6 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Filter;
 [Display(Name = "高斯滤波", GroupName = "滤波/降噪/模糊", Order = 1)]
-public class GaussianBlur : FilterActionNodeDataBase
+public class GaussianBlur : FilterOpenCVNodeDataBase
 {
     public override void LoadDefault()
     {

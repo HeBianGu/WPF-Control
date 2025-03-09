@@ -192,7 +192,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
         await IocMessage.Form.ShowTabEdit(this);
     });
 
-    [Icon(FontIcons.Clear)]
+    [Icon(FontIcons.Cancel)]
     [Display(Name = "删除", GroupName = "操作", Order = 4, Description = "点击此功能，删除选中的节点、连线或端口")]
     public virtual DisplayCommand DeleteCommand => new DisplayCommand(async e =>
     {
@@ -202,7 +202,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
         });
     }, x => this.SelectedPart != null);
 
-    [Icon(FontIcons.ClearSelection)]
+    [Icon(FontIcons.DisconnectDrive)]
     [Display(Name = "删除选中节点", GroupName = "操作", Order = 4, Description = "点击此功能，删除选中的所有节点")]
     public virtual DisplayCommand DeleteCheckedCommand => new DisplayCommand(async e =>
     {

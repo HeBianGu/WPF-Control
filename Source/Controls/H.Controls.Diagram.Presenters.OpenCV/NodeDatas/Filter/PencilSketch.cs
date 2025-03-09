@@ -1,6 +1,6 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Filter;
 [Display(Name = "素描", GroupName = "滤波/降噪/模糊", Order = 3)]
-public class PencilSketch : FilterActionNodeDataBase
+public class PencilSketch : FilterOpenCVNodeDataBase
 {
     private float _sigmaS = 60f;
     [DefaultValue(60f)]

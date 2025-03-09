@@ -8,7 +8,7 @@ public class FilterDataGroup : BasicDataGroupBase
 {
     protected override IEnumerable<INodeData> CreateNodeDatas()
     {
-        return typeof(IFilterActionNodeData).Assembly.GetInstances<IFilterActionNodeData>().OrderBy(x => x.Order);
+        return typeof(IFilterOpenCVNodeData).Assembly.GetInstances<IFilterOpenCVNodeData>().OrderBy(x => x.Order);
     }
 }
 

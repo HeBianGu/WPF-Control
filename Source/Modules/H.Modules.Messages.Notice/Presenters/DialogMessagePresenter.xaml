@@ -59,7 +59,7 @@
                             HorizontalAlignment="Right"
                             VerticalAlignment="Center"
                             Command="{Binding CloseCommand}"
-                            Content="{x:Static FontIcons.Clear}" />
+                            Content="{x:Static FontIcons.Cancel}" />
         </Grid>
     </DataTemplate>
 </ResourceDictionary>

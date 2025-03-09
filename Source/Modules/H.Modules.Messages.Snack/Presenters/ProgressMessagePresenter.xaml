@@ -55,7 +55,7 @@
                 Margin="5,0"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
-                Content="{x:Static FontIcons.Clear}">
+                Content="{x:Static FontIcons.Cancel}">
                 <b:Interaction.Behaviors>
                     <h:ButtonRemoveItemBehavior />
                 </b:Interaction.Behaviors>

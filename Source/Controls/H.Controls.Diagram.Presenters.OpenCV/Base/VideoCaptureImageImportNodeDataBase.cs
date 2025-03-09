@@ -1,6 +1,6 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 
-[Icon(FontIcons.Video)]
+[Icon(FontIcons.Camera)]
 public abstract class VideoCaptureImageImportNodeDataBase : ImageImportNodeDataBase, IVideoCaptureImageImportNodeData
 {
 

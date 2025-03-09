@@ -1,6 +1,6 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Filter;
 [Display(Name = "细节增强", GroupName = "滤波/降噪/模糊", Order = 20)]
-public class DetailEnhance : FilterActionNodeDataBase
+public class DetailEnhance : FilterOpenCVNodeDataBase
 {
     private float _sigmaS = 10f;
     [DefaultValue(10f)]

@@ -1,6 +1,6 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Filter;
 [Display(Name = "基础滤波", GroupName = "滤波/降噪/模糊", Order = 0)]
-public class Blur : FilterActionNodeDataBase
+public class Blur : FilterOpenCVNodeDataBase
 {
     public override void LoadDefault()
     {

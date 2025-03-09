@@ -1,6 +1,6 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Filter;
 [Display(Name = "边缘保持器", GroupName = "滤波/降噪/模糊", Order = 30)]
-public class EdgePreservingFilter : FilterActionNodeDataBase
+public class EdgePreservingFilter : FilterOpenCVNodeDataBase
 {
     private EdgePreservingMethods _edgePreservingMethods = EdgePreservingMethods.RecursFilter;
     [DefaultValue(EdgePreservingMethods.RecursFilter)]

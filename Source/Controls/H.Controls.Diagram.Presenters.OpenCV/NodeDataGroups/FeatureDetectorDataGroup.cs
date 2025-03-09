@@ -1,6 +1,6 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDataGroups;
 
-[Icon("\xE8B8")]
+[Icon(FontIcons.DialShape1)]
 [Display(Name = "特征提取", GroupName = "图像处理的特征提取", Order = 5)]
 public class FeatureDetectorDataGroup : BasicDataGroupBase
 {

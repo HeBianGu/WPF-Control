@@ -1,6 +1,6 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Filter;
 [Display(Name = "边缘感知", GroupName = "滤波/降噪/模糊", Order = 31)]
-public class Stylization : FilterActionNodeDataBase
+public class Stylization : FilterOpenCVNodeDataBase
 {
     private float _sigmaS = 60f;
     [DefaultValue(60f)]
