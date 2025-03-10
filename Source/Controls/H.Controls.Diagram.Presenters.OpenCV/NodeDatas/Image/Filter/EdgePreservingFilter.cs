@@ -49,7 +49,7 @@ public class EdgePreservingFilter : FilterOpenCVNodeDataBase
         Mat normconv = new Mat();
         Cv2.EdgePreservingFilter(src, normconv, this.EdgePreservingMethod, this.SigmaS, this.SigmaR);
         this.Mat = normconv;
-        this.RefreshMatToView();
+        this.UpdateMatToView();
         return base.Invoke();
     }
 }

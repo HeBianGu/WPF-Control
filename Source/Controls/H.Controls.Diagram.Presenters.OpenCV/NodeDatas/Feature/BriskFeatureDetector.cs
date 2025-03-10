@@ -78,7 +78,7 @@ public class BriskFeatureDetector : FeatureOpenCVNodeDataBase
             }
         }
 
-        RefreshMatToView(dst);
+        UpdateMatToView(dst);
         return base.Invoke();
     }
 }

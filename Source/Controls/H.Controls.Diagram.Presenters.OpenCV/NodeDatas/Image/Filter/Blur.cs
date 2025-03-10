@@ -50,7 +50,7 @@ public class Blur : FilterOpenCVNodeDataBase
         Mat preMat = this.PreviourMat;
         Cv2.Blur(preMat, preMat, KSize, Anchor, BorderType);
         Mat = preMat;
-        RefreshMatToView();
+        UpdateMatToView();
         return base.Invoke();
     }
 }

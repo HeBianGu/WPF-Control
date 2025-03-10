@@ -98,7 +98,7 @@ public class KazeFeatureDetector : FeatureOpenCVNodeDataBase
         //{
         //    Cv2.WaitKey();
         //}
-        RefreshMatToView(dstKaze);
+        UpdateMatToView(dstKaze);
         return base.Invoke();
     }
 

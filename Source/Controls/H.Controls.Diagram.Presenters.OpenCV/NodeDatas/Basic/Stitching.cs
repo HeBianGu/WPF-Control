@@ -23,7 +23,7 @@ public class Stitching : BasicOpenCVNodeDataBase
     //    using var pano = new Mat();
     //    var status = stitcher.Stitch(images, pano);
     //    this.Mat = pano;
-    //    this.RefreshMatToView();
+    //    this.UpdateMatToView();
     //    foreach (var image in images)
     //    {
     //        image.Dispose();
@@ -39,7 +39,7 @@ public class Stitching : BasicOpenCVNodeDataBase
         using Mat pano = new Mat();
         Stitcher.Status status = stitcher.Stitch(images, pano);
         this.Mat = pano;
-        this.RefreshMatToView();
+        this.UpdateMatToView();
         foreach (Mat image in images)
         {
             image.Dispose();

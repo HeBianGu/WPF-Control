@@ -75,7 +75,7 @@ public class Subdiv2D : BasicOpenCVNodeDataBase
             }
             this.Mat = delaunay;
         }
-        this.RefreshMatToView();
+        this.UpdateMatToView();
         return base.Invoke();
     }
 
@@ -126,7 +126,7 @@ public class Subdiv2D : BasicOpenCVNodeDataBase
     //        }
     //        this.Mat = delaunay;
     //    }
-    //    this.RefreshMatToView();
+    //    this.UpdateMatToView();
     //    return base.Invoke(previors, current);
     //}
 }

@@ -11,7 +11,7 @@ public class LbpCascade : CascadeClassifierOpenCVNodeDataBase
 
         // Detect faces
         Mat lbpResult = DetectFace(lbpCascade, src);
-        RefreshMatToView(lbpResult);
+        UpdateMatToView(lbpResult);
         return base.Invoke(previors, current);
     }
 }

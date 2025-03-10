@@ -36,7 +36,7 @@ public class Stylization : FilterOpenCVNodeDataBase
         Mat stylized = new Mat();
         Cv2.Stylization(src, stylized, this.SigmaS, this.SigmaR);
         this.Mat = stylized;
-        this.RefreshMatToView();
+        this.UpdateMatToView();
         return base.Invoke(previors, current);
     }
 
@@ -46,7 +46,7 @@ public class Stylization : FilterOpenCVNodeDataBase
         Mat stylized = new Mat();
         Cv2.Stylization(src, stylized, this.SigmaS, this.SigmaR);
         this.Mat = stylized;
-        this.RefreshMatToView();
+        this.UpdateMatToView();
         return base.Invoke();
     }
 }

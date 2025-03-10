@@ -100,7 +100,7 @@ public class AKazeFeatureDetector : FeatureOpenCVNodeDataBase
     //        akaze.DetectAndCompute(gray, null, out akazeKeyPoints, akazeDescriptors));
     //    var dstAkaze = new Mat();
     //    Cv2.DrawKeypoints(gray, akazeKeyPoints, dstAkaze);
-    //    RefreshMatToView(dstAkaze);
+    //    UpdateMatToView(dstAkaze);
     //    return base.Invoke(previors, current);
     //}
 
@@ -116,7 +116,7 @@ public class AKazeFeatureDetector : FeatureOpenCVNodeDataBase
             akaze.DetectAndCompute(gray, null, out akazeKeyPoints, akazeDescriptors));
         Mat dstAkaze = new Mat();
         Cv2.DrawKeypoints(gray, akazeKeyPoints, dstAkaze);
-        RefreshMatToView(dstAkaze);
+        UpdateMatToView(dstAkaze);
         return base.Invoke();
     }
 

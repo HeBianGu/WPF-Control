@@ -17,11 +17,12 @@ namespace H.Extensions.NewtonsoftJson
             JsonProperty property = base.CreateProperty(member, memberSerialization);
             // 忽略属性
             var textIgnored = member.GetCustomAttribute<System.Text.Json.Serialization.JsonIgnoreAttribute>();
+            var textInclude = member.GetCustomAttribute<System.Text.Json.Serialization.JsonIncludeAttribute>();
             var xmlIgnored = member.GetCustomAttribute<System.Xml.Serialization.XmlIgnoreAttribute>();
 
             Predicate<object> predicate = x =>
             {
-                if (textIgnored != null)
+                if (textIgnored != null && textInclude == null)
                     return false;
                 if (xmlIgnored != null)
                     return false;

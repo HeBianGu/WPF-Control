@@ -2,7 +2,7 @@
 
 namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.ML;
 [Display(Name = "支持向量机", GroupName = "机器学习", Description = "降噪成黑白色", Order = 0)]
-public class SVM : MLOpenCVNodeDataBase
+public class SVM : OpenCVNodeData
 {
     private static double Function(double x)
     {
@@ -43,7 +43,7 @@ public class SVM : MLOpenCVNodeDataBase
             }
 
             this.Mat = pointsPlot;
-            RefreshMatToView();
+            UpdateMatToView();
             Thread.Sleep(1000);
         }
 
@@ -84,7 +84,7 @@ public class SVM : MLOpenCVNodeDataBase
             }
         }
         this.Mat = retPlot;
-        RefreshMatToView();
+        UpdateMatToView();
         return base.Invoke(previors, current);
     }
 }

@@ -114,7 +114,7 @@ public class FindContours : BasicOpenCVNodeDataBase
     //    var dst = new Mat(this._srcFiltPathPath, ImreadModes.Color);
     //    Cv2.DrawContours(dst, contours, this.ContourIdx, Scalar.Red, this.Thickness, this.LineType, hierarchly, this.MaxLevel, this.DrawOffset);
     //    this.Mat = dst;
-    //    this.RefreshMatToView();
+    //    this.UpdateMatToView();
     //    return base.Invoke(previors, current);
     //}
 
@@ -171,7 +171,7 @@ public class FindContours : BasicOpenCVNodeDataBase
         }
 
         this.Mat = dst;
-        this.RefreshMatToView();
+        this.UpdateMatToView();
         return base.Invoke();
     }
 

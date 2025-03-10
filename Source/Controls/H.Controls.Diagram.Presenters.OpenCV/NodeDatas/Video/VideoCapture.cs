@@ -1,4 +1,5 @@
 ﻿using H.Controls.Diagram.Flowables;
+using H.Services.Common;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -69,8 +70,6 @@ public class VideoCapture : VideoCaptureImageImportNodeDataBase
             RaisePropertyChanged();
         }
     }
-
-
     //protected override string GetFilter()
     //{
     //    return "视频文件|*.asf;*.wav;*.mp4;*.mpg;*wmv;mtv";
@@ -121,9 +120,7 @@ public class VideoCapture : VideoCaptureImageImportNodeDataBase
                   return this.OK("运行成功");
               });
             // Frame image buffer
-
             // When the movie playback reaches end, Mat.data becomes NULL.
-
             //return this.OK("运行成功");
         });
     }

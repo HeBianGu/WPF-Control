@@ -87,7 +87,7 @@ public class VideoWriter : ImageImportNodeDataBase
                 Cv2.Canny(gray, canny, 100, 180);
                 Cv2.Resize(canny, dst, this.FrameSize, 0, 0, InterpolationFlags.Linear);
                 Mat = dst;
-                RefreshMatToView();
+                UpdateMatToView();
                 // Write mat to VideoWriter
                 writer.Write(dst);
             }
@@ -108,7 +108,7 @@ public class VideoWriter : ImageImportNodeDataBase
         //            break;
 
         //        Mat = frame;
-        //        RefreshMatToView();
+        //        UpdateMatToView();
         //        Cv2.WaitKey(this.SleepMilliseconds);
 
         //        //window.ShowImage(frame);

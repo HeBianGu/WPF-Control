@@ -44,7 +44,7 @@ public class Threshold : BasicOpenCVNodeDataBase
     protected override IFlowableResult Invoke()
     {
         this.Mat = this.PreviourMat.Threshold(this.Thresh, this.Maxval, this.ThresholdType);
-        this.RefreshMatToView();
+        this.UpdateMatToView();
         return base.Invoke();
     }
 }

@@ -53,7 +53,7 @@ public class DnnSuperres : MLOpenCVNodeDataBase
     //    //using var src = new Mat(ImagePath.Mandrill, ImreadModes.Color);
     //    var dst = new Mat();
     //    dnn.Upsample(src, dst);
-    //    this.RefreshMatToView(dst);
+    //    this.UpdateMatToView(dst);
     //    return base.Invoke(previors, current);
     //}
 
@@ -66,7 +66,7 @@ public class DnnSuperres : MLOpenCVNodeDataBase
         //using var src = new Mat(ImagePath.Mandrill, ImreadModes.Color);
         Mat dst = new Mat();
         dnn.Upsample(src, dst);
-        this.RefreshMatToView(dst);
+        this.UpdateMatToView(dst);
         return base.Invoke();
     }
 }

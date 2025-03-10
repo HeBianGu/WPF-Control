@@ -16,6 +16,8 @@ public class MOG : OpenCVNodeData, IVideoFlowable
         _mog.Dispose();
     }
 
+
+
     private int _history = 200;
     [Display(Name = "History", GroupName = "数据")]
     public int History
@@ -27,6 +29,7 @@ public class MOG : OpenCVNodeData, IVideoFlowable
             RaisePropertyChanged();
         }
     }
+
 
     private int _nMixtures = 5;
     [Display(Name = "nMixtures", GroupName = "数据")]
@@ -40,6 +43,7 @@ public class MOG : OpenCVNodeData, IVideoFlowable
         }
     }
 
+
     private double _backgroundRatio = 0.7;
     [Display(Name = "BackgroundRatio", GroupName = "数据")]
     public double BackgroundRatio
@@ -51,6 +55,7 @@ public class MOG : OpenCVNodeData, IVideoFlowable
             RaisePropertyChanged();
         }
     }
+
 
     private double _noiseSigma = 0;
     [Display(Name = "NoiseSigma", GroupName = "数据")]
@@ -88,6 +93,7 @@ public class MOG : OpenCVNodeData, IVideoFlowable
         }
     }
 
+
     public override IFlowableResult Invoke(Part previors, Node current)
     {
         Mat src = this.GetFromData(current).Mat;
@@ -99,7 +105,7 @@ public class MOG : OpenCVNodeData, IVideoFlowable
         _mog.Apply(src, this.Mat, this.LearningRate);
         if (this.UseGetBackground)
             _mog.GetBackgroundImage(this.Mat);
-        this.RefreshMatToView();
+        this.UpdateMatToView();
         return base.Invoke(previors, current);
     }
 }

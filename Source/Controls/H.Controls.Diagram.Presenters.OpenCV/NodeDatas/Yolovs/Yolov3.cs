@@ -190,7 +190,7 @@ public class Yolov3 : YolovOpenCVNodeDataBase
         //int key = Cv2.WaitKey();
 
         this.Mat = org;
-        this.RefreshMatToView();
+        this.UpdateMatToView();
         return base.Invoke();
     }
 }

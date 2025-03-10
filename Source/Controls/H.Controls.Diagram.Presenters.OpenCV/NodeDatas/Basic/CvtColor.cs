@@ -31,7 +31,7 @@ public class CvtColor : BasicOpenCVNodeDataBase
     protected override IFlowableResult Invoke()
     {
         this.Mat = this.PreviourMat.CvtColor(this.ColorConversionCode, this.DstCn);
-        this.RefreshMatToView();
+        this.UpdateMatToView();
         return base.Invoke();
     }
 }

@@ -39,7 +39,7 @@ public class FastFeatureDetector : FeatureOpenCVNodeDataBase
     //    {
     //        imgDst.Circle((Point)kp.Pt, 3, Scalar.Red, -1, LineTypes.AntiAlias, 0);
     //    }
-    //    RefreshMatToView(imgDst);
+    //    UpdateMatToView(imgDst);
     //    return base.Invoke(previors, current);
     //}
 
@@ -55,7 +55,7 @@ public class FastFeatureDetector : FeatureOpenCVNodeDataBase
         {
             imgDst.Circle((Point)kp.Pt, 3, Scalar.Red, -1, LineTypes.AntiAlias, 0);
         }
-        RefreshMatToView(imgDst);
+        UpdateMatToView(imgDst);
         return base.Invoke();
     }
 }

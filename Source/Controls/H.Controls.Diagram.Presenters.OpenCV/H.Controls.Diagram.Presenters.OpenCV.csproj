@@ -40,6 +40,7 @@
    <Resource Remove="Data\Image\Calibration\right12.jpg" />
    <Resource Remove="Data\Image\Calibration\right13.jpg" />
    <Resource Remove="Data\Image\cat.jpg" />
+   <Resource Remove="Data\Image\circle.png" />
    <Resource Remove="Data\Image\cvmorph.png" />
    <Resource Remove="Data\Image\fruits.jpg" />
    <Resource Remove="Data\Image\Girl.bmp" />
@@ -54,6 +55,7 @@
    <Resource Remove="Data\Image\penguin1.png" />
    <Resource Remove="Data\Image\penguin1b.png" />
    <Resource Remove="Data\Image\penguin2.png" />
+   <Resource Remove="Data\Image\pentagon.png" />
    <Resource Remove="Data\Image\shapes.png" />
    <Resource Remove="Data\Image\space_shuttle.jpg" />
    <Resource Remove="Data\Image\Squares\pic1.png" />
@@ -196,6 +198,9 @@
     <None Update="Data\Image\cat.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Data\Image\circle.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Data\Image\cvmorph.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -236,6 +241,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Data\Image\penguin2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\Image\pentagon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Data\Image\shapes.png">

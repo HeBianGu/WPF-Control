@@ -1,5 +1,6 @@
 ﻿global using H.Controls.Diagram.Datas;
 using H.Services.Common;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
@@ -10,6 +11,22 @@ public abstract class ImageImportNodeDataBase : OpenCVNodeData
     {
         this.UseStart = true;
     }
+
+    //private string _srcFilePath;
+    //[JsonInclude]
+    [Browsable(true)]
+    [Display(Name = "源文件地址", GroupName = "数据")]
+    [PropertyItem(typeof(OpenFileDialogPropertyItem))]
+    public override string SrcFilePath
+    {
+        get { return base.SrcFilePath; }
+        set
+        {
+            base.SrcFilePath = value;
+            RaisePropertyChanged();
+        }
+    }
+
     protected override IEnumerable<IPortData> CreatePortDatas()
     {
         {
@@ -20,13 +37,18 @@ public abstract class ImageImportNodeDataBase : OpenCVNodeData
         }
     }
 
-
-    public override async Task<IFlowableResult> InvokeAsync(Part previors, Node current)
+    protected override async Task<IFlowableResult> BeforeInvokeAsync(Part previors, Node current)
     {
-        var r = await this.BeforeInvokeAsync(previors, current);
-        if (r.State == FlowableResultState.Error)
-            return r;
-        return await base.InvokeAsync(previors, current);
+        if (string.IsNullOrEmpty(this.SrcFilePath))
+        {
+            var r = await IocMessage.Form?.ShowEdit(this, null, null, x =>
+            {
+                x.UsePropertyNames = nameof(SrcFilePath);
+            });
+            if (r != true)
+                return this.Error("未设置源文件地址");
+        }
+        return await base.BeforeInvokeAsync(previors, current);
     }
 
     public override IFlowableResult Invoke(Part previors, Node current)

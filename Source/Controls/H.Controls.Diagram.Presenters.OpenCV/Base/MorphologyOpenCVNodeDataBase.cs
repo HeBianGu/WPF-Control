@@ -119,7 +119,7 @@ public abstract class MorphologyOpenCVNodeDataBase : OpenCVNodeData, IMorphology
         }
 
         Mat = dst;
-        RefreshMatToView();
+        UpdateMatToView();
         return base.Invoke();
     }
 }

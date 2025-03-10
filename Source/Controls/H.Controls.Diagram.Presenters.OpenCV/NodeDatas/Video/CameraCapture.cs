@@ -30,6 +30,7 @@ public class CameraCapture : VideoCaptureImageImportNodeDataBase
     }
 
 
+
     //public override IFlowableResult Invoke(Part previors, Node current)
     //{
     //    // Opens MP4 file (ffmpeg is probably needed)
@@ -57,7 +58,7 @@ public class CameraCapture : VideoCaptureImageImportNodeDataBase
     //                Cv2.Rectangle(frameMat, rect, Scalar.Red);
     //            }
 
-    //            this.RefreshMatToView(frameMat);
+    //            this.UpdateMatToView(frameMat);
     //        }
 
     //        Thread.Sleep(this.SleepMilliseconds);
@@ -65,6 +66,11 @@ public class CameraCapture : VideoCaptureImageImportNodeDataBase
 
     //    //return base.Invoke(previors, current);
     //}
+
+    protected override async Task<IFlowableResult> BeforeInvokeAsync(Part previors, Node current)
+    {
+        return await Task.FromResult(this.OK());
+    }
 
     public override async Task<IFlowableResult> InvokeAsync(Part previors, Node current)
     {
@@ -95,7 +101,7 @@ public class CameraCapture : VideoCaptureImageImportNodeDataBase
                     //    Cv2.Rectangle(frameMat, rect, Scalar.Red);
                     //}
 
-                    //this.RefreshMatToView(frameMat);
+                    //this.UpdateMatToView(frameMat);
                     this.Message = $"{index++}/{capture.FrameCount}";
                     var r = await this.InvokeFrameMatAsync(previors, current, frameMat);
                     if (r == null)
@@ -108,7 +114,7 @@ public class CameraCapture : VideoCaptureImageImportNodeDataBase
                     //this.Message = $"{index++}/{capture.FrameCount}";
                     //Mat = image;
                     ////this.Mat = image.Clone().CvtColor(ColorConversionCodes.BGR2GRAY, 0).Threshold(0, 255, ThresholdTypes.Otsu | ThresholdTypes.Binary);
-                    //RefreshMatToView();
+                    //UpdateMatToView();
                     //if (this.State == FlowableState.Canceling)
                     //    break;
 

@@ -1,5 +1,5 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Detector;
-[Display(Name = "标准直线检测", GroupName = "基础检测", Order = 0)]
+[Display(Name = "标准直线检测", GroupName = "基础检测", Order = 1)]
 public class HoughLines : DetectorOpenCVNodeDataBase
 {
     private double _rho = 1.0;
@@ -81,7 +81,7 @@ public class HoughLines : DetectorOpenCVNodeDataBase
     //        imgStd.Line(pt1, pt2, Scalar.Red, 3, LineTypes.AntiAlias, 0);
     //    }
 
-    //    RefreshMatToView(imgStd);
+    //    UpdateMatToView(imgStd);
     //    return base.Invoke(previors, current);
     //}
 
@@ -104,7 +104,7 @@ public class HoughLines : DetectorOpenCVNodeDataBase
             imgStd.Line(pt1, pt2, Scalar.Red, 3, LineTypes.AntiAlias, 0);
         }
 
-        RefreshMatToView(imgStd);
+        UpdateMatToView(imgStd);
         return base.Invoke();
     }
 }

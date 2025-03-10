@@ -1,4 +1,5 @@
-﻿using H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Video;
+﻿using H.Controls.Diagram.Flowables;
+using H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Video;
 using System.Threading.Tasks;
 using System.Windows.Threading;
 
@@ -48,7 +49,7 @@ public abstract class VideoCaptureImageImportNodeDataBase : ImageImportNodeDataB
         invoking.Invoke(current);
         this.Mat = frameMat;
         this.SrcMat = this.Mat;
-        RefreshMatToView();
+        UpdateMatToView();
         invoked.Invoke(current);
         var tos = current.GetToNodes();
         Node to = tos.FirstOrDefault();

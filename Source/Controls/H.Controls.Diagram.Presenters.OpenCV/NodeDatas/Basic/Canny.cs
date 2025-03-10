@@ -60,7 +60,7 @@ public class Canny : BasicOpenCVNodeDataBase
         this.SrcFilePath = this.SrcFilePath;
         Cv2.Canny(preMat, preMat, 50, 200, 3, false);
         this.Mat = preMat;
-        this.RefreshMatToView();
+        this.UpdateMatToView();
         return base.Invoke();
     }
 }

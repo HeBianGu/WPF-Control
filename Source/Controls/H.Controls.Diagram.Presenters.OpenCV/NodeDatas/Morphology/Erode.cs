@@ -108,7 +108,7 @@ public class Erode : MorphologyOpenCVNodeDataBase
     //    }
 
     //    Mat = dilate;
-    //    RefreshMatToView();
+    //    UpdateMatToView();
     //    return base.Invoke(previors, current);
     //}
 }

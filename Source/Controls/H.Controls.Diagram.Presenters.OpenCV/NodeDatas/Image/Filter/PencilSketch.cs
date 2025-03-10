@@ -66,7 +66,7 @@ public class PencilSketch : FilterOpenCVNodeDataBase
         Mat pencil2 = new Mat();
         Cv2.PencilSketch(src, pencil1, pencil2, this.SigmaS, this.SigmaR, this.ShadeFactor);
         this.Mat = this.PencilOutType == PencilOutType.Src ? pencil2 : pencil1;
-        this.RefreshMatToView();
+        this.UpdateMatToView();
         return base.Invoke();
     }
 }

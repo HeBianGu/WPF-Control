@@ -61,7 +61,7 @@ public class SplitBGR : BasicOpenCVNodeDataBase
             this.Mat = mats[(int)this.SplitSelectType];
         }
 
-        this.RefreshMatToView();
+        this.UpdateMatToView();
         return base.Invoke(previors, current);
     }
 
@@ -97,7 +97,7 @@ public class SplitBGR : BasicOpenCVNodeDataBase
             this.Mat = mats[(int)this.SplitSelectType];
         }
 
-        this.RefreshMatToView();
+        this.UpdateMatToView();
         return base.Invoke();
     }
 }

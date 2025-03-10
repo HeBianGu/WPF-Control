@@ -67,7 +67,7 @@ public class SeamlessClone : BasicOpenCVNodeDataBase
     //    Mat blend = new Mat();
     //    Cv2.SeamlessClone(src0, dst, mask, this.Point, blend, this.Method);
     //    this.Mat = blend;
-    //    this.RefreshMatToView();
+    //    this.UpdateMatToView();
     //    return base.Invoke(previors, current);
     //}
 
@@ -82,7 +82,7 @@ public class SeamlessClone : BasicOpenCVNodeDataBase
         Mat blend = new Mat();
         Cv2.SeamlessClone(src0, dst, mask, this.Point, blend, this.Method);
         this.Mat = blend;
-        this.RefreshMatToView();
+        this.UpdateMatToView();
         return base.Invoke();
     }
 }

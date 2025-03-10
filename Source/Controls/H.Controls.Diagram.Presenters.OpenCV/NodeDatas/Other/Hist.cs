@@ -39,7 +39,7 @@ public class Hist : OtherOpenCVNodeDataBase
                 -1);
         }
 
-        this.RefreshMatToView(render);
+        this.UpdateMatToView(render);
         return base.Invoke(previors, current);
     }
 }

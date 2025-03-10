@@ -29,7 +29,7 @@ public class MultiplayDivide : BasicOpenCVNodeDataBase
     protected override IFlowableResult Invoke()
     {
         this.Mat = this.PreviourMat * this.Value;
-        this.RefreshMatToView();
+        this.UpdateMatToView();
         return base.Invoke();
     }
 }

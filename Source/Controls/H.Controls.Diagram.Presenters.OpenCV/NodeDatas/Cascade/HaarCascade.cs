@@ -26,7 +26,7 @@ public class HaarCascade : CascadeClassifierOpenCVNodeDataBase
         CascadeClassifier haarCascade = new CascadeClassifier(dataPath);
         // Detect faces
         Mat haarResult = DetectFace(haarCascade, this.PreviourMat);
-        RefreshMatToView(haarResult);
+        this.UpdateMatToView(haarResult);
         return base.Invoke();
     }
 

@@ -1,10 +1,10 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Detector;
 [Display(Name = "识别匹配图片", GroupName = "基础检测", Order = 30)]
-public class BestMatch : DetectorOpenCVNodeDataBase
+public class BestMatch : MatchDetectorOpenCVNodeDataBase
 {
     public BestMatch()
     {
-        this.SrcFilePath = GetDataPath(ImagePath.Match1);
+        this.TemplateFilePath = GetDataPath(ImagePath.Match1);
     }
     //protected override ImageSource CreateImageSource()
     //{
@@ -54,7 +54,9 @@ public class BestMatch : DetectorOpenCVNodeDataBase
         //    Cv2.WaitKey();
         //}
 
-        RefreshMatToView(view.Clone());
+        UpdateMatToView(view.Clone());
         return base.Invoke();
     }
 }
+
+

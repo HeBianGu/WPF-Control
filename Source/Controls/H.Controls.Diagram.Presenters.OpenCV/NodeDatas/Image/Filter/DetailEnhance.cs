@@ -36,7 +36,7 @@ public class DetailEnhance : FilterOpenCVNodeDataBase
         Mat detailEnhance = new Mat();
         Cv2.DetailEnhance(src, detailEnhance, this.SigmaS, this.SigmaR);
         this.Mat = detailEnhance;
-        this.RefreshMatToView();
+        this.UpdateMatToView();
         return base.Invoke();
     }
 }

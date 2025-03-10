@@ -45,6 +45,9 @@ public static class ImagePath
     public const string Aruco = "Data/Image/aruco_markers_photo.jpg";
 
     public const string Cvmorph = "Data/Image/cvmorph.png";
+
+    public const string Circle = "Data/Image/circle.png";
+    public const string Pentagon = "Data/Image/pentagon.png";
 }
 
 public class GetOpenCVImagesExtension : MarkupExtension

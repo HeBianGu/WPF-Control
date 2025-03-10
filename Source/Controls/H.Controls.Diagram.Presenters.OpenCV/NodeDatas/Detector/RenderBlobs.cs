@@ -31,7 +31,8 @@ public class RenderBlobs : DetectorOpenCVNodeDataBase
             }
         }
 
-        RefreshMatToView(labelview);
+        UpdateMatToView(labelview);
         return base.Invoke();
     }
 }
+

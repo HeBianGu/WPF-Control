@@ -191,7 +191,7 @@ public class FreakFeatureDetector : FeatureOpenCVNodeDataBase
                     color);
             }
         }
-        RefreshMatToView(dst);
+        UpdateMatToView(dst);
         return base.Invoke();
     }
 }

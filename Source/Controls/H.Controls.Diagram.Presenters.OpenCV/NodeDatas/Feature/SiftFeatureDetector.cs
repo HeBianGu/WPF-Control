@@ -158,7 +158,7 @@ public class SiftFeatureDetector : FeatureOpenCVNodeDataBase
             Cv2.DrawMatches(gray1, keypoints1, gray2, keypoints2, flannMatches, flannView);
             this.Mat = flannView;
         }
-        RefreshMatToView();
+        UpdateMatToView();
         return base.Invoke();
     }
 }

@@ -13,7 +13,7 @@ public class BitwiseNot : BasicOpenCVNodeDataBase
         Mat src = this.GetFromData(current).Mat;
         Cv2.BitwiseNot(src, src);
         this.Mat = src;
-        this.RefreshMatToView();
+        this.UpdateMatToView();
         return base.Invoke(previors, current);
     }
 }

@@ -125,7 +125,7 @@ public class MserFeatureDetector : FeatureOpenCVNodeDataBase
             }
         }
         this.Mat = dst;
-        RefreshMatToView();
+        UpdateMatToView();
         return base.Invoke();
     }
 }

@@ -63,7 +63,7 @@ public class GaussianBlur : FilterOpenCVNodeDataBase
         Mat preMat = this.PreviourMat;
         Cv2.GaussianBlur(preMat, preMat, KSize, SigmaX, SigmaY, BorderType);
         Mat = preMat;
-        RefreshMatToView();
+        UpdateMatToView();
         return base.Invoke();
     }
 }

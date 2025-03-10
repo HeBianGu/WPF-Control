@@ -1,5 +1,5 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Detector;
-[Display(Name = "直线概率检测", GroupName = "基础检测", Order = 1)]
+[Display(Name = "直线概率检测", GroupName = "基础检测", Order = 2)]
 public class HoughLinesP : DetectorOpenCVNodeDataBase
 {
     private double _rho = 1.0;
@@ -72,7 +72,7 @@ public class HoughLinesP : DetectorOpenCVNodeDataBase
         {
             imgProb.Line(s.P1, s.P2, Scalar.Red, 3, LineTypes.AntiAlias, 0);
         }
-        RefreshMatToView(imgProb);
+        UpdateMatToView(imgProb);
         return base.Invoke();
     }
 }

@@ -29,7 +29,7 @@ public class Hog : DetectorOpenCVNodeDataBase
             };
             img.Rectangle(r.TopLeft, r.BottomRight, Scalar.Red, 3);
         }
-        RefreshMatToView(img);
+        UpdateMatToView(img);
         return base.Invoke(previors, current);
     }
 }
