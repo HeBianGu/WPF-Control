@@ -123,7 +123,8 @@
                                 <Button HorizontalAlignment="Left"
                                         Command="{x:Static local:GuideBox.SkipCommand}"
                                         Content="跳过指南&gt;&gt;" />
-                                <Button x:Name="bt_next" Margin="5 0"
+                                <Button x:Name="bt_next"
+                                        Margin="5,0"
                                         HorizontalAlignment="Left"
                                         Background="{DynamicResource {x:Static h:BrushKeys.Orange}}"
                                         Command="{x:Static local:GuideBox.NextCommand}"

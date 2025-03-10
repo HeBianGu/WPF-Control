@@ -172,5 +172,29 @@ namespace H.Extensions.Attach
             bool o = (bool)e.OldValue;
         }
 
+
+
+        public static bool GetIsGuideAdonerElement(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(IsGuideAdonerElementProperty);
+        }
+
+        public static void SetIsGuideAdonerElement(DependencyObject obj, bool value)
+        {
+            obj.SetValue(IsGuideAdonerElementProperty, value);
+        }
+
+        public static readonly DependencyProperty IsGuideAdonerElementProperty =
+            DependencyProperty.RegisterAttached("IsGuideAdonerElement", typeof(bool), typeof(Cattach), new PropertyMetadata(default(bool), OnIsGuideAdonerElementChanged));
+
+        static public void OnIsGuideAdonerElementChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            DependencyObject control = d as DependencyObject;
+
+            bool n = (bool)e.NewValue;
+
+            bool o = (bool)e.OldValue;
+        }
+
     }
 }
