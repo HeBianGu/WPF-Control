@@ -39,7 +39,7 @@ public abstract class ImageImportNodeDataBase : OpenCVNodeData
 
     protected override async Task<IFlowableResult> BeforeInvokeAsync(Part previors, Node current)
     {
-        if (string.IsNullOrEmpty(this.SrcFilePath))
+        if (File.Exists(this.SrcFilePath) == false)
         {
             var r = await IocMessage.Form?.ShowEdit(this, null, null, x =>
             {

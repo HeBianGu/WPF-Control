@@ -4,6 +4,8 @@ global using H.Controls.Form.PropertyItem.TextPropertyItems;
 global using OpenCvSharp.Dnn;
 global using System.Collections.Generic;
 global using System.IO;
+using H.Services.Common;
+using System.Threading.Tasks;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Yolovs;
 
@@ -21,13 +23,14 @@ public class Yolov3 : YolovOpenCVNodeDataBase
     {
         base.LoadDefault();
         //this.CfgFilePath = this.GetDataPath("Data\\Yolov3\\yolov3.cfg");
-        this.CfgFilePath = this.GetDataPath("D:\\Download\\darknet-master\\darknet-master\\cfg\\yolov3-tiny.cfg");
+        this.CfgFilePath = this.GetDataPath("Data\\Yolov3\\yolov3-tiny.cfg");
         this.NameFilePath = this.GetDataPath("Data\\Yolov3\\coco.names");
         //this.WeightFilePath = @"D:\\Download\\YoloWrapper-WPF-master\\YoloWrapper-WPF-master\\DeepLearning\\Assets\\Weights\\yolov3.weights";
-        this.WeightFilePath = @"D:\Download\yolov3-tiny.weights";
+        //this.WeightFilePath = @"D:\Download\yolov3-tiny.weights";
     }
 
     private string _cfgFilePath;
+    [Required]
     [Display(Name = "Cfg路径", GroupName = "数据")]
     [PropertyItem(typeof(OpenFileDialogPropertyItem))]
     public string CfgFilePath
@@ -41,6 +44,7 @@ public class Yolov3 : YolovOpenCVNodeDataBase
     }
 
     private string _weightFilePath;
+    [Required]
     [Display(Name = "Weight路径", GroupName = "数据")]
     [PropertyItem(typeof(OpenFileDialogPropertyItem))]
     public string WeightFilePath
@@ -54,6 +58,7 @@ public class Yolov3 : YolovOpenCVNodeDataBase
     }
 
     private string _nameFilePath;
+    [Required]
     [Display(Name = "Name路径", GroupName = "数据")]
     [PropertyItem(typeof(OpenFileDialogPropertyItem))]
     public string NameFilePath
@@ -92,12 +97,27 @@ public class Yolov3 : YolovOpenCVNodeDataBase
         }
     }
 
-    public override IFlowableResult Invoke(Part previors, Node current)
+    protected override async Task<IFlowableResult> BeforeInvokeAsync(Part previors, Node current)
     {
-        return !File.Exists(this.WeightFilePath)
-            ? this.Error("训练模型不存在：https://pjreddie.com/media/files/yolov3.weights 请先下载")
-            : base.Invoke(previors, current);
+        if (!File.Exists(this.WeightFilePath) || !File.Exists(this.CfgFilePath) || !File.Exists(this.NameFilePath))
+        {
+            var r = await IocMessage.Form?.ShowEdit(this, null, null, x =>
+            {
+                x.UsePropertyNames = $"{nameof(WeightFilePath)},{nameof(CfgFilePath)},{nameof(NameFilePath)},";
+            });
+            if (r != true)
+                return this.Error("训练模型不存在：https://pjreddie.com/media/files/yolov3.weights 请先下载");
+        }
+        return await base.BeforeInvokeAsync(previors, current);
     }
+
+
+    //public override IFlowableResult Invoke(Part previors, Node current)
+    //{
+    //    return !File.Exists(this.WeightFilePath)
+    //        ? this.Error("训练模型不存在：https://pjreddie.com/media/files/yolov3.weights 请先下载")
+    //        : base.Invoke(previors, current);
+    //}
 
     protected override IFlowableResult Invoke()
     {

@@ -51,6 +51,8 @@ namespace H.Extensions.ValueConverter
             if (value == null)
                 return null;
             string str = value.ToString();
+            if (string.IsNullOrEmpty(str))
+                return null;
             BitmapImage bitmap = new BitmapImage();
             bitmap.BeginInit();
             bitmap.UriSource = new Uri(str);

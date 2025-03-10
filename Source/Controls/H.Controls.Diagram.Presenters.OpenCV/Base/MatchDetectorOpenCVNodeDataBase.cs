@@ -4,6 +4,7 @@ namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 public abstract class MatchDetectorOpenCVNodeDataBase : DetectorOpenCVNodeDataBase
 {
     private string _templateFilePath;
+    [Required]
     [Display(Name = "模板图片", GroupName = "数据")]
     [PropertyItem(typeof(OpenFileDialogPropertyItem))]
     public string TemplateFilePath
@@ -18,7 +19,7 @@ public abstract class MatchDetectorOpenCVNodeDataBase : DetectorOpenCVNodeDataBa
 
     protected override async Task<IFlowableResult> BeforeInvokeAsync(Part previors, Node current)
     {
-        if (string.IsNullOrEmpty(this.TemplateFilePath))
+        if (File.Exists(this.TemplateFilePath) == false)
         {
             var r = await IocMessage.Form?.ShowEdit(this, null, null, x =>
             {
