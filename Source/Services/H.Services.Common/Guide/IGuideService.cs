@@ -2,7 +2,7 @@
 {
     public interface IGuideService
     {
-        void Show(UIElement owner = null);
+        void Show(string version = null, UIElement owner = null);
     }
 
 }

@@ -1,13 +1,32 @@
-﻿using System;
+﻿using H.Mvvm.Attributes;
+using H.Mvvm.ViewModels.Base;
+using System;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Reflection;
 using System.Windows.Input;
 using System.Windows.Markup;
 
 namespace H.Mvvm
 {
     [MarkupExtensionReturnType(typeof(ICommand))]
-    public abstract class MarkupCommandBase : MarkupExtension, ICommand, INotifyPropertyChanged
+    public abstract class MarkupCommandBase : MarkupExtension, ICommand, INotifyPropertyChanged, IIconable, INameable, IDescriptionable
     {
+        protected MarkupCommandBase()
+        {
+            var d = this.GetType().GetCustomAttribute<DisplayAttribute>();
+            if (d != null)
+            {
+                this.Name = d.Name;
+                this.Description = d.Description;
+            }
+
+            var icon = this.GetType().GetCustomAttribute<IconAttribute>();
+            this.Icon = icon?.Icon;
+        }
+        public string Name { get; set; }
+        public string Icon { get; set; }
+        public string Description { get; set; }
         #region - ICommand -
         public event EventHandler CanExecuteChanged
         {

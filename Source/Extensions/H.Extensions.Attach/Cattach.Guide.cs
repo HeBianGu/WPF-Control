@@ -1,5 +1,6 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
+using System.Threading.Channels;
 using System.Windows;
 
 namespace H.Extensions.Attach
@@ -217,19 +218,19 @@ namespace H.Extensions.Attach
         }
 
 
-        public static string GetAssemblyVersion(DependencyObject obj)
+        public static string GetGuideAssemblyVersion(DependencyObject obj)
         {
-            return (string)obj.GetValue(AssemblyVersionProperty);
+            return (string)obj.GetValue(GuideAssemblyVersionProperty);
         }
 
-        public static void SetAssemblyVersion(DependencyObject obj, string value)
+        public static void SetGuideAssemblyVersion(DependencyObject obj, string value)
         {
-            obj.SetValue(AssemblyVersionProperty, value);
+            obj.SetValue(GuideAssemblyVersionProperty, value);
         }
-        public static readonly DependencyProperty AssemblyVersionProperty =
-            DependencyProperty.RegisterAttached("AssemblyVersion", typeof(string), typeof(Cattach), new PropertyMetadata(default(string), OnAssemblyVersionChanged));
+        public static readonly DependencyProperty GuideAssemblyVersionProperty =
+            DependencyProperty.RegisterAttached("GuideAssemblyVersion(", typeof(string), typeof(Cattach), new PropertyMetadata(default(string), OnGuideAssemblyVersionChanged));
 
-        static public void OnAssemblyVersionChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        static public void OnGuideAssemblyVersionChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             DependencyObject control = d as DependencyObject;
 

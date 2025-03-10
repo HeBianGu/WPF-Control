@@ -11,9 +11,9 @@ namespace H.Modules.Guide
     public class GuideBoxAdorner : VisualCollectionAdornerBase
     {
         private GuideBox _guideBox;
-        public GuideBoxAdorner(UIElement adornedElement, Action close) : base(adornedElement)
+        public GuideBoxAdorner(UIElement adornedElement, Action close, string version = null) : base(adornedElement)
         {
-            _guideBox = new GuideBox(adornedElement);
+            _guideBox = new GuideBox(adornedElement, version);
             _visualCollection.Add(_guideBox);
             _guideBox.Closed += (l, k) =>
             {

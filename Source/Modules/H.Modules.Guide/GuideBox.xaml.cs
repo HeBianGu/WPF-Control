@@ -28,10 +28,11 @@ namespace H.Modules.Guide
         private readonly UIElement _element;
         private readonly ContentControl _contentControl = new ContentControl() { Margin = new Thickness(10.0), HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top };
 
-        public GuideBox(UIElement element)
+        private readonly string _version;
+        public GuideBox(UIElement element, string version)
         {
             this._element = element;
-
+            this._version = version;
             if (element is FrameworkElement framework)
             {
                 framework.SizeChanged += (l, k) =>
@@ -274,7 +275,9 @@ namespace H.Modules.Guide
             build = parent =>
              {
                  //var gt = Cattach.GetGuideTitle(parent.Element);
-                 IEnumerable<UIElement> children = items.Where(l => Cattach.GetGuideParentTitle(l) != null && Cattach.GetGuideParentTitle(l) == Cattach.GetGuideTitle(parent.Element)?.ToString() && l.Visibility == Visibility.Visible && l.IsVisible && l.Opacity > 0);
+                 IEnumerable<UIElement> children = items.Where(l => l.Visibility == Visibility.Visible && l.IsVisible && l.Opacity > 0);
+                 children = children.Where(x => Cattach.GetGuideParentTitle(x) != null && Cattach.GetGuideParentTitle(x) == Cattach.GetGuideTitle(parent.Element)?.ToString());
+                 children = children.Where(x => Cattach.GetGuideAssemblyVersion(x) == this._version);
 
                  foreach (UIElement child in children)
                  {
@@ -297,7 +300,7 @@ namespace H.Modules.Guide
                  }
              };
 
-            foreach (UIElement root in roots)
+            foreach (UIElement root in roots.Where(x => Cattach.GetGuideAssemblyVersion(x) == this._version))
             {
                 if (root.Visibility != Visibility.Visible)
                     continue;

@@ -8,4 +8,14 @@
         }
     }
 
+    public class ShowNewGuideCommand : IocMarkupCommandBase
+    {
+        public override void Execute(object parameter)
+        {
+            var sss= Assembly.GetEntryAssembly().GetName().Version.ToString();
+            var version = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyVersionAttribute>()?.Version;
+            Ioc<IGuideService>.Instance.Show(sss);
+        }
+    }
+
 }

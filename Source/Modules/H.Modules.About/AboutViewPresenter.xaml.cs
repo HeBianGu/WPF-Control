@@ -24,7 +24,9 @@ namespace H.Modules.About
             this._trademark = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyTrademarkAttribute>()?.Trademark;
             this._configuration = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyConfigurationAttribute>()?.Configuration;
             this._copyright = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyCopyrightAttribute>()?.Copyright;
-            this._version = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyVersionAttribute>()?.Version;
+            this._version = Assembly.GetEntryAssembly().GetName().Version.ToString();
+            this._assemblyVersion = Assembly.GetEntryAssembly().GetName().Version.ToString();
+            //this._assemblyVersion = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyVersionAttribute>()?.Version;
             this._fileVersion = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyFileVersionAttribute>()?.Version;
         }
         public string Title { get; set; } = "关于";
@@ -168,12 +170,26 @@ namespace H.Modules.About
             }
         }
 
+        private string _assemblyVersion;
+        [ReadOnly(true)]
+        [System.Text.Json.Serialization.JsonIgnore]
+        [System.Xml.Serialization.XmlIgnore]
+        [Display(Name = "程序集版本", Description = "程序集的版本号，用于标识程序集的唯一性和兼容性")]
+        public string AssemblyVersion
+        {
+            get { return _assemblyVersion; }
+            set
+            {
+                _assemblyVersion = value;
+            }
+        }
+
+
         private string _version;
         [ReadOnly(true)]
         [System.Text.Json.Serialization.JsonIgnore]
-
         [System.Xml.Serialization.XmlIgnore]
-        [Display(Name = "产品版本")]
+        [Display(Name = "版本号", Description = "文件的版本号，通常用于标识文件的发布版本")]
         public string Version
         {
             get { return _version; }

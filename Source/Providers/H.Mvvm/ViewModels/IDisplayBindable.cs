@@ -2,9 +2,9 @@
 
 namespace H.Mvvm
 {
-    public interface IDisplayBindable : IIconable, INameable, IOrderable,IGroupable,IDable
+    public interface IDisplayBindable : IIconable, INameable, IOrderable, IGroupable, IDable, IDescriptionable
     {
-        string Description { get; set; }
+        
         string ShortName { get; set; }
     }
 
