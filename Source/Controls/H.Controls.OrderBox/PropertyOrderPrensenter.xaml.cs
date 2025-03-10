@@ -20,7 +20,7 @@ namespace H.Controls.OrderBox
 {
     [ContentProperty(nameof(Conditions))]
     [Display(Name = "设置规则")]
-    public class PropertyOrderPrensenter : DisplayBindableBase, IOrderable, IMetaSetting
+    public class PropertyOrderPrensenter : DisplayBindableBase, IOrderWhereable, IMetaSetting
     {
         public PropertyOrderPrensenter()
         {

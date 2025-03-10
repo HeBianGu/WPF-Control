@@ -14,7 +14,7 @@ using H.Mvvm.ViewModels.Base;
 
 namespace H.Controls.OrderBox
 {
-    public class PropertyOrdersPrensenter : DisplayBindableBase, IOrderable, IMetaSetting
+    public class PropertyOrdersPrensenter : DisplayBindableBase, IOrderWhereable, IMetaSetting
     {
         public PropertyOrdersPrensenter()
         {

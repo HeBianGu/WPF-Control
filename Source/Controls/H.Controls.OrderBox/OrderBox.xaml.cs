@@ -32,7 +32,7 @@ namespace H.Controls.OrderBox
         {
             if (this.UseCheckAll)
                 yield return "全选";
-            foreach (IOrderable data in this.Orders)
+            foreach (IOrderWhereable data in this.Orders)
             {
                 yield return data;
             }
@@ -47,7 +47,7 @@ namespace H.Controls.OrderBox
             });
         }
 
-        public ObservableCollection<IOrderable> Orders { get; } = new ObservableCollection<IOrderable>();
+        public ObservableCollection<IOrderWhereable> Orders { get; } = new ObservableCollection<IOrderWhereable>();
 
         public bool UseCheckAll
         {
@@ -117,25 +117,25 @@ namespace H.Controls.OrderBox
         }
 
 
-        public IOrderable Order
+        public IOrderWhereable Order
         {
-            get { return (IOrderable)GetValue(OrderProperty); }
+            get { return (IOrderWhereable)GetValue(OrderProperty); }
             private set { SetValue(OrderProperty, value); }
         }
 
         public static readonly DependencyProperty OrderProperty =
-            DependencyProperty.Register("Order", typeof(IOrderable), typeof(OrderBox), new FrameworkPropertyMetadata(default(IOrderable), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, (d, e) =>
+            DependencyProperty.Register("Order", typeof(IOrderWhereable), typeof(OrderBox), new FrameworkPropertyMetadata(default(IOrderWhereable), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, (d, e) =>
             {
                 OrderBox control = d as OrderBox;
 
                 if (control == null) return;
 
-                if (e.OldValue is IOrderable o)
+                if (e.OldValue is IOrderWhereable o)
                 {
 
                 }
 
-                if (e.NewValue is IOrderable n)
+                if (e.NewValue is IOrderWhereable n)
                 {
 
                 }
@@ -160,7 +160,7 @@ namespace H.Controls.OrderBox
         }
     }
 
-    public class OrderBoxOrder : IOrderable
+    public class OrderBoxOrder : IOrderWhereable
     {
         private OrderBox _orderBox;
         public OrderBoxOrder(OrderBox orderBox)
@@ -173,7 +173,7 @@ namespace H.Controls.OrderBox
 
             if (this._orderBox.SelectionMode == SelectionMode.Single)
             {
-                if (this._orderBox.SelectedItem is IOrderable order)
+                if (this._orderBox.SelectedItem is IOrderWhereable order)
                 {
                     return order.Where(from);
                 }
@@ -184,7 +184,7 @@ namespace H.Controls.OrderBox
             }
             else
             {
-                var orders = this._orderBox.SelectedItems.OfType<IOrderable>();
+                var orders = this._orderBox.SelectedItems.OfType<IOrderWhereable>();
                 if (orders == null || orders.Count() == 0)
                     return from;
                 IEnumerable result = from;

@@ -106,25 +106,25 @@ namespace H.Controls.OrderBox
                 }
             }));
 
-        public IOrderable Order
+        public IOrderWhereable Order
         {
-            get { return (IOrderable)GetValue(OrderProperty); }
+            get { return (IOrderWhereable)GetValue(OrderProperty); }
             private set { SetValue(OrderProperty, value); }
         }
 
         public static readonly DependencyProperty OrderProperty =
-            DependencyProperty.Register("Order", typeof(IOrderable), typeof(PropertyOrderBox), new FrameworkPropertyMetadata(default(IOrderable), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, (d, e) =>
+            DependencyProperty.Register("Order", typeof(IOrderWhereable), typeof(PropertyOrderBox), new FrameworkPropertyMetadata(default(IOrderWhereable), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, (d, e) =>
             {
                 PropertyOrderBox control = d as PropertyOrderBox;
 
                 if (control == null) return;
 
-                if (e.OldValue is IOrderable o)
+                if (e.OldValue is IOrderWhereable o)
                 {
 
                 }
 
-                if (e.NewValue is IOrderable n)
+                if (e.NewValue is IOrderWhereable n)
                 {
 
                 }

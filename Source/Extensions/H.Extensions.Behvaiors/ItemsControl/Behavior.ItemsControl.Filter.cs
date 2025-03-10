@@ -307,26 +307,26 @@ namespace H.Extensions.Behvaiors
 
 
 
-        public IOrderable Order
+        public IOrderWhereable Order
         {
-            get { return (IOrderable)GetValue(OrderProperty); }
+            get { return (IOrderWhereable)GetValue(OrderProperty); }
             set { SetValue(OrderProperty, value); }
         }
 
 
         public static readonly DependencyProperty OrderProperty =
-            DependencyProperty.Register("Order", typeof(IOrderable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrderable), (d, e) =>
+            DependencyProperty.Register("Order", typeof(IOrderWhereable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrderWhereable), (d, e) =>
             {
                 ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
 
                 if (control == null) return;
 
-                if (e.OldValue is IOrderable o)
+                if (e.OldValue is IOrderWhereable o)
                 {
 
                 }
 
-                if (e.NewValue is IOrderable n)
+                if (e.NewValue is IOrderWhereable n)
                 {
 
                 }
@@ -334,26 +334,26 @@ namespace H.Extensions.Behvaiors
             }));
 
 
-        public IOrderable Order2
+        public IOrderWhereable Order2
         {
-            get { return (IOrderable)GetValue(Order2Property); }
+            get { return (IOrderWhereable)GetValue(Order2Property); }
             set { SetValue(Order2Property, value); }
         }
 
 
         public static readonly DependencyProperty Order2Property =
-            DependencyProperty.Register("Order2", typeof(IOrderable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrderable), (d, e) =>
+            DependencyProperty.Register("Order2", typeof(IOrderWhereable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrderWhereable), (d, e) =>
             {
                 ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
 
                 if (control == null) return;
 
-                if (e.OldValue is IOrderable o)
+                if (e.OldValue is IOrderWhereable o)
                 {
 
                 }
 
-                if (e.NewValue is IOrderable n)
+                if (e.NewValue is IOrderWhereable n)
                 {
 
                 }
@@ -361,26 +361,26 @@ namespace H.Extensions.Behvaiors
             }));
 
 
-        public IOrderable Order1
+        public IOrderWhereable Order1
         {
-            get { return (IOrderable)GetValue(Order1Property); }
+            get { return (IOrderWhereable)GetValue(Order1Property); }
             set { SetValue(Order1Property, value); }
         }
 
 
         public static readonly DependencyProperty Order1Property =
-            DependencyProperty.Register("Order1", typeof(IOrderable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrderable), (d, e) =>
+            DependencyProperty.Register("Order1", typeof(IOrderWhereable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrderWhereable), (d, e) =>
             {
                 ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
 
                 if (control == null) return;
 
-                if (e.OldValue is IOrderable o)
+                if (e.OldValue is IOrderWhereable o)
                 {
 
                 }
 
-                if (e.NewValue is IOrderable n)
+                if (e.NewValue is IOrderWhereable n)
                 {
 
                 }
@@ -388,26 +388,26 @@ namespace H.Extensions.Behvaiors
             }));
 
 
-        public IOrderable Order3
+        public IOrderWhereable Order3
         {
-            get { return (IOrderable)GetValue(Order3Property); }
+            get { return (IOrderWhereable)GetValue(Order3Property); }
             set { SetValue(Order3Property, value); }
         }
 
 
         public static readonly DependencyProperty Order3Property =
-            DependencyProperty.Register("Order3", typeof(IOrderable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrderable), (d, e) =>
+            DependencyProperty.Register("Order3", typeof(IOrderWhereable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrderWhereable), (d, e) =>
             {
                 ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
 
                 if (control == null) return;
 
-                if (e.OldValue is IOrderable o)
+                if (e.OldValue is IOrderWhereable o)
                 {
 
                 }
 
-                if (e.NewValue is IOrderable n)
+                if (e.NewValue is IOrderWhereable n)
                 {
 
                 }
@@ -415,26 +415,26 @@ namespace H.Extensions.Behvaiors
             }));
 
 
-        public IOrderable Order4
+        public IOrderWhereable Order4
         {
-            get { return (IOrderable)GetValue(Order4Property); }
+            get { return (IOrderWhereable)GetValue(Order4Property); }
             set { SetValue(Order4Property, value); }
         }
 
 
         public static readonly DependencyProperty Order4Property =
-            DependencyProperty.Register("Order4", typeof(IOrderable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrderable), (d, e) =>
+            DependencyProperty.Register("Order4", typeof(IOrderWhereable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrderWhereable), (d, e) =>
             {
                 ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
 
                 if (control == null) return;
 
-                if (e.OldValue is IOrderable o)
+                if (e.OldValue is IOrderWhereable o)
                 {
 
                 }
 
-                if (e.NewValue is IOrderable n)
+                if (e.NewValue is IOrderWhereable n)
                 {
 
                 }
@@ -442,26 +442,26 @@ namespace H.Extensions.Behvaiors
             }));
 
 
-        public IOrderable Order5
+        public IOrderWhereable Order5
         {
-            get { return (IOrderable)GetValue(Order5Property); }
+            get { return (IOrderWhereable)GetValue(Order5Property); }
             set { SetValue(Order5Property, value); }
         }
 
 
         public static readonly DependencyProperty Order5Property =
-            DependencyProperty.Register("Order5", typeof(IOrderable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrderable), (d, e) =>
+            DependencyProperty.Register("Order5", typeof(IOrderWhereable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrderWhereable), (d, e) =>
             {
                 ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
 
                 if (control == null) return;
 
-                if (e.OldValue is IOrderable o)
+                if (e.OldValue is IOrderWhereable o)
                 {
 
                 }
 
-                if (e.NewValue is IOrderable n)
+                if (e.NewValue is IOrderWhereable n)
                 {
 
                 }
@@ -483,7 +483,7 @@ namespace H.Extensions.Behvaiors
             yield return this.Filter8;
             yield return this.Filter9;
         }
-        private IEnumerable<IOrderable> GetOrders()
+        private IEnumerable<IOrderWhereable> GetOrders()
         {
             yield return this.Order;
             yield return this.Order1;
@@ -502,8 +502,8 @@ namespace H.Extensions.Behvaiors
             IEnumerable<IFilterable> filters = GetFilters().Where(x => x != null);
             IEnumerable source = filters.Count() == 0 ? this.ItemsSource
                 : this.ItemsSource.OfType<object>().Where(x => filters.All(l => l.IsMatch(x))).ToList();
-            List<IOrderable> orders = GetOrders().ToList();
-            foreach (IOrderable item in orders)
+            List<IOrderWhereable> orders = GetOrders().ToList();
+            foreach (IOrderWhereable item in orders)
             {
                 if (item == null)
                     continue;

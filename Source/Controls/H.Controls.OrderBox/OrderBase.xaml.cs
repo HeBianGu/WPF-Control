@@ -6,7 +6,7 @@ using H.Mvvm.ViewModels.Base;
 
 namespace H.Controls.OrderBox
 {
-    public abstract class OrderBase : DisplayBindableBase, IOrderable
+    public abstract class OrderBase : DisplayBindableBase, IOrderWhereable
     {
         private bool _useDesc;
         public bool UseDesc

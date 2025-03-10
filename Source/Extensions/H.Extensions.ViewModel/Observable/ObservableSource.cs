@@ -341,8 +341,8 @@ namespace H.Extensions.ViewModel
                 this.RefreshPage();
             }
         }
-        private IOrderable _order1;
-        public IOrderable Order1
+        private IOrderWhereable _order1;
+        public IOrderWhereable Order1
         {
             get { return _order1; }
             set
@@ -353,8 +353,8 @@ namespace H.Extensions.ViewModel
             }
         }
 
-        private IOrderable _order2;
-        public IOrderable Order2
+        private IOrderWhereable _order2;
+        public IOrderWhereable Order2
         {
             get { return _order2; }
             set
@@ -365,8 +365,8 @@ namespace H.Extensions.ViewModel
             }
         }
 
-        private IOrderable _order3;
-        public IOrderable Order3
+        private IOrderWhereable _order3;
+        public IOrderWhereable Order3
         {
             get { return _order3; }
             set

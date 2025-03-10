@@ -1,6 +1,6 @@
 ﻿namespace H.Services.Common
 {
-    public interface IOrderable : IWhereable
+    public interface IOrderWhereable : IWhereable
     {
        
     }
