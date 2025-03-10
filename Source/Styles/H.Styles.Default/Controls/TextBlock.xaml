@@ -1,7 +1,6 @@
-﻿<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:H.Styles.Default">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:H.Styles.Default">
     <!--<Style x:Key="{ComponentResourceKey ResourceId=.TextBlock.Icon.Segoe.Fluent, TypeInTargetAssembly={x:Type local:TextBlockIconKeys}}" TargetType="{x:Type TextBlock}">
         <Setter Property="FontFamily" Value="Segoe Fluent Icons" />
         <Setter Property="Text" Value="&#xE700;" />

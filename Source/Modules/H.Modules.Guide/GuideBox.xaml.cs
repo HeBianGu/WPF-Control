@@ -274,7 +274,7 @@ namespace H.Modules.Guide
             build = parent =>
              {
                  //var gt = Cattach.GetGuideTitle(parent.Element);
-                 IEnumerable<UIElement> children = items.Where(l => Cattach.GetGuideParentTitle(l) == Cattach.GetGuideTitle(parent.Element)?.ToString() && l.Visibility == Visibility.Visible);
+                 IEnumerable<UIElement> children = items.Where(l => Cattach.GetGuideParentTitle(l) != null && Cattach.GetGuideParentTitle(l) == Cattach.GetGuideTitle(parent.Element)?.ToString() && l.Visibility == Visibility.Visible && l.IsVisible && l.Opacity > 0);
 
                  foreach (UIElement child in children)
                  {
@@ -371,17 +371,35 @@ namespace H.Modules.Guide
                 return;
             if (this._guideTree.Current == null)
                 return;
-            Point point = this._guideTree.Current.Element.TranslatePoint(new Point(0, 0), element);
-            Rect rect = new Rect(point, this._guideTree.Current.Element.RenderSize);
+
+            var currentElement = this._guideTree.Current.Element;
+            Point point = currentElement.TranslatePoint(new Point(0, 0), element);
+            Rect rect = new Rect(point, currentElement.RenderSize);
             this._backgroundBorder.Clip = new CombinedGeometry(GeometryCombineMode.Exclude, new RectangleGeometry(new Rect(this._backgroundBorder.RenderSize)), new RectangleGeometry(rect));
             double thickness = this._currentBound.StrokeThickness;
             this._currentBound.Data = new RectangleGeometry(new Rect(new Point(point.X - (thickness * 0.5),
                 point.Y - (thickness * 0.5)),
-                new Size(this._guideTree.Current.Element.RenderSize.Width + (thickness * 1),
-                this._guideTree.Current.Element.RenderSize.Height + (thickness * 1))));
+                new Size(currentElement.RenderSize.Width + (thickness * 1),
+                currentElement.RenderSize.Height + (thickness * 1))));
 
-            object title = Cattach.GetGuideTitle(this._guideTree.Current.Element);
+            object title = Cattach.GetGuideTitle(currentElement);
+            //if (title == null)
+            //{
+            //    if (currentElement is TextBlock textBlock)
+            //        title = textBlock.Text;
+            //    if (currentElement is ContentControl contentControl)
+            //        title = contentControl.Content;
+            //    if (currentElement is HeaderedContentControl headeredContentControl)
+            //        title = headeredContentControl.Header;
+            //    if (currentElement is HeaderedItemsControl headeredItemsControl)
+            //        title = headeredItemsControl.Header;
+            //    if (title == null && currentElement is FrameworkElement framework)
+            //        title = framework.ToolTip;
+            //}
+
             Cattach.SetGuideTitle(this._contentControl, title);
+            string icon = Cattach.GetGuideIcon(currentElement);
+            Cattach.SetGuideIcon(this._contentControl, icon);
             this._contentControl.Content = Cattach.GetGuideData(this._guideTree.Current.Element);
             this._contentControl.ContentTemplate = Cattach.GetGuideDataTemplate(this._guideTree.Current.Element);
             this._contentControl.Measure(this.RenderSize);

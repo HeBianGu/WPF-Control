@@ -44,6 +44,7 @@
                                               FontSize="25"
                                               IsChecked="{Binding RelativeSource={RelativeSource AncestorType=Border}, Path=ContextMenu.IsOpen}"
                                               IsHitTestVisible="False"
+                                              ToolTip="{Binding Name}"
                                               UncheckedGlyph="{Binding Icon}" />
                     </Border>
                 </DataTemplate>

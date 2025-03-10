@@ -95,12 +95,9 @@ namespace H.Extensions.Attach
         public static void OnGuideDataChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             DependencyObject control = d;
-
             object n = e.NewValue;
-
             object o = e.OldValue;
         }
-
 
         public static DataTemplate GetGuideDataTemplate(DependencyObject obj)
         {
@@ -194,6 +191,51 @@ namespace H.Extensions.Attach
             bool n = (bool)e.NewValue;
 
             bool o = (bool)e.OldValue;
+        }
+
+
+        public static string GetGuideIcon(DependencyObject obj)
+        {
+            return (string)obj.GetValue(GuideIconProperty);
+        }
+
+        public static void SetGuideIcon(DependencyObject obj, string value)
+        {
+            obj.SetValue(GuideIconProperty, value);
+        }
+
+        public static readonly DependencyProperty GuideIconProperty =
+            DependencyProperty.RegisterAttached("GuideIcon", typeof(string), typeof(Cattach), new PropertyMetadata(default(string), OnGuideIconChanged));
+
+        static public void OnGuideIconChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            DependencyObject control = d as DependencyObject;
+
+            string n = (string)e.NewValue;
+
+            string o = (string)e.OldValue;
+        }
+
+
+        public static string GetAssemblyVersion(DependencyObject obj)
+        {
+            return (string)obj.GetValue(AssemblyVersionProperty);
+        }
+
+        public static void SetAssemblyVersion(DependencyObject obj, string value)
+        {
+            obj.SetValue(AssemblyVersionProperty, value);
+        }
+        public static readonly DependencyProperty AssemblyVersionProperty =
+            DependencyProperty.RegisterAttached("AssemblyVersion", typeof(string), typeof(Cattach), new PropertyMetadata(default(string), OnAssemblyVersionChanged));
+
+        static public void OnAssemblyVersionChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            DependencyObject control = d as DependencyObject;
+
+            string n = (string)e.NewValue;
+
+            string o = (string)e.OldValue;
         }
 
     }

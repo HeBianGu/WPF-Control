@@ -454,6 +454,11 @@
             <Trigger Property="Role" Value="TopLevelHeader">
                 <Setter Property="Template" Value="{StaticResource {x:Static MenuItem.TopLevelHeaderTemplateKey}}" />
                 <Setter Property="Grid.IsSharedSizeScope" Value="true" />
+                <!--  Guide  -->
+                <Setter Property="Cattach.UseGuide" Value="True" />
+                <Setter Property="Cattach.GuideTitle" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Header}" />
+                <Setter Property="Cattach.GuideData" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ToolTip}" />
+                <Setter Property="Cattach.GuideIcon" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Cattach.Icon)}" />
             </Trigger>
             <Trigger Property="Role" Value="TopLevelItem">
                 <Setter Property="Template" Value="{StaticResource {x:Static MenuItem.TopLevelItemTemplateKey}}" />

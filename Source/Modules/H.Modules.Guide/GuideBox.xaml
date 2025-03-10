@@ -135,6 +135,7 @@
                             <DockPanel DockPanel.Dock="Top">
                                 <Border Width="30"
                                         Height="30"
+                                        Margin="0,0,5,0"
                                         Background="{DynamicResource {x:Static h:BrushKeys.Orange}}"
                                         CornerRadius="15">
                                     <TextBlock HorizontalAlignment="Center"
@@ -144,7 +145,8 @@
                                                Foreground="White"
                                                Text="{Binding RelativeSource={RelativeSource AncestorType=local:GuideBox}, Path=CurrentIndex}" />
                                 </Border>
-
+                                <FontIconTextBlock Foreground="White"
+                                                   Text="{TemplateBinding h:Cattach.GuideIcon}" />
                                 <TextBlock Margin="5,0"
                                            VerticalAlignment="Center"
                                            DockPanel.Dock="Top"

@@ -1,12 +1,13 @@
-﻿<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:H.Styles.Default">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:H.Styles.Default">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style x:Key="{ComponentResourceKey ResourceId=S.GroupBox.Default, TypeInTargetAssembly={x:Type local:GroupBoxKeys}}" TargetType="GroupBox">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.GroupBox.Default,
+                                        TypeInTargetAssembly={x:Type local:GroupBoxKeys}}"
+           TargetType="GroupBox">
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Background">
             <Setter.Value>
@@ -35,6 +36,11 @@
         <Setter Property="Cattach.CaptionBorderThickness" Value="0" />
         <Setter Property="Cattach.CaptionFontSize" Value="{DynamicResource {x:Static FontSizeKeys.Default}}" />
         <Setter Property="Cattach.CaptionMargin" Value="3 0" />
+        <!--  Guide  -->
+        <Setter Property="Cattach.UseGuide" Value="True" />
+        <Setter Property="Cattach.GuideTitle" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Header}" />
+        <Setter Property="Cattach.GuideData" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ToolTip}" />
+        <Setter Property="Cattach.GuideIcon" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Cattach.Icon)}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="GroupBox">
@@ -43,22 +49,24 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
-                        <Border Grid.Row="0" Style="{StaticResource S.Border.Caption}">
+                        <Border Grid.Row="0"
+                                Style="{StaticResource S.Border.Caption}">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <ContentPresenter
-                                    Margin="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionMargin)}"
-                                    VerticalAlignment="Center"
-                                    ContentSource="Header"
-                                    RecognizesAccessKey="True"
-                                    TextElement.Foreground="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionForeground)}" />
-                                <Control Grid.Column="2" Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionRightTemplate)}" />
+                                <ContentPresenter Margin="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionMargin)}"
+                                                  VerticalAlignment="Center"
+                                                  ContentSource="Header"
+                                                  RecognizesAccessKey="True"
+                                                  TextElement.Foreground="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionForeground)}" />
+                                <Control Grid.Column="2"
+                                         Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionRightTemplate)}" />
                             </Grid>
                         </Border>
-                        <Border Grid.Row="1" Style="{StaticResource S.Border.TemplatedParent}">
+                        <Border Grid.Row="1"
+                                Style="{StaticResource S.Border.TemplatedParent}">
                             <ContentPresenter Style="{StaticResource S.ContentPresenter.TemplatedParent}" />
                         </Border>
                     </Grid>
@@ -66,5 +74,6 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style BasedOn="{StaticResource {x:Static local:GroupBoxKeys.Default}}" TargetType="GroupBox" />
+    <Style BasedOn="{StaticResource {x:Static local:GroupBoxKeys.Default}}"
+           TargetType="GroupBox" />
 </ResourceDictionary>

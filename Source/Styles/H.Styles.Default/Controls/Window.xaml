@@ -1,7 +1,6 @@
-﻿<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:H.Styles.Default">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:H.Styles.Default">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Share.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Controls/Button.xaml" />
@@ -35,19 +34,17 @@
         </Setter>
     </Style>-->
 
-    <WindowChrome
-        x:Key="{ComponentResourceKey ResourceId=S.Window.WindowChrome,
-                                     TypeInTargetAssembly={x:Type local:WindowKeys}}"
-        CaptionHeight="35"
-        GlassFrameThickness="0"
-        NonClientFrameEdges="None"
-        ResizeBorderThickness="8"
-        UseAeroCaptionButtons="False" />
-    <Style
-        x:Key="{ComponentResourceKey ResourceId=S.Window.Button,
-                                     TypeInTargetAssembly={x:Type local:WindowKeys}}"
-        BasedOn="{StaticResource {x:Static local:ButtonKeys.Geometry}}"
-        TargetType="Button">
+    <WindowChrome x:Key="{ComponentResourceKey ResourceId=S.Window.WindowChrome,
+                                               TypeInTargetAssembly={x:Type local:WindowKeys}}"
+                  CaptionHeight="35"
+                  GlassFrameThickness="0"
+                  NonClientFrameEdges="None"
+                  ResizeBorderThickness="8"
+                  UseAeroCaptionButtons="False" />
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Window.Button,
+                                        TypeInTargetAssembly={x:Type local:WindowKeys}}"
+           BasedOn="{StaticResource {x:Static local:ButtonKeys.Geometry}}"
+           TargetType="Button">
         <Setter Property="Width" Value="35" />
         <Setter Property="Height" Value="35" />
         <Setter Property="MaxHeight" Value="35" />
@@ -56,11 +53,10 @@
         <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.CaptionForeground}}" />
     </Style>
-    <Style
-        x:Key="{ComponentResourceKey ResourceId=S.Window.FontIconButton,
-                                     TypeInTargetAssembly={x:Type local:WindowKeys}}"
-        BasedOn="{StaticResource {x:Static local:FontIconButtonKeys.Default}}"
-        TargetType="{x:Type local:FontIconButton}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Window.FontIconButton,
+                                        TypeInTargetAssembly={x:Type local:WindowKeys}}"
+           BasedOn="{StaticResource {x:Static local:FontIconButtonKeys.Default}}"
+           TargetType="{x:Type local:FontIconButton}">
         <!--<Setter Property="Width" Value="35" />
         <Setter Property="Height" Value="35" />
         <Setter Property="MaxHeight" Value="35" />
@@ -104,37 +100,35 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Window}">
-                    <Border x:Name="PART_Border" Background="{TemplateBinding BorderBrush}">
+                    <Border x:Name="PART_Border"
+                            Background="{TemplateBinding BorderBrush}">
                         <Border Style="{StaticResource S.Border.TemplatedParent}">
                             <Grid x:Name="grid">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition />
                                 </Grid.RowDefinitions>
-                                <Border
-                                    Grid.Row="0"
-                                    Background="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionBackground)}"
-                                    TextElement.Foreground="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionForeground)}">
+                                <Border Grid.Row="0"
+                                        Background="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionBackground)}"
+                                        TextElement.Foreground="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionForeground)}">
                                     <Grid Height="35">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition />
                                             <ColumnDefinition />
                                         </Grid.ColumnDefinitions>
-                                        <StackPanel
-                                            Margin="5,0"
-                                            VerticalAlignment="Center"
-                                            Orientation="Horizontal">
-                                            <Button
-                                                Width="{x:Static SystemParameters.SmallIconWidth}"
-                                                Height="{x:Static SystemParameters.SmallIconHeight}"
-                                                Margin="7,0,5,0"
-                                                VerticalAlignment="Center"
-                                                Command="{x:Static SystemCommands.ShowSystemMenuCommand}"
-                                                Content="{TemplateBinding Icon}"
-                                                IsTabStop="False"
-                                                Style="{x:Null}"
-                                                Visibility="{Binding Icon, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={x:Static Converter.GetNullToCollapsed}}"
-                                                WindowChrome.IsHitTestVisibleInChrome="True">
+                                        <StackPanel Margin="5,0"
+                                                    VerticalAlignment="Center"
+                                                    Orientation="Horizontal">
+                                            <Button Width="{x:Static SystemParameters.SmallIconWidth}"
+                                                    Height="{x:Static SystemParameters.SmallIconHeight}"
+                                                    Margin="7,0,5,0"
+                                                    VerticalAlignment="Center"
+                                                    Command="{x:Static SystemCommands.ShowSystemMenuCommand}"
+                                                    Content="{TemplateBinding Icon}"
+                                                    IsTabStop="False"
+                                                    Style="{x:Null}"
+                                                    Visibility="{Binding Icon, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={x:Static Converter.GetNullToCollapsed}}"
+                                                    WindowChrome.IsHitTestVisibleInChrome="True">
                                                 <Button.Template>
                                                     <ControlTemplate TargetType="{x:Type Button}">
                                                         <Image Source="{TemplateBinding Content}" />
@@ -142,42 +136,36 @@
 
                                                 </Button.Template>
                                             </Button>
-                                            <TextBlock
-                                                Margin="5,0"
-                                                VerticalAlignment="Center"
-                                                Text="{TemplateBinding Title}" />
+                                            <TextBlock Margin="5,0"
+                                                       VerticalAlignment="Center"
+                                                       Text="{TemplateBinding Title}" />
                                         </StackPanel>
 
-                                        <StackPanel
-                                            Grid.Column="1"
-                                            HorizontalAlignment="Right"
-                                            Orientation="Horizontal">
-                                            <Button
-                                                x:Name="Btn_Minimize"
-                                                Command="{local:MinimizeWindowCommand}"
-                                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
-                                                Content="F1M3,8L13,8 13,7 3,7z"
-                                                Style="{DynamicResource {x:Static local:WindowKeys.Button}}" />
-                                            <Button
-                                                x:Name="Btn_Maximize"
-                                                Command="{local:MaximizeWindowCommand}"
-                                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
-                                                Content="F1M12,12L4,12 4,4 12,4z M3,13L13,13 13,3 3,3z"
-                                                Style="{DynamicResource {x:Static local:WindowKeys.Button}}"
-                                                ToolTip="最大化" />
-                                            <Button
-                                                x:Name="Btn_Restore"
-                                                Command="{local:RestoreWindowCommand}"
-                                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
-                                                Content="F1M11.999,10.002L10.998,10.002 10.998,5.002 5.998,5.002 5.998,4.001 11.999,4.001z M10.002,11.999L4.001,11.999 4.001,5.998 10.002,5.998z M5.002,3L5.002,5.002 3,5.002 3,13 10.998,13 10.998,10.998 13,10.998 13,3z"
-                                                Style="{DynamicResource {x:Static local:WindowKeys.Button}}"
-                                                ToolTip="还原" />
-                                            <Button
-                                                x:Name="Btn_Close"
-                                                Command="{local:CloseAfterSaveWindowCommand}"
-                                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
-                                                Content="F1M8.583,8L13,12.424 12.424,13 8,8.583 3.576,13 3,12.424 7.417,8 3,3.576 3.576,3 8,7.417 12.424,3 13,3.576z"
-                                                Style="{DynamicResource {x:Static local:WindowKeys.Button}}" />
+                                        <StackPanel Grid.Column="1"
+                                                    HorizontalAlignment="Right"
+                                                    Orientation="Horizontal">
+                                            <Button x:Name="Btn_Minimize"
+                                                    Command="{local:MinimizeWindowCommand}"
+                                                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                                    Content="F1M3,8L13,8 13,7 3,7z"
+                                                    Style="{DynamicResource {x:Static local:WindowKeys.Button}}" />
+                                            <Button x:Name="Btn_Maximize"
+                                                    Command="{local:MaximizeWindowCommand}"
+                                                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                                    Content="F1M12,12L4,12 4,4 12,4z M3,13L13,13 13,3 3,3z"
+                                                    Style="{DynamicResource {x:Static local:WindowKeys.Button}}"
+                                                    ToolTip="最大化" />
+                                            <Button x:Name="Btn_Restore"
+                                                    Command="{local:RestoreWindowCommand}"
+                                                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                                    Content="F1M11.999,10.002L10.998,10.002 10.998,5.002 5.998,5.002 5.998,4.001 11.999,4.001z M10.002,11.999L4.001,11.999 4.001,5.998 10.002,5.998z M5.002,3L5.002,5.002 3,5.002 3,13 10.998,13 10.998,10.998 13,10.998 13,3z"
+                                                    Style="{DynamicResource {x:Static local:WindowKeys.Button}}"
+                                                    ToolTip="还原" />
+                                            <Button x:Name="Btn_Close"
+                                                    Command="{local:CloseAfterSaveWindowCommand}"
+                                                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                                    Content="F1M8.583,8L13,12.424 12.424,13 8,8.583 3.576,13 3,12.424 7.417,8 3,3.576 3.576,3 8,7.417 12.424,3 13,3.576z"
+                                                    Style="{DynamicResource {x:Static local:WindowKeys.Button}}" />
                                         </StackPanel>
                                     </Grid>
                                 </Border>
@@ -186,24 +174,23 @@
                                     <ContentPresenter />
                                 </AdornerDecorator>
 
-                                <Border
-                                    Grid.RowSpan="3"
-                                    IsHitTestVisible="False"
-                                    Opacity="{Binding Source={x:Static local:WindowSetting.Instance}, Path=Opacity}"
-                                    Visibility="{Binding Source={x:Static local:WindowSetting.Instance}, Path=UseBackImage, Converter={x:Static Converter.GetTrueToVisible}}">
+                                <Border Grid.RowSpan="3"
+                                        IsHitTestVisible="False"
+                                        Opacity="{Binding Source={x:Static local:WindowSetting.Instance}, Path=Opacity}"
+                                        Visibility="{Binding Source={x:Static local:WindowSetting.Instance}, Path=UseBackImage, Converter={x:Static Converter.GetTrueToVisible}}">
                                     <Border.Background>
-                                        <ImageBrush ImageSource="{Binding Source={x:Static local:WindowSetting.Instance}, Path=BackImagePath}" Stretch="{Binding Source={x:Static local:WindowSetting.Instance}, Path=Stretch}" />
+                                        <ImageBrush ImageSource="{Binding Source={x:Static local:WindowSetting.Instance}, Path=BackImagePath}"
+                                                    Stretch="{Binding Source={x:Static local:WindowSetting.Instance}, Path=Stretch}" />
                                     </Border.Background>
                                 </Border>
 
-                                <ResizeGrip
-                                    x:Name="WindowResizeGrip"
-                                    Grid.Row="1"
-                                    HorizontalAlignment="Right"
-                                    VerticalAlignment="Bottom"
-                                    IsTabStop="false"
-                                    Visibility="Collapsed"
-                                    WindowChrome.ResizeGripDirection="BottomRight" />
+                                <ResizeGrip x:Name="WindowResizeGrip"
+                                            Grid.Row="1"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Bottom"
+                                            IsTabStop="false"
+                                            Visibility="Collapsed"
+                                            WindowChrome.ResizeGripDirection="BottomRight" />
                             </Grid>
                         </Border>
                     </Border>
