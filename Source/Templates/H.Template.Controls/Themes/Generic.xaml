@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:lb="clr-namespace:H.Template.Controls.Base"
+                    xmlns:lc="clr-namespace:H.Template.Controls.Commands"
+                    xmlns:local="clr-namespace:H.Template.Controls"
+                    xmlns:lp="clr-namespace:H.Template.Controls.Presenters"
+                    xmlns:lsp="clr-namespace:H.Template.Controls.ServicePresenters">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/H.Template.Controls;component/Controls/MyControl.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Template.Controls;component/Presenters/MyPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Template.Controls;component/ServicePresenters/MyPresenter.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>
