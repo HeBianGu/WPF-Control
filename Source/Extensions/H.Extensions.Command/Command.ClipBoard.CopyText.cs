@@ -2,11 +2,15 @@
 
 
 using H.Mvvm;
+using H.Mvvm.Attributes;
+using System.ComponentModel.DataAnnotations;
 using System.Windows;
 
 namespace H.Extensions.Command
 {
-    public class ClipBoardCopyTextCommand : MarkupCommandBase
+    [Icon("\xE77F")]
+    [Display(Name = "复制", Description = "复制文本到剪贴板")]
+    public class ClipBoardCopyTextCommand : DisplayMarkupCommandBase
     {
         public override bool CanExecute(object parameter)
         {

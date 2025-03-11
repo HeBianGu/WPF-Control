@@ -1,7 +1,9 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 global using H.Services.Common;
+using H.Mvvm.Attributes;
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -9,6 +11,8 @@ using System.Windows;
 
 namespace H.Styles.Default
 {
+    [Icon("\xE7E8")]
+    [Display(Name = "关闭并保存", Description = "关闭应用程序并保存应用数据")]
     public class CloseAfterSaveWindowCommand : CloseWindowCommand
     {
         public bool UseSave { get; set; } = true;

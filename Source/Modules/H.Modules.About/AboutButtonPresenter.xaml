@@ -1,19 +1,19 @@
-﻿<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:h="https://github.com/HeBianGu"
-    xmlns:local="clr-namespace:H.Modules.About">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Modules.About">
     <DataTemplate DataType="{x:Type local:AboutButtonPresenter}">
-        <FontIconButton
-            Command="{ShowIocDialogCommand Type={x:Type IAboutViewPresenter}}"
-            Content="{x:Static FontIcons.Info}"
-            Style="{DynamicResource {x:Static WindowKeys.FontIconButton}}"
-            ToolTip="关于" />
+        <FontIconButton Command="{ShowIocCommand Type={x:Type IAboutViewPresenter}}"
+                        Content="{x:Static FontIcons.Info}"
+                        Style="{DynamicResource {x:Static WindowKeys.FontIconButton}}"
+                        ToolTip="关于" />
         <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding IsVisible}" Value="False">
+            <DataTrigger Binding="{Binding IsVisible}"
+                         Value="False">
                 <Setter Property="Visibility" Value="Collapsed" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding IsAuthority}" Value="False">
+            <DataTrigger Binding="{Binding IsAuthority}"
+                         Value="False">
                 <Setter Property="Visibility" Value="Collapsed" />
             </DataTrigger>
         </DataTemplate.Triggers>

@@ -9,14 +9,17 @@ using System.Threading.Tasks;
 using H.Controls.Form;
 using H.Presenters.Common;
 using System;
+using System.ComponentModel.DataAnnotations;
+using H.Mvvm.Attributes;
 
 namespace H.Modules.Setting
 {
-    public class ShowSettingCommand : AsyncMarkupCommandBase
+    [Icon("\xE713")]
+    [Display(Name = "设置", Description = "显示系统设置页面")]
+    public class ShowSettingCommand : ShowDialogCommandBase
     {
         private int _count = 0;
         private bool _successed;
-
         public Type SwitchToType { get; set; }
         public override async Task ExecuteAsync(object parameter)
         {
@@ -58,6 +61,7 @@ namespace H.Modules.Setting
                 setting.SwitchTo(parameter.GetType());
             bool? r = await IocMessage.Dialog.Show(setting, x =>
             {
+                this.Invoke(x);
                 x.Width = SettingViewOption.Instance.Width;
                 x.Height = SettingViewOption.Instance.Height;
                 x.Margin = SettingViewOption.Instance.Margin;

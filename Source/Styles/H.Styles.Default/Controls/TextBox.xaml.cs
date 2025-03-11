@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using H.Mvvm;
+using H.Mvvm.Attributes;
+using System.ComponentModel.DataAnnotations;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 
@@ -14,7 +17,9 @@ namespace H.Styles.Default
 
     }
 
-    public class DeleteTextTextBoxCommand : IocMarkupCommandBase
+    [Icon("\xE77F")]
+    [Display(Name = "删除", Description = "清空文本框文本")]
+    public class DeleteTextTextBoxCommand : DisplayMarkupCommandBase
     {
         public override void Execute(object parameter)
         {

@@ -2,11 +2,15 @@
 
 
 using H.Mvvm;
+using H.Mvvm.Attributes;
+using System.ComponentModel.DataAnnotations;
 using System.Windows.Controls;
 
 namespace H.Extensions.Command
 {
-    public class ScrollViewerScrollToEndCommand : MarkupCommandBase
+    [Icon("\xE77F")]
+    [Display(Name = "滚动右侧", Description = "将当前滚动条滚动到最右侧")]
+    public class ScrollViewerScrollToEndCommand : DisplayMarkupCommandBase
     {
         public override bool CanExecute(object parameter)
         {

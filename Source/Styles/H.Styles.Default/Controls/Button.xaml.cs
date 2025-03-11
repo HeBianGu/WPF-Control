@@ -10,6 +10,8 @@ namespace H.Styles.Default
         public static ComponentResourceKey Success => new ComponentResourceKey(typeof(ButtonKeys), "S.Button.Success");
         public static ComponentResourceKey Error => new ComponentResourceKey(typeof(ButtonKeys), "S.Button.Error");
 
+        public static ComponentResourceKey Command => new ComponentResourceKey(typeof(ButtonKeys), "S.Button.Command");
+
         public static ComponentResourceKey Geometry => new ComponentResourceKey(typeof(ButtonKeys), "S.Button.Geometry");
         public static ComponentResourceKey Icon => new ComponentResourceKey(typeof(ButtonKeys), "S.Button.Icon");
 

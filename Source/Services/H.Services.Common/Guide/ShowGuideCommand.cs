@@ -1,20 +1,21 @@
-﻿namespace H.Services.Common
-{
-    public class ShowGuideCommand : IocMarkupCommandBase
-    {
-        public override void Execute(object parameter)
-        {
-            Ioc<IGuideService>.Instance.Show();
-        }
-    }
+﻿using H.Mvvm;
+using H.Mvvm.Attributes;
+using System.ComponentModel.DataAnnotations;
 
-    public class ShowNewGuideCommand : IocMarkupCommandBase
+namespace H.Services.Common
+{
+    [Icon("\xE963")]
+    [Display(Name = "新手向导", Description = "显示新手向导")]
+    public class ShowGuideCommand : DisplayMarkupCommandBase
     {
-        public override void Execute(object parameter)
+        public ShowGuideCommand()
         {
-            var sss= Assembly.GetEntryAssembly().GetName().Version.ToString();
-            var version = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyVersionAttribute>()?.Version;
-            Ioc<IGuideService>.Instance.Show(sss);
+            this.Icon = "\xE963";
+        }
+
+        public override async Task ExecuteAsync(object parameter)
+        {
+            await Ioc<IGuideService>.Instance.Show();
         }
     }
 

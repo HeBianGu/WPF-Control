@@ -1,10 +1,14 @@
 ﻿using H.Mvvm;
+using H.Mvvm.Attributes;
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
 namespace H.Controls.FavoriteBox
 {
-    public class DeleteFavoriteCommand : MarkupCommandBase
+    [Icon("\xE713")]
+    [Display(Name = "删除", Description = "删除收藏")]
+    public class DeleteFavoriteCommand : DisplayMarkupCommandBase
     {
         public override void Execute(object parameter)
         {

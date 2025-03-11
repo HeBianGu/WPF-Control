@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace H.Extensions.Command
 {
 
-    public class AsyncMessageCommand : AsyncMarkupCommandBase
+    public class AsyncMessageCommand : DisplayMarkupCommandBase
     {
         public string Format { get; set; } = "正在加载数据第{0}/100条";
         private string _message;

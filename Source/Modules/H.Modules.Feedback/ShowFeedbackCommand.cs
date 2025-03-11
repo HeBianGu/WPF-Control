@@ -1,12 +1,17 @@
-﻿using H.Services.Common;
+﻿using H.Mvvm;
+using H.Mvvm.Attributes;
+using H.Services.Common;
 using H.Services.Mail;
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace H.Modules.Feedback
 {
-    public class ShowFeedbackCommand : IocAsyncMarkupCommandBase
+    [Icon("\xED15")]
+    [Display(Name = "用户反馈", Description = "显示用户反馈页面")]
+    public class ShowFeedbackCommand : DisplayMarkupCommandBase
     {
         public override async Task ExecuteAsync(object parameter)
         {

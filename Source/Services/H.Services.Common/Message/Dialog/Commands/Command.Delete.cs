@@ -1,8 +1,13 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
+using H.Mvvm.Attributes;
+using System.ComponentModel.DataAnnotations;
+
 namespace H.Services.Common
 {
-    public class DeleteCommand : IocMarkupCommandBase
+    [Icon("\xE77F")]
+    [Display(Name = "删除", Description = "从列表中删除当前项目")]
+    public class DeleteCommand : DisplayMarkupCommandBase
     {
         public override void Execute(object parameter)
         {

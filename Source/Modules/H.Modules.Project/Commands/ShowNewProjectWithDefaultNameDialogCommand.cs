@@ -1,12 +1,19 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+using H.Mvvm.Attributes;
 using System.Threading.Tasks;
 
 namespace H.Modules.Project.Commands;
 
-public class ShowNewProjectWithDefaultNameDialogCommand : IocAsyncMarkupCommandBase
-{
-    public override async Task ExecuteAsync(object parameter)
-    {
-        await IocProject.Instance?.ShowNewProjectDialog(ProjectOptions.Instance.DefaultProjectName);
-    }
-}
+//[Icon("\xE77F")]
+//[Display(Name = "保存项目列表", Description = "保存项目列表到项目配置文件中")]
+//public class ShowNewProjectWithDefaultNameCommand : DisplayMarkupCommandBase
+//{
+//    public override async Task ExecuteAsync(object parameter)
+//    {
+//        await IocProject.Instance?.ShowNewProject(x =>
+//        {
+//            x.Title = this.Name;
+//            x.Icon = this.Icon;
+//        }, ProjectOptions.Instance.DefaultProjectName);
+//    }
+//}

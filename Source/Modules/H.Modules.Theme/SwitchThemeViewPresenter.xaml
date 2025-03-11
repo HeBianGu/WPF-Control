@@ -1,16 +1,14 @@
-﻿<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
-    xmlns:local="clr-namespace:H.Modules.Theme">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+                    xmlns:local="clr-namespace:H.Modules.Theme">
     <DataTemplate DataType="{x:Type local:SwitchThemeViewPresenter}">
-        <FontIconToggleButton
-            CheckedGlyph="&#xE706;"
-            IsChecked="{Binding Source={x:Static local:SwitchThemeOptions.Instance}, Path=IsDark}"
-            Style="{DynamicResource {x:Static FontIconToggleButtonKeys.Switch}}"
-            ToolTip="切换明/暗主题"
-            UncheckedGlyph="&#xE708;"
-            WindowChrome.IsHitTestVisibleInChrome="True">
+        <FontIconToggleButton CheckedGlyph="&#xE706;"
+                              IsChecked="{Binding Source={x:Static local:SwitchThemeOptions.Instance}, Path=IsDark}"
+                              Style="{DynamicResource {x:Static FontIconToggleButtonKeys.Switch}}"
+                              ToolTip="切换明/暗主题"
+                              UncheckedGlyph="&#xE708;"
+                              WindowChrome.IsHitTestVisibleInChrome="True">
             <!--
                 Command="{Binding SwitchCommand}"
                 CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=IsChecked}"

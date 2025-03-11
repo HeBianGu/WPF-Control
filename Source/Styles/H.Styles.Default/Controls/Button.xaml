@@ -5,23 +5,6 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <!--  FocusVisual  -->
-
-    <Style x:Key="ButtonFocusVisual">
-        <Setter Property="Control.Template">
-            <Setter.Value>
-                <ControlTemplate>
-                    <Border>
-                        <Rectangle Margin="2"
-                                   Stroke="#60000000"
-                                   StrokeDashArray="1 2"
-                                   StrokeThickness="1" />
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
     <!--  Button  -->
     <Style x:Key="{ComponentResourceKey ResourceId=S.Button.Default,
                                         TypeInTargetAssembly={x:Type local:ButtonKeys}}"
@@ -30,7 +13,24 @@
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="Cursor" Value="Hand" />
         <!--<Setter Property="OverridesDefaultStyle" Value="true" />-->
-        <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}" />
+        <Setter Property="FocusVisualStyle">
+            <Setter.Value>
+                <Style>
+                    <Setter Property="Control.Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <Border>
+                                    <Rectangle Margin="2"
+                                               Stroke="#60000000"
+                                               StrokeDashArray="1 2"
+                                               StrokeThickness="1" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Setter.Value>
+        </Setter>
         <Setter Property="Padding" Value="5,0" />
         <Setter Property="Margin" Value="0" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.CaptionForeground}}" />
@@ -79,6 +79,14 @@
                 </Setter>
             </Trigger>
         </Style.Triggers>
+    </Style>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Button.Command,
+                                        TypeInTargetAssembly={x:Type local:ButtonKeys}}"
+           BasedOn="{StaticResource {x:Static local:ButtonKeys.Default}}"
+           TargetType="Button">
+        <Setter Property="Content" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Command.Name}" />
+        <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Command.Description}" />
     </Style>
 
     <Style x:Key="{ComponentResourceKey ResourceId=S.Button.Accent,

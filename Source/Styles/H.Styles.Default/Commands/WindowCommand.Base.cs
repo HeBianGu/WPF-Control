@@ -9,7 +9,7 @@ using System.Windows.Markup;
 
 namespace H.Styles.Default
 {
-    public abstract class WindowCommandBase : AsyncMarkupCommandBase, ICommand
+    public abstract class WindowCommandBase : DisplayMarkupCommandBase, ICommand
     {
         public override bool CanExecute(object parameter)
         {

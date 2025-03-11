@@ -12,7 +12,7 @@
     <UniformGrid>
         <Button Click="Button_Click"
                 Content="测试" />
-        <Button Command="{ShowIocDialogCommand Type={x:Type IAboutViewPresenter}}"
+        <Button Command="{ShowIocCommand Type={x:Type IAboutViewPresenter}}"
                 Content="关于" />
     </UniformGrid>
 </Window>

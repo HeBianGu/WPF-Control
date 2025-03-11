@@ -1,10 +1,14 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
+using H.Mvvm.Attributes;
 using Microsoft.Extensions.DependencyInjection;
+using System.ComponentModel.DataAnnotations;
 
 namespace H.Services.Common
 {
-    public class IocSaveAllCommand : IocAsyncMarkupCommandBase
+    [Icon("\xE74E")]
+    [Display(Name = "保存所有配置", Description = "保存应用中所有需要保存的数据")]
+    public class IocSaveAllCommand : DisplayMarkupCommandBase
     {
         public override async Task ExecuteAsync(object parameter)
         {

@@ -213,8 +213,8 @@ namespace H.Styles.Default
 
         public static IApplicationBuilder UseWindowSetting(this IApplicationBuilder builder, Action<WindowSetting> option = null)
         {
-            SettingDataManager.Instance.Add(WindowSetting.Instance);
             option?.Invoke(WindowSetting.Instance);
+            SettingDataManager.Instance.Add(WindowSetting.Instance);
             return builder;
         }
     }

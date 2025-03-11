@@ -2,15 +2,16 @@
 
 namespace H.Services.Common
 {
-    public abstract class MessageCommandBase : IocAsyncMarkupCommandBase, ICommand
+    public abstract class ShowDialogCommandBase : DisplayMarkupCommandBase
     {
+        [Obsolete(nameof(Name))]
         public string Title { get; set; }
-        public double Width { get; set; } = 500;
-        public double Height { get; set; } = 300;
+        public double Width { get; set; }
+        public double Height { get; set; }
         public DialogButton DialogButton { get; set; }
         public ITransitionable Transitionable { get; set; }
 
-        protected virtual void Build(IDialog w)
+        protected virtual void Invoke(IDialog w)
         {
             if (w is Control c)
             {
@@ -18,6 +19,8 @@ namespace H.Services.Common
                 c.Height = this.Height;
             }
             w.Transitionable = this.Transitionable;
+            w.Title = this.Name;
+            w.Icon = this.Icon;
         }
     }
 }

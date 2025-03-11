@@ -1,8 +1,11 @@
 ﻿using H.Mvvm;
+using System.ComponentModel.DataAnnotations;
 
 namespace H.Modules.Messages.Dialog
 {
-    public class CancelAdornerDialogCommand : MarkupCommandBase
+    [Icon("\xE77F")]
+    [Display(Name = "取消", Description = "取消并关闭对话框页面")]
+    public class CancelAdornerDialogCommand : DisplayMarkupCommandBase
     {
         public override void Execute(object parameter)
         {

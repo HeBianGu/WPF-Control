@@ -1,10 +1,14 @@
 ﻿using H.Services.Common;
 using H.Mvvm;
 using System;
+using H.Mvvm.Attributes;
+using System.ComponentModel.DataAnnotations;
 
 namespace H.Extensions.Mail
 {
-    public class SendMainCommand : MarkupCommandBase
+    [Icon("\xE77F")]
+    [Display(Name = "发送邮件", Description = "将当前数据发送邮件")]
+    public class SendMailCommand : DisplayMarkupCommandBase
     {
         public override void Execute(object parameter)
         {

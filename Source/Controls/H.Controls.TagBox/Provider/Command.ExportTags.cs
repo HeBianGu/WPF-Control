@@ -3,10 +3,14 @@ using H.Services.Common;
 using H.Mvvm;
 using System;
 using System.Linq;
+using H.Mvvm.Attributes;
+using System.ComponentModel.DataAnnotations;
 
 namespace H.Controls.TagBox
 {
-    public class ExportTagsCommand : MarkupCommandBase
+    [Icon("\xE713")]
+    [Display(Name = "导出标签", Description = "显示导出标签数据页面")]
+    public class ExportTagsCommand : DisplayMarkupCommandBase
     {
         public override async void Execute(object parameter)
         {

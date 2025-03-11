@@ -2,12 +2,16 @@
 
 
 using H.Mvvm;
+using H.Mvvm.Attributes;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.IO;
 
 namespace H.Extensions.Command
 {
-    public class ProcessCommand : MarkupCommandBase
+    [Icon("\xE77F")]
+    [Display(Name = "运行进程", Description = "应用系统进程运行当前内容")]
+    public class ProcessCommand : DisplayMarkupCommandBase
     {
         public override bool CanExecute(object parameter)
         {

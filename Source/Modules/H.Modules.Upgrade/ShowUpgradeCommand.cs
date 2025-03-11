@@ -5,21 +5,25 @@
 using H.Services.Common;
 using H.Mvvm;
 using System;
+using H.Mvvm.Attributes;
+using System.ComponentModel.DataAnnotations;
+using System.Threading.Tasks;
 
 namespace H.Modules.Upgrade
 {
-    public class ShowUpgradeCommand : MarkupCommandBase
+    [Icon("\xECC5")]
+    [Display(Name = "软件更新", Description = "应用此功能检查软件更新")]
+    public class ShowUpgradeCommand : DisplayMarkupCommandBase
     {
         private IUpgradeService Service => Ioc<IUpgradeService>.Instance;
         public override bool CanExecute(object parameter)
         {
-            return this.Service != null;
+            return this.Service != null && base.CanExecute(parameter);
         }
-
-        public override void Execute(object parameter)
+        public override async Task ExecuteAsync(object parameter)
         {
             if (this.Service.Upgrade(out string message) == false)
-                IocMessage.ShowDialogMessage(message);
+                await IocMessage.ShowDialogMessage(message);
         }
     }
 }

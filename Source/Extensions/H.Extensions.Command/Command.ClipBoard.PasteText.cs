@@ -2,13 +2,16 @@
 
 
 using H.Mvvm;
+using H.Mvvm.Attributes;
+using System.ComponentModel.DataAnnotations;
 using System.Windows;
 using System.Windows.Controls;
 
 namespace H.Extensions.Command
 {
-
-    public class ClipBoardPasteTextCommand : MarkupCommandBase
+    [Icon("\xE77F")]
+    [Display(Name = "粘贴", Description = "从剪贴板粘贴数据")]
+    public class ClipBoardPasteTextCommand : DisplayMarkupCommandBase
     {
         public override bool CanExecute(object parameter)
         {

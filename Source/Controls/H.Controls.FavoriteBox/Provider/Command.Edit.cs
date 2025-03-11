@@ -2,9 +2,13 @@
 using H.Mvvm;
 using System;
 using System.IO;
+using H.Mvvm.Attributes;
+using System.ComponentModel.DataAnnotations;
 namespace H.Controls.FavoriteBox
 {
-    public class EditFavoriteCommand : MarkupCommandBase
+    [Icon("\xE713")]
+    [Display(Name = "编辑", Description = "显示编辑收藏夹页面")]
+    public class EditFavoriteCommand : DisplayMarkupCommandBase
     {
         public override async void Execute(object parameter)
         {

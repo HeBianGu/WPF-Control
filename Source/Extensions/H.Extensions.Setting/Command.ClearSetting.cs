@@ -5,10 +5,14 @@ using H.Mvvm;
 using System.Windows;
 using System;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using H.Mvvm.Attributes;
 
 namespace H.Extensions.Setting
 {
-    public class ClearSettingDataCommand : AsyncMarkupCommandBase
+    [Icon("\xE77F")]
+    [Display(Name = "清理", Description = "清空所有配置数据，重启后数据恢复默认数据")]
+    public class ClearSettingDataCommand : DisplayMarkupCommandBase
     {
         public override async Task ExecuteAsync(object parameter)
         {
@@ -20,7 +24,7 @@ namespace H.Extensions.Setting
             if (r == false)
                 return;
 
-            r = await IocMessage.ShowDialogMessage("重启已生效，是否立即关闭？");
+            r = await IocMessage.ShowDialogMessage("重启后生效，是否立即关闭？");
             if (r == false)
                 return;
             Application.Current.Shutdown();

@@ -27,7 +27,7 @@ namespace H.Controls.Step
             await IocMessage.Dialog.ShowAction(presenter, x =>
              {
                  x.DialogButton = DialogButton.None;
-                 this.Build(x);
+                 this.Invoke(x);
              }, (d, p) =>
              {
                  foreach (var item in p.Collection)

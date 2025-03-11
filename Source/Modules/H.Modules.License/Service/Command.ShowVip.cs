@@ -2,12 +2,17 @@
 
 
 
+using H.Mvvm;
+using H.Mvvm.Attributes;
 using H.Services.Common;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace H.Modules.License
 {
-    public class ShowVipCommand : IocAsyncMarkupCommandBase
+    [Icon("\xE713")]
+    [Display(Name = "会员", Description = "显示会员页面")]
+    public class ShowVipCommand : DisplayMarkupCommandBase
     {
         public override bool CanExecute(object parameter)
         {

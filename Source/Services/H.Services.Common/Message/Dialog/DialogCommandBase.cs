@@ -5,7 +5,7 @@ using System.Reflection.Metadata;
 
 namespace H.Services.Common
 {
-    public abstract class DialogCommandBase : IocAsyncMarkupCommandBase
+    public abstract class DialogCommandBase : AsyncMarkupCommandBase
     {
         protected virtual IDialog GetDialog(object parameter)
         {

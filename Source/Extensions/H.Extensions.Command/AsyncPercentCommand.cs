@@ -2,12 +2,16 @@
 
 
 using H.Mvvm;
+using H.Mvvm.Attributes;
+using System.ComponentModel.DataAnnotations;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace H.Extensions.Command
 {
-    public class AsyncPercentCommand : AsyncMarkupCommandBase
+    [Icon("\xE713")]
+    [Display(Name = "异步百分比", Description = "异步执行任务，更新百分比")]
+    public class AsyncPercentCommand : DisplayMarkupCommandBase
     {
         private double _value;
         public double Value

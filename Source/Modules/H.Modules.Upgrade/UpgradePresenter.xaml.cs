@@ -14,10 +14,11 @@ using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using H.Mvvm.ViewModels.Base;
-
+using H.Mvvm.Attributes;
 
 namespace H.Modules.Upgrade
 {
+    [Icon("\xECC5")]
     [Display(Name = "软件更新", GroupName = SettingGroupNames.GroupSystem, Description = "应用此功能检查软件更新")]
     internal class UpgradePresenter : BindableBase
     {

@@ -20,7 +20,7 @@ namespace H.Services.Common
                 }
                 return true;
             };
-            await IocMessage.Dialog.ShowPercent(func, x => this.Build(x));
+            await IocMessage.Dialog.ShowPercent(func, x => this.Invoke(x));
         }
     }
 }

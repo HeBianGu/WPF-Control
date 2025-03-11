@@ -2,12 +2,17 @@
 
 
 
+using H.Mvvm;
+using H.Mvvm.Attributes;
 using H.Services.Common;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace H.Modules.License
 {
-    public class ShowLicenseCommand : IocAsyncMarkupCommandBase
+    [Icon("\xE72E")]
+    [Display(Name = "许可证书", Description = "显示产品许可注册页面")]
+    public class ShowLicenseCommand : DisplayMarkupCommandBase
     {
         public override bool CanExecute(object parameter)
         {

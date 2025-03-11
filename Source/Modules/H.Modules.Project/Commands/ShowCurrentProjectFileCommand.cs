@@ -2,9 +2,12 @@
 global using H.Mvvm;
 global using H.Services.Common;
 global using System.Diagnostics;
+using H.Mvvm.Attributes;
 namespace H.Modules.Project.Commands;
 
-public class ShowCurrentProjectFileCommand : MarkupCommandBase
+[Icon("\xE8E5")]
+[Display(Name = "打开项目文件", Description = "用记事本打开当前项目的配置文件数据")]
+public class ShowCurrentProjectFileCommand : ShowProjectCommandBase
 {
     public override void Execute(object parameter)
     {

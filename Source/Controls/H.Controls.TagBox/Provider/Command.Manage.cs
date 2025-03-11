@@ -2,10 +2,14 @@
 using H.Mvvm;
 using System;
 using System.Linq;
+using H.Mvvm.Attributes;
+using System.ComponentModel.DataAnnotations;
 
 namespace H.Controls.TagBox
 {
-    public class ManageTagCommand : MarkupCommandBase
+    [Icon("\xE713")]
+    [Display(Name = "管理标签", Description = "显示管理标签页面")]
+    public class ManageTagCommand : DisplayMarkupCommandBase
     {
         public override async void Execute(object parameter)
         {

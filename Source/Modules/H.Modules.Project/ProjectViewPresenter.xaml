@@ -14,7 +14,7 @@
                        h:Cattach.GuideData="当前选中的工程"
                        h:Cattach.GuideTitle="当前工程"
                        h:Cattach.UseGuide="True">
-                <Hyperlink Command="{lm:ShowProjectsOrNewDialogCommand}">
+                <Hyperlink Command="{lm:ShowProjectsOrNewCommand}">
                     <Run Text="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Title, FallbackValue=选择工程}" />
                 </Hyperlink>
             </TextBlock>
@@ -24,12 +24,12 @@
                     h:Cattach.GuideData="点击此按钮新建工程"
                     h:Cattach.GuideTitle="新建工程"
                     h:Cattach.UseGuide="True"
-                    Command="{ShowNewProjectDialogCommand}"
+                    Command="{ShowNewProjectCommand}"
                     Content="新建工程" />
             <Button h:Cattach.GuideData="点击此按钮浏览工程列表，切换工程"
                     h:Cattach.GuideTitle="工程列表"
                     h:Cattach.UseGuide="True"
-                    Command="{lm:ShowProjectsDialogCommand}"
+                    Command="{lm:ShowProjectsCommand}"
                     Content="工程列表" />
         </StackPanel>
         <DataTemplate.Triggers>

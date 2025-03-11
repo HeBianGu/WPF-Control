@@ -8,7 +8,7 @@ namespace H.Modules.Project;
 
 public static class ProjectExtension
 {
-    public static async Task<bool?> ShowProjectsDialog(this IProjectService projectService)
+    public static async Task<bool?> ShowProjectsDialog(this IProjectService projectService, Action<IDialog> action = null)
     {
         ProjectListViewPresenter project = new ProjectListViewPresenter();
         project.SelectedItem = projectService.Current;
@@ -19,7 +19,8 @@ public static class ProjectExtension
             x.MinHeight = 400;
             x.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Stretch;
             x.VerticalContentAlignment = System.Windows.VerticalAlignment.Stretch;
-            x.Padding = new System.Windows.Thickness(0,5,0,5);
+            x.Padding = new System.Windows.Thickness(0, 5, 0, 5);
+            action?.Invoke(x);
         });
         if (project.SelectedItem == null)
             return false;
@@ -30,6 +31,6 @@ public static class ProjectExtension
 
     public static async Task<bool?> ShowProjectsOrNewDialog(this IProjectService projectService)
     {
-        return projectService.Current == null ? await projectService.ShowNewProjectDialog() : await projectService.ShowProjectsDialog();
+        return projectService.Current == null ? await projectService.ShowNewProject() : await projectService.ShowProjectsDialog();
     }
 }

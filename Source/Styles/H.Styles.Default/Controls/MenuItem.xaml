@@ -478,13 +478,14 @@
     </Style>
 
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.MenuItem.BindingDisplayable,
+    <Style x:Key="{ComponentResourceKey ResourceId=S.MenuItem.BindCommand,
                                         TypeInTargetAssembly={x:Type local:MenuItemKeys}}"
            BasedOn="{StaticResource {x:Static MenuItemKeys.Default}}"
            TargetType="MenuItem">
-        <Setter Property="Header" Value="{Binding Name}" />
         <Setter Property="Command" Value="{Binding}" />
-        <Setter Property="Cattach.Icon" Value="{Binding Icon}" />
+        <Setter Property="Cattach.Icon" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Command.Icon}" />
+        <Setter Property="Header" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Command.Name}" />
+        <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Command.Description}" />
     </Style>
     <Style BasedOn="{StaticResource {x:Static local:MenuItemKeys.Default}}"
            TargetType="MenuItem" />

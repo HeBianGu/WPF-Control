@@ -1,11 +1,14 @@
 ﻿using H.Controls.Adorner;
 using H.Mvvm;
+using System.ComponentModel.DataAnnotations;
 using System.Windows;
 using System.Windows.Documents;
 
 namespace H.Modules.Messages.Dialog
 {
-    public class ShowAdornerDialogCommand : MarkupCommandBase
+    [Icon("\xE77F")]
+    [Display(Name = "显示", Description = "显示对话框页面")]
+    public class ShowAdornerDialogCommand : DisplayMarkupCommandBase
     {
         public override void Execute(object parameter)
         {

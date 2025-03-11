@@ -21,9 +21,11 @@ namespace System
         /// 配置
         /// </summary>
         /// <param name="service"></param>
+        [Obsolete]
         public static void UseAbout(this IApplicationBuilder service, Action<IAboutViewPresenterOption> action = null)
         {
             action?.Invoke(AboutViewPresenter.Instance);
+
         }
     }
 }

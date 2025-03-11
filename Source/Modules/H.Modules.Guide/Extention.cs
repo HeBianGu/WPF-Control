@@ -2,6 +2,7 @@
 
 using H.Modules.Guide;
 using H.Services.Common;
+using H.Styles.Default;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
@@ -20,6 +21,12 @@ namespace System
             if (setupAction != null)
                 services.Configure(setupAction);
             return services;
+        }
+
+        public static void UseGuideSetting(this IApplicationBuilder service, Action<IGuideOptions> action = null)
+        {
+            action?.Invoke(GuideOptions.Instance);
+            SettingDataManager.Instance.Add(GuideOptions.Instance);
         }
 
         ///// <summary>

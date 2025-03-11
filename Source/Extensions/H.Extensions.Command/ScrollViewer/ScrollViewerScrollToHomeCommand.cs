@@ -2,11 +2,15 @@
 
 
 using H.Mvvm;
+using H.Mvvm.Attributes;
+using System.ComponentModel.DataAnnotations;
 using System.Windows.Controls;
 
 namespace H.Extensions.Command
 {
-    public class ScrollViewerScrollToHomeCommand : MarkupCommandBase
+    [Icon("\xE77F")]
+    [Display(Name = "滚动左侧", Description = "将当前滚动条滚动到最左侧")]
+    public class ScrollViewerScrollToHomeCommand : DisplayMarkupCommandBase
     {
         public override bool CanExecute(object parameter)
         {

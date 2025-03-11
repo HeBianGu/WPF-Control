@@ -1,8 +1,13 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
+using H.Mvvm.Attributes;
+using System.ComponentModel.DataAnnotations;
+
 namespace H.Services.Common
 {
-    public abstract class ShowSnackMessageCommandBase : IocMarkupCommandBase
+    [Icon("\xE77F")]
+    [Display(Name = "显示提示", Description = "显示提示消息")]
+    public abstract class ShowSnackMessageCommandBase : DisplayMarkupCommandBase
     {
         public string Message { get; set; } = "默认消息";
 

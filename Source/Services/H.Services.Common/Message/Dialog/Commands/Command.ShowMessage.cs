@@ -16,7 +16,7 @@ namespace H.Services.Common
               {
                   x.DialogButton = this.DialogButton;
                   x.Title = this.Title;
-                  this.Build(x);
+                  this.Invoke(x);
               });
         }
     }

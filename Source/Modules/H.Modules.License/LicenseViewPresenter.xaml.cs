@@ -1,6 +1,4 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-
-
 using H.Services.Common;
 using H.Mvvm;
 using System;
@@ -8,8 +6,8 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using System.Xml.Serialization;
-using H.Mvvm.Base;
 using H.Mvvm.ViewModels.Base;
+using H.Mvvm.Attributes;
 
 namespace H.Modules.License
 {
@@ -38,7 +36,7 @@ namespace H.Modules.License
 
         private bool _isTrail;
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         public bool IsTrail
@@ -66,7 +64,7 @@ namespace H.Modules.License
 
         private string _lic;
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         [Display(Name = "注册码")]
@@ -110,7 +108,7 @@ namespace H.Modules.License
 
         private string _message;
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         public string Message
@@ -146,7 +144,7 @@ namespace H.Modules.License
         }
 
 
-        public RelayCommand RegisterCommand => new RelayCommand(e=>
+        public RelayCommand RegisterCommand => new RelayCommand(e =>
         {
             ILicenseService _license = Ioc.GetService<ILicenseService>();
             if (_license == null)
@@ -169,10 +167,10 @@ namespace H.Modules.License
             this.Level = option.Level;
             Ioc<IVipFlagViewPresenter>.Instance?.Refresh();
             Ioc<ILicenseFlagViewPresenter>.Instance?.Refresh();
-        }, (s, e) => string.IsNullOrEmpty(this.Error));
+        }, x => string.IsNullOrEmpty(this.Error));
 
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         public string Error { get; private set; }

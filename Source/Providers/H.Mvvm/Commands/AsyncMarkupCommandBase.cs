@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 
 namespace H.Mvvm
 {
+
     public abstract class AsyncMarkupCommandBase : MarkupCommandBase
     {
         private bool _isExecuting;

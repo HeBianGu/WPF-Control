@@ -1,11 +1,15 @@
 ﻿global using H.Services.Common;
 using H.Mvvm;
+using H.Mvvm.Attributes;
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.IO;
 
 namespace H.Controls.FavoriteBox
 {
-    public class InsertFavoriteCommand : MarkupCommandBase
+    [Icon("\xE713")]
+    [Display(Name = "插入", Description = "显示插入收藏页面")]
+    public class InsertFavoriteCommand : DisplayMarkupCommandBase
     {
         public override async void Execute(object parameter)
         {

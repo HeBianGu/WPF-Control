@@ -1,6 +1,12 @@
-﻿namespace H.Services.Revertible
+﻿using H.Mvvm;
+using H.Mvvm.Attributes;
+using System.ComponentModel.DataAnnotations;
+
+namespace H.Services.Revertible
 {
-    public class UndoCommand : IocMarkupCommandBase
+    [Icon("\xE7A7")]
+    [Display(Name = "撤销", Description = "撤销当前操作")]
+    public class UndoCommand : DisplayMarkupCommandBase
     {
         public override void Execute(object parameter)
         {

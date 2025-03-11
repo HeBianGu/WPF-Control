@@ -15,5 +15,7 @@ namespace H.Styles.Default
     {
         public static ComponentResourceKey Default => new ComponentResourceKey(typeof(FontIconButtonKeys), "S.FontIconButton.Default");
 
+        public static ComponentResourceKey Command => new ComponentResourceKey(typeof(FontIconButtonKeys), "S.FontIconButton.Command");
+
     }
 }

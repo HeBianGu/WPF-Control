@@ -4,10 +4,14 @@
 using H.Services.Common;
 
 using H.Mvvm;
+using H.Mvvm.Attributes;
+using System.ComponentModel.DataAnnotations;
 
 namespace H.Modules.Setting
 {
-    public class CancelSettingCommand : MarkupCommandBase
+    [Icon("\xE77F")]
+    [Display(Name = "取消", Description = "取消保存并系统设置页面")]
+    public class CancelSettingCommand : DisplayMarkupCommandBase
     {
         public override void Execute(object parameter)
         {

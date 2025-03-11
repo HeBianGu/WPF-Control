@@ -2,11 +2,15 @@
 
 
 using H.Mvvm;
+using H.Mvvm.Attributes;
+using System.ComponentModel.DataAnnotations;
 using System.Windows.Controls;
 
 namespace H.Extensions.Command
 {
-    public class TextBoxClearTextCommand : MarkupCommandBase
+    [Icon("\xE77F")]
+    [Display(Name = "删除", Description = "清空当前文本框文本")]
+    public class TextBoxClearTextCommand : DisplayMarkupCommandBase
     {
         public override bool CanExecute(object parameter)
         {

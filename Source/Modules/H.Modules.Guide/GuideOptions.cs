@@ -11,12 +11,24 @@ using System.Windows.Threading;
 
 namespace H.Modules.Guide
 {
-    [Display(Name = "登录页面", GroupName = SettingGroupNames.GroupSystem, Description = "登录页面设置的信息")]
-    public class GuideOptions : IocOptionInstance<GuideOptions>
+    public interface IGuideOptions
+    {
+        int AnimationDuration { get; set; }
+        Color CoverColor { get; set; }
+        double CoverOpacity { get; set; }
+        Brush Stroke { get; set; }
+        DoubleCollection StrokeDashArray { get; set; }
+        double StrokeThickness { get; set; }
+        double TextMaxWidth { get; set; }
+        bool UseOnLoad { get; set; }
+    }
+
+    [Display(Name = "向导页面", GroupName = SettingGroupNames.GroupControl, Description = "设置向导页面信息")]
+    public class GuideOptions : IocOptionInstance<GuideOptions>, IGuideOptions
     {
         private bool _useOnLoad;
         [DefaultValue(true)]
-        [Display(Name = "启动时显示新手向导")]
+        [Display(Name = "自动启动", Description = "启动时显示新手向导")]
         public bool UseOnLoad
         {
             get { return _useOnLoad; }
@@ -48,7 +60,7 @@ namespace H.Modules.Guide
         }
         private double _textMaxWidth = 300.0;
         [Range(100.0, 800.0)]
-        [Display(Name = "详情最大宽度")]
+        [Display(Name = "详情宽度", Description = "设置详情页面的最大宽度")]
         public double TextMaxWidth
         {
             get { return _textMaxWidth; }
@@ -60,7 +72,7 @@ namespace H.Modules.Guide
         }
 
         private Color _coverColor = Colors.Black;
-        [Display(Name = "遮盖背景")]
+        [Display(Name = "背景颜色", Description = "设置遮盖背景的颜色")]
         public Color CoverColor
         {
             get { return _coverColor; }
@@ -71,9 +83,9 @@ namespace H.Modules.Guide
             }
         }
 
-        private double _coverOpacity = 0.6;
+        private double _coverOpacity = 0.8;
         [Range(0.0, 1.0)]
-        [Display(Name = "遮盖背景")]
+        [Display(Name = "透明度", Description = "设置遮盖背景的透明度")]
         public double CoverOpacity
         {
             get { return _coverOpacity; }

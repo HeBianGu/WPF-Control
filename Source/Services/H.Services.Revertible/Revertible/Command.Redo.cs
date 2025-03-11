@@ -1,6 +1,8 @@
-﻿namespace H.Services.Revertible
+﻿using H.Mvvm;
+
+namespace H.Services.Revertible
 {
-    public class RedoCommand : IocMarkupCommandBase
+    public class RedoCommand : DisplayMarkupCommandBase
     {
         public override void Execute(object parameter)
         {

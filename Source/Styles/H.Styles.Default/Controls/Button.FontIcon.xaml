@@ -21,6 +21,14 @@
         <Setter Property="Cattach.GuideIcon" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}" />
     </Style>
 
+    <Style x:Key="{ComponentResourceKey ResourceId=S.FontIconButton.Command,
+                                        TypeInTargetAssembly={x:Type local:FontIconButtonKeys}}"
+           BasedOn="{StaticResource {x:Static local:FontIconButtonKeys.Default}}"
+           TargetType="{x:Type local:FontIconButton}">
+        <Setter Property="Content" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Command.Icon}" />
+        <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Command.Name}" />
+    </Style>
+
     <Style BasedOn="{StaticResource {x:Static local:FontIconButtonKeys.Default}}"
            TargetType="{x:Type local:FontIconButton}" />
 </ResourceDictionary>

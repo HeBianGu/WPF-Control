@@ -5,6 +5,7 @@
 using H.Extensions.Attach;
 using H.Services.Common;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -14,7 +15,7 @@ namespace H.Modules.Guide
     public class GuideService : IGuideService
     {
         private UIElement _adonerElment;
-        public void Show(string version = null, UIElement owner = null)
+        public Task Show(string version = null, UIElement owner = null)
         {
             this._adonerElment = GetAdornerElement(owner);
             if (this.CanShow() == false)
@@ -23,6 +24,7 @@ namespace H.Modules.Guide
             AdornerLayer layer = AdornerLayer.GetAdornerLayer(this._adonerElment);
             GuideBoxAdorner adorner = new GuideBoxAdorner(this._adonerElment, () => this.Close(), version);
             layer.Add(adorner);
+            return Task.CompletedTask;
         }
 
         protected virtual UIElement GetAdornerElement(UIElement owner = null)

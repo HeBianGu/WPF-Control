@@ -1,6 +1,12 @@
-﻿namespace H.Services.Logger
+﻿using H.Mvvm;
+using H.Mvvm.Attributes;
+using System.ComponentModel.DataAnnotations;
+
+namespace H.Services.Logger
 {
-    public class LogCommand : IocMarkupCommandBase
+    [Icon("\xE77F")]
+    [Display(Name = "记录日志", Description = "记录系统日志到文件中")]
+    public class LogCommand : DisplayMarkupCommandBase
     {
         public string Message { get; set; }
         public LogType Type { get; set; }

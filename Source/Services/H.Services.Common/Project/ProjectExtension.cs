@@ -4,7 +4,7 @@ namespace H.Services.Common
 {
     public static class ProjectExtension
     {
-        public static async Task<bool?> ShowNewProjectDialog(this IProjectService projectService, string defalultName = "项目")
+        public static async Task<bool?> ShowNewProject(this IProjectService projectService, Action<IDialog> action = null, string defalultName = "项目")
         {
             var project = projectService.Create();
             if (project == null)
@@ -13,7 +13,11 @@ namespace H.Services.Common
             {
                 project.Title = defalultName + (projectService.Where().Count() + 1).ToString();
             }
-            var r = await IocMessage.Form.ShowEdit(project, x => x.Title = "新建工程", null, x => x.UseCommand = false);
+            var r = await IocMessage.Form.ShowEdit(project, x =>
+            {
+                x.Title = "新建项目";
+                action?.Invoke(x);
+            }, null, x => x.UseCommand = false);
             if (r != true)
                 return r;
             projectService.Add(project);
@@ -21,35 +25,39 @@ namespace H.Services.Common
             project.Save(out string message);
             return true;
         }
-        public static async Task<bool?> ShowEidtProjectDialog(this IProjectService projectService, IProjectItem project)
+        public static async Task<bool?> ShowEidtProject(this IProjectService projectService, IProjectItem project, Action<IDialog> action = null)
         {
-            return await IocMessage.Form.ShowEdit(project, x => x.Title = "编辑工程", null, x =>
+            return await IocMessage.Form.ShowEdit(project,x=>
+            {
+                x.Title = "编辑项目";
+                action?.Invoke(x);
+            }, null, x =>
             {
                 x.UseCommand = false;
             });
         }
 
-        public static async Task<bool?> ShowProjectsDialog(this IProjectService projectService)
-        {
-            var project = projectService.Create();
-            if (project == null)
-                return false;
-            if (string.IsNullOrEmpty(project.Title))
-            {
-                project.Title = "项目" + (projectService.Where().Count() + 1).ToString();
-            }
-            var r = await IocMessage.Form.ShowEdit(project, x => x.Title = "新建工程", null, x =>
-            {
-                x.UseCommand = false;
-            });
-            if (r != true)
-                return r;
-            projectService.Add(project);
-            projectService.Current = project;
-            return true;
-        }
+        //public static async Task<bool?> ShowProjects(this IProjectService projectService, Action<IDialog> action = null)
+        //{
+        //    var project = projectService.Create();
+        //    if (project == null)
+        //        return false;
+        //    if (string.IsNullOrEmpty(project.Title))
+        //    {
+        //        project.Title = "项目" + (projectService.Where().Count() + 1).ToString();
+        //    }
+        //    var r = await IocMessage.Form.ShowEdit(project, action, null, x =>
+        //    {
+        //        x.UseCommand = false;
+        //    });
+        //    if (r != true)
+        //        return r;
+        //    projectService.Add(project);
+        //    projectService.Current = project;
+        //    return true;
+        //}
 
-        public static async Task<bool?> ShowDeleteProjectDialog(this IProjectService projectService, IProjectItem project)
+        public static async Task<bool?> ShowDeleteProject(this IProjectService projectService, IProjectItem project)
         {
             var r = await IocMessage.Dialog.Show("确定要删除？");
             if (r != true)
@@ -58,7 +66,7 @@ namespace H.Services.Common
             return projectService.Save(out string message);
         }
 
-        public static async Task<bool?> ShowOpenProjectDialog(this IProjectService projectService, IProjectItem project)
+        public static async Task<bool?> ShowOpenProject(this IProjectService projectService, IProjectItem project)
         {
             string message = null;
             projectService.Current = project;
@@ -72,7 +80,7 @@ namespace H.Services.Common
                 await IocMessage.ShowDialogMessage(message);
             return r;
         }
-        public static async Task<bool?> ShowSaveProjectsDialog(this IProjectService projectService)
+        public static async Task<bool?> ShowSaveProjects(this IProjectService projectService)
         {
             string message = null;
             var r = await IocMessage.Dialog.ShowWait(x =>
@@ -85,7 +93,7 @@ namespace H.Services.Common
             return r;
         }
 
-        public static async Task<bool?> ShowSaveCurrentProjectDialog(this IProjectService projectService)
+        public static async Task<bool?> ShowSaveProject(this IProjectService projectService)
         {
             string message = null;
             var c = projectService.Current;

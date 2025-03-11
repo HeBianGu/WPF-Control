@@ -1,15 +1,20 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
+using H.Mvvm.Attributes;
+using System.ComponentModel.DataAnnotations;
+
 namespace H.Services.Common
 {
+    [Icon("\xE890")]
+    [Display(Name = "查看", Description = "显示表单查看数据")]
     public class ShowViewCommand : MessageCommandBase
     {
         public object Value { get; set; }
 
         public override async Task ExecuteAsync(object parameter)
         {
-            await IocMessage.Form.ShowView(this.Value ?? parameter, x => this.Build(x));
+            await IocMessage.Form.ShowView(this.Value ?? parameter, x => this.Invoke(x));
         }
 
         public override bool CanExecute(object parameter)

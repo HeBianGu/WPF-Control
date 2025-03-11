@@ -25,7 +25,7 @@ public partial class ProjectBox : ListBox
             {
                 if (k.Parameter is IProjectItem project)
                 {
-                    await IocProject.Instance.ShowDeleteProjectDialog(project);
+                    await IocProject.Instance.ShowDeleteProject(project);
                 }
             };
             this.CommandBindings.Add(commandBinding);
@@ -37,7 +37,7 @@ public partial class ProjectBox : ListBox
             {
                 if (k.Parameter is IProjectItem project)
                 {
-                    await IocProject.Instance.ShowEidtProjectDialog(project);
+                    await IocProject.Instance.ShowEidtProject(project);
                 }
             };
             this.CommandBindings.Add(commandBinding);
@@ -49,7 +49,7 @@ public partial class ProjectBox : ListBox
             {
                 if (k.Parameter is IProjectItem project)
                 {
-                    await IocProject.Instance.ShowOpenProjectDialog(project);
+                    await IocProject.Instance.ShowOpenProject(project);
                 }
             };
             commandBinding.CanExecute += (l, k) =>
@@ -63,7 +63,7 @@ public partial class ProjectBox : ListBox
             CommandBinding commandBinding = new CommandBinding(H.Mvvm.Commands.New);
             commandBinding.Executed += async (l, k) =>
             {
-                await IocProject.Instance.ShowNewProjectDialog();
+                await IocProject.Instance.ShowNewProject();
             };
             this.CommandBindings.Add(commandBinding);
         }
