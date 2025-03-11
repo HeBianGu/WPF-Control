@@ -47,4 +47,3 @@ namespace H.Modules.Guide
         }
 
     }
-}

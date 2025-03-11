@@ -268,54 +268,10 @@ namespace H.Modules.Guide
 
         private void LoadData(UIElement element)
         {
-            List<UIElement> items = element.GetChildren<UIElement>(l => Cattach.GetUseGuide(l) && Cattach.GetGuideParentTitle(l) == null)?.ToList();
-            IEnumerable<UIElement> roots = items.Where(l => Cattach.GetGuideParentTitle(l) == null && l.Visibility == Visibility.Visible);
-            List<GuideTreeNode> guideTreeNodes = new List<GuideTreeNode>();
-            Action<GuideTreeNode> build = null;
-            build = parent =>
-             {
-                 //var gt = Cattach.GetGuideTitle(parent.Element);
-                 IEnumerable<UIElement> children = items.Where(l => l.Visibility == Visibility.Visible && l.IsVisible && l.Opacity > 0);
-                 children = children.Where(x => Cattach.GetGuideParentTitle(x) != null && Cattach.GetGuideParentTitle(x) == Cattach.GetGuideTitle(parent.Element)?.ToString());
-                 children = children.Where(x => Cattach.GetGuideAssemblyVersion(x) == this._version);
-
-                 foreach (UIElement child in children)
-                 {
-                     if (child.Visibility != Visibility.Visible)
-                         continue;
-                     if (child.IsVisible == false)
-                         continue;
-                     if (child.RenderSize.Width < 10 || child.RenderSize.Height < 10)
-                         continue;
-                     if (child is FrameworkElement framework)
-                     {
-                         if (framework.IsLoaded == false)
-                             return;
-
-                     }
-                     GuideTreeNode childNode = new GuideTreeNode(child);
-                     childNode.Parent = parent;
-                     parent.Chidren.Add(childNode);
-                     build.Invoke(childNode);
-                 }
-             };
-
-            foreach (UIElement root in roots.Where(x => Cattach.GetGuideAssemblyVersion(x) == this._version))
-            {
-                if (root.Visibility != Visibility.Visible)
-                    continue;
-                if (root.IsVisible == false)
-                    continue;
-                if (root.RenderSize.Width < 10 || root.RenderSize.Height < 10)
-                    continue;
-                GuideTreeNode rootNode = new GuideTreeNode(root);
-                guideTreeNodes.Add(rootNode);
-                build.Invoke(rootNode);
-            }
-
-            this._guideTree = new GuideTree(guideTreeNodes);
+            var tree = element.GetGuideTree(x => Cattach.GetGuideAssemblyVersion(x) == this._version);
+            this._guideTree = tree;
             this.CurrentIndex = 1;
-            this.Total = items.Count;
+            this.Total = tree.Roots.Count;
         }
 
         private void Refresh()
