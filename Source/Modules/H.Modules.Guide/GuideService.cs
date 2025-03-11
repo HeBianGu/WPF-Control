@@ -29,16 +29,7 @@ namespace H.Modules.Guide
 
         protected virtual UIElement GetAdornerElement(UIElement owner = null)
         {
-            UIElement child = owner;
-            if (child == null)
-            {
-                child = Application.Current.MainWindow.GetChild<UIElement>(x => Cattach.GetIsGuideAdonerElement(x));
-                if (child == null)
-                {
-                    child = Application.Current.MainWindow.Content as UIElement;
-                }
-            }
-            return child;
+            return owner ?? GuideExtension.GetAdornerElement();
         }
 
         private bool CanShow(UIElement owner = null)

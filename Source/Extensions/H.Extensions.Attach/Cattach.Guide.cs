@@ -110,7 +110,6 @@ namespace H.Extensions.Attach
             obj.SetValue(GuideDataTemplateProperty, value);
         }
 
-
         public static readonly DependencyProperty GuideDataTemplateProperty =
             DependencyProperty.RegisterAttached("GuideDataTemplate", typeof(DataTemplate), typeof(Cattach), new PropertyMetadata(null, OnGuideDataTemplateChanged));
 

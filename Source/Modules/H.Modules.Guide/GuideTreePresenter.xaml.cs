@@ -1,11 +1,13 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿using H.Mvvm;
 using H.Mvvm.ViewModels.Base;
-using System;
-
-namespace H.Modules.Guide
+namespace H.Modules.Guide;
+public class GuideTreePresenter : DisplayBindableBase
 {
-    public class GuideTreePresenter : DisplayBindableBase
+    private readonly GuideTree _guideTree;
+    public GuideTreePresenter(GuideTree guideTree)
     {
-
+        this._guideTree = guideTree;
     }
+
+    public GuideTree GuideTree => this._guideTree;
 }

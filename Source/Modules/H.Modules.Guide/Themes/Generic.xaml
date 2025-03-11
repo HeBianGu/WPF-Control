@@ -4,5 +4,6 @@
                     xmlns:local="clr-namespace:H.Modules.Guide">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Modules.Guide;component/GuideBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Modules.Guide;component/GuideTreePresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

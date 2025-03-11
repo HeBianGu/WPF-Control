@@ -13,7 +13,7 @@ namespace H.Modules.Guide
 {
     public static class GuideExtension
     {
-        public static GuideTree GetGuideTree(this UIElement element, Predicate<UIElement> predicate)
+        public static GuideTree GetGuideTree(this UIElement element, Predicate<UIElement> predicate = null)
         {
             List<UIElement> items = element.GetChildren<UIElement>(l => Cattach.GetUseGuide(l) && Cattach.GetGuideParentTitle(l) == null)?.ToList();
             IEnumerable<UIElement> roots = items.Where(l => Cattach.GetGuideParentTitle(l) == null && l.Visibility == Visibility.Visible);
@@ -54,6 +54,14 @@ namespace H.Modules.Guide
             }
 
             return new GuideTree(guideTreeNodes);
+        }
+
+        public static UIElement GetAdornerElement()
+        {
+            var child = Application.Current.MainWindow.GetChild<UIElement>(x => Cattach.GetIsGuideAdonerElement(x));
+            if (child == null)
+                child = Application.Current.MainWindow.Content as UIElement;
+            return child;
         }
     }
 }
