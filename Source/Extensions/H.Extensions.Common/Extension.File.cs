@@ -125,6 +125,48 @@ namespace H.Extensions.Common
             }
             return size;
         }
+
+
+        //public void CopyDirectory()
+        //{
+        //    try
+        //    {
+        //        // 复制目录
+        //        CopyDirectory(sourceDirectory, targetDirectory);
+        //        Console.WriteLine("Directory copied successfully.");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine("Error copying directory: " + ex.Message);
+        //    }
+
+        //    void CopyDirectory(string sourceDir, string targetDir)
+        //    {
+        //        // 获取源目录的信息
+        //        DirectoryInfo dir = new DirectoryInfo(sourceDir);
+
+        //        // 如果目标目录不存在，则创建它
+        //        if (!Directory.Exists(targetDir))
+        //        {
+        //            Directory.CreateDirectory(targetDir);
+        //        }
+
+        //        // 获取源目录中的文件并复制到目标目录
+        //        foreach (FileInfo file in dir.GetFiles())
+        //        {
+        //            string tempPath = Path.Combine(targetDir, file.Name);
+        //            file.CopyTo(tempPath, false); // false表示不覆盖已存在的文件
+        //        }
+
+        //        // 递归复制子目录
+        //        foreach (DirectoryInfo subDir in dir.GetDirectories())
+        //        {
+        //            string tempPath = Path.Combine(targetDir, subDir.Name);
+        //            CopyDirectory(subDir.FullName, tempPath);
+        //        }
+        //    }
+
+        //}
     }
 
     public static partial class FileExtension

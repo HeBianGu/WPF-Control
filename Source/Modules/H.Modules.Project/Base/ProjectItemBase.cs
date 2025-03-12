@@ -99,9 +99,6 @@ public abstract class ProjectItemBase : CommandsBindableBase, IProjectItem
     public virtual bool Load(out string message)
     {
         message = null;
-        ////  Do ：测试用
-        //if (this.LoadFile(out DateTime time))
-        //    DateTime dateTime = time;
         return true;
     }
 
@@ -122,8 +119,6 @@ public abstract class ProjectItemBase : CommandsBindableBase, IProjectItem
     protected virtual object GetSaveFileData()
     {
         return null;
-        ////  Do ：测试用
-        //return DateTime.Now;
     }
 
     public virtual bool Close(out string message)

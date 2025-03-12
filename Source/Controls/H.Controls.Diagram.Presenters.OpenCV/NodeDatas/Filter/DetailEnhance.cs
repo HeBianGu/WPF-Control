@@ -1,5 +1,5 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Filter;
-[Display(Name = "细节增强", GroupName = "滤波/降噪/模糊", Order = 20)]
+[Display(Name = "细节增强", GroupName = "细节增强是一种图像处理技术，旨在突出图像中的细节部分（如纹理、边缘、微小特征等），使图像看起来更加清晰和丰富", Order = 20)]
 public class DetailEnhance : FilterOpenCVNodeDataBase
 {
     private float _sigmaS = 10f;

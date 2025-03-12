@@ -151,6 +151,7 @@ public abstract class OpenCVNodeDataBase : ActionNodeDataBase, IOpenCVNodeData, 
 
     protected void UpdateMatToView(Mat mat)
     {
+        this.Mat = mat;
         if (this.ImageSource == null)
         {
             System.Windows.Application.Current.Dispatcher.Invoke(() =>

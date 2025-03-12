@@ -50,6 +50,8 @@ namespace H.Services.Common
         public string UserData => Path.Combine(this.UserPath, nameof(this.Data));
         public string UserSetting => Path.Combine(this.UserPath, nameof(this.Setting));
         public string UserProject => Path.Combine(this.UserPath, nameof(this.Project));
+        public string DefaultProjects => Path.Combine(Assets, nameof(DefaultProjects));
+        public string Assets => Path.Combine(AppDomain.CurrentDomain.BaseDirectory, nameof(Assets));
         public string UserTemplate => Path.Combine(this.UserPath, nameof(this.Template));
         public string UserCache => Path.Combine(this.UserPath, nameof(this.Cache));
         public string UserLicense => Path.Combine(this.Default, nameof(this.License));

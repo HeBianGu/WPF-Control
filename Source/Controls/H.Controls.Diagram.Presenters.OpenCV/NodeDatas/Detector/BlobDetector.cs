@@ -1,5 +1,5 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Detector;
-[Display(Name = "Blob检测", GroupName = "基础检测", Description = "降噪成黑白色", Order = 20)]
+[Display(Name = "Blob检测", GroupName = "基础检测", Description = "用于检测图像中具有相似属性（如颜色、纹理或亮度）的连通区域", Order = 20)]
 public class BlobDetector : DetectorOpenCVNodeDataBase
 {
     public override void LoadDefault()
@@ -354,5 +354,5 @@ public class BlobDetector : DetectorOpenCVNodeDataBase
 
 public enum BlobType
 {
-    None, Circle = 0, Oval
+    None = 0, Circle = 1, Oval = 2
 }

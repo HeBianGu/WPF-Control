@@ -10,7 +10,8 @@ public abstract class CascadeClassifierOpenCVNodeDataBase : OpenCVNodeData, ICas
     public override void LoadDefault()
     {
         base.LoadDefault();
-        this.MinSize = new Size(30, 30);
+        this.MinSize = new System.Windows.Size(30, 30);
+        this.MaxSize = new System.Windows.Size(500, 500);
     }
     private double _scaleFactor = 1.1;
     [DefaultValue(1.1)]
@@ -51,9 +52,9 @@ public abstract class CascadeClassifierOpenCVNodeDataBase : OpenCVNodeData, ICas
         }
     }
 
-    private Size? _minSize = new Size(30, 30);
+    private System.Windows.Size _minSize = new System.Windows.Size(30, 30);
     [Display(Name = "MinSize", GroupName = "数据")]
-    public Size? MinSize
+    public System.Windows.Size MinSize
     {
         get { return _minSize; }
         set
@@ -63,10 +64,10 @@ public abstract class CascadeClassifierOpenCVNodeDataBase : OpenCVNodeData, ICas
         }
     }
 
-    private Size? _maxSize = null;
+    private System.Windows.Size _maxSize = new System.Windows.Size(500, 500);
     [DefaultValue(null)]
     [Display(Name = "MaxSize", GroupName = "数据")]
-    public Size? MaxSize
+    public System.Windows.Size MaxSize
     {
         get { return _maxSize; }
         set
@@ -86,7 +87,7 @@ public abstract class CascadeClassifierOpenCVNodeDataBase : OpenCVNodeData, ICas
 
             // Detect faces
             Rect[] faces = cascade.DetectMultiScale(
-                gray, this.ScaleFactor, this.MinNeighbors, this.Flags, this.MinSize, this.MaxSize);
+                gray, this.ScaleFactor, this.MinNeighbors, this.Flags, this.MinSize.ToCVSize(), this.MaxSize.ToCVSize());
 
             // Render all detected faces
             foreach (Rect face in faces)

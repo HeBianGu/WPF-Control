@@ -2,6 +2,8 @@
 global using H.Services.Serializable;
 global using System.Collections;
 global using System.ComponentModel.DataAnnotations;
+using H.Extensions.Common;
+using System.IO;
 
 namespace H.Modules.Project;
 
@@ -56,7 +58,7 @@ public abstract class ProjectServiceBase<T> : BindableBase, IProjectService, IDa
     [Browsable(false)]
     public Action<IProjectItem, IProjectItem> CurrentChanged { get; set; }
 
-    public string Name => "工程数据";
+    public string Name => "项目数据";
 
     protected virtual void OnCurrentChanged(IProjectItem o, IProjectItem n)
     {
@@ -80,7 +82,7 @@ public abstract class ProjectServiceBase<T> : BindableBase, IProjectService, IDa
         message = null;
         try
         {
-            this.GetSerializer().Save(this.HistoryPath, new ProjectHistroyData<T>() { ProjectItems = this.Collection.ToList() });
+            this.GetSerializer().Save(this._projectsPath, new Projects<T>() { Items = this.Collection.ToList() });
             this.Current?.Save(out message);
             return true;
         }
@@ -102,7 +104,7 @@ public abstract class ProjectServiceBase<T> : BindableBase, IProjectService, IDa
             {
                 Application.Current.Dispatcher.Invoke(() =>
                 {
-                    list.Insert(0,item);
+                    list.Insert(0, item);
                 });
             }
             this.OnItemChanged();
@@ -113,14 +115,6 @@ public abstract class ProjectServiceBase<T> : BindableBase, IProjectService, IDa
     {
         foreach (T item in ts)
         {
-            //if (File.Exists(item.Path))
-            //    File.Delete(item.Path);
-            //if (!string.IsNullOrEmpty(item.Path))
-            //{
-            //    var find = item.GetFilePath();
-            //    if (File.Exists(find))
-            //        File.Delete(find);
-            //}
             item.Delete(out string message);
             if (this.Collection is IList list)
                 list.Remove(item);
@@ -143,22 +137,22 @@ public abstract class ProjectServiceBase<T> : BindableBase, IProjectService, IDa
         this.Delete(ps.ToArray());
     }
 
-    private string HistoryPath => System.IO.Path.Combine(this.GetFolderPath(), "projects.json");
+    private string _projectsPath => System.IO.Path.Combine(this.GetFolderPath(), "projects.json");
 
     protected virtual string GetFolderPath() => AppPaths.Instance.UserProject;
 
     public virtual bool Load(out string message)
     {
         message = string.Empty;
-        ProjectHistroyData<T> data = this.GetSerializer().Load<ProjectHistroyData<T>>(this.HistoryPath);
+        Projects<T> data = !File.Exists(this._projectsPath) ? this.LoadDefaultProjects() : this.GetSerializer().Load<Projects<T>>(this._projectsPath);
         this.Clear();
         if (data != null)
         {
-            foreach (T item in data.ProjectItems.OrderBy(x => x.UpdateTime))
+            foreach (T item in data.Items.OrderBy(x => x.UpdateTime))
             {
-                this.Add(data.ProjectItems.ToArray());
+                this.Add(data.Items.ToArray());
             }
-            this.Current = data.ProjectItems.FirstOrDefault();
+            this.Current = data.Items.FirstOrDefault();
         }
         if (this.Current == null)
         {
@@ -169,6 +163,18 @@ public abstract class ProjectServiceBase<T> : BindableBase, IProjectService, IDa
         return true;
     }
 
+    protected virtual Projects<T> LoadDefaultProjects()
+    {
+        string path = AppPaths.Instance.DefaultProjects;
+        string toPath = this.GetFolderPath();
+        path.ToDirectoryEx().BackupToDirectory(toPath);
+        Projects<T> data = this.GetSerializer().Load<Projects<T>>(this._projectsPath);
+        if (data == null)
+            return null;
+        foreach (var item in data.Items)
+            item.Path = this.GetFolderPath();
+        return data;
+    }
 
     public void Clear()
     {
@@ -179,7 +185,7 @@ public abstract class ProjectServiceBase<T> : BindableBase, IProjectService, IDa
 
 }
 
-public class ProjectHistroyData<T>
+public class Projects<T>
 {
-    public List<T> ProjectItems { get; set; }
+    public List<T> Items { get; set; }
 }
