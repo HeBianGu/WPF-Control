@@ -576,7 +576,7 @@
                               Style="{DynamicResource {x:Static ExpanderKeys.ToggleRight}}">
                         <Cattach.CaptionRightTemplate>
                             <ControlTemplate>
-                                <FontIconButton/>
+                                <FontIconButton />
                             </ControlTemplate>
                         </Cattach.CaptionRightTemplate>
                         <ListBox h:Cattach.ItemHeight="Auto"

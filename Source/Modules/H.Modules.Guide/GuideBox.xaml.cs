@@ -268,7 +268,7 @@ namespace H.Modules.Guide
 
         private void LoadData(UIElement element)
         {
-            var tree = element.GetGuideTree(x => Cattach.GetGuideAssemblyVersion(x) == this._version || this._version == null);
+            var tree = element.GetGuideTree(x => Cattach.GetGuideAssemblyVersion(x) == this._version || this._version == null || this._version == "1.0.0.0");
             this._guideTree = tree;
             this.CurrentIndex = 1;
             this.Total = tree.Roots.Count;
@@ -404,9 +404,10 @@ namespace H.Modules.Guide
             {
                 this.Refresh();
                 this.LoadData(this._element);
+                if (this.Total == 0)
+                    this.Close();
                 this.AutoClick();
                 this.RefreshClip(this._element);
-
             }));
         }
     }

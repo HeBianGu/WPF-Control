@@ -119,7 +119,8 @@
                 <ControlTemplate TargetType="ContentControl">
                     <Border>
                         <DockPanel>
-                            <DockPanel DockPanel.Dock="Bottom">
+                            <DockPanel DockPanel.Dock="Bottom"
+                                       WindowChrome.IsHitTestVisibleInChrome="True">
                                 <Button HorizontalAlignment="Left"
                                         Command="{x:Static local:GuideBox.SkipCommand}"
                                         Content="跳过指南&gt;&gt;" />
