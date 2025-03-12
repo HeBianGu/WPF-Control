@@ -1,8 +1,8 @@
 ﻿using H.Mvvm.Attributes;
 using H.Services.Common;
 namespace H.Modules.Guide;
-[Icon("\xE713")]
-[Display(Name = "我的操作", Description = "默认操作")]
+[Icon("\xEC92")]
+[Display(Name = "功能列表", Description = "显示版本功能列表")]
 public class ShowGuideTreeCommand : DisplayMarkupCommandBase
 {
     public override async Task ExecuteAsync(object parameter)

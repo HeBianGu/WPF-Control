@@ -1,16 +1,17 @@
-﻿<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:h="https://github.com/HeBianGu"
-    xmlns:lb="clr-namespace:H.Controls.Diagram.Bevaviors"
-    xmlns:ld="clr-namespace:H.Controls.Diagram.Datas"
-    xmlns:lf="clr-namespace:H.Controls.Diagram.Flowables"
-    xmlns:local="clr-namespace:H.Controls.Diagram"
-    xmlns:lp="clr-namespace:H.Controls.Diagram.Parts"
-    xmlns:lpb="clr-namespace:H.Controls.Diagram.Parts.Base"
-    xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:lb="clr-namespace:H.Controls.Diagram.Bevaviors"
+                    xmlns:ld="clr-namespace:H.Controls.Diagram.Datas"
+                    xmlns:lf="clr-namespace:H.Controls.Diagram.Flowables"
+                    xmlns:local="clr-namespace:H.Controls.Diagram"
+                    xmlns:lp="clr-namespace:H.Controls.Diagram.Parts"
+                    xmlns:lpb="clr-namespace:H.Controls.Diagram.Parts.Base"
+                    xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Node.Default, TypeInTargetAssembly={x:Type lp:Node}}" TargetType="{x:Type lp:Node}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Node.Default,
+                                        TypeInTargetAssembly={x:Type lp:Node}}"
+           TargetType="{x:Type lp:Node}">
         <Setter Property="Margin" Value="0" />
         <!--<Setter Property="RenderTransform" Value="{DynamicResource {x:Static h:SystemKeys.TransformGroup}}" />-->
         <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
@@ -79,16 +80,19 @@
             <Trigger Property="lp:Node.IsCanDrop" Value="True">
                 <!--<Setter Property="Effect" Value="{DynamicResource {x:Static local:DiagramEffectKey.IsCanDrop}}" />-->
             </Trigger>
-            <DataTrigger Binding="{Binding State}" Value="Success">
+            <DataTrigger Binding="{Binding State}"
+                         Value="Success">
                 <Setter Property="ToolTip" Value="{Binding Message}" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding State}" Value="Error">
+            <DataTrigger Binding="{Binding State}"
+                         Value="Error">
                 <Setter Property="ToolTip" Value="{Binding Message}" />
             </DataTrigger>
         </Style.Triggers>
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static lp:Node.DefaultKey}}" TargetType="{x:Type lp:Node}" />
+    <Style BasedOn="{StaticResource {x:Static lp:Node.DefaultKey}}"
+           TargetType="{x:Type lp:Node}" />
 
 </ResourceDictionary>
 

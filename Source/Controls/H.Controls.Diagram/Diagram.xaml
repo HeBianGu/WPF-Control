@@ -1,30 +1,32 @@
-﻿<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:h="https://github.com/HeBianGu"
-    xmlns:lb="clr-namespace:H.Controls.Diagram.Bevaviors"
-    xmlns:ld="clr-namespace:H.Controls.Diagram.Datas"
-    xmlns:lf="clr-namespace:H.Controls.Diagram.Flowables"
-    xmlns:local="clr-namespace:H.Controls.Diagram"
-    xmlns:lp="clr-namespace:H.Controls.Diagram.Parts"
-    xmlns:lpb="clr-namespace:H.Controls.Diagram.Parts.Base"
-    xmlns:ly="clr-namespace:H.Controls.Diagram.Layers">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:lb="clr-namespace:H.Controls.Diagram.Bevaviors"
+                    xmlns:ld="clr-namespace:H.Controls.Diagram.Datas"
+                    xmlns:lf="clr-namespace:H.Controls.Diagram.Flowables"
+                    xmlns:local="clr-namespace:H.Controls.Diagram"
+                    xmlns:lp="clr-namespace:H.Controls.Diagram.Parts"
+                    xmlns:lpb="clr-namespace:H.Controls.Diagram.Parts.Base"
+                    xmlns:ly="clr-namespace:H.Controls.Diagram.Layers">
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Diagram.Default, TypeInTargetAssembly={x:Type local:Diagram}}" TargetType="{x:Type local:Diagram}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Diagram.Default,
+                                        TypeInTargetAssembly={x:Type local:Diagram}}"
+           TargetType="{x:Type local:Diagram}">
         <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Tile}}" />
         <Setter Property="AllowDrop" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:Diagram}">
                     <AdornerDecorator>
-                        <Border
-                            Margin="{TemplateBinding Padding}"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <Border Margin="{TemplateBinding Padding}"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
                             <Grid>
-                                <ly:NodeLayer x:Name="NodeLayer" Duration="{TemplateBinding Duration}" />
-                                <ly:LinkLayer x:Name="LinkLayer" Duration="{TemplateBinding Duration}" />
+                                <ly:NodeLayer x:Name="NodeLayer"
+                                              Duration="{TemplateBinding Duration}" />
+                                <ly:LinkLayer x:Name="LinkLayer"
+                                              Duration="{TemplateBinding Duration}" />
                                 <ly:LinkLayer x:Name="DynamicLayer" />
                             </Grid>
                         </Border>
@@ -43,6 +45,7 @@
         <Setter Property="LinkStyle" Value="{DynamicResource {x:Static lp:Link.DefaultKey}}" />
         <Setter Property="DynamicLinkStyle" Value="{DynamicResource {x:Static lp:Link.DashKey}}" />
     </Style>
-    <Style BasedOn="{StaticResource {x:Static local:Diagram.DefaultKey}}" TargetType="{x:Type local:Diagram}" />
+    <Style BasedOn="{StaticResource {x:Static local:Diagram.DefaultKey}}"
+           TargetType="{x:Type local:Diagram}" />
 </ResourceDictionary>
 

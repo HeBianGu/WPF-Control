@@ -268,7 +268,7 @@ namespace H.Modules.Guide
 
         private void LoadData(UIElement element)
         {
-            var tree = element.GetGuideTree(x => Cattach.GetGuideAssemblyVersion(x) == this._version);
+            var tree = element.GetGuideTree(x => Cattach.GetGuideAssemblyVersion(x) == this._version || this._version == null);
             this._guideTree = tree;
             this.CurrentIndex = 1;
             this.Total = tree.Roots.Count;
@@ -359,6 +359,8 @@ namespace H.Modules.Guide
             Cattach.SetGuideTitle(this._contentControl, title);
             string icon = Cattach.GetGuideIcon(currentElement);
             Cattach.SetGuideIcon(this._contentControl, icon);
+            string version = Cattach.GetGuideAssemblyVersion(currentElement);
+            Cattach.SetGuideAssemblyVersion(this._contentControl, version);
             this._contentControl.Content = Cattach.GetGuideData(this._guideTree.Current.Element);
             this._contentControl.ContentTemplate = Cattach.GetGuideDataTemplate(this._guideTree.Current.Element);
             this._contentControl.Measure(this.RenderSize);

@@ -21,9 +21,10 @@
         <Setter Property="Cattach.CaptionMargin" Value="5 0" />
         <Setter Property="Cattach.CaptionCornerRadius" Value="2" />
         <!--  Guide  -->
+        <!--
         <Setter Property="Cattach.UseGuide" Value="True" />
-        <Setter Property="Cattach.GuideTitle" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ToolTip}" />
-        <Setter Property="Cattach.GuideData" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ToolTip}" />
+        <Setter Property="Cattach.GuideTitle" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Header}" />
+        <Setter Property="Cattach.GuideData" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ToolTip}" />-->
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabControl}">
@@ -132,9 +133,7 @@ SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>-->
         <!--  Guide  -->
         <Setter Property="Cattach.UseGuide" Value="True" />
         <Setter Property="Cattach.GuideTitle" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Header}" />
-        <Setter Property="Cattach.GuideData" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Header}" />
-        <Setter Property="Cattach.GuideDataTemplate" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=HeaderTemplate}" />
-        <Setter Property="Cattach.GuideIcon" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Cattach.Icon)}" />
+        <Setter Property="Cattach.GuideData" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ToolTip}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabItem}">

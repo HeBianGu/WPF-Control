@@ -1,16 +1,14 @@
-﻿<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
-    xmlns:h="https://github.com/HeBianGu"
-    xmlns:ln="clr-namespace:H.Controls.Diagram.Presenter.NodeDatas"
-    xmlns:local="clr-namespace:H.Controls.Diagram.Presenter">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:ln="clr-namespace:H.Controls.Diagram.Presenter.NodeDatas"
+                    xmlns:local="clr-namespace:H.Controls.Diagram.Presenter">
     <DataTemplate DataType="{x:Type ln:GeometryNodeDataBase}">
-        <Border
-            Background="Transparent"
-            BorderBrush="{x:Null}"
-            BorderThickness="0"
-            Style="{DynamicResource {x:Static local:DiagramKeys.StateBorder}}">
+        <Border Background="Transparent"
+                BorderBrush="{x:Null}"
+                BorderThickness="0"
+                Style="{DynamicResource {x:Static local:DiagramKeys.StateBorder}}">
             <Grid>
                 <Path Style="{DynamicResource {x:Static local:DiagramKeys.StatePath}}" />
                 <TextBox Style="{DynamicResource {x:Static local:DiagramKeys.EditTextBox}}" />

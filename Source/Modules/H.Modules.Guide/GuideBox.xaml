@@ -147,16 +147,22 @@
                                 </Border>
                                 <FontIconTextBlock Foreground="White"
                                                    Text="{TemplateBinding h:Cattach.GuideIcon}" />
-                                <TextBlock Margin="5,0"
-                                           VerticalAlignment="Center"
-                                           DockPanel.Dock="Top"
-                                           FontSize="{StaticResource {x:Static h:FontSizeKeys.Header3}}"
-                                           FontWeight="Bold"
-                                           Foreground="White">
-                                    <!--<Run Text="{Binding RelativeSource={RelativeSource AncestorType=local:GuideBox}, Path=CurrentIndex}" /><Run Text="/" /><Run Text="{Binding RelativeSource={RelativeSource AncestorType=local:GuideBox}, Path=Total}" />-->
-                                    <!--<Run Text="{Binding RelativeSource={RelativeSource AncestorType=local:GuideBox}, Path=CurrentIndex}" />-->
-                                    <Run Text="{TemplateBinding h:Cattach.GuideTitle}" />
-                                </TextBlock>
+
+                                <DockPanel DockPanel.Dock="Top">
+                                    <TextBlock Margin="5,0"
+                                               VerticalAlignment="Center"
+                                               FontSize="{StaticResource {x:Static h:FontSizeKeys.Header3}}"
+                                               FontWeight="Bold"
+                                               Foreground="{DynamicResource {x:Static BrushKeys.White}}">
+                                        <!--<Run Text="{Binding RelativeSource={RelativeSource AncestorType=local:GuideBox}, Path=CurrentIndex}" /><Run Text="/" /><Run Text="{Binding RelativeSource={RelativeSource AncestorType=local:GuideBox}, Path=Total}" />-->
+                                        <!--<Run Text="{Binding RelativeSource={RelativeSource AncestorType=local:GuideBox}, Path=CurrentIndex}" />-->
+                                        <Run Text="{TemplateBinding h:Cattach.GuideTitle}" />
+                                    </TextBlock>
+                                    <TextBlock x:Name="n"
+                                               Margin="0,2"
+                                               Foreground="{DynamicResource {x:Static BrushKeys.Red}}" />
+                                </DockPanel>
+
                             </DockPanel>
                             <!--<TextBlock Margin="0,10" Text="{TemplateBinding Content}" TextWrapping="Wrap" />-->
                             <ContentPresenter Margin="0,10">
@@ -175,6 +181,12 @@
                                     <Setter Property="Content" Value="完成" TargetName="bt_next"/>
                                 </DataTrigger>
                             </ControlTemplate.Triggers>-->
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Cattach.GuideAssemblyVersion), Converter={local:GetIsNewAssemblyVersionConverter}}"
+                                     Value="True">
+                            <Setter TargetName="n" Property="Text" Value="new" />
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

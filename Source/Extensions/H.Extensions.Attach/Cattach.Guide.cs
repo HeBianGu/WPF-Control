@@ -2,6 +2,7 @@
 
 using System.Threading.Channels;
 using System.Windows;
+using System.Windows.Controls.Primitives;
 
 namespace H.Extensions.Attach
 {
@@ -227,7 +228,7 @@ namespace H.Extensions.Attach
             obj.SetValue(GuideAssemblyVersionProperty, value);
         }
         public static readonly DependencyProperty GuideAssemblyVersionProperty =
-            DependencyProperty.RegisterAttached("GuideAssemblyVersion(", typeof(string), typeof(Cattach), new PropertyMetadata(default(string), OnGuideAssemblyVersionChanged));
+            DependencyProperty.RegisterAttached("GuideAssemblyVersion", typeof(string), typeof(Cattach), new PropertyMetadata(default(string), OnGuideAssemblyVersionChanged));
 
         static public void OnGuideAssemblyVersionChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {

@@ -41,6 +41,15 @@ namespace H.Modules.Guide
         {
 
         }
-
+        public IEnumerable<GuideTreeNode> GetGuideTreeNodes()
+        {
+            foreach (var item in this.Roots)
+            {
+                foreach (var node in item.GetGuideTreeNodes())
+                {
+                    yield return node;
+                }
+            }
+        }
     }
 }
