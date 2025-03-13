@@ -13,33 +13,19 @@ public class ArcLinkDrawer : LinkDrawer
     {
         this.DisplayName = "弧线";
     }
+
+    private Orientation _orientation;
     [Display(Name = "圆弧方向", GroupName = "基础信息", Order = 0)]
     public Orientation Orientation
     {
-        get { return (Orientation)GetValue(OrientationProperty); }
-        set { SetValue(OrientationProperty, value); }
+        get { return _orientation; }
+        set
+        {
+            _orientation = value;
+            RaisePropertyChanged();
+            this.Diagram?.RefreshLinkDrawer();
+        }
     }
-
-
-    public static readonly DependencyProperty OrientationProperty =
-        DependencyProperty.Register("Orientation", typeof(Orientation), typeof(ArcLinkDrawer), new FrameworkPropertyMetadata(default(Orientation), (d, e) =>
-         {
-             ArcLinkDrawer control = d as ArcLinkDrawer;
-
-             if (control == null) return;
-
-             if (e.OldValue is Orientation o)
-             {
-
-             }
-
-             if (e.NewValue is Orientation n)
-             {
-
-             }
-             control.Diagram?.RefreshLinkDrawer();
-         }));
-
 
     public override Geometry DrawPath(Link link, out Point center)
     {

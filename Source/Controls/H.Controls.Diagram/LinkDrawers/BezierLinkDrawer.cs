@@ -1,6 +1,7 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace H.Controls.Diagram.LinkDrawers;
@@ -11,34 +12,18 @@ public class BezierLinkDrawer : LinkDrawer
     {
         this.DisplayName = "贝塞尔曲线";
     }
+
+    private double _span = 50.0;
     public double Span
     {
-        get { return (double)GetValue(SpanProperty); }
-        set { SetValue(SpanProperty, value); }
+        get { return _span; }
+        set
+        {
+            _span = value;
+            RaisePropertyChanged();
+            this.Diagram?.RefreshLinkDrawer();
+        }
     }
-
-
-    public static readonly DependencyProperty SpanProperty =
-        DependencyProperty.Register("Span", typeof(double), typeof(BezierLinkDrawer), new FrameworkPropertyMetadata(50.0, (d, e) =>
-         {
-             BezierLinkDrawer control = d as BezierLinkDrawer;
-
-             if (control == null) return;
-
-             if (e.OldValue is double o)
-             {
-
-             }
-
-             if (e.NewValue is double n)
-             {
-
-             }
-
-             control.Diagram?.RefreshLinkDrawer();
-
-         }));
-
 
     public override Geometry DrawPath(Link link, out Point center)
     {

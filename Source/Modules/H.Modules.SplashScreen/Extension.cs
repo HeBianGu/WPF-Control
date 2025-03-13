@@ -10,6 +10,10 @@ namespace System
     {
         public static IServiceCollection AddSplashScreen(this IServiceCollection services, Action<SplashScreenOption> setupAction = null)
         {
+            return services.AddSplashScreen<SplashScreenViewPresenter>();
+        }
+        public static IServiceCollection AddSplashScreen<T>(this IServiceCollection services, Action<SplashScreenOption> setupAction = null) where T : ISplashScreenViewPresenter
+        {
             services.AddOptions();
             services.TryAdd(ServiceDescriptor.Singleton<ISplashScreenViewPresenter, SplashScreenViewPresenter>());
             if (setupAction != null)

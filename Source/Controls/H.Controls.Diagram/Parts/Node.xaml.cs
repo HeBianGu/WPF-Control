@@ -501,17 +501,12 @@ public partial class Node
         for (int i = 0; i < this.VisualChildrenCount; i++)
         {
             UIElement child = VisualTreeHelper.GetChild(this, i) as UIElement;
-
             if (child is Port port)
             {
                 Point point = Node.GetPosition(port);
-
                 port.Measure(finalSize);
-
                 Rect rect = new Rect(point, port.DesiredSize);
-
                 port.Arrange(rect);
-
                 //child.Arrange(new Rect(finalSize));
             }
             else

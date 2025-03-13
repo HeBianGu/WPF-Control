@@ -1,4 +1,5 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+using H.Mvvm.ViewModels.Base;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -8,7 +9,7 @@ using System.Xml.Serialization;
 namespace H.Controls.Diagram.Layouts.Base;
 
 /// <summary> 布局  设置排列方式 </summary>
-public abstract class Layout : FrameworkElement, ILayout
+public abstract class Layout : BindableBase, ILayout
 {
     [System.Text.Json.Serialization.JsonIgnore]
 
@@ -45,36 +46,24 @@ public abstract class Layout : FrameworkElement, ILayout
     {
         //System.Diagnostics.Debug.WriteLine("DoLayoutPort");
         List<Port> ports = node.GetPorts();
-
         Point point = NodeLayer.GetPosition(node);
-
         //  Do ：更新Port 左
         List<Port> leftPorts = ports.Where(l => l.Dock == Dock.Left)?.ToList();
-
         double height_left_span = node.DesiredSize.Height / (leftPorts.Count() + 1);
-
         for (int i = 0; i < leftPorts.Count; i++)
         {
             Port port = leftPorts[i];
-
             //Rect rect = new Rect(new Point(0, height_left_span * (i + 1) - port.DesiredSize.Height / 2), port.DesiredSize);
 
             //port.Arrange(rect); 
 
             //port.Margin = new Thickness(100, 40, 0, 0);
-
             port.Measure();
-
             Node.SetPosition(port, new Point(0, height_left_span * (i + 1) - port.DesiredSize.Height / 2));
-
             //  Do ：设置范围
             Point port_point = new Point(point.X - node.DesiredSize.Width / 2.0 + port.DesiredSize.Width / 2, point.Y - node.DesiredSize.Height / 2.0 + height_left_span * (i + 1));
-
             port.MeasureBound(port_point);
-
             NodeLayer.SetPosition(port, port_point);
-
-
         }
 
         //  Do ：更新Port 右

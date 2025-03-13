@@ -13,75 +13,46 @@ namespace H.Controls.Diagram.Layouts;
 [TypeConverter(typeof(DisplayNameConverter))]
 public class TreeLayout : Layout
 {
+    private double _span = 200.0;
     public double Span
     {
-        get { return (double)GetValue(SpanProperty); }
-        set { SetValue(SpanProperty, value); }
+        get { return _span; }
+        set
+        {
+            _span = value;
+            RaisePropertyChanged();
+            this.Diagram?.RefreshLayout();
+        }
     }
 
 
-    public static readonly DependencyProperty SpanProperty =
-        DependencyProperty.Register("Span", typeof(double), typeof(TreeLayout), new PropertyMetadata(200.0, (d, e) =>
-         {
-             TreeLayout control = d as TreeLayout;
-
-             if (control == null) return;
-
-             //double config = (double)e.NewValue;
-
-             control.Diagram?.RefreshLayout();
-
-         }));
-
-    /// <summary> 节点停靠方式 </summary>
+    private HorizontalAlignment _alignment = HorizontalAlignment.Center;
     public HorizontalAlignment Alignment
     {
-        get { return (HorizontalAlignment)GetValue(AlignmentProperty); }
-        set { SetValue(AlignmentProperty, value); }
+        get { return _alignment; }
+        set
+        {
+            _alignment = value;
+            RaisePropertyChanged();
+            this.Diagram?.RefreshLayout();
+        }
     }
 
-
-    public static readonly DependencyProperty AlignmentProperty =
-        DependencyProperty.Register("Alignment", typeof(HorizontalAlignment), typeof(TreeLayout), new PropertyMetadata(HorizontalAlignment.Center, (d, e) =>
-         {
-             TreeLayout control = d as TreeLayout;
-
-             if (control == null) return;
-
-             //HorizontalAlignment config = e.NewValue as HorizontalAlignment;
-
-             control.Diagram?.RefreshLayout();
-
-         }));
-
+    private Orientation _orientation;
     /// <summary> 树型节点的排列方式 水平和竖直 </summary>
     public Orientation Orientation
     {
-        get { return (Orientation)GetValue(OrientationProperty); }
-        set { SetValue(OrientationProperty, value); }
+        get { return _orientation; }
+        set
+        {
+            _orientation = value;
+            RaisePropertyChanged();
+            this.Diagram?.RefreshLayout();
+        }
     }
-
-
-    public static readonly DependencyProperty OrientationProperty =
-        DependencyProperty.Register("Orientation", typeof(Orientation), typeof(TreeLayout), new PropertyMetadata(default(Orientation), (d, e) =>
-         {
-             TreeLayout control = d as TreeLayout;
-
-             if (control == null) return;
-
-             //Orientation config = e.NewValue as Orientation;
-
-             //control.Diagram?.RefreshData();
-
-             control.Diagram?.RefreshLayout();
-
-         }));
 
     public override void DoLayout(params Node[] nodes)
     {
-
-        //System.Diagnostics.Debug.WriteLine("DoLayout");
-
         IEnumerable<TreeNode> roots = this.GetRoots(nodes);
         this.LayoutRoots(roots);
 
@@ -161,24 +132,26 @@ public class TreeLayout : Layout
         Size childConstraint = new Size(double.PositiveInfinity, double.PositiveInfinity);
         double height = 0;
         double weight = 0;
-
         foreach (Link link in node.LinksOutOf)
         {
             Size size = this.MeasureNode(link.ToNode);
-
             height += size.Height;
-
             weight += size.Width;
         }
-
         this.Measure(childConstraint);
-
         //  Do ：获取子项和当前项的最大范围
         weight = Math.Max(weight, this.DesiredSize.Width);
         height = Math.Max(height, this.DesiredSize.Height);
-
         return new Size(weight, height);
     }
+
+    //  Do ：待实现
+    public Size DesiredSize { get; set; }
+    protected void Measure(Size size)
+    {
+        //this.DesiredSize
+    }
+
 
     protected virtual void TranformAll(IEnumerable<TreeNode> roots)
     {

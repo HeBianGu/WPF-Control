@@ -25,33 +25,19 @@ public class BrokenLinkDrawer : LinkDrawer
     //public int InnerSpan
     //{ get; set; } = 30;
 
+
+    private int _innerSpan = 30;
     [Display(Name = "内部间隔", GroupName = "折线信息", Order = 0)]
     public int InnerSpan
     {
-        get { return (int)GetValue(InnerSpanProperty); }
-        set { SetValue(InnerSpanProperty, value); }
+        get { return _innerSpan; }
+        set
+        {
+            _innerSpan = value;
+            RaisePropertyChanged();
+            this.Diagram?.RefreshLinkDrawer();
+        }
     }
-
-
-    public static readonly DependencyProperty InnerSpanProperty =
-        DependencyProperty.Register("InnerSpan", typeof(int), typeof(BrokenLinkDrawer), new FrameworkPropertyMetadata(30, (d, e) =>
-         {
-             BrokenLinkDrawer control = d as BrokenLinkDrawer;
-
-             if (control == null) return;
-
-             if (e.OldValue is int o)
-             {
-
-             }
-
-             if (e.NewValue is int n)
-             {
-
-             }
-
-         }));
-
 
     public override Geometry DrawPath(Link link, out Point center)
     {

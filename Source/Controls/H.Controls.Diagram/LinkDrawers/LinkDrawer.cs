@@ -1,9 +1,11 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
+using H.Mvvm.ViewModels.Base;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 using System.Xml.Serialization;
 
@@ -18,124 +20,66 @@ public interface ILinkDrawer
     bool IsUseArrow { get; set; }
 }
 
-public abstract class LinkDrawer : DependencyObject, ILinkDrawer
+public abstract class LinkDrawer : BindableBase, ILinkDrawer
 {
     [System.Text.Json.Serialization.JsonIgnore]
-
     [XmlIgnore]
     public Diagram Diagram { get; set; }
 
+    private bool _isLinkCrossBound = true;
     [Display(Name = "连线环绕边框", GroupName = "基础信息", Order = 0)]
     public bool IsLinkCrossBound
     {
-        get { return (bool)GetValue(IsLinkCrossBoundProperty); }
-        set { SetValue(IsLinkCrossBoundProperty, value); }
+        get { return _isLinkCrossBound; }
+        set
+        {
+            _isLinkCrossBound = value;
+            RaisePropertyChanged();
+            this.Diagram?.RefreshLinkDrawer();
+        }
     }
 
-
-    public static readonly DependencyProperty IsLinkCrossBoundProperty =
-        DependencyProperty.Register("IsLinkCrossBound", typeof(bool), typeof(LinkDrawer), new PropertyMetadata(true, (d, e) =>
-        {
-            Layout control = d as Layout;
-
-            if (control == null) return;
-
-            //bool config = e.NewValue as bool;
-
-            //control.Diagram?.RefreshLayout();
-
-            control.Diagram?.RefreshLinkDrawer();
-
-        }));
-
-
+    private bool _isUseArrow = true;
     [Display(Name = "显示箭头", GroupName = "基础信息", Order = 0)]
     public bool IsUseArrow
     {
-        get { return (bool)GetValue(IsUseArrowProperty); }
-        set { SetValue(IsUseArrowProperty, value); }
+        get { return _isUseArrow; }
+        set
+        {
+            _isUseArrow = value;
+            RaisePropertyChanged();
+            this.Diagram?.RefreshLinkDrawer();
+        }
     }
-
-
-    public static readonly DependencyProperty IsUseArrowProperty =
-        DependencyProperty.Register("IsUseArrow", typeof(bool), typeof(LinkDrawer), new FrameworkPropertyMetadata(true, (d, e) =>
-         {
-             LinkDrawer control = d as LinkDrawer;
-
-             if (control == null) return;
-
-             if (e.OldValue is bool o)
-             {
-
-             }
-
-             if (e.NewValue is bool n)
-             {
-
-             }
-
-             control.Diagram?.RefreshLinkDrawer();
-
-         }));
 
     //[Display(Name = "显示箭头", GroupName = "基础信息", Order = 0)]
     //public bool IsUseArrow { get; set; } = true;
 
+    private double _arrowAngle;
     [Display(Name = "箭头角度", GroupName = "基础信息", Order = 0)]
     public double ArrowAngle
     {
-        get { return (double)GetValue(ArrowAngleProperty); }
-        set { SetValue(ArrowAngleProperty, value); }
+        get { return _arrowAngle; }
+        set
+        {
+            _arrowAngle = value;
+            RaisePropertyChanged();
+            this.Diagram?.RefreshLinkDrawer();
+        }
     }
 
 
-    public static readonly DependencyProperty ArrowAngleProperty =
-        DependencyProperty.Register("ArrowAngle", typeof(double), typeof(LinkDrawer), new FrameworkPropertyMetadata(Math.PI / 6, (d, e) =>
-         {
-             LinkDrawer control = d as LinkDrawer;
-
-             if (control == null) return;
-
-             if (e.OldValue is double o)
-             {
-
-             }
-
-             if (e.NewValue is double n)
-             {
-
-             }
-
-         }));
-
-
-
+    private double _arrowLength = 5.0;
     [Display(Name = "箭头长度", GroupName = "基础信息", Order = 0)]
     public double ArrowLength
     {
-        get { return (double)GetValue(ArrowLengthProperty); }
-        set { SetValue(ArrowLengthProperty, value); }
+        get { return _arrowLength; }
+        set
+        {
+            _arrowLength = value;
+            RaisePropertyChanged();
+        }
     }
-
-
-    public static readonly DependencyProperty ArrowLengthProperty =
-        DependencyProperty.Register("ArrowLength", typeof(double), typeof(LinkDrawer), new FrameworkPropertyMetadata(5.0, (d, e) =>
-         {
-             LinkDrawer control = d as LinkDrawer;
-
-             if (control == null) return;
-
-             if (e.OldValue is double o)
-             {
-
-             }
-
-             if (e.NewValue is double n)
-             {
-
-             }
-
-         }));
 
     [Display(Name = "显示名称", GroupName = "基础信息", Order = 0)]
     public string DisplayName { get; set; }
