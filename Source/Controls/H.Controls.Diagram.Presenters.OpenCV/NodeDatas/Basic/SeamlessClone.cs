@@ -74,10 +74,10 @@ public class SeamlessClone : BasicOpenCVNodeDataBase
     protected override IFlowableResult Invoke()
     {
         string path = this.DetectFilePath;
-        Mat src = new Mat(path, ImreadModes.Color);
-        Mat dst = this.PreviourMat;
-        Mat src0 = src.Resize(dst.Size(), 0, 0, InterpolationFlags.Lanczos4);
-        Mat mask = Mat.Zeros(src0.Size(), MatType.CV_8UC3);
+        using Mat src = new Mat(path, ImreadModes.Color);
+        using Mat dst = this.PreviourMat;
+        using Mat src0 = src.Resize(dst.Size(), 0, 0, InterpolationFlags.Lanczos4);
+        using Mat mask = Mat.Zeros(src0.Size(), MatType.CV_8UC3);
         mask.Circle(200, 200, 100, Scalar.White, -1);
         Mat blend = new Mat();
         Cv2.SeamlessClone(src0, dst, mask, this.Point, blend, this.Method);

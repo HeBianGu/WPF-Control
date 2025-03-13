@@ -382,7 +382,11 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
     protected virtual void OnDeserialized()
     {
-        this.Nodes = LoadToNodes(this.Datas.NodeDatas, this.Datas.LinkDatas).ToObservable();
+        Application.Current.Dispatcher.Invoke(() =>
+        {
+            this.Nodes = LoadToNodes(this.Datas.NodeDatas, this.Datas.LinkDatas).ToObservable();
+        });
+
     }
     #endregion
 

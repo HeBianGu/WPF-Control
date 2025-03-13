@@ -25,7 +25,7 @@ public static class ProjectExtension
         if (project.SelectedItem == null)
             return false;
         if (r == true)
-            projectService.Current = project.SelectedItem;
+            return await projectService.ShowOpenProject(project.SelectedItem);
         return true;
     }
 

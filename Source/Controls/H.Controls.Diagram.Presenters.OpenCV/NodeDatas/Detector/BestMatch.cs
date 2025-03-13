@@ -15,7 +15,7 @@ public class BestMatch : MatchDetectorOpenCVNodeDataBase
     protected override IFlowableResult Invoke()
     {
         Mat img2 = this.PreviourMat;
-        Mat img1 = new Mat(GetDataPath(ImagePath.Match1), ImreadModes.Color);
+        using Mat img1 = new Mat(GetDataPath(ImagePath.Match1), ImreadModes.Color);
         using ORB orb = ORB.Create(1000);
         using Mat descriptors1 = new Mat();
         using Mat descriptors2 = new Mat();

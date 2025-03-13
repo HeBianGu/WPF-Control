@@ -1,10 +1,10 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
-[Display(Name = "图像拼接", GroupName = "基础函数", Description = "降噪成黑白色", Order = 71)]
+[Display(Name = "图像拼接", GroupName = "基础函数", Description = "将多张重叠的图像拼接成一张更大、更完整的图像", Order = 71)]
 public class Stitching : BasicOpenCVNodeDataBase
 {
     private Stitcher.Mode _mode = Stitcher.Mode.Scans;
     [DefaultValue(Stitcher.Mode.Scans)]
-    [Display(Name = "Mode", GroupName = "数据")]
+    [Display(Name = "拼接模式", GroupName = "数据",Description = "参数用于指定图像拼接的模式或策略")]
     public Stitcher.Mode Mode
     {
         get { return _mode; }

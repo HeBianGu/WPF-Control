@@ -8,6 +8,7 @@ global using System.Windows;
 global using System.Windows.Controls;
 global using System.Windows.Data;
 global using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace H.Modules.Project;
 
@@ -159,15 +160,17 @@ public partial class ProjectBox : ListBox
         if (projects == null)
             return;
 
-        IOrderedEnumerable<IProjectItem> order = projects.OrderBy(l => !l.IsFixed).ThenBy(l => l.UpdateTime);
-
+        IOrderedEnumerable<IProjectItem> order = projects.OrderBy(l => !l.IsFixed).ThenByDescending(l => l.UpdateTime);
         IEnumerable<IGrouping<string, IProjectItem>> groups = order.GroupBy(this.GroupBy ?? new Func<IProjectItem, string>(l =>
                 {
                     if (l.IsFixed) return "已固定";
                     return l.UpdateTime.Date == DateTime.Now.Date ? "今天" : "更早";
                 }));
-
         ObservableCollection<ProjectItemViewModel> models = new ObservableCollection<ProjectItemViewModel>();
+        this.Dispatcher.Invoke(() =>
+        {
+            this.ItemsSource = models;
+        });
 
         List<IGrouping<string, IProjectItem>> list = groups.ToList();
         list.Sort((x, y) =>
@@ -176,15 +179,6 @@ public partial class ProjectBox : ListBox
             if (x.Key == "已固定") return -1;
             return x.Key == "更早" ? 1 : 0;
         });
-
-        foreach (IGrouping<string, IProjectItem> group in list)
-        {
-            foreach (IProjectItem item in group)
-            {
-                models.Add(new ProjectItemViewModel(item) { GroupName = group.Key });
-            }
-        }
-
         Application.Current.Dispatcher.Invoke(() =>
         {
             //Do ：分组
@@ -195,9 +189,15 @@ public partial class ProjectBox : ListBox
             //vw.SortDescriptions.Clear(); 
             //vw.SortDescriptions.Add(new SortDescription());
         });
-        this.Dispatcher.Invoke(() =>
+        foreach (IGrouping<string, IProjectItem> group in list)
         {
-            this.ItemsSource = models;
-        });
+            foreach (IProjectItem item in group)
+            {
+                this.Dispatcher.BeginInvoke(DispatcherPriority.Input, new Action(() =>
+                          {
+                              models.Add(new ProjectItemViewModel(item) { GroupName = group.Key });
+                          }));
+            }
+        }
     }
 }

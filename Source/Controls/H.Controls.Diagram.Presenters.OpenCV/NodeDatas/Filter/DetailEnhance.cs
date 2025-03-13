@@ -4,7 +4,7 @@ public class DetailEnhance : FilterOpenCVNodeDataBase
 {
     private float _sigmaS = 10f;
     [DefaultValue(10f)]
-    [Display(Name = "SigmaS", GroupName = "数据")]
+    [Display(Name = "空间标准差", GroupName = "数据", Description = "较大的 SigmaS 会使滤波核覆盖更广的区域，平滑效果更明显；较小的 SigmaS 则限制滤波核的作用范围，保留更多细节")]
     [Range(0, 200)]
     public float SigmaS
     {
@@ -18,7 +18,7 @@ public class DetailEnhance : FilterOpenCVNodeDataBase
 
     private float _sigmaR = 0.15f;
     [DefaultValue(0.15f)]
-    [Display(Name = "SigmaR", GroupName = "数据")]
+    [Display(Name = "范围标准差", GroupName = "数据", Description = "较大的 SigmaR 允许像素值差异较大的像素参与平滑，平滑效果更强；较小的 SigmaR 则更注重保留边缘，避免平滑边缘区域")]
     [Range(0, 1.0)]
     public float SigmaR
     {

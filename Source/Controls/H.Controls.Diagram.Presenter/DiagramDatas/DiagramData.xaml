@@ -21,7 +21,7 @@
                    BorderThickness="5"
                    Layout="{Binding Layout}"
                    LinkDrawer="{Binding LinkDrawer}"
-                   NodesSource="{Binding Nodes}"
+                   NodesSource="{Binding Nodes, IsAsync=True}"
                    SelectedPart="{Binding SelectedPart}"
                    UseAnimation="False"
                    UseAutoAddLinkOnEnd="True">

@@ -111,14 +111,6 @@ public class Yolov3 : YolovOpenCVNodeDataBase
         return await base.BeforeInvokeAsync(previors, current);
     }
 
-
-    //public override IFlowableResult Invoke(Part previors, Node current)
-    //{
-    //    return !File.Exists(this.WeightFilePath)
-    //        ? this.Error("训练模型不存在：https://pjreddie.com/media/files/yolov3.weights 请先下载")
-    //        : base.Invoke(previors, current);
-    //}
-
     protected override IFlowableResult Invoke()
     {
 
@@ -205,10 +197,6 @@ public class Yolov3 : YolovOpenCVNodeDataBase
                 new Size(textSize.Width, textSize.Height + baseline)), Scalar.Red, Cv2.FILLED);
             Cv2.PutText(org, label, new Point(x1, box.Y - box.Height / 2 - baseline), HersheyFonts.HersheyTriplex, 0.5, Scalar.White);
         }
-        ////显示结果
-        //Cv2.ImShow("Result", org);
-        //int key = Cv2.WaitKey();
-
         this.Mat = org;
         this.UpdateMatToView();
         return base.Invoke();

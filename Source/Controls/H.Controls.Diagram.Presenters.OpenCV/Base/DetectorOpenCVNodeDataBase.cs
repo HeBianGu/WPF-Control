@@ -13,6 +13,15 @@ public abstract class DetectorOpenCVNodeDataBase : OpenCVNodeData, IDetectorOpen
             RaisePropertyChanged();
         }
     }
+
+    protected virtual Mat GetPrviewMat(Mat result)
+    {
+        if (this.DetectorPreviewType == PreviewType.Previous)
+            return this.PreviourMat.Clone();
+        if (this.DetectorPreviewType == PreviewType.Result)
+            return result.Clone();
+        return this.SrcMat.Clone();
+    }
 }
 
 public enum PreviewType

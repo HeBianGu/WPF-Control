@@ -6,7 +6,7 @@ public class DnnSuperres : MLOpenCVNodeDataBase
 {
     private string _algo = "fsrcnn";
     [DefaultValue("fsrcnn")]
-    [Display(Name = "算法", GroupName = "数据")]
+    [Display(Name = "算法类型", GroupName = "数据")]
     public string Algo
     {
         get { return _algo; }

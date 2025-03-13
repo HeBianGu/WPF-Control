@@ -1,5 +1,5 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
-[Display(Name = "通道分割", GroupName = "基础函数", Order = 30)]
+[Display(Name = "通道分割", GroupName = "基础函数",Description = "分割BGR通道", Order = 30)]
 public class SplitBGR : BasicOpenCVNodeDataBase
 {
     private SplitSelectType _splitSelectType;
@@ -36,7 +36,7 @@ public class SplitBGR : BasicOpenCVNodeDataBase
 
         if (this.UseMarge)
         {
-            Mat zero = new Mat(mats[0].Size(), MatType.CV_8UC1, new Scalar(0));
+            using Mat zero = new Mat(mats[0].Size(), MatType.CV_8UC1, new Scalar(0));
             if (this.SplitSelectType == SplitSelectType.B)
             {
                 Mat sum = new Mat();
@@ -60,7 +60,6 @@ public class SplitBGR : BasicOpenCVNodeDataBase
         {
             this.Mat = mats[(int)this.SplitSelectType];
         }
-
         this.UpdateMatToView();
         return base.Invoke(previors, current);
     }

@@ -1,10 +1,15 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
-[Display(Name = "平面细分", GroupName = "基础函数", Description = "降噪成黑白色", Order = 72)]
+[Display(Name = "平面细分", GroupName = "基础函数", Description = "将平面区域划分为更小、更简单的子区域（如三角形、四边形等）的技术", Order = 72)]
 public class Subdiv2D : BasicOpenCVNodeDataBase
 {
     private Subdiv2DOutType _outType = Subdiv2DOutType.Vonoroi;
+    /// <summary>
+    /// 三角形（Triangles）：将平面区域划分为三角形。三角形是最简单的多边形，适合大多数计算任务。
+    /// 四边形（Quads）：将平面区域划分为四边形。四边形在某些应用中（如纹理映射）可能更高效。
+    /// 多边形（Polygons）：将平面区域划分为任意多边形。这种类型更灵活，但计算复杂度较高。
+    /// </summary>
     [DefaultValue(Subdiv2DOutType.Vonoroi)]
-    [Display(Name = "OutType", GroupName = "数据")]
+    [Display(Name = "单元类型", GroupName = "数据", Description = "定义了平面细分的输出单元类型")]
     public Subdiv2DOutType OutType
     {
         get { return _outType; }
@@ -16,8 +21,12 @@ public class Subdiv2D : BasicOpenCVNodeDataBase
     }
 
     private int _size = 600;
+    /// <summary>
+    /// 绝对大小：指定每个单元的具体尺寸（如边长或面积）。
+    /// 相对大小：根据输入区域的尺寸动态调整单元大小。
+    /// </summary>
     [DefaultValue(600)]
-    [Display(Name = "Size", GroupName = "数据")]
+    [Display(Name = "单元大小", GroupName = "数据", Description = "定义了细分后单元的目标大小")]
     public int Size
     {
         get { return _size; }

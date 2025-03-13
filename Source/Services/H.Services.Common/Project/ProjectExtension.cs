@@ -27,7 +27,7 @@ namespace H.Services.Common
         }
         public static async Task<bool?> ShowEidtProject(this IProjectService projectService, IProjectItem project, Action<IDialog> action = null)
         {
-            return await IocMessage.Form.ShowEdit(project,x=>
+            return await IocMessage.Form.ShowEdit(project, x =>
             {
                 x.Title = "编辑项目";
                 action?.Invoke(x);
@@ -74,6 +74,7 @@ namespace H.Services.Common
            {
                x.Title = "正在打开工程...";
                project.UpdateTime = DateTime.Now;
+               Thread.Sleep(2000);
                return projectService.Save(out string message);
            });
             if (r == false && !string.IsNullOrEmpty(message))

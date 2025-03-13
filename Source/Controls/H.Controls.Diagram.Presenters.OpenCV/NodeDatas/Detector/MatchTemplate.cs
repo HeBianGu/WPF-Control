@@ -27,22 +27,17 @@ public class MatchTemplate : MatchDetectorOpenCVNodeDataBase
         var src = this.PreviourMat;
         using (Mat template = Cv2.ImRead(this.TemplateFilePath, ImreadModes.Color))
         {
-            Mat result = new Mat();
-
+            using Mat result = new Mat();
             // 获取模板图像的尺寸
             int resultCols = src.Cols - template.Cols + 1;
             int resultRows = src.Rows - template.Rows + 1;
             result.Create(resultRows, resultCols, MatType.CV_32FC1);
-
             // 进行模板匹配
             Cv2.MatchTemplate(src, template, result, TemplateMatchModes.CCoeffNormed);
-
             // 归一化结果
             Cv2.Normalize(result, result, 0, 1, NormTypes.MinMax, -1);
-
             // 找到最佳匹配位置
             Cv2.MinMaxLoc(result, out _, out double maxVal, out _, out Point maxLoc);
-
             // 设置匹配阈值
             double threshold = 0.8;
             if (maxVal >= threshold)
@@ -50,11 +45,6 @@ public class MatchTemplate : MatchDetectorOpenCVNodeDataBase
                 Mat view = this.GetPrviewMat(result);
                 // 在源图像上绘制矩形框
                 Cv2.Rectangle(view, maxLoc, new Point(maxLoc.X + template.Cols, maxLoc.Y + template.Rows), Scalar.Red, 2);
-                //// 显示结果
-                //Cv2.ImShow("Source", src);
-                //Cv2.ImShow("Template", template);
-                //Cv2.ImShow("Result", result);
-                //Cv2.WaitKey(0);
                 this.Mat = view;
                 UpdateMatToView();
             }
@@ -64,15 +54,6 @@ public class MatchTemplate : MatchDetectorOpenCVNodeDataBase
             }
         }
         return base.Invoke();
-    }
-
-    protected virtual Mat GetPrviewMat(Mat result)
-    {
-        if (this.DetectorPreviewType == PreviewType.Previous)
-            return this.PreviourMat.Clone();
-        if (this.DetectorPreviewType == PreviewType.Result)
-            return result.Clone();
-        return this.SrcMat.Clone();
     }
 }
 

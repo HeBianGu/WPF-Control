@@ -55,6 +55,7 @@ public abstract class ImageImportNodeDataBase : OpenCVNodeData
     {
         this.Mat = new Mat(this.SrcFilePath, ImreadModes.Color);
         this.SrcMat = this.Mat;
+        this.UpdateMatToView();
         return base.Invoke(previors, current);
     }
 }

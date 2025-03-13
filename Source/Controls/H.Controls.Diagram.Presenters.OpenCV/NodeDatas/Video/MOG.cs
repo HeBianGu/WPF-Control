@@ -19,7 +19,7 @@ public class MOG : OpenCVNodeData, IVideoFlowable
 
 
     private int _history = 200;
-    [Display(Name = "History", GroupName = "数据")]
+    [Display(Name = "历史帧数", GroupName = "数据",Description = "设置高斯混合模型的历史帧数")]
     public int History
     {
         get { return _history; }
@@ -32,7 +32,7 @@ public class MOG : OpenCVNodeData, IVideoFlowable
 
 
     private int _nMixtures = 5;
-    [Display(Name = "nMixtures", GroupName = "数据")]
+    [Display(Name = "成分数量", GroupName = "数据",Description = "设置高斯混合模型中混合成分的数量")]
     public int nMixtures
     {
         get { return _nMixtures; }
@@ -45,7 +45,7 @@ public class MOG : OpenCVNodeData, IVideoFlowable
 
 
     private double _backgroundRatio = 0.7;
-    [Display(Name = "BackgroundRatio", GroupName = "数据")]
+    [Display(Name = "背景比例", GroupName = "数据",Description = "设置背景建模过程中前景和背景的比例")]
     public double BackgroundRatio
     {
         get { return _backgroundRatio; }
@@ -58,7 +58,7 @@ public class MOG : OpenCVNodeData, IVideoFlowable
 
 
     private double _noiseSigma = 0;
-    [Display(Name = "NoiseSigma", GroupName = "数据")]
+    [Display(Name = "噪声水平", GroupName = "数据",Description = "它决定了在背景建模过程中如何处理图像中的噪声")]
     public double NoiseSigma
     {
         get { return _noiseSigma; }
@@ -70,7 +70,7 @@ public class MOG : OpenCVNodeData, IVideoFlowable
     }
 
     private double _learningRate = 0.01;
-    [Display(Name = "LearningRate", GroupName = "数据")]
+    [Display(Name = "学习速率", GroupName = "数据",Description = "它决定了新帧对背景模型的影响程度")]
     public double LearningRate
     {
         get { return _learningRate; }

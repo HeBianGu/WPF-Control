@@ -88,8 +88,9 @@ public class HoughLines : DetectorOpenCVNodeDataBase
     protected override IFlowableResult Invoke()
     {
         Mat imgGray = this.PreviourMat;
-        Mat imgStd = new Mat(this.SrcFilePath, ImreadModes.Color);
+        //Mat imgStd = new Mat(this.SrcFilePath, ImreadModes.Color);
         LineSegmentPolar[] segStd = Cv2.HoughLines(imgGray, Rho, Theta, Threshold, Srn, Stn);
+        Mat imgStd = this.GetPrviewMat(imgGray);
         int limit = Math.Min(segStd.Length, 10);
         for (int i = 0; i < limit; i++)
         {

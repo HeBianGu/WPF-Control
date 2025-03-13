@@ -21,16 +21,6 @@ public class VideoCapture : VideoCaptureImageImportNodeDataBase
         this.SrcFilePath = GetDataPath(MoviePath.Bach);
     }
 
-    //protected virtual ImageSource CreateImage(string path)
-    //{
-    //    using OpenCvSharp.VideoCapture capture = new OpenCvSharp.VideoCapture(this.SrcFilePath);
-    //    if (!capture.IsOpened())
-    //        return null;
-    //    Mat image = new Mat();
-    //    capture.Read(image); // same as cvQueryFrame
-    //    return image.Empty() ? null : (ImageSource)image.ToBitmapSource();
-    //}
-
     private int _startFrame = 0;
     [DefaultValue(0)]
     [Display(Name = "采样帧间隔", GroupName = "数据")]

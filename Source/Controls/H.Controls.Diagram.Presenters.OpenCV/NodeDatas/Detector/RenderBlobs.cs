@@ -22,7 +22,6 @@ public class RenderBlobs : DetectorOpenCVNodeDataBase
             return Error("没有识别出联通区域");
         Mat labelview = preMat.EmptyClone();
         cc.RenderBlobs(labelview);
-
         if (UseRectangle)
         {
             foreach (ConnectedComponents.Blob blob in cc.Blobs.Skip(1))
@@ -30,7 +29,6 @@ public class RenderBlobs : DetectorOpenCVNodeDataBase
                 labelview.Rectangle(blob.Rect, Scalar.Red);
             }
         }
-
         UpdateMatToView(labelview);
         return base.Invoke();
     }
