@@ -35,7 +35,7 @@
         <Setter Property="Cattach.CaptionBorderBrush" Value="{x:Null}" />
         <Setter Property="Cattach.CaptionBorderThickness" Value="0" />
         <Setter Property="Cattach.CaptionFontSize" Value="{DynamicResource {x:Static FontSizeKeys.Default}}" />
-        <Setter Property="Cattach.CaptionMargin" Value="3 0" />
+        <Setter Property="Cattach.CaptionMargin" Value="3 0 0 0" />
         <!--  Guide  -->
         <Setter Property="Cattach.UseGuide" Value="True" />
         <Setter Property="Cattach.GuideTitle" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Header}" />
