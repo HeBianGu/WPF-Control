@@ -28,11 +28,11 @@ namespace H.Modules.Guide
         private readonly UIElement _element;
         private readonly ContentControl _contentControl = new ContentControl() { Margin = new Thickness(10.0), HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top };
 
-        private readonly string _version;
-        public GuideBox(UIElement element, string version)
+        private readonly Predicate<UIElement> _predicate;
+        public GuideBox(UIElement element, Predicate<UIElement> predicate = null)
         {
             this._element = element;
-            this._version = version;
+            this._predicate = predicate;
             if (element is FrameworkElement framework)
             {
                 framework.SizeChanged += (l, k) =>
@@ -268,7 +268,7 @@ namespace H.Modules.Guide
 
         private void LoadData(UIElement element)
         {
-            var tree = element.GetGuideTree(x => Cattach.GetGuideAssemblyVersion(x) == this._version || this._version == null || this._version == "1.0.0.0");
+            var tree = element.GetGuideTree(this._predicate);
             this._guideTree = tree;
             this.CurrentIndex = 1;
             this.Total = tree.Roots.Count;
@@ -408,6 +408,10 @@ namespace H.Modules.Guide
                     this.Close();
                 this.AutoClick();
                 this.RefreshClip(this._element);
+
+                this._contentControl.Focus();
+                var nbtn = this._contentControl.GetChild<Button>(x => x.Name == "bt_next");
+                nbtn?.Focus();
             }));
         }
     }

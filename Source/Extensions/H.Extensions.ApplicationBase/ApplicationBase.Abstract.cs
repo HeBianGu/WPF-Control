@@ -1,4 +1,5 @@
-﻿using H.Extensions.Common;
+﻿using H.Extensions.Attach;
+using H.Extensions.Common;
 using H.Services.Common;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -103,7 +104,10 @@ namespace H.Extensions.ApplicationBase
                          x.Width = 500;
                          x.Height = 300;
                          if (x is Window w)
+                         {
                              w.SizeToContent = SizeToContent.Manual;
+                             Cattach.SetCaptionBackground(w, null);
+                         }
                      }, func).Result;
                 });
                 if (r == false)
@@ -142,6 +146,7 @@ namespace H.Extensions.ApplicationBase
                     {
                         w.SizeToContent = SizeToContent.WidthAndHeight;
                         w.ShowInTaskbar = true;
+                        Cattach.SetCaptionBackground(w, null);
                     }
                        
                 }).Result;

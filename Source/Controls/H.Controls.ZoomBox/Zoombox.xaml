@@ -495,7 +495,7 @@
                                                   CheckedGlyph="&#xE741;"
                                                   IsChecked="{Binding Path=ViewFinderVisibility, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource TrueIfVisibleConverter}}"
                                                   IsTabStop="False"
-                                                  ToolTip="Show View Finder"
+                                                  ToolTip="显示/隐藏定位器"
                                                   UncheckedGlyph="&#xE1D9;">
                                 <Control.Style>
                                     <Style BasedOn="{StaticResource {x:Static FontIconToggleButtonKeys.Default}}"

@@ -71,9 +71,10 @@ namespace H.Mvvm.ViewModels.Base
 
 
         private string _icon;
-        [System.Text.Json.Serialization.JsonIgnore]
-        [System.Xml.Serialization.XmlIgnore]
+        //[System.Text.Json.Serialization.JsonIgnore]
+        //[System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
+        [Display(Name = "图标", GroupName = "常用")]
         public virtual string Icon
         {
             get { return _icon; }

@@ -57,18 +57,17 @@ public class TextPortData : PortData, ITextPortData
         }
     }
 
-    private string _icon;
-    [XmlIgnore]
-    [Display(Name = "图标", GroupName = "常用")]
-    public override string Icon
-    {
-        get { return _icon; }
-        set
-        {
-            _icon = value;
-            RaisePropertyChanged();
-        }
-    }
+    //private string _icon;
+    //[Display(Name = "图标", GroupName = "常用")]
+    //public override string Icon
+    //{
+    //    get { return _icon; }
+    //    set
+    //    {
+    //        _icon = value;
+    //        RaisePropertyChanged();
+    //    }
+    //}
 
     private double _fontSize;
     [Display(Name = "字号", GroupName = "文本")]
@@ -131,7 +130,6 @@ public class TextPortData : PortData, ITextPortData
     }
 
     private Thickness _textMargin;
-    [XmlIgnore]
     [Display(Name = "文本边距", GroupName = "样式")]
     public Thickness TextMargin
     {

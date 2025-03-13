@@ -20,7 +20,8 @@
                     </CollectionViewSource.SortDescriptions>
                 </CollectionViewSource>
             </Control.Resources>
-            <ItemsControl Grid.IsSharedSizeScope="True"
+            <ItemsControl Margin="5,0"
+                          Grid.IsSharedSizeScope="True"
                           ItemsSource="{Binding Source={StaticResource GroupedGuideDatas}}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>

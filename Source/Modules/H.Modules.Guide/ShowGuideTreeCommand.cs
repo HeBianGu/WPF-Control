@@ -3,13 +3,10 @@ using H.Services.Common;
 namespace H.Modules.Guide;
 [Icon("\xEC92")]
 [Display(Name = "功能列表", Description = "显示版本功能列表")]
-public class ShowGuideTreeCommand : DisplayMarkupCommandBase
+public class ShowGuideTreeCommand : ShowGuideTreeCommandBase
 {
-    public override async Task ExecuteAsync(object parameter)
+    protected override bool IsMatch(UIElement element)
     {
-        UIElement element = parameter is UIElement e ? e : GuideExtension.GetAdornerElement();
-        var tree = element.GetGuideTree();
-        var presenter = new GuideTreePresenter(tree);
-        await IocMessage.Dialog.Show(presenter);
+        return true;
     }
 }
