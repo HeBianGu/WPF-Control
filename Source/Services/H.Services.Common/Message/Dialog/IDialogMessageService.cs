@@ -27,11 +27,11 @@ namespace H.Services.Common
             return r;
         }
 
-        public static async Task<bool?> ShowDialog<T>(this IDialogMessageService dialog, Action<T> option, Action<T> sumitAction, Action<IDialog> builder = null, Func<bool> canSumit = null) where T:new()
+        public static async Task<bool?> ShowDialog<T>(this IDialogMessageService dialog, Action<T> option, Action<T> sumitAction, Action<IDialog> builder = null, Func<bool> canSumit = null) where T : new()
         {
             var presenter = new T();
             option?.Invoke(presenter);
-            return await dialog.ShowDialog(presenter, x => sumitAction?.Invoke(presenter),builder, canSumit);
+            return await dialog.ShowDialog(presenter, x => sumitAction?.Invoke(presenter), builder, canSumit);
         }
 
         public static async Task<bool?> ShowDeleteAllDialog(this IDialogMessageService service, Action<bool?> sumitAction)

@@ -57,7 +57,8 @@
                 Content="ImagePresenter">
             <Button.CommandParameter>
                 <ImagePresenter Width="Auto"
-                                Height="Auto" HorizontalContentAlignment="Center"
+                                Height="Auto"
+                                HorizontalContentAlignment="Center"
                                 ImageSource="{h:Logo}" />
             </Button.CommandParameter>
         </Button>

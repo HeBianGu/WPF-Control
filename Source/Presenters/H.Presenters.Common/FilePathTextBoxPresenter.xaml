@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Presenters.Common">
+    <DataTemplate DataType="{x:Type local:TextBoxPresenter}">
+        <DockPanel>
+            <Button DockPanel.Dock="Right" Command="{ShowOpenProjectCommand}"
+                    Content="..." />
+            <TextBox Height="Auto"
+                     MinHeight="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}"
+                     Margin="5"
+                     AcceptsReturn="True"
+                     Style="{DynamicResource {x:Static textbo}}"
+                     Text="{Binding Text}"
+                     TextWrapping="Wrap"
+                     ToolTip="{Binding Text}" />
+        </DockPanel>
+    </DataTemplate>
+</ResourceDictionary>
