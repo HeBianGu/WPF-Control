@@ -2,18 +2,18 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Presenters.Common">
-    <DataTemplate DataType="{x:Type local:TextBoxPresenter}">
+    <DataTemplate DataType="{x:Type local:FilePathTextBoxPresenter}">
         <DockPanel>
-            <Button DockPanel.Dock="Right" Command="{ShowOpenProjectCommand}"
-                    Content="..." />
+            <Button Command="{ShowOpenProjectCommand}"
+                    Content="..."
+                    DockPanel.Dock="Right" />
             <TextBox Height="Auto"
                      MinHeight="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}"
                      Margin="5"
                      AcceptsReturn="True"
-                     Style="{DynamicResource {x:Static textbo}}"
-                     Text="{Binding Text}"
+                     Text="{Binding FilePath}"
                      TextWrapping="Wrap"
-                     ToolTip="{Binding Text}" />
+                     ToolTip="{Binding FilePath}" />
         </DockPanel>
     </DataTemplate>
 </ResourceDictionary>

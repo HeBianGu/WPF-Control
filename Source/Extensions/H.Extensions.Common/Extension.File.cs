@@ -1,6 +1,5 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-
-using H.Services.Common.Message.FileDialog;
+using H.Services.Common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -406,15 +405,15 @@ namespace H.Extensions.Common
 
     public static class IODialogExtension
     {
-        public static string ShowOpenImageFileCommon(this IIODialog dialog, string initialDirectory = null)
+        public static string ShowOpenImageFileCommon(this IIOFileDialogService dialog, string initialDirectory = null)
         {
             return dialog.ShowOpenFile(FileExtension.ImageExtensionsFilter, "打开图片", initialDirectory);
         }
-        public static string ShowOpenVedioFileCommon(this IIODialog dialog, string initialDirectory = null)
+        public static string ShowOpenVedioFileCommon(this IIOFileDialogService dialog, string initialDirectory = null)
         {
             return dialog.ShowOpenFile(FileExtension.VedioExtensionsFilter, "打开视频", initialDirectory);
         }
-        public static string ShowOpenAudioFileCommon(this IIODialog dialog, string initialDirectory = null)
+        public static string ShowOpenAudioFileCommon(this IIOFileDialogService dialog, string initialDirectory = null)
         {
             return dialog.ShowOpenFile(FileExtension.AudioExtensionsFilter, "打开音频", initialDirectory);
         }

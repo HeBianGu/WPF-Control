@@ -1,7 +1,5 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-using H.Services.Common.Message.FileDialog;
-
 namespace H.Services.Common
 {
     public static class IocMessage
@@ -15,7 +13,9 @@ namespace H.Services.Common
         public static INoticeMessageService Notify => Ioc.GetService<INoticeMessageService>(throwIfNone: false);
         public static IFormMessageService Form => Ioc.GetService<IFormMessageService>(throwIfNone: false);
 
-        public static IIODialog IODialog => Ioc.GetService<IIODialog>(throwIfNone: false) ?? new IODialog();
+        public static IIOFileDialogService IOFileDialog => Ioc.GetService<IIOFileDialogService>(throwIfNone: false) ?? new IOFileDialogService();
+
+        public static IIOFolderDialogService IOFolderDialog => Ioc.GetService<IIOFolderDialogService>(throwIfNone: false);
 
         public static async Task<bool?> ShowDialogMessage(string message, string title = "提示", DialogButton dialogButton = DialogButton.Sumit)
         {
