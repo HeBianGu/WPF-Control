@@ -3,18 +3,30 @@ using H.Mvvm.Attributes;
 using H.Mvvm.ViewModels.Base;
 using System.Threading.Tasks;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace H.Presenters.Common
 {
-    public interface IFilePathTextBoxPresenter
+    public interface IFilePathTextBoxPresenter : IOpenFilePathable
     {
-        string FilePath { get; set; }
+
     }
 
     [Icon("\xE70F")]
+    [Display(Name = "打开文件")]
     public class FilePathTextBoxPresenter : DisplayBindableBase, IFilePathTextBoxPresenter
     {
-        public string FilePath { get; set; }
+        private string _filePath;
+        public string FilePath
+        {
+            get { return _filePath; }
+            set
+            {
+                _filePath = value;
+                RaisePropertyChanged();
+            }
+        }
+        public string Filter { get; set; } = IIOFileDialogOption.defaultFilter;
     }
 
     public static partial class DialogServiceExtension

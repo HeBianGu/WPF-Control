@@ -9,5 +9,6 @@
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/TextBoxPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/SelectItemPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/PasswordBoxPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/FilePathTextBoxPresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

@@ -1,4 +1,5 @@
 ﻿using H.Mvvm;
+using H.Mvvm.Attributes;
 using H.Styles.Default;
 using System.ComponentModel.DataAnnotations;
 using System.Windows.Media;

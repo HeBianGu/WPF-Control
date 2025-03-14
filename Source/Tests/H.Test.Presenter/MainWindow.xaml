@@ -24,6 +24,12 @@
             </Button.CommandParameter>
         </Button>
         <Button Command="{h:ShowCommand}"
+                Content="FilePathTextBoxPresenter">
+            <Button.CommandParameter>
+                <FilePathTextBoxPresenter />
+            </Button.CommandParameter>
+        </Button>
+        <Button Command="{h:ShowCommand}"
                 Content="PasswordBoxPresenter">
             <Button.CommandParameter>
                 <PasswordBoxPresenter Password="TextBoxPresenter" />

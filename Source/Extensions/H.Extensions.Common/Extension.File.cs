@@ -407,15 +407,19 @@ namespace H.Extensions.Common
     {
         public static string ShowOpenImageFileCommon(this IIOFileDialogService dialog, string initialDirectory = null)
         {
-            return dialog.ShowOpenFile(FileExtension.ImageExtensionsFilter, "打开图片", initialDirectory);
+            return dialog.ShowOpenFile(x =>
+            {
+                x.Filter = FileExtension.ImageExtensionsFilter;
+                x.Title = "打开图片";
+            });
         }
         public static string ShowOpenVedioFileCommon(this IIOFileDialogService dialog, string initialDirectory = null)
         {
-            return dialog.ShowOpenFile(FileExtension.VedioExtensionsFilter, "打开视频", initialDirectory);
+            return dialog.ShowOpenFile(x => x.Filter = FileExtension.VedioExtensionsFilter);
         }
         public static string ShowOpenAudioFileCommon(this IIOFileDialogService dialog, string initialDirectory = null)
         {
-            return dialog.ShowOpenFile(FileExtension.AudioExtensionsFilter, "打开音频", initialDirectory);
+            return dialog.ShowOpenFile(x => x.Filter = FileExtension.AudioExtensionsFilter);
         }
     }
 }

@@ -25,16 +25,10 @@ public abstract class ImageNodeDataBase : FlowableNodeData, IImageNodeData
     [Display(Name = "浏览文件", GroupName = "操作,工具")]
     public DisplayCommand OpenCommand => new DisplayCommand(e =>
     {
-        OpenFileDialog openFileDialog = new OpenFileDialog();
-        //openFileDialog.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory; //设置初始路径
-        openFileDialog.Filter = this.GetFilter();
-        openFileDialog.FilterIndex = 2; //设置默认显示文件类型为Csv文件(*.csv)|*.csv
-        openFileDialog.Title = "打开文件"; //获取或设置文件对话框标题
-        openFileDialog.RestoreDirectory = true; //设置对话框是否记忆上次打开的目录
-        openFileDialog.Multiselect = false;//设置多选
-        if (openFileDialog.ShowDialog() != true) return;
-
-        this.OpenFilePath(openFileDialog.FileName);
+        var r = IocMessage.IOFileDialog.ShowOpenFile(this.GetFilter());
+        if (r == null)
+            return;
+        this.OpenFilePath(r);
     });
 
     protected virtual string GetFilter()

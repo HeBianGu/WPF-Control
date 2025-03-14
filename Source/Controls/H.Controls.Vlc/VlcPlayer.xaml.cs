@@ -2,6 +2,7 @@
 
 
 using H.Mvvm;
+using H.Services.Common;
 using Microsoft.Win32;
 using System;
 using System.IO;
@@ -37,15 +38,10 @@ namespace H.Controls.Vlc
             {
                 CommandBinding binding = new CommandBinding(VlcPlayerCommands.OpenFile, (l, k) =>
                 {
-                    OpenFileDialog dialog = new OpenFileDialog();
-
-                    bool? r = dialog.ShowDialog();
-
-                    if (r.HasValue && r.Value)
-                    {
-                        this.VedioSource = new Uri(dialog.FileName, UriKind.Absolute);
-                    }
-
+                    var r = IocMessage.IOFileDialog?.ShowOpenFile(IOFileDialogOptionActions.Video);
+                    if (r == null)
+                        return;
+                    this.VedioSource = new Uri(r, UriKind.Absolute);
                 });
 
                 this.CommandBindings.Add(binding);
@@ -418,7 +414,7 @@ namespace H.Controls.Vlc
             this._vlc = new VlcControl();
             this.Content = this._vlc;
 
-           
+
 
             this._vlc.SourceProvider.CreatePlayer(libDirectory/* pass your player parameters here */);
 

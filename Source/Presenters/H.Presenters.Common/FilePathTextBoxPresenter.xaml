@@ -3,13 +3,16 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Presenters.Common">
     <DataTemplate DataType="{x:Type local:FilePathTextBoxPresenter}">
-        <DockPanel>
-            <Button Command="{ShowOpenProjectCommand}"
+        <DockPanel Margin="0">
+            <Button Padding="10,0"
+                    Command="{ShowOpenFilePathableDialog}"
+                    CommandParameter="{Binding}"
                     Content="..."
                     DockPanel.Dock="Right" />
             <TextBox Height="Auto"
+                     MinWidth="200"
                      MinHeight="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}"
-                     Margin="5"
+                     Margin="1,0"
                      AcceptsReturn="True"
                      Text="{Binding FilePath}"
                      TextWrapping="Wrap"

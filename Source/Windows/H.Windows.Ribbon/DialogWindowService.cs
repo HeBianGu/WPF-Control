@@ -1,5 +1,6 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
+using H.Services.Common;
 using Microsoft.Win32;
 using System;
 using System.Collections;
@@ -53,16 +54,11 @@ namespace H.Windows.Ribbon
         {
             if (parameter is ControlBindableBase data)
             {
-                OpenFileDialog openFileDialog = new OpenFileDialog();
-                openFileDialog.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory; //设置初始路径
-                openFileDialog.Filter = "png文件(*.png)|*.png|jpg文件(*.jpg)|*.jpg|所有文件(*.*)|*.*"; //设置“另存为文件类型”或“文件类型”框中出现的选择内容
-                openFileDialog.FilterIndex = 2; //设置默认显示文件类型为Csv文件(*.csv)|*.csv
-                openFileDialog.Title = "打开文件"; //获取或设置文件对话框标题
-                openFileDialog.RestoreDirectory = true; //设置对话框是否记忆上次打开的目录
-                openFileDialog.Multiselect = false;//设置多选
-                if (openFileDialog.ShowDialog() != true) return;
+                var r = IocMessage.IOFileDialog.ShowOpenImageFile(x =>
+                {
+                    Uri uri = new Uri(x, UriKind.RelativeOrAbsolute);
+                });
 
-                Uri uri = new Uri(openFileDialog.FileName, UriKind.RelativeOrAbsolute);
                 //data.LargeImage = uri;
             }
         }

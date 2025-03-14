@@ -65,21 +65,15 @@ namespace H.Modules.Feedback
 
         public RelayCommand AddFilesCommand => new RelayCommand(async l =>
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "PNG文件(*.png)|*.png|JPG文件(*.jpg)|*.jpg|所有文件(*.*)|*.*"; //设置“另存为文件类型”或“文件类型”框中出现的选择内容
-            openFileDialog.FilterIndex = 2; //设置默认显示文件类型为Csv文件(*.csv)|*.csv
-            openFileDialog.Title = "打开文件"; //获取或设置文件对话框标题
-            openFileDialog.RestoreDirectory = true; //设置对话框是否记忆上次打开的目录
-            openFileDialog.Multiselect = true;//设置多选
-            if (openFileDialog.ShowDialog() != true)
+            var r = IocMessage.IOFileDialog.ShowOpenImageFiles();
+            if (r == null)
                 return;
-
-            if (this.Files.Count + openFileDialog.FileNames.Length > 5)
+            if (this.Files.Count + r.Length > 5)
             {
                 await IocMessage.Dialog.Show("已超过附件上限5个");
                 return;
             }
-            this.Files.AddRange(openFileDialog.FileNames);
+            this.Files.AddRange(r);
         });
     }
 }
