@@ -29,6 +29,8 @@ namespace H.Extensions.Common
 
         public static bool IsImage(this string filePath)
         {
+            if (string.IsNullOrEmpty(filePath))
+                return false;
             return ImageExtensions.Any(x => x.Equals(Path.GetExtension(filePath).Trim('.'), StringComparison.OrdinalIgnoreCase));
         }
 
@@ -48,6 +50,8 @@ namespace H.Extensions.Common
 
         public static bool IsVedio(this string filePath)
         {
+            if (string.IsNullOrEmpty(filePath))
+                return false;
             return VedioExtensions.Any(x => x.Equals(Path.GetExtension(filePath).Trim('.'), StringComparison.OrdinalIgnoreCase));
         }
 
@@ -58,6 +62,8 @@ namespace H.Extensions.Common
         }
         public static bool IsAudio(this string filePath)
         {
+            if (string.IsNullOrEmpty(filePath))
+                return false;
             return AudioExtensions.Any(x => x.Equals(Path.GetExtension(filePath).Trim('.'), StringComparison.OrdinalIgnoreCase));
         }
         public static string ImageExtensionsFilter => $"图像文件({ImageExtension}) |{GetExtension(ImageExtensions)}|所有文件(*.*)|*.*";

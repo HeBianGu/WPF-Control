@@ -6,7 +6,7 @@ using System.Windows.Markup;
 
 namespace H.Data.Test
 {
-    public class GetTestViewModelsExtension : MarkupExtension
+    public class GetTestBindablesExtension : MarkupExtension
     {
         public int Count { get; set; } = 10;
 

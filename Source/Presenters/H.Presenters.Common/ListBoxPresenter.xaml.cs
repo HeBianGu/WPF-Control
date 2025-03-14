@@ -1,0 +1,79 @@
+﻿using H.Mvvm.ViewModels.Base;
+using H.Presenters.Common;
+using System;
+using System.Collections;
+using System.ComponentModel.DataAnnotations;
+using System.Threading.Tasks;
+
+namespace H.Presenters.Common;
+public interface IListBoxPresenter : IItemsSourcePresenter
+{
+    string DisplayMemberPath { get; set; }
+    object SelectedItem { get; set; }
+}
+[Icon("\xE890")]
+[Display(Name = "选择数据")]
+public class ListBoxPresenter : ItemsSourcePresenterBase, IListBoxPresenter
+{
+    public ListBoxPresenter()
+    {
+
+    }
+    public ListBoxPresenter(IEnumerable source, object selectedItem)
+    {
+        this.ItemsSource = source;
+        this.SelectedItem = selectedItem;
+    }
+
+    private string _displayMemberPath;
+    public string DisplayMemberPath
+    {
+        get { return _displayMemberPath; }
+        set
+        {
+            _displayMemberPath = value;
+            RaisePropertyChanged();
+        }
+    }
+
+    private object _selectedItem;
+    public object SelectedItem
+    {
+        get { return _selectedItem; }
+        set
+        {
+            _selectedItem = value;
+            RaisePropertyChanged();
+        }
+    }
+}
+
+
+public static partial class DialogServiceExtension
+{
+    public static async Task<bool?> ShowListBox(this IDialogMessageService service, Action<IListBoxPresenter> option, Action<IListBoxPresenter> sumitAction = null, Action<IDialog> builder = null, Func<bool> canSumit = null)
+    {
+        return await service.ShowDialog<ListBoxPresenter>(option, sumitAction, x =>
+        {
+            x.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Stretch;
+            x.MinWidth = 200;
+            builder?.Invoke(x);
+        }, canSumit);
+    }
+}
+
+public class ShowListBoxCommand : ShowSourceCommandBase
+{
+    public string DisplayMemberPath { get; set; }
+    public override async Task ExecuteAsync(object parameter)
+    {
+        await IocMessage.Dialog.ShowListBox(x =>
+         {
+             if (parameter is IEnumerable objects)
+                 x.ItemsSource = objects;
+             else
+                 x.ItemsSource = this.ItemsSource;
+             x.DisplayMemberPath = this.DisplayMemberPath;
+         });
+    }
+}

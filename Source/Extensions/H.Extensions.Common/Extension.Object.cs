@@ -326,21 +326,65 @@ namespace System
         }
         public static bool TryChangeType<T>(this object obj, out T result)
         {
-            result = default(T);
-            Type rType = typeof(T);
-            if (obj == null) return false;
-            Type type = obj.GetType();
-
             if (obj is T)
             {
                 result = (T)obj;
                 return true;
             }
+
+            bool r = obj.TryChangeType(typeof(T), out object robject);
+            result = (T)robject;
+            return r;
+
+
+            //result = default(T);
+            //Type rType = typeof(T);
+            //if (obj == null) return false;
+            //Type type = obj.GetType();
+
+            //if (typeof(IConvertible).IsAssignableFrom(rType) && typeof(IConvertible).IsAssignableFrom(type))
+            //{
+            //    if (string.IsNullOrEmpty(obj.ToString()))
+            //        return false;
+            //    result = (T)Convert.ChangeType(obj, rType);
+            //    return true;
+            //}
+
+            //TypeConverterAttribute tConvert = rType.GetCustomAttribute<TypeConverterAttribute>();
+            //if (type == typeof(string) && tConvert != null)
+            //{
+            //    Type t = Type.GetType(tConvert.ConverterTypeName);
+            //    TypeConverter typeConverter = Activator.CreateInstance(t) as TypeConverter;
+            //    if (typeof(Freezable).IsAssignableFrom(typeof(T)))
+            //        result = Application.Current.Dispatcher.Invoke(() =>
+            //        {
+            //            return (T)typeConverter.ConvertFromString(obj.ToString());
+            //        });
+            //    else
+            //        result = (T)typeConverter.ConvertFromString(obj.ToString());
+            //    return true;
+            //}
+            //return false;
+        }
+
+
+        public static bool TryChangeType(this object obj, Type rType, out object result)
+        {
+            result = null;
+            //result = default(T);
+            //if (obj == null) return false;
+            Type type = obj.GetType();
+
+            //if (obj is T)
+            //{
+            //    result = (T)obj;
+            //    return true;
+            //}
             if (typeof(IConvertible).IsAssignableFrom(rType) && typeof(IConvertible).IsAssignableFrom(type))
             {
                 if (string.IsNullOrEmpty(obj.ToString()))
                     return false;
-                result = (T)Convert.ChangeType(obj, rType);
+                result = Convert.ChangeType(obj, rType);
                 return true;
             }
 
@@ -349,18 +393,17 @@ namespace System
             {
                 Type t = Type.GetType(tConvert.ConverterTypeName);
                 TypeConverter typeConverter = Activator.CreateInstance(t) as TypeConverter;
-                if (typeof(Freezable).IsAssignableFrom(typeof(T)))
+                if (typeof(Freezable).IsAssignableFrom(rType))
                     result = Application.Current.Dispatcher.Invoke(() =>
                     {
-                        return (T)typeConverter.ConvertFromString(obj.ToString());
+                        return typeConverter.ConvertFromString(obj.ToString());
                     });
                 else
-                    result = (T)typeConverter.ConvertFromString(obj.ToString());
+                    result = typeConverter.ConvertFromString(obj.ToString());
                 return true;
             }
             return false;
         }
-
         public static string GetDisplayName(this Type type)
         {
             return type.GetCustomAttribute<DisplayAttribute>()?.Name ?? type.Name;

@@ -10,7 +10,6 @@
                     Content="..."
                     DockPanel.Dock="Right" />
             <TextBox Height="Auto"
-                     MinWidth="200"
                      MinHeight="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}"
                      Margin="1,0"
                      AcceptsReturn="True"

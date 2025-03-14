@@ -33,7 +33,12 @@ namespace H.Presenters.Common
     {
         public static async Task<bool?> ShowFilePathTextBox(this IDialogMessageService service, Action<IFilePathTextBoxPresenter> option, Action<IFilePathTextBoxPresenter> sumitAction, Action<IDialog> builder = null, Func<bool> canSumit = null)
         {
-            return await service.ShowDialog<FilePathTextBoxPresenter>(option, sumitAction, builder, canSumit);
+            return await service.ShowDialog<FilePathTextBoxPresenter>(option, sumitAction, x =>
+            {
+                x.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Stretch;
+                x.MinWidth = 200;
+                builder?.Invoke(x);
+            }, canSumit);
         }
     }
 }

@@ -79,7 +79,7 @@ namespace H.Controls.ScheduleBox
         {
             var source = this.TriggerSource;
             var selectedItem = source?.FirstOrDefault();
-            SelectItemPresenter selectItemPresenter = new SelectItemPresenter(source, selectedItem);
+            ListBoxPresenter selectItemPresenter = new ListBoxPresenter(source, selectedItem);
             selectItemPresenter.DisplayMemberPath = "Name";
             var r = await IocMessage.Dialog.Show(selectItemPresenter);
             if (r == false)
