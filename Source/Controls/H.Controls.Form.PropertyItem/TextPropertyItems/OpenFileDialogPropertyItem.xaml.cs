@@ -19,10 +19,8 @@ namespace H.Controls.Form.PropertyItem.TextPropertyItems
         [Display(Name = "浏览", Order = 2)]
         public DisplayCommand OpenCommand => new DisplayCommand(l =>
         {
-            if (File.Exists(this.Value))
-                openFileDialog.InitialDirectory = Path.GetDirectoryName(this.Value);
-            var r = IocMessage.IOFileDialog.ShowOpenFile();
-            this.Value = openFileDialog.FileName;
+            var r = IocMessage.IOFileDialog.ShowOpenFile(x => x.InitialDirectory = this.Value);
+            this.Value = r;
         })
         { Name = "浏览" };
     }

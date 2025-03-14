@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.ZoomBox.Extension">
-    <!--<ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/H.Controls.ZoomBox.Extension;component/Step.xaml" />
-    </ResourceDictionary.MergedDictionaries>-->
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.ZoomBox.Extension;component/ImageZoomViewPresenter.xaml" />
+    </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

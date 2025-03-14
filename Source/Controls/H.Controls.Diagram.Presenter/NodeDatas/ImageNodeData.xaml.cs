@@ -25,7 +25,7 @@ public abstract class ImageNodeDataBase : FlowableNodeData, IImageNodeData
     [Display(Name = "浏览文件", GroupName = "操作,工具")]
     public DisplayCommand OpenCommand => new DisplayCommand(e =>
     {
-        var r = IocMessage.IOFileDialog.ShowOpenFile(this.GetFilter());
+        var r = IocMessage.IOFileDialog.ShowOpenFile(x => x.Filter = this.GetFilter());
         if (r == null)
             return;
         this.OpenFilePath(r);
