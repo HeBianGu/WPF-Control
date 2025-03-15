@@ -13,6 +13,10 @@ namespace H.Services.Common
         public static INoticeMessageService Notify => Ioc.GetService<INoticeMessageService>(throwIfNone: false);
         public static IFormMessageService Form => Ioc.GetService<IFormMessageService>(throwIfNone: false);
 
+        public static IIOFileDialogService IOFileDialog => Ioc.GetService<IIOFileDialogService>(throwIfNone: false) ?? new IOFileDialogService();
+
+        public static IIOFolderDialogService IOFolderDialog => Ioc.GetService<IIOFolderDialogService>(throwIfNone: false);
+
         public static async Task<bool?> ShowDialogMessage(string message, string title = "提示", DialogButton dialogButton = DialogButton.Sumit)
         {
             if (Dialog == null)

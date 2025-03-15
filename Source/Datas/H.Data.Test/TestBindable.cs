@@ -12,7 +12,7 @@ namespace H.Data.Test
     {
         public TestBindable() : base(DateTime.Now)
         {
-
+            
         }
 
         public static TestBindables Randoms(int c = 100)
@@ -26,9 +26,7 @@ namespace H.Data.Test
         protected override void Init()
         {
             base.Init();
-
             System.Reflection.PropertyInfo[] ps = this.GetType().GetProperties();
-
             foreach (System.Reflection.PropertyInfo item in ps)
             {
                 if (item.PropertyType == typeof(double))

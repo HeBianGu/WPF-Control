@@ -1,0 +1,29 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Presenters.Common">
+    <DataTemplate DataType="{x:Type local:TreeViewPresenter}">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <TreeView ItemsSource="{Binding ItemsSource}">
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
+                        <TextBlock Text="{Binding Model}" />
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
+                <b:Interaction.Triggers>
+                    <b:EventTrigger EventName="SelectedItemChanged">
+                        <b:InvokeCommandAction Command="{Binding SelectedItemChangedCommand}"
+                                               PassEventArgsToCommand="True" />
+                    </b:EventTrigger>
+                </b:Interaction.Triggers>
+                <TreeView.ItemContainerStyle>
+                    <Style BasedOn="{StaticResource {x:Static TreeViewItemKeys.Default}}"
+                           TargetType="TreeViewItem">
+                        <Setter Property="IsExpanded" Value="True" />
+                    </Style>
+                </TreeView.ItemContainerStyle>
+            </TreeView>
+        </ScrollViewer>
+    </DataTemplate>
+</ResourceDictionary>

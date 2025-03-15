@@ -148,11 +148,12 @@ public abstract class ProjectServiceBase<T> : BindableBase, IProjectService, IDa
         this.Clear();
         if (data != null)
         {
-            foreach (T item in data.Items.OrderBy(x => x.UpdateTime))
+            var orders = data.Items.OrderByDescending(x => x.UpdateTime);
+            foreach (T item in orders)
             {
                 this.Add(data.Items.ToArray());
             }
-            this.Current = data.Items.FirstOrDefault();
+            this.Current = orders.FirstOrDefault();
         }
         if (this.Current == null)
         {

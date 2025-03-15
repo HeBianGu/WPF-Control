@@ -7,7 +7,14 @@
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/WaitPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/MessagePresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/TextBoxPresenter.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/SelectItemPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/PasswordBoxPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/FilePathTextBoxPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/ImageFilePathPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/ImageViewPresenter.xaml" />
+
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/ListBoxPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/ItemsControlPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/DataGridPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/TreeViewPresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

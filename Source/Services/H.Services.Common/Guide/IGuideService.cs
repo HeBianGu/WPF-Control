@@ -2,7 +2,7 @@
 {
     public interface IGuideService
     {
-        Task Show(string version = null, UIElement owner = null);
+        Task Show(Predicate<UIElement> predicate = null, UIElement owner = null);
     }
 
 }

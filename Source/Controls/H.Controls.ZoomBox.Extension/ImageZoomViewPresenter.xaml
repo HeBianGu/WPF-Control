@@ -1,0 +1,66 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Controls.ZoomBox.Extension">
+    <DataTemplate DataType="{x:Type local:ImageZoomViewPresenter}">
+        <Border BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                BorderThickness="1">
+            <Grid>
+                <FontIconTextBlock HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="100"
+                                   Text="&#xEB9F;" />
+                <h:Zoombox x:Name="zoomview"
+                           Background="{DynamicResource {x:Static BrushKeys.Tile25}}"
+                           DragModifiers=""
+                           Focusable="True"
+                           IsTabStop="True"
+                           MinScale="0.2"
+                           NavigateOnPreview="False"
+                           RelativeZoomModifiers=""
+                           ViewStackIndex="0"
+                           ZoomOn="Content">
+                    <b:Interaction.Behaviors>
+                        <local:ZoomBoxFitOnLoadedBehavior />
+                        <local:ZoomBoxFitOnSizeChangedBehavior />
+                    </b:Interaction.Behaviors>
+                    <h:Zoombox.ViewStack>
+                        <h:ZoomboxView>Fit</h:ZoomboxView>
+                        <h:ZoomboxView>Fill</h:ZoomboxView>
+                    </h:Zoombox.ViewStack>
+                    <b:Interaction.Triggers>
+                        <h:MouseTrigger ClickCount="2"
+                                        Mode="Right"
+                                        MouseButton="Left"
+                                        UseHandle="False">
+                            <h:CallMethodActionEx MethodName="FitToBounds"
+                                                  TargetObject="{Binding ElementName=zoomview}" />
+                        </h:MouseTrigger>
+                        <h:MouseTrigger ClickCount="2"
+                                        Mode="Left"
+                                        MouseButton="Left"
+                                        UseHandle="False">
+                            <h:CallMethodActionEx MethodName="FitToBounds"
+                                                  TargetObject="{Binding ElementName=zoomview}" />
+                        </h:MouseTrigger>
+                    </b:Interaction.Triggers>
+                    <Image MinWidth="100"
+                           MinHeight="100"
+                           Source="{Binding ImageSource, IsAsync=True, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}">
+                        <b:Interaction.Triggers>
+                            <b:EventTrigger EventName="SourceUpdated">
+                                <h:CallMethodActionEx MethodName="FitToBounds"
+                                                      TargetObject="{Binding ElementName=zoomview}" />
+                            </b:EventTrigger>
+                            <b:EventTrigger EventName="TargetUpdated">
+                                <h:CallMethodActionEx MethodName="FitToBounds"
+                                                      TargetObject="{Binding ElementName=zoomview}" />
+                            </b:EventTrigger>
+                        </b:Interaction.Triggers>
+                    </Image>
+                </h:Zoombox>
+            </Grid>
+        </Border>
+    </DataTemplate>
+</ResourceDictionary>

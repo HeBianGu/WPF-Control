@@ -17,6 +17,7 @@ namespace H.Services.Serializable
         {
             if (!File.Exists(filePath))
                 return null;
+            System.Diagnostics.Debug.WriteLine(filePath);
             string txt = File.ReadAllText(filePath);
             return service.DeserializeObject(txt, type);
         }

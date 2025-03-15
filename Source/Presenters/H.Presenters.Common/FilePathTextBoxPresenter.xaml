@@ -1,0 +1,21 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Presenters.Common">
+    <DataTemplate DataType="{x:Type local:FilePathTextBoxPresenter}">
+        <DockPanel Margin="0">
+            <Button Padding="10,0"
+                    Command="{ShowOpenFilePathableDialog}"
+                    CommandParameter="{Binding}"
+                    Content="..."
+                    DockPanel.Dock="Right" />
+            <TextBox Height="Auto"
+                     MinHeight="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}"
+                     Margin="1,0"
+                     AcceptsReturn="True"
+                     Text="{Binding FilePath}"
+                     TextWrapping="Wrap"
+                     ToolTip="{Binding FilePath}" />
+        </DockPanel>
+    </DataTemplate>
+</ResourceDictionary>

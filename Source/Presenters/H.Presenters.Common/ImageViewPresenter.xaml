@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Presenters.Common">
+    <DataTemplate DataType="{x:Type local:ImageViewPresenter}">
+        <Border BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                BorderThickness="1">
+            <Grid>
+                <FontIconTextBlock HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="100"
+                                   Text="&#xEB9F;" />
+                <Image MinWidth="50"
+                       MinHeight="50"
+                       Source="{Binding ImageSource}" />
+            </Grid>
+        </Border>
+    </DataTemplate>
+</ResourceDictionary>

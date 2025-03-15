@@ -26,21 +26,22 @@ namespace H.Extensions.Attach
             obj.SetValue(WatermarkProperty, value);
         }
 
+        [Obsolete]
         public static readonly DependencyProperty AllowsAnimationProperty = DependencyProperty.RegisterAttached("AllowsAnimation"
             , typeof(bool), typeof(Cattach), new FrameworkPropertyMetadata(false, AllowsAnimationChanged));
-
+        [Obsolete]
         public static bool GetAllowsAnimation(DependencyObject d)
         {
             return (bool)d.GetValue(AllowsAnimationProperty);
         }
-
+        [Obsolete]
         public static void SetAllowsAnimation(DependencyObject obj, bool value)
         {
             obj.SetValue(AllowsAnimationProperty, value);
         }
         private static DoubleAnimation RotateAnimation = new DoubleAnimation(0, new Duration(TimeSpan.FromMilliseconds(200)));
 
-
+        [Obsolete]
         private static void AllowsAnimationChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             //var uc = d as FrameworkElement;
@@ -63,7 +64,6 @@ namespace H.Extensions.Attach
             //    uc.RenderTransform.BeginAnimation(RotateTransform.AngleProperty, RotateAnimation);
             //}
         }
-
         public static readonly DependencyProperty CornerRadiusProperty = DependencyProperty.RegisterAttached(
             "CornerRadius", typeof(CornerRadius), typeof(Cattach), new FrameworkPropertyMetadata(default(CornerRadius), FrameworkPropertyMetadataOptions.Inherits));
 
@@ -76,35 +76,35 @@ namespace H.Extensions.Attach
         {
             obj.SetValue(CornerRadiusProperty, value);
         }
-
+        [Obsolete]
         public static readonly DependencyProperty DoubleAttachProperty = DependencyProperty.RegisterAttached(
             "DoubleAttach", typeof(double), typeof(Cattach), new FrameworkPropertyMetadata(0.0));
-
+        [Obsolete]
         public static double GetDoubleAttach(DependencyObject d)
         {
             return (double)d.GetValue(DoubleAttachProperty);
         }
-
+        [Obsolete]
         public static void SetDoubleAttach(DependencyObject obj, double value)
         {
             obj.SetValue(DoubleAttachProperty, value);
         }
 
-
+        [Obsolete]
         public static readonly DependencyProperty IsClearTextButtonBehaviorEnabledProperty = DependencyProperty.RegisterAttached("IsClearTextButtonBehaviorEnabled"
             , typeof(bool), typeof(Cattach), new FrameworkPropertyMetadata(false, IsClearTextButtonBehaviorEnabledChanged));
-
+        [Obsolete]
         [AttachedPropertyBrowsableForType(typeof(TextBox))]
         public static bool GetIsClearTextButtonBehaviorEnabled(DependencyObject d)
         {
             return (bool)d.GetValue(IsClearTextButtonBehaviorEnabledProperty);
         }
-
+        [Obsolete]
         public static void SetIsClearTextButtonBehaviorEnabled(DependencyObject obj, bool value)
         {
             obj.SetValue(IsClearTextButtonBehaviorEnabledProperty, value);
         }
-
+        [Obsolete]
         private static void IsClearTextButtonBehaviorEnabledChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             Button button = d as Button;
@@ -113,33 +113,34 @@ namespace H.Extensions.Attach
                 button.CommandBindings.Add(ClearTextCommandBinding);
             }
         }
-
+        [Obsolete]
         public static readonly DependencyProperty DetailProperty = DependencyProperty.RegisterAttached(
             "Detail", typeof(string), typeof(Cattach), new FrameworkPropertyMetadata(""));
-
+        [Obsolete]
         public static string GetDetail(DependencyObject d)
         {
             return (string)d.GetValue(DetailProperty);
         }
-
+        [Obsolete]
         public static void SetDetail(DependencyObject obj, string value)
         {
             obj.SetValue(DetailProperty, value);
         }
+        [Obsolete]
         public static readonly DependencyProperty IsOpenFileButtonBehaviorEnabledProperty = DependencyProperty.RegisterAttached("IsOpenFileButtonBehaviorEnabled"
             , typeof(bool), typeof(Cattach), new FrameworkPropertyMetadata(false, IsOpenFileButtonBehaviorEnabledChanged));
-
+        [Obsolete]
         [AttachedPropertyBrowsableForType(typeof(TextBox))]
         public static bool GetIsOpenFileButtonBehaviorEnabled(DependencyObject d)
         {
             return (bool)d.GetValue(IsOpenFileButtonBehaviorEnabledProperty);
         }
-
+        [Obsolete]
         public static void SetIsOpenFileButtonBehaviorEnabled(DependencyObject obj, bool value)
         {
             obj.SetValue(IsOpenFileButtonBehaviorEnabledProperty, value);
         }
-
+        [Obsolete]
         private static void IsOpenFileButtonBehaviorEnabledChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             Button button = d as Button;
@@ -148,21 +149,21 @@ namespace H.Extensions.Attach
                 button.CommandBindings.Add(OpenFileCommandBinding);
             }
         }
-
+        [Obsolete]
         public static readonly DependencyProperty IsOpenFolderButtonBehaviorEnabledProperty = DependencyProperty.RegisterAttached("IsOpenFolderButtonBehaviorEnabled"
             , typeof(bool), typeof(Cattach), new FrameworkPropertyMetadata(false, IsOpenFolderButtonBehaviorEnabledChanged));
-
+        [Obsolete]
         [AttachedPropertyBrowsableForType(typeof(TextBox))]
         public static bool GetIsOpenFolderButtonBehaviorEnabled(DependencyObject d)
         {
             return (bool)d.GetValue(IsOpenFolderButtonBehaviorEnabledProperty);
         }
-
+        [Obsolete]
         public static void SetIsOpenFolderButtonBehaviorEnabled(DependencyObject obj, bool value)
         {
             obj.SetValue(IsOpenFolderButtonBehaviorEnabledProperty, value);
         }
-
+        [Obsolete]
         private static void IsOpenFolderButtonBehaviorEnabledChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             Button button = d as Button;
@@ -171,21 +172,21 @@ namespace H.Extensions.Attach
                 button.CommandBindings.Add(OpenFolderCommandBinding);
             }
         }
-
+        [Obsolete]
         public static readonly DependencyProperty IsSaveFileButtonBehaviorEnabledProperty = DependencyProperty.RegisterAttached("IsSaveFileButtonBehaviorEnabled"
             , typeof(bool), typeof(Cattach), new FrameworkPropertyMetadata(false, IsSaveFileButtonBehaviorEnabledChanged));
-
+        [Obsolete]
         [AttachedPropertyBrowsableForType(typeof(TextBox))]
         public static bool GetIsSaveFileButtonBehaviorEnabled(DependencyObject d)
         {
             return (bool)d.GetValue(IsSaveFileButtonBehaviorEnabledProperty);
         }
-
+        [Obsolete]
         public static void SetIsSaveFileButtonBehaviorEnabled(DependencyObject obj, bool value)
         {
             obj.SetValue(IsSaveFileButtonBehaviorEnabledProperty, value);
         }
-
+        [Obsolete]
         private static void IsSaveFileButtonBehaviorEnabledChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             Button button = d as Button;
@@ -194,11 +195,11 @@ namespace H.Extensions.Attach
                 button.CommandBindings.Add(SaveFileCommandBinding);
             }
         }
-
+        [Obsolete]
         public static RoutedUICommand ClearTextCommand { get; private set; }
-
+        [Obsolete]
         private static readonly CommandBinding ClearTextCommandBinding;
-
+        [Obsolete]
         private static void ClearButtonClick(object sender, ExecutedRoutedEventArgs e)
         {
             FrameworkElement tbox = e.Parameter as FrameworkElement;
@@ -227,11 +228,11 @@ namespace H.Extensions.Attach
             tbox.Focus();
         }
 
-
+        [Obsolete]
         public static RoutedUICommand OpenFileCommand { get; private set; }
-
+        [Obsolete]
         private static readonly CommandBinding OpenFileCommandBinding;
-
+        [Obsolete]
         private static void OpenFileButtonClick(object sender, ExecutedRoutedEventArgs e)
         {
             FrameworkElement tbox = e.Parameter as FrameworkElement;
@@ -253,11 +254,11 @@ namespace H.Extensions.Attach
             }
             tbox.Focus();
         }
-
+        [Obsolete]
         public static RoutedUICommand OpenFolderCommand { get; private set; }
-
+        [Obsolete]
         private static readonly CommandBinding OpenFolderCommandBinding;
-
+        [Obsolete]
         private static void OpenFolderButtonClick(object sender, ExecutedRoutedEventArgs e)
         {
             //var tbox = e.Parameter as FrameworkElement;
@@ -272,17 +273,17 @@ namespace H.Extensions.Attach
             //}
             //tbox.Focus();
         }
-
+        [Obsolete]
         public static RoutedUICommand SaveFileCommand { get; private set; }
-
+        [Obsolete]
         private static readonly CommandBinding SaveFileCommandBinding;
-
+        [Obsolete]
         private static void SaveFileButtonClick(object sender, ExecutedRoutedEventArgs e)
         {
             //var tbox = e.Parameter as FrameworkElement;
             //var txt = tbox as TextBox;
             //if (txt == null) return;
-            //SaveFileDialog fd = new SaveFileDialog();
+            SaveFileDialog fd = new SaveFileDialog();
             //fd.Title = "文件保存路径";
             //fd.Filter = "所有文件(*.*)|*.*";
             //fd.FileName = txt.Text.Trim();
@@ -306,6 +307,7 @@ namespace H.Extensions.Attach
           DependencyProperty.RegisterAttached("Password",
           typeof(string), typeof(Cattach),
           new FrameworkPropertyMetadata(string.Empty, OnPasswordPropertyChanged));
+      
         private static readonly DependencyProperty IsUpdatingProperty = DependencyProperty.RegisterAttached("IsUpdating", typeof(bool), typeof(Cattach));
         public static string GetPassword(DependencyObject dp)
         {
@@ -415,26 +417,26 @@ namespace H.Extensions.Attach
                 dataSource.Remove(item);
             }
         }
-
+        [Obsolete]
         public static readonly DependencyProperty BoolProperty = DependencyProperty.RegisterAttached(
             "Bool", typeof(bool), typeof(Cattach), new FrameworkPropertyMetadata(false));
-
+        [Obsolete]
         public static bool GetBool(DependencyObject d)
         {
             return (bool)d.GetValue(BoolProperty);
         }
-
+        [Obsolete]
         public static void SetBool(DependencyObject obj, bool value)
         {
             obj.SetValue(BoolProperty, value);
         }
 
-
+        [Obsolete]
         public static bool GetIsOpen(DependencyObject obj)
         {
             return (bool)obj.GetValue(IsOpenProperty);
         }
-
+        [Obsolete]
         public static void SetIsOpen(DependencyObject obj, bool value)
         {
             obj.SetValue(IsOpenProperty, value);
@@ -442,7 +444,7 @@ namespace H.Extensions.Attach
 
         public static readonly DependencyProperty IsOpenProperty =
             DependencyProperty.RegisterAttached("IsOpen", typeof(bool), typeof(Cattach), new PropertyMetadata(true, OnIsOpenChanged));
-
+        [Obsolete]
         public static void OnIsOpenChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             DependencyObject control = d;
@@ -512,7 +514,6 @@ namespace H.Extensions.Attach
             obj.SetValue(PathProperty, value);
         }
 
-        /// <summary> 是否等待 </summary>
         public static readonly DependencyProperty PathProperty =
             DependencyProperty.RegisterAttached("Path", typeof(Geometry), typeof(Cattach), new FrameworkPropertyMetadata(default(Geometry)));
 
@@ -521,37 +522,38 @@ namespace H.Extensions.Attach
 
     public static partial class Cattach
     {
+        [Obsolete]
         public static readonly DependencyProperty UseCloseProperty = DependencyProperty.RegisterAttached(
             "UseClose", typeof(bool), typeof(Cattach), new FrameworkPropertyMetadata(default(bool), FrameworkPropertyMetadataOptions.Inherits, OnUseCloseChanged));
-
+        [Obsolete]
         public static bool GetUseClose(DependencyObject d)
         {
             return (bool)d.GetValue(UseCloseProperty);
         }
-
+        [Obsolete]
         public static void SetUseClose(DependencyObject obj, bool value)
         {
             obj.SetValue(UseCloseProperty, value);
         }
-
+        [Obsolete]
         private static void OnUseCloseChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args)
         {
 
         }
-
+        [Obsolete]
         public static readonly DependencyProperty IsDragEnterProperty = DependencyProperty.RegisterAttached(
             "IsDragEnter", typeof(bool), typeof(Cattach), new FrameworkPropertyMetadata(default(bool), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnIsDragEnterChanged));
-
+        [Obsolete]
         public static bool GetIsDragEnter(DependencyObject d)
         {
             return (bool)d.GetValue(IsDragEnterProperty);
         }
-
+        [Obsolete]
         public static void SetIsDragEnter(DependencyObject obj, bool value)
         {
             obj.SetValue(IsDragEnterProperty, value);
         }
-
+        [Obsolete]
         private static void OnIsDragEnterChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args)
         {
 
@@ -578,93 +580,93 @@ namespace H.Extensions.Attach
         //{
 
         //}
-
+        [Obsolete]
         public static readonly DependencyProperty OrientationProperty = DependencyProperty.RegisterAttached(
             "Orientation", typeof(Orientation), typeof(Cattach), new FrameworkPropertyMetadata(default(Orientation), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnOrientationChanged));
-
+        [Obsolete]
         public static Orientation GetOrientation(DependencyObject d)
         {
             return (Orientation)d.GetValue(OrientationProperty);
         }
-
+        [Obsolete]
         public static void SetOrientation(DependencyObject obj, Orientation value)
         {
             obj.SetValue(OrientationProperty, value);
         }
-
+        [Obsolete]
         private static void OnOrientationChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args)
         {
 
         }
-
+        [Obsolete]
         public static readonly DependencyProperty ValueProperty = DependencyProperty.RegisterAttached(
             "Value", typeof(Double), typeof(Cattach), new FrameworkPropertyMetadata(default(Double), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnValueChanged));
-
+        [Obsolete]
         public static Double GetValue(DependencyObject d)
         {
             return (Double)d.GetValue(ValueProperty);
         }
-
+        [Obsolete]
         public static void SetValue(DependencyObject obj, Double value)
         {
             obj.SetValue(ValueProperty, value);
         }
-
+        [Obsolete]
         private static void OnValueChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args)
         {
 
         }
 
-
+        [Obsolete]
         public static readonly DependencyProperty TextProperty = DependencyProperty.RegisterAttached(
             "Text", typeof(string), typeof(Cattach), new FrameworkPropertyMetadata(default(string), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnTextChanged));
-
+        [Obsolete]
         public static string GetText(DependencyObject d)
         {
             return (string)d.GetValue(TextProperty);
         }
-
+        [Obsolete]
         public static void SetText(DependencyObject obj, string value)
         {
             obj.SetValue(TextProperty, value);
         }
-
+        [Obsolete]
         private static void OnTextChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args)
         {
 
         }
-
+        [Obsolete]
         public static readonly DependencyProperty IsIndeterminateProperty = DependencyProperty.RegisterAttached(
             "IsIndeterminate", typeof(bool), typeof(Cattach), new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnIsIndeterminateChanged));
-
+        [Obsolete]
         public static bool GetIsIndeterminate(DependencyObject d)
         {
             return (bool)d.GetValue(IsIndeterminateProperty);
         }
-
+        [Obsolete]
         public static void SetIsIndeterminate(DependencyObject obj, bool value)
         {
             obj.SetValue(IsIndeterminateProperty, value);
         }
-
+        [Obsolete]
         private static void OnIsIndeterminateChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args)
         {
 
         }
-
+        [Obsolete]
         public static readonly DependencyProperty IsStayOpenProperty = DependencyProperty.RegisterAttached(
             "IsStayOpen", typeof(string), typeof(Cattach), new FrameworkPropertyMetadata(default(string), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnIsStayOpenChanged));
-
+        [Obsolete]
         public static string GetIsStayOpen(DependencyObject d)
         {
             return (string)d.GetValue(IsStayOpenProperty);
         }
-
+        [Obsolete]
         public static void SetIsStayOpen(DependencyObject obj, string value)
         {
             obj.SetValue(IsStayOpenProperty, value);
         }
-
+        [Obsolete]
         private static void OnIsStayOpenChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args)
         {
 
@@ -849,21 +851,21 @@ namespace H.Extensions.Attach
 
         //#endregion
 
-
+        [Obsolete]
         public static string GetDateTimeFormat(DependencyObject obj)
         {
             return (string)obj.GetValue(DateTimeFormatProperty);
         }
-
+        [Obsolete]
         public static void SetDateTimeFormat(DependencyObject obj, string value)
         {
             obj.SetValue(DateTimeFormatProperty, value);
         }
 
-
+        [Obsolete]
         public static readonly DependencyProperty DateTimeFormatProperty =
             DependencyProperty.RegisterAttached("DateTimeFormat", typeof(string), typeof(Cattach), new FrameworkPropertyMetadata("YYYY-MM-dd", OnDateTimeFormatChanged));
-
+        [Obsolete]
         public static void OnDateTimeFormatChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             DependencyObject control = d;
@@ -874,22 +876,20 @@ namespace H.Extensions.Attach
         }
 
 
-        /// <summary>
-        /// 枚举类型数据源
-        /// </summary>
+        [Obsolete]
         public static readonly DependencyProperty EnumTypeSourceProperty = DependencyProperty.RegisterAttached(
             "EnumTypeSource", typeof(Type), typeof(Cattach), new FrameworkPropertyMetadata(default(Type), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnEnumTypeSourceChanged));
-
+        [Obsolete]
         public static Type GetEnumTypeSource(DependencyObject d)
         {
             return (Type)d.GetValue(EnumTypeSourceProperty);
         }
-
+        [Obsolete]
         public static void SetEnumTypeSource(DependencyObject obj, Type value)
         {
             obj.SetValue(EnumTypeSourceProperty, value);
         }
-
+        [Obsolete]
         private static void OnEnumTypeSourceChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args)
         {
             ItemsControl items = sender as ItemsControl;
@@ -916,21 +916,21 @@ namespace H.Extensions.Attach
             }
         }
 
-
+        [Obsolete]
         public static Dock GetDock(DependencyObject obj)
         {
             return (Dock)obj.GetValue(DockProperty);
         }
-
+        [Obsolete]
         public static void SetDock(DependencyObject obj, Dock value)
         {
             obj.SetValue(DockProperty, value);
         }
-
+        [Obsolete]
 
         public static readonly DependencyProperty DockProperty =
             DependencyProperty.RegisterAttached("Dock", typeof(Dock), typeof(Cattach), new PropertyMetadata(default(Dock), OnDockChanged));
-
+        [Obsolete]
         public static void OnDockChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             DependencyObject control = d;

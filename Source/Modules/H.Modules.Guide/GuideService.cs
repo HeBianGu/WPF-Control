@@ -15,14 +15,14 @@ namespace H.Modules.Guide
     public class GuideService : IGuideService
     {
         private UIElement _adonerElment;
-        public Task Show(string version = null, UIElement owner = null)
+        public Task Show(Predicate<UIElement> predicate = null, UIElement owner = null)
         {
             this._adonerElment = GetAdornerElement(owner);
             if (this.CanShow() == false)
                 this.Close();
             //Application.Current.MainWindow.Content as UIElement;
             AdornerLayer layer = AdornerLayer.GetAdornerLayer(this._adonerElment);
-            GuideBoxAdorner adorner = new GuideBoxAdorner(this._adonerElment, () => this.Close(), version);
+            GuideBoxAdorner adorner = new GuideBoxAdorner(this._adonerElment, () => this.Close(), predicate);
             layer.Add(adorner);
             return Task.CompletedTask;
         }

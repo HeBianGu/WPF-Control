@@ -19,8 +19,8 @@ namespace H.Services.Common
                 c.Height = this.Height;
             }
             w.Transitionable = this.Transitionable;
-            w.Title = this.Name;
-            w.Icon = this.Icon;
+            w.Title = this.Name ?? w.Title;
+            w.Icon = this.Icon ?? w.Icon;
         }
     }
 }

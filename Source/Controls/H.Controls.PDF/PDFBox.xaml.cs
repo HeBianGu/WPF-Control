@@ -41,28 +41,22 @@ namespace H.Controls.PDF
                 CommandBinding binding = new CommandBinding(PDFBoxCommands.Open);
                 binding.Executed += async (l, k) =>
                 {
-                    OpenFileDialog openFileDialog = new OpenFileDialog();
-                    //openFileDialog.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory; //设置初始路径
-                    openFileDialog.Filter = "PDF文件(*.pdf)|*.pdf|所有文件(*.*)|*.*"; //设置“另存为文件类型”或“文件类型”框中出现的选择内容
-                    openFileDialog.FilterIndex = 1; //设置默认显示文件类型为Csv文件(*.csv)|*.csv
-                    openFileDialog.Title = "打开文件"; //获取或设置文件对话框标题
-                    openFileDialog.RestoreDirectory = true; //设置对话框是否记忆上次打开的目录
-                    openFileDialog.Multiselect = false;//设置多选
-                    if (openFileDialog.ShowDialog() != true)
+                    var r = IocMessage.IOFileDialog?.ShowOpenFile(IOFileDialogOptionActions.Pdf);
+                    if (r == null)
                         return;
                     this.PageIndex = 0;
                     this.Bookmarks?.Clear();
                     Stream mem;
                     if (IocMessage.Dialog == null)
                     {
-                        var bytes = File.ReadAllBytes(openFileDialog.FileName);
+                        var bytes = File.ReadAllBytes(r);
                         mem = new MemoryStream(bytes);
                     }
                     else
                     {
                         mem = await IocMessage.Dialog.ShowWait(x =>
                         {
-                            var bytes = File.ReadAllBytes(openFileDialog.FileName);
+                            var bytes = File.ReadAllBytes(r);
                             return new MemoryStream(bytes);
                         });
                     }

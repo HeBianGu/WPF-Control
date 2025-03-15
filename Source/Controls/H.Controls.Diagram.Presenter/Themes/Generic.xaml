@@ -27,5 +27,6 @@
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/DiagramTemplates/DiagramTemplates.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/DiagramDatas/NodeDataGroupsContextMenuPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/DiagramDatas/NodeDataGroupsItemsControlPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/DiagramDatas/NodeDataGroupsTreeViewPresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

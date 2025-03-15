@@ -122,6 +122,7 @@ public abstract class NodeData : NodeDataBase, INodeData, ITemplate, ILinkDataCr
     /*    public bool IsTemplate { get; set; } = true*/
 
     private bool _isTemplate = true;
+    [DefaultValue(true)]
     public bool IsTemplate
     {
         get { return _isTemplate; }

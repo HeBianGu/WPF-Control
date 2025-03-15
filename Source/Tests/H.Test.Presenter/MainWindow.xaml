@@ -23,6 +23,44 @@
                 <TextBoxPresenter Text="TextBoxPresenter" />
             </Button.CommandParameter>
         </Button>
+
+        <Button Command="{h:ShowPropertyTextBoxCommand PropertyName=Name}"
+                CommandParameter="{GetStudent}"
+                Content="ShowPropertyTextBoxCommand" />
+        <Button Command="{h:ShowCommand}"
+                Content="FilePathTextBoxPresenter">
+            <Button.CommandParameter>
+                <FilePathTextBoxPresenter />
+            </Button.CommandParameter>
+        </Button>
+        <Button Command="{h:ShowCommand}"
+                Content="ImageFilePathPresenter">
+            <Button.CommandParameter>
+                <ImageFilePathPresenter />
+            </Button.CommandParameter>
+        </Button>
+
+        <Button Command="{h:ShowListBoxCommand ItemsSource={GetStudents}}"
+                Content="ShowListBoxCommand" />
+        <Button Command="{h:ShowListBoxCommand ItemsSource={GetStudents},
+                                               DisplayMemberPath=Name}"
+                Content="ShowListBoxCommand" />
+
+        <Button Command="{h:ShowItemsControlCommand ItemsSource={GetStudents}}"
+                Content="ShowItemsControlCommand" />
+
+        <Button Command="{h:ShowDataGridCommand ItemsSource={GetStudents}}"
+                Content="ShowDataGridCommand" />
+
+        <Button Command="{h:ShowTreeViewCommand ItemsSource={ClassTypeTreeDataProviderExtension IsRecursion=True,
+                                                                                                Type={x:Type FrameworkElement}}}"
+                Content="ShowTreeViewCommand" />
+
+        <Button Command="{h:ShowImageFileCommand}"
+                Content="ShowImageFileCommand" />
+        <Button Command="{h:ShowImageSourceCommand}"
+                CommandParameter="{Logo}"
+                Content="ShowImageFileCommand" />
         <Button Command="{h:ShowCommand}"
                 Content="PasswordBoxPresenter">
             <Button.CommandParameter>
@@ -57,7 +95,8 @@
                 Content="ImagePresenter">
             <Button.CommandParameter>
                 <ImagePresenter Width="Auto"
-                                Height="Auto" HorizontalContentAlignment="Center"
+                                Height="Auto"
+                                HorizontalContentAlignment="Center"
                                 ImageSource="{h:Logo}" />
             </Button.CommandParameter>
         </Button>

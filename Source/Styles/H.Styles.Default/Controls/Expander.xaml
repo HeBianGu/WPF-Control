@@ -138,7 +138,8 @@
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <ToggleButton Foreground="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionForeground)}"
+                                <ToggleButton Cattach.UseGuide="False"
+                                              Foreground="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionForeground)}"
                                               IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
                                               OverridesDefaultStyle="True"
                                               Template="{StaticResource ExpanderToggleButton}" />
@@ -152,7 +153,8 @@
                                          Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionRightTemplate)}" />
                             </Grid>
                         </Border>
-                        <Border Grid.Row="1"
+                        <Border x:Name="cp"
+                                Grid.Row="1"
                                 Padding="0"
                                 Style="{StaticResource S.Border.TemplatedParent}">
                             <ContentPresenter Margin="0"
@@ -162,6 +164,9 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsExpanded" Value="True">
                             <Setter TargetName="ContentRow" Property="Height" Value="{Binding DesiredHeight, ElementName=Content}" />
+                        </Trigger>
+                        <Trigger Property="IsExpanded" Value="False">
+                            <Setter TargetName="cp" Property="Visibility" Value="Collapsed" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -197,8 +202,8 @@
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <local:FontIconToggleButton Grid.Column="2"
-                                                            Cattach.GuideTitle="显示隐藏图像源页面"
-                                                            Cattach.UseGuide="True"
+                                                            Cattach.GuideTitle="显示/隐藏页面"
+                                                            Cattach.UseGuide="False"
                                                             CheckedGlyph="&#xE018;"
                                                             Foreground="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionForeground)}"
                                                             IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
@@ -214,7 +219,8 @@
                                          Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionRightTemplate)}" />
                             </Grid>
                         </Border>
-                        <Border Grid.Row="1"
+                        <Border x:Name="cp"
+                                Grid.Row="1"
                                 Padding="0"
                                 Style="{StaticResource S.Border.TemplatedParent}">
                             <ContentPresenter Margin="0"
@@ -224,6 +230,9 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsExpanded" Value="True">
                             <Setter TargetName="ContentRow" Property="Height" Value="{Binding DesiredHeight, ElementName=Content}" />
+                        </Trigger>
+                        <Trigger Property="IsExpanded" Value="False">
+                            <Setter TargetName="cp" Property="Visibility" Value="Collapsed" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

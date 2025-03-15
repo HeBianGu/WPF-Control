@@ -58,6 +58,11 @@
         <Setter Property="BorderBrush" Value="{Binding Stroke}" />
         <Setter Property="CornerRadius" Value="{Binding CornerRadius, Converter={x:Static h:Converter.GetDoubleToCornerRadius}}" />
         <Setter Property="h:DraggableDataTemplateAdornerBehavior.IsUse" Value="{Binding IsTemplate}" />
+
+        <!--  Guide  -->
+        <Setter Property="Cattach.UseGuide" Value="True" />
+        <Setter Property="Cattach.GuideTitle" Value="{Binding Text}" />
+        <Setter Property="Cattach.GuideData" Value="{Binding Description}" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding Foreground}"
                          Value="{x:Null}">
@@ -132,6 +137,10 @@
         <Setter Property="Stretch" Value="{Binding Stretch}" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Center" />
+        <!--  Guide  -->
+        <Setter Property="Cattach.UseGuide" Value="True" />
+        <Setter Property="Cattach.GuideTitle" Value="{Binding Text}" />
+        <Setter Property="Cattach.GuideData" Value="{Binding Description}" />
         <!--<Setter Property="h:DraggableDataTemplateAdornerBehavior.IsUse" Value="{Binding IsTemplate}"/>-->
         <Style.Triggers>
             <DataTrigger Binding="{Binding IsTemplate}"

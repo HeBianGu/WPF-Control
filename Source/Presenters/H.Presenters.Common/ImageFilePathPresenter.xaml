@@ -1,0 +1,27 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Presenters.Common">
+    <DataTemplate DataType="{x:Type local:ImageFilePathPresenter}">
+        <DockPanel>
+            <DockPanel DockPanel.Dock="Bottom">
+                <Button Command="{Binding OpenCommand}"
+                        Content="..." />
+            </DockPanel>
+            <Border BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                    BorderThickness="1">
+                <Grid>
+                    <Button Height="Auto"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Command="{Binding OpenCommand}"
+                            Content="+"
+                            FontSize="100" />
+                    <Image MinWidth="200"
+                           MinHeight="200"
+                           Source="{Binding FilePath}" />
+                </Grid>
+            </Border>
+        </DockPanel>
+    </DataTemplate>
+</ResourceDictionary>

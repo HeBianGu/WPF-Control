@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:local="clr-namespace:H.Controls.Form.PropertyItem.TextPropertyItems.Base"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:H.Controls.Form.PropertyItem.TextPropertyItems.Base">
     <DataTemplate DataType="{x:Type local:CommandsTextPropertyItemBase}">
         <TextBox Height="Auto"
                  MinHeight="{DynamicResource {x:Static LayoutKeys.ItemHeight}}"
@@ -16,14 +16,14 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Button Height="Auto"
-                                  Margin="1"
-                                  Command="{Binding}"
-                                  Content="{Binding Name}" />
+                                    Margin="1"
+                                    Command="{Binding}"
+                                    Content="{Binding Name}" />
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <StackPanel Orientation="Horizontal"/>
+                            <StackPanel Orientation="Horizontal" />
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                 </ItemsControl>

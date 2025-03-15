@@ -16,7 +16,7 @@ namespace H.Services.Common
             await IocMessage.Dialog.Show(this.Presnter ?? parameter, x =>
                {
                    x.DialogButton = this.DialogButton;
-                   x.Title = this.Title;
+                   x.Title = this.Name;
                    this.Invoke(x);
                });
         }
