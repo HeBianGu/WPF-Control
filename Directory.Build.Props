@@ -17,6 +17,7 @@
     <PackageProjectUrl>https://github.com/HeBianGu/WPF-Control</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <Description>WPF轻量控件和皮肤库</Description>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
   
   <ItemGroup>
