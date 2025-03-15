@@ -1,0 +1,32 @@
+# IsEnabled 属性
+https://github.com/HeBianGu/WPF-Control
+
+\[缺少 "P:H.Mvvm.ViewModels.Base.DesignPresenterBase.IsEnabled" 的 &lt;summary&gt; 文档\]
+
+
+
+## Definition
+**命名空间：** <a href="1a39445a-2086-c1ca-7c41-28cbba243517">H.Mvvm.ViewModels.Base</a>  
+**程序集：** H.Mvvm (在 H.Mvvm.dll 中) 版本：1.0.3+58daf524b91f25bbf55d2f64e549e4224fcf9802
+
+**C#**
+``` C#
+[DisplayAttribute(Name = "可用", GroupName = "样式")]
+public bool IsEnabled { get; set; }
+```
+
+
+
+#### 属性值
+<a href="https://learn.microsoft.com/dotnet/api/system.boolean" target="_blank" rel="noopener noreferrer">Boolean</a>
+
+#### 实现
+<a href="b3da60ee-b4f4-2e7c-eb13-87b421b01bf7">IDesignPresenterBase.IsEnabled</a>  
+
+
+## 参见
+
+
+#### 引用
+<a href="8ba16f24-5efb-6ddb-6317-1c8d25d5fe9b">DesignPresenterBase 类</a>  
+<a href="1a39445a-2086-c1ca-7c41-28cbba243517">H.Mvvm.ViewModels.Base 命名空间</a>  

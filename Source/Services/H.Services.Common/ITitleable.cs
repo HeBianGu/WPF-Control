@@ -1,12 +1,13 @@
 ﻿namespace H.Services.Common
 {
+    /// <summary>
+    /// 表示具有标题的接口。
+    /// </summary>
     public interface ITitleable
     {
-        public string Title { get; set; }
-    }
-
-    public interface ITextable
-    {
-        public string Text { get; set; }
+        /// <summary>
+        /// 获取或设置标题。
+        /// </summary>
+        string Title { get; set; }
     }
 }

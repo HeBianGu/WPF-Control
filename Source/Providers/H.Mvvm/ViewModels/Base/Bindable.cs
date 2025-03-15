@@ -6,36 +6,38 @@ using System.Xml.Serialization;
 
 namespace H.Mvvm.ViewModels.Base
 {
+    /// <summary>
+    /// 可绑定的基类。
+    /// </summary>
     public abstract class Bindable : BindableBase
     {
         [Browsable(false)]
         [JsonIgnore]
-
         [XmlIgnore]
         public RelayCommand RelayCommand { get; set; }
 
         [Browsable(false)]
         [JsonIgnore]
-
         [XmlIgnore]
         public RelayCommand LoadedCommand => new RelayCommand(Loaded);
 
         [Browsable(false)]
         [JsonIgnore]
-
         [XmlIgnore]
         public RelayCommand CallMethodCommand { get; set; }
 
-
-        //[Browsable(false)]
-        //[XmlIgnore]
-        //public ILogService Logger => ServiceRegistry.Instance.GetInstance<ILogService>();
-
+        /// <summary>
+        /// 用于继承类中的方法绑定。
+        /// </summary>
+        /// <param name="obj">方法参数。</param>
         protected virtual void RelayMethod(object obj)
         {
 
         }
 
+        /// <summary>
+        /// 构造函数。
+        /// </summary>
         public Bindable()
         {
             this.RelayCommand = new RelayCommand(RelayMethod);
@@ -43,11 +45,19 @@ namespace H.Mvvm.ViewModels.Base
             RelayMethod("init");
         }
 
+        /// <summary>
+        /// 加载事件处理方法。
+        /// </summary>
+        /// <param name="obj">事件参数。</param>
         protected virtual void Loaded(object obj)
         {
 
         }
 
+        /// <summary>
+        /// 调用方法。
+        /// </summary>
+        /// <param name="obj">方法名。</param>
         protected virtual void CallMethod(object obj)
         {
             string methodName = obj?.ToString();

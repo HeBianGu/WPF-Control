@@ -1,0 +1,21 @@
+# IDbConnectService 方法
+https://github.com/HeBianGu/WPF-Control
+
+
+
+## 方法
+<table>
+<tr>
+<td><a href="0345f632-56c8-2ec7-1873-87985b5ce519">Load</a></td>
+<td><br />(继承自 <a href="fe4e7996-30a2-ccbf-c9bd-c591eee0d01c">ILoadable</a>。)</td></tr>
+<tr>
+<td><a href="f8a1cc63-09f1-c20b-8b14-e74bd6ba7d0c">TryConnect</a></td>
+<td> </td></tr>
+</table>
+
+## 参见
+
+
+#### 引用
+<a href="55773de2-1da2-770e-aa5e-857eccb70805">IDbConnectService 接口</a>  
+<a href="b9cdd84f-6623-a51a-f53b-465103ced202">H.Services.Common 命名空间</a>  

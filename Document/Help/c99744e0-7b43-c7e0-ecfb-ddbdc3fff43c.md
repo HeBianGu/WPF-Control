@@ -1,0 +1,31 @@
+# IsExpanded 属性
+https://github.com/HeBianGu/WPF-Control
+
+\[缺少 "P:H.Mvvm.TreeNodeBase`1.IsExpanded" 的 &lt;summary&gt; 文档\]
+
+
+
+## Definition
+**命名空间：** <a href="2171cdff-f9c4-6682-6b3e-a29f9cee4c25">H.Mvvm</a>  
+**程序集：** H.Mvvm (在 H.Mvvm.dll 中) 版本：1.0.3+58daf524b91f25bbf55d2f64e549e4224fcf9802
+
+**C#**
+``` C#
+public bool IsExpanded { get; set; }
+```
+
+
+
+#### 属性值
+<a href="https://learn.microsoft.com/dotnet/api/system.boolean" target="_blank" rel="noopener noreferrer">Boolean</a>
+
+#### 实现
+<a href="dc410724-885a-ee3d-4f20-d3617802f87c">ITreeNode.IsExpanded</a>  
+
+
+## 参见
+
+
+#### 引用
+<a href="cd2942e1-1fac-7bc2-276a-338ddf1d52be">TreeNodeBase(T) 类</a>  
+<a href="2171cdff-f9c4-6682-6b3e-a29f9cee4c25">H.Mvvm 命名空间</a>  

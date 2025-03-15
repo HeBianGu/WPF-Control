@@ -1,0 +1,27 @@
+# ShowDialogSnackMessageCommand 属性
+https://github.com/HeBianGu/WPF-Control
+
+
+
+## 属性
+<table>
+<tr>
+<td><a href="dba28c0d-f04b-92b4-acc2-a2c77bda8098">Description</a></td>
+<td><br />(继承自 <a href="b991418e-2265-a92a-e09c-ba4638d469b0">DisplayMarkupCommandBase</a>。)</td></tr>
+<tr>
+<td><a href="b0d60137-1f11-6bbf-9381-1ae7be7ecd6c">Icon</a></td>
+<td><br />(继承自 <a href="b991418e-2265-a92a-e09c-ba4638d469b0">DisplayMarkupCommandBase</a>。)</td></tr>
+<tr>
+<td><a href="9210bd40-34a5-5926-2a42-3213d3f93646">Message</a></td>
+<td><br />(继承自 <a href="f10abf86-e235-36d4-0a34-94b605413ac3">ShowSnackMessageCommandBase</a>。)</td></tr>
+<tr>
+<td><a href="96e82c0e-cf3c-ba80-24c3-2fc2acfb8ffc">Name</a></td>
+<td><br />(继承自 <a href="b991418e-2265-a92a-e09c-ba4638d469b0">DisplayMarkupCommandBase</a>。)</td></tr>
+</table>
+
+## 参见
+
+
+#### 引用
+<a href="3f52c183-b752-7df5-bbad-dd65de2dee6c">ShowDialogSnackMessageCommand 类</a>  
+<a href="b9cdd84f-6623-a51a-f53b-465103ced202">H.Services.Common 命名空间</a>  

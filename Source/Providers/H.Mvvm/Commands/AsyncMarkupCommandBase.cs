@@ -7,18 +7,9 @@ namespace H.Mvvm
     public abstract class AsyncMarkupCommandBase : MarkupCommandBase
     {
         private bool _isExecuting;
-        public bool IsExecuting
-        {
-            get { return _isExecuting; }
-            set
-            {
-                _isExecuting = value;
-                RaisePropertyChanged();
-            }
-        }
         public override async void Execute(object parameter)
         {
-            this.IsExecuting = true;
+            this._isExecuting = true;
             try
             {
                 await this.ExecuteAsync(parameter);
@@ -31,7 +22,7 @@ namespace H.Mvvm
             }
             finally
             {
-                this.IsExecuting = false;
+                this._isExecuting = false;
             }
             //try
             //{
@@ -48,7 +39,7 @@ namespace H.Mvvm
         }
         public override bool CanExecute(object parameter)
         {
-            return this.IsExecuting == false;
+            return this._isExecuting == false;
         }
 
         public virtual Task ExecuteAsync(object parameter)

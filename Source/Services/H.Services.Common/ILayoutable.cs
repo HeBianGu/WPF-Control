@@ -1,26 +1,93 @@
 ﻿namespace H.Services.Common
 {
+    /// <summary>
+    /// 定义布局相关的属性和方法。
+    /// </summary>
     public interface ILayoutable
     {
+        /// <summary>
+        /// 获取或设置背景画刷。
+        /// </summary>
         Brush Background { get; set; }
+
+        /// <summary>
+        /// 获取或设置边框画刷。
+        /// </summary>
         Brush BorderBrush { get; set; }
+
+        /// <summary>
+        /// 获取或设置边框厚度。
+        /// </summary>
         Thickness BorderThickness { get; set; }
+
+        /// <summary>
+        /// 获取或设置高度。
+        /// </summary>
         double Height { get; set; }
+
+        /// <summary>
+        /// 获取或设置水平对齐方式。
+        /// </summary>
         HorizontalAlignment HorizontalAlignment { get; set; }
+
+        /// <summary>
+        /// 获取或设置水平内容对齐方式。
+        /// </summary>
         HorizontalAlignment HorizontalContentAlignment { get; set; }
+
+        /// <summary>
+        /// 获取或设置是否启用。
+        /// </summary>
         bool IsEnabled { get; set; }
+
+        /// <summary>
+        /// 获取或设置外边距。
+        /// </summary>
         Thickness Margin { get; set; }
+
+        /// <summary>
+        /// 获取或设置最小高度。
+        /// </summary>
         double MinHeight { get; set; }
+
+        /// <summary>
+        /// 获取或设置最小宽度。
+        /// </summary>
         double MinWidth { get; set; }
+
+        /// <summary>
+        /// 获取或设置不透明度。
+        /// </summary>
         double Opacity { get; set; }
+
+        /// <summary>
+        /// 获取或设置内边距。
+        /// </summary>
         Thickness Padding { get; set; }
+
+        /// <summary>
+        /// 获取或设置垂直对齐方式。
+        /// </summary>
         VerticalAlignment VerticalAlignment { get; set; }
+
+        /// <summary>
+        /// 获取或设置垂直内容对齐方式。
+        /// </summary>
         VerticalAlignment VerticalContentAlignment { get; set; }
+
+        /// <summary>
+        /// 获取或设置宽度。
+        /// </summary>
         double Width { get; set; }
     }
 
     public static class LayoutableExtension
     {
+        /// <summary>
+        /// 将布局属性从一个对象复制到另一个对象。
+        /// </summary>
+        /// <param name="from">要复制属性的源对象。</param>
+        /// <param name="to">要复制属性的目标对象。</param>
         public static void CopyTo(this ILayoutable from, ILayoutable to)
         {
             to.HorizontalAlignment = from.HorizontalAlignment;

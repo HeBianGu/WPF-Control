@@ -358,6 +358,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Extensions.OpenFolderDial
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Extensions.TextJsonable", "..\Source\Extensions\H.Extensions.TextJsonable\H.Extensions.TextJsonable.csproj", "{97A3D5BB-29A9-499E-ACD6-3D93464B9D91}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Help", "Help", "{E95D5F67-D136-4D63-80B6-B46204B4E889}"
+	ProjectSection(SolutionItems) = preProject
+		..\Document\Help\Home.md = ..\Document\Help\Home.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
