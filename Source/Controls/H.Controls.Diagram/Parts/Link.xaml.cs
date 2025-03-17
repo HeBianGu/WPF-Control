@@ -2,6 +2,8 @@
 
 
 
+global using H.Controls.Diagram.Parts.Base;
+using H.Controls.Diagram.Flowables;
 using System;
 using System.Windows;
 using System.Windows.Media;

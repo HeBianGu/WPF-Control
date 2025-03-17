@@ -1,5 +1,6 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
+using H.Controls.Diagram.Parts.Base;
 using System;
 using System.Windows;
 using System.Windows.Controls;

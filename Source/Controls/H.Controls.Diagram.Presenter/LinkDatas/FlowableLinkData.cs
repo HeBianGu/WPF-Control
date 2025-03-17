@@ -1,6 +1,6 @@
 ﻿namespace H.Controls.Diagram.Presenter.LinkDatas;
 
-public class FlowableLinkData : TextLinkData, IFlowableLink
+public class FlowableLinkData : TextLinkData, IFlowableLinkData
 {
     private FlowableState _state = FlowableState.Ready;
     //[XmlIgnore]
@@ -97,11 +97,11 @@ public class FlowableLinkData : TextLinkData, IFlowableLink
         this.Message = message;
         return new FlowableResult(message) { State = FlowableResultState.Error };
     }
-    [XmlIgnore]
-    [Display(Name = "执行")]
-    public RelayCommand InvokeCommand => new RelayCommand(async l => await this.TryInvokeAsync(null, null));
+    //[XmlIgnore]
+    //[Display(Name = "执行")]
+    //public RelayCommand InvokeCommand => new RelayCommand(async l => await this.TryInvokeAsync(null, null));
 
-    public IFlowableResult Invoke(Part previors, Link current)
+    public IFlowableResult Invoke(IFlowablePartData previors, IFlowableDiagramData diagram)
     {
         Thread.Sleep(DiagramAppSetting.Instance.FlowSleepMillisecondsTimeout);
         return DiagramAppSetting.Instance.UseMock
@@ -109,14 +109,14 @@ public class FlowableLinkData : TextLinkData, IFlowableLink
             : this.OK("运行成功");
     }
 
-    public virtual async Task<IFlowableResult> InvokeAsync(Part previors, Link current)
+    public virtual async Task<IFlowableResult> InvokeAsync(IFlowablePartData previors, IFlowableDiagramData diagram)
     {
         return await Task.Run(() =>
         {
-            return this.Invoke(previors, current);
+            return this.Invoke(previors, diagram);
         });
     }
-    public virtual async Task<IFlowableResult> TryInvokeAsync(Part previors, Link current)
+    public virtual async Task<IFlowableResult> TryInvokeAsync(IFlowablePartData previors, IFlowableDiagramData diagram)
     {
         try
         {
@@ -125,7 +125,7 @@ public class FlowableLinkData : TextLinkData, IFlowableLink
             using (var stopwatch = new Stopwatchable(this))
             {
                 IocLog.Instance?.Info($"正在执行<{this.GetType().Name}>:{this.Text}");
-                IFlowableResult result = await InvokeAsync(previors, current);
+                IFlowableResult result = await InvokeAsync(previors, diagram);
                 IocLog.Instance?.Info(result.State == FlowableResultState.Error ? $"运行错误<{this.GetType().Name}>:{this.Text} {result.Message}" : $"执行完成<{this.GetType().Name}>:{this.Text} {result.Message}");
                 this.State = result.State == FlowableResultState.OK ? FlowableState.Success : FlowableState.Error;
                 return result;
@@ -168,6 +168,7 @@ public class FlowableLinkData : TextLinkData, IFlowableLink
     {
         return true;
     }
+
 }
 
 public class FlowableLinkData<T> : FlowableLinkData where T : Enum

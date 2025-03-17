@@ -22,5 +22,5 @@ public interface IPortData : ILinkInitializer, IData
 
     Thickness PortMargin { get; set; }
 
-    void ApplayStyleTo(IPortData node);
+    //void ApplayStyleTo(IPortData node);
 }

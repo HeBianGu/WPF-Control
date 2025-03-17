@@ -146,16 +146,16 @@ public class FlowableNodeData : TextNodeData, IFlowableNodeData
         return new FlowableResult(message) { State = FlowableResultState.Error };
     }
 
-    [Browsable(false)]
-    [Icon(FontIcons.Play)]
-    [Display(Name = "执行")]
-    public DisplayCommand InvokeCommand => new DisplayCommand(async l =>
-    {
-        if (l is Node node)
-            await this.TryInvokeAsync(null, node);
-    }, x => x is Node);
+    //[Browsable(false)]
+    //[Icon(FontIcons.Play)]
+    //[Display(Name = "执行")]
+    //public DisplayCommand InvokeCommand => new DisplayCommand(async l =>
+    //{
+    //    if (l is Node node)
+    //        await this.TryInvokeAsync(null, node);
+    //}, x => x is Node);
 
-    public virtual IFlowableResult Invoke(Part previors, Node current)
+    public virtual IFlowableResult Invoke(IFlowablePartData previors, IFlowableDiagramData diagram)
     {
         Thread.Sleep(DiagramAppSetting.Instance.FlowSleepMillisecondsTimeout);
         return DiagramAppSetting.Instance.UseMock
@@ -163,14 +163,14 @@ public class FlowableNodeData : TextNodeData, IFlowableNodeData
             : this.OK("运行成功");
     }
 
-    public virtual async Task<IFlowableResult> InvokeAsync(Part previors, Node current)
+    public virtual async Task<IFlowableResult> InvokeAsync(IFlowablePartData previors, IFlowableDiagramData diagram)
     {
         return await Task.Run(() =>
         {
-            return this.Invoke(previors, current);
+            return this.Invoke(previors, diagram);
         });
     }
-    public virtual async Task<IFlowableResult> TryInvokeAsync(Part previors, Node current)
+    public virtual async Task<IFlowableResult> TryInvokeAsync(IFlowablePartData previors, IFlowableDiagramData diagram)
     {
         try
         {
@@ -181,7 +181,7 @@ public class FlowableNodeData : TextNodeData, IFlowableNodeData
             {
                 if (this.UseInfoLogger)
                     IocLog.Instance?.Info($"正在执行<{this.GetType().Name}>:{this.Text}");
-                IFlowableResult result = await InvokeAsync(previors, current);
+                IFlowableResult result = await InvokeAsync(previors, diagram);
                 if (this.UseInfoLogger)
                     IocLog.Instance?.Info(result.State == FlowableResultState.Error ? $"运行错误<{this.GetType().Name}>:{this.Text} {result.Message}" : $"执行完成<{this.GetType().Name}>:{this.Text} {result.Message}");
                 this.State = result.ToState();

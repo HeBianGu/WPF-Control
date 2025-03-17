@@ -346,6 +346,9 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
     public Datas Datas { get; } = new Datas();
 
+    List<INodeData> IDiagramData.NodeDatas => this.Datas.NodeDatas;
+    List<ILinkData> IDiagramData.LinkDatas => this.Datas.LinkDatas;
+
     //List<INodeData> IDiagramSerializable.NodeDatas { get; set; }
     //List<ILinkData> IDiagramSerializable.LinkDatas { get; set; }
 
@@ -430,6 +433,11 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
         //      //this._layout.DoLayout(this.Nodes.ToArray());
         //      return CreateFromXml(xml, this.GetType());
         //  });
+    }
+
+    object ICloneable.Clone()
+    {
+        throw new NotImplementedException();
     }
 
     //public void FromXml(XmlElement xmlEle, XmlDocument cnt, Func<PropertyInfo, object, bool> match = null)

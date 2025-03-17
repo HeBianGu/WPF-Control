@@ -15,5 +15,5 @@ public interface ILinkData : IData
 
     string ToPortID { get; set; }
 
-    void ApplayStyleTo(ILinkData node);
+    //void ApplayStyleTo(ILinkData node);
 }

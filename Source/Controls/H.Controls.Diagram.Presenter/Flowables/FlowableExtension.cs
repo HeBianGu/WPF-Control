@@ -21,10 +21,10 @@ public static class FlowableExtension
         foreach (FlowablePart part in parts)
         {
             //part.State = FlowableState.Wait;
-            if (part.Content is IFlowable flowable)
+            if (part.Content is IFlowablePartData flowable)
                 flowable.State = FlowableState.Wait;
         }
-        IEnumerable<Node> starts = nodes.Where(x => x.GetFromNodes().Count == 0 && x.GetContent<IFlowableNodeData>()?.UseStart == true);
+        IEnumerable<Node> starts = nodes.Where(x => x.GetFromNodes().Count == 0);
 
         if (starts == null || starts.Count() == 0)
         {
@@ -104,12 +104,12 @@ public static class FlowableExtension
         nodes.GotoState(x => FlowableState.Wait);
     }
 
-    public static void GotoState(this IEnumerable<Node> nodes, Func<IFlowable, FlowableState?> gotoState)
+    public static void GotoState(this IEnumerable<Node> nodes, Func<IFlowablePartData, FlowableState?> gotoState)
     {
         var parts = nodes.SelectMany(x => x.GetParts()).OfType<FlowablePart>();
         foreach (var part in parts)
         {
-            if (part.Content is IFlowable flowable)
+            if (part.Content is IFlowablePartData flowable)
             {
                 var state = gotoState(flowable);
                 if (state == null)
@@ -121,6 +121,7 @@ public static class FlowableExtension
 
     public static async Task<bool?> InvokePort(this Node node, Action<Part> invoking = null, Action<Part> invoked = null)
     {
+        var diagramData = node.GetDiagram().DataContext as IFlowableDiagramData;
         Func<Node, Port, Task<bool?>> run = null;
         run = async (cNode, from) =>
         {
@@ -132,24 +133,24 @@ public static class FlowableExtension
                 FlowableResult result;
                 using (new PartInvokable(cNode, invoking, invoked))
                 {
-                    result = await nodeData.TryInvokeAsync(from, cNode) as FlowableResult;
+                    result = await nodeData.TryInvokeAsync(from.GetContent<IFlowablePartData>(), diagramData) as FlowableResult;
                     invoked?.Invoke(cNode);
                     if (result == null || result.State == FlowableResultState.Error)
                         return false;
                 }
 
-                IEnumerable<Link> links = cNode.LinksOutOf.Where(x => x.GetContent<IFlowableLink>().IsMatchResult(result));
+                IEnumerable<Link> links = cNode.LinksOutOf.Where(x => x.GetContent<IFlowableLinkData>().IsMatchResult(result));
                 foreach (Link link in links)
                 {
-                    IFlowableLink linkData = link.GetContent<IFlowableLink>();
+                    IFlowableLinkData linkData = link.GetContent<IFlowableLinkData>();
                     if (linkData.State == FlowableState.Canceling)
                         return null;
                     invoking?.Invoke(link.FromPort);
-                    IFlowablePort portData = link.FromPort?.GetContent<IFlowablePort>();
+                    IFlowablePortData portData = link.FromPort?.GetContent<IFlowablePortData>();
                     //this.GetDiagram().OnRunningPartChanged(link.FromPort);
                     using (new PartInvokable(link.FromPort, invoking, invoked))
                     {
-                        IFlowableResult rFrom = await portData?.TryInvokeAsync(cNode, link.FromPort);
+                        IFlowableResult rFrom = await portData?.TryInvokeAsync(cNode.GetContent<IFlowablePartData>(), diagramData);
                         if (rFrom?.State == FlowableResultState.Error)
                             return false;
                     }
@@ -161,7 +162,7 @@ public static class FlowableExtension
                     linkData.State = FlowableState.Running;
                     using (new PartInvokable(link, invoking, invoked))
                     {
-                        IFlowableResult r = await linkData?.TryInvokeAsync(link.FromPort, link);
+                        IFlowableResult r = await linkData?.TryInvokeAsync(link.FromPort.GetContent<IFlowablePartData>(), diagramData);
                         linkData.State = r?.State == FlowableResultState.OK ? FlowableState.Success : FlowableState.Error;
                         if (r?.State == FlowableResultState.Error)
                             return false;
@@ -170,9 +171,9 @@ public static class FlowableExtension
                         return null;
                     using (new PartInvokable(link.ToPort, invoking, invoked))
                     {
-                        IFlowablePort toPort = link.ToPort.GetContent<IFlowablePort>();
+                        IFlowablePortData toPort = link.ToPort.GetContent<IFlowablePortData>();
                         //this.GetDiagram().OnRunningPartChanged(link.ToPort);
-                        IFlowableResult rTo = await toPort?.TryInvokeAsync(link, link.ToPort);
+                        IFlowableResult rTo = await toPort?.TryInvokeAsync(link.GetContent<IFlowablePartData>(), diagramData);
                         invoked?.Invoke(link.ToPort);
                         if (rTo?.State == FlowableResultState.Error)
                             return false;
@@ -190,6 +191,8 @@ public static class FlowableExtension
 
     public static async Task<bool?> InvokeLink(this Node node, Action<Part> invoking = null, Action<Part> invoked = null)
     {
+        var diagramData = node.GetDiagram().DataContext as IFlowableDiagramData;
+
         Func<Node, Link, Task<bool?>> run = null;
         run = async (cNode, from) =>
         {
@@ -199,7 +202,7 @@ public static class FlowableExtension
                     return null;
                 using (new PartInvokable(cNode, invoking, invoked))
                 {
-                    FlowableResult result = await nodeData.TryInvokeAsync(from, cNode) as FlowableResult;
+                    FlowableResult result = await nodeData.TryInvokeAsync(from.GetContent<IFlowablePartData>(), diagramData) as FlowableResult;
                     if (result == null || result.State == FlowableResultState.Error)
                         return false;
                 }
@@ -207,11 +210,11 @@ public static class FlowableExtension
                 {
                     if (nodeData.State == FlowableState.Canceling)
                         return null;
-                    IFlowableLink linkData = link.GetContent<IFlowableLink>();
+                    IFlowableLinkData linkData = link.GetContent<IFlowableLinkData>();
                     linkData.State = FlowableState.Running;
                     using (new PartInvokable(link, invoking, invoked))
                     {
-                        IFlowableResult r = await linkData?.TryInvokeAsync(cNode, link);
+                        IFlowableResult r = await linkData?.TryInvokeAsync(cNode.GetContent<IFlowablePartData>(), diagramData);
                         linkData.State = r?.State == FlowableResultState.OK ? FlowableState.Success : FlowableState.Error;
                         if (r?.State == FlowableResultState.Error)
                             return false;
@@ -235,6 +238,8 @@ public static class FlowableExtension
 
     public static async Task<bool?> InvokeNode(this Node node, Action<Part> invoking = null, Action<Part> invoked = null)
     {
+        var diagramData = node.GetDiagram().DataContext as IFlowableDiagramData;
+
         Func<Node, Task<bool?>> run = null;
         run = async l =>
         {
@@ -247,7 +252,7 @@ public static class FlowableExtension
                         return null;
                     using (new PartInvokable(node, invoking, invoked))
                     {
-                        IFlowableResult result = await data.TryInvokeAsync(l, node);
+                        IFlowableResult result = await data.TryInvokeAsync(l.GetContent<IFlowablePartData>(), diagramData);
                         if (result.State == FlowableResultState.Error)
                             return false;
                     }
@@ -261,7 +266,7 @@ public static class FlowableExtension
 
         using (new PartInvokable(node, invoking, invoked))
         {
-            var r = await node.GetContent<IFlowableNodeData>().TryInvokeAsync(null, node);
+            var r = await node.GetContent<IFlowableNodeData>().TryInvokeAsync(null, diagramData);
             if (r.State == FlowableResultState.Error)
                 return false;
         }
@@ -297,6 +302,24 @@ public class PartInvokable : IDisposable
     private Part _part;
 
     public PartInvokable(Part part, Action<Part> invoking, Action<Part> invoked)
+    {
+        this._part = part;
+        invoking?.Invoke(part);
+        _invoked = invoked;
+    }
+
+    public void Dispose()
+    {
+        _invoked?.Invoke(this._part);
+    }
+}
+
+public class PartDataInvokable : IDisposable
+{
+    private Action<IPartData> _invoked;
+    private IPartData _part;
+
+    public PartDataInvokable(IPartData part, Action<IPartData> invoking, Action<IPartData> invoked)
     {
         this._part = part;
         invoking?.Invoke(part);

@@ -9,7 +9,7 @@ public interface IFlowable : IDisposable, IMessageable,IStopwatchable
 {
     bool UseInfoLogger { get; set; }
     //IFlowable FromFlowable { get; }
-    FlowableState State { get; set; }
+    //FlowableState State { get; set; }
     void Clear();
 }
 
