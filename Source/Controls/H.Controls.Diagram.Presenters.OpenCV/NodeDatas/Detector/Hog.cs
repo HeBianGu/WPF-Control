@@ -2,7 +2,7 @@
 [Display(Name = "行人检测", GroupName = "基础检测", Order = 21)]
 public class Hog : DetectorOpenCVNodeDataBase
 {
-    public override IFlowableResult Invoke(Part previors, Node current)
+    public override IFlowableResult Invoke(IFlowablePartData previors, IFlowableDiagramData current)
     {
         Mat result = this.PreviourMat;
         //using Mat img = Cv2.ImRead(this.SrcFilePath, ImreadModes.Color);

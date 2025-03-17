@@ -37,7 +37,7 @@ public abstract class ImageImportNodeDataBase : OpenCVNodeData
         }
     }
 
-    protected override async Task<IFlowableResult> BeforeInvokeAsync(Part previors, Node current)
+    protected override async Task<IFlowableResult> BeforeInvokeAsync(IFlowablePartData previors, IFlowableDiagramData current)
     {
         if (File.Exists(this.SrcFilePath) == false)
         {
@@ -51,7 +51,7 @@ public abstract class ImageImportNodeDataBase : OpenCVNodeData
         return await base.BeforeInvokeAsync(previors, current);
     }
 
-    public override IFlowableResult Invoke(Part previors, Node current)
+    public override IFlowableResult Invoke(IFlowablePartData previors, IFlowableDiagramData current)
     {
         this.Mat = new Mat(this.SrcFilePath, ImreadModes.Color);
         this.SrcMat = this.Mat;

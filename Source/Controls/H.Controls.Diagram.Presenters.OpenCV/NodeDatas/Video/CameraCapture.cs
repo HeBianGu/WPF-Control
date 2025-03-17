@@ -28,12 +28,12 @@ public class CameraCapture : VideoCaptureImageImportNodeDataBase
             RaisePropertyChanged();
         }
     }
-    protected override async Task<IFlowableResult> BeforeInvokeAsync(Part previors, Node current)
+    protected override async Task<IFlowableResult> BeforeInvokeAsync(IFlowablePartData previors, IFlowableDiagramData current)
     {
         return await Task.FromResult(this.OK());
     }
 
-    public override async Task<IFlowableResult> InvokeAsync(Part previors, Node current)
+    public override async Task<IFlowableResult> InvokeAsync(IFlowablePartData previors, IFlowableDiagramData current)
     {
         //using BackgroundSubtractorMOG mog = BackgroundSubtractorMOG.Create();
         return await Task.Run(async () =>

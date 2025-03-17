@@ -20,11 +20,10 @@ public abstract class VideoCaptureImageImportNodeDataBase : ImageImportNodeDataB
         }
     }
 
-    protected virtual async Task<bool?> InvokeFrameMatAsync(Part previors, Node current, Mat frameMat)
+    protected virtual async Task<bool?> InvokeFrameMatAsync(IFlowablePartData previors, IFlowableDiagramData current, Mat frameMat)
     {
-        var diagram = current.GetDiagram();
-        var invokeable = diagram.InvokeDispatcher(x => x.DataContext) as IPartInvokeable;
-        Action<Part> invoking = x =>
+        var invokeable = current;
+        Action<IPartData> invoking = x =>
         {
             //OpenCVNodeDataBase data = x.GetContent<OpenCVNodeDataBase>();
             //data.UseInfoLogger = false;
@@ -36,52 +35,33 @@ public abstract class VideoCaptureImageImportNodeDataBase : ImageImportNodeDataB
             //});
         };
 
-        Action<Part> invoked = x =>
+        Action<IPartData> invoked = x =>
         {
             if (this.State == FlowableState.Canceling)
                 return;
-            current.Dispatcher.Invoke(() =>
-            {
-                invokeable?.OnInvokedPart(x);
-            });
+            invokeable?.OnInvokedPart(x);
             //Thread.Sleep(1000);
         };
-        invoking.Invoke(current);
+        invoking.Invoke(this);
         this.Mat = frameMat;
         this.SrcMat = this.Mat;
         UpdateMatToView();
-        invoked.Invoke(current);
-        var tos = current.GetToNodes();
-        Node to = tos.FirstOrDefault();
+        invoked.Invoke(this);
+        var tos = this.GetToNodeDatas(current).OfType<IFlowableNodeData>();
+        var to = tos.FirstOrDefault();
         if (to == null)
             return true;
-
-        await to.Dispatcher.InvokeAsync(() =>
-        {
-            tos.Wait();
-        });
-        //await to.Dispatcher.InvokeAsync(async () =>
-        //    {
-        var r = await to.InvokeNode(invoking, invoked);
+        tos.GotoState(current, x => FlowableState.Wait);
+        var r = await to.Invoke(current);
         await Task.Delay(1000);
         return r;
-
-        //});
-        //x =>
-        //{
-        //    OpenCVNodeDataBase data = x.GetContent<OpenCVNodeDataBase>();
-        //    data.UseInfoLogger = false;
-        //    data.UseReview = false;
-        //    data.UseAnimation = false;
-        //}, 
-
     }
 
 
 
-    public async Task<IFlowableResult> InvokeVideoFlowable(Node current, Func<Task<IFlowableResult>> action)
+    public async Task<IFlowableResult> InvokeVideoFlowable(IFlowableDiagramData current, Func<Task<IFlowableResult>> action)
     {
-        IEnumerable<IVideoFlowable> videos = current.GetAllParts().Select(x => x.GetContent<IFlowable>()).OfType<IVideoFlowable>();
+        IEnumerable<IVideoFlowable> videos = current.NodeDatas.OfType<IVideoFlowable>();
         foreach (IVideoFlowable video in videos)
         {
             video.Begin();

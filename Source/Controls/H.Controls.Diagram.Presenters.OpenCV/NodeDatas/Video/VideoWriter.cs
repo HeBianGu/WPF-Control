@@ -55,7 +55,7 @@ public class VideoWriter : ImageImportNodeDataBase
         }
     }
 
-    public override IFlowableResult Invoke(Part previors, Node current)
+    public override IFlowableResult Invoke(IFlowablePartData previors, IFlowableDiagramData current)
     {
         //const string OutVideoFile = "out.avi";
 

@@ -13,7 +13,7 @@ public abstract class OpenCVNodeData : OpenCVNodeDataBase
             return null;
         return System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, dataPath);
     }
-    public override async Task<IFlowableResult> InvokeAsync(Part previors, Node current)
+    public override async Task<IFlowableResult> InvokeAsync(IFlowablePartData previors, IFlowableDiagramData current)
     {
         var r = await this.BeforeInvokeAsync(previors, current);
         if (r.State == FlowableResultState.Error)

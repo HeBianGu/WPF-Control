@@ -209,8 +209,18 @@ public static class FlowableDiagramDataExtension
 
     public static void GotoState(this IFlowableDiagramData flowableDiagramData, Func<IFlowablePartData, FlowableState?> gotoState)
     {
-        var parts = flowableDiagramData.FlowableNodeDatas.SelectMany(x => x.GetToPartDatas(flowableDiagramData)).OfType<IFlowablePartData>();
-        foreach (var part in parts)
+        flowableDiagramData.FlowableNodeDatas.GotoState(flowableDiagramData, gotoState);
+    }
+
+    public static void GotoState(this IEnumerable<IFlowableNodeData> nodeDatas, IFlowableDiagramData flowableDiagramData, Func<IFlowablePartData, FlowableState?> gotoState)
+    {
+        var parts = nodeDatas.SelectMany(x => x.GetToPartDatas(flowableDiagramData)).OfType<IFlowablePartData>();
+        parts.GotoState(gotoState);
+    }
+
+    public static void GotoState(this IEnumerable<IFlowablePartData> partDatas, Func<IFlowablePartData, FlowableState?> gotoState)
+    {
+        foreach (var part in partDatas)
         {
             var state = gotoState(part);
             if (state == null)

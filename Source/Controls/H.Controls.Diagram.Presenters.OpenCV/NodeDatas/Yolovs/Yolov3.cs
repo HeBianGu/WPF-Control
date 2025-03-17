@@ -97,7 +97,7 @@ public class Yolov3 : YolovOpenCVNodeDataBase
         }
     }
 
-    protected override async Task<IFlowableResult> BeforeInvokeAsync(Part previors, Node current)
+    protected override async Task<IFlowableResult> BeforeInvokeAsync(IFlowablePartData previors, IFlowableDiagramData current)
     {
         if (!File.Exists(this.WeightFilePath) || !File.Exists(this.CfgFilePath) || !File.Exists(this.NameFilePath))
         {

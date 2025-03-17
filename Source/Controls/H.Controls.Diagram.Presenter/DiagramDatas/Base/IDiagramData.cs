@@ -31,7 +31,7 @@ public static class DiagramDataExtension
         return diagramData.NodeDatas.FirstOrDefault(l => l.ID == linkData.ToNodeID);
     }
 
-    public static IEnumerable<INodeData> GetFromNodeData(this INodeData node, IDiagramData diagramData)
+    public static IEnumerable<INodeData> GetFromNodeDatas(this INodeData node, IDiagramData diagramData)
     {
         return node.GetFromLinkDatas(diagramData).Select(x => x.GetFromNodeData(diagramData));
     }
@@ -68,7 +68,11 @@ public static class DiagramDataExtension
 
     public static IEnumerable<INodeData> GetStartNodeDatas(this IDiagramData diagramData)
     {
-        return diagramData.NodeDatas.Where(x => x.GetFromNodeData(diagramData) == null);
+        return diagramData.NodeDatas.Where(x =>
+        {
+            var find = x.GetFromNodeDatas(diagramData);
+            return find == null || find.Count() == 0;
+        });
     }
 
     public static IEnumerable<INodeData> GetEndNodeDatas(this IDiagramData diagramData)

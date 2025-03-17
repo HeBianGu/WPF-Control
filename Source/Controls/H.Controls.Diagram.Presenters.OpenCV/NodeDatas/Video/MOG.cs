@@ -94,7 +94,7 @@ public class MOG : OpenCVNodeData, IVideoFlowable
     }
 
 
-    public override IFlowableResult Invoke(Part previors, Node current)
+    public override IFlowableResult Invoke(IFlowablePartData previors, IFlowableDiagramData current)
     {
         Mat src = this.GetFromData(current).Mat;
         if (this.Mat == null)

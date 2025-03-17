@@ -17,7 +17,7 @@ public abstract class MatchDetectorOpenCVNodeDataBase : DetectorOpenCVNodeDataBa
         }
     }
 
-    protected override async Task<IFlowableResult> BeforeInvokeAsync(Part previors, Node current)
+    protected override async Task<IFlowableResult> BeforeInvokeAsync(IFlowablePartData previors, IFlowableDiagramData current)
     {
         if (File.Exists(this.TemplateFilePath) == false)
         {
