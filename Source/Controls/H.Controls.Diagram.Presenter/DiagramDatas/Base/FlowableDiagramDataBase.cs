@@ -3,21 +3,8 @@ global using H.Controls.Diagram.Flowables;
 global using H.Extensions.FontIcon;
 using System.Text.Json.Serialization;
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
-
-public interface IPartInvokeable
+public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowableDiagramData
 {
-    public void OnInvokingPart(IPartData part);
-    public void OnInvokedPart(IPartData part);
-}
-
-public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowableDiagramData, IPartInvokeable
-{
-    //protected override IEnumerable<Node> LoadToNodes(IEnumerable<INodeData> nodeDatas, IEnumerable<ILinkData> linkDatas)
-    //{
-    //    var converter = new DiagramFlowableDataSource(nodeDatas, linkDatas);
-    //    return converter.NodeSource;
-    //}
-
     private DiagramFlowableState _state = DiagramFlowableState.None;
     [JsonIgnore]
     public DiagramFlowableState State
@@ -113,7 +100,6 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
         this.Reset();
     }, e => this.State.CanReset());
 
-
     public virtual async Task<bool?> Start()
     {
         var starts = this.GetStartNodeDatas().OfType<IFlowableNodeData>();
@@ -132,7 +118,6 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
         }
 
         var start = starts.First();
-        //this.State = DiagramFlowableState.Running;
         return await this.InvokeState(() => start.Invoke(this));
     }
 
@@ -164,7 +149,7 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
 
     private string _message;
     [Browsable(false)]
-    [System.Text.Json.Serialization.JsonIgnore]
+    [JsonIgnore]
     [XmlIgnore]
     public string Message
     {
@@ -176,7 +161,5 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
         }
     }
 
-
     public IEnumerable<IFlowableNodeData> FlowableNodeDatas => this.Datas.NodeDatas.OfType<IFlowableNodeData>();
-
 }

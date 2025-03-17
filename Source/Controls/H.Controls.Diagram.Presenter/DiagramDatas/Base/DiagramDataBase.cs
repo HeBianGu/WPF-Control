@@ -3,6 +3,7 @@ global using H.Controls.Diagram.Layouts.Base;
 global using H.Controls.Diagram.LinkDrawers;
 global using H.Controls.Diagram.Presenter.NodeDatas.Card;
 global using System.Windows.Input;
+using H.Controls.Diagram.GraphSource;
 using H.Extensions.FontIcon;
 using System.Text.Json.Serialization;
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
@@ -179,21 +180,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
             RaisePropertyChanged();
         }
     }
-    [Icon(FontIcons.Refresh)]
-    [Display(Name = "默认样式", GroupName = "操作", Order = 6, Description = "点击此功能，恢复所有节点、连线和端口默认样式")]
-    public new DisplayCommand LoadDefaultCommand => new DisplayCommand(e =>
-    {
-        foreach (var node in this.Datas.NodeDatas)
-        {
-            IEnumerable<IDefaultable> displayers = node.GetPartDatas(this).OfType<IDefaultable>();
-            foreach (IDefaultable item in displayers)
-            {
-                item.LoadDefault();
-            }
-            if (node is IDefaultable displayer)
-                displayer.LoadDefault();
-        }
-    }, x => this.Datas.NodeDatas.Count > 0);
+
 
     [Icon(FontIcons.EditMirrored)]
     [Display(Name = "编辑面板", GroupName = "操作", Order = 0, Description = "点击此功能，编辑面板信息")]
@@ -209,68 +196,68 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
         await IocMessage.Form.ShowTabEdit(this);
     });
 
-    [Icon(FontIcons.Cancel)]
-    [Display(Name = "删除", GroupName = "操作", Order = 4, Description = "点击此功能，删除选中的节点、连线或端口")]
-    public virtual DisplayCommand DeleteCommand => new DisplayCommand(async e =>
-    {
-        if (e is Part part)
-        {
-            await IocMessage.Dialog.ShowDeleteDialog(x =>
-            {
-                part.Delete();
-            });
-        }
+    //[Icon(FontIcons.Cancel)]
+    //[Display(Name = "删除", GroupName = "操作", Order = 4, Description = "点击此功能，删除选中的节点、连线或端口")]
+    //public virtual DisplayCommand DeleteCommand => new DisplayCommand(async e =>
+    //{
+    //    if (e is Part part)
+    //    {
+    //        await IocMessage.Dialog.ShowDeleteDialog(x =>
+    //        {
+    //            part.Delete();
+    //        });
+    //    }
 
-    }, x => x is Part);
+    //}, x => x is Part);
 
-    [Icon(FontIcons.DisconnectDrive)]
-    [Display(Name = "删除选中节点", GroupName = "操作", Order = 4, Description = "点击此功能，删除选中的所有节点")]
-    public virtual DisplayCommand DeleteCheckedCommand => new DisplayCommand(async e =>
-    {
-        if (e is IEnumerable<Node> nodes)
-        {
-            await IocMessage.Dialog.ShowDeleteDialog(x =>
-            {
-                foreach (var item in nodes.Where(x => x.IsSelected).ToList())
-                {
-                    item.Delete();
-                }
-            });
-        }
+    //[Icon(FontIcons.DisconnectDrive)]
+    //[Display(Name = "删除选中节点", GroupName = "操作", Order = 4, Description = "点击此功能，删除选中的所有节点")]
+    //public virtual DisplayCommand DeleteCheckedCommand => new DisplayCommand(async e =>
+    //{
+    //    if (e is IEnumerable<Node> nodes)
+    //    {
+    //        await IocMessage.Dialog.ShowDeleteDialog(x =>
+    //        {
+    //            foreach (var item in nodes.Where(x => x.IsSelected).ToList())
+    //            {
+    //                item.Delete();
+    //            }
+    //        });
+    //    }
 
-    }, x => x is IEnumerable<Node>);
+    //}, x => x is IEnumerable<Node>);
 
-    [Icon(FontIcons.Delete)]
-    [Display(Name = "清空节点", GroupName = "操作", Order = 5, Description = "点击此功能，删除所有节点、连线和端口")]
-    public virtual DisplayCommand ClearCommand => new DisplayCommand(async e =>
-    {
-        if (e is IEnumerable<Node> nodes)
-        {
-            await IocMessage.Dialog.ShowDeleteAllDialog(x =>
-            {
-                foreach (Node item in nodes.ToList())
-                {
-                    item.Delete();
-                }
-                //this.SelectedPart = null;
-            });
-        }
+    //[Icon(FontIcons.Delete)]
+    //[Display(Name = "清空节点", GroupName = "操作", Order = 5, Description = "点击此功能，删除所有节点、连线和端口")]
+    //public virtual DisplayCommand ClearCommand => new DisplayCommand(async e =>
+    //{
+    //    if (e is IEnumerable<Node> nodes)
+    //    {
+    //        await IocMessage.Dialog.ShowDeleteAllDialog(x =>
+    //        {
+    //            foreach (Node item in nodes.ToList())
+    //            {
+    //                item.Delete();
+    //            }
+    //            //this.SelectedPart = null;
+    //        });
+    //    }
 
-    }, x => x is IEnumerable<Node>);
+    //}, x => x is IEnumerable<Node>);
 
-    [Icon(FontIcons.AlignCenter)]
-    [System.Text.Json.Serialization.JsonIgnore]
-    [Display(Name = "对齐节点", GroupName = "操作", Order = 5)]
-    public virtual DisplayCommand AlignmentCommand => new DisplayCommand(e =>
-    {
-        if (e is IEnumerable<Node> nodes)
-        {
-            foreach (Node item in nodes)
-            {
-                item.AligmentLayout();
-            }
-        }
-    }, x => x is IEnumerable<Node>);
+    //[Icon(FontIcons.AlignCenter)]
+    //[System.Text.Json.Serialization.JsonIgnore]
+    //[Display(Name = "对齐节点", GroupName = "操作", Order = 5)]
+    //public virtual DisplayCommand AlignmentCommand => new DisplayCommand(e =>
+    //{
+    //    if (e is IEnumerable<Node> nodes)
+    //    {
+    //        foreach (Node item in nodes)
+    //        {
+    //            item.AligmentLayout();
+    //        }
+    //    }
+    //}, x => x is IEnumerable<Node>);
 
     //[System.Text.Json.Serialization.JsonIgnore]
 

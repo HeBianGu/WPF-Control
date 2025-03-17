@@ -38,10 +38,7 @@ public abstract class NodeData : NodeDataBase, INodeData, ITemplate, ILinkDataCr
     public DisplayCommand LocateFullCommand => new DisplayCommand(e =>
     {
         if (e is Node node)
-        {
-            //if (node.GetDiagram().DataContext is IZoomableDiagramData diagram)
-            //    diagram.ZoomTo(node);
-        }
+            node.GetDiagram().ZoomToFit(node);
     }, x => x is Node);
 
     [Icon(FontIcons.Forward)]
@@ -114,12 +111,6 @@ public abstract class NodeData : NodeDataBase, INodeData, ITemplate, ILinkDataCr
             RaisePropertyChanged();
         }
     }
-
-    //[Browsable(false)]
-    //public int Columns { get; set; }
-
-    //[Browsable(false)]
-    /*    public bool IsTemplate { get; set; } = true*/
 
     private bool _isTemplate = true;
     [DefaultValue(true)]
@@ -314,7 +305,6 @@ public abstract class NodeData : NodeDataBase, INodeData, ITemplate, ILinkDataCr
         //node.RenderingBias = this.RenderingBias;
         //node.ShadowDepth = this.ShadowDepth;
         //node.EffectOpacity = this.EffectOpacity;
-
     }
 
     public override object Clone()

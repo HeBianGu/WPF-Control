@@ -88,14 +88,14 @@ public class LinkLayer : Layer
             //child.Draw(start, end);
             child.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
             child.Arrange(new Rect(new Point(0, 0), child.DesiredSize));
-            if (this.UseAnimation)
-            {
-                //child.BeginAnimationOpacity(0, 1, this.Duration.TotalMilliseconds * 3);
-            }
-            else
-            {
-                child.Opacity = 1;
-            }
+            //if (this.UseAnimation)
+            //{
+            //    //child.BeginAnimationOpacity(0, 1, this.Duration.TotalMilliseconds * 3);
+            //}
+            //else
+            //{
+            child.Opacity = 1;
+            //}
         }
 #if DEBUG
         TimeSpan span = DateTime.Now - dateTime;
@@ -110,7 +110,7 @@ public class LinkLayer : Layer
     /// </summary>
     protected void RunPath(Path path, double MilliSecond = 1000)
     {
-        if (!this.UseAnimation) return;
+        //if (!this.UseAnimation) return;
 
         double _pathLength = path.Data.GetTotalLength(new Size(path.ActualWidth, path.ActualHeight), path.StrokeThickness) * 2;
 

@@ -1,4 +1,6 @@
-﻿namespace H.Controls.Diagram.Presenter.Provider;
+﻿using H.Controls.Diagram.GraphSource;
+
+namespace H.Controls.Diagram.Presenter.Provider;
 
 public class DiagramFlowableDataSource : DiagramDataSource
 {

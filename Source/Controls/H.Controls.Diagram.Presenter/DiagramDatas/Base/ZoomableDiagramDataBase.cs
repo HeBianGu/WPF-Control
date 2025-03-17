@@ -6,50 +6,20 @@ namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
 public abstract class ZoomableDiagramDataBase : DiagramDataBase, IZoomableDiagramData
 {
-    //private Action<Point> _locateCenterCallBack;
-    //[System.Text.Json.Serialization.JsonIgnore]
-
-    //[XmlIgnore]
-    //public Action<Point> LocateCenterCallBack
-    //{
-    //    get { return _locateCenterCallBack; }
-    //    set
-    //    {
-    //        if (value == null)
-    //            return;
-    //        _locateCenterCallBack = value;
-    //        RaisePropertyChanged();
-    //    }
-    //}
-
-    //private Action<Rect> _locateRectCallBack;
-    //[System.Text.Json.Serialization.JsonIgnore]
-
-    //[XmlIgnore]
-    //public Action<Rect> LocateRectCallBack
-    //{
-    //    get { return _locateRectCallBack; }
-    //    set
-    //    {
-    //        if (value == null)
-    //            return;
-    //        _locateRectCallBack = value;
-    //        RaisePropertyChanged();
-    //    }
-    //}
-    //IZoombox
-    //[Icon(FontIcons.Zoom)]
-    //[Display(Name = "缩放定位", GroupName = "操作", Order = 5)]
-    //public virtual DisplayCommand ZoomAllCommand => new DisplayCommand(e =>
-    //{
-    //    this.ZoomToFit();
-    //}, x => this.Nodes.Count > 0);
+    [Icon(FontIcons.Zoom)]
+    [Display(Name = "缩放定位", GroupName = "操作", Order = 5)]
+    public virtual DisplayCommand ZoomAllCommand => new DisplayCommand(e =>
+    {
+        if (e is Diagram diagram)
+            diagram.ZoomToFit();
+    });
 
     //[Icon(FontIcons.SIPMove)]
     //[Display(Name = "平移定位", GroupName = "操作", Order = 5)]
     //public virtual DisplayCommand PanToCenterCommand => new DisplayCommand(e =>
     //{
-    //    this.PanToCenter();
+    //    if (e is Diagram diagram)
+    //        diagram.PanToCenter();
     //}, x => this.Nodes.Count > 0);
 
     //public void ZoomToFit()

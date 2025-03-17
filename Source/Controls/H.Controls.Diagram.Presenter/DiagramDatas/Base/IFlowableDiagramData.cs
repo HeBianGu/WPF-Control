@@ -1,17 +1,11 @@
-﻿using H.Controls.Diagram.Parts;
-using System.Runtime.CompilerServices;
-
+﻿
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
-public interface IFlowableDiagramData : IDiagramData, IMessageable, IPartInvokeable
+public interface IFlowableDiagramData : IDiagramData, IMessageable, IPartDataInvokeable
 {
     DiagramFlowableMode FlowableMode { get; set; }
     DiagramFlowableState State { get; set; }
     Task<bool?> Start();
-    //Task<bool?> InvokeNode(Node startNode);
-    void Wait();
-
-    IEnumerable<IFlowableNodeData> FlowableNodeDatas { get; }
 }
 
 public static class FlowableDiagramDataExtension
@@ -209,7 +203,7 @@ public static class FlowableDiagramDataExtension
 
     public static void GotoState(this IFlowableDiagramData flowableDiagramData, Func<IFlowablePartData, FlowableState?> gotoState)
     {
-        flowableDiagramData.FlowableNodeDatas.GotoState(flowableDiagramData, gotoState);
+        flowableDiagramData.NodeDatas.OfType<IFlowableNodeData>().GotoState(flowableDiagramData, gotoState);
     }
 
     public static void GotoState(this IEnumerable<IFlowableNodeData> nodeDatas, IFlowableDiagramData flowableDiagramData, Func<IFlowablePartData, FlowableState?> gotoState)

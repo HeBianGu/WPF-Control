@@ -4,9 +4,7 @@ using System.Threading.Tasks;
 
 namespace H.Controls.Diagram.Flowables;
 
-public interface IFlowablePortData : IFlowable, IFlowablePartData, IPortData
+public interface IFlowablePortData : IFlowablePartData, IPortData
 {
-    //IFlowableResult Invoke(IFlowablePartData previors, IFlowablePortData current, IFlowableDiagramData diagram);
-    //Task<IFlowableResult> InvokeAsync(IFlowablePartData previors, IFlowablePortData current, IFlowableDiagramData diagram);
-    //Task<IFlowableResult> TryInvokeAsync(IFlowablePartData previors, IFlowablePortData current, IFlowableDiagramData diagram);
+
 }

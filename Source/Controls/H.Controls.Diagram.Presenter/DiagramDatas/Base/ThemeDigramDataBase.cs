@@ -108,6 +108,22 @@ public abstract class ThemeDigramDataBase : TreeDigramDataBase, IThemeDigramData
         }
     }
 
+    [Icon(FontIcons.Refresh)]
+    [Display(Name = "默认样式", GroupName = "操作", Order = 6, Description = "点击此功能，恢复所有节点、连线和端口默认样式")]
+    public new DisplayCommand LoadDefaultCommand => new DisplayCommand(e =>
+    {
+        foreach (var node in this.Datas.NodeDatas)
+        {
+            IEnumerable<IDefaultable> displayers = node.GetPartDatas(this).OfType<IDefaultable>();
+            foreach (IDefaultable item in displayers)
+            {
+                item.LoadDefault();
+            }
+            if (node is IDefaultable displayer)
+                displayer.LoadDefault();
+        }
+    }, x => this.Datas.NodeDatas.Count > 0);
+
     public RelayCommand ApplyDiagramThemeCommand => new RelayCommand(e =>
     {
         if (e is DiagramTheme project)

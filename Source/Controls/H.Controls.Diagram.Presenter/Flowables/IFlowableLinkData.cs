@@ -4,10 +4,7 @@ using System.Threading.Tasks;
 
 namespace H.Controls.Diagram.Flowables;
 
-public interface IFlowableLinkData : IFlowable, ILinkData, IFlowablePartData
+public interface IFlowableLinkData : ILinkData, IFlowablePartData
 {
-    //IFlowableResult Invoke(IFlowablePartData previors, IFlowableLinkData current, IFlowableDiagramData diagram);
-    //Task<IFlowableResult> InvokeAsync(IFlowablePartData previors, IFlowableLinkData current, IFlowableDiagramData diagram);
-    //Task<IFlowableResult> TryInvokeAsync(IFlowablePartData previors, IFlowableLinkData current, IFlowableDiagramData diagram);
     bool IsMatchResult(FlowableResult flowableResult);
 }

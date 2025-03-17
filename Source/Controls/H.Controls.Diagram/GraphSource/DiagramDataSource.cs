@@ -1,16 +1,8 @@
-﻿global using H.Controls.Diagram.GraphSource;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 
-namespace H.Controls.Diagram;
-
-public interface IDiagramDataSource : IGraphSource
-{
-    List<ILinkData> GetLinkDatas();
-    List<INodeData> GetNodeDatas();
-}
+namespace H.Controls.Diagram.GraphSource;
 
 public class DiagramDataSource : GraphSource<INodeData, ILinkData>, IDiagramDataSource
 {

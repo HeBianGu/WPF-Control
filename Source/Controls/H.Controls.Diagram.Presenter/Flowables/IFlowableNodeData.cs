@@ -7,17 +7,7 @@ using System.Threading.Tasks;
 
 namespace H.Controls.Diagram.Flowables;
 
-public interface IFlowableNodeData : INodeData, IFlowable, IMessageable, IFlowablePartData
+public interface IFlowableNodeData : INodeData, IMessageable, IFlowablePartData
 {
-    //public bool UseStart { get; set; }
-    //IFlowableResult Invoke(IFlowablePartData previors, IFlowableNodeData current, IFlowableDiagramData diagram);
-    //Task<IFlowableResult> InvokeAsync(IFlowablePartData previors, IFlowableNodeData current, IFlowableDiagramData diagram);
-    //Task<IFlowableResult> TryInvokeAsync(IFlowablePartData previors, IFlowableNodeData current, IFlowableDiagramData diagram);
-}
 
-public interface IFlowablePartData : IPartData, IFlowable
-{
-    FlowableState State { get; set; }
-
-    Task<IFlowableResult> TryInvokeAsync(IFlowablePartData previors, IFlowableDiagramData diagram);
 }

@@ -1,28 +1,41 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-global using H.Controls.Diagram.LinkDrawers;
 global using H.Controls.Diagram.Layers;
 global using H.Controls.Diagram.Layouts.Base;
+global using H.Controls.Diagram.LinkDrawers;
 using H.Mvvm;
 using H.Services.Common;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Collections.Specialized;
-using System.Windows.Threading;
 
 namespace H.Controls.Diagram;
+
+public interface IDiagram
+{
+    IDiagramDataSource DataSource { get; set; }
+    List<Link> Links { get; }
+    List<Node> Nodes { get; }
+    Node SelectedNode { get; set; }
+    Part SelectedPart { get; set; }
+    void AddLink(Link link);
+    void AddNode(params Node[] nodes);
+    IEnumerable<Part> GetAllParts(Func<Part, bool> predicate = null);
+    void RemoveNode(params Node[] nodes);
+    void ZoomTo(Point point);
+    void ZoomTo(Rect rect);
+    void ZoomToFit();
+    void ZoomToFit(params Part[] parts);
+}
 
 [TemplatePart(Name = "NodeLayer", Type = typeof(NodeLayer))]
 [TemplatePart(Name = "LinkLayer", Type = typeof(LinkLayer))]
 [TemplatePart(Name = "DynamicLayer", Type = typeof(LinkLayer))]
-public partial class Diagram : ContentControl
+public partial class Diagram : ContentControl, IDiagram
 {
     public static ComponentResourceKey DefaultKey => new ComponentResourceKey(typeof(Diagram), "S.Diagram.Default");
 
@@ -405,36 +418,6 @@ public partial class Diagram : ContentControl
     [Browsable(false)]
     public DataTemplate LinkTemplate { get; set; }
 
-    //[Obsolete("使用DataSource替换")]
-    //[Browsable(false)]
-    //public IList NodesSource
-    //{
-    //    get { return (IList)GetValue(NodesSourceProperty); }
-    //    set { SetValue(NodesSourceProperty, value); }
-    //}
-
-
-    //public static readonly DependencyProperty NodesSourceProperty =
-    //    DependencyProperty.Register("NodesSource", typeof(IList), typeof(Diagram), new PropertyMetadata(new ObservableCollection<Node>(), (d, e) =>
-    //    {
-    //        Diagram control = d as Diagram;
-    //        if (control == null) return;
-    //        IList config = e.NewValue as IList;
-
-    //        //if (e.OldValue is INotifyCollectionChanged old)
-    //        //{
-    //        //    old.CollectionChanged -= control.Notify_CollectionChanged;
-    //        //}
-
-    //        //if (config is INotifyCollectionChanged notify)
-    //        //{
-    //        //    notify.CollectionChanged -= control.Notify_CollectionChanged;
-    //        //    notify.CollectionChanged += control.Notify_CollectionChanged;
-    //        //}
-
-    //        control.RefreshData();
-    //    }));
-
     public bool UseAutoAddLinkOnEnd
     {
         get { return (bool)GetValue(UseAutoAddLinkOnEndProperty); }
@@ -486,7 +469,7 @@ public partial class Diagram : ContentControl
         RoutedEventArgs args = new RoutedEventArgs(ItemsChangedRoutedEvent, this);
         this.RaiseEvent(args);
 
-        this.UpDataNodesToDataSource();
+        this.UpdateNodesToDataSource();
     }
 
     public static readonly RoutedEvent SelectedPartChangedRoutedEvent =
@@ -587,9 +570,8 @@ public partial class Diagram : ContentControl
 
         IEnumerable<Node> nodes = this.DataSource?.Nodes.OfType<Node>();
         this.Nodes = nodes?.ToList();
-        //this.Nodes = nodes.ToList();
         this.Links = this.Nodes.SelectMany(x => x.GetAllLinks()).Distinct().ToList();
-        this._layers.ForEach(l => l.UseAnimation = this.UseAnimation);
+        //this._layers.ForEach(l => l.UseAnimation = this.UseAnimation);
         this.RefreshLayout();
         this.RefreshLinkDrawer();
         foreach (Node node in this.Nodes)
@@ -711,44 +693,6 @@ public partial class Diagram
     public static readonly DependencyProperty MessageProperty =
         DependencyProperty.Register("Message", typeof(string), typeof(Diagram), new FrameworkPropertyMetadata(default(string)));
 
-    [Display(Name = "切换布局动画间隔", GroupName = "显示设置")]
-    public TimeSpan Duration
-    {
-        get { return (TimeSpan)GetValue(DurationProperty); }
-        set { SetValue(DurationProperty, value); }
-    }
-
-
-    public static readonly DependencyProperty DurationProperty =
-        DependencyProperty.Register("Duration", typeof(TimeSpan), typeof(Diagram), new PropertyMetadata(TimeSpan.FromMilliseconds(500), (d, e) =>
-         {
-             Diagram control = d as Diagram;
-
-             if (control == null) return;
-
-             //TimeSpan config = e.NewValue as TimeSpan;
-
-         }));
-
-
-    //public bool UseAnimation
-    //{
-    //    get { return (bool)GetValue(UseAnimationProperty); }
-    //    set { SetValue(UseAnimationProperty, value); }
-    //}
-
-    //
-    //public static readonly DependencyProperty UseAnimationProperty =
-    //    DependencyProperty.Register("UseAnimation", typeof(bool), typeof(Diagram), new PropertyMetadata(false, (d, e) =>
-    //     {
-    //         Diagram control = d as Diagram;
-
-    //         if (control == null) return;
-
-    //         //bool config = e.NewValue as bool;
-
-    //     }));
-
     [Display(Name = "启用切换布局动画", GroupName = "显示设置")]
     public bool UseAnimation { get; set; } = true;
 
@@ -798,7 +742,7 @@ public partial class Diagram
             control.RefreshData();
         }));
 
-    public void UpDataNodesToDataSource()
+    protected void UpdateNodesToDataSource()
     {
         this.DataSource.Nodes = this.Nodes;
     }
