@@ -118,7 +118,7 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
         }
 
         var start = starts.First();
-        return await this.InvokeState(() => start.Invoke(this));
+        return await this.InvokeState(() => start.Start(this));
     }
 
     protected virtual bool CanStart()

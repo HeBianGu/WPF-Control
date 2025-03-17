@@ -109,6 +109,7 @@ public static class FlowableExtension
         Func<Node, Port, Task<bool?>> run = null;
         run = async (cNode, from) =>
         {
+           
             if (cNode.GetContent<IFlowableNodeData>() is IFlowableNodeData nodeData)
             {
                 if (nodeData.State == FlowableState.Canceling)

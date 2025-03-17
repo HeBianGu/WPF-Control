@@ -6,5 +6,6 @@ namespace H.Controls.Diagram.Flowables;
 
 public interface IFlowablePortData : IFlowablePartData, IPortData
 {
+    Task<IFlowableResult> TryInvokeAsync(IFlowableDiagramData diagram);
 
 }

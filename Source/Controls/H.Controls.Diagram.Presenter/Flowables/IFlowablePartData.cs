@@ -5,6 +5,4 @@ namespace H.Controls.Diagram.Flowables;
 public interface IFlowablePartData : IPartData, IFlowable
 {
     FlowableState State { get; set; }
-
-    Task<IFlowableResult> TryInvokeAsync(IFlowablePartData previors, IFlowableDiagramData diagram);
 }

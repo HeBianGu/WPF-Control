@@ -110,7 +110,7 @@ public class FlowablePortData : TextPortData, IFlowablePortData
     //[Display(Name = "执行")]
     //public DisplayCommand InvokeCommand => new DisplayCommand(async l => await this.TryInvokeAsync(null, null, null));
 
-    public IFlowableResult Invoke(IFlowablePartData previors, IFlowableDiagramData diagram)
+    public IFlowableResult Invoke(IFlowableDiagramData diagram)
     {
         Thread.Sleep(DiagramAppSetting.Instance.FlowSleepMillisecondsTimeout);
         return DiagramAppSetting.Instance.UseMock
@@ -118,14 +118,14 @@ public class FlowablePortData : TextPortData, IFlowablePortData
             : this.OK("运行成功");
     }
 
-    public virtual async Task<IFlowableResult> InvokeAsync(IFlowablePartData previors, IFlowableDiagramData diagram)
+    public virtual async Task<IFlowableResult> InvokeAsync(IFlowableDiagramData diagram)
     {
         return await Task.Run(() =>
         {
-            return this.Invoke(previors, diagram);
+            return this.Invoke(diagram);
         });
     }
-    public virtual async Task<IFlowableResult> TryInvokeAsync(IFlowablePartData previors, IFlowableDiagramData diagram)
+    public virtual async Task<IFlowableResult> TryInvokeAsync(IFlowableDiagramData diagram)
     {
         try
         {
@@ -134,7 +134,7 @@ public class FlowablePortData : TextPortData, IFlowablePortData
             using (var stopwatch = new Stopwatchable(this))
             {
                 IocLog.Instance?.Info($"正在执行<{this.GetType().Name}>:{this.Text}");
-                IFlowableResult result = await InvokeAsync(previors, diagram);
+                IFlowableResult result = await InvokeAsync(diagram);
                 IocLog.Instance?.Info(result.State == FlowableResultState.Error ? $"运行错误<{this.GetType().Name}>:{this.Text} {result.Message}" : $"执行完成<{this.GetType().Name}>:{this.Text} {result.Message}");
                 this.State = result.State == FlowableResultState.OK ? FlowableState.Success : FlowableState.Error;
                 return result;

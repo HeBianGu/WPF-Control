@@ -6,5 +6,7 @@ namespace H.Controls.Diagram.Flowables;
 
 public interface IFlowableLinkData : ILinkData, IFlowablePartData
 {
-    bool IsMatchResult(FlowableResult flowableResult);
+
+    Task<IFlowableResult> TryInvokeAsync(IFlowablePortData previors, IFlowableDiagramData diagram);
+    bool IsMatchResult(IFlowableResult flowableResult);
 }

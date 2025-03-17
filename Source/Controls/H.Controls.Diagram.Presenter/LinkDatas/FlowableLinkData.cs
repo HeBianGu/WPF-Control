@@ -101,7 +101,7 @@ public class FlowableLinkData : TextLinkData, IFlowableLinkData
     //[Display(Name = "执行")]
     //public RelayCommand InvokeCommand => new RelayCommand(async l => await this.TryInvokeAsync(null, null));
 
-    public IFlowableResult Invoke(IFlowablePartData previors, IFlowableDiagramData diagram)
+    public IFlowableResult Invoke(IFlowablePortData previors, IFlowableDiagramData diagram)
     {
         Thread.Sleep(DiagramAppSetting.Instance.FlowSleepMillisecondsTimeout);
         return DiagramAppSetting.Instance.UseMock
@@ -109,14 +109,14 @@ public class FlowableLinkData : TextLinkData, IFlowableLinkData
             : this.OK("运行成功");
     }
 
-    public virtual async Task<IFlowableResult> InvokeAsync(IFlowablePartData previors, IFlowableDiagramData diagram)
+    public virtual async Task<IFlowableResult> InvokeAsync(IFlowablePortData previors, IFlowableDiagramData diagram)
     {
         return await Task.Run(() =>
         {
             return this.Invoke(previors, diagram);
         });
     }
-    public virtual async Task<IFlowableResult> TryInvokeAsync(IFlowablePartData previors, IFlowableDiagramData diagram)
+    public virtual async Task<IFlowableResult> TryInvokeAsync(IFlowablePortData previors, IFlowableDiagramData diagram)
     {
         try
         {
@@ -164,7 +164,7 @@ public class FlowableLinkData : TextLinkData, IFlowableLinkData
     /// </summary>
     /// <param name="flowableResult"></param>
     /// <returns></returns>
-    public virtual bool IsMatchResult(FlowableResult flowableResult)
+    public virtual bool IsMatchResult(IFlowableResult flowableResult)
     {
         return true;
     }
@@ -195,7 +195,7 @@ public class FlowableLinkData<T> : FlowableLinkData where T : Enum
         DisplayEnumConverter display = new DisplayEnumConverter(typeof(T));
         this.Text = display.ConvertTo(this.NodeResult, typeof(string))?.ToString();
     }
-    public override bool IsMatchResult(FlowableResult flowableResult)
+    public override bool IsMatchResult(IFlowableResult flowableResult)
     {
         if (flowableResult is FlowableResult<T> result)
             //  Do ：结果类型相同，并且参数值相同才可以执行
