@@ -12,11 +12,11 @@ public interface IPartInvokeable
 
 public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowableDiagramData, IPartInvokeable
 {
-    protected override IEnumerable<Node> LoadToNodes(IEnumerable<INodeData> nodeDatas, IEnumerable<ILinkData> linkDatas)
-    {
-        var converter = new DiagramFlowableDataSourceConverter(nodeDatas, linkDatas);
-        return converter.NodeSource;
-    }
+    //protected override IEnumerable<Node> LoadToNodes(IEnumerable<INodeData> nodeDatas, IEnumerable<ILinkData> linkDatas)
+    //{
+    //    var converter = new DiagramFlowableDataSource(nodeDatas, linkDatas);
+    //    return converter.NodeSource;
+    //}
 
     private DiagramFlowableState _state = DiagramFlowableState.None;
     [JsonIgnore]
@@ -138,7 +138,7 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
 
     protected virtual bool CanStart()
     {
-        return this.State.CanStart() && this.Nodes.Count > 0;
+        return this.State.CanStart() && this.FlowableNodeDatas.Count() > 0;
     }
 
     public virtual void Stop()

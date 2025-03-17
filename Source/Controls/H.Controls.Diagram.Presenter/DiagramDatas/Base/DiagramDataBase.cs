@@ -18,6 +18,8 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
         //this.DynamicStyle.Stroke = Application.Current.FindResource(BrushKeys.Red) as Brush;
         //this.DynamicCanDropStyle.Stroke = Application.Current.FindResource(BrushKeys.Green) as Brush;
+        this.Datas = new Datas();
+        this.DataSource = this.CreateDataSource();
     }
 
     private string _name;
@@ -59,31 +61,46 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
         }
     }
 
-    private ObservableCollection<Node> _nodes = new ObservableCollection<Node>();
+    //private ObservableCollection<Node> _nodes = new ObservableCollection<Node>();
+    //[JsonIgnore]
+    //[XmlIgnore]
+    //public ObservableCollection<Node> Nodes
+    //{
+    //    get { return _nodes; }
+    //    set
+    //    {
+    //        _nodes = value;
+    //        RaisePropertyChanged();
+    //    }
+    //}
+
+    //private Part _selectedPart;
+    //[JsonIgnore]
+    //[XmlIgnore]
+    //public Part SelectedPart
+    //{
+    //    get { return _selectedPart; }
+    //    set
+    //    {
+    //        _selectedPart = value;
+    //        RaisePropertyChanged();
+    //    }
+    //}
+
+
+    private IPartData _selectedPartData;
     [JsonIgnore]
     [XmlIgnore]
-    public ObservableCollection<Node> Nodes
+    public IPartData SelectedPartData
     {
-        get { return _nodes; }
+        get { return _selectedPartData; }
         set
         {
-            _nodes = value;
+            _selectedPartData = value;
             RaisePropertyChanged();
         }
     }
 
-    private Part _selectedPart;
-    [JsonIgnore]
-    [XmlIgnore]
-    public Part SelectedPart
-    {
-        get { return _selectedPart; }
-        set
-        {
-            _selectedPart = value;
-            RaisePropertyChanged();
-        }
-    }
 
     private ILinkDrawer _linkDrawer = new BrokenLinkDrawer();
     [System.Text.Json.Serialization.JsonIgnore]
@@ -166,17 +183,17 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     [Display(Name = "默认样式", GroupName = "操作", Order = 6, Description = "点击此功能，恢复所有节点、连线和端口默认样式")]
     public new DisplayCommand LoadDefaultCommand => new DisplayCommand(e =>
     {
-        foreach (Node node in this.Nodes)
+        foreach (var node in this.Datas.NodeDatas)
         {
-            IEnumerable<IDefaultable> displayers = node.GetParts().Select(x => x.Content).OfType<IDefaultable>();
+            IEnumerable<IDefaultable> displayers = node.GetPartDatas(this).OfType<IDefaultable>();
             foreach (IDefaultable item in displayers)
             {
                 item.LoadDefault();
             }
-            if (node.Content is IDefaultable displayer)
+            if (node is IDefaultable displayer)
                 displayer.LoadDefault();
         }
-    }, x => this.Nodes.Count > 0);
+    }, x => this.Datas.NodeDatas.Count > 0);
 
     [Icon(FontIcons.EditMirrored)]
     [Display(Name = "编辑面板", GroupName = "操作", Order = 0, Description = "点击此功能，编辑面板信息")]
@@ -196,84 +213,92 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     [Display(Name = "删除", GroupName = "操作", Order = 4, Description = "点击此功能，删除选中的节点、连线或端口")]
     public virtual DisplayCommand DeleteCommand => new DisplayCommand(async e =>
     {
-        await IocMessage.Dialog.ShowDeleteDialog(x =>
+        if (e is Part part)
         {
-            this.SelectedPart.Delete();
-        });
-    }, x => this.SelectedPart != null);
+            await IocMessage.Dialog.ShowDeleteDialog(x =>
+            {
+                part.Delete();
+            });
+        }
+
+    }, x => x is Part);
 
     [Icon(FontIcons.DisconnectDrive)]
     [Display(Name = "删除选中节点", GroupName = "操作", Order = 4, Description = "点击此功能，删除选中的所有节点")]
     public virtual DisplayCommand DeleteCheckedCommand => new DisplayCommand(async e =>
     {
-        await IocMessage.Dialog.ShowDeleteDialog(x =>
+        if (e is IEnumerable<Node> nodes)
         {
-            foreach (var item in this.Nodes.Where(x => x.IsSelected).ToList())
+            await IocMessage.Dialog.ShowDeleteDialog(x =>
             {
-                item.Delete();
-            }
-        });
-    }, x => this.SelectedPart != null);
+                foreach (var item in nodes.Where(x => x.IsSelected).ToList())
+                {
+                    item.Delete();
+                }
+            });
+        }
+
+    }, x => x is IEnumerable<Node>);
 
     [Icon(FontIcons.Delete)]
     [Display(Name = "清空节点", GroupName = "操作", Order = 5, Description = "点击此功能，删除所有节点、连线和端口")]
     public virtual DisplayCommand ClearCommand => new DisplayCommand(async e =>
     {
-        await IocMessage.Dialog.ShowDeleteAllDialog(x =>
-             {
-                 this.Clear();
-             });
-    }, x => this.Nodes.Count > 0);
+        if (e is IEnumerable<Node> nodes)
+        {
+            await IocMessage.Dialog.ShowDeleteAllDialog(x =>
+            {
+                foreach (Node item in nodes.ToList())
+                {
+                    item.Delete();
+                }
+                //this.SelectedPart = null;
+            });
+        }
+
+    }, x => x is IEnumerable<Node>);
 
     [Icon(FontIcons.AlignCenter)]
     [System.Text.Json.Serialization.JsonIgnore]
     [Display(Name = "对齐节点", GroupName = "操作", Order = 5)]
     public virtual DisplayCommand AlignmentCommand => new DisplayCommand(e =>
     {
-        this.Aligment();
-    }, x => this.Nodes.Count > 0);
-
-    [System.Text.Json.Serialization.JsonIgnore]
-
-    [Icon(FontIcons.Previous)]
-    [Display(Name = "上一个节点", GroupName = "操作", Order = 5)]
-    public virtual DisplayCommand ProviewCommand => new DisplayCommand(e =>
-    {
-        this.OnPreivewPart();
-    }, x => this.SelectedPart?.GetPrevious() != null);
-
-    protected virtual void OnPreivewPart()
-    {
-        var find = this.SelectedPart.GetPrevious();
-        this.SelectedPart.IsSelected = false;
-        this.SelectedPart = find;
-        find.IsSelected = true;
-    }
-
-    [System.Text.Json.Serialization.JsonIgnore]
-
-    [Icon(FontIcons.Next)]
-    [Display(Name = "下一个节点", GroupName = "操作", Order = 5)]
-    public virtual DisplayCommand NextCommand => new DisplayCommand(e =>
-    {
-        this.OnNextPart();
-    }, x => this.SelectedPart?.GetNext() != null);
-
-    protected virtual void OnNextPart()
-    {
-        var find = this.SelectedPart.GetNext();
-        this.SelectedPart.IsSelected = false;
-        this.SelectedPart = find;
-        find.IsSelected = true;
-    }
-
-    public virtual void Aligment()
-    {
-        foreach (Node item in this.Nodes)
+        if (e is IEnumerable<Node> nodes)
         {
-            item.AligmentLayout();
+            foreach (Node item in nodes)
+            {
+                item.AligmentLayout();
+            }
         }
-    }
+    }, x => x is IEnumerable<Node>);
+
+    //[System.Text.Json.Serialization.JsonIgnore]
+
+    //[Icon(FontIcons.Previous)]
+    //[Display(Name = "上一个节点", GroupName = "操作", Order = 5)]
+    //public virtual DisplayCommand ProviewCommand => new DisplayCommand(e =>
+    //{
+    //    if(e )
+    //    this.OnPreivewPart();
+    //}, x => this.SelectedPart?.GetPrevious() != null);
+
+
+    //[System.Text.Json.Serialization.JsonIgnore]
+    //[Icon(FontIcons.Next)]
+    //[Display(Name = "下一个节点", GroupName = "操作", Order = 5)]
+    //public virtual DisplayCommand NextCommand => new DisplayCommand(e =>
+    //{
+    //    this.OnNextPart();
+    //}, x => this.SelectedPart?.GetNext() != null);
+
+    //protected virtual void OnNextPart()
+    //{
+    //    var find = this.SelectedPart.GetNext();
+    //    this.SelectedPart.IsSelected = false;
+    //    this.SelectedPart = find;
+    //    find.IsSelected = true;
+    //}
+
 
     public RelayCommand ItemsChangedCommand => new RelayCommand(e =>
     {
@@ -287,6 +312,8 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
     public RelayCommand SelectedPartChangedCommand => new RelayCommand(e =>
     {
+        if (e is RoutedEventArgs args && args.Source is Diagram diagram)
+            this.SelectedPartData = diagram.SelectedPart?.GetContent<IPartData>();
         this.OnSelectedPartChanged();
     });
 
@@ -335,33 +362,27 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
     public void Clear()
     {
-        foreach (Node item in this.Nodes.ToList())
-        {
-            item.Delete();
-        }
-        this.SelectedPart = null;
+        this.Datas.NodeDatas.Clear();
+        this.Datas.LinkDatas.Clear();
     }
 
     #region - Serializing -
 
     public Datas Datas { get; } = new Datas();
 
-    List<INodeData> IDiagramData.NodeDatas => this.Datas.NodeDatas;
-    List<ILinkData> IDiagramData.LinkDatas => this.Datas.LinkDatas;
+    IList<INodeData> IDiagramData.NodeDatas => this.DataSource.GetNodeDatas();
+    IList<ILinkData> IDiagramData.LinkDatas => this.DataSource.GetLinkDatas();
 
-    //List<INodeData> IDiagramSerializable.NodeDatas { get; set; }
-    //List<ILinkData> IDiagramSerializable.LinkDatas { get; set; }
-
-    //protected List<INodeData> NodeDatas = new List<INodeData>();
-    //protected List<ILinkData> LinkDatas = new List<ILinkData>();
-    protected virtual IEnumerable<Node> LoadToNodes(IEnumerable<INodeData> nodeDatas, IEnumerable<ILinkData> linkDatas)
+    private IDiagramDataSource _dataSource;
+    [JsonIgnore]
+    public IDiagramDataSource DataSource
     {
-        return nodeDatas.LoadToNodes(linkDatas);
-    }
-
-    protected virtual Tuple<IEnumerable<INodeData>, IEnumerable<ILinkData>> SaveToDatas(IEnumerable<Node> nodes)
-    {
-        return nodes.SaveToDatas();
+        get { return _dataSource; }
+        set
+        {
+            _dataSource = value;
+            RaisePropertyChanged();
+        }
     }
 
     [OnSerializing]
@@ -372,9 +393,8 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
     protected virtual void OnSerializing()
     {
-        var tuples = this.SaveToDatas(this.Nodes);
-        this.Datas.LinkDatas = tuples.Item2.ToList();
-        this.Datas.NodeDatas = tuples.Item1.ToList();
+        this.Datas.LinkDatas = this.DataSource.GetLinkDatas();
+        this.Datas.NodeDatas = this.DataSource.GetNodeDatas();
     }
 
     [OnDeserialized]
@@ -385,42 +405,17 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
     protected virtual void OnDeserialized()
     {
-        Application.Current.Dispatcher.Invoke(() =>
-        {
-            this.Nodes = LoadToNodes(this.Datas.NodeDatas, this.Datas.LinkDatas).ToObservable();
-        });
+        this.DataSource = this.CreateDataSource();
+    }
 
+
+    protected IDiagramDataSource CreateDataSource()
+    {
+        return new DiagramDataSource(this.Datas.NodeDatas, this.Datas.LinkDatas);
     }
     #endregion
 
     #region - 序列化 -
-
-    //public string ToXmlString()
-    //{
-    //    //XmlDocument xmlDoc = XmlableSerializor.Instance.SaveAs(this);
-    //    //return xmlDoc.OuterXml;
-    //    return null;
-    //}
-
-    //public static T CreateFromXml<T>(string xml) where T : class, IDiagramData
-    //{
-    //    T instance = CreateFromXml(xml, typeof(T)) as T;
-    //    return instance;
-    //}
-
-    //public static IDiagramData CreateFromXml(string xml, Type type)
-    //{
-    //    IDiagramData instance = Application.Current.Dispatcher.Invoke(() =>
-    //    {
-    //        return Activator.CreateInstance(type) as IDiagramData;
-    //    });
-
-    //    XmlDocument xmlDoc = new XmlDocument();
-    //    xmlDoc.LoadXml(xml);
-    //    //XmlableSerializor.Instance.Load(xmlDoc, instance);
-    //    return instance;
-    //}
-
     public object Clone()
     {
         //  ToDo：用序列化复制
@@ -439,59 +434,6 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     {
         throw new NotImplementedException();
     }
-
-    //public void FromXml(XmlElement xmlEle, XmlDocument cnt, Func<PropertyInfo, object, bool> match = null)
-    //{
-    //    //XmlDiagramData data = new XmlDiagramData();
-    //    //XmlableSerializor.Instance.FromXml(xmlEle, this, cnt);
-
-    //    //Application.Current.Dispatcher.Invoke(() =>
-    //    //{
-    //    //    XmlableSerializor.Instance.FromXml(xmlEle, data, cnt);
-    //    //    var nodeDatas = data.Nodes.ToList();
-    //    //    var linkDatas = data.Links.ToList();
-    //    //    this.Nodes = this.LoadNodes(nodeDatas, linkDatas).ToObservable();
-    //    //});
-
-    //    //foreach (var file in data.ReferenceTemplates)
-    //    //{
-    //    //    if (!File.Exists(file.Value))
-    //    //    {
-    //    //        this.ReferenceTemplateNodeDatas.Add(new FlowableDiagramTemplateNodeData() { FilePath = file.Value });
-    //    //        continue;
-    //    //    }
-    //    //    DiagramTemplate template = XmlableSerializor.Instance.Load<DiagramTemplate>(file.Value);
-    //    //    var nodeData = new FlowableDiagramTemplateNodeData(template);
-    //    //    this.ReferenceTemplateNodeDatas.Add(nodeData);
-    //    //}
-    //}
-
-    //public void ToXml(XmlElement xmlEle, XmlDocument cnt, Func<PropertyInfo, object, bool> match = null)
-    //{
-    //    //XmlableSerializor.Instance.ToXml(xmlEle, this, this.GetType().Name, cnt, null, false);
-    //    //XmlDiagramData data = new XmlDiagramData();
-    //    //var ns = Application.Current.Dispatcher.Invoke(() =>
-    //    //{
-    //    //    return this.Nodes.ToList();
-    //    //});
-
-    //    //DiagramDataSourceConverter converter = new DiagramDataSourceConverter(ns);
-    //    //var datas = this.SaveDatas(ns);
-    //    //var links = datas.Item2;
-    //    //var nodes = datas.Item1;
-
-    //    //foreach (var node in nodes)
-    //    //{
-    //    //    data.Nodes.Add(node);
-    //    //}
-    //    //foreach (var link in links)
-    //    //{
-    //    //    data.Links.Add(link);
-    //    //}
-
-    //    //data.ReferenceTemplates = this.ReferenceTemplateNodeDatas.Select(x => new XmlStringData(x.FilePath)).ToList();
-    //    //XmlableSerializor.Instance.ToXml(xmlEle, data, this.GetType().Name, cnt, null, false);
-    //}
 
     #endregion
 }

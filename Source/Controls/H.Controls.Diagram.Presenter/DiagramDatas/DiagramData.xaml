@@ -19,10 +19,9 @@
                    AllowDrop="True"
                    BorderBrush="{DynamicResource {x:Static h:BrushKeys.Accent}}"
                    BorderThickness="5"
+                   DataSource="{Binding DataSource}"
                    Layout="{Binding Layout}"
                    LinkDrawer="{Binding LinkDrawer}"
-                   NodesSource="{Binding Nodes, IsAsync=True}"
-                   SelectedPart="{Binding SelectedPart}"
                    UseAnimation="False"
                    UseAutoAddLinkOnEnd="True">
             <h:Diagram.Background>

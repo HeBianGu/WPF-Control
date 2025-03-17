@@ -1,6 +1,7 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace H.Controls.Diagram.GraphSource;
 
@@ -11,11 +12,12 @@ namespace H.Controls.Diagram.GraphSource;
 /// <typeparam name="LinkDataType"></typeparam>
 public abstract class GraphSource<NodeDataType, LinkDataType> : IGraphSource, IDataSource<NodeDataType, LinkDataType>
 {
-    public List<Node> NodeSource { get; private set; } = new List<Node>();
+    [JsonIgnore]
+    public List<Node> Nodes { get; set; } = new List<Node>();
 
     public GraphSource(List<Node> nodeSource)
     {
-        this.NodeSource = nodeSource;
+        this.Nodes = nodeSource;
     }
 
     public GraphSource(IEnumerable<NodeDataType> nodes, IEnumerable<LinkDataType> links)
@@ -26,7 +28,7 @@ public abstract class GraphSource<NodeDataType, LinkDataType> : IGraphSource, ID
                 foreach (NodeDataType unit in nodes)
                 {
                     Node n = this.ConvertToNode(unit);
-                    this.NodeSource.Add(n);
+                    this.Nodes.Add(n);
                 }
 
             if (links != null)
@@ -36,6 +38,11 @@ public abstract class GraphSource<NodeDataType, LinkDataType> : IGraphSource, ID
                 }
         });
 
+    }
+
+    public IEnumerable<Node> GetNodes()
+    {
+        return this.Nodes;
     }
 
     /// <summary>
@@ -52,7 +59,7 @@ public abstract class GraphSource<NodeDataType, LinkDataType> : IGraphSource, ID
     /// <returns></returns>
     protected abstract Link ConvertToLink(LinkDataType node);
 
-    public abstract List<NodeDataType> GetNodeType();
+    public abstract List<NodeDataType> GetNodeDatas();
 
-    public abstract List<LinkDataType> GetLinkType();
+    public abstract List<LinkDataType> GetLinkDatas();
 }

@@ -1,6 +1,7 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 global using H.Controls.Diagram.Presenter.LinkDatas;
 global using H.Controls.Diagram.Presenter.NodeDatas;
+using H.Controls.Diagram.GraphSource;
 namespace H.Controls.Diagram.Presenter.Provider;
 
 /// <summary>
@@ -40,8 +41,8 @@ public class DisplayGraphSource : GraphSource<TextNodeData, FlowableLinkData>
     [Obsolete]
     protected override Link ConvertToLink(FlowableLinkData wire)
     {
-        Node fromNode = this.NodeSource.FirstOrDefault(l => l.Id == wire.FromNodeID);
-        Node toNode = this.NodeSource.FirstOrDefault(l => l.Id == wire.ToNodeID);
+        Node fromNode = this.Nodes.FirstOrDefault(l => l.Id == wire.FromNodeID);
+        Node toNode = this.Nodes.FirstOrDefault(l => l.Id == wire.ToNodeID);
         Port fromPort = fromNode.GetPorts().FirstOrDefault(l => l.Id == wire.FromPortID);
         Port toPort = toNode.GetPorts().FirstOrDefault(l => l.Id == wire.ToPortID);
         Link result = Link.Create(fromNode, toNode, fromPort, toPort);
@@ -49,10 +50,10 @@ public class DisplayGraphSource : GraphSource<TextNodeData, FlowableLinkData>
         return result;
     }
 
-    public override List<TextNodeData> GetNodeType()
+    public override List<TextNodeData> GetNodeDatas()
     {
         List<TextNodeData> result = new List<TextNodeData>();
-        foreach (Node node in this.NodeSource)
+        foreach (Node node in this.Nodes)
         {
             TextNodeData unit = node.Content as TextNodeData;
             unit.Location = NodeLayer.GetPosition(node);
@@ -69,10 +70,10 @@ public class DisplayGraphSource : GraphSource<TextNodeData, FlowableLinkData>
         return result;
     }
 
-    public override List<FlowableLinkData> GetLinkType()
+    public override List<FlowableLinkData> GetLinkDatas()
     {
         List<FlowableLinkData> result = new List<FlowableLinkData>();
-        foreach (Node node in this.NodeSource)
+        foreach (Node node in this.Nodes)
         {
             foreach (Link link in node.LinksOutOf)
             {

@@ -47,13 +47,13 @@ public static class FlowableDiagramDataExtension
             {
                 if (data.State == FlowableState.Canceling)
                     return null;
-                using (new PartDataInvokable(node, diagramData.OnInvokingPart, diagramData.OnInvokedPart))
+                using (new PartDataInvokable(data, diagramData.OnInvokingPart, diagramData.OnInvokedPart))
                 {
                     IFlowableResult result = await data.TryInvokeAsync(l, diagramData);
                     if (result.State == FlowableResultState.Error)
                         return false;
                 }
-                bool? b = await run.Invoke(node);
+                bool? b = await run.Invoke(data);
                 if (b != true)
                     return b;
             }
@@ -189,7 +189,7 @@ public static class FlowableDiagramDataExtension
         flowableDiagramData.GotoState(x => FlowableState.Wait);
     }
 
-    public static IEnumerable<IPartData> GetToPartDatas(this INodeData nodeData, IDiagramData diagramData, Func<IPartData, bool> filter = null)
+    public static IEnumerable<IPartData> GetPartDatas(this INodeData nodeData, IDiagramData diagramData, Func<IPartData, bool> filter = null)
     {
         var ports = nodeData.GetPortDatas(diagramData);
         yield return nodeData;
@@ -214,7 +214,7 @@ public static class FlowableDiagramDataExtension
 
     public static void GotoState(this IEnumerable<IFlowableNodeData> nodeDatas, IFlowableDiagramData flowableDiagramData, Func<IFlowablePartData, FlowableState?> gotoState)
     {
-        var parts = nodeDatas.SelectMany(x => x.GetToPartDatas(flowableDiagramData)).OfType<IFlowablePartData>();
+        var parts = nodeDatas.SelectMany(x => x.GetPartDatas(flowableDiagramData)).OfType<IFlowablePartData>();
         parts.GotoState(gotoState);
     }
 

@@ -36,8 +36,8 @@ public class UnitGraphSource : GraphSource<Unit, Wire>
     [System.Obsolete]
     protected override Link ConvertToLink(Wire wire)
     {
-        Node fromNode = this.NodeSource.FirstOrDefault(l => l.Id == wire.From);
-        Node toNode = this.NodeSource.FirstOrDefault(l => l.Id == wire.To);
+        Node fromNode = this.Nodes.FirstOrDefault(l => l.Id == wire.From);
+        Node toNode = this.Nodes.FirstOrDefault(l => l.Id == wire.To);
 
         Port fromPort = fromNode.GetPorts(l => l.Id == wire.FromPort)?.FirstOrDefault();
         Port toPort = fromNode.GetPorts(l => l.Id == wire.ToPort)?.FirstOrDefault();
@@ -45,11 +45,11 @@ public class UnitGraphSource : GraphSource<Unit, Wire>
         return Link.Create(fromNode, toNode, fromPort, toPort);
     }
 
-    public override List<Unit> GetNodeType()
+    public override List<Unit> GetNodeDatas()
     {
         List<Unit> result = new List<Unit>();
 
-        foreach (Node node in this.NodeSource)
+        foreach (Node node in this.Nodes)
         {
             Unit unit = node.Content as Unit;
 
@@ -63,11 +63,11 @@ public class UnitGraphSource : GraphSource<Unit, Wire>
         return result;
     }
 
-    public override List<Wire> GetLinkType()
+    public override List<Wire> GetLinkDatas()
     {
         List<Wire> result = new List<Wire>();
 
-        foreach (Node node in this.NodeSource)
+        foreach (Node node in this.Nodes)
         {
             foreach (Link link in node.LinksOutOf)
             {

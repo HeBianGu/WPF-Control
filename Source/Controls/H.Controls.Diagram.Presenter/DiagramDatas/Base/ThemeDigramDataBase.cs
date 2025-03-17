@@ -112,23 +112,23 @@ public abstract class ThemeDigramDataBase : TreeDigramDataBase, IThemeDigramData
     {
         if (e is DiagramTheme project)
         {
-            foreach (Node node in this.Nodes)
-            {
-                if (node.Content is INodeData nodeData)
-                    project.Note.ApplayStyleTo(nodeData);
+            //foreach (Node node in this.Nodes)
+            //{
+            //    if (node.Content is INodeData nodeData)
+            //        project.Note.ApplayStyleTo(nodeData);
 
-                foreach (Link link in node.GetAllLinks().Distinct())
-                {
-                    if (link.Content is ILinkData linkData)
-                        project.Link.ApplayStyleTo(linkData);
-                }
+            //    foreach (Link link in node.GetAllLinks().Distinct())
+            //    {
+            //        if (link.Content is ILinkData linkData)
+            //            project.Link.ApplayStyleTo(linkData);
+            //    }
 
-                foreach (Port port in node.GetPorts().Distinct())
-                {
-                    if (port.Content is IPortData portData)
-                        project.Port.ApplayStyleTo(portData);
-                }
-            }
+            //    foreach (Port port in node.GetPorts().Distinct())
+            //    {
+            //        if (port.Content is IPortData portData)
+            //            project.Port.ApplayStyleTo(portData);
+            //    }
+            //}
         }
     });
 
@@ -136,8 +136,8 @@ public abstract class ThemeDigramDataBase : TreeDigramDataBase, IThemeDigramData
     {
         if (e is TextNodeData project)
         {
-            if (this.SelectedPart?.Content is INodeData nodeData)
-                project.ApplayStyleTo(nodeData);
+            //if (this.SelectedPart?.Content is INodeData nodeData)
+            //    project.ApplayStyleTo(nodeData);
         }
     });
 
@@ -145,8 +145,8 @@ public abstract class ThemeDigramDataBase : TreeDigramDataBase, IThemeDigramData
     {
         if (e is TextLinkData project)
         {
-            if (this.SelectedPart?.Content is ILinkData data)
-                project.ApplayStyleTo(data);
+            //if (this.SelectedPart?.Content is ILinkData data)
+            //    project.ApplayStyleTo(data);
         }
     });
 
@@ -154,8 +154,8 @@ public abstract class ThemeDigramDataBase : TreeDigramDataBase, IThemeDigramData
     {
         if (e is TextPortData project)
         {
-            if (this.SelectedPart?.Content is IPortData data)
-                project.ApplayStyleTo(data);
+            //if (this.SelectedPart?.Content is IPortData data)
+            //    project.ApplayStyleTo(data);
         }
     });
 

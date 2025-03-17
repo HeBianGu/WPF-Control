@@ -1,15 +1,25 @@
 ﻿global using H.Controls.Diagram.GraphSource;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows;
 
-namespace H.Controls.Diagram.Presenter.Provider;
+namespace H.Controls.Diagram;
 
-public class DiagramDataSourceConverter : GraphSource<INodeData, ILinkData>
+public interface IDiagramDataSource : IGraphSource
 {
-    public DiagramDataSourceConverter(List<Node> nodeSource) : base(nodeSource)
+    List<ILinkData> GetLinkDatas();
+    List<INodeData> GetNodeDatas();
+}
+
+public class DiagramDataSource : GraphSource<INodeData, ILinkData>, IDiagramDataSource
+{
+    public DiagramDataSource(List<Node> nodeSource) : base(nodeSource)
     {
 
     }
 
-    public DiagramDataSourceConverter(IEnumerable<INodeData> nodes, IEnumerable<ILinkData> links) : base(nodes, links)
+    public DiagramDataSource(IEnumerable<INodeData> nodes, IEnumerable<ILinkData> links) : base(nodes, links)
     {
 
     }
@@ -38,25 +48,24 @@ public class DiagramDataSourceConverter : GraphSource<INodeData, ILinkData>
         return node;
     }
 
-    [Obsolete]
     protected override Link ConvertToLink(ILinkData wire)
     {
-        Node fromNode = this.NodeSource.FirstOrDefault(l => l.Id == wire.FromNodeID);
-        Node toNode = this.NodeSource.FirstOrDefault(l => l.Id == wire.ToNodeID);
+        Node fromNode = this.Nodes.FirstOrDefault(l => l.Id == wire.FromNodeID);
+        Node toNode = this.Nodes.FirstOrDefault(l => l.Id == wire.ToNodeID);
 
         Port fromPort = fromNode.GetPorts(l => l.GetContent<IPortData>().ID == wire.FromPortID)?.FirstOrDefault();
         Port toPort = toNode.GetPorts(l => l.Id == wire.ToPortID)?.FirstOrDefault();
 
-        Link result = Link.Create(fromNode, toNode, fromPort, toPort);
+        Link result = fromNode.CreateLinkTo(toNode, fromPort, toPort);
         result.Content = wire;
         return result;
     }
 
-    public override List<INodeData> GetNodeType()
+    public override List<INodeData> GetNodeDatas()
     {
         List<INodeData> result = new List<INodeData>();
 
-        foreach (Node node in this.NodeSource)
+        foreach (Node node in this.Nodes)
         {
             INodeData unit = node.GetContent<INodeData>(); ;
             IEnumerable<IPortData> sockets = node.GetPorts().Select(l => l.GetContent<IPortData>());
@@ -73,18 +82,18 @@ public class DiagramDataSourceConverter : GraphSource<INodeData, ILinkData>
         return result;
     }
 
-    public override List<ILinkData> GetLinkType()
+    public override List<ILinkData> GetLinkDatas()
     {
         List<ILinkData> result = new List<ILinkData>();
-        foreach (Node node in this.NodeSource)
+        foreach (Node node in this.Nodes)
         {
             foreach (Link link in node.LinksOutOf.Concat(node.ConnectLinks))
             {
                 ILinkData wire = link.GetContent<ILinkData>();
-                wire.FromNodeID = link.FromNode?.GetContent<NodeData>()?.ID;
-                wire.ToNodeID = link.ToNode?.GetContent<NodeData>()?.ID;
-                wire.FromPortID = link.FromPort?.GetContent<PortData>()?.ID;
-                wire.ToPortID = link.ToPort?.GetContent<PortData>()?.ID;
+                wire.FromNodeID = link.FromNode?.GetContent<INodeData>()?.ID;
+                wire.ToNodeID = link.ToNode?.GetContent<INodeData>()?.ID;
+                wire.FromPortID = link.FromPort?.GetContent<IPortData>()?.ID;
+                wire.ToPortID = link.ToPort?.GetContent<IPortData>()?.ID;
                 result.Add(wire);
             }
         }

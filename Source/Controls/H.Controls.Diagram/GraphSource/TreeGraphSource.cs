@@ -12,7 +12,7 @@ namespace H.Controls.Diagram.GraphSource;
 /// <typeparam name="NodeType"></typeparam>
 public class TreeGraphSource<NodeType> : IGraphSource
 {
-    public List<Node> NodeSource { get; protected set; } = new List<Node>();
+    public List<Node> Nodes { get; set; } = new List<Node>();
 
     private Func<NodeType, NodeType, bool> _childFiter;
     private Predicate<NodeType> _rootFiter;
@@ -22,7 +22,7 @@ public class TreeGraphSource<NodeType> : IGraphSource
         _childFiter = childFiter;
         _rootFiter = rootFiter;
 
-        this.NodeSource = this.GetSource(nodes);
+        this.Nodes = this.GetSource(nodes);
     }
 
     protected virtual List<Node> GetSource(List<NodeType> nodes)

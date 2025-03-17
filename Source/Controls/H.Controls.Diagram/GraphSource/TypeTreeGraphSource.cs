@@ -24,7 +24,7 @@ public class TypeTreeGraphSource : TreeGraphSource<Type>
 
         List<Type> result = this.Build(types);
 
-        this.NodeSource = this.GetSource(result);
+        this.Nodes = this.GetSource(result);
 
     }
 
@@ -36,7 +36,7 @@ public class TypeTreeGraphSource : TreeGraphSource<Type>
     {
         List<Type> result = this.Build(types);
 
-        this.NodeSource = this.GetSource(result);
+        this.Nodes = this.GetSource(result);
     }
 
     private List<Type> Build(List<Type> types)

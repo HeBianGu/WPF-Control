@@ -37,36 +37,36 @@ public abstract class TreeDigramDataBase : NodeDataGroupsDiagramDataBase, ITreeD
         {
             _isRefreshRooting = false;
             this.Root.Nodes.Clear();
-            foreach (Node note in this.Nodes)
-            {
-                NodeTreeNode nd = new NodeTreeNode(note);
+            //foreach (Node note in this.Nodes)
+            //{
+            //    NodeTreeNode nd = new NodeTreeNode(note);
 
-                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.SystemIdle, new Action(() =>
-                {
-                    this.Root.AddNode(nd);
-                }));
+            //    Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.SystemIdle, new Action(() =>
+            //    {
+            //        this.Root.AddNode(nd);
+            //    }));
 
-                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.SystemIdle, new Action(() =>
-                {
-                    foreach (Port port in note.GetPorts())
-                    {
-                        PortTreeNode pd = new PortTreeNode(port);
-                        nd.AddNode(pd);
-                        pd.RefreshSelected();
-                    }
-                    nd.RefreshSelected();
-                }));
+            //    Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.SystemIdle, new Action(() =>
+            //    {
+            //        foreach (Port port in note.GetPorts())
+            //        {
+            //            PortTreeNode pd = new PortTreeNode(port);
+            //            nd.AddNode(pd);
+            //            pd.RefreshSelected();
+            //        }
+            //        nd.RefreshSelected();
+            //    }));
 
-                foreach (Link link in note.LinksOutOf)
-                {
-                    LinkTreeNode ld = new LinkTreeNode(link);
-                    Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.SystemIdle, new Action(() =>
-                    {
-                        this.Root.AddNode(ld);
-                        ld.RefreshSelected();
-                    }));
-                }
-            }
+            //    foreach (Link link in note.LinksOutOf)
+            //    {
+            //        LinkTreeNode ld = new LinkTreeNode(link);
+            //        Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.SystemIdle, new Action(() =>
+            //        {
+            //            this.Root.AddNode(ld);
+            //            ld.RefreshSelected();
+            //        }));
+            //    }
+            //}
         }));
     }
 
@@ -74,23 +74,23 @@ public abstract class TreeDigramDataBase : NodeDataGroupsDiagramDataBase, ITreeD
     protected override void OnSelectedPartChanged()
     {
         base.OnSelectedPartChanged();
-        if (this.SelectedPart == null)
-            return;
-        //if (!this.SelectedPart.IsSelected)
-        //    return; 
-        if (_isSelectedPartRefreshing)
-            return;
-        _isSelectedPartRefreshing = true;
+        //if (this.SelectedPart == null)
+        //    return;
+        ////if (!this.SelectedPart.IsSelected)
+        ////    return; 
+        //if (_isSelectedPartRefreshing)
+        //    return;
+        //_isSelectedPartRefreshing = true;
 
-        Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.SystemIdle, new Action(() =>
-        {
-            _isSelectedPartRefreshing = false;
-            TreeNodeBase<Part> find = this.Root.FindAll(x => x.Model == this.SelectedPart)?.FirstOrDefault();
-            if (find == null)
-                return;
-            find.IsSelected = true;
-            if (find.Parent != null)
-                find.Parent.IsExpanded = true;
-        }));
+        //Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.SystemIdle, new Action(() =>
+        //{
+        //    _isSelectedPartRefreshing = false;
+        //    TreeNodeBase<Part> find = this.Root.FindAll(x => x.Model == this.SelectedPart)?.FirstOrDefault();
+        //    if (find == null)
+        //        return;
+        //    find.IsSelected = true;
+        //    if (find.Parent != null)
+        //        find.Parent.IsExpanded = true;
+        //}));
     }
 }

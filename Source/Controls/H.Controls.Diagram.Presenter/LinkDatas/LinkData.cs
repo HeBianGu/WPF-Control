@@ -51,8 +51,8 @@ public abstract class LinkDataBase : DisplayBindableBase, ILinkData
     {
         if (e is Link node)
         {
-            if (node.GetDiagram().DataContext is IZoomableDiagramData diagram)
-                diagram.ZoomTo(node);
+            //if (node.GetDiagram().DataContext is IZoomableDiagramData diagram)
+            //    diagram.ZoomTo(node);
         }
     });
 
@@ -62,8 +62,8 @@ public abstract class LinkDataBase : DisplayBindableBase, ILinkData
     {
         if (e is Link node)
         {
-            if (node.GetDiagram().DataContext is IZoomableDiagramData diagram)
-                diagram.PanTo(node);
+            //if (node.GetDiagram().DataContext is IZoomableDiagramData diagram)
+            //    diagram.PanTo(node);
         }
     });
 

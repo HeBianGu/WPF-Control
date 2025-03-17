@@ -15,6 +15,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Collections.Specialized;
+using System.Windows.Threading;
 
 namespace H.Controls.Diagram;
 
@@ -404,35 +405,35 @@ public partial class Diagram : ContentControl
     [Browsable(false)]
     public DataTemplate LinkTemplate { get; set; }
 
-    [Browsable(false)]
-    public IList NodesSource
-    {
-        get { return (IList)GetValue(NodesSourceProperty); }
-        set { SetValue(NodesSourceProperty, value); }
-    }
+    //[Obsolete("使用DataSource替换")]
+    //[Browsable(false)]
+    //public IList NodesSource
+    //{
+    //    get { return (IList)GetValue(NodesSourceProperty); }
+    //    set { SetValue(NodesSourceProperty, value); }
+    //}
 
 
-    public static readonly DependencyProperty NodesSourceProperty =
-        DependencyProperty.Register("NodesSource", typeof(IList), typeof(Diagram), new PropertyMetadata(new ObservableCollection<Node>(), (d, e) =>
-        {
-            Diagram control = d as Diagram;
-            if (control == null) return;
-            IList config = e.NewValue as IList;
+    //public static readonly DependencyProperty NodesSourceProperty =
+    //    DependencyProperty.Register("NodesSource", typeof(IList), typeof(Diagram), new PropertyMetadata(new ObservableCollection<Node>(), (d, e) =>
+    //    {
+    //        Diagram control = d as Diagram;
+    //        if (control == null) return;
+    //        IList config = e.NewValue as IList;
 
-            //if (e.OldValue is INotifyCollectionChanged old)
-            //{
-            //    old.CollectionChanged -= control.Notify_CollectionChanged;
-            //}
+    //        //if (e.OldValue is INotifyCollectionChanged old)
+    //        //{
+    //        //    old.CollectionChanged -= control.Notify_CollectionChanged;
+    //        //}
 
-            //if (config is INotifyCollectionChanged notify)
-            //{
-            //    notify.CollectionChanged -= control.Notify_CollectionChanged;
-            //    notify.CollectionChanged += control.Notify_CollectionChanged;
-            //}
+    //        //if (config is INotifyCollectionChanged notify)
+    //        //{
+    //        //    notify.CollectionChanged -= control.Notify_CollectionChanged;
+    //        //    notify.CollectionChanged += control.Notify_CollectionChanged;
+    //        //}
 
-            control.RefreshData();
-        }));
-
+    //        control.RefreshData();
+    //    }));
 
     public bool UseAutoAddLinkOnEnd
     {
@@ -484,6 +485,8 @@ public partial class Diagram : ContentControl
     {
         RoutedEventArgs args = new RoutedEventArgs(ItemsChangedRoutedEvent, this);
         this.RaiseEvent(args);
+
+        this.UpDataNodesToDataSource();
     }
 
     public static readonly RoutedEvent SelectedPartChangedRoutedEvent =
@@ -579,10 +582,10 @@ public partial class Diagram : ContentControl
             return;
         this.Clear();
 
-        if (this.NodesSource == null || this.NodesSource.Count == 0)
+        if (this.DataSource == null || this.DataSource?.Nodes.Count == 0)
             return;
 
-        IEnumerable<Node> nodes = this.NodesSource?.OfType<Node>();
+        IEnumerable<Node> nodes = this.DataSource?.Nodes.OfType<Node>();
         this.Nodes = nodes?.ToList();
         //this.Nodes = nodes.ToList();
         this.Links = this.Nodes.SelectMany(x => x.GetAllLinks()).Distinct().ToList();
@@ -603,6 +606,7 @@ public partial class Diagram : ContentControl
             this.LinkLayer.Children.Add(link);
         }
         this.Layout?.UpdateNode(this.Nodes.ToArray());
+
 #if DEBUG
         TimeSpan span = DateTime.Now - dateTime;
         System.Diagnostics.Debug.WriteLine("RefreshData：" + span.ToString());
@@ -649,7 +653,7 @@ public partial class Diagram : ContentControl
         List<Node> endNode = this.Nodes.Where(x => x.LinksOutOf.Count == 0).ToList();
         foreach (Node node in nodes)
         {
-            this.NodesSource.Add(node);
+            //this.NodesSource.Add(node);
             this.Nodes.Add(node);
             this.NodeLayer.Children.Add(node);
         }
@@ -671,7 +675,7 @@ public partial class Diagram : ContentControl
     {
         foreach (Node node in nodes)
         {
-            this.NodesSource.Remove(node);
+            //this.NodesSource.Remove(node);
             this.Nodes.Remove(node);
             this.NodeLayer.Children.Remove(node);
         }
@@ -768,4 +772,34 @@ public partial class Diagram
              config.Diagram = control;
              control.RefreshLinkDrawer();
          }));
+
+    public IDiagramDataSource DataSource
+    {
+        get { return (IDiagramDataSource)GetValue(DataSourceProperty); }
+        set { SetValue(DataSourceProperty, value); }
+    }
+
+    public static readonly DependencyProperty DataSourceProperty =
+        DependencyProperty.Register("DataSource", typeof(IDiagramDataSource), typeof(Diagram), new FrameworkPropertyMetadata(default(IDiagramDataSource), (d, e) =>
+        {
+            Diagram control = d as Diagram;
+
+            if (control == null) return;
+
+            if (e.OldValue is IDiagramDataSource o)
+            {
+
+            }
+
+            if (e.NewValue is IDiagramDataSource n)
+            {
+
+            }
+            control.RefreshData();
+        }));
+
+    public void UpDataNodesToDataSource()
+    {
+        this.DataSource.Nodes = this.Nodes;
+    }
 }

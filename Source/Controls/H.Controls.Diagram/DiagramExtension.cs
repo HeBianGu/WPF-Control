@@ -29,6 +29,22 @@ public static class NodeExtension
         action.Invoke(ns);
     }
 
+    public static Part SelectPreivewPart(this Part part)
+    {
+        var find = part.GetPrevious();
+        part.IsSelected = false;
+        find.IsSelected = true;
+        return find;
+    }
+
+    public static Part SelectNextPart(this Part part)
+    {
+        var find = part.GetNext();
+        part.IsSelected = false;
+        find.IsSelected = true;
+        return find;
+    }
+
     public static Link CreateLinkToNodes(this Node fromNode, Node toNode)
     {
         return fromNode == null || toNode == null ? null : fromNode.CreateLinkTo(toNode, null, null);

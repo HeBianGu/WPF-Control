@@ -39,8 +39,8 @@ public abstract class NodeData : NodeDataBase, INodeData, ITemplate, ILinkDataCr
     {
         if (e is Node node)
         {
-            if (node.GetDiagram().DataContext is IZoomableDiagramData diagram)
-                diagram.ZoomTo(node);
+            //if (node.GetDiagram().DataContext is IZoomableDiagramData diagram)
+            //    diagram.ZoomTo(node);
         }
     }, x => x is Node);
 
@@ -50,8 +50,8 @@ public abstract class NodeData : NodeDataBase, INodeData, ITemplate, ILinkDataCr
     {
         if (e is Node node)
         {
-            if (node.GetDiagram().DataContext is IZoomableDiagramData diagram)
-                diagram.PanTo(node);
+            //if (node.GetDiagram().DataContext is IZoomableDiagramData diagram)
+            //    diagram.PanTo(node);
         }
     }, x => x is Node);
 

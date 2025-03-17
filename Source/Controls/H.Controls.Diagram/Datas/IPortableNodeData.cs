@@ -1,4 +1,6 @@
-﻿namespace H.Controls.Diagram.Presenter.NodeDatas.Base;
+﻿using System.Collections.Generic;
+
+namespace H.Controls.Diagram.Datas;
 
 public interface IPortableNodeData : ILinkDataCreator
 {

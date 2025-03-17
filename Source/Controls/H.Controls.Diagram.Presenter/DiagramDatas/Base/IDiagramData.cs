@@ -4,8 +4,8 @@ public interface IDiagramData : ICloneable, IDable, INameable, IGroupable
 {
     //Part SelectedPart { get; set; }
     //void Clear();
-    List<INodeData> NodeDatas { get; }
-    List<ILinkData> LinkDatas { get; }
+    IList<INodeData> NodeDatas { get; }
+    IList<ILinkData> LinkDatas { get; }
 }
 
 public static class DiagramDataExtension
@@ -82,6 +82,31 @@ public static class DiagramDataExtension
     public static IEnumerable<IPortData> GetPortDatas(this IDiagramData diagramData)
     {
         return diagramData.NodeDatas.SelectMany(x => x.GetPortDatas(diagramData));
+    }
+
+    public static IEnumerable<ILinkData> GetLinks(this INodeData nodeData, IDiagramData diagramData)
+    {
+        return nodeData.GetFromLinkDatas(diagramData).Concat(nodeData.GetToLinkDatas(diagramData));
+
+    }
+    public static void DeleteNodeData(this IDiagramData diagramData, INodeData nodeData)
+    {
+        var links = nodeData.GetLinks(diagramData);
+        foreach (var item in links)
+        {
+            diagramData.LinkDatas.Remove(item);
+        }
+        diagramData.NodeDatas.Remove(nodeData);
+    }
+
+    public static void DeletePartData(this IDiagramData diagramData, IPartData partData)
+    {
+        if (partData is INodeData nodeData)
+            diagramData.DeleteNodeData(nodeData);
+        if (partData is ILinkData linkData)
+            diagramData.LinkDatas.Remove(linkData);
+        if (partData is IPortData portData)
+            return;
     }
 }
 

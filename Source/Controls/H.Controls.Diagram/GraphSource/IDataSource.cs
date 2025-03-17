@@ -6,7 +6,7 @@ namespace H.Controls.Diagram.GraphSource;
 
 public interface IDataSource<NodeDataType, LinkDataType>
 {
-    List<NodeDataType> GetNodeType();
+    List<NodeDataType> GetNodeDatas();
 
-    List<LinkDataType> GetLinkType();
+    List<LinkDataType> GetLinkDatas();
 }
