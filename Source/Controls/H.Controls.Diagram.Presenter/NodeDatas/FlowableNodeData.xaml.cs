@@ -146,7 +146,7 @@ public class FlowableNodeData : TextNodeData, IFlowableNodeData
     //        await this.TryInvokeAsync(null, node);
     //}, x => x is Node);
 
-    public virtual IFlowableResult Invoke(IFlowablePortData previors, IFlowableDiagramData diagram)
+    public virtual IFlowableResult Invoke(IFlowableLinkData previors, IFlowableDiagramData diagram)
     {
         Thread.Sleep(DiagramAppSetting.Instance.FlowSleepMillisecondsTimeout);
         return DiagramAppSetting.Instance.UseMock
@@ -154,14 +154,14 @@ public class FlowableNodeData : TextNodeData, IFlowableNodeData
             : this.OK("运行成功");
     }
 
-    public virtual async Task<IFlowableResult> InvokeAsync(IFlowablePortData previors, IFlowableDiagramData diagram)
+    public virtual async Task<IFlowableResult> InvokeAsync(IFlowableLinkData previors, IFlowableDiagramData diagram)
     {
         return await Task.Run(() =>
         {
             return this.Invoke(previors, diagram);
         });
     }
-    public virtual async Task<IFlowableResult> TryInvokeAsync(IFlowablePortData previors, IFlowableDiagramData diagram)
+    public virtual async Task<IFlowableResult> TryInvokeAsync(IFlowableLinkData previors, IFlowableDiagramData diagram)
     {
         try
         {
@@ -228,11 +228,10 @@ public class FlowableNodeData : TextNodeData, IFlowableNodeData
     //        //    return result;
     //    }
     //}
-    public async Task<bool?> Start(IFlowableDiagramData diagramData, IFlowablePortData from = null)
+    public async Task<bool?> Start(IFlowableDiagramData diagramData, IFlowableLinkData from = null)
     {
         if (this.State == FlowableState.Canceling)
             return null;
-
         IFlowableResult nresult;
         using (new PartDataInvokable(this, diagramData.OnInvokingPart, diagramData.OnInvokedPart))
         {
@@ -240,48 +239,12 @@ public class FlowableNodeData : TextNodeData, IFlowableNodeData
             if (nresult.State == FlowableResultState.Error)
                 return false;
         }
-
         var toLinks = this.GetToLinkDatas(diagramData).OfType<IFlowableLinkData>().Where(x => x.IsMatchResult(nresult));
         foreach (var linkData in toLinks)
         {
-            if (linkData.State == FlowableState.Canceling)
-                return null;
-            //  Do ：From Ports
-            IFlowablePortData fPort = linkData.GetFromPortData(diagramData) as IFlowablePortData;
-            using (new PartDataInvokable(fPort, diagramData.OnInvokingPart, diagramData.OnInvokedPart))
-            {
-                IFlowableResult rFrom = await fPort?.TryInvokeAsync(diagramData);
-                if (rFrom?.State == FlowableResultState.Error)
-                    return false;
-            }
-
-            //  Do ：Links
-            if (linkData.State == FlowableState.Canceling)
-                return null;
-            linkData.State = FlowableState.Running;
-            using (new PartDataInvokable(linkData, diagramData.OnInvokingPart, diagramData.OnInvokedPart))
-            {
-                IFlowableResult r = await linkData?.TryInvokeAsync(fPort, diagramData);
-                linkData.State = r?.State == FlowableResultState.OK ? FlowableState.Success : FlowableState.Error;
-                if (r?.State == FlowableResultState.Error)
-                    return false;
-            }
-            if (linkData.State == FlowableState.Canceling)
-                return null;
-            //  Do ：To Ports
-            IFlowablePortData tPort = linkData.GetFromPortData(diagramData) as IFlowablePortData;
-            using (new PartDataInvokable(tPort, diagramData.OnInvokingPart, diagramData.OnInvokedPart))
-            {
-                IFlowableResult rTo = await tPort?.TryInvokeAsync(diagramData);
-                if (rTo?.State == FlowableResultState.Error)
-                    return false;
-            }
-
-            var tNodeData = linkData.GetToNodeData(diagramData) as IFlowableNodeData;
-            //  Do ：递归执行ToNode
-            bool? b = await tNodeData?.Start(diagramData, tPort);
-            if (b != true)
-                return b;
+           var lr= await  linkData.Start(diagramData);
+            if (lr != true)
+                return lr;
         }
         return true;
     }

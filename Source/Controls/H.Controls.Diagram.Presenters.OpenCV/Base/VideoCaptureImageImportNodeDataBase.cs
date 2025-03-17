@@ -20,7 +20,7 @@ public abstract class VideoCaptureImageImportNodeDataBase : ImageImportNodeDataB
         }
     }
 
-    protected virtual async Task<bool?> InvokeFrameMatAsync(IFlowablePartData previors, IFlowableDiagramData current, Mat frameMat)
+    protected virtual async Task<bool?> InvokeFrameMatAsync(IFlowableLinkData previors, IFlowableDiagramData current, Mat frameMat)
     {
         var invokeable = current;
         Action<IPartData> invoking = x =>
@@ -52,7 +52,7 @@ public abstract class VideoCaptureImageImportNodeDataBase : ImageImportNodeDataB
         if (to == null)
             return true;
         tos.GotoState(current, x => FlowableState.Wait);
-        var r = await to.Invoke(current);
+        var r = await to.Start(current);
         await Task.Delay(1000);
         return r;
     }

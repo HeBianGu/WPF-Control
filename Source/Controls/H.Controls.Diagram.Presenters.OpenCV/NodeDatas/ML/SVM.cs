@@ -9,7 +9,7 @@ public class SVM : OpenCVNodeData
         return x + 50 * Math.Sin(x / 15.0);
     }
 
-    public override IFlowableResult Invoke(IFlowablePartData previors, IFlowableDiagramData current)
+    public override IFlowableResult Invoke(IFlowableLinkData previors, IFlowableDiagramData current)
     {
         // Training data          
         Point2f[] points = new Point2f[500];

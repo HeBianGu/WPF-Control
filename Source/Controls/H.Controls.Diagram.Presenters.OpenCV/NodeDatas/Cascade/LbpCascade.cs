@@ -3,7 +3,7 @@
 [Display(Name = "LBP", GroupName = "人脸检测", Order = 0)]
 public class LbpCascade : CascadeClassifierOpenCVNodeDataBase
 {
-    public override IFlowableResult Invoke(IFlowablePartData previors, IFlowableDiagramData current)
+    public override IFlowableResult Invoke(IFlowableLinkData previors, IFlowableDiagramData current)
     {
         Mat src = this.PreviourMat;
         // Load the cascades

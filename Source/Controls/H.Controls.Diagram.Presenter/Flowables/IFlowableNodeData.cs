@@ -9,9 +9,9 @@ namespace H.Controls.Diagram.Flowables;
 
 public interface IFlowableNodeData : INodeData, IMessageable, IFlowablePartData
 {
-    Task<IFlowableResult> TryInvokeAsync(IFlowablePortData previors, IFlowableDiagramData diagram);
+    Task<IFlowableResult> TryInvokeAsync(IFlowableLinkData previors, IFlowableDiagramData diagram);
 
-    Task<bool?> Start(IFlowableDiagramData diagramData, IFlowablePortData from = null);
+    Task<bool?> Start(IFlowableDiagramData diagramData, IFlowableLinkData from = null);
 
     //Task<bool?> InvokeNodes(IFlowableDiagramData diagramData, IFlowableNodeData from = null);
 

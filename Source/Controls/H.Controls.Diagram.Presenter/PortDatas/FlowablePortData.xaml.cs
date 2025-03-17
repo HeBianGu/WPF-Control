@@ -118,14 +118,14 @@ public class FlowablePortData : TextPortData, IFlowablePortData
             : this.OK("运行成功");
     }
 
-    public virtual async Task<IFlowableResult> InvokeAsync(IFlowableDiagramData diagram)
+    public virtual async Task<IFlowableResult> InvokeAsync(IFlowableLinkData linkData, IFlowableDiagramData diagram)
     {
         return await Task.Run(() =>
         {
             return this.Invoke(diagram);
         });
     }
-    public virtual async Task<IFlowableResult> TryInvokeAsync(IFlowableDiagramData diagram)
+    public virtual async Task<IFlowableResult> TryInvokeAsync(IFlowableLinkData linkData, IFlowableDiagramData diagram)
     {
         try
         {
@@ -134,7 +134,7 @@ public class FlowablePortData : TextPortData, IFlowablePortData
             using (var stopwatch = new Stopwatchable(this))
             {
                 IocLog.Instance?.Info($"正在执行<{this.GetType().Name}>:{this.Text}");
-                IFlowableResult result = await InvokeAsync(diagram);
+                IFlowableResult result = await InvokeAsync(linkData, diagram);
                 IocLog.Instance?.Info(result.State == FlowableResultState.Error ? $"运行错误<{this.GetType().Name}>:{this.Text} {result.Message}" : $"执行完成<{this.GetType().Name}>:{this.Text} {result.Message}");
                 this.State = result.State == FlowableResultState.OK ? FlowableState.Success : FlowableState.Error;
                 return result;
@@ -194,6 +194,27 @@ public class FlowablePortData : TextPortData, IFlowablePortData
         {
             message = "不是Flowable节点";
             return false;
+        }
+        return true;
+    }
+
+    public async Task<bool?> Start(IFlowableDiagramData diagramData)
+    {
+        if (this.State == FlowableState.Canceling)
+            return null;
+        IFlowableResult rFrom;
+        using (new PartDataInvokable(this, diagramData.OnInvokingPart, diagramData.OnInvokedPart))
+        {
+            rFrom = await this?.TryInvokeAsync(null, diagramData);
+            if (rFrom?.State == FlowableResultState.Error)
+                return false;
+        }
+        var LinkDatas = this.GetToLinkDatas(diagramData).OfType<IFlowableLinkData>().Where(x => x.IsMatchResult(rFrom));
+        foreach (var linkData in LinkDatas)
+        {
+            var lr = await linkData.Start(diagramData);
+            if (lr != true)
+                return lr;
         }
         return true;
     }

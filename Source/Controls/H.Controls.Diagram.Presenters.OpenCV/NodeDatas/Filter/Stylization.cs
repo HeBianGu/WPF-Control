@@ -30,7 +30,7 @@ public class Stylization : FilterOpenCVNodeDataBase
         }
     }
 
-    public override IFlowableResult Invoke(IFlowablePartData previors, IFlowableDiagramData current)
+    public override IFlowableResult Invoke(IFlowableLinkData previors, IFlowableDiagramData current)
     {
         Mat src = this.PreviourMat;
         Mat stylized = new Mat();

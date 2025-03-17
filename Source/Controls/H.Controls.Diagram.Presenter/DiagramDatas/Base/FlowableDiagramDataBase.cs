@@ -161,5 +161,5 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
         }
     }
 
-    public IEnumerable<IFlowableNodeData> FlowableNodeDatas => this.Datas.NodeDatas.OfType<IFlowableNodeData>();
+    public IEnumerable<IFlowableNodeData> FlowableNodeDatas => this.DataSource.GetNodeDatas().OfType<IFlowableNodeData>();
 }

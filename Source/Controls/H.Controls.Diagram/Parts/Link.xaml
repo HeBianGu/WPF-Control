@@ -124,7 +124,7 @@
                             <Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
                             <Setter Property="Effect" Value="{DynamicResource {x:Static h:DiagramEffectKey.IsSelected}}" />
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=lp:Link}, Path=State}"
+                        <DataTrigger Binding="{Binding State}"
                                      Value="Running">
                             <Setter Property="StrokeDashArray" Value="4 4" />
                             <Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />

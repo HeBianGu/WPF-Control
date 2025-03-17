@@ -95,14 +95,17 @@ public abstract class OpenCVNodeDataBase : ActionNodeDataBase, IOpenCVNodeData, 
         }
     }
 
-    protected virtual async Task<IFlowableResult> BeforeInvokeAsync(IFlowablePartData previors, IFlowableDiagramData current)
+    protected virtual async Task<IFlowableResult> BeforeInvokeAsync(IFlowableLinkData previors, IFlowableDiagramData current)
     {
         return await Task.FromResult(this.OK());
     }
 
-    protected IOpenCVNodeData GetFromData(IFlowableDiagramData current)
+    protected IOpenCVNodeData GetFromData(IFlowableDiagramData current, IFlowableLinkData previors)
     {
-        return this.GetFromNodeDatas(current).OfType<IOpenCVNodeData>().FirstOrDefault();
+        if (previors == null)
+            return null;
+        return previors.GetFromNodeData(current) as IOpenCVNodeData;
+        //return this.GetFromNodeDatas(current).OfType<IOpenCVNodeData>().FirstOrDefault();
     }
 
     private Mat _preMat;
@@ -110,11 +113,11 @@ public abstract class OpenCVNodeDataBase : ActionNodeDataBase, IOpenCVNodeData, 
     //private string _srcFilePath;
     //protected string SrcFilePath => this._srcFilePath;
 
-    public override async Task<IFlowableResult> InvokeAsync(IFlowablePartData previors, IFlowableDiagramData current)
+    public override async Task<IFlowableResult> InvokeAsync(IFlowableLinkData previors, IFlowableDiagramData current)
     {
         return await Task.Run((async () =>
         {
-            var fromData = this.GetFromData(current);
+            var fromData = this.GetFromData(current, previors);
             if (fromData == null)
                 return this.Invoke(previors, current);
             this.SrcMat = fromData.SrcMat;
@@ -134,7 +137,7 @@ public abstract class OpenCVNodeDataBase : ActionNodeDataBase, IOpenCVNodeData, 
         }));
     }
 
-    public override IFlowableResult Invoke(IFlowablePartData previors, IFlowableDiagramData current)
+    public override IFlowableResult Invoke(IFlowableLinkData previors, IFlowableDiagramData current)
     {
         return this.Invoke();
         //IFlowableResult r = this.Invoke();

@@ -251,7 +251,7 @@ public class BlobDetector : DetectorOpenCVNodeDataBase
         }
     }
 
-    public override IFlowableResult Invoke(IFlowablePartData previors, IFlowableDiagramData current)
+    public override IFlowableResult Invoke(IFlowableLinkData previors, IFlowableDiagramData current)
     {
         Mat src = this.PreviourMat;
         SimpleBlobDetector.Params param = CopyTo();

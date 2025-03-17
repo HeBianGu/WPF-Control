@@ -117,6 +117,25 @@
             <!--<DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=h:Port}, Path=HasError}" Value="True">
                 <Setter TargetName="path" Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Red}}" />
             </DataTrigger>-->
+            <DataTrigger Binding="{Binding State}"
+                         Value="Running">
+                <Setter TargetName="path" Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
+                <Setter Property="TextBlock.Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
+                <DataTrigger.EnterActions>
+                    <BeginStoryboard x:Name="start">
+                        <Storyboard AutoReverse="True"
+                                    RepeatBehavior="Forever"
+                                    Storyboard.TargetProperty="Opacity">
+                            <DoubleAnimation From="0.2"
+                                             To="1"
+                                             Duration="00:00:00.5" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </DataTrigger.EnterActions>
+                <DataTrigger.ExitActions>
+                    <RemoveStoryboard BeginStoryboardName="start" />
+                </DataTrigger.ExitActions>
+            </DataTrigger>
         </DataTemplate.Triggers>
     </DataTemplate>
 

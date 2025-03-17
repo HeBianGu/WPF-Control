@@ -28,7 +28,7 @@ public class SplitBGR : BasicOpenCVNodeDataBase
         }
     }
 
-    public override IFlowableResult Invoke(IFlowablePartData previors, IFlowableDiagramData current)
+    public override IFlowableResult Invoke(IFlowableLinkData previors, IFlowableDiagramData current)
     {
         //using var src = new Mat(ImagePath.Lenna, ImreadModes.Color);
         Mat src = this.PreviourMat;

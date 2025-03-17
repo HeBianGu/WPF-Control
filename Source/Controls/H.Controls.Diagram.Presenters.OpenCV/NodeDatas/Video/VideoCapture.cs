@@ -65,7 +65,7 @@ public class VideoCapture : VideoCaptureImageImportNodeDataBase
     //    return "视频文件|*.asf;*.wav;*.mp4;*.mpg;*wmv;mtv";
     //}
 
-    public override async Task<IFlowableResult> InvokeAsync(IFlowablePartData previors, IFlowableDiagramData current)
+    public override async Task<IFlowableResult> InvokeAsync(IFlowableLinkData previors, IFlowableDiagramData current)
     {
         return await Task.Run(async () =>
         {

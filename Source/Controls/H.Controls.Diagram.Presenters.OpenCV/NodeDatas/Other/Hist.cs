@@ -2,7 +2,7 @@
 [Display(Name = "直方图均计算", GroupName = "其他", Order = 0)]
 public class Hist : OtherOpenCVNodeDataBase
 {
-    public override IFlowableResult Invoke(IFlowablePartData previors, IFlowableDiagramData current)
+    public override IFlowableResult Invoke(IFlowableLinkData previors, IFlowableDiagramData current)
     {
         using Mat src = Cv2.ImRead(this.SrcFilePath, ImreadModes.Grayscale);
 
