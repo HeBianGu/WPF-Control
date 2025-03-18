@@ -24,6 +24,45 @@
                    LinkDrawer="{Binding LinkDrawer}"
                    UseAnimation="False"
                    UseAutoAddLinkOnEnd="True">
+            <Control.Resources>
+                <BindingProxy x:Key="Proxy"
+                              Data="{Binding ElementName=diagram}" />
+            </Control.Resources>
+            <Diagram.ContextMenu>
+                <ContextMenu>
+                    <ContextMenu.Template>
+                        <ControlTemplate>
+                            <ItemsControl Background="{DynamicResource {x:Static BrushKeys.Background}}"
+                                          BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                                          BorderThickness="1">
+                                <ItemsControl.Resources>
+                                    <DataTemplate DataType="{x:Type CommandBinding}">
+                                        <MenuItem Command="{Binding Command}"
+                                                  CommandTarget="{Binding Source={StaticResource Proxy}, Path=Data}"
+                                                  Header="{Binding Command.Text}" />
+                                    </DataTemplate>
+                                    <DataTemplate DataType="{x:Type DisplayCommand}">
+                                        <MenuItem CommandParameter="{Binding Source={StaticResource Proxy}, Path=Data}"
+                                                  Style="{DynamicResource {x:Static MenuItemKeys.BindCommand}}" />
+                                    </DataTemplate>
+                                </ItemsControl.Resources>
+                                <ItemsControl.ItemsSource>
+                                    <CompositeCollection>
+                                        <CollectionContainer Collection="{Binding Source={StaticResource Proxy}, Path=Data.DataContext.Commands}" />
+                                        <CollectionContainer Collection="{Binding Source={StaticResource Proxy}, Path=Data.CommandBindings}" />
+                                    </CompositeCollection>
+                                </ItemsControl.ItemsSource>
+                            </ItemsControl>
+                        </ControlTemplate>
+                    </ContextMenu.Template>
+                    <ContextMenu.ItemsSource>
+                        <CompositeCollection>
+                            <CollectionContainer Collection="{Binding Source={StaticResource Proxy}, Path=Data.DataContext.Commands}" />
+                            <CollectionContainer Collection="{Binding Source={StaticResource Proxy}, Path=Data.CommandBindings}" />
+                        </CompositeCollection>
+                    </ContextMenu.ItemsSource>
+                </ContextMenu>
+            </Diagram.ContextMenu>
             <h:Diagram.Background>
                 <SolidColorBrush Opacity="0.02"
                                  Color="Gray" />

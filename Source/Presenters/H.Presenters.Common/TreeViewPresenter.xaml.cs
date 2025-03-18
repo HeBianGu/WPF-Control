@@ -5,6 +5,7 @@ using System.Collections;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Markup;
 
 namespace H.Presenters.Common;
 public interface ITreeViewPresenter : IItemsSourcePresenter
@@ -35,6 +36,7 @@ public class TreeViewPresenter : ItemsSourcePresenterBase, ITreeViewPresenter
             RaisePropertyChanged();
         }
     }
+
     public RelayCommand SelectedItemChangedCommand => new RelayCommand(x =>
     {
         if (x is RoutedPropertyChangedEventArgs<object> p)
@@ -43,7 +45,6 @@ public class TreeViewPresenter : ItemsSourcePresenterBase, ITreeViewPresenter
         }
     });
 }
-
 
 public static partial class DialogServiceExtension
 {
@@ -60,7 +61,6 @@ public static partial class DialogServiceExtension
 
 public class ShowTreeViewCommand : ShowSourceCommandBase
 {
-    public string DisplayMemberPath { get; set; }
     public override async Task ExecuteAsync(object parameter)
     {
         await IocMessage.Dialog.ShowTreeView(x =>
@@ -69,6 +69,12 @@ public class ShowTreeViewCommand : ShowSourceCommandBase
                  x.ItemsSource = objects;
              else
                  x.ItemsSource = this.ItemsSource;
+             if (this._targetObject is FrameworkElement element)
+             {
+                 var find = TreeViewPresenter.GetItemTemplate(element);
+                 if (find != null)
+                     x.ItemTemplate = find;
+             }
          });
     }
 }

@@ -19,7 +19,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
         //this.DynamicStyle.Stroke = Application.Current.FindResource(BrushKeys.Red) as Brush;
         //this.DynamicCanDropStyle.Stroke = Application.Current.FindResource(BrushKeys.Green) as Brush;
-        this.Datas = new Datas();
+        this._datas = new Datas();
         this.DataSource = this.CreateDataSource();
     }
 
@@ -200,91 +200,50 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     //[Display(Name = "删除", GroupName = "操作", Order = 4, Description = "点击此功能，删除选中的节点、连线或端口")]
     //public virtual DisplayCommand DeleteCommand => new DisplayCommand(async e =>
     //{
-    //    if (e is Part part)
+    //    await IocMessage.Dialog.ShowDeleteDialog(x =>
     //    {
-    //        await IocMessage.Dialog.ShowDeleteDialog(x =>
-    //        {
-    //            part.Delete();
-    //        });
-    //    }
-
+    //        part.Delete();
+    //    });
     //}, x => x is Part);
 
-    //[Icon(FontIcons.DisconnectDrive)]
-    //[Display(Name = "删除选中节点", GroupName = "操作", Order = 4, Description = "点击此功能，删除选中的所有节点")]
-    //public virtual DisplayCommand DeleteCheckedCommand => new DisplayCommand(async e =>
-    //{
-    //    if (e is IEnumerable<Node> nodes)
-    //    {
-    //        await IocMessage.Dialog.ShowDeleteDialog(x =>
-    //        {
-    //            foreach (var item in nodes.Where(x => x.IsSelected).ToList())
-    //            {
-    //                item.Delete();
-    //            }
-    //        });
-    //    }
+    [Icon(FontIcons.DisconnectDrive)]
+    [Display(Name = "删除选中节点", GroupName = "操作", Order = 4, Description = "点击此功能，删除选中的所有节点")]
+    public virtual DisplayCommand DeleteCheckedCommand => new DisplayCommand(async e =>
+    {
+        await IocMessage.Dialog.ShowDeleteDialog(x =>
+        {
+            foreach (var item in this.DataSource.Nodes.Where(x => x.IsSelected).ToList())
+            {
+                item.Delete();
+            }
+        });
+    }, x => this.DataSource.Nodes.Where(x => x.IsSelected).Count() > 0);
 
-    //}, x => x is IEnumerable<Node>);
+    [Icon(FontIcons.Delete)]
+    [Display(Name = "清空节点", GroupName = "操作", Order = 5, Description = "点击此功能，删除所有节点、连线和端口")]
+    public virtual DisplayCommand ClearCommand => new DisplayCommand(async e =>
+    {
+        await IocMessage.Dialog.ShowDeleteAllDialog(x =>
+        {
+            foreach (Node item in this.DataSource.Nodes.ToList())
+            {
+                item.Delete();
+            }
+            this.SelectedPartData = null;
+        });
+    }, x => this.DataSource.Nodes.Count > 0);
 
-    //[Icon(FontIcons.Delete)]
-    //[Display(Name = "清空节点", GroupName = "操作", Order = 5, Description = "点击此功能，删除所有节点、连线和端口")]
-    //public virtual DisplayCommand ClearCommand => new DisplayCommand(async e =>
-    //{
-    //    if (e is IEnumerable<Node> nodes)
-    //    {
-    //        await IocMessage.Dialog.ShowDeleteAllDialog(x =>
-    //        {
-    //            foreach (Node item in nodes.ToList())
-    //            {
-    //                item.Delete();
-    //            }
-    //            //this.SelectedPart = null;
-    //        });
-    //    }
+    [Icon(FontIcons.AlignCenter)]
+    [System.Text.Json.Serialization.JsonIgnore]
+    [Display(Name = "对齐节点", GroupName = "操作", Order = 5)]
+    public virtual DisplayCommand AlignmentCommand => new DisplayCommand(e =>
+    {
+        foreach (Node item in this.DataSource.Nodes)
+        {
+            item.AligmentLayout();
+        }
+    }, x => this.DataSource.Nodes.Count > 0);
 
-    //}, x => x is IEnumerable<Node>);
-
-    //[Icon(FontIcons.AlignCenter)]
-    //[System.Text.Json.Serialization.JsonIgnore]
-    //[Display(Name = "对齐节点", GroupName = "操作", Order = 5)]
-    //public virtual DisplayCommand AlignmentCommand => new DisplayCommand(e =>
-    //{
-    //    if (e is IEnumerable<Node> nodes)
-    //    {
-    //        foreach (Node item in nodes)
-    //        {
-    //            item.AligmentLayout();
-    //        }
-    //    }
-    //}, x => x is IEnumerable<Node>);
-
-    //[System.Text.Json.Serialization.JsonIgnore]
-
-    //[Icon(FontIcons.Previous)]
-    //[Display(Name = "上一个节点", GroupName = "操作", Order = 5)]
-    //public virtual DisplayCommand ProviewCommand => new DisplayCommand(e =>
-    //{
-    //    if(e )
-    //    this.OnPreivewPart();
-    //}, x => this.SelectedPart?.GetPrevious() != null);
-
-
-    //[System.Text.Json.Serialization.JsonIgnore]
-    //[Icon(FontIcons.Next)]
-    //[Display(Name = "下一个节点", GroupName = "操作", Order = 5)]
-    //public virtual DisplayCommand NextCommand => new DisplayCommand(e =>
-    //{
-    //    this.OnNextPart();
-    //}, x => this.SelectedPart?.GetNext() != null);
-
-    //protected virtual void OnNextPart()
-    //{
-    //    var find = this.SelectedPart.GetNext();
-    //    this.SelectedPart.IsSelected = false;
-    //    this.SelectedPart = find;
-    //    find.IsSelected = true;
-    //}
 
 
     public RelayCommand ItemsChangedCommand => new RelayCommand(e =>
@@ -294,7 +253,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
     protected virtual void OnItemsChanged()
     {
-
+        this.InvalidateDatas();
     }
 
     public RelayCommand SelectedPartChangedCommand => new RelayCommand(e =>
@@ -355,10 +314,30 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
     #region - Serializing -
 
-    public Datas Datas { get; } = new Datas();
+    private Datas _datas;
+    public Datas Datas
+    {
+        get
+        {
+            if (_datas == null)
+            {
+                _datas = new Datas()
+                {
+                    NodeDatas = this.DataSource.GetNodeDatas().ToList(),
+                    LinkDatas = this.DataSource.GetLinkDatas().ToList()
+                };
+            }
+            return _datas;
+        }
+    }
 
-    IList<INodeData> IDiagramData.NodeDatas => this.DataSource.GetNodeDatas();
-    IList<ILinkData> IDiagramData.LinkDatas => this.DataSource.GetLinkDatas();
+    protected void InvalidateDatas()
+    {
+        this._datas = null;
+    }
+
+    IList<INodeData> IDiagramData.NodeDatas => this.Datas.NodeDatas;
+    IList<ILinkData> IDiagramData.LinkDatas => this.Datas.LinkDatas;
 
     private IDiagramDataSource _dataSource;
     [JsonIgnore]
@@ -380,8 +359,9 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
     protected virtual void OnSerializing()
     {
-        this.Datas.LinkDatas = this.DataSource.GetLinkDatas();
-        this.Datas.NodeDatas = this.DataSource.GetNodeDatas();
+        this.InvalidateDatas();
+        //this.Datas.LinkDatas = this.DataSource.GetLinkDatas();
+        //this.Datas.NodeDatas = this.DataSource.GetNodeDatas();
     }
 
     [OnDeserialized]
@@ -394,7 +374,6 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     {
         this.DataSource = this.CreateDataSource();
     }
-
 
     protected IDiagramDataSource CreateDataSource()
     {

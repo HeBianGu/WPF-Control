@@ -66,7 +66,7 @@ public static class DiagramDataExtension
     }
     public static IPortData GetFromPortData(this ILinkData linkData, IDiagramData diagramData)
     {
-        return diagramData.GetPortDatas().FirstOrDefault(l => l.ID == linkData.FromNodeID);
+        return diagramData.GetPortDatas().FirstOrDefault(l => l.ID == linkData.FromPortID);
     }
     public static IPortData GetToPortData(this ILinkData linkData, IDiagramData diagramData)
     {
@@ -77,8 +77,10 @@ public static class DiagramDataExtension
     {
         return diagramData.NodeDatas.Where(x =>
         {
-            var find = x.GetFromNodeDatas(diagramData);
-            return find == null || find.Count() == 0;
+            var finds = x.GetFromNodeDatas(diagramData);
+            if (x is IPortableNodeData portable && portable.PortDatas.Count(x => x.PortType == PortType.Input) > 0)
+                return false;
+            return finds == null || finds.Count() == 0;
         });
     }
 

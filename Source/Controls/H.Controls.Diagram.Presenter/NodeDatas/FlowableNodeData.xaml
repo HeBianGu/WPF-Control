@@ -26,7 +26,6 @@
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="btn_start" Property="Visibility" Value="Visible" />
             </MultiDataTrigger>
-
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding UseInvoke}" Value="True" />

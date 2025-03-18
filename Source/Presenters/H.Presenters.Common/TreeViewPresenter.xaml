@@ -5,12 +5,9 @@
                     xmlns:local="clr-namespace:H.Presenters.Common">
     <DataTemplate DataType="{x:Type local:TreeViewPresenter}">
         <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <TreeView ItemsSource="{Binding ItemsSource}">
-                <TreeView.ItemTemplate>
-                    <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
-                        <TextBlock Text="{Binding Model}" />
-                    </HierarchicalDataTemplate>
-                </TreeView.ItemTemplate>
+            <TreeView x:Name="t"
+                      ItemTemplate="{Binding ItemTemplate}"
+                      ItemsSource="{Binding ItemsSource}">
                 <b:Interaction.Triggers>
                     <b:EventTrigger EventName="SelectedItemChanged">
                         <b:InvokeCommandAction Command="{Binding SelectedItemChangedCommand}"
@@ -25,5 +22,17 @@
                 </TreeView.ItemContainerStyle>
             </TreeView>
         </ScrollViewer>
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding ItemTemplate}"
+                         Value="{x:Null}">
+                <Setter TargetName="t" Property="ItemTemplate">
+                    <Setter.Value>
+                        <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
+                            <TextBlock Text="{Binding Model}" />
+                        </HierarchicalDataTemplate>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+        </DataTemplate.Triggers>
     </DataTemplate>
 </ResourceDictionary>

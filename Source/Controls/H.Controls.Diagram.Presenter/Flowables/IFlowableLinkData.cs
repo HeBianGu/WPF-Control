@@ -8,5 +8,6 @@ public interface IFlowableLinkData : ILinkData, IFlowablePartData
 {
     Task<bool?> Start(IFlowableDiagramData diagramData);
     //Task<IFlowableResult> TryInvokeAsync(IFlowablePortData previors, IFlowableDiagramData diagram);
+    [Obsolete]
     bool IsMatchResult(IFlowableResult flowableResult);
 }

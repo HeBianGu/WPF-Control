@@ -3,7 +3,7 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.Diagram.Presenter.PortDatas">
     <DataTemplate DataType="{x:Type local:FlowablePortData}">
-        <Grid>
+        <Grid Background="Transparent">
             <Path x:Name="path"
                   Width="10"
                   Height="10"
@@ -13,39 +13,32 @@
                   Fill="{Binding Fill}"
                   Stretch="Fill"
                   Stroke="{Binding Stroke}"
-                  StrokeThickness="{Binding StrokeThickness}">
-                <!--<h:StoryService.Storys>
-                    <h:StoryCollection>
-                        <h:ScaleStory EndX="3.5"
-                                      EndY="3.5"
-                                      StartX="1"
-                                      StartY="1"
-                                      Duration="500" />
-                        <h:OpacityStory Duration="500" />
-                    </h:StoryCollection>
-                </h:StoryService.Storys>-->
-            </Path>
-            <StackPanel Margin="{Binding TextMargin}"
+                  StrokeThickness="{Binding StrokeThickness}" />
+            <!--<StackPanel Margin="0"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Orientation="Horizontal">
-                <TextBlock x:Name="icon"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           FontFamily="Segoe MDL2 Assets"
-                           Text="{Binding Icon}" />
-                <TextBlock x:Name="txt"
-                           Margin="2"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           FontFamily="{Binding FontFamily}"
-                           FontSize="{Binding FontSize}"
-                           FontStretch="{Binding FontStretch}"
-                           FontStyle="{Binding FontStyle}"
-                           FontWeight="{Binding FontWeight}"
-                           Foreground="{Binding Foreground}"
-                           Text="{Binding Text}" />
-            </StackPanel>
+                        Orientation="Horizontal">-->
+            <TextBlock x:Name="icon"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontFamily="Segoe MDL2 Assets"
+                       Text="{Binding Icon}"
+                       ToolTip="{Binding Description}" />
+            <TextBlock x:Name="txt"
+                       Width="30"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Background="{x:Null}"
+                       FontFamily="{Binding FontFamily}"
+                       FontSize="{Binding FontSize}"
+                       FontStretch="{Binding FontStretch}"
+                       FontStyle="{Binding FontStyle}"
+                       FontWeight="{Binding FontWeight}"
+                       Foreground="{Binding Foreground}"
+                       Text="{Binding Text}"
+                       TextTrimming="CharacterEllipsis"
+                       ToolTip="{Binding Description}" />
+            <!--</StackPanel>-->
         </Grid>
 
         <DataTemplate.Triggers>
@@ -62,20 +55,21 @@
                          Value="{x:Null}">
                 <Setter TargetName="path" Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Background}}" />
             </DataTrigger>
-            <Trigger Property="IsMouseOver" Value="True">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=ContentPresenter}, Path=IsMouseOver}"
+                         Value="True">
+                <!--<Setter Property="Opacity" Value="0.5" />-->
                 <Setter TargetName="path" Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.ForegroundAssist}}" />
                 <!--<Setter TargetName="boder" Property="Effect" Value="{DynamicResource {x:Static h:EffectShadowKeys.Default2}}" />-->
-            </Trigger>
-            <DataTrigger Binding="{Binding Text}"
+            </DataTrigger>
+            <!--<DataTrigger Binding="{Binding Text}"
                          Value="{x:Null}">
                 <Setter TargetName="txt" Property="Margin" Value="0" />
-            </DataTrigger>
+            </DataTrigger>-->
             <DataTrigger Binding="{Binding PortType}">
                 <DataTrigger.Value>
                     <h:PortType>OutPut</h:PortType>
                 </DataTrigger.Value>
-                <Setter TargetName="path" Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Orange}}" />
-                <Setter TargetName="path" Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Orange}}" />
+                <Setter TargetName="path" Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.LightBlue}}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding PortType}">
@@ -85,6 +79,32 @@
                 <Setter TargetName="path" Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Yellow}}" />
             </DataTrigger>
 
+            <DataTrigger Binding="{Binding Dock}"
+                         Value="Left">
+                <Setter TargetName="icon" Property="Margin" Value="-30,0,0,0" />
+                <Setter TargetName="txt" Property="Margin" Value="20,0,-50,0" />
+                <Setter TargetName="txt" Property="TextAlignment" Value="Left" />
+                <Setter TargetName="txt" Property="HorizontalAlignment" Value="Left" />
+                <Setter TargetName="txt" Property="VerticalAlignment" Value="Center" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Dock}"
+                         Value="Right">
+                <Setter TargetName="icon" Property="Margin" Value="0,0,-30,0" />
+                <Setter TargetName="txt" Property="Margin" Value="-50,0,20,0" />
+                <Setter TargetName="txt" Property="TextAlignment" Value="Right" />
+                <Setter TargetName="txt" Property="HorizontalAlignment" Value="Right" />
+                <Setter TargetName="txt" Property="VerticalAlignment" Value="Center" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Dock}"
+                         Value="Top">
+                <Setter TargetName="icon" Property="Margin" Value="0,-30,0,0" />
+                <Setter TargetName="txt" Property="Margin" Value="0,0,0,-30" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Dock}"
+                         Value="Bottom">
+                <Setter TargetName="icon" Property="Margin" Value="0,0,0,-30" />
+                <Setter TargetName="txt" Property="Margin" Value="0,-30,0,0" />
+            </DataTrigger>
             <DataTrigger Binding="{Binding State}"
                          Value="Success">
                 <!--<Setter TargetName="boder" Property="BorderThickness" Value="3" />-->

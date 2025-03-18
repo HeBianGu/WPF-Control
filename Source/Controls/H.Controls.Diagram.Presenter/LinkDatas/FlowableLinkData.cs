@@ -104,7 +104,7 @@ public class FlowableLinkData : TextLinkData, IFlowableLinkData
     //[Display(Name = "执行")]
     //public RelayCommand InvokeCommand => new RelayCommand(async l => await this.TryInvokeAsync(null, null));
 
-    public IFlowableResult Invoke(IFlowablePortData previors, IFlowableDiagramData diagram)
+    public IFlowableResult Invoke(IFlowableDiagramData diagram)
     {
         Thread.Sleep(DiagramAppSetting.Instance.FlowSleepMillisecondsTimeout);
         return DiagramAppSetting.Instance.UseMock
@@ -112,14 +112,14 @@ public class FlowableLinkData : TextLinkData, IFlowableLinkData
             : this.OK("运行成功");
     }
 
-    public virtual async Task<IFlowableResult> InvokeAsync(IFlowablePortData previors, IFlowableDiagramData diagram)
+    public virtual async Task<IFlowableResult> InvokeAsync(IFlowableDiagramData diagram)
     {
         return await Task.Run(() =>
         {
-            return this.Invoke(previors, diagram);
+            return this.Invoke(diagram);
         });
     }
-    public virtual async Task<IFlowableResult> TryInvokeAsync(IFlowablePortData previors, IFlowableDiagramData diagram)
+    public virtual async Task<IFlowableResult> TryInvokeAsync(IFlowableDiagramData diagram)
     {
         try
         {
@@ -128,7 +128,7 @@ public class FlowableLinkData : TextLinkData, IFlowableLinkData
             using (var stopwatch = new Stopwatchable(this))
             {
                 IocLog.Instance?.Info($"正在执行<{this.GetType().Name}>:{this.Text}");
-                IFlowableResult result = await InvokeAsync(previors, diagram);
+                IFlowableResult result = await InvokeAsync(diagram);
                 IocLog.Instance?.Info(result.State == FlowableResultState.Error ? $"运行错误<{this.GetType().Name}>:{this.Text} {result.Message}" : $"执行完成<{this.GetType().Name}>:{this.Text} {result.Message}");
                 this.State = result.State == FlowableResultState.OK ? FlowableState.Success : FlowableState.Error;
                 return result;
@@ -174,36 +174,26 @@ public class FlowableLinkData : TextLinkData, IFlowableLinkData
 
     public async Task<bool?> Start(IFlowableDiagramData diagramData)
     {
-        if (this.State == FlowableState.Canceling)
-            return null;
-        //  Do ：From Ports
-        IFlowablePortData fPort = this.GetFromPortData(diagramData) as IFlowablePortData;
-        if (fPort != null)
-        {
-            using (new PartDataInvokable(fPort, diagramData.OnInvokingPart, diagramData.OnInvokedPart))
+        if (diagramData.FlowableMode != DiagramFlowableMode.Node)
+        {    //  Do ：Links
+            if (this.State == FlowableState.Canceling)
+                return null;
+            this.State = FlowableState.Running;
+            using (new PartDataInvokable(this, diagramData.OnInvokingPart, diagramData.OnInvokedPart))
             {
-                IFlowableResult rFrom = await fPort?.TryInvokeAsync(null, diagramData);
-                if (rFrom?.State == FlowableResultState.Error)
+                IFlowableResult r = await this?.TryInvokeAsync(diagramData);
+                this.State = r?.State == FlowableResultState.OK ? FlowableState.Success : FlowableState.Error;
+                if (r?.State == FlowableResultState.Error)
                     return false;
             }
         }
-        //  Do ：Links
-        if (this.State == FlowableState.Canceling)
-            return null;
-        this.State = FlowableState.Running;
-        using (new PartDataInvokable(this, diagramData.OnInvokingPart, diagramData.OnInvokedPart))
-        {
-            IFlowableResult r = await this?.TryInvokeAsync(fPort, diagramData);
-            this.State = r?.State == FlowableResultState.OK ? FlowableState.Success : FlowableState.Error;
-            if (r?.State == FlowableResultState.Error)
-                return false;
-        }
-        if (this.State == FlowableState.Canceling)
-            return null;
+
         //  Do ：To Ports
-        IFlowablePortData tPort = this.GetFromPortData(diagramData) as IFlowablePortData;
-        if (tPort != null)
+        IFlowablePortData tPort = this.GetToPortData(diagramData) as IFlowablePortData;
+        if (tPort != null && diagramData.FlowableMode == DiagramFlowableMode.Port)
         {
+            if (this.State == FlowableState.Canceling)
+                return null;
             using (new PartDataInvokable(tPort, diagramData.OnInvokingPart, diagramData.OnInvokedPart))
             {
                 IFlowableResult rTo = await tPort?.TryInvokeAsync(this, diagramData);
@@ -211,7 +201,6 @@ public class FlowableLinkData : TextLinkData, IFlowableLinkData
                     return false;
             }
         }
-
         var tNodeData = this.GetToNodeData(diagramData) as IFlowableNodeData;
         //  Do ：递归执行ToNode
         bool? b = await tNodeData?.Start(diagramData, this);
@@ -219,7 +208,6 @@ public class FlowableLinkData : TextLinkData, IFlowableLinkData
             return b;
         return true;
     }
-
 }
 
 public class FlowableLinkData<T> : FlowableLinkData where T : Enum

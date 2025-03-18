@@ -3,11 +3,15 @@ using System;
 using System.Collections;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Markup;
 
 namespace H.Presenters.Common;
 public interface IItemsSourcePresenter
 {
     IEnumerable ItemsSource { get; set; }
+
+    DataTemplate ItemTemplate { get; set; }
 }
 
 [Icon("\xE890")]
@@ -33,6 +37,15 @@ public static partial class DialogServiceExtension
 public abstract class ShowSourceCommandBase : DisplayMarkupCommandBase
 {
     public IEnumerable ItemsSource { get; set; }
+
+    protected object _targetObject;
+    public override object ProvideValue(IServiceProvider serviceProvider)
+    {
+        var provideValueTarget = serviceProvider.GetService(typeof(IProvideValueTarget)) as IProvideValueTarget;
+        if (provideValueTarget != null)
+            this._targetObject = provideValueTarget.TargetObject;
+        return base.ProvideValue(serviceProvider);
+    }
 }
 
 public class ShowDataGridCommand : ShowSourceCommandBase

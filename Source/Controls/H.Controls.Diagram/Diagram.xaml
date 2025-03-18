@@ -42,6 +42,17 @@
         <Setter Property="NodeStyle" Value="{DynamicResource {x:Static lp:Node.DefaultKey}}" />
         <Setter Property="LinkStyle" Value="{DynamicResource {x:Static lp:Link.DefaultKey}}" />
         <Setter Property="DynamicLinkStyle" Value="{DynamicResource {x:Static lp:Link.DashKey}}" />
+        <Setter Property="ContextMenu">
+            <Setter.Value>
+                <ContextMenu ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=Diagram}, Path=CommandBindings}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Text}" />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ContextMenu>
+            </Setter.Value>
+        </Setter>
     </Style>
     <Style BasedOn="{StaticResource {x:Static local:Diagram.DefaultKey}}"
            TargetType="{x:Type local:Diagram}" />

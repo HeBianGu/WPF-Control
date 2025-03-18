@@ -264,16 +264,16 @@ public partial class Diagram : ContentControl, IDiagram
             this.InputBindings.Add(keyBinding);
         }
 
-        {
+        //{
 
-            ContextMenu contextMenu = new ContextMenu();
-            foreach (CommandBinding item in this.CommandBindings)
-            {
-                if (item.Command is RoutedUICommand routed)
-                    contextMenu.Items.Add(new MenuItem() { Command = item.Command, Header = routed.Text });
-            }
-            this.ContextMenu = contextMenu;
-        }
+        //    ContextMenu contextMenu = new ContextMenu();
+        //    foreach (CommandBinding item in this.CommandBindings)
+        //    {
+        //        if (item.Command is RoutedUICommand routed)
+        //            contextMenu.Items.Add(new MenuItem() { Command = item.Command, Header = routed.Text });
+        //    }
+        //    this.ContextMenu = contextMenu;
+        //}
     }
 
     public override void OnApplyTemplate()
@@ -632,7 +632,7 @@ public partial class Diagram : ContentControl, IDiagram
 
     public void AddNode(params Node[] nodes)
     {
-        List<Node> endNode = this.Nodes.Where(x => x.LinksOutOf.Count == 0).ToList();
+        List<Node> endNode = this.Nodes.Where(x => x.GetPorts(x => x.PortType == PortType.OutPut && x.GetLinksOutOf().Count() == 0).Count > 0).ToList();
         foreach (Node node in nodes)
         {
             //this.NodesSource.Add(node);
@@ -744,6 +744,6 @@ public partial class Diagram
 
     protected void UpdateNodesToDataSource()
     {
-        this.DataSource.Nodes = this.Nodes;
+        this.DataSource.Nodes = this.Nodes.ToList();
     }
 }

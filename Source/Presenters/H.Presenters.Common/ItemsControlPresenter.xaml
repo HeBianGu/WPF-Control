@@ -3,8 +3,9 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Presenters.Common">
     <DataTemplate DataType="{x:Type local:ItemsControlPresenter}">
-        <ScrollViewer>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
             <ItemsControl HorizontalAlignment="Stretch"
+                          ItemTemplate="{Binding ItemTemplate, Mode=TwoWay}"
                           ItemsSource="{Binding ItemsSource}" />
         </ScrollViewer>
     </DataTemplate>

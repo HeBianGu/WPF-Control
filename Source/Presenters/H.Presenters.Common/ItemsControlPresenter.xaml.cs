@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace H.Presenters.Common;
 
@@ -18,12 +19,45 @@ public abstract class ItemsSourcePresenterBase : DisplayBindableBase, IItemsSour
             RaisePropertyChanged();
         }
     }
+
+    private DataTemplate _itemTemplate;
+    public DataTemplate ItemTemplate
+    {
+        get { return _itemTemplate; }
+        set
+        {
+            _itemTemplate = value;
+            RaisePropertyChanged();
+        }
+    }
+
+    public static DataTemplate GetItemTemplate(DependencyObject obj)
+    {
+        return (DataTemplate)obj.GetValue(ItemTemplateProperty);
+    }
+
+    public static void SetItemTemplate(DependencyObject obj, DataTemplate value)
+    {
+        obj.SetValue(ItemTemplateProperty, value);
+    }
+
+    public static readonly DependencyProperty ItemTemplateProperty =
+        DependencyProperty.RegisterAttached("ItemTemplate", typeof(DataTemplate), typeof(ItemsSourcePresenterBase), new PropertyMetadata(default(DataTemplate), OnItemTemplateChanged));
+
+    static public void OnItemTemplateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        DependencyObject control = d as DependencyObject;
+
+        DataTemplate n = (DataTemplate)e.NewValue;
+
+        DataTemplate o = (DataTemplate)e.OldValue;
+    }
+
 }
 [Icon("\xE890")]
 [Display(Name = "查看数据")]
 public class ItemsControlPresenter : ItemsSourcePresenterBase, IItemsSourcePresenter
 {
-
 
 }
 
@@ -50,6 +84,13 @@ public class ShowItemsControlCommand : ShowSourceCommandBase
                  x.ItemsSource = objects;
              else
                  x.ItemsSource = this.ItemsSource;
+
+             if (this._targetObject is FrameworkElement element)
+             {
+                 var find = ItemsControlPresenter.GetItemTemplate(element);
+                 if (find != null)
+                     x.ItemTemplate = find;
+             }
          });
     }
 }

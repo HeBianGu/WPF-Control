@@ -206,12 +206,12 @@ public class FlowableNodeData : TextNodeData, IFlowableNodeData
     {
     }
 
-    public override ILinkData CreateLinkData()
+    public override IFlowableLinkData CreateLinkData()
     {
         return new FlowableLinkData() { FromNodeID = this.ID };
     }
 
-    public override IPortData CreatePortData()
+    public override IFlowablePortData CreatePortData()
     {
         return new FlowablePortData(this.ID, PortType.Both);
     }
@@ -226,17 +226,12 @@ public class FlowableNodeData : TextNodeData, IFlowableNodeData
             return default;
         return (T)from.GetFromNodeData(diagramData);
     }
-    //protected async Task<IFlowableResult?> OnInvokeCurrentNode(IFlowableDiagramData diagramData, IFlowablePortData from)
-    //{
-    //    if (this.State == FlowableState.Canceling)
-    //        return null;
-    //    using (new PartDataInvokable(this, diagramData.OnInvokingPart, diagramData.OnInvokedPart))
-    //    {
-    //        return await this.TryInvokeAsync(from, diagramData) as FlowableResult;
-    //        //if (result == null || result.State == FlowableResultState.Error)
-    //        //    return result;
-    //    }
-    //}
+
+    protected T GetStartFromNodeData<T>(IFlowableDiagramData diagramData) where T : INodeData
+    {
+        return diagramData.GetStartNodeDatas().OfType<T>().FirstOrDefault();
+    }
+
     public async Task<bool?> Start(IFlowableDiagramData diagramData, IFlowableLinkData from = null)
     {
         if (this.State == FlowableState.Canceling)
@@ -248,15 +243,21 @@ public class FlowableNodeData : TextNodeData, IFlowableNodeData
             if (nresult.State == FlowableResultState.Error)
                 return false;
         }
-        var toLinks = this.GetToLinkDatas(diagramData).OfType<IFlowableLinkData>().Where(x => x.IsMatchResult(nresult));
-        foreach (var linkData in toLinks)
+        foreach (var portData in this.GetFlowablePortDatas(diagramData))
         {
-            var lr = await linkData.Start(diagramData);
+            var lr = await portData.Start(diagramData);
             if (lr != true)
                 return lr;
         }
         return true;
     }
+
+    protected virtual IEnumerable<IFlowablePortData> GetFlowablePortDatas(IFlowableDiagramData diagramData)
+    {
+        var toLinks = this.GetToLinkDatas(diagramData).OfType<IFlowableLinkData>();
+        return toLinks.Select(x => x.GetFromPortData(diagramData)).OfType<IFlowablePortData>();
+    }
+
 }
 
 public class StartFlowableNodeData : FlowableNodeData

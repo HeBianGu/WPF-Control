@@ -28,9 +28,6 @@ public partial class Node : FlowablePart, INode
 
     public string Id => this.GetContent<INodeData>().ID;
 
-    /// <summary>
-    /// 说明
-    /// </summary>
     public static readonly DependencyProperty PositionProperty = DependencyProperty.RegisterAttached(
         "Position", typeof(Point), typeof(Node), new FrameworkPropertyMetadata(default(Point), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnPositionChanged));
 
@@ -58,41 +55,11 @@ public partial class Node : FlowablePart, INode
 
 
     public static readonly DependencyProperty LocationProperty =
-        DependencyProperty.Register("Location", typeof(Point), typeof(Node), new FrameworkPropertyMetadata(default(Point), (d, e) =>
-         {
-             Node control = d as Node;
+        DependencyProperty.Register("Location", typeof(Point), typeof(Node), new FrameworkPropertyMetadata(default(Point)));
 
-             if (control == null) return;
-
-             if (e.OldValue is Point o)
-             {
-
-             }
-
-             if (e.NewValue is Point n)
-             {
-
-             }
-         }));
-
-    /// <summary>
-    /// 扇入
-    /// </summary>
     public List<Link> LinksInto { get; set; } = new List<Link>();
-
-    /// <summary>
-    /// 扇出
-    /// </summary>
     public List<Link> LinksOutOf { get; set; } = new List<Link>();
-
-    /// <summary>
-    /// 关系
-    /// </summary>
     public List<Link> ConnectLinks { get; set; } = new List<Link>();
-
-    /// <summary>
-    /// 正在拖动
-    /// </summary>
     public static readonly DependencyProperty IsDraggingProperty = DependencyProperty.RegisterAttached(
         "IsDragging", typeof(bool), typeof(Node), new FrameworkPropertyMetadata(default(bool), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnIsDraggingChanged));
 
@@ -136,17 +103,6 @@ public partial class Node : FlowablePart, INode
 
     public override void Delete()
     {
-        ////  Do ：删除关联Link
-        //foreach (Link link in this.LinksInto.ToArray())
-        //{
-        //    link.Delete();
-        //}
-
-        //foreach (Link link in this.LinksOutOf.ToArray())
-        //{
-        //    link.Delete();
-        //}
-
         Link[] links = this.GetAllLinks().ToArray();
         foreach (Link item in links)
         {
@@ -267,7 +223,7 @@ public partial class Node : FlowablePart, INode
         foreach (Link link in this.LinksInto)
         {
             double spanHeight = ((link.FromNode.ActualHeight + this.ActualHeight) / 2) + 60;
-            double spanWidth = ((link.FromNode.ActualWidth + this.ActualWidth) / 2) + 100;
+            double spanWidth = ((link.FromNode.ActualWidth + this.ActualWidth) / 2) + 60;
             double x = link.FromNode.Location.X;
             double y = link.FromNode.Location.Y;
 
@@ -339,138 +295,6 @@ public partial class Node : FlowablePart, INode
             NodeLayer.SetPosition(this, point);
         }
     }
-
-    //public async Task<bool?> InvokePort(Action<Part> builder = null)
-    //{
-    //    Func<Node, Port, Task<bool?>> run = null;
-
-    //    run = async (l, f) =>
-    //    {
-    //        builder?.Invoke(l);
-    //        if (l.GetContent<IFlowableNodeData>() is IFlowableNodeData nodeData)
-    //        {
-    //            if (this.GetDispatcherValue(x => x.State) == FlowableState.Canceling)
-    //                return null;
-    //            //this.GetDiagram().OnRunningPartChanged(l);
-    //            FlowableResult result = await nodeData.TryInvokeAsync(f, l) as FlowableResult;
-    //            if (result == null || result.State == FlowableResultState.Error)
-    //            {
-    //                return false;
-    //            }
-
-    //            IEnumerable<Link> links = l.LinksOutOf.Where(x => x.GetContent<IFlowableLink>().IsMatchResult(result));
-    //            foreach (Link link in links)
-    //            {
-    //                if (link.GetDispatcherValue(x => x.State) == FlowableState.Canceling)
-    //                    return null;
-    //                builder?.Invoke(link.FromPort);
-    //                IFlowablePort portData = link.FromPort?.GetContent<IFlowablePort>();
-    //                //this.GetDiagram().OnRunningPartChanged(link.FromPort);
-    //                IFlowableResult rFrom = await portData?.TryInvokeAsync(l, link.FromPort);
-    //                if (rFrom?.State == FlowableResultState.Error)
-    //                    return false;
-
-    //                if (link.GetDispatcherValue(x => x.State) == FlowableState.Canceling)
-    //                    return null;
-    //                builder?.Invoke(link);
-    //                IFlowableLink linkData = link.GetContent<IFlowableLink>();
-    //                link.InvokeDispatcher(x => x.State = FlowableState.Running);
-    //                //this.GetDiagram().OnRunningPartChanged(link);
-    //                IFlowableResult r = await linkData?.TryInvokeAsync(link.FromPort, link);
-    //                link.InvokeDispatcher(x => link.State = r?.State == FlowableResultState.OK ? FlowableState.Success : FlowableState.Error);
-    //                if (r?.State == FlowableResultState.Error)
-    //                    return false;
-
-    //                if (this.GetDispatcherValue(x => x.State) == FlowableState.Canceling)
-    //                    return null;
-    //                builder?.Invoke(link.ToPort);
-    //                IFlowablePort toPort = link.ToPort.GetContent<IFlowablePort>();
-    //                //this.GetDiagram().OnRunningPartChanged(link.ToPort);
-    //                IFlowableResult rTo = await toPort?.TryInvokeAsync(link, link.ToPort);
-    //                if (rTo?.State == FlowableResultState.Error)
-    //                    return false;
-
-    //                //  Do ：递归执行ToNode
-    //                bool? b = await run?.Invoke(link.ToNode, link.ToPort);
-    //                if (b != true) return b;
-    //            }
-    //        }
-    //        return true;
-    //    };
-    //    return await run.Invoke(this, null);
-    //}
-
-    //public async Task<bool?> InvokeLink(Action<Part> builder = null)
-    //{
-    //    Func<Node, Link, Task<bool?>> run = null;
-    //    run = async (l, f) =>
-    //    {
-    //        builder?.Invoke(l);
-    //        if (l.Content is IFlowableNodeData nodeData)
-    //        {
-    //            if (this.State == FlowableState.Canceling)
-    //                return null;
-    //            //this.GetDiagram().OnRunningPartChanged(l);
-    //            FlowableResult result = await nodeData.TryInvokeAsync(f, l) as FlowableResult;
-    //            if (result == null || result.State == FlowableResultState.Error)
-    //            {
-    //                return false;
-    //            }
-
-    //            foreach (Link link in l.LinksOutOf)
-    //            {
-    //                if (this.State == FlowableState.Canceling)
-    //                    return null;
-    //                builder?.Invoke(link);
-    //                IFlowableLink linkData = link.GetContent<IFlowableLink>();
-    //                link.State = FlowableState.Running;
-    //                //this.GetDiagram().OnRunningPartChanged(link);
-    //                IFlowableResult r = await linkData?.TryInvokeAsync(l, link);
-    //                link.State = r?.State == FlowableResultState.OK ? FlowableState.Success : FlowableState.Error;
-    //                if (r?.State == FlowableResultState.Error)
-    //                    return false;
-    //                bool? b = await run?.Invoke(link.ToNode, link);
-    //                if (b != true) return b;
-    //            }
-    //        }
-
-    //        return true;
-    //    };
-
-    //    return await run.Invoke(this, null);
-    //}
-
-    //public async Task<bool?> InvokeNode(Action<Node> builder = null)
-    //{
-    //    Func<Node, Task<bool?>> run = null;
-    //    run = async l =>
-    //    {
-    //        List<Node> tos = l.GetToNodes();
-
-    //        foreach (Node node in tos)
-    //        {
-    //            builder?.Invoke(node);
-    //            if (this.GetDispatcherValue(x => x.State) == FlowableState.Canceling)
-    //                return null;
-    //            if (node.GetContent<IFlowableNodeData>() is IFlowableNodeData action)
-    //            {
-    //                //this.GetDiagram().OnRunningPartChanged(node);
-    //                IFlowableResult result = await action.TryInvokeAsync(l, node);
-    //                if (result.State == FlowableResultState.Error)
-    //                {
-    //                    return false;
-    //                }
-    //                bool? b = await run.Invoke(node);
-    //                if (b != true) return b;
-    //            }
-    //        }
-    //        return true;
-    //    };
-    //    builder?.Invoke(this);
-    //    //this.GetDiagram().OnRunningPartChanged(this);
-    //    await this.GetContent<IFlowableNodeData>().TryInvokeAsync(null, this);
-    //    return await run?.Invoke(this);
-    //}
 
     public override Part GetPrevious()
     {

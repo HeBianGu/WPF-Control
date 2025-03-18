@@ -2,9 +2,8 @@
 
 namespace H.Controls.Diagram.Presenter.PortDatas;
 
-public interface ITextPortData : IPortData, ITextable
+public interface ITextPortData : IPortData, ITextable, IDescriptionable
 {
-    FontFamily FontFamily { get; set; }
     double FontSize { get; set; }
     FontStretch FontStretch { get; set; }
     FontStyle FontStyle { get; set; }
@@ -12,19 +11,13 @@ public interface ITextPortData : IPortData, ITextable
     Brush Foreground { get; set; }
     string Icon { get; set; }
     Brush Stroke { get; set; }
-    Thickness TextMargin { get; set; }
 }
 
 public class TextPortData : PortData, ITextPortData
 {
     public TextPortData()
     {
-        //var display = this.GetType().GetCustomAttribute<DisplayAttribute>();
-        //this.Icon = display?.ShortName;
-        //this.Text = display?.Name;
-        //this.Description = display?.Description;
         this.Data = this.GetGeometry();
-        //this.Text = this.Name;
     }
 
     public override void LoadDefault()
@@ -35,7 +28,7 @@ public class TextPortData : PortData, ITextPortData
         this.FontWeight = FontWeights.Normal;
         this.FontStyle = FontStyles.Normal;
         this.FontStretch = FontStretches.Normal;
-        this.TextMargin = new Thickness(-50, -30, -50, 0);
+        //this.TextMargin = new Thickness(-50, -30, -50, 0);
     }
 
     public TextPortData(string nodeID, PortType portType) : this()
@@ -57,18 +50,6 @@ public class TextPortData : PortData, ITextPortData
         }
     }
 
-    //private string _icon;
-    //[Display(Name = "图标", GroupName = "常用")]
-    //public override string Icon
-    //{
-    //    get { return _icon; }
-    //    set
-    //    {
-    //        _icon = value;
-    //        RaisePropertyChanged();
-    //    }
-    //}
-
     private double _fontSize;
     [Display(Name = "字号", GroupName = "文本")]
     public double FontSize
@@ -77,18 +58,6 @@ public class TextPortData : PortData, ITextPortData
         set
         {
             _fontSize = value;
-            RaisePropertyChanged();
-        }
-    }
-
-    private FontFamily _fontFamily;
-    [Display(Name = "字体", GroupName = "文本")]
-    public FontFamily FontFamily
-    {
-        get { return _fontFamily; }
-        set
-        {
-            _fontFamily = value;
             RaisePropertyChanged();
         }
     }
@@ -125,18 +94,6 @@ public class TextPortData : PortData, ITextPortData
         set
         {
             _fontStretch = value;
-            RaisePropertyChanged();
-        }
-    }
-
-    private Thickness _textMargin;
-    [Display(Name = "文本边距", GroupName = "样式")]
-    public Thickness TextMargin
-    {
-        get { return _textMargin; }
-        set
-        {
-            _textMargin = value;
             RaisePropertyChanged();
         }
     }
@@ -180,18 +137,6 @@ public class TextPortData : PortData, ITextPortData
         }
     }
 
-    //private Stretch _stretch = Stretch.Fill;
-    //[Display(Name = "拉伸", GroupName = "样式")]
-    //public Stretch Stretch
-    //{
-    //    get { return _stretch; }
-    //    set
-    //    {
-    //        _stretch = value;
-    //        RaisePropertyChanged();
-    //    }
-    //}
-
     private double _strokeThickness;
     [DefaultValue(1)]
     [Display(Name = "边框宽度", GroupName = "样式")]
@@ -230,7 +175,6 @@ public class TextPortData : PortData, ITextPortData
         if (to is TextPortData textNodeData)
         {
             textNodeData.Foreground = this.Foreground;
-            textNodeData.FontFamily = this.FontFamily;
             textNodeData.FontSize = this.FontSize;
             textNodeData.FontStretch = this.FontStretch;
             textNodeData.FontStyle = this.FontStyle;
@@ -248,7 +192,7 @@ public static class TextPortDataExtension
     public static void BuildData(this ITextPortData text, int offset = -30)
     {
         text.Icon = text.GetIcon();
-        text.TextMargin = text.Dock.GetTextMargin(offset);
+        //text.TextMargin = text.Dock.GetTextMargin(offset);
     }
 
     public static void BuildTextData(this IPortData port, int offset = -30)

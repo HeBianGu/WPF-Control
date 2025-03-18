@@ -116,6 +116,7 @@ public class TextNodeData : PortableNodeData, ITextNodeData
     }
 
     private Thickness _textMargin = new Thickness(0);
+    [Display(Name = "文本间距", GroupName = "常用")]
     public Thickness TextMargin
     {
         get { return _textMargin; }

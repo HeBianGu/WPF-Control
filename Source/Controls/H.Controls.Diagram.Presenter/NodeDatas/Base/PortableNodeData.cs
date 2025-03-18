@@ -4,7 +4,7 @@ namespace H.Controls.Diagram.Presenter.NodeDatas.Base;
 public abstract class PortableNodeData : NodeData, IPortableNodeData
 {
     public List<IPortData> PortDatas { get; set; } = new List<IPortData>();
-    private List<IPortData> _defaultPortDatas;
+    protected List<IPortData> _defaultPortDatas;
     protected PortableNodeData()
     {
         this.InitPortDatas();

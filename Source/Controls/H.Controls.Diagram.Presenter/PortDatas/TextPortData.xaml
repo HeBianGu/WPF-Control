@@ -15,8 +15,7 @@
                   Stretch="Fill"
                   Stroke="{Binding Stroke}"
                   StrokeThickness="{Binding StrokeThickness}" />
-            <StackPanel Margin="{Binding TextMargin}"
-                        HorizontalAlignment="Center"
+            <StackPanel HorizontalAlignment="Center"
                         Orientation="Horizontal">
                 <TextBlock x:Name="icon"
                            Text="{Binding Icon}" />

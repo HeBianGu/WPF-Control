@@ -5,6 +5,11 @@ namespace H.Services.Common
 {
     public class ShowCommand : MessageCommandBase
     {
+        public ShowCommand()
+        {
+            this.Width = double.NaN;
+            this.Height = double.NaN;
+        }
         public object Presnter { get; set; }
         public override bool CanExecute(object parameter)
         {

@@ -169,7 +169,12 @@ public class FlowablePortData : TextPortData, IFlowablePortData
     }
     public override ILinkData CreateLinkData()
     {
-        return new FlowableLinkData() { FromNodeID = this.NodeID, FromPortID = this.ID };
+        return new FlowableLinkData()
+        {
+            FromNodeID = this.NodeID,
+            FromPortID = this.ID,
+            Text = this.Text ?? this.Name ?? this.Description,
+        };
     }
 
     public override bool CanDrop(Part part, out string message)
@@ -202,14 +207,18 @@ public class FlowablePortData : TextPortData, IFlowablePortData
     {
         if (this.State == FlowableState.Canceling)
             return null;
-        IFlowableResult rFrom;
-        using (new PartDataInvokable(this, diagramData.OnInvokingPart, diagramData.OnInvokedPart))
+
+        IFlowableResult rFrom = this.OK();
+        if (diagramData.FlowableMode == DiagramFlowableMode.Port)
         {
-            rFrom = await this?.TryInvokeAsync(null, diagramData);
-            if (rFrom?.State == FlowableResultState.Error)
-                return false;
+            using (new PartDataInvokable(this, diagramData.OnInvokingPart, diagramData.OnInvokedPart))
+            {
+                rFrom = await this?.TryInvokeAsync(null, diagramData);
+                if (rFrom?.State == FlowableResultState.Error)
+                    return false;
+            }
         }
-        var LinkDatas = this.GetToLinkDatas(diagramData).OfType<IFlowableLinkData>().Where(x => x.IsMatchResult(rFrom));
+        var LinkDatas = this.GetToLinkDatas(diagramData).OfType<IFlowableLinkData>();
         foreach (var linkData in LinkDatas)
         {
             var lr = await linkData.Start(diagramData);

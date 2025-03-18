@@ -6,13 +6,13 @@ namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
 public abstract class ZoomableDiagramDataBase : DiagramDataBase, IZoomableDiagramData
 {
-    [Icon(FontIcons.Zoom)]
-    [Display(Name = "缩放定位", GroupName = "操作", Order = 5)]
-    public virtual DisplayCommand ZoomAllCommand => new DisplayCommand(e =>
-    {
-        if (e is Diagram diagram)
-            diagram.ZoomToFit();
-    });
+    //[Icon(FontIcons.Zoom)]
+    //[Display(Name = "缩放定位", GroupName = "操作", Order = 5)]
+    //public virtual DisplayCommand ZoomAllCommand => new DisplayCommand(e =>
+    //{
+    //    if (e is Diagram diagram)
+    //        diagram.ZoomToFit();
+    //}, x => x is Diagram);
 
     //[Icon(FontIcons.SIPMove)]
     //[Display(Name = "平移定位", GroupName = "操作", Order = 5)]
