@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace H.Presenters.Common;
 public interface IListBoxPresenter : IItemsSourcePresenter
@@ -73,7 +74,15 @@ public class ShowListBoxCommand : ShowSourceCommandBase
                  x.ItemsSource = objects;
              else
                  x.ItemsSource = this.ItemsSource;
-             x.DisplayMemberPath = this.DisplayMemberPath;
+
+             if (this._targetObject is FrameworkElement element)
+             {
+                 var find = TreeViewPresenter.GetItemTemplate(element);
+                 if (find != null)
+                     x.ItemContentTemplate = find;
+                 else
+                     x.DisplayMemberPath = this.DisplayMemberPath;
+             }
          });
     }
 }

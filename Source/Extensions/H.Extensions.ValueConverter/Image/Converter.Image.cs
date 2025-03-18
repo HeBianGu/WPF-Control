@@ -53,13 +53,20 @@ namespace H.Extensions.ValueConverter
             string str = value.ToString();
             if (string.IsNullOrEmpty(str))
                 return null;
-            BitmapImage bitmap = new BitmapImage();
-            bitmap.BeginInit();
-            bitmap.UriSource = new Uri(str);
-            bitmap.DecodePixelWidth = this.DecodePixel;  // 设置图片宽度为 100 像素
-            //bitmap.DecodePixelHeight = this.DecodePixel; // 设置图片高度为 100 像素
-            bitmap.EndInit();
-            return bitmap;
+            try
+            {
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(str, UriKind.RelativeOrAbsolute);
+                bitmap.DecodePixelWidth = this.DecodePixel;  // 设置图片宽度为 100 像素
+                                                             //bitmap.DecodePixelHeight = this.DecodePixel; // 设置图片高度为 100 像素
+                bitmap.EndInit(); return bitmap;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+         
         }
     }
 
@@ -70,7 +77,7 @@ namespace H.Extensions.ValueConverter
         {
             if (value == null)
                 return null;
-            string base64String=value.ToString();
+            string base64String = value.ToString();
             // 将 Base64 字符串转换为字节数组
             byte[] imageBytes = System.Convert.FromBase64String(base64String);
 

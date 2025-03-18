@@ -59,4 +59,40 @@ namespace H.Extensions.Behvaiors
 
         }
     }
+
+
+    public class TextBoxEditOnDoubleClickBebavior : Behavior<TextBox>
+    {
+        protected override void OnAttached()
+        {
+            base.OnAttached();
+            this.AssociatedObject.Focusable = false;
+            this.AssociatedObject.LostFocus += this.AssociatedObject_LostFocus;
+            this.AssociatedObject.MouseDown += this.AssociatedObject_MouseDown;
+            this.AssociatedObject.MouseLeave += this.AssociatedObject_MouseLeave;
+        }
+
+        private void AssociatedObject_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.AssociatedObject.Focusable = false;
+        }
+
+        private void AssociatedObject_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.AssociatedObject.Focusable = true;
+        }
+
+        private void AssociatedObject_LostFocus(object sender, RoutedEventArgs e)
+        {
+            this.AssociatedObject.Focusable = false;
+        }
+
+        protected override void OnDetaching()
+        {
+            base.OnDetaching();
+            this.AssociatedObject.LostFocus -= this.AssociatedObject_LostFocus;
+            this.AssociatedObject.MouseDown -= this.AssociatedObject_MouseDown;
+            this.AssociatedObject.MouseLeave -= this.AssociatedObject_MouseLeave;
+        }
+    }
 }

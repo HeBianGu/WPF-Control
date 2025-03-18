@@ -11,7 +11,7 @@ public interface IItemsSourcePresenter
 {
     IEnumerable ItemsSource { get; set; }
 
-    DataTemplate ItemTemplate { get; set; }
+    DataTemplate ItemContentTemplate { get; set; }
 }
 
 [Icon("\xE890")]

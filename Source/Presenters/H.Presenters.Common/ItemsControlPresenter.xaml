@@ -5,7 +5,7 @@
     <DataTemplate DataType="{x:Type local:ItemsControlPresenter}">
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <ItemsControl HorizontalAlignment="Stretch"
-                          ItemTemplate="{Binding ItemTemplate, Mode=TwoWay}"
+                          ItemTemplate="{Binding ItemContentTemplate}"
                           ItemsSource="{Binding ItemsSource}" />
         </ScrollViewer>
     </DataTemplate>

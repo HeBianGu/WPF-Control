@@ -92,4 +92,19 @@ public class OpenCVImages
             yield return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, v.ToString());
         }
     }
+
+    public static IEnumerable<string> GetResourceImageFiles()
+    {
+        System.Reflection.FieldInfo[] ms = typeof(ImagePath).GetFields();
+        foreach (System.Reflection.FieldInfo item in ms)
+        {
+            object v = item.GetValue(null);
+            yield return GetResourceFilePath(v.ToString());
+        }
+    }
+
+    public static string GetResourceFilePath(string dataPath)
+    {
+         return $"pack://application:,,,/H.Controls.Diagram.Presenters.OpenCV;component/{dataPath}";
+    }
 }

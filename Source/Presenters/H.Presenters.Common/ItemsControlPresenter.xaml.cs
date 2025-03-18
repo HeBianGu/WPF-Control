@@ -20,13 +20,13 @@ public abstract class ItemsSourcePresenterBase : DisplayBindableBase, IItemsSour
         }
     }
 
-    private DataTemplate _itemTemplate;
-    public DataTemplate ItemTemplate
+    private DataTemplate _itemContentTemplate;
+    public DataTemplate ItemContentTemplate
     {
-        get { return _itemTemplate; }
+        get { return _itemContentTemplate; }
         set
         {
-            _itemTemplate = value;
+            _itemContentTemplate = value;
             RaisePropertyChanged();
         }
     }
@@ -47,9 +47,7 @@ public abstract class ItemsSourcePresenterBase : DisplayBindableBase, IItemsSour
     static public void OnItemTemplateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
         DependencyObject control = d as DependencyObject;
-
         DataTemplate n = (DataTemplate)e.NewValue;
-
         DataTemplate o = (DataTemplate)e.OldValue;
     }
 
@@ -89,7 +87,7 @@ public class ShowItemsControlCommand : ShowSourceCommandBase
              {
                  var find = ItemsControlPresenter.GetItemTemplate(element);
                  if (find != null)
-                     x.ItemTemplate = find;
+                     x.ItemContentTemplate = find;
              }
          });
     }

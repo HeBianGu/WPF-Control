@@ -6,7 +6,7 @@
     <DataTemplate DataType="{x:Type local:TreeViewPresenter}">
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <TreeView x:Name="t"
-                      ItemTemplate="{Binding ItemTemplate}"
+                      ItemTemplate="{Binding ItemContentTemplate}"
                       ItemsSource="{Binding ItemsSource}">
                 <b:Interaction.Triggers>
                     <b:EventTrigger EventName="SelectedItemChanged">
@@ -22,7 +22,7 @@
                 </TreeView.ItemContainerStyle>
             </TreeView>
         </ScrollViewer>
-        <DataTemplate.Triggers>
+        <!--<DataTemplate.Triggers>
             <DataTrigger Binding="{Binding ItemTemplate}"
                          Value="{x:Null}">
                 <Setter TargetName="t" Property="ItemTemplate">
@@ -33,6 +33,6 @@
                     </Setter.Value>
                 </Setter>
             </DataTrigger>
-        </DataTemplate.Triggers>
+        </DataTemplate.Triggers>-->
     </DataTemplate>
 </ResourceDictionary>

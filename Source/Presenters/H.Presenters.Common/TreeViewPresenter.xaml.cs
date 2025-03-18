@@ -73,7 +73,7 @@ public class ShowTreeViewCommand : ShowSourceCommandBase
              {
                  var find = TreeViewPresenter.GetItemTemplate(element);
                  if (find != null)
-                     x.ItemTemplate = find;
+                     x.ItemContentTemplate = find;
              }
          });
     }

@@ -5,11 +5,6 @@ namespace H.Services.Common
 
     public abstract class MessageCommandBase : ShowDialogCommandBase, ICommand
     {
-        protected MessageCommandBase()
-        {
-            this.Width = 500;
-            this.Height = 300;
-        }
         public string Message { get; set; }
     }
 }

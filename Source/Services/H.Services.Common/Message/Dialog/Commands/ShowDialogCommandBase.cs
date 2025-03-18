@@ -4,11 +4,11 @@ namespace H.Services.Common
 {
     public abstract class ShowDialogCommandBase : DisplayMarkupCommandBase
     {
-        public double Width { get; set; }
-        public double Height { get; set; }
+        public double Width { get; set; } = double.NaN;
+        public double Height { get; set; } = double.NaN;
         public DialogButton DialogButton { get; set; }
         public ITransitionable Transitionable { get; set; }
-        public HorizontalAlignment HorizontalContentAlignment { get; set; } = HorizontalAlignment.Center;
+        public HorizontalAlignment HorizontalContentAlignment { get; set; } = HorizontalAlignment.Stretch;
 
         protected virtual void Invoke(IDialog w)
         {

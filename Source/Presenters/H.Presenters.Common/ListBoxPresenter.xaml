@@ -5,6 +5,7 @@
     <DataTemplate DataType="{x:Type local:ListBoxPresenter}">
         <ListBox HorizontalAlignment="Stretch"
                  DisplayMemberPath="{Binding DisplayMemberPath}"
+                 ItemTemplate="{Binding ItemContentTemplate}"
                  ItemsSource="{Binding ItemsSource}"
                  SelectedItem="{Binding SelectedItem}" />
     </DataTemplate>
