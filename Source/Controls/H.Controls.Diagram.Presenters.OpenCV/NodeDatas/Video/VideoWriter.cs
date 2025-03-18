@@ -1,6 +1,6 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Video;
 [Display(Name = "视频写入", GroupName = "视频操作", Description = "降噪成黑白色", Order = 0)]
-public class VideoWriter : ImageImportNodeDataBase
+public class VideoWriter : SrcImageNodeDataBase
 {
     public VideoWriter()
     {
@@ -54,8 +54,7 @@ public class VideoWriter : ImageImportNodeDataBase
             RaisePropertyChanged();
         }
     }
-
-    public override IFlowableResult Invoke(IFlowableLinkData previors, IFlowableDiagramData current)
+    protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
         //const string OutVideoFile = "out.avi";
 
@@ -86,37 +85,13 @@ public class VideoWriter : ImageImportNodeDataBase
                 Cv2.CvtColor(frame, gray, ColorConversionCodes.BGR2GRAY);
                 Cv2.Canny(gray, canny, 100, 180);
                 Cv2.Resize(canny, dst, this.FrameSize, 0, 0, InterpolationFlags.Linear);
-                Mat = dst;
+                this.Mat = dst;
                 UpdateMatToView();
                 // Write mat to VideoWriter
                 writer.Write(dst);
             }
             //Console.WriteLine();
         }
-        //{
-        //    // Watch result movie
-        //    using var capture2 = new OpenCvSharp.VideoCapture(OutVideoFile);
-        //    //using (var window = new Window("result"))
-        //    //{
-        //    //int sleepTime = (int)(1000 / capture.Fps);
-
-        //    using var frame = new Mat();
-        //    while (true)
-        //    {
-        //        capture2.Read(frame);
-        //        if (frame.Empty())
-        //            break;
-
-        //        Mat = frame;
-        //        UpdateMatToView();
-        //        Cv2.WaitKey(this.SleepMilliseconds);
-
-        //        //window.ShowImage(frame);
-        //        //Cv2.WaitKey(sleepTime);
-        //    }
-        //    //}
-        //}
-
-        return base.Invoke(previors, current);
+        return this.OK(this.Mat);
     }
 }

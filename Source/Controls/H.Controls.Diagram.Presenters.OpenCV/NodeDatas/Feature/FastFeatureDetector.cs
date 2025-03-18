@@ -10,7 +10,7 @@ public class FastFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _nonmaxSupression = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -23,13 +23,13 @@ public class FastFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _threshold = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
-    //public override IFlowableResult Invoke(Part previors, Node current)
+    //public override IFlowableResult Invoke(Part previors, Node diagram)
     //{
-    //    var imgSrc = GetFromMat(current);
+    //    var imgSrc = GetFromMat(diagram);
     //    //using Mat imgSrc = new Mat(ImagePath.Lenna, ImreadModes.Color);
     //    Mat imgGray = new Mat();
     //    Mat imgDst = imgSrc.Clone();
@@ -40,14 +40,14 @@ public class FastFeatureDetector : FeatureOpenCVNodeDataBase
     //        imgDst.Circle((Point)kp.Pt, 3, Scalar.Red, -1, LineTypes.AntiAlias, 0);
     //    }
     //    UpdateMatToView(imgDst);
-    //    return base.Invoke(previors, current);
+    //    return base.Invoke(previors, diagram);
     //}
 
-    protected override IFlowableResult Invoke()
+    protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
-        Mat imgSrc = this.PreviourMat;
+        Mat imgSrc = from.Mat;
         //using Mat imgSrc = new Mat(ImagePath.Lenna, ImreadModes.Color);
-        Mat imgGray = new Mat();
+        using Mat imgGray = new Mat();
         Mat imgDst = imgSrc.Clone();
         Cv2.CvtColor(imgSrc, imgGray, ColorConversionCodes.BGR2GRAY, 0);
         KeyPoint[] keypoints = Cv2.FAST(imgGray, 50, true);
@@ -55,7 +55,6 @@ public class FastFeatureDetector : FeatureOpenCVNodeDataBase
         {
             imgDst.Circle((Point)kp.Pt, 3, Scalar.Red, -1, LineTypes.AntiAlias, 0);
         }
-        UpdateMatToView(imgDst);
-        return base.Invoke();
+        return this.OK(imgDst);
     }
 }

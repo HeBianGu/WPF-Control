@@ -1,4 +1,7 @@
-﻿using H.Services.Common;
+﻿using H.Controls.Diagram.Presenter.DiagramDatas.Base;
+using H.Services.Common;
+using OpenCvSharp;
+using System.Net.Mail;
 using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
@@ -7,23 +10,16 @@ using System.Windows.Threading;
 using System.Xml.Serialization;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
-public abstract class OpenCVNodeDataBase : ActionNodeDataBase, IOpenCVNodeData, IFilePathable
+public abstract class OpenCVNodeDataBase : OpenCVStyleNodeDataBase, IOpenCVNodeData
 {
     ~OpenCVNodeDataBase()
     {
         this.Mat?.Dispose();
-        this.SrcMat?.Dispose();
-        this.PreviourMat?.Dispose();
     }
     [JsonIgnore]
     [Browsable(false)]
     [XmlIgnore]
     public Mat Mat { get; set; }
-
-    [JsonIgnore]
-    [Browsable(false)]
-    [XmlIgnore]
-    public Mat SrcMat { get; set; }
 
     private bool _useReview = true;
     [JsonIgnore]
@@ -53,20 +49,11 @@ public abstract class OpenCVNodeDataBase : ActionNodeDataBase, IOpenCVNodeData, 
         }
     }
 
-
-    private string _srcFilePath;
-    //[JsonIgnore]
-    [Browsable(false)]
-    //[Display(Name = "源文件地址", GroupName = "数据")]
-    //[PropertyItem(typeof(OpenFileDialogPropertyItem))]
-    public virtual string SrcFilePath
+    protected virtual string GetDataPath(string dataPath)
     {
-        get { return _srcFilePath; }
-        set
-        {
-            _srcFilePath = value;
-            RaisePropertyChanged();
-        }
+        if (string.IsNullOrEmpty(dataPath))
+            return null;
+        return System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, dataPath);
     }
 
     private int _previewMillisecondsDelay = 1500;
@@ -95,60 +82,52 @@ public abstract class OpenCVNodeDataBase : ActionNodeDataBase, IOpenCVNodeData, 
         }
     }
 
-    protected virtual async Task<IFlowableResult> BeforeInvokeAsync(IFlowableLinkData previors, IFlowableDiagramData current)
-    {
-        return await Task.FromResult(this.OK());
-    }
 
-    protected IOpenCVNodeData GetFromData(IFlowableDiagramData current, IFlowableLinkData previors)
-    {
-        if (previors == null)
-            return null;
-        return previors.GetFromNodeData(current) as IOpenCVNodeData;
-        //return this.GetFromNodeDatas(current).OfType<IOpenCVNodeData>().FirstOrDefault();
-    }
 
-    private Mat _preMat;
-    protected Mat PreviourMat => this._preMat;
+    //private Mat _preMat;
+    //protected Mat PreviourMat => this._preMat;
     //private string _srcFilePath;
     //protected string SrcFilePath => this._srcFilePath;
 
-    public override async Task<IFlowableResult> InvokeAsync(IFlowableLinkData previors, IFlowableDiagramData current)
+    //public override async Task<IFlowableResult> InvokeAsync(IFlowableLinkData previors, IFlowableDiagramData diagram)
+    //{
+    //    return await Task.Run((async () =>
+    //    {
+    //        var fromData = this.GetFromNodeData<IOpenCVNodeData>(diagram, previors);
+    //        if (fromData == null)
+    //            return this.Invoke(previors, diagram);
+    //        this.SrcMat = fromData.SrcMat;
+    //        //this._srcFilePath = fromData.SrcFilePath;
+    //        this.SrcFilePath = fromData.SrcFilePath;
+    //        this._preMat = fromData.Mat;
+    //        if (this._preMat == null || this._preMat.Empty())
+    //            return this.Error("传入图像数据为空");
+    //        if (this.UseReview)
+    //        {
+    //            this.Mat = this._preMat;
+    //            this.UpdateMatToView();
+    //            await Task.Delay(this.PreviewMillisecondsDelay);
+    //        }
+
+    //        return this.Invoke(previors, diagram);
+    //    }));
+    //}
+    public override IFlowableResult Invoke(IFlowableLinkData previors, IFlowableDiagramData diagram)
     {
-        return await Task.Run((async () =>
+        var srcData = diagram.GetStartNodeDatas().OfType<ISrcImageNodeData>().FirstOrDefault();
+        var fromData = this.GetFromNodeData<IOpenCVNodeData>(diagram, previors);
+        var result = this.Invoke(srcData, fromData, diagram);
+        this.Mat = result.Value;
+        if (this.UseReview)
         {
-            var fromData = this.GetFromData(current, previors);
-            if (fromData == null)
-                return this.Invoke(previors, current);
-            this.SrcMat = fromData.SrcMat;
-            //this._srcFilePath = fromData.SrcFilePath;
-            this.SrcFilePath = fromData.SrcFilePath;
-            this._preMat = fromData.Mat;
-            if (this._preMat == null || this._preMat.Empty())
-                return this.Error("传入图像数据为空");
-            if (this.UseReview)
-            {
-                this.Mat = this._preMat;
-                this.UpdateMatToView();
-                await Task.Delay(this.PreviewMillisecondsDelay);
-            }
-
-            return this.Invoke(previors, current);
-        }));
+            this.UpdateMatToView();
+            Thread.Sleep(this.PreviewMillisecondsDelay);
+        }
+        return result;
     }
+    protected abstract FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram);
 
-    public override IFlowableResult Invoke(IFlowableLinkData previors, IFlowableDiagramData current)
-    {
-        return this.Invoke();
-        //IFlowableResult r = this.Invoke();
-        //return r.State == FlowableResultState.Error ? r : base.Invoke(previors, current);
-    }
 
-    protected virtual IFlowableResult Invoke()
-    {
-        Thread.Sleep(this.InvokeMillisecondsDelay);
-        return this.OK();
-    }
 
     protected void UpdateMatToView(Mat mat)
     {
@@ -181,38 +160,15 @@ public abstract class OpenCVNodeDataBase : ActionNodeDataBase, IOpenCVNodeData, 
         this.UpdateMatToView(this.Mat);
     }
 
-
-    #region - NotifyPropertyChanged -
-
-    private bool _isRefreshing;
-    public virtual void DispatcherRaisePropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = "")
+    protected virtual FlowableResult<Mat> OK(Mat mat, string message = "运行成功")
     {
-        RaisePropertyChanged(propertyName);
-        if (_isRefreshing)
-            return;
-        _isRefreshing = true;
-        Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Input, new Action(() =>
-        {
-            _isRefreshing = false;
-            OnDispatcherPropertyChanged();
-        }));
+        this.Message = message;
+        return new FlowableResult<Mat>(mat, message) { State = FlowableResultState.OK };
     }
 
-    protected virtual void OnDispatcherPropertyChanged()
+    protected virtual FlowableResult<Mat> Error(Mat mat, string message = "运行错误")
     {
-        if (this._preMat == null)
-            return;
-        try
-        {
-            this.Invoke();
-        }
-        catch (Exception ex)
-        {
-            this.Message = ex.Message;
-            IocLog.Instance?.Error(ex);
-        }
+        this.Message = message;
+        return new FlowableResult<Mat>(mat, message) { State = FlowableResultState.Error };
     }
-
-    #endregion
-
 }

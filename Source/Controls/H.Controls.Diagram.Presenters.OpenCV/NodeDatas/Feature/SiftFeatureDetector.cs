@@ -7,7 +7,6 @@ public class SiftFeatureDetector : FeatureOpenCVNodeDataBase
     public SiftFeatureDetector()
     {
         this.DetectFilePath = this.GetDataPath(ImagePath.Match1);
-        this.SrcFilePath = this.DetectFilePath;
     }
 
     //protected override void OpenFilePath(string name)
@@ -23,7 +22,7 @@ public class SiftFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _detectFilePath = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -35,7 +34,7 @@ public class SiftFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _matcherType = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -47,7 +46,7 @@ public class SiftFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _nFeatures = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -59,7 +58,7 @@ public class SiftFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _nOctaveLayers = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -71,7 +70,7 @@ public class SiftFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _contrastThreshold = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -83,7 +82,7 @@ public class SiftFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _edgeThreshold = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -95,7 +94,7 @@ public class SiftFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _sigma = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
     private NormTypes _normTypes = NormTypes.L2;
@@ -106,7 +105,7 @@ public class SiftFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _normTypes = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -118,14 +117,14 @@ public class SiftFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _crossCheck = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
-    protected override IFlowableResult Invoke()
+    protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
         Mat src1 = new Mat(this.DetectFilePath, ImreadModes.Color);
-        Mat src2 = this.PreviourMat;
+        Mat src2 = from.Mat;
         Mat gray1 = new Mat();
         Mat gray2 = new Mat();
         Cv2.CvtColor(src1, gray1, ColorConversionCodes.BGR2GRAY);
@@ -148,6 +147,7 @@ public class SiftFeatureDetector : FeatureOpenCVNodeDataBase
             Mat bfView = new Mat();
             Cv2.DrawMatches(gray1, keypoints1, gray2, keypoints2, bfMatches, bfView);
             this.Mat = bfView;
+            this.OK(bfView);
         }
         if (this.MatcherType == MatcherType.FlannBasedMatcher)
         {
@@ -157,9 +157,9 @@ public class SiftFeatureDetector : FeatureOpenCVNodeDataBase
             Mat flannView = new Mat();
             Cv2.DrawMatches(gray1, keypoints1, gray2, keypoints2, flannMatches, flannView);
             this.Mat = flannView;
+            this.OK(flannView);
         }
-        UpdateMatToView();
-        return base.Invoke();
+        return this.Error(null);
     }
 }
 

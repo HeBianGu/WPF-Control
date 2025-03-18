@@ -1,4 +1,6 @@
-﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
+﻿
+
+namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
 [Display(Name = "平面细分", GroupName = "基础函数", Description = "将平面区域划分为更小、更简单的子区域（如三角形、四边形等）的技术", Order = 72)]
 public class Subdiv2D : BasicOpenCVNodeDataBase
 {
@@ -16,7 +18,7 @@ public class Subdiv2D : BasicOpenCVNodeDataBase
         set
         {
             _outType = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -33,11 +35,11 @@ public class Subdiv2D : BasicOpenCVNodeDataBase
         set
         {
             _size = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
-    protected override IFlowableResult Invoke()
+    protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
         // Creates random point list
         Random rand = new Random();
@@ -69,10 +71,9 @@ public class Subdiv2D : BasicOpenCVNodeDataBase
                     before = p;
                 }
             }
-            this.Mat = vonoroi;
+            return this.OK(vonoroi);
         }
 
-        if (this.OutType == Subdiv2DOutType.Delaunay)
         {
             Vec4f[] edgeList = subdiv.GetEdgeList();
             Mat delaunay = img.Clone();
@@ -82,13 +83,11 @@ public class Subdiv2D : BasicOpenCVNodeDataBase
                 Point p2 = new Point(edge.Item2, edge.Item3);
                 delaunay.Line(p1, p2, new Scalar(64, 255, 128), 1);
             }
-            this.Mat = delaunay;
+            return this.OK(delaunay);
         }
-        this.UpdateMatToView();
-        return base.Invoke();
     }
 
-    //public override IFlowableResult Invoke(Part previors, Node current)
+    //public override IFlowableResult Invoke(Part previors, Node diagram)
     //{
     //    // Creates random point list
     //    var rand = new Random();
@@ -136,7 +135,7 @@ public class Subdiv2D : BasicOpenCVNodeDataBase
     //        this.Mat = delaunay;
     //    }
     //    this.UpdateMatToView();
-    //    return base.Invoke(previors, current);
+    //    return base.Invoke(previors, diagram);
     //}
 }
 

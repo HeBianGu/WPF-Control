@@ -12,9 +12,9 @@ public class BestMatch : MatchDetectorOpenCVNodeDataBase
     //    return CreateImage(this.SrcFilePath);
     //}
 
-    protected override IFlowableResult Invoke()
+    protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
-        Mat img2 = this.PreviourMat;
+        Mat img2 = from.Mat;
         using Mat img1 = new Mat(GetDataPath(ImagePath.Match1), ImreadModes.Color);
         using ORB orb = ORB.Create(1000);
         using Mat descriptors1 = new Mat();
@@ -54,8 +54,8 @@ public class BestMatch : MatchDetectorOpenCVNodeDataBase
         //    Cv2.WaitKey();
         //}
 
-        UpdateMatToView(view.Clone());
-        return base.Invoke();
+        //UpdateMatToView(view.Clone());
+        return this.OK(view);
     }
 }
 

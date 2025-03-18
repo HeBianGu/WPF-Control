@@ -1,4 +1,6 @@
-﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Detector;
+﻿using H.Controls.Diagram.Presenter.DiagramDatas.Base;
+
+namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Detector;
 [Display(Name = "Blob检测", GroupName = "基础检测", Description = "用于检测图像中具有相似属性（如颜色、纹理或亮度）的连通区域", Order = 20)]
 public class BlobDetector : DetectorOpenCVNodeDataBase
 {
@@ -251,17 +253,15 @@ public class BlobDetector : DetectorOpenCVNodeDataBase
         }
     }
 
-    public override IFlowableResult Invoke(IFlowableLinkData previors, IFlowableDiagramData current)
+    protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
-        Mat src = this.PreviourMat;
+        Mat src = from.Mat;
         SimpleBlobDetector.Params param = CopyTo();
         SimpleBlobDetector circleDetector = SimpleBlobDetector.Create(param);
         KeyPoint[] circleKeyPoints = circleDetector.Detect(src);
         Mat detectedCircles = new Mat();
         Cv2.DrawKeypoints(src, circleKeyPoints, detectedCircles, Scalar.HotPink, DrawMatchesFlags.DrawRichKeypoints);
-        this.Mat = detectedCircles;
-        UpdateMatToView();
-        return base.Invoke(previors, current);
+        return this.OK(detectedCircles);
     }
 
     private void RefreshData()

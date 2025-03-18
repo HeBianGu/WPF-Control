@@ -10,7 +10,7 @@ public class KazeFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _extended = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -22,7 +22,7 @@ public class KazeFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _upright = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -34,7 +34,7 @@ public class KazeFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _threshold = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -46,7 +46,7 @@ public class KazeFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _nOctaves = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -58,7 +58,7 @@ public class KazeFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _nOctaveLayers = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -70,13 +70,13 @@ public class KazeFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _diffusivity = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
-    protected override IFlowableResult Invoke()
+    protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
-        Mat gray = this.PreviourMat;
+        Mat gray = from.Mat;
         KAZE kaze = KAZE.Create(this.Extended, this.Upright, this.Threshold, this.nOctaves, this.nOctaveLayers, this.Diffusivity);
         //var akaze = AKAZE.Create();
 
@@ -98,8 +98,7 @@ public class KazeFeatureDetector : FeatureOpenCVNodeDataBase
         //{
         //    Cv2.WaitKey();
         //}
-        UpdateMatToView(dstKaze);
-        return base.Invoke();
+        return this.OK(dstKaze);
     }
 
     private TimeSpan MeasureTime(Action action)

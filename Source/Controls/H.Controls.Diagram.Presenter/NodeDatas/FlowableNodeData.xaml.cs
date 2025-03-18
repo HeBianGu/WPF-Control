@@ -154,8 +154,16 @@ public class FlowableNodeData : TextNodeData, IFlowableNodeData
             : this.OK("运行成功");
     }
 
+    protected virtual async Task<IFlowableResult> BeforeInvokeAsync(IFlowableLinkData previors, IFlowableDiagramData current)
+    {
+        return await Task.FromResult(this.OK());
+    }
+
     public virtual async Task<IFlowableResult> InvokeAsync(IFlowableLinkData previors, IFlowableDiagramData diagram)
     {
+        var r = await this.BeforeInvokeAsync(previors, diagram);
+        if (r.State != FlowableResultState.OK)
+            return r;
         return await Task.Run(() =>
         {
             return this.Invoke(previors, diagram);
@@ -212,11 +220,12 @@ public class FlowableNodeData : TextNodeData, IFlowableNodeData
 
     }
 
-    //protected T GetFromData<T>(Node current)
-    //{
-    //    Node from = current.GetFromNodes().FirstOrDefault();
-    //    return from == null ? default : from.GetContent<T>();
-    //}
+    protected T GetFromNodeData<T>(IFlowableDiagramData diagramData, IFlowableLinkData from = null) where T : INodeData
+    {
+        if (from == null)
+            return default;
+        return (T)from.GetFromNodeData(diagramData);
+    }
     //protected async Task<IFlowableResult?> OnInvokeCurrentNode(IFlowableDiagramData diagramData, IFlowablePortData from)
     //{
     //    if (this.State == FlowableState.Canceling)
@@ -242,7 +251,7 @@ public class FlowableNodeData : TextNodeData, IFlowableNodeData
         var toLinks = this.GetToLinkDatas(diagramData).OfType<IFlowableLinkData>().Where(x => x.IsMatchResult(nresult));
         foreach (var linkData in toLinks)
         {
-           var lr= await  linkData.Start(diagramData);
+            var lr = await linkData.Start(diagramData);
             if (lr != true)
                 return lr;
         }

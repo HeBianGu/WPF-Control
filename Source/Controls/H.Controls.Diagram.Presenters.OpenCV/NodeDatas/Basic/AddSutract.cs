@@ -25,7 +25,7 @@ public class AddSutract : BasicOpenCVNodeDataBase
         set
         {
             _value = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -42,18 +42,18 @@ public class AddSutract : BasicOpenCVNodeDataBase
     }
 
 
-    protected override IFlowableResult Invoke()
+    protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
+        var mat = new Mat();
         if(this.UseAbs)
         {
             // 绝对值减法
-            Cv2.Absdiff(this.PreviourMat, this.Value, this.Mat);
+            Cv2.Absdiff(from.Mat, this.Value, mat);
         }
         else
         {
-            this.Mat = this.PreviourMat + this.Value;
+            mat = from.Mat + this.Value;
         }
-        this.UpdateMatToView();
-        return base.Invoke();
+        return this.OK(mat);
     }
 }

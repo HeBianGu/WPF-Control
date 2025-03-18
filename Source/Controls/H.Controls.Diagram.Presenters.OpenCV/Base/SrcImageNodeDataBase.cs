@@ -3,26 +3,32 @@ using H.Services.Common;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Xml.Serialization;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
-public abstract class ImageImportNodeDataBase : OpenCVNodeData
+
+public interface ISrcImageNodeData : IOpenCVNodeData
 {
-    protected ImageImportNodeDataBase()
+    string SrcFilePath { get; set; }
+}
+
+public abstract class SrcImageNodeDataBase : OpenCVNodeDataBase, ISrcImageNodeData, IFilePathable
+{
+    protected SrcImageNodeDataBase()
     {
         this.UseStart = true;
     }
 
-    //private string _srcFilePath;
-    //[JsonInclude]
-    [Browsable(true)]
+    private string _srcFilePath;
+    [Browsable(false)]
     [Display(Name = "源文件地址", GroupName = "数据")]
     [PropertyItem(typeof(OpenFileDialogPropertyItem))]
-    public override string SrcFilePath
+    public virtual string SrcFilePath
     {
-        get { return base.SrcFilePath; }
+        get { return _srcFilePath; }
         set
         {
-            base.SrcFilePath = value;
+            _srcFilePath = value;
             RaisePropertyChanged();
         }
     }
@@ -37,7 +43,7 @@ public abstract class ImageImportNodeDataBase : OpenCVNodeData
         }
     }
 
-    protected override async Task<IFlowableResult> BeforeInvokeAsync(IFlowableLinkData previors, IFlowableDiagramData current)
+    protected override async Task<IFlowableResult> BeforeInvokeAsync(IFlowableLinkData previors, IFlowableDiagramData diagram)
     {
         if (File.Exists(this.SrcFilePath) == false)
         {
@@ -48,15 +54,13 @@ public abstract class ImageImportNodeDataBase : OpenCVNodeData
             if (r != true)
                 return this.Error("未设置源文件地址");
         }
-        return await base.BeforeInvokeAsync(previors, current);
+        return await base.BeforeInvokeAsync(previors, diagram);
     }
 
-    public override IFlowableResult Invoke(IFlowableLinkData previors, IFlowableDiagramData current)
+    protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
-        this.Mat = new Mat(this.SrcFilePath, ImreadModes.Color);
-        this.SrcMat = this.Mat;
-        this.UpdateMatToView();
-        return base.Invoke(previors, current);
+        var mat = new Mat(this.SrcFilePath, ImreadModes.Color);
+        return this.OK(mat);
     }
 }
 

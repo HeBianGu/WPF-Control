@@ -10,7 +10,7 @@ public class MserFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _delta = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -22,7 +22,7 @@ public class MserFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _minArea = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -34,7 +34,7 @@ public class MserFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _maxArea = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -46,7 +46,7 @@ public class MserFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _maxVariation = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -58,7 +58,7 @@ public class MserFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _minDiversity = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -70,7 +70,7 @@ public class MserFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _maxEvolution = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -82,7 +82,7 @@ public class MserFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _areaThreshold = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -94,7 +94,7 @@ public class MserFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _minMargin = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -106,14 +106,14 @@ public class MserFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _edgeBlurSize = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
-    protected override IFlowableResult Invoke()
+    protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
-        Mat gray = this.PreviourMat;
-        Mat dst = new Mat(this.SrcFilePath, ImreadModes.Color);
+        Mat gray = from.Mat;
+        Mat dst = new Mat(srcImageNodeData.SrcFilePath, ImreadModes.Color);
         MSER mser = MSER.Create(this.Delta, this.MinArea, this.MaxArea, this.MaxVariation, this.MinDiversity, this.MaxEvolution, this.AreaThreshold, this.MinMargin, this.EdgeBlurSize);
         mser.DetectRegions(gray, out Point[][] contours, out _);
         foreach (Point[] pts in contours)
@@ -124,8 +124,6 @@ public class MserFeatureDetector : FeatureOpenCVNodeDataBase
                 dst.Circle(p, 1, color);
             }
         }
-        this.Mat = dst;
-        UpdateMatToView();
-        return base.Invoke();
+        return this.OK(dst);
     }
 }

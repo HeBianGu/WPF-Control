@@ -11,7 +11,7 @@ public class EdgePreservingFilter : FilterOpenCVNodeDataBase
         set
         {
             _edgePreservingMethods = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -25,7 +25,7 @@ public class EdgePreservingFilter : FilterOpenCVNodeDataBase
         set
         {
             _sigmaS = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -39,17 +39,15 @@ public class EdgePreservingFilter : FilterOpenCVNodeDataBase
         set
         {
             _sigmaR = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
-    protected override IFlowableResult Invoke()
+    protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
-        Mat src = this.PreviourMat;
+        Mat src = from.Mat;
         Mat normconv = new Mat();
         Cv2.EdgePreservingFilter(src, normconv, this.EdgePreservingMethod, this.SigmaS, this.SigmaR);
-        this.Mat = normconv;
-        this.UpdateMatToView();
-        return base.Invoke();
+        return this.OK(normconv);
     }
 }

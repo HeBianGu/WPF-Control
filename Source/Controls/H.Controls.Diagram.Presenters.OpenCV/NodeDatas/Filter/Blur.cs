@@ -15,7 +15,7 @@ public class Blur : FilterOpenCVNodeDataBase
         set
         {
             _ksize = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -28,7 +28,7 @@ public class Blur : FilterOpenCVNodeDataBase
         set
         {
             _anchor = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -41,16 +41,14 @@ public class Blur : FilterOpenCVNodeDataBase
         set
         {
             _borderType = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
-    protected override IFlowableResult Invoke()
+    protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
-        Mat preMat = this.PreviourMat;
+        Mat preMat = from.Mat;
         Cv2.Blur(preMat, preMat, KSize, Anchor, BorderType);
-        Mat = preMat;
-        UpdateMatToView();
-        return base.Invoke();
+        return this.OK(preMat.Clone());
     }
 }

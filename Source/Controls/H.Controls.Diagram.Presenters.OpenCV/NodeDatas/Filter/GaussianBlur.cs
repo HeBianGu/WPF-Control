@@ -18,7 +18,7 @@ public class GaussianBlur : FilterOpenCVNodeDataBase
         set
         {
             _ksize = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -31,7 +31,7 @@ public class GaussianBlur : FilterOpenCVNodeDataBase
         set
         {
             _sigmaX = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -44,7 +44,7 @@ public class GaussianBlur : FilterOpenCVNodeDataBase
         set
         {
             _sigmaY = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -57,16 +57,14 @@ public class GaussianBlur : FilterOpenCVNodeDataBase
         set
         {
             _borderType = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
-    protected override IFlowableResult Invoke()
+    protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
-        Mat preMat = this.PreviourMat;
+        Mat preMat = from.Mat;
         Cv2.GaussianBlur(preMat, preMat, KSize, SigmaX, SigmaY, BorderType);
-        Mat = preMat;
-        UpdateMatToView();
-        return base.Invoke();
+        return this.OK(preMat.Clone());
     }
 }

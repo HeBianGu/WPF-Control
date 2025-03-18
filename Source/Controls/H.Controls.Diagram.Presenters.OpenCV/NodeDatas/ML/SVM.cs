@@ -2,14 +2,14 @@
 
 namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.ML;
 [Display(Name = "支持向量机", GroupName = "机器学习", Description = "降噪成黑白色", Order = 0)]
-public class SVM : OpenCVNodeData
+public class SVM : OpenCVNodeDataBase
 {
     private static double Function(double x)
     {
         return x + 50 * Math.Sin(x / 15.0);
     }
 
-    public override IFlowableResult Invoke(IFlowableLinkData previors, IFlowableDiagramData current)
+    protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
         // Training data          
         Point2f[] points = new Point2f[500];
@@ -83,8 +83,6 @@ public class SVM : OpenCVNodeData
                     retPlot.Rectangle(plotRect, Scalar.GreenYellow);
             }
         }
-        this.Mat = retPlot;
-        UpdateMatToView();
-        return base.Invoke(previors, current);
+        return this.OK(retPlot);
     }
 }

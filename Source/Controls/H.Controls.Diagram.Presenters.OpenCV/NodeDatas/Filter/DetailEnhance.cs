@@ -12,7 +12,7 @@ public class DetailEnhance : FilterOpenCVNodeDataBase
         set
         {
             _sigmaS = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -26,17 +26,15 @@ public class DetailEnhance : FilterOpenCVNodeDataBase
         set
         {
             _sigmaR = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
-    protected override IFlowableResult Invoke()
+    protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
-        Mat src = this.PreviourMat;
+        Mat src = from.Mat;
         Mat detailEnhance = new Mat();
         Cv2.DetailEnhance(src, detailEnhance, this.SigmaS, this.SigmaR);
-        this.Mat = detailEnhance;
-        this.UpdateMatToView();
-        return base.Invoke();
+        return this.OK(detailEnhance);
     }
 }

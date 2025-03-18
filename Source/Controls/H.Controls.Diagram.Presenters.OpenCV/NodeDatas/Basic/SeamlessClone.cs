@@ -1,17 +1,12 @@
-﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
+﻿
+namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
 [Display(Name = "无缝融合", GroupName = "基础函数", Description = "将一幅图像中的指定目标复制后粘贴到另一幅图像中，并自然的融合", Order = 80)]
 public class SeamlessClone : BasicOpenCVNodeDataBase
 {
     public SeamlessClone()
     {
         this.DetectFilePath = this.GetDataPath(ImagePath.Girl);
-        this.SrcFilePath = this.DetectFilePath;
     }
-
-    //protected override void OpenFilePath(string name)
-    //{
-    //    this.DetectFilePath = name;
-    //}
 
     private string _detectFilePath;
     [Display(Name = "检测图片路径", GroupName = "数据")]
@@ -56,11 +51,11 @@ public class SeamlessClone : BasicOpenCVNodeDataBase
         }
     }
 
-    //public override IFlowableResult Invoke(Part previors, Node current)
+    //public override IFlowableResult Invoke(Part previors, Node diagram)
     //{
     //    var path = this.DetectFilePath;
     //    Mat src = new Mat(path, ImreadModes.Color);
-    //    Mat dst = this.GetFromMat(current);
+    //    Mat dst = this.GetFromMat(diagram);
     //    Mat src0 = src.Resize(dst.Size(), 0, 0, InterpolationFlags.Lanczos4);
     //    Mat mask = Mat.Zeros(src0.Size(), MatType.CV_8UC3);
     //    mask.Circle(200, 200, 100, Scalar.White, -1);
@@ -68,21 +63,19 @@ public class SeamlessClone : BasicOpenCVNodeDataBase
     //    Cv2.SeamlessClone(src0, dst, mask, this.Point, blend, this.Method);
     //    this.Mat = blend;
     //    this.UpdateMatToView();
-    //    return base.Invoke(previors, current);
+    //    return base.Invoke(previors, diagram);
     //}
 
-    protected override IFlowableResult Invoke()
+    protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
         string path = this.DetectFilePath;
         using Mat src = new Mat(path, ImreadModes.Color);
-        using Mat dst = this.PreviourMat;
+        using Mat dst = from.Mat;
         using Mat src0 = src.Resize(dst.Size(), 0, 0, InterpolationFlags.Lanczos4);
         using Mat mask = Mat.Zeros(src0.Size(), MatType.CV_8UC3);
         mask.Circle(200, 200, 100, Scalar.White, -1);
         Mat blend = new Mat();
         Cv2.SeamlessClone(src0, dst, mask, this.Point, blend, this.Method);
-        this.Mat = blend;
-        this.UpdateMatToView();
-        return base.Invoke();
+        return this.OK(blend);
     }
 }

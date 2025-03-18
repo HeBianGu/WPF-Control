@@ -8,4 +8,6 @@ public interface IFlowablePortData : IFlowablePartData, IPortData
 {
     Task<IFlowableResult> TryInvokeAsync(IFlowableLinkData linkData, IFlowableDiagramData diagram);
 
+    Task<bool?> Start(IFlowableDiagramData diagramData);
+
 }

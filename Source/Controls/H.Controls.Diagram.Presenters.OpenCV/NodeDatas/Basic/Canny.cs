@@ -11,7 +11,7 @@ public class Canny : BasicOpenCVNodeDataBase
         set
         {
             _threshold1 = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -24,7 +24,7 @@ public class Canny : BasicOpenCVNodeDataBase
         set
         {
             _threshold2 = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -50,17 +50,14 @@ public class Canny : BasicOpenCVNodeDataBase
         set
         {
             _l2gradient = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
-    protected override IFlowableResult Invoke()
+    protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
-        Mat preMat = this.PreviourMat;
-        this.SrcFilePath = this.SrcFilePath;
+        Mat preMat = from.Mat;
         Cv2.Canny(preMat, preMat, 50, 200, 3, false);
-        this.Mat = preMat;
-        this.UpdateMatToView();
-        return base.Invoke();
+        return this.OK(preMat);
     }
 }

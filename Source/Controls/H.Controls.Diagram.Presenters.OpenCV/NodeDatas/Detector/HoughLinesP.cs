@@ -10,7 +10,7 @@ public class HoughLinesP : DetectorOpenCVNodeDataBase
         set
         {
             _rho = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -22,7 +22,7 @@ public class HoughLinesP : DetectorOpenCVNodeDataBase
         set
         {
             _theta = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -34,7 +34,7 @@ public class HoughLinesP : DetectorOpenCVNodeDataBase
         set
         {
             _threshold = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -46,7 +46,7 @@ public class HoughLinesP : DetectorOpenCVNodeDataBase
         set
         {
             _minLineLength = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -58,21 +58,20 @@ public class HoughLinesP : DetectorOpenCVNodeDataBase
         set
         {
             _maxLineGap = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
-    protected override IFlowableResult Invoke()
+    protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
-        Mat imgGray = this.PreviourMat;
-        Mat imgStd = new Mat(this.SrcFilePath, ImreadModes.Color);
+        Mat imgGray = from.Mat;
+        Mat imgStd = new Mat(srcImageNodeData.SrcFilePath, ImreadModes.Color);
         Mat imgProb = imgStd.Clone();
         LineSegmentPoint[] segProb = Cv2.HoughLinesP(imgGray, Rho, Theta, Threshold, MinLineLength, MaxLineGap);
         foreach (LineSegmentPoint s in segProb)
         {
             imgProb.Line(s.P1, s.P2, Scalar.Red, 3, LineTypes.AntiAlias, 0);
         }
-        UpdateMatToView(imgProb);
-        return base.Invoke();
+        return this.OK(imgProb);
     }
 }

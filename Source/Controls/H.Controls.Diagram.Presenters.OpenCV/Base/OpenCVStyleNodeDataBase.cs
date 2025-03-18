@@ -3,7 +3,7 @@ using System.Windows.Controls;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 
-public abstract class ActionNodeDataBase : FlowableNodeData
+public abstract class OpenCVStyleNodeDataBase : FlowableNodeData
 {
     private bool _useLeft;
     [DefaultValue(true)]

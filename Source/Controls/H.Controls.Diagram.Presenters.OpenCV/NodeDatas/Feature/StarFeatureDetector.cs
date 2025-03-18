@@ -12,7 +12,7 @@ public class StarFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _maxSize = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -24,7 +24,7 @@ public class StarFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _responseThreshold = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -36,7 +36,7 @@ public class StarFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _lineThresholdProjected = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -48,7 +48,7 @@ public class StarFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _lineThresholdBinarized = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -60,16 +60,15 @@ public class StarFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _suppressNonmaxSize = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
-    protected override IFlowableResult Invoke()
+    protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
-        string path = this.SrcFilePath;
-        this.SrcFilePath = path;
+        string path = srcImageNodeData.SrcFilePath;
         Mat dst = new Mat(path, ImreadModes.Color);
-        Mat gray = this.PreviourMat;
+        Mat gray = from.Mat;
 
         StarDetector detector = StarDetector.Create(this.MaxSize, this.ResponseThreshold, this.LineThresholdProjected, this.LineThresholdBinarized, this.SuppressNonmaxSize);
         KeyPoint[] keypoints = detector.Detect(gray);
@@ -91,8 +90,6 @@ public class StarFeatureDetector : FeatureOpenCVNodeDataBase
                     color);
             }
         }
-        this.Mat = dst;
-        UpdateMatToView();
-        return base.Invoke();
+        return this.OK(dst);
     }
 }

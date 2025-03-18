@@ -9,7 +9,7 @@
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenters.OpenCV;component/OpenCV.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <DataTemplate DataType="{x:Type b:ActionNodeDataBase}">
+    <DataTemplate DataType="{x:Type b:OpenCVStyleNodeDataBase}">
         <Border Style="{DynamicResource {x:Static h:DiagramKeys.StateBorder}}">
             <Grid>
                 <TextBox Style="{DynamicResource {x:Static h:DiagramKeys.EditTextBox}}" />

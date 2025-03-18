@@ -80,7 +80,7 @@ public class Yolov3 : YolovOpenCVNodeDataBase
         set
         {
             _threshold = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -93,11 +93,11 @@ public class Yolov3 : YolovOpenCVNodeDataBase
         set
         {
             _nmsThreshold = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
-    protected override async Task<IFlowableResult> BeforeInvokeAsync(IFlowableLinkData previors, IFlowableDiagramData current)
+    protected override async Task<IFlowableResult> BeforeInvokeAsync(IFlowableLinkData previors, IFlowableDiagramData diagram)
     {
         if (!File.Exists(this.WeightFilePath) || !File.Exists(this.CfgFilePath) || !File.Exists(this.NameFilePath))
         {
@@ -108,12 +108,11 @@ public class Yolov3 : YolovOpenCVNodeDataBase
             if (r != true)
                 return this.Error("训练模型不存在：https://pjreddie.com/media/files/yolov3.weights 请先下载");
         }
-        return await base.BeforeInvokeAsync(previors, current);
+        return await base.BeforeInvokeAsync(previors, diagram);
     }
 
-    protected override IFlowableResult Invoke()
+    protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
-
         string[] lables = File.ReadAllLines(this.NameFilePath).ToArray();
 
         Net net = CvDnn.ReadNetFromDarknet(this.CfgFilePath, this.WeightFilePath);
@@ -122,7 +121,7 @@ public class Yolov3 : YolovOpenCVNodeDataBase
         net.SetPreferableTarget(0); //dnn target cpu
         //var org = Cv2.ImRead(this.FilePath);
 
-        Mat org = this.PreviourMat;
+        Mat org = from.Mat;
         //生成blob, 块尺寸可以是320/416/608
         Mat blob = CvDnn.BlobFromImage(org, 1.0 / 255, new Size(320, 320), new Scalar(), true, false);
         // 输入数据
@@ -197,9 +196,7 @@ public class Yolov3 : YolovOpenCVNodeDataBase
                 new Size(textSize.Width, textSize.Height + baseline)), Scalar.Red, Cv2.FILLED);
             Cv2.PutText(org, label, new Point(x1, box.Y - box.Height / 2 - baseline), HersheyFonts.HersheyTriplex, 0.5, Scalar.White);
         }
-        this.Mat = org;
-        this.UpdateMatToView();
-        return base.Invoke();
+        return this.OK(org);
     }
 }
 

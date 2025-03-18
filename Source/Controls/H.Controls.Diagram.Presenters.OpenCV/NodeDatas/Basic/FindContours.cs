@@ -11,7 +11,7 @@ public class FindContours : BasicOpenCVNodeDataBase
         set
         {
             _retrievalMode = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -24,7 +24,7 @@ public class FindContours : BasicOpenCVNodeDataBase
         set
         {
             _contourApproximationModes = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -37,7 +37,7 @@ public class FindContours : BasicOpenCVNodeDataBase
         set
         {
             _offset = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -50,7 +50,7 @@ public class FindContours : BasicOpenCVNodeDataBase
         set
         {
             _contourIdx = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -63,7 +63,7 @@ public class FindContours : BasicOpenCVNodeDataBase
         set
         {
             _thickness = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -76,7 +76,7 @@ public class FindContours : BasicOpenCVNodeDataBase
         set
         {
             _lineType = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -89,7 +89,7 @@ public class FindContours : BasicOpenCVNodeDataBase
         set
         {
             _maxLevel = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -102,11 +102,11 @@ public class FindContours : BasicOpenCVNodeDataBase
         set
         {
             _drawOffset = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
-    //public override IFlowableResult Invoke(Part previors, Node current)
+    //public override IFlowableResult Invoke(Part previors, Node diagram)
     //{
     //    Point[][] contours;
     //    HierarchyIndex[] hierarchly;
@@ -115,7 +115,7 @@ public class FindContours : BasicOpenCVNodeDataBase
     //    Cv2.DrawContours(dst, contours, this.ContourIdx, Scalar.Red, this.Thickness, this.LineType, hierarchly, this.MaxLevel, this.DrawOffset);
     //    this.Mat = dst;
     //    this.UpdateMatToView();
-    //    return base.Invoke(previors, current);
+    //    return base.Invoke(previors, diagram);
     //}
 
     private DrawContourType _drawContourType = DrawContourType.DrawContours;
@@ -127,17 +127,17 @@ public class FindContours : BasicOpenCVNodeDataBase
         set
         {
             _drawContourType = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
-    protected override IFlowableResult Invoke()
+    protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
         Point[][] contours;
         HierarchyIndex[] hierarchly;
-        Cv2.FindContours(this.PreviourMat, out contours, out hierarchly, this.RetrievalMode, this.ContourApproximationMode, this.Offset);
+        Cv2.FindContours(from.Mat, out contours, out hierarchly, this.RetrievalMode, this.ContourApproximationMode, this.Offset);
         //var dst = new Mat(this._srcFilePath, ImreadModes.Color);
-        Mat dst = this.SrcMat.Clone();
+        Mat dst = srcImageNodeData.Mat.Clone();
         if (this.DrawContourType == DrawContourType.DrawContours)
             Cv2.DrawContours(dst, contours, this.ContourIdx, Scalar.Orange, this.Thickness, this.LineType, hierarchly, this.MaxLevel, this.DrawOffset);
         if (this.DrawContourType == DrawContourType.ConvexHull)
@@ -169,10 +169,7 @@ public class FindContours : BasicOpenCVNodeDataBase
             IEnumerable<Point[]> points = contours.Select(x => Cv2.ApproxPolyDP(x, 20, true));
             Cv2.DrawContours(dst, points, this.ContourIdx, Scalar.Orange, this.Thickness, this.LineType, hierarchly, this.MaxLevel, this.DrawOffset);
         }
-
-        this.Mat = dst;
-        this.UpdateMatToView();
-        return base.Invoke();
+        return this.OK(dst);
     }
 
 }

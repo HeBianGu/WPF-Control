@@ -10,7 +10,7 @@ public class BriskFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _useRectangle = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -23,7 +23,7 @@ public class BriskFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _threshold = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -36,7 +36,7 @@ public class BriskFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _octaves = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -48,13 +48,13 @@ public class BriskFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _patternScale = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
-    protected override IFlowableResult Invoke()
+    protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
-        string prePath = this.SrcFilePath;
+        string prePath = srcImageNodeData.SrcFilePath;
         Mat gray = new Mat(prePath, ImreadModes.Grayscale);
         Mat dst = new Mat(prePath, ImreadModes.Color);
         using BRISK brisk = BRISK.Create(Threshold, Octaves);
@@ -77,8 +77,6 @@ public class BriskFeatureDetector : FeatureOpenCVNodeDataBase
                     color);
             }
         }
-
-        UpdateMatToView(dst);
-        return base.Invoke();
+        return this.OK(dst);
     }
 }

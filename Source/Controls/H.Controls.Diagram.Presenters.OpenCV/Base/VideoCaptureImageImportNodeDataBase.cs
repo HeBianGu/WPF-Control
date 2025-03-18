@@ -6,7 +6,7 @@ using System.Windows.Threading;
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 
 [Icon(FontIcons.Camera)]
-public abstract class VideoCaptureImageImportNodeDataBase : ImageImportNodeDataBase, IVideoCaptureImageImportNodeData
+public abstract class VideoCaptureImageImportNodeDataBase : SrcImageNodeDataBase, IVideoCaptureImageImportNodeData
 {
     private int _sleepMilliseconds = 30;
     [Display(Name = "间隔时间", GroupName = "数据")]
@@ -20,16 +20,16 @@ public abstract class VideoCaptureImageImportNodeDataBase : ImageImportNodeDataB
         }
     }
 
-    protected virtual async Task<bool?> InvokeFrameMatAsync(IFlowableLinkData previors, IFlowableDiagramData current, Mat frameMat)
+    protected virtual async Task<bool?> InvokeFrameMatAsync(IFlowablePartData previors, IFlowableDiagramData diagram, Mat frameMat)
     {
-        var invokeable = current;
+        var invokeable = diagram;
         Action<IPartData> invoking = x =>
         {
             //OpenCVNodeDataBase data = x.GetContent<OpenCVNodeDataBase>();
             //data.UseInfoLogger = false;
             //data.UseReview = false;
             //data.UseAnimation = false;
-            //current.Dispatcher.Invoke(() =>
+            //diagram.Dispatcher.Invoke(() =>
             //{
             //    invokeable?.OnInvokingPart(x);
             //});
@@ -44,24 +44,24 @@ public abstract class VideoCaptureImageImportNodeDataBase : ImageImportNodeDataB
         };
         invoking.Invoke(this);
         this.Mat = frameMat;
-        this.SrcMat = this.Mat;
+        //this.SrcMat = this.Mat;
         UpdateMatToView();
         invoked.Invoke(this);
-        var tos = this.GetToNodeDatas(current).OfType<IFlowableNodeData>();
+        var tos = this.GetToNodeDatas(diagram).OfType<IFlowableNodeData>();
         var to = tos.FirstOrDefault();
         if (to == null)
             return true;
-        tos.GotoState(current, x => FlowableState.Wait);
-        var r = await to.Start(current);
+        tos.GotoState(diagram, x => FlowableState.Wait);
+        var r = await to.Start(diagram);
         await Task.Delay(1000);
         return r;
     }
 
 
 
-    public async Task<IFlowableResult> InvokeVideoFlowable(IFlowableDiagramData current, Func<Task<IFlowableResult>> action)
+    public async Task<IFlowableResult> InvokeVideoFlowable(IFlowableDiagramData diagram, Func<Task<IFlowableResult>> action)
     {
-        IEnumerable<IVideoFlowable> videos = current.NodeDatas.OfType<IVideoFlowable>();
+        IEnumerable<IVideoFlowable> videos = diagram.NodeDatas.OfType<IVideoFlowable>();
         foreach (IVideoFlowable video in videos)
         {
             video.Begin();
