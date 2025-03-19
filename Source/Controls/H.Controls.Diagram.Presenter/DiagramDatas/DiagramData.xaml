@@ -22,6 +22,7 @@
                    DataSource="{Binding DataSource}"
                    Layout="{Binding Layout}"
                    LinkDrawer="{Binding LinkDrawer}"
+                   Message="{Binding Message, Mode=OneWayToSource}"
                    UseAnimation="False"
                    UseAutoAddLinkOnEnd="True">
             <Control.Resources>

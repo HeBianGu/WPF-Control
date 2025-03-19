@@ -11,6 +11,8 @@ public interface IListBoxPresenter : IItemsSourcePresenter
 {
     string DisplayMemberPath { get; set; }
     object SelectedItem { get; set; }
+
+    bool UseDelete { get; set; }
 }
 [Icon("\xE890")]
 [Display(Name = "选择数据")]
@@ -47,6 +49,24 @@ public class ListBoxPresenter : ItemsSourcePresenterBase, IListBoxPresenter
             RaisePropertyChanged();
         }
     }
+
+    private bool _useDelete;
+    public bool UseDelete
+    {
+        get { return _useDelete; }
+        set
+        {
+            _useDelete = value;
+            RaisePropertyChanged();
+        }
+    }
+
+
+    public RelayCommand DeleteSelectedCommand => new RelayCommand(x =>
+    {
+        if (this.ItemsSource is IList list)
+            list.Remove(this.SelectedItem);
+    }, x => this.SelectedItem != null);
 }
 
 

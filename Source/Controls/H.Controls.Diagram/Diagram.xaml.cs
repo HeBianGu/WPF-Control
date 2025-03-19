@@ -72,6 +72,7 @@ public partial class Diagram : ContentControl, IDiagram
                     if (item is Node || item is Link)
                         item.Delete();
                 }
+                this.InvokeMessage((binding.Command as RoutedUICommand).Text);
             };
             binding.CanExecute += (l, k) =>
             {
@@ -99,7 +100,7 @@ public partial class Diagram : ContentControl, IDiagram
                         item.IsSelected = true;
                     }
                 }
-
+                this.InvokeMessage((binding.Command as RoutedUICommand).Text);
             };
             //binding.CanExecute += (l, k) =>
             //{
@@ -115,6 +116,7 @@ public partial class Diagram : ContentControl, IDiagram
             binding.Executed += (l, k) =>
             {
                 this.ZoomToFit();
+                this.InvokeMessage((binding.Command as RoutedUICommand).Text);
             };
             this.CommandBindings.Add(binding);
 
@@ -127,6 +129,7 @@ public partial class Diagram : ContentControl, IDiagram
             binding.Executed += (l, k) =>
             {
                 this.AligmentNodes();
+                this.InvokeMessage((binding.Command as RoutedUICommand).Text);
             };
             this.CommandBindings.Add(binding);
         }
@@ -147,6 +150,8 @@ public partial class Diagram : ContentControl, IDiagram
                     selected = index == this.Nodes.Count - 1 ? this.Nodes[0] : this.Nodes[index + 1];
                 }
                 selected.IsSelected = true;
+                this.SelectedPart = selected;
+                this.InvokeMessage((binding.Command as RoutedUICommand).Text);
 
             };
             binding.CanExecute += (l, k) =>
@@ -178,6 +183,8 @@ public partial class Diagram : ContentControl, IDiagram
                     selected = index == 0 ? this.Nodes.LastOrDefault() : this.Nodes[index - 1];
                 }
                 selected.IsSelected = true;
+                this.SelectedPart = selected;
+                this.InvokeMessage((binding.Command as RoutedUICommand).Text);
 
             };
             binding.CanExecute += (l, k) =>
@@ -215,6 +222,7 @@ public partial class Diagram : ContentControl, IDiagram
                 {
                     NodeLayer.SetPosition(item, new Point(item.Location.X + 5, item.Location.Y));
                 }
+                this.InvokeMessage((binding.Command as RoutedUICommand).Text);
             };
             binding.CanExecute += (l, k) =>
             {
@@ -234,6 +242,7 @@ public partial class Diagram : ContentControl, IDiagram
                 {
                     NodeLayer.SetPosition(item, new Point(item.Location.X, item.Location.Y - 5));
                 }
+                this.InvokeMessage((binding.Command as RoutedUICommand).Text);
             };
             binding.CanExecute += (l, k) =>
             {
@@ -253,6 +262,7 @@ public partial class Diagram : ContentControl, IDiagram
                 {
                     NodeLayer.SetPosition(item, new Point(item.Location.X, item.Location.Y + 5));
                 }
+                this.InvokeMessage((binding.Command as RoutedUICommand).Text);
             };
             binding.CanExecute += (l, k) =>
             {
@@ -390,8 +400,12 @@ public partial class Diagram : ContentControl, IDiagram
                 return;
             Part config = e.NewValue as Part;
             control.OnSelectedPartChanged();
+            if (config == null)
+                return;
             if (config is Node node)
                 control.SelectedNode = node;
+            else
+                control.InvokeMessage("选中 - " + config?.GetType().Name);
 
         }));
 
@@ -411,7 +425,9 @@ public partial class Diagram : ContentControl, IDiagram
             if (control == null) return;
 
             Node config = e.NewValue as Node;
-
+            if (config == null)
+                return;
+            control.InvokeMessage("选中节点 - " + config.GetContent<ITextable>()?.Text);
         }));
 
 
@@ -638,6 +654,7 @@ public partial class Diagram : ContentControl, IDiagram
             //this.NodesSource.Add(node);
             this.Nodes.Add(node);
             this.NodeLayer.Children.Add(node);
+            this.InvokeMessage("添加节点 - " + node.GetContent<ITextable>()?.Text);
         }
 
         this.Layout.AddNode(nodes);
@@ -660,8 +677,8 @@ public partial class Diagram : ContentControl, IDiagram
             //this.NodesSource.Remove(node);
             this.Nodes.Remove(node);
             this.NodeLayer.Children.Remove(node);
+            this.InvokeMessage("删除节点 - " + node.GetContent<ITextable>()?.Text);
         }
-
         this.Layout.RemoveNode(nodes);
         this.OnItemsChanged();
     }

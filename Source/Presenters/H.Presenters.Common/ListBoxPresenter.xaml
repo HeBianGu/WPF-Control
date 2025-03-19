@@ -1,12 +1,24 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Presenters.Common">
     <DataTemplate DataType="{x:Type local:ListBoxPresenter}">
-        <ListBox HorizontalAlignment="Stretch"
-                 DisplayMemberPath="{Binding DisplayMemberPath}"
-                 ItemTemplate="{Binding ItemContentTemplate}"
-                 ItemsSource="{Binding ItemsSource}"
-                 SelectedItem="{Binding SelectedItem}" />
+        <DockPanel>
+            <Button Margin="0,2"
+                    HorizontalAlignment="Left"
+                    Command="{Binding DeleteSelectedCommand}"
+                    Content="删除选中"
+                    DockPanel.Dock="Top"
+                    Visibility="{Binding UseDelete, Converter={x:Static Converter.GetTrueToVisible}}" />
+            <ListBox x:Name="lb"
+                     HorizontalAlignment="Stretch"
+                     BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                     BorderThickness="1"
+                     DisplayMemberPath="{Binding DisplayMemberPath}"
+                     ItemTemplate="{Binding ItemContentTemplate}"
+                     ItemsSource="{Binding ItemsSource}"
+                     SelectedItem="{Binding SelectedItem}" />
+        </DockPanel>
     </DataTemplate>
 </ResourceDictionary>

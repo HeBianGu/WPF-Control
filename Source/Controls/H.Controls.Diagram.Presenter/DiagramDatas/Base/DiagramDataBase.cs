@@ -182,6 +182,18 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     }
 
 
+    private string _message;
+    public string Message
+    {
+        get { return _message; }
+        set
+        {
+            _message = value;
+            RaisePropertyChanged();
+        }
+    }
+
+
     [Icon(FontIcons.EditMirrored)]
     [Display(Name = "编辑面板", GroupName = "操作", Order = 0, Description = "点击此功能，编辑面板信息")]
     public virtual DisplayCommand EditCommand => new DisplayCommand(async e =>
