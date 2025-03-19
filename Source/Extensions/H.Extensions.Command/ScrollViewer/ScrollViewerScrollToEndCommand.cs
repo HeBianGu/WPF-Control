@@ -10,18 +10,16 @@ namespace H.Extensions.Command
 {
     [Icon("\xE77F")]
     [Display(Name = "滚动右侧", Description = "将当前滚动条滚动到最右侧")]
-    public class ScrollViewerScrollToEndCommand : DisplayMarkupCommandBase
+    public class ScrollViewerScrollToEndCommand : ScrollViewerScrollToCommandBase
     {
-        public override bool CanExecute(object parameter)
+        protected override bool CanInvoke(ScrollViewer scrollViewer)
         {
-            return parameter is ScrollViewer sv && sv.HorizontalOffset < sv.ExtentWidth;
+            return scrollViewer.HorizontalOffset < scrollViewer.ExtentWidth;
         }
-        public override void Execute(object parameter)
+
+        protected override void Invoke(ScrollViewer scrollViewer)
         {
-            if (parameter is ScrollViewer sv)
-            {
-                sv.ScrollToEnd();
-            }
+            scrollViewer.ScrollToEnd();
         }
     }
 }

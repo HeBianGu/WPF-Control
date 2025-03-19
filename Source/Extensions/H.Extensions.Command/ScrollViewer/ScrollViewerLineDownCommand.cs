@@ -7,12 +7,9 @@ namespace H.Extensions.Command
 {
     public class ScrollViewerLineDownCommand : ScrollViewerScrollToBottomCommand
     {
-        public override void Execute(object parameter)
+        protected override void Invoke(ScrollViewer scrollViewer)
         {
-            if (parameter is ScrollViewer sv)
-            {
-                sv.LineDown();
-            }
+            scrollViewer.LineDown();
         }
     }
 }

@@ -10,18 +10,16 @@ namespace H.Extensions.Command
 {
     [Icon("\xE77F")]
     [Display(Name = "滚动顶部", Description = "将当前滚动条滚动到最顶部")]
-    public class ScrollViewerScrollToTopCommand : DisplayMarkupCommandBase
+    public class ScrollViewerScrollToTopCommand : ScrollViewerScrollToCommandBase
     {
-        public override bool CanExecute(object parameter)
+        protected override bool CanInvoke(ScrollViewer scrollViewer)
         {
-            return parameter is ScrollViewer sv && sv.VerticalOffset > 0;
+            return scrollViewer.VerticalOffset > 0;
         }
-        public override void Execute(object parameter)
+
+        protected override void Invoke(ScrollViewer scrollViewer)
         {
-            if (parameter is ScrollViewer sv)
-            {
-                sv.ScrollToTop();
-            }
+            scrollViewer.ScrollToTop();
         }
     }
 }
