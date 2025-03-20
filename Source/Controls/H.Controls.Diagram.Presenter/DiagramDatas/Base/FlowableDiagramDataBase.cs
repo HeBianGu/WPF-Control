@@ -54,7 +54,7 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
 
     public virtual void OnInvokingPart(IPartData part)
     {
-        var diagram = this.GetSource<Diagram>();
+        var diagram = this.GetTargetElement<Diagram>();
         if (this.FlowableZoomMode == DiagramFlowableZoomMode.Rect)
         {
             var n = diagram.Nodes.FirstOrDefault(x => x.GetContent() == part);

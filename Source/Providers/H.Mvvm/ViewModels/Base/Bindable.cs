@@ -46,8 +46,8 @@ namespace H.Mvvm.ViewModels.Base
             RelayMethod("init");
         }
 
-        private object _source;
-        protected T GetSource<T>() => (T)this._source;
+        private object _targetElement;
+        protected T GetTargetElement<T>() where T : UIElement => (T)this._targetElement;
         /// <summary>
         /// 加载事件处理方法。
         /// </summary>
@@ -55,7 +55,7 @@ namespace H.Mvvm.ViewModels.Base
         protected virtual void Loaded(object obj)
         {
             if (obj is RoutedEventArgs args)
-                this._source = args.Source;
+                this._targetElement = args.Source;
         }
 
         /// <summary>
