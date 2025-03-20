@@ -1,9 +1,9 @@
-﻿namespace H.Services.Common
+﻿using H.Mvvm.ViewModels.Base;
+
+namespace H.Services.Common
 {
-    public interface ISettable
+    public interface ISettable : INameable, IOrderable, IGroupable
     {
-        int Order { get; }
-        string Name { get; }
-        string GroupName { get; }
+     
     }
 }

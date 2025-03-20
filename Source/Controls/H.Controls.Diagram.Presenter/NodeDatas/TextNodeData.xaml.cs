@@ -9,7 +9,6 @@ public interface ITextNodeData : ITextable
     FontStyle FontStyle { get; set; }
     FontWeight FontWeight { get; set; }
     Brush Foreground { get; set; }
-    new string Text { get; set; }
     Thickness TextMargin { get; set; }
 }
 

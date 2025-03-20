@@ -20,7 +20,19 @@ public class VideoCapture : VideoCaptureImageImportNodeDataBase
         this.UseAnimation = true;
         this.SrcFilePath = GetDataPath(MoviePath.Bach);
     }
-
+    private string _srcFilePath;
+    [Browsable(true)]
+    [Display(Name = "源文件地址", GroupName = "数据")]
+    [PropertyItem(typeof(OpenFileDialogPropertyItem))]
+    public override string SrcFilePath
+    {
+        get { return _srcFilePath; }
+        set
+        {
+            _srcFilePath = value;
+            RaisePropertyChanged();
+        }
+    }
     private int _startFrame = 0;
     [DefaultValue(0)]
     [Display(Name = "采样帧间隔", GroupName = "数据")]

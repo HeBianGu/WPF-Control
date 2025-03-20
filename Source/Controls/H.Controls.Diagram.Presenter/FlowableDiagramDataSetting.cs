@@ -4,21 +4,9 @@ using H.Extensions.Setting;
 
 namespace H.Controls.Diagram.Presenter;
 
-[Display(Name = "应用参数", GroupName = SettingGroupNames.GroupApp)]
-public class DiagramAppSetting : LazySettableInstance<DiagramAppSetting>
+[Display(Name = "流程设置", GroupName = SettingGroupNames.GroupApp)]
+public class FlowableDiagramDataSetting : LazySettableInstance<FlowableDiagramDataSetting>
 {
-    private bool _showLog;
-    [Display(Name = "显示日志")]
-    public bool ShowLog
-    {
-        get { return _showLog; }
-        set
-        {
-            _showLog = value;
-            RaisePropertyChanged();
-        }
-    }
-
     private bool _useAutoLocator = true;
     [Display(Name = "启用运行时自动定位到运行节点")]
     public bool UseAutoLocator
@@ -51,30 +39,6 @@ public class DiagramAppSetting : LazySettableInstance<DiagramAppSetting>
         set
         {
             _useAutoSelect = value;
-            RaisePropertyChanged();
-        }
-    }
-
-    private bool _useAutoShowLog = true;
-    [Display(Name = "启用运行时自动显示日志")]
-    public bool UseAutoShowLog
-    {
-        get { return _useAutoShowLog; }
-        set
-        {
-            _useAutoShowLog = value;
-            RaisePropertyChanged();
-        }
-    }
-
-    private SelectionMode _propertySelectionMode;
-    [Display(Name = "属性栏显示方式")]
-    public SelectionMode PropertySelectionMode
-    {
-        get { return _propertySelectionMode; }
-        set
-        {
-            _propertySelectionMode = value;
             RaisePropertyChanged();
         }
     }

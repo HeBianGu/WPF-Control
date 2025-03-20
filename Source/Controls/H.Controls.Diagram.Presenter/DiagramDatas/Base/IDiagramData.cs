@@ -84,6 +84,24 @@ public static class DiagramDataExtension
         });
     }
 
+    public static T TryGetStartNodeData<T>(this IDiagramData diagramData, out string message) where T : INodeData
+    {
+        var starts = diagramData.GetStartNodeDatas().OfType<T>();
+        if (starts == null || starts.Count() == 0)
+        {
+            message = "未找到起始节点";
+            return default;
+        }
+
+        if (starts.Count() > 1)
+        {
+            message = "存在多个起始节点";
+            return default;
+        }
+        message = null;
+        return starts.First();
+    }
+
     public static IEnumerable<INodeData> GetEndNodeDatas(this IDiagramData diagramData)
     {
         return diagramData.NodeDatas.Where(x => x.GetToNodeDatas(diagramData) == null);

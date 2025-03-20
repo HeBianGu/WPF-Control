@@ -2,13 +2,13 @@
 
 namespace H.Controls.Diagram.Presenter.Provider;
 
-public class DiagramFlowableDataSource : DiagramDataSource
+public class FlowableDiagramDataSource : DiagramDataSource
 {
-    public DiagramFlowableDataSource(List<Node> nodeSource) : base(nodeSource)
+    public FlowableDiagramDataSource(List<Node> nodeSource) : base(nodeSource)
     {
     }
 
-    public DiagramFlowableDataSource(IEnumerable<INodeData> nodes, IEnumerable<ILinkData> links) : base(nodes, links)
+    public FlowableDiagramDataSource(IEnumerable<INodeData> nodes, IEnumerable<ILinkData> links) : base(nodes, links)
     {
 
     }

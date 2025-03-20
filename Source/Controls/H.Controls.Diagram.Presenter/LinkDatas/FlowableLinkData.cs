@@ -106,8 +106,8 @@ public class FlowableLinkData : TextLinkData, IFlowableLinkData
 
     public IFlowableResult Invoke(IFlowableDiagramData diagram)
     {
-        Thread.Sleep(DiagramAppSetting.Instance.FlowSleepMillisecondsTimeout);
-        return DiagramAppSetting.Instance.UseMock
+        Thread.Sleep(FlowableDiagramDataSetting.Instance.FlowSleepMillisecondsTimeout);
+        return FlowableDiagramDataSetting.Instance.UseMock
             ? this.Random.Next(0, 19) == 1 ? this.Error("模拟仿真一个错误信息") : this.OK("模拟仿真一个成功信息")
             : this.OK("运行成功");
     }

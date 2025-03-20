@@ -9,5 +9,6 @@
     <ProjectReference Include="..\..\Themes\H.Themes.Default\H.Themes.Default.csproj" />
     <ProjectReference Include="..\H.Controls.Adorner\H.Controls.Adorner.csproj" />
     <ProjectReference Include="..\H.Controls.Diagram\H.Controls.Diagram.csproj" />
+    <ProjectReference Include="..\H.Controls.Form.PropertyItem\H.Controls.Form.PropertyItem.csproj" />
   </ItemGroup>
 </Project>

@@ -88,22 +88,6 @@ public class AKazeFeatureDetector : FeatureOpenCVNodeDataBase
         }
     }
 
-    //public override IFlowableResult Invoke(Part previors, Node diagram)
-    //{
-    //    var filePath = GetFromFilePath(diagram);
-    //    var gray = this.GetFromMat(diagram);
-    //    var akaze = AKAZE.Create(this.DescriptorType, this.DescriptorSize, this.DescriptorChannels, this.Threshold, this.nOctaves, this.nOctaveLayers, this.Diffusivity);
-    //    //var kazeDescriptors = new Mat();
-    //    var akazeDescriptors = new Mat();
-    //    KeyPoint[] akazeKeyPoints = null;
-    //    var akazeTime = MeasureTime(() =>
-    //        akaze.DetectAndCompute(gray, null, out akazeKeyPoints, akazeDescriptors));
-    //    var dstAkaze = new Mat();
-    //    Cv2.DrawKeypoints(gray, akazeKeyPoints, dstAkaze);
-    //    UpdateMatToView(dstAkaze);
-    //    return base.Invoke(previors, diagram);
-    //}
-
     protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
         string filePath = srcImageNodeData.SrcFilePath;

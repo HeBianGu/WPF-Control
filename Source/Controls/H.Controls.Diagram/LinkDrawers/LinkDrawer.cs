@@ -86,40 +86,58 @@ public abstract class LinkDrawer : BindableBase, ILinkDrawer
 
     public abstract Geometry DrawPath(Link link, out Point center);
 
-    /// <summary> 绘制箭头 </summary>
-    protected Point[] GetArrowLinePoints(double x1, double y1, double x2, double y2)
+    ///// <summary> 绘制箭头 </summary>
+    //protected Point[] GetArrowLinePoints(double x1, double y1, double x2, double y2)
+    //{
+    //    Point point1 = new Point(x1, y1);     // 箭头起点
+    //    Point point2 = new Point(x2, y2);     // 箭头终点
+    //    if (!this.IsUseArrow) return new Point[] { point1, point2 };
+    //    Point[] arrows = this.GetArrowPoints(x1, y1, x2, y2);
+    //    return new Point[] { point1, point2, arrows[0], arrows[1], arrows[2] };
+    //}
+
+    //protected Point[] GetArrowPoints(double x1, double y1, double x2, double y2)
+    //{
+    //    Point point1 = new Point(x1, y1);     // 箭头起点
+    //    Point point2 = new Point(x2, y2);     // 箭头终点
+
+    //    bool b = x2 == x1;
+    //    double aa = Math.Atan(Math.PI / 2);
+
+    //    double angleOri = x2 == x1 ? Math.Atan(y2 > y1 ? double.NegativeInfinity : double.PositiveInfinity) : Math.Atan((y2 - y1) / (x2 - x1));      // 起始点线段夹角
+    //    double angleDown = angleOri - this.ArrowAngle;   // 箭头扩张角度
+    //    double angleUp = angleOri + this.ArrowAngle;     // 箭头扩张角度
+    //    int directionFlag = x2 > x1 ? -1 : 1;     // 方向标识
+
+    //    double x3 = x2 + directionFlag * this.ArrowLength * Math.Cos(angleDown);   // 箭头第三个点的坐标
+    //    double y3 = y2 + directionFlag * this.ArrowLength * Math.Sin(angleDown);
+
+    //    double x4 = x2 + directionFlag * this.ArrowLength * Math.Cos(angleUp);     // 箭头第四个点的坐标
+    //    double y4 = y2 + directionFlag * this.ArrowLength * Math.Sin(angleUp);
+
+    //    Point point3 = new Point(x3, y3);   // 箭头第三个点
+    //    Point point4 = new Point(x4, y4);   // 箭头第四个点
+
+    //    return new Point[] { point3, point4, point2 };   // 多边形，起点 --> 终点 --> 第三点 --> 第四点 --> 终点
+
+    //}
+
+
+    public Tuple<Point, Point> GetArrowPoints(Point from, Point to, double len = 10, double angle = 20, bool isTail = false)
     {
-        Point point1 = new Point(x1, y1);     // 箭头起点
-        Point point2 = new Point(x2, y2);     // 箭头终点
-        if (!this.IsUseArrow) return new Point[] { point1, point2 };
-        Point[] arrows = this.GetArrowPoints(x1, y1, x2, y2);
-        return new Point[] { point1, point2, arrows[0], arrows[1], arrows[2] };
-    }
-
-    protected Point[] GetArrowPoints(double x1, double y1, double x2, double y2)
-    {
-        Point point1 = new Point(x1, y1);     // 箭头起点
-        Point point2 = new Point(x2, y2);     // 箭头终点
-
-        bool b = x2 == x1;
-        double aa = Math.Atan(Math.PI / 2);
-
-        double angleOri = x2 == x1 ? Math.Atan(y2 > y1 ? double.NegativeInfinity : double.PositiveInfinity) : Math.Atan((y2 - y1) / (x2 - x1));      // 起始点线段夹角
-        double angleDown = angleOri - this.ArrowAngle;   // 箭头扩张角度
-        double angleUp = angleOri + this.ArrowAngle;     // 箭头扩张角度
-        int directionFlag = x2 > x1 ? -1 : 1;     // 方向标识
-
-        double x3 = x2 + directionFlag * this.ArrowLength * Math.Cos(angleDown);   // 箭头第三个点的坐标
-        double y3 = y2 + directionFlag * this.ArrowLength * Math.Sin(angleDown);
-
-        double x4 = x2 + directionFlag * this.ArrowLength * Math.Cos(angleUp);     // 箭头第四个点的坐标
-        double y4 = y2 + directionFlag * this.ArrowLength * Math.Sin(angleUp);
-
-        Point point3 = new Point(x3, y3);   // 箭头第三个点
-        Point point4 = new Point(x4, y4);   // 箭头第四个点
-
-        return new Point[] { point3, point4, point2 };   // 多边形，起点 --> 终点 --> 第三点 --> 第四点 --> 终点
-
+        Vector vector = from - to;
+        vector.Normalize();
+        vector *= len;
+        Point point = isTail ? from : to;
+        Matrix matrix1 = new();
+        matrix1.Translate(vector.X, vector.Y);
+        matrix1.RotateAt(angle, point.X, point.Y);
+        Point a1 = matrix1.Transform(point);
+        Matrix matrix2 = new();
+        matrix2.Translate(vector.X, vector.Y);
+        matrix2.RotateAt(-angle, point.X, point.Y);
+        Point a2 = matrix2.Transform(point);
+        return Tuple.Create(a1, a2);
     }
 
     protected Geometry GetPolyLineGeometry(params Point[] points)
@@ -144,10 +162,11 @@ public abstract class LinkDrawer : BindableBase, ILinkDrawer
 
     protected Geometry GetArrowGeometry(Geometry geo, Point start, Point end)
     {
-        PathGeometry pathGeometry = PathGeometry.CreateFromGeometry(geo);
-        Point[] arrowPoints = this.GetArrowPoints(start.X, start.Y, end.X, end.Y);
-        Geometry arrowGeo = this.GetPolyLineGeometry(true, true, arrowPoints);
-        pathGeometry.AddGeometry(arrowGeo);
+  
+        var tuple = this.GetArrowPoints(start, end);
+        Geometry arrowGeo = this.GetPolyLineGeometry(true, true, end, tuple.Item1, tuple.Item2);
+        PathGeometry pathGeometry = PathGeometry.CreateFromGeometry(arrowGeo);
+        pathGeometry.AddGeometry(geo);
         pathGeometry.Freeze();
         return pathGeometry;
     }

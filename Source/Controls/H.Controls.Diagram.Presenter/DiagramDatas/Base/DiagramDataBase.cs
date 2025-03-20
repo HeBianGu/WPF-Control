@@ -4,6 +4,8 @@ global using H.Controls.Diagram.LinkDrawers;
 global using H.Controls.Diagram.Presenter.NodeDatas.Card;
 global using System.Windows.Input;
 using H.Controls.Diagram.GraphSource;
+using H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem;
+using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
 using H.Extensions.FontIcon;
 using System.Text.Json.Serialization;
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
@@ -62,33 +64,6 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
         }
     }
 
-    //private ObservableCollection<Node> _nodes = new ObservableCollection<Node>();
-    //[JsonIgnore]
-    //[XmlIgnore]
-    //public ObservableCollection<Node> Nodes
-    //{
-    //    get { return _nodes; }
-    //    set
-    //    {
-    //        _nodes = value;
-    //        RaisePropertyChanged();
-    //    }
-    //}
-
-    //private Part _selectedPart;
-    //[JsonIgnore]
-    //[XmlIgnore]
-    //public Part SelectedPart
-    //{
-    //    get { return _selectedPart; }
-    //    set
-    //    {
-    //        _selectedPart = value;
-    //        RaisePropertyChanged();
-    //    }
-    //}
-
-
     private IPartData _selectedPartData;
     [JsonIgnore]
     [XmlIgnore]
@@ -106,6 +81,8 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     private ILinkDrawer _linkDrawer = new BrokenLinkDrawer();
     [System.Text.Json.Serialization.JsonIgnore]
     [XmlIgnore]
+    [Display(Name = "连线样式", GroupName = "基础信息")]
+    [PropertyNameSourcePropertyItem(typeof(ComboBoxPropertyItem), nameof(LinkDrawers))]
     public ILinkDrawer LinkDrawer
     {
         get { return _linkDrawer; }
@@ -147,6 +124,8 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     private ILayout _layout = new LocationLayout();
     [JsonIgnore]
     [XmlIgnore]
+    [PropertyNameSourcePropertyItem(typeof(ComboBoxPropertyItem), nameof(Layouts))]
+    [Display(Name = "布局方式", GroupName = "基础信息")]
     public ILayout Layout
     {
         get { return _layout; }
@@ -387,7 +366,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
         this.DataSource = this.CreateDataSource();
     }
 
-    protected IDiagramDataSource CreateDataSource()
+    protected virtual IDiagramDataSource CreateDataSource()
     {
         return new DiagramDataSource(this.Datas.NodeDatas, this.Datas.LinkDatas);
     }

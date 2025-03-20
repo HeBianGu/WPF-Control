@@ -26,6 +26,8 @@ namespace H.Modules.Messages.Form
             {
                 foreach (var p in TypeDescriptor.GetProperties(value).OfType<PropertyDescriptor>())
                 {
+                    if (p.Attributes.OfType<BrowsableAttribute>().Any(x => x.Browsable == false))
+                        continue;
                     foreach (var d in p.Attributes.OfType<DisplayAttribute>())
                     {
                         if (d.GroupName == null)

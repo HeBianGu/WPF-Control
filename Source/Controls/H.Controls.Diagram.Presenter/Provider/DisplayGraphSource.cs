@@ -4,9 +4,6 @@ global using H.Controls.Diagram.Presenter.NodeDatas;
 using H.Controls.Diagram.GraphSource;
 namespace H.Controls.Diagram.Presenter.Provider;
 
-/// <summary>
-/// 根据 Unit和Wire加载的数据源
-/// </summary>
 public class DisplayGraphSource : GraphSource<TextNodeData, FlowableLinkData>
 {
     public DisplayGraphSource(List<Node> nodeSource) : base(nodeSource)

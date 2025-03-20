@@ -2,6 +2,6 @@
 {
     public interface ITextable
     {
-        public string Text { get; set; }
+         string Text { get; set; }
     }
 }

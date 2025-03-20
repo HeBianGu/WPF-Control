@@ -6,5 +6,4 @@ public interface INodeData : IPartData
 {
     string ID { get; set; }
     Point Location { get; set; }
-    //void ApplayStyleTo(INodeData node);
 }

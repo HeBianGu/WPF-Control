@@ -30,7 +30,7 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
     }
 
     private DiagramFlowableZoomMode _flowableZoomMode;
-    [Display(Name = "执行时节点自动缩放", GroupName = "数据")]
+    [Display(Name = "自动缩放", GroupName = "数据", Description = "执行时节点自动缩放")]
     public DiagramFlowableZoomMode FlowableZoomMode
     {
         get { return _flowableZoomMode; }
@@ -62,7 +62,10 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
         //    //zoombox.ZoomToCenter(part.Bound.BottomRight);
         //}
         //if (this.UseFlowableSelectToRunning)
-        //    part.IsSelected = true;
+        //    this.SelectedPartData = part;
+
+        if (part is ITextable textable)
+            this.Message = "正在运行 - " + textable.Text;
     }
 
     public virtual void OnInvokedPart(IPartData part)
@@ -102,23 +105,22 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
 
     public virtual async Task<bool?> Start()
     {
-        var starts = this.GetStartNodeDatas().OfType<IFlowableNodeData>();
-        if (starts == null || starts.Count() == 0)
-        {
-            this.Message = "未找到起始节点";
-            IocMessage.Notify?.ShowInfo(this.Message);
+        var start = this.GetStartNodeData();
+        if (start == null)
             return false;
-        }
-
-        if (starts.Count() > 1)
-        {
-            this.Message = "存在多个起始节点";
-            IocMessage.Notify?.ShowInfo(this.Message);
-            return false;
-        }
-
-        var start = starts.First();
         return await this.InvokeState(() => start.Start(this));
+    }
+
+    protected virtual IFlowableNodeData GetStartNodeData()
+    {
+        var start = this.TryGetStartNodeData<IFlowableNodeData>(out string message);
+        if (start == null)
+        {
+            this.Message = message;
+            IocMessage.Notify?.ShowInfo(this.Message);
+            return null;
+        }
+        return start;
     }
 
     protected virtual bool CanStart()
@@ -147,19 +149,10 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
         this.GotoState(x => FlowableState.Wait);
     }
 
-    private string _message;
-    [Browsable(false)]
-    [JsonIgnore]
-    [XmlIgnore]
-    public string Message
-    {
-        get { return _message; }
-        set
-        {
-            _message = value;
-            RaisePropertyChanged();
-        }
-    }
-
     public IEnumerable<IFlowableNodeData> FlowableNodeDatas => this.DataSource.GetNodeDatas().OfType<IFlowableNodeData>();
+
+    protected override IDiagramDataSource CreateDataSource()
+    {
+        return new FlowableDiagramDataSource(this.Datas.NodeDatas, this.Datas.LinkDatas);
+    }
 }
