@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Linq;
 using System.Text.Json.Serialization;
+using System.Windows;
 using System.Xml.Serialization;
 
 namespace H.Mvvm.ViewModels.Base
@@ -45,13 +46,16 @@ namespace H.Mvvm.ViewModels.Base
             RelayMethod("init");
         }
 
+        private object _source;
+        protected T GetSource<T>() => (T)this._source;
         /// <summary>
         /// 加载事件处理方法。
         /// </summary>
         /// <param name="obj">事件参数。</param>
         protected virtual void Loaded(object obj)
         {
-
+            if (obj is RoutedEventArgs args)
+                this._source = args.Source;
         }
 
         /// <summary>
@@ -61,14 +65,10 @@ namespace H.Mvvm.ViewModels.Base
         protected virtual void CallMethod(object obj)
         {
             string methodName = obj?.ToString();
-
-            System.Reflection.MethodInfo method = GetType().GetMethod(methodName);
-
+            var method = GetType().GetMethod(methodName);
             if (method == null)
                 throw new ArgumentException("no found method :" + method);
-
             object[] parameters = method.GetParameters().Select(l => l.RawDefaultValue is DBNull ? null : l.RawDefaultValue).ToArray();
-
             method.Invoke(this, parameters);
         }
     }

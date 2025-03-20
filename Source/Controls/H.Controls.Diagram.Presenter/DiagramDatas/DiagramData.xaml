@@ -81,6 +81,10 @@
                     <b:InvokeCommandAction Command="{Binding MouseDoubleClickCommand}"
                                            PassEventArgsToCommand="True" />
                 </b:EventTrigger>
+                <b:EventTrigger EventName="Loaded">
+                    <b:InvokeCommandAction Command="{Binding LoadedCommand}"
+                                           PassEventArgsToCommand="True" />
+                </b:EventTrigger>
             </b:Interaction.Triggers>
             <b:Interaction.Behaviors>
                 <lb:DiagramDropTextNodeBehavior NodeType="{Binding NodeType}" />

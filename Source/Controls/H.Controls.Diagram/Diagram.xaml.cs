@@ -12,6 +12,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace H.Controls.Diagram;
 
@@ -61,7 +62,6 @@ public partial class Diagram : ContentControl, IDiagram
 
         this.SizeChanged += (l, k) =>
             this.RefreshData();
-
         {
             CommandBinding binding = new CommandBinding(DiagramCommands.DeleteSelected);
             binding.Executed += (l, k) =>
@@ -541,6 +541,24 @@ public partial class Diagram : ContentControl, IDiagram
     {
         IZoombox zoombox = this.GetParent<DependencyObject>(x => x is IZoombox) as IZoombox;
         zoombox.ZoomTo(rect);
+    }
+
+    public void ZoomTo(Part part, double scale = 1.8)
+    {
+        var r = part.Bound;
+        var center = r.GetCenter();
+        Matrix matrix = new Matrix();
+        matrix.ScaleAt(1.8, 1.8, center.X, center.Y);
+        r.Transform(matrix);
+        this.ZoomTo(r);
+    }
+
+    public void ZoomToSelectPart()
+    {
+        if (this.SelectedPart == null)
+            return;
+        IZoombox zoombox = this.GetParent<DependencyObject>(x => x is IZoombox) as IZoombox;
+        zoombox.ZoomTo(this.SelectedPart.Bound);
     }
 
     public void ZoomTo(Point point)

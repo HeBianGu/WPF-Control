@@ -54,6 +54,7 @@ namespace H.Mvvm.ViewModels.Base
         /// <param name="obj">加载完成的对象。</param>
         protected override void Loaded(object obj)
         {
+            base.Loaded(obj);
             this.IsLoaded = true;
         }
 

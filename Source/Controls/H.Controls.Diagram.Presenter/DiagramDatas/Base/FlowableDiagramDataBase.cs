@@ -54,15 +54,26 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
 
     public virtual void OnInvokingPart(IPartData part)
     {
-        //if (this.FlowableZoomMode == DiagramFlowableZoomMode.Rect)
-        //    this.ZoomTo(part.Bound);
-        //else if (this.FlowableZoomMode == DiagramFlowableZoomMode.Center)
-        //{
-        //    Point point = part.Bound.GetCenter();
-        //    //zoombox.ZoomToCenter(part.Bound.BottomRight);
-        //}
-        //if (this.UseFlowableSelectToRunning)
-        //    this.SelectedPartData = part;
+        var diagram = this.GetSource<Diagram>();
+        if (this.FlowableZoomMode == DiagramFlowableZoomMode.Rect)
+        {
+            var n = diagram.Nodes.FirstOrDefault(x => x.GetContent() == part);
+            if (n == null)
+                return;
+            diagram.ZoomTo(n);
+        }
+
+        else if (this.FlowableZoomMode == DiagramFlowableZoomMode.Center)
+        {
+            //Point point = diagram.SelectedPart.Bound.GetCenter();
+            //diagram.ZoomToCenter(part.Bound.BottomRight);
+        }
+        if (this.UseFlowableSelectToRunning)
+        {
+            var n = diagram.Nodes.FirstOrDefault(x => x.GetContent() == part);
+            diagram.SelectedPart = n;
+        }
+
 
         if (part is ITextable textable)
             this.Message = "正在运行 - " + textable.Text;
