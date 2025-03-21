@@ -40,7 +40,7 @@ namespace H.Presenters.Common
 
     public static partial class DialogServiceExtension
     {
-        public static async Task<bool?> ShowImageSource(this IDialogMessageService service, Action<IImageFilePathPresenter> option, Action<IImageFilePathPresenter> sumitAction, Action<IDialog> builder = null, Func<bool> canSumit = null)
+        public static async Task<bool?> ShowImageSource(this IDialogMessageService service, Action<IImageFilePathPresenter> option, Action<IImageFilePathPresenter> sumitAction, Action<IDialog> builder = null, Func<IImageFilePathPresenter, bool> canSumit = null)
         {
             return await service.ShowDialog<ImageFilePathPresenter>(option, sumitAction, x =>
             {
@@ -49,7 +49,7 @@ namespace H.Presenters.Common
                 builder?.Invoke(x);
             }, canSumit);
         }
-        public static async Task<bool?> ShowImageSource(this IDialogMessageService service, string filePath, Action<string> sumitAction, Action<IDialog> builder = null, Func<bool> canSumit = null)
+        public static async Task<bool?> ShowImageSource(this IDialogMessageService service, string filePath, Action<string> sumitAction, Action<IDialog> builder = null, Func<IImageFilePathPresenter, bool> canSumit = null)
         {
             return await service.ShowImageSource(x => x.FilePath = filePath, x => sumitAction?.Invoke(x.FilePath), builder, canSumit);
         }

@@ -100,11 +100,11 @@ namespace H.Services.Common
         /// <param name="builder">对话框构建器</param>
         /// <param name="canSumit">确定按钮是否可用的条件</param>
         /// <returns>对话框的结果</returns>
-        public static async Task<bool?> ShowDialog<T>(this IDialogMessageService dialog, Action<T> option, Action<T> sumitAction, Action<IDialog> builder = null, Func<bool> canSumit = null) where T : new()
+        public static async Task<bool?> ShowDialog<T>(this IDialogMessageService dialog, Action<T> option, Action<T> sumitAction, Action<IDialog> builder = null, Func<T, bool> canSumit = null) where T : new()
         {
             var presenter = new T();
             option?.Invoke(presenter);
-            return await dialog.ShowDialog(presenter, x => sumitAction?.Invoke(presenter), builder, canSumit);
+            return await dialog.ShowDialog(presenter, x => sumitAction?.Invoke(presenter), builder, () => canSumit?.Invoke(presenter) != false);
         }
 
         /// <summary>

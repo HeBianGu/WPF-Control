@@ -48,7 +48,7 @@ public class TreeViewPresenter : ItemsSourcePresenterBase, ITreeViewPresenter
 
 public static partial class DialogServiceExtension
 {
-    public static async Task<bool?> ShowTreeView(this IDialogMessageService service, Action<ITreeViewPresenter> option, Action<ITreeViewPresenter> sumitAction = null, Action<IDialog> builder = null, Func<bool> canSumit = null)
+    public static async Task<bool?> ShowTreeView(this IDialogMessageService service, Action<ITreeViewPresenter> option, Action<ITreeViewPresenter> sumitAction = null, Action<IDialog> builder = null, Func<ITreeViewPresenter, bool> canSumit = null)
     {
         return await service.ShowDialog<TreeViewPresenter>(option, sumitAction, x =>
         {
