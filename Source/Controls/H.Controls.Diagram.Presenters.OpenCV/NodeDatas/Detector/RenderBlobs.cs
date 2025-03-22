@@ -10,16 +10,16 @@ public class RenderBlobs : DetectorOpenCVNodeDataBase
         set
         {
             _useRectangle = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
-    protected override IFlowableResult Invoke()
+    protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
-        Mat preMat = this.PreviourMat;
+        Mat preMat = from.Mat;
         ConnectedComponents cc = Cv2.ConnectedComponentsEx(preMat);
         if (cc.LabelCount <= 1)
-            return Error("没有识别出联通区域");
+            return Error(null, "没有识别出联通区域");
         Mat labelview = preMat.EmptyClone();
         cc.RenderBlobs(labelview);
         if (UseRectangle)
@@ -29,8 +29,7 @@ public class RenderBlobs : DetectorOpenCVNodeDataBase
                 labelview.Rectangle(blob.Rect, Scalar.Red);
             }
         }
-        UpdateMatToView(labelview);
-        return base.Invoke();
+        return this.OK(labelview);
     }
 }
 

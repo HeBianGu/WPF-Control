@@ -69,7 +69,7 @@ public class BrokenLinkDrawer : LinkDrawer
 
         //  Do ：绘制箭头
         Vector v = inner2 - inner1;
-        Point[] arrow = link.Content is IFlowable ? this.GetArrowLinePoints(inner2.X, inner2.Y, end.X, end.Y) : new Point[] { inner2, end };
+        //Point[] arrow = link.Content is IFlowable ? this.GetArrowLinePoints(inner2.X, inner2.Y, end.X, end.Y) : new Point[] { inner2, end };
         bool isCross1 = !this.OnSegment(inner1, cross1, start) && !this.OnSegment(inner2, cross1, end);
         bool isCross2 = !this.OnSegment(inner1, cross2, start) && !this.OnSegment(inner2, cross2, end);
         if (isCross1 == true && isCross2 == false)

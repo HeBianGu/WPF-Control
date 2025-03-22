@@ -2,9 +2,9 @@
 [Display(Name = "行人检测", GroupName = "基础检测", Order = 21)]
 public class Hog : DetectorOpenCVNodeDataBase
 {
-    public override IFlowableResult Invoke(Part previors, Node current)
+    protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
-        Mat result = this.PreviourMat;
+        Mat result = from.Mat;
         //using Mat img = Cv2.ImRead(this.SrcFilePath, ImreadModes.Color);
         using HOGDescriptor hog = new HOGDescriptor();
         hog.SetSVMDetector(HOGDescriptor.GetDefaultPeopleDetector());
@@ -13,7 +13,7 @@ public class Hog : DetectorOpenCVNodeDataBase
         // (and more false alarms, respectively), decrease the hitThreshold and
         // groupThreshold (set groupThreshold to 0 to turn off the grouping completely).
         Rect[] found = hog.DetectMultiScale(result, 0, new Size(8, 8), new Size(24, 16), 1.05, 2);
-        var prev = this.GetPrviewMat(result);
+        var prev = this.GetPrviewMat(srcImageNodeData, from, result);
         foreach (Rect rect in found)
         {
             // the HOG detector returns slightly larger rectangles than the real objects.
@@ -27,7 +27,6 @@ public class Hog : DetectorOpenCVNodeDataBase
             };
             prev.Rectangle(r.TopLeft, r.BottomRight, Scalar.Red, 3);
         }
-        UpdateMatToView(prev);
-        return base.Invoke(previors, current);
+        return this.OK(prev);
     }
 }

@@ -24,21 +24,21 @@ public abstract class ReferenceTemplateDiagramDataBase : ThemeDigramDataBase, IR
 
     public async void DeleteReferenceTemplate(FlowableDiagramTemplateNodeData data)
     {
-        IEnumerable<Node> finds = this.Nodes.Where(x =>
-        {
-            return x.Content is FlowableDiagramTemplateNodeData f ? f.FilePath == data.FilePath : false;
-        });
-        if (finds != null && finds.Count() > 0)
-        {
-            bool? r = await IocMessage.Dialog.Show("当前已添加对应节点，删除将删除节点，是否确定删除？");
-            if (r != true) return;
+        //IEnumerable<Node> finds = this.Nodes.Where(x =>
+        //{
+        //    return x.Content is FlowableDiagramTemplateNodeData f ? f.FilePath == data.FilePath : false;
+        //});
+        //if (finds != null && finds.Count() > 0)
+        //{
+        //    bool? r = await IocMessage.Dialog.Show("当前已添加对应节点，删除将删除节点，是否确定删除？");
+        //    if (r != true) return;
 
-            foreach (Node item in finds.ToList())
-            {
-                item.Delete();
-            }
-        }
+        //    foreach (Node item in finds.ToList())
+        //    {
+        //        item.Delete();
+        //    }
+        //}
 
-        this.ReferenceTemplateNodeDatas.Remove(data);
+        //this.ReferenceTemplateNodeDatas.Remove(data);
     }
 }

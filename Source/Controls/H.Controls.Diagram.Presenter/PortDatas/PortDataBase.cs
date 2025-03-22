@@ -51,8 +51,8 @@ public abstract class PortDataBase : DisplayBindableBase, IPortData
     {
         if (e is Port node)
         {
-            if (node.GetDiagram().DataContext is IZoomableDiagramData diagram)
-                diagram.ZoomTo(node);
+            //if (node.GetDiagram().DataContext is IZoomableDiagramData diagram)
+            //    diagram.ZoomTo(node);
         }
     });
 
@@ -62,8 +62,8 @@ public abstract class PortDataBase : DisplayBindableBase, IPortData
     {
         if (e is Port node)
         {
-            if (node.GetDiagram().DataContext is IZoomableDiagramData diagram)
-                diagram.PanTo(node);
+            //if (node.GetDiagram().DataContext is IZoomableDiagramData diagram)
+            //    diagram.PanTo(node);
         }
     });
 

@@ -37,7 +37,7 @@ public abstract class AddNodeCommand : AddNodeCommandBase
         if (diagram == null)
             return;
 
-        IList nodeSource = diagram.NodesSource;
+        IList nodeSource = diagram.Nodes;
         if (nodeSource == null)
             return;
 

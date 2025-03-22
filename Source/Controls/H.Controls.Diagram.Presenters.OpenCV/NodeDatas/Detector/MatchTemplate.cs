@@ -1,4 +1,6 @@
-﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Detector;
+﻿
+
+namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Detector;
 
 [Display(Name = "模板匹配", GroupName = "基础检测", Order = 0)]
 public class MatchTemplate : MatchDetectorOpenCVNodeDataBase
@@ -21,10 +23,10 @@ public class MatchTemplate : MatchDetectorOpenCVNodeDataBase
     }
 
 
-    protected override IFlowableResult Invoke()
+    protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
         // 加载源图像和模板图像
-        var src = this.PreviourMat;
+        var src = from.Mat;
         using (Mat template = Cv2.ImRead(this.TemplateFilePath, ImreadModes.Color))
         {
             using Mat result = new Mat();
@@ -42,18 +44,17 @@ public class MatchTemplate : MatchDetectorOpenCVNodeDataBase
             double threshold = 0.8;
             if (maxVal >= threshold)
             {
-                Mat view = this.GetPrviewMat(result);
+                Mat view = this.GetPrviewMat(srcImageNodeData, from, result);
                 // 在源图像上绘制矩形框
                 Cv2.Rectangle(view, maxLoc, new Point(maxLoc.X + template.Cols, maxLoc.Y + template.Rows), Scalar.Red, 2);
-                this.Mat = view;
-                UpdateMatToView();
+                return this.OK(view);
             }
             else
             {
-                return Error("没有匹配到模板");
+                return Error(null, "没有匹配到模板");
             }
         }
-        return base.Invoke();
+  
     }
 }
 

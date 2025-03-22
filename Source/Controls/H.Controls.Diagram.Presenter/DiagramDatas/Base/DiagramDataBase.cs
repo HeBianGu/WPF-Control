@@ -3,6 +3,9 @@ global using H.Controls.Diagram.Layouts.Base;
 global using H.Controls.Diagram.LinkDrawers;
 global using H.Controls.Diagram.Presenter.NodeDatas.Card;
 global using System.Windows.Input;
+using H.Controls.Diagram.GraphSource;
+using H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem;
+using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
 using H.Extensions.FontIcon;
 using System.Text.Json.Serialization;
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
@@ -18,6 +21,8 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
         //this.DynamicStyle.Stroke = Application.Current.FindResource(BrushKeys.Red) as Brush;
         //this.DynamicCanDropStyle.Stroke = Application.Current.FindResource(BrushKeys.Green) as Brush;
+        this._datas = new Datas();
+        this.DataSource = this.CreateDataSource();
     }
 
     private string _name;
@@ -59,35 +64,25 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
         }
     }
 
-    private ObservableCollection<Node> _nodes = new ObservableCollection<Node>();
+    private IPartData _selectedPartData;
     [JsonIgnore]
     [XmlIgnore]
-    public ObservableCollection<Node> Nodes
+    public IPartData SelectedPartData
     {
-        get { return _nodes; }
+        get { return _selectedPartData; }
         set
         {
-            _nodes = value;
+            _selectedPartData = value;
             RaisePropertyChanged();
         }
     }
 
-    private Part _selectedPart;
-    [JsonIgnore]
-    [XmlIgnore]
-    public Part SelectedPart
-    {
-        get { return _selectedPart; }
-        set
-        {
-            _selectedPart = value;
-            RaisePropertyChanged();
-        }
-    }
 
     private ILinkDrawer _linkDrawer = new BrokenLinkDrawer();
     [System.Text.Json.Serialization.JsonIgnore]
     [XmlIgnore]
+    [Display(Name = "连线样式", GroupName = "基础信息")]
+    [PropertyNameSourcePropertyItem(typeof(ComboBoxPropertyItem), nameof(LinkDrawers))]
     public ILinkDrawer LinkDrawer
     {
         get { return _linkDrawer; }
@@ -129,6 +124,8 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     private ILayout _layout = new LocationLayout();
     [JsonIgnore]
     [XmlIgnore]
+    [PropertyNameSourcePropertyItem(typeof(ComboBoxPropertyItem), nameof(Layouts))]
+    [Display(Name = "布局方式", GroupName = "基础信息")]
     public ILayout Layout
     {
         get { return _layout; }
@@ -162,21 +159,19 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
             RaisePropertyChanged();
         }
     }
-    [Icon(FontIcons.Refresh)]
-    [Display(Name = "默认样式", GroupName = "操作", Order = 6, Description = "点击此功能，恢复所有节点、连线和端口默认样式")]
-    public new DisplayCommand LoadDefaultCommand => new DisplayCommand(e =>
+
+
+    private string _message;
+    public string Message
     {
-        foreach (Node node in this.Nodes)
+        get { return _message; }
+        set
         {
-            IEnumerable<IDefaultable> displayers = node.GetParts().Select(x => x.Content).OfType<IDefaultable>();
-            foreach (IDefaultable item in displayers)
-            {
-                item.LoadDefault();
-            }
-            if (node.Content is IDefaultable displayer)
-                displayer.LoadDefault();
+            _message = value;
+            RaisePropertyChanged();
         }
-    }, x => this.Nodes.Count > 0);
+    }
+
 
     [Icon(FontIcons.EditMirrored)]
     [Display(Name = "编辑面板", GroupName = "操作", Order = 0, Description = "点击此功能，编辑面板信息")]
@@ -192,15 +187,15 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
         await IocMessage.Form.ShowTabEdit(this);
     });
 
-    [Icon(FontIcons.Cancel)]
-    [Display(Name = "删除", GroupName = "操作", Order = 4, Description = "点击此功能，删除选中的节点、连线或端口")]
-    public virtual DisplayCommand DeleteCommand => new DisplayCommand(async e =>
-    {
-        await IocMessage.Dialog.ShowDeleteDialog(x =>
-        {
-            this.SelectedPart.Delete();
-        });
-    }, x => this.SelectedPart != null);
+    //[Icon(FontIcons.Cancel)]
+    //[Display(Name = "删除", GroupName = "操作", Order = 4, Description = "点击此功能，删除选中的节点、连线或端口")]
+    //public virtual DisplayCommand DeleteCommand => new DisplayCommand(async e =>
+    //{
+    //    await IocMessage.Dialog.ShowDeleteDialog(x =>
+    //    {
+    //        part.Delete();
+    //    });
+    //}, x => x is Part);
 
     [Icon(FontIcons.DisconnectDrive)]
     [Display(Name = "删除选中节点", GroupName = "操作", Order = 4, Description = "点击此功能，删除选中的所有节点")]
@@ -208,72 +203,39 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     {
         await IocMessage.Dialog.ShowDeleteDialog(x =>
         {
-            foreach (var item in this.Nodes.Where(x => x.IsSelected).ToList())
+            foreach (var item in this.DataSource.Nodes.Where(x => x.IsSelected).ToList())
             {
                 item.Delete();
             }
         });
-    }, x => this.SelectedPart != null);
+    }, x => this.DataSource.Nodes.Where(x => x.IsSelected).Count() > 0);
 
     [Icon(FontIcons.Delete)]
     [Display(Name = "清空节点", GroupName = "操作", Order = 5, Description = "点击此功能，删除所有节点、连线和端口")]
     public virtual DisplayCommand ClearCommand => new DisplayCommand(async e =>
     {
         await IocMessage.Dialog.ShowDeleteAllDialog(x =>
-             {
-                 this.Clear();
-             });
-    }, x => this.Nodes.Count > 0);
+        {
+            foreach (Node item in this.DataSource.Nodes.ToList())
+            {
+                item.Delete();
+            }
+            this.SelectedPartData = null;
+        });
+    }, x => this.DataSource.Nodes.Count > 0);
 
     [Icon(FontIcons.AlignCenter)]
     [System.Text.Json.Serialization.JsonIgnore]
     [Display(Name = "对齐节点", GroupName = "操作", Order = 5)]
     public virtual DisplayCommand AlignmentCommand => new DisplayCommand(e =>
     {
-        this.Aligment();
-    }, x => this.Nodes.Count > 0);
-
-    [System.Text.Json.Serialization.JsonIgnore]
-
-    [Icon(FontIcons.Previous)]
-    [Display(Name = "上一个节点", GroupName = "操作", Order = 5)]
-    public virtual DisplayCommand ProviewCommand => new DisplayCommand(e =>
-    {
-        this.OnPreivewPart();
-    }, x => this.SelectedPart?.GetPrevious() != null);
-
-    protected virtual void OnPreivewPart()
-    {
-        var find = this.SelectedPart.GetPrevious();
-        this.SelectedPart.IsSelected = false;
-        this.SelectedPart = find;
-        find.IsSelected = true;
-    }
-
-    [System.Text.Json.Serialization.JsonIgnore]
-
-    [Icon(FontIcons.Next)]
-    [Display(Name = "下一个节点", GroupName = "操作", Order = 5)]
-    public virtual DisplayCommand NextCommand => new DisplayCommand(e =>
-    {
-        this.OnNextPart();
-    }, x => this.SelectedPart?.GetNext() != null);
-
-    protected virtual void OnNextPart()
-    {
-        var find = this.SelectedPart.GetNext();
-        this.SelectedPart.IsSelected = false;
-        this.SelectedPart = find;
-        find.IsSelected = true;
-    }
-
-    public virtual void Aligment()
-    {
-        foreach (Node item in this.Nodes)
+        foreach (Node item in this.DataSource.Nodes)
         {
             item.AligmentLayout();
         }
-    }
+    }, x => this.DataSource.Nodes.Count > 0);
+
+
 
     public RelayCommand ItemsChangedCommand => new RelayCommand(e =>
     {
@@ -282,11 +244,13 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
     protected virtual void OnItemsChanged()
     {
-
+        this.InvalidateDatas();
     }
 
     public RelayCommand SelectedPartChangedCommand => new RelayCommand(e =>
     {
+        if (e is RoutedEventArgs args && args.Source is Diagram diagram)
+            this.SelectedPartData = diagram.SelectedPart?.GetContent<IPartData>();
         this.OnSelectedPartChanged();
     });
 
@@ -335,30 +299,47 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
     public void Clear()
     {
-        foreach (Node item in this.Nodes.ToList())
-        {
-            item.Delete();
-        }
-        this.SelectedPart = null;
+        this.Datas.NodeDatas.Clear();
+        this.Datas.LinkDatas.Clear();
     }
 
     #region - Serializing -
 
-    public Datas Datas { get; } = new Datas();
-
-    //List<INodeData> IDiagramSerializable.NodeDatas { get; set; }
-    //List<ILinkData> IDiagramSerializable.LinkDatas { get; set; }
-
-    //protected List<INodeData> NodeDatas = new List<INodeData>();
-    //protected List<ILinkData> LinkDatas = new List<ILinkData>();
-    protected virtual IEnumerable<Node> LoadToNodes(IEnumerable<INodeData> nodeDatas, IEnumerable<ILinkData> linkDatas)
+    private Datas _datas;
+    public Datas Datas
     {
-        return nodeDatas.LoadToNodes(linkDatas);
+        get
+        {
+            if (_datas == null)
+            {
+                _datas = new Datas()
+                {
+                    NodeDatas = this.DataSource.GetNodeDatas().ToList(),
+                    LinkDatas = this.DataSource.GetLinkDatas().ToList()
+                };
+            }
+            return _datas;
+        }
     }
 
-    protected virtual Tuple<IEnumerable<INodeData>, IEnumerable<ILinkData>> SaveToDatas(IEnumerable<Node> nodes)
+    protected void InvalidateDatas()
     {
-        return nodes.SaveToDatas();
+        this._datas = null;
+    }
+
+    IList<INodeData> IDiagramData.NodeDatas => this.Datas.NodeDatas;
+    IList<ILinkData> IDiagramData.LinkDatas => this.Datas.LinkDatas;
+
+    private IDiagramDataSource _dataSource;
+    [JsonIgnore]
+    public IDiagramDataSource DataSource
+    {
+        get { return _dataSource; }
+        set
+        {
+            _dataSource = value;
+            RaisePropertyChanged();
+        }
     }
 
     [OnSerializing]
@@ -369,9 +350,9 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
     protected virtual void OnSerializing()
     {
-        var tuples = this.SaveToDatas(this.Nodes);
-        this.Datas.LinkDatas = tuples.Item2.ToList();
-        this.Datas.NodeDatas = tuples.Item1.ToList();
+        this.InvalidateDatas();
+        //this.Datas.LinkDatas = this.DataSource.GetLinkDatas();
+        //this.Datas.NodeDatas = this.DataSource.GetNodeDatas();
     }
 
     [OnDeserialized]
@@ -382,42 +363,16 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
     protected virtual void OnDeserialized()
     {
-        Application.Current.Dispatcher.Invoke(() =>
-        {
-            this.Nodes = LoadToNodes(this.Datas.NodeDatas, this.Datas.LinkDatas).ToObservable();
-        });
+        this.DataSource = this.CreateDataSource();
+    }
 
+    protected virtual IDiagramDataSource CreateDataSource()
+    {
+        return new DiagramDataSource(this.Datas.NodeDatas, this.Datas.LinkDatas);
     }
     #endregion
 
     #region - 序列化 -
-
-    //public string ToXmlString()
-    //{
-    //    //XmlDocument xmlDoc = XmlableSerializor.Instance.SaveAs(this);
-    //    //return xmlDoc.OuterXml;
-    //    return null;
-    //}
-
-    //public static T CreateFromXml<T>(string xml) where T : class, IDiagramData
-    //{
-    //    T instance = CreateFromXml(xml, typeof(T)) as T;
-    //    return instance;
-    //}
-
-    //public static IDiagramData CreateFromXml(string xml, Type type)
-    //{
-    //    IDiagramData instance = Application.Current.Dispatcher.Invoke(() =>
-    //    {
-    //        return Activator.CreateInstance(type) as IDiagramData;
-    //    });
-
-    //    XmlDocument xmlDoc = new XmlDocument();
-    //    xmlDoc.LoadXml(xml);
-    //    //XmlableSerializor.Instance.Load(xmlDoc, instance);
-    //    return instance;
-    //}
-
     public object Clone()
     {
         //  ToDo：用序列化复制
@@ -432,58 +387,10 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
         //  });
     }
 
-    //public void FromXml(XmlElement xmlEle, XmlDocument cnt, Func<PropertyInfo, object, bool> match = null)
-    //{
-    //    //XmlDiagramData data = new XmlDiagramData();
-    //    //XmlableSerializor.Instance.FromXml(xmlEle, this, cnt);
-
-    //    //Application.Current.Dispatcher.Invoke(() =>
-    //    //{
-    //    //    XmlableSerializor.Instance.FromXml(xmlEle, data, cnt);
-    //    //    var nodeDatas = data.Nodes.ToList();
-    //    //    var linkDatas = data.Links.ToList();
-    //    //    this.Nodes = this.LoadNodes(nodeDatas, linkDatas).ToObservable();
-    //    //});
-
-    //    //foreach (var file in data.ReferenceTemplates)
-    //    //{
-    //    //    if (!File.Exists(file.Value))
-    //    //    {
-    //    //        this.ReferenceTemplateNodeDatas.Add(new FlowableDiagramTemplateNodeData() { FilePath = file.Value });
-    //    //        continue;
-    //    //    }
-    //    //    DiagramTemplate template = XmlableSerializor.Instance.Load<DiagramTemplate>(file.Value);
-    //    //    var nodeData = new FlowableDiagramTemplateNodeData(template);
-    //    //    this.ReferenceTemplateNodeDatas.Add(nodeData);
-    //    //}
-    //}
-
-    //public void ToXml(XmlElement xmlEle, XmlDocument cnt, Func<PropertyInfo, object, bool> match = null)
-    //{
-    //    //XmlableSerializor.Instance.ToXml(xmlEle, this, this.GetType().Name, cnt, null, false);
-    //    //XmlDiagramData data = new XmlDiagramData();
-    //    //var ns = Application.Current.Dispatcher.Invoke(() =>
-    //    //{
-    //    //    return this.Nodes.ToList();
-    //    //});
-
-    //    //DiagramDataSourceConverter converter = new DiagramDataSourceConverter(ns);
-    //    //var datas = this.SaveDatas(ns);
-    //    //var links = datas.Item2;
-    //    //var nodes = datas.Item1;
-
-    //    //foreach (var node in nodes)
-    //    //{
-    //    //    data.Nodes.Add(node);
-    //    //}
-    //    //foreach (var link in links)
-    //    //{
-    //    //    data.Links.Add(link);
-    //    //}
-
-    //    //data.ReferenceTemplates = this.ReferenceTemplateNodeDatas.Select(x => new XmlStringData(x.FilePath)).ToList();
-    //    //XmlableSerializor.Instance.ToXml(xmlEle, data, this.GetType().Name, cnt, null, false);
-    //}
+    object ICloneable.Clone()
+    {
+        throw new NotImplementedException();
+    }
 
     #endregion
 }

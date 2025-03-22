@@ -17,7 +17,7 @@ public abstract class MatchDetectorOpenCVNodeDataBase : DetectorOpenCVNodeDataBa
         }
     }
 
-    protected override async Task<IFlowableResult> BeforeInvokeAsync(Part previors, Node current)
+    protected override async Task<IFlowableResult> BeforeInvokeAsync(IFlowableLinkData previors, IFlowableDiagramData diagram)
     {
         if (File.Exists(this.TemplateFilePath) == false)
         {
@@ -28,7 +28,7 @@ public abstract class MatchDetectorOpenCVNodeDataBase : DetectorOpenCVNodeDataBa
             if (r != true)
                 return this.Error("未设置模板图片地址");
         }
-        return await base.BeforeInvokeAsync(previors, current);
+        return await base.BeforeInvokeAsync(previors, diagram);
     }
 }
 

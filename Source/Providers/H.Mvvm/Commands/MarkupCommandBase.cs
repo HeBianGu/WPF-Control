@@ -4,6 +4,7 @@ using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Markup;
 
@@ -29,11 +30,34 @@ namespace H.Mvvm
             return true;
         }
         public abstract void Execute(object parameter);
+
+
+        protected UIElement GetTargetElement(object parameter)
+        {
+            if (parameter is UIElement element)
+                return element;
+            if (this.Target.TargetObject is UIElement element1)
+                return element1;
+            return null;
+        }
         #endregion
 
         #region - MarkupExtension -
+
+        //IProvideValueTarget：获取目标对象和属性。
+        //IXamlTypeResolver：解析 XAML 类型名称。
+        //IUriContext：获取基 URI。
+        //IRootObjectProvider：获取根对象。
+        //IXamlSchemaContextProvider：获取架构上下文。
+        //IAmbientProvider：获取环境属性。
+        //IXamlNameResolver：解析命名对象。
+        //IXamlNamespaceResolver：解析命名空间。
+        //IXamlLineInfo：获取行号和列号信息。
+        private IServiceProvider _serviceProvider;
+        protected IProvideValueTarget Target => _serviceProvider.GetService(typeof(IProvideValueTarget)) as IProvideValueTarget;
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
+            _serviceProvider = serviceProvider;
             return this;
         }
 

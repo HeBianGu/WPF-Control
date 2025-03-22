@@ -10,7 +10,7 @@ public class HoughLines : DetectorOpenCVNodeDataBase
         set
         {
             _rho = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -22,7 +22,7 @@ public class HoughLines : DetectorOpenCVNodeDataBase
         set
         {
             _theta = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -34,7 +34,7 @@ public class HoughLines : DetectorOpenCVNodeDataBase
         set
         {
             _threshold = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -46,7 +46,7 @@ public class HoughLines : DetectorOpenCVNodeDataBase
         set
         {
             _srn = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -58,14 +58,14 @@ public class HoughLines : DetectorOpenCVNodeDataBase
         set
         {
             _stn = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
-    //public override IFlowableResult Invoke(Part previors, Node current)
+    //public override IFlowableResult Invoke(Part previors, Node diagram)
     //{
-    //    var imgGray = GetFromMat(current);
-    //    var imgStd = new Mat(GetFromFilePath(current), ImreadModes.Color);
+    //    var imgGray = GetFromMat(diagram);
+    //    var imgStd = new Mat(GetFromFilePath(diagram), ImreadModes.Color);
     //    LineSegmentPolar[] segStd = Cv2.HoughLines(imgGray, Rho, Theta, Threshold, Srn, Stn);
     //    int limit = Math.Min(segStd.Length, 10);
     //    for (int i = 0; i < limit; i++)
@@ -82,15 +82,15 @@ public class HoughLines : DetectorOpenCVNodeDataBase
     //    }
 
     //    UpdateMatToView(imgStd);
-    //    return base.Invoke(previors, current);
+    //    return base.Invoke(previors, diagram);
     //}
 
-    protected override IFlowableResult Invoke()
+    protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
-        Mat imgGray = this.PreviourMat;
+        Mat imgGray = from.Mat;
         //Mat imgStd = new Mat(this.SrcFilePath, ImreadModes.Color);
         LineSegmentPolar[] segStd = Cv2.HoughLines(imgGray, Rho, Theta, Threshold, Srn, Stn);
-        Mat imgStd = this.GetPrviewMat(imgGray);
+        Mat imgStd = this.GetPrviewMat(srcImageNodeData, from, imgGray);
         int limit = Math.Min(segStd.Length, 10);
         for (int i = 0; i < limit; i++)
         {
@@ -105,7 +105,6 @@ public class HoughLines : DetectorOpenCVNodeDataBase
             imgStd.Line(pt1, pt2, Scalar.Red, 3, LineTypes.AntiAlias, 0);
         }
 
-        UpdateMatToView(imgStd);
-        return base.Invoke();
+        return this.OK(imgStd);
     }
 }

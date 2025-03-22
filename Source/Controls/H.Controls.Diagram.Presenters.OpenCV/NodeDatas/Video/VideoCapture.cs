@@ -20,7 +20,19 @@ public class VideoCapture : VideoCaptureImageImportNodeDataBase
         this.UseAnimation = true;
         this.SrcFilePath = GetDataPath(MoviePath.Bach);
     }
-
+    private string _srcFilePath;
+    [Browsable(true)]
+    [Display(Name = "源文件地址", GroupName = "数据")]
+    [PropertyItem(typeof(OpenFileDialogPropertyItem))]
+    public override string SrcFilePath
+    {
+        get { return _srcFilePath; }
+        set
+        {
+            _srcFilePath = value;
+            RaisePropertyChanged();
+        }
+    }
     private int _startFrame = 0;
     [DefaultValue(0)]
     [Display(Name = "采样帧间隔", GroupName = "数据")]
@@ -65,7 +77,7 @@ public class VideoCapture : VideoCaptureImageImportNodeDataBase
     //    return "视频文件|*.asf;*.wav;*.mp4;*.mpg;*wmv;mtv";
     //}
 
-    public override async Task<IFlowableResult> InvokeAsync(Part previors, Node current)
+    public override async Task<IFlowableResult> InvokeAsync(IFlowableLinkData previors, IFlowableDiagramData diagram)
     {
         return await Task.Run(async () =>
         {
@@ -78,7 +90,7 @@ public class VideoCapture : VideoCaptureImageImportNodeDataBase
             if (!capture.IsOpened())
                 return this.Error("视频打开失败");
             int sleepTime = (int)Math.Round(this.SleepMilliseconds / capture.Fps);
-            return await this.InvokeVideoFlowable(current, async () =>
+            return await this.InvokeVideoFlowable(diagram, async () =>
               {
                   int index = 0;
                   while (true)
@@ -99,7 +111,7 @@ public class VideoCapture : VideoCaptureImageImportNodeDataBase
                       if (index % this.SpanFrame != 0)
                           continue;
                       this.Message = $"{index}/{capture.FrameCount}[{Math.Round(index * 100.0 / capture.FrameCount, 1) }%]";
-                      var r = await this.InvokeFrameMatAsync(previors, current, frameMat);
+                      var r = await this.InvokeFrameMatAsync(previors, diagram, frameMat);
                       if (r == null)
                           return this.Error("用户取消");
                       else if (r == false)

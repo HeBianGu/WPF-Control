@@ -378,6 +378,8 @@ namespace H.Extensions.ValueConverter
         public static IValueConverter GetDateTimeToAddYears => new ConverterBase<DateTime, int, DateTime>((x, y) => x.AddYears(y));
         public static IValueConverter GetDateTimeParseExact => new ConverterBase<string, DateTime>(x => DateTime.ParseExact(x, "yyyy-MM-dd HH:mm:ss", new CultureInfo("zh-CN")));
         public static IValueConverter GetDateTimeToTicks => new ConverterBase<DateTime, long>(x => x.Ticks);
+
+        public static IValueConverter GetDateTimeNowToString => new ConverterBase<object, string>(x => DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
         #endregion
 
         #region - Uri -

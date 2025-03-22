@@ -5,7 +5,7 @@ using Size = OpenCvSharp.Size;
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 
 [Icon(FontIcons.EmojiTabPeople)]
-public abstract class CascadeClassifierOpenCVNodeDataBase : OpenCVNodeData, ICascadeClassifierOpenCVNodeData
+public abstract class CascadeClassifierOpenCVNodeDataBase : OpenCVNodeDataBase, ICascadeClassifierOpenCVNodeData
 {
     public override void LoadDefault()
     {
@@ -15,7 +15,7 @@ public abstract class CascadeClassifierOpenCVNodeDataBase : OpenCVNodeData, ICas
     }
     private double _scaleFactor = 1.1;
     [DefaultValue(1.1)]
-    [Display(Name = "ScaleFactor", GroupName = "数据")]
+    [Display(Name = "Scale Factor", GroupName = "数据")]
     public double ScaleFactor
     {
         get { return _scaleFactor; }
@@ -28,7 +28,7 @@ public abstract class CascadeClassifierOpenCVNodeDataBase : OpenCVNodeData, ICas
 
     private int _minNeighbors = 3;
     [DefaultValue(3)]
-    [Display(Name = "MinNeighbors", GroupName = "数据")]
+    [Display(Name = "Min Neighbors", GroupName = "数据")]
     public int MinNeighbors
     {
         get { return _minNeighbors; }
@@ -53,7 +53,7 @@ public abstract class CascadeClassifierOpenCVNodeDataBase : OpenCVNodeData, ICas
     }
 
     private System.Windows.Size _minSize = new System.Windows.Size(30, 30);
-    [Display(Name = "MinSize", GroupName = "数据")]
+    [Display(Name = "Min Size", GroupName = "数据")]
     public System.Windows.Size MinSize
     {
         get { return _minSize; }
@@ -66,7 +66,7 @@ public abstract class CascadeClassifierOpenCVNodeDataBase : OpenCVNodeData, ICas
 
     private System.Windows.Size _maxSize = new System.Windows.Size(500, 500);
     [DefaultValue(null)]
-    [Display(Name = "MaxSize", GroupName = "数据")]
+    [Display(Name = "Max Size", GroupName = "数据")]
     public System.Windows.Size MaxSize
     {
         get { return _maxSize; }

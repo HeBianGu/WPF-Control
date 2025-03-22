@@ -2,6 +2,8 @@
 
 
 
+global using H.Controls.Diagram.Parts.Base;
+using H.Controls.Diagram.Flowables;
 using System;
 using System.Windows;
 using System.Windows.Media;
@@ -56,9 +58,6 @@ public partial class Link : FlowablePart, ILink
             from.ConnectLinks.Add(link);
             to.ConnectLinks.Add(link);
         }
-
-
-
         return link;
     }
 
@@ -139,12 +138,8 @@ public partial class Link : FlowablePart, ILink
 
          }));
 
-
-
-    /// <summary> 从那个节点 </summary>
     public Node FromNode { get; set; }
 
-    /// <summary> 到哪个节点 </summary>
     public Node ToNode { get; set; }
 
     public Port FromPort { get; set; }

@@ -54,7 +54,7 @@ public class FlowableDiagramTemplateNodeData : TitleCardNodeData
         //    });
     });
 
-    public override async Task<IFlowableResult> InvokeAsync(Part previors, Node current)
+    public override async Task<IFlowableResult> InvokeAsync(IFlowableLinkData previors, IFlowableDiagramData diagram)
     {
         if (this.Template.Diagram is IFlowableDiagramData flowable)
         {

@@ -2,9 +2,8 @@
 using System.Windows;
 namespace H.Controls.Diagram.Datas;
 
-public interface INodeData : IData
+public interface INodeData : IPartData
 {
     string ID { get; set; }
     Point Location { get; set; }
-    void ApplayStyleTo(INodeData node);
 }

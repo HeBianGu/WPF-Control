@@ -2,9 +2,9 @@
 [Display(Name = "直方图均计算", GroupName = "其他", Order = 0)]
 public class Hist : OtherOpenCVNodeDataBase
 {
-    public override IFlowableResult Invoke(Part previors, Node current)
+    protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
-        using Mat src = Cv2.ImRead(this.SrcFilePath, ImreadModes.Grayscale);
+        using Mat src = Cv2.ImRead(srcImageNodeData.SrcFilePath, ImreadModes.Grayscale);
 
         // Histogram view
         const int Width = 260, Height = 200;
@@ -38,8 +38,6 @@ public class Hist : OtherOpenCVNodeDataBase
                 color,
                 -1);
         }
-
-        this.UpdateMatToView(render);
-        return base.Invoke(previors, current);
+        return this.OK(render);
     }
 }

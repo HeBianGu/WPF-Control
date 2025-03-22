@@ -3,21 +3,8 @@ global using H.Controls.Diagram.Flowables;
 global using H.Extensions.FontIcon;
 using System.Text.Json.Serialization;
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
-
-public interface IPartInvokeable
+public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowableDiagramData
 {
-    public void OnInvokingPart(Part part);
-    public void OnInvokedPart(Part part);
-}
-
-public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowableDiagramData, IPartInvokeable
-{
-    protected override IEnumerable<Node> LoadToNodes(IEnumerable<INodeData> nodeDatas, IEnumerable<ILinkData> linkDatas)
-    {
-        var converter = new DiagramFlowableDataSourceConverter(nodeDatas, linkDatas);
-        return converter.NodeSource;
-    }
-
     private DiagramFlowableState _state = DiagramFlowableState.None;
     [JsonIgnore]
     public DiagramFlowableState State
@@ -43,7 +30,7 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
     }
 
     private DiagramFlowableZoomMode _flowableZoomMode;
-    [Display(Name = "执行时节点自动缩放", GroupName = "数据")]
+    [Display(Name = "自动缩放", GroupName = "数据", Description = "执行时节点自动缩放")]
     public DiagramFlowableZoomMode FlowableZoomMode
     {
         get { return _flowableZoomMode; }
@@ -65,32 +52,46 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
         }
     }
 
-    public virtual void OnInvokingPart(Part part)
+    public virtual void OnInvokingPart(IPartData part)
     {
+        var diagram = this.GetTargetElement<Diagram>();
         if (this.FlowableZoomMode == DiagramFlowableZoomMode.Rect)
-            this.ZoomTo(part.Bound);
+        {
+            var n = diagram.Nodes.FirstOrDefault(x => x.GetContent() == part);
+            if (n == null)
+                return;
+            diagram.ZoomTo(n);
+        }
+
         else if (this.FlowableZoomMode == DiagramFlowableZoomMode.Center)
         {
-            Point point = part.Bound.GetCenter();
-            //zoombox.ZoomToCenter(part.Bound.BottomRight);
+            //Point point = diagram.SelectedPart.Bound.GetCenter();
+            //diagram.ZoomToCenter(part.Bound.BottomRight);
         }
         if (this.UseFlowableSelectToRunning)
-            part.IsSelected = true;
+        {
+            var n = diagram.Nodes.FirstOrDefault(x => x.GetContent() == part);
+            diagram.SelectedPart = n;
+        }
+
+
+        if (part is ITextable textable)
+            this.Message = "正在运行 - " + textable.Text;
     }
 
-    public virtual void OnInvokedPart(Part part)
+    public virtual void OnInvokedPart(IPartData part)
     {
-        if (this.UseFlowableSelectToRunning)
-            part.IsSelected = false;
-        //if (this.FlowableZoomMode == DiagramFlowableZoomMode.Rect)
-        //    this.ZoomTo(part.Bound);
-        //else if (this.FlowableZoomMode == DiagramFlowableZoomMode.Center)
-        //{
-        //    Point point = part.Bound.GetCenter();
-        //    //zoombox.ZoomToCenter(part.Bound.BottomRight);
-        //}
         //if (this.UseFlowableSelectToRunning)
-        //    part.IsSelected = true;
+        //    part.IsSelected = false;
+        ////if (this.FlowableZoomMode == DiagramFlowableZoomMode.Rect)
+        ////    this.ZoomTo(part.Bound);
+        ////else if (this.FlowableZoomMode == DiagramFlowableZoomMode.Center)
+        ////{
+        ////    Point point = part.Bound.GetCenter();
+        ////    //zoombox.ZoomToCenter(part.Bound.BottomRight);
+        ////}
+        ////if (this.UseFlowableSelectToRunning)
+        ////    part.IsSelected = true;
     }
     [Icon(FontIcons.Replay)]
     [Display(Name = "开始", GroupName = "操作", Order = 0)]
@@ -113,110 +114,56 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
         this.Reset();
     }, e => this.State.CanReset());
 
-    //public RelayCommand StartNodeCommand => new RelayCommand(async (s, e) =>
-    //{
-    //    Node start = e as Node;
-    //    if (start == null)
-    //        return;
-    //    s.IsBusy = true;
-    //    //if (DiagramAppSetting.Instance.UseAutoShowLog)
-    //    //    DiagramAppSetting.Instance.ShowLog = true;
-    //    this.State = DiagramFlowableState.Running;
-    //    using (new PartInvokable(start, OnInvokingPart, OnInvokedPart))
-    //    {
-    //        await this.InvokeState(() => InvokeNode(start));
-    //        //bool? b = await InvokeNode(start);
-    //        //this.State = b == null ? DiagramFlowableState.Canceled : b == true ? DiagramFlowableState.Success : DiagramFlowableState.Error;
-    //        //IocMessage.Snack?.ShowInfo(b == null ? "用户取消" : b == true ? "运行成功" : "运行失败");
-    //    }
-    //    //Commander.InvalidateRequerySuggested();
-    //    s.IsBusy = false;
-    //    //await Task.Delay(2000).ContinueWith(x =>
-    //    //{
-    //    //    if (DiagramAppSetting.Instance.UseAutoShowLog)
-    //    //        DiagramAppSetting.Instance.ShowLog = false;
-    //    //});
-    //});
-
-    //protected async Task<bool?> InvokeState(Func<Task<bool?>> action)
-    //{
-    //    this.State = DiagramFlowableState.Running;
-    //    this.Message = "正在运行";
-    //    var b = await action?.Invoke();
-    //    this.State = b == null ? DiagramFlowableState.Canceled : b == true ? DiagramFlowableState.Success : DiagramFlowableState.Error;
-    //    var message = b == null ? "用户取消" : b == true ? "运行成功" : "运行失败";
-    //    IocMessage.Snack?.ShowInfo(message);
-    //    H.Mvvm.Commands.InvalidateRequerySuggested();
-    //    this.Message = message;
-    //    return b;
-    //}
-
-    protected virtual async Task<bool?> InvokeNode(Node startNode)
-    {
-        return await this.InvokeState(() => startNode.InvokeNode(this.FlowableMode, OnInvokingPart, OnInvokedPart));
-        //this.State = DiagramFlowableState.Running;
-        //var b = await startNode.InvokeNode(this.FlowableMode, OnInvokingPart, OnInvokedPart);
-        //this.State = b == null ? DiagramFlowableState.Canceled : b == true ? DiagramFlowableState.Success : DiagramFlowableState.Error;
-        //IocMessage.Snack?.ShowInfo(b == null ? "用户取消" : b == true ? "运行成功" : "运行失败");
-        //return b;
-    }
-
     public virtual async Task<bool?> Start()
     {
-        Node node = this.Nodes.GetStartNode(out string message);
-        if (node == null)
+        var start = this.GetStartNodeData();
+        if (start == null)
+            return false;
+        return await this.InvokeState(() => start.Start(this));
+    }
+
+    protected virtual IFlowableNodeData GetStartNodeData()
+    {
+        var start = this.TryGetStartNodeData<IFlowableNodeData>(out string message);
+        if (start == null)
         {
             this.Message = message;
-            IocMessage.Notify?.ShowInfo(message);
-            return false;
+            IocMessage.Notify?.ShowInfo(this.Message);
+            return null;
         }
-        //this.State = DiagramFlowableState.Running;
-        return await this.InvokeState(() => node.InvokeNode(this.FlowableMode, OnInvokingPart, OnInvokedPart));
-
-        //var b = await node.Start(this.FlowableMode, OnInvokingPart, OnInvokedPart);
-        //this.State = b == null ? DiagramFlowableState.Canceled : b == true ? DiagramFlowableState.Success : DiagramFlowableState.Error;
-        //this.Message = message;
-        //H.Mvvm.Commands.InvalidateRequerySuggested();
-        //if (!string.IsNullOrEmpty(message))
-        //{
-        //    IocMessage.Notify?.ShowInfo(message);
-        //    return false;
-        //}
-        //return true;
+        return start;
     }
 
     protected virtual bool CanStart()
     {
-        return this.State.CanStart() && this.Nodes.Count > 0;
+        return this.State.CanStart() && this.FlowableNodeDatas.Count() > 0;
     }
 
     public virtual void Stop()
     {
         this.State = DiagramFlowableState.Canceling;
-        this.Nodes.Stop();
+        this.GotoState(x =>
+        {
+            if (x.State == FlowableState.Running || x.State == FlowableState.Wait || x.State == FlowableState.Ready)
+                return FlowableState.Canceling;
+            return null;
+        });
     }
 
     public virtual void Reset()
     {
-        this.Nodes.Reset();
+        this.GotoState(x => FlowableState.Ready);
     }
 
     public virtual void Wait()
     {
-        this.Nodes.Wait();
+        this.GotoState(x => FlowableState.Wait);
     }
 
-    private string _message;
-    [Browsable(false)]
-    [System.Text.Json.Serialization.JsonIgnore]
-    [XmlIgnore]
-    public string Message
+    public IEnumerable<IFlowableNodeData> FlowableNodeDatas => this.DataSource.GetNodeDatas().OfType<IFlowableNodeData>();
+
+    protected override IDiagramDataSource CreateDataSource()
     {
-        get { return _message; }
-        set
-        {
-            _message = value;
-            RaisePropertyChanged();
-        }
+        return new FlowableDiagramDataSource(this.Datas.NodeDatas, this.Datas.LinkDatas);
     }
 }

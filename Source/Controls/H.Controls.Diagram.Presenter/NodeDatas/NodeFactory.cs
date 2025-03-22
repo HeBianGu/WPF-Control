@@ -42,23 +42,23 @@ public static class NodeFactory
         return null;
     }
 
-    public static IEnumerable<NodeGroup> GetNodeGroups(this IEnumerable<NodeData> nodeDatas)
+    public static IEnumerable<NodeDataGroup> GetNodeGroups(this IEnumerable<NodeData> nodeDatas)
     {
         IEnumerable<IGrouping<string, NodeData>> groups = nodeDatas.GroupBy(l => l.GroupName);
         foreach (IGrouping<string, NodeData> group in groups)
         {
-            NodeGroup nodeGroup = new NodeGroup();
+            NodeDataGroup nodeGroup = new NodeDataGroup();
             nodeGroup.Name = group.Key;
             nodeGroup.NodeDatas.AddRange(group);
             yield return nodeGroup;
         }
     }
 
-    public static IEnumerable<NodeGroup> GetNodeGroups(params Type[] type)
+    public static IEnumerable<NodeDataGroup> GetNodeGroups(params Type[] type)
     {
-        IEnumerable<NodeGroup> groups1 = LoadGeometryNodeDatas(type).OfType<TextNodeData>().GetNodeGroups();
+        IEnumerable<NodeDataGroup> groups1 = LoadGeometryNodeDatas(type).OfType<TextNodeData>().GetNodeGroups();
 
-        IEnumerable<NodeGroup> groups2 = LoadIconNodeDatas(type).OfType<TextNodeData>().Take(10).GetNodeGroups();
+        IEnumerable<NodeDataGroup> groups2 = LoadIconNodeDatas(type).OfType<TextNodeData>().Take(10).GetNodeGroups();
 
         return groups1.Union(groups2);
     }

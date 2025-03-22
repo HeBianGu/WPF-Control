@@ -4,12 +4,15 @@ using System;
 using System.Collections;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace H.Presenters.Common;
 public interface IListBoxPresenter : IItemsSourcePresenter
 {
     string DisplayMemberPath { get; set; }
     object SelectedItem { get; set; }
+
+    bool UseDelete { get; set; }
 }
 [Icon("\xE890")]
 [Display(Name = "选择数据")]
@@ -46,12 +49,30 @@ public class ListBoxPresenter : ItemsSourcePresenterBase, IListBoxPresenter
             RaisePropertyChanged();
         }
     }
+
+    private bool _useDelete;
+    public bool UseDelete
+    {
+        get { return _useDelete; }
+        set
+        {
+            _useDelete = value;
+            RaisePropertyChanged();
+        }
+    }
+
+
+    public RelayCommand DeleteSelectedCommand => new RelayCommand(x =>
+    {
+        if (this.ItemsSource is IList list)
+            list.Remove(this.SelectedItem);
+    }, x => this.SelectedItem != null);
 }
 
 
 public static partial class DialogServiceExtension
 {
-    public static async Task<bool?> ShowListBox(this IDialogMessageService service, Action<IListBoxPresenter> option, Action<IListBoxPresenter> sumitAction = null, Action<IDialog> builder = null, Func<bool> canSumit = null)
+    public static async Task<bool?> ShowListBox(this IDialogMessageService service, Action<IListBoxPresenter> option, Action<IListBoxPresenter> sumitAction = null, Action<IDialog> builder = null, Func<IListBoxPresenter,bool> canSumit = null)
     {
         return await service.ShowDialog<ListBoxPresenter>(option, sumitAction, x =>
         {
@@ -73,7 +94,15 @@ public class ShowListBoxCommand : ShowSourceCommandBase
                  x.ItemsSource = objects;
              else
                  x.ItemsSource = this.ItemsSource;
-             x.DisplayMemberPath = this.DisplayMemberPath;
+
+             if (this._targetObject is FrameworkElement element)
+             {
+                 var find = TreeViewPresenter.GetItemTemplate(element);
+                 if (find != null)
+                     x.ItemContentTemplate = find;
+                 else
+                     x.DisplayMemberPath = this.DisplayMemberPath;
+             }
          });
     }
 }

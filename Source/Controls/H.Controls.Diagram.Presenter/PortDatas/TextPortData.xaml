@@ -5,18 +5,8 @@
                     xmlns:local="clr-namespace:H.Controls.Diagram.Presenter">
     <DataTemplate DataType="{x:Type ln:TextPortData}">
         <Grid>
-            <Path x:Name="path"
-                  Width="10"
-                  Height="10"
-                  HorizontalAlignment="Center"
-                  VerticalAlignment="Center"
-                  Data="{Binding Data}"
-                  Fill="{Binding Fill}"
-                  Stretch="Fill"
-                  Stroke="{Binding Stroke}"
-                  StrokeThickness="{Binding StrokeThickness}" />
-            <StackPanel Margin="{Binding TextMargin}"
-                        HorizontalAlignment="Center"
+            <Path Style="{DynamicResource {x:Static local:DiagramKeys.StatePortPath}}" />
+            <StackPanel HorizontalAlignment="Center"
                         Orientation="Horizontal">
                 <TextBlock x:Name="icon"
                            Text="{Binding Icon}" />
@@ -38,48 +28,6 @@
                 <Setter TargetName="icon" Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
 
             </DataTrigger>
-            <DataTrigger Binding="{Binding Stroke}"
-                         Value="{x:Null}">
-                <Setter TargetName="path" Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
-            </DataTrigger>
-            <DataTrigger Binding="{Binding Fill}"
-                         Value="{x:Null}">
-                <Setter TargetName="path" Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Background}}" />
-            </DataTrigger>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter TargetName="path" Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.ForegroundAssist}}" />
-            </Trigger>
-            <!--<Trigger Property="IsMouseOver" Value="True">
-                <Setter TargetName="path" Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
-            -->
-            <!--<Setter TargetName="boder" Property="Effect" Value="{DynamicResource {x:Static h:EffectShadowKeys.Default2}}" />-->
-            <!--
-            </Trigger>-->
-
-            <DataTrigger Binding="{Binding PortType}">
-                <DataTrigger.Value>
-                    <h:PortType>OutPut</h:PortType>
-                </DataTrigger.Value>
-                <Setter TargetName="path" Property="Fill" Value="Yellow" />
-            </DataTrigger>
-
-            <DataTrigger Binding="{Binding PortType}">
-                <DataTrigger.Value>
-                    <h:PortType>Input</h:PortType>
-                </DataTrigger.Value>
-                <Setter TargetName="path" Property="Fill" Value="BLUE" />
-            </DataTrigger>
-
-            <!--<Trigger Property="h:Part.IsDragEnter" Value="True">
-            -->
-            <!--<Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Dark8}}" TargetName="boder"/>-->
-            <!--<Setter TargetName="path" Property="Effect" Value="{DynamicResource {x:Style="{DynamicResource {x:Static h:TextBlockKeys.Default}}".Default3}}" />-->
-            <!--
-            </Trigger>-->
-
-            <!--<Trigger Property="local:Part.IsCanDrop" Value="False">
-                <Setter Property="Visibility" Value="Visible" TargetName="tb_unenble"/>
-            </Trigger>-->
         </DataTemplate.Triggers>
     </DataTemplate>
 

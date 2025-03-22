@@ -15,6 +15,7 @@ using System.Windows.Markup;
 [assembly: XmlnsPrefix("QQ:908293466", "h")]
 
 [assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Controls.Diagram.Presenter.Behaviors")]
+[assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Controls.Diagram.Presenter.DiagramDatas.Base")]
 [assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Controls.Diagram.Presenter.DiagramDatas")]
 [assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Controls.Diagram.Presenter.LinkDatas")]
 [assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Controls.Diagram.Presenter.NodeDatas")]
@@ -24,6 +25,8 @@ using System.Windows.Markup;
 [assembly: XmlnsPrefix("https://github.com/HeBianGu", "h")]
 
 [assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Controls.Diagram.Presenter.Behaviors")]
+
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Controls.Diagram.Presenter.DiagramDatas.Base")]
 [assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Controls.Diagram.Presenter.DiagramDatas")]
 [assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Controls.Diagram.Presenter.LinkDatas")]
 [assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Controls.Diagram.Presenter.NodeDatas")]

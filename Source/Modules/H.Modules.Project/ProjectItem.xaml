@@ -15,29 +15,29 @@
                 Height="30"
                 Margin="5" />-->
             <FontIconTextBlock Margin="5,0,10,0"
-                                   FontSize="25"
-                                   Text="{x:Static FontIcons.Calendar}" />
+                               FontSize="25"
+                               Text="{x:Static FontIcons.Calendar}" />
             <UniformGrid Columns="1">
                 <Grid>
                     <DockPanel>
                         <TextBlock Text="{Binding Title}" />
                         <TextBlock x:Name="c"
-                                       Visibility="Collapsed">
-                                <Run Text="【" /><Run Text="当前项目" /><Run Text="】" />
+                                   Visibility="Collapsed">
+                            <Run Text="【" /><Run Text="当前项目" /><Run Text="】" />
                         </TextBlock>
                     </DockPanel>
                     <TextBlock Margin="5,2"
-                                   HorizontalAlignment="Right"
-                                   VerticalAlignment="Center"
-                                   DockPanel.Dock="Right"
-                                   Text="{Binding UpdateTime, Converter={x:Static h:Converter.GetDateTimeToString}}" />
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               DockPanel.Dock="Right"
+                               Text="{Binding UpdateTime, Converter={x:Static h:Converter.GetDateTimeToString}}" />
                 </Grid>
                 <TextBlock FontSize="{DynamicResource {x:Static h:FontSizeKeys.Header6}}"
-                               FontWeight="Normal"
-                               Opacity="0.6"
-                               Text="{Binding Path}"
-                               TextTrimming="CharacterEllipsis"
-                               ToolTip="{Binding Path}" />
+                           FontWeight="Normal"
+                           Opacity="0.6"
+                           Text="{Binding Path}"
+                           TextTrimming="CharacterEllipsis"
+                           ToolTip="{Binding Path}" />
             </UniformGrid>
         </DockPanel>
         <DataTemplate.Triggers>

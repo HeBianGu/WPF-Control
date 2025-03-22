@@ -110,6 +110,23 @@
         </Style.Triggers>
     </Style>
 
+    <Style x:Key="{ComponentResourceKey ResourceId=S.TextBox.Edit,
+                                        TypeInTargetAssembly={x:Type local:TextBoxKeys}}"
+           BasedOn="{StaticResource {x:Static local:TextBoxKeys.Default}}"
+           TargetType="{x:Type TextBox}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="Opacity" Value="0.5" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="BorderBrush" Value="Transparent" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
     <Style x:Key="{ComponentResourceKey ResourceId=S.TextBox.Attach,
                                         TypeInTargetAssembly={x:Type local:TextBoxKeys}}"
            BasedOn="{StaticResource {x:Static local:TextBoxKeys.Default}}"

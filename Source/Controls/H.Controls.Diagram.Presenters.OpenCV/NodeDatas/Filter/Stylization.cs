@@ -12,7 +12,7 @@ public class Stylization : FilterOpenCVNodeDataBase
         set
         {
             _sigmaS = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -26,27 +26,15 @@ public class Stylization : FilterOpenCVNodeDataBase
         set
         {
             _sigmaR = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
-    public override IFlowableResult Invoke(Part previors, Node current)
+    protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
-        Mat src = this.PreviourMat;
+        Mat src = from.Mat;
         Mat stylized = new Mat();
         Cv2.Stylization(src, stylized, this.SigmaS, this.SigmaR);
-        this.Mat = stylized;
-        this.UpdateMatToView();
-        return base.Invoke(previors, current);
-    }
-
-    protected override IFlowableResult Invoke()
-    {
-        Mat src = this.PreviourMat;
-        Mat stylized = new Mat();
-        Cv2.Stylization(src, stylized, this.SigmaS, this.SigmaR);
-        this.Mat = stylized;
-        this.UpdateMatToView();
-        return base.Invoke();
+        return this.OK(stylized);
     }
 }

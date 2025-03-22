@@ -11,7 +11,7 @@ public class CvtColor : BasicOpenCVNodeDataBase
         set
         {
             _colorConversionCode = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -24,14 +24,13 @@ public class CvtColor : BasicOpenCVNodeDataBase
         set
         {
             _dstCn = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
-    protected override IFlowableResult Invoke()
+    protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
-        this.Mat = this.PreviourMat.CvtColor(this.ColorConversionCode, this.DstCn);
-        this.UpdateMatToView();
-        return base.Invoke();
+        var mat = from.Mat.CvtColor(this.ColorConversionCode, this.DstCn);
+        return this.OK(mat);
     }
 }

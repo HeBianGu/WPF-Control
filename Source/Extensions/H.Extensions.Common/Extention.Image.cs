@@ -33,7 +33,7 @@ namespace System.IO
         {
             if (!File.Exists(this.FullPath))
                 return null;
-            BitmapImage bmp = new BitmapImage(new Uri(this.FullPath, UriKind.Absolute));
+            BitmapImage bmp = new BitmapImage(new Uri(this.FullPath, UriKind.RelativeOrAbsolute));
             if (bmp == null)
                 return null;
             return Tuple.Create(bmp.PixelWidth, bmp.PixelHeight);

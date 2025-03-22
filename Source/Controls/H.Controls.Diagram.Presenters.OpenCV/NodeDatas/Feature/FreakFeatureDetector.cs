@@ -12,7 +12,7 @@ public class FreakFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _nFeatures = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -24,7 +24,7 @@ public class FreakFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _scaleFactor = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -36,7 +36,7 @@ public class FreakFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _nLevels = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
     private int _edgeThreshold = 31;
@@ -47,7 +47,7 @@ public class FreakFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _edgeThreshold = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -59,7 +59,7 @@ public class FreakFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _firstLevel = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -71,7 +71,7 @@ public class FreakFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _wtaK = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -83,7 +83,7 @@ public class FreakFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _scoreType = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -95,7 +95,7 @@ public class FreakFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _patchSize = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -107,7 +107,7 @@ public class FreakFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _fastThreshold = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -119,7 +119,7 @@ public class FreakFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _orientationNormalized = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -131,7 +131,7 @@ public class FreakFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _scaleNormalized = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -143,7 +143,7 @@ public class FreakFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _patternScale = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -155,13 +155,13 @@ public class FreakFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _nOctaves = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
-    protected override IFlowableResult Invoke()
+    protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
-        string filePath = this.SrcFilePath;
+        string filePath = srcImageNodeData.SrcFilePath;
         using Mat gray = new Mat(filePath, ImreadModes.Grayscale);
         using Mat dst = new Mat(filePath, ImreadModes.Color);
 
@@ -171,7 +171,7 @@ public class FreakFeatureDetector : FeatureOpenCVNodeDataBase
 
         // FREAK
         using FREAK freak = FREAK.Create(this.OrientationNormalized, this.ScaleNormalized, this.PatternScale, this.nOctaves);
-        Mat freakDescriptors = new Mat();
+        using Mat freakDescriptors = new Mat();
         freak.Compute(gray, ref keypoints, freakDescriptors);
 
         if (keypoints != null)
@@ -191,7 +191,7 @@ public class FreakFeatureDetector : FeatureOpenCVNodeDataBase
                     color);
             }
         }
-        UpdateMatToView(dst);
-        return base.Invoke();
+
+        return this.OK(dst);
     }
 }

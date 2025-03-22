@@ -12,7 +12,7 @@ public class PencilSketch : FilterOpenCVNodeDataBase
         set
         {
             _sigmaS = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -26,7 +26,7 @@ public class PencilSketch : FilterOpenCVNodeDataBase
         set
         {
             _sigmaR = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -40,7 +40,7 @@ public class PencilSketch : FilterOpenCVNodeDataBase
         set
         {
             _shadeFactor = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -53,21 +53,19 @@ public class PencilSketch : FilterOpenCVNodeDataBase
         set
         {
             _pencilOutType = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
-    protected override IFlowableResult Invoke()
+    protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
-        Mat src = this.PreviourMat;
+        Mat src = from.Mat;
         //  Do ：输出8位的单通道图像
         Mat pencil1 = new Mat();
         //  Do ：输出与源图像相同大小与类型的图像
         Mat pencil2 = new Mat();
         Cv2.PencilSketch(src, pencil1, pencil2, this.SigmaS, this.SigmaR, this.ShadeFactor);
-        this.Mat = this.PencilOutType == PencilOutType.Src ? pencil2 : pencil1;
-        this.UpdateMatToView();
-        return base.Invoke();
+        return this.OK(this.PencilOutType == PencilOutType.Src ? pencil2 : pencil1);
     }
 }
 

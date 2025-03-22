@@ -19,12 +19,51 @@
                    AllowDrop="True"
                    BorderBrush="{DynamicResource {x:Static h:BrushKeys.Accent}}"
                    BorderThickness="5"
+                   DataSource="{Binding DataSource}"
                    Layout="{Binding Layout}"
                    LinkDrawer="{Binding LinkDrawer}"
-                   NodesSource="{Binding Nodes, IsAsync=True}"
-                   SelectedPart="{Binding SelectedPart}"
+                   Message="{Binding Message, Mode=OneWayToSource}"
                    UseAnimation="False"
                    UseAutoAddLinkOnEnd="True">
+            <Control.Resources>
+                <BindingProxy x:Key="Proxy"
+                              Data="{Binding ElementName=diagram}" />
+            </Control.Resources>
+            <Diagram.ContextMenu>
+                <ContextMenu>
+                    <ContextMenu.Template>
+                        <ControlTemplate>
+                            <ItemsControl Background="{DynamicResource {x:Static BrushKeys.Background}}"
+                                          BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                                          BorderThickness="1">
+                                <ItemsControl.Resources>
+                                    <DataTemplate DataType="{x:Type CommandBinding}">
+                                        <MenuItem Command="{Binding Command}"
+                                                  CommandTarget="{Binding Source={StaticResource Proxy}, Path=Data}"
+                                                  Header="{Binding Command.Text}" />
+                                    </DataTemplate>
+                                    <DataTemplate DataType="{x:Type DisplayCommand}">
+                                        <MenuItem CommandParameter="{Binding Source={StaticResource Proxy}, Path=Data}"
+                                                  Style="{DynamicResource {x:Static MenuItemKeys.BindCommand}}" />
+                                    </DataTemplate>
+                                </ItemsControl.Resources>
+                                <ItemsControl.ItemsSource>
+                                    <CompositeCollection>
+                                        <CollectionContainer Collection="{Binding Source={StaticResource Proxy}, Path=Data.DataContext.Commands}" />
+                                        <CollectionContainer Collection="{Binding Source={StaticResource Proxy}, Path=Data.CommandBindings}" />
+                                    </CompositeCollection>
+                                </ItemsControl.ItemsSource>
+                            </ItemsControl>
+                        </ControlTemplate>
+                    </ContextMenu.Template>
+                    <ContextMenu.ItemsSource>
+                        <CompositeCollection>
+                            <CollectionContainer Collection="{Binding Source={StaticResource Proxy}, Path=Data.DataContext.Commands}" />
+                            <CollectionContainer Collection="{Binding Source={StaticResource Proxy}, Path=Data.CommandBindings}" />
+                        </CompositeCollection>
+                    </ContextMenu.ItemsSource>
+                </ContextMenu>
+            </Diagram.ContextMenu>
             <h:Diagram.Background>
                 <SolidColorBrush Opacity="0.02"
                                  Color="Gray" />
@@ -40,6 +79,10 @@
                 </b:EventTrigger>
                 <b:EventTrigger EventName="MouseDoubleClick">
                     <b:InvokeCommandAction Command="{Binding MouseDoubleClickCommand}"
+                                           PassEventArgsToCommand="True" />
+                </b:EventTrigger>
+                <b:EventTrigger EventName="Loaded">
+                    <b:InvokeCommandAction Command="{Binding LoadedCommand}"
                                            PassEventArgsToCommand="True" />
                 </b:EventTrigger>
             </b:Interaction.Triggers>

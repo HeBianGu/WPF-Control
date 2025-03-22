@@ -6,14 +6,12 @@ namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
 [Display(Name = "反转黑白", GroupName = "基础函数", Description = "二指图片的效果反转既黑色变白色，白色变黑色", Order = 20)]
 public class BitwiseNot : BasicOpenCVNodeDataBase
 {
-    public override IFlowableResult Invoke(Part previors, Node current)
+    protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
-        if (this.PreviourMat == null)
-            return this.Error("数据源为空");
-        Mat src = this.GetFromData(current).Mat;
+        if (from.Mat == null)
+            return this.Error(null, "数据源为空");
+        Mat src = from.Mat;
         Cv2.BitwiseNot(src, src);
-        this.Mat = src;
-        this.UpdateMatToView();
-        return base.Invoke(previors, current);
+        return this.OK(src);
     }
 }

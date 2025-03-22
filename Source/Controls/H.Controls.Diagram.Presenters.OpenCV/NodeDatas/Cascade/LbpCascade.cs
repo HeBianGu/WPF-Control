@@ -3,16 +3,14 @@
 [Display(Name = "LBP", GroupName = "人脸检测", Order = 0)]
 public class LbpCascade : CascadeClassifierOpenCVNodeDataBase
 {
-    public override IFlowableResult Invoke(Part previors, Node current)
+    protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
-        Mat src = this.PreviourMat;
+        Mat src = from.Mat;
         // Load the cascades
         using CascadeClassifier lbpCascade = new CascadeClassifier(TextPath.LbpCascade);
 
         // Detect faces
         Mat lbpResult = DetectFace(lbpCascade, src);
-        this.Mat = lbpResult;
-        UpdateMatToView(lbpResult);
-        return base.Invoke(previors, current);
+        return this.OK(lbpResult);
     }
 }

@@ -6,5 +6,5 @@ namespace H.Controls.Diagram.GraphSource;
 
 public interface IGraphSource
 {
-    List<Node> NodeSource { get; }
+    List<Node> Nodes { get; set; }
 }

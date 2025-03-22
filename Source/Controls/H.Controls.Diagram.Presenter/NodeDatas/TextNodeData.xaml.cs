@@ -9,7 +9,6 @@ public interface ITextNodeData : ITextable
     FontStyle FontStyle { get; set; }
     FontWeight FontWeight { get; set; }
     Brush Foreground { get; set; }
-    new string Text { get; set; }
     Thickness TextMargin { get; set; }
 }
 
@@ -116,6 +115,7 @@ public class TextNodeData : PortableNodeData, ITextNodeData
     }
 
     private Thickness _textMargin = new Thickness(0);
+    [Display(Name = "文本间距", GroupName = "常用")]
     public Thickness TextMargin
     {
         get { return _textMargin; }

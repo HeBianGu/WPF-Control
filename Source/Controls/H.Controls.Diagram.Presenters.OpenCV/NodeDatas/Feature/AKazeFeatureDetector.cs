@@ -12,7 +12,7 @@ public class AKazeFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _descriptorType = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -24,7 +24,7 @@ public class AKazeFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _descriptorSize = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -36,7 +36,7 @@ public class AKazeFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _descriptorChannels = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -48,7 +48,7 @@ public class AKazeFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _threshold = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -60,7 +60,7 @@ public class AKazeFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _nOctaves = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -72,7 +72,7 @@ public class AKazeFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _nOctaveLayers = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -84,40 +84,23 @@ public class AKazeFeatureDetector : FeatureOpenCVNodeDataBase
         set
         {
             _diffusivity = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
-    //public override IFlowableResult Invoke(Part previors, Node current)
-    //{
-    //    var filePath = GetFromFilePath(current);
-    //    var gray = this.GetFromMat(current);
-    //    var akaze = AKAZE.Create(this.DescriptorType, this.DescriptorSize, this.DescriptorChannels, this.Threshold, this.nOctaves, this.nOctaveLayers, this.Diffusivity);
-    //    //var kazeDescriptors = new Mat();
-    //    var akazeDescriptors = new Mat();
-    //    KeyPoint[] akazeKeyPoints = null;
-    //    var akazeTime = MeasureTime(() =>
-    //        akaze.DetectAndCompute(gray, null, out akazeKeyPoints, akazeDescriptors));
-    //    var dstAkaze = new Mat();
-    //    Cv2.DrawKeypoints(gray, akazeKeyPoints, dstAkaze);
-    //    UpdateMatToView(dstAkaze);
-    //    return base.Invoke(previors, current);
-    //}
-
-    protected override IFlowableResult Invoke()
+    protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
-        string filePath = this.SrcFilePath;
-        Mat gray = this.PreviourMat;
-        AKAZE akaze = AKAZE.Create(this.DescriptorType, this.DescriptorSize, this.DescriptorChannels, this.Threshold, this.nOctaves, this.nOctaveLayers, this.Diffusivity);
+        string filePath = srcImageNodeData.SrcFilePath;
+        Mat gray = from.Mat;
+        using AKAZE akaze = AKAZE.Create(this.DescriptorType, this.DescriptorSize, this.DescriptorChannels, this.Threshold, this.nOctaves, this.nOctaveLayers, this.Diffusivity);
         //var kazeDescriptors = new Mat();
-        Mat akazeDescriptors = new Mat();
+        using Mat akazeDescriptors = new Mat();
         KeyPoint[] akazeKeyPoints = null;
         TimeSpan akazeTime = MeasureTime(() =>
             akaze.DetectAndCompute(gray, null, out akazeKeyPoints, akazeDescriptors));
         Mat dstAkaze = new Mat();
         Cv2.DrawKeypoints(gray, akazeKeyPoints, dstAkaze);
-        UpdateMatToView(dstAkaze);
-        return base.Invoke();
+        return this.OK(dstAkaze);
     }
 
     private TimeSpan MeasureTime(Action action)

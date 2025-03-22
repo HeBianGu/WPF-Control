@@ -1,4 +1,7 @@
-﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
+﻿
+using H.Controls.Diagram.Presenter.DiagramDatas.Base;
+
+namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
 [Display(Name = "二值化", GroupName = "基础函数", Description = "降噪成黑白色", Order = 3)]
 public class Threshold : BasicOpenCVNodeDataBase
 {
@@ -12,7 +15,7 @@ public class Threshold : BasicOpenCVNodeDataBase
         set
         {
             _thresh = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -25,7 +28,7 @@ public class Threshold : BasicOpenCVNodeDataBase
         set
         {
             _maxval = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -37,14 +40,12 @@ public class Threshold : BasicOpenCVNodeDataBase
         set
         {
             _thresholdTypes = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
-
-    protected override IFlowableResult Invoke()
+    protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
-        this.Mat = this.PreviourMat.Threshold(this.Thresh, this.Maxval, this.ThresholdType);
-        this.UpdateMatToView();
-        return base.Invoke();
+        var mat = from.Mat.Threshold(this.Thresh, this.Maxval, this.ThresholdType);
+        return this.OK(mat);
     }
 }

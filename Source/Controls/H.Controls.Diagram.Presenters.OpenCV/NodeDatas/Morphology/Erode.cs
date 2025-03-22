@@ -91,9 +91,9 @@ public class Erode : MorphologyOpenCVNodeDataBase
     //    }
     //}
 
-    //public override IFlowableResult Invoke(Part previors, Node current)
+    //public override IFlowableResult Invoke(Part previors, Node diagram)
     //{
-    //    var src = GetFromMat(current);
+    //    var src = GetFromMat(diagram);
     //    var dilate = new Mat();
 
     //    if (UseKernel)
@@ -109,6 +109,6 @@ public class Erode : MorphologyOpenCVNodeDataBase
 
     //    Mat = dilate;
     //    UpdateMatToView();
-    //    return base.Invoke(previors, current);
+    //    return base.Invoke(previors, diagram);
     //}
 }

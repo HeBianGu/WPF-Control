@@ -3,6 +3,20 @@
 [Display(Name = "浏览图片", GroupName = "数据源", Order = 0)]
 public class OpenCVImageNodeData : OpenCVImageNodeDataBase
 {
+    private string _srcFilePath;
+    [Browsable(true)]
+    [Display(Name = "源文件地址", GroupName = "数据")]
+    [PropertyItem(typeof(OpenFileDialogPropertyItem))]
+    public override string SrcFilePath
+    {
+        get { return _srcFilePath; }
+        set
+        {
+            _srcFilePath = value;
+            RaisePropertyChanged();
+        }
+    }
+
     protected override string GetImagePath()
     {
         return null;

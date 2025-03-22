@@ -1,8 +1,11 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 global using H.Controls.Diagram.Datas;
+global using H.Controls.Diagram.Flowables;
+using H.Services.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -24,6 +27,22 @@ public static class NodeExtension
         };
         IEnumerable<Node> ns = nodes.Where(x => x.LinksOutOf.Count == 0);
         action.Invoke(ns);
+    }
+
+    public static Part SelectPreivewPart(this Part part)
+    {
+        var find = part.GetPrevious();
+        part.IsSelected = false;
+        find.IsSelected = true;
+        return find;
+    }
+
+    public static Part SelectNextPart(this Part part)
+    {
+        var find = part.GetNext();
+        part.IsSelected = false;
+        find.IsSelected = true;
+        return find;
     }
 
     public static Link CreateLinkToNodes(this Node fromNode, Node toNode)

@@ -15,6 +15,8 @@ namespace H.Styles.Default
 
         public static ComponentResourceKey Delete => new ComponentResourceKey(typeof(TextBoxKeys), "S.TextBox.Delete");
 
+        public static ComponentResourceKey Edit => new ComponentResourceKey(typeof(TextBoxKeys), "S.TextBox.Edit");
+
     }
 
     [Icon("\xE77F")]

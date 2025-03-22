@@ -3,7 +3,7 @@
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 
 [Icon(FontIcons.Tablet)]
-public abstract class MorphologyOpenCVNodeDataBase : OpenCVNodeData, IMorphologyOpenCVNodeData
+public abstract class MorphologyOpenCVNodeDataBase : OpenCVNodeDataBase, IMorphologyOpenCVNodeData
 {
     public override void LoadDefault()
     {
@@ -19,7 +19,7 @@ public abstract class MorphologyOpenCVNodeDataBase : OpenCVNodeData, IMorphology
         set
         {
             _anchor = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -32,7 +32,7 @@ public abstract class MorphologyOpenCVNodeDataBase : OpenCVNodeData, IMorphology
         set
         {
             _iterations = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -45,7 +45,7 @@ public abstract class MorphologyOpenCVNodeDataBase : OpenCVNodeData, IMorphology
         set
         {
             _borderTypes = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -58,7 +58,7 @@ public abstract class MorphologyOpenCVNodeDataBase : OpenCVNodeData, IMorphology
         set
         {
             _useKernel = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -70,7 +70,7 @@ public abstract class MorphologyOpenCVNodeDataBase : OpenCVNodeData, IMorphology
         set
         {
             _kernelValues = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -83,7 +83,7 @@ public abstract class MorphologyOpenCVNodeDataBase : OpenCVNodeData, IMorphology
         set
         {
             _kernelRows = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -96,15 +96,16 @@ public abstract class MorphologyOpenCVNodeDataBase : OpenCVNodeData, IMorphology
         set
         {
             _kernelCols = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
     protected abstract MorphTypes GetMorphType();
 
-    protected override IFlowableResult Invoke()
+
+    protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
-        Mat src = this.PreviourMat;
+        Mat src = from.Mat;
         Mat dst = new Mat();
 
         if (this.UseKernel)
@@ -117,9 +118,6 @@ public abstract class MorphologyOpenCVNodeDataBase : OpenCVNodeData, IMorphology
         {
             Cv2.MorphologyEx(src, dst, this.GetMorphType(), null, Anchor, Iterations, BorderType);
         }
-
-        Mat = dst;
-        UpdateMatToView();
-        return base.Invoke();
+        return this.OK(dst);
     }
 }

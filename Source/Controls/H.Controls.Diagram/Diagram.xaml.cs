@@ -1,27 +1,42 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-global using H.Controls.Diagram.LinkDrawers;
 global using H.Controls.Diagram.Layers;
 global using H.Controls.Diagram.Layouts.Base;
+global using H.Controls.Diagram.LinkDrawers;
 using H.Mvvm;
 using H.Services.Common;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Collections.Specialized;
+using System.Windows.Media;
 
 namespace H.Controls.Diagram;
+
+public interface IDiagram
+{
+    IDiagramDataSource DataSource { get; set; }
+    List<Link> Links { get; }
+    List<Node> Nodes { get; }
+    Node SelectedNode { get; set; }
+    Part SelectedPart { get; set; }
+    void AddLink(Link link);
+    void AddNode(params Node[] nodes);
+    IEnumerable<Part> GetAllParts(Func<Part, bool> predicate = null);
+    void RemoveNode(params Node[] nodes);
+    void ZoomTo(Point point);
+    void ZoomTo(Rect rect);
+    void ZoomToFit();
+    void ZoomToFit(params Part[] parts);
+}
 
 [TemplatePart(Name = "NodeLayer", Type = typeof(NodeLayer))]
 [TemplatePart(Name = "LinkLayer", Type = typeof(LinkLayer))]
 [TemplatePart(Name = "DynamicLayer", Type = typeof(LinkLayer))]
-public partial class Diagram : ContentControl
+public partial class Diagram : ContentControl, IDiagram
 {
     public static ComponentResourceKey DefaultKey => new ComponentResourceKey(typeof(Diagram), "S.Diagram.Default");
 
@@ -47,7 +62,6 @@ public partial class Diagram : ContentControl
 
         this.SizeChanged += (l, k) =>
             this.RefreshData();
-
         {
             CommandBinding binding = new CommandBinding(DiagramCommands.DeleteSelected);
             binding.Executed += (l, k) =>
@@ -58,6 +72,7 @@ public partial class Diagram : ContentControl
                     if (item is Node || item is Link)
                         item.Delete();
                 }
+                this.InvokeMessage((binding.Command as RoutedUICommand).Text);
             };
             binding.CanExecute += (l, k) =>
             {
@@ -85,7 +100,7 @@ public partial class Diagram : ContentControl
                         item.IsSelected = true;
                     }
                 }
-
+                this.InvokeMessage((binding.Command as RoutedUICommand).Text);
             };
             //binding.CanExecute += (l, k) =>
             //{
@@ -101,6 +116,7 @@ public partial class Diagram : ContentControl
             binding.Executed += (l, k) =>
             {
                 this.ZoomToFit();
+                this.InvokeMessage((binding.Command as RoutedUICommand).Text);
             };
             this.CommandBindings.Add(binding);
 
@@ -113,6 +129,7 @@ public partial class Diagram : ContentControl
             binding.Executed += (l, k) =>
             {
                 this.AligmentNodes();
+                this.InvokeMessage((binding.Command as RoutedUICommand).Text);
             };
             this.CommandBindings.Add(binding);
         }
@@ -133,6 +150,8 @@ public partial class Diagram : ContentControl
                     selected = index == this.Nodes.Count - 1 ? this.Nodes[0] : this.Nodes[index + 1];
                 }
                 selected.IsSelected = true;
+                this.SelectedPart = selected;
+                this.InvokeMessage((binding.Command as RoutedUICommand).Text);
 
             };
             binding.CanExecute += (l, k) =>
@@ -164,6 +183,8 @@ public partial class Diagram : ContentControl
                     selected = index == 0 ? this.Nodes.LastOrDefault() : this.Nodes[index - 1];
                 }
                 selected.IsSelected = true;
+                this.SelectedPart = selected;
+                this.InvokeMessage((binding.Command as RoutedUICommand).Text);
 
             };
             binding.CanExecute += (l, k) =>
@@ -201,6 +222,7 @@ public partial class Diagram : ContentControl
                 {
                     NodeLayer.SetPosition(item, new Point(item.Location.X + 5, item.Location.Y));
                 }
+                this.InvokeMessage((binding.Command as RoutedUICommand).Text);
             };
             binding.CanExecute += (l, k) =>
             {
@@ -220,6 +242,7 @@ public partial class Diagram : ContentControl
                 {
                     NodeLayer.SetPosition(item, new Point(item.Location.X, item.Location.Y - 5));
                 }
+                this.InvokeMessage((binding.Command as RoutedUICommand).Text);
             };
             binding.CanExecute += (l, k) =>
             {
@@ -239,6 +262,7 @@ public partial class Diagram : ContentControl
                 {
                     NodeLayer.SetPosition(item, new Point(item.Location.X, item.Location.Y + 5));
                 }
+                this.InvokeMessage((binding.Command as RoutedUICommand).Text);
             };
             binding.CanExecute += (l, k) =>
             {
@@ -250,16 +274,16 @@ public partial class Diagram : ContentControl
             this.InputBindings.Add(keyBinding);
         }
 
-        {
+        //{
 
-            ContextMenu contextMenu = new ContextMenu();
-            foreach (CommandBinding item in this.CommandBindings)
-            {
-                if (item.Command is RoutedUICommand routed)
-                    contextMenu.Items.Add(new MenuItem() { Command = item.Command, Header = routed.Text });
-            }
-            this.ContextMenu = contextMenu;
-        }
+        //    ContextMenu contextMenu = new ContextMenu();
+        //    foreach (CommandBinding item in this.CommandBindings)
+        //    {
+        //        if (item.Command is RoutedUICommand routed)
+        //            contextMenu.Items.Add(new MenuItem() { Command = item.Command, Header = routed.Text });
+        //    }
+        //    this.ContextMenu = contextMenu;
+        //}
     }
 
     public override void OnApplyTemplate()
@@ -376,8 +400,12 @@ public partial class Diagram : ContentControl
                 return;
             Part config = e.NewValue as Part;
             control.OnSelectedPartChanged();
+            if (config == null)
+                return;
             if (config is Node node)
                 control.SelectedNode = node;
+            else
+                control.InvokeMessage("选中 - " + config?.GetType().Name);
 
         }));
 
@@ -397,42 +425,14 @@ public partial class Diagram : ContentControl
             if (control == null) return;
 
             Node config = e.NewValue as Node;
-
+            if (config == null)
+                return;
+            control.InvokeMessage("选中节点 - " + config.GetContent<ITextable>()?.Text);
         }));
 
 
     [Browsable(false)]
     public DataTemplate LinkTemplate { get; set; }
-
-    [Browsable(false)]
-    public IList NodesSource
-    {
-        get { return (IList)GetValue(NodesSourceProperty); }
-        set { SetValue(NodesSourceProperty, value); }
-    }
-
-
-    public static readonly DependencyProperty NodesSourceProperty =
-        DependencyProperty.Register("NodesSource", typeof(IList), typeof(Diagram), new PropertyMetadata(new ObservableCollection<Node>(), (d, e) =>
-        {
-            Diagram control = d as Diagram;
-            if (control == null) return;
-            IList config = e.NewValue as IList;
-
-            //if (e.OldValue is INotifyCollectionChanged old)
-            //{
-            //    old.CollectionChanged -= control.Notify_CollectionChanged;
-            //}
-
-            //if (config is INotifyCollectionChanged notify)
-            //{
-            //    notify.CollectionChanged -= control.Notify_CollectionChanged;
-            //    notify.CollectionChanged += control.Notify_CollectionChanged;
-            //}
-
-            control.RefreshData();
-        }));
-
 
     public bool UseAutoAddLinkOnEnd
     {
@@ -484,6 +484,8 @@ public partial class Diagram : ContentControl
     {
         RoutedEventArgs args = new RoutedEventArgs(ItemsChangedRoutedEvent, this);
         this.RaiseEvent(args);
+
+        this.UpdateNodesToDataSource();
     }
 
     public static readonly RoutedEvent SelectedPartChangedRoutedEvent =
@@ -541,6 +543,24 @@ public partial class Diagram : ContentControl
         zoombox.ZoomTo(rect);
     }
 
+    public void ZoomTo(Part part, double scale = 1.8)
+    {
+        var r = part.Bound;
+        var center = r.GetCenter();
+        Matrix matrix = new Matrix();
+        matrix.ScaleAt(1.8, 1.8, center.X, center.Y);
+        r.Transform(matrix);
+        this.ZoomTo(r);
+    }
+
+    public void ZoomToSelectPart()
+    {
+        if (this.SelectedPart == null)
+            return;
+        IZoombox zoombox = this.GetParent<DependencyObject>(x => x is IZoombox) as IZoombox;
+        zoombox.ZoomTo(this.SelectedPart.Bound);
+    }
+
     public void ZoomTo(Point point)
     {
         IZoombox zoombox = this.GetParent<DependencyObject>(x => x is IZoombox) as IZoombox;
@@ -579,14 +599,13 @@ public partial class Diagram : ContentControl
             return;
         this.Clear();
 
-        if (this.NodesSource == null || this.NodesSource.Count == 0)
+        if (this.DataSource == null || this.DataSource?.Nodes.Count == 0)
             return;
 
-        IEnumerable<Node> nodes = this.NodesSource?.OfType<Node>();
+        IEnumerable<Node> nodes = this.DataSource?.Nodes.OfType<Node>();
         this.Nodes = nodes?.ToList();
-        //this.Nodes = nodes.ToList();
         this.Links = this.Nodes.SelectMany(x => x.GetAllLinks()).Distinct().ToList();
-        this._layers.ForEach(l => l.UseAnimation = this.UseAnimation);
+        //this._layers.ForEach(l => l.UseAnimation = this.UseAnimation);
         this.RefreshLayout();
         this.RefreshLinkDrawer();
         foreach (Node node in this.Nodes)
@@ -603,6 +622,7 @@ public partial class Diagram : ContentControl
             this.LinkLayer.Children.Add(link);
         }
         this.Layout?.UpdateNode(this.Nodes.ToArray());
+
 #if DEBUG
         TimeSpan span = DateTime.Now - dateTime;
         System.Diagnostics.Debug.WriteLine("RefreshData：" + span.ToString());
@@ -646,12 +666,13 @@ public partial class Diagram : ContentControl
 
     public void AddNode(params Node[] nodes)
     {
-        List<Node> endNode = this.Nodes.Where(x => x.LinksOutOf.Count == 0).ToList();
+        List<Node> endNode = this.Nodes.Where(x => x.GetPorts(x => x.PortType == PortType.OutPut && x.GetLinksOutOf().Count() == 0).Count > 0).ToList();
         foreach (Node node in nodes)
         {
-            this.NodesSource.Add(node);
+            //this.NodesSource.Add(node);
             this.Nodes.Add(node);
             this.NodeLayer.Children.Add(node);
+            this.InvokeMessage("添加节点 - " + node.GetContent<ITextable>()?.Text);
         }
 
         this.Layout.AddNode(nodes);
@@ -671,11 +692,11 @@ public partial class Diagram : ContentControl
     {
         foreach (Node node in nodes)
         {
-            this.NodesSource.Remove(node);
+            //this.NodesSource.Remove(node);
             this.Nodes.Remove(node);
             this.NodeLayer.Children.Remove(node);
+            this.InvokeMessage("删除节点 - " + node.GetContent<ITextable>()?.Text);
         }
-
         this.Layout.RemoveNode(nodes);
         this.OnItemsChanged();
     }
@@ -707,44 +728,6 @@ public partial class Diagram
     public static readonly DependencyProperty MessageProperty =
         DependencyProperty.Register("Message", typeof(string), typeof(Diagram), new FrameworkPropertyMetadata(default(string)));
 
-    [Display(Name = "切换布局动画间隔", GroupName = "显示设置")]
-    public TimeSpan Duration
-    {
-        get { return (TimeSpan)GetValue(DurationProperty); }
-        set { SetValue(DurationProperty, value); }
-    }
-
-
-    public static readonly DependencyProperty DurationProperty =
-        DependencyProperty.Register("Duration", typeof(TimeSpan), typeof(Diagram), new PropertyMetadata(TimeSpan.FromMilliseconds(500), (d, e) =>
-         {
-             Diagram control = d as Diagram;
-
-             if (control == null) return;
-
-             //TimeSpan config = e.NewValue as TimeSpan;
-
-         }));
-
-
-    //public bool UseAnimation
-    //{
-    //    get { return (bool)GetValue(UseAnimationProperty); }
-    //    set { SetValue(UseAnimationProperty, value); }
-    //}
-
-    //
-    //public static readonly DependencyProperty UseAnimationProperty =
-    //    DependencyProperty.Register("UseAnimation", typeof(bool), typeof(Diagram), new PropertyMetadata(false, (d, e) =>
-    //     {
-    //         Diagram control = d as Diagram;
-
-    //         if (control == null) return;
-
-    //         //bool config = e.NewValue as bool;
-
-    //     }));
-
     [Display(Name = "启用切换布局动画", GroupName = "显示设置")]
     public bool UseAnimation { get; set; } = true;
 
@@ -768,4 +751,34 @@ public partial class Diagram
              config.Diagram = control;
              control.RefreshLinkDrawer();
          }));
+
+    public IDiagramDataSource DataSource
+    {
+        get { return (IDiagramDataSource)GetValue(DataSourceProperty); }
+        set { SetValue(DataSourceProperty, value); }
+    }
+
+    public static readonly DependencyProperty DataSourceProperty =
+        DependencyProperty.Register("DataSource", typeof(IDiagramDataSource), typeof(Diagram), new FrameworkPropertyMetadata(default(IDiagramDataSource), (d, e) =>
+        {
+            Diagram control = d as Diagram;
+
+            if (control == null) return;
+
+            if (e.OldValue is IDiagramDataSource o)
+            {
+
+            }
+
+            if (e.NewValue is IDiagramDataSource n)
+            {
+
+            }
+            control.RefreshData();
+        }));
+
+    protected void UpdateNodesToDataSource()
+    {
+        this.DataSource.Nodes = this.Nodes.ToList();
+    }
 }

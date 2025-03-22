@@ -6,6 +6,8 @@ public class DiagramKeys
 
     public static ComponentResourceKey StateBorder => new ComponentResourceKey(typeof(DiagramKeys), "S.Border.State");
 
-    public static ComponentResourceKey StatePath => new ComponentResourceKey(typeof(DiagramKeys), "S.Path.State");
+    public static ComponentResourceKey StateNodePath => new ComponentResourceKey(typeof(DiagramKeys), "S.Path.Node.State");
+
+    public static ComponentResourceKey StatePortPath => new ComponentResourceKey(typeof(DiagramKeys), "S.Path.Port.State");
 
 }

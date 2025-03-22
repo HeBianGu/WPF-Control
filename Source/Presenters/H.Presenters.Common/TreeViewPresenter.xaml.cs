@@ -5,6 +5,7 @@ using System.Collections;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Markup;
 
 namespace H.Presenters.Common;
 public interface ITreeViewPresenter : IItemsSourcePresenter
@@ -35,6 +36,7 @@ public class TreeViewPresenter : ItemsSourcePresenterBase, ITreeViewPresenter
             RaisePropertyChanged();
         }
     }
+
     public RelayCommand SelectedItemChangedCommand => new RelayCommand(x =>
     {
         if (x is RoutedPropertyChangedEventArgs<object> p)
@@ -44,10 +46,9 @@ public class TreeViewPresenter : ItemsSourcePresenterBase, ITreeViewPresenter
     });
 }
 
-
 public static partial class DialogServiceExtension
 {
-    public static async Task<bool?> ShowTreeView(this IDialogMessageService service, Action<ITreeViewPresenter> option, Action<ITreeViewPresenter> sumitAction = null, Action<IDialog> builder = null, Func<bool> canSumit = null)
+    public static async Task<bool?> ShowTreeView(this IDialogMessageService service, Action<ITreeViewPresenter> option, Action<ITreeViewPresenter> sumitAction = null, Action<IDialog> builder = null, Func<ITreeViewPresenter, bool> canSumit = null)
     {
         return await service.ShowDialog<TreeViewPresenter>(option, sumitAction, x =>
         {
@@ -60,7 +61,6 @@ public static partial class DialogServiceExtension
 
 public class ShowTreeViewCommand : ShowSourceCommandBase
 {
-    public string DisplayMemberPath { get; set; }
     public override async Task ExecuteAsync(object parameter)
     {
         await IocMessage.Dialog.ShowTreeView(x =>
@@ -69,6 +69,12 @@ public class ShowTreeViewCommand : ShowSourceCommandBase
                  x.ItemsSource = objects;
              else
                  x.ItemsSource = this.ItemsSource;
+             if (this._targetObject is FrameworkElement element)
+             {
+                 var find = TreeViewPresenter.GetItemTemplate(element);
+                 if (find != null)
+                     x.ItemContentTemplate = find;
+             }
          });
     }
 }

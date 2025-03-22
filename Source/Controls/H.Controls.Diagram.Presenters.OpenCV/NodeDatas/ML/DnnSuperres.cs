@@ -13,7 +13,7 @@ public class DnnSuperres : MLOpenCVNodeDataBase
         set
         {
             _algo = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -26,7 +26,7 @@ public class DnnSuperres : MLOpenCVNodeDataBase
         set
         {
             _scale = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
@@ -40,13 +40,13 @@ public class DnnSuperres : MLOpenCVNodeDataBase
         set
         {
             _modelFileName = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
-    //public override IFlowableResult Invoke(Part previors, Node current)
+    //public override IFlowableResult Invoke(Part previors, Node diagram)
     //{
-    //    var src = this.GetFromMat(current);
+    //    var src = this.GetFromMat(diagram);
     //    var dnn = new DnnSuperResImpl("fsrcnn", 4);
     //    string path = GetDataPath(this.ModelFileName);
     //    dnn.ReadModel(path);
@@ -54,19 +54,18 @@ public class DnnSuperres : MLOpenCVNodeDataBase
     //    var dst = new Mat();
     //    dnn.Upsample(src, dst);
     //    this.UpdateMatToView(dst);
-    //    return base.Invoke(previors, current);
+    //    return base.Invoke(previors, diagram);
     //}
 
-    protected override IFlowableResult Invoke()
+    protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
-        Mat src = this.PreviourMat;
-        DnnSuperResImpl dnn = new DnnSuperResImpl("fsrcnn", 4);
+        Mat src = from.Mat;
+        using DnnSuperResImpl dnn = new DnnSuperResImpl("fsrcnn", 4);
         string path = GetDataPath(this.ModelFileName);
         dnn.ReadModel(path);
         //using var src = new Mat(ImagePath.Mandrill, ImreadModes.Color);
         Mat dst = new Mat();
         dnn.Upsample(src, dst);
-        this.UpdateMatToView(dst);
-        return base.Invoke();
+        return this.OK(dst);
     }
 }

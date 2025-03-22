@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace H.Presenters.Common;
 
@@ -18,18 +19,49 @@ public abstract class ItemsSourcePresenterBase : DisplayBindableBase, IItemsSour
             RaisePropertyChanged();
         }
     }
+
+    private DataTemplate _itemContentTemplate;
+    public DataTemplate ItemContentTemplate
+    {
+        get { return _itemContentTemplate; }
+        set
+        {
+            _itemContentTemplate = value;
+            RaisePropertyChanged();
+        }
+    }
+
+    public static DataTemplate GetItemTemplate(DependencyObject obj)
+    {
+        return (DataTemplate)obj.GetValue(ItemTemplateProperty);
+    }
+
+    public static void SetItemTemplate(DependencyObject obj, DataTemplate value)
+    {
+        obj.SetValue(ItemTemplateProperty, value);
+    }
+
+    public static readonly DependencyProperty ItemTemplateProperty =
+        DependencyProperty.RegisterAttached("ItemTemplate", typeof(DataTemplate), typeof(ItemsSourcePresenterBase), new PropertyMetadata(default(DataTemplate), OnItemTemplateChanged));
+
+    static public void OnItemTemplateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        DependencyObject control = d as DependencyObject;
+        DataTemplate n = (DataTemplate)e.NewValue;
+        DataTemplate o = (DataTemplate)e.OldValue;
+    }
+
 }
 [Icon("\xE890")]
 [Display(Name = "查看数据")]
 public class ItemsControlPresenter : ItemsSourcePresenterBase, IItemsSourcePresenter
 {
 
-
 }
 
 public static partial class DialogServiceExtension
 {
-    public static async Task<bool?> ShowItemsControl(this IDialogMessageService service, Action<IItemsSourcePresenter> option, Action<IItemsSourcePresenter> sumitAction = null, Action<IDialog> builder = null, Func<bool> canSumit = null)
+    public static async Task<bool?> ShowItemsControl(this IDialogMessageService service, Action<IItemsSourcePresenter> option, Action<IItemsSourcePresenter> sumitAction = null, Action<IDialog> builder = null, Func<IItemsSourcePresenter,bool> canSumit = null)
     {
         return await service.ShowDialog<ItemsControlPresenter>(option, sumitAction, x =>
         {
@@ -50,6 +82,13 @@ public class ShowItemsControlCommand : ShowSourceCommandBase
                  x.ItemsSource = objects;
              else
                  x.ItemsSource = this.ItemsSource;
+
+             if (this._targetObject is FrameworkElement element)
+             {
+                 var find = ItemsControlPresenter.GetItemTemplate(element);
+                 if (find != null)
+                     x.ItemContentTemplate = find;
+             }
          });
     }
 }

@@ -115,16 +115,17 @@
 
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.MouseOver}}" />
+                <Setter Property="Effect" Value="{DynamicResource {x:Static h:DiagramEffectKey.MouseOver}}" />
             </Trigger>
             <DataTrigger Binding="{Binding IsSelected}"
                          Value="True">
                 <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Selected}}" />
+                <Setter Property="Effect" Value="{DynamicResource {x:Static h:DiagramEffectKey.IsSelected}}" />
             </DataTrigger>
         </Style.Triggers>
     </Style>
 
-
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Path.State,
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Path.Node.State,
                                         TypeInTargetAssembly={x:Type local:DiagramKeys}}"
            TargetType="Path">
         <Setter Property="Width" Value="{Binding Width}" />
@@ -197,6 +198,105 @@
             <DataTrigger Binding="{Binding IsSelected}"
                          Value="True">
                 <Setter Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Selected}}" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Path.Port.State,
+                                        TypeInTargetAssembly={x:Type local:DiagramKeys}}"
+           TargetType="Path">
+        <Setter Property="Width" Value="10" />
+        <Setter Property="Height" Value="10" />
+        <!--<Setter Property="Margin" Value="5" />-->
+        <Setter Property="StrokeThickness" Value="{Binding StrokeThickness}" />
+        <Setter Property="Fill" Value="{Binding Fill}" />
+        <Setter Property="Stroke" Value="{Binding Stroke}" />
+        <Setter Property="Data" Value="{Binding Data}" />
+        <Setter Property="Stretch" Value="Fill" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Stroke}"
+                         Value="{x:Null}">
+                <Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Fill}"
+                         Value="{x:Null}">
+                <Setter Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Background}}" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=ContentPresenter}, Path=IsMouseOver}"
+                         Value="True">
+                <!--<Setter Property="Opacity" Value="0.5" />-->
+                <Setter Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.ForegroundAssist}}" />
+                <Setter Property="Effect" Value="{DynamicResource {x:Static h:DiagramEffectKey.MouseOver}}" />
+            </DataTrigger>
+            <!--<DataTrigger Binding="{Binding Text}"
+                         Value="{x:Null}">
+                <Setter TargetName="txt" Property="Margin" Value="0" />
+            </DataTrigger>-->
+            <DataTrigger Binding="{Binding PortType}">
+                <DataTrigger.Value>
+                    <h:PortType>OutPut</h:PortType>
+                </DataTrigger.Value>
+                <Setter Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.LightBlue}}" />
+            </DataTrigger>
+
+            <DataTrigger Binding="{Binding PortType}">
+                <DataTrigger.Value>
+                    <h:PortType>Input</h:PortType>
+                </DataTrigger.Value>
+                <Setter Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Yellow}}" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding State}"
+                         Value="Success">
+                <Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Green}}" />
+            </DataTrigger>
+
+            <DataTrigger Binding="{Binding State}"
+                         Value="Error">
+                <Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Red}}" />
+            </DataTrigger>
+
+            <DataTrigger Binding="{Binding State}"
+                         Value="Wait">
+                <Setter Property="Opacity" Value="0.5" />
+            </DataTrigger>
+
+            <!--<Trigger Property="h:Part.IsDragEnter" Value="True">
+            -->
+            <!--<Setter TargetName="path" Property="Effect" Value="{DynamicResource {x:Static h:EffectShadowKeys.Default3}}" />-->
+            <!--
+            </Trigger>-->
+
+            <Trigger Property="h:Part.IsCanDrop" Value="True">
+                <Setter Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Green}}" />
+            </Trigger>
+
+            <DataTrigger Binding="{Binding HasError}"
+                         Value="True">
+                <Setter Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Red}}" />
+            </DataTrigger>
+            <!--<DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=h:Port}, Path=HasError}" Value="True">
+                <Setter TargetName="path" Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Red}}" />
+            </DataTrigger>-->
+            <DataTrigger Binding="{Binding State}"
+                         Value="Running">
+                <Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
+                <DataTrigger.EnterActions>
+                    <BeginStoryboard x:Name="start">
+                        <Storyboard AutoReverse="True"
+                                    RepeatBehavior="Forever"
+                                    Storyboard.TargetProperty="Opacity">
+                            <DoubleAnimation From="0.2"
+                                             To="1"
+                                             Duration="00:00:00.5" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </DataTrigger.EnterActions>
+                <DataTrigger.ExitActions>
+                    <RemoveStoryboard BeginStoryboardName="start" />
+                </DataTrigger.ExitActions>
             </DataTrigger>
         </Style.Triggers>
     </Style>

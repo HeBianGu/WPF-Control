@@ -7,7 +7,7 @@ public interface IOpenCVImageNodeData : INodeData, IOrderable
 
 }
 
-public abstract class OpenCVImageNodeDataBase : ImageImportNodeDataBase, IOpenCVImageNodeData
+public abstract class OpenCVImageNodeDataBase : SrcImageNodeDataBase, IOpenCVImageNodeData
 {
     public OpenCVImageNodeDataBase()
     {
@@ -15,12 +15,6 @@ public abstract class OpenCVImageNodeDataBase : ImageImportNodeDataBase, IOpenCV
         this.Icon = "\xe843";
         this.SrcFilePath = GetDataPath(this.GetImagePath());
     }
-
-    //protected override ImageSource CreateImageSource()
-    //{
-    //    this.SrcFilePath = GetDataPath(this.GetImagePath());
-    //    return CreateImage(this.SrcFilePath);
-    //}
 
     protected virtual string GetImagePath()
     {

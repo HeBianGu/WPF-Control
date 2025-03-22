@@ -15,20 +15,18 @@ public class HaarCascade : CascadeClassifierOpenCVNodeDataBase
         set
         {
             _haarType = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
-    protected override IFlowableResult Invoke()
+    protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
         string dataPath = this.GetDataPathByName();
         // Load the cascades
         CascadeClassifier haarCascade = new CascadeClassifier(dataPath);
         // Detect faces
-        Mat haarResult = DetectFace(haarCascade, this.PreviourMat);
-        this.Mat = haarResult;
-        this.UpdateMatToView(haarResult);
-        return base.Invoke();
+        Mat haarResult = DetectFace(haarCascade, from.Mat);
+        return this.OK(haarResult);
     }
 
     private string GetDataPathByName()

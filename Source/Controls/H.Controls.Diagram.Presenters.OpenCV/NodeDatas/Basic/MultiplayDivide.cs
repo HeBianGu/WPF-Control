@@ -22,14 +22,12 @@ public class MultiplayDivide : BasicOpenCVNodeDataBase
         set
         {
             _value = value;
-            DispatcherRaisePropertyChanged();
+            RaisePropertyChanged();
         }
     }
 
-    protected override IFlowableResult Invoke()
+    protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
-        this.Mat = this.PreviourMat * this.Value;
-        this.UpdateMatToView();
-        return base.Invoke();
+        return this.OK(from.Mat * this.Value);
     }
 }

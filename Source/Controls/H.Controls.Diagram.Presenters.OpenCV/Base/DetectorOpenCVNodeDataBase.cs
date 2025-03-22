@@ -1,6 +1,8 @@
-﻿namespace H.Controls.Diagram.Presenters.OpenCV.Base;
+﻿using H.Controls.Form;
+
+namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 [Icon(FontIcons.Photo)]
-public abstract class DetectorOpenCVNodeDataBase : OpenCVNodeData, IDetectorOpenCVNodeData
+public abstract class DetectorOpenCVNodeDataBase : OpenCVNodeDataBase, IDetectorOpenCVNodeData
 {
     private PreviewType _detectorPreviewType = PreviewType.Src;
     [Display(Name = "输出预览类型", GroupName = "数据", Description = "设置从原图输出匹配结果还是上一结果中输出")]
@@ -14,13 +16,13 @@ public abstract class DetectorOpenCVNodeDataBase : OpenCVNodeData, IDetectorOpen
         }
     }
 
-    protected virtual Mat GetPrviewMat(Mat result)
+    protected virtual Mat GetPrviewMat(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, Mat result)
     {
         if (this.DetectorPreviewType == PreviewType.Previous)
-            return this.PreviourMat.Clone();
+            return from.Mat?.Clone();
         if (this.DetectorPreviewType == PreviewType.Result)
             return result.Clone();
-        return this.SrcMat.Clone();
+        return srcImageNodeData.Mat?.Clone();
     }
 }
 

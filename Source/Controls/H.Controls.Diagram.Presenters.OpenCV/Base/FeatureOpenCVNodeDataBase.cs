@@ -2,7 +2,7 @@
 
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 [Icon(FontIcons.FitPage)]
-public abstract class FeatureOpenCVNodeDataBase : OpenCVNodeData, IFeatureDetectorOpenCVNodeData
+public abstract class FeatureOpenCVNodeDataBase : OpenCVNodeDataBase, IFeatureDetectorOpenCVNodeData
 {
 
 }

@@ -12,5 +12,4 @@ namespace H.Controls.ColorBox
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ColorBox), new FrameworkPropertyMetadata(typeof(ColorBox)));
         }
     }
-
 }

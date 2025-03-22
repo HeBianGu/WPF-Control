@@ -1,21 +1,12 @@
 ﻿global using H.Controls.Diagram.Presenter.DiagramDatas.Base;
+using H.Controls.Diagram.Presenter.NodeDatas.Base;
 using H.Extensions.FontIcon;
+using System.Windows.Documents;
 
 namespace H.Controls.Diagram.Presenter.NodeDatas;
 
 public class FlowableNodeData : TextNodeData, IFlowableNodeData
 {
-    //[XmlIgnore]
-    //[Display(Name = "开始", GroupName = "操作")]
-    //public RelayCommand StartCommand => new RelayCommand(async (s, e) =>
-    //{
-    //    if (e is Node part)
-    //    {
-    //        if (part.GetParent<Diagram>().DataContext is IFlowableDiagramData flowable)
-    //            await flowable.InvokeNode(part);
-    //    }
-    //}, (s, e) => this.UseStart && this.State != FlowableState.Running && this.State != FlowableState.Canceling);
-
     private FlowableState _state = FlowableState.Ready;
     [Browsable(false)]
     public FlowableState State
@@ -146,31 +137,39 @@ public class FlowableNodeData : TextNodeData, IFlowableNodeData
         return new FlowableResult(message) { State = FlowableResultState.Error };
     }
 
-    [Browsable(false)]
-    [Icon(FontIcons.Play)]
-    [Display(Name = "执行")]
-    public DisplayCommand InvokeCommand => new DisplayCommand(async l =>
-    {
-        if (l is Node node)
-            await this.TryInvokeAsync(null, node);
-    }, x => x is Node);
+    //[Browsable(false)]
+    //[Icon(FontIcons.Play)]
+    //[Display(Name = "执行")]
+    //public DisplayCommand InvokeCommand => new DisplayCommand(async l =>
+    //{
+    //    if (l is Node node)
+    //        await this.TryInvokeAsync(null, node);
+    //}, x => x is Node);
 
-    public virtual IFlowableResult Invoke(Part previors, Node current)
+    public virtual IFlowableResult Invoke(IFlowableLinkData previors, IFlowableDiagramData diagram)
     {
-        Thread.Sleep(DiagramAppSetting.Instance.FlowSleepMillisecondsTimeout);
-        return DiagramAppSetting.Instance.UseMock
+        Thread.Sleep(FlowableDiagramDataSetting.Instance.FlowSleepMillisecondsTimeout);
+        return FlowableDiagramDataSetting.Instance.UseMock
             ? this.Random.Next(0, 19) == 1 ? this.Error("模拟仿真一个错误信息") : this.OK("模拟仿真一个成功信息")
             : this.OK("运行成功");
     }
 
-    public virtual async Task<IFlowableResult> InvokeAsync(Part previors, Node current)
+    protected virtual async Task<IFlowableResult> BeforeInvokeAsync(IFlowableLinkData previors, IFlowableDiagramData current)
     {
+        return await Task.FromResult(this.OK());
+    }
+
+    public virtual async Task<IFlowableResult> InvokeAsync(IFlowableLinkData previors, IFlowableDiagramData diagram)
+    {
+        var r = await this.BeforeInvokeAsync(previors, diagram);
+        if (r.State != FlowableResultState.OK)
+            return r;
         return await Task.Run(() =>
         {
-            return this.Invoke(previors, current);
+            return this.Invoke(previors, diagram);
         });
     }
-    public virtual async Task<IFlowableResult> TryInvokeAsync(Part previors, Node current)
+    public virtual async Task<IFlowableResult> TryInvokeAsync(IFlowableLinkData previors, IFlowableDiagramData diagram)
     {
         try
         {
@@ -181,7 +180,7 @@ public class FlowableNodeData : TextNodeData, IFlowableNodeData
             {
                 if (this.UseInfoLogger)
                     IocLog.Instance?.Info($"正在执行<{this.GetType().Name}>:{this.Text}");
-                IFlowableResult result = await InvokeAsync(previors, current);
+                IFlowableResult result = await InvokeAsync(previors, diagram);
                 if (this.UseInfoLogger)
                     IocLog.Instance?.Info(result.State == FlowableResultState.Error ? $"运行错误<{this.GetType().Name}>:{this.Text} {result.Message}" : $"执行完成<{this.GetType().Name}>:{this.Text} {result.Message}");
                 this.State = result.ToState();
@@ -207,12 +206,12 @@ public class FlowableNodeData : TextNodeData, IFlowableNodeData
     {
     }
 
-    public override ILinkData CreateLinkData()
+    public override IFlowableLinkData CreateLinkData()
     {
         return new FlowableLinkData() { FromNodeID = this.ID };
     }
 
-    public override IPortData CreatePortData()
+    public override IFlowablePortData CreatePortData()
     {
         return new FlowablePortData(this.ID, PortType.Both);
     }
@@ -221,11 +220,44 @@ public class FlowableNodeData : TextNodeData, IFlowableNodeData
 
     }
 
-    protected T GetFromData<T>(Node current)
+    protected T GetFromNodeData<T>(IFlowableDiagramData diagramData, IFlowableLinkData from = null) where T : INodeData
     {
-        Node from = current.GetFromNodes().FirstOrDefault();
-        return from == null ? default : from.GetContent<T>();
+        if (from == null)
+            return default;
+        return (T)from.GetFromNodeData(diagramData);
     }
+
+    protected T GetStartFromNodeData<T>(IFlowableDiagramData diagramData) where T : INodeData
+    {
+        return diagramData.GetStartNodeDatas().OfType<T>().FirstOrDefault();
+    }
+
+    public async Task<bool?> Start(IFlowableDiagramData diagramData, IFlowableLinkData from = null)
+    {
+        if (this.State == FlowableState.Canceling)
+            return null;
+        IFlowableResult nresult;
+        using (new PartDataInvokable(this, diagramData.OnInvokingPart, diagramData.OnInvokedPart))
+        {
+            nresult = await this.TryInvokeAsync(from, diagramData) as FlowableResult;
+            if (nresult.State == FlowableResultState.Error)
+                return false;
+        }
+        foreach (var portData in this.GetFlowablePortDatas(diagramData))
+        {
+            var lr = await portData.Start(diagramData);
+            if (lr != true)
+                return lr;
+        }
+        return true;
+    }
+
+    protected virtual IEnumerable<IFlowablePortData> GetFlowablePortDatas(IFlowableDiagramData diagramData)
+    {
+        var toLinks = this.GetToLinkDatas(diagramData).OfType<IFlowableLinkData>();
+        return toLinks.Select(x => x.GetFromPortData(diagramData)).OfType<IFlowablePortData>();
+    }
+
 }
 
 public class StartFlowableNodeData : FlowableNodeData

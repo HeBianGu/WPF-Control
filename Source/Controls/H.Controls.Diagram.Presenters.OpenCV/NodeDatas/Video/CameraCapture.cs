@@ -28,12 +28,12 @@ public class CameraCapture : VideoCaptureImageImportNodeDataBase
             RaisePropertyChanged();
         }
     }
-    protected override async Task<IFlowableResult> BeforeInvokeAsync(Part previors, Node current)
+    protected override async Task<IFlowableResult> BeforeInvokeAsync(IFlowableLinkData previors, IFlowableDiagramData diagram)
     {
         return await Task.FromResult(this.OK());
     }
 
-    public override async Task<IFlowableResult> InvokeAsync(Part previors, Node current)
+    public override async Task<IFlowableResult> InvokeAsync(IFlowableLinkData previors, IFlowableDiagramData diagram)
     {
         //using BackgroundSubtractorMOG mog = BackgroundSubtractorMOG.Create();
         return await Task.Run(async () =>
@@ -44,7 +44,7 @@ public class CameraCapture : VideoCaptureImageImportNodeDataBase
             if (!capture.IsOpened())
                 return this.Error("摄像头打开失败");
             int sleepTime = (int)Math.Round(this.SleepMilliseconds / capture.Fps);
-            return await this.InvokeVideoFlowable(current, async () =>
+            return await this.InvokeVideoFlowable(diagram, async () =>
             {
                 int index = 0;
                 while (true)
@@ -53,7 +53,7 @@ public class CameraCapture : VideoCaptureImageImportNodeDataBase
                         return this.Error("用户取消");
                     using Mat frameMat = capture.RetrieveMat();
                     this.Message = $"{index++}/{capture.FrameCount}";
-                    var r = await this.InvokeFrameMatAsync(previors, current, frameMat);
+                    var r = await this.InvokeFrameMatAsync(previors, diagram, frameMat);
                     if (r == null)
                         return this.Error("用户取消");
                     else if (r == false)

@@ -10,7 +10,7 @@
                 BorderThickness="0"
                 Style="{DynamicResource {x:Static local:DiagramKeys.StateBorder}}">
             <Grid>
-                <Path Style="{DynamicResource {x:Static local:DiagramKeys.StatePath}}" />
+                <Path Style="{DynamicResource {x:Static local:DiagramKeys.StateNodePath}}" />
                 <TextBox Style="{DynamicResource {x:Static local:DiagramKeys.EditTextBox}}" />
             </Grid>
         </Border>
