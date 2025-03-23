@@ -6,7 +6,7 @@
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>-->
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <TargetFrameworks>net7.0-windows</TargetFrameworks>
-    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <LangVersion>10.0</LangVersion>
     <Version>1.0.4</Version>
     <FileVersion>1.0.4</FileVersion>
