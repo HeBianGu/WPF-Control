@@ -60,7 +60,15 @@ namespace H.Services.Common
             {
                 if (Window == null)
                 {
-                    return new Window() { Content = presenter, Title = "提示" }.ShowDialog();
+                    return new Window()
+                    {
+                        Content = presenter,
+                        Title = "提示",
+                        SizeToContent = SizeToContent.WidthAndHeight,
+                        WindowStyle = WindowStyle.ToolWindow,
+                        WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                        Padding = new Thickness(5, 3, 5, 3)
+                    }.ShowDialog();
                 }
                 else
                 {

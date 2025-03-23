@@ -11,10 +11,4 @@
     <ProjectReference Include="..\..\Windows\H.Windows.Dialog\H.Windows.Dialog.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Page Update="AboutButtonPresenter.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
-
 </Project>

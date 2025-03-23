@@ -1,4 +1,6 @@
-﻿namespace H.Modules.About
+﻿using H.Services.Common;
+
+namespace H.Modules.About
 {
     public interface IAboutViewPresenterOption
     {

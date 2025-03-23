@@ -54,7 +54,8 @@
                                         Command="{local:CloseAdornerDialogCommand}"
                                         CommandParameter="{Binding}"
                                         Content="{x:Static FontIcons.Cancel}"
-                                        DockPanel.Dock="Right" />
+                                        DockPanel.Dock="Right"
+                                        WindowChrome.IsHitTestVisibleInChrome="True" />
                     </DockPanel>
                 </Border>
                 <Grid Grid.Row="1"

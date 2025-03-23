@@ -8,9 +8,9 @@ namespace H.Controls.Diagram;
 
 public static class DiagramCommands
 {
-    public static RoutedUICommand Start = new RoutedUICommand() { Text = "开始流程" };
-    public static RoutedUICommand Stop = new RoutedUICommand() { Text = "停止流程" };
-    public static RoutedUICommand Reset = new RoutedUICommand() { Text = "重置流程" };
+    //public static RoutedUICommand Start = new RoutedUICommand() { Text = "开始流程" };
+    //public static RoutedUICommand Stop = new RoutedUICommand() { Text = "停止流程" };
+    //public static RoutedUICommand Reset = new RoutedUICommand() { Text = "重置流程" };
     public static RoutedUICommand Clear = new RoutedUICommand() { Text = "清空节点" };
     public static RoutedUICommand DeleteSelected = new RoutedUICommand() { Text = "删除选中" };
     public static RoutedUICommand ZoomToFit = new RoutedUICommand() { Text = "缩放适配" };

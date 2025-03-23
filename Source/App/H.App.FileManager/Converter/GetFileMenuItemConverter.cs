@@ -24,7 +24,7 @@ namespace H.App.FileManager
                     result = this.GetImageCommands(image);
                 if (value is fm_dd_file file)
                     result = this.GetFileCommands(file);
-                foreach (IRelayCommand item in vm.MenuCommands)
+                foreach (ICommand item in vm.MenuCommands)
                 {
                     result.Add(new TreeNodeBase<ICommand>(item));
                 }

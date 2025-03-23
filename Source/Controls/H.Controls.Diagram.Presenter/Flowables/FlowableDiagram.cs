@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
-namespace H.Controls.Diagram.Flowables;
+namespace H.Controls.Diagram.Presenter.Flowables;
 
 public interface IFlowableDiagram
 {

@@ -1,4 +1,5 @@
-﻿using H.Services.Common;
+﻿global using  H.Controls.Diagram.Presenter.Flowables;
+using H.Services.Common;
 using System.Threading.Tasks;
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 public abstract class MatchDetectorOpenCVNodeDataBase : DetectorOpenCVNodeDataBase

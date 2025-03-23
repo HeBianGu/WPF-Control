@@ -6,7 +6,7 @@ using H.Mvvm.ViewModels.Base;
 using System.Security.Permissions;
 using System.Threading.Tasks;
 
-namespace H.Controls.Diagram.Flowables;
+namespace H.Controls.Diagram.Presenter.Flowables;
 
 public interface IFlowableNodeData : INodeData, IMessageable, IFlowablePartData
 {

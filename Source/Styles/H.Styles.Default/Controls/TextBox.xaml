@@ -214,12 +214,13 @@
                                         TypeInTargetAssembly={x:Type local:TextBoxKeys}}"
            BasedOn="{StaticResource {x:Static local:TextBoxKeys.Attach}}"
            TargetType="{x:Type TextBox}">
+        <Setter Property="local:DeleteTextTextBoxCommand.Text" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text, UpdateSourceTrigger=PropertyChanged}" />
         <Setter Property="Cattach.Attach">
             <Setter.Value>
                 <Button Height="Auto"
                         Margin="1"
                         Command="{local:DeleteTextTextBoxCommand}"
-                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type TextBoxBase}}}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type TextBox}}}"
                         Content="删除" />
             </Setter.Value>
         </Setter>

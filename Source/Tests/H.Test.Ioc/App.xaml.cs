@@ -18,7 +18,7 @@ namespace H.Test.Ioc
     {
         protected override void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<ITest, Test>();
+            services.AddSingleton<ITest, MyTest>();
             services.AddAbout();
         }
 

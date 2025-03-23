@@ -19,15 +19,6 @@
                 <DockPanel Margin="0,5"
                            DockPanel.Dock="Top"
                            LastChildFill="False">
-                    <Button Command="{x:Static h:DiagramCommands.Start}"
-                            CommandTarget="{Binding ElementName=diagram}"
-                            Content="开始流程" />
-                    <Button Command="{x:Static h:DiagramCommands.Stop}"
-                            CommandTarget="{Binding ElementName=diagram}"
-                            Content="停止流程" />
-                    <Button Command="{x:Static h:DiagramCommands.Reset}"
-                            CommandTarget="{Binding ElementName=diagram}"
-                            Content="重置流程" />
                     <Button Command="{x:Static h:DiagramCommands.Clear}"
                             CommandTarget="{Binding ElementName=diagram}"
                             Content="清空" />
@@ -49,7 +40,7 @@
                     <Button Command="{x:Static h:DiagramCommands.Previous}"
                             CommandTarget="{Binding ElementName=diagram}"
                             Content="上一个" />
-                    <BulletDecorator Margin="10,0"
+                    <!--<BulletDecorator Margin="10,0"
                                      DockPanel.Dock="Right">
                         <BulletDecorator.Bullet>
                             <TextBlock Text="执行流程方式 " />
@@ -59,7 +50,7 @@
                             <h:DiagramFlowableMode>Link</h:DiagramFlowableMode>
                             <h:DiagramFlowableMode>Port</h:DiagramFlowableMode>
                         </ComboBox>
-                    </BulletDecorator>
+                    </BulletDecorator>-->
 
                     <BulletDecorator DockPanel.Dock="Right">
                         <BulletDecorator.Bullet>
@@ -361,7 +352,6 @@
                                    Background="Transparent"
                                    BorderBrush="{DynamicResource {x:Static BrushKeys.Blue}}"
                                    BorderThickness="2"
-                                   FlowableZoomMode="Center"
                                    Focusable="True"
                                    UseAnimation="False">
                             <h:Diagram.Layout>

@@ -779,6 +779,8 @@ public partial class Diagram
 
     protected void UpdateNodesToDataSource()
     {
+        if (this.DataSource == null)
+            return;
         this.DataSource.Nodes = this.Nodes.ToList();
     }
 }

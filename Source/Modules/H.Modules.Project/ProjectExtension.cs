@@ -12,7 +12,7 @@ public static class ProjectExtension
     {
         ProjectListViewPresenter project = new ProjectListViewPresenter();
         project.SelectedItem = projectService.Current;
-        bool? r = await IocMessage.Dialog.Show(project, x =>
+        bool? r = await IocMessage.ShowDialog(project, x =>
         {
             x.Title = "选择工程";
             x.MinWidth = 600;

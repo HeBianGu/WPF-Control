@@ -130,9 +130,9 @@ namespace H.App.FileManager
         }
 
 
-        public override RelayCommand MouseDoubleClickCommand => new RelayCommand(async (s, e) =>
+        public override RelayCommand MouseDoubleClickCommand => new RelayCommand(async x =>
         {
-            if (e is fm_dd_file file)
+            if (x is fm_dd_file file)
             {
                 //var view = Ioc.GetService<IFileToViewService>().ToView(file);
                 await IocMessage.Dialog.Show(this, x => x.DialogButton = DialogButton.None);

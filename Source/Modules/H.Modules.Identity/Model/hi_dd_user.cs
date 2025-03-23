@@ -143,7 +143,6 @@ namespace H.Modules.Identity
 
         private hi_dd_role _role;
         [System.Text.Json.Serialization.JsonIgnore]
-        
         [System.Xml.Serialization.XmlIgnore]
         //[Required]
         [Display(Name = "角色")]

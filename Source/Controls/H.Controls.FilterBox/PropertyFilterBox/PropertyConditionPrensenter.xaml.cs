@@ -15,6 +15,7 @@ using H.Extensions.NewtonsoftJson;
 using System.Windows.Markup;
 using System.ComponentModel;
 using H.Mvvm.ViewModels.Base;
+using EnumConverter = System.ComponentModel.EnumConverter;
 
 namespace H.Controls.FilterBox
 {

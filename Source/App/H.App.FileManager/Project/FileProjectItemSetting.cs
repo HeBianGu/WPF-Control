@@ -2,15 +2,14 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 using H.Mvvm.ViewModels.Base;
+using H.Mvvm;
+using H.Extensions.Setting;
 
 namespace H.App.FileManager
 {
-    public class FileProjectItemSetting : BindableBase, ISettable
+    [Display(Name = "当前工程",GroupName = "工程设置")]
+    public class FileProjectItemSetting : DisplayBindableBase, ISettable
     {
-        public int Order => 0;
-        public string Name => "当前工程";
-        public string GroupName => "工程设置";
-
         private bool _useFavorite = true;
         [Display(Name = "启用喜欢过滤器")]
         public bool UseFavorite
@@ -172,6 +171,5 @@ namespace H.App.FileManager
                 RaisePropertyChanged();
             }
         }
-
     }
 }

@@ -50,11 +50,11 @@ namespace H.Test.SideMenu
             }
         }
 
-        public RelayCommand HideItemCommand => new RelayCommand(e=>
+        public RelayCommand HideItemCommand => new RelayCommand(e =>
         {
             if (e is IManager manager)
                 manager.IsVisibleInTab = false;
-        }, (s, e) =>
+        }, x =>
         {
             return this.Collection.Count(x => x.IsVisibleInTab) > 1;
         });

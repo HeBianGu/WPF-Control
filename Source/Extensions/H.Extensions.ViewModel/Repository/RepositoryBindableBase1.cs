@@ -29,11 +29,18 @@ namespace H.Extensions.ViewModel
             base.Loaded(obj);
             await Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Input, new Action(async () =>
             {
+                if(IocMessage.Dialog==null)
+                {
+                    this.RefreshData();
+                    return;
+                }
                 await IocMessage.Dialog.ShowWait(x =>
                 {
                     this.RefreshData();
                     return true;
                 }, x => x.DialogButton = DialogButton.None);
+
+
             }));
 
         }

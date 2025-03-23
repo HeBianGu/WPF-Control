@@ -959,8 +959,8 @@ namespace H.Controls.Form
             }
             List<IPropertyItem> items = new List<IPropertyItem>();
 
-            IEnumerable<PropertyInfo> ss = propertys.Distinct();
-            foreach (PropertyInfo item in propertys.Distinct())
+            IEnumerable<PropertyInfo> ss = propertys.DistinctBy(x => x.Name);
+            foreach (PropertyInfo item in ss)
             {
                 if (this.UseCommandOnly && !typeof(ICommand).IsAssignableFrom(item.PropertyType))
                     continue;

@@ -26,9 +26,9 @@ namespace H.App.FileManager
             this.UseOperationLog = false;
             this.Collection.PageCount = 100;
 
-            this.UpdateCommands = this.Commands.OfType<IRelayCommand>().Where(x => x.GroupName == "更新").ToObservable();
-            this.MenuCommands = this.Commands.OfType<IRelayCommand>().Where(x => x.GroupName == "菜单").ToObservable();
-            this.MoreCommands = this.Commands.OfType<IRelayCommand>().Where(x => x.GroupName != "菜单" && x.GroupName != "更新").ToObservable();
+            this.UpdateCommands = this.Commands.OfType<IDisplayCommand>().Where(x => x.GroupName == "更新").ToObservable();
+            this.MenuCommands = this.Commands.OfType<IDisplayCommand>().Where(x => x.GroupName == "菜单").ToObservable();
+            this.MoreCommands = this.Commands.OfType<IDisplayCommand>().Where(x => x.GroupName != "菜单" && x.GroupName != "更新").ToObservable();
         }
 
         public static FileRepositoryBindable Instance => DbIoc.GetService<IRepositoryBindable<fm_dd_file>>() as FileRepositoryBindable;
@@ -55,24 +55,25 @@ namespace H.App.FileManager
 
         [Browsable(false)]
         [JsonIgnore]
-        
+
         [XmlIgnore]
-        public ObservableCollection<IRelayCommand> UpdateCommands { get; } = new ObservableCollection<IRelayCommand>();
+        public ObservableCollection<IDisplayCommand> UpdateCommands { get; } = new ObservableCollection<IDisplayCommand>();
+
 
         [Browsable(false)]
         [JsonIgnore]
-        
+
         [XmlIgnore]
-        public ObservableCollection<IRelayCommand> MoreCommands { get; private set; } = new ObservableCollection<IRelayCommand>();
+        public ObservableCollection<IDisplayCommand> MoreCommands { get; private set; } = new ObservableCollection<IDisplayCommand>();
 
         [Browsable(false)]
         [JsonIgnore]
-        
+
         [XmlIgnore]
-        public ObservableCollection<IRelayCommand> MenuCommands { get; private set; } = new ObservableCollection<IRelayCommand>();
+        public ObservableCollection<IDisplayCommand> MenuCommands { get; private set; } = new ObservableCollection<IDisplayCommand>();
 
         [Display(Name = "重新加载文件", GroupName = "更新")]
-        public RelayCommand RefreshCommand => new RelayCommand(async (s, e) =>
+        public IDisplayCommand RefreshCommand => new DisplayCommand(async x =>
         {
             if (IocProject.Instance.Current is FileProjectItem projectItem)
             {
@@ -101,17 +102,17 @@ namespace H.App.FileManager
                 else
                     IocMessage.Snack.ShowError("保存失败");
             }
-        }, (s, e) => IocProject.Instance.Current is FileProjectItem);
+        }, x => IocProject.Instance.Current is FileProjectItem);
 
         [Display(Name = "打开文件夹", GroupName = "菜单")]
-        public RelayCommand OpenDirectoryCommand => new RelayCommand(l =>
+        public DisplayCommand OpenDirectoryCommand => new DisplayCommand(l =>
         {
             string folder = Path.GetDirectoryName(this.Collection.SelectedItem.Model.Url);
             Process.Start(new ProcessStartInfo(folder) { UseShellExecute = true });
         }, x => this.Collection.SelectedItem != null);
 
         [Display(Name = "打开文件", GroupName = "菜单")]
-        public RelayCommand OpenCommand => new RelayCommand(l =>
+        public DisplayCommand OpenCommand => new DisplayCommand(l =>
         {
             if (File.Exists(this.Collection.SelectedItem.Model.Url))
                 Process.Start(new ProcessStartInfo(this.Collection.SelectedItem.Model.Url) { UseShellExecute = true });
@@ -119,24 +120,24 @@ namespace H.App.FileManager
 
 
         [Display(Name = "复制", GroupName = "菜单")]
-        public RelayCommand CopyCommand { get; set; } = new RelayCommand(l =>
+        public DisplayCommand CopyCommand { get; set; } = new DisplayCommand(l =>
         {
 
         });
 
         [Display(Name = "另存为", GroupName = "菜单")]
-        public RelayCommand SaveAsCommand => new RelayCommand(l =>
+        public DisplayCommand SaveAsCommand => new DisplayCommand(l =>
         {
 
 
         });
 
         [Display(Name = "更新视频信息[时长、清晰度、比特率、编码格式]", GroupName = "更新")]
-        public RelayCommand UpdateVieoInfoCommand => new RelayCommand(async l =>
+        public DisplayCommand UpdateVieoInfoCommand => new DisplayCommand(async l =>
         {
-            if(string.IsNullOrEmpty(FFMpegOption.Instance.BinaryFolder))
+            if (string.IsNullOrEmpty(FFMpegOption.Instance.BinaryFolder))
             {
-               await IocMessage.Dialog.Show("请先配置FFMpeg路径");
+                await IocMessage.Dialog.Show("请先配置FFMpeg路径");
                 return;
             }
             await IocMessage.Dialog.ShowForeach(() => this.Collection.FilterSource.Select(x => x.Model).OfType<fm_dd_video>(), item =>
@@ -161,7 +162,7 @@ namespace H.App.FileManager
         }, x => this.Collection.FilterSource.Select(x => x.Model).OfType<fm_dd_video>().Count() > 0);
 
         [Display(Name = "保存视频配置信息", GroupName = "更新")]
-        public RelayCommand SaveVedioConfigCommand => new RelayCommand(async l =>
+        public DisplayCommand SaveVedioConfigCommand => new DisplayCommand(async l =>
         {
             await IocMessage.Dialog.ShowForeach(() => this.Collection.FilterSource.Select(x => x.Model).OfType<fm_dd_video>(), item =>
             {
@@ -173,7 +174,7 @@ namespace H.App.FileManager
         }, x => this.Collection.FilterSource.Select(x => x.Model).OfType<fm_dd_video>().Count() > 0);
 
         [Display(Name = "更新视频缩率图", GroupName = "更新")]
-        public RelayCommand UpdateVedioImageCommand => new RelayCommand(async l =>
+        public DisplayCommand UpdateVedioImageCommand => new DisplayCommand(async l =>
         {
             bool? r = await IocMessage.Dialog.Show("确定更新？");
             if (r != true)
@@ -217,7 +218,7 @@ namespace H.App.FileManager
         }, x => this.Collection.FilterSource.Select(x => x.Model).OfType<fm_dd_video>().Count() > 0);
 
         [Display(Name = "根据名称加载标签", GroupName = "更新")]
-        public RelayCommand UpdateTagCommand => new RelayCommand(async l =>
+        public DisplayCommand UpdateTagCommand => new DisplayCommand(async l =>
         {
             ITagService tagService = Ioc.GetService<ITagService>();
             await IocMessage.Dialog.ShowForeach(() => this.Collection.FilterSource.Select(x => x.Model), item =>
@@ -261,7 +262,7 @@ namespace H.App.FileManager
         }, x => this.Collection.FilterSource.Count() > 0);
 
         [Display(Name = "移除不存在的文件", GroupName = "更新")]
-        public RelayCommand RemoveAbsentFileCommand => new RelayCommand(async l =>
+        public DisplayCommand RemoveAbsentFileCommand => new DisplayCommand(async l =>
         {
             bool? r = await IocMessage.Dialog.Show("确定移除？");
             if (r != true)
@@ -276,7 +277,7 @@ namespace H.App.FileManager
         }, x => this.Collection.FilterSource.Count > 0);
 
         [Display(Name = "彻底删除", GroupName = "菜单")]
-        public RelayCommand DeleteSelectedFileCommand => new RelayCommand(async l =>
+        public DisplayCommand DeleteSelectedFileCommand => new DisplayCommand(async l =>
         {
             bool? r = await IocMessage.Dialog.Show("确定删除？");
             if (r != true)
@@ -290,7 +291,7 @@ namespace H.App.FileManager
 
 
         [Display(Name = "移除", GroupName = "菜单")]
-        public RelayCommand RemoveSelectedFileCommand => new RelayCommand(async l =>
+        public DisplayCommand RemoveSelectedFileCommand => new DisplayCommand(async l =>
         {
             bool? r = await IocMessage.Dialog.Show("确定删除？");
             if (r != true)
@@ -301,7 +302,7 @@ namespace H.App.FileManager
         }, x => this.Collection.SelectedItem != null);
 
         [Display(Name = "彻底删除当前筛选的文件", GroupName = "更新")]
-        public RelayCommand DeleteFilterFilesCommand => new RelayCommand(async l =>
+        public DisplayCommand DeleteFilterFilesCommand => new DisplayCommand(async l =>
         {
             bool? r = await IocMessage.Dialog.Show("确定删除？");
             if (r != true)
@@ -319,7 +320,7 @@ namespace H.App.FileManager
         }, x => this.Collection.FilterSource.Count > 0);
 
         [Display(Name = "移除当前筛选的文件", GroupName = "更新")]
-        public RelayCommand RemoveFilterFilesCommand => new RelayCommand(async l =>
+        public DisplayCommand RemoveFilterFilesCommand => new DisplayCommand(async l =>
         {
             bool? r = await IocMessage.Dialog.Show("确定移除？");
             if (r != true)
@@ -335,7 +336,7 @@ namespace H.App.FileManager
         }, x => this.Collection.FilterSource.Count > 0);
 
         [Display(Name = "移除评分低于1的文件", GroupName = "更新")]
-        public RelayCommand RemoveScore1Command => new RelayCommand(async l =>
+        public DisplayCommand RemoveScore1Command => new DisplayCommand(async l =>
         {
             bool? r = await IocMessage.Dialog.Show("确定移除？");
             if (r != true)
@@ -349,7 +350,7 @@ namespace H.App.FileManager
         }, x => this.Collection.FilterSource.Where(x => x.Model.Score < 1).Count() > 0);
 
         [Display(Name = "彻底删除评分低于1的文件", GroupName = "更新")]
-        public RelayCommand DeleteScore1Command => new RelayCommand(async l =>
+        public DisplayCommand DeleteScore1Command => new DisplayCommand(async l =>
         {
             bool? r = await IocMessage.Dialog.Show("确定删除？");
             if (r != true)
@@ -365,7 +366,7 @@ namespace H.App.FileManager
         }, x => this.Collection.FilterSource.Where(x => x.Model.Score < 1).Count() > 0);
 
         [Browsable(false)]
-        public RelayCommand SelectionChangedCommand => new RelayCommand(e=>
+        public DisplayCommand SelectionChangedCommand => new DisplayCommand(e =>
         {
             if (e is fm_dd_file file)
             {
@@ -377,9 +378,9 @@ namespace H.App.FileManager
         });
 
         [Browsable(false)]
-        public RelayCommand MouseDoubleClickCommand => new RelayCommand(async (s, e) =>
+        public DisplayCommand MouseDoubleClickCommand => new DisplayCommand(async x =>
         {
-            var file = e is fm_dd_file item ? item : this.Collection.SelectedItem.Model;
+            var file = x is fm_dd_file item ? item : this.Collection.SelectedItem.Model;
             if (file != null)
             {
                 this.History.Add(file);

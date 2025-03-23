@@ -54,7 +54,13 @@
 
         <Button Command="{h:ShowTreeViewCommand ItemsSource={ClassTypeTreeDataProviderExtension IsRecursion=True,
                                                                                                 Type={x:Type FrameworkElement}}}"
-                Content="ShowTreeViewCommand" />
+                Content="ShowTreeViewCommand">
+            <TreeViewPresenter.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
+                    <TextBlock Text="{Binding Model.Name}" />
+                </HierarchicalDataTemplate>
+            </TreeViewPresenter.ItemTemplate>
+        </Button>
 
         <Button Command="{h:ShowImageFileCommand}"
                 Content="ShowImageFileCommand" />

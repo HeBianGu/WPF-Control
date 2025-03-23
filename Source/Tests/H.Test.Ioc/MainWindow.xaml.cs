@@ -1,6 +1,7 @@
 ﻿global using H.Iocable;
 global using H.Services.Logger;
 using H.Modules.About;
+using H.Services.Common;
 using H.Windows.Dialog;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -30,9 +31,10 @@ namespace H.Test.Ioc
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
             var test = H.Iocable.Ioc.Services.GetService<ITest>();
+            await IocMessage.ShowDialogMessage(test.GetType().Name);
         }
     }
 
@@ -40,7 +42,8 @@ namespace H.Test.Ioc
     {
     }
 
-    public class Test : ITest
+    public class MyTest : ITest
     {
+
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace H.Controls.Diagram.Flowables;
+﻿namespace H.Controls.Diagram.Presenter.Flowables;
 
 public enum DiagramFlowableZoomMode
 {

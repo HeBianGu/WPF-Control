@@ -1,4 +1,6 @@
-﻿namespace H.Controls.Diagram.Presenters.OpenCV.Base;
+﻿using H.Controls.Diagram.Presenter.Flowables;
+
+namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 
 public interface IOpenCVNodeData : IFlowableNodeData
 {

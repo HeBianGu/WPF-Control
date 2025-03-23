@@ -34,10 +34,10 @@
                 <Setter TargetName="txt" Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
                 <Setter TargetName="icon" Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
             </DataTrigger>
-            <!--<DataTrigger Binding="{Binding Text}"
+            <DataTrigger Binding="{Binding Text}"
                          Value="{x:Null}">
-                <Setter TargetName="txt" Property="Margin" Value="0" />
-            </DataTrigger>-->
+                <Setter TargetName="txt" Property="Width" Value="0" />
+            </DataTrigger>
             <DataTrigger Binding="{Binding Dock}"
                          Value="Left">
                 <Setter TargetName="icon" Property="Margin" Value="-30,0,0,0" />

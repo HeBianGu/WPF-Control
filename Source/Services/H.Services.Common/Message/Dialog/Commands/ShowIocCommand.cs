@@ -14,7 +14,7 @@ namespace H.Services.Common
         public override async Task ExecuteAsync(object parameter)
         {
             object p = Ioc.Services.GetService(this.Type);
-            await IocMessage.Dialog.Show(p, x =>
+            await IocMessage.ShowDialog(p, x =>
              {
                  x.DialogButton = DialogButton.Sumit;
                  x.Title = this.Name;

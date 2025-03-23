@@ -28,7 +28,7 @@
         <Setter Property="FontSize" Value="14" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Center" />
-        <Setter Property="Text" Value="！" />
+        <Setter Property="Text" Value="!" />
         <Setter Property="ToolTip" Value="{Binding Message}" />
         <Setter Property="TextTrimming" Value="{Binding CharacterEllipsis}" />
         <Setter Property="Visibility" Value="{Binding Message, Converter={x:Static h:Converter.GetNullToCollapsed}, Mode=TwoWay}" />

@@ -581,7 +581,7 @@ namespace H.Controls.GridSplitterBox
 
         public string ID { get; set; }
 
-        public IMetaSettingService MetaSettingService => Ioc.GetService<IMetaSettingService>(false);
+        public IMetaSettingService MetaSettingService => new TextJsonMetaSettingService();
 
         private GridSplitterSetting _setting = new GridSplitterSetting();
 

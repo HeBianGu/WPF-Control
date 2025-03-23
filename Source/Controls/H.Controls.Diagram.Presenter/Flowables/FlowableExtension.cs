@@ -10,7 +10,7 @@ using System.Security.Policy;
 using System.Threading.Tasks;
 using System.Windows.Threading;
 
-namespace H.Controls.Diagram.Flowables;
+namespace H.Controls.Diagram.Presenter.Flowables;
 
 public static class FlowableExtension
 {

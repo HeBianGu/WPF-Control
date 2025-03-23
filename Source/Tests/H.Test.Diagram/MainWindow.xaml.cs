@@ -1,4 +1,6 @@
-﻿using System;
+﻿using H.Controls.Diagram.Presenter.DiagramDatas.Base;
+using H.Mvvm.ViewModels.Base;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +24,20 @@ namespace H.Test.Diagram
         public MainWindow()
         {
             InitializeComponent();
+        }
+    }
+
+    public class MainViewModel : Bindable
+    {
+        private IFlowableDiagramData _diagramData;
+        public IFlowableDiagramData DiagramData
+        {
+            get { return _diagramData; }
+            set
+            {
+                _diagramData = value;
+                RaisePropertyChanged();
+            }
         }
     }
 }

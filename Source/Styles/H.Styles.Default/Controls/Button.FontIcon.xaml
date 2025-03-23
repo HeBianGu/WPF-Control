@@ -9,7 +9,7 @@
            BasedOn="{StaticResource {x:Static local:ButtonKeys.Default}}"
            TargetType="{x:Type local:FontIconButton}">
         <Setter Property="FontFamily" Value="Segoe MDL2 Assets" />
-        <Setter Property="Content" Value="&#xE700;" />
+        <Setter Property="Content" Value="&#xE711;" />
         <Setter Property="Width" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
         <Setter Property="Height" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
         <Setter Property="Background" Value="Transparent" />

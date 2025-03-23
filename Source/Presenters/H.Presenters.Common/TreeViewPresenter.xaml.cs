@@ -54,6 +54,7 @@ public static partial class DialogServiceExtension
         {
             x.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Stretch;
             x.MinWidth = 200;
+            x.Padding = new Thickness(2);
             builder?.Invoke(x);
         }, canSumit);
     }

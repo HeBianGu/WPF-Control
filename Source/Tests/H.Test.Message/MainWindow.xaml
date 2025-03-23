@@ -16,7 +16,7 @@
                 <Button Command="{ShowIocCommand Type={x:Type IAboutViewPresenter}}"
                         Content="ShowIocCommand" />
                 <Button Command="{ShowMessageCommand Message=我是消息,
-                                                     Title=我是标题,
+                                                     Name=我是标题,
                                                      Height=150,
                                                      Width=300}"
                         Content="ShowMessageCommand" />
@@ -31,9 +31,10 @@
                 <Button Command="{ShowEditCommand Value={h:GetStudent}}"
                         Content="ShowEditCommand" />
                 <Button Command="{ShowTabEditCommand Value={h:GetStudent}}"
-                    Content="ShowTabEditCommand" />
-                <Button Command="{ShowTabEditCommand Value={h:GetStudent}, TabNames=基础信息}"
-                    Content="ShowTabEditCommand-基础信息" />
+                        Content="ShowTabEditCommand" />
+                <Button Command="{ShowTabEditCommand Value={h:GetStudent},
+                                                     TabNames=基础信息}"
+                        Content="ShowTabEditCommand-基础信息" />
                 <Button Command="{ShowViewCommand Value={h:GetStudent}}"
                         Content="ShowViewCommand" />
                 <Button Click="Button_Click"
@@ -44,7 +45,7 @@
                 <Button Command="{h:ShowStepCommand Count=6}"
                         Content="ShowStepCommand" />
                 <Button Command="{h:ShowVerticalStepCommand Count=36,
-                                                            Width=40}"
+                                                            StepLineWidth=40}"
                         Content="ShowVerticalStepCommand" />
 
             </UniformGrid>
@@ -91,11 +92,11 @@
         </TabItem>
         <TabItem Header="CommandMessage">
             <UniformGrid>
-                <Button Content="{Binding RelativeSource={RelativeSource Mode=Self},Path=Command.Message}" 
-                        Command="{h:AsyncMessageCommand Message=点击执行}"/>
+                <Button Command="{h:AsyncMessageCommand Message=点击执行}"
+                        Content="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Command.Message}" />
 
-                <Button Content="{Binding RelativeSource={RelativeSource Mode=Self},Path=Command.Value}" 
-                  Command="{h:AsyncPercentCommand Value=0.0}"/>
+                <Button Command="{h:AsyncPercentCommand Value=0.0}"
+                        Content="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Command.Value}" />
             </UniformGrid>
         </TabItem>
     </TabControl>

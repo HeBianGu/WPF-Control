@@ -1,5 +1,5 @@
 ﻿global using H.Controls.Diagram.Datas;
-global using H.Controls.Diagram.Flowables;
+global using H.Controls.Diagram.Presenter.Flowables;
 global using H.Extensions.FontIcon;
 using System.Text.Json.Serialization;
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;

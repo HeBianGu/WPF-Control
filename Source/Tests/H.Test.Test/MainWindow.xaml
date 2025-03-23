@@ -1043,7 +1043,7 @@
             <TabItem Header="Mail">
                 <DockPanel>
                     <Button
-                        Command="{h:SendMainCommand}"
+                        Command="{h:SendMailCommand}"
                         CommandParameter="{Binding ElementName=mmi}"
                         Content="发送邮件"
                         DockPanel.Dock="Bottom" />

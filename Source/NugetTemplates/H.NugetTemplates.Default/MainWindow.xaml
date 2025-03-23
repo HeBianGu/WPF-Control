@@ -18,7 +18,8 @@
             <DockPanel LastChildFill="False" HorizontalAlignment="Right">
                 <ContentPresenter Content="{Ioc Type={x:Type ISettingButtonPresenter}}" />
                 <ContentPresenter Content="{Ioc Type={x:Type h:ISwitchThemeViewPresenter}}" />
-                <ContentPresenter Content="{Ioc Type={x:Type IAboutButtonPresenter}}" />
+                <!--<FontIconButton Command="{ShowAboutCommand}"
+                      Style="{DynamicResource {x:Static FontIconButtonKeys.Command}}" />-->
             </DockPanel>
         </ControlTemplate>
     </h:MainWindow.CaptionTempate>

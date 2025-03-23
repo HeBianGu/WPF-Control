@@ -9,6 +9,7 @@ using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Reflection;
 using System.Windows.Markup;
+using H.Services.Serializable;
 
 namespace H.Modules.License
 {

@@ -18,20 +18,22 @@ namespace H.Test.Mvp
     {
         protected override void ConfigureServices(IServiceCollection services)
         {
-            services.AddAbout();
-        }
-
-        protected override void Configure(IApplicationBuilder app)
-        {
-            app.UseAbout(x=>
-            {
-                x.ProductName = "设置标题";
-            });
+            services.AddAbout(x => x.ProductName = "设置标题");
+            services.AddSetting();
+            services.AddFeedBack();
+            services.AddSwitchThemeViewPresenter();
         }
 
         protected override Window CreateMainWindow(StartupEventArgs e)
         {
             return new MainWindow();
+        }
+
+        protected override void Configure(IApplicationBuilder app)
+        {
+            base.Configure(app);
+
+            app.UseSettingDefault();
         }
     }
 }

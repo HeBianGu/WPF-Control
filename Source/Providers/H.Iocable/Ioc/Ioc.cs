@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Windows.Controls.Primitives;
 
 namespace H.Iocable
 {

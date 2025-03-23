@@ -14,7 +14,6 @@ namespace System
         public static void AddAbout(this IServiceCollection service, Action<IAboutViewPresenterOption> action = null)
         {
             service.AddSingleton<IAboutViewPresenter, AboutViewPresenter>();
-            service.AddSingleton<IAboutButtonPresenter, AboutButtonPresenter>();
         }
 
         /// <summary>

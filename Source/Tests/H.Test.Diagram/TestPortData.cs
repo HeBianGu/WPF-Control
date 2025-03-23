@@ -1,5 +1,10 @@
 ﻿
 using H.Controls.Diagram;
+using H.Controls.Diagram.Datas;
+using H.Controls.Diagram.Parts;
+using H.Controls.Diagram.Parts.Base;
+using H.Controls.Diagram.Presenter.DiagramDatas.Base;
+using H.Controls.Diagram.Presenter.Flowables;
 using H.Controls.Diagram.Presenter.PortDatas;
 using H.Extensions.Geometry;
 using System.Threading.Tasks;
@@ -53,9 +58,9 @@ namespace H.Test.Diagram
         /// <param name="previors"></param>
         /// <param name="current"></param>
         /// <returns></returns>
-        public override Task<IFlowableResult> InvokeAsync(Part previors, Port current)
+        public override Task<IFlowableResult> InvokeAsync(IFlowableLinkData linkData, IFlowableDiagramData diagram)
         {
-            return base.InvokeAsync(previors, current);
+            return base.InvokeAsync(linkData, diagram);
         }
     }
 }

@@ -9,7 +9,18 @@
         Height="450"
         Style="{StaticResource {x:Type Window}}"
         mc:Ignorable="d">
-    <UniformGrid>
-        <ContentPresenter Content="{Ioc Type={x:Type IAboutButtonPresenter}}" />
-    </UniformGrid>
+    <TabControl>
+        <TabItem Header="IAboutViewPresenter">
+            <ContentPresenter Content="{Ioc Type={x:Type IAboutViewPresenter}}" />
+        </TabItem>
+        <TabItem Header="ISettingViewPresenter">
+            <ContentPresenter Content="{Ioc Type={x:Type ISettingViewPresenter}}" />
+        </TabItem>
+        <TabItem Header="ISwitchThemeViewPresenter">
+            <ContentPresenter Content="{Ioc Type={x:Type ISwitchThemeViewPresenter}}" />
+        </TabItem>
+        <TabItem Header="IFeedbackViewPresenter">
+            <ContentPresenter Content="{Ioc Type={x:Type IFeedbackViewPresenter}}" />
+        </TabItem>
+    </TabControl>
 </Window>

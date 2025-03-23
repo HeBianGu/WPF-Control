@@ -69,7 +69,7 @@ namespace H.Modules.Upgrade
         }
 
 
-        public RelayCommand DownLoadCommand => new RelayCommand(async (s, e) =>
+        public RelayCommand DownLoadCommand => new RelayCommand(async x =>
         {
             if (UpgradeOptions.Instance.UseIEDownload)
             {

@@ -1,4 +1,4 @@
-﻿using H.Controls.Diagram.Presenter.Diagrams;
+﻿using H.Controls.Diagram.Presenter.DiagramDatas.Base;
 using H.Mvvm;
 
 namespace H.Controls.Diagram.Extension.AutoTest;

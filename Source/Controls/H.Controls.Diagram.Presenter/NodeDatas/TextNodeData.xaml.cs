@@ -16,7 +16,7 @@ public class TextNodeData : PortableNodeData, ITextNodeData
 {
     public TextNodeData()
     {
-        this.Text = this.Name;
+        this.Text = this.Name??this.GetType().Name;
     }
 
     public override void LoadDefault()

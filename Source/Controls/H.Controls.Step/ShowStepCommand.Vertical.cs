@@ -7,12 +7,9 @@ namespace H.Controls.Step
 {
     public class ShowVerticalStepCommand : MessageCommandBase
     {
-        public ShowVerticalStepCommand()
-        {
-            this.Width = 80;
-            this.Height = double.NaN;
-        }
         public int Count { get; set; } = 5;
+
+        public double StepLineWidth { get; set; } = 80;
 
         public override async Task ExecuteAsync(object parameter)
         {
@@ -23,12 +20,13 @@ namespace H.Controls.Step
                 presenter.Collection.Add(new StepItemVerticalPresenter()
                 {
                     DisplayName = i.ToString(),
-                    Width = this.Width,
+                    Width = this.StepLineWidth,
                 });
             }
             await IocMessage.Dialog.ShowAction(presenter, x =>
             {
                 x.DialogButton = DialogButton.None;
+                x.Padding = new System.Windows.Thickness(10, 10, 0, 10);
                 this.Invoke(x);
             }, (d, p) =>
             {

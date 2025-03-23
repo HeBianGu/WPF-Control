@@ -1,8 +1,14 @@
 ﻿
 using H.Controls.Diagram;
+using H.Controls.Diagram.Datas;
+using H.Controls.Diagram.Parts;
+using H.Controls.Diagram.Parts.Base;
+using H.Controls.Diagram.Presenter.DiagramDatas.Base;
+using H.Controls.Diagram.Presenter.Flowables;
 using H.Controls.Diagram.Presenter.NodeDatas.Card;
 using H.Controls.Diagram.Presenter.PortDatas;
 using System;
+using System.Collections.Generic;
 using System.Windows.Controls;
 
 namespace H.Test.Diagram
@@ -10,35 +16,35 @@ namespace H.Test.Diagram
 
     public class TestNodeData : LineCardNodeData
     {
-        public override IFlowableResult Invoke(Part previors, Node current)
+        public override IFlowableResult Invoke(IFlowableLinkData previors, IFlowableDiagramData diagram)
         {
-            return base.Invoke(previors, current);
+            return base.Invoke(previors, diagram);
         }
 
         /// <summary>
         /// 自定义创建节点的类型
         /// </summary>
         /// <returns></returns>
-        public override IPortData CreatePortData()
+        public override IFlowablePortData CreatePortData()
         {
             return new TestPortData(this.ID, PortType.Both);
 
         }
 
-        /// <summary>
-        /// 自定义节点个数
-        /// </summary>
-        protected override void InitPort()
+        protected override void InitPortDatas()
         {
-            this.PortDatas.Clear();
+            base.InitPortDatas();
+        }
 
+        protected override IEnumerable<IPortData> CreatePortDatas()
+        {
             for (int i = 0; i < 3; i++)
             {
                 {
                     IPortData port = CreatePortData();
                     port.Dock = Dock.Left;
                     port.PortType = (PortType)i;
-                    this.PortDatas.Add(port);
+                    yield return port;
 
                 }
 
@@ -46,21 +52,21 @@ namespace H.Test.Diagram
                     IPortData port = CreatePortData();
                     port.Dock = Dock.Right;
                     port.PortType = (PortType)i;
-                    this.PortDatas.Add(port);
+                    yield return port;
                 }
 
                 {
                     IPortData port = CreatePortData();
                     port.Dock = Dock.Top;
                     port.PortType = (PortType)i;
-                    this.PortDatas.Add(port);
+                    yield return port;
                 }
 
                 {
                     IPortData port = CreatePortData();
                     port.Dock = Dock.Bottom;
                     port.PortType = (PortType)i;
-                    this.PortDatas.Add(port);
+                    yield return port;
                 }
             }
 
@@ -78,7 +84,7 @@ namespace H.Test.Diagram
                     }
                 }
             }
-
         }
+       
     }
 }
