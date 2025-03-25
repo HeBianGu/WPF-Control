@@ -24,7 +24,7 @@ namespace System
 
         public static IApplicationBuilder UseFavorite(this IApplicationBuilder builder, Action<FavoriteOptions> option = null)
         {
-            SettingDataManager.Instance.Add(FavoriteOptions.Instance);
+            IocSetting.Instance.Add(FavoriteOptions.Instance);
             option?.Invoke(FavoriteOptions.Instance);
             return builder;
         }

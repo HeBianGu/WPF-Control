@@ -8,6 +8,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Providers\H.Iocable\H.Iocable.csproj" />
     <ProjectReference Include="..\..\Services\H.Services.Common\H.Services.Common.csproj" />
+    <ProjectReference Include="..\..\Services\H.Services.Identity\H.Services.Identity.csproj" />
     <ProjectReference Include="..\..\Services\H.Services.Operation\H.Services.Operation.csproj" />
     <ProjectReference Include="..\H.Extensions.Attach\H.Extensions.Attach.csproj" />
     <ProjectReference Include="..\H.Extensions.Common\H.Extensions.Common.csproj" />

@@ -1,7 +1,6 @@
 global using System;
 global using System.Collections.Generic;
 global using System.Windows;
-global using System.Windows.Input;
 global using System.Windows.Markup;
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None, //where theme specific resource dictionaries are located

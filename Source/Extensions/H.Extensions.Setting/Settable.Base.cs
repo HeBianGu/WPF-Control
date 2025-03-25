@@ -4,6 +4,10 @@ global using System.IO;
 global using System.Reflection;
 global using System.Xml.Serialization;
 global using H.Services.Serializable;
+global using H.Services.Common.Setting;
+global using H.Common.Interfaces;
+using H.Services.Identity;
+using H.Services.Common.AppPath;
 
 namespace H.Extensions.Setting
 {
@@ -27,8 +31,8 @@ namespace H.Extensions.Setting
         protected virtual string GetDefaultFolder()
         {
             if (this is ILoginedSplashLoad)
-                return AppPaths.Instance.UserSetting;
-            return AppPaths.Instance.Setting;
+                return IocAppPaths.Instance.UserSetting;
+            return IocAppPaths.Instance.Setting;
         }
 
         public virtual bool Save(out string message)

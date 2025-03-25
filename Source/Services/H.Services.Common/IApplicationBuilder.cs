@@ -1,8 +1,6 @@
-﻿namespace System
-{
-    public interface IApplicationBuilder
-    {
+﻿namespace H.Services.Common;
 
-    }
+public interface IApplicationBuilder
+{
 
 }

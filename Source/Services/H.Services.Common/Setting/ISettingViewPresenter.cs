@@ -1,7 +1,8 @@
-﻿namespace H.Services.Common
+﻿using H.Common.Interfaces;
+
+namespace H.Services.Common.Setting;
+
+public interface ISettingViewPresenter : ITitleable
 {
-    public interface ISettingViewPresenter : ITitleable
-    {
-        void SwitchTo(Type type);
-    }
+    void SwitchTo(Type type);
 }

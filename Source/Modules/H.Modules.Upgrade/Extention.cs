@@ -32,7 +32,7 @@ namespace System
         public static void UseUpgrade(this IApplicationBuilder service, Action<UpgradeOptions> action = null)
         {
             action?.Invoke(UpgradeOptions.Instance);
-            SettingDataManager.Instance.Add(UpgradeOptions.Instance);
+            IocSetting.Instance.Add(UpgradeOptions.Instance);
         }
     }
 }

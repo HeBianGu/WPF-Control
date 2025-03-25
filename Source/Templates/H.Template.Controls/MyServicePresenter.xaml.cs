@@ -67,7 +67,7 @@ public static class Extention
 
     public static IApplicationBuilder UseMyServicePresenterSetting(this IApplicationBuilder builder, Action<IMyServicePresenterOption> option = null)
     {
-        SettingDataManager.Instance.Add(MyServicePresenterOption.Instance);
+        IocSetting.Instance.Add(MyServicePresenterOption.Instance);
         option?.Invoke(MyServicePresenterOption.Instance);
         return builder;
     }

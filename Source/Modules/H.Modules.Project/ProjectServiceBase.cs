@@ -139,7 +139,7 @@ public abstract class ProjectServiceBase<T> : BindableBase, IProjectService, IDa
 
     private string _projectsPath => System.IO.Path.Combine(this.GetFolderPath(), "projects.json");
 
-    protected virtual string GetFolderPath() => AppPaths.Instance.UserProject;
+    protected virtual string GetFolderPath() => IocAppPaths.Instance.UserProject;
 
     public virtual bool Load(out string message)
     {
@@ -166,7 +166,7 @@ public abstract class ProjectServiceBase<T> : BindableBase, IProjectService, IDa
 
     protected virtual Projects<T> LoadDefaultProjects()
     {
-        string path = AppPaths.Instance.DefaultProjects;
+        string path = IocAppPaths.Instance.DefaultProjects;
         string toPath = this.GetFolderPath();
         path.ToDirectoryEx().BackupToDirectory(toPath);
         Projects<T> data = this.GetSerializer().Load<Projects<T>>(this._projectsPath);

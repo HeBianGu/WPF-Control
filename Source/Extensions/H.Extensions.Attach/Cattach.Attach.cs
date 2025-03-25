@@ -5,292 +5,290 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace H.Extensions.Attach
+namespace H.Extensions.Attach;
+
+public static partial class Cattach
 {
-    public static partial class Cattach
+    public static readonly DependencyProperty AttachProperty = DependencyProperty.RegisterAttached("Attach", typeof(object), typeof(Cattach), new FrameworkPropertyMetadata(false, Attach));
+    public static void SetAttach(DependencyObject dp, object value)
     {
-        public static readonly DependencyProperty AttachProperty = DependencyProperty.RegisterAttached("Attach", typeof(object), typeof(Cattach), new FrameworkPropertyMetadata(false, Attach));
-        public static void SetAttach(DependencyObject dp, object value)
-        {
-            dp.SetValue(AttachProperty, value);
-        }
-        public static object GetAttach(DependencyObject dp)
-        {
-            return (object)dp.GetValue(AttachProperty);
-        }
-
-        public static readonly DependencyProperty AttachControlTemplateProperty = DependencyProperty.RegisterAttached(
-            "AttachControlTemplate", typeof(ControlTemplate), typeof(Cattach), new FrameworkPropertyMetadata(null));
-
-        public static ControlTemplate GetAttachControlTemplate(DependencyObject d)
-        {
-            return (ControlTemplate)d.GetValue(AttachControlTemplateProperty);
-        }
-
-        public static void SetAttachControlTemplate(DependencyObject obj, ControlTemplate value)
-        {
-            obj.SetValue(AttachControlTemplateProperty, value);
-        }
-
-
-        public static readonly DependencyProperty AttachTemplateProperty = DependencyProperty.RegisterAttached(
-            "AttachTemplate", typeof(DataTemplate), typeof(Cattach), new FrameworkPropertyMetadata(default(DataTemplate), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
-
-        public static DataTemplate GetAttachTemplate(DependencyObject d)
-        {
-            return (DataTemplate)d.GetValue(AttachTemplateProperty);
-        }
+        dp.SetValue(AttachProperty, value);
+    }
+    public static object GetAttach(DependencyObject dp)
+    {
+        return (object)dp.GetValue(AttachProperty);
+    }
 
-        public static void SetAttachTemplate(DependencyObject obj, DataTemplate value)
-        {
-            obj.SetValue(AttachTemplateProperty, value);
-        }
+    public static readonly DependencyProperty AttachControlTemplateProperty = DependencyProperty.RegisterAttached(
+        "AttachControlTemplate", typeof(ControlTemplate), typeof(Cattach), new FrameworkPropertyMetadata(null));
+
+    public static ControlTemplate GetAttachControlTemplate(DependencyObject d)
+    {
+        return (ControlTemplate)d.GetValue(AttachControlTemplateProperty);
+    }
+
+    public static void SetAttachControlTemplate(DependencyObject obj, ControlTemplate value)
+    {
+        obj.SetValue(AttachControlTemplateProperty, value);
+    }
 
-        public static Brush GetAttachForeground(DependencyObject obj)
-        {
-            return (Brush)obj.GetValue(AttachForegroundProperty);
-        }
 
-        public static void SetAttachForeground(DependencyObject obj, Brush value)
-        {
-            obj.SetValue(AttachForegroundProperty, value);
-        }
+    public static readonly DependencyProperty AttachTemplateProperty = DependencyProperty.RegisterAttached(
+        "AttachTemplate", typeof(DataTemplate), typeof(Cattach), new FrameworkPropertyMetadata(default(DataTemplate), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
-        public static readonly DependencyProperty AttachForegroundProperty =
-            DependencyProperty.RegisterAttached("AttachForeground", typeof(Brush), typeof(Cattach), new FrameworkPropertyMetadata(default(Brush), FrameworkPropertyMetadataOptions.Inherits, OnAttachForegroundChanged));
+    public static DataTemplate GetAttachTemplate(DependencyObject d)
+    {
+        return (DataTemplate)d.GetValue(AttachTemplateProperty);
+    }
 
-        public static void OnAttachForegroundChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            DependencyObject control = d;
+    public static void SetAttachTemplate(DependencyObject obj, DataTemplate value)
+    {
+        obj.SetValue(AttachTemplateProperty, value);
+    }
 
-            Brush n = (Brush)e.NewValue;
+    public static Brush GetAttachForeground(DependencyObject obj)
+    {
+        return (Brush)obj.GetValue(AttachForegroundProperty);
+    }
 
-            Brush o = (Brush)e.OldValue;
-        }
+    public static void SetAttachForeground(DependencyObject obj, Brush value)
+    {
+        obj.SetValue(AttachForegroundProperty, value);
+    }
 
+    public static readonly DependencyProperty AttachForegroundProperty =
+        DependencyProperty.RegisterAttached("AttachForeground", typeof(Brush), typeof(Cattach), new FrameworkPropertyMetadata(default(Brush), FrameworkPropertyMetadataOptions.Inherits, OnAttachForegroundChanged));
 
-        public static Brush GetAttachBackground(DependencyObject obj)
-        {
-            return (Brush)obj.GetValue(AttachBackgroundProperty);
-        }
+    public static void OnAttachForegroundChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        DependencyObject control = d;
 
-        public static void SetAttachBackground(DependencyObject obj, Brush value)
-        {
-            obj.SetValue(AttachBackgroundProperty, value);
-        }
+        Brush n = (Brush)e.NewValue;
 
-        public static readonly DependencyProperty AttachBackgroundProperty =
-            DependencyProperty.RegisterAttached("AttachBackground", typeof(Brush), typeof(Cattach), new FrameworkPropertyMetadata(default(Brush), FrameworkPropertyMetadataOptions.Inherits, OnAttachBackgroundChanged));
+        Brush o = (Brush)e.OldValue;
+    }
 
-        public static void OnAttachBackgroundChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            DependencyObject control = d;
 
-            Brush n = (Brush)e.NewValue;
+    public static Brush GetAttachBackground(DependencyObject obj)
+    {
+        return (Brush)obj.GetValue(AttachBackgroundProperty);
+    }
 
-            Brush o = (Brush)e.OldValue;
-        }
+    public static void SetAttachBackground(DependencyObject obj, Brush value)
+    {
+        obj.SetValue(AttachBackgroundProperty, value);
+    }
 
+    public static readonly DependencyProperty AttachBackgroundProperty =
+        DependencyProperty.RegisterAttached("AttachBackground", typeof(Brush), typeof(Cattach), new FrameworkPropertyMetadata(default(Brush), FrameworkPropertyMetadataOptions.Inherits, OnAttachBackgroundChanged));
 
-        public static Brush GetAttachBorderBrush(DependencyObject obj)
-        {
-            return (Brush)obj.GetValue(AttachBorderBrushProperty);
-        }
+    public static void OnAttachBackgroundChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        DependencyObject control = d;
 
-        public static void SetAttachBorderBrush(DependencyObject obj, Brush value)
-        {
-            obj.SetValue(AttachBorderBrushProperty, value);
-        }
+        Brush n = (Brush)e.NewValue;
 
-        public static readonly DependencyProperty AttachBorderBrushProperty =
-            DependencyProperty.RegisterAttached("AttachBorderBrush", typeof(Brush), typeof(Cattach), new FrameworkPropertyMetadata(default(Brush), FrameworkPropertyMetadataOptions.Inherits, OnAttachBorderBrushChanged));
+        Brush o = (Brush)e.OldValue;
+    }
 
-        public static void OnAttachBorderBrushChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            DependencyObject control = d;
 
-            Brush n = (Brush)e.NewValue;
+    public static Brush GetAttachBorderBrush(DependencyObject obj)
+    {
+        return (Brush)obj.GetValue(AttachBorderBrushProperty);
+    }
 
-            Brush o = (Brush)e.OldValue;
-        }
-        [TypeConverter(typeof(LengthConverter))]
-        public static double GetAttachWidth(DependencyObject obj)
-        {
-            return (double)obj.GetValue(AttachWidthProperty);
-        }
-        [TypeConverter(typeof(LengthConverter))]
-        public static void SetAttachWidth(DependencyObject obj, double value)
-        {
-            obj.SetValue(AttachWidthProperty, value);
-        }
+    public static void SetAttachBorderBrush(DependencyObject obj, Brush value)
+    {
+        obj.SetValue(AttachBorderBrushProperty, value);
+    }
 
-        public static readonly DependencyProperty AttachWidthProperty =
-            DependencyProperty.RegisterAttached("AttachWidth", typeof(double), typeof(Cattach), new FrameworkPropertyMetadata(default(double), FrameworkPropertyMetadataOptions.Inherits, OnAttachWidthChanged));
+    public static readonly DependencyProperty AttachBorderBrushProperty =
+        DependencyProperty.RegisterAttached("AttachBorderBrush", typeof(Brush), typeof(Cattach), new FrameworkPropertyMetadata(default(Brush), FrameworkPropertyMetadataOptions.Inherits, OnAttachBorderBrushChanged));
 
-        public static void OnAttachWidthChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            DependencyObject control = d;
+    public static void OnAttachBorderBrushChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        DependencyObject control = d;
 
-            double n = (double)e.NewValue;
+        Brush n = (Brush)e.NewValue;
 
-            double o = (double)e.OldValue;
-        }
+        Brush o = (Brush)e.OldValue;
+    }
+    [TypeConverter(typeof(LengthConverter))]
+    public static double GetAttachWidth(DependencyObject obj)
+    {
+        return (double)obj.GetValue(AttachWidthProperty);
+    }
+    [TypeConverter(typeof(LengthConverter))]
+    public static void SetAttachWidth(DependencyObject obj, double value)
+    {
+        obj.SetValue(AttachWidthProperty, value);
+    }
 
+    public static readonly DependencyProperty AttachWidthProperty =
+        DependencyProperty.RegisterAttached("AttachWidth", typeof(double), typeof(Cattach), new FrameworkPropertyMetadata(default(double), FrameworkPropertyMetadataOptions.Inherits, OnAttachWidthChanged));
 
-        public static Thickness GetAttachBorderThickness(DependencyObject obj)
-        {
-            return (Thickness)obj.GetValue(AttachBorderThicknessProperty);
-        }
+    public static void OnAttachWidthChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        DependencyObject control = d;
 
-        public static void SetAttachBorderThickness(DependencyObject obj, Thickness value)
-        {
-            obj.SetValue(AttachBorderThicknessProperty, value);
-        }
+        double n = (double)e.NewValue;
 
-        public static readonly DependencyProperty AttachBorderThicknessProperty =
-            DependencyProperty.RegisterAttached("AttachBorderThickness", typeof(Thickness), typeof(Cattach), new FrameworkPropertyMetadata(default(Thickness), FrameworkPropertyMetadataOptions.Inherits, OnAttachBorderThicknessChanged));
+        double o = (double)e.OldValue;
+    }
 
-        public static void OnAttachBorderThicknessChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            DependencyObject control = d;
 
-            Thickness n = (Thickness)e.NewValue;
+    public static Thickness GetAttachBorderThickness(DependencyObject obj)
+    {
+        return (Thickness)obj.GetValue(AttachBorderThicknessProperty);
+    }
 
-            Thickness o = (Thickness)e.OldValue;
-        }
+    public static void SetAttachBorderThickness(DependencyObject obj, Thickness value)
+    {
+        obj.SetValue(AttachBorderThicknessProperty, value);
+    }
 
+    public static readonly DependencyProperty AttachBorderThicknessProperty =
+        DependencyProperty.RegisterAttached("AttachBorderThickness", typeof(Thickness), typeof(Cattach), new FrameworkPropertyMetadata(default(Thickness), FrameworkPropertyMetadataOptions.Inherits, OnAttachBorderThicknessChanged));
 
-        public static HorizontalAlignment GetAttachHorizontalAlignment(DependencyObject obj)
-        {
-            return (HorizontalAlignment)obj.GetValue(AttachHorizontalAlignmentProperty);
-        }
+    public static void OnAttachBorderThicknessChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        DependencyObject control = d;
 
-        public static void SetAttachHorizontalAlignment(DependencyObject obj, HorizontalAlignment value)
-        {
-            obj.SetValue(AttachHorizontalAlignmentProperty, value);
-        }
+        Thickness n = (Thickness)e.NewValue;
 
+        Thickness o = (Thickness)e.OldValue;
+    }
 
-        public static readonly DependencyProperty AttachHorizontalAlignmentProperty =
-            DependencyProperty.RegisterAttached("AttachHorizontalAlignment", typeof(HorizontalAlignment), typeof(Cattach), new FrameworkPropertyMetadata(default(HorizontalAlignment), FrameworkPropertyMetadataOptions.Inherits, OnAttachHorizontalAlignmentChanged));
 
-        public static void OnAttachHorizontalAlignmentChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            DependencyObject control = d;
+    public static HorizontalAlignment GetAttachHorizontalAlignment(DependencyObject obj)
+    {
+        return (HorizontalAlignment)obj.GetValue(AttachHorizontalAlignmentProperty);
+    }
 
-            HorizontalAlignment n = (HorizontalAlignment)e.NewValue;
+    public static void SetAttachHorizontalAlignment(DependencyObject obj, HorizontalAlignment value)
+    {
+        obj.SetValue(AttachHorizontalAlignmentProperty, value);
+    }
 
-            HorizontalAlignment o = (HorizontalAlignment)e.OldValue;
-        }
 
-        public static void SetAttachCornerRaius(DependencyObject obj, CornerRadius value)
-        {
-            obj.SetValue(AttachCornerRaiusProperty, value);
-        }
-        public static readonly DependencyProperty AttachCornerRaiusProperty =
-            DependencyProperty.RegisterAttached("AttachCornerRaius", typeof(CornerRadius), typeof(Cattach), new FrameworkPropertyMetadata(default(CornerRadius), FrameworkPropertyMetadataOptions.Inherits, OnAttachCornerRaiusChanged));
+    public static readonly DependencyProperty AttachHorizontalAlignmentProperty =
+        DependencyProperty.RegisterAttached("AttachHorizontalAlignment", typeof(HorizontalAlignment), typeof(Cattach), new FrameworkPropertyMetadata(default(HorizontalAlignment), FrameworkPropertyMetadataOptions.Inherits, OnAttachHorizontalAlignmentChanged));
 
-        public static void OnAttachCornerRaiusChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            DependencyObject control = d;
+    public static void OnAttachHorizontalAlignmentChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        DependencyObject control = d;
 
-            CornerRadius n = (CornerRadius)e.NewValue;
+        HorizontalAlignment n = (HorizontalAlignment)e.NewValue;
 
-            CornerRadius o = (CornerRadius)e.OldValue;
-        }
+        HorizontalAlignment o = (HorizontalAlignment)e.OldValue;
+    }
 
-        public static VerticalAlignment GetAttachVerticalAlignment(DependencyObject obj)
-        {
-            return (VerticalAlignment)obj.GetValue(AttachVerticalAlignmentProperty);
-        }
+    public static void SetAttachCornerRaius(DependencyObject obj, CornerRadius value)
+    {
+        obj.SetValue(AttachCornerRaiusProperty, value);
+    }
+    public static readonly DependencyProperty AttachCornerRaiusProperty =
+        DependencyProperty.RegisterAttached("AttachCornerRaius", typeof(CornerRadius), typeof(Cattach), new FrameworkPropertyMetadata(default(CornerRadius), FrameworkPropertyMetadataOptions.Inherits, OnAttachCornerRaiusChanged));
 
-        public static void SetAttachVerticalAlignment(DependencyObject obj, VerticalAlignment value)
-        {
-            obj.SetValue(AttachVerticalAlignmentProperty, value);
-        }
+    public static void OnAttachCornerRaiusChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        DependencyObject control = d;
 
-        public static readonly DependencyProperty AttachVerticalAlignmentProperty =
-            DependencyProperty.RegisterAttached("AttachVerticalAlignment", typeof(VerticalAlignment), typeof(Cattach), new FrameworkPropertyMetadata(default(VerticalAlignment), FrameworkPropertyMetadataOptions.Inherits, OnAttachVerticalAlignmentChanged));
+        CornerRadius n = (CornerRadius)e.NewValue;
 
-        public static void OnAttachVerticalAlignmentChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            DependencyObject control = d;
+        CornerRadius o = (CornerRadius)e.OldValue;
+    }
 
-            VerticalAlignment n = (VerticalAlignment)e.NewValue;
+    public static VerticalAlignment GetAttachVerticalAlignment(DependencyObject obj)
+    {
+        return (VerticalAlignment)obj.GetValue(AttachVerticalAlignmentProperty);
+    }
 
-            VerticalAlignment o = (VerticalAlignment)e.OldValue;
-        }
+    public static void SetAttachVerticalAlignment(DependencyObject obj, VerticalAlignment value)
+    {
+        obj.SetValue(AttachVerticalAlignmentProperty, value);
+    }
 
+    public static readonly DependencyProperty AttachVerticalAlignmentProperty =
+        DependencyProperty.RegisterAttached("AttachVerticalAlignment", typeof(VerticalAlignment), typeof(Cattach), new FrameworkPropertyMetadata(default(VerticalAlignment), FrameworkPropertyMetadataOptions.Inherits, OnAttachVerticalAlignmentChanged));
 
-        public static Thickness GetAttachMargin(DependencyObject obj)
-        {
-            return (Thickness)obj.GetValue(AttachMarginProperty);
-        }
+    public static void OnAttachVerticalAlignmentChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        DependencyObject control = d;
 
-        public static void SetAttachMargin(DependencyObject obj, Thickness value)
-        {
-            obj.SetValue(AttachMarginProperty, value);
-        }
+        VerticalAlignment n = (VerticalAlignment)e.NewValue;
 
-        public static readonly DependencyProperty AttachMarginProperty =
-            DependencyProperty.RegisterAttached("AttachMargin", typeof(Thickness), typeof(Cattach), new FrameworkPropertyMetadata(default(Thickness), FrameworkPropertyMetadataOptions.Inherits, OnAttachMarginChanged));
+        VerticalAlignment o = (VerticalAlignment)e.OldValue;
+    }
 
-        public static void OnAttachMarginChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            DependencyObject control = d;
 
-            Thickness n = (Thickness)e.NewValue;
+    public static Thickness GetAttachMargin(DependencyObject obj)
+    {
+        return (Thickness)obj.GetValue(AttachMarginProperty);
+    }
 
-            Thickness o = (Thickness)e.OldValue;
-        }
+    public static void SetAttachMargin(DependencyObject obj, Thickness value)
+    {
+        obj.SetValue(AttachMarginProperty, value);
+    }
 
-        [TypeConverter(typeof(LengthConverter))]
-        public static double GetAttachHeight(DependencyObject obj)
-        {
-            return (double)obj.GetValue(AttachHeightProperty);
-        }
-        [TypeConverter(typeof(LengthConverter))]
-        public static void SetAttachHeight(DependencyObject obj, double value)
-        {
-            obj.SetValue(AttachHeightProperty, value);
-        }
+    public static readonly DependencyProperty AttachMarginProperty =
+        DependencyProperty.RegisterAttached("AttachMargin", typeof(Thickness), typeof(Cattach), new FrameworkPropertyMetadata(default(Thickness), FrameworkPropertyMetadataOptions.Inherits, OnAttachMarginChanged));
 
-        public static readonly DependencyProperty AttachHeightProperty =
-            DependencyProperty.RegisterAttached("AttachHeight", typeof(double), typeof(Cattach), new FrameworkPropertyMetadata(default(double), FrameworkPropertyMetadataOptions.Inherits, OnAttachHeightChanged));
+    public static void OnAttachMarginChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        DependencyObject control = d;
 
-        public static void OnAttachHeightChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            DependencyObject control = d;
+        Thickness n = (Thickness)e.NewValue;
 
-            double n = (double)e.NewValue;
+        Thickness o = (Thickness)e.OldValue;
+    }
 
-            double o = (double)e.OldValue;
-        }
+    [TypeConverter(typeof(LengthConverter))]
+    public static double GetAttachHeight(DependencyObject obj)
+    {
+        return (double)obj.GetValue(AttachHeightProperty);
+    }
+    [TypeConverter(typeof(LengthConverter))]
+    public static void SetAttachHeight(DependencyObject obj, double value)
+    {
+        obj.SetValue(AttachHeightProperty, value);
+    }
 
+    public static readonly DependencyProperty AttachHeightProperty =
+        DependencyProperty.RegisterAttached("AttachHeight", typeof(double), typeof(Cattach), new FrameworkPropertyMetadata(default(double), FrameworkPropertyMetadataOptions.Inherits, OnAttachHeightChanged));
 
-        public static Dock GetAttachDock(DependencyObject obj)
-        {
-            return (Dock)obj.GetValue(AttachDockProperty);
-        }
+    public static void OnAttachHeightChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        DependencyObject control = d;
 
-        public static void SetAttachDock(DependencyObject obj, Dock value)
-        {
-            obj.SetValue(AttachDockProperty, value);
-        }
+        double n = (double)e.NewValue;
 
+        double o = (double)e.OldValue;
+    }
 
-        public static readonly DependencyProperty AttachDockProperty =
-            DependencyProperty.RegisterAttached("AttachDock", typeof(Dock), typeof(Cattach), new PropertyMetadata(default(Dock), OnAttachDockChanged));
 
-        public static void OnAttachDockChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            DependencyObject control = d;
+    public static Dock GetAttachDock(DependencyObject obj)
+    {
+        return (Dock)obj.GetValue(AttachDockProperty);
+    }
 
-            Dock n = (Dock)e.NewValue;
+    public static void SetAttachDock(DependencyObject obj, Dock value)
+    {
+        obj.SetValue(AttachDockProperty, value);
+    }
 
-            Dock o = (Dock)e.OldValue;
-        }
 
+    public static readonly DependencyProperty AttachDockProperty =
+        DependencyProperty.RegisterAttached("AttachDock", typeof(Dock), typeof(Cattach), new PropertyMetadata(default(Dock), OnAttachDockChanged));
+
+    public static void OnAttachDockChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        DependencyObject control = d;
+
+        Dock n = (Dock)e.NewValue;
+
+        Dock o = (Dock)e.OldValue;
     }
 
 }

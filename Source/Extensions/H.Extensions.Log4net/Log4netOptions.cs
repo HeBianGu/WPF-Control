@@ -1,41 +1,41 @@
 ﻿using H.Extensions.Setting;
-using H.Services.Common;
+using H.Services.Common.AppPath;
+using H.Services.Common.Setting;
 using System.ComponentModel.DataAnnotations;
 
-namespace H.Extensions.Revertible
+namespace H.Extensions.Log4net;
+
+[Display(Name = "日志配置", GroupName = SettingGroupNames.GroupSystem, Description = "登录页面设置的信息")]
+public class Log4netOptions : IocOptionInstance<Log4netOptions>
 {
-    [Display(Name = "日志配置", GroupName = SettingGroupNames.GroupSystem, Description = "登录页面设置的信息")]
-    public class Log4netOptions : IocOptionInstance<Log4netOptions>
+    public override void LoadDefault()
     {
-        public override void LoadDefault()
-        {
-            base.LoadDefault();
-            this.LogPath = AppPaths.Instance.Log;
-            this.tempPath = AppPaths.Instance.Cache;
-        }
+        base.LoadDefault();
+        this.LogPath = IocAppPaths.Instance.Log;
+        this.tempPath = IocAppPaths.Instance.Cache;
+    }
 
-        private string _logPath;
-        [Display(Name = "日志路径")]
-        public string LogPath
+    private string _logPath;
+    [Display(Name = "日志路径")]
+    public string LogPath
+    {
+        get { return _logPath; }
+        set
         {
-            get { return _logPath; }
-            set
-            {
-                _logPath = value;
-                RaisePropertyChanged();
-            }
+            _logPath = value;
+            RaisePropertyChanged();
         }
+    }
 
-        private string _tempPath;
-        [Display(Name = "缓存路径")]
-        public string tempPath
+    private string _tempPath;
+    [Display(Name = "缓存路径")]
+    public string tempPath
+    {
+        get { return _tempPath; }
+        set
         {
-            get { return _tempPath; }
-            set
-            {
-                _tempPath = value;
-                RaisePropertyChanged();
-            }
+            _tempPath = value;
+            RaisePropertyChanged();
         }
     }
 }

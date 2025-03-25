@@ -37,20 +37,20 @@ namespace System
 
         public static IApplicationBuilder UseSettingDataManager(this IApplicationBuilder builder, Action<ISettingDataManagerOption> option = null)
         {
-            option?.Invoke(SettingDataManager.Instance);
+            option?.Invoke(IocSetting.Instance);
             return builder;
         }
 
         public static IApplicationBuilder UseSetting(this IApplicationBuilder builder, Action<H.Services.Common.ISettingViewOption> option = null)
         {
-            SettingDataManager.Instance.Add(SettingViewOption.Instance);
+            IocSetting.Instance.Add(SettingViewOption.Instance);
             option?.Invoke(SettingViewOption.Instance);
             return builder;
         }
 
         public static IApplicationBuilder UseSettingSecurity(this IApplicationBuilder builder, Action<ISettingSecurityViewOption> option = null)
         {
-            SettingDataManager.Instance.Add(SettingSecurityViewOption.Instance);
+            IocSetting.Instance.Add(SettingSecurityViewOption.Instance);
             option?.Invoke(SettingSecurityViewOption.Instance);
             return builder;
         }
@@ -60,18 +60,18 @@ namespace System
         /// </summary>  
         public static IApplicationBuilder UseSettingDefault(this IApplicationBuilder builder, Action<ISettingDataManagerOption> option = null)
         {
-            option?.Invoke(SettingDataManager.Instance);
-            SettingDataManager.Instance.Settings.Add(LoginSetting.Instance);
-            SettingDataManager.Instance.Settings.Add(ViewSetting.Instance);
-            SettingDataManager.Instance.Settings.Add(MainSetting.Instance);
-            SettingDataManager.Instance.Settings.Add(HotKeySetting.Instance);
+            option?.Invoke(IocSetting.Instance);
+            IocSetting.Instance.Settings.Add(LoginSetting.Instance);
+            IocSetting.Instance.Settings.Add(ViewSetting.Instance);
+            IocSetting.Instance.Settings.Add(MainSetting.Instance);
+            IocSetting.Instance.Settings.Add(HotKeySetting.Instance);
             //SystemDisplay.Instance.Settings.Add(UpgradeSetting.Instance);
-            SettingDataManager.Instance.Settings.Add(StateSetting.Instance);
-            SettingDataManager.Instance.Settings.Add(FileSetting.Instance);
-            SettingDataManager.Instance.Settings.Add(NotifySetting.Instance);
-            SettingDataManager.Instance.Settings.Add(PasswordSetting.Instance);
-            SettingDataManager.Instance.Settings.Add(MessageSetting.Instance);
-            SettingDataManager.Instance.Settings.Add(PersonalSetting.Instance);
+            IocSetting.Instance.Settings.Add(StateSetting.Instance);
+            IocSetting.Instance.Settings.Add(FileSetting.Instance);
+            IocSetting.Instance.Settings.Add(NotifySetting.Instance);
+            IocSetting.Instance.Settings.Add(PasswordSetting.Instance);
+            IocSetting.Instance.Settings.Add(MessageSetting.Instance);
+            IocSetting.Instance.Settings.Add(PersonalSetting.Instance);
             builder.UseSettingDataManager(option);
             return builder;
         }

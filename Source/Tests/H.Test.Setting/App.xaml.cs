@@ -46,7 +46,7 @@ namespace H.Test.Setting
         {
             base.OnSplashScreen(e);
 
-            SettingDataManager.Instance.Load(null, out var message);
+            IocSetting.Instance.Load(null, out var message);
         }
     }
 }

@@ -34,7 +34,7 @@ namespace H.Styles.Default
     {
         public static IApplicationBuilder UseScrollViewerSetting(this IApplicationBuilder builder, Action<ScrollViewerSetting> option = null)
         {
-            SettingDataManager.Instance.Add(ScrollViewerSetting.Instance);
+            IocSetting.Instance.Add(ScrollViewerSetting.Instance);
             option?.Invoke(ScrollViewerSetting.Instance);
             return builder;
         }

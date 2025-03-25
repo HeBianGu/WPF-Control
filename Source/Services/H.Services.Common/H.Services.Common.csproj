@@ -6,5 +6,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Providers\H.Iocable\H.Iocable.csproj" />
     <ProjectReference Include="..\H.Services.Logger\H.Services.Logger.csproj" />
+    <ProjectReference Include="..\H.Services.Message\H.Services.Message.csproj" />
   </ItemGroup>
 </Project>

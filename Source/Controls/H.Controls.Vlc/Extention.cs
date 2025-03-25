@@ -24,7 +24,7 @@ namespace System
         public static void UseVlc(this IApplicationBuilder service, Action<VlcSetting> action)
         {
             action?.Invoke(VlcSetting.Instance);
-            SettingDataManager.Instance?.Add(VlcSetting.Instance);
+            IocSetting.Instance?.Add(VlcSetting.Instance);
         }
     }
 

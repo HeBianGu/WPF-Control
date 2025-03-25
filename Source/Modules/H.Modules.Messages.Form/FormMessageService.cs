@@ -7,9 +7,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-using H.Mvvm;
 using System.Collections;
-using H.Mvvm.ViewModels.Base;
+using H.Common.Interfaces;
 
 namespace H.Modules.Messages.Form
 {

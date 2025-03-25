@@ -1,361 +1,358 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+global using System.Collections;
+global using System.Windows;
+global using System.Windows.Controls;
+global using System.Windows.Documents;
+global using System.Windows.Media;
+global using System.Xml.Serialization;
+global using System.ComponentModel.DataAnnotations;
 
-using System.Collections;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Media;
-using System.Xml.Serialization;
+namespace H.Mvvm.ViewModels.Base;
 
-namespace H.Mvvm.ViewModels.Base
+public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresenterBase
 {
-    public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresenterBase
+    private bool _isSelected;
+    [Browsable(false)]
+    [System.Text.Json.Serialization.JsonIgnore]
+
+    [XmlIgnore]
+    public bool IsSelected
     {
-        private bool _isSelected;
-        [Browsable(false)]
-        [System.Text.Json.Serialization.JsonIgnore]
-
-        [XmlIgnore]
-        public bool IsSelected
+        get { return _isSelected; }
+        set
         {
-            get { return _isSelected; }
-            set
-            {
-                _isSelected = value;
-                RaisePropertyChanged();
-            }
+            _isSelected = value;
+            RaisePropertyChanged();
         }
+    }
 
-        private bool _isMouseOver;
-        [Browsable(false)]
-        [System.Text.Json.Serialization.JsonIgnore]
+    private bool _isMouseOver;
+    [Browsable(false)]
+    [System.Text.Json.Serialization.JsonIgnore]
 
-        [XmlIgnore]
-        public bool IsMouseOver
+    [XmlIgnore]
+    public bool IsMouseOver
+    {
+        get { return _isMouseOver; }
+        set
         {
-            get { return _isMouseOver; }
-            set
-            {
-                _isMouseOver = value;
-                RaisePropertyChanged();
-            }
+            _isMouseOver = value;
+            RaisePropertyChanged();
         }
+    }
 
 
-        private double _height = double.NaN;
-        [DefaultValue(double.NaN)]
-        [Display(Name = "高", GroupName = "常用,布局")]
-        [TypeConverter(typeof(LengthConverter))]
-        public double Height
+    private double _height = double.NaN;
+    [DefaultValue(double.NaN)]
+    [Display(Name = "高", GroupName = "常用,布局")]
+    [TypeConverter(typeof(LengthConverter))]
+    public double Height
+    {
+        get { return _height; }
+        set
         {
-            get { return _height; }
-            set
-            {
-                _height = value;
-                RaisePropertyChanged();
-            }
+            _height = value;
+            RaisePropertyChanged();
         }
+    }
 
-        private double _width = double.NaN;
-        [DefaultValue(double.NaN)]
-        [Display(Name = "宽", GroupName = "常用,布局")]
-        [TypeConverter(typeof(LengthConverter))]
-        public double Width
+    private double _width = double.NaN;
+    [DefaultValue(double.NaN)]
+    [Display(Name = "宽", GroupName = "常用,布局")]
+    [TypeConverter(typeof(LengthConverter))]
+    public double Width
+    {
+        get { return _width; }
+        set
         {
-            get { return _width; }
-            set
-            {
-                _width = value;
-                RaisePropertyChanged();
-            }
+            _width = value;
+            RaisePropertyChanged();
         }
+    }
 
-        private double _minHeight = double.NaN;
-        [DefaultValue(double.NaN)]
-        [Display(Name = "最小高度", GroupName = "布局")]
-        [TypeConverter(typeof(LengthConverter))]
-        public double MinHeight
+    private double _minHeight = double.NaN;
+    [DefaultValue(double.NaN)]
+    [Display(Name = "最小高度", GroupName = "布局")]
+    [TypeConverter(typeof(LengthConverter))]
+    public double MinHeight
+    {
+        get { return _minHeight; }
+        set
         {
-            get { return _minHeight; }
-            set
-            {
-                _minHeight = value;
-                RaisePropertyChanged();
-            }
+            _minHeight = value;
+            RaisePropertyChanged();
         }
+    }
 
-        private double _minWidth = double.NaN;
-        [DefaultValue(double.NaN)]
-        [Display(Name = "最小宽度", GroupName = "布局")]
-        [TypeConverter(typeof(LengthConverter))]
-        public double MinWidth
+    private double _minWidth = double.NaN;
+    [DefaultValue(double.NaN)]
+    [Display(Name = "最小宽度", GroupName = "布局")]
+    [TypeConverter(typeof(LengthConverter))]
+    public double MinWidth
+    {
+        get { return _minWidth; }
+        set
         {
-            get { return _minWidth; }
-            set
-            {
-                _minWidth = value;
-                RaisePropertyChanged();
-            }
+            _minWidth = value;
+            RaisePropertyChanged();
         }
+    }
 
-        private Thickness _margin = new Thickness(10, 6, 10, 6);
-        [Display(Name = "外部间距", GroupName = "布局")]
-        /// <summary> 说明  </summary>
-        public Thickness Margin
+    private Thickness _margin = new Thickness(10, 6, 10, 6);
+    [Display(Name = "外部间距", GroupName = "布局")]
+    /// <summary> 说明  </summary>
+    public Thickness Margin
+    {
+        get { return _margin; }
+        set
         {
-            get { return _margin; }
-            set
-            {
-                _margin = value;
-                RaisePropertyChanged();
-            }
+            _margin = value;
+            RaisePropertyChanged();
         }
+    }
 
-        private Thickness _padding = new Thickness(10, 6, 10, 6);
-        [Display(Name = "内部间距", GroupName = "布局")]
-        /// <summary> 说明  </summary>
-        public Thickness Padding
+    private Thickness _padding = new Thickness(10, 6, 10, 6);
+    [Display(Name = "内部间距", GroupName = "布局")]
+    /// <summary> 说明  </summary>
+    public Thickness Padding
+    {
+        get { return _padding; }
+        set
         {
-            get { return _padding; }
-            set
-            {
-                _padding = value;
-                RaisePropertyChanged();
-            }
+            _padding = value;
+            RaisePropertyChanged();
         }
+    }
 
-        private HorizontalAlignment _horizontalAlignment = HorizontalAlignment.Stretch;
-        [Display(Name = "水平对齐", GroupName = "布局")]
-        /// <summary> 说明  </summary>
-        public HorizontalAlignment HorizontalAlignment
+    private HorizontalAlignment _horizontalAlignment = HorizontalAlignment.Stretch;
+    [Display(Name = "水平对齐", GroupName = "布局")]
+    /// <summary> 说明  </summary>
+    public HorizontalAlignment HorizontalAlignment
+    {
+        get { return _horizontalAlignment; }
+        set
         {
-            get { return _horizontalAlignment; }
-            set
-            {
-                _horizontalAlignment = value;
-                RaisePropertyChanged();
-            }
+            _horizontalAlignment = value;
+            RaisePropertyChanged();
         }
+    }
 
-        private HorizontalAlignment _horizontalContentAlignment;
-        [Display(Name = "水平内容对齐", GroupName = "布局")]
-        /// <summary> 说明  </summary>
-        public HorizontalAlignment HorizontalContentAlignment
+    private HorizontalAlignment _horizontalContentAlignment;
+    [Display(Name = "水平内容对齐", GroupName = "布局")]
+    /// <summary> 说明  </summary>
+    public HorizontalAlignment HorizontalContentAlignment
+    {
+        get { return _horizontalContentAlignment; }
+        set
         {
-            get { return _horizontalContentAlignment; }
-            set
-            {
-                _horizontalContentAlignment = value;
-                RaisePropertyChanged();
-            }
+            _horizontalContentAlignment = value;
+            RaisePropertyChanged();
         }
+    }
 
-        private VerticalAlignment _verticalAlignment = VerticalAlignment.Stretch;
-        [Display(Name = "垂直对齐", GroupName = "布局")]
-        /// <summary> 说明  </summary>
-        public VerticalAlignment VerticalAlignment
+    private VerticalAlignment _verticalAlignment = VerticalAlignment.Stretch;
+    [Display(Name = "垂直对齐", GroupName = "布局")]
+    /// <summary> 说明  </summary>
+    public VerticalAlignment VerticalAlignment
+    {
+        get { return _verticalAlignment; }
+        set
         {
-            get { return _verticalAlignment; }
-            set
-            {
-                _verticalAlignment = value;
-                RaisePropertyChanged();
-            }
+            _verticalAlignment = value;
+            RaisePropertyChanged();
         }
+    }
 
-        private VerticalAlignment _verticalContentAlignment;
-        [Display(Name = "垂直内部对齐", GroupName = "布局")]
-        /// <summary> 说明  </summary>
-        public VerticalAlignment VerticalContentAlignment
+    private VerticalAlignment _verticalContentAlignment;
+    [Display(Name = "垂直内部对齐", GroupName = "布局")]
+    /// <summary> 说明  </summary>
+    public VerticalAlignment VerticalContentAlignment
+    {
+        get { return _verticalContentAlignment; }
+        set
         {
-            get { return _verticalContentAlignment; }
-            set
-            {
-                _verticalContentAlignment = value;
-                RaisePropertyChanged();
-            }
+            _verticalContentAlignment = value;
+            RaisePropertyChanged();
         }
+    }
 
 
-        private Brush _background;
-        [Display(Name = "背景颜色", GroupName = "样式")]
-        /// <summary> 说明  </summary>
-        public Brush Background
+    private Brush _background;
+    [Display(Name = "背景颜色", GroupName = "样式")]
+    /// <summary> 说明  </summary>
+    public Brush Background
+    {
+        get { return _background; }
+        set
         {
-            get { return _background; }
-            set
-            {
-                _background = value;
-                RaisePropertyChanged();
-            }
+            _background = value;
+            RaisePropertyChanged();
         }
+    }
 
-        private Brush _borderBrush;
-        [Display(Name = "边框颜色", GroupName = "样式")]
-        /// <summary> 说明  </summary>
-        public Brush BorderBrush
+    private Brush _borderBrush;
+    [Display(Name = "边框颜色", GroupName = "样式")]
+    /// <summary> 说明  </summary>
+    public Brush BorderBrush
+    {
+        get { return _borderBrush; }
+        set
         {
-            get { return _borderBrush; }
-            set
-            {
-                _borderBrush = value;
-                RaisePropertyChanged();
-            }
+            _borderBrush = value;
+            RaisePropertyChanged();
         }
+    }
 
-        private Thickness _borderThickness;
-        [Display(Name = "边框粗细", GroupName = "样式")]
-        /// <summary> 说明  </summary>
-        public Thickness BorderThickness
+    private Thickness _borderThickness;
+    [Display(Name = "边框粗细", GroupName = "样式")]
+    /// <summary> 说明  </summary>
+    public Thickness BorderThickness
+    {
+        get { return _borderThickness; }
+        set
         {
-            get { return _borderThickness; }
-            set
-            {
-                _borderThickness = value;
-                RaisePropertyChanged();
-            }
+            _borderThickness = value;
+            RaisePropertyChanged();
         }
+    }
 
-        private double _opacity = 1;
-        [DefaultValue(1.0)]
-        [Display(Name = "透明度", GroupName = "样式")]
-        /// <summary> 说明  </summary>
-        public double Opacity
+    private double _opacity = 1;
+    [DefaultValue(1.0)]
+    [Display(Name = "透明度", GroupName = "样式")]
+    /// <summary> 说明  </summary>
+    public double Opacity
+    {
+        get { return _opacity; }
+        set
         {
-            get { return _opacity; }
-            set
-            {
-                _opacity = value;
-                RaisePropertyChanged();
-            }
+            _opacity = value;
+            RaisePropertyChanged();
         }
+    }
 
-        private bool _isVisible = true;
-        [Display(Name = "可见", GroupName = "样式")]
-        /// <summary> 说明  </summary>
-        public bool IsVisible
+    private bool _isVisible = true;
+    [Display(Name = "可见", GroupName = "样式")]
+    /// <summary> 说明  </summary>
+    public bool IsVisible
+    {
+        get { return _isVisible; }
+        set
         {
-            get { return _isVisible; }
-            set
-            {
-                _isVisible = value;
-                RaisePropertyChanged();
-            }
+            _isVisible = value;
+            RaisePropertyChanged();
         }
+    }
 
-        private bool _isEnabled = true;
-        [Display(Name = "可用", GroupName = "样式")]
-        /// <summary> 说明  </summary>
-        public bool IsEnabled
+    private bool _isEnabled = true;
+    [Display(Name = "可用", GroupName = "样式")]
+    /// <summary> 说明  </summary>
+    public bool IsEnabled
+    {
+        get { return _isEnabled; }
+        set
         {
-            get { return _isEnabled; }
-            set
-            {
-                _isEnabled = value;
-                RaisePropertyChanged();
-            }
+            _isEnabled = value;
+            RaisePropertyChanged();
         }
+    }
 
 
-        private int _row;
-        [Display(Name = "行", GroupName = "布局")]
-        /// <summary> 说明  </summary>
-        public int Row
+    private int _row;
+    [Display(Name = "行", GroupName = "布局")]
+    /// <summary> 说明  </summary>
+    public int Row
+    {
+        get { return _row; }
+        set
         {
-            get { return _row; }
-            set
-            {
-                _row = value;
-                RaisePropertyChanged();
-            }
+            _row = value;
+            RaisePropertyChanged();
         }
+    }
 
 
-        private int _column;
-        [Display(Name = "列", GroupName = "布局")]
-        /// <summary> 说明  </summary>
-        public int Column
+    private int _column;
+    [Display(Name = "列", GroupName = "布局")]
+    /// <summary> 说明  </summary>
+    public int Column
+    {
+        get { return _column; }
+        set
         {
-            get { return _column; }
-            set
-            {
-                _column = value;
-                RaisePropertyChanged();
-            }
+            _column = value;
+            RaisePropertyChanged();
         }
+    }
 
 
-        private int _rowSpan;
-        [Display(Name = "行跨距", GroupName = "布局")]
-        /// <summary> 说明  </summary>
-        public int RowSpan
+    private int _rowSpan;
+    [Display(Name = "行跨距", GroupName = "布局")]
+    /// <summary> 说明  </summary>
+    public int RowSpan
+    {
+        get { return _rowSpan; }
+        set
         {
-            get { return _rowSpan; }
-            set
-            {
-                _rowSpan = value;
-                RaisePropertyChanged();
-            }
+            _rowSpan = value;
+            RaisePropertyChanged();
         }
+    }
 
-        private int _columnSpan;
-        [Display(Name = "列跨距", GroupName = "布局")]
-        /// <summary> 说明  </summary>
-        public int ColumnSpan
+    private int _columnSpan;
+    [Display(Name = "列跨距", GroupName = "布局")]
+    /// <summary> 说明  </summary>
+    public int ColumnSpan
+    {
+        get { return _columnSpan; }
+        set
         {
-            get { return _columnSpan; }
-            set
-            {
-                _columnSpan = value;
-                RaisePropertyChanged();
-            }
+            _columnSpan = value;
+            RaisePropertyChanged();
         }
+    }
 
-        [Display(Name = "删除")]
-        public RelayCommand DeleteCommand => new RelayCommand(e =>
-        {
-            Delete(e);
-        });
+    [Display(Name = "删除")]
+    public ICommand DeleteCommand => new RelayCommand(e =>
+    {
+        Delete(e);
+    });
 
-        protected virtual void Delete(object e)
+    protected virtual void Delete(object e)
+    {
+        if (e is ContentControl project)
         {
-            if (e is ContentControl project)
-            {
-                Adorner adorner = GetParent<Adorner>(project);
-                ItemsControl source = GetParent<ItemsControl>(adorner.AdornedElement);
-                GetItemsSource<IList>(source).Remove(project.Content);
-            }
+            Adorner adorner = GetParent<Adorner>(project);
+            ItemsControl source = GetParent<ItemsControl>(adorner.AdornedElement);
+            GetItemsSource<IList>(source).Remove(project.Content);
         }
+    }
 
-        private T GetItemsSource<T>(UIElement element) where T : IEnumerable
-        {
-            if (element is ItemsControl items)
-                return (T)items.ItemsSource;
-            return default;
-        }
+    private T GetItemsSource<T>(UIElement element) where T : IEnumerable
+    {
+        if (element is ItemsControl items)
+            return (T)items.ItemsSource;
+        return default;
+    }
 
-        private T GetParent<T>(DependencyObject element) where T : DependencyObject
+    private T GetParent<T>(DependencyObject element) where T : DependencyObject
+    {
+        if (element == null) return null;
+        DependencyObject parent = VisualTreeHelper.GetParent(element);
+        while (parent != null && !(parent is T))
         {
-            if (element == null) return null;
-            DependencyObject parent = VisualTreeHelper.GetParent(element);
-            while (parent != null && !(parent is T))
+            DependencyObject newVisualParent = VisualTreeHelper.GetParent(parent);
+            if (newVisualParent != null)
+                parent = newVisualParent;
+            else
             {
-                DependencyObject newVisualParent = VisualTreeHelper.GetParent(parent);
-                if (newVisualParent != null)
-                    parent = newVisualParent;
+                if (parent is FrameworkElement)
+                    parent = (parent as FrameworkElement).Parent;
                 else
                 {
-                    if (parent is FrameworkElement)
-                        parent = (parent as FrameworkElement).Parent;
-                    else
-                    {
-                        break;
-                    }
+                    break;
                 }
             }
-            return parent as T;
         }
+        return parent as T;
     }
 }

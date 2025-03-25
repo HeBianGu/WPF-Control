@@ -3,6 +3,7 @@
 
 using H.Extensions.XmlSerialize;
 using H.Services.Common;
+using H.Services.Common.Serialize.Meta;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace System

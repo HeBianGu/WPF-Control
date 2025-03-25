@@ -1,7 +1,6 @@
-﻿namespace H.Services.Common
+﻿namespace H.Services.Common.SplashScreen;
+
+public interface ISplashScreenViewPresenter
 {
-    public interface ISplashScreenViewPresenter
-    {
-        string Message { get; set; }
-    }
+    string Message { get; set; }
 }

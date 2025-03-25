@@ -23,7 +23,7 @@ namespace System
         public static void UseLicense(this IApplicationBuilder service, Action<LicenseOptions> action = null)
         {
             action?.Invoke(LicenseOptions.Instance);
-            SettingDataManager.Instance.Add(LicenseOptions.Instance);
+            IocSetting.Instance.Add(LicenseOptions.Instance);
         }
     }
 }

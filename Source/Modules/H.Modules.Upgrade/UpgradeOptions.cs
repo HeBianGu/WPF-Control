@@ -14,7 +14,7 @@ namespace H.Modules.Upgrade
         protected override string GetDefaultFolder()
         {
             //base.GetDefaultFolder();
-            return AppPaths.Instance.Config;
+            return IocAppPaths.Instance.Config;
         }
 
         private string _uri;
@@ -29,7 +29,7 @@ namespace H.Modules.Upgrade
             }
         }
 
-        private string _SavePath = AppPaths.Instance.Version;
+        private string _SavePath = IocAppPaths.Instance.Version;
         [Display(Name = "更新文件保存位置")]
         public string SavePath
         {

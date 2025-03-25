@@ -1,5 +1,5 @@
 ﻿using H.Extensions.Setting;
-using H.Services.Common;
+using H.Services.Common.MainWindow;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System;
@@ -206,7 +206,7 @@ namespace H.Styles.Default
 
         public static IApplicationBuilder UseMainWindowSetting(this IApplicationBuilder builder, Action<MainWindowOption> option = null)
         {
-            SettingDataManager.Instance.Add(MainWindowOption.Instance);
+            IocSetting.Instance.Add(MainWindowOption.Instance);
             option?.Invoke(MainWindowOption.Instance);
             return builder;
         }
@@ -214,7 +214,7 @@ namespace H.Styles.Default
         public static IApplicationBuilder UseWindowSetting(this IApplicationBuilder builder, Action<WindowSetting> option = null)
         {
             option?.Invoke(WindowSetting.Instance);
-            SettingDataManager.Instance.Add(WindowSetting.Instance);
+            IocSetting.Instance.Add(WindowSetting.Instance);
             return builder;
         }
     }

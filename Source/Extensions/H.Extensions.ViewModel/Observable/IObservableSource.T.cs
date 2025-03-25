@@ -1,9 +1,10 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-using H.Services.Common;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+global using H.Common.Interfaces.Where;
+global using H.Services.Common;
+global using System;
+global using System.Collections.Generic;
+global using System.Collections.ObjectModel;
 
 namespace H.Extensions.ViewModel
 {

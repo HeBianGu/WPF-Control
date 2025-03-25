@@ -6,6 +6,7 @@ using H.Mvvm;
 using System;
 using System.Threading.Tasks;
 using H.Extensions.DataBase;
+using H.Mvvm.Commands;
 
 namespace H.Extensions.ViewModel
 {

@@ -1,4 +1,5 @@
 ﻿global using H.Controls.Diagram.Presenter.Flowables;
+using H.Common.Interfaces;
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
 public interface IFlowableDiagramData : IDiagramData, IMessageable, IPartDataInvokeable

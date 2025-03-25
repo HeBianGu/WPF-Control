@@ -1,4 +1,6 @@
-﻿namespace H.Controls.Diagram.Presenter.DiagramTemplates;
+﻿using H.Common.Interfaces;
+
+namespace H.Controls.Diagram.Presenter.DiagramTemplates;
 
 public interface IDiagramTemplate : INameable, IGroupable
 {

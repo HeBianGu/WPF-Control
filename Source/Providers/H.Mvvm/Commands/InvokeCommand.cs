@@ -1,197 +1,180 @@
-﻿using System;
-using System.ComponentModel;
-using System.Windows.Input;
+﻿namespace H.Mvvm.Commands;
 
-namespace H.Mvvm
+[Obsolete]
+public class InvokeCommand : ICommand, INotifyPropertyChanged, IInvokeCommand
 {
-    [Obsolete]
-    public class InvokeCommand : ICommand, INotifyPropertyChanged, IInvokeCommand
+    protected Action<object> _action;
+    protected readonly Predicate<object> _canExecute;
+    protected Action<IInvokeCommand, object> _actionCommand;
+    protected readonly Func<IInvokeCommand, object, bool> _canExecuteCommand;
+    public InvokeCommand(Action<object> action)
     {
-        protected Action<object> _action;
-        protected readonly Predicate<object> _canExecute;
-        protected Action<IInvokeCommand, object> _actionCommand;
-        protected readonly Func<IInvokeCommand, object, bool> _canExecuteCommand;
-        public InvokeCommand(Action<object> action)
+        _action = action;
+    }
+
+    public InvokeCommand(Action<IInvokeCommand, object> action)
+    {
+        _actionCommand = action;
+    }
+
+    public InvokeCommand(Action<object> execute, Predicate<object> canExecute) : this(execute)
+    {
+        _canExecute = canExecute ?? (x => true);
+    }
+
+    public InvokeCommand(Action<IInvokeCommand, object> execute, Func<IInvokeCommand, object, bool> canExecute) : this(execute)
+    {
+        _canExecuteCommand = canExecute ?? ((x, y) => true);
+    }
+
+    public bool CanExecute(object parameter)
+    {
+        if (_canExecute != null)
+            return _canExecute(parameter);
+
+        if (_canExecuteCommand != null)
+            return _canExecuteCommand(this, parameter);
+        return true;
+    }
+
+    public event EventHandler CanExecuteChanged
+    {
+        add
         {
-            _action = action;
+            CommandManager.RequerySuggested += value;
         }
-
-        public InvokeCommand(Action<IInvokeCommand, object> action)
+        remove
         {
-            _actionCommand = action;
+            CommandManager.RequerySuggested -= value;
         }
+    }
 
-        public InvokeCommand(Action<object> execute, Predicate<object> canExecute) : this(execute)
+    /// <summary> 执行命令 </summary>
+    public virtual void Execute(object parameter)
+    {
+        //#if DEBUG
+        //            if (!string.IsNullOrEmpty(this.Name))
+        //                this.Logger?.Debug(this.Name);
+        //#endif
+        if (_action != null)
+            _action(parameter);
+
+        if (_actionCommand != null)
+            //  Do ：应用async方式try会直接 finally IsBusy不起作用了
+            //try
+            //{
+            //this.IsBusy = true;
+            _actionCommand(this, parameter);
+    }
+
+    public static implicit operator InvokeCommand(Action<object> action)
+    {
+        return new InvokeCommand(action);
+    }
+
+    public static implicit operator InvokeCommand(Action<IInvokeCommand, object> action)
+    {
+        return new InvokeCommand(action);
+    }
+
+    #region - INotifyPropertyChanged -
+
+    public string Name { get; set; }
+
+    private bool _isEnabled = true;
+    public bool IsEnabled
+    {
+        get { return _isEnabled; }
+        set
         {
-            _canExecute = canExecute ?? (x => true);
+            _isEnabled = value;
+            RaisePropertyChanged();
         }
+    }
 
-        public InvokeCommand(Action<IInvokeCommand, object> execute, Func<IInvokeCommand, object, bool> canExecute) : this(execute)
+    private bool _isVisible = true;
+    public bool IsVisible
+    {
+        get { return _isVisible; }
+        set
         {
-            _canExecuteCommand = canExecute ?? ((x, y) => true);
+            _isVisible = value;
+            RaisePropertyChanged();
         }
+    }
 
-        public bool CanExecute(object parameter)
+    private bool _isIndeterminate = true;
+    public bool IsIndeterminate
+    {
+        get { return _isIndeterminate; }
+        set
         {
-            if (_canExecute != null)
-                return _canExecute(parameter);
-
-            if (_canExecuteCommand != null)
-                return _canExecuteCommand(this, parameter);
-            return true;
+            _isIndeterminate = value;
+            RaisePropertyChanged();
         }
+    }
 
-        public event EventHandler CanExecuteChanged
+    private bool _isBusy;
+    public bool IsBusy
+    {
+        get { return _isBusy; }
+        set
         {
-            add
-            {
-                CommandManager.RequerySuggested += value;
-            }
-            remove
-            {
-                CommandManager.RequerySuggested -= value;
-            }
+            _isBusy = value;
+            RaisePropertyChanged();
         }
+    }
 
-        /// <summary> 执行命令 </summary>
-        public virtual void Execute(object parameter)
+    private double _percent;
+    public double Percent
+    {
+        get { return _percent; }
+        set
         {
-            //#if DEBUG
-            //            if (!string.IsNullOrEmpty(this.Name))
-            //                this.Logger?.Debug(this.Name);
-            //#endif
-            if (_action != null)
-                _action(parameter);
-
-            if (_actionCommand != null)
-            {
-                //  Do ：应用async方式try会直接 finally IsBusy不起作用了
-                //try
-                //{
-                //this.IsBusy = true;
-                _actionCommand(this, parameter);
-                //}
-                //catch (Exception ex)
-                //{
-                //    System.Diagnostics.Trace.Assert(false);
-                //    this.Logger?.Error(ex);
-                //}
-                //finally
-                //{
-                //    this.IsBusy = false;
-                //}
-            }
+            _percent = value;
+            RaisePropertyChanged();
         }
+    }
 
-        public static implicit operator InvokeCommand(Action<object> action)
+    private string _message = "正在运行";
+    public string Message
+    {
+        get { return _message; }
+        set
         {
-            return new InvokeCommand(action);
+            _message = value;
+            RaisePropertyChanged();
         }
+    }
 
-        public static implicit operator InvokeCommand(Action<IInvokeCommand, object> action)
+    private string _groupName;
+    [System.Text.Json.Serialization.JsonIgnore]
+    [XmlIgnore]
+    [Browsable(false)]
+    public string GroupName
+    {
+        get { return _groupName; }
+        set
         {
-            return new InvokeCommand(action);
+            _groupName = value;
+            RaisePropertyChanged();
         }
-
-        #region - INotifyPropertyChanged -
-
-        public string Name { get; set; }
-
-        private bool _isEnabled = true;
-        public bool IsEnabled
-        {
-            get { return _isEnabled; }
-            set
-            {
-                _isEnabled = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        private bool _isVisible = true;
-        public bool IsVisible
-        {
-            get { return _isVisible; }
-            set
-            {
-                _isVisible = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        private bool _isIndeterminate = true;
-        public bool IsIndeterminate
-        {
-            get { return _isIndeterminate; }
-            set
-            {
-                _isIndeterminate = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        private bool _isBusy;
-        public bool IsBusy
-        {
-            get { return _isBusy; }
-            set
-            {
-                _isBusy = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        private double _percent;
-        public double Percent
-        {
-            get { return _percent; }
-            set
-            {
-                _percent = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        private string _message = "正在运行";
-        public string Message
-        {
-            get { return _message; }
-            set
-            {
-                _message = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        private string _groupName;
-        [System.Text.Json.Serialization.JsonIgnore]
-        [System.Xml.Serialization.XmlIgnore]
-        [Browsable(false)]
-        public string GroupName
-        {
-            get { return _groupName; }
-            set
-            {
-                _groupName = value;
-                RaisePropertyChanged();
-            }
-        }
+    }
 
 
-        public event PropertyChangedEventHandler PropertyChanged;
+    public event PropertyChangedEventHandler PropertyChanged;
 
-        public void RaisePropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = "")
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
+    public void RaisePropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = "")
+    {
+        if (PropertyChanged != null)
+            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+    }
 
-        #endregion
+    #endregion
 
-        /// <summary> 刷新命令可执行状态 (会调用CanExecute方法) </summary>
-        public void Refresh()
-        {
-            CommandManager.InvalidateRequerySuggested();
-        }
+    /// <summary> 刷新命令可执行状态 (会调用CanExecute方法) </summary>
+    public void Refresh()
+    {
+        CommandManager.InvalidateRequerySuggested();
     }
 }

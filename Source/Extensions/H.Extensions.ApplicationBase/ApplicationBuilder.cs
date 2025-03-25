@@ -1,9 +1,8 @@
-﻿using System;
+﻿using H.Services.Common;
 
-namespace H.Extensions.ApplicationBase
+namespace H.Extensions.ApplicationBase;
+
+public class ApplicationBuilder : IApplicationBuilder
 {
-    public class ApplicationBuilder : IApplicationBuilder
-    {
 
-    }
 }

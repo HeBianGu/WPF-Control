@@ -1,7 +1,7 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
-using H.Mvvm;
+using H.Common.Interfaces;
 using H.Mvvm.ViewModels.Base;
 using H.Services.Common;
 using System;
@@ -43,7 +43,7 @@ namespace H.Modules.Setting
     {
         public SettingViewPresenter()
         {
-            this.Groups = SettingDataManager.Instance.Settings?.GroupBy(l => l.GroupName).Select(x => new SettableGroup() { Name = x.Key, Collection = x.ToObservable() }).ToObservable();
+            this.Groups = IocSetting.Instance.Settings?.GroupBy(l => l.GroupName).Select(x => new SettableGroup() { Name = x.Key, Collection = x.ToObservable() }).ToObservable();
             this.SelectedGroup = this.Groups?.FirstOrDefault();
             this.Title = "系统设置";
             this.Icon = "\xE115";
@@ -76,12 +76,12 @@ namespace H.Modules.Setting
 
         public void Add(params ISettable[] settings)
         {
-            SettingDataManager.Instance.Add(settings);
+            IocSetting.Instance.Add(settings);
         }
 
         public void Remove(params ISettable[] settings)
         {
-            SettingDataManager.Instance.Remove(settings);
+            IocSetting.Instance.Remove(settings);
         }
 
         public void SwitchTo<T>() where T : ISettable

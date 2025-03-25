@@ -82,7 +82,7 @@ namespace H.Modules.Setting
             });
             if (r != true)
                 return;
-            bool sr = SettingDataManager.Instance.Save(out string error);
+            bool sr = IocSetting.Instance.Save(out string error);
             if (sr == false)
             {
                 await IocMessage.Dialog.Show(error);

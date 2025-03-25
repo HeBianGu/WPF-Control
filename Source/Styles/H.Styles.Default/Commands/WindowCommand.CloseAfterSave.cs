@@ -26,9 +26,9 @@ namespace H.Styles.Default
             {
                 if (this.UseSave == false)
                     return null;
-                if (SettingDataManager.Instance != null)
+                if (IocSetting.Instance != null)
                 {
-                    var r = SettingDataManager.Instance.Save(out string message);
+                    var r = IocSetting.Instance.Save(out string message);
                     if (r == false)
                         return message;
                 }

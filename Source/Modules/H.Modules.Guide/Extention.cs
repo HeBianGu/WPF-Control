@@ -26,7 +26,7 @@ namespace System
         public static void UseGuideSetting(this IApplicationBuilder service, Action<IGuideOptions> action = null)
         {
             action?.Invoke(GuideOptions.Instance);
-            SettingDataManager.Instance.Add(GuideOptions.Instance);
+            IocSetting.Instance.Add(GuideOptions.Instance);
         }
 
         ///// <summary>
@@ -37,7 +37,7 @@ namespace System
         //    //services.AddWindowCaptionViewPresenter();
         //    services.AddSingleton<IGuideViewPresenter, GuideViewPresenter>();
         //    option?.Invoke(GuideViewPresenter.Instance);
-        //    SettingDataManager.Instance.Add(GuideViewPresenter.Instance);
+        //    IocSetting.Instance.Add(GuideViewPresenter.Instance);
         //    //WindowCaptionViewPresenter.Instance.AddPersenter(GuideViewPresenter.Instance);
         //    return services;
         //}

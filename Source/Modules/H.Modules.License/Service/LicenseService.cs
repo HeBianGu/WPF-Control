@@ -23,7 +23,7 @@ namespace H.Modules.License
 
         protected override string GetDefaultFolder()
         {
-            return AppPaths.Instance.License;
+            return IocAppPaths.Instance.License;
         }
 
 
@@ -50,7 +50,7 @@ namespace H.Modules.License
 
         string GetBaseDirectoryPath()
         {
-            return System.IO.Path.Combine(AppPaths.Instance.Config, "Microsoft.Extensions.Xmlable.dll");
+            return System.IO.Path.Combine(IocAppPaths.Instance.Config, "Microsoft.Extensions.Xmlable.dll");
             //return System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Microsoft.Extensions.Xmlable.dll");
         }
 

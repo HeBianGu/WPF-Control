@@ -62,7 +62,7 @@ namespace System
 
         public static IApplicationBuilder UseIdentify(this IApplicationBuilder builder, Action<IdentifyOptions> option = null)
         {
-            SettingDataManager.Instance.Add(IdentifyOptions.Instance);
+            IocSetting.Instance.Add(IdentifyOptions.Instance);
             option?.Invoke(IdentifyOptions.Instance);
             return builder;
         }

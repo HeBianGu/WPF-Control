@@ -24,7 +24,7 @@ namespace System
 
         public static IApplicationBuilder UseTag(this IApplicationBuilder builder, Action<TagOptions> option = null)
         {
-            SettingDataManager.Instance.Add(TagOptions.Instance);
+            IocSetting.Instance.Add(TagOptions.Instance);
             option?.Invoke(TagOptions.Instance);
             return builder;
         }

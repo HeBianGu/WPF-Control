@@ -1,4 +1,5 @@
 ﻿using H.Services.Common;
+using H.Services.Message.IODialog;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
 using System.Collections.Generic;

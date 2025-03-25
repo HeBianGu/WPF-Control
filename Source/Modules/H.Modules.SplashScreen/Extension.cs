@@ -23,7 +23,7 @@ namespace System
 
         public static IApplicationBuilder UseSplashScreen(this IApplicationBuilder builder, Action<SplashScreenOption> option = null)
         {
-            SettingDataManager.Instance.Add(SplashScreenOption.Instance);
+            IocSetting.Instance.Add(SplashScreenOption.Instance);
             option?.Invoke(SplashScreenOption.Instance);
             return builder;
         }

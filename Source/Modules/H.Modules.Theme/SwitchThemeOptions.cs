@@ -61,7 +61,7 @@ namespace H.Modules.Theme
 
         protected override string GetDefaultFolder()
         {
-            return AppPaths.Instance.UserSetting;
+            return IocAppPaths.Instance.UserSetting;
         }
     }
 }

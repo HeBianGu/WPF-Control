@@ -1,14 +1,11 @@
-﻿using System;
+﻿namespace H.Extensions.Torrent;
 
-namespace H.Extensions.Torrent
+public interface ITorrentService
 {
-    public interface ITorrentService
-    {
-        TorrentInfo CreateInfo(string torrentFile);
-    }
+    TorrentInfo CreateInfo(string torrentFile);
+}
 
-    public class IocTorrentService : Ioc<ITorrentService>
-    {
+public class IocTorrentService : Ioc<ITorrentService>
+{
 
-    }
 }

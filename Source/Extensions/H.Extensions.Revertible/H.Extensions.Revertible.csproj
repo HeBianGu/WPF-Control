@@ -5,7 +5,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Services\H.Services.Common\H.Services.Common.csproj" />
     <ProjectReference Include="..\..\Providers\H.Mvvm\H.Mvvm.csproj" />
     <ProjectReference Include="..\..\Services\H.Services.Revertible\H.Services.Revertible.csproj" />
     <ProjectReference Include="..\H.Extensions.Setting\H.Extensions.Setting.csproj" />

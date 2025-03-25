@@ -1,15 +1,13 @@
-﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+﻿using H.Common.Interfaces;
 
-namespace H.Services.Common
+namespace H.Services.Common.Presenter;
+
+public class TitleablePresenterBase<T, Interface> : Ioc<T, Interface>, ITitleable where T : class, Interface, new()
 {
-    public class TitleablePresenterBase<T, Interface> : Ioc<T, Interface>, ITitleable where T : class, Interface, new()
+    public TitleablePresenterBase()
     {
-        public TitleablePresenterBase()
-        {
-            TypeDescriptor.GetAttributes(this).OfType<DisplayAttribute>();
-            this.Title = TypeDescriptor.GetClassName(this);
-        }
-        public string Title { get; set; }
+        TypeDescriptor.GetAttributes(this).OfType<DisplayAttribute>();
+        this.Title = TypeDescriptor.GetClassName(this);
     }
+    public string Title { get; set; }
 }

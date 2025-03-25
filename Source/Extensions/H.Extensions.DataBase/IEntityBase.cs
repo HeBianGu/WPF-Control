@@ -1,7 +1,6 @@
-﻿namespace H.Extensions.DataBase
+﻿namespace H.Extensions.DataBase;
+
+public interface IEntityBase<TPrimaryKey>
 {
-    public interface IEntityBase<TPrimaryKey>
-    {
-        TPrimaryKey ID { get; set; }
-    }
+    TPrimaryKey ID { get; set; }
 }

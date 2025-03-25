@@ -19,7 +19,7 @@ namespace H.Modules.Setting
             var r = await IocMessage.ShowDialogMessage("清空配置数据无法恢复，确认清空配置？");
             if (r == false)
                 return;
-            SettingDataManager.Instance.SetDefault();
+            IocSetting.Instance.SetDefault();
         }
     }
 }

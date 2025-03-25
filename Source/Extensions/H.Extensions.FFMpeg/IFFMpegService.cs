@@ -1,9 +1,8 @@
 ﻿using FFMpegCore;
 
-namespace H.Extensions.FFMpeg
+namespace H.Extensions.FFMpeg;
+
+public interface IFFMpegService
 {
-    public interface IFFMpegService
-    {
-        IMediaAnalysis GetMediaAnalysis(string url);
-    }
+    IMediaAnalysis GetMediaAnalysis(string url);
 }

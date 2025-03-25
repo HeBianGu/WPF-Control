@@ -10,14 +10,14 @@ namespace System
     {
         public static IApplicationBuilder UseTheme(this IApplicationBuilder builder, Action<ThemeSetting> option = null)
         {
-            SettingDataManager.Instance.Add(ThemeSetting.Instance);
+            IocSetting.Instance.Add(ThemeSetting.Instance);
             option?.Invoke(ThemeSetting.Instance);
             return builder;
         }
 
         public static IApplicationBuilder UseSwithTheme(this IApplicationBuilder builder, Action<SwitchThemeOptions> option = null)
         {
-            SettingDataManager.Instance.Add(SwitchThemeOptions.Instance);
+            IocSetting.Instance.Add(SwitchThemeOptions.Instance);
             option?.Invoke(SwitchThemeOptions.Instance);
             return builder;
         }

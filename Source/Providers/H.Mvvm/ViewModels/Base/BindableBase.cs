@@ -1,31 +1,25 @@
-﻿using System;
-using System.ComponentModel;
-using System.Windows;
-using System.Windows.Threading;
+﻿namespace H.Mvvm.ViewModels.Base;
 
-namespace H.Mvvm.ViewModels.Base
+public abstract class BindableBase : INotifyPropertyChanged
 {
-    public abstract class BindableBase : INotifyPropertyChanged
+    public BindableBase()
     {
-        public BindableBase()
-        {
-            Init();
-        }
-
-        protected virtual void Init()
-        {
-
-        }
-
-        #region - MVVM -
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public virtual void RaisePropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = "")
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-
-        }
-        #endregion
+        Init();
     }
+
+    protected virtual void Init()
+    {
+
+    }
+
+    #region - MVVM -
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    public virtual void RaisePropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = "")
+    {
+        if (PropertyChanged != null)
+            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+
+    }
+    #endregion
 }

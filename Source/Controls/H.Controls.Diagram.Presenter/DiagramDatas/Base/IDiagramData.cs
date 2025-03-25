@@ -1,4 +1,6 @@
-﻿namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
+﻿using H.Common.Interfaces;
+
+namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
 public interface IDiagramData : ICloneable, IDable, INameable, IGroupable
 {

@@ -1,17 +1,16 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-using H.Services.Common;
-using H.Mvvm;
-using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Threading;
-using H.Extensions.DataBase;
+global using H.Services.Common;
+global using Microsoft.Win32;
+global using System.ComponentModel;
+global using System.ComponentModel.DataAnnotations;
+global using System.Diagnostics;
+global using System.Windows.Threading;
+global using H.Extensions.DataBase;
+global using H.Services.Common.Excel;
+global using H.Mvvm.Commands;
+global using H.Mvvm.ViewModels;
+global using H.Services.Message;
+global using H.Services.Message.Dialog;
 
 
 namespace H.Extensions.ViewModel

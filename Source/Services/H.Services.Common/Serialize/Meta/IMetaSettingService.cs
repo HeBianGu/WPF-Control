@@ -1,8 +1,7 @@
-﻿namespace H.Services.Common
+﻿namespace H.Services.Common.Serialize.Meta;
+
+public interface IMetaSettingService
 {
-    public interface IMetaSettingService
-    {
-        void Serilize(object setting, string id);
-        T Deserilize<T>(string id);
-    }
+    void Serilize(object setting, string id);
+    T Deserilize<T>(string id);
 }

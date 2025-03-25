@@ -1,7 +1,6 @@
-﻿namespace H.Services.Common
-{
-    public interface ISwitchThemeViewPresenter
-    {
+﻿namespace H.Services.Common.Theme;
 
-    }
+public interface ISwitchThemeViewPresenter
+{
+
 }

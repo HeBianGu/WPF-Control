@@ -1,91 +1,88 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.ComponentModel;
-using System.Reflection;
 
-namespace H.Extensions.NewtonsoftJson
+namespace H.Extensions.NewtonsoftJson;
+
+
+public class TypeConverterJsonConverter<T> : JsonConverter where T : TypeConverter
 {
-
-    public class TypeConverterJsonConverter<T> : JsonConverter where T : TypeConverter
+    T CreateTypeConverter()
     {
-        T CreateTypeConverter()
-        {
-            return Activator.CreateInstance<T>();
-        }
-        public override bool CanConvert(Type objectType)
-        {
-            TypeConverter converter = CreateTypeConverter();
-            return converter != null && converter.CanConvertFrom(typeof(string)) && converter.CanConvertTo(typeof(string));
-        }
-
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-        {
-            if (reader.TokenType == JsonToken.Null)
-            {
-                return null;
-            }
-
-            TypeConverter converter = CreateTypeConverter();
-            return converter.ConvertFromInvariantString((string)reader.Value);
-        }
-
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-        {
-            if (value == null)
-            {
-                writer.WriteNull();
-                return;
-            }
-            TypeConverter converter = CreateTypeConverter();
-            writer.WriteValue(converter.ConvertToInvariantString(value));
-        }
-
+        return Activator.CreateInstance<T>();
+    }
+    public override bool CanConvert(Type objectType)
+    {
+        TypeConverter converter = CreateTypeConverter();
+        return converter != null && converter.CanConvertFrom(typeof(string)) && converter.CanConvertTo(typeof(string));
     }
 
-    public class TypeConverterJsonConverter : JsonConverter
+    public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
     {
-        TypeConverter CreateTypeConverter(Type objectType)
+        if (reader.TokenType == JsonToken.Null)
         {
-            var result = TypeDescriptor.GetConverter(objectType);
-            return result.GetType() == typeof(TypeConverter) ? null : result;
-        }
-        public override bool CanConvert(Type objectType)
-        {
-            if (objectType.IsPrimitive)
-                return false;
-            if (objectType.IsEnum)
-                return false;
-            //if (!objectType.IsClass)
-            //    return false;
-            //return true;
-            TypeConverter converter = CreateTypeConverter(objectType);
-            return converter != null && converter.CanConvertFrom(typeof(string)) && converter.CanConvertTo(typeof(string));
+            return null;
         }
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-        {
-            if (reader.TokenType == JsonToken.Null)
-            {
-                return null;
-            }
-            TypeConverter converter = CreateTypeConverter(objectType);
-            if (reader?.Value is string str && converter != null)
-                return converter.ConvertFromInvariantString(str);
-            return reader.Value;
-        }
-
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-        {
-            if (value == null)
-            {
-                writer.WriteNull();
-                return;
-            }
-            TypeConverter converter = CreateTypeConverter(value.GetType());
-            if (converter == null)
-                writer.WriteValue(value);
-            writer.WriteValue(converter.ConvertToInvariantString(value));
-        }
-
+        TypeConverter converter = CreateTypeConverter();
+        return converter.ConvertFromInvariantString((string)reader.Value);
     }
+
+    public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+    {
+        if (value == null)
+        {
+            writer.WriteNull();
+            return;
+        }
+        TypeConverter converter = CreateTypeConverter();
+        writer.WriteValue(converter.ConvertToInvariantString(value));
+    }
+
+}
+
+public class TypeConverterJsonConverter : JsonConverter
+{
+    TypeConverter CreateTypeConverter(Type objectType)
+    {
+        var result = TypeDescriptor.GetConverter(objectType);
+        return result.GetType() == typeof(TypeConverter) ? null : result;
+    }
+    public override bool CanConvert(Type objectType)
+    {
+        if (objectType.IsPrimitive)
+            return false;
+        if (objectType.IsEnum)
+            return false;
+        //if (!objectType.IsClass)
+        //    return false;
+        //return true;
+        TypeConverter converter = CreateTypeConverter(objectType);
+        return converter != null && converter.CanConvertFrom(typeof(string)) && converter.CanConvertTo(typeof(string));
+    }
+
+    public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+    {
+        if (reader.TokenType == JsonToken.Null)
+        {
+            return null;
+        }
+        TypeConverter converter = CreateTypeConverter(objectType);
+        if (reader?.Value is string str && converter != null)
+            return converter.ConvertFromInvariantString(str);
+        return reader.Value;
+    }
+
+    public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+    {
+        if (value == null)
+        {
+            writer.WriteNull();
+            return;
+        }
+        TypeConverter converter = CreateTypeConverter(value.GetType());
+        if (converter == null)
+            writer.WriteValue(value);
+        writer.WriteValue(converter.ConvertToInvariantString(value));
+    }
+
 }

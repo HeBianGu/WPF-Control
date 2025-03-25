@@ -15,7 +15,7 @@ namespace H.Modules.Setting
     {
         public override void Execute(object parameter)
         {
-            SettingDataManager.Instance.Cancel();
+            IocSetting.Instance.Cancel();
         }
     }
 }

@@ -19,7 +19,7 @@ namespace System
 
         public static IApplicationBuilder UseFeedBack(this IApplicationBuilder builder, Action<FeedbackOptions> option = null)
         {
-            SettingDataManager.Instance.Add(FeedbackOptions.Instance);
+            IocSetting.Instance.Add(FeedbackOptions.Instance);
             option?.Invoke(FeedbackOptions.Instance);
             return builder;
         }

@@ -1,7 +1,7 @@
 // Copyright ? 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+global using System.ComponentModel;
 global using System.Windows;
 global using System.Windows.Markup;
-global using System.ComponentModel;
 
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None, //where theme specific resource dictionaries are located

@@ -1,27 +1,24 @@
 ﻿using H.Mvvm.ViewModels.Base;
-using System.ComponentModel;
 
-namespace H.Mvvm
+namespace H.Mvvm.ViewModels;
+
+public class DisplayBindable<T> : DisplayBindableBase
 {
-    public class DisplayBindable<T> : DisplayBindableBase
+    public DisplayBindable(T t)
     {
-        public DisplayBindable(T t)
-        {
-            this.Model = t;
+        this.Model = t;
 
-        }
-
-        private T _model;
-        [Browsable(false)]
-        public T Model
-        {
-            get { return _model; }
-            set
-            {
-                _model = value;
-                RaisePropertyChanged("Model");
-            }
-        }
     }
 
+    private T _model;
+    [Browsable(false)]
+    public T Model
+    {
+        get { return _model; }
+        set
+        {
+            _model = value;
+            RaisePropertyChanged("Model");
+        }
+    }
 }

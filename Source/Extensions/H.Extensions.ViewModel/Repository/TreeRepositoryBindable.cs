@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using H.Extensions.DataBase;
+using H.Mvvm.ViewModels.Tree;
 
 namespace H.Extensions.ViewModel
 {

@@ -11,6 +11,7 @@ using System.Windows;
 using System.Windows.Media;
 using H.Extensions.DataBase;
 using H.Styles.Default;
+using H.Services.Common.Schedule;
 
 namespace H.App.FileManager
 {

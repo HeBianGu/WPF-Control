@@ -1,7 +1,6 @@
-﻿namespace H.Services.Common
-{
-    public interface ISettingButtonPresenter
-    {
+﻿namespace H.Services.Common.Setting;
 
-    }
+public interface ISettingButtonPresenter
+{
+
 }

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
-using H.Mvvm.ViewModels.Base;
+using H.Common.Interfaces;
 
 namespace H.Controls.FilterBox
 {
