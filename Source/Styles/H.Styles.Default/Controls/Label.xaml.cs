@@ -1,9 +1,6 @@
-﻿using System.Windows;
+﻿namespace H.Styles.Default.Controls;
 
-namespace H.Styles.Default
+public class LabelKeys
 {
-    public class LabelKeys
-    {
-        public static ComponentResourceKey Default => new ComponentResourceKey(typeof(LabelKeys), "S.Label.Default");
-    }
+    public static ComponentResourceKey Default => new ComponentResourceKey(typeof(LabelKeys), "S.Label.Default");
 }

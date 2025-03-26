@@ -1,9 +1,9 @@
-﻿<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:h="https://github.com/HeBianGu"
-    xmlns:local="clr-namespace:H.Modules.Setting"
-    xmlns:system="clr-namespace:System;assembly=netstandard">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:lc="clr-namespace:H.Modules.Setting.Commands"
+                    xmlns:local="clr-namespace:H.Modules.Setting"
+                    xmlns:system="clr-namespace:System;assembly=netstandard">
 
     <DataTemplate DataType="{x:Type local:SettingViewPresenter}">
         <Grid>
@@ -11,27 +11,26 @@
                 <RowDefinition />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <TabControl ItemsSource="{Binding Groups}" SelectedItem="{Binding SelectedGroup}">
+            <TabControl ItemsSource="{Binding Groups}"
+                        SelectedItem="{Binding SelectedGroup}">
                 <TabControl.ContentTemplate>
                     <DataTemplate>
-                        <h:NavigationBox
-                            Margin="0"
-                            Padding="0,0,0,0"
-                            HorizontalContentAlignment="Stretch"
-                            BorderBrush="{DynamicResource {x:Static h:BrushKeys.Dark0_1}}"
-                            BorderThickness="1"
-                            HitTestPoint="55 10"
-                            ItemsSource="{Binding Collection}"
-                            NavigationSource="{Binding Collection}"
-                            ScrollViewer.CanContentScroll="False"
-                            ScrollViewer.VerticalScrollBarVisibility="Auto"
-                            SelectedItem="{Binding SelectedSettable, Mode=TwoWay}">
+                        <h:NavigationBox Margin="0"
+                                         Padding="0,0,0,0"
+                                         HorizontalContentAlignment="Stretch"
+                                         BorderBrush="{DynamicResource {x:Static h:BrushKeys.Dark0_1}}"
+                                         BorderThickness="1"
+                                         HitTestPoint="55 10"
+                                         ItemsSource="{Binding Collection}"
+                                         NavigationSource="{Binding Collection}"
+                                         ScrollViewer.CanContentScroll="False"
+                                         ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                         SelectedItem="{Binding SelectedSettable, Mode=TwoWay}">
                             <h:NavigationBox.NavigationDataTemplate>
                                 <DataTemplate>
-                                    <TextBlock
-                                        MinWidth="{Binding Source={x:Static local:SettingViewOption.Instance}, Path=NavigationiTitleWidth}"
-                                        Margin="10,0"
-                                        Text="{Binding Name}" />
+                                    <TextBlock MinWidth="{Binding Source={x:Static local:SettingViewOption.Instance}, Path=NavigationiTitleWidth}"
+                                               Margin="10,0"
+                                               Text="{Binding Name}" />
                                 </DataTemplate>
                             </h:NavigationBox.NavigationDataTemplate>
 
@@ -52,35 +51,33 @@
 
                             <h:NavigationBox.ItemTemplate>
                                 <DataTemplate DataType="{x:Type h:ISettable}">
-                                    <GroupBox Margin="1,0,0,1" Header="{Binding}">
+                                    <GroupBox Margin="1,0,0,1"
+                                              Header="{Binding}">
                                         <GroupBox.HeaderTemplate>
                                             <DataTemplate>
                                                 <DockPanel>
-                                                    <TextBlock
-                                                        Margin="0,0,0,0"
-                                                        VerticalAlignment="Bottom"
-                                                        FontWeight="Bold"
-                                                        Text="{Binding Name}"
-                                                        ToolTip="{Binding Description}" />
+                                                    <TextBlock Margin="0,0,0,0"
+                                                               VerticalAlignment="Bottom"
+                                                               FontWeight="Bold"
+                                                               Text="{Binding Name}"
+                                                               ToolTip="{Binding Description}" />
                                                 </DockPanel>
                                             </DataTemplate>
                                         </GroupBox.HeaderTemplate>
                                         <h:Cattach.CaptionRightTemplate>
                                             <ControlTemplate>
-                                                <TextBlock
-                                                    Margin="5,0"
-                                                    HorizontalAlignment="Right"
-                                                    VerticalAlignment="Center"
-                                                    FontSize="{DynamicResource {x:Static h:FontSizeKeys.Header7}}"
-                                                    Opacity="0.6"
-                                                    Text="{Binding Description}" />
+                                                <TextBlock Margin="5,0"
+                                                           HorizontalAlignment="Right"
+                                                           VerticalAlignment="Center"
+                                                           FontSize="{DynamicResource {x:Static h:FontSizeKeys.Header7}}"
+                                                           Opacity="0.6"
+                                                           Text="{Binding Description}" />
                                             </ControlTemplate>
                                         </h:Cattach.CaptionRightTemplate>
-                                        <h:Form
-                                            Margin="2,0,0,0"
-                                            ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                                            SelectObject="{Binding}"
-                                            TitleWidth="{Binding Source={x:Static local:SettingViewOption.Instance}, Path=TitleWidth}" />
+                                        <h:Form Margin="2,0,0,0"
+                                                ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                                SelectObject="{Binding}"
+                                                TitleWidth="{Binding Source={x:Static local:SettingViewOption.Instance}, Path=TitleWidth}" />
                                     </GroupBox>
                                 </DataTemplate>
                             </h:NavigationBox.ItemTemplate>
@@ -89,10 +86,9 @@
                 </TabControl.ContentTemplate>
                 <TabControl.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock
-                            Margin="10,0"
-                            FontSize="{DynamicResource {x:Static FontSizeKeys.Header5}}"
-                            Text="{Binding Name}" />
+                        <TextBlock Margin="10,0"
+                                   FontSize="{DynamicResource {x:Static FontSizeKeys.Header5}}"
+                                   Text="{Binding Name}" />
                     </DataTemplate>
                 </TabControl.ItemTemplate>
                 <!--<TabControl.ItemContainerStyle>
@@ -107,59 +103,55 @@
             </TabControl.ItemContainerStyle>-->
             </TabControl>
 
-            <DockPanel
-                Grid.Row="1"
-                Margin="0,5,0,0"
-                Background="Transparent"
-                DockPanel.Dock="Bottom"
-                LastChildFill="False">
-                <Button
-                    Margin="0"
-                    BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
-                    Command="{local:SettingDefaultCommand}"
-                    Content="恢复默认"
-                    DockPanel.Dock="Left"
-                    ToolTip="此功能会重新加载参数默认配置" />
+            <DockPanel Grid.Row="1"
+                       Margin="0,5,0,0"
+                       Background="Transparent"
+                       DockPanel.Dock="Bottom"
+                       LastChildFill="False">
+                <Button Margin="0"
+                        BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
+                        Command="{lc:SettingDefaultCommand}"
+                        Content="恢复默认"
+                        DockPanel.Dock="Left"
+                        ToolTip="此功能会重新加载参数默认配置" />
 
-                <Button
-                    Margin="5,0"
-                    BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
-                    Command="{ClearSettingDataCommand}"
-                    Content="初始化配置(重启生效)"
-                    DockPanel.Dock="Left"
-                    ToolTip="此功能会清空配置文件，重启后重新加载" />
+                <Button Margin="5,0"
+                        BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
+                        Command="{lc:ClearSettingDataCommand}"
+                        Content="初始化配置(重启生效)"
+                        DockPanel.Dock="Left"
+                        ToolTip="此功能会清空配置文件，重启后重新加载" />
 
-                <Button
-                    MinWidth="100"
-                    Margin="2,0"
-                    Command="{SumitDialogCommand}"
-                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
-                    Content="确定"
-                    DockPanel.Dock="Right" />
+                <Button MinWidth="100"
+                        Margin="2,0"
+                        Command="{SumitDialogCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
+                        Content="确定"
+                        DockPanel.Dock="Right" />
 
-                <Button
-                    MinWidth="100"
-                    Margin="2,0"
-                    Command="{CancelSettingDataCommand}"
-                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
-                    Content="取消"
-                    DockPanel.Dock="Right" />
+                <Button MinWidth="100"
+                        Margin="2,0"
+                        Command="{lc:CancelSettingDataCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
+                        Content="取消"
+                        DockPanel.Dock="Right" />
             </DockPanel>
         </Grid>
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type local:SettingButtonPresenter}">
-        <Button
-            Command="{local:ShowSettingCommand}"
-            Style="{DynamicResource {x:Static WindowKeys.Button}}"
-            ToolTip="设置">
+        <Button Command="{lc:ShowSettingCommand}"
+                Style="{DynamicResource {x:Static WindowKeys.Button}}"
+                ToolTip="设置">
             M533.333333 987.733333h-42.666666c-32 0-61.866667-25.6-66.133334-57.6l-10.666666-72.533333c-4.266667-6.4-32-27.733333-46.933334-36.266667-4.266667-2.133333-19.2-2.133333-27.733333 4.266667l-57.6 42.666667c-25.6 19.2-64 17.066667-87.466667-6.4l-32-32c-23.466667-23.466667-25.6-61.866667-6.4-87.466667l42.666667-57.6c2.133333-6.4-2.133333-42.666667-8.533333-57.6-2.133333-4.266667-12.8-14.933333-23.466667-17.066667l-72.533333-10.666666c-32-4.266667-57.6-34.133333-57.6-66.133334v-42.666666c0-32 25.6-61.866667 57.6-66.133334l72.533333-10.666666c4.266667-6.4 25.6-34.133333 34.133333-49.066667 2.133333-4.266667 2.133333-19.2-4.266666-27.733333l-42.666667-57.6c-19.2-25.6-17.066667-64 6.4-87.466667L192 160c23.466667-23.466667 61.866667-25.6 87.466667-6.4l57.6 42.666667c6.4 2.133333 42.666667-2.133333 57.6-8.533334 4.266667-2.133333 14.933333-12.8 17.066666-23.466666l10.666667-72.533334c4.266667-32 34.133333-57.6 66.133333-57.6H533.333333c32 0 61.866667 25.6 66.133334 57.6l10.666666 72.533334c6.4 6.4 34.133333 27.733333 49.066667 36.266666 4.266667 2.133333 19.2 2.133333 27.733333-4.266666l57.6-42.666667c25.6-19.2 64-17.066667 87.466667 6.4L864 192c23.466667 23.466667 25.6 61.866667 6.4 87.466667l-42.666667 57.6c-2.133333 6.4 2.133333 42.666667 8.533334 57.6 2.133333 4.266667 12.8 14.933333 23.466666 17.066666l72.533334 10.666667c32 4.266667 57.6 34.133333 57.6 66.133333V533.333333c0 32-25.6 61.866667-57.6 66.133334l-72.533334 10.666666c-6.4 4.266667-27.733333 32-36.266666 46.933334-2.133333 4.266667-2.133333 19.2 4.266666 27.733333l42.666667 57.6c19.2 25.6 17.066667 64-6.4 87.466667L832 861.866667c-23.466667 23.466667-61.866667 25.6-87.466667 6.4l-57.6-42.666667c-6.4-2.133333-42.666667 2.133333-57.6 8.533333-4.266667 2.133333-14.933333 12.8-17.066666 23.466667l-10.666667 72.533333c-6.4 34.133333-34.133333 57.6-68.266667 57.6z m-174.933333-217.6c10.666667 0 21.333333 2.133333 32 6.4 0 0 70.4 36.266667 76.8 74.666667l10.666667 72.533333c0 6.4 8.533333 12.8 14.933333 12.8H533.333333c6.4 0 12.8-6.4 14.933334-12.8l10.666666-72.533333c4.266667-29.866667 27.733333-57.6 51.2-66.133333 0 0 74.666667-23.466667 106.666667 0l57.6 42.666666c4.266667 4.266667 14.933333 2.133333 19.2-2.133333l32-32c4.266667-4.266667 4.266667-12.8 2.133333-19.2l-42.666666-57.6c-17.066667-23.466667-21.333333-59.733333-10.666667-83.2 0 0 36.266667-70.4 74.666667-76.8l72.533333-10.666667c6.4 0 12.8-8.533333 12.8-14.933333V490.666667c0-6.4-6.4-12.8-12.8-14.933334l-72.533333-10.666666c-29.866667-4.266667-57.6-27.733333-66.133334-51.2 0 0-23.466667-74.666667 0-106.666667l42.666667-57.6c4.266667-4.266667 2.133333-14.933333-2.133333-19.2l-32-32c0-6.4-8.533333-6.4-14.933334-2.133333l-59.733333 42.666666c-23.466667 17.066667-59.733333 21.333333-83.2 10.666667 0 0-70.4-36.266667-76.8-74.666667l-10.666667-72.533333c0-6.4-8.533333-12.8-14.933333-12.8H490.666667c-6.4 0-12.8 6.4-14.933334 12.8l-10.666666 72.533333c-4.266667 29.866667-27.733333 57.6-51.2 66.133334 0 0-74.666667 23.466667-106.666667 0l-57.6-42.666667c-8.533333-6.4-17.066667-6.4-21.333333-2.133333l-32 32c-4.266667 4.266667-4.266667 12.8 0 19.2l42.666666 57.6c17.066667 23.466667 21.333333 59.733333 10.666667 83.2 0 0-36.266667 70.4-74.666667 76.8l-72.533333 10.666666c-6.4 0-12.8 8.533333-12.8 14.933334v42.666666c0 6.4 6.4 12.8 12.8 14.933334l72.533333 10.666666c29.866667 4.266667 57.6 27.733333 66.133334 51.2 0 0 23.466667 74.666667 0 106.666667l-42.666667 57.6c-6.4 8.533333-6.4 17.066667-2.133333 21.333333l32 32c4.266667 4.266667 12.8 4.266667 19.2 2.133334l57.6-42.666667c14.933333-12.8 34.133333-17.066667 53.333333-17.066667z m153.6-115.2c-38.4 0-74.666667-14.933333-100.266667-42.666666-25.6-25.6-42.666667-64-42.666666-100.266667 0-38.4 14.933333-74.666667 42.666666-100.266667 25.6-25.6 64-42.666667 100.266667-42.666666 38.4 0 74.666667 14.933333 100.266667 42.666666 25.6 25.6 42.666667 64 42.666666 100.266667 0 38.4-14.933333 74.666667-42.666666 100.266667-25.6 27.733333-61.866667 42.666667-100.266667 42.666666z m0-232.533333c-23.466667 0-46.933333 10.666667-64 25.6-17.066667 17.066667-25.6 40.533333-25.6 64s10.666667 46.933333 25.6 64c17.066667 17.066667 40.533333 25.6 64 25.6s46.933333-10.666667 64-25.6c17.066667-17.066667 25.6-40.533333 25.6-64s-10.666667-46.933333-25.6-64c-17.066667-14.933333-40.533333-25.6-64-25.6z
         </Button>
         <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding IsVisible}" Value="False">
+            <DataTrigger Binding="{Binding IsVisible}"
+                         Value="False">
                 <Setter Property="Visibility" Value="Collapsed" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding IsAuthority}" Value="False">
+            <DataTrigger Binding="{Binding IsAuthority}"
+                         Value="False">
                 <Setter Property="Visibility" Value="Collapsed" />
             </DataTrigger>
         </DataTemplate.Triggers>

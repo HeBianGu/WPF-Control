@@ -3,11 +3,15 @@ global using H.Controls.Diagram.Layouts.Base;
 global using H.Controls.Diagram.LinkDrawers;
 global using H.Controls.Diagram.Presenter.NodeDatas.Card;
 global using System.Windows.Input;
-using H.Controls.Diagram.GraphSource;
-using H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem;
-using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
-using H.Extensions.FontIcon;
-using System.Text.Json.Serialization;
+global using H.Common.Attributes;
+global using H.Controls.Diagram.GraphSource;
+global using H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem;
+global using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
+global using H.Extensions.FontIcon;
+global using H.Mvvm.Commands;
+global using H.Services.Message;
+global using System.Text.Json.Serialization;
+global using H.Services.Message.Dialog;
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
 public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData

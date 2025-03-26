@@ -1,21 +1,19 @@
-﻿using System;
-using System.Windows.Markup;
+﻿using System.Windows.Markup;
 
-namespace H.Themes.Colors.Accent
+namespace H.Themes.Colors.Accent;
+
+public class AccentLightThemeExtension : MarkupExtension
 {
-    public class AccentLightThemeExtension : MarkupExtension
+    public override object ProvideValue(IServiceProvider serviceProvider)
     {
-        public override object ProvideValue(IServiceProvider serviceProvider)
-        {
-            return new AccentLightColorResource().Resource;
-        }
+        return new AccentLightColorResource().Resource;
     }
+}
 
-    public class AccentDarkThemeExtension : MarkupExtension
+public class AccentDarkThemeExtension : MarkupExtension
+{
+    public override object ProvideValue(IServiceProvider serviceProvider)
     {
-        public override object ProvideValue(IServiceProvider serviceProvider)
-        {
-            return new AccentDarkColorResource().Resource;
-        }
+        return new AccentDarkColorResource().Resource;
     }
 }

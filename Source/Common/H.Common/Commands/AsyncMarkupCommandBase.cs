@@ -1,6 +1,5 @@
 ﻿namespace H.Common.Commands;
 
-
 public abstract class AsyncMarkupCommandBase : MarkupCommandBase
 {
     private bool _isExecuting;

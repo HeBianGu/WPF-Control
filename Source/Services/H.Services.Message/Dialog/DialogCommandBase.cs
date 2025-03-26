@@ -1,7 +1,5 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-using H.Common.Commands;
-
 namespace H.Services.Message.Dialog;
 
 public abstract class DialogCommandBase : AsyncMarkupCommandBase
@@ -38,6 +36,5 @@ public abstract class DialogCommandBase : AsyncMarkupCommandBase
         dialog.DialogResult = true;
         dialog.Close();
     }
-
 
 }

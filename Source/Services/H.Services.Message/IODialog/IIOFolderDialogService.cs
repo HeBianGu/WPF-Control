@@ -8,7 +8,7 @@ public static class IOFolderDialogServiceExtension
 {
     public static string ShowOpenFolder(this IIOFolderDialogService service, Action<string> sumitAction)
     {
-        var s = service.ShowOpenFolder();
+        string s = service.ShowOpenFolder();
         if (s == null)
             return null;
         sumitAction?.Invoke(s);

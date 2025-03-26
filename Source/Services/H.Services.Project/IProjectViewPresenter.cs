@@ -4,5 +4,5 @@ namespace H.Services.Project;
 
 public interface IProjectViewPresenter
 {
- 
+
 }

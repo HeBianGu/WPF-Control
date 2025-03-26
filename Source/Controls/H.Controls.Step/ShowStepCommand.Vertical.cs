@@ -1,11 +1,12 @@
-﻿using H.Services.Common;
+﻿
 using H.Mvvm;
 using System.Threading;
 using System.Threading.Tasks;
+using H.Services.Message.Dialog.Commands;
 
 namespace H.Controls.Step
 {
-    public class ShowVerticalStepCommand : MessageCommandBase
+    public class ShowVerticalStepCommand : ShowMessageDialogCommandBase
     {
         public int Count { get; set; } = 5;
 

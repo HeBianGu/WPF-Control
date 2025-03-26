@@ -1,7 +1,5 @@
-﻿using H.Extensions.Attach;
-using H.Mvvm;
-using H.Mvvm.Attributes;
-using System.ComponentModel.DataAnnotations;
+﻿using H.Common.Attributes;
+using H.Extensions.Attach;
 using System.Reflection;
 
 namespace H.Modules.Guide;

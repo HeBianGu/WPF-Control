@@ -2,10 +2,9 @@
 
 using System.Windows;
 
-namespace H.Themes.Default
+namespace H.Themes.Default.Systems;
+
+public static class SystemKeys
 {
-    public static class SystemKeys
-    {
-        public static ComponentResourceKey FontFamily => new ComponentResourceKey(typeof(SystemKeys), "S.System.FontFamily");
-    }
+    public static ComponentResourceKey FontFamily => new ComponentResourceKey(typeof(SystemKeys), "S.System.FontFamily");
 }

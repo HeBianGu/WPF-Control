@@ -1,8 +1,6 @@
 ﻿using H.Iocable;
-using H.Services.Common.AppPath;
+using H.Services.AppPath;
 using H.Services.Identity;
-using H.Services.Logger;
-using H.Services.Message;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Reflection;
@@ -117,7 +115,7 @@ public class AppPathServce : IAppPathServce
     /// <summary>
     /// 用户路径
     /// </summary>
-    public string UserPath => Path.Combine(this.AppPath, this.GetUserName() ?? nameof(this.Default));
+    public string UserPath => this.GetUserName() == null ? this.Default : Path.Combine(this.AppPath, this.GetUserName() ?? nameof(this.Default));
 
     private string GetUserName()
     {
@@ -189,46 +187,6 @@ public class AppPathServce : IAppPathServce
     public string Version => Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Version");
 
     #endregion
-
-    /// <summary>
-    /// 清空缓存
-    /// </summary>
-    public void ClearCache()
-    {
-        try
-        {
-            Directory.Delete(this.Cache, true);
-            IocMessage.Snack.ShowInfo("操作完成");
-        }
-        catch (Exception ex)
-        {
-            IocMessage.Dialog.Show("清空失败,详情请查看日志");
-            IocLog.Instance?.Error(ex);
-        }
-    }
-
-    /// <summary>
-    /// 清空设置
-    /// </summary>
-    /// <returns>清空是否成功</returns>
-    public bool ClearSetting()
-    {
-        try
-        {
-            if (Directory.Exists(this.Setting))
-                Directory.Delete(this.Setting, true);
-            if (Directory.Exists(this.UserSetting))
-                Directory.Delete(this.UserSetting, true);
-            IocMessage.Snack?.ShowInfo("操作完成");
-            return true;
-        }
-        catch (Exception ex)
-        {
-            IocMessage.Dialog.Show("清空失败,详情请查看日志");
-            IocLog.Instance?.Error(ex);
-            return false;
-        }
-    }
 
     /// <summary>
     /// 检查文件夹，如果不存在则创建

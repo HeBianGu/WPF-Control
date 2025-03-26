@@ -1,10 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Options" Version="7.0.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Providers\H.Iocable\H.Iocable.csproj" />
-    <ProjectReference Include="..\H.Services.Logger\H.Services.Logger.csproj" />
+    <ProjectReference Include="..\..\Common\H.Common\H.Common.csproj" />
   </ItemGroup>
 </Project>

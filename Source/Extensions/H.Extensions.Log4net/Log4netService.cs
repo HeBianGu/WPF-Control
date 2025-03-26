@@ -1,4 +1,5 @@
-﻿using H.Services.Common.Setting;
+﻿using H.Extensions.Setting;
+using H.Services.Setting;
 using log4net;
 using log4net.Appender;
 using Microsoft.Extensions.Options;

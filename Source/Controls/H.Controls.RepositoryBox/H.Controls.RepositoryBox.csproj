@@ -5,8 +5,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Extensions\H.Extensions.Attach\H.Extensions.Attach.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Behvaiors\H.Extensions.Behvaiors.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.DataBase.Repository\H.Extensions.DataBase.Repository.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.StoryBoard\H.Extensions.StoryBoard.csproj" />
-    <ProjectReference Include="..\..\Extensions\H.Extensions.ViewModel\H.Extensions.ViewModel.csproj" />
     <ProjectReference Include="..\..\Styles\H.Styles.Default\H.Styles.Default.csproj" />
   </ItemGroup>
 

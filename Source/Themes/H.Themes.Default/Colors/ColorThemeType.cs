@@ -2,15 +2,14 @@
 
 using System.ComponentModel.DataAnnotations;
 
-namespace H.Themes.Default
+namespace H.Themes.Default.Colors;
+
+public enum ColorThemeType
 {
-    public enum ColorThemeType
-    {
-        [Display(Name = "常规")]
-        Default = 0,
-        [Display(Name = "深色")]
-        Dark,
-        [Display(Name = "浅色")]
-        Light
-    }
+    [Display(Name = "常规")]
+    Default = 0,
+    [Display(Name = "深色")]
+    Dark,
+    [Display(Name = "浅色")]
+    Light
 }

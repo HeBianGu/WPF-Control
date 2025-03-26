@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿global using H.Extensions.Common;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace H.Controls.PDF

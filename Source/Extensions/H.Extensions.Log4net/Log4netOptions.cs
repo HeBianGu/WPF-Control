@@ -1,6 +1,6 @@
 ﻿using H.Extensions.Setting;
-using H.Services.Common.AppPath;
-using H.Services.Common.Setting;
+using H.Services.AppPath;
+using H.Services.Setting;
 using System.ComponentModel.DataAnnotations;
 
 namespace H.Extensions.Log4net;

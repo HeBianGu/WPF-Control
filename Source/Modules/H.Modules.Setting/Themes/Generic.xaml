@@ -2,12 +2,13 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Modules.Setting"
+                    xmlns:lb="clr-namespace:H.Modules.Setting.Base"
                     xmlns:system="clr-namespace:System;assembly=netstandard">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Modules.Setting;component/SettingViewPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Modules.Setting;component/SettingButtonPresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <DataTemplate DataType="{x:Type local:StateSetting}">
+    <DataTemplate DataType="{x:Type lb:StateSetting}">
         <DockPanel>
             <TextBlock Width="100"
                        Height="{DynamicResource {x:Static h:LayoutKeys.RowHeight}}"
@@ -38,7 +39,7 @@
 
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type local:HotKeySetting}">
+    <DataTemplate DataType="{x:Type lb:HotKeySetting}">
         <DockPanel>
             <TextBlock Width="100"
                        Height="{DynamicResource {x:Static h:LayoutKeys.RowHeight}}"

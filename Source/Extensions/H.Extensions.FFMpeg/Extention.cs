@@ -1,4 +1,5 @@
-﻿using H.Services.Common;
+﻿using H.Common;
+using H.Services.Setting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 

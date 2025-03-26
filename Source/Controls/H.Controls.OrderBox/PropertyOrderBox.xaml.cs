@@ -1,11 +1,8 @@
-﻿using H.Services.Common;
-using System;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Reflection;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
+﻿global using H.Services.Message;
+global using H.Services.Message.Dialog;
+global using System.Windows;
+global using System.Windows.Controls;
+global using System.Windows.Controls.Primitives;
 
 namespace H.Controls.OrderBox
 {

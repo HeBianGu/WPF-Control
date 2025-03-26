@@ -56,7 +56,7 @@ global using H.Services.Message.Snack;
 [assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Extensions.Command.TextBoxs")]
 [assembly: XmlnsPrefix("https://github.com/HeBianGu", "h")]
 
-[assembly: XmlnsDefinition("http://schemas.myproject.com/xaml/presentation", "H.Extensions.Command")]
-[assembly: XmlnsDefinition("http://schemas.myproject.com/xaml/presentation", "H.Extensions.Command.ScrollViewers")]
-[assembly: XmlnsDefinition("http://schemas.myproject.com/xaml/presentation", "H.Extensions.Command.TextBoxs")]
-[assembly: XmlnsPrefix("http://schemas.myproject.com/xaml/presentation", "h")]
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Extensions.Command")]
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Extensions.Command.ScrollViewers")]
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Extensions.Command.TextBoxs")]
+[assembly: XmlnsPrefix("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "h")]

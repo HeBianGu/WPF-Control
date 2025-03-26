@@ -1,4 +1,4 @@
-﻿using H.Services.Common;
+﻿using H.Services.Setting;
 
 namespace H.Extensions.ApplicationBase;
 

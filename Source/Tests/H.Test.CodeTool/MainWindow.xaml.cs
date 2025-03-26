@@ -1,4 +1,6 @@
 ﻿global using H.Mvvm.ViewModels.Base;
+using H.Controls.Adorner.Adorner;
+using H.Controls.Form;
 using H.Extensions.Behvaiors.Adorners;
 using H.Extensions.Command;
 using H.Extensions.ValueConverter;
@@ -7,6 +9,10 @@ using H.Services.Common;
 using H.Services.Identity;
 using H.Services.Message;
 using H.Services.Project;
+using H.Services.Setting;
+using H.Styles.Default;
+using H.Themes.Default.Colors;
+using H.Themes.Default.FontSizes;
 using System.Reflection;
 using System.Text;
 using System.Windows;
@@ -43,7 +49,7 @@ public partial class MainWindow : Window
     }
 
 
-    public void Generate(Assembly assembly, string uri = "http://schemas.myproject.com/xaml/presentation")
+    public void Generate(Assembly assembly, string uri = "http://schemas.microsoft.com/winfx/2006/xaml/presentation")
     {
         string assemblyName = assembly.GetName().Name;
         var namespaces = this.GetNamespaces(assembly);
@@ -126,10 +132,10 @@ public partial class MainWindow : Window
         yield return typeof(GetTrueForAllConverter).Assembly;
         yield return typeof(DeleteCommand).Assembly;
         yield return typeof(AdornerBehaviorBase).Assembly;
-        //yield return typeof(IApplicationBuilder).Assembly;
-        //yield return typeof(IApplicationBuilder).Assembly;
-        //yield return typeof(IApplicationBuilder).Assembly;
-        //yield return typeof(IApplicationBuilder).Assembly;
+        yield return typeof(FontSizeKeys).Assembly;
+        yield return typeof(LogoDataProvider).Assembly;
+        yield return typeof(LineAdorner).Assembly;
+        yield return typeof(Form).Assembly;
         //yield return typeof(IApplicationBuilder).Assembly;
         //yield return typeof(IApplicationBuilder).Assembly;
         //yield return typeof(IApplicationBuilder).Assembly;

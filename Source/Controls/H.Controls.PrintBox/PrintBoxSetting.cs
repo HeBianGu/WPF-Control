@@ -1,5 +1,4 @@
 ﻿using H.Extensions.Setting;
-using H.Services.Common;
 using System.ComponentModel.DataAnnotations;
 
 namespace H.Controls.PrintBox

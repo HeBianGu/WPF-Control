@@ -2,7 +2,6 @@
 
 global using H.Mvvm.ViewModels.Base;
 using H.Extensions.FontIcon;
-using H.Mvvm.Attributes;
 
 namespace H.Modules.Project;
 

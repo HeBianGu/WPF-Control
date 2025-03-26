@@ -17,6 +17,5 @@ public class RoutedEventArgs<T> : RoutedEventArgs
         this.Entity = entity;
     }
 
-
     public T Entity { get; set; }
 }

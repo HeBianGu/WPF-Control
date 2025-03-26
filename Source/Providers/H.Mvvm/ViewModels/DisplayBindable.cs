@@ -1,6 +1,4 @@
-﻿using H.Mvvm.ViewModels.Base;
-
-namespace H.Mvvm.ViewModels;
+﻿namespace H.Mvvm.ViewModels;
 
 public class DisplayBindable<T> : DisplayBindableBase
 {

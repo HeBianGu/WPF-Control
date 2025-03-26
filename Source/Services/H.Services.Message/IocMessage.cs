@@ -1,11 +1,6 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-global using H.Services.Message.Dialog;
 global using H.Services.Message.Form;
-global using H.Services.Message.IODialog;
-global using H.Services.Message.Notice;
-global using H.Services.Message.Notify;
-global using H.Services.Message.Snack;
 global using H.Services.Message.TaskBar;
 
 namespace H.Services.Message;
@@ -66,9 +61,8 @@ public static class IocMessage
     {
         if (Dialog == null)
         {
-            if (Window == null)
-            {
-                return new Window()
+            return Window == null
+                ? new Window()
                 {
                     Content = presenter,
                     Title = "提示",
@@ -76,12 +70,8 @@ public static class IocMessage
                     WindowStyle = WindowStyle.ToolWindow,
                     WindowStartupLocation = WindowStartupLocation.CenterScreen,
                     Padding = new Thickness(5, 3, 5, 3)
-                }.ShowDialog();
-            }
-            else
-            {
-                return await Window.Show(presenter, builder);
-            }
+                }.ShowDialog()
+                : await Window.Show(presenter, builder);
         }
         else
         {
@@ -112,7 +102,6 @@ public static class IocMessage
             });
         }
     }
-
 
     public static async void ShowSnackMessage(string message)
     {

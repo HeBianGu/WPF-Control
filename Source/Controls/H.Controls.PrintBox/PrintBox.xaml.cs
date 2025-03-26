@@ -1,5 +1,4 @@
-﻿
-using H.Services.Common;
+﻿global using H.Services.Message;
 using System;
 using System.Collections.Generic;
 using System.Printing;

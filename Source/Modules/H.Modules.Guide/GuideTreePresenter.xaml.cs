@@ -1,7 +1,5 @@
-﻿using H.Extensions.Attach;
-using H.Mvvm;
-using H.Mvvm.Attributes;
-using H.Mvvm.ViewModels.Base;
+﻿using H.Common.Attributes;
+using H.Extensions.Attach;
 namespace H.Modules.Guide;
 
 [Icon("\xEC92")]

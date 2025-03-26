@@ -1,10 +1,5 @@
-global using System.Windows.Markup;
-global using H.Mvvm.Commands;
-global using H.Mvvm.ViewModels;
-global using H.Mvvm.ViewModels.Tree;
-global using H.Common;
 global using H.Common.Attributes;
-global using H.Common.Transitionable;
+global using System.Windows.Markup;
 
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None, //where theme specific resource dictionaries are located
@@ -14,7 +9,6 @@ global using H.Common.Transitionable;
                                               //(used if a resource is not found in the page,
                                               // app, or any theme specific resource dictionaries)
 )]
-
 
 [assembly: XmlnsDefinition("QQ:908293466", "H.Mvvm")]
 [assembly: XmlnsDefinition("QQ:908293466", "H.Mvvm.Commands")]
@@ -28,8 +22,8 @@ global using H.Common.Transitionable;
 [assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Mvvm.ViewModels.Tree")]
 [assembly: XmlnsPrefix("https://github.com/HeBianGu", "h")]
 
-[assembly: XmlnsDefinition("http://schemas.myproject.com/xaml/presentation", "H.Mvvm")]
-[assembly: XmlnsDefinition("http://schemas.myproject.com/xaml/presentation", "H.Mvvm.Commands")]
-[assembly: XmlnsDefinition("http://schemas.myproject.com/xaml/presentation", "H.Mvvm.ViewModels")]
-[assembly: XmlnsDefinition("http://schemas.myproject.com/xaml/presentation", "H.Mvvm.ViewModels.Tree")]
-[assembly: XmlnsPrefix("http://schemas.myproject.com/xaml/presentation", "h")]
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Mvvm")]
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Mvvm.Commands")]
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Mvvm.ViewModels")]
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Mvvm.ViewModels.Tree")]
+[assembly: XmlnsPrefix("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "h")]

@@ -1,5 +1,5 @@
 ﻿using H.Extensions.Setting;
-using H.Services.Common.Setting;
+using H.Services.Setting;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 

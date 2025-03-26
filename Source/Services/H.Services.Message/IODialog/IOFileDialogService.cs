@@ -6,22 +6,18 @@ public class IOFileDialogService : IIOFileDialogService
     public string ShowOpenFile(Action<IIOFileDialogOption> optionAction)
     {
         OpenFileDialog openFileDialog = this.GetOpenFileDialog(optionAction, false);
-        if (openFileDialog.ShowDialog() != true)
-            return null;
-        return openFileDialog.FileName;
+        return openFileDialog.ShowDialog() != true ? null : openFileDialog.FileName;
     }
 
     public string[] ShowOpenFiles(Action<IIOFileDialogOption> optionAction)
     {
         OpenFileDialog openFileDialog = this.GetOpenFileDialog(optionAction, true);
-        if (openFileDialog.ShowDialog() != true)
-            return null;
-        return openFileDialog.FileNames;
+        return openFileDialog.ShowDialog() != true ? null : openFileDialog.FileNames;
     }
 
     public OpenFileDialog GetOpenFileDialog(Action<IIOFileDialogOption> optionAction, bool multiselect)
     {
-        var option = new IOFileDialogOption();
+        IOFileDialogOption option = new IOFileDialogOption();
         optionAction?.Invoke(option);
         OpenFileDialog openFileDialog = new OpenFileDialog();
         openFileDialog.InitialDirectory = option.InitialDirectory; //设置初始路径
@@ -35,7 +31,7 @@ public class IOFileDialogService : IIOFileDialogService
 
     public string ShowSaveFile(Action<IIOSaveFileDialogOption> optionAction)
     {
-        var option = new IOSaveFileDialogOption();
+        IOSaveFileDialogOption option = new IOSaveFileDialogOption();
         optionAction?.Invoke(option);
         SaveFileDialog saveFileDialog = new SaveFileDialog();
         saveFileDialog.Filter = option.Filter;
@@ -44,9 +40,7 @@ public class IOFileDialogService : IIOFileDialogService
         saveFileDialog.AddExtension = true;
         saveFileDialog.RestoreDirectory = option.RestoreDirectory;
         saveFileDialog.Title = option.Title;
-        if (saveFileDialog.ShowDialog() != true)
-            return null;
-        return saveFileDialog.FileName;
+        return saveFileDialog.ShowDialog() != true ? null : saveFileDialog.FileName;
     }
 
 }

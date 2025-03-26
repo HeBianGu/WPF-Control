@@ -1,10 +1,9 @@
-﻿using H.Mvvm.ViewModels.Base;
-using H.Presenters.Common;
-using System;
-using System.Collections;
-using System.ComponentModel.DataAnnotations;
-using System.Threading.Tasks;
-using System.Windows;
+﻿global using H.Mvvm.Commands;
+global using H.Presenters.Common;
+global using System.Collections;
+global using System.ComponentModel.DataAnnotations;
+global using System.Windows;
+global using H.Common.Attributes;
 
 namespace H.Presenters.Common;
 public interface IListBoxPresenter : IItemsSourcePresenter

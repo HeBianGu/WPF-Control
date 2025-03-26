@@ -3,6 +3,7 @@
 
 using H.Controls.Vlc;
 using H.Services.Common;
+using H.Services.Setting;
 
 namespace System
 {

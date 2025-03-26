@@ -1,6 +1,6 @@
 ﻿using H.Services.Common.MainWindow;
 using H.Services.Common.Schedule;
-using Microsoft.Extensions.DependencyInjection;
+using H.Services.Logger;
 using System.Diagnostics;
 using System.Text;
 using System.Windows;
@@ -30,7 +30,7 @@ public abstract partial class ApplicationBase : Application
         this.Configure(bulder);
         this.OnSingleton(e);
         base.OnStartup(e);
-        var window = this.CreateMainWindow(e);
+        Window window = this.CreateMainWindow(e);
         this.OnSplashScreen(e);
         this.OnLogin(e);
         Ioc<IMainWindowSavableService>.Instance?.Load(window);
@@ -75,7 +75,6 @@ public abstract partial class ApplicationBase : Application
         this.ILogger?.Fatal("当前应用程序遇到一些问题，该操作已经终止，请进行重试，如果问题继续存在，请联系管理员", "意外的操作");
         this.ILogger?.Fatal(error);
     }
-
 
     /// <summary> 异步线程抛出没有补货的异常 </summary>
     protected void TaskScheduler_UnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)
@@ -148,12 +147,10 @@ public abstract partial class ApplicationBase : Application
 
     #endregion
 
-
     public ILogService ILogger => Ioc.Services.GetService<ILogService>();
     protected virtual void ShowMessage(string message, string title = "提示")
     {
         MessageBox.Show(message);
-
 
         //if (MessageProxy.Windower == null)
         //{

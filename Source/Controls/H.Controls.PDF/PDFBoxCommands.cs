@@ -1,5 +1,5 @@
-﻿using H.Mvvm;
-using System.Windows.Input;
+﻿global using H.Mvvm.Commands;
+global using System.Windows.Input;
 
 namespace H.Controls.PDF
 {

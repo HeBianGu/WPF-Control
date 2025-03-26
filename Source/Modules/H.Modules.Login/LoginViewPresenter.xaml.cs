@@ -1,10 +1,13 @@
-﻿using H.Services.Common;
+﻿
 using H.Mvvm;
 using Microsoft.Extensions.Options;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 using H.Mvvm.ViewModels.Base;
+using H.Mvvm.Commands;
+using H.Services.Message.Dialog;
+using H.Services.Identity;
 
 namespace H.Modules.Login
 {

@@ -2,17 +2,15 @@
 global using H.Controls.Diagram.Layers;
 global using H.Controls.Diagram.Layouts.Base;
 global using H.Controls.Diagram.LinkDrawers;
-using H.Mvvm;
-using H.Services.Common;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
+global using H.Common;
+global using System.ComponentModel;
+global using System.ComponentModel.DataAnnotations;
+global using System.Windows;
+global using System.Windows.Controls;
+global using System.Windows.Input;
+global using System.Windows.Media;
+global using H.Common.Interfaces;
+global using H.Extensions.Common;
 
 namespace H.Controls.Diagram;
 

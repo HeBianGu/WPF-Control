@@ -1,0 +1,121 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:h="https://github.com/HeBianGu"
+    xmlns:local="clr-namespace:H.Presenters.Design.Presenter">
+
+
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Border.Binding, TypeInTargetAssembly={x:Type local:BorderKeys}}" TargetType="{x:Type Border}">
+        <Setter Property="Opacity" Value="{Binding Opacity}" />
+        <Setter Property="Height" Value="{Binding Height}" />
+        <Setter Property="Width" Value="{Binding Width}" />
+        <Setter Property="MinHeight" Value="{Binding MinHeight}" />
+        <Setter Property="MinWidth" Value="{Binding MinWidth}" />
+        <Setter Property="Margin" Value="{Binding Margin}" />
+        <Setter Property="Visibility" Value="{Binding IsVisible, Converter={x:Static h:Converter.GetTrueToVisible}}" />
+        <Setter Property="IsEnabled" Value="{Binding IsEnabled}" />
+        <Setter Property="HorizontalAlignment" Value="{Binding HorizontalAlignment}" />
+        <Setter Property="VerticalAlignment" Value="{Binding VerticalAlignment}" />
+        <Setter Property="Background" Value="{Binding Background}" />
+        <Setter Property="BorderBrush" Value="{Binding BorderBrush}" />
+        <Setter Property="BorderThickness" Value="{Binding BorderThickness}" />
+        <Setter Property="CornerRadius" Value="{Binding CornerRadius}" />
+        <Setter Property="TextBlock.Foreground" Value="{Binding Foreground}" />
+        <Setter Property="TextElement.Foreground" Value="{Binding Foreground}" />
+    </Style>
+
+
+    <ControlTemplate x:Key="S.ControlTemplate.Adorner" TargetType="ContentControl">
+        <DockPanel
+            Margin="-15"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Top">
+            <!--<TextBlock Foreground="{DynamicResource {x:Static h:BrushKeys.Accent}}" Style="{DynamicResource {x:Static h:TextBlockKeys.Icon}}" Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Content.Icon}" />
+            <TextBlock VerticalAlignment="Center" Foreground="{DynamicResource {x:Static h:BrushKeys.Accent}}">
+                <Run Text="[" />
+                <Run Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Content.Name}" />
+                <Run Text="]" />
+            </TextBlock>-->
+            <Button
+                Background="Red"
+                BorderBrush="Transparent"
+                Command="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Content.DeleteCommand}"
+                CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                Content="{x:Static h:Geometrys.Close}"
+                DockPanel.Dock="Right"
+                Foreground="White"
+                Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}"
+                ToolTip="删除" />
+            <!--<Button h:Cattach.Icon="&#xe729;"
+                    h:Cattach.IconSize="20"
+                    Background="Gray"
+                    BorderBrush="Transparent"
+                    DockPanel.Dock="Right"
+                    Foreground="White"
+                    Content="{x:Static h:Geometrys.Close}"
+                    Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}"
+                    ToolTip="另存为模板" />-->
+
+            <!--<TextBlock Foreground="{DynamicResource {x:Static h:BrushKeys.Accent}}"
+                       Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Content.Icon}" />-->
+
+            <TextBlock VerticalAlignment="Center" Foreground="{DynamicResource {x:Static h:BrushKeys.Accent}}">
+                <Run Text="[" /><Run Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Content.Name}" /> <Run Text="]" />
+            </TextBlock>
+            <!--<Button h:Cattach.Icon="{x:Static h:Icons.User}"
+                    Background="LightGray"
+                    Foreground="Black"
+                    Style="{DynamicResource {x:Static h:ButtonKeys.MouseOver}}" />-->
+
+            <!--<h:PropertyGrid Width="100"
+                                    Height="30"
+                                    Background="Red"
+                                    SelectObject="{Binding}"
+                                    Style="{DynamicResource {x:Static h:PropertyGrid.DefaultKey}}"
+                                    UseAsync="False"
+                                    UseCommand="True"
+                                    UseString="False">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <DockPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </h:PropertyGrid>-->
+        </DockPanel>
+
+    </ControlTemplate>
+
+    <Style
+        x:Key="{ComponentResourceKey ResourceId=S.DesignBorder.Default,
+                                     TypeInTargetAssembly={x:Type local:DesignBorder}}"
+        BasedOn="{StaticResource {x:Static local:BorderKeys.Binding}}"
+        TargetType="{x:Type local:DesignBorder}">
+        <Setter Property="h:MouseOverHitTestAdornerBehavior.IsMouseOver" Value="{Binding IsMouseOver, Mode=TwoWay}" />
+        <Setter Property="h:SelectedHitTestAdornerBehavior.IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
+        <Setter Property="h:HitTestAdornerBehavior.IsHitTest" Value="True" />
+        <Setter Property="h:BehvaiorAttach.Behaviors">
+            <Setter.Value>
+                <h:Behaviors>
+                    <h:DraggableDataTemplateAdornerBehavior DragDropEffects="Move" RoutingStrategy="Tunnel" />
+                </h:Behaviors>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="h:ControlTemplateAdorner.Template" Value="{StaticResource S.ControlTemplate.Adorner}" />
+    </Style>
+
+    <!--<Style x:Key="{ComponentResourceKey ResourceId=S.DesignBorder.Default, TypeInTargetAssembly={x:Type local:DesignBorder}}" BasedOn="{StaticResource {x:Static local:DesignBorder.DefaultKey}}" TargetType="{x:Type local:DesignBorder}">
+        <Setter Property="h:MouseOverHitTestAdornerBehavior.IsMouseOver" Value="{Binding IsMouseOver, Mode=TwoWay}" />
+        <Setter Property="h:SelectedHitTestAdornerBehavior.IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
+        <Setter Property="h:HitTestAdornerBehavior.IsHitTest" Value="True" />
+        <Setter Property="h:Cattach.Behaviors">
+            <Setter.Value>
+                <h:Behaviors>
+                    <h:DragDataTempalteAdornerBehaviour DragDropEffects="Move" RoutingStrategy="Tunnel" />
+                </h:Behaviors>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="h:ControlTemplateAdorner.Template" Value="{StaticResource S.ControlTemplate.Adorner}" />
+    </Style>-->
+
+    <Style BasedOn="{StaticResource {x:Static local:DesignBorder.DefaultKey}}" TargetType="{x:Type local:DesignBorder}" />
+</ResourceDictionary>

@@ -1,5 +1,7 @@
 ﻿using H.Modules.Login;
-using H.Services.Common;
+
+using H.Services.Identity;
+using H.Services.Setting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.Collections.Generic;

@@ -1,6 +1,5 @@
 ﻿namespace H.Mvvm.Commands;
 
-
 public class RelayCommand<T> : ICommand
 {
     public Action<T> ExecuteCommand { get; private set; }
@@ -24,7 +23,6 @@ public class RelayCommand<T> : ICommand
     {
         return this.CanExecuteCommand == null || this.CanExecuteCommand((T)parameter);
     }
-
 
     public event EventHandler CanExecuteChanged
     {

@@ -9,14 +9,14 @@ public abstract class DisplayMarkupCommandBase : AsyncMarkupCommandBase, IIconab
 {
     protected DisplayMarkupCommandBase()
     {
-        var d = this.GetType().GetCustomAttribute<DisplayAttribute>();
+        DisplayAttribute d = this.GetType().GetCustomAttribute<DisplayAttribute>();
         if (d != null)
         {
             this.Name = d.Name;
             this.Description = d.Description;
         }
 
-        var icon = this.GetType().GetCustomAttribute<IconAttribute>();
+        IconAttribute icon = this.GetType().GetCustomAttribute<IconAttribute>();
         this.Icon = icon?.Icon;
     }
     public string Name { get; set; }

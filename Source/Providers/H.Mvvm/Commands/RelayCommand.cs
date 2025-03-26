@@ -26,8 +26,6 @@ public class RelayCommand : CommandBase
 
     public override bool CanExecute(object parameter)
     {
-        if (_canExecute == null)
-            return true;
-        return _canExecute.Invoke(parameter);
+        return _canExecute == null ? true : _canExecute.Invoke(parameter);
     }
 }

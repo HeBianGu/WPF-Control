@@ -1,5 +1,7 @@
 ﻿using H.Modules.Theme;
 using H.Services.Common;
+using H.Services.Common.Theme;
+using H.Services.Setting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.Collections.Generic;

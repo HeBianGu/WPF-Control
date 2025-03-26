@@ -1,6 +1,5 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 global using H.Common.Commands;
-global using H.Common.Transitionable;
 
 namespace H.Services.Message.Dialog.Commands;
 
@@ -20,13 +19,12 @@ public abstract class ShowDialogCommandBase : DisplayMarkupCommandBase
         w.Title = this.Name ?? w.Title;
         w.HorizontalContentAlignment = this.HorizontalContentAlignment;
         w.Icon = this.Icon ?? w.Icon;
-        var template = ShowDialogCommandBase.GetPresenterTemplate(this.GetTargetElement(parameter));
+        DataTemplate template = ShowDialogCommandBase.GetPresenterTemplate(this.GetTargetElement(parameter));
         if (template != null)
             w.PresenterTemplate = template;
         if (this.PresenterTemplate != null)
             w.PresenterTemplate = this.PresenterTemplate;
     }
-
 
     public static DataTemplate GetPresenterTemplate(DependencyObject obj)
     {

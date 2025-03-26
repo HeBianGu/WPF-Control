@@ -25,14 +25,11 @@ public abstract class MarkupCommandBase : MarkupExtension, ICommand, INotifyProp
     }
     public abstract void Execute(object parameter);
 
-
     protected UIElement GetTargetElement(object parameter)
     {
         if (parameter is UIElement element)
             return element;
-        if (this.Target.TargetObject is UIElement element1)
-            return element1;
-        return null;
+        return this.Target.TargetObject is UIElement element1 ? element1 : null;
     }
     #endregion
 

@@ -1,4 +1,6 @@
-﻿namespace H.Windows.Dialog
+﻿using H.Common.Interfaces;
+
+namespace H.Windows.Dialog
 {
     public class ShowIocDialogWindowCommand : DialogCommandBase
     {

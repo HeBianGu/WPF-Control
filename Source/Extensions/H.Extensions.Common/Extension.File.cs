@@ -1,5 +1,4 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-using H.Services.Message.IODialog;
 using System.IO;
 using System.Security.Cryptography;
 using System.Windows.Media;
@@ -210,12 +209,12 @@ public class DirectoryEx
         }
         catch (UnauthorizedAccessException ex)
         {
-            IocLog.Instance?.Error(ex);
+            //IocLog.Instance?.Error(ex);
             logAction?.Invoke($"{sourceFolder}\r\nAccess Denied\r\n");
         }
         catch (Exception e)
         {
-            IocLog.Instance?.Error(e);
+            //IocLog.Instance?.Error(e);
             logAction?.Invoke($"{sourceFolder}\r\n{e.Message}\r\n");
         }
 
@@ -405,22 +404,22 @@ public class FileEx
 }
 
 
-public static class IODialogExtension
-{
-    public static string ShowOpenImageFileCommon(this IIOFileDialogService dialog, string initialDirectory = null)
-    {
-        return dialog.ShowOpenFile(x =>
-        {
-            x.Filter = FileExtension.ImageExtensionsFilter;
-            x.Title = "打开图片";
-        });
-    }
-    public static string ShowOpenVedioFileCommon(this IIOFileDialogService dialog, string initialDirectory = null)
-    {
-        return dialog.ShowOpenFile(x => x.Filter = FileExtension.VedioExtensionsFilter);
-    }
-    public static string ShowOpenAudioFileCommon(this IIOFileDialogService dialog, string initialDirectory = null)
-    {
-        return dialog.ShowOpenFile(x => x.Filter = FileExtension.AudioExtensionsFilter);
-    }
-}
+//public static class IODialogExtension
+//{
+//    public static string ShowOpenImageFileCommon(this IIOFileDialogService dialog, string initialDirectory = null)
+//    {
+//        return dialog.ShowOpenFile(x =>
+//        {
+//            x.Filter = FileExtension.ImageExtensionsFilter;
+//            x.Title = "打开图片";
+//        });
+//    }
+//    public static string ShowOpenVedioFileCommon(this IIOFileDialogService dialog, string initialDirectory = null)
+//    {
+//        return dialog.ShowOpenFile(x => x.Filter = FileExtension.VedioExtensionsFilter);
+//    }
+//    public static string ShowOpenAudioFileCommon(this IIOFileDialogService dialog, string initialDirectory = null)
+//    {
+//        return dialog.ShowOpenFile(x => x.Filter = FileExtension.AudioExtensionsFilter);
+//    }
+//}

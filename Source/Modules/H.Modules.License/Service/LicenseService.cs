@@ -10,6 +10,8 @@ using System.IO;
 using System.Reflection;
 using System.Windows.Markup;
 using H.Services.Serializable;
+using H.Services.Setting;
+using H.Services.AppPath;
 
 namespace H.Modules.License
 {

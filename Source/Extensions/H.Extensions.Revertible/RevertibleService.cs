@@ -1,6 +1,5 @@
 ﻿using H.Mvvm.ViewModels.Base;
 using Microsoft.Extensions.Options;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.ObjectModel;
 
 namespace H.Extensions.Revertible;
@@ -51,7 +50,7 @@ public class RevertibleService : BindableBase, IRevertibleService
 
     public RevertibleDisposer Begin(string name = null, object data = null)
     {
-        Assert.IsNull(this._current, "请先提交或取消上一个操作");
+        System.Diagnostics.Trace.Assert(this._current == null, "请先提交或取消上一个操作");
         this._current = new Revertible(name, data);
         return new RevertibleDisposer(this);
     }
@@ -66,7 +65,7 @@ public class RevertibleService : BindableBase, IRevertibleService
             this._current = null;
             return;
         }
-        Assert.IsNotNull(this._current, "请先开始一个操作");
+        System.Diagnostics.Trace.Assert(this._current != null, "请先开始一个操作");
         int count = this._revertibles.Count - this.Position - 1;
         if (count > 0)
         {
@@ -103,7 +102,7 @@ public class RevertibleService : BindableBase, IRevertibleService
             this._current = null;
             return;
         }
-        Assert.IsNotNull(this._current, "请先开始一个操作");
+        System.Diagnostics.Trace.Assert(this._current != null, "请先开始一个操作");
         this._current.Undo();
         this._current = null;
     }

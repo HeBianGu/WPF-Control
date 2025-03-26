@@ -1,4 +1,6 @@
-﻿namespace H.Controls.Diagram.Presenter.DiagramTemplates;
+﻿using H.Services.AppPath;
+
+namespace H.Controls.Diagram.Presenter.DiagramTemplates;
 
 public static class DiagramTemplateExtension
 {

@@ -32,9 +32,7 @@ public class InvokeCommand : ICommand, INotifyPropertyChanged, IInvokeCommand
         if (_canExecute != null)
             return _canExecute(parameter);
 
-        if (_canExecuteCommand != null)
-            return _canExecuteCommand(this, parameter);
-        return true;
+        return _canExecuteCommand != null ? _canExecuteCommand(this, parameter) : true;
     }
 
     public event EventHandler CanExecuteChanged
@@ -160,7 +158,6 @@ public class InvokeCommand : ICommand, INotifyPropertyChanged, IInvokeCommand
             RaisePropertyChanged();
         }
     }
-
 
     public event PropertyChangedEventHandler PropertyChanged;
 

@@ -1,4 +1,5 @@
-﻿using H.Services.Common.Serialize.Meta;
+﻿using H.Services.AppPath;
+using H.Services.Common.Serialize.Meta;
 using Newtonsoft.Json;
 using System.IO;
 
@@ -35,5 +36,12 @@ public class NewtonsoftJsonMetaSettingService : JsonMetaSettingServiceBase
         //System.Diagnostics.Debug.WriteLine(str);
         var obj = JsonConvert.DeserializeObject(str, this.GetType(), GetSerializerSettings());
         return obj;
+    }
+    protected string GetFilePath(string typeName, string id)
+    {
+        string path = Path.Combine(IocAppPaths.Instance.Cache, typeName, id + ".json");
+        if (!Directory.Exists(Path.GetDirectoryName(path)))
+            Directory.CreateDirectory(Path.GetDirectoryName(path));
+        return path;
     }
 }

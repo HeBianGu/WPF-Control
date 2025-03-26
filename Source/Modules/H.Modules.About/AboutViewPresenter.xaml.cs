@@ -1,7 +1,8 @@
-﻿using H.Common.Interfaces;
+﻿using H.Common.Attributes;
+using H.Common.Interfaces;
 using H.Extensions.FontIcon;
-using H.Mvvm.Attributes;
 using H.Services.Common.About;
+using H.Services.Setting;
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;

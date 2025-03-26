@@ -1,6 +1,6 @@
 ﻿global using H.Mvvm.Commands;
-global using System.Text.Json.Serialization;
 global using System.ComponentModel;
+global using System.Text.Json.Serialization;
 
 namespace H.Mvvm.ViewModels.Base;
 
@@ -62,7 +62,7 @@ public abstract class Bindable : BindableBase
     protected virtual void CallMethod(object obj)
     {
         string methodName = obj?.ToString();
-        var method = GetType().GetMethod(methodName);
+        MethodInfo method = GetType().GetMethod(methodName);
         if (method == null)
             throw new ArgumentException("no found method :" + method);
         object[] parameters = method.GetParameters().Select(l => l.RawDefaultValue is DBNull ? null : l.RawDefaultValue).ToArray();

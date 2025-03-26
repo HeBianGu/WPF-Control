@@ -1,12 +1,10 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-using H.Extensions.ViewModel;
-using H.Services.Common;
-using H.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Threading.Tasks;
-using H.Extensions.DataBase;
+
+global using H.Extensions.DataBase;
+global using H.Services.Identity.Role;
+global using H.Services.Setting;
+global using H.Services.Message;
+global using H.Services.Message.Dialog;
 
 namespace H.Modules.Identity
 {

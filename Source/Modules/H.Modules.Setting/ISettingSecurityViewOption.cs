@@ -1,4 +1,4 @@
-﻿namespace H.Services.Common.Setting;
+﻿namespace H.Modules.Setting;
 
 public interface ISettingSecurityViewOption
 {

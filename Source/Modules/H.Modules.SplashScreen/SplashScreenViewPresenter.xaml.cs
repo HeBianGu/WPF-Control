@@ -1,20 +1,18 @@
-﻿using H.Services.Common;
-using H.Mvvm.ViewModels.Base;
+﻿using H.Mvvm.ViewModels.Base;
+using H.Services.Common.SplashScreen;
 
-namespace H.Modules.SplashScreen
+namespace H.Modules.SplashScreen;
+
+public class SplashScreenViewPresenter : BindableBase, ISplashScreenViewPresenter
 {
-    public class SplashScreenViewPresenter : BindableBase, ISplashScreenViewPresenter
+    private string _message;
+    public string Message
     {
-        private string _message;
-        /// <summary> 说明  </summary>
-        public string Message
+        get { return _message; }
+        set
         {
-            get { return _message; }
-            set
-            {
-                _message = value;
-                RaisePropertyChanged();
-            }
+            _message = value;
+            RaisePropertyChanged();
         }
     }
 }

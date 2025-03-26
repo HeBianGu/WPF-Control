@@ -1,5 +1,4 @@
 ﻿global using H.Controls.Diagram.Presenters.Workflow.Workflows;
-using System.ComponentModel.DataAnnotations;
 
 
 namespace H.Controls.Diagram.Presenters.Workflow.NodeDatas;

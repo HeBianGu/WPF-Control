@@ -1,4 +1,7 @@
-﻿namespace H.Modules.Guide;
+﻿using H.Common.Commands;
+using H.Services.Message;
+
+namespace H.Modules.Guide;
 
 public abstract class ShowGuideTreeCommandBase : DisplayMarkupCommandBase
 {

@@ -1,5 +1,6 @@
 ﻿using H.Common.Interfaces;
-using H.Services.Common;
+using H.Common.Transitionable;
+using H.Services.Message.Dialog;
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -92,6 +93,8 @@ namespace H.Windows.Dialog
             get { return (string)GetValue(FontIconProperty); }
             set { SetValue(FontIconProperty, value); }
         }
+
+        DataTemplate IDialog.PresenterTemplate { get => this.ContentTemplate; set => this.ContentTemplate = value; }
 
         public static readonly DependencyProperty FontIconProperty =
             DependencyProperty.Register("FontIcon", typeof(string), typeof(DialogWindow), new FrameworkPropertyMetadata("\xEA8F"));

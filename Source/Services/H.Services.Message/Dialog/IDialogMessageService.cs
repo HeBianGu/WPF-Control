@@ -81,7 +81,7 @@ public static class DialogMessageExtension
     /// <returns>对话框的结果</returns>
     public static async Task<bool?> ShowDialog(this IDialogMessageService service, object presenter, Action<bool?> sumitAction, Action<IDialog> builder = null, Func<bool> canSumit = null)
     {
-        var r = await service.Show(presenter, builder, canSumit);
+        bool? r = await service.Show(presenter, builder, canSumit);
         if (r != true)
             return r;
         sumitAction?.Invoke(r);
@@ -100,7 +100,7 @@ public static class DialogMessageExtension
     /// <returns>对话框的结果</returns>
     public static async Task<bool?> ShowDialog<T>(this IDialogMessageService dialog, Action<T> option, Action<T> sumitAction, Action<IDialog> builder = null, Func<T, bool> canSumit = null) where T : new()
     {
-        var presenter = new T();
+        T presenter = new T();
         option?.Invoke(presenter);
         return await dialog.ShowDialog(presenter, x => sumitAction?.Invoke(presenter), builder, () => canSumit?.Invoke(presenter) != false);
     }

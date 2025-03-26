@@ -1,11 +1,8 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-using System;
+namespace H.Extensions.Setting;
 
-namespace H.Extensions.Setting
+public abstract class LazySettableInstance<T> : SettableBase where T : new()
 {
-    public abstract class LazySettableInstance<T> : SettableBase where T : new()
-    {
-        public static T Instance = new Lazy<T>(() => new T()).Value;
-    }
+    public static T Instance = new Lazy<T>(() => new T()).Value;
 }

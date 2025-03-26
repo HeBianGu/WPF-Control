@@ -1,7 +1,5 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-using System.Windows.Input;
-
 namespace H.Mvvm.Commands;
 
 public static class Commands
@@ -55,7 +53,6 @@ public static class Commands
     ///     新建
     /// </summary>
     public static RoutedCommand New { get; } = new RoutedCommand(nameof(New), typeof(Commands));
-
 
     /// <summary>
     ///     打开
@@ -117,8 +114,6 @@ public static class Commands
     /// </summary>
     public static RoutedCommand Next { get; } = new RoutedCommand(nameof(Next), typeof(Commands));
 
-
-
     /// <summary>
     ///     第一个
     /// </summary>
@@ -174,7 +169,6 @@ public static class Commands
     /// </summary>
     public static RoutedCommand CheckAll { get; } = new RoutedCommand(nameof(CheckAll), typeof(Commands));
 
-
     /// <summary>
     /// 删除
     /// </summary>
@@ -185,18 +179,15 @@ public static class Commands
     /// </summary>
     public static RoutedCommand DeleteAll { get; } = new RoutedCommand(nameof(DeleteAll), typeof(Commands));
 
-
     /// <summary>
     /// 删除选中
     /// </summary>
     public static RoutedCommand DeleteAllChecked { get; } = new RoutedCommand(nameof(DeleteAllChecked), typeof(Commands));
 
-
     /// <summary>
     /// 编辑
     /// </summary>
     public static RoutedCommand Edit { get; } = new RoutedCommand(nameof(Edit), typeof(Commands));
-
 
     /// <summary>
     /// 查看
@@ -207,7 +198,6 @@ public static class Commands
     /// 刷新
     /// </summary>
     public static RoutedCommand Refresh { get; } = new RoutedCommand(nameof(Refresh), typeof(Commands));
-
 
     public static void InvalidateRequerySuggested()
     {

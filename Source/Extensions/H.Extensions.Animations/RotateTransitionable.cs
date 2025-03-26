@@ -1,5 +1,4 @@
-﻿using System.Windows;
-using System.Windows.Media;
+﻿using System.Windows.Media;
 using System.Windows.Media.Animation;
 
 namespace H.Extensions.Animations;
@@ -13,10 +12,10 @@ public class RotateTransitionable : ElementTransitionable
     }
     public override async Task Close(UIElement visual)
     {
-        var amination = new DoubleAnimation(this.To, this.CloseDuration);
+        DoubleAnimation amination = new DoubleAnimation(this.To, this.CloseDuration);
         await Task.Delay(this.CloseDuration);
-        using var renderTransformDisposable = new RenderTransformDisposable(visual);
-        var transform = new RotateTransform(0);
+        using RenderTransformDisposable renderTransformDisposable = new RenderTransformDisposable(visual);
+        RotateTransform transform = new RotateTransform(0);
         visual.RenderTransform = transform;
         visual.RenderTransformOrigin = new Point(0.5, 0.5);
         transform.BeginAnimation(RotateTransform.AngleProperty, amination);
@@ -25,9 +24,9 @@ public class RotateTransitionable : ElementTransitionable
 
     public override async Task Show(UIElement visual)
     {
-        var amination = new DoubleAnimation(0, this.ShowDuration);
-        using var renderTransformDisposable = new RenderTransformDisposable(visual);
-        var transform = new RotateTransform(this.From);
+        DoubleAnimation amination = new DoubleAnimation(0, this.ShowDuration);
+        using RenderTransformDisposable renderTransformDisposable = new RenderTransformDisposable(visual);
+        RotateTransform transform = new RotateTransform(this.From);
         visual.RenderTransform = transform;
         visual.RenderTransformOrigin = new Point(0.5, 0.5);
         transform.BeginAnimation(RotateTransform.AngleProperty, amination);

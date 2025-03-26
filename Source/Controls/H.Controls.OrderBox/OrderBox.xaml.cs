@@ -1,4 +1,5 @@
-﻿using H.Services.Common;
+﻿global using H.Common.Interfaces.Where;
+using H.Services.Common;
 using System;
 using System.Collections;
 using System.Collections.ObjectModel;

@@ -1,8 +1,6 @@
-﻿using System.Windows;
-using System.Windows.Media.Animation;
+﻿using System.Windows.Media.Animation;
 
 namespace H.Extensions.Animations;
-
 
 public class OpacityTransitionable : ElementTransitionable
 {
@@ -14,14 +12,14 @@ public class OpacityTransitionable : ElementTransitionable
 
     public override async Task Close(UIElement visual)
     {
-        var amination = new DoubleAnimation(this.To, this.CloseDuration);
+        DoubleAnimation amination = new DoubleAnimation(this.To, this.CloseDuration);
         visual.BeginAnimation(UIElement.OpacityProperty, amination);
         await Task.Delay(this.CloseDuration);
     }
 
     public override async Task Show(UIElement visual)
     {
-        var amination = new DoubleAnimation(this.From, 1, this.ShowDuration);
+        DoubleAnimation amination = new DoubleAnimation(this.From, 1, this.ShowDuration);
         visual.BeginAnimation(UIElement.OpacityProperty, amination);
         await Task.Delay(this.CloseDuration);
     }

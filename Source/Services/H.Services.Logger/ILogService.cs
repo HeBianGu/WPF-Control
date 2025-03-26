@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace H.Services.Logger;
+﻿namespace H.Services.Logger;
 
 /// <summary>
 /// 提供日志记录功能的接口。

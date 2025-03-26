@@ -3,14 +3,13 @@
 using System.Windows;
 using System.Windows.Media;
 
-namespace H.Controls.Adorner
+namespace H.Controls.Adorner.Adorner;
+
+public class OverAdorner : BorderAdorner
 {
-    public class OverAdorner : BorderAdorner
+    public OverAdorner(UIElement adornedElement) : base(adornedElement)
     {
-        public OverAdorner(UIElement adornedElement) : base(adornedElement)
-        {
-            this.Fill = new SolidColorBrush(Colors.LightSkyBlue) { Opacity = 0.1 };
-            this.Pen = new Pen(new SolidColorBrush(Colors.SkyBlue), 1);
-        }
+        this.Fill = new SolidColorBrush(Colors.LightSkyBlue) { Opacity = 0.1 };
+        this.Pen = new Pen(new SolidColorBrush(Colors.SkyBlue), 1);
     }
 }

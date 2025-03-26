@@ -67,7 +67,8 @@
                                       Grid.Row="1"
                                       Grid.ColumnSpan="3"
                                       HorizontalAlignment="Stretch"
-                                      Content="{Binding Presenter}" />
+                                      Content="{Binding Presenter}"
+                                      ContentTemplate="{Binding PresenterTemplate}" />
                 </Grid>
                 <StackPanel Grid.Row="2"
                             MinHeight="20"

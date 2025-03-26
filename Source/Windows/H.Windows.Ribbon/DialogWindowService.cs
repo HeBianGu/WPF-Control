@@ -52,15 +52,15 @@ namespace H.Windows.Ribbon
 
         public void Execute(object parameter)
         {
-            if (parameter is ControlBindableBase data)
-            {
-                var r = IocMessage.IOFileDialog.ShowOpenImageFile(x =>
-                {
-                    Uri uri = new Uri(x, UriKind.RelativeOrAbsolute);
-                });
+            //if (parameter is ControlBindableBase data)
+            //{
+            //    var r = IocMessage.IOFileDialog.ShowOpenImageFile(x =>
+            //    {
+            //        Uri uri = new Uri(x, UriKind.RelativeOrAbsolute);
+            //    });
 
-                //data.LargeImage = uri;
-            }
+            //    //data.LargeImage = uri;
+            //}
         }
     }
 
@@ -128,7 +128,7 @@ namespace H.Windows.Ribbon
         }
     }
 
-    public static class VisualTreeExtention
+    internal static class VisualTreeExtention
     {
         public static T GetParent<T>(this DependencyObject element) where T : DependencyObject
         {

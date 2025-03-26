@@ -1,7 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Windows.Media;
-
-namespace H.Controls.Diagram.Presenters.Workflow.NodeDatas;
+﻿namespace H.Controls.Diagram.Presenters.Workflow.NodeDatas;
 
 [Display(Name = "循环界限", GroupName = "基本流程图形状", Order = 13, Description = "循环界限")]
 public class WhileNodeData : WorkflowNodeBase

@@ -1,4 +1,4 @@
-﻿using H.Services.Common.AppPath;
+﻿using H.Services.AppPath;
 using H.Services.Common.Crypt;
 using System.IO;
 

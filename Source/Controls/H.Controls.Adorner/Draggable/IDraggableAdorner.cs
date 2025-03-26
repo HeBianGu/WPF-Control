@@ -3,14 +3,13 @@
 
 using System.Windows;
 
-namespace H.Controls.Adorner.Draggable
+namespace H.Controls.Adorner.Draggable;
+
+public interface IDraggableAdorner
 {
-    public interface IDraggableAdorner
-    {
-        Point Offset { get; set; }
-        void UpdatePosition(Point location);
-        object GetData();
-    }
+    Point Offset { get; set; }
+    void UpdatePosition(Point location);
+    object GetData();
 }
 
 

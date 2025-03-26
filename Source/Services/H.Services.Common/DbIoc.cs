@@ -1,4 +1,6 @@
-﻿namespace H.Services.Common;
+﻿using Microsoft.Extensions.DependencyInjection;
+
+namespace H.Services.Common;
 
 public static class DbIoc
 {

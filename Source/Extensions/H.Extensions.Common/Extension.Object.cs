@@ -1,5 +1,4 @@
-﻿using H.Common.Interfaces;
-using System.Collections;
+﻿using System.Collections;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
@@ -290,8 +289,8 @@ public static class ObjectExtension
         if (string.IsNullOrEmpty(searchText))
             return true;
 
-        if (obj is ISearchable searchable)
-            return searchable.Filter(searchText);
+        //if (obj is ISearchable searchable)
+        //    return searchable.Filter(searchText);
 
         Func<PropertyInfo, object, bool> match = (p, o) =>
         {

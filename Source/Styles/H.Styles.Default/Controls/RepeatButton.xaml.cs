@@ -1,9 +1,6 @@
-﻿using System.Windows;
+﻿namespace H.Styles.Default.Controls;
 
-namespace H.Styles.Default
+public class RepeatButtonKeys
 {
-    public class RepeatButtonKeys
-    {
-        public static ComponentResourceKey Default => new ComponentResourceKey(typeof(RepeatButtonKeys), "S.RepeatButton.Default");
-    }
+    public static ComponentResourceKey Default => new ComponentResourceKey(typeof(RepeatButtonKeys), "S.RepeatButton.Default");
 }

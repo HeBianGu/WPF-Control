@@ -1,5 +1,4 @@
-﻿using System.Windows;
-using System.Windows.Media;
+﻿using System.Windows.Media;
 using System.Windows.Media.Animation;
 
 namespace H.Extensions.Animations;
@@ -13,10 +12,10 @@ public class TranslateTransitionable : ElementTransitionableBase<Point>
     }
     public override async Task Close(UIElement visual)
     {
-        var aminationX = new DoubleAnimation(0, this.To.X, this.CloseDuration);
-        var aminationY = new DoubleAnimation(0, this.To.Y, this.CloseDuration);
-        using var renderTransformDisposable = new RenderTransformDisposable(visual);
-        var transform = new TranslateTransform();
+        DoubleAnimation aminationX = new DoubleAnimation(0, this.To.X, this.CloseDuration);
+        DoubleAnimation aminationY = new DoubleAnimation(0, this.To.Y, this.CloseDuration);
+        using RenderTransformDisposable renderTransformDisposable = new RenderTransformDisposable(visual);
+        TranslateTransform transform = new TranslateTransform();
         visual.RenderTransform = transform;
         transform.BeginAnimation(TranslateTransform.XProperty, aminationX);
         transform.BeginAnimation(TranslateTransform.YProperty, aminationY);
@@ -25,9 +24,9 @@ public class TranslateTransitionable : ElementTransitionableBase<Point>
 
     public override async Task Show(UIElement visual)
     {
-        var amination = new DoubleAnimation(0, this.ShowDuration);
-        using var renderTransformDisposable = new RenderTransformDisposable(visual);
-        var transform = new TranslateTransform(this.From.X, this.From.Y);
+        DoubleAnimation amination = new DoubleAnimation(0, this.ShowDuration);
+        using RenderTransformDisposable renderTransformDisposable = new RenderTransformDisposable(visual);
+        TranslateTransform transform = new TranslateTransform(this.From.X, this.From.Y);
         visual.RenderTransform = transform;
         transform.BeginAnimation(TranslateTransform.XProperty, amination);
         transform.BeginAnimation(TranslateTransform.YProperty, amination);

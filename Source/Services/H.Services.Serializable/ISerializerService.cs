@@ -31,18 +31,18 @@ public static class SerializerServiceExtensions
         {
             Directory.CreateDirectory(Path.GetDirectoryName(filePath));
         }
-        var txt = service.SerializeObject(sourceObj);
+        string txt = service.SerializeObject(sourceObj);
         File.WriteAllText(filePath, txt);
     }
 
     public static T DeserializeObject<T>(this ISerializerService service, string txt)
     {
-        return (T)service.DeserializeObject(txt,typeof(T));
+        return (T)service.DeserializeObject(txt, typeof(T));
     }
 
     public static T Clone<T>(this ISerializerService service, T t)
     {
-        var txt = service.SerializeObject(t);
+        string txt = service.SerializeObject(t);
         return service.DeserializeObject<T>(txt);
     }
 }

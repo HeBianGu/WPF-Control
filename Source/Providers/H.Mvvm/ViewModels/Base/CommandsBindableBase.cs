@@ -30,8 +30,8 @@ public abstract class CommandsBindableBase : Bindable
     /// <returns>命令的集合。</returns>
     protected virtual IEnumerable<IDisplayCommand> CreateCommands()
     {
-        var type = this.GetType();
-        var cmdps = type.GetProperties().Where(x => typeof(IDisplayCommand).IsAssignableFrom(x.PropertyType));
+        Type type = this.GetType();
+        IEnumerable<PropertyInfo> cmdps = type.GetProperties().Where(x => typeof(IDisplayCommand).IsAssignableFrom(x.PropertyType));
         foreach (PropertyInfo cmdp in cmdps)
         {
             if (cmdp.CanRead == false)
@@ -41,7 +41,7 @@ public abstract class CommandsBindableBase : Bindable
             IDisplayCommand command = cmdp.GetValue(this) as IDisplayCommand;
             if (command is IDisplayCommand displayCommand)
             {
-                var attr = cmdp.GetCustomAttribute<DisplayAttribute>();
+                DisplayAttribute attr = cmdp.GetCustomAttribute<DisplayAttribute>();
                 if (attr != null)
                 {
                     displayCommand.Name = displayCommand.Name ?? attr.Name;
@@ -50,7 +50,7 @@ public abstract class CommandsBindableBase : Bindable
                         displayCommand.Order = attr.GetOrder() ?? 0;
                     displayCommand.GroupName = displayCommand.GroupName ?? attr.GroupName;
                 }
-                var icon = cmdp.GetCustomAttribute<IconAttribute>();
+                IconAttribute icon = cmdp.GetCustomAttribute<IconAttribute>();
                 if (icon != null)
                     displayCommand.Icon = displayCommand.Icon ?? icon.Icon;
             }

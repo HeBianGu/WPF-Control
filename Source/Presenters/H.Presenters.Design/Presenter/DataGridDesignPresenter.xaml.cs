@@ -1,13 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿namespace H.Presenters.Design.Presenter;
 
-namespace H.Presenters.Design
+[Display(Name = "DataGrid")]
+public class DataGridDesignPresenter : DataGridPresenterBase, IDesignPresenter
 {
-    [Display(Name = "DataGrid")]
-    public class DataGridDesignPresenter : DataGridPresenterBase, IDesignPresenter
+    public DataGridDesignPresenter()
     {
-        public DataGridDesignPresenter()
-        {
-            this.ColumnSpan = 12;
-        }
+        this.ColumnSpan = 12;
     }
 }

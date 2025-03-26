@@ -1,4 +1,6 @@
-﻿namespace H.Controls.Diagram.Presenter.DiagramDatas;
+﻿global using H.Mvvm.ViewModels;
+
+namespace H.Controls.Diagram.Presenter.DiagramDatas;
 
 public interface INodeDataGroup : IDisplayBindable
 {

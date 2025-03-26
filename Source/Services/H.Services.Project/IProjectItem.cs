@@ -1,7 +1,5 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-using H.Common.Interfaces;
-
 namespace H.Services.Project;
 
 public interface IProjectItem : ISaveable, ILoadable

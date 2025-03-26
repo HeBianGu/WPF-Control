@@ -1,7 +1,4 @@
-﻿
-global using H.Common.Attributes;
-
-namespace H.Mvvm.ViewModels.Base;
+﻿namespace H.Mvvm.ViewModels.Base;
 
 /// <summary>
 /// 提供显示相关功能的可绑定基类。
@@ -13,7 +10,7 @@ public abstract class DisplayBindableBase : CommandsBindableBase, IDable, IDispl
     /// </summary>
     public DisplayBindableBase()
     {
-        var type = this.GetType();
+        Type type = this.GetType();
         //this.Name = type.Name;
         DisplayAttribute display = type.GetCustomAttribute<DisplayAttribute>(true);
         if (display != null)

@@ -9,7 +9,7 @@ public static class TransitionHostableExtensions
         visual.Visibility = Visibility.Visible;
         if (host.Transitionable == null)
             return;
-        var disposable = new IsHitTestVisibleDisposable(visual);
+        IsHitTestVisibleDisposable disposable = new IsHitTestVisibleDisposable(visual);
         await host.Transitionable.Show(visual);
         disposable.Dispose();
     }
@@ -18,7 +18,7 @@ public static class TransitionHostableExtensions
     {
         if (host.Transitionable == null)
             return;
-        var disposable = new IsHitTestVisibleDisposable(visual);
+        IsHitTestVisibleDisposable disposable = new IsHitTestVisibleDisposable(visual);
         await host.Transitionable.Close(visual);
         disposable.Dispose();
         visual.Visibility = Visibility.Collapsed;

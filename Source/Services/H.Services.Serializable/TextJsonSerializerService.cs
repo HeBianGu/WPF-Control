@@ -37,9 +37,7 @@ public class TextJsonSerializerService : IJsonSerializerService
 {
     public object DeserializeObject(string txt, Type type)
     {
-        if (string.IsNullOrEmpty(txt))
-            return null;
-        return JsonSerializer.Deserialize(txt, type, this.GetOptions());
+        return string.IsNullOrEmpty(txt) ? null : JsonSerializer.Deserialize(txt, type, this.GetOptions());
     }
 
     public string SerializeObject<T>(T t)
@@ -59,7 +57,7 @@ internal class DateTimeConverter : JsonConverter<DateTime>
 
     public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
-        var r = DateTime.TryParseExact(reader.GetString(), _format, null, System.Globalization.DateTimeStyles.None, out DateTime dateTime);
+        bool r = DateTime.TryParseExact(reader.GetString(), _format, null, System.Globalization.DateTimeStyles.None, out DateTime dateTime);
         return dateTime;
     }
 
@@ -68,7 +66,6 @@ internal class DateTimeConverter : JsonConverter<DateTime>
         writer.WriteStringValue(value.ToString(_format));
     }
 }
-
 
 internal class JsonIgnoreTypeConverter<T> : JsonConverter<object>
 {
@@ -89,9 +86,9 @@ internal class JsonIgnoreTypeConverter<T> : JsonConverter<object>
 
 public class TypeConverterJsonConverter : JsonConverter<object>
 {
-    TypeConverter CreateTypeConverter(Type objectType)
+    private TypeConverter CreateTypeConverter(Type objectType)
     {
-        var result = TypeDescriptor.GetConverter(objectType);
+        TypeConverter result = TypeDescriptor.GetConverter(objectType);
         return result.GetType() == typeof(TypeConverter) ? null : result;
     }
     public override bool CanConvert(Type objectType)
@@ -111,14 +108,12 @@ public class TypeConverterJsonConverter : JsonConverter<object>
     {
         string str = reader.GetString();
         TypeConverter converter = CreateTypeConverter(typeToConvert);
-        if (typeToConvert.IsAssignableTo(typeof(DispatcherObject)) && Application.Current?.Dispatcher != null)
-        {
-            return Application.Current.Dispatcher.Invoke(() =>
+        return typeToConvert.IsAssignableTo(typeof(DispatcherObject)) && Application.Current?.Dispatcher != null
+            ? Application.Current.Dispatcher.Invoke(() =>
             {
                 return converter.ConvertFromInvariantString(str);
-            });
-        }
-        return converter.ConvertFromInvariantString(str);
+            })
+            : converter.ConvertFromInvariantString(str);
     }
 
     public override void Write(Utf8JsonWriter writer, object value, JsonSerializerOptions options)

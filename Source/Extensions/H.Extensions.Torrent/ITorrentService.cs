@@ -1,4 +1,6 @@
-﻿namespace H.Extensions.Torrent;
+﻿using H.Iocable;
+
+namespace H.Extensions.Torrent;
 
 public interface ITorrentService
 {

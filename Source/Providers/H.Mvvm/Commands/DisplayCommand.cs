@@ -30,7 +30,6 @@ public class DisplayCommand : RelayCommand, IDisplayCommand, INotifyPropertyChan
         }
     }
 
-
     private int _order;
     [System.Text.Json.Serialization.JsonIgnore]
     [XmlIgnore]

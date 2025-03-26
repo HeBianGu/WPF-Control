@@ -1,13 +1,7 @@
-global using H.Common.Attributes;
 global using H.Iocable;
-global using H.Services.Common.AppPath;
-global using H.Services.Logger;
-global using H.Services.Message.Dialog;
-global using H.Services.Message.Dialog.Commands;
 global using System.Collections.Generic;
 global using System.Collections.ObjectModel;
 global using System.ComponentModel;
-global using System.IO;
 global using System.Linq;
 global using System.Threading.Tasks;
 global using System.Windows;
@@ -24,7 +18,6 @@ global using System.Windows.Media;
 )]
 
 [assembly: XmlnsDefinition("QQ:908293466", "H.Services.Common.About")]
-[assembly: XmlnsDefinition("QQ:908293466", "H.Services.Common.AppPath")]
 [assembly: XmlnsDefinition("QQ:908293466", "H.Services.Common.Crypt")]
 [assembly: XmlnsDefinition("QQ:908293466", "H.Services.Common.Guide")]
 [assembly: XmlnsDefinition("QQ:908293466", "H.Services.Common.Presenter")]
@@ -34,7 +27,6 @@ global using System.Windows.Media;
 [assembly: XmlnsPrefix("QQ:908293466", "h")]
 
 [assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Services.Common.About")]
-[assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Services.Common.AppPath")]
 [assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Services.Common.Crypt")]
 [assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Services.Common.Guide")]
 [assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Services.Common.Presenter")]
@@ -43,14 +35,12 @@ global using System.Windows.Media;
 [assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Services.Common.Upgrade")]
 [assembly: XmlnsPrefix("https://github.com/HeBianGu", "h")]
 
-[assembly: XmlnsDefinition("http://schemas.myproject.com/xaml/presentation", "H.Services.Common.About")]
-[assembly: XmlnsDefinition("http://schemas.myproject.com/xaml/presentation", "H.Services.Common.AppPath")]
-[assembly: XmlnsDefinition("http://schemas.myproject.com/xaml/presentation", "H.Services.Common.Crypt")]
-[assembly: XmlnsDefinition("http://schemas.myproject.com/xaml/presentation", "H.Services.Common.Guide")]
-[assembly: XmlnsDefinition("http://schemas.myproject.com/xaml/presentation", "H.Services.Common.Presenter")]
-[assembly: XmlnsDefinition("http://schemas.myproject.com/xaml/presentation", "H.Services.Common.Serialize.Meta")]
-[assembly: XmlnsDefinition("http://schemas.myproject.com/xaml/presentation", "H.Services.Common.SplashScreen")]
-[assembly: XmlnsDefinition("http://schemas.myproject.com/xaml/presentation", "H.Services.Common.Upgrade")]
-[assembly: XmlnsPrefix("http://schemas.myproject.com/xaml/presentation", "h")]
-
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Services.Common.About")]
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Services.Common.Crypt")]
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Services.Common.Guide")]
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Services.Common.Presenter")]
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Services.Common.Serialize.Meta")]
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Services.Common.SplashScreen")]
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Services.Common.Upgrade")]
+[assembly: XmlnsPrefix("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "h")]
 

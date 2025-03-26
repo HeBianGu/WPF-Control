@@ -1,9 +1,6 @@
-﻿using System.Windows;
+﻿namespace H.Styles.Default.Controls;
 
-namespace H.Styles.Default
+public class SliderKeys
 {
-    public class SliderKeys
-    {
-        public static ComponentResourceKey Default => new ComponentResourceKey(typeof(SliderKeys), "S.Slider.Default");
-    }
+    public static ComponentResourceKey Default => new ComponentResourceKey(typeof(SliderKeys), "S.Slider.Default");
 }

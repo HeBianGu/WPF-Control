@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:h="https://github.com/HeBianGu"
+                    xmlns:lca="clr-namespace:H.Controls.Adorner.Adorner.ControlTemplateAdorners"
                     xmlns:local="clr-namespace:H.Controls.Adorner">
 
     <Style x:Key="S.Thumb.Resize"
@@ -22,7 +23,7 @@
         </Setter>
     </Style>
     <ControlTemplate x:Key="{ComponentResourceKey ResourceId=S.ResizeAdorner.Template.Default,
-                                                  TypeInTargetAssembly={x:Type local:ResizeAdorner}}"
+                                                  TypeInTargetAssembly={x:Type lca:ResizeAdorner}}"
                      TargetType="ContentControl">
         <Grid>
             <Thumb x:Name="PART_Move"

@@ -1,10 +1,8 @@
 ﻿
 
 
-
+global using H.Extensions.Common;
 global using H.Controls.Diagram.Presenter.Commands;
-using System;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;

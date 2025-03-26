@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\H.Common\H.Common.csproj" />
     <ProjectReference Include="..\..\Providers\H.Iocable\H.Iocable.csproj" />
-    <ProjectReference Include="..\H.Services.Message\H.Services.Message.csproj" />
   </ItemGroup>
 </Project>

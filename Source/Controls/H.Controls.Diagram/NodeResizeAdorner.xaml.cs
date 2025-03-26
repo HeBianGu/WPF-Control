@@ -1,12 +1,7 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-
-
-
-
-using H.Controls.Adorner;
-using System;
-using System.Windows;
-using System.Windows.Controls;
+global using H.Controls.Adorner;
+global using H.Controls.Adorner.Adorner.ControlTemplateAdorners;
+global using H.Extensions.TypeConverter;
 
 namespace H.Controls.Diagram;
 

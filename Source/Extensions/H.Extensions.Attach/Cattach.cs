@@ -539,20 +539,20 @@ public static partial class Cattach
     {
 
     }
-    [Obsolete]
+  
     public static readonly DependencyProperty IsDragEnterProperty = DependencyProperty.RegisterAttached(
         "IsDragEnter", typeof(bool), typeof(Cattach), new FrameworkPropertyMetadata(default(bool), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnIsDragEnterChanged));
-    [Obsolete]
+   
     public static bool GetIsDragEnter(DependencyObject d)
     {
         return (bool)d.GetValue(IsDragEnterProperty);
     }
-    [Obsolete]
+  
     public static void SetIsDragEnter(DependencyObject obj, bool value)
     {
         obj.SetValue(IsDragEnterProperty, value);
     }
-    [Obsolete]
+ 
     private static void OnIsDragEnterChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args)
     {
 

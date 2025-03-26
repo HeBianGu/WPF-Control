@@ -2,9 +2,12 @@
 
 
 
+using H.Common.Attributes;
+using H.Common.Commands;
 using H.Mvvm;
-using H.Mvvm.Attributes;
 using H.Services.Common;
+using H.Services.Message;
+using H.Services.Message.Dialog;
 using System;
 using System.ComponentModel.DataAnnotations;
 

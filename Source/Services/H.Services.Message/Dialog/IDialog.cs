@@ -1,5 +1,4 @@
 ﻿using H.Common.Interfaces;
-using H.Common.Transitionable;
 
 namespace H.Services.Message.Dialog;
 

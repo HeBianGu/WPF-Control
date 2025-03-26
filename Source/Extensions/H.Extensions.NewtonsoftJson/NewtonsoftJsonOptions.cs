@@ -1,6 +1,6 @@
 ﻿using H.Extensions.NewtonsoftJson.Jsonable;
 using H.Extensions.Setting;
-using H.Services.Common.Setting;
+using H.Services.Setting;
 using Newtonsoft.Json;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;

@@ -1,7 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-
-namespace H.Controls.Diagram.Presenters.Workflow.Workflows;
+﻿namespace H.Controls.Diagram.Presenters.Workflow.Workflows;
 
 [Display(Name = "工作流程图", GroupName = "流程图", Order = 9)]
 public class WorkWorkflow : WorkflowBase

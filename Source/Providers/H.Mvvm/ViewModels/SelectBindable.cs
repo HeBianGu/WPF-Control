@@ -4,7 +4,6 @@ global using H.Common.Interfaces;
 
 namespace H.Mvvm.ViewModels;
 
-
 public partial class SelectBindable<T> : ModelBindable<T>, ISelectable
 {
     public SelectBindable(T t) : base(t)

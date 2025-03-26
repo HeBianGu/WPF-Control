@@ -4,16 +4,15 @@ using H.Extensions.TypeConverter;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace H.Themes.Default
+namespace H.Themes.Default.Extensions;
+
+[TypeConverter(typeof(DisplayEnumConverter))]
+public enum FontSizeThemeType
 {
-    [TypeConverter(typeof(DisplayEnumConverter))]
-    public enum FontSizeThemeType
-    {
-        [Display(Name = "常规")]
-        Default = 0,
-        [Display(Name = "大")]
-        Large,
-        [Display(Name = "小")]
-        Small
-    }
+    [Display(Name = "常规")]
+    Default = 0,
+    [Display(Name = "大")]
+    Large,
+    [Display(Name = "小")]
+    Small
 }

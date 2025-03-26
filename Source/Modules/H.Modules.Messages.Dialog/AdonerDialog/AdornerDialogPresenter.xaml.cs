@@ -1,5 +1,4 @@
 ﻿global using H.Controls.Adorner;
-global using H.Services.Common;
 global using H.Mvvm;
 global using System;
 global using System.Linq;
@@ -9,7 +8,10 @@ global using System.Windows;
 global using System.Windows.Documents;
 global using System.Windows.Controls;
 global using H.Mvvm.ViewModels.Base;
-global using H.Mvvm.Attributes;
+global using H.Controls.Adorner.Adorner;
+global using H.Common.Transitionable;
+global using H.Services.Message.Dialog;
+global using H.Common.Attributes;
 
 namespace H.Modules.Messages.Dialog
 {
@@ -99,5 +101,6 @@ namespace H.Modules.Messages.Dialog
         #endregion
 
         public ITransitionable Transitionable { get; set; }
+        public DataTemplate PresenterTemplate { get; set; }
     }
 }

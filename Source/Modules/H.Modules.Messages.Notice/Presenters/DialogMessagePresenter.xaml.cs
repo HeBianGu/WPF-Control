@@ -1,10 +1,7 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-using H.Extensions.Geometry;
-using H.Mvvm;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
+global using H.Extensions.Geometry;
+global using H.Mvvm.Commands;
 
 namespace H.Modules.Messages.Notice
 {

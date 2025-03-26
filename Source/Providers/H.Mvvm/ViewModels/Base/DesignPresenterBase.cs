@@ -1,11 +1,11 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 global using System.Collections;
+global using System.ComponentModel.DataAnnotations;
 global using System.Windows;
 global using System.Windows.Controls;
 global using System.Windows.Documents;
 global using System.Windows.Media;
 global using System.Xml.Serialization;
-global using System.ComponentModel.DataAnnotations;
 
 namespace H.Mvvm.ViewModels.Base;
 
@@ -40,7 +40,6 @@ public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresente
             RaisePropertyChanged();
         }
     }
-
 
     private double _height = double.NaN;
     [DefaultValue(double.NaN)]
@@ -176,7 +175,6 @@ public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresente
         }
     }
 
-
     private Brush _background;
     [Display(Name = "背景颜色", GroupName = "样式")]
     /// <summary> 说明  </summary>
@@ -256,7 +254,6 @@ public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresente
         }
     }
 
-
     private int _row;
     [Display(Name = "行", GroupName = "布局")]
     /// <summary> 说明  </summary>
@@ -270,7 +267,6 @@ public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresente
         }
     }
 
-
     private int _column;
     [Display(Name = "列", GroupName = "布局")]
     /// <summary> 说明  </summary>
@@ -283,7 +279,6 @@ public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresente
             RaisePropertyChanged();
         }
     }
-
 
     private int _rowSpan;
     [Display(Name = "行跨距", GroupName = "布局")]
@@ -329,9 +324,7 @@ public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresente
 
     private T GetItemsSource<T>(UIElement element) where T : IEnumerable
     {
-        if (element is ItemsControl items)
-            return (T)items.ItemsSource;
-        return default;
+        return element is ItemsControl items ? (T)items.ItemsSource : default;
     }
 
     private T GetParent<T>(DependencyObject element) where T : DependencyObject

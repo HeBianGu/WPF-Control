@@ -1,8 +1,4 @@
-﻿using H.Extensions.Geometry;
-using System.ComponentModel.DataAnnotations;
-using System.Windows.Media;
-
-namespace H.Controls.Diagram.Presenters.Workflow.NodeDatas;
+﻿namespace H.Controls.Diagram.Presenters.Workflow.NodeDatas;
 
 [Display(Name = "纸带", GroupName = "基本流程图形状", Order = 5, Description = "纸带")]
 

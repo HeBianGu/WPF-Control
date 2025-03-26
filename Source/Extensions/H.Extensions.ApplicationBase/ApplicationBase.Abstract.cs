@@ -1,14 +1,13 @@
 ﻿using H.Common.Interfaces;
 using H.Extensions.Attach;
-using H.Extensions.Common;
-using H.Services.Common;
 using H.Services.Common.DataBase;
-using H.Services.Common.Setting;
 using H.Services.Common.SplashScreen;
 using H.Services.Identity;
+using H.Services.Logger;
 using H.Services.Message;
 using H.Services.Message.Dialog;
-using Microsoft.Extensions.DependencyInjection;
+using H.Services.Setting;
+using System.Reflection;
 using System.Windows;
 
 namespace H.Extensions.ApplicationBase;
@@ -31,12 +30,12 @@ public partial class ApplicationBase
 
     protected virtual IEnumerable<ISplashLoad> GetSplashLoads()
     {
-        foreach (var item in Ioc.Services.GetServices<IDbConnectService>())
+        foreach (IDbConnectService item in Ioc.Services.GetServices<IDbConnectService>())
         {
             yield return item;
         }
 
-        foreach (var item in Ioc.Services.GetServices<ISplashLoad>())
+        foreach (ISplashLoad item in Ioc.Services.GetServices<ISplashLoad>())
         {
             yield return item;
         }
@@ -48,7 +47,7 @@ public partial class ApplicationBase
     protected virtual void OnSplashScreen(StartupEventArgs e)
     {
         int sleep = 1000;
-        var presenter = Ioc.Services.GetService<ISplashScreenViewPresenter>();
+        ISplashScreenViewPresenter presenter = Ioc.Services.GetService<ISplashScreenViewPresenter>();
         Func<IDialog, ISplashScreenViewPresenter, bool?> func = (c, s) =>
         {
             if (c?.IsCancel != true)
@@ -68,7 +67,7 @@ public partial class ApplicationBase
 
             {
                 int index = 0;
-                var loads = Ioc.GetAssignableFromServices<ISplashLoad>().Distinct();
+                IEnumerable<ISplashLoad> loads = Ioc.GetAssignableFromServices<ISplashLoad>().Distinct();
                 foreach (ISplashLoad load in loads)
                 {
                     if (c?.IsCancel == true)
@@ -103,7 +102,7 @@ public partial class ApplicationBase
                 return IocMessage.Window.ShowAction(presenter, x =>
                  {
                      x.DialogButton = DialogButton.None;
-                     x.Title = ApplicationProvider.Version;
+                     x.Title = Assembly.GetEntryAssembly().GetName().Version.ToString();
                      x.Width = 500;
                      x.Height = 300;
                      if (x is Window w)
@@ -137,21 +136,21 @@ public partial class ApplicationBase
     protected virtual void OnLogin(StartupEventArgs e)
     {
         {
-            var presenter = Ioc.Services.GetService<ILoginViewPresenter>();
+            ILoginViewPresenter presenter = Ioc.Services.GetService<ILoginViewPresenter>();
             if (presenter == null)
                 return;
             bool? r = IocMessage.Window.Show(presenter, x =>
             {
                 x.MinWidth = 400;
                 x.DialogButton = DialogButton.None;
-                x.Title = ApplicationProvider.Version;
+                x.Title = Assembly.GetEntryAssembly().GetName().Version.ToString();
                 if (x is Window w)
                 {
                     w.SizeToContent = SizeToContent.WidthAndHeight;
                     w.ShowInTaskbar = true;
                     Cattach.SetCaptionBackground(w, null);
                 }
-                   
+
             }).Result;
             if (r == false)
             {
@@ -164,7 +163,7 @@ public partial class ApplicationBase
         {
 
             int sleep = 1000;
-            var presenter = Ioc.Services.GetService<ILoginedSplashViewPresenter>();
+            ILoginedSplashViewPresenter presenter = Ioc.Services.GetService<ILoginedSplashViewPresenter>();
             Func<IDialog, ILoginedSplashViewPresenter, bool?> func = (c, s) =>
             {
                 if (c?.IsCancel != true)
@@ -183,7 +182,7 @@ public partial class ApplicationBase
                     Thread.Sleep(sleep);
                 }
 
-                var loads = Ioc.GetAssignableFromServices<ISplashLoad>().Distinct().OfType<ILoginedSplashLoad>();
+                IEnumerable<ILoginedSplashLoad> loads = Ioc.GetAssignableFromServices<ISplashLoad>().Distinct().OfType<ILoginedSplashLoad>();
                 int index = 0;
                 foreach (ILoginedSplashLoad load in loads)
                 {
@@ -252,7 +251,6 @@ public partial class ApplicationBase
     }
 
     protected abstract Window CreateMainWindow(StartupEventArgs e);
-
 
     /// <summary>
     /// 加载注入的配置信息

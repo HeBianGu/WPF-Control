@@ -1,32 +1,27 @@
-﻿global using H.Mvvm;
-global using H.Mvvm.Attributes;
-global using H.Mvvm.ViewModels.Base;
-using System.Threading.Tasks;
-using System;
+﻿global using H.Mvvm.ViewModels.Base;
 
-namespace H.Presenters.Common
+namespace H.Presenters.Common;
+
+public interface IPasswordBoxPresenter
 {
-    public interface IPasswordBoxPresenter
+    string Password { get; set; }
+}
+
+[Icon("\xE875")]
+public class PasswordBoxPresenter : DisplayBindableBase, IPasswordBoxPresenter
+{
+    public string Password { get; set; }
+}
+
+public static partial class DialogServiceExtension
+{
+    public static async Task<bool?> ShowPasswordBox(this IDialogMessageService service, Action<IPasswordBoxPresenter> option, Action<IPasswordBoxPresenter> sumitAction, Action<IDialog> builder = null, Func<IPasswordBoxPresenter,bool> canSumit = null)
     {
-        string Password { get; set; }
+        return await service.ShowDialog<PasswordBoxPresenter>(option, sumitAction, builder, canSumit);
     }
 
-    [Icon("\xE875")]
-    public class PasswordBoxPresenter : DisplayBindableBase, IPasswordBoxPresenter
+    public static async Task<bool?> ShowPasswordBox(this IDialogMessageService service, string password, Action<string> sumitAction, Action<IDialog> builder = null, Func<IPasswordBoxPresenter,bool> canSumit = null)
     {
-        public string Password { get; set; }
-    }
-
-    public static partial class DialogServiceExtension
-    {
-        public static async Task<bool?> ShowPasswordBox(this IDialogMessageService service, Action<IPasswordBoxPresenter> option, Action<IPasswordBoxPresenter> sumitAction, Action<IDialog> builder = null, Func<IPasswordBoxPresenter,bool> canSumit = null)
-        {
-            return await service.ShowDialog<PasswordBoxPresenter>(option, sumitAction, builder, canSumit);
-        }
-
-        public static async Task<bool?> ShowPasswordBox(this IDialogMessageService service, string password, Action<string> sumitAction, Action<IDialog> builder = null, Func<IPasswordBoxPresenter,bool> canSumit = null)
-        {
-            return await service.ShowPasswordBox(x => x.Password = password, x => sumitAction?.Invoke(x.Password), builder, canSumit);
-        }
+        return await service.ShowPasswordBox(x => x.Password = password, x => sumitAction?.Invoke(x.Password), builder, canSumit);
     }
 }

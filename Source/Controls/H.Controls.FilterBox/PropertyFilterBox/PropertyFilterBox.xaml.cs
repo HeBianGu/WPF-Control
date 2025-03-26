@@ -1,22 +1,6 @@
-﻿
-/* 项目“H.Controls.FilterBox (net6.0-windows)”的未合并的更改
-在此之前:
-using H.Services.Common;
-在此之后:
-using H;
-using H.Controls;
-using H.Controls.FilterBox;
-using H.Controls.FilterBox;
-using H.Services.Common;
-*/
-using H.Services.Common;
-using System;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Reflection;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
+﻿global using H.Services.Message;
+global using H.Services.Message.Dialog;
+global using System.Windows.Controls.Primitives;
 
 namespace H.Controls.FilterBox
 {

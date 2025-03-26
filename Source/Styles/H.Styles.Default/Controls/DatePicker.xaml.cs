@@ -1,9 +1,6 @@
-﻿using System.Windows;
+﻿namespace H.Styles.Default.Controls;
 
-namespace H.Styles.Default
+public class DatePickerKeys
 {
-    public class DatePickerKeys
-    {
-        public static ComponentResourceKey Default => new ComponentResourceKey(typeof(DatePickerKeys), "S.DatePicker.Default");
-    }
+    public static ComponentResourceKey Default => new ComponentResourceKey(typeof(DatePickerKeys), "S.DatePicker.Default");
 }

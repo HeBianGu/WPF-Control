@@ -1,5 +1,4 @@
 global using H.Iocable;
-global using H.Services.Logger;
 global using H.Services.Operation;
 using System.Windows;
 using System.Windows.Markup;
@@ -12,7 +11,6 @@ using System.Windows.Markup;
                                               //(used if a resource is not found in the page,
                                               // app, or any theme specific resource dictionaries)
 )]
-
 
 [assembly: XmlnsDefinition("QQ:908293466", "H.Extensions.ApplicationBase")]
 [assembly: XmlnsPrefix("QQ:908293466", "h")]

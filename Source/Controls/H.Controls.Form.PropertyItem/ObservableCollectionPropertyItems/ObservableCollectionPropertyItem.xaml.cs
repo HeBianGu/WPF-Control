@@ -1,12 +1,8 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-
-using H.Mvvm;
-using System.Collections;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Reflection;
+global using H.Mvvm.Commands;
+global using System.Collections;
+global using System.Collections.Specialized;
 
 namespace H.Controls.Form.PropertyItem.ObservableCollectionPropertyItems
 {

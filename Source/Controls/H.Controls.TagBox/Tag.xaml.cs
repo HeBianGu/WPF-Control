@@ -1,9 +1,10 @@
-﻿using H.Mvvm.ViewModels.Base;
-using System;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
-using System.Windows.Media;
+﻿global using H.Extensions.Common;
+global using H.Mvvm.ViewModels.Base;
+global using System;
+global using System.ComponentModel;
+global using System.ComponentModel.DataAnnotations;
+global using System.Text.Json.Serialization;
+global using System.Windows.Media;
 
 namespace H.Controls.TagBox
 {

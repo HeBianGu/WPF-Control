@@ -1,7 +1,6 @@
 ﻿
-
 using H.Extensions.Setting;
-using H.Services.Common;
+using H.Services.Setting;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Windows.Media;

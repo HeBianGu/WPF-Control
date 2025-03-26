@@ -1,6 +1,4 @@
-﻿using System.Windows;
-
-namespace H.Extensions.Animations;
+﻿namespace H.Extensions.Animations;
 
 public class GroupTransitionable : ITransitionable
 {
@@ -12,7 +10,7 @@ public class GroupTransitionable : ITransitionable
 
     public async Task Close(DependencyObject visual)
     {
-        foreach (var transitionable in this._transitionables)
+        foreach (ITransitionable transitionable in this._transitionables)
         {
             await transitionable.Close(visual);
         }
@@ -20,7 +18,7 @@ public class GroupTransitionable : ITransitionable
 
     public async Task Show(DependencyObject visual)
     {
-        foreach (var transitionable in this._transitionables)
+        foreach (ITransitionable transitionable in this._transitionables)
         {
             await transitionable.Show(visual);
         }

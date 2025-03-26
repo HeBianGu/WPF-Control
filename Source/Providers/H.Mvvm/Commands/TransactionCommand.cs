@@ -7,7 +7,6 @@ namespace H.Mvvm.Commands;
 //    Task<bool> BeginEditAsync(Func<bool> canCommit = null, int millisecondsTimeout = 60000);
 //}
 
-
 //public class TransactionCommand : RelayCommand, ITransactionCommand
 //{
 
@@ -45,7 +44,6 @@ namespace H.Mvvm.Commands;
 //        }
 //    }
 
-
 //    //public async Task<bool> BeginEdit(Action action = null)
 //    //{
 //    //    return await Task.Run(() =>
@@ -56,7 +54,6 @@ namespace H.Mvvm.Commands;
 //    //        return _result;
 //    //    });
 //    //}
-
 
 //    public async Task<bool> BeginEditAsync(Func<bool> canCommit = null, int millisecondsTimeout = 60 * 1000)
 //    {

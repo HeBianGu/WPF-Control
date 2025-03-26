@@ -1,10 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿namespace H.Presenters.Design.Presenter;
 
-namespace H.Presenters.Design
+[Display(Name = "GridArea")]
+public class GridAreaPresenter : PanelPresenterBase
 {
-    [Display(Name = "GridArea")]
-    public class GridAreaPresenter : PanelPresenterBase
-    {
 
-    }
 }

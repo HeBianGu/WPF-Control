@@ -3,8 +3,9 @@
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.DependencyInjection.Extensions;
 using H.Modules.Project;
+using H.Services.Setting;
 
-namespace System;
+namespace H.Modules.Project;
 
 public static class Extention
 {

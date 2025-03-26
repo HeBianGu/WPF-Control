@@ -54,7 +54,6 @@ public partial class ModelBindable<T> : BindableBase, IModelBindable<T>, ISearch
         }
     }
 
-
     private bool _isBuzy;
     [Browsable(false)]
     public bool IsBuzy
@@ -67,7 +66,6 @@ public partial class ModelBindable<T> : BindableBase, IModelBindable<T>, ISearch
         }
     }
 
-
     private double _value;
     [Browsable(false)]
     public double Value
@@ -79,7 +77,6 @@ public partial class ModelBindable<T> : BindableBase, IModelBindable<T>, ISearch
             RaisePropertyChanged();
         }
     }
-
 
     private string _message;
     [Browsable(false)]

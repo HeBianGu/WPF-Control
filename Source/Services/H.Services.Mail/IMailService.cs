@@ -1,5 +1,4 @@
 ﻿
-
 namespace H.Services.Mail;
 
 public interface IMailService

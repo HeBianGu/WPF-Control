@@ -11,7 +11,6 @@ public partial class TreeNodeBase<T> : SelectBindable<T>, ITreeNode, ISearchable
 
     public TreeNodeBase<T> TreeNodeEntity { get; set; }
 
-
     private bool? _isChecked = false;
     public bool? IsChecked
     {
@@ -35,7 +34,6 @@ public partial class TreeNodeBase<T> : SelectBindable<T>, ITreeNode, ISearchable
             RaisePropertyChanged();
         }
     }
-
 
     private void RefreshParentCheckState()
     {
@@ -180,7 +178,6 @@ public partial class TreeNodeBase<T> : SelectBindable<T>, ITreeNode, ISearchable
             }
         }
     }
-
 
     public IEnumerable<TreeNodeBase<T>> FindAllParent(Predicate<TreeNodeBase<T>> action = null)
     {

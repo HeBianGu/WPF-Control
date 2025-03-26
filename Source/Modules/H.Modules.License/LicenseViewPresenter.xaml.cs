@@ -7,7 +7,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using System.Xml.Serialization;
 using H.Mvvm.ViewModels.Base;
-using H.Mvvm.Attributes;
+using H.Mvvm.Commands;
+using H.Services.Setting;
+using H.Common.Attributes;
 
 namespace H.Modules.License
 {

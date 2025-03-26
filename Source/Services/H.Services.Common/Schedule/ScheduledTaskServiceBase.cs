@@ -25,8 +25,9 @@ public abstract class ScheduledTaskServiceBase : IScheduledTaskService
 
     private void Elapsed(object sender, System.Timers.ElapsedEventArgs e)
     {
-        if (this.Invoke(out string message) == false)
-            IocLog.Instance?.Error(message);
+        this.Invoke(out string message);
+        //if (this.Invoke(out string message) == false)
+        //IocLog.Instance?.Error(message);
     }
 
     public abstract bool Invoke(out string message);

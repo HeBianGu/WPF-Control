@@ -4,12 +4,11 @@
 
 using System.Windows;
 
-namespace H.Controls.Adorner.Draggable
+namespace H.Controls.Adorner.Draggable;
+
+public interface IDoDragDrop
 {
-    public interface IDoDragDrop
-    {
-        void DoDragDrop(UIElement element, DragDropEffects dragDropEffects);
-    }
+    void DoDragDrop(UIElement element, DragDropEffects dragDropEffects);
 }
 
 
