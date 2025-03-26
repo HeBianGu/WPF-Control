@@ -16,12 +16,12 @@ public class AppPathServce : IAppPathServce
     /// <summary>
     /// 公司名称
     /// </summary>
-    public string Company { get; set; } = "HeBianGu";
+    public virtual string Company { get; set; } = "HeBianGu";
 
     /// <summary>
     /// 配置文件扩展名
     /// </summary>
-    public string ConfigExtention { get; set; } = ".xml";
+    public virtual string ConfigExtention { get; set; } = ".xml";
 
     /// <summary>
     /// 构造函数
@@ -46,67 +46,67 @@ public class AppPathServce : IAppPathServce
     /// <summary>
     /// 文档目录
     /// </summary>
-    public string Document { get; set; } = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+    public virtual string Document { get; set; } = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
     /// <summary>
     /// 应用程序名称
     /// </summary>
-    public string AppName => Assembly.GetEntryAssembly()?.GetName()?.Name;
+    public virtual string AppName => Assembly.GetEntryAssembly()?.GetName()?.Name;
 
     /// <summary>
     /// 应用程序路径
     /// </summary>
-    public string AppPath => Path.Combine(this.Document, this.Company, this.AppName);
+    public virtual string AppPath => Path.Combine(this.Document, this.Company, this.AppName);
 
     /// <summary>
     /// 默认目录
     /// </summary>
-    public string Default => Path.Combine(this.Document, this.Company, this.AppName, nameof(this.Default));
+    public virtual string Default => Path.Combine(this.Document, this.Company, this.AppName, nameof(this.Default));
 
     /// <summary>
     /// 配置目录
     /// </summary>
-    public string Config => Path.Combine(this.Default, nameof(this.Config));
+    public virtual string Config => Path.Combine(this.Default, nameof(this.Config));
 
     /// <summary>
     /// 数据目录
     /// </summary>
-    public string Data => Path.Combine(this.Default, nameof(this.Data));
+    public virtual string Data => Path.Combine(this.Default, nameof(this.Data));
 
     /// <summary>
     /// 注册表路径
     /// </summary>
-    public string RegistryPath => Path.Combine("SOFTWARE", this.AppName);
+    public virtual string RegistryPath => Path.Combine("SOFTWARE", this.AppName);
 
     /// <summary>
     /// 设置目录
     /// </summary>
-    public string Setting => Path.Combine(this.Default, nameof(this.Setting));
+    public virtual string Setting => Path.Combine(this.Default, nameof(this.Setting));
 
     /// <summary>
     /// 许可证目录
     /// </summary>
-    public string License => Path.Combine(this.Default, nameof(this.License));
+    public virtual string License => Path.Combine(this.Default, nameof(this.License));
 
     /// <summary>
     /// 日志目录
     /// </summary>
-    public string Log => Path.Combine(this.Default, nameof(this.Log));
+    public virtual string Log => Path.Combine(this.Default, nameof(this.Log));
 
     /// <summary>
     /// 项目目录
     /// </summary>
-    public string Project => Path.Combine(this.Default, nameof(this.Project));
+    public virtual string Project => Path.Combine(this.Default, nameof(this.Project));
 
     /// <summary>
     /// 模板目录
     /// </summary>
-    public string Template => Path.Combine(this.Default, nameof(this.Template));
+    public virtual string Template => Path.Combine(this.Default, nameof(this.Template));
 
     /// <summary>
     /// 缓存目录
     /// </summary>
-    public string Cache => Path.Combine(this.Default, nameof(this.Cache));
+    public virtual string Cache => Path.Combine(this.Default, nameof(this.Cache));
 
     #endregion
 
@@ -115,7 +115,7 @@ public class AppPathServce : IAppPathServce
     /// <summary>
     /// 用户路径
     /// </summary>
-    public string UserPath => this.GetUserName() == null ? this.Default : Path.Combine(this.AppPath, this.GetUserName() ?? nameof(this.Default));
+    public virtual string UserPath => this.GetUserName() == null ? this.Default : Path.Combine(this.AppPath, this.GetUserName() ?? nameof(this.Default));
 
     private string GetUserName()
     {
@@ -125,47 +125,47 @@ public class AppPathServce : IAppPathServce
     /// <summary>
     /// 用户数据目录
     /// </summary>
-    public string UserData => Path.Combine(this.UserPath, nameof(this.Data));
+    public virtual string UserData => Path.Combine(this.UserPath, nameof(this.Data));
 
     /// <summary>
     /// 用户设置目录
     /// </summary>
-    public string UserSetting => Path.Combine(this.UserPath, nameof(this.Setting));
+    public virtual string UserSetting => Path.Combine(this.UserPath, nameof(this.Setting));
 
     /// <summary>
     /// 用户项目目录
     /// </summary>
-    public string UserProject => Path.Combine(this.UserPath, nameof(this.Project));
+    public virtual string UserProject => Path.Combine(this.UserPath, nameof(this.Project));
 
     /// <summary>
     /// 默认项目目录
     /// </summary>
-    public string DefaultProjects => Path.Combine(Assets, nameof(DefaultProjects));
+    public virtual string DefaultProjects => Path.Combine(Assets, nameof(DefaultProjects));
 
     /// <summary>
     /// 资源目录
     /// </summary>
-    public string Assets => Path.Combine(AppDomain.CurrentDomain.BaseDirectory, nameof(Assets));
+    public virtual string Assets => Path.Combine(AppDomain.CurrentDomain.BaseDirectory, nameof(Assets));
 
     /// <summary>
     /// 用户模板目录
     /// </summary>
-    public string UserTemplate => Path.Combine(this.UserPath, nameof(this.Template));
+    public virtual string UserTemplate => Path.Combine(this.UserPath, nameof(this.Template));
 
     /// <summary>
     /// 用户缓存目录
     /// </summary>
-    public string UserCache => Path.Combine(this.UserPath, nameof(this.Cache));
+    public virtual string UserCache => Path.Combine(this.UserPath, nameof(this.Cache));
 
     /// <summary>
     /// 用户许可证目录
     /// </summary>
-    public string UserLicense => Path.Combine(this.Default, nameof(this.License));
+    public virtual string UserLicense => Path.Combine(this.Default, nameof(this.License));
 
     /// <summary>
     /// 用户日志目录
     /// </summary>
-    public string UserLog => Path.Combine(this.Default, nameof(this.Log));
+    public virtual string UserLog => Path.Combine(this.Default, nameof(this.Log));
 
     #endregion
 
@@ -174,17 +174,17 @@ public class AppPathServce : IAppPathServce
     /// <summary>
     /// 模块目录
     /// </summary>
-    public string Module => Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Module");
+    public virtual string Module => Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Module");
 
     /// <summary>
     /// 组件目录
     /// </summary>
-    public string Component => Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Component");
+    public virtual string Component => Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Component");
 
     /// <summary>
     /// 版本目录
     /// </summary>
-    public string Version => Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Version");
+    public virtual string Version => Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Version");
 
     #endregion
 

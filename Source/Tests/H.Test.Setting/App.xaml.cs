@@ -1,6 +1,9 @@
 ﻿using H.Extensions.ApplicationBase;
+using H.Extensions.AppPath;
 using H.Modules.Setting;
+using H.Modules.Setting.Base;
 using H.Services.Common;
+using H.Services.Setting;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -20,6 +23,7 @@ namespace H.Test.Setting
     {
         protected override void ConfigureServices(IServiceCollection services)
         {
+            services.AddAppPath();
             services.AddAdornerDialogMessage();
             services.AddSnackMessage();
             //services.AddWindowDialogMessage();
@@ -28,11 +32,11 @@ namespace H.Test.Setting
 
         protected override void Configure(IApplicationBuilder app)
         {
-            app.UseSettingDataManager(x =>
+            app.UseSettingDataService(x =>
             {
                 x.Add(LoginSetting.Instance);
             });
-            app.UseSetting();
+            app.UseSettingView();
             app.UseSettingSecurity();
             app.UseSettingDefault();
         }

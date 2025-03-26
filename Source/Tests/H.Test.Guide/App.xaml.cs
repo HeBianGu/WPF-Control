@@ -1,5 +1,6 @@
 ﻿
 using H.Extensions.ApplicationBase;
+using H.Modules.Guide;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;

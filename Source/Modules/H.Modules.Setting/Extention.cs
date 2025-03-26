@@ -32,7 +32,7 @@ public static class SystemSettingExtention
         return builder;
     }
 
-    public static IApplicationBuilder UseSettingViewSetting(this IApplicationBuilder builder, Action<ISettingViewOption> option = null)
+    public static IApplicationBuilder UseSettingView(this IApplicationBuilder builder, Action<ISettingViewOption> option = null)
     {
         IocSetting.Instance.Add(SettingViewOption.Instance);
         option?.Invoke(SettingViewOption.Instance);

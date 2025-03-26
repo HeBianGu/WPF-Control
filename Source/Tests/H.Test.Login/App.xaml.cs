@@ -1,6 +1,9 @@
 ﻿using H.Extensions.ApplicationBase;
+using H.Extensions.Mail;
 using H.Modules.Login;
+using H.Modules.Setting;
 using H.Services.Common;
+using H.Services.Setting;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;

@@ -5,7 +5,9 @@ using System.Data.Entity;
 #if NETCOREAPP
 #endif
 using H.DataBases.Share;
+using H.Services.AppPath;
 using H.Services.Common;
+using H.Services.Setting;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.IO;

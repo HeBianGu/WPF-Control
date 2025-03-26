@@ -2,6 +2,8 @@
 using H.Modules.Messages.Dialog;
 using H.Modules.Messages.Form;
 using H.Services.Common;
+using H.Services.Message.Dialog;
+using H.Services.Message.Form;
 using H.Styles.Default;
 using Microsoft.Extensions.DependencyInjection;
 using System;

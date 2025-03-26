@@ -20,6 +20,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Xml.Serialization;
+using H.Mvvm.Commands;
+using H.Services.Message;
+using H.Common.Interfaces;
+using H.Services.Common.DataBase;
 
 namespace H.DataBases.Share
 {

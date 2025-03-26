@@ -1,5 +1,8 @@
 ﻿using H.Extensions.ApplicationBase;
+using H.Modules.Setting;
+using H.Services.Setting;
 using H.Styles.Default;
+using H.Styles.Default.Controls;
 using H.Themes.Colors.Accent;
 using H.Themes.Colors.Blue;
 using H.Themes.Colors.Gray;

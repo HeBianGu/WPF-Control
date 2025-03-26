@@ -11,6 +11,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using H.Services.Common;
 using H.DataBases.Share;
+using H.Services.Common.DataBase;
+using H.Services.Setting;
 
 
 #endif

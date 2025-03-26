@@ -9,12 +9,14 @@ using System.Windows.Markup;
                                               //(used if a resource is not found in the page,
                                               // app, or any theme specific resource dictionaries)
 )]
-
+[assembly: XmlnsDefinition("QQ:908293466", "H.Presenters.Design.Presenter")]
 [assembly: XmlnsDefinition("QQ:908293466", "H.Presenters.Design")]
 [assembly: XmlnsPrefix("QQ:908293466", "h")]
 
+[assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Presenters.Design.Presenter")]
 [assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Presenters.Design")]
 [assembly: XmlnsPrefix("https://github.com/HeBianGu", "h")]
 
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Presenters.Design.Presenter")]
 [assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Presenters.Design")]
 [assembly: XmlnsPrefix("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "h")]

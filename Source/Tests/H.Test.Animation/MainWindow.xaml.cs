@@ -20,6 +20,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using H.Services.Message;
 
 namespace H.Test.Animation
 {
@@ -46,7 +47,7 @@ namespace H.Test.Animation
                     }
                     return true;
                 };
-            IocMessage.Form.ShowEdit(student, match);
+            IocMessage.Form.ShowEdit(student, null, match);
         }
     }
 
