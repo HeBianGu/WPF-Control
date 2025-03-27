@@ -15,6 +15,9 @@ using System.Linq;
 using System.Text.Json.Serialization;
 using System.Windows;
 using System.Xml.Serialization;
+using H.Mvvm.Commands;
+using H.Services.Message;
+using H.Services.Project;
 
 namespace H.App.FileManager
 {
@@ -98,7 +101,7 @@ namespace H.App.FileManager
                        return await Save();
                    });
                 if (r >= 0)
-                    IocMessage.Snack.ShowInfo("保存完成");
+                    IocMessage.ShowSnackInfo("保存完成");
                 else
                     IocMessage.Snack.ShowError("保存失败");
             }

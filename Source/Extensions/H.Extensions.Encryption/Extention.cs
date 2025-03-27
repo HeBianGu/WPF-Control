@@ -1,7 +1,8 @@
-﻿using H.Services.Common.Crypt;
+﻿using H.Extensions.Encryption;
+using H.Services.Common.Crypt;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace H.Extensions.Encryption;
+namespace System;
 
 public static class Extention
 {

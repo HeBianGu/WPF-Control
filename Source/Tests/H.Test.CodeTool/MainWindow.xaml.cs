@@ -6,6 +6,7 @@ using H.Extensions.Command;
 using H.Extensions.ValueConverter;
 using H.Extensions.ValueConverter.IEnumerables;
 using H.Services.Common;
+using H.Services.Common.About;
 using H.Services.Identity;
 using H.Services.Message;
 using H.Services.Project;
@@ -62,7 +63,7 @@ public partial class MainWindow : Window
     public IEnumerable<string> GetNamespaces(Assembly assembly)
     {
         // 获取所有公开（public）类型的命名空间（去重）
-        var namespaces = assembly.GetExportedTypes().Where(x => !x.IsAbstract)  // 仅获取公开类型（public）
+        var namespaces = assembly.GetExportedTypes().Where(x => !x.IsAbstract || x.IsInterface)  // 仅获取公开类型（public）
             .Select(t => t.Namespace)
             .Where(ns => ns != null)  // 过滤掉没有命名空间的类型（如匿名类型）
             .Distinct()               // 去重
@@ -136,6 +137,8 @@ public partial class MainWindow : Window
         yield return typeof(LogoDataProvider).Assembly;
         yield return typeof(LineAdorner).Assembly;
         yield return typeof(Form).Assembly;
+        yield return typeof(IAboutViewPresenter).Assembly;
+
         //yield return typeof(IApplicationBuilder).Assembly;
         //yield return typeof(IApplicationBuilder).Assembly;
         //yield return typeof(IApplicationBuilder).Assembly;

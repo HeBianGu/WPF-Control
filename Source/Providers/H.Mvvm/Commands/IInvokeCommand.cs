@@ -1,6 +1,5 @@
 ﻿namespace H.Mvvm.Commands;
 
-[Obsolete]
 public interface IInvokeCommand : ICommand
 {
     string Name { get; set; }

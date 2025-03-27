@@ -1,6 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using H.Extensions.Torrent;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace H.Extensions.Torrent;
+namespace System;
 
 public static class Extention
 {

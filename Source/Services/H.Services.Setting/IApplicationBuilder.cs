@@ -1,4 +1,4 @@
-﻿namespace H.Services.Setting;
+﻿namespace System;
 
 public interface IApplicationBuilder
 {

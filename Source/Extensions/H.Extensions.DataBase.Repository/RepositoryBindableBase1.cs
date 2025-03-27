@@ -361,7 +361,7 @@ namespace H.Extensions.DataBase.Repository
             bool? dialog = await IocMessage.Form.ShowEdit(this.GetAddModel(m), x => x.Title = "新增");
             if (dialog != true)
             {
-                IocMessage.Snack?.ShowInfo("取消操作");
+                IocMessage.ShowSnackInfo("取消操作");
                 return;
             }
             await this.Add(m);
@@ -391,7 +391,7 @@ namespace H.Extensions.DataBase.Repository
             bool? r = await IocMessage.Form.ShowEdit(this.GetEditModel(entity));
             if (r != true)
             {
-                IocMessage.Snack?.ShowInfo("取消操作");
+                IocMessage.ShowSnackInfo("取消操作");
                 return;
             }
 
@@ -400,11 +400,11 @@ namespace H.Extensions.DataBase.Repository
             if (rs >= 0)
             {
                 if (this.UseMessage)
-                    IocMessage.Snack?.ShowInfo("保存成功");
+                    IocMessage.ShowSnackInfo("保存成功");
             }
             else
             {
-                IocMessage.Snack?.ShowInfo("保存失败，数据库保存错误");
+                IocMessage.ShowSnackInfo("保存失败，数据库保存错误");
             }
             if (this.UseOperationLog)
                 Ioc<IOperationService>.Instance?.Log<TEntity>($"编辑", entity.ID, OperationType.Update);
@@ -432,14 +432,14 @@ namespace H.Extensions.DataBase.Repository
             if (r > 0)
             {
                 if (this.UseMessage)
-                    IocMessage.Snack?.ShowInfo("删除成功");
+                    IocMessage.ShowSnackInfo("删除成功");
                 TViewModel m = this.Collection.FirstOrDefault(x => x.Model == entity);
                 this.Collection.Remove(m);
                 this.Collection.SelectedItem = this.Collection.FirstOrDefault(x => true);
             }
             else
             {
-                IocMessage.Snack?.ShowInfo("删除失败,数据库保存错误");
+                IocMessage.ShowSnackInfo("删除失败,数据库保存错误");
             }
             if (this.UseOperationLog)
                 Ioc<IOperationService>.Instance?.Log<TEntity>($"新增", entity.ID, OperationType.Delete);
@@ -466,12 +466,12 @@ namespace H.Extensions.DataBase.Repository
             if (r > 0)
             {
                 if (this.UseMessage)
-                    IocMessage.Snack?.ShowInfo("清空成功");
+                    IocMessage.ShowSnackInfo("清空成功");
                 this.Collection.Clear();
             }
             else
             {
-                IocMessage.Snack?.ShowInfo("清空失败,数据库保存错误");
+                IocMessage.ShowSnackInfo("清空失败,数据库保存错误");
             }
             if (this.UseOperationLog)
                 Ioc<IOperationService>.Instance?.Log<TEntity>($"清空", null, OperationType.Delete);
@@ -495,11 +495,11 @@ namespace H.Extensions.DataBase.Repository
             if (r >= 0)
             {
                 if (this.UseMessage)
-                    IocMessage.Snack?.ShowInfo("保存成功");
+                    IocMessage.ShowSnackInfo("保存成功");
             }
             else
             {
-                IocMessage.Snack?.ShowInfo("保存失败，数据库保存错误");
+                IocMessage.ShowSnackInfo("保存失败，数据库保存错误");
             }
             return r;
         }
@@ -534,7 +534,7 @@ namespace H.Extensions.DataBase.Repository
             }
             else
             {
-                IocMessage.Snack?.ShowInfo("删除失败,数据库保存错误");
+                IocMessage.ShowSnackInfo("删除失败,数据库保存错误");
             }
             if (this.UseOperationLog)
                 foreach (TEntity item in entities)

@@ -17,23 +17,18 @@ public static class Ioc
     public static T GetService<T>(bool throwIfNone = true)
     {
         if (_services == null)
-            return throwIfNone ? throw new ArgumentNullException($"请先注册使用ApplicationBase注册<IServiceCollection>接口") : default;
-        T r = (T)_services.GetService(typeof(T));
-        if (r == null && throwIfNone)
-        {
-            System.Diagnostics.Debug.WriteLine(typeof(T));
-            throw new ArgumentNullException($"请先注册<{typeof(T)}>接口");
-        }
-        return r;
+            return throwIfNone ? throw new ArgumentNullException(typeof(T).FullName, $"请先初始化ApplicationBase.ConfigureServices后再获取Ioc接口") : default;
+        return GetService<T>(typeof(T), throwIfNone);
     }
 
     public static T GetService<T>(Type type, bool throwIfNone = true)
     {
+        string message = $"此接口为依赖注入接口，请先在ApplicationBase中注册<{typeof(T).Name}>服务";
         T r = (T)_services.GetService(type);
         if (r == null && throwIfNone)
         {
             System.Diagnostics.Debug.WriteLine(type);
-            throw new ArgumentNullException($"请先注册<{type}>接口");
+            throw new ArgumentNullException(message);
         }
         return r;
     }
@@ -119,24 +114,5 @@ public abstract class Ioc<T, Interface> where T : class, Interface, new()
 
 public abstract class Ioc<Interface>
 {
-    public static Interface Instance
-    {
-        get
-        {
-            object r = Ioc.Services?.GetService(typeof(Interface));
-            return r == null ? default : (Interface)r;
-        }
-    }
-}
-
-public abstract class IocBindable<T, Interface> : Ioc<T, Interface>, INotifyPropertyChanged where T : class, Interface, new()
-{
-    public event PropertyChangedEventHandler PropertyChanged;
-
-    public virtual void RaisePropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = "")
-    {
-        if (PropertyChanged != null)
-            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-
-    }
+    public static Interface Instance => Ioc.GetService<Interface>();
 }

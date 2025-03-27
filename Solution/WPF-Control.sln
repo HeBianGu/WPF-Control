@@ -378,6 +378,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Extensions.DataBase.Repos
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Extensions.ObservableSource", "..\Source\Extensions\H.Extensions.ObservableSource\H.Extensions.ObservableSource.csproj", "{542E8CAB-E857-42F7-A622-ABC2AAD239F1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Extensions.IocPresenter", "..\Source\Extensions\H.Extensions.IocPresenter\H.Extensions.IocPresenter.csproj", "{8D1625A2-7883-4A2C-96FC-3F8EDC8F6135}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -3610,6 +3612,26 @@ Global
 		{542E8CAB-E857-42F7-A622-ABC2AAD239F1}.Release|x64.Build.0 = Release|Any CPU
 		{542E8CAB-E857-42F7-A622-ABC2AAD239F1}.Release|x86.ActiveCfg = Release|Any CPU
 		{542E8CAB-E857-42F7-A622-ABC2AAD239F1}.Release|x86.Build.0 = Release|Any CPU
+		{8D1625A2-7883-4A2C-96FC-3F8EDC8F6135}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D1625A2-7883-4A2C-96FC-3F8EDC8F6135}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D1625A2-7883-4A2C-96FC-3F8EDC8F6135}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{8D1625A2-7883-4A2C-96FC-3F8EDC8F6135}.Debug|ARM.Build.0 = Debug|Any CPU
+		{8D1625A2-7883-4A2C-96FC-3F8EDC8F6135}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{8D1625A2-7883-4A2C-96FC-3F8EDC8F6135}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{8D1625A2-7883-4A2C-96FC-3F8EDC8F6135}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8D1625A2-7883-4A2C-96FC-3F8EDC8F6135}.Debug|x64.Build.0 = Debug|Any CPU
+		{8D1625A2-7883-4A2C-96FC-3F8EDC8F6135}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8D1625A2-7883-4A2C-96FC-3F8EDC8F6135}.Debug|x86.Build.0 = Debug|Any CPU
+		{8D1625A2-7883-4A2C-96FC-3F8EDC8F6135}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D1625A2-7883-4A2C-96FC-3F8EDC8F6135}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D1625A2-7883-4A2C-96FC-3F8EDC8F6135}.Release|ARM.ActiveCfg = Release|Any CPU
+		{8D1625A2-7883-4A2C-96FC-3F8EDC8F6135}.Release|ARM.Build.0 = Release|Any CPU
+		{8D1625A2-7883-4A2C-96FC-3F8EDC8F6135}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{8D1625A2-7883-4A2C-96FC-3F8EDC8F6135}.Release|ARM64.Build.0 = Release|Any CPU
+		{8D1625A2-7883-4A2C-96FC-3F8EDC8F6135}.Release|x64.ActiveCfg = Release|Any CPU
+		{8D1625A2-7883-4A2C-96FC-3F8EDC8F6135}.Release|x64.Build.0 = Release|Any CPU
+		{8D1625A2-7883-4A2C-96FC-3F8EDC8F6135}.Release|x86.ActiveCfg = Release|Any CPU
+		{8D1625A2-7883-4A2C-96FC-3F8EDC8F6135}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -3779,6 +3801,7 @@ Global
 		{64DA3196-1014-45C5-AC17-4E143D75D278} = {AAADF39B-3716-4820-897C-0E5953B5696D}
 		{0635E82B-A17E-4F84-91CD-99FFC4C3FCC7} = {09F8FD00-E76A-4D72-AAB4-7FA06DBE12D4}
 		{542E8CAB-E857-42F7-A622-ABC2AAD239F1} = {09F8FD00-E76A-4D72-AAB4-7FA06DBE12D4}
+		{8D1625A2-7883-4A2C-96FC-3F8EDC8F6135} = {09F8FD00-E76A-4D72-AAB4-7FA06DBE12D4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF825C3D-F4F4-4E62-BBFF-B42A5E81112F}

@@ -1,8 +1,10 @@
 ﻿using H.Common.Interfaces;
+using System.Windows;
+using System.Windows.Media;
 
-namespace H.Services.Common.Presenter;
+namespace H.Extensions.IocPresenter;
 
-public class LayoutablePresenterBase<T, Interface> : TitleablePresenterBase<T, Interface>, ILayoutable where T : class, Interface, new()
+public class IocLayoutPresenterBase<T, Interface> : IocTitlePresenterBase<T, Interface>, ILayoutable where T : class, Interface, new()
 {
     public double Height { get; set; } = double.NaN;
     public double Width { get; set; } = double.NaN;

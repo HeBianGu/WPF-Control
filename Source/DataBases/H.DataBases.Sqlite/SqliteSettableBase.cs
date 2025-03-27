@@ -8,6 +8,7 @@ using System.Data.Entity;
 #if NETCOREAPP
 #endif
 using H.DataBases.Share;
+using H.Extensions.AppPath;
 using H.Services.AppPath;
 using H.Services.Common;
 using System.ComponentModel;
@@ -26,8 +27,11 @@ namespace H.DataBases.Sqlite
         public override void LoadDefault()
         {
             base.LoadDefault();
-            this.ConfigPath = Path.Combine(IocAppPaths.Instance.Config, this.GetType().Name + IocAppPaths.Instance.ConfigExtention);
-            this.FilePath = IocAppPaths.Instance.Data;
+            AppPathServce appPathServce = new AppPathServce();
+            //this.ConfigPath = Path.Combine(IocAppPaths.Instance.Config, this.GetType().Name + IocAppPaths.Instance.ConfigExtention);
+            //DBContext的在注册时就需要访问IocAppPaths.Instance而此时无法访问，所以这里直接new一个AppPathServce获取一个默认值
+            this.ConfigPath = Path.Combine(appPathServce.Config, this.GetType().Name + appPathServce.ConfigExtention);
+            this.FilePath = appPathServce.Data;
         }
 
         private string _configPath;

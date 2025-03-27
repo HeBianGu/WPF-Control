@@ -40,7 +40,7 @@ namespace H.Modules.Identity
             });
             if (dialog != true)
             {
-                IocMessage.Snack?.ShowInfo("取消操作");
+                IocMessage.ShowSnackInfo("取消操作");
                 return;
             }
             await this.Add(m);
@@ -60,7 +60,7 @@ namespace H.Modules.Identity
             });
             if (r != true)
             {
-                IocMessage.Snack?.ShowInfo("取消操作");
+                IocMessage.ShowSnackInfo("取消操作");
                 return;
             }
 
@@ -69,11 +69,11 @@ namespace H.Modules.Identity
             if (rs > 0)
             {
                 if (this.UseMessage)
-                    IocMessage.Snack?.ShowInfo("保存成功");
+                    IocMessage.ShowSnackInfo("保存成功");
             }
             else
             {
-                IocMessage.Snack?.ShowInfo("保存失败，数据库保存错误");
+                IocMessage.ShowSnackInfo("保存失败，数据库保存错误");
             }
         }
     }

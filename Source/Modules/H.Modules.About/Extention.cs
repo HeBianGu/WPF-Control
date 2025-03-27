@@ -1,8 +1,5 @@
-﻿
-using H.Modules.About;
-using H.Services.Common;
+﻿using H.Modules.About;
 using H.Services.Common.About;
-using H.Services.Setting;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace System

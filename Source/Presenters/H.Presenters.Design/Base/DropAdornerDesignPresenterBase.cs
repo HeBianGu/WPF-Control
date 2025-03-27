@@ -1,6 +1,7 @@
 ﻿global using H.Controls.Adorner;
 global using H.Extensions.Behvaiors.Adorners;
 global using System.Windows.Documents;
+using H.Controls.Adorner.Adorner;
 
 namespace H.Presenters.Design.Base;
 

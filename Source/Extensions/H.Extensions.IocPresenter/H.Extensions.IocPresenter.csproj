@@ -1,0 +1,7 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\H.Common\H.Common.csproj" />
+    <ProjectReference Include="..\..\Providers\H.Iocable\H.Iocable.csproj" />
+    <ProjectReference Include="..\..\Providers\H.Mvvm\H.Mvvm.csproj" />
+  </ItemGroup>
+</Project>

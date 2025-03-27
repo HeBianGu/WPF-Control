@@ -4,7 +4,7 @@ using H.Services.Setting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace H.Modules.SplashScreen;
+namespace System;
 
 public static class Extension
 {

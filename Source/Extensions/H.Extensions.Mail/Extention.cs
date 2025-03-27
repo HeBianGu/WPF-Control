@@ -1,10 +1,11 @@
 ﻿global using H.Iocable;
 global using H.Services.Logger;
+using H.Extensions.Mail;
 using H.Services.Setting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace H.Extensions.Mail;
+namespace System;
 
 public static class Extention
 {

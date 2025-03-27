@@ -1,6 +1,5 @@
 ﻿namespace H.Mvvm.Commands;
 
-[Obsolete]
 public class InvokeCommand : ICommand, INotifyPropertyChanged, IInvokeCommand
 {
     protected Action<object> _action;

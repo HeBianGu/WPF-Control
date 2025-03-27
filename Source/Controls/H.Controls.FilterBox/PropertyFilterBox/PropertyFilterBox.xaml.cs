@@ -237,7 +237,7 @@ namespace H.Controls.FilterBox
             if (r == true)
             {
                 Save();
-                IocMessage.Snack?.ShowInfo("保存成功");
+                IocMessage.ShowSnackInfo("保存成功");
             }
         }
 

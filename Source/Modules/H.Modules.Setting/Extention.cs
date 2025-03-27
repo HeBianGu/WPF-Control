@@ -1,11 +1,12 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
+using H.Modules.Setting;
 using H.Modules.Setting.Base;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.Runtime.CompilerServices;
 
-namespace H.Modules.Setting;
+namespace System;
 
 public static class SystemSettingExtention
 {
@@ -26,7 +27,7 @@ public static class SystemSettingExtention
         return services;
     }
 
-    public static IApplicationBuilder UseSettingDataService(this IApplicationBuilder builder, Action<ISettingDataOption> option = null)
+    public static IApplicationBuilder UseSetting(this IApplicationBuilder builder, Action<ISettingDataOption> option = null)
     {
         option?.Invoke(IocSetting.Instance);
         return builder;
@@ -63,7 +64,7 @@ public static class SystemSettingExtention
         IocSetting.Instance.Settings.Add(PasswordSetting.Instance);
         IocSetting.Instance.Settings.Add(MessageSetting.Instance);
         IocSetting.Instance.Settings.Add(PersonalSetting.Instance);
-        builder.UseSettingDataService(option);
+        builder.UseSetting(option);
         return builder;
     }
 }

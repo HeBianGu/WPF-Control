@@ -1,7 +1,8 @@
-﻿using H.Services.Common.Excel;
+﻿using H.Extensions.Excel;
+using H.Services.Common.Excel;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace H.Extensions.Excel;
+namespace System;
 
 public static class Extention
 {

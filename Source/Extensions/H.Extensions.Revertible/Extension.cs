@@ -1,9 +1,10 @@
 ﻿
+using H.Extensions.Revertible;
 using H.Services.Setting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace H.Extensions.Revertible;
+namespace System;
 
 public static class Extension
 {

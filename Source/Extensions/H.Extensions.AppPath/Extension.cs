@@ -1,8 +1,9 @@
-﻿using H.Services.AppPath;
+﻿using H.Extensions.AppPath;
+using H.Services.AppPath;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace H.Extensions.AppPath;
+namespace System;
 
 public static class Extension
 {

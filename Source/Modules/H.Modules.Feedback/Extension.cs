@@ -1,9 +1,10 @@
-﻿using H.Services.Common.Feedback;
+﻿using H.Modules.Feedback;
+using H.Services.Common.Feedback;
 using H.Services.Setting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace H.Modules.Feedback;
+namespace System;
 
 public static class Extension
 {

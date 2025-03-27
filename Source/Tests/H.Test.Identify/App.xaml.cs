@@ -1,6 +1,5 @@
 ﻿using H.DataBases.Share;
 using H.Extensions.ApplicationBase;
-using H.Extensions.ViewModel;
 using H.Modules.Identity;
 using H.Modules.Operation;
 using H.Services.Common;
@@ -33,6 +32,7 @@ namespace H.Test.Identify
             services.AddAdornerDialogMessage();
             services.AddFormMessageService();
             //services.AddLoginViewPresenter();
+            //services.AddAppPath();
 
             //  Do ：身份认证
             services.AddDbContextBySetting<IdentifyDataContext>();
@@ -67,6 +67,7 @@ namespace H.Test.Identify
             app.UseRegistor(x => x.UseMail = false);
             app.UseTheme();
             app.UseSwithTheme();
+            app.UseSqlite();
         }
     }
 }

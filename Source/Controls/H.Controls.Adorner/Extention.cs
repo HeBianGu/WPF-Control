@@ -14,6 +14,6 @@ public static class Extention
     public static void UseAdorner(this IApplicationBuilder service, Action<AdornerSetting> action = null)
     {
         action?.Invoke(AdornerSetting.Instance);
-        IocSetting.Instance?.Add(AdornerSetting.Instance);
+        IocSetting.Instance.Add(AdornerSetting.Instance);
     }
 }

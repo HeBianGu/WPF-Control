@@ -5,7 +5,7 @@ global using Microsoft.Extensions.DependencyInjection.Extensions;
 using H.Modules.Project;
 using H.Services.Setting;
 
-namespace H.Modules.Project;
+namespace System;
 
 public static class Extention
 {

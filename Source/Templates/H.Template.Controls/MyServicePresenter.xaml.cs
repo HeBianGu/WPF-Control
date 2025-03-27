@@ -4,6 +4,7 @@ using H.Mvvm;
 using H.Mvvm.Attributes;
 using H.Mvvm.ViewModels.Base;
 using H.Services.Common;
+using H.Services.Setting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 namespace H.Template.Controls;

@@ -9,6 +9,7 @@ using System.Xml.Linq;
 using Microsoft.Extensions.DependencyInjection;
 using H.Extensions.ApplicationBase;
 using H.Styles.Default;
+using H.Services.Setting;
 
 namespace H.Test.SideMenu
 {
@@ -25,7 +26,7 @@ namespace H.Test.SideMenu
 
         protected override void Configure(IApplicationBuilder app)
         {
-            app.UseSettingDataManager(x =>
+            app.UseSetting(x =>
             {
                 x.Add(AppSetting.Instance);
             });

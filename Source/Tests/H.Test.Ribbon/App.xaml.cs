@@ -27,7 +27,7 @@ namespace H.Test.Ribbon
 
         protected override void Configure(IApplicationBuilder app)
         {
-            app.UseSetting();
+            app.UseSettingView();
             app.UseSettingDefault();
         }
 

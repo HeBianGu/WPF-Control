@@ -35,7 +35,8 @@ namespace System
             SqliteSettable.Instance.Load(out string messge);
             string connect = SqliteSettable.Instance.GetConnect();
             services.AddDbContext<TDbContext>(x => x.UseLazyLoadingProxies().UseSqlite(connect));
-            IocSetting.Instance.Add(SqliteSettable.Instance);
+            //注册阶段不可以访问服务
+            //IocSetting.Instance.Add(SqliteSettable.Instance);
             services.AddSingleton<IDbConnectService, SqliteDbConnectService<TDbContext>>();
             services.AddSingleton<IDbDisconnectService, DbDisconnectService<TDbContext>>();
         }
@@ -55,6 +56,11 @@ namespace System
             IocSetting.Instance.Add(setting);
             services.AddSingleton<IDbConnectService, SqliteDbConnectService<TDbContext>>();
             services.AddSingleton<IDbDisconnectService, DbDisconnectService<TDbContext>>();
+        }
+
+        public static void UseSqlite(this IApplicationBuilder service)
+        {
+            IocSetting.Instance.Add(SqliteSettable.Instance);
         }
     }
 }

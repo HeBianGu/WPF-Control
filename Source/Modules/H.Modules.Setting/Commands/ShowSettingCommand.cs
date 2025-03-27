@@ -30,13 +30,13 @@ public class ShowSettingCommand : ShowDialogCommandBase
             {
                 if (_count > SettingSecurityViewOption.Instance.PasswordCount)
                 {
-                    IocMessage.ShowSnackMessage($"密码错误次数超过{SettingSecurityViewOption.Instance.PasswordCount}次禁止输入");
+                    IocMessage.ShowSnackInfo($"密码错误次数超过{SettingSecurityViewOption.Instance.PasswordCount}次禁止输入");
                     return false;
                 }
                 if (p.Password != SettingSecurityViewOption.Instance.Password)
                 {
                     _count++;
-                    IocMessage.ShowSnackMessage($"密码错误[{_count}/{SettingSecurityViewOption.Instance.PasswordCount}]次");
+                    IocMessage.ShowSnackInfo($"密码错误[{_count}/{SettingSecurityViewOption.Instance.PasswordCount}]次");
                     return false;
                 }
                 return true;

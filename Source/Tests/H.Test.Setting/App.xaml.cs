@@ -32,7 +32,7 @@ namespace H.Test.Setting
 
         protected override void Configure(IApplicationBuilder app)
         {
-            app.UseSettingDataService(x =>
+            app.UseSetting(x =>
             {
                 x.Add(LoginSetting.Instance);
             });

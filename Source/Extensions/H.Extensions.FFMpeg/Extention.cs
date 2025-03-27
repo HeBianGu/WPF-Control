@@ -1,9 +1,10 @@
 ﻿using H.Common;
+using H.Extensions.FFMpeg;
 using H.Services.Setting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace H.Extensions.FFMpeg;
+namespace System;
 
 public static class Extention
 {

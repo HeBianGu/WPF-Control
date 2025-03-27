@@ -103,7 +103,7 @@ public static class IocMessage
         }
     }
 
-    public static async void ShowSnackMessage(string message)
+    public static async void ShowSnackInfo(string message)
     {
         if (Snack == null)
         {
@@ -112,6 +112,18 @@ public static class IocMessage
         else
         {
             Snack.ShowInfo(message);
+        }
+    }
+
+    public static async void ShowNotifyInfo(string message)
+    {
+        if (Snack == null)
+        {
+            await ShowDialogMessage(message);
+        }
+        else
+        {
+            Notify.ShowInfo(message);
         }
     }
 }

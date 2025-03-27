@@ -1,11 +1,12 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
+using H.Modules.Guide;
 using H.Services.Common.Guide;
 using H.Services.Setting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace H.Modules.Guide;
+namespace System;
 
 public static class Extention
 {

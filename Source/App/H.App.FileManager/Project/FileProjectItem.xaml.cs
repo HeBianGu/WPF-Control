@@ -19,6 +19,8 @@ using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using H.Extensions.DataBase;
 using H.Modules.Project.Base;
+using H.Extensions.DataBase.Repository;
+using H.Services.Setting;
 
 namespace H.App.FileManager
 {

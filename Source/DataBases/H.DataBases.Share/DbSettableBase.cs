@@ -31,6 +31,24 @@ namespace H.DataBases.Share
     {
         public abstract string GetConnect();
 
+        protected override string GetDefaultPath()
+        {
+            return this.ConfigPath;
+        }
+        private string _configPath;
+        [ReadOnly(true)]
+        [Browsable(false)]
+        [Display(Name = "文件路径")]
+        public string ConfigPath
+        {
+            get { return _configPath; }
+            set
+            {
+                _configPath = value;
+                RaisePropertyChanged();
+            }
+        }
+
         [System.Text.Json.Serialization.JsonIgnore]
         [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
