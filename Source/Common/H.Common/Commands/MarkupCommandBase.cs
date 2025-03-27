@@ -29,7 +29,15 @@ public abstract class MarkupCommandBase : MarkupExtension, ICommand, INotifyProp
     {
         if (parameter is UIElement element)
             return element;
-        return this.Target.TargetObject is UIElement element1 ? element1 : null;
+        return null;
+        try
+        {
+            return this.Target.TargetObject is UIElement element1 ? element1 : null;
+        }
+        catch (Exception)
+        {
+            return null;
+        }
     }
     #endregion
 

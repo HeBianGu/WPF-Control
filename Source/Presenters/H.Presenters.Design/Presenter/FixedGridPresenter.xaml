@@ -3,7 +3,7 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Presenters.Design.Presenter">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/Provider/PanelPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/Presenter/PanelPresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <DataTemplate DataType="{x:Type local:FixedGridPresenter}">

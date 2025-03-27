@@ -19,6 +19,7 @@ namespace H.Test.Ribbon
     {
         protected override void ConfigureServices(IServiceCollection services)
         {
+            services.AddAppPath();
             services.AddAdornerDialogMessage();
             //services.AddWindowDialogMessage();
             services.AddSetting();

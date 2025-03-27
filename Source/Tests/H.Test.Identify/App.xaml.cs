@@ -32,7 +32,7 @@ namespace H.Test.Identify
             services.AddAdornerDialogMessage();
             services.AddFormMessageService();
             //services.AddLoginViewPresenter();
-            //services.AddAppPath();
+            services.AddAppPath();
 
             //  Do ：身份认证
             services.AddDbContextBySetting<IdentifyDataContext>();

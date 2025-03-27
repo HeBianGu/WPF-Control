@@ -1,6 +1,6 @@
 ﻿namespace H.Services.AppPath;
 
-public class IocAppPaths : Ioc<IAppPathServce>
+public class IocAppPaths : ThrowIfNoneIoc<IAppPathServce>
 {
 
 }

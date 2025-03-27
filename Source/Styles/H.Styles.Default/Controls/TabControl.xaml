@@ -234,22 +234,22 @@ SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>-->
         <Style.Triggers>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=TabStripPlacement}"
                          Value="Top">
-                <Setter Property="BorderThickness" Value="0,0,0,2" />
+                <Setter Property="BorderThickness" Value="0,0,0,1" />
                 <Setter Property="Cattach.CornerRadius" Value="2,2,0,0" />
             </DataTrigger>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=TabStripPlacement}"
                          Value="Bottom">
-                <Setter Property="BorderThickness" Value="0,2,0,0" />
+                <Setter Property="BorderThickness" Value="0,1,0,0" />
                 <Setter Property="Cattach.CornerRadius" Value="0,0,2,2" />
             </DataTrigger>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=TabStripPlacement}"
                          Value="Left">
-                <Setter Property="BorderThickness" Value="0,0,2,0" />
+                <Setter Property="BorderThickness" Value="0,0,1,0" />
                 <Setter Property="Cattach.CornerRadius" Value="2,0,0,2" />
             </DataTrigger>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=TabStripPlacement}"
                          Value="Right">
-                <Setter Property="BorderThickness" Value="2,0,0,0" />
+                <Setter Property="BorderThickness" Value="1,0,0,0" />
                 <Setter Property="Cattach.CornerRadius" Value="0,2,2,0" />
             </DataTrigger>
             <Trigger Property="IsSelected" Value="True">

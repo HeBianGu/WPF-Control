@@ -35,7 +35,6 @@ public abstract partial class ApplicationBase : Application
 
     protected override void OnStartup(StartupEventArgs e)
     {
-        this.OnRefreshIoc();
         ApplicationBuilder bulder = new ApplicationBuilder();
         this.Configure(bulder);
         this.OnSingleton(e);

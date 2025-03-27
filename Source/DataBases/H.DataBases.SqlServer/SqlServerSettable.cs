@@ -16,30 +16,6 @@ namespace H.DataBases.SqlServer
 {
     public abstract class SqlServerSettable<TSetting> : DbSettableBase<TSetting>, ISqlServerOption where TSetting : new()
     {
-        protected override string GetDefaultPath()
-        {
-            return this.ConfigPath;
-        }
-
-        public override void LoadDefault()
-        {
-            base.LoadDefault();
-            this.ConfigPath = Path.Combine(IocAppPaths.Instance.Config, this.GetType().Name + IocAppPaths.Instance.ConfigExtention);
-        }
-
-        private string _configPath;
-        [ReadOnly(true)]
-        [Browsable(false)]
-        [Display(Name = "文件路径")]
-        public string ConfigPath
-        {
-            get { return _configPath; }
-            set
-            {
-                _configPath = value;
-                RaisePropertyChanged();
-            }
-        }
 
         private string _server;
         [Display(Name = "服务器名称")]

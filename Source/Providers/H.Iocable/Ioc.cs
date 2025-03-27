@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace H.Iocable;
 
@@ -28,7 +29,7 @@ public static class Ioc
         if (r == null && throwIfNone)
         {
             System.Diagnostics.Debug.WriteLine(type);
-            throw new ArgumentNullException(message);
+            throw new ArgumentNullException(typeof(T).FullName,message);
         }
         return r;
     }
@@ -114,5 +115,5 @@ public abstract class Ioc<T, Interface> where T : class, Interface, new()
 
 public abstract class Ioc<Interface>
 {
-    public static Interface Instance => Ioc.GetService<Interface>();
+    public static Interface Instance => Ioc.GetService<Interface>(false);
 }

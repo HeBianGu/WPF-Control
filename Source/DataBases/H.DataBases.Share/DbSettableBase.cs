@@ -24,6 +24,8 @@ using H.Mvvm.Commands;
 using H.Services.Message;
 using H.Common.Interfaces;
 using H.Services.Common.DataBase;
+using H.Extensions.AppPath;
+using System.IO;
 
 namespace H.DataBases.Share
 {
@@ -31,6 +33,14 @@ namespace H.DataBases.Share
     {
         public abstract string GetConnect();
 
+        public override void LoadDefault()
+        {
+            base.LoadDefault();
+            AppPathServce appPathServce = new AppPathServce();
+            //this.ConfigPath = Path.Combine(IocAppPaths.Instance.Config, this.GetType().Name + IocAppPaths.Instance.ConfigExtention);
+            //DBContext的在注册时就需要访问IocAppPaths.Instance而此时无法访问，所以这里直接new一个AppPathServce获取一个默认值
+            this.ConfigPath = Path.Combine(appPathServce.Config, this.GetType().Name + appPathServce.ConfigExtention);
+        }
         protected override string GetDefaultPath()
         {
             return this.ConfigPath;

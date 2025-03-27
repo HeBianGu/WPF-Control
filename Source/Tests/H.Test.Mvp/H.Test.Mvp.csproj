@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Extensions\H.Extensions.ApplicationBase\H.Extensions.ApplicationBase.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.AppPath\H.Extensions.AppPath.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.About\H.Modules.About.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Feedback\H.Modules.Feedback.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Setting\H.Modules.Setting.csproj" />

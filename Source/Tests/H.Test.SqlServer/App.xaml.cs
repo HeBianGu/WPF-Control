@@ -33,6 +33,12 @@ namespace H.Test.SqlServer
             return new MainWindow();
         }
 
+        protected override void Configure(IApplicationBuilder app)
+        {
+            base.Configure(app);
+            app.UseSqlServer();
+        }
+
         protected override void OnSplashScreen(StartupEventArgs e)
         {
             base.OnSplashScreen(e);

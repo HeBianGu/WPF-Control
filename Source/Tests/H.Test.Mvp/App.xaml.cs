@@ -18,7 +18,8 @@ namespace H.Test.Mvp
     {
         protected override void ConfigureServices(IServiceCollection services)
         {
-            services.AddAbout(x => x.ProductName = "设置标题");
+            services.AddAbout();
+            services.AddAppPath();
             services.AddSetting();
             services.AddFeedBack();
             services.AddSwitchThemeViewPresenter();
@@ -34,6 +35,7 @@ namespace H.Test.Mvp
             base.Configure(app);
 
             app.UseSettingDefault();
+            app.UseAbout(x => x.ProductName = "设置标题");
         }
     }
 }

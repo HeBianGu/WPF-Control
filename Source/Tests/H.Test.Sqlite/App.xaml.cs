@@ -39,6 +39,12 @@ namespace H.Test.Sqlite
             });
         }
 
+        protected override void Configure(IApplicationBuilder app)
+        {
+            base.Configure(app);
+            app.UseSqlite();
+        }
+
         protected override Window CreateMainWindow(StartupEventArgs e)
         {
             return new MainWindow();

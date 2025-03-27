@@ -35,7 +35,6 @@ namespace H.Modules.About
 
         private string _ProductName;
         [System.Text.Json.Serialization.JsonIgnore]
-
         [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [Display(Name = "产品名称")]

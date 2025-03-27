@@ -23,6 +23,7 @@ namespace H.Test.Login
     {
         protected override void ConfigureServices(IServiceCollection services)
         {
+            services.AddAppPath();
             services.AddSetting();
             services.AddWindowMessage();
             services.AddAdornerDialogMessage();

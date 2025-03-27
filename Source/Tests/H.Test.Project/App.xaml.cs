@@ -21,6 +21,7 @@ namespace H.Test.Project
     {
         protected override void ConfigureServices(IServiceCollection services)
         {
+            services.AddAppPath();
             services.AddAdornerDialogMessage();
             services.AddFormMessageService();
             services.AddProject<UserProjectService>();

@@ -19,9 +19,14 @@ public abstract class ShowDialogCommandBase : DisplayMarkupCommandBase
         w.Title = this.Name ?? w.Title;
         w.HorizontalContentAlignment = this.HorizontalContentAlignment;
         w.Icon = this.Icon ?? w.Icon;
-        DataTemplate template = ShowDialogCommandBase.GetPresenterTemplate(this.GetTargetElement(parameter));
-        if (template != null)
-            w.PresenterTemplate = template;
+        var target = this.GetTargetElement(parameter);
+        if (target != null)
+        {
+            DataTemplate template = ShowDialogCommandBase.GetPresenterTemplate(target);
+            if (template != null)
+                w.PresenterTemplate = template;
+        }
+         
         if (this.PresenterTemplate != null)
             w.PresenterTemplate = this.PresenterTemplate;
     }

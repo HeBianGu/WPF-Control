@@ -10,10 +10,14 @@ namespace System
         /// 注册
         /// </summary>
         /// <param name="service"></param>
-        public static void AddAbout(this IServiceCollection service, Action<IAboutViewPresenterOption> action = null)
+        public static void AddAbout(this IServiceCollection service)
+        {
+            service.AddSingleton<IAboutViewPresenter, AboutViewPresenter>();
+        }
+
+        public static void UseAbout(this IApplicationBuilder service, Action<IAboutViewPresenterOption> action = null)
         {
             action?.Invoke(AboutViewPresenter.Instance);
-            service.AddSingleton<IAboutViewPresenter, AboutViewPresenter>();
         }
     }
 }
