@@ -1,7 +1,6 @@
-﻿namespace H.Extensions.Tree
+﻿namespace H.Extensions.Tree;
+
+public interface IParent
 {
-    public interface IParent
-    {
-        object GetParent(object current);
-    }
+    object GetParent(object current);
 }

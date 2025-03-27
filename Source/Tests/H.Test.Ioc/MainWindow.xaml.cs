@@ -2,6 +2,7 @@
 global using H.Services.Logger;
 using H.Modules.About;
 using H.Services.Common;
+using H.Services.Message;
 using H.Windows.Dialog;
 using Microsoft.Extensions.DependencyInjection;
 using System;

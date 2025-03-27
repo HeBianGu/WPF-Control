@@ -1,7 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Windows.Media;
-
-namespace H.Controls.Diagram.Presenters.Workflow.NodeDatas;
+﻿namespace H.Controls.Diagram.Presenters.Workflow.NodeDatas;
 
 [Display(Name = "内部存储器", GroupName = "基本流程图形状", Order = 10, Description = "内部存储器")]
 

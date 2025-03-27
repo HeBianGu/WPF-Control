@@ -1,0 +1,7 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\..\Services\H.Services.AppPath\H.Services.AppPath.csproj" />
+    <ProjectReference Include="..\..\Services\H.Services.Identity\H.Services.Identity.csproj" />
+    <ProjectReference Include="..\..\Services\H.Services.Message\H.Services.Message.csproj" />
+  </ItemGroup>
+</Project>

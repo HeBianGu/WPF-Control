@@ -1,10 +1,9 @@
-﻿using H.Services.Common;
-using System;
-using System.Collections.ObjectModel;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Windows;
-using H.Mvvm.ViewModels.Base;
+﻿global using System.Collections.ObjectModel;
+global using System.ComponentModel.DataAnnotations;
+global using System.Windows;
+global using H.Extensions.Common;
+global using H.Mvvm.ViewModels.Base;
+global using H.Services.Setting;
 
 namespace H.Controls.PrintBox
 {

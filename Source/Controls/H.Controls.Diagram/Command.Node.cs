@@ -1,11 +1,6 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-
-
-using H.Mvvm;
-using System.Windows;
-using System.Windows.Controls;
-
+using H.Common.Commands;
 namespace H.Controls.Diagram;
 
 public class RemoveNodeCommand : MarkupCommandBase

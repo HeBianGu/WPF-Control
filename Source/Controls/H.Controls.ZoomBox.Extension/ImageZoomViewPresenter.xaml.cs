@@ -1,5 +1,4 @@
-﻿using H.Mvvm.Attributes;
-using H.Mvvm.ViewModels.Base;
+﻿using H.Mvvm.ViewModels.Base;
 using System.Windows.Media;
 using System.ComponentModel.DataAnnotations;
 

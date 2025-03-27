@@ -1,5 +1,4 @@
 ﻿global using H.Controls.Diagram.Presenter.DiagramDatas;
-global using H.Mvvm.Attributes;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.NodeDataGroups;
 

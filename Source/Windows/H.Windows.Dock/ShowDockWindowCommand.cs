@@ -1,7 +1,7 @@
-﻿using H.Mvvm;
-using H.Mvvm.Attributes;
-using System.ComponentModel.DataAnnotations;
-using System.Windows;
+﻿global using H.Common.Attributes;
+global using H.Common.Commands;
+global using System.ComponentModel.DataAnnotations;
+global using System.Windows;
 
 namespace H.Windows.Dock
 {

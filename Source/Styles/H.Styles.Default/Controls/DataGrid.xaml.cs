@@ -1,47 +1,42 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Controls;
+﻿namespace H.Styles.Default.Controls;
 
-namespace H.Styles.Default
+public class DataGridKeys
 {
-    public class DataGridKeys
-    {
-        public static ComponentResourceKey Default => new ComponentResourceKey(typeof(DataGridKeys), "S.DataGrid.Default");
-    }
+    public static ComponentResourceKey Default => new ComponentResourceKey(typeof(DataGridKeys), "S.DataGrid.Default");
+}
 
-    public class DataGridCheckBoxColumn : System.Windows.Controls.DataGridCheckBoxColumn
+public class DataGridCheckBoxColumn : System.Windows.Controls.DataGridCheckBoxColumn
+{
+    public DataGridCheckBoxColumn()
     {
-        public DataGridCheckBoxColumn()
-        {
-            this.ElementStyle = null;
-            this.EditingElementStyle = null;
-        }
+        this.ElementStyle = null;
+        this.EditingElementStyle = null;
     }
+}
 
-    public class DataGridTextColumn : System.Windows.Controls.DataGridTextColumn
+public class DataGridTextColumn : System.Windows.Controls.DataGridTextColumn
+{
+    public DataGridTextColumn()
     {
-        public DataGridTextColumn()
-        {
-            this.ElementStyle = null;
-            this.EditingElementStyle = null;
-        }
+        this.ElementStyle = null;
+        this.EditingElementStyle = null;
     }
+}
 
-    public class DataGridComboBoxColumn : System.Windows.Controls.DataGridComboBoxColumn
+public class DataGridComboBoxColumn : System.Windows.Controls.DataGridComboBoxColumn
+{
+    public DataGridComboBoxColumn()
     {
-        public DataGridComboBoxColumn()
-        {
-            this.ElementStyle = null;
-            this.EditingElementStyle = null;
-        }
+        this.ElementStyle = null;
+        this.EditingElementStyle = null;
     }
+}
 
-    public class DataGridHyperlinkColumn : System.Windows.Controls.DataGridHyperlinkColumn
+public class DataGridHyperlinkColumn : System.Windows.Controls.DataGridHyperlinkColumn
+{
+    public DataGridHyperlinkColumn()
     {
-        public DataGridHyperlinkColumn()
-        {
-            this.ElementStyle = null;
-            this.EditingElementStyle = null;
-        }
+        this.ElementStyle = null;
+        this.EditingElementStyle = null;
     }
 }

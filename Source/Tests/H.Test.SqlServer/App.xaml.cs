@@ -12,6 +12,7 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
 using H.Iocable;
+using H.Services.Common.DataBase;
 
 namespace H.Test.SqlServer
 {

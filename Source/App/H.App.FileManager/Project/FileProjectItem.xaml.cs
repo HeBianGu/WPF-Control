@@ -19,6 +19,8 @@ using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using H.Extensions.DataBase;
 using H.Modules.Project.Base;
+using H.Extensions.DataBase.Repository;
+using H.Services.Setting;
 
 namespace H.App.FileManager
 {
@@ -92,7 +94,7 @@ namespace H.App.FileManager
             this.File.RefreshData();
             IocTagService.Instance.Load(out message);
             IocFavoriteService.Instance.Load(out message);
-            SettingDataManager.Instance.Add(this.Setting);
+            IocSetting.Instance.Add(this.Setting);
             return base.Load(out message);
         }
 
@@ -110,7 +112,7 @@ namespace H.App.FileManager
             this.Save(out messge);
             DataContext context = DbIoc.Services.GetService<DataContext>();
             context?.Dispose();
-            SettingDataManager.Instance.Remove(this.Setting);
+            IocSetting.Instance.Remove(this.Setting);
             return true;
         }
 

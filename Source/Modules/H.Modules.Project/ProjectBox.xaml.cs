@@ -21,7 +21,7 @@ public partial class ProjectBox : ListBox
     public ProjectBox()
     {
         {
-            CommandBinding commandBinding = new CommandBinding(H.Mvvm.Commands.Delete);
+            CommandBinding commandBinding = new CommandBinding(H.Mvvm.Commands.Commands.Delete);
             commandBinding.Executed += async (l, k) =>
             {
                 if (k.Parameter is IProjectItem project)
@@ -33,7 +33,7 @@ public partial class ProjectBox : ListBox
         }
 
         {
-            CommandBinding commandBinding = new CommandBinding(H.Mvvm.Commands.Edit);
+            CommandBinding commandBinding = new CommandBinding(H.Mvvm.Commands.Commands.Edit);
             commandBinding.Executed += async (l, k) =>
             {
                 if (k.Parameter is IProjectItem project)
@@ -45,7 +45,7 @@ public partial class ProjectBox : ListBox
         }
 
         {
-            CommandBinding commandBinding = new CommandBinding(H.Mvvm.Commands.Open);
+            CommandBinding commandBinding = new CommandBinding(H.Mvvm.Commands.Commands.Open);
             commandBinding.Executed += async (l, k) =>
             {
                 if (k.Parameter is IProjectItem project)
@@ -61,7 +61,7 @@ public partial class ProjectBox : ListBox
         }
 
         {
-            CommandBinding commandBinding = new CommandBinding(H.Mvvm.Commands.New);
+            CommandBinding commandBinding = new CommandBinding(H.Mvvm.Commands.Commands.New);
             commandBinding.Executed += async (l, k) =>
             {
                 await IocProject.Instance.ShowNewProject();
@@ -70,7 +70,7 @@ public partial class ProjectBox : ListBox
         }
 
         {
-            CommandBinding commandBinding = new CommandBinding(H.Mvvm.Commands.Refresh);
+            CommandBinding commandBinding = new CommandBinding(H.Mvvm.Commands.Commands.Refresh);
             commandBinding.Executed += (l, k) =>
             {
                 this.Refresh();

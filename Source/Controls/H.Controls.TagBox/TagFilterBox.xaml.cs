@@ -1,11 +1,13 @@
-﻿using H.Services.Common;
-using H.Mvvm;
-using System;
-using System.Collections;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Threading;
+﻿global using H.Services.Common;
+global using H.Mvvm;
+global using System;
+global using System.Collections;
+global using System.Linq;
+global using System.Windows;
+global using System.Windows.Controls;
+global using System.Windows.Threading;
+global using H.Common.Interfaces.Where;
+global using H.Mvvm.ViewModels;
 
 namespace H.Controls.TagBox
 {

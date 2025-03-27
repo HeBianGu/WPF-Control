@@ -1,5 +1,5 @@
-﻿using H.Extensions.Attach;
-using H.Mvvm.Attributes;
+﻿using H.Common.Attributes;
+using H.Extensions.Attach;
 using System.Reflection;
 namespace H.Modules.Guide;
 

@@ -12,6 +12,8 @@ using Microsoft.Extensions.DependencyInjection;
 using H.Services.Common;
 using H.DataBases.Share;
 using System.IO;
+using H.Services.Common.DataBase;
+using H.Services.Setting;
 #endif
 
 namespace System
@@ -33,7 +35,8 @@ namespace System
             SqliteSettable.Instance.Load(out string messge);
             string connect = SqliteSettable.Instance.GetConnect();
             services.AddDbContext<TDbContext>(x => x.UseLazyLoadingProxies().UseSqlite(connect));
-            SettingDataManager.Instance.Add(SqliteSettable.Instance);
+            //注册阶段不可以访问服务
+            //IocSetting.Instance.Add(SqliteSettable.Instance);
             services.AddSingleton<IDbConnectService, SqliteDbConnectService<TDbContext>>();
             services.AddSingleton<IDbDisconnectService, DbDisconnectService<TDbContext>>();
         }
@@ -50,9 +53,14 @@ namespace System
             setting.Load(out string message);
             string connect = setting.GetConnect();
             services.AddDbContext<TDbContext>(x => x.UseLazyLoadingProxies().UseSqlite(connect));
-            SettingDataManager.Instance.Add(setting);
+            IocSetting.Instance.Add(setting);
             services.AddSingleton<IDbConnectService, SqliteDbConnectService<TDbContext>>();
             services.AddSingleton<IDbDisconnectService, DbDisconnectService<TDbContext>>();
+        }
+
+        public static void UseSqlite(this IApplicationBuilder service)
+        {
+            IocSetting.Instance.Add(SqliteSettable.Instance);
         }
     }
 }

@@ -1,31 +1,30 @@
 ﻿using H.Modules.SplashScreen;
-using H.Services.Common;
+using H.Services.Common.SplashScreen;
+using H.Services.Setting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using System.Collections.Generic;
 
-namespace System
+namespace System;
+
+public static class Extension
 {
-    public static class Extension
+    public static IServiceCollection AddSplashScreen(this IServiceCollection services, Action<SplashScreenOption> setupAction = null)
     {
-        public static IServiceCollection AddSplashScreen(this IServiceCollection services, Action<SplashScreenOption> setupAction = null)
-        {
-            return services.AddSplashScreen<SplashScreenViewPresenter>();
-        }
-        public static IServiceCollection AddSplashScreen<T>(this IServiceCollection services, Action<SplashScreenOption> setupAction = null) where T : ISplashScreenViewPresenter
-        {
-            services.AddOptions();
-            services.TryAdd(ServiceDescriptor.Singleton<ISplashScreenViewPresenter, SplashScreenViewPresenter>());
-            if (setupAction != null)
-                services.Configure(setupAction);
-            return services;
-        }
+        return services.AddSplashScreen<SplashScreenViewPresenter>();
+    }
+    public static IServiceCollection AddSplashScreen<T>(this IServiceCollection services, Action<SplashScreenOption> setupAction = null) where T : ISplashScreenViewPresenter
+    {
+        services.AddOptions();
+        services.TryAdd(ServiceDescriptor.Singleton<ISplashScreenViewPresenter, SplashScreenViewPresenter>());
+        if (setupAction != null)
+            services.Configure(setupAction);
+        return services;
+    }
 
-        public static IApplicationBuilder UseSplashScreen(this IApplicationBuilder builder, Action<SplashScreenOption> option = null)
-        {
-            SettingDataManager.Instance.Add(SplashScreenOption.Instance);
-            option?.Invoke(SplashScreenOption.Instance);
-            return builder;
-        }
+    public static IApplicationBuilder UseSplashScreen(this IApplicationBuilder builder, Action<SplashScreenOption> option = null)
+    {
+        IocSetting.Instance.Add(SplashScreenOption.Instance);
+        option?.Invoke(SplashScreenOption.Instance);
+        return builder;
     }
 }

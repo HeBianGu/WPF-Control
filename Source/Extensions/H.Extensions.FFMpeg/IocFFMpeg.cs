@@ -1,9 +1,6 @@
-﻿using System;
+﻿namespace H.Extensions.FFMpeg;
 
-namespace H.Extensions.FFMpeg
+public class IocFFMpeg : Ioc<IFFMpegService>
 {
-    public class IocFFMpeg : Ioc<IFFMpegService>
-    {
 
-    }
 }

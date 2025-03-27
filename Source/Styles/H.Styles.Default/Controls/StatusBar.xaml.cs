@@ -1,15 +1,11 @@
-﻿using System.Windows;
+﻿namespace H.Styles.Default.Controls;
 
-namespace H.Styles.Default
+public class StatusBarKeys
 {
-    public class StatusBarKeys
-    {
-        public static ComponentResourceKey Default => new ComponentResourceKey(typeof(StatusBarKeys), "S.StatusBar.Default");
-    }
+    public static ComponentResourceKey Default => new ComponentResourceKey(typeof(StatusBarKeys), "S.StatusBar.Default");
+}
 
-    public class StatusBarItemKeys
-    {
-        public static ComponentResourceKey Default => new ComponentResourceKey(typeof(StatusBarItemKeys), "S.StatusBarItem.Default");
-    }
-
+public class StatusBarItemKeys
+{
+    public static ComponentResourceKey Default => new ComponentResourceKey(typeof(StatusBarItemKeys), "S.StatusBarItem.Default");
 }

@@ -2,8 +2,14 @@
 using H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem;
 using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
 using H.Extensions.Setting;
+using H.Services.AppPath;
 using H.Services.Common;
+using H.Services.Identity;
+using H.Services.Setting;
 using H.Themes.Default;
+using H.Themes.Default.Colors;
+using H.Themes.Default.Extensions;
+using H.Themes.Default.Systems;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -174,7 +180,7 @@ namespace H.Modules.Theme
 
         protected override string GetDefaultFolder()
         {
-            return AppPaths.Instance.UserSetting;
+            return IocAppPaths.Instance.UserSetting;
         }
 
     }

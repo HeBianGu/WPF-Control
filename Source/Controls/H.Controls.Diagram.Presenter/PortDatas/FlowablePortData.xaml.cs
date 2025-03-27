@@ -1,5 +1,6 @@
 ﻿global using H.Controls.Diagram.Parts;
-using H.Controls.Diagram.Flowables;
+global using H.Common;
+global using H.Controls.Diagram.Flowables;
 
 namespace H.Controls.Diagram.Presenter.PortDatas;
 

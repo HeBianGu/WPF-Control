@@ -1,20 +1,17 @@
-﻿using H.Services.Common;
-using System;
-using System.ComponentModel.DataAnnotations;
+﻿using H.Services.Identity;
 
-namespace H.Presenters.Design
+namespace H.Presenters.Design.Presenter;
+
+[Display(Name = "当前用户")]
+public class UserPresenter : TitlePresenter
 {
-    [Display(Name = "当前用户")]
-    public class UserPresenter : TitlePresenter
+    public UserPresenter()
     {
-        public UserPresenter()
-        {
-            this.Title = "当前用户：";
-            this.Text = Ioc<ILoginService>.Instance?.User?.Name;
-        }
-        public override void LoadDefault()
-        {
-            base.LoadDefault();
-        }
+        this.Title = "当前用户：";
+        this.Text = Ioc<ILoginService>.Instance?.User?.Name;
+    }
+    public override void LoadDefault()
+    {
+        base.LoadDefault();
     }
 }

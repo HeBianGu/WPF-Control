@@ -11,7 +11,7 @@
 
 //    public static partial class Cattach
 //    {
-        
+
 //        public static bool GetUseNewGuide(DependencyObject obj)
 //        {
 //            return (bool)obj.GetValue(UseNewGuideProperty);

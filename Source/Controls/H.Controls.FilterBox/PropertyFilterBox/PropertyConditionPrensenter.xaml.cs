@@ -1,20 +1,13 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-
-using H.Extensions.XmlSerialize;
-using H.Services.Common;
-using H.Mvvm;
-using System;
-using System.Collections.ObjectModel;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Reflection;
-using System.Text.Json.Serialization;
-using System.Xml.Serialization;
-using H.Extensions.NewtonsoftJson;
-using System.Windows.Markup;
-using System.ComponentModel;
-using H.Mvvm.ViewModels.Base;
+global using System.ComponentModel.DataAnnotations;
+global using H.Extensions.NewtonsoftJson;
+global using System.Windows.Markup;
+global using System.ComponentModel;
+global using H.Mvvm.ViewModels.Base;
+global using H.Mvvm.Commands;
+global using H.Extensions.Common;
+global using H.Services.Common.Serialize.Meta;
 using EnumConverter = System.ComponentModel.EnumConverter;
 
 namespace H.Controls.FilterBox

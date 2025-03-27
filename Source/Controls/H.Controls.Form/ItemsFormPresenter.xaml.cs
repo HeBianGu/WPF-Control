@@ -1,22 +1,17 @@
-﻿using H.Mvvm.ViewModels.Base;
-using H.Services.Common;
-using System.Collections.ObjectModel;
-using System.Windows;
+﻿
+namespace H.Controls.Form;
 
-namespace H.Controls.Form
+public class ItemsFormPresenter : DisplayBindableBase
 {
-    public class ItemsFormPresenter : DisplayBindableBase
-    {
-        private ObservableCollection<object> _objs = new ObservableCollection<object>();
+    private ObservableCollection<object> _objs = new ObservableCollection<object>();
 
-        public ObservableCollection<object> Objs
+    public ObservableCollection<object> Objs
+    {
+        get { return _objs; }
+        set
         {
-            get { return _objs; }
-            set
-            {
-                _objs = value;
-                RaisePropertyChanged("Objs");
-            }
+            _objs = value;
+            RaisePropertyChanged("Objs");
         }
     }
 }

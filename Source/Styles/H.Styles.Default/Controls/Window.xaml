@@ -1,5 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:lc="clr-namespace:H.Styles.Default.Controls"
+                    xmlns:lcd="clr-namespace:H.Styles.Default.Commands"
                     xmlns:local="clr-namespace:H.Styles.Default">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Share.xaml" />
@@ -35,15 +37,15 @@
     </Style>-->
 
     <WindowChrome x:Key="{ComponentResourceKey ResourceId=S.Window.WindowChrome,
-                                               TypeInTargetAssembly={x:Type local:WindowKeys}}"
+                                               TypeInTargetAssembly={x:Type lc:WindowKeys}}"
                   CaptionHeight="35"
                   GlassFrameThickness="0"
                   NonClientFrameEdges="None"
                   ResizeBorderThickness="8"
                   UseAeroCaptionButtons="False" />
     <Style x:Key="{ComponentResourceKey ResourceId=S.Window.Button,
-                                        TypeInTargetAssembly={x:Type local:WindowKeys}}"
-           BasedOn="{StaticResource {x:Static local:ButtonKeys.Geometry}}"
+                                        TypeInTargetAssembly={x:Type lc:WindowKeys}}"
+           BasedOn="{StaticResource {x:Static lc:ButtonKeys.Geometry}}"
            TargetType="Button">
         <Setter Property="Width" Value="35" />
         <Setter Property="Height" Value="35" />
@@ -54,9 +56,9 @@
         <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.CaptionForeground}}" />
     </Style>
     <Style x:Key="{ComponentResourceKey ResourceId=S.Window.FontIconButton,
-                                        TypeInTargetAssembly={x:Type local:WindowKeys}}"
-           BasedOn="{StaticResource {x:Static local:FontIconButtonKeys.Default}}"
-           TargetType="{x:Type local:FontIconButton}">
+                                        TypeInTargetAssembly={x:Type lc:WindowKeys}}"
+           BasedOn="{StaticResource {x:Static lc:FontIconButtonKeys.Default}}"
+           TargetType="{x:Type lc:FontIconButton}">
         <!--<Setter Property="Width" Value="35" />
         <Setter Property="Height" Value="35" />
         <Setter Property="MaxHeight" Value="35" />
@@ -70,7 +72,7 @@
         <Setter Property="Icon" Value="{local:Logo}" />
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="OverridesDefaultStyle" Value="true" />
-        <Setter Property="WindowChrome.WindowChrome" Value="{DynamicResource {x:Static local:WindowKeys.WindowChrome}}" />
+        <Setter Property="WindowChrome.WindowChrome" Value="{DynamicResource {x:Static lc:WindowKeys.WindowChrome}}" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
         <Setter Property="WindowStyle" Value="None" />
         <Setter Property="FontSize" Value="{DynamicResource {x:Static FontSizeKeys.Default}}" />
@@ -145,27 +147,27 @@
                                                     HorizontalAlignment="Right"
                                                     Orientation="Horizontal">
                                             <Button x:Name="Btn_Minimize"
-                                                    Command="{local:MinimizeWindowCommand}"
+                                                    Command="{lcd:MinimizeWindowCommand}"
                                                     CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                                     Content="F1M3,8L13,8 13,7 3,7z"
-                                                    Style="{DynamicResource {x:Static local:WindowKeys.Button}}" />
+                                                    Style="{DynamicResource {x:Static lc:WindowKeys.Button}}" />
                                             <Button x:Name="Btn_Maximize"
-                                                    Command="{local:MaximizeWindowCommand}"
+                                                    Command="{lcd:MaximizeWindowCommand}"
                                                     CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                                     Content="F1M12,12L4,12 4,4 12,4z M3,13L13,13 13,3 3,3z"
-                                                    Style="{DynamicResource {x:Static local:WindowKeys.Button}}"
+                                                    Style="{DynamicResource {x:Static lc:WindowKeys.Button}}"
                                                     ToolTip="最大化" />
                                             <Button x:Name="Btn_Restore"
-                                                    Command="{local:RestoreWindowCommand}"
+                                                    Command="{lcd:RestoreWindowCommand}"
                                                     CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                                     Content="F1M11.999,10.002L10.998,10.002 10.998,5.002 5.998,5.002 5.998,4.001 11.999,4.001z M10.002,11.999L4.001,11.999 4.001,5.998 10.002,5.998z M5.002,3L5.002,5.002 3,5.002 3,13 10.998,13 10.998,10.998 13,10.998 13,3z"
-                                                    Style="{DynamicResource {x:Static local:WindowKeys.Button}}"
+                                                    Style="{DynamicResource {x:Static lc:WindowKeys.Button}}"
                                                     ToolTip="还原" />
                                             <Button x:Name="Btn_Close"
-                                                    Command="{local:CloseAfterSaveWindowCommand}"
+                                                    Command="{lcd:CloseAfterSaveWindowCommand}"
                                                     CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                                     Content="F1M8.583,8L13,12.424 12.424,13 8,8.583 3.576,13 3,12.424 7.417,8 3,3.576 3.576,3 8,7.417 12.424,3 13,3.576z"
-                                                    Style="{DynamicResource {x:Static local:WindowKeys.Button}}" />
+                                                    Style="{DynamicResource {x:Static lc:WindowKeys.Button}}" />
                                         </StackPanel>
                                     </Grid>
                                 </Border>
@@ -176,11 +178,11 @@
 
                                 <Border Grid.RowSpan="3"
                                         IsHitTestVisible="False"
-                                        Opacity="{Binding Source={x:Static local:WindowSetting.Instance}, Path=Opacity}"
-                                        Visibility="{Binding Source={x:Static local:WindowSetting.Instance}, Path=UseBackImage, Converter={x:Static Converter.GetTrueToVisible}}">
+                                        Opacity="{Binding Source={x:Static lc:WindowSetting.Instance}, Path=Opacity}"
+                                        Visibility="{Binding Source={x:Static lc:WindowSetting.Instance}, Path=UseBackImage, Converter={x:Static Converter.GetTrueToVisible}}">
                                     <Border.Background>
-                                        <ImageBrush ImageSource="{Binding Source={x:Static local:WindowSetting.Instance}, Path=BackImagePath}"
-                                                    Stretch="{Binding Source={x:Static local:WindowSetting.Instance}, Path=Stretch}" />
+                                        <ImageBrush ImageSource="{Binding Source={x:Static lc:WindowSetting.Instance}, Path=BackImagePath}"
+                                                    Stretch="{Binding Source={x:Static lc:WindowSetting.Instance}, Path=Stretch}" />
                                     </Border.Background>
                                 </Border>
 

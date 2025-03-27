@@ -1,5 +1,6 @@
 ﻿using H.Controls.TagBox;
 using H.Services.Common;
+using H.Services.Setting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.Collections.Generic;
@@ -24,7 +25,7 @@ namespace System
 
         public static IApplicationBuilder UseTag(this IApplicationBuilder builder, Action<TagOptions> option = null)
         {
-            SettingDataManager.Instance.Add(TagOptions.Instance);
+            IocSetting.Instance.Add(TagOptions.Instance);
             option?.Invoke(TagOptions.Instance);
             return builder;
         }

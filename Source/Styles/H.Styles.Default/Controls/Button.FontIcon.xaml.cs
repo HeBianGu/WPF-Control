@@ -1,21 +1,17 @@
-﻿using System.Windows;
-using System.Windows.Controls;
+﻿namespace H.Styles.Default.Controls;
 
-namespace H.Styles.Default
+public class FontIconButton : Button
 {
-    public class FontIconButton : Button
+    static FontIconButton()
     {
-        static FontIconButton()
-        {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(FontIconButton), new FrameworkPropertyMetadata(typeof(FontIconButton)));
-        }
+        DefaultStyleKeyProperty.OverrideMetadata(typeof(FontIconButton), new FrameworkPropertyMetadata(typeof(FontIconButton)));
     }
+}
 
-    public class FontIconButtonKeys
-    {
-        public static ComponentResourceKey Default => new ComponentResourceKey(typeof(FontIconButtonKeys), "S.FontIconButton.Default");
+public class FontIconButtonKeys
+{
+    public static ComponentResourceKey Default => new ComponentResourceKey(typeof(FontIconButtonKeys), "S.FontIconButton.Default");
 
-        public static ComponentResourceKey Command => new ComponentResourceKey(typeof(FontIconButtonKeys), "S.FontIconButton.Command");
+    public static ComponentResourceKey Command => new ComponentResourceKey(typeof(FontIconButtonKeys), "S.FontIconButton.Command");
 
-    }
 }

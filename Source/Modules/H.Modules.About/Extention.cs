@@ -1,6 +1,5 @@
-﻿
-using H.Modules.About;
-using H.Services.Common;
+﻿using H.Modules.About;
+using H.Services.Common.About;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace System
@@ -13,18 +12,8 @@ namespace System
         /// <param name="service"></param>
         public static void AddAbout(this IServiceCollection service, Action<IAboutViewPresenterOption> action = null)
         {
-            service.AddSingleton<IAboutViewPresenter, AboutViewPresenter>();
-        }
-
-        /// <summary>
-        /// 配置
-        /// </summary>
-        /// <param name="service"></param>
-        [Obsolete]
-        public static void UseAbout(this IApplicationBuilder service, Action<IAboutViewPresenterOption> action = null)
-        {
             action?.Invoke(AboutViewPresenter.Instance);
-
+            service.AddSingleton<IAboutViewPresenter, AboutViewPresenter>();
         }
     }
 }

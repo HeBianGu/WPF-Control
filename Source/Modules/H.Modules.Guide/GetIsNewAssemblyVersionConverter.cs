@@ -6,14 +6,13 @@ using H.Extensions.ValueConverter;
 using System.Globalization;
 using System.Reflection;
 
-namespace H.Modules.Guide
+namespace H.Modules.Guide;
+
+public class GetIsNewAssemblyVersionConverter : MarkupValueConverterBase
 {
-    public class GetIsNewAssemblyVersionConverter : MarkupValueConverterBase
+    public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            var version = Assembly.GetEntryAssembly().GetName().Version.ToString();
-            return version == value?.ToString();
-        }
+        var version = Assembly.GetEntryAssembly().GetName().Version.ToString();
+        return version == value?.ToString();
     }
 }

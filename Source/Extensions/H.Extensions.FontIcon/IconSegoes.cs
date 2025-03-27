@@ -1,12 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 
-namespace H.Extensions.FontIcon
+namespace H.Extensions.FontIcon;
+
+public class IconSegoes : ObservableCollection<IconSegoe>
 {
-    public class IconSegoes : ObservableCollection<IconSegoe>
+    public IconSegoes(IEnumerable<IconSegoe> collection) : base(collection)
     {
-        public IconSegoes(IEnumerable<IconSegoe> collection) : base(collection)
-        {
-        }
     }
 }

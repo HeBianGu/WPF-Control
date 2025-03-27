@@ -3,11 +3,10 @@
 
 using System.Windows;
 
-namespace H.Controls.Adorner
+namespace H.Controls.Adorner.Adorner;
+
+public interface IDynimacAdorner
 {
-    public interface IDynimacAdorner
-    {
-        Point Offset { get; set; }
-        void UpdatePosition(Point location);
-    }
+    Point Offset { get; set; }
+    void UpdatePosition(Point location);
 }

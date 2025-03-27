@@ -1,7 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Windows.Media;
-
-namespace H.Controls.Diagram.Presenters.Workflow.NodeDatas;
+﻿namespace H.Controls.Diagram.Presenters.Workflow.NodeDatas;
 
 [Display(Name = "跨页引用", GroupName = "基本流程图形状", Order = 11, Description = "跨页引用")]
 public class ReferenceNodeData : WorkflowNodeBase

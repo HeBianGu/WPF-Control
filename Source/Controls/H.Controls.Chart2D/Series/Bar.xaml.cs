@@ -1,6 +1,6 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-
+global using H.Extensions.StoryBoard;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

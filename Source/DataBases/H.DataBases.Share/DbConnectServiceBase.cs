@@ -5,6 +5,12 @@
 using System;
 using System.Windows.Input;
 using H.Services.Common;
+using H.Services.Common.DataBase;
+using H.Services.Message;
+using H.Services.Message.Dialog;
+
+
+
 
 
 #if NETFRAMEWORK

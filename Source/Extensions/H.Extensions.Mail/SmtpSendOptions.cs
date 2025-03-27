@@ -1,95 +1,93 @@
 ﻿using H.Extensions.Setting;
-using H.Services.Common;
+using H.Services.Setting;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace H.Extensions.Mail
+namespace H.Extensions.Mail;
+
+[Display(Name = "邮件外发设置", GroupName = SettingGroupNames.GroupSystem, Description = "邮件外发设置的信息")]
+public class SmtpSendOptions : IocOptionInstance<SmtpSendOptions>
 {
-    [Display(Name = "邮件外发设置", GroupName = SettingGroupNames.GroupSystem, Description = "邮件外发设置的信息")]
-    public class SmtpSendOptions : IocOptionInstance<SmtpSendOptions>
+    private string _host;
+    [Required]
+    [DefaultValue("smtp.163.com")]
+    [Display(Name = "服务器")]
+    public string Host
     {
-        private string _host;
-        [Required]
-        [DefaultValue("smtp.163.com")]
-        [Display(Name = "服务器")]
-        public string Host
+        get { return _host; }
+        set
         {
-            get { return _host; }
-            set
-            {
-                _host = value;
-                RaisePropertyChanged();
-            }
+            _host = value;
+            RaisePropertyChanged();
         }
+    }
 
 
-        private int _port;
-        [DefaultValue(25)]
-        [Display(Name = "端口号")]
-        public int Port
+    private int _port;
+    [DefaultValue(25)]
+    [Display(Name = "端口号")]
+    public int Port
+    {
+        get { return _port; }
+        set
         {
-            get { return _port; }
-            set
-            {
-                _port = value;
-                RaisePropertyChanged();
-            }
+            _port = value;
+            RaisePropertyChanged();
         }
+    }
 
 
-        private bool _enableSsl;
-        [DefaultValue(true)]
-        [Display(Name = "启用SSL")]
-        public bool EnableSsl
+    private bool _enableSsl;
+    [DefaultValue(true)]
+    [Display(Name = "启用SSL")]
+    public bool EnableSsl
+    {
+        get { return _enableSsl; }
+        set
         {
-            get { return _enableSsl; }
-            set
-            {
-                _enableSsl = value;
-                RaisePropertyChanged();
-            }
+            _enableSsl = value;
+            RaisePropertyChanged();
         }
+    }
 
-        private string _user;
-        [Required]
-        [DefaultValue("HeBianGu2024@163.com")]
-        [Display(Name = "外发账号")]
-        public string User
+    private string _user;
+    [Required]
+    [DefaultValue("HeBianGu2024@163.com")]
+    [Display(Name = "外发账号")]
+    public string User
+    {
+        get { return _user; }
+        set
         {
-            get { return _user; }
-            set
-            {
-                _user = value;
-                RaisePropertyChanged();
-            }
+            _user = value;
+            RaisePropertyChanged();
         }
+    }
 
 
-        private string _password;
-        [Required]
-        [Display(Name = "授权码")]
-        public string Password
+    private string _password;
+    [Required]
+    [Display(Name = "授权码")]
+    public string Password
+    {
+        get { return _password; }
+        set
         {
-            get { return _password; }
-            set
-            {
-                _password = value;
-                RaisePropertyChanged();
-            }
+            _password = value;
+            RaisePropertyChanged();
         }
+    }
 
-        private bool _isBodyHtml;
-        [Display(Name = "启用HTML格式")]
-        public bool IsBodyHtml
+    private bool _isBodyHtml;
+    [Display(Name = "启用HTML格式")]
+    public bool IsBodyHtml
+    {
+        get { return _isBodyHtml; }
+        set
         {
-            get { return _isBodyHtml; }
-            set
-            {
-                _isBodyHtml = value;
-                RaisePropertyChanged();
-            }
+            _isBodyHtml = value;
+            RaisePropertyChanged();
         }
-
     }
 
 }

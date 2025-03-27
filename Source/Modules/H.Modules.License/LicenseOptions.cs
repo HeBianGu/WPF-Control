@@ -2,7 +2,9 @@
 
 
 using H.Extensions.Setting;
+using H.Services.AppPath;
 using H.Services.Common;
+using H.Services.Setting;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
@@ -76,7 +78,7 @@ namespace H.Modules.License
             }
         }
 
-        private string _filePath = AppPaths.Instance.License;
+        private string _filePath = IocAppPaths.Instance.License;
         [System.Text.Json.Serialization.JsonIgnore]
         
         [System.Xml.Serialization.XmlIgnore]

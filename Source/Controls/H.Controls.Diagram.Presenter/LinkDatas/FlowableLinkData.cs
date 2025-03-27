@@ -1,4 +1,5 @@
-﻿using H.Controls.Diagram.Datas;
+﻿using H.Common;
+using H.Controls.Diagram.Datas;
 using H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
 namespace H.Controls.Diagram.Presenter.LinkDatas;

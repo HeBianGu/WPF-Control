@@ -1,18 +1,15 @@
-﻿using H.Mvvm.ViewModels.Base;
+﻿namespace H.Presenters.Common;
 
-namespace H.Presenters.Common
+public class MessagePresenter : DisplayBindableBase
 {
-    public class MessagePresenter : DisplayBindableBase
+    private string _value;
+    public string Value
     {
-        private string _value;
-        public string Value
+        get { return _value; }
+        set
         {
-            get { return _value; }
-            set
-            {
-                _value = value;
-                RaisePropertyChanged();
-            }
+            _value = value;
+            RaisePropertyChanged();
         }
     }
 }

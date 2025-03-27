@@ -1,5 +1,3 @@
-global using H.Iocable;
-global using H.Services.Logger;
 global using H.Services.Mail;
 using System.Windows;
 using System.Windows.Markup;

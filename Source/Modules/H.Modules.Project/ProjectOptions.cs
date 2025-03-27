@@ -1,4 +1,6 @@
 ﻿using H.Extensions.Setting;
+using H.Services.AppPath;
+using H.Services.Setting;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
@@ -10,7 +12,7 @@ public class ProjectOptions : IocOptionInstance<ProjectOptions>
     public override void LoadDefault()
     {
         base.LoadDefault();
-        this.DefaultProjectFolder = AppPaths.Instance.Project;
+        this.DefaultProjectFolder = IocAppPaths.Instance.Project;
     }
     private string _extenstion;
     [DefaultValue(".prj")]
@@ -85,6 +87,6 @@ public class ProjectOptions : IocOptionInstance<ProjectOptions>
     //public override void LoadDefault()
     //{
     //    base.LoadDefault();
-    //    this.HistoryPath = System.IO.Path.Combine(AppPaths.Instance.UserProject, "Histroy.json");
+    //    this.HistoryPath = System.IO.Path.Combine(IocAppPaths.Instance.UserProject, "Histroy.json");
     //}
 }

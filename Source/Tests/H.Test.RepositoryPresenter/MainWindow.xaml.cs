@@ -1,5 +1,4 @@
-﻿using H.Extensions.ViewModel;
-using H.Modules.About;
+﻿using H.Modules.About;
 using H.Windows.Dialog;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Xaml.Behaviors;

@@ -1,15 +1,12 @@
-﻿using H.Controls.Form;
-using H.Services.Common;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
-using H.Mvvm;
-using System.Collections;
-using H.Mvvm.ViewModels.Base;
+﻿global using H.Controls.Form;
+global using System.ComponentModel.DataAnnotations;
+global using System.ComponentModel;
+global using System.Windows;
+global using H.Common.Interfaces;
+global using H.Services.Message.Form;
+global using H.Services.Message.Dialog;
+global using H.Extensions.Common;
+global using H.Services.Message;
 
 namespace H.Modules.Messages.Form
 {

@@ -1,8 +1,4 @@
-﻿using H.Extensions.Geometry;
-using System.ComponentModel.DataAnnotations;
-using System.Windows.Media;
-
-namespace H.Controls.Diagram.Presenters.Workflow.NodeDatas;
+﻿namespace H.Controls.Diagram.Presenters.Workflow.NodeDatas;
 
 [Display(Name = "子流程", GroupName = "基本流程图形状", Order = 2, Description = "子流程")]
 

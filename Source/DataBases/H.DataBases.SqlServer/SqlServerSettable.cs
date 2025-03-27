@@ -5,7 +5,9 @@ using System.Data.Entity;
 #if NETCOREAPP
 #endif
 using H.DataBases.Share;
+using H.Services.AppPath;
 using H.Services.Common;
+using H.Services.Setting;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
@@ -22,7 +24,7 @@ namespace H.DataBases.SqlServer
         public override void LoadDefault()
         {
             base.LoadDefault();
-            this.ConfigPath = Path.Combine(AppPaths.Instance.Config, this.GetType().Name + AppPaths.Instance.ConfigExtention);
+            this.ConfigPath = Path.Combine(IocAppPaths.Instance.Config, this.GetType().Name + IocAppPaths.Instance.ConfigExtention);
         }
 
         private string _configPath;

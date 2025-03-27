@@ -1,12 +1,9 @@
-﻿using System;
+﻿namespace H.Extensions.DataBase;
 
-namespace H.Extensions.DataBase
+public abstract class GuidEntityBase : EntityBase<Guid>
 {
-    public abstract class GuidEntityBase : EntityBase<Guid>
+    public GuidEntityBase()
     {
-        public GuidEntityBase()
-        {
-            this.ID = Guid.NewGuid();
-        }
+        this.ID = Guid.NewGuid();
     }
 }

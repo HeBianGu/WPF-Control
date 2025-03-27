@@ -1,8 +1,9 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using H.Extensions.Setting;
+using H.Services.AppPath;
 using H.Services.Common;
-
+using H.Services.Setting;
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -17,7 +18,7 @@ namespace H.Controls.Vlc
         public override void LoadDefault()
         {
             base.LoadDefault();
-            this._shotCutPath = Path.Combine(AppPaths.Instance.Cache, "ShootCut");
+            this._shotCutPath = Path.Combine(IocAppPaths.Instance.Cache, "ShootCut");
         }
         private bool _isSaveShotCutWithFile = true;
         [Display(Name = "截图时保存到影片目录")]

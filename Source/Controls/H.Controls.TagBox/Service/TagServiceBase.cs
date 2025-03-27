@@ -1,9 +1,4 @@
-﻿using H.Services.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using H.Mvvm.ViewModels.Base;
-
+﻿
 namespace H.Controls.TagBox
 {
     public abstract class TagServiceBase<T> : BindableBase, ITagService<T>, ITagService where T : ITag, new()

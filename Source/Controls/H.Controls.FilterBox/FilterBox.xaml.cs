@@ -1,10 +1,10 @@
-﻿using H.Services.Common;
-using System;
-using System.Collections;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
+﻿global using H.Common.Interfaces.Where;
+global using System;
+global using System.Collections;
+global using System.Collections.ObjectModel;
+global using System.Linq;
+global using System.Windows;
+global using System.Windows.Controls;
 
 namespace H.Controls.FilterBox
 {

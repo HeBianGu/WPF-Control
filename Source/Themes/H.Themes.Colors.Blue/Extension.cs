@@ -1,21 +1,19 @@
-﻿using System;
-using System.Windows.Markup;
+﻿using System.Windows.Markup;
 
-namespace H.Themes.Colors.Blue
+namespace H.Themes.Colors.Blue;
+
+public class BlueDarkThemeExtension : MarkupExtension
 {
-    public class BlueDarkThemeExtension : MarkupExtension
+    public override object ProvideValue(IServiceProvider serviceProvider)
     {
-        public override object ProvideValue(IServiceProvider serviceProvider)
-        {
-            return new BlueDarkColorResource().Resource;
-        }
+        return new BlueDarkColorResource().Resource;
     }
+}
 
-    public class BlueLightThemeExtension : MarkupExtension
+public class BlueLightThemeExtension : MarkupExtension
+{
+    public override object ProvideValue(IServiceProvider serviceProvider)
     {
-        public override object ProvideValue(IServiceProvider serviceProvider)
-        {
-            return new BlueLightColorResource().Resource;
-        }
+        return new BlueLightColorResource().Resource;
     }
 }

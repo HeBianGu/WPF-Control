@@ -1,35 +1,31 @@
 ﻿using H.Services.Serializable;
 using Newtonsoft.Json;
-using System;
-using System.IO;
-using static System.Net.Mime.MediaTypeNames;
 
-namespace H.Extensions.NewtonsoftJson
+namespace H.Extensions.NewtonsoftJson;
+
+public class NewtonsoftJsonSerializerService : IJsonSerializerService
 {
-    public class NewtonsoftJsonSerializerService : IJsonSerializerService
+    public object DeserializeObject(string txt, Type type)
     {
-        public object DeserializeObject(string txt, Type type)
-        {
-            return JsonConvert.DeserializeObject(txt, GetSerializerSettings());
-        }
-
-        public string SerializeObject<T>(T t)
-        {
-            return JsonConvert.SerializeObject(t, GetSerializerSettings()); ;
-        }
-
-        private JsonSerializerSettings GetSerializerSettings()
-        {
-            return NewtonsoftJsonOptions.Instance.JsonSerializerSettings;
-        }
+        return JsonConvert.DeserializeObject(txt, GetSerializerSettings());
     }
 
-    public static class NewtonsoftJsonSerializerServiceExtension
+    public string SerializeObject<T>(T t)
     {
-        public static T CloneByNewtonsoftJson<T>(this T t)
-        {
-            var service = new NewtonsoftJsonSerializerService();
-            return service.Clone(t);
-        }
+        return JsonConvert.SerializeObject(t, GetSerializerSettings()); ;
+    }
+
+    private JsonSerializerSettings GetSerializerSettings()
+    {
+        return NewtonsoftJsonOptions.Instance.JsonSerializerSettings;
+    }
+}
+
+public static class NewtonsoftJsonSerializerServiceExtension
+{
+    public static T CloneByNewtonsoftJson<T>(this T t)
+    {
+        var service = new NewtonsoftJsonSerializerService();
+        return service.Clone(t);
     }
 }

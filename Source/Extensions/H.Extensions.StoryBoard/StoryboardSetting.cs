@@ -3,12 +3,11 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace H.Extensions.StoryBoard
+namespace H.Extensions.StoryBoard;
+
+public static class StoryboardSetting
 {
-    public static class StoryboardSetting
-    {
-        [DefaultValue(20)]
-        [Range(0, 60)]
-        public static int DesiredFrameRate { get; set; } = 25;
-    }
+    [DefaultValue(20)]
+    [Range(0, 60)]
+    public static int DesiredFrameRate { get; set; } = 25;
 }

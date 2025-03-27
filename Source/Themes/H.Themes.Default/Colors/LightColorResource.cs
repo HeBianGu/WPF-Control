@@ -1,18 +1,16 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 
-namespace H.Themes.Default
+namespace H.Themes.Default.Colors;
+
+public class LightColorResource : IColorResource
 {
-    public class LightColorResource : IColorResource
+    public string Name => "浅色";
+    public ResourceDictionary Resource => new ResourceDictionary()
     {
-        public string Name => "浅色";
-        public ResourceDictionary Resource => new ResourceDictionary()
-        {
-            Source = new Uri("pack://application:,,,/H.Themes.Default;component/Colors/Light.xaml")
-        };
-        public override string ToString()
-        {
-            return this.Name;
-        }
+        Source = new Uri("pack://application:,,,/H.Themes.Default;component/Colors/Light.xaml")
+    };
+    public override string ToString()
+    {
+        return this.Name;
     }
 }

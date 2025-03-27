@@ -1,17 +1,8 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
+namespace H.Modules.Setting;
 
-using H.Services.Common;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-
-namespace H.Modules.Setting
+public class SettingButtonPresenter : ISettingButtonPresenter
 {
-    public class SettingButtonPresenter : ISettingButtonPresenter
-    {
 
-    }
 }

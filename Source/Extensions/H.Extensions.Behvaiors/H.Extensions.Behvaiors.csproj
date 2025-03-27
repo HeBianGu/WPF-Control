@@ -2,10 +2,8 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.77" />
   </ItemGroup>
-
   <ItemGroup>
-    <ProjectReference Include="..\..\Services\H.Services.Common\H.Services.Common.csproj" />
+    <ProjectReference Include="..\..\Common\H.Common\H.Common.csproj" />
     <ProjectReference Include="..\H.Extensions.Common\H.Extensions.Common.csproj" />
   </ItemGroup>
-
 </Project>

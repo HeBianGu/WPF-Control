@@ -11,6 +11,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using H.Services.Common;
 using H.DataBases.Share;
+using H.Services.Common.DataBase;
+using H.Services.Setting;
 
 
 #endif
@@ -34,9 +36,15 @@ namespace System
             SqlServerSettable.Instance.Load(out string message);
             string connect = SqlServerSettable.Instance.GetConnect();
             services.AddDbContext<TDbContext>(x => x.UseSqlServer(connect));
-            SettingDataManager.Instance.Add(SqlServerSettable.Instance);
+            //IocSetting.Instance.Add(SqlServerSettable.Instance);
             services.AddSingleton<IDbConnectService, SqlServerDbConnectService<TDbContext>>();
             services.AddSingleton<IDbDisconnectService, DbDisconnectService<TDbContext>>();
+        }
+
+        public static void UseSqlServer(this IApplicationBuilder service, Action<ISqlServerOption> action = null)
+        {
+            action?.Invoke(SqlServerSettable.Instance);
+            IocSetting.Instance.Add(SqlServerSettable.Instance);
         }
     }
 }

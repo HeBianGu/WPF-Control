@@ -2,42 +2,39 @@
 
 
 using Microsoft.Xaml.Behaviors;
-using System;
-using System.Linq;
 using System.Windows;
 
-namespace H.Controls.Adorner.Draggable.Bevhavior
+namespace H.Controls.Adorner.Draggable.Bevhavior;
+
+
+//  ToDo：目前不好用 后面测试
+public abstract class ActiveBehavior<B, T> : Behavior<T> where T : DependencyObject where B : Behavior, new()
 {
+    public static readonly DependencyProperty IsActiveProperty =
+        DependencyProperty.RegisterAttached("IsActive", typeof(bool), typeof(B),
+            new PropertyMetadata(default(bool), OnIsActiveChanged));
 
-    //  ToDo：目前不好用 后面测试
-    public abstract class ActiveBehavior<B, T> : Behavior<T> where T : DependencyObject where B : Behavior, new()
+    public static bool GetIsActive(DependencyObject obj)
     {
-        public static readonly DependencyProperty IsActiveProperty =
-            DependencyProperty.RegisterAttached("IsActive", typeof(bool), typeof(B),
-                new PropertyMetadata(default(bool), OnIsActiveChanged));
+        return (bool)obj.GetValue(IsActiveProperty);
+    }
 
-        public static bool GetIsActive(DependencyObject obj)
+    public static void SetIsActive(DependencyObject obj, bool value)
+    {
+        obj.SetValue(IsActiveProperty, value);
+    }
+
+    private static void OnIsActiveChanged(DependencyObject dpo, DependencyPropertyChangedEventArgs e)
+    {
+        BehaviorCollection bc = Interaction.GetBehaviors(dpo);
+
+        if (Convert.ToBoolean(e.NewValue))
+            bc.Add(new B());
+        else
         {
-            return (bool)obj.GetValue(IsActiveProperty);
-        }
-
-        public static void SetIsActive(DependencyObject obj, bool value)
-        {
-            obj.SetValue(IsActiveProperty, value);
-        }
-
-        private static void OnIsActiveChanged(DependencyObject dpo, DependencyPropertyChangedEventArgs e)
-        {
-            BehaviorCollection bc = Interaction.GetBehaviors(dpo);
-
-            if (Convert.ToBoolean(e.NewValue))
-                bc.Add(new B());
-            else
-            {
-                Behavior behavior = bc.FirstOrDefault(beh => beh.GetType() == typeof(B));
-                if (behavior != null)
-                    bc.Remove(behavior);
-            }
+            Behavior behavior = bc.FirstOrDefault(beh => beh.GetType() == typeof(B));
+            if (behavior != null)
+                bc.Remove(behavior);
         }
     }
 }

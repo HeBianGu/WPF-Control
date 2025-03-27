@@ -1,21 +1,19 @@
-﻿using System;
-using System.Windows.Markup;
+﻿using System.Windows.Markup;
 
-namespace H.Themes.Colors.Purple
+namespace H.Themes.Colors.Purple;
+
+public class PurpleDarkThemeExtension : MarkupExtension
 {
-    public class PurpleDarkThemeExtension : MarkupExtension
+    public override object ProvideValue(IServiceProvider serviceProvider)
     {
-        public override object ProvideValue(IServiceProvider serviceProvider)
-        {
-            return new PurpleDarkColorResource().Resource;
-        }
+        return new PurpleDarkColorResource().Resource;
     }
+}
 
-    public class PurpleLightThemeExtension : MarkupExtension
+public class PurpleLightThemeExtension : MarkupExtension
+{
+    public override object ProvideValue(IServiceProvider serviceProvider)
     {
-        public override object ProvideValue(IServiceProvider serviceProvider)
-        {
-            return new PurpleLightColorResource().Resource;
-        }
+        return new PurpleLightColorResource().Resource;
     }
 }

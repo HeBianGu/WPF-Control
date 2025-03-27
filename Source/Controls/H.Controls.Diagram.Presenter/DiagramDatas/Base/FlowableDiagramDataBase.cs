@@ -128,7 +128,7 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
         if (start == null)
         {
             this.Message = message;
-            IocMessage.Notify?.ShowInfo(this.Message);
+            IocMessage.ShowNotifyInfo(this.Message);
             return null;
         }
         return start;

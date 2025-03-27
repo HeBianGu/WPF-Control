@@ -1,7 +1,6 @@
-﻿namespace System
+﻿namespace H.Services.Common;
+
+public interface IChartDataProvider
 {
-    public interface IChartDataProvider
-    {
-        IEnumerable<Tuple<string, double>> GetData();
-    }
+    IEnumerable<Tuple<string, double>> GetData();
 }

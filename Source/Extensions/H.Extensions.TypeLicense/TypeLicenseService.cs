@@ -1,5 +1,4 @@
 ﻿using H.Extensions.TypeLicense.LicenseProviders;
-using System;
 
 namespace H.Extensions.TypeLicense;
 

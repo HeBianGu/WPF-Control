@@ -1,0 +1,34 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:H.Controls.Form"
+                    xmlns:p="clr-namespace:H.Controls.Form.PropertyItems">
+    <DataTemplate DataType="{x:Type p:ExpanderFormPropertyItem}">
+        <Expander Padding="0"
+                  Background="Transparent"
+                  Header="{Binding Value, Converter={x:Static Converter.GetDiaplayName}}">
+            <local:Form Margin="0,0,0,1"
+                        MessageWidth="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=UseBoolen}"
+                        SelectObject="{Binding Value}"
+                        TitleWidth="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=TitleWidth}"
+                        UseArray="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=UseArray}"
+                        UseBoolen="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=UseBoolen}"
+                        UseClass="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=UseClass}"
+                        UseDateTime="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=UseDateTime}"
+                        UseDeclaredOnly="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=UseDeclaredOnly}"
+                        UseDisplayOnly="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=UseDisplayOnly}"
+                        UseEnum="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=UseEnum}"
+                        UseEnumerator="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=UseGroup}"
+                        UseGroup="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=UseGroupNames}"
+                        UseGroupNames="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=UseGroupNames}"
+                        UseInterface="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=UseInterface}"
+                        UseNull="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=UseNull}"
+                        UsePresenter="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=UsePresenter}"
+                        UsePrimitive="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=UsePrimitive}"
+                        UsePropertyNames="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=UsePropertyNames}"
+                        UsePropertyView="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=UsePropertyView}"
+                        UseString="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=UseString}"
+                        UseTypeConverter="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=UseTypeConverter}"
+                        UseTypeConverterOnly="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=TypeConverterOnly}" />
+        </Expander>
+    </DataTemplate>
+</ResourceDictionary>

@@ -1,6 +1,8 @@
 ﻿using H.Services.Common;
 using H.Mvvm;
 using Microsoft.Extensions.Options;
+using H.Mvvm.Commands;
+using H.Services.Common.Theme;
 
 namespace H.Modules.Theme
 {

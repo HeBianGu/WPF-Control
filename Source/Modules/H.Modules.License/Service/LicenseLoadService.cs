@@ -3,6 +3,9 @@
 
 
 using H.Services.Common;
+using H.Services.Common.SplashScreen;
+using H.Services.Message;
+using H.Services.Message.Dialog;
 using Microsoft.Extensions.Options;
 using System.Windows;
 

@@ -1,4 +1,5 @@
-﻿using H.Services.Common;
+﻿global using H.Services.Message;
+using H.Services.Message.IODialog;
 using Microsoft.Win32;
 using PdfiumViewer;
 using PdfiumViewer.Core;

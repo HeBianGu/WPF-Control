@@ -1,4 +1,6 @@
-﻿namespace H.Controls.Diagram.Presenter.Commands;
+﻿global using H.Common.Commands;
+
+namespace H.Controls.Diagram.Presenter.Commands;
 
 public abstract class AddNodeCommandBase : MarkupCommandBase
 {

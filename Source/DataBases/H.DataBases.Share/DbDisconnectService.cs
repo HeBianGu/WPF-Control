@@ -4,6 +4,9 @@
 
 using System;
 using H.Services.Common;
+using H.Services.Common.DataBase;
+
+
 
 #if NETFRAMEWORK
 using System.Data.Entity;

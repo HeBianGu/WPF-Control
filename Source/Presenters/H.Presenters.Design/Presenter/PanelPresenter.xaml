@@ -1,0 +1,43 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Presenters.Design.Presenter">
+    <Style x:Key="S.ItemsControl.PanelPresenter"
+           TargetType="ItemsControl">
+        <Setter Property="ItemsSource" Value="{Binding Presenters}" />
+        <Setter Property="ItemContainerStyle">
+            <Setter.Value>
+                <Style TargetType="ContentPresenter">
+                    <Setter Property="HorizontalAlignment" Value="{Binding ChildrenHorizontalAlignment}" />
+                    <Setter Property="VerticalAlignment" Value="{Binding ChildrenVerticalAlignment}" />
+                </Style>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--<DataTemplate DataType="{x:Type local:GridAreaPresenter}">
+        <local:DesignBorder>
+            <Grid Height="500" h:GridAreaAttach.TemplateArea="Area2 Area1 Area1 Area1 Area1 Area1 Area1 Area1/Area2 Area5 Area5 Area5 Area5 Area5 Area5 Area3/Area2 Area5 Area5 Area5 Area5 Area5 Area5 Area3/ Area2 Area5 Area5 Area5 Area5 Area5 Area5 Area3/Area2 Area5 Area5 Area5 Area5 Area5 Area5 Area3/Area2 Area5 Area5 Area5 Area5 Area5 Area5 Area3/Area4 Area4 Area4 Area4 Area4 Area4 Area4 Area4/" h:MouseOverHitTestAdornerBehavior.IsHitTest="True">
+                <Border h:GridAreaAttach.AreaName="Area1" Background="Red">
+                    <TextBlock Text="Area1" />
+                </Border>
+                <Border h:GridAreaAttach.AreaName="Area2" Background="Green">
+                    <TextBlock Text="Area2" />
+                </Border>
+                <Border h:GridAreaAttach.AreaName="Area3" Background="Blue">
+                    <TextBlock Text="Area3" />
+                </Border>
+                <Border h:GridAreaAttach.AreaName="Area5" Background="Purple">
+                    <TextBlock Text="Area5" />
+                </Border>
+                <Border h:GridAreaAttach.AreaName="Area4" Background="Gray">
+                    <TextBlock Text="Area4" />
+                </Border>
+            </Grid>
+        </local:DesignBorder>
+    </DataTemplate>-->
+
+
+
+</ResourceDictionary>
+

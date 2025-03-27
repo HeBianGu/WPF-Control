@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 
-namespace H.Extensions.Tree
+namespace H.Extensions.Tree;
+
+public interface ITree
 {
-    public interface ITree
-    {
-        IEnumerable GetChildren(object parent);
-    }
+    IEnumerable GetChildren(object parent);
 }

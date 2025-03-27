@@ -2,6 +2,7 @@
 using H.Controls.Form.PropertyItem.TextPropertyItems.Base;
 using H.Mvvm;
 using H.Services.Common;
+using H.Services.Message;
 using Microsoft.Win32;
 using System.ComponentModel.DataAnnotations;
 using System.IO;

@@ -1,7 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Windows.Media;
-
-namespace H.Controls.Diagram.Presenters.Workflow.NodeDatas;
+﻿namespace H.Controls.Diagram.Presenters.Workflow.NodeDatas;
 
 [Display(Name = "手动操作", GroupName = "基本流程图形状", Order = 16, Description = "手动操作")]
 public class OperationNodeData : WorkflowNodeBase

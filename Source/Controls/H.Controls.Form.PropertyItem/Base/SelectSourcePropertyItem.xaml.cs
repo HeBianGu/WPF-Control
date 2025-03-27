@@ -1,13 +1,13 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-
-
-using H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Reflection;
+global using H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem;
+global using H.Extensions.Common;
+global using System.Collections.Generic;
+global using System.Collections.ObjectModel;
+global using System.Diagnostics;
+global using System.Linq;
+global using System.Reflection;
+global using H.Controls.Form.PropertyItems.Base;
 
 namespace H.Controls.Form.PropertyItem.Base
 {

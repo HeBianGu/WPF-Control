@@ -1,10 +1,6 @@
-﻿using H.Extensions.Setting;
-using H.Services.Common;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
-using System.Xml.Serialization;
+﻿global using H.Extensions.Setting;
+global using H.Services.Setting;
+global using System.Collections.ObjectModel;
 
 namespace H.Controls.TagBox
 {

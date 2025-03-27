@@ -1,10 +1,9 @@
 ﻿using System.Windows;
 
-namespace H.Themes.Default
+namespace H.Themes.Default.Colors;
+
+public interface IColorResource
 {
-    public interface IColorResource
-    {
-        string Name { get; }
-        ResourceDictionary Resource { get; }
-    }
+    string Name { get; }
+    ResourceDictionary Resource { get; }
 }

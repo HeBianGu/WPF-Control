@@ -1,5 +1,6 @@
 ﻿using H.Controls.Diagram.Presenter.DiagramDatas.Base;
 using H.Mvvm;
+using H.Mvvm.ViewModels;
 
 namespace H.Controls.Diagram.Extension.AutoTest;
 

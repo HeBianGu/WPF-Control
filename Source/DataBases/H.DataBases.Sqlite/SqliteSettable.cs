@@ -9,6 +9,7 @@ using System.Data.Entity;
 #endif
 using H.DataBases.Share;
 using H.Services.Common;
+using H.Services.Setting;
 using System.ComponentModel.DataAnnotations;
 
 namespace H.DataBases.Sqlite

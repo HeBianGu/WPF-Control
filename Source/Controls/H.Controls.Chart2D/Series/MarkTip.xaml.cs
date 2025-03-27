@@ -1,7 +1,7 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
-using H.Extensions.Behvaiors;
+using H.Extensions.Behvaiors.FrameworkElements;
 using Microsoft.Xaml.Behaviors;
 using System;
 using System.Linq;

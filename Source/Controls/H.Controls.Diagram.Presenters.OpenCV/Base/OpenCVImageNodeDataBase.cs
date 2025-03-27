@@ -1,4 +1,5 @@
 ﻿global using System.Windows.Media;
+using H.Common.Interfaces;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 

@@ -1,72 +1,70 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-using System;
 using System.Windows;
 using System.Windows.Media.Animation;
 
-namespace H.Extensions.StoryBoard
+namespace H.Extensions.StoryBoard;
+
+public class DoubleStoryboard : StoryboardEngineBase<double>
 {
-    public class DoubleStoryboard : StoryboardEngineBase<double>
+    public static DoubleStoryboard Create(double from, double to, double second, string property)
     {
-        public static DoubleStoryboard Create(double from, double to, double second, string property)
+        return new DoubleStoryboard(from, to, second, property);
+    }
+
+    public static void StartAll(UIElement element, params DoubleStoryboard[] engines)
+    {
+        foreach (DoubleStoryboard item in engines)
         {
-            return new DoubleStoryboard(from, to, second, property);
+            item.Start(element);
         }
+    }
 
-        public static void StartAll(UIElement element, params DoubleStoryboard[] engines)
+    public DoubleStoryboard(double from, double to, double second, string property) : base(from, to, second, property)
+    {
+
+    }
+
+    protected bool CanAnimation(UIElement element)
+    {
+        if (element is FrameworkElement framework)
         {
-            foreach (DoubleStoryboard item in engines)
-            {
-                item.Start(element);
-            }
+            return element.IsVisible && framework.IsLoaded;
         }
+        return element.IsVisible;
+    }
 
-        public DoubleStoryboard(double from, double to, double second, string property) : base(from, to, second, property)
+    public override StoryboardEngineBase Start(UIElement element, Action<UIElement> Completed = null, Action<StoryboardEngineBase> init = null)
+    {
+        if (CanAnimation(element) == false)
         {
-
+            Completed?.Invoke(element);
+            return this;
         }
-
-        protected bool CanAnimation(UIElement element)
+        DoubleAnimation animation = new DoubleAnimation(this.FromValue, this.ToValue, this.Duration);
+        this.Storyboard.Children.Add(animation);
+        Storyboard.SetTarget(animation, element);
+        Storyboard.SetTargetProperty(animation, this.PropertyPath);
+        if (this.CompletedEvent != null)
         {
-            if (element is FrameworkElement framework)
-            {
-                return element.IsVisible && framework.IsLoaded;
-            }
-            return element.IsVisible;
+            this.Storyboard.Completed += this.CompletedEvent;
         }
-
-        public override StoryboardEngineBase Start(UIElement element, Action<UIElement> Completed = null, Action<StoryboardEngineBase> init = null)
+        if (Completed != null)
         {
-            if (CanAnimation(element) == false)
+            this.Storyboard.Completed += (l, k) =>
             {
                 Completed?.Invoke(element);
-                return this;
-            }
-            DoubleAnimation animation = new DoubleAnimation(this.FromValue, this.ToValue, this.Duration);
-            this.Storyboard.Children.Add(animation);
-            Storyboard.SetTarget(animation, element);
-            Storyboard.SetTargetProperty(animation, this.PropertyPath);
-            if (this.CompletedEvent != null)
-            {
-                this.Storyboard.Completed += this.CompletedEvent;
-            }
-            if (Completed != null)
-            {
-                this.Storyboard.Completed += (l, k) =>
-                {
-                    Completed?.Invoke(element);
-                };
-            }
-            Timeline.SetDesiredFrameRate(this.Storyboard, StoryboardSetting.DesiredFrameRate);
-            init?.Invoke(this);
-            animation.EasingFunction = this.Easing;
-            this.Storyboard.Begin();
-            return this;
+            };
         }
-        public override StoryboardEngineBase Stop()
-        {
-            this.Storyboard.Stop();
-            return this;
-        }
+        Timeline.SetDesiredFrameRate(this.Storyboard, StoryboardSetting.DesiredFrameRate);
+        init?.Invoke(this);
+        animation.EasingFunction = this.Easing;
+        this.Storyboard.Begin();
+        return this;
+    }
+    public override StoryboardEngineBase Stop()
+    {
+        this.Storyboard.Stop();
+        return this;
     }
 }

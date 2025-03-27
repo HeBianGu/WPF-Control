@@ -1,5 +1,6 @@
 ﻿
 using H.Extensions.ApplicationBase;
+using H.Services.Setting;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Windows;

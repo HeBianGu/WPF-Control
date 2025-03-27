@@ -1,7 +1,7 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
-using H.Mvvm;
+global using H.Mvvm.Commands;
 using System;
 using System.Windows;
 using System.Windows.Input;

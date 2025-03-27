@@ -1,5 +1,5 @@
 ﻿using H.Controls.FavoriteBox;
-using H.Services.Common;
+using H.Services.Setting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.Collections.Generic;
@@ -24,7 +24,7 @@ namespace System
 
         public static IApplicationBuilder UseFavorite(this IApplicationBuilder builder, Action<FavoriteOptions> option = null)
         {
-            SettingDataManager.Instance.Add(FavoriteOptions.Instance);
+            IocSetting.Instance.Add(FavoriteOptions.Instance);
             option?.Invoke(FavoriteOptions.Instance);
             return builder;
         }

@@ -1,15 +1,12 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-using System.Windows;
+namespace H.Styles.Default.Commands;
 
-namespace H.Styles.Default
+public class RestoreWindowCommand : WindowCommandBase
 {
-    public class RestoreWindowCommand : WindowCommandBase
+    public override void Execute(object parameter)
     {
-        public override void Execute(object parameter)
-        {
-            if (parameter is Window window)
-                SystemCommands.RestoreWindow(window);
-        }
+        if (parameter is Window window)
+            SystemCommands.RestoreWindow(window);
     }
 }

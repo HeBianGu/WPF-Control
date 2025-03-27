@@ -3,6 +3,7 @@
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.DependencyInjection.Extensions;
 using H.Modules.Project;
+using H.Services.Setting;
 
 namespace System;
 
@@ -40,7 +41,7 @@ public static class Extention
     /// <param name="service"></param>
     public static IApplicationBuilder UseProject(this IApplicationBuilder builder, Action<ProjectOptions> option = null)
     {
-        SettingDataManager.Instance.Add(ProjectOptions.Instance);
+        IocSetting.Instance.Add(ProjectOptions.Instance);
         option?.Invoke(ProjectOptions.Instance);
         return builder;
     }

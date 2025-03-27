@@ -1,4 +1,4 @@
-﻿using H.Services.Common;
+﻿using H.Common.Interfaces;
 
 namespace H.Controls.FavoriteBox
 {

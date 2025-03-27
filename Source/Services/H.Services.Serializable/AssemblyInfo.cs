@@ -1,5 +1,4 @@
 global using H.Iocable;
-global using H.Services.Logger;
 global using System;
 global using System.Windows;
 global using System.Windows.Markup;
@@ -21,5 +20,4 @@ global using System.Windows.Markup;
 
 [assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Services.Serializable")]
 [assembly: XmlnsPrefix("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "h")]
-
 

@@ -1,5 +1,7 @@
 ﻿using H.Modules.Login;
-using H.Services.Common;
+
+using H.Services.Identity;
+using H.Services.Setting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.Collections.Generic;
@@ -50,14 +52,14 @@ namespace System
 
         public static IApplicationBuilder UseLogin(this IApplicationBuilder builder, Action<LoginOptions> option = null)
         {
-            SettingDataManager.Instance.Add(LoginOptions.Instance);
+            IocSetting.Instance.Add(LoginOptions.Instance);
             option?.Invoke(LoginOptions.Instance);
             return builder;
         }
 
         public static IApplicationBuilder UseRegistor(this IApplicationBuilder builder, Action<RegistorOptions> option = null)
         {
-            SettingDataManager.Instance.Add(RegistorOptions.Instance);
+            IocSetting.Instance.Add(RegistorOptions.Instance);
             option?.Invoke(RegistorOptions.Instance);
             return builder;
         }

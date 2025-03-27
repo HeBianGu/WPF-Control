@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace H.Extensions.TypeLicense.LicenseProviders;
+﻿namespace H.Extensions.TypeLicense.LicenseProviders;
 
 public class DefaultTypeFileLicenseProvider : TypeFileLicenseProviderBase
 {

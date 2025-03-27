@@ -2,7 +2,6 @@
 
 using H.Iocable;
 using H.Mvvm;
-using H.Mvvm.Attributes;
 using System.ComponentModel.DataAnnotations;
 
 namespace H.Controls.DrawerBox

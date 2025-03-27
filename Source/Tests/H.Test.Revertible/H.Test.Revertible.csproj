@@ -9,7 +9,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Extensions\H.Extensions.ApplicationBase\H.Extensions.ApplicationBase.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Revertible\H.Extensions.Revertible.csproj" />
-    <ProjectReference Include="..\..\Extensions\H.Extensions.ViewModel\H.Extensions.ViewModel.csproj" />
     <ProjectReference Include="..\..\Services\H.Services.Revertible\H.Services.Revertible.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Default\H.Themes.Default.csproj" />
   </ItemGroup>

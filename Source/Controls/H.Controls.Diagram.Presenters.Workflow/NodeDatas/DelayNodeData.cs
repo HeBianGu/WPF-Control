@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Windows.Media;
-namespace H.Controls.Diagram.Presenters.Workflow.NodeDatas;
+﻿namespace H.Controls.Diagram.Presenters.Workflow.NodeDatas;
 [Display(Name = "推迟", GroupName = "基本流程图形状", Order = 18, Description = "推迟")]
 public class DelayNodeData : WorkflowNodeBase
 {

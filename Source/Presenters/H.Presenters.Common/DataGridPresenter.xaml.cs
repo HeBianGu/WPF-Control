@@ -1,8 +1,5 @@
-﻿using H.Mvvm.ViewModels.Base;
-using System;
-using System.Collections;
+﻿using System.Collections;
 using System.ComponentModel.DataAnnotations;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Markup;
 

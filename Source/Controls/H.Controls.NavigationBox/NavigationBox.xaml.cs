@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
+﻿global using System.Collections;
+global using System.Windows;
+global using System.Windows.Controls;
+global using System.Windows.Media;
+global using H.Extensions.Common;
 
 namespace H.Controls.NavigationBox
 {
@@ -23,22 +23,17 @@ namespace H.Controls.NavigationBox
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-
             this._navigation = this.Template.FindName("PART_NAVIGATION", this) as ListBox;
-
             this._scrollviewer = this.Template.FindName("PART_SCROLLVIEWER", this) as ScrollViewer;
-
             this._navigation.SelectionChanged += (l, k) =>
             {
                 int index = Math.Min(this._navigation.SelectedIndex, this.Items.Count - 1);
-
-                if (index < 0) return;
-
+                if (index < 0) 
+                    return;
                 //this.ScrollIntoView(this.Items[index]);
                 UIElement element = this.Items[index] as UIElement;
                 UIElement find = this.ItemContainerGenerator.ContainerFromIndex(index) as UIElement;
                 this.ScrollTo(find);
-
             };
 
             //  Do ：设置滚动到指定位置后导航跟着改变
@@ -64,9 +59,7 @@ namespace H.Controls.NavigationBox
                 //}
 
                 Point point = this._scrollviewer.TranslatePoint(this.HitTestPoint, this);
-
                 PointHitTestParameters parameters = new PointHitTestParameters(point);
-
                 VisualTreeHelper.HitTest(this, HitTestFilter, HitTestCallBack, parameters);
             };
         }
@@ -74,12 +67,10 @@ namespace H.Controls.NavigationBox
         public void ScrollTo(UIElement element)
         {
             ScrollViewer scrollViewer = element.GetParent<ScrollViewer>();
-
-            if (scrollViewer == null) return;
-
+            if (scrollViewer == null) 
+                return;
             double currentScrollPosition = scrollViewer.VerticalOffset;
             Point point = new Point(0, currentScrollPosition);
-
             Point targetPosition = element.TransformToVisual(scrollViewer).Transform(point);
             scrollViewer.ScrollToVerticalOffset(targetPosition.Y);
         }
