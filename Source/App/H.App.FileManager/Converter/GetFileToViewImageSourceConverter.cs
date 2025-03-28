@@ -1,5 +1,6 @@
-﻿using H.Extensions.ValueConverter;
-using HeBianGu.App.Tool;
+﻿global using H.Extensions.Common;
+global using H.Extensions.ValueConverter;
+global using H.Extensions.ValueConverter.Images;
 using System;
 using System.Globalization;
 using System.IO;

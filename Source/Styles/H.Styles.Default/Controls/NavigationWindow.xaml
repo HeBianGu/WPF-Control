@@ -10,26 +10,6 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid>
-                        <Ellipse x:Name="Ellipse"
-                                 Width="24"
-                                 Height="24"
-                                 StrokeThickness="1">
-                            <Ellipse.Stroke>
-                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-                            </Ellipse.Stroke>
-                            <Ellipse.Fill>
-                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
-                            </Ellipse.Fill>
-                        </Ellipse>
-                        <Path x:Name="Arrow"
-                              Margin="0,0,3,0"
-                              HorizontalAlignment="Center"
-                              VerticalAlignment="Center"
-                              Data="M 6 0 L 0 6 L 6 12 Z">
-                            <Path.Fill>
-                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
-                            </Path.Fill>
-                        </Path>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal" />
@@ -68,6 +48,26 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
+                        <Ellipse x:Name="Ellipse"
+                                 Width="24"
+                                 Height="24"
+                                 StrokeThickness="1">
+                            <Ellipse.Stroke>
+                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
+                            </Ellipse.Stroke>
+                            <Ellipse.Fill>
+                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <Path x:Name="Arrow"
+                              Margin="0,0,3,0"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Data="M 6 0 L 0 6 L 6 12 Z">
+                            <Path.Fill>
+                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
+                            </Path.Fill>
+                        </Path>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="Command" Value="{x:Static NavigationCommands.BrowseForward}">

@@ -1,23 +1,8 @@
-﻿using H.Controls.TagBox;
-using H.Extensions.Common;
-using H.Extensions.FFMpeg;
-using H.Extensions.ViewModel;
-using H.Services.Common;
-using H.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text.Json.Serialization;
-using System.Windows;
-using System.Xml.Serialization;
-using H.Mvvm.Commands;
-using H.Services.Message;
-using H.Services.Project;
+﻿global using H.Extensions.FFMpeg;
+global using System.Diagnostics;
+global using System.Text.Json.Serialization;
+global using System.Windows;
+global using System.Xml.Serialization;
 
 namespace H.App.FileManager
 {

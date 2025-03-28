@@ -78,7 +78,7 @@ namespace H.Modules.License
             }
         }
 
-        private string _filePath = IocAppPaths.Instance.License;
+        private string _filePath = AppPaths.Instance.License;
         [System.Text.Json.Serialization.JsonIgnore]
         
         [System.Xml.Serialization.XmlIgnore]

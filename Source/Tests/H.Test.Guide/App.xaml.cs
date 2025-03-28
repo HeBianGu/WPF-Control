@@ -26,7 +26,7 @@ namespace H.Test.Guide
         protected override void ConfigureServices(IServiceCollection services)
         {
             base.ConfigureServices(services);
-            services.AddGuideService();
+            services.AddGuide();
         }
     }
 }

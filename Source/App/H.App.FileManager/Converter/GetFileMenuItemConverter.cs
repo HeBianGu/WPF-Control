@@ -1,13 +1,10 @@
-﻿using H.Controls.TagBox;
-using H.Extensions.ValueConverter;
-using H.Extensions.ViewModel;
-using H.Services.Common;
-using H.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Windows.Input;
+﻿global using H.Controls.TagBox;
+global using System.Globalization;
+global using System.Windows.Input;
+global using H.Mvvm.ViewModels.Tree;
+global using H.Mvvm.Commands;
+global using H.Services.Project;
+global using H.Extensions.DataBase.Repository;
 
 namespace H.App.FileManager
 {

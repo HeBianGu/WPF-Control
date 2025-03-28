@@ -13,6 +13,4 @@ public class LogoDataProvider
             return converter.ConvertFromString(path) as ImageSource;
         }
     }
-
-
 }

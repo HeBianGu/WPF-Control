@@ -12,4 +12,9 @@ public class ShowGuideCommand : DisplayMarkupCommandBase
     {
         await Ioc<IGuideService>.Instance.Show();
     }
+
+    public override bool CanExecute(object parameter)
+    {
+        return base.CanExecute(parameter) && Ioc<IGuideService>.Instance != null;
+    }
 }

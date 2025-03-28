@@ -26,6 +26,7 @@ using H.Common.Interfaces;
 using H.Services.Common.DataBase;
 using H.Extensions.AppPath;
 using System.IO;
+using H.Services.AppPath;
 
 namespace H.DataBases.Share
 {
@@ -36,10 +37,7 @@ namespace H.DataBases.Share
         public override void LoadDefault()
         {
             base.LoadDefault();
-            AppPathServce appPathServce = new AppPathServce();
-            //this.ConfigPath = Path.Combine(IocAppPaths.Instance.Config, this.GetType().Name + IocAppPaths.Instance.ConfigExtention);
-            //DBContext的在注册时就需要访问IocAppPaths.Instance而此时无法访问，所以这里直接new一个AppPathServce获取一个默认值
-            this.ConfigPath = Path.Combine(appPathServce.Config, this.GetType().Name + appPathServce.ConfigExtention);
+            this.ConfigPath = Path.Combine(AppPaths.Instance.Config, this.GetType().Name + AppPaths.Instance.ConfigExtention);
         }
         protected override string GetDefaultPath()
         {
@@ -63,7 +61,7 @@ namespace H.DataBases.Share
         [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         [Display(Name = "测试连接")]
-        public InvokeCommand ConnectCommand => new InvokeCommand(async (s,e) =>
+        public InvokeCommand ConnectCommand => new InvokeCommand(async (s, e) =>
         {
             Tuple<bool, string> r = await Task.Run(() =>
               {
@@ -93,11 +91,11 @@ namespace H.DataBases.Share
         });
 
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         [Display(Name = "保存配置")]
-        public RelayCommand SaveCommand => new RelayCommand(e=>
+        public RelayCommand SaveCommand => new RelayCommand(e =>
         {
             bool r = this.Save(out string message);
             if (r)

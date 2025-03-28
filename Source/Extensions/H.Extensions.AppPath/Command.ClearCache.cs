@@ -13,7 +13,7 @@ public class ClearCacheDataCommand : DisplayMarkupCommandBase
 {
     public override async Task ExecuteAsync(object parameter)
     {
-        var r = IocAppPaths.Instance.ClearCache(out string message);
+        var r = AppPaths.Instance.ClearCache(out string message);
         if (r == false)
         {
             await IocMessage.Dialog.Show(message, x => x.Title = "清空缓存失败");

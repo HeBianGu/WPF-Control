@@ -1,4 +1,5 @@
 ﻿using H.Common.Commands;
+using H.Services.Common.Guide;
 using H.Services.Message;
 
 namespace H.Modules.Guide;
@@ -14,4 +15,9 @@ public abstract class ShowGuideTreeCommandBase : DisplayMarkupCommandBase
     }
 
     protected abstract bool IsMatch(UIElement element);
+
+    public override bool CanExecute(object parameter)
+    {
+        return base.CanExecute(parameter) && Ioc<IGuideService>.Instance != null;
+    }
 }

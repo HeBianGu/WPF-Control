@@ -1,9 +1,5 @@
-﻿using H.Services.Common;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel;
-using H.Mvvm.ViewModels.Base;
-using H.Mvvm;
-using H.Extensions.Setting;
+﻿global using H.Mvvm.ViewModels.Base;
+global using H.Services.Setting;
 
 namespace H.App.FileManager
 {

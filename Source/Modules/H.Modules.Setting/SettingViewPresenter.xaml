@@ -11,8 +11,7 @@
                 <RowDefinition />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <TabControl ItemContainerStyle="{DynamicResource {x:Static TabItemKeys.Line}}"
-                        ItemsSource="{Binding Groups}"
+            <TabControl ItemsSource="{Binding Groups}"
                         SelectedItem="{Binding SelectedGroup}">
                 <TabControl.ContentTemplate>
                     <DataTemplate>
@@ -88,7 +87,6 @@
                 <TabControl.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Margin="10,0"
-                                   FontSize="{DynamicResource {x:Static FontSizeKeys.Header5}}"
                                    Text="{Binding Name}" />
                     </DataTemplate>
                 </TabControl.ItemTemplate>

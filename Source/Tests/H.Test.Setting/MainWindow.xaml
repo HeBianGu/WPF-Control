@@ -14,7 +14,8 @@
     <Grid>
         <UniformGrid>
             <ContentPresenter Content="{Ioc Type={x:Type ISettingButtonPresenter}}" />
-            <Button Content="ISettingSecurityViewOption" Command="{ShowSettingCommand SwitchToType={x:Type h:ISettingSecurityViewOption}}"/>
+            <Button Command="{ShowSettingCommand SwitchToType={x:Type h:ISettingSecurityViewOption}}"
+                    Content="ISettingSecurityViewOption" />
         </UniformGrid>
     </Grid>
 </Window>

@@ -1,5 +1,7 @@
 ﻿using H.Common.Interfaces;
+using H.Extensions.AppPath;
 using H.Extensions.Attach;
+using H.Services.AppPath;
 using H.Services.Common.DataBase;
 using H.Services.Common.MainWindow;
 using H.Services.Common.Schedule;
@@ -20,17 +22,22 @@ public abstract partial class ApplicationBase : Application
 {
     public ApplicationBase()
     {
+        this.OnRegisterAppPaths();
         this.OnExcetion();
-        this.OnRefreshIoc();
+        this.OnIocBuild();
     }
 
-    protected void OnRefreshIoc()
+    protected void OnIocBuild()
     {
         ServiceCollection sc = new ServiceCollection();
         this.ConfigureServices(sc);
-        //ServiceProvider sp = sc.BuildServiceProvider();
         Ioc.Build(sc);
         this.OnSetting();
+    }
+
+    protected void OnRegisterAppPaths()
+    {
+        AppPaths.Register(new AppPathServce());
     }
 
     protected override void OnStartup(StartupEventArgs e)
@@ -312,7 +319,6 @@ public partial class ApplicationBase
                     w.ShowInTaskbar = true;
                     Cattach.SetCaptionBackground(w, null);
                 }
-
             }).Result;
             if (r == false)
             {
@@ -384,7 +390,10 @@ public partial class ApplicationBase
                         x.MinHeight = 0.0;
                         x.Height = double.NaN;
                         if (x is Window w)
+                        {
                             w.SizeToContent = SizeToContent.Height;
+                            Cattach.SetCaptionBackground(w, null);
+                        }
                     }, func).Result;
                 });
                 if (r == false)

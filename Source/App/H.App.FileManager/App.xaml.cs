@@ -107,7 +107,7 @@ namespace H.App.FileManager
         {
             base.Configure(app);
 
-            app.UseSettingDataManager(x =>
+            app.UseSetting(x =>
             {
                 x.Add(AppSetting.Instance);
             });

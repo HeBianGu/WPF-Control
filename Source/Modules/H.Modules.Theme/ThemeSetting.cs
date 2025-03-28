@@ -1,10 +1,10 @@
-﻿using H.Controls.Form;
+﻿using H.Common.Interfaces;
+using H.Controls.Form;
 using H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem;
 using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
 using H.Extensions.Setting;
 using H.Services.AppPath;
 using H.Services.Common;
-using H.Services.Identity;
 using H.Services.Setting;
 using H.Themes.Default;
 using H.Themes.Default.Colors;
@@ -22,8 +22,8 @@ using System.Xml.Serialization;
 
 namespace H.Modules.Theme
 {
-    [Display(Name = "主题设置", GroupName = SettingGroupNames.GroupSystem, Description = "登录页面设置的信息")]
-    public class ThemeSetting : Settable<ThemeSetting>, ILoginedSplashLoad
+    [Display(Name = "主题设置", GroupName = SettingGroupNames.GroupStyle, Description = "登录页面设置的信息")]
+    public class ThemeSetting : Settable<ThemeSetting>, ILoginedSplashLoad, IThemeSetting
     {
         public ThemeSetting()
         {
@@ -90,7 +90,7 @@ namespace H.Modules.Theme
         [Browsable(false)]
         public List<IColorResource> ColorResources { get; } = new List<IColorResource>();
 
-      
+
         private FontFamily _fontFamily;
         [PropertyNameSourcePropertyItem(typeof(ComboBoxPropertyItem), nameof(FontFamilys))]
         [Display(Name = "字体")]
@@ -180,7 +180,7 @@ namespace H.Modules.Theme
 
         protected override string GetDefaultFolder()
         {
-            return IocAppPaths.Instance.UserSetting;
+            return AppPaths.Instance.UserSetting;
         }
 
     }

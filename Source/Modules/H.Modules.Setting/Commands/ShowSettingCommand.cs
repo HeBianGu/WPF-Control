@@ -80,4 +80,9 @@ public class ShowSettingCommand : ShowDialogCommandBase
         if (sr == false)
             await IocMessage.Dialog.Show(error);
     }
+
+    public override bool CanExecute(object parameter)
+    {
+        return base.CanExecute(parameter) && IocSetting.Instance != null && Ioc.GetService<ISettingViewPresenter>(false) != null;
+    }
 }

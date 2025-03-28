@@ -28,9 +28,9 @@ public abstract class SettableBase : DisplayBindableBase, ISettable, ILoadable, 
 
     protected virtual string GetDefaultFolder()
     {
-        //if (this is ILoginedSplashLoad)
-        return IocAppPaths.Instance.UserSetting;
-        //return IocAppPaths.Instance.Setting;
+        if (this is ILoginedSplashLoad)
+            return AppPaths.Instance.UserSetting;
+        return AppPaths.Instance.Setting;
     }
 
     public virtual bool Save(out string message)

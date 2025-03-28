@@ -20,7 +20,7 @@ namespace H.Test.Upgrade
         protected override void ConfigureServices(IServiceCollection services)
         {
             base.ConfigureServices(services);
-            services.AddAppPath();
+            
             services.AddSetting();
             services.AddWindowMessage();
             services.AddWindowDialogMessage();

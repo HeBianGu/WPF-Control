@@ -26,8 +26,7 @@ public partial class App : ApplicationBase
         {
             x.Dark = new GrayDarkColorResource();
         });
-        services.AddSingleton<IDialogMessageService, AdornerDialogMessageService>();
-        services.AddSingleton<IFormMessageService, FormMessageService>();
+        services.AddFormMessageService();
         services.AddNoticeMessage();
         services.AddSnackMessage();
     }

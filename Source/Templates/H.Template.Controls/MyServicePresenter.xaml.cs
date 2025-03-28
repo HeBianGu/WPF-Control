@@ -1,7 +1,7 @@
-﻿using H.Extensions.Setting;
+﻿using H.Common.Attributes;
+using H.Extensions.Setting;
 using H.Iocable;
 using H.Mvvm;
-using H.Mvvm.Attributes;
 using H.Mvvm.ViewModels.Base;
 using H.Services.Common;
 using H.Services.Setting;

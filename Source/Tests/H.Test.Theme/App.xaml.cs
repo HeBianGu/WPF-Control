@@ -26,7 +26,7 @@ namespace H.Test.Theme
     {
         protected override void ConfigureServices(IServiceCollection services)
         {
-            services.AddAppPath();
+            
             services.AddSetting();
             services.AddAdornerDialogMessage();
             services.AddSwitchThemeViewPresenter(x=>

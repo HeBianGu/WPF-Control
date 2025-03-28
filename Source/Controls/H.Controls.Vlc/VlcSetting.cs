@@ -18,7 +18,7 @@ namespace H.Controls.Vlc
         public override void LoadDefault()
         {
             base.LoadDefault();
-            this._shotCutPath = Path.Combine(IocAppPaths.Instance.Cache, "ShootCut");
+            this._shotCutPath = Path.Combine(AppPaths.Instance.Cache, "ShootCut");
         }
         private bool _isSaveShotCutWithFile = true;
         [Display(Name = "截图时保存到影片目录")]

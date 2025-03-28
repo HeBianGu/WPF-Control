@@ -22,7 +22,7 @@ namespace H.Test.License
         {
             services.AddAdornerDialogMessage();
             services.AddWindowMessage();
-            services.AddAppPath();
+            
             services.AddSetting();
             services.AddLicenseService(x =>
             {

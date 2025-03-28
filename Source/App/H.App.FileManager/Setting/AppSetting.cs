@@ -1,8 +1,5 @@
-﻿using H.Extensions.Setting;
-using H.Services.Common;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Windows.Media;
+﻿global using H.Extensions.Setting;
+global using System.Windows.Media;
 
 namespace H.App.FileManager
 {

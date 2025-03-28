@@ -15,7 +15,7 @@ public class UpgradeOptions : IocOptionInstance<UpgradeOptions>, IUpgradeOptions
     protected override string GetDefaultFolder()
     {
         //base.GetDefaultFolder();
-        return IocAppPaths.Instance.Config;
+        return AppPaths.Instance.Config;
     }
 
     private string _uri;
@@ -30,7 +30,7 @@ public class UpgradeOptions : IocOptionInstance<UpgradeOptions>, IUpgradeOptions
         }
     }
 
-    private string _SavePath = IocAppPaths.Instance.Version;
+    private string _SavePath = AppPaths.Instance.Version;
     [Display(Name = "更新文件保存位置")]
     public string SavePath
     {

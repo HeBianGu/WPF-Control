@@ -182,6 +182,5 @@ public class MainWindowSavableService : IMainWindowSavableService
             }
         });
         return MainWindowOption.Instance.Save(out message);
-        return true;
     }
 }

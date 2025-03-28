@@ -17,7 +17,7 @@
     <GeneratePackageOnBuild>Flase</GeneratePackageOnBuild>
     <Platforms>AnyCPU;x86</Platforms>
     <SignAssembly>True</SignAssembly>
-    <AssemblyOriginatorKeyFile>H:\Github\WPF-Control\Key.snk</AssemblyOriginatorKeyFile>
+    <!--<AssemblyOriginatorKeyFile>H:\Github\WPF-Control\Key.snk</AssemblyOriginatorKeyFile>-->
   </PropertyGroup>
 
   <ItemGroup>

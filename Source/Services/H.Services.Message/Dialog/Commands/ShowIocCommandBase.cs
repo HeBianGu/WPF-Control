@@ -16,6 +16,6 @@ public abstract class ShowIocCommandBase<T> : ShowDialogCommandBase
 
     public override bool CanExecute(object parameter)
     {
-        return Ioc.GetService<T>() != null && base.CanExecute(parameter);
+        return Ioc.GetService<T>(false) != null && base.CanExecute(parameter);
     }
 }

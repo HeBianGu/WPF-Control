@@ -19,7 +19,7 @@ namespace H.Test.Mvp
         protected override void ConfigureServices(IServiceCollection services)
         {
             services.AddAbout();
-            services.AddAppPath();
+            
             services.AddSetting();
             services.AddFeedBack();
             services.AddSwitchThemeViewPresenter();

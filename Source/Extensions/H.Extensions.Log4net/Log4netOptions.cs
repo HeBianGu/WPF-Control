@@ -11,8 +11,8 @@ public class Log4netOptions : IocOptionInstance<Log4netOptions>
     public override void LoadDefault()
     {
         base.LoadDefault();
-        this.LogPath = IocAppPaths.Instance.Log;
-        this.tempPath = IocAppPaths.Instance.Cache;
+        this.LogPath = AppPaths.Instance.Log;
+        this.tempPath = AppPaths.Instance.Cache;
     }
 
     private string _logPath;

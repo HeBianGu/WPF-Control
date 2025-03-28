@@ -21,7 +21,7 @@ namespace H.Test.SplashScreen
             services.AddWindowMessage();
             services.AddWindowDialogMessage();
             services.AddSplashScreen();
-            services.AddAppPath();
+            
             services.AddSetting();
         }
 

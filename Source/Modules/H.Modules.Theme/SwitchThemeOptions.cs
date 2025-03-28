@@ -1,7 +1,7 @@
-﻿using H.Extensions.Setting;
+﻿using H.Common.Interfaces;
+using H.Extensions.Setting;
 using H.Services.AppPath;
 using H.Services.Common;
-using H.Services.Identity;
 using H.Services.Setting;
 using H.Themes.Default;
 using H.Themes.Default.Colors;
@@ -13,7 +13,7 @@ using System.Xml.Serialization;
 
 namespace H.Modules.Theme
 {
-    [Display(Name = "明暗主题设置", GroupName = SettingGroupNames.GroupSystem, Description = "登录页面设置的信息")]
+    [Display(Name = "明暗主题设置", GroupName = SettingGroupNames.GroupStyle, Description = "明暗主题设置的信息")]
     public class SwitchThemeOptions : IocOptionInstance<SwitchThemeOptions>, ILoginedSplashLoad
     {
         private bool _isDark = true;
@@ -33,13 +33,11 @@ namespace H.Modules.Theme
 
         [Browsable(false)]
         [System.Text.Json.Serialization.JsonIgnore]
-        
         [System.Xml.Serialization.XmlIgnore]
         public IColorResource Dark { get; set; } = new DarkColorResource();
 
         [Browsable(false)]
         [System.Text.Json.Serialization.JsonIgnore]
-        
         [System.Xml.Serialization.XmlIgnore]
         public IColorResource Light { get; set; } = new LightColorResource();
 
@@ -66,7 +64,7 @@ namespace H.Modules.Theme
 
         protected override string GetDefaultFolder()
         {
-            return IocAppPaths.Instance.UserSetting;
+            return AppPaths.Instance.UserSetting;
         }
     }
 }

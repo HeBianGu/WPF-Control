@@ -2,6 +2,8 @@
 using H.Modules.Messages.Dialog;
 using H.Modules.Messages.Form;
 using H.Services.Common;
+using H.Services.Message.Dialog;
+using H.Services.Message.Form;
 using H.Styles.Default;
 using H.Themes.Colors.Accent;
 using H.Themes.Colors.Gray;
@@ -56,7 +58,6 @@ public partial class App : ApplicationBase
         app.UseSwithTheme();
         app.UseSettingSecurity();
         app.UseMainWindowSetting();
-        app.UseAdorner();
         app.UseWindowSetting();
     }
 

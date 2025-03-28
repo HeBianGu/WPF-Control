@@ -11,7 +11,7 @@ namespace H.Extensions.AppPath;
 /// 系统路径
 /// </summary>
 [Display(Name = "系统路径")]
-public class AppPathServce : IAppPathServce
+public class AppPathServce : Lazy<AppPathServce>, IAppPathServce
 {
     /// <summary>
     /// 公司名称

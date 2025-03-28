@@ -17,7 +17,7 @@ public class ClearSettingDataCommand : DisplayMarkupCommandBase
         if (r == false)
             return;
 
-        r = IocAppPaths.Instance.ClearSetting(out string message);
+        r = AppPaths.Instance.ClearSetting(out string message);
         if (r == false)
         {
             await IocMessage.ShowDialogMessage(message);

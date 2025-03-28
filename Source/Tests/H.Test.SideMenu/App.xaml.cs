@@ -21,7 +21,7 @@ namespace H.Test.SideMenu
         protected override void ConfigureServices(IServiceCollection services)
         {
             services.AddAdornerDialogMessage();
-            services.AddAppPath();
+            
             services.AddSetting();
         }
 

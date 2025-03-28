@@ -22,9 +22,7 @@ namespace H.DataBases.Sqlite
         public override void LoadDefault()
         {
             base.LoadDefault();
-            AppPathServce appPathServce = new AppPathServce();
-            this.ConfigPath = Path.Combine(appPathServce.Config, this.GetType().Name + appPathServce.ConfigExtention);
-            this.FilePath = appPathServce.Data;
+            this.FilePath = AppPaths.Instance.Data;
         }
 
         private string _filePath;

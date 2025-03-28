@@ -31,7 +31,7 @@ public abstract class TypeFileLicenseProviderBase : LicenseProvider
 
     protected virtual string GetLicenseFile(Type type)
     {
-        return Path.Combine(IocAppPaths.Instance.UserLicense, type.Name + ".lic");
+        return Path.Combine(AppPaths.Instance.UserLicense, type.Name + ".lic");
     }
 
     protected abstract License CreateLicense(string key, Type type);

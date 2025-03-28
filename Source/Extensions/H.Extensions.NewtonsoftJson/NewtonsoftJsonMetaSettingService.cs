@@ -39,7 +39,7 @@ public class NewtonsoftJsonMetaSettingService : JsonMetaSettingServiceBase
     }
     protected string GetFilePath(string typeName, string id)
     {
-        string path = Path.Combine(IocAppPaths.Instance.Cache, typeName, id + ".json");
+        string path = Path.Combine(AppPaths.Instance.Cache, typeName, id + ".json");
         if (!Directory.Exists(Path.GetDirectoryName(path)))
             Directory.CreateDirectory(Path.GetDirectoryName(path));
         return path;

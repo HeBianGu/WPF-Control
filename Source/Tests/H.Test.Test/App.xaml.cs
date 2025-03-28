@@ -38,7 +38,7 @@ namespace H.Test.Test
             services.AddAdornerDialogMessage();
             services.AddFormMessageService();
             services.AddLog4net();
-            services.AddAppPath();
+            
             services.AddSetting();
             services.AddXmlMetaSettingService();
             services.AddMainWindowSavableService();

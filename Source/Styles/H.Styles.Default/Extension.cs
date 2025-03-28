@@ -28,4 +28,11 @@ public static partial class Extension
         IocSetting.Instance.Add(WindowSetting.Instance);
         return builder;
     }
+
+    public static IApplicationBuilder UseStyle(this IApplicationBuilder builder, Action<IStyleOptions> option = null)
+    {
+        option?.Invoke(StyleOptions.Instance);
+        IocSetting.Instance.Add(StyleOptions.Instance);
+        return builder;
+    }
 }

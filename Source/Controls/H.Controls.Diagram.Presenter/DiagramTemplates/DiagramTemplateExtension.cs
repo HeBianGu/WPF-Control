@@ -6,6 +6,6 @@ public static class DiagramTemplateExtension
 {
     public static string GetDefaultFileName(this IDiagramTempaltes templates)
     {
-        return System.IO.Path.Combine(IocAppPaths.Instance.UserData, "diagramtemplates.json");
+        return System.IO.Path.Combine(AppPaths.Instance.UserData, "diagramtemplates.json");
     }
 }

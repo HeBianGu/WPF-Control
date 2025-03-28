@@ -10,5 +10,4 @@
     <ProjectReference Include="..\..\Services\H.Services.Serializable\H.Services.Serializable.csproj" />
     <ProjectReference Include="..\..\Services\H.Services.Setting\H.Services.Setting.csproj" />
   </ItemGroup>
-
 </Project>

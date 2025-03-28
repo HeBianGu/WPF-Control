@@ -15,5 +15,4 @@ namespace System
             services.AddSingleton<INoticeMessageService, NoticeMessageService>();
         }
     }
-
 }

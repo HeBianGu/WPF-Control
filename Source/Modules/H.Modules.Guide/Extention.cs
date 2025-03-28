@@ -14,7 +14,7 @@ public static class Extention
     /// 注册
     /// </summary>
     /// <param name="service"></param>
-    public static IServiceCollection AddGuideService(this IServiceCollection services, Action<GuideOptions> setupAction = null)
+    public static IServiceCollection AddGuide(this IServiceCollection services, Action<GuideOptions> setupAction = null)
     {
         services.AddOptions();
         services.TryAdd(ServiceDescriptor.Singleton<IGuideService, GuideService>());
@@ -23,7 +23,7 @@ public static class Extention
         return services;
     }
 
-    public static void UseGuideSetting(this IApplicationBuilder service, Action<IGuideOptions> action = null)
+    public static void UseGuide(this IApplicationBuilder service, Action<IGuideOptions> action = null)
     {
         action?.Invoke(GuideOptions.Instance);
         IocSetting.Instance.Add(GuideOptions.Instance);

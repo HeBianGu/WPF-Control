@@ -14,7 +14,7 @@ namespace H.Extensions.XmlSerialize
 
         public T Deserilize<T>(string id)
         {
-            string path = Path.Combine(IocAppPaths.Instance.Cache, typeof(T).Name, id + ".xml");
+            string path = Path.Combine(AppPaths.Instance.Cache, typeof(T).Name, id + ".xml");
 
             if (!File.Exists(path)) return default(T);
 
@@ -25,7 +25,7 @@ namespace H.Extensions.XmlSerialize
         {
             Application.Current.Dispatcher.BeginInvoke(MetaSetting.Instance.DispatcherPriority, new Action(() =>
                        {
-                           string path = Path.Combine(IocAppPaths.Instance.Cache, setting.GetType().Name, id + ".xml");
+                           string path = Path.Combine(AppPaths.Instance.Cache, setting.GetType().Name, id + ".xml");
 
                            this.XmlSerializer.Save(path, setting);
                        }));

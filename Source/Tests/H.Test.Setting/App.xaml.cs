@@ -23,7 +23,7 @@ namespace H.Test.Setting
     {
         protected override void ConfigureServices(IServiceCollection services)
         {
-            services.AddAppPath();
+            
             services.AddAdornerDialogMessage();
             services.AddSnackMessage();
             //services.AddWindowDialogMessage();

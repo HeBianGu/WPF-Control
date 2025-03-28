@@ -1,0 +1,39 @@
+﻿<Window x:Class="H.Test.DefaultApplicationBase.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:H.Test.DefaultApplicationBase"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Title="MainWindow"
+        Width="800"
+        Height="450"
+        Style="{StaticResource {x:Type Window}}"
+        mc:Ignorable="d">
+    <TabControl>
+        <TabControl.Resources>
+            <Style BasedOn="{StaticResource {x:Static ButtonKeys.Command}}"
+                   TargetType="Button" />
+        </TabControl.Resources>
+        <TabItem Header="Messages">
+            <UniformGrid>
+                <Button Command="{ShowMessageCommand}" />
+                <Button Command="{ShowWaitCommand}" />
+                <Button Command="{ShowPercentCommand}" />
+                <Button Command="{ShowEditCommand Value={GetStudent}}" />
+                <Button Command="{ShowTabEditCommand Value={GetStudent}}" />
+                <Button Command="{ShowViewCommand Value={GetStudent}}" />
+                <Button Command="{ShowStringNoticeMessageCommand}" />
+                <Button Command="{ShowStringSnackMessageCommand}" />
+            </UniformGrid>
+        </TabItem>
+        <TabItem Header="Modules">
+            <UniformGrid>
+                <Button Command="{ShowAboutCommand}" />
+                <Button Command="{ShowSettingCommand}" />
+                <Button Command="{ShowGuideCommand}" />
+                <Button Command="{ShowGuideTreeCommand}" />
+            </UniformGrid>
+        </TabItem>
+    </TabControl>
+
+</Window>

@@ -29,7 +29,7 @@ namespace H.Test.Controls
             services.AddAdornerDialogMessage();
             services.AddSnackMessage();
             //services.AddWindowDialogMessage();
-            services.AddAppPath();
+            
             services.AddSetting();
         }
 

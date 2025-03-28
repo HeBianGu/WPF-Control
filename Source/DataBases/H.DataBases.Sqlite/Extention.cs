@@ -53,7 +53,7 @@ namespace System
             setting.Load(out string message);
             string connect = setting.GetConnect();
             services.AddDbContext<TDbContext>(x => x.UseLazyLoadingProxies().UseSqlite(connect));
-            IocSetting.Instance.Add(setting);
+            //IocSetting.Instance.Add(setting);
             services.AddSingleton<IDbConnectService, SqliteDbConnectService<TDbContext>>();
             services.AddSingleton<IDbDisconnectService, DbDisconnectService<TDbContext>>();
         }
