@@ -22,7 +22,7 @@ public abstract partial class ApplicationBase : Application
 {
     public ApplicationBase()
     {
-        this.OnRegisterAppPaths();
+        AppPaths.Register(this.CreateAppPathServce());
         this.OnExcetion();
         this.OnIocBuild();
     }
@@ -35,9 +35,9 @@ public abstract partial class ApplicationBase : Application
         this.OnSetting();
     }
 
-    protected void OnRegisterAppPaths()
+    protected virtual IAppPathServce CreateAppPathServce()
     {
-        AppPaths.Register(new AppPathServce());
+        return new AppPathServce();
     }
 
     protected override void OnStartup(StartupEventArgs e)

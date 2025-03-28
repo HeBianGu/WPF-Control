@@ -19,18 +19,4 @@ namespace H.ApplicationBases.Default
             services.AddDefaultMessages();
         }
     }
-
-    public abstract partial class DefaultModulesApplicationBase : ApplicationBase
-    {
-        protected override void ConfigureServices(IServiceCollection services)
-        {
-            services.AddDefaultModules();
-        }
-
-        protected override void Configure(IApplicationBuilder app)
-        {
-            base.Configure(app);
-            app.UseDefaultModules();
-        }
-    }
 }
