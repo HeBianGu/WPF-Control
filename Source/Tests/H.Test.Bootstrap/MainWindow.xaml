@@ -1,0 +1,89 @@
+﻿<Window x:Class="H.Test.Bootstrap.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:h="https://github.com/HeBianGu"
+        xmlns:local="clr-namespace:H.Test.Bootstrap"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        Title="MainWindow"
+        Width="1100"
+        Height="650"
+        mc:Ignorable="d">
+    <DockPanel>
+        <TabControl TabStripPlacement="Left">
+            <TabItem Header="TabControl">
+                <TabControl ItemContainerStyle="{DynamicResource {x:Static TabItemKeys.Line}}"
+                            ItemsSource="{GetStudents Count=10}">
+                    <TabControl.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}" />
+                        </DataTemplate>
+                    </TabControl.ItemTemplate>
+                </TabControl>
+            </TabItem>
+            <TabItem Header="Button">
+                <UniformGrid>
+                    <Button Content="Button" />
+                    <Button Content="Accent"
+                            Style="{DynamicResource {x:Static h:ButtonKeys.Accent}}" />
+                    <Button Content="Success"
+                            Style="{DynamicResource {x:Static h:ButtonKeys.Success}}" />
+                    <Button Content="Error"
+                            Style="{DynamicResource {x:Static h:ButtonKeys.Error}}" />
+                    <!--<Button Content="Accent">
+                        <Button.Style>
+                            <Style BasedOn="{StaticResource {x:Static h:ButtonKeys.Default}}"
+                                   TargetType="Button">
+                                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Accent}}" />
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.White}}" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="true">
+                                        <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.White}}" />
+                                        <Setter Property="Background">
+                                            <Setter.Value>
+                                                <SolidColorBrush Opacity="0.8" Color="{DynamicResource {x:Static ColorKeys.Accent}}" />
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>-->
+                    <Button Content="Button"
+                            IsEnabled="False" />
+                    <Button Padding="10"
+                            Content="F1M12,12L4,12 4,4 12,4z M3,13L13,13 13,3 3,3z"
+                            Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
+                    <Button Padding="10"
+                            Content="F1M12,12L4,12 4,4 12,4z M3,13L13,13 13,3 3,3z"
+                            Style="{DynamicResource {x:Static h:ButtonKeys.GeometryError}}" />
+                    <Button Padding="10"
+                            Style="{DynamicResource {x:Static h:ButtonKeys.Tool}}">
+                        <Border Background="Red" />
+                    </Button>
+
+                </UniformGrid>
+            </TabItem>
+            <TabItem Header="ComboBox">
+                <StackPanel>
+                    <ComboBox SelectedIndex="0">
+                        <system:String>1</system:String>
+                        <system:String>2</system:String>
+                        <system:String>3</system:String>
+                        <system:String>4</system:String>
+                        <system:String>5</system:String>
+                    </ComboBox>
+                    <ComboBox IsEditable="True"
+                              SelectedIndex="0">
+                        <system:String>1</system:String>
+                        <system:String>2</system:String>
+                        <system:String>3</system:String>
+                        <system:String>4</system:String>
+                        <system:String>5</system:String>
+                    </ComboBox>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+    </DockPanel>
+</Window>
