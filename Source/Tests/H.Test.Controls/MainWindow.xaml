@@ -9,7 +9,7 @@
         Title="MainWindow"
         Width="1100"
         Height="650"
-        Style="{StaticResource {x:Type Window}}"
+        Style="{DynamicResource {x:Type Window}}"
         mc:Ignorable="d">
     <DockPanel>
         <Menu DockPanel.Dock="Top">

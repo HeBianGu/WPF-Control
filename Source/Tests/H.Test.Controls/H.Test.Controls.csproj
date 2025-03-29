@@ -19,6 +19,7 @@
     <ProjectReference Include="..\..\Extensions\H.Extensions.AppPath\H.Extensions.AppPath.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Geometry\H.Extensions.Geometry.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Validation\H.Extensions.Validation.csproj" />
+    <ProjectReference Include="..\..\Modules\H.Modules.Style\H.Modules.Style.csproj" />
     <ProjectReference Include="..\..\Styles\H.Styles.Default\H.Styles.Default.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Default\H.Themes.Default.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Setting\H.Modules.Setting.csproj" />

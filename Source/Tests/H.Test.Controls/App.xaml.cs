@@ -29,7 +29,6 @@ namespace H.Test.Controls
             services.AddAdornerDialogMessage();
             services.AddSnackMessage();
             //services.AddWindowDialogMessage();
-            
             services.AddSetting();
         }
 
@@ -37,6 +36,7 @@ namespace H.Test.Controls
         {
             app.UseWindowSetting();
             app.UseScrollViewerSetting();
+            app.UseStyle();
         }
 
     }

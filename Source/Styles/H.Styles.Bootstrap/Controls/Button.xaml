@@ -34,16 +34,13 @@
         <Setter Property="Padding" Value="5,0" />
         <Setter Property="Margin" Value="0" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.CaptionForeground}}" />
-        <Setter Property="Background">
-            <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />
-            </Setter.Value>
-        </Setter>
+        <Setter Property="Background" Value="LightGreen" />
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.CaptionBackground}}" />
         <Setter Property="Cattach.CornerRadius" Value="2" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Height" Value="50" />
         <!--  Guide  -->
         <Setter Property="Cattach.UseGuide" Value="True" />
         <Setter Property="Cattach.GuideTitle" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}" />
@@ -74,155 +71,9 @@
                 <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundSelect}}" />
                 <Setter Property="Background">
                     <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
+                        <SolidColorBrush Color="Pink" />
                     </Setter.Value>
                 </Setter>
-            </Trigger>
-        </Style.Triggers>
-    </Style>
-
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Button.Command,
-                                        TypeInTargetAssembly={x:Type ButtonKeys}}"
-           BasedOn="{StaticResource {x:Static ButtonKeys.Default}}"
-           TargetType="Button">
-        <Setter Property="Content" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Command.Name}" />
-        <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Command.Description}" />
-    </Style>
-
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Button.Accent,
-                                        TypeInTargetAssembly={x:Type ButtonKeys}}"
-           BasedOn="{StaticResource {x:Static ButtonKeys.Default}}"
-           TargetType="Button">
-        <Setter Property="Background">
-            <Setter.Value>
-                <SolidColorBrush Opacity="0.8"
-                                 Color="{DynamicResource {x:Static ColorKeys.Orange}}" />
-            </Setter.Value>
-        </Setter>
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Red}}" />
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="true">
-                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Accent}}" />
-            </Trigger>
-        </Style.Triggers>
-    </Style>
-
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Button.Success,
-                                        TypeInTargetAssembly={x:Type ButtonKeys}}"
-           BasedOn="{StaticResource {x:Static ButtonKeys.Default}}"
-           TargetType="Button">
-        <Setter Property="Background">
-            <Setter.Value>
-                <SolidColorBrush Opacity="0.8"
-                                 Color="{DynamicResource {x:Static ColorKeys.Green}}" />
-            </Setter.Value>
-        </Setter>
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.White}}" />
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="true">
-                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Green}}" />
-            </Trigger>
-        </Style.Triggers>
-    </Style>
-
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Button.Error,
-                                        TypeInTargetAssembly={x:Type ButtonKeys}}"
-           BasedOn="{StaticResource {x:Static ButtonKeys.Default}}"
-           TargetType="Button">
-        <Setter Property="Background">
-            <Setter.Value>
-                <SolidColorBrush Opacity="0.8"
-                                 Color="{DynamicResource {x:Static ColorKeys.Red}}" />
-            </Setter.Value>
-        </Setter>
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.White}}" />
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="true">
-                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Red}}" />
-            </Trigger>
-        </Style.Triggers>
-    </Style>
-
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Button.Tool,
-                                        TypeInTargetAssembly={x:Type ButtonKeys}}"
-           BasedOn="{StaticResource {x:Static ButtonKeys.Default}}"
-           TargetType="Button">
-        <Setter Property="SnapsToDevicePixels" Value="true" />
-        <Setter Property="Cursor" Value="Hand" />
-        <!--<Setter Property="OverridesDefaultStyle" Value="true" />-->
-        <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}" />
-        <Setter Property="Padding" Value="10" />
-        <Setter Property="Width" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
-        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="VerticalContentAlignment" Value="Stretch" />
-        <Setter Property="Background" Value="Transparent" />
-        <Setter Property="Cattach.CornerRadius" Value="2" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Border Style="{StaticResource S.Border.TemplatedParent}"
-                            TextBlock.Foreground="{TemplateBinding Foreground}">
-                        <ContentPresenter RecognizesAccessKey="True"
-                                          Style="{StaticResource S.ContentPresenter.TemplatedParent}" />
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Button.Geometry,
-                                        TypeInTargetAssembly={x:Type ButtonKeys}}"
-           BasedOn="{StaticResource {x:Static ButtonKeys.Default}}"
-           TargetType="Button">
-        <Setter Property="Width" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
-        <!--<Setter Property="Padding" Value="10" />-->
-        <Setter Property="Height" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
-        <Setter Property="Padding" Value="0" />
-        <Setter Property="Background" Value="Transparent" />
-        <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="BorderBrush" Value="{x:Null}" />
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
-        <Setter Property="Cursor" Value="Hand" />
-        <Setter Property="Cattach.CornerRadius" Value="0" />
-        <!--  Guide  -->
-        <Setter Property="Cattach.GuideTitle" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ToolTip}" />
-        <Setter Property="Cattach.GuideData" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ToolTip}" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Border Style="{StaticResource S.Border.TemplatedParent}"
-                            TextBlock.Foreground="{TemplateBinding Foreground}">
-                        <Path Style="{StaticResource S.Path.Icon}" />
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Button.Icon,
-                                        TypeInTargetAssembly={x:Type ButtonKeys}}"
-           BasedOn="{StaticResource {x:Static ButtonKeys.Geometry}}"
-           TargetType="Button">
-        <Setter Property="Width" Value="Auto" />
-        <Setter Property="Padding" Value="10" />
-        <Setter Property="Height" Value="Auto" />
-        <Setter Property="Margin" Value="2,0" />
-    </Style>
-
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Button.Geometry.Error,
-                                        TypeInTargetAssembly={x:Type ButtonKeys}}"
-           BasedOn="{StaticResource {x:Static ButtonKeys.Geometry}}"
-           TargetType="Button">
-        <Setter Property="Background">
-            <Setter.Value>
-                <SolidColorBrush Opacity="0.8"
-                                 Color="{DynamicResource {x:Static ColorKeys.Red}}" />
-            </Setter.Value>
-        </Setter>
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.White}}" />
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="true">
-                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Red}}" />
             </Trigger>
         </Style.Triggers>
     </Style>

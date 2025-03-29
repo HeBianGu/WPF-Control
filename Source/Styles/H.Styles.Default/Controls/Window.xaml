@@ -6,35 +6,8 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Share.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Controls/Button.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Controls/FontIconButton.xaml" />
     </ResourceDictionary.MergedDictionaries>
-
-    <!--<Style x:Key="{x:Type Window}" TargetType="{x:Type Window}">
-        <Setter Property="SnapsToDevicePixels" Value="true" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Window}">
-                    <Grid>
-                        <Grid.Background>
-                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
-                        </Grid.Background>
-                        <AdornerDecorator>
-                            <ContentPresenter />
-                        </AdornerDecorator>
-                        <ResizeGrip x:Name="WindowResizeGrip"
-                                    HorizontalAlignment="Right"
-                                    VerticalAlignment="Bottom"
-                                    IsTabStop="false"
-                                    Visibility="Collapsed" />
-                    </Grid>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="ResizeMode" Value="CanResizeWithGrip">
-                            <Setter TargetName="WindowResizeGrip" Property="Visibility" Value="Visible" />
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>-->
 
     <WindowChrome x:Key="{ComponentResourceKey ResourceId=S.Window.WindowChrome,
                                                TypeInTargetAssembly={x:Type lc:WindowKeys}}"
@@ -59,11 +32,6 @@
                                         TypeInTargetAssembly={x:Type lc:WindowKeys}}"
            BasedOn="{StaticResource {x:Static lc:FontIconButtonKeys.Default}}"
            TargetType="{x:Type lc:FontIconButton}">
-        <!--<Setter Property="Width" Value="35" />
-        <Setter Property="Height" Value="35" />
-        <Setter Property="MaxHeight" Value="35" />
-        <Setter Property="Margin" Value="0" />
-        <Setter Property="Padding" Value="10" />-->
         <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.CaptionForeground}}" />
     </Style>

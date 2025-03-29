@@ -41,9 +41,9 @@
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Controls/ResizeGrip.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Controls/Path.xaml" />
         <!--  FontIcon  -->
-        <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Controls/Button.FontIcon.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Controls/TextBlock.FontIcon.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Controls/ToggleButton.FontIcon.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Controls/FontIconButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Controls/FontIconTextBlock.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Controls/FontIconToggleButton.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/Controls/GroupItem.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
