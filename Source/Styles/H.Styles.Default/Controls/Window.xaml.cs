@@ -5,11 +5,14 @@ namespace H.Styles.Default.Controls;
 
 public class WindowKeys
 {
+    public static ComponentResourceKey Default => new ComponentResourceKey(typeof(WindowKeys), "S.Window.Default");
+
     [Obsolete("用FontIconButton替换")]
     public static ComponentResourceKey Button => new ComponentResourceKey(typeof(WindowKeys), "S.Window.Button");
     public static ComponentResourceKey FontIconButton => new ComponentResourceKey(typeof(WindowKeys), "S.Window.FontIconButton");
 
     public static ComponentResourceKey WindowChrome => new ComponentResourceKey(typeof(WindowKeys), "S.Window.WindowChrome");
+
 }
 
 [Display(Name = "窗口设置", GroupName = SettingGroupNames.GroupControl, Description = "设置窗口参数")]

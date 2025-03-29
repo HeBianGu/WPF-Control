@@ -36,7 +36,9 @@
         <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.CaptionForeground}}" />
     </Style>
 
-    <Style TargetType="{x:Type Window}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Window.Default,
+                                        TypeInTargetAssembly={x:Type lc:WindowKeys}}"
+           TargetType="{x:Type Window}">
         <Setter Property="Icon" Value="{local:Logo}" />
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="OverridesDefaultStyle" Value="true" />
@@ -190,4 +192,6 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style BasedOn="{StaticResource {x:Static lc:WindowKeys.Default}}"
+           TargetType="Window" />
 </ResourceDictionary>

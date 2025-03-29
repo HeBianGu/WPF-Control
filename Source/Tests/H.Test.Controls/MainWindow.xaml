@@ -9,7 +9,7 @@
         Title="MainWindow"
         Width="1100"
         Height="650"
-        Style="{DynamicResource {x:Type Window}}"
+        Style="{DynamicResource {x:Static WindowKeys.Default}}"
         mc:Ignorable="d">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
@@ -34,7 +34,7 @@
         </Menu>
         <ToolBar DockPanel.Dock="Top">
             <ContentPresenter Content="{Ioc Type={x:Type ISettingButtonPresenter}}" />
-            <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+            <Button Style="{DynamicResource {x:Static ToolBar.ButtonStyleKey}}">
                 <Border>
                     <Border.Background>
                         <DrawingBrush>
@@ -60,7 +60,7 @@
                     </Border.Background>
                 </Border>
             </Button>
-            <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+            <Button Style="{DynamicResource {x:Static ToolBar.ButtonStyleKey}}">
                 <Border>
                     <Border.Background>
                         <DrawingBrush>
@@ -88,7 +88,7 @@
                     </Border.Background>
                 </Border>
             </Button>
-            <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+            <Button Style="{DynamicResource {x:Static ToolBar.ButtonStyleKey}}">
                 <Border>
                     <Border.Background>
                         <DrawingBrush>
@@ -120,7 +120,7 @@
                     </Border.Background>
                 </Border>
             </Button>
-            <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+            <Button Style="{DynamicResource {x:Static ToolBar.ButtonStyleKey}}">
                 <Border>
                     <Border.Background>
                         <DrawingBrush>
@@ -162,7 +162,7 @@
                     </Border.Background>
                 </Border>
             </Button>
-            <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+            <Button Style="{DynamicResource {x:Static ToolBar.ButtonStyleKey}}">
                 <Border>
                     <Border.Background>
                         <DrawingBrush>
@@ -182,7 +182,7 @@
                     </Border.Background>
                 </Border>
             </Button>
-            <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+            <Button Style="{DynamicResource {x:Static ToolBar.ButtonStyleKey}}">
                 <Border>
                     <Border.Background>
                         <DrawingBrush>
@@ -206,7 +206,7 @@
                     </Border.Background>
                 </Border>
             </Button>
-            <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+            <Button Style="{DynamicResource {x:Static ToolBar.ButtonStyleKey}}">
                 <Border>
                     <Border.Background>
                         <DrawingBrush>
@@ -226,8 +226,8 @@
                     </Border.Background>
                 </Border>
             </Button>
-            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
-            <ToggleButton Style="{StaticResource {x:Static ToolBar.ToggleButtonStyleKey}}">
+            <Separator Style="{DynamicResource {x:Static ToolBar.SeparatorStyleKey}}" />
+            <ToggleButton Style="{DynamicResource {x:Static ToolBar.ToggleButtonStyleKey}}">
                 <Border>
                     <Border.Background>
                         <DrawingBrush>
@@ -247,7 +247,7 @@
                     </Border.Background>
                 </Border>
             </ToggleButton>
-            <CheckBox Style="{StaticResource {x:Static ToolBar.CheckBoxStyleKey}}">
+            <CheckBox Style="{DynamicResource {x:Static ToolBar.CheckBoxStyleKey}}">
                 <Border>
                     <Border.Background>
                         <DrawingBrush>
@@ -267,7 +267,7 @@
                     </Border.Background>
                 </Border>
             </CheckBox>
-            <RadioButton Style="{StaticResource {x:Static ToolBar.RadioButtonStyleKey}}">
+            <RadioButton Style="{DynamicResource {x:Static ToolBar.RadioButtonStyleKey}}">
                 <Border>
                     <Border.Background>
                         <DrawingBrush>
@@ -291,11 +291,11 @@
                     </Border.Background>
                 </Border>
             </RadioButton>
-            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+            <Separator Style="{DynamicResource {x:Static ToolBar.SeparatorStyleKey}}" />
 
             <TextBox Width="200"
                      Margin="2,0"
-                     Style="{StaticResource {x:Static ToolBar.TextBoxStyleKey}}"
+                     Style="{DynamicResource {x:Static ToolBar.TextBoxStyleKey}}"
                      Text="搜索" />
         </ToolBar>
         <!--<ToolBar DockPanel.Dock="Top">
@@ -309,7 +309,7 @@
             <StatusBarItem VerticalAlignment="Center"
                            VerticalContentAlignment="Center"
                            Content="状态" />
-            <Separator Style="{StaticResource {x:Static StatusBar.SeparatorStyleKey}}" />
+            <Separator Style="{DynamicResource {x:Static StatusBar.SeparatorStyleKey}}" />
         </StatusBar>
         <TabControl TabStripPlacement="Left">
             <TabItem Header="TabControl">
