@@ -66,6 +66,28 @@ namespace H.Test.Theme
                 x.ColorResources.Add(new TechnologyBlueDarkColorResource());
                 x.ColorResources.Add(new FuturisticGreenDarkColorResource());
                 x.ColorResources.Add(new IndustrialDarkColorResource());
+                //x.ColorResources.Add(new IndustrialDarkColorResource());
+                //x.ColorResources.Add(new IndustrialDarkColorResource());
+                //x.ColorResources.Add(new IndustrialDarkColorResource());
+                //x.ColorResources.Add(new IndustrialDarkColorResource());
+                //x.ColorResources.Add(new IndustrialDarkColorResource());
+                //x.ColorResources.Add(new IndustrialDarkColorResource());
+                //x.ColorResources.Add(new IndustrialDarkColorResource());
+                //x.ColorResources.Add(new IndustrialDarkColorResource());
+                //x.ColorResources.Add(new IndustrialDarkColorResource());
+                //x.ColorResources.Add(new IndustrialDarkColorResource());
+                //x.ColorResources.Add(new IndustrialDarkColorResource());
+                //x.ColorResources.Add(new IndustrialDarkColorResource());
+                //x.ColorResources.Add(new IndustrialDarkColorResource());
+                //x.ColorResources.Add(new IndustrialDarkColorResource());
+                //x.ColorResources.Add(new IndustrialDarkColorResource());
+                //x.ColorResources.Add(new IndustrialDarkColorResource());
+                //x.ColorResources.Add(new IndustrialDarkColorResource());
+                //x.ColorResources.Add(new IndustrialDarkColorResource());
+                //x.ColorResources.Add(new IndustrialDarkColorResource());
+                //x.ColorResources.Add(new IndustrialDarkColorResource());
+                x.ColorResources.Add(new AmberTerminalDarkColorResource());
+                
             });
 
             app.UseSwithTheme();
