@@ -8,69 +8,80 @@
         <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/Colors/Light.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
+    <!-- Apple Ecosystem Color Palette (iOS/macOS) -->
     <!--  Background  -->
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.CaptionBackground, TypeInTargetAssembly={x:Type ColorKeys}}">#e1e4e9</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBackground, TypeInTargetAssembly={x:Type ColorKeys}}">#f7f7f7</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBackground.Disabled, TypeInTargetAssembly={x:Type ColorKeys}}">#e1e4e9</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.RowIndex.BackGround, TypeInTargetAssembly={x:Type ColorKeys}}">#e1e4e9</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.CaptionBackground, TypeInTargetAssembly={x:Type ColorKeys}}">#F2F2F7</Color>
+    <!-- System Gray 6 Light -->
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBackground, TypeInTargetAssembly={x:Type ColorKeys}}">#FFFFFF</Color>
+    <!-- System Background Light -->
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBackground.Disabled, TypeInTargetAssembly={x:Type ColorKeys}}">#F2F2F7</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.RowIndex.BackGround, TypeInTargetAssembly={x:Type ColorKeys}}">#F2F2F7</Color>
 
     <!--  Foreground  -->
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.CaptionForeground, TypeInTargetAssembly={x:Type ColorKeys}}">#454e5e</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Title, TypeInTargetAssembly={x:Type ColorKeys}}">#292f39</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground, TypeInTargetAssembly={x:Type ColorKeys}}">#454e5e</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Select, TypeInTargetAssembly={x:Type ColorKeys}}">#292f39</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.CaptionForeground, TypeInTargetAssembly={x:Type ColorKeys}}">#1C1C1E</Color>
+    <!-- Label Primary Light -->
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Title, TypeInTargetAssembly={x:Type ColorKeys}}">#000000</Color>
+    <!-- Label Primary (Strong) -->
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground, TypeInTargetAssembly={x:Type ColorKeys}}">#1C1C1E</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Select, TypeInTargetAssembly={x:Type ColorKeys}}">#000000</Color>
 
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextMouseOver, TypeInTargetAssembly={x:Type ColorKeys}}">#e1e4e9</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextSelected, TypeInTargetAssembly={x:Type ColorKeys}}">#cbd1da</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Assist, TypeInTargetAssembly={x:Type ColorKeys}}">#808c9f</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Link, TypeInTargetAssembly={x:Type ColorKeys}}">#6296d8</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextMouseOver, TypeInTargetAssembly={x:Type ColorKeys}}">#D1D1D6</Color>
+    <!-- System Gray 3 Light -->
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextSelected, TypeInTargetAssembly={x:Type ColorKeys}}">#AEAEB2</Color>
+    <!-- System Gray 4 Light -->
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Assist, TypeInTargetAssembly={x:Type ColorKeys}}">#8E8E93</Color>
+    <!-- Label Tertiary Light -->
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Link, TypeInTargetAssembly={x:Type ColorKeys}}">#007AFF</Color>
+    <!-- System Blue -->
 
     <!--  BorderBrush  -->
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush, TypeInTargetAssembly={x:Type ColorKeys}}">#cbd1da</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush.Title, TypeInTargetAssembly={x:Type ColorKeys}}">#c1c7d3</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush.Assist, TypeInTargetAssembly={x:Type ColorKeys}}">#e1e4e9</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush, TypeInTargetAssembly={x:Type ColorKeys}}">#C6C6C8</Color>
+    <!-- Separator Light -->
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush.Title, TypeInTargetAssembly={x:Type ColorKeys}}">#AEAEB2</Color>
+    <!-- System Gray 4 Light -->
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush.Assist, TypeInTargetAssembly={x:Type ColorKeys}}">#D1D1D6</Color>
+    <!-- System Gray 3 Light -->
 
-    <!--
-    0.Background>RowIndex
-    1.TextMouseOver
-    2.TextBorderBrush.Assist
-    3.TextSelected
-    4.TextBorderBrush
-    5.BorderBrush.Title
-    2.0ForegroundAssist
-    6.5TextForeground
-    10ForegroundTitle
-    -->
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.10, TypeInTargetAssembly={x:Type ColorKeys}}">#292f39</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.9.5, TypeInTargetAssembly={x:Type ColorKeys}}">#2c323d</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.9, TypeInTargetAssembly={x:Type ColorKeys}}">#2e3540</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.8.5, TypeInTargetAssembly={x:Type ColorKeys}}">#313844</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.8, TypeInTargetAssembly={x:Type ColorKeys}}">#343b48</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.7.5, TypeInTargetAssembly={x:Type ColorKeys}}">#39414f</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.7, TypeInTargetAssembly={x:Type ColorKeys}}">#3f4856</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.6.5, TypeInTargetAssembly={x:Type ColorKeys}}">#454e5e</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.6, TypeInTargetAssembly={x:Type ColorKeys}}">#4b5465</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.5.5, TypeInTargetAssembly={x:Type ColorKeys}}">#505b6c</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.5, TypeInTargetAssembly={x:Type ColorKeys}}">#576174</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.4.5, TypeInTargetAssembly={x:Type ColorKeys}}">#5d687b</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.4, TypeInTargetAssembly={x:Type ColorKeys}}">#636f82</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.3.5, TypeInTargetAssembly={x:Type ColorKeys}}">#6a768a</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.3, TypeInTargetAssembly={x:Type ColorKeys}}">#717d91</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.2.5, TypeInTargetAssembly={x:Type ColorKeys}}">#788498</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.2, TypeInTargetAssembly={x:Type ColorKeys}}">#808c9f</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.1.5, TypeInTargetAssembly={x:Type ColorKeys}}">#8894a7</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.1, TypeInTargetAssembly={x:Type ColorKeys}}">#919cae</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.0.9, TypeInTargetAssembly={x:Type ColorKeys}}">#99a4b5</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.0.8, TypeInTargetAssembly={x:Type ColorKeys}}">#a3acbd</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.0.7, TypeInTargetAssembly={x:Type ColorKeys}}">#acb5c4</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.0.6, TypeInTargetAssembly={x:Type ColorKeys}}">#b6becb</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.0.5, TypeInTargetAssembly={x:Type ColorKeys}}">#c1c7d3</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.0.4, TypeInTargetAssembly={x:Type ColorKeys}}">#cbd1da</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.0.3, TypeInTargetAssembly={x:Type ColorKeys}}">#d6dae1</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.0.2, TypeInTargetAssembly={x:Type ColorKeys}}">#e1e4e9</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.0.1, TypeInTargetAssembly={x:Type ColorKeys}}">#eceef0</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.0, TypeInTargetAssembly={x:Type ColorKeys}}">#f7f7f7</Color>
-
+    <!-- Dark Scale (10 to 0) - 基于 Apple 深色模式系统色 -->
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.28, TypeInTargetAssembly={x:Type ColorKeys}}">#1C1C1E</Color>
+    <!-- System Background Dark -->
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.27, TypeInTargetAssembly={x:Type ColorKeys}}">#242426</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=SS.Color.Dark.26, TypeInTargetAssembly={x:Type ColorKeys}}">#2C2C2E</Color>
+    <!-- Secondary System Background Dark -->
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.25, TypeInTargetAssembly={x:Type ColorKeys}}">#333336</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.24, TypeInTargetAssembly={x:Type ColorKeys}}">#3A3A3C</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.23, TypeInTargetAssembly={x:Type ColorKeys}}">#424245</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=SS.Color.Dark.22, TypeInTargetAssembly={x:Type ColorKeys}}">#48484A</Color>
+    <!-- System Gray 6 Dark -->
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.21, TypeInTargetAssembly={x:Type ColorKeys}}">#545456</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.20, TypeInTargetAssembly={x:Type ColorKeys}}">#636366</Color>
+    <!-- System Gray 5 Dark -->
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.19, TypeInTargetAssembly={x:Type ColorKeys}}">#6E6E70</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.18, TypeInTargetAssembly={x:Type ColorKeys}}">#7C7C80</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=SS.Color.Dark.17, TypeInTargetAssembly={x:Type ColorKeys}}">#848488</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.16, TypeInTargetAssembly={x:Type ColorKeys}}">#8E8E93</Color>
+    <!-- Label Tertiary Dark -->
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.15, TypeInTargetAssembly={x:Type ColorKeys}}">#98989D</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.14, TypeInTargetAssembly={x:Type ColorKeys}}">#AEAEB2</Color>
+    <!-- System Gray 4 Dark -->
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.13, TypeInTargetAssembly={x:Type ColorKeys}}">#B8B8BD</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.12, TypeInTargetAssembly={x:Type ColorKeys}}">#C7C7CC</Color>
+    <!-- System Gray 3 Dark -->
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.11, TypeInTargetAssembly={x:Type ColorKeys}}">#D1D1D6</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.10, TypeInTargetAssembly={x:Type ColorKeys}}">#E5E5EA</Color>
+    <!-- System Gray 2 Dark -->
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.9, TypeInTargetAssembly={x:Type ColorKeys}}">#EBEBF0</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.8, TypeInTargetAssembly={x:Type ColorKeys}}">#F2F2F7</Color>
+    <!-- System Gray 6 Light -->
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.7, TypeInTargetAssembly={x:Type ColorKeys}}">#F5F5F5</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.6, TypeInTargetAssembly={x:Type ColorKeys}}">#F8F8F8</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.5, TypeInTargetAssembly={x:Type ColorKeys}}">#FAFAFA</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.4, TypeInTargetAssembly={x:Type ColorKeys}}">#FCFCFC</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.3, TypeInTargetAssembly={x:Type ColorKeys}}">#FDFDFD</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.2, TypeInTargetAssembly={x:Type ColorKeys}}">#FEFEFE</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.1, TypeInTargetAssembly={x:Type ColorKeys}}">#FFFFFF</Color>
+    <!-- Pure White -->
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.0, TypeInTargetAssembly={x:Type ColorKeys}}">#FFFFFF</Color>
     <!--<Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dialog.Cover, TypeInTargetAssembly={x:Type ColorKeys}}" Opacity="0.6" Color="#292f39" />-->
 
 </ResourceDictionary>

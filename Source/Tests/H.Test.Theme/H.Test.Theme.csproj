@@ -26,6 +26,7 @@
     <ProjectReference Include="..\..\Themes\H.Themes.Colors.Gray\H.Themes.Colors.Gray.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Colors.Industrial\H.Themes.Colors.Industrial.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Colors.Mineral\H.Themes.Colors.Mineral.csproj" />
+    <ProjectReference Include="..\..\Themes\H.Themes.Colors.Platform\H.Themes.Colors.Platform.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Colors.Purple\H.Themes.Colors.Purple.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Colors.Technology\H.Themes.Colors.Technology.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Colors.Web\H.Themes.Colors.Web.csproj" />

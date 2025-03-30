@@ -10,6 +10,7 @@ using H.Themes.Colors.Futurism;
 using H.Themes.Colors.Gray;
 using H.Themes.Colors.Industrial;
 using H.Themes.Colors.Mineral;
+using H.Themes.Colors.Platform;
 using H.Themes.Colors.Purple;
 using H.Themes.Colors.Technology;
 using H.Themes.Colors.Web;
@@ -66,12 +67,15 @@ namespace H.Test.Theme
                 x.ColorResources.Add(new FuturismColorResource());
                 x.ColorResources.Add(new TechnologyBlueDarkColorResource());
                 x.ColorResources.Add(new FuturisticGreenDarkColorResource());
+                x.ColorResources.Add(new AmberTerminalDarkColorResource());
                 x.ColorResources.Add(new IndustrialDarkColorResource());
                 x.ColorResources.Add(new AntDesignProColorResource());
                 x.ColorResources.Add(new BootstrapColorResource());
                 x.ColorResources.Add(new LayUIColorResource());
                 x.ColorResources.Add(new WeUIColorResource());
                 x.ColorResources.Add(new ColorUIGAColorResource());
+                x.ColorResources.Add(new FluentUIColorResource());
+                x.ColorResources.Add(new MaterialDesignColorResource());
                 //x.ColorResources.Add(new IndustrialDarkColorResource());
                 //x.ColorResources.Add(new IndustrialDarkColorResource());
                 //x.ColorResources.Add(new IndustrialDarkColorResource());
@@ -85,9 +89,6 @@ namespace H.Test.Theme
                 //x.ColorResources.Add(new IndustrialDarkColorResource());
                 //x.ColorResources.Add(new IndustrialDarkColorResource());
                 //x.ColorResources.Add(new IndustrialDarkColorResource());
-                //x.ColorResources.Add(new IndustrialDarkColorResource());
-                //x.ColorResources.Add(new IndustrialDarkColorResource());
-                x.ColorResources.Add(new AmberTerminalDarkColorResource());
                 
             });
 

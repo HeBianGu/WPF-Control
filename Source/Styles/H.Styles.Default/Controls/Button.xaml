@@ -103,13 +103,14 @@
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="true">
                 <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Accent}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.White}}" />
             </Trigger>
         </Style.Triggers>
     </Style>
 
     <Style x:Key="{ComponentResourceKey ResourceId=S.Button.Success,
                                         TypeInTargetAssembly={x:Type local:ButtonKeys}}"
-           BasedOn="{StaticResource {x:Static local:ButtonKeys.Default}}"
+           BasedOn="{StaticResource {x:Static local:ButtonKeys.Accent}}"
            TargetType="Button">
         <Setter Property="Background">
             <Setter.Value>
@@ -127,7 +128,7 @@
 
     <Style x:Key="{ComponentResourceKey ResourceId=S.Button.Error,
                                         TypeInTargetAssembly={x:Type local:ButtonKeys}}"
-           BasedOn="{StaticResource {x:Static local:ButtonKeys.Default}}"
+           BasedOn="{StaticResource {x:Static local:ButtonKeys.Accent}}"
            TargetType="Button">
         <Setter Property="Background">
             <Setter.Value>

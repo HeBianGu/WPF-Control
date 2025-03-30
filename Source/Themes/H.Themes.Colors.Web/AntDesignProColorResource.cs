@@ -5,7 +5,7 @@ namespace H.Themes.Colors.Web;
 
 public class AntDesignProColorResource : IColorResource
 {
-    public string Name => "An tDesign Pro";
+    public string Name => "Ant Design Pro";
     public ResourceDictionary Resource => new ResourceDictionary()
     {
         Source = new Uri("pack://application:,,,/H.Themes.Colors.Web;component/AntDesignPro.xaml")

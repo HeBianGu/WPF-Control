@@ -6,28 +6,28 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/Colors/Light.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <!--  Bootstrap 5 Theme  -->
+    <!--  Fluent UI Theme  -->
     <!--  Background  -->
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.CaptionBackground, TypeInTargetAssembly={x:Type ColorKeys}}">#F8F9FA</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.CaptionBackground, TypeInTargetAssembly={x:Type ColorKeys}}">#F3F2F1</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBackground, TypeInTargetAssembly={x:Type ColorKeys}}">#FFFFFF</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBackground.Disabled, TypeInTargetAssembly={x:Type ColorKeys}}">#E9ECEF</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.RowIndex.BackGround, TypeInTargetAssembly={x:Type ColorKeys}}">#F1F3F5</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBackground.Disabled, TypeInTargetAssembly={x:Type ColorKeys}}">#F3F2F1</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.RowIndex.BackGround, TypeInTargetAssembly={x:Type ColorKeys}}">#EDEBE9</Color>
 
     <!--  Foreground  -->
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.CaptionForeground, TypeInTargetAssembly={x:Type ColorKeys}}">#212529</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Title, TypeInTargetAssembly={x:Type ColorKeys}}">#000000</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground, TypeInTargetAssembly={x:Type ColorKeys}}">#495057</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Select, TypeInTargetAssembly={x:Type ColorKeys}}">#0D6EFD</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextMouseOver, TypeInTargetAssembly={x:Type ColorKeys}}">#F5F6FF</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextSelected, TypeInTargetAssembly={x:Type ColorKeys}}">#ECEEFF</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Assist, TypeInTargetAssembly={x:Type ColorKeys}}">#6C757D</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Link, TypeInTargetAssembly={x:Type ColorKeys}}">#0D6EFD</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.CaptionForeground, TypeInTargetAssembly={x:Type ColorKeys}}">#323130</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Title, TypeInTargetAssembly={x:Type ColorKeys}}">#201F1E</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground, TypeInTargetAssembly={x:Type ColorKeys}}">#323130</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Select, TypeInTargetAssembly={x:Type ColorKeys}}">#201F1E</Color>
+
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextMouseOver, TypeInTargetAssembly={x:Type ColorKeys}}">#EDEBE9</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextSelected, TypeInTargetAssembly={x:Type ColorKeys}}">#E1DFDD</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Assist, TypeInTargetAssembly={x:Type ColorKeys}}">#8A8886</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Link, TypeInTargetAssembly={x:Type ColorKeys}}">#0078D4</Color>
 
     <!--  BorderBrush  -->
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush, TypeInTargetAssembly={x:Type ColorKeys}}">#CED4DA</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush.Title, TypeInTargetAssembly={x:Type ColorKeys}}">#ADB5BD</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush.Assist, TypeInTargetAssembly={x:Type ColorKeys}}">#E9ECEF</Color>
-
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush, TypeInTargetAssembly={x:Type ColorKeys}}">#8A8886</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush.Title, TypeInTargetAssembly={x:Type ColorKeys}}">#797775</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush.Assist, TypeInTargetAssembly={x:Type ColorKeys}}">#EDEBE9</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.0, TypeInTargetAssembly={x:Type ColorKeys}}">#FFFFFFFF</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.1, TypeInTargetAssembly={x:Type ColorKeys}}">#FFF5F5F5</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.2, TypeInTargetAssembly={x:Type ColorKeys}}">#FFECECEC</Color>
@@ -57,14 +57,9 @@
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.26, TypeInTargetAssembly={x:Type ColorKeys}}">#FF121212</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.27, TypeInTargetAssembly={x:Type ColorKeys}}">#FF090909</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.28, TypeInTargetAssembly={x:Type ColorKeys}}">#FF000000</Color>
-
-    <!--  Bootstrap Semantic Colors (可替换Dark.x使用)  -->
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Accent, TypeInTargetAssembly={x:Type ColorKeys}}">#0D6EFD</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Secondary, TypeInTargetAssembly={x:Type ColorKeys}}">#6C757D</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Green, TypeInTargetAssembly={x:Type ColorKeys}}">#198754</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Red, TypeInTargetAssembly={x:Type ColorKeys}}">#DC3545</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Orange, TypeInTargetAssembly={x:Type ColorKeys}}">#FFC107</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.LightBlue, TypeInTargetAssembly={x:Type ColorKeys}}">#0DCAF0</Color>
-    <!--<Color x:Key="{ComponentResourceKey ResourceId=S.Color.Light, TypeInTargetAssembly={x:Type ColorKeys}}">#F8F9FA</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark, TypeInTargetAssembly={x:Type ColorKeys}}">#212529</Color>-->
+    <!--  Fluent UI Semantic Colors  -->
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Primary, TypeInTargetAssembly={x:Type ColorKeys}}">#0078D4</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Accent, TypeInTargetAssembly={x:Type ColorKeys}}">#0078D4</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Error, TypeInTargetAssembly={x:Type ColorKeys}}">#A4262C</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Success, TypeInTargetAssembly={x:Type ColorKeys}}">#107C10</Color>
 </ResourceDictionary>

@@ -7,15 +7,27 @@ namespace H.Extensions.Color;
 public class HsbaColor
 {
     private double h = 0, s = 0, b = 0, a = 0;
+    //    H（Hue - 色相）
+
+    //取值范围：0° - 360°（表示颜色在色轮上的位置）
+
+    //例如：0° 是红色，120° 是绿色，240° 是蓝色。
     /// <summary> 0 - 359，360 = 0  </summary>
     public double H { get { return h; } set { h = value < 0 ? 0 : value >= 360 ? 0 : value; } }
+    //    S（Saturation - 饱和度）
 
+    //取值范围：0% - 100%（0% 表示灰色，100% 表示纯色）
     /// <summary> 0 - 1 </summary>
     public double S { get { return s; } set { s = value < 0 ? 0 : value > 1 ? 1 : value; } }
 
+    //    B（Brightness 或 Value - 亮度/明度）
+
+    //取值范围：0% - 100%（0% 表示黑色，100% 表示最亮的颜色）
     /// <summary> 0 - 1 </summary>
     public double B { get { return b; } set { b = value < 0 ? 0 : value > 1 ? 1 : value; } }
+    //    A（Alpha - 透明度）
 
+    //取值范围：0.0 - 1.0（0.0 完全透明，1.0 完全不透明）
     /// <summary> 0 - 1 </summary>
     public double A { get { return a; } set { a = value < 0 ? 0 : value > 1 ? 1 : value; } }
 

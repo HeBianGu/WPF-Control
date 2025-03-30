@@ -6,81 +6,70 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/Colors/Light.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <!-- Background -->
+    <!--  Background  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.CaptionBackground, TypeInTargetAssembly={x:Type ColorKeys}}">#E5D5B8</Color>
-    <!-- 旧书页 -->
+    <!--  旧书页  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBackground, TypeInTargetAssembly={x:Type ColorKeys}}">#F0E6D2</Color>
-    <!-- 奶油纸 -->
+    <!--  奶油纸  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBackground.Disabled, TypeInTargetAssembly={x:Type ColorKeys}}">#DBC9A8</Color>
-    <!-- 褪色纸 -->
+    <!--  褪色纸  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.RowIndex.BackGround, TypeInTargetAssembly={x:Type ColorKeys}}">#D4B483</Color>
-    <!-- 琥珀色 -->
+    <!--  琥珀色  -->
 
-    <!-- Foreground -->
+    <!--  Foreground  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.CaptionForeground, TypeInTargetAssembly={x:Type ColorKeys}}">#4A3A2E</Color>
-    <!-- 咖啡渍 -->
+    <!--  咖啡渍  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Title, TypeInTargetAssembly={x:Type ColorKeys}}">#3E2E22</Color>
-    <!-- 深褐 -->
+    <!--  深褐  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground, TypeInTargetAssembly={x:Type ColorKeys}}">#5D4B3A</Color>
-    <!-- 老照片边框 -->
+    <!--  老照片边框  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Select, TypeInTargetAssembly={x:Type ColorKeys}}">#8B5A2B</Color>
-    <!-- 赤褐色 -->
+    <!--  赤褐色  -->
 
-    <!-- States -->
+    <!--  States  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextMouseOver, TypeInTargetAssembly={x:Type ColorKeys}}">#D4B483</Color>
-    <!-- 琥珀高亮 -->
+    <!--  琥珀高亮  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextSelected, TypeInTargetAssembly={x:Type ColorKeys}}">#B38D6A</Color>
-    <!-- 陶土 -->
+    <!--  陶土  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Assist, TypeInTargetAssembly={x:Type ColorKeys}}">#7A756E</Color>
-    <!-- 银盐颗粒 -->
+    <!--  银盐颗粒  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Link, TypeInTargetAssembly={x:Type ColorKeys}}">#9C786C</Color>
-    <!-- 玫瑰石英 -->
+    <!--  玫瑰石英  -->
 
-    <!-- BorderBrush -->
+    <!--  BorderBrush  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush, TypeInTargetAssembly={x:Type ColorKeys}}">#8B5A2B</Color>
-    <!-- 胶片边框 -->
+    <!--  胶片边框  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush.Title, TypeInTargetAssembly={x:Type ColorKeys}}">#6D4C41</Color>
-    <!-- 铁锈红 -->
+    <!--  铁锈红  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush.Assist, TypeInTargetAssembly={x:Type ColorKeys}}">#A89F94</Color>
-    <!-- 石灰岩 -->
-
-    <!-- 复古胶片渐变系列（数字越大颜色越深） -->
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.10, TypeInTargetAssembly={x:Type ColorKeys}}">#3A2A1E</Color>
-    <!-- 焦茶色 -->
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.9.5, TypeInTargetAssembly={x:Type ColorKeys}}">#423024</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.9, TypeInTargetAssembly={x:Type ColorKeys}}">#4B382A</Color>
-    <!-- 咖啡豆 -->
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.8.5, TypeInTargetAssembly={x:Type ColorKeys}}">#554030</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.8, TypeInTargetAssembly={x:Type ColorKeys}}">#5F4936</Color>
-    <!-- 老相机皮套 -->
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.7.5, TypeInTargetAssembly={x:Type ColorKeys}}">#6A533D</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.7, TypeInTargetAssembly={x:Type ColorKeys}}">#755D44</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.6.5, TypeInTargetAssembly={x:Type ColorKeys}}">#80674C</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.6, TypeInTargetAssembly={x:Type ColorKeys}}">#8B7054</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.5.5, TypeInTargetAssembly={x:Type ColorKeys}}">#937559</Color>
-    <!-- 赤陶土 -->
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.5, TypeInTargetAssembly={x:Type ColorKeys}}">#9C7B5A</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.4.5, TypeInTargetAssembly={x:Type ColorKeys}}">#A5825E</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.4, TypeInTargetAssembly={x:Type ColorKeys}}">#AE8962</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.3.5, TypeInTargetAssembly={x:Type ColorKeys}}">#B79065</Color>
-    <!-- 熟牛皮纸 -->
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.3, TypeInTargetAssembly={x:Type ColorKeys}}">#C09868</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.2.5, TypeInTargetAssembly={x:Type ColorKeys}}">#C9A16B</Color>
-    <!-- 蜂蜜色 -->
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.2, TypeInTargetAssembly={x:Type ColorKeys}}">#D2AA6E</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.1.5, TypeInTargetAssembly={x:Type ColorKeys}}">#DBB371</Color>
-    <!-- 褪色相纸 -->
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.1, TypeInTargetAssembly={x:Type ColorKeys}}">#E0BE7D</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.0.9, TypeInTargetAssembly={x:Type ColorKeys}}">#E5C589</Color>
-    <!-- 奶油底片 -->
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.0.8, TypeInTargetAssembly={x:Type ColorKeys}}">#E9CD95</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.0.7, TypeInTargetAssembly={x:Type ColorKeys}}">#EDD5A1</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.0.6, TypeInTargetAssembly={x:Type ColorKeys}}">#F0D9AD</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.0.5, TypeInTargetAssembly={x:Type ColorKeys}}">#F3DEB9</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.0.4, TypeInTargetAssembly={x:Type ColorKeys}}">#F5E2C5</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.0.3, TypeInTargetAssembly={x:Type ColorKeys}}">#F7E6D1</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.0.2, TypeInTargetAssembly={x:Type ColorKeys}}">#F9EADC</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.0.1, TypeInTargetAssembly={x:Type ColorKeys}}">#FBEEE7</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.0, TypeInTargetAssembly={x:Type ColorKeys}}">#FDF2F2</Color>
-    <!-- 纯白 -->
+    <!--  石灰岩  -->
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.0, TypeInTargetAssembly={x:Type ColorKeys}}">#FFF0E6D2</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.1, TypeInTargetAssembly={x:Type ColorKeys}}">#FFE7DDCA</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.2, TypeInTargetAssembly={x:Type ColorKeys}}">#FFDED5C3</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.3, TypeInTargetAssembly={x:Type ColorKeys}}">#FFD6CDBB</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.4, TypeInTargetAssembly={x:Type ColorKeys}}">#FFCDC5B4</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.5, TypeInTargetAssembly={x:Type ColorKeys}}">#FFC5BCAC</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.6, TypeInTargetAssembly={x:Type ColorKeys}}">#FFBCB4A5</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.7, TypeInTargetAssembly={x:Type ColorKeys}}">#FFB4AC9D</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.8, TypeInTargetAssembly={x:Type ColorKeys}}">#FFABA496</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.9, TypeInTargetAssembly={x:Type ColorKeys}}">#FFA29C8E</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.10, TypeInTargetAssembly={x:Type ColorKeys}}">#FF9A9387</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.11, TypeInTargetAssembly={x:Type ColorKeys}}">#FF918B7F</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.12, TypeInTargetAssembly={x:Type ColorKeys}}">#FF898378</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.13, TypeInTargetAssembly={x:Type ColorKeys}}">#FF807B70</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.14, TypeInTargetAssembly={x:Type ColorKeys}}">#FF787369</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.15, TypeInTargetAssembly={x:Type ColorKeys}}">#FF6F6A61</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.16, TypeInTargetAssembly={x:Type ColorKeys}}">#FF66625A</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.17, TypeInTargetAssembly={x:Type ColorKeys}}">#FF5E5A52</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.18, TypeInTargetAssembly={x:Type ColorKeys}}">#FF55524B</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.19, TypeInTargetAssembly={x:Type ColorKeys}}">#FF4D4943</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.20, TypeInTargetAssembly={x:Type ColorKeys}}">#FF44413C</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.21, TypeInTargetAssembly={x:Type ColorKeys}}">#FF3C3934</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.22, TypeInTargetAssembly={x:Type ColorKeys}}">#FF33312D</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.23, TypeInTargetAssembly={x:Type ColorKeys}}">#FF2A2925</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.24, TypeInTargetAssembly={x:Type ColorKeys}}">#FF22201E</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.25, TypeInTargetAssembly={x:Type ColorKeys}}">#FF191816</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.26, TypeInTargetAssembly={x:Type ColorKeys}}">#FF11100F</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.27, TypeInTargetAssembly={x:Type ColorKeys}}">#FF080807</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.28, TypeInTargetAssembly={x:Type ColorKeys}}">#FF000000</Color>
 </ResourceDictionary>

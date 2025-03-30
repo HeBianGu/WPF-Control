@@ -73,7 +73,7 @@ namespace H.Modules.Theme
         [System.Text.Json.Serialization.JsonIgnore]
         [System.Xml.Serialization.XmlIgnore]
         [PropertyNameSourcePropertyItem(typeof(ComboBoxPropertyItem), nameof(ColorResources))]
-        [Display(Name = "颜色主题")]
+        [Display(Name = "配色")]
         public IColorResource ColorResource
         {
             get { return _ColorResource; }

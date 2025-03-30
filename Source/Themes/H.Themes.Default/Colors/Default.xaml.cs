@@ -51,34 +51,34 @@ public static class ColorKeys
     #endregion 
 
     #region - Dark - 
-    public static ComponentResourceKey Dark10 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.10");
-    public static ComponentResourceKey Dark9_5 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.9.5");
-    public static ComponentResourceKey Dark9 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.9");
-    public static ComponentResourceKey Dark8_5 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.8.5");
-    public static ComponentResourceKey Dark8 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.8");
-    public static ComponentResourceKey Dark7_5 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.7.5");
-    public static ComponentResourceKey Dark7 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.7");
-    public static ComponentResourceKey Dark6_5 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.6.5");
-    public static ComponentResourceKey Dark6 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.6");
-    public static ComponentResourceKey Dark5_5 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.5.5");
-    public static ComponentResourceKey Dark5 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.5");
-    public static ComponentResourceKey Dark4_5 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.4.5");
-    public static ComponentResourceKey Dark4 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.4");
-    public static ComponentResourceKey Dark3_5 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.3.5");
-    public static ComponentResourceKey Dark3 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.3");
-    public static ComponentResourceKey Dark2_5 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.2.5");
-    public static ComponentResourceKey Dark2 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.2");
-    public static ComponentResourceKey Dark1_5 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.1.5");
-    public static ComponentResourceKey Dark1 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.1");
-    public static ComponentResourceKey Dark0_9 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.0.9");
-    public static ComponentResourceKey Dark0_8 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.0.8");
-    public static ComponentResourceKey Dark0_7 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.0.7");
-    public static ComponentResourceKey Dark0_6 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.0.6");
-    public static ComponentResourceKey Dark0_5 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.0.5");
-    public static ComponentResourceKey Dark0_4 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.0.4");
-    public static ComponentResourceKey Dark0_3 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.0.3");
-    public static ComponentResourceKey Dark0_2 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.0.2");
-    public static ComponentResourceKey Dark0_1 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.0.1");
+    public static ComponentResourceKey Dark10 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.28");
+    public static ComponentResourceKey Dark9_5 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.27");
+    public static ComponentResourceKey Dark9 => new ComponentResourceKey(typeof(ColorKeys), "SS.Color.Dark.26");
+    public static ComponentResourceKey Dark8_5 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.25");
+    public static ComponentResourceKey Dark8 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.24");
+    public static ComponentResourceKey Dark7_5 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.23");
+    public static ComponentResourceKey Dark7 => new ComponentResourceKey(typeof(ColorKeys), "SS.Color.Dark.22");
+    public static ComponentResourceKey Dark6_5 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.21");
+    public static ComponentResourceKey Dark6 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.20");
+    public static ComponentResourceKey Dark5_5 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.19");
+    public static ComponentResourceKey Dark5 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.18");
+    public static ComponentResourceKey Dark4_5 => new ComponentResourceKey(typeof(ColorKeys), "SS.Color.Dark.17");
+    public static ComponentResourceKey Dark4 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.16");
+    public static ComponentResourceKey Dark3_5 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.15");
+    public static ComponentResourceKey Dark3 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.14");
+    public static ComponentResourceKey Dark2_5 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.13");
+    public static ComponentResourceKey Dark2 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.12");
+    public static ComponentResourceKey Dark1_5 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.11");
+    public static ComponentResourceKey Dark1 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.10");
+    public static ComponentResourceKey Dark0_9 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.9");
+    public static ComponentResourceKey Dark0_8 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.8");
+    public static ComponentResourceKey Dark0_7 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.7");
+    public static ComponentResourceKey Dark0_6 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.6");
+    public static ComponentResourceKey Dark0_5 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.5");
+    public static ComponentResourceKey Dark0_4 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.4");
+    public static ComponentResourceKey Dark0_3 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.3");
+    public static ComponentResourceKey Dark0_2 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.2");
+    public static ComponentResourceKey Dark0_1 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.1");
     public static ComponentResourceKey Dark0 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.0");
     #endregion 
 
