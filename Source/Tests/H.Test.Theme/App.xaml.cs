@@ -8,6 +8,7 @@ using H.Themes.Colors.Blue;
 using H.Themes.Colors.Copper;
 using H.Themes.Colors.Cyberpunk;
 using H.Themes.Colors.Gray;
+using H.Themes.Colors.Mineral;
 using H.Themes.Colors.Purple;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -57,6 +58,7 @@ namespace H.Test.Theme
                 x.ColorResources.Add(new AccentDarkColorResource());
                 x.ColorResources.Add(new CopperColorResource());
                 x.ColorResources.Add(new CyberpunkColorResource());
+                x.ColorResources.Add(new MineralColorResource());
 
             });
 

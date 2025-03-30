@@ -24,6 +24,7 @@
     <ProjectReference Include="..\..\Themes\H.Themes.Colors.Copper\H.Themes.Colors.Copper.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Colors.Cyberpunk\H.Themes.Colors.Cyberpunk.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Colors.Gray\H.Themes.Colors.Gray.csproj" />
+    <ProjectReference Include="..\..\Themes\H.Themes.Colors.Mineral\H.Themes.Colors.Mineral.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Colors.Purple\H.Themes.Colors.Purple.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Default\H.Themes.Default.csproj" />
     <ProjectReference Include="..\..\Windows\H.Windows.Dialog\H.Windows.Dialog.csproj" />
