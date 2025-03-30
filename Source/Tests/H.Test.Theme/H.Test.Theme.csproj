@@ -22,9 +22,9 @@
     <ProjectReference Include="..\..\Themes\H.Themes.Colors.Accent\H.Themes.Colors.Accent.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Colors.Blue\H.Themes.Colors.Blue.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Colors.Copper\H.Themes.Colors.Copper.csproj" />
-    <ProjectReference Include="..\..\Themes\H.Themes.Colors.Cyberpunk\H.Themes.Colors.Cyberpunk.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Colors.Futurism\H.Themes.Colors.Futurism.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Colors.Gray\H.Themes.Colors.Gray.csproj" />
+    <ProjectReference Include="..\..\Themes\H.Themes.Colors.Industrial\H.Themes.Colors.Industrial.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Colors.Mineral\H.Themes.Colors.Mineral.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Colors.Purple\H.Themes.Colors.Purple.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Colors.Technology\H.Themes.Colors.Technology.csproj" />

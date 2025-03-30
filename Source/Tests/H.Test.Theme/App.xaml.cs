@@ -6,9 +6,9 @@ using H.Styles.Default.Controls;
 using H.Themes.Colors.Accent;
 using H.Themes.Colors.Blue;
 using H.Themes.Colors.Copper;
-using H.Themes.Colors.Cyberpunk;
 using H.Themes.Colors.Futurism;
 using H.Themes.Colors.Gray;
+using H.Themes.Colors.Industrial;
 using H.Themes.Colors.Mineral;
 using H.Themes.Colors.Purple;
 using H.Themes.Colors.Technology;
@@ -65,6 +65,7 @@ namespace H.Test.Theme
                 x.ColorResources.Add(new FuturismColorResource());
                 x.ColorResources.Add(new TechnologyBlueDarkColorResource());
                 x.ColorResources.Add(new FuturisticGreenDarkColorResource());
+                x.ColorResources.Add(new IndustrialDarkColorResource());
             });
 
             app.UseSwithTheme();

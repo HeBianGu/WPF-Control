@@ -1,7 +1,7 @@
 ﻿using H.Themes.Default.Colors;
 using System.Windows;
 
-namespace H.Themes.Colors.Cyberpunk;
+namespace H.Themes.Colors.Technology;
 
 //### **1. 深色科技风（Cyberpunk / Dark Tech）**
 //** 特点**：霓虹对比色 + 深色背景，适合数据看板、科技感应用  
@@ -23,7 +23,7 @@ public class CyberpunkColorResource : IColorResource
     public string Name => "深色科技风";
     public ResourceDictionary Resource => new ResourceDictionary()
     {
-        Source = new Uri("pack://application:,,,/H.Themes.Colors.Cyberpunk;component/Dark.xaml")
+        Source = new Uri("pack://application:,,,/H.Themes.Colors.Technology;component/CyberpunkDark.xaml")
     };
 
     public override string ToString()
