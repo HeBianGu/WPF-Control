@@ -330,17 +330,65 @@
         <TabControl TabStripPlacement="Left">
             <TabItem Header="Button">
                 <UniformGrid>
-                    <Button Background="{DynamicResource {x:Static h:BrushKeys.Selected}}"
-                            Content="Button" />
+                    <Button Content="Button" />
+                    <Button Content="Accent"
+                            Style="{DynamicResource {x:Static h:ButtonKeys.Accent}}" />
+                    <Button Content="Success"
+                            Style="{DynamicResource {x:Static h:ButtonKeys.Success}}" />
+                    <Button Content="Error"
+                            Style="{DynamicResource {x:Static h:ButtonKeys.Error}}" />
+                    <!--<Button Content="Accent">
+                        <Button.Style>
+                            <Style BasedOn="{StaticResource {x:Static h:ButtonKeys.Default}}"
+                                   TargetType="Button">
+                                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Accent}}" />
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.White}}" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="true">
+                                        <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.White}}" />
+                                        <Setter Property="Background">
+                                            <Setter.Value>
+                                                <SolidColorBrush Opacity="0.8" Color="{DynamicResource {x:Static ColorKeys.Accent}}" />
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>-->
+                    <Button Content="Button"
+                            IsEnabled="False" />
                     <Button Padding="10"
                             Content="F1M12,12L4,12 4,4 12,4z M3,13L13,13 13,3 3,3z"
                             Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
+                    <Button Padding="10"
+                            Content="F1M12,12L4,12 4,4 12,4z M3,13L13,13 13,3 3,3z"
+                            Style="{DynamicResource {x:Static h:ButtonKeys.GeometryError}}" />
                     <Button Padding="10"
                             Style="{DynamicResource {x:Static h:ButtonKeys.Tool}}">
                         <Border Background="Red" />
                     </Button>
 
                 </UniformGrid>
+            </TabItem>
+            <TabItem Header="组合">
+                <GroupBox Margin="10"
+                          Header="对齐">
+                    <StackPanel>
+                        <TextBox Text="对齐" />
+                        <PasswordBox Password="对齐" />
+                        <ComboBox SelectedIndex="0">
+                            <system:String>对齐1</system:String>
+                            <system:String>对齐2</system:String>
+                            <system:String>对齐3</system:String>
+                            <system:String>对齐4</system:String>
+                            <system:String>对齐5</system:String>
+                        </ComboBox>
+                        <DatePicker SelectedDate="{x:Static system:DateTime.Now}" />
+                        <CheckBox Content="对齐" />
+                        <RadioButton Content="对齐" />
+                    </StackPanel>
+                </GroupBox>
             </TabItem>
             <TabItem Header="TextBlock">
                 <TextBlock Text="TextBlock" />
