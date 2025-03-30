@@ -64,7 +64,7 @@ namespace H.Test.Theme
                 x.ColorResources.Add(new MineralColorResource());
                 x.ColorResources.Add(new FuturismColorResource());
                 x.ColorResources.Add(new TechnologyBlueDarkColorResource());
-
+                x.ColorResources.Add(new FuturisticGreenDarkColorResource());
             });
 
             app.UseSwithTheme();

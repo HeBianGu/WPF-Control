@@ -3,12 +3,12 @@ using System.Windows;
 
 namespace H.Themes.Colors.Technology;
 
-public class TechnologyBlueDarkColorResource : IColorResource
+public class FuturisticGreenDarkColorResource : IColorResource
 {
-    public string Name => "深空科技蓝";
+    public string Name => "未来主义绿";
     public ResourceDictionary Resource => new ResourceDictionary()
     {
-        Source = new Uri("pack://application:,,,/H.Themes.Colors.Technology;component/TechnologyBlueDark.xaml")
+        Source = new Uri("pack://application:,,,/H.Themes.Colors.Technology;component/FuturisticGreenDark.xaml")
     };
 
     public override string ToString()
