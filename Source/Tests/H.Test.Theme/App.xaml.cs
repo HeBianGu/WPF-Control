@@ -7,6 +7,7 @@ using H.Themes.Colors.Accent;
 using H.Themes.Colors.Blue;
 using H.Themes.Colors.Copper;
 using H.Themes.Colors.Cyberpunk;
+using H.Themes.Colors.Futurism;
 using H.Themes.Colors.Gray;
 using H.Themes.Colors.Mineral;
 using H.Themes.Colors.Purple;
@@ -60,6 +61,7 @@ namespace H.Test.Theme
                 x.ColorResources.Add(new VintageFilmColorResource());
                 x.ColorResources.Add(new CyberpunkColorResource());
                 x.ColorResources.Add(new MineralColorResource());
+                x.ColorResources.Add(new FuturismColorResource());
 
             });
 
