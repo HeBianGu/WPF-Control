@@ -11,6 +11,7 @@ using H.Themes.Colors.Futurism;
 using H.Themes.Colors.Gray;
 using H.Themes.Colors.Mineral;
 using H.Themes.Colors.Purple;
+using H.Themes.Colors.Technology;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -62,6 +63,7 @@ namespace H.Test.Theme
                 x.ColorResources.Add(new CyberpunkColorResource());
                 x.ColorResources.Add(new MineralColorResource());
                 x.ColorResources.Add(new FuturismColorResource());
+                x.ColorResources.Add(new TechnologyBlueDarkColorResource());
 
             });
 
