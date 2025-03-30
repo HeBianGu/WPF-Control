@@ -6,6 +6,7 @@ using H.Styles.Default.Controls;
 using H.Themes.Colors.Accent;
 using H.Themes.Colors.Blue;
 using H.Themes.Colors.Copper;
+using H.Themes.Colors.Cyberpunk;
 using H.Themes.Colors.Gray;
 using H.Themes.Colors.Purple;
 using Microsoft.Extensions.DependencyInjection;
@@ -54,7 +55,9 @@ namespace H.Test.Theme
                 x.ColorResources.Add(new BlueLightColorResource());
                 x.ColorResources.Add(new AccentLightColorResource());
                 x.ColorResources.Add(new AccentDarkColorResource());
-                x.ColorResources.Add(new CopperDarkColorResource());
+                x.ColorResources.Add(new CopperColorResource());
+                x.ColorResources.Add(new CyberpunkColorResource());
+
             });
 
             app.UseSwithTheme();

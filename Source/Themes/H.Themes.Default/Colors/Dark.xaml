@@ -55,6 +55,17 @@
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Accent.Opacity.2, TypeInTargetAssembly={x:Type local:ColorKeys}}" Opacity="0.2" Color="{DynamicResource {x:Static local:SystemKeys.ColorAccent}}" />
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Accent.Opacity.1, TypeInTargetAssembly={x:Type local:ColorKeys}}" Opacity="0.1" Color="{DynamicResource {x:Static local:SystemKeys.ColorAccent}}" />-->
 
+    <!--
+        0.Background>RowIndex
+        1.TextMouseOver
+        2.TextBorderBrush.Assist
+        3.TextSelected
+        4.TextBorderBrush
+        5.BorderBrush.Title
+        2.0ForegroundAssist
+        6.5TextForeground
+        10ForegroundTitle
+    -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.10, TypeInTargetAssembly={x:Type local:ColorKeys}}">#ffffff</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.9.5, TypeInTargetAssembly={x:Type local:ColorKeys}}">#f9f9fb</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.9, TypeInTargetAssembly={x:Type local:ColorKeys}}">#f2f3f6</Color>
@@ -84,7 +95,6 @@
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.0.2, TypeInTargetAssembly={x:Type local:ColorKeys}}">#202229</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.0.1, TypeInTargetAssembly={x:Type local:ColorKeys}}">#191a20</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.0, TypeInTargetAssembly={x:Type local:ColorKeys}}">#121317</Color>
-
 
     <!--  Color  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.LightGray, TypeInTargetAssembly={x:Type local:ColorKeys}}">#2c2c2c</Color>

@@ -29,8 +29,17 @@
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush.Title, TypeInTargetAssembly={x:Type ColorKeys}}">#6A5C44</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush.Assist, TypeInTargetAssembly={x:Type ColorKeys}}">#3A2E1E</Color>
 
-    <!-- 铜色重金属渐变系列 -->
-    <!-- 反转后的铜色重金属渐变系列（从浅到深） -->
+    <!--
+    0.Background>RowIndex
+    1.TextMouseOver
+    2.TextBorderBrush.Assist
+    3.TextSelected
+    4.TextBorderBrush
+    5.BorderBrush.Title
+    2.0ForegroundAssist
+    6.5TextForeground
+    10ForegroundTitle
+    -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.10, TypeInTargetAssembly={x:Type ColorKeys}}">#F5D07C</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.9.5, TypeInTargetAssembly={x:Type ColorKeys}}">#E5D184</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.9, TypeInTargetAssembly={x:Type ColorKeys}}">#DBC87F</Color>

@@ -28,7 +28,17 @@
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush.Title, TypeInTargetAssembly={x:Type h:ColorKeys}}">#575380</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush.Assist, TypeInTargetAssembly={x:Type h:ColorKeys}}">#434066</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush.Disabled, TypeInTargetAssembly={x:Type h:ColorKeys}}">#434066</Color>
-
+    <!--
+    0.Background>RowIndex
+    1.TextMouseOver
+    2.TextBorderBrush.Assist
+    3.TextSelected
+    4.TextBorderBrush
+    5.BorderBrush.Title
+    2.0ForegroundAssist
+    6.5TextForeground
+    10ForegroundTitle
+    -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.10, TypeInTargetAssembly={x:Type h:ColorKeys}}">#ffffff</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.9.5, TypeInTargetAssembly={x:Type h:ColorKeys}}">#f9f8fc</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.9, TypeInTargetAssembly={x:Type h:ColorKeys}}">#f2f2f8</Color>

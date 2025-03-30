@@ -3,7 +3,7 @@ using System.Windows;
 
 namespace H.Themes.Colors.Copper;
 
-public class CopperDarkColorResource : IColorResource
+public class CopperColorResource : IColorResource
 {
     public string Name => "深铜色";
     public ResourceDictionary Resource => new ResourceDictionary()
