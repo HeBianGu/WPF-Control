@@ -13,7 +13,7 @@
     <!--  奶油纸  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBackground.Disabled, TypeInTargetAssembly={x:Type ColorKeys}}">#DBC9A8</Color>
     <!--  褪色纸  -->
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.RowIndex.BackGround, TypeInTargetAssembly={x:Type ColorKeys}}">#D4B483</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.RowIndex.BackGround, TypeInTargetAssembly={x:Type ColorKeys}}">#E5D5B8</Color>
     <!--  琥珀色  -->
 
     <!--  Foreground  -->
@@ -37,7 +37,7 @@
     <!--  玫瑰石英  -->
 
     <!--  BorderBrush  -->
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush, TypeInTargetAssembly={x:Type ColorKeys}}">#8B5A2B</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush, TypeInTargetAssembly={x:Type ColorKeys}}">#9C786C</Color>
     <!--  胶片边框  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush.Title, TypeInTargetAssembly={x:Type ColorKeys}}">#6D4C41</Color>
     <!--  铁锈红  -->

@@ -1,7 +1,7 @@
 ﻿using H.Themes.Default.Colors;
 using System.Windows;
 
-namespace H.Themes.Colors.Futurism;
+namespace H.Themes.Colors.Technology;
 //### **5. 未来荧光风（Neon Futurism）**
 //** 特点**：高饱和荧光色 + 深空背景，适合游戏、潮流应用  
 //```xml
@@ -22,7 +22,7 @@ public class FuturismColorResource : IColorResource
     public string Name => "未来荧光风";
     public ResourceDictionary Resource => new ResourceDictionary()
     {
-        Source = new Uri("pack://application:,,,/H.Themes.Colors.Futurism;component/Dark.xaml")
+        Source = new Uri("pack://application:,,,/H.Themes.Colors.Technology;component/Futurism.xaml")
     };
 
     public override string ToString()

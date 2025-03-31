@@ -22,7 +22,6 @@
     <ProjectReference Include="..\..\Themes\H.Themes.Colors.Accent\H.Themes.Colors.Accent.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Colors.Blue\H.Themes.Colors.Blue.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Colors.Copper\H.Themes.Colors.Copper.csproj" />
-    <ProjectReference Include="..\..\Themes\H.Themes.Colors.Futurism\H.Themes.Colors.Futurism.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Colors.Gray\H.Themes.Colors.Gray.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Colors.Industrial\H.Themes.Colors.Industrial.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Colors.Mineral\H.Themes.Colors.Mineral.csproj" />
@@ -34,7 +33,5 @@
     <ProjectReference Include="..\..\Windows\H.Windows.Dialog\H.Windows.Dialog.csproj" />
     <ProjectReference Include="..\..\Windows\H.Windows.Main\H.Windows.Main.csproj" />
     <ProjectReference Include="..\..\Providers\H.Iocable\H.Iocable.csproj" />
-
   </ItemGroup>
-
 </Project>

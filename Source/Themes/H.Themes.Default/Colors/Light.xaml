@@ -67,15 +67,15 @@
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.28, TypeInTargetAssembly={x:Type local:ColorKeys}}" Color="#FFEDEDED" />
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.0, TypeInTargetAssembly={x:Type local:ColorKeys}}" Color="#FFFFFFFF" />-->
     <!--
-    0.Background>RowIndex
-    1.TextMouseOver
-    2.TextBorderBrush.Assist
-    3.TextSelected
-    4.TextBorderBrush
-    5.BorderBrush.Title
-    2.0ForegroundAssist
-    6.5TextForeground
-    10ForegroundTitle
+        0.Background>RowIndex
+        1.TextMouseOver
+        2.TextBorderBrush.Assist
+        3.TextSelected
+        4.TextBorderBrush
+        5.BorderBrush.Title
+        2.0ForegroundAssist
+        6.5TextForeground
+        10ForegroundTitle
     -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.28, TypeInTargetAssembly={x:Type local:ColorKeys}}">#000000</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.27, TypeInTargetAssembly={x:Type local:ColorKeys}}">#0a0a0a</Color>

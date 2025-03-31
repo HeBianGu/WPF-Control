@@ -6,7 +6,6 @@ using H.Styles.Default.Controls;
 using H.Themes.Colors.Accent;
 using H.Themes.Colors.Blue;
 using H.Themes.Colors.Copper;
-using H.Themes.Colors.Futurism;
 using H.Themes.Colors.Gray;
 using H.Themes.Colors.Industrial;
 using H.Themes.Colors.Mineral;
@@ -33,10 +32,10 @@ namespace H.Test.Theme
     {
         protected override void ConfigureServices(IServiceCollection services)
         {
-            
+
             services.AddSetting();
             services.AddAdornerDialogMessage();
-            services.AddSwitchThemeViewPresenter(x=>
+            services.AddSwitchThemeViewPresenter(x =>
             {
                 x.Dark = new PurpleDarkColorResource();
             });
@@ -50,7 +49,7 @@ namespace H.Test.Theme
         protected override void Configure(IApplicationBuilder app)
         {
             base.Configure(app);
-            app.UseTheme(x=>
+            app.UseTheme(x =>
             {
                 x.ColorResources.Add(new PurpleDarkColorResource());
                 x.ColorResources.Add(new PurpleLightColorResource());
@@ -76,6 +75,7 @@ namespace H.Test.Theme
                 x.ColorResources.Add(new ColorUIGAColorResource());
                 x.ColorResources.Add(new FluentUIColorResource());
                 x.ColorResources.Add(new MaterialDesignColorResource());
+                x.ColorResources.Add(new AppleColorResource());
                 //x.ColorResources.Add(new IndustrialDarkColorResource());
                 //x.ColorResources.Add(new IndustrialDarkColorResource());
                 //x.ColorResources.Add(new IndustrialDarkColorResource());
@@ -88,8 +88,7 @@ namespace H.Test.Theme
                 //x.ColorResources.Add(new IndustrialDarkColorResource());
                 //x.ColorResources.Add(new IndustrialDarkColorResource());
                 //x.ColorResources.Add(new IndustrialDarkColorResource());
-                //x.ColorResources.Add(new IndustrialDarkColorResource());
-                
+
             });
 
             app.UseSwithTheme();

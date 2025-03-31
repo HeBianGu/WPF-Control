@@ -17,7 +17,7 @@
                 <ContentPresenter Content="{Ioc Type={x:Type ISettingButtonPresenter}}" />
                 <ContentPresenter Content="{Ioc Type={x:Type h:ISwitchThemeViewPresenter}}" />
                 <Button Command="{ShowSettingCommand SwitchToType={x:Type h:IThemeSetting}}"
-                        Content="主题设置" />
+                        Content="{Binding Source={x:Static h:ThemeSetting.Instance}, Path=ColorResource.Name}" />
             </DockPanel>
         </ControlTemplate>
     </h:MainWindow.CaptionTempate>

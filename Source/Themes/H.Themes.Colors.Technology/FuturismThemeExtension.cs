@@ -1,6 +1,6 @@
 ﻿using System.Windows.Markup;
 
-namespace H.Themes.Colors.Futurism;
+namespace H.Themes.Colors.Technology;
 
 public class FuturismThemeExtension : MarkupExtension
 {

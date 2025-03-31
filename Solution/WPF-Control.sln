@@ -356,47 +356,45 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Extensions.OpenFolderDial
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Extensions.TextJsonable", "..\Source\Extensions\H.Extensions.TextJsonable\H.Extensions.TextJsonable.csproj", "{97A3D5BB-29A9-499E-ACD6-3D93464B9D91}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Services.Message", "..\Source\Services\H.Services.Message\H.Services.Message.csproj", "{94180E7C-85EA-48E2-9989-EDAF8BE1ECD4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Services.Message", "..\Source\Services\H.Services.Message\H.Services.Message.csproj", "{94180E7C-85EA-48E2-9989-EDAF8BE1ECD4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Services.Project", "..\Source\Services\H.Services.Project\H.Services.Project.csproj", "{F2B7A4DD-6C25-4C07-9D71-9143D33F61F2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Services.Project", "..\Source\Services\H.Services.Project\H.Services.Project.csproj", "{F2B7A4DD-6C25-4C07-9D71-9143D33F61F2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - Common", "6 - Common", "{579B6EC5-A25B-42CC-8D2B-488CC82127F4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Common", "..\Source\Common\H.Common\H.Common.csproj", "{6AE00844-A7A7-4019-9EAF-ADA00773D5C8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Common", "..\Source\Common\H.Common\H.Common.csproj", "{6AE00844-A7A7-4019-9EAF-ADA00773D5C8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Test.CodeTool", "..\Source\Tests\H.Test.CodeTool\H.Test.CodeTool.csproj", "{3D078C5E-6445-4A49-9995-366ADE30517A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Test.CodeTool", "..\Source\Tests\H.Test.CodeTool\H.Test.CodeTool.csproj", "{3D078C5E-6445-4A49-9995-366ADE30517A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Services.Identity", "..\Source\Services\H.Services.Identity\H.Services.Identity.csproj", "{B0E4B0FB-3DC0-4340-98D8-6C9D6C5CCEC1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Services.Identity", "..\Source\Services\H.Services.Identity\H.Services.Identity.csproj", "{B0E4B0FB-3DC0-4340-98D8-6C9D6C5CCEC1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Extensions.AppPath", "..\Source\Extensions\H.Extensions.AppPath\H.Extensions.AppPath.csproj", "{0613E905-2BB8-4A60-9688-60A85A52B9AA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Extensions.AppPath", "..\Source\Extensions\H.Extensions.AppPath\H.Extensions.AppPath.csproj", "{0613E905-2BB8-4A60-9688-60A85A52B9AA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Services.AppPath", "..\Source\Services\H.Services.AppPath\H.Services.AppPath.csproj", "{349CA021-23B4-4057-AA37-390FE9CCC39B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Services.AppPath", "..\Source\Services\H.Services.AppPath\H.Services.AppPath.csproj", "{349CA021-23B4-4057-AA37-390FE9CCC39B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Services.Setting", "..\Source\Services\H.Services.Setting\H.Services.Setting.csproj", "{64DA3196-1014-45C5-AC17-4E143D75D278}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Services.Setting", "..\Source\Services\H.Services.Setting\H.Services.Setting.csproj", "{64DA3196-1014-45C5-AC17-4E143D75D278}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Extensions.DataBase.Repository", "..\Source\Extensions\H.Extensions.DataBase.Repository\H.Extensions.DataBase.Repository.csproj", "{0635E82B-A17E-4F84-91CD-99FFC4C3FCC7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Extensions.DataBase.Repository", "..\Source\Extensions\H.Extensions.DataBase.Repository\H.Extensions.DataBase.Repository.csproj", "{0635E82B-A17E-4F84-91CD-99FFC4C3FCC7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Extensions.ObservableSource", "..\Source\Extensions\H.Extensions.ObservableSource\H.Extensions.ObservableSource.csproj", "{542E8CAB-E857-42F7-A622-ABC2AAD239F1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Extensions.ObservableSource", "..\Source\Extensions\H.Extensions.ObservableSource\H.Extensions.ObservableSource.csproj", "{542E8CAB-E857-42F7-A622-ABC2AAD239F1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Extensions.IocPresenter", "..\Source\Extensions\H.Extensions.IocPresenter\H.Extensions.IocPresenter.csproj", "{8D1625A2-7883-4A2C-96FC-3F8EDC8F6135}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Extensions.IocPresenter", "..\Source\Extensions\H.Extensions.IocPresenter\H.Extensions.IocPresenter.csproj", "{8D1625A2-7883-4A2C-96FC-3F8EDC8F6135}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - ApplicationBases", "2 - ApplicationBases", "{F4FCFD7C-E784-4CF5-83C9-38069216B334}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.ApplicationBases.Default", "..\Source\ApplicationBases\H.ApplicationBases.Default\H.ApplicationBases.Default.csproj", "{1B126DB8-5908-47ED-A3AE-30FFBB60885E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.ApplicationBases.Default", "..\Source\ApplicationBases\H.ApplicationBases.Default\H.ApplicationBases.Default.csproj", "{1B126DB8-5908-47ED-A3AE-30FFBB60885E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Test.DefaultApplicationBase", "..\Source\Tests\H.Test.DefaultApplicationBase\H.Test.DefaultApplicationBase.csproj", "{5B9F376A-103A-42DC-9B15-ECDECED0B965}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Test.DefaultApplicationBase", "..\Source\Tests\H.Test.DefaultApplicationBase\H.Test.DefaultApplicationBase.csproj", "{5B9F376A-103A-42DC-9B15-ECDECED0B965}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Styles.Bootstrap", "..\Source\Styles\H.Styles.Bootstrap\H.Styles.Bootstrap.csproj", "{5024A9C8-AC7A-4AA8-BC29-B87652C9300D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Styles.Bootstrap", "..\Source\Styles\H.Styles.Bootstrap\H.Styles.Bootstrap.csproj", "{5024A9C8-AC7A-4AA8-BC29-B87652C9300D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Test.Bootstrap", "..\Source\Tests\H.Test.Bootstrap\H.Test.Bootstrap.csproj", "{15778441-563A-4DBA-8C4F-20631439FD5C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Test.Bootstrap", "..\Source\Tests\H.Test.Bootstrap\H.Test.Bootstrap.csproj", "{15778441-563A-4DBA-8C4F-20631439FD5C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Modules.Style", "..\Source\Modules\H.Modules.Style\H.Modules.Style.csproj", "{5E800D9A-31E4-45EA-ADC1-84A26EB4CE2D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Themes.Colors.Copper", "..\Source\Themes\H.Themes.Colors.Copper\H.Themes.Colors.Copper.csproj", "{6D104152-AFA1-4D68-AC2F-A0523E58329A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Themes.Colors.Mineral", "..\Source\Themes\H.Themes.Colors.Mineral\H.Themes.Colors.Mineral.csproj", "{A0F45841-656C-48E9-8531-7F0C60FEBFCF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Themes.Colors.Futurism", "..\Source\Themes\H.Themes.Colors.Futurism\H.Themes.Colors.Futurism.csproj", "{674F57AC-2600-4E02-B355-B221E94B81D4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Themes.Colors.Technology", "..\Source\Themes\H.Themes.Colors.Technology\H.Themes.Colors.Technology.csproj", "{D747F745-D8E5-4436-8BE2-904EC6736311}"
 EndProject
@@ -3800,26 +3798,6 @@ Global
 		{A0F45841-656C-48E9-8531-7F0C60FEBFCF}.Release|x64.Build.0 = Release|Any CPU
 		{A0F45841-656C-48E9-8531-7F0C60FEBFCF}.Release|x86.ActiveCfg = Release|Any CPU
 		{A0F45841-656C-48E9-8531-7F0C60FEBFCF}.Release|x86.Build.0 = Release|Any CPU
-		{674F57AC-2600-4E02-B355-B221E94B81D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{674F57AC-2600-4E02-B355-B221E94B81D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{674F57AC-2600-4E02-B355-B221E94B81D4}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{674F57AC-2600-4E02-B355-B221E94B81D4}.Debug|ARM.Build.0 = Debug|Any CPU
-		{674F57AC-2600-4E02-B355-B221E94B81D4}.Debug|ARM64.ActiveCfg = Debug|Any CPU
-		{674F57AC-2600-4E02-B355-B221E94B81D4}.Debug|ARM64.Build.0 = Debug|Any CPU
-		{674F57AC-2600-4E02-B355-B221E94B81D4}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{674F57AC-2600-4E02-B355-B221E94B81D4}.Debug|x64.Build.0 = Debug|Any CPU
-		{674F57AC-2600-4E02-B355-B221E94B81D4}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{674F57AC-2600-4E02-B355-B221E94B81D4}.Debug|x86.Build.0 = Debug|Any CPU
-		{674F57AC-2600-4E02-B355-B221E94B81D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{674F57AC-2600-4E02-B355-B221E94B81D4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{674F57AC-2600-4E02-B355-B221E94B81D4}.Release|ARM.ActiveCfg = Release|Any CPU
-		{674F57AC-2600-4E02-B355-B221E94B81D4}.Release|ARM.Build.0 = Release|Any CPU
-		{674F57AC-2600-4E02-B355-B221E94B81D4}.Release|ARM64.ActiveCfg = Release|Any CPU
-		{674F57AC-2600-4E02-B355-B221E94B81D4}.Release|ARM64.Build.0 = Release|Any CPU
-		{674F57AC-2600-4E02-B355-B221E94B81D4}.Release|x64.ActiveCfg = Release|Any CPU
-		{674F57AC-2600-4E02-B355-B221E94B81D4}.Release|x64.Build.0 = Release|Any CPU
-		{674F57AC-2600-4E02-B355-B221E94B81D4}.Release|x86.ActiveCfg = Release|Any CPU
-		{674F57AC-2600-4E02-B355-B221E94B81D4}.Release|x86.Build.0 = Release|Any CPU
 		{D747F745-D8E5-4436-8BE2-904EC6736311}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D747F745-D8E5-4436-8BE2-904EC6736311}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D747F745-D8E5-4436-8BE2-904EC6736311}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -4097,7 +4075,6 @@ Global
 		{5E800D9A-31E4-45EA-ADC1-84A26EB4CE2D} = {27F6EA0F-3811-4403-9599-3B436A5EC502}
 		{6D104152-AFA1-4D68-AC2F-A0523E58329A} = {64C710EF-95D0-4811-A72E-58B2AC79E2B8}
 		{A0F45841-656C-48E9-8531-7F0C60FEBFCF} = {64C710EF-95D0-4811-A72E-58B2AC79E2B8}
-		{674F57AC-2600-4E02-B355-B221E94B81D4} = {64C710EF-95D0-4811-A72E-58B2AC79E2B8}
 		{D747F745-D8E5-4436-8BE2-904EC6736311} = {64C710EF-95D0-4811-A72E-58B2AC79E2B8}
 		{E6BA7C9D-A6E3-4831-95A3-B805BFE72572} = {64C710EF-95D0-4811-A72E-58B2AC79E2B8}
 		{2C9D2896-3AAB-4DE7-9885-856446376373} = {64C710EF-95D0-4811-A72E-58B2AC79E2B8}
