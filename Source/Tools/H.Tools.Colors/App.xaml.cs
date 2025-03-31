@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace H.App.Colors;
+namespace H.Tools.Colors;
 /// <summary>
 /// Interaction logic for App.xaml
 /// </summary>
