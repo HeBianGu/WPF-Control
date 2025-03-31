@@ -7,7 +7,7 @@ namespace H.Test.DefaultApplicationBase;
 /// <summary>
 /// Interaction logic for App.xaml
 /// </summary>
-public partial class App : DefaultModulesApplicationBase
+public partial class App : DefaultThemesApplicationBase
 {
     protected override Window CreateMainWindow(StartupEventArgs e)
     {

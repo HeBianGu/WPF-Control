@@ -7,7 +7,7 @@
         Title="MainWindow"
         Width="800"
         Height="450"
-        Style="{StaticResource {x:Type Window}}"
+        Style="{DynamicResource {x:Static WindowKeys.Default}}"
         mc:Ignorable="d">
     <TabControl>
         <TabControl.Resources>
@@ -24,6 +24,22 @@
                 <Button Command="{ShowViewCommand Value={GetStudent}}" />
                 <Button Command="{ShowStringNoticeMessageCommand}" />
                 <Button Command="{ShowStringSnackMessageCommand}" />
+                <Button Command="{ShowInfoNoticeMessageCommand Message=我是Info消息}"
+                        Content="ShowInfo" />
+                <Button Command="{ShowErrorNoticeMessageCommand Message=我是Error消息}"
+                        Content="ShowError" />
+                <Button Command="{ShowSuccessNoticeMessageCommand Message=我是Success消息}"
+                        Content="ShowSuccess" />
+                <Button Command="{ShowWarnNoticeMessageCommand Message=我是Warn消息}"
+                        Content="ShowWarn" />
+                <Button Command="{ShowFatalNoticeMessageCommand Message=我是Fatal消息}"
+                        Content="ShowFatal" />
+                <Button Command="{ShowProgressNoticeMessageCommand Message=我是Progress消息}"
+                        Content="ShowProgress" />
+                <Button Command="{ShowStringNoticeMessageCommand Message=我是String消息}"
+                        Content="ShowString" />
+                <Button Command="{ShowDialogNoticeMessageCommand Message=我是Dialog消息}"
+                        Content="ShowDialog" />
             </UniformGrid>
         </TabItem>
         <TabItem Header="Modules">
