@@ -1,5 +1,6 @@
 ﻿using H.Extensions.ApplicationBase;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace H.ApplicationBases.Default
 {

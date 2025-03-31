@@ -9,10 +9,17 @@
     <ProjectReference Include="..\..\Modules\H.Modules.Messages.Snack\H.Modules.Messages.Snack.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Setting\H.Modules.Setting.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.SplashScreen\H.Modules.SplashScreen.csproj" />
+    <ProjectReference Include="..\..\Modules\H.Modules.Style\H.Modules.Style.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Theme\H.Modules.Theme.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Colors.Accent\H.Themes.Colors.Accent.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Colors.Blue\H.Themes.Colors.Blue.csproj" />
+    <ProjectReference Include="..\..\Themes\H.Themes.Colors.Copper\H.Themes.Colors.Copper.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Colors.Gray\H.Themes.Colors.Gray.csproj" />
+    <ProjectReference Include="..\..\Themes\H.Themes.Colors.Industrial\H.Themes.Colors.Industrial.csproj" />
+    <ProjectReference Include="..\..\Themes\H.Themes.Colors.Mineral\H.Themes.Colors.Mineral.csproj" />
+    <ProjectReference Include="..\..\Themes\H.Themes.Colors.Platform\H.Themes.Colors.Platform.csproj" />
     <ProjectReference Include="..\..\Themes\H.Themes.Colors.Purple\H.Themes.Colors.Purple.csproj" />
+    <ProjectReference Include="..\..\Themes\H.Themes.Colors.Technology\H.Themes.Colors.Technology.csproj" />
+    <ProjectReference Include="..\..\Themes\H.Themes.Colors.Web\H.Themes.Colors.Web.csproj" />
   </ItemGroup>
 </Project>

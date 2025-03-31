@@ -2,8 +2,14 @@
 using H.Services.Common.About;
 using H.Themes.Colors.Accent;
 using H.Themes.Colors.Blue;
+using H.Themes.Colors.Copper;
 using H.Themes.Colors.Gray;
+using H.Themes.Colors.Industrial;
+using H.Themes.Colors.Mineral;
+using H.Themes.Colors.Platform;
 using H.Themes.Colors.Purple;
+using H.Themes.Colors.Technology;
+using H.Themes.Colors.Web;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace System
@@ -45,6 +51,10 @@ namespace System
             app.UseSettingSecurity();
             app.UseMainWindowSetting();
             app.UseWindowSetting();
+        }
+
+        public static void UseAllThemes(this IApplicationBuilder app)
+        {
             app.UseTheme(x =>
             {
                 x.ColorResources.Add(new PurpleDarkColorResource());
@@ -55,8 +65,37 @@ namespace System
                 x.ColorResources.Add(new BlueLightColorResource());
                 x.ColorResources.Add(new AccentLightColorResource());
                 x.ColorResources.Add(new AccentDarkColorResource());
+                x.ColorResources.Add(new CopperColorResource());
+                x.ColorResources.Add(new VintageFilmColorResource());
+                x.ColorResources.Add(new CyberpunkColorResource());
+                x.ColorResources.Add(new MineralColorResource());
+                x.ColorResources.Add(new FuturismColorResource());
+                x.ColorResources.Add(new TechnologyBlueDarkColorResource());
+                x.ColorResources.Add(new FuturisticGreenDarkColorResource());
+                x.ColorResources.Add(new AmberTerminalDarkColorResource());
+                x.ColorResources.Add(new IndustrialDarkColorResource());
+                x.ColorResources.Add(new AntDesignProColorResource());
+                x.ColorResources.Add(new BootstrapColorResource());
+                x.ColorResources.Add(new LayUIColorResource());
+                x.ColorResources.Add(new WeUIColorResource());
+                x.ColorResources.Add(new ColorUIGAColorResource());
+                x.ColorResources.Add(new FluentUIColorResource());
+                x.ColorResources.Add(new MaterialDesignColorResource());
+                x.ColorResources.Add(new AppleColorResource());
+                //x.ColorResources.Add(new IndustrialDarkColorResource());
+                //x.ColorResources.Add(new IndustrialDarkColorResource());
+                //x.ColorResources.Add(new IndustrialDarkColorResource());
+                //x.ColorResources.Add(new IndustrialDarkColorResource());
+                //x.ColorResources.Add(new IndustrialDarkColorResource());
+                //x.ColorResources.Add(new IndustrialDarkColorResource());
+                //x.ColorResources.Add(new IndustrialDarkColorResource());
+                //x.ColorResources.Add(new IndustrialDarkColorResource());
+                //x.ColorResources.Add(new IndustrialDarkColorResource());
+                //x.ColorResources.Add(new IndustrialDarkColorResource());
+                //x.ColorResources.Add(new IndustrialDarkColorResource());
+                //x.ColorResources.Add(new IndustrialDarkColorResource());
+
             });
-            app.UseSwithTheme();
         }
     }
 }

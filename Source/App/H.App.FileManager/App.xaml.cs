@@ -12,13 +12,14 @@ using System.Windows.Media;
 using H.Extensions.DataBase;
 using H.Styles.Default;
 using H.Services.Common.Schedule;
+using H.ApplicationBases.Default;
 
 namespace H.App.FileManager
 {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : ApplicationBase
+    public partial class App : DefaultThemesApplicationBase
     {
         protected override Window CreateMainWindow(StartupEventArgs e)
         {
@@ -27,12 +28,8 @@ namespace H.App.FileManager
 
         protected override void ConfigureServices(IServiceCollection services)
         {
-            services.AddWindowMessage();
-            services.AddAdornerDialogMessage();
-            services.AddSnackMessage();
-            services.AddFormMessageService();
+            base.ConfigureServices(services);
             services.AddProject<FileProjectService>();
-            services.AddSplashScreen();
             services.AddSingleton<IAppSaveService, AppSaveService>();
             services.AddTag<ProjectTagService>(x =>
             {
@@ -69,7 +66,6 @@ namespace H.App.FileManager
                 x.FavoriteItems.Add(new FavoriteItem() { Path = "娱乐" });
                 x.FavoriteItems.Add(new FavoriteItem() { Path = "工作" });
             });
-            services.AddSetting();
             services.AddAppService();
             services.AddTorrent();
             services.AddFFMpeg(x =>
@@ -106,7 +102,6 @@ namespace H.App.FileManager
         protected override void Configure(IApplicationBuilder app)
         {
             base.Configure(app);
-
             app.UseSetting(x =>
             {
                 x.Add(AppSetting.Instance);
@@ -116,17 +111,9 @@ namespace H.App.FileManager
             //{
             //    //x.LibvlcPath = "G:\\BaiduNetdiskDownload\\libvlc\\win-x64";
             //});
-
             app.UseFFMpeg();
-
             app.UseLogin();
-
             app.UseWindowSetting();
-            app.UseTheme();
-            app.UseSwithTheme();
-            //app.UseSetting();
-            app.UseSettingSecurity();
-
         }
     }
 }

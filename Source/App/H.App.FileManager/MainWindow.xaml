@@ -16,7 +16,10 @@
     <h:MainWindow.CaptionTempate>
         <ControlTemplate>
             <DockPanel HorizontalAlignment="Right"
-                       LastChildFill="False">
+                       LastChildFill="False"
+                       WindowChrome.IsHitTestVisibleInChrome="True">
+                <Button Command="{ShowSettingCommand SwitchToType={x:Type h:IThemeSetting}}"
+                        Content="{Binding Source={x:Static h:ThemeSetting.Instance}, Path=ColorResource.Name}" />
                 <ContentPresenter Content="{Ioc Type={x:Type ISettingButtonPresenter}}" />
                 <ContentPresenter Content="{Ioc Type={x:Type ISwitchThemeViewPresenter}}" />
             </DockPanel>
