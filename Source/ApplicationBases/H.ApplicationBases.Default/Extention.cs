@@ -87,11 +87,10 @@ namespace System
                 x.ColorResources.Add(new OracleDarkColorResource());
                 x.ColorResources.Add(new VikingDarkColorResource());
                 x.ColorResources.Add(new ChambrayDarkColorResource());
-               
-                //x.ColorResources.Add(new IndustrialDarkColorResource());
-                //x.ColorResources.Add(new IndustrialDarkColorResource());
-                //x.ColorResources.Add(new IndustrialDarkColorResource());
-                //x.ColorResources.Add(new IndustrialDarkColorResource());
+                x.ColorResources.Add(new TechnologyCyanColorResource());
+                x.ColorResources.Add(new TechnologyIndigoColorResource());
+                x.ColorResources.Add(new TechnologySOIORColorResource());
+                x.ColorResources.Add(new TechnologyPinkColorResource());
                 //x.ColorResources.Add(new IndustrialDarkColorResource());
                 //x.ColorResources.Add(new IndustrialDarkColorResource());
                 //x.ColorResources.Add(new IndustrialDarkColorResource());

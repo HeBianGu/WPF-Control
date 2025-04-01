@@ -204,6 +204,8 @@ namespace H.Modules.Theme
         public void RefreshBrushResourceDictionary()
         {
             ThemeTypeExtension.RefreshBrushResourceDictionary();
+            if (this.BackgroundResource == null)
+                return;
             this.BackgroundResource.Resource.RefreshResourceDictionary(); ;
         }
 

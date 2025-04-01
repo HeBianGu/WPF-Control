@@ -57,7 +57,6 @@ namespace H.Modules.Theme
                 {
                     return ThemeSetting.Instance.ColorResources.Any(l => l.Resource.Source == x.Source) || x.Source == this.Light.Resource.Source;
                 });
-
             }
             ThemeSetting.Instance.ColorResource = ThemeSetting.Instance.ColorResources.FirstOrDefault(x => x.Name == (this.IsDark ? this.Dark.Name : this.Light.Name));
             ThemeSetting.Instance.RefreshBrushResourceDictionary();

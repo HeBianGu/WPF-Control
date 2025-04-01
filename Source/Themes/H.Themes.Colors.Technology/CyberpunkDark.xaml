@@ -13,7 +13,7 @@
 
     <!--  Foreground  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.CaptionForeground, TypeInTargetAssembly={x:Type ColorKeys}}">#00F0FF</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Title, TypeInTargetAssembly={x:Type ColorKeys}}">#FFFFFF</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Title, TypeInTargetAssembly={x:Type ColorKeys}}">#05E0A7</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground, TypeInTargetAssembly={x:Type ColorKeys}}">#E0E0E0</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Select, TypeInTargetAssembly={x:Type ColorKeys}}">#05E0A7</Color>
 

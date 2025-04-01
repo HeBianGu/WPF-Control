@@ -18,7 +18,6 @@
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Title, TypeInTargetAssembly={x:Type ColorKeys}}">#FF00F5</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground, TypeInTargetAssembly={x:Type ColorKeys}}">#00FFA3</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Select, TypeInTargetAssembly={x:Type ColorKeys}}">#FFEE00</Color>
-
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextMouseOver, TypeInTargetAssembly={x:Type ColorKeys}}">#2A3D5F</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextSelected, TypeInTargetAssembly={x:Type ColorKeys}}">#3D5278</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Assist, TypeInTargetAssembly={x:Type ColorKeys}}">#6B8BA3</Color>

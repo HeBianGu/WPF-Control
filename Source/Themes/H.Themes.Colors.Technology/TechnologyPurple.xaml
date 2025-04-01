@@ -9,7 +9,6 @@
     <!--  Background  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.CaptionBackground, TypeInTargetAssembly={x:Type ColorKeys}}">#0F0523</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBackground, TypeInTargetAssembly={x:Type ColorKeys}}">#1A0C33</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBackground.Disabled, TypeInTargetAssembly={x:Type ColorKeys}}">#16082C</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.RowIndex.BackGround, TypeInTargetAssembly={x:Type ColorKeys}}">#16082C</Color>
 
     <!--  Foreground  -->
@@ -18,14 +17,13 @@
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextMouseOver, TypeInTargetAssembly={x:Type ColorKeys}}">#9C4DFF</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextSelected, TypeInTargetAssembly={x:Type ColorKeys}}">#6A1BFF</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Assist, TypeInTargetAssembly={x:Type ColorKeys}}">#A080CC</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Link, TypeInTargetAssembly={x:Type ColorKeys}}">#AD66FF</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Disabled, TypeInTargetAssembly={x:Type ColorKeys}}">#4D3D66</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Title, TypeInTargetAssembly={x:Type ColorKeys}}">#FFE9E4F1</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Select, TypeInTargetAssembly={x:Type ColorKeys}}">#FFE9E4F1</Color>
 
     <!--  BorderBrush  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush, TypeInTargetAssembly={x:Type ColorKeys}}">#3D2A66</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush.Title, TypeInTargetAssembly={x:Type ColorKeys}}">#6A1BFF</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush.Assist, TypeInTargetAssembly={x:Type ColorKeys}}">#4D3D66</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush.Disabled, TypeInTargetAssembly={x:Type ColorKeys}}">#332255</Color>
 
     <!--  Cosmic Purple Shades  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.0, TypeInTargetAssembly={x:Type ColorKeys}}">#FF1A0C33</Color>

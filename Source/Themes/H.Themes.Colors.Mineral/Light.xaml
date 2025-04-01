@@ -15,7 +15,7 @@
     <!--  砂岩  -->
 
     <!--  Foreground  -->
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.CaptionForeground, TypeInTargetAssembly={x:Type ColorKeys}}">#4A453F</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.CaptionForeground, TypeInTargetAssembly={x:Type ColorKeys}}">#2C2723</Color>
     <!--  板岩  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Title, TypeInTargetAssembly={x:Type ColorKeys}}">#2C2723</Color>
     <!--  黑曜石  -->
