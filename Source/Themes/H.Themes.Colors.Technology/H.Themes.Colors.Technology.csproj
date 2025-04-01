@@ -2,4 +2,9 @@
   <ItemGroup>
     <ProjectReference Include="..\H.Themes.Default\H.Themes.Default.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Page Update="MinimalFuturism.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
 </Project>

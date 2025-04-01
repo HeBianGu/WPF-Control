@@ -20,7 +20,7 @@ namespace H.Themes.Colors.Technology;
 //<Color x:Key="DarkTech.TextDim">#8A8F9D</Color>
 public class CyberpunkColorResource : IColorResource
 {
-    public string Name => "深色科技风";
+    public string Name => "赛博朋克风";
     public ResourceDictionary Resource => new ResourceDictionary()
     {
         Source = new Uri("pack://application:,,,/H.Themes.Colors.Technology;component/CyberpunkDark.xaml")
