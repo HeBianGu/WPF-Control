@@ -9,7 +9,6 @@ public static class ColorKeys
     #region - Background -
     public static ComponentResourceKey CaptionBackground => new ComponentResourceKey(typeof(ColorKeys), "S.Color.CaptionBackground");
     public static ComponentResourceKey Background => new ComponentResourceKey(typeof(ColorKeys), "S.Color.TextBackground");
-    public static ComponentResourceKey BackgroundDisabled => new ComponentResourceKey(typeof(ColorKeys), "S.Color.TextBackground.Disabled");
     public static ComponentResourceKey AlternatingRowBackground => new ComponentResourceKey(typeof(ColorKeys), "S.Color.RowIndex.BackGround");
     #endregion
 
@@ -24,18 +23,7 @@ public static class ColorKeys
     public static ComponentResourceKey Selected => new ComponentResourceKey(typeof(ColorKeys), "S.Color.TextSelected");
     public static ComponentResourceKey ForegroundAssist => new ComponentResourceKey(typeof(ColorKeys), "S.Color.TextForeground.Assist");
     public static ComponentResourceKey ForegroundLink => new ComponentResourceKey(typeof(ColorKeys), "S.Color.TextForeground.Link");
-    public static ComponentResourceKey ForegroundWhite => new ComponentResourceKey(typeof(ColorKeys), "S.Color.TextForeground.White");
-
-    public static ComponentResourceKey ForegroundWhiteOpacity9 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.TextForeground.White.Opacity.9");
-    public static ComponentResourceKey ForegroundWhiteOpacity8 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.TextForeground.White.Opacity.8");
-    public static ComponentResourceKey ForegroundWhiteOpacity7 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.TextForeground.White.Opacity.7");
-    public static ComponentResourceKey ForegroundWhiteOpacity6 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.TextForeground.White.Opacity.6");
-    public static ComponentResourceKey ForegroundWhiteOpacity5 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.TextForeground.White.Opacity.5");
-    public static ComponentResourceKey ForegroundWhiteOpacity4 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.TextForeground.White.Opacity.4");
-    public static ComponentResourceKey ForegroundWhiteOpacity3 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.TextForeground.White.Opacity.3");
-    public static ComponentResourceKey ForegroundWhiteOpacity2 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.TextForeground.White.Opacity.2");
-    public static ComponentResourceKey ForegroundWhiteOpacity1 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.TextForeground.White.Opacity.1");
-
+   
     #endregion
 
     #region - BorderBrush -
@@ -43,7 +31,6 @@ public static class ColorKeys
     public static ComponentResourceKey BorderBrush => new ComponentResourceKey(typeof(ColorKeys), "S.Color.TextBorderBrush");
     public static ComponentResourceKey BorderBrushTitle => new ComponentResourceKey(typeof(ColorKeys), "S.Color.TextBorderBrush.Title");
     public static ComponentResourceKey BorderBrushAssist => new ComponentResourceKey(typeof(ColorKeys), "S.Color.TextBorderBrush.Assist");
-    public static ComponentResourceKey BorderBrushDisabled => new ComponentResourceKey(typeof(ColorKeys), "S.Color.TextBorderBrush.Disabled");
     #endregion
 
     #region - Accent -
@@ -84,9 +71,7 @@ public static class ColorKeys
 
     #region - Color -
     public static ComponentResourceKey LightGray => new ComponentResourceKey(typeof(ColorKeys), "S.Color.LightGray");
-    public static ComponentResourceKey LightGrayOpacity5 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.LightGrayOpacity.5");
     public static ComponentResourceKey Gray => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Gray");
-    public static ComponentResourceKey GrayOpacity5 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Gray.Opacity.5,");
     public static ComponentResourceKey Black => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Black");
     public static ComponentResourceKey Orange => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Orange");
     public static ComponentResourceKey Red => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Red");
@@ -97,17 +82,6 @@ public static class ColorKeys
     public static ComponentResourceKey Brown => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Brown");
     public static ComponentResourceKey LightBlue => new ComponentResourceKey(typeof(ColorKeys), "S.Color.LightBlue");
     public static ComponentResourceKey Pink => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Pink");
-
-    public static ComponentResourceKey White => new ComponentResourceKey(typeof(ColorKeys), "S.Color.White");
-    public static ComponentResourceKey WhiteOpactiy9 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.White.Opactiy.9");
-    public static ComponentResourceKey WhiteOpactiy8 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.White.Opactiy.8");
-    public static ComponentResourceKey WhiteOpactiy7 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.White.Opactiy.7");
-    public static ComponentResourceKey WhiteOpactiy6 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.White.Opactiy.6");
-    public static ComponentResourceKey WhiteOpactiy5 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.White.Opactiy.5");
-    public static ComponentResourceKey WhiteOpactiy4 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.White.Opactiy.4");
-    public static ComponentResourceKey WhiteOpactiy3 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.White.Opactiy.3");
-    public static ComponentResourceKey WhiteOpactiy2 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.White.Opactiy.2");
-    public static ComponentResourceKey WhiteOpactiy1 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.White.Opactiy.1");
 
     #endregion
 

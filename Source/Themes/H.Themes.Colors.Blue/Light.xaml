@@ -1,8 +1,7 @@
-﻿<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:H.Themes.Colors.Blue"
-    xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:H.Themes.Colors.Blue"
+                    xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/Colors/Light.xaml" />
@@ -11,7 +10,6 @@
     <!--  Background  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.CaptionBackground, TypeInTargetAssembly={x:Type ColorKeys}}">#e6ebf9</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBackground, TypeInTargetAssembly={x:Type ColorKeys}}">#f5f8ff</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBackground.Disabled, TypeInTargetAssembly={x:Type ColorKeys}}">#e6ebf9</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.RowIndex.BackGround, TypeInTargetAssembly={x:Type ColorKeys}}">#e6ebf9</Color>
 
     <!--  Foreground  -->
@@ -30,15 +28,15 @@
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush.Assist, TypeInTargetAssembly={x:Type ColorKeys}}">#c9d3ed</Color>
 
     <!--
-    0.Background>RowIndex
-    1.TextMouseOver
-    2.TextBorderBrush.Assist
-    3.TextSelected
-    4.TextBorderBrush
-    5.BorderBrush.Title
-    2.0ForegroundAssist
-    6.5TextForeground
-    10ForegroundTitle
+        0.Background>RowIndex
+        1.TextMouseOver
+        2.TextBorderBrush.Assist
+        3.TextSelected
+        4.TextBorderBrush
+        5.BorderBrush.Title
+        2.0ForegroundAssist
+        6.5TextForeground
+        10ForegroundTitle
     -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.28, TypeInTargetAssembly={x:Type ColorKeys}}">#213466</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.27, TypeInTargetAssembly={x:Type ColorKeys}}">#213466</Color>

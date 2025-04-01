@@ -481,10 +481,10 @@
                         </DataTemplate>
                     </ControlTemplate.Resources>
                     <Grid x:Name="PART_Root">
-                        <Grid.Resources>
+                        <!--<Grid.Resources>
                             <SolidColorBrush x:Key="DisabledColor"
-                                             Color="{DynamicResource {x:Static ColorKeys.BackgroundDisabled}}" />
-                        </Grid.Resources>
+                                             Color="{DynamicResource {x:Static ColorKeys.Background}}" />
+                        </Grid.Resources>-->
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal" />
@@ -593,12 +593,12 @@
                             <!--</Border>-->
                         </Border>
                         <Rectangle x:Name="PART_DisabledVisual"
-                                   Fill="{StaticResource DisabledColor}"
-                                   Opacity="0"
+                                   Fill="{DynamicResource {x:Static BrushKeys.AlternatingRowBackground}}"
+                                   Opacity="0.6"
                                    RadiusX="2"
                                    RadiusY="2"
                                    Stretch="Fill"
-                                   Stroke="{StaticResource DisabledColor}"
+                                   Stroke="{DynamicResource {x:Static BrushKeys.AlternatingRowBackground}}"
                                    StrokeThickness="1"
                                    Visibility="Collapsed" />
                     </Grid>

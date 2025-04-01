@@ -10,6 +10,8 @@ public static class BrushKeys
     public static ComponentResourceKey CaptionBackground => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.CaptionBackground");
 
     public static ComponentResourceKey Background => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.TextBackground");
+
+    [Obsolete]
     public static ComponentResourceKey BackgroundDisabled => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.TextBackground.Disabled");
     public static ComponentResourceKey AlternatingRowBackground => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.RowIndex.BackGround");
     #endregion
@@ -25,16 +27,25 @@ public static class BrushKeys
     public static ComponentResourceKey Selected => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.TextSelected");
     public static ComponentResourceKey ForegroundAssist => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.TextForeground.Assist");
     public static ComponentResourceKey ForegroundLink => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.TextForeground.Link");
-    public static ComponentResourceKey ForegroundWhite => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.TextForeground.White");
 
+    [Obsolete]
+    public static ComponentResourceKey ForegroundWhite => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.TextForeground.White");
+    [Obsolete]
     public static ComponentResourceKey ForegroundWhiteOpacity9 => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.TextForeground.White.Opacity.9");
+    [Obsolete]
     public static ComponentResourceKey ForegroundWhiteOpacity8 => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.TextForeground.White.Opacity.8");
+    [Obsolete]
     public static ComponentResourceKey ForegroundWhiteOpacity7 => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.TextForeground.White.Opacity.7");
+    [Obsolete]
     public static ComponentResourceKey ForegroundWhiteOpacity6 => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.TextForeground.White.Opacity.6");
     public static ComponentResourceKey ForegroundWhiteOpacity5 => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.TextForeground.White.Opacity.5");
+    [Obsolete]
     public static ComponentResourceKey ForegroundWhiteOpacity4 => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.TextForeground.White.Opacity.4");
+    [Obsolete]
     public static ComponentResourceKey ForegroundWhiteOpacity3 => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.TextForeground.White.Opacity.3");
+    [Obsolete]
     public static ComponentResourceKey ForegroundWhiteOpacity2 => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.TextForeground.White.Opacity.2");
+    [Obsolete]
     public static ComponentResourceKey ForegroundWhiteOpacity1 => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.TextForeground.White.Opacity.1");
 
     #endregion
@@ -44,6 +55,7 @@ public static class BrushKeys
     public static ComponentResourceKey BorderBrush => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.TextBorderBrush");
     public static ComponentResourceKey BorderBrushTitle => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.TextBorderBrush.Title");
     public static ComponentResourceKey BorderBrushAssist => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.TextBorderBrush.Assist");
+    [Obsolete]
     public static ComponentResourceKey BorderBrushDisabled => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.TextBorderBrush.Disabled");
     #endregion
 
@@ -86,8 +98,10 @@ public static class BrushKeys
 
     #region - Color -
     public static ComponentResourceKey LightGray => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.LightGray");
+    [Obsolete]
     public static ComponentResourceKey LightGrayOpacity5 => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.LightGrayOpacity.5");
     public static ComponentResourceKey Gray => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.Gray");
+    [Obsolete]
     public static ComponentResourceKey GrayOpacity5 => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.Gray.Opacity.5,");
     public static ComponentResourceKey Black => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.Black");
     public static ComponentResourceKey Orange => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.Orange");

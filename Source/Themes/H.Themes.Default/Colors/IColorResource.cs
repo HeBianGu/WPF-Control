@@ -2,8 +2,6 @@
 
 namespace H.Themes.Default.Colors;
 
-public interface IColorResource
+public interface IColorResource : IResourceable
 {
-    string Name { get; }
-    ResourceDictionary Resource { get; }
 }

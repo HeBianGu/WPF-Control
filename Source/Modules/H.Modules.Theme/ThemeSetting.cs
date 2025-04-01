@@ -33,6 +33,12 @@ namespace H.Modules.Theme
             this.FontFamilys = Fonts.SystemFontFamilies.ToList();
             //this.FontFamilys.Add(new FontFamily("微软雅黑"));
             this.FontFamilys.Insert(0, new FontFamily("微软雅黑"));
+
+            this.BackgroundResources.Add(new SolidColorBrushResource());
+            this.BackgroundResources.Add(new LinearGradientBrushResource());
+            this.BackgroundResources.Add(new RadialGradientBrushResource());
+            this.BackgroundResources.Add(new DrawingBrushResource());
+            this.BackgroundResources.Add(new ImageBrushResource());
         }
 
         public override void LoadDefault()
@@ -69,26 +75,47 @@ namespace H.Modules.Theme
         }
 
 
-        private IColorResource _ColorResource;
-        [System.Text.Json.Serialization.JsonIgnore]
-        [System.Xml.Serialization.XmlIgnore]
+        private IColorResource _colorResource;
+        [JsonIgnore]
+        [XmlIgnore]
         [PropertyNameSourcePropertyItem(typeof(ComboBoxPropertyItem), nameof(ColorResources))]
         [Display(Name = "配色")]
         public IColorResource ColorResource
         {
-            get { return _ColorResource; }
+            get { return _colorResource; }
             set
             {
-                _ColorResource = value;
+                _colorResource = value;
                 RaisePropertyChanged();
             }
         }
 
 
-        [System.Text.Json.Serialization.JsonIgnore]
-        [System.Xml.Serialization.XmlIgnore]
+        [JsonIgnore]
+        [XmlIgnore]
         [Browsable(false)]
         public List<IColorResource> ColorResources { get; } = new List<IColorResource>();
+
+
+        private IBackgroundResource _backgroundResource;
+        [JsonIgnore]
+        [XmlIgnore]
+        [PropertyNameSourcePropertyItem(typeof(ComboBoxPropertyItem), nameof(BackgroundResources))]
+        [Display(Name = "背景配色")]
+        public IBackgroundResource BackgroundResource
+        {
+            get { return _backgroundResource; }
+            set
+            {
+                _backgroundResource = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        [JsonIgnore]
+        [XmlIgnore]
+        [Browsable(false)]
+        public List<IBackgroundResource> BackgroundResources { get; } = new List<IBackgroundResource>();
 
 
         private FontFamily _fontFamily;
@@ -105,8 +132,8 @@ namespace H.Modules.Theme
             }
         }
 
-        [System.Text.Json.Serialization.JsonIgnore]
-        [System.Xml.Serialization.XmlIgnore]
+        [JsonIgnore]
+        [XmlIgnore]
         [Browsable(false)]
         public List<FontFamily> FontFamilys { get; } = new List<FontFamily>();
 
@@ -114,10 +141,17 @@ namespace H.Modules.Theme
         public int ColorResourceSelectedIndex { get; set; }
         public void OnColorResourceValueChanged(PropertyInfo property, IColorResource o, IColorResource n)
         {
-            //this.Color.ChangeThemeType();
-            //this.ChangeColorTheme();
             this.RefreshTheme();
         }
+
+
+        [Browsable(false)]
+        public int BackgroundResourceSelectedIndex { get; set; }
+        public void OnBackgroundResourceValueChanged(PropertyInfo property, IBackgroundResource o, IBackgroundResource n)
+        {
+            this.RefreshTheme();
+        }
+
         public void OnFontSizeValueChanged(PropertyInfo property, FontSizeThemeType o, FontSizeThemeType n)
         {
             this.FontSize.ChangeFontSizeThemeType();
@@ -143,6 +177,7 @@ namespace H.Modules.Theme
             //    brushResource.ChangeResourceDictionary(x => x.Source.AbsoluteUri == brushResource.Source.AbsoluteUri, true);
             //}
             this.ColorResourceSelectedIndex = this.ColorResources.IndexOf(this.ColorResource);
+            this.BackgroundResourceSelectedIndex = this.BackgroundResources.IndexOf(this.BackgroundResource);
             return base.Save(out message);
         }
 
@@ -150,6 +185,7 @@ namespace H.Modules.Theme
         {
             var r = base.Load(out message);
             this.ColorResource = this.ColorResources[this.ColorResourceSelectedIndex];
+            this.BackgroundResource = this.BackgroundResources[this.BackgroundResourceSelectedIndex];
             this.RefreshTheme();
             return r;
         }
@@ -161,8 +197,16 @@ namespace H.Modules.Theme
             this.Layout.ChangeLayoutThemeType();
             this.ChangeColorTheme();
             this.ChangeSystem();
-            ThemeTypeExtension.RefreshBrushResourceDictionary();
+            this.ChangeBackgroundTheme();
+            this.RefreshBrushResourceDictionary();
         }
+
+        public void RefreshBrushResourceDictionary()
+        {
+            ThemeTypeExtension.RefreshBrushResourceDictionary();
+            this.BackgroundResource.Resource.RefreshResourceDictionary(); ;
+        }
+
 
         private void ChangeColorTheme()
         {
@@ -170,6 +214,15 @@ namespace H.Modules.Theme
             ThemeTypeExtension.ChangeResourceDictionary(resource, x =>
             {
                 return this.ColorResources.Any(l => l.Resource.Source == x.Source);
+            });
+        }
+
+        private void ChangeBackgroundTheme()
+        {
+            ResourceDictionary resource = this.BackgroundResource.Resource;
+            ThemeTypeExtension.ChangeResourceDictionary(resource, x =>
+            {
+                return this.BackgroundResources.Any(l => l.Resource.Source == x.Source);
             });
         }
 
@@ -182,6 +235,5 @@ namespace H.Modules.Theme
         {
             return AppPaths.Instance.UserSetting;
         }
-
     }
 }

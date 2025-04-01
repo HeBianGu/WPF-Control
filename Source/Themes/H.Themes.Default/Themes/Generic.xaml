@@ -6,5 +6,6 @@
         <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/BrushKeys.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/Colors/Default.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/Systems/Default.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Themes.Default;component/Backgrounds/Default.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

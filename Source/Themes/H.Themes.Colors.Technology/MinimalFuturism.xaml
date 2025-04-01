@@ -10,14 +10,6 @@
     <!--  Background  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.CaptionBackground, TypeInTargetAssembly={x:Type ColorKeys}}">#2D2D2D</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBackground, TypeInTargetAssembly={x:Type ColorKeys}}">#1F1F1F</Color>
-    <!--<LinearGradientBrush x:Key="{ComponentResourceKey ResourceId=S.Color.TextBackground.Default, TypeInTargetAssembly={x:Type ColorKeys}}" StartPoint="0,0" EndPoint="0,1">
-    <LinearGradientBrush.GradientStops>
-        <GradientStop Offset="0" Color="#1F1F1F" />
-        <GradientStop Offset="1" Color="#1F1F1F" />
-    </LinearGradientBrush.GradientStops>
-</LinearGradientBrush>-->
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBackground.Disabled, TypeInTargetAssembly={x:Type ColorKeys}}">#2D2D2D</Color>
-
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.RowIndex.BackGround, TypeInTargetAssembly={x:Type ColorKeys}}">#2D2D2D</Color>
 
     <!--  Foreground  -->
@@ -27,13 +19,11 @@
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextSelected, TypeInTargetAssembly={x:Type ColorKeys}}">#00C4FF</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Assist, TypeInTargetAssembly={x:Type ColorKeys}}">#A0A0A0</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Link, TypeInTargetAssembly={x:Type ColorKeys}}">#00C4FF</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Disabled, TypeInTargetAssembly={x:Type ColorKeys}}">#FF3E41</Color>
 
     <!--  BorderBrush  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush, TypeInTargetAssembly={x:Type ColorKeys}}">#404040</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush.Title, TypeInTargetAssembly={x:Type ColorKeys}}">#00C4FF</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush.Assist, TypeInTargetAssembly={x:Type ColorKeys}}">#606060</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush.Disabled, TypeInTargetAssembly={x:Type ColorKeys}}">#AA404040</Color>
 
     <!--  Dark Shades (极简黑白灰渐变)  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.28, TypeInTargetAssembly={x:Type ColorKeys}}">#FFFFFF</Color>

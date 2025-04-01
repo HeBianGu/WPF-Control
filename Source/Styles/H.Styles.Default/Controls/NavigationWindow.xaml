@@ -31,21 +31,22 @@
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
-                                <VisualState x:Name="Disabled">
+                                <!--<VisualState x:Name="Disabled">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Ellipse"
                                                                       Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
                                             <EasingColorKeyFrame KeyTime="0"
                                                                  Value="{DynamicResource {x:Static ColorKeys.BackgroundDisabled}}" />
                                         </ColorAnimationUsingKeyFrames>
-                                        <!--<ColorAnimationUsingKeyFrames Storyboard.TargetName="Arrow"
+                                -->
+                                <!--<ColorAnimationUsingKeyFrames Storyboard.TargetName="Arrow"
                                                                       Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
                                             <EasingColorKeyFrame KeyTime="0"
                                                                  Value="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
                                         </ColorAnimationUsingKeyFrames>-->
+                                <!--
                                     </Storyboard>
-
-                                </VisualState>
+                                </VisualState>-->
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
                         <Ellipse x:Name="Ellipse"
@@ -73,6 +74,9 @@
                         <Trigger Property="Command" Value="{x:Static NavigationCommands.BrowseForward}">
                             <Setter TargetName="Arrow" Property="Data" Value="M 0 0 L 6 6 L 0 12 z" />
                             <Setter TargetName="Arrow" Property="Margin" Value="3,0,0,0" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Ellipse" Property="Opacity" Value="0.6" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

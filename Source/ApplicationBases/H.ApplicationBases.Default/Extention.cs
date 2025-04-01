@@ -8,6 +8,7 @@ using H.Themes.Colors.Industrial;
 using H.Themes.Colors.Mineral;
 using H.Themes.Colors.Platform;
 using H.Themes.Colors.Purple;
+using H.Themes.Colors.Solid;
 using H.Themes.Colors.Technology;
 using H.Themes.Colors.Web;
 using Microsoft.Extensions.DependencyInjection;
@@ -82,7 +83,7 @@ namespace System
                 x.ColorResources.Add(new FluentUIColorResource());
                 x.ColorResources.Add(new MaterialDesignColorResource());
                 x.ColorResources.Add(new AppleColorResource());
-                //x.ColorResources.Add(new IndustrialDarkColorResource());
+                x.ColorResources.Add(new OracleDarkColorResource());
                 //x.ColorResources.Add(new IndustrialDarkColorResource());
                 //x.ColorResources.Add(new IndustrialDarkColorResource());
                 //x.ColorResources.Add(new IndustrialDarkColorResource());

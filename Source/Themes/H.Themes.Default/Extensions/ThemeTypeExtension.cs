@@ -75,6 +75,11 @@ public static class ThemeTypeExtension
         dic.Add(n);
     }
 
+    public static void RefreshResourceDictionary(this ResourceDictionary n)
+    {
+        n.ChangeResourceDictionary(x => x.Source.AbsoluteUri == n.Source.AbsoluteUri, true);
+    }
+
     public static ResourceDictionary GetLayoutResource(this LayoutThemeType type)
     {
         return GetResource("Layouts", type.ToString());
@@ -93,7 +98,8 @@ public static class ThemeTypeExtension
     public static void RefreshBrushResourceDictionary()
     {
         ResourceDictionary brushResource = new ResourceDictionary() { Source = new Uri("pack://application:,,,/H.Themes.Default;component/BrushKeys.xaml", UriKind.Absolute) };
-        brushResource.ChangeResourceDictionary(x => x.Source.AbsoluteUri == brushResource.Source.AbsoluteUri, true);
+        //brushResource.ChangeResourceDictionary(x => x.Source.AbsoluteUri == brushResource.Source.AbsoluteUri, true);
+        brushResource.RefreshResourceDictionary();
     }
 
 }

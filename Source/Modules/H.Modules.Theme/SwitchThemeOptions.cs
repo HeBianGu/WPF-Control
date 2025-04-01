@@ -1,5 +1,6 @@
 ﻿using H.Common.Interfaces;
 using H.Extensions.Setting;
+using H.Iocable;
 using H.Services.AppPath;
 using H.Services.Common;
 using H.Services.Setting;
@@ -47,18 +48,19 @@ namespace H.Modules.Theme
             {
                 ThemeTypeExtension.ChangeResourceDictionary(this.Light.Resource, x =>
                 {
-                    return x.Source == this.Dark.Resource.Source;
+                    return ThemeSetting.Instance.ColorResources.Any(l => l.Resource.Source == x.Source) || x.Source == this.Dark.Resource.Source;
                 });
             }
             else
             {
                 ThemeTypeExtension.ChangeResourceDictionary(this.Dark.Resource, x =>
                 {
-                    return x.Source == this.Light.Resource.Source;
+                    return ThemeSetting.Instance.ColorResources.Any(l => l.Resource.Source == x.Source) || x.Source == this.Light.Resource.Source;
                 });
-            }
 
-            ThemeTypeExtension.RefreshBrushResourceDictionary();
+            }
+            ThemeSetting.Instance.ColorResource = ThemeSetting.Instance.ColorResources.FirstOrDefault(x => x.Name == (this.IsDark ? this.Dark.Name : this.Light.Name));
+            ThemeSetting.Instance.RefreshBrushResourceDictionary();
             this.Save(out string message);
         }
 

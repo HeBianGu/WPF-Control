@@ -8,7 +8,8 @@ public interface IThemeSetting
 {
     IColorResource ColorResource { get; set; }
     List<IColorResource> ColorResources { get; }
-    int ColorResourceSelectedIndex { get; set; }
+    IBackgroundResource BackgroundResource { get; set; }
+    List<IBackgroundResource> BackgroundResources { get; }
     FontFamily FontFamily { get; set; }
     List<FontFamily> FontFamilys { get; }
     FontSizeThemeType FontSize { get; set; }

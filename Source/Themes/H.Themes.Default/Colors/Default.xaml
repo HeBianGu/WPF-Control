@@ -17,21 +17,6 @@
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush, TypeInTargetAssembly={x:Type local:ColorKeys}}">#E5E5E5</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush.Title, TypeInTargetAssembly={x:Type local:ColorKeys}}">#DFDFDF</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush.Assist, TypeInTargetAssembly={x:Type local:ColorKeys}}">#EAEAEA</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush.Disabled, TypeInTargetAssembly={x:Type local:ColorKeys}}">#FFE0E0E0</Color>
-
-    <!--  Accent  -->
-    <!--<Color x:Key="{ComponentResourceKey ResourceId=S.Color.Accent.MouseOver.Background, TypeInTargetAssembly={x:Type local:ColorKeys}}" Opacity="0.2" Color="{DynamicResource {x:Static local:SystemKeys.ColorAccent}}" />
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Accent.Select.Background, TypeInTargetAssembly={x:Type local:ColorKeys}}" Opacity="0.15" Color="{DynamicResource {x:Static local:SystemKeys.ColorAccent}}" />
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Accent.MouseOver, TypeInTargetAssembly={x:Type local:ColorKeys}}" Opacity="0.7" Color="{DynamicResource {x:Static local:SystemKeys.ColorAccent}}" />
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Accent.Select, TypeInTargetAssembly={x:Type local:ColorKeys}}" Opacity="0.7" Color="{DynamicResource {x:Static local:SystemKeys.ColorAccent}}" />    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Accent.Opacity.9, TypeInTargetAssembly={x:Type local:ColorKeys}}" Opacity="0.9" Color="{DynamicResource {x:Static local:SystemKeys.ColorAccent}}" />
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Accent.Opacity.8, TypeInTargetAssembly={x:Type local:ColorKeys}}" Opacity="0.8" Color="{DynamicResource {x:Static local:SystemKeys.ColorAccent}}" />
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Accent.Opacity.7, TypeInTargetAssembly={x:Type local:ColorKeys}}" Opacity="0.7" Color="{DynamicResource {x:Static local:SystemKeys.ColorAccent}}" />
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Accent.Opacity.6, TypeInTargetAssembly={x:Type local:ColorKeys}}" Opacity="0.6" Color="{DynamicResource {x:Static local:SystemKeys.ColorAccent}}" />
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Accent.Opacity.5, TypeInTargetAssembly={x:Type local:ColorKeys}}" Opacity="0.5" Color="{DynamicResource {x:Static local:SystemKeys.ColorAccent}}" />
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Accent.Opacity.4, TypeInTargetAssembly={x:Type local:ColorKeys}}" Opacity="0.4" Color="{DynamicResource {x:Static local:SystemKeys.ColorAccent}}" />
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Accent.Opacity.3, TypeInTargetAssembly={x:Type local:ColorKeys}}" Opacity="0.3" Color="{DynamicResource {x:Static local:SystemKeys.ColorAccent}}" />
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Accent.Opacity.2, TypeInTargetAssembly={x:Type local:ColorKeys}}" Opacity="0.2" Color="{DynamicResource {x:Static local:SystemKeys.ColorAccent}}" />
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Accent.Opacity.1, TypeInTargetAssembly={x:Type local:ColorKeys}}" Opacity="0.1" Color="{DynamicResource {x:Static local:SystemKeys.ColorAccent}}" />-->
 
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.28, TypeInTargetAssembly={x:Type local:ColorKeys}}">#FF000000</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.27, TypeInTargetAssembly={x:Type local:ColorKeys}}">#080808</Color>
@@ -66,9 +51,7 @@
 
     <!--  Color  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.LightGray, TypeInTargetAssembly={x:Type local:ColorKeys}}">#2c2c2c</Color>
-    <!--<Color x:Key="{ComponentResourceKey ResourceId=S.Color.LightGrayOpacity.5, TypeInTargetAssembly={x:Type local:ColorKeys}}" Opacity="0.5" Color="#2c2c2c" />-->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Gray, TypeInTargetAssembly={x:Type local:ColorKeys}}">#000000</Color>
-    <!--<Color x:Key="{ComponentResourceKey ResourceId=S.Color.Gray.Opacity.5, TypeInTargetAssembly={x:Type local:ColorKeys}}" Opacity="0.5" Color="#000000" />-->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Black, TypeInTargetAssembly={x:Type local:ColorKeys}}">#374857</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Orange, TypeInTargetAssembly={x:Type local:ColorKeys}}">#E6A23C</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Red, TypeInTargetAssembly={x:Type local:ColorKeys}}">#FFdc000c</Color>
@@ -79,77 +62,4 @@
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Blue, TypeInTargetAssembly={x:Type local:ColorKeys}}">DarkBlue</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.LightBlue, TypeInTargetAssembly={x:Type local:ColorKeys}}">LightSkyBlue</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Pink, TypeInTargetAssembly={x:Type local:ColorKeys}}">DeepPink</Color>
-
-    <!--<Color x:Key="{ComponentResourceKey ResourceId=S.Color.White, TypeInTargetAssembly={x:Type local:ColorKeys}}">#000000</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.White.Opactiy.9, TypeInTargetAssembly={x:Type local:ColorKeys}}" Opacity="0.9" Color="#000000" />
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.White.Opactiy.8, TypeInTargetAssembly={x:Type local:ColorKeys}}" Opacity="0.8" Color="#000000" />
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.White.Opactiy.7, TypeInTargetAssembly={x:Type local:ColorKeys}}" Opacity="0.7" Color="#000000" />
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.White.Opactiy.6, TypeInTargetAssembly={x:Type local:ColorKeys}}" Opacity="0.6" Color="#000000" />
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.White.Opactiy.5, TypeInTargetAssembly={x:Type local:ColorKeys}}" Opacity="0.5" Color="#000000" />
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.White.Opactiy.4, TypeInTargetAssembly={x:Type local:ColorKeys}}" Opacity="0.4" Color="#000000" />
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.White.Opactiy.3, TypeInTargetAssembly={x:Type local:ColorKeys}}" Opacity="0.3" Color="#000000" />
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.White.Opactiy.2, TypeInTargetAssembly={x:Type local:ColorKeys}}" Opacity="0.2" Color="#000000" />
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.White.Opactiy.1, TypeInTargetAssembly={x:Type local:ColorKeys}}" Opacity="0.1" Color="#000000" />-->
-
-    <!--  System  -->
-    <!--<Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dialog.Cover, TypeInTargetAssembly={x:Type local:ColorKeys}}" Opacity="0.5" Color="#000000" />-->
-
-    <!--  DropShadowEffect  -->
-    <!--<DropShadowEffect x:Key="{ComponentResourceKey ResourceId=S.DropShadowEffect.Window,
-                                                   TypeInTargetAssembly={x:Type local:EffectShadowKeys}}"
-                      po:Freeze="True"
-                      BlurRadius="20"
-                      Direction="270"
-                      Opacity="0.8"
-                      RenderingBias="Performance"
-                      ShadowDepth="0"
-                      Color="#000000" />
-
-    <Color x:Key="{ComponentResourceKey ResourceId=S.EffectShadow.Color.Default, TypeInTargetAssembly={x:Type local:ColorKeys}}">#AA000000</Color>
-
-    <DropShadowEffect x:Key="{ComponentResourceKey ResourceId=S.EffectShadow.1,
-                                                   TypeInTargetAssembly={x:Type local:ColorKeys}}"
-                      po:Freeze="True"
-                      BlurRadius="5"
-                      Direction="270"
-                      Opacity=".42"
-                      RenderingBias="Performance"
-                      ShadowDepth="1"
-                      Color="{DynamicResource {x:Static local:EffectShadowKeys.Color}}" />
-    <DropShadowEffect x:Key="{ComponentResourceKey ResourceId=S.EffectShadow.2,
-                                                   TypeInTargetAssembly={x:Type local:ColorKeys}}"
-                      po:Freeze="True"
-                      BlurRadius="8"
-                      Direction="270"
-                      Opacity=".42"
-                      RenderingBias="Performance"
-                      ShadowDepth="1.5"
-                      Color="{DynamicResource {x:Static local:EffectShadowKeys.Color}}" />
-    <DropShadowEffect x:Key="{ComponentResourceKey ResourceId=S.EffectShadow.3,
-                                                   TypeInTargetAssembly={x:Type local:ColorKeys}}"
-                      po:Freeze="True"
-                      BlurRadius="14"
-                      Direction="270"
-                      Opacity=".42"
-                      RenderingBias="Performance"
-                      ShadowDepth="4.5"
-                      Color="{DynamicResource {x:Static local:EffectShadowKeys.Color}}" />
-    <DropShadowEffect x:Key="{ComponentResourceKey ResourceId=S.EffectShadow.4,
-                                                   TypeInTargetAssembly={x:Type local:ColorKeys}}"
-                      po:Freeze="True"
-                      BlurRadius="25"
-                      Direction="270"
-                      Opacity=".42"
-                      RenderingBias="Performance"
-                      ShadowDepth="8"
-                      Color="{DynamicResource {x:Static local:EffectShadowKeys.Color}}" />
-    <DropShadowEffect x:Key="{ComponentResourceKey ResourceId=S.EffectShadow.5,
-                                                   TypeInTargetAssembly={x:Type local:ColorKeys}}"
-                      po:Freeze="True"
-                      BlurRadius="35"
-                      Direction="270"
-                      Opacity=".42"
-                      RenderingBias="Performance"
-                      ShadowDepth="13"
-                      Color="{DynamicResource {x:Static local:EffectShadowKeys.Color}}" />-->
 </ResourceDictionary>
