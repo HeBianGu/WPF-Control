@@ -55,23 +55,24 @@ public class MainViewModel : Bindable
         {
             System.Diagnostics.Debug.WriteLine("<Color x:Key=\"{ComponentResourceKey ResourceId=" + s + ", TypeInTargetAssembly={x:Type ColorKeys}}\">" + k + "</Color>");
         };
-
-        int index = 0;
+        double p = 0.9;//值越小，颜色变化起始颜色变化越快
+        double s = hsbaColor.S / 28.0;
         if (hsbaColor.B > 0)
         {
             this.DColors.Clear();
             System.Diagnostics.Debug.WriteLine("深色");
-            for (double i = hsbaColor.B; i > 0; i = i - hsbaColor.B / 28.0)
+            double b = hsbaColor.B / 28.0;
+            for (int i = 0; i <= 28; i++)
             {
-                var c = new HsbaColor(hsbaColor.H, 1 - index / 28.0, Math.Sqrt(i), hsbaColor.A);
+                var bs = Math.Pow(i / 28.0, p) * hsbaColor.B;
+                var c = new HsbaColor(hsbaColor.H, hsbaColor.S - i * s, hsbaColor.B - bs, hsbaColor.A);
                 this.DColors.Add(c.Color);
-                log.Invoke($"S.Color.Dark.{index.ToString()}", c.HexString);
-                var ks = GetKeyByIndex(index);
+                log.Invoke($"S.Color.Dark.{i.ToString()}", c.HexString);
+                var ks = GetKeyByIndex(i);
                 foreach (var k in ks)
                 {
                     log.Invoke(k, c.HexString);
                 }
-                index++;
             }
         }
 
@@ -80,18 +81,18 @@ public class MainViewModel : Bindable
         {
             this.Colors.Clear();
             System.Diagnostics.Debug.WriteLine("浅色");
-            index = 0;
-            for (double i = hsbaColor.B; i <= 1.0000001; i = i + (1 - hsbaColor.B) / 28.0)
+            double b = (1 - hsbaColor.B) / 28.0;
+            for (int i = 0; i <= 28; i++)
             {
-                var c = new HsbaColor(hsbaColor.H, 1 - index / 28.0, Math.Sqrt(i), hsbaColor.A);
+                var bs = Math.Pow(i / 28.0, p) * (1 - hsbaColor.B);
+                var c = new HsbaColor(hsbaColor.H, hsbaColor.S - i * s, hsbaColor.B + bs, hsbaColor.A);
                 this.Colors.Add(c.Color);
-                log.Invoke($"S.Color.Dark.{index.ToString()}", c.HexString);
-                var ks = GetKeyByIndex(index);
+                log.Invoke($"S.Color.Dark.{i.ToString()}", c.HexString);
+                var ks = GetKeyByIndex(i);
                 foreach (var k in ks)
                 {
                     log.Invoke(k, c.HexString);
                 }
-                index++;
             }
         }
     });

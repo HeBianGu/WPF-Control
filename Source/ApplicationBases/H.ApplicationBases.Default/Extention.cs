@@ -72,6 +72,7 @@ namespace System
                 x.ColorResources.Add(new MineralColorResource());
                 x.ColorResources.Add(new FuturismColorResource());
                 x.ColorResources.Add(new TechnologyBlueDarkColorResource());
+                x.ColorResources.Add(new TechnologyPurpleColorResource());
                 x.ColorResources.Add(new FuturisticGreenDarkColorResource());
                 x.ColorResources.Add(new AmberTerminalDarkColorResource());
                 x.ColorResources.Add(new IndustrialDarkColorResource());
@@ -84,9 +85,9 @@ namespace System
                 x.ColorResources.Add(new MaterialDesignColorResource());
                 x.ColorResources.Add(new AppleColorResource());
                 x.ColorResources.Add(new OracleDarkColorResource());
-                //x.ColorResources.Add(new IndustrialDarkColorResource());
-                //x.ColorResources.Add(new IndustrialDarkColorResource());
-                //x.ColorResources.Add(new IndustrialDarkColorResource());
+                x.ColorResources.Add(new VikingDarkColorResource());
+                x.ColorResources.Add(new ChambrayDarkColorResource());
+               
                 //x.ColorResources.Add(new IndustrialDarkColorResource());
                 //x.ColorResources.Add(new IndustrialDarkColorResource());
                 //x.ColorResources.Add(new IndustrialDarkColorResource());

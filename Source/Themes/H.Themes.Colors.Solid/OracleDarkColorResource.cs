@@ -5,7 +5,7 @@ namespace H.Themes.Colors.Solid;
 
 public class OracleDarkColorResource : IColorResource
 {
-    public string Name => "OracleDark";
+    public string Name => "Oracle Dark";
     public ResourceDictionary Resource => new ResourceDictionary()
     {
         Source = new Uri("pack://application:,,,/H.Themes.Colors.Solid;component/OracleDark.xaml")

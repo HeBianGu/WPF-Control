@@ -5,7 +5,7 @@ namespace H.Themes.Colors.Solid;
 
 public class VikingDarkColorResource : IColorResource
 {
-    public string Name => "VikingDark";
+    public string Name => "Viking Dark";
     public ResourceDictionary Resource => new ResourceDictionary()
     {
         Source = new Uri("pack://application:,,,/H.Themes.Colors.Solid;component/VikingDark.xaml")
