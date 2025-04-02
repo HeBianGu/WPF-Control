@@ -21,7 +21,7 @@ namespace H.Extensions.Setting
 
         protected virtual string GetDefaultPath()
         {
-            return System.IO.Path.Combine(this.GetDefaultFolder(), this.ID + ".json");
+            return System.IO.Path.Combine(this.GetDefaultFolder(), this.GetType().Name + ".json");
         }
 
         protected virtual string GetDefaultFolder()
