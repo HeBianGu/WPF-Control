@@ -1,0 +1,43 @@
+public class TreeNode {
+    public string Text { get; set; }
+    public List<TreeNode> Children { get; } = new();
+    public double X { get; set; }
+    public double Y { get; set; }
+}
+
+public static class TreeLayout {
+    public static void Calculate(TreeNode root, double yStep = 50) {
+        CalculatePositions(root, 0, 0, yStep);
+        CenterX(root);
+    }
+
+    private static (double Min, double Max) CalculatePositions(
+        TreeNode node, double x, double y, double yStep) 
+    {
+        node.X = x;
+        node.Y = y;
+        
+        if (node.Children.Count == 0) 
+            return (x, x);
+
+        double min = double.MaxValue, max = double.MinValue;
+        foreach (var child in node.Children) {
+            var (cMin, cMax) = CalculatePositions(child, x, y + yStep, yStep);
+            min = Math.Min(min, cMin);
+            max = Math.Max(max, cMax);
+            x = cMax + 20; // 兄弟节点间距
+        }
+        return (min, max);
+    }
+
+    private static void CenterX(TreeNode node) {
+        if (node.Children.Count > 0) {
+            double sum = 0;
+            foreach (var child in node.Children) {
+                CenterX(child);
+                sum += child.X;
+            }
+            node.X = sum / node.Children.Count;
+        }
+    }
+}
