@@ -6,6 +6,7 @@ using H.Services.Common.DataBase;
 using H.Services.Common.MainWindow;
 using H.Services.Common.Schedule;
 using H.Services.Common.SplashScreen;
+using H.Services.Common.Theme;
 using H.Services.Identity;
 using H.Services.Logger;
 using H.Services.Message;
@@ -216,6 +217,9 @@ public partial class ApplicationBase
     {
         int sleep = 1000;
         ISplashScreenViewPresenter presenter = Ioc.Services.GetService<ISplashScreenViewPresenter>();
+        //  Do ： 在显示页面前需要加载主题，否则主题会出现变化
+        var tls = Ioc.GetService<IThemeLoadService>();
+        tls.Load(out string message);
         Func<IDialog, ISplashScreenViewPresenter, bool?> func = (c, s) =>
         {
             if (c?.IsCancel != true)
