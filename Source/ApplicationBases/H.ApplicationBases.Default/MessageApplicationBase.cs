@@ -12,7 +12,7 @@ using System.Windows.Markup;
 
 namespace H.ApplicationBases.Default
 {
-    public abstract partial class DefaultMessageApplicationBase : ApplicationBase
+    public abstract partial class MessageApplicationBase : ApplicationBase
     {
         protected override void ConfigureServices(IServiceCollection services)
         {

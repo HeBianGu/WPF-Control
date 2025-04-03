@@ -4,7 +4,7 @@ using System;
 
 namespace H.ApplicationBases.Default
 {
-    public abstract partial class DefaultModulesApplicationBase : ApplicationBase
+    public abstract partial class ModulesApplicationBase : ApplicationBase
     {
         protected override void ConfigureServices(IServiceCollection services)
         {

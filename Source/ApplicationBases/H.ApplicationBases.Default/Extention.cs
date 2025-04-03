@@ -46,6 +46,7 @@ namespace System
             services.AddFormMessageService();
             services.AddNoticeMessage();
             services.AddSnackMessage();
+            services.AddIOFolderDialogService();
         }
 
 

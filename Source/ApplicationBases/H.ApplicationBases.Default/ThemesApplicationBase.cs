@@ -11,13 +11,12 @@ using H.Themes.Colors.Web;
 
 namespace H.ApplicationBases.Default
 {
-    public abstract partial class DefaultThemesApplicationBase : DefaultModulesApplicationBase
+    public abstract partial class ThemesApplicationBase : ModulesApplicationBase
     {
         protected override void Configure(IApplicationBuilder app)
         {
             base.Configure(app);
             app.UseAllThemes();
-            app.UseSwithTheme();
         }
     }
 }
