@@ -8,12 +8,13 @@
     <ControlTemplate x:Key="ExpanderToggleButton"
                      TargetType="{x:Type ToggleButton}">
         <Border x:Name="Border"
+                Background="Transparent"
                 BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                 BorderThickness="0"
                 CornerRadius="2,0,0,0">
-            <Border.Background>
+            <!--<Border.Background>
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />
-            </Border.Background>
+            </Border.Background>-->
             <VisualStateManager.VisualStateGroups>
                 <VisualStateGroup x:Name="CommonStates">
                     <VisualState x:Name="Normal" />

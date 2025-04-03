@@ -12,6 +12,10 @@ public abstract class ZoomableDiagramDataBase : DiagramDataBase, IZoomableDiagra
     {
         this.GetTargetElement<Diagram>().ZoomToFit();
     }, x => this.GetTargetElement<Diagram>() != null);
+    protected void ZoomToFit()
+    {
+        this.GetTargetElement<Diagram>()?.ZoomToFit();
+    }
 
     //[Icon(FontIcons.SIPMove)]
     //[Display(Name = "平移定位", GroupName = "操作", Order = 5)]

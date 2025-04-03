@@ -29,7 +29,7 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
         }
     }
 
-    private DiagramFlowableZoomMode _flowableZoomMode;
+    private DiagramFlowableZoomMode _flowableZoomMode = DiagramFlowableZoomMode.Rect;
     [Display(Name = "自动缩放", GroupName = "数据", Description = "执行时节点自动缩放")]
     public DiagramFlowableZoomMode FlowableZoomMode
     {
@@ -98,6 +98,8 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
     public DisplayCommand StartCommand => new DisplayCommand(async e =>
     {
         await this.Start();
+        if (this.FlowableZoomMode != DiagramFlowableZoomMode.None)
+            this.ZoomToFit();
     }, e => this.CanStart());
 
     [Icon(FontIcons.Location)]
@@ -119,7 +121,8 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
         var start = this.GetStartNodeData();
         if (start == null)
             return false;
-        return await this.InvokeState(() => start.Start(this));
+        var r= await this.InvokeState(() => start.Start(this));
+        return r;
     }
 
     protected virtual IFlowableNodeData GetStartNodeData()

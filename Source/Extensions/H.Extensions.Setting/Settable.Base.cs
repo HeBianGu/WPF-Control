@@ -51,8 +51,14 @@ public abstract class SettableBase : DisplayBindableBase, ISettable, ILoadable, 
 
     public virtual bool Load(out string message)
     {
+        var path= this.GetDefaultPath();
+        if (!File.Exists(path))
+        {
+            message = "文件不存在";
+            return false;
+        }
         message = null;
-        this.Load(this.GetDefaultPath());
+        this.Load(path);
         return true;
     }
 

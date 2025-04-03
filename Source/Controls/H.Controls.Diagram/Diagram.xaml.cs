@@ -11,6 +11,7 @@ global using System.Windows.Input;
 global using System.Windows.Media;
 global using H.Common.Interfaces;
 global using H.Extensions.Common;
+using H.Controls.Diagram.Parts.Base;
 
 namespace H.Controls.Diagram;
 
@@ -26,10 +27,12 @@ public interface IDiagram
     IEnumerable<Part> GetAllParts(Func<Part, bool> predicate = null);
     void RemoveNode(params Node[] nodes);
     void ZoomTo(Point point);
-    void ZoomTo(Rect rect);
-    void ZoomToFit();
-    void ZoomToFit(params Part[] parts);
+    void ZoomTo(Rect rect, double scale);
+    void ZoomToFit(double scale);
+    void ZoomToFit(double scale, params Part[] parts);
 }
+
+
 
 [TemplatePart(Name = "NodeLayer", Type = typeof(NodeLayer))]
 [TemplatePart(Name = "LinkLayer", Type = typeof(LinkLayer))]
@@ -515,12 +518,12 @@ public partial class Diagram : ContentControl, IDiagram
         this.RaiseEvent(args);
     }
 
-    public void ZoomToFit()
+    public void ZoomToFit(double scale = 1.2)
     {
-        this.ZoomToFit(this.Nodes.ToArray());
+        this.ZoomToFit(scale, this.Nodes.ToArray());
     }
 
-    public void ZoomToFit(params Part[] parts)
+    public void ZoomToFit(double scale = 1.2, params Part[] parts)
     {
         if (parts == null || parts.Length == 0)
             return;
@@ -532,23 +535,27 @@ public partial class Diagram : ContentControl, IDiagram
             else
                 rect.Union(item);
         }
-        this.ZoomTo(rect);
+        this.ZoomTo(rect, scale);
     }
 
-    public void ZoomTo(Rect rect)
+    public void ZoomTo(Rect rect, double scale = 1.8)
     {
+        var center = rect.GetCenter();
+        Matrix matrix = new Matrix();
+        matrix.ScaleAt(scale, scale, center.X, center.Y);
+        rect.Transform(matrix);
         IZoombox zoombox = this.GetParent<DependencyObject>(x => x is IZoombox) as IZoombox;
         zoombox.ZoomTo(rect);
     }
 
     public void ZoomTo(Part part, double scale = 1.8)
     {
-        var r = part.Bound;
-        var center = r.GetCenter();
-        Matrix matrix = new Matrix();
-        matrix.ScaleAt(1.8, 1.8, center.X, center.Y);
-        r.Transform(matrix);
-        this.ZoomTo(r);
+        //var r = part.Bound;
+        //var center = r.GetCenter();
+        //Matrix matrix = new Matrix();
+        //matrix.ScaleAt(1.8, 1.8, center.X, center.Y);
+        //r.Transform(matrix);
+        this.ZoomTo(part.Bound, scale);
     }
 
     public void ZoomToSelectPart()

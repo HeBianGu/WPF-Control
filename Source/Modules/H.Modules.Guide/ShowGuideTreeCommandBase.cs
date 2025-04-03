@@ -11,7 +11,11 @@ public abstract class ShowGuideTreeCommandBase : DisplayMarkupCommandBase
         UIElement element = parameter is UIElement e ? e : GuideExtension.GetAdornerElement();
         var tree = element.GetGuideTree(this.IsMatch);
         var presenter = new GuideTreePresenter(tree);
-        await IocMessage.Dialog.Show(presenter);
+        await IocMessage.Dialog.Show(presenter, x =>
+        {
+            x.MinWidth = 500;
+            x.HorizontalContentAlignment = HorizontalAlignment.Stretch;
+        });
     }
 
     protected abstract bool IsMatch(UIElement element);

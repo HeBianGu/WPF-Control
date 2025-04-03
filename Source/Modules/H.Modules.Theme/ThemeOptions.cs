@@ -195,6 +195,12 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoad,
     public override bool Load(out string message)
     {
         var r = base.Load(out message);
+        if (r == false)
+        {
+            this.RefreshTheme();
+            return false;
+        }
+         
         if (this.ColorResourceSelectedIndex < 0 || this.ColorResourceSelectedIndex >= this.ColorResources.Count)
             this.ColorResourceSelectedIndex = 0;
         this.ColorResource = this.ColorResources[this.ColorResourceSelectedIndex];

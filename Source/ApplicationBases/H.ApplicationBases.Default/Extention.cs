@@ -1,4 +1,5 @@
 ﻿using H.Modules.About;
+using H.Modules.Theme;
 using H.Services.Common.About;
 using H.Themes.Colors.Accent;
 using H.Themes.Colors.Blue;
@@ -56,7 +57,7 @@ namespace System
             app.UseWindowSetting();
         }
 
-        public static void UseAllThemes(this IApplicationBuilder app)
+        public static void UseAllThemes(this IApplicationBuilder app, Action<ThemeOptions> option = null)
         {
             app.UseTheme(x =>
             {
@@ -97,6 +98,7 @@ namespace System
                 //x.ColorResources.Add(new IndustrialDarkColorResource());
                 //x.ColorResources.Add(new IndustrialDarkColorResource());
                 //x.ColorResources.Add(new IndustrialDarkColorResource());
+                option?.Invoke(x);
 
             });
         }
