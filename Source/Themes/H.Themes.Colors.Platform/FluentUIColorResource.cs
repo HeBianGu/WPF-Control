@@ -1,18 +1,13 @@
 ﻿using H.Themes.Default.Colors;
+using System.ComponentModel.DataAnnotations;
 using System.Windows;
 
 namespace H.Themes.Colors.Platform;
-
-public class FluentUIColorResource : IColorResource
+[Display(Name = "‌Fluent UI (Microsoft)", GroupName = "系统平台", Description = "纯色", Order = 100, Prompt = "试用")]
+public class FluentUIColorResource : ColorResourceBase
 {
-    public string Name => "‌Fluent UI (Microsoft)";
-    public ResourceDictionary Resource => new ResourceDictionary()
+    public override ResourceDictionary Resource => new ResourceDictionary()
     {
         Source = new Uri("pack://application:,,,/H.Themes.Colors.Platform;component/FluentUI.xaml")
     };
-
-    public override string ToString()
-    {
-        return this.Name;
-    }
 }

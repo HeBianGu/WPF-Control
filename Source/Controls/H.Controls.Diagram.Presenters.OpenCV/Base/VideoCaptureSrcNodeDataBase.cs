@@ -6,7 +6,7 @@ using System.Windows.Threading;
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 
 [Icon(FontIcons.Camera)]
-public abstract class VideoCaptureImageImportNodeDataBase : SrcImageNodeDataBase, IVideoCaptureImageImportNodeData
+public abstract class VideoCaptureSrcNodeDataBase : SrcImageNodeDataBase, IVideoNodeData
 {
     private int _sleepMilliseconds = 30;
     [Display(Name = "间隔时间", GroupName = "数据")]

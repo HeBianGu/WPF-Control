@@ -1,18 +1,13 @@
 ﻿using H.Themes.Default.Colors;
+using System.ComponentModel.DataAnnotations;
 using System.Windows;
 
 namespace H.Themes.Colors.Accent;
-
-public class AccentLightColorResource : IColorResource
+[Display(Name = "浅主题", GroupName = "强力推荐", Description = "纯色", Order = 10, Prompt = "强力推荐")]
+public class AccentLightColorResource : ColorResourceBase
 {
-    public string Name => "浅主题";
-    public ResourceDictionary Resource => new ResourceDictionary()
+    public override ResourceDictionary Resource => new ResourceDictionary()
     {
         Source = new Uri("pack://application:,,,/H.Themes.Colors.Accent;component/Light.xaml")
     };
-
-    public override string ToString()
-    {
-        return this.Name;
-    }
 }

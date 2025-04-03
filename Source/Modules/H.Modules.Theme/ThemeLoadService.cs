@@ -5,6 +5,6 @@ public class ThemeLoadService : IThemeLoadService
 {
     public bool Load(out string message)
     {
-        return ThemeOption.Instance.Load(out message);
+        return ThemeOptions.Instance.Load(out message);
     }
 }

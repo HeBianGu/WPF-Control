@@ -48,18 +48,18 @@ namespace H.Modules.Theme
             {
                 ThemeTypeExtension.ChangeResourceDictionary(this.Light.Resource, x =>
                 {
-                    return ThemeOption.Instance.ColorResources.Any(l => l.Resource.Source == x.Source) || x.Source == this.Dark.Resource.Source;
+                    return ThemeOptions.Instance.ColorResources.Any(l => l.Resource.Source == x.Source) || x.Source == this.Dark.Resource.Source;
                 });
             }
             else
             {
                 ThemeTypeExtension.ChangeResourceDictionary(this.Dark.Resource, x =>
                 {
-                    return ThemeOption.Instance.ColorResources.Any(l => l.Resource.Source == x.Source) || x.Source == this.Light.Resource.Source;
+                    return ThemeOptions.Instance.ColorResources.Any(l => l.Resource.Source == x.Source) || x.Source == this.Light.Resource.Source;
                 });
             }
-            ThemeOption.Instance.ColorResource = ThemeOption.Instance.ColorResources.FirstOrDefault(x => x.Name == (this.IsDark ? this.Dark.Name : this.Light.Name));
-            ThemeOption.Instance.RefreshBrushResourceDictionary();
+            ThemeOptions.Instance.ColorResource = ThemeOptions.Instance.ColorResources.FirstOrDefault(x => x.Name == (this.IsDark ? this.Dark.Name : this.Light.Name));
+            ThemeOptions.Instance.RefreshBrushResourceDictionary();
             this.Save(out string message);
         }
 

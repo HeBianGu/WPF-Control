@@ -20,7 +20,6 @@ global using System.IO;
 global using System.Windows.Controls.Primitives;
 global using H.Themes.Default.Colors;
 global using H.Themes.Default.Extensions;
-global using H.Extensions.TypeConverter;
 
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None, //where theme specific resource dictionaries are located

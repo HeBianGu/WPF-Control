@@ -1,18 +1,13 @@
 ﻿using H.Themes.Default.Colors;
+using System.ComponentModel.DataAnnotations;
 using System.Windows;
 
 namespace H.Themes.Colors.Platform;
-
-public class AppleColorResource : IColorResource
+[Display(Name = "Apple (IOS)", GroupName = "系统平台", Description = "纯色", Order = 100, Prompt = "试用")]
+public class AppleColorResource : ColorResourceBase
 {
-    public string Name => "Apple (IOS)";
-    public ResourceDictionary Resource => new ResourceDictionary()
+    public override ResourceDictionary Resource => new ResourceDictionary()
     {
         Source = new Uri("pack://application:,,,/H.Themes.Colors.Platform;component/Apple.xaml")
     };
-
-    public override string ToString()
-    {
-        return this.Name;
-    }
 }

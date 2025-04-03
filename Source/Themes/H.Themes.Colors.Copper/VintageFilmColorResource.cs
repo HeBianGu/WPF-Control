@@ -1,4 +1,5 @@
 ﻿using H.Themes.Default.Colors;
+using System.ComponentModel.DataAnnotations;
 using System.Windows;
 
 namespace H.Themes.Colors.Copper;
@@ -18,16 +19,11 @@ namespace H.Themes.Colors.Copper;
 //<!-- 文字 -->
 //<Color x:Key="Vintage.Text">#4A3A2E</Color>
 //<Color x:Key="Vintage.TextLight">#8B7D6E</Color>
-public class VintageFilmColorResource : IColorResource
+[Display(Name = "复古胶片风", GroupName = "柔和复古风", Description = "暖调褪色感，适合摄影、文艺类应用", Order = 100, Prompt = "试用")]
+public class VintageFilmColorResource : ColorResourceBase
 {
-    public string Name => "复古胶片风";
-    public ResourceDictionary Resource => new ResourceDictionary()
+    public override ResourceDictionary Resource => new ResourceDictionary()
     {
         Source = new Uri("pack://application:,,,/H.Themes.Colors.Copper;component/Light.xaml")
     };
-
-    public override string ToString()
-    {
-        return this.Name;
-    }
 }

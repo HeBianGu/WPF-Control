@@ -48,7 +48,7 @@
         </Border>
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type b:VideoCaptureImageImportNodeDataBase}">
+    <DataTemplate DataType="{x:Type b:VideoCaptureSrcNodeDataBase}">
         <Border Style="{DynamicResource {x:Static h:DiagramKeys.StateBorder}}">
             <Grid>
                 <Image Width="40"

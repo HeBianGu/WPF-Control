@@ -3,6 +3,7 @@ using H.Controls.Form;
 using H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem;
 using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
 using H.Extensions.Setting;
+using H.Mvvm.Commands;
 using H.Services.AppPath;
 using H.Services.Common;
 using H.Services.Setting;
@@ -22,9 +23,9 @@ using System.Xml.Serialization;
 
 namespace H.Modules.Theme;
 [Display(Name = "主题设置", GroupName = SettingGroupNames.GroupStyle, Description = "登录页面设置的信息")]
-public class ThemeOption : IocOptionInstance<ThemeOption>, ILoginedSplashLoad, IThemeOption
+public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoad, IThemeOption
 {
-    public ThemeOption()
+    public ThemeOptions()
     {
         this.ColorResources.Add(new DarkColorResource());
         this.ColorResources.Add(new DefaultColorResource());
@@ -135,6 +136,15 @@ public class ThemeOption : IocOptionInstance<ThemeOption>, ILoginedSplashLoad, I
     [XmlIgnore]
     [Browsable(false)]
     public List<FontFamily> FontFamilys { get; } = new List<FontFamily>();
+
+    public RelayCommand RefreshThemeCommand => new RelayCommand(x =>
+    {
+        if (x is IColorResource resource && resource != this.ColorResource)
+        {
+            this.ColorResource = resource;
+            this.RefreshTheme();
+        }
+    });
 
     [Browsable(false)]
     public int ColorResourceSelectedIndex { get; set; }

@@ -1,4 +1,5 @@
 ﻿using H.Themes.Default.Colors;
+using System.ComponentModel.DataAnnotations;
 using System.Windows;
 
 namespace H.Themes.Colors.Technology;
@@ -6,16 +7,11 @@ namespace H.Themes.Colors.Technology;
 /// <summary>
 /// SOIOR：清新而自然，如同春天的气息，充满了生机与活力。
 /// </summary>
-public class TechnologySOIORColorResource : IColorResource
+[Display(Name = "春日生机", GroupName = "强力推荐", Description = "清新而自然，如同春天的气息，充满了生机与活力", Order = 20, Prompt = "强力推荐")]
+public class TechnologySOIORColorResource : ColorResourceBase
 {
-    public string Name => "春日生机";
-    public ResourceDictionary Resource => new ResourceDictionary()
+    public override ResourceDictionary Resource => new ResourceDictionary()
     {
         Source = new Uri("pack://application:,,,/H.Themes.Colors.Technology;component/TechnologySOIOR.xaml")
     };
-
-    public override string ToString()
-    {
-        return this.Name;
-    }
 }

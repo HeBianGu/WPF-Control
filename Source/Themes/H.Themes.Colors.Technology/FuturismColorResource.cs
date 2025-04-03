@@ -1,4 +1,5 @@
 ﻿using H.Themes.Default.Colors;
+using System.ComponentModel.DataAnnotations;
 using System.Windows;
 
 namespace H.Themes.Colors.Technology;
@@ -17,16 +18,11 @@ namespace H.Themes.Colors.Technology;
 //<!-- 文字 -->
 //<Color x:Key="Neon.Text">#FFFFFF</Color>
 //<Color x:Key="Neon.TextGlow">#A0A0A0</Color> <!-- 发光弱化 -->
-public class FuturismColorResource : IColorResource
+[Display(Name = "未来荧光风", GroupName = "深色科技风", Description = "高饱和荧光色 + 深空背景，适合游戏、潮流应用 ", Order = 100, Prompt = "试用")]
+public class FuturismColorResource : ColorResourceBase
 {
-    public string Name => "未来荧光风";
-    public ResourceDictionary Resource => new ResourceDictionary()
+    public override ResourceDictionary Resource => new ResourceDictionary()
     {
         Source = new Uri("pack://application:,,,/H.Themes.Colors.Technology;component/Futurism.xaml")
     };
-
-    public override string ToString()
-    {
-        return this.Name;
-    }
 }

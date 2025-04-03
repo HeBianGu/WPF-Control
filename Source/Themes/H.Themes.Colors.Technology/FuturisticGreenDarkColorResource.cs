@@ -1,18 +1,13 @@
 ﻿using H.Themes.Default.Colors;
+using System.ComponentModel.DataAnnotations;
 using System.Windows;
 
 namespace H.Themes.Colors.Technology;
-
-public class FuturisticGreenDarkColorResource : IColorResource
+[Display(Name = "未来主义绿", GroupName = "深色科技风", Description = "纯色", Order = 100, Prompt = "试用")]
+public class FuturisticGreenDarkColorResource : ColorResourceBase
 {
-    public string Name => "未来主义绿";
-    public ResourceDictionary Resource => new ResourceDictionary()
+    public override ResourceDictionary Resource => new ResourceDictionary()
     {
         Source = new Uri("pack://application:,,,/H.Themes.Colors.Technology;component/FuturisticGreenDark.xaml")
     };
-
-    public override string ToString()
-    {
-        return this.Name;
-    }
 }

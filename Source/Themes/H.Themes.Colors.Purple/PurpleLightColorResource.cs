@@ -1,18 +1,13 @@
 ﻿using H.Themes.Default.Colors;
+using System.ComponentModel.DataAnnotations;
 using System.Windows;
 
 namespace H.Themes.Colors.Purple;
-
-public class PurpleLightColorResource : IColorResource
+[Display(Name = "浅紫色", GroupName = "纯色", Description = "纯色", Order = 100, Prompt = "长期支持")]
+public class PurpleLightColorResource : ColorResourceBase
 {
-    public string Name => "浅紫色";
-    public ResourceDictionary Resource => new ResourceDictionary()
+    public override ResourceDictionary Resource => new ResourceDictionary()
     {
         Source = new Uri("pack://application:,,,/H.Themes.Colors.Purple;component/Light.xaml")
     };
-
-    public override string ToString()
-    {
-        return this.Name;
-    }
 }

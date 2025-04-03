@@ -1,18 +1,14 @@
 ﻿using H.Themes.Default.Colors;
+using System.ComponentModel.DataAnnotations;
 using System.Windows;
 
 namespace H.Themes.Colors.Technology;
 
-public class TechnologyBlueDarkColorResource : IColorResource
+[Display(Name = "深空科技蓝", GroupName = "强力推荐", Description = "纯色", Order = 0, Prompt = "强力推荐")]
+public class TechnologyBlueDarkColorResource : ColorResourceBase
 {
-    public string Name => "深空科技蓝";
-    public ResourceDictionary Resource => new ResourceDictionary()
+    public override ResourceDictionary Resource => new ResourceDictionary()
     {
         Source = new Uri("pack://application:,,,/H.Themes.Colors.Technology;component/TechnologyBlueDark.xaml")
     };
-
-    public override string ToString()
-    {
-        return this.Name;
-    }
 }

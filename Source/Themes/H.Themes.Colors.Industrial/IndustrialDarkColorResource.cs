@@ -1,18 +1,13 @@
 ﻿using H.Themes.Default.Colors;
+using System.ComponentModel.DataAnnotations;
 using System.Windows;
 
 namespace H.Themes.Colors.Industrial;
-
-public class IndustrialDarkColorResource : IColorResource
+[Display(Name = "暗黑工业风", GroupName = "生产工业风", Description = "纯色", Order = 100, Prompt = "试用")]
+public class IndustrialDarkColorResource : ColorResourceBase
 {
-    public string Name => "暗黑工业风";
-    public ResourceDictionary Resource => new ResourceDictionary()
+    public override ResourceDictionary Resource => new ResourceDictionary()
     {
         Source = new Uri("pack://application:,,,/H.Themes.Colors.Industrial;component/Dark.xaml")
     };
-
-    public override string ToString()
-    {
-        return this.Name;
-    }
 }

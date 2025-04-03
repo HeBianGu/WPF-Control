@@ -2,15 +2,11 @@
 
 namespace H.Themes.Default.Colors;
 
-public class DarkColorResource : IColorResource
+[Display(Name = "深色", GroupName = "强力推荐", Description = "纯色", Order = 10, Prompt = "强力推荐")]
+public class DarkColorResource : ColorResourceBase
 {
-    public string Name => "深色";
-    public ResourceDictionary Resource => new ResourceDictionary()
+    public override ResourceDictionary Resource => new ResourceDictionary()
     {
         Source = new Uri("pack://application:,,,/H.Themes.Default;component/Colors/Dark.xaml")
     };
-    public override string ToString()
-    {
-        return this.Name;
-    }
 }

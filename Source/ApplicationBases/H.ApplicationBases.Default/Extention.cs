@@ -33,7 +33,8 @@ namespace System
                 x.IsDark = false;
                 x.Dark = new GrayDarkColorResource();
             });
-            services.AddIThemeLoadService();
+            services.AddThemeLoadService();
+            services.AddColorThemeViewPresenter();
         }
 
         public static void AddDefaultMessages(this IServiceCollection services)

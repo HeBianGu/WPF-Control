@@ -1,9 +1,6 @@
-﻿using System.Threading.Tasks;
-using System.Windows.Threading;
-
-namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Video;
+﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Video;
 [Display(Name = "摄像头", GroupName = "数据源", Description = "降噪成黑白色", Order = 0)]
-public class CameraCapture : VideoCaptureImageImportNodeDataBase
+public class CameraCapture : VideoCaptureSrcNodeDataBase
 {
     private VideoCaptureAPIs _videoCaptureAPIs = VideoCaptureAPIs.ANY;
     [Display(Name = "摄像头API", GroupName = "数据")]

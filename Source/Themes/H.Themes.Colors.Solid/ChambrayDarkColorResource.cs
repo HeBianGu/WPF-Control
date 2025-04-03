@@ -1,18 +1,13 @@
 ﻿using H.Themes.Default.Colors;
+using System.ComponentModel.DataAnnotations;
 using System.Windows;
 
 namespace H.Themes.Colors.Solid;
-
-public class ChambrayDarkColorResource : IColorResource
+[Display(Name = "Chambray Dark", GroupName = "纯色", Description = "纯色", Order = 90, Prompt = "试用")]
+public class ChambrayDarkColorResource : ColorResourceBase
 {
-    public string Name => "Chambray Dark";
-    public ResourceDictionary Resource => new ResourceDictionary()
+    public override ResourceDictionary Resource => new ResourceDictionary()
     {
         Source = new Uri("pack://application:,,,/H.Themes.Colors.Solid;component/ChambrayDark.xaml")
     };
-
-    public override string ToString()
-    {
-        return this.Name;
-    }
 }

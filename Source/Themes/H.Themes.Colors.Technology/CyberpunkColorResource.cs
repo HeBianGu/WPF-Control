@@ -1,4 +1,5 @@
 ﻿using H.Themes.Default.Colors;
+using System.ComponentModel.DataAnnotations;
 using System.Windows;
 
 namespace H.Themes.Colors.Technology;
@@ -18,16 +19,11 @@ namespace H.Themes.Colors.Technology;
 //<!-- 文字 -->
 //<Color x:Key="DarkTech.Text">#E0E0E0</Color>
 //<Color x:Key="DarkTech.TextDim">#8A8F9D</Color>
-public class CyberpunkColorResource : IColorResource
+[Display(Name = "赛博朋克风", GroupName = "深色科技风", Description = "霓虹对比色 + 深色背景，适合数据看板、科技感应用", Order = 100, Prompt = "试用")]
+public class CyberpunkColorResource : ColorResourceBase
 {
-    public string Name => "赛博朋克风";
-    public ResourceDictionary Resource => new ResourceDictionary()
+    public override ResourceDictionary Resource => new ResourceDictionary()
     {
         Source = new Uri("pack://application:,,,/H.Themes.Colors.Technology;component/CyberpunkDark.xaml")
     };
-
-    public override string ToString()
-    {
-        return this.Name;
-    }
 }

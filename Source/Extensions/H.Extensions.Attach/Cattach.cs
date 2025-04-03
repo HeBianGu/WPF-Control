@@ -306,7 +306,7 @@ public static partial class Cattach
       DependencyProperty.RegisterAttached("Password",
       typeof(string), typeof(Cattach),
       new FrameworkPropertyMetadata(string.Empty, OnPasswordPropertyChanged));
-  
+
     private static readonly DependencyProperty IsUpdatingProperty = DependencyProperty.RegisterAttached("IsUpdating", typeof(bool), typeof(Cattach));
     public static string GetPassword(DependencyObject dp)
     {
@@ -539,20 +539,20 @@ public static partial class Cattach
     {
 
     }
-  
+
     public static readonly DependencyProperty IsDragEnterProperty = DependencyProperty.RegisterAttached(
         "IsDragEnter", typeof(bool), typeof(Cattach), new FrameworkPropertyMetadata(default(bool), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnIsDragEnterChanged));
-   
+
     public static bool GetIsDragEnter(DependencyObject d)
     {
         return (bool)d.GetValue(IsDragEnterProperty);
     }
-  
+
     public static void SetIsDragEnter(DependencyObject obj, bool value)
     {
         obj.SetValue(IsDragEnterProperty, value);
     }
- 
+
     private static void OnIsDragEnterChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args)
     {
 
@@ -939,10 +939,30 @@ public static partial class Cattach
         Dock o = (Dock)e.OldValue;
     }
 
+    /// <summary>
+    /// 通过绑定方式设置资源
+    /// </summary>
+    public static readonly DependencyProperty DynamicResourcesProperty =
+        DependencyProperty.RegisterAttached(
+            "DynamicResources",
+            typeof(ResourceDictionary),
+            typeof(Cattach),
+            new PropertyMetadata(null, OnDynamicResourcesChanged));
 
+    public static void SetDynamicResources(DependencyObject obj, ResourceDictionary value) =>
+        obj.SetValue(DynamicResourcesProperty, value);
+
+    public static ResourceDictionary GetDynamicResources(DependencyObject obj) =>
+        (ResourceDictionary)obj.GetValue(DynamicResourcesProperty);
+
+    private static void OnDynamicResourcesChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        if (d is FrameworkElement element && e.NewValue is ResourceDictionary newResources)
+        {
+            element.Resources = newResources; // 替换整个 Resources
+        }
+    }
 }
-
-
 //public class TextBoxHistoryMetaSetting : IMetaSetting
 //{
 //    public List<string> Data { get; set; } = new List<string>();

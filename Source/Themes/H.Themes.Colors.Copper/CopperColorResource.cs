@@ -1,18 +1,13 @@
 ﻿using H.Themes.Default.Colors;
+using System.ComponentModel.DataAnnotations;
 using System.Windows;
 
 namespace H.Themes.Colors.Copper;
-
-public class CopperColorResource : IColorResource
+[Display(Name = "深铜色", GroupName = "纯色", Description = "纯色", Order = 100, Prompt = "试用")]
+public class CopperColorResource : ColorResourceBase
 {
-    public string Name => "深铜色";
-    public ResourceDictionary Resource => new ResourceDictionary()
+    public override ResourceDictionary Resource => new ResourceDictionary()
     {
         Source = new Uri("pack://application:,,,/H.Themes.Colors.Copper;component/Dark.xaml")
     };
-
-    public override string ToString()
-    {
-        return this.Name;
-    }
 }

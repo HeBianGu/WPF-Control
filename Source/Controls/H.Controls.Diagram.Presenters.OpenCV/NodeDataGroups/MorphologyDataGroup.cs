@@ -2,7 +2,7 @@
 
 [Icon(FontIcons.Tablet)]
 [Display(Name = "形态", Description = "对图像进行腐蚀、膨胀、开运算和闭运算", Order = 4)]
-public class MorphologyDataGroup : BasicDataGroupBase
+public class MorphologyDataGroup : BasicDataGroupBase, IVideoDataGroup, IImageDataGroup
 {
     protected override IEnumerable<INodeData> CreateNodeDatas()
     {

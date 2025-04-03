@@ -1,18 +1,13 @@
 ﻿using H.Themes.Default.Colors;
+using System.ComponentModel.DataAnnotations;
 using System.Windows;
 
 namespace H.Themes.Colors.Solid;
-
-public class OracleDarkColorResource : IColorResource
+[Display(Name = "Oracle Dark", GroupName = "纯色", Description = "纯色", Order = 90, Prompt = "试用")]
+public class OracleDarkColorResource : ColorResourceBase
 {
-    public string Name => "Oracle Dark";
-    public ResourceDictionary Resource => new ResourceDictionary()
+    public override ResourceDictionary Resource => new ResourceDictionary()
     {
         Source = new Uri("pack://application:,,,/H.Themes.Colors.Solid;component/OracleDark.xaml")
     };
-
-    public override string ToString()
-    {
-        return this.Name;
-    }
 }

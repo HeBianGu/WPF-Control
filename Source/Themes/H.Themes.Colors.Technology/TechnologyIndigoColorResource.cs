@@ -1,4 +1,5 @@
 ﻿using H.Themes.Default.Colors;
+using System.ComponentModel.DataAnnotations;
 using System.Windows;
 
 namespace H.Themes.Colors.Technology;
@@ -6,16 +7,11 @@ namespace H.Themes.Colors.Technology;
 /// <summary>
 /// 星际无线靛：深邃而广阔，如同无垠的宇宙，充满了未知与探索。
 /// </summary>
-public class TechnologyIndigoColorResource : IColorResource
+[Display(Name = "星际无线靛", GroupName = "深色科技风", Description = "深邃而广阔，如同无垠的宇宙，充满了未知与探索", Order = 100, Prompt = "试用")]
+public class TechnologyIndigoColorResource : ColorResourceBase
 {
-    public string Name => "星际无线靛";
-    public ResourceDictionary Resource => new ResourceDictionary()
+    public override ResourceDictionary Resource => new ResourceDictionary()
     {
         Source = new Uri("pack://application:,,,/H.Themes.Colors.Technology;component/TechnologyIndigo.xaml")
     };
-
-    public override string ToString()
-    {
-        return this.Name;
-    }
 }
