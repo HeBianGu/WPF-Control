@@ -137,13 +137,15 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoad,
     [Browsable(false)]
     public List<FontFamily> FontFamilys { get; } = new List<FontFamily>();
 
+    [JsonIgnore]
+    [XmlIgnore]
     public RelayCommand RefreshThemeCommand => new RelayCommand(x =>
     {
-        if (x is IColorResource resource && resource != this.ColorResource)
-        {
-            this.ColorResource = resource;
+        //if (x is IColorResource resource && resource != this.ColorResource)
+        //{
+        //    this.ColorResource = resource;
             this.RefreshTheme();
-        }
+        //}
     });
 
     [Browsable(false)]
@@ -235,6 +237,8 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoad,
 
     private void ChangeBackgroundTheme()
     {
+        if (this.BackgroundResource == null)
+            return;
         ResourceDictionary resource = this.BackgroundResource.Resource;
         ThemeTypeExtension.ChangeResourceDictionary(resource, x =>
         {

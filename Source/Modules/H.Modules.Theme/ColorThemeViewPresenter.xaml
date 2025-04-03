@@ -19,7 +19,8 @@
             </Grid.Resources>
             <ListBox Cattach.ItemHeight="Auto"
                      ItemsSource="{Binding Source={StaticResource Source}}"
-                     ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                     SelectedItem="{Binding Source={x:Static local:ThemeOptions.Instance}, Path=ColorResource, Mode=TwoWay}">
                 <ItemsControl.GroupStyle>
                     <GroupStyle>
                         <GroupStyle.Panel>
@@ -32,21 +33,9 @@
                                 <Setter Property="Template">
                                     <Setter.Value>
                                         <ControlTemplate TargetType="{x:Type GroupItem}">
-                                            <Expander Header="{Binding Name}"
-                                                      IsExpanded="True">
-                                                <!--<Expander.HeaderTemplate>
-                                                <DataTemplate>
-                                                    <TextBlock HorizontalAlignment="Left"
-                                                               FontWeight="Bold">
-                                                        <Run Text="版本：" />
-                                                        <Run Text="{Binding G}" />
-                                                        <Run x:Name="n"
-                                                             Foreground="{DynamicResource {x:Static BrushKeys.Red}}" />
-                                                    </TextBlock>
-                                                </DataTemplate>
-                                            </Expander.HeaderTemplate>-->
+                                            <GroupBox Header="{Binding Name}">
                                                 <ItemsPresenter />
-                                            </Expander>
+                                            </GroupBox>
                                         </ControlTemplate>
                                     </Setter.Value>
                                 </Setter>
@@ -56,87 +45,89 @@
                 </ItemsControl.GroupStyle>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <DockPanel IsHitTestVisible="False">
-                            <TextBlock Margin="5"
-                                       HorizontalAlignment="Center"
-                                       DockPanel.Dock="Bottom"
-                                       Text="{Binding Name}" />
-                            <Border Width="250"
-                                    Height="150"
-                                    Margin="5"
-                                    Cattach.DynamicResources="{Binding Resource}"
-                                    Style="{DynamicResource {x:Static BorderKeys.Default}}">
-                                <Border.Background>
-                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
-                                </Border.Background>
-                                <UniformGrid Columns="1">
-                                    <TextBlock HorizontalAlignment="Center"
-                                               VerticalAlignment="Center">
-                                        <Run Text="【" /> <Run Text="{Binding Prompt}" />
-                                        <Run Text="】" />
-                                        <TextBlock.Foreground>
-                                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundTitle}}" />
-                                        </TextBlock.Foreground>
-                                    </TextBlock>
-                                    <TextBlock HorizontalAlignment="Center"
-                                               VerticalAlignment="Center"
-                                               Text="{Binding Name}">
-                                        <TextBlock.Foreground>
-                                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
-                                        </TextBlock.Foreground>
-                                    </TextBlock>
-                                    <TextBlock HorizontalAlignment="Center"
-                                               VerticalAlignment="Center"
-                                               Text="{Binding Description}"
-                                               TextAlignment="Center"
-                                               TextTrimming="CharacterEllipsis"
-                                               TextWrapping="Wrap">
-                                        <TextBlock.Foreground>
-                                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundAssist}}" />
-                                        </TextBlock.Foreground>
-                                    </TextBlock>
-                                    <UniformGrid Rows="1">
-                                        <Button Content="默认">
-                                            <Button.Foreground>
-                                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionForeground}}" />
-                                            </Button.Foreground>
-                                            <Button.Background>
-                                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />
-                                            </Button.Background>
-                                        </Button>
-                                        <Button Content="主色">
-                                            <Button.Background>
-                                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Accent}}" />
-                                            </Button.Background>
-                                            <Button.Foreground>
-                                                <SolidColorBrush Color="White" />
-                                            </Button.Foreground>
-                                        </Button>
-                                        <Button Content="错误">
-                                            <Button.Background>
-                                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Red}}" />
-                                            </Button.Background>
-                                            <Button.Foreground>
-                                                <SolidColorBrush Color="White" />
-                                            </Button.Foreground>
-                                        </Button>
-                                        <Button Content="成功">
-                                            <Button.Background>
-                                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Green}}" />
-                                            </Button.Background>
-                                            <Button.Foreground>
-                                                <SolidColorBrush Color="White" />
-                                            </Button.Foreground>
-                                        </Button>
+                        <Border BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}">
+                            <DockPanel IsHitTestVisible="False">
+                                <TextBlock Margin="5"
+                                           HorizontalAlignment="Center"
+                                           DockPanel.Dock="Bottom"
+                                           Text="{Binding Name}" />
+                                <Border Width="250"
+                                        Height="150"
+                                        Margin="5"
+                                        Cattach.DynamicResources="{Binding Resource}"
+                                        Style="{DynamicResource {x:Static BorderKeys.Default}}">
+                                    <Border.Background>
+                                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
+                                    </Border.Background>
+                                    <UniformGrid Columns="1">
+                                        <TextBlock HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center">
+                                            <Run Text="【" /> <Run Text="{Binding Prompt}" />
+                                            <Run Text="】" />
+                                            <TextBlock.Foreground>
+                                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundTitle}}" />
+                                            </TextBlock.Foreground>
+                                        </TextBlock>
+                                        <TextBlock HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   Text="{Binding Name}">
+                                            <TextBlock.Foreground>
+                                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
+                                            </TextBlock.Foreground>
+                                        </TextBlock>
+                                        <TextBlock HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   Text="{Binding Description}"
+                                                   TextAlignment="Center"
+                                                   TextTrimming="CharacterEllipsis"
+                                                   TextWrapping="Wrap">
+                                            <TextBlock.Foreground>
+                                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundAssist}}" />
+                                            </TextBlock.Foreground>
+                                        </TextBlock>
+                                        <UniformGrid Rows="1">
+                                            <Button Content="默认按钮">
+                                                <Button.Foreground>
+                                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionForeground}}" />
+                                                </Button.Foreground>
+                                                <Button.Background>
+                                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />
+                                                </Button.Background>
+                                            </Button>
+                                            <!--<Button Content="主色">
+                                                <Button.Background>
+                                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Accent}}" />
+                                                </Button.Background>
+                                                <Button.Foreground>
+                                                    <SolidColorBrush Color="White" />
+                                                </Button.Foreground>
+                                            </Button>
+                                            <Button Content="错误">
+                                                <Button.Background>
+                                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Red}}" />
+                                                </Button.Background>
+                                                <Button.Foreground>
+                                                    <SolidColorBrush Color="White" />
+                                                </Button.Foreground>
+                                            </Button>
+                                            <Button Content="成功">
+                                                <Button.Background>
+                                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Green}}" />
+                                                </Button.Background>
+                                                <Button.Foreground>
+                                                    <SolidColorBrush Color="White" />
+                                                </Button.Foreground>
+                                            </Button>-->
+                                        </UniformGrid>
                                     </UniformGrid>
-                                </UniformGrid>
-                            </Border>
-                        </DockPanel>
+                                </Border>
+                            </DockPanel>
+                        </Border>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <WrapPanel HorizontalAlignment="Center" />
+                        <WrapPanel HorizontalAlignment="Left" />
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
                 <b:Interaction.Triggers>

@@ -175,8 +175,6 @@ public abstract class ProjectServiceBase<T> : BindableBase, IProjectService, IDa
         Projects<T> data = this.GetSerializer().Load<Projects<T>>(this._projectsPath);
         if (data == null)
             return null;
-        foreach (var item in data.Items)
-            item.Path = this.GetFolderPath();
         return data;
     }
 

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Windows;
 
 namespace H.Themes.Colors.Solid;
-[Display(Name = "Oracle Dark", GroupName = "纯色", Description = "纯色", Order = 90, Prompt = "试用")]
+[Display(Name = "Oracle Dark", GroupName = "纯色", Description = "纯色", Order = 90, Prompt = "试验")]
 public class OracleDarkColorResource : ColorResourceBase
 {
     public override ResourceDictionary Resource => new ResourceDictionary()

@@ -44,9 +44,17 @@ public class SettingDataService : LazyInstance<SettingDataService>, ISettingData
         foreach (ILoadable item in this.Settings.OfType<ILoadable>())
         {
             action?.Invoke(item as ISettable);
-            var r = item.Load(out message);
-            if (r == false)
-                IocLog.Instance?.Error(message);
+            try
+            {
+                var r = item.Load(out message);
+                if (r == false)
+                    IocLog.Instance?.Error(message);
+            }
+            catch (Exception ex)
+            {
+                message=ex.Message;
+                IocLog.Instance?.Error(ex);
+            }
         }
 
         return true;

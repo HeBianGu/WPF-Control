@@ -17,7 +17,7 @@
             <VisualStateManager.VisualStateGroups>
                 <VisualStateGroup x:Name="CommonStates">
                     <VisualState x:Name="Normal" />
-                    <VisualState x:Name="MouseOver">
+                    <!--<VisualState x:Name="MouseOver">
                         <Storyboard>
                             <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
                                                           Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
@@ -34,7 +34,7 @@
                                                      Value="{DynamicResource {x:Static ColorKeys.Selected}}" />
                             </ColorAnimationUsingKeyFrames>
                         </Storyboard>
-                    </VisualState>
+                    </VisualState>-->
                     <!--<VisualState x:Name="Disabled">
                         <Storyboard>
                             <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
@@ -85,6 +85,12 @@
             </Grid>
         </Border>
         <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="Border" Property="Background" Value="{DynamicResource {x:Static BrushKeys.Selected}}" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Opacity" Value="0.5" />
+            </Trigger>
             <Trigger Property="IsEnabled" Value="false">
                 <Setter Property="Opacity" Value="0.6" />
             </Trigger>

@@ -19,7 +19,7 @@
                       Opacity="1.42"
                       RenderingBias="Performance"
                       ShadowDepth="1.5"
-                      Color="Orange" />
+                      Color="{DynamicResource {x:Static ColorKeys.Orange}}" />
 
     <DropShadowEffect x:Key="{ComponentResourceKey ResourceId=S.EffectShadow.IsCanDrop,
                                                    TypeInTargetAssembly={x:Type local:DiagramEffectKey}}"
@@ -29,7 +29,7 @@
                       Opacity="1.42"
                       RenderingBias="Performance"
                       ShadowDepth="1.5"
-                      Color="Green" />
+                      Color="{DynamicResource {x:Static ColorKeys.Green}}" />
 
     <DropShadowEffect x:Key="{ComponentResourceKey ResourceId=S.EffectShadow.IsSelected,
                                                    TypeInTargetAssembly={x:Type local:DiagramEffectKey}}"
@@ -39,7 +39,7 @@
                       Opacity="1.42"
                       RenderingBias="Performance"
                       ShadowDepth="1.5"
-                      Color="{DynamicResource {x:Static h:ColorKeys.Accent}}" />
+                      Color="{DynamicResource {x:Static h:ColorKeys.Foreground}}" />
 
     <DropShadowEffect x:Key="{ComponentResourceKey ResourceId=S.EffectShadow.MouseOver,
                                                    TypeInTargetAssembly={x:Type local:DiagramEffectKey}}"
