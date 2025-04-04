@@ -57,10 +57,14 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
         var diagram = this.GetTargetElement<Diagram>();
         if (this.FlowableZoomMode == DiagramFlowableZoomMode.Rect)
         {
-            var n = diagram.Nodes.FirstOrDefault(x => x.GetContent() == part);
-            if (n == null)
-                return;
-            diagram.ZoomTo(n);
+            diagram.Dispatcher.Invoke(() =>
+            {
+                var n = diagram.Nodes.FirstOrDefault(x => x.GetContent() == part);
+                if (n == null)
+                    return;
+                diagram.ZoomTo(n);
+            });
+
         }
 
         else if (this.FlowableZoomMode == DiagramFlowableZoomMode.Center)
@@ -70,10 +74,12 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
         }
         if (this.UseFlowableSelectToRunning)
         {
-            var n = diagram.Nodes.FirstOrDefault(x => x.GetContent() == part);
-            diagram.SelectedPart = n;
+            diagram.Dispatcher.Invoke(() =>
+            {
+                var n = diagram.Nodes.FirstOrDefault(x => x.GetContent() == part);
+                diagram.SelectedPart = n;
+            });
         }
-
 
         if (part is ITextable textable)
             this.Message = "正在运行 - " + textable.Text;
@@ -121,7 +127,7 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
         var start = this.GetStartNodeData();
         if (start == null)
             return false;
-        var r= await this.InvokeState(() => start.Start(this));
+        var r = await this.InvokeState(() => start.Start(this));
         return r;
     }
 

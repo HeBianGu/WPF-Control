@@ -29,7 +29,7 @@ public class ImageEx
 
     public Tuple<int, int> GetImagePixel()
     {
-        if (!File.Exists(this.FullPath))
+        if (!File.Exists(this.FullPath)|| this.FullPath.IsImage()==false)
             return null;
         BitmapImage bmp = new BitmapImage(new Uri(this.FullPath, UriKind.RelativeOrAbsolute));
         if (bmp == null)

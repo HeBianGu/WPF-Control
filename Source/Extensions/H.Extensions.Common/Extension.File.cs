@@ -36,7 +36,7 @@ public static partial class FileExtension
         return null;
     }
 
-    public static IEnumerable<string> GetAllVedios(string foldPath)
+    public static IEnumerable<string> GetAllVedios(this string foldPath)
     {
         var files = foldPath.ToDirectoryEx().GetAllFiles(x => x.FullName.IsVedio());
         return files;
@@ -50,7 +50,7 @@ public static partial class FileExtension
         return VedioExtensions.Any(x => x.Equals(Path.GetExtension(filePath).Trim('.'), StringComparison.OrdinalIgnoreCase));
     }
 
-    public static IEnumerable<string> GetAllAudios(string foldPath)
+    public static IEnumerable<string> GetAllAudios(this string foldPath)
     {
         var files = foldPath.ToDirectoryEx().GetAllFiles(x => x.FullName.IsAudio());
         return files;

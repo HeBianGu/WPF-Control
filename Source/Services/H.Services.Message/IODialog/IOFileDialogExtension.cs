@@ -60,5 +60,14 @@ public static class IOFileDialogExtension
         });
     }
 
+    public static string[] ShowOpenVideoFiles(this IIOFileDialogService dialog, Action<string[]> sumitAction = null, Action<IIOFileDialogOption> optionAction = null)
+    {
+        return dialog.ShowOpenFiles(sumitAction, x =>
+        {
+            x.Filter = IIOFileDialogOption.defaultVideoFilter;
+            optionAction?.Invoke(x);
+        });
+    }
+
 }
 

@@ -13,7 +13,7 @@ public interface IVideoFlowable
 }
 
 [Display(Name = "视频读取", GroupName = "数据源", Description = "降噪成黑白色", Order = 0)]
-public class VideoCapture : VideoCaptureSrcNodeDataBase
+public class VideoCapture : VideoCaptureSrcNodeDataBase, ISrcFilePathableStartNodeData
 {
     public VideoCapture()
     {
