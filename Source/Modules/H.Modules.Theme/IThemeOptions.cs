@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Windows.Media;
 
 namespace H.Modules.Theme;
-public interface IThemeOption
+public interface IThemeOptions
 {
     IColorResource ColorResource { get; set; }
     List<IColorResource> ColorResources { get; }

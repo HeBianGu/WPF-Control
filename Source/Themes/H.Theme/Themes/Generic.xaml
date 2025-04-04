@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/H.Theme;component/FontSizes/Default.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Theme;component/Layouts/Default.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Theme;component/BrushKeys.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Theme;component/Colors/Default.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Theme;component/Systems/Default.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Theme;component/Backgrounds/Default.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

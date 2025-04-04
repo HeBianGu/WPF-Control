@@ -33,13 +33,14 @@ namespace H.Test.Theme
     {
         protected override void ConfigureServices(IServiceCollection services)
         {
-
             services.AddSetting();
             services.AddAdornerDialogMessage();
             services.AddSwitchThemeViewPresenter(x =>
             {
                 x.Dark = new PurpleDarkColorResource();
             });
+            services.AddThemeLoadService();
+            services.AddColorThemeViewPresenter();
         }
 
         protected override Window CreateMainWindow(StartupEventArgs e)

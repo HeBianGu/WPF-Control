@@ -16,8 +16,10 @@
                        WindowChrome.IsHitTestVisibleInChrome="True">
                 <ContentPresenter Content="{Ioc Type={x:Type ISettingButtonPresenter}}" />
                 <ContentPresenter Content="{Ioc Type={x:Type h:ISwitchThemeViewPresenter}}" />
-                <Button Command="{ShowSettingCommand SwitchToType={x:Type h:IThemeSetting}}"
-                        Content="{Binding Source={x:Static h:ThemeSetting.Instance}, Path=ColorResource.Name}" />
+                <Button Command="{ShowSettingCommand SwitchToType={x:Type h:IThemeOptions}}"
+                        Content="{Binding Source={x:Static h:ThemeOptions.Instance}, Path=ColorResource.Name}" />
+                <FontIconButton Command="{ShowColorThemeViewCommand}"
+                                Style="{DynamicResource {x:Static FontIconButtonKeys.Command}}" />
             </DockPanel>
         </ControlTemplate>
     </h:MainWindow.CaptionTempate>
