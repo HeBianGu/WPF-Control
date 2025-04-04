@@ -132,10 +132,30 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoad,
         }
     }
 
+    private FontFamily _iconFontFamily;
+    [PropertyNameSourcePropertyItem(typeof(ComboBoxPropertyItem), nameof(IconFontFamilys))]
+    [Display(Name = "图标字体")]
+    [TypeConverter(typeof(FontFamilyConverter))]
+    public FontFamily IconFontFamily
+    {
+        get { return _iconFontFamily; }
+        set
+        {
+            _iconFontFamily = value;
+            RaisePropertyChanged();
+        }
+    }
+
     [JsonIgnore]
     [XmlIgnore]
     [Browsable(false)]
     public List<FontFamily> FontFamilys { get; } = new List<FontFamily>();
+
+
+    [JsonIgnore]
+    [XmlIgnore]
+    [Browsable(false)]
+    public List<FontFamily> IconFontFamilys { get; } = new List<FontFamily>();
 
     [JsonIgnore]
     [XmlIgnore]
@@ -178,6 +198,14 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoad,
         //if (find != null)
         //    find[SystemKeys.FontFamily] = n;
         Application.Current.Resources[SystemKeys.FontFamily] = n;
+    }
+
+    public void OnIconFontFamilyValueChanged(PropertyInfo property, FontFamily o, FontFamily n)
+    {
+        //var find= ThemeTypeExtension.GetSystemsResource();
+        //if (find != null)
+        //    find[SystemKeys.FontFamily] = n;
+        Application.Current.Resources[SystemKeys.FontFamilyIcon] = n;
     }
 
     public override bool Save(out string message)

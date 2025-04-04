@@ -1,5 +1,7 @@
-﻿namespace H.Extensions.FontIcon;
+﻿using System.Windows.Media;
 
+namespace H.Extensions.FontIcon;
+//https://learn.microsoft.com/zh-cn/windows/apps/design/style/segoe-ui-symbol-font?WT.mc_id=MVP_38031
 public static class FontIcons
 {
     public const string GlobalNavigationButton = "\ue700";
@@ -1373,4 +1375,15 @@ public static class FontIcons
             yield return Tuple.Create(item.Name, value, "{" + $"x:Static FontIcons.{item.Name}" + "}", $"FontIcons.{item.Name}", $"{code}", $"{htmlEntity}");
         }
     }
+}
+
+public static class IconFontFamilys
+{
+    public static readonly string FontFamilyName = "FontIcons";
+    public static readonly Uri FontUri = new Uri("pack://application:,,,/H.Extensions.FontIcon;component/segmdl2.ttf#Segoe MDL2 Assets");
+
+    public static FontFamily SegoeMDL2Asset => new FontFamily(new Uri("pack://application:,,,/H.Extensions.FontIcon;component/segmdl2.ttf"), "Segoe MDL2 Assets");
+
+    public static FontFamily SegoeFluentIcons => new FontFamily(new Uri("pack://application:,,,/H.Extensions.FontIcon;component/Segoe Fluent Icons.ttf"), "Segoe Fluent Icons");
+
 }

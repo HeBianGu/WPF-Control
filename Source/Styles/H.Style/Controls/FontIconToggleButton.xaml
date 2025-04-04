@@ -8,7 +8,7 @@
                                         TypeInTargetAssembly={x:Type local:FontIconToggleButtonKeys}}"
            BasedOn="{StaticResource {x:Static local:ToggleButtonKeys.Default}}"
            TargetType="{x:Type local:FontIconToggleButton}">
-        <Setter Property="FontFamily" Value="Segoe MDL2 Assets" />
+        <Setter Property="FontFamily" Value="{DynamicResource {x:Static SystemKeys.FontFamilyIcon}}" />
         <Setter Property="CheckedGlyph" Value="\ue70e" />
         <Setter Property="UncheckedGlyph" Value="\ue70d" />
         <Setter Property="Width" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />

@@ -19,6 +19,7 @@
                 <Button Command="{ShowSettingCommand SwitchToType={x:Type h:IThemeOptions}}"
                         Content="{Binding Source={x:Static h:ThemeOptions.Instance}, Path=ColorResource.Name}" />
                 <FontIconButton Command="{ShowColorThemeViewCommand}"
+                                FontFamily="{DynamicResource {x:Static SystemKeys.FontFamilyIcon}}"
                                 Style="{DynamicResource {x:Static FontIconButtonKeys.Command}}" />
             </DockPanel>
         </ControlTemplate>

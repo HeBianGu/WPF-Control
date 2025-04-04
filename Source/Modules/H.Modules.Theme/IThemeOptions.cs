@@ -15,6 +15,10 @@ public interface IThemeOptions
     List<IBackgroundResource> BackgroundResources { get; }
     FontFamily FontFamily { get; set; }
     List<FontFamily> FontFamilys { get; }
+
+    FontFamily IconFontFamily { get; set; }
+    List<FontFamily> IconFontFamilys { get; }
+
     FontSizeThemeType FontSize { get; set; }
     LayoutThemeType Layout { get; set; }
 }
