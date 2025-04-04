@@ -2,7 +2,7 @@
 
 using System.Windows.Markup;
 
-namespace H.Theme.Extensions;
+namespace H.Themes.Extensions;
 
 public class FontSizeThemeExtension : MarkupExtension
 {

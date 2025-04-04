@@ -2,9 +2,4 @@
   <ItemGroup>
     <ProjectReference Include="..\H.Theme\H.Theme.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Page Update="Light.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
 </Project>

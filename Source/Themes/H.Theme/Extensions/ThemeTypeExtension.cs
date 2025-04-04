@@ -2,7 +2,7 @@
 
 using System.Windows;
 
-namespace H.Theme.Extensions;
+namespace H.Themes.Extensions;
 
 public static class ThemeTypeExtension
 {
@@ -56,7 +56,7 @@ public static class ThemeTypeExtension
 
     public static void ChangeResourceDictionary(this ResourceDictionary n, Func<ResourceDictionary, bool> predicate, bool force = false)
     {
-        System.Collections.ObjectModel.Collection<ResourceDictionary> dic = Application.Current.Resources.MergedDictionaries;
+        Collection<ResourceDictionary> dic = Application.Current.Resources.MergedDictionaries;
         List<ResourceDictionary> finds = dic.Where(predicate).ToList();
         if (finds.Count() == 1 && force == false)
         {

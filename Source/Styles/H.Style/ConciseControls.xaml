@@ -1,0 +1,48 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:H.Styles.Controls">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/Border.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/Button.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/Calendar.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/CheckBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/ComboBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/ContextMenu.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/DataGrid.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/DatePicker.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/DocumentViewer.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/Expander.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/Frame.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/GroupBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/GridSplitter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/Label.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/ListBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/ListView.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/Menu.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/MenuItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/PasswordBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/ProgressBar.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/RadioButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/RepeatButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/ScrollBar.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/ScrollViewer.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/Separator.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/Slider.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/StatusBar.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/TabControl.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/TextBlock.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/TextBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/Thumb.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/ToggleButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/ToolBar.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/ToolTip.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/TreeView.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/ResizeGrip.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/Path.xaml" />
+        <!--  FontIcon  -->
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/FontIconButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/FontIconTextBlock.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/FontIconToggleButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/GroupItem.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

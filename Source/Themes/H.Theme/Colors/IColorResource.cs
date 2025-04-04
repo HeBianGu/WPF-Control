@@ -1,6 +1,7 @@
-﻿using System.Windows;
+﻿using H.Themes;
+using System.Windows;
 
-namespace H.Theme.Colors;
+namespace H.Themes.Colors;
 
 public interface IColorResource : IResourceable
 {

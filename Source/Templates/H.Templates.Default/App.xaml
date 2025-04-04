@@ -8,7 +8,7 @@
                 <FontSizeTheme Type="{x:Static FontSizeThemeType.Default}" />
                 <LayoutTheme Type="{x:Static LayoutThemeType.Default}" />
                 <ColorTheme Type="{x:Static ColorThemeType.Dark}" />
-                <ResourceDictionary Source="pack://application:,,,/H.Styles.Default;component/ConciseControls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/H.Style;component/ConciseControls.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

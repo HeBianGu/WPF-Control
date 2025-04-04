@@ -1,4 +1,6 @@
-﻿namespace H.Presenters.Design.Presenter;
+﻿using H.Themes.FontSizes;
+
+namespace H.Presenters.Design.Presenter;
 
 [Display(Name = "标题")]
 public class TitlePresenter : TextBlockPresenter

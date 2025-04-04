@@ -1,5 +1,5 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-namespace H.Theme.Extensions;
+namespace H.Themes.Extensions;
 public enum LayoutThemeType
 {
     [Display(Name = "常规")]

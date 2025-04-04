@@ -2,6 +2,7 @@
 
 using H.Extensions.Setting;
 using H.Services.Setting;
+using H.Themes;
 
 namespace H.Controls.Diagram.Presenter;
 

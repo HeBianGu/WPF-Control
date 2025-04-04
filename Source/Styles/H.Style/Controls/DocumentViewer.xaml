@@ -1,0 +1,81 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:H.Styles.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Share.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    <Style x:Key="{ComponentResourceKey ResourceId=S.DocumentViewer.Default,
+                                        TypeInTargetAssembly={x:Type local:DocumentViewerKeys}}"
+           TargetType="{x:Type DocumentViewer}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type DocumentViewer}">
+                    <Border Focusable="False"
+                            Style="{StaticResource S.Border.TemplatedParent}">
+                        <Grid KeyboardNavigation.TabNavigation="Local">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <ToolBar KeyboardNavigation.TabNavigation="Continue"
+                                     ToolBarTray.IsLocked="True">
+                                <Button Command="ApplicationCommands.Print"
+                                        CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                        Content="Print" />
+                                <Button Command="ApplicationCommands.Copy"
+                                        CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                        Content="Copy" />
+                                <Separator />
+                                <Button Command="NavigationCommands.IncreaseZoom"
+                                        CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                        Content="Zoom In" />
+                                <Button Command="NavigationCommands.DecreaseZoom"
+                                        CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                        Content="Zoom Out" />
+                                <Separator />
+                                <Button Command="NavigationCommands.Zoom"
+                                        CommandParameter="100.0"
+                                        CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                        Content="Actual Size" />
+                                <Button Command="DocumentViewer.FitToWidthCommand"
+                                        CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                        Content="Fit to Width" />
+                                <Button Command="DocumentViewer.FitToMaxPagesAcrossCommand"
+                                        CommandParameter="1"
+                                        CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                        Content="Whole Page" />
+                                <Button Command="DocumentViewer.FitToMaxPagesAcrossCommand"
+                                        CommandParameter="2"
+                                        CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                        Content="Two Pages" />
+                            </ToolBar>
+
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                          Grid.Row="1"
+                                          Background="{TemplateBinding Background}"
+                                          CanContentScroll="true"
+                                          HorizontalScrollBarVisibility="Auto"
+                                          IsTabStop="true" />
+
+                            <ContentControl x:Name="PART_FindToolBarHost"
+                                            Grid.Row="2" />
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style BasedOn="{StaticResource {x:Static local:DocumentViewerKeys.Default}}"
+           TargetType="DocumentViewer" />
+</ResourceDictionary>

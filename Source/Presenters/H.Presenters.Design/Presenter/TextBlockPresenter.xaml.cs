@@ -1,6 +1,8 @@
-﻿global using H.Theme.FontSizes;
+﻿global using H.Themes.FontSizes;
 global using System.ComponentModel;
 global using System.Windows;
+using H.Themes.FontSizes;
+using H.Themes.Layouts;
 
 namespace H.Presenters.Design.Presenter;
 

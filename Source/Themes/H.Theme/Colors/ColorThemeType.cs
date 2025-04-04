@@ -2,7 +2,7 @@
 
 using System.ComponentModel.DataAnnotations;
 
-namespace H.Theme.Colors;
+namespace H.Themes.Colors;
 
 public enum ColorThemeType
 {

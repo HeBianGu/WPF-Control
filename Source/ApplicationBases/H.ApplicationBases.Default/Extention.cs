@@ -1,6 +1,7 @@
 ﻿using H.Modules.About;
 using H.Modules.Theme;
 using H.Services.Common.About;
+using H.Styles;
 using H.Themes.Colors.Accent;
 using H.Themes.Colors.Blue;
 using H.Themes.Colors.Copper;

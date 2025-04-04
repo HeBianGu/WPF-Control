@@ -1,10 +1,10 @@
 ﻿using H.Extensions.ApplicationBase;
 using H.Modules.Setting;
 using H.Services.Setting;
-using H.Styles.Default;
-using H.Styles.Default.Controls;
+using H.Style;
+using H.Styles;
+using H.Styles.Controls;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;

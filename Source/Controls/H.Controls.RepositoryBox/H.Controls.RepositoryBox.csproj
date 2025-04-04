@@ -7,7 +7,7 @@
     <ProjectReference Include="..\..\Extensions\H.Extensions.Behvaiors\H.Extensions.Behvaiors.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.DataBase.Repository\H.Extensions.DataBase.Repository.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.StoryBoard\H.Extensions.StoryBoard.csproj" />
-    <ProjectReference Include="..\..\Styles\H.Styles.Default\H.Styles.Default.csproj" />
+    <ProjectReference Include="..\..\Styles\H.Style\H.Style.csproj" />
   </ItemGroup>
 
 </Project>

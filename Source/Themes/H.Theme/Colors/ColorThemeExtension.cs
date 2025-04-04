@@ -2,7 +2,7 @@
 
 using System.Windows.Markup;
 
-namespace H.Theme.Colors;
+namespace H.Themes.Colors;
 
 public class ColorThemeExtension : MarkupExtension
 {

@@ -6,13 +6,13 @@ using H.Modules.Identity;
 using H.Modules.Operation;
 using H.Services.Common;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 using System.Windows;
 using System.Windows.Media;
 using H.Extensions.DataBase;
-using H.Styles.Default;
+using H.Styles;
 using H.Services.Common.Schedule;
 using H.ApplicationBases.Default;
+using H.Styles;
 
 namespace H.App.FileManager
 {

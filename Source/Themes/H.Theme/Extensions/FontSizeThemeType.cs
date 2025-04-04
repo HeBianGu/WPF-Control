@@ -1,7 +1,7 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-namespace H.Theme.Extensions;
+namespace H.Themes.Extensions;
 public enum FontSizeThemeType
 {
     [Display(Name = "常规")]

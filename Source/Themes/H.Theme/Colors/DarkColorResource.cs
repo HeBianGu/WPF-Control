@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace H.Theme.Colors;
+namespace H.Themes.Colors;
 
 [Display(Name = "深色", GroupName = "强力推荐", Description = "纯色", Order = 10, Prompt = "强力推荐")]
 public class DarkColorResource : ColorResourceBase

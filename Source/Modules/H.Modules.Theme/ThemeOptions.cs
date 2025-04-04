@@ -7,9 +7,10 @@ using H.Mvvm.Commands;
 using H.Services.AppPath;
 using H.Services.Common;
 using H.Services.Setting;
-using H.Theme.Colors;
-using H.Theme.Extensions;
-using H.Theme.Systems;
+using H.Themes.Backgrounds;
+using H.Themes.Colors;
+using H.Themes.Extensions;
+using H.Themes.Systems;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -183,7 +184,7 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoad,
     {
         //this.RefreshTheme();
         //{
-        //    ResourceDictionary brushResource = new ResourceDictionary() { Source = new Uri("pack://application:,,,/H.Styles.Default;component/ConciseControls.xaml", UriKind.Absolute) };
+        //    ResourceDictionary brushResource = new ResourceDictionary() { Source = new Uri("pack://application:,,,/H.Style;component/ConciseControls.xaml", UriKind.Absolute) };
         //    brushResource.ChangeResourceDictionary(x => x.Source.AbsoluteUri == brushResource.Source.AbsoluteUri, true);
         //}
         this.ColorResourceSelectedIndex = this.ColorResources.IndexOf(this.ColorResource);

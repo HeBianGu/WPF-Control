@@ -2,7 +2,7 @@
 
 using System.Windows;
 
-namespace H.Theme;
+namespace H.Themes;
 
 public static class BrushKeys
 {

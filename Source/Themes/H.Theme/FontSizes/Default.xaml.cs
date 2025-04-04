@@ -2,7 +2,7 @@
 
 using System.Windows;
 
-namespace H.Theme.FontSizes;
+namespace H.Themes.FontSizes;
 
 public static class FontSizeKeys
 {

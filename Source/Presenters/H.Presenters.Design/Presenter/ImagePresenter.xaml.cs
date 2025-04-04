@@ -1,5 +1,5 @@
 ﻿global using H.Common.Attributes;
-global using H.Styles.Default;
+global using H.Styles;
 global using System.ComponentModel.DataAnnotations;
 global using System.Windows.Media;
 

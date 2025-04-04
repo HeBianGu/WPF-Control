@@ -4,15 +4,15 @@ using H.Extensions.Setting;
 using H.Services.AppPath;
 using H.Services.Setting;
 using H.Styles.Bootstrap.StyleResources;
-using H.Styles.Default.StyleResources;
-using H.Theme.Colors;
-using H.Theme.Extensions;
+using H.Themes.Colors;
+using H.Themes.Extensions;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
 using System.Xml.Serialization;
+using H.Styles.StyleResources;
 
 namespace H.Modules.Style;
 

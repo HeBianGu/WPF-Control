@@ -1,8 +1,8 @@
 ﻿using H.Extensions.ApplicationBase;
 using H.Modules.Setting;
 using H.Services.Setting;
-using H.Styles.Default;
-using H.Styles.Default.Controls;
+using H.Styles;
+using H.Styles.Controls;
 using H.Themes.Colors.Accent;
 using H.Themes.Colors.Blue;
 using H.Themes.Colors.Copper;
@@ -15,7 +15,6 @@ using H.Themes.Colors.Solid;
 using H.Themes.Colors.Technology;
 using H.Themes.Colors.Web;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;

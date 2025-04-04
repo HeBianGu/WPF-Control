@@ -2,7 +2,7 @@
 
 using System.Windows;
 
-namespace H.Theme.Systems;
+namespace H.Themes.Systems;
 
 public static class SystemKeys
 {

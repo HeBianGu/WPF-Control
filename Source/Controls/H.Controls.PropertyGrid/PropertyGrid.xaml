@@ -345,7 +345,8 @@
                      Color="{DynamicResource {x:Static h:ColorKeys.BorderBrushAssist}}" />
 
     <SolidColorBrush x:Key="PressedBackgroundBrush"
-                     Color="{DynamicResource {x:Static h:ColorKeys.BackgroundDisabled}}" />
+                     Opacity="0.6"
+                     Color="{DynamicResource {x:Static h:ColorKeys.Background}}" />
 
     <!--<LinearGradientBrush x:Key="PressedBackgroundBrush" StartPoint="0,0" EndPoint="0,1">
         <GradientStop Offset="0" Color="#FFE3C085" />

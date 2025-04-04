@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
@@ -8,8 +7,9 @@ using System.Windows;
 using System.Xml.Linq;
 using Microsoft.Extensions.DependencyInjection;
 using H.Extensions.ApplicationBase;
-using H.Styles.Default;
+using H.Style;
 using H.Services.Setting;
+using H.Styles;
 
 namespace H.Test.SideMenu
 {

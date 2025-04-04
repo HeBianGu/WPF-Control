@@ -1,4 +1,4 @@
-﻿namespace H.Theme.Colors;
+﻿namespace H.Themes.Backgrounds;
 
 public class ImageBrushResource : IBackgroundResource
 {

@@ -1,4 +1,4 @@
-﻿using H.Styles.Default.StyleResources;
+﻿using H.Styles.StyleResources;
 
 namespace H.Modules.Style;
 

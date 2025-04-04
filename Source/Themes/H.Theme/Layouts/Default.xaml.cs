@@ -2,7 +2,7 @@
 
 using System.Windows;
 
-namespace H.Theme.Layouts;
+namespace H.Themes.Layouts;
 
 public static class LayoutKeys
 {
