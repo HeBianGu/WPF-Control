@@ -3,6 +3,8 @@ using H.Mvvm;
 using Microsoft.Extensions.Options;
 using H.Mvvm.Commands;
 using H.Services.Common.Theme;
+using H.Themes.Colors;
+using System.Collections.ObjectModel;
 
 namespace H.Modules.Theme;
 public class ColorThemeViewPresenter : IColorThemeViewPresenter
@@ -12,8 +14,16 @@ public class ColorThemeViewPresenter : IColorThemeViewPresenter
     {
         _options = options;
     }
-    //public RelayCommand LoadedCommand => new RelayCommand(e=>
+
+    //private ObservableCollection<IColorResource> _collection = new ObservableCollection<IColorResource>();
+    ///// <summary> 说明  </summary>
+    //public ObservableCollection<IColorResource> Collection
     //{
-    //    this._options.Value.Refresh();
-    //});
+    //    get { return _collection; }
+    //    set
+    //    {
+    //        _collection = value;
+    //    }
+    //}
+
 }

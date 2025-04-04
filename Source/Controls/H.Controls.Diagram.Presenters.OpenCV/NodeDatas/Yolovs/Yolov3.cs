@@ -101,10 +101,14 @@ public class Yolov3 : YolovOpenCVNodeDataBase
     {
         if (!File.Exists(this.WeightFilePath) || !File.Exists(this.CfgFilePath) || !File.Exists(this.NameFilePath))
         {
-            var r = await IocMessage.Form?.ShowEdit(this, null, null, x =>
+            var r = await System.Windows.Application.Current.Dispatcher.Invoke(async () =>
             {
-                x.UsePropertyNames = $"{nameof(WeightFilePath)},{nameof(CfgFilePath)},{nameof(NameFilePath)},";
+                return await IocMessage.Form?.ShowEdit(this, null, null, x =>
+                 {
+                     x.UsePropertyNames = $"{nameof(WeightFilePath)},{nameof(CfgFilePath)},{nameof(NameFilePath)},";
+                 });
             });
+
             if (r != true)
                 return this.Error("训练模型不存在：https://pjreddie.com/media/files/yolov3.weights 请先下载");
         }
