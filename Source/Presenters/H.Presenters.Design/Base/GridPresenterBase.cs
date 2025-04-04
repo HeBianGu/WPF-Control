@@ -1,5 +1,5 @@
 ﻿global using H.Controls.Adorner.Draggable;
-global using H.Themes.Default.Layouts;
+global using H.Theme.Layouts;
 global using System.Windows.Controls;
 
 namespace H.Presenters.Design.Base;

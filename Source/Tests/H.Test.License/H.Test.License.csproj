@@ -17,7 +17,7 @@
     <ProjectReference Include="..\..\Modules\H.Modules.License\H.Modules.License.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Messages.Dialog\H.Modules.Messages.Dialog.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Setting\H.Modules.Setting.csproj" />
-    <ProjectReference Include="..\..\Themes\H.Themes.Default\H.Themes.Default.csproj" />
+    <ProjectReference Include="..\..\Themes\H.Theme\H.Theme.csproj" />
     <ProjectReference Include="..\..\Windows\H.Windows.Dialog\H.Windows.Dialog.csproj" />
   </ItemGroup>
 </Project>

@@ -1,4 +1,4 @@
-﻿using H.Themes.Default.Colors;
+﻿using H.Theme.Colors;
 using System.ComponentModel.DataAnnotations;
 using System.Windows;
 

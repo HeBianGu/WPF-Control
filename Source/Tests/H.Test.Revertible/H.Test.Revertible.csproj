@@ -10,6 +10,6 @@
     <ProjectReference Include="..\..\Extensions\H.Extensions.ApplicationBase\H.Extensions.ApplicationBase.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Revertible\H.Extensions.Revertible.csproj" />
     <ProjectReference Include="..\..\Services\H.Services.Revertible\H.Services.Revertible.csproj" />
-    <ProjectReference Include="..\..\Themes\H.Themes.Default\H.Themes.Default.csproj" />
+    <ProjectReference Include="..\..\Themes\H.Theme\H.Theme.csproj" />
   </ItemGroup>
 </Project>

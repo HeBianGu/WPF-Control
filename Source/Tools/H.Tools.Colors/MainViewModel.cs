@@ -1,7 +1,7 @@
 ﻿using H.Extensions.Color;
 using H.Mvvm.Commands;
 using H.Mvvm.ViewModels.Base;
-using H.Themes.Default.Colors;
+using H.Theme.Colors;
 using System.Collections.ObjectModel;
 using System.Windows.Media;
 

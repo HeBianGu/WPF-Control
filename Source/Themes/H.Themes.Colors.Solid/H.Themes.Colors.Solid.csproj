@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
-    <ProjectReference Include="..\H.Themes.Default\H.Themes.Default.csproj" />
+    <ProjectReference Include="..\H.Theme\H.Theme.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Page Update="VikingDark.xaml">

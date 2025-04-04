@@ -1,7 +1,7 @@
 ﻿using H.Common.Interfaces;
 using H.Services.Common.Theme;
-using H.Themes.Default.Colors;
-using H.Themes.Default.Extensions;
+using H.Theme.Colors;
+using H.Theme.Extensions;
 using System.Reflection;
 using System.Windows.Media;
 

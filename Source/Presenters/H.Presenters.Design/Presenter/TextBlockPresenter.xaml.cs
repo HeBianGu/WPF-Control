@@ -1,4 +1,4 @@
-﻿global using H.Themes.Default.FontSizes;
+﻿global using H.Theme.FontSizes;
 global using System.ComponentModel;
 global using System.Windows;
 

@@ -18,6 +18,6 @@
     <ProjectReference Include="..\..\Presenters\H.Presenters.Design\H.Presenters.Design.csproj" />
     <ProjectReference Include="..\..\Presenters\H.Presenters.Repository\H.Presenters.Repository.csproj" />
     <ProjectReference Include="..\..\Styles\H.Styles.Default\H.Styles.Default.csproj" />
-    <ProjectReference Include="..\..\Themes\H.Themes.Default\H.Themes.Default.csproj" />
+    <ProjectReference Include="..\..\Themes\H.Theme\H.Theme.csproj" />
   </ItemGroup>
 </Project>

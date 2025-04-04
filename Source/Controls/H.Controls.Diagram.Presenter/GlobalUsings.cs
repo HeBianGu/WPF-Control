@@ -4,7 +4,7 @@ global using H.Extensions.Common;
 global using H.Extensions.TypeConverter;
 global using H.Mvvm;
 global using H.Services.Common;
-global using H.Themes.Default;
+global using H.Theme;
 global using System;
 global using System.Collections;
 global using System.Collections.Generic;
