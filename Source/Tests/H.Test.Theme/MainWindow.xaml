@@ -396,6 +396,27 @@
             <TabItem Header="TextBlock">
                 <TextBlock Text="TextBlock" />
             </TabItem>
+            <TabItem Header="FontIconTextBlock">
+                <UniformGrid Columns="1">
+                    <FontIconTextBlock Text="&#xE701;" />
+                    <TextBlock FontFamily="{DynamicResource {x:Static SystemKeys.FontFamilyIcon}}"
+                               Text="&#xE706;" />
+                    <TextBlock FontFamily="{x:Static IconFontFamilys.LocationSegoeMDL2Asset}"
+                               Text="&#xE701;" />
+                    <TextBlock FontFamily="{x:Static IconFontFamilys.SystemSegoeMDL2Asset}"
+                               Text="&#xE701;" />
+                    <TextBlock FontFamily="Segoe MDL2 Assets"
+                               Text="&#xE701;" />
+                    <TextBlock FontFamily="Segoe Fluent Icons"
+                               Text="&#xE701;" />
+                    <TextBlock FontFamily="{x:Static IconFontFamilys.SystemSegoeFluentIcons}"
+                               Text="&#xE706;" />
+                    <TextBlock FontFamily="{x:Static IconFontFamilys.locationSegoeFluentIcons}"
+                               Text="&#xE706;" />
+                    <TextBlock FontFamily="pack://application:,,,/H.Extensions.FontIcon;component/Assets/Segoe Fluent Icons.ttf#Segoe Fluent Icons"
+                               Text="&#xE706;" />
+                </UniformGrid>
+            </TabItem>
             <TabItem Header="CheckBox">
                 <CheckBox Content="CheckBox" />
             </TabItem>

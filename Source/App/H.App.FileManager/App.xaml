@@ -1,4 +1,4 @@
-﻿<DefaultThemesApplicationBase x:Class="H.App.FileManager.App"
+﻿<ThemesApplicationBase x:Class="H.App.FileManager.App"
                               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                               xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
@@ -35,4 +35,4 @@
             </DataTemplate>-->
         </ResourceDictionary>
     </Application.Resources>
-</DefaultThemesApplicationBase>
+</ThemesApplicationBase>

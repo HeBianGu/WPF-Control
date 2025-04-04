@@ -1,4 +1,5 @@
 ﻿using H.Extensions.ApplicationBase;
+using H.Extensions.FontIcon;
 using H.Modules.Setting;
 using H.Services.Setting;
 using H.Styles;
@@ -22,6 +23,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 
 namespace H.Test.Theme
 {
@@ -38,7 +40,7 @@ namespace H.Test.Theme
             {
                 x.Dark = new PurpleDarkColorResource();
             });
-            services.AddThemeLoadService();
+            services.AddLoadThemeOptionsService();
             services.AddColorThemeViewPresenter();
         }
 
@@ -90,6 +92,10 @@ namespace H.Test.Theme
                 //x.ColorResources.Add(new IndustrialDarkColorResource());
                 //x.ColorResources.Add(new IndustrialDarkColorResource());
 
+                x.IconFontFamilys.Add(IconFontFamilys.SystemSegoeMDL2Asset);
+                x.IconFontFamilys.Add(IconFontFamilys.SystemSegoeFluentIcons);
+                x.IconFontFamilys.Add(IconFontFamilys.LocationSegoeMDL2Asset);
+                x.IconFontFamilys.Add(IconFontFamilys.locationSegoeFluentIcons);
             });
 
             app.UseSwithTheme();

@@ -1,4 +1,5 @@
-﻿namespace H.Styles.StyleResources;
+﻿
+namespace H.Styles.StyleResources;
 
 public class ConciseStyleResource : IStyleResource
 {

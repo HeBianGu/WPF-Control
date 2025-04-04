@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
-    <None Remove="Assets\SegMDL2.ttf" />
-    <None Remove="Assets\Segoe Fluent Icons.ttf" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\Providers\H.Mvvm\H.Mvvm.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\SegMDL2.ttf" />
-    <Resource Include="Assets\Segoe Fluent Icons.ttf" />
+    <None Update="Assets\SegMDL2.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\Segoe Fluent Icons.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>

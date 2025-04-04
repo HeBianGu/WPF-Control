@@ -7,7 +7,7 @@ using System.Windows;
 using System.Xml.Linq;
 using Microsoft.Extensions.DependencyInjection;
 using H.Extensions.ApplicationBase;
-using H.Style;
+using H.Styles;
 using H.Services.Setting;
 using H.Styles;
 

@@ -16,7 +16,8 @@ namespace H.ApplicationBases.Default
         protected override void Configure(IApplicationBuilder app)
         {
             base.Configure(app);
-            app.UseAllThemes();
+            app.UseDefaultColorResources();
+            app.UseDefaultIconFontFamilys();
         }
     }
 }

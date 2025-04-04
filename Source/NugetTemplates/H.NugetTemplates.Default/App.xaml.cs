@@ -2,7 +2,7 @@
 using H.Modules.Messages.Dialog;
 using H.Modules.Messages.Form;
 using H.Services.Common;
-using H.Style;
+using H.Styles;
 using H.Themes.Colors.Accent;
 using H.Themes.Colors.Gray;
 using H.Themes.Colors.Purple;

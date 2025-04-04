@@ -4,7 +4,7 @@ using H.Modules.Messages.Form;
 using H.Services.Common;
 using H.Services.Message.Dialog;
 using H.Services.Message.Form;
-using H.Style;
+using H.Styles;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;

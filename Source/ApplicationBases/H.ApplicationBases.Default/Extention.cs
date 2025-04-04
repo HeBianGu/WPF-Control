@@ -1,4 +1,5 @@
-﻿using H.Modules.About;
+﻿using H.Extensions.FontIcon;
+using H.Modules.About;
 using H.Modules.Theme;
 using H.Services.Common.About;
 using H.Styles;
@@ -35,7 +36,7 @@ namespace System
                 x.IsDark = false;
                 x.Dark = new GrayDarkColorResource();
             });
-            services.AddThemeLoadService();
+            services.AddLoadThemeOptionsService();
             services.AddColorThemeViewPresenter();
         }
 
@@ -59,7 +60,7 @@ namespace System
             app.UseWindowSetting();
         }
 
-        public static void UseAllThemes(this IApplicationBuilder app, Action<ThemeOptions> option = null)
+        public static void UseDefaultColorResources(this IApplicationBuilder app, Action<IThemeOptions> option = null)
         {
             app.UseTheme(x =>
             {
@@ -102,6 +103,18 @@ namespace System
                 //x.ColorResources.Add(new IndustrialDarkColorResource());
                 option?.Invoke(x);
 
+            });
+        }
+
+        public static void UseDefaultIconFontFamilys(this IApplicationBuilder app, Action<IThemeOptions> option = null)
+        {
+            app.UseTheme(x =>
+            {
+                x.IconFontFamilys.Add(IconFontFamilys.SystemSegoeMDL2Asset);
+                x.IconFontFamilys.Add(IconFontFamilys.SystemSegoeFluentIcons);
+                x.IconFontFamilys.Add(IconFontFamilys.LocationSegoeMDL2Asset);
+                x.IconFontFamilys.Add(IconFontFamilys.locationSegoeFluentIcons);
+                option?.Invoke(x);
             });
         }
     }

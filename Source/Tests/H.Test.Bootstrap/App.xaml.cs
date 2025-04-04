@@ -1,7 +1,6 @@
 ﻿using H.Extensions.ApplicationBase;
 using H.Modules.Setting;
 using H.Services.Setting;
-using H.Style;
 using H.Styles;
 using H.Styles.Controls;
 using Microsoft.Extensions.DependencyInjection;

@@ -12,14 +12,13 @@ using H.Extensions.DataBase;
 using H.Styles;
 using H.Services.Common.Schedule;
 using H.ApplicationBases.Default;
-using H.Styles;
 
 namespace H.App.FileManager
 {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : DefaultThemesApplicationBase
+    public partial class App : ThemesApplicationBase
     {
         protected override Window CreateMainWindow(StartupEventArgs e)
         {

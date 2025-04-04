@@ -194,27 +194,18 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoad,
 
     public void OnFontFamilyValueChanged(PropertyInfo property, FontFamily o, FontFamily n)
     {
-        //var find= ThemeTypeExtension.GetSystemsResource();
-        //if (find != null)
-        //    find[SystemKeys.FontFamily] = n;
-        Application.Current.Resources[SystemKeys.FontFamily] = n;
+        //Application.Current.Resources[SystemKeys.FontFamily] = n;
+        this.ChangeFontFamily();
     }
 
     public void OnIconFontFamilyValueChanged(PropertyInfo property, FontFamily o, FontFamily n)
     {
-        //var find= ThemeTypeExtension.GetSystemsResource();
-        //if (find != null)
-        //    find[SystemKeys.FontFamily] = n;
-        Application.Current.Resources[SystemKeys.FontFamilyIcon] = n;
+        //Application.Current.Resources[SystemKeys.FontFamilyIcon] = n;
+        this.ChangeIconFontFamily();
     }
 
     public override bool Save(out string message)
     {
-        //this.RefreshTheme();
-        //{
-        //    ResourceDictionary brushResource = new ResourceDictionary() { Source = new Uri("pack://application:,,,/H.Style;component/ConciseControls.xaml", UriKind.Absolute) };
-        //    brushResource.ChangeResourceDictionary(x => x.Source.AbsoluteUri == brushResource.Source.AbsoluteUri, true);
-        //}
         this.ColorResourceSelectedIndex = this.ColorResources.IndexOf(this.ColorResource);
         this.BackgroundResourceSelectedIndex = this.BackgroundResources.IndexOf(this.BackgroundResource);
         return base.Save(out message);
@@ -246,7 +237,8 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoad,
         this.FontSize.ChangeFontSizeThemeType();
         this.Layout.ChangeLayoutThemeType();
         this.ChangeColorTheme();
-        this.ChangeSystem();
+        this.ChangeFontFamily();
+        this.ChangeIconFontFamily();
         this.ChangeBackgroundTheme();
         this.RefreshBrushResourceDictionary();
     }
@@ -282,9 +274,14 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoad,
         });
     }
 
-    private void ChangeSystem()
+    private void ChangeFontFamily()
     {
         Application.Current.Resources[SystemKeys.FontFamily] = this.FontFamily;
+    }
+
+    private void ChangeIconFontFamily()
+    {
+        Application.Current.Resources[SystemKeys.FontFamilyIcon] = this.IconFontFamily;
     }
 
     protected override string GetDefaultFolder()

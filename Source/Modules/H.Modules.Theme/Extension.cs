@@ -10,10 +10,10 @@ namespace System
 {
     public static class Extension
     {
-        public static IServiceCollection AddThemeLoadService(this IServiceCollection services, Action<IThemeOptions> setupAction = null)
+        public static IServiceCollection AddLoadThemeOptionsService(this IServiceCollection services, Action<IThemeOptions> setupAction = null)
         {
             services.AddOptions();
-            services.TryAdd(ServiceDescriptor.Singleton<IThemeLoadService, ThemeLoadService>());
+            services.TryAdd(ServiceDescriptor.Singleton<ILoadThemeOptionsService, LoadThemeOptionsService>());
             if (setupAction != null)
                 services.Configure(setupAction);
             return services;
@@ -27,7 +27,7 @@ namespace System
                 services.Configure(setupAction);
             return services;
         }
-        public static IApplicationBuilder UseTheme(this IApplicationBuilder builder, Action<ThemeOptions> option = null)
+        public static IApplicationBuilder UseTheme(this IApplicationBuilder builder, Action<IThemeOptions> option = null)
         {
             IocSetting.Instance.Add(ThemeOptions.Instance);
             option?.Invoke(ThemeOptions.Instance);

@@ -18,8 +18,10 @@
             <DockPanel HorizontalAlignment="Right"
                        LastChildFill="False"
                        WindowChrome.IsHitTestVisibleInChrome="True">
-                <Button Command="{ShowSettingCommand SwitchToType={x:Type h:IThemeSetting}}"
-                        Content="{Binding Source={x:Static h:ThemeSetting.Instance}, Path=ColorResource.Name}" />
+                <FontIconButton Command="{ShowColorThemeViewCommand}"
+                                Style="{DynamicResource {x:Static FontIconButtonKeys.Command}}" />
+                <Button Command="{ShowSettingCommand SwitchToType={x:Type h:IThemeOptions}}"
+                        Content="{Binding Source={x:Static h:ThemeOptions.Instance}, Path=ColorResource.Name}" />
                 <ContentPresenter Content="{Ioc Type={x:Type ISettingButtonPresenter}}" />
                 <ContentPresenter Content="{Ioc Type={x:Type ISwitchThemeViewPresenter}}" />
             </DockPanel>

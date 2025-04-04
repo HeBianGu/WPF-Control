@@ -4,7 +4,7 @@ using H.Modules.Messages.Form;
 using H.Services.Common;
 using H.Services.Message.Dialog;
 using H.Services.Message.Form;
-using H.Style;
+using H.Styles;
 using H.Styles;
 using H.Themes.Colors.Accent;
 using H.Themes.Colors.Gray;

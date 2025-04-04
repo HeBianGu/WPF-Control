@@ -2,7 +2,7 @@
 using H.Services.Logger;
 
 namespace H.Modules.Theme;
-public class ThemeLoadService : IThemeLoadService
+public class LoadThemeOptionsService : ILoadThemeOptionsService
 {
     public bool Load(out string message)
     {
