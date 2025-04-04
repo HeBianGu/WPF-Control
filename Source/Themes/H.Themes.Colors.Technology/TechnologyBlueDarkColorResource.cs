@@ -4,7 +4,7 @@ using System.Windows;
 
 namespace H.Themes.Colors.Technology;
 
-[Display(Name = "深空科技蓝", GroupName = "强力推荐", Description = "纯色", Order = 0, Prompt = "强力推荐")]
+[Display(Name = "深空科技蓝（推荐）", GroupName = "强力推荐", Description = "纯色", Order = 0, Prompt = "强力推荐")]
 public class TechnologyBlueDarkColorResource : ColorResourceBase
 {
     public override ResourceDictionary Resource => new ResourceDictionary()

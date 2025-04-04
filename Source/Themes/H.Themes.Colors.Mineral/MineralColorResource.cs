@@ -23,7 +23,7 @@ namespace H.Themes.Colors.Mineral;
 /// <summary>
 /// 自然矿物风（Mineral / Earth Tone）低饱和度大地色系，柔和自然，适合环保、健康类应用  
 /// </summary>
-[Display(Name = "自然矿物风", GroupName = "柔和复古风", Description = "低饱和度大地色系，柔和自然，适合环保、健康类应用", Order = 10, Prompt = "长期支持")]
+[Display(Name = "自然矿物风（长期支持）", GroupName = "柔和复古风", Description = "低饱和度大地色系，柔和自然，适合环保、健康类应用", Order = 10, Prompt = "长期支持")]
 public class MineralColorResource : ColorResourceBase
 {
     public override ResourceDictionary Resource => new ResourceDictionary()

@@ -2,7 +2,7 @@
 
 namespace H.Themes.Colors;
 
-[Display(Name = "深色", GroupName = "强力推荐", Description = "纯色", Order = 10, Prompt = "强力推荐")]
+[Display(Name = "深色（推荐）", GroupName = "强力推荐", Description = "纯色", Order = 10, Prompt = "强力推荐")]
 public class DarkColorResource : ColorResourceBase
 {
     public override ResourceDictionary Resource => new ResourceDictionary()
