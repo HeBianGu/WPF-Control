@@ -4,7 +4,7 @@
                     xmlns:local="clr-namespace:H.Controls.Form.PropertyItems">
     <DataTemplate DataType="{x:Type local:TextPropertyViewItem}">
         <TextBlock Grid.Column="2"
-                   Margin="0,3,0,3"
+                   Margin="0,5"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Center"
                    Text="{Binding Value}"

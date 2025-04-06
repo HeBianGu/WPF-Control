@@ -4,6 +4,7 @@
     <ProjectReference Include="..\..\Extensions\H.Extensions.OpenFolderDialog\H.Extensions.OpenFolderDialog.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.About\H.Modules.About.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Guide\H.Modules.Guide.csproj" />
+    <ProjectReference Include="..\..\Modules\H.Modules.Help\H.Modules.Help.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Messages.Dialog\H.Modules.Messages.Dialog.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Messages.Form\H.Modules.Messages.Form.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Messages.Notice\H.Modules.Messages.Notice.csproj" />

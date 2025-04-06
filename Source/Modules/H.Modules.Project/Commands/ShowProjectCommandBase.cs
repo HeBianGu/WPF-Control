@@ -5,7 +5,7 @@ global using H.Services.Message.Dialog.Commands;
 
 namespace H.Modules.Project.Commands;
 
-public abstract class ShowProjectCommandBase : ShowIocCommandBase<IProjectService>
+public abstract class ShowProjectCommandBase : ShowIocPresenterCommandBase<IProjectService>
 {
     public override bool CanExecute(object parameter)
     {

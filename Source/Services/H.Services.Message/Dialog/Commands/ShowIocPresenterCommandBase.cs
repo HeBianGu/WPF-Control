@@ -2,7 +2,7 @@
 
 namespace H.Services.Message.Dialog.Commands;
 
-public abstract class ShowIocCommandBase<T> : ShowDialogCommandBase
+public abstract class ShowIocPresenterCommandBase<T> : ShowDialogCommandBase
 {
     public override async Task ExecuteAsync(object parameter)
     {
@@ -16,6 +16,6 @@ public abstract class ShowIocCommandBase<T> : ShowDialogCommandBase
 
     public override bool CanExecute(object parameter)
     {
-        return Ioc.GetService<T>(false) != null && base.CanExecute(parameter);
+        return Ioc.Exist<T>() && base.CanExecute(parameter);
     }
 }

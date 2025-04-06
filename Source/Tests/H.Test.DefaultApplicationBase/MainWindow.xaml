@@ -45,6 +45,11 @@
         <TabItem Header="Modules">
             <UniformGrid>
                 <Button Command="{ShowAboutCommand}" />
+                <Button Command="{ShowPrivacyCommand}" />
+                <Button Command="{ShowAgreementCommand}" />
+                <Button Command="{ShowWebSiteCommand}" />
+                <Button Command="{ShowReleaseVersionsCommand}" />
+                <Button Command="{ShowSupportCommand}" />
                 <Button Command="{ShowSettingCommand}" />
                 <Button Command="{ShowGuideCommand}" />
                 <Button Command="{ShowGuideTreeCommand}" />

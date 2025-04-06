@@ -1,0 +1,21 @@
+﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+
+
+namespace H.Modules.About;
+
+public interface IAboutOptions
+{
+    string Agreement { get; set; }
+    string AssemblyVersion { get; set; }
+    string Company { get; set; }
+    string Configuration { get; set; }
+    string Contact { get; set; }
+    string Copyright { get; set; }
+    string Culture { get; set; }
+    string FileVersion { get; set; }
+    string Privacy { get; set; }
+    string ProductDescription { get; set; }
+    string ProductName { get; set; }
+    string Trademark { get; set; }
+    string Version { get; set; }
+}
