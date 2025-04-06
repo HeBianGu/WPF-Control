@@ -51,6 +51,7 @@
                 <Button Command="{ShowReleaseVersionsCommand}" />
                 <Button Command="{ShowSupportCommand}" />
                 <Button Command="{ShowSponsorCommand}" />
+                <Button Command="{ShowContactCommand}" />
                 <Button Command="{ShowSettingCommand}" />
                 <Button Command="{ShowGuideCommand}" />
                 <Button Command="{ShowGuideTreeCommand}" />

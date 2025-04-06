@@ -2,7 +2,7 @@
 using H.Modules.Help.Base;
 namespace H.Modules.Help.Contact;
 
-public interface IContactOptions : IUriHelpOptions
+public interface IContactOptions 
 {
 
 }

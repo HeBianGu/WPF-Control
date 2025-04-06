@@ -7,24 +7,23 @@
 
 using H.Common.Attributes;
 using H.Common.Commands;
-using H.Modules.Help.Support;
-using H.Modules.Help.WebSite;
+using H.Modules.Help.Contact;
 using System.ComponentModel.DataAnnotations;
 
 namespace H.Modules.Help;
 
 [Icon("\xEC92")]
-[Display(Name = "官方网址", Description = "查看官方网址")]
-public class ShowWebSiteCommand : DisplayMarkupCommandBase
+[Display(Name = "联系方式", Description = "通过此方式联系到开发者")]
+public class ShowContactCommand : DisplayMarkupCommandBase
 {
     public override Task ExecuteAsync(object parameter)
     {
-        Ioc.GetService<IWebsiteService>()?.Show();
+        Ioc.GetService<IContactService>()?.Show();
         return base.ExecuteAsync(parameter);
     }
 
     public override bool CanExecute(object parameter)
     {
-        return base.CanExecute(parameter) && Ioc.Exist<IWebsiteService>();
+        return base.CanExecute(parameter) && Ioc.Exist<IContactService>();
     }
 }

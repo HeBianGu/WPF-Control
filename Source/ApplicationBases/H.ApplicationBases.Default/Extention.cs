@@ -1,5 +1,6 @@
 ﻿using H.Extensions.FontIcon;
 using H.Modules.About;
+using H.Modules.Help.Contact;
 using H.Modules.Help.ReleaseVersions;
 using H.Modules.Help.Support;
 using H.Modules.Help.Website;
@@ -38,6 +39,7 @@ namespace System
             services.AddSupport();
             services.AddWebsite();
             services.AddSponsor();
+            services.AddContact();
             services.AddSwitchThemeViewPresenter(x =>
             {
                 x.IsDark = false;
@@ -69,6 +71,7 @@ namespace System
             app.UseReleaseVersions();
             app.UseSupport();
             app.UseWebsite();
+            app.UseContact();
         }
 
         public static void UseDefaultColorResources(this IApplicationBuilder app, Action<IThemeOptions> option = null)
