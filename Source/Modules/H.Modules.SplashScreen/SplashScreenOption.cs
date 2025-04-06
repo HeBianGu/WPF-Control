@@ -6,8 +6,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace H.Modules.SplashScreen;
 
+public interface ISplashScreenOptions
+{
+    string Product { get; set; }
+    double ProductFontSize { get; set; }
+}
+
 [Display(Name = "启动页面", GroupName = SettingGroupNames.GroupSystem, Description = "启动页面设置信息")]
-public class SplashScreenOption : IocOptionInstance<SplashScreenOption>
+public class SplashScreenOptions : IocOptionInstance<SplashScreenOptions>, ISplashScreenOptions
 {
     public override void LoadDefault()
     {

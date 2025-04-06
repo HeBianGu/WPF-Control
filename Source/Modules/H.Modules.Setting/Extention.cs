@@ -10,7 +10,7 @@ namespace System;
 
 public static class SystemSettingExtention
 {
-    public static IServiceCollection AddSetting(this IServiceCollection services, Action<ISettingViewOption> setupAction = null)
+    public static IServiceCollection AddSetting(this IServiceCollection services, Action<ISettingViewOptions> setupAction = null)
     {
         services.AddSettingDataService(setupAction);
         services.TryAdd(ServiceDescriptor.Singleton<ISettingViewPresenter, SettingViewPresenter>());
@@ -18,7 +18,7 @@ public static class SystemSettingExtention
         return services;
     }
 
-    public static IServiceCollection AddSettingDataService(this IServiceCollection services, Action<ISettingViewOption> setupAction = null)
+    public static IServiceCollection AddSettingDataService(this IServiceCollection services, Action<ISettingViewOptions> setupAction = null)
     {
         services.AddOptions();
         services.TryAdd(ServiceDescriptor.Singleton<ISettingDataService, SettingDataService>());
@@ -33,10 +33,10 @@ public static class SystemSettingExtention
         return builder;
     }
 
-    public static IApplicationBuilder UseSettingView(this IApplicationBuilder builder, Action<ISettingViewOption> option = null)
+    public static IApplicationBuilder UseSettingView(this IApplicationBuilder builder, Action<ISettingViewOptions> option = null)
     {
-        IocSetting.Instance.Add(SettingViewOption.Instance);
-        option?.Invoke(SettingViewOption.Instance);
+        IocSetting.Instance.Add(SettingViewOptions.Instance);
+        option?.Invoke(SettingViewOptions.Instance);
         return builder;
     }
 

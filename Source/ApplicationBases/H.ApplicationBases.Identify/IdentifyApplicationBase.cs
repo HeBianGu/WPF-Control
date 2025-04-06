@@ -1,20 +1,22 @@
 ﻿using H.Extensions.ApplicationBase;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Linq;
+using System.Windows.Markup;
 
-namespace H.ApplicationBases.Default
+namespace H.ApplicationBases.Identify
 {
-    public abstract partial class ModulesApplicationBase : ApplicationBase
+    public abstract partial class IdentifyApplicationBase : ApplicationBase
     {
         protected override void ConfigureServices(IServiceCollection services)
         {
-            services.AddDefaultModules();
+            services.AddIdentifyDefault();
         }
 
         protected override void Configure(IApplicationBuilder app)
         {
             base.Configure(app);
-            app.UseDefaultModules();
+            app.UseIdentifyDefault();
         }
     }
 }

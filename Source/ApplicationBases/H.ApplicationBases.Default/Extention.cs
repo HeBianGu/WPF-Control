@@ -1,4 +1,5 @@
-﻿using H.Extensions.FontIcon;
+﻿using H.ApplicationBases.Default;
+using H.Extensions.FontIcon;
 using H.Modules.About;
 using H.Modules.Help.Contact;
 using H.Modules.Help.ReleaseVersions;
@@ -28,108 +29,21 @@ namespace System
         /// 注册
         /// </summary>
         /// <param name="service"></param>
-        public static void AddDefaultModules(this IServiceCollection services)
+        public static void AddApplicationDefault(this IServiceCollection services, Action<IDefaultApplicationOptions> options = null)
         {
+            DefaultApplicationOptions opt = new DefaultApplicationOptions();
+            options?.Invoke(opt);
             services.AddDefaultMessages();
-            services.AddAbout();
-            services.AddGuide();
-            services.AddSplashScreen();
-            services.AddSetting();
-            services.AddReleaseVersions();
-            services.AddSupport();
-            services.AddWebsite();
-            services.AddSponsor();
-            services.AddContact();
-            services.AddSwitchThemeViewPresenter(x =>
-            {
-                x.IsDark = false;
-                x.Dark = new GrayDarkColorResource();
-            });
-            services.AddLoadThemeOptionsService();
-            services.AddColorThemeViewPresenter();
+            services.AddModulesDefault(opt.ModuleDefaultOptions);
+            services.AddThemeDefault();
         }
 
-        public static void AddDefaultMessages(this IServiceCollection services)
+        public static void UseApplicationDefault(this IApplicationBuilder app, Action<IDefaultApplicationOptions> options = null)
         {
-            services.AddAdornerDialogMessage();
-            //services.AddWindowDialogMessage();
-            services.AddWindowMessage();
-            services.AddFormMessageService();
-            services.AddNoticeMessage();
-            services.AddSnackMessage();
-            services.AddIOFolderDialogService();
-        }
-
-
-        public static void UseDefaultModules(this IApplicationBuilder app)
-        {
-            app.UseAbout();
-            app.UseStyle();
-            app.UseSettingSecurity();
-            app.UseMainWindowSetting();
-            app.UseWindowSetting();
-            app.UseReleaseVersions();
-            app.UseSupport();
-            app.UseWebsite();
-            app.UseContact();
-        }
-
-        public static void UseDefaultColorResources(this IApplicationBuilder app, Action<IThemeOptions> option = null)
-        {
-            app.UseTheme(x =>
-            {
-                x.ColorResources.Add(new PurpleDarkColorResource());
-                x.ColorResources.Add(new PurpleLightColorResource());
-                x.ColorResources.Add(new GrayDarkColorResource());
-                x.ColorResources.Add(new GrayLightColorResource());
-                x.ColorResources.Add(new BlueDarkColorResource());
-                x.ColorResources.Add(new BlueLightColorResource());
-                x.ColorResources.Add(new AccentLightColorResource());
-                x.ColorResources.Add(new AccentDarkColorResource());
-                x.ColorResources.Add(new CopperColorResource());
-                x.ColorResources.Add(new VintageFilmColorResource());
-                x.ColorResources.Add(new CyberpunkColorResource());
-                x.ColorResources.Add(new MineralColorResource());
-                x.ColorResources.Add(new FuturismColorResource());
-                x.ColorResources.Add(new TechnologyBlueDarkColorResource());
-                x.ColorResources.Add(new TechnologyPurpleColorResource());
-                x.ColorResources.Add(new FuturisticGreenDarkColorResource());
-                x.ColorResources.Add(new AmberTerminalDarkColorResource());
-                x.ColorResources.Add(new IndustrialDarkColorResource());
-                x.ColorResources.Add(new AntDesignProColorResource());
-                x.ColorResources.Add(new BootstrapColorResource());
-                x.ColorResources.Add(new LayUIColorResource());
-                x.ColorResources.Add(new WeUIColorResource());
-                x.ColorResources.Add(new ColorUIGAColorResource());
-                x.ColorResources.Add(new FluentUIColorResource());
-                x.ColorResources.Add(new MaterialDesignColorResource());
-                x.ColorResources.Add(new AppleColorResource());
-                x.ColorResources.Add(new OracleDarkColorResource());
-                x.ColorResources.Add(new VikingDarkColorResource());
-                x.ColorResources.Add(new ChambrayDarkColorResource());
-                x.ColorResources.Add(new TechnologyCyanColorResource());
-                x.ColorResources.Add(new TechnologyIndigoColorResource());
-                x.ColorResources.Add(new TechnologySOIORColorResource());
-                x.ColorResources.Add(new TechnologyPinkColorResource());
-                //x.ColorResources.Add(new IndustrialDarkColorResource());
-                //x.ColorResources.Add(new IndustrialDarkColorResource());
-                //x.ColorResources.Add(new IndustrialDarkColorResource());
-                //x.ColorResources.Add(new IndustrialDarkColorResource());
-                option?.Invoke(x);
-
-            });
-        }
-
-        public static void UseDefaultIconFontFamilys(this IApplicationBuilder app, Action<IThemeOptions> option = null)
-        {
-            app.UseTheme(x =>
-            {
-                x.IconFontFamilys.Add(IconFontFamilys.SystemSegoeMDL2Asset);
-                x.IconFontFamilys.Add(IconFontFamilys.SystemSegoeFluentIcons);
-                x.IconFontFamilys.Add(IconFontFamilys.LocationSegoeMDL2Asset);
-                x.IconFontFamilys.Add(IconFontFamilys.locationSegoeFluentIcons);
-                option?.Invoke(x);
-            });
+            DefaultApplicationOptions opt = new DefaultApplicationOptions();
+            options?.Invoke(opt);
+            app.UseModulesDefault(opt.ModuleDefaultOptions);
+            app.UseThemeDefault();
         }
     }
 }

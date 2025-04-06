@@ -14,7 +14,7 @@ public static class Extention
     /// 注册
     /// </summary>
     /// <param name="service"></param>
-    public static IServiceCollection AddGuide(this IServiceCollection services, Action<GuideOptions> setupAction = null)
+    public static IServiceCollection AddGuide(this IServiceCollection services, Action<IGuideOptions> setupAction = null)
     {
         services.AddOptions();
         services.TryAdd(ServiceDescriptor.Singleton<IGuideService, GuideService>());

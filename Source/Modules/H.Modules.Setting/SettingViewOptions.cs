@@ -7,7 +7,7 @@ using System.Windows;
 namespace H.Modules.Setting;
 
 [Display(Name = "设置页面", GroupName = SettingGroupNames.GroupStyle)]
-internal class SettingViewOption : IocOptionInstance<SettingViewOption>, ISettingViewOption
+internal class SettingViewOptions : IocOptionInstance<SettingViewOptions>, ISettingViewOptions
 {
     private Thickness _margin = new Thickness(20);
     [DefaultValue(typeof(Thickness), "20,20,20,20")]

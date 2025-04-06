@@ -1,6 +1,6 @@
 ﻿namespace H.Modules.Setting;
 
-public interface ISettingViewOption
+public interface ISettingViewOptions
 {
     double Height { get; set; }
     Thickness Margin { get; set; }

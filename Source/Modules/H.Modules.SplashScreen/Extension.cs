@@ -8,11 +8,11 @@ namespace System;
 
 public static class Extension
 {
-    public static IServiceCollection AddSplashScreen(this IServiceCollection services, Action<SplashScreenOption> setupAction = null)
+    public static IServiceCollection AddSplashScreen(this IServiceCollection services, Action<ISplashScreenOptions> setupAction = null)
     {
-        return services.AddSplashScreen<SplashScreenViewPresenter>();
+        return services.AddSplashScreen<SplashScreenViewPresenter>(setupAction);
     }
-    public static IServiceCollection AddSplashScreen<T>(this IServiceCollection services, Action<SplashScreenOption> setupAction = null) where T : ISplashScreenViewPresenter
+    public static IServiceCollection AddSplashScreen<T>(this IServiceCollection services, Action<ISplashScreenOptions> setupAction = null) where T : ISplashScreenViewPresenter
     {
         services.AddOptions();
         services.TryAdd(ServiceDescriptor.Singleton<ISplashScreenViewPresenter, SplashScreenViewPresenter>());
@@ -21,10 +21,10 @@ public static class Extension
         return services;
     }
 
-    public static IApplicationBuilder UseSplashScreen(this IApplicationBuilder builder, Action<SplashScreenOption> option = null)
+    public static IApplicationBuilder UseSplashScreen(this IApplicationBuilder builder, Action<ISplashScreenOptions> option = null)
     {
-        IocSetting.Instance.Add(SplashScreenOption.Instance);
-        option?.Invoke(SplashScreenOption.Instance);
+        IocSetting.Instance.Add(SplashScreenOptions.Instance);
+        option?.Invoke(SplashScreenOptions.Instance);
         return builder;
     }
 }

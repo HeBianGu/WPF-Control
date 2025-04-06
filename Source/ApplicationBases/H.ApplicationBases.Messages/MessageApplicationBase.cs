@@ -1,16 +1,12 @@
 ﻿using H.Extensions.ApplicationBase;
 using H.Services.Message.Dialog;
 using H.Services.Message.Form;
-using H.Themes.Colors.Accent;
-using H.Themes.Colors.Blue;
-using H.Themes.Colors.Gray;
-using H.Themes.Colors.Purple;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
 using System.Windows.Markup;
 
-namespace H.ApplicationBases.Default
+namespace H.ApplicationBases.Messages
 {
     public abstract partial class MessageApplicationBase : ApplicationBase
     {

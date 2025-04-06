@@ -56,11 +56,11 @@ public class ShowSettingCommand : ShowDialogCommandBase
         bool? r = await IocMessage.Dialog.Show(setting, x =>
         {
             this.Invoke(x);
-            x.Width = SettingViewOption.Instance.Width;
-            x.Height = SettingViewOption.Instance.Height;
-            x.Margin = SettingViewOption.Instance.Margin;
-            x.MinWidth = SettingViewOption.Instance.MinWidth;
-            x.MinHeight = SettingViewOption.Instance.MinHeight;
+            x.Width = SettingViewOptions.Instance.Width;
+            x.Height = SettingViewOptions.Instance.Height;
+            x.Margin = SettingViewOptions.Instance.Margin;
+            x.MinWidth = SettingViewOptions.Instance.MinWidth;
+            x.MinHeight = SettingViewOptions.Instance.MinHeight;
             x.HorizontalAlignment = HorizontalAlignment.Stretch;
             x.VerticalAlignment = VerticalAlignment.Stretch;
             x.HorizontalContentAlignment = HorizontalAlignment.Stretch;
