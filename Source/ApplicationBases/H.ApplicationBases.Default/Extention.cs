@@ -37,6 +37,7 @@ namespace System
             services.AddReleaseVersions();
             services.AddSupport();
             services.AddWebsite();
+            services.AddSponsor();
             services.AddSwitchThemeViewPresenter(x =>
             {
                 x.IsDark = false;

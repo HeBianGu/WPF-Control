@@ -50,6 +50,7 @@
                 <Button Command="{ShowWebSiteCommand}" />
                 <Button Command="{ShowReleaseVersionsCommand}" />
                 <Button Command="{ShowSupportCommand}" />
+                <Button Command="{ShowSponsorCommand}" />
                 <Button Command="{ShowSettingCommand}" />
                 <Button Command="{ShowGuideCommand}" />
                 <Button Command="{ShowGuideTreeCommand}" />
