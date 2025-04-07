@@ -10,6 +10,7 @@
               Width="1100"
               Height="650"
               mc:Ignorable="d">
+    <!--Cattach.ToBackgroundColor="{DynamicResource {x:Static ColorKeys.Background}}"-->
     <h:MainWindow.CaptionTempate>
         <ControlTemplate>
             <DockPanel LastChildFill="False"

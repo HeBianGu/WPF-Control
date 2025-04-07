@@ -11,6 +11,8 @@ public abstract class ColorResourceBase : IColorResource
         this.Prompt = display?.Prompt ?? null;
         this.Description = display?.Description ?? null;
     }
+
+    public bool IsDark { get; set; }
     public string Name { get; }
     public abstract ResourceDictionary Resource { get; }
     public string GroupName { get; }

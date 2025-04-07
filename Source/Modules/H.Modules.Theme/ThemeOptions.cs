@@ -164,9 +164,44 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoad,
         //if (x is IColorResource resource && resource != this.ColorResource)
         //{
         //    this.ColorResource = resource;
-            this.RefreshTheme();
+        this.RefreshTheme();
         //}
     });
+
+    private bool _isDark = true;
+    //[DefaultValue(true)]
+    [Display(Name = "切换明暗主题")]
+    public bool IsDark
+    {
+        get { return _isDark; }
+        set
+        {
+            if (this._isDark == value)
+                return;
+            _isDark = value;
+            RaisePropertyChanged();
+            this.SwitchDark();
+        }
+    }
+
+    private void SwitchDark()
+    {
+        if (this.IsDark == false)
+        {
+            var light = this.ColorResources.FirstOrDefault(x => x.IsDark == false);
+            if (light == null)
+                return;
+            this.ColorResource = light;
+        }
+        else
+        {
+            var dark = this.ColorResources.FirstOrDefault(x => x.IsDark == true);
+            if (dark == null)
+                return;
+            this.ColorResource = dark;
+        }
+        this.RefreshTheme();
+    }
 
     [Browsable(false)]
     public int ColorResourceSelectedIndex { get; set; }
@@ -219,7 +254,7 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoad,
             this.RefreshTheme();
             return false;
         }
-         
+
         if (this.ColorResourceSelectedIndex < 0 || this.ColorResourceSelectedIndex >= this.ColorResources.Count)
             this.ColorResourceSelectedIndex = 0;
         this.ColorResource = this.ColorResources[this.ColorResourceSelectedIndex];
@@ -241,6 +276,7 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoad,
         this.ChangeIconFontFamily();
         this.ChangeBackgroundTheme();
         this.RefreshBrushResourceDictionary();
+        this.IsDark = this.ColorResource.IsDark;
     }
 
     public void RefreshBrushResourceDictionary()

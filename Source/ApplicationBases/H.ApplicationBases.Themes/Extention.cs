@@ -1,4 +1,5 @@
 ﻿using H.ApplicationBases.Themes;
+using H.Extensions.Common;
 using H.Extensions.FontIcon;
 using H.Modules.Theme;
 using H.Services.Common.About;
@@ -28,8 +29,10 @@ namespace System
         {
             DefaultThemeOptions opt = new DefaultThemeOptions();
             option?.Invoke(opt);
-            services.AddSwitchThemeViewPresenter(opt.GetConfigOptions<Action<ISwitchThemeOptions>>());
-            services.AddLoadThemeOptionsService(opt.GetConfigOptions<Action<IThemeOptions>>());
+            //services.AddSwitchThemeViewPresenter(opt.GetConfigOptions<Action<ISwitchThemeOptions>>());
+            //services.AddLoadThemeOptionsService(opt.GetConfigOptions<Action<IThemeOptions>>());
+         
+            services.AddTheme(opt.GetConfigOptions<Action<IThemeOptions>>());
             services.AddColorThemeViewPresenter(opt.GetConfigOptions<Action<IColorThemeOptions>>());
         }
 

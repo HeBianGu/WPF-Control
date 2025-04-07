@@ -36,12 +36,7 @@ namespace H.Test.Theme
         {
             services.AddSetting();
             services.AddAdornerDialogMessage();
-            services.AddSwitchThemeViewPresenter(x =>
-            {
-                x.Dark = new PurpleDarkColorResource();
-            });
-            services.AddLoadThemeOptionsService();
-            services.AddColorThemeViewPresenter();
+            services.AddTheme();
         }
 
         protected override Window CreateMainWindow(StartupEventArgs e)
@@ -98,7 +93,6 @@ namespace H.Test.Theme
                 x.IconFontFamilys.Add(IconFontFamilys.locationSegoeFluentIcons);
             });
 
-            app.UseSwithThemeOptions();
             app.UseWindowSetting(x =>
             {
                 x.BackImagePath = "pack://application:,,,/H.Extensions.BackgroundImage;component/b13.png";

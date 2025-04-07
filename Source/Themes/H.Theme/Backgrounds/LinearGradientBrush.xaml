@@ -3,7 +3,7 @@
                     xmlns:lc="clr-namespace:H.Themes.Colors"
                     xmlns:local="clr-namespace:H.Themes"
                     xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
-    <LinearGradientBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.TextBackground, TypeInTargetAssembly={x:Type local:BrushKeys}}" StartPoint="0,0" EndPoint="1,0">
+    <LinearGradientBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.TextBackground, TypeInTargetAssembly={x:Type local:BrushKeys}}" po:Freeze="True" StartPoint="0,0" EndPoint="1,0">
         <LinearGradientBrush.GradientStops>
             <GradientStop Offset="0" Color="{DynamicResource {x:Static lc:ColorKeys.AlternatingRowBackground}}" />
             <GradientStop Offset="1" Color="{DynamicResource {x:Static lc:ColorKeys.Background}}" />
