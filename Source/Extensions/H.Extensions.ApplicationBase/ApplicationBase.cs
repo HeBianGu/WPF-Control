@@ -218,8 +218,8 @@ public partial class ApplicationBase
         int sleep = 1000;
         ISplashScreenViewPresenter presenter = Ioc.Services.GetService<ISplashScreenViewPresenter>();
         //  Do ： 在显示页面前需要加载主题，否则主题会出现变化
-        var tls = Ioc.GetService<ILoadThemeOptionsService>();
-        tls.Load(out string message);
+        var tls = Ioc.GetService<ILoadThemeOptionsService>(false);
+        tls?.Load(out string message);
         Func<IDialog, ISplashScreenViewPresenter, bool?> func = (c, s) =>
         {
             if (c?.IsCancel != true)

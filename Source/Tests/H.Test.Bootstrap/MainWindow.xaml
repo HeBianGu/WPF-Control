@@ -9,7 +9,7 @@
         Title="MainWindow"
         Width="1100"
         Height="650"
-        Style="{StaticResource {x:Type Window}}"
+        Style="{StaticResource {x:Static WindowKeys.Default}}"
         mc:Ignorable="d">
     <DockPanel>
         <Menu DockPanel.Dock="Top">

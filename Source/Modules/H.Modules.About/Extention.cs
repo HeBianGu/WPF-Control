@@ -14,7 +14,7 @@ namespace System
         /// <param name="service"></param>
         public static void AddAbout(this IServiceCollection services, Action<IAboutOptions> setupAction = null)
         {
-            //services.AddOptions();
+            services.AddOptions();
             services.TryAdd(ServiceDescriptor.Singleton<IAboutViewPresenter, AboutViewPresenter>());
             if (setupAction != null)
                 services.Configure(new Action<AboutOptions>(setupAction));

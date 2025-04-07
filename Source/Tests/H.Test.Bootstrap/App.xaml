@@ -6,11 +6,11 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <FontSizeTheme Type="{x:Static h:FontSizeThemeType.Default}" />
-                <LayoutTheme Type="{x:Static h:LayoutThemeType.Default}" />
-                <ColorTheme Type="{x:Static h:ColorThemeType.Dark}" />
+                <FontSizeTheme Type="Default" />
+                <LayoutTheme Type="Default" />
+                <ColorTheme Type="Dark" />
                 <BootstrapStyle />
-                <!--<ResourceDictionary Source="pack://application:,,,/H.Style;component/ConciseControls.xaml" />-->
+                <!--<ConciseStyle/>-->
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

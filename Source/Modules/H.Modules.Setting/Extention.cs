@@ -23,7 +23,7 @@ public static class SystemSettingExtention
         services.AddOptions();
         services.TryAdd(ServiceDescriptor.Singleton<ISettingDataService, SettingDataService>());
         if (setupAction != null)
-            services.Configure(setupAction);
+            services.Configure(new Action<SettingViewOptions>(setupAction));
         return services;
     }
 

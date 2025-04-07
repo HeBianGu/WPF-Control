@@ -9,7 +9,7 @@
         Title="MainWindow"
         Width="800"
         Height="450"
-        Style="{StaticResource {x:Type Window}}"
+        Style="{StaticResource {x:Static WindowKeys.Default}}"
         mc:Ignorable="d">
     <TabControl>
         <TabItem Header="RepositoryPresenter">

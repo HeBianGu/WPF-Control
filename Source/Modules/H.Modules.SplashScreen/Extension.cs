@@ -14,7 +14,7 @@ public static class Extension
     }
     public static IServiceCollection AddSplashScreen<T>(this IServiceCollection services, Action<ISplashScreenOptions> setupAction = null) where T : ISplashScreenViewPresenter
     {
-        //services.AddOptions();
+        services.AddOptions();
         services.TryAdd(ServiceDescriptor.Singleton<ISplashScreenViewPresenter, SplashScreenViewPresenter>());
         if (setupAction != null)
             services.Configure(new Action<SplashScreenOptions>(setupAction));

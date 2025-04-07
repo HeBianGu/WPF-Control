@@ -7,8 +7,8 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ColorTheme Type="{x:Static h:ColorThemeType.Dark}" />
-                <ResourceDictionary Source="pack://application:,,,/H.Style;component/ConciseControls.xaml" />
+                <ColorTheme Type="Dark" />
+                <ConciseStyle/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

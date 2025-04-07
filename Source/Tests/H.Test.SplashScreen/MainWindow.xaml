@@ -7,7 +7,7 @@
         Title="MainWindow"
         Width="900"
         Height="550"
-        Style="{StaticResource {x:Type Window}}"
+        Style="{StaticResource {x:Static WindowKeys.Default}}"
         mc:Ignorable="d">
     <UniformGrid>
         <ContentPresenter Content="{Ioc Type={x:Type ISettingButtonPresenter}}" />

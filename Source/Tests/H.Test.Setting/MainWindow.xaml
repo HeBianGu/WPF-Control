@@ -8,7 +8,7 @@
         Title="MainWindow"
         Width="900"
         Height="550"
-        Style="{StaticResource {x:Type Window}}"
+        Style="{StaticResource {x:Static WindowKeys.Default}}"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d">
     <Grid>

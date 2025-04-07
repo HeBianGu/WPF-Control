@@ -8,7 +8,6 @@ namespace System;
 
 public static class Extention
 {
-
     public static IServiceCollection AddFFMpeg(this IServiceCollection services, Action<FFMpegOption> setupAction = null)
     {
         services.AddOptions();

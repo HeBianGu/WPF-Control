@@ -6,7 +6,7 @@
                                    Title="Collection Control"
                                    Width="800"
                                    Height="600"
-                                   Style="{StaticResource {x:Type Window}}"
+                                   Style="{StaticResource {x:Static WindowKeys.Default}}"
                                    WindowStartupLocation="CenterScreen">
 
     <Grid Margin="10">
