@@ -63,10 +63,10 @@ namespace H.Test.Identify
         protected override void Configure(IApplicationBuilder app)
         {
             base.Configure(app);
-            app.UseLogin();
-            app.UseRegistor(x => x.UseMail = false);
-            app.UseTheme();
-            app.UseSwithTheme();
+            app.UseLoginOptions();
+            app.UseRegistorOptions(x => x.UseMail = false);
+            app.UseThemeOptions();
+            app.UseSwithThemeOptions();
             app.UseSqlite();
         }
     }

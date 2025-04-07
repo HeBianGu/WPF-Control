@@ -31,13 +31,13 @@ namespace H.Test.Setting
 
         protected override void Configure(IApplicationBuilder app)
         {
-            app.UseSetting(x =>
+            app.UseSettingDataOptions(x =>
             {
                 x.Add(LoginSetting.Instance);
             });
-            app.UseSettingView();
-            app.UseSettingSecurity();
-            app.UseSettingDefault();
+            app.UseSettingViewOptions();
+            app.UseSettingSecurityOptions();
+            app.UseSettingDefaultOptions();
         }
 
         protected override Window CreateMainWindow(StartupEventArgs e)

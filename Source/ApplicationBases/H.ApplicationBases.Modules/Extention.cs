@@ -42,8 +42,8 @@ namespace System
             app.UseAboutOptions(opt.GetConfigOptions<Action<IAboutOptions>>());
             app.UseSplashScreenOptions(opt.GetConfigOptions<Action<ISplashScreenOptions>>());
             app.UseGuide(opt.GetConfigOptions<Action<IGuideOptions>>());
-            app.UseSettingView(opt.GetConfigOptions<Action<ISettingViewOptions>>());
-            app.UseSettingSecurity(opt.GetConfigOptions<Action<ISettingSecurityViewOption>>());
+            app.UseSettingViewOptions(opt.GetConfigOptions<Action<ISettingViewOptions>>());
+            app.UseSettingSecurityOptions(opt.GetConfigOptions<Action<ISettingSecurityViewOption>>());
             app.UseReleaseVersions(opt.GetConfigOptions<Action<IReleaseVersionsOptions>>());
             app.UseSupport(opt.GetConfigOptions<Action<ISupportOptions>>());
             app.UseWebsite(opt.GetConfigOptions<Action<IWebsiteOptions>>());

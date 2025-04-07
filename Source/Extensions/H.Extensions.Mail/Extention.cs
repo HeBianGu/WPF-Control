@@ -13,17 +13,17 @@ public static class Extention
     /// 注册
     /// </summary>
     /// <param name="service"></param>
-    public static IServiceCollection AddMail(this IServiceCollection services, Action<SmtpSendOptions> setupAction = null)
+    public static IServiceCollection AddMail(this IServiceCollection services, Action<ISmtpSendOptions> setupAction = null)
     {
         services.AddOptions();
         services.TryAdd(ServiceDescriptor.Singleton<IMailService, MailService>());
         services.TryAdd(ServiceDescriptor.Singleton<IMailLogService, MailLogService>());
         if (setupAction != null)
-            services.Configure(setupAction);
+            services.Configure(new Action<SmtpSendOptions>(setupAction));
         return services;
     }
 
-    public static IApplicationBuilder UseMail(this IApplicationBuilder builder, Action<SmtpSendOptions> option = null)
+    public static IApplicationBuilder UseMailOptions(this IApplicationBuilder builder, Action<ISmtpSendOptions> option = null)
     {
         IocSetting.Instance.Add(SmtpSendOptions.Instance);
         option?.Invoke(SmtpSendOptions.Instance);

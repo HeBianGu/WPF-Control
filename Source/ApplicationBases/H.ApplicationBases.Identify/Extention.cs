@@ -41,8 +41,8 @@ namespace System
 
         public static void UseIdentifyDefault(this IApplicationBuilder app)
         {
-            app.UseLogin();
-            app.UseRegistor(x => x.UseMail = false);
+            app.UseLoginOptions();
+            app.UseRegistorOptions(x => x.UseMail = false);
             app.UseSqlite();
         }
     }

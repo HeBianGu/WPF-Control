@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 namespace H.Modules.Login
 {
     [Display(Name = "注册页面设置", GroupName = SettingGroupNames.GroupSystem, Description = "注册页面设置的信息")]
-    public class RegistorOptions : IocOptionInstance<RegistorOptions>
+    public class RegistorOptions : IocOptionInstance<RegistorOptions>, IRegistorOptions
     {
         private bool _useMail;
         [DefaultValue(false)]

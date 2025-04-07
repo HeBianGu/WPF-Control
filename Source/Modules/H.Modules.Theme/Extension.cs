@@ -27,7 +27,7 @@ namespace System
                 services.Configure(new Action<ThemeOptions>(setupAction));
             return services;
         }
-        public static IApplicationBuilder UseTheme(this IApplicationBuilder builder, Action<IThemeOptions> option = null)
+        public static IApplicationBuilder UseThemeOptions(this IApplicationBuilder builder, Action<IThemeOptions> option = null)
         {
             IocSetting.Instance.Add(ThemeOptions.Instance);
             option?.Invoke(ThemeOptions.Instance);
@@ -44,7 +44,7 @@ namespace System
             return services;
         }
 
-        public static IApplicationBuilder UseSwithTheme(this IApplicationBuilder builder, Action<ISwitchThemeOptions> option = null)
+        public static IApplicationBuilder UseSwithThemeOptions(this IApplicationBuilder builder, Action<ISwitchThemeOptions> option = null)
         {
             IocSetting.Instance.Add(SwitchThemeOptions.Instance);
             option?.Invoke(SwitchThemeOptions.Instance);

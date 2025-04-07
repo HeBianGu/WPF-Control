@@ -42,9 +42,9 @@ namespace H.Test.Login
         protected override void Configure(IApplicationBuilder app)
         {
             base.Configure(app);
-            app.UseLogin();
-            app.UseRegistor();
-            app.UseMail();
+            app.UseLoginOptions();
+            app.UseRegistorOptions();
+            app.UseMailOptions();
         }
 
         protected override void OnSplashScreen(StartupEventArgs e)

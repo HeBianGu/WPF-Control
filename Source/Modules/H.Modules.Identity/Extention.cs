@@ -32,12 +32,12 @@ namespace System
             service.AddSingleton<ILoginService, LoginService>();
         }
 
-        public static IServiceCollection AddRegisterService(this IServiceCollection services, Action<IdentifyOptions> setupAction = null)
+        public static IServiceCollection AddRegisterService(this IServiceCollection services, Action<IIdentifyOptions> setupAction = null)
         {
             services.AddOptions();
             services.TryAdd(ServiceDescriptor.Singleton<IRegisterService, RegisterService>());
             if (setupAction != null)
-                services.Configure(setupAction);
+                services.Configure(new Action<IdentifyOptions>(setupAction));
             return services;
         }
 
@@ -61,7 +61,7 @@ namespace System
             service.AddSingleton<IAuthorityViewPresenter, AuthorityViewPresenter>();
         }
 
-        public static IApplicationBuilder UseIdentify(this IApplicationBuilder builder, Action<IdentifyOptions> option = null)
+        public static IApplicationBuilder UseIdentifyOptions(this IApplicationBuilder builder, Action<IIdentifyOptions> option = null)
         {
             IocSetting.Instance.Add(IdentifyOptions.Instance);
             option?.Invoke(IdentifyOptions.Instance);

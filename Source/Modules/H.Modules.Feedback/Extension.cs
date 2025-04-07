@@ -8,16 +8,16 @@ namespace System;
 
 public static class Extension
 {
-    public static IServiceCollection AddFeedBack(this IServiceCollection services, Action<FeedbackOptions> setupAction = null)
+    public static IServiceCollection AddFeedBack(this IServiceCollection services, Action<IFeedbackOptions> setupAction = null)
     {
         services.AddOptions();
         services.TryAdd(ServiceDescriptor.Singleton<IFeedbackViewPresenter, FeedbackViewPresenter>());
         if (setupAction != null)
-            services.Configure(setupAction);
+            services.Configure(new Action<FeedbackOptions>(setupAction));
         return services;
     }
 
-    public static IApplicationBuilder UseFeedBack(this IApplicationBuilder builder, Action<FeedbackOptions> option = null)
+    public static IApplicationBuilder UseFeedBackOptions(this IApplicationBuilder builder, Action<IFeedbackOptions> option = null)
     {
         IocSetting.Instance.Add(FeedbackOptions.Instance);
         option?.Invoke(FeedbackOptions.Instance);

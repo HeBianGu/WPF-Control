@@ -8,18 +8,19 @@ namespace System;
 
 public static class Extention
 {
-    public static IServiceCollection AddFFMpeg(this IServiceCollection services, Action<FFMpegOption> setupAction = null)
+    public static IServiceCollection AddFFMpeg(this IServiceCollection services, Action<IFFMpegOption> setupAction = null)
     {
         services.AddOptions();
         services.TryAdd(ServiceDescriptor.Singleton<IFFMpegService, FFMpegService>());
         if (setupAction != null)
-            services.Configure(setupAction);
+            services.Configure(new Action<FFMpegOption>(setupAction));
         return services;
     }
 
-    public static void UseFFMpeg(this IApplicationBuilder builder, Action<FFMpegOption> action = null)
+    public static IApplicationBuilder UseFFMpeg(this IApplicationBuilder builder, Action<IFFMpegOption> action = null)
     {
         action?.Invoke(FFMpegOption.Instance);
         IocSetting.Instance.Add(FFMpegOption.Instance);
+        return builder;
     }
 }

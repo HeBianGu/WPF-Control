@@ -44,7 +44,7 @@ namespace System
         {
             DefaultApplicationOptions opt = new DefaultApplicationOptions();
             options?.Invoke(opt);
-            app.UseStyle();
+            app.UseStyleOptions();
             app.UseDefaultModuleOptions(opt.GetConfigOptions<Action<IDefaultModuleOptions>>());
             app.UseDefaultThemeOptions(opt.GetConfigOptions<Action<IDefaultThemeOptions>>());
         }

@@ -27,20 +27,20 @@ public static class SystemSettingExtention
         return services;
     }
 
-    public static IApplicationBuilder UseSetting(this IApplicationBuilder builder, Action<ISettingDataOption> option = null)
+    public static IApplicationBuilder UseSettingDataOptions(this IApplicationBuilder builder, Action<ISettingDataOption> option = null)
     {
         option?.Invoke(IocSetting.Instance);
         return builder;
     }
 
-    public static IApplicationBuilder UseSettingView(this IApplicationBuilder builder, Action<ISettingViewOptions> option = null)
+    public static IApplicationBuilder UseSettingViewOptions(this IApplicationBuilder builder, Action<ISettingViewOptions> option = null)
     {
         IocSetting.Instance.Add(SettingViewOptions.Instance);
         option?.Invoke(SettingViewOptions.Instance);
         return builder;
     }
 
-    public static IApplicationBuilder UseSettingSecurity(this IApplicationBuilder builder, Action<ISettingSecurityViewOption> option = null)
+    public static IApplicationBuilder UseSettingSecurityOptions(this IApplicationBuilder builder, Action<ISettingSecurityViewOption> option = null)
     {
         IocSetting.Instance.Add(SettingSecurityViewOption.Instance);
         option?.Invoke(SettingSecurityViewOption.Instance);
@@ -50,7 +50,7 @@ public static class SystemSettingExtention
     /// <summary>
     /// 设置系统路径
     /// </summary>  
-    public static IApplicationBuilder UseSettingDefault(this IApplicationBuilder builder, Action<ISettingDataOption> option = null)
+    public static IApplicationBuilder UseSettingDefaultOptions(this IApplicationBuilder builder, Action<ISettingDataOption> option = null)
     {
         option?.Invoke(IocSetting.Instance);
         IocSetting.Instance.Settings.Add(LoginSetting.Instance);
@@ -64,7 +64,7 @@ public static class SystemSettingExtention
         IocSetting.Instance.Settings.Add(PasswordSetting.Instance);
         IocSetting.Instance.Settings.Add(MessageSetting.Instance);
         IocSetting.Instance.Settings.Add(PersonalSetting.Instance);
-        builder.UseSetting(option);
+        builder.UseSettingDataOptions(option);
         return builder;
     }
 }

@@ -9,7 +9,7 @@ using System.IO;
 namespace H.Extensions.FFMpeg;
 
 [Display(Name = "FFmpeg设置", GroupName = SettingGroupNames.GroupControl, Description = "使用调查文件帮助优化本软件")]
-public class FFMpegOption : IocOptionInstance<FFMpegOption>
+public class FFMpegOption : IocOptionInstance<FFMpegOption>, IFFMpegOption
 {
     private string _workingDirectory = string.Empty;
     [Display(Name = "工作路径")]

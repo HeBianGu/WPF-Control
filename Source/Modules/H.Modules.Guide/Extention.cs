@@ -19,7 +19,7 @@ public static class Extention
         services.AddOptions();
         services.TryAdd(ServiceDescriptor.Singleton<IGuideService, GuideService>());
         if (setupAction != null)
-            services.Configure(setupAction);
+            services.Configure(new Action<GuideOptions>(setupAction));
         return services;
     }
 
@@ -28,17 +28,4 @@ public static class Extention
         action?.Invoke(GuideOptions.Instance);
         IocSetting.Instance.Add(GuideOptions.Instance);
     }
-
-    ///// <summary>
-    ///// 设置显示新手向导
-    ///// </summary>  
-    //public static IServiceCollection AddGuideViewPresenter(this IServiceCollection services, Action<IGuideViewPresenterOption> option = null)
-    //{
-    //    //services.AddWindowCaptionViewPresenter();
-    //    services.AddSingleton<IGuideViewPresenter, GuideViewPresenter>();
-    //    option?.Invoke(GuideViewPresenter.Instance);
-    //    IocSetting.Instance.Add(GuideViewPresenter.Instance);
-    //    //WindowCaptionViewPresenter.Instance.AddPersenter(GuideViewPresenter.Instance);
-    //    return services;
-    //}
 }

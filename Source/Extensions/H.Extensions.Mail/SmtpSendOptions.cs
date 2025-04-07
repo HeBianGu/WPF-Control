@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 namespace H.Extensions.Mail;
 
 [Display(Name = "邮件外发设置", GroupName = SettingGroupNames.GroupSystem, Description = "邮件外发设置的信息")]
-public class SmtpSendOptions : IocOptionInstance<SmtpSendOptions>
+public class SmtpSendOptions : IocOptionInstance<SmtpSendOptions>, ISmtpSendOptions
 {
     private string _host;
     [Required]

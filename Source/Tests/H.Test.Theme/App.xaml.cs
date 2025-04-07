@@ -52,7 +52,7 @@ namespace H.Test.Theme
         protected override void Configure(IApplicationBuilder app)
         {
             base.Configure(app);
-            app.UseTheme(x =>
+            app.UseThemeOptions(x =>
             {
                 x.ColorResources.Add(new PurpleDarkColorResource());
                 x.ColorResources.Add(new PurpleLightColorResource());
@@ -98,7 +98,7 @@ namespace H.Test.Theme
                 x.IconFontFamilys.Add(IconFontFamilys.locationSegoeFluentIcons);
             });
 
-            app.UseSwithTheme();
+            app.UseSwithThemeOptions();
             app.UseWindowSetting(x =>
             {
                 x.BackImagePath = "pack://application:,,,/H.Extensions.BackgroundImage;component/b13.png";

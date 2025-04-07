@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 namespace H.Modules.Feedback;
 
 [Display(Name = " 用户反馈设置", GroupName = SettingGroupNames.GroupSystem, Description = "用户反馈设置的信息")]
-public class FeedbackOptions : IocOptionInstance<FeedbackOptions>
+public class FeedbackOptions : IocOptionInstance<FeedbackOptions>, IFeedbackOptions
 {
     private string _mailAccount;
     [Required]

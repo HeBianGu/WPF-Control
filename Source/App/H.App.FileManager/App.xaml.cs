@@ -101,7 +101,7 @@ namespace H.App.FileManager
         protected override void Configure(IApplicationBuilder app)
         {
             base.Configure(app);
-            app.UseSetting(x =>
+            app.UseSettingDataOptions(x =>
             {
                 x.Add(AppSetting.Instance);
             });
@@ -111,7 +111,7 @@ namespace H.App.FileManager
             //    //x.LibvlcPath = "G:\\BaiduNetdiskDownload\\libvlc\\win-x64";
             //});
             app.UseFFMpeg();
-            app.UseLogin();
+            app.UseLoginOptions();
             app.UseWindowSetting();
         }
     }

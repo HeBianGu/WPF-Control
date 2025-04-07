@@ -13,11 +13,11 @@ using System.Xml.Serialization;
 namespace H.Modules.License
 {
     [Display(Name = "许可管理", GroupName = SettingGroupNames.GroupSystem, Description = "许可管理设置的信息")]
-    public class LicenseOptions : IocOptionInstance<LicenseOptions>
+    public class LicenseOptions : IocOptionInstance<LicenseOptions>, ILicenseOptions
     {
         private bool _useTipTrialOnLoad = false;
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         [DefaultValue(true)]
@@ -35,7 +35,7 @@ namespace H.Modules.License
         private bool _useVailLicenceOnLoad = true;
         [Browsable(false)]
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         [Display(Name = "启动时是否启用许可验证")]
         public bool UseVailLicenceOnLoad
@@ -51,7 +51,7 @@ namespace H.Modules.License
 
         private bool _useTrial = true;
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         [Display(Name = "启用试用")]
@@ -80,7 +80,7 @@ namespace H.Modules.License
 
         private string _filePath = AppPaths.Instance.License;
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [Display(Name = "许可路径")]

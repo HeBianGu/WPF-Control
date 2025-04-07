@@ -41,7 +41,7 @@ public partial class App : ApplicationBase
         //    x.Add(LoginSetting.Instance);
         //});
         //app.UseSettingDefault();
-        app.UseTheme(x =>
+        app.UseThemeOptions(x =>
         {
             x.ColorResources.Add(new PurpleDarkColorResource());
             x.ColorResources.Add(new PurpleLightColorResource());
@@ -55,8 +55,8 @@ public partial class App : ApplicationBase
 
         app.UseWindowSetting();
         app.UseAboutOptions();
-        app.UseSwithTheme();
-        app.UseSettingSecurity();
+        app.UseSwithThemeOptions();
+        app.UseSettingSecurityOptions();
         app.UseMainWindowSetting();
         app.UseWindowSetting();
     }

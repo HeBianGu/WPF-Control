@@ -28,8 +28,8 @@ namespace H.Test.Ribbon
 
         protected override void Configure(IApplicationBuilder app)
         {
-            app.UseSettingView();
-            app.UseSettingDefault();
+            app.UseSettingViewOptions();
+            app.UseSettingDefaultOptions();
         }
 
         protected override Window CreateMainWindow(StartupEventArgs e)

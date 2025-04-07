@@ -9,7 +9,7 @@ using System.Text.Json.Serialization;
 namespace H.Extensions.NewtonsoftJson;
 
 [Display(Name = "注册页面设置", GroupName = SettingGroupNames.GroupSystem, Description = "注册页面设置的信息")]
-public class NewtonsoftJsonOptions : IocOptionInstance<NewtonsoftJsonOptions>
+public class NewtonsoftJsonOptions : IocOptionInstance<NewtonsoftJsonOptions>, INewtonsoftJsonOptions
 {
     public override void LoadDefault()
     {

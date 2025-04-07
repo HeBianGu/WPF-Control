@@ -36,7 +36,7 @@ namespace H.Test.Controls
         {
             app.UseWindowSetting();
             app.UseScrollViewerSetting();
-            app.UseStyle();
+            app.UseStyleOptions();
         }
 
     }

@@ -43,7 +43,7 @@ namespace System
 
         public static void UseDefaultColorResources(this IApplicationBuilder app, Action<IColorThemeOptions> option = null)
         {
-            app.UseTheme(x =>
+            app.UseThemeOptions(x =>
             {
                 x.ColorResources.Add(new PurpleDarkColorResource());
                 x.ColorResources.Add(new PurpleLightColorResource());
@@ -89,7 +89,7 @@ namespace System
 
         public static void UseDefaultIconFontFamilys(this IApplicationBuilder app, Action<IIconFontFamilysOptions> option = null)
         {
-            app.UseTheme(x =>
+            app.UseThemeOptions(x =>
             {
                 x.IconFontFamilys.Add(IconFontFamilys.SystemSegoeMDL2Asset);
                 x.IconFontFamilys.Add(IconFontFamilys.SystemSegoeFluentIcons);

@@ -83,13 +83,13 @@ namespace H.Test.Test
         protected override void Configure(IApplicationBuilder app)
         {
             base.Configure(app);
-            app.UseAddLog4netSetting();
+            app.UseAddLog4netOptions();
             //app.UseVlc(x =>
             //{
             //    x.LibvlcPath = "G:\\BaiduNetdiskDownload\\libvlc\\win-x64";
             //});
             app.UseMainWindowSetting();
-            app.UseMail();
+            app.UseMailOptions();
         }
     }
 }

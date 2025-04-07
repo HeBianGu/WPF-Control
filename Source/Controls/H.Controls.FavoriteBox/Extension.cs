@@ -8,21 +8,21 @@ namespace System
 {
     public static class Extension
     {
-        public static IServiceCollection AddFavorite(this IServiceCollection services, Action<FavoriteOptions> setupAction = null)
+        public static IServiceCollection AddFavorite(this IServiceCollection services, Action<IFavoriteOptions> setupAction = null)
         {
             return services.AddFavorite<FavoriteService>(setupAction);
         }
 
-        public static IServiceCollection AddFavorite<T>(this IServiceCollection services, Action<FavoriteOptions> setupAction = null) where T : class, IFavoriteService
+        public static IServiceCollection AddFavorite<T>(this IServiceCollection services, Action<IFavoriteOptions> setupAction = null) where T : class, IFavoriteService
         {
             services.AddOptions();
             services.TryAdd(ServiceDescriptor.Singleton<IFavoriteService, T>());
             if (setupAction != null)
-                services.Configure(setupAction);
+                services.Configure(new Action<FavoriteOptions>(setupAction));
             return services;
         }
 
-        public static IApplicationBuilder UseFavorite(this IApplicationBuilder builder, Action<FavoriteOptions> option = null)
+        public static IApplicationBuilder UseFavoriteOptions(this IApplicationBuilder builder, Action<IFavoriteOptions> option = null)
         {
             IocSetting.Instance.Add(FavoriteOptions.Instance);
             option?.Invoke(FavoriteOptions.Instance);

@@ -33,7 +33,7 @@ namespace H.Test.Mvp
         {
             base.Configure(app);
 
-            app.UseSettingDefault();
+            app.UseSettingDefaultOptions();
             app.UseAboutOptions(x => x.ProductName = "设置标题");
         }
     }

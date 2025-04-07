@@ -30,7 +30,7 @@ public static class Extention
         //services.TryAdd(ServiceDescriptor.Singleton<ISplashLoad, ProjectLoadService>());
 
         if (setupAction != null)
-            services.Configure(setupAction);
+            services.Configure(new Action<FavoriteOptions>(setupAction));
         return services;
     }
 
@@ -39,7 +39,7 @@ public static class Extention
     /// 配置
     /// </summary>
     /// <param name="service"></param>
-    public static IApplicationBuilder UseProject(this IApplicationBuilder builder, Action<ProjectOptions> option = null)
+    public static IApplicationBuilder UseProjectOptions(this IApplicationBuilder builder, Action<ProjectOptions> option = null)
     {
         IocSetting.Instance.Add(ProjectOptions.Instance);
         option?.Invoke(ProjectOptions.Instance);
