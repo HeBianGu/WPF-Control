@@ -5,11 +5,11 @@ global using H.Common.Interfaces;
 global using H.Services.Message;
 global using H.Services.Message.Dialog;
 global using H.Services.Setting;
+using H.Extensions.FontIcon;
 using H.Styles.Controls;
 
 namespace H.Styles.Commands;
-
-[Icon("\xE7E8")]
+[Icon(FontIcons.ChromeClose)]
 [Display(Name = "关闭并保存", Description = "关闭应用程序并保存应用数据")]
 public class CloseAfterSaveWindowCommand : CloseWindowCommand
 {

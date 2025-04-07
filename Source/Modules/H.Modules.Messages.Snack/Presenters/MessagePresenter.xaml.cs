@@ -7,10 +7,9 @@ using H.Mvvm.ViewModels.Base;
 
 namespace H.Modules.Messages.Snack
 {
-    public abstract class MessagePresenterBase : BindableBase, ISnackItem
+    public abstract class MessagePresenterBase : DisplayBindableBase, ISnackItem
     {
         public string Time { get; } = DateTime.Now.ToString("HH:mm:ss");
-        public Geometry Geometry { get; set; }
         private string _message;
         public string Message
         {

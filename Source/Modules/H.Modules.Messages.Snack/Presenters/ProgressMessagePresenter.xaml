@@ -18,7 +18,7 @@
                     BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
                     BorderThickness="1"
                     CornerRadius="2" />
-            <Grid Width="15"
+            <!--<Grid Width="15"
                   Height="15"
                   Margin="10,5">
                 <Grid.Background>
@@ -29,7 +29,12 @@
                         </DrawingBrush.Drawing>
                     </DrawingBrush>
                 </Grid.Background>
-            </Grid>
+            </Grid>-->
+
+            <FontIconTextBlock x:Name="g"
+                               Margin="10,0"
+                               FontSize="20"
+                               Text="{Binding Icon}" />
             <StackPanel Grid.Column="1"
                         VerticalAlignment="Center"
                         TextBlock.Foreground="{DynamicResource {x:Static h:BrushKeys.Foreground}}">

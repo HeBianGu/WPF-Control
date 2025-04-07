@@ -1,8 +1,10 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
+using H.Common.Attributes;
 using H.Controls.Form.Attributes;
 using H.Controls.Form.PropertyItem.TextPropertyItems;
+using H.Extensions.FontIcon;
 using H.Extensions.Setting;
 using H.Modules.Help.Base;
 using H.Services.Setting;
@@ -13,6 +15,7 @@ using System.Xml.Serialization;
 
 namespace H.Modules.Help.Contact;
 
+[Icon(FontIcons.Contact)]
 [Display(Name = "联系方式", GroupName = SettingGroupNames.GroupSystem, Description = "通过此方式可以联系到开发者")]
 public class ContactOptions : IocOptionInstance<ContactOptions>, IContactOptions
 {

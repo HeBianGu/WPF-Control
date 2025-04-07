@@ -7,12 +7,13 @@
 
 using H.Common.Attributes;
 using H.Common.Commands;
+using H.Extensions.FontIcon;
 using H.Modules.Help.Contact;
 using System.ComponentModel.DataAnnotations;
 
 namespace H.Modules.Help;
 
-[Icon("\xEC92")]
+[Icon(FontIcons.Contact)]
 [Display(Name = "联系方式", Description = "通过此方式联系到开发者")]
 public class ShowContactCommand : DisplayMarkupCommandBase
 {

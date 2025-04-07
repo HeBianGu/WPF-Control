@@ -1,10 +1,12 @@
-﻿using H.Extensions.Setting;
+﻿using H.Common.Attributes;
+using H.Extensions.Setting;
 using H.Services.Setting;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace H.Extensions.Mail;
 
+[Icon("\xE89C")]
 [Display(Name = "邮件外发设置", GroupName = SettingGroupNames.GroupSystem, Description = "邮件外发设置的信息")]
 public class SmtpSendOptions : IocOptionInstance<SmtpSendOptions>, ISmtpSendOptions
 {

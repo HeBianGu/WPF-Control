@@ -7,12 +7,13 @@
 
 using H.Common.Attributes;
 using H.Common.Commands;
+using H.Extensions.FontIcon;
 using H.Modules.Help.ReleaseVersions;
 using System.ComponentModel.DataAnnotations;
 
 namespace H.Modules.Help;
 
-[Icon("\xEC92")]
+[Icon(FontIcons.DateTime)]
 [Display(Name = "发行说明", Description = "查看软件发行说明")]
 public class ShowReleaseVersionsCommand : DisplayMarkupCommandBase
 {

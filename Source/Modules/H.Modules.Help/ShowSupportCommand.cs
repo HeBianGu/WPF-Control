@@ -7,13 +7,14 @@
 
 using H.Common.Attributes;
 using H.Common.Commands;
+using H.Extensions.FontIcon;
 using H.Modules.Help.Support;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 
 namespace H.Modules.Help;
 
-[Icon("\xEC92")]
+[Icon(FontIcons.Group)]
 [Display(Name = "技术支持", Description = "查看技术支持文档")]
 public class ShowSupportCommand : DisplayMarkupCommandBase
 {

@@ -7,13 +7,14 @@
 
 using H.Common.Attributes;
 using H.Common.Commands;
+using H.Extensions.FontIcon;
 using H.Modules.Help.Support;
 using H.Modules.Help.WebSite;
 using System.ComponentModel.DataAnnotations;
 
 namespace H.Modules.Help;
 
-[Icon("\xEC92")]
+[Icon(FontIcons.Home)]
 [Display(Name = "官方网址", Description = "查看官方网址")]
 public class ShowWebSiteCommand : DisplayMarkupCommandBase
 {

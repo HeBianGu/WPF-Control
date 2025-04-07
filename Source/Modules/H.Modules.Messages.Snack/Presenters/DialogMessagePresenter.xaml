@@ -20,7 +20,7 @@
                     BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
                     BorderThickness="1"
                     CornerRadius="2" />
-            <Grid Width="15"
+            <!--<Grid Width="15"
                   Height="15"
                   Margin="10,5">
                 <Grid.Background>
@@ -31,7 +31,10 @@
                         </DrawingBrush.Drawing>
                     </DrawingBrush>
                 </Grid.Background>
-            </Grid>
+            </Grid>-->
+            <FontIconTextBlock Margin="10,0"
+                               FontSize="20"
+                               Text="{Binding Icon}" />
 
             <TextBlock Grid.Column="1"
                        Margin="0,0"
@@ -64,13 +67,6 @@
                         Content="确定"
                         DockPanel.Dock="Right" />
             </DockPanel>
-
-            <!--<Button Grid.Column="4"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Center"
-                    Command="{Binding CloseCommand}"
-                    Content="{x:Static h:Geometrys.Close}"
-                    Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />-->
         </Grid>
     </DataTemplate>
 </ResourceDictionary>
