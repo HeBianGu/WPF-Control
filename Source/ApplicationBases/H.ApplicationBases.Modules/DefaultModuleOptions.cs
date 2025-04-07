@@ -1,5 +1,6 @@
 ﻿using H.Extensions.ApplicationBase;
 using H.Modules.About;
+using H.Modules.Feedback;
 using H.Modules.Guide;
 using H.Modules.Help.Contact;
 using H.Modules.Help.ReleaseVersions;
@@ -7,6 +8,7 @@ using H.Modules.Help.Support;
 using H.Modules.Help.WebSite;
 using H.Modules.Setting;
 using H.Modules.SplashScreen;
+using H.Services.Common.Feedback;
 
 namespace H.ApplicationBases.Module
 {
@@ -57,5 +59,11 @@ namespace H.ApplicationBases.Module
         {
             this.ConfigOptions(action);
         }
+
+        public void UseFeedbackOptions(Action<IFeedbackOptions> action)
+        {
+            this.ConfigOptions(action);
+        }
+
     }
 }

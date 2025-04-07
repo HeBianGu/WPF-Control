@@ -23,7 +23,7 @@ namespace H.Test.Ribbon
             services.AddAdornerDialogMessage();
             //services.AddWindowDialogMessage();
             services.AddSetting();
-            services.AddSwitchThemeViewPresenter();
+            services.AddTheme();
         }
 
         protected override void Configure(IApplicationBuilder app)

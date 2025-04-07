@@ -18,7 +18,7 @@ namespace H.App.FileManager
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : ThemesApplicationBase
+    public partial class App : ApplicationBase
     {
         protected override Window CreateMainWindow(StartupEventArgs e)
         {
@@ -28,6 +28,7 @@ namespace H.App.FileManager
         protected override void ConfigureServices(IServiceCollection services)
         {
             base.ConfigureServices(services);
+            services.AddDefaultServices();
             services.AddProject<FileProjectService>();
             services.AddSingleton<IAppSaveService, AppSaveService>();
             services.AddTag<ProjectTagService>(x =>
@@ -71,8 +72,6 @@ namespace H.App.FileManager
             {
                 x.WorkingDirectory = "D:\\ffmpeg";
             });
-            services.AddSwitchThemeViewPresenter();
-
             services.AddSingleton<IScheduledTaskService, ProjectSaveScheduledTaskService>();
 
 
@@ -96,20 +95,19 @@ namespace H.App.FileManager
             services.AddRegisterLoginViewPresenter();
             services.AddLoginService();
             services.AddRegisterService();
+
+            services.AddDefaultIdentify();
         }
 
         protected override void Configure(IApplicationBuilder app)
         {
             base.Configure(app);
+            app.UseDefaultOptions();
+            app.UseDefaultIdentifyOptions();
             app.UseSettingDataOptions(x =>
             {
                 x.Add(AppSetting.Instance);
             });
-
-            //app.UseVlc(x =>
-            //{
-            //    //x.LibvlcPath = "G:\\BaiduNetdiskDownload\\libvlc\\win-x64";
-            //});
             app.UseFFMpeg();
             app.UseLoginOptions();
             app.UseWindowSetting();

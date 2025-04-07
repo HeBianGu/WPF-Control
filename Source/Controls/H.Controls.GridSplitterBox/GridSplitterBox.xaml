@@ -216,43 +216,44 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:GridSplitterBox}">
-                    <Border Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}">
-                        <Grid Margin="{TemplateBinding Padding}"
-                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Border Grid.ColumnSpan="2"
+                                Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}" />
+                        <ContentPresenter Grid.Row="0" />
+                        <Grid x:Name="PART_Menu"
+                              Grid.Row="1"
+                              Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=MenuVisiblity}">
                             <Grid.RowDefinitions>
                                 <RowDefinition />
-                                <RowDefinition Height="Auto" />
+                                <RowDefinition x:Name="PART_Row_Menu"
+                                               Height="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=MenuWidth, Mode=TwoWay}"
+                                               MinHeight="{TemplateBinding MenuMinWidth}"
+                                               MaxHeight="{TemplateBinding MenuMaxWidth}" />
                             </Grid.RowDefinitions>
-                            <ContentPresenter Grid.Row="0" />
-                            <Grid x:Name="PART_Menu"
-                                  Grid.Row="1"
-                                  Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=MenuVisiblity}">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition />
-                                    <RowDefinition x:Name="PART_Row_Menu"
-                                                   Height="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=MenuWidth, Mode=TwoWay}"
-                                                   MinHeight="{TemplateBinding MenuMinWidth}"
-                                                   MaxHeight="{TemplateBinding MenuMaxWidth}" />
-                                </Grid.RowDefinitions>
 
-                                <ContentPresenter Grid.Row="1"
-                                                  Content="{TemplateBinding MenuContent}"
-                                                  ContentTemplate="{TemplateBinding MenuTempate}" />
+                            <ContentPresenter Grid.Row="1"
+                                              Content="{TemplateBinding MenuContent}"
+                                              ContentTemplate="{TemplateBinding MenuTempate}" />
 
-                                <GridSplitter x:Name="PART_GridSplitter"
-                                              Grid.Row="0"
-                                              Height="{TemplateBinding GridSpliteWidth}"
-                                              HorizontalAlignment="Stretch"
-                                              Background="{TemplateBinding GridSpliterBackground}"
-                                              ResizeBehavior="CurrentAndNext" />
+                            <GridSplitter x:Name="PART_GridSplitter"
+                                          Grid.Row="0"
+                                          Height="{TemplateBinding GridSpliteWidth}"
+                                          HorizontalAlignment="Stretch"
+                                          Background="{TemplateBinding GridSpliterBackground}"
+                                          ResizeBehavior="CurrentAndNext" />
 
-                            </Grid>
-                            <ToggleButton Style="{TemplateBinding ToggleStyle}" />
                         </Grid>
-                    </Border>
+                        <ToggleButton Style="{TemplateBinding ToggleStyle}" />
+                    </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

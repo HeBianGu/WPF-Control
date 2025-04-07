@@ -14,7 +14,7 @@ public static class SystemSettingExtention
     {
         services.AddSettingDataService(setupAction);
         services.TryAdd(ServiceDescriptor.Singleton<ISettingViewPresenter, SettingViewPresenter>());
-        services.TryAdd(ServiceDescriptor.Singleton<ISettingButtonPresenter, SettingButtonPresenter>());
+        //services.TryAdd(ServiceDescriptor.Singleton<ISettingButtonPresenter, SettingButtonPresenter>());
         return services;
     }
 

@@ -13,7 +13,8 @@
         mc:Ignorable="d">
     <Grid>
         <UniformGrid>
-            <ContentPresenter Content="{Ioc Type={x:Type ISettingButtonPresenter}}" />
+            <FontIconButton Command="{ShowSettingCommand}"
+                            Style="{DynamicResource {x:Static FontIconButtonKeys.Command}}" />
             <Button Command="{ShowSettingCommand SwitchToType={x:Type h:ISettingSecurityViewOption}}"
                     Content="ISettingSecurityViewOption" />
         </UniformGrid>

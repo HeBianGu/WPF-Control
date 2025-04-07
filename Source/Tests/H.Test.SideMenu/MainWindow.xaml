@@ -108,7 +108,8 @@
         <ControlTemplate>
             <DockPanel HorizontalAlignment="Right"
                        LastChildFill="False">
-                <ContentPresenter Content="{Ioc Type={x:Type ISettingButtonPresenter}}" />
+                <FontIconButton Command="{ShowSettingCommand}"
+                                Style="{DynamicResource {x:Static FontIconButtonKeys.Command}}" />
             </DockPanel>
         </ControlTemplate>
     </h:MainWindow.CaptionTempate>

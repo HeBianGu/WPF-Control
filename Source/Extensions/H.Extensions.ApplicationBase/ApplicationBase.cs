@@ -19,16 +19,16 @@ using System.Windows;
 
 namespace H.Extensions.ApplicationBase;
 
-public abstract partial class ApplicationBase : Application
+public abstract partial class ApplicationBase : Application, IConfigureableApplication
 {
     public ApplicationBase()
     {
         AppPaths.Register(this.CreateAppPathServce());
-        this.OnExcetion();
-        this.OnIocBuild();
+        this.InitExcetion();
+        this.InitServiceCollection();
     }
 
-    protected void OnIocBuild()
+    protected void InitServiceCollection()
     {
         ServiceCollection sc = new ServiceCollection();
         this.ConfigureServices(sc);
@@ -43,8 +43,7 @@ public abstract partial class ApplicationBase : Application
 
     protected override void OnStartup(StartupEventArgs e)
     {
-        ApplicationBuilder bulder = new ApplicationBuilder();
-        this.Configure(bulder);
+        this.Configure();
         this.OnSingleton(e);
         base.OnStartup(e);
         Window window = this.CreateMainWindow(e);
@@ -57,7 +56,7 @@ public abstract partial class ApplicationBase : Application
     }
 
     #region - Exception -
-    protected virtual void OnExcetion()
+    protected virtual void InitExcetion()
     {
         //#if DEBUG
         //            return;
@@ -195,6 +194,11 @@ public partial class ApplicationBase
     protected virtual void Configure(IApplicationBuilder app)
     {
 
+    }
+    public void Configure()
+    {
+        ApplicationBuilder bulder = new ApplicationBuilder();
+        this.Configure(bulder);
     }
 
     protected virtual IEnumerable<ISplashLoad> GetSplashLoads()
@@ -336,6 +340,9 @@ public partial class ApplicationBase
 
             int sleep = 1000;
             ILoginedSplashViewPresenter presenter = Ioc.Services.GetService<ILoginedSplashViewPresenter>();
+            //  Do ： 在显示页面前需要加载主题，否则主题会出现变化
+            var tls = Ioc.GetService<ILoadThemeOptionsService>(false);
+            tls?.Load(out string message);
             Func<IDialog, ILoginedSplashViewPresenter, bool?> func = (c, s) =>
             {
                 if (c?.IsCancel != true)

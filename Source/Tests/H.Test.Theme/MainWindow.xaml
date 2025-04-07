@@ -10,12 +10,13 @@
               Width="1100"
               Height="650"
               mc:Ignorable="d">
-    <!--Cattach.ToBackgroundColor="{DynamicResource {x:Static ColorKeys.Background}}"-->
+    <!--  Cattach.ToBackgroundColor="{DynamicResource {x:Static ColorKeys.Background}}"  -->
     <h:MainWindow.CaptionTempate>
         <ControlTemplate>
             <DockPanel LastChildFill="False"
                        WindowChrome.IsHitTestVisibleInChrome="True">
-                <ContentPresenter Content="{Ioc Type={x:Type ISettingButtonPresenter}}" />
+                <FontIconButton Command="{ShowSettingCommand}"
+                                Style="{DynamicResource {x:Static FontIconButtonKeys.Command}}" />
                 <ContentPresenter Content="{Ioc Type={x:Type h:ISwitchThemeViewPresenter}}" />
                 <Button Command="{ShowSettingCommand SwitchToType={x:Type h:IThemeOptions}}"
                         Content="{Binding Source={x:Static h:ThemeOptions.Instance}, Path=ColorResource.Name}" />

@@ -9,4 +9,6 @@ public interface ISettingDataService : ISettingDataOption
     void Remove(params ISettable[] settings);
     bool Save(out string message);
     void SetDefault();
+
+    void Clear();
 }

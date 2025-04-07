@@ -97,4 +97,18 @@ internal class SettingViewOptions : IocOptionInstance<SettingViewOptions>, ISett
             _minHeight = value;
         }
     }
+
+    private bool _useSetDefault = true;
+    [DefaultValue(true)]
+    [Display(Name = "启用恢复默认", Description = "设置显示恢复默认按钮功能")]
+    public bool UseSetDefault
+    {
+        get { return _useSetDefault; }
+        set
+        {
+            _useSetDefault = value;
+            RaisePropertyChanged();
+        }
+    }
+
 }

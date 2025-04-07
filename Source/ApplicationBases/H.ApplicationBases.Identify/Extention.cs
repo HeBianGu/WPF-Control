@@ -14,7 +14,7 @@ namespace System
         /// 注册
         /// </summary>
         /// <param name="service"></param>
-        public static void AddIdentifyDefault(this IServiceCollection services)
+        public static void AddDefaultIdentify(this IServiceCollection services)
         {
             //  Do ：身份认证
             services.AddDbContextBySetting<IdentifyDataContext>();
@@ -39,7 +39,7 @@ namespace System
         }
 
 
-        public static void UseIdentifyDefault(this IApplicationBuilder app)
+        public static void UseDefaultIdentifyOptions(this IApplicationBuilder app)
         {
             app.UseLoginOptions();
             app.UseRegistorOptions(x => x.UseMail = false);

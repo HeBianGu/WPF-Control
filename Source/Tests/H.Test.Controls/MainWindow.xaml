@@ -33,7 +33,8 @@
             <MenuItem Header="文件" />
         </Menu>
         <ToolBar DockPanel.Dock="Top">
-            <ContentPresenter Content="{Ioc Type={x:Type ISettingButtonPresenter}}" />
+            <FontIconButton Command="{ShowSettingCommand}"
+                            Style="{DynamicResource {x:Static FontIconButtonKeys.Command}}" />
             <Button Style="{DynamicResource {x:Static ToolBar.ButtonStyleKey}}">
                 <Border>
                     <Border.Background>

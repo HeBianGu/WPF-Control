@@ -13,7 +13,7 @@ public static class Extention
     /// 注册
     /// </summary>
     /// <param name="service"></param>
-    public static IServiceCollection AddProject(this IServiceCollection services, Action<ProjectOptions> setupAction = null)
+    public static IServiceCollection AddProject(this IServiceCollection services, Action<IProjectOptions> setupAction = null)
     {
         return services.AddProject<ProjectService>(setupAction);
     }
@@ -22,7 +22,7 @@ public static class Extention
     /// 注册
     /// </summary>
     /// <param name="service"></param>
-    public static IServiceCollection AddProject<T>(this IServiceCollection services, Action<ProjectOptions> setupAction = null) where T : class, IProjectService
+    public static IServiceCollection AddProject<T>(this IServiceCollection services, Action<IProjectOptions> setupAction = null) where T : class, IProjectService
     {
         services.AddOptions();
         services.TryAdd(ServiceDescriptor.Singleton<IProjectService, T>());
@@ -30,7 +30,7 @@ public static class Extention
         //services.TryAdd(ServiceDescriptor.Singleton<ISplashLoad, ProjectLoadService>());
 
         if (setupAction != null)
-            services.Configure(new Action<FavoriteOptions>(setupAction));
+            services.Configure(new Action<ProjectOptions>(setupAction));
         return services;
     }
 

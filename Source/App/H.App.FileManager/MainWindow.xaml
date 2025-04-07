@@ -18,12 +18,31 @@
             <DockPanel HorizontalAlignment="Right"
                        LastChildFill="False"
                        WindowChrome.IsHitTestVisibleInChrome="True">
+                <Menu>
+                    <MenuItem Header="帮助"
+                              ItemContainerStyle="{DynamicResource {x:Static MenuItemKeys.BindCommand}}">
+                        <MenuItem Command="{ShowAboutCommand}" />
+                        <MenuItem Command="{ShowFeedbackCommand}" />
+                        <MenuItem Command="{ShowAgreementCommand}" />
+                        <MenuItem Command="{ShowPrivacyCommand}" />
+                        <MenuItem Command="{ShowContactCommand}" />
+                        <MenuItem Command="{ShowSponsorCommand}" />
+                        <MenuItem Command="{ShowWebSiteCommand}" />
+                        <MenuItem Command="{ShowGuideCommand}" />
+                        <MenuItem Command="{ShowGuideTreeCommand}" />
+                        <MenuItem Command="{ShowNewGuideCommand}" />
+                        <MenuItem Command="{ShowNewGuideTreeCommand}" />
+                        <MenuItem Command="{ShowSupportCommand}" />
+                    </MenuItem>
+                </Menu>
                 <FontIconButton Command="{ShowColorThemeViewCommand}"
                                 Style="{DynamicResource {x:Static FontIconButtonKeys.Command}}" />
                 <Button Command="{ShowSettingCommand SwitchToType={x:Type h:IThemeOptions}}"
                         Content="{Binding Source={x:Static h:ThemeOptions.Instance}, Path=ColorResource.Name}" />
-                <ContentPresenter Content="{Ioc Type={x:Type ISettingButtonPresenter}}" />
+                <FontIconButton Command="{ShowSettingCommand}"
+                                Style="{DynamicResource {x:Static FontIconButtonKeys.Command}}" />
                 <ContentPresenter Content="{Ioc Type={x:Type ISwitchThemeViewPresenter}}" />
+
             </DockPanel>
         </ControlTemplate>
     </h:MainWindow.CaptionTempate>

@@ -5,7 +5,8 @@
                     xmlns:local="clr-namespace:H.App.FileManager">
 
     <DataTemplate DataType="{x:Type local:MoreFileViewBase}">
-        <h:GridSplitterBox MenuMaxWidth="300"
+        <h:GridSplitterBox
+                           MenuMaxWidth="300"
                            MenuMinWidth="50"
                            MenuWidth="100"
                            Mode="Hidden"
@@ -78,7 +79,7 @@
                     <Setter Property="Grid.Row" Value="0" />
                 </Style>
             </h:GridSplitterBox.ToggleStyle>
-            <DockPanel Background="Transparent">
+            <DockPanel>
                 <TextBlock Margin="5"
                            HorizontalAlignment="Left"
                            VerticalAlignment="Top"

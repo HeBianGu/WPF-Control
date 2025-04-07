@@ -99,6 +99,16 @@ public class SettingDataService : LazyInstance<SettingDataService>, ISettingData
         }
     }
 
+
+    public void Clear()
+    {
+        foreach (var item in this.Settings.OfType<IClearable>())
+        {
+            item.Clear();
+        }
+        this.Settings.Clear();
+    }
+
     public void Cancel()
     {
         foreach (ILoadable item in this.Settings.OfType<ILoadable>())

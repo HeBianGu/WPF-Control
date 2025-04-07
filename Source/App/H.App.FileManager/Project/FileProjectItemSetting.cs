@@ -167,5 +167,6 @@ namespace H.App.FileManager
                 RaisePropertyChanged();
             }
         }
+        public bool IsVisibleInSetting { get; set; } = true;
     }
 }

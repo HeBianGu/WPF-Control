@@ -8,7 +8,6 @@
         Title="MainWindow"
         Width="800"
         Height="450"
-        Style="{StaticResource {x:Static WindowKeys.Default}}"
         mc:Ignorable="d">
     <Window.DataContext>
         <local:MainViewModel />
@@ -29,7 +28,7 @@
                      SelectedIndex="{Binding Source={Ioc Type={x:Type IRevertibleService}}, Path=Position, Mode=OneWay}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <ContentPresenter Content="{Binding Data}" />
+                        <ContentPresenter Content="{Binding}" />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ListBox>

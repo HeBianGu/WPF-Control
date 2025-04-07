@@ -1,6 +1,7 @@
 ﻿using H.ApplicationBases.Module;
 using H.Extensions.FontIcon;
 using H.Modules.About;
+using H.Modules.Feedback;
 using H.Modules.Guide;
 using H.Modules.Help.Contact;
 using H.Modules.Help.ReleaseVersions;
@@ -33,6 +34,8 @@ namespace System
             services.AddWebsite(opt.GetConfigOptions<Action<IWebsiteOptions>>());
             services.AddSponsor();
             services.AddContact(opt.GetConfigOptions<Action<IContactOptions>>());
+            services.AddFeedBack(opt.GetConfigOptions<Action<IFeedbackOptions>>());
+
         }
 
         public static void UseDefaultModuleOptions(this IApplicationBuilder app, Action<IDefaultModuleOptions> options = null)

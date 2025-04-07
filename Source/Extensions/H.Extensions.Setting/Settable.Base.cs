@@ -11,7 +11,7 @@ using System.Text.Json.Serialization;
 
 namespace H.Extensions.Setting;
 
-public abstract class SettableBase : DisplayBindableBase, ISettable, ILoadable, ISaveable, IDefaultable
+public abstract class SettableBase : DisplayBindableBase, ISettable, ILoadable, ISaveable, IDefaultable, IClearable
 {
     [XmlIgnore]
     [JsonIgnore]
@@ -87,5 +87,12 @@ public abstract class SettableBase : DisplayBindableBase, ISettable, ILoadable, 
     public virtual bool IsInit()
     {
         return !File.Exists(this.GetDefaultPath());
+    }
+
+    public virtual void Clear()
+    {
+        var path = this.GetDefaultPath();
+        if (File.Exists(path))
+            File.Delete(path);
     }
 }

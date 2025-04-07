@@ -2,7 +2,7 @@
 
 namespace H.Modules.Setting;
 
-public class SettingButtonPresenter : ISettingButtonPresenter
-{
+//public class SettingButtonPresenter : ISettingButtonPresenter
+//{
 
-}
+//}

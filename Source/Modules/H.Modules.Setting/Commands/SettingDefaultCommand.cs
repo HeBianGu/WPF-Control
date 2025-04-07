@@ -4,6 +4,7 @@
 global using H.Common.Attributes;
 global using H.Common.Commands;
 global using System.ComponentModel.DataAnnotations;
+using H.Services.AppPath;
 
 namespace H.Modules.Setting.Commands;
 
@@ -13,9 +14,30 @@ public class SettingDefaultCommand : DisplayMarkupCommandBase
 {
     public override async Task ExecuteAsync(object parameter)
     {
-        var r = await IocMessage.ShowDialogMessage("清空配置数据无法恢复，确认清空配置？");
+        var r = await IocMessage.ShowDialogMessage("恢复默认数据会清空配置数据无法恢复，确认恢复默认配置？");
         if (r == false)
             return;
-        IocSetting.Instance.SetDefault();
+
+        //r = AppPaths.Instance.ClearSetting(out string message);
+        //if (r == false)
+        //{
+        //    await IocMessage.ShowDialogMessage(message);
+        //    return;
+        //}
+
+        if (Application.Current is IConfigureableApplication configureable)
+        {
+            var groups = SettingViewPresenter.Instance.SelectedGroup;
+            if (groups == null)
+                return;
+            var selectSettiable = groups.SelectedSettable ?? groups.Collection.FirstOrDefault();
+            IocSetting.Instance.SetDefault();
+            IocSetting.Instance.Clear();
+            configureable.Configure();
+            IocSetting.Instance.Load(null, out string message);
+            SettingViewPresenter.Instance.RefreshSettingData();
+            if (selectSettiable != null)
+                SettingViewPresenter.Instance.SwitchTo(selectSettiable.GetType());
+        }
     }
 }

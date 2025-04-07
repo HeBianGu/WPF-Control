@@ -10,6 +10,7 @@
         Style="{StaticResource {x:Static WindowKeys.Default}}"
         mc:Ignorable="d">
     <Grid>
-        <ContentPresenter Content="{Ioc Type={x:Type ISettingButtonPresenter}}" />
+        <FontIconButton Command="{ShowSettingCommand}"
+                        Style="{DynamicResource {x:Static FontIconButtonKeys.Command}}" />
     </Grid>
 </Window>

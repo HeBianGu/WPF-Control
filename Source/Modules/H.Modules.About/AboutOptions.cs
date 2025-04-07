@@ -181,23 +181,6 @@ public class AboutOptions : IocOptionInstance<AboutOptions>, IAboutOptions
         }
     }
 
-    private string _contact;
-    [System.Text.Json.Serialization.JsonIgnore]
-
-    [System.Xml.Serialization.XmlIgnore]
-    [ReadOnly(true)]
-    [DefaultValue("QQ:908293466")]
-    [Display(Name = "联系方式")]
-    public string Contact
-    {
-        get { return _contact; }
-        set
-        {
-            _contact = value;
-        }
-    }
-
-
     private string _privacy;
     [System.Text.Json.Serialization.JsonIgnore]
     [XmlIgnore]

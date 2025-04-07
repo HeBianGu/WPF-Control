@@ -5,10 +5,11 @@ global using H.Presenters.Common;
 global using H.Services.Message.Dialog.Commands;
 global using System.ComponentModel.DataAnnotations;
 global using System.Windows;
+using H.Extensions.FontIcon;
 
 namespace H.Modules.Setting.Commands;
 
-[Icon("\xE713")]
+[Icon(FontIcons.Setting)]
 [Display(Name = "设置", Description = "显示系统设置页面")]
 public class ShowSettingCommand : ShowDialogCommandBase
 {

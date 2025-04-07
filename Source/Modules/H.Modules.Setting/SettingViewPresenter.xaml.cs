@@ -38,10 +38,15 @@ public class SettingViewPresenter : IocBindable<SettingViewPresenter, ISettingVi
 {
     public SettingViewPresenter()
     {
-        this.Groups = IocSetting.Instance.Settings?.Where(x => x.IsVisibleInSetting).GroupBy(l => l.GroupName).Select(x => new SettableGroup() { Name = x.Key, Collection = x.ToObservable() }).ToObservable();
-        this.SelectedGroup = this.Groups?.FirstOrDefault();
+        this.RefreshSettingData();
         this.Title = "系统设置";
         this.Icon = "\xE115";
+    }
+
+    public void RefreshSettingData()
+    {
+        this.Groups = IocSetting.Instance.Settings?.Where(x => x.IsVisibleInSetting).GroupBy(l => l.GroupName).Select(x => new SettableGroup() { Name = x.Key, Collection = x.ToObservable() }).ToObservable();
+        this.SelectedGroup = this.Groups?.FirstOrDefault();
     }
 
     public string Title { get; set; }
