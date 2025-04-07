@@ -6,15 +6,17 @@ global using System.Reflection;
 global using System.Xml.Serialization;
 using H.Services.AppPath;
 using H.Services.Setting;
+using System.ComponentModel;
+using System.Text.Json.Serialization;
 
 namespace H.Extensions.Setting;
 
 public abstract class SettableBase : DisplayBindableBase, ISettable, ILoadable, ISaveable, IDefaultable
 {
-    //[XmlIgnore]
-    //[JsonIgnore]
-    //[Browsable(false)]
-    //public bool IsVisibleInSetting { get; set; } = true;
+    [XmlIgnore]
+    [JsonIgnore]
+    [Browsable(false)]
+    public bool IsVisibleInSetting { get; set; } = true;
 
     public override void LoadDefault()
     {

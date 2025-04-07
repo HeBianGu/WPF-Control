@@ -15,16 +15,16 @@ namespace System
             services.AddOptions();
             services.TryAdd(ServiceDescriptor.Singleton<ILoadThemeOptionsService, LoadThemeOptionsService>());
             if (setupAction != null)
-                services.Configure(setupAction);
+                services.Configure(new Action<ThemeOptions>(setupAction));
             return services;
         }
 
-        public static IServiceCollection AddColorThemeViewPresenter(this IServiceCollection services, Action<IThemeOptions> setupAction = null)
+        public static IServiceCollection AddColorThemeViewPresenter(this IServiceCollection services, Action<IColorThemeOptions> setupAction = null)
         {
             services.AddOptions();
             services.TryAdd(ServiceDescriptor.Singleton<IColorThemeViewPresenter, ColorThemeViewPresenter>());
             if (setupAction != null)
-                services.Configure(setupAction);
+                services.Configure(new Action<ThemeOptions>(setupAction));
             return services;
         }
         public static IApplicationBuilder UseTheme(this IApplicationBuilder builder, Action<IThemeOptions> option = null)
@@ -34,20 +34,21 @@ namespace System
             return builder;
         }
 
-        public static IApplicationBuilder UseSwithTheme(this IApplicationBuilder builder, Action<SwitchThemeOptions> option = null)
-        {
-            IocSetting.Instance.Add(SwitchThemeOptions.Instance);
-            option?.Invoke(SwitchThemeOptions.Instance);
-            return builder;
-        }
 
-        public static IServiceCollection AddSwitchThemeViewPresenter(this IServiceCollection services, Action<SwitchThemeOptions> setupAction = null)
+        public static IServiceCollection AddSwitchThemeViewPresenter(this IServiceCollection services, Action<ISwitchThemeOptions> setupAction = null)
         {
             services.AddOptions();
             services.TryAdd(ServiceDescriptor.Singleton<ISwitchThemeViewPresenter, SwitchThemeViewPresenter>());
             if (setupAction != null)
-                services.Configure(setupAction);
+                services.Configure(new Action<SwitchThemeOptions>(setupAction));
             return services;
+        }
+
+        public static IApplicationBuilder UseSwithTheme(this IApplicationBuilder builder, Action<ISwitchThemeOptions> option = null)
+        {
+            IocSetting.Instance.Add(SwitchThemeOptions.Instance);
+            option?.Invoke(SwitchThemeOptions.Instance);
+            return builder;
         }
     }
 }

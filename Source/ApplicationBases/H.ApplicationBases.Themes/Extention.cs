@@ -1,4 +1,5 @@
-﻿using H.Extensions.FontIcon;
+﻿using H.ApplicationBases.Themes;
+using H.Extensions.FontIcon;
 using H.Modules.Theme;
 using H.Services.Common.About;
 using H.Styles;
@@ -23,21 +24,24 @@ namespace System
         /// 注册
         /// </summary>
         /// <param name="service"></param>
-        public static void AddThemeDefault(this IServiceCollection services)
+        public static void AddDefaultThemeServices(this IServiceCollection services, Action<IDefaultThemeOptions> option = null)
         {
-            services.AddSwitchThemeViewPresenter();
-            services.AddLoadThemeOptionsService();
-            services.AddColorThemeViewPresenter(); 
+            DefaultThemeOptions opt = new DefaultThemeOptions();
+            option?.Invoke(opt);
+            services.AddSwitchThemeViewPresenter(opt.GetConfigOptions<Action<ISwitchThemeOptions>>());
+            services.AddLoadThemeOptionsService(opt.GetConfigOptions<Action<IThemeOptions>>());
+            services.AddColorThemeViewPresenter(opt.GetConfigOptions<Action<IColorThemeOptions>>());
         }
 
-        public static void UseThemeDefault(this IApplicationBuilder app, Action<IThemeOptions> option = null)
+        public static void UseDefaultThemeOptions(this IApplicationBuilder app, Action<IDefaultThemeOptions> option = null)
         {
-            app.UseDefaultColorResources();
-            app.UseDefaultIconFontFamilys();
-            app.UseStyle();
+            DefaultThemeOptions opt = new DefaultThemeOptions();
+            option?.Invoke(opt);
+            app.UseDefaultColorResources(opt.GetConfigOptions<Action<IColorThemeOptions>>());
+            app.UseDefaultIconFontFamilys(opt.GetConfigOptions<Action<IIconFontFamilysOptions>>());
         }
 
-        public static void UseDefaultColorResources(this IApplicationBuilder app, Action<IThemeOptions> option = null)
+        public static void UseDefaultColorResources(this IApplicationBuilder app, Action<IColorThemeOptions> option = null)
         {
             app.UseTheme(x =>
             {
@@ -83,7 +87,7 @@ namespace System
             });
         }
 
-        public static void UseDefaultIconFontFamilys(this IApplicationBuilder app, Action<IThemeOptions> option = null)
+        public static void UseDefaultIconFontFamilys(this IApplicationBuilder app, Action<IIconFontFamilysOptions> option = null)
         {
             app.UseTheme(x =>
             {

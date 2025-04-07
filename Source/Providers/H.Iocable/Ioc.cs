@@ -29,7 +29,7 @@ public static class Ioc
         if (r == null && throwIfNone)
         {
             System.Diagnostics.Debug.WriteLine(type);
-            throw new ArgumentNullException(typeof(T).FullName,message);
+            throw new ArgumentNullException(typeof(T).FullName, message);
         }
         return r;
     }
@@ -108,7 +108,7 @@ public static class Ioc
     //}
 }
 
-public abstract class Ioc<T, Interface> where T : class, Interface, new()
+public abstract class Ioc<T, Interface> where T : class, Interface
 {
     public static T Instance => Ioc.GetService<Interface>() as T;
 }

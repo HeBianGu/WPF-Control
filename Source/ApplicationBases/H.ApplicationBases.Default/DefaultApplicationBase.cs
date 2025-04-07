@@ -24,13 +24,13 @@ namespace H.ApplicationBases.Default
     {
         protected override void ConfigureServices(IServiceCollection services)
         {
-            services.AddApplicationDefault();
+            services.AddDefaultServices();
         }
 
         protected override void Configure(IApplicationBuilder app)
         {
             base.Configure(app);
-            app.UseApplicationDefault();
+            app.UseDefaultOptions();
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using H.ApplicationBases.Default;
+using H.ApplicationBases.Module;
+using H.ApplicationBases.Themes;
 using H.Extensions.FontIcon;
 using H.Modules.About;
 using H.Modules.Help.Contact;
@@ -29,21 +31,22 @@ namespace System
         /// 注册
         /// </summary>
         /// <param name="service"></param>
-        public static void AddApplicationDefault(this IServiceCollection services, Action<IDefaultApplicationOptions> options = null)
+        public static void AddDefaultServices(this IServiceCollection services, Action<IDefaultApplicationOptions> options = null)
         {
             DefaultApplicationOptions opt = new DefaultApplicationOptions();
             options?.Invoke(opt);
             services.AddDefaultMessages();
-            services.AddModulesDefault(opt.ModuleDefaultOptions);
-            services.AddThemeDefault();
+            services.AddDefaultModuleServices(opt.GetConfigOptions<Action<IDefaultModuleOptions>>());
+            services.AddDefaultThemeServices(opt.GetConfigOptions<Action<IDefaultThemeOptions>>());
         }
 
-        public static void UseApplicationDefault(this IApplicationBuilder app, Action<IDefaultApplicationOptions> options = null)
+        public static void UseDefaultOptions(this IApplicationBuilder app, Action<IDefaultApplicationOptions> options = null)
         {
             DefaultApplicationOptions opt = new DefaultApplicationOptions();
             options?.Invoke(opt);
-            app.UseModulesDefault(opt.ModuleDefaultOptions);
-            app.UseThemeDefault();
+            app.UseStyle();
+            app.UseDefaultModuleOptions(opt.GetConfigOptions<Action<IDefaultModuleOptions>>());
+            app.UseDefaultThemeOptions(opt.GetConfigOptions<Action<IDefaultThemeOptions>>());
         }
     }
 }

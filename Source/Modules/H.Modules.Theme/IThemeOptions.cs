@@ -1,24 +1,17 @@
 ﻿using H.Common.Interfaces;
 using H.Services.Common.Theme;
 using H.Themes.Backgrounds;
-using H.Themes.Colors;
 using H.Themes.Extensions;
 using System.Reflection;
 using System.Windows.Media;
 
 namespace H.Modules.Theme;
-public interface IThemeOptions
+public interface IThemeOptions : IIconFontFamilysOptions, IColorThemeOptions
 {
-    IColorResource ColorResource { get; set; }
-    List<IColorResource> ColorResources { get; }
     IBackgroundResource BackgroundResource { get; set; }
     List<IBackgroundResource> BackgroundResources { get; }
     FontFamily FontFamily { get; set; }
     List<FontFamily> FontFamilys { get; }
-
-    FontFamily IconFontFamily { get; set; }
-    List<FontFamily> IconFontFamilys { get; }
-
     FontSizeThemeType FontSize { get; set; }
     LayoutThemeType Layout { get; set; }
 }

@@ -9,13 +9,13 @@ namespace H.ApplicationBases.Modules
         protected override void ConfigureServices(IServiceCollection services)
         {
             base.ConfigureServices(services);
-            services.AddModulesDefault();
+            services.AddDefaultModuleServices();
         }
 
         protected override void Configure(IApplicationBuilder app)
         {
             base.Configure(app);
-            app.UseModulesDefault();
+            app.UseDefaultModuleOptions();
         }
     }
 }

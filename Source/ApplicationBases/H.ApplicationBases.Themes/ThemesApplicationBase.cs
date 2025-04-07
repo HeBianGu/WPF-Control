@@ -18,12 +18,12 @@ namespace H.ApplicationBases.Themes
         protected override void ConfigureServices(IServiceCollection services)
         {
             base.ConfigureServices(services);
-            services.AddThemeDefault();
+            services.AddDefaultThemeServices();
         }
         protected override void Configure(IApplicationBuilder app)
         {
             base.Configure(app);
-            app.UseThemeDefault();
+            app.UseDefaultThemeOptions();
         }
     }
 }

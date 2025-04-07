@@ -9,9 +9,9 @@ using H.Modules.SplashScreen;
 
 namespace H.ApplicationBases.Module
 {
-    public interface IModuleDefaultOptions
+    public interface IDefaultModuleOptions
     {
-        void UseAbout(Action<IAboutOptions> action);
+        void UseAboutOptions(Action<IAboutOptions> action);
         void UseContactOptions(Action<IContactOptions> action);
         void UseGuideOptions(Action<IGuideOptions> action);
         void UseReleaseVersionsOptionsAbout(Action<IReleaseVersionsOptions> action);
@@ -19,5 +19,6 @@ namespace H.ApplicationBases.Module
         void UseSplashScreenOptions(Action<ISplashScreenOptions> action);
         void UseSupportOptions(Action<ISupportOptions> action);
         void UseWebsiteOptions(Action<IWebsiteOptions> action);
+        void UseSettingSecurityViewOptions(Action<ISettingSecurityViewOption> action);
     }
 }

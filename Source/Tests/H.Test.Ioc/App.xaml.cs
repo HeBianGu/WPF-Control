@@ -19,7 +19,7 @@ namespace H.Test.Ioc
         protected override void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<ITest, MyTest>();
-            services.AddAbout();
+            services.AddAbout(x => x.ProductName = "My ProductName");
         }
 
         protected override Window CreateMainWindow(StartupEventArgs e)

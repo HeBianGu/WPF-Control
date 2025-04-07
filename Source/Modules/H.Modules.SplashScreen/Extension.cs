@@ -14,14 +14,14 @@ public static class Extension
     }
     public static IServiceCollection AddSplashScreen<T>(this IServiceCollection services, Action<ISplashScreenOptions> setupAction = null) where T : ISplashScreenViewPresenter
     {
-        services.AddOptions();
+        //services.AddOptions();
         services.TryAdd(ServiceDescriptor.Singleton<ISplashScreenViewPresenter, SplashScreenViewPresenter>());
         if (setupAction != null)
-            services.Configure(setupAction);
+            services.Configure(new Action<SplashScreenOptions>(setupAction));
         return services;
     }
 
-    public static IApplicationBuilder UseSplashScreen(this IApplicationBuilder builder, Action<ISplashScreenOptions> option = null)
+    public static IApplicationBuilder UseSplashScreenOptions(this IApplicationBuilder builder, Action<ISplashScreenOptions> option = null)
     {
         IocSetting.Instance.Add(SplashScreenOptions.Instance);
         option?.Invoke(SplashScreenOptions.Instance);

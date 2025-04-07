@@ -1,5 +1,6 @@
 ﻿using H.ApplicationBases.Default;
 using H.Extensions.ApplicationBase;
+using H.Themes.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using System.Configuration;
 using System.Data;
@@ -14,26 +15,26 @@ public partial class App : ApplicationBase
     protected override void ConfigureServices(IServiceCollection services)
     {
         base.ConfigureServices(services);
-        services.AddApplicationDefault(x =>
+        services.AddDefaultServices(x =>
         {
-            x.UseModuleDefaultOptions(x =>
+            x.UseModulesOptions(x =>
             {
-                x.UseAbout(x => x.ProductName = "Test");
+                x.UseAboutOptions(x => x.ProductName = "Test");
                 x.UseSplashScreenOptions(x => x.Product = "TTTTT");
+            });
+            x.UseThemeModuleOptions(x =>
+            {
+                x.UseThemeOptions(x =>
+                {
+                    x.FontSize = FontSizeThemeType.Large;
+                });
             });
         });
     }
     protected override void Configure(IApplicationBuilder app)
     {
         base.Configure(app);
-        app.UseApplicationDefault(x =>
-        {
-            x.UseModuleDefaultOptions(x =>
-            {
-                x.UseAbout(x => x.ProductName = "Test");
-                x.UseSplashScreenOptions(x => x.Product = "TTTTT");
-            });
-        });
+        app.UseDefaultOptions();
     }
     protected override Window CreateMainWindow(StartupEventArgs e)
     {

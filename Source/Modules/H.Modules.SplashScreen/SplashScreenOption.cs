@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace H.Modules.SplashScreen;
 
-public interface ISplashScreenOptions
+public interface ISplashScreenOptions : ISettable
 {
     string Product { get; set; }
     double ProductFontSize { get; set; }

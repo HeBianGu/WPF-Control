@@ -13,8 +13,15 @@ using System.Xml.Serialization;
 
 namespace H.Modules.Theme
 {
+    public interface ISwitchThemeOptions
+    {
+        IColorResource Dark { get; set; }
+        bool IsDark { get; set; }
+        IColorResource Light { get; set; }
+    }
+
     [Display(Name = "明暗主题设置", GroupName = SettingGroupNames.GroupStyle, Description = "明暗主题设置的信息")]
-    public class SwitchThemeOptions : IocOptionInstance<SwitchThemeOptions>, ILoginedSplashLoad
+    public class SwitchThemeOptions : IocOptionInstance<SwitchThemeOptions>, ILoginedSplashLoad, ISwitchThemeOptions
     {
         private bool _isDark = true;
         //[DefaultValue(true)]

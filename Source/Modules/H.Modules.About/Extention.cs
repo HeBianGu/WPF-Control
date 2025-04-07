@@ -14,17 +14,17 @@ namespace System
         /// <param name="service"></param>
         public static void AddAbout(this IServiceCollection services, Action<IAboutOptions> setupAction = null)
         {
-            services.AddOptions();
+            //services.AddOptions();
             services.TryAdd(ServiceDescriptor.Singleton<IAboutViewPresenter, AboutViewPresenter>());
             if (setupAction != null)
-                services.Configure(setupAction);
+                services.Configure(new Action<AboutOptions>(setupAction));
         }
 
         /// <summary>
         /// 配置
         /// </summary>
         /// <param name="service"></param>
-        public static void UseAbout(this IApplicationBuilder service, Action<IAboutOptions> action = null)
+        public static void UseAboutOptions(this IApplicationBuilder service, Action<IAboutOptions> action = null)
         {
             action?.Invoke(AboutOptions.Instance);
             IocSetting.Instance.Add(AboutOptions.Instance);

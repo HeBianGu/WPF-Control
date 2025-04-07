@@ -1,14 +1,19 @@
 ﻿using H.ApplicationBases.Module;
+using H.ApplicationBases.Themes;
+using H.Extensions.ApplicationBase;
 
 namespace H.ApplicationBases.Default
 {
-    public class DefaultApplicationOptions : IDefaultApplicationOptions
+    public class DefaultApplicationOptions : CacheActionOptionsBase, IDefaultApplicationOptions
     {
-        public Action<IModuleDefaultOptions> ModuleDefaultOptions { get; private set; }
-
-        public void UseModuleDefaultOptions(Action<IModuleDefaultOptions> action)
+        public void UseModulesOptions(Action<IDefaultModuleOptions> action)
         {
-            this.ModuleDefaultOptions = action;
+            this.ConfigOptions(action);
+        }
+
+        public void UseThemeModuleOptions(Action<IDefaultThemeOptions> action)
+        {
+            this.ConfigOptions(action);
         }
     }
 }

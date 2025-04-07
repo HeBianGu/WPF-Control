@@ -1,9 +1,14 @@
 ﻿using H.ApplicationBases.Module;
 using H.Extensions.FontIcon;
+using H.Modules.About;
+using H.Modules.Guide;
 using H.Modules.Help.Contact;
 using H.Modules.Help.ReleaseVersions;
 using H.Modules.Help.Support;
 using H.Modules.Help.Website;
+using H.Modules.Help.WebSite;
+using H.Modules.Setting;
+using H.Modules.SplashScreen;
 using H.Styles;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -15,35 +20,34 @@ namespace System
         /// 注册
         /// </summary>
         /// <param name="service"></param>
-        public static void AddModulesDefault(this IServiceCollection services, Action<IModuleDefaultOptions> options = null)
+        public static void AddDefaultModuleServices(this IServiceCollection services, Action<IDefaultModuleOptions> options = null)
         {
-            ModuleDefaultOptions mo = new ModuleDefaultOptions();
-            options?.Invoke(mo);
-            services.AddAbout(mo.AboutOptions);
-            services.AddGuide(mo.GuideOptions);
-            services.AddSplashScreen(mo.SplashScreenOptions);
-            services.AddSetting(mo.SettingViewOptions);
-            services.AddReleaseVersions(mo.ReleaseVersionsOptions);
-            services.AddSupport(mo.SupportOptions);
-            services.AddWebsite(mo.WebsiteOptions);
+            DefaultModuleOptions opt = new DefaultModuleOptions();
+            options?.Invoke(opt);
+            services.AddAbout(opt.GetConfigOptions<Action<IAboutOptions>>());
+            services.AddGuide(opt.GetConfigOptions<Action<IGuideOptions>>());
+            services.AddSplashScreen(opt.GetConfigOptions<Action<ISplashScreenOptions>>());
+            services.AddSetting(opt.GetConfigOptions<Action<ISettingViewOptions>>());
+            services.AddReleaseVersions(opt.GetConfigOptions<Action<IReleaseVersionsOptions>>());
+            services.AddSupport(opt.GetConfigOptions<Action<ISupportOptions>>());
+            services.AddWebsite(opt.GetConfigOptions<Action<IWebsiteOptions>>());
             services.AddSponsor();
-            services.AddContact(mo.ContactOptions);
+            services.AddContact(opt.GetConfigOptions<Action<IContactOptions>>());
         }
 
-        public static void UseModulesDefault(this IApplicationBuilder app, Action<IModuleDefaultOptions> options = null)
+        public static void UseDefaultModuleOptions(this IApplicationBuilder app, Action<IDefaultModuleOptions> options = null)
         {
-            ModuleDefaultOptions mo = new ModuleDefaultOptions();
-            options?.Invoke(mo);
-            app.UseAbout(mo.AboutOptions);
-            app.UseSplashScreen(mo.SplashScreenOptions);
-            app.UseGuide(mo.GuideOptions);
-            app.UseSettingView(mo.SettingViewOptions);
-            //  ToDo：带加入
-            app.UseSettingSecurity();
-            app.UseReleaseVersions(mo.ReleaseVersionsOptions);
-            app.UseSupport(mo.SupportOptions);
-            app.UseWebsite(mo.WebsiteOptions);
-            app.UseContact(mo.ContactOptions);
+            DefaultModuleOptions opt = new DefaultModuleOptions();
+            options?.Invoke(opt);
+            app.UseAboutOptions(opt.GetConfigOptions<Action<IAboutOptions>>());
+            app.UseSplashScreenOptions(opt.GetConfigOptions<Action<ISplashScreenOptions>>());
+            app.UseGuide(opt.GetConfigOptions<Action<IGuideOptions>>());
+            app.UseSettingView(opt.GetConfigOptions<Action<ISettingViewOptions>>());
+            app.UseSettingSecurity(opt.GetConfigOptions<Action<ISettingSecurityViewOption>>());
+            app.UseReleaseVersions(opt.GetConfigOptions<Action<IReleaseVersionsOptions>>());
+            app.UseSupport(opt.GetConfigOptions<Action<ISupportOptions>>());
+            app.UseWebsite(opt.GetConfigOptions<Action<IWebsiteOptions>>());
+            app.UseContact(opt.GetConfigOptions<Action<IContactOptions>>());
         }
     }
 }

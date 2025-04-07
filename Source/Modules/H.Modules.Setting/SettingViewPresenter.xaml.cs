@@ -38,7 +38,7 @@ public class SettingViewPresenter : IocBindable<SettingViewPresenter, ISettingVi
 {
     public SettingViewPresenter()
     {
-        this.Groups = IocSetting.Instance.Settings?.GroupBy(l => l.GroupName).Select(x => new SettableGroup() { Name = x.Key, Collection = x.ToObservable() }).ToObservable();
+        this.Groups = IocSetting.Instance.Settings?.Where(x => x.IsVisibleInSetting).GroupBy(l => l.GroupName).Select(x => new SettableGroup() { Name = x.Key, Collection = x.ToObservable() }).ToObservable();
         this.SelectedGroup = this.Groups?.FirstOrDefault();
         this.Title = "系统设置";
         this.Icon = "\xE115";

@@ -54,7 +54,7 @@ public partial class App : ApplicationBase
         });
 
         app.UseWindowSetting();
-        app.UseAbout();
+        app.UseAboutOptions();
         app.UseSwithTheme();
         app.UseSettingSecurity();
         app.UseMainWindowSetting();
