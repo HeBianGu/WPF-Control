@@ -22,6 +22,10 @@ namespace H.Themes.Colors.Copper;
 [Display(Name = "复古胶片风（推荐）", GroupName = "柔和复古风", Description = "暖调褪色感，适合摄影、文艺类应用", Order = 100, Prompt = "强力推荐")]
 public class VintageFilmColorResource : ColorResourceBase
 {
+    public VintageFilmColorResource()
+    {
+        this.IsDark = true;
+    }
     public override ResourceDictionary Resource => new ResourceDictionary()
     {
         Source = new Uri("pack://application:,,,/H.Themes.Colors.Copper;component/Light.xaml")

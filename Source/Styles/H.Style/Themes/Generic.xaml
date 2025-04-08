@@ -3,6 +3,6 @@
                     xmlns:local="clr-namespace:H.Styles">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/Window.xaml" />
-        <local:ConciseStyle/>
+        <local:ConciseStyle />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

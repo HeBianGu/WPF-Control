@@ -12,8 +12,8 @@ public class ShowCurrentProjectFileCommand : ShowProjectCommandBase
         IProjectItem current = IocProject.Instance.Current;
         if (current == null)
             return;
-        string p = System.IO.Path.Combine(current.Path, current.Title + ProjectOptions.Instance.Extenstion);
+    
+        string p = System.IO.Path.Combine(current.Path?? ProjectOptions.Instance.DefaultProjectFolder, current.Title + ProjectOptions.Instance.Extenstion);
         Process.Start(new ProcessStartInfo("notepad", p) { UseShellExecute = true });
-
     }
 }

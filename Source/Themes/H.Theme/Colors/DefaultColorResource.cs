@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 
 namespace H.Themes.Colors;
-[Display(Name = "默认（长期支持）", GroupName = "纯色", Description = "纯色", Order = 10, Prompt = "长期支持")]
+[Display(Name = "系统（长期支持）", GroupName = "纯色", Description = "纯色", Order = 10, Prompt = "长期支持")]
 public class DefaultColorResource : ColorResourceBase
 {
     public DefaultColorResource()

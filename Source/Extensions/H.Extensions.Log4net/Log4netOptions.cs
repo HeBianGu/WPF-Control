@@ -1,10 +1,11 @@
-﻿using H.Extensions.Setting;
+﻿using H.Common.Attributes;
+using H.Extensions.Setting;
 using H.Services.AppPath;
 using H.Services.Setting;
 using System.ComponentModel.DataAnnotations;
 
 namespace H.Extensions.Log4net;
-
+[Icon("\xEC87")]
 [Display(Name = "日志配置", GroupName = SettingGroupNames.GroupSystem, Description = "登录页面设置的信息")]
 public class Log4netOptions : IocOptionInstance<Log4netOptions>, ILog4netOptions
 {

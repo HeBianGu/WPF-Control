@@ -18,7 +18,7 @@
                                FontSize="25"
                                Text="{x:Static FontIcons.Calendar}" />
             <UniformGrid Columns="1">
-                <Grid>
+                <DockPanel>
                     <DockPanel>
                         <TextBlock Text="{Binding Title}" />
                         <TextBlock x:Name="c"
@@ -31,8 +31,9 @@
                                VerticalAlignment="Center"
                                DockPanel.Dock="Right"
                                Text="{Binding UpdateTime, Converter={x:Static h:Converter.GetDateTimeToString}}" />
-                </Grid>
-                <TextBlock FontSize="{DynamicResource {x:Static h:FontSizeKeys.Header6}}"
+                </DockPanel>
+                <TextBlock x:Name="txt_path"
+                           FontSize="{DynamicResource {x:Static h:FontSizeKeys.Header6}}"
                            FontWeight="Normal"
                            Opacity="0.6"
                            Text="{Binding Path}"
@@ -50,6 +51,10 @@
                     </MultiBinding>
                 </DataTrigger.Binding>
                 <Setter TargetName="c" Property="Visibility" Value="Visible" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path}"
+                         Value="{x:Null}">
+                <Setter TargetName="txt_path" Property="Text" Value="{Binding Source={x:Static local:ProjectOptions.Instance}, Path=DefaultProjectFolder}" />
             </DataTrigger>
         </DataTemplate.Triggers>
     </DataTemplate>

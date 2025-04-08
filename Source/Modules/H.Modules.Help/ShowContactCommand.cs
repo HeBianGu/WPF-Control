@@ -31,7 +31,7 @@ public class ShowContactCommand : DisplayMarkupCommandBase
 }
 
 
-[Icon(FontIcons.Contact)]
+[Icon(FontIcons.Home)]
 [Display(Name = "访问Github", Description = "通过此方式联系到开发者")]
 public class ShowGithubContactCommand : ShowContactCommand
 {
@@ -42,7 +42,7 @@ public class ShowGithubContactCommand : ShowContactCommand
     }
 }
 
-[Icon(FontIcons.Contact)]
+[Icon(FontIcons.MailForward)]
 [Display(Name = "发送邮件", Description = "通过此方式联系到开发者")]
 public class ShowSendMailContactCommand : ShowContactCommand
 {
@@ -53,7 +53,7 @@ public class ShowSendMailContactCommand : ShowContactCommand
     }
 }
 
-[Icon(FontIcons.Contact)]
+[Icon(FontIcons.AddFriend)]
 [Display(Name = "添加QQ", Description = "通过此方式联系到开发者")]
 public class ShowQQContactCommand : ShowContactCommand
 {
@@ -64,7 +64,7 @@ public class ShowQQContactCommand : ShowContactCommand
     }
 }
 
-[Icon(FontIcons.Contact)]
+[Icon(FontIcons.Website)]
 [Display(Name = "访问博客", Description = "通过此方式联系到开发者")]
 public class ShowBlogContactCommand : ShowContactCommand
 {
@@ -75,7 +75,7 @@ public class ShowBlogContactCommand : ShowContactCommand
     }
 }
 
-[Icon(FontIcons.Contact)]
+[Icon(FontIcons.Video)]
 [Display(Name = "访问播客", Description = "通过此方式联系到开发者")]
 public class ShowPodcastContactCommand : ShowContactCommand
 {

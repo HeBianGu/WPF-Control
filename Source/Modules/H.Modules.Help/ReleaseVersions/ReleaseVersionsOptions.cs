@@ -10,7 +10,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace H.Modules.Help.ReleaseVersions;
 
-[Icon(FontIcons.DateTime)]
+[Icon(FontIcons.History)]
 [Display(Name = "发行说明", GroupName = SettingGroupNames.GroupSystem, Description = "查看软件发行说明")]
 public class ReleaseVersionsOptions : UriHelpOptionsBase<ReleaseVersionsOptions>, IReleaseVersionsOptions
 {

@@ -27,9 +27,9 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoad,
 {
     public ThemeOptions()
     {
-        this.ColorResources.Add(new DarkColorResource());
-        this.ColorResources.Add(new DefaultColorResource());
+        this.ColorResources.Add(new DarkColorResource()); 
         this.ColorResources.Add(new LightColorResource());
+        this.ColorResources.Add(new DefaultColorResource());
         this.FontFamilys = Fonts.SystemFontFamilies.ToList();
         //this.FontFamilys.Add(new FontFamily("微软雅黑"));
         this.FontFamilys.Insert(0, new FontFamily("微软雅黑"));
@@ -249,11 +249,17 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoad,
     public override bool Load(out string message)
     {
         var r = base.Load(out message);
-        //if (r == false)
-        //{
-        //    this.RefreshTheme();
-        //    return false;
-        //}
+        if (r == false)
+        {
+            if (this.ColorResource != null)
+            {
+                this.ColorResourceSelectedIndex = this.ColorResources.IndexOf(this.ColorResource);
+                this.IsDark = this.ColorResource.IsDark;
+            }
+            if (this.BackgroundResource != null)
+                this.BackgroundResourceSelectedIndex = this.BackgroundResources.IndexOf(this.BackgroundResource);
+            
+        }
 
         if (this.ColorResourceSelectedIndex < 0 || this.ColorResourceSelectedIndex >= this.ColorResources.Count)
             this.ColorResourceSelectedIndex = 0;

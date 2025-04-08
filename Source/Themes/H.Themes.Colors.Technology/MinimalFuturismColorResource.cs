@@ -11,6 +11,10 @@ namespace H.Themes.Colors.Technology;
 [Display(Name = "极简未来（Minimal Futurism）", GroupName = "深色科技风", Description = "干净简洁，突出功能感，适合App、智能设备界面", Order = 100, Prompt = "试验")]
 public class MinimalFuturismColorResource : ColorResourceBase
 {
+    public MinimalFuturismColorResource()
+    {
+        this.IsDark = true;
+    }
     public override ResourceDictionary Resource => new ResourceDictionary()
     {
         Source = new Uri("pack://application:,,,/H.Themes.Colors.Technology;component/MinimalFuturism.xaml")

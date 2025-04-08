@@ -10,6 +10,8 @@ public class IocLayoutPresenterBase<T, Interface> : IocTitlePresenterBase<T, Int
     public double Width { get; set; } = double.NaN;
     public double MinHeight { get; set; } = double.NaN;
     public double MinWidth { get; set; } = double.NaN;
+    public double MaxHeight { get; set; } = double.NaN;
+    public double MaxWidth { get; set; } = double.NaN;
     public Thickness Margin { get; set; } = new Thickness(10, 6, 10, 6);
     public Thickness Padding { get; set; } = new Thickness(10, 6, 10, 6);
     public HorizontalAlignment HorizontalAlignment { get; set; } = HorizontalAlignment.Stretch;

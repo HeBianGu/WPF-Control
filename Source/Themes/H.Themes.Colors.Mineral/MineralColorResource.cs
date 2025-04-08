@@ -26,6 +26,10 @@ namespace H.Themes.Colors.Mineral;
 [Display(Name = "自然矿物风（长期支持）", GroupName = "柔和复古风", Description = "低饱和度大地色系，柔和自然，适合环保、健康类应用", Order = 10, Prompt = "长期支持")]
 public class MineralColorResource : ColorResourceBase
 {
+    public MineralColorResource()
+    {
+        this.IsDark = false;
+    }
     public override ResourceDictionary Resource => new ResourceDictionary()
     {
         Source = new Uri("pack://application:,,,/H.Themes.Colors.Mineral;component/Light.xaml")

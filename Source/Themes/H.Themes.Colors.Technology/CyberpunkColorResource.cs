@@ -22,6 +22,10 @@ namespace H.Themes.Colors.Technology;
 [Display(Name = "赛博朋克风", GroupName = "深色科技风", Description = "霓虹对比色 + 深色背景，适合数据看板、科技感应用", Order = 100, Prompt = "试验")]
 public class CyberpunkColorResource : ColorResourceBase
 {
+    public CyberpunkColorResource()
+    {
+        this.IsDark = true;
+    }
     public override ResourceDictionary Resource => new ResourceDictionary()
     {
         Source = new Uri("pack://application:,,,/H.Themes.Colors.Technology;component/CyberpunkDark.xaml")

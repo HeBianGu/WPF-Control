@@ -31,7 +31,6 @@ namespace System
             option?.Invoke(opt);
             //services.AddSwitchThemeViewPresenter(opt.GetConfigOptions<Action<ISwitchThemeOptions>>());
             //services.AddLoadThemeOptionsService(opt.GetConfigOptions<Action<IThemeOptions>>());
-         
             services.AddTheme(opt.GetConfigOptions<Action<IThemeOptions>>());
             services.AddColorThemeViewPresenter(opt.GetConfigOptions<Action<IColorThemeOptions>>());
         }
@@ -86,7 +85,6 @@ namespace System
                 //x.ColorResources.Add(new IndustrialDarkColorResource());
                 //x.ColorResources.Add(new IndustrialDarkColorResource());
                 option?.Invoke(x);
-
             });
         }
 

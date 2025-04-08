@@ -164,9 +164,10 @@ public abstract partial class ApplicationBase : Application, IConfigureableAppli
     #endregion
 
     public ILogService ILogger => Ioc.Services.GetService<ILogService>();
-    protected virtual void ShowMessage(string message, string title = "提示")
+    protected virtual async void ShowMessage(string message, string title = "提示")
     {
-        MessageBox.Show(message);
+        await IocMessage.ShowDialogMessage(message,title);
+        //MessageBox.Show(message);
 
         //if (MessageProxy.Windower == null)
         //{
