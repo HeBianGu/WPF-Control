@@ -22,17 +22,26 @@
                     <MenuItem Header="帮助"
                               ItemContainerStyle="{DynamicResource {x:Static MenuItemKeys.BindCommand}}">
                         <MenuItem Command="{ShowAboutCommand}" />
-                        <MenuItem Command="{ShowFeedbackCommand}" />
-                        <MenuItem Command="{ShowAgreementCommand}" />
-                        <MenuItem Command="{ShowPrivacyCommand}" />
-                        <MenuItem Command="{ShowContactCommand}" />
-                        <MenuItem Command="{ShowSponsorCommand}" />
-                        <MenuItem Command="{ShowWebSiteCommand}" />
                         <MenuItem Command="{ShowGuideCommand}" />
                         <MenuItem Command="{ShowGuideTreeCommand}" />
                         <MenuItem Command="{ShowNewGuideCommand}" />
                         <MenuItem Command="{ShowNewGuideTreeCommand}" />
                         <MenuItem Command="{ShowSupportCommand}" />
+                        <MenuItem Command="{ShowFeedbackCommand}" />
+                        <MenuItem Command="{ShowWebSiteCommand}" />
+                        <MenuItem Command="{ShowContactCommand}">
+                            <MenuItem Command="{ShowGithubContactCommand}" />
+                            <MenuItem Command="{ShowQQContactCommand}" />
+                            <MenuItem Command="{ShowSendMailContactCommand}" />
+                            <MenuItem Command="{ShowBlogContactCommand}" />
+                            <MenuItem Command="{ShowPodcastContactCommand}" />
+                        </MenuItem>
+                        <MenuItem Header="声明许可">
+                            <MenuItem Command="{ShowAgreementCommand}" />
+                            <MenuItem Command="{ShowPrivacyCommand}" />
+                        </MenuItem>
+                        <MenuItem Command="{ShowSponsorCommand}" />
+                        <MenuItem Command="{ShowLog4netPathCommand}" />
                     </MenuItem>
                 </Menu>
                 <FontIconButton Command="{ShowColorThemeViewCommand}"
