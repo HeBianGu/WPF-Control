@@ -19,29 +19,40 @@
                        LastChildFill="False"
                        WindowChrome.IsHitTestVisibleInChrome="True">
                 <Menu>
-                    <MenuItem Header="帮助"
-                              ItemContainerStyle="{DynamicResource {x:Static MenuItemKeys.BindCommand}}">
-                        <MenuItem Command="{ShowAboutCommand}" />
+                    <Menu.Resources>
+                        <Style BasedOn="{StaticResource {x:Static MenuItemKeys.BindCommand}}"
+                               TargetType="MenuItem" />
+                    </Menu.Resources>
+                    <MenuItem Header="帮助">
                         <MenuItem Command="{ShowGuideCommand}" />
-                        <MenuItem Command="{ShowGuideTreeCommand}" />
                         <MenuItem Command="{ShowNewGuideCommand}" />
+                        <MenuItem Command="{ShowGuideTreeCommand}" />
                         <MenuItem Command="{ShowNewGuideTreeCommand}" />
+                        <Separator />
+                        <MenuItem Command="{ShowNotImplementedCommand}"
+                                  Header="检查更新" />
+                        <MenuItem Command="{ShowNotImplementedCommand}"
+                                  Header="注册" />
+
+                        <MenuItem Command="{ShowReleaseVersionsCommand}" />
                         <MenuItem Command="{ShowSupportCommand}" />
                         <MenuItem Command="{ShowFeedbackCommand}" />
                         <MenuItem Command="{ShowWebSiteCommand}" />
+                        <Separator />
                         <MenuItem Command="{ShowContactCommand}">
                             <MenuItem Command="{ShowGithubContactCommand}" />
+                            <MenuItem Command="{ShowGitHubIssueContactCommand}" />
                             <MenuItem Command="{ShowQQContactCommand}" />
                             <MenuItem Command="{ShowSendMailContactCommand}" />
                             <MenuItem Command="{ShowBlogContactCommand}" />
                             <MenuItem Command="{ShowPodcastContactCommand}" />
                         </MenuItem>
-                        <MenuItem Header="声明许可">
+                        <MenuItem Command="{ShowPrivacyCommand}">
                             <MenuItem Command="{ShowAgreementCommand}" />
                             <MenuItem Command="{ShowPrivacyCommand}" />
                         </MenuItem>
                         <MenuItem Command="{ShowSponsorCommand}" />
-                        <MenuItem Command="{ShowLog4netPathCommand}" />
+                        <MenuItem Command="{ShowAboutCommand}" />
                     </MenuItem>
                 </Menu>
                 <FontIconButton Command="{ShowColorThemeViewCommand}"

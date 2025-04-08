@@ -24,10 +24,7 @@ public partial class App : ApplicationBase
         services.AddAdornerDialogMessage();
         //services.AddWindowDialogMessage();
         services.AddSetting();
-        services.AddSwitchThemeViewPresenter(x =>
-        {
-            x.Dark = new GrayDarkColorResource();
-        });
+        services.AddTheme();
         services.AddSingleton<IDialogMessageService, AdornerDialogMessageService>();
         services.AddSingleton<IFormMessageService, FormMessageService>();
         services.AddNoticeMessage();
@@ -55,7 +52,7 @@ public partial class App : ApplicationBase
 
         app.UseWindowSetting();
         app.UseAboutOptions();
-        app.UseSwithThemeOptions();
+        app.UseThemeOptions();
         app.UseSettingSecurityOptions();
         app.UseMainWindowSetting();
         app.UseWindowSetting();

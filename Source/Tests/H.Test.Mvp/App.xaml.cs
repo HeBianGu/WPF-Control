@@ -21,7 +21,7 @@ namespace H.Test.Mvp
             services.AddAbout();
             services.AddSetting();
             services.AddFeedBack();
-            services.AddSwitchThemeViewPresenter();
+            services.AddTheme();
         }
 
         protected override Window CreateMainWindow(StartupEventArgs e)
@@ -32,7 +32,7 @@ namespace H.Test.Mvp
         protected override void Configure(IApplicationBuilder app)
         {
             base.Configure(app);
-
+            app.UseStyleOptions();
             app.UseSettingDefaultOptions();
             app.UseAboutOptions(x => x.ProductName = "设置标题");
         }

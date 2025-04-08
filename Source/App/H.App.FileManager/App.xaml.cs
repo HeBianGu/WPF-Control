@@ -28,7 +28,7 @@ namespace H.App.FileManager
         protected override void ConfigureServices(IServiceCollection services)
         {
             base.ConfigureServices(services);
-            services.AddDefaultServices();
+            services.AddApplicationServices();
             services.AddProject<FileProjectService>();
             services.AddSingleton<IAppSaveService, AppSaveService>();
             services.AddTag<ProjectTagService>(x =>
@@ -102,7 +102,7 @@ namespace H.App.FileManager
         protected override void Configure(IApplicationBuilder app)
         {
             base.Configure(app);
-            app.UseDefaultOptions();
+            app.UseApplicationOptions();
             app.UseDefaultIdentifyOptions();
             app.UseSettingDataOptions(x =>
             {

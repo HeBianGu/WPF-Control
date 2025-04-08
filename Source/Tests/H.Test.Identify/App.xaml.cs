@@ -54,10 +54,8 @@ namespace H.Test.Identify
             services.AddRegisterLoginViewPresenter();
             services.AddLoginService();
             services.AddRegisterService();
-
             services.AddSplashScreen();
-
-            services.AddSwitchThemeViewPresenter();
+            services.AddTheme();
         }
 
         protected override void Configure(IApplicationBuilder app)
@@ -66,7 +64,6 @@ namespace H.Test.Identify
             app.UseLoginOptions();
             app.UseRegistorOptions(x => x.UseMail = false);
             app.UseThemeOptions();
-            app.UseSwithThemeOptions();
             app.UseSqlite();
         }
     }

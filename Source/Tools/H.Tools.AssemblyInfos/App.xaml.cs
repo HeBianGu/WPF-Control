@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace H.Test.CodeTool;
+namespace H.Tools.AssemblyInfos;
 /// <summary>
 /// Interaction logic for App.xaml
 /// </summary>
