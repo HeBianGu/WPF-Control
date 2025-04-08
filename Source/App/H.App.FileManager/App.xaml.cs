@@ -73,29 +73,6 @@ namespace H.App.FileManager
                 x.WorkingDirectory = "D:\\ffmpeg";
             });
             services.AddSingleton<IScheduledTaskService, ProjectSaveScheduledTaskService>();
-
-
-            //  Do ：身份认证
-            services.AddDbContextBySetting<IdentifyDataContext>();
-            services.AddSingleton<IStringRepository<hi_dd_user>, DbContextRepository<IdentifyDataContext, hi_dd_user>>();
-            services.AddUserViewPresenter();
-
-            services.AddSingleton<IStringRepository<hi_dd_role>, DbContextRepository<IdentifyDataContext, hi_dd_role>>();
-            services.AddRoleViewPresenter();
-
-            services.AddSingleton<IStringRepository<hi_dd_author>, DbContextRepository<IdentifyDataContext, hi_dd_author>>();
-            services.AddAuthorityViewPresenter();
-
-            //  Do ：操作日志
-            services.AddDbContextBySetting<OperationDataContext>();
-            services.AddSingleton<IStringRepository<hi_dd_operation>, DbContextRepository<OperationDataContext, hi_dd_operation>>();
-            services.AddOperationViewPresenter();
-
-            //  Do ：登录和注册页面
-            services.AddRegisterLoginViewPresenter();
-            services.AddLoginService();
-            services.AddRegisterService();
-
             services.AddDefaultIdentify();
         }
 
@@ -109,7 +86,6 @@ namespace H.App.FileManager
                 x.Add(AppSetting.Instance);
             });
             app.UseFFMpeg();
-            app.UseLoginOptions();
             app.UseWindowSetting();
         }
     }
