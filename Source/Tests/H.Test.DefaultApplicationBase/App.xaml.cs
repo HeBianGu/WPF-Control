@@ -15,7 +15,7 @@ public partial class App : ApplicationBase
     protected override void ConfigureServices(IServiceCollection services)
     {
         base.ConfigureServices(services);
-        services.AddDefaultServices(x =>
+        services.AddApplicationServices(x =>
         {
             x.UseModulesOptions(x =>
             {
@@ -34,7 +34,7 @@ public partial class App : ApplicationBase
     protected override void Configure(IApplicationBuilder app)
     {
         base.Configure(app);
-        app.UseDefaultOptions();
+        app.UseApplicationOptions();
     }
     protected override Window CreateMainWindow(StartupEventArgs e)
     {

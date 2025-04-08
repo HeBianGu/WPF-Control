@@ -32,7 +32,7 @@ public class ShowContactCommand : DisplayMarkupCommandBase
 
 
 [Icon(FontIcons.Contact)]
-[Display(Name = "查看Github", Description = "通过此方式联系到开发者")]
+[Display(Name = "访问Github", Description = "通过此方式联系到开发者")]
 public class ShowGithubContactCommand : ShowContactCommand
 {
     public override Task ExecuteAsync(object parameter)
@@ -65,7 +65,7 @@ public class ShowQQContactCommand : ShowContactCommand
 }
 
 [Icon(FontIcons.Contact)]
-[Display(Name = "查看博客", Description = "通过此方式联系到开发者")]
+[Display(Name = "访问博客", Description = "通过此方式联系到开发者")]
 public class ShowBlogContactCommand : ShowContactCommand
 {
     public override Task ExecuteAsync(object parameter)
@@ -76,7 +76,7 @@ public class ShowBlogContactCommand : ShowContactCommand
 }
 
 [Icon(FontIcons.Contact)]
-[Display(Name = "查看播客", Description = "通过此方式联系到开发者")]
+[Display(Name = "访问播客", Description = "通过此方式联系到开发者")]
 public class ShowPodcastContactCommand : ShowContactCommand
 {
     public override Task ExecuteAsync(object parameter)
@@ -85,4 +85,17 @@ public class ShowPodcastContactCommand : ShowContactCommand
         return Task.CompletedTask;
     }
 }
+
+
+[Icon(FontIcons.StatusCircleQuestionMark)]
+[Display(Name = "提出问题", Description = "通过此方式向开源项目提出问题")]
+public class ShowGitHubIssueContactCommand : ShowContactCommand
+{
+    public override Task ExecuteAsync(object parameter)
+    {
+        ContactOptions.Instance.GitHubIssue.ShowProcess();
+        return Task.CompletedTask;
+    }
+}
+
 

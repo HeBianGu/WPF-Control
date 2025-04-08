@@ -48,7 +48,7 @@ public class ShowSettingCommand : ShowDialogCommandBase
             if (SettingSecurityViewOption.Instance.RememberPassword)
                 this._successed = true;
         }
-        await SettingViewPresenter.Instance.Show(this.SwitchToType ?? parameter?.GetType());
+        await SettingViewPresenter.Instance.Show(this.SwitchToType ?? parameter?.GetType(), x => this.Invoke(x));
     }
 
     public override bool CanExecute(object parameter)

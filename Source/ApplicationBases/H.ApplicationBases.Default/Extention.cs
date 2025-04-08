@@ -31,7 +31,7 @@ namespace System
         /// 注册
         /// </summary>
         /// <param name="service"></param>
-        public static void AddDefaultServices(this IServiceCollection services, Action<IDefaultApplicationOptions> options = null)
+        public static void AddApplicationServices(this IServiceCollection services, Action<IDefaultApplicationOptions> options = null)
         {
             DefaultApplicationOptions opt = new DefaultApplicationOptions();
             options?.Invoke(opt);
@@ -42,7 +42,7 @@ namespace System
             services.AddLog4net();
         }
 
-        public static void UseDefaultOptions(this IApplicationBuilder app, Action<IDefaultApplicationOptions> options = null)
+        public static void UseApplicationOptions(this IApplicationBuilder app, Action<IDefaultApplicationOptions> options = null)
         {
             DefaultApplicationOptions opt = new DefaultApplicationOptions();
             options?.Invoke(opt);

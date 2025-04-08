@@ -7,4 +7,6 @@ public interface IProjectOptions
     string DefaultProjectName { get; set; }
     string Extenstion { get; set; }
     ProjectSaveMode SaveMode { get; set; }
+
+    IJsonSerializerService JsonSerializerService { get; set; }
 }

@@ -29,7 +29,7 @@ public class ContactOptions : IocOptionInstance<ContactOptions>, IContactOptions
     [XmlIgnore]
     [ReadOnly(true)]
     [PropertyItem(typeof(HyperlinkPropertyItem))]
-    [DefaultValue("https://github.com/HeBianGu")]
+    [DefaultValue("https://github.com/HeBianGu/WPF-Control/")]
     [Display(Name = "GitHub地址")]
     public string GitHub
     {
@@ -37,6 +37,23 @@ public class ContactOptions : IocOptionInstance<ContactOptions>, IContactOptions
         set
         {
             _gitHub = value;
+            RaisePropertyChanged();
+        }
+    }
+
+    private string _gitHubIssue;
+    [JsonIgnore]
+    [XmlIgnore]
+    [ReadOnly(true)]
+    [PropertyItem(typeof(HyperlinkPropertyItem))]
+    [DefaultValue("https://github.com/HeBianGu/WPF-Control/issues")]
+    [Display(Name = "提出问题")]
+    public string GitHubIssue
+    {
+        get { return _gitHubIssue; }
+        set
+        {
+            _gitHubIssue = value;
             RaisePropertyChanged();
         }
     }

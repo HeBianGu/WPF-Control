@@ -186,7 +186,7 @@ public class AboutOptions : IocOptionInstance<AboutOptions>, IAboutOptions
     [XmlIgnore]
     [ReadOnly(true)]
     [PropertyItem(typeof(HyperlinkPropertyItem))]
-    [DefaultValue("https://github.com/HeBianGu/WPF-Control")]
+    [DefaultValue("https://hebiangu.github.io/WPF-Control/PrivacyPolicy.html")]
     [Display(Name = "隐私政策")]
     public string Privacy
     {
@@ -202,7 +202,7 @@ public class AboutOptions : IocOptionInstance<AboutOptions>, IAboutOptions
     [System.Xml.Serialization.XmlIgnore]
     [ReadOnly(true)]
     [PropertyItem(typeof(HyperlinkPropertyItem))]
-    [DefaultValue("https://github.com/HeBianGu/WPF-Control")]
+    [DefaultValue("https://hebiangu.github.io/WPF-Control/ServiceAgreement.html")]
     [Display(Name = "服务协议")]
     public string Agreement
     {

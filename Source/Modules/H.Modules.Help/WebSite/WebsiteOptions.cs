@@ -17,6 +17,6 @@ public class WebsiteOptions : UriHelpOptionsBase<WebsiteOptions>, IWebsiteOption
     public override void LoadDefault()
     {
         base.LoadDefault();
-        this.Uri = "https://hebiangu.github.io/HeBianGu/";
+        this.Uri = "https://hebiangu.github.io/WPF-Control/Home.html";
     }
 }
