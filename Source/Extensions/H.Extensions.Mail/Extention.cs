@@ -17,7 +17,7 @@ public static class Extention
     {
         services.AddOptions();
         services.TryAdd(ServiceDescriptor.Singleton<IMailService, MailService>());
-        services.TryAdd(ServiceDescriptor.Singleton<IMailLogService, MailLogService>());
+        services.TryAdd(ServiceDescriptor.Singleton<ILogMailService, LogMailService>());
         if (setupAction != null)
             services.Configure(new Action<SmtpSendOptions>(setupAction));
         return services;

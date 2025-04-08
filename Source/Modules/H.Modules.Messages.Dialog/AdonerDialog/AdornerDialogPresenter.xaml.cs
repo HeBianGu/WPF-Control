@@ -61,9 +61,9 @@ namespace H.Modules.Messages.Dialog
                 await this.Close(presenterAdorner.ContentPresenter);
         }
         public bool? DialogResult { get; set; }
-        public void Sumit()
+        public async void Sumit()
         {
-            if (this.CanSumit?.Invoke() != false)
+            if (this.CanSumit == null || await this.CanSumit?.Invoke() != false)
             {
                 this.DialogResult = true;
                 this.Close();
@@ -94,7 +94,7 @@ namespace H.Modules.Messages.Dialog
             });
         }
 
-        public Func<bool> CanSumit { get; set; }
+        public Func<Task<bool>> CanSumit { get; set; }
         public bool IsCancel => this.DialogResult == false;
         public DialogButton DialogButton { get; set; } = DialogButton.Sumit;
         public Window Owner { get; set; }

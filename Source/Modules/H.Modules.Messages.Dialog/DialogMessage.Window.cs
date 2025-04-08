@@ -11,7 +11,7 @@ namespace H.Modules.Messages.Dialog
 {
     public class WindowDialogMessageService : IDialogMessageService, IWindowDialogMessageService
     {
-        public async Task<bool?> Show(object presenter, Action<IDialog> builder = null, Func<bool> canSumit = null)
+        public async Task<bool?> Show(object presenter, Action<IDialog> builder = null, Func<Task<bool>> canSumit = null)
         {
             var data = presenter is string str ? new StringPresenter() { Value = str } : presenter;
             bool? r = DialogWindow.ShowPresenter(data, builder, canSumit);

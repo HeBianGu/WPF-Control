@@ -51,9 +51,20 @@ public interface ILayoutable
     double MinHeight { get; set; }
 
     /// <summary>
+    /// 获取或设置最小高度。
+    /// </summary>
+    double MaxHeight { get; set; }
+
+    /// <summary>
     /// 获取或设置最小宽度。
     /// </summary>
     double MinWidth { get; set; }
+
+
+    /// <summary>
+    /// 获取或设置最小宽度。
+    /// </summary>
+    double MaxWidth { get; set; }
 
     /// <summary>
     /// 获取或设置不透明度。
@@ -100,6 +111,8 @@ public static class LayoutableExtension
         to.Margin = from.Margin;
         to.MinWidth = from.MinWidth;
         to.MinHeight = from.MinHeight;
+        to.MaxHeight = from.MaxHeight;
+        to.MaxWidth = from.MaxWidth;
         to.BorderBrush = from.BorderBrush;
         to.BorderThickness = from.BorderThickness;
         to.Background = from.Background;

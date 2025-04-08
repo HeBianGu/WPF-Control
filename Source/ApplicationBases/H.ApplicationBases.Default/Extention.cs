@@ -38,6 +38,8 @@ namespace System
             services.AddDefaultMessages();
             services.AddDefaultModuleServices(opt.GetConfigOptions<Action<IDefaultModuleOptions>>());
             services.AddDefaultThemeServices(opt.GetConfigOptions<Action<IDefaultThemeOptions>>());
+
+            services.AddLog4net();
         }
 
         public static void UseDefaultOptions(this IApplicationBuilder app, Action<IDefaultApplicationOptions> options = null)
@@ -47,6 +49,8 @@ namespace System
             app.UseStyleOptions();
             app.UseDefaultModuleOptions(opt.GetConfigOptions<Action<IDefaultModuleOptions>>());
             app.UseDefaultThemeOptions(opt.GetConfigOptions<Action<IDefaultThemeOptions>>());
+
+            app.UseAddLog4netOptions();
         }
     }
 }

@@ -1,6 +1,8 @@
-﻿namespace H.Modules.Feedback;
+﻿using H.Extensions.Mail;
 
-public interface IFeedbackOptions
+namespace H.Modules.Feedback;
+
+public interface IFeedbackOptions: ISmtpSendOptions
 {
-    string MailAccount { get; set; }
+ 
 }

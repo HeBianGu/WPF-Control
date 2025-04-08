@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using H.Services.Setting;
+using System.IO;
 using System.Net;
 using System.Net.Mail;
 using System.Net.Mime;
@@ -7,17 +8,26 @@ namespace H.Extensions.Mail;
 
 public class MailService : IMailService
 {
-    public bool Send(MailMessageItem messageItem, bool isBodyHtml, out string message)
+    protected virtual ISmtpSendOptions GetSmtpSendOptions() => SmtpSendOptions.Instance;
+
+    public virtual bool Send(MailMessageItem messageItem, bool isBodyHtml, out string message)
     {
+        var options = GetSmtpSendOptions();
+        if (string.IsNullOrEmpty(options.Password))
+        {
+            message = "授权码不正确，请联系管理员设置授权码";
+            return false;
+        }
         message = null;
+
         SmtpClient smtp = new SmtpClient()
         {
-            Host = SmtpSendOptions.Instance.Host,
-            Port = SmtpSendOptions.Instance.Port,
-            EnableSsl = SmtpSendOptions.Instance.EnableSsl,
+            Host = options.Host,
+            Port = options.Port,
+            EnableSsl = options.EnableSsl,
             DeliveryMethod = SmtpDeliveryMethod.Network,
             UseDefaultCredentials = false,
-            Credentials = new NetworkCredential(SmtpSendOptions.Instance.User, SmtpSendOptions.Instance.Password)
+            Credentials = new NetworkCredential(options.User, options.Password)
         };
 
         using MailMessage msg = new();

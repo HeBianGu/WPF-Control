@@ -4,7 +4,7 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Modules.Feedback">
     <DataTemplate DataType="{x:Type local:FeedbackViewPresenter}">
-        <Grid Width="800">
+        <Grid>
             <DockPanel>
                 <TextBlock Margin="0,5"
                            HorizontalAlignment="Center"
@@ -84,12 +84,9 @@
                         <TextBlock Width="80"
                                    Text="问题描述" />
                     </BulletDecorator.Bullet>
-                    <TextBox Height="150"
-                             Margin="0,5"
+                    <TextBox Margin="0,5" Height="Auto" VerticalAlignment="Stretch"
                              Text="{Binding Text}" />
                 </BulletDecorator>
-
-
             </DockPanel>
         </Grid>
     </DataTemplate>

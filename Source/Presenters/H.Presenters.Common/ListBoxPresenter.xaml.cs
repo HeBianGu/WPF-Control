@@ -72,7 +72,7 @@ public class ListBoxPresenter : ItemsSourcePresenterBase, IListBoxPresenter
 public static partial class DialogServiceExtension
 {
     [Obsolete("ShowListBox<T>")]
-    public static async Task<bool?> ShowListBox(this IDialogMessageService service, Action<IListBoxPresenter> option, Action<IListBoxPresenter> sumitAction = null, Action<IDialog> builder = null, Func<IListBoxPresenter, bool> canSumit = null)
+    public static async Task<bool?> ShowListBox(this IDialogMessageService service, Action<IListBoxPresenter> option, Action<IListBoxPresenter> sumitAction = null, Action<IDialog> builder = null, Func<IListBoxPresenter, Task<bool>> canSumit = null)
     {
         return await service.ShowDialog<ListBoxPresenter>(option, sumitAction, x =>
         {
@@ -83,7 +83,7 @@ public static partial class DialogServiceExtension
         }, canSumit);
     }
 
-    public static async Task<T> ShowListBox<T>(this IDialogMessageService service, Action<IListBoxPresenter> option, Action<IListBoxPresenter> sumitAction = null, Action<IDialog> builder = null, Func<IListBoxPresenter, bool> canSumit = null)
+    public static async Task<T> ShowListBox<T>(this IDialogMessageService service, Action<IListBoxPresenter> option, Action<IListBoxPresenter> sumitAction = null, Action<IDialog> builder = null, Func<IListBoxPresenter, Task<bool>> canSumit = null)
     {
         T result = default(T);
         var r = await service.ShowDialog<ListBoxPresenter>(option, x=>

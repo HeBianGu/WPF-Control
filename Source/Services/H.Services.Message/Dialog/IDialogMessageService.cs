@@ -14,7 +14,7 @@ public interface IDialogMessageService
     /// <param name="builder">对话框构建器</param>
     /// <param name="canSumit">确定按钮是否可用的条件</param>
     /// <returns>对话框的结果</returns>
-    Task<bool?> Show(object presenter, Action<IDialog> builder = null, Func<bool> canSumit = null);
+    Task<bool?> Show(object presenter, Action<IDialog> builder = null, Func<Task<bool>> canSumit = null);
 
     /// <summary>
     /// 显示带操作的对话框
@@ -79,7 +79,7 @@ public static class DialogMessageExtension
     /// <param name="builder">对话框构建器</param>
     /// <param name="canSumit">确定按钮是否可用的条件</param>
     /// <returns>对话框的结果</returns>
-    public static async Task<bool?> ShowDialog(this IDialogMessageService service, object presenter, Action<bool?> sumitAction, Action<IDialog> builder = null, Func<bool> canSumit = null)
+    public static async Task<bool?> ShowDialog(this IDialogMessageService service, object presenter, Action<bool?> sumitAction, Action<IDialog> builder = null, Func<Task<bool>> canSumit = null)
     {
         bool? r = await service.Show(presenter, builder, canSumit);
         if (r != true)
@@ -98,11 +98,11 @@ public static class DialogMessageExtension
     /// <param name="builder">对话框构建器</param>
     /// <param name="canSumit">确定按钮是否可用的条件</param>
     /// <returns>对话框的结果</returns>
-    public static async Task<bool?> ShowDialog<T>(this IDialogMessageService dialog, Action<T> option, Action<T> sumitAction, Action<IDialog> builder = null, Func<T, bool> canSumit = null) where T : new()
+    public static async Task<bool?> ShowDialog<T>(this IDialogMessageService dialog, Action<T> option, Action<T> sumitAction, Action<IDialog> builder = null, Func<T, Task<bool>> canSumit = null) where T : new()
     {
         T presenter = new T();
         option?.Invoke(presenter);
-        return await dialog.ShowDialog(presenter, x => sumitAction?.Invoke(presenter), builder, () => canSumit?.Invoke(presenter) != false);
+        return await dialog.ShowDialog(presenter, x => sumitAction?.Invoke(presenter), builder, () => canSumit?.Invoke(presenter));
     }
 
     /// <summary>

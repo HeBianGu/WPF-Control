@@ -1,6 +1,6 @@
 ﻿namespace H.Extensions.Mail;
 
-public class MailLogService : IMailLogService
+public class LogMailService : ILogMailService
 {
     public bool Send(string subject, string body, out string message)
     {

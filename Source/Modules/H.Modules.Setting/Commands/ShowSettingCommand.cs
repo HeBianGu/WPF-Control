@@ -32,15 +32,15 @@ public class ShowSettingCommand : ShowDialogCommandBase
                 if (_count > SettingSecurityViewOption.Instance.PasswordCount)
                 {
                     IocMessage.ShowSnackInfo($"密码错误次数超过{SettingSecurityViewOption.Instance.PasswordCount}次禁止输入");
-                    return false;
+                    return Task.FromResult(false);
                 }
                 if (p.Password != SettingSecurityViewOption.Instance.Password)
                 {
                     _count++;
                     IocMessage.ShowSnackInfo($"密码错误[{_count}/{SettingSecurityViewOption.Instance.PasswordCount}]次");
-                    return false;
+                    return Task.FromResult(false);
                 }
-                return true;
+                return Task.FromResult(true);
             });
             if (pr != true)
                 return;
@@ -48,38 +48,7 @@ public class ShowSettingCommand : ShowDialogCommandBase
             if (SettingSecurityViewOption.Instance.RememberPassword)
                 this._successed = true;
         }
-        //SettingViewPresenter setting = new SettingViewPresenter();
-        var setting = Ioc.GetService<ISettingViewPresenter>();
-        if (this.SwitchToType != null)
-            setting.SwitchTo(this.SwitchToType);
-        if (parameter != null)
-            setting.SwitchTo(parameter.GetType());
-        bool? r = await IocMessage.Dialog.Show(setting, x =>
-        {
-            this.Invoke(x);
-            x.Width = SettingViewOptions.Instance.Width;
-            x.Height = SettingViewOptions.Instance.Height;
-            x.Margin = SettingViewOptions.Instance.Margin;
-            x.MinWidth = SettingViewOptions.Instance.MinWidth;
-            x.MinHeight = SettingViewOptions.Instance.MinHeight;
-            x.HorizontalAlignment = HorizontalAlignment.Stretch;
-            x.VerticalAlignment = VerticalAlignment.Stretch;
-            x.HorizontalContentAlignment = HorizontalAlignment.Stretch;
-            x.VerticalContentAlignment = VerticalAlignment.Stretch;
-            x.DialogButton = DialogButton.None;
-            if (x is Window window)
-            {
-                window.SizeToContent = SizeToContent.Manual;
-                window.ResizeMode = ResizeMode.CanResize;
-                window.ShowInTaskbar = true;
-                window.VerticalContentAlignment = VerticalAlignment.Stretch;
-            }
-        });
-        if (r != true)
-            return;
-        bool sr = IocSetting.Instance.Save(out string error);
-        if (sr == false)
-            await IocMessage.Dialog.Show(error);
+        await SettingViewPresenter.Instance.Show(this.SwitchToType ?? parameter?.GetType());
     }
 
     public override bool CanExecute(object parameter)

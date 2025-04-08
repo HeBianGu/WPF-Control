@@ -4,7 +4,7 @@ namespace H.Services.Message.Dialog;
 
 public interface IDialog : ILayoutable, ICancelable, ITransitionHostable
 {
-    Func<bool> CanSumit { get; set; }
+    Func<Task<bool>> CanSumit { get; set; }
     void Sumit();
     void Close();
     string Icon { get; set; }

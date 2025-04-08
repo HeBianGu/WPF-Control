@@ -51,8 +51,6 @@ public class FeedbackViewPresenter : BindableBase, IFeedbackViewPresenter
         }
     }
 
-    public string MailAccount => FeedbackOptions.Instance.MailAccount;
-
     private ObservableCollection<string> _files = new ObservableCollection<string>();
     public ObservableCollection<string> Files
     {

@@ -47,7 +47,7 @@ namespace H.Windows.Dialog
 
         protected override async void OnClosing(CancelEventArgs e)
         {
-            if (this.CanSumit?.Invoke() == false)
+            if (this.CanSumit != null && await this.CanSumit?.Invoke() == false)
             {
                 e.Cancel = true;
                 return;
@@ -67,7 +67,7 @@ namespace H.Windows.Dialog
             this.Close();
         }
 
-        public Func<bool> CanSumit { get; set; }
+        public Func<Task<bool>> CanSumit { get; set; }
 
         public bool IsCancel => this.Dispatcher.Invoke(() => this.DialogResult == false);
 
@@ -147,7 +147,7 @@ namespace H.Windows.Dialog
             }
         }
 
-        public static bool? ShowPresenter(object presenter, Action<IDialog> action = null, Func<bool> canSumit = null)
+        public static bool? ShowPresenter(object presenter, Action<IDialog> action = null, Func<Task<bool>> canSumit = null)
         {
             DialogWindow dialog = new DialogWindow();
             dialog.Content = presenter;

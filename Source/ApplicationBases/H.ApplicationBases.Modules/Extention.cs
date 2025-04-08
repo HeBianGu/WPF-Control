@@ -35,7 +35,6 @@ namespace System
             services.AddSponsor();
             services.AddContact(opt.GetConfigOptions<Action<IContactOptions>>());
             services.AddFeedBack(opt.GetConfigOptions<Action<IFeedbackOptions>>());
-
         }
 
         public static void UseDefaultModuleOptions(this IApplicationBuilder app, Action<IDefaultModuleOptions> options = null)
@@ -51,6 +50,7 @@ namespace System
             app.UseSupport(opt.GetConfigOptions<Action<ISupportOptions>>());
             app.UseWebsite(opt.GetConfigOptions<Action<IWebsiteOptions>>());
             app.UseContact(opt.GetConfigOptions<Action<IContactOptions>>());
+            app.UseFeedBackOptions(opt.GetConfigOptions<Action<IFeedbackOptions>>());
         }
     }
 }

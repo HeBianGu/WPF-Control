@@ -58,7 +58,7 @@ public class ItemsControlPresenter : ItemsSourcePresenterBase, IItemsSourcePrese
 
 public static partial class DialogServiceExtension
 {
-    public static async Task<bool?> ShowItemsControl(this IDialogMessageService service, Action<IItemsSourcePresenter> option, Action<IItemsSourcePresenter> sumitAction = null, Action<IDialog> builder = null, Func<IItemsSourcePresenter,bool> canSumit = null)
+    public static async Task<bool?> ShowItemsControl(this IDialogMessageService service, Action<IItemsSourcePresenter> option, Action<IItemsSourcePresenter> sumitAction = null, Action<IDialog> builder = null, Func<IItemsSourcePresenter, Task<bool>> canSumit = null)
     {
         return await service.ShowDialog<ItemsControlPresenter>(option, sumitAction, x =>
         {

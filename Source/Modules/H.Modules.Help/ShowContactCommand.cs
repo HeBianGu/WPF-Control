@@ -8,6 +8,7 @@
 using H.Common.Attributes;
 using H.Common.Commands;
 using H.Extensions.FontIcon;
+using H.Modules.Help.Base;
 using H.Modules.Help.Contact;
 using System.ComponentModel.DataAnnotations;
 
@@ -28,3 +29,60 @@ public class ShowContactCommand : DisplayMarkupCommandBase
         return base.CanExecute(parameter) && Ioc.Exist<IContactService>();
     }
 }
+
+
+[Icon(FontIcons.Contact)]
+[Display(Name = "查看Github", Description = "通过此方式联系到开发者")]
+public class ShowGithubContactCommand : ShowContactCommand
+{
+    public override Task ExecuteAsync(object parameter)
+    {
+        ContactOptions.Instance.GitHub.ShowProcess();
+        return Task.CompletedTask;
+    }
+}
+
+[Icon(FontIcons.Contact)]
+[Display(Name = "发送邮件", Description = "通过此方式联系到开发者")]
+public class ShowSendMailContactCommand : ShowContactCommand
+{
+    public override Task ExecuteAsync(object parameter)
+    {
+        ContactOptions.Instance.Email.ShowProcess();
+        return Task.CompletedTask;
+    }
+}
+
+[Icon(FontIcons.Contact)]
+[Display(Name = "添加QQ", Description = "通过此方式联系到开发者")]
+public class ShowQQContactCommand : ShowContactCommand
+{
+    public override Task ExecuteAsync(object parameter)
+    {
+        ContactOptions.Instance.QQ.ShowProcess();
+        return Task.CompletedTask;
+    }
+}
+
+[Icon(FontIcons.Contact)]
+[Display(Name = "查看博客", Description = "通过此方式联系到开发者")]
+public class ShowBlogContactCommand : ShowContactCommand
+{
+    public override Task ExecuteAsync(object parameter)
+    {
+        ContactOptions.Instance.Blog.ShowProcess();
+        return Task.CompletedTask;
+    }
+}
+
+[Icon(FontIcons.Contact)]
+[Display(Name = "查看播客", Description = "通过此方式联系到开发者")]
+public class ShowPodcastContactCommand : ShowContactCommand
+{
+    public override Task ExecuteAsync(object parameter)
+    {
+        ContactOptions.Instance.Podcast.ShowProcess();
+        return Task.CompletedTask;
+    }
+}
+

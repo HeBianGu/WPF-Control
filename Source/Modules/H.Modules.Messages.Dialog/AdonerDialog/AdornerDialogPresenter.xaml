@@ -14,6 +14,8 @@
                   Height="{Binding Height}"
                   MinWidth="{Binding MinWidth}"
                   MinHeight="{Binding MinHeight}"
+                  MaxWidth="{Binding MaxWidth}"
+                  MaxHeight="{Binding MaxHeight}"
                   Margin="{Binding Margin}"
                   HorizontalAlignment="{Binding HorizontalAlignment}"
                   VerticalAlignment="{Binding VerticalAlignment}">

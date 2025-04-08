@@ -70,7 +70,7 @@ namespace H.Modules.Messages.Form
 
         private async Task<bool?> ShowEdit<T, P>(T value, Action<IDialog> action = null, Predicate<T> match = null, Action<P> option = null, Window owner = null) where P : class, IFormOption, new()
         {
-            Func<bool> canSumit = () =>
+            Func<Task<bool>> canSumit = async () =>
             {
                 //如果传入验证方式则不用ModelState
                 if (match != null)
@@ -78,16 +78,16 @@ namespace H.Modules.Messages.Form
 
                 if (value.ModelState(out List<string> errors) == false)
                 {
-                    IocMessage.Dialog.Show(errors.FirstOrDefault());
+                    await IocMessage.Dialog.Show(errors.FirstOrDefault());
                     return false;
                 }
                 return true;
             };
 
-            return await this.Show<T, P>(value, canSumit, action, option, owner);
+            return await this.Show(value, canSumit, action, option, owner);
         }
 
-        private async Task<bool?> Show<T, P>(T value, Func<bool> canSumit = null, Action<IDialog> action = null, Action<P> option = null, Window owner = null) where P : class, IFormOption, new()
+        private async Task<bool?> Show<T, P>(T value, Func<Task<bool>> canSumit = null, Action<IDialog> action = null, Action<P> option = null, Window owner = null) where P : class, IFormOption, new()
         {
             var presenter = Activator.CreateInstance<P>();
             presenter.SelectObject = value;

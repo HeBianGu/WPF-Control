@@ -97,6 +97,34 @@ public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresente
         }
     }
 
+    private double _maxHeight = double.NaN;
+    [DefaultValue(double.NaN)]
+    [Display(Name = "最大高度", GroupName = "布局")]
+    [TypeConverter(typeof(LengthConverter))]
+    public double MaxHeight
+    {
+        get { return _maxHeight; }
+        set
+        {
+            _maxHeight = value;
+            RaisePropertyChanged();
+        }
+    }
+
+    private double _maxWidth = double.NaN;
+    [DefaultValue(double.NaN)]
+    [Display(Name = "最大宽度", GroupName = "布局")]
+    [TypeConverter(typeof(LengthConverter))]
+    public double MaxWidth
+    {
+        get { return _maxWidth; }
+        set
+        {
+            _maxWidth = value;
+            RaisePropertyChanged();
+        }
+    }
+
     private Thickness _margin = new Thickness(10, 6, 10, 6);
     [Display(Name = "外部间距", GroupName = "布局")]
     /// <summary> 说明  </summary>

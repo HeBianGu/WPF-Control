@@ -18,7 +18,7 @@ public class TextBoxPresenter : DisplayBindableBase, ITextBoxPresenter
 
 public static partial class DialogServiceExtension
 {
-    public static async Task<bool?> ShowTextBox(this IDialogMessageService service, Action<ITextBoxPresenter> option, Action<ITextBoxPresenter> sumitAction = null, Action<IDialog> builder = null, Func<ITextBoxPresenter, bool> canSumit = null)
+    public static async Task<bool?> ShowTextBox(this IDialogMessageService service, Action<ITextBoxPresenter> option, Action<ITextBoxPresenter> sumitAction = null, Action<IDialog> builder = null, Func<ITextBoxPresenter, Task<bool>> canSumit = null)
     {
         return await service.ShowDialog<TextBoxPresenter>(option, sumitAction, x =>
         {
@@ -28,7 +28,7 @@ public static partial class DialogServiceExtension
         }, canSumit);
     }
 
-    public static async Task<bool?> ShowTextBox<ResultT>(this IDialogMessageService service, ResultT value, Action<ResultT> sumitAction = null, Action<IDialog> builder = null, Func<ITextBoxPresenter, bool> canSumit = null)
+    public static async Task<bool?> ShowTextBox<ResultT>(this IDialogMessageService service, ResultT value, Action<ResultT> sumitAction = null, Action<IDialog> builder = null, Func<ITextBoxPresenter, Task<bool>> canSumit = null)
     {
         return await service.ShowDialog<TextBoxPresenter>(x =>
         {
@@ -45,17 +45,17 @@ public static partial class DialogServiceExtension
             x.MinWidth = 200;
             builder?.Invoke(x);
         },
-        x =>
+        async x =>
         {
             if (x.Text.TryChangeType(out ResultT value))
             {
                 IocMessage.Snack.ShowInfo($"输入数据不合法,不是有效的{typeof(ResultT).Name}类型");
                 return false;
             }
-            return canSumit?.Invoke(x) != false;
+            return await canSumit?.Invoke(x) != false;
         });
     }
-    public static async Task<bool?> ShowTextBox(this IDialogMessageService service, string text, Action<string> sumitAction = null, Action<IDialog> builder = null, Func<ITextBoxPresenter, bool> canSumit = null)
+    public static async Task<bool?> ShowTextBox(this IDialogMessageService service, string text, Action<string> sumitAction = null, Action<IDialog> builder = null, Func<ITextBoxPresenter, Task<bool>> canSumit = null)
     {
         return await service.ShowTextBox(x => x.Text = text, x => sumitAction?.Invoke(x.Text), builder, canSumit);
     }

@@ -2,6 +2,7 @@
 using H.Common.Interfaces;
 using H.Services.Identity;
 using System.Collections.ObjectModel;
+using System.Reflection.Metadata;
 using System.Text;
 
 namespace H.Modules.Setting;
@@ -52,7 +53,7 @@ public class SettingDataService : LazyInstance<SettingDataService>, ISettingData
             }
             catch (Exception ex)
             {
-                message=ex.Message;
+                message = ex.Message;
                 IocLog.Instance?.Error(ex);
             }
         }

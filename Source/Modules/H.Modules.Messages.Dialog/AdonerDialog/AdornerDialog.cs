@@ -7,7 +7,7 @@ namespace H.Modules.Messages.Dialog
 {
     public static class AdornerDialog
     {
-        public static async Task<bool?> ShowPresenter(object presenter, Action<IDialog> action = null, Func<bool> canSumit = null)
+        public static async Task<bool?> ShowPresenter(object presenter, Action<IDialog> action = null, Func<Task<bool>> canSumit = null)
         {
             AdornerDialogPresenter dialog = new AdornerDialogPresenter(presenter);
             dialog.MinWidth = 100;

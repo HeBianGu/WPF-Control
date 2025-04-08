@@ -12,6 +12,7 @@ public static class Extension
     {
         services.AddOptions();
         services.TryAdd(ServiceDescriptor.Singleton<IFeedbackViewPresenter, FeedbackViewPresenter>());
+        services.TryAdd(ServiceDescriptor.Singleton<IFeedBackMailService, FeedBackMailService>());
         if (setupAction != null)
             services.Configure(new Action<FeedbackOptions>(setupAction));
         return services;

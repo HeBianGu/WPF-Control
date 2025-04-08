@@ -97,4 +97,42 @@ public class SettingViewPresenter : IocBindable<SettingViewPresenter, ISettingVi
         this.SelectedGroup = this.Groups.FirstOrDefault(x => x.Collection.Contains(find));
         this.SelectedGroup.SelectedSettable = find;
     }
+
+    public async Task<bool> Show(Type switchType)
+    {
+        return await this.Show(switchType, null);
+    }
+    public async Task<bool> Show(Type switchType, Action<IDialog> builder = null)
+    {
+        var setting = Ioc.GetService<ISettingViewPresenter>();
+        if (switchType != null)
+            setting.SwitchTo(switchType);
+        bool? r = await IocMessage.Dialog.Show(setting, x =>
+        {
+            builder?.Invoke(x);
+            x.Width = SettingViewOptions.Instance.Width;
+            x.Height = SettingViewOptions.Instance.Height;
+            x.Margin = SettingViewOptions.Instance.Margin;
+            x.MinWidth = SettingViewOptions.Instance.MinWidth;
+            x.MinHeight = SettingViewOptions.Instance.MinHeight;
+            x.HorizontalAlignment = HorizontalAlignment.Stretch;
+            x.VerticalAlignment = VerticalAlignment.Stretch;
+            x.HorizontalContentAlignment = HorizontalAlignment.Stretch;
+            x.VerticalContentAlignment = VerticalAlignment.Stretch;
+            x.DialogButton = DialogButton.None;
+            if (x is Window window)
+            {
+                window.SizeToContent = SizeToContent.Manual;
+                window.ResizeMode = ResizeMode.CanResize;
+                window.ShowInTaskbar = true;
+                window.VerticalContentAlignment = VerticalAlignment.Stretch;
+            }
+        });
+        if (r != true)
+            return false;
+        bool sr = IocSetting.Instance.Save(out string error);
+        if (sr == false)
+            await IocMessage.Dialog.Show(error);
+        return sr;
+    }
 }

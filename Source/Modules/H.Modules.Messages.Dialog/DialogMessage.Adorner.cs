@@ -11,7 +11,7 @@ namespace H.Modules.Messages.Dialog
 {
     public class AdornerDialogMessageService : IDialogMessageService, IAdornerDialogMessageService
     {
-        public async Task<bool?> Show(object presenter, Action<IDialog> builder = null, Func<bool> canSumit = null)
+        public async Task<bool?> Show(object presenter, Action<IDialog> builder = null, Func<Task<bool>> canSumit = null)
         {
             var data = presenter is string str ? new StringPresenter() { Value = str } : presenter;
             return await AdornerDialog.ShowPresenter(data, x =>
