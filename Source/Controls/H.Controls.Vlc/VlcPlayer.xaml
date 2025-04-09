@@ -88,18 +88,18 @@
                                                     Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:Cattach.TopTemplate)}" />
                                 </DockPanel>
 
-                                <Button HorizontalAlignment="Left"
-                                        Background="Transparent"
-                                        Command="{x:Static local:VlcPlayerCommands.PreviousFrame}"
-                                        Content="上一帧"
-                                        ToolTip="上一帧"
-                                        Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UsePreviourFrame, Converter={x:Static h:Converter.GetTrueToVisible}}" />
-                                <Button HorizontalAlignment="Right"
-                                        Background="Transparent"
-                                        Command="{x:Static local:VlcPlayerCommands.NextFrame}"
-                                        Content="下一帧"
-                                        ToolTip="下一帧"
-                                        Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UsePreviourFrame, Converter={x:Static h:Converter.GetTrueToVisible}}" />
+                                <FontIconButton HorizontalAlignment="Left"
+                                                Background="Transparent"
+                                                Command="{x:Static local:VlcPlayerCommands.PreviousFrame}"
+                                                Content="{x:Static FontIcons.ChevronLeft}"
+                                                ToolTip="上一帧"
+                                                Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UsePreviourFrame, Converter={x:Static h:Converter.GetTrueToVisible}}" />
+                                <FontIconButton HorizontalAlignment="Right"
+                                                Background="Transparent"
+                                                Command="{x:Static local:VlcPlayerCommands.NextFrame}"
+                                                Content="{x:Static FontIcons.ChevronRight}"
+                                                ToolTip="下一帧"
+                                                Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UsePreviourFrame, Converter={x:Static h:Converter.GetTrueToVisible}}" />
 
                             </Grid>
 
@@ -116,48 +116,58 @@
                                                     Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:Cattach.BottomTemplate)}" />
                                     <DockPanel HorizontalAlignment="Stretch"
                                                DockPanel.Dock="Bottom">
-                                        <Button VerticalAlignment="Center"
-                                                Command="{x:Static local:VlcPlayerCommands.PreviousFrame}"
-                                                Content="上一帧"
-                                                DockPanel.Dock="Left"
-                                                Foreground="{TemplateBinding Foreground}"
-                                                Style="{StaticResource Style.Slider.FButton}"
-                                                ToolTip="上一帧"
-                                                Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UsePreviourFrame, Converter={x:Static h:Converter.GetTrueToVisible}}" />
-                                        <Button VerticalAlignment="Center"
-                                                Command="{x:Static local:VlcPlayerCommands.SpeedDown}"
-                                                Content="减速"
-                                                DockPanel.Dock="Left"
-                                                Foreground="{TemplateBinding Foreground}"
-                                                Style="{StaticResource Style.Slider.FButton}"
-                                                ToolTip="减速" />
+                                        <FontIconButton VerticalAlignment="Center"
+                                                        Background="Transparent"
+                                                        Command="{x:Static local:VlcPlayerCommands.PreviousFrame}"
+                                                        Content="{x:Static FontIcons.ChevronLeft}"
+                                                        DockPanel.Dock="Left"
+                                                        FontSize="10"
+                                                        Foreground="{TemplateBinding Foreground}"
+                                                        Style="{StaticResource Style.Slider.FButton}"
+                                                        ToolTip="上一帧"
+                                                        Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UsePreviourFrame, Converter={x:Static h:Converter.GetTrueToVisible}}" />
+                                        <FontIconButton VerticalAlignment="Center"
+                                                        Background="Transparent"
+                                                        Command="{x:Static local:VlcPlayerCommands.SpeedDown}"
+                                                        Content="{x:Static FontIcons.LeftArrowKeyTime0}"
+                                                        DockPanel.Dock="Left"
+                                                        FontSize="10"
+                                                        Foreground="{TemplateBinding Foreground}"
+                                                        Style="{StaticResource Style.Slider.FButton}"
+                                                        ToolTip="减速" />
                                         <TextBlock Margin="3,0"
                                                    VerticalAlignment="Center"
                                                    DockPanel.Dock="Left"
                                                    Foreground="{TemplateBinding Foreground}"
                                                    Text="{Binding ElementName=media_slider, Path=Value, Converter={x:Static h:Converter.GetTimeSpanStrFromMilliseconds}}" />
-                                        <Button VerticalAlignment="Center"
-                                                Command="{x:Static local:VlcPlayerCommands.Stop}"
-                                                Content="停止"
-                                                DockPanel.Dock="Right"
-                                                Foreground="{TemplateBinding Foreground}"
-                                                Style="{StaticResource Style.Slider.FButton}"
-                                                ToolTip="停止" />
-                                        <Button VerticalAlignment="Center"
-                                                Command="{x:Static local:VlcPlayerCommands.NextFrame}"
-                                                Content="下一帧"
-                                                DockPanel.Dock="Right"
-                                                Foreground="{TemplateBinding Foreground}"
-                                                Style="{StaticResource Style.Slider.FButton}"
-                                                ToolTip="下一帧"
-                                                Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UsePreviourFrame, Converter={x:Static h:Converter.GetTrueToVisible}}" />
-                                        <Button VerticalAlignment="Center"
-                                                Command="{x:Static local:VlcPlayerCommands.SpeedUp}"
-                                                Content="加速"
-                                                DockPanel.Dock="Right"
-                                                Foreground="{TemplateBinding Foreground}"
-                                                Style="{StaticResource Style.Slider.FButton}"
-                                                ToolTip="加速" />
+                                        <FontIconButton VerticalAlignment="Center"
+                                                        Background="Transparent"
+                                                        Command="{x:Static local:VlcPlayerCommands.Stop}"
+                                                        Content="{x:Static FontIcons.Stop}"
+                                                        DockPanel.Dock="Right"
+                                                        FontSize="10"
+                                                        Foreground="{TemplateBinding Foreground}"
+                                                        Style="{StaticResource Style.Slider.FButton}"
+                                                        ToolTip="停止" />
+                                        <FontIconButton VerticalAlignment="Center"
+                                                        Background="Transparent"
+                                                        Command="{x:Static local:VlcPlayerCommands.NextFrame}"
+                                                        Content="{x:Static FontIcons.ChevronRight}"
+                                                        DockPanel.Dock="Right"
+                                                        FontSize="10"
+                                                        Foreground="{TemplateBinding Foreground}"
+                                                        Style="{StaticResource Style.Slider.FButton}"
+                                                        ToolTip="下一帧"
+                                                        Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UsePreviourFrame, Converter={x:Static h:Converter.GetTrueToVisible}}" />
+                                        <FontIconButton VerticalAlignment="Center"
+                                                        Background="Transparent"
+                                                        Command="{x:Static local:VlcPlayerCommands.SpeedUp}"
+                                                        Content="{x:Static FontIcons.RightArrowKeyTime0}"
+                                                        DockPanel.Dock="Right"
+                                                        FontSize="10"
+                                                        Foreground="{TemplateBinding Foreground}"
+                                                        Style="{StaticResource Style.Slider.FButton}"
+                                                        ToolTip="加速" />
                                         <TextBlock Margin="3,0"
                                                    VerticalAlignment="Center"
                                                    DockPanel.Dock="Right"
@@ -242,14 +252,15 @@
                                           ToolTip="隐藏/显示左侧列表"
                                           Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:VlcPlayer}, Path=(h:Cattach.LeftTemplate), Converter={x:Static h:Converter.GetNullToCollapsed}}" />
 
-                            <Button Margin="5,0"
-                                    Command="{x:Static local:VlcPlayerCommands.OpenFile}"
-                                    Content="打开文件"
-                                    Style="{StaticResource Style.Slider.FButton}"
-                                    ToolTip="打开文件"
-                                    Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:VlcPlayer}, Path=UseOpenFile, Converter={x:Static h:Converter.GetTrueToVisible}}" />
-                            <Button Content="音量"
-                                    Style="{StaticResource Style.Slider.FButton}" />
+                            <FontIconButton Margin="5,0"
+                                            Command="{x:Static local:VlcPlayerCommands.OpenFile}"
+                                            Content="{x:Static FontIcons.OpenFile}"
+                                            Style="{StaticResource Style.Slider.FButton}"
+                                            ToolTip="打开文件"
+                                            Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:VlcPlayer}, Path=UseOpenFile, Converter={x:Static h:Converter.GetTrueToVisible}}" />
+                            <FontIconButton Content="{x:Static FontIcons.Volume}"
+                                            Style="{StaticResource Style.Slider.FButton}"
+                                            ToolTip="音量" />
 
                             <Slider x:Name="slider_sound"
                                     Width="100"
@@ -281,21 +292,21 @@
                                           ToolTip="隐藏/显示右侧列表"
                                           Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:VlcPlayer}, Path=(h:Cattach.RightTemplate), Converter={x:Static h:Converter.GetNullToCollapsed}}" />
 
-                            <Button Margin="5,0"
-                                    Command="{x:Static local:VlcPlayerCommands.ShootCut}"
-                                    Content="截图"
-                                    DockPanel.Dock="Right"
-                                    Style="{StaticResource Style.Slider.FButton}"
-                                    ToolTip="截图"
-                                    Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:VlcPlayer}, Path=UseShotCut, Converter={x:Static h:Converter.GetTrueToVisible}}" />
+                            <FontIconButton Margin="5,0"
+                                            Command="{x:Static local:VlcPlayerCommands.ShootCut}"
+                                            Content="{x:Static FontIcons.Photo2}"
+                                            DockPanel.Dock="Right"
+                                            Style="{StaticResource Style.Slider.FButton}"
+                                            ToolTip="截图"
+                                            Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:VlcPlayer}, Path=UseShotCut, Converter={x:Static h:Converter.GetTrueToVisible}}" />
 
-                            <Button Margin="2,0"
-                                    Command="{x:Static local:VlcPlayerCommands.FullScreen}"
-                                    Content="全屏"
-                                    DockPanel.Dock="Right"
-                                    Style="{StaticResource Style.Slider.FButton}"
-                                    ToolTip="全屏"
-                                    Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:VlcPlayer}, Path=IsFullScreen, Converter={x:Static h:Converter.GetTrueToCollapsed}}" />
+                            <FontIconButton Margin="2,0"
+                                            Command="{x:Static local:VlcPlayerCommands.FullScreen}"
+                                            Content="{x:Static FontIcons.FullScreen}"
+                                            DockPanel.Dock="Right"
+                                            Style="{StaticResource Style.Slider.FButton}"
+                                            ToolTip="全屏"
+                                            Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:VlcPlayer}, Path=IsFullScreen, Converter={x:Static h:Converter.GetTrueToCollapsed}}" />
                         </DockPanel>
 
                         <DockPanel Grid.Column="1"
@@ -303,21 +314,23 @@
                                    VerticalAlignment="Center"
                                    Background="Transparent">
 
-                            <Button Margin="5,0"
-                                    Content="上一个"
-                                    IsEnabled="False"
-                                    Style="{StaticResource Style.Slider.FButton}"
-                                    ToolTip="上一个"
-                                    Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:VlcPlayer}, Path=UsePrevious, Converter={x:Static h:Converter.GetTrueToVisible}}" />
+                            <FontIconButton Margin="5,0"
+                                            Content="{x:Static FontIcons.Previous}"
+                                            IsEnabled="False"
+                                            Style="{StaticResource Style.Slider.FButton}"
+                                            ToolTip="上一个"
+                                            Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:VlcPlayer}, Path=UsePrevious, Converter={x:Static h:Converter.GetTrueToVisible}}" />
 
-                            <ToggleButton x:Name="toggle_play"
-                                          Height="Auto"
-                                          Margin="5,0"
-                                          Background="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
-                                          Foreground="{DynamicResource {x:Static h:BrushKeys.ForegroundTitle}}"
-                                          IsChecked="{Binding RelativeSource={RelativeSource AncestorType=local:VlcPlayer}, Path=IsPlaying}"
-                                          Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:VlcPlayer}, Path=UsePlay, Converter={x:Static h:Converter.GetTrueToVisible}}">
-                                <ToggleButton.Template>
+                            <FontIconToggleButton Height="Auto"
+                                                  Margin="5,0"
+                                                  Background="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
+                                                  Cattach.CornerRadius="50"
+                                                  CheckedGlyph="{x:Static FontIcons.Play}"
+                                                  Foreground="{DynamicResource {x:Static h:BrushKeys.ForegroundTitle}}"
+                                                  IsChecked="{Binding RelativeSource={RelativeSource AncestorType=local:VlcPlayer}, Path=IsPlaying}"
+                                                  UncheckedGlyph="{x:Static FontIcons.Pause}"
+                                                  Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:VlcPlayer}, Path=UsePlay, Converter={x:Static h:Converter.GetTrueToVisible}}">
+                                <!--<ToggleButton.Template>
                                     <ControlTemplate TargetType="{x:Type ToggleButton}">
                                         <Grid>
                                             <Ellipse x:Name="ellipse"
@@ -334,7 +347,9 @@
                                         </Grid>
                                         <ControlTemplate.Triggers>
                                             <Trigger Property="IsChecked" Value="true">
-                                                <!--<Setter TargetName="txt" Property="Text" Value="&#xe749;" />-->
+                                -->
+                                <!--<Setter TargetName="txt" Property="Text" Value="&#xe749;" />-->
+                                <!--
                                                 <Setter TargetName="txt" Property="Text" Value="播放" />
                                             </Trigger>
                                             <Trigger Property="IsMouseOver" Value="True">
@@ -348,15 +363,15 @@
                                             </Trigger>
                                         </ControlTemplate.Triggers>
                                     </ControlTemplate>
-                                </ToggleButton.Template>
-                            </ToggleButton>
+                                </ToggleButton.Template>-->
+                            </FontIconToggleButton>
 
-                            <Button Margin="5,0"
-                                    Content="下一个"
-                                    IsEnabled="False"
-                                    Style="{StaticResource Style.Slider.FButton}"
-                                    ToolTip="下一个"
-                                    Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:VlcPlayer}, Path=UseNext, Converter={x:Static h:Converter.GetTrueToVisible}}" />
+                            <FontIconButton Margin="5,0"
+                                            Content="{x:Static FontIcons.Next}"
+                                            IsEnabled="False"
+                                            Style="{StaticResource Style.Slider.FButton}"
+                                            ToolTip="下一个"
+                                            Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:VlcPlayer}, Path=UseNext, Converter={x:Static h:Converter.GetTrueToVisible}}" />
 
 
                         </DockPanel>
