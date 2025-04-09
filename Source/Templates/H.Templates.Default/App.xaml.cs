@@ -1,61 +1,17 @@
 ﻿using H.Extensions.ApplicationBase;
-using H.Modules.Messages.Dialog;
-using H.Modules.Messages.Form;
-using H.Services.Common;
-using H.Services.Message.Dialog;
-using H.Services.Message.Form;
-using H.Styles;
-using H.Styles;
-using H.Themes.Colors.Accent;
-using H.Themes.Colors.Gray;
-using H.Themes.Colors.Purple;
 using Microsoft.Extensions.DependencyInjection;
-using System.Windows;
 
 namespace H.Templates.Default;
-/// <summary>
-/// Interaction logic for App.xaml
-/// </summary>
 public partial class App : ApplicationBase
 {
     protected override void ConfigureServices(IServiceCollection services)
     {
-        services.AddAbout();
-        services.AddAdornerDialogMessage();
-        //services.AddWindowDialogMessage();
-        services.AddSetting();
-        services.AddTheme();
-        services.AddSingleton<IDialogMessageService, AdornerDialogMessageService>();
-        services.AddSingleton<IFormMessageService, FormMessageService>();
-        services.AddNoticeMessage();
-        services.AddSnackMessage();
+        services.AddApplicationServices();
     }
 
     protected override void Configure(IApplicationBuilder app)
     {
-        //app.UseSetting(x =>
-        //{
-        //    x.Add(LoginSetting.Instance);
-        //});
-        //app.UseSettingDefault();
-        app.UseThemeOptions(x =>
-        {
-            x.ColorResources.Add(new PurpleDarkColorResource());
-            x.ColorResources.Add(new PurpleLightColorResource());
-            x.ColorResources.Add(new GrayDarkColorResource());
-            x.ColorResources.Add(new GrayLightColorResource());
-            //x.ColorResources.Add(new BlueDarkColorResource());
-            //x.ColorResources.Add(new BlueLightColorResource());
-            x.ColorResources.Add(new AccentLightColorResource());
-            x.ColorResources.Add(new AccentDarkColorResource());
-        });
-
-        app.UseWindowSetting();
-        app.UseAboutOptions();
-        app.UseThemeOptions();
-        app.UseSettingSecurityOptions();
-        app.UseMainWindowSetting();
-        app.UseWindowSetting();
+        app.UseApplicationOptions();
     }
 
     protected override Window CreateMainWindow(StartupEventArgs e)
