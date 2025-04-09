@@ -95,30 +95,31 @@
                                                     Margin="0"
                                                     HorizontalAlignment="Right"
                                                     Orientation="Horizontal">
-                                            <Button x:Name="Btn_Minimize"
-                                                    Command="{h:MinimizeWindowCommand}"
-                                                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
-                                                    Content="F1M3,8L13,8 13,7 3,7z"
-                                                    Style="{DynamicResource {x:Static h:WindowKeys.Button}}" />
-                                            <Button x:Name="Btn_Maximize"
-                                                    Command="{h:MaximizeWindowCommand}"
-                                                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
-                                                    Content="F1M12,12L4,12 4,4 12,4z M3,13L13,13 13,3 3,3z"
-                                                    Style="{DynamicResource {x:Static h:WindowKeys.Button}}"
-                                                    ToolTip="最大化" />
-                                            <Button x:Name="Btn_Restore"
-                                                    Margin="2"
-                                                    Command="{h:RestoreWindowCommand}"
-                                                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
-                                                    Content="F1M11.999,10.002L10.998,10.002 10.998,5.002 5.998,5.002 5.998,4.001 11.999,4.001z M10.002,11.999L4.001,11.999 4.001,5.998 10.002,5.998z M5.002,3L5.002,5.002 3,5.002 3,13 10.998,13 10.998,10.998 13,10.998 13,3z"
-                                                    Style="{DynamicResource {x:Static h:WindowKeys.Button}}"
-                                                    ToolTip="还原" />
-                                            <Button x:Name="Btn_Close"
-                                                    Command="{h:CloseWindowCommand}"
-                                                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
-                                                    Content="F1M8.583,8L13,12.424 12.424,13 8,8.583 3.576,13 3,12.424 7.417,8 3,3.576 3.576,3 8,7.417 12.424,3 13,3.576z"
-                                                    IsCancel="True"
-                                                    Style="{DynamicResource {x:Static h:WindowKeys.Button}}" />
+                                            <FontIconButton x:Name="Btn_Minimize"
+                                                            Command="{h:MinimizeWindowCommand}"
+                                                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                                            Content="{x:Static FontIcons.ChromeMinimize}"
+                                                            FontSize="10"
+                                                            Style="{DynamicResource {x:Static h:WindowKeys.FontIconButton}}" />
+                                            <FontIconButton x:Name="Btn_Maximize"
+                                                            Command="{h:MaximizeWindowCommand}"
+                                                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                                            Content="{x:Static FontIcons.ChromeMaximize}"
+                                                            FontSize="10"
+                                                            Style="{DynamicResource {x:Static h:WindowKeys.FontIconButton}}" />
+                                            <FontIconButton x:Name="Btn_Restore"
+                                                            Command="{h:RestoreWindowCommand}"
+                                                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                                            Content="{x:Static FontIcons.ChromeRestore}"
+                                                            FontSize="10"
+                                                            Style="{DynamicResource {x:Static h:WindowKeys.FontIconButton}}" />
+                                            <FontIconButton x:Name="Btn_Close"
+                                                            Command="{h:CloseWindowCommand}"
+                                                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                                            Content="{x:Static FontIcons.ChromeClose}"
+                                                            FontSize="10"
+                                                            IsCancel="True"
+                                                            Style="{DynamicResource {x:Static h:WindowKeys.FontIconButton}}" />
                                         </StackPanel>
                                     </Grid>
                                 </Border>
