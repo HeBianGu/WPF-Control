@@ -34,6 +34,7 @@
             </Grid>-->
             <FontIconTextBlock Margin="10,0"
                                FontSize="20"
+                               Foreground="{DynamicResource {x:Static BrushKeys.Accent}}"
                                Text="{Binding Icon}" />
 
             <TextBlock Grid.Column="1"

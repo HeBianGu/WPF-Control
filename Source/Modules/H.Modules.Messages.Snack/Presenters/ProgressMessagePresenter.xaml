@@ -34,6 +34,7 @@
             <FontIconTextBlock x:Name="g"
                                Margin="10,0"
                                FontSize="20"
+                               Foreground="{DynamicResource {x:Static BrushKeys.Accent}}"
                                Text="{Binding Icon}" />
             <StackPanel Grid.Column="1"
                         VerticalAlignment="Center"
