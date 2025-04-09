@@ -22,7 +22,7 @@ public static class Extention
         //services.TryAdd(ServiceDescriptor.Singleton<ISplashLoad, UpdateService>());
         services.TryAdd(ServiceDescriptor.Singleton<IWebXmlSerializerService, XmlWebSerializerService>());
         if (setupAction != null)
-            services.Configure(setupAction);
+            services.Configure(new Action<UpgradeOptions>(setupAction));
 
     }
 
