@@ -1,4 +1,6 @@
-﻿namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
+﻿global using H.Mvvm.ViewModels.Tree;
+
+namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
 public interface ITreeDigramData
 {

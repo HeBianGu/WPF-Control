@@ -13,7 +13,7 @@ public interface IVideoFlowable
 }
 
 [Display(Name = "视频读取", GroupName = "数据源", Description = "降噪成黑白色", Order = 0)]
-public class VideoCapture : VideoCaptureImageImportNodeDataBase
+public class VideoCapture : VideoCaptureSrcNodeDataBase, ISrcFilePathableStartNodeData
 {
     public VideoCapture()
     {
@@ -35,7 +35,7 @@ public class VideoCapture : VideoCaptureImageImportNodeDataBase
     }
     private int _startFrame = 0;
     [DefaultValue(0)]
-    [Display(Name = "采样帧间隔", GroupName = "数据")]
+    [Display(Name = "开始位置(帧)", GroupName = "数据")]
     public int StartFrame
     {
         get { return _startFrame; }
@@ -49,7 +49,7 @@ public class VideoCapture : VideoCaptureImageImportNodeDataBase
 
     private int _endFrame = int.MaxValue;
     [DefaultValue(int.MaxValue)]
-    [Display(Name = "采样帧间隔", GroupName = "数据")]
+    [Display(Name = "结束位置(帧)", GroupName = "数据")]
     public int EndFrame
     {
         get { return _endFrame; }
@@ -62,7 +62,7 @@ public class VideoCapture : VideoCaptureImageImportNodeDataBase
 
     private int _spanFrame = 60;
     [DefaultValue(60)]
-    [Display(Name = "采样帧间隔", GroupName = "数据")]
+    [Display(Name = "采样间隔(帧)", GroupName = "数据")]
     public int SpanFrame
     {
         get { return _spanFrame; }

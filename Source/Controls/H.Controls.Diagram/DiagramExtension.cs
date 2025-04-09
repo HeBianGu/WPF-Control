@@ -143,4 +143,9 @@ public static class DiagramExtension
         Link link = from.CreateLinkTo(to, fromPort, toPort);
         diagram.AddLink(link);
     }
+
+    public static void ZoomToFit(this IDiagram diagram, params Part[] parts)
+    {
+        diagram.ZoomToFit(1.8, parts);
+    }
 }

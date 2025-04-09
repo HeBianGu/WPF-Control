@@ -16,9 +16,53 @@
     <h:MainWindow.CaptionTempate>
         <ControlTemplate>
             <DockPanel HorizontalAlignment="Right"
-                       LastChildFill="False">
-                <ContentPresenter Content="{Ioc Type={x:Type ISettingButtonPresenter}}" />
+                       LastChildFill="False"
+                       WindowChrome.IsHitTestVisibleInChrome="True">
+                <Menu>
+                    <Menu.Resources>
+                        <Style BasedOn="{StaticResource {x:Static MenuItemKeys.BindCommand}}"
+                               TargetType="MenuItem" />
+                    </Menu.Resources>
+                    <MenuItem Header="帮助">
+                        <MenuItem Command="{ShowGuideCommand}" />
+                        <MenuItem Command="{ShowNewGuideCommand}" />
+                        <MenuItem Command="{ShowGuideTreeCommand}" />
+                        <MenuItem Command="{ShowNewGuideTreeCommand}" />
+                        <Separator />
+                        <MenuItem Command="{ShowNotImplementedCommand}"
+                                  Header="检查更新" />
+                        <MenuItem Command="{ShowNotImplementedCommand}"
+                                  Header="注册" />
+
+                        <MenuItem Command="{ShowReleaseVersionsCommand}" />
+                        <MenuItem Command="{ShowSupportCommand}" />
+                        <MenuItem Command="{ShowFeedbackCommand}" />
+                        <MenuItem Command="{ShowWebSiteCommand}" />
+                        <Separator />
+                        <MenuItem Command="{ShowContactCommand}">
+                            <MenuItem Command="{ShowGithubContactCommand}" />
+                            <MenuItem Command="{ShowGitHubIssueContactCommand}" />
+                            <MenuItem Command="{ShowQQContactCommand}" />
+                            <MenuItem Command="{ShowSendMailContactCommand}" />
+                            <MenuItem Command="{ShowBlogContactCommand}" />
+                            <MenuItem Command="{ShowPodcastContactCommand}" />
+                        </MenuItem>
+                        <MenuItem Command="{ShowPrivacyCommand}">
+                            <MenuItem Command="{ShowAgreementCommand}" />
+                            <MenuItem Command="{ShowPrivacyCommand}" />
+                        </MenuItem>
+                        <MenuItem Command="{ShowSponsorCommand}" />
+                        <MenuItem Command="{ShowAboutCommand}" />
+                    </MenuItem>
+                </Menu>
+                <FontIconButton Command="{ShowColorThemeViewCommand}"
+                                Style="{DynamicResource {x:Static FontIconButtonKeys.Command}}" />
+                <Button Command="{ShowSettingCommand SwitchToType={x:Type h:IThemeOptions}}"
+                        Content="{Binding Source={x:Static h:ThemeOptions.Instance}, Path=ColorResource.Name}" />
+                <FontIconButton Command="{ShowSettingCommand}"
+                                Style="{DynamicResource {x:Static FontIconButtonKeys.Command}}" />
                 <ContentPresenter Content="{Ioc Type={x:Type ISwitchThemeViewPresenter}}" />
+
             </DockPanel>
         </ControlTemplate>
     </h:MainWindow.CaptionTempate>

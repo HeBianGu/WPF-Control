@@ -1,26 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <Product>H文件管理器</Product>
+    <Description>电脑文件管理器：包括对文件的收藏、评分、打标签和按工程管理，支持多种预览方式（表格，缩率图，预览图等），对图片、视频支持预览，放大，缩小，对视频支持播放、截图、全屏播放、放大、缩小，定位到截图时间位置等，自定义收藏夹、标签夹</Description>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <FileVersion>1.0.0</FileVersion>
+    <Copyright>Copyright © HeBianGu 2024-2024</Copyright>
+    <Authors></Authors>
+    <PackageProjectUrl>https://github.com/HeBianGu</PackageProjectUrl>
+    <Title>H文件管理器</Title>
+    <Version>1.0.0</Version>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Controls\H.Controls.Form\H.Controls.Form.csproj" />
-    <ProjectReference Include="..\..\Controls\H.Controls.Step\H.Controls.Step.csproj" />
-    <ProjectReference Include="..\..\Extensions\H.Extensions.ApplicationBase\H.Extensions.ApplicationBase.csproj" />
-    <ProjectReference Include="..\..\Modules\H.Modules.About\H.Modules.About.csproj" />
-    <ProjectReference Include="..\..\Modules\H.Modules.Messages.Dialog\H.Modules.Messages.Dialog.csproj" />
-    <ProjectReference Include="..\..\Modules\H.Modules.Messages.Form\H.Modules.Messages.Form.csproj" />
-    <ProjectReference Include="..\..\Modules\H.Modules.Messages.Notice\H.Modules.Messages.Notice.csproj" />
-    <ProjectReference Include="..\..\Modules\H.Modules.Messages.Snack\H.Modules.Messages.Snack.csproj" />
-    <ProjectReference Include="..\..\Modules\H.Modules.Setting\H.Modules.Setting.csproj" />
-    <ProjectReference Include="..\..\Modules\H.Modules.Theme\H.Modules.Theme.csproj" />
-    <ProjectReference Include="..\..\Providers\H.Mvvm\H.Mvvm.csproj" />
-    <ProjectReference Include="..\..\Themes\H.Themes.Colors.Accent\H.Themes.Colors.Accent.csproj" />
-    <ProjectReference Include="..\..\Themes\H.Themes.Colors.Gray\H.Themes.Colors.Gray.csproj" />
-    <ProjectReference Include="..\..\Themes\H.Themes.Colors.Purple\H.Themes.Colors.Purple.csproj" />
-    <ProjectReference Include="..\..\Windows\H.Windows.Main\H.Windows.Main.csproj" />
+    <Content Include="logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ApplicationBases\H.ApplicationBases.Default\H.ApplicationBases.Default.csproj" />
     <ProjectReference Include="..\..\Datas\H.Data.Test\H.Data.Test.csproj" />
+    <ProjectReference Include="..\..\Windows\H.Windows.Main\H.Windows.Main.csproj" />
   </ItemGroup>
 </Project>

@@ -1,5 +1,4 @@
-﻿global using H.Mvvm.Attributes;
-global using H.Mvvm.ViewModels.Base;
+﻿global using H.Mvvm.ViewModels.Base;
 
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 

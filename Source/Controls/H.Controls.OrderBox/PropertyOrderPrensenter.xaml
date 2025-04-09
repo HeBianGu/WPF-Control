@@ -38,10 +38,13 @@
                                     <h:ButtonRemoveItemBehavior />
                                 </Behaviors:Interaction.Behaviors>
                             </FontIconButton>
-                            <CheckBox Margin="5,0"
+                            <!--<CheckBox Margin="5,0"
                                       Content="倒序"
-                                      DockPanel.Dock="Right"
-                                      IsChecked="{Binding UseDesc}" />
+                                      IsChecked="{Binding UseDesc}" />-->
+                            <FontIconToggleButton CheckedGlyph="{x:Static FontIcons.DownShiftKey}"
+                                                  DockPanel.Dock="Right"
+                                                  IsChecked="{Binding UseDesc}"
+                                                  UncheckedGlyph="{x:Static FontIcons.UpShiftKey}" />
                             <ComboBox MinWidth="120"
                                       DisplayMemberPath="Name"
                                       ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl}, Path=DataContext.Properties}"

@@ -3,6 +3,7 @@
 
 using H.Controls.Vlc;
 using H.Services.Common;
+using H.Services.Setting;
 
 namespace System
 {
@@ -24,7 +25,7 @@ namespace System
         public static void UseVlc(this IApplicationBuilder service, Action<VlcSetting> action)
         {
             action?.Invoke(VlcSetting.Instance);
-            SettingDataManager.Instance?.Add(VlcSetting.Instance);
+            IocSetting.Instance?.Add(VlcSetting.Instance);
         }
     }
 

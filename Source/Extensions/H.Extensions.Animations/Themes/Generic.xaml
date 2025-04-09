@@ -1,7 +1,0 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:H.Extensions.Animations">
-    <!--<ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/H.Extensions.Animations;component/DialogWindow.xaml" />
-    </ResourceDictionary.MergedDictionaries>-->
-</ResourceDictionary>

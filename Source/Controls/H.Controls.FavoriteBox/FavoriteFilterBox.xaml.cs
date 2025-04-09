@@ -1,11 +1,15 @@
 ﻿using H.Extensions.Tree;
-using H.Services.Common;
 using H.Mvvm;
 using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
+using H.Common.Interfaces.Where;
+using H.Mvvm.ViewModels;
+using H.Mvvm.ViewModels.Tree;
+using H.Mvvm.Commands;
+using H.Extensions.Common;
 
 namespace H.Controls.FavoriteBox
 {

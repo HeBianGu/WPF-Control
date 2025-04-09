@@ -32,19 +32,14 @@
                                                   ContentTemplate="{Binding DocumentHeaderTemplate, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type local:DockingManager}, Mode=FindAncestor}}"
                                                   ContentTemplateSelector="{Binding DocumentHeaderTemplateSelector, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type local:DockingManager}, Mode=FindAncestor}}" />
 
-                                <Button x:Name="DocumentCloseButton"
-                                        Grid.Column="2"
-                                        Width="15"
-                                        Height="15"
-                                        Margin="2,0,0,0"
-                                        Padding="2"
-                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                        Command="{Binding Path=LayoutItem.CloseCommand, RelativeSource={RelativeSource TemplatedParent}}"
-                                        Content="F1M8.583,8L13,12.424 12.424,13 8,8.583 3.576,13 3,12.424 7.417,8 3,3.576 3.576,3 8,7.417 12.424,3 13,3.576z"
-                                        Foreground="{TemplateBinding Foreground}"
-                                        Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}"
-                                        ToolTip="{x:Static lp:Resources.Document_Close}"
-                                        Visibility="Hidden" />
+                                <FontIconButton x:Name="DocumentCloseButton"
+                                                Grid.Column="2"
+                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                Command="{Binding Path=LayoutItem.CloseCommand, RelativeSource={RelativeSource TemplatedParent}}"
+                                                Content="{x:Static FontIcons.Cancel}"
+                                                Foreground="{TemplateBinding Foreground}"
+                                                ToolTip="{x:Static lp:Resources.Document_Close}"
+                                                Visibility="Hidden" />
                             </Grid>
                         </Border>
                     </lc:DropDownControlArea>

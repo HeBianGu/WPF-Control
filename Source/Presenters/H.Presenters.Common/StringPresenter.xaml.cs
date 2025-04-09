@@ -1,19 +1,16 @@
-﻿global using H.Services.Common;
+﻿namespace H.Presenters.Common;
 
-namespace H.Presenters.Common
+[Icon("\xEDE3")]
+public class StringPresenter : DisplayBindableBase, IStringPresenter
 {
-    [Icon("\xEDE3")]
-    public class StringPresenter : DisplayBindableBase, IStringPresenter
+    private string _value;
+    public string Value
     {
-        private string _value;
-        public string Value
+        get { return _value; }
+        set
         {
-            get { return _value; }
-            set
-            {
-                _value = value;
-                RaisePropertyChanged();
-            }
+            _value = value;
+            RaisePropertyChanged();
         }
     }
 }

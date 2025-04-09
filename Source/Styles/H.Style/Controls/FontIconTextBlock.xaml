@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:H.Styles.Controls">
+    <Style TargetType="{x:Type local:FontIconTextBlock}">
+        <Setter Property="FontFamily" Value="{DynamicResource {x:Static SystemKeys.FontFamilyIcon}}" />
+        <Setter Property="Text" Value="&#xE700;" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="{DynamicResource {x:Static FontSizeKeys.Icon}}" />
+    </Style>
+</ResourceDictionary>

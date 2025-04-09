@@ -8,6 +8,8 @@ using System.Data.Entity;
 #if NETCOREAPP
 #endif
 using H.DataBases.Share;
+using H.Extensions.AppPath;
+using H.Services.AppPath;
 using H.Services.Common;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -17,30 +19,10 @@ namespace H.DataBases.Sqlite
 {
     public abstract class SqliteSettableBase<TSetting> : DbSettableBase<TSetting>, ISqliteOption where TSetting : new()
     {
-        protected override string GetDefaultPath()
-        {
-            return this.ConfigPath;
-        }
-
         public override void LoadDefault()
         {
             base.LoadDefault();
-            this.ConfigPath = Path.Combine(AppPaths.Instance.Config, this.GetType().Name + AppPaths.Instance.ConfigExtention);
             this.FilePath = AppPaths.Instance.Data;
-        }
-
-        private string _configPath;
-        [ReadOnly(true)]
-        [Browsable(false)]
-        [Display(Name = "数据库配置文件路径", Description = "表示数据库连接字符串的配置文件存放的位置")]
-        public string ConfigPath
-        {
-            get { return _configPath; }
-            set
-            {
-                _configPath = value;
-                RaisePropertyChanged();
-            }
         }
 
         private string _filePath;

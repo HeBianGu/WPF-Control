@@ -2,9 +2,9 @@
 using H.Controls.TagBox;
 using H.Extensions.ApplicationBase;
 using H.Extensions.TypeLicense.LicenseProviders;
-using H.Styles.Default;
+using H.Styles;
+using H.Styles;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -38,6 +38,7 @@ namespace H.Test.Test
             services.AddAdornerDialogMessage();
             services.AddFormMessageService();
             services.AddLog4net();
+            
             services.AddSetting();
             services.AddXmlMetaSettingService();
             services.AddMainWindowSavableService();
@@ -82,13 +83,13 @@ namespace H.Test.Test
         protected override void Configure(IApplicationBuilder app)
         {
             base.Configure(app);
-            app.UseAddLog4netSetting();
+            app.UseAddLog4netOptions();
             //app.UseVlc(x =>
             //{
             //    x.LibvlcPath = "G:\\BaiduNetdiskDownload\\libvlc\\win-x64";
             //});
             app.UseMainWindowSetting();
-            app.UseMail();
+            app.UseMailOptions();
         }
     }
 }

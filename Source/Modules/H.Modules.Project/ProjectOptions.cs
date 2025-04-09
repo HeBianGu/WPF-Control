@@ -1,11 +1,13 @@
 ﻿using H.Extensions.Setting;
+using H.Services.AppPath;
+using H.Services.Setting;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
 namespace H.Modules.Project;
 
 [Display(Name = "工程配置", GroupName = SettingGroupNames.GroupSystem, Description = "工程配置的信息")]
-public class ProjectOptions : IocOptionInstance<ProjectOptions>
+public class ProjectOptions : IocOptionInstance<ProjectOptions>, IProjectOptions
 {
     public override void LoadDefault()
     {

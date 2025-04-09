@@ -2,7 +2,6 @@
 using H.DataBases.Share;
 using H.DataBases.Sqlite;
 using H.Extensions.ApplicationBase;
-using H.Extensions.ViewModel;
 using H.Services.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,6 +14,9 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
 using H.Extensions.DataBase;
+using H.Modules.Setting;
+using H.Extensions.DataBase.Repository;
+using H.Services.Common.DataBase;
 namespace H.Test.RepositoryPresenter
 {
     /// <summary>

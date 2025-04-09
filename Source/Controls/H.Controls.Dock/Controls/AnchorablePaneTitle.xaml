@@ -38,44 +38,39 @@
                             </lc:DropDownControlArea>
 
                             <lc:DropDownButton Grid.Column="1"
-                                               Padding="10"
-                                               Content="M532.207 718.134l0 0c3.079-1.777 6.39-3.079 9.112-5.802 0.477-0.594 0.827-1.064 1.303-1.539 0.594-0.709 1.539-0.946 2.128-1.54l319.434-331.383c8.519-8.757 12.781-20.121 12.781-31.483 0-11.836-4.733-23.79-13.964-32.666-18.107-17.398-46.871-16.924-64.265 1.183l-288.071 298.956-283.922-300.139c-17.28-18.225-46.04-19.057-64.265-1.777-18.226 17.281-19.057 46.04-1.777 64.265l316.355 334.462c13.844 14.676 35.149 17.399 52.429 9.113 0.945-0.35 1.777-1.182 2.722-1.653l0 0zM532.207 718.134z"
+                                               CheckedGlyph="{x:Static FontIcons.ChevronDown}"
                                                DropDownContextMenu="{Binding Model.Root.Manager.AnchorableContextMenu, RelativeSource={RelativeSource TemplatedParent}}"
                                                DropDownContextMenuDataContext="{Binding Path=LayoutItem, RelativeSource={RelativeSource TemplatedParent}}"
                                                Focusable="False"
-                                               Style="{DynamicResource {x:Static h:ToggleButtonKeys.Geometry}}"
-                                               ToolTip="{x:Static lp:Resources.Anchorable_CxMenu_Hint}" />
+                                               ToolTip="{x:Static lp:Resources.Anchorable_CxMenu_Hint}"
+                                               UncheckedGlyph="{x:Static FontIcons.ChevronDown}" />
 
-                            <Button x:Name="PART_AutoHidePin"
-                                    Grid.Column="2"
-                                    Padding="10"
-                                    Background="Transparent"
-                                    Command="{Binding Path=LayoutItem.AutoHideCommand, RelativeSource={RelativeSource TemplatedParent}}"
-                                    Content="M912.9 380.2L643.5 110.9c-12.1-12.1-29.6-15.8-45.6-9.8s-26.6 20.5-27.6 37.6l-4.9 83.7-299.1 199.4-112.6-5.4c-17.8-0.7-34 9.2-41.3 25.5s-3.7 35 8.9 47.7L314.7 683 102.5 895.2c-7.2 7.2-7.2 18.8 0 26 3.6 3.6 8.3 5.4 13 5.4s9.4-1.8 13-5.4L340.7 709l193.4 193.4c8.3 8.3 19.1 12.6 30.2 12.6 5.9 0 11.8-1.2 17.4-3.7 16.3-7.2 26.3-23.4 25.5-41.3l-5.4-112.6 199.5-299.2 83.7-4.9c17.1-1 31.5-11.6 37.6-27.6s2.4-33.4-9.7-45.5z m-24.6 32.5c-0.5 1.4-1.9 3.7-5.4 3.9l-85.2 5-135.3-135.3c-7.2-7.2-18.8-7.2-26 0s-7.2 18.8 0 26l130.9 130.9-187.5 281.2-223.7-223.7c-7.2-7.2-18.8-7.2-26 0s-7.2 18.8 0 26l225.1 225.1c2.8 2.8 6.3 4.5 9.9 5.1l5.5 114.9c0.2 3.5-1.9 5.1-3.6 5.9-1.7 0.8-4.4 1.2-6.8-1.3L147.3 463.6c-2.5-2.5-2-5.1-1.3-6.8 0.8-1.7 2.5-4 5.9-3.6l118.6 5.6c3.9 0.2 7.8-0.9 11.1-3.1l311.9-207.9c4.8-3.2 7.8-8.5 8.2-14.2l5.5-92.8c0.2-3.5 2.6-4.8 3.9-5.4 1.4-0.5 4.1-1 6.5 1.4l269.3 269.3c2.4 2.5 1.9 5.2 1.4 6.6z"
-                                    Focusable="False"
-                                    Style="{StaticResource {x:Static h:ButtonKeys.Geometry}}"
-                                    ToolTip="{x:Static lp:Resources.Anchorable_BtnAutoHide_Hint}"
-                                    Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={lcv:BoolToVisibilityConverter}}" />
+                            <FontIconButton x:Name="PART_AutoHidePin"
+                                            Grid.Column="2"
+                                            Command="{Binding Path=LayoutItem.AutoHideCommand, RelativeSource={RelativeSource TemplatedParent}}"
+                                            Content="{x:Static FontIcons.Pinned}"
+                                            Focusable="False"
+                                            ToolTip="{x:Static lp:Resources.Anchorable_BtnAutoHide_Hint}"
+                                            Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={lcv:BoolToVisibilityConverter}}" />
 
-                            <Button x:Name="PART_HidePin"
-                                    Grid.Column="3"
-                                    Padding="10"
-                                    Command="{Binding Path=LayoutItem.HideCommand, RelativeSource={RelativeSource TemplatedParent}}"
-                                    Content="F1M8.583,8L13,12.424 12.424,13 8,8.583 3.576,13 3,12.424 7.417,8 3,3.576 3.576,3 8,7.417 12.424,3 13,3.576z"
-                                    Focusable="False"
-                                    Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}"
-                                    ToolTip="{x:Static lp:Resources.Anchorable_BtnClose_Hint}"
-                                    Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={lcv:BoolToVisibilityConverter}}" />
+                            <FontIconButton x:Name="PART_HidePin"
+                                            Grid.Column="3"
+                                            Command="{Binding Path=LayoutItem.HideCommand, RelativeSource={RelativeSource TemplatedParent}}"
+                                            Content="{x:Static FontIcons.Cancel}"
+                                            Focusable="False"
+                                            ToolTip="{x:Static lp:Resources.Anchorable_BtnClose_Hint}"
+                                            Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={lcv:BoolToVisibilityConverter}}" />
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
                         <DataTrigger Binding="{Binding Model.IsAutoHidden, RelativeSource={RelativeSource Mode=Self}}"
                                      Value="True">
-                            <Setter TargetName="PART_AutoHidePin" Property="LayoutTransform">
+                            <Setter TargetName="PART_AutoHidePin" Property="Content" Value="{x:Static FontIcons.Pin}" />
+                            <!--<Setter TargetName="PART_AutoHidePin" Property="LayoutTransform">
                                 <Setter.Value>
                                     <RotateTransform Angle="90" />
                                 </Setter.Value>
-                            </Setter>
+                            </Setter>-->
                         </DataTrigger>
                         <DataTrigger Binding="{Binding Model.CanClose, RelativeSource={RelativeSource Mode=Self}}"
                                      Value="True">

@@ -34,10 +34,9 @@
                                                      KeyboardNavigation.TabIndex="1" />
                             <lc:DropDownButton x:Name="MenuDropDownButton"
                                                Grid.Column="1"
-                                               Padding="10"
-                                               Content="M532.207 718.134l0 0c3.079-1.777 6.39-3.079 9.112-5.802 0.477-0.594 0.827-1.064 1.303-1.539 0.594-0.709 1.539-0.946 2.128-1.54l319.434-331.383c8.519-8.757 12.781-20.121 12.781-31.483 0-11.836-4.733-23.79-13.964-32.666-18.107-17.398-46.871-16.924-64.265 1.183l-288.071 298.956-283.922-300.139c-17.28-18.225-46.04-19.057-64.265-1.777-18.226 17.281-19.057 46.04-1.777 64.265l316.355 334.462c13.844 14.676 35.149 17.399 52.429 9.113 0.945-0.35 1.777-1.182 2.722-1.653l0 0zM532.207 718.134z"
+                                               CheckedGlyph="{x:Static FontIcons.ChevronDown}"
                                                Focusable="False"
-                                               Style="{DynamicResource {x:Static h:ToggleButtonKeys.Geometry}}">
+                                               UncheckedGlyph="{x:Static FontIcons.ChevronDown}">
                                 <lc:DropDownButton.DropDownContextMenu>
                                     <lc:ContextMenuEx ItemsSource="{Binding Model.ChildrenSorted, RelativeSource={RelativeSource TemplatedParent}}"
                                                       Style="{DynamicResource {x:Static h:ContextMenuKeys.Default}}">

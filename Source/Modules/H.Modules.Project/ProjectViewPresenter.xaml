@@ -24,7 +24,7 @@
                     h:Cattach.GuideData="点击此按钮新建工程"
                     h:Cattach.GuideTitle="新建工程"
                     h:Cattach.UseGuide="True"
-                    Command="{ShowNewProjectCommand}"
+                    Command="{lm:ShowNewProjectCommand}"
                     Content="新建工程" />
             <Button h:Cattach.GuideData="点击此按钮浏览工程列表，切换工程"
                     h:Cattach.GuideTitle="工程列表"

@@ -1,6 +1,5 @@
 ﻿using H.DataBases.Share;
 using H.Extensions.ApplicationBase;
-using H.Extensions.ViewModel;
 using H.Modules.Identity;
 using H.Modules.Operation;
 using H.Services.Common;
@@ -33,6 +32,7 @@ namespace H.Test.Identify
             services.AddAdornerDialogMessage();
             services.AddFormMessageService();
             //services.AddLoginViewPresenter();
+            
 
             //  Do ：身份认证
             services.AddDbContextBySetting<IdentifyDataContext>();
@@ -54,19 +54,17 @@ namespace H.Test.Identify
             services.AddRegisterLoginViewPresenter();
             services.AddLoginService();
             services.AddRegisterService();
-
             services.AddSplashScreen();
-
-            services.AddSwitchThemeViewPresenter();
+            services.AddTheme();
         }
 
         protected override void Configure(IApplicationBuilder app)
         {
             base.Configure(app);
-            app.UseLogin();
-            app.UseRegistor(x => x.UseMail = false);
-            app.UseTheme();
-            app.UseSwithTheme();
+            app.UseLoginOptions();
+            app.UseRegistorOptions(x => x.UseMail = false);
+            app.UseThemeOptions();
+            app.UseSqlite();
         }
     }
 }

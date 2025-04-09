@@ -1,0 +1,65 @@
+﻿<Window x:Class="H.Tools.Colors.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:H.Tools.Colors"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Title="MainWindow"
+        Width="800"
+        Height="450"
+        mc:Ignorable="d">
+    <Window.DataContext>
+        <local:MainViewModel />
+    </Window.DataContext>
+    <Grid>
+        <DockPanel>
+            <DockPanel DockPanel.Dock="Top">
+                <Button Command="{Binding CreateCommand}"
+                        Content="Create" />
+                <TextBox Text="{Binding Value}"/>
+            </DockPanel>
+
+            <TabControl>
+                <TabItem Header="Dark">
+                    <ListBox ItemsSource="{Binding DColors}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border Width="80"
+                     Height="80">
+                                    <Border.Background>
+                                        <SolidColorBrush Color="{Binding}" />
+                                    </Border.Background>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ListBox>
+                </TabItem>
+                <TabItem Header="Light">
+                    <ListBox ItemsSource="{Binding Colors}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border Width="80"
+                    Height="80">
+                                    <Border.Background>
+                                        <SolidColorBrush Color="{Binding}" />
+                                    </Border.Background>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ListBox>
+                </TabItem>
+            </TabControl>
+           
+        </DockPanel>
+    </Grid>
+</Window>

@@ -1,20 +1,25 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
-using H.Services.Common;
-using H.Mvvm;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Reflection;
-using System.Text.Json.Serialization;
-using System.Xml.Serialization;
-using System.Windows.Markup;
-using H.Mvvm.ViewModels.Base;
+global using H.Services.Common;
+global using H.Mvvm;
+global using System;
+global using System.Collections;
+global using System.Collections.Generic;
+global using System.Collections.ObjectModel;
+global using System.ComponentModel;
+global using System.ComponentModel.DataAnnotations;
+global using System.Linq;
+global using System.Reflection;
+global using System.Text.Json.Serialization;
+global using System.Xml.Serialization;
+global using System.Windows.Markup;
+global using H.Mvvm.ViewModels.Base;
+global using H.Mvvm.Commands;
+global using H.Services.Common.Serialize.Meta;
+global using H.Extensions.TextJsonable;
+global using H.Mvvm.ViewModels;
+global using H.Extensions.Common;
 
 namespace H.Controls.OrderBox
 {

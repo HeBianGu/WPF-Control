@@ -1,5 +1,6 @@
 ﻿
 using H.Extensions.ApplicationBase;
+using H.Services.Setting;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Windows;
@@ -19,6 +20,7 @@ namespace H.Test.Upgrade
         protected override void ConfigureServices(IServiceCollection services)
         {
             base.ConfigureServices(services);
+            
             services.AddSetting();
             services.AddWindowMessage();
             services.AddWindowDialogMessage();

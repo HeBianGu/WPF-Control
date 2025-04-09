@@ -1,9 +1,10 @@
-﻿using H.Extensions.Setting;
+﻿using H.Common.Attributes;
+using H.Extensions.Setting;
 using H.Iocable;
 using H.Mvvm;
-using H.Mvvm.Attributes;
 using H.Mvvm.ViewModels.Base;
 using H.Services.Common;
+using H.Services.Setting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 namespace H.Template.Controls;
@@ -67,7 +68,7 @@ public static class Extention
 
     public static IApplicationBuilder UseMyServicePresenterSetting(this IApplicationBuilder builder, Action<IMyServicePresenterOption> option = null)
     {
-        SettingDataManager.Instance.Add(MyServicePresenterOption.Instance);
+        IocSetting.Instance.Add(MyServicePresenterOption.Instance);
         option?.Invoke(MyServicePresenterOption.Instance);
         return builder;
     }

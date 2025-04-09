@@ -5,13 +5,12 @@
 
     <Style x:Key="{ComponentResourceKey ResourceId=S.GridSplitterBox.Toggle,
                                         TypeInTargetAssembly={x:Type local:GridSplitterBox}}"
-           BasedOn="{StaticResource {x:Static ToggleButtonKeys.Geometry}}"
-           TargetType="ToggleButton">
+           TargetType="FontIconToggleButton" BasedOn="{StaticResource {x:Static FontIconToggleButtonKeys.Default}}">
         <Setter Property="Padding" Value="8" />
         <Setter Property="Margin" Value="5" />
         <Setter Property="HorizontalAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=h:GridSplitterBox}, Path=ToggleHorizontalAlignment}" />
         <Setter Property="VerticalAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=h:GridSplitterBox}, Path=ToggleVerticalAlignment}" />
-        <Setter Property="Content" Value="{Binding RelativeSource={RelativeSource AncestorType=h:GridSplitterBox}, Path=CloseGeometry}" />
+        <Setter Property="UncheckedGlyph" Value="{Binding RelativeSource={RelativeSource AncestorType=h:GridSplitterBox}, Path=CloseGeometry}" />
         <Setter Property="Visibility" Value="{Binding RelativeSource={RelativeSource AncestorType=h:GridSplitterBox}, Path=UseToggle, Converter={x:Static Converter.GetTrueToVisible}}" />
         <Setter Property="IsChecked" Value="{Binding RelativeSource={RelativeSource AncestorType=h:GridSplitterBox}, Path=IsExpanded}" />
         <Setter Property="Command" Value="{x:Static h:Commands.Switch}" />
@@ -19,11 +18,7 @@
         <Setter Property="Grid.ColumnSpan" Value="2" />
         <Setter Property="Grid.RowSpan" Value="2" />
         <Setter Property="ToolTip" Value="显示/隐藏菜单" />
-        <Style.Triggers>
-            <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Content" Value="{Binding RelativeSource={RelativeSource AncestorType=h:GridSplitterBox}, Path=OpenGeometry}" />
-            </Trigger>
-        </Style.Triggers>
+        <Setter Property="CheckedGlyph" Value="{Binding RelativeSource={RelativeSource AncestorType=h:GridSplitterBox}, Path=OpenGeometry}" />
     </Style>
 
     <Style x:Key="{ComponentResourceKey ResourceId=S.GridSplitterBox.Default,
@@ -37,8 +32,8 @@
         <Setter Property="MenuDock" Value="Left" />
         <Setter Property="ToggleHorizontalAlignment" Value="Left" />
         <Setter Property="ToggleVerticalAlignment" Value="Top" />
-        <Setter Property="OpenGeometry" Value="M912.9 380.2L643.5 110.9c-12.1-12.1-29.6-15.8-45.6-9.8s-26.6 20.5-27.6 37.6l-4.9 83.7-299.1 199.4-112.6-5.4c-17.8-0.7-34 9.2-41.3 25.5s-3.7 35 8.9 47.7L314.7 683 102.5 895.2c-7.2 7.2-7.2 18.8 0 26 3.6 3.6 8.3 5.4 13 5.4s9.4-1.8 13-5.4L340.7 709l193.4 193.4c8.3 8.3 19.1 12.6 30.2 12.6 5.9 0 11.8-1.2 17.4-3.7 16.3-7.2 26.3-23.4 25.5-41.3l-5.4-112.6 199.5-299.2 83.7-4.9c17.1-1 31.5-11.6 37.6-27.6s2.4-33.4-9.7-45.5z m-24.6 32.5c-0.5 1.4-1.9 3.7-5.4 3.9l-85.2 5-135.3-135.3c-7.2-7.2-18.8-7.2-26 0s-7.2 18.8 0 26l130.9 130.9-187.5 281.2-223.7-223.7c-7.2-7.2-18.8-7.2-26 0s-7.2 18.8 0 26l225.1 225.1c2.8 2.8 6.3 4.5 9.9 5.1l5.5 114.9c0.2 3.5-1.9 5.1-3.6 5.9-1.7 0.8-4.4 1.2-6.8-1.3L147.3 463.6c-2.5-2.5-2-5.1-1.3-6.8 0.8-1.7 2.5-4 5.9-3.6l118.6 5.6c3.9 0.2 7.8-0.9 11.1-3.1l311.9-207.9c4.8-3.2 7.8-8.5 8.2-14.2l5.5-92.8c0.2-3.5 2.6-4.8 3.9-5.4 1.4-0.5 4.1-1 6.5 1.4l269.3 269.3c2.4 2.5 1.9 5.2 1.4 6.6z" />
-        <Setter Property="CloseGeometry" Value="M170.666667 213.333333h682.666666v85.333334H170.666667V213.333333z m0 512h682.666666v85.333334H170.666667v-85.333334z m0-256h682.666666v85.333334H170.666667v-85.333334z" />
+        <Setter Property="OpenGeometry" Value="{x:Static FontIcons.Pinned}" />
+        <Setter Property="CloseGeometry" Value="{x:Static FontIcons.List}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:GridSplitterBox}">
@@ -77,7 +72,7 @@
                                               ContentTemplate="{TemplateBinding MenuTempate}" />
                         </Grid>
                         <ContentPresenter Grid.Column="1" />
-                        <ToggleButton Style="{TemplateBinding ToggleStyle}" />
+                        <FontIconToggleButton Style="{TemplateBinding ToggleStyle}" />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
@@ -128,7 +123,7 @@
                                               Content="{TemplateBinding MenuContent}"
                                               ContentTemplate="{TemplateBinding MenuTempate}" />
                         </Grid>
-                        <ToggleButton Style="{TemplateBinding ToggleStyle}" />
+                        <FontIconToggleButton Style="{TemplateBinding ToggleStyle}" />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
@@ -136,7 +131,7 @@
         <Setter Property="ToggleStyle">
             <Setter.Value>
                 <Style BasedOn="{StaticResource {x:Static local:GridSplitterBox.ToggleKey}}"
-                       TargetType="ToggleButton">
+                       TargetType="FontIconToggleButton">
                     <Setter Property="Grid.Column" Value="1" />
                 </Style>
             </Setter.Value>
@@ -187,11 +182,8 @@
                                           Background="{TemplateBinding GridSpliterBackground}"
                                           ResizeBehavior="PreviousAndCurrent" />
                         </Grid>
-
                         <ContentPresenter Grid.Row="1" />
-
-                        <ToggleButton Style="{TemplateBinding ToggleStyle}" />
-
+                        <FontIconToggleButton Style="{TemplateBinding ToggleStyle}" />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
@@ -199,7 +191,7 @@
         <Setter Property="ToggleStyle">
             <Setter.Value>
                 <Style BasedOn="{StaticResource {x:Static local:GridSplitterBox.ToggleKey}}"
-                       TargetType="ToggleButton">
+                       TargetType="FontIconToggleButton">
                     <Setter Property="Grid.Column" Value="1" />
                 </Style>
             </Setter.Value>
@@ -216,50 +208,51 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:GridSplitterBox}">
-                    <Border Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}">
-                        <Grid Margin="{TemplateBinding Padding}"
-                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Border Grid.ColumnSpan="2"
+                                Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}" />
+                        <ContentPresenter Grid.Row="0" />
+                        <Grid x:Name="PART_Menu"
+                              Grid.Row="1"
+                              Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=MenuVisiblity}">
                             <Grid.RowDefinitions>
                                 <RowDefinition />
-                                <RowDefinition Height="Auto" />
+                                <RowDefinition x:Name="PART_Row_Menu"
+                                               Height="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=MenuWidth, Mode=TwoWay}"
+                                               MinHeight="{TemplateBinding MenuMinWidth}"
+                                               MaxHeight="{TemplateBinding MenuMaxWidth}" />
                             </Grid.RowDefinitions>
-                            <ContentPresenter Grid.Row="0" />
-                            <Grid x:Name="PART_Menu"
-                                  Grid.Row="1"
-                                  Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=MenuVisiblity}">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition />
-                                    <RowDefinition x:Name="PART_Row_Menu"
-                                                   Height="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=MenuWidth, Mode=TwoWay}"
-                                                   MinHeight="{TemplateBinding MenuMinWidth}"
-                                                   MaxHeight="{TemplateBinding MenuMaxWidth}" />
-                                </Grid.RowDefinitions>
 
-                                <ContentPresenter Grid.Row="1"
-                                                  Content="{TemplateBinding MenuContent}"
-                                                  ContentTemplate="{TemplateBinding MenuTempate}" />
+                            <ContentPresenter Grid.Row="1"
+                                              Content="{TemplateBinding MenuContent}"
+                                              ContentTemplate="{TemplateBinding MenuTempate}" />
 
-                                <GridSplitter x:Name="PART_GridSplitter"
-                                              Grid.Row="0"
-                                              Height="{TemplateBinding GridSpliteWidth}"
-                                              HorizontalAlignment="Stretch"
-                                              Background="{TemplateBinding GridSpliterBackground}"
-                                              ResizeBehavior="CurrentAndNext" />
+                            <GridSplitter x:Name="PART_GridSplitter"
+                                          Grid.Row="0"
+                                          Height="{TemplateBinding GridSpliteWidth}"
+                                          HorizontalAlignment="Stretch"
+                                          Background="{TemplateBinding GridSpliterBackground}"
+                                          ResizeBehavior="CurrentAndNext" />
 
-                            </Grid>
-                            <ToggleButton Style="{TemplateBinding ToggleStyle}" />
                         </Grid>
-                    </Border>
+                        <FontIconToggleButton Style="{TemplateBinding ToggleStyle}" />
+                    </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
         <Setter Property="ToggleStyle">
             <Setter.Value>
                 <Style BasedOn="{StaticResource {x:Static local:GridSplitterBox.ToggleKey}}"
-                       TargetType="ToggleButton">
+                       TargetType="FontIconToggleButton">
                     <Setter Property="Grid.Row" Value="1" />
                 </Style>
             </Setter.Value>
@@ -268,5 +261,4 @@
 
     <Style BasedOn="{StaticResource {x:Static local:GridSplitterBox.DefaultKey}}"
            TargetType="{x:Type local:GridSplitterBox}" />
-
 </ResourceDictionary>

@@ -1,116 +1,115 @@
-﻿using H.Themes.Default;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Windows;
-using System.Windows.Media;
+﻿global using H.Themes.FontSizes;
+global using System.ComponentModel;
+global using System.Windows;
+using H.Themes.FontSizes;
+using H.Themes.Layouts;
 
-namespace H.Presenters.Design
+namespace H.Presenters.Design.Presenter;
+
+[Display(Name = "文本")]
+public class TextBlockPresenter : CommandsDesignPresenterBase, ITextData
 {
-    [Display(Name = "文本")]
-    public class TextBlockPresenter : CommandsDesignPresenterBase, ITextData
+    public TextBlockPresenter()
     {
-        public TextBlockPresenter()
+        this.Text = this.Name;
+    }
+    public override void LoadDefault()
+    {
+        base.LoadDefault();
+        this.FontSize = (double)Application.Current.FindResource(FontSizeKeys.Default);
+        //this.FontFamily = Application.Current.FindResource(SystemKeys.FontFamily) as FontFamily;
+        this.FontStyle = FontStyles.Normal;
+        this.FontWeight = FontWeights.Normal;
+        this.FontStretch = FontStretches.Normal;
+        //this.Foreground = Application.Current.FindResource(BrushKeys.Foreground) as Brush;
+        //this.Height = (double)Application.Current.FindResource(SystemKeys.ItemHeight);
+        this.Foreground = Brushes.Black;
+        this.Height = (double)Application.Current.FindResource(LayoutKeys.RowHeight);
+        this.VerticalContentAlignment = VerticalAlignment.Center;
+    }
+    private string _text;
+    [Display(Name = "文本", GroupName = "常用,数据")]
+    public string Text
+    {
+        get { return _text; }
+        set
         {
-            this.Text = this.Name;
+            _text = value;
+            RaisePropertyChanged();
         }
-        public override void LoadDefault()
-        {
-            base.LoadDefault();
-            this.FontSize = (double)Application.Current.FindResource(FontSizeKeys.Default);
-            //this.FontFamily = Application.Current.FindResource(SystemKeys.FontFamily) as FontFamily;
-            this.FontStyle = FontStyles.Normal;
-            this.FontWeight = FontWeights.Normal;
-            this.FontStretch = FontStretches.Normal;
-            //this.Foreground = Application.Current.FindResource(BrushKeys.Foreground) as Brush;
-            //this.Height = (double)Application.Current.FindResource(SystemKeys.ItemHeight);
-            this.Foreground = Brushes.Black;
-            this.Height = (double)Application.Current.FindResource(LayoutKeys.RowHeight);
-            this.VerticalContentAlignment = VerticalAlignment.Center;
-        }
-        private string _text;
-        [Display(Name = "文本", GroupName = "常用,数据")]
-        public string Text
-        {
-            get { return _text; }
-            set
-            {
-                _text = value;
-                RaisePropertyChanged();
-            }
-        }
+    }
 
-        private double _fontSize;
-        [Display(Name = "字号", GroupName = "常用,样式")]
-        public double FontSize
+    private double _fontSize;
+    [Display(Name = "字号", GroupName = "常用,样式")]
+    public double FontSize
+    {
+        get { return _fontSize; }
+        set
         {
-            get { return _fontSize; }
-            set
-            {
-                _fontSize = value;
-                RaisePropertyChanged();
-            }
+            _fontSize = value;
+            RaisePropertyChanged();
         }
+    }
 
-        private FontFamily _fontFamily;
-        [Display(Name = "字体", GroupName = "样式")]
-        public FontFamily FontFamily
+    private FontFamily _fontFamily;
+    [Display(Name = "字体", GroupName = "样式")]
+    public FontFamily FontFamily
+    {
+        get { return _fontFamily; }
+        set
         {
-            get { return _fontFamily; }
-            set
-            {
-                _fontFamily = value;
-                RaisePropertyChanged();
-            }
+            _fontFamily = value;
+            RaisePropertyChanged();
         }
+    }
 
 
-        private FontStyle _fontStyle;
-        [Display(Name = "字体样式", GroupName = "样式")]
-        public FontStyle FontStyle
+    private FontStyle _fontStyle;
+    [Display(Name = "字体样式", GroupName = "样式")]
+    public FontStyle FontStyle
+    {
+        get { return _fontStyle; }
+        set
         {
-            get { return _fontStyle; }
-            set
-            {
-                _fontStyle = value;
-                RaisePropertyChanged();
-            }
+            _fontStyle = value;
+            RaisePropertyChanged();
         }
+    }
 
-        private FontWeight _fontWeight;
-        [Display(Name = "字体加粗", GroupName = "样式")]
-        public FontWeight FontWeight
+    private FontWeight _fontWeight;
+    [Display(Name = "字体加粗", GroupName = "样式")]
+    public FontWeight FontWeight
+    {
+        get { return _fontWeight; }
+        set
         {
-            get { return _fontWeight; }
-            set
-            {
-                _fontWeight = value;
-                RaisePropertyChanged();
-            }
+            _fontWeight = value;
+            RaisePropertyChanged();
         }
+    }
 
-        private FontStretch _fontStretch;
-        [Display(Name = "字体展开", GroupName = "样式")]
-        public FontStretch FontStretch
+    private FontStretch _fontStretch;
+    [Display(Name = "字体展开", GroupName = "样式")]
+    public FontStretch FontStretch
+    {
+        get { return _fontStretch; }
+        set
         {
-            get { return _fontStretch; }
-            set
-            {
-                _fontStretch = value;
-                RaisePropertyChanged();
-            }
+            _fontStretch = value;
+            RaisePropertyChanged();
         }
+    }
 
-        private Brush _foreground;
-        [DefaultValue(null)]
-        [Display(Name = "文本颜色", GroupName = "常用,样式")]
-        public Brush Foreground
+    private Brush _foreground;
+    [DefaultValue(null)]
+    [Display(Name = "文本颜色", GroupName = "常用,样式")]
+    public Brush Foreground
+    {
+        get { return _foreground; }
+        set
         {
-            get { return _foreground; }
-            set
-            {
-                _foreground = value;
-                RaisePropertyChanged();
-            }
+            _foreground = value;
+            RaisePropertyChanged();
         }
     }
 }

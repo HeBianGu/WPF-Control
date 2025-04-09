@@ -1,12 +1,10 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-using H.Extensions.ViewModel;
-using H.Services.Common;
-using H.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Threading.Tasks;
-using H.Extensions.DataBase;
+
+global using H.Extensions.DataBase;
+global using H.Services.Identity.Role;
+global using H.Services.Setting;
+global using H.Services.Message;
+global using H.Services.Message.Dialog;
 
 namespace H.Modules.Identity
 {
@@ -42,7 +40,7 @@ namespace H.Modules.Identity
             });
             if (dialog != true)
             {
-                IocMessage.Snack?.ShowInfo("取消操作");
+                IocMessage.ShowSnackInfo("取消操作");
                 return;
             }
             await this.Add(m);
@@ -62,7 +60,7 @@ namespace H.Modules.Identity
             });
             if (r != true)
             {
-                IocMessage.Snack?.ShowInfo("取消操作");
+                IocMessage.ShowSnackInfo("取消操作");
                 return;
             }
 
@@ -71,11 +69,11 @@ namespace H.Modules.Identity
             if (rs > 0)
             {
                 if (this.UseMessage)
-                    IocMessage.Snack?.ShowInfo("保存成功");
+                    IocMessage.ShowSnackInfo("保存成功");
             }
             else
             {
-                IocMessage.Snack?.ShowInfo("保存失败，数据库保存错误");
+                IocMessage.ShowSnackInfo("保存失败，数据库保存错误");
             }
         }
     }

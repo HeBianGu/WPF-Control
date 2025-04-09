@@ -3,5 +3,6 @@
                     xmlns:local="clr-namespace:H.Modules.Theme">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Modules.Theme;component/SwitchThemeViewPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Modules.Theme;component/ColorThemeViewPresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

@@ -1,0 +1,113 @@
+﻿<Window x:Class="H.Test.DefaultApplicationBase.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:H.Test.DefaultApplicationBase"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Title="MainWindow"
+        Width="800"
+        Height="450"
+        Style="{DynamicResource {x:Static WindowKeys.Default}}"
+        mc:Ignorable="d">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <Menu.Resources>
+                <Style BasedOn="{StaticResource {x:Static MenuItemKeys.BindCommand}}"
+                       TargetType="MenuItem" />
+            </Menu.Resources>
+            <MenuItem Header="帮助">
+                <MenuItem Command="{ShowGuideCommand}" />
+                <MenuItem Command="{ShowNewGuideCommand}" />
+                <MenuItem Command="{ShowGuideTreeCommand}" />
+                <MenuItem Command="{ShowNewGuideTreeCommand}" />
+                <Separator />
+                <MenuItem Command="{ShowNotImplementedCommand}"
+                          Header="检查更新" />
+                <MenuItem Command="{ShowNotImplementedCommand}"
+                          Header="注册" />
+
+                <MenuItem Command="{ShowReleaseVersionsCommand}" />
+                <MenuItem Command="{ShowSupportCommand}" />
+                <MenuItem Command="{ShowFeedbackCommand}" />
+                <MenuItem Command="{ShowWebSiteCommand}" />
+                <Separator />
+                <MenuItem Command="{ShowContactCommand}">
+                    <MenuItem Command="{ShowGithubContactCommand}" />
+                    <MenuItem Command="{ShowGitHubIssueContactCommand}" />
+                    <MenuItem Command="{ShowQQContactCommand}" />
+                    <MenuItem Command="{ShowSendMailContactCommand}" />
+                    <MenuItem Command="{ShowBlogContactCommand}" />
+                    <MenuItem Command="{ShowPodcastContactCommand}" />
+                </MenuItem>
+                <MenuItem Command="{ShowPrivacyCommand}">
+                    <MenuItem Command="{ShowAgreementCommand}" />
+                    <MenuItem Command="{ShowPrivacyCommand}" />
+                </MenuItem>
+                <MenuItem Command="{ShowSponsorCommand}" />
+                <MenuItem Command="{ShowAboutCommand}" />
+            </MenuItem>
+        </Menu>
+        <TabControl>
+            <TabControl.Resources>
+                <Style BasedOn="{StaticResource {x:Static ButtonKeys.Command}}"
+                       TargetType="Button" />
+            </TabControl.Resources>
+            <TabItem Header="Messages">
+                <UniformGrid>
+                    <Button Command="{ShowMessageCommand}" />
+                    <Button Command="{ShowWaitCommand}" />
+                    <Button Command="{ShowPercentCommand}" />
+                    <Button Command="{ShowEditCommand Value={GetStudent}}" />
+                    <Button Command="{ShowTabEditCommand Value={GetStudent}}" />
+                    <Button Command="{ShowViewCommand Value={GetStudent}}" />
+                    <Button Command="{ShowStringNoticeMessageCommand}" />
+                    <Button Command="{ShowStringSnackMessageCommand}" />
+                    <Button Command="{ShowInfoNoticeMessageCommand Message=我是Info消息}"
+                            Content="ShowInfo" />
+                    <Button Command="{ShowErrorNoticeMessageCommand Message=我是Error消息}"
+                            Content="ShowError" />
+                    <Button Command="{ShowSuccessNoticeMessageCommand Message=我是Success消息}"
+                            Content="ShowSuccess" />
+                    <Button Command="{ShowWarnNoticeMessageCommand Message=我是Warn消息}"
+                            Content="ShowWarn" />
+                    <Button Command="{ShowFatalNoticeMessageCommand Message=我是Fatal消息}"
+                            Content="ShowFatal" />
+                    <Button Command="{ShowProgressNoticeMessageCommand Message=我是Progress消息}"
+                            Content="ShowProgress" />
+                    <Button Command="{ShowStringNoticeMessageCommand Message=我是String消息}"
+                            Content="ShowString" />
+                    <Button Command="{ShowDialogNoticeMessageCommand Message=我是Dialog消息}"
+                            Content="ShowDialog" />
+                </UniformGrid>
+            </TabItem>
+            <TabItem Header="Modules">
+                <UniformGrid>
+                    <Button Command="{ShowAboutCommand}" />
+                    <Button Command="{ShowPrivacyCommand}" />
+                    <Button Command="{ShowAgreementCommand}" />
+                    <Button Command="{ShowWebSiteCommand}" />
+                    <Button Command="{ShowReleaseVersionsCommand}" />
+                    <Button Command="{ShowSupportCommand}" />
+                    <Button Command="{ShowSponsorCommand}" />
+                    <Button Command="{ShowContactCommand}" />
+                    <Button Command="{ShowGithubContactCommand}" />
+                    <Button Command="{ShowQQContactCommand}" />
+                    <Button Command="{ShowSendMailContactCommand}" />
+                    <Button Command="{ShowBlogContactCommand}" />
+                    <Button Command="{ShowPodcastContactCommand}" />
+
+                    <Button Command="{ShowFeedbackCommand}" />
+                    <Button Command="{ShowSettingCommand}" />
+                    <Button Command="{ShowGuideCommand}" />
+                    <Button Command="{ShowGuideTreeCommand}" />
+                </UniformGrid>
+            </TabItem>
+
+            <TabItem Header="Services">
+                <UniformGrid>
+                    <Button Command="{ShowLog4netPathCommand}" />
+                </UniformGrid>
+            </TabItem>
+        </TabControl>
+    </DockPanel>
+</Window>

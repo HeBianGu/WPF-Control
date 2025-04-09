@@ -27,7 +27,7 @@ namespace H.Test.SplashScreen
         protected override void Configure(IApplicationBuilder app)
         {
             base.Configure(app);
-            app.UseSplashScreen();
+            app.UseSplashScreenOptions();
         }
 
         protected override Window CreateMainWindow(StartupEventArgs e)

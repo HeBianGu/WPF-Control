@@ -1,34 +1,35 @@
-﻿<RibbonWindow
-    x:Class="H.Test.Ribbon.MainWindow"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:h="https://github.com/HeBianGu"
-    xmlns:local="clr-namespace:H.Test.Ribbon"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:system="clr-namespace:System;assembly=mscorlib"
-    Title="ShellWindow"
-    Width="1100"
-    Height="700"
-    Style="{DynamicResource {x:Static h:RibbonWindowKeys.Default}}"
-    WindowStartupLocation="CenterScreen"
-    mc:Ignorable="d">
+﻿<RibbonWindow x:Class="H.Test.Ribbon.MainWindow"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+              xmlns:h="https://github.com/HeBianGu"
+              xmlns:local="clr-namespace:H.Test.Ribbon"
+              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+              xmlns:system="clr-namespace:System;assembly=mscorlib"
+              Title="ShellWindow"
+              Width="1100"
+              Height="700"
+              Style="{DynamicResource {x:Static h:RibbonWindowKeys.Default}}"
+              WindowStartupLocation="CenterScreen"
+              mc:Ignorable="d">
     <h:Cattach.CaptionRightTemplate>
         <ControlTemplate>
             <DockPanel>
-                <ContentPresenter Content="{Ioc Type={x:Type ISettingButtonPresenter}}" />
+                <FontIconButton Command="{ShowSettingCommand}"
+                                Style="{DynamicResource {x:Static FontIconButtonKeys.Command}}" />
                 <ContentPresenter Content="{Ioc Type={x:Type h:ISwitchThemeViewPresenter}}" />
-                <Button HorizontalAlignment="Right" Content="自定义按钮" />
+                <Button HorizontalAlignment="Right"
+                        Content="自定义按钮" />
             </DockPanel>
         </ControlTemplate>
     </h:Cattach.CaptionRightTemplate>
     <DockPanel>
-        <Ribbon
-            Title="文件"
-            DockPanel.Dock="Top"
-            Visibility="Visible">
+        <Ribbon Title="文件"
+                DockPanel.Dock="Top"
+                Visibility="Visible">
             <Ribbon.ApplicationMenu>
-                <RibbonApplicationMenu Label="文件" SmallImageSource="{h:Logo}">
+                <RibbonApplicationMenu Label="文件"
+                                       SmallImageSource="{h:Logo}">
                     <RibbonApplicationMenu.AuxiliaryPaneContent>
                         <TabControl>
                             <TabControl.ItemTemplate>
@@ -37,10 +38,9 @@
                                 </DataTemplate>
                             </TabControl.ItemTemplate>
                             <TabItem Header="Header1">
-                                <Grid
-                                    Width="600"
-                                    Height="600"
-                                    Background="Transparent" />
+                                <Grid Width="600"
+                                      Height="600"
+                                      Background="Transparent" />
                             </TabItem>
                             <TabItem Header="Header1" />
                             <TabItem Header="Header1" />
@@ -73,7 +73,8 @@
                     <RibbonButton />
                     <RibbonMenuButton>
                         <RibbonMenuButton.ControlSizeDefinition>
-                            <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True" />
+                            <RibbonControlSizeDefinition ImageSize="Small"
+                                                         IsLabelVisible="True" />
                         </RibbonMenuButton.ControlSizeDefinition>
                         <RibbonSplitMenuItem StaysOpenOnClick="True">
                             <RibbonMenuItem Header="ss" />
@@ -160,49 +161,57 @@
                     </RibbonGroup.GroupSizeDefinitions>
                     <RibbonButton Label="Ribbon Button">
                         <RibbonButton.ControlSizeDefinition>
-                            <RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True" />
+                            <RibbonControlSizeDefinition ImageSize="Large"
+                                                         IsLabelVisible="True" />
                         </RibbonButton.ControlSizeDefinition>
                         &gt;
                     </RibbonButton>
                     <RibbonButton Label="Ribbon Button">
                         <RibbonButton.ControlSizeDefinition>
-                            <RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True" />
+                            <RibbonControlSizeDefinition ImageSize="Large"
+                                                         IsLabelVisible="True" />
                         </RibbonButton.ControlSizeDefinition>
                         &gt;
                     </RibbonButton>
                     <RibbonButton Label="Ribbon Button">
                         <RibbonButton.ControlSizeDefinition>
-                            <RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True" />
+                            <RibbonControlSizeDefinition ImageSize="Large"
+                                                         IsLabelVisible="True" />
                         </RibbonButton.ControlSizeDefinition>
                         &gt;
                     </RibbonButton>
                     <RibbonButton Label="Ribbon Button">
                         <RibbonButton.ControlSizeDefinition>
-                            <RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True" />
+                            <RibbonControlSizeDefinition ImageSize="Large"
+                                                         IsLabelVisible="True" />
                         </RibbonButton.ControlSizeDefinition>
                         &gt;
                     </RibbonButton>
                     <RibbonButton Label="Ribbon Button">
                         <RibbonButton.ControlSizeDefinition>
-                            <RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True" />
+                            <RibbonControlSizeDefinition ImageSize="Large"
+                                                         IsLabelVisible="True" />
                         </RibbonButton.ControlSizeDefinition>
                         &gt;
                     </RibbonButton>
                     <RibbonButton Label="Ribbon Button">
                         <RibbonButton.ControlSizeDefinition>
-                            <RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True" />
+                            <RibbonControlSizeDefinition ImageSize="Large"
+                                                         IsLabelVisible="True" />
                         </RibbonButton.ControlSizeDefinition>
                         &gt;
                     </RibbonButton>
                     <RibbonButton Label="Ribbon Button">
                         <RibbonButton.ControlSizeDefinition>
-                            <RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True" />
+                            <RibbonControlSizeDefinition ImageSize="Large"
+                                                         IsLabelVisible="True" />
                         </RibbonButton.ControlSizeDefinition>
                         &gt;
                     </RibbonButton>
                     <RibbonButton Label="Ribbon Button">
                         <RibbonButton.ControlSizeDefinition>
-                            <RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True" />
+                            <RibbonControlSizeDefinition ImageSize="Large"
+                                                         IsLabelVisible="True" />
                         </RibbonButton.ControlSizeDefinition>
                         &gt;
                     </RibbonButton>

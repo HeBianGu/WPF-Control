@@ -1,9 +1,10 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-using H.Iocable;
-using H.Mvvm;
-using H.Mvvm.Attributes;
-using System.ComponentModel.DataAnnotations;
+global using H.Common.Attributes;
+global using H.Common.Commands;
+global using H.Iocable;
+global using H.Mvvm;
+global using System.ComponentModel.DataAnnotations;
 
 namespace H.Controls.DrawerBox
 {

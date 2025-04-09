@@ -1,67 +1,63 @@
-﻿using H.Mvvm;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
+﻿using System.Collections.ObjectModel;
 
-namespace H.Extensions.TextJsonable
+namespace H.Extensions.TextJsonable;
+
+public class MyJsonBindable : JsonBindableBase,IDisposable
 {
-    public class MyJsonBindable : JsonBindableBase,IDisposable
+    public int Age { get; set; }
+
+    //public RelayCommand MyCommand => new RelayCommand(s =>
+    //{
+      
+    //});
+    public IDisposable Notify { get; set; }
+
+    public void Dispose()
     {
-        public int Age { get; set; }
-
-        //public RelayCommand MyCommand => new RelayCommand(s =>
-        //{
-          
-        //});
-        public IDisposable Notify { get; set; }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
-
-        //private ObservableCollection<string> _collection = new ObservableCollection<string>();
-        //public ObservableCollection<string> Collection
-        //{
-        //    get { return _collection; }
-        //    set
-        //    {
-        //        _collection = value;
-        //        RaisePropertyChanged();
-        //    }
-        //}
-
-        //private ObservableCollection<MyJsonBindable> _MyJsonBindables = new ObservableCollection<MyJsonBindable>();
-        //public ObservableCollection<MyJsonBindable> MyJsonBindables
-        //{
-        //    get { return _MyJsonBindables; }
-        //    set
-        //    {
-        //        _MyJsonBindables = value;
-        //        RaisePropertyChanged("MyJsonBindables");
-        //    }
-        //}
-
-        private ObservableCollection<IDisposable> _notifies = new ObservableCollection<IDisposable>();
-        public ObservableCollection<IDisposable> Nofities
-        {
-            get { return _notifies; }
-            set
-            {
-                _notifies = value;
-            }
-        }
-
-        //public IEnumerable<int> Values { get; set; }
-
+        throw new NotImplementedException();
     }
 
-    public class MyDisposable : IDisposable
+    //private ObservableCollection<string> _collection = new ObservableCollection<string>();
+    //public ObservableCollection<string> Collection
+    //{
+    //    get { return _collection; }
+    //    set
+    //    {
+    //        _collection = value;
+    //        RaisePropertyChanged();
+    //    }
+    //}
+
+    //private ObservableCollection<MyJsonBindable> _MyJsonBindables = new ObservableCollection<MyJsonBindable>();
+    //public ObservableCollection<MyJsonBindable> MyJsonBindables
+    //{
+    //    get { return _MyJsonBindables; }
+    //    set
+    //    {
+    //        _MyJsonBindables = value;
+    //        RaisePropertyChanged("MyJsonBindables");
+    //    }
+    //}
+
+    private ObservableCollection<IDisposable> _notifies = new ObservableCollection<IDisposable>();
+    public ObservableCollection<IDisposable> Nofities
     {
-        public int MyProperty { get; set; }
-        public void Dispose()
+        get { return _notifies; }
+        set
         {
-            throw new NotImplementedException();
+            _notifies = value;
         }
+    }
+
+    //public IEnumerable<int> Values { get; set; }
+
+}
+
+public class MyDisposable : IDisposable
+{
+    public int MyProperty { get; set; }
+    public void Dispose()
+    {
+        throw new NotImplementedException();
     }
 }

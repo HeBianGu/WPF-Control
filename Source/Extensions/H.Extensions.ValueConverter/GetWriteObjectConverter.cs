@@ -1,14 +1,12 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 
-namespace H.Extensions.ValueConverter
+namespace H.Extensions.ValueConverter;
+
+public class GetWriteObjectConverter : MarkupValueConverterBase
 {
-    public class GetWriteObjectConverter : MarkupValueConverterBase
+    public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            System.Diagnostics.Debug.WriteLine(value);
-            return value;
-        }
+        System.Diagnostics.Debug.WriteLine(value);
+        return value;
     }
 }

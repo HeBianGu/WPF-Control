@@ -1,12 +1,13 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-
-using H.Extensions.ViewModel;
-using H.Modules.Identity;
-using H.Services.Common;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using System.Collections.Generic;
+global using H.Extensions.DataBase.Repository;
+global using H.Modules.Identity;
+global using H.Services.Identity;
+global using H.Services.Identity.User;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.DependencyInjection.Extensions;
+global using System.Collections.Generic;
+using H.Services.Identity.Author;
 
 namespace System
 {
@@ -31,12 +32,12 @@ namespace System
             service.AddSingleton<ILoginService, LoginService>();
         }
 
-        public static IServiceCollection AddRegisterService(this IServiceCollection services, Action<IdentifyOptions> setupAction = null)
+        public static IServiceCollection AddRegisterService(this IServiceCollection services, Action<IIdentifyOptions> setupAction = null)
         {
             services.AddOptions();
             services.TryAdd(ServiceDescriptor.Singleton<IRegisterService, RegisterService>());
             if (setupAction != null)
-                services.Configure(setupAction);
+                services.Configure(new Action<IdentifyOptions>(setupAction));
             return services;
         }
 
@@ -60,9 +61,9 @@ namespace System
             service.AddSingleton<IAuthorityViewPresenter, AuthorityViewPresenter>();
         }
 
-        public static IApplicationBuilder UseIdentify(this IApplicationBuilder builder, Action<IdentifyOptions> option = null)
+        public static IApplicationBuilder UseIdentifyOptions(this IApplicationBuilder builder, Action<IIdentifyOptions> option = null)
         {
-            SettingDataManager.Instance.Add(IdentifyOptions.Instance);
+            IocSetting.Instance.Add(IdentifyOptions.Instance);
             option?.Invoke(IdentifyOptions.Instance);
             return builder;
         }

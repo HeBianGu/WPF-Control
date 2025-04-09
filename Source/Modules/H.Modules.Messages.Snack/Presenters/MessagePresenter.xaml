@@ -19,7 +19,7 @@
                     BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
                     BorderThickness="1"
                     CornerRadius="2" />
-            <Grid x:Name="g"
+            <!--<Grid x:Name="g"
                   Width="15"
                   Height="15"
                   Margin="10,5">
@@ -31,7 +31,13 @@
                         </DrawingBrush.Drawing>
                     </DrawingBrush>
                 </Grid.Background>
-            </Grid>
+            </Grid>-->
+
+            <FontIconTextBlock x:Name="g"
+                               Margin="10,0"
+                               FontSize="20"
+                               Foreground="{DynamicResource {x:Static BrushKeys.Accent}}"
+                               Text="{Binding Icon}" />
             <TextBlock Grid.Column="1"
                        Margin="0,0"
                        VerticalAlignment="Center">

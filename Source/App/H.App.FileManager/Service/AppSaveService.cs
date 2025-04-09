@@ -1,5 +1,4 @@
-﻿using H.Services.Common;
-
+﻿global using H.Services.Common.SplashScreen;
 namespace H.App.FileManager
 {
     public class AppSaveService : IAppSaveService

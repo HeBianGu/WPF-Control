@@ -4,10 +4,7 @@ namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 
 public interface IOpenCVNodeData : IFlowableNodeData
 {
-    //Mat SrcMat { get; set; }
     Mat Mat { get; }
-    //string SrcFilePath { get; set; }
-    //ImageSource ImageSource { get; set; }
 }
 
 public static class MatExtension

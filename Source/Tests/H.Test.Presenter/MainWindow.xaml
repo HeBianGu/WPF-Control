@@ -8,7 +8,7 @@
         Title="MainWindow"
         Width="800"
         Height="450"
-        Style="{StaticResource {x:Type Window}}"
+        Style="{StaticResource {x:Static WindowKeys.Default}}"
         mc:Ignorable="d">
     <UniformGrid>
         <Button Command="{h:ShowCommand Presnter={GetStudent}}"

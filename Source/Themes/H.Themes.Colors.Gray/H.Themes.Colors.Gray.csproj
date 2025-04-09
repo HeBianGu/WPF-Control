@@ -1,10 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
-    <ProjectReference Include="..\H.Themes.Default\H.Themes.Default.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="Light.xaml">
-      <SubType>Designer</SubType>
-    </Page>
+    <ProjectReference Include="..\H.Theme\H.Theme.csproj" />
   </ItemGroup>
 </Project>

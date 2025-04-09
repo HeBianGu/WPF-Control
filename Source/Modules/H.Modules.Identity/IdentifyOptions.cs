@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 namespace H.Modules.Identity
 {
     [Display(Name = "身份认证设置", GroupName = SettingGroupNames.GroupSystem, Description = "身份认证设置的信息")]
-    public class IdentifyOptions : IocOptionInstance<IdentifyOptions>
+    public class IdentifyOptions : IocOptionInstance<IdentifyOptions>, IIdentifyOptions
     {
         private bool _useAdiminCheckOnRegister;
         [ReadOnly(true)]

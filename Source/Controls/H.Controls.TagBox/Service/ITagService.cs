@@ -1,4 +1,5 @@
-﻿using H.Services.Common;
+﻿global using H.Common.Interfaces;
+global using H.Services.Common;
 using System;
 using System.Collections.Generic;
 

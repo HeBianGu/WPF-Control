@@ -19,16 +19,17 @@ namespace H.Test.Ribbon
     {
         protected override void ConfigureServices(IServiceCollection services)
         {
+            
             services.AddAdornerDialogMessage();
             //services.AddWindowDialogMessage();
             services.AddSetting();
-            services.AddSwitchThemeViewPresenter();
+            services.AddTheme();
         }
 
         protected override void Configure(IApplicationBuilder app)
         {
-            app.UseSetting();
-            app.UseSettingDefault();
+            app.UseSettingViewOptions();
+            app.UseSettingDefaultOptions();
         }
 
         protected override Window CreateMainWindow(StartupEventArgs e)

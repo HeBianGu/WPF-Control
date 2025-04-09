@@ -2,28 +2,26 @@
 
 
 
-using H.Services.Common;
-using H.Mvvm;
-using System;
-using H.Mvvm.Attributes;
+using H.Common.Attributes;
+using H.Common.Commands;
+using H.Services.Common.Upgrade;
+using H.Services.Message;
 using System.ComponentModel.DataAnnotations;
-using System.Threading.Tasks;
 
-namespace H.Modules.Upgrade
+namespace H.Modules.Upgrade;
+
+[Icon("\xECC5")]
+[Display(Name = "软件更新", Description = "应用此功能检查软件更新")]
+public class ShowUpgradeCommand : DisplayMarkupCommandBase
 {
-    [Icon("\xECC5")]
-    [Display(Name = "软件更新", Description = "应用此功能检查软件更新")]
-    public class ShowUpgradeCommand : DisplayMarkupCommandBase
+    private IUpgradeService Service => Ioc<IUpgradeService>.Instance;
+    public override bool CanExecute(object parameter)
     {
-        private IUpgradeService Service => Ioc<IUpgradeService>.Instance;
-        public override bool CanExecute(object parameter)
-        {
-            return this.Service != null && base.CanExecute(parameter);
-        }
-        public override async Task ExecuteAsync(object parameter)
-        {
-            if (this.Service.Upgrade(out string message) == false)
-                await IocMessage.ShowDialogMessage(message);
-        }
+        return this.Service != null && base.CanExecute(parameter);
+    }
+    public override async Task ExecuteAsync(object parameter)
+    {
+        if (this.Service.Upgrade(out string message) == false)
+            await IocMessage.ShowDialogMessage(message);
     }
 }

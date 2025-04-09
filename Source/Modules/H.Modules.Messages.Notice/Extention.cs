@@ -1,5 +1,5 @@
 ﻿using H.Modules.Messages.Notice;
-using H.Services.Common;
+
 using Microsoft.Extensions.DependencyInjection;
 
 namespace System
@@ -15,5 +15,4 @@ namespace System
             services.AddSingleton<INoticeMessageService, NoticeMessageService>();
         }
     }
-
 }

@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\..\Extensions\H.Extensions.ApplicationBase\H.Extensions.ApplicationBase.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.Log4net\H.Extensions.Log4net.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.OpenFolderDialog\H.Extensions.OpenFolderDialog.csproj" />
+    <ProjectReference Include="..\..\Modules\H.Modules.About\H.Modules.About.csproj" />
+    <ProjectReference Include="..\..\Modules\H.Modules.Guide\H.Modules.Guide.csproj" />
+    <ProjectReference Include="..\..\Modules\H.Modules.Help\H.Modules.Help.csproj" />
+    <ProjectReference Include="..\..\Modules\H.Modules.Messages.Dialog\H.Modules.Messages.Dialog.csproj" />
+    <ProjectReference Include="..\..\Modules\H.Modules.Messages.Form\H.Modules.Messages.Form.csproj" />
+    <ProjectReference Include="..\..\Modules\H.Modules.Messages.Notice\H.Modules.Messages.Notice.csproj" />
+    <ProjectReference Include="..\..\Modules\H.Modules.Messages.Snack\H.Modules.Messages.Snack.csproj" />
+    <ProjectReference Include="..\..\Modules\H.Modules.Setting\H.Modules.Setting.csproj" />
+    <ProjectReference Include="..\..\Modules\H.Modules.SplashScreen\H.Modules.SplashScreen.csproj" />
+    <ProjectReference Include="..\..\Modules\H.Modules.Sponsor\H.Modules.Sponsor.csproj" />
+    <ProjectReference Include="..\..\Modules\H.Modules.Style\H.Modules.Style.csproj" />
+    <ProjectReference Include="..\..\Modules\H.Modules.Theme\H.Modules.Theme.csproj" />
+    <ProjectReference Include="..\..\Themes\H.Themes.Colors.Accent\H.Themes.Colors.Accent.csproj" />
+    <ProjectReference Include="..\..\Themes\H.Themes.Colors.Blue\H.Themes.Colors.Blue.csproj" />
+    <ProjectReference Include="..\..\Themes\H.Themes.Colors.Copper\H.Themes.Colors.Copper.csproj" />
+    <ProjectReference Include="..\..\Themes\H.Themes.Colors.Gray\H.Themes.Colors.Gray.csproj" />
+    <ProjectReference Include="..\..\Themes\H.Themes.Colors.Industrial\H.Themes.Colors.Industrial.csproj" />
+    <ProjectReference Include="..\..\Themes\H.Themes.Colors.Mineral\H.Themes.Colors.Mineral.csproj" />
+    <ProjectReference Include="..\..\Themes\H.Themes.Colors.Platform\H.Themes.Colors.Platform.csproj" />
+    <ProjectReference Include="..\..\Themes\H.Themes.Colors.Purple\H.Themes.Colors.Purple.csproj" />
+    <ProjectReference Include="..\..\Themes\H.Themes.Colors.Solid\H.Themes.Colors.Solid.csproj" />
+    <ProjectReference Include="..\..\Themes\H.Themes.Colors.Technology\H.Themes.Colors.Technology.csproj" />
+    <ProjectReference Include="..\..\Themes\H.Themes.Colors.Web\H.Themes.Colors.Web.csproj" />
+    <ProjectReference Include="..\H.ApplicationBases.Messages\H.ApplicationBases.Messages.csproj" />
+    <ProjectReference Include="..\H.ApplicationBases.Modules\H.ApplicationBases.Modules.csproj" />
+    <ProjectReference Include="..\H.ApplicationBases.Themes\H.ApplicationBases.Themes.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,4 +1,7 @@
 ﻿global using H.Controls.Diagram.Presenter.NodeDatas.Base;
+global using H.Common.Interfaces;
+global using H.Themes.FontSizes;
+using H.Themes.FontSizes;
 namespace H.Controls.Diagram.Presenter.NodeDatas;
 
 public interface ITextNodeData : ITextable

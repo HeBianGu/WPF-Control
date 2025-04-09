@@ -3,27 +3,26 @@
 using System.Windows;
 using System.Windows.Media;
 
-namespace H.Controls.Adorner.Adorner.Base
+namespace H.Controls.Adorner.Adorner.Base;
+
+public abstract class VisualCollectionAdornerBase : AdornerBase
 {
-    public abstract class VisualCollectionAdornerBase : AdornerBase
+    protected VisualCollection _visualCollection;
+
+    public VisualCollectionAdornerBase(UIElement adornedElement) : base(adornedElement)
     {
-        protected VisualCollection _visualCollection;
+        _visualCollection = new VisualCollection(this);
+    }
 
-        public VisualCollectionAdornerBase(UIElement adornedElement) : base(adornedElement)
+    protected override Visual GetVisualChild(int index)
+    {
+        return _visualCollection[index];
+    }
+    protected override int VisualChildrenCount
+    {
+        get
         {
-            _visualCollection = new VisualCollection(this);
-        }
-
-        protected override Visual GetVisualChild(int index)
-        {
-            return _visualCollection[index];
-        }
-        protected override int VisualChildrenCount
-        {
-            get
-            {
-                return _visualCollection.Count;
-            }
+            return _visualCollection.Count;
         }
     }
 }

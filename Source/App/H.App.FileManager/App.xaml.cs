@@ -6,11 +6,12 @@ using H.Modules.Identity;
 using H.Modules.Operation;
 using H.Services.Common;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 using System.Windows;
 using System.Windows.Media;
 using H.Extensions.DataBase;
-using H.Styles.Default;
+using H.Styles;
+using H.Services.Common.Schedule;
+using H.ApplicationBases.Default;
 
 namespace H.App.FileManager
 {
@@ -26,12 +27,9 @@ namespace H.App.FileManager
 
         protected override void ConfigureServices(IServiceCollection services)
         {
-            services.AddWindowMessage();
-            services.AddAdornerDialogMessage();
-            services.AddSnackMessage();
-            services.AddFormMessageService();
+            base.ConfigureServices(services);
+            services.AddApplicationServices();
             services.AddProject<FileProjectService>();
-            services.AddSplashScreen();
             services.AddSingleton<IAppSaveService, AppSaveService>();
             services.AddTag<ProjectTagService>(x =>
             {
@@ -68,64 +66,27 @@ namespace H.App.FileManager
                 x.FavoriteItems.Add(new FavoriteItem() { Path = "娱乐" });
                 x.FavoriteItems.Add(new FavoriteItem() { Path = "工作" });
             });
-            services.AddSetting();
             services.AddAppService();
             services.AddTorrent();
             services.AddFFMpeg(x =>
             {
                 x.WorkingDirectory = "D:\\ffmpeg";
             });
-            services.AddSwitchThemeViewPresenter();
-
             services.AddSingleton<IScheduledTaskService, ProjectSaveScheduledTaskService>();
-
-
-            //  Do ：身份认证
-            services.AddDbContextBySetting<IdentifyDataContext>();
-            services.AddSingleton<IStringRepository<hi_dd_user>, DbContextRepository<IdentifyDataContext, hi_dd_user>>();
-            services.AddUserViewPresenter();
-
-            services.AddSingleton<IStringRepository<hi_dd_role>, DbContextRepository<IdentifyDataContext, hi_dd_role>>();
-            services.AddRoleViewPresenter();
-
-            services.AddSingleton<IStringRepository<hi_dd_author>, DbContextRepository<IdentifyDataContext, hi_dd_author>>();
-            services.AddAuthorityViewPresenter();
-
-            //  Do ：操作日志
-            services.AddDbContextBySetting<OperationDataContext>();
-            services.AddSingleton<IStringRepository<hi_dd_operation>, DbContextRepository<OperationDataContext, hi_dd_operation>>();
-            services.AddOperationViewPresenter();
-
-            //  Do ：登录和注册页面
-            services.AddRegisterLoginViewPresenter();
-            services.AddLoginService();
-            services.AddRegisterService();
+            services.AddDefaultIdentify();
         }
 
         protected override void Configure(IApplicationBuilder app)
         {
             base.Configure(app);
-
-            app.UseSettingDataManager(x =>
+            app.UseApplicationOptions();
+            app.UseDefaultIdentifyOptions();
+            app.UseSettingDataOptions(x =>
             {
                 x.Add(AppSetting.Instance);
             });
-
-            //app.UseVlc(x =>
-            //{
-            //    //x.LibvlcPath = "G:\\BaiduNetdiskDownload\\libvlc\\win-x64";
-            //});
-
             app.UseFFMpeg();
-
-            app.UseLogin();
-
             app.UseWindowSetting();
-            app.UseTheme();
-            app.UseSwithTheme();
-            //app.UseSetting();
-            app.UseSettingSecurity();
-
         }
     }
 }

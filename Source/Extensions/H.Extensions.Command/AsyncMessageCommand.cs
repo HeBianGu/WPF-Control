@@ -1,38 +1,34 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
+global using H.Common.Commands;
 
-using H.Mvvm;
-using System.Threading;
-using System.Threading.Tasks;
+namespace H.Extensions.Command;
 
-namespace H.Extensions.Command
+
+public class AsyncMessageCommand : DisplayMarkupCommandBase
 {
-
-    public class AsyncMessageCommand : DisplayMarkupCommandBase
+    public string Format { get; set; } = "正在加载数据第{0}/100条";
+    private string _message;
+    public string Message
     {
-        public string Format { get; set; } = "正在加载数据第{0}/100条";
-        private string _message;
-        public string Message
+        get { return _message; }
+        set
         {
-            get { return _message; }
-            set
+            _message = value;
+            RaisePropertyChanged();
+        }
+    }
+    public override async Task ExecuteAsync(object parameter)
+    {
+        await Task.Run(() =>
+        {
+            for (int i = 0; i <= 100; i++)
             {
-                _message = value;
-                RaisePropertyChanged();
+                this.Message = string.Format(this.Format, i);
+                Thread.Sleep(100);
             }
-        }
-        public override async Task ExecuteAsync(object parameter)
-        {
-            await Task.Run(() =>
-            {
-                for (int i = 0; i <= 100; i++)
-                {
-                    this.Message = string.Format(this.Format, i);
-                    Thread.Sleep(100);
-                }
-                this.Message = "加载完成";
-                Thread.Sleep(1000);
-            });
-        }
+            this.Message = "加载完成";
+            Thread.Sleep(1000);
+        });
     }
 }

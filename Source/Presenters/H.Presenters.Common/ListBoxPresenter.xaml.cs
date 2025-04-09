@@ -1,10 +1,9 @@
-﻿using H.Mvvm.ViewModels.Base;
-using H.Presenters.Common;
-using System;
-using System.Collections;
-using System.ComponentModel.DataAnnotations;
-using System.Threading.Tasks;
-using System.Windows;
+﻿global using H.Mvvm.Commands;
+global using H.Presenters.Common;
+global using System.Collections;
+global using System.ComponentModel.DataAnnotations;
+global using System.Windows;
+global using H.Common.Attributes;
 
 namespace H.Presenters.Common;
 public interface IListBoxPresenter : IItemsSourcePresenter
@@ -72,7 +71,8 @@ public class ListBoxPresenter : ItemsSourcePresenterBase, IListBoxPresenter
 
 public static partial class DialogServiceExtension
 {
-    public static async Task<bool?> ShowListBox(this IDialogMessageService service, Action<IListBoxPresenter> option, Action<IListBoxPresenter> sumitAction = null, Action<IDialog> builder = null, Func<IListBoxPresenter,bool> canSumit = null)
+    [Obsolete("ShowListBox<T>")]
+    public static async Task<bool?> ShowListBox(this IDialogMessageService service, Action<IListBoxPresenter> option, Action<IListBoxPresenter> sumitAction = null, Action<IDialog> builder = null, Func<IListBoxPresenter, Task<bool>> canSumit = null)
     {
         return await service.ShowDialog<ListBoxPresenter>(option, sumitAction, x =>
         {
@@ -81,6 +81,23 @@ public static partial class DialogServiceExtension
             x.Padding = new Thickness(2);
             builder?.Invoke(x);
         }, canSumit);
+    }
+
+    public static async Task<T> ShowListBox<T>(this IDialogMessageService service, Action<IListBoxPresenter> option, Action<IListBoxPresenter> sumitAction = null, Action<IDialog> builder = null, Func<IListBoxPresenter, Task<bool>> canSumit = null)
+    {
+        T result = default(T);
+        var r = await service.ShowDialog<ListBoxPresenter>(option, x=>
+        {
+            sumitAction?.Invoke(x);
+            result = (T)x.SelectedItem;
+        }, x =>
+        {
+            x.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Stretch;
+            x.MinWidth = 200;
+            x.Padding = new Thickness(2);
+            builder?.Invoke(x);
+        }, canSumit);
+        return result;
     }
 }
 

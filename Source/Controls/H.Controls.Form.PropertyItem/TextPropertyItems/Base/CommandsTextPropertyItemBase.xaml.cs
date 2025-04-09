@@ -2,7 +2,8 @@
 
 
 
-using System.Reflection;
+global using H.Controls.Form.PropertyItems;
+global using System.Reflection;
 
 namespace H.Controls.Form.PropertyItem.TextPropertyItems.Base
 {

@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Modules.Sponsor">
+    <DataTemplate DataType="{x:Type local:SponsorPresenter}">
+        <UniformGrid Rows="1">
+            <Image MaxHeight="400"
+                   Source="Assets/w.jpg" />
+            <Image MaxHeight="400"
+                   Source="Assets/z.jpg" />
+        </UniformGrid>
+    </DataTemplate>
+</ResourceDictionary>

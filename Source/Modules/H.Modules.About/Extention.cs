@@ -1,7 +1,8 @@
-﻿
-using H.Modules.About;
-using H.Services.Common;
+﻿using H.Modules.About;
+using H.Services.Common.About;
+using H.Services.Setting;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace System
 {
@@ -11,20 +12,22 @@ namespace System
         /// 注册
         /// </summary>
         /// <param name="service"></param>
-        public static void AddAbout(this IServiceCollection service, Action<IAboutViewPresenterOption> action = null)
+        public static void AddAbout(this IServiceCollection services, Action<IAboutOptions> setupAction = null)
         {
-            service.AddSingleton<IAboutViewPresenter, AboutViewPresenter>();
+            services.AddOptions();
+            services.TryAdd(ServiceDescriptor.Singleton<IAboutViewPresenter, AboutViewPresenter>());
+            if (setupAction != null)
+                services.Configure(new Action<AboutOptions>(setupAction));
         }
 
         /// <summary>
         /// 配置
         /// </summary>
         /// <param name="service"></param>
-        [Obsolete]
-        public static void UseAbout(this IApplicationBuilder service, Action<IAboutViewPresenterOption> action = null)
+        public static void UseAboutOptions(this IApplicationBuilder service, Action<IAboutOptions> action = null)
         {
-            action?.Invoke(AboutViewPresenter.Instance);
-
+            action?.Invoke(AboutOptions.Instance);
+            IocSetting.Instance.Add(AboutOptions.Instance);
         }
     }
 }

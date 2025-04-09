@@ -4,7 +4,7 @@
                     xmlns:local="clr-namespace:H.Modules.Theme">
     <DataTemplate DataType="{x:Type local:SwitchThemeViewPresenter}">
         <FontIconToggleButton CheckedGlyph="&#xE706;"
-                              IsChecked="{Binding Source={x:Static local:SwitchThemeOptions.Instance}, Path=IsDark}"
+                              IsChecked="{Binding Source={x:Static local:ThemeOptions.Instance}, Path=IsDark}"
                               Style="{DynamicResource {x:Static FontIconToggleButtonKeys.Switch}}"
                               ToolTip="切换明/暗主题"
                               UncheckedGlyph="&#xE708;"

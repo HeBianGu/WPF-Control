@@ -1,6 +1,6 @@
 ﻿using H.Extensions.Common;
 using H.Extensions.Setting;
-using H.Services.Common;
+using H.Services.Setting;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 namespace H.Modules.Login
 {
     [Display(Name = "登录页面设置", GroupName = SettingGroupNames.GroupSystem, Description = "登录页面设置的信息")]
-    public class LoginOptions : IocOptionInstance<LoginOptions>
+    public class LoginOptions : IocOptionInstance<LoginOptions>, ILoginOptions
     {
         public override void LoadDefault()
         {
@@ -68,7 +68,7 @@ namespace H.Modules.Login
 
         private string _adminPassword;
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         [DefaultValue("123456")]

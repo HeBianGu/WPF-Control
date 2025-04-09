@@ -3,6 +3,7 @@
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.DependencyInjection.Extensions;
 using H.Modules.Project;
+using H.Services.Setting;
 
 namespace System;
 
@@ -12,7 +13,7 @@ public static class Extention
     /// 注册
     /// </summary>
     /// <param name="service"></param>
-    public static IServiceCollection AddProject(this IServiceCollection services, Action<ProjectOptions> setupAction = null)
+    public static IServiceCollection AddProject(this IServiceCollection services, Action<IProjectOptions> setupAction = null)
     {
         return services.AddProject<ProjectService>(setupAction);
     }
@@ -21,7 +22,7 @@ public static class Extention
     /// 注册
     /// </summary>
     /// <param name="service"></param>
-    public static IServiceCollection AddProject<T>(this IServiceCollection services, Action<ProjectOptions> setupAction = null) where T : class, IProjectService
+    public static IServiceCollection AddProject<T>(this IServiceCollection services, Action<IProjectOptions> setupAction = null) where T : class, IProjectService
     {
         services.AddOptions();
         services.TryAdd(ServiceDescriptor.Singleton<IProjectService, T>());
@@ -29,7 +30,7 @@ public static class Extention
         //services.TryAdd(ServiceDescriptor.Singleton<ISplashLoad, ProjectLoadService>());
 
         if (setupAction != null)
-            services.Configure(setupAction);
+            services.Configure(new Action<ProjectOptions>(setupAction));
         return services;
     }
 
@@ -38,9 +39,9 @@ public static class Extention
     /// 配置
     /// </summary>
     /// <param name="service"></param>
-    public static IApplicationBuilder UseProject(this IApplicationBuilder builder, Action<ProjectOptions> option = null)
+    public static IApplicationBuilder UseProjectOptions(this IApplicationBuilder builder, Action<ProjectOptions> option = null)
     {
-        SettingDataManager.Instance.Add(ProjectOptions.Instance);
+        IocSetting.Instance.Add(ProjectOptions.Instance);
         option?.Invoke(ProjectOptions.Instance);
         return builder;
     }

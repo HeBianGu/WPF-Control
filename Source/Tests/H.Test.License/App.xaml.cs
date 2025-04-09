@@ -1,4 +1,6 @@
 ﻿using H.Extensions.ApplicationBase;
+using H.Modules.Setting;
+using H.Services.Setting;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -20,6 +22,7 @@ namespace H.Test.License
         {
             services.AddAdornerDialogMessage();
             services.AddWindowMessage();
+            
             services.AddSetting();
             services.AddLicenseService(x =>
             {

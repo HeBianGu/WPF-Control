@@ -2,7 +2,7 @@
 
 [Icon(FontIcons.DialShape1)]
 [Display(Name = "机器学习模型", Description = "应用机器学习模型处理图像", Order = 90)]
-public class MLDataGroup : BasicDataGroupBase
+public class MLDataGroup : BasicDataGroupBase, IVideoDataGroup, IImageDataGroup
 {
     protected override IEnumerable<INodeData> CreateNodeDatas()
     {

@@ -1,8 +1,5 @@
-﻿
-using H.Mvvm;
-using H.Mvvm.ViewModels.Base;
+﻿using H.Common.Interfaces;
 using H.Presenters.Common;
-using H.Services.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +11,7 @@ namespace H.Modules.Messages.Dialog
 {
     public class AdornerDialogMessageService : IDialogMessageService, IAdornerDialogMessageService
     {
-        public async Task<bool?> Show(object presenter, Action<IDialog> builder = null, Func<bool> canSumit = null)
+        public async Task<bool?> Show(object presenter, Action<IDialog> builder = null, Func<Task<bool>> canSumit = null)
         {
             var data = presenter is string str ? new StringPresenter() { Value = str } : presenter;
             return await AdornerDialog.ShowPresenter(data, x =>

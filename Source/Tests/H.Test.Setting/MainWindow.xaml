@@ -8,13 +8,15 @@
         Title="MainWindow"
         Width="900"
         Height="550"
-        Style="{StaticResource {x:Type Window}}"
+        Style="{StaticResource {x:Static WindowKeys.Default}}"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d">
     <Grid>
         <UniformGrid>
-            <ContentPresenter Content="{Ioc Type={x:Type ISettingButtonPresenter}}" />
-            <Button Content="ISettingSecurityViewOption" Command="{ShowSettingCommand SwitchToType={x:Type h:ISettingSecurityViewOption}}"/>
+            <FontIconButton Command="{ShowSettingCommand}"
+                            Style="{DynamicResource {x:Static FontIconButtonKeys.Command}}" />
+            <Button Command="{ShowSettingCommand SwitchToType={x:Type h:ISettingSecurityViewOption}}"
+                    Content="ISettingSecurityViewOption" />
         </UniformGrid>
     </Grid>
 </Window>

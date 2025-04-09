@@ -1,15 +1,12 @@
-﻿using H.Controls.Form;
-using H.Services.Common;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
-using H.Mvvm;
-using System.Collections;
-using H.Mvvm.ViewModels.Base;
+﻿global using H.Controls.Form;
+global using System.ComponentModel.DataAnnotations;
+global using System.ComponentModel;
+global using System.Windows;
+global using H.Common.Interfaces;
+global using H.Services.Message.Form;
+global using H.Services.Message.Dialog;
+global using H.Extensions.Common;
+global using H.Services.Message;
 
 namespace H.Modules.Messages.Form
 {
@@ -73,7 +70,7 @@ namespace H.Modules.Messages.Form
 
         private async Task<bool?> ShowEdit<T, P>(T value, Action<IDialog> action = null, Predicate<T> match = null, Action<P> option = null, Window owner = null) where P : class, IFormOption, new()
         {
-            Func<bool> canSumit = () =>
+            Func<Task<bool>> canSumit = async () =>
             {
                 //如果传入验证方式则不用ModelState
                 if (match != null)
@@ -81,16 +78,16 @@ namespace H.Modules.Messages.Form
 
                 if (value.ModelState(out List<string> errors) == false)
                 {
-                    IocMessage.Dialog.Show(errors.FirstOrDefault());
+                    await IocMessage.Dialog.Show(errors.FirstOrDefault());
                     return false;
                 }
                 return true;
             };
 
-            return await this.Show<T, P>(value, canSumit, action, option, owner);
+            return await this.Show(value, canSumit, action, option, owner);
         }
 
-        private async Task<bool?> Show<T, P>(T value, Func<bool> canSumit = null, Action<IDialog> action = null, Action<P> option = null, Window owner = null) where P : class, IFormOption, new()
+        private async Task<bool?> Show<T, P>(T value, Func<Task<bool>> canSumit = null, Action<IDialog> action = null, Action<P> option = null, Window owner = null) where P : class, IFormOption, new()
         {
             var presenter = Activator.CreateInstance<P>();
             presenter.SelectObject = value;

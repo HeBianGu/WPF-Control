@@ -14,6 +14,8 @@
                   Height="{Binding Height}"
                   MinWidth="{Binding MinWidth}"
                   MinHeight="{Binding MinHeight}"
+                  MaxWidth="{Binding MaxWidth}"
+                  MaxHeight="{Binding MaxHeight}"
                   Margin="{Binding Margin}"
                   HorizontalAlignment="{Binding HorizontalAlignment}"
                   VerticalAlignment="{Binding VerticalAlignment}">
@@ -36,8 +38,8 @@
                 <Border Height="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}"
                         Background="{DynamicResource {x:Static h:BrushKeys.CaptionBackground}}"
                         CornerRadius="2 2 0 0"
-                        TextBlock.Foreground="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionForeground)}"
-                        TextElement.Foreground="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=(h:Cattach.CaptionForeground)}">
+                        TextBlock.Foreground="{DynamicResource {x:Static h:BrushKeys.CaptionForeground}}"
+                        TextElement.Foreground="{DynamicResource {x:Static h:BrushKeys.CaptionForeground}}">
                     <!--  Background="{DynamicResource {x:Static h:BrushKeys.CaptionBackground}}"  -->
                     <!--
                         BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
@@ -67,7 +69,8 @@
                                       Grid.Row="1"
                                       Grid.ColumnSpan="3"
                                       HorizontalAlignment="Stretch"
-                                      Content="{Binding Presenter}" />
+                                      Content="{Binding Presenter}"
+                                      ContentTemplate="{Binding PresenterTemplate}" />
                 </Grid>
                 <StackPanel Grid.Row="2"
                             MinHeight="20"

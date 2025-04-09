@@ -1,4 +1,6 @@
-﻿namespace H.Controls.Diagram.Presenter.LinkDatas;
+﻿using H.Themes.FontSizes;
+
+namespace H.Controls.Diagram.Presenter.LinkDatas;
 
 public interface ITextLinkData : ITextable
 {

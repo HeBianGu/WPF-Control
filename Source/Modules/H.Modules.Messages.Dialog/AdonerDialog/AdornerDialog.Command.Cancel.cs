@@ -1,4 +1,5 @@
-﻿using H.Mvvm;
+﻿using H.Common.Commands;
+using H.Mvvm;
 using System.ComponentModel.DataAnnotations;
 
 namespace H.Modules.Messages.Dialog

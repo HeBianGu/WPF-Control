@@ -1,7 +1,6 @@
-﻿namespace H.Services.Common
-{
-    //public interface IMetaSetting
-    //{
+﻿namespace H.Services.Common.Serialize.Meta;
 
-    //}
-}
+//public interface IMetaSetting
+//{
+
+//}

@@ -1,15 +1,12 @@
-﻿using System;
+﻿namespace H.Extensions.DataBase;
 
-namespace H.Extensions.DataBase
+/// <summary>
+/// 定义默认主键类型为Guid的实体基类
+/// </summary>
+public abstract class StringEntityBase : EntityBase<string>
 {
-    /// <summary>
-    /// 定义默认主键类型为Guid的实体基类
-    /// </summary>
-    public abstract class StringEntityBase : EntityBase<string>
+    public StringEntityBase()
     {
-        public StringEntityBase()
-        {
-            this.ID = Guid.NewGuid().ToString();
-        }
+        this.ID = Guid.NewGuid().ToString();
     }
 }

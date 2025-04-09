@@ -7,9 +7,10 @@
         Title="MainWindow"
         Width="800"
         Height="450"
-        Style="{StaticResource {x:Type Window}}"
+        Style="{StaticResource {x:Static WindowKeys.Default}}"
         mc:Ignorable="d">
     <UniformGrid>
-        <ContentPresenter Content="{Ioc Type={x:Type ISettingButtonPresenter}}" />
+        <FontIconButton Command="{ShowSettingCommand}"
+                        Style="{DynamicResource {x:Static FontIconButtonKeys.Command}}" />
     </UniformGrid>
 </Window>

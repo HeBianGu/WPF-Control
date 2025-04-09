@@ -1,20 +1,8 @@
-﻿using H.Controls.TagBox;
-using H.Extensions.Common;
-using H.Extensions.FFMpeg;
-using H.Extensions.ViewModel;
-using H.Services.Common;
-using H.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text.Json.Serialization;
-using System.Windows;
-using System.Xml.Serialization;
+﻿global using H.Extensions.FFMpeg;
+global using System.Diagnostics;
+global using System.Text.Json.Serialization;
+global using System.Windows;
+global using System.Xml.Serialization;
 
 namespace H.App.FileManager
 {
@@ -98,7 +86,7 @@ namespace H.App.FileManager
                        return await Save();
                    });
                 if (r >= 0)
-                    IocMessage.Snack.ShowInfo("保存完成");
+                    IocMessage.ShowSnackInfo("保存完成");
                 else
                     IocMessage.Snack.ShowError("保存失败");
             }

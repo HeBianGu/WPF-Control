@@ -57,7 +57,8 @@
     </DataTemplate>
 
     <DataTemplate x:Key="DocumentTitleTemplate">
-        <TextBlock Text="{Binding Title}"
+        <TextBlock Margin="10,0"
+                   Text="{Binding Title}"
                    TextTrimming="CharacterEllipsis" />
     </DataTemplate>
 

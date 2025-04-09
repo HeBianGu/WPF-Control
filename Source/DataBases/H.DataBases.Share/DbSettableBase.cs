@@ -20,6 +20,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Xml.Serialization;
+using H.Mvvm.Commands;
+using H.Services.Message;
+using H.Common.Interfaces;
+using H.Services.Common.DataBase;
+using H.Extensions.AppPath;
+using System.IO;
+using H.Services.AppPath;
 
 namespace H.DataBases.Share
 {
@@ -27,11 +34,34 @@ namespace H.DataBases.Share
     {
         public abstract string GetConnect();
 
+        public override void LoadDefault()
+        {
+            base.LoadDefault();
+            this.ConfigPath = Path.Combine(AppPaths.Instance.Config, this.GetType().Name + AppPaths.Instance.ConfigExtention);
+        }
+        protected override string GetDefaultPath()
+        {
+            return this.ConfigPath;
+        }
+        private string _configPath;
+        [ReadOnly(true)]
+        [Browsable(false)]
+        [Display(Name = "文件路径")]
+        public string ConfigPath
+        {
+            get { return _configPath; }
+            set
+            {
+                _configPath = value;
+                RaisePropertyChanged();
+            }
+        }
+
         [System.Text.Json.Serialization.JsonIgnore]
         [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         [Display(Name = "测试连接")]
-        public InvokeCommand ConnectCommand => new InvokeCommand(async (s,e) =>
+        public InvokeCommand ConnectCommand => new InvokeCommand(async (s, e) =>
         {
             Tuple<bool, string> r = await Task.Run(() =>
               {
@@ -61,11 +91,11 @@ namespace H.DataBases.Share
         });
 
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         [Display(Name = "保存配置")]
-        public RelayCommand SaveCommand => new RelayCommand(e=>
+        public RelayCommand SaveCommand => new RelayCommand(e =>
         {
             bool r = this.Save(out string message);
             if (r)

@@ -1,20 +1,17 @@
-﻿using H.Themes.Default;
-using System;
+﻿using H.Themes.Colors;
+using System.ComponentModel.DataAnnotations;
 using System.Windows;
 
-namespace H.Themes.Colors.Gray
+namespace H.Themes.Colors.Gray;
+[Display(Name = "浅灰色（推荐）", GroupName = "强力推荐", Description = "纯色", Order = 10, Prompt = "强力推荐")]
+public class GrayLightColorResource : ColorResourceBase
 {
-    public class GrayLightColorResource : IColorResource
+    public GrayLightColorResource()
     {
-        public string Name => "浅灰色";
-        public ResourceDictionary Resource => new ResourceDictionary()
-        {
-            Source = new Uri("pack://application:,,,/H.Themes.Colors.Gray;component/Light.xaml")
-        };
-
-        public override string ToString()
-        {
-            return this.Name;
-        }
+        this.IsDark = false;
     }
+    public override ResourceDictionary Resource => new ResourceDictionary()
+    {
+        Source = new Uri("pack://application:,,,/H.Themes.Colors.Gray;component/Light.xaml")
+    };
 }

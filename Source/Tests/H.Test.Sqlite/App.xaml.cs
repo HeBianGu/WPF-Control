@@ -13,6 +13,7 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
 using H.Iocable;
+using H.Services.Common.DataBase;
 
 namespace H.Test.Sqlite
 {
@@ -36,6 +37,12 @@ namespace H.Test.Sqlite
             {
                 x.TrackLinkedCacheEntries = true;
             });
+        }
+
+        protected override void Configure(IApplicationBuilder app)
+        {
+            base.Configure(app);
+            app.UseSqlite();
         }
 
         protected override Window CreateMainWindow(StartupEventArgs e)

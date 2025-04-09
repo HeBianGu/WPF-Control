@@ -1,7 +1,4 @@
-﻿using System;
-using System.Text.Json;
-
-namespace H.Extensions.TypeLicense.LicenseProviders;
+﻿namespace H.Extensions.TypeLicense.LicenseProviders;
 
 public class EndTimeTypeLicense : ValidTypeLicense
 {

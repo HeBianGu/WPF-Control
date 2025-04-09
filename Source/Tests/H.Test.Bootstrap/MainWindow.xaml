@@ -1,0 +1,738 @@
+﻿<Window x:Class="H.Test.Bootstrap.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:h="https://github.com/HeBianGu"
+        xmlns:local="clr-namespace:H.Test.Bootstrap"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        Title="MainWindow"
+        Width="1100"
+        Height="650"
+        Style="{StaticResource {x:Static WindowKeys.Default}}"
+        mc:Ignorable="d">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="文件">
+                <MenuItem Header="文件" />
+                <MenuItem Header="文件" />
+                <MenuItem Header="文件" />
+                <MenuItem Header="文件">
+                    <MenuItem Header="文件" />
+                    <MenuItem Header="文件" />
+                    <MenuItem Header="文件" />
+                    <MenuItem Header="文件" />
+                    <MenuItem Header="文件" />
+                </MenuItem>
+                <MenuItem Header="文件" />
+            </MenuItem>
+            <MenuItem Header="文件" />
+            <MenuItem Header="文件" />
+            <MenuItem Header="文件" />
+            <MenuItem Header="文件" />
+            <MenuItem Header="文件" />
+        </Menu>
+        <ToolBar DockPanel.Dock="Top">
+            <FontIconButton Command="{ShowSettingCommand}"
+                            Style="{DynamicResource {x:Static FontIconButtonKeys.Command}}" />
+            <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+                <Border>
+                    <Border.Background>
+                        <DrawingBrush>
+                            <DrawingBrush.Drawing>
+                                <DrawingGroup>
+                                    <DrawingGroup.Children>
+                                        <GeometryDrawing Brush="#00FFFFFF"
+                                                         Geometry="F1M16,16L0,16 0,0 16,0z" />
+                                        <GeometryDrawing Brush="#FFF6F6F6"
+                                                         Geometry="F1M13.4141,0L2.5861,0 9.99999999997669E-05,2.586 9.99999999997669E-05,9.414 0.3491,9.763C0.1251,10.298 9.99999999997669E-05,10.884 9.99999999997669E-05,11.5 9.99999999997669E-05,13.985 2.0151,16 4.5001,16 6.8141,16 8.6981,14.247 8.9501,12L13.4141,12 16.0001,9.414 16.0001,2.586z" />
+                                        <GeometryDrawing Brush="#FF414141"
+                                                         Geometry="F1M13,1L3,1 1,3 1,8.703C1.518,8.056,2.204,7.559,3,7.275L3,3.828 3.828,3 12.172,3 13,3.828 13,8.172 12.172,9 8.24,9C8.631,9.583,8.868,10.268,8.95,11L13,11 15,9 15,3z" />
+                                        <GeometryDrawing Brush="#FF414141"
+                                                         Geometry="F1M7.4858,9.7217L3.4998,13.7067 1.6468,11.8537 2.3538,11.1467 3.4998,12.2927 6.8608,8.9317C6.2378,8.3587 5.4138,7.9997 4.4998,7.9997 2.5678,7.9997 0.9998,9.5677 0.9998,11.4997 0.9998,13.4327 2.5678,14.9997 4.4998,14.9997 6.4328,14.9997 7.9998,13.4327 7.9998,11.4997 7.9998,10.8437 7.8018,10.2427 7.4858,9.7217 M7.4938,9.7127C7.4808,9.6907 7.4598,9.6747 7.4458,9.6537 7.4598,9.6757 7.4718,9.6997 7.4858,9.7217z M6.8608,8.9317C7.0898,9.1427 7.2778,9.3907 7.4458,9.6537 7.2798,9.3887 7.0898,9.1427 6.8608,8.9317" />
+                                        <GeometryDrawing Brush="#FFF0EFF1"
+                                                         Geometry="F1M12.1719,3L3.8279,3 2.9999,3.828 2.9999,7.275C3.4709,7.108 3.9709,7 4.4999,7 6.0599,7 7.4329,7.794 8.2399,9L12.1719,9 12.9999,8.172 12.9999,3.828z" />
+                                        <GeometryDrawing Brush="#FFF0EFF1"
+                                                         Geometry="F1M2.3535,11.1465L1.6465,11.8535 3.4995,13.7075 7.4945,9.7125C7.3205,9.4215,7.1095,9.1605,6.8615,8.9315L3.4995,12.2925z" />
+                                    </DrawingGroup.Children>
+                                </DrawingGroup>
+                            </DrawingBrush.Drawing>
+                        </DrawingBrush>
+                    </Border.Background>
+                </Border>
+            </Button>
+            <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+                <Border>
+                    <Border.Background>
+                        <DrawingBrush>
+                            <DrawingBrush.Drawing>
+                                <DrawingGroup>
+                                    <DrawingGroup.Children>
+                                        <GeometryDrawing Brush="#00FFFFFF"
+                                                         Geometry="F1M16,16L0,16 0,0 16,0z" />
+                                        <GeometryDrawing Brush="#FFF6F6F6"
+                                                         Geometry="F1M16,0L16,16 2,16 2,14.977C0.792,14.065 0,12.63 0,11 0,9.37 0.792,7.935 2,7.023L2,0z" />
+                                        <GeometryDrawing Brush="#FF424242"
+                                                         Geometry="F1M3,1L3,6.422C3.318,6.283,3.651,6.172,4,6.101L4,2 14,2 14,14 8.977,14C8.691,14.38,8.354,14.716,7.973,15L15,15 15,1z M5,5C5.002,5 5.003,5 5.005,5 8.316,5 11,7.684 11,10.995 11,11.7 10.872,12.372 10.649,13L9.573,13C9.844,12.385 10,11.709 10,10.995 10,8.241 7.759,6 5.005,6 5.003,6 5.002,6 5,6z" />
+                                        <GeometryDrawing Brush="#FF424242"
+                                                         Geometry="F1M7.86,8.2099C7.837,8.1859,7.814,8.1629,7.79,8.1399L5,9.9999 4,9.9999 4,11.9999 6,11.9999 6,10.9999z" />
+                                        <GeometryDrawing Brush="#FFF0EFF1"
+                                                         Geometry="F1M7.86,8.2099L6,10.9999 6,11.9999 4,11.9999 4,9.9999 5,9.9999 7.79,8.1399C7.814,8.1629,7.837,8.1859,7.86,8.2099" />
+                                        <GeometryDrawing Brush="#FF00529C"
+                                                         Geometry="F1M6,11L6,12 4,12 4,10 5,10 7.79,8.14C7.814,8.163,7.837,8.186,7.86,8.21z M5,7C2.791,7 1,8.791 1,11 1,13.209 2.791,15 5,15 7.209,15 9,13.209 9,11 9,8.791 7.209,7 5,7" />
+                                        <GeometryDrawing Brush="#FFEFEFF0"
+                                                         Geometry="F1M7.86,8.2099L6,10.9999 6,11.9999 4,11.9999 4,9.9999 5,9.9999 7.79,8.1399C7.814,8.1629,7.837,8.1859,7.86,8.2099" />
+                                    </DrawingGroup.Children>
+                                </DrawingGroup>
+                            </DrawingBrush.Drawing>
+                        </DrawingBrush>
+                    </Border.Background>
+                </Border>
+            </Button>
+            <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+                <Border>
+                    <Border.Background>
+                        <DrawingBrush>
+                            <DrawingBrush.Drawing>
+                                <DrawingGroup>
+                                    <DrawingGroup.Children>
+                                        <GeometryDrawing Brush="#00FFFFFF"
+                                                         Geometry="F1M16,16L0,16 0,0 16,0z" />
+                                        <GeometryDrawing Brush="#FFF6F6F6"
+                                                         Geometry="F1M9,0C7.268,0 5.601,0.646 4.307,1.819 4.307,1.819 0,5.966 0,9 0,10.379 1.122,11.5 2.5,11.5 3.236,11.5 3.942,11.259 4.488,10.82 4.53,10.786 4.621,10.75 4.75,10.75 5.026,10.75 5.25,10.975 5.25,11.25 5.25,11.379 5.214,11.47 5.179,11.513 4.741,12.057 4.5,12.763 4.5,13.5 4.5,14.879 5.622,16 7,16 10.033,16 14.18,11.693 14.18,11.693 15.354,10.4 16,8.733 16,7 16,3.14 12.859,0 9,0" />
+                                        <GeometryDrawing Brush="#FFFFFFFF"
+                                                         Geometry="F1M4.75,9C5.991,9 7,10.01 7,11.25 7,11.761 6.837,12.243 6.542,12.61 6.354,12.844 6.25,13.16 6.25,13.5 6.25,13.913 6.586,14.25 7,14.25 9.895,14.25 12.25,11.895 12.25,9 12.25,6.105 9.895,3.75 7,3.75 4.105,3.75 1.75,6.105 1.75,9 1.75,9.413 2.086,9.75 2.5,9.75 2.84,9.75 3.156,9.646 3.39,9.458 3.757,9.163 4.24,9 4.75,9" />
+                                        <GeometryDrawing Brush="#FF424242"
+                                                         Geometry="F1M6.778,2.2612C7.455,1.9422 8.203,1.7502 9,1.7502 11.895,1.7502 14.25,4.1052 14.25,7.0002 14.25,7.7972 14.058,8.5442 13.739,9.2212 13.718,9.8462 13.619,10.4512 13.44,11.0212 14.406,9.9562 15,8.5482 15,7.0002 15,3.6912 12.309,1.0002 9,1.0002 7.452,1.0002 6.044,1.5942 4.979,2.5602 5.549,2.3802 6.154,2.2812 6.778,2.2612 M4.75,9.0002C5.991,9.0002 7,10.0102 7,11.2502 7,11.7612 6.837,12.2432 6.542,12.6102 6.354,12.8442 6.25,13.1602 6.25,13.5002 6.25,13.9132 6.586,14.2502 7,14.2502 9.895,14.2502 12.25,11.8942 12.25,9.0002 12.25,6.1052 9.895,3.7502 7,3.7502 4.105,3.7502 1.75,6.1052 1.75,9.0002 1.75,9.4132 2.086,9.7502 2.5,9.7502 2.84,9.7502 3.156,9.6462 3.39,9.4582 3.757,9.1632 4.24,9.0002 4.75,9.0002 M7,15.0002C6.173,15.0002 5.5,14.3272 5.5,13.5002 5.5,12.9892 5.663,12.5072 5.958,12.1392 6.147,11.9062 6.25,11.5902 6.25,11.2502 6.25,10.4232 5.577,9.7502 4.75,9.7502 4.41,9.7502 4.094,9.8532 3.86,10.0422 3.493,10.3372 3.01,10.5002 2.5,10.5002 1.673,10.5002 1,9.8272 1,9.0002 1,5.6912 3.691,3.0002 7,3.0002 10.309,3.0002 13,5.6912 13,9.0002 13,12.3082 10.309,15.0002 7,15.0002" />
+                                        <GeometryDrawing Brush="#FF642D90"
+                                                         Geometry="F1M4.75,7.5C4.75,7.914 4.414,8.25 4,8.25 3.586,8.25 3.25,7.914 3.25,7.5 3.25,7.086 3.586,6.75 4,6.75 4.414,6.75 4.75,7.086 4.75,7.5" />
+                                        <GeometryDrawing Brush="#FF1AA1E2"
+                                                         Geometry="F1M7,6C7,6.414 6.664,6.75 6.25,6.75 5.836,6.75 5.5,6.414 5.5,6 5.5,5.586 5.836,5.25 6.25,5.25 6.664,5.25 7,5.586 7,6" />
+                                        <GeometryDrawing Brush="#FF329932"
+                                                         Geometry="F1M10,6.75C10,7.164 9.664,7.5 9.25,7.5 8.836,7.5 8.5,7.164 8.5,6.75 8.5,6.336 8.836,6 9.25,6 9.664,6 10,6.336 10,6.75" />
+                                        <GeometryDrawing Brush="#FFFFCC00"
+                                                         Geometry="F1M10.75,9.75C10.75,10.164 10.414,10.5 10,10.5 9.586,10.5 9.25,10.164 9.25,9.75 9.25,9.336 9.586,9 10,9 10.414,9 10.75,9.336 10.75,9.75" />
+                                        <GeometryDrawing Brush="#FFE41400"
+                                                         Geometry="F1M9.25,12C9.25,12.414 8.914,12.75 8.5,12.75 8.086,12.75 7.75,12.414 7.75,12 7.75,11.586 8.086,11.25 8.5,11.25 8.914,11.25 9.25,11.586 9.25,12" />
+                                    </DrawingGroup.Children>
+                                </DrawingGroup>
+                            </DrawingBrush.Drawing>
+                        </DrawingBrush>
+                    </Border.Background>
+                </Border>
+            </Button>
+            <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+                <Border>
+                    <Border.Background>
+                        <DrawingBrush>
+                            <DrawingBrush.Drawing>
+                                <DrawingGroup>
+                                    <DrawingGroup.Children>
+                                        <GeometryDrawing Brush="#00FFFFFF"
+                                                         Geometry="F1M16,16L0,16 0,0 16,0z" />
+                                        <GeometryDrawing Brush="#00FFFFFF"
+                                                         Geometry="F1M16,16L0,16 0,0 16,0z" />
+                                        <GeometryDrawing Brush="#FFF6F6F6"
+                                                         Geometry="F1M16,8C16,3.582 12.418,0 8,0 4.885,0 2.193,1.784 0.872,4.382L0,3.505 0,8.333 0.0180000000000007,8.352C0.196999999999999,12.46,3.467,15.757,7.564,15.978L7.586,16 12.414,16 11.57,15.151C14.194,13.838,16,11.133,16,8" />
+                                        <GeometryDrawing Brush="#FF414141"
+                                                         Geometry="F1M1.2007,9.5469C1.7887,12.1379,3.7987,14.1649,6.3797,14.7809z" />
+                                        <GeometryDrawing Brush="#FF414141"
+                                                         Geometry="F1M13.7314,8.374C12.6934,8.826 11.7594,9.096 10.8834,9.237 10.9944,8.625 11.0504,8.043 11.0444,7.494 11.0414,7.094 11.0094,6.712 10.9684,6.338 11.6954,6.225 12.4624,6.03 13.2854,5.734 13.5844,6.43 13.7504,7.195 13.7504,8 13.7504,8.126 13.7394,8.25 13.7314,8.374 M9.8804,2.571C11.0564,2.978 12.0594,3.751 12.7494,4.76 12.0624,4.996 11.4154,5.16 10.7974,5.256 10.5844,4.225 10.2474,3.337 9.8804,2.571 M9.7464,9.375C9.1624,9.416 8.5874,9.424 8.0054,9.421 7.3704,9.414 6.7574,9.367 6.1684,9.298 6.0844,8.688 6.0394,8.089 6.0444,7.506 6.0484,7.119 6.0764,6.75 6.1124,6.391 6.7144,6.459 7.3424,6.504 7.9944,6.511 8.1284,6.512 8.2624,6.514 8.3974,6.514 8.8854,6.514 9.3794,6.498 9.8844,6.459 9.9224,6.799 9.9514,7.145 9.9554,7.506 9.9604,8.083 9.8864,8.708 9.7464,9.375 M5.1844,5.153C4.4934,5.033 3.8604,4.881 3.2824,4.718 3.9294,3.788 4.8454,3.062 5.9174,2.645 5.6274,3.368 5.3614,4.199 5.1844,5.153 M7.2674,2.302C7.5074,2.271 7.7514,2.25 8.0004,2.25 8.1654,2.25 8.3274,2.262 8.4884,2.274 8.9564,3.086 9.4314,4.12 9.7094,5.382 9.1374,5.421 8.5764,5.426 8.0054,5.421 7.4064,5.414 6.8254,5.373 6.2664,5.311 6.5004,4.095 6.8844,3.096 7.2674,2.302 M14.9884,7.764C14.8624,4.008 11.7864,0.999999999999999 8.0004,0.999999999999999 5.1564,0.999999999999999 2.7134,2.698 1.6184,5.134L2.5794,6.102C2.6274,5.965 2.6744,5.829 2.7324,5.697 3.4184,5.899 4.1804,6.091 5.0324,6.236 4.9904,6.642 4.9604,7.057 4.9554,7.494 4.9514,7.837 4.9714,8.186 4.9994,8.537L6.8984,10.449C7.2594,10.476 7.6174,10.507 7.9944,10.511 8.1284,10.513 8.2624,10.513 8.3974,10.513 8.7454,10.513 9.0964,10.503 9.4514,10.485 9.2734,11.061 9.0324,11.679 8.7564,12.318L9.5734,13.141C10.0184,12.162 10.3854,11.232 10.6224,10.382 11.5154,10.267 12.4664,10.039 13.5074,9.647 12.9764,11.426 11.6034,12.827 9.8554,13.425L10.8234,14.398C13.2814,13.312 15.0004,10.86 15.0004,8 15.0004,7.92 14.9904,7.843 14.9884,7.764" />
+                                        <GeometryDrawing Brush="#FFF0EFF1"
+                                                         Geometry="F1M10.9688,6.3379C11.6958,6.2249 12.4628,6.0299 13.2848,5.7339 13.5838,6.4299 13.7498,7.1949 13.7498,7.9999 13.7498,8.1259 13.7398,8.2499 13.7318,8.3739 12.6938,8.8259 11.7598,9.0959 10.8838,9.2369 10.9938,8.6249 11.0508,8.0429 11.0448,7.4939 11.0408,7.0939 11.0098,6.7119 10.9688,6.3379" />
+                                        <GeometryDrawing Brush="#FFF0EFF1"
+                                                         Geometry="F1M12.749,4.7598C12.062,4.9958 11.415,5.1598 10.798,5.2558 10.584,4.2248 10.247,3.3368 9.881,2.5718 11.057,2.9788 12.06,3.7508 12.749,4.7598" />
+                                        <GeometryDrawing Brush="#FFF0EFF1"
+                                                         Geometry="F1M8.7563,12.3184C9.0323,11.6784 9.2733,11.0604 9.4513,10.4854 9.0963,10.5034 8.7453,10.5124 8.3973,10.5124 8.2623,10.5124 8.1293,10.5124 7.9943,10.5104 7.6173,10.5064 7.2593,10.4754 6.8993,10.4494z" />
+                                        <GeometryDrawing Brush="#FFF0EFF1"
+                                                         Geometry="F1M8.0059,9.4209C7.3699,9.4139 6.7579,9.3669 6.1679,9.2979 6.0839,8.6889 6.0389,8.0889 6.0449,7.5059 6.0489,7.1189 6.0759,6.7499 6.1119,6.3909 6.7149,6.4589 7.3429,6.5039 7.9939,6.5109 8.1289,6.5119 8.2629,6.5139 8.3979,6.5139 8.8859,6.5139 9.3799,6.4979 9.8849,6.4589 9.9229,6.7989 9.9509,7.1449 9.9549,7.5059 9.9609,8.0829 9.8869,8.7079 9.7459,9.3749 9.1619,9.4159 8.5879,9.4239 8.0059,9.4209" />
+                                        <GeometryDrawing Brush="#FFF0EFF1"
+                                                         Geometry="F1M8,2.25C8.165,2.25 8.327,2.262 8.488,2.274 8.956,3.086 9.432,4.12 9.709,5.382 9.138,5.421 8.576,5.426 8.006,5.421 7.406,5.414 6.825,5.373 6.267,5.311 6.5,4.095 6.885,3.096 7.268,2.302 7.508,2.271 7.751,2.25 8,2.25" />
+                                        <GeometryDrawing Brush="#FFF0EFF1"
+                                                         Geometry="F1M5.917,2.6445C5.627,3.3685 5.361,4.1995 5.185,5.1535 4.493,5.0335 3.86,4.8805 3.282,4.7175 3.93,3.7885 4.846,3.0625 5.917,2.6445" />
+                                        <GeometryDrawing Brush="#FFF0EFF1"
+                                                         Geometry="F1M4.999,8.5371C4.971,8.1851 4.951,7.8371 4.955,7.4941 4.96,7.0571 4.99,6.6411 5.032,6.2361 4.181,6.0911 3.418,5.8991 2.732,5.6971 2.675,5.8291 2.627,5.9651 2.579,6.1011z" />
+                                        <GeometryDrawing Brush="#FFF0EFF1"
+                                                         Geometry="F1M9.3838,13.5752C9.9298,12.4292 10.3508,11.3602 10.6218,10.3822 11.5158,10.2662 12.4668,10.0392 13.5078,9.6472 12.9298,11.5842 11.3578,13.0872 9.3838,13.5752" />
+                                        <GeometryDrawing Brush="#FF378A33"
+                                                         Geometry="F1M1,5.9194L1,7.9194 8,14.9194 10,14.9194z" />
+                                    </DrawingGroup.Children>
+                                </DrawingGroup>
+                            </DrawingBrush.Drawing>
+                        </DrawingBrush>
+                    </Border.Background>
+                </Border>
+            </Button>
+            <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+                <Border>
+                    <Border.Background>
+                        <DrawingBrush>
+                            <DrawingBrush.Drawing>
+                                <DrawingGroup>
+                                    <DrawingGroup.Children>
+                                        <GeometryDrawing Brush="#00FFFFFF"
+                                                         Geometry="F1M0,0L16,0 16,16 0,16z" />
+                                        <GeometryDrawing Brush="#FFF6F6F6"
+                                                         Geometry="F1M6.0003,-0.000199999999999534L6.0003,8.6718 3.2063,5.8788 0.3793,8.7078 7.6713,15.9998 8.3273,15.9998 15.6213,8.7078 12.7923,5.8788 10.0003,8.6718 10.0003,-0.000199999999999534z" />
+                                        <GeometryDrawing Brush="#FF424242"
+                                                         Geometry="F1M3.207,7.293L7,11.086 7,0.999999999999999 9,0.999999999999999 9,11.086 12.793,7.293 14.207,8.707 8,14.914 1.793,8.707z" />
+                                    </DrawingGroup.Children>
+                                </DrawingGroup>
+                            </DrawingBrush.Drawing>
+                        </DrawingBrush>
+                    </Border.Background>
+                </Border>
+            </Button>
+            <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+                <Border>
+                    <Border.Background>
+                        <DrawingBrush>
+                            <DrawingBrush.Drawing>
+                                <DrawingGroup>
+                                    <DrawingGroup.Children>
+                                        <GeometryDrawing Brush="#00FFFFFF"
+                                                         Geometry="F1M16,16L0,16 0,0 16,0z" />
+                                        <GeometryDrawing Brush="#FFF6F6F6"
+                                                         Geometry="F1M12.627,4.3711C12.236,3.9801,11.828,3.6331,11.412,3.3301L10.27,1.7041C9.52,0.6371 8.297,9.99999999997669E-05 7,9.99999999997669E-05 4.794,9.99999999997669E-05 3,1.7941 3,4.0001L3,5.8621 1.69,7.1721C0.960000000000001,7.9031 0.801,9.0381 1.245,10.3681 1.61,11.4661 2.366,12.6231 3.371,13.6271 4.856,15.1131 6.593,16.0001 8.017,16.0001 8.749,16.0001 9.375,15.7621 9.827,15.3091L12.006,13.1311C12.072,13.8961 12.717,14.5001 13.5,14.5001 14.327,14.5001 15,13.8271 15,13.0001L15,8.9961C14.995,7.5801,14.107,5.8511,12.627,4.3711" />
+                                        <GeometryDrawing Brush="#FF424242"
+                                                         Geometry="F1M10.1729,6.418C9.7829,6.809 9.8389,7.964 10.7239,9 10.2289,8.712 9.7049,8.329 9.1869,7.81 7.4769,6.1 7.0889,4.304 7.5739,3.819 8.0579,3.336 9.8539,3.723 11.5629,5.433 12.0809,5.952 12.4649,6.474 12.7529,6.97 11.7179,6.085 10.5649,6.028 10.1729,6.418 M11.9189,5.078C10.0669,3.222,7.8079,2.469,6.8799,3.397L5.9999,4.277 5.9999,8.5C5.9999,9.327 5.3269,10 4.4999,10 3.6729,10 2.9999,9.327 2.9999,8.5L2.9999,7.276 2.3979,7.879C1.4689,8.808 2.2219,11.065 4.0779,12.92 5.9349,14.777 8.1909,15.531 9.1199,14.603L12.9999,10.722 12.9999,13C12.9999,13.276 13.2239,13.5 13.4999,13.5 13.7769,13.5 13.9999,13.276 13.9999,13L13.9999,9C13.9959,7.898,13.2339,6.392,11.9189,5.078" />
+                                        <GeometryDrawing Brush="#FF424242"
+                                                         Geometry="F1M4.5,9C4.776,9,5,8.776,5,8.5L5,4C5,2.896 5.896,2 7,2 7.149,2 7.294,2.019 7.434,2.05 7.609,2.018 7.792,2 7.983,2 8.446,2 8.943,2.103 9.451,2.279 8.909,1.507 8.015,1 7,1 5.343,1 4,2.343 4,4L4,8.5C4,8.776,4.224,9,4.5,9" />
+                                        <GeometryDrawing Brush="#FFEFEFF0"
+                                                         Geometry="F1M12.7529,6.9697C12.4649,6.4737 12.0809,5.9517 11.5629,5.4327 9.8539,3.7227 8.0579,3.3357 7.5739,3.8197 7.0889,4.3037 7.4769,6.0997 9.1869,7.8097 9.7049,8.3287 10.2289,8.7117 10.7239,8.9997 9.8389,7.9647 9.7829,6.8087 10.1729,6.4177 10.5649,6.0277 11.7179,6.0847 12.7529,6.9697" />
+                                    </DrawingGroup.Children>
+                                </DrawingGroup>
+                            </DrawingBrush.Drawing>
+                        </DrawingBrush>
+                    </Border.Background>
+                </Border>
+            </Button>
+            <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+                <Border>
+                    <Border.Background>
+                        <DrawingBrush>
+                            <DrawingBrush.Drawing>
+                                <DrawingGroup>
+                                    <DrawingGroup.Children>
+                                        <GeometryDrawing Brush="#00FFFFFF"
+                                                         Geometry="F1M16,16L0,16 0,0 16,0z" />
+                                        <GeometryDrawing Brush="#FFF6F6F6"
+                                                         Geometry="F1M16,8C16,12.418 12.418,16 8,16 3.582,16 0,12.418 0,8 0,3.581 3.582,0 8,0 12.418,0 16,3.581 16,8" />
+                                        <GeometryDrawing Brush="#FF00539C"
+                                                         Geometry="F1M7.9741,1.0698C11.8011,1.0698 14.9041,4.1728 14.9041,7.9998 14.9041,11.8268 11.8011,14.9298 7.9741,14.9298 4.1461,14.9298 1.0441,11.8268 1.0441,7.9998 1.0441,4.1728 4.1461,1.0698 7.9741,1.0698 M7.9741,2.0598C4.6991,2.0598 2.0341,4.7248 2.0341,7.9998 2.0341,11.2758 4.6991,13.9408 7.9741,13.9408 11.2501,13.9408 13.9151,11.2758 13.9151,7.9998 13.9151,4.7248 11.2501,2.0598 7.9741,2.0598 M9.0001,10.9998L7.0001,10.9998 9.0001,8.9998 4.0001,8.9998 4.0001,6.9998 9.0001,6.9998 7.0001,4.9998 9.0001,4.9998 12.0001,7.9998z" />
+                                    </DrawingGroup.Children>
+                                </DrawingGroup>
+                            </DrawingBrush.Drawing>
+                        </DrawingBrush>
+                    </Border.Background>
+                </Border>
+            </Button>
+            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+            <ToggleButton Style="{StaticResource {x:Static ToolBar.ToggleButtonStyleKey}}">
+                <Border>
+                    <Border.Background>
+                        <DrawingBrush>
+                            <DrawingBrush.Drawing>
+                                <DrawingGroup>
+                                    <DrawingGroup.Children>
+                                        <GeometryDrawing Brush="#00FFFFFF"
+                                                         Geometry="F1M16,16L0,16 0,0 16,0z" />
+                                        <GeometryDrawing Brush="#FFF6F6F6"
+                                                         Geometry="F1M13,3L13,8C13,10.199,11.546,12.107,9.5,12.75L9.5,16 6.5,16 6.5,12.75C4.454,12.107,3,10.199,3,8L3,3 5,3 5,0 11,0 11,3z" />
+                                        <GeometryDrawing Brush="#FF388934"
+                                                         Geometry="F1M10,4L10,1 9,1 9,4 7,4 7,1 6,1 6,4 4,4 4,8C4,10.035,5.532,11.7,7.5,11.949L7.5,15 8.5,15 8.5,11.949C10.468,11.7,12,10.035,12,8L12,4z" />
+                                    </DrawingGroup.Children>
+                                </DrawingGroup>
+                            </DrawingBrush.Drawing>
+                        </DrawingBrush>
+                    </Border.Background>
+                </Border>
+            </ToggleButton>
+            <CheckBox Style="{StaticResource {x:Static ToolBar.CheckBoxStyleKey}}">
+                <Border>
+                    <Border.Background>
+                        <DrawingBrush>
+                            <DrawingBrush.Drawing>
+                                <DrawingGroup>
+                                    <DrawingGroup.Children>
+                                        <GeometryDrawing Brush="#00FFFFFF"
+                                                         Geometry="F1M16,16L0,16 0,0 16,0z" />
+                                        <GeometryDrawing Brush="#FFF6F6F6"
+                                                         Geometry="F1M0,15L16,15 16,1 0,1z" />
+                                        <GeometryDrawing Brush="#FF424242"
+                                                         Geometry="F1M6,10L9,10 9,11 6,11z M3.146,10.146L4.793,8.5 3.146,6.854 3.854,6.146 6.207,8.5 3.854,10.854z M14,4L2,4 2,3 14,3z M14,13L2,13 2,5 14,5z M1,14L15,14 15,2 1,2z" />
+                                    </DrawingGroup.Children>
+                                </DrawingGroup>
+                            </DrawingBrush.Drawing>
+                        </DrawingBrush>
+                    </Border.Background>
+                </Border>
+            </CheckBox>
+            <RadioButton Style="{StaticResource {x:Static ToolBar.RadioButtonStyleKey}}">
+                <Border>
+                    <Border.Background>
+                        <DrawingBrush>
+                            <DrawingBrush.Drawing>
+                                <DrawingGroup>
+                                    <DrawingGroup.Children>
+                                        <GeometryDrawing Brush="#00FFFFFF"
+                                                         Geometry="F1M0,0L16,0 16,16 0,16z" />
+                                        <GeometryDrawing Brush="#FFF6F6F6"
+                                                         Geometry="F1M14.9961,4.5L14.9961,12.5C14.9961,13.327,14.3231,14,13.4961,14L8.4091,14C7.6721,15.19 6.3161,16 4.7501,16 4.1351,16 3.5411,15.875 3.0001,15.644L3.0001,16 9.99999999997669E-05,16 9.99999999997669E-05,12.5 9.99999999997669E-05,11 9.99999999997669E-05,2.5C9.99999999997669E-05,1.673,0.6731,1,1.5001,1L9.6101,1 10.6101,3 13.4961,3C14.3231,3,14.9961,3.673,14.9961,4.5" />
+                                        <GeometryDrawing Brush="#FFDCB67A"
+                                                         Geometry="F1M2,4L2,3 8.374,3 8.874,4z M13.496,4L10,4 9.992,4 8.992,2 1.5,2C1.225,2,1,2.224,1,2.5L1,8.453C1.78,7.573 2.939,7 4.25,7 4.865,7 5.459,7.125 6,7.356L6,7 9,7 9,12C9,12.347,8.938,12.678,8.849,13L13.496,13C13.773,13,13.996,12.776,13.996,12.5L13.996,4.5C13.996,4.224,13.773,4,13.496,4" />
+                                        <GeometryDrawing Brush="#FF424242"
+                                                         Geometry="F1M4.75,14C3.921,14,3.203,13.595,2.813,13L4,13 4,12 1,12 1,15 2,15 2,13.581C2.575,14.43 3.588,15 4.75,15 6.542,15 8,13.654 8,12L7,12C7,13.103,5.99,14,4.75,14 M8,8L8,11 5,11 5,10 6.187,10C5.797,9.405 5.079,9 4.25,9 3.01,9 2,9.897 2,11L1,11C1,9.346 2.458,8 4.25,8 5.412,8 6.425,8.57 7,9.419L7,8z" />
+                                        <GeometryDrawing Brush="#FFEFEFF0"
+                                                         Geometry="F1M1.9998,3.0004L1.9998,4.0004 8.8738,4.0004 8.3748,3.0004z" />
+                                    </DrawingGroup.Children>
+                                </DrawingGroup>
+                            </DrawingBrush.Drawing>
+                        </DrawingBrush>
+                    </Border.Background>
+                </Border>
+            </RadioButton>
+            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+
+            <TextBox Width="200"
+                     Margin="2,0"
+                     Style="{StaticResource {x:Static ToolBar.TextBoxStyleKey}}"
+                     Text="搜索" />
+        </ToolBar>
+        <!--<ToolBar DockPanel.Dock="Top">
+            <Button Content="F1M8.583,8L13,12.424 12.424,13 8,8.583 3.576,13 3,12.424 7.417,8 3,3.576 3.576,3 8,7.417 12.424,3 13,3.576z" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" />
+            <ToggleButton Content="F1M8.583,8L13,12.424 12.424,13 8,8.583 3.576,13 3,12.424 7.417,8 3,3.576 3.576,3 8,7.417 12.424,3 13,3.576z" Style="{StaticResource {x:Static ToolBar.ToggleButtonStyleKey}}" />
+            <CheckBox Content="F1M8.583,8L13,12.424 12.424,13 8,8.583 3.576,13 3,12.424 7.417,8 3,3.576 3.576,3 8,7.417 12.424,3 13,3.576z" Style="{StaticResource {x:Static ToolBar.CheckBoxStyleKey}}" />
+            <RadioButton Content="F1M8.583,8L13,12.424 12.424,13 8,8.583 3.576,13 3,12.424 7.417,8 3,3.576 3.576,3 8,7.417 12.424,3 13,3.576z" Style="{StaticResource {x:Static ToolBar.RadioButtonStyleKey}}" />
+            <TextBox Style="{StaticResource {x:Static ToolBar.TextBoxStyleKey}}" Text="保存" />
+        </ToolBar>-->
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem VerticalAlignment="Center"
+                           VerticalContentAlignment="Center"
+                           Content="状态" />
+            <Separator Style="{StaticResource {x:Static StatusBar.SeparatorStyleKey}}" />
+        </StatusBar>
+        <TabControl TabStripPlacement="Left">
+            <TabItem Header="TabControl">
+                <TabControl ItemContainerStyle="{DynamicResource {x:Static TabItemKeys.Line}}"
+                            ItemsSource="{GetStudents Count=10}">
+                    <TabControl.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}" />
+                        </DataTemplate>
+                    </TabControl.ItemTemplate>
+                </TabControl>
+            </TabItem>
+            <TabItem Header="Button">
+                <UniformGrid>
+                    <Button Content="Button" />
+                    <Button Content="Accent"
+                            Style="{DynamicResource {x:Static h:ButtonKeys.Accent}}" />
+                    <Button Content="Success"
+                            Style="{DynamicResource {x:Static h:ButtonKeys.Success}}" />
+                    <Button Content="Error"
+                            Style="{DynamicResource {x:Static h:ButtonKeys.Error}}" />
+                    <!--<Button Content="Accent">
+                        <Button.Style>
+                            <Style BasedOn="{StaticResource {x:Static h:ButtonKeys.Default}}"
+                                   TargetType="Button">
+                                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Accent}}" />
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.White}}" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="true">
+                                        <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.White}}" />
+                                        <Setter Property="Background">
+                                            <Setter.Value>
+                                                <SolidColorBrush Opacity="0.8" Color="{DynamicResource {x:Static ColorKeys.Accent}}" />
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>-->
+                    <Button Content="Button"
+                            IsEnabled="False" />
+                    <Button Padding="10"
+                            Content="F1M12,12L4,12 4,4 12,4z M3,13L13,13 13,3 3,3z"
+                            Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}" />
+                    <Button Padding="10"
+                            Content="F1M12,12L4,12 4,4 12,4z M3,13L13,13 13,3 3,3z"
+                            Style="{DynamicResource {x:Static h:ButtonKeys.GeometryError}}" />
+                    <Button Padding="10"
+                            Style="{DynamicResource {x:Static h:ButtonKeys.Tool}}">
+                        <Border Background="Red" />
+                    </Button>
+
+                </UniformGrid>
+            </TabItem>
+            <TabItem Header="组合">
+                <GroupBox Margin="10"
+                          Header="对齐">
+                    <StackPanel>
+                        <TextBox Text="对齐" />
+                        <PasswordBox Password="对齐" />
+                        <ComboBox SelectedIndex="0">
+                            <system:String>对齐1</system:String>
+                            <system:String>对齐2</system:String>
+                            <system:String>对齐3</system:String>
+                            <system:String>对齐4</system:String>
+                            <system:String>对齐5</system:String>
+                        </ComboBox>
+                        <DatePicker SelectedDate="{x:Static system:DateTime.Now}" />
+                        <CheckBox Content="对齐" />
+                        <RadioButton Content="对齐" />
+                    </StackPanel>
+                </GroupBox>
+            </TabItem>
+            <TabItem Header="TextBlock">
+                <TextBlock Text="TextBlock" />
+            </TabItem>
+            <TabItem Header="CheckBox">
+                <ItemsControl>
+                    <CheckBox Content="CheckBox"
+                              IsChecked="True"
+                              IsThreeState="True" />
+                    <CheckBox Content="CheckBox"
+                              IsChecked="False"
+                              IsThreeState="True" />
+                    <CheckBox Content="CheckBox"
+                              IsChecked="{x:Null}"
+                              IsThreeState="True" />
+                    <CheckBox Content="CheckBox"
+                              IsThreeState="True" />
+                    <CheckBox Content="CheckBox"
+                              IsThreeState="True" />
+                    <CheckBox Content="CheckBox"
+                              IsThreeState="True" />
+                    <CheckBox Content="CheckBox"
+                              IsThreeState="True" />
+                </ItemsControl>
+            </TabItem>
+            <TabItem Header="ToggleButton">
+                <UniformGrid>
+                    <ToggleButton Content="ToggleButton" />
+                    <ToggleButton Content="{x:Static h:Geometrys.Left}"
+                                  Style="{DynamicResource {x:Static h:ToggleButtonKeys.Geometry}}" />
+                    <ToggleButton h:Cattach.CheckedGeometry="{x:Static h:Geometrys.Left}"
+                                  h:Cattach.UnCheckedGeometry="{x:Static h:Geometrys.Right}"
+                                  Style="{DynamicResource {x:Static h:ToggleButtonKeys.SwitchGeometry}}" />
+
+                </UniformGrid>
+            </TabItem>
+            <TabItem Header="ComboBox">
+                <StackPanel>
+                    <ComboBox SelectedIndex="0">
+                        <system:String>1</system:String>
+                        <system:String>2</system:String>
+                        <system:String>3</system:String>
+                        <system:String>4</system:String>
+                        <system:String>5</system:String>
+                    </ComboBox>
+                    <ComboBox IsEditable="True"
+                              SelectedIndex="0">
+                        <system:String>1</system:String>
+                        <system:String>2</system:String>
+                        <system:String>3</system:String>
+                        <system:String>4</system:String>
+                        <system:String>5</system:String>
+                    </ComboBox>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="DataGrid">
+                <DataGrid ItemsSource="{h:GetStudents Count=50}"
+                          SelectedIndex="0" />
+            </TabItem>
+            <TabItem Header="TextBox">
+                <TabControl>
+                    <TabItem Header="Default">
+                        <StackPanel>
+                            <TextBox Text="12345566" />
+                            <TextBox IsReadOnly="True"
+                                     Text="IsReadOnly" />
+                            <TextBox IsEnabled="False"
+                                     Text="IsEnabled" />
+                            <TextBox DataContext="{GetStudent}"
+                                     ToolTip="Class">
+                                <TextBox.Text>
+                                    <Binding Mode="TwoWay"
+                                             Path="Class"
+                                             UpdateSourceTrigger="PropertyChanged"
+                                             ValidatesOnDataErrors="True">
+                                        <Binding.ValidationRules>
+                                            <h:RequiredValidationRule ErrorMessage="数据不能为空" />
+                                            <h:RegularExpressionValidationRule ErrorMessage="只能输入汉字"
+                                                                               Pattern="^[\u4e00-\u9fa5]{0,}$" />
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem Header="Attach">
+                        <StackPanel>
+                            <TextBox Style="{DynamicResource {x:Static TextBoxKeys.Attach}}"
+                                     Text="Attach" />
+                            <TextBox Cattach.Title="Title"
+                                     Style="{DynamicResource {x:Static TextBoxKeys.Attach}}"
+                                     Text="Title" />
+                            <TextBox Style="{DynamicResource {x:Static TextBoxKeys.Attach}}"
+                                     Text="Attach">
+                                <Cattach.Attach>
+                                    <Button Height="Auto"
+                                            Content="Button" />
+                                </Cattach.Attach>
+                            </TextBox>
+
+                            <TextBox Cattach.Icon="{x:Static Geometrys.Info}"
+                                     Style="{DynamicResource {x:Static TextBoxKeys.Attach}}"
+                                     Text="Info" />
+                            <TextBox Cattach.Icon="{x:Static Geometrys.Info}"
+                                     Cattach.Title="Title"
+                                     Style="{DynamicResource {x:Static TextBoxKeys.Attach}}"
+                                     Text="Title+Info">
+                                <Cattach.Attach>
+                                    <Button Height="Auto"
+                                            Content="Button" />
+                                </Cattach.Attach>
+                            </TextBox>
+                            <TextBox Style="{DynamicResource {x:Static TextBoxKeys.Delete}}"
+                                     Text="Delete" />
+
+                            <TextBox Cattach.Watermark="Watermark"
+                                     Style="{DynamicResource {x:Static TextBoxKeys.Attach}}" />
+                        </StackPanel>
+                    </TabItem>
+                </TabControl>
+            </TabItem>
+            <TabItem Header="ListBox">
+                <ListBox h:Cattach.ItemHeight="Auto"
+                         ItemsSource="{h:GetStudents Count=50}"
+                         SelectedIndex="0" />
+            </TabItem>
+            <TabItem Header="ListView">
+                <ListView ItemsSource="{h:GetStudents Count=50}"
+                          SelectedIndex="0">
+                    <ListView.View>
+                        <GridView>
+                            <GridView.Columns>
+                                <GridViewColumn Width="100"
+                                                DisplayMemberBinding="{Binding Name}"
+                                                Header="名称" />
+                                <GridViewColumn Width="100"
+                                                DisplayMemberBinding="{Binding Age}"
+                                                Header="年龄" />
+                                <GridViewColumn Width="200"
+                                                DisplayMemberBinding="{Binding Emall}"
+                                                Header="邮箱" />
+                                <GridViewColumn Width="100"
+                                                DisplayMemberBinding="{Binding Tel}"
+                                                Header="电话" />
+                            </GridView.Columns>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+            <TabItem Header="GroupBox">
+                <GroupBox Margin="10"
+                          Header="GroupBox">
+                    <ListBox h:Cattach.ItemHeight="Auto"
+                             ItemsSource="{h:GetStudents Count=50}" />
+                </GroupBox>
+            </TabItem>
+            <TabItem Header="Label">
+                <Label Content="Label" />
+            </TabItem>
+            <TabItem Header="Expander">
+                <UniformGrid>
+                    <Expander Margin="10"
+                              Header="Expander"
+                              IsExpanded="True">
+                        <ListBox h:Cattach.ItemHeight="Auto"
+                                 ItemsSource="{h:GetStudents Count=50}" />
+                    </Expander>
+                    <Expander Margin="10"
+                              Header="Expander"
+                              IsExpanded="True"
+                              Style="{DynamicResource {x:Static ExpanderKeys.ToggleRight}}">
+                        <ListBox h:Cattach.ItemHeight="Auto"
+                                 ItemsSource="{h:GetStudents Count=50}" />
+                    </Expander>
+
+                    <Expander Margin="10"
+                              Header="Expander"
+                              IsExpanded="True">
+                        <Cattach.CaptionRightTemplate>
+                            <ControlTemplate>
+                                <!--<FontIconButton />-->
+                            </ControlTemplate>
+                        </Cattach.CaptionRightTemplate>
+                        <ListBox h:Cattach.ItemHeight="Auto"
+                                 ItemsSource="{h:GetStudents Count=50}" />
+                    </Expander>
+
+                    <Expander Margin="10"
+                              Header="Expander"
+                              IsExpanded="True"
+                              Style="{DynamicResource {x:Static ExpanderKeys.ToggleRight}}">
+                        <Cattach.CaptionRightTemplate>
+                            <ControlTemplate>
+                                <!--<FontIconButton />-->
+                            </ControlTemplate>
+                        </Cattach.CaptionRightTemplate>
+                        <ListBox h:Cattach.ItemHeight="Auto"
+                                 ItemsSource="{h:GetStudents Count=50}" />
+                    </Expander>
+                </UniformGrid>
+            </TabItem>
+            <TabItem Header="ListBox">
+                <ListBox h:Cattach.ItemHeight="Auto"
+                         ItemsSource="{h:GetStudents Count=50}"
+                         SelectedIndex="0" />
+            </TabItem>
+            <TabItem Header="PasswordBox">
+                <PasswordBox />
+            </TabItem>
+            <TabItem Header="ProgressBar">
+                <ProgressBar Value="50" />
+            </TabItem>
+            <TabItem Header="RadioButton">
+                <StackPanel>
+                    <RadioButton Content="RadioButton" />
+                    <RadioButton Content="RadioButton" />
+                    <RadioButton Content="RadioButton" />
+                    <RadioButton Content="RadioButton" />
+                    <RadioButton Content="RadioButton" />
+                    <RadioButton Content="RadioButton" />
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="RepeatButton">
+                <RepeatButton>
+                    <RepeatButton.Content>
+                        <PathGeometry>M 0 0 L 4 4 L 8 0 Z</PathGeometry>
+                    </RepeatButton.Content>
+                </RepeatButton>
+            </TabItem>
+            <TabItem Header="ScrollViewer">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                    <Border Width="1000"
+                            Height="1000">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <LinearGradientBrush.GradientStops>
+                                    <GradientStop Offset="0" Color="Red" />
+                                    <GradientStop Offset="1" Color="Green" />
+                                </LinearGradientBrush.GradientStops>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                    </Border>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="Slider">
+                <Slider Maximum="100"
+                        Value="50" />
+            </TabItem>
+            <TabItem Header="ToolTip">
+                <TextBlock Text="ToolTip"
+                           ToolTip="ToolTip" />
+            </TabItem>
+            <TabItem Header="RepeatButton">
+                <RepeatButton Content="RepeatButton" />
+            </TabItem>
+            <TabItem Header="DatePicker">
+                <StackPanel>
+                    <DatePicker />
+                    <DatePicker IsEnabled="False"
+                                SelectedDate="{x:Static system:DateTime.Now}" />
+                    <DatePicker />
+                    <DatePicker SelectedDate="{x:Static system:DateTime.Now}"
+                                SelectedDateFormat="Long" />
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Calendar">
+                <ScrollViewer>
+                    <UniformGrid>
+                        <Calendar />
+                        <Calendar IsTodayHighlighted="False" />
+                        <Calendar FirstDayOfWeek="Sunday" />
+                        <Calendar DisplayDateEnd="{Binding Source={x:Static system:DateTime.Now}, Mode=OneWay, Converter={x:Static Converter.GetDateTimeToAddDays}, ConverterParameter=10}"
+                                  DisplayDateStart="{x:Static system:DateTime.Now}" />
+                    </UniformGrid>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="ContextMenu">
+                <TextBlock Text="ContextMenu">
+                    <TextBlock.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="文件">
+                                <MenuItem Header="文件" />
+                                <MenuItem Header="文件" />
+                                <MenuItem Header="文件" />
+                                <MenuItem Header="文件">
+                                    <MenuItem Header="文件" />
+                                    <MenuItem Header="文件" />
+                                    <MenuItem Header="文件" />
+                                    <MenuItem Header="文件" />
+                                    <MenuItem Header="文件" />
+                                </MenuItem>
+                                <MenuItem Header="文件" />
+                            </MenuItem>
+                            <MenuItem Header="文件" />
+                            <MenuItem Header="文件" />
+                            <MenuItem Header="文件" />
+                            <MenuItem Header="文件" />
+                            <MenuItem Header="文件" />
+                        </ContextMenu>
+                    </TextBlock.ContextMenu>
+                </TextBlock>
+            </TabItem>
+            <TabItem Header="DocumentViewer">
+                <DocumentViewer />
+            </TabItem>
+            <TabItem Header="Thumb">
+                <Thumb />
+            </TabItem>
+            <TabItem Header="TreeView">
+                <TreeView>
+                    <TreeViewItem Header="文件">
+                        <TreeViewItem Header="文件" />
+                        <TreeViewItem Header="文件" />
+                        <TreeViewItem Header="文件" />
+                        <TreeViewItem Header="文件">
+                            <TreeViewItem Header="文件" />
+                            <TreeViewItem Header="文件" />
+                            <TreeViewItem Header="文件" />
+                            <TreeViewItem Header="文件" />
+                            <TreeViewItem Header="文件" />
+                        </TreeViewItem>
+                        <TreeViewItem Header="文件" />
+                    </TreeViewItem>
+                    <TreeViewItem Header="文件" />
+                    <TreeViewItem Header="文件" />
+                    <TreeViewItem Header="文件" />
+                    <TreeViewItem Header="文件" />
+                    <TreeViewItem Header="文件" />
+                </TreeView>
+            </TabItem>
+
+            <TabItem Header="Geometrys">
+                <ItemsControl ItemsSource="{GemetrysSource}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Path Width="50"
+                                  Height="50"
+                                  Data="{Binding}"
+                                  Fill="{DynamicResource {x:Static h:BrushKeys.Foreground}}"
+                                  Stretch="Fill" />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </TabItem>
+        </TabControl>
+    </DockPanel>
+</Window>

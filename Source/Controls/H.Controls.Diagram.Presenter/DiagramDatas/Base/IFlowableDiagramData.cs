@@ -1,4 +1,5 @@
 ﻿global using H.Controls.Diagram.Presenter.Flowables;
+using H.Common.Interfaces;
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
 public interface IFlowableDiagramData : IDiagramData, IMessageable, IPartDataInvokeable
@@ -18,8 +19,8 @@ public static class FlowableDiagramDataExtension
         var b = await action?.Invoke();
         data.State = b.ToDiagramFlowableState();
         var message = b == null ? "用户取消" : b == true ? "运行成功" : "运行失败";
-        IocMessage.Snack?.ShowInfo(message);
-        H.Mvvm.Commands.InvalidateRequerySuggested();
+        IocMessage.ShowSnackInfo(message);
+        H.Mvvm.Commands.Commands.InvalidateRequerySuggested();
         data.Message = message;
         return b;
     }

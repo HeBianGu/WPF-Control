@@ -1,10 +1,10 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-using H.Extensions.Setting;
-using H.Services.Common;
-using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel;
+global using H.Extensions.Setting;
+global using System.ComponentModel.DataAnnotations;
+global using System.ComponentModel;
+global using H.Services.Setting;
+global using H.Common.Transitionable;
 
 namespace H.Modules.Messages.Notice
 {

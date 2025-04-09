@@ -1,16 +1,13 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-using H.Extensions.Geometry;
-using H.Services.Common;
-
+using H.Common.Attributes;
+using H.Extensions.FontIcon;
 namespace H.Modules.Messages.Notice
 {
+    [Icon(FontIcons.Refresh)]
+    [Display(Name = "进度条消息", Description = "这是一条进度条消息")]
     public class ProgressMessagePresenter : MessagePresenterBase, IPercentNoticeItem
     {
-        public ProgressMessagePresenter()
-        {
-            this.Geometry = GeometryFactory.Create(Geometrys.Wait);
-        }
         private double _value;
         public double Value
         {

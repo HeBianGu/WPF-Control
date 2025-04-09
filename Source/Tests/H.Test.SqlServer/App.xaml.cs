@@ -12,6 +12,7 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
 using H.Iocable;
+using H.Services.Common.DataBase;
 
 namespace H.Test.SqlServer
 {
@@ -30,6 +31,12 @@ namespace H.Test.SqlServer
         protected override Window CreateMainWindow(StartupEventArgs e)
         {
             return new MainWindow();
+        }
+
+        protected override void Configure(IApplicationBuilder app)
+        {
+            base.Configure(app);
+            app.UseSqlServer();
         }
 
         protected override void OnSplashScreen(StartupEventArgs e)

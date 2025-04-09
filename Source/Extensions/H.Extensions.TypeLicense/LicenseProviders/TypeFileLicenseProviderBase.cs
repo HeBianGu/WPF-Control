@@ -1,5 +1,5 @@
-﻿using H.Services.Common;
-using System;
+﻿using H.Services.AppPath;
+using H.Services.Common.Crypt;
 using System.IO;
 
 namespace H.Extensions.TypeLicense.LicenseProviders;

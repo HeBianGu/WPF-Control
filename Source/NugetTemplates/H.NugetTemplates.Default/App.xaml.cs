@@ -2,6 +2,7 @@
 using H.Modules.Messages.Dialog;
 using H.Modules.Messages.Form;
 using H.Services.Common;
+using H.Styles;
 using H.Styles.Default;
 using H.Themes.Colors.Accent;
 using H.Themes.Colors.Gray;
@@ -26,8 +27,7 @@ public partial class App : ApplicationBase
         {
             x.Dark = new GrayDarkColorResource();
         });
-        services.AddSingleton<IDialogMessageService, AdornerDialogMessageService>();
-        services.AddSingleton<IFormMessageService, FormMessageService>();
+        services.AddFormMessageService();
         services.AddNoticeMessage();
         services.AddSnackMessage();
     }

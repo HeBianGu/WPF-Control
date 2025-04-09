@@ -1,11 +1,7 @@
-﻿using H.Mvvm.ViewModels.Base;
+﻿namespace H.Mvvm.ViewModels;
 
-namespace H.Mvvm
+public interface IDisplayBindable : IIconable, INameable, IOrderable, IGroupable, IDable, IDescriptionable
 {
-    public interface IDisplayBindable : IIconable, INameable, IOrderable, IGroupable, IDable, IDescriptionable
-    {
-        
-        string ShortName { get; set; }
-    }
 
+    string ShortName { get; set; }
 }

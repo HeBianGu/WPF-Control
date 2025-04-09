@@ -1,5 +1,4 @@
-﻿using H.Mvvm.Attributes;
-using H.Services.Common;
+﻿using H.Common.Attributes;
 namespace H.Modules.Guide;
 [Icon("\xEC92")]
 [Display(Name = "功能列表", Description = "显示版本功能列表")]

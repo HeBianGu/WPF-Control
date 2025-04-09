@@ -1,38 +1,34 @@
-<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:H.Extensions.FontIcon">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:H.Extensions.FontIcon">
     <!--<ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Extensions.FontIcon;component/DialogWindow.xaml" />
     </ResourceDictionary.MergedDictionaries>-->
-
     <DataTemplate DataType="{x:Type local:IconSegoe}">
         <GroupBox Header="{Binding Key}">
             <Grid>
-                <TextBlock
-                    Margin="10"
-                    FontFamily="Segoe MDL2 Assets"
-                    FontSize="120"
-                    Text="{Binding Value}" />
-                <Button
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Top"
-                    Command="{Binding CopyCommand}"
-                    Content="{Binding Key}" />
-                <Button
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Bottom"
-                    Command="{Binding CopyCodeKeyCommand}"
-                    Content="{Binding CodeKey}" />
+                <TextBlock Margin="10"
+                           FontFamily="Segoe MDL2 Assets"
+                           FontSize="120"
+                           Text="{Binding Value}" />
+                <Button HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        Command="{Binding CopyCommand}"
+                        Content="{Binding Key}" />
+                <Button HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Command="{Binding CopyCodeKeyCommand}"
+                        Content="{Binding CodeKey}" />
             </Grid>
         </GroupBox>
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type local:IconSegoes}">
-        <ListBox ItemsSource="{Binding}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <ListBox ItemsSource="{Binding}"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <WrapPanel/>
+                    <WrapPanel />
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
         </ListBox>

@@ -1,57 +1,52 @@
-﻿using H.Mvvm;
-using H.Mvvm.Attributes;
-using H.Mvvm.ViewModels.Base;
-using System.Threading.Tasks;
-using System;
-using System.Windows.Media;
-using System.ComponentModel.DataAnnotations;
+﻿global using H.Mvvm.Commands;
+global using H.Services.Message;
+global using System.ComponentModel.DataAnnotations;
 
-namespace H.Presenters.Common
+namespace H.Presenters.Common;
+
+public interface IImageFilePathPresenter
 {
-    public interface IImageFilePathPresenter
+    string FilePath { get; set; }
+}
+
+[Icon("\xEB9F")]
+[Display(Name = "打开图片")]
+public class ImageFilePathPresenter : DisplayBindableBase, IImageFilePathPresenter
+{
+    private string _filePath;
+    public string FilePath
     {
-        string FilePath { get; set; }
+        get { return _filePath; }
+        set
+        {
+            _filePath = value;
+            RaisePropertyChanged();
+        }
     }
 
-    [Icon("\xEB9F")]
-    [Display(Name = "打开图片")]
-    public class ImageFilePathPresenter : DisplayBindableBase, IImageFilePathPresenter
+
+    public RelayCommand OpenCommand => new RelayCommand(x =>
     {
-        private string _filePath;
-        public string FilePath
+        IocMessage.IOFileDialog.ShowOpenImageFile(l =>
         {
-            get { return _filePath; }
-            set
-            {
-                _filePath = value;
-                RaisePropertyChanged();
-            }
-        }
-
-
-        public RelayCommand OpenCommand => new RelayCommand(x =>
-        {
-            IocMessage.IOFileDialog.ShowOpenImageFile(l =>
-            {
-                this.FilePath = l;
-            });
+            this.FilePath = l;
         });
-    }
+    });
+}
 
-    public static partial class DialogServiceExtension
+public static partial class DialogServiceExtension
+{
+    public static async Task<bool?> ShowImageSource(this IDialogMessageService service, Action<IImageFilePathPresenter> option, Action<IImageFilePathPresenter> sumitAction, Action<IDialog> builder = null, Func<IImageFilePathPresenter, Task<bool>> canSumit = null)
     {
-        public static async Task<bool?> ShowImageSource(this IDialogMessageService service, Action<IImageFilePathPresenter> option, Action<IImageFilePathPresenter> sumitAction, Action<IDialog> builder = null, Func<IImageFilePathPresenter, bool> canSumit = null)
+        return await service.ShowDialog<ImageFilePathPresenter>(option, sumitAction, x =>
         {
-            return await service.ShowDialog<ImageFilePathPresenter>(option, sumitAction, x =>
-            {
-                x.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Stretch;
-                x.MinWidth = 200;
-                builder?.Invoke(x);
-            }, canSumit);
-        }
-        public static async Task<bool?> ShowImageSource(this IDialogMessageService service, string filePath, Action<string> sumitAction, Action<IDialog> builder = null, Func<IImageFilePathPresenter, bool> canSumit = null)
-        {
-            return await service.ShowImageSource(x => x.FilePath = filePath, x => sumitAction?.Invoke(x.FilePath), builder, canSumit);
-        }
+            x.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Stretch;
+            x.MinWidth = 200;
+            builder?.Invoke(x);
+        }, canSumit);
+    }
+    public static async Task<bool?> ShowImageSource(this IDialogMessageService service, string filePath, Action<string> sumitAction, Action<IDialog> builder = null, Func<IImageFilePathPresenter, Task<bool>> canSumit = null)
+    {
+        return await service.ShowImageSource(x => x.FilePath = filePath, x => sumitAction?.Invoke(x.FilePath), builder, canSumit);
     }
 }

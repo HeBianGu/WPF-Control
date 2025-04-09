@@ -1,0 +1,34 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Modules.Help">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/H.Modules.Help;component/UpgradePresenter.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!--<DataTemplate DataType="{x:Type local:UpgradeFlagViewPresenter}">
+        <DockPanel>
+            <TextBlock Margin="10,0"
+                       VerticalAlignment="Center"
+                       DockPanel.Dock="Left"
+                       FontSize="10"
+                       FontWeight="Bold"
+                       Foreground="Red"
+                       Visibility="{Binding Source={x:Static h:Upgrader.HasNewVersion}, Converter={x:Static h:Converter.GetTrueToVisible}}">
+                <Run Text="{x:Static h:Upgrader.UpgradeVersion}" />
+                <Run Text="new" />
+            </TextBlock>
+
+            <TextBlock Margin="5,0"
+                       VerticalAlignment="Center"
+                       FontSize="10"
+                       Foreground="{DynamicResource {x:Static h:BrushKeys.Green}}"
+                       Visibility="{Binding Source={x:Static h:Upgrader.HasNewVersion}, Converter={x:Static h:Converter.GetTrueToVisible}}">
+                <Run Text="已是最新版本" />
+                <Run Text="{x:Static h:Upgrader.CurrentVersion}" />
+            </TextBlock>
+        </DockPanel>
+    </DataTemplate>-->
+
+</ResourceDictionary>

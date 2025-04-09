@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:H.Themes.Layouts"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <system:Double x:Key="{ComponentResourceKey ResourceId=S.Layout.WindowCaptionHeight, TypeInTargetAssembly={x:Type local:LayoutKeys}}">45</system:Double>
+    <system:Double x:Key="{ComponentResourceKey ResourceId=S.Layout.ItemHeight, TypeInTargetAssembly={x:Type local:LayoutKeys}}">35</system:Double>
+    <system:Double x:Key="{ComponentResourceKey ResourceId=S.Layout.IconHeight, TypeInTargetAssembly={x:Type local:LayoutKeys}}">15</system:Double>
+    <system:Double x:Key="{ComponentResourceKey ResourceId=S.Layout.RowHeight, TypeInTargetAssembly={x:Type local:LayoutKeys}}">40</system:Double>
+    <CornerRadius x:Key="{ComponentResourceKey ResourceId=S.Layout.CornerRadius, TypeInTargetAssembly={x:Type local:LayoutKeys}}">2</CornerRadius>
+    <Thickness x:Key="{ComponentResourceKey ResourceId=S.Layout.Padding, TypeInTargetAssembly={x:Type local:LayoutKeys}}">5 0</Thickness>
+    <Thickness x:Key="{ComponentResourceKey ResourceId=S.Layout.Margin, TypeInTargetAssembly={x:Type local:LayoutKeys}}">5 3</Thickness>
+</ResourceDictionary>

@@ -2,6 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:H.Extensions.Revertible">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/H.Extensions.Revertible;component/Presenter/PropertyChangedRevertiblePrensenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Extensions.Revertible;component/PropertyChangedRevertiblePrensenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

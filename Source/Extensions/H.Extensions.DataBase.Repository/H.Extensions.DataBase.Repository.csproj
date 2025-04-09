@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\..\Providers\H.Mvvm\H.Mvvm.csproj" />
+    <ProjectReference Include="..\..\Services\H.Services.Common\H.Services.Common.csproj" />
+    <ProjectReference Include="..\..\Services\H.Services.Logger\H.Services.Logger.csproj" />
+    <ProjectReference Include="..\..\Services\H.Services.Message\H.Services.Message.csproj" />
+    <ProjectReference Include="..\..\Services\H.Services.Operation\H.Services.Operation.csproj" />
+    <ProjectReference Include="..\H.Extensions.Common\H.Extensions.Common.csproj" />
+    <ProjectReference Include="..\H.Extensions.DataBase\H.Extensions.DataBase.csproj" />
+    <ProjectReference Include="..\H.Extensions.ObservableSource\H.Extensions.ObservableSource.csproj" />
+  </ItemGroup>
+</Project>

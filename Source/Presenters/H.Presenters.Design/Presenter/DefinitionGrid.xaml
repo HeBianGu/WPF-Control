@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Presenters.Design.Presenter">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.DefinitionGrid.Default,
+                                        TypeInTargetAssembly={x:Type local:DefinitionGrid}}"
+           TargetType="{x:Type local:DefinitionGrid}">
+        <Setter Property="MinRowHeight" Value="{DynamicResource {x:Static h:LayoutKeys.RowHeight}}" />
+        <Setter Property="GridLinePen" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
+    </Style>
+    <Style BasedOn="{StaticResource {x:Static local:DefinitionGrid.DefaultKey}}"
+           TargetType="{x:Type local:DefinitionGrid}" />
+</ResourceDictionary>

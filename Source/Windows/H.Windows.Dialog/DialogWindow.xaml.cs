@@ -1,5 +1,6 @@
-﻿using H.Mvvm;
-using H.Services.Common;
+﻿using H.Common.Interfaces;
+using H.Common.Transitionable;
+using H.Services.Message.Dialog;
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -46,7 +47,7 @@ namespace H.Windows.Dialog
 
         protected override async void OnClosing(CancelEventArgs e)
         {
-            if (this.CanSumit?.Invoke() == false)
+            if (this.CanSumit != null && await this.CanSumit?.Invoke() == false)
             {
                 e.Cancel = true;
                 return;
@@ -66,7 +67,7 @@ namespace H.Windows.Dialog
             this.Close();
         }
 
-        public Func<bool> CanSumit { get; set; }
+        public Func<Task<bool>> CanSumit { get; set; }
 
         public bool IsCancel => this.Dispatcher.Invoke(() => this.DialogResult == false);
 
@@ -92,6 +93,8 @@ namespace H.Windows.Dialog
             get { return (string)GetValue(FontIconProperty); }
             set { SetValue(FontIconProperty, value); }
         }
+
+        DataTemplate IDialog.PresenterTemplate { get => this.ContentTemplate; set => this.ContentTemplate = value; }
 
         public static readonly DependencyProperty FontIconProperty =
             DependencyProperty.Register("FontIcon", typeof(string), typeof(DialogWindow), new FrameworkPropertyMetadata("\xEA8F"));
@@ -144,7 +147,7 @@ namespace H.Windows.Dialog
             }
         }
 
-        public static bool? ShowPresenter(object presenter, Action<IDialog> action = null, Func<bool> canSumit = null)
+        public static bool? ShowPresenter(object presenter, Action<IDialog> action = null, Func<Task<bool>> canSumit = null)
         {
             DialogWindow dialog = new DialogWindow();
             dialog.Content = presenter;

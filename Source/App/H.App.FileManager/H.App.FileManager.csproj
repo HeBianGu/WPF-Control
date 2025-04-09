@@ -16,11 +16,13 @@
     <Version>1.0.0</Version>
     <GeneratePackageOnBuild>Flase</GeneratePackageOnBuild>
     <Platforms>AnyCPU;x86</Platforms>
-    <SignAssembly>True</SignAssembly>
-    <AssemblyOriginatorKeyFile>H:\Github\WPF-Control\Key.snk</AssemblyOriginatorKeyFile>
+    <!--<SignAssembly>True</SignAssembly>-->
+    <!--<AssemblyOriginatorKeyFile>H:\Github\WPF-Control\Key.snk</AssemblyOriginatorKeyFile>-->
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\ApplicationBases\H.ApplicationBases.Default\H.ApplicationBases.Default.csproj" />
+    <ProjectReference Include="..\..\ApplicationBases\H.ApplicationBases.Identify\H.ApplicationBases.Identify.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.FavoriteBox\H.Controls.FavoriteBox.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.FilterBox\H.Controls.FilterBox.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.GridSplitterBox\H.Controls.GridSplitterBox.csproj" />
@@ -45,7 +47,7 @@
     <ProjectReference Include="..\..\Modules\H.Modules.Operation\H.Modules.Operation.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Project\H.Modules.Project.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Theme\H.Modules.Theme.csproj" />
-    <ProjectReference Include="..\..\Themes\H.Themes.Default\H.Themes.Default.csproj" />
+    <ProjectReference Include="..\..\Themes\H.Theme\H.Theme.csproj" />
     <ProjectReference Include="..\..\Windows\H.Windows.Dialog\H.Windows.Dialog.csproj" />
     <ProjectReference Include="..\..\Windows\H.Windows.Main\H.Windows.Main.csproj" />
 
@@ -53,7 +55,7 @@
     <ProjectReference Include="..\..\Modules\H.Modules.Messages.Dialog\H.Modules.Messages.Dialog.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Setting\H.Modules.Setting.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.SplashScreen\H.Modules.SplashScreen.csproj" />
-    <ProjectReference Include="..\..\Themes\H.Themes.Default\H.Themes.Default.csproj" />
+    <ProjectReference Include="..\..\Themes\H.Theme\H.Theme.csproj" />
 
     <ProjectReference Include="..\..\Presenters\H.Presenters.Repository\H.Presenters.Repository.csproj" />
   </ItemGroup>
@@ -66,6 +68,6 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.8" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.77" />
-    <PackageReference Include="VideoLAN.LibVLC.Windows" Version="3.0.20" />
+    <PackageReference Include="VideoLAN.LibVLC.Windows" Version="3.0.21" />
   </ItemGroup>
 </Project>

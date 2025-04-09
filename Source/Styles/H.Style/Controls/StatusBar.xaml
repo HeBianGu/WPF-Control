@@ -1,0 +1,74 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:H.Styles.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Share.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    <Style x:Key="{ComponentResourceKey ResourceId=S.StatusBar.Default,
+                                        TypeInTargetAssembly={x:Type local:StatusBarKeys}}"
+           BasedOn="{StaticResource S.Control.Base}"
+           TargetType="{x:Type StatusBar}">
+        <Setter Property="Height" Value="{DynamicResource {x:Static LayoutKeys.RowHeight}}" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Padding" Value="1" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Background}}" />
+        <!--<Setter Property="OverridesDefaultStyle" Value="true" />-->
+        <!--  Guide  -->
+        <Setter Property="Cattach.UseGuide" Value="True" />
+        <Setter Property="Cattach.GuideTitle" Value="状态栏" />
+        <Setter Property="Cattach.GuideData" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ToolTip}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type StatusBar}">
+                    <Border Style="{StaticResource S.Border.TemplatedParent}">
+                        <ItemsPresenter Margin="{TemplateBinding Padding}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="{x:Static StatusBar.SeparatorStyleKey}"
+           TargetType="{x:Type Separator}">
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Separator}">
+                    <Rectangle Width="1"
+                               Margin="3">
+                        <Rectangle.Fill>
+                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
+                        </Rectangle.Fill>
+                    </Rectangle>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=S.StatusBarItem.Default,
+                                        TypeInTargetAssembly={x:Type local:StatusBarItemKeys}}"
+           TargetType="{x:Type StatusBarItem}">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type StatusBarItem}">
+                    <ContentPresenter Name="ContentSite"
+                                      Margin="3" />
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Opacity" Value="0.6" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style BasedOn="{StaticResource {x:Static local:StatusBarKeys.Default}}"
+           TargetType="StatusBar" />
+    <Style BasedOn="{StaticResource {x:Static local:StatusBarItemKeys.Default}}"
+           TargetType="StatusBarItem" />
+</ResourceDictionary>

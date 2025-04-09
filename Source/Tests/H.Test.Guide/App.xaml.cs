@@ -1,5 +1,6 @@
 ﻿
 using H.Extensions.ApplicationBase;
+using H.Modules.Guide;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,7 @@ namespace H.Test.Guide
         protected override void ConfigureServices(IServiceCollection services)
         {
             base.ConfigureServices(services);
-            services.AddGuideService();
+            services.AddGuide();
         }
     }
 }

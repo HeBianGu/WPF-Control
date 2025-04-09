@@ -1,4 +1,5 @@
-﻿using H.Mvvm.ViewModels.Base;
+﻿using H.Extensions.Common;
+using H.Mvvm.ViewModels.Base;
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;

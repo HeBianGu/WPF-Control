@@ -9,6 +9,7 @@
               Width="1200"
               Height="750"
               d:DesignInstance="{d:Type local:MainViewModel}"
+              WindowStartupLocation="CenterScreen"
               mc:Ignorable="d">
     <Window.DataContext>
         <local:MainViewModel />
@@ -16,96 +17,117 @@
     <h:MainWindow.CaptionTempate>
         <ControlTemplate>
             <DockPanel HorizontalAlignment="Right"
-                       LastChildFill="False">
-                <ContentPresenter Content="{Ioc Type={x:Type ISettingButtonPresenter}}" />
-                <ContentPresenter Content="{Ioc Type={x:Type h:ISwitchThemeViewPresenter}}" />
-                <FontIconButton Command="{ShowAboutCommand}"
+                       LastChildFill="False"
+                       WindowChrome.IsHitTestVisibleInChrome="True">
+                <Menu>
+                    <Menu.Resources>
+                        <Style BasedOn="{StaticResource {x:Static MenuItemKeys.BindCommand}}"
+                               TargetType="MenuItem" />
+                    </Menu.Resources>
+                    <MenuItem Header="帮助">
+                        <MenuItem Command="{ShowGuideCommand}" />
+                        <MenuItem Command="{ShowNewGuideCommand}" />
+                        <MenuItem Command="{ShowGuideTreeCommand}" />
+                        <MenuItem Command="{ShowNewGuideTreeCommand}" />
+                        <Separator />
+                        <MenuItem Command="{ShowNotImplementedCommand}"
+                                  Header="检查更新" />
+                        <MenuItem Command="{ShowNotImplementedCommand}"
+                                  Header="注册" />
+
+                        <MenuItem Command="{ShowReleaseVersionsCommand}" />
+                        <MenuItem Command="{ShowSupportCommand}" />
+                        <MenuItem Command="{ShowFeedbackCommand}" />
+                        <MenuItem Command="{ShowWebSiteCommand}" />
+                        <Separator />
+                        <MenuItem Command="{ShowContactCommand}">
+                            <MenuItem Command="{ShowGithubContactCommand}" />
+                            <MenuItem Command="{ShowGitHubIssueContactCommand}" />
+                            <MenuItem Command="{ShowQQContactCommand}" />
+                            <MenuItem Command="{ShowSendMailContactCommand}" />
+                            <MenuItem Command="{ShowBlogContactCommand}" />
+                            <MenuItem Command="{ShowPodcastContactCommand}" />
+                        </MenuItem>
+                        <MenuItem Command="{ShowPrivacyCommand}">
+                            <MenuItem Command="{ShowAgreementCommand}" />
+                            <MenuItem Command="{ShowPrivacyCommand}" />
+                        </MenuItem>
+                        <MenuItem Command="{ShowSponsorCommand}" />
+                        <MenuItem Command="{ShowAboutCommand}" />
+                    </MenuItem>
+                </Menu>
+                <FontIconButton Command="{ShowColorThemeViewCommand}"
                                 Style="{DynamicResource {x:Static FontIconButtonKeys.Command}}" />
+                <Button Command="{ShowSettingCommand SwitchToType={x:Type h:IThemeOptions}}"
+                        Content="{Binding Source={x:Static h:ThemeOptions.Instance}, Path=ColorResource.Name}" />
+                <FontIconButton Command="{ShowSettingCommand}"
+                                Style="{DynamicResource {x:Static FontIconButtonKeys.Command}}" />
+                <ContentPresenter Content="{Ioc Type={x:Type ISwitchThemeViewPresenter}}" />
             </DockPanel>
         </ControlTemplate>
     </h:MainWindow.CaptionTempate>
-    <Grid>
-        <!--<Button Click="Button_Click"
-                Content="Text" />
-
-        <DockPanel>
-            <TextBlock />
-        </DockPanel>-->
-
+    <DockPanel>
         <TabControl>
-            <TabItem Header="Dialog">
+            <TabControl.Resources>
+                <Style BasedOn="{StaticResource {x:Static ButtonKeys.Command}}"
+                       TargetType="Button" />
+            </TabControl.Resources>
+            <TabItem Header="Messages">
                 <UniformGrid>
-                    <Button Command="{ShowIocCommand Type={x:Type IAboutViewPresenter}}"
-                            Content="ShowIocCommand" />
-                    <Button Command="{ShowMessageCommand Message=我是消息,
-                                                         Name=我是标题,
-                                                         Height=150,
-                                                         Width=300}"
-                            Content="ShowMessageCommand" />
-                    <Button Command="{ShowCommand Presnter={h:GetStudent}}"
-                            Content="ShowCommand" />
-                    <Button Command="{ShowPercentCommand}"
-                            Content="ShowPercentCommand" />
-                    <Button Command="{ShowStringCommand}"
-                            Content="ShowStringCommand" />
-                    <Button Command="{ShowWaitCommand}"
-                            Content="ShowWaitCommand" />
-                    <Button Command="{ShowEditCommand Value={h:GetStudent}}"
-                            Content="ShowEditCommand" />
-                    <Button Command="{ShowViewCommand Value={h:GetStudent}}"
-                            Content="ShowViewCommand" />
-                    <Button Command="{h:ShowAdornerDialogCommand}"
-                            CommandParameter="{h:GetStudent}"
-                            Content="内嵌弹窗" />
-                    <Button Command="{h:ShowStepCommand Count=6}"
-                            Content="ShowStepCommand" />
-                    <Button Command="{h:ShowVerticalStepCommand Count=36,
-                                                                Width=40}"
-                            Content="ShowVerticalStepCommand" />
-
-                </UniformGrid>
-            </TabItem>
-            <TabItem Header="Notice">
-                <UniformGrid>
-                    <Button Command="{h:ShowInfoNoticeMessageCommand Message=我是Info消息}"
+                    <Button Command="{ShowMessageCommand}" />
+                    <Button Command="{ShowWaitCommand}" />
+                    <Button Command="{ShowPercentCommand}" />
+                    <Button Command="{ShowEditCommand Value={GetStudent}}" />
+                    <Button Command="{ShowTabEditCommand Value={GetStudent}}" />
+                    <Button Command="{ShowViewCommand Value={GetStudent}}" />
+                    <Button Command="{ShowStringNoticeMessageCommand}" />
+                    <Button Command="{ShowStringSnackMessageCommand}" />
+                    <Button Command="{ShowInfoNoticeMessageCommand Message=我是Info消息}"
                             Content="ShowInfo" />
-                    <Button Command="{h:ShowErrorNoticeMessageCommand Message=我是Error消息}"
+                    <Button Command="{ShowErrorNoticeMessageCommand Message=我是Error消息}"
                             Content="ShowError" />
-                    <Button Command="{h:ShowSuccessNoticeMessageCommand Message=我是Success消息}"
+                    <Button Command="{ShowSuccessNoticeMessageCommand Message=我是Success消息}"
                             Content="ShowSuccess" />
-                    <Button Command="{h:ShowWarnNoticeMessageCommand Message=我是Warn消息}"
+                    <Button Command="{ShowWarnNoticeMessageCommand Message=我是Warn消息}"
                             Content="ShowWarn" />
-                    <Button Command="{h:ShowFatalNoticeMessageCommand Message=我是Fatal消息}"
+                    <Button Command="{ShowFatalNoticeMessageCommand Message=我是Fatal消息}"
                             Content="ShowFatal" />
-                    <Button Command="{h:ShowProgressNoticeMessageCommand Message=我是Progress消息}"
+                    <Button Command="{ShowProgressNoticeMessageCommand Message=我是Progress消息}"
                             Content="ShowProgress" />
-                    <Button Command="{h:ShowStringNoticeMessageCommand Message=我是String消息}"
+                    <Button Command="{ShowStringNoticeMessageCommand Message=我是String消息}"
                             Content="ShowString" />
-                    <Button Command="{h:ShowDialogNoticeMessageCommand Message=我是Dialog消息}"
+                    <Button Command="{ShowDialogNoticeMessageCommand Message=我是Dialog消息}"
                             Content="ShowDialog" />
                 </UniformGrid>
             </TabItem>
-
-            <TabItem Header="Snack">
+            <TabItem Header="Modules">
                 <UniformGrid>
-                    <Button Command="{h:ShowInfoSnackMessageCommand Message=我是Info消息}"
-                            Content="ShowInfo" />
-                    <Button Command="{h:ShowErrorSnackMessageCommand Message=我是Error消息}"
-                            Content="ShowError" />
-                    <Button Command="{h:ShowSuccessSnackMessageCommand Message=我是Success消息}"
-                            Content="ShowSuccess" />
-                    <Button Command="{h:ShowWarnSnackMessageCommand Message=我是Warn消息}"
-                            Content="ShowWarn" />
-                    <Button Command="{h:ShowFatalSnackMessageCommand Message=我是Fatal消息}"
-                            Content="ShowFatal" />
-                    <Button Command="{h:ShowProgressSnackMessageCommand Message=我是Progress消息}"
-                            Content="ShowProgress" />
-                    <Button Command="{h:ShowStringSnackMessageCommand Message=我是String消息}"
-                            Content="ShowString" />
-                    <Button Command="{h:ShowDialogSnackMessageCommand Message=我是Dialog消息}"
-                            Content="ShowDialog" />
+                    <Button Command="{ShowAboutCommand}" />
+                    <Button Command="{ShowPrivacyCommand}" />
+                    <Button Command="{ShowAgreementCommand}" />
+                    <Button Command="{ShowWebSiteCommand}" />
+                    <Button Command="{ShowReleaseVersionsCommand}" />
+                    <Button Command="{ShowSupportCommand}" />
+                    <Button Command="{ShowSponsorCommand}" />
+                    <Button Command="{ShowContactCommand}" />
+                    <Button Command="{ShowGithubContactCommand}" />
+                    <Button Command="{ShowQQContactCommand}" />
+                    <Button Command="{ShowSendMailContactCommand}" />
+                    <Button Command="{ShowBlogContactCommand}" />
+                    <Button Command="{ShowPodcastContactCommand}" />
+
+                    <Button Command="{ShowFeedbackCommand}" />
+                    <Button Command="{ShowSettingCommand}" />
+                    <Button Command="{ShowGuideCommand}" />
+                    <Button Command="{ShowGuideTreeCommand}" />
+                </UniformGrid>
+            </TabItem>
+
+            <TabItem Header="Services">
+                <UniformGrid>
+                    <Button Command="{ShowLog4netPathCommand}" />
                 </UniformGrid>
             </TabItem>
         </TabControl>
-    </Grid>
+    </DockPanel>
 </h:MainWindow>

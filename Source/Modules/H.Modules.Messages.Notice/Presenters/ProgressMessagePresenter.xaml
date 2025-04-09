@@ -18,7 +18,7 @@
                     BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
                     BorderThickness="1"
                     CornerRadius="2" />
-            <Grid Width="25"
+            <!--<Grid Width="25"
                   Height="25">
                 <Grid.Background>
                     <DrawingBrush>
@@ -28,7 +28,12 @@
                         </DrawingBrush.Drawing>
                     </DrawingBrush>
                 </Grid.Background>
-            </Grid>
+            </Grid>-->
+
+            <FontIconTextBlock Margin="10,0"
+                               FontSize="20"
+                               Foreground="{DynamicResource {x:Static BrushKeys.Accent}}"
+                               Text="{Binding Icon}" />
             <StackPanel Grid.Column="1"
                         VerticalAlignment="Center"
                         TextBlock.Foreground="{DynamicResource {x:Static h:BrushKeys.Foreground}}">
@@ -44,9 +49,9 @@
                 <TextBlock Text="{Binding Time}" />
             </StackPanel>
             <FontIconButton Grid.Column="2"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Center"
-                    Content="{x:Static FontIcons.Cancel}">
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Content="{x:Static FontIcons.Cancel}">
                 <b:Interaction.Behaviors>
                     <h:ButtonRemoveItemBehavior />
                 </b:Interaction.Behaviors>

@@ -1,8 +1,6 @@
-﻿namespace H.Services.Common
-{
-    public interface IThemeViewPresenter
-    {
+﻿namespace H.Services.Common.Theme;
 
-    }
+public interface IThemeViewPresenter
+{
 
 }

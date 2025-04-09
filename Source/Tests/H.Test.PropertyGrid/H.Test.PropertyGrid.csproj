@@ -9,8 +9,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Controls\H.Controls.PropertyGrid\H.Controls.PropertyGrid.csproj" />
     <ProjectReference Include="..\..\Datas\H.Data.Test\H.Data.Test.csproj" />
-    <ProjectReference Include="..\..\Styles\H.Styles.Default\H.Styles.Default.csproj" />
-    <ProjectReference Include="..\..\Themes\H.Themes.Default\H.Themes.Default.csproj" />
+    <ProjectReference Include="..\..\Styles\H.Style\H.Style.csproj" />
+    <ProjectReference Include="..\..\Themes\H.Theme\H.Theme.csproj" />
   </ItemGroup>
 
 </Project>

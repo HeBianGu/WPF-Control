@@ -1,9 +1,7 @@
-﻿using H.Extensions.Attach;
-using H.Mvvm;
-using H.Mvvm.Attributes;
-using System.ComponentModel.DataAnnotations;
-using System.Reflection;
-using System.Reflection.Metadata;
+﻿using H.Common.Attributes;
+using H.Common.Commands;
+using H.Extensions.Attach;
+using H.Services.Common.Guide;
 
 namespace H.Modules.Guide;
 [Icon("\xE75A")]

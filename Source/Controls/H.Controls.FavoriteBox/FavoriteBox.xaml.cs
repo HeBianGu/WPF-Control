@@ -1,10 +1,14 @@
-﻿using H.Extensions.Tree;
-using H.Mvvm;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
+﻿global using H.Extensions.Tree;
+global using H.Mvvm;
+global using H.Mvvm.ViewModels;
+global using H.Mvvm.ViewModels.Tree;
+global using System.Collections.Generic;
+global using System.Linq;
+global using System.Windows;
+global using System.Windows.Controls;
+global using System.Windows.Input;
+global using H.Extensions.Common;
+global using H.Mvvm.Commands;
 
 namespace H.Controls.FavoriteBox
 {

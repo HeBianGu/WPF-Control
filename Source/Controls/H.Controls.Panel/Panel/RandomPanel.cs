@@ -3,6 +3,7 @@
 using System;
 using System.Timers;
 using System.Windows;
+using Timer = System.Timers.Timer;
 
 namespace H.Controls.Panel
 {

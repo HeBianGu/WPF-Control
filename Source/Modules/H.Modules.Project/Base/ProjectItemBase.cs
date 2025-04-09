@@ -1,16 +1,13 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
+using H.Services.AppPath;
 using System.IO;
 
 namespace H.Modules.Project.Base;
 
 public abstract class ProjectItemBase : CommandsBindableBase, IProjectItem
 {
-    protected ProjectItemBase()
-    {
-        this.Path = ProjectOptions.Instance.DefaultProjectFolder;
-    }
     private string _title;
     [Required]
     [Display(Name = "标题", Order = 4)]
@@ -26,7 +23,6 @@ public abstract class ProjectItemBase : CommandsBindableBase, IProjectItem
 
     private string _path;
     [ReadOnly(true)]
-    [Required]
     [Browsable(false)]
     [Display(Name = "工程文件路径", Order = 4)]
     public string Path
@@ -129,7 +125,15 @@ public abstract class ProjectItemBase : CommandsBindableBase, IProjectItem
 
     public virtual string GetFilePath()
     {
-        return System.IO.Path.Combine(this.Path, this.Title + ProjectOptions.Instance.Extenstion);
+        string folder = this.GetPath();
+        return System.IO.Path.Combine(folder, this.Title + ProjectOptions.Instance.Extenstion);
+    }
+
+    private string GetPath()
+    {
+        if (string.IsNullOrEmpty(this.Path))
+            return ProjectOptions.Instance.DefaultProjectFolder;
+        return this.Path;
     }
 
     public virtual void Dispose()

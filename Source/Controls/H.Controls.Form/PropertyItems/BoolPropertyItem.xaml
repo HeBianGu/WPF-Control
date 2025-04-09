@@ -1,0 +1,22 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Controls.Form.PropertyItems">
+
+    <DataTemplate DataType="{x:Type local:BoolPropertyItem}">
+        <CheckBox Margin="2,0,0,1"
+                  Content="{Binding Description}"
+                  IsChecked="{Binding Value, Mode=TwoWay}"
+                  IsEnabled="{Binding ReadOnly, Converter={x:Static h:Converter.GetTrueToFalse}}"
+                  ToolTip="{Binding Description}" />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type local:BoolNullablePropertyItem}">
+        <CheckBox Grid.Column="2"
+                  Margin="2,0,0,1"
+                  Content="{Binding Description}"
+                  IsChecked="{Binding Value, Mode=TwoWay}"
+                  IsEnabled="{Binding ReadOnly, Converter={x:Static h:Converter.GetTrueToFalse}}"
+                  ToolTip="{Binding Description}" />
+    </DataTemplate>
+</ResourceDictionary>

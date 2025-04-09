@@ -1,0 +1,15 @@
+﻿<ApplicationBase x:Class="H.Test.DefaultApplicationBase.App"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:local="clr-namespace:H.Test.DefaultApplicationBase">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!--<FontSizeTheme Type="{x:Static FontSizeThemeType.Default}" />
+                <LayoutTheme Type="{x:Static LayoutThemeType.Default}" />
+                <ColorTheme Type="{x:Static ColorThemeType.Dark}" />-->
+                <!--<DefaultStyle />-->
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</ApplicationBase>

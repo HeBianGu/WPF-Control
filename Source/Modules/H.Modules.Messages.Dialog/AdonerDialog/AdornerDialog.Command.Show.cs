@@ -1,8 +1,5 @@
-﻿using H.Controls.Adorner;
-using H.Mvvm;
-using System.ComponentModel.DataAnnotations;
-using System.Windows;
-using System.Windows.Documents;
+﻿global using H.Common.Commands;
+global using System.ComponentModel.DataAnnotations;
 
 namespace H.Modules.Messages.Dialog
 {

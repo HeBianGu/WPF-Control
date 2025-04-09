@@ -9,7 +9,7 @@
               Margin="0,0,5,5"
               ToolTip="{Binding Message}">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="50" />
+                <ColumnDefinition Width="Auto" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Border Grid.ColumnSpan="2"
@@ -17,7 +17,7 @@
                     BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
                     BorderThickness="1"
                     CornerRadius="2" />
-            <Grid x:Name="g"
+            <!--<Grid x:Name="g"
                   Width="25"
                   Height="25">
                 <Grid.Background>
@@ -28,7 +28,14 @@
                         </DrawingBrush.Drawing>
                     </DrawingBrush>
                 </Grid.Background>
-            </Grid>
+            </Grid>-->
+
+            <FontIconTextBlock x:Name="g"
+                               Margin="10,0"
+                               FontSize="20"
+                               Foreground="{DynamicResource {x:Static BrushKeys.Accent}}"
+                               Text="{Binding Icon}" />
+
             <StackPanel Grid.Column="1"
                         VerticalAlignment="Center"
                         TextBlock.Foreground="{DynamicResource {x:Static h:BrushKeys.Foreground}}">

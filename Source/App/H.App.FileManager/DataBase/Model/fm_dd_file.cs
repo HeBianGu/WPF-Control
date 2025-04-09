@@ -1,13 +1,15 @@
-﻿using H.Extensions.Behvaiors;
-using H.Extensions.TypeConverter;
-using H.Extensions.ValueConverter;
-using H.Services.Common;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
-using System;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using H.Extensions.DataBase;
+﻿global using H.Extensions.Behvaiors;
+global using H.Extensions.TypeConverter;
+global using H.Extensions.ValueConverter;
+global using H.Services.Common;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore.Design;
+global using System;
+global using System.ComponentModel;
+global using System.ComponentModel.DataAnnotations;
+global using H.Extensions.DataBase;
+global using H.Extensions.Behvaiors.DataGrids;
+global using H.Extensions.ValueConverter.Files;
 
 namespace H.App.FileManager
 {

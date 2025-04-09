@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:H.Themes.FontSizes"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <system:Double x:Key="{ComponentResourceKey ResourceId=S.FontSize.Default, TypeInTargetAssembly={x:Type local:FontSizeKeys}}">10</system:Double>
+    <system:Double x:Key="{ComponentResourceKey ResourceId=S.FontSize.Header, TypeInTargetAssembly={x:Type local:FontSizeKeys}}">12</system:Double>
+    <system:Double x:Key="{ComponentResourceKey ResourceId=S.FontSize.Header.1, TypeInTargetAssembly={x:Type local:FontSizeKeys}}">20</system:Double>
+    <system:Double x:Key="{ComponentResourceKey ResourceId=S.FontSize.Header.2, TypeInTargetAssembly={x:Type local:FontSizeKeys}}">18</system:Double>
+    <system:Double x:Key="{ComponentResourceKey ResourceId=S.FontSize.Header.3, TypeInTargetAssembly={x:Type local:FontSizeKeys}}">16</system:Double>
+    <system:Double x:Key="{ComponentResourceKey ResourceId=S.FontSize.Header.4, TypeInTargetAssembly={x:Type local:FontSizeKeys}}">14</system:Double>
+    <system:Double x:Key="{ComponentResourceKey ResourceId=S.FontSize.Header.5, TypeInTargetAssembly={x:Type local:FontSizeKeys}}">12</system:Double>
+    <system:Double x:Key="{ComponentResourceKey ResourceId=S.FontSize.Header.6, TypeInTargetAssembly={x:Type local:FontSizeKeys}}">10</system:Double>
+    <system:Double x:Key="{ComponentResourceKey ResourceId=S.FontSize.Header.7, TypeInTargetAssembly={x:Type local:FontSizeKeys}}">8</system:Double>
+    <system:Double x:Key="{ComponentResourceKey ResourceId=S.FontSize.Header.8, TypeInTargetAssembly={x:Type local:FontSizeKeys}}">6</system:Double>
+    <system:Double x:Key="{ComponentResourceKey ResourceId=S.FontSize.Header.9, TypeInTargetAssembly={x:Type local:FontSizeKeys}}">4</system:Double>
+    <system:Double x:Key="{ComponentResourceKey ResourceId=S.FontSize.Icon, TypeInTargetAssembly={x:Type local:FontSizeKeys}}">16</system:Double>
+</ResourceDictionary>

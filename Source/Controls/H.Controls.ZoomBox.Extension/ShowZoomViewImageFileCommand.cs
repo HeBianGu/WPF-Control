@@ -1,8 +1,8 @@
-﻿using H.Mvvm;
-using H.Mvvm.Attributes;
-using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
-using H.Services.Common;
+﻿global using H.Services.Message.IODialog;
+global using System.ComponentModel.DataAnnotations;
+global using H.Common.Attributes;
+global using H.Common.Commands;
+global using H.Services.Message;
 
 namespace H.Controls.ZoomBox.Extension
 {

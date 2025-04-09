@@ -1,12 +1,9 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-
-using H.Controls.Form;
-using H.Services.Common;
-using H.Mvvm;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Xml.Serialization;
+global using System.ComponentModel;
+global using System.ComponentModel.DataAnnotations;
+global using H.Controls.Form.Attributes;
+global using H.Mvvm.ViewModels;
 
 namespace H.Modules.Identity
 {

@@ -1,0 +1,360 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:H.Styles.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Share.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="FrameButtonStyle"
+           TargetType="{x:Type Button}">
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="Command" Value="NavigationCommands.BrowseBack" />
+        <Setter Property="Focusable" Value="false" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Ellipse"
+                                                                      Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                                                 Value="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <!--<VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Ellipse" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>-->
+                                <!--<VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Ellipse" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Arrow" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>-->
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Ellipse x:Name="Ellipse"
+                                 Width="16"
+                                 Height="16"
+                                 StrokeThickness="1">
+                            <Ellipse.Stroke>
+                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
+                            </Ellipse.Stroke>
+                            <Ellipse.Fill>
+                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
+                            </Ellipse.Fill>
+                        </Ellipse>
+
+                        <Path x:Name="Arrow"
+                              Margin="0,0,2,0"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Data="M 4 0 L 0 4 L 4 8 Z">
+                            <Path.Fill>
+                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
+                            </Path.Fill>
+                        </Path>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Command" Value="{x:Static NavigationCommands.BrowseForward}">
+                            <Setter TargetName="Arrow" Property="Data" Value="M 0 0 L 4 4 L 0 8 z" />
+                            <Setter TargetName="Arrow" Property="Margin" Value="2,0,0,0" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="FrameMenu"
+           TargetType="{x:Type Menu}">
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="KeyboardNavigation.TabNavigation" Value="None" />
+        <Setter Property="IsMainMenu" Value="false" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Menu}">
+                    <DockPanel IsItemsHost="true" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="FrameHeaderMenuItem"
+           TargetType="{x:Type MenuItem}">
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type MenuItem}">
+                    <Grid>
+                        <Popup x:Name="PART_Popup"
+                               AllowsTransparency="True"
+                               Focusable="False"
+                               IsOpen="{TemplateBinding IsSubmenuOpen}"
+                               Placement="Bottom"
+                               PopupAnimation="Fade"
+                               VerticalOffset="2">
+                            <Border x:Name="SubMenuBorder"
+                                    BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                                    BorderThickness="1">
+                                <Border.Background>
+                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
+                                </Border.Background>
+                                <StackPanel Margin="2"
+                                            IsItemsHost="true"
+                                            KeyboardNavigation.DirectionalNavigation="Cycle"
+                                            KeyboardNavigation.TabNavigation="Cycle" />
+                            </Border>
+                        </Popup>
+
+                        <Grid x:Name="Panel"
+                              Width="24"
+                              HorizontalAlignment="Right"
+                              Background="Transparent">
+
+                            <Border x:Name="HighlightBorder"
+                                    BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}"
+                                    BorderThickness="1"
+                                    CornerRadius="2"
+                                    Visibility="Hidden">
+                                <Border.Background>
+                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
+                                </Border.Background>
+                            </Border>
+                            <Path x:Name="Arrow"
+                                  Margin="0,2,4,0"
+                                  HorizontalAlignment="Right"
+                                  VerticalAlignment="Center"
+                                  Data="M 0 0 L 4 4 L 8 0 Z"
+                                  SnapsToDevicePixels="false"
+                                  StrokeLineJoin="Round">
+                                <Path.Stroke>
+                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
+                                </Path.Stroke>
+                            </Path>
+                        </Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsHighlighted" Value="true">
+                            <Setter TargetName="HighlightBorder" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsSubmenuOpen" Value="true">
+                            <Setter TargetName="HighlightBorder" Property="BorderBrush">
+                                <Setter.Value>
+                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrushTitle}}" />
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="HighlightBorder" Property="Background">
+                                <Setter.Value>
+                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
+
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <!--<Setter TargetName="Arrow" Property="Fill">
+                                <Setter.Value>
+                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
+                                </Setter.Value>
+                            </Setter>-->
+                            <Setter TargetName="Arrow" Property="Opacity" Value="0.5" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="FrameSubmenuItem"
+           TargetType="{x:Type MenuItem}">
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="Header" Value="{Binding (JournalEntry.Name)}" />
+        <Setter Property="Command" Value="NavigationCommands.NavigateJournal" />
+        <Setter Property="CommandTarget" Value="{Binding TemplatedParent, RelativeSource={RelativeSource AncestorType={x:Type Menu}}}" />
+        <Setter Property="CommandParameter" Value="{Binding RelativeSource={RelativeSource Self}}" />
+        <Setter Property="JournalEntryUnifiedViewConverter.JournalEntryPosition" Value="{Binding (JournalEntryUnifiedViewConverter.JournalEntryPosition)}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type MenuItem}">
+                    <Border Name="Border"
+                            BorderThickness="1">
+                        <Grid x:Name="Panel"
+                              Width="250"
+                              Height="35"
+                              Background="Transparent"
+                              SnapsToDevicePixels="true">
+                            <Path x:Name="Glyph"
+                                  Width="10"
+                                  Height="10"
+                                  Margin="7,5"
+                                  HorizontalAlignment="Left"
+                                  SnapsToDevicePixels="false"
+                                  StrokeEndLineCap="Triangle"
+                                  StrokeStartLineCap="Triangle"
+                                  StrokeThickness="2">
+                                <Path.Stroke>
+                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
+                                </Path.Stroke>
+                            </Path>
+
+                            <ContentPresenter Margin="24,5,50,5"
+                                              ContentSource="Header" />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="JournalEntryUnifiedViewConverter.JournalEntryPosition" Value="Current">
+                            <Setter TargetName="Glyph" Property="Data" Value="M 0,5 L 2.5,8 L 7,3 " />
+                        </Trigger>
+                        <Trigger Property="IsHighlighted" Value="true">
+                            <Setter TargetName="Border" Property="Background">
+                                <Setter.Value>
+                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="Border" Property="BorderBrush">
+                                <Setter.Value>
+                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrushTitle}}" />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsHighlighted" Value="true" />
+                                <Condition Property="JournalEntryUnifiedViewConverter.JournalEntryPosition" Value="Forward" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Glyph" Property="Data" Value="M 3 1 L 7 5 L 3 9 z" />
+                            <Setter TargetName="Glyph" Property="Stroke" Value="{x:Null}" />
+                            <Setter TargetName="Glyph" Property="Fill">
+                                <Setter.Value>
+                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
+                                </Setter.Value>
+                            </Setter>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsHighlighted" Value="true" />
+                                <Condition Property="JournalEntryUnifiedViewConverter.JournalEntryPosition" Value="Back" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Glyph" Property="Data" Value="M 7 1 L 3 5 L 7 9 z" />
+                            <Setter TargetName="Glyph" Property="Stroke" Value="{x:Null}" />
+                            <Setter TargetName="Glyph" Property="Fill">
+                                <Setter.Value>
+                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
+                                </Setter.Value>
+                            </Setter>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <JournalEntryUnifiedViewConverter x:Key="JournalEntryUnifiedViewConverter" />
+
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Frame.Default,
+                                        TypeInTargetAssembly={x:Type local:FrameKeys}}"
+           TargetType="{x:Type Frame}">
+        <Setter Property="SnapsToDevicePixels" Value="true" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Frame}">
+                    <DockPanel>
+                        <Border Height="22"
+                                BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                                BorderThickness="1"
+                                DockPanel.Dock="Top">
+                            <Grid>
+                                <Grid.Background>
+                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
+                                </Grid.Background>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="16" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Menu x:Name="NavMenu"
+                                      Grid.ColumnSpan="3"
+                                      Height="16"
+                                      Margin="1,0,0,0"
+                                      VerticalAlignment="Center"
+                                      Style="{StaticResource FrameMenu}">
+                                    <MenuItem IsSubmenuOpen="{Binding (MenuItem.IsSubmenuOpen), Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                              ItemContainerStyle="{StaticResource FrameSubmenuItem}"
+                                              Style="{StaticResource FrameHeaderMenuItem}">
+                                        <MenuItem.ItemsSource>
+                                            <MultiBinding Converter="{StaticResource JournalEntryUnifiedViewConverter}">
+                                                <Binding Path="BackStack"
+                                                         RelativeSource="{RelativeSource TemplatedParent}" />
+                                                <Binding Path="ForwardStack"
+                                                         RelativeSource="{RelativeSource TemplatedParent}" />
+                                            </MultiBinding>
+                                        </MenuItem.ItemsSource>
+                                    </MenuItem>
+                                </Menu>
+
+                                <Path Grid.Column="0"
+                                      Grid.ColumnSpan="3"
+                                      Margin="2,1.5,0,1.5"
+                                      HorizontalAlignment="Left"
+                                      VerticalAlignment="Center"
+                                      Data="M15,14 Q18,12.9 20.9,14 A8.3,8.3,0,0,0,35.7,8.7 A8.3,8.3,0,0,0,                     25.2,0.6 Q18, 3.3 10.8,0.6 A8.3,8.3,0,0,0,0.3,8.7 A8.3,8.3,0,0,0,15,14 z"
+                                      IsHitTestVisible="false"
+                                      SnapsToDevicePixels="false"
+                                      Stroke="{x:Null}"
+                                      StrokeThickness="1">
+                                    <Path.Fill>
+                                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
+                                    </Path.Fill>
+                                </Path>
+                                <Button Grid.Column="0"
+                                        Margin="2.7,1.5,1.3,1.5"
+                                        Command="NavigationCommands.BrowseBack"
+                                        Content="M 4 0 L 0 4 L 4 8 Z"
+                                        Style="{StaticResource FrameButtonStyle}" />
+                                <Button Grid.Column="1"
+                                        Margin="1.3,1.5,0,1.5"
+                                        Command="NavigationCommands.BrowseForward"
+                                        Content="M 4 0 L 0 4 L 4 8 Z"
+                                        Style="{StaticResource FrameButtonStyle}" />
+                            </Grid>
+                        </Border>
+                        <Border BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                                BorderThickness="1">
+
+                            <ContentPresenter x:Name="PART_FrameCP"
+                                              Width="640"
+                                              Height="458" />
+                        </Border>
+                    </DockPanel>
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="CanGoForward" Value="false" />
+                                <Condition Property="CanGoBack" Value="false" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="NavMenu" Property="IsEnabled" Value="false" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style BasedOn="{StaticResource {x:Static local:FrameKeys.Default}}"
+           TargetType="Frame" />
+
+</ResourceDictionary>

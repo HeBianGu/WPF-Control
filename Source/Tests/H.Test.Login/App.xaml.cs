@@ -1,6 +1,9 @@
 ﻿using H.Extensions.ApplicationBase;
+using H.Extensions.Mail;
 using H.Modules.Login;
+using H.Modules.Setting;
 using H.Services.Common;
+using H.Services.Setting;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -20,6 +23,7 @@ namespace H.Test.Login
     {
         protected override void ConfigureServices(IServiceCollection services)
         {
+            
             services.AddSetting();
             services.AddWindowMessage();
             services.AddAdornerDialogMessage();
@@ -38,9 +42,9 @@ namespace H.Test.Login
         protected override void Configure(IApplicationBuilder app)
         {
             base.Configure(app);
-            app.UseLogin();
-            app.UseRegistor();
-            app.UseMail();
+            app.UseLoginOptions();
+            app.UseRegistorOptions();
+            app.UseMailOptions();
         }
 
         protected override void OnSplashScreen(StartupEventArgs e)

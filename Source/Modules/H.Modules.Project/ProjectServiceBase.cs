@@ -2,7 +2,10 @@
 global using H.Services.Serializable;
 global using System.Collections;
 global using System.ComponentModel.DataAnnotations;
+using H.Common.Interfaces;
 using H.Extensions.Common;
+using H.Services.AppPath;
+using H.Services.Setting;
 using System.IO;
 
 namespace H.Modules.Project;
@@ -172,8 +175,6 @@ public abstract class ProjectServiceBase<T> : BindableBase, IProjectService, IDa
         Projects<T> data = this.GetSerializer().Load<Projects<T>>(this._projectsPath);
         if (data == null)
             return null;
-        foreach (var item in data.Items)
-            item.Path = this.GetFolderPath();
         return data;
     }
 

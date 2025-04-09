@@ -6,6 +6,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Extensions\H.Extensions.MarkupExtension\H.Extensions.MarkupExtension.csproj" />
     <ProjectReference Include="..\..\Providers\H.Mvvm\H.Mvvm.csproj" />
-    <ProjectReference Include="..\..\Styles\H.Styles.Default\H.Styles.Default.csproj" />
+    <ProjectReference Include="..\..\Styles\H.Style\H.Style.csproj" />
   </ItemGroup>
 </Project>

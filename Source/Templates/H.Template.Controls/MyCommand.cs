@@ -1,4 +1,5 @@
-﻿using H.Mvvm.Attributes;
+﻿using H.Common.Attributes;
+using H.Common.Commands;
 namespace H.Template.Controls;
 [Icon("\xE713")]
 [Display(Name = "我的操作", Description = "默认操作")]

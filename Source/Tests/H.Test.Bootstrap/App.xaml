@@ -1,0 +1,17 @@
+﻿<h:ApplicationBase x:Class="H.Test.Bootstrap.App"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:h="https://github.com/HeBianGu"
+                   xmlns:local="clr-namespace:H.Test.Bootstrap">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <FontSizeTheme Type="Default" />
+                <LayoutTheme Type="Default" />
+                <ColorTheme Type="Dark" />
+                <BootstrapStyle />
+                <!--<ConciseStyle/>-->
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</h:ApplicationBase>

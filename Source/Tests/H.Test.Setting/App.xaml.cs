@@ -1,6 +1,9 @@
 ﻿using H.Extensions.ApplicationBase;
+using H.Extensions.AppPath;
 using H.Modules.Setting;
+using H.Modules.Setting.Base;
 using H.Services.Common;
+using H.Services.Setting;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -28,13 +31,13 @@ namespace H.Test.Setting
 
         protected override void Configure(IApplicationBuilder app)
         {
-            app.UseSettingDataManager(x =>
+            app.UseSettingDataOptions(x =>
             {
                 x.Add(LoginSetting.Instance);
             });
-            app.UseSetting();
-            app.UseSettingSecurity();
-            app.UseSettingDefault();
+            app.UseSettingViewOptions();
+            app.UseSettingSecurityOptions();
+            app.UseSettingDefaultOptions();
         }
 
         protected override Window CreateMainWindow(StartupEventArgs e)
@@ -46,7 +49,7 @@ namespace H.Test.Setting
         {
             base.OnSplashScreen(e);
 
-            SettingDataManager.Instance.Load(null, out var message);
+            IocSetting.Instance.Load(null, out var message);
         }
     }
 }

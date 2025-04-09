@@ -1,13 +1,11 @@
-﻿using System;
-using System.Windows.Markup;
+﻿using System.Windows.Markup;
 
-namespace H.Extensions.Color
+namespace H.Extensions.Color;
+
+public class GetAvailableColorsExtension : MarkupExtension
 {
-    public class GetAvailableColorsExtension : MarkupExtension
+    public override object ProvideValue(IServiceProvider serviceProvider)
     {
-        public override object ProvideValue(IServiceProvider serviceProvider)
-        {
-            return ColorFactory.CreateAvailableColors();
-        }
+        return ColorFactory.CreateAvailableColors();
     }
 }

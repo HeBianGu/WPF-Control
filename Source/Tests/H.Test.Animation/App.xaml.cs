@@ -2,7 +2,9 @@
 using H.Modules.Messages.Dialog;
 using H.Modules.Messages.Form;
 using H.Services.Common;
-using H.Styles.Default;
+using H.Services.Message.Dialog;
+using H.Services.Message.Form;
+using H.Styles;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;

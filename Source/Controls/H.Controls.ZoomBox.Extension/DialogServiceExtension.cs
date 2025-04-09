@@ -3,6 +3,7 @@ using System;
 using System.Windows.Media;
 using H.Extensions.Common;
 using H.Services.Common;
+using H.Services.Message.Dialog;
 
 namespace H.Controls.ZoomBox.Extension
 {

@@ -1,0 +1,9 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\..\DataBases\H.DataBases.Sqlite\H.DataBases.Sqlite.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.ApplicationBase\H.Extensions.ApplicationBase.csproj" />
+    <ProjectReference Include="..\..\Modules\H.Modules.Identity\H.Modules.Identity.csproj" />
+    <ProjectReference Include="..\..\Modules\H.Modules.Login\H.Modules.Login.csproj" />
+    <ProjectReference Include="..\..\Modules\H.Modules.Operation\H.Modules.Operation.csproj" />
+  </ItemGroup>
+</Project>

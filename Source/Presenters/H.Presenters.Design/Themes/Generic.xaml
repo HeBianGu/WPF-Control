@@ -1,13 +1,13 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:h="https://github.com/HeBianGu"
-                    xmlns:local="clr-namespace:H.Presenters.Design"
+                    xmlns:lp="clr-namespace:H.Presenters.Design.Presenter"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/Provider/DesignBorder.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/Provider/FixedGrid.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/Provider/HexGrid.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/Provider/PanelPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/Presenter/DesignBorder.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/Presenter/FixedGrid.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/Presenter/HexGrid.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/Presenter/PanelPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/Presenter/CardPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/Presenter/DataGridDesignPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/Presenter/DateTimeNowPresenter.xaml" />
@@ -22,7 +22,7 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="{ComponentResourceKey ResourceId=S.TextBlock.Binding,
-                                        TypeInTargetAssembly={x:Type local:TextBlockKeys}}"
+                                        TypeInTargetAssembly={x:Type lp:TextBlockKeys}}"
            TargetType="TextBlock">
         <Setter Property="Foreground" Value="{Binding Foreground}" />
         <Setter Property="FontSize" Value="{Binding FontSize}" />

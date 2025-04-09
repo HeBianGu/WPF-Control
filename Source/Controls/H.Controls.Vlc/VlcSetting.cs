@@ -1,8 +1,9 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 using H.Extensions.Setting;
+using H.Services.AppPath;
 using H.Services.Common;
-
+using H.Services.Setting;
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;

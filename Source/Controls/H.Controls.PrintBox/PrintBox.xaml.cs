@@ -1,5 +1,4 @@
-﻿
-using H.Services.Common;
+﻿global using H.Services.Message;
 using System;
 using System.Collections.Generic;
 using System.Printing;
@@ -71,9 +70,9 @@ namespace H.Controls.PrintBox
                 binding.Executed += (l, k) =>
                 {
                     FixedDocument fixedDoc = this.GetFixedDocument();
-                    IocMessage.Snack?.ShowInfo("正在打印..");
+                    IocMessage.ShowSnackInfo("正在打印..");
                     this._printDialog.PrintDocument(fixedDoc.DocumentPaginator, "打印");
-                    IocMessage.Snack?.ShowInfo("打印完成..");
+                    IocMessage.ShowSnackInfo("打印完成..");
                 };
                 this.CommandBindings.Add(binding);
             }

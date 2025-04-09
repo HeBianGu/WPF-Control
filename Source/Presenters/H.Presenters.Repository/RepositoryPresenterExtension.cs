@@ -1,14 +1,12 @@
-﻿using System;
-using System.Windows.Markup;
+﻿using System.Windows.Markup;
 
-namespace H.Presenters.Repository
+namespace H.Presenters.Repository;
+
+public class RepositoryPresenterExtension : MarkupExtension
 {
-    public class RepositoryPresenterExtension : MarkupExtension
+    public Type Type { get; set; }
+    public override object ProvideValue(IServiceProvider serviceProvider)
     {
-        public Type Type { get; set; }
-        public override object ProvideValue(IServiceProvider serviceProvider)
-        {
-            return new RepositoryPresenter(this.Type);
-        }
+        return new RepositoryPresenter(this.Type);
     }
 }

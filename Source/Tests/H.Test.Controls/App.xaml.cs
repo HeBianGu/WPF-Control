@@ -1,7 +1,10 @@
 ﻿using H.Extensions.ApplicationBase;
-using H.Styles.Default;
+using H.Modules.Setting;
+using H.Services.Setting;
+using H.Styles;
+using H.Styles;
+using H.Styles.Controls;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -33,6 +36,7 @@ namespace H.Test.Controls
         {
             app.UseWindowSetting();
             app.UseScrollViewerSetting();
+            app.UseStyleOptions();
         }
 
     }

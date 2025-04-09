@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
@@ -8,7 +7,9 @@ using System.Windows;
 using System.Xml.Linq;
 using Microsoft.Extensions.DependencyInjection;
 using H.Extensions.ApplicationBase;
-using H.Styles.Default;
+using H.Styles;
+using H.Services.Setting;
+using H.Styles;
 
 namespace H.Test.SideMenu
 {
@@ -20,12 +21,13 @@ namespace H.Test.SideMenu
         protected override void ConfigureServices(IServiceCollection services)
         {
             services.AddAdornerDialogMessage();
+            
             services.AddSetting();
         }
 
         protected override void Configure(IApplicationBuilder app)
         {
-            app.UseSettingDataManager(x =>
+            app.UseSettingDataOptions(x =>
             {
                 x.Add(AppSetting.Instance);
             });
