@@ -8,9 +8,9 @@
     <TargetFrameworks>net7.0-windows</TargetFrameworks>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <LangVersion>10.0</LangVersion>
-    <Version>1.0.4</Version>
-    <FileVersion>1.0.4</FileVersion>
-    <AssemblyVersion>1.0.4</AssemblyVersion>
+    <Version>1.0.5</Version>
+    <FileVersion>1.0.5</FileVersion>
+    <AssemblyVersion>1.0.5</AssemblyVersion>
     <Copyright>Copyright © HeBianGu 2023-2025</Copyright>
     <Authors>HeBianGu</Authors>
     <RepositoryUrl>https://github.com/HeBianGu/WPF-Control</RepositoryUrl>
