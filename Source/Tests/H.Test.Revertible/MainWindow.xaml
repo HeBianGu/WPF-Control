@@ -28,7 +28,7 @@
                      SelectedIndex="{Binding Source={Ioc Type={x:Type IRevertibleService}}, Path=Position, Mode=OneWay}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <ContentPresenter Content="{Binding}" />
+                        <ContentPresenter Content="{Binding Data}" />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ListBox>
