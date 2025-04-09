@@ -16,7 +16,7 @@
     <RepositoryUrl>https://github.com/HeBianGu/WPF-Control</RepositoryUrl>
     <PackageProjectUrl>https://github.com/HeBianGu/WPF-Control</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <Description>WPF轻量控件和皮肤库</Description>
+    <Description>WPF-Control 是一个基于 .NET 7+ 的高性能 WPF 控件库，提供丰富的轻量级 UI 组件、多套现代化 皮肤主题，并整合了精选的 第三方开源控件，同时内置 数据库仓储模型 和 模块化封装 的通用功能，适用于企业级应用开发，帮助开发者快速构建高效、美观的桌面应用程序。</Description>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
   
