@@ -1,4 +1,5 @@
 ﻿
+using H.Styles.Controls;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,7 +15,7 @@ namespace H.Controls.Dock.Controls
     /// <see cref="AnchorablePaneTitle"/>, and <see cref="LayoutDocumentPaneControl"/>).
     /// </summary>
     /// <seealso cref="ToggleButton"/>
-    public class DropDownButton : ToggleButton
+    public class DropDownButton : FontIconToggleButton
     {
         #region Constructors
 
