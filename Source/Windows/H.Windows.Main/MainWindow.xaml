@@ -73,7 +73,7 @@
                                             </h:GridSplitterBox.MenuContent>
                                             <h:GridSplitterBox.ToggleStyle>
                                                 <Style BasedOn="{StaticResource {x:Static h:GridSplitterBox.ToggleKey}}"
-                                                       TargetType="ToggleButton">
+                                                       TargetType="FontIconToggleButton">
                                                     <Setter Property="Grid.ColumnSpan" Value="1" />
                                                 </Style>
                                             </h:GridSplitterBox.ToggleStyle>
