@@ -22,7 +22,7 @@ namespace H.Modules.Login
         }
 
         private string _serviceAgreementUri;
-        [DefaultValue("https://github.com/HeBianGu/WPF-Control")]
+        [DefaultValue("https://hebiangu.github.io/WPF-Control/ServiceAgreement.html")]
         [Display(Name = "应用许可")]
         public string ServiceAgreementUri
         {
@@ -35,7 +35,7 @@ namespace H.Modules.Login
         }
 
         private string _privacypolicyUri;
-        [DefaultValue("https://github.com/HeBianGu/WPF-Control")]
+        [DefaultValue("https://hebiangu.github.io/WPF-Control/PrivacyPolicy.html")]
         [Display(Name = "隐私策略")]
         public string PrivacypolicyUri
         {
@@ -75,5 +75,11 @@ namespace H.Modules.Login
             }
         }
 
+
+        public override void LoadDefault()
+        {
+            base.LoadDefault();
+            System.Diagnostics.Debug.WriteLine(this.Image);
+        }
     }
 }

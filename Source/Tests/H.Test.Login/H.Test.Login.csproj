@@ -11,7 +11,8 @@
     <FileVersion>1.0.0</FileVersion>
     <Copyright>Copyright © HeBianGu 2019-2023</Copyright>
     <Authors></Authors>
-    <PackageProjectUrl>https://github.com/HeBianGu</PackageProjectUrl>    <Title></Title>
+    <PackageProjectUrl>https://github.com/HeBianGu</PackageProjectUrl>
+    <Title></Title>
     <Version>1.0.3</Version>
   </PropertyGroup>
 

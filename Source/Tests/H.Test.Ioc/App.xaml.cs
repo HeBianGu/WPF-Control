@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
@@ -29,13 +30,13 @@ namespace H.Test.Ioc
 
         protected override void OnSplashScreen(StartupEventArgs e)
         {
-            new Window().ShowDialog();
+            new Window() { Content = MethodInfo.GetCurrentMethod().Name, Width = 400, Height = 200, FontSize = 50 }.ShowDialog();
 
         }
 
         protected override void OnLogin(StartupEventArgs e)
         {
-            new Window().ShowDialog();
+            new Window() { Content = MethodInfo.GetCurrentMethod().Name, Width = 400, Height = 200, FontSize = 50 }.ShowDialog();
         }
     }
 }

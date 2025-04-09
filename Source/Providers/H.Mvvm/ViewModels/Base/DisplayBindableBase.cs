@@ -190,7 +190,8 @@ public abstract class DisplayBindableBase : CommandsBindableBase, IDable, IDispl
         foreach (PropertyInfo p in ps)
         {
             DefaultValueAttribute d = p.GetCustomAttribute<DefaultValueAttribute>();
-            if (d == null) continue;
+            if (d == null) 
+                continue;
             if (typeof(IConvertible).IsAssignableFrom(p.PropertyType))
             {
                 object value = Convert.ChangeType(d.Value, p.PropertyType);
