@@ -5,6 +5,8 @@ global using H.Services.Identity.Role;
 global using H.Services.Setting;
 global using H.Services.Message;
 global using H.Services.Message.Dialog;
+using H.Common.Attributes;
+using H.Extensions.FontIcon;
 
 namespace H.Modules.Identity
 {
@@ -78,6 +80,7 @@ namespace H.Modules.Identity
         }
     }
 
+    [Icon(FontIcons.People)]
     [Display(Name = "角色管理", GroupName = SettingGroupNames.GroupAuthority, Description = "应用此功能进行角色管理")]
     public class RoleViewPresenter : IRoleViewPresenter
     {

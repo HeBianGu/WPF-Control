@@ -23,7 +23,20 @@
     <h:MainWindow.CaptionTempate>
         <ControlTemplate>
             <DockPanel HorizontalAlignment="Right"
-                       LastChildFill="False">
+                       LastChildFill="False"
+                       WindowChrome.IsHitTestVisibleInChrome="True">
+                <Menu>
+                    <Menu.Resources>
+                        <Style BasedOn="{StaticResource {x:Static MenuItemKeys.BindCommand}}"
+                               TargetType="MenuItem" />
+                    </Menu.Resources>
+                    <MenuItem Header="身份认证">
+                        <MenuItem Command="{ShowUserViewCommand}" />
+                        <MenuItem Command="{ShowRoleViewCommand}" />
+                        <MenuItem Command="{ShowAuthorityViewCommand}" />
+                        <MenuItem Command="{ShowOperationViewCommand}" />
+                    </MenuItem>
+                </Menu>
                 <FontIconButton Command="{ShowSettingCommand}"
                                 Style="{DynamicResource {x:Static FontIconButtonKeys.Command}}" />
                 <ContentPresenter Content="{Ioc Type={x:Type h:ISwitchThemeViewPresenter}}" />
