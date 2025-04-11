@@ -7,7 +7,7 @@ using H.Modules.Help.WebSite;
 using H.Modules.Setting;
 using H.Modules.SplashScreen;
 
-namespace H.ApplicationBases.Module
+namespace H.ApplicationBases.Modules
 {
     public interface IDefaultModuleOptions
     {

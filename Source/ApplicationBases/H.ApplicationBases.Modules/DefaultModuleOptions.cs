@@ -10,7 +10,7 @@ using H.Modules.Setting;
 using H.Modules.SplashScreen;
 using H.Services.Common.Feedback;
 
-namespace H.ApplicationBases.Module
+namespace H.ApplicationBases.Modules
 {
 
     public class DefaultModuleOptions : CacheActionOptionsBase, IDefaultModuleOptions

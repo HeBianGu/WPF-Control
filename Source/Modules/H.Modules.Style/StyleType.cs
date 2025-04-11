@@ -1,4 +1,4 @@
-﻿namespace H.Style;
+﻿namespace H.Modules.Style;
 
 //风格 适用场景    代表框架
 //扁平化 通用 Web 应用 Bootstrap, Tailwind
