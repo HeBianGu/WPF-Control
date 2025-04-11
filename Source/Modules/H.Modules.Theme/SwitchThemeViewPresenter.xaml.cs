@@ -8,14 +8,20 @@ namespace H.Modules.Theme
 {
     public class SwitchThemeViewPresenter : ISwitchThemeViewPresenter
     {
-        //private readonly IOptions<SwitchThemeOptions> _options;
-        //public SwitchThemeViewPresenter(IOptions<SwitchThemeOptions> options)
-        //{
-        //    _options = options;
-        //}
+        private readonly IOptions<ThemeOptions> _options;
+        public SwitchThemeViewPresenter(IOptions<ThemeOptions> options)
+        {
+            _options = options;
+        }
         //public RelayCommand LoadedCommand => new RelayCommand(e=>
         //{
         //    this._options.Value.Refresh();
         //});
+
+
+        public RelayCommand SwitchDarkCommand => new RelayCommand(x =>
+        {
+            this._options.Value.SwitchDark();
+        });
     }
 }

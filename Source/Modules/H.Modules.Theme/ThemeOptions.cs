@@ -180,11 +180,10 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoad,
                 return;
             _isDark = value;
             RaisePropertyChanged();
-            this.SwitchDark();
         }
     }
 
-    private void SwitchDark()
+    internal void SwitchDark()
     {
         if (this.IsDark == false)
         {

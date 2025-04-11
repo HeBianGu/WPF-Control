@@ -17,7 +17,7 @@ using System.IO;
 
 namespace H.DataBases.Sqlite
 {
-    public abstract class SqliteSettableBase<TSetting> : DbSettableBase<TSetting>, ISqliteOption where TSetting : new()
+    public abstract class SqliteSettableBase<TSetting> : DbSettableBase<TSetting>, ISqliteSettable where TSetting : new()
     {
         public override void LoadDefault()
         {

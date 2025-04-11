@@ -11,13 +11,8 @@ using H.Mvvm.ViewModels.Base;
 
 namespace H.Modules.Identity
 {
-    internal class LoginService : BindableBase, ILoginService
+    internal class IdentityLoginService : BindableBase, ILoginService
     {
-        private readonly IOptions<IdentifyOptions> _options;
-        public LoginService(IOptions<IdentifyOptions> options)
-        {
-            _options = options;
-        }
         private IUser _user;
         public IUser User
         {

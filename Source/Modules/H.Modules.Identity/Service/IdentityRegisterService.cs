@@ -1,7 +1,4 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-
-
-
 using H.Services.Common;
 using Microsoft.Extensions.Options;
 using System;
@@ -11,11 +8,11 @@ using H.Services.Operation;
 
 namespace H.Modules.Identity
 {
-    internal class RegisterService : IRegisterService
+    internal class IdentityRegisterService : IRegisterService
     {
         private readonly IOptions<IdentifyOptions> _options;
         private readonly IStringRepository<hi_dd_user> _repository;
-        public RegisterService(IStringRepository<hi_dd_user> repository, IOptions<IdentifyOptions> options)
+        public IdentityRegisterService(IStringRepository<hi_dd_user> repository, IOptions<IdentifyOptions> options)
         {
             _repository = repository;
             _options = options;

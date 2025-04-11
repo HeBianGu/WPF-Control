@@ -27,15 +27,15 @@ namespace System
         /// 注册
         /// </summary>
         /// <param name="service"></param>
-        public static void AddLoginService(this IServiceCollection service)
+        public static void AddIdentityLoginService(this IServiceCollection service)
         {
-            service.AddSingleton<ILoginService, LoginService>();
+            service.AddSingleton<ILoginService, IdentityLoginService>();
         }
 
-        public static IServiceCollection AddRegisterService(this IServiceCollection services, Action<IIdentifyOptions> setupAction = null)
+        public static IServiceCollection AddIdentityRegisterService(this IServiceCollection services, Action<IIdentifyOptions> setupAction = null)
         {
             services.AddOptions();
-            services.TryAdd(ServiceDescriptor.Singleton<IRegisterService, RegisterService>());
+            services.TryAdd(ServiceDescriptor.Singleton<IRegisterService, IdentityRegisterService>());
             if (setupAction != null)
                 services.Configure(new Action<IdentifyOptions>(setupAction));
             return services;

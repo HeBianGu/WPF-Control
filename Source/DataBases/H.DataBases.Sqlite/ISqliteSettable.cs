@@ -7,7 +7,7 @@ using System.Data.Entity;
 
 namespace H.DataBases.Sqlite
 {
-    public interface ISqliteOption
+    public interface ISqliteSettable
     {
         string InitialCatalog { get; set; }
         string FilePath { get; set; }

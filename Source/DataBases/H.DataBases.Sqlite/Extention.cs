@@ -29,7 +29,7 @@ namespace System
         //    service.AddSingleton<IDbDisconnectService, DbDisconnectService<TDbContext>>();
         //}
 
-        public static void AddDbContextBySetting<TDbContext>(this IServiceCollection services, Action<ISqliteOption> action = null) where TDbContext : DbContext
+        public static void AddDbContextBySetting<TDbContext>(this IServiceCollection services, Action<ISqliteSettable> action = null) where TDbContext : DbContext
         {
             action?.Invoke(SqliteSettable.Instance);
             SqliteSettable.Instance.Load(out string messge);
@@ -41,7 +41,7 @@ namespace System
             services.AddSingleton<IDbDisconnectService, DbDisconnectService<TDbContext>>();
         }
 
-        public static void AddDbContextNewSetting<TDbContext>(this IServiceCollection services, Action<ISqliteOption> action = null) where TDbContext : DbContext
+        public static void AddDbContextNewSetting<TDbContext>(this IServiceCollection services, Action<ISqliteSettable> action = null) where TDbContext : DbContext
         {
             SqliteSettable setting = new SqliteSettable()
             {

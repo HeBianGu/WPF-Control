@@ -10,13 +10,13 @@ namespace H.ApplicationBases.Identify
     {
         protected override void ConfigureServices(IServiceCollection services)
         {
-            services.AddDefaultIdentify();
+            services.AddIdentifyDefaultServices();
         }
 
         protected override void Configure(IApplicationBuilder app)
         {
             base.Configure(app);
-            app.UseDefaultIdentifyOptions();
+            app.UseIdentifyDefaultOptions();
         }
     }
 }

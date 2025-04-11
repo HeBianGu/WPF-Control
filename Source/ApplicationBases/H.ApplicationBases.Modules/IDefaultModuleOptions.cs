@@ -14,7 +14,7 @@ namespace H.ApplicationBases.Module
         void UseAboutOptions(Action<IAboutOptions> action);
         void UseContactOptions(Action<IContactOptions> action);
         void UseGuideOptions(Action<IGuideOptions> action);
-        void UseReleaseVersionsOptionsAbout(Action<IReleaseVersionsOptions> action);
+        void UseReleaseVersionsOptions(Action<IReleaseVersionsOptions> action);
         void UseSettingViewOptions(Action<ISettingViewOptions> action);
         void UseSplashScreenOptions(Action<ISplashScreenOptions> action);
         void UseSupportOptions(Action<ISupportOptions> action);

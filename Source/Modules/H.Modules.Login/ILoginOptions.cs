@@ -10,7 +10,6 @@ public interface ILoginOptions
     double ProductFontSize { get; set; }
     bool Remember { get; set; }
     bool UseVisitor { get; set; }
-
     bool Load(out string message);
     void LoadDefault();
     bool Save(out string message);

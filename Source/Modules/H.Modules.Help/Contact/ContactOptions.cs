@@ -15,6 +15,7 @@ using System.Xml.Serialization;
 
 namespace H.Modules.Help.Contact;
 
+
 [Icon(FontIcons.Contact)]
 [Display(Name = "联系方式", GroupName = SettingGroupNames.GroupSystem, Description = "通过此方式可以联系到开发者")]
 public class ContactOptions : IocOptionInstance<ContactOptions>, IContactOptions

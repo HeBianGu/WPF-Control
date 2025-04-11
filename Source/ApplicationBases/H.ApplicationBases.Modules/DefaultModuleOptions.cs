@@ -30,7 +30,7 @@ namespace H.ApplicationBases.Module
             this.ConfigOptions(action);
         }
 
-        public void UseReleaseVersionsOptionsAbout(Action<IReleaseVersionsOptions> action)
+        public void UseReleaseVersionsOptions(Action<IReleaseVersionsOptions> action)
         {
             this.ConfigOptions(action);
         }

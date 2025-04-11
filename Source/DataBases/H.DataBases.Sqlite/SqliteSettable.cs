@@ -15,7 +15,7 @@ using System.ComponentModel.DataAnnotations;
 namespace H.DataBases.Sqlite
 {
     [Display(Name = "数据库配置", GroupName = SettingGroupNames.GroupApp)]
-    public class SqliteSettable : SqliteSettableBase<SqliteSettable>, ISqliteOption, IDbSettable
+    public class SqliteSettable : SqliteSettableBase<SqliteSettable>, ISqliteSettable, IDbSettable
     {
 
     }
