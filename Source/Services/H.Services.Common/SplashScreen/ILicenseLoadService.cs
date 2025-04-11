@@ -6,7 +6,7 @@ using H.Common.Interfaces;
 
 namespace H.Services.Common.SplashScreen;
 
-public interface ILicenseLoadService : ISplashLoad
+public interface ILicenseLoadService : ISplashLoadable
 {
 
 }

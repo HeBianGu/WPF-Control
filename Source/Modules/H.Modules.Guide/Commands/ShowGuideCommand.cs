@@ -2,7 +2,7 @@
 using H.Common.Commands;
 using H.Services.Common.Guide;
 
-namespace H.Modules.Guide;
+namespace H.Modules.Guide.Commands;
 
 [Icon("\xE963")]
 [Display(Name = "新手向导", Description = "显示新手向导")]

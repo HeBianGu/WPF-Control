@@ -1,5 +1,6 @@
 ﻿using H.Common.Attributes;
 using H.Extensions.Attach;
+using H.Modules.Guide.Base;
 namespace H.Modules.Guide;
 
 [Icon("\xEC92")]
@@ -42,7 +43,7 @@ public class GuideTreePresenter : DisplayBindableBase
             guideData.Icon = Cattach.GetGuideIcon(node.Element);
             guideData.Data = Cattach.GetGuideData(node.Element);
             guideData.DataTemplate = Cattach.GetGuideDataTemplate(node.Element);
-            guideData.Version = Cattach.GetGuideAssemblyVersion(node.Element) ?? "1.0.0.0";
+            guideData.Version = Cattach.GetGuideAssemblyVersion(node.Element);
             guideData.Element = node.Element;
             yield return guideData;
         }
@@ -59,7 +60,7 @@ public class GuideData : BindableBase
 
     public DataTemplate DataTemplate { get; set; }
 
-    public string Version { get; set; }
+    public Version Version { get; set; }
 
     public UIElement Element { get; set; }
 }

@@ -2,7 +2,7 @@
 
 namespace H.Controls.FavoriteBox
 {
-    public interface IFavoriteService : IDataSource<IFavoriteItem>, ISplashLoad, ISplashSave
+    public interface IFavoriteService : IDataSource<IFavoriteItem>, ISplashLoadable, ISplashSave
     {
         IFavoriteItem Create();
     }

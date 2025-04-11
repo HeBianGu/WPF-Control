@@ -9,7 +9,7 @@ using System;
 
 namespace H.Test.Project
 {
-    public class UserProjectService : ProjectServiceBase<UserProjectItem>, ILoginedSplashLoad
+    public class UserProjectService : ProjectServiceBase<UserProjectItem>, ILoginedSplashLoadable
     {
         public UserProjectService(IOptions<ProjectOptions> options) : base(options)
         {

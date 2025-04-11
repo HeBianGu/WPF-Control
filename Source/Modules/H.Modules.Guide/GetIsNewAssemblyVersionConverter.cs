@@ -12,7 +12,8 @@ public class GetIsNewAssemblyVersionConverter : MarkupValueConverterBase
 {
     public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        var version = Assembly.GetEntryAssembly().GetName().Version.ToString();
-        return version == value?.ToString();
+        if (value is Version version)
+            return version == Assembly.GetEntryAssembly().GetName().Version;
+        return false;
     }
 }

@@ -47,6 +47,13 @@ public abstract partial class ApplicationBase : Application, IConfigureableAppli
         this.OnSingleton(e);
         base.OnStartup(e);
         Window window = this.CreateMainWindow(e);
+        window.Loaded += (s, e) =>
+        {
+            var loads = Ioc.GetAssignableFromServices<IMainWindowLoadedLoadable>().Distinct();
+            foreach (var item in loads)
+                item.Load(out string message);
+
+        };
         this.OnSplashScreen(e);
         this.OnLogin(e);
         Ioc<IMainWindowSavableService>.Instance?.Load(window);
@@ -166,7 +173,7 @@ public abstract partial class ApplicationBase : Application, IConfigureableAppli
     public ILogService ILogger => Ioc.Services.GetService<ILogService>();
     protected virtual async void ShowMessage(string message, string title = "提示")
     {
-        await IocMessage.ShowDialogMessage(message,title);
+        await IocMessage.ShowDialogMessage(message, title);
         //MessageBox.Show(message);
 
         //if (MessageProxy.Windower == null)
@@ -202,14 +209,14 @@ public partial class ApplicationBase
         this.Configure(bulder);
     }
 
-    protected virtual IEnumerable<ISplashLoad> GetSplashLoads()
+    protected virtual IEnumerable<ISplashLoadable> GetSplashLoads()
     {
         foreach (IDbConnectService item in Ioc.Services.GetServices<IDbConnectService>())
         {
             yield return item;
         }
 
-        foreach (ISplashLoad item in Ioc.Services.GetServices<ISplashLoad>())
+        foreach (ISplashLoadable item in Ioc.Services.GetServices<ISplashLoadable>())
         {
             yield return item;
         }
@@ -245,8 +252,8 @@ public partial class ApplicationBase
 
             {
                 int index = 0;
-                IEnumerable<ISplashLoad> loads = Ioc.GetAssignableFromServices<ISplashLoad>().Distinct();
-                foreach (ISplashLoad load in loads)
+                IEnumerable<ISplashLoadable> loads = Ioc.GetAssignableFromServices<ISplashLoadable>().Distinct();
+                foreach (ISplashLoadable load in loads)
                 {
                     if (c?.IsCancel == true)
                         return null;
@@ -363,9 +370,9 @@ public partial class ApplicationBase
                     Thread.Sleep(sleep);
                 }
 
-                IEnumerable<ILoginedSplashLoad> loads = Ioc.GetAssignableFromServices<ISplashLoad>().Distinct().OfType<ILoginedSplashLoad>();
+                IEnumerable<ILoginedSplashLoadable> loads = Ioc.GetAssignableFromServices<ISplashLoadable>().Distinct().OfType<ILoginedSplashLoadable>();
                 int index = 0;
-                foreach (ILoginedSplashLoad load in loads)
+                foreach (ILoginedSplashLoadable load in loads)
                 {
                     if (c?.IsCancel == true)
                         return null;
@@ -441,7 +448,6 @@ public partial class ApplicationBase
     /// </summary>
     protected virtual void OnSetting()
     {
-
         //var sss=   Ioc.Services.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Static|bind);
 
         ////  Do ：加载注入的ISetting

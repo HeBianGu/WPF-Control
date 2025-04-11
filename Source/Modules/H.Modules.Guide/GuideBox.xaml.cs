@@ -1,6 +1,7 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 global using H.Extensions.StoryBoard;
 using H.Extensions.Attach;
+using H.Modules.Guide.Base;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
@@ -353,7 +354,7 @@ public partial class GuideBox : FrameworkElement
         Cattach.SetGuideTitle(this._contentControl, title);
         string icon = Cattach.GetGuideIcon(currentElement);
         Cattach.SetGuideIcon(this._contentControl, icon);
-        string version = Cattach.GetGuideAssemblyVersion(currentElement);
+        Version version = Cattach.GetGuideAssemblyVersion(currentElement);
         Cattach.SetGuideAssemblyVersion(this._contentControl, version);
         this._contentControl.Content = Cattach.GetGuideData(this._guideTree.Current.Element);
         this._contentControl.ContentTemplate = Cattach.GetGuideDataTemplate(this._guideTree.Current.Element);

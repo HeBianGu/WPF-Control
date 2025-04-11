@@ -3,7 +3,7 @@
 global using H.Extensions.Common;
 using H.Extensions.Attach;
 
-namespace H.Modules.Guide;
+namespace H.Modules.Guide.Base;
 
 public static class GuideExtension
 {

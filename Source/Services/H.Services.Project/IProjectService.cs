@@ -4,7 +4,7 @@ global using H.Common.Interfaces;
 
 namespace H.Services.Project;
 
-public interface IProjectService : ISplashSave, ISplashLoad
+public interface IProjectService : ISplashSave, ISplashLoadable
 {
     IProjectItem Current { get; set; }
     IProjectItem Create();

@@ -2,7 +2,7 @@
 using H.Common.Commands;
 using H.Services.Common.Guide;
 
-namespace H.Modules.Guide;
+namespace H.Modules.Guide.Commands;
 
 public abstract class ShowGuideCommandBase : DisplayMarkupCommandBase
 {

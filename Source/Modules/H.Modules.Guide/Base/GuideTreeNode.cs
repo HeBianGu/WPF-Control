@@ -1,6 +1,6 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-namespace H.Modules.Guide;
+namespace H.Modules.Guide.Base;
 
 public class GuideTreeNode
 {
@@ -28,9 +28,7 @@ public class GuideTreeNode
         int c = this.Parent.Chidren.IndexOf(this);
 
         if (c >= this.Parent.Chidren.Count - 1)
-        {
             return this.Parent.GetRight();
-        }
 
         return this.Parent.Chidren[c + 1];
     }
@@ -38,9 +36,7 @@ public class GuideTreeNode
     public GuideTreeNode GetNext()
     {
         if (this.Chidren.Count > 0)
-        {
             return this.Chidren.First();
-        }
 
         return this.GetRight();
     }

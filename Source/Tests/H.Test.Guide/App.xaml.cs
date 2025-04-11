@@ -28,5 +28,11 @@ namespace H.Test.Guide
             base.ConfigureServices(services);
             services.AddGuide();
         }
+
+        protected override void Configure(IApplicationBuilder app)
+        {
+            base.Configure(app);
+            GuideOptions.Instance.Load(out string message);
+        }
     }
 }

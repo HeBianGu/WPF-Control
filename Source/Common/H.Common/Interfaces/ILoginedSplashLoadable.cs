@@ -5,7 +5,7 @@ namespace H.Common.Interfaces;
 /// <summary>
 /// 登录成功后会预加载的接口
 /// </summary>
-public interface ILoginedSplashLoad : ISplashLoad
+public interface ILoginedSplashLoadable : ISplashLoadable
 {
 
 }

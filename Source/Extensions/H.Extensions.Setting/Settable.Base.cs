@@ -30,7 +30,7 @@ public abstract class SettableBase : DisplayBindableBase, ISettable, ILoadable, 
 
     protected virtual string GetDefaultFolder()
     {
-        if (this is ILoginedSplashLoad)
+        if (this is ILoginedSplashLoadable)
             return AppPaths.Instance.UserSetting;
         return AppPaths.Instance.Setting;
     }

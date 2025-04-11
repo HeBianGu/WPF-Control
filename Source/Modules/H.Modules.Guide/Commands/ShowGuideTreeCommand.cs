@@ -1,5 +1,5 @@
 ﻿using H.Common.Attributes;
-namespace H.Modules.Guide;
+namespace H.Modules.Guide.Commands;
 [Icon("\xEC92")]
 [Display(Name = "功能列表", Description = "显示版本功能列表")]
 public class ShowGuideTreeCommand : ShowGuideTreeCommandBase

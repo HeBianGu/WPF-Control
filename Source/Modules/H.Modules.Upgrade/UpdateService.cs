@@ -12,7 +12,7 @@ using System.Windows;
 
 namespace H.Modules.Upgrade;
 
-internal class UpdateService : IUpgradeService, ISplashLoad
+internal class UpdateService : IUpgradeService, ISplashLoadable
 {
     private readonly IOptions<UpgradeOptions> _options;
     private readonly IWebXmlSerializerService _webXmlService;

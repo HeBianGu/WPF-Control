@@ -6,7 +6,7 @@ using H.Common.Interfaces;
 
 namespace H.Services.Common.DataBase;
 
-public interface IDbConnectService : ISplashLoad
+public interface IDbConnectService : ISplashLoadable
 {
     bool TryConnect(out string message);
 }

@@ -68,7 +68,7 @@ namespace H.DataBases.Share
                   s.IsBusy = true;
                   s.Message = "正在连接...";
 
-                  System.Collections.Generic.IEnumerable<IDbConnectService> inits = Ioc.Services.GetServices<ISplashLoad>().OfType<IDbConnectService>();
+                  System.Collections.Generic.IEnumerable<IDbConnectService> inits = Ioc.Services.GetServices<ISplashLoadable>().OfType<IDbConnectService>();
                   bool r = false;
                   foreach (IDbConnectService init in inits)
                   {

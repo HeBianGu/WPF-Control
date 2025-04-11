@@ -64,7 +64,7 @@ public class SettingDataService : LazyInstance<SettingDataService>, ISettingData
     public bool LoadLoginedLoad(Action<ISettable> action, out string message)
     {
         message = null;
-        foreach (ILoginedSplashLoad item in this.Settings.OfType<ILoginedSplashLoad>())
+        foreach (ILoginedSplashLoadable item in this.Settings.OfType<ILoginedSplashLoadable>())
         {
             action?.Invoke(item as ISettable);
             item.Load(out message);

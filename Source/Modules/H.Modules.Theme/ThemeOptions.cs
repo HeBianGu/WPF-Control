@@ -23,7 +23,7 @@ using System.Xml.Serialization;
 
 namespace H.Modules.Theme;
 [Display(Name = "主题设置", GroupName = SettingGroupNames.GroupStyle, Description = "登录页面设置的信息")]
-public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoad, IThemeOptions
+public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoadable, IThemeOptions
 {
     public ThemeOptions()
     {

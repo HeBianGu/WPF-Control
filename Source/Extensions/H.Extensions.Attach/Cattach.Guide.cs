@@ -1,5 +1,7 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
+using System.ComponentModel;
+using System.Globalization;
 using System.Windows;
 
 namespace H.Extensions.Attach;
@@ -121,18 +123,19 @@ public static partial class Cattach
         DataTemplate o = (DataTemplate)e.OldValue;
     }
 
-
+    [Obsolete]
     public static bool GetIsGuide(DependencyObject obj)
     {
         return (bool)obj.GetValue(IsGuideProperty);
     }
 
+    [Obsolete]
     public static void SetIsGuide(DependencyObject obj, bool value)
     {
         obj.SetValue(IsGuideProperty, value);
     }
 
-
+    [Obsolete]
     public static readonly DependencyProperty IsGuideProperty =
         DependencyProperty.RegisterAttached("IsGuide", typeof(bool), typeof(Cattach), new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnIsGuideChanged));
 
@@ -215,26 +218,41 @@ public static partial class Cattach
         string o = (string)e.OldValue;
     }
 
-
-    public static string GetGuideAssemblyVersion(DependencyObject obj)
+    [TypeConverter(typeof(VersionTypeConverter))]
+    public static Version GetGuideAssemblyVersion(DependencyObject obj)
     {
-        return (string)obj.GetValue(GuideAssemblyVersionProperty);
+        return (Version)obj.GetValue(GuideAssemblyVersionProperty);
     }
-
-    public static void SetGuideAssemblyVersion(DependencyObject obj, string value)
+    [TypeConverter(typeof(VersionTypeConverter))]
+    public static void SetGuideAssemblyVersion(DependencyObject obj, Version value)
     {
         obj.SetValue(GuideAssemblyVersionProperty, value);
     }
     public static readonly DependencyProperty GuideAssemblyVersionProperty =
-        DependencyProperty.RegisterAttached("GuideAssemblyVersion", typeof(string), typeof(Cattach), new PropertyMetadata(default(string), OnGuideAssemblyVersionChanged));
+        DependencyProperty.RegisterAttached("GuideAssemblyVersion", typeof(Version), typeof(Cattach), new PropertyMetadata(default(Version)));
 
-    static public void OnGuideAssemblyVersionChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+}
+
+public class VersionTypeConverter : TypeConverter
+{
+    public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
     {
-        DependencyObject control = d as DependencyObject;
-
-        string n = (string)e.NewValue;
-
-        string o = (string)e.OldValue;
+        return sourceType == typeof(string) || base.CanConvertFrom(context, sourceType);
     }
-
+    public override object ConvertFrom(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value)
+    {
+        if (value is string str)
+        {
+            return Version.Parse(str);
+        }
+        return base.ConvertFrom(context, culture, value);
+    }
+    public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
+    {
+        if (destinationType == typeof(string) && value is Version version)
+        {
+            return version.ToString();
+        }
+        return base.ConvertTo(context, culture, value, destinationType);
+    }
 }

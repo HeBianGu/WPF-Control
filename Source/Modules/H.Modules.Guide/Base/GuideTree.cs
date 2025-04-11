@@ -1,5 +1,5 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-namespace H.Modules.Guide;
+namespace H.Modules.Guide.Base;
 
 public class GuideTree
 {
@@ -23,9 +23,7 @@ public class GuideTree
         {
             int c = this.Roots.IndexOf(this.Current.GetRoot());
             if (c >= this.Roots.Count - 1)
-            {
                 return this.Current = null;
-            }
 
             this.Current = this.Roots[c + 1];
             return this.Current;

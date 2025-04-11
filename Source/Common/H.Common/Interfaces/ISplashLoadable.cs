@@ -5,7 +5,7 @@ namespace H.Common.Interfaces;
 /// <summary>
 /// 项目启动会预加载的接口
 /// </summary>
-public interface ISplashLoad : ILoadable
+public interface ISplashLoadable : ILoadable
 {
     string Name { get; }
 }

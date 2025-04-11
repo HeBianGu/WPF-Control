@@ -1,22 +1,7 @@
-﻿
-using H.Extensions.Attach;
-using H.Extensions.Setting;
+﻿using H.Extensions.Setting;
 using H.Services.Setting;
-using System.Windows.Threading;
 
 namespace H.Modules.Guide;
-
-public interface IGuideOptions
-{
-    int AnimationDuration { get; set; }
-    Color CoverColor { get; set; }
-    double CoverOpacity { get; set; }
-    Brush Stroke { get; set; }
-    DoubleCollection StrokeDashArray { get; set; }
-    double StrokeThickness { get; set; }
-    double TextMaxWidth { get; set; }
-    bool UseOnLoad { get; set; }
-}
 
 [Display(Name = "向导页面", GroupName = SettingGroupNames.GroupControl, Description = "设置向导页面信息")]
 public class GuideOptions : IocOptionInstance<GuideOptions>, IGuideOptions
@@ -34,6 +19,18 @@ public class GuideOptions : IocOptionInstance<GuideOptions>, IGuideOptions
         }
     }
 
+    private string _version;
+    [Display(Name = "历史版本号", Description = "上一次加载向导的历史版本号")]
+    public string Version
+    {
+        get { return _version; }
+        set
+        {
+            _version = value;
+            RaisePropertyChanged();
+        }
+    }
+
     public override bool Load(out string message)
     {
         message = null;
@@ -42,15 +39,24 @@ public class GuideOptions : IocOptionInstance<GuideOptions>, IGuideOptions
               return base.Load(out string message);
           });
 
-        if (this.UseOnLoad)
-        {
-            Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.SystemIdle, new Action(() =>
-                      {
-                          Cattach.SetIsGuide(Application.Current.MainWindow, true);
-                      }));
-
-            this.UseOnLoad = false;
-        }
+        //if (this.UseOnLoad)
+        //{
+        //    Application.Current.MainWindow.Loaded += (s, e) =>
+        //    {
+        //        Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.SystemIdle, new Action(async () =>
+        //        {
+        //            var version = Assembly.GetEntryAssembly().GetName().Version.ToString();
+        //            await Ioc<IGuideService>.Instance.Show(x => Cattach.GetGuideAssemblyVersion(x) == version || version == "1.0.0.0");
+        //        }));
+        //    };
+        //    //Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.SystemIdle, new Action(async () =>
+        //    //{
+        //    //    var version = Assembly.GetEntryAssembly().GetName().Version.ToString();
+        //    //    await Ioc<IGuideService>.Instance.Show(x => Cattach.GetGuideAssemblyVersion(x) == version || version == "1.0.0.0");
+        //    //    //Cattach.SetIsGuide(Application.Current.MainWindow, true);
+        //    //}));
+        //    this.UseOnLoad = false;
+        //}
         return r;
     }
     private double _textMaxWidth = 300.0;

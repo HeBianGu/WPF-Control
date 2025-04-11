@@ -2,9 +2,14 @@
 
 
 
+
+// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+
+
+
 using H.Controls.Adorner.Adorner.Base;
 
-namespace H.Modules.Guide;
+namespace H.Modules.Guide.Base;
 
 public class GuideBoxAdorner : VisualCollectionAdornerBase
 {
