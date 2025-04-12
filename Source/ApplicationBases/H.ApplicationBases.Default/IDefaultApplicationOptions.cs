@@ -1,4 +1,4 @@
-﻿using H.ApplicationBases.Module;
+﻿using H.ApplicationBases.Modules;
 using H.ApplicationBases.Themes;
 
 namespace H.ApplicationBases.Default

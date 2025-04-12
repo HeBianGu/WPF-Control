@@ -1,5 +1,5 @@
 ﻿using H.ApplicationBases.Default;
-using H.ApplicationBases.Module;
+using H.ApplicationBases.Modules;
 using H.ApplicationBases.Themes;
 using H.Extensions.FontIcon;
 using H.Modules.About;

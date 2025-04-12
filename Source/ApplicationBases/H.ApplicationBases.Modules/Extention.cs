@@ -1,4 +1,4 @@
-﻿using H.ApplicationBases.Module;
+﻿using H.ApplicationBases.Modules;
 using H.Extensions.FontIcon;
 using H.Modules.About;
 using H.Modules.Feedback;
@@ -43,7 +43,7 @@ namespace System
             options?.Invoke(opt);
             app.UseAboutOptions(opt.GetConfigOptions<Action<IAboutOptions>>());
             app.UseSplashScreenOptions(opt.GetConfigOptions<Action<ISplashScreenOptions>>());
-            app.UseGuide(opt.GetConfigOptions<Action<IGuideOptions>>());
+            app.UseGuideOptions(opt.GetConfigOptions<Action<IGuideOptions>>());
             app.UseSettingViewOptions(opt.GetConfigOptions<Action<ISettingViewOptions>>());
             app.UseSettingSecurityOptions(opt.GetConfigOptions<Action<ISettingSecurityViewOption>>());
             app.UseReleaseVersions(opt.GetConfigOptions<Action<IReleaseVersionsOptions>>());
