@@ -1,7 +1,7 @@
 ﻿using OpenCvSharp.XFeatures2D;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Feature;
-[Display(Name = "SURF", GroupName = "特征提取", Order = 0)]
+[Display(Name = "SURF", GroupName = "特征提取",Description = "局部特征 关注关键点周围区域 SIFT, SURF, ORB 图像匹配、物体识别", Order = 0)]
 public class SurfFeatureDetector : FeatureOpenCVNodeDataBase
 {
     public SurfFeatureDetector()

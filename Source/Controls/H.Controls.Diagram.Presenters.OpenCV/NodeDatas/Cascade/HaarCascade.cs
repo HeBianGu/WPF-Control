@@ -3,7 +3,7 @@ global using H.Extensions.TypeConverter;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Cascade;
 
-[Display(Name = "HAAR", GroupName = "人脸检测", Order = 0)]
+[Display(Name = "HAAR", GroupName = "人脸检测",Description = "HAAR 级联分类器是 OpenCV 中基于机器学习的目标检测方法", Order = 0)]
 public class HaarCascade : CascadeClassifierOpenCVNodeDataBase
 {
     private HaarType _haarType = HaarType.FrontalFace;

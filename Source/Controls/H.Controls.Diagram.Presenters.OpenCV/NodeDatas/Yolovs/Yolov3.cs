@@ -16,7 +16,7 @@ namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Yolovs;
 /// https://pjreddie.com/darknet/yolo/
 /// </summary>
 
-[Display(Name = "Yolov3模型检测", GroupName = "多目标检测", Description = "目标检测", Order = 0)]
+[Display(Name = "Yolov3模型检测", GroupName = "多目标检测", Description = "YOLOv3 (You Only Look Once version 3) 是目前广泛使用的实时目标检测算法，相比传统的 HAAR 和 LBP 级联分类器，具有更高的检测精度和更强的泛化能力", Order = 0)]
 public class Yolov3 : YolovOpenCVNodeDataBase
 {
     public override void LoadDefault()

@@ -3,7 +3,7 @@
 public class HoughLinesP : DetectorOpenCVNodeDataBase
 {
     private double _rho = 1.0;
-    [Display(Name = "Rho", GroupName = "数据")]
+    [Display(Name = "距离分辨率（像素）", GroupName = "数据", Description = "距离分辨率（像素），增大可减少计算量但降低精度")]
     public double Rho
     {
         get { return _rho; }
@@ -15,7 +15,7 @@ public class HoughLinesP : DetectorOpenCVNodeDataBase
     }
 
     private double _theta = Math.PI / 180;
-    [Display(Name = "Theta", GroupName = "数据")]
+    [Display(Name = "角度分辨率（弧度）", GroupName = "数据", Description = "减小可提高角度精度但增加计算量")]
     public double Theta
     {
         get { return _theta; }
@@ -27,7 +27,7 @@ public class HoughLinesP : DetectorOpenCVNodeDataBase
     }
 
     private int _threshold = 50;
-    [Display(Name = "Threshold", GroupName = "数据")]
+    [Display(Name = "投票阈值", GroupName = "数据", Description = "决定被认定为直线的最小票数,值越大检测到的直线越少但更显著")]
     public int Threshold
     {
         get { return _threshold; }

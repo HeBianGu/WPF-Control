@@ -15,7 +15,7 @@ public abstract class CascadeClassifierOpenCVNodeDataBase : OpenCVNodeDataBase, 
     }
     private double _scaleFactor = 1.1;
     [DefaultValue(1.1)]
-    [Display(Name = "Scale Factor", GroupName = "数据")]
+    [Display(Name = "缩放比例", GroupName = "数据",Description = "图像缩放比例(1.01-1.5)，用于多尺度检测")]
     public double ScaleFactor
     {
         get { return _scaleFactor; }
@@ -28,7 +28,7 @@ public abstract class CascadeClassifierOpenCVNodeDataBase : OpenCVNodeDataBase, 
 
     private int _minNeighbors = 3;
     [DefaultValue(3)]
-    [Display(Name = "Min Neighbors", GroupName = "数据")]
+    [Display(Name = "邻近数目", GroupName = "候选矩形保留的邻近数目，值越大检测越严格")]
     public int MinNeighbors
     {
         get { return _minNeighbors; }
@@ -53,7 +53,7 @@ public abstract class CascadeClassifierOpenCVNodeDataBase : OpenCVNodeDataBase, 
     }
 
     private System.Windows.Size _minSize = new System.Windows.Size(30, 30);
-    [Display(Name = "Min Size", GroupName = "数据")]
+    [Display(Name = "最小尺寸", GroupName = "目标的最小尺寸")]
     public System.Windows.Size MinSize
     {
         get { return _minSize; }
@@ -66,7 +66,7 @@ public abstract class CascadeClassifierOpenCVNodeDataBase : OpenCVNodeDataBase, 
 
     private System.Windows.Size _maxSize = new System.Windows.Size(500, 500);
     [DefaultValue(null)]
-    [Display(Name = "Max Size", GroupName = "数据")]
+    [Display(Name = "最大尺寸", GroupName = "目标的最大尺寸")]
     public System.Windows.Size MaxSize
     {
         get { return _maxSize; }
