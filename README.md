@@ -8,7 +8,7 @@ WPF控件和皮肤库
     <img alt="IDE-version" src="https://img.shields.io/badge/IDE-vs2022-blue.svg"></img>
 </p>
 
-[![NuGet](https://buildstats.info/nuget/H.Services.Common)](https://www.nuget.org/packages/H.Services.Common)
+[![NuGet](https://buildstats.info/nuget/H.Iocable)](https://www.nuget.org/packages/H.Iocable)
 
 [![Stargazers over time](https://starchart.cc/HeBianGu/WPF-Control.svg)](https://starchart.cc/HeBianGu/WPF-Control)
 
