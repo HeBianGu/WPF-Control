@@ -1,10 +1,13 @@
-﻿using H.Extensions.Setting;
+﻿using H.Common.Attributes;
+using H.Extensions.FontIcon;
+using H.Extensions.Setting;
 using H.Services.Setting;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace H.Modules.Login
 {
+    [Icon(FontIcons.AddFriend)]
     [Display(Name = "注册页面设置", GroupName = SettingGroupNames.GroupSystem, Description = "注册页面设置的信息")]
     public class RegistorOptions : IocOptionInstance<RegistorOptions>, IRegistorOptions
     {

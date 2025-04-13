@@ -1,4 +1,6 @@
-﻿namespace H.Modules.Login;
+﻿using H.Common.Commands;
+
+namespace H.Modules.Login;
 
 public interface ILoginOptions
 {

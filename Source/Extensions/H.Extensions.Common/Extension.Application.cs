@@ -1,4 +1,7 @@
-﻿using System.Reflection;
+﻿using System.Diagnostics;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Windows;
 
 namespace H.Extensions.Common;
 
@@ -27,5 +30,14 @@ public class ApplicationProvider
     //public static string Authors => Assembly.GetEntryAssembly().GetCustomAttribute<AuthorsAttribute>()?.Version;
     //  Do ：UI 显示的程序集产品版本(如 1.0 Beta)
     //public static string InformationalVersion => Assembly.GetEntryAssembly().GetCustomAttribute<InformationalVersionAttribute>()?.Version;
+}
 
+public static class ApplicationExtension
+{
+    public static void Restart(this Application application)
+    {
+        string applicationPath = Process.GetCurrentProcess().MainModule.FileName;
+        Process.Start(applicationPath);
+        application.Shutdown();
+    }
 }

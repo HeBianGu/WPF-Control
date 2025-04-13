@@ -1,4 +1,6 @@
-﻿using H.Extensions.Common;
+﻿using H.Common.Attributes;
+using H.Extensions.Common;
+using H.Extensions.FontIcon;
 using H.Extensions.Setting;
 using H.Services.Setting;
 using System.ComponentModel;
@@ -8,6 +10,7 @@ using System.Xml.Serialization;
 
 namespace H.Modules.Login
 {
+    [Icon(FontIcons.Connect)]
     [Display(Name = "登录页面设置", GroupName = SettingGroupNames.GroupSystem, Description = "登录页面设置的信息")]
     public class LoginOptions : IocOptionInstance<LoginOptions>, ILoginOptions
     {
@@ -67,9 +70,9 @@ namespace H.Modules.Login
         }
 
         private string _adminPassword;
-        [System.Text.Json.Serialization.JsonIgnore]
+        [JsonIgnore]
 
-        [System.Xml.Serialization.XmlIgnore]
+        [XmlIgnore]
         [Browsable(false)]
         [DefaultValue("123456")]
         [Required]
@@ -133,6 +136,19 @@ namespace H.Modules.Login
             set
             {
                 _useVisitor = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        private bool _useLogoutRestart = false;
+        [DefaultValue(false)]
+        [Display(Name = "退出登录重启", Description = "启用退出登录重启应用")]
+        public bool UseLogoutRestart
+        {
+            get { return _useLogoutRestart; }
+            set
+            {
+                _useLogoutRestart = value;
                 RaisePropertyChanged();
             }
         }

@@ -19,7 +19,7 @@ using System.Windows;
 
 namespace H.Extensions.ApplicationBase;
 
-public abstract partial class ApplicationBase : Application, IConfigureableApplication
+public abstract partial class ApplicationBase : Application, IConfigureableApplication, ILoginableApplication
 {
     public ApplicationBase()
     {
@@ -55,7 +55,7 @@ public abstract partial class ApplicationBase : Application, IConfigureableAppli
 
         };
         this.OnSplashScreen(e);
-        this.OnLogin(e);
+        this.OnLogin();
         Ioc<IMainWindowSavableService>.Instance?.Load(window);
         this.MainWindow.Show();
         this.ILogger?.Info("系统启动");
@@ -186,6 +186,16 @@ public abstract partial class ApplicationBase : Application, IConfigureableAppli
         //}
 
     }
+
+    void ILoginableApplication.Login()
+    {
+        this.OnLogin();
+    }
+
+    void IConfigureableApplication.Configure()
+    {
+        this.Configure();
+    }
 }
 
 public partial class ApplicationBase
@@ -203,7 +213,7 @@ public partial class ApplicationBase
     {
 
     }
-    public void Configure()
+    protected void Configure()
     {
         ApplicationBuilder bulder = new ApplicationBuilder();
         this.Configure(bulder);
@@ -318,7 +328,7 @@ public partial class ApplicationBase
     /// <summary>
     /// 加载登录页面
     /// </summary>
-    protected virtual void OnLogin(StartupEventArgs e)
+    protected virtual void OnLogin()
     {
         {
             ILoginViewPresenter presenter = Ioc.Services.GetService<ILoginViewPresenter>();

@@ -9,3 +9,8 @@ public interface IConfigureableApplication
 {
     void Configure();
 }
+
+public interface ILoginableApplication
+{
+    void Login();
+}

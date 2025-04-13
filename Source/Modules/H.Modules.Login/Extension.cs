@@ -1,5 +1,5 @@
 ﻿using H.Modules.Login;
-
+using H.Modules.Login.Base;
 using H.Services.Identity;
 using H.Services.Setting;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,6 +15,7 @@ namespace System
             services.AddOptions();
             services.TryAdd(ServiceDescriptor.Singleton<ILoginViewPresenter, LoginViewPresenter>());
             services.TryAdd(ServiceDescriptor.Singleton<ILoginedSplashViewPresenter, LoginedSplashViewPresenter>());
+            services.AddLoginButtonViewPresenter();
             if (setupAction != null)
                 services.Configure(new Action<LoginOptions>(setupAction));
             return services;
@@ -25,10 +26,18 @@ namespace System
             services.AddOptions();
             services.TryAdd(ServiceDescriptor.Singleton<ILoginViewPresenter, RigisterLoginViewPresenter>());
             services.TryAdd(ServiceDescriptor.Singleton<ILoginedSplashViewPresenter, LoginedSplashViewPresenter>());
+            services.AddLoginButtonViewPresenter();
             if (setupAction != null)
                 services.Configure(new Action<LoginOptions>(setupAction));
             if (setupRegisterAction != null)
                 services.Configure(new Action<RegistorOptions>(setupRegisterAction));
+            return services;
+        }
+
+        private static IServiceCollection AddLoginButtonViewPresenter(this IServiceCollection services)
+        {
+            services.TryAdd(ServiceDescriptor.Singleton<ILoginButtonViewPresenter, LoginButtonViewPresenter>());
+            services.TryAdd(ServiceDescriptor.Singleton<ICurrentUserViewPresenter, CurrentUserViewPresenter>());
             return services;
         }
 

@@ -52,9 +52,9 @@ namespace H.Test.Login
             base.OnSplashScreen(e);
         }
 
-        protected override void OnLogin(StartupEventArgs e)
+        protected override void OnLogin()
         {
-            base.OnLogin(e);
+            base.OnLogin();
 
         }
     }

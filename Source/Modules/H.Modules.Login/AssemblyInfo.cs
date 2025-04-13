@@ -12,11 +12,15 @@ using System.Windows.Markup;
                                               // app, or any theme specific resource dictionaries)
 )]
 
+[assembly: XmlnsDefinition("QQ:908293466", "H.Modules.Login.Commands")]
 [assembly: XmlnsDefinition("QQ:908293466", "H.Modules.Login")]
 [assembly: XmlnsPrefix("QQ:908293466", "h")]
+
+[assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Modules.Login.Commands")]
 
 [assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Modules.Login")]
 [assembly: XmlnsPrefix("https://github.com/HeBianGu", "h")]
 
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Modules.Login.Commands")]
 [assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Modules.Login")]
 [assembly: XmlnsPrefix("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "h")]

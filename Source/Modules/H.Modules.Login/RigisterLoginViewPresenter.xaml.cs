@@ -7,9 +7,16 @@ using System.Threading.Tasks;
 using H.Services.Mail;
 using H.Mvvm.Commands;
 using H.Services.Identity;
+using H.Common.Attributes;
+using H.Extensions.FontIcon;
+using H.Services.Setting;
+using System.ComponentModel.DataAnnotations;
+using H.Modules.Login.Base;
 
 namespace H.Modules.Login
 {
+    [Icon(FontIcons.AddFriend)]
+    [Display(Name = "注册和登录页面", GroupName = SettingGroupNames.GroupSystem, Description = "注册和登录页面的呈现")]
     public class RigisterLoginViewPresenter : LoginViewPresenter, ILoginViewPresenter
     {
         public RigisterLoginViewPresenter(IOptions<LoginOptions> options) : base(options)

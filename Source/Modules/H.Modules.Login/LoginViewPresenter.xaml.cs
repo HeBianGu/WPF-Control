@@ -8,10 +8,17 @@ using H.Mvvm.ViewModels.Base;
 using H.Mvvm.Commands;
 using H.Services.Message.Dialog;
 using H.Services.Identity;
+using H.Services.Setting;
+using System.ComponentModel.DataAnnotations;
+using H.Common.Attributes;
+using H.Extensions.FontIcon;
+using H.Modules.Login.Base;
 
 namespace H.Modules.Login
 {
-    public class LoginViewPresenter : BindableBase, ILoginViewPresenter
+    [Icon(FontIcons.Connect)]
+    [Display(Name = "登录页面", GroupName = SettingGroupNames.GroupSystem, Description = "登录页面的呈现")]
+    public class LoginViewPresenter : DisplayBindableBase, ILoginViewPresenter
     {
         private IOptions<LoginOptions> _options;
         public LoginViewPresenter(IOptions<LoginOptions> options)
