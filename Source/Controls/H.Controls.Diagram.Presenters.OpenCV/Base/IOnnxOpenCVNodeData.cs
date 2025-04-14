@@ -2,8 +2,8 @@
 
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 
-public interface IYolovOpenCVNodeData : INodeData, IOrderable
+public interface IOnnxOpenCVNodeData : INodeData, IOrderable
 {
-  
+
 }
 

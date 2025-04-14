@@ -1,0 +1,33 @@
+diff --git a/Source/Controls/H.Controls.Diagram.Presenters.OpenCV/Base/IYolovOpenCVNodeData.cs b/Source/Controls/H.Controls.Diagram.Presenters.OpenCV/Base/IYolovOpenCVNodeData.cs
+index 4bc51ec8..677cafdc 100644
+--- a/Source/Controls/H.Controls.Diagram.Presenters.OpenCV/Base/IYolovOpenCVNodeData.cs
++++ b/Source/Controls/H.Controls.Diagram.Presenters.OpenCV/Base/IYolovOpenCVNodeData.cs
+@@ -6,3 +6,4 @@ public interface IYolovOpenCVNodeData : INodeData, IOrderable
+ {
+   
+ }
++
+diff --git a/Source/Controls/H.Controls.Diagram.Presenters.OpenCV/Base/YolovOpenCVNodeDataBase.cs b/Source/Controls/H.Controls.Diagram.Presenters.OpenCV/Base/YolovOpenCVNodeDataBase.cs
+index 081346de..43b871e0 100644
+--- a/Source/Controls/H.Controls.Diagram.Presenters.OpenCV/Base/YolovOpenCVNodeDataBase.cs
++++ b/Source/Controls/H.Controls.Diagram.Presenters.OpenCV/Base/YolovOpenCVNodeDataBase.cs
+@@ -3,5 +3,5 @@
+ [Icon(FontIcons.Favicon2)]
+ public abstract class YolovOpenCVNodeDataBase : OpenCVNodeDataBase, IYolovOpenCVNodeData
+ {
+-    public int MyProperty { get; set; }
+-}
+\ No newline at end of file
++
++}
+diff --git a/Source/Controls/H.Controls.Diagram.Presenters.OpenCV/NodeDataGroups/YolovCaptureDataGroup.cs b/Source/Controls/H.Controls.Diagram.Presenters.OpenCV/NodeDataGroups/YolovCaptureDataGroup.cs
+index 85984b8b..8723767a 100644
+--- a/Source/Controls/H.Controls.Diagram.Presenters.OpenCV/NodeDataGroups/YolovCaptureDataGroup.cs
++++ b/Source/Controls/H.Controls.Diagram.Presenters.OpenCV/NodeDataGroups/YolovCaptureDataGroup.cs
+@@ -8,4 +8,4 @@ public class YolovCaptureDataGroup : BasicDataGroupBase, IVideoDataGroup, IImage
+     {
+         return typeof(IYolovOpenCVNodeData).Assembly.GetInstances<IYolovOpenCVNodeData>().OrderBy(x => x.Order);
+     }
+-}
+\ No newline at end of file
++}
