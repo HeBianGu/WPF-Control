@@ -75,10 +75,113 @@ public class Onnx : OnnxOpenCVNodeDataBase
     const string configPath = "config.txt"; // 可选，包含类别标签等
     const int inputWidth = 320;  // 模型期望的输入宽度
     const int inputHeight = 320; // 模型期望的输入高度
-    const float confidenceThreshold = 0.5f; // 置信度阈值
-    const float nmsThreshold = 0.4f;       // 非极大值抑制阈值
+    const float confidenceThreshold = 0.6f; // 置信度阈值
+    const float nmsThreshold = 0.3f;       // 非极大值抑制阈值
     protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
+
+        // 模型参数
+        Size inputSize = new Size(320, 320);  // 模型输入尺寸
+        float confThreshold = 0.6f;           // 置信度阈值
+        float nmsThreshold = 0.3f;            // NMS 阈值
+        int topK = 5000;                      // 保留的最大检测数
+
+        // 1. 加载图像
+        Mat image = from.Mat;
+        if (image.Empty())
+        {
+            Console.WriteLine("Failed to load image!");
+            return this.Error(image);
+        }
+
+        // 2. 调整图像尺寸（保持宽高比，填充黑边）
+        Mat resized = new Mat();
+        double scale = Math.Min((double)inputSize.Width / image.Width, (double)inputSize.Height / image.Height);
+        Cv2.Resize(image, resized, Size.Zero, scale, scale, InterpolationFlags.Linear);
+
+        // 计算填充
+        int padW = inputSize.Width - resized.Width;
+        int padH = inputSize.Height - resized.Height;
+        Cv2.CopyMakeBorder(resized, resized,
+            top: padH / 2,
+            bottom: padH - padH / 2,
+            left: padW / 2,
+            right: padW - padW / 2,
+            BorderTypes.Constant,
+            value: new Scalar(0, 0, 0));  // 填充黑边
+
+        // 3. 生成Blob（归一化到[0,1]）
+        Mat blob = CvDnn.BlobFromImage(
+            resized,
+            scaleFactor: 1.0 / 255.0,    // 归一化
+            size: inputSize,              // 已经是320x320，实际不会缩放
+            mean: new Scalar(0, 0, 0),    // 不减去均值
+            swapRB: true,                 // BGR -> RGB（如果模型需要RGB）
+            crop: false
+        );
+
+        // 4. 加载ONNX模型
+        Net net = CvDnn.ReadNetFromOnnx(this.OnnxFilePath);
+        net.SetPreferableBackend(Backend.OPENCV);  // backendId=0（OpenCV默认）
+        net.SetPreferableTarget(Target.CPU);       // targetId=0（CPU）
+
+        // 5. 输入Blob并推理
+        net.SetInput(blob);
+        Mat output = net.Forward();  // 输出维度通常是 [1, num_detections, 6]
+
+        // 6. 解析输出
+        List<Rect> boxes = new List<Rect>();
+        List<float> confidences = new List<float>();
+        List<int> classIds = new List<int>();
+
+        for (int i = 0; i < output.Size(1); i++)
+        {
+            float confidence = output.At<float>(0, i, 1);
+            if (confidence > confThreshold)
+            {
+                // 获取边界框坐标（相对320x320的坐标）
+                float x1 = output.At<float>(0, i, 2) * inputSize.Width;
+                float y1 = output.At<float>(0, i, 3) * inputSize.Height;
+                float x2 = output.At<float>(0, i, 4) * inputSize.Width;
+                float y2 = output.At<float>(0, i, 5) * inputSize.Height;
+
+                // 转换到原始图像坐标（考虑填充和缩放）
+                x1 = (x1 - padW / 2) / (float)scale;
+                y1 = (y1 - padH / 2) / (float)scale;
+                x2 = (x2 - padW / 2) / (float)scale;
+                y2 = (y2 - padH / 2) / (float)scale;
+
+                // 确保坐标不越界
+                x1 = Math.Max(0, x1);
+                y1 = Math.Max(0, y1);
+                x2 = Math.Min(image.Width, x2);
+                y2 = Math.Min(image.Height, y2);
+
+                boxes.Add(new Rect((int)x1, (int)y1, (int)(x2 - x1), (int)(y2 - y1)));
+                confidences.Add(confidence);
+                classIds.Add((int)output.At<float>(0, i, 0));
+            }
+        }
+
+        // 7. 应用NMS（OpenCV的NMSBoxes）
+        CvDnn.NMSBoxes(boxes, confidences, confThreshold, nmsThreshold, out int[] indices, topK);
+
+        // 8. 绘制检测框
+        for (int i = 0; i < indices.Length; i++)
+        {
+            int idx = indices[i];
+            Rect box = boxes[idx];
+            Cv2.Rectangle(image, box, new Scalar(0, 255, 0), 2);
+            Cv2.PutText(image, $"Class {classIds[idx]}: {confidences[idx]:F2}",
+                new Point(box.X, box.Y - 5),
+                HersheyFonts.HersheySimplex, 0.5, new Scalar(0, 0, 255), 1);
+        }
+
+        // 9. 显示结果
+        Cv2.ImShow("Output", image);
+        Cv2.WaitKey(0);
+        return this.OK(image);
+
         //// 1. 加载模型
         ////var net = CvDnn.ReadNetFromOnnx("resnet50.onnx");
         //var net = CvDnn.ReadNetFromOnnx(this.OnnxFilePath);
@@ -118,37 +221,41 @@ public class Onnx : OnnxOpenCVNodeDataBase
         //    Console.WriteLine($"{labels[item.Index]}: {item.Probability * 100:F2}%");
         //}
 
-        // 1. 加载模型
-        var net = LoadModel();
+        //// 1. 加载模型
+        //var net = LoadModel();
 
-        // 2. 加载类别标签
-        var inputNames = net.GetUnconnectedOutLayersNames();
-        //string[] classLabels = File.ReadAllLines(configPath);
-        string[] classLabels = inputNames;
-        // 3. 加载测试图像
-        //Mat image = Cv2.ImRead("test.jpg", ImreadModes.Color);
-        Mat image = from.Mat;
-        if (image.Empty())
-        {
-            throw new Exception("Failed to load test image");
-        }
+        //// 2. 加载类别标签
+        //var inputNames = net.GetUnconnectedOutLayersNames();
+        ////string[] classLabels = File.ReadAllLines(configPath);
+        //string[] classLabels = inputNames;
+        //// 3. 加载测试图像
+        ////Mat image = Cv2.ImRead("test.jpg", ImreadModes.Color);
+        //Mat image = from.Mat;
+        //if (image.Empty())
+        //{
+        //    throw new Exception("Failed to load test image");
+        //}
 
-        // 4. 预处理
-        Mat blob = PreprocessImage(image, net);
+        //// 4. 预处理
+        //Mat blob = PreprocessImage(image, net);
 
-        // 5. 执行推理
-        var outputs = RunInference(net, blob);
+        ////Mat rgbImage = new Mat();
+        ////Cv2.Resize(image, rgbImage, new Size(inputWidth, inputHeight), 0, 0);
+        ////Cv2.CvtColor(rgbImage, rgbImage, ColorConversionCodes.BGR2RGB);
 
-        // 6. 后处理
-        var detections = PostprocessDetections(outputs, image);
+        //// 5. 执行推理
+        //var outputs = RunInference(net, blob);
 
-        // 7. 可视化结果
+        //// 6. 后处理
+        //var detections = PostprocessDetections(outputs, image);
 
-        VisualizeResults(image.Clone(), detections, classLabels);
+        //// 7. 可视化结果
 
-        // 8. 保存结果
-        Cv2.ImWrite("result.jpg", image);
-        return this.OK(image);
+        //VisualizeResults(image.Clone(), detections, classLabels);
+
+        //// 8. 保存结果
+        //Cv2.ImWrite("result.jpg", image);
+        //return this.OK(image);
     }
 
 
@@ -214,14 +321,15 @@ public class Onnx : OnnxOpenCVNodeDataBase
         {
             // 转换颜色空间 (BGR → RGB)
             Mat rgbImage = new Mat();
-            Cv2.CvtColor(image, rgbImage, ColorConversionCodes.BGR2RGB);
+            Cv2.Resize(image, rgbImage, new Size(inputWidth, inputHeight), 0, 0);
+            Cv2.CvtColor(rgbImage, rgbImage, ColorConversionCodes.BGR2RGB);
 
             // 创建blob (根据模型要求调整参数)
             Mat blob = CvDnn.BlobFromImage(
                 rgbImage,
                 scaleFactor: 1.0 / 255.0,          // 归一化系数
                 size: new Size(inputWidth, inputHeight), // 输入尺寸
-                mean: new Scalar(0.485, 0.456, 0.406),  // 均值 (ImageNet标准)
+                mean: new Scalar(0, 0, 0),  // 均值 (ImageNet标准)
                 swapRB: false,                      // 已转为RGB所以不需要交换
                 crop: true                         // 中心裁剪
               );             // 输出数据类型
