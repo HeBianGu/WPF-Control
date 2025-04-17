@@ -4,3 +4,4 @@ public abstract class OtherOpenCVNodeDataBase : OpenCVNodeDataBase, IOtherOpenCV
 {
 
 }
+
