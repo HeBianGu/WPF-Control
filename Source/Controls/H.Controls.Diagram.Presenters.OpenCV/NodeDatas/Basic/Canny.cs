@@ -3,7 +3,7 @@
 public class Canny : BasicOpenCVNodeDataBase
 {
     private double _threshold1;
-    [DefaultValue(0.0)]
+    [DefaultValue(50.0)]
     [Display(Name = "Threshold1", GroupName = "数据")]
     public double Threshold1
     {
@@ -16,7 +16,7 @@ public class Canny : BasicOpenCVNodeDataBase
     }
 
     private double _threshold2;
-    [DefaultValue(0.0)]
+    [DefaultValue(200.0)]
     [Display(Name = "Threshold2", GroupName = "数据")]
     public double Threshold2
     {
@@ -57,7 +57,8 @@ public class Canny : BasicOpenCVNodeDataBase
     protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
         Mat preMat = from.Mat;
-        Cv2.Canny(preMat, preMat, 50, 200, 3, false);
-        return this.OK(preMat);
+        Mat result = new Mat();
+        Cv2.Canny(preMat, result, this.Threshold1, this.Threshold2, this.ApertureSize, this.L2gradient);
+        return this.OK(result);
     }
 }
