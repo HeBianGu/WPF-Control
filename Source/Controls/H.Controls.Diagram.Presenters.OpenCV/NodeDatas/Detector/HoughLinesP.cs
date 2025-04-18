@@ -70,7 +70,7 @@ public class HoughLinesP : DetectorOpenCVNodeDataBase
         LineSegmentPoint[] segProb = Cv2.HoughLinesP(imgGray, Rho, Theta, Threshold, MinLineLength, MaxLineGap);
         foreach (LineSegmentPoint s in segProb)
         {
-            imgProb.Line(s.P1, s.P2, Scalar.Red, 3, LineTypes.AntiAlias, 0);
+            imgProb.Line(s.P1, s.P2, this.OutputColor.ToScalar(), this.OutPutThickness, LineTypes.AntiAlias, 0);
         }
         return this.OK(imgProb);
     }

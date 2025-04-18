@@ -25,7 +25,7 @@ public class Hog : DetectorOpenCVNodeDataBase
                 Width = (int)Math.Round(rect.Width * 0.8),
                 Height = (int)Math.Round(rect.Height * 0.8)
             };
-            prev.Rectangle(r.TopLeft, r.BottomRight, Scalar.Red, 3);
+            prev.Rectangle(r.TopLeft, r.BottomRight, this.OutputColor.ToScalar(), this.OutPutThickness);
         }
         return this.OK(prev);
     }

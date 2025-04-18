@@ -26,10 +26,9 @@ public class RenderBlobs : DetectorOpenCVNodeDataBase
         {
             foreach (ConnectedComponents.Blob blob in cc.Blobs.Skip(1))
             {
-                labelview.Rectangle(blob.Rect, Scalar.Red);
+                labelview.Rectangle(blob.Rect, this.OutputColor.ToScalar());
             }
         }
         return this.OK(labelview);
     }
 }
-

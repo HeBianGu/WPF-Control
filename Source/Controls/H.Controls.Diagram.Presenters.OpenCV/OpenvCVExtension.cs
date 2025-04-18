@@ -11,4 +11,14 @@ public static class OpenvCVExtension
     {
         return new System.Windows.Size(size.Width, size.Height);
     }
+
+    public static Scalar ToScalar(this Color color)
+    {
+        return Scalar.FromRgb(color.R,color.G,color.B);
+    }
+
+    public static Color ToColor(this Scalar color)
+    {
+        return Color.FromRgb((byte)color.Val2, (byte)color.Val1, (byte)color.Val0);
+    }
 }

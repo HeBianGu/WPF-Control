@@ -104,7 +104,7 @@ public class HoughLines : DetectorOpenCVNodeDataBase
             double y0 = b * rho;
             Point pt1 = new Point { X = (int)Math.Round(x0 + 1000 * -b), Y = (int)Math.Round(y0 + 1000 * a) };
             Point pt2 = new Point { X = (int)Math.Round(x0 - 1000 * -b), Y = (int)Math.Round(y0 - 1000 * a) };
-            imgStd.Line(pt1, pt2, Scalar.Red, 3, LineTypes.AntiAlias, 0);
+            imgStd.Line(pt1, pt2, this.OutputColor.ToScalar(), this.OutPutThickness, LineTypes.AntiAlias, 0);
         }
 
         return this.OK(imgStd);

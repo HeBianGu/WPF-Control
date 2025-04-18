@@ -260,7 +260,7 @@ public class BlobDetector : DetectorOpenCVNodeDataBase
         SimpleBlobDetector circleDetector = SimpleBlobDetector.Create(param);
         KeyPoint[] circleKeyPoints = circleDetector.Detect(src);
         Mat detectedCircles = new Mat();
-        Cv2.DrawKeypoints(src, circleKeyPoints, detectedCircles, Scalar.HotPink, DrawMatchesFlags.DrawRichKeypoints);
+        Cv2.DrawKeypoints(src, circleKeyPoints, detectedCircles, this.OutputColor.ToScalar(), DrawMatchesFlags.DrawRichKeypoints);
         return this.OK(detectedCircles);
     }
 

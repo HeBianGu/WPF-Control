@@ -46,7 +46,7 @@ public class MatchTemplate : MatchDetectorOpenCVNodeDataBase
             {
                 Mat view = this.GetPrviewMat(srcImageNodeData, from, result);
                 // 在源图像上绘制矩形框
-                Cv2.Rectangle(view, maxLoc, new Point(maxLoc.X + template.Cols, maxLoc.Y + template.Rows), Scalar.Red, 2);
+                Cv2.Rectangle(view, maxLoc, new Point(maxLoc.X + template.Cols, maxLoc.Y + template.Rows), this.OutputColor.ToScalar(), this.OutPutThickness);
                 return this.OK(view);
             }
             else
@@ -54,7 +54,7 @@ public class MatchTemplate : MatchDetectorOpenCVNodeDataBase
                 return Error(null, "没有匹配到模板");
             }
         }
-  
+
     }
 }
 

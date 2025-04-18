@@ -16,6 +16,32 @@ public abstract class DetectorOpenCVNodeDataBase : OpenCVNodeDataBase, IDetector
         }
     }
 
+
+    private int _outPutThickness = 3;
+    [DefaultValue(3)]
+    [Display(Name = "绘制线条粗细", GroupName = "数据")]
+    public int OutPutThickness
+    {
+        get { return _outPutThickness; }
+        set
+        {
+            _outPutThickness = value;
+            RaisePropertyChanged();
+        }
+    }
+
+    private Color _outputColor= Colors.Chartreuse;
+    [Display(Name = "绘制颜色", GroupName = "数据")]
+    public Color OutputColor
+    {
+        get { return _outputColor; }
+        set
+        {
+            _outputColor = value;
+            RaisePropertyChanged();
+        }
+    }
+
     protected virtual Mat GetPrviewMat(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, Mat result)
     {
         if (this.DetectorPreviewType == PreviewType.Previous)

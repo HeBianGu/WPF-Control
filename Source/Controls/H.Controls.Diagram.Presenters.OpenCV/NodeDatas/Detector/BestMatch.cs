@@ -47,7 +47,7 @@ public class BestMatch : MatchDetectorOpenCVNodeDataBase
 
         Mat view = img2.Clone();
         Point[] drawingPoints = img2BoundsTransformed.Select(p => (Point)p).ToArray();
-        Cv2.Polylines(view, new[] { drawingPoints }, true, Scalar.Red, 5);
+        Cv2.Polylines(view, new[] { drawingPoints }, true, this.OutputColor.ToScalar(), this.OutPutThickness);
 
         //using (new Window("view", view))
         //{
