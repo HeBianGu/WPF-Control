@@ -12,9 +12,19 @@ public static class OpenvCVExtension
         return new System.Windows.Size(size.Width, size.Height);
     }
 
+    public static Rect ToCVRect(this System.Windows.Int32Rect size)
+    {
+        return new Rect(size.X, size.Y, size.Width, size.Height);
+    }
+
+    public static System.Windows.Int32Rect ToRect(this Rect size)
+    {
+        return new System.Windows.Int32Rect(size.Left, size.Top, size.Width, size.Height);
+    }
+
     public static Scalar ToScalar(this Color color)
     {
-        return Scalar.FromRgb(color.R,color.G,color.B);
+        return Scalar.FromRgb(color.R, color.G, color.B);
     }
 
     public static Color ToColor(this Scalar color)

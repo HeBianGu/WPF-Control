@@ -1,7 +1,9 @@
 ﻿
+using System.Windows.Media.Media3D;
+
 namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
 
-[Display(Name = "图像缩放", GroupName = "基础函数", Description = "图像缩放", Order = 3)]
+[Display(Name = "图像缩放", GroupName = "基础函数", Description = "会改变整个图像的像素数量和分辨率", Order = 3)]
 public class Resize : BasicOpenCVNodeDataBase
 {
     private ResizeMode _resizeMode = ResizeMode.Scale;
