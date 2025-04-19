@@ -58,7 +58,7 @@ public class SeamlessCloneBackground : Blur
         using Mat resizeBackground = background.Resize(src.Size(), 0, 0, InterpolationFlags.Lanczos4);
 
         if(this.UseBlur)
-            Cv2.Blur(resizeBackground, resizeBackground, KSize, Anchor, BorderType);
+            Cv2.Blur(resizeBackground, resizeBackground, KSize.ToCVSize(), Anchor, BorderType);
 
         //扣除mask区域
         using Mat maskedForeground = new Mat();
