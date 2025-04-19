@@ -18,12 +18,12 @@ public abstract class NodeData : NodeDataBase, INodeData, ITemplate, ILinkDataCr
             await IocMessage.Dialog.ShowDeleteDialog(x => part.Delete());
     }, x => x is Part);
 
-    [Icon(FontIcons.Refresh)]
-    [Display(Name = "恢复默认", GroupName = "操作")]
-    public override RelayCommand LoadDefaultCommand => new RelayCommand(e =>
-    {
-        LoadDefault();
-    });
+    //[Icon(FontIcons.Refresh)]
+    //[Display(Name = "恢复默认", GroupName = "操作")]
+    //public override RelayCommand LoadDefaultCommand => new RelayCommand(e =>
+    //{
+    //    LoadDefault();
+    //});
 
     [Icon(FontIcons.AlignCenter)]
     [Display(Name = "自动对齐", GroupName = "操作")]

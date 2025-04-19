@@ -81,7 +81,6 @@ public abstract class DisplayBindableBase : CommandsBindableBase, IDable, IDispl
     }
 
     private string _icon;
-
     /// <summary>
     /// 获取或设置对象的图标。
     /// </summary>
@@ -175,7 +174,6 @@ public abstract class DisplayBindableBase : CommandsBindableBase, IDable, IDispl
     [System.Text.Json.Serialization.JsonIgnore]
     [System.Xml.Serialization.XmlIgnore]
     [Display(Name = "恢复默认")]
-    [Browsable(false)]
     public virtual RelayCommand LoadDefaultCommand => new RelayCommand(x =>
     {
         LoadDefault();
@@ -190,7 +188,7 @@ public abstract class DisplayBindableBase : CommandsBindableBase, IDable, IDispl
         foreach (PropertyInfo p in ps)
         {
             DefaultValueAttribute d = p.GetCustomAttribute<DefaultValueAttribute>();
-            if (d == null) 
+            if (d == null)
                 continue;
             if (typeof(IConvertible).IsAssignableFrom(p.PropertyType))
             {

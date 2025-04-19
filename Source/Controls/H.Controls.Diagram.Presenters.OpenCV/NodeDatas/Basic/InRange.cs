@@ -8,8 +8,15 @@ public class InRange : BasicOpenCVNodeDataBase
         base.LoadDefault();
 
         //// 定义红色的BGR范围（注意OpenCV默认是BGR格式）
-        //Scalar lowerRed = new Scalar(0, 0, 200);    // B最小值, G最小值, R最小值
-        //Scalar upperRed = new Scalar(50, 50, 255);  // B最大值, G最大值, R最大值
+        //Scalar lowerRed = new Scalar(0, 50, 50);    // B最小值, G最小值, R最小值
+        //Scalar upperRed = new Scalar(10, 255, 200);  // B最大值, G最大值, R最大值
+
+        //// 红色需要两个范围（色相在 0° 和 180° 附近）
+        //Scalar lowerRed1 = new Scalar(0, 70, 30);    // 色相 0° 附近，饱和度和明度下限
+        //Scalar upperRed1 = new Scalar(8, 255, 150);  // 色相 8° 范围，饱和度和明度上限
+
+        //Scalar lowerRed2 = new Scalar(172, 70, 30);  // 色相 172° 附近（紫红色调）
+        //Scalar upperRed2 = new Scalar(180, 255, 150); // 色相 180° 范围
 
         // 定义绿色的HSV范围
         Scalar lowerGreen = new Scalar(35, 50, 50);   // H最小值, S最小值, V最小值

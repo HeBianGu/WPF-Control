@@ -6,13 +6,15 @@ public class IOFileDialogService : IIOFileDialogService
     public string ShowOpenFile(Action<IIOFileDialogOption> optionAction)
     {
         OpenFileDialog openFileDialog = this.GetOpenFileDialog(optionAction, false);
-        return openFileDialog.ShowDialog() != true ? null : openFileDialog.FileName;
+        var r = openFileDialog.ShowDialog();
+        return r != true ? null : openFileDialog.FileName;
     }
 
     public string[] ShowOpenFiles(Action<IIOFileDialogOption> optionAction)
     {
         OpenFileDialog openFileDialog = this.GetOpenFileDialog(optionAction, true);
-        return openFileDialog.ShowDialog() != true ? null : openFileDialog.FileNames;
+        var r = openFileDialog.ShowDialog();
+        return r != true ? null : openFileDialog.FileNames;
     }
 
     public OpenFileDialog GetOpenFileDialog(Action<IIOFileDialogOption> optionAction, bool multiselect)

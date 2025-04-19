@@ -5,11 +5,11 @@ public class Blur : FilterOpenCVNodeDataBase
     public override void LoadDefault()
     {
         base.LoadDefault();
-        this.KSize = new Size(8, 8);
+        this.KSize = new System.Windows.Size(8, 8);
     }
-    private Size _ksize = new Size(8, 8);
+    private System.Windows.Size _ksize = new System.Windows.Size(8, 8);
     [Display(Name = "核大小", GroupName = "数据", Description = "核的大小决定了滤波的范围。核越大，平滑效果越强，但计算量也会增加")]
-    public Size KSize
+    public System.Windows.Size KSize
     {
         get { return _ksize; }
         set
@@ -48,7 +48,7 @@ public class Blur : FilterOpenCVNodeDataBase
     protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
         Mat preMat = from.Mat;
-        Cv2.Blur(preMat, preMat, KSize, Anchor, BorderType);
+        Cv2.Blur(preMat, preMat, KSize.ToCVSize(), Anchor, BorderType);
         return this.OK(preMat.Clone());
     }
 }

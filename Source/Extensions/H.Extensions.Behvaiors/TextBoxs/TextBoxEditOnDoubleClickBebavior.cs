@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace H.Extensions.Behvaiors.TextBoxs;
 
-
+[Obsolete("输入中文有输入法是会自动LostFocus，需要再测试一下")]
 public class TextBoxEditOnDoubleClickBebavior : Behavior<TextBox>
 {
     protected override void OnAttached()

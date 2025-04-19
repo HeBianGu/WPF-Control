@@ -20,7 +20,13 @@ namespace H.Controls.Form.PropertyItem.TextPropertyItems
         [Display(Name = "浏览", Order = 2)]
         public DisplayCommand OpenCommand => new DisplayCommand(l =>
         {
-            var r = IocMessage.IOFileDialog.ShowOpenFile(x => x.InitialDirectory = this.Value);
+            var r = IocMessage.IOFileDialog.ShowOpenFile(x =>
+            {
+                if (File.Exists(this.Value))
+                    x.InitialDirectory = Path.GetDirectoryName(this.Value);
+            });
+            if (!File.Exists(r))
+                return;
             this.Value = r;
         })
         { Name = "浏览" };

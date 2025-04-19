@@ -4,7 +4,7 @@ global using H.Controls.Form.Provider;
 global using H.Extensions.Common;
 global using System.Collections;
 global using System.ComponentModel;
-global using System.ComponentModel.DataAnnotations; 
+global using System.ComponentModel.DataAnnotations;
 global using System.Windows.Controls;
 global using System.Windows.Data;
 global using System.Windows.Input;

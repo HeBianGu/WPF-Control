@@ -5,14 +5,14 @@ public class GaussianBlur : FilterOpenCVNodeDataBase
     public override void LoadDefault()
     {
         base.LoadDefault();
-        this.KSize = new Size(7, 7);
+        this.KSize = new System.Windows.Size(7, 7);
     }
-    private Size _ksize = new Size(7, 7);
+    private System.Windows.Size _ksize = new System.Windows.Size(7, 7);
     /// <summary>
     /// 高斯核的大小，通常是一个奇数（如 3x3、5x5 等
     /// </summary>
     [Display(Name = "核大小", GroupName = "数据", Description = "核的大小决定了滤波的范围。核越大，平滑效果越强，但计算量也会增加")]
-    public Size KSize
+    public System.Windows.Size KSize
     {
         get { return _ksize; }
         set
@@ -64,7 +64,7 @@ public class GaussianBlur : FilterOpenCVNodeDataBase
     protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
         Mat preMat = from.Mat;
-        Cv2.GaussianBlur(preMat, preMat, KSize, SigmaX, SigmaY, BorderType);
+        Cv2.GaussianBlur(preMat, preMat, KSize.ToCVSize(), SigmaX, SigmaY, BorderType);
         return this.OK(preMat.Clone());
     }
 }

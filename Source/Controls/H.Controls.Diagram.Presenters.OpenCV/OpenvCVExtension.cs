@@ -11,6 +11,15 @@ public static class OpenvCVExtension
     {
         return new System.Windows.Size(size.Width, size.Height);
     }
+    public static Point ToCVPoint(this System.Windows.Point size)
+    {
+        return new Point((int)size.X, (int)size.Y);
+    }
+
+    public static System.Windows.Point ToPoint(this Point size)
+    {
+        return new System.Windows.Point(size.X, size.Y);
+    }
 
     public static Rect ToCVRect(this System.Windows.Int32Rect size)
     {

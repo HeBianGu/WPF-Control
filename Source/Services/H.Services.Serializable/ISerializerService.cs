@@ -19,6 +19,18 @@ public static class SerializerServiceExtensions
             return null;
         System.Diagnostics.Debug.WriteLine(filePath);
         string txt = File.ReadAllText(filePath);
+
+#if DEBUG
+        try
+        {
+            return service.DeserializeObject(txt, type);
+        }
+        catch (Exception)
+        {
+            File.Delete(filePath);
+            return null;
+        }
+#endif
         return service.DeserializeObject(txt, type);
     }
     public static T Load<T>(this ISerializerService service, string filePath)
