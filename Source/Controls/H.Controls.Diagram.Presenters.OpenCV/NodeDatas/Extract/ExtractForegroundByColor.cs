@@ -1,9 +1,12 @@
-﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Extract;
+﻿using H.Controls.Diagram.Presenters.OpenCV.TypeConverters;
+
+namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Extract;
 
 [Display(Name = "提取前景", GroupName = "提取", Description = "基于颜色范围（适合纯色背景，如绿幕）", Order = 0)]
 public class ExtractForegroundByColor : ExtractOpenCVNodeDataBase
 {
     private Scalar _lowerScalar = new Scalar(35, 50, 50);
+    [TypeConverter(typeof(ScalarTypeConverter))]
     [Display(Name = "HSV下限", GroupName = "数据")]
     public Scalar LowerScalar
     {
@@ -15,6 +18,7 @@ public class ExtractForegroundByColor : ExtractOpenCVNodeDataBase
         }
     }
     private Scalar _upperScalar = new Scalar(85, 255, 255);
+    [TypeConverter(typeof(ScalarTypeConverter))]
     [Display(Name = "HSV上限", GroupName = "数据")]
     public Scalar UpperScalar
     {

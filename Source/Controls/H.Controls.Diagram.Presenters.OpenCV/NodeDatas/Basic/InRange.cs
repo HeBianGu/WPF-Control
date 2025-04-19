@@ -1,4 +1,6 @@
-﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
+﻿using H.Controls.Diagram.Presenters.OpenCV.TypeConverters;
+
+namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
 
 [Display(Name = "二值掩膜", GroupName = "基础函数", Description = "根据设定的阈值范围，从图像中提取符合要求的像素区域，生成一个二值掩膜（Mask）", Order = 10)]
 public class InRange : BasicOpenCVNodeDataBase
@@ -25,6 +27,7 @@ public class InRange : BasicOpenCVNodeDataBase
         this._upperScalar = upperGreen;
     }
     private Scalar _lowerScalar = new Scalar(35, 50, 50);
+    [TypeConverter(typeof(ScalarTypeConverter))]
     [Display(Name = "HSV下限", GroupName = "数据")]
     public Scalar LowerScalar
     {
@@ -36,6 +39,7 @@ public class InRange : BasicOpenCVNodeDataBase
         }
     }
     private Scalar _upperScalar = new Scalar(85, 255, 255);
+    [TypeConverter(typeof(ScalarTypeConverter))]
     [Display(Name = "HSV上限", GroupName = "数据")]
     public Scalar UpperScalar
     {
