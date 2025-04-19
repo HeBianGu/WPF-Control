@@ -85,6 +85,7 @@ public class VideoWriter : SrcImageNodeDataBase
                 Cv2.CvtColor(frame, gray, ColorConversionCodes.BGR2GRAY);
                 Cv2.Canny(gray, canny, 100, 180);
                 Cv2.Resize(canny, dst, this.FrameSize, 0, 0, InterpolationFlags.Linear);
+                this.Mat?.Dispose();
                 this.Mat = dst;
                 UpdateMatToView();
                 // Write mat to VideoWriter

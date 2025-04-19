@@ -98,7 +98,7 @@ public class VideoCapture : VideoCaptureSrcNodeDataBase, ISrcFilePathableStartNo
                       if (this.State == FlowableState.Canceling)
                           return this.Error("用户取消");
                       capture.Set(VideoCaptureProperties.PosFrames, index);
-                      using Mat frameMat = new Mat();
+                      Mat frameMat = new Mat();
                       capture.Read(frameMat); // same as cvQueryFrame
                       if (frameMat.Empty())
                           break;

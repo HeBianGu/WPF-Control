@@ -41,7 +41,7 @@ public class SVM : OpenCVNodeDataBase
                 int y2 = (int)(300 - Function(x));
                 pointsPlot.Line(x - 1, y1, x, y2, Scalar.LightBlue, 1);
             }
-
+            this.Mat?.Dispose();
             this.Mat = pointsPlot;
             UpdateMatToView();
             Thread.Sleep(1000);

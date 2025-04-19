@@ -116,7 +116,8 @@ public abstract class OpenCVNodeDataBase : OpenCVStyleNodeDataBase, IOpenCVNodeD
     {
         var srcData = diagram.GetStartNodeDatas().OfType<ISrcImageNodeData>().FirstOrDefault();
         var fromData = this.GetFromNodeData<IOpenCVNodeData>(diagram, previors);
-        var result = this.Invoke(srcData, fromData?? srcData, diagram);
+        var result = this.Invoke(srcData, fromData ?? srcData, diagram);
+        this.Mat?.Dispose();
         this.Mat = result.Value;
         if (this.UseReview)
         {
@@ -131,6 +132,8 @@ public abstract class OpenCVNodeDataBase : OpenCVStyleNodeDataBase, IOpenCVNodeD
 
     protected void UpdateMatToView(Mat mat)
     {
+        if (this.Mat != mat)
+            this.Mat?.Dispose();
         this.Mat = mat;
         if (this.ImageSource == null)
         {

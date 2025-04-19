@@ -43,6 +43,7 @@ public abstract class VideoCaptureSrcNodeDataBase : SrcImageNodeDataBase, IVideo
             //Thread.Sleep(1000);
         };
         invoking.Invoke(this);
+        this.Mat?.Dispose();
         this.Mat = frameMat;
         //this.SrcMat = this.Mat;
         UpdateMatToView();
