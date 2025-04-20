@@ -2,7 +2,7 @@
 
 namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
 
-[Display(Name = "二值掩膜", GroupName = "基础函数", Description = "根据设定的阈值范围，从图像中提取符合要求的像素区域，生成一个二值掩膜（Mask）", Order = 10)]
+[Display(Name = "HSV二值掩膜", GroupName = "基础函数", Description = "根据设定的阈值范围，从图像中提取符合要求的像素区域，生成一个二值掩膜（Mask）", Order = 10)]
 public class InRange : BasicOpenCVNodeDataBase
 {
     public override void LoadDefault()

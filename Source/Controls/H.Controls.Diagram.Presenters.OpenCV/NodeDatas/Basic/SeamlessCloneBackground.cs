@@ -1,7 +1,7 @@
 ﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
 
 [Display(Name = "无缝融合背景", GroupName = "基础函数", Description = "将一幅图像中的指定目标复制后粘贴到另一幅图像中，并自然的融合", Order = 80)]
-public class SeamlessCloneBackground : Blur
+public class SeamlessCloneBackground : BasicOpenCVNodeDataBase
 {
     public SeamlessCloneBackground()
     {
@@ -47,29 +47,46 @@ public class SeamlessCloneBackground : Blur
         }
     }
 
-
     protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
-        // 接收前景的掩膜
+        Action<Mat, IPartData, string> logAction = (mat, x, message) =>
+        {
+            //  Do ：记录输出日志(非必选，只是在输出日志可以看到运行过程)
+            this.Mat = mat;
+            this.Message = message;
+            diagram?.OnInvokedPart(x);
+            Thread.Sleep(1000);
+        };
+        //  Do ：接收前序流程提取前景的mask掩膜
         Mat mask = from.Mat;
         string path = this.BackgroundFilePath;
         using Mat background = new Mat(path, ImreadModes.Color);
+        logAction.Invoke(background, this, "加载的背景图片");
+
         Mat src = srcImageNodeData.Mat;
         using Mat resizeBackground = background.Resize(src.Size(), 0, 0, InterpolationFlags.Lanczos4);
+        logAction.Invoke(resizeBackground, this, "对背景图片设置跟源图片一样的尺寸");
 
-        if(this.UseBlur)
-            Cv2.Blur(resizeBackground, resizeBackground, KSize.ToCVSize(), Anchor, BorderType);
+        if (this.UseBlur)
+        {
+            Cv2.Blur(resizeBackground, resizeBackground, new Size(8, 8));
+            logAction.Invoke(resizeBackground, this, "对背景图片模糊处理");
+        }
 
         //扣除mask区域
         using Mat maskedForeground = new Mat();
         Cv2.BitwiseAnd(src, src, maskedForeground, mask);
+        logAction.Invoke(maskedForeground, this, "扣除原图片进行mask掩膜区域");
 
-        using Mat maskBackground = new Mat();
         using Mat revertMask = new Mat();
         Cv2.BitwiseNot(mask, revertMask);
-        Cv2.BitwiseAnd(resizeBackground, resizeBackground, maskBackground, revertMask);
+        logAction.Invoke(revertMask, this, "反转mask掩膜区域");
 
-        if(this.UseSeamlessClone)
+        using Mat maskBackground = new Mat();
+        Cv2.BitwiseAnd(resizeBackground, resizeBackground, maskBackground, revertMask);
+        logAction.Invoke(maskBackground, this, "扣除背景图片进行反转mask掩膜区域");
+
+        if (this.UseSeamlessClone)
         {
             Point center = new Point(resizeBackground.Width / 2, resizeBackground.Height / 2);
             // 执行无缝融合
