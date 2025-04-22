@@ -36,7 +36,7 @@ namespace H.Modules.Messages.Dialog
 
                 if (presenter is ILayoutable layoutable)
                     layoutable.CopyTo(x);
-                if (presenter is IDesignPresenterBase designPresenter)
+                if (presenter is IDesignPresenter designPresenter)
                     x.CopyFrom(designPresenter);
                 builder?.Invoke(x);
             }, canSumit);
@@ -112,7 +112,7 @@ namespace H.Modules.Messages.Dialog
 
     public static class LayoutableExtension
     {
-        public static void CopyFrom(this ILayoutable layoutable, IDesignPresenterBase from)
+        public static void CopyFrom(this ILayoutable layoutable, IDesignPresenter from)
         {
             layoutable.HorizontalAlignment = from.HorizontalAlignment;
             layoutable.VerticalAlignment = from.VerticalAlignment;

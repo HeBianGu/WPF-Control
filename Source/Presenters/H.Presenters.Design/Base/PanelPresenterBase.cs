@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using H.Common.Interfaces;
+using System.Collections.ObjectModel;
 using System.Windows.Markup;
 using System.Xml.Serialization;
 
@@ -55,7 +56,7 @@ public abstract class PanelPresenterBase : DropAdornerDesignPresenterBase
     public override void DragEnter(UIElement element, DragEventArgs e)
     {
         IDraggableAdorner adorner = e.Data.GetData("DragGroup") as IDraggableAdorner;
-        if (adorner.GetData() is DesignPresenter value)
+        if (adorner.GetData() is ICloneableDesignPresenter value)
         {
             this.Presenters.Add(value);
             _dropBackup = value;
@@ -68,7 +69,8 @@ public abstract class PanelPresenterBase : DropAdornerDesignPresenterBase
     {
         this.Presenters.Remove(_dropBackup);
         _dropBackup.Opacity = 1;
-        this.Presenters.Add(_dropBackup.Clone() as DesignPresenter);
+        if (_dropBackup is ICloneableDesignPresenter cloneable)
+            this.Presenters.Add(cloneable.Clone());
         _dropBackup = null;
     }
 

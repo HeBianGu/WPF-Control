@@ -3,5 +3,4 @@
                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                    xmlns:h="https://github.com/HeBianGu"
                    xmlns:local="clr-namespace:H.Test.Design">
-    <Application.Resources />
 </h:ApplicationBase>

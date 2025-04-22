@@ -18,7 +18,7 @@ namespace H.Test.Design
     {
         protected override void ConfigureServices(IServiceCollection services)
         {
-        
+
         }
 
         protected override Window CreateMainWindow(StartupEventArgs e)

@@ -3,7 +3,8 @@
 [Display(Name = "Uniform")]
 public class UniformGridPresenter : PanelPresenterBase
 {
-    private int _columns;
+    private int _columns = 6;
+    [DefaultValue(6)]
     [Display(Name = "列数", GroupName = "常用,布局")]
     public int Columns
     {
@@ -15,7 +16,8 @@ public class UniformGridPresenter : PanelPresenterBase
         }
     }
 
-    private int _rows;
+    private int _rows = 6;
+    [DefaultValue(6)]
     [Display(Name = "行数", GroupName = "常用,布局")]
     public int Rows
     {

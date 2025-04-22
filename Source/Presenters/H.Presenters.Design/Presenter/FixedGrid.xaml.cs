@@ -16,9 +16,8 @@ public class FixedGrid : GridBase
         set { SetValue(RowsProperty, value); }
     }
 
-    // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
     public static readonly DependencyProperty RowsProperty =
-        DependencyProperty.Register("Rows", typeof(int), typeof(FixedGrid), new FrameworkPropertyMetadata(default(int), (d, e) =>
+        DependencyProperty.Register("Rows", typeof(int), typeof(FixedGrid), new FrameworkPropertyMetadata(5, (d, e) =>
         {
             FixedGrid control = d as FixedGrid;
 
@@ -43,9 +42,8 @@ public class FixedGrid : GridBase
         set { SetValue(ColumnsProperty, value); }
     }
 
-    // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
     public static readonly DependencyProperty ColumnsProperty =
-        DependencyProperty.Register("Columns", typeof(int), typeof(FixedGrid), new FrameworkPropertyMetadata(default(int), (d, e) =>
+        DependencyProperty.Register("Columns", typeof(int), typeof(FixedGrid), new FrameworkPropertyMetadata(5, (d, e) =>
         {
             FixedGrid control = d as FixedGrid;
 
@@ -70,7 +68,6 @@ public class FixedGrid : GridBase
         set { SetValue(RowGridLengthProperty, value); }
     }
 
-    // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
     public static readonly DependencyProperty RowGridLengthProperty =
         DependencyProperty.Register("RowGridLength", typeof(GridLength), typeof(FixedGrid), new FrameworkPropertyMetadata(new GridLength(1, GridUnitType.Star), (d, e) =>
         {
@@ -99,7 +96,6 @@ public class FixedGrid : GridBase
         set { SetValue(ColumnGridLengthProperty, value); }
     }
 
-    // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
     public static readonly DependencyProperty ColumnGridLengthProperty =
         DependencyProperty.Register("ColumnGridLength", typeof(GridLength), typeof(FixedGrid), new FrameworkPropertyMetadata(new GridLength(1, GridUnitType.Star), (d, e) =>
         {

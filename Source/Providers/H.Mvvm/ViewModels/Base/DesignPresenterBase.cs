@@ -9,7 +9,7 @@ global using System.Xml.Serialization;
 
 namespace H.Mvvm.ViewModels.Base;
 
-public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresenterBase
+public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresenter
 {
     private bool _isSelected;
     [Browsable(false)]

@@ -3,7 +3,8 @@
 [Display(Name = "FixedGrid")]
 public class FixedGridPresenter : GridPresenterBase
 {
-    private int _rows;
+    private int _rows = 6;
+    [DefaultValue(6)]
     [Display(Name = "行数", GroupName = "常用,样式")]
     public int Rows
     {
@@ -16,7 +17,8 @@ public class FixedGridPresenter : GridPresenterBase
     }
 
 
-    private int _columns;
+    private int _columns = 6;
+    [DefaultValue(6)]
     [Display(Name = "列数", GroupName = "常用,样式")]
     public int Columns
     {
@@ -40,7 +42,6 @@ public class FixedGridPresenter : GridPresenterBase
             RaisePropertyChanged();
         }
     }
-
 
     private GridLength _columnGridLength = GridLength.Auto;
     [Display(Name = "列宽", GroupName = "常用,样式")]

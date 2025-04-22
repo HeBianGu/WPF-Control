@@ -1,7 +1,7 @@
 ﻿namespace H.Presenters.Design.Presenter;
 
 [Display(Name = "DataGrid")]
-public class DataGridDesignPresenter : DataGridPresenterBase, IDesignPresenter
+public class DataGridDesignPresenter : DataGridPresenterBase
 {
     public DataGridDesignPresenter()
     {

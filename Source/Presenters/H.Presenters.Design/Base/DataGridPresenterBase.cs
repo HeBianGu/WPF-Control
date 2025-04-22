@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 
 namespace H.Presenters.Design.Base;
 
-public abstract class DataGridPresenterBase : DesignPresenter
+public abstract class DataGridPresenterBase : CloneableDesignPresenterBase
 {
     public override void LoadDefault()
     {

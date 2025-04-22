@@ -1,7 +1,8 @@
 ﻿global using H.Mvvm.Commands;
+using H.Common.Commands;
 namespace H.Presenters.Design.Base;
 
-public class CommandsDesignPresenterBase : DesignPresenter, IDesignPresenter
+public class CommandsDesignPresenterBase : CloneableDesignPresenterBase
 {
     [Display(Name = "恢复默认")]
     public RelayCommand DefaultCommand => new RelayCommand(e =>
