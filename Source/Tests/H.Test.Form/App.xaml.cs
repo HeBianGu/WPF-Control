@@ -25,10 +25,6 @@ namespace H.Test.Form
             return new MainWindow();
         }
 
-        protected override void OnLogin(StartupEventArgs e)
-        {
-        }
-
         protected override void OnSplashScreen(StartupEventArgs e)
         {
         }

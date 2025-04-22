@@ -34,7 +34,7 @@ namespace H.Test.Ioc
 
         }
 
-        protected override void OnLogin(StartupEventArgs e)
+        protected override void OnLogin()
         {
             new Window() { Content = MethodInfo.GetCurrentMethod().Name, Width = 400, Height = 200, FontSize = 50 }.ShowDialog();
         }
