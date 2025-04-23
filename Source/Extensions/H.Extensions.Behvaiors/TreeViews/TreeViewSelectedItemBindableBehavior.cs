@@ -17,7 +17,7 @@ public class TreeViewSelectedItemBindableBehavior : Behavior<TreeView>
     }
 
     public static readonly DependencyProperty SelectedItemProperty =
-        DependencyProperty.Register("SelectedItem", typeof(object), typeof(TreeViewSelectedItemBindableBehavior), new UIPropertyMetadata(null, OnSelectedItemChanged));
+        DependencyProperty.Register("SelectedItem", typeof(object), typeof(TreeViewSelectedItemBindableBehavior), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnSelectedItemChanged));
 
     private static void OnSelectedItemChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
     {
@@ -31,7 +31,6 @@ public class TreeViewSelectedItemBindableBehavior : Behavior<TreeView>
     protected override void OnAttached()
     {
         base.OnAttached();
-
         this.AssociatedObject.SelectedItemChanged += OnTreeViewSelectedItemChanged;
     }
 

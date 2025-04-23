@@ -53,12 +53,12 @@ public class MouseOverHitTestAdornerBehavior : HitTestAdornerBehavior
             Clear();
         else
         {
-            if (visualHit != _temp)
+            if (visualHit != _preVisualHitElement)
                 Clear();
             AddAdorner(visualHit);
             SetIsMouseOver(visualHit, true);
         }
-        _temp = visualHit;
+        _preVisualHitElement = visualHit;
     }
 
     protected override void OnDetaching()
@@ -69,8 +69,8 @@ public class MouseOverHitTestAdornerBehavior : HitTestAdornerBehavior
 
     protected override void Clear()
     {
-        if (_temp != null)
-            SetIsMouseOver(_temp, false);
+        if (_preVisualHitElement != null)
+            SetIsMouseOver(_preVisualHitElement, false);
         base.Clear();
     }
 }

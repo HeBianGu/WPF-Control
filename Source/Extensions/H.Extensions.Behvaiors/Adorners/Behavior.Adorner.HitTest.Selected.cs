@@ -2,9 +2,12 @@
 
 
 using System.Collections.ObjectModel;
+using System.Runtime.CompilerServices;
+
 #if NET
 #endif
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace H.Extensions.Behvaiors.Adorners;
@@ -12,6 +15,42 @@ namespace H.Extensions.Behvaiors.Adorners;
 public class SelectedHitTestAdornerBehavior : HitTestAdornerBehavior
 {
     public ObservableCollection<object> Parameters { get; } = new ObservableCollection<object>();
+
+    public UIElement SelectedElement
+    {
+        get { return (UIElement)GetValue(SelectedElementProperty); }
+        set { SetValue(SelectedElementProperty, value); }
+    }
+
+    public static readonly DependencyProperty SelectedElementProperty =
+        DependencyProperty.Register("SelectedElement", typeof(UIElement), typeof(SelectedHitTestAdornerBehavior), new FrameworkPropertyMetadata(default(UIElement), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, (d, e) =>
+        {
+            SelectedHitTestAdornerBehavior control = d as SelectedHitTestAdornerBehavior;
+            if (control == null) 
+                return;
+            if (e.OldValue is UIElement o)
+            {
+                SetIsSelected(o, false);
+            }
+            control.Clear();
+            if (e.NewValue is UIElement n)
+            {
+                SetIsSelected(n, true);
+                control.AddAdorner(n);
+                //触发事件
+                control.OnSelectedChanged();
+            }
+
+            control._preVisualHitElement = e.NewValue as UIElement;
+            control.OnSelectdElementChanged();
+
+        }));
+
+    protected virtual void OnSelectdElementChanged()
+    {
+      
+    }
+
 
     public static bool GetIsSelected(DependencyObject obj)
     {
@@ -23,7 +62,6 @@ public class SelectedHitTestAdornerBehavior : HitTestAdornerBehavior
         obj.SetValue(IsSelectedProperty, value);
     }
 
-
     public static readonly DependencyProperty IsSelectedProperty =
         DependencyProperty.RegisterAttached("IsSelected", typeof(bool), typeof(SelectedHitTestAdornerBehavior), new PropertyMetadata(default(bool), OnIsSelectedChanged));
 
@@ -32,11 +70,8 @@ public class SelectedHitTestAdornerBehavior : HitTestAdornerBehavior
         DependencyObject control = d as DependencyObject;
 
         bool n = (bool)e.NewValue;
-
         bool o = (bool)e.OldValue;
     }
-
-
 
     protected override void OnAttached()
     {
@@ -55,22 +90,56 @@ public class SelectedHitTestAdornerBehavior : HitTestAdornerBehavior
         if (this.AdornerVisual == null)
             this.AdornerVisual = this.AssociatedObject;
         Point point = e.GetPosition(this.AssociatedObject);
-        var visualHit = this.AssociatedObject.HitTest<UIElement>(point, x => SelectedHitTestAdornerBehavior.GetIsHitTest(x));
-        if (visualHit == null)
+        var visualHitElement = this.AssociatedObject.HitTest<UIElement>(point, x => GetIsHitTest(x));
+        this.SelectedElement = visualHitElement;
+
+        //if (visualHitElement == null)
+        //{
+        //    this.Clear();
+        //    //if (this.SelectedElement != null)
+        //    //    SetIsSelected(_temp, false);
+
+        //    //this.SelectedElement = null;
+        //}
+        //else
+        //{
+        //    if (visualHitElement != this.SelectedElement)
+        //        this.Clear();
+        //    this.AddAdorner(visualHitElement);
+        //    //SelectedHitTestAdornerBehavior.SetIsSelected(visualHitElement, true);
+        //    this.SelectedElement = visualHitElement;
+
+        //}
+        //this._preVisualHitElement = visualHitElement;
+    }
+
+    [Obsolete("没效果")]
+    public static readonly RoutedEvent SelectedChanged =
+        EventManager.RegisterRoutedEvent(
+            "SelectedChanged",
+            RoutingStrategy.Bubble,
+            typeof(RoutedEventHandler),
+            typeof(SelectedHitTestAdornerBehavior));
+    public static void AddSelectedChangedHandler(DependencyObject d, RoutedEventHandler handler)
+    {
+        if (d is UIElement uiElement)
         {
-            this.Clear();
-            if (_temp != null)
-                SetIsSelected(_temp, false);
+            uiElement.AddHandler(SelectedChanged, handler);
         }
-        else
+    }
+
+    public static void RemoveSelectedChangedHandler(DependencyObject d, RoutedEventHandler handler)
+    {
+        if (d is UIElement uiElement)
         {
-            if (visualHit != _temp)
-                this.Clear();
-            this.AddAdorner(visualHit);
-            SelectedHitTestAdornerBehavior.SetIsSelected(visualHit, true);
-            //Cattach.SetIsSelected(visualHit, true);
+            uiElement.RemoveHandler(SelectedChanged, handler);
         }
-        _temp = visualHit;
+    }
+
+    public void OnSelectedChanged()
+    {
+        RoutedEventArgs args = new RoutedEventArgs(SelectedChanged,this.AssociatedObject);
+        this.AssociatedObject.RaiseEvent(args);
     }
 }
 

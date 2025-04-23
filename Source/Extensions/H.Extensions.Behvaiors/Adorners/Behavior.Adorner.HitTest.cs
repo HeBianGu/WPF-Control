@@ -34,7 +34,7 @@ public abstract class HitTestAdornerBehavior : AdornerBehaviorBase
     }
 
 
-    protected UIElement _temp = null;
+    protected UIElement _preVisualHitElement = null;
     //protected UIElement _visualHit = null;
 
     public static bool GetIsHitTest(DependencyObject obj)
@@ -62,11 +62,11 @@ public abstract class HitTestAdornerBehavior : AdornerBehaviorBase
 
     protected virtual void Clear()
     {
-        _temp?.ClearAdorner(x => x.GetType() == this.AdornerType);
-        if (_temp != null)
-            MouseOverHitTestAdornerBehavior.SetIsMouseOver(_temp, false);
-        if (_temp.GetDataContext() is IGetDropAdorner drop)
-            drop.RemoveDropAdorner(_temp);
+        _preVisualHitElement?.ClearAdorner(x => x.GetType() == this.AdornerType);
+        if (_preVisualHitElement != null)
+            MouseOverHitTestAdornerBehavior.SetIsMouseOver(_preVisualHitElement, false);
+        if (_preVisualHitElement.GetDataContext() is IGetDropAdorner drop)
+            drop.RemoveDropAdorner(_preVisualHitElement);
     }
 
     //HitTestResultBehavior HitTestCallBack(HitTestResult result)
@@ -94,7 +94,7 @@ public abstract class HitTestAdornerBehavior : AdornerBehaviorBase
 
     protected virtual void AddAdorner(UIElement elment)
     {
-        if (_temp == elment)
+        if (_preVisualHitElement == elment)
             return;
         if (this.AdornerType == null)
             return;

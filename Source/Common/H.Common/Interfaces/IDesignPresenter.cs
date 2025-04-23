@@ -2,7 +2,7 @@
 
 namespace H.Common.Interfaces;
 
-public interface IDesignPresenter
+public interface IDesignPresenter : ISelectable
 {
     Brush Background { get; set; }
     Brush BorderBrush { get; set; }
@@ -15,7 +15,6 @@ public interface IDesignPresenter
     HorizontalAlignment HorizontalContentAlignment { get; set; }
     bool IsEnabled { get; set; }
     bool IsMouseOver { get; set; }
-    bool IsSelected { get; set; }
     bool IsVisible { get; set; }
     Thickness Margin { get; set; }
     double MinHeight { get; set; }

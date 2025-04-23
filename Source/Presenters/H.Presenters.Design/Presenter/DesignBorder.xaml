@@ -22,6 +22,7 @@
         <Setter Property="CornerRadius" Value="{Binding CornerRadius}" />
         <Setter Property="TextBlock.Foreground" Value="{Binding Foreground}" />
         <Setter Property="TextElement.Foreground" Value="{Binding Foreground}" />
+        <Setter Property="SelectedHitTestAdornerBehavior.IsSelected" Value="{Binding IsSelected}"/>
     </Style>
 
 
