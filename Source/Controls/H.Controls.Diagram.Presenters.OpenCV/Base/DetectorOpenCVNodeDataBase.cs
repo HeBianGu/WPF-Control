@@ -5,7 +5,7 @@ namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 public abstract class DetectorOpenCVNodeDataBase : OpenCVNodeDataBase, IDetectorOpenCVNodeData
 {
     private PreviewType _detectorPreviewType = PreviewType.Src;
-    [Display(Name = "输出预览类型", GroupName = "数据", Description = "设置从原图输出匹配结果还是上一结果中输出")]
+    [Display(Name = "输出预览类型", GroupName = "输出样式", Description = "设置从原图输出匹配结果还是上一结果中输出")]
     public PreviewType DetectorPreviewType
     {
         get { return _detectorPreviewType; }
@@ -19,7 +19,7 @@ public abstract class DetectorOpenCVNodeDataBase : OpenCVNodeDataBase, IDetector
 
     private int _outPutThickness = 3;
     [DefaultValue(3)]
-    [Display(Name = "绘制线条粗细", GroupName = "数据")]
+    [Display(Name = "绘制线条粗细", GroupName = "输出样式")]
     public int OutPutThickness
     {
         get { return _outPutThickness; }
@@ -31,7 +31,7 @@ public abstract class DetectorOpenCVNodeDataBase : OpenCVNodeDataBase, IDetector
     }
 
     private Color _outputColor= Colors.Chartreuse;
-    [Display(Name = "绘制颜色", GroupName = "数据")]
+    [Display(Name = "绘制颜色", GroupName = "输出样式")]
     public Color OutputColor
     {
         get { return _outputColor; }

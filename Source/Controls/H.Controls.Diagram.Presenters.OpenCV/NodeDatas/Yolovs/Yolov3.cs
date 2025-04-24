@@ -59,7 +59,7 @@ public class Yolov3 : YolovOpenCVNodeDataBase
 
     private string _nameFilePath;
     [Required]
-    [Display(Name = "Name路径", GroupName = "数据")]
+    [Display(Name = "标签路径", GroupName = "数据")]
     [PropertyItem(typeof(OpenFileDialogPropertyItem))]
     public string NameFilePath
     {
@@ -71,9 +71,10 @@ public class Yolov3 : YolovOpenCVNodeDataBase
         }
     }
 
-    private float _threshold = 0.5f;
-    [DefaultValue(0.5f)]
-    [Display(Name = "置信度阈值", GroupName = "数据")]
+    private float _threshold = 0.25f;
+    [DefaultValue(0.25f)]
+    [Range(0.0f, 1.0f)]
+    [Display(Name = "置信度阈值", GroupName = "数据", Description = "置信度分数阈值，低于此值的框会被直接过滤")]
     public float Threshold
     {
         get { return _threshold; }
@@ -84,9 +85,10 @@ public class Yolov3 : YolovOpenCVNodeDataBase
         }
     }
 
-    private float _nmsThreshold = 0.3f;
-    [DefaultValue(0.3f)]
-    [Display(Name = "nms阈值", GroupName = "数据")]
+    private float _nmsThreshold = 0.45f;
+    [DefaultValue(0.45f)]
+    [Range(0.0f, 1.0f)]
+    [Display(Name = "NMS重叠阈值", GroupName = "数据", Description = "NMS重叠阈值（IoU阈值），大于此值的框会被视为冗余而被抑制")]
     public float NmsThreshold
     {
         get { return _nmsThreshold; }
@@ -191,14 +193,14 @@ public class Yolov3 : YolovOpenCVNodeDataBase
             string label = string.Format("{0} {1:0.0}%", lables[classIds[i]], probabilities[i] * 100);
             double x1 = box.X - box.Width / 2 < 0 ? 0 : box.X - box.Width / 2;
             //画方框
-            org.Rectangle(new Point(x1, box.Y - box.Height / 2), new Point(box.X + box.Width / 2, box.Y + box.Height / 2), Scalar.Red, 1);
+            org.Rectangle(new Point(x1, box.Y - box.Height / 2), new Point(box.X + box.Width / 2, box.Y + box.Height / 2), this.OutputColor.ToScalar(), this.OutPutThickness);
 
             //标签字符大小
             Size textSize = Cv2.GetTextSize(label, HersheyFonts.HersheyTriplex, 0.5, 1, out int baseline);
             //画标签背景框
             Cv2.Rectangle(org, new Rect(new Point(x1, box.Y - box.Height / 2 - textSize.Height - baseline),
-                new Size(textSize.Width, textSize.Height + baseline)), Scalar.Red, Cv2.FILLED);
-            Cv2.PutText(org, label, new Point(x1, box.Y - box.Height / 2 - baseline), HersheyFonts.HersheyTriplex, 0.5, Scalar.White);
+                new Size(textSize.Width, textSize.Height + baseline)), this.OutputColor.ToScalar(), Cv2.FILLED);
+            Cv2.PutText(org, label, new Point(x1, box.Y - box.Height / 2 - baseline), HersheyFonts.HersheyTriplex, 0.5, this.OutputLabelColor.ToScalar());
         }
         return this.OK(org);
     }
