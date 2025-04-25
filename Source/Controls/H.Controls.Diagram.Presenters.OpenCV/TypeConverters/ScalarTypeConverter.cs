@@ -7,7 +7,7 @@ namespace H.Controls.Diagram.Presenters.OpenCV.TypeConverters;
 /// <summary>  
 /// Converts Scalar objects to and from other representations.  
 /// </summary>  
-internal class ScalarTypeConverter : TypeConverter
+public class ScalarTypeConverter : TypeConverter
 {
     public override bool CanConvertFrom(ITypeDescriptorContext? context, Type sourceType)
     {
