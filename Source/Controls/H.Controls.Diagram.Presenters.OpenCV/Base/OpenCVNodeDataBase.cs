@@ -56,6 +56,13 @@ public abstract class OpenCVNodeDataBase : OpenCVStyleNodeDataBase, IOpenCVNodeD
         return System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, dataPath);
     }
 
+    protected virtual string GetAssetsPath(string dataPath)
+    {
+        if (string.IsNullOrEmpty(dataPath))
+            return null;
+        return System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"Assets", dataPath);
+    }
+
     private int _previewMillisecondsDelay = 1500;
     [DefaultValue(1500)]
     [Display(Name = "预览延迟", GroupName = "流程", Description = "设置生成图像后预览等待时间")]
