@@ -1,4 +1,7 @@
-﻿namespace H.Controls.Diagram.Presenters.OpenCV;
+﻿using System.Runtime.CompilerServices;
+using System.Windows.Media;
+
+namespace H.Controls.Diagram.Presenters.OpenCV;
 
 public static class OpenvCVExtension
 {
@@ -40,4 +43,9 @@ public static class OpenvCVExtension
     {
         return Color.FromRgb((byte)color.Val2, (byte)color.Val1, (byte)color.Val0);
     }
+
+
+
+
 }
+
