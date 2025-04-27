@@ -15,3 +15,5 @@ public class BitwiseNot : BasicOpenCVNodeDataBase
         return this.OK(src);
     }
 }
+
+
