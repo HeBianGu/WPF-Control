@@ -5,7 +5,7 @@ public class SeamlessCloneBackground : BasicOpenCVNodeDataBase
 {
     public SeamlessCloneBackground()
     {
-        this._backgroudFilePath = this.GetDataPath(ImagePath.Asahiyama);
+        this._backgroudFilePath = ImagePath.Asahiyama.ToDataPath();
     }
 
     private string _backgroudFilePath;

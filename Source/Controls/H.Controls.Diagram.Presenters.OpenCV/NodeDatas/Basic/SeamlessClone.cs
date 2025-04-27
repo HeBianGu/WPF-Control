@@ -40,7 +40,7 @@ public class SeamlessClone : SeamlessCloneBase
 {
     public SeamlessClone()
     {
-        this.DetectFilePath = this.GetDataPath(ImagePath.Girl);
+        this.DetectFilePath = ImagePath.Girl.ToDataPath();
     }
 
     private string _detectFilePath;

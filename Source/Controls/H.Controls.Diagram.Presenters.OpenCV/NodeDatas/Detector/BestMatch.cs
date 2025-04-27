@@ -4,7 +4,7 @@ public class BestMatch : MatchDetectorOpenCVNodeDataBase
 {
     public BestMatch()
     {
-        this.TemplateFilePath = GetDataPath(ImagePath.Match1);
+        this.TemplateFilePath = ImagePath.Match1.ToDataPath();
     }
     //protected override ImageSource CreateImageSource()
     //{
@@ -15,7 +15,7 @@ public class BestMatch : MatchDetectorOpenCVNodeDataBase
     protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {
         Mat img2 = from.Mat;
-        using Mat img1 = new Mat(GetDataPath(ImagePath.Match1), ImreadModes.Color);
+        using Mat img1 = new Mat(ImagePath.Match1.ToDataPath(), ImreadModes.Color);
         using ORB orb = ORB.Create(1000);
         using Mat descriptors1 = new Mat();
         using Mat descriptors2 = new Mat();

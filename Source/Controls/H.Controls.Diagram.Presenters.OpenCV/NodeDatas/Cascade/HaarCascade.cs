@@ -3,7 +3,7 @@ global using H.Extensions.TypeConverter;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Cascade;
 
-[Display(Name = "HAAR", GroupName = "人脸检测",Description = "HAAR 级联分类器是 OpenCV 中基于机器学习的目标检测方法", Order = 0)]
+[Display(Name = "HAAR", GroupName = "人脸检测", Description = "HAAR 级联分类器是 OpenCV 中基于机器学习的目标检测方法", Order = 0)]
 public class HaarCascade : CascadeClassifierOpenCVNodeDataBase
 {
     private HaarType _haarType = HaarType.FrontalFace;
@@ -32,31 +32,31 @@ public class HaarCascade : CascadeClassifierOpenCVNodeDataBase
     private string GetDataPathByName()
     {
         if (this.HaarType == HaarType.Eye)
-            return this.GetDataPath(CascadeData.Eye);
+            return CascadeData.Eye.ToDataPath();
         if (this.HaarType == HaarType.FrontalFace)
-            return this.GetDataPath(CascadeData.Frontalface);
+            return CascadeData.Frontalface.ToDataPath();
         if (this.HaarType == HaarType.Profileface)
-            return this.GetDataPath(CascadeData.Profileface);
+            return CascadeData.Profileface.ToDataPath();
         if (this.HaarType == HaarType.FullBody)
-            return this.GetDataPath(CascadeData.Fullbody);
+            return CascadeData.Fullbody.ToDataPath();
         if (this.HaarType == HaarType.LeftEye)
-            return this.GetDataPath(CascadeData.Lefteye);
+            return CascadeData.Lefteye.ToDataPath();
         if (this.HaarType == HaarType.RightEye)
-            return this.GetDataPath(CascadeData.Righteye);
+            return CascadeData.Righteye.ToDataPath();
         if (this.HaarType == HaarType.LowerBody)
-            return this.GetDataPath(CascadeData.Lowerbody);
+            return CascadeData.Lowerbody.ToDataPath();
         if (this.HaarType == HaarType.UpperBody)
-            return this.GetDataPath(CascadeData.Upperbody);
+            return CascadeData.Upperbody.ToDataPath();
         if (this.HaarType == HaarType.Smile)
-            return this.GetDataPath(CascadeData.Smile);
+            return CascadeData.Smile.ToDataPath();
         if (this.HaarType == HaarType.Eyeglass)
-            return this.GetDataPath(CascadeData.Eyeglasses);
+            return CascadeData.Eyeglasses.ToDataPath();
         if (this.HaarType == HaarType.FrontalcatFace)
-            return this.GetDataPath(CascadeData.Frontalcatface);
+            return CascadeData.Frontalcatface.ToDataPath();
         if (this.HaarType == HaarType.LicencePlate)
-            return this.GetDataPath(CascadeData.Licence_plate);
+            return CascadeData.Licence_plate.ToDataPath();
         return this.HaarType == HaarType.RussianPlate
-            ? this.GetDataPath(CascadeData.Russian_plate_number)
+            ? CascadeData.Russian_plate_number.ToDataPath()
             : throw new ArgumentException("没有识别参数");
     }
 }

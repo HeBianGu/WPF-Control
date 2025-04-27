@@ -61,7 +61,7 @@ public class DnnSuperres : MLOpenCVNodeDataBase
     {
         Mat src = from.Mat;
         using DnnSuperResImpl dnn = new DnnSuperResImpl("fsrcnn", 4);
-        string path = GetDataPath(this.ModelFileName);
+        string path = this.ModelFileName.ToDataPath();
         dnn.ReadModel(path);
         //using var src = new Mat(ImagePath.Mandrill, ImreadModes.Color);
         Mat dst = new Mat();

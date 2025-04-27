@@ -18,7 +18,7 @@ public class VideoCapture : VideoCaptureSrcNodeDataBase, ISrcFilePathableStartNo
     public VideoCapture()
     {
         this.UseAnimation = true;
-        this.SrcFilePath = GetDataPath(MoviePath.Bach);
+        this.SrcFilePath = MoviePath.Bach.ToDataPath();
     }
     private string _srcFilePath;
     [Browsable(true)]

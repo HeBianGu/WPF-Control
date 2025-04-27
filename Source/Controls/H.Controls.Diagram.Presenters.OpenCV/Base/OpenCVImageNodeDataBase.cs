@@ -14,7 +14,7 @@ public abstract class OpenCVImageNodeDataBase : SrcImageNodeDataBase, IOpenCVIma
     {
         this.UseStart = true;
         this.Icon = "\xe843";
-        this.SrcFilePath = GetDataPath(this.GetImagePath());
+        this.SrcFilePath = this.GetImagePath().ToDataPath();
     }
 
     protected virtual string GetImagePath()

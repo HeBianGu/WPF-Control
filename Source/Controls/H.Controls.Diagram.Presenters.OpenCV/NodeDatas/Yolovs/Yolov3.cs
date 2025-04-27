@@ -23,8 +23,8 @@ public class Yolov3 : YolovOpenCVNodeDataBase
     {
         base.LoadDefault();
         //this.CfgFilePath = this.GetDataPath("Data\\Yolov3\\yolov3.cfg");
-        this.CfgFilePath = this.GetDataPath("Data\\Yolov3\\yolov3-tiny.cfg");
-        this.NameFilePath = this.GetDataPath("Data\\Yolov3\\coco.names");
+        this.CfgFilePath = "Data\\Yolov3\\yolov3-tiny.cfg".ToDataPath();
+        this.NameFilePath = "Data\\Yolov3\\coco.names".ToDataPath();
         //this.WeightFilePath = @"D:\\Download\\YoloWrapper-WPF-master\\YoloWrapper-WPF-master\\DeepLearning\\Assets\\Weights\\yolov3.weights";
         //this.WeightFilePath = @"D:\Download\yolov3-tiny.weights";
     }

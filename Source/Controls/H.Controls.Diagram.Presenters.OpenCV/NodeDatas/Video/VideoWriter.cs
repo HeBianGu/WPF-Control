@@ -4,7 +4,7 @@ public class VideoWriter : SrcImageNodeDataBase
 {
     public VideoWriter()
     {
-        this.SrcFilePath = GetDataPath(MoviePath.Bach);
+        this.SrcFilePath = MoviePath.Bach.ToDataPath();
     }
 
     private string _outVideoFile = "out.avi";

@@ -85,5 +85,31 @@ public static class OpenvCVExtension
     {
         return Color.FromRgb((byte)color.Val2, (byte)color.Val1, (byte)color.Val0);
     }
+
+
+}
+
+public static class AssertPathExtesion
+{
+    public static string ToDataPath(this string dataPath)
+    {
+        if (string.IsNullOrEmpty(dataPath))
+            return null;
+        return System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, dataPath);
+    }
+
+    public static string ToAssetsPath(this string dataPath)
+    {
+        if (string.IsNullOrEmpty(dataPath))
+            return null;
+        return System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", dataPath);
+    }
+
+    public static string ToOnnxPath(this string dataPath)
+    {
+        if (string.IsNullOrEmpty(dataPath))
+            return null;
+        return System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "Onnx", dataPath);
+    }
 }
 

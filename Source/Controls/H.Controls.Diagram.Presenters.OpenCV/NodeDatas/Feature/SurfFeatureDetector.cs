@@ -6,7 +6,7 @@ public class SurfFeatureDetector : FeatureOpenCVNodeDataBase
 {
     public SurfFeatureDetector()
     {
-        this.DetectFilePath = this.GetDataPath(ImagePath.Match1);
+        this.DetectFilePath = ImagePath.Match1.ToDataPath();
     }
 
     //protected override void OpenFilePath(string name)

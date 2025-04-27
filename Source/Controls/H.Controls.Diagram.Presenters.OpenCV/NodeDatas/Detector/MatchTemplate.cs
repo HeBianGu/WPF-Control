@@ -7,7 +7,7 @@ public class MatchTemplate : MatchDetectorOpenCVNodeDataBase
 {
     public MatchTemplate()
     {
-        this.TemplateFilePath = this.GetDataPath(ImagePath.Circle);
+        this.TemplateFilePath = ImagePath.Circle.ToDataPath();
     }
 
     private TemplateMatchModes _templateMatchModes = TemplateMatchModes.CCoeffNormed;
