@@ -22,6 +22,8 @@ public abstract class ScrollViewerScrollToCommandBase : DisplayMarkupCommandBase
 
     protected ScrollViewer GetScrollViewer(object parameter)
     {
+        if (parameter is ScrollViewer scrollViewer)
+            return scrollViewer;
         return this.GetTargetElement(parameter).GetParent<ScrollViewer>();
     }
 }
