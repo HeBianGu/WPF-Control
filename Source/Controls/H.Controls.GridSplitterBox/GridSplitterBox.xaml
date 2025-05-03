@@ -5,7 +5,8 @@
 
     <Style x:Key="{ComponentResourceKey ResourceId=S.GridSplitterBox.Toggle,
                                         TypeInTargetAssembly={x:Type local:GridSplitterBox}}"
-           TargetType="FontIconToggleButton" BasedOn="{StaticResource {x:Static FontIconToggleButtonKeys.Default}}">
+           BasedOn="{StaticResource {x:Static FontIconToggleButtonKeys.Default}}"
+           TargetType="FontIconToggleButton">
         <Setter Property="Padding" Value="8" />
         <Setter Property="Margin" Value="5" />
         <Setter Property="HorizontalAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=h:GridSplitterBox}, Path=ToggleHorizontalAlignment}" />

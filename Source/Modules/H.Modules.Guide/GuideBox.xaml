@@ -84,7 +84,7 @@
                                     </TextBlock>
                                     <TextBlock x:Name="txt_version"
                                                Margin="0,2"
-                                               Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=(Cattach.GuideAssemblyVersion) }" />
+                                               Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.GuideAssemblyVersion)}" />
                                 </DockPanel>
 
                             </DockPanel>

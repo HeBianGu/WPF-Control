@@ -14,4 +14,6 @@ public class FontIconButtonKeys
 
     public static ComponentResourceKey Command => new ComponentResourceKey(typeof(FontIconButtonKeys), "S.FontIconButton.Command");
 
+    public static ComponentResourceKey DisplayCommand => new ComponentResourceKey(typeof(FontIconButtonKeys), "S.FontIconButton.DisplayCommand");
+
 }
