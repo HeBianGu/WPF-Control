@@ -45,14 +45,14 @@ public abstract class Bindable : BindableBase
 
     private object _targetElement;
     protected T GetTargetElement<T>() where T : UIElement => (T)this._targetElement;
-    /// <summary>
-    /// 加载事件处理方法。
-    /// </summary>
-    /// <param name="obj">事件参数。</param>
+
+    private bool _isLoaded;
+    protected bool IsLoaded => this._isLoaded;
     protected virtual void Loaded(object obj)
     {
         if (obj is RoutedEventArgs args)
             this._targetElement = args.Source;
+        this._isLoaded = true;
     }
 
     /// <summary>

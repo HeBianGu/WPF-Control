@@ -10,7 +10,6 @@ public interface IListBoxPresenter : IItemsSourcePresenter
 {
     string DisplayMemberPath { get; set; }
     object SelectedItem { get; set; }
-
     bool UseDelete { get; set; }
 }
 [Icon("\xE890")]

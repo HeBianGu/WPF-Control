@@ -14,6 +14,7 @@ namespace H.Extensions.Command;
 [Display(Name = "删除", Description = "从列表中删除当前项目")]
 public class DeleteCommand : DisplayMarkupCommandBase
 {
+    public bool UseDeleteOnOne { get; set; } = true;
     public override async Task ExecuteAsync(object parameter)
     {
         await IocMessage.Dialog.ShowDeleteDialog(x =>
@@ -40,7 +41,16 @@ public class DeleteCommand : DisplayMarkupCommandBase
             if (element.DataContext == null)
                 return false;
             ItemsControl items = element.GetParent<ItemsControl>();
-            return items != null;
+            if (items == null)
+                return false;
+            if (!this.UseDeleteOnOne)
+            {
+                if (items.ItemsSource is IList list)
+                    return list.Count > 1;
+                else
+                    return items.Items.Count > 1;
+            }
+
         }
         return false;
     }
