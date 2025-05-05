@@ -141,7 +141,6 @@
                                     </Border.Background>
                                 </Border>
                                 <Control Grid.Row="2"
-                                         MinHeight="10"
                                          Template="{TemplateBinding BottomTemplate}" />
                                 <ResizeGrip x:Name="WindowResizeGrip"
                                             Grid.RowSpan="3"
