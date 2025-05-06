@@ -48,7 +48,9 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type GroupItem}">
-                            --><!--  No Expander for the Misc Category if IsMiscCategoryLabelHidden == true  --><!--
+    -->
+    <!--  No Expander for the Misc Category if IsMiscCategoryLabelHidden == true  -->
+    <!--
                             <ItemsPresenter />
                         </ControlTemplate>
                     </Setter.Value>
@@ -62,7 +64,9 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
-                    --><!--  No Expander for the Misc Category if Misc category is the only category  --><!--
+    -->
+    <!--  No Expander for the Misc Category if Misc category is the only category  -->
+    <!--
                     <ItemsPresenter />
                 </ControlTemplate>
             </Setter.Value>

@@ -48,7 +48,7 @@ public class TextBlockIndexOfBebavior : Behavior<TextBlock>
                 n.CollectionChanged -= control.N_CollectionChanged;
                 n.CollectionChanged += control.N_CollectionChanged;
             }
-            control.RefreshData();
+            //control.RefreshData();
         }));
 
     private void N_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -88,7 +88,7 @@ public class TextBlockIndexOfBebavior : Behavior<TextBlock>
     }
 
     public static readonly DependencyProperty FormatProperty =
-        DependencyProperty.Register("Format", typeof(string), typeof(TextBlockIndexOfBebavior), new FrameworkPropertyMetadata("[{0}/{1}]"));
+        DependencyProperty.Register("Format", typeof(string), typeof(TextBlockIndexOfBebavior), new FrameworkPropertyMetadata("{0}/{1}"));
 
     protected virtual void RefreshData()
     {

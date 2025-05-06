@@ -3,13 +3,13 @@
                     xmlns:local="clr-namespace:H.Controls.Form.PropertyItem.ComboBoxPropertyItems">
     <DataTemplate DataType="{x:Type local:PresenterComboBoxPropertyItem}">
         <DockPanel>
-            <ComboBox
-                Margin="0,0,0,1"
-                DockPanel.Dock="Top"
-                ItemsSource="{Binding Collection}"
-                SelectedItem="{Binding Value}" />
+            <ComboBox Margin="0,0,0,1"
+                      DockPanel.Dock="Top"
+                      ItemsSource="{Binding Collection}"
+                      SelectedItem="{Binding Value}" />
             <!--<local:Form Padding="0" SelectObject="{Binding Value}" />-->
-            <ContentPresenter Margin="5 0" Content="{Binding Value}"/>
+            <ContentPresenter Margin="5,0"
+                              Content="{Binding Value}" />
         </DockPanel>
     </DataTemplate>
 </ResourceDictionary>
