@@ -1103,6 +1103,32 @@ public partial class Form
             }
             control.RefreshItemsFilter();
         }));
+
+    public GroupStyle BindingGroupStyle
+    {
+        get { return (GroupStyle)GetValue(BindingGroupStyleProperty); }
+        set { SetValue(BindingGroupStyleProperty, value); }
+    }
+
+    public static readonly DependencyProperty BindingGroupStyleProperty =
+        DependencyProperty.Register("BindingGroupStyle", typeof(GroupStyle), typeof(Form), new FrameworkPropertyMetadata(default(GroupStyle), (d, e) =>
+        {
+            Form control = d as Form;
+
+            if (control == null) return;
+
+            if (e.OldValue is GroupStyle o)
+            {
+                control.GroupStyle.Remove(o);
+            }
+
+            if (e.NewValue is GroupStyle n)
+            {
+                control.GroupStyle.Add(n);
+            }
+
+        }));
+
 }
 
 public class StaticForm : Form

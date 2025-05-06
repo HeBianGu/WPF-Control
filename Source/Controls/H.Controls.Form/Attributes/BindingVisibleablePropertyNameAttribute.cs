@@ -3,13 +3,13 @@
 namespace H.Controls.Form.Attributes;
 
 [AttributeUsage(AttributeTargets.Property, Inherited = false, AllowMultiple = false)]
-public class BindingVisiblableMethodNameAttribute : Attribute
+public class BindingVisibleablePropertyNameAttribute : Attribute
 {
-    public BindingVisiblableMethodNameAttribute(string methodName)
+    public BindingVisibleablePropertyNameAttribute(string propertyName)
     {
-        this.MethodName = methodName;
+        this.PropertyName = propertyName;
     }
 
-    public string MethodName { get; private set; }
+    public string PropertyName { get; private set; }
 }
 

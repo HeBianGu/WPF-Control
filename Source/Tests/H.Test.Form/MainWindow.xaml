@@ -30,9 +30,9 @@
                 <h:Form.Resources>
                     <DataTemplate DataType="{x:Type h:DemoModelItem}">
                         <CheckBox Margin="0,0"
-                                   Foreground="{DynamicResource {x:Static h:BrushKeys.Foreground}}"
                                   VerticalAlignment="Center"
-                                  Content="{Binding Name}" />
+                                  Content="{Binding Name}"
+                                  Foreground="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
                     </DataTemplate>
                 </h:Form.Resources>
                 <h:Form.SelectObject>
@@ -98,11 +98,18 @@
                 </h:Form.SelectObject>
             </h:Form>
         </TabItem>
-
+        <TabItem Header="UseGroup">
+            <h:Form UseGroup="True">
+                <h:Form.SelectObject>
+                    <h:Student />
+                </h:Form.SelectObject>
+            </h:Form>
+        </TabItem>
         <TabItem Header="SearchText">
             <DockPanel>
-                <TextBox x:Name="txt" DockPanel.Dock="Top"/>
-                <h:Form SearchText="{Binding ElementName=txt,Path=Text}">
+                <TextBox x:Name="txt"
+                         DockPanel.Dock="Top" />
+                <h:Form SearchText="{Binding ElementName=txt, Path=Text}">
                     <h:Form.SelectObject>
                         <h:Student />
                     </h:Form.SelectObject>

@@ -115,6 +115,37 @@
                 </Style>
             </Setter.Value>
         </Setter>
+        <Setter Property="BindingGroupStyle">
+            <Setter.Value>
+                <GroupStyle>
+                    <GroupStyle.ContainerStyle>
+                        <Style TargetType="{x:Type GroupItem}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type GroupItem}">
+                                        <Expander IsExpanded="True">
+                                            <Expander.Header>
+                                                <DockPanel>
+                                                    <TextBlock Text="{Binding Path=Name}" />
+                                                    <TextBlock Margin="5,0">
+                                                        <Run Text="[" />
+                                                        <Run Text="{Binding Path=ItemCount, Mode=OneWay}" />
+                                                        <Run Text="]" />
+                                                    </TextBlock>
+                                                </DockPanel>
+                                            </Expander.Header>
+                                            <Expander.Content>
+                                                <ItemsPresenter />
+                                            </Expander.Content>
+                                        </Expander>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </GroupStyle.ContainerStyle>
+                </GroupStyle>
+            </Setter.Value>
+        </Setter>
         <!--<Setter Property="GroupStyle">
             <Setter.Value>
                 <GroupStyle>
@@ -146,15 +177,15 @@
                 </GroupStyle>
         -->
         <!--<GroupStyle>
-                                <GroupStyle.HeaderTemplate>
-                                    <DataTemplate>
-                                        <DockPanel Background="LightBlue" Height="40">
-                                            <TextBlock Text="{Binding Path=Name}" Foreground="Blue" Margin="30,0,0,0" Width="100"/>
-                                            <TextBlock Text="{Binding Path=ItemCount}" Foreground="Blue"/>
-                                        </DockPanel>
-                                    </DataTemplate>
-                                </GroupStyle.HeaderTemplate>
-                            </GroupStyle>-->
+                    <GroupStyle.HeaderTemplate>
+                        <DataTemplate>
+                            <DockPanel Background="LightBlue" Height="40">
+                                <TextBlock Text="{Binding Path=Name}" Foreground="Blue" Margin="30,0,0,0" Width="100"/>
+                                <TextBlock Text="{Binding Path=ItemCount}" Foreground="Blue"/>
+                            </DockPanel>
+                        </DataTemplate>
+                    </GroupStyle.HeaderTemplate>
+                </GroupStyle>-->
         <!--
             </Setter.Value>
         </Setter>-->
