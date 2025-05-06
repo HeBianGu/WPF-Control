@@ -50,7 +50,7 @@ public class DeleteCommand : DisplayMarkupCommandBase
                 else
                     return items.Items.Count > 1;
             }
-
+            return true;
         }
         return false;
     }

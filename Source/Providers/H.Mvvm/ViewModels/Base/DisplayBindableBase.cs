@@ -30,13 +30,13 @@ public abstract class DisplayBindableBase : CommandsBindableBase, IDable, IDispl
         LoadDefault();
     }
 
-    /// <summary>
-    /// 获取或设置一个值，指示对象是否已加载。
-    /// </summary>
-    [Browsable(false)]
-    [System.Text.Json.Serialization.JsonIgnore]
-    [System.Xml.Serialization.XmlIgnore]
-    public bool IsLoaded { get; set; }
+    ///// <summary>
+    ///// 获取或设置一个值，指示对象是否已加载。
+    ///// </summary>
+    //[Browsable(false)]
+    //[System.Text.Json.Serialization.JsonIgnore]
+    //[System.Xml.Serialization.XmlIgnore]
+    //public bool IsLoaded { get; set; }
 
     /// <summary>
     /// 当对象加载完成时调用。
@@ -45,7 +45,7 @@ public abstract class DisplayBindableBase : CommandsBindableBase, IDable, IDispl
     protected override void Loaded(object obj)
     {
         base.Loaded(obj);
-        this.IsLoaded = true;
+        //this.IsLoaded = true;
     }
 
     private string _id;
