@@ -25,8 +25,7 @@ public static class RenderTargetBitmapExtensions
             encoder.Save(stream);
         }
     }
-
-    public static void SaveAsBmp(this RenderTargetBitmap renderTargetBitmap, string filePath)
+    private static void SaveAsBmp(this RenderTargetBitmap renderTargetBitmap, string filePath)
     {
         BmpBitmapEncoder encoder = new BmpBitmapEncoder();
         encoder.Frames.Add(BitmapFrame.Create(renderTargetBitmap));
