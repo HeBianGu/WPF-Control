@@ -48,7 +48,7 @@ public class TextBlockIndexOfBebavior : Behavior<TextBlock>
                 n.CollectionChanged -= control.N_CollectionChanged;
                 n.CollectionChanged += control.N_CollectionChanged;
             }
-            //control.RefreshData();
+            control.RefreshData();
         }));
 
     private void N_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -63,7 +63,13 @@ public class TextBlockIndexOfBebavior : Behavior<TextBlock>
     }
 
     public static readonly DependencyProperty ItemProperty =
-        DependencyProperty.Register("Item", typeof(object), typeof(TextBlockIndexOfBebavior), new FrameworkPropertyMetadata(default(object)));
+        DependencyProperty.Register("Item", typeof(object), typeof(TextBlockIndexOfBebavior), new FrameworkPropertyMetadata(default(object), (d, e) =>
+        {
+            TextBlockIndexOfBebavior control = d as TextBlockIndexOfBebavior;
+            if (control == null)
+                return;
+            control.RefreshData();
+        }));
 
     protected override void OnPropertyChanged(DependencyPropertyChangedEventArgs e)
     {
@@ -92,10 +98,15 @@ public class TextBlockIndexOfBebavior : Behavior<TextBlock>
 
     protected virtual void RefreshData()
     {
-        int total = this.Source?.Cast<object>().Count() ?? 0;
-        int index = this.Source?.Cast<object>().ToList().IndexOf(this.Item) ?? 0;
         if (this.AssociatedObject == null)
             return;
-        this.AssociatedObject.Text = string.Format(this.Format, index + this.DefaultFromValue, total);
+        int total = this.Source?.Cast<object>().Count() ?? 0;
+        int index = this.Source?.Cast<object>().ToList().IndexOf(this.Item) ?? 0;
+        if (total==0)
+        {
+            this.AssociatedObject.Text = string.Format(this.Format, 0, 0);
+            return;
+        }
+        this.AssociatedObject.Text = string.Format(this.Format, index + this.DefaultFromValue > total ? index : index + this.DefaultFromValue, total);
     }
 }

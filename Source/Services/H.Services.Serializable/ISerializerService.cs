@@ -1,5 +1,6 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
+using System.Diagnostics;
 using System.IO;
 
 namespace H.Services.Serializable;
@@ -27,6 +28,7 @@ public static class SerializerServiceExtensions
         }
         catch (Exception)
         {
+            Trace.Assert(false, $"文件 {filePath} 反序列化失败自动删除文件");
             File.Delete(filePath);
             return null;
         }
