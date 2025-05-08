@@ -13,6 +13,16 @@ public abstract class TransitionableBase<V> : BindableBase, ITransitionable
     public TimeSpan CloseDuration { get; set; } = TimeSpan.FromMilliseconds(100);
     public V From { get; set; }
     public V To { get; set; }
+
+    /// <summary>
+    /// 控制动画的速度变化，使其更自然:表示动画总时间的 30% 用于加速（从慢到快）
+    /// </summary>
+    public double AccelerationRatio { get; set; } = 0.3;
+    /// <summary>
+    /// 控制动画的速度变化，使其更自然:表示动画总时间的 50% 用于减速（从快到慢）
+    /// </summary>
+    public double DecelerationRatio { get; set; } = 0.5;
+
     public abstract Task Close(DependencyObject visual);
     public abstract Task Show(DependencyObject visual);
 }
