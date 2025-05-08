@@ -184,4 +184,4 @@ dotnet_style_operator_placement_when_wrapping = beginning_of_line
 
 # Í·ÎÄ¼þ
 [*.{cs,vb}]
-file_header_template = Copyright (c) HeBianGu Authors. All Rights Reserved. \nAuthor: HeBianGu \nGithub: https://github.com/HeBianGu/WPF-Control \nDocument: https://hebiangu.github.io/WPF-Control-Docs  \nQQ: 908293466 \nbilibili: https://space.bilibili.com/370266611 \nLicensed under the MIT License (the "License");
+file_header_template = Copyright (c) HeBianGu Authors. All Rights Reserved. \nAuthor: HeBianGu \nGithub: https://github.com/HeBianGu/WPF-Control \nDocument: https://hebiangu.github.io/WPF-Control-Docs  \nQQ:908293466 Group:971261058 \nbilibili: https://space.bilibili.com/370266611 \nLicensed under the MIT License (the "License");
