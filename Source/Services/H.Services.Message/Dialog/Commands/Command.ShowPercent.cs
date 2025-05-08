@@ -4,6 +4,10 @@ namespace H.Services.Message.Dialog.Commands;
 
 public class ShowPercentCommand : ShowMessageDialogCommandBase
 {
+    public ShowPercentCommand()
+    {
+        this.Width = 400;
+    }
     public override async Task ExecuteAsync(object parameter)
     {
         Func<ICancelable, IPercentPresenter, bool> func = (c, p) =>
