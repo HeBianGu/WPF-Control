@@ -90,7 +90,7 @@ namespace H.Test.Theme
                 x.IconFontFamilys.Add(IconFontFamilys.SystemSegoeMDL2Asset);
                 x.IconFontFamilys.Add(IconFontFamilys.SystemSegoeFluentIcons);
                 x.IconFontFamilys.Add(IconFontFamilys.LocationSegoeMDL2Asset);
-                x.IconFontFamilys.Add(IconFontFamilys.locationSegoeFluentIcons);
+                x.IconFontFamilys.Add(IconFontFamilys.LocationSegoeFluentIcons);
             });
 
             app.UseWindowSetting(x =>
