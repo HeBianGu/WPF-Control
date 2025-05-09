@@ -26,6 +26,7 @@ public abstract partial class ApplicationBase : Application, IConfigureableAppli
         AppPaths.Register(this.CreateAppPathServce());
         this.InitExcetion();
         this.InitServiceCollection();
+        this.ShutdownMode = ShutdownMode.OnMainWindowClose;
     }
 
     protected void InitServiceCollection()
