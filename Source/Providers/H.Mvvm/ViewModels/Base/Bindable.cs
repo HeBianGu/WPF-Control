@@ -53,6 +53,8 @@ public abstract class Bindable : BindableBase
 
     private object _targetElement;
     protected T GetTargetElement<T>() where T : UIElement => (T)this._targetElement;
+
+    protected bool IsLoaded { get; set; }
     /// <summary>
     /// 加载事件处理方法。
     /// </summary>
@@ -61,6 +63,7 @@ public abstract class Bindable : BindableBase
     {
         if (obj is RoutedEventArgs args)
             this._targetElement = args.Source;
+        this.IsLoaded = true;
     }
 
     /// <summary>

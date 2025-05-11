@@ -26,7 +26,7 @@ public static class IconFontFamilys
         }
     }
 
-    public static FontFamily locationSegoeFluentIcons
+    public static FontFamily LocationSegoeFluentIcons
     {
         get
         {
