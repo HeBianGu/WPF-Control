@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <PackageReference Include="NModbus" Version="3.0.81" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Controls\H.Controls.Form\H.Controls.Form.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.NewtonsoftJson\H.Extensions.NewtonsoftJson.csproj" />
+    <ProjectReference Include="..\..\Providers\H.Mvvm\H.Mvvm.csproj" />
+    <ProjectReference Include="..\..\Services\H.Services.Common\H.Services.Common.csproj" />
+    <ProjectReference Include="..\..\Services\H.Services.Message\H.Services.Message.csproj" />
+    <ProjectReference Include="..\..\Services\H.Services.Serializable\H.Services.Serializable.csproj" />
+  </ItemGroup>
+</Project>
